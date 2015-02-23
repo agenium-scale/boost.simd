@@ -1,0 +1,19 @@
+{
+    "key": "simd",
+    "name": "SIMD",
+    "authors": [
+        "Joel Falcou"
+        "Pierre Esterie"
+        "Jean-Thierry Lapreste"
+        "Mathias Gaunard"
+    ],
+    "maintainers": [
+        "Joel Falcou <joel.falcou -at- lri.fr>"
+    ],
+    "description": "Types and functions for portable usage of SIMD instructions sets.",
+    "category": [
+        "Math",
+	"System"
+    ]
+}
+
