@@ -5,23 +5,16 @@
     <tab type="mainpage" visible="yes" title=""/>
     <tab type="modules" visible="yes"
                         title="Reference documentation"
-                        intro="
-The reference documentation is split into logical modules, as documented in
-the user manual."/>
+                        intro="The reference documentation is split into logical modules, as documented in the user manual."/>
 
     <tab type="usergroup" visible="yes" title="Indexes">
       <tab type="classmembers" visible="yes"
                                title="Methods"
-                               intro="
-This is an index of all the methods with links to the
-corresponding documentation."/>
+                               intro="This is an index of all the methods with links to the corresponding documentation."/>
 
       <tab type="classlist" visible="yes"
                             title="Concepts and data types"
-                            intro="
-This is a list of all the concepts and data types with links to the
-corresponding documentation. Note that other classes are also included
-in this list because of Doxygen limitations, but you won't even notice. :-)"/>
+                            intro="This is a list of all the concepts and data types with links to the corresponding documentation."/>
 
       <tab type="filelist" visible="yes"
                            title="Files"
