@@ -1,28 +1,35 @@
 PROJECT_NAME            = "Boost.SIMD"
-PROJECT_BRIEF           = "Portable and efficient SIMD programming"
+PROJECT_BRIEF           = "Flexible SIMD Programming"
 PROJECT_LOGO            =
-PROJECT_NUMBER          = 4.0
+PROJECT_NUMBER          = "@BOOST_SIMD_VERSION_STRING@ @simd_release@"
 
 STRIP_FROM_PATH         = @Boost.SIMD_SOURCE_DIR@/include
 BUILTIN_STL_SUPPORT     = YES
 STRIP_FROM_INC_PATH     = @Boost.SIMD_SOURCE_DIR@/include
-ALIASES                 =
 ENABLED_SECTIONS        =
+
+# Concepts and links to boost documentation
+ALIASES =
+ALIASES += anchor{1}="<a name=\"\1\"></a>[[\1](#back\1)]:"
+ALIASES += refanchor{1}="<a name=\"back\1\"></a>[<sup>\1</sup>](#\1)"
 
 # Resources
 OUTPUT_DIRECTORY        =
-INPUT                    = @Boost.SIMD_SOURCE_DIR@/include/boost/simd
+INPUT                    = @Boost.SIMD_SOURCE_DIR@/include/
 INPUT                   += @Boost.SIMD_SOURCE_DIR@/doc
 FILE_PATTERNS           = *.md *.hpp
 RECURSIVE               = YES
-EXCLUDE                 = @Boost.SIMD_SOURCE_DIR@/include/boost/hana/sandbox \
-                          @Boost.SIMD_SOURCE_DIR@/include/boost/hana/detail/sandbox
-EXAMPLE_PATH            = @Boost.SIMD_SOURCE_DIR@/example \
-                          @Boost.SIMD_SOURCE_DIR@/test
+
+#EXCLUDE                = @Boost.SIMD_SOURCE_DIR@/???
+
+EXAMPLE_PATH            = @Boost.SIMD_SOURCE_DIR@/example
+#EXAMPLE_PATH           += @Boost.SIMD_SOURCE_DIR@/test/unit
+EXAMPLE_PATH           += @Boost.SIMD_SOURCE_DIR@/doc/
 EXAMPLE_RECURSIVE       = YES
-IMAGE_PATH              = 
+
+IMAGE_PATH              =
 MARKDOWN_SUPPORT        = YES
-WARN_IF_UNDOCUMENTED    = NO
+WARN_IF_UNDOCUMENTED    = YES
 
 SHOW_GROUPED_MEMB_INC   = YES
 BRIEF_MEMBER_DESC       = YES
@@ -33,7 +40,7 @@ JAVADOC_AUTOBRIEF       = YES
 QT_AUTOBRIEF            = YES
 MULTILINE_CPP_IS_BRIEF  = YES
 INHERIT_DOCS            = NO
-SEPARATE_MEMBER_PAGES   = NO
+SEPARATE_MEMBER_PAGES   = YES
 DISTRIBUTE_GROUP_DOC    = NO
 SUBGROUPING             = NO
 INLINE_GROUPED_CLASSES  = NO
@@ -42,19 +49,16 @@ INLINE_SIMPLE_STRUCTS   = NO
 # Generated formats
 GENERATE_HTML           = YES
 GENERATE_LATEX          = NO
-
-
 GENERATE_TODOLIST       = YES
 GENERATE_TESTLIST       = YES
 GENERATE_BUGLIST        = YES
 GENERATE_DEPRECATEDLIST = YES
-SHOW_USED_FILES         = NO
+SHOW_USED_FILES         = YES
 SHOW_FILES              = YES
 SHOW_NAMESPACES         = YES
 LAYOUT_FILE             = @Boost.SIMD_SOURCE_DIR@/doc/layout.xml
 
-
-CLASS_DIAGRAMS          = YES
+CLASS_DIAGRAMS          = NO
 HAVE_DOT                = NO
 
 HIDE_UNDOC_RELATIONS    = NO
@@ -66,7 +70,7 @@ INTERNAL_DOCS           = YES
 HIDE_SCOPE_NAMES        = NO
 SHOW_INCLUDE_FILES      = NO
 FORCE_LOCAL_INCLUDES    = NO
-INLINE_INFO             = NO
+INLINE_INFO             = YES
 SORT_MEMBER_DOCS        = NO
 SORT_BRIEF_DOCS         = NO
 SORT_MEMBERS_CTORS_1ST  = NO
@@ -80,7 +84,7 @@ COLS_IN_ALPHA_INDEX     = 1
 # Preprocessing
 ENABLE_PREPROCESSING    = YES
 MACRO_EXPANSION         = YES
-EXPAND_ONLY_PREDEF      = NO
+EXPAND_ONLY_PREDEF      = YES
 SEARCH_INCLUDES         = YES
 INCLUDE_PATH            = @Boost.SIMD_SOURCE_DIR@/include
 INCLUDE_FILE_PATTERNS   =
@@ -114,7 +118,7 @@ HTML_DYNAMIC_SECTIONS   = YES
 HTML_INDEX_NUM_ENTRIES  = 0 # Fully expand trees in the Indexes by default
 DISABLE_INDEX           = YES
 GENERATE_TREEVIEW       = YES
-TREEVIEW_WIDTH          = 200
+TREEVIEW_WIDTH          = 230
 EXT_LINKS_IN_WINDOW     = NO
 FORMULA_FONTSIZE        = 10
 FORMULA_TRANSPARENT     = YES

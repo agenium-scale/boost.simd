@@ -1,16 +1,16 @@
-#===================================================================================================
-#                 Copyright 2003 - 2011   LASMEA UMR 6602 CNRS/Univ. Clermont II
-#                 Copyright 2009 - 2015   LRI    UMR 8623 CNRS/Univ Paris Sud XI
-#                 Copyright 2012 - 2015   NumScale SAS
-#
-#                   Distributed under the Boost Software License, Version 1.0.
-#                        See accompanying file LICENSE.txt or copy at
-#                            http://www.boost.org/LICENSE_1_0.txt
-#===================================================================================================
+##===================================================================================================
+##                 Copyright 2003 - 2011   LASMEA UMR 6602 CNRS/Univ. Clermont II
+##                 Copyright 2009 - 2015   LRI    UMR 8623 CNRS/Univ Paris Sud XI
+##                 Copyright 2012 - 2015   NumScale SAS
+##
+##                   Distributed under the Boost Software License, Version 1.0.
+##                        See accompanying file LICENSE.txt or copy at
+##                            http://www.boost.org/LICENSE_1_0.txt
+##===================================================================================================
 
-#===================================================================================================
-# Parse revision number in variables
-#===================================================================================================
+##===================================================================================================
+## Parse revision number in variables
+##===================================================================================================
 function(parse_revision version_string prefix)
   set(version_regex_release "^([0-9]+)\\.([0-9]+)\\.([0-9]+)$")
   set(version_regex_prerelease "^([0-9]+)\\.([0-9]+)\\.([0-9]+)-([0-9A-Za-z.-]+)$")
@@ -20,7 +20,7 @@ function(parse_revision version_string prefix)
   elseif("${version_string}" MATCHES ${version_regex_prerelease})
     set(version_regex ${version_regex_prerelease})
   else()
-    message(ERROR "Unknown version format")
+    message(ERROR "[boost.simd] Unknown version format")
     return()
   endif()
 
@@ -42,9 +42,9 @@ function(parse_revision version_string prefix)
 
 endfunction()
 
-#===================================================================================================
-# Setup revision ID
-#===================================================================================================
+##===================================================================================================
+## Setup revision ID
+##===================================================================================================
 if(GIT_EXECUTABLE AND NOT EXISTS GIT_EXECUTABLE)
   unset(GIT_EXECUTABLE CACHE)
 endif()
@@ -61,7 +61,7 @@ endif()
 if(NOT DEFINED BOOST_SIMD_VERSION_STRING)
   if((NOT GIT_EXECUTABLE OR NOT EXISTS GIT_EXECUTABLE) AND IS_DIRECTORY ${PROJECT_SOURCE_DIR}/.git)
 
-    message ( FATAL_ERROR "Git not found, verify your GIT_EXECUTABLE variable "
+    message ( FATAL_ERROR "[boost.simd] Git not found, verify your GIT_EXECUTABLE variable "
                           "or specify BOOST_SIMD_VERSION_STRING manually"
             )
 
@@ -80,9 +80,9 @@ endif()
 
 parse_revision("${BOOST_SIMD_VERSION_STRING}" BOOST_SIMD_VERSION)
 
-set(boost_simd_release "(release)")
+set(simd_release "(release)")
 if(BOOST_SIMD_VERSION_IS_PRERELEASE)
-  set(boost_simd_release "(pre-release)")
+  set(simd_release "(pre-release)")
 endif()
 
-message(STATUS "Configuring Boost.SIMD version ${BOOST_SIMD_VERSION_STRING} ${boost_simd_release}")
+message(STATUS "[boost.simd] Configuring Boost.SIMD version ${BOOST_SIMD_VERSION_STRING} ${simd_release}")
