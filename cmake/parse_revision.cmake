@@ -18,7 +18,7 @@ function(parse_revision version_string prefix)
   elseif("${version_string}" MATCHES ${version_regex_prerelease})
     set(version_regex ${version_regex_prerelease})
   else()
-    message(ERROR "Unknown version format")
+    message(ERROR "[boost.simd] Unknown version format")
     return()
   endif()
 
@@ -40,9 +40,9 @@ function(parse_revision version_string prefix)
 
 endfunction()
 
-#===================================================================================================
-# Setup revision ID
-#===================================================================================================
+##===================================================================================================
+## Setup revision ID
+##===================================================================================================
 if(GIT_EXECUTABLE AND NOT EXISTS GIT_EXECUTABLE)
   unset(GIT_EXECUTABLE CACHE)
 endif()
@@ -59,7 +59,7 @@ endif()
 if(NOT DEFINED BOOST_SIMD_VERSION_STRING)
   if((NOT GIT_EXECUTABLE OR NOT EXISTS GIT_EXECUTABLE) AND IS_DIRECTORY ${PROJECT_SOURCE_DIR}/.git)
 
-    message ( FATAL_ERROR "Git not found, verify your GIT_EXECUTABLE variable "
+    message ( FATAL_ERROR "[boost.simd] Git not found, verify your GIT_EXECUTABLE variable "
                           "or specify BOOST_SIMD_VERSION_STRING manually"
             )
 
@@ -78,9 +78,9 @@ endif()
 
 parse_revision("${BOOST_SIMD_VERSION_STRING}" BOOST_SIMD_VERSION)
 
-set(boost_simd_release "(release)")
+set(simd_release "(release)")
 if(BOOST_SIMD_VERSION_IS_PRERELEASE)
-  set(boost_simd_release "(pre-release)")
+  set(simd_release "(pre-release)")
 endif()
 
-message(STATUS "Configuring Boost.SIMD version ${BOOST_SIMD_VERSION_STRING} ${boost_simd_release}")
+message(STATUS "[boost.simd] Configuring Boost.SIMD version ${BOOST_SIMD_VERSION_STRING} ${simd_release}")
