@@ -44,8 +44,8 @@ include(parse_revision)
 ## Add include directories
 ##===================================================================================================
 include_directories ( ${PROJECT_SOURCE_DIR}/include
+                      ${PROJECT_SOURCE_DIR}/test
                       ${Boost_INCLUDE_DIRS}
-                      ${PROJECT_SOURCE_DIR}/deps/include
                     )
 
 ##===================================================================================================
