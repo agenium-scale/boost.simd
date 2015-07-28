@@ -17,6 +17,7 @@
 #define BOOST_SIMD_DETAIL_SIMD_STORAGE_HPP_INCLUDED
 
 #include <algorithm>
+#include <array>
 
 namespace boost { namespace simd { namespace detail
 {
