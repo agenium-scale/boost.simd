@@ -51,12 +51,12 @@ namespace boost { namespace simd { namespace detail
       std::copy(b, e, d.begin());
     }
 
-    template<typename Value> BOOST_FORCEINLINE static pointer data(type& d)
+    BOOST_FORCEINLINE static pointer data(type& d)
     {
       return d.data();
     }
 
-    template<typename Value> BOOST_FORCEINLINE static const_pointer data(type const& d)
+    BOOST_FORCEINLINE static const_pointer data(type const& d)
     {
       return d.data();
     }
