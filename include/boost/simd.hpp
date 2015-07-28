@@ -15,6 +15,7 @@
 #define BOOST_SIMD_HPP_INCLUDED
 
 #include <boost/simd/arch/tags.hpp>
+#include <boost/simd/arch/spec.hpp>
 #include <boost/simd/math.hpp>
 #include <boost/simd/config.hpp>
 
@@ -25,19 +26,24 @@ namespace boost { namespace simd
     Configuration options for the library
   **/
 
-  namespace tag
-  {
-    /*!
-      @defgroup group-hierarchy Hierarchies
-      Type hierarchies defined by the library
-    **/
-  }
+  /*!
+    @defgroup group-hierarchy Hierarchies
+    Type hierarchies defined by the library
+  **/
 
   namespace concept
   {
     /*!
       @defgroup group-concept Concepts
       Concepts defined by the library
+    **/
+  }
+
+  namespace detail
+  {
+    /*!
+      @defgroup group-detail Implementation details
+      Implementation details
     **/
   }
 
