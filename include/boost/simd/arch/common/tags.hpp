@@ -37,9 +37,9 @@ namespace boost { namespace simd
     This tag represent any architecture requiring some SIMD register to be emulated as a small
     array of scalars. This is often the case when dealing with very small packs of data.
   **/
-  template<std::size_t N> struct simd_emulation_ : boost::dispatch::cpu_
+  template<std::size_t N> struct simd_emulation_ : boost::simd::simd_
   {
-    using parent = boost::dispatch::cpu_;
+    using parent = boost::simd::simd_;
     using type = simd_emulation_;
   };
 
@@ -50,9 +50,9 @@ namespace boost { namespace simd
     This tag represent any architecture requiring some SIMD register to be emulated as a tuple
     of smaller SIMD registers. This is often the case when dealing with very large packs of data.
   **/
-  template<std::size_t N> struct simd_aggregation_ : boost::dispatch::cpu_
+  template<std::size_t N> struct simd_aggregation_ : boost::simd::simd_
   {
-    using parent = boost::dispatch::cpu_;
+    using parent = boost::simd::simd_;
     using type = simd_aggregation_;
   };
 } }
