@@ -70,4 +70,4 @@ enable_testing()
 enable_coverage(boost.simd)
 add_dependencies(tests unit)
 
-#add_subdirectory(test)
+add_subdirectory(test)
