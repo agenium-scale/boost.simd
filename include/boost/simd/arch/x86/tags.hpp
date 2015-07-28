@@ -14,6 +14,8 @@
 #ifndef BOOST_SIMD_ARCH_X86_TAGS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_TAGS_HPP_INCLUDED
 
+#include <boost/predef/hardware/simd.h>
+
 namespace boost { namespace simd
 {
   /*!
