@@ -31,7 +31,7 @@ namespace boost { namespace simd { namespace detail
     @tparam Type      Type of the stored elements
     @tparam Cardinal  Number of element stored
   **/
-  template<typename Type, std::size_t Cardinal>
+  template<typename Type, std::size_t Cardinal, typename Enable = void>
   struct simd_storage
   {
     using emulated_storage  = void;
@@ -40,8 +40,6 @@ namespace boost { namespace simd { namespace detail
     using const_iterator    = typename type::const_iterator;
     using reference         = typename type::reference;
     using const_reference   = typename type::const_reference;
-    using pointer           = typename type::pointer;
-    using const_pointer     = typename type::const_pointer;
 
     template<typename Iterator> BOOST_FORCEINLINE static void load(type& d, Iterator it)
     {
@@ -53,16 +51,6 @@ namespace boost { namespace simd { namespace detail
       std::copy(b, e, d.begin());
     }
 
-    BOOST_FORCEINLINE static pointer data(type& d)
-    {
-      return d.data();
-    }
-
-    BOOST_FORCEINLINE static const_pointer data(type const& d)
-    {
-      return d.data();
-    }
-
     template<typename Value> BOOST_FORCEINLINE static void splat(type& d, Value v)
     {
       d.fill(v);
@@ -70,17 +58,17 @@ namespace boost { namespace simd { namespace detail
 
     template<typename... Ts> BOOST_FORCEINLINE static void fill(type& d, Ts const&... v)
     {
-      d = type{{v...}};
+      d = type{{ static_cast<Type>(v)... }};
     }
 
     template<std::size_t I> BOOST_FORCEINLINE static reference at(type& d)
     {
-      return d[I];
+      return at(d,I);
     }
 
     template<std::size_t I> BOOST_FORCEINLINE static const_reference at(type const& d)
     {
-      return d[I];
+      return at(d,I);
     }
 
     BOOST_FORCEINLINE static reference at(type& d, std::size_t i)
@@ -93,6 +81,6 @@ namespace boost { namespace simd { namespace detail
       return d[i];
     }
   };
-}}}
+} } }
 
 #endif
