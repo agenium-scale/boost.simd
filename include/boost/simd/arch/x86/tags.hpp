@@ -136,7 +136,7 @@ namespace boost { namespace simd
 
     This tag represent architectures implementing the Intel MIC SIMD instructions set.
   **/
-  struct mic_   : simd_ { using parent = simd_; };
+  struct mic_   : sse2_ { using parent = sse2_; };
 } }
 
 #endif
