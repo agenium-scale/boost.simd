@@ -14,6 +14,7 @@ add_definitions(-DBOOST_ENABLE_ASSERT_HANDLER)
 
 set ( SOURCES
       tags.cpp
+      limits.cpp
     )
 
 make_unit( "boost.simd.architecture" ${SOURCES})
