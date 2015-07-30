@@ -47,7 +47,7 @@ NSTEST_CASE( "Check for architectural tag parent for X86/AMD" )
 #endif
 
   NSTEST_TYPE_IS( boost::simd::avx2_::parent, boost::simd::fma3_ );
-  NSTEST_TYPE_IS( boost::simd::mic_::parent , boost::simd::simd_ );
+  NSTEST_TYPE_IS( boost::simd::mic_::parent , boost::simd::sse2_ );
 }
 
 NSTEST_CASE( "Check for architectural tag parent for PowerPC" )
