@@ -45,6 +45,14 @@ namespace boost { namespace simd
     **/
   }
 
+  namespace ext
+  {
+    /*!
+      @defgroup group-ext Library extension points
+      USer specilizable elements of the library
+    **/
+  }
+
   namespace detail
   {
     /*!
