@@ -30,7 +30,7 @@
 #define BOOST_SIMD_DEFAULT_SITE       ::boost::simd::mic_
 
 #include <immintrin.h>
-#include <boost/simd/arch/x86/mic/detail/as_simd.hpp>
+#include <boost/simd/arch/x86/mic/as_simd.hpp>
 
 #endif
 #endif

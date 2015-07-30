@@ -11,10 +11,10 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_POWER_QPX_DETAIL_AS_SIMD_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_POWER_QPX_DETAIL_AS_SIMD_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_POWER_QPX_AS_SIMD_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_POWER_QPX_AS_SIMD_HPP_INCLUDED
 
-#include <boost/simd/arch/common/simd/detail/as_simd.hpp>
+#include <boost/simd/arch/common/simd/as_simd.hpp>
 #include <boost/dispatch/meta/introspection/is_natural.hpp>
 #include <boost/simd/detail/brigand.hpp>
 
@@ -22,7 +22,7 @@ namespace boost { namespace simd
 {
   template<typename T> struct logical;
 
-  namespace detail
+  namespace ext
   {
     template<> struct as_simd<double, boost::simd::qpx_>
     {

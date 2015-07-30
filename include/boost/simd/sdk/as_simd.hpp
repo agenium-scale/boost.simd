@@ -2,7 +2,7 @@
 /*!
   @file
 
-  Defines the as_simd metafunction for common cases
+  Defines the as_simd meta-function
 
   @copyright 2012 - 2015 NumScale SAS
 
@@ -11,15 +11,15 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_COMMON_SIMD_DETAIL_AS_SIMD_HPP_INCLUDED
-#define BOOST_SIMD_COMMON_SIMD_DETAIL_AS_SIMD_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_AS_SIMD_HPP_INCLUDED
+#define BOOST_SIMD_SDK_AS_SIMD_HPP_INCLUDED
 
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/arch/spec.hpp>
 
-namespace boost { namespace simd { namespace detail
+namespace boost { namespace simd
 {
   /*!
-    @ingroup  group-detail
+    @ingroup  group-api
     @brief    Extension to Type mapping
 
     For a given couple @c Type x @c Cardinal, provides type and utility functions to handle data
@@ -28,11 +28,8 @@ namespace boost { namespace simd { namespace detail
     @tparam Type      Type of the elements
     @tparam Extension Architectural tag for target extension
   **/
-  template<typename T, typename Extension, typename Enable = void>
-  struct as_simd
-  {
-    using type = brigand::no_such_type_;
-  };
-} } }
+  template<typename Type, typename Extension>
+  using as_simd = typename ext::as_simd<Type,Extension>::type;
+} }
 
 #endif

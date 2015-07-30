@@ -14,6 +14,6 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SPEC_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SPEC_HPP_INCLUDED
 
-#include <boost/simd/arch/common/simd/detail/as_simd.hpp>
+#include <boost/simd/arch/common/simd/as_simd.hpp>
 
 #endif

@@ -30,7 +30,7 @@
 #define BOOST_SIMD_DEFAULT_SITE       ::boost::simd::sse4a_
 
 #include <ammintrin.h>
-#include <boost/simd/arch/x86/sse2/detail/as_simd.hpp>
+#include <boost/simd/arch/x86/sse2/as_simd.hpp>
 
 #endif
 #endif
