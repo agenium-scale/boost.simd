@@ -15,6 +15,7 @@
 #define BOOST_SIMD_ARCH_X86_TAGS_HPP_INCLUDED
 
 #include <boost/predef/hardware/simd.h>
+#include <boost/simd/arch/common/tags.hpp>
 
 namespace boost { namespace simd
 {
@@ -50,7 +51,6 @@ namespace boost { namespace simd
   **/
   struct ssse3_ : sse3_  { using parent = sse3_;  };
 
-#ifdef BOOST_HW_SIMD_X86_AMD_AVAILABLE
   /*!
     @ingroup group-hierarchy
     @brief AMD SSE 4A SIMD architecture hierarchy tag
@@ -59,6 +59,7 @@ namespace boost { namespace simd
   **/
   struct sse4a_ : ssse3_ { using parent = ssse3_; };
 
+#ifdef BOOST_HW_SIMD_X86_AMD_AVAILABLE
   /*!
     @ingroup group-hierarchy
     @brief Intel SSE 4.1 SIMD architecture hierarchy tag
@@ -92,7 +93,6 @@ namespace boost { namespace simd
   **/
   struct avx_     : sse4_2_ { using parent = sse4_2_; };
 
-#ifdef BOOST_HW_SIMD_X86_AMD_AVAILABLE
   /*!
     @ingroup group-hierarchy
     @brief Intel FMA4 SIMD architecture hierarchy tag
@@ -108,7 +108,6 @@ namespace boost { namespace simd
     This tag represent architectures implementing the AMD XOP SIMD instructions set.
   **/
   struct xop_     : fma4_   { using parent = fma4_;   };
-#endif
 
 #ifdef BOOST_HW_SIMD_X86_AMD_AVAILABLE
   struct fma3_ : xop_ { using parent = xop_; };
