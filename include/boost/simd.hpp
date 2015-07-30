@@ -14,13 +14,17 @@
 #ifndef BOOST_SIMD_HPP_INCLUDED
 #define BOOST_SIMD_HPP_INCLUDED
 
-#include <boost/simd/arch/tags.hpp>
-#include <boost/simd/arch/spec.hpp>
+#include <boost/simd/arch.hpp>
 #include <boost/simd/math.hpp>
 #include <boost/simd/config.hpp>
 
 namespace boost { namespace simd
 {
+  /*!
+    @defgroup group-api User API
+    Public user API provided by the library
+  **/
+
   /*!
     @defgroup group-config Configuration
     Configuration options for the library
