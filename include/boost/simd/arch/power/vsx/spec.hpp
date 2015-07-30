@@ -59,7 +59,7 @@
 #define __bool bool
 #endif
 
-#include <boost/simd/arch/power/vsx/detail/as_simd.hpp>
+#include <boost/simd/arch/power/vmx/as_simd.hpp>
 
 #endif
 #endif

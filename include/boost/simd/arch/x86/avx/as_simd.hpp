@@ -16,14 +16,14 @@
 #ifndef BOOST_SIMD_ARCH_X86_AVX_DETAIL_AS_SIMD_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_AVX_DETAIL_AS_SIMD_HPP_INCLUDED
 
-#include <boost/simd/arch/common/simd/detail/as_simd.hpp>
+#include <boost/simd/arch/common/simd/as_simd.hpp>
 #include <boost/dispatch/meta/introspection/is_natural.hpp>
 
 namespace boost { namespace simd
 {
   template<typename T> struct logical;
 
-  namespace detail
+  namespace ext
   {
     template<typename T>
     struct as_simd<logical<T>, boost::simd::avx_> : as_simd<T, boost::simd::avx_> {};
@@ -38,7 +38,7 @@ namespace boost { namespace simd
       using type = __m256d;
     };
 
-    template<>
+    template<typename T>
     struct as_simd< T, boost::simd::avx_
                   , typename std::enable_if<boost::dispatch::is_natural<T>::value>::type
                   >

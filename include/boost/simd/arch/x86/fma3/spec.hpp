@@ -32,8 +32,8 @@
 #define BOOST_SIMD_DEFAULT_SITE       ::boost::simd::fma3_
 
 #include <immintrin.h>
-#include <boost/simd/arch/x86/sse2/detail/as_simd.hpp>
-#include <boost/simd/arch/x86/avx/detail/as_simd.hpp>
+#include <boost/simd/arch/x86/sse2/as_simd.hpp>
+#include <boost/simd/arch/x86/avx/as_simd.hpp>
 
 #endif
 #endif

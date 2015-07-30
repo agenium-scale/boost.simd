@@ -36,7 +36,7 @@
   #define BOOST_SIMD_NO_DENORMALS
 #endif
 
-#include <boost/simd/arch/power/qpx/detail/as_simd.hpp>
+#include <boost/simd/arch/power/qpx/as_simd.hpp>
 
 #endif
 #endif

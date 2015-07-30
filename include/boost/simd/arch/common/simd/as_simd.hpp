@@ -13,19 +13,18 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_COMMON_SIMD_DETAIL_AS_SIMD_HPP_INCLUDED
-#define BOOST_SIMD_COMMON_SIMD_DETAIL_AS_SIMD_HPP_INCLUDED
+#ifndef BOOST_SIMD_COMMON_SIMD_AS_SIMD_HPP_INCLUDED
+#define BOOST_SIMD_COMMON_SIMD_AS_SIMD_HPP_INCLUDED
 
 #include <boost/simd/detail/brigand.hpp>
 
-namespace boost { namespace simd { namespace detail
+namespace boost { namespace simd { namespace ext
 {
   /*!
-    @ingroup  group-detail
-    @brief    Extension to Type mapping
+    @ingroup  group-ext
+    @brief    Extension to Type mapping extension point
 
-    For a given couple @c Type x @c Cardinal, provides type and utility functions to handle data
-    block containing @c Cardinal elements of type @c Type in an optimized way.
+    Provide a customizable extension point for SIMD extension type mapping.
 
     @tparam Type      Type of the elements
     @tparam Extension Architectural tag for target extension

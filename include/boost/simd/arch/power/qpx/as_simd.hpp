@@ -2,7 +2,7 @@
 /*!
   @file
 
-  Defines the as_simd metafunction for SSE like extensions
+  Defines the as_simd metafunction for QPX like extensions
 
   @copyright 2009 - 2012 LASMEA UMR 6602 CNRS/Univ. Clermont II
   @copyright 2009 - 2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
@@ -13,25 +13,29 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_X86_SSE1_DETAIL_AS_SIMD_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_X86_SSE1_DETAIL_AS_SIMD_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_POWER_QPX_AS_SIMD_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_POWER_QPX_AS_SIMD_HPP_INCLUDED
 
-#include <boost/simd/arch/common/simd/detail/as_simd.hpp>
+#include <boost/simd/arch/common/simd/as_simd.hpp>
+#include <boost/dispatch/meta/introspection/is_natural.hpp>
+#include <boost/simd/detail/brigand.hpp>
 
 namespace boost { namespace simd
 {
   template<typename T> struct logical;
 
-  namespace detail
+  namespace ext
   {
-    template<> struct as_simd<float, boost::simd::sse_>
+    template<> struct as_simd<double, boost::simd::qpx_>
     {
-      using type = __m128;
+      using type = vector4double;
     };
 
     template<typename T>
-    struct  as_simd<logical<T>, boost::simd::sse_>
-          : as_simd<T, boost::simd::sse_> {};
+    struct as_simd<logical<T>, boost::simd::qpx_>
+    {
+      using type = vector4double;
+    };
   }
 } }
 

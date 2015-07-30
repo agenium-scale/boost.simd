@@ -32,7 +32,7 @@
 #define BOOST_SIMD_DEFAULT_SITE       ::boost::simd::sse_
 
 #include <xmmintrin.h>
-#include <boost/simd/arch/x86/sse1/detail/as_simd.hpp>
+#include <boost/simd/arch/x86/sse1/as_simd.hpp>
 
 #endif
 #endif

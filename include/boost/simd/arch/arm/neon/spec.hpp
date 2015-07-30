@@ -32,7 +32,7 @@
 #define BOOST_SIMD_DEFAULT_SITE       ::boost::simd::neon_
 
 #include <arm_neon.h>
-#include <boost/simd/arch/arm/neon/detail/as_simd.hpp>
+#include <boost/simd/arch/arm/neon/as_simd.hpp>
 
 #endif
 #endif
