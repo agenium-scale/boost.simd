@@ -18,7 +18,7 @@
 
 #include <boost/simd/sdk/predef.hpp>
 
-#if BOOST_HW_SIMD_PPC == BOOST_HW_SIMD_PPC_VMX_VERSION
+#if BOOST_HW_SIMD_PPC == BOOST_HW_SIMD_PPC_VSX_VERSION
 
 #define BOOST_SIMD_BYTES              16
 #define BOOST_SIMD_BITS               128
