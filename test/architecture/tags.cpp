@@ -11,9 +11,8 @@
 
 NSTEST_CASE( "Check for basic SIMD tag parent" )
 {
-  NSTEST_TYPE_IS( boost::simd::simd_::parent                , boost::dispatch::cpu_ );
-  NSTEST_TYPE_IS( boost::simd::simd_emulation_<16>::parent  , boost::simd::simd_    );
-  NSTEST_TYPE_IS( boost::simd::simd_aggregation_<4>::parent , boost::simd::simd_    );
+  NSTEST_TYPE_IS( boost::simd::simd_::parent          , boost::dispatch::cpu_ );
+  NSTEST_TYPE_IS( boost::simd::simd_emulation_::parent, boost::simd::simd_    );
 }
 
 NSTEST_CASE( "Check for architectural tag parent for X86/AMD" )
