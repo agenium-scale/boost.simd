@@ -14,10 +14,9 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSE3_SPEC_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE3_SPEC_HPP_INCLUDED
 
-#include <boost/predef/hardware/simd.h>
+#include <boost/simd/sdk/predef.hpp>
 
-#if BOOST_HW_SIMD_X86 == BOOST_HW_SIMD_X86_SSE3_VERSION
-
+#if (BOOST_HW_SIMD_X86 == BOOST_HW_SIMD_X86_SSE3_VERSION)
 #define BOOST_SIMD_BYTES              16
 #define BOOST_SIMD_BITS               128
 #define BOOST_SIMD_CARDINALS          (2)(4)(8)(16)

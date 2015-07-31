@@ -14,7 +14,7 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSE4A_SPEC_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE4A_SPEC_HPP_INCLUDED
 
-#include <boost/predef/hardware/simd.h>
+#include <boost/simd/sdk/predef.hpp>
 
 #if BOOST_HW_SIMD_X86 == BOOST_HW_SIMD_X86_AMD_SSE4A_VERSION
 
