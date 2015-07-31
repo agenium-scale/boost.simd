@@ -19,6 +19,7 @@
 #include <boost/simd/arch/common/simd/as_simd.hpp>
 #include <boost/dispatch/meta/introspection/is_natural.hpp>
 #include <boost/dispatch/meta/introspection/sign_of.hpp>
+#include <boost/dispatch/meta/generation/as_integer.hpp>
 #include <boost/simd/detail/brigand.hpp>
 
 namespace boost { namespace simd
@@ -42,7 +43,7 @@ namespace boost { namespace simd
 
     template<typename T>
     struct as_simd<logical<T>, boost::simd::neon64_>
-         : as_simd< typename dispatch::meta::as_integer<T,unsigned>::type, boost::simd::neon64_>
+         : as_simd< typename dispatch::as_integer<T,unsigned>::type, boost::simd::neon64_>
     {};
 
 #if !defined( __aarch64__ )
@@ -72,7 +73,7 @@ namespace boost { namespace simd
                               , brigand::pair < brigand::list<brigand::int_<4>,signed>
                                               , int32x4_t
                                               >
-                              , brigand::pair < brigand::list<brigand::int_<8>,unsigned>
+                              , brigand::pair < brigand::list<brigand::int_<8>,signed>
                                               , int64x2_t
                                               >
                               , brigand::pair < brigand::list<brigand::int_<1>,unsigned>
@@ -90,7 +91,7 @@ namespace boost { namespace simd
                               >;
 
       using type = brigand::at< t2b
-                              , brigand::list<brigand::int_<sizeof(T)>,boost::dispacth::sign_of<T>>
+                              , brigand::list<brigand::int_<sizeof(T)>,boost::dispatch::sign_of<T>>
                               >;
     };
 
@@ -108,7 +109,7 @@ namespace boost { namespace simd
                               , brigand::pair < brigand::list<brigand::int_<4>,signed>
                                               , int32x2_t
                                               >
-                              , brigand::pair < brigand::list<brigand::int_<8>,unsigned>
+                              , brigand::pair < brigand::list<brigand::int_<8>,signed>
                                               , int64x1_t
                                               >
                               , brigand::pair < brigand::list<brigand::int_<1>,unsigned>
@@ -126,7 +127,7 @@ namespace boost { namespace simd
                               >;
 
       using type = brigand::at< t2b
-                              , brigand::list<brigand::int_<sizeof(T)>,boost::dispacth::sign_of<T>>
+                              , brigand::list<brigand::int_<sizeof(T)>,boost::dispatch::sign_of<T>>
                               >;
     };
   }
