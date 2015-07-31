@@ -36,26 +36,13 @@ namespace boost { namespace simd
     @ingroup group-hierarchy
     @brief Emulated SIMD architecture hierarchy tag
 
-    This tag represent any architecture requiring some SIMD register to be emulated as a small
-    array of scalars. This is often the case when dealing with very small packs of data.
+    This tag represent any architecture requiring some SIMD register to be emulated as an
+    array of scalars or other SIMD registers. This is often the case when dealing with pack of data
+    which size is not coherent with hardware specifications.
   **/
-  template<std::size_t N> struct simd_emulation_ : boost::simd::simd_
+  struct simd_emulation_ : boost::simd::simd_
   {
     using parent = boost::simd::simd_;
-    using type = simd_emulation_;
-  };
-
-  /*!
-    @ingroup group-hierarchy
-    @brief Aggregated SIMD architecture hierarchy tag
-
-    This tag represent any architecture requiring some SIMD register to be emulated as a tuple
-    of smaller SIMD registers. This is often the case when dealing with very large packs of data.
-  **/
-  template<std::size_t N> struct simd_aggregation_ : boost::simd::simd_
-  {
-    using parent = boost::simd::simd_;
-    using type = simd_aggregation_;
   };
 } }
 
