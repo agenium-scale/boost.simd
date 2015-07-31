@@ -14,7 +14,8 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_LIMITS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_LIMITS_HPP_INCLUDED
 
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/arch/x86/tags.hpp>
+#include <boost/dispatch/meta/generation/make_integer.hpp>
 
 namespace boost { namespace simd
 {
@@ -29,24 +30,22 @@ namespace boost { namespace simd
   **/
   template<typename Tag> struct limits
   {
-    static_assert( sizeof(Tag) == 0, "Unsupported SIMD extensions" );
-
     /// @brief Retrieves largest integer supported by current extension
-    template<typename Sign> using largest_integer   = brigand::no_such_type_;
+    template<typename Sign> using largest_integer   = boost::dispatch::make_integer<8,Sign>;
 
     /// @brief Retrieves smallest integer supported by current extension
-    template<typename Sign> using smallest_integer  = brigand::no_such_type_;
+    template<typename Sign> using smallest_integer  = boost::dispatch::make_integer<1,Sign>;
 
     /// @brief Retrieves largest real supported by current extension
-    using largest_real   = brigand::no_such_type_;
+    using largest_real  = double;
 
     /// @brief Retrieves smallest integer supported by current extension
-    using smallest_real  = brigand::no_such_type_;
+    using smallest_real = float;
 
     /// @brief Type size informations
     enum  {
-            bits  = 8 ///<  SIMD Register size in bits
-          , bytes = 1 ///<  SIMD Register size in bytes
+            bits  = 128 ///<  SIMD Register size in bits
+          , bytes = 16  ///<  SIMD Register size in bytes
           };
   };
 } }
