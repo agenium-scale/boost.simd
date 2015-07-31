@@ -16,7 +16,7 @@
 #ifndef BOOST_SIMD_ARCH_X86_FMA3_SPEC_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_FMA3_SPEC_HPP_INCLUDED
 
-#include <boost/predef/hardware/simd.h>
+#include <boost/simd/sdk/predef.hpp>
 
 #if BOOST_HW_SIMD_X86 == BOOST_HW_SIMD_X86_FMA3_VERSION
 

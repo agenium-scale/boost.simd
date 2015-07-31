@@ -16,7 +16,7 @@
 #ifndef BOOST_SIMD_ARCH_ARM_NEON_SPEC_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_ARM_NEON_SPEC_HPP_INCLUDED
 
-#include <boost/predef/hardware/simd.h>
+#include <boost/simd/sdk/predef.hpp>
 
 #if BOOST_HW_SIMD_ARM == BOOST_HW_SIMD_ARM_NEON_VERSION
 

@@ -17,7 +17,6 @@
 #define BOOST_SIMD_ARCH_X86_SPEC_HPP_INCLUDED
 
 #include <boost/predef/architecture.h>
-#include <boost/predef/hardware/simd.h>
 
 #include <boost/simd/arch/x86/mic/spec.hpp>
 #include <boost/simd/arch/x86/avx2/spec.hpp>
