@@ -24,6 +24,8 @@ namespace boost { namespace simd
 {
   template<> struct limits<boost::simd::mic_>
   {
+    using parent = boost::simd::sse_;
+
     template<typename Sign> using smallest_integer  = boost::dispatch::make_integer<4,Sign>;
     template<typename Sign> using largest_integer   = boost::dispatch::make_integer<8,Sign>;
 

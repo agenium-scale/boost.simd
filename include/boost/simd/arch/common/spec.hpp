@@ -18,8 +18,8 @@
 
 #if !defined(BOOST_HW_SIMD_AVAILABLE)
 
-#ifndef BOOST_SIMD_DEFAULT_EXTENSION
-#define BOOST_SIMD_DEFAULT_EXTENSION ::boost::simd::simd_emulation_
+#ifndef BOOST_SIMD_DEFAULT_FAMILY
+#define BOOST_SIMD_DEFAULT_FAMILY ::boost::simd::simd_emulation_
 #endif
 
 #define BOOST_SIMD_DEFAULT_SITE ::boost::dispatch::cpu_

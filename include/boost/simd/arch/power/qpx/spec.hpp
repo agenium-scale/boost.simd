@@ -20,13 +20,8 @@
 
 #if BOOST_HW_SIMD_PPC == BOOST_HW_SIMD_PPC_QPX_VERSION
 
-#define BOOST_SIMD_BYTES              32
-#define BOOST_SIMD_BITS               256
-#define BOOST_SIMD_CARDINALS          (4)
-#define BOOST_SIMD_TAG_SEQ            (::boost::simd::qpx_)
-
-#ifndef BOOST_SIMD_DEFAULT_EXTENSION
-  #define BOOST_SIMD_DEFAULT_EXTENSION  ::boost::simd::qpx_
+#ifndef BOOST_SIMD_DEFAULT_FAMILY
+  #define BOOST_SIMD_DEFAULT_FAMILY  ::boost::simd::qpx_
 #endif
 
 #define BOOST_SIMD_DEFAULT_SITE       ::boost::simd::qpx_

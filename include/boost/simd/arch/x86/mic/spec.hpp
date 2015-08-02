@@ -20,13 +20,8 @@
 
 #if BOOST_HW_SIMD_X86 == BOOST_HW_SIMD_X86_MIC_VERSION
 
-#define BOOST_SIMD_BYTES              64
-#define BOOST_SIMD_BITS               512
-#define BOOST_SIMD_CARDINALS          (8)(16)
-#define BOOST_SIMD_TAG_SEQ            (::boost::simd::mic_)(::boost::simd::sse_)
-
-#ifndef BOOST_SIMD_DEFAULT_EXTENSION
-  #define BOOST_SIMD_DEFAULT_EXTENSION  ::boost::simd::mic_
+#ifndef BOOST_SIMD_DEFAULT_FAMILY
+  #define BOOST_SIMD_DEFAULT_FAMILY  ::boost::simd::mic_
 #endif
 
 #define BOOST_SIMD_DEFAULT_SITE       ::boost::simd::mic_

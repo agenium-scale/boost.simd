@@ -20,13 +20,8 @@
 
 #if BOOST_HW_SIMD_X86 == BOOST_HW_SIMD_X86_FMA3_VERSION
 
-#define BOOST_SIMD_BYTES              32
-#define BOOST_SIMD_BITS               256
-#define BOOST_SIMD_CARDINALS          (2)(4)(8)(16)(32)
-#define BOOST_SIMD_TAG_SEQ            (::boost::simd::avx_)(::boost::simd::sse_)
-
-#ifndef BOOST_SIMD_DEFAULT_EXTENSION
-  #define BOOST_SIMD_DEFAULT_EXTENSION  ::boost::simd::avx_
+#ifndef BOOST_SIMD_DEFAULT_FAMILY
+  #define BOOST_SIMD_DEFAULT_FAMILY  ::boost::simd::avx_
 #endif
 
 #define BOOST_SIMD_DEFAULT_SITE       ::boost::simd::fma3_

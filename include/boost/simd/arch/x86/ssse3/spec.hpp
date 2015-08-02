@@ -20,13 +20,8 @@
 
 #if BOOST_HW_SIMD_X86 == BOOST_HW_SIMD_X86_SSSE3_VERSION
 
-#define BOOST_SIMD_BYTES              16
-#define BOOST_SIMD_BITS               128
-#define BOOST_SIMD_CARDINALS          (2)(4)(8)(16)
-#define BOOST_SIMD_TAG_SEQ            (::boost::simd::sse_)
-
-#ifndef BOOST_SIMD_DEFAULT_EXTENSION
-  #define BOOST_SIMD_DEFAULT_EXTENSION  ::boost::simd::sse_
+#ifndef BOOST_SIMD_DEFAULT_FAMILY
+  #define BOOST_SIMD_DEFAULT_FAMILY  ::boost::simd::sse_
 #endif
 
 #define BOOST_SIMD_DEFAULT_SITE       ::boost::simd::sss3e_

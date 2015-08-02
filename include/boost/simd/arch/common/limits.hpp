@@ -32,6 +32,8 @@ namespace boost { namespace simd
   **/
   template<typename Tag> struct limits
   {
+    using parent = boost::simd::simd_;
+
     /// @brief Retrieves largest integer supported by current extension
     template<typename Sign> using largest_integer   = boost::dispatch::make_integer<8,Sign>;
 

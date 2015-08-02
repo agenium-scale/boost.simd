@@ -20,13 +20,8 @@
 
 #if BOOST_HW_SIMD_PPC == BOOST_HW_SIMD_PPC_VMX_VERSION
 
-#define BOOST_SIMD_BYTES              16
-#define BOOST_SIMD_BITS               128
-#define BOOST_SIMD_CARDINALS          (4)(8)(16)
-#define BOOST_SIMD_TAG_SEQ            (::boost::simd::vmx_)
-
-#ifndef BOOST_SIMD_DEFAULT_EXTENSION
-  #define BOOST_SIMD_DEFAULT_EXTENSION  ::boost::simd::vmx_
+#ifndef BOOST_SIMD_DEFAULT_FAMILY
+  #define BOOST_SIMD_DEFAULT_FAMILY  ::boost::simd::vmx_
 #endif
 
 #define BOOST_SIMD_DEFAULT_SITE       ::boost::simd::vmx_
