@@ -23,6 +23,8 @@ namespace boost { namespace simd
 {
   template<> struct limits<boost::simd::qpx_>
   {
+    using parent = boost::simd::simd_;
+
     template<typename Sign> using largest_integer   = brigand::no_such_type_;
     template<typename Sign> using smallest_integer  = brigand::no_such_type_;
 

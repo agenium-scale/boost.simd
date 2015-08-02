@@ -17,13 +17,9 @@
 #include <boost/simd/sdk/predef.hpp>
 
 #if (BOOST_HW_SIMD_X86 == BOOST_HW_SIMD_X86_SSE_VERSION)
-#define BOOST_SIMD_BYTES              16
-#define BOOST_SIMD_BITS               128
-#define BOOST_SIMD_CARDINALS          (4)
-#define BOOST_SIMD_TAG_SEQ            (::boost::simd::sse_)
 
-#ifndef BOOST_SIMD_DEFAULT_EXTENSION
-  #define BOOST_SIMD_DEFAULT_EXTENSION  ::boost::simd::sse_
+#ifndef BOOST_SIMD_DEFAULT_FAMILY
+  #define BOOST_SIMD_DEFAULT_FAMILY  ::boost::simd::sse_
 #endif
 
 #define BOOST_SIMD_DEFAULT_SITE       ::boost::simd::sse_
