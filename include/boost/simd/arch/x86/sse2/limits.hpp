@@ -24,9 +24,15 @@ namespace boost { namespace simd
   {
     using parent = boost::simd::simd_;
 
-    template<typename Sign> using smallest_integer  = boost::dispatch::make_integer<1,Sign>;
-    template<typename Sign> using largest_integer   = boost::dispatch::make_integer<8,Sign>;
+    struct largest_integer
+    {
+      template<typename Sign> struct apply : boost::dispatch::make_integer<8,Sign> {};
+    };
 
+    struct smallest_integer
+    {
+      template<typename Sign> struct apply : boost::dispatch::make_integer<1,Sign> {};
+    };
     using smallest_real = float;
     using largest_real  = double;
 
