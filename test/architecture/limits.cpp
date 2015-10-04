@@ -10,99 +10,102 @@
 //==================================================================================================
 #include <boost/simd/arch/limits.hpp>
 #include <boost/simd/arch/spec.hpp>
-#include <nstest.hpp>
+#include <stf.hpp>
 
-NSTEST_CASE_TPL( "Check existence of limits for SSE1 extension", (boost::simd::sse_) )
+using namespace boost::simd;
+
+STF_CASE_TPL( "Check existence of limits for SSE1 extension", (sse_) )
 {
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::smallest_real, float);
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::largest_real , float);
+  STF_TYPE_IS( typename limits<T>::smallest_real, float);
+  STF_TYPE_IS( typename limits<T>::largest_real , float);
 
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::template smallest_integer<signed>  , brigand::no_such_type_   );
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::template smallest_integer<unsigned>, brigand::no_such_type_  );
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::template largest_integer<signed>   , brigand::no_such_type_  );
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::template largest_integer<unsigned> , brigand::no_such_type_ );
+  STF_TYPE_IS( (brigand::apply<limits<T>::smallest_integer,signed>)   , brigand::no_such_type_  );
+  STF_TYPE_IS( (brigand::apply<limits<T>::smallest_integer,unsigned>) , brigand::no_such_type_  );
+  STF_TYPE_IS( (brigand::apply<limits<T>::largest_integer,signed>)    , brigand::no_such_type_  );
+  STF_TYPE_IS( (brigand::apply<limits<T>::largest_integer,unsigned>)  , brigand::no_such_type_  );
 
-  NSTEST_EQUAL( boost::simd::limits<T>::bits, 128 );
-  NSTEST_EQUAL( boost::simd::limits<T>::bytes, 16 );
+  STF_EQUAL( limits<T>::bits, 128 );
+  STF_EQUAL( limits<T>::bytes, 16 );
 }
 
-NSTEST_CASE_TPL ( "Check existence of limits for SSE2-like extensions"
-                , (boost::simd::sse2_)(boost::simd::sse3_)(boost::simd::ssse3_)
-                  (boost::simd::sse4_1_)(boost::simd::sse4_2_)(boost::simd::sse4a_)
-                  (boost::simd::vsx_)
+STF_CASE_TPL ( "Check existence of limits for SSE2-like extensions"
+                , (sse2_)(sse3_)(ssse3_)
+                  (sse4_1_)(sse4_2_)(sse4a_)
+                  (vsx_)
                 )
 {
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::smallest_real, float);
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::largest_real, double);
+  STF_TYPE_IS( typename limits<T>::smallest_real, float);
+  STF_TYPE_IS( typename limits<T>::largest_real, double);
 
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::template smallest_integer<signed>  , std::int8_t   );
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::template smallest_integer<unsigned>, std::uint8_t  );
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::template largest_integer<signed>   , std::int64_t  );
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::template largest_integer<unsigned> , std::uint64_t );
+  STF_TYPE_IS( (brigand::apply<limits<T>::smallest_integer,signed>)   , std::int8_t  );
+  STF_TYPE_IS( (brigand::apply<limits<T>::smallest_integer,unsigned>) , std::uint8_t  );
+  STF_TYPE_IS( (brigand::apply<limits<T>::largest_integer,signed>)    , std::int64_t  );
+  STF_TYPE_IS( (brigand::apply<limits<T>::largest_integer,unsigned>)  , std::uint64_t  );
 
-  NSTEST_EQUAL( boost::simd::limits<T>::bits, 128 );
-  NSTEST_EQUAL( boost::simd::limits<T>::bytes, 16 );
+  STF_EQUAL( limits<T>::bits, 128 );
+  STF_EQUAL( limits<T>::bytes, 16 );
 }
 
-NSTEST_CASE_TPL ( "Check existence of limits for AVX-like extensions"
-                , (boost::simd::avx_)(boost::simd::avx2_)
-                  (boost::simd::fma4_)(boost::simd::fma3_)(boost::simd::xop_)
+STF_CASE_TPL ( "Check existence of limits for AVX-like extensions"
+                , (avx_)(avx2_)
+                  (fma4_)(fma3_)(xop_)
                 )
 {
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::smallest_real, float);
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::largest_real, double);
+  STF_TYPE_IS( typename limits<T>::smallest_real, float);
+  STF_TYPE_IS( typename limits<T>::largest_real, double);
 
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::template smallest_integer<signed>  , std::int8_t   );
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::template smallest_integer<unsigned>, std::uint8_t  );
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::template largest_integer<signed>   , std::int64_t  );
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::template largest_integer<unsigned> , std::uint64_t );
+  STF_TYPE_IS( (brigand::apply<limits<T>::smallest_integer,signed>)   , std::int8_t  );
+  STF_TYPE_IS( (brigand::apply<limits<T>::smallest_integer,unsigned>) , std::uint8_t  );
+  STF_TYPE_IS( (brigand::apply<limits<T>::largest_integer,signed>)    , std::int64_t  );
+  STF_TYPE_IS( (brigand::apply<limits<T>::largest_integer,unsigned>)  , std::uint64_t  );
 
-  NSTEST_EQUAL( boost::simd::limits<T>::bits, 256 );
-  NSTEST_EQUAL( boost::simd::limits<T>::bytes, 32 );
+  STF_EQUAL( limits<T>::bits, 256 );
+  STF_EQUAL( limits<T>::bytes, 32 );
 }
 
-NSTEST_CASE_TPL ( "Check existence of limits for MIC-like extensions"
-                , (boost::simd::mic_)
+STF_CASE_TPL ( "Check existence of limits for MIC-like extensions"
+                , (mic_)
                 )
 {
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::smallest_real, float);
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::largest_real, double);
+  STF_TYPE_IS( typename limits<T>::smallest_real, float);
+  STF_TYPE_IS( typename limits<T>::largest_real, double);
 
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::template smallest_integer<signed>  , std::int32_t   );
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::template smallest_integer<unsigned>, std::uint32_t  );
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::template largest_integer<signed>   , std::int64_t  );
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::template largest_integer<unsigned> , std::uint64_t );
+  STF_TYPE_IS( (brigand::apply<limits<T>::smallest_integer,signed>)   , std::int32_t  );
+  STF_TYPE_IS( (brigand::apply<limits<T>::smallest_integer,unsigned>) , std::uint32_t  );
+  STF_TYPE_IS( (brigand::apply<limits<T>::largest_integer,signed>)    , std::int64_t  );
+  STF_TYPE_IS( (brigand::apply<limits<T>::largest_integer,unsigned>)  , std::uint64_t  );
 
-  NSTEST_EQUAL( boost::simd::limits<T>::bits, 512 );
-  NSTEST_EQUAL( boost::simd::limits<T>::bytes, 64 );
+
+  STF_EQUAL( limits<T>::bits, 512 );
+  STF_EQUAL( limits<T>::bytes, 64 );
 }
 
-NSTEST_CASE_TPL ( "Check existence of limits for VMX-like extensions"
-                , (boost::simd::vmx_)
+STF_CASE_TPL ( "Check existence of limits for VMX-like extensions"
+                , (vmx_)
                 )
 {
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::smallest_real, float);
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::largest_real , float);
+  STF_TYPE_IS( typename limits<T>::smallest_real, float);
+  STF_TYPE_IS( typename limits<T>::largest_real , float);
 
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::template smallest_integer<signed>  , std::int8_t   );
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::template smallest_integer<unsigned>, std::uint8_t  );
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::template largest_integer<signed>   , std::int32_t  );
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::template largest_integer<unsigned> , std::uint32_t );
+  STF_TYPE_IS( (brigand::apply<limits<T>::smallest_integer,signed>)   , std::int8_t  );
+  STF_TYPE_IS( (brigand::apply<limits<T>::smallest_integer,unsigned>) , std::uint8_t  );
+  STF_TYPE_IS( (brigand::apply<limits<T>::largest_integer,signed>)    , std::int32_t  );
+  STF_TYPE_IS( (brigand::apply<limits<T>::largest_integer,unsigned>)  , std::uint32_t  );
 
-  NSTEST_EQUAL( boost::simd::limits<T>::bits, 128 );
-  NSTEST_EQUAL( boost::simd::limits<T>::bytes, 16 );
+  STF_EQUAL( limits<T>::bits, 128 );
+  STF_EQUAL( limits<T>::bytes, 16 );
 }
 
-NSTEST_CASE_TPL( "Check existence of limits for QPX extension", (boost::simd::qpx_) )
+STF_CASE_TPL( "Check existence of limits for QPX extension", (qpx_) )
 {
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::smallest_real, double);
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::largest_real , double);
+  STF_TYPE_IS( typename limits<T>::smallest_real, double);
+  STF_TYPE_IS( typename limits<T>::largest_real , double);
 
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::template smallest_integer<signed>  , brigand::no_such_type_   );
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::template smallest_integer<unsigned>, brigand::no_such_type_  );
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::template largest_integer<signed>   , brigand::no_such_type_  );
-  NSTEST_TYPE_IS( typename boost::simd::limits<T>::template largest_integer<unsigned> , brigand::no_such_type_ );
+  STF_TYPE_IS( (brigand::apply<limits<T>::smallest_integer,signed>)   , brigand::no_such_type_  );
+  STF_TYPE_IS( (brigand::apply<limits<T>::smallest_integer,unsigned>) , brigand::no_such_type_  );
+  STF_TYPE_IS( (brigand::apply<limits<T>::largest_integer,signed>)    , brigand::no_such_type_  );
+  STF_TYPE_IS( (brigand::apply<limits<T>::largest_integer,unsigned>)  , brigand::no_such_type_  );
 
-  NSTEST_EQUAL( boost::simd::limits<T>::bits, 256 );
-  NSTEST_EQUAL( boost::simd::limits<T>::bytes, 32 );
+  STF_EQUAL( limits<T>::bits, 256 );
+  STF_EQUAL( limits<T>::bytes, 32 );
 }
