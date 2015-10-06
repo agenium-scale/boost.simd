@@ -4,7 +4,6 @@
 
   Defines various macro for controlling math functions behavior
 
-  @copyright 2009 - 2012 LASMEA UMR 6602 CNRS/Univ. Clermont II
   @copyright 2009 - 2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
   @copyright 2012 - 2015 NumScale SAS
 

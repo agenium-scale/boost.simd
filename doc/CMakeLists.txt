@@ -1,5 +1,4 @@
 ##==================================================================================================
-##                 Copyright 2003 - 2011   LASMEA UMR 6602 CNRS/Univ. Clermont II
 ##                 Copyright 2009 - 2015   LRI    UMR 8623 CNRS/Univ Paris Sud XI
 ##                 Copyright 2012 - 2015   NumScale SAS
 ##
