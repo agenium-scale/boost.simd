@@ -6,14 +6,12 @@
 ##                        See accompanying file LICENSE.txt or copy at
 ##                            http://www.boost.org/LICENSE_1_0.txt
 ##===================================================================================================
-include(setup)
-include(make_unit)
-include(make_coverage)
 
-set(CMAKE_BUILD_TYPE "Debug")
+add_definitions(-DBOOST_ENABLE_ASSERT_HANDLER)
 
-## Add all test folders
-add_subdirectory(api)
-add_subdirectory(architecture)
-add_subdirectory(constant)
-add_subdirectory(function)
+set ( SOURCES
+      nan.cpp
+    )
+
+make_unit( "boost.simd.constant.scalar"     ${SOURCES})
+make_coverage("boost.simd.constant.scalar"  ${SOURCES})
