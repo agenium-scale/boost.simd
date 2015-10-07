@@ -18,7 +18,6 @@
 
 
 
-
 #include <boost/algorithm/string/predicate.hpp>
 #include <unordered_map>
 #include <sstream>
@@ -34,8 +33,7 @@ namespace stf
       args_map()
       {
                 std::pair<std::string,std::string>
-        envvars[] = { {"STF_COLOR"   , "color"}
-                    , {"STF_COMPACT" , "compact"}
+        envvars[] = { {"STF_COMPACT" , "compact"}
                     };
 
                 for(auto const& id : envvars)
@@ -111,6 +109,306 @@ namespace stf
 
   const detail::args_map args;
 }
+
+#include <iostream>
+#include <cstddef>
+#include <string>
+
+namespace stf
+{
+  namespace unit
+  {
+    struct env
+    {
+      public:
+
+      env(int argc, const char** argv, std::ostream& s = std::cout)
+        : test_count{0}, success_count{0}, invalid_count{0}, os(s)
+      {
+        args.update(argc,argv);
+      }
+
+            void compact(bool m) { compact_mode = m; }
+
+            bool is_compact() const { return compact_mode; }
+
+            void as_success() { test_count++; success_count++; }
+
+      void as_invalid() { test_count++; invalid_count++; }
+
+            void as_failure() { test_count++; }
+
+            bool passed() const { return tests() != successes(); }
+
+            std::ptrdiff_t tests() const { return test_count; }
+
+            std::ptrdiff_t successes() const { return success_count; }
+
+            std::ptrdiff_t invalids() const { return invalid_count; }
+
+            std::ptrdiff_t failures() const { return tests() - successes() - invalids(); }
+
+            std::ostream& stream() const { return os; }
+
+            std::ostream& pass()    const { return os << "[PASS]" << " - "; }
+
+            std::ostream& fail()    const { return os << "[FAIL]" << " - "; }
+
+            std::ostream& invalid() const
+      {
+        if(compact_mode)
+          return os << "I";
+        else
+          return os << "[IVLD]" << " - ";
+      }
+
+            env(env const&)             = delete;
+      env& operator=(env const&)  = delete;
+
+      private:
+      std::ptrdiff_t  test_count;
+      std::ptrdiff_t  success_count;
+      std::ptrdiff_t  invalid_count;
+      bool            compact_mode;
+      std::ostream&   os;
+    };
+  }
+  inline bool report(unit::env const& e, std::ptrdiff_t fails, std::ptrdiff_t invalids)
+  {
+    auto test_txt = e.tests()     > 1 ? "tests"     : "test";
+    auto pass_txt = e.successes() > 1 ? "successes" : "success";
+    auto fail_txt = e.failures()  > 1 ? "failures"  : "failure";
+    auto inv_txt  = e.invalids()  > 1 ? "invalids"  : "invalid";
+
+    e.stream()  << std::string(80,'-') << "\n"
+      << "Results: "
+      << e.tests()  << " "    << test_txt << " - "
+      << e.successes() << " " << pass_txt << " - "
+      << e.failures() << "/"  << fails     << " " << fail_txt << " - "
+      << e.invalids() << "/"  << invalids  << " " << inv_txt
+      << std::endl;
+
+    if(!fails && !invalids)
+      return e.passed();
+    else
+      return e.failures() != fails || e.invalids() != invalids;
+  }
+
+  template<typename Test>
+  inline void scenario_header( unit::env& env, Test const& t)
+  {
+    if(!env.is_compact())
+    {
+      auto hbar = std::string(80,'-');
+      env.stream()  << hbar << std::endl
+                    << "Scenario: " << t.name << std::endl
+                    << hbar << std::endl;
+    }
+    else
+    {
+      env.stream()  << "Scenario: " << t.name << " : ";
+    }
+  }
+
+  inline void process_invalid( unit::env& env, std::ptrdiff_t count)
+  {
+    if(count == env.tests())
+    {
+      env.as_invalid();
+      if(!env.is_compact())
+        env.invalid() << "Empty test case" << std::endl;
+      else
+        env.stream() << "!";
+    }
+  }
+}
+
+
+
+#define STF_STRING__(...) #__VA_ARGS__
+#define STF_STRING_(text) STF_STRING__ text
+
+#define STF_STRING(...) STF_STRING_((__VA_ARGS__))
+
+
+#define STF_UNIQUE3( ID, LINE )  ID ## LINE
+#define STF_UNIQUE2( ID, LINE )  STF_UNIQUE3( ID, LINE )
+
+#if defined(DOXYGEN_ONLY)
+#define STF_UNIQUE( Identifier )
+
+#define STF_FUNCTION
+
+#define STF_REGISTRATION
+#else
+
+#define STF_UNIQUE( Identifier ) STF_UNIQUE2( Identifier, __LINE__ )
+#define STF_FUNCTION      STF_UNIQUE(stf_function)
+#define STF_REGISTRATION  STF_UNIQUE(stf_registration)
+
+#endif
+
+
+
+#include <vector>
+#include <functional>
+
+namespace stf { namespace unit
+{
+  struct test
+  {
+    using behavior_t = std::function<void( env& )>;
+
+    std::string name;
+    behavior_t  behaviour;
+
+    test( std::string const& n, behavior_t const& b ) : name( n ), behaviour( b ) {}
+
+        void operator()(env& e) { behaviour(e); }
+  };
+
+  using test_suite = std::vector<test>;
+
+  static inline test_suite& suite()
+  {
+    static test_suite tests;
+    return tests;
+  }
+} }
+
+
+namespace stf { namespace detail
+{
+  struct registrar
+  {
+    registrar( ::stf::unit::test const& test_case ) { unit::suite().push_back( test_case ); }
+  };
+} }
+
+
+#include <boost/preprocessor/seq/elem.hpp>
+#include <boost/preprocessor/seq/size.hpp>
+#include <boost/preprocessor/repetition/repeat.hpp>
+
+#define STF_CASE(DESCRIPTION)                                                                       \
+void STF_FUNCTION( ::stf::unit::env& );                                                             \
+namespace                                                                                           \
+{                                                                                                   \
+  ::stf::detail::registrar                                                                          \
+  STF_REGISTRATION{::stf::unit::test(DESCRIPTION, STF_FUNCTION)};                                   \
+}                                                                                                   \
+void STF_FUNCTION( ::stf::unit::env& $ )                                                            \
+
+#define STF_RTYPE(z, n, t)                                                                          \
+{                                                                                                   \
+  using T = BOOST_PP_SEQ_ELEM(n,t);                                                                 \
+  $.stream() << std::endl;                                                                          \
+  $.stream() <<  "With T = [" << STF_STRING(BOOST_PP_SEQ_ELEM(n,t))                                 \
+                        << "] ";                                                                    \
+  if(!$.is_compact()) $.stream() << std::endl;                                                      \
+  STF_FUNCTION<T>($);                                                                               \
+}                                                                                                   \
+
+#define STF_CASE_TPL(DESCRIPTION, TYPES)                                                            \
+template<typename T> void STF_FUNCTION( stf::unit::env& );                                          \
+namespace                                                                                           \
+{                                                                                                   \
+  stf::detail::registrar                                                                            \
+  STF_REGISTRATION{ stf::unit::test                                                                 \
+                      ( DESCRIPTION                                                                 \
+                      , [](::stf::unit::env& $) -> void                                             \
+                        {                                                                           \
+                          BOOST_PP_REPEAT(BOOST_PP_SEQ_SIZE(TYPES),STF_RTYPE,TYPES)                 \
+                        }                                                                           \
+                      )                                                                             \
+                    };                                                                              \
+}                                                                                                   \
+template<typename T> void STF_FUNCTION( stf::unit::env& $ )                                         \
+
+
+
+namespace stf
+{
+  inline bool is_false()  { return false; }
+
+  inline bool is_true()   { return true; }
+}
+
+#include <algorithm>
+#include <random>
+
+namespace stf
+{
+  template<typename Environment, typename Suite, typename... Setup>
+  inline bool run(Environment& environment, Suite& tests, Setup const&... setup)
+  {
+        auto is_compact = args("compact",false);
+    environment.compact(is_compact);
+
+        if(auto seed = args("random",0u))
+    {
+      std::shuffle( tests.begin(), tests.end(), std::mt19937{seed} );
+    }
+
+    for(auto& t : tests )
+    {
+      scenario_header(environment,t);
+      auto count = environment.tests();
+
+      t(environment);
+
+      process_invalid(environment, count);
+
+      environment.stream() << std::endl;
+    }
+
+    return ::stf::report(environment,setup...);
+  }
+}
+
+
+#if !defined(STF_USE_CUSTOM_DRIVER)
+
+#if !defined(STF_CUSTOM_DRIVER_FUNCTION)
+#define STF_CUSTOM_DRIVER_FUNCTION main
+#endif
+
+#if defined(DOXYGEN_ONLY)
+#define STF_CUSTOM_DRIVER_FUNCTION
+#endif
+
+int STF_CUSTOM_DRIVER_FUNCTION(int argc, const char** argv)
+{
+  ::stf::unit::env $env(argc,argv,std::cout);
+  return ::stf::run( $env, ::stf::unit::suite(), 0, 0 );
+}
+
+#endif
+
+
+
+
+
+
+#include <iostream>
+#include <string>
+
+namespace stf
+{
+  struct location
+  {
+    std::string file;
+    std::size_t line;
+  };
+
+    std::ostream& operator<<(std::ostream& os, location const& l)
+  {
+    return os << l.file << ":" << l.line;
+  }
+
+    inline location at(std::string const& f, std::size_t l) { return {f,l}; }
+}
+
 
 
 
@@ -270,373 +568,6 @@ namespace stf
   }
 }
 
-#include <boost/predef.h>
-#include <iostream>
-#include <iomanip>
-
-#if defined(BOOST_OS_WINDOWS_AVAILABLE) && !defined(BOOST_OS_CYGWIN_AVAILABLE)
-#include <windows.h>
-#define STF_USE_CONSOLE_ATTRIBUTES
-#endif
-
-namespace stf
-{
-    #if defined(STF_USE_CONSOLE_ATTRIBUTES)
-  enum Color { GRAY = 7, DARKGRAY = 8, GREEN = 10, RED = 12, YELLOW = 14, WHITE = 15, DEFAULT = 7 };
-#else
-  enum Color { GRAY = 37, DARKGRAY = 90, GREEN = 32, RED = 31, YELLOW = 33, WHITE = 97, DEFAULT = 39 };
-#endif
-
-  template<typename Color> struct colored_data
-  {
-    std::string data;
-    Color       color;
-  };
-
-  template<int Code> struct color_markup
-  {
-    template<typename T> inline std::basic_ostream<T>& setup(std::basic_ostream<T>& os) const
-    {
-      if(&os == &std::cout && args("color",true))
-      {
-#if defined(STF_USE_CONSOLE_ATTRIBUTES)
-        auto h = GetStdHandle(STD_OUTPUT_HANDLE);
-        SetConsoleTextAttribute(h, Code);
-#else
-        os << "\033[" << Code << "m";
-#endif
-      }
-
-      return os;
-    }
-
-    template<typename T> colored_data<color_markup<Code>> operator()(T const& t) const
-    {
-      return {to_string(t),*this};
-    }
-  };
-
-  template<int Code> inline std::ostream& operator<<(std::ostream& os, const color_markup<Code>& cm)
-  {
-    return cm.setup(os);
-  }
-
-  const color_markup<Color::RED>       red_{};
-  const color_markup<Color::GREEN>     green_{};
-  const color_markup<Color::WHITE>     white_{};
-  const color_markup<Color::GRAY>      gray_{};
-  const color_markup<Color::YELLOW>    yellow_{};
-  const color_markup<Color::DEFAULT>   default_{};
-  const color_markup<Color::DARKGRAY>  darkgray_{};
-
-  template<typename C>
-  inline std::ostream& operator<<(std::ostream& os, const colored_data<C>& cd)
-  {
-    os << cd.color << cd.data << default_;
-    return os;
-  }
-}
-
-#include <iostream>
-#include <cstddef>
-#include <string>
-
-namespace stf
-{
-  namespace unit
-  {
-    struct env
-    {
-      public:
-
-      env(int argc, const char** argv, std::ostream& s = std::cout)
-        : test_count{0}, success_count{0}, invalid_count{0}, os(s)
-      {
-        args.update(argc,argv);
-      }
-
-            void compact(bool m) { compact_mode = m; }
-
-            bool is_compact() const { return compact_mode; }
-
-            void as_success() { test_count++; success_count++; }
-
-      void as_invalid() { test_count++; invalid_count++; }
-
-            void as_failure() { test_count++; }
-
-            bool passed() const { return tests() != successes(); }
-
-            std::ptrdiff_t tests() const { return test_count; }
-
-            std::ptrdiff_t successes() const { return success_count; }
-
-            std::ptrdiff_t invalids() const { return invalid_count; }
-
-            std::ptrdiff_t failures() const { return tests() - successes() - invalids(); }
-
-            std::ostream& stream() const { return os; }
-
-            std::ostream& pass()    const { return os << green_("[PASS]") << " - "; }
-
-            std::ostream& fail()    const { return os << red_("[FAIL]") << " - "; }
-
-            std::ostream& invalid() const
-      {
-        if(compact_mode)
-          return os << yellow_("I");
-        else
-          return os << yellow_("[IVLD]") << " - ";
-      }
-
-            env(env const&)             = delete;
-      env& operator=(env const&)  = delete;
-
-      private:
-      std::ptrdiff_t  test_count;
-      std::ptrdiff_t  success_count;
-      std::ptrdiff_t  invalid_count;
-      bool            compact_mode;
-      std::ostream&   os;
-    };
-  }
-  inline bool report(unit::env const& e, std::ptrdiff_t fails, std::ptrdiff_t invalids)
-  {
-    auto test_txt = e.tests()     > 1 ? "tests"     : "test";
-    auto pass_txt = e.successes() > 1 ? "successes" : "success";
-    auto fail_txt = e.failures()  > 1 ? "failures"  : "failure";
-    auto inv_txt  = e.invalids()  > 1 ? "invalids"  : "invalid";
-
-    e.stream()  << default_ << std::string(80,'-') << "\n"
-      << white_("Results: ")
-      << white_(e.tests())  << " "    << white_(test_txt) << " - "
-      << white_(e.successes()) << " " << green_(pass_txt) << " - "
-      << white_(e.failures()) << "/"  << fails     << " " << red_(fail_txt) << " - "
-      << white_(e.invalids()) << "/"  << invalids  << " " << yellow_(inv_txt)
-      << std::endl;
-
-    if(!fails && !invalids)
-      return e.passed();
-    else
-      return e.failures() != fails || e.invalids() != invalids;
-  }
-
-  template<typename Test>
-  inline void scenario_header( unit::env& env, Test const& t)
-  {
-    if(!env.is_compact())
-    {
-      auto hbar = std::string(80,'-');
-      env.stream()  << hbar << std::endl
-                    << "Scenario: " << ::stf::white_(t.name) << std::endl
-                    << hbar << std::endl;
-    }
-    else
-    {
-      env.stream()  << "Scenario: " << ::stf::white_(t.name) << " : ";
-    }
-  }
-
-  inline void process_invalid( unit::env& env, std::ptrdiff_t count)
-  {
-    if(count == env.tests())
-    {
-      env.as_invalid();
-      if(!env.is_compact())
-        env.invalid() << ::stf::white_("Empty test case") << std::endl;
-      else
-        env.stream() << ::stf::yellow_("!");
-    }
-  }
-}
-
-
-
-#define STF_STRING__(...) #__VA_ARGS__
-#define STF_STRING_(text) STF_STRING__ text
-
-#define STF_STRING(...) STF_STRING_((__VA_ARGS__))
-
-
-#define STF_UNIQUE3( ID, LINE )  ID ## LINE
-#define STF_UNIQUE2( ID, LINE )  STF_UNIQUE3( ID, LINE )
-
-#if defined(DOXYGEN_ONLY)
-#define STF_UNIQUE( Identifier )
-
-#define STF_FUNCTION
-
-#define STF_REGISTRATION
-#else
-
-#define STF_UNIQUE( Identifier ) STF_UNIQUE2( Identifier, __LINE__ )
-#define STF_FUNCTION      STF_UNIQUE(stf_function)
-#define STF_REGISTRATION  STF_UNIQUE(stf_registration)
-
-#endif
-
-
-
-#include <vector>
-#include <functional>
-
-namespace stf { namespace unit
-{
-  struct test
-  {
-    using behavior_t = std::function<void( env& )>;
-
-    std::string name;
-    behavior_t  behaviour;
-
-    test( std::string const& n, behavior_t const& b ) : name( n ), behaviour( b ) {}
-
-        void operator()(env& e) { behaviour(e); }
-  };
-
-  using test_suite = std::vector<test>;
-
-  static inline test_suite& suite()
-  {
-    static test_suite tests;
-    return tests;
-  }
-} }
-
-
-namespace stf { namespace detail
-{
-  struct registrar
-  {
-    registrar( ::stf::unit::test const& test_case ) { unit::suite().push_back( test_case ); }
-  };
-} }
-
-
-#include <boost/preprocessor/seq/elem.hpp>
-#include <boost/preprocessor/seq/size.hpp>
-#include <boost/preprocessor/repetition/repeat.hpp>
-
-#define STF_CASE(DESCRIPTION)                                                                    \
-void STF_FUNCTION( ::stf::unit::env& );                                                        \
-namespace                                                                                           \
-{                                                                                                   \
-  ::stf::detail::registrar                                                                       \
-  STF_REGISTRATION{::stf::unit::test(DESCRIPTION, STF_FUNCTION)};                            \
-}                                                                                                   \
-void STF_FUNCTION( ::stf::unit::env& $ )                                                       \
-
-#define STF_RTYPE(z, n, t)                                                                        \
-{                                                                                                   \
-  using T = BOOST_PP_SEQ_ELEM(n,t);                                                                 \
-  $.stream() << std::endl;                                                                          \
-  $.stream() <<  "With T = [" << ::stf::white_(STF_STRING(BOOST_PP_SEQ_ELEM(n,t)))            \
-                        << "] ";                                                                    \
-  if(!$.is_compact()) $.stream() << std::endl;                                                      \
-  STF_FUNCTION<T>($);                                                                             \
-}                                                                                                   \
-
-#define STF_CASE_TPL(DESCRIPTION, TYPES)                                                         \
-template<typename T> void STF_FUNCTION( stf::unit::env& );                                     \
-namespace                                                                                           \
-{                                                                                                   \
-  stf::detail::registrar                                                                         \
-  STF_REGISTRATION{ stf::unit::test                                                            \
-                      ( DESCRIPTION                                                                 \
-                      , [](::stf::unit::env& $) -> void                                          \
-                        {                                                                           \
-                          BOOST_PP_REPEAT(BOOST_PP_SEQ_SIZE(TYPES),STF_RTYPE,TYPES)               \
-                        }                                                                           \
-                      )                                                                             \
-                    };                                                                              \
-}                                                                                                   \
-template<typename T> void STF_FUNCTION( stf::unit::env& $ )                                    \
-
-
-
-namespace stf
-{
-  inline bool is_false()  { return false; }
-
-  inline bool is_true()   { return true; }
-}
-
-#include <algorithm>
-#include <random>
-
-namespace stf
-{
-  template<typename Environment, typename Suite, typename... Setup>
-  inline bool run(Environment& environment, Suite& tests, Setup const&... setup)
-  {
-        auto is_compact = args("compact",false);
-    environment.compact(is_compact);
-
-        if(auto seed = args("random",0u))
-    {
-      std::shuffle( tests.begin(), tests.end(), std::mt19937{seed} );
-    }
-
-    for(auto& t : tests )
-    {
-      scenario_header(environment,t);
-      auto count = environment.tests();
-
-      t(environment);
-
-      process_invalid(environment, count);
-
-      environment.stream() << std::endl;
-    }
-
-    return ::stf::report(environment,setup...);
-  }
-}
-
-
-#if !defined(STF_USE_CUSTOM_DRIVER)
-
-#if !defined(STF_CUSTOM_DRIVER_FUNCTION)
-#define STF_CUSTOM_DRIVER_FUNCTION main
-#endif
-
-#if defined(DOXYGEN_ONLY)
-#define STF_CUSTOM_DRIVER_FUNCTION
-#endif
-
-int STF_CUSTOM_DRIVER_FUNCTION(int argc, const char** argv)
-{
-  ::stf::unit::env $env(argc,argv,std::cout);
-  return ::stf::run( $env, ::stf::unit::suite(), 0, 0 );
-}
-
-#endif
-
-
-
-
-
-
-#include <iostream>
-#include <string>
-
-namespace stf
-{
-  struct location
-  {
-    std::string file;
-    std::size_t line;
-  };
-
-    std::ostream& operator<<(std::ostream& os, location const& l)
-  {
-    return os << darkgray_(l.file) << ":" << darkgray_(l.line);
-  }
-
-    inline location at(std::string const& f, std::size_t l) { return {f,l}; }
-}
-
-
 
 #include <string>
 
@@ -653,38 +584,61 @@ namespace stf { namespace detail
   };
 } }
 
-#define STF_DUMP(R)                                                                              \
-$.stream()  << "failing because:\n"                                                                 \
-            << ::stf::white_(R.lhs) << R.op << ::stf::white_(R.rhs) << "\n"                   \
-            << "is incorrect.\n";                                                                   \
+#define STF_DUMP(R)                                                                                 \
+$.stream()  << "failing because:\n" << R.lhs << R.op << R.rhs << "\n" << "is incorrect.\n";         \
 
 
-namespace stf { namespace detail
+namespace stf
 {
   template<typename LHS, typename RHS>
-  inline bool isequaln(LHS const& l, RHS const& r)
+  inline bool compare_equal(LHS const& l, RHS const& r)
   {
-        return (l == r) || ((l!=l) && (r!=r));
+        return (l == r);
   }
 
   template<typename LHS, typename RHS>
-  inline bool compare_not_equal(LHS const& l, RHS const& r)
+  inline bool compare_less(LHS const& l, RHS const& r)
   {
-    return !isequaln(l,r);
+    return l < r;
   }
 
-  template<typename LHS, typename RHS>
-  inline bool compare_less(LHS const& l, RHS const& r)          { return l < r; }
+  namespace detail
+  {
+    template<typename LHS, typename RHS> inline bool eq(LHS const& l, RHS const& r)
+    {
+      using stf::compare_equal;
+      return compare_equal(l, r);
+    }
 
-  template<typename LHS, typename RHS>
-  inline bool compare_less_equal(LHS const& l, RHS const& r)    { return l <= r; }
+    template<typename LHS, typename RHS> inline bool neq(LHS const& l, RHS const& r)
+    {
+      using stf::compare_equal;
+      return !compare_equal(l, r);
+    }
 
-  template<typename LHS, typename RHS>
-  inline bool compare_greater(LHS const& l, RHS const& r)       { return l > r; }
+    template<typename LHS, typename RHS> inline bool lt(LHS const& l, RHS const& r)
+    {
+      using stf::compare_less;
+      return compare_less(l, r);
+    }
 
-  template<typename LHS, typename RHS>
-  inline bool compare_greater_equal(LHS const& l, RHS const& r) { return l >= r; }
-} }
+    template<typename LHS, typename RHS> inline bool ge(LHS const& l, RHS const& r)
+    {
+      using stf::compare_less;
+      return !compare_less(l, r);
+    }
+
+    template<typename LHS, typename RHS> inline bool gt(LHS const& l, RHS const& r)
+    {
+      return !lt(l, r) || !neq(l, r);
+    }
+
+    template<typename LHS, typename RHS> inline bool le(LHS const& l, RHS const& r)
+    {
+      return lt(l, r) || eq(l, r);
+    }
+  }
+}
 
 
 namespace stf { namespace detail
@@ -710,18 +664,17 @@ namespace stf { namespace detail
     #define STF_BINARY_DECOMPOSE(OP,SB,FN)                                                          \
     template<typename R> result operator OP( R const & rhs )                                        \
     {                                                                                               \
-      using stf::detail::FN;                                                                        \
-      return  { FN(lhs, rhs)                                                                        \
+      return  { stf::detail::FN(lhs, rhs)                                                           \
               , stf::to_string( lhs ), stf::split_line(lhs,rhs,SB), stf::to_string(rhs)             \
               };                                                                                    \
     }                                                                                               \
 
-    STF_BINARY_DECOMPOSE( ==,  "==", isequaln              )
-    STF_BINARY_DECOMPOSE( !=,  "!=", compare_not_equal     )
-    STF_BINARY_DECOMPOSE( < ,  "<" , compare_less          )
-    STF_BINARY_DECOMPOSE( <=,  "<=", compare_less_equal    )
-    STF_BINARY_DECOMPOSE( > ,  ">" , compare_greater       )
-    STF_BINARY_DECOMPOSE( >=,  ">=", compare_greater_equal )
+    STF_BINARY_DECOMPOSE( ==, "==", eq  )
+    STF_BINARY_DECOMPOSE( !=, "!=", neq )
+    STF_BINARY_DECOMPOSE( < , "<" , lt  )
+    STF_BINARY_DECOMPOSE( > , ">" , gt  )
+    STF_BINARY_DECOMPOSE( >=, ">=", ge  )
+    STF_BINARY_DECOMPOSE( <=, "<=", le  )
 
     #undef STF_BINARY_DECOMPOSE
   };
@@ -739,17 +692,17 @@ namespace stf { namespace detail
 #define STF_DECOMPOSE( XPR ) ( stf::detail::decomposer()->* XPR )
 
 
-#define STF_DISPLAY( INDICATOR, COLOR, MESSAGE )                                                    \
+#define STF_DISPLAY( INDICATOR, MESSAGE )                                                           \
 do                                                                                                  \
 {                                                                                                   \
-  if(!$.is_compact()) $.stream() << COLOR(INDICATOR) << MESSAGE << std::endl;                       \
+  if(!$.is_compact()) $.stream() << INDICATOR << MESSAGE << std::endl;                              \
 } while( ::stf::is_false() )                                                                        \
 
-#define STF_INFO( MESSAGE ) STF_DISPLAY("[INFO] ",stf::green_, MESSAGE)
+#define STF_INFO( MESSAGE ) STF_DISPLAY("[INFO] ", MESSAGE)
 
-#define STF_WARNING( MESSAGE ) STF_DISPLAY("[WARNING] ",stf::yellow_, MESSAGE)
+#define STF_WARNING( MESSAGE ) STF_DISPLAY("[WARNING] ", MESSAGE)
 
-#define STF_ERROR( MESSAGE ) STF_DISPLAY("[ERROR] ",stf::red_, MESSAGE)
+#define STF_ERROR( MESSAGE ) STF_DISPLAY("[ERROR] ", MESSAGE)
 
 #define STF_PASS( MESSAGE )                                                                         \
 do                                                                                                  \
@@ -761,7 +714,7 @@ do                                                                              
   }                                                                                                 \
   else                                                                                              \
   {                                                                                                 \
-    $.stream() << ::stf::green_("+");                                                               \
+    $.stream() << "+";                                                                              \
   }                                                                                                 \
 } while( ::stf::is_false() )                                                                        \
 
@@ -775,7 +728,7 @@ do                                                                              
   }                                                                                                 \
   else                                                                                              \
   {                                                                                                 \
-    $.stream() << ::stf::red_("-");                                                                 \
+    $.stream() << "-";                                                                              \
   }                                                                                                 \
 } while( ::stf::is_false() )                                                                        \
 
@@ -784,10 +737,10 @@ do                                                                              
 do                                                                                                  \
 {                                                                                                   \
   if( ::stf::detail::result stf_local_r = STF_DECOMPOSE(EXPR) )                                     \
-    STF_PASS( "Expecting: " << ::stf::white_(STF_STRING(EXPR)) );                                   \
+    STF_PASS( "Expecting: " << STF_STRING(EXPR));                                                   \
   else                                                                                              \
   {                                                                                                 \
-    STF_FAIL( "Expecting: " << ::stf::white_(STF_STRING(EXPR)) );                                   \
+    STF_FAIL( "Expecting: " << STF_STRING(EXPR));                                                   \
     if(!$.is_compact()) STF_DUMP( stf_local_r );                                                    \
   }                                                                                                 \
 } while( ::stf::is_false() )                                                                        \
@@ -797,11 +750,11 @@ do                                                                              
 {                                                                                                   \
   if( ::stf::detail::result stf_local_r = STF_DECOMPOSE(EXPR) )                                     \
   {                                                                                                 \
-    STF_FAIL( "Not expecting: " << ::stf::white_(STF_STRING(EXPR)) );                               \
+    STF_FAIL( "Not expecting: " << STF_STRING(EXPR));                                               \
     if(!$.is_compact()) STF_DUMP( stf_local_r );                                                    \
   }                                                                                                 \
   else                                                                                              \
-    STF_PASS( "Not expecting: " << ::stf::white_(STF_STRING(EXPR)) );                               \
+    STF_PASS( "Not expecting: " << STF_STRING(EXPR));                                               \
 } while( ::stf::is_false() )                                                                        \
 
 
@@ -844,11 +797,11 @@ namespace stf { namespace detail
     auto l    = boost::get_error_info< ::boost::throw_line >(e);
     auto msg  = boost::get_error_info< ::stf::detail::throw_message >(e);
 
-    os  << "Assertion    '"  << ::stf::white_(e.what()) << "' failed\n"
-        << " in function '"  << ::stf::white_(*fn) << "'\n"
+    os  << "Assertion    '"  << e.what() << "' failed\n"
+        << " in function '"  << *fn << "'\n"
         << " from         "  << ::stf::at(*f,*l)    << " \n";
 
-    if(msg)  os << " because     '"  << ::stf::white_(*msg) << "'";
+    if(msg)  os << " because     '"  << *msg << "'";
 
     return os;
   }
@@ -900,15 +853,9 @@ do                                                                              
   catch( BOOST_PP_REMOVE_PARENS(T)& ) { caught = true; }                                            \
                                                                                                     \
   if(caught)                                                                                        \
-    STF_PASS (   ::stf::white_(STF_STRING(X))                                                       \
-                <<  " throws "                                                                      \
-                <<  ::stf::white_(STF_STRING(T))                                                    \
-                );                                                                                  \
+    STF_PASS( STF_STRING(X) <<  " throws " <<  STF_STRING(T) );                                     \
   else                                                                                              \
-    STF_FAIL(   ::stf::white_(STF_STRING(X))                                                        \
-                <<  " does not throw "                                                              \
-                <<  ::stf::white_(STF_STRING(T))                                                    \
-                );                                                                                  \
+    STF_FAIL( STF_STRING(X) <<  " does not throw " <<  STF_STRING(T) );                             \
 } while( ::stf::is_false() )                                                                        \
 
 #define STF_NO_THROW( X )                                                                           \
@@ -919,9 +866,9 @@ do                                                                              
   catch( ... ) { caught = true; }                                                                   \
                                                                                                     \
   if(caught)                                                                                        \
-    STF_FAIL( ::stf::white_(STF_STRING(X)) << " throws while not expected to" );                    \
+    STF_FAIL( STF_STRING(X) << " throws while not expected to" );                                   \
   else                                                                                              \
-    STF_PASS( ::stf::white_(STF_STRING(X)) << " doesn't throw" );                                   \
+    STF_PASS( STF_STRING(X) << " doesn't throw" );                                                  \
 } while( ::stf::is_false() )                                                                        \
 
 #define STF_ASSERT(X)                                                                               \
@@ -932,11 +879,11 @@ do                                                                              
   catch( ::stf::detail::assertion_failure& e)                                                       \
   {                                                                                                 \
     caught = true;                                                                                  \
-    STF_PASS( ::stf::white_(STF_STRING(X)) << " triggered: \n" << e << "\n" );                      \
+    STF_PASS( STF_STRING(X) << " triggered: \n" << e << "\n" );                                     \
   }                                                                                                 \
                                                                                                     \
   if(!caught)                                                                                       \
-    STF_FAIL( ::stf::white_(STF_STRING(X)) << " didn't trigger any assertion." );                   \
+    STF_FAIL( STF_STRING(X) << " didn't trigger any assertion." );                                  \
 } while( ::stf::is_false() )                                                                        \
 
 #define STF_NO_ASSERT(X)                                                                            \
@@ -947,11 +894,11 @@ do                                                                              
   catch( ::stf::detail::assertion_failure& e)                                                       \
   {                                                                                                 \
     caught = true;                                                                                  \
-    STF_FAIL( ::stf::white_(STF_STRING(X)) << " triggered: \n" << e << "\n" );                      \
+    STF_FAIL( STF_STRING(X) << " triggered: \n" << e << "\n" );                                     \
   }                                                                                                 \
                                                                                                     \
   if(!caught)                                                                                       \
-    STF_PASS( ::stf::white_(STF_STRING(X)) << " didn't trigger any assertion." );                   \
+    STF_PASS( STF_STRING(X) << " didn't trigger any assertion." );                                  \
 } while( ::stf::is_false() )                                                                        \
 
 
@@ -1006,7 +953,7 @@ namespace stf
       if( u  > diff )
       {
         errors.push_back( {u, to_string(x),to_string(y), idx} );
-        max_diff = std::max(max_diff,u);
+        max_diff = std::max<double>(max_diff,u);
       }
     }
 
@@ -1042,7 +989,7 @@ namespace stf
   }
 
     template<typename Measure, typename Reference, typename U>
-  inline bool isequaln(U const& l, approx_<Measure, Reference> const& r)
+  inline bool compare_equal(U const& l, approx_<Measure, Reference> const& r)
   {
     return r.compare(l);
   }
@@ -1298,32 +1245,29 @@ namespace stf
 #define STF_ULP_EQUAL(A,B,X)                                                                        \
 do                                                                                                  \
 {                                                                                                   \
-  auto stf_local_r = STF_DECOMPOSE((A) == ::stf::ulp(B,X));                                                   \
-  if( stf_local_r )                                                                                           \
-    STF_PASS ( "Expecting: " << ::stf::white_(STF_STRING(A) " == " STF_STRING(B))                   \
-                                << " within " << ::stf::white_(X) << " ULPs."                       \
-                );                                                                                  \
+  auto stf_local_r = STF_DECOMPOSE((A) == ::stf::ulp(B,X));                                         \
+  if( stf_local_r )                                                                                 \
+    STF_PASS( "Expecting: " << STF_STRING(A) " == " STF_STRING(B) << " within " << X << " ULPs." ); \
   else                                                                                              \
-    STF_FAIL ( "Expecting: " << ::stf::white_(STF_STRING(A) " == " STF_STRING(B))                   \
-                                << " within " << ::stf::white_(X) << " ULPs "                       \
-                                << "but found:\n" << ::stf::white_(stf_local_r.rhs)                           \
-                );                                                                                  \
+    STF_FAIL( "Expecting: " << STF_STRING(A) " == " STF_STRING(B)                                   \
+                             << " within " << X << " ULPs " << "but found:\n" << stf_local_r.rhs    \
+            );                                                                                      \
 } while( ::stf::is_false() )                                                                        \
 
+
+#define STF_IEEE_EQUAL(A,B)  STF_ULP_EQUAL(A,B,0.)
 
 #define STF_RELATIVE_EQUAL(A,B,X)                                                                   \
 do                                                                                                  \
 {                                                                                                   \
   auto stf_local_r = STF_DECOMPOSE((A) == ::stf::relative(B,X));                                    \
   if( stf_local_r )                                                                                 \
-    STF_PASS ( "Expecting: " << ::stf::white_(STF_STRING(A) " == " STF_STRING(B))                   \
-                                << " within " << ::stf::white_(X) << " %."                          \
-                );                                                                                  \
+    STF_PASS( "Expecting: " << STF_STRING(A) " == " STF_STRING(B) << " within " << X << " %.");     \
   else                                                                                              \
-    STF_FAIL ( "Expecting: " << ::stf::white_(STF_STRING(A) " == " STF_STRING(B))                   \
-                                << " within " << ::stf::white_(X) << " % "                          \
-                                << "but found:\n" << ::stf::white_(stf_local_r.rhs)                 \
-                );                                                                                  \
+    STF_FAIL( "Expecting: " << STF_STRING(A) " == " STF_STRING(B)                                   \
+                            << " within " << X << " % "                                             \
+                            << "but found:\n" << stf_local_r.rhs                                    \
+            );                                                                                      \
 } while( ::stf::is_false() )                                                                        \
 
 
@@ -1381,13 +1325,13 @@ do                                                                              
                                           , BOOST_PP_REMOVE_PARENS(T)                               \
                                           >::value;                                                 \
   if( stf_local_b )                                                                                 \
-    STF_PASS (   "Expecting " << ::stf::white_ << STF_STRING(BOOST_PP_REMOVE_PARENS(T))             \
-                <<  " == " << stf::type_id<BOOST_PP_REMOVE_PARENS(Type)>() << ::stf::default_       \
+    STF_PASS (   "Expecting " << STF_STRING(BOOST_PP_REMOVE_PARENS(T))                              \
+                <<  " == " << stf::type_id<BOOST_PP_REMOVE_PARENS(Type)>()                          \
                 );                                                                                  \
   else                                                                                              \
-    STF_FAIL (   "Expecting " << ::stf::white_(STF_STRING(BOOST_PP_REMOVE_PARENS(T)))               \
-                <<  " == " << ::stf::white_(stf::type_id<BOOST_PP_REMOVE_PARENS(Type)>())           \
-                <<  " found " << ::stf::white_(stf::type_id<BOOST_PP_REMOVE_PARENS(T)>())           \
+    STF_FAIL (   "Expecting " << STF_STRING(BOOST_PP_REMOVE_PARENS(T))                              \
+                <<  " == " << stf::type_id<BOOST_PP_REMOVE_PARENS(Type)>()                          \
+                <<  " found " << stf::type_id<BOOST_PP_REMOVE_PARENS(T)>()                          \
                 <<  " instead"                                                                      \
                 );                                                                                  \
 } while( ::stf::is_false() )                                                                        \
@@ -1405,20 +1349,20 @@ do                                                                              
   volatile bool stf_local_b = std::is_same<BOOST_PP_REMOVE_PARENS(Type), other>::value;             \
   if( stf_local_b )                                                                                 \
     STF_PASS (   "Expecting "                                                                       \
-                << ::stf::white_(STF_STRING(BOOST_PP_REMOVE_PARENS(Lambda)))                        \
+                << STF_STRING(BOOST_PP_REMOVE_PARENS(Lambda))                                       \
                 << " applied on "                                                                   \
-                << ::stf::white_(stf::type_id(BOOST_PP_REMOVE_PARENS(Expression)))                  \
+                << stf::type_id(BOOST_PP_REMOVE_PARENS(Expression))                                 \
                 <<  " to be "                                                                       \
-                << ::stf::white_(stf::type_id<BOOST_PP_REMOVE_PARENS(Type)>())                      \
+                << stf::type_id<BOOST_PP_REMOVE_PARENS(Type)>()                                     \
                 );                                                                                  \
   else                                                                                              \
     STF_FAIL(   "Expecting "                                                                        \
-                << ::stf::white_(STF_STRING(BOOST_PP_REMOVE_PARENS(Lambda)))                        \
+                << STF_STRING(BOOST_PP_REMOVE_PARENS(Lambda))                                       \
                 << " applied on "                                                                   \
-                << ::stf::white_(stf::type_id(BOOST_PP_REMOVE_PARENS(Expression)))                  \
+                << stf::type_id(BOOST_PP_REMOVE_PARENS(Expression))                                 \
                 <<  " to be "                                                                       \
-                << ::stf::white_(stf::type_id<BOOST_PP_REMOVE_PARENS(Type)>())                      \
-                << " but found " << ::stf::white_(stf::type_id<other>()) << " instead"              \
+                << stf::type_id<BOOST_PP_REMOVE_PARENS(Type)>()                                     \
+                << " but found " << stf::type_id<other>() << " instead"                             \
                 );                                                                                  \
 } while( ::stf::is_false() )                                                                        \
 
