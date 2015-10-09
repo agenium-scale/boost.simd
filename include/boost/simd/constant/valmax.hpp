@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_CONSTANT_NAN_HPP_INCLUDED
-#define BOOST_SIMD_CONSTANT_NAN_HPP_INCLUDED
+#ifndef BOOST_SIMD_CONSTANT_VALMAX_HPP_INCLUDED
+#define BOOST_SIMD_CONSTANT_VALMAX_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
@@ -18,20 +18,19 @@ namespace boost { namespace simd
   /*!
     @ingroup group-constant
 
-    Generate the Not a Number (NaN) constant.
+    Generate the maximum representable value of a given type as a constant.
 
     @par Semantic
 
     For any type @c T,
 
     @code
-    T x = NaN<T>();
+    T x = Valmax<T>();
     @endcode
 
-    return the NaN representation for this type, i.e QuietNaN for IEEE reals and
-    0 for integers.
+    return the maximum representable value for this type.
 
-    @return The NaN constant for the proper type
+    @return The maximum representable value of the input type
   **/
   template<typename T> T NaN();
 
@@ -39,27 +38,27 @@ namespace boost { namespace simd
   {
     /*!
       @ingroup group-constant
-      Generate the Not a Number (NaN) constant.
+
+      Generate the maximum representable value of a given type as a constant.
 
       @par Semantic
 
       For any type @c T,
 
       @code
-      T x = nan(as(T{}));
+      T x = valmax(as(T{}));
       @endcode
 
-      return the NaN representation for this type, i.e QuietNaN for IEEE reals and
-      0 for integers.
+      return the maximum representable value for this type.
 
-      @return The NaN constant for the proper type
+      @return The maximum representable value of the input type
     **/
-    const boost::dispatch::functor<tag::nan_> nan = {};
+    const boost::dispatch::functor<tag::valmax_> valmax = {};
   }
 } }
 #endif
 
-#include <boost/simd/constant/definition/nan.hpp>
+#include <boost/simd/constant/definition/valmax.hpp>
 #include <boost/simd/arch/common/constant/scalar/constant_value.hpp>
 
 #endif

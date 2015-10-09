@@ -11,6 +11,7 @@ add_definitions(-DBOOST_ENABLE_ASSERT_HANDLER)
 
 set ( SOURCES
       nan.cpp
+      valmax.cpp
     )
 
 make_unit( "boost.simd.constant.scalar"     ${SOURCES})

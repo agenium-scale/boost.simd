@@ -27,7 +27,7 @@ namespace boost { namespace simd { namespace ext
                                   , bd::target_<bd::scalar_<bd::arithmetic_<T>>>
                                   )
   {
-    using value_t = typename detail::constant_traits<Constant,T>::type;
+    using value_t = typename detail::constant_traits<Constant,typename T::type>::type;
 
     BOOST_FORCEINLINE typename value_t::value_type operator()(T const&) const
     {

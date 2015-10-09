@@ -22,8 +22,8 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( divides_
                           , (typename T)
                           , boost::dispatch::cpu_
-                          , boost::dispatch::scalar_<bd::unspecified_<T>>
-                          , boost::dispatch::scalar_<bd::unspecified_<T>>
+                          , boost::dispatch::scalar_<boost::dispatch::unspecified_<T>>
+                          , boost::dispatch::scalar_<boost::dispatch::unspecified_<T>>
                           )
   {
     BOOST_FORCEINLINE T operator()(T const& a, T const& b) const BOOST_NOEXCEPT

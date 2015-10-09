@@ -13,23 +13,26 @@
 #ifndef BOOST_SIMD_CONSTANT_TRAITS_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_TRAITS_HPP_INCLUDED
 
+#include <boost/dispatch/meta/introspection/scalar_of.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/property_of.hpp>
 #include <boost/dispatch/hierarchy.hpp>
-#include <boost/dispatch/as.hpp>
-#include <boost/config.hpp>
-#include <type_traits>
 
 /*!
 
 **/
 #define BOOST_SIMD_REGISTER_CONSTANT(INT,FLOAT,DOUBLE)                                              \
-template<typename T>                                                                                \
-using value_map = brigand::map                                                                      \
-                  < brigand::pair<brigand::no_such_type_      , brigand::uint_<INT>     >           \
-                  , brigand::pair<boost::dispatch::single_<T> , brigand::single_<FLOAT> >           \
-                  , brigand::pair<boost::dispatch::double_<T> , brigand::double_<DOUBLE>>           \
-                  >                                                                                 \
+template<typename T> struct value_map                                                               \
+{                                                                                                   \
+  template<typename X>                                                                              \
+  static std::integral_constant<X,X(INT)> value(boost::dispatch::integer_<X> const&);               \
+  template<typename X>                                                                              \
+  static brigand::single_<FLOAT> value(boost::dispatch::single_<X> const&);                         \
+  template<typename X>                                                                              \
+  static brigand::double_<DOUBLE> value(boost::dispatch::double_<X> const&);                        \
+                                                                                                    \
+  using type = decltype( value(T()) );                                                              \
+}                                                                                                   \
 /**/
 
 namespace boost { namespace simd { namespace detail
@@ -37,13 +40,8 @@ namespace boost { namespace simd { namespace detail
   template<typename Tag, typename T>
   struct constant_traits
   {
-    using cmap = typename Tag::template value_map<T>;
-    using key  = boost::dispatch::property_of_t<T>;
-    using base = brigand::at<cmap, key >;
-    using type = typename std::conditional< std::is_same<base,brigand::no_such_type_>::value
-                                          , brigand::at<cmap, brigand::no_such_type_>
-                                          , base
-                                          >::type;
+    using key  = boost::dispatch::property_of_t<boost::dispatch::scalar_of_t<T>>;
+    using type = typename Tag::template value_map<key>::type;
   };
 } } }
 

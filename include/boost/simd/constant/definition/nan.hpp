@@ -3,7 +3,7 @@
   @file
 
   @copyright 2009-2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
-  @copyright 2015 NumScale SAS
+  @copyright 2012-2015 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -30,14 +30,20 @@ namespace boost { namespace simd
     };
   }
 
-  namespace ext { BOOST_DISPATCH_FUNCTION_DECLARATION(tag,nan_); }
+  namespace ext
+  {
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag,nan_);
+  }
 
   namespace functional
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::nan_,nan);
   }
 
-  template<typename T> T NaN() { return nan( boost::dispatch::as_<T>{} ); }
+  template<typename T> auto NaN() -> decltype(functional::nan( boost::dispatch::as_<T>{}))
+  {
+    return functional::nan( boost::dispatch::as_<T>{} );
+  }
 } }
 
 #endif
