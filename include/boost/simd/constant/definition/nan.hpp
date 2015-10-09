@@ -29,14 +29,20 @@ namespace boost { namespace simd
     };
   }
 
-  namespace ext { BOOST_DISPATCH_FUNCTION_DECLARATION(tag,nan_); }
+  namespace ext
+  {
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag,nan_);
+  }
 
   namespace functional
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::nan_,nan);
   }
 
-  template<typename T> T NaN() { return nan( boost::dispatch::as_<T>{} ); }
+  template<typename T> auto NaN() -> decltype(functional::nan( boost::dispatch::as_<T>{}))
+  {
+    return functional::nan( boost::dispatch::as_<T>{} );
+  }
 } }
 
 #endif
