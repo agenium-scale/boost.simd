@@ -11,6 +11,7 @@ add_definitions(-DBOOST_ENABLE_ASSERT_HANDLER)
 set ( SOURCES
   abs.cpp
   divides.cpp
+#  is_equal.cpp
   minus.cpp
   modulus.cpp
   multiplies.cpp

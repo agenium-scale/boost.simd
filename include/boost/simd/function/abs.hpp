@@ -38,26 +38,26 @@ namespace boost { namespace simd
 
     Take care that for signed integers the absolute value of @c Valmin is
     @c Valmin (thus negative!). This is a side effect of the 2-complement
-    representation of integers. To avoid this, you can use the @c abss
+    representation of integers. To avoid this, you can use the abss
     saturated functor or convert the input parameter to a larger type
     before taking the absolute value.
 
-    @see  abss, sqr_abs, sqrs
+    @see  abss, sqr_abs, sqrs, functional::abs
 
     @param x value whose absolute value will be returned
 
     @return The absolute value of the parameter.
   **/
-  template<typename T> auto abs(T const& x);
+  template<typename T> auto abs(T const& x) {}
 
   namespace functional
   {
     /*!
       @ingroup group-arithmetic
 
-      Function object tied to boost::simd::abs
+      Function object tied to simd::abs
 
-      @see boost::simd::abs
+      @see simd::abs
     **/
     const boost::dispatch::functor<tag::abs_> abs = {};
   }

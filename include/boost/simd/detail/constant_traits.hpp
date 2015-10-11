@@ -21,7 +21,7 @@
 
 **/
 #define BOOST_SIMD_REGISTER_CONSTANT(INT,FLOAT,DOUBLE)                                              \
-template<typename T> struct value_map                                                               \
+struct value_map                                                                                    \
 {                                                                                                   \
   template<typename X>                                                                              \
   static std::integral_constant<X,X(INT)> value(boost::dispatch::integer_<X> const&);               \
@@ -29,8 +29,6 @@ template<typename T> struct value_map                                           
   static brigand::single_<FLOAT> value(boost::dispatch::single_<X> const&);                         \
   template<typename X>                                                                              \
   static brigand::double_<DOUBLE> value(boost::dispatch::double_<X> const&);                        \
-                                                                                                    \
-  using type = decltype( value(T()) );                                                              \
 }                                                                                                   \
 /**/
 
@@ -40,7 +38,8 @@ namespace boost { namespace simd { namespace detail
   struct constant_traits
   {
     using key  = boost::dispatch::property_of_t<boost::dispatch::scalar_of_t<T>>;
-    using type = typename Tag::template value_map<key>::type;
+    using base = typename Tag::value_map;
+    using type = decltype( base::value(key()) );
   };
 } } }
 

@@ -12,25 +12,25 @@
 #include <limits>
 #include <stf.hpp>
 
-STF_CASE_TPL( "Check plus behavior with IEEE types", (double)(float) )
+STF_CASE_TPL( "Check nan behavior with floating types", (double)(float) )
 {
   using boost::simd::as;
   using boost::simd::functional::nan;
-  using boost::simd::NaN;
+  using boost::simd::Nan;
 
-  STF_IEEE_EQUAL(NaN<T>(), std::numeric_limits<T>::quiet_NaN());
+  STF_IEEE_EQUAL(Nan<T>(), std::numeric_limits<T>::quiet_NaN());
   STF_IEEE_EQUAL(nan( as(T{}) ), std::numeric_limits<T>::quiet_NaN());
 }
 
-STF_CASE_TPL( "Check plus behavior with integral types"
+STF_CASE_TPL( "Check nan behavior with integral types"
             , (std::uint8_t)(std::uint16_t)(std::uint32_t)(std::uint64_t)
               (std::int8_t)(std::int16_t)(std::int32_t)(std::int64_t)
             )
 {
   using boost::simd::as;
   using boost::simd::functional::nan;
-  using boost::simd::NaN;
+  using boost::simd::Nan;
 
-  STF_IEEE_EQUAL(NaN<T>()       , T{0});
+  STF_IEEE_EQUAL(Nan<T>()       , T{0});
   STF_IEEE_EQUAL(nan( as(T{}) ) , T{0});
 }
