@@ -40,7 +40,8 @@ namespace boost { namespace simd
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::nan_,nan);
   }
 
-  template<typename T> auto NaN() -> decltype(functional::nan( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Nan() BOOST_NOEXCEPT
+  -> decltype(functional::nan( boost::dispatch::as_<T>{}))
   {
     return functional::nan( boost::dispatch::as_<T>{} );
   }

@@ -32,14 +32,14 @@ namespace boost { namespace simd
 
     @return The maximum representable value of the input type
   **/
-  template<typename T> T NaN();
+  template<typename T> T Valmax();
 
   namespace functional
   {
     /*!
       @ingroup group-constant
 
-      Generate the maximum representable value of a given type as a constant.
+      Generate the maximum finite representable value of a given type as a constant.
 
       @par Semantic
 
@@ -49,9 +49,9 @@ namespace boost { namespace simd
       T x = valmax(as(T{}));
       @endcode
 
-      return the maximum representable value for this type.
+      return the maximum finite representable value for this type.
 
-      @return The maximum representable value of the input type
+      @return The maximum finite representable value of the input type
     **/
     const boost::dispatch::functor<tag::valmax_> valmax = {};
   }

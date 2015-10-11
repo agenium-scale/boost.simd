@@ -29,30 +29,28 @@ namespace boost { namespace simd
     {
       BOOST_DISPATCH_MAKE_CALLABLE(ext,valmax_,boost::dispatch::constant_value_<valmax_>);
 
-      template<typename T> struct value_map
+      struct value_map
       {
         template<typename X>
-        static std::integral_constant<X,SCHAR_MAX> value(boost::dispatch::int8_<X> const&);
+        static std::integral_constant<X,0x7F> value(boost::dispatch::int8_<X> const&);
 
         template<typename X>
-        static std::integral_constant<X,SHRT_MAX> value(boost::dispatch::int16_<X> const&);
+        static std::integral_constant<X,0x7FFF> value(boost::dispatch::int16_<X> const&);
 
         template<typename X>
-        static std::integral_constant<X,LONG_MAX> value(boost::dispatch::int32_<X> const&);
+        static std::integral_constant<X,0x7FFFFFFF> value(boost::dispatch::int32_<X> const&);
 
         template<typename X>
-        static std::integral_constant<X,LLONG_MAX> value(boost::dispatch::int64_<X> const&);
+        static std::integral_constant<X,0x7FFFFFFFFFFFFFFF> value(boost::dispatch::int64_<X> const&);
 
         template<typename X>
-        static std::integral_constant<X,~X(0)> value(boost::dispatch::uint_<X> const&);
+        static std::integral_constant<X,X(0xFFFFFFFFFFFFFFFFULL)> value(boost::dispatch::uint_<X> const&);
 
         template<typename X>
         static brigand::single_<0x7F7FFFFF> value(boost::dispatch::single_<X> const&);
 
         template<typename X>
         static brigand::double_<0x7FEFFFFFFFFFFFFFULL> value(boost::dispatch::double_<X> const&);
-
-        using type = decltype( value(T()) );
       };
     };
   }
@@ -67,7 +65,8 @@ namespace boost { namespace simd
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::valmax_,valmax);
   }
 
-  template<typename T> auto Valmax() -> decltype(functional::valmax(boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Valmax() BOOST_NOEXCEPT
+  -> decltype(functional::valmax(boost::dispatch::as_<T>{}))
   {
     return functional::valmax( boost::dispatch::as_<T>{} );
   }
