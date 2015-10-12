@@ -1,4 +1,5 @@
 [submodule "doc/html"]
 	path = doc/html
-	url = git@github.com:jfalcou/boost.simd.git
+	url = https://github.com/jfalcou/boost.simd.git
 	branch = gh-pages
+
