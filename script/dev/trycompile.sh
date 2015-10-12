@@ -3,14 +3,15 @@
 if [ $# -lt 1 ]
 then
     echo "Usage: `basename $0` [-j<N>] <file>..."
-    echo "NT2_SOURCE_ROOT, NT2_BINARY_ROOT and BOOST_ROOT must be defined"
+    echo "BOOST_ROOT must be defined"
     echo "Compiler can be defined with CXX"
+    echo "Compiler flags can be defined with CXXFLAGS"
     exit 65
 fi
 
-if ! ([ $NT2_SOURCE_ROOT ] && [ $NT2_BINARY_ROOT ] && [ $BOOST_ROOT ])
+if ! ([ $BOOST_ROOT ])
 then
-  echo "NT2_SOURCE_ROOT, NT2_BINARY_ROOT and BOOST_ROOT must be defined"
+  echo "BOOST_ROOT must be defined"
   exit 65
 fi
 
@@ -28,8 +29,7 @@ else
   jobs=1
 fi
 
-include_dirs=$(find $NT2_SOURCE_ROOT -regex $NT2_SOURCE_ROOT'/modules/.*/include' | grep -E -v $NT2_SOURCE_ROOT'/modules/.*/include/.*/include')
-include_dirs="$BOOST_ROOT $include_dirs $NT2_BINARY_ROOT/include"
+include_dirs="$BOOST_ROOT"
 
 include_string=''
 for i in $include_dirs
