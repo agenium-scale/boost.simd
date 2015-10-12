@@ -47,7 +47,7 @@ function wait_jobs()
 
 for i in $args
 do
-  command="$CXX -x c++ -Wall -Wfatal-errors -fsyntax-only $CXXFLAGS $include_string $i"
+  command="$CXX -x c++ -std=c++11 -Wall -Wfatal-errors -fsyntax-only $CXXFLAGS $include_string $i"
   if [ $VERBOSE ]
   then
     echo $command
