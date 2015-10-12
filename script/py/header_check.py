@@ -11,6 +11,7 @@ __author__    = "Pyry Jahkola (pyry.jahkola@iki.fi)"
 __license__   = "Boost Software License, Version 1.0"
 
 
+import sys
 from os import walk, listdir
 from os.path import dirname, basename, sep, normpath, isdir, isfile, join
 from itertools import chain, groupby
@@ -44,16 +45,24 @@ def find_include_guard(file):
 
 # ------------------------------------------------------------------------------
 
-modules = list(
-    normpath(path) for path, dirs, _ in walk('modules')
-    if 'include' in dirs and 'include' not in normpath(path).split(sep))
+def usage():
+    print('usage: {} <root-path>'.format(sys.argv[0]))
+
+if len(sys.argv[1:]) == 1:
+    root = sys.argv[1]
+else:
+    usage()
+    sys.exit(1)
+
+modules = [join(root, 'include')]
+
+print(modules)
+print(list_files(modules[0]))
 
 module_includes = dict(
-    (m, exclude_files(list_files(join(m, 'include')), 'documentation.hpp'))
-    for m in modules)
+    (m, list_files(m)) for m in modules)
 
 all_includes = list(chain(*module_includes.values()))
-
 
 # Check that we don't have include files with conflicting include paths in
 # any two different modules.
@@ -71,7 +80,7 @@ print('\n=== Done. ' + '=' * 70 + '\n')
 # Check that the include guards as they currently are, "#ifndef FILE_WHATEVER",
 # are unique
 print('\nChecking uniqueness of current include guards...')
-guards = sorted(((m, f, find_include_guard(join(m, 'include', f)))
+guards = sorted(((m, f, find_include_guard(join(m, f)))
                  for m, fs in module_includes.items() for f in fs),
                 key=lambda (m, f, g): g)
 by_guard = dict((g, list((m, f) for m, f, g in ls))
@@ -93,7 +102,7 @@ broken_guards = dict(filter(
     lambda (module, errors): errors,
     ((m, filter(lambda (file, expected, found): expected != found,
                ((f, make_include_guard(f),
-                    find_include_guard(join(m, 'include', f))) for f in fs)))
+                    find_include_guard(join(m, f))) for f in fs)))
     for m, fs in module_includes.iteritems())))
 if broken_guards:
     print('WARNING: Found broken include guards!')
@@ -108,7 +117,7 @@ if broken_guards:
     for module in broken_guards:
         for file, expected, found in broken_guards[module]:
             if found and found not in 'BOOST_DISPATCH_DECLTYPE BOOST_PP_IS_ITERATING'.split():
-                print("sed -i -e 's/{0}/{1}/g' {2}".format(found, expected, join(module, 'include', file)))
+                print("sed -i -e 's/{0}/{1}/g' {2}".format(found, expected, join(module, file)))
 print('\n=== Done. ' + '=' * 70 + '\n')
 
 
