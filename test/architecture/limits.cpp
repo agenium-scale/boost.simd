@@ -17,10 +17,10 @@ STF_CASE_TPL( "Check existence of limits for SSE1 extension", (sse_) )
   STF_TYPE_IS( typename limits<T>::smallest_real, float);
   STF_TYPE_IS( typename limits<T>::largest_real , float);
 
-  STF_TYPE_IS( (brigand::apply<limits<T>::smallest_integer,signed>)   , brigand::no_such_type_  );
-  STF_TYPE_IS( (brigand::apply<limits<T>::smallest_integer,unsigned>) , brigand::no_such_type_  );
-  STF_TYPE_IS( (brigand::apply<limits<T>::largest_integer,signed>)    , brigand::no_such_type_  );
-  STF_TYPE_IS( (brigand::apply<limits<T>::largest_integer,unsigned>)  , brigand::no_such_type_  );
+  STF_TYPE_IS( (brigand::apply<typename limits<T>::smallest_integer,signed>)   , brigand::no_such_type_  );
+  STF_TYPE_IS( (brigand::apply<typename limits<T>::smallest_integer,unsigned>) , brigand::no_such_type_  );
+  STF_TYPE_IS( (brigand::apply<typename limits<T>::largest_integer,signed>)    , brigand::no_such_type_  );
+  STF_TYPE_IS( (brigand::apply<typename limits<T>::largest_integer,unsigned>)  , brigand::no_such_type_  );
 
   STF_EQUAL( limits<T>::bits, 128 );
   STF_EQUAL( limits<T>::bytes, 16 );
@@ -35,10 +35,10 @@ STF_CASE_TPL ( "Check existence of limits for SSE2-like extensions"
   STF_TYPE_IS( typename limits<T>::smallest_real, float);
   STF_TYPE_IS( typename limits<T>::largest_real, double);
 
-  STF_TYPE_IS( (brigand::apply<limits<T>::smallest_integer,signed>)   , std::int8_t  );
-  STF_TYPE_IS( (brigand::apply<limits<T>::smallest_integer,unsigned>) , std::uint8_t  );
-  STF_TYPE_IS( (brigand::apply<limits<T>::largest_integer,signed>)    , std::int64_t  );
-  STF_TYPE_IS( (brigand::apply<limits<T>::largest_integer,unsigned>)  , std::uint64_t  );
+  STF_TYPE_IS( (brigand::apply<typename limits<T>::smallest_integer,signed>)   , std::int8_t  );
+  STF_TYPE_IS( (brigand::apply<typename limits<T>::smallest_integer,unsigned>) , std::uint8_t  );
+  STF_TYPE_IS( (brigand::apply<typename limits<T>::largest_integer,signed>)    , std::int64_t  );
+  STF_TYPE_IS( (brigand::apply<typename limits<T>::largest_integer,unsigned>)  , std::uint64_t  );
 
   STF_EQUAL( limits<T>::bits, 128 );
   STF_EQUAL( limits<T>::bytes, 16 );
@@ -52,10 +52,10 @@ STF_CASE_TPL ( "Check existence of limits for AVX-like extensions"
   STF_TYPE_IS( typename limits<T>::smallest_real, float);
   STF_TYPE_IS( typename limits<T>::largest_real, double);
 
-  STF_TYPE_IS( (brigand::apply<limits<T>::smallest_integer,signed>)   , std::int8_t  );
-  STF_TYPE_IS( (brigand::apply<limits<T>::smallest_integer,unsigned>) , std::uint8_t  );
-  STF_TYPE_IS( (brigand::apply<limits<T>::largest_integer,signed>)    , std::int64_t  );
-  STF_TYPE_IS( (brigand::apply<limits<T>::largest_integer,unsigned>)  , std::uint64_t  );
+  STF_TYPE_IS( (brigand::apply<typename limits<T>::smallest_integer,signed>)   , std::int8_t  );
+  STF_TYPE_IS( (brigand::apply<typename limits<T>::smallest_integer,unsigned>) , std::uint8_t  );
+  STF_TYPE_IS( (brigand::apply<typename limits<T>::largest_integer,signed>)    , std::int64_t  );
+  STF_TYPE_IS( (brigand::apply<typename limits<T>::largest_integer,unsigned>)  , std::uint64_t  );
 
   STF_EQUAL( limits<T>::bits, 256 );
   STF_EQUAL( limits<T>::bytes, 32 );
@@ -68,10 +68,10 @@ STF_CASE_TPL ( "Check existence of limits for MIC-like extensions"
   STF_TYPE_IS( typename limits<T>::smallest_real, float);
   STF_TYPE_IS( typename limits<T>::largest_real, double);
 
-  STF_TYPE_IS( (brigand::apply<limits<T>::smallest_integer,signed>)   , std::int32_t  );
-  STF_TYPE_IS( (brigand::apply<limits<T>::smallest_integer,unsigned>) , std::uint32_t  );
-  STF_TYPE_IS( (brigand::apply<limits<T>::largest_integer,signed>)    , std::int64_t  );
-  STF_TYPE_IS( (brigand::apply<limits<T>::largest_integer,unsigned>)  , std::uint64_t  );
+  STF_TYPE_IS( (brigand::apply<typename limits<T>::smallest_integer,signed>)   , std::int32_t  );
+  STF_TYPE_IS( (brigand::apply<typename limits<T>::smallest_integer,unsigned>) , std::uint32_t  );
+  STF_TYPE_IS( (brigand::apply<typename limits<T>::largest_integer,signed>)    , std::int64_t  );
+  STF_TYPE_IS( (brigand::apply<typename limits<T>::largest_integer,unsigned>)  , std::uint64_t  );
 
 
   STF_EQUAL( limits<T>::bits, 512 );
@@ -85,10 +85,10 @@ STF_CASE_TPL ( "Check existence of limits for VMX-like extensions"
   STF_TYPE_IS( typename limits<T>::smallest_real, float);
   STF_TYPE_IS( typename limits<T>::largest_real , float);
 
-  STF_TYPE_IS( (brigand::apply<limits<T>::smallest_integer,signed>)   , std::int8_t  );
-  STF_TYPE_IS( (brigand::apply<limits<T>::smallest_integer,unsigned>) , std::uint8_t  );
-  STF_TYPE_IS( (brigand::apply<limits<T>::largest_integer,signed>)    , std::int32_t  );
-  STF_TYPE_IS( (brigand::apply<limits<T>::largest_integer,unsigned>)  , std::uint32_t  );
+  STF_TYPE_IS( (brigand::apply<typename limits<T>::smallest_integer,signed>)   , std::int8_t  );
+  STF_TYPE_IS( (brigand::apply<typename limits<T>::smallest_integer,unsigned>) , std::uint8_t  );
+  STF_TYPE_IS( (brigand::apply<typename limits<T>::largest_integer,signed>)    , std::int32_t  );
+  STF_TYPE_IS( (brigand::apply<typename limits<T>::largest_integer,unsigned>)  , std::uint32_t  );
 
   STF_EQUAL( limits<T>::bits, 128 );
   STF_EQUAL( limits<T>::bytes, 16 );
@@ -99,10 +99,10 @@ STF_CASE_TPL( "Check existence of limits for QPX extension", (qpx_) )
   STF_TYPE_IS( typename limits<T>::smallest_real, double);
   STF_TYPE_IS( typename limits<T>::largest_real , double);
 
-  STF_TYPE_IS( (brigand::apply<limits<T>::smallest_integer,signed>)   , brigand::no_such_type_  );
-  STF_TYPE_IS( (brigand::apply<limits<T>::smallest_integer,unsigned>) , brigand::no_such_type_  );
-  STF_TYPE_IS( (brigand::apply<limits<T>::largest_integer,signed>)    , brigand::no_such_type_  );
-  STF_TYPE_IS( (brigand::apply<limits<T>::largest_integer,unsigned>)  , brigand::no_such_type_  );
+  STF_TYPE_IS( (brigand::apply<typename limits<T>::smallest_integer,signed>)   , brigand::no_such_type_  );
+  STF_TYPE_IS( (brigand::apply<typename limits<T>::smallest_integer,unsigned>) , brigand::no_such_type_  );
+  STF_TYPE_IS( (brigand::apply<typename limits<T>::largest_integer,signed>)    , brigand::no_such_type_  );
+  STF_TYPE_IS( (brigand::apply<typename limits<T>::largest_integer,unsigned>)  , brigand::no_such_type_  );
 
   STF_EQUAL( limits<T>::bits, 256 );
   STF_EQUAL( limits<T>::bytes, 32 );
