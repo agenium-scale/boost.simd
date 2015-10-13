@@ -10,6 +10,10 @@
 
 import sys, argparse, os, errno
 
+"""
+The following lists are lists of valid extensions for a given architecture
+"""
+
 x86_exts = [
         'avx',
         'avx2',
@@ -101,6 +105,8 @@ def parse_opts(args):
 
     return opts
 
+"""
+"""
 def license():
     yield '//=================================================================================================='
     yield '/*!'
@@ -115,12 +121,13 @@ def license():
     yield '*/'
     yield '//=================================================================================================='
 
-def comment_if(cond, what):
-    return '{}{}'.format('//' if cond else '', what)
-
+"""
+"""
 def include(path):
     return '#include <{}>'.format(path)
 
+"""
+"""
 def guard(path, generator):
     path = path.split('.hpp')[0]
     pattern = '_'.join(s.upper() for s in path.split(os.path.sep))
@@ -133,6 +140,8 @@ def guard(path, generator):
     yield ''
     yield '#endif'
 
+"""
+"""
 def make_function(opts, hpp):
     t = '  '
     typenames = ', '.join('typename T{}'.format(n) for n in range(0, opts.nargs))
@@ -161,6 +170,8 @@ def make_function(opts, hpp):
     yield include('boost/simd/function/scalar/{}'.format(hpp))
     yield include('boost/simd/function/simd/{}'.format(hpp))
 
+"""
+"""
 def make_function_definition(opts):
     t = '  '
     yield include('boost/dispatch/function/make_callable.hpp')
@@ -188,6 +199,8 @@ def make_function_definition(opts):
     yield ''
     yield '} }'
 
+"""
+"""
 def make_arch_ext_function(opts, arch, ext):
     t = '  '
     typenames = ', '.join('typename T{}'.format(n) for n in range(0, opts.nargs))
@@ -216,7 +229,7 @@ def make_arch_ext_function(opts, arch, ext):
     yield '} }'
 
 """
-`mkdir -p`
+`mkdir -p` python style
 """
 def make_path(path):
     if path.endswith('hpp'):
@@ -253,6 +266,9 @@ def make_file(opts, path, generator, overwrite=False):
         say('ERROR: {}'.format(str(e)))
         say('Skipping \t"{}" (because of errors...)'.format(path))
 
+"""
+Generate file content for `boost/simd/function/<kind>/<name>.hpp`
+"""
 def make_aggregated_include(opts, hpp, exts):
     rootdir = os.path.join(opts.rootdir, 'include')
     yield include('boost/simd/function/definition/{}'.format(hpp))
@@ -263,6 +279,9 @@ def make_aggregated_include(opts, hpp, exts):
             say('Aggregate "{}"'.format(path))
             yield include(path)
 
+"""
+Generate file for `boost/simd/function/{scalar,simd}/<name>.hpp`
+"""
 def make_aggregated_includes(opts, hpp):
     # -- scalar
     say('# --')
@@ -282,6 +301,9 @@ def make_aggregated_includes(opts, hpp):
         exts.append(('power', ext))
     make_file(opts, 'boost/simd/function/simd/{}'.format(hpp), make_aggregated_include(opts, hpp, exts), overwrite=True)
 
+"""
+The entry point!
+"""
 def gen():
     opts = parse_opts(sys.argv[1:])
     hpp = opts.name + '.hpp'
