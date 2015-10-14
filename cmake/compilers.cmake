@@ -12,8 +12,18 @@
 if(NOT BOOST_DISPATCH_COMPILER_OPTIONS_INCLUDED)
   set(BOOST_DISPATCH_COMPILER_OPTIONS_INCLUDED 1)
 
+  if(CXX_STD)
+    string(REGEX MATCH "1(1|4|7)" MATCHED ${CXX_STD})
+    if(NOT MATCHED)
+      message(WARNING "CXX_STD did not match any valid C++ standard, falling back to c++11")
+      set(CXX_STD "11")
+    endif()
+  else()
+    set(CXX_STD "11")
+  endif()
+
   if(NOT ${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -Wshadow -Wextra")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++${CXX_STD} -Wall -Wshadow -Wextra")
   endif()
 
   if(${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
