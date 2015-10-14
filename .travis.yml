@@ -100,7 +100,7 @@ matrix:
       env: TOOLSET=g++-5 SIMD_EXT=-mavx
 
     - os: linux
-      compiler: gcc
+      compiler: clang
       addons:
         apt:
           sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-precise-3.5']
@@ -108,7 +108,7 @@ matrix:
       env: TOOLSET=clang++-3.5 SIMD_EXT=-msse2
 
     - os: linux
-      compiler: gcc
+      compiler: clang
       addons:
         apt:
           sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-precise-3.5']
@@ -116,7 +116,7 @@ matrix:
       env: TOOLSET=clang++-3.5 SIMD_EXT=-msse3
 
     - os: linux
-      compiler: gcc
+      compiler: clang
       addons:
         apt:
           sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-precise-3.5']
@@ -124,7 +124,7 @@ matrix:
       env: TOOLSET=clang++-3.5 SIMD_EXT=-msse4.2
 
     - os: linux
-      compiler: gcc
+      compiler: clang
       addons:
         apt:
           sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-precise-3.5']
@@ -132,7 +132,7 @@ matrix:
       env: TOOLSET=clang++-3.5 SIMD_EXT=-mavx
 
     - os: linux
-      compiler: gcc
+      compiler: clang
       addons:
         apt:
           sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-precise-3.6']
@@ -140,7 +140,7 @@ matrix:
       env: TOOLSET=clang++-3.6 SIMD_EXT=-msse2
 
     - os: linux
-      compiler: gcc
+      compiler: clang
       addons:
         apt:
           sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-precise-3.6']
@@ -148,7 +148,7 @@ matrix:
       env: TOOLSET=clang++-3.6 SIMD_EXT=-msse3
 
     - os: linux
-      compiler: gcc
+      compiler: clang
       addons:
         apt:
           sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-precise-3.6']
@@ -156,7 +156,7 @@ matrix:
       env: TOOLSET=clang++-3.6 SIMD_EXT=-msse4.2
 
     - os: linux
-      compiler: gcc
+      compiler: clang
       addons:
         apt:
           sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-precise-3.6']
