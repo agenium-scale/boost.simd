@@ -40,6 +40,9 @@ ppc_exts = [
         'vsx',
         ]
 
+# globals
+_license = None
+
 """
 Say something!
 """
@@ -68,6 +71,8 @@ def parse_opts(args):
             help='The root directory of boost.simd (default is: {0})'.format(default_rootdir))
     p.add_argument('--nargs', type=int, default=1, metavar='<number-of-arguments>',
             help='The number of argument that takes the function')
+    p.add_argument('--license-from-file', type=str, metavar='<path-to-license-header>',
+            help='Read the license header from a file (do not forget c++ comments!)')
     p.add_argument('name',
             help='The function name to generate')
 
@@ -107,17 +112,10 @@ def parse_opts(args):
 
 """
 """
-def license():
-    yield '//=================================================================================================='
-    yield '/*!'
-    yield '  @file TODO(doc-file)'
-    yield ''
-    yield '  @copyright 2012-2015 NumScale SAS'
-    yield ''
-    yield '  Distributed under the Boost Software License Version 1.0.'
-    yield '  (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)'
-    yield '*/'
-    yield '//=================================================================================================='
+def license(opts):
+    global _license
+    for line in _license:
+        yield line
 
 """
 """
@@ -255,7 +253,7 @@ def make_file(opts, path, generator, overwrite=False):
         make_path(real_dir)
     try:
         with open(real_path, 'w+') as outs:
-            generators = [license(), guard(path, generator)]
+            generators = [license(opts), guard(path, generator)]
             for generator in generators:
                 for line in generator:
                     outs.write(line + '\n')
@@ -300,6 +298,34 @@ def make_aggregated_includes(opts, hpp):
     make_file(opts, 'boost/simd/function/simd/{0}'.format(hpp), make_aggregated_include(opts, hpp, exts), overwrite=True)
 
 """
+Initialize the license header
+"""
+def init_license(opts):
+    global _license
+    if opts.license_from_file:
+        try:
+            with open(opts.license_from_file, 'r') as f:
+                _license = f.readlines()
+        except IOError as e:
+            say('Something went wrong with the license...')
+            say(str(e))
+            sys.exit(1)
+    else:
+        # The default license
+        _license = [
+            '//==================================================================================================',
+            '/*!',
+            '  @file TODO(doc-file)',
+            '',
+            '  @copyright 2012-2015 NumScale SAS',
+            '',
+            '  Distributed under the Boost Software License Version 1.0.',
+            '  (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)',
+            '*/',
+            '//==================================================================================================',
+            ]
+
+"""
 The entry point!
 """
 def gen():
@@ -316,6 +342,8 @@ def gen():
         exts.append(('arm', ext))
     for ext in opts.with_ppc:
         exts.append(('power', ext))
+    # --
+    init_license(opts)
     # --
     make_file(opts, 'boost/simd/function/{0}'.format(hpp), make_function(opts, hpp))
     make_file(opts, 'boost/simd/function/definition/{0}'.format(hpp), make_function_definition(opts))
