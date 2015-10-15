@@ -44,7 +44,7 @@ ppc_exts = [
 Say something!
 """
 def say(*args):
-    print(':: {}'.format(' '.join(str(a) for a in args)))
+    print(':: {0}'.format(' '.join(str(a) for a in args)))
 """
 Parse options. Here is the list of supported options:
     see `help`(s)
@@ -65,7 +65,7 @@ def parse_opts(args):
     p.add_argument('--ppc', dest='with_ppc', nargs='*', default=[], metavar='<ext>',
             help='Enable PowerPC SIMD skeleton generation')
     p.add_argument('--root', dest='rootdir', metavar='<root-directory>',
-            help='The root directory of boost.simd (default is: {})'.format(default_rootdir))
+            help='The root directory of boost.simd (default is: {0})'.format(default_rootdir))
     p.add_argument('--nargs', type=int, default=1, metavar='<number-of-arguments>',
             help='The number of argument that takes the function')
     p.add_argument('name',
@@ -80,26 +80,26 @@ def parse_opts(args):
             sys.exit(1)
         path = boost_root + '/libs/simd'
         if not os.path.exists(path):
-            say('"{}": no such directory'.format(path))
+            say('"{0}": no such directory'.format(path))
             sys.exit(1)
         opts.rootdir = path
-    say('Using "{}" as root directory'.format(opts.rootdir))
+    say('Using "{0}" as root directory'.format(opts.rootdir))
 
     for ext in opts.with_x86:
         if ext not in x86_exts:
-            say('"{}" is not a valid x86 extension, must be one of those:'.format(ext))
+            say('"{0}" is not a valid x86 extension, must be one of those:'.format(ext))
             say(str(x86_exts))
             sys.exit(1)
 
     for ext in opts.with_arm:
         if ext not in arm_exts:
-            say('"{}" is not a valid ARM extension, must be one of those:'.format(ext))
+            say('"{0}" is not a valid ARM extension, must be one of those:'.format(ext))
             say(str(arm_exts))
             sys.exit(1)
 
     for ext in opts.with_ppc:
         if ext not in ppc_exts:
-            say('"{}" is not a valid PowerPC extension, must be one of those:'.format(ext))
+            say('"{0}" is not a valid PowerPC extension, must be one of those:'.format(ext))
             say(str(ppc_exts))
             sys.exit(1)
 
@@ -122,7 +122,7 @@ def license():
 """
 """
 def include(path):
-    return '#include <{}>'.format(path)
+    return '#include <{0}>'.format(path)
 
 """
 """
@@ -130,8 +130,8 @@ def guard(path, generator):
     path = path.split('.hpp')[0]
     pattern = '_'.join(s.upper() for s in path.split(os.path.sep))
     pattern += '_HPP_INCLUDED'
-    yield '#ifndef {}'.format(pattern)
-    yield '#define {}'.format(pattern)
+    yield '#ifndef {0}'.format(pattern)
+    yield '#define {0}'.format(pattern)
     yield ''
     for line in generator:
         yield line
@@ -142,7 +142,7 @@ def guard(path, generator):
 """
 def make_function(opts, hpp):
     t = '  '
-    typenames = ', '.join('typename T{}'.format(n) for n in range(0, opts.nargs))
+    typenames = ', '.join('typename T{0}'.format(n) for n in range(0, opts.nargs))
     arguments = ', '.join('T{0} const& a{0}'.format(n) for n in range(0, opts.nargs))
     yield '#if defined(DOXYGEN_ONLY)'
     yield 'namespace boost { namespace simd'
@@ -151,8 +151,8 @@ def make_function(opts, hpp):
     yield t * 1 + '@ingroup TODO(doc-group)'
     yield t * 1 + ''
     yield t * 1 + '**/'
-    yield t * 1 + 'template <{}>'.format(typenames)
-    yield t * 1 + 'auto {}({}) {{}}'.format(opts.name, arguments)
+    yield t * 1 + 'template <{0}>'.format(typenames)
+    yield t * 1 + 'auto {0}({1}) {{}}'.format(opts.name, arguments)
     yield t * 1 + 'namespace functional'
     yield t * 1 + '{'
     yield t * 2 + '/*!'
@@ -164,9 +164,9 @@ def make_function(opts, hpp):
     yield '} }'
     yield '#endif'
     yield ''
-    yield include('boost/simd/function/definition/{}'.format(hpp))
-    yield include('boost/simd/function/scalar/{}'.format(hpp))
-    yield include('boost/simd/function/simd/{}'.format(hpp))
+    yield include('boost/simd/function/definition/{0}'.format(hpp))
+    yield include('boost/simd/function/scalar/{0}'.format(hpp))
+    yield include('boost/simd/function/simd/{0}'.format(hpp))
 
 """
 """
@@ -201,7 +201,7 @@ def make_function_definition(opts):
 """
 def make_arch_ext_function(opts, arch, ext):
     t = '  '
-    typenames = ', '.join('typename T{}'.format(n) for n in range(0, opts.nargs))
+    typenames = ', '.join('typename T{0}'.format(n) for n in range(0, opts.nargs))
     arguments = ', '.join('T{0} const& a{0}'.format(n) for n in range(0, opts.nargs))
     unspecifieds = ', '.join('bs::unspecified_<T{0}>'.format(n) for n in range(0, opts.nargs))
     yield include('boost/config.hpp')
@@ -211,14 +211,14 @@ def make_arch_ext_function(opts, arch, ext):
     yield '{'
     yield t * 1 + 'namespace bd = boost::dispatch;'
     yield ''
-    yield t * 1 + '// TODO({}-{}-function)'.format(arch, ext)
-    yield t * 1 + 'BOOST_DISPATCH_OVERLOAD ( {}_'.format(opts.name)
-    yield t * 1 + '                        , ({})'.format(typenames)
-    yield t * 1 + '                        , bd::{}_'.format(ext)
-    yield t * 1 + '                        , {}'.format(unspecifieds)
+    yield t * 1 + '// TODO({0}-{1}-function)'.format(arch, ext)
+    yield t * 1 + 'BOOST_DISPATCH_OVERLOAD ( {0}_'.format(opts.name)
+    yield t * 1 + '                        , ({0})'.format(typenames)
+    yield t * 1 + '                        , bd::{0}_'.format(ext)
+    yield t * 1 + '                        , {0}'.format(unspecifieds)
     yield t * 1 + '                        )'
     yield t * 1 + '{'
-    yield t * 1 + '  BOOST_FORCEINLINE auto operator()({}) const BOOST_NOEXCEPT'.format(arguments)
+    yield t * 1 + '  BOOST_FORCEINLINE auto operator()({0}) const BOOST_NOEXCEPT'.format(arguments)
     yield t * 1 + '  {'
     yield t * 1 + '  }'
     yield t * 1 + '};'
@@ -233,7 +233,7 @@ def make_path(path):
     if path.endswith('hpp'):
         path = os.path.dirname(path)
     try:
-        say('Creating directory "{}"'.format(path))
+        say('Creating directory "{0}"'.format(path))
         os.makedirs(path)
     except OSError as e:
         if e.errno == errno.EEXIST and os.path.isdir(path):
@@ -247,9 +247,9 @@ Generate the file!
 def make_file(opts, path, generator, overwrite=False):
     real_path = os.path.join(opts.rootdir, 'include', path)
     if not overwrite and os.path.exists(real_path):
-        say('Skipping \t"{}"'.format(path))
+        say('Skipping \t"{0}"'.format(path))
         return
-    say('Generating \t"{}"...'.format(path))
+    say('Generating \t"{0}"...'.format(path))
     real_dir = os.path.dirname(real_path)
     if not os.path.isdir(real_dir):
         make_path(real_dir)
@@ -259,22 +259,22 @@ def make_file(opts, path, generator, overwrite=False):
             for generator in generators:
                 for line in generator:
                     outs.write(line + '\n')
-        say('"{}" generated!'.format(path))
+        say('"{0}" generated!'.format(path))
     except IOError as e:
-        say('ERROR: {}'.format(str(e)))
-        say('Skipping \t"{}" (because of errors...)'.format(path))
+        say('ERROR: {0}'.format(str(e)))
+        say('Skipping \t"{0}" (because of errors...)'.format(path))
 
 """
 Generate file content for `boost/simd/function/<kind>/<name>.hpp`
 """
 def make_aggregated_include(opts, hpp, exts):
     rootdir = os.path.join(opts.rootdir, 'include')
-    yield include('boost/simd/function/definition/{}'.format(hpp))
+    yield include('boost/simd/function/definition/{0}'.format(hpp))
     for arch, ext in exts:
-        path = os.path.join('boost/simd/arch/{}/{}/function/{}'.format(arch, ext, hpp))
+        path = os.path.join('boost/simd/arch/{0}/{1}/function/{2}'.format(arch, ext, hpp))
         real_path = os.path.join(rootdir, path)
         if os.path.exists(real_path):
-            say('Aggregate "{}"'.format(path))
+            say('Aggregate "{0}"'.format(path))
             yield include(path)
 
 """
@@ -283,12 +283,12 @@ Generate file for `boost/simd/function/{scalar,simd}/<name>.hpp`
 def make_aggregated_includes(opts, hpp):
     # -- scalar
     say('# --')
-    say('Aggregating \t"boost/simd/function/scalar/{}"'.format(hpp))
+    say('Aggregating \t"boost/simd/function/scalar/{0}"'.format(hpp))
     exts = [('common', 'scalar')]
-    make_file(opts, 'boost/simd/function/scalar/{}'.format(hpp), make_aggregated_include(opts, hpp, exts), overwrite=True)
+    make_file(opts, 'boost/simd/function/scalar/{0}'.format(hpp), make_aggregated_include(opts, hpp, exts), overwrite=True)
     # -- simd
     say('# --')
-    say('Aggregating \t"boost/simd/function/simd/{}"'.format(hpp))
+    say('Aggregating \t"boost/simd/function/simd/{0}"'.format(hpp))
     exts = []
     exts.append(('common', 'simd'))
     for ext in x86_exts:
@@ -297,7 +297,7 @@ def make_aggregated_includes(opts, hpp):
         exts.append(('arm', ext))
     for ext in ppc_exts:
         exts.append(('power', ext))
-    make_file(opts, 'boost/simd/function/simd/{}'.format(hpp), make_aggregated_include(opts, hpp, exts), overwrite=True)
+    make_file(opts, 'boost/simd/function/simd/{0}'.format(hpp), make_aggregated_include(opts, hpp, exts), overwrite=True)
 
 """
 The entry point!
@@ -317,10 +317,10 @@ def gen():
     for ext in opts.with_ppc:
         exts.append(('power', ext))
     # --
-    make_file(opts, 'boost/simd/function/{}'.format(hpp), make_function(opts, hpp))
-    make_file(opts, 'boost/simd/function/definition/{}'.format(hpp), make_function_definition(opts))
+    make_file(opts, 'boost/simd/function/{0}'.format(hpp), make_function(opts, hpp))
+    make_file(opts, 'boost/simd/function/definition/{0}'.format(hpp), make_function_definition(opts))
     for arch, ext in exts:
-        make_file(opts, 'boost/simd/arch/{}/{}/function/{}'.format(arch, ext, hpp), make_arch_ext_function(opts, arch, ext))
+        make_file(opts, 'boost/simd/arch/{0}/{1}/function/{2}'.format(arch, ext, hpp), make_arch_ext_function(opts, arch, ext))
     make_aggregated_includes(opts, hpp)
 
 if __name__ == '__main__':
