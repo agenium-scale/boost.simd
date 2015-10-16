@@ -10,21 +10,27 @@
 #include <boost/simd/function/minus.hpp>
 #include <simd_test.hpp>
 #include <nontrivial.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/zero.hpp>
 
-STF_CASE_TPL( "Check minus behavior with floating", (double)(float) )
+STF_CASE_TPL( "Check minus behavior with floating", STF_IEEE_TYPES )
 {
   namespace bs = boost::simd;
   using bs::minus;
   using r_t = decltype(minus(T(), T()));
   STF_TYPE_IS(r_t, T);
 
-#ifndef BOOST_SIMD_NO_INVALIDS
-//   STF_IEEE_EQUAL(plus(bs::Inf<T>(),  bs::Inf<T>()), bs::Nan<r_t>());
-//   STF_IEEE_EQUAL(plus(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<r_t>());
-//   STF_IEEE_EQUAL(plus(bs::Nan<T>(),  bs::Nan<T>()), bs::Nan<r_t>());
+#ifndef STF_NO_INVALIDS
+  STF_IEEE_EQUAL(minus(bs::Inf<T>(),  bs::Inf<T>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(minus(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(minus(bs::Nan<T>(),  bs::Nan<T>()), bs::Nan<r_t>());
 #endif
-//   STF_IEEE_EQUAL(plus(bs::One<T>(),bs::Zero<T>()), bs::One<r_t>());
-//   STF_IEEE_EQUAL(plus(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
+  STF_IEEE_EQUAL(minus(bs::One<T>(),bs::Zero<T>()), bs::One<r_t>());
+  STF_IEEE_EQUAL(minus(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
 }
 
 namespace foo
@@ -36,7 +42,7 @@ namespace foo
   }
 }
 
-STF_CASE_TPL( "Check minus behavior with exotic type", (double)(float) )
+STF_CASE_TPL( "Check minus behavior with exotic type", STF_IEEE_TYPES )
 {
   namespace bs = boost::simd;
   using bs::minus;

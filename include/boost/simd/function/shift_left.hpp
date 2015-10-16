@@ -1,0 +1,44 @@
+//==================================================================================================
+/*!
+  @file
+
+  @copyright 2012-2015 NumScale SAS
+  @copyright 2015 J.T.Lapreste
+
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+*/
+//==================================================================================================
+#ifndef BOOST_SIMD_FUNCTION_SHIFT_LEFT_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_SHIFT_LEFT_HPP_INCLUDED
+
+#if defined(DOXYGEN_ONLY)
+namespace boost { namespace simd
+{
+  /*!
+  @ingroup group-arithmetic
+
+    Computes shift_left value of its parameter.
+
+  **/
+  template<typename T> auto shift_left(T const& x) {}
+
+  namespace functional
+  {
+    /*!
+      @ingroup group-arithmetic
+
+      Function object tied to simd::shift_left
+
+      @see simd::shift_left
+    **/
+    const boost::dispatch::functor<tag::shift_left_> shift_left = {};
+  }
+} }
+#endif
+
+#include <boost/simd/function/definition/shift_left.hpp>
+#include <boost/simd/arch/common/scalar/function/shift_left.hpp>
+//#include <boost/simd/arch/common/function/simd/shift_left.hpp>
+
+#endif

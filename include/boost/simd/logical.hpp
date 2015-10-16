@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_LOGICAL_HPP_INCLUDED
 #define BOOST_SIMD_LOGICAL_HPP_INCLUDED
 
+
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
 #include <iostream>

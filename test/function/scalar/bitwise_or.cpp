@@ -10,46 +10,76 @@
 #include <boost/simd/function/bitwise_or.hpp>
 #include <simd_test.hpp>
 #include <nontrivial.hpp>
+#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/two.hpp>
+#include <boost/simd/constant/three.hpp>
 
 
-STF_CASE_TPL( "Check bitwise_or behavior with floating", (float) )
+
+STF_CASE_TPL( "Check bitwise_or behavior with floating", STF_IEEE_TYPES )
 {
   namespace bs = boost::simd;
   using bs::bitwise_or;
   using r_t = decltype(bitwise_or(T(), T()));
   STF_TYPE_IS(r_t, T);
 
-  auto a = bitwise_or(4.f, 4.f);
-  std::cout << a << std::endl;
-//  auto b = bitwise_or(4.F, 'a');
-// #ifndef BOOST_SIMD_NO_INVALIDS
-//   STF_IEEE_EQUAL(divides(bs::Inf<T>(),  bs::Inf<T>()), bs::Nan<r_t>());
-//   STF_IEEE_EQUAL(divides(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<r_t>());
-//   STF_IEEE_EQUAL(divides(bs::Nan<T>(),  bs::Nan<T>()), bs::Nan<r_t>());
-// #endif
-//   STF_IEEE_EQUAL(bitwise_or(boost::simd::Mone<T>()), boost::simd::One<T>());
-//   STF_IEEE_EQUAL(bitwise_or(boost::simd::One<T>()), boost::simd::One<T>());
-//   STF_IEEE_EQUAL(bitwise_or(boost::simd::Valmax<T>()), boost::simd::Valmax<T>());
-//   STF_IEEE_EQUAL(bitwise_or(boost::simd::Valmin<T>()), boost::simd::Valmax<T>());
-//   STF_IEEE_EQUAL(bitwise_or(boost::simd::Zero<T>()), boost::simd::Zero<T>());
+#ifndef STF_NO_INVALIDS
+  STF_EQUAL(bitwise_or(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>());
+  STF_EQUAL(bitwise_or(bs::Minf<T>(), bs::Minf<T>()), bs::Minf<r_t>());
+  STF_IEEE_EQUAL(bitwise_or(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>());
+#endif
+  STF_EQUAL(bitwise_or(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
 }
 
-// namespace foo
-// {
-//   template <class T>
-//   nontrivial<T> bitwise_or(const nontrivial<T> & z1)
-//   {
-//     return perform(z1);
-//   }
-// }
+STF_CASE_TPL("bitwise_or_ui", STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+{
+  namespace bs = boost::simd;
+  using bs::bitwise_or;
+  using r_t = decltype(bitwise_or(T(), T()));
+  STF_TYPE_IS(r_t, T);
 
-// STF_CASE_TPL( "Check bitwise_or behavior with exotic type", (double)(float) )
-// {#include <boost/dispatch/meta/as_integer.hpp>
-//   namespace bs = boost::simd;
-//   using foo::nontrivial;
-//   using r_t = decltype(bs::bitwise_or(nontrivial<T>()));
-//   STF_TYPE_IS(r_t, nontrivial<T>);
-//   std::cout << stf::type_id<boost::dispatch::hierarchy_of_t<nontrivial<T>>>()<< std::endl;
-//   STF_EQUAL(bs::bitwise_or(nontrivial<T>(1, 2)), nontrivial<T>(2, 6));
-// }
+  STF_TYPE_IS(r_t, T);
+  // specific values tests
+  STF_EQUAL(bitwise_or(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
+}
 
+STF_CASE_TPL("bitwise_or_si", STF_SIGNED_ALL_INTEGRAL_TYPES)
+{
+  namespace bs = boost::simd;
+  using bs::bitwise_or;
+  using r_t = decltype(bitwise_or(T(), T()));
+  STF_TYPE_IS(r_t, T);
+
+
+  // specific values tests
+  STF_EQUAL(bitwise_or(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
+  STF_EQUAL(bitwise_or(bs::One <T>(), bs::Two <T>()), bs::Three<r_t>());
+}
+
+STF_CASE_TPL("bitwise_or_mix", STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  using bs::bitwise_or;
+  using r_t = decltype(bitwise_or(T(), T()));
+  STF_TYPE_IS(r_t, T);
+  typedef typename  boost::dispatch::as_integer<T>::type siT;
+  typedef typename  boost::dispatch::as_integer<T, unsigned>::type uiT;
+
+  // return type conformity test
+  STF_EXPR_IS(bitwise_or(T(),uiT()) , T);
+  STF_EXPR_IS(bitwise_or(T(),siT()) , T);
+  STF_EXPR_IS(bitwise_or(uiT(), T()), uiT);
+  STF_EXPR_IS(bitwise_or(siT(), T()), siT);
+
+  // specific values tests
+  STF_EQUAL(bitwise_or(bs::Zero<T>(),bs::Zero<uiT>()), bs::Zero<T>());
+  STF_EQUAL(bitwise_or(bs::Zero<T>(), bs::Zero<siT>()), bs::Zero<T>());
+  STF_EQUAL(bitwise_or(bs::Valmin<siT>(),bs::Nan<T>()), bs::Mone<siT>());
+  STF_EQUAL(bitwise_or(bs::Zero<uiT>(), bs::Nan<T>()), bs::Valmax<uiT>());
+}

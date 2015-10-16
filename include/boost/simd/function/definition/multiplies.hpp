@@ -22,17 +22,14 @@ namespace boost { namespace simd
   {
     BOOST_DISPATCH_MAKE_TAG(ext, multiplies_, boost::dispatch::elementwise_<multiplies_>);
   }
-
   namespace ext
   {
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag, multiplies_);
   }
-
   namespace functional
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::multiplies_,multiplies);
   }
-
   BOOST_DISPATCH_FUNCTION_DEFINITION(tag::multiplies_,multiplies);
 } }
 

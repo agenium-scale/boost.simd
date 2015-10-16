@@ -13,46 +13,20 @@
 #include <boost/dispatch/as.hpp>
 
 
-STF_CASE_TPL( "Check bitwise_cast behavior with floating", (float) )
+STF_CASE( "Check bitwise_cast behavior" )
 {
   namespace bs = boost::simd;
   using bs::bitwise_cast;
-  using rf_t = decltype(bitwise_cast<T>(T()));
-  using rc_t = decltype(bitwise_cast(T(), boost::dispatch::as_<T>()));
-  STF_TYPE_IS(rf_t, T);
-  STF_TYPE_IS(rc_t, T);
-
-  auto a = bitwise_cast(4.F, boost::dispatch::as_<T>());
-  std::cout << a << std::endl;
-//  auto b = bitwise_cast('a', boost::dispatch::as_<T>());
-// #ifndef BOOST_SIMD_NO_INVALIDS
-//   STF_IEEE_EQUAL(divides(bs::Inf<T>(),  bs::Inf<T>()), bs::Nan<r_t>());
-//   STF_IEEE_EQUAL(divides(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<r_t>());
-//   STF_IEEE_EQUAL(divides(bs::Nan<T>(),  bs::Nan<T>()), bs::Nan<r_t>());
-// #endif
-//   STF_IEEE_EQUAL(bitwise_cast(boost::simd::Mone<T>()), boost::simd::One<T>());
-//   STF_IEEE_EQUAL(bitwise_cast(boost::simd::One<T>()), boost::simd::One<T>());
-//   STF_IEEE_EQUAL(bitwise_cast(boost::simd::Valmax<T>()), boost::simd::Valmax<T>());
-//   STF_IEEE_EQUAL(bitwise_cast(boost::simd::Valmin<T>()), boost::simd::Valmax<T>());
-//   STF_IEEE_EQUAL(bitwise_cast(boost::simd::Zero<T>()), boost::simd::Zero<T>());
+  STF_EXPR_IS(bitwise_cast<int32_t>(float()), int32_t);
+  STF_EXPR_IS(bitwise_cast<int64_t>(double()), int64_t);
+  STF_EXPR_IS(bitwise_cast<double>(int64_t()), double);
+  STF_EXPR_IS(bitwise_cast<float>(int32_t()), float);
 }
 
-// namespace foo
-// {
-//   template <class T>
-//   nontrivial<T> bitwise_cast(const nontrivial<T> & z1)
-//   {
-//     return perform(z1);
-//   }
-// }
-
-// STF_CASE_TPL( "Check bitwise_cast behavior with exotic type", (double)(float) )
-// {#include <boost/dispatch/meta/as_integer.hpp>
-//   namespace bs = boost::simd;
-//   using foo::nontrivial;
-//   using r_t = decltype(bs::bitwise_cast(nontrivial<T>()));
-//   STF_TYPE_IS(r_t, nontrivial<T>);
-//   std::cout << stf::type_id<boost::dispatch::hierarchy_of_t<nontrivial<T>>>()<< std::endl;
-//   STF_EQUAL(bs::bitwise_cast(nontrivial<T>(1, 2)), nontrivial<T>(2, 6));
-// }
-
+STF_CASE( "Check bitwise_cast behavior with float" )
+{
+  namespace bs = boost::simd;
+  using bs::bitwise_cast;
+  STF_EQUAL(bs::bitwise_cast<uint32_t>( 1.f ), 0x3F800000UL);
+  STF_EQUAL(bs::bitwise_cast<float>(0x3F800000), 1.f );
+}

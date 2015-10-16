@@ -1369,4 +1369,10 @@ namespace stf
   }
 }
 
+// #define STF_INTEGRAL_SIGNED_TYPES (int8_t)(int16_t)(int32_t)(int64_t)
+// #define STF_UNSIGNED_TYPES (uint8_t)(uint16_t)(uint32_t)(uint64_t)
+// #define STF_INTEGRAL_TYPES (int8_t)(int16_t)(int32_t)(int64_t)(uint8_t)(uint16_t)(uint32_t)(uint64_t)
+// #define STF_REAL_TYPES (float)(double)
+// #define STF_TYPES STF_INTEGRAL_TYPES STF_REAL_TYPES
+
 #endif

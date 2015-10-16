@@ -25,7 +25,7 @@ namespace boost { namespace simd
     For any value @c x of type @c T,
 
     @code
-    T x = abs(x);
+    T r = abs(x);
     @endcode
 
     is equivalent to:
@@ -42,7 +42,7 @@ namespace boost { namespace simd
     saturated functor or convert the input parameter to a larger type
     before taking the absolute value.
 
-    @see  abss, sqr_abs, sqrs, functional::abs
+    @see  boost::simd::abss, boost::simd::sqr_abs, boost::simd::sqrs
 
     @param x value whose absolute value will be returned
 
@@ -65,7 +65,7 @@ namespace boost { namespace simd
 #endif
 
 #include <boost/simd/function/definition/abs.hpp>
-#include <boost/simd/arch/common/function/scalar/abs.hpp>
+#include <boost/simd/arch/common/scalar/function/abs.hpp>
 //#include <boost/simd/arch/common/function/simd/abs.hpp>
 
 #endif
