@@ -1,0 +1,87 @@
+//==================================================================================================
+/*!
+
+  Copyright 2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
+  Copyright 2015 NumScale SAS
+
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+*/
+//==================================================================================================
+#include <boost/simd/function/is_equal_with_equal_nans.hpp>
+#include <stf.hpp>
+#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/logical.hpp>
+// TODO LOGICAL
+
+STF_CASE_TPL (" is_equal_with_equal_nans integer",  STF_INTEGRAL_TYPES)
+{
+  namespace bs = boost::simd;
+  using bs::is_equal_with_equal_nans;
+  using r_t = decltype(is_equal_with_equal_nans(T(), T()));
+
+   // return type conformity test
+  STF_TYPE_IS(r_t,bs::logical<T>);
+
+  // specific values tests
+  STF_EQUAL(is_equal_with_equal_nans(bs::One<T>(), bs::One<T>()), r_t(true));
+  STF_EQUAL(is_equal_with_equal_nans(bs::One<T>(),bs::Zero<T>()), r_t(false));
+  STF_EQUAL(is_equal_with_equal_nans(bs::Zero<T>(), bs::Zero<T>()), r_t(true));
+} // end of test for integer_
+
+STF_CASE_TPL (" is_equal_with_equal_nans real",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  using bs::is_equal_with_equal_nans;
+  using r_t = decltype(is_equal_with_equal_nans(T(), T()));
+
+   // return type conformity test
+  STF_TYPE_IS(r_t,bs::logical<T>);
+
+  // specific values tests
+  STF_EQUAL(is_equal_with_equal_nans(bs::Inf<T>(), bs::Inf<T>()), r_t(true));
+  STF_EQUAL(is_equal_with_equal_nans(bs::Minf<T>(), bs::Minf<T>()), r_t(true));
+  STF_EQUAL(is_equal_with_equal_nans(bs::Nan<T>(), bs::Nan<T>()), r_t(true));
+  STF_EQUAL(is_equal_with_equal_nans(bs::One<T>(),bs::Zero<T>()), r_t(false));
+  STF_EQUAL(is_equal_with_equal_nans(bs::Zero<T>(), bs::Zero<T>()), r_t(true));
+} // end of test for floating_
+
+// STF_CASE_TPL (" is_equal_with_equal_nans logical",  STF_SIMD_TYPES)
+// {
+//   namespace bs = boost::simd;
+
+//   using bs::is_equal_with_equal_nans;
+//   using r_t = decltype(is_equal_with_equal_nans(T(), T()));
+//   typedef bs::logical<T> wished_r_t;
+
+//   // return type conformity test
+//   STF_TYPE_IS(r_t, wished_r_t);
+
+//   STF_EQUAL(is_equal_with_equal_nans(bs::True< bs::logical<T> >(), bs::True< bs::logical<T> >()), r_t(true));
+//   STF_EQUAL(is_equal_with_equal_nans(bs::False< bs::logical<T> >(), bs::False< bs::logical<T> >()), r_t(true));
+//   STF_EQUAL(is_equal_with_equal_nans(bs::True< bs::logical<T> >(), bs::False< bs::logical<T> >()), r_t(false));
+//   STF_EQUAL(is_equal_with_equal_nans(bs::False< bs::logical<T> >(), bs::True< bs::logical<T> >()), r_t(false));
+// }
+
+STF_CASE ( "is_equal_with_equal_nans bool")
+{
+  namespace bs = boost::simd;
+  using bs::is_equal_with_equal_nans;
+
+  // return type conformity test
+  STF_EXPR_IS(is_equal_with_equal_nans(bool(), bool()), bool);
+
+  // specific values tests
+  STF_EQUAL(is_equal_with_equal_nans(true, false), false);
+  STF_EQUAL(is_equal_with_equal_nans(false, true), false);
+  STF_EQUAL(is_equal_with_equal_nans(true, true), true);
+  STF_EQUAL(is_equal_with_equal_nans(false, false), true);
+}
+
+

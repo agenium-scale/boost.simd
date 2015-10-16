@@ -14,7 +14,7 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_MULTIPLIES_INCLUDED
 
 #include <boost/simd/function/definition/multiplies.hpp>
-#include <boost/simd/arch/common/function/scalar/multiplies.hpp>
+#include <boost/simd/arch/common/scalar/function/multiplies.hpp>
 //#include <boost/simd/arch/common/function/simd/multiplies.hpp>
 
 #endif

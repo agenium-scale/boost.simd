@@ -53,7 +53,7 @@ namespace boost { namespace simd
 #endif
 
 #include <boost/simd/function/definition/minus.hpp>
-#include <boost/simd/arch/common/function/scalar/minus.hpp>
+#include <boost/simd/arch/common/scalar/function/minus.hpp>
 //#include <boost/simd/arch/common/function/simd/minus.hpp>
 
 #endif

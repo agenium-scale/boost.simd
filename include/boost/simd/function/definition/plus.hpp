@@ -23,17 +23,14 @@ namespace boost { namespace simd
   {
     BOOST_DISPATCH_MAKE_TAG(ext, plus_, boost::dispatch::elementwise_<plus_>);
   }
-
   namespace ext
   {
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag, plus_);
   }
-
   namespace functional
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::plus_,plus);
   }
-
   BOOST_DISPATCH_FUNCTION_DEFINITION(tag::plus_,plus);
 } }
 

@@ -18,11 +18,20 @@
 
 namespace boost { namespace simd
 {
+#if defined(DOXYGEN_ONLY)
+  /*!
+  @ingroup group-arithmetic
+
+    Computes the absolute value of its parameter.
+
+    This is an alias of function abs
+  **/
+  template<typename T> auto modulus(T const& x);
+#endif
   namespace functional
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::abs_,modulus);
   }
-
   BOOST_DISPATCH_FUNCTION_DEFINITION(tag::abs_,modulus);
 } }
 

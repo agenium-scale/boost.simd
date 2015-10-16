@@ -14,7 +14,8 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_DIVIDES_INCLUDED
 
 #include <boost/simd/function/definition/divides.hpp>
-#include <boost/simd/arch/common/function/scalar/divides.hpp>
+#include <boost/simd/arch/common/scalar/function/divides.hpp>
+#include <boost/simd/arch/common/generic/function/divides.hpp>
 //#include <boost/simd/arch/common/function/simd/divides.hpp>
 
 #endif
