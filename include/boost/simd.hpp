@@ -18,47 +18,52 @@
 #include <boost/simd/math.hpp>
 #include <boost/simd/config.hpp>
 
-namespace boost { namespace simd
+/// Main Boost namespace
+namespace boost
 {
-  /*!
-    @defgroup group-api User API
-    Public user API provided by the library
-  **/
-
-  /*!
-    @defgroup group-config Configuration
-    Configuration options for the library
-  **/
-
-  /*!
-    @defgroup group-hierarchy Hierarchies
-    Type hierarchies defined by the library
-  **/
-
-  namespace concept
+  /// Main Boost.SIMD namespace
+  namespace simd
   {
     /*!
-      @defgroup group-concept Concepts
-      Concepts defined by the library
+      @defgroup group-api User API
+      Public user API provided by the library
     **/
-  }
 
-  namespace ext
-  {
     /*!
-      @defgroup group-ext Library extension points
-      USer specilizable elements of the library
+      @defgroup group-config Configuration
+      Configuration options for the library
     **/
-  }
 
-  namespace detail
-  {
     /*!
-      @defgroup group-detail Implementation details
-      Implementation details
+      @defgroup group-hierarchy Hierarchies
+      Type hierarchies defined by the library
     **/
-  }
 
-} }
+    namespace concept
+    {
+      /*!
+        @defgroup group-concept Concepts
+        Concepts defined by the library
+      **/
+    }
+
+    namespace ext
+    {
+      /*!
+        @defgroup group-ext Library extension points
+        USer specilizable elements of the library
+      **/
+    }
+
+    namespace detail
+    {
+      /*!
+        @defgroup group-detail Implementation details
+        Implementation details
+      **/
+    }
+
+  }
+}
 
 #endif
