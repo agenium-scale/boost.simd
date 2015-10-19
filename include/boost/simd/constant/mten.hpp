@@ -37,6 +37,6 @@ namespace boost { namespace simd
 #endif
 
 #include <boost/simd/constant/definition/mten.hpp>
-#include <boost/simd/arch/common/constant/scalar/constant_value.hpp>
+#include <boost/simd/arch/common/scalar/constant/constant_value.hpp>
 
 #endif
