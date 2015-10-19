@@ -12,6 +12,7 @@ ENABLED_SECTIONS        =
 ALIASES =
 ALIASES += anchor{1}="<a name=\"\1\"></a>[[\1](#back\1)]:"
 ALIASES += refanchor{1}="<a name=\"back\1\"></a>[<sup>\1</sup>](#\1)"
+ALIASES += intconst="<a href=\"http://www.boost.org/doc/libs/release/libs/mpl/doc/refmanual/integral-constant.html\">Integral Constant</a>"
 
 # Resources
 OUTPUT_DIRECTORY        =
