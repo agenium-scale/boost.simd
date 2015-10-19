@@ -10,6 +10,7 @@ add_definitions(-DBOOST_ENABLE_ASSERT_HANDLER)
 
 set ( SOURCES
       cardinal_of.cpp
+      logical.cpp
     )
 
 make_unit( "boost.simd.api" ${SOURCES})
