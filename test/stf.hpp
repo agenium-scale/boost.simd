@@ -325,22 +325,39 @@ namespace                                                                       
 template<typename T> void STF_FUNCTION( stf::unit::env& $ )                                         \
 
 
+#include <cstddef>
+#include <cstdint>
+
+#include <cstddef>
+#include <cstdint>
+
+#define STF_SIGNED_BASIC_INTEGRAL_TYPES     (std::ptrdiff_t)(std::intptr_t)(std::intmax_t)
+#define STF_UNSIGNED_BASIC_INTEGRAL_TYPES   (std::size_t)(std::uintptr_t)(std::uintmax_t)
+#define STF_BASIC_TYPES                     STF_SIGNED_BASIC_INTEGRAL_TYPES STF_UNSIGNED_BASIC_INTEGRAL_TYPES
+
+#define STF_SIGNED_FIXED_INTEGRAL_TYPES    (std::int8_t)(std::int16_t)(std::int32_t)(std::int64_t)
+#define STF_UNSIGNED_FIXED_INTEGRAL_TYPES  (std::uint8_t)(std::uint16_t)(std::uint32_t)(std::uint64_t)
+#define STF_FIXED_INTEGRAL_TYPES           STF_SIGNED_FIXED_INTEGRAL_TYPES STF_UNSIGNED_FIXED_INTEGRAL_TYPES
+
+#define STF_SIGNED_STD_INTEGRAL_TYPES    STF_SIGNED_BASIC_INTEGRAL_TYPES STF_SIGNED_FIXED_INTEGRAL_TYPES
+#define STF_UNSIGNED_STD_INTEGRAL_TYPES  STF_UNSIGNED_BASIC_INTEGRAL_TYPES STF_UNSIGNED_FIXED_INTEGRAL_TYPES
+#define STF_STD_INTEGRAL_TYPES           STF_SIGNED_STD_INTEGRAL_TYPES STF_UNSIGNED_STD_INTEGRAL_TYPES
+
+#define STF_SIGNED_INTEGRAL_TYPES   (signed char)(signed short)(signed int)(signed long)(signed long long)
+#define STF_UNSIGNED_INTEGRAL_TYPES (unsigned char)(unsigned short)(unsigned int)(unsigned long)(unsigned long long)
+#define STF_INTEGRAL_TYPES          (char) STF_SIGNED_INTEGRAL_TYPES STF_UNSIGNED_INTEGRAL_TYPES
+
+#define STF_SIGNED_ALL_INTEGRAL_TYPES   STF_SIGNED_STD_INTEGRAL_TYPES STF_SIGNED_INTEGRAL_TYPES
+#define STF_UNSIGNED_ALL_INTEGRAL_TYPES STF_UNSIGNED_STD_INTEGRAL_TYPES STF_UNSIGNED_INTEGRAL_TYPES
+#define STF_ALL_INTEGRAL_TYPES          STF_SIGNED_ALL_INTEGRAL_TYPES STF_UNSIGNED_ALL_INTEGRAL_TYPES
+
 #define STF_IEEE_TYPES (float)(double)
 
-#define STF_SIZED_SIGNED_TYPES    (std::int8_t)(std::int16_t)(std::int32_t)(std::int64_t)
-#define STF_SIZED_UNSIGNED_TYPES  (std::uint8_t)(std::uint16_t)(std::uint32_t)(std::uint64_t)
-#define STF_SIZED_TYPES           STF_SIZED_SIGNED_TYPES STF_SIZED_UNSIGNED_TYPES
+#define STF_SIGNED_NUMERIC_TYPES    STF_SIGNED_ALL_INTEGRAL_TYPES STF_IEEE_TYPES
+#define STF_UNSIGNED_NUMERIC_TYPES  STF_UNSIGNED_ALL_INTEGRAL_TYPES
+#define STF_NUMERIC_TYPES           STF_SIGNED_NUMERIC_TYPES STF_UNSIGNED_NUMERIC_TYPES
 
-#define STF_NATIVE_SIGNED_TYPES   (char)(short)(int)(long)(long long)
-#define STF_NATIVE_UNSIGNED_TYPES (unsigned char)(unsigned short)(unsigned int)(unsigned long)(unsigned long long)
-#define STF_NATIVE_TYPES          STF_NATIVE_SIGNED_TYPES STF_NATIVE_UNSIGNED_TYPES
-
-#define STF_STANDARD_TYPES (std::size_t)(std::ptrdiff_t)(std::intptr_t)(std::uintptr_t)
-
-#define STF_NUMERIC_TYPES STF_SIZED_TYPES STF_NATIVE_TYPES STF_STANDARD_TYPES STF_IEEE_TYPES
-#define STF_ALL_TYPES (bool)STF_NUMERIC_TYPES
-
-
+#define STF_ALL_TYPES     (bool) STF_NUMERIC_TYPES
 
 namespace stf
 {
