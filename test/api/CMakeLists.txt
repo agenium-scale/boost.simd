@@ -7,8 +7,11 @@
 ##                            http://www.boost.org/LICENSE_1_0.txt
 ##===================================================================================================
 
-include(make_unit)
-include(make_coverage)
+add_definitions(-DBOOST_ENABLE_ASSERT_HANDLER)
 
-add_subdirectory(api)
-add_subdirectory(architecture)
+set ( SOURCES
+      cardinal_of.cpp
+    )
+
+make_unit( "boost.simd.api" ${SOURCES})
+make_coverage("boost.simd.api" ${SOURCES})
