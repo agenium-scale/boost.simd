@@ -82,7 +82,7 @@ namespace boost { namespace simd
     is equivalent to:
 
     @code
-    auto r = cardinal_of<T>{};
+    auto r = cardinal_of<T>::type{};
     @endcode
 
     @param v Value which register size is to be computed
@@ -90,7 +90,7 @@ namespace boost { namespace simd
 
     @see boost::simd::cardinal_of
   **/
-  template<typename T> BOOST_FORCEINLINE cardinal_of<T> cardinal(T&& v) BOOST_NOEXCEPT
+  template<typename T> BOOST_FORCEINLINE cardinal_of_t<T> cardinal(T&& v) BOOST_NOEXCEPT
   {
     boost::ignore_unused(v);
     return {};
