@@ -63,6 +63,6 @@ namespace boost { namespace simd
 #endif
 
 #include <boost/simd/constant/definition/mzero.hpp>
-#include <boost/simd/arch/common/constant/scalar/constant_value.hpp>
+#include <boost/simd/arch/common/scalar/constant/constant_value.hpp>
 
 #endif
