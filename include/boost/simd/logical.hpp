@@ -14,7 +14,7 @@
 
 #include <boost/dispatch/meta/generation/as_integer.hpp>
 #include <boost/config.hpp>
-#include <iosfwd>
+#include <iostream>
 
 namespace boost { namespace simd
 {
