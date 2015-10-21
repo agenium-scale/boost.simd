@@ -343,8 +343,8 @@ template<typename T> void STF_FUNCTION( stf::unit::env& $ )                     
 #define STF_UNSIGNED_STD_INTEGRAL_TYPES  STF_UNSIGNED_BASIC_INTEGRAL_TYPES STF_UNSIGNED_FIXED_INTEGRAL_TYPES
 #define STF_STD_INTEGRAL_TYPES           STF_SIGNED_STD_INTEGRAL_TYPES STF_UNSIGNED_STD_INTEGRAL_TYPES
 
-#define STF_SIGNED_INTEGRAL_TYPES   (signed char)(signed short)(signed int)(signed long)(signed long long)
-#define STF_UNSIGNED_INTEGRAL_TYPES (unsigned char)(unsigned short)(unsigned int)(unsigned long)(unsigned long long)
+#define STF_SIGNED_INTEGRAL_TYPES   (signed char)(signed short)(signed int)(signed long)
+#define STF_UNSIGNED_INTEGRAL_TYPES (unsigned char)(unsigned short)(unsigned int)(unsigned long)
 #define STF_INTEGRAL_TYPES          (char) STF_SIGNED_INTEGRAL_TYPES STF_UNSIGNED_INTEGRAL_TYPES
 
 #define STF_SIGNED_ALL_INTEGRAL_TYPES   STF_SIGNED_STD_INTEGRAL_TYPES STF_SIGNED_INTEGRAL_TYPES
