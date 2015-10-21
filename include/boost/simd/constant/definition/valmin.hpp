@@ -14,7 +14,7 @@
 
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/dispatch.hpp>
-#include <boost/dispatch/meta/generation/as_integer.hpp>
+#include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/dispatch/function/make_callable.hpp>
 #include <boost/dispatch/hierarchy/functions.hpp>
 #include <boost/dispatch/as.hpp>

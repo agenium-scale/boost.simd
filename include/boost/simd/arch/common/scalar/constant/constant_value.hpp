@@ -17,6 +17,12 @@
 #include <boost/config.hpp>
 #include <type_traits>
 
+#ifdef BOOST_MSVC
+#pragma warning(push)
+#pragma warning(disable: 4310) // Truncation
+#pragma warning(disable: 4309) // Truncation
+#endif
+
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
@@ -35,5 +41,9 @@ namespace boost { namespace simd { namespace ext
     }
   };
 } } }
+
+#ifdef BOOST_MSVC
+#pragma warning(pop)
+#endif
 
 #endif

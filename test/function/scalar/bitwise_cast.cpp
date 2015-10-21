@@ -48,7 +48,7 @@ STF_CASE_TPL( "Check bitwise_cast behavior with floating", (float) )
 // }
 
 // STF_CASE_TPL( "Check bitwise_cast behavior with exotic type", (double)(float) )
-// {#include <boost/dispatch/meta/generation/as_integer.hpp>
+// {#include <boost/dispatch/meta/as_integer.hpp>
 //   namespace bs = boost::simd;
 //   using foo::nontrivial;
 //   using r_t = decltype(bs::bitwise_cast(nontrivial<T>()));

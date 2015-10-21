@@ -11,7 +11,7 @@
 #include <boost/simd/constant/maxleftshift.hpp>
 #include <boost/simd/as.hpp>
 #include <stf.hpp>
-#include <boost/dispatch/meta/generation/as_integer.hpp>
+#include <boost/dispatch/meta/as_integer.hpp>
 
 STF_CASE_TPL( "Check maxleftshift behavior for integral types"
             , (std::uint8_t)(std::uint16_t)(std::uint32_t)(std::uint64_t)

@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/constant/nbdigits.hpp>
-#include <boost/dispatch/meta/generation/as_integer.hpp>
+#include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/as.hpp>
 #include <limits>
 #include <stf.hpp>
