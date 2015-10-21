@@ -8,7 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/constant/ldexpmask.hpp>
-#include <boost/dispatch/meta/generation/as_integer.hpp>
+#include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/as.hpp>
 #include <stf.hpp>
 

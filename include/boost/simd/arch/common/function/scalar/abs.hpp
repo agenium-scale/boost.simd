@@ -13,7 +13,7 @@
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_ABS_HPP_INCLUDED
 
 #include <boost/config.hpp>
-#include <boost/dispatch/meta/generation/as_unsigned.hpp>
+#include <boost/dispatch/meta/as_unsigned.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/simd/math.hpp>
 

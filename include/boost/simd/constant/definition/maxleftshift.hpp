@@ -16,7 +16,7 @@
 #include <boost/simd/detail/constant_traits.hpp>
 #include <boost/dispatch/function/make_callable.hpp>
 #include <boost/dispatch/hierarchy/functions.hpp>
-#include <boost/dispatch/meta/generation/as_integer.hpp>
+#include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/dispatch/as.hpp>
 //TODO
 namespace boost { namespace simd

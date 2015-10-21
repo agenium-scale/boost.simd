@@ -12,10 +12,17 @@
 #ifndef BOOST_SIMD_CONSTANT_TRAITS_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_TRAITS_HPP_INCLUDED
 
-#include <boost/dispatch/meta/introspection/scalar_of.hpp>
+#include <boost/dispatch/meta/scalar_of.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/property_of.hpp>
 #include <boost/dispatch/hierarchy.hpp>
+#include <boost/config.hpp>
+
+#ifdef BOOST_MSVC
+#pragma warning(push)
+#pragma warning(disable: 4310) // Truncation
+#pragma warning(disable: 4309) // Truncation
+#endif
 
 /*!
 
@@ -42,5 +49,9 @@ namespace boost { namespace simd { namespace detail
     using type = decltype( base::value(key()) );
   };
 } } }
+
+#ifdef BOOST_MSVC
+#pragma warning(pop)
+#endif
 
 #endif
