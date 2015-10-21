@@ -16,7 +16,7 @@
 #define BOOST_SIMD_ARCH_X86_MIC_AS_SIMD_HPP_INCLUDED
 
 #include <boost/simd/arch/common/simd/as_simd.hpp>
-#include <boost/dispatch/meta/introspection/is_natural.hpp>
+#include <boost/dispatch/meta/is_natural.hpp>
 #include <type_traits>
 
 namespace boost { namespace simd
