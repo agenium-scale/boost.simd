@@ -15,7 +15,7 @@
 #define BOOST_SIMD_ARCH_POWER_QPX_AS_SIMD_HPP_INCLUDED
 
 #include <boost/simd/arch/common/simd/as_simd.hpp>
-#include <boost/dispatch/meta/introspection/is_natural.hpp>
+#include <boost/dispatch/meta/is_natural.hpp>
 #include <boost/simd/detail/brigand.hpp>
 
 namespace boost { namespace simd
