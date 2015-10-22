@@ -46,7 +46,7 @@ def find_include_guard(file):
 # ------------------------------------------------------------------------------
 
 def usage():
-    print('usage: {} <root-path>'.format(sys.argv[0]))
+    print('usage: {0} <root-path>'.format(sys.argv[0]))
 
 if len(sys.argv[1:]) == 1:
     root = sys.argv[1]
