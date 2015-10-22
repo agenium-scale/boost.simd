@@ -108,4 +108,6 @@ namespace boost { namespace simd
   }
 } }
 
+#include <boost/simd/sdk/hierarchy/logical.hpp>
+
 #endif
