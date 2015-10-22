@@ -12,8 +12,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_SDK_MATH_HPP_INCLUDED
-#define BOOST_SIMD_SDK_MATH_HPP_INCLUDED
+#ifndef BOOST_SIMD_MATH_HPP_INCLUDED
+#define BOOST_SIMD_MATH_HPP_INCLUDED
 
 #if defined(unix) || defined(__unix__) || defined(__unix)
 #include <unistd.h>
