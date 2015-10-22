@@ -29,9 +29,9 @@ namespace boost { namespace simd
 
     @tparam T Base hierarchy
   **/
-  template<typename T> struct logical_ : fundamental_<T>
+  template<typename T> struct logical_ : boost::dispatch::fundamental_<T>
   {
-    using parent = fundamental_<T>;
+    using parent = boost::dispatch::fundamental_<T>;
   };
 } }
 
@@ -52,13 +52,13 @@ namespace boost { namespace dispatch
     template<typename T, typename Origin>
     struct property_of<boost::simd::logical<T>,Origin>
     {
-      using type = logical_<Origin>;
+      using type = boost::simd::logical_<Origin>;
     };
 
     template<class T>
     struct scalar_of< simd::logical<T> >
     {
-      typedef simd::logical<T> type;
+      typedef boost::simd::logical<T> type;
     };
   }
 } }
