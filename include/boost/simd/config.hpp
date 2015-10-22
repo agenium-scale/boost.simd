@@ -11,8 +11,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_SDK_CONFIG_HPP_INCLUDED
-#define BOOST_SIMD_SDK_CONFIG_HPP_INCLUDED
+#ifndef BOOST_SIMD_CONFIG_HPP_INCLUDED
+#define BOOST_SIMD_CONFIG_HPP_INCLUDED
 
 #if defined(__FAST_MATH__) && !defined(BOOST_SIMD_FAST_MATH) || defined(DOXYGEN_ONLY)
 
