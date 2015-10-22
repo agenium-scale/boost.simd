@@ -13,8 +13,10 @@
 #define BOOST_SIMD_CONSTANT_DEFINITION_CONSTANT_HPP_INCLUDED
 
 #include <boost/simd/detail/dispatch.hpp>
+#include <boost/simd/detail/constant_traits.hpp>
 #include <boost/dispatch/function/make_callable.hpp>
 #include <boost/dispatch/hierarchy/functions.hpp>
+#include <cstdint>
 
 namespace boost { namespace simd
 {
@@ -31,15 +33,16 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,constant_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::constant_,constant);
   }
 
-  template<typename Value>
-  BOOST_FORCEINLINE auto Constant() BOOST_NOEXCEPT -> decltype(functional::constant(Value{}))
+  template<typename Type, std::intmax_t Bits>
+  BOOST_FORCEINLINE     auto Constant() BOOST_NOEXCEPT
+                    ->  decltype(detail::constant(typename detail::constantify<Type,Bits>::type{}))
   {
-    return functional::constant( Value{} );
+    return detail::constant( typename detail::constantify<Type,Bits>::type{} );
   }
 } }
 

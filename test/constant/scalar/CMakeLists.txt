@@ -12,10 +12,9 @@ add_definitions(-DBOOST_ENABLE_ASSERT_HANDLER)
 set ( SOURCES
   allbits.cpp
   bitincrement.cpp
-  c180.cpp
+  constant.cpp
   cgold.cpp
   eight.cpp
-  eleven.cpp
   eps.cpp
   fact_10.cpp
   fact_11.cpp
@@ -27,9 +26,7 @@ set ( SOURCES
   fact_8.cpp
   fact_9.cpp
 ##  false.cpp
-  fifteen.cpp
   five.cpp
-  fiveo_8.cpp
   four.cpp
   fourthrooteps.cpp
   goldbar.cpp
@@ -37,7 +34,6 @@ set ( SOURCES
   greatestnoninteger.cpp
   half.cpp
   halfeps.cpp
-  hundred.cpp
   inf.cpp
   ldexpmask.cpp
   limitexponent.cpp
@@ -64,7 +60,6 @@ set ( SOURCES
   mlogeps2.cpp
   mnine.cpp
   mone.cpp
-  moneo_6.cpp
   mseven.cpp
   msix.cpp
   mten.cpp
@@ -77,27 +72,16 @@ set ( SOURCES
   nbmantissabits.cpp
   nine.cpp
   one.cpp
-  oneo_10.cpp
-  oneo_120.cpp
-  oneo_12.cpp
-  oneo_15.cpp
-  oneo_16.cpp
-  oneo_180.cpp
-  oneo_5.cpp
-  oneo_6.cpp
-  oneo_7.cpp
-  oneo_8.cpp
-  oneo_9.cpp
   oneosqrt5.cpp
   oneosqrteps.cpp
   oneotwoeps.cpp
   pi.cpp
   pio_2.cpp
   quarter.cpp
+  ratio.cpp
   seven.cpp
   signmask.cpp
   six.cpp
-  sixteen.cpp
   smallestposval.cpp
   splitfactor.cpp
   sqrt_1o_5.cpp
@@ -110,14 +94,9 @@ set ( SOURCES
   ten.cpp
   third.cpp
   thirdrooteps.cpp
-  thousand.cpp
   three.cpp
   threeeps.cpp
 ##  true.cpp
-  twelve.cpp
-  twenty.cpp
-  twoofive.cpp
-  twothird.cpp
   twoto31.cpp
   twotom10.cpp
   twotonmb.cpp
