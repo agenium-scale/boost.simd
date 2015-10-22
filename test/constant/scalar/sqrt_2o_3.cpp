@@ -8,7 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/constant/sqrt_2o_3.hpp>
-#include <boost/simd/constant/twothird.hpp>
+#include <boost/simd/constant/ratio.hpp>
 #include <boost/simd/as.hpp>
 #include <stf.hpp>
 
@@ -33,12 +33,14 @@ STF_CASE_TPL( "Check sqrt_2o_3 behavior for floating types"
   using boost::simd::as;
   using boost::simd::functional::sqrt_2o_3;
   using boost::simd::Sqrt_2o_3;
-  using boost::simd::Twothird;
+  using boost::simd::Ratio;
 
   STF_TYPE_IS(decltype(Sqrt_2o_3<T>()), T);
+
   auto z1 = Sqrt_2o_3<T>();
-  STF_ULP_EQUAL(z1*z1, Twothird<T>(), 0.5);
+  STF_ULP_EQUAL(z1*z1, (Ratio<T,2,3>()), 0.5);
+
   auto z2 = sqrt_2o_3( as(T{}) );
-  STF_ULP_EQUAL(z2*z2, Twothird<T>(), 0.5);
+  STF_ULP_EQUAL(z2*z2, (Ratio<T,2,3>()), 0.5);
 
 }

@@ -8,8 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_CONSTANT_ONEO_5_HPP_INCLUDED
-#define BOOST_SIMD_CONSTANT_ONEO_5_HPP_INCLUDED
+#ifndef BOOST_SIMD_CONSTANT_RATIO_HPP_INCLUDED
+#define BOOST_SIMD_CONSTANT_RATIO_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
@@ -17,26 +17,15 @@ namespace boost { namespace simd
   /*!
     @ingroup group-constant
 
-    Generate the constant oneo_5.
+    Generate a constant from a static representation of a rational number.
 
-    @return The Oneo_5 constant for the proper type
+    @return
   **/
-  template<typename T> T Oneo_5();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-constant
-      Generate the  constant oneo_5.
-
-      @return The Oneo_5 constant for the proper type
-    **/
-    const boost::dispatch::functor<tag::oneo_5_> oneo_5 = {};
-  }
+  template<typename Type, std::uintmax_t Numerator, std::uintmax_t Denumerator> auto Ratio();
 } }
 #endif
 
-#include <boost/simd/constant/definition/oneo_5.hpp>
+#include <boost/simd/constant/definition/ratio.hpp>
 #include <boost/simd/arch/common/scalar/constant/constant_value.hpp>
 
 #endif

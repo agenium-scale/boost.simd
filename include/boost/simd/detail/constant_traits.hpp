@@ -48,6 +48,25 @@ namespace boost { namespace simd { namespace detail
     using base = typename Tag::value_map;
     using type = decltype( base::value(key()) );
   };
+
+  template<typename RealType, std::intmax_t N, std::intmax_t D = 1>
+  struct ratio {};
+
+  template<typename T, std::intmax_t N>
+  struct  constantify
+  {
+    using type = std::integral_constant<T,T(N)>;
+  };
+
+  template<std::intmax_t V> struct constantify<double,V>
+  {
+    using type = brigand::double_<V>;
+  };
+
+  template<std::intmax_t V> struct constantify<float,V>
+  {
+    using type = brigand::single_<V>;
+  };
 } } }
 
 #ifdef BOOST_MSVC

@@ -17,26 +17,15 @@ namespace boost { namespace simd
   /*!
     @ingroup group-constant
 
-    Generate a constant from a static representation.
+    Generate a constant from a static bits pattern representation.
 
     @return The Allbits constant for the proper type
   **/
-  template<typename Value> auto Constant();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-constant
-      Generate a constant from a static representation.
-
-      @return The Allbits constant for the proper type
-    **/
-    const boost::dispatch::functor<tag::constant_> constant = {};
-  }
+  template<typename Type, std::intmax_t Bits> auto Constant();
 } }
 #endif
 
 #include <boost/simd/constant/definition/constant.hpp>
-#include <boost/simd/arch/common/constant/scalar/constant_value.hpp>
+#include <boost/simd/arch/common/scalar/constant/constant_value.hpp>
 
 #endif
