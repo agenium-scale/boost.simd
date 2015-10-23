@@ -176,5 +176,5 @@ before_script:
 
 # Build unit and run test
 script:
-  - make unit
+  - make -k unit
   - make test
