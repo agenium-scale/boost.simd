@@ -11,10 +11,9 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_CONSTANT_DEFINITION_FALSE_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_DEFINITION_FALSE_HPP_INCLUDED
-//TODO must return logical
+
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/dispatch.hpp>
-#include <boost/simd/detail/constant_traits.hpp>
 #include <boost/dispatch/function/make_callable.hpp>
 #include <boost/dispatch/hierarchy/functions.hpp>
 #include <boost/dispatch/as.hpp>
@@ -23,11 +22,7 @@ namespace boost { namespace simd
 {
   namespace tag
   {
-    struct false_ : boost::dispatch::constant_value_<false_>
-    {
-      BOOST_DISPATCH_MAKE_CALLABLE(ext,false_,boost::dispatch::constant_value_<false_>);
-      BOOST_SIMD_REGISTER_CONSTANT(0, 0, 0);
-    };
+    BOOST_DISPATCH_MAKE_TAG(ext, false_, boost::dispatch::constant_value_<false_>);
   }
 
   namespace ext
@@ -37,13 +32,14 @@ namespace boost { namespace simd
 
   namespace functional
   {
-    BOOST_DISPATCH_CALLABLE_DEFINITION(tag::false_,false);
+    BOOST_DISPATCH_CALLABLE_DEFINITION(tag::false_,false_);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto False() BOOST_NOEXCEPT
-  -> decltype(functional::false( boost::dispatch::as_<T>{}))
+  template<typename T>
+  BOOST_FORCEINLINE     auto False() BOOST_NOEXCEPT
+                    ->  decltype(functional::false_( boost::dispatch::as_<T>{}))
   {
-    return functional::false( boost::dispatch::as_<T>{} );
+    return functional::false_( boost::dispatch::as_<T>{} );
   }
 } }
 

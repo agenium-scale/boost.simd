@@ -32,12 +32,12 @@ namespace boost { namespace simd
 
       @return The True constant for the proper type
     **/
-    const boost::dispatch::functor<tag::true_> true = {};
+    const boost::dispatch::functor<tag::true_> true_ = {};
   }
 } }
 #endif
 
 #include <boost/simd/constant/definition/true.hpp>
-#include <boost/simd/arch/common/scalar/constant/constant_value.hpp>
+#include <boost/simd/arch/common/scalar/constant/true.hpp>
 
 #endif

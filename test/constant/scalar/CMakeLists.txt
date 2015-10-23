@@ -25,7 +25,7 @@ set ( SOURCES
   fact_7.cpp
   fact_8.cpp
   fact_9.cpp
-##  false.cpp
+  false.cpp
   five.cpp
   four.cpp
   fourthrooteps.cpp
@@ -96,7 +96,7 @@ set ( SOURCES
   thirdrooteps.cpp
   three.cpp
   threeeps.cpp
-##  true.cpp
+  true.cpp
   twoto31.cpp
   twotom10.cpp
   twotonmb.cpp

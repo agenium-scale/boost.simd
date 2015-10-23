@@ -9,32 +9,19 @@
 */
 //==================================================================================================
 #include <boost/simd/constant/true.hpp>
+#include <boost/simd/logical.hpp>
 #include <boost/simd/as.hpp>
 #include <stf.hpp>
 
-STF_CASE_TPL( "Check true behavior for integral types"
-            , (std::uint8_t)(std::uint16_t)(std::uint32_t)(std::uint64_t)
-              (std::int8_t)(std::int16_t)(std::int32_t)(std::int64_t)
-            )
+STF_CASE_TPL( "Check true behavior", STF_NUMERIC_TYPES )
 {
   using boost::simd::as;
-  using boost::simd::functional::true;
+  using boost::simd::functional::true_;
+  using boost::simd::logical;
   using boost::simd::True;
 
-  STF_TYPE_IS(decltype(True<T>()), T);
-  STF_EQUAL(True<T>(), T(0));
-  STF_EQUAL(true( as(T{}) ),T(0));
-}
+  STF_TYPE_IS(decltype(True<logical<T>>()), logical<T> );
 
-STF_CASE_TPL( "Check true behavior for floating types"
-            , (double)(float)
-            )
-{
-  using boost::simd::as;
-  using boost::simd::functional::true;
-  using boost::simd::True;
-
-  STF_TYPE_IS(decltype(True<T>()), T);
-  STF_IEEE_EQUAL(True<T>(), T(0));
-  STF_IEEE_EQUAL(true( as(T{}) ), T(0));
+  STF_EQUAL(  True<logical<T>>()          , true);
+  STF_EQUAL(  true_( as(logical<T>{}) )   , true);
 }
