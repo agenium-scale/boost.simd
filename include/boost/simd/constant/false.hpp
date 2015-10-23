@@ -27,16 +27,16 @@ namespace boost { namespace simd
   {
     /*!
       @ingroup group-constant
-      Generate the  constant false.
+      Generate the constant false.
 
       @return The False constant for the proper type
     **/
-    const boost::dispatch::functor<tag::false_> false = {};
+    const boost::dispatch::functor<tag::false_> false_ = {};
   }
 } }
 #endif
 
 #include <boost/simd/constant/definition/false.hpp>
-#include <boost/simd/arch/common/scalar/constant/constant_value.hpp>
+#include <boost/simd/arch/common/scalar/constant/false.hpp>
 
 #endif

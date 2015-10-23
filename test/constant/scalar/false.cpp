@@ -8,32 +8,19 @@
 */
 //==================================================================================================
 #include <boost/simd/constant/false.hpp>
+#include <boost/simd/logical.hpp>
 #include <boost/simd/as.hpp>
 #include <stf.hpp>
 
-STF_CASE_TPL( "Check false behavior for integral types"
-            , (std::uint8_t)(std::uint16_t)(std::uint32_t)(std::uint64_t)
-              (std::int8_t)(std::int16_t)(std::int32_t)(std::int64_t)
-            )
+STF_CASE_TPL( "Check false behavior", STF_NUMERIC_TYPES )
 {
   using boost::simd::as;
-  using boost::simd::functional::false;
+  using boost::simd::functional::false_;
+  using boost::simd::logical;
   using boost::simd::False;
 
-  STF_TYPE_IS(decltype(False<T>()), T);
-  STF_EQUAL(False<T>(), T(0));
-  STF_EQUAL(false( as(T{}) ),T(0));
-}
+  STF_TYPE_IS(decltype(False<logical<T>>()), logical<T> );
 
-STF_CASE_TPL( "Check false behavior for floating types"
-            , (double)(float)
-            )
-{
-  using boost::simd::as;
-  using boost::simd::functional::false;
-  using boost::simd::False;
-
-  STF_TYPE_IS(decltype(False<T>()), T);
-  STF_IEEE_EQUAL(False<T>(), T(0));
-  STF_IEEE_EQUAL(false( as(T{}) ), T(0));
+  STF_EQUAL(  False<logical<T>>()          , false);
+  STF_EQUAL(  false_( as(logical<T>{}) )   , false);
 }
