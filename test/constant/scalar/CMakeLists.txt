@@ -27,7 +27,6 @@ set ( SOURCES
   five.cpp
   four.cpp
   fourthrooteps.cpp
-  goldbar.cpp
   gold.cpp
   greatestnoninteger.cpp
   half.cpp
