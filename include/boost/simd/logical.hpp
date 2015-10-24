@@ -19,7 +19,7 @@
 namespace boost { namespace simd
 {
   /*!
-    @ingroup group-api
+    @ingroup group-types
     Typed boolean value.
 
     logical<T> is a typed boolean value which can be vectorized in a portable

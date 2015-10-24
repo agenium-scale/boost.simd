@@ -26,7 +26,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
       Generate the  constant three.
 
       @return The Three constant for the proper type

@@ -46,7 +46,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
       Generate the  constant maxflint.
 
       @return The Maxflint constant for the proper type

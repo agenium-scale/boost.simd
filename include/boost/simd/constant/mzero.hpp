@@ -51,7 +51,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
       Generate the  constant mzero.
 
       @return The Mzero constant for the proper type

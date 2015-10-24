@@ -38,7 +38,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
       Generate the  constant fact_12.
 
       @return The Fact_12 constant for the proper type

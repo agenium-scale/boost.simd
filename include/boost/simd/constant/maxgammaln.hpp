@@ -42,7 +42,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
       Generate the  constant maxgammaln.
 
       @return The Maxgammaln constant for the proper type

@@ -36,7 +36,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
 
       Generate the minimum representable value of a given type as a constant.
 

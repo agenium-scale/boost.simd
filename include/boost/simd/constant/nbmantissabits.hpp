@@ -43,7 +43,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
       Generate the  constant nbmantissabits.
 
       @return The Nbmantissabits constant for the proper type

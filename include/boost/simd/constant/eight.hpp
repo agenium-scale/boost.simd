@@ -26,7 +26,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
       Generate the  constant eight.
 
       @return The Eight constant for the proper type

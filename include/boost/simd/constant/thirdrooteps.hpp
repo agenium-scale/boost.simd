@@ -43,7 +43,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
       Generate the  constant thirdrooteps.
 
       @return The Thirdrooteps constant for the proper type

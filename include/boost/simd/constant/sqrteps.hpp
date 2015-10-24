@@ -43,7 +43,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
       Generate the  constant sqrteps.
 
       @return The Sqrteps constant for the proper type

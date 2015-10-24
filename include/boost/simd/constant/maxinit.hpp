@@ -30,7 +30,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
       Generate the  constant maxinit.
 
       @return The Maxinit constant for the proper type

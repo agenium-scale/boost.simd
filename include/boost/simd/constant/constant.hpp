@@ -16,10 +16,10 @@ namespace boost { namespace simd
 {
   /*!
     @ingroup group-constant
+    @brief Generate a constant from a static bits pattern representation.
 
-    Generate a constant from a static bits pattern representation.
-
-    @return The Allbits constant for the proper type
+    @tparam Type  Type of the generated constant
+    @tparam Bits  Bits pattern of the generated constant
   **/
   template<typename Type, std::intmax_t Bits> auto Constant();
 } }

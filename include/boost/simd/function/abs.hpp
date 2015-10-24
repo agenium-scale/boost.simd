@@ -53,7 +53,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
 
       Function object tied to simd::abs
 

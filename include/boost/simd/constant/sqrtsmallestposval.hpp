@@ -44,7 +44,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
       Generate the  constant sqrtsmallestposval.
 
       @return The Sqrtsmallestposval constant for the proper type
