@@ -19,6 +19,7 @@ endif()
 ##===================================================================================================
 project(Boost.SIMD CXX)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/test")
 
 ##===================================================================================================
 ## Prevent in-source build
