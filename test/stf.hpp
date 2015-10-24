@@ -22,6 +22,7 @@
 #include <sstream>
 #include <cstdlib>
 #include <string>
+#include <boost/config.hpp>
 
 namespace stf
 {
@@ -328,36 +329,19 @@ template<typename T> void STF_FUNCTION( stf::unit::env& $ )                     
 #include <cstddef>
 #include <cstdint>
 
-#include <cstddef>
-#include <cstdint>
-
-#define STF_SIGNED_BASIC_INTEGRAL_TYPES     (std::ptrdiff_t)(std::intptr_t)(std::intmax_t)
-#define STF_UNSIGNED_BASIC_INTEGRAL_TYPES   (std::size_t)(std::uintptr_t)(std::uintmax_t)
-#define STF_BASIC_TYPES                     STF_SIGNED_BASIC_INTEGRAL_TYPES STF_UNSIGNED_BASIC_INTEGRAL_TYPES
-
-#define STF_SIGNED_FIXED_INTEGRAL_TYPES    (std::int8_t)(std::int16_t)(std::int32_t)(std::int64_t)
-#define STF_UNSIGNED_FIXED_INTEGRAL_TYPES  (std::uint8_t)(std::uint16_t)(std::uint32_t)(std::uint64_t)
-#define STF_FIXED_INTEGRAL_TYPES           STF_SIGNED_FIXED_INTEGRAL_TYPES STF_UNSIGNED_FIXED_INTEGRAL_TYPES
-
-#define STF_SIGNED_STD_INTEGRAL_TYPES    STF_SIGNED_BASIC_INTEGRAL_TYPES STF_SIGNED_FIXED_INTEGRAL_TYPES
-#define STF_UNSIGNED_STD_INTEGRAL_TYPES  STF_UNSIGNED_BASIC_INTEGRAL_TYPES STF_UNSIGNED_FIXED_INTEGRAL_TYPES
-#define STF_STD_INTEGRAL_TYPES           STF_SIGNED_STD_INTEGRAL_TYPES STF_UNSIGNED_STD_INTEGRAL_TYPES
-
-#define STF_SIGNED_INTEGRAL_TYPES   (signed char)(signed short)(signed int)(signed long)
-#define STF_UNSIGNED_INTEGRAL_TYPES (unsigned char)(unsigned short)(unsigned int)(unsigned long)
-#define STF_INTEGRAL_TYPES          (char) STF_SIGNED_INTEGRAL_TYPES STF_UNSIGNED_INTEGRAL_TYPES
-
-#define STF_SIGNED_ALL_INTEGRAL_TYPES   STF_SIGNED_STD_INTEGRAL_TYPES STF_SIGNED_INTEGRAL_TYPES
-#define STF_UNSIGNED_ALL_INTEGRAL_TYPES STF_UNSIGNED_STD_INTEGRAL_TYPES STF_UNSIGNED_INTEGRAL_TYPES
-#define STF_ALL_INTEGRAL_TYPES          STF_SIGNED_ALL_INTEGRAL_TYPES STF_UNSIGNED_ALL_INTEGRAL_TYPES
+#define STF_SIGNED_INTEGRAL_TYPES     (std::int8_t)(std::int16_t)(std::int32_t)(std::int64_t)
+#define STF_UNSIGNED_INTEGRAL_TYPES   (std::uint8_t)(std::uint16_t)(std::uint32_t)(std::uint64_t)
+#define STF_INTEGRAL_TYPES            STF_SIGNED_INTEGRAL_TYPES STF_UNSIGNED_INTEGRAL_TYPES
 
 #define STF_IEEE_TYPES (float)(double)
 
-#define STF_SIGNED_NUMERIC_TYPES    STF_SIGNED_ALL_INTEGRAL_TYPES STF_IEEE_TYPES
-#define STF_UNSIGNED_NUMERIC_TYPES  STF_UNSIGNED_ALL_INTEGRAL_TYPES
+#define STF_SIGNED_NUMERIC_TYPES    STF_SIGNED_INTEGRAL_TYPES STF_IEEE_TYPES
+#define STF_UNSIGNED_NUMERIC_TYPES  STF_UNSIGNED_INTEGRAL_TYPES
 #define STF_NUMERIC_TYPES           STF_SIGNED_NUMERIC_TYPES STF_UNSIGNED_NUMERIC_TYPES
 
 #define STF_ALL_TYPES     (bool) STF_NUMERIC_TYPES
+
+
 
 namespace stf
 {
@@ -802,40 +786,17 @@ do                                                                              
 #error BOOST_ENABLE_ASSERT_HANDLER must be defined to use STF_ASSERT() macro
 #endif
 
-#include <boost/config.hpp>
-#if defined(BOOST_NO_EXCEPTIONS)
-#error Exceptions must be enabled to  use STF_ASSERT() macro
-#endif
-
-#include <boost/core/ignore_unused.hpp>
-#include <boost/throw_exception.hpp>
-#include <boost/exception/all.hpp>
 #include <boost/assert.hpp>
+#include <sstream>
+#include <memory>
+#include <string>
 
 namespace stf { namespace detail
 {
-  struct BOOST_SYMBOL_VISIBLE assertion_failure : virtual boost::exception, std::runtime_error
+  inline std::unique_ptr<std::string>& current_assertion()
   {
-        inline assertion_failure(std::string const& msg) : boost::exception() , std::runtime_error(msg)
-    {}
-  };
-
-    using throw_message = boost::error_info<struct tag_throw_msg,char const*>;
-
-  inline std::ostream& operator<<(std::ostream& os, assertion_failure const& e)
-  {
-    auto fn   = boost::get_error_info< ::boost::throw_function >(e);
-    auto f    = boost::get_error_info< ::boost::throw_file >(e);
-    auto l    = boost::get_error_info< ::boost::throw_line >(e);
-    auto msg  = boost::get_error_info< ::stf::detail::throw_message >(e);
-
-    os  << "Assertion    '"  << e.what() << "' failed\n"
-        << " in function '"  << *fn << "'\n"
-        << " from         "  << ::stf::at(*f,*l)    << " \n";
-
-    if(msg)  os << " because     '"  << *msg << "'";
-
-    return os;
+    static std::unique_ptr<std::string> ptr;
+    return ptr;
   }
 } }
 
@@ -843,35 +804,25 @@ namespace boost
 {
     inline void assertion_failed( char const* expr, char const* fn, char const* f, long l )
   {
-    #ifndef BOOST_EXCEPTION_DISABLE
-    ::boost::throw_exception
-    (     ::boost::enable_error_info( ::stf::detail::assertion_failure(expr) )
-      <<  ::boost::throw_function(fn)
-      <<  ::boost::throw_file(f)
-      <<  ::boost::throw_line(int(l))
-    );
-    #else
-    ::boost::ignore_unused(fn,f,l);
-    ::boost::throw_exception( ::stf::detail::assertion_failure(expr) );
-    #endif
+    std::ostringstream os;
+    os  << "Assertion    '"  << expr << "' failed\n"
+        << " in function '"  << fn << "'\n"
+        << " from         "  << ::stf::at(f,l)    << " \n";
+
+    stf::detail::current_assertion().reset( new std::string(os.str()) ) ;
   }
 
     inline void assertion_failed_msg( char const* expr, char const* msg
                                   , char const* fn, char const* f, long l
                                   )
   {
-    #ifndef BOOST_EXCEPTION_DISABLE
-    ::boost::throw_exception
-    (     ::boost::enable_error_info( ::stf::detail::assertion_failure(expr) )
-      <<  ::boost::throw_function(fn)
-      <<  ::boost::throw_file(f)
-      <<  ::boost::throw_line(int(l))
-      <<  ::stf::detail::throw_message(msg)
-    );
-    #else
-    ::boost::ignore_unused(expr,fn,f,l);
-    ::boost::throw_exception( ::stf::detail::assertion_failure(msg) );
-    #endif
+    std::ostringstream os;
+    os  << "Assertion    '"  << expr << "' failed\n"
+        << " in function '"  << fn << "'\n"
+        << " from         "  << ::stf::at(f,l)    << " \n"
+        << " because:     "  << msg  << " \n";
+
+    stf::detail::current_assertion().reset( new std::string(os.str()) ) ;
   }
 }
 
@@ -906,31 +857,31 @@ do                                                                              
 #define STF_ASSERT(X)                                                                               \
 do                                                                                                  \
 {                                                                                                   \
-  bool caught = false;                                                                              \
-  try  { STF_UNUSED(BOOST_PP_REMOVE_PARENS(X)); }                                                   \
-  catch( ::stf::detail::assertion_failure& e)                                                       \
+  STF_UNUSED(BOOST_PP_REMOVE_PARENS(X));                                                            \
+  if(stf::detail::current_assertion())                                                              \
   {                                                                                                 \
-    caught = true;                                                                                  \
-    STF_PASS( STF_STRING(X) << " triggered: \n" << e << "\n" );                                     \
+    STF_PASS( STF_STRING(X) << " triggered: \n" << *stf::detail::current_assertion() << "\n" );     \
   }                                                                                                 \
-                                                                                                    \
-  if(!caught)                                                                                       \
+  else                                                                                              \
+  {                                                                                                 \
     STF_FAIL( STF_STRING(X) << " didn't trigger any assertion." );                                  \
+  }                                                                                                 \
+  stf::detail::current_assertion().reset();                                                         \
 } while( ::stf::is_false() )                                                                        \
 
 #define STF_NO_ASSERT(X)                                                                            \
 do                                                                                                  \
 {                                                                                                   \
-  bool caught = false;                                                                              \
-  try  { STF_UNUSED(BOOST_PP_REMOVE_PARENS(X)); }                                                   \
-  catch( ::stf::detail::assertion_failure& e)                                                       \
+  STF_UNUSED(BOOST_PP_REMOVE_PARENS(X));                                                            \
+  if(stf::detail::current_assertion())                                                              \
   {                                                                                                 \
-    caught = true;                                                                                  \
-    STF_FAIL( STF_STRING(X) << " triggered: \n" << e << "\n" );                                     \
+    STF_FAIL( STF_STRING(X) << " triggered: \n" << *stf::detail::current_assertion() << "\n" );     \
   }                                                                                                 \
-                                                                                                    \
-  if(!caught)                                                                                       \
+  else                                                                                              \
+  {                                                                                                 \
     STF_PASS( STF_STRING(X) << " didn't trigger any assertion." );                                  \
+  }                                                                                                 \
+  stf::detail::current_assertion().reset();                                                         \
 } while( ::stf::is_false() )                                                                        \
 
 

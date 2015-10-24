@@ -13,6 +13,7 @@ cmake_minimum_required(VERSION 2.8.7)
 ##===================================================================================================
 project(Boost.SIMD CXX)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/test")
 
 ##===================================================================================================
 ## Prevent in-source build
