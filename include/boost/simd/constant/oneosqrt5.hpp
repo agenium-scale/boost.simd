@@ -39,7 +39,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
       Generate the  constant oneosqrt5.
 
       @return The Oneosqrt5 constant for the proper type

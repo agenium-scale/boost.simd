@@ -40,7 +40,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
       Generate the  constant mask1frexp.
 
       @return The Mask1frexp constant for the proper type

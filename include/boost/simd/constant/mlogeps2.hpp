@@ -40,7 +40,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
       Generate the  constant mlogeps2.
 
       @return The Mlogeps2 constant for the proper type

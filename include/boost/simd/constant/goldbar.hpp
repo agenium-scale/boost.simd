@@ -39,7 +39,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
       Generate the  constant goldbar.
 
       @return The Goldbar constant for the proper type

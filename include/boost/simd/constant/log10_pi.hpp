@@ -39,7 +39,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
       Generate the  constant log10_pi.
 
       @return The Log10_pi constant for the proper type

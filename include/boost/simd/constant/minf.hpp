@@ -37,7 +37,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
 
       Generates the -inf IEEE value (\f$\-infty\f$) for floating types and minimum value
       for integer types

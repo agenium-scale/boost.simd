@@ -27,7 +27,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
       Generate the  constant mnine.
 
       @return The Mnine constant for the proper type

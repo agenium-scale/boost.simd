@@ -38,7 +38,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
 
       @return The largest representable value of the input type
     **/

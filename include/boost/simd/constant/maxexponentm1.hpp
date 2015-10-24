@@ -40,7 +40,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
       Generate the  constant maxexponentm1.
 
       @return The Maxexponentm1 constant for the proper type

@@ -27,7 +27,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
       Generate the  constant mhalf.
 
       @return The Mhalf constant for the proper type

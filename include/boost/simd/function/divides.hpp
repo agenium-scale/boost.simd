@@ -41,7 +41,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-operator
+      @ingroup group-callable-operator
 
       Function object tied to boost::simd::divides
 

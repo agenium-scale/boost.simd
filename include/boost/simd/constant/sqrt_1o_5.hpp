@@ -40,7 +40,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
       Generate the  constant sqrt_1o_5.
 
       @return The Sqrt_1o_5 constant for the proper type

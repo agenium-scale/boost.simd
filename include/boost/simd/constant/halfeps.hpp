@@ -44,7 +44,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
       Generate the  constant halfeps.
 
       @return The Halfeps constant for the proper type

@@ -44,7 +44,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
       Generate the  constant allbits. toto
 
       @return The Allbits constant for the proper type
