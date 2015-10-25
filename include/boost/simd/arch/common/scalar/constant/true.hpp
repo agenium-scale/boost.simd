@@ -19,12 +19,14 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
 
-  BOOST_DISPATCH_OVERLOAD_FALLBACK( (typename T)
-                                  , boost::dispatch::constant_value_<tag::true_>
-                                  , boost::dispatch::cpu_
-                                  , bd::target_<bd::scalar_<logical_<T>>>
-                                  )
+  BOOST_DISPATCH_OVERLOAD ( true_, (typename T), bd::cpu_
+                          , bd::target_<bd::scalar_<bd::unspecified_<T>>>
+                          )
   {
+    static_assert ( bd::models_t<T,bd::scalar_<logical_<brigand::_1>>>::value
+                  , "boost::simd::True requires logical target types"
+                  );
+
     BOOST_FORCEINLINE typename T::type operator()(T const&) const BOOST_NOEXCEPT
     {
       return {true};
