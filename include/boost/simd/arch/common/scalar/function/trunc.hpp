@@ -18,6 +18,8 @@
 #include <boost/simd/function/scalar/abs.hpp>
 #include <boost/simd/function/scalar/bitwise_or.hpp>
 #include <boost/simd/function/scalar/bitofsign.hpp>
+#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/options.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -30,9 +32,11 @@ namespace boost { namespace simd { namespace ext
                           )
   {
 
-    using result_t = A0;
 
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0) const { return a0; }
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    {
+      return a0;
+    }
   };
 
   BOOST_DISPATCH_OVERLOAD ( trunc_
@@ -43,9 +47,38 @@ namespace boost { namespace simd { namespace ext
   {
     using result_t = A0;
 
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE result_t operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return bitwise_or(floor(bs::abs(a0)), bitofsign(a0));
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( trunc_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::integer_<A0> >
+                          , boost::simd::fast_tag
+                          )
+  {
+
+
+    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, fast_tag const&) const BOOST_NOEXCEPT
+    {
+      return a0;
+    }
+  };
+  BOOST_DISPATCH_OVERLOAD ( trunc_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::floating_<A0> >
+                          , boost::simd::fast_tag
+                         )
+  {
+
+    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, fast_tag const&) const BOOST_NOEXCEPT
+    {
+      using i_t = bd::as_integer_t<A0>;
+      return i_t(a0);
     }
   };
 } } }
