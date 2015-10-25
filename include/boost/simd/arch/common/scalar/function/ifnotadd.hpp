@@ -27,7 +27,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::fundamental_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A1 operator() (const A0 & a0,const A1 & a1,const A1 & a2) const
+    BOOST_FORCEINLINE A1 operator() (const A0 & a0,const A1 & a1,const A1 & a2) const BOOST_NOEXCEPT
     {
       return is_nez(a0) ?  a1 :(a1+a2);
     }

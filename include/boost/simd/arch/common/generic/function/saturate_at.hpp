@@ -27,7 +27,7 @@ namespace boost { namespace simd { namespace ext
 //                           )
 //   {
 //     using result_type = A0;
-//     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const
+//     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
 //     {
 //       typename dispatch::make_functor<Tag, A0>::type callee;
 //       const A0 z = callee( dispatch::meta::as_<A0>() );
@@ -43,7 +43,7 @@ namespace boost { namespace simd { namespace ext
 //                                    )
 //   {
 //     using result_type = A0;
-//     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const
+//     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
 //     {
 //       typename dispatch::make_functor<Tag, A0>::type callee;
 //       return min(a0, callee( dispatch::meta::as_<A0>() ));

@@ -28,7 +28,7 @@ namespace boost { namespace simd { namespace ext
                          , bd::scalar_< bd::arithmetic_<A0> >
                          )
  {
-   BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
+   BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
    {
      return boost::simd::max(a0, a1);
    }
@@ -41,7 +41,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       if (is_nan(a0)) return a1;
       else return simd::max(a1, a0);

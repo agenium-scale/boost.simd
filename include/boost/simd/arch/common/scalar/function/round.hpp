@@ -35,7 +35,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using result_t = A0;
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE result_t operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return a0;
     }
@@ -48,7 +48,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using result_t = A0;
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE result_t operator() ( A0 a0) const BOOST_NOEXCEPT
     {
     #ifdef BOOST_SIMD_HAS_ROUNDF
       return ::roundf(a0);
@@ -70,7 +70,7 @@ namespace boost { namespace simd { namespace ext
   {
     using result_t = A0;
 
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE result_t operator() ( A0 a0) const BOOST_NOEXCEPT
     {
     #ifdef BOOST_SIMD_HAS_ROUND
       return ::round(a0);
@@ -93,7 +93,7 @@ namespace boost { namespace simd { namespace ext
   {
     using result_t = A0;
 
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE result_t operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
       using i_t = bd::as_integer_t<A0>;
       A0 fac = tenpower(i_t(a1));

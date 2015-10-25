@@ -28,7 +28,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::integer_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return (is_ltz(a0)) ? Zero<A0>() : (One<A0>()<<a0);
     }
@@ -40,7 +40,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::unsigned_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return One<A0>()<<a0;
     }

@@ -32,7 +32,7 @@ namespace boost { namespace simd { namespace ext
   {
     using result_t = A0;
 
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE result_t operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
       using itype = dispatch::as_integer_t<A0, signed>;
       return bitwise_cast<result_t>(shift_left(bitwise_cast<itype>(a0),a1));
@@ -48,7 +48,7 @@ namespace boost { namespace simd { namespace ext
   {
     using result_t = A0;
 
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE result_t operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG( assert_good_shift<A0>(a1)
                       , "shift_left: a shift is out of range"

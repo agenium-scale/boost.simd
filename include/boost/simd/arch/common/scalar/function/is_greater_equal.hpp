@@ -53,7 +53,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::constant_< bd::fundamental_<A1> >
                           )
   {
-    BOOST_FORCEINLINE logical<A0> operator() ( A0 a0, A1 const&) const
+    BOOST_FORCEINLINE logical<A0> operator() ( A0 a0, A1 const&) const BOOST_NOEXCEPT
     {
       return (a0 >= A1::value);
     }
@@ -66,7 +66,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::fundamental_<A1> >
                           )
   {
-    BOOST_FORCEINLINE logical<A1> operator() ( A0 const&, A1 a1) const
+    BOOST_FORCEINLINE logical<A1> operator() ( A0 const&, A1 a1) const BOOST_NOEXCEPT
     {
       return (A0::value >= a1);
     }
@@ -79,7 +79,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::constant_< bd::fundamental_<A0> >
                           )
   {
-    BOOST_FORCEINLINE logical<typename A0::value_type> operator() ( A0 const&, A0 const&) const
+    BOOST_FORCEINLINE logical<typename A0::value_type> operator() ( A0 const&, A0 const&) const BOOST_NOEXCEPT
     {
       return true;
     }

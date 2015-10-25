@@ -56,7 +56,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       A0 r = bool(is_gtz(a0))-bool(is_ltz(a0));
 #ifdef BOOST_SIMD_NO_NANS

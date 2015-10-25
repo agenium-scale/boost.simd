@@ -42,7 +42,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using result_t = bd::as_integer_t<A0, unsigned>;
-    result_t operator() ( A0 a0) const
+    result_t operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return firstbitset(bitwise_cast<result_t>(a0));
     }

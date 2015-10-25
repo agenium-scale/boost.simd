@@ -44,7 +44,7 @@ namespace boost { namespace simd { namespace ext
                          , bd::scalar_< bd::integer_<A1>  >
                          )
  {
-    BOOST_FORCEINLINE void operator() ( A0 a0,A0 & r0,A1& r1) const
+    BOOST_FORCEINLINE void operator() ( A0 a0,A0 & r0,A1& r1) const BOOST_NOEXCEPT
     {
       if (a0 == 0 || is_invalid(a0))
       {

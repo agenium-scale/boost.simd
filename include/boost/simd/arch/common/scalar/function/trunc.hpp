@@ -61,9 +61,7 @@ namespace boost { namespace simd { namespace ext
                           , boost::simd::fast_tag
                           )
   {
-
-
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, fast_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, fast_tag const&) const BOOST_NOEXCEPT
     {
       return a0;
     }
@@ -76,7 +74,7 @@ namespace boost { namespace simd { namespace ext
                          )
   {
 
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, fast_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, fast_tag const&) const BOOST_NOEXCEPT
     {
       using i_t = bd::as_integer_t<A0>;
       return i_t(a0);

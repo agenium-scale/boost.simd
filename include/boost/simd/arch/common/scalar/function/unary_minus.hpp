@@ -31,7 +31,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using result_t = A0;
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0) const { return -a0; }
+    BOOST_FORCEINLINE result_t operator() ( A0 a0) const { return -a0; }
   };
 } } }
 

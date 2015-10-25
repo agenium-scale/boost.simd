@@ -30,7 +30,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::generic_< bd::arithmetic_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A0 const& a1) const
+    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
     {
       return divround(a0, a1);
     }
@@ -48,7 +48,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::generic_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE bd::as_integer_t<A0> operator() ( A0 const& a0, A0 const& a1) const
+    BOOST_FORCEINLINE bd::as_integer_t<A0> operator() ( A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
     {
       return iround(a0/a1);
     }

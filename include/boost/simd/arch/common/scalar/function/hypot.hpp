@@ -44,7 +44,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
 
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       using i_t = bd::as_integer_t<A0>;
       #ifndef BOOST_SIMD_NO_INVALIDS

@@ -29,7 +29,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_ < bd::arithmetic_<A0> >
                           )
   {
-    BOOST_FORCEINLINE void operator() ( A0 a0,A0 & frac,A0 & ent) const
+    BOOST_FORCEINLINE void operator() ( A0 a0, A0 & frac,A0 & ent) const BOOST_NOEXCEPT
     {
       ent = simd::trunc(a0);
       frac = a0 - ent;
@@ -43,7 +43,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_ < bd::arithmetic_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0,A0 & ent) const
+    BOOST_FORCEINLINE A0 operator() ( A0 a0,A0 & ent) const BOOST_NOEXCEPT
     {
       A0 frac;
       simd::modf(a0,frac,ent);
@@ -58,7 +58,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using result_t = std::pair<A0,A0>;
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0) const
+    BOOST_FORCEINLINE result_t operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       A0 first, second;
       boost::simd::modf(a0, first, second);
