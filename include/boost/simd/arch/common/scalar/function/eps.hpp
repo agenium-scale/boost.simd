@@ -34,7 +34,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::arithmetic_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const &)const
+    BOOST_FORCEINLINE A0 operator() ( A0 const &) const BOOST_NOEXCEPT
     {
       return One<A0>();
     }
@@ -46,7 +46,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    result_t operator() ( A0 a0) const
+    result_t operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       typedef std::numeric_limits<A0> lim;
       const A0 a = bs::abs(a0);

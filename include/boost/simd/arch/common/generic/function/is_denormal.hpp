@@ -32,7 +32,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::generic_< bd::arithmetic_<A0> >
                           )
   {
-    BOOST_FORCEINLINE logical<A0> operator() ( A0 ) const
+    BOOST_FORCEINLINE logical<A0> operator() ( A0 ) const BOOST_NOEXCEPT
     {
       return false;
     }
@@ -43,7 +43,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::generic_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE logical<A0> operator() ( A0 const& a0) const
+    BOOST_FORCEINLINE logical<A0> operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
       return is_nez(a0) && is_less(bs::abs(a0), Smallestposval<A0>());
     }

@@ -35,7 +35,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using result_t = bd::as_integer_t<A0, signed>;
-    BOOST_FORCEINLINE result_t operator() ( A0) const
+    BOOST_FORCEINLINE result_t operator() ( A0) const BOOST_NOEXCEPT
     {
       return Zero<result_t>();
     }
@@ -49,7 +49,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using result_t = bd::as_integer_t<A0, signed>;
-    BOOST_FORCEINLINE result_t operator() ( A0 a0) const
+    BOOST_FORCEINLINE result_t operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       if (is_invalid(a0) || is_eqz(a0)) return Zero<result_t>();
       return ::ilogb(a0);
@@ -65,7 +65,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using result_t = bd::as_integer_t<A0, signed>;
-    BOOST_FORCEINLINE result_t operator() ( A0 a0) const
+    BOOST_FORCEINLINE result_t operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       if (is_invalid(a0) || is_eqz(a0)) return Zero<result_t>();
       return ::ilogbf(a0);
@@ -80,7 +80,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using result_t = bd::as_integer_t<A0, signed>;
-    BOOST_FORCEINLINE result_t operator() ( A0 a0) const
+    BOOST_FORCEINLINE result_t operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       if (is_invalid(a0) || is_eqz(a0)) return Zero<result_t>();
       const int nmb = int(Nbmantissabits<A0>());

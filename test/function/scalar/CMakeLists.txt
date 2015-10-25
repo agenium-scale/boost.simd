@@ -33,10 +33,8 @@ set ( SOURCES
    fast_hypot.cpp
    fast_iround2even.cpp
    fast_rec.cpp
-   fast_rsqrt.cpp
    fast_sqrt.cpp
    fast_toint.cpp
-   fast_trunc.cpp
    floor.cpp
    fma.cpp
    fms.cpp

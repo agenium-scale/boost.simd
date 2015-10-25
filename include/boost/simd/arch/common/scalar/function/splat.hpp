@@ -27,7 +27,7 @@ namespace boost { namespace simd { namespace ext
   {
     using result_t = typename T::type;
 
-    BOOST_FORCEINLINE result_t operator()( A0 const& a0, T const& ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE result_t operator()( A0 a0, T const &) const BOOST_NOEXCEPT
     {
       return static_cast<typename T::type>(a0);
     }

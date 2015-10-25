@@ -27,7 +27,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using result_t = bd::as_integer_t<A0, signed>;
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE result_t operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return bitwise_cast<result_t>(a0);
     }

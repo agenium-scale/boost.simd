@@ -34,7 +34,7 @@ namespace boost { namespace simd { namespace ext
                          , bd::scalar_< bd::arithmetic_<A0> >
                          )
  {
-   BOOST_FORCEINLINE A0 operator() ( A0 const &)const
+   BOOST_FORCEINLINE A0 operator() ( A0 const &) const BOOST_NOEXCEPT
    {
      return One<A0>();
    }
@@ -46,7 +46,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       using i_t = bd::as_integer_t<A0,unsigned>;
       if (is_eqz(a0)) return Mindenormal<A0>();

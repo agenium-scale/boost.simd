@@ -56,7 +56,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::integer_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG(is_gez(a0), "sqrt input is negative");
 

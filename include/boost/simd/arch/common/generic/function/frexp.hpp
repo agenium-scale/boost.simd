@@ -34,7 +34,7 @@ namespace boost { namespace simd { namespace ext
       , "boost.simd cardinalities are inconsistent in frexp call"
       );
 
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0,A2 & a2) const
+    BOOST_FORCEINLINE A0 operator() ( A0 const& a0,A2 & a2) const BOOST_NOEXCEPT
     {
       A0 a1;
       bs::frexp(a0, a1, a2);
@@ -51,7 +51,7 @@ namespace boost { namespace simd { namespace ext
     using exponent_t = bd::as_integer_t<A0, signed>;
     using result_t = std::pair<A0,exponent_t>                               ;
 
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0) const
+    BOOST_FORCEINLINE result_t operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
       A0 first;
       exponent_t second;

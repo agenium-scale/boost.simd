@@ -54,7 +54,7 @@ namespace boost { namespace simd { namespace ext
                           , boost::simd::fast_tag
                          )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, fast_tag const& ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, fast_tag const& ) const BOOST_NOEXCEPT
     {
       return simd::rsqrt(a0);
     }

@@ -53,7 +53,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<logical_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 ) const
+    BOOST_FORCEINLINE A0 operator() ( A0 ) const BOOST_NOEXCEPT
     {
       return true;
     }

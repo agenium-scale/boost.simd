@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_MEANOF_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_MEANOF_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_MEANOF_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_MEANOF_HPP_INCLUDED
 
 #include <boost/config.hpp>
 #include <boost/dispatch/function/overload.hpp>
@@ -39,7 +39,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using result_type = A0;
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A0 const& a1) const
+    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
     {
       A0 m = min(a0, a1);
       return if_else( is_finite(a0) && is_finite(a1),
@@ -56,7 +56,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using result_type = A0;
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A0 const& a1) const
+    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
     {
       return (a0 & a1) + ((a0 ^ a1) >> 1);
     }

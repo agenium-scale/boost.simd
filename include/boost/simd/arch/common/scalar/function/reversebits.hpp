@@ -24,7 +24,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::ints8_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return std::uint8_t(
         ((uint8_t(a0) * 0x0802LU & 0x22110LU)
@@ -39,7 +39,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::ints64_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       union { A0 a; std::uint32_t b[2]; } z = {a0};
       z.b[0] = reversebits(z.b[0]);
@@ -55,7 +55,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::ints16_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       union { A0 a; std::uint8_t b[2]; } z = {a0};
       z.b[0] = reversebits(z.b[0]);
@@ -71,7 +71,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::ints32_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       union { A0 a; std::uint16_t b[2]; } z = {a0};
       z.b[0] = reversebits(z.b[0]);

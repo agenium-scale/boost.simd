@@ -31,7 +31,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE bd::as_integer_t<A0, unsigned> operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE bd::as_integer_t<A0, unsigned> operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return simd::popcnt(sbits(a0));
     }
@@ -43,7 +43,7 @@ namespace boost { namespace simd { namespace ext
                            , bd::scalar_< bd::ints8_<A0> >
                            )
   {
-    BOOST_FORCEINLINE bd::as_integer_t<A0, unsigned> operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE bd::as_integer_t<A0, unsigned> operator() ( A0 a0) const BOOST_NOEXCEPT
     {
 #ifdef BOOST_MSVC
       return __popcnt16(int16_t(a0) & 0xFF);
@@ -59,7 +59,7 @@ namespace boost { namespace simd { namespace ext
                            , bd::scalar_< bd::ints16_<A0> >
                            )
   {
-    BOOST_FORCEINLINE bd::as_integer_t<A0, unsigned> operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE bd::as_integer_t<A0, unsigned> operator() ( A0 a0) const BOOST_NOEXCEPT
     {
     #ifdef BOOST_MSVC
       return __popcnt16(a0);
@@ -75,7 +75,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::ints32_<A0> >
                           )
   {
-    BOOST_FORCEINLINE bd::as_integer_t<A0, unsigned> operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE bd::as_integer_t<A0, unsigned> operator() ( A0 a0) const BOOST_NOEXCEPT
     {
     #ifdef BOOST_MSVC
       return __popcnt(a0);
@@ -91,7 +91,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::ints64_<A0> >
                           )
   {
-    BOOST_FORCEINLINE bd::as_integer_t<A0, unsigned> operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE bd::as_integer_t<A0, unsigned> operator() ( A0 a0) const BOOST_NOEXCEPT
     {
     #if defined BOOST_MSVC && defined _WIN64
       return __popcnt64(a0);

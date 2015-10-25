@@ -32,7 +32,7 @@ namespace boost { namespace simd { namespace ext
     using result_t = bd::as_integer_t<A0,unsigned>;
     using s_t = bd::scalar_of_t<result_t>;
 
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0) const
+    BOOST_FORCEINLINE result_t operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
       static const s_t pattern = (s_t(1) << sizeof(s_t)*(CHAR_BIT/2)) - 1;
       return bitwise_and( splat<result_t>(bitwise_cast<result_t>(pattern)),  a0 );
