@@ -14,6 +14,7 @@
 
 #include <boost/simd/logical.hpp>
 #include <boost/dispatch/function/overload.hpp>
+#include <boost/dispatch/models.hpp>
 #include <boost/dispatch/as.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -24,7 +25,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::target_<bd::scalar_<bd::unspecified_<T>>>
                           )
   {
-    static_assert ( bd::models_t<T,bd::scalar_<logical_<brigand::_1>>>::value
+    static_assert ( bd::models<typename T::type,bd::scalar_<logical_<brigand::_1>>>::type::value
                   , "boost::simd::True requires logical target types"
                   );
 
