@@ -16,11 +16,40 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes round value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    round(x,n) rounds aways from 0 to n digits:
+
+    @par semantic:
+    For any given value @c x of type @c T and integer n :
+
+    @code
+    T r = round(x, n);
+    @endcode
+
+    is equivalent to
+
+    @code
+    T r = round(x*exp10(n)*exp10(-n));
+    @endcode
+
+    @par Note:
+
+    n > 0: round to n digits to the right of the decimal point.
+
+    n = 0: round to the nearest integer.
+
+    n < 0: round to n digits to the left of the decimal point.
+
+    aways from 0 means that half integer values are rounded to the nearest
+    integer of greatest absolute value
+
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto round(T const& x) {}
 
   namespace functional

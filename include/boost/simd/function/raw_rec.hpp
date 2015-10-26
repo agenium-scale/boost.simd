@@ -16,11 +16,36 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes raw_rec value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes an rough approximation of the inverse of its parameter.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    T r = raw_rec(x);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = T(1)/x;
+    @endcode
+
+    @par Note:
+
+    Raw means that the computation is possibly done with the most speed available
+    on current hardware but with the least precision.
+
+
+    @see rec
+
+    @return      a value of the type of the input.
+
+
+**/
   template<typename T> auto raw_rec(T const& x) {}
 
   namespace functional

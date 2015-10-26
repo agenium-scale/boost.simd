@@ -16,11 +16,33 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-boolean
 
-    Computes ifnotinc value of its parameter.
+    @ingroup group-boolean
 
-  **/
+    Increments a value by 1 if a predicate is false.
+
+    @par Semantic:
+
+    For every parameters of types respectively T0, T1:
+
+    @code
+    T1 r = ifnotinc(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    T1 r = a0 ? a1 : a1+one;
+    @endcode
+
+    @par Alias:
+    @c selnotinc
+
+
+
+    @return a value of the same type as the second parameter
+
+**/
   template<typename T> auto ifnotinc(T const& x) {}
 
   namespace functional

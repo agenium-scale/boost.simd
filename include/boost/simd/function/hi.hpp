@@ -16,11 +16,27 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-bitwise
 
-    Computes hi value of its parameter.
+    @ingroup group-bitwise
 
-  **/
+    Returns the high part of the entry
+    as an unsigned integer of the size of
+    the input.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    as_integer<T,unsigned> r = hi(x);
+    @endcode
+
+    @see  lo
+
+    @return      a value of the unsigned integer
+                 type associated to the input.
+
+
+**/
   template<typename T> auto hi(T const& x) {}
 
   namespace functional

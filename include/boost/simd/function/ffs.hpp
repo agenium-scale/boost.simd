@@ -16,11 +16,26 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-bitwise
 
-    Computes ffs value of its parameter.
+    @ingroup group-bitwise
 
-  **/
+    returns the index
+    of the first bit set (beginning with the least
+    significant bit) in the parameter.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    as_integer<T,unsigned> r = ffs(x);
+    @endcode
+
+    @see  firstbitset,  firstbitunset
+
+    @return      a value unsigned integral type associated to the input.
+
+
+**/
   template<typename T> auto ffs(T const& x) {}
 
   namespace functional

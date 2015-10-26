@@ -16,11 +16,21 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes two_split value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    @brief
+
+    For any real @c a0, two_split computes two reals @c r0 and @c r1 so that:
+
+    @code
+    a0 = r0+r1
+    @endcode
+
+    and where @c r0 and @c r1 bit pattern don't overlap.
+
+
+**/
   template<typename T> auto two_split(T const& x) {}
 
   namespace functional

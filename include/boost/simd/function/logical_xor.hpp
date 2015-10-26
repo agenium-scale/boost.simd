@@ -16,11 +16,28 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes logical_xor value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the logical xor of its parameter.
+
+    @par semantic:
+    For any given value @c x and @c y of type @c T:
+
+    @code
+    as_logical<T> r = logical_xor(x, y);
+    @endcode
+
+    is similar to:
+
+    @code
+    as_logical<T> r = !x != !y;
+    @endcode
+
+
+    @return a logical value of the logical type associated to the input.
+
+**/
   template<typename T> auto logical_xor(T const& x) {}
 
   namespace functional

@@ -16,11 +16,31 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes iceil value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the integer conversion of the ceil of its parameter.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    as_integer<T> r = iceil(x);
+    @endcode
+
+    is equivalent to:
+
+    @code
+    as_integer<T> r = toints(ceil(x));
+    @endcode
+
+    @par Note:
+    This operation is properly saturated
+
+    @return an integral value of the integral type associated to the input.
+
+
+**/
   template<typename T> auto iceil(T const& x) {}
 
   namespace functional

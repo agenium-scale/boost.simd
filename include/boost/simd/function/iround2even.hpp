@@ -16,11 +16,29 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes iround2even value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the integer conversion of the round2even of its parameter.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    as_integer<T> r = iround2even(x);
+    @endcode
+
+    is similar to:
+
+    @code
+    as_integer<T> r = toints(round2even(x));
+    @endcode
+
+
+    @return an integral value of the integral type associated to the input.
+
+
+**/
   template<typename T> auto iround2even(T const& x) {}
 
   namespace functional

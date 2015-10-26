@@ -31,12 +31,11 @@ namespace boost { namespace simd
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::bitwise_cast_,bitwise_cast);
   }
-  BOOST_DISPATCH_FUNCTION_DEFINITION(tag::bitwise_cast_,bitwise_cast);
 
-  template < typename Target,  typename Arg >
-  Target bitwise_cast(Arg&& arg)
+  template < typename Target,  typename Arg > BOOST_FORCEINLINE
+  Target bitwise_cast(Arg&& arg) BOOST_NOEXCEPT
   {
-    return bitwise_cast(std::forward<Arg>(arg), boost::dispatch::as_<Target>{});
+    return functional::bitwise_cast(std::forward<Arg>(arg), boost::dispatch::as_<Target>{});
   }
 } }
 

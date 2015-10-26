@@ -16,11 +16,34 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-bitwise
 
-    Computes genmask value of its parameter.
+    @ingroup group-bitwise
 
-  **/
+    Returns a mask of bits. All ones if the
+    input element is non zero else all zeros.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    T r = genmask(x);
+    @endcode
+
+    is similar to
+
+    @code
+    T r = x ? Allbits : Zero;
+    @endcode
+
+    @par Alias:
+    @c typed_mask, @c logical2mask, @c l2m, @c typed_mask, @c if_allbits_else_zero
+
+    @see if_allbits_else
+
+    @return      a value of the type of the input.
+
+
+**/
   template<typename T> auto genmask(T const& x) {}
 
   namespace functional

@@ -16,11 +16,25 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-bitwise
 
-    Computes firstbitset value of its parameter.
+    @ingroup group-bitwise
 
-  **/
+    Returns the bit pattern in which the only bit set is
+    the first bit set (beginning with the least significant bit) in the parameter.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    as_integer<T,unsigned> r = firstbitset(x);
+    @endcode
+
+    @see  ffs,  firstbitunset
+
+    @return      a value unsigned integral type associated to the input.
+
+
+**/
   template<typename T> auto firstbitset(T const& x) {}
 
   namespace functional

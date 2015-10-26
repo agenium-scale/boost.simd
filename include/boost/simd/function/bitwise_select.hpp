@@ -16,11 +16,36 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-bitwise
 
-    Computes bitwise_select value of its parameter.
+    @ingroup group-bitwise
 
-  **/
+    Returns the bitwise selection of bits from the second
+    or third operand according to the setting of the bits
+    of the first operand
+
+    @par semantic:
+    For any given value @c x, of type @c T1, @c y of type @c T2 and @c z of type @c T2
+    of same memory size:
+
+    @code
+    T2 r = bitwise_select(x, y, z);
+    @endcode
+
+    The code is equivalent to:
+
+    @code
+    T2 r = (x&y)|(z&~y);
+    @endcode
+
+    @par Alias
+
+    b_select
+
+
+    @return      a value of the same type as the second input.
+
+
+**/
   template<typename T> auto bitwise_select(T const& x) {}
 
   namespace functional

@@ -38,7 +38,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A0 const& a1
                                     , typename std::enable_if<bd::cardinal_of<A1>::value
                                      == bd::cardinal_of<A0>::value>::type* = 0
-                                    ) const BOOST_NOEXCEPT
+                                    ) const
     {
       using s_t = bd::scalar_of_t<A0>;
       BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "ror : rotation is out of range");
@@ -58,7 +58,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1 const& a1
                                     , typename std::enable_if<bd::cardinal_of<A1>::value
                                      == bd::cardinal_of<A0>::value>::type* = 0
-                                    ) const BOOST_NOEXCEPT
+                                    ) const
     {
       using i_t = bd::as_integer_t<A0, unsigned>;
       return bitwise_cast<A0>( ror ( bitwise_cast<i_t>(a0)

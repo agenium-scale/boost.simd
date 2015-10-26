@@ -16,11 +16,23 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-bitwise
 
-    Computes reversebits value of its parameter.
+    @ingroup group-bitwise
 
-  **/
+    Returns the bits of the entry in reverse order.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    T r = reversebits(x);
+    @endcode
+
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto reversebits(T const& x) {}
 
   namespace functional

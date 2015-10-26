@@ -16,11 +16,35 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes oneminus value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Returns the one minus the entry, saturated in the entry type.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    T r = oneminus(x);
+    @endcode
+
+    For signed type is similar to:
+
+    @code
+    T r = 1-x
+    @endcode
+
+    For unsigned type it is equivalent (due to saturation) to:
+
+    @code
+    T r = x == 0 ? 1 : 0
+    @endcode
+
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto oneminus(T const& x) {}
 
   namespace functional

@@ -16,11 +16,32 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-bitwise
 
-    Computes ilog2 value of its parameter.
+    @ingroup group-bitwise
 
-  **/
+    Returns the integer part of the base 2
+    logarithm of the input.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    as_integer<T> r = ilog2(x);
+    @endcode
+
+    The code is similar to
+
+    @code
+    as_integer<T> r = toints(log2(x));
+    @endcode
+
+    @see  twopower, exponent
+
+    @return      a value of the integer
+                 type associated to the input.
+
+
+**/
   template<typename T> auto ilog2(T const& x) {}
 
   namespace functional

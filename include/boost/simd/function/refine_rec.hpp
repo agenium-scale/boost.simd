@@ -16,11 +16,21 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes refine_rec value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Performs a Newton-Raphson step to improve precision of reciprocate estimate.
+    This function can be used in conjunction with funcref{raw_rec} or
+    funcref{fast_rec} to add more precision to the estimate if their default
+    precision is not enough.
+
+
+    @see funcref{rec
+
+    @return  A value estimating rec(a0) with twice as much precision
+
+
+**/
   template<typename T> auto refine_rec(T const& x) {}
 
   namespace functional

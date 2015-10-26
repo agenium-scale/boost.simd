@@ -16,11 +16,46 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes fma value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the (fused) multiply add of the three parameters.
+
+    @par semantic:
+    For any given value @c x,  @c y,  @c z of type @c T:
+
+    @code
+    T r = fma(x, y, z);
+    @endcode
+
+    The code is similar to:
+
+    @code
+    T r = x*y+z;
+    @endcode
+
+    @par Note
+    Correct fused multiply/add implies
+
+    1) only one rounding
+
+    2) no "intermediate" overflow
+
+    fma provides this each time it is reasonable
+    in terms of performance (mainly if the system has the hard
+    wired capability).
+    If you need fma in all circumstances in your own
+    code use correct_fma.
+
+    @par Alias
+
+    @c madd
+
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto fma(T const& x) {}
 
   namespace functional

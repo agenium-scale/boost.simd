@@ -16,11 +16,34 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes hypot value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes \f$(x^2 + y^2)^{1/2}\f$
+
+    @par semantic:
+    For any given value @c x,  @c y of floating type @c T:
+
+    @code
+    T r = hypot(x, y);
+    @endcode
+
+    The code is similar to:
+
+    @code
+    T r = sqrt(sqr(x)+sqr(y));
+    @endcode
+
+    Provision are made to avoid overflow as possible and to compute
+    @c hypot accurately.
+    If these considerations can be put aside use
+    hypot(x,y,fast_).
+
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto hypot(T const& x) {}
 
   namespace functional

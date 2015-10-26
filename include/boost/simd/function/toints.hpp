@@ -16,11 +16,40 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes toints value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Convert to integer by saturated truncation.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    as_integer<T> r = toints(x);
+    @endcode
+
+    The code is similar to:
+
+    @code
+    as_integer<T> r = static_cast<as_integer<T> >(saturate<as_integer<T> >(x))
+    @endcode
+
+    @par Notes:
+
+    The Inf -Inf and Nan values are treated properly and go respectively to
+    Valmax, Valmin and Zero of the destination integral type
+    All values superior (resp.) less than Valmax (resp. Valmin) of the return type
+    are saturated accordingly.
+
+    @par Alias
+
+    @c ifix,  @c itrunc, @c saturated_toint
+
+
+    @return      a value of the integer same type associated to the input.
+
+
+**/
   template<typename T> auto toints(T const& x) {}
 
   namespace functional

@@ -16,11 +16,25 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-bitwise
 
-    Computes rol value of its parameter.
+    @ingroup group-bitwise
 
-  **/
+    Returns the first entry rotated left
+    by the absolute value of the second entry.
+
+    @par semantic:
+    For any given value @c x of type @c T, n  of type @c I:
+
+    @code
+    T r = rol(x, n);
+    @endcode
+
+    @see  ror, rrol, rror
+
+    @return      a value of the same type as the first input.
+
+
+**/
   template<typename T> auto rol(T const& x) {}
 
   namespace functional

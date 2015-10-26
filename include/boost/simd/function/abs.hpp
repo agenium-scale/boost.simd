@@ -42,9 +42,13 @@ namespace boost { namespace simd
     saturated functor or convert the input parameter to a larger type
     before taking the absolute value.
 
-    @see  boost::simd::abss, boost::simd::sqr_abs, boost::simd::sqrs
+    @par Alias
 
-    @param x value whose absolute value will be returned
+    modulus
+
+    @see  abss, sqr_abs, sqrs
+
+   @param x value whose absolute value will be returned
 
     @return The absolute value of the parameter.
   **/

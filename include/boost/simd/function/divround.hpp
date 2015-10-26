@@ -16,11 +16,36 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes divround value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the round of the division.
+
+    @par semantic:
+    For any given value @c x,  @c y of type @c T:
+
+    @code
+    T r = divround(x, y);
+    @endcode
+
+    The code is similar to:
+
+    @code
+    T r = round(x/y);
+    @endcode
+
+    for integral types, if y is null, it returns Valmax or Valmin
+    if x is positive (resp. negative) and 0 if x is null.
+    Take also care that dividing Valmin by -1 for signed integral types has
+    undefined behaviour.
+
+    @see  divides, rec, divs, divfloor,
+    divceil, divround2even, divfix
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto divround(T const& x) {}
 
   namespace functional

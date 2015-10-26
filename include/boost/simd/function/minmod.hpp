@@ -16,11 +16,30 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes minmod value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Return the minimum of the two entries
+    if they have the same sign, otherwise 0
+
+    @par semantic:
+    For any given value @c x,  @c y of type @c T:
+
+    @code
+    T r = minmod(x, y);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r =  x*y > 0 ? min(x, y) : 0;
+    @endcode
+
+
+    @return      a value of the same type as the inputs.
+
+
+**/
   template<typename T> auto minmod(T const& x) {}
 
   namespace functional

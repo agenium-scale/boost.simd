@@ -16,11 +16,34 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes meanof value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the mean of its parameter avoiding overflow.
+
+    @par semantic:
+    For any given value @c x and @c y of type @c T:
+
+    @code
+    T r = meanof(x, y);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = (x+y)/2;
+    @endcode
+
+    @par Note:
+    Take care that for integers the value returned can differ by one unit
+    from \c ceil((a+b)/2.0) or \c floor((a+b)/2.0), but is always one of
+    the two values.
+
+
+    @return an value of the same type as the input.
+
+
+**/
   template<typename T> auto meanof(T const& x) {}
 
   namespace functional

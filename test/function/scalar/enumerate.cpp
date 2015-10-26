@@ -21,8 +21,8 @@ STF_CASE_TPL( "Check enumerate behavior with all types", STF_NUMERIC_TYPES )
 {
   namespace bs = boost::simd;
   using bs::enumerate;
-  using r_t = decltype(enumerate(1, bs::as_<T>()));
-  STF_TYPE_IS(r_t, T);
+//   using r_t = decltype(enumerate(1, bs::as_<T>()));
+//   STF_TYPE_IS(r_t, T);
 
   STF_EQUAL(enumerate<T>(1),  T(1));
   STF_EQUAL(enumerate<T>() ,  T(0));

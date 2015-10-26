@@ -16,11 +16,34 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-boolean
 
-    Computes logical_andnot value of its parameter.
+    @ingroup group-boolean
 
-  **/
+    return the logical and of the first parameter and of the negation the second parameter
+    the result type is logical type associated to the first parameter
+
+    @par Semantic:
+
+    For every parameters of types respectively T0, T1:
+
+    @code
+    as_logical<T0> r = logical_andnot(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    as_logical<T0> r = a0 && !a1;
+    @endcode
+
+    @par Alias:
+    @c l_andnot
+
+
+
+    @return a value of the logical type asssociated to the first parameter
+
+**/
   template<typename T> auto logical_andnot(T const& x) {}
 
   namespace functional

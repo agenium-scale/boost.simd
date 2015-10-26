@@ -14,19 +14,43 @@
 
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
-{
+                  {
   /*!
-  @ingroup group-arithmetic
+    @ingroup group-arithmetic
 
-    Computes average value of its parameter.
+    Computes the arithmetic mean of its parameters.
 
+    @par semantic:
+    For any given value @c x,  @c y of type @c T:
+
+    @code
+    T r = average(x, y);
+    @endcode
+
+    For floating point values the code is equivalent to:
+
+    @code
+    T r = (x+y)/T(2);
+    @endcode
+
+    for integer types  it returns a rounded value at a distance guaranteed
+    less or equal to 0.5 of the average floating value,  but can differ
+    of one unity from the truncation given by (x1+x2)/T(2).
+
+    @par Note:
+
+    This function does not overflow.
+
+    @see meanof
+
+    @return      a value of the same type as the input.
   **/
-  template<typename T> auto average(T const& x) {}
+  template<typename T> auto average(T const& x, T const& y) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
 
       Function object tied to simd::average
 

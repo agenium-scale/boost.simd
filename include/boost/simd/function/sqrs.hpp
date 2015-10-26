@@ -16,11 +16,33 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes sqrs value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the saturated square of its parameter.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    T r = sqrs(x);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = x*x > Valmax ? Valmax : x*x;
+    @endcode
+
+    @par Alias
+
+    @c sqrs, saturated_sqr
+
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto sqrs(T const& x) {}
 
   namespace functional

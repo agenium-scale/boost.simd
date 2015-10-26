@@ -16,11 +16,40 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes remainder value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the remainder of division.
+    The return value is a0-n*a1, where n is the value a0/a1,
+    rounded to the nearest integer (using round2even).
+
+    @par semantic:
+    For any given value @c x, @c y of type @c T:
+
+    @code
+    T r = remainder(x, y);
+    @endcode
+
+    For floating point values the code is equivalent to:
+
+    @code
+    T r = x-divround2even(x, y)*y;
+    @endcode
+
+    @par Note:
+
+    As r can be negative, @c remainder is not defined for unsigned types.
+
+    @see mod, rem
+    @par Alias
+
+    @c drem
+
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto remainder(T const& x) {}
 
   namespace functional

@@ -16,11 +16,29 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes iround value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the integer conversion of the round of its parameter.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    as_integer<T> r = iround(x);
+    @endcode
+
+    is similar to:
+
+    @code
+    as_integer<T> r = toints(round(x));
+    @endcode
+
+
+    @return an integral value of the integral type associated to the input.
+
+
+**/
   template<typename T> auto iround(T const& x) {}
 
   namespace functional

@@ -27,7 +27,7 @@
 namespace boost { namespace simd {
   namespace detail
   {
-    template<class T>
+    template<typename T>
     BOOST_FORCEINLINE T nextafter(T a0, T a1)
     {
       if(a0 > a1 && a0 == Inf<T>())

@@ -16,11 +16,25 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-bitwise
 
-    Computes popcnt value of its parameter.
+    @ingroup group-bitwise
 
-  **/
+    Returns the number of bit sets the input.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    as_integer<T, unsigned> r = popcnt(x);
+    @endcode
+
+    @see  clz, ctz
+
+    @return      a value of the unsigned integer
+                 type associated to the input.
+
+
+**/
   template<typename T> auto popcnt(T const& x) {}
 
   namespace functional

@@ -16,11 +16,38 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes negs value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the saturated negation of the input.
+
+    @par semantic:
+    For any given value @c x, @c y of type @c T:
+
+    @code
+    T r = negs(x);
+    @endcode
+
+    The code is equivalent to:
+
+    @code
+    T r = -x
+    @endcode
+
+    @par Note:
+    For integers types @c negs(Valmin) returns @c Valmax.
+
+    @c negs is not defined for unsigned types.
+
+    @par Alias
+
+    saturated_neg
+
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto negs(T const& x) {}
 
   namespace functional

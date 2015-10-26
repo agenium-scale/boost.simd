@@ -16,11 +16,30 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes rec value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Returns the inverse of the entry.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    T r = rec(x);
+    @endcode
+
+    The code is similar to:
+
+    @code
+    T r = T(1)/x;
+    @endcode
+
+
+
+    @return      a value of the type of the input.
+
+
+**/
   template<typename T> auto rec(T const& x) {}
 
   namespace functional

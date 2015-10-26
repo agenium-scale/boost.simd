@@ -16,11 +16,33 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes sqr_abs value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the square of the absolute value of its parameter.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    T r = sqr_abs(x);
+    @endcode
+
+    is equivalent to:
+
+    @code
+    T r = sqr(abs(x));
+    @endcode
+
+    @par Alias
+
+    @c sqr_modulus
+
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto sqr_abs(T const& x) {}
 
   namespace functional

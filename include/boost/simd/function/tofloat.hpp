@@ -16,11 +16,29 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes tofloat value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Convert to floating point value.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    as_floating<T> r = tofloat(x);
+    @endcode
+
+    The code is similar to:
+
+    @code
+    as_floating<T> r = static_cast < as_floating<T> >(x)
+    @endcode
+
+
+    @return      a value of the floating  type associated to the input.
+
+
+**/
   template<typename T> auto tofloat(T const& x) {}
 
   namespace functional

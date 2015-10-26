@@ -16,11 +16,33 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes idivfix value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the integer conversion of the truncated division of its parameters.
+
+    @par semantic:
+    For any given value @c x,  @c y of type @c T:
+
+    @code
+    T r = idivfix(x, y);
+    @endcode
+
+    The code is similar to:
+
+    @code
+    as_integer<T> r = toints(trunc(x/y));
+    @endcode
+
+    If y is null, it returns Valmax (resp. Valmin)
+    if x is positive (resp. negative) and 0 if x is null.
+
+
+    @see funcref{toints, funcref{trunc
+    @return      a value of the integral type associated to the input.
+
+
+**/
   template<typename T> auto idivfix(T const& x) {}
 
   namespace functional
