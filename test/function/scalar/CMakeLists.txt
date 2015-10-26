@@ -31,11 +31,11 @@ set ( SOURCES
    divround2even.cpp
    divround.cpp
    divs.cpp
-   fast_hypot.cpp
-   fast_iround2even.cpp
-   fast_rec.cpp
-   fast_sqrt.cpp
-   fast_toint.cpp
+#   fast_hypot.cpp
+#   fast_iround2even.cpp
+#   fast_rec.cpp
+#   fast_sqrt.cpp
+#   fast_toint.cpp
    floor.cpp
    fma.cpp
    fms.cpp
@@ -63,9 +63,9 @@ set ( SOURCES
    negs.cpp
    oneminus.cpp
    oneplus.cpp
-   raw_rec.cpp
+#   raw_rec.cpp
    rec.cpp
-   refine_rec.cpp
+#   refine_rec.cpp
    remainder.cpp
    rem.cpp
    remquo.cpp
@@ -149,8 +149,8 @@ set ( SOURCES
    eps.cpp
    exponentbits.cpp
    exponent.cpp
-   fast_frexp.cpp
-   fast_ldexp.cpp
+#   fast_frexp.cpp
+#   fast_ldexp.cpp
    frac.cpp
    frexp.cpp
    ilogb.cpp
@@ -187,7 +187,7 @@ set ( SOURCES
    comma.cpp
    complement.cpp
    divides.cpp
-   fast_divides.cpp
+#   fast_divides.cpp
    if_else.cpp
    is_equal.cpp
    is_greater_equal.cpp
@@ -198,7 +198,7 @@ set ( SOURCES
    logical_and.cpp
    logical_not.cpp
    logical_or.cpp
-   map.cpp
+#   map.cpp
    minus.cpp
    modulo.cpp
    multiplies.cpp
@@ -271,7 +271,7 @@ set ( SOURCES
 #swar
 #   all_reduce.cpp
    broadcast.cpp
-   combine.cpp
+#   combine.cpp
    cummax.cpp
    cummin.cpp
    cumprod.cpp
