@@ -14,5 +14,6 @@
 
 #include <boost/simd/function/definition/hypot.hpp>
 #include <boost/simd/arch/common/scalar/function/hypot.hpp>
+#include <boost/simd/arch/common/generic/function/hypot.hpp>
 
 #endif
