@@ -24,7 +24,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::target_<bd::scalar_<bd::unspecified_<T>>>
                           )
   {
-    static_assert ( bd::models_t<T,bd::scalar_<logical_<brigand::_1>>>::value
+    static_assert ( bd::models<typename T::type,bd::scalar_<logical_<brigand::_1>>>::type::value
                   , "boost::simd::False requires logical target types"
                   );
 
