@@ -13,10 +13,11 @@
 #ifndef BOOST_SIMD_FUNCTION_DEFINITION_SATURATE_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_DEFINITION_SATURATE_HPP_INCLUDED
 
-#include <boost/dispatch/function/make_callable.hpp>
-#include <boost/dispatch/hierarchy/functions.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/as.hpp>
+#include <boost/dispatch/function/make_callable.hpp>
+#include <boost/dispatch/hierarchy/functions.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd
 {
@@ -35,14 +36,10 @@ namespace boost { namespace simd
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::saturate_,saturate);
   }
 
-  BOOST_DISPATCH_FUNCTION_DEFINITION(tag::saturate_, saturate);
-
-} }
-namespace boost { namespace simd
-{
-  template < class T,  class A> A saturate(const A& a)
+  template<typename T, typename A> BOOST_FORCEINLINE A saturate(const A& a) BOOST_NOEXCEPT
   {
-    return saturate(a, as_<T>());
+    return functional::saturate(a, as_<T>());
   }
 } }
+
 #endif

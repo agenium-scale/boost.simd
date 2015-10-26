@@ -17,11 +17,27 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-bitwise
 
-    Computes lo value of its parameter.
+    @ingroup group-bitwise
 
-  **/
+    Returns the low part of the entry
+    as an unsigned integer of the size of
+    the input.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    as_integer<T,unsigned> r = lo(x);
+    @endcode
+
+    @see  hi
+
+    @return      a value of the unsigned integer
+    type associated to the input.
+
+
+**/
   template<typename T> auto lo(T const& x) {}
 
   namespace functional

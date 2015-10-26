@@ -17,11 +17,34 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-boolean
 
-    Computes logical_notor value of its parameter.
+    @ingroup group-boolean
 
-  **/
+    return the logical or of the negation of the first parameter and the second parameter
+    the result type is logical type associated to the first parameter
+
+    @par Semantic:
+
+    For every parameters of types respectively T0, T1:
+
+    @code
+    as_logical<T0> r = logical_notor(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    as_logical<T0> r = !a0 || a1;
+    @endcode
+
+    @par Alias:
+    @c l_notor
+
+
+
+    @return a value of the logical type asssociated to the first parameter
+
+**/
   template<typename T> auto logical_notor(T const& x) {}
 
   namespace functional

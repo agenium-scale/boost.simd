@@ -17,11 +17,37 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-boolean
 
-    Computes seladd value of its parameter.
+    @ingroup group-boolean
 
-  **/
+
+    The function returns the second entry or the sum of the second
+    and third entries, according to the first entry being False or
+    True
+
+    @par Semantic:
+
+    For every parameters of types respectively T0, T1, T1:
+
+    @code
+    T1 r = seladd(a0,a1,a2);
+    @endcode
+
+    is similar to:
+
+    @code
+    T1 r = a0 ? a1+a2 : a1;
+    @endcode
+
+    @par Alias:
+    @c ifadd
+
+
+
+
+    @return a value of the same type as the second parameter
+
+**/
   template<typename T> auto seladd(T const& x) {}
 
   namespace functional

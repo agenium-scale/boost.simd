@@ -17,11 +17,29 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-bitwise
 
-    Computes bits value of its parameter.
+    @ingroup group-bitwise
 
-  **/
+    Returns an unsigned integer value which has the same bits as the input
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    T r = bits(x);
+    @endcode
+
+    is equivalent to:
+
+    @code
+    as_integer<T,unsigned> r = bitwase_cast< as_integer<T,unsigned>>(a0);
+    @endcode
+
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto bits(T const& x) {}
 
   namespace functional

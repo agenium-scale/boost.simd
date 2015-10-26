@@ -17,11 +17,35 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes dist value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the (saturated) absolute value of the difference of its parameters.
+
+    @par semantic:
+    For any given value @c x,  @c y of type @c T:
+
+    @code
+    T r = dist(x, y);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = abs(x-y);
+    @endcode
+
+    @par Note
+
+    The result is never negative. For floating, it can of course be Nan.
+
+    @see  ulpdist
+
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto dist(T const& x) {}
 
   namespace functional

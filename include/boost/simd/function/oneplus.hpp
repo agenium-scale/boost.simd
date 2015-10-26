@@ -17,11 +17,30 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes oneplus value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Returns the one plus the entry, saturated in the entry type.
+    If @c x is not Nan, @c oneplus(x) is greater or equal to x.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    T r = oneplus(x);
+    @endcode
+
+    The code is similar to:
+
+    @code
+    T r = 1+x
+    @endcode
+
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto oneplus(T const& x) {}
 
   namespace functional

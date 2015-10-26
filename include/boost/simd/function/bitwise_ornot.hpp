@@ -17,11 +17,36 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-bitwise
 
-    Computes bitwise_ornot value of its parameter.
+    @ingroup group-bitwise
 
-  **/
+    Computes the bitwise and not of its parameters.
+
+    @par semantic:
+    For any given value @c x, of type @c T1 @c y of type @c T2
+    of same memory size:
+
+    @code
+    T1 r = bitwise_ornot(x, y);
+    @endcode
+
+    The code is equivalent to:
+
+    @code
+    T1 r = x | ~y;
+    @endcode
+
+    @par Alias
+
+    b_ornot
+
+    @see  bitwise_and, bitwise_xor, bitwise_notand,
+    bitwise_andnot, bitwise_notor, bitwise_ornot, complement
+
+    @return      a value of the same type as the first input.
+
+
+**/
   template<typename T> auto bitwise_ornot(T const& x) {}
 
   namespace functional

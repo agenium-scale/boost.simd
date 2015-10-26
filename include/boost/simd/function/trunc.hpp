@@ -17,11 +17,46 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes trunc value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the truncation toward zero of its parameter.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    T r = trunc(x);
+    @endcode
+
+    The code is similar to:
+
+    @code
+    T r = sign(x)*floor(abs(x));
+    @endcode
+
+    @par Note:
+
+    For floating point number it is also one of the two ouputs of
+    the modf function.
+    And we have:
+
+    @code
+    trunc(x) + frac(x) == x;
+    @endcode
+
+    except for nans
+
+    @par Alias
+
+    fix
+
+    @see abs, frac, floor, sign
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto trunc(T const& x) {}
 
   namespace functional

@@ -17,11 +17,24 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes sqrt value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the square root of its parameter. For integers it is the
+    truncation of the real square root.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    T r = sqrt(x);
+    @endcode
+
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto sqrt(T const& x) {}
 
   namespace functional

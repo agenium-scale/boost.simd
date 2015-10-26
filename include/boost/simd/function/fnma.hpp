@@ -17,11 +17,28 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes fnma value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the fused negated add-multiply of three values.
+
+    @par semantic:
+    For any given value @c x,  @c y,  @c z of type @c T:
+
+    @code
+    T r = fnam(x, y, z);
+    @endcode
+
+    The code is similar to:
+
+    @code
+    T r = -(x+y*z);
+    @endcode
+
+
+    @return a value of the same type as the input.
+
+**/
   template<typename T> auto fnma(T const& x) {}
 
   namespace functional

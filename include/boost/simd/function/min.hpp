@@ -17,11 +17,29 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes min value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the smallest of its parameter.
+
+    @par semantic:
+    For any given value @c x and @c y of type @c T:
+
+    @code
+    T r = min(x, y);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r =  if (x < y) ? x : y;
+    @endcode
+
+
+    @return an value of the same type as the input.
+
+
+**/
   template<typename T> auto min(T const& x) {}
 
   namespace functional

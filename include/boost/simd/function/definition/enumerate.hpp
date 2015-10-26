@@ -36,23 +36,20 @@ namespace boost { namespace simd
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::enumerate_,enumerate);
   }
 
-  BOOST_DISPATCH_FUNCTION_DEFINITION(tag::enumerate_, enumerate);
-
-} }
-
-namespace boost { namespace simd
-{
-  template < class T> T enumerate()
+  template < class T>
+  BOOST_FORCEINLINE T enumerate() BOOST_NOEXCEPT
   {
-    return enumerate(Zero<T>(), as_<T>());
+    return functional::enumerate(Zero<T>(), as_<T>());
   }
-  template < class T,  class A> T enumerate(const A& a)
+  template < class T,  class A>
+  BOOST_FORCEINLINE T enumerate(const A& a) BOOST_NOEXCEPT
   {
-    return enumerate(a, as_<T>());
+    return functional::enumerate(a, as_<T>());
   }
-  template < class T,  class A, class B> T enumerate(const A& a, const B& )
+  template < class T,  class A, class B>
+  BOOST_FORCEINLINE T enumerate(const A& a, const B& ) BOOST_NOEXCEPT
   {
-    return enumerate(a, as_<T>());
+    return functional::enumerate(a, as_<T>());
   }
 } }
 

@@ -17,11 +17,20 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes chop value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+
+  chop (x, ndigits, base)
+  truncate elements of x to a length of ndigits such that the
+  resulting numbers are exactly divisible by base.  if base is not
+  specified it defaults to 10.
+  chop(x,n) chops aways from 0 to n digits:
+
+  @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto chop(T const& x) {}
 
   namespace functional

@@ -17,11 +17,33 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes conj value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the conjugate value of its parameter (identity for reals).
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    T r = conj(x);
+    @endcode
+
+    for real parameters is equivalent to:
+
+    @code
+    T r = x
+    @endcode
+
+    @par Alias
+
+    conjugate
+
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto conj(T const& x) {}
 
   namespace functional

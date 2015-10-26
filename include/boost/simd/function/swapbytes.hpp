@@ -17,11 +17,24 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-bitwise
 
-    Computes swapbytes value of its parameter.
+    @ingroup group-bitwise
 
-  **/
+    Reverse the byte order of each scalar value
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    T r = swapbytes(x);
+    @endcode
+
+
+
+    @return      a value of the unsigned integer type associated to the first input.
+
+
+**/
   template<typename T> auto swapbytes(T const& x) {}
 
   namespace functional

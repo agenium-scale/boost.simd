@@ -17,11 +17,32 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes ifloor value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the integer conversion of the floor of its parameter.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    as_integer<T> r = ifloor(x);
+    @endcode
+
+    is equivalent to:
+
+    @code
+    as_integer<T> r = toints(floor(x));
+    @endcode
+
+    @par Note:
+    This operation is properly saturated
+
+     @return an integral value of the integral type associated to the input.
+
+
+
+**/
   template<typename T> auto ifloor(T const& x) {}
 
   namespace functional

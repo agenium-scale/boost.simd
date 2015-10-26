@@ -17,11 +17,36 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes divceil value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the ceil of the division of its parameters.
+
+    @par semantic:
+    For any given value @c x,  @c y of type @c T:
+
+    @code
+    T r = divceil(x, y);
+    @endcode
+
+    For floating point values the code is equivalent to:
+
+    @code
+    T r = ceil(x/y);
+    @endcode
+
+    for integral types, if y is null, it returns Valmax (resp. Valmin)
+    if x is positive (resp. negative), and 0 if x is null.
+    Take care also that dividing Valmin by -1 for signed integral types has
+    undefined behaviour.
+
+    @see  divides, rec, divs, divfloor,
+    divround, divround2even, divfix
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto divceil(T const& x) {}
 
   namespace functional

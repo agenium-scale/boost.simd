@@ -17,11 +17,25 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-bitwise
 
-    Computes rror value of its parameter.
+    @ingroup group-bitwise
 
-  **/
+    Returns the first entry rotated right or left
+    by the absolute value of the second entry,
+    according to its sign.
+
+    @par semantic:
+    For any given value @c x of type @c T, n  of type @c I:
+
+    @code
+    T r = rror(x, n);
+    @endcode
+
+
+    @return      a value of the same type as the first input.
+
+
+**/
   template<typename T> auto rror(T const& x) {}
 
   namespace functional

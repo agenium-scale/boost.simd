@@ -17,11 +17,32 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes mod value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the remainder of division.
+    The return value is a0-n*a1, where n is the value a0/a1,
+    truncated to -inf.
+
+    @par semantic:
+    For any given value @c x, @c y of type @c T:
+
+    @code
+    T r = mod(x, y);
+    @endcode
+
+    The code is similar to:
+
+    @code
+    T r = x-divfloor(x, y)*y;
+    @endcode
+
+    @see remainder, rem
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto mod(T const& x) {}
 
   namespace functional

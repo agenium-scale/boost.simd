@@ -17,11 +17,55 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes correct_fma value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes fused multiply/add of its parameter.
+
+    @par semantic:
+    For any given value @c a, @c b, @c c of type @c T:
+
+    @code
+    T r = correct_fma(a, b, c);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = a*b+c;
+    @endcode
+
+    but with only one rounding
+
+    @par Note:
+
+    For integer a*b+c is performed
+
+    For floating points numbers, always compute the correct fused multiply add,
+    this means the computation of a0*a1+a2 with only one rounding operation.
+    On machines not possessing this hard wired capability this can be very
+    expansive.
+
+    @c correct_fma is in fact a transitory function that allows to ensure
+    strict fma capabilities,  i.e. only one rounding operation and no undue
+    overflow in intermediate computations.
+
+    If you are using this function for a system with no hard wired fma
+    and are sure that overflow is not a problem
+    you can define BOOST_SIMD_DONT_CARE_CORRECT_FMA_OVERFLOW to get better
+    performances
+
+    This function is never used internally in boost/simd. See also
+    the fma function.
+
+    @see  fma
+
+
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto correct_fma(T const& x) {}
 
   namespace functional

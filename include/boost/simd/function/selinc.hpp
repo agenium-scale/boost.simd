@@ -17,11 +17,33 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-boolean
 
-    Computes selinc value of its parameter.
+    @ingroup group-boolean
 
-  **/
+    Increments a value by 1 if a predicate is true.
+
+    @par Semantic:
+
+    For every parameters of types respectively T0, T1:
+
+    @code
+    T1 r = selinc(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    T1 r = a0 ? a1+one : a1;
+    @endcode
+
+    @par Alias:
+    @c ifinc
+
+
+
+    @return a value of the same type as the second parameter
+
+**/
   template<typename T> auto selinc(T const& x) {}
 
   namespace functional

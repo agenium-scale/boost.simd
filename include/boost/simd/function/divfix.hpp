@@ -17,11 +17,40 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes divfix value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the truncated division of its parameters.
+
+    @par semantic:
+    For any given value @c x,  @c y of type @c T:
+
+    @code
+    T r = divfix(x, y);
+    @endcode
+
+    The code is similar to:
+
+    @code
+    T r = trunc(x/y);
+    @endcode
+
+    for integral types, if y is null, it returns Valmax (resp. Valmin)
+    if x is positive (resp. negative) and 0 if x is null.
+    Take also care that dividing Valmin by -1 for signed integral types has
+    undefined behaviour.
+
+    @par Alias
+
+    @c divtrunc
+
+    @see  divides, rec, divs, divfloor,
+    divround, divround2even
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto divfix(T const& x) {}
 
   namespace functional

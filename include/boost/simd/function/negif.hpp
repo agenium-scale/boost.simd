@@ -17,11 +17,31 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-boolean
 
-    Computes negif value of its parameter.
+    @ingroup group-boolean
 
-  **/
+    The function returns -a1 if a0 is true and a1 otherwise.
+    The two operands must have the same cardinal.
+
+    @par Semantic:
+
+    For every parameters of types respectively T0, T1:
+
+    @code
+    T1 r = negif(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    T1 r = a0 ? -a1 : a1;
+    @endcode
+
+
+
+    @return a value of the same type as the second parameter
+
+**/
   template<typename T> auto negif(T const& x) {}
 
   namespace functional

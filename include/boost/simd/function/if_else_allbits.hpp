@@ -17,11 +17,41 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-boolean
 
-    Computes if_else_allbits value of its parameter.
+    @ingroup group-boolean
 
-  **/
+    If a0 is true returns a1 else returns allbits
+
+    @par Semantic:
+
+    For every parameters of types respectively T0, T1:
+
+    @code
+    T r = if_else_allbits(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = a0 ? a1 : allbits;
+    @endcode
+
+
+    @par Alias:
+    @c  if_else_nan,
+    @c  ifelsenan,
+    @c  ifnot_nan_else,
+    @c  ifnotnanelse,
+    @c  if_else_allbits,
+    @c  ifelseallbits,
+    @c  ifnot_allbits_else,
+    @c  ifnotallbitselse,
+
+
+
+    @return a value of the same type as the second parameter
+
+**/
   template<typename T> auto if_else_allbits(T const& x) {}
 
   namespace functional

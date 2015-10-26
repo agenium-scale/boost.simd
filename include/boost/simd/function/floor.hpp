@@ -17,11 +17,26 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes floor value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the floor of its parameter.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    T r = floor(x);
+    @endcode
+
+    greatest integral value of type @c T less or equal to @c x.
+
+    @see  ceil, round, round2even, trunc, ifloor
+
+    @return      an integral value of the same type as the input.
+
+
+**/
   template<typename T> auto floor(T const& x) {}
 
   namespace functional

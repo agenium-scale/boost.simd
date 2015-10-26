@@ -17,11 +17,24 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes two_prod value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    @brief
+
+    For any two reals @c a0 and @c a1 two_prod computes two reals
+    @c r0 and @c r1 so that:
+
+    @code
+    r0 = a0 * a1
+    r1 = r0 -(a0 * a1)
+    @endcode
+
+    using perfect arithmetic. Its main usage is to be able to compute
+    sum of reals and the residual error using IEEE 754 arithmetic.
+
+
+**/
   template<typename T> auto two_prod(T const& x) {}
 
   namespace functional

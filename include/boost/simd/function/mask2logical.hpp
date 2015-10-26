@@ -17,11 +17,31 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-boolean
 
-    Computes mask2logical value of its parameter.
+    @ingroup group-boolean
 
-  **/
+    The function converts an arithmetic mask where each element is
+    Zero or Allbits to a logical value.
+    If it is not the case this function asserts.
+
+    @par Semantic:
+
+    For every parameters of types respectively T0:
+
+    @code
+    as_logical<T0> r = mask2logical(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    as_logical<T0> r = logical(a0);
+    @endcode
+
+
+    @return a value of the same type as the second parameter
+
+**/
   template<typename T> auto mask2logical(T const& x) {}
 
   namespace functional

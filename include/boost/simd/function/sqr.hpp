@@ -17,11 +17,29 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes sqr value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the square of its parameter.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    T r = sqr(x);
+    @endcode
+
+    is equivalent to:
+
+    @code
+    T r = x*x;
+    @endcode
+
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto sqr(T const& x) {}
 
   namespace functional

@@ -17,11 +17,30 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes rsqrt value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Returns the inverse of the square root of the input.
+
+    @par semantic:
+
+    For any given value @c x of floating type @c T:
+
+    @code
+    T r = rsqrt(x);
+    @endcode
+
+    For signed type is similar to:
+
+    @code
+    T r = T(1)/sqrt(x)
+    @endcode
+
+
+
+    @return      a value of the type of the input.
+
+**/
   template<typename T> auto rsqrt(T const& x) {}
 
   namespace functional

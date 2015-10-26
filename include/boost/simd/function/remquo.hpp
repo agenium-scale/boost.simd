@@ -17,11 +17,19 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes remquo value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    @brief Remainder and part of quotient
+
+    remquo computes the remainder and part of the quotient upon division of
+    @c a0 by @c a1. By design, the value of the remainder is the same as that
+    computed by the remainder function. The value of the computed quotient has
+    the sign of @c a0/a1 and agrees with the actual quotient in at least the low
+    order 3 bits.
+
+
+**/
   template<typename T> auto remquo(T const& x) {}
 
   namespace functional

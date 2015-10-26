@@ -17,11 +17,33 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes tenpower value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    @brief Returns \f$10^n\f$ in the floating type  corresponding to A0
+
+    @par semantic:
+    For any given value n  of integral type @c I, and T of type as_floating<I>::type
+
+    @code
+    T r = tenpower(n);
+    @endcode
+
+    code is similar to:
+
+    @code
+    T r = exp10(T(n));
+    @endcode
+
+    @par Note:
+
+    This function is not defined for floating entries
+
+
+    @return a value of the floating associated type.
+
+
+**/
   template<typename T> auto tenpower(T const& x) {}
 
   namespace functional

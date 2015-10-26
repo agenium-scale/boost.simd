@@ -17,11 +17,24 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-bitwise
 
-    Computes clz value of its parameter.
+    @ingroup group-bitwise
 
-  **/
+    Returns  the bit count of leading zeros.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    as_integer<T,unsigned> r = clz(x);
+    @endcode
+
+    @see  ctz, popcnt
+
+    @return      a value unsigned integral type associated to the input.
+
+
+**/
   template<typename T> auto clz(T const& x) {}
 
   namespace functional
@@ -29,10 +42,10 @@ namespace boost { namespace simd
     /*!
       @ingroup group-bitwise
 
-      Function object tied to simd::clz
+      Function object tied to simd::cl
 
-      @see simd::clz
-    **/
+z      @see simd::cl
+z    **/
     const boost::dispatch::functor<tag::clz_> clz = {};
   }
 } }

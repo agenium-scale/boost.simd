@@ -17,11 +17,34 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes idivround2even value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the integer conversion of the rounded to even
+    division of its parameters.
+
+    @par semantic:
+    For any given value @c x,  @c y of type @c T:
+
+    @code
+    T r = idivround2even_(x, y);
+    @endcode
+
+    The code is similar to:
+
+    @code
+    as_integer<T> r = toints(round2even(x/y));
+    @endcode
+
+    If y is null, it returns Valmax (resp. Valmin)
+    if x is positive (resp. negative) and 0 if x is null.
+
+    @see funcref{toints, funcref{round2even
+
+    @return      a value of the integral type associated to the input.
+
+
+**/
   template<typename T> auto idivround2even(T const& x) {}
 
   namespace functional

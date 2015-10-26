@@ -43,11 +43,7 @@ namespace boost { namespace simd
     This is generally equivalent to @c abs functor except for signed integer
     types for which \c abss(Valmin) is \c Valmax.
 
-    @par Alias
-
-    modulus
-
-    @see  boost::simd::abs, sqr_abss, sqrs
+    @see  abs, sqr_abss, sqrs
 
     @param x value whose absolute value will be returned
 

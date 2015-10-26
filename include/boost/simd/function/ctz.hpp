@@ -17,11 +17,28 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-bitwise
 
-    Computes ctz value of its parameter.
+    @ingroup group-bitwise
 
-  **/
+    @brief Returns the bit count of trailing zeroes
+
+    Finds the first bit set in a0, and returns the index of that bit, 0 being
+    the least significant bit index.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    as_integer<T,unsigned> r = ctz(x);
+    @endcode
+
+    @see  clz, popcnt
+
+    @return An unsigned integral value containing the index of the first bit
+            set in a0.
+
+
+**/
   template<typename T> auto ctz(T const& x) {}
 
   namespace functional
@@ -29,10 +46,10 @@ namespace boost { namespace simd
     /*!
       @ingroup group-bitwise
 
-      Function object tied to simd::ctz
+      Function object tied to simd::ct
 
-      @see simd::ctz
-    **/
+z      @see simd::ct
+z    **/
     const boost::dispatch::functor<tag::ctz_> ctz = {};
   }
 } }

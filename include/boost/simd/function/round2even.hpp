@@ -17,11 +17,33 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes round2even value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the rounded to even value of its parameter.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    T r = round2even(x);
+    @endcode
+
+    Returns the nearest integer to x.
+
+    @par Note:
+
+    to even means that half integer values are rounded to the nearest
+    even value
+
+    @par Alias:
+    @c rint
+
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto round2even(T const& x) {}
 
   namespace functional

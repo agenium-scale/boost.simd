@@ -19,7 +19,20 @@ namespace boost { namespace simd
   /*!
   @ingroup group-arithmetic
 
-    Computes ceil value of its parameter.
+   Computes the ceil of its parameter.
+
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    T r = ceil(x);
+    @endcode
+
+    computes the smallest integral value of type @c T greater or equal to @c x.
+
+    @see  floor, round, round2even, trunc, iceil
+
+    @return      an integral value of the same type as the input.
 
   **/
   template<typename T> auto ceil(T const& x) {}
@@ -27,12 +40,24 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
 
-      Function object tied to simd::ceil
+    Computes the ceil of its parameter.
 
-      @see simd::ceil
-    **/
+    @par semantic:
+    For any given value @c x of type @c T:
+
+    @code
+    T r = ceil(x);
+    @endcode
+
+    smallest integral value of type @c T greater or equal to @c x.
+
+    @see  floor, round, round2even, trunc, iceil
+
+    @return      an integral value of the same type as the input.
+
+
+**/
     const boost::dispatch::functor<tag::ceil_> ceil = {};
   }
 } }

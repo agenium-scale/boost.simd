@@ -19,19 +19,37 @@ namespace boost { namespace simd
   /*!
   @ingroup group-arithmetic
 
-    Computes dec value of its parameter.
+  Decrements a value by 1.
 
-  **/
+  @par semantic:
+  For any given value @c x of type @c T:
+
+  @code
+  T r = dec(x);
+  @endcode
+
+  is equivalent to:
+
+  @code
+  T r =  x-T(1);
+  @endcode
+
+  @see  minusone, minus
+
+  @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto dec(T const& x) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
 
-      Function object tied to simd::dec
+      Function object tied to simd::abs
 
-      @see simd::dec
+      @see simd::abs
     **/
     const boost::dispatch::functor<tag::dec_> dec = {};
   }

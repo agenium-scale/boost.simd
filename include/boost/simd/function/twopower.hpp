@@ -17,11 +17,34 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-bitwise
 
-    Computes twopower value of its parameter.
+    @ingroup group-bitwise
 
-  **/
+    Returns \f$2^n\f$ (0 if n is less than zero)
+
+    @par semantic:
+    For any given value n  of integral type @c I:
+
+    @code
+    T r = twopower(n);
+    @endcode
+
+    code is similar to:
+
+    @code
+    T r = 1 << n;
+    @endcode
+
+    @par Note:
+
+    This function is not defined for floating entries
+
+    @see  ilog2
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto twopower(T const& x) {}
 
   namespace functional

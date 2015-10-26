@@ -19,8 +19,33 @@ namespace boost { namespace simd
   /*!
   @ingroup group-arithmetic
 
-    Computes arg value of its parameter.
+    Computes the angular orientation of its parameter.
 
+    @par semantic:
+    For any given value @c x of floating type @c T:
+
+    @code
+    T r = arg(x);
+    @endcode
+
+    is equivalent to:
+
+    @code
+    T r = (is_nan(x)) ? x :(x < zero) ? pi : zero;
+    @endcode
+
+    @par Note:
+
+    Always 0 or \f$\pi\f$ according to the input sign,  or Nan
+    is the input is Nan.
+    This function is the restriction to real numbers of the complex
+    argument function.
+
+    @par Alias
+
+    angle
+
+    @return      a value of the type T.
   **/
   template<typename T> auto arg(T const& x) {}
 

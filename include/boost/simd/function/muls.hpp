@@ -17,11 +17,33 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes muls value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the saturated multiplication of the two inputs.
+
+    @par semantic:
+    For any given value @c x, @c y of type @c T:
+
+    @code
+    T r = muls(x, y);
+    @endcode
+
+    The code is similar to:
+
+    @code
+    T r = x*y
+    @endcode
+
+    @par Alias
+
+    saturated_mul
+
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto muls(T const& x) {}
 
   namespace functional

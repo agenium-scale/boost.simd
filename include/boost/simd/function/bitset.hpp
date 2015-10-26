@@ -17,11 +17,24 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-bitwise
 
-    Computes bitset value of its parameter.
+    @ingroup group-bitwise
 
-  **/
+    Returns x with the ith bit set
+
+    @par semantic:
+    For any given value @c x of type @c T, i  of type @c I:
+
+    @code
+    as_integer<T> r = bitset(x, i);
+    @endcode
+
+    @see  bitset
+
+    @return      a value of the type of the first input.
+
+
+**/
   template<typename T> auto bitset(T const& x) {}
 
   namespace functional

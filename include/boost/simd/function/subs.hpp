@@ -17,11 +17,34 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes subs value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the saturated sum of its parameters.
+
+    @par semantic:
+    For any given value @c x,  @c y of type @c T:
+
+    @code
+    T r = subs(x, y);
+    @endcode
+
+    This function coincides with minus for floating point parameters.
+    For integers is similar to:
+
+    @code
+    T r = (x-y > Valmax) ? Valmax : (x-y <  Valmin ? Valmin : x-y);
+    @endcode
+
+    @par Alias
+
+    saturated_sub
+
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto subs(T const& x) {}
 
   namespace functional

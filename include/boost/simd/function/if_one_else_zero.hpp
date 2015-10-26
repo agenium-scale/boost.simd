@@ -17,11 +17,37 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-boolean
 
-    Computes if_one_else_zero value of its parameter.
+    @ingroup group-boolean
 
-  **/
+    If a0 is true returns zero else returns one
+
+    @par Semantic:
+
+    For every parameter of type T0 :
+
+    @code
+    T0::type r = if_one_else_zero(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    T0::type r = a0 ? one : zero;
+    @endcode
+
+    @par Alias:
+    @c  if_one_else_zero, @c ifoneelsezero, @c sb2b;
+
+    @see  genmask
+    @par Note:
+
+    @c T0:type denotes here @c T0 in most cases, but @c T if @c T0 is @c as_logical<T>
+
+
+    @return a value of the type associated to the logical value a0
+
+**/
   template<typename T> auto if_one_else_zero(T const& x) {}
 
   namespace functional

@@ -17,11 +17,36 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes divfloor value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Computes the floor of the division.
+
+    @par semantic:
+    For any given value @c x,  @c y of type @c T:
+
+    @code
+    T r = divfloor(x, y);
+    @endcode
+
+    The code is similar to:
+
+    @code
+    T r = floor(x/y);
+    @endcode
+
+    for integral types, if y is null, it returns Valmax or Valmin
+    if x is positive (resp. negative) and 0 if x is null.
+    Take also care that dividing Valmin by -1 for signed integral types has
+    undefined behaviour.
+
+    @see  divides, rec, divs, divfix,
+    divround, divround2even
+
+    @return      a value of the same type as the input.
+
+
+**/
   template<typename T> auto divfloor(T const& x) {}
 
   namespace functional
