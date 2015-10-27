@@ -19,7 +19,7 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/three.hpp>
 
-STF_CASE_TPL (" shr uit",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" shr uit",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -39,7 +39,7 @@ STF_CASE_TPL (" shr uit",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(shr(bs::Zero<T>(),1), bs::Zero<r_t>());
 } // end of test for unsigned_int_
 
-STF_CASE_TPL (" shr si",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" shr si",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

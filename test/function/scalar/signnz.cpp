@@ -40,7 +40,7 @@ STF_CASE_TPL (" signnz real",  STF_IEEE_TYPES)
   STF_EQUAL(signnz(bs::Zero<T>()), bs::One<r_t>());
 }
 
-STF_CASE_TPL (" signnz unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" signnz unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using bs::signnz;
@@ -54,7 +54,7 @@ STF_CASE_TPL (" signnz unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(signnz(bs::Zero<T>()), bs::One<r_t>());
 }
 
-STF_CASE_TPL (" signnz signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" signnz signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using bs::signnz;

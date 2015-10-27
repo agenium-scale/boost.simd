@@ -55,7 +55,7 @@ STF_CASE_TPL (" is_not_denormal",  STF_IEEE_TYPES)
 #endif
 }
 
-STF_CASE_TPL (" is_not_denormal signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" is_not_denormal signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -72,7 +72,7 @@ STF_CASE_TPL (" is_not_denormal signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(is_not_denormal(bs::Zero<T>()), r_t(true));
 }
 
-STF_CASE_TPL (" is_not_denormal unsigned_int__1_0",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" is_not_denormal unsigned_int__1_0",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

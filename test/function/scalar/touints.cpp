@@ -22,7 +22,7 @@
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/function/ldexp.hpp>
 
-STF_CASE_TPL (" touints signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" touints signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

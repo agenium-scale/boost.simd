@@ -51,7 +51,7 @@ STF_CASE_TPL (" idivroundreal",  STF_IEEE_TYPES)
   STF_EQUAL(idivround(T(4),T(-3)), r_t(-1));
 } // end of test for floating_
 
-STF_CASE_TPL (" idivroundunsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" idivroundunsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -67,7 +67,7 @@ STF_CASE_TPL (" idivroundunsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(idivround(bs::One<T>(), bs::Zero<T>()), bs::Valmax<r_t>());
 } // end of test for unsigned_int_
 
-STF_CASE_TPL (" idivroundsigned_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" idivroundsigned_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

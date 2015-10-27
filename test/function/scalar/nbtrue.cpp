@@ -34,7 +34,7 @@ STF_CASE_TPL (" nbtrue real",  STF_IEEE_TYPES)
   STF_EQUAL(nbtrue(bs::Zero<T>()), T(0));
 } // end of test for floating_
 
-STF_CASE_TPL (" nbtrue integer",  STF_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" nbtrue integer",  STF_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

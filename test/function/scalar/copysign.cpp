@@ -45,7 +45,7 @@ STF_CASE_TPL (" copysign real",  STF_IEEE_TYPES)
   STF_EQUAL(copysign(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
 }
 
-STF_CASE_TPL (" copysign signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" copysign signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using bs::copysign;

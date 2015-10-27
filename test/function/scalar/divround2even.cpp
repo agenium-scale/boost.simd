@@ -35,7 +35,7 @@ STF_CASE_TPL (" divround2even real",  STF_IEEE_TYPES)
   STF_EQUAL(divround2even(bs::One<T>(), bs::One<T>()), bs::One<r_t>());
 } // end of test for floating_
 
-STF_CASE_TPL (" divround2even unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" divround2even unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
 
@@ -61,7 +61,7 @@ STF_CASE_TPL (" divround2even unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
 
 } // end of test for unsigned_int_
 
-STF_CASE_TPL (" divround2even signed_int", STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" divround2even signed_int", STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using bs::divround2even;

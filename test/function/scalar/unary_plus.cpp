@@ -38,7 +38,7 @@ STF_CASE_TPL (" unary_plus real",  STF_IEEE_TYPES)
   STF_EQUAL(unary_plus(bs::Zero<T>()), bs::Zero<r_t>());
 } // end of test for floating_
 
-STF_CASE_TPL (" unary_plus signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" unary_plus signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

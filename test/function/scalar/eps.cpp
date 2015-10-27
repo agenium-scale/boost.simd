@@ -44,7 +44,7 @@
 
 // }
 
-// STF_CASE_TPL (" eps unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+// STF_CASE_TPL (" eps unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 // {
 //   namespace bs = boost::simd;
 //   using bs::eps;

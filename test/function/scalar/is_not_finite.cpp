@@ -47,7 +47,7 @@ STF_CASE_TPL (" is_not_finite real",  STF_IEEE_TYPES)
   STF_EQUAL(is_not_finite(bs::Zero<T>()), r_t(false));
 }
 
-STF_CASE_TPL (" is_not_finite signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" is_not_finite signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -64,7 +64,7 @@ STF_CASE_TPL (" is_not_finite signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(is_not_finite(bs::Zero<T>()), r_t(false));
 }
 
-STF_CASE_TPL (" is_not_finite _unsigned",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" is_not_finite _unsigned",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

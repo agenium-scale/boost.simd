@@ -45,7 +45,7 @@ STF_CASE_TPL (" sqrt real",  STF_IEEE_TYPES)
 } // end of test for floating_
 
 
-STF_CASE_TPL (" sqrt si",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" sqrt si",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -64,7 +64,7 @@ STF_CASE_TPL (" sqrt si",  STF_SIGNED_ALL_INTEGRAL_TYPES)
 } // end of test for floating_
 
 
-STF_CASE_TPL (" sqrt ui",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" sqrt ui",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

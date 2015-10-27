@@ -42,7 +42,7 @@ STF_CASE_TPL (" ceil real",  STF_IEEE_TYPES)
   STF_EQUAL(ceil(T(1.1)), r_t(2));
 } // end of test for floating_
 
-STF_CASE_TPL (" ceil signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" ceil signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using bs::ceil;
@@ -57,7 +57,7 @@ STF_CASE_TPL (" ceil signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(ceil(bs::Zero<T>()), bs::Zero<T>());
 } // end of test for signed_int_
 
-STF_CASE_TPL (" ceil unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" ceil unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using bs::ceil;

@@ -42,7 +42,7 @@ STF_CASE_TPL (" dist real",  STF_IEEE_TYPES)
   STF_EQUAL(dist(bs::One<T>(), bs::Three<T>()), bs::Two<T>());
 }
 
-STF_CASE_TPL (" dist integer_ui",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" dist integer_ui",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using bs::dist;
@@ -55,7 +55,7 @@ STF_CASE_TPL (" dist integer_ui",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(dist(bs::Zero<T>(), bs::Valmax<T>()), bs::Valmax<T>());
 }
 
-STF_CASE_TPL (" dist integer_si",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" dist integer_si",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using bs::dist;

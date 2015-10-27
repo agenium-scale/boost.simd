@@ -39,7 +39,7 @@ STF_CASE_TPL (" bitofsign real",  STF_IEEE_TYPES)
   STF_EQUAL(bitofsign(bs::Zero<T>()), bs::Zero<r_t>());
 }
 
-STF_CASE_TPL (" bitofsign unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" bitofsign unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using bs::bitofsign;
@@ -52,7 +52,7 @@ STF_CASE_TPL (" bitofsign unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(bitofsign(bs::One<T>()), bs::Zero<r_t>());
 }
 
-STF_CASE_TPL (" bitofsign signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" bitofsign signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using bs::bitofsign;

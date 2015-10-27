@@ -46,7 +46,7 @@ STF_CASE_TPL (" majorityreal",  STF_IEEE_TYPES)
   STF_EQUAL(majority(bs::Zero<T>(), bs::Zero<T>(), bs::Zero<T>()), r_t(false));
 }
 
-STF_CASE_TPL (" majoritysigned_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" majoritysigned_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -64,7 +64,7 @@ STF_CASE_TPL (" majoritysigned_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(majority(bs::Zero<T>(), bs::Zero<T>(), bs::Zero<T>()), r_t(false));
 }
 
-STF_CASE_TPL (" majorityunsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" majorityunsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

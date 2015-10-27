@@ -43,7 +43,7 @@ STF_CASE_TPL (" nextpow2 real",  STF_IEEE_TYPES)
   STF_EQUAL(nextpow2(bs::Zero<T>()), bs::Zero<r_t>());
 }
 
-STF_CASE_TPL (" nextpow2 unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" nextpow2 unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -61,7 +61,7 @@ STF_CASE_TPL (" nextpow2 unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(nextpow2(bs::Three <T>()), bs::One<r_t>());
 }
 
-STF_CASE_TPL (" nextpow2 signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" nextpow2 signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

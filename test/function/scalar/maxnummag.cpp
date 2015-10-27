@@ -51,7 +51,7 @@ STF_CASE_TPL (" maxnummag real",  STF_IEEE_TYPES)
   STF_EQUAL(maxnummag(bs::Mone<T>(), bs::Two <T>()), bs::Two<r_t>());
 }
 
-STF_CASE_TPL (" maxnummag unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" maxnummag unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -66,7 +66,7 @@ STF_CASE_TPL (" maxnummag unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(maxnummag(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
 }
 
-STF_CASE_TPL (" maxnummag signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" maxnummag signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

@@ -38,7 +38,7 @@ STF_CASE_TPL (" cummin real",  STF_IEEE_TYPES)
   STF_EQUAL(cummin(bs::Zero<T>()), bs::Zero<T>());
 } // end of test for floating_
 
-STF_CASE_TPL (" cummin unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" cummin unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
 
@@ -52,7 +52,7 @@ STF_CASE_TPL (" cummin unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(cummin(bs::Zero<T>()), bs::Zero<T>());
 } // end of test for unsigned_int_
 
-STF_CASE_TPL (" cummin signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" cummin signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
 

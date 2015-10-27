@@ -21,7 +21,7 @@
 #include <boost/simd/constant/three.hpp>
 #include <boost/simd/constant/valmax.hpp>
 
-STF_CASE_TPL (" inc signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" inc signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -36,7 +36,7 @@ STF_CASE_TPL (" inc signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(inc(bs::Zero<T>()), bs::One<T>());
 }
 
-STF_CASE_TPL (" inc unsigned_uint",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" inc unsigned_uint",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

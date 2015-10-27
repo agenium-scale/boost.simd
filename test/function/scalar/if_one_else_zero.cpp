@@ -44,7 +44,7 @@ STF_CASE_TPL (" if_one_else_zero real",  STF_IEEE_TYPES)
 //   STF_EQUAL(if_one_else_zero(bs::False< bs::logical<T> >()), 0);
 } // end of test for floating_
 
-STF_CASE_TPL (" if_one_else_zero signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" if_one_else_zero signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -85,7 +85,7 @@ STF_CASE_TPL (" if_one_else_zero real",  STF_IEEE_TYPES)
   STF_EQUAL(if_one_else_zero(bs::Zero<T>()), r_t(false));
 } // end of test for floating_
 
-STF_CASE_TPL (" if_one_else_zerosigned_int__1_0",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" if_one_else_zerosigned_int__1_0",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -102,7 +102,7 @@ STF_CASE_TPL (" if_one_else_zerosigned_int__1_0",  STF_SIGNED_ALL_INTEGRAL_TYPES
   STF_EQUAL(if_one_else_zero(bs::Zero<T>()), r_t(false));
 } // end of test for signed_int_
 
-STF_CASE_TPL (" if_one_else_zerounsigned_int__1_0",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" if_one_else_zerounsigned_int__1_0",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

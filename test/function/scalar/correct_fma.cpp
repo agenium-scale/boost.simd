@@ -46,7 +46,7 @@ STF_CASE_TPL (" correct_fma real",  (float))//STF_IEEE_TYPES)
 #endif
 } // end of test for floating_
 
-STF_CASE_TPL (" correct_fma signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" correct_fma signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
 
@@ -63,7 +63,7 @@ STF_CASE_TPL (" correct_fma signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(correct_fma(bs::Valmax<T>(), bs::Two<T>(), bs::oneplus(bs::Valmin<T>())), bs::Valmax<T>());
 } // end of test for signed_int_
 
-STF_CASE_TPL (" correct_fma unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" correct_fma unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
 

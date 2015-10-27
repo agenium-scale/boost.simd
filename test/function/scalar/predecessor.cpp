@@ -49,7 +49,7 @@ STF_CASE_TPL (" predecessor real",  STF_IEEE_TYPES)
 #endif
 } // end of test for floating_
 
-STF_CASE_TPL (" predecessor ui ",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" predecessor ui ",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -65,7 +65,7 @@ STF_CASE_TPL (" predecessor ui ",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(predecessor(bs::Zero<T>()), bs::Zero<r_t>());
 } // end of test for unsigned_int_
 
-STF_CASE_TPL (" predecessor si",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" predecessor si",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -109,7 +109,7 @@ STF_CASE_TPL (" predecessor real 2",  STF_IEEE_TYPES)
 #endif
 }
 
-STF_CASE_TPL (" predecessorui_2",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" predecessorui_2",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -125,7 +125,7 @@ STF_CASE_TPL (" predecessorui_2",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(predecessor(bs::Valmin<T>(), bs::Four<iT>()), bs::Valmin<r_t>());
 }
 
-STF_CASE_TPL (" predecessorsi_2",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" predecessorsi_2",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

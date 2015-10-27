@@ -38,7 +38,7 @@ STF_CASE_TPL (" successor real",  STF_IEEE_TYPES)
   STF_EQUAL(successor(bs::Zero<T>()), bs::Bitincrement<T>());
 } // end of test for floating_
 
-STF_CASE_TPL (" successor unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" successor unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -51,7 +51,7 @@ STF_CASE_TPL (" successor unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(successor(bs::Zero<T>()), bs::One<r_t>());
 } // end of test for unsigned_int_
 
-STF_CASE_TPL (" successor signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" successor signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

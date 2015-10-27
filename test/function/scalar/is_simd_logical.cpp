@@ -36,7 +36,7 @@ STF_CASE_TPL (" is_simd_logical real",  STF_IEEE_TYPES)
   STF_EQUAL(is_simd_logical(bs::Zero<T>()), r_t(true));
 } // end of test for floating_
 
-STF_CASE_TPL (" is_simd_logical integer",   STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" is_simd_logical integer",   STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -49,7 +49,7 @@ STF_CASE_TPL (" is_simd_logical integer",   STF_SIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(is_simd_logical(bs::Zero<T>()), r_t(true));
 } // end of test for floating_
 
-STF_CASE_TPL (" is_simd_logical integer",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" is_simd_logical integer",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

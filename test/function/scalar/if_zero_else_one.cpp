@@ -42,7 +42,7 @@ STF_CASE_TPL (" if_zero_else_one real",  STF_IEEE_TYPES)
 
 } // end of test for floating_
 
-STF_CASE_TPL (" if_zero_else_onesigned int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" if_zero_else_onesigned int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

@@ -47,7 +47,7 @@ STF_CASE_TPL (" tofloat real",  STF_IEEE_TYPES)
   STF_EQUAL(tofloat(bs::Zero<T>()), bs::Zero<r_t>());
 } // end of test for floating_
 
-STF_CASE_TPL (" tofloat unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" tofloat unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -62,7 +62,7 @@ STF_CASE_TPL (" tofloat unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(tofloat(bs::Zero<T>()), bs::Zero<r_t>());
 } // end of test for unsigned_int_
 
-STF_CASE_TPL (" tofloat signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" tofloat signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

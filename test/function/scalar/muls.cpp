@@ -18,7 +18,7 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
 
-STF_CASE_TPL (" mulssigned_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" mulssigned_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -41,7 +41,7 @@ STF_CASE_TPL (" mulssigned_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(muls(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
 } // end of test for signed_int_
 
-STF_CASE_TPL (" mulsunsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" mulsunsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

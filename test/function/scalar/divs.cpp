@@ -22,7 +22,7 @@
 #include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/constant/valmax.hpp>
 
-STF_CASE_TPL (" divs signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" divs signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using bs::divs;
@@ -46,7 +46,7 @@ STF_CASE_TPL (" divs signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
 } // end of test for signed_int_
 
 
-STF_CASE_TPL (" divs unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" divs unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using bs::divs;

@@ -45,7 +45,7 @@ STF_CASE_TPL ( "round2even real",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(round2even(bs::Zero<T>()), bs::Zero<r_t>(), 0);
 } // end of test for floating_
 
-STF_CASE_TPL (" round2evenunsigned_int__1_0",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" round2evenunsigned_int__1_0",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -60,7 +60,7 @@ STF_CASE_TPL (" round2evenunsigned_int__1_0",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
   STF_ULP_EQUAL(round2even(bs::Zero<T>()), bs::Zero<r_t>(), 0);
 } // end of test for unsigned_int_
 
-STF_CASE_TPL (" round2evensigned_ int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" round2evensigned_ int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
