@@ -10,7 +10,7 @@
 #include <boost/simd/constant/constant.hpp>
 #include <stf.hpp>
 
-STF_CASE_TPL( "Check constant behavior for signed integral values", STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL( "Check constant behavior for signed integral values", STF_SIGNED_INTEGRAL_TYPES)
 {
   using boost::simd::Constant;
 
@@ -24,7 +24,7 @@ STF_CASE_TPL( "Check constant behavior for signed integral values", STF_SIGNED_A
   STF_EQUAL  ( (Constant<T,~0>()  ) , T(~0) );
 }
 
-STF_CASE_TPL( "Check constant behavior for unsigned integral values", STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL( "Check constant behavior for unsigned integral values", STF_UNSIGNED_INTEGRAL_TYPES)
 {
   using boost::simd::Constant;
 
