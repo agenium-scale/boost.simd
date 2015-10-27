@@ -37,7 +37,7 @@ namespace boost { namespace simd
 
 
 **/
-  template<typename T> auto rshr(T const& x) {}
+  template<typename , template NT> auto rshr(T const& x,  N const& n) {}
 
   namespace functional
   {

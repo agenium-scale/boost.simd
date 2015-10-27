@@ -20,26 +20,34 @@ namespace boost { namespace simd
 
     @ingroup group-boolean
 
-    Computes the logical xor of its parameter.
+    return the logical xor of the first parameter and of the second parameter.
+
+    The operands must share the same Cardinal_of value.
+
+    The result type is logical type associated to the first parameter.
+
 
     @par semantic:
-    For any given value @c x and @c y of type @c T:
+    For every parameters of types respectively T0, T1:
 
     @code
-    as_logical_t<T> r = logical_xor(x, y);
+    as_logical_t<T0> r = logical_xor(a0,a1);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<T> r = !x != !y;
+    as_logical_t<T0> r = !a0 != !a1;
     @endcode
 
+    @see  logical_or, logical_ornot, logical_notand,
+    logical_andnot, logical_notor, logical_and, logical_not
 
     @return a logical value of the logical type associated to the input.
 
 **/
-  template<typename T> auto logical_xor(T const& x) {}
+  template<typename T1, typename T2> auto logical_ornot(T1 const& a0, T2 const& a1) {}
+
 
   namespace functional
   {

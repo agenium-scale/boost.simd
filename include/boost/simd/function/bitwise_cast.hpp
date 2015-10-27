@@ -26,6 +26,7 @@ namespace boost { namespace simd
       @par Semantic
 
       For any value @c x of type @c T and for  type @c Target,
+      of same bit size as T
 
 
       @code

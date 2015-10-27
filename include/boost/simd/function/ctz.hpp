@@ -32,6 +32,11 @@ namespace boost { namespace simd
     as_integer_t<T,unsigned> r = ctz(x);
     @endcode
 
+    @par Note
+
+    return the number of bits of the entry if input is zero,
+    which is an illegal bit index.
+
     @see  clz, popcnt
 
     @return An unsigned integral value containing the index of the first bit

@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     @ingroup group-bitwise
 
-    Returns the number of bit sets the input.
+    Returns the number of bit sets in the input.
 
     @par semantic:
     For any given value @c x of type @c T:

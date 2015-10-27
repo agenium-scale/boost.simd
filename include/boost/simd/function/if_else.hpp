@@ -19,15 +19,11 @@ namespace boost { namespace simd
   /*!
     @ingroup group-boolean
 
-    return the elementwise selected element from the second and third operand
-    according to the non nullity of the first operand.
+    If cond is true returns t else returns f
 
     @par Semantic:
 
-    For every parameters of types respectively T0, T1, T2:
-
-    T1 and T2 must share the same base type and T0 be an associated logical type.
-    TODO rephrase or explain somewhere
+    For every parameters of types respectively COND, T1, T2:
 
     @code
     T1 r = if_else(cond,t,f);
@@ -36,7 +32,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T0 r = cond ? t : f;
+    COND r = cond ? t : f;
     @endcode
 
     @par Alias:
@@ -53,8 +49,8 @@ namespace boost { namespace simd
 
     @return a value of the same type as the second parameter
   **/
-  template<typename T0 typename T1, typename T2>
-  auto if_else(T0 const& cond, T1 const& t, T2 const& f );
+  template<typename COND typename T1, typename T2>
+  auto if_else(COND const& cond, T1 const& t, T2 const& f );
   namespace functional
   {
     /*!

@@ -20,8 +20,11 @@ namespace boost { namespace simd
 
     @ingroup group-boolean
 
-    return the logical or of the negation of the first parameter and the second parameter
-    the result type is logical type associated to the first parameter
+    return the logical or of the negation of the first parameter and the second parameter.
+
+    The operands must share the same Cardinal_of value.
+
+    The result type is logical type associated to the first parameter.
 
     @par Semantic:
 
@@ -40,12 +43,14 @@ namespace boost { namespace simd
     @par Alias:
     @c l_notor
 
+    @see  logical_or, logical_xor, logical_notand,
+    logical_andnot, logical_and, logical_ornot, logical_not
 
 
     @return a value of the logical type asssociated to the first parameter
 
 **/
-  template<typename T> auto logical_notor(T const& x) {}
+  template<typename T1, typename T2> auto logical_notor(T1 const& a0, T2 const& a1) {}
 
   namespace functional
   {

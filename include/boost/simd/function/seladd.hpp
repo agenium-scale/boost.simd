@@ -27,28 +27,23 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of types respectively T0, T1, T1:
+    For every parameters of types respectively COND, T1, T1:
 
     @code
-    T1 r = seladd(a0,a1,a2);
+    T1 r = seladd(cond,t1,t2);
     @endcode
 
     is similar to:
 
     @code
-    T1 r = a0 ? a1+a2 : a1;
+    T1 r = cond ? t1+t2 : t1;
     @endcode
-
-    @par Alias:
-    @c ifadd
-
-
-
 
     @return a value of the same type as the second parameter
 
 **/
-  template<typename T> auto seladd(T const& x) {}
+  template<typename COND, typename T> auto seladd(COND const& cond, T const& t1, T const& t2) {}
+
 
   namespace functional
   {

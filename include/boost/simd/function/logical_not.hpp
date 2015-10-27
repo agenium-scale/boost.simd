@@ -21,8 +21,10 @@ namespace boost { namespace simd
     @ingroup group-operator
 
     return the logical negation of the parameter,
-    i.e. True or False of the entry type according that
-    the input is zero or non zero
+    i.e. True or False of the logical type associated entry type according that
+    the input is zero or non zero (False or True).
+
+    Infix notation can be used with operator '!'
 
     @par Semantic:
 
@@ -35,7 +37,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T0 r =!a0;
+    as_logical_t<T0> r =!a0;
     @endcode
 
     @par Alias:
@@ -44,10 +46,10 @@ namespace boost { namespace simd
     @see  logical_or, logical_xor, logical_notand,
     logical_andnot, logical_notor, logical_ornot
 
-    @return a logical value
+    @return a value of the logical type associated to the parameter
 
 **/
-  template<typename T> auto logical_not(T const& x) {}
+  template<typename T> auto logical_not(T const& a0) {}
 
   namespace functional
   {

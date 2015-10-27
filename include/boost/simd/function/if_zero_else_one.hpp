@@ -20,27 +20,28 @@ namespace boost { namespace simd
 
     @ingroup group-boolean
 
-    If a0 is true returns zero else returns a1
+    If cond is true returns zero else returns one
 
     @par Semantic:
 
-    For every parameters of types respectively T0:
+    For every parameters of type COND:
 
     @code
-    T r = if_zero_else_one(a0);
+    T r = if_zero_else_one(cond);
     @endcode
 
     is similar to:
 
     @code
-    T r =  a0 ? zero :  one;
+    T r =  cond ? zero :  one;
     @endcode
 
-    @par Alias:
-    @c  if_zero_else_one, @c ifzeroelseone;
+    @par Note:
 
+    The return type is generally COND except in the case where COND is logical<T>. in which case
+    the return type is T.
 
-    @return a value of the same type as the second parameter
+    @return a value of the type associated to the logical value cond
 
 **/
   template<typename T> auto if_zero_else_one(T const& x) {}

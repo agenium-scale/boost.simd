@@ -31,12 +31,14 @@ namespace boost { namespace simd
     T r = rrol(x, n);
     @endcode
 
+    @par Note
+    This function asserts if the integral parameter is out of range
 
     @return      a value of the same type as the first input.
 
 
 **/
-  template<typename T> auto rrol(T const& x) {}
+  template<typename T, template N> auto rrol(T const& x,  N const& n) {}
 
   namespace functional
   {

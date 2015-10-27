@@ -24,16 +24,16 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of types respectively T0, T1:
+    For every parameters of types respectively COND, T:
 
     @code
-    T1 r = selinc(a0,a1);
+    T1 r = selinc(cond,a1);
     @endcode
 
     is similar to:
 
     @code
-    T1 r = a0 ? a1+one : a1;
+    T1 r = cond ? t+one : t  ;
     @endcode
 
     @par Alias:
@@ -44,7 +44,7 @@ namespace boost { namespace simd
     @return a value of the same type as the second parameter
 
 **/
-  template<typename T> auto selinc(T const& x) {}
+  template<typename COND, typename T> auto selinc(COND const& cond, T const& t) {}
 
   namespace functional
   {

@@ -25,17 +25,17 @@ namespace boost { namespace simd
     of the first operand
 
     @par semantic:
-    For any given value @c x, of type @c T1, @c y of type @c T2 and @c z of type @c T2
+    For any given value @c sel of type @c SEL, @c x of type @c T0 and @c y of type @c T1
     of same memory size:
 
     @code
-    T2 r = bitwise_select(x, y, z);
+    T0 r = bitwise_select(sel, x, y);
     @endcode
 
     The code is equivalent to:
 
     @code
-    T2 r = (x&y)|(z&~y);
+    T1 r = (x&sel)|(y&~sel);
     @endcode
 
     @par Alias
@@ -47,7 +47,9 @@ namespace boost { namespace simd
 
 
 **/
-  template<typename T> auto bitwise_select(T const& x) {}
+  template<typename SEL typename T0, typename T1>
+  auto bitwise_select(SEL const& sel, T0 const& x, T1 const& y );
+
 
   namespace functional
   {
