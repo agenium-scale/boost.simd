@@ -85,7 +85,7 @@ namespace boost { namespace simd { namespace ext
     {
       if (is_invalid(a0) || is_eqz(a0)) return Zero<result_t>();
       const int nmb = int(Nbmantissabits<A0>());
-      const result_t x = shri(exponentbits(a0), nmb);
+      const result_t x = shr(exponentbits(a0), nmb);
       return x-if_else_zero(a0, Maxexponent<A0>());
     }
   };
