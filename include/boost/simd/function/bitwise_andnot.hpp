@@ -21,12 +21,16 @@ namespace boost { namespace simd
 
     Computes the bitwise and not of its parameters.
 
+    The operands must share the same bit size.
+
+    The result type is the one of the first operand.
+
     @par semantic:
-    For any given value @c x, of type @c T1 @c y of type @c T2
+    For any given value @c x, of type @c T0 @c y of type @c T1
     of same memory size:
 
     @code
-    T1 r = bitwise_andnot(x, y);
+    T0 r = bitwise_andnot(x, y);
     @endcode
 
     The code is equivalent to:
@@ -46,7 +50,7 @@ namespace boost { namespace simd
 
 
 **/
-  template<typename T> auto bitwise_andnot(T const& x) {}
+  template<typename T0, typename T1> auto bitwise_andnot(T0 const& x, T1 const& y) {}
 
   namespace functional
   {

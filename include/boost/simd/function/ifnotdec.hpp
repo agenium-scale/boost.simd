@@ -23,27 +23,22 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of types respectively T0, T1:
+    For every parameters of types respectively COND, T:
 
     @code
-    T1 r = ifnotdec(a0,a1);
+    T r = ifnotdec(cond,t);
     @endcode
 
     is similar to:
 
     @code
-    T1 r = a0 : a1 : a1-one;
+    T r = cond : t : t-one;
     @endcode
-
-    @par Alias:
-    @c selnotdec
-
-
 
     @return a value of the same type as the second parameter
 
 **/
-  template<typename T> auto ifnotdec(T const& x) {}
+  template<typename T> auto ifnotdec(T const& cond, T const& t) {}
 
   namespace functional
   {

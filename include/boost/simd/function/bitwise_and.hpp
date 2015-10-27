@@ -19,9 +19,12 @@ namespace boost { namespace simd
 
     @ingroup group-bitwise
 
-    return the bitwise and of the two parameters
-    the operands must share the same bit size and
-    the result type is the one of the first operand
+    Computes the bitwise and of the two parameters.
+
+    The operands must share the same bit size.
+
+    The result type is the one of the first operand.
+
     Infix notation can be used with operator '&',
     but this will not work in scalar mode if any
     operand is floating point because of C++ limitations.
@@ -31,13 +34,13 @@ namespace boost { namespace simd
     For every parameters of types respectively T0, T1:
 
     @code
-    T0 r = bitwise_and(a0,a1);
+    T0 r = bitwise_and(x,y);
     @endcode
 
     is similar to:
 
     @code
-    T0 r = a0 & a1;
+    T0 r = x & y;
     @endcode
 
     @par Alias:
@@ -51,7 +54,7 @@ namespace boost { namespace simd
     @return a value of the same type as the first parameter
 
 **/
-  template<typename T> auto bitwise_and(T const& x) {}
+  template<typename T0, typename T1> auto bitwise_and(T0 const& x, T1 const& y) {}
 
   namespace functional
   {

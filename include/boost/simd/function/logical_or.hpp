@@ -20,7 +20,9 @@ namespace boost { namespace simd
     @ingroup group-operator
 
     return the logical or of the two parameters
-    the operands must of the same type
+
+    The operands must share the same Cardinal_of value.
+
     Infix notation can be used with operator '||'
 
     @par Semantic:
@@ -44,10 +46,10 @@ namespace boost { namespace simd
     logical_andnot, logical_notor, logical_ornot, logical_not
 
 
-    @return a logical value
+    @return  a value of the logical type associated to the first parameter
 
 **/
-  template<typename T> auto logical_or(T const& x) {}
+  template<typename T1, typename T2> auto logical_or(T1 const& a0, T2 const& a1) {}
 
   namespace functional
   {

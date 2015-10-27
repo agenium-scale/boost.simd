@@ -19,19 +19,19 @@ namespace boost { namespace simd
 
     @ingroup group-bitwise
 
-    Returns \f$2^n\f$ (0 if n is less than zero)
+    Returns \f$2^n\f$ (or 0 if n is less than zero)
 
     @par semantic:
-    For any given value n  of integral type @c I:
+    For any given value n  of integral type @c N:
 
     @code
-    T r = twopower(n);
+    N r = twopower(n);
     @endcode
 
     code is similar to:
 
     @code
-    T r = 1 << n;
+    N r = 1 << n;
     @endcode
 
     @par Note:
@@ -44,7 +44,7 @@ namespace boost { namespace simd
 
 
 **/
-  template<typename T> auto twopower(T const& x) {}
+  template<typename T> auto twopower(N const& n) {}
 
   namespace functional
   {

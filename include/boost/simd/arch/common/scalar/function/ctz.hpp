@@ -37,7 +37,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE result_t operator() ( A0 a0) const
     {
       result_t that = bitwise_cast<result_t>(a0);
-      BOOST_ASSERT_MSG( that, "ctz not defined for 0" );
+      if(!that) return result_t(64);
 
     #if defined __GNUC__
       return __builtin_ctzll(that);
@@ -57,7 +57,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE result_t operator() ( A0 a0) const
     {
       result_t that = bitwise_cast<result_t>(a0);
-      BOOST_ASSERT_MSG( that, "ctz not defined for 0" );
+      if(!that) return result_t(32);
 
     #if defined __GNUC__
       return __builtin_ctz(that);

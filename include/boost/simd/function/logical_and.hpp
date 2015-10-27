@@ -17,11 +17,13 @@ namespace boost { namespace simd
 {
   /*!
 
-    @ingroup group-operator
+    @ingroup group-boolean
 
-    return the logical and of the two parameters
-    the operands must of the same type
-    Infix notation can be used with operator '&&'
+    return the logical and of the two parameters.
+
+    The operands must share the same Cardinal_of value.
+
+    Infix notation can be used with operator '&&'.
 
     @par Semantic:
 
@@ -44,15 +46,16 @@ namespace boost { namespace simd
     logical_andnot, logical_notor, logical_ornot, logical_not
 
 
-    @return a value of the same type as the second parameter
+    @return  a value of the logical type associated to the first parameter
+
 
 **/
-  template<typename T> auto logical_and(T const& x) {}
+  template<typename T1, typename T2> auto logical_and(T1 const& a0, T2 const& a1) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-boolean
 
       Function object tied to simd::logical_and
 

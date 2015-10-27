@@ -40,7 +40,7 @@ namespace boost { namespace simd
 
     For integer a*b+c is performed
 
-    For floating points numbers, always compute the correct fused multiply add,
+    For floating points numbers, always computes the correct fused multiply add,
     this means the computation of a0*a1+a2 with only one rounding operation.
     On machines not possessing this hard wired capability this can be very
     expansive.

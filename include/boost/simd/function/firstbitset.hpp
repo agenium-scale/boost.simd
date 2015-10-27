@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
     @see  ffs,  firstbitunset
 
-    @return      a value unsigned integral type associated to the input.
+    @return      a value of the unsigned integral type associated to the input.
 
 
 **/

@@ -40,7 +40,7 @@ namespace boost { namespace simd
 
 
 **/
-  template<typename T> auto shr(T const& x) {}
+  template<typename T, template N> auto shr(T const& x,  N const& n) {}
 
   namespace functional
   {

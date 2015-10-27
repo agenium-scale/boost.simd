@@ -35,7 +35,7 @@ namespace boost { namespace simd
     @endcode
 
 
-    @return      a value of the same type as the input.
+    @return      a value of the unsigned integer type asociated to the input.
 
 
 **/

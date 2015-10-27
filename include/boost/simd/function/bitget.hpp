@@ -28,7 +28,7 @@ namespace boost { namespace simd
     as_integer_t<T> r = bitget(x, i);
     @endcode
 
-    r contains is 0 or 2^i according to the fact the ith bit of x is 0 or 1
+    r contains is 0 or \f$2^i\f$ according to the fact the ith bit of x is 0 or 1
 
     @see  bitset
 
@@ -36,7 +36,7 @@ namespace boost { namespace simd
 
 
 **/
-  template<typename T> auto bitget(T const& x) {}
+  template<typename T, typename I> auto bitget(T const& x, I const& i) {}
 
   namespace functional
   {

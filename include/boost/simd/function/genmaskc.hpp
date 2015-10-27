@@ -36,7 +36,7 @@ namespace boost { namespace simd
     @endcode
 
     @par Alias:
-    @c typed_maskc, @c logical2maskc, @c l2mc, @c typed_maskc, @c if_zero_else_allbits
+    @c if_zero_else_allbits
 
     @see if_else_allbits
 

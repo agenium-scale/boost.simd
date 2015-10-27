@@ -19,34 +19,29 @@ namespace boost { namespace simd
 
     @ingroup group-boolean
 
-    If a0 is true returns a1 else returns zero
+    If a0 is true returns t else returns zero
 
     @par Semantic:
 
-    For every parameters of types respectively T0, T1:
+    For every parameters of types respectively COND, T:
 
     @code
-    T r = if_else_zero(a0,a1);
+    T r = if_else_zero(cond,t);
     @endcode
 
     is similar to:
 
     @code
-    T r = a0 ? a1 : zero;
+    T r = cond ? t : zero;
     @endcode
 
     @par Alias:
     @c  if_else_zero,
-    @c  ifelsezero,
-    @c  ifnot_zero_else,
-    @c  ifnotzeroelse,
-
-
 
     @return a value of the same type as the second parameter
 
 **/
-  template<typename T> auto if_else_zero(T const& x) {}
+  template<typename COND, typename T> auto if_else_zero(COND const& cond, T const & t) {}
 
   namespace functional
   {

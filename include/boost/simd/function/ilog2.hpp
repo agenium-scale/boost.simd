@@ -35,6 +35,9 @@ namespace boost { namespace simd
     as_integer_t<T> r = toints(log2(x));
     @endcode
 
+    @par Note
+    This function asserts for negative or null values.
+
     @see  twopower, exponent
 
     @return      a value of the integer

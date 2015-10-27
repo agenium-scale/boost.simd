@@ -25,16 +25,16 @@ namespace boost { namespace simd
     For any given value @c x of type @c T, i  of type @c I:
 
     @code
-    as_integer_t<T> r = bitset(x, i);
+    T r = bitset(x, i);
     @endcode
 
-    @see  bitset
+    @see  bitget
 
-    @return      a value of the type of the first input.
+    @return      a value of the same type as the input.
 
 
 **/
-  template<typename T> auto bitset(T const& x) {}
+  template<typename T, typename I> auto bitset(T const& x, I const& i) {}
 
   namespace functional
   {

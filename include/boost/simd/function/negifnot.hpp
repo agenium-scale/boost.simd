@@ -19,21 +19,20 @@ namespace boost { namespace simd
 
     @ingroup group-boolean
 
-    The function returns -a1 if a0 is false and a1 otherwise.
-    The two operands must have the same cardinal.
+    The function returns -x if cond is false and x otherwise.
 
     @par Semantic:
 
-    For every parameters of types respectively T0, T1:
+    For every parameters of types respectively COND, T:
 
     @code
-    T1 r = negifnot(a0,a1);
+    T1 r = negifnot(cond,x);
     @endcode
 
     is similar to:
 
     @code
-    T1 r = a0 ? a1 : -a1;
+    T r = cond ? x : -x;
     @endcode
 
 
@@ -41,7 +40,7 @@ namespace boost { namespace simd
     @return a value of the same type as the second parameter
 
 **/
-  template<typename T> auto negifnot(T const& x) {}
+  template<typename T> auto negifnot(COND const& cond, T const& x) {}
 
   namespace functional
   {
