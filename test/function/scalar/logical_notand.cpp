@@ -40,7 +40,7 @@ STF_CASE_TPL (" logical_notand real",  STF_IEEE_TYPES)
   STF_EQUAL(logical_notand(r_t(true), T(1)), r_t(false));
 } // end of test for floating_
 
-STF_CASE_TPL (" logical_notand signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" logical_notand signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

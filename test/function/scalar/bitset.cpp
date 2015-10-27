@@ -17,7 +17,7 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
 
-STF_CASE_TPL (" bitset uit",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" bitset uit",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using iT =  boost::dispatch::as_integer_t<T, unsigned>;
@@ -32,7 +32,7 @@ STF_CASE_TPL (" bitset uit",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(bitset(T(3),3), T(7));
 } // end of test for unsigned_int_
 
-STF_CASE_TPL (" bitset si",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" bitset si",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using iT =  boost::dispatch::as_integer_t<T, unsigned>;

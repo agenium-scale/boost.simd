@@ -52,7 +52,7 @@ STF_CASE_TPL (" negate real",  STF_IEEE_TYPES)
   STF_EQUAL(negate(bs::Two<T>(), bs::Three<T>()), bs::Two<r_t>());
 }
 
-STF_CASE_TPL (" negate unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" negate unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -69,7 +69,7 @@ STF_CASE_TPL (" negate unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(negate(bs::One<T>(), bs::Zero<T>()), bs::Zero<r_t>());
 }
 
-STF_CASE_TPL (" negate signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" negate signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

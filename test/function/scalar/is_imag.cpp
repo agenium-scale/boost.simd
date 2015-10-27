@@ -46,7 +46,7 @@ STF_CASE_TPL (" is_imag real",  STF_IEEE_TYPES)
   STF_EQUAL(is_imag(bs::Zero<T>()), r_t(true));
 }
 
-STF_CASE_TPL (" is_imag signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" is_imag signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -63,7 +63,7 @@ STF_CASE_TPL (" is_imag signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(is_imag(bs::Zero<T>()), r_t(true));
 }
 
-STF_CASE_TPL (" is_imag unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" is_imag unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

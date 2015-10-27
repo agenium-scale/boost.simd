@@ -49,7 +49,7 @@ STF_CASE_TPL (" ulpdist real",  STF_IEEE_TYPES)
                 );
 }
 
-STF_CASE_TPL (" ulpdist signed_integral",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" ulpdist signed_integral",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -83,7 +83,7 @@ STF_CASE_TPL (" ulpdist signed_integral",  STF_SIGNED_ALL_INTEGRAL_TYPES)
                 );
 }
 
-STF_CASE_TPL (" ulpdist unsigned_integral",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" ulpdist unsigned_integral",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

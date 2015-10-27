@@ -108,7 +108,7 @@ STF_CASE_TPL (" round real2",  STF_IEEE_TYPES)
 
 
 
-STF_CASE_TPL (" roundunsigned_int__1_0",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" roundunsigned_int__1_0",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -123,7 +123,7 @@ STF_CASE_TPL (" roundunsigned_int__1_0",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(round(bs::Zero<T>()), bs::Zero<r_t>());
 } // end of test for unsigned_int_
 
-STF_CASE_TPL (" roundsigned_int__1_0",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" roundsigned_int__1_0",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

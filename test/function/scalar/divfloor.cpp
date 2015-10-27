@@ -44,7 +44,7 @@ STF_CASE_TPL (" divfloorreal",  STF_IEEE_TYPES)
   STF_IEEE_EQUAL(divfloor(bs::Zero<T>(),bs::Zero<T>()), bs::Nan<r_t>());
 } // end of test for floating_
 
-STF_CASE_TPL (" divfloorunsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" divfloorunsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using bs::divfloor;
@@ -59,7 +59,7 @@ STF_CASE_TPL (" divfloorunsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(divfloor(bs::Valmax<T>(),  bs::Two<T>()), bs::Valmax<r_t>()/bs::Two<T>());
 } // end of test for unsigned_int_
 
-STF_CASE_TPL (" divfloorsigned_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" divfloorsigned_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using bs::divfloor;

@@ -43,7 +43,7 @@ STF_CASE_TPL (" negs real",  STF_IEEE_TYPES)
   STF_EQUAL(negs(T(100)), T(-100));
 } // end of test for floating_
 
-STF_CASE_TPL (" negs signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" negs signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

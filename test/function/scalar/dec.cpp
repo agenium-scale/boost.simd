@@ -19,7 +19,7 @@
 #include <boost/simd/constant/mtwo.hpp>
 #include <boost/simd/constant/two.hpp>
 
-STF_CASE_TPL (" decsigned_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" decsigned_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using bs::dec;
@@ -33,7 +33,7 @@ STF_CASE_TPL (" decsigned_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(dec(bs::Zero<T>()), bs::Mone<T>());
 }
 
-STF_CASE_TPL (" decunsigned_uint",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" decunsigned_uint",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using bs::dec;

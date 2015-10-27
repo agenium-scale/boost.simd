@@ -60,7 +60,7 @@ STF_CASE_TPL("ldexp", STF_IEEE_TYPES)
 
 
 
-STF_CASE_TPL("ldexp", STF_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL("ldexp", STF_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

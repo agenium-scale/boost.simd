@@ -17,7 +17,7 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
 
-STF_CASE_TPL (" bitget uit",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" bitget uit",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
 
@@ -33,7 +33,7 @@ STF_CASE_TPL (" bitget uit",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(bitget(T(3),3), bs::Zero<iT>());
 } // end of test for unsigned_int_
 
-STF_CASE_TPL (" bitget si",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" bitget si",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
 

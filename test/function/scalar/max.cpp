@@ -41,7 +41,7 @@ STF_CASE_TPL (" max real",  STF_IEEE_TYPES)
   STF_EQUAL(max(bs::Two<T>(),  bs::One<T>()),  bs::Two<T>());
 } // end of test for floating_
 
-STF_CASE_TPL (" max unsigned int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" max unsigned int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
 
@@ -56,7 +56,7 @@ STF_CASE_TPL (" max unsigned int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(max(bs::Zero<T>(), bs::One<T>()),  bs::One<T>());
 } // end of test for unsigned_int_
 
-STF_CASE_TPL (" max signed int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" max signed int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
 

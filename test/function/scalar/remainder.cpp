@@ -40,7 +40,7 @@ STF_CASE_TPL (" remainder real",  STF_IEEE_TYPES)
   STF_IEEE_EQUAL(remainder(bs::Zero<T>(),bs::Zero<T>()), bs::Nan<T>());
 } // end of test for floating_
 
-STF_CASE_TPL (" remainder signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" remainder signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

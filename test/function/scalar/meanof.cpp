@@ -48,7 +48,7 @@ STF_CASE_TPL (" meanof real",  STF_IEEE_TYPES)
   STF_EQUAL(meanof(bs::Valmin<T>()/2, bs::Valmin<T>()), bs::Valmin<T>()*T(0.75));
 } // end of test for floating_
 
-STF_CASE_TPL (" meanof signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" meanof signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -68,7 +68,7 @@ STF_CASE_TPL (" meanof signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(meanof(T((bs::Valmin<T>())/T(2)), bs::Valmin<T>()), (bs::Valmin<T>()/T(4))*T(3));
 } // end of test for signed_int_
 
-STF_CASE_TPL (" meanof unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" meanof unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

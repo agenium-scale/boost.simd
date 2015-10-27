@@ -36,7 +36,7 @@ STF_CASE_TPL (" mask2logical real",  STF_IEEE_TYPES)
   STF_EQUAL(mask2logical(bs::Nan<T>()) , bs::True<lT>());
 } // end of test for floating_
 
-STF_CASE_TPL (" mask2logical signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" mask2logical signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

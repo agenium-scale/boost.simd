@@ -37,7 +37,7 @@ STF_CASE_TPL( "Check bitwise_or behavior with floating", STF_IEEE_TYPES )
   STF_EQUAL(bitwise_or(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
 }
 
-STF_CASE_TPL("bitwise_or_ui", STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL("bitwise_or_ui", STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using bs::bitwise_or;
@@ -49,7 +49,7 @@ STF_CASE_TPL("bitwise_or_ui", STF_UNSIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(bitwise_or(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
 }
 
-STF_CASE_TPL("bitwise_or_si", STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL("bitwise_or_si", STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using bs::bitwise_or;

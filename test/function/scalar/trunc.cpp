@@ -49,7 +49,7 @@ STF_CASE_TPL (" trunc real",  STF_IEEE_TYPES)
   STF_EQUAL(trunc(T(-2.5)), T(-2));
 } // end of test for floating_
 
-STF_CASE_TPL (" trunc unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" trunc unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -64,7 +64,7 @@ STF_CASE_TPL (" trunc unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(trunc(bs::Zero<T>()), bs::Zero<T>());
 } // end of test for unsigned_int_
 
-STF_CASE_TPL (" trunc signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" trunc signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

@@ -22,7 +22,7 @@
 #include <boost/simd/constant/two.hpp>
 
 
-STF_CASE_TPL (" adds signed int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" adds signed int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
 
@@ -42,7 +42,7 @@ STF_CASE_TPL (" adds signed int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(adds(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
 } // end of test for signed_int_
 
-STF_CASE_TPL (" adds unsigned int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" adds unsigned int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
 

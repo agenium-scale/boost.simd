@@ -40,7 +40,7 @@ STF_CASE_TPL (" ffs real",  STF_IEEE_TYPES)
   STF_EQUAL(ffs(bs::Zero<T>()), r_t(bs::Zero<r_t>()));
 } // end of test for real_
 
-STF_CASE_TPL (" ffs signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" ffs signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -57,7 +57,7 @@ STF_CASE_TPL (" ffs signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(ffs(bs::Zero<T>()), bs::Zero<r_t>());
 } // end of test for signed_int_
 
-STF_CASE_TPL (" ffs unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" ffs unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

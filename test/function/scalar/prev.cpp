@@ -47,7 +47,7 @@ STF_CASE_TPL (" prev real",  STF_IEEE_TYPES)
   STF_EQUAL(prev(bs::Zero<T>()), -bs::Bitincrement<T>());
 }
 
-STF_CASE_TPL (" prev unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" prev unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -63,7 +63,7 @@ STF_CASE_TPL (" prev unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(prev(bs::Zero<T>()), bs::Valmax<r_t>());
 }
 
-STF_CASE_TPL (" prev signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" prev signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

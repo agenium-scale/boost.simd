@@ -22,7 +22,7 @@
 #include <boost/simd/constant/ratio.hpp>
 
 
-STF_CASE_TPL (" tenpower unsigned_int", STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" tenpower unsigned_int", STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -37,7 +37,7 @@ STF_CASE_TPL (" tenpower unsigned_int", STF_UNSIGNED_ALL_INTEGRAL_TYPES)
   STF_ULP_EQUAL(tenpower(bs::Zero<T>()), bs::One<r_t>(), 0.5);
 } // end of test for unsigned_int_
 
-STF_CASE_TPL (" tenpower signed_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" tenpower signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

@@ -41,7 +41,7 @@
 //   STF_ULP_EQUAL(saturate_at<Pi>(bs::Zero<T>()), bs::Zero<r_t>(), 0);
 // }
 
-// STF_CASE_TPL (" saturate_atsigned_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+// STF_CASE_TPL (" saturate_atsigned_int",  STF_SIGNED_INTEGRAL_TYPES)
 // {
 //   namespace bs = boost::simd;
 //   namespace bd = boost::dispatch;

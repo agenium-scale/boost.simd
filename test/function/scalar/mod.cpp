@@ -36,7 +36,7 @@ STF_CASE_TPL (" mod real",  STF_IEEE_TYPES)
   STF_EQUAL(mod(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
 } // end of test for floating_
 
-STF_CASE_TPL (" mod unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" mod unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -51,7 +51,7 @@ STF_CASE_TPL (" mod unsigned_int",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(mod(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
 } // end of test for unsigned_int_
 
-STF_CASE_TPL (" modsigned_int",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" modsigned_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

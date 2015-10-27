@@ -17,7 +17,7 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
 
-STF_CASE_TPL (" twopower ui",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" twopower ui",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -35,7 +35,7 @@ STF_CASE_TPL (" twopower ui",  STF_UNSIGNED_ALL_INTEGRAL_TYPES)
  }
 } // end of test for unsigned_int_
 
-STF_CASE_TPL (" twopowersi",  STF_SIGNED_ALL_INTEGRAL_TYPES)
+STF_CASE_TPL (" twopowersi",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
