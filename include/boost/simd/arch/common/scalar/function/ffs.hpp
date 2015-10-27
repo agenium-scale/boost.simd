@@ -13,11 +13,12 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_FFS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_FFS_HPP_INCLUDED
 
-#include <boost/config.hpp>
+#include <boost/simd/function/scalar/bitwise_cast.hpp>
+#include <boost/simd/function/scalar/bitwise_and.hpp>
+#include <boost/simd/detail/make_dependent.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/simd/function/scalar/bitwise_cast.hpp>
-#include <boost/simd/detail/make_dependent.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -43,7 +44,7 @@ namespace boost { namespace simd { namespace ext
       return 0;
 #elif defined BOOST_MSVC
       unsigned long index;
-      if (b_and(t1, (uint64_t(-1) >> 32)))
+      if (bitwise_and(t1, (uint64_t(-1) >> 32)))
       {
         _BitScanForward(&index, uint32_t(t1));
         return index+1;
