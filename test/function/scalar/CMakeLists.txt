@@ -24,6 +24,7 @@ set ( SOURCES
    correct_fma.cpp
    dec.cpp
    dist.cpp
+   dists.cpp
    divceil.cpp
    divfix.cpp
    divfloor.cpp
