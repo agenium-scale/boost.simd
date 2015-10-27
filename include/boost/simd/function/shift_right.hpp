@@ -16,11 +16,37 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes shift_right value of its parameter.
+    @ingroup group-operator
 
-  **/
+    return right shift of the first operand by the second
+    that must be of integer type and of the same number
+    of elements as the first parameter
+    Infix notation can be used with operator '>>'
+
+    @par Semantic:
+
+    For every parameters of types respectively T0, T1:
+
+    @code
+    T0 r = shift_right(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    T0 r = a0 >> a1;
+    @endcode
+
+    @par Alias:
+    @c shra, @c shar, @c shrai
+
+    @see  shift_left, shr, rshl, rshr, rol, ror
+
+
+    @return a value of the same type as the second parameter
+
+**/
   template<typename T> auto shift_right(T const& x) {}
 
   namespace functional

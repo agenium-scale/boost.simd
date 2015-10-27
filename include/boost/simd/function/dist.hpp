@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-arithmetic
 
-    Computes the (saturated) absolute value of the difference of its parameters.
+    Computes the absolute value of the difference of its parameters.
 
     @par semantic:
     For any given value @c x,  @c y of type @c T:
@@ -36,16 +36,18 @@ namespace boost { namespace simd
 
     @par Note
 
-    The result is never negative. For floating, it can of course be Nan.
+    The result can be negative for signed integers as abs(Valmin) is Valmin.
+    To avoid the problem you can use the saturated version dists.
 
-    @see  ulpdist
+
+    @see  dists, ulpdist
 
 
     @return      a value of the same type as the input.
 
 
 **/
-  template<typename T> auto dist(T const& x) {}
+  template<typename T> auto dist(T const& x, T const& y) {}
 
   namespace functional
   {

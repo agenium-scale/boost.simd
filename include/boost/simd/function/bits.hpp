@@ -31,7 +31,7 @@ namespace boost { namespace simd
     is equivalent to:
 
     @code
-    as_integer<T,unsigned> r = bitwase_cast< as_integer<T,unsigned>>(a0);
+    as_integer_t<T,unsigned> r = bitwase_cast< as_integer_t<T,unsigned>>(a0);
     @endcode
 
 

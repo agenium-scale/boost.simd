@@ -16,12 +16,29 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-ieee
 
-    Computes minnummag value of its parameter.
+    @ingroup group-ieee
 
-  **/
-  template<typename T> auto minnummag(T const& x) {}
+    Returns the input value which have the least absolute value, ignoring nan.
+
+    @par Semantic:
+
+    @code
+    T r = minnummag(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r =  isnan(a0) ? a1 : (isnan(a1) ? a0 : minmag(a0, a1));;
+    @endcode
+
+
+
+    @return a value of same type as the inputs
+
+**/
+  template<typename T> auto minnummag(T const& x, T const& y) {}
 
   namespace functional
   {

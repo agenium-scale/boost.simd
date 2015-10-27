@@ -16,11 +16,31 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-predicates
 
-    Computes is_odd value of its parameter.
+    @ingroup group-predicates
 
-  **/
+    Returns True or False according a0 is odd or not.
+
+    @par Semantic:
+
+    @code
+    logical<T> r = is_odd(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    logical<T> r = (abs(a0)/2)*2 == abs(a0)-1;
+    @endcode
+
+    @par Note:
+
+    A floating number a0 is odd if a0-1 is even
+
+
+    @return a logical value
+
+**/
   template<typename T> auto is_odd(T const& x) {}
 
   namespace functional

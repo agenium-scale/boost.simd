@@ -16,11 +16,17 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-swar
 
-    Computes split value of its parameter.
+    @ingroup group-swar
 
-  **/
+    @brief SIMD register type-based split
+
+    @c split splits a SIMD register @c v in two SIMD register of half the
+    cardinal of @c v containing the same value than @c v but transtyped to
+    their associated scalar type.
+
+
+**/
   template<typename T> auto split(T const& x) {}
 
   namespace functional

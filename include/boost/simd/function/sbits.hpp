@@ -16,11 +16,27 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-ieee
 
-    Computes sbits value of its parameter.
+    @ingroup group-ieee
 
-  **/
+    Returns signed integer value which has the same bits of the input
+
+    @par Semantic:
+
+    @code
+    T r = sbits(x);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = bitwise_cast<as_integer_t<T,signed>>(x);
+    @endcode
+
+
+    @return a value of same type as the input
+
+**/
   template<typename T> auto sbits(T const& x) {}
 
   namespace functional

@@ -16,11 +16,27 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-predicates
 
-    Computes is_eqz value of its parameter.
+    @ingroup group-predicates
 
-  **/
+    Returns True or False according a0 is zero or not.
+
+    @par Semantic:
+
+    @code
+    logical<T> r = is_eqz(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    logical<T> r = a0 == 0;
+    @endcode
+
+
+    @return a logical value
+
+**/
   template<typename T> auto is_eqz(T const& x) {}
 
   namespace functional
@@ -28,10 +44,10 @@ namespace boost { namespace simd
     /*!
       @ingroup group-predicates
 
-      Function object tied to simd::is_eqz
+      Function object tied to simd::is_eq
 
-      @see simd::is_eqz
-    **/
+z      @see simd::is_eq
+z    **/
     const boost::dispatch::functor<tag::is_eqz_> is_eqz = {};
   }
 } }

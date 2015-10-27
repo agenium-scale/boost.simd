@@ -65,6 +65,7 @@ STF_CASE_TPL (" dist integer_si",  STF_SIGNED_ALL_INTEGRAL_TYPES)
   STF_EQUAL(dist(bs::One<T>(), bs::Three<T>()), bs::Two<T>());
   STF_EQUAL(dist(bs::Valmax<T>(), bs::Zero<T>()), bs::Valmax<T>());
   STF_EQUAL(dist(bs::Zero<T>(), bs::Valmax<T>()), bs::Valmax<T>());
+  STF_EQUAL(dist(bs::Zero<T>(), bs::Valmin<T>()), bs::Valmin<T>());
 
   STF_EQUAL(dist(bs::Ten<T>(), bs::Mten<T>()), (bs::Constant<T, 20>()));
   STF_EQUAL(dist(bs::Mten<T>(), bs::Ten<T>()), (bs::Constant<T, 20>()));

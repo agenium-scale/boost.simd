@@ -16,11 +16,34 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-ieee
 
-    Computes nextafter value of its parameter.
+    @ingroup group-ieee
 
-  **/
+    Returns the next element in the a1 direction.
+    \par
+    rg if a1 is greater than a0 this is next(a0)
+    rg if a1 is equal to a0 this is a0
+    rg if a1 is less than a0 this is prev(a0)
+
+    @par Semantic:
+
+    @code
+    T r = nextafter(x, y);
+    @endcode
+
+    is similar to:
+
+    @code
+    if (y >  x)  r = next(a0);
+    else if (y == x)  r = a0;
+    else if (y <  x)  r = prev(a0);
+    @endcode
+
+
+
+    @return a value of same type as the inputs
+
+**/
   template<typename T> auto nextafter(T const& x) {}
 
   namespace functional

@@ -16,11 +16,33 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-predicates
 
-    Computes is_nltz value of its parameter.
+    @ingroup group-predicates
 
-  **/
+    Returns True if a0 is not less than zero else returns False.
+
+    @par Semantic:
+
+    @code
+    logical<T> r = is_nltz(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    logical<T> r = !(a0 < 0);
+    @endcode
+
+
+    @par Note:
+
+    Due to existence of nan, this is not equivalent to @c is_gez(a0)
+    for floating types
+
+
+    @return a logical value
+
+**/
   template<typename T> auto is_nltz(T const& x) {}
 
   namespace functional
@@ -28,10 +50,10 @@ namespace boost { namespace simd
     /*!
       @ingroup group-predicates
 
-      Function object tied to simd::is_nltz
+      Function object tied to simd::is_nlt
 
-      @see simd::is_nltz
-    **/
+z      @see simd::is_nlt
+z    **/
     const boost::dispatch::functor<tag::is_nltz_> is_nltz = {};
   }
 } }

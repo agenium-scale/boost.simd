@@ -16,11 +16,43 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-predicates
 
-    Computes is_positive value of its parameter.
+    @ingroup group-predicates
 
-  **/
+    Returns True if a0 is positive else False.
+
+    This function differs from is_gtz from floating point argument,
+    because Zero is positive but not greater than zero, and Mzero is
+    not positive and not greater than zero, It's probably is_gtz that
+    you want.
+
+
+    @par Semantic:
+
+    @code
+    logical<T> r = is_positive(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    if T is signed
+      logical<T> r = bitofsign(a0) == 0;
+    else
+      logical<T> r = True;
+    @endcode
+
+
+    @par Note:
+
+    Mzero is the floating point 'minus zero',
+    i.e. all bits are zero but the sign bit.
+    Such a value is treated as zero by ieee standards.
+
+
+    @return a logical value
+
+**/
   template<typename T> auto is_positive(T const& x) {}
 
   namespace functional

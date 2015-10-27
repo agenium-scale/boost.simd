@@ -16,11 +16,29 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-reduction
 
-    Computes inbtrue value of its parameter.
+    @ingroup group-reduction
 
-  **/
+    Returns the number of non zero elements of the input SIMD vector.
+
+    @par Semantic:
+
+    For every parameter of type T0
+
+    @code
+    size_t r = inbtrue(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    size_t r = sum(if_one_else_zero(a0));
+    @endcode
+
+
+    @return a size_t value
+
+**/
   template<typename T> auto inbtrue(T const& x) {}
 
   namespace functional

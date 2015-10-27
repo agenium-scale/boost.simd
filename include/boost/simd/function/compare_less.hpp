@@ -16,11 +16,42 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-reduction
 
-    Computes compare_less value of its parameter.
+    @ingroup group-reduction
 
-  **/
+    Returns a logical scalar that is the result of the lexicographic
+    test for < on all elements of the entries
+
+    It is probably not what you wish. Have a look to is_less
+
+    @par Semantic:
+
+    For every parameters of type T0:
+
+    @code
+    as_logical_t<scalar_of_t<T0>> r = compare_less(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+     as_logical_t<scalar_of_t<T0>> r = False;
+      for(std::size_t i=0;i<cardinal_of<A0>;++i)
+      {
+        if (a0[i] <  a1[i])  {r =  True; break;}
+        if (a1[i] <  a0[i])  {r = False; break;}
+      }
+    @endcode
+
+    @see is_less
+    @par Alias:
+    @c compare_lt
+
+
+
+    @return a value of the scalar logical type associated to the parameters
+
+**/
   template<typename T> auto compare_less(T const& x) {}
 
   namespace functional

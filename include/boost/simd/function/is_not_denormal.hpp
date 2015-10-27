@@ -16,11 +16,29 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-predicates
 
-    Computes is_not_denormal value of its parameter.
+    @ingroup group-predicates
 
-  **/
+    Returns True or False according a0 is not_denormal or not.
+
+    @par Semantic:
+
+    @code
+    logical<T> r = is_not_denormal(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    logical<T> r = (abs(a0) >=  Smallestposval<T>());
+    @endcode
+
+    @see Smallestposval
+
+
+    @return a logical value
+
+**/
   template<typename T> auto is_not_denormal(T const& x) {}
 
   namespace functional

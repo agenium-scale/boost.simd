@@ -16,11 +16,10 @@
 namespace boost { namespace simd
 {
   /*!
-
     @ingroup group-arithmetic
 
     Computes the remainder of division.
-    The return value is a0-n*a1, where n is the value a0/a1,
+    The return value is x-n*y, where n is the value x/y,
     rounded toward infinity.
 
     @par semantic:
@@ -41,7 +40,7 @@ namespace boost { namespace simd
 
 
 **/
-  template<typename T> auto remround(T const& x) {}
+  template<typename T> auto remround(T const& x, const T& y) {}
 
   namespace functional
   {

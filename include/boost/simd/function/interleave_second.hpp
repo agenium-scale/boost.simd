@@ -16,11 +16,31 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-swar
 
-    Computes interleave_second value of its parameter.
+    @ingroup group-swar
 
-  **/
+    Computes a vector from a combination of the two inputs.
+
+    @par Semantic:
+
+    For every parameters of type T0:
+
+    @code
+    T0 r = interleave_second(a,b);
+    @endcode
+
+    is equivalent to :
+
+    @code
+    r = [ a[n/2-1] b[n/2-1] a[n/2] b[n/2] ... a[n-1] b[n-1] ]
+    @endcode
+
+    with <tt> n = cardinal_of<T>::value </tt>
+
+
+    @return a value of the same type as the parameters
+
+**/
   template<typename T> auto interleave_second(T const& x) {}
 
   namespace functional

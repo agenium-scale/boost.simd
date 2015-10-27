@@ -16,11 +16,36 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes unary_plus value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    return the elementwise unary plus of the parameter
+
+    Infix notation can be used with operator '+'
+    This is in fact identity.
+
+    @par Semantic:
+
+    For every parameter of type T0
+
+    @code
+    T0 r = unary_plus(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    T0 r = +a0;
+    @endcode
+
+    @par Alias:
+    @c identity,  @c id
+
+    @see  plus, unary_minus
+
+    @return a value of the same type as the parameter
+
+**/
   template<typename T> auto unary_plus(T const& x) {}
 
   namespace functional

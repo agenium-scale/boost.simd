@@ -16,11 +16,31 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-reduction
 
-    Computes sum value of its parameter.
+    @ingroup group-reduction
 
-  **/
+    Returns the sum of the elements of the SIMD vector
+
+    @par Semantic:
+
+    For every parameter of type T0
+
+    @code
+    scalar<T0> r = sum(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    scalar<T0> r = Zero;
+    for(result_type i = 0; i != meta::cardinal_of<T0>; ++i)
+      r += a0[i];
+    @endcode
+
+
+    @return a value of the scalar type associated to the parameter
+
+**/
   template<typename T> auto sum(T const& x) {}
 
   namespace functional

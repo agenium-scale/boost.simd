@@ -16,11 +16,35 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes is_equal value of its parameter.
+    @ingroup group-operator
 
-  **/
+    Returns True or False
+    according a0 and a1 are equal or not. Infix notation can be used with operator '=='
+
+    @par Semantic:
+
+    For every parameters of types respectively T0, T1:
+
+    @code
+    as_logical_t<T0> r = is_equal(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    as_logical_t<T0> r = a0 == a1;
+    @endcode
+
+    @par Alias:
+    @c eq, @c is_eq
+
+    @see  is_not_equal, is_eqz, is_equal_with_equal_nans
+
+
+    @return a logical value
+
+**/
   template<typename T> auto is_equal(T const& x) {}
 
   namespace functional

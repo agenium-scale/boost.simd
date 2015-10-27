@@ -16,11 +16,27 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-predicates
 
-    Computes is_nez value of its parameter.
+    @ingroup group-predicates
 
-  **/
+    Returns True if a0 is not equal to zero else returns False.
+
+    @par Semantic:
+
+    @code
+    logical<T> r = is_nez(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    logical<T> r = a0 != 0;
+    @endcode
+
+
+    @return a logical value
+
+**/
   template<typename T> auto is_nez(T const& x) {}
 
   namespace functional
@@ -28,10 +44,10 @@ namespace boost { namespace simd
     /*!
       @ingroup group-predicates
 
-      Function object tied to simd::is_nez
+      Function object tied to simd::is_ne
 
-      @see simd::is_nez
-    **/
+z      @see simd::is_ne
+z    **/
     const boost::dispatch::functor<tag::is_nez_> is_nez = {};
   }
 } }

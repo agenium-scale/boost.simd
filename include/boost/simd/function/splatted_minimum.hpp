@@ -16,11 +16,11 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-swar
 
-    Computes splatted_minimum value of its parameter.
+    @ingroup group-swar
 
-  **/
+
+**/
   template<typename T> auto splatted_minimum(T const& x) {}
 
   namespace functional

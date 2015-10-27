@@ -25,7 +25,7 @@ namespace boost { namespace simd
     For any given value @c x of type @c T, i  of type @c I:
 
     @code
-    as_integer<T> r = bitset(x, i);
+    as_integer_t<T> r = bitset(x, i);
     @endcode
 
     @see  bitset

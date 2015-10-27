@@ -16,11 +16,35 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes unary_minus value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    return the elementwise unary minus of the parameter
+
+    Infix notation can be used with operator '-'
+
+    @par Semantic:
+
+    For every parameter of type T0
+
+    @code
+    T0 r = unary_minus(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    T0 r = -a0;
+    @endcode
+
+    @par Alias:
+    @c neg
+
+    @see  minus, unary_plus
+
+    @return a value of the same type as the parameter
+
+**/
   template<typename T> auto unary_minus(T const& x) {}
 
   namespace functional

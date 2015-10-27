@@ -16,11 +16,31 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-ieee
 
-    Computes ilogb value of its parameter.
+    @ingroup group-ieee
 
-  **/
+    This function returns the integer truncation
+    of the base 2 logarithm of a0.
+    It coincides with the exponent function
+    on all platforms supported.
+
+    @par Semantic:
+
+    @code
+    T r = ilogb(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = toints(log2(a0));
+    @endcode
+
+    @see exponent
+
+    @return a value of same type as the input
+
+**/
   template<typename T> auto ilogb(T const& x) {}
 
   namespace functional

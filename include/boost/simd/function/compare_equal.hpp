@@ -16,11 +16,39 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-reduction
 
-    Computes compare_equal value of its parameter.
+    @ingroup group-reduction
 
-  **/
+    Returns a logical scalar value that is the result of the lexicographic
+    test for equality of all elements of the entries,
+    i.e. return true if and only if all corresponding entries
+    elements are equal.
+
+    It is probably not what you wish. Have a look to <tt>is_equal</tt>
+
+    @par Semantic:
+
+    For every parameters of type T0:
+
+    @code
+    logical<scalar_of_t<T0>> r = compare_equal(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    logical<scalar_of_t<T0>> r = all(a0 == a1)
+    @endcode
+
+    @par Alias:
+    @c compare_eq
+
+    @see is_equal
+
+
+    @return a value of the scalar logical type asssociated to the parameters
+
+**/
   template<typename T> auto compare_equal(T const& x) {}
 
   namespace functional

@@ -16,11 +16,29 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-reduction
 
-    Computes is_simd_logical value of its parameter.
+    @ingroup group-reduction
 
-  **/
+    returns true if all vector elements have all or no bit sets.
+
+    @par Semantic:
+
+    For every parameter of type T0
+
+    @code
+    logical<scalar_of_t<T0>> r = is_simd_logical(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    T0 r = all(a0 == Allbits || a0 == Zero);
+    @endcode
+
+
+    @return a value of the scalar logical type associated to the parameter
+
+**/
   template<typename T> auto is_simd_logical(T const& x) {}
 
   namespace functional

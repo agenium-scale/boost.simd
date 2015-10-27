@@ -16,12 +16,34 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes modulo value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
-  template<typename T> auto modulo(T const& x) {}
+    return the elementwise modulo of the two parameters
+    Infix notation can be used with operator '\%'
+    Does not work for floating point entries.
+
+    @par Semantic:
+
+    For every parameters of type T0:
+
+    @code
+    T0 r = modulo(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    T0 r = a0 % a1;
+    @endcode
+
+    @see  rem, remainder, mod,
+
+
+    @return a value of the same type as the parameters
+
+**/
+  template<typename T> auto modulo(T const& x, const T& y) {}
 
   namespace functional
   {

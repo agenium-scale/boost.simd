@@ -16,11 +16,31 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-swar
 
-    Computes cumsum value of its parameter.
+    @ingroup group-swar
 
-  **/
+    compute the cumulate sum of the vector elements
+
+    @par Semantic:
+
+    For every parameter of type T0
+
+    @code
+    T0 r = cumsum(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r =x;
+    for(int i=0;i < T::static_size; ++i)
+      r[i] += r[i-1];
+    @endcode
+
+
+    @return a value of the same type as the second parameter
+
+**/
   template<typename T> auto cumsum(T const& x) {}
 
   namespace functional

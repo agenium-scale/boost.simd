@@ -16,11 +16,32 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-swar
 
-    Computes reverse value of its parameter.
+    @ingroup group-swar
 
-  **/
+    returns a vector the elements of which are
+    those of a0 in reverse order
+
+    @par Semantic:
+
+    For every parameter of type T0
+
+    @code
+    T0 r = reverse(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    T0 r = ;
+    for(size_t i=0;i<cardinal_of<T0>;++i)
+    r[i] = a0[cardinal_of<T0>-i-1];
+    @endcode
+
+
+    @return a value of the same type as the parameter
+
+**/
   template<typename T> auto reverse(T const& x) {}
 
   namespace functional

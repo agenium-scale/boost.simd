@@ -16,11 +16,27 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-ieee
 
-    Computes nextpow2 value of its parameter.
+    @ingroup group-ieee
 
-  **/
+    Returns the least n such that abs(x) is less or equal to \f$2^n\f$
+
+    @par Semantic:
+
+    @code
+    T r = nextpow2(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    T n = ceil(log2(abs(x)x));
+    @endcode
+
+
+    @return a value of same type as the input
+
+**/
   template<typename T> auto nextpow2(T const& x) {}
 
   namespace functional

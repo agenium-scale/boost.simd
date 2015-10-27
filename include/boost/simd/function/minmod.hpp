@@ -40,7 +40,7 @@ namespace boost { namespace simd
 
 
 **/
-  template<typename T> auto minmod(T const& x) {}
+  template<typename T> auto minmod(T const& x, T const& y) {}
 
   namespace functional
   {

@@ -16,11 +16,27 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-predicates
 
-    Computes is_ltz value of its parameter.
+    @ingroup group-predicates
 
-  **/
+    Returns True or False according a0 is less than zero or not.
+
+    @par Semantic:
+
+    @code
+    logical<T> r = is_ltz(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    logical<T> r = a0 < 0;
+    @endcode
+
+
+    @return a logical value
+
+**/
   template<typename T> auto is_ltz(T const& x) {}
 
   namespace functional
@@ -28,10 +44,10 @@ namespace boost { namespace simd
     /*!
       @ingroup group-predicates
 
-      Function object tied to simd::is_ltz
+      Function object tied to simd::is_lt
 
-      @see simd::is_ltz
-    **/
+z      @see simd::is_lt
+z    **/
     const boost::dispatch::functor<tag::is_ltz_> is_ltz = {};
   }
 } }

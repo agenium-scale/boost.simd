@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-arithmetic
 
-    Returns the inverse of the entry.
+    Returns the inverse (reciprocal) of the entry.
 
     @par semantic:
     For any given value @c x of type @c T:

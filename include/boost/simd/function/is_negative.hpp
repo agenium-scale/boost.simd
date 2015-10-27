@@ -16,11 +16,41 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-predicates
 
-    Computes is_negative value of its parameter.
+    @ingroup group-predicates
 
-  **/
+    Returns True if a0 is negative else False.
+
+    This function differs from is_ltz from floating point argument,
+    because Mzero is negative but not less than zero.  and Mzero is
+    not positive and not greater than zero, It's probably is_ltz that
+    you want.
+
+    @par Semantic:
+
+    @code
+    logical<T> r = is_negative(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    if T is signed
+      logical<T> r = bitofsign(a0) == 1;
+    else
+      logical<T> r = False;
+    @endcode
+
+    @par Note:
+
+    Mzero is the floating point 'minus zero',
+    i.e. all bits are zero but the sign bit.
+    Such a value is treated as zero by ieee standards.
+
+
+    @return a logical value
+
+**/
   template<typename T> auto is_negative(T const& x) {}
 
   namespace functional

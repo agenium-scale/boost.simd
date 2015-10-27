@@ -21,15 +21,17 @@ namespace boost { namespace simd
 
     @brief
 
-    For any two reals @c a0 and @c a1 two_prod computes two reals
+    For any two reals @c x and @c y two_prod computes two reals (in an std::pair)
     @c r0 and @c r1 so that:
 
     @code
-    r0 = a0 * a1
-    r1 = r0 -(a0 * a1)
+    r0 = x * y
+    r1 = r0 -(x * y)
     @endcode
 
-    using perfect arithmetic. Its main usage is to be able to compute
+    using perfect arithmetic.
+
+    Its main usage is to be able to compute
     sum of reals and the residual error using IEEE 754 arithmetic.
 
 

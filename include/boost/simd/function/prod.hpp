@@ -16,11 +16,31 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-reduction
 
-    Computes prod value of its parameter.
+    @ingroup group-reduction
 
-  **/
+    Returns the product of the elements of the SIMD vector
+
+    @par Semantic:
+
+    For every parameter of type T0
+
+    @code
+    scalar<T0> r = prod(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    scalar<T0> r = One;
+    for(result_type i = 0; i != cardinal_of<T0>; ++i)
+      r *= a0[i];
+    @endcode
+
+
+    @return a value of the scalar type associated to the parameter
+
+**/
   template<typename T> auto prod(T const& x) {}
 
   namespace functional

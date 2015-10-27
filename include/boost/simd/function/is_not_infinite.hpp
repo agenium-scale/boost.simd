@@ -16,11 +16,30 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-predicates
 
-    Computes is_not_infinite value of its parameter.
+    @ingroup group-predicates
 
-  **/
+    TODO Put description here
+
+    @par Semantic:
+
+    @code
+    logical<T> r = is_not_infinite(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    if T is floating
+      logical<T> r = (a0 !=  Inf) && (a0 != -Inf);
+    else
+      logical<T> r = True;
+    @endcode
+
+
+    @return a logical value
+
+**/
   template<typename T> auto is_not_infinite(T const& x) {}
 
   namespace functional

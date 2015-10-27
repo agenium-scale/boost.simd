@@ -25,13 +25,13 @@ namespace boost { namespace simd
     For any given value @c x of type @c T:
 
     @code
-    as_integer<T> r = ifloor(x);
+    as_integer_t<T> r = ifloor(x);
     @endcode
 
     is equivalent to:
 
     @code
-    as_integer<T> r = toints(floor(x));
+    as_integer_t<T> r = toints(floor(x));
     @endcode
 
     @par Note:

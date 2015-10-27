@@ -16,11 +16,35 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-predicates
 
-    Computes is_not_less_equal value of its parameter.
+    @ingroup group-predicates
 
-  **/
+    @par Semantic:
+
+    @code
+    logical<T> r = is_not_less_equal(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    logical<T> r = !(a0 <= a1);
+    @endcode
+
+    @par Note:
+
+    Due to existence of nan, this is not equivalent to @c is_greater(a0, a1)
+    for floating types
+
+    @par Alias:
+
+    @c is_nle
+
+
+
+    @return a logical value
+
+**/
   template<typename T> auto is_not_less_equal(T const& x) {}
 
   namespace functional

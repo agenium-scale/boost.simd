@@ -42,6 +42,11 @@ namespace boost { namespace simd
     saturated functor or convert the input parameter to a larger type
     before taking the absolute value.
 
+
+    Also abs is a very current function name and sometimes a C version can be
+    an unwanted concurrent of boost::simd::abs,  you can prefix abs or
+    use the alias modulus instead to circumvent this problem.
+
     @par Alias
 
     modulus

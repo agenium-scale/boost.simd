@@ -16,11 +16,27 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-predicates
 
-    Computes is_gtz value of its parameter.
+    @ingroup group-predicates
 
-  **/
+    Returns True or False according a0 is greater than zero or not.
+
+    @par Semantic:
+
+    @code
+    logical<T> r = is_gtz(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    logical<T> r = a0 > 0;
+    @endcode
+
+
+    @return a logical value
+
+**/
   template<typename T> auto is_gtz(T const& x) {}
 
   namespace functional
@@ -28,10 +44,10 @@ namespace boost { namespace simd
     /*!
       @ingroup group-predicates
 
-      Function object tied to simd::is_gtz
+      Function object tied to simd::is_gt
 
-      @see simd::is_gtz
-    **/
+z      @see simd::is_gt
+z    **/
     const boost::dispatch::functor<tag::is_gtz_> is_gtz = {};
   }
 } }

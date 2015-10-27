@@ -22,22 +22,24 @@ namespace boost { namespace simd
     @brief Returns \f$10^n\f$ in the floating type  corresponding to A0
 
     @par semantic:
-    For any given value n  of integral type @c I, and T of type as_floating<I>::type
+    For any given value n  of integral type @c I
 
     @code
-    T r = tenpower(n);
+    as_floating_t<I> r = tenpower(n);
     @endcode
 
     code is similar to:
 
     @code
-    T r = exp10(T(n));
+    auto r = exp10(as_floating_t<I>(n));
     @endcode
 
     @par Note:
 
-    This function is not defined for floating entries
+    This function is not defined for floating entries and intended to be used for
+    small integer values.
 
+    @see exp10
 
     @return a value of the floating associated type.
 

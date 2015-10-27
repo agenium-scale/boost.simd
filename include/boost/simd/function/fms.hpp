@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-arithmetic
 
-    Computes the fused negated substract-multiply of three values.
+    Computes the fused  substract-multiply of three values.
 
     @par semantic:
     For any given value @c x,  @c y,  @c z of type @c T:
@@ -31,14 +31,15 @@ namespace boost { namespace simd
     The code is similar to:
 
     @code
-    T r = -(x-y*z);
+    T r = x*y-z;
     @endcode
 
+    @see fma,  correct_fma
 
     @return a value of the same type as the input.
 
 **/
-  template<typename T> auto fms(T const& x) {}
+  template<typename T> auto fms(T const& x, T const& y, T const& z) {}
 
   namespace functional
   {

@@ -16,11 +16,31 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-swar
 
-    Computes interleave_even value of its parameter.
+    @ingroup group-swar
 
-  **/
+    Computes a vector from a combination of the two inputs.
+
+    @par Semantic:
+
+    For every parameters of types respectively T0:
+
+    @code
+    T0 r = interleave_even(a,b);
+    @endcode
+
+    is equivalent to :
+
+    @code
+    r = [ a[0] b[0] a[2] b[2] ... a[n/2] b[n/2] ]
+    @endcode
+
+    with <tt> n = cardinal_of<T>::value </tt>
+
+
+    @return a value of the same type as the parameters
+
+**/
   template<typename T> auto interleave_even(T const& x) {}
 
   namespace functional

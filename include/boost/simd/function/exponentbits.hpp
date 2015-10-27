@@ -16,11 +16,29 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-ieee
 
-    Computes exponentbits value of its parameter.
+    @ingroup group-ieee
 
-  **/
+    Returns the exponent bits of the floating input as an integer value.
+    the other bits (sign and mantissa) are just masked.
+    This function is not defined on integral types.
+
+    @par Semantic:
+
+    @code
+    as_integer_t<T> r = exponentbits(x);
+    @endcode
+
+    is similar to
+
+    @code
+    as_integer_t<T> r = x&Exponentmask<T>();
+    @endcode
+
+
+    @return a value of the integral type associated to the input
+
+**/
   template<typename T> auto exponentbits(T const& x) {}
 
   namespace functional

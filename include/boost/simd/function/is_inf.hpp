@@ -16,11 +16,27 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-predicates
 
-    Computes is_inf value of its parameter.
+    @ingroup group-predicates
 
-  **/
+    Returns True if a0 is inf or -inf else returns False.
+
+    @par Semantic:
+
+    @code
+    logical<T> r = is_inf(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    logical<T> r = (a0 == Inf) || (a0 == -Inf);
+    @endcode
+
+
+    @return a logical value
+
+**/
   template<typename T> auto is_inf(T const& x) {}
 
   namespace functional

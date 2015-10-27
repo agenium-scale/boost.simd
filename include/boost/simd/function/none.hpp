@@ -16,11 +16,29 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-reduction
 
-    Computes none value of its parameter.
+    @ingroup group-reduction
 
-  **/
+    Returns True if all elements of the input vector are zero.
+
+    @par Semantic:
+
+    For every parameter of type T0
+
+    @code
+    as_logical_t<scalar_of_t<T0>> r = none(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    as_logical_t<scalar_of_t<T0>> r = !any(a0);
+    @endcode
+
+
+    @return a value of the scalar logical type associated to the parameter
+
+**/
   template<typename T> auto none(T const& x) {}
 
   namespace functional

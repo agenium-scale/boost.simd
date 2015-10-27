@@ -16,11 +16,32 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-swar
 
-    Computes lookup value of its parameter.
+    @ingroup group-swar
 
-  **/
+    shuffles the elements of a1 using indices in a2
+
+    @par Semantic:
+
+    For every parameters of types respectively T0, T1:
+
+    @code
+    T0 r = lookup(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    T0 r;
+    for(size_t i=0; i < boost::simd::meta::cardinal_of<T0>::value; i++)
+      r[i] = a0[a1[i]];
+    @endcode
+
+
+
+    @return a value of the same type as the first parameter
+
+**/
   template<typename T> auto lookup(T const& x) {}
 
   namespace functional

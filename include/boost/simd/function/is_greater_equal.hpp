@@ -16,11 +16,35 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes is_greater_equal value of its parameter.
+    @ingroup group-operator
 
-  **/
+    Returns True or False according a0 is greater or equal to a1 or not.
+    Infix notation can be used with operator '>='.
+
+    @par Semantic:
+
+    For every parameters of types respectively T0, T1:
+
+    @code
+    as_logical_t<T0> r = is_greater_equal(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    as_logical_t<T0> r = a0 >= a1;
+    @endcode
+
+    @par Alias:
+    @c ge, @c is_ge
+
+    @see  is_greater, is_gez, is_nge, is_ngez
+
+
+    @return a logical value
+
+**/
   template<typename T> auto is_greater_equal(T const& x) {}
 
   namespace functional

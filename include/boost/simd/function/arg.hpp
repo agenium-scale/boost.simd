@@ -35,8 +35,9 @@ namespace boost { namespace simd
 
     @par Note:
 
-    Always 0 or \f$\pi\f$ according to the input sign,  or Nan
-    is the input is Nan.
+    Returns 0 or \f$\pi\f$  (or Nan if and only if the input is Nan)
+    according to the input sign,
+
     This function is the restriction to real numbers of the complex
     argument function.
 

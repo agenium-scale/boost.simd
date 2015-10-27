@@ -21,20 +21,22 @@ namespace boost { namespace simd
 
     @brief
 
-    For any two reals @c a0 and @c a1 two_add computes two reals
-    @c r0 and @c r1 so that:
+    For any two reals @c x and @c y two_add computes two reals (in an std::pair)
+    @c r0 and @c r1 such that:
 
     @code
-    r0 = a0 + a1
-    r1 = r0 -(a0 + a1)
+    r0 = x + y
+    r1 = r0 -(x + y)
     @endcode
 
-    using perfect arithmetic. Its main usage is to be able to compute
+    using perfect arithmetic.
+
+    Its main usage is to be able to compute
     sum of reals and the residual error using IEEE  754 arithmetic.
 
 
 **/
-  template<typename T> auto two_add(T const& x) {}
+  template<typename T> auto two_add(T const& x, const T& y) {}
 
   namespace functional
   {

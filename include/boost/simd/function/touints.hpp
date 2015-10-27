@@ -25,13 +25,13 @@ namespace boost { namespace simd
     For any given value @c x of type @c T:
 
     @code
-    as_integer<T, unsigned> r = touint(x);
+    as_integer_t<T, unsigned> r = touint(x);
     @endcode
 
     The code is similar to:
 
     @code
-    as_integer<T,unsigned> r = static_cast<as_integer<T,unsigned> >(saturate<as_integer<T,unsigned> (x)))
+    as_integer_t<T,unsigned> r = static_cast<as_integer_t<T,unsigned> >(saturate<as_integer_t<T,unsigned> (x)))
     @endcode
 
     @par Notes:
@@ -42,11 +42,13 @@ namespace boost { namespace simd
     All values superior (resp. less) than Valmax (resp. Valmin) of the return type
     are saturated accordingly.
 
+    If you do not care about invalid values or overflows toint is speedier.
+
     @par Alias
 
     saturated_toint
 
-    @see toint
+    @see touint
 
     @return      a value of the unsigned integer type associated to the input.
 

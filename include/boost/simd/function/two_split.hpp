@@ -21,10 +21,11 @@ namespace boost { namespace simd
 
     @brief
 
-    For any real @c a0, two_split computes two reals @c r0 and @c r1 so that:
+    For any real @c x, two_split computes two reals @c r0 and @c r1 (in an std::pair)
+    such that:
 
     @code
-    a0 = r0+r1
+    x == r0+r1
     @endcode
 
     and where @c r0 and @c r1 bit pattern don't overlap.

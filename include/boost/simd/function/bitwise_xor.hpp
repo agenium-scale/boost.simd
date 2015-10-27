@@ -16,17 +16,46 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes bitwise_xor value of its parameter.
+    @ingroup group-bitwise
 
-  **/
+    return the bitwise xor of the two parameters
+    the operands must share the same bit size and
+    the result type is the one of the first operand
+    Infix notation can be used with operator '^',
+    but this will not work in scalar mode if any
+    operand is floating point because of C++ limitations.
+
+    @par Semantic:
+
+    For every parameters of types respectively T0, T1:
+
+    @code
+    T0 r = bitwise_xor(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    T0 r = a0^a1;
+    @endcode
+
+    @par Alias:
+    @c b_or
+
+    @see  bitwise_or, bitwise_and, bitwise_notand,
+    bitwise_andnot, bitwise_notor, bitwise_ornot, complement
+
+
+    @return a value of the same type as the first parameter
+
+**/
   template<typename T> auto bitwise_xor(T const& x) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-bitwise
 
       Function object tied to simd::bitwise_xor
 

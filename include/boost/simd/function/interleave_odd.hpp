@@ -16,11 +16,31 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-swar
 
-    Computes interleave_odd value of its parameter.
+    @ingroup group-swar
 
-  **/
+    Computes a vector from a combination of the two inputs.
+
+    @par Semantic:
+
+    For every parameters of types respectively T0:
+
+    @code
+    T0 r = interleave_odd(a,b);
+    @endcode
+
+    is equivalent to :
+
+    @code
+    r = [ a[1] b[1] a[3] b[3] ... a[n/2+1] b[n/2+1] ]
+    @endcode
+
+    with <tt> n = cardinal_of<T>::value </tt>
+
+
+    @return a value of the same type as the parameters
+
+**/
   template<typename T> auto interleave_odd(T const& x) {}
 
   namespace functional

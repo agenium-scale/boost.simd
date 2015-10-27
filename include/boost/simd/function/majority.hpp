@@ -16,11 +16,29 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-predicates
 
-    Computes majority value of its parameter.
+    @ingroup group-predicates
 
-  **/
+    Returns True if at least two inputs are not zero else False.
+
+    @par Semantic:
+
+    @code
+    logical<T> r = majority(a0,a1,a2);
+    @endcode
+
+    is similar to:
+
+    @code
+    logical<T> r = (a0!= 0)+(a1!= 0)+(a2!= 0) >= 2;
+    @endcode
+
+
+
+
+    @return a logical value
+
+**/
   template<typename T> auto majority(T const& x) {}
 
   namespace functional

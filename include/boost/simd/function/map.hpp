@@ -16,9 +16,9 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
+  @ingroup group-swar
 
-    Computes map value of its parameter.
+   TODO- Computes map value of its parameter.
 
   **/
   template<typename T> auto map(T const& x) {}
@@ -26,7 +26,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-swar
 
       Function object tied to simd::map
 

@@ -16,11 +16,30 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-reduction
 
-    Computes is_included value of its parameter.
+    @ingroup group-reduction
 
-  **/
+    Returns True is only if all bits set in a0 are also set in a1
+
+    @par Semantic:
+
+    For every parameters of type T0:
+
+    @code
+    logical<scalar_of_t<T0>> r = is_included(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    logical<scalar_of_t<T0>> r = all((a0&a1) == a1);
+    @endcode
+
+
+
+    @return a value of the scalar logical type associated to the parameters
+
+**/
   template<typename T> auto is_included(T const& x) {}
 
   namespace functional

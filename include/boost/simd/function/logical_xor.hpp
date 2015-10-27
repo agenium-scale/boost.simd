@@ -17,7 +17,7 @@ namespace boost { namespace simd
 {
   /*!
 
-    @ingroup group-arithmetic
+    @ingroup group-boolean
 
     Computes the logical xor of its parameter.
 
@@ -25,13 +25,13 @@ namespace boost { namespace simd
     For any given value @c x and @c y of type @c T:
 
     @code
-    as_logical<T> r = logical_xor(x, y);
+    as_logical_t<T> r = logical_xor(x, y);
     @endcode
 
     is similar to:
 
     @code
-    as_logical<T> r = !x != !y;
+    as_logical_t<T> r = !x != !y;
     @endcode
 
 
@@ -43,7 +43,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-boolean
 
       Function object tied to simd::logical_xor
 

@@ -27,13 +27,13 @@ namespace boost { namespace simd
     For every parameters of types respectively T0, T1:
 
     @code
-    as_logical<T0> r = logical_ornot(a0,a1);
+    as_logical_t<T0> r = logical_ornot(a0,a1);
     @endcode
 
     is similar to:
 
     @code
-    as_logical<T0> r = a0 || !a1;
+    as_logical_t<T0> r = a0 || !a1;
     @endcode
 
     @par Alias:
