@@ -17,11 +17,37 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-reduction
 
-    Computes compare_greater_equal value of its parameter.
+    @ingroup group-reduction
 
-  **/
+    Returns a logical scalar that is the result of the lexicographic
+    test for >= on all elements of the entries
+
+    It is probably not what you wish. Have a look to is_greater_equal.
+
+    @par Semantic:
+
+    For every parameters of type T0:
+
+    @code
+    as_logical_t<scalar_of_t<T0>> r = compare_greater_equal(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+      as_logical_t<scalar_of_t<T0>> r = !compare_less(a1, a0)
+    @endcode
+
+    @par Alias:
+    @c compare_ge
+
+    @see is_greater_equal
+
+
+    @return a value of the scalar logical type associated to the parameters
+
+**/
   template<typename T> auto compare_greater_equal(T const& x) {}
 
   namespace functional

@@ -47,7 +47,7 @@ namespace boost { namespace simd
 
 
 **/
-  template<typename T> auto divround2even(T const& x) {}
+  template<typename T> auto divround2even(T const& x, T const& y) {}
 
   namespace functional
   {

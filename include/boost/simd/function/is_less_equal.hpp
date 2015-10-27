@@ -17,11 +17,36 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes is_less_equal value of its parameter.
+    @ingroup group-operator
 
-  **/
+    Returns True<result_type>() or False<result_type>() depending on whether a0 is
+    less than or equal to a1 or not.
+    Infix notation can be used with operator '<='.
+
+    @par Semantic:
+
+    For every parameters of types respectively T0, T1:
+
+    @code
+    as_logical_t<T0> r = is_less_equal(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    as_logical_t<T0> r = a0 <= a1;
+    @endcode
+
+    @par Alias:
+    @c le, @c is_le
+
+    @see  is_equal, is_eqz, is_nez
+
+
+    @return a logical value
+
+**/
   template<typename T> auto is_less_equal(T const& x) {}
 
   namespace functional

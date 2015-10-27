@@ -26,20 +26,21 @@ namespace boost { namespace simd
     For any given value @c x,  @c y,  @c z of type @c T:
 
     @code
-    T r = fsm(x, y, z);
+    T r = fnms(x, y, z);
     @endcode
 
     The code is similar to:
 
     @code
-    T r = x-y*z;
+    T r = -(x*y-s);
     @endcode
 
+    @see  fms, correct_fma
 
     @return a value of the same type as the input.
 
 **/
-  template<typename T> auto fnms(T const& x) {}
+  template<typename T> auto fnms(T const& x, T const& y, T const& z) {}
 
   namespace functional
   {

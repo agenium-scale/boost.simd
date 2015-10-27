@@ -17,11 +17,16 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-swar
 
-    Computes split_multiplies value of its parameter.
+    @ingroup group-swar
 
-  **/
+    @brief SIMD register type-based multiplies and split
+
+    @c split_multiplies multiplies two x-bit SIMD registers and returns two 2x-bit registers
+    each having half the cardinal of the original inputs.
+
+
+**/
   template<typename T> auto split_multiplies(T const& x) {}
 
   namespace functional

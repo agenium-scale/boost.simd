@@ -17,11 +17,37 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-predicates
 
-    Computes is_not_greater value of its parameter.
+    @ingroup group-predicates
 
-  **/
+    Returns True if a0 is not greater than a1 else returns False.
+
+    @par Semantic:
+
+    @code
+    logical<T> r = is_not_greater(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    logical<T> r = ;
+    @endcode
+
+    @par Note:
+
+    Due to existence of nan, this is not equivalent to @c is_less_equal(a0, a1)
+    for floating types
+
+    @par Alias:
+
+    @c is_ngt
+
+
+
+    @return a logical value
+
+**/
   template<typename T> auto is_not_greater(T const& x) {}
 
   namespace functional

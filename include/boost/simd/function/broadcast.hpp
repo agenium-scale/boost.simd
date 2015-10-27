@@ -17,11 +17,33 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-swar
 
-    Computes broadcast value of its parameter.
+    @ingroup group-swar
 
-  **/
+    @brief Vector element broadcast
+
+    Splat the Nth element of a SIMD register into a new register
+
+    @par Semantic:
+
+    For every parameter of type Type and any integer @c N
+
+    @code
+    Type r = broadcast<N>(value);
+    @endcode
+
+    is similar to:
+
+    @code
+    for(int i=0;i<Type::static_size;++i)
+      r[i] = value[N];
+    @endcode
+
+    @tparam N index of the value to broadcast everywhere
+
+    @return A SIMD register full of <tt>value[N]</tt>
+
+**/
   template<typename T> auto broadcast(T const& x) {}
 
   namespace functional

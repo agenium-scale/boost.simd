@@ -17,11 +17,24 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-ieee
 
-    Computes successor value of its parameter.
+    @ingroup group-ieee
 
-  **/
+    Returns the n-th least element strictly greater than the parameter
+
+    @par Semantic:
+
+    @code
+    T r = successor(x,n);
+    @endcode
+
+    computes the @c n-th least value strictly greater than x in its type
+
+
+
+    @return a value of same type as the inputs
+
+**/
   template<typename T> auto successor(T const& x) {}
 
   namespace functional

@@ -51,7 +51,7 @@ namespace boost { namespace simd
 
 
 **/
-  template<typename T> auto divfix(T const& x) {}
+  template<typename T> auto divfix(T const& x, T const& y) {}
 
   namespace functional
   {

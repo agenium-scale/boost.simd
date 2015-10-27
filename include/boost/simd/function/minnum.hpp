@@ -17,12 +17,32 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-ieee
 
-    Computes minnum value of its parameter.
+    @ingroup group-ieee
 
-  **/
-  template<typename T> auto minnum(T const& x) {}
+     Returns the minimum value, ignoring nans.
+
+    @par Semantic:
+
+    @code
+    T r = minnum(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r =     T r = (is_nan(a0) ? a1 : (isnan(a1) ? a0 : min(a0, a1));;
+    @endcode
+
+    @par Alias:
+    @c fmin
+
+
+
+    @return a value of same type as the inputs
+
+**/
+  template<typename T> auto minnum(T const& x, T const& y) {}
 
   namespace functional
   {

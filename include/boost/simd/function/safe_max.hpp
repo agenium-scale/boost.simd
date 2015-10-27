@@ -17,11 +17,28 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-ieee
 
-    Computes safe_max value of its parameter.
+    @ingroup group-ieee
 
-  **/
+    Returns a safe_max relative to the input,  i.e. a
+    value which will not overflow when multiplied by the input.
+
+    @par Semantic:
+
+    @code
+    T r = safe_max(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = x ? Sqrtvalmax<T>()/abs(x) : Inf<T>();
+    @endcode
+
+
+    @return a value of same type as the input
+
+**/
   template<typename T> auto safe_max(T const& x) {}
 
   namespace functional

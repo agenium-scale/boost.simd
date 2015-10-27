@@ -26,7 +26,7 @@ namespace boost { namespace simd
     For any given value @c x,  @c y,  @c z of type @c T:
 
     @code
-    T r = fnam(x, y, z);
+    T r = fnma(x, y, z);
     @endcode
 
     The code is similar to:
@@ -35,11 +35,12 @@ namespace boost { namespace simd
     T r = -(x+y*z);
     @endcode
 
+    @see  fma, correct_fma
 
     @return a value of the same type as the input.
 
 **/
-  template<typename T> auto fnma(T const& x) {}
+  template<typename T> auto fnma(T const& x, T const& y, T const& z) {}
 
   namespace functional
   {

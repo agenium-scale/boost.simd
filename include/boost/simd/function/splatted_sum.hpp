@@ -17,11 +17,11 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-swar
 
-    Computes splatted_sum value of its parameter.
+    @ingroup group-swar
 
-  **/
+
+**/
   template<typename T> auto splatted_sum(T const& x) {}
 
   namespace functional

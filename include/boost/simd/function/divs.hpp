@@ -35,8 +35,9 @@ namespace boost { namespace simd
     T r = trunc(x/y);
     @endcode
 
-    for integral types, if y is null, it returns Valmax or Valmin
+    for integral types, if y is null, it returns Valmax (resp. Valmin)
     if x is positive (resp. negative) and 0 if x is null.
+
     Saturated means that for signed integer types,
     @c divs(Valmin,-1) returns Valmax.
 
@@ -51,7 +52,7 @@ namespace boost { namespace simd
 
 
 **/
-  template<typename T> auto divs(T const& x) {}
+  template<typename T> auto divs(T const& x, T const& y) {}
 
   namespace functional
   {

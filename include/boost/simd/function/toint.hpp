@@ -26,13 +26,13 @@ namespace boost { namespace simd
     For any given value @c x of type @c T:
 
     @code
-    as_integer<T> r = toint(x);
+    as_integer_t<T> r = toint(x);
     @endcode
 
     The code is similar to:
 
     @code
-    as_integer<T> r = static_cast<as_integer<T> >(x)
+    as_integer_t<T> r = static_cast<as_integer_t<T> >(x)
     @endcode
 
     @par Notes:
@@ -60,8 +60,10 @@ namespace boost { namespace simd
 
     returns true !)
 
-    If you intend to use nans and infs entries,  consider using toints instead.
-    On integral typed values, it acts as identity.
+    If you intend to use nans and infs entries,  consider using @c toints instead.
+    Nethertheless, on integral typed values, @c toint acts as identity.
+
+    @see toints
 
     @return      a value of the integer type associated to the input.
 

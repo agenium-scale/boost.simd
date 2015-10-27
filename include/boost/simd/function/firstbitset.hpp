@@ -27,7 +27,7 @@ namespace boost { namespace simd
     For any given value @c x of type @c T:
 
     @code
-    as_integer<T,unsigned> r = firstbitset(x);
+    as_integer_t<T,unsigned> r = firstbitset(x);
     @endcode
 
     @see  ffs,  firstbitunset

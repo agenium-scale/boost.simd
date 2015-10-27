@@ -17,11 +17,30 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes comma value of its parameter.
+    @ingroup group-operator
 
-  **/
+    TODO Put description here
+
+    @par Semantic:
+
+    For every parameters of types respectively T0, T1:
+
+    @code
+    T0 r = comma(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    T0 r = (a0, a1);
+    @endcode
+
+
+
+    @return a value of the same type as the second parameter
+
+**/
   template<typename T> auto comma(T const& x) {}
 
   namespace functional

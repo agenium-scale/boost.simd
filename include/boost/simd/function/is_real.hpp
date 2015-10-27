@@ -17,11 +17,28 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-predicates
 
-    Computes is_real value of its parameter.
+    @ingroup group-predicates
 
-  **/
+    Returns True or False according a0 is real or not.
+    For non complex numbers it is always true
+
+    @par Semantic:
+
+    @code
+    logical<T> r = is_real(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    logical<T> r = True;
+    @endcode
+
+
+    @return a logical value
+
+**/
   template<typename T> auto is_real(T const& x) {}
 
   namespace functional

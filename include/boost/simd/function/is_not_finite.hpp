@@ -17,11 +17,27 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-predicates
 
-    Computes is_not_finite value of its parameter.
+    @ingroup group-predicates
 
-  **/
+    Returns True if a0 is  inf, -inf or nan, else returns False.
+
+    @par Semantic:
+
+    @code
+    logical<T> r = is_not_finite(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    logical<T> r = a0-a0 != 0;
+    @endcode
+
+
+    @return a logical value
+
+**/
   template<typename T> auto is_not_finite(T const& x) {}
 
   namespace functional

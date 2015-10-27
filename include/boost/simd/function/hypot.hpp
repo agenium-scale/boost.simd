@@ -35,9 +35,12 @@ namespace boost { namespace simd
     T r = sqrt(sqr(x)+sqr(y));
     @endcode
 
+    @par Note
+
     Provision are made to avoid overflow as possible and to compute
     @c hypot accurately.
-    If these considerations can be put aside use
+
+    If these considerations can be put aside use the call
     hypot(x,y,fast_).
 
 
@@ -45,7 +48,7 @@ namespace boost { namespace simd
 
 
 **/
-  template<typename T> auto hypot(T const& x) {}
+  template<typename T> auto hypot(T const& x, T const& y) {}
 
   namespace functional
   {

@@ -55,8 +55,7 @@ namespace boost { namespace simd
     you can define BOOST_SIMD_DONT_CARE_CORRECT_FMA_OVERFLOW to get better
     performances
 
-    This function is never used internally in boost/simd. See also
-    the fma function.
+    This function is never used internally in boost/simd.
 
     @see  fma
 
@@ -66,7 +65,7 @@ namespace boost { namespace simd
 
 
 **/
-  template<typename T> auto correct_fma(T const& x) {}
+  template<typename T> auto correct_fma(T const& x, T const& y, T const& z) {}
 
   namespace functional
   {

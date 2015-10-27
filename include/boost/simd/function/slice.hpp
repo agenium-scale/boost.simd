@@ -17,11 +17,16 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-swar
 
-    Computes slice value of its parameter.
+    @ingroup group-swar
 
-  **/
+    @brief SIMD register type-based slice
+
+    @c slice slices a SIMD register @c v in two SIMD register of half the
+    cardinal of @c v containing the same value than @c v.
+
+
+**/
   template<typename T> auto slice(T const& x) {}
 
   namespace functional

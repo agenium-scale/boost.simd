@@ -17,11 +17,23 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-swar
 
-    Computes sort value of its parameter.
+    @ingroup group-swar
 
-  **/
+    returns the sorted a0 vector in ascending order
+
+    @par Semantic:
+
+    For every parameter of type T0
+
+    @code
+    T0 r = sort(a0);
+    @endcode
+
+
+    @return a value of the same type as the second parameter
+
+**/
   template<typename T> auto sort(T const& x) {}
 
   namespace functional

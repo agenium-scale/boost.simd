@@ -17,11 +17,28 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-predicates
 
-    Computes is_ord value of its parameter.
+    @ingroup group-predicates
 
-  **/
+    Returns True if neither a0 nor a1 is nan.
+
+    @par Semantic:
+
+    @code
+    logical<T> r = is_ord(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    logical<T> r = (a0 == a0) && (a1 == a1);
+    @endcode
+
+
+
+    @return a logical value
+
+**/
   template<typename T> auto is_ord(T const& x) {}
 
   namespace functional

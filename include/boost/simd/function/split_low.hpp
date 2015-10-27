@@ -17,11 +17,19 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-swar
 
-    Computes split_low value of its parameter.
+    @ingroup group-swar
 
-  **/
+    @brief SIMD register type-based split_low
+
+    @c split_low extract the lower half of a SIMD register and convert it
+    to the appropriate SIMD register type of corresponding cardinal.
+
+    @see split_low, split, slice
+
+    @return THe lower half of a0 converted to the appropriate SIMD type
+
+**/
   template<typename T> auto split_low(T const& x) {}
 
   namespace functional

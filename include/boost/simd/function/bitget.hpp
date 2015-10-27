@@ -26,7 +26,7 @@ namespace boost { namespace simd
     For any given value @c x of type @c T, i  of type @c I:
 
     @code
-    as_integer<T> r = bitget(x, i);
+    as_integer_t<T> r = bitget(x, i);
     @endcode
 
     r contains is 0 or 2^i according to the fact the ith bit of x is 0 or 1

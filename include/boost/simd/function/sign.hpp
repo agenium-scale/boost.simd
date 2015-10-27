@@ -17,11 +17,29 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-ieee
 
-    Computes sign value of its parameter.
+    @ingroup group-ieee
 
-  **/
+    Returns the sign of a0. I.e. -1, 0 or 1, according
+    a0 is less than zero, zero or greater than zero.
+    For floating sign of nan is nan
+
+    @par Semantic:
+
+    @code
+    T r = sign(x);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = (x > 0) ? T(1) : ((x < 0) ? T(-1) : ((x == 0) ? 0 : Nan<T>()));
+    @endcode
+
+
+    @return a value of same type as the input
+
+**/
   template<typename T> auto sign(T const& x) {}
 
   namespace functional

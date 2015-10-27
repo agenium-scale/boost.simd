@@ -17,11 +17,11 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-swar
 
-    Computes combine value of its parameter.
+    @ingroup group-swar
 
-  **/
+
+**/
   template<typename T> auto combine(T const& x) {}
 
   namespace functional

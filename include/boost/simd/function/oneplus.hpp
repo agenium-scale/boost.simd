@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     @ingroup group-arithmetic
 
-    Returns the one plus the entry, saturated in the entry type.
+    Returns the entry plus one, saturated in the entry type.
     If @c x is not Nan, @c oneplus(x) is greater or equal to x.
 
     @par semantic:
@@ -33,7 +33,7 @@ namespace boost { namespace simd
     The code is similar to:
 
     @code
-    T r = 1+x
+    T r = (x == Valmax) ? x : 1+x
     @endcode
 
 

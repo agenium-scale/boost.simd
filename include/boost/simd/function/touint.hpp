@@ -26,13 +26,13 @@ namespace boost { namespace simd
     For any given value @c x of type @c T:
 
     @code
-    as_integer<T, unsigned> r = touint(x);
+    as_integer_t<T, unsigned> r = touint(x);
     @endcode
 
     The code is similar to:
 
     @code
-    as_integer<T, unsigned> r = static_cast<as_integer<T, unsigned> >(x)
+    as_integer_t<T, unsigned> r = static_cast<as_integer_t<T, unsigned> >(x)
     @endcode
 
     @par Notes:

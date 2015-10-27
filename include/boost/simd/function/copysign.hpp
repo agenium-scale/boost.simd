@@ -17,11 +17,28 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-ieee
 
-    Computes copysign value of its parameter.
+    @ingroup group-ieee
 
-  **/
+    Returns a0 with the sign of a1
+
+    @par Semantic:
+
+    @code
+    T r = copysign(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = (a1 >= 0) ? abs(a0) : -(abs(a0));
+    @endcode
+
+
+
+    @return a value of same type as the inputs
+
+**/
   template<typename T> auto copysign(T const& x) {}
 
   namespace functional

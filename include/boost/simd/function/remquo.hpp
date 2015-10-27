@@ -22,15 +22,35 @@ namespace boost { namespace simd
 
     @brief Remainder and part of quotient
 
-    remquo computes the remainder and part of the quotient upon division of
-    @c a0 by @c a1. By design, the value of the remainder is the same as that
+    remquo computes the remainder (rem) and a part of the quotient (quo) upon division of
+    @c x by @c y. By design, the value of the remainder is the same as that
     computed by the remainder function. The value of the computed quotient has
-    the sign of @c a0/a1 and agrees with the actual quotient in at least the low
+    the sign of @c x/y and agrees with the actual quotient in at least the low
     order 3 bits.
 
+    @par semantic:
 
+    For any given value @c x, @c y of type @c T:
+
+    @code
+    as_integer_t<T>& quo;
+    T rem = remquo(x, y, quo);
+    @endcode
+
+    or
+
+    @code
+    std::pair< T, as_integer_t<T> > p = remquo(x, y);
+    @endcode
+
+    computes the two values.
+
+    @par Note
+    This function mimics a standard C library one that was mainly written in its time to
+    help computation of trigonometric functions : three bits of quo allowing to know the
+    'quadrant'
 **/
-  template<typename T> auto remquo(T const& x) {}
+  template<typename T, typename I> auto remquo(T const& x, T const& y, I & quo) {}
 
   namespace functional
   {

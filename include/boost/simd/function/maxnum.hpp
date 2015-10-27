@@ -17,12 +17,32 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-ieee
 
-    Computes maxnum value of its parameter.
+    @ingroup group-ieee
 
-  **/
-  template<typename T> auto maxnum(T const& x) {}
+    Returns the maximum value, ignoring nans.
+
+    @par Semantic:
+
+    @code
+    T r = maxnum(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = (is_nan(a0) ? a1 : (isnan(a1) ? a0 : max(a0, a1));
+    @endcode
+
+    @par Alias:
+    @c fmax
+
+
+
+    @return a value of same type as the inputs
+
+**/
+  template<typename T> auto maxnum(T const& x, T const& y) {}
 
   namespace functional
   {

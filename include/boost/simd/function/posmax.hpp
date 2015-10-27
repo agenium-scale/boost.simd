@@ -17,11 +17,32 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-reduction
 
-    Computes posmax value of its parameter.
+    @ingroup group-reduction
 
-  **/
+    Returns the index of the first occurence of greatest element of the SIMD vector
+
+    @par Semantic:
+
+    For every parameter of type T0
+
+    @code
+    size_t r = posmax(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+      scalar_of_t<T0> m =  maximum(a0);
+      size_t r;
+      for(size_t i=0; i < cardinal_of<T0>; i++)
+        if (m == a0[i]) { r = i;  break; }
+    @endcode
+
+
+    @return a size_t value
+
+**/
   template<typename T> auto posmax(T const& x) {}
 
   namespace functional

@@ -36,7 +36,10 @@ namespace boost { namespace simd
     T r = T(1)/sqrt(x)
     @endcode
 
+    @par Note
 
+    If full accuracy is not needed a sometimes faster version of the function
+    can be used callling : rsqrt(x, fast_);
 
     @return      a value of the type of the input.
 

@@ -17,11 +17,27 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-ieee
 
-    Computes frac value of its parameter.
+    @ingroup group-ieee
 
-  **/
+    This function returns the fractional part of the input
+
+    @par Semantic:
+
+    @code
+    T r = frac(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r =  a0-trunc(a0);
+    @endcode
+
+
+    @return a value of same type as the input
+
+**/
   template<typename T> auto frac(T const& x) {}
 
   namespace functional

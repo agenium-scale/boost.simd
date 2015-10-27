@@ -17,12 +17,29 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-ieee
 
-    Computes maxmag value of its parameter.
+    @ingroup group-ieee
 
-  **/
-  template<typename T> auto maxmag(T const& x) {}
+    Returns the input value which have the greatest absolute value.
+
+    @par Semantic:
+
+    @code
+    T r = maxmag(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = abs(a0) > abs(a1) ? a0 : abs(a1) > abs(a0) ? a1 : max(a0, a1);
+    @endcode
+
+
+
+    @return a value of same type as the inputs
+
+**/
+  template<typename T> auto maxmag(T const& x, T const& y) {}
 
   namespace functional
   {

@@ -17,11 +17,37 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-predicates
 
-    Computes is_even value of its parameter.
+    @ingroup group-predicates
 
-  **/
+    Returns True or False according a0 is even or not.
+
+    @par Semantic:
+
+    @code
+    logical<T> r = is_even(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    logical<T> r = int(a0/2)*2 == a0;
+    @endcode
+
+    @par Note:
+
+    A floating number is even if it is a  flint
+    and divided by two it is still a flint.
+
+    A flint is a 'floating integer' i.e. a floating number
+    representing an integer value
+
+    Be conscious that all sufficiently great floating points values are even...
+
+
+    @return a logical value
+
+**/
   template<typename T> auto is_even(T const& x) {}
 
   namespace functional

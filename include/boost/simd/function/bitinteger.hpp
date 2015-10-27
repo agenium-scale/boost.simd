@@ -17,11 +17,32 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-ieee
 
-    Computes bitinteger value of its parameter.
+    @ingroup group-ieee
 
-  **/
+    Transforms a floating point value in a pattern of bits
+    stored in an integer with different formulas according to
+    the floating point sign (the converse of bitfloating)
+
+    @par Semantic:
+
+    @code
+     as_integer_t<T> r = bitinteger(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+      as_integer_t<T> r =
+         (is_positive(a0) ?
+           bitwise_cast<as_integer_t<T>>(a0) :
+           Signmask<as_integer_t<T>>()-bitwise_cast<as_integer_t<T>>(a0);
+    @endcode
+
+
+    @return a value of same type as the input
+
+**/
   template<typename T> auto bitinteger(T const& x) {}
 
   namespace functional

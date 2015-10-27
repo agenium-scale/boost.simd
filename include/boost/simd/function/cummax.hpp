@@ -17,11 +17,31 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-swar
 
-    Computes cummax value of its parameter.
+    @ingroup group-swar
 
-  **/
+    @brief compute the cumulate maximum of the vector elements
+
+    @par Semantic:
+
+    For every parameter of type T0
+
+    @code
+    T0 r = cummax(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r =x;
+    for(int i=0;i < T::static_size; ++i)
+      r[i] += max(r[i-1], r[i]);
+    @endcode
+
+
+    @return a value of the same type as the second parameter
+
+**/
   template<typename T> auto cummax(T const& x) {}
 
   namespace functional

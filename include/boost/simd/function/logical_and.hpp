@@ -17,11 +17,37 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes logical_and value of its parameter.
+    @ingroup group-operator
 
-  **/
+    return the logical and of the two parameters
+    the operands must of the same type
+    Infix notation can be used with operator '&&'
+
+    @par Semantic:
+
+    For every parameters of types respectively T0, T1:
+
+    @code
+    as_logical_t<T0> r = logical_and(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    as_logical_t<T0> r = a0 && a1 ;
+    @endcode
+
+    @par Alias:
+    @c l_and
+
+    @see  logical_or, logical_xor, logical_notand,
+    logical_andnot, logical_notor, logical_ornot, logical_not
+
+
+    @return a value of the same type as the second parameter
+
+**/
   template<typename T> auto logical_and(T const& x) {}
 
   namespace functional

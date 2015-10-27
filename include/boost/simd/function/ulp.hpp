@@ -17,11 +17,27 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-ieee
 
-    Computes ulp value of its parameter.
+    @ingroup group-ieee
 
-  **/
+    Returns the distance to the nearest (distinct) element of the same type.
+
+    @par Semantic:
+
+    @code
+    T r = ulp(x);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = min(x-pred(x), next(x)-x)/Eps<T>();
+    @endcode
+
+
+    @return a value of same type as the input
+
+**/
   template<typename T> auto ulp(T const& x) {}
 
   namespace functional

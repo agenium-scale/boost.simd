@@ -17,11 +17,33 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-ieee
 
-    Computes eps value of its parameter.
+    @ingroup group-ieee
 
-  **/
+    Except for numbers whose absolute value is smaller than Smallestpositivevalue,
+    @c eps(x) returns 2^(exponent(x))*Eps
+
+
+    @par Semantic:
+
+    @code
+    T r = eps(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+
+    if T is floating
+      r = 2^(exponent(x))*Eps<T>
+    else if T is integral
+      r = 1;
+    @endcode
+
+
+    @return a value of same type as the input
+
+**/
   template<typename T> auto eps(T const& x) {}
 
   namespace functional

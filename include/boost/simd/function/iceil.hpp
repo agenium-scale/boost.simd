@@ -26,13 +26,13 @@ namespace boost { namespace simd
     For any given value @c x of type @c T:
 
     @code
-    as_integer<T> r = iceil(x);
+    as_integer_t<T> r = iceil(x);
     @endcode
 
     is equivalent to:
 
     @code
-    as_integer<T> r = toints(ceil(x));
+    as_integer_t<T> r = toints(ceil(x));
     @endcode
 
     @par Note:

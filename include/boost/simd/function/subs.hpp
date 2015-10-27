@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     @ingroup group-arithmetic
 
-    Computes the saturated sum of its parameters.
+    Computes the saturated difference of its parameters.
 
     @par semantic:
     For any given value @c x,  @c y of type @c T:

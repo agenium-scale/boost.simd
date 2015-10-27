@@ -17,11 +17,27 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-predicates
 
-    Computes is_lez value of its parameter.
+    @ingroup group-predicates
 
-  **/
+    Returns True or False according a0 is less or equal to zero or not.
+
+    @par Semantic:
+
+    @code
+    logical<T> r = is_lez(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    logical<T> r = a0 <= 0;
+    @endcode
+
+
+    @return a logical value
+
+**/
   template<typename T> auto is_lez(T const& x) {}
 
   namespace functional
@@ -29,10 +45,10 @@ namespace boost { namespace simd
     /*!
       @ingroup group-predicates
 
-      Function object tied to simd::is_lez
+      Function object tied to simd::is_le
 
-      @see simd::is_lez
-    **/
+z      @see simd::is_le
+z    **/
     const boost::dispatch::functor<tag::is_lez_> is_lez = {};
   }
 } }

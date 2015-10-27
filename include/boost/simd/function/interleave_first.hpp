@@ -17,11 +17,31 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-swar
 
-    Computes interleave_first value of its parameter.
+    @ingroup group-swar
 
-  **/
+    Computes a vector from a combination of the two inputs.
+
+    @par Semantic:
+
+    For every parameters of types respectively T, the following code:
+
+    @code
+    T r = interleave_first(a,b);
+    @endcode
+
+    is equivalent to :
+
+    @code
+    r = [ a[0] b[0] a[1] b[1] ... a[n/2-1] b[n/2-1] ]
+    @endcode
+
+    with <tt> n = cardinal_of<T>::value </tt>
+
+
+    @return a value of the same type as the parameters
+
+**/
   template<typename T> auto interleave_first(T const& x) {}
 
   namespace functional

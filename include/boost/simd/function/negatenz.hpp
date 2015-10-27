@@ -17,11 +17,29 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-ieee
 
-    Computes negatenz value of its parameter.
+    @ingroup group-ieee
 
-  **/
+    Returns a0 multiplied by the signnz of a1
+    The result is unspecified if a1 is NaN
+
+    @par Semantic:
+
+    @code
+    T r = negatenz(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = a0*signnz(a1)
+    @endcode
+
+
+
+    @return a value of same type as the inputs
+
+**/
   template<typename T> auto negatenz(T const& x) {}
 
   namespace functional
@@ -29,10 +47,10 @@ namespace boost { namespace simd
     /*!
       @ingroup group-ieee
 
-      Function object tied to simd::negatenz
+      Function object tied to simd::negaten
 
-      @see simd::negatenz
-    **/
+z      @see simd::negaten
+z    **/
     const boost::dispatch::functor<tag::negatenz_> negatenz = {};
   }
 } }

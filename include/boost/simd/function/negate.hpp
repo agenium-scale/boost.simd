@@ -17,11 +17,28 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-ieee
 
-    Computes negate value of its parameter.
+    @ingroup group-ieee
 
-  **/
+    Retuns the first element negated is the the scond is less than 0
+
+    @par Semantic:
+
+    @code
+    T r = negate(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r =  a0*sign(a1);
+    @endcode
+
+
+
+    @return a value of same type as the inputs
+
+**/
   template<typename T> auto negate(T const& x) {}
 
   namespace functional

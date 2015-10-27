@@ -17,11 +17,29 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-ieee
 
-    Computes ldexp value of its parameter.
+    @ingroup group-ieee
 
-  **/
+    The function multiply a floating entry \f$a_0\f$
+    by \f$2^{a_1}\f$
+
+    @par Semantic:
+
+    @code
+    T r = ldexp(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = a0*pow(2, a1);
+    @endcode
+
+
+
+    @return a value of same type as the inputs
+
+**/
   template<typename T> auto ldexp(T const& x) {}
 
   namespace functional

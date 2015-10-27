@@ -17,11 +17,29 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-predicates
 
-    Computes is_flint value of its parameter.
+    @ingroup group-predicates
 
-  **/
+    Returns True or False according a0 is a flint or not.
+
+    @par Semantic:
+
+    @code
+    logical<T> r = is_flint(a0);
+    @endcode
+
+    @par Note:
+
+    A flint is a 'floating integer' i.e. a floating number
+    representing exactly an integer value.
+
+    Be conscious that all sufficiently great floating points values
+    are flint and even are even...
+
+
+    @return a logical value
+
+**/
   template<typename T> auto is_flint(T const& x) {}
 
   namespace functional

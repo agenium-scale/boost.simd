@@ -19,10 +19,41 @@ namespace boost { namespace simd
   /*!
   @ingroup group-arithmetic
 
-    Computes extract value of its parameter.
+    Random-access extraction of a value subcomponent
+
+    Extract a sub-element of a given value @c v
+
+    @par Semantic
+
+    Depending on the type of its arguments, extract exhibits different semantics.
+    For any value @c v of type @c Value and @c o of type @c Offset:
+
+    @code
+    auto x = extract(v,o);
+    @endcode
+
+    is similar to:
+
+    - If @c v is a scalar type:
+
+      @code
+      x = v;
+      @endcode
+
+    - If @c v is a SIMD type:
+
+      @code
+      x = v[o];
+      @endcode
+
+    @param v   Value to extract
+    @param o   Position to extract from (offset)
+
+    @return The extracted value
 
   **/
-  template<typename T> auto extract(T const& x) {}
+  template<typename Value, typename Offset> auto extract( Value const& v
+                                                        ,  Offset const& o) {}
 
   namespace functional
   {

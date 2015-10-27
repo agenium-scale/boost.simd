@@ -17,11 +17,36 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
 
-    Computes logical_not value of its parameter.
+    @ingroup group-operator
 
-  **/
+    return the logical negation of the parameter,
+    i.e. True or False of the entry type according that
+    the input is zero or non zero
+
+    @par Semantic:
+
+    For every parameter of type T0
+
+    @code
+    as_logical_t<T0> r = logical_not(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    T0 r =!a0;
+    @endcode
+
+    @par Alias:
+    @c l_not
+
+    @see  logical_or, logical_xor, logical_notand,
+    logical_andnot, logical_notor, logical_ornot
+
+    @return a logical value
+
+**/
   template<typename T> auto logical_not(T const& x) {}
 
   namespace functional

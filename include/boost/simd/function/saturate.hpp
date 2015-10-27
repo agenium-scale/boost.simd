@@ -17,11 +17,30 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-ieee
 
-    Computes saturate value of its parameter.
+    @ingroup group-ieee
 
-  **/
+    Returns the saturated value of the first input in the template parameter type,
+    but in the same type as the input.
+
+    @par Semantic:
+
+    @code
+    T r = saturate<S>(x)
+    @endcode
+
+    is similar to:
+
+    @code
+    if (a0 > Inf<S>()) r =  T(Inf<S>());
+    else if  (a0 <  Minf<S>()) r =  T(Minf<S>());
+    else r = a0;
+    @endcode
+
+
+    @return a value of same type as the inputs
+
+**/
   template<typename T> auto saturate(T const& x) {}
 
   namespace functional

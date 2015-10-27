@@ -26,13 +26,13 @@ namespace boost { namespace simd
     For any given value @c x of type @c T:
 
     @code
-    as_integer<T> r = iround(x);
+    as_integer_t<T> r = iround(x);
     @endcode
 
     is similar to:
 
     @code
-    as_integer<T> r = toints(round(x));
+    as_integer_t<T> r = toints(round(x));
     @endcode
 
 

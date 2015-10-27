@@ -17,11 +17,11 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-swar
 
-    Computes all_reduce value of its parameter.
+    @ingroup group-swar
 
-  **/
+
+**/
   template<typename T> auto all_reduce(T const& x) {}
 
   namespace functional

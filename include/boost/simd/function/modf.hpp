@@ -17,11 +17,27 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-ieee
 
-    Computes modf value of its parameter.
+    @ingroup group-ieee
 
-  **/
+    Computes the integer and the fractionnal part of the input
+
+    @par Semantic:
+
+    @code
+    modf(x, t, f);
+    @endcode
+
+    is similar to:
+
+    @code
+    T t = trunc(x);
+    T f = frac(x);
+    @endcode
+
+
+
+**/
   template<typename T> auto modf(T const& x) {}
 
   namespace functional

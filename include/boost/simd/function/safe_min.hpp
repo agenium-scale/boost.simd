@@ -17,11 +17,28 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-ieee
 
-    Computes safe_min value of its parameter.
+    @ingroup group-ieee
 
-  **/
+    Returns a safe mininimal value relative to the input, i.e. a
+    value which will not underflow when divided by the input.
+
+    @par Semantic:
+
+    @code
+    T r = safe_min(x);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r =  x ? Sqrtsmallestposval<T>()*abs(x);
+    @endcode
+
+
+    @return a value of same type as the input
+
+**/
   template<typename T> auto safe_min(T const& x) {}
 
   namespace functional

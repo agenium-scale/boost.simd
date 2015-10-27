@@ -29,13 +29,13 @@ namespace boost { namespace simd
     For every parameters of types respectively T0:
 
     @code
-    as_logical<T0> r = mask2logical(a0);
+    as_logical_t<T0> r = mask2logical(a0);
     @endcode
 
     is similar to:
 
     @code
-    as_logical<T0> r = logical(a0);
+    as_logical_t<T0> r = logical(a0);
     @endcode
 
 

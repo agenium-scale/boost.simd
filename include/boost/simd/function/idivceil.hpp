@@ -32,19 +32,19 @@ namespace boost { namespace simd
     The code is similar to:
 
     @code
-    as_integer<T> r = toints(ceil(x/y));
+    as_integer_t<T> r = toints(ceil(x/y));
     @endcode
 
     If y is null, it returns Valmax (resp. Valmin)
     if x is positive (resp. negative) and 0 if x is null.
 
-    @see funcref{toints, funcref{ceil
+    @see toints, ceil
 
     @return      a value of the integral type associated to the input.
 
 
 **/
-  template<typename T> auto idivceil(T const& x) {}
+  template<typename T> auto idivceil(T const& x, T const& y) {}
 
   namespace functional
   {

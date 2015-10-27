@@ -36,11 +36,11 @@ namespace boost { namespace simd
     @endcode
 
 
-    @return an value of the same type as the input.
+    @return a value of the same type as the input.
 
 
 **/
-  template<typename T> auto max(T const& x) {}
+  template<typename T> auto max(T const& x, T const& y) {}
 
   namespace functional
   {

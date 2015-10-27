@@ -45,19 +45,20 @@ namespace boost { namespace simd
     fma provides this each time it is reasonable
     in terms of performance (mainly if the system has the hard
     wired capability).
-    If you need fma in all circumstances in your own
-    code use correct_fma.
+    If you need "real" fma capabilities in all circumstances in your own
+    code use correct_fma (although it can be expansive).
 
     @par Alias
 
     @c madd
 
+    @see  correct_fma
 
     @return      a value of the same type as the input.
 
 
 **/
-  template<typename T> auto fma(T const& x) {}
+  template<typename T> auto fma(T const& x, T const& y, T const& z) {}
 
   namespace functional
   {

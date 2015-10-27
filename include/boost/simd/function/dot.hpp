@@ -17,12 +17,31 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-reduction
 
-    Computes dot value of its parameter.
+    @ingroup group-reduction
 
-  **/
-  template<typename T> auto dot(T const& x) {}
+    returns the dot product of the two vector arguments
+
+    @par Semantic:
+
+    For every parameters of type T0:
+
+    @code
+    scalar_of_t<T0> r = dot(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    scalar_of_t<T0> r = sum(a0*conj(a1));
+    @endcode
+
+
+
+    @return a value of the scalar type associated to the parameters
+
+**/
+  template<typename T> auto dot(T const& x, T const& y) {}
 
   namespace functional
   {

@@ -17,11 +17,29 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-predicates
 
-    Computes is_not_equal_with_equal_nans value of its parameter.
+    @ingroup group-predicates
 
-  **/
+    Returns True if a0 and a1 are not equal else False,
+    nans being considered equal
+
+    @par Semantic:
+
+    @code
+    logical<T> r = is_not_equal_with_equal_nans(a0,a1);
+    @endcode
+
+    is similar to:
+
+    @code
+    logical<T> r = (a0 != a1) || ((a0!= a0) && (a1!= a1));
+    @endcode
+
+
+
+    @return a logical value
+
+**/
   template<typename T> auto is_not_equal_with_equal_nans(T const& x) {}
 
   namespace functional

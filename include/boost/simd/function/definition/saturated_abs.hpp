@@ -24,7 +24,9 @@ namespace boost { namespace simd
 
     Computes the saturated absolute value of its parameter.
 
-    This is an alias of function abss
+    This is an alias of function @c abss
+
+    @see abss
   **/
   template<typename T> auto saturated_abs(T const& x);
 #endif

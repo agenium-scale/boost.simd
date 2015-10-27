@@ -35,6 +35,8 @@ namespace boost { namespace simd
     T r = x*y
     @endcode
 
+    But is satrated for integer types
+
     @par Alias
 
     saturated_mul
@@ -44,7 +46,7 @@ namespace boost { namespace simd
 
 
 **/
-  template<typename T> auto muls(T const& x) {}
+  template<typename T> auto muls(T const& x, const T& y) {}
 
   namespace functional
   {

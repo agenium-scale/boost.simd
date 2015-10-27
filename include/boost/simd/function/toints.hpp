@@ -26,27 +26,29 @@ namespace boost { namespace simd
     For any given value @c x of type @c T:
 
     @code
-    as_integer<T> r = toints(x);
+    as_integer_t<T> r = toints(x);
     @endcode
 
     The code is similar to:
 
     @code
-    as_integer<T> r = static_cast<as_integer<T> >(saturate<as_integer<T> >(x))
+    as_integer_t<T> r = static_cast<as_integer_t<T> >(saturate<as_integer_t<T> >(x))
     @endcode
 
     @par Notes:
 
-    The Inf -Inf and Nan values are treated properly and go respectively to
+    The Inf, -Inf and Nan values are treated properly and go respectively to
     Valmax, Valmin and Zero of the destination integral type
     All values superior (resp.) less than Valmax (resp. Valmin) of the return type
     are saturated accordingly.
+
+    If you do not care about invalid values or overflows toint is speedier.
 
     @par Alias
 
     @c ifix,  @c itrunc, @c saturated_toint
 
-
+    @see  toint
     @return      a value of the integer same type associated to the input.
 
 

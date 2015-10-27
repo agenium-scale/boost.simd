@@ -27,13 +27,13 @@ namespace boost { namespace simd
     For any given value @c x of type @c T:
 
     @code
-    as_integer<T> r = ilog2(x);
+    as_integer_t<T> r = ilog2(x);
     @endcode
 
     The code is similar to
 
     @code
-    as_integer<T> r = toints(log2(x));
+    as_integer_t<T> r = toints(log2(x));
     @endcode
 
     @see  twopower, exponent

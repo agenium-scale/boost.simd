@@ -17,11 +17,28 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-predicates
 
-    Computes is_not_imag value of its parameter.
+    @ingroup group-predicates
 
-  **/
+    Returns True or False according a0 is real or not.
+    For non complex numbers it is true except if a0 is zero
+
+    @par Semantic:
+
+    @code
+    logical<T> r = is_not_imag(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+    logical<T> r = a0 != 0;
+    @endcode
+
+
+    @return a logical value
+
+**/
   template<typename T> auto is_not_imag(T const& x) {}
 
   namespace functional

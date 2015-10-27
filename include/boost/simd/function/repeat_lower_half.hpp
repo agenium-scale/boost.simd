@@ -17,11 +17,34 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-swar
 
-    Computes repeat_lower_half value of its parameter.
+    @ingroup group-swar
 
-  **/
+    Repeat lower half of a vector
+
+    @par Semantic:
+
+    For every parameter of type T0
+
+    @code
+    T0 r = repeat_lower_half(a0);
+    @endcode
+
+    is similar to:
+
+    @code
+      T0 r;
+      const std::size_t  middle = meta::cardinal_of<A0>::value/2;
+      for(std::size_t i=0;i<middle;++i)
+      {
+        r[i] = r[i+middle] = a0[i];
+      }
+    @endcode
+
+
+    @return a value of the same type as the parameter
+
+**/
   template<typename T> auto repeat_lower_half(T const& x) {}
 
   namespace functional

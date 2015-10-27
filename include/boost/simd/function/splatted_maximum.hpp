@@ -17,11 +17,33 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-swar
 
-    Computes splatted_maximum value of its parameter.
+    @ingroup group-swar
 
-  **/
+    @brief Splatted maximum
+
+    Computes the splatted maximum of the element of its argument.
+
+    @par Semantic
+
+    Depending on the type of its arguments, splatted_maximum exhibits different
+    semantics. For any type @c Type and value @c v of type @c Type:
+
+    @code
+    Type r = splatted_maximum(v);
+    @endcode
+
+    is similar to:
+
+    @code
+    for(int i=0;i<Type::static_size;++i)
+      x[i] = maximum(v);
+    @endcode
+
+
+    @return a value of the same type as the parameter
+
+**/
   template<typename T> auto splatted_maximum(T const& x) {}
 
   namespace functional

@@ -42,7 +42,7 @@ namespace boost { namespace simd
     @see  genmask
     @par Note:
 
-    @c T0:type denotes here @c T0 in most cases, but @c T if @c T0 is @c as_logical<T>
+    @c T0:type denotes here @c T0 in most cases, but @c T if @c T0 is @c as_logical_t<T>
 
 
     @return a value of the type associated to the logical value a0

@@ -17,11 +17,34 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-ieee
 
-    Computes frexp value of its parameter.
+    @ingroup group-ieee
 
-  **/
+    Computes the mantissa and the exponent of the input
+
+    @code
+    m = frexp(x, e);
+    @endcode
+
+    is similar to:
+
+    @code
+    as_integer_t<T > e = exponent(x)+1;
+    T m = mantissa(x)/2;
+    @endcode
+
+    @par Note:
+
+    @c frexp splits a floating point value @c v f in its signed mantissa @c m and
+    exponent @c e so that
+
+    @f$v = m\times 2^e@f$
+
+    with absolute value of @c m between 0.5 (included) and 1 (excluded)
+
+    @see exponent,  mantissa
+
+**/
   template<typename T> auto frexp(T const& x) {}
 
   namespace functional
