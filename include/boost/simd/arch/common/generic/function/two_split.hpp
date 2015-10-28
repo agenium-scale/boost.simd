@@ -50,7 +50,7 @@ namespace boost { namespace simd { namespace ext
     {
       A0 first, second;
       boost::simd::two_split( a0, first, second );
-      return result_t(first, second);
+      return  {first, second};
     }
   };
 

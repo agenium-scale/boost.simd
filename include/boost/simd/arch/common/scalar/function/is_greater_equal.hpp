@@ -80,7 +80,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE logical<typename A0::value_type> operator() ( A0 const&, A0 const&) const BOOST_NOEXCEPT
     {
-      return true;
+      return {true};
     }
   };
 } } }

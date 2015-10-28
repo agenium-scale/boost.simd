@@ -42,7 +42,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE logical<A0> operator() ( A0 ) const BOOST_NOEXCEPT
     {
-      return boost::simd::False<logical<A0>>();
+      return {false};
     }
   };
 
