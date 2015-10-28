@@ -54,6 +54,18 @@ namespace boost { namespace simd { namespace ext
       return !a0;
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( logical_not_
+                          , (typename T)
+                          ,  bd::cpu_
+                          ,  bd::scalar_<bd::unspecified_<T>>
+                          )
+  {
+    BOOST_FORCEINLINE auto operator()(T const& a) const BOOST_NOEXCEPT -> decltype(!a)
+    {
+      return !a;
+    }
+  };
 } } }
 
 

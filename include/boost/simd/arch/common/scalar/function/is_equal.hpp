@@ -58,6 +58,20 @@ namespace boost { namespace simd { namespace ext
       return (a0 == a1);
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( is_equal_
+                          , (typename T)
+                          ,  bd::cpu_
+                          ,  bd::scalar_<bd::unspecified_<T>>
+                          ,  bd::scalar_<bd::unspecified_<T>>
+                          )
+  {
+    BOOST_FORCEINLINE auto operator()(T const& a, T const& b) const BOOST_NOEXCEPT -> decltype(a == b)
+    {
+      return a == b;
+    }
+  };
+
 } } }
 
 

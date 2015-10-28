@@ -39,6 +39,20 @@ namespace boost { namespace simd { namespace ext
       return bitwise_cast<A0>(b_t(bitwise_cast<b_t>(a0) | bitwise_cast<b_t>(a1)));
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( bitwise_or_
+                          , (typename T)
+                          ,  bd::cpu_
+                          ,  bd::scalar_<bd::unspecified_<T>>
+                          ,  bd::scalar_<bd::unspecified_<T>>
+                          )
+  {
+    BOOST_FORCEINLINE auto operator()(T const& a, T const& b) const BOOST_NOEXCEPT -> decltype(a|b)
+    {
+      return a|b;
+    }
+  };
+
 } } }
 
 #endif
