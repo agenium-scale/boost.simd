@@ -95,7 +95,6 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE T operator()(T const& a) const BOOST_NOEXCEPT
     {
-      puts("*");
       return abs(a);
     }
   };
