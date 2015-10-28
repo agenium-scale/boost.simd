@@ -27,16 +27,16 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-     as_integer_t<T> r = bitinteger(a0);
+     as_integer_t<T> r = bitinteger(x);
     @endcode
 
     is similar to:
 
     @code
       as_integer_t<T> r =
-         (is_positive(a0) ?
-           bitwise_cast<as_integer_t<T>>(a0) :
-           Signmask<as_integer_t<T>>()-bitwise_cast<as_integer_t<T>>(a0);
+         (is_positive(x) ?
+           bitwise_cast<as_integer_t<T>>(x) :
+           Signmask<as_integer_t<T>>()-bitwise_cast<as_integer_t<T>>(x);
     @endcode
 
 
@@ -48,7 +48,12 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Transforms a floating point value in a pattern of bits
+      stored in an integer with different formulas according to
+      the floating point sign (the converse of bitfloating)
+
 
       Function object tied to simd::bitinteger
 

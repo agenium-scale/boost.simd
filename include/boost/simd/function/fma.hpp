@@ -63,7 +63,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Computes the (fused) multiply add of the three parameters.
+
 
       Function object tied to simd::fma
 

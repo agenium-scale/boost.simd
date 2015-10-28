@@ -30,13 +30,13 @@ namespace boost { namespace simd
     For every parameters of type T0:
 
     @code
-    as_logical_t<scalar_of_t<T0>> r = compare_less_equal(a0,a1);
+    as_logical_t<scalar_of_t<T0>> r = compare_less_equal(x,y);
     @endcode
 
     is similar to:
 
     @code
-      as_logical_t<scalar_of_t<T0>> r = !compare_greater(a1, a0)
+      as_logical_t<scalar_of_t<T0>> r = !compare_greater(y, x)
     @endcode
 
     @par Alias:
@@ -48,12 +48,16 @@ namespace boost { namespace simd
     @return a value of the scalar logical type associated to the parameter
 
 **/
-  template<typename T> auto compare_less_equal(T const& x) {}
+  template<typename T> auto compare_less_equal(T const& x, T const& y) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-reduction
+      @ingroup group-callable-reduction
+
+      Returns a logical scalar that is the result of the lexicographic
+      test for <= on all elements of the entries
+
 
       Function object tied to simd::compare_less_equal
 

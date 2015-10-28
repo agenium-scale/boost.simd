@@ -40,7 +40,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-bitwise
+      @ingroup group-callable-bitwise
+
+      Returns x with the ith bit set
+
 
       Function object tied to simd::bitset
 

@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True if a0 is negative else False.
+    Returns True if x is negative else False.
 
     This function differs from is_ltz from floating point argument,
     because Mzero is negative but not less than zero.  and Mzero is
@@ -30,16 +30,16 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    logical<T> r = is_negative(a0);
+    as_logical_t<T> r = is_negative(x);
     @endcode
 
     is similar to:
 
     @code
     if T is signed
-      logical<T> r = bitofsign(a0) == 1;
+      as_logical_t<T> r = bitofsign(x) == 1;
     else
-      logical<T> r = False;
+      as_logical_t<T> r = False;
     @endcode
 
     @par Note:
@@ -48,6 +48,7 @@ namespace boost { namespace simd
     i.e. all bits are zero but the sign bit.
     Such a value is treated as zero by ieee standards.
 
+    behaviour of is_negative on nan is undefined.
 
     @return a logical value
 
@@ -57,7 +58,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-predicates
+      @ingroup group-callable-predicates
+
+      Returns True if x is negative else False.
+
 
       Function object tied to simd::is_negative
 

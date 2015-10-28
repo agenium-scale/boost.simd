@@ -31,13 +31,13 @@ namespace boost { namespace simd
     For every parameters of types respectively T0, T1:
 
     @code
-    as_logical_t<T0> r = logical_and(a0,a1);
+    as_logical_t<T0> r = logical_and(x,y);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<T0> r = a0 && a1 ;
+    as_logical_t<T0> r = x && y ;
     @endcode
 
     @par Alias:
@@ -51,12 +51,15 @@ namespace boost { namespace simd
 
 
 **/
-  template<typename T1, typename T2> auto logical_and(T1 const& a0, T2 const& a1) {}
+  template<typename T1, typename T2> auto logical_and(T1 const& x, T2 const& y) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-boolean
+      @ingroup group-callable-boolean
+
+      return the logical and of the two parameters.
+
 
       Function object tied to simd::logical_and
 

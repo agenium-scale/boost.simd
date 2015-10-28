@@ -27,7 +27,7 @@ namespace boost { namespace simd
     For every parameters of types respectively COND, T:
 
     @code
-    T1 r = selinc(cond,a1);
+    T1 r = selinc(cond,y);
     @endcode
 
     is similar to:
@@ -49,7 +49,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-boolean
+      @ingroup group-callable-boolean
+
+      Increments a value by 1 if a predicate is true.
+
 
       Function object tied to simd::selinc
 

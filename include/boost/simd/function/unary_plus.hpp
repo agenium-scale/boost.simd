@@ -30,13 +30,13 @@ namespace boost { namespace simd
     For every parameter of type T0
 
     @code
-    T0 r = unary_plus(a0);
+    T0 r = unary_plus(x);
     @endcode
 
     is similar to:
 
     @code
-    T0 r = +a0;
+    T0 r = +x;
     @endcode
 
     @par Alias:
@@ -52,7 +52,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      return the elementwise unary plus of the parameter
+
 
       Function object tied to simd::unary_plus
 

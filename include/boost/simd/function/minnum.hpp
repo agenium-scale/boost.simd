@@ -25,13 +25,13 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    T r = minnum(x,a1);
+    T r = minnum(x,y);
     @endcode
 
     is similar to:
 
     @code
-    T r =     T r = (is_nan(x) ? a1 : (isnan(a1) ? x : min(x, y));;
+    T r =     T r = (is_nan(x) ? y : (isnan(y) ? x : min(x, y));;
     @endcode
 
     @par Alias:
@@ -47,7 +47,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+       Returns the minimum value, ignoring nans.
+
 
       Function object tied to simd::minnum
 

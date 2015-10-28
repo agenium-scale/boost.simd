@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     @ingroup group-boolean
 
-    If a0 is true returns t else returns zero
+    If x is true returns t else returns zero
 
     @par Semantic:
 
@@ -47,7 +47,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-boolean
+      @ingroup group-callable-boolean
+
+      If x is true returns t else returns zero
+
 
       Function object tied to simd::if_else_zero
 

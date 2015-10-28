@@ -31,17 +31,20 @@ namespace boost { namespace simd
 
     returns the product of @c a and @c b
 
-    @param a0 First  parameter of the product
-    @param a1 Second parameter of the product
+    @param x First  parameter of the product
+    @param y Second parameter of the product
 
     @return The product of the two parameters.
   **/
-  template<typename T> auto multiplies(T const& a0, T const& a1);
+  template<typename T> auto multiplies(T const& x, T const& y);
 
   namespace functional
   {
     /*!
       @ingroup group-callable-operator
+
+      Perform the product of two parameters of the same type.
+
 
       Function object tied to boost::simd::multiplies
 

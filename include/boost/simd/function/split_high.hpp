@@ -20,14 +20,14 @@ namespace boost { namespace simd
 
     @ingroup group-swar
 
-    @brief SIMD register type-based split_high
+    SIMD register type-based split_high
 
     @c split_high extract the higher half of a SIMD register and convert it
     to the appropriate SIMD register type of corresponding cardinal.
 
     @see split_low, split, slice
 
-    @return THe higher half of a0 converted to the appropriate SIMD type
+    @return THe higher half of x converted to the appropriate SIMD type
 
 **/
   template<typename T> auto split_high(T const& x) {}
@@ -35,7 +35,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-swar
+      @ingroup group-callable-swar
+
+      SIMD register type-based split_high
+
 
       Function object tied to simd::split_high
 

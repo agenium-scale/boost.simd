@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     @ingroup group-arithmetic
 
-    @brief Remainder and part of quotient
+    Remainder and bits of quotient
 
     remquo computes the remainder (rem) and a part of the quotient (quo) upon division of
     @c x by @c y. By design, the value of the remainder is the same as that
@@ -55,7 +55,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Remainder and bits of quotient
+
 
       Function object tied to simd::remquo
 

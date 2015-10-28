@@ -46,7 +46,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Returns the next element in the y direction.
+
 
       Function object tied to simd::nextafter
 

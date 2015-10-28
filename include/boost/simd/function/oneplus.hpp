@@ -46,7 +46,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Returns the entry plus one, saturated in the entry type.
+      If @c x is not Nan, @c oneplus(x) is greater or equal to x.
+
 
       Function object tied to simd::oneplus
 

@@ -45,7 +45,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Returns a safe_max relative to the input,  i.e. a
+      value which will not overflow when multiplied by the input.
+
 
       Function object tied to simd::safe_max
 

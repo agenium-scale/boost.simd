@@ -27,7 +27,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      splat the value of its parameter on the Target.
+
 
       Function object tied to simd::splat
 

@@ -44,7 +44,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-boolean
+      @ingroup group-callable-boolean
+
+      Decrements a value by 1 if a predicate is False.
+
 
       Function object tied to simd::ifnotdec
 

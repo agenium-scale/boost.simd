@@ -41,7 +41,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-bitwise
+      @ingroup group-callable-bitwise
+
+      Returns the number of bit sets in the input.
+
 
       Function object tied to simd::popcnt
 

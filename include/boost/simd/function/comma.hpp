@@ -27,13 +27,13 @@ namespace boost { namespace simd
     For every parameters of types respectively T0, T1:
 
     @code
-    T0 r = comma(a0,a1);
+    T0 r = comma(x,y);
     @endcode
 
     is similar to:
 
     @code
-    T0 r = (a0, a1);
+    T0 r = (x, y);
     @endcode
 
 
@@ -46,7 +46,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-operator
+
+      TODO Put description here
+
 
       Function object tied to simd::comma
 

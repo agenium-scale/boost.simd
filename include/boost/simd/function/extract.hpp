@@ -58,7 +58,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Random-access extraction of a value subcomponent
+
 
       Function object tied to simd::extract
 

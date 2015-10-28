@@ -57,7 +57,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Computes the mantissa and the exponent of the input
+
 
       Function object tied to simd::frexp
 

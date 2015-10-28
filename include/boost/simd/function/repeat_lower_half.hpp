@@ -24,20 +24,20 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of type T0
+    For every parameter of type T
 
     @code
-    T0 r = repeat_lower_half(a0);
+    T r = repeat_lower_half(x);
     @endcode
 
     is similar to:
 
     @code
-      T0 r;
+      T r;
       const std::size_t  middle = meta::cardinal_of<A0>::value/2;
       for(std::size_t i=0;i<middle;++i)
       {
-        r[i] = r[i+middle] = a0[i];
+        r[i] = r[i+middle] = x[i];
       }
     @endcode
 
@@ -50,7 +50,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-swar
+      @ingroup group-callable-swar
+
+      Repeat lower half of a vector
+
 
       Function object tied to simd::repeat_lower_half
 

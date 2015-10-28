@@ -27,7 +27,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Computes fast_frexp value of its parameter.
+
 
       Function object tied to simd::fast_frexp
 

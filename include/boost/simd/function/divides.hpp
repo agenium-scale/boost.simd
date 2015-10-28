@@ -43,6 +43,9 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-operator
 
+      Perform the quotient of two parameters of the same type.
+
+
       Function object tied to boost::simd::divides
 
       @see boost::simd::divides

@@ -47,7 +47,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Returns the maximum value, ignoring nans.
+
 
       Function object tied to simd::maxnum
 

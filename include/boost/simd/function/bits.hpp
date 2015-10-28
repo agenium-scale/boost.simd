@@ -32,7 +32,7 @@ namespace boost { namespace simd
     is equivalent to:
 
     @code
-    as_integer_t<T,unsigned> r = bitwase_cast< as_integer_t<T,unsigned>>(a0);
+    as_integer_t<T,unsigned> r = bitwase_cast< as_integer_t<T,unsigned>>(x);
     @endcode
 
 
@@ -45,7 +45,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-bitwise
+      @ingroup group-callable-bitwise
+
+      Returns an unsigned integer value which has the same bits as the input
+
 
       Function object tied to simd::bits
 

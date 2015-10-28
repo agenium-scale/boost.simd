@@ -49,7 +49,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Computes the conjugate value of its parameter (identity for reals).
+
 
       Function object tied to simd::conj
 

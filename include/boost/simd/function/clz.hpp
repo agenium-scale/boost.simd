@@ -40,7 +40,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-bitwise
+      @ingroup group-callable-bitwise
+
+      Returns  the bit count of leading zeros.
+
 
       Function object tied to simd::cl
 

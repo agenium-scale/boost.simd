@@ -54,7 +54,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-operator
+      @ingroup group-callable-boolean
+
+      If cond is true returns t else returns f
+
 
       Function object tied to boost::simd::if_else
 

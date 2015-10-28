@@ -49,7 +49,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Computes the square of the absolute value of its parameter.
+
 
       Function object tied to simd::sqr_abs
 

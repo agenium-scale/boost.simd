@@ -24,16 +24,16 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of type T0
+    For every parameter of type T
 
     @code
-    as_logical_t<scalar_of_t<T0>> r = none(a0);
+    as_logical_t<scalar_of_t<T>> r = none(x);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<scalar_of_t<T0>> r = !any(a0);
+    as_logical_t<scalar_of_t<T>> r = !any(x);
     @endcode
 
 
@@ -45,7 +45,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-reduction
+      @ingroup group-callable-reduction
+
+      Returns True if all elements of the input vector are zero.
+
 
       Function object tied to simd::none
 

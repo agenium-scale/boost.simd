@@ -46,7 +46,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Returns the inverse (reciprocal) of the entry.
+
 
       Function object tied to simd::rec
 

@@ -18,9 +18,9 @@ namespace boost { namespace simd
 {
   /*!
 
-    @ingroup group-operator
+    @ingroup group-predicates
 
-    Returns True< or False according a0 is less than a1 or not.
+    Returns True< or False according x is less than y or not.
    Infix notation can be used with operator '<'.
 
 
@@ -29,13 +29,13 @@ namespace boost { namespace simd
     For every parameters of types respectively T0, T1:
 
     @code
-    as_logical_t<T0> r = is_less(a0,a1);
+    as_logical_t<T0> r = is_less(x,y);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<T0> r = a0 < a1;
+    as_logical_t<T0> r = x < y;
     @endcode
 
     @par Alias:
@@ -47,12 +47,16 @@ namespace boost { namespace simd
     @return a logical value
 
 **/
-  template<typename T> auto is_less(T const& x) {}
+  template<typename T> auto is_less(T const& x, T const& y) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-predicates
+
+      Returns True< or False according x is less than y or not.
+     Infix notation can be used with operator '<'.
+
 
       Function object tied to simd::is_less
 

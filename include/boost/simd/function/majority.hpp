@@ -25,13 +25,13 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    logical<T> r = majority(a0,a1,a2);
+    as_logical_t<T> r = majority(x,y,a2);
     @endcode
 
     is similar to:
 
     @code
-    logical<T> r = (a0!= 0)+(a1!= 0)+(a2!= 0) >= 2;
+    as_logical_t<T> r = (x!= 0)+(y!= 0)+(a2!= 0) >= 2;
     @endcode
 
 
@@ -45,7 +45,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-predicates
+      @ingroup group-callable-predicates
+
+      Returns True if at least two inputs are not zero else False.
+
 
       Function object tied to simd::majority
 

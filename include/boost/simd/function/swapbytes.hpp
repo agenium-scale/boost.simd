@@ -40,7 +40,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-bitwise
+      @ingroup group-callable-bitwise
+
+      Reverse the byte order of each scalar value
+
 
       Function object tied to simd::swapbytes
 

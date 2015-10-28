@@ -48,7 +48,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-bitwise
+      @ingroup group-callable-bitwise
+
+        Performs a bit-preserving cast of its parameters into an arbitrary
+        type @c Target.
+
 
       Function object tied to boost::simd::bitwise_cast
 

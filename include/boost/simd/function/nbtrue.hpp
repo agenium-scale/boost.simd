@@ -24,16 +24,16 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of type T0
+    For every parameter of type T
 
     @code
-    T0 r = nbtrue(a0);
+    T r = nbtrue(x);
     @endcode
 
     is similar to:
 
     @code
-    T0 r = sum(if_one_else_zero(a0));
+    T r = sum(if_one_else_zero(x));
     @endcode
 
 
@@ -45,7 +45,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-reduction
+      @ingroup group-callable-reduction
+
+      Returns the number of non zero elements of the input SIMD vector.
+
 
       Function object tied to simd::nbtrue
 

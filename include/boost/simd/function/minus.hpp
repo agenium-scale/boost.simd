@@ -31,17 +31,20 @@ namespace boost { namespace simd
 
     returns the difference of @c a and @c b
 
-    @param a0 First  parameter of the difference
-    @param a1 Second parameter of the difference
+    @param x First  parameter of the difference
+    @param y Second parameter of the difference
 
     @return The difference of the two parameters.
   **/
-  template<typename T> auto minus(T const& a0, T const& a1);
+  template<typename T> auto minus(T const& x, T const& y);
 
   namespace functional
   {
     /*!
       @ingroup group-callable-operator
+
+      Perform the difference of two parameters of the same type.
+
 
       Function object tied to boost::simd::minus
 

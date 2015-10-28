@@ -31,17 +31,20 @@ namespace boost { namespace simd
 
     returns the sum of @c a and @c b
 
-    @param a0 First  parameter of the addition
-    @param a1 Second parameter of the addition
+    @param x First  parameter of the addition
+    @param y Second parameter of the addition
 
     @return The sum of the two parameters.
   **/
-  template<typename T> auto plus(T const& a0, T const& a1);
+  template<typename T> auto plus(T const& x, T const& y);
 
   namespace functional
   {
     /*!
       @ingroup group-callable-operator
+
+      Perform the sum of two parameters of the same type.
+
 
       Function object tied to boost::simd::plus
 

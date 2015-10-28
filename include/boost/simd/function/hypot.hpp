@@ -53,7 +53,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Computes \f$(x^2 + y^2)^{1/2}\f$
+
 
       Function object tied to simd::hypot
 

@@ -29,13 +29,13 @@ namespace boost { namespace simd
     For every parameters of type T0:
 
     @code
-    T0 r = modulo(a0,a1);
+    T0 r = modulo(x,y);
     @endcode
 
     is similar to:
 
     @code
-    T0 r = a0 % a1;
+    T0 r = x % y;
     @endcode
 
     @see  rem, remainder, mod,
@@ -49,7 +49,12 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      return the elementwise modulo of the two parameters
+      Infix notation can be used with operator '\%'
+      Does not work for floating point entries.
+
 
       Function object tied to simd::modulo
 

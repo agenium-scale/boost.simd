@@ -30,13 +30,13 @@ namespace boost { namespace simd
     For every parameters of types respectively T0, T1:
 
     @code
-    T0 r = shift_left(a0,a1);
+    T0 r = shift_left(x,y);
     @endcode
 
     is similar to:
 
     @code
-    T0 r = a0 << a1;
+    T0 r = x << y;
     @endcode
 
     @par Alias:
@@ -53,7 +53,13 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-operator
+
+      return left shift of the first operand by the second
+      that must be of integer type and of the same number
+      of elements as the first parameter
+      Infix notation can be used with operator '<<'
+
 
       Function object tied to simd::shift_left
 

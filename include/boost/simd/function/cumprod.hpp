@@ -18,7 +18,7 @@ namespace boost { namespace simd
 {
   /*!
 
-    @ingroup group-swar
+    @ingroup group-reduction
 
     Computes the cumulated product of the vector elements
 
@@ -51,7 +51,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-swar
+      @ingroup group-callable-reduction
+
+      Computes the cumulated product of the vector elements
+
 
       Function object tied to simd::cumprod
 

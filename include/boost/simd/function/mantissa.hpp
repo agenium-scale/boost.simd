@@ -47,7 +47,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Returns the signed mantissa of the floating input.
+
 
       Function object tied to simd::mantissa
 

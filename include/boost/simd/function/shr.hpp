@@ -46,7 +46,12 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-bitwise
+      @ingroup group-callable-bitwise
+
+      Returns the first entry logically shifted right
+      by value of the second entry. If the second entry is negative
+      the result is not defined.
+
 
       Function object tied to simd::shr
 

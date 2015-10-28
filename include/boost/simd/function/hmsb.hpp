@@ -25,19 +25,19 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of type T0
+    For every parameter of type T
 
     @code
-    size_t r = hmsb(a0);
+    size_t r = hmsb(x);
     @endcode
 
     is similar to:
 
     @code
       size_t r = 0;
-      for(result_type i = 0; i != cardinal_of<T0>; ++i)
+      for(result_type i = 0; i != cardinal_of<T>; ++i)
       {
-        r |= (bits(a0[i]) >> (sizeof(stype)*8 - 1)) << i;
+        r |= (bits(x[i]) >> (sizeof(stype)*8 - 1)) << i;
       }
     @endcode
 
@@ -50,7 +50,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-reduction
+      @ingroup group-callable-reduction
+
+      Returns a size_t value composed by the highiest bits.
+      of each vector element
+
 
       Function object tied to simd::hmsb
 

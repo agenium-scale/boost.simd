@@ -44,7 +44,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Returns the input value which have the greatest absolute value.
+
 
       Function object tied to simd::maxmag
 

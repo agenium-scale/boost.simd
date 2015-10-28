@@ -40,7 +40,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Computes the square root of its parameter. For integers it is the
+      truncation of the real square root.
+
 
       Function object tied to simd::sqrt
 

@@ -56,7 +56,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Computes the truncated division of its parameters.
+
 
       Function object tied to simd::divfix
 

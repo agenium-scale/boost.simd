@@ -24,16 +24,16 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of type T0:
+    For every parameters of type T:
 
     @code
-    T0 r = deinterleave_second(a,b);
+    T0 r = deinterleave_second(x,y);
     @endcode
 
     is equivalent to :
 
     @code
-    r = [ a[1] a[3] ... a[n/2+1] b[1] b[3] ... b[n/2+1] ]
+    r = [ x[1] x[3] ... x[n/2+1] y[1] y[3] ... y[n/2+1] ]
     @endcode
 
     with <tt> n = cardinal_of<T>::value </tt>
@@ -43,12 +43,15 @@ namespace boost { namespace simd
     @return a value of the same type as the parameters
 
 **/
-  template<typename T> auto deinterleave_second(T const& x) {}
+  template<typename T> auto deinterleave_second(T const& x, T const&y ) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-swar
+      @ingroup group-callable-swar
+
+      Computes a vector from a combination of the two inputs.
+
 
       Function object tied to simd::deinterleave_second
 

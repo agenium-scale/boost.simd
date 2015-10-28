@@ -18,7 +18,7 @@ namespace boost { namespace simd
 {
   /*!
 
-    @ingroup group-swar
+    @ingroup group-reduction
 
     compute the cumulate sum of the vector elements
 
@@ -27,7 +27,7 @@ namespace boost { namespace simd
     For every parameter of type T0
 
     @code
-    T0 r = cumsum(a0);
+    T0 r = cumsum(x);
     @endcode
 
     is similar to:
@@ -47,7 +47,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-swar
+      @ingroup group-callable-reduction
+
+      compute the cumulate sum of the vector elements
+
 
       Function object tied to simd::cumsum
 

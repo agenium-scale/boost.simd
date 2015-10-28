@@ -20,19 +20,19 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True or False according a0 and a1 are equal or not.
-    nans are considered equal
+    Returns True or False according x and y are equal or not.
+    Nans are considered equal
 
     @par Semantic:
 
     @code
-    logical<T> r = is_equal_with_equal_nans(a0,a1);
+    as_logical_t<T> r = is_equal_with_equal_nans(x,y);
     @endcode
 
     is similar to:
 
     @code
-    logical<T> r = (a0 == a1) || ((a0!= a0) && (a1!= a1));
+    as_logical_t<T> r = (x == y) || ((x!= x) && (y!= y));
     @endcode
 
 
@@ -40,12 +40,16 @@ namespace boost { namespace simd
     @return a logical value
 
 **/
-  template<typename T> auto is_equal_with_equal_nans(T const& x) {}
+  template<typename T> auto is_equal_with_equal_nans(T const& x, T const& y) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-predicates
+      @ingroup group-callable-predicates
+
+      Returns True or False according x and y are equal or not.
+      Nans are considered equal
+
 
       Function object tied to simd::is_equal_with_equal_nans
 

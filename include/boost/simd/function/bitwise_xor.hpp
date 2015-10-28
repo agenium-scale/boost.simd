@@ -35,13 +35,13 @@ namespace boost { namespace simd
     For every parameters of types respectively T0, T1:
 
     @code
-    T0 r = bitwise_xor(a0,a1);
+    T0 r = bitwise_xor(x,y);
     @endcode
 
     is similar to:
 
     @code
-    T0 r = a0^a1;
+    T0 r = x^y;
     @endcode
 
     @par Alias:
@@ -59,7 +59,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-bitwise
+      @ingroup group-callable-bitwise
+
+      return the bitwise xor of the two parameters
+
 
       Function object tied to simd::bitwise_xor
 

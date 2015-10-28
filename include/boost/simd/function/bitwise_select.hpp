@@ -54,7 +54,12 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-bitwise
+      @ingroup group-callable-bitwise
+
+      Returns the bitwise selection of bits from the second
+      or third operand according to the setting of the bits
+      of the first operand
+
 
       Function object tied to simd::bitwise_select
 

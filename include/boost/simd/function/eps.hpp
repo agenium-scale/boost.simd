@@ -50,7 +50,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      This is the distance between x and the next representable value of the type.
+
 
       Function object tied to simd::eps
 

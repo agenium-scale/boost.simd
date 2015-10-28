@@ -20,14 +20,14 @@ namespace boost { namespace simd
 
     @ingroup group-swar
 
-    shuffles the elements of a1 using indices in a2
+    shuffles the elements of x using indices in n
 
     @par Semantic:
 
-    For every parameters of types respectively T0, T1:
+    For every parameters of types respectively T, N:
 
     @code
-    T0 r = lookup(a0,a1);
+    T r = lookup(x,n);
     @endcode
 
     is similar to:
@@ -35,7 +35,7 @@ namespace boost { namespace simd
     @code
     T0 r;
     for(size_t i=0; i < boost::simd::meta::cardinal_of<T0>::value; i++)
-      r[i] = a0[a1[i]];
+      r[i] = x[n[i]];
     @endcode
 
 
@@ -43,12 +43,15 @@ namespace boost { namespace simd
     @return a value of the same type as the first parameter
 
 **/
-  template<typename T> auto lookup(T const& x) {}
+  template<typename T, typename N> auto lookup(T const& x, N const& n) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-swar
+      @ingroup group-callable-swar
+
+      shuffles the elements of x using indices in n
+
 
       Function object tied to simd::lookup
 

@@ -37,12 +37,15 @@ namespace boost { namespace simd
     @return a value of same type as the inputs
 
 **/
-  template<typename T> auto copysign(T const& x) {}
+  template<typename T> auto copysign(T const& x, T const& y) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Returns x with the sign of y
+
 
       Function object tied to simd::copysign
 

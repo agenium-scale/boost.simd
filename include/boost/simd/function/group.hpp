@@ -32,7 +32,7 @@ namespace boost { namespace simd
     For every parameters of type T0
 
     @code
-    downgrade<T0> r = group(a0, a1);
+    downgrade<T0> r = group(x, y);
     @endcode
 
     is similar to:
@@ -40,8 +40,8 @@ namespace boost { namespace simd
     @code
     downgrade<T0> r;
     for(int i=0;i < T0::static_size; ++i)
-      r[i] = a0[i];
-      r[i+T0::static_size] = a1[i];
+      r[i] = x[i];
+      r[i+T0::static_size] = y[i];
     @endcode
 
     @par Alias:
@@ -56,7 +56,12 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-swar
+      @ingroup group-callable-swar
+
+      take two SIMD vectors of same type and elements of size n
+      and return a vector collecting the two in a vector in which
+      the elements have size n/2
+
 
       Function object tied to simd::group
 

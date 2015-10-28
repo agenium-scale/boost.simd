@@ -20,24 +20,25 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True or False according a0 is odd or not.
+    Returns True or False according x is odd or not.
 
     @par Semantic:
 
     @code
-    logical<T> r = is_odd(a0);
+    as_logical_t<T> r = is_odd(x);
     @endcode
 
     is similar to:
 
     @code
-    logical<T> r = (abs(a0)/2)*2 == abs(a0)-1;
+    as_logical_t<T> r = (abs(x)/2)*2 == abs(x)-1;
     @endcode
 
     @par Note:
 
-    A floating number a0 is odd if a0-1 is even
+    A floating number x is odd if x-1 is even
 
+    @see is_even,  is_flint
 
     @return a logical value
 
@@ -47,7 +48,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-predicates
+      @ingroup group-callable-predicates
+
+      Returns True or False according x is odd or not.
+
 
       Function object tied to simd::is_odd
 

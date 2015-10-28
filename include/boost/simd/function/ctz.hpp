@@ -20,9 +20,9 @@ namespace boost { namespace simd
 
     @ingroup group-bitwise
 
-    @brief Returns the bit count of trailing zeroes
+    Returns the bit count of trailing zeroes
 
-    Finds the first bit set in a0, and returns the index of that bit, 0 being
+    Finds the first bit set in x, and returns the index of that bit, 0 being
     the least significant bit index.
 
     @par semantic:
@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @see  clz, popcnt
 
     @return An unsigned integral value containing the index of the first bit
-            set in a0.
+            set in x.
 
 
 **/
@@ -49,7 +49,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-bitwise
+      @ingroup group-callable-bitwise
+
+      Returns the bit count of trailing zeroes
+
 
       Function object tied to simd::ct
 

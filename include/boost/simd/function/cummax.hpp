@@ -18,16 +18,16 @@ namespace boost { namespace simd
 {
   /*!
 
-    @ingroup group-swar
+    @ingroup group-reduction
 
-    @brief compute the cumulate maximum of the vector elements
+    Computes the cumulate maximum of the vector elements
 
     @par Semantic:
 
-    For every parameter of type T0
+    For every parameter of type T
 
     @code
-    T0 r = cummax(a0);
+    T r = cummax(x);
     @endcode
 
     is similar to:
@@ -47,7 +47,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-swar
+      @ingroup group-callable-reduction
+
+      Computes the cumulate maximum of the vector elements
+
 
       Function object tied to simd::cummax
 

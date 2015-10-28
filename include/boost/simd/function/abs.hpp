@@ -54,7 +54,7 @@ namespace boost { namespace simd
 
     @see  abss, sqr_abs, sqrs
 
-   @param x value whose absolute value will be returned
+    @param x value whose absolute value will be returned
 
     @return The absolute value of the parameter.
   **/
@@ -64,6 +64,9 @@ namespace boost { namespace simd
   {
     /*!
       @ingroup group-callable-arithmetic
+
+      Computes the absolute value of its parameter.
+
 
       Function object tied to simd::abs
 

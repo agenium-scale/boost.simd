@@ -20,18 +20,18 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True or False according a0 is less than zero or not.
+    Returns True or False according x is less than zero or not.
 
     @par Semantic:
 
     @code
-    logical<T> r = is_ltz(a0);
+    as_logical_t<T> r = is_ltz(x);
     @endcode
 
     is similar to:
 
     @code
-    logical<T> r = a0 < 0;
+    as_logical_t<T> r = x < 0;
     @endcode
 
 
@@ -43,7 +43,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-predicates
+      @ingroup group-callable-predicates
+
+      Returns True or False according x is less than zero or not.
+
 
       Function object tied to simd::is_lt
 

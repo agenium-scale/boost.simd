@@ -46,7 +46,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Return the entry minus one, saturated in the entry type.
+      If @c x is not Nan, @c minusone(x) is always less or equal to x.
+
 
       Function object tied to simd::minusone
 

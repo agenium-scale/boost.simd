@@ -44,7 +44,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Returns the input value which have the least absolute value, ignoring nan.
+
 
       Function object tied to simd::minnummag
 

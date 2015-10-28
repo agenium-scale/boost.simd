@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     @ingroup group-swar
 
-    @brief Linear enumeration of value
+    Linear enumeration of value
 
     Return a SIMD register containing a linear enumeration of value defined
     by a seed value and a step.
@@ -55,12 +55,6 @@ namespace boost { namespace simd
     T r = splat<T>(seed) + splat<T>(step)*enumerate<T>();
     @endcode
 
-    @tparam T Result type of the enumeration
-
-                to 0.
-
-                equals to 1.
-
     @return A SIMD register of scalar type @c T
 
 **/
@@ -69,7 +63,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-swar
+      @ingroup group-callable-swar
+
+      Linear enumeration of value
+
 
       Function object tied to simd::enumerate
 

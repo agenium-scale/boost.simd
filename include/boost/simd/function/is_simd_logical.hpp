@@ -20,22 +20,23 @@ namespace boost { namespace simd
 
     @ingroup group-reduction
 
-    returns true if all vector elements have all or no bit sets.
+    returns true if each vector elements have all bits or no bit set.
 
     @par Semantic:
 
-    For every parameter of type T0
+    For every parameter of type T
 
     @code
-    logical<scalar_of_t<T0>> r = is_simd_logical(a0);
+    logical<scalar_of_t<T>> r = is_simd_logical(x);
     @endcode
 
     is similar to:
 
     @code
-    T0 r = all(a0 == Allbits || a0 == Zero);
+    T r = all(x == Allbits || x == Zero);
     @endcode
 
+    @see mask2logical
 
     @return a value of the scalar logical type associated to the parameter
 
@@ -45,7 +46,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-reduction
+      @ingroup group-callable-reduction
+
+      returns true if each vector elements have all bits or no bit set.
+
 
       Function object tied to simd::is_simd_logical
 

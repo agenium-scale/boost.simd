@@ -47,7 +47,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Returns the exponent bits of the floating input as an integer value.
+
 
       Function object tied to simd::exponentbits
 

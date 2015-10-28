@@ -30,7 +30,7 @@ namespace boost { namespace simd
     For every parameters of type T0:
 
     @code
-    as_logical_t<scalar_of_t<T0>> r = compare_greater(a0,a1);
+    as_logical_t<scalar_of_t<T0>> r = compare_greater(x,y);
     @endcode
 
     is similar to:
@@ -39,8 +39,8 @@ namespace boost { namespace simd
       as_logical_t<scalar_of_t<T0>> r = False;
       for(std::size_t i=0;i<cardinal_of<A0>;++i)
       {
-        if (a0[i] > a1[i])  {r =  True; break;}
-        if (a1[i] > a0[i])  {r = False; break;}
+        if (x[i] > y[i])  {r =  True; break;}
+        if (y[i] > x[i])  {r = False; break;}
       }
     @endcode
 
@@ -53,12 +53,16 @@ namespace boost { namespace simd
     @return a value of the scalar logical type associated to the parameters
 
 **/
-  template<typename T> auto compare_greater(T const& x) {}
+  template<typename T> auto compare_greater(T const& x, T const& y) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-reduction
+      @ingroup group-callable-reduction
+
+      return a bool that is the result of the lexicographic
+      test for > on all elements of the entries
+
 
       Function object tied to simd::compare_greater
 

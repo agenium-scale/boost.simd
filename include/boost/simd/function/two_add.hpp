@@ -20,8 +20,6 @@ namespace boost { namespace simd
 
     @ingroup group-arithmetic
 
-    @brief
-
     For any two reals @c x and @c y two_add computes two reals (in an std::pair)
     @c r0 and @c r1 such that:
 
@@ -42,7 +40,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      For any two reals @c x and @c y two_add computes two reals (in an std::pair)
+      @c r0 and @c r1 such that:
+
 
       Function object tied to simd::two_add
 

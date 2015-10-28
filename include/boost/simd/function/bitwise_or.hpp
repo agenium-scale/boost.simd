@@ -58,7 +58,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-bitwise
+      @ingroup group-callable-bitwise
+
+      return the bitwise or of the two parameters
+
 
       Function object tied to boost::simd::bitwise_or
 

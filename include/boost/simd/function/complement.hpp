@@ -28,13 +28,13 @@ namespace boost { namespace simd
     For every parameter of type T0
 
     @code
-    T0 r = complement(a0);
+    T0 r = complement(x);
     @endcode
 
     is similar to:
 
     @code
-    T0 r = ~a0;
+    T0 r = ~x;
     @endcode
 
     @par Alias:
@@ -51,7 +51,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-operator
+
+      return the bitwise complement of the entry
+      Infix notation can be used with operator '~'
+
 
       Function object tied to simd::complement
 

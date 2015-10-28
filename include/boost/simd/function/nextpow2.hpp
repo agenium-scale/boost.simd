@@ -43,7 +43,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Returns the least integer n such that abs(x) is less or equal to \f$2^n\f$
+
 
       Function object tied to simd::nextpow2
 

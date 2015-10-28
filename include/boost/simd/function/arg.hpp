@@ -53,7 +53,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Computes the angular orientation of its parameter.
+
 
       Function object tied to simd::arg
 

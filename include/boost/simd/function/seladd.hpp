@@ -48,7 +48,9 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-boolean
+      @ingroup group-callable-boolean
+
+
 
       Function object tied to simd::seladd
 

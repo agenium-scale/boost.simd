@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     @ingroup group-swar
 
-    @brief SIMD register type-based multiplies and split
+    SIMD register type-based multiplies and split
 
     @c split_multiplies multiplies two x-bit SIMD registers and returns two 2x-bit registers
     each having half the cardinal of the original inputs.
@@ -32,7 +32,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-swar
+      @ingroup group-callable-swar
+
+      SIMD register type-based multiplies and split
+
 
       Function object tied to simd::split_multiplies
 

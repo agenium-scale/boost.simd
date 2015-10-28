@@ -27,7 +27,9 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-swar
+      @ingroup group-callable-swar
+
+
 
       Function object tied to simd::splatted_sum
 

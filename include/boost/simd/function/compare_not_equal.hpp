@@ -32,13 +32,13 @@ namespace boost { namespace simd
     For every parameters of type T0:
 
     @code
-    logical<scalar_of_t<T0>> r = compare_not_equal(a0,a1);
+    logical<scalar_of_t<T0>> r = compare_not_equal(x,y);
     @endcode
 
     is similar to:
 
     @code
-    logical<scalar_of_t<T0>> r = any(a0 == a1);
+    logical<scalar_of_t<T0>> r = any(x == y);
     @endcode
 
     @par Alias:
@@ -50,12 +50,18 @@ namespace boost { namespace simd
     @return a value of the scalar logical type associated to the parameter
 
 **/
-  template<typename T> auto compare_not_equal(T const& x) {}
+  template<typename T> auto compare_not_equal(T const& x, T const& y) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-reduction
+      @ingroup group-callable-reduction
+
+      Returns a logical scalar that is the result of the lexicographic
+      test for != on elements of the entries,
+      i.e. return true if and only if two corresponding entries
+      elements are not equal.
+
 
       Function object tied to simd::compare_not_equal
 

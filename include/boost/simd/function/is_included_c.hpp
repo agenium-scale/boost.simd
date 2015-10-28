@@ -20,20 +20,20 @@ namespace boost { namespace simd
 
     @ingroup group-reduction
 
-    Returns True is only if all bits set in a0 are not set in a1
+    Returns True is only if all bits set in x are not set in y
 
     @par Semantic:
 
     For every parameters of types respectively T0, T1:
 
     @code
-    logical<scalar_of_t<T0>> r = is_included_c(a0,a1);
+    logical<scalar_of_t<T0>> r = is_included_c(x,y);
     @endcode
 
     is similar to:
 
     @code
-    logical<scalar_of_t<T0>> r = all(a0&a1 == zero);
+    logical<scalar_of_t<T0>> r = all(x&y == zero);
     @endcode
 
     @par Alias:
@@ -44,12 +44,15 @@ namespace boost { namespace simd
     @return a value of the scalar logical type associated to the parameters
 
 **/
-  template<typename T> auto is_included_c(T const& x) {}
+  template<typename T> auto is_included_c(T0 const& x, T1 const& y) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-reduction
+      @ingroup group-callable-reduction
+
+      Returns True is only if all bits set in x are not set in y
+
 
       Function object tied to simd::is_included_c
 

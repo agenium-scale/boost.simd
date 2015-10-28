@@ -52,7 +52,12 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Computes the remainder of division.
+      The return value is x-n*y, where n is the value x/y,
+      rounded toward zero.
+
 
       Function object tied to simd::rem
 

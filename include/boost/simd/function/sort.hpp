@@ -20,14 +20,14 @@ namespace boost { namespace simd
 
     @ingroup group-swar
 
-    returns the sorted a0 vector in ascending order
+    returns the sorted x vector in ascending order
 
     @par Semantic:
 
     For every parameter of type T0
 
     @code
-    T0 r = sort(a0);
+    T0 r = sort(x);
     @endcode
 
 
@@ -39,7 +39,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-swar
+      @ingroup group-callable-swar
+
+      returns the sorted x vector in ascending order
+
 
       Function object tied to simd::sort
 

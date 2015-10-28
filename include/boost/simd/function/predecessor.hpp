@@ -44,7 +44,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Returns the n-th greatest element strictly less than the parameter
+
 
       Function object tied to simd::predecessor
 

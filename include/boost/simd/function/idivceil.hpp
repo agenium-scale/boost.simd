@@ -49,7 +49,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Computes the integer conversion of the ceil of the division of its parameters.
+
 
       Function object tied to simd::idivceil
 

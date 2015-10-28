@@ -27,7 +27,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Computes fast_toint value of its parameter.
+
 
       Function object tied to simd::fast_toint
 

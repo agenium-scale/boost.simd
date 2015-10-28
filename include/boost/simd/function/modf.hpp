@@ -49,7 +49,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Computes the integer and  fractional parts of the input
+
 
       Function object tied to simd::modf
 

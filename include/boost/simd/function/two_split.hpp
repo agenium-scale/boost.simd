@@ -20,8 +20,6 @@ namespace boost { namespace simd
 
     @ingroup group-arithmetic
 
-    @brief
-
     For any real @c x, two_split computes two reals @c r0 and @c r1 (in an std::pair)
     such that:
 
@@ -38,7 +36,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      For any real @c x, two_split computes two reals @c r0 and @c r1 (in an std::pair)
+      such that:
+
 
       Function object tied to simd::two_split
 

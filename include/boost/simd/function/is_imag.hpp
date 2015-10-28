@@ -20,19 +20,19 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True or False according a0 is pure imaginary or not.
+    Returns True or False according x is pure imaginary or not.
     For non complex numbers it is same as to be zero
 
     @par Semantic:
 
     @code
-    logical<T> r = is_imag(a0);
+    as_logical_t<T> r = is_imag(x);
     @endcode
 
     is similar to:
 
     @code
-    logical<T> r = a0 == 0;
+    as_logical_t<T> r = x == 0;
     @endcode
 
 
@@ -44,7 +44,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-predicates
+      @ingroup group-callable-predicates
+
+      Returns True or False according x is pure imaginary or not.
+      For non complex numbers it is same as to be zero
+
 
       Function object tied to simd::is_imag
 

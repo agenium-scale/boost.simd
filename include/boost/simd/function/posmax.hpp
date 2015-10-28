@@ -24,23 +24,23 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of type T0
+    For every parameter of type T
 
     @code
-    size_t r = posmax(a0);
+    std::size_t r = posmax(x);
     @endcode
 
     is similar to:
 
     @code
-      scalar_of_t<T0> m =  maximum(a0);
-      size_t r;
-      for(size_t i=0; i < cardinal_of<T0>; i++)
-        if (m == a0[i]) { r = i;  break; }
+      scalar_of_t<T> m =  maximum(x);
+      std::size_t r;
+      for(std::size_t i=0; i < cardinal_of<T>; i++)
+        if (m == x[i]) { r = i;  break; }
     @endcode
 
 
-    @return a size_t value
+    @return a std::size_t value
 
 **/
   template<typename T> auto posmax(T const& x) {}
@@ -48,7 +48,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-reduction
+      @ingroup group-callable-reduction
+
+      Returns the index of the first occurence of greatest element of the SIMD vector
+
 
       Function object tied to simd::posmax
 
