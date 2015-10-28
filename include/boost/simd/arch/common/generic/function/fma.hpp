@@ -20,7 +20,6 @@
 
 namespace boost { namespace simd { namespace ext
 {
-  // TODO is there no optim in scalar nor correct fma in float ?
   namespace bd = boost::dispatch;
   BOOST_DISPATCH_OVERLOAD ( fma_
                           , (typename A0)

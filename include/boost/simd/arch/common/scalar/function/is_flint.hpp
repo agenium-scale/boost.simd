@@ -41,7 +41,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE logical<A0> operator() ( A0 )const BOOST_NOEXCEPT
     {
-      return true; //boost::simd::True<result_type>();
+      return {true};
     }
   };
 

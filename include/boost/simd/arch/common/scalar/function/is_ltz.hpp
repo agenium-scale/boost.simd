@@ -40,7 +40,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE logical<A0> operator()( const A0&) const BOOST_NOEXCEPT
     {
-      return false;//False<logical<A0>>();
+      return {false};
     }
   };
   BOOST_DISPATCH_OVERLOAD ( is_ltz_

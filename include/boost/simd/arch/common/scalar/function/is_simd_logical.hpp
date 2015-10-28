@@ -56,7 +56,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 ) const BOOST_NOEXCEPT
     {
-      return true;
+      return {true};
     }
   };
 } } }
