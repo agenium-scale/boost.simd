@@ -20,7 +20,9 @@ namespace boost { namespace simd
     @ingroup group-ieee
 
     Returns the exponent bits of the floating input as an integer value.
+
     the other bits (sign and mantissa) are just masked.
+
     This function is not defined on integral types.
 
     @par Semantic:

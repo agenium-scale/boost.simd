@@ -19,26 +19,29 @@ namespace boost { namespace simd
 
     @ingroup group-ieee
 
-    Retuns the first element negated is the the scond is less than 0
+    Retuns the first element multiplied by the sign of the second.
 
     @par Semantic:
 
     @code
-    T r = negate(a0,a1);
+    T r = negate(x,y);
     @endcode
 
     is similar to:
 
     @code
-    T r =  a0*sign(a1);
+    T r =  x*sign(y);
     @endcode
 
+    @par Note
+    If y is zero the result is zero. If you want to avoid that use negatenz.
 
+    @see sign, negatenz
 
     @return a value of same type as the inputs
 
 **/
-  template<typename T> auto negate(T const& x) {}
+  template<typename T> auto negate(T const& x, T const& y) {}
 
   namespace functional
   {

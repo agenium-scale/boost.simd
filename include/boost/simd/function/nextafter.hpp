@@ -19,11 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-ieee
 
-    Returns the next element in the a1 direction.
-    \par
-    rg if a1 is greater than a0 this is next(a0)
-    rg if a1 is equal to a0 this is a0
-    rg if a1 is less than a0 this is prev(a0)
+    Returns the next element in the y direction.
 
     @par Semantic:
 
@@ -34,12 +30,12 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    if (y >  x)  r = next(a0);
-    else if (y == x)  r = a0;
-    else if (y <  x)  r = prev(a0);
+    if (y >  x)  r = next(x);
+    else if (y == x)  r = x;
+    else if (y <  x)  r = prev(x);
     @endcode
 
-
+    @see next, prev, successor, predecessor
 
     @return a value of same type as the inputs
 

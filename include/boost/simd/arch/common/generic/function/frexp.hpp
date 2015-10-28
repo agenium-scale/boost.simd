@@ -49,14 +49,13 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using exponent_t = bd::as_integer_t<A0, signed>;
-    using result_t = std::pair<A0,exponent_t>                               ;
 
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE std::pair<A0,exponent_t>  operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
       A0 first;
       exponent_t second;
       bs::frexp( a0, first, second );
-      return result_t(first, second);
+      return {first, second};
     }
   };
 } } }

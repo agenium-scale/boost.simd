@@ -19,16 +19,17 @@ namespace boost { namespace simd
 
     @ingroup group-ieee
 
-    Returns the smallest element strictly greater than the parameter
+    Returns the smallest representable value  strictly greater than the parameter
 
     @par Semantic:
 
     @code
-    T r = next(a0);
+    T r = next(x);
     @endcode
 
-    computes the smallest value strictly greater than a0 in type T
+    computes the smallest value strictly greater than x in type T
 
+    @see nextafter, prev, successor, predecessor
 
     @return a value of same type as the input
 

@@ -20,20 +20,21 @@ namespace boost { namespace simd
     @ingroup group-ieee
 
     This function returns the integer truncation
-    of the base 2 logarithm of a0.
-    It coincides with the exponent function
+    of the base 2 logarithm of x.
+
+    It coincides with the @c exponent function
     on all platforms supported.
 
     @par Semantic:
 
     @code
-    T r = ilogb(a0);
+    T r = ilogb(x);
     @endcode
 
     is similar to:
 
     @code
-    T r = toints(log2(a0));
+    T r = toints(log2(x));
     @endcode
 
     @see exponent
@@ -50,7 +51,7 @@ namespace boost { namespace simd
 
       Function object tied to simd::ilogb
 
-      @see simd::ilogb
+      @see ilogb
     **/
     const boost::dispatch::functor<tag::ilogb_> ilogb = {};
   }

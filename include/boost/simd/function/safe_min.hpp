@@ -35,6 +35,8 @@ namespace boost { namespace simd
     @endcode
 
 
+    @see Sqrtsmallestposval
+
     @return a value of same type as the input
 
 **/

@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-ieee
 
-    Returns signed integer value which has the same bits of the input
+    Returns the signed integer value which has the same bits of the input
 
     @par Semantic:
 

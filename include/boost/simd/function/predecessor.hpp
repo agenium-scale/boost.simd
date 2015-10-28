@@ -27,17 +27,18 @@ namespace boost { namespace simd
     T r = predecessor(x,n);
     @endcode
 
-    computes the @c n-th greatest value strictly less than x in its type.
+    computes the @c n-th greatest representable value strictly less than x in its type.
     n must be positive or null.
-    For integer it saturate at Valmin, for floating point numbers Minf
-    strict predecessors are Nan
 
+    For integer it saturate at @c Valmin, for floating point numbers @c Minf
+    strict predecessors are @c Nan.
 
+    @see next, prev, successor, nextafter, Minf, Valmin, Nan
 
     @return a value of same type as the inputs
 
 **/
-  template<typename T> auto predecessor(T const& x) {}
+  template<typename T, typename N> auto predecessor(T const& x, N const& n) {}
 
   namespace functional
   {

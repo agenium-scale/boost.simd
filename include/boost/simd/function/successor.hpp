@@ -27,14 +27,16 @@ namespace boost { namespace simd
     T r = successor(x,n);
     @endcode
 
-    computes the @c n-th least value strictly greater than x in its type
+    computes the @c n-th least representable value strictly greater than x in its type.
+    n must be positive or null.
 
-
+    For integer it saturate at @c Valmax, for floating point numbers @c Inf
+    strict successor are @c Nan.
 
     @return a value of same type as the inputs
 
 **/
-  template<typename T> auto successor(T const& x) {}
+  template<typename T, typename N> auto successor(T const& x, N const& n) {}
 
   namespace functional
   {

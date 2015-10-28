@@ -19,22 +19,22 @@ namespace boost { namespace simd
 
     @ingroup group-ieee
 
-    Returns the least n such that abs(x) is less or equal to \f$2^n\f$
+    Returns the least integer n such that abs(x) is less or equal to \f$2^n\f$
 
     @par Semantic:
 
     @code
-    T r = nextpow2(a0);
+    T n = nextpow2(x);
     @endcode
 
     is similar to:
 
     @code
-    T n = ceil(log2(abs(x)x));
+    T n = ceil(log2(abs(x)));
     @endcode
 
 
-    @return a value of same type as the input
+    @return an integral value of same type as the input
 
 **/
   template<typename T> auto nextpow2(T const& x) {}

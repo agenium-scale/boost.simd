@@ -28,18 +28,25 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    as_integer_t<T > e = exponent(x)+1;
+    as_integer_t<T> e = exponent(x)+1;
     T m = mantissa(x)/2;
     @endcode
+
+    The call
+
+    @code
+    std:pair<T,as_integer_t<T>> p = frexp(x);
+    @endcode
+
+    can also be used.
 
     @par Note:
 
     @c frexp splits a floating point value @c v f in its signed mantissa @c m and
-    exponent @c e so that
+    exponent @c e so that:  @f$v = m\times 2^e@f$, with absolute value of @c m between 0.5 (included)
+    and 1 (excluded)
 
-    @f$v = m\times 2^e@f$
-
-    with absolute value of @c m between 0.5 (included) and 1 (excluded)
+    Take care that these results differ from the returns of the functions mantssa and exponent
 
     @see exponent,  mantissa
 

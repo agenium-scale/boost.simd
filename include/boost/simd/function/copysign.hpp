@@ -19,21 +19,19 @@ namespace boost { namespace simd
 
     @ingroup group-ieee
 
-    Returns a0 with the sign of a1
+    Returns x with the sign of y
 
     @par Semantic:
 
     @code
-    T r = copysign(a0,a1);
+    T r = copysign(x,y);
     @endcode
 
     is similar to:
 
     @code
-    T r = (a1 >= 0) ? abs(a0) : -(abs(a0));
+    T r = (y >= 0) ? abs(x) : -(abs(x));
     @endcode
-
-
 
     @return a value of same type as the inputs
 

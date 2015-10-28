@@ -19,14 +19,15 @@ namespace boost { namespace simd
 
     @ingroup group-ieee
 
-    Except for numbers whose absolute value is smaller than Smallestpositivevalue,
-    @c eps(x) returns 2^(exponent(x))*Eps
+    This is the distance between x and the next representable value of the type.
+
+    For floating types (except denormal numbers)  @c eps(x) returns 2^(exponent(x))*Eps<T>()
 
 
     @par Semantic:
 
     @code
-    T r = eps(a0);
+    T r = eps(x);
     @endcode
 
     is similar to:
@@ -34,7 +35,7 @@ namespace boost { namespace simd
     @code
 
     if T is floating
-      r = 2^(exponent(x))*Eps<T>
+      r = 2^(exponent(x))*Eps<T>()
     else if T is integral
       r = 1;
     @endcode
