@@ -271,6 +271,7 @@ namespace boost
       Type hierarchies defined by the library
     **/
 
+    /// Boost.SIMD Concepts namespace
     namespace concept
     {
       /*!
@@ -279,6 +280,7 @@ namespace boost
       **/
     }
 
+    /// Boost.SIMD extension points namespace
     namespace ext
     {
       /*!

@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     Generate the constant mask2frexp, a utility mask for frexp implementation.
 
-@par Semantic:
+    @par Semantic:
 
     @code
     as_integer<T> r = Mask2frexp<T>();

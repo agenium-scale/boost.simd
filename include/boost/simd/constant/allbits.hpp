@@ -18,7 +18,7 @@ namespace boost { namespace simd
   /*!
     @ingroup group-constant
 
-    Generates a value in the chosen type all bits of which are set to 1.
+    Generates a value of the chosen type which all bits are set to 1.
 
     @par Semantic:
 
@@ -26,18 +26,21 @@ namespace boost { namespace simd
     T r = Allbits<T>();
     @endcode
 
-    is similar to
+    is equivalent to:
 
-    @code
-    if T is floating point
-      r =  Nan<T>();
-    else if T is signed integral
-      r = -1;
-    else
-      r = Valmax<T>();
-    @endcode
+    - if T is floating point:
+      @code
+      T r =  Nan<T>();
+      @endcode
 
-    @return The Allbits constant for the proper type
+    - otherwise:
+      @code
+      T r = T(~0);
+      @endcode
+
+    @return A value of type @c T with all its bits set to 1
+
+    @see functional::allbits
   **/
   template<typename T> T Allbits();
 
@@ -45,9 +48,24 @@ namespace boost { namespace simd
   {
     /*!
       @ingroup group-callable-constant
-      Generate the  constant allbits. toto
+      Generates a value of the chosen type which all bits are set to 1.
 
-      @return The Allbits constant for the proper type
+      @par Semantic:
+
+      For any value @c x of type @c T:
+      @code
+      T r = simd::functional::allbits( boost::simd::as(x));
+      @endcode
+
+      is equivalent to:
+
+      @code
+      T r = simd::Allbits<T>();
+      @endcode
+
+      @return A value of type @c T with all its bits set to 1
+
+      @see Allbits
     **/
     const boost::dispatch::functor<tag::allbits_> allbits = {};
   }

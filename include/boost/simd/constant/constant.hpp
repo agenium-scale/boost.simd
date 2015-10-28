@@ -15,12 +15,27 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+/*!
     @ingroup group-constant
-    @brief Generate a constant from a static bits pattern representation.
+    Generates a value of the chosen type from an exact bits pattern.
 
-    @tparam Type  Type of the generated constant
-    @tparam Bits  Bits pattern of the generated constant
+    Constant generates a value from an exact bits pattern that get splat in the return
+    value.
+
+    @par Semantic:
+
+    or any type @c T and any integral constant @c N :
+
+    @code
+    T r = Constant<T,N>();
+    @endcode
+
+    generates a values which bit pattern can be represent by the integer N.
+
+    @tparam Type  Type of the desired value
+    @tparam Bits  Bits pattern to generate as a value
+
+    @return A value of type @c T which bits are exactly equals to @c N
   **/
   template<typename Type, std::intmax_t Bits> auto Constant();
 } }

@@ -17,8 +17,9 @@ namespace boost { namespace simd
 {
   /*!
     @ingroup group-constant
+    Generates a value of the chosen type which represents the conjugate Golden Ratio.
 
-    Generates the conjugate golden ratio that is\f$\bar\phi = \frac{1-\sqrt5}{2}\f$
+    The conjugate Golden Ratio (\f$\bar\phi\f$) is defined as \f$\frac{1-\sqrt5}{2}\f$.
 
     @par Semantic:
 
@@ -26,13 +27,15 @@ namespace boost { namespace simd
     T r = Cgold<T>();
     @endcode
 
-    is similar to:
+    is equivalent to:
 
     @code
-    T r = (1-sqrt(T(5)))/2;
+    T r = (1-simd::sqrt(T(5)))/2;
     @endcode
 
-    @return The Cgold constant for the proper type
+    @return A value of type @c T containing the conjugate Golden Ratio.
+
+    @see functional::cgold
   **/
   template<typename T> T Cgold();
 
@@ -40,9 +43,26 @@ namespace boost { namespace simd
   {
     /*!
       @ingroup group-callable-constant
-      Generate the  constant cgold.
+      Generates a value of the chosen type which represents the conjugate Golden Ratio.
 
-      @return The Cgold constant for the proper type
+      The conjugate Golden Ratio (\f$\bar\phi\f$) is defined as \f$\frac{1-\sqrt5}{2}\f$.
+
+      @par Semantic:
+
+      For any value @c x of type @c T:
+      @code
+      T r = simd::functional::cgold( boost::simd::as(x));
+      @endcode
+
+      is equivalent to:
+
+      @code
+      T r = simd::Cgold<T>();
+      @endcode
+
+      @return A value of type @c T containing the conjugate Golden Ratio.
+
+      @see Cgold
     **/
     const boost::dispatch::functor<tag::cgold_> cgold = {};
   }

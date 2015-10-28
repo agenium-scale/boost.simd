@@ -18,15 +18,27 @@ namespace boost { namespace simd
   /*!
     @ingroup group-constant
 
-    Generate a value in the chosen type the least significant bit set to 1.
+    Generates a value of the chosen type which represents the minimal increment value for @c T.
 
     @par Semantic:
+
+    For any type @c T,
 
     @code
     T r = Bitincrement<T>();
     @endcode
 
-    @return The Bitincrement constant for the proper type
+    generates a value so that, for any value @c x of type @c T,
+
+    @code
+    x + r == simd::nextafter(x, 1);
+    @endcode
+
+    evaluates to @c true.
+
+    @return A value of type @c T containing the minimal increment value for @c T
+
+    @see functional::bitincrement
   **/
   template<typename T> T Bitincrement();
 
@@ -34,9 +46,24 @@ namespace boost { namespace simd
   {
     /*!
       @ingroup group-callable-constant
-      Generate the  constant bitincrement.
+      Generates a value of the chosen type which represents the minimal increment value for @c T.
 
-      @return The Bitincrement constant for the proper type
+      @par Semantic:
+
+      For any value @c x of type @c T:
+      @code
+      T r = simd::functional::bitincrement( boost::simd::as(x));
+      @endcode
+
+      is similar to:
+
+      @code
+      T r = simd::Bitincrement<T>();
+      @endcode
+
+      @return A value of type @c T containing the minimal increment value for @c T
+
+      @see Bitincrement
     **/
     const boost::dispatch::functor<tag::bitincrement_> bitincrement = {};
   }
