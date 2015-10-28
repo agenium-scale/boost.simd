@@ -13,16 +13,17 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_IS_NOT_DENORMAL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_IS_NOT_DENORMAL_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/constant/smallestposval.hpp>
+#include <boost/simd/function/abs.hpp>
 #include <boost/simd/function/is_eqz.hpp>
 #include <boost/simd/function/is_not_less.hpp>
 #include <boost/simd/function/logical_or.hpp>
-#include <boost/simd/function/abs.hpp>
-//#include <boost/simd/constant/true.hpp>
-#include <boost/simd/constant/smallestposval.hpp>
 #include <boost/simd/logical.hpp>
+//#include <boost/simd/constant/true.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 //TODO LOGICAL
+
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;

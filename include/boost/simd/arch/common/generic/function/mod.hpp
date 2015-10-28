@@ -13,13 +13,13 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_MOD_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_MOD_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/simd/function/selsub.hpp>
-#include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/function/divfloor.hpp>
 #include <boost/simd/function/idivfloor.hpp>
+#include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/selsub.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

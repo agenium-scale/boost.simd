@@ -13,18 +13,18 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_SATURATE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_SATURATE_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/as.hpp>
+#include <boost/simd/constant/valmax.hpp>
+#include <boost/simd/constant/valmin.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/is_inf.hpp>
 #include <boost/simd/function/max.hpp>
 #include <boost/simd/function/min.hpp>
 #include <boost/simd/function/splat.hpp>
-#include <boost/simd/constant/valmax.hpp>
-#include <boost/simd/constant/valmin.hpp>
-#include <boost/simd/constant/zero.hpp>
-#include <boost/simd/detail/brigand.hpp>
-#include <boost/simd/as.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

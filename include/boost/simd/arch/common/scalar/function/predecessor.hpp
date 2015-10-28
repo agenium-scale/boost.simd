@@ -13,16 +13,16 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_PREDECESSOR_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_PREDECESSOR_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/function/scalar/bitfloating.hpp>
 #include <boost/simd/function/scalar/bitinteger.hpp>
+#include <boost/simd/function/scalar/is_gez.hpp>
+#include <boost/simd/function/scalar/is_nan.hpp>
 #include <boost/simd/function/scalar/minusone.hpp>
 #include <boost/simd/function/scalar/subs.hpp>
-#include <boost/simd/function/scalar/is_nan.hpp>
-#include <boost/simd/function/scalar/is_gez.hpp>
-#include <boost/simd/constant/valmin.hpp>
+#include <boost/dispatch/function/overload.hpp>
 #include <boost/assert.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

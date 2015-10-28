@@ -13,12 +13,12 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_HYPOT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_HYPOT_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
 #include <boost/simd/function/fma.hpp>
 #include <boost/simd/function/sqr.hpp>
 #include <boost/simd/function/sqrt.hpp>
 #include <boost/simd/options.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

@@ -13,14 +13,14 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ABSS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ABSS_HPP_INCLUDED
 
+#include <boost/simd/constant/valmax.hpp>
+#include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/function/abs.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/is_equal.hpp>
-#include <boost/simd/constant/valmin.hpp>
-#include <boost/simd/constant/valmax.hpp>
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
 #include <boost/simd/math.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

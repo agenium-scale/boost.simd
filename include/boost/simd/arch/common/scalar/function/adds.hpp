@@ -13,19 +13,19 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ADDS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ADDS_HPP_INCLUDED
 
-#include <boost/dispatch/hierarchy.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/config.hpp>
-#include <type_traits>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/simd/function/scalar/saturate.hpp>
-#include <boost/simd/function/scalar/min.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/zero.hpp>
+#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/function/scalar/min.hpp>
+#include <boost/simd/function/scalar/saturate.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/dispatch/hierarchy.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/dispatch/meta/as_unsigned.hpp>
 #include <boost/dispatch/meta/upgrade.hpp>
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/config.hpp>
+#include <type_traits>
 
 namespace boost { namespace simd { namespace ext
 {

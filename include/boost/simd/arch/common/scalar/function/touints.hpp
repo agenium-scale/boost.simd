@@ -13,14 +13,14 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_TOUINTS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_TOUINTS_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/constant/valmax.hpp>
+#include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/scalar/is_ngez.hpp>
 #include <boost/simd/function/scalar/saturate.hpp>
-#include <boost/simd/constant/zero.hpp>
-#include <boost/simd/constant/valmax.hpp>
+#include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
-#include <iostream>
+#include <boost/config.hpp>
+
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;

@@ -13,9 +13,9 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_DISTS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_DISTS_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/dist.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/zero.hpp>
+#include <boost/simd/function/scalar/dist.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

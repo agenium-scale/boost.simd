@@ -13,12 +13,12 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ONEPLUS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ONEPLUS_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/simd/function/plus.hpp>
-#include <boost/simd/function/seladd.hpp>
-#include <boost/simd/function/is_not_equal.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/valmax.hpp>
+#include <boost/simd/function/is_not_equal.hpp>
+#include <boost/simd/function/plus.hpp>
+#include <boost/simd/function/seladd.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

@@ -13,19 +13,19 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ULPDIST_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ULPDIST_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
 #include <boost/simd/constant/eps.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/scalar/abs.hpp>
-#include <boost/simd/function/scalar/tofloat.hpp>
-#include <boost/simd/function/scalar/ldexp.hpp>
-#include <boost/simd/function/scalar/frexp.hpp>
-#include <boost/simd/function/scalar/max.hpp>
 #include <boost/simd/function/scalar/dist.hpp>
-#include <boost/simd/function/scalar/subs.hpp>
+#include <boost/simd/function/scalar/frexp.hpp>
 #include <boost/simd/function/scalar/is_nan.hpp>
+#include <boost/simd/function/scalar/ldexp.hpp>
+#include <boost/simd/function/scalar/max.hpp>
+#include <boost/simd/function/scalar/subs.hpp>
+#include <boost/simd/function/scalar/tofloat.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

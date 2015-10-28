@@ -13,10 +13,10 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_FINITE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_FINITE_HPP_INCLUDED
 
-#include <boost/config.hpp>
 #include <boost/simd/function/scalar/is_eqz.hpp>
 //#include <boost/simd/constant/true.hpp>
 #include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

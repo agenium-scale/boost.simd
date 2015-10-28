@@ -13,15 +13,14 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_POPCNT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_POPCNT_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/simd/function/scalar/lo.hpp>
-#include <boost/simd/function/scalar/hi.hpp>
-#include <boost/simd/function/scalar/sbits.hpp>
-
 #ifdef BOOST_MSVC
 #include <intrin.h>
 #endif
+#include <boost/simd/function/scalar/hi.hpp>
+#include <boost/simd/function/scalar/lo.hpp>
+#include <boost/simd/function/scalar/sbits.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

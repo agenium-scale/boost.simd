@@ -13,17 +13,17 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_CORRECT_FMA_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_CORRECT_FMA_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/simd/function/scalar/two_add.hpp>
-#include <boost/simd/function/scalar/two_prod.hpp>
+#include <boost/simd/function/scalar/bitwise_cast.hpp>
+#include <boost/simd/function/scalar/exponent.hpp>
 #include <boost/simd/function/scalar/ldexp.hpp>
 #include <boost/simd/function/scalar/max.hpp>
 #include <boost/simd/function/scalar/multiplies.hpp>
-#include <boost/simd/function/scalar/exponent.hpp>
 #include <boost/simd/function/scalar/sign.hpp>
-#include <boost/simd/function/scalar/bitwise_cast.hpp>
+#include <boost/simd/function/scalar/two_add.hpp>
+#include <boost/simd/function/scalar/two_prod.hpp>
+#include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

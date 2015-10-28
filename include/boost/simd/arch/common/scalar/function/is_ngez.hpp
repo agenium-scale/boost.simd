@@ -12,13 +12,13 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_NGEZ_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_NGEZ_HPP_INCLUDED
-//TODO LOGICAL
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
+
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/scalar/is_nan.hpp>
 //#include <boost/simd/function/scalar/logical_or.hpp>
 //#include <boost/simd/sdk/meta/as_logical.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

@@ -13,11 +13,11 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_FNMA_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_FNMA_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/minus.hpp>
+#include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/unary_minus.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

@@ -13,15 +13,15 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_IS_DENORMAL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_IS_DENORMAL_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/constant/smallestposval.hpp>
+#include <boost/simd/function/abs.hpp>
 #include <boost/simd/function/is_less.hpp>
 #include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/function/logical_and.hpp>
-#include <boost/simd/function/abs.hpp>
-//#include <boost/simd/constant/false.hpp>
-#include <boost/simd/constant/smallestposval.hpp>
 #include <boost/simd/logical.hpp>
+//#include <boost/simd/constant/false.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

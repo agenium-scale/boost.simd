@@ -13,13 +13,13 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_MINUSONE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_MINUSONE_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/valmin.hpp>
-#include <boost/simd/function/selsub.hpp>
 #include <boost/simd/function/is_not_equal.hpp>
 #include <boost/simd/function/minus.hpp>
+#include <boost/simd/function/selsub.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

@@ -13,20 +13,21 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_REMQUO_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_REMQUO_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/simd/function/round2even.hpp>
-#include <boost/simd/function/toint.hpp>
-#include <boost/simd/function/minus.hpp>
-#include <boost/simd/function/is_eqz.hpp>
+#include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/function/divides.hpp>
+#include <boost/simd/function/if_allbits_else.hpp>
+#include <boost/simd/function/is_eqz.hpp>
 #include <boost/simd/function/is_invalid.hpp>
 #include <boost/simd/function/logical_or.hpp>
+#include <boost/simd/function/minus.hpp>
 #include <boost/simd/function/multiplies.hpp>
-#include <boost/simd/function/if_allbits_else.hpp>
+#include <boost/simd/function/round2even.hpp>
+#include <boost/simd/function/toint.hpp>
+#include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/config.hpp>
 #include <utility>
-#include <boost/simd/detail/brigand.hpp>
+
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;

@@ -12,9 +12,9 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_COMBINE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_COMBINE_HPP_INCLUDED
-//TO DO PERHAPS combine two scalars to a pack
-#include <boost/config.hpp>
+
 //#include <boost/simd/pack.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

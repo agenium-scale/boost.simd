@@ -13,12 +13,12 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_IDIVROUND_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_IDIVROUND_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/simd/function/iround.hpp>
 #include <boost/simd/function/divides.hpp>
 #include <boost/simd/function/divround.hpp>
+#include <boost/simd/function/iround.hpp>
+#include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

@@ -13,15 +13,15 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_TENPOWER_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_TENPOWER_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_floating.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/ten.hpp>
 #include <boost/simd/function/abs.hpp>
-#include <boost/simd/function/sqr.hpp>
 #include <boost/simd/function/scalar/is_odd.hpp>
 #include <boost/simd/function/scalar/rec.hpp>
+#include <boost/simd/function/sqr.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/dispatch/meta/as_floating.hpp>
+#include <boost/config.hpp>
 #include <boost/mpl/if.hpp>
 
 namespace boost { namespace simd { namespace ext

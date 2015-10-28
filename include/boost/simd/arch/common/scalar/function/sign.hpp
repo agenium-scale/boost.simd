@@ -13,14 +13,14 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_SIGN_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_SIGN_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/simd/function/scalar/is_ltz.hpp>
-#include <boost/simd/function/scalar/is_gtz.hpp>
-#include <boost/simd/function/scalar/shift_right.hpp>
 #ifndef BOOST_SIMD_NO_NANS
 #include <boost/simd/function/scalar/is_nan.hpp>
 #endif
+#include <boost/simd/function/scalar/is_gtz.hpp>
+#include <boost/simd/function/scalar/is_ltz.hpp>
+#include <boost/simd/function/scalar/shift_right.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

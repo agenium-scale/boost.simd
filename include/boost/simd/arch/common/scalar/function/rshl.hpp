@@ -13,12 +13,12 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_RSHL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_RSHL_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
 #include <boost/simd/function/scalar/bitwise_cast.hpp>
-#include <boost/simd/function/scalar/shr.hpp>
 #include <boost/simd/function/scalar/shift_left.hpp>
+#include <boost/simd/function/scalar/shr.hpp>
+#include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
