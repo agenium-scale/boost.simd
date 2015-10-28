@@ -43,7 +43,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      This function returns the fractional part of the input
+
 
       Function object tied to simd::frac
 

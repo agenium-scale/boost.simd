@@ -19,18 +19,18 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True if neither a0 nor a1 is nan.
+    Returns True if neither x nor y is nan.
 
     @par Semantic:
 
     @code
-    logical<T> r = is_ord(a0,a1);
+    as_logical_t<T> r = is_ord(x,y);
     @endcode
 
     is similar to:
 
     @code
-    logical<T> r = (a0 == a0) && (a1 == a1);
+    as_logical_t<T> r = (x == x) && (y == y);
     @endcode
 
 
@@ -38,12 +38,15 @@ namespace boost { namespace simd
     @return a logical value
 
 **/
-  template<typename T> auto is_ord(T const& x) {}
+  template<typename T> auto is_ord(T const& x, T const& y) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-predicates
+      @ingroup group-callable-predicates
+
+      Returns True if neither x nor y is nan.
+
 
       Function object tied to simd::is_ord
 

@@ -46,7 +46,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      The function multiply a floating entry \f$x\f$
+      by \f$2^{n}\f$
+
 
       Function object tied to simd::ldexp
 

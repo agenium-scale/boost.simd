@@ -26,7 +26,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-swar
+      @ingroup group-callable-swar
+
+     TODO- Computes map value of its parameter.
+
 
       Function object tied to simd::map
 

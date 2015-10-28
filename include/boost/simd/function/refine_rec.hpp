@@ -27,7 +27,7 @@ namespace boost { namespace simd
 
     @see rec
 
-    @return  A value estimating rec(a0) with twice as much precision
+    @return  A value estimating rec(x) with twice as much precision
 
 
 **/
@@ -36,7 +36,13 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Performs a Newton-Raphson step to improve precision of reciprocate estimate.
+      This function can be used in conjunction with raw_rec or
+      fast_rec to add more precision to the estimate if their default
+      precision is not enough.
+
 
       Function object tied to simd::refine_rec
 

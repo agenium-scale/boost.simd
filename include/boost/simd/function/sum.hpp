@@ -23,18 +23,18 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of type T0
+    For every parameter of type T
 
     @code
-    scalar<T0> r = sum(a0);
+    scalar<T> r = sum(x);
     @endcode
 
     is similar to:
 
     @code
-    scalar<T0> r = Zero;
-    for(result_type i = 0; i != meta::cardinal_of<T0>; ++i)
-      r += a0[i];
+    scalar<T> r = Zero;
+    for(result_type i = 0; i != meta::cardinal_of<T>; ++i)
+      r += x[i];
     @endcode
 
 
@@ -46,7 +46,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-reduction
+      @ingroup group-callable-reduction
+
+      Returns the sum of the elements of the SIMD vector
+
 
       Function object tied to simd::sum
 

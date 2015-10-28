@@ -19,23 +19,23 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True if a0 is not greater or equal to zero else returns False.
+    Returns True if x is not greater or equal to zero else returns False.
 
     @par Semantic:
 
     @code
-    logical<T> r = is_ngez(a0);
+    as_logical_t<T> r = is_ngez(x);
     @endcode
 
     is similar to:
 
     @code
-    logical<T> r = !(a0 >= 0);
+    as_logical_t<T> r = !(x >= 0);
     @endcode
 
     @par Note:
 
-    Due to existence of nan, this is not equivalent to @c is_ltz(a0)
+    Due to existence of nan, this is not equivalent to @c is_ltz(x)
     for floating types
 
 
@@ -47,7 +47,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-predicates
+      @ingroup group-callable-predicates
+
+      Returns True if x is not greater or equal to zero else returns False.
+
 
       Function object tied to simd::is_nge
 

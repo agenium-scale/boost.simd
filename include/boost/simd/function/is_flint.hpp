@@ -19,12 +19,12 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True or False according a0 is a flint or not.
+    Returns True or False according x is a flint or not.
 
     @par Semantic:
 
     @code
-    logical<T> r = is_flint(a0);
+    as_logical_t<T> r = is_flint(x);
     @endcode
 
     @par Note:
@@ -44,7 +44,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-predicates
+      @ingroup group-callable-predicates
+
+      Returns True or False according x is a flint or not.
+
 
       Function object tied to simd::is_flint
 

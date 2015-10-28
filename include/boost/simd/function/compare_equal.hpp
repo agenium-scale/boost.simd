@@ -31,13 +31,13 @@ namespace boost { namespace simd
     For every parameters of type T0:
 
     @code
-    logical<scalar_of_t<T0>> r = compare_equal(a0,a1);
+    logical<scalar_of_t<T0>> r = compare_equal(x,y);
     @endcode
 
     is similar to:
 
     @code
-    logical<scalar_of_t<T0>> r = all(a0 == a1)
+    logical<scalar_of_t<T0>> r = all(x == y)
     @endcode
 
     @par Alias:
@@ -49,12 +49,18 @@ namespace boost { namespace simd
     @return a value of the scalar logical type asssociated to the parameters
 
 **/
-  template<typename T> auto compare_equal(T const& x) {}
+  template<typename T> auto compare_equal(T const& x, T const& y) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-reduction
+      @ingroup group-callable-reduction
+
+      Returns a logical scalar value that is the result of the lexicographic
+      test for equality of all elements of the entries,
+      i.e. return true if and only if all corresponding entries
+      elements are equal.
+
 
       Function object tied to simd::compare_equal
 

@@ -51,7 +51,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Computes the round2even of the division.
+
 
       Function object tied to simd::divround2even
 

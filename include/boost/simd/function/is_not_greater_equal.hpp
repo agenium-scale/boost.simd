@@ -19,24 +19,24 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True if a0 is not greater or equal to a1 else returns False.
+    Returns True if x is not greater or equal to y else returns False.
 
     @par Semantic:
 
     @code
-    logical<T> r = is_not_greater_equal(a0,a1);
+    as_logical_t<T> r = is_not_greater_equal(x,y);
     @endcode
 
     is similar to:
 
     @code
-    logical<T> r = !(a0 >= a1);
+    as_logical_t<T> r = !(x >= y);
     @endcode
 
 
     @par Note:
 
-    Due to existence of nan, this is not equivalent to @c is_less(a0)
+    Due to existence of nan, this is not equivalent to @c is_less(x)
     for floating types
 
     @par Alias:
@@ -48,12 +48,15 @@ namespace boost { namespace simd
     @return a logical value
 
 **/
-  template<typename T> auto is_not_greater_equal(T const& x) {}
+  template<typename T> auto is_not_greater_equal(T const& x, T const& y) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-predicates
+      @ingroup group-callable-predicates
+
+      Returns True if x is not greater or equal to y else returns False.
+
 
       Function object tied to simd::is_not_greater_equal
 

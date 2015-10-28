@@ -39,7 +39,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Returns the greatest representable value  strictly less than the parameter
+
 
       Function object tied to simd::prev
 

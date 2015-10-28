@@ -49,7 +49,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-bitwise
+      @ingroup group-callable-bitwise
+
+      Returns a mask of bits. All ones if the
+      input element is zero else all zeros.
+
 
       Function object tied to simd::genmaskc
 

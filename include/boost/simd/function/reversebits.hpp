@@ -38,7 +38,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-bitwise
+      @ingroup group-callable-bitwise
+
+      Returns the bits of the entry in reverse order.
+
 
       Function object tied to simd::reversebits
 

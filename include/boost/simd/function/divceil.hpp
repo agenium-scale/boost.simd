@@ -51,7 +51,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Computes the ceil of the division of its parameters.
+
 
       Function object tied to simd::divceil
 

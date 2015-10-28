@@ -19,19 +19,19 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True or False according a0 is real or not.
+    Returns True or False according x is real or not.
     For non complex numbers it is always false
 
     @par Semantic:
 
     @code
-    logical<T> r = is_not_real(a0);
+    as_logical_t<T> r = is_not_real(x);
     @endcode
 
     is similar to:
 
     @code
-    logical<T> r = False;
+    as_logical_t<T> r = False;
     @endcode
 
 
@@ -43,7 +43,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-predicates
+      @ingroup group-callable-predicates
+
+      Returns True or False according x is real or not.
+      For non complex numbers it is always false
+
 
       Function object tied to simd::is_not_real
 

@@ -73,7 +73,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Convert to integer by truncation.
+
 
       Function object tied to simd::toint
 

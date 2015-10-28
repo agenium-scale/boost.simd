@@ -51,7 +51,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Computes the floor of the division.
+
 
       Function object tied to simd::divfloor
 

@@ -19,10 +19,10 @@ namespace boost { namespace simd
 
     @ingroup group-swar
 
-    @brief SIMD register type-based split
+    SIMD register type-based split
 
-    @c split splits a SIMD register @c v in two SIMD register of half the
-    cardinal of @c v containing the same value than @c v but transtyped to
+    @c split splits a SIMD register @c x in two SIMD register of half the
+    cardinal of @c x containing the same value than @c x but transtyped to
     their associated scalar type.
 
 

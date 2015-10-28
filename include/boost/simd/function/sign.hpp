@@ -45,7 +45,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Returns the sign of x. i.e. -1, 0 or 1, according
+      x is less than zero, zero or greater than zero.
+
 
       Function object tied to simd::sign
 

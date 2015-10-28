@@ -23,21 +23,21 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of type T0
+    For every parameter of type T
 
     @code
-    T0 r = repeat_upper_half(a0);
+    T r = repeat_upper_half(x);
     @endcode
 
     is similar to:
 
     @code
-      T0 r;
-      const std::size_t       n = meta::cardinal_of<T0>::value;
-      const std::size_t  middle = meta::cardinal_of<T0>::value/2;
+      T r;
+      const std::size_t       n = meta::cardinal_of<T>::value;
+      const std::size_t  middle = meta::cardinal_of<T>::value/2;
       for(std::size_t i=middle;i<n;++i)
       {
-        r[i] = r[i-middle] = a0[i];
+        r[i] = r[i-middle] = x[i];
       }
     @endcode
 
@@ -50,7 +50,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-swar
+      @ingroup group-callable-swar
+
+          Repeat upper half of a vector
+
 
       Function object tied to simd::repeat_upper_half
 

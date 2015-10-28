@@ -49,7 +49,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Returns the saturated value of the first input in the template parameter type,
+      but in the same type as the input.
+
 
       Function object tied to simd::saturate
 

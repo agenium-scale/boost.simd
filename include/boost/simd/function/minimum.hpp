@@ -23,30 +23,33 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of type T0
+    For every parameter of type T
 
     @code
-    scalar_of_t<T0> r = minimum(a0);
+    scalar_of_t<T> r = minimum(x);
     @endcode
 
     is similar to:
 
     @code
-      scalar_of_t<T0> r = Inf;
-      for(std::size_t i=0;i<cardinal_of<T0>;++i)
-        r =  r > a0[i] ? a0[i] : r;
+      scalar_of_t<T> r = Inf;
+      for(std::size_t i=0;i<cardinal_of<T>;++i)
+        r =  r > x[i] ? x[i] : r;
     @endcode
 
 
     @return a value of the scalar type associated to the parameter
 
 **/
-  template<typename T> auto minimum(T const& x, T const& y) {}
+  template<typename T> auto minimum(T const& x) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-reduction
+      @ingroup group-callable-reduction
+
+      Returns the least element of the SIMD vector
+
 
       Function object tied to simd::minimum
 

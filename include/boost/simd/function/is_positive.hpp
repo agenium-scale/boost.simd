@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True if a0 is positive else False.
+    Returns True if x is positive else False.
 
     This function differs from is_gtz from floating point argument,
     because Zero is positive but not greater than zero, and Mzero is
@@ -30,16 +30,16 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    logical<T> r = is_positive(a0);
+    as_logical_t<T> r = is_positive(x);
     @endcode
 
     is similar to:
 
     @code
     if T is signed
-      logical<T> r = bitofsign(a0) == 0;
+      as_logical_t<T> r = bitofsign(x) == 0;
     else
-      logical<T> r = True;
+      as_logical_t<T> r = True;
     @endcode
 
 
@@ -49,6 +49,7 @@ namespace boost { namespace simd
     i.e. all bits are zero but the sign bit.
     Such a value is treated as zero by ieee standards.
 
+    behaviour of is_positive on Nan is undefined.
 
     @return a logical value
 
@@ -58,7 +59,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-predicates
+      @ingroup group-callable-predicates
+
+      Returns True if x is positive else False.
+
 
       Function object tied to simd::is_positive
 

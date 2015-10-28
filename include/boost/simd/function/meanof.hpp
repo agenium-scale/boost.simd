@@ -49,7 +49,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Computes the mean of its parameter avoiding overflow.
+
 
       Function object tied to simd::meanof
 

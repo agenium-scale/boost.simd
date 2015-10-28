@@ -19,18 +19,18 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True or False according a0 is nan or not.
+    Returns True or False according x is nan or not.
 
     @par Semantic:
 
     @code
-    logical<T> r = is_nan(a0);
+    as_logical_t<T> r = is_nan(x);
     @endcode
 
     is similar to:
 
     @code
-    logical<T> r = a0 != a0;
+    as_logical_t<T> r = x != x;
     @endcode
 
 
@@ -42,7 +42,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-predicates
+      @ingroup group-callable-predicates
+
+      Returns True or False according x is nan or not.
+
 
       Function object tied to simd::is_nan
 

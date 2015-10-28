@@ -23,18 +23,18 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of type T0
+    For every parameter of type T
 
     @code
-    logical<scalar_of_t<T0>> r = any(a0);
+    logical<scalar_of_t<T>> r = any(x);
     @endcode
 
     is similar to:
 
     @code
-    logical<scalar_of_t<T0>> r = False;
-    for(result_type i = 0; i != cardinal_of<T0>; ++i)
-      if (a0[i]) {r =  True; break; }
+    logical<scalar_of_t<T>> r = False;
+    for(result_type i = 0; i != cardinal_of<T>; ++i)
+      if (x[i]) {r =  True; break; }
     @endcode
 
 
@@ -46,7 +46,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-reduction
+      @ingroup group-callable-reduction
+
+      Returns true if at least one element of the input vector is non zero.
+
 
       Function object tied to simd::any
 

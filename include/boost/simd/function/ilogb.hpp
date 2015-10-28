@@ -47,7 +47,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      This function returns the integer truncation
+      of the base 2 logarithm of x.
+
 
       Function object tied to simd::ilogb
 

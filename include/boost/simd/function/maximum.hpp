@@ -23,18 +23,18 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of type T0
+    For every parameter of type T
 
     @code
-    scalar_of_t<T0> r = maximum(a0);
+    scalar_of_t<T> r = maximum(x);
     @endcode
 
     is similar to:
 
     @code
-      scalar_of_t<T0> r = Minf;
-      for(std::size_t i=0;i<cardinal_of<T0>;++i)
-        r =  r < a0[i] ? a0[i] : r;
+      scalar_of_t<T> r = Minf;
+      for(std::size_t i=0;i<cardinal_of<T>;++i)
+        r =  r < x[i] ? x[i] : r;
     @endcode
 
 
@@ -46,7 +46,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-reduction
+      @ingroup group-callable-reduction
+
+      Returns the greatest element of the SIMD vector
+
 
       Function object tied to simd::maximum
 

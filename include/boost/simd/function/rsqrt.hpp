@@ -48,7 +48,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Returns the inverse of the square root of the input.
+
 
       Function object tied to simd::rsqrt
 

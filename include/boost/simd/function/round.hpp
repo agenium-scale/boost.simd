@@ -55,7 +55,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      round(x,n) rounds aways from 0 to n digits:
+
 
       Function object tied to simd::round
 

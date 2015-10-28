@@ -96,7 +96,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Returns ulp distance of the two values.
+
 
       Function object tied to simd::ulpdist
 

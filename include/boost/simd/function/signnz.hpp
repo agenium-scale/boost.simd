@@ -49,7 +49,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Returns the sign of x. I.e. -1 or 1, according
+      x is negative or positive.
+
 
       Function object tied to simd::signn
 

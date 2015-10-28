@@ -30,13 +30,13 @@ namespace boost { namespace simd
     For every parameters of types respectively T0, T1:
 
     @code
-    as_logical_t<T0> r = logical_xor(a0,a1);
+    as_logical_t<T0> r = logical_xor(x,y);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<T0> r = !a0 != !a1;
+    as_logical_t<T0> r = !x != !y;
     @endcode
 
     @see  logical_or, logical_ornot, logical_notand,
@@ -45,13 +45,16 @@ namespace boost { namespace simd
     @return a logical value of the logical type associated to the input.
 
 **/
-  template<typename T1, typename T2> auto logical_ornot(T1 const& a0, T2 const& a1) {}
+  template<typename T1, typename T2> auto logical_ornot(T1 const& x, T2 const& y) {}
 
 
   namespace functional
   {
     /*!
-      @ingroup group-boolean
+      @ingroup group-callable-boolean
+
+      return the logical xor of the first parameter and of the second parameter.
+
 
       Function object tied to simd::logical_xor
 

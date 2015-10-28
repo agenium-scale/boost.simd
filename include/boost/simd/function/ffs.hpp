@@ -41,7 +41,12 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-bitwise
+      @ingroup group-callable-bitwise
+
+      returns the index
+      of the first bit set (beginning with the least
+      significant bit) in the parameter.
+
 
       Function object tied to simd::ffs
 

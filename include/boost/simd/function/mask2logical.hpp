@@ -47,7 +47,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-boolean
+      @ingroup group-callable-boolean
+
+      The function converts an arithmetic mask where each element is
+      Zero or Allbits to a logical value.
+
 
       Function object tied to simd::mask2logical
 

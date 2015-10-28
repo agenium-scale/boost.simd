@@ -23,16 +23,16 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of type T0:
+    For every parameters of type T:
 
     @code
-    scalar_of_t<T0> r = dot(a0,a1);
+    scalar_of_t<T> r = dot(x,y);
     @endcode
 
     is similar to:
 
     @code
-    scalar_of_t<T0> r = sum(a0*conj(a1));
+    scalar_of_t<T> r = sum(x*conj(y));
     @endcode
 
 
@@ -45,7 +45,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-reduction
+      @ingroup group-callable-reduction
+
+      returns the dot product of the two vector arguments
+
 
       Function object tied to simd::dot
 

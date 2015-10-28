@@ -43,7 +43,12 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Transform a pattern of bits stored in an integer value
+      in a floating point with different formulas according to
+      the integer sign (converse of bitinteger)
+
 
       Function object tied to simd::bitfloating
 

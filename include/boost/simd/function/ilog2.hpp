@@ -50,7 +50,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-bitwise
+      @ingroup group-callable-bitwise
+
+      Returns the integer part of the base 2
+      logarithm of the input.
+
 
       Function object tied to simd::ilog2
 

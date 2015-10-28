@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-swar
 
-    @brief SIMD register type-based slice
+    SIMD register type-based slice
 
     @c slice slices a SIMD register @c v in two SIMD register of half the
     cardinal of @c v containing the same value than @c v.
@@ -31,7 +31,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-swar
+      @ingroup group-callable-swar
+
+      SIMD register type-based slice
+
 
       Function object tied to simd::slice
 

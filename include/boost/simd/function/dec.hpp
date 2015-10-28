@@ -46,6 +46,9 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-arithmetic
 
+    Decrements a value by 1.
+
+
       Function object tied to simd::abs
 
       @see simd::abs

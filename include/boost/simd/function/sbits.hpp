@@ -42,7 +42,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Returns the signed integer value which has the same bits of the input
+
 
       Function object tied to simd::sbits
 

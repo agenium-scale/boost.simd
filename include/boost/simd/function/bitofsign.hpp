@@ -46,7 +46,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Returns a value of the same type as the input with all bits set to zero
+      except the bit of sign which is preserved.
+
 
       Function object tied to simd::bitofsign
 

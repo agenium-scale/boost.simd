@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-swar
 
-    @brief SIMD register shuffling
+    SIMD register shuffling
 
     Shuffle the elements of two SIMD registers following a compile-time
     permutation pattern passed as a @metafunction.
@@ -27,11 +27,11 @@ namespace boost { namespace simd
     @par Semantic:
 
     Let's @c T be a SIMD register type of cardinal @c N, @c Perm be a
-    binary @metafunction. For any SIMD register @c v1 and  @c v2 of type @c T,
+    binary @metafunction. For any SIMD register @c x and  @c y of type @c T,
     the following code:
 
     @code
-    T r = shuffle<Perm>(v1,v2);
+    T r = shuffle<Perm>(x,y);
     @endcode
 
     is equivalent to
@@ -40,7 +40,7 @@ namespace boost { namespace simd
     T r = shuffle< mpl::apply<Perm, int_<0>, int_<N> >::type::value
                  , ...
                  , mpl::apply<Perm, int_<C-1>, int_<N> >::type::value
-                 >(v1,v2);
+                 >(x,y);
     @endcode
 
     @usage{shuffle_perm1.cpp}
@@ -50,12 +50,15 @@ namespace boost { namespace simd
     @return A SIMD register shuffled as per the permutation pattern
 
 **/
-  template<typename T> auto shuffle(T const& x) {}
+  template<typename Perm, typename T> auto shuffle(T const& x, T const& y) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-swar
+      @ingroup group-callable-swar
+
+      SIMD register shuffling
+
 
       Function object tied to simd::shuffle
 

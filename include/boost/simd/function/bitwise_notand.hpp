@@ -56,7 +56,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-bitwise
+      @ingroup group-callable-bitwise
+
+      Computes the bitwise not and of its parameters.
+
 
       Function object tied to simd::bitwise_notand
 

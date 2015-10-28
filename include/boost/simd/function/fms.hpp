@@ -44,7 +44,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Computes the fused  substract-multiply of three values.
+
 
       Function object tied to simd::fms
 

@@ -45,7 +45,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Returns the ulp distance to the nearest (distinct) element of the same type.
+
 
       Function object tied to simd::ulp
 

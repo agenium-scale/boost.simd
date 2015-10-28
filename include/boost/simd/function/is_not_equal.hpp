@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-operator
 
-    Returns True if a0 and a1 are not equal else False.
+    Returns True if x and y are not equal else False.
     Infix notation can be used with operator '!='.
 
 
@@ -28,13 +28,13 @@ namespace boost { namespace simd
     For every parameters of types respectively T0, T1:
 
     @code
-    as_logical_t<T0> r = is_not_equal(a0,a1);
+    as_logical_t<T0> r = is_not_equal(x,y);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<T0> r = a0 != a1;
+    as_logical_t<T0> r = x != y;
     @endcode
 
     @par Alias:
@@ -51,7 +51,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-operator
+
+      Returns True if x and y are not equal else False.
+      Infix notation can be used with operator '!='.
+
 
       Function object tied to simd::is_not_equal
 

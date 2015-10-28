@@ -45,7 +45,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-boolean
+      @ingroup group-callable-boolean
+
+      The function returns -x if cond is true and x otherwise.
+
 
       Function object tied to simd::negif
 

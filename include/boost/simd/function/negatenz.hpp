@@ -49,7 +49,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Returns x multiplied by the signnz of y.
+
 
       Function object tied to simd::negaten
 

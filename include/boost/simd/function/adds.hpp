@@ -47,7 +47,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Computes the saturated sum of its parameters.
+
 
       Function object tied to simd::adds
 

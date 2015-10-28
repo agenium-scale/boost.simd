@@ -20,22 +20,22 @@ namespace boost { namespace simd
     @ingroup group-swar
 
     returns a vector the elements of which are
-    those of a0 in reverse order
+    those of x in reverse order
 
     @par Semantic:
 
-    For every parameter of type T0
+    For every parameter of type T
 
     @code
-    T0 r = reverse(a0);
+    T r = reverse(x);
     @endcode
 
     is similar to:
 
     @code
-    T0 r = ;
-    for(size_t i=0;i<cardinal_of<T0>;++i)
-    r[i] = a0[cardinal_of<T0>-i-1];
+    T r = ;
+    for(size_t i=0;i<cardinal_of<T>;++i)
+    r[i] = x[cardinal_of<T>-i-1];
     @endcode
 
 
@@ -47,7 +47,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-swar
+      @ingroup group-callable-swar
+
+      returns a vector the elements of which are
+      those of x in reverse order
+
 
       Function object tied to simd::reverse
 

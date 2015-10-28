@@ -20,20 +20,20 @@ namespace boost { namespace simd
     @ingroup group-operator
 
     Returns True or False
-    according a0 and a1 are equal or not. Infix notation can be used with operator '=='
+    according x and y are equal or not. Infix notation can be used with operator '=='
 
     @par Semantic:
 
     For every parameters of types respectively T0, T1:
 
     @code
-    as_logical_t<T0> r = is_equal(a0,a1);
+    as_logical_t<T0> r = is_equal(x,y);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<T0> r = a0 == a1;
+    as_logical_t<T0> r = x == y;
     @endcode
 
     @par Alias:
@@ -50,7 +50,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-operator
+
+      Returns True or False
+      according x and y are equal or not. Infix notation can be used with operator '=='
+
 
       Function object tied to simd::is_equal
 

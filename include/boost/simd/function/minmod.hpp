@@ -45,7 +45,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Return the minimum of the two entries
+      if they have the same sign, otherwise 0
+
 
       Function object tied to simd::minmod
 

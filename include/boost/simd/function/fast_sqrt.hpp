@@ -26,7 +26,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Computes fast_sqrt value of its parameter.
+
 
       Function object tied to simd::fast_sqrt
 

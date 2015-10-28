@@ -19,18 +19,18 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True if a0 is  inf, -inf or nan, else returns False.
+    Returns True if x is  inf, -inf or nan, else returns False.
 
     @par Semantic:
 
     @code
-    logical<T> r = is_not_finite(a0);
+    as_logical_t<T> r = is_not_finite(x);
     @endcode
 
     is similar to:
 
     @code
-    logical<T> r = a0-a0 != 0;
+    as_logical_t<T> r = x-x != 0;
     @endcode
 
 
@@ -42,7 +42,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-predicates
+      @ingroup group-callable-predicates
+
+      Returns True if x is  inf, -inf or nan, else returns False.
+
 
       Function object tied to simd::is_not_finite
 

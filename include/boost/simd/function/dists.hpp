@@ -51,7 +51,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Computes the (saturated) absolute value of the difference of its parameters.
+
 
       Function object tied to simd::dists
 

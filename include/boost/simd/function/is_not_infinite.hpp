@@ -24,16 +24,16 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    logical<T> r = is_not_infinite(a0);
+    as_logical_t<T> r = is_not_infinite(x);
     @endcode
 
     is similar to:
 
     @code
     if T is floating
-      logical<T> r = (a0 !=  Inf) && (a0 != -Inf);
+      as_logical_t<T> r = (x !=  Inf) && (x != -Inf);
     else
-      logical<T> r = True;
+      as_logical_t<T> r = True;
     @endcode
 
 
@@ -45,7 +45,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-predicates
+      @ingroup group-callable-predicates
+
+      TODO Put description here
+
 
       Function object tied to simd::is_not_infinite
 

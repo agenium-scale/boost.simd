@@ -50,7 +50,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Returns the one minus the entry, saturated in the entry type.
+
 
       Function object tied to simd::oneminus
 

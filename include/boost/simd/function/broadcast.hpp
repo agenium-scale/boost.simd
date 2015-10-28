@@ -19,36 +19,39 @@ namespace boost { namespace simd
 
     @ingroup group-swar
 
-    @brief Vector element broadcast
+    Vector element broadcast
 
     Splat the Nth element of a SIMD register into a new register
 
     @par Semantic:
 
-    For every parameter of type Type and any integer @c N
+    For every parameter of type T and any integer @c N
 
     @code
-    Type r = broadcast<N>(value);
+    Type r = broadcast<N>(x);
     @endcode
 
     is similar to:
 
     @code
     for(int i=0;i<Type::static_size;++i)
-      r[i] = value[N];
+      r[i] = x[N];
     @endcode
 
     @tparam N index of the value to broadcast everywhere
 
-    @return A SIMD register full of <tt>value[N]</tt>
+    @return A SIMD register full of <tt>x[N]</tt>
 
 **/
-  template<typename T> auto broadcast(T const& x) {}
+  template<std::size_t N, typename T> auto broadcast(T const& x) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-swar
+      @ingroup group-callable-swar
+
+      Vector element broadcast
+
 
       Function object tied to simd::broadcast
 

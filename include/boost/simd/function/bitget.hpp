@@ -41,7 +41,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-bitwise
+      @ingroup group-callable-bitwise
+
+      Returns the value of th ith bit in x as an unsigned integer
+
 
       Function object tied to simd::bitget
 

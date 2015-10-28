@@ -46,7 +46,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-swar
+      @ingroup group-callable-swar
+
+      Computes a vector from a combination of the two inputs.
+
 
       Function object tied to simd::interleave_odd
 

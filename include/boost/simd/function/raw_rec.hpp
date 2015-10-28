@@ -51,7 +51,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Computes an rough approximation of the inverse of its parameter.
+
 
       Function object tied to simd::raw_rec
 

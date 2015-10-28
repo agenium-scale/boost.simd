@@ -47,7 +47,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-boolean
+      @ingroup group-callable-boolean
+
+      If cond is true returns t else returns allbits
+
 
       Function object tied to simd::if_else_allbits
 

@@ -19,18 +19,18 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True or False according a0 is even or not.
+    Returns True or False according x is even or not.
 
     @par Semantic:
 
     @code
-    logical<T> r = is_even(a0);
+    as_logical_t<T> r = is_even(x);
     @endcode
 
     is similar to:
 
     @code
-    logical<T> r = int(a0/2)*2 == a0;
+    as_logical_t<T> r = int(x/2)*2 == x;
     @endcode
 
     @par Note:
@@ -43,6 +43,7 @@ namespace boost { namespace simd
 
     Be conscious that all sufficiently great floating points values are even...
 
+    @see is_odd, is_flint
 
     @return a logical value
 
@@ -52,7 +53,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-predicates
+      @ingroup group-callable-predicates
+
+      Returns True or False according x is even or not.
+
 
       Function object tied to simd::is_even
 

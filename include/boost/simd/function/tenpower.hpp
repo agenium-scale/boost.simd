@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-arithmetic
 
-    @brief Returns \f$10^n\f$ in the floating type  corresponding to A0
+    Returns \f$10^n\f$ in the floating type  corresponding to A0
 
     @par semantic:
     For any given value n  of integral type @c I
@@ -50,7 +50,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Returns \f$10^n\f$ in the floating type  corresponding to A0
+
 
       Function object tied to simd::tenpower
 

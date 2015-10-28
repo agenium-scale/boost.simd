@@ -44,7 +44,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Computes the integer conversion of the round of its parameter.
+
 
       Function object tied to simd::iround
 

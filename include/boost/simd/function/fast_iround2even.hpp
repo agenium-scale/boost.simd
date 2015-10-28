@@ -26,7 +26,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Computes fast_iround2even value of its parameter.
+
 
       Function object tied to simd::fast_iround2even
 

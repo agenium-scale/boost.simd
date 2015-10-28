@@ -40,7 +40,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-bitwise
+      @ingroup group-callable-bitwise
+
+      Returns the bit pattern in which the only bit set is
+      the first bit set (beginning with the least significant bit) in the parameter.
+
 
       Function object tied to simd::firstbitset
 

@@ -37,7 +37,7 @@ namespace boost { namespace simd
 
     @par Note:
 
-    The return type is generally COND except in the case where COND is logical<T>. in which case
+    The return type is generally COND except in the case where COND is as_logical_t<T>. in which case
     the return type is T.
 
     @return a value of the type associated to the logical value cond
@@ -48,7 +48,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-boolean
+      @ingroup group-callable-boolean
+
+      If cond is true returns zero else returns one
+
 
       Function object tied to simd::if_zero_else_one
 

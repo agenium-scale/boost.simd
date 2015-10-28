@@ -44,7 +44,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Convert to floating point value.
+
 
       Function object tied to simd::tofloat
 

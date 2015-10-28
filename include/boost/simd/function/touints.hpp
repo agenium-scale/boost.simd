@@ -59,7 +59,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Convert to unsigned integer by saturated truncation.
+
 
       Function object tied to simd::touints
 

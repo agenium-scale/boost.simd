@@ -52,6 +52,9 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-arithmetic
 
+      Computes the arithmetic mean of its parameters.
+
+
       Function object tied to simd::average
 
       @see simd::average

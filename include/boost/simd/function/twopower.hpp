@@ -49,7 +49,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-bitwise
+      @ingroup group-callable-bitwise
+
+      Returns \f$2^n\f$ (or 0 if n is less than zero)
+
 
       Function object tied to simd::twopower
 

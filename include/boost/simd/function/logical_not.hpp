@@ -30,13 +30,13 @@ namespace boost { namespace simd
     For every parameter of type T0
 
     @code
-    as_logical_t<T0> r = logical_not(a0);
+    as_logical_t<T0> r = logical_not(x);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<T0> r =!a0;
+    as_logical_t<T0> r =!x;
     @endcode
 
     @par Alias:
@@ -48,12 +48,17 @@ namespace boost { namespace simd
     @return a value of the logical type associated to the parameter
 
 **/
-  template<typename T> auto logical_not(T const& a0) {}
+  template<typename T> auto logical_not(T const& x) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-operator
+
+      return the logical negation of the parameter,
+      i.e. True or False of the logical type associated entry type according that
+      the input is zero or non zero (False or True).
+
 
       Function object tied to simd::logical_not
 

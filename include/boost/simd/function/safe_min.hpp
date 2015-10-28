@@ -45,7 +45,11 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Returns a safe mininimal value relative to the input, i.e. a
+      value which will not underflow when divided by the input.
+
 
       Function object tied to simd::safe_min
 

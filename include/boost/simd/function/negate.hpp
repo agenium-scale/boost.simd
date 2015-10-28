@@ -46,7 +46,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Retuns the first element multiplied by the sign of the second.
+
 
       Function object tied to simd::negate
 

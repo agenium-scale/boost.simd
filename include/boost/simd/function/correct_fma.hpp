@@ -41,7 +41,7 @@ namespace boost { namespace simd
     For integer a*b+c is performed
 
     For floating points numbers, always computes the correct fused multiply add,
-    this means the computation of a0*a1+a2 with only one rounding operation.
+    this means the computation of x*y+a2 with only one rounding operation.
     On machines not possessing this hard wired capability this can be very
     expansive.
 
@@ -69,7 +69,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-arithmetic
+      @ingroup group-callable-arithmetic
+
+      Computes fused multiply/add of its parameter.
+
 
       Function object tied to simd::correct_fma
 

@@ -29,13 +29,13 @@ namespace boost { namespace simd
     For every parameters of types respectively COND, T1, T1:
 
     @code
-    T1 r = selsub(a0,a1,a2);
+    T1 r = selsub(x,y,a2);
     @endcode
 
     is similar to:
 
     @code
-    T1 r = a0 ? a1-a2 : a1;
+    T1 r = x ? y-a2 : y;
     @endcode
 
 
@@ -47,7 +47,9 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-boolean
+      @ingroup group-callable-boolean
+
+
 
       Function object tied to simd::selsub
 

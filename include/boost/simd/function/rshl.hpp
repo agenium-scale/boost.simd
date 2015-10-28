@@ -41,7 +41,12 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-bitwise
+      @ingroup group-callable-bitwise
+
+      Returns the first entry shifted left or right
+      by the absolute value of the second entry,
+      according to its sign.
+
 
       Function object tied to simd::rshl
 

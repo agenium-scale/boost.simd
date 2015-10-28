@@ -39,7 +39,10 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-ieee
+      @ingroup group-callable-ieee
+
+      Returns the smallest representable value  strictly greater than the parameter
+
 
       Function object tied to simd::next
 
