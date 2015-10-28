@@ -26,12 +26,11 @@ namespace boost { namespace simd { namespace ext
                           , bd::constant_<bd::integer_<A1>>
                           )
   {
-    using result_t = A0;
     static_assert(A1::value == 0
                  , "index out of range in scalar broadcast (!= 0)"
                  );
 
-    BOOST_FORCEINLINE result_t operator() ( A0 a0, A1 const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1) const BOOST_NOEXCEPT
     {
       return a0;
     }

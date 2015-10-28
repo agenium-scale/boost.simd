@@ -81,14 +81,12 @@ namespace boost { namespace simd { namespace ext
                           , bd::generic_<bd::integer_ <A1> >
                           )
   {
-    using result_type = void;
 
-    BOOST_FORCEINLINE
-      result_type operator() ( A0 a0, A0 a1,A0& a2, A1& a3
-                              , typename std::enable_if< std::is_same<
-                                     typename bd::as_integer_t<A0,signed>
-                                    , A1>::value>* = 0
-                             ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE void operator() ( A0 a0, A0 a1,A0& a2, A1& a3
+                                      , typename std::enable_if< std::is_same<
+                                        typename bd::as_integer_t<A0,signed>
+                                      , A1>::value>* = 0
+                                      ) const BOOST_NOEXCEPT
     {
       A0 const d = round2even(a0/a1);
 

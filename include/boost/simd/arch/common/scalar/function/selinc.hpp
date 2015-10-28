@@ -26,8 +26,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::arithmetic_<A1> >
                           )
   {
-    using result_type = A1;
-    BOOST_FORCEINLINE result_type operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A1 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
       return a0 ? a1+One<A1>() : a1;
     }

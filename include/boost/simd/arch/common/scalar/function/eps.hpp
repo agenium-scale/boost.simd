@@ -46,7 +46,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    result_t operator() ( A0 a0) const BOOST_NOEXCEPT
+    A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       typedef std::numeric_limits<A0> lim;
       const A0 a = bs::abs(a0);
@@ -62,7 +62,7 @@ namespace boost { namespace simd { namespace ext
       {
         using i_t = bd::as_integer_t<A0, unsigned>;
         i_t e1 = exponent(a)-lim::digits+1;
-        return bitwise_cast<result_t>(bitwise_cast<i_t>(One<A0>())+(e1 << Nbmantissabits<A0>()));
+        return bitwise_cast<A0>(bitwise_cast<i_t>(One<A0>())+(e1 << Nbmantissabits<A0>()));
       }
     }
   };
