@@ -36,10 +36,10 @@ namespace boost { namespace simd
         static std::integral_constant<X,-32768> value(boost::dispatch::int16_<X> const&);
 
         template<typename X>
-        static std::integral_constant<X,0x80000000> value(boost::dispatch::int32_<X> const&);
+        static std::integral_constant<X,-2147483647-1> value(boost::dispatch::int32_<X> const&);
 
         template<typename X>
-        static std::integral_constant<X,0x8000000000000000> value(boost::dispatch::int64_<X> const&);
+        static std::integral_constant<X,-9223372036854775807LL -1LL> value(boost::dispatch::int64_<X> const&);
 
         template<typename X>
         static std::integral_constant<X,X(0)> value(boost::dispatch::uint_<X> const&);
