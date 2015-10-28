@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @endcode
 
 
-    @return a value of same type as the input
+    @return a value of the integer type associated to the input
 
 **/
   template<typename T> auto bitinteger(T const& x) {}

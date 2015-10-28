@@ -26,7 +26,7 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    T r = safe_max(a0);
+    T r = safe_max(x);
     @endcode
 
     is similar to:
@@ -35,6 +35,7 @@ namespace boost { namespace simd
     T r = x ? Sqrtvalmax<T>()/abs(x) : Inf<T>();
     @endcode
 
+    @see Sqrtvalmax
 
     @return a value of same type as the input
 

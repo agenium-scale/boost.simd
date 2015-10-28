@@ -24,8 +24,10 @@ namespace boost { namespace simd
 
     @par Semantic:
 
+    For any pairs of values of common type T
+
     @code
-    T r = ulpdist(a0,a1);
+    T r = ulpdist(x,y);
     @endcode
 
     is similar to:
@@ -36,7 +38,7 @@ namespace boost { namespace simd
 
     @par Note:
 
-    If the common type is integer it is the same as @c dist
+    If the common type is integral  @c ulpdist is the same as @c dist
 
     If the common type is floating point the ulpdist is is computed,
     by the above described method.
@@ -49,11 +51,13 @@ namespace boost { namespace simd
 
     The method is the following:
 
-     - Properly normalize the two numbers by the same factor in a way
+     - if one is Nan the result is Nan,  if both are Nans the result is 0
+
+     - Else, properly normalize the two numbers by the same factor in a way
      that the largest of the two numbers exponents will be brought to
      zero
 
-      -Return the absolute difference of these normalized numbers
+     - Return the absolute difference of these normalized numbers
       divided by the rounding error Eps
 
     The roundind error is the ulp (unit in the last place) value, i.e. the
@@ -62,7 +66,8 @@ namespace boost { namespace simd
     This means \f$2^-23\f$ for float and \f$2^-52\f$ for double.
 
     \arg For instance if two floating numbers (of same type) have an ulpdist of
-    zero that means that their floating representation are identical.
+    zero that means that their floating representation are identical or they are
+    both Nans.
 
     \arg Generally equality up to 0.5 ulp is the best that one can wish beyond
     strict equality.
@@ -73,7 +78,7 @@ namespace boost { namespace simd
     its floating conversion (they are exceptions as for fully representable
     reals) the ulpdist will be around 2^26.5 (~10^8)
 
-    The ulpdist is also roughly equivalent to the number of representable
+    \arg The ulpdist is also roughly equivalent to the number of representable
     floating points values between two given floating points values.
 
     \arg  @c ulpdist(1.0,1+Eps\<double\>())==0.5
@@ -87,7 +92,7 @@ namespace boost { namespace simd
     @return a value of same type as the inputs
 
 **/
-  template<typename T> auto ulpdist(T const& x) {}
+  template<typename T> auto ulpdist(T const& x, T const& y) {}
 
   namespace functional
   {

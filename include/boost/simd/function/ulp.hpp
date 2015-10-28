@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     @ingroup group-ieee
 
-    Returns the distance to the nearest (distinct) element of the same type.
+    Returns the ulp distance to the nearest (distinct) element of the same type.
 
     @par Semantic:
 
@@ -31,8 +31,11 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T r = min(x-pred(x), next(x)-x)/Eps<T>();
+    T r = min(x-prev(x), next(x)-x)/Eps<T>();
     @endcode
+
+    @par Note
+    ulp stands for Unit in the Last Place.
 
 
     @return a value of same type as the input

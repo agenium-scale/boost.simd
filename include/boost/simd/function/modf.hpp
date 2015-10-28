@@ -20,12 +20,12 @@ namespace boost { namespace simd
 
     @ingroup group-ieee
 
-    Computes the integer and the fractionnal part of the input
+    Computes the integer and  fractional parts of the input
 
     @par Semantic:
 
     @code
-    modf(x, t, f);
+    T t = modf(x, f);
     @endcode
 
     is similar to:
@@ -35,10 +35,16 @@ namespace boost { namespace simd
     T f = frac(x);
     @endcode
 
+    The following call can also be used
 
+    @code
+    std::pair<T,T> p = modf(x);
+    @endcode
+
+    @see frac,  trunc
 
 **/
-  template<typename T> auto modf(T const& x) {}
+  template<typename T> auto modf(T const& x, T& f) {}
 
   namespace functional
   {

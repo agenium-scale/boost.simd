@@ -21,21 +21,22 @@ namespace boost { namespace simd
     @ingroup group-ieee
 
     Returns the signed mantissa of the floating input.
-    \par
-    The exponent e and signed mantissa m of a floating point entry a are related by
-    \f$a = m\times 2^e\f$, with the absolute value of m between one (included) ans two (excluded)
 
     @par Semantic:
 
     @code
-    T r = mantissa(a0);
+    T r = mantissa(x);
     @endcode
 
     is similar to:
 
     @code
-    T r = a0*pow(2, -exponent(a0));
+    T r = x*pow(2, -exponent(x));
     @endcode
+
+    @par Note
+    The exponent e and signed mantissa m of a floating point entry a are related by
+    \f$a = m\times 2^e\f$, with the absolute value of m between one (included) ans two (excluded)
 
 
     @return a value of same type as the input

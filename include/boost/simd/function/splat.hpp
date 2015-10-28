@@ -19,10 +19,10 @@ namespace boost { namespace simd
   /*!
   @ingroup group-ieee
 
-    Computes splat value of its parameter.
+    splat the value of its parameter on the Target.
 
   **/
-  template<typename T> auto splat(T const& x) {}
+  template<typename Target, typename T> auto splat(T const& x) {}
 
   namespace functional
   {

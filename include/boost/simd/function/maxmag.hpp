@@ -25,13 +25,13 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    T r = maxmag(a0,a1);
+    T r = maxmag(x,y);
     @endcode
 
     is similar to:
 
     @code
-    T r = abs(a0) > abs(a1) ? a0 : abs(a1) > abs(a0) ? a1 : max(a0, a1);
+    T r = abs(x) > abs(y) ? x : abs(y) > abs(x) ? y : max(x, y);
     @endcode
 
 

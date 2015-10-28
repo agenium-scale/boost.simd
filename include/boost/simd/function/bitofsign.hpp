@@ -20,21 +20,21 @@ namespace boost { namespace simd
 
     @ingroup group-ieee
 
-    Returns a value of the same type as the input
-    with all bits set to zero
+    Returns a value of the same type as the input with all bits set to zero
     except the bit of sign which is preserved.
+
     Returns always zero for unsigned types
 
     @par Semantic:
 
     @code
-    T r = bitofsign(a0);
+    T r = bitofsign(x);
     @endcode
 
     for signed types is similar to:
 
     @code
-    T r = a0&SignMask;
+    T r = x&SignMask;
     @endcode
 
     @see sign, signnz

@@ -26,22 +26,26 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    T r = saturate<S>(x)
+    T r = saturate<Target>(x)
     @endcode
 
     is similar to:
 
     @code
-    if (a0 > Inf<S>()) r =  T(Inf<S>());
-    else if  (a0 <  Minf<S>()) r =  T(Minf<S>());
-    else r = a0;
+    if (x > Inf<Target>()) r =  T(Inf<Target>());
+    else if  (x <  Minf<Target>()) r =  T(Minf<Target>());
+    else r = x;
     @endcode
 
+    @see Minf, Inf
+
+    Note let us recall that Valmin and Minf (resp. Valmax and Inf) are identical if Target is
+    an integer type.
 
     @return a value of same type as the inputs
 
 **/
-  template<typename T> auto saturate(T const& x) {}
+  template<typename Target, typename T> auto saturate(T const& x) {}
 
   namespace functional
   {

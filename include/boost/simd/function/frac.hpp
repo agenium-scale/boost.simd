@@ -25,15 +25,16 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    T r = frac(a0);
+    T r = frac(x);
     @endcode
 
     is similar to:
 
     @code
-    T r =  a0-trunc(a0);
+    T r =  x-trunc(x);
     @endcode
 
+    @see trunc
 
     @return a value of same type as the input
 

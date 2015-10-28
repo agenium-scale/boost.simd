@@ -27,16 +27,14 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    as_floating<T> r = bitfloating(a0);
+    as_floating<T> r = bitfloating(x);
     @endcode
 
     is similar to:
 
     @code
-    as_floating<T> r =  bitwise_cast<as_floating<T> >
-              (a0 >=0 ? a0 : Signmask<T>()-a0);
+    as_floating<T> r =  bitwise_cast<as_floating<T>>(x >=0 ? x : Signmask<T>()-x);
     @endcode
-
 
     @return a value of the floating type associated to the input
 

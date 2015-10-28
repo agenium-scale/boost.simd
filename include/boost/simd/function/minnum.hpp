@@ -25,13 +25,13 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    T r = minnum(a0,a1);
+    T r = minnum(x,a1);
     @endcode
 
     is similar to:
 
     @code
-    T r =     T r = (is_nan(a0) ? a1 : (isnan(a1) ? a0 : min(a0, a1));;
+    T r =     T r = (is_nan(x) ? a1 : (isnan(a1) ? x : min(x, y));;
     @endcode
 
     @par Alias:

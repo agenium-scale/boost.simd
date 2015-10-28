@@ -20,27 +20,32 @@ namespace boost { namespace simd
 
     @ingroup group-ieee
 
-    Returns a0 multiplied by the signnz of a1
-    The result is unspecified if a1 is NaN
+    Returns x multiplied by the signnz of y.
+
+    The result is unspecified if y is nan
 
     @par Semantic:
 
     @code
-    T r = negatenz(a0,a1);
+    T r = negatenz(x,y);
     @endcode
 
     is similar to:
 
     @code
-    T r = a0*signnz(a1)
+    T r = x*signnz(y);
     @endcode
 
+    @par Note
+    If x is non zero the result is non zero. Take care that negatenz distinguish
+    between the signs of T(0) and -T(0) if T is floating.
 
+    @see negatenz,  Mzero,  is_positive, is_negative
 
     @return a value of same type as the inputs
 
 **/
-  template<typename T> auto negatenz(T const& x) {}
+  template<typename T> auto negatenz(T const& x, T const& y) {}
 
   namespace functional
   {
