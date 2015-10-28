@@ -34,8 +34,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::integer_<A0> >
                           )
   {
-    using result_t = A0;
-    BOOST_FORCEINLINE result_t operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return a0;
     }
@@ -47,17 +46,16 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::single_<A0> >
                           )
   {
-    using result_t = A0;
-    BOOST_FORCEINLINE result_t operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
     #ifdef BOOST_SIMD_HAS_ROUNDF
       return ::roundf(a0);
     #else
-      const result_t v = simd::abs(a0);
-      if (!(v <=  Maxflint<result_t>()))
+      const A0 v = simd::abs(a0);
+      if (!(v <=  Maxflint<A0>()))
         return a0;
-      result_t c =  boost::simd::ceil(v);
-      return copysign(seldec(c-Half<result_t>() > v, c), a0);
+      A0 c =  boost::simd::ceil(v);
+      return copysign(seldec(c-Half<A0>() > v, c), a0);
     #endif
     }
   };
@@ -68,18 +66,16 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::double_<A0> >
                           )
   {
-    using result_t = A0;
-
-    BOOST_FORCEINLINE result_t operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
     #ifdef BOOST_SIMD_HAS_ROUND
       return ::round(a0);
     #else
-      const result_t v = simd::abs(a0);
-      if (!(v <=  Maxflint<result_t>()))
+      const A0 v = simd::abs(a0);
+      if (!(v <=  Maxflint<A0>()))
         return a0;
-      result_t c =  boost::simd::ceil(v);
-      return copysign(seldec(c-Half<result_t>() > v, c), a0);
+      A0 c =  boost::simd::ceil(v);
+      return copysign(seldec(c-Half<A0>() > v, c), a0);
     #endif
     }
   };
@@ -91,9 +87,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::integer_<A1> >
                           )
   {
-    using result_t = A0;
-
-    BOOST_FORCEINLINE result_t operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
       using i_t = bd::as_integer_t<A0>;
       A0 fac = tenpower(i_t(a1));

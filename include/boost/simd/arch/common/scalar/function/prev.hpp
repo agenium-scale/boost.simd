@@ -28,8 +28,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::arithmetic_<A0> >
                           )
   {
-    using result_type = A0;
-    BOOST_FORCEINLINE result_type operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return dec(a0);
     }
@@ -41,8 +40,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    using result_type = A0;
-    BOOST_FORCEINLINE result_type operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return nextafter(a0, Minf<A0>());
     }

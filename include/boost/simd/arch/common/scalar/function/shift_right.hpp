@@ -29,12 +29,10 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::integer_<A1> >
                           )
   {
-    using result_t = A0;
-
-    BOOST_FORCEINLINE result_t operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
       using itype = bd::as_integer_t<A0, signed>;
-      return bitwise_cast<result_t>(shift_right(bitwise_cast<itype>(a0),a1));
+      return bitwise_cast<A0>(shift_right(bitwise_cast<itype>(a0),a1));
     }
   };
 
@@ -45,9 +43,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::integer_<A1> >
                           )
   {
-    using result_t = A0;
-
-    BOOST_FORCEINLINE result_t operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG( assert_good_shift<A0>(a1)
                       , "shift_right: a shift is out of range"

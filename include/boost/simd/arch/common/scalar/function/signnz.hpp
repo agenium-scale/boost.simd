@@ -30,8 +30,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::signed_<A0> >
                           )
   {
-    using result_t = A0;
-    BOOST_FORCEINLINE result_t operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return (a0>>(sizeof(A0)*8-2)) | 1;
     }
@@ -43,8 +42,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::unsigned_<A0> >
                           )
   {
-    using result_t = A0;
-    BOOST_FORCEINLINE result_t operator() ( A0 const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 const&) const BOOST_NOEXCEPT
     {
       return One<A0>();
     }
@@ -56,8 +54,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    using result_t = A0;
-    BOOST_FORCEINLINE result_t operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       #ifndef BOOST_SIMD_NO_NANS
       return simd::is_nan(a0) ? a0 : bitwise_or(One<A0>(), bitwise_and(Signmask<A0>(), a0));

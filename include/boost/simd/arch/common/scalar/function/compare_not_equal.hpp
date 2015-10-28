@@ -27,10 +27,9 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::fundamental_<A0> >
                           )
   {
-    using result_t = bool; //typename meta::as_logical<A0>::type;
-    BOOST_FORCEINLINE result_t operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE logical<A0> operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
-      return result_t(a0 != a1);
+      return {a0 != a1};
     }
   };
 } } }

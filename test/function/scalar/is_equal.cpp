@@ -17,9 +17,10 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/true.hpp>
+#include <boost/simd/constant/false.hpp>
 #include <boost/simd/logical.hpp>
 #include <nontrivial.hpp>
-// TODO LOGICAL
 
 STF_CASE_TPL (" is_equal integer",  STF_INTEGRAL_TYPES)
 {
@@ -53,22 +54,21 @@ STF_CASE_TPL (" is_equal real",  STF_IEEE_TYPES)
   STF_EQUAL(is_equal(bs::Zero<T>(), bs::Zero<T>()), r_t(true));
 } // end of test for floating_
 
-// STF_CASE_TPL (" is_equal logical",  STF_SIMD_TYPES)
-// {
-//   namespace bs = boost::simd;
+STF_CASE_TPL (" is_equal logical",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
 
-//   using bs::is_equal;
-//   using r_t = decltype(is_equal(T(), T()));
-//   typedef bs::logical<T> wished_r_t;
+  using bs::is_equal;
+  using r_t = decltype(is_equal(T(), T()));
 
-//   // return type conformity test
-//   STF_TYPE_IS(r_t, wished_r_t);
+  // return type conformity test
+  STF_TYPE_IS(r_t, bs::logical<T>);
 
-//   STF_EQUAL(is_equal(bs::True< bs::logical<T> >(), bs::True< bs::logical<T> >()), r_t(true));
-//   STF_EQUAL(is_equal(bs::False< bs::logical<T> >(), bs::False< bs::logical<T> >()), r_t(true));
-//   STF_EQUAL(is_equal(bs::True< bs::logical<T> >(), bs::False< bs::logical<T> >()), r_t(false));
-//   STF_EQUAL(is_equal(bs::False< bs::logical<T> >(), bs::True< bs::logical<T> >()), r_t(false));
-// }
+  STF_EQUAL(is_equal(bs::True< bs::logical<T> >(), bs::True< bs::logical<T> >()), r_t(true));
+  STF_EQUAL(is_equal(bs::False< bs::logical<T> >(), bs::False< bs::logical<T> >()), r_t(true));
+  STF_EQUAL(is_equal(bs::True< bs::logical<T> >(), bs::False< bs::logical<T> >()), r_t(false));
+  STF_EQUAL(is_equal(bs::False< bs::logical<T> >(), bs::True< bs::logical<T> >()), r_t(false));
+}
 
 STF_CASE ( "is_equal bool")
 {

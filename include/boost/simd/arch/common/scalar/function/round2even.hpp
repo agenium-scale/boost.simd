@@ -31,16 +31,14 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    using result_t = A0;
-
-    BOOST_FORCEINLINE result_t operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       detail::enforce_precision<A0> enforcer;
 
-      const result_t v = bs::abs(a0);
-      const result_t t2n = Twotonmb<result_t>();
-      result_t d0 = (v+t2n);
-      result_t d = (d0-t2n);
+      const A0 v = bs::abs(a0);
+      const A0 t2n = Twotonmb<A0>();
+      A0 d0 = (v+t2n);
+      A0 d = (d0-t2n);
       d = (v < t2n)?d:v;
       return a0 < Zero<A0>() ? -d : d;
     }
@@ -52,9 +50,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::integer_<A0> >
                           )
   {
-    using result_t = A0;
-
-    BOOST_FORCEINLINE result_t operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return a0;
     }

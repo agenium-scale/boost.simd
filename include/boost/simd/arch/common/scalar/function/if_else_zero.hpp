@@ -41,10 +41,9 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::unspecified_<A1> >
                           )
   {
-    using result_t = A1;
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A1 operator() ( A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
     {
-      return is_nez(a0) ? a1 : Zero<result_t>();
+      return is_nez(a0) ? a1 : Zero<A1>();
     }
   };
 } } }

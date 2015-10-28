@@ -40,10 +40,10 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    using result_type = bd::as_integer_t<A0, unsigned>;
-    result_type operator() ( A0 a0) const
+    using result_t = bd::as_integer_t<A0, unsigned>;
+    result_t operator() ( A0 a0) const
     {
-      return firstbitunset(bitwise_cast<result_type>(a0));
+      return firstbitunset(bitwise_cast<result_t>(a0));
     }
   };
 } } }
