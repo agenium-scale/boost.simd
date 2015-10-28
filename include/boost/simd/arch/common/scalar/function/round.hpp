@@ -12,17 +12,17 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ROUND_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ROUND_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/constant/half.hpp>
+#include <boost/simd/constant/maxflint.hpp>
 #include <boost/simd/function/scalar/abs.hpp>
+#include <boost/simd/function/scalar/ceil.hpp>
 #include <boost/simd/function/scalar/copysign.hpp>
 #include <boost/simd/function/scalar/is_ltz.hpp>
 #include <boost/simd/function/scalar/seldec.hpp>
-#include <boost/simd/function/scalar/ceil.hpp>
 #include <boost/simd/function/scalar/tenpower.hpp>
-#include <boost/simd/constant/maxflint.hpp>
-#include <boost/simd/constant/half.hpp>
 #include <boost/simd/math.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

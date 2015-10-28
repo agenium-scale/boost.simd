@@ -12,11 +12,11 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_BITWISE_AND_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_BITWISE_AND_HPP_INCLUDED
 
-#include <boost/dispatch/hierarchy.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/function/bitwise_and.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/dispatch/hierarchy.hpp>
+#include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
 #include <type_traits>
 

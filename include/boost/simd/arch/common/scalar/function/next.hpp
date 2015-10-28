@@ -12,12 +12,12 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_NEXT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_NEXT_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/function/scalar/inc.hpp>
 #include <boost/simd/function/scalar/nextafter.hpp>
-#include <boost/simd/constant/valmax.hpp>
-#include <boost/simd/constant/inf.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

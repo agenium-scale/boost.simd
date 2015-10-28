@@ -12,25 +12,24 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_HYPOT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_HYPOT_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#ifndef BOOST_SIMD_NO_INVALIDS
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/function/scalar/is_inf.hpp>
+#include <boost/simd/function/scalar/is_nan.hpp>
+#endif
+#include <boost/simd/constant/maxexponentm1.hpp>
+#include <boost/simd/constant/minexponent.hpp>
 #include <boost/simd/function/scalar/abs.hpp>
 #include <boost/simd/function/scalar/exponent.hpp>
 #include <boost/simd/function/scalar/ldexp.hpp>
-#include <boost/simd/function/scalar/sqr.hpp>
-#include <boost/simd/function/scalar/sqrt.hpp>
 #include <boost/simd/function/scalar/max.hpp>
 #include <boost/simd/function/scalar/min.hpp>
-#include <boost/simd/constant/maxexponentm1.hpp>
-#include <boost/simd/constant/minexponent.hpp>
-#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/function/scalar/sqr.hpp>
+#include <boost/simd/function/scalar/sqrt.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/config.hpp>
 
-#ifndef BOOST_SIMD_NO_INVALIDS
-#include <boost/simd/function/scalar/is_inf.hpp>
-#include <boost/simd/function/scalar/is_nan.hpp>
-#include <boost/simd/constant/inf.hpp>
-#endif
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;

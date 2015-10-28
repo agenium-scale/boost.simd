@@ -12,14 +12,14 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_BITSET_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_BITSET_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/simd/function/bitwise_or.hpp>
-#include <boost/simd/function/dec.hpp>
 #include <boost/simd/cardinal_of.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
+#include <boost/simd/function/bitwise_or.hpp>
+#include <boost/simd/function/dec.hpp>
 #include <boost/simd/function/simd/shift_left.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

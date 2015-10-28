@@ -12,9 +12,9 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_PLUS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_PLUS_HPP_INCLUDED
 
+#include <boost/simd/math.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
-#include <boost/simd/math.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

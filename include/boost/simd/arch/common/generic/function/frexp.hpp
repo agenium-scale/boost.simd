@@ -12,11 +12,11 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_FREXP_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_FREXP_HPP_INCLUDED
 
-#include <boost/config.hpp>
+#include <boost/simd/cardinal_of.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/config.hpp>
 #include <boost/fusion/include/std_pair.hpp>
-#include <boost/simd/cardinal_of.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

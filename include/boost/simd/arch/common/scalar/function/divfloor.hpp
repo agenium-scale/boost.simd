@@ -12,15 +12,15 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_DIVFLOOR_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_DIVFLOOR_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/simd/function/scalar/divs.hpp>
-#include <boost/simd/function/scalar/iceil.hpp>
-#include <boost/simd/function/scalar/floor.hpp>
-#include <boost/simd/function/scalar/minusone.hpp>
-#include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/constant/valmax.hpp>
+#include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/constant/zero.hpp>
+#include <boost/simd/function/scalar/divs.hpp>
+#include <boost/simd/function/scalar/floor.hpp>
+#include <boost/simd/function/scalar/iceil.hpp>
+#include <boost/simd/function/scalar/minusone.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

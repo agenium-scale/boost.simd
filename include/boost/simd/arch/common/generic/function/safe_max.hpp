@@ -12,13 +12,13 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_SAFE_MAX_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_SAFE_MAX_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/sqrtvalmax.hpp>
 #include <boost/simd/function/abs.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/is_nez.hpp>
-#include <boost/simd/constant/sqrtvalmax.hpp>
-#include <boost/simd/constant/inf.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

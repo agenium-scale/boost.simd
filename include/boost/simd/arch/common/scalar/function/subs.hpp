@@ -12,12 +12,12 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_SUBS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_SUBS_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/saturate.hpp>
-#include <boost/simd/function/scalar/min.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/dispatch/meta/as_unsigned.hpp>
+#include <boost/simd/function/scalar/min.hpp>
+#include <boost/simd/function/scalar/saturate.hpp>
 #include <boost/dispatch/meta/as_signed.hpp>
+#include <boost/dispatch/meta/as_unsigned.hpp>
 #include <boost/dispatch/meta/upgrade.hpp>
 
 namespace boost { namespace simd { namespace ext

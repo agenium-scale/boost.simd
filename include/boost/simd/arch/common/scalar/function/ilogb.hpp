@@ -12,16 +12,16 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ILOGB_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ILOGB_HPP_INCLUDED
 
-#include <boost/config.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/make_dependent.hpp>
+#include <boost/simd/function/scalar/exponent.hpp>
+#include <boost/simd/function/scalar/is_gtz.hpp>
+#include <boost/simd/math.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_floating.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/scalar/is_gtz.hpp>
-#include <boost/simd/function/scalar/exponent.hpp>
-#include <boost/simd/math.hpp>
-#include <boost/simd/detail/brigand.hpp>
-#include <boost/simd/detail/make_dependent.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

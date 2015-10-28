@@ -12,20 +12,20 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_MEANOF_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_MEANOF_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/constant/half.hpp>
 #include <boost/simd/function/average.hpp>
-#include <boost/simd/function/is_finite.hpp>
-#include <boost/simd/function/if_else.hpp>
-#include <boost/simd/function/logical_and.hpp>
-#include <boost/simd/function/minus.hpp>
-#include <boost/simd/function/max.hpp>
-#include <boost/simd/function/min.hpp>
 #include <boost/simd/function/bitwise_and.hpp>
 #include <boost/simd/function/bitwise_xor.hpp>
-#include <boost/simd/function/shift_right.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_finite.hpp>
+#include <boost/simd/function/logical_and.hpp>
+#include <boost/simd/function/max.hpp>
+#include <boost/simd/function/min.hpp>
+#include <boost/simd/function/minus.hpp>
 #include <boost/simd/function/plus.hpp>
-#include <boost/simd/constant/half.hpp>
+#include <boost/simd/function/shift_right.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 //no overflow average for floating numbers
 
 namespace boost { namespace simd { namespace ext

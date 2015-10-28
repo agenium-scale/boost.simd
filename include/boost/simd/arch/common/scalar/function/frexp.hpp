@@ -12,26 +12,25 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_FREXP_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_FREXP_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/simd/function/scalar/is_invalid.hpp>
-#include <boost/simd/function/scalar/bitwise_andnot.hpp>
-#include <boost/simd/function/scalar/bitwise_and.hpp>
-#include <boost/simd/function/scalar/bitwise_or.hpp>
-#include <boost/simd/function/scalar/shr.hpp>
-#include <boost/simd/function/scalar/bitwise_cast.hpp>
+#ifndef BOOST_SIMD_NO_DENORMALS
+#include <boost/simd/constant/twotonmb.hpp>
+#include <boost/simd/function/scalar/is_eqz.hpp>
+#endif
 #include <boost/simd/constant/limitexponent.hpp>
-#include <boost/simd/constant/maxexponentm1.hpp>
 #include <boost/simd/constant/mask1frexp.hpp>
 #include <boost/simd/constant/mask2frexp.hpp>
+#include <boost/simd/constant/maxexponentm1.hpp>
 #include <boost/simd/constant/nbmantissabits.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/function/scalar/bitwise_and.hpp>
+#include <boost/simd/function/scalar/bitwise_andnot.hpp>
+#include <boost/simd/function/scalar/bitwise_cast.hpp>
+#include <boost/simd/function/scalar/bitwise_or.hpp>
+#include <boost/simd/function/scalar/is_invalid.hpp>
+#include <boost/simd/function/scalar/shr.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 
-#ifndef BOOST_SIMD_NO_DENORMALS
-#include <boost/simd/function/scalar/is_eqz.hpp>
-#include <boost/simd/constant/twotonmb.hpp>
-#endif
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;

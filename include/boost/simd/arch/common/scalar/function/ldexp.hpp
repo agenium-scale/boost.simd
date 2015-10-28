@@ -12,20 +12,18 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_LDEXP_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_LDEXP_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/simd/function/scalar/shift_left.hpp>
-#include <boost/simd/function/scalar/bitwise_cast.hpp>
-#include <boost/simd/constant/maxexponent.hpp>
-#include <boost/simd/constant/limitexponent.hpp>
-#include <boost/simd/constant/nbmantissabits.hpp>
-#include <boost/simd/constant/one.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-
 #ifndef BOOST_SIMD_NO_DENORMALS
 #include <boost/simd/constant/minexponent.hpp>
 #include <boost/simd/constant/smallestposval.hpp>
 #endif
+#include <boost/simd/constant/limitexponent.hpp>
+#include <boost/simd/constant/maxexponent.hpp>
+#include <boost/simd/constant/nbmantissabits.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/function/scalar/bitwise_cast.hpp>
+#include <boost/simd/function/scalar/shift_left.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

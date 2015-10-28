@@ -12,17 +12,17 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_NEXTPOW2_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_NEXTPOW2_HPP_INCLUDED
 
-#include <boost/config.hpp>
+#include <boost/simd/constant/half.hpp>
+#include <boost/simd/function/scalar/abs.hpp>
+#include <boost/simd/function/scalar/abss.hpp>
+#include <boost/simd/function/scalar/ffs.hpp>
+#include <boost/simd/function/scalar/frexp.hpp>
+#include <boost/simd/function/scalar/minusone.hpp>
+#include <boost/simd/function/scalar/reversebits.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/simd/constant/half.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/simd/function/scalar/abss.hpp>
-#include <boost/simd/function/scalar/frexp.hpp>
-#include <boost/simd/function/scalar/ffs.hpp>
-#include <boost/simd/function/scalar/reversebits.hpp>
-#include <boost/simd/function/scalar/minusone.hpp>
-#include <boost/simd/function/scalar/abs.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

@@ -12,18 +12,18 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_NEXTAFTER_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_NEXTAFTER_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/simd/function/scalar/oneplus.hpp>
-#include <boost/simd/function/scalar/minusone.hpp>
-#include <boost/simd/function/scalar/sign.hpp>
-#include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
-#include <boost/math/special_functions/next.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/function/scalar/minusone.hpp>
+#include <boost/simd/function/scalar/oneplus.hpp>
+#include <boost/simd/function/scalar/sign.hpp>
 #include <boost/simd/math.hpp>
-
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
+#include <boost/math/special_functions/next.hpp>
 // workaround for boost.math bug #5823
+
 namespace boost { namespace simd {
   namespace detail
   {

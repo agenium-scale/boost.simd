@@ -11,9 +11,7 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_CHOP_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_CHOP_HPP_INCLUDED
-// TODO later exp10 needed
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
+
 // #include <boost/simd/function/scalar/abs.hpp>
 // #include <boost/simd/function/scalar/exp10.hpp>
 // #include <boost/simd/function/scalar/floor.hpp>
@@ -21,8 +19,10 @@
 // #include <boost/simd/function/scalar/is_eqz.hpp>
 // #include <boost/simd/function/scalar/rec.hpp>
 // #include <boost/simd/function/scalar/selinc.hpp>
-// #include <boost/simd/function/scalar/toint.hpp>
 // #include <boost/simd/function/scalar/tofloat.hpp>
+// #include <boost/simd/function/scalar/toint.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

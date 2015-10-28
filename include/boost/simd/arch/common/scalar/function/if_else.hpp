@@ -12,14 +12,12 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IF_ELSE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IF_ELSE_HPP_INCLUDED
 
-#include <boost/dispatch/hierarchy.hpp>
-#include <boost/simd/function/if_else.hpp>
 #ifdef BOOST_SIMD_BRANCH_FREE_IF_ELSE
-#include <boost/simd/function/scalar/genmask.hpp>
 #include <boost/simd/function/scalar/bitwise_select.hpp>
+#include <boost/simd/function/scalar/genmask.hpp>
 #endif
-
 #include <boost/dispatch/function/overload.hpp>
+#include <boost/dispatch/hierarchy.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

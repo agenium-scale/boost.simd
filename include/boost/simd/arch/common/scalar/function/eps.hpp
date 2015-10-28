@@ -12,17 +12,17 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_EPS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_EPS_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/simd/constant/one.hpp>
-#include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/mindenormal.hpp>
-#include <boost/simd/function/scalar/is_not_finite.hpp>
-#include <boost/simd/function/scalar/exponent.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/nbmantissabits.hpp>
+#include <boost/simd/constant/one.hpp>
 #include <boost/simd/function/scalar/abs.hpp>
 #include <boost/simd/function/scalar/bitwise_cast.hpp>
-#include <boost/simd/constant/nbmantissabits.hpp>
+#include <boost/simd/function/scalar/exponent.hpp>
+#include <boost/simd/function/scalar/is_not_finite.hpp>
+#include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

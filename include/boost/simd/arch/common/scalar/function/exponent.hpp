@@ -12,18 +12,18 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_EXPONENT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_EXPONENT_HPP_INCLUDED
 
-#include <boost/config.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/constant/maxexponent.hpp>
+#include <boost/simd/constant/nbmantissabits.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/function/scalar/exponentbits.hpp>
+#include <boost/simd/function/scalar/if_else_zero.hpp>
+#include <boost/simd/function/scalar/is_eqz.hpp>
 #include <boost/simd/function/scalar/is_invalid.hpp>
 #include <boost/simd/function/scalar/shr.hpp>
-#include <boost/simd/function/scalar/exponentbits.hpp>
-#include <boost/simd/function/scalar/is_eqz.hpp>
-#include <boost/simd/function/scalar/if_else_zero.hpp>
-#include <boost/simd/constant/nbmantissabits.hpp>
-#include <boost/simd/constant/maxexponent.hpp>
-#include <boost/simd/constant/zero.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/math.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
