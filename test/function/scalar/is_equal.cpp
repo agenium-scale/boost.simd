@@ -18,6 +18,7 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/logical.hpp>
+#include <nontrivial.hpp>
 // TODO LOGICAL
 
 STF_CASE_TPL (" is_equal integer",  STF_INTEGRAL_TYPES)
@@ -85,3 +86,22 @@ STF_CASE ( "is_equal bool")
 }
 
 
+namespace foo
+{
+  template <class T>
+  nontrivial<T> operator ==(const nontrivial<T> & z1, const nontrivial<T> z2)
+  {
+    return perform(z1, z2);
+  }
+}
+
+STF_CASE_TPL( "Check is_equal behavior with exotic type", STF_IEEE_TYPES )
+{
+  namespace bs = boost::simd;
+  using bs::is_equal;
+  using foo::nontrivial;
+  using r_t = decltype(is_equal(nontrivial<T>(), nontrivial<T>()));
+  STF_TYPE_IS(r_t, nontrivial<T>);
+
+  STF_EQUAL(is_equal(nontrivial<T>(1, 2), nontrivial<T>(3, 4)), nontrivial<T>(4, 8));
+}

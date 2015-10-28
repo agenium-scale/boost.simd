@@ -24,6 +24,20 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+
+  BOOST_DISPATCH_OVERLOAD ( bitwise_xor_
+                          , (typename T)
+                          ,  bd::cpu_
+                          ,  bd::scalar_<bd::unspecified_<T>>
+                          ,  bd::scalar_<bd::unspecified_<T>>
+                          )
+  {
+    BOOST_FORCEINLINE auto operator()(T const& a, T const& b) const BOOST_NOEXCEPT -> decltype(a^b)
+    {
+      return a^b;
+    }
+  };
+
   BOOST_DISPATCH_OVERLOAD ( bitwise_xor_
                           , (typename A0, typename A1)
                           , bd::cpu_
