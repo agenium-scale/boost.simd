@@ -172,7 +172,6 @@ set ( SOURCES
    prev.cpp
    safe_max.cpp
    safe_min.cpp
-#   saturate_at.cpp
    saturate.cpp
    sbits.cpp
    sign.cpp
