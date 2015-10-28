@@ -17,9 +17,23 @@ namespace boost { namespace simd
   /*!
     @ingroup group-constant
 
-    Generate the constant eight.
+    Generates a value of the chosen type equals to eight.
 
-    @return The Eight constant for the proper type
+    @par Semantic:
+
+    @code
+    T r = Eight<T>();
+    @endcode
+
+    is equivalent to:
+
+    @code
+    T r = static_cast<T>(8);
+    @endcode
+
+    @return A value of type @c T equals to eight.
+
+    @see functional::eight
   **/
   template<typename T> T Eight();
 
@@ -27,9 +41,24 @@ namespace boost { namespace simd
   {
     /*!
       @ingroup group-callable-constant
-      Generate the  constant eight.
+      Generates a value of the chosen type equals to eight.
 
-      @return The Eight constant for the proper type
+      @par Semantic:
+
+      For any value @c x of type @c T:
+      @code
+      T r = simd::functional::eight( boost::simd::as(x));
+      @endcode
+
+      is equivalent to:
+
+      @code
+      T r = simd::Eight<T>();
+      @endcode
+
+      @return A value of type @c T containing the value eight.
+
+      @see Eight
     **/
     const boost::dispatch::functor<tag::eight_> eight = {};
   }

@@ -17,9 +17,24 @@ namespace boost { namespace simd
   /*!
     @ingroup group-constant
 
-    Generate the constant false.
+    Generates a value of the chosen type equals to @c false.
 
-    @return The False constant for the proper type
+    @par Semantic:
+
+    For type @c T modeling Logical
+    @code
+    T r = False<T>();
+    @endcode
+
+    is equivalent to:
+
+    @code
+    T r = false;
+    @endcode
+
+    @return A value of type @c T equals to @c false.
+
+    @see functional::false
   **/
   template<typename T> T False();
 

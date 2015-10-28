@@ -16,8 +16,8 @@ namespace boost { namespace simd
 {
   /*!
     @ingroup group-constant
-
-    Generate two times the machine epsilon.
+    Generates a value of the chosen type equals to the difference between 1 and the next
+    representable value of the chosen type.
 
     @par Semantic:
 
@@ -25,18 +25,22 @@ namespace boost { namespace simd
     T r = Eps<T>();
     @endcode
 
-    is similar to:
+    is equivalent to:
 
-    @code
-    if T is integral
-      r = T(1)
-    else if T is double
-      r =  pow(2.0, -53);
-    else if T is float
-      r =  pow(2.0f, -23);
-    @endcode
+    - if @c T is an integral type:
+      @code
+      T r = 1;
+      @endcode
 
-    @return The Eps constant for the proper type
+    - otherwise:
+      @code
+      T r = std::numeric_limits<boost::dispatch::scalar_of_t<T>>::epsilon();
+      @endcode
+
+    @return A value of type @c T equals to the difference between 1 and the next
+            representable value of the chosen type.
+
+     @see functional::eps
   **/
   template<typename T> T Eps();
 
@@ -44,9 +48,26 @@ namespace boost { namespace simd
   {
     /*!
       @ingroup group-callable-constant
-      Generate the  constant eps.
+      Generates a value of the chosen type equals to the difference between 1 and the next
+      representable value of the chosen type.
 
-      @return The Eps constant for the proper type
+      @par Semantic:
+
+      For any value @c x of type @c T:
+      @code
+      T r = simd::functional::eps( boost::simd::as(x) );
+      @endcode
+
+      is equivalent to:
+
+      @code
+      T r = simd::Eps<T>();
+      @endcode
+
+      @return A value of type @c T equals to the difference between 1 and the next
+              representable value of the chosen type.
+
+      @see Eps
     **/
     const boost::dispatch::functor<tag::eps_> eps = {};
   }
