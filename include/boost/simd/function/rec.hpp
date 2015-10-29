@@ -62,6 +62,6 @@ namespace boost { namespace simd
 #include <boost/simd/function/definition/rec.hpp>
 #include <boost/simd/arch/common/scalar/function/rec.hpp>
 #include <boost/simd/arch/common/generic/function/rec.hpp>
-//#include <boost/simd/arch/common/function/simd/rec.hpp>
+#include <boost/simd/function/simd/rec.hpp>
 
 #endif

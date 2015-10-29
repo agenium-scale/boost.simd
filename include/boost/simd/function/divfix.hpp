@@ -71,6 +71,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/divfix.hpp>
 #include <boost/simd/arch/common/scalar/function/divfix.hpp>
-//#include <boost/simd/arch/common/function/simd/divfix.hpp>
+#include <boost/simd/function/simd/divfix.hpp>
 
 #endif

@@ -62,6 +62,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/safe_min.hpp>
 #include <boost/simd/arch/common/generic/function/safe_min.hpp>
-//#include <boost/simd/arch/common/function/simd/safe_min.hpp>
+#include <boost/simd/function/simd/safe_min.hpp>
 
 #endif

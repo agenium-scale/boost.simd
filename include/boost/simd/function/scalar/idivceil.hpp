@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_IDIVCEIL_HPP_INCLUDED
 
 #include <boost/simd/function/definition/idivceil.hpp>
-#include <boost/simd/arch/common/scalar/function/idivceil.hpp>
+#include <boost/simd/arch/common/generic/function/idivceil.hpp>
 
 #endif

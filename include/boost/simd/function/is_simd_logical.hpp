@@ -61,6 +61,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/is_simd_logical.hpp>
 #include <boost/simd/arch/common/scalar/function/is_simd_logical.hpp>
-//#include <boost/simd/arch/common/function/simd/is_simd_logical.hpp>
+#include <boost/simd/function/simd/is_simd_logical.hpp>
 
 #endif

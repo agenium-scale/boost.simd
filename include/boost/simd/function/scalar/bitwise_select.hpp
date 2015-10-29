@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_BITWISE_SELECT_HPP_INCLUDED
 
 #include <boost/simd/function/definition/bitwise_select.hpp>
-#include <boost/simd/arch/common/scalar/function/bitwise_select.hpp>
+#include <boost/simd/arch/common/generic/function/bitwise_select.hpp>
 
 #endif

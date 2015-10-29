@@ -57,6 +57,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/firstbitunset.hpp>
 #include <boost/simd/arch/common/scalar/function/firstbitunset.hpp>
-//#include <boost/simd/arch/common/function/simd/firstbitunset.hpp>
+#include <boost/simd/function/simd/firstbitunset.hpp>
 
 #endif

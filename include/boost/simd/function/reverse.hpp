@@ -64,6 +64,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/reverse.hpp>
 #include <boost/simd/arch/common/scalar/function/reverse.hpp>
-//#include <boost/simd/arch/common/function/simd/reverse.hpp>
+#include <boost/simd/function/simd/reverse.hpp>
 
 #endif

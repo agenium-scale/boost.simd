@@ -41,6 +41,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/splatted_prod.hpp>
 #include <boost/simd/arch/common/scalar/function/splatted_prod.hpp>
-//#include <boost/simd/arch/common/function/simd/splatted_prod.hpp>
+#include <boost/simd/function/simd/splatted_prod.hpp>
 
 #endif

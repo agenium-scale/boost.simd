@@ -50,6 +50,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/chop.hpp>
 #include <boost/simd/arch/common/scalar/function/chop.hpp>
-//#include <boost/simd/arch/common/function/simd/chop.hpp>
+#include <boost/simd/function/simd/chop.hpp>
 
 #endif

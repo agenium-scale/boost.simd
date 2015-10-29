@@ -71,6 +71,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/bitwise_andnot.hpp>
 #include <boost/simd/arch/common/scalar/function/bitwise_andnot.hpp>
-//#include <boost/simd/arch/common/function/simd/bitwise_andnot.hpp>
+#include <boost/simd/function/simd/bitwise_andnot.hpp>
 
 #endif

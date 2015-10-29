@@ -67,6 +67,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/is_greater_equal.hpp>
 #include <boost/simd/arch/common/scalar/function/is_greater_equal.hpp>
-//#include <boost/simd/arch/common/function/simd/is_greater_equal.hpp>
+#include <boost/simd/function/simd/is_greater_equal.hpp>
 
 #endif

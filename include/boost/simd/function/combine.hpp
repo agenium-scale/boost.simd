@@ -41,6 +41,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/combine.hpp>
 #include <boost/simd/arch/common/scalar/function/combine.hpp>
-//#include <boost/simd/arch/common/function/simd/combine.hpp>
+#include <boost/simd/function/simd/combine.hpp>
 
 #endif

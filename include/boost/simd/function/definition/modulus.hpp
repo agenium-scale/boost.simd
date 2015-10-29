@@ -36,7 +36,7 @@ namespace boost { namespace simd
 #endif
   namespace tag
   {
-    using modulus_ = boos::simd::abs_;
+    using modulus_ = abs_;
   }
 
   namespace functional

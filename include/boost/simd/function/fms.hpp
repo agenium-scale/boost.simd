@@ -60,6 +60,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/fms.hpp>
 #include <boost/simd/arch/common/generic/function/fms.hpp>
-//#include <boost/simd/arch/common/function/simd/fms.hpp>
+#include <boost/simd/function/simd/fms.hpp>
 
 #endif

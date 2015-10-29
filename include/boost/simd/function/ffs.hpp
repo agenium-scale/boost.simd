@@ -59,6 +59,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/ffs.hpp>
 #include <boost/simd/arch/common/scalar/function/ffs.hpp>
-//#include <boost/simd/arch/common/function/simd/ffs.hpp>
+#include <boost/simd/function/simd/ffs.hpp>
 
 #endif

@@ -65,6 +65,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/twopower.hpp>
 #include <boost/simd/arch/common/scalar/function/twopower.hpp>
-//#include <boost/simd/arch/common/function/simd/twopower.hpp>
+#include <boost/simd/function/simd/twopower.hpp>
 
 #endif

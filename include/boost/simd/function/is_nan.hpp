@@ -58,6 +58,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/is_nan.hpp>
 #include <boost/simd/arch/common/scalar/function/is_nan.hpp>
-//#include <boost/simd/arch/common/function/simd/is_nan.hpp>
+#include <boost/simd/function/simd/is_nan.hpp>
 
 #endif

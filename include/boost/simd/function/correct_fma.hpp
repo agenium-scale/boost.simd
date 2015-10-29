@@ -85,6 +85,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/correct_fma.hpp>
 #include <boost/simd/arch/common/scalar/function/correct_fma.hpp>
-//#include <boost/simd/arch/common/function/simd/correct_fma.hpp>
+#include <boost/simd/function/simd/correct_fma.hpp>
 
 #endif

@@ -62,6 +62,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/sign.hpp>
 #include <boost/simd/arch/common/scalar/function/sign.hpp>
-//#include <boost/simd/arch/common/function/simd/sign.hpp>
+#include <boost/simd/function/simd/sign.hpp>
 
 #endif

@@ -47,6 +47,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/split_multiplies.hpp>
 #include <boost/simd/arch/common/scalar/function/split_multiplies.hpp>
-//#include <boost/simd/arch/common/function/simd/split_multiplies.hpp>
+#include <boost/simd/function/simd/split_multiplies.hpp>
 
 #endif

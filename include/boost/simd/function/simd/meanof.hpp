@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_MEANOF_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_MEANOF_INCLUDED
 
-#include <boost/simd/function/generic/meanof.hpp>
+#include <boost/simd/function/scalar/meanof.hpp>
 //#include <boost/simd/arch/common/function/simd/meanof.hpp>
 
 #endif

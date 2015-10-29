@@ -64,6 +64,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/idivceil.hpp>
 #include <boost/simd/arch/common/generic/function/idivceil.hpp>
-//#include <boost/simd/arch/common/function/simd/idivceil.hpp>
+#include <boost/simd/function/simd/idivceil.hpp>
 
 #endif

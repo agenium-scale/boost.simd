@@ -65,6 +65,6 @@ z    **/
 
 #include <boost/simd/function/definition/negatenz.hpp>
 #include <boost/simd/arch/common/generic/function/negatenz.hpp>
-//#include <boost/simd/arch/common/function/simd/negatenz.hpp>
+#include <boost/simd/function/simd/negatenz.hpp>
 
 #endif

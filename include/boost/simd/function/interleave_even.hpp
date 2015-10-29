@@ -62,6 +62,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/interleave_even.hpp>
 #include <boost/simd/arch/common/scalar/function/interleave_even.hpp>
-//#include <boost/simd/arch/common/function/simd/interleave_even.hpp>
+#include <boost/simd/function/simd/interleave_even.hpp>
 
 #endif

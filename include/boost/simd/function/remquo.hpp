@@ -70,6 +70,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/remquo.hpp>
 #include <boost/simd/arch/common/scalar/function/remquo.hpp>
-//#include <boost/simd/arch/common/function/simd/remquo.hpp>
+#include <boost/simd/function/simd/remquo.hpp>
 
 #endif

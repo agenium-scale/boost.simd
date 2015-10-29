@@ -60,6 +60,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/rol.hpp>
 #include <boost/simd/arch/common/generic/function/rol.hpp>
-//#include <boost/simd/arch/common/function/simd/rol.hpp>
+#include <boost/simd/function/simd/rol.hpp>
 
 #endif

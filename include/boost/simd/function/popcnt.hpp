@@ -56,6 +56,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/popcnt.hpp>
 #include <boost/simd/arch/common/scalar/function/popcnt.hpp>
-//#include <boost/simd/arch/common/function/simd/popcnt.hpp>
+#include <boost/simd/function/simd/popcnt.hpp>
 
 #endif

@@ -62,6 +62,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/seladd.hpp>
 #include <boost/simd/arch/common/scalar/function/seladd.hpp>
-//#include <boost/simd/arch/common/function/simd/seladd.hpp>
+#include <boost/simd/function/simd/seladd.hpp>
 
 #endif

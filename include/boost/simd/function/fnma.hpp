@@ -60,6 +60,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/fnma.hpp>
 #include <boost/simd/arch/common/generic/function/fnma.hpp>
-//#include <boost/simd/arch/common/function/simd/fnma.hpp>
+#include <boost/simd/function/simd/fnma.hpp>
 
 #endif

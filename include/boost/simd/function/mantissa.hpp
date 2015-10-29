@@ -62,6 +62,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/mantissa.hpp>
 #include <boost/simd/arch/common/scalar/function/mantissa.hpp>
-//#include <boost/simd/arch/common/function/simd/mantissa.hpp>
+#include <boost/simd/function/simd/mantissa.hpp>
 
 #endif

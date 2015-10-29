@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_FAST_DIVIDES_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_FAST_DIVIDES_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_MODULUS_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_MODULUS_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
@@ -18,30 +18,31 @@ namespace boost { namespace simd
   /*!
   @ingroup group-arithmetic
 
-    Computes fast_divides value of its parameter.
+    Computes the abssolute value of its parameter.
 
+    This is a convenient alias of abs
   **/
-  template<typename T> auto fast_divides(T const& x) {}
+  template<typename T> auto modulus(T const& x) {}
 
   namespace functional
   {
     /*!
       @ingroup group-callable-arithmetic
 
-      Computes fast_divides value of its parameter.
+      Computes the modulusolute value of its parameter.
 
 
-      Function object tied to simd::fast_divides
+      Function object tied to simd::modulus
 
-      @see simd::fast_divides
+      @see simd::modulus
     **/
-    const boost::dispatch::functor<tag::fast_divides_> fast_divides = {};
+    const boost::dispatch::functor<tag::modulus_> modulus = {};
   }
 } }
 #endif
 
-#include <boost/simd/function/definition/fast_divides.hpp>
-#include <boost/simd/arch/common/scalar/function/fast_divides.hpp>
-#include <boost/simd/function/simd/fast_divides.hpp>
+#include <boost/simd/function/definition/modulus.hpp>
+#include <boost/simd/arch/common/scalar/function/modulus.hpp>
+#include <boost/simd/function/simd/modulus.hpp>
 
 #endif

@@ -73,6 +73,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/compare_not_equal.hpp>
 #include <boost/simd/arch/common/scalar/function/compare_not_equal.hpp>
-//#include <boost/simd/arch/common/function/simd/compare_not_equal.hpp>
+#include <boost/simd/function/simd/compare_not_equal.hpp>
 
 #endif

@@ -66,6 +66,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/cumprod.hpp>
 #include <boost/simd/arch/common/scalar/function/cumprod.hpp>
-//#include <boost/simd/arch/common/function/simd/cumprod.hpp>
+#include <boost/simd/function/simd/cumprod.hpp>
 
 #endif

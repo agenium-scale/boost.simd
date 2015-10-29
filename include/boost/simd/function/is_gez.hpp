@@ -58,6 +58,6 @@ z    **/
 
 #include <boost/simd/function/definition/is_gez.hpp>
 #include <boost/simd/arch/common/scalar/function/is_gez.hpp>
-//#include <boost/simd/arch/common/function/simd/is_gez.hpp>
+#include <boost/simd/function/simd/is_gez.hpp>
 
 #endif

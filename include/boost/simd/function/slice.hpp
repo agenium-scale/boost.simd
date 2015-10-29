@@ -47,6 +47,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/slice.hpp>
 #include <boost/simd/arch/common/scalar/function/slice.hpp>
-//#include <boost/simd/arch/common/function/simd/slice.hpp>
+#include <boost/simd/function/simd/slice.hpp>
 
 #endif

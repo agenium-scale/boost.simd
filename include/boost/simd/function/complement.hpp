@@ -67,6 +67,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/complement.hpp>
 #include <boost/simd/arch/common/scalar/function/complement.hpp>
-//#include <boost/simd/arch/common/function/simd/complement.hpp>
+#include <boost/simd/function/simd/complement.hpp>
 
 #endif

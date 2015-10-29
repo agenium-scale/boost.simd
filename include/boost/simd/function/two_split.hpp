@@ -52,6 +52,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/two_split.hpp>
 #include <boost/simd/arch/common/generic/function/two_split.hpp>
-//#include <boost/simd/arch/common/function/simd/two_split.hpp>
+#include <boost/simd/function/simd/two_split.hpp>
 
 #endif

@@ -60,6 +60,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/iround.hpp>
 #include <boost/simd/arch/common/generic/function/iround.hpp>
-//#include <boost/simd/arch/common/function/simd/iround.hpp>
+#include <boost/simd/function/simd/iround.hpp>
 
 #endif

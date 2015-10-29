@@ -66,6 +66,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/is_not_less_equal.hpp>
 #include <boost/simd/arch/common/scalar/function/is_not_less_equal.hpp>
-//#include <boost/simd/arch/common/function/simd/is_not_less_equal.hpp>
+#include <boost/simd/function/simd/is_not_less_equal.hpp>
 
 #endif

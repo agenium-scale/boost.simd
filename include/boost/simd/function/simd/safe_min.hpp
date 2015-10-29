@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_SAFE_MIN_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_SAFE_MIN_INCLUDED
 
-#include <boost/simd/function/generic/safe_min.hpp>
+#include <boost/simd/function/scalar/safe_min.hpp>
 //#include <boost/simd/arch/common/function/simd/safe_min.hpp>
 
 #endif

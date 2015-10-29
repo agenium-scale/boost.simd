@@ -61,6 +61,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/deinterleave_first.hpp>
 #include <boost/simd/arch/common/scalar/function/deinterleave_first.hpp>
-//#include <boost/simd/arch/common/function/simd/deinterleave_first.hpp>
+#include <boost/simd/function/simd/deinterleave_first.hpp>
 
 #endif

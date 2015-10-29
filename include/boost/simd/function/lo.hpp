@@ -60,6 +60,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/lo.hpp>
 #include <boost/simd/arch/common/generic/function/lo.hpp>
-//#include <boost/simd/arch/common/function/simd/lo.hpp>
+#include <boost/simd/function/simd/lo.hpp>
 
 #endif

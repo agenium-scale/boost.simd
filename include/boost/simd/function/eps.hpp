@@ -65,6 +65,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/eps.hpp>
 #include <boost/simd/arch/common/scalar/function/eps.hpp>
-//#include <boost/simd/arch/common/function/simd/eps.hpp>
+#include <boost/simd/function/simd/eps.hpp>
 
 #endif

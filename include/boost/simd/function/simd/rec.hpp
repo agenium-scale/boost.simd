@@ -13,7 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_REC_INCLUDED
 
 #include <boost/simd/function/scalar/rec.hpp>
-#include <boost/simd/function/generic/rec.hpp>
 //#include <boost/simd/arch/common/function/simd/rec.hpp>
 
 #endif

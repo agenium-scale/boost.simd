@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_TWO_PROD_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_TWO_PROD_INCLUDED
 
-#include <boost/simd/function/generic/two_prod.hpp>
+#include <boost/simd/function/scalar/two_prod.hpp>
 //#include <boost/simd/arch/common/function/simd/two_prod.hpp>
 
 #endif

@@ -69,6 +69,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/logical_notand.hpp>
 #include <boost/simd/arch/common/scalar/function/logical_notand.hpp>
-//#include <boost/simd/arch/common/function/simd/logical_notand.hpp>
+#include <boost/simd/function/simd/logical_notand.hpp>
 
 #endif

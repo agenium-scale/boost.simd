@@ -64,8 +64,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/average.hpp>
-#include <boost/simd/arch/common/generic/function/average.hpp>
-//#include <boost/simd/arch/common/function/simd/average.hpp>
+#include <boost/simd/function/scalar/average.hpp>
+#include <boost/simd/function/simd/average.hpp>
 
 #endif

@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_IDIVROUND_HPP_INCLUDED
 
 #include <boost/simd/function/definition/idivround.hpp>
-#include <boost/simd/arch/common/scalar/function/idivround.hpp>
+#include <boost/simd/arch/common/generic/function/idivround.hpp>
 
 #endif

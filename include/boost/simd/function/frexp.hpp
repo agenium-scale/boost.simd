@@ -73,6 +73,6 @@ namespace boost { namespace simd
 #include <boost/simd/function/definition/frexp.hpp>
 #include <boost/simd/arch/common/scalar/function/frexp.hpp>
 #include <boost/simd/arch/common/generic/function/frexp.hpp>
-//#include <boost/simd/arch/common/function/simd/frexp.hpp>
+#include <boost/simd/function/simd/frexp.hpp>
 
 #endif

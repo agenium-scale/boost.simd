@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_IROUND2EVEN_HPP_INCLUDED
 
 #include <boost/simd/function/definition/iround2even.hpp>
-#include <boost/simd/arch/common/scalar/function/iround2even.hpp>
+#include <boost/simd/arch/common/generic/function/iround2even.hpp>
 
 #endif

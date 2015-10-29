@@ -62,6 +62,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/cummin.hpp>
 #include <boost/simd/arch/common/scalar/function/cummin.hpp>
-//#include <boost/simd/arch/common/function/simd/cummin.hpp>
+#include <boost/simd/function/simd/cummin.hpp>
 
 #endif

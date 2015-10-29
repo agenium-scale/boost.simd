@@ -60,6 +60,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/inbtrue.hpp>
 #include <boost/simd/arch/common/scalar/function/inbtrue.hpp>
-//#include <boost/simd/arch/common/function/simd/inbtrue.hpp>
+#include <boost/simd/function/simd/inbtrue.hpp>
 
 #endif

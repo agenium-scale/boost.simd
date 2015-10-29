@@ -56,6 +56,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/two_prod.hpp>
 #include <boost/simd/arch/common/generic/function/two_prod.hpp>
-//#include <boost/simd/arch/common/function/simd/two_prod.hpp>
+#include <boost/simd/function/simd/two_prod.hpp>
 
 #endif

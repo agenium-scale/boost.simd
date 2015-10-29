@@ -60,6 +60,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/rror.hpp>
 #include <boost/simd/arch/common/scalar/function/rror.hpp>
-//#include <boost/simd/arch/common/function/simd/rror.hpp>
+#include <boost/simd/function/simd/rror.hpp>
 
 #endif

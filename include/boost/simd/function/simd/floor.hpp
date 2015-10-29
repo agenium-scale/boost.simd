@@ -13,7 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_FLOOR_INCLUDED
 
 #include <boost/simd/function/scalar/floor.hpp>
-#include <boost/simd/function/scalar/generic.hpp>
 //#include <boost/simd/arch/common/function/simd/floor.hpp>
 
 #endif

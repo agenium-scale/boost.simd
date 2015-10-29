@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_ARG_HPP_INCLUDED
 
 #include <boost/simd/function/definition/arg.hpp>
-#include <boost/simd/arch/common/scalar/function/arg.hpp>
+#include <boost/simd/arch/common/generic/function/arg.hpp>
 
 #endif

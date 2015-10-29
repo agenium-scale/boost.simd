@@ -13,7 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IS_IMAG_INCLUDED
 
 #include <boost/simd/function/scalar/is_imag.hpp>
-#include <boost/simd/function/generic/is_imag.hpp>
 //#include <boost/simd/arch/common/function/simd/is_imag.hpp>
 
 #endif

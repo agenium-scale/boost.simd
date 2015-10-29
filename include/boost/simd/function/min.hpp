@@ -60,6 +60,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/min.hpp>
 #include <boost/simd/arch/common/scalar/function/min.hpp>
-//#include <boost/simd/arch/common/function/simd/min.hpp>
+#include <boost/simd/function/simd/min.hpp>
 
 #endif

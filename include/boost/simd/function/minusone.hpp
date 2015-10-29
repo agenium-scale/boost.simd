@@ -62,6 +62,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/minusone.hpp>
 #include <boost/simd/arch/common/scalar/function/minusone.hpp>
-//#include <boost/simd/arch/common/function/simd/minusone.hpp>
+#include <boost/simd/function/simd/minusone.hpp>
 
 #endif

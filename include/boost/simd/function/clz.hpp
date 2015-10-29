@@ -55,6 +55,6 @@ z    **/
 
 #include <boost/simd/function/definition/clz.hpp>
 #include <boost/simd/arch/common/scalar/function/clz.hpp>
-//#include <boost/simd/arch/common/function/simd/clz.hpp>
+#include <boost/simd/function/simd/clz.hpp>
 
 #endif

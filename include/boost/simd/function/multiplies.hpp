@@ -56,6 +56,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/multiplies.hpp>
 #include <boost/simd/arch/common/scalar/function/multiplies.hpp>
-//#include <boost/simd/arch/common/function/simd/multiplies.hpp>
+#include <boost/simd/function/simd/multiplies.hpp>
 
 #endif

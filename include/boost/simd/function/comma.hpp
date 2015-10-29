@@ -61,6 +61,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/comma.hpp>
 #include <boost/simd/arch/common/generic/function/comma.hpp>
-//#include <boost/simd/arch/common/function/simd/comma.hpp>
+#include <boost/simd/function/simd/comma.hpp>
 
 #endif

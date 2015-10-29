@@ -63,6 +63,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/shr.hpp>
 #include <boost/simd/arch/common/scalar/function/shr.hpp>
-//#include <boost/simd/arch/common/function/simd/shr.hpp>
+#include <boost/simd/function/simd/shr.hpp>
 
 #endif

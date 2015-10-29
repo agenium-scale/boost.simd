@@ -77,6 +77,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/trunc.hpp>
 #include <boost/simd/arch/common/scalar/function/trunc.hpp>
-//#include <boost/simd/arch/common/function/simd/trunc.hpp>
+#include <boost/simd/function/simd/trunc.hpp>
 
 #endif

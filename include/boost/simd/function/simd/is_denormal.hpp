@@ -13,7 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IS_DENORMAL_INCLUDED
 
 #include <boost/simd/function/scalar/is_denormal.hpp>
-#include <boost/simd/function/generic/is_denormal.hpp>
 //#include <boost/simd/arch/common/function/simd/is_denormal.hpp>
 
 #endif

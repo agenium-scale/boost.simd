@@ -66,6 +66,6 @@ z    **/
 
 #include <boost/simd/function/definition/signnz.hpp>
 #include <boost/simd/arch/common/scalar/function/signnz.hpp>
-//#include <boost/simd/arch/common/function/simd/signnz.hpp>
+#include <boost/simd/function/simd/signnz.hpp>
 
 #endif

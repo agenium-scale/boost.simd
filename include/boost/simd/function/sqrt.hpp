@@ -56,6 +56,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/sqrt.hpp>
 #include <boost/simd/arch/common/scalar/function/sqrt.hpp>
-//#include <boost/simd/arch/common/function/simd/sqrt.hpp>
+#include <boost/simd/function/simd/sqrt.hpp>
 
 #endif

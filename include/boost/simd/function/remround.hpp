@@ -63,6 +63,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/remround.hpp>
 #include <boost/simd/arch/common/generic/function/remround.hpp>
-//#include <boost/simd/arch/common/function/simd/remround.hpp>
+#include <boost/simd/function/simd/remround.hpp>
 
 #endif

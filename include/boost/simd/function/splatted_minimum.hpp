@@ -62,6 +62,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/splatted_minimum.hpp>
 #include <boost/simd/arch/common/scalar/function/splatted_minimum.hpp>
-//#include <boost/simd/arch/common/function/simd/splatted_minimum.hpp>
+#include <boost/simd/function/simd/splatted_minimum.hpp>
 
 #endif

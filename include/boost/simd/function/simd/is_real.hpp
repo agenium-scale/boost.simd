@@ -13,7 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IS_REAL_INCLUDED
 
 #include <boost/simd/function/scalar/is_real.hpp>
-#include <boost/simd/function/generic/is_real.hpp>
 //#include <boost/simd/arch/common/function/simd/is_real.hpp>
 
 #endif

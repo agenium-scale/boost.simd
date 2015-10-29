@@ -57,6 +57,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/successor.hpp>
 #include <boost/simd/arch/common/scalar/function/successor.hpp>
-//#include <boost/simd/arch/common/function/simd/successor.hpp>
+#include <boost/simd/function/simd/successor.hpp>
 
 #endif

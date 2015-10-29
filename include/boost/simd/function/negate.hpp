@@ -62,6 +62,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/negate.hpp>
 #include <boost/simd/arch/common/scalar/function/negate.hpp>
-//#include <boost/simd/arch/common/function/simd/negate.hpp>
+#include <boost/simd/function/simd/negate.hpp>
 
 #endif
