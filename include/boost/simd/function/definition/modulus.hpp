@@ -34,11 +34,16 @@ namespace boost { namespace simd
   **/
   template<typename T> auto modulus(T const& x);
 #endif
+  namespace tag
+  {
+    using modulus_ = boos::simd::abs_;
+  }
+
   namespace functional
   {
-    BOOST_DISPATCH_CALLABLE_DEFINITION(tag::abs_,modulus);
+    BOOST_DISPATCH_CALLABLE_DEFINITION(tag::modulus_,modulus);
   }
-  BOOST_DISPATCH_FUNCTION_DEFINITION(tag::abs_,modulus);
+  BOOST_DISPATCH_FUNCTION_DEFINITION(tag::modulus_,modulus);
 } }
 
 #endif

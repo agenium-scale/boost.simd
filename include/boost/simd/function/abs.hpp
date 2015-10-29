@@ -76,8 +76,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/abs.hpp>
-#include <boost/simd/arch/common/scalar/function/abs.hpp>
-//#include <boost/simd/arch/common/function/simd/abs.hpp>
+#include <boost/simd/function/scalar/abs.hpp>
+#include <boost/simd/function/simd/abs.hpp>
 
 #endif
