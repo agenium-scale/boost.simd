@@ -72,4 +72,4 @@ after_test:
 # to run your custom scripts instead of automatic tests
 test_script:
  - cd c:\sources\boost.simd\build
- - cmd: ctest -C Debug
+ - cmd: ctest -C Debug -D Experimental
