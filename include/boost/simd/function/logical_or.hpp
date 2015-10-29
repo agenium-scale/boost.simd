@@ -71,6 +71,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/logical_or.hpp>
 #include <boost/simd/arch/common/scalar/function/logical_or.hpp>
-//#include <boost/simd/arch/common/function/simd/logical_or.hpp>
+#include <boost/simd/function/simd/logical_or.hpp>
 
 #endif

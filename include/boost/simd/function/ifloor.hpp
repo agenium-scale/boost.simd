@@ -64,6 +64,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/ifloor.hpp>
 #include <boost/simd/arch/common/generic/function/ifloor.hpp>
-//#include <boost/simd/arch/common/function/simd/ifloor.hpp>
+#include <boost/simd/function/simd/ifloor.hpp>
 
 #endif

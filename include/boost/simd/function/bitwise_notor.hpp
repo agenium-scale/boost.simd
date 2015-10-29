@@ -73,6 +73,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/bitwise_notor.hpp>
 #include <boost/simd/arch/common/scalar/function/bitwise_notor.hpp>
-//#include <boost/simd/arch/common/function/simd/bitwise_notor.hpp>
+#include <boost/simd/function/simd/bitwise_notor.hpp>
 
 #endif

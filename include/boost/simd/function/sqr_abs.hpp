@@ -65,6 +65,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/sqr_abs.hpp>
 #include <boost/simd/arch/common/generic/function/sqr_abs.hpp>
-//#include <boost/simd/arch/common/function/simd/sqr_abs.hpp>
+#include <boost/simd/function/simd/sqr_abs.hpp>
 
 #endif

@@ -69,7 +69,7 @@ namespace boost { namespace simd
 #endif
 
 #include <boost/simd/function/scalar/if_else.hpp>
-//#include <boost/simd/arch/common/function/simd/if_else.hpp>
+#include <boost/simd/function/simd/if_else.hpp>
 
 
 #endif

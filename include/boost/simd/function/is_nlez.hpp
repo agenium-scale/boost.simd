@@ -65,6 +65,6 @@ z    **/
 
 #include <boost/simd/function/definition/is_nlez.hpp>
 #include <boost/simd/arch/common/scalar/function/is_nlez.hpp>
-//#include <boost/simd/arch/common/function/simd/is_nlez.hpp>
+#include <boost/simd/function/simd/is_nlez.hpp>
 
 #endif

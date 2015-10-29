@@ -66,6 +66,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/subs.hpp>
 #include <boost/simd/arch/common/scalar/function/subs.hpp>
-//#include <boost/simd/arch/common/function/simd/subs.hpp>
+#include <boost/simd/function/simd/subs.hpp>
 
 #endif

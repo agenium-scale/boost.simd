@@ -67,6 +67,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/genmaskc.hpp>
 #include <boost/simd/arch/common/scalar/function/genmaskc.hpp>
-//#include <boost/simd/arch/common/function/simd/genmaskc.hpp>
+#include <boost/simd/function/simd/genmaskc.hpp>
 
 #endif

@@ -65,6 +65,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/round2even.hpp>
 #include <boost/simd/arch/common/scalar/function/round2even.hpp>
-//#include <boost/simd/arch/common/function/simd/round2even.hpp>
+#include <boost/simd/function/simd/round2even.hpp>
 
 #endif

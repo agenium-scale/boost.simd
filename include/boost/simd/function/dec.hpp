@@ -61,6 +61,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/dec.hpp>
 #include <boost/simd/arch/common/generic/function/dec.hpp>
-//#include <boost/simd/arch/common/function/simd/dec.hpp>
+#include <boost/simd/function/simd/dec.hpp>
 
 #endif

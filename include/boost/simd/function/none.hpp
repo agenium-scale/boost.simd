@@ -61,6 +61,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/none.hpp>
 #include <boost/simd/arch/common/scalar/function/none.hpp>
-//#include <boost/simd/arch/common/function/simd/none.hpp>
+#include <boost/simd/function/simd/none.hpp>
 
 #endif

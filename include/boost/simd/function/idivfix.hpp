@@ -65,6 +65,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/idivfix.hpp>
 #include <boost/simd/arch/common/generic/function/idivfix.hpp>
-//#include <boost/simd/arch/common/function/simd/idivfix.hpp>
+#include <boost/simd/function/simd/idivfix.hpp>
 
 #endif

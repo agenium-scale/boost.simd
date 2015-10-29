@@ -14,6 +14,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_MOD_HPP_INCLUDED
 
 #include <boost/simd/function/definition/mod.hpp>
-#include <boost/simd/arch/common/scalar/function/mod.hpp>
+#include <boost/simd/arch/common/generic/function/mod.hpp>
 
 #endif

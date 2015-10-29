@@ -15,6 +15,6 @@
 
 #include <boost/simd/function/definition/is_imag.hpp>
 #include <boost/simd/arch/common/scalar/function/is_imag.hpp>
-éinclude <boost/simd/arch/common/generic/function/is_imag.hpp>
+#include <boost/simd/arch/common/generic/function/is_imag.hpp>
 
 #endif

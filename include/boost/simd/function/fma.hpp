@@ -79,6 +79,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/fma.hpp>
 #include <boost/simd/arch/common/generic/function/fma.hpp>
-//#include <boost/simd/arch/common/function/simd/fma.hpp>
+#include <boost/simd/function/simd/fma.hpp>
 
 #endif

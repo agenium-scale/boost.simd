@@ -63,6 +63,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/minnum.hpp>
 #include <boost/simd/arch/common/scalar/function/minnum.hpp>
-//#include <boost/simd/arch/common/function/simd/minnum.hpp>
+#include <boost/simd/function/simd/minnum.hpp>
 
 #endif

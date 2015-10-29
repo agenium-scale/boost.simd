@@ -79,6 +79,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/enumerate.hpp>
 #include <boost/simd/arch/common/scalar/function/enumerate.hpp>
-//#include <boost/simd/arch/common/function/simd/enumerate.hpp>
+#include <boost/simd/function/simd/enumerate.hpp>
 
 #endif

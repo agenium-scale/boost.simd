@@ -61,6 +61,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/tofloat.hpp>
 #include <boost/simd/arch/common/scalar/function/tofloat.hpp>
-//#include <boost/simd/arch/common/function/simd/tofloat.hpp>
+#include <boost/simd/function/simd/tofloat.hpp>
 
 #endif

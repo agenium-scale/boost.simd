@@ -65,6 +65,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/selinc.hpp>
 #include <boost/simd/arch/common/scalar/function/selinc.hpp>
-//#include <boost/simd/arch/common/function/simd/selinc.hpp>
+#include <boost/simd/function/simd/selinc.hpp>
 
 #endif

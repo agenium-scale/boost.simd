@@ -73,6 +73,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/divs.hpp>
 #include <boost/simd/arch/common/scalar/function/divs.hpp>
-//#include <boost/simd/arch/common/function/simd/divs.hpp>
+#include <boost/simd/function/simd/divs.hpp>
 
 #endif

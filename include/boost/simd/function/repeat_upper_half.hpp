@@ -67,6 +67,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/repeat_upper_half.hpp>
 #include <boost/simd/arch/common/scalar/function/repeat_upper_half.hpp>
-//#include <boost/simd/arch/common/function/simd/repeat_upper_half.hpp>
+#include <boost/simd/function/simd/repeat_upper_half.hpp>
 
 #endif

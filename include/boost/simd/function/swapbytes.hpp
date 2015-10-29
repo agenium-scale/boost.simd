@@ -56,6 +56,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/swapbytes.hpp>
 #include <boost/simd/arch/common/generic/function/swapbytes.hpp>
-//#include <boost/simd/arch/common/function/simd/swapbytes.hpp>
+#include <boost/simd/function/simd/swapbytes.hpp>
 
 #endif

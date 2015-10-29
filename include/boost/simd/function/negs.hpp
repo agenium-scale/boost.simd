@@ -70,6 +70,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/negs.hpp>
 #include <boost/simd/arch/common/scalar/function/negs.hpp>
-//#include <boost/simd/arch/common/function/simd/negs.hpp>
+#include <boost/simd/function/simd/negs.hpp>
 
 #endif

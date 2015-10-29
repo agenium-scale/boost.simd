@@ -14,7 +14,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IS_NOT_IMAG_INCLUDED
 
 #include <boost/simd/function/scalar/is_not_imag.hpp>
-#include <boost/simd/function/generic/is_not_imag.hpp>
 //#include <boost/simd/arch/common/function/simd/is_not_imag.hpp>
 
 #endif

@@ -64,6 +64,6 @@ z    **/
 
 #include <boost/simd/function/definition/is_ngtz.hpp>
 #include <boost/simd/arch/common/scalar/function/is_ngtz.hpp>
-//#include <boost/simd/arch/common/function/simd/is_ngtz.hpp>
+#include <boost/simd/function/simd/is_ngtz.hpp>
 
 #endif

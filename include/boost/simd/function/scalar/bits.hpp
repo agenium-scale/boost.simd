@@ -14,6 +14,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_BITS_HPP_INCLUDED
 
 #include <boost/simd/function/definition/bits.hpp>
-#include <boost/simd/arch/common/scalar/function/bits.hpp>
+#include <boost/simd/arch/common/generic/function/bits.hpp>
 
 #endif

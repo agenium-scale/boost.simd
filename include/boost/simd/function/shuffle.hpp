@@ -72,6 +72,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/shuffle.hpp>
 #include <boost/simd/arch/common/scalar/function/shuffle.hpp>
-//#include <boost/simd/arch/common/function/simd/shuffle.hpp>
+#include <boost/simd/function/simd/shuffle.hpp>
 
 #endif

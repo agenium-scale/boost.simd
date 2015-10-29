@@ -70,6 +70,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/compare_greater_equal.hpp>
 #include <boost/simd/arch/common/scalar/function/compare_greater_equal.hpp>
-//#include <boost/simd/arch/common/function/simd/compare_greater_equal.hpp>
+#include <boost/simd/function/simd/compare_greater_equal.hpp>
 
 #endif

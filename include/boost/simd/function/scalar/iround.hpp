@@ -14,6 +14,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_IROUND_HPP_INCLUDED
 
 #include <boost/simd/function/definition/iround.hpp>
-#include <boost/simd/arch/common/scalar/function/iround.hpp>
+#include <boost/simd/arch/common/generic/function/iround.hpp>
 
 #endif

@@ -13,7 +13,7 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_MASK2LOGICAL_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_MASK2LOGICAL_INCLUDED
 
-#include <boost/simd/function/generic/mask2logical.hpp>
+#include <boost/simd/function/scalar/mask2logical.hpp>
 //#include <boost/simd/arch/common/function/simd/mask2logical.hpp>
 
 #endif

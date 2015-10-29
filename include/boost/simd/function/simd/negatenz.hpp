@@ -13,7 +13,7 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_NEGATENZ_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_NEGATENZ_INCLUDED
 
-#include <boost/simd/function/generic/negatenz.hpp>
+#include <boost/simd/function/scalar/negatenz.hpp>
 //#include <boost/simd/arch/common/function/simd/negatenz.hpp>
 
 #endif

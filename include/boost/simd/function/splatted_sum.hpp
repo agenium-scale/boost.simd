@@ -42,6 +42,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/splatted_sum.hpp>
 #include <boost/simd/arch/common/scalar/function/splatted_sum.hpp>
-//#include <boost/simd/arch/common/function/simd/splatted_sum.hpp>
+#include <boost/simd/function/simd/splatted_sum.hpp>
 
 #endif

@@ -66,6 +66,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/meanof.hpp>
 #include <boost/simd/arch/common/generic/function/meanof.hpp>
-//#include <boost/simd/arch/common/function/simd/meanof.hpp>
+#include <boost/simd/function/simd/meanof.hpp>
 
 #endif

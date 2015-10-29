@@ -56,9 +56,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/floor.hpp>
-#include <boost/simd/arch/common/scalar/function/floor.hpp>
-#include <boost/simd/arch/common/generic/function/floor.hpp>
-//#include <boost/simd/arch/common/function/simd/floor.hpp>
+#include <boost/simd/function/scalar/floor.hpp>
+#include <boost/simd/function/simd/floor.hpp>
 
 #endif

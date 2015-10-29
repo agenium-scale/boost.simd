@@ -64,6 +64,6 @@ z    **/
 
 #include <boost/simd/function/definition/is_ngez.hpp>
 #include <boost/simd/arch/common/scalar/function/is_ngez.hpp>
-//#include <boost/simd/arch/common/function/simd/is_ngez.hpp>
+#include <boost/simd/function/simd/is_ngez.hpp>
 
 #endif

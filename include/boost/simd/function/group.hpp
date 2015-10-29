@@ -74,6 +74,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/group.hpp>
 #include <boost/simd/arch/common/scalar/function/group.hpp>
-//#include <boost/simd/arch/common/function/simd/group.hpp>
+#include <boost/simd/function/simd/group.hpp>
 
 #endif

@@ -60,6 +60,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/if_zero_else.hpp>
 #include <boost/simd/arch/common/scalar/function/if_zero_else.hpp>
-//#include <boost/simd/arch/common/function/simd/if_zero_else.hpp>
+#include <boost/simd/function/simd/if_zero_else.hpp>
 
 #endif

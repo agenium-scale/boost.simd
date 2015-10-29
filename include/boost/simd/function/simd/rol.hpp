@@ -13,7 +13,7 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_ROL_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_ROL_INCLUDED
 
-#include <boost/simd/function/generic/rol.hpp>
+#include <boost/simd/function/scalar/rol.hpp>
 //#include <boost/simd/arch/common/function/simd/rol.hpp>
 
 #endif

@@ -65,6 +65,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/ilogb.hpp>
 #include <boost/simd/arch/common/scalar/function/ilogb.hpp>
-//#include <boost/simd/arch/common/function/simd/ilogb.hpp>
+#include <boost/simd/function/simd/ilogb.hpp>
 
 #endif

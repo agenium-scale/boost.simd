@@ -60,6 +60,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/frac.hpp>
 #include <boost/simd/arch/common/scalar/function/frac.hpp>
-//#include <boost/simd/arch/common/function/simd/frac.hpp>
+#include <boost/simd/function/simd/frac.hpp>
 
 #endif

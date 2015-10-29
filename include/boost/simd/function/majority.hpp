@@ -61,6 +61,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/majority.hpp>
 #include <boost/simd/arch/common/scalar/function/majority.hpp>
-//#include <boost/simd/arch/common/function/simd/majority.hpp>
+#include <boost/simd/function/simd/majority.hpp>
 
 #endif

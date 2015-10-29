@@ -56,6 +56,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/refine_rec.hpp>
 #include <boost/simd/arch/common/scalar/function/refine_rec.hpp>
-//#include <boost/simd/arch/common/function/simd/refine_rec.hpp>
+#include <boost/simd/function/simd/refine_rec.hpp>
 
 #endif

@@ -14,6 +14,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_BITGET_HPP_INCLUDED
 
 #include <boost/simd/function/definition/bitget.hpp>
-#include <boost/simd/arch/common/scalar/function/bitget.hpp>
+#include <boost/simd/arch/common/generic/function/bitget.hpp>
 
 #endif

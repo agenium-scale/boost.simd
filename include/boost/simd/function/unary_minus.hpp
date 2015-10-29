@@ -67,6 +67,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/unary_minus.hpp>
 #include <boost/simd/arch/common/scalar/function/unary_minus.hpp>
-//#include <boost/simd/arch/common/function/simd/unary_minus.hpp>
+#include <boost/simd/function/simd/unary_minus.hpp>
 
 #endif

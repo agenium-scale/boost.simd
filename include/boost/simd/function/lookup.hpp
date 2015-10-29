@@ -64,6 +64,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/lookup.hpp>
 #include <boost/simd/arch/common/scalar/function/lookup.hpp>
-//#include <boost/simd/arch/common/function/simd/lookup.hpp>
+#include <boost/simd/function/simd/lookup.hpp>
 
 #endif

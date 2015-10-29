@@ -63,6 +63,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/iceil.hpp>
 #include <boost/simd/arch/common/generic/function/iceil.hpp>
-//#include <boost/simd/arch/common/function/simd/iceil.hpp>
+#include <boost/simd/function/simd/iceil.hpp>
 
 #endif

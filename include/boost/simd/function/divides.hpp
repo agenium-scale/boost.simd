@@ -58,6 +58,6 @@ namespace boost { namespace simd
 #include <boost/simd/function/definition/divides.hpp>
 #include <boost/simd/arch/common/scalar/function/divides.hpp>
 #include <boost/simd/arch/common/generic/function/divides.hpp>
-//#include <boost/simd/arch/common/function/simd/divides.hpp>
+#include <boost/simd/function/simd/divides.hpp>
 
 #endif

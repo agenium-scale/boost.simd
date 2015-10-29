@@ -66,6 +66,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/mod.hpp>
 #include <boost/simd/arch/common/generic/function/mod.hpp>
-//#include <boost/simd/arch/common/function/simd/mod.hpp>
+#include <boost/simd/function/simd/mod.hpp>
 
 #endif

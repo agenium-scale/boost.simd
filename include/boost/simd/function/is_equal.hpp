@@ -68,6 +68,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/is_equal.hpp>
 #include <boost/simd/arch/common/scalar/function/is_equal.hpp>
-//#include <boost/simd/arch/common/function/simd/is_equal.hpp>
+#include <boost/simd/function/simd/is_equal.hpp>
 
 #endif

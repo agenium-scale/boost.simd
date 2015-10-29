@@ -72,6 +72,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/shift_left.hpp>
 #include <boost/simd/arch/common/scalar/function/shift_left.hpp>
-//#include <boost/simd/arch/common/function/simd/shift_left.hpp>
+#include <boost/simd/function/simd/shift_left.hpp>
 
 #endif

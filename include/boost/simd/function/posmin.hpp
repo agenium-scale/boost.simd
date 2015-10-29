@@ -64,6 +64,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/posmin.hpp>
 #include <boost/simd/arch/common/scalar/function/posmin.hpp>
-//#include <boost/simd/arch/common/function/simd/posmin.hpp>
+#include <boost/simd/function/simd/posmin.hpp>
 
 #endif

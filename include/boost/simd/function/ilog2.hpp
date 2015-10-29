@@ -68,6 +68,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/ilog2.hpp>
 #include <boost/simd/arch/common/scalar/function/ilog2.hpp>
-//#include <boost/simd/arch/common/function/simd/ilog2.hpp>
+#include <boost/simd/function/simd/ilog2.hpp>
 
 #endif

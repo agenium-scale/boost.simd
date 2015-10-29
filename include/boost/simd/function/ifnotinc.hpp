@@ -61,6 +61,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/ifnotinc.hpp>
 #include <boost/simd/arch/common/scalar/function/ifnotinc.hpp>
-//#include <boost/simd/arch/common/function/simd/ifnotinc.hpp>
+#include <boost/simd/function/simd/ifnotinc.hpp>
 
 #endif

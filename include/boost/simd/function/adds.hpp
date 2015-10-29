@@ -64,6 +64,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/adds.hpp>
 #include <boost/simd/arch/common/scalar/function/adds.hpp>
-//#include <boost/simd/arch/common/function/simd/adds.hpp>
+#include <boost/simd/function/simd/adds.hpp>
 
 #endif

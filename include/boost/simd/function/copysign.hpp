@@ -58,6 +58,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/copysign.hpp>
 #include <boost/simd/arch/common/scalar/function/copysign.hpp>
-//#include <boost/simd/arch/common/function/simd/copysign.hpp>
+#include <boost/simd/function/simd/copysign.hpp>
 
 #endif

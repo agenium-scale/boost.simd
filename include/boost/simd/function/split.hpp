@@ -46,6 +46,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/split.hpp>
 #include <boost/simd/arch/common/scalar/function/split.hpp>
-//#include <boost/simd/arch/common/function/simd/split.hpp>
+#include <boost/simd/function/simd/split.hpp>
 
 #endif

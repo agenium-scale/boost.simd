@@ -68,6 +68,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/divround.hpp>
 #include <boost/simd/arch/common/scalar/function/divround.hpp>
-//#include <boost/simd/arch/common/function/simd/divround.hpp>
+#include <boost/simd/function/simd/divround.hpp>
 
 #endif
