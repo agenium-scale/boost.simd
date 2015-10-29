@@ -40,8 +40,6 @@ namespace boost { namespace simd
 
     @see  ulpdist
 
-    @alias  saturated_dist
-
     @return      a value of the same type as the input.
 
 

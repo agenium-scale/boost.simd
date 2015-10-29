@@ -38,6 +38,9 @@ namespace boost { namespace simd
     T1 r = cond ? t1+t2 : t1;
     @endcode
 
+    @par Alias:
+    @c if_add
+
     @return a value of the same type as the second parameter
 
 **/

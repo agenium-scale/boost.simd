@@ -44,10 +44,6 @@ namespace boost { namespace simd
 
     If you do not care about invalid values or overflows toint is speedier.
 
-    @par Alias
-
-    saturated_toint
-
     @see touint
 
     @return      a value of the unsigned integer type associated to the input.

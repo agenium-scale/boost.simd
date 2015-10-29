@@ -36,11 +36,6 @@ namespace boost { namespace simd
 
     But is satrated for integer types
 
-    @par Alias
-
-    saturated_mul
-
-
     @return      a value of the same type as the input.
 
 

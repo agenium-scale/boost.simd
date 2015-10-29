@@ -18,7 +18,7 @@ namespace boost { namespace simd
   /*!
   @ingroup group-arithmetic
 
-    Computes the abssolute value of its parameter.
+    Computes the absolute value of its parameter.
 
     This is a convenient alias of abs
   **/

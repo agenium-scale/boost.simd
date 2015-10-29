@@ -39,12 +39,7 @@ namespace boost { namespace simd
 
     @c negs is not defined for unsigned types.
 
-    @par Alias
-
-    saturated_neg
-
-
-    @return      a value of the same type as the input.
+     @return      a value of the same type as the input.
 
 
 **/
