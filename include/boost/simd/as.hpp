@@ -10,25 +10,15 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_TYPES_HPP_INCLUDED
-#define BOOST_SIMD_TYPES_HPP_INCLUDED
+#ifndef BOOST_SIMD_AS_HPP_INCLUDED
+#define BOOST_SIMD_AS_HPP_INCLUDED
 
-#include <boost/simd/detail/brigand.hpp>
-#include <cstddef>
+#include <boost/dispatch/as.hpp>
 
 namespace boost { namespace simd
 {
-  using brigand::real_;
-  using brigand::double_;
-  using brigand::single_;
-
-  template<typename RealType, std::intmax_t N, std::intmax_t D = 1>
-  struct ratio
-  {};
-
-  template<std::intmax_t N, std::intmax_t D> using single_ratio = ratio<float,N,D>;
-
-  template<std::intmax_t N, std::intmax_t D> using double_ratio = ratio<double,N,D>;
+  using boost::dispatch::as_;
+  using boost::dispatch::as;
 } }
 
 #endif

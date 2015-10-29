@@ -9,7 +9,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-4.8']
-      env: TOOLSET=g++-4.8 SIMD_EXT=-msse2
+      env: CXX_STD=11 TOOLSET=g++-4.8 SIMD_EXT=-msse2
 
     - os: linux
       compiler: gcc
@@ -17,23 +17,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-4.8']
-      env: TOOLSET=g++-4.8 SIMD_EXT=-msse3
-
-    - os: linux
-      compiler: gcc
-      addons:
-        apt:
-          sources: ['ubuntu-toolchain-r-test']
-          packages: ['g++-4.8']
-      env: TOOLSET=g++-4.8 SIMD_EXT=-msse4.2
-
-    - os: linux
-      compiler: gcc
-      addons:
-        apt:
-          sources: ['ubuntu-toolchain-r-test']
-          packages: ['g++-4.8']
-      env: TOOLSET=g++-4.8 SIMD_EXT=-mavx
+      env: CXX_STD=11 TOOLSET=g++-4.8 SIMD_EXT=-mavx
 
     - os: linux
       compiler: gcc
@@ -41,7 +25,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-4.9']
-      env: TOOLSET=g++-4.9 SIMD_EXT=-msse2
+      env: CXX_STD=11 TOOLSET=g++-4.9 SIMD_EXT=-msse2
 
     - os: linux
       compiler: gcc
@@ -49,23 +33,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-4.9']
-      env: TOOLSET=g++-4.9 SIMD_EXT=-msse3
-
-    - os: linux
-      compiler: gcc
-      addons:
-        apt:
-          sources: ['ubuntu-toolchain-r-test']
-          packages: ['g++-4.9']
-      env: TOOLSET=g++-4.9 SIMD_EXT=-msse4.2
-
-    - os: linux
-      compiler: gcc
-      addons:
-        apt:
-          sources: ['ubuntu-toolchain-r-test']
-          packages: ['g++-4.9']
-      env: TOOLSET=g++-4.9 SIMD_EXT=-mavx
+      env: CXX_STD=11 TOOLSET=g++-4.9 SIMD_EXT=-mavx
 
     - os: linux
       compiler: gcc
@@ -73,7 +41,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-5']
-      env: TOOLSET=g++-5 SIMD_EXT=-msse2
+      env: CXX_STD=11 TOOLSET=g++-5 SIMD_EXT=-msse2
 
     - os: linux
       compiler: gcc
@@ -81,7 +49,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-5']
-      env: TOOLSET=g++-5 SIMD_EXT=-msse3
+      env: CXX_STD=14 TOOLSET=g++-5 SIMD_EXT=-msse2
 
     - os: linux
       compiler: gcc
@@ -89,15 +57,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-5']
-      env: TOOLSET=g++-5 SIMD_EXT=-msse4.2
-
-    - os: linux
-      compiler: gcc
-      addons:
-        apt:
-          sources: ['ubuntu-toolchain-r-test']
-          packages: ['g++-5']
-      env: TOOLSET=g++-5 SIMD_EXT=-mavx
+      env: CXX_STD=11 TOOLSET=g++-5 SIMD_EXT=-mavx
 
     - os: linux
       compiler: clang
@@ -105,7 +65,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-precise-3.5']
           packages: ['clang-3.5']
-      env: TOOLSET=clang++-3.5 SIMD_EXT=-msse2
+      env: CXX_STD=11 TOOLSET=clang++-3.5 SIMD_EXT=-msse2
 
     - os: linux
       compiler: clang
@@ -113,23 +73,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-precise-3.5']
           packages: ['clang-3.5']
-      env: TOOLSET=clang++-3.5 SIMD_EXT=-msse3
-
-    - os: linux
-      compiler: clang
-      addons:
-        apt:
-          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-precise-3.5']
-          packages: ['clang-3.5']
-      env: TOOLSET=clang++-3.5 SIMD_EXT=-msse4.2
-
-    - os: linux
-      compiler: clang
-      addons:
-        apt:
-          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-precise-3.5']
-          packages: ['clang-3.5']
-      env: TOOLSET=clang++-3.5 SIMD_EXT=-mavx
+      env: CXX_STD=11 TOOLSET=clang++-3.5 SIMD_EXT=-mavx
 
     - os: linux
       compiler: clang
@@ -137,7 +81,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-precise-3.6']
           packages: ['clang-3.6']
-      env: TOOLSET=clang++-3.6 SIMD_EXT=-msse2
+      env: CXX_STD=11 TOOLSET=clang++-3.6 SIMD_EXT=-msse2
 
     - os: linux
       compiler: clang
@@ -145,7 +89,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-precise-3.6']
           packages: ['clang-3.6']
-      env: TOOLSET=clang++-3.6 SIMD_EXT=-msse3
+      env: CXX_STD=11 TOOLSET=clang++-3.6 SIMD_EXT=-mavx
 
     - os: linux
       compiler: clang
@@ -153,15 +97,11 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-precise-3.6']
           packages: ['clang-3.6']
-      env: TOOLSET=clang++-3.6 SIMD_EXT=-msse4.2
+      env: CXX_STD=14 TOOLSET=clang++-3.6 SIMD_EXT=-msse2
 
-    - os: linux
+    - os: osx
       compiler: clang
-      addons:
-        apt:
-          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-precise-3.6']
-          packages: ['clang-3.6']
-      env: TOOLSET=clang++-3.6 SIMD_EXT=-mavx
+      env: CXX_STD=11 TOOLSET=clang++ SIMD_EXT=-msse2
 
 # Install boost
 before_install:
@@ -172,7 +112,7 @@ before_install:
 before_script:
   - mkdir build
   - cd build
-  - cmake .. -DCMAKE_CXX_COMPILER=$TOOLSET -DCMAKE_CXX_FLAGS=$SIMD_EXT
+  - cmake .. -DCMAKE_CXX_COMPILER=$TOOLSET -DCMAKE_CXX_FLAGS=$SIMD_EXT -DCXX_STD=$CXX_STD
 
 # Build unit and run test
 script:

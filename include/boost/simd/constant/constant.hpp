@@ -15,29 +15,33 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+/*!
     @ingroup group-constant
+    Generates a value of the chosen type from an exact bits pattern.
 
-    Generate a constant from a static representation.
+    Constant generates a value from an exact bits pattern that get splat in the return
+    value.
 
-    @return The Allbits constant for the proper type
+    @par Semantic:
+
+    or any type @c T and any integral constant @c N :
+
+    @code
+    T r = Constant<T,N>();
+    @endcode
+
+    generates a values which bit pattern can be represent by the integer N.
+
+    @tparam Type  Type of the desired value
+    @tparam Bits  Bits pattern to generate as a value
+
+    @return A value of type @c T which bits are exactly equals to @c N
   **/
-  template<typename Value> auto Constant();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-constant
-      Generate a constant from a static representation.
-
-      @return The Allbits constant for the proper type
-    **/
-    const boost::dispatch::functor<tag::constant_> constant = {};
-  }
+  template<typename Type, std::intmax_t Bits> auto Constant();
 } }
 #endif
 
 #include <boost/simd/constant/definition/constant.hpp>
-#include <boost/simd/arch/common/constant/scalar/constant_value.hpp>
+#include <boost/simd/arch/common/scalar/constant/constant_value.hpp>
 
 #endif

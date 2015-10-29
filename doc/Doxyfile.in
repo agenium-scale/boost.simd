@@ -21,7 +21,7 @@ INPUT                   += @Boost.SIMD_SOURCE_DIR@/doc
 FILE_PATTERNS           = *.md *.hpp
 RECURSIVE               = YES
 
-#EXCLUDE                = @Boost.SIMD_SOURCE_DIR@/???
+EXCLUDE                = @Boost.SIMD_SOURCE_DIR@/include/boost/simd/detail/brigand.hpp
 
 EXAMPLE_PATH            = @Boost.SIMD_SOURCE_DIR@/example
 #EXAMPLE_PATH           += @Boost.SIMD_SOURCE_DIR@/test/unit
