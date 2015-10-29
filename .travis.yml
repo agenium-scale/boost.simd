@@ -112,9 +112,9 @@ before_install:
 before_script:
   - mkdir build
   - cd build
-  - cmake .. -DCMAKE_CXX_COMPILER=$TOOLSET -DCMAKE_CXX_FLAGS=$SIMD_EXT -DCXX_STD=$CXX_STD
+  - cmake .. -DCMAKE_CXX_COMPILER=$TOOLSET -DCMAKE_CXX_FLAGS=$SIMD_EXT -DSIMD_EXT=$SIMD_EXT -DCXX_STD=$CXX_STD -DTOOLSET=$TOOLSET
 
 # Build unit and run test
 script:
   - make -k unit
-  - make test
+  - ctest -D Experimental
