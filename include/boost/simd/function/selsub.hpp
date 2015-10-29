@@ -40,6 +40,9 @@ namespace boost { namespace simd
     @endcode
 
 
+    @par Alias:
+    @c if_sub
+
     @return a value of the same type as the second parameter
 
 **/

@@ -35,11 +35,6 @@ namespace boost { namespace simd
     T r = x*x > Valmax ? Valmax : x*x;
     @endcode
 
-    @par Alias
-
-    @c sqrs, saturated_sqr
-
-
     @return      a value of the same type as the input.
 
 

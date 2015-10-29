@@ -46,7 +46,7 @@ namespace boost { namespace simd
 
     @par Alias
 
-    @c ifix,  @c itrunc, @c saturated_toint
+    @c ifix,  @c itrunc
 
     @see  toint
     @return      a value of the integer same type associated to the input.

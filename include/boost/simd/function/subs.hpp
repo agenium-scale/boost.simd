@@ -36,11 +36,6 @@ namespace boost { namespace simd
     T r = (x-y > Valmax) ? Valmax : (x-y <  Valmin ? Valmin : x-y);
     @endcode
 
-    @par Alias
-
-    saturated_sub
-
-
     @return      a value of the same type as the input.
 
 

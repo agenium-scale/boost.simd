@@ -36,9 +36,6 @@ namespace boost { namespace simd
     T r = cond ? t : zero;
     @endcode
 
-    @par Alias:
-    @c  if_else_zero,
-
     @return a value of the same type as the second parameter
 
 **/

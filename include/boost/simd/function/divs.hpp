@@ -43,7 +43,7 @@ namespace boost { namespace simd
 
     @par Alias
 
-    @c saturated_div, rdivide
+    @c rdivide
 
     @see  divides, rec, divfloor,
     divceil, divround, divround2even, divfix

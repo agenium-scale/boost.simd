@@ -18,23 +18,6 @@
 
 namespace boost { namespace simd
 {
-#if defined(DOXYGEN_ONLY)
-  /*!
-  @ingroup group-arithmetic
-
-    Computes the absolute value of its parameter.
-
-    This is an alias of function abs.
-
-    @Note abs is a current function name and sometimes a C
-    version can be an unwanted
-    concurrent of @c boost::simd::abs.  Using @c modulus instead
-    can circumvent this problem.
-
-    @see abs
-  **/
-  template<typename T> auto modulus(T const& x);
-#endif
   namespace tag
   {
     using modulus_ = abs_;

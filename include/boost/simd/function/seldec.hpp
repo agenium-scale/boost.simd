@@ -37,7 +37,7 @@ namespace boost { namespace simd
     @endcode
 
     @par Alias:
-    @c ifdec
+    @c if_dec
 
 
 
