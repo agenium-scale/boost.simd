@@ -15,6 +15,7 @@
 #include <boost/simd/arch/common/generic/function/ceil.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
+#include <cmath>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -44,7 +45,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
-      return ::ceil(a0);
+      return std::ceil(a0);
     }
   };
 } } }
