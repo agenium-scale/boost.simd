@@ -11,7 +11,7 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/as.hpp>
 #include <limits>
-#include <stf.hpp>
+#include <simd_test.hpp>
 
 STF_CASE_TPL( "Check nan behavior with floating types", (double)(float) )
 {

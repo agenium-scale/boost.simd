@@ -8,16 +8,11 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/constant/ratio.hpp>
-#include <simd_test.hpp>
+#define STF_CUSTOM_DRIVER_FUNCTION simd_test
+#include <stf.hpp>
 
-STF_CASE_TPL( "Check constant behavior for ratio", STF_NUMERIC_TYPES)
+int main(int argc, const char** argv)
 {
-  using boost::simd::Ratio;
-
-  STF_EXPR_IS   ( (Ratio<T,7,21>()  ) , T         );
-  STF_IEEE_EQUAL( (Ratio<T,7,21>()  ) , T(7./21.) );
-
-  STF_EXPR_IS   ( (Ratio<T,7>()  ) , T    );
-  STF_IEEE_EQUAL( (Ratio<T,7>()  ) , T(7) );
+  std::cout << "CTEST_FULL_OUTPUT\n";
+  return simd_test(argc,argv);
 }

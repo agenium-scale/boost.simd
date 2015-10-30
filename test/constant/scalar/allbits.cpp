@@ -11,7 +11,7 @@
 #include <boost/simd/constant/allbits.hpp>
 #include <boost/simd/as.hpp>
 #include <limits>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <boost/simd/constant/nan.hpp>
 
 STF_CASE_TPL( "Check allbits behavior"

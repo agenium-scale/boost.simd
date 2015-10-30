@@ -11,7 +11,7 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/as.hpp>
 #include <limits>
-#include <stf.hpp>
+#include <simd_test.hpp>
 
 STF_CASE_TPL( "Check one behavior"
             , (double)(float)

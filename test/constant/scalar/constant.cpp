@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/constant/constant.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 
 STF_CASE_TPL( "Check constant behavior for signed integral values", STF_SIGNED_INTEGRAL_TYPES)
 {
