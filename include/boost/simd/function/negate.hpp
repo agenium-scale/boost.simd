@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-ieee
 
-    Retuns the first element multiplied by the sign of the second.
+    Retuns the first element multiplied by the @ref sign of the second.
 
     @par Semantic:
 
@@ -34,9 +34,10 @@ namespace boost { namespace simd
     @endcode
 
     @par Note
-    If y is @ref Zero the result is zero. If you want to avoid that use negatenz.
+    If y is @ref Zero the result is zero. If you want to avoid that use
+    @ref negatenz or @ref copysign.
 
-    @see sign, negatenz
+    @see sign, negatenz, copysign,  Mzero,  is_positive, is_negative
 
     @return a value of same type as the inputs
 

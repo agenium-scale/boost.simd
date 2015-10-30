@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    TODO Put description here
+    Returns @ref True or @ref False according x is not less or equal to y or is.
 
     This is a convenient alias of @ref is_not_less
 **/
@@ -32,6 +32,7 @@ namespace boost { namespace simd
 
       TODO Put description here
 
+      Returns @ref True or @ref False according x is not less or equal to y or is.
 
       Function object tied to simd::is_nlt
 

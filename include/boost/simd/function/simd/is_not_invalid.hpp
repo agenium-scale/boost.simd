@@ -9,10 +9,10 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_SIMD_IS_NOT_FINITE_INCLUDED
-#define BOOST_SIMD_FUNCTION_SIMD_IS_NOT_FINITE_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_SIMD_IS_NOT_INVALID_INCLUDED
+#define BOOST_SIMD_FUNCTION_SIMD_IS_NOT_INVALID_INCLUDED
 
-#include <boost/simd/function/scalar/is_not_finite.hpp>
-//#include <boost/simd/arch/common/function/simd/is_invalid.hpp>
+#include <boost/simd/function/scalar/is_not_invalid.hpp>
+//#include <boost/simd/arch/common/function/simd/is_finite.hpp>
 
 #endif

@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True if neither x nor y is nan.
+    Returns @ref True if neither x nor y is @ref Nan.
 
     @par Semantic:
 
@@ -45,7 +45,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-predicates
 
-      Returns True if neither x nor y is nan.
+      Returns @ref True if neither x nor y is  @ref Nan.
 
 
       Function object tied to simd::is_ord

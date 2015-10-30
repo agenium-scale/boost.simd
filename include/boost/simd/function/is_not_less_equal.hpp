@@ -16,8 +16,10 @@
 namespace boost { namespace simd
 {
   /*!
-
     @ingroup group-predicates
+
+    Returns @ref True  or @ref False depending on whether x is
+    not less or equal to y or is.
 
     @par Semantic:
 
@@ -33,7 +35,7 @@ namespace boost { namespace simd
 
     @par Note:
 
-    Due to existence of nan, this is not equivalent to @c is_greater(x, y)
+    Due to existence of nan, this is not equivalent to a call to @ref is_greater
     for floating types
 
     @par Alias:
@@ -52,7 +54,10 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-predicates
 
-      @par Semantic:
+      Returns @ref True  or @ref False depending on whether x is
+      not less or equal to y or is.
+
+    @par Semantic:
 
 
       Function object tied to simd::is_not_less_equal

@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True or False according x is odd or not.
+    Returns @ref True or @ref False according x is odd or not.
 
     @par Semantic:
 
@@ -49,7 +49,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-predicates
 
-      Returns True or False according x is odd or not.
+      Returns @ref True or @ref False according x is odd or not.
 
 
       Function object tied to simd::is_odd

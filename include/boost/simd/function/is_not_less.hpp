@@ -35,7 +35,7 @@ namespace boost { namespace simd
 
     @par Note:
 
-    Due to existence of nan, this is not equivalent to @c is_greater_equal(x, y)
+    Due to existence of nan, this is not equivalent to a call to @ref is_greater_equal
     for floating types
 
     @par Alias:

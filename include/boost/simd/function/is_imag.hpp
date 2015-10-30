@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True or False according x is pure imaginary or not.
+    Returns @ref True or @ref False according x is pure imaginary or not.
     For non complex numbers it is same as to be zero
 
     @par Semantic:
@@ -45,7 +45,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-predicates
 
-      Returns True or False according x is pure imaginary or not.
+      Returns @ref True or @ref False according x is pure imaginary or not.
       For non complex numbers it is same as to be zero
 
 

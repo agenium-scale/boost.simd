@@ -17,9 +17,9 @@ namespace boost { namespace simd
 {
   /*!
 
-    @ingroup group-predicates
+    @ingroup group-predicatesq
 
-    Returns True if x is inf, -inf or nan else returns False
+    Returns @ref True if x is inf, -inf or nan else returns @ref False
 
     @par Semantic:
 
@@ -33,6 +33,8 @@ namespace boost { namespace simd
     as_logical_t<T> r = x-x != 0;
     @endcode
 
+    @par Alias:
+    @c is_not_finite
 
     @return a logical value
 
@@ -44,7 +46,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-predicates
 
-      Returns True if x is inf, -inf or nan else returns False
+      Returns @ref True if x is inf, -inf or nan else returns @ref False
 
 
       Function object tied to simd::is_invalid

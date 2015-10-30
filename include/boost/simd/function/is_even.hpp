@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True or False according x is even or not.
+    Returns @ref True or @ref False according x is even or not.
 
     @par Semantic:
 
@@ -55,7 +55,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-predicates
 
-      Returns True or False according x is even or not.
+      Returns @ref True or @ref False according x is even or not.
 
 
       Function object tied to simd::is_even

@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    TODO Put description here
+    Returns @ref True if x is finite or @ref Nan
 
     @par Semantic:
 
@@ -33,7 +33,7 @@ namespace boost { namespace simd
     if T is floating
       as_logical_t<T> r = (x !=  Inf) && (x != -Inf);
     else
-      as_logical_t<T> r = True;
+      as_logical_t<T> r = True ;
     @endcode
 
 
@@ -47,8 +47,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-predicates
 
-      TODO Put description here
-
+      Returns @ref True if x is finite or @ref Nan
 
       Function object tied to simd::is_not_infinite
 

@@ -36,7 +36,7 @@ namespace boost { namespace simd
     @par Alias:
     @c fmax
 
-
+    @see max, maxnummag,  maxmag
 
     @return a value of same type as the inputs
 

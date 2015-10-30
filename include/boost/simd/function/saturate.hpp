@@ -36,12 +36,12 @@ namespace boost { namespace simd
     else r = x;
     @endcode
 
-    @see Minf, Inf
+    @see Minf, Inf, Valmax, Valmin
 
     Note let us recall that @ref Valmin and @ref Minf (resp. @ref Valmax and @ref Inf)
     are identical if Target is  an integer type.
 
-    @return a value of same type as the inputs
+    @return a value of same type as the input
 
 **/
   template<typename Target, typename T> auto saturate(T const& x) {}

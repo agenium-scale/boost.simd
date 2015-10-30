@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-operator
 
-    Returns True if x and y are not equal else False.
+    Returns @ref True if x and y are not equal else @ref False.
     Infix notation can be used with operator '!='.
 
 
@@ -32,7 +32,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-operator
 
-      Returns True if x and y are not equal else False.
+      Returns @ref True if x and y are not equal else @ref False.
       Infix notation can be used with operator '!='.
 
 

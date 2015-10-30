@@ -19,9 +19,9 @@ namespace boost { namespace simd
 
     @ingroup group-ieee
 
-    Returns x multiplied by the signnz of y.
+    Returns x multiplied by the @ref signnz of y.
 
-    The result is unspecified if y is nan
+    The result is unspecified if y is @ref Nan
 
     @par Semantic:
 
@@ -36,10 +36,10 @@ namespace boost { namespace simd
     @endcode
 
     @par Note
-    If x is non @ref Zero the result is non zero. Take care that negatenz distinguish
-    between the signs of T(0) and -T(0) if T is floating.
+    If x is non @ref Zero the result is @ref Zero. Take care that negatenz distinguish
+    between the signs of T(0) and -T(0) when T is a floating type.
 
-    @see negatenz,  Mzero,  is_positive, is_negative
+    @see negatenz, Mzero, is_positive, is_negative
 
     @return a value of same type as the inputs
 
@@ -51,12 +51,12 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-ieee
 
-      Returns x multiplied by the signnz of y.
+      Returns x multiplied by the @ref signnz of y.
 
 
       Function object tied to simd::negaten
 
-z      @see simd::negaten
+z      @see simd::negatenz
 z    **/
     const boost::dispatch::functor<tag::negatenz_> negatenz = {};
   }

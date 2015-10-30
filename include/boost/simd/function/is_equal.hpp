@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-operator
 
-    Returns True or False
+    Returns @ref True or @ref False
     according x and y are equal or not. Infix notation can be used with operator '=='
 
     @par Semantic:
@@ -52,7 +52,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-operator
 
-      Returns True or False
+      Returns @ref True or @ref False
       according x and y are equal or not. Infix notation can be used with operator '=='
 
 

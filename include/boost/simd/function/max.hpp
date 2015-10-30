@@ -34,6 +34,7 @@ namespace boost { namespace simd
     T r =  (x > y) ? x : y;
     @endcode
 
+    @see maxnum, maxnummag,  maxmag
 
     @return a value of the same type as the input.
 

@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-reduction
 
-    Returns True is only if all bits set in x are not set in y
+    Returns @ref True is only if all bits set in x are not set in y
 
     @par Semantic:
 
@@ -50,7 +50,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-reduction
 
-      Returns True is only if all bits set in x are not set in y
+      Returns @ref True is only if all bits set in x are not set in y
 
 
       Function object tied to simd::is_included_c

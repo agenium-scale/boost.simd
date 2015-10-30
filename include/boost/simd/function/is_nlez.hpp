@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True if x is not less or equal to @ref Zero else returns False.
+    Returns @ref True if x is not less or equal to @ref Zero else returns @ref False.
 
     @par Semantic:
 
@@ -35,7 +35,7 @@ namespace boost { namespace simd
 
     @par Note:
 
-    Due to existence of nan, this is not equivalent to @c is_gtz(x)
+    Due to existence of nan, this is not equivalent to a call to @ref is_gtz
     for floating types
 
 
@@ -50,7 +50,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-predicates
 
-      Returns True if x is not less or equal to @ref Zero else returns False.
+      Returns @ref True if x is not less or equal to @ref Zero else returns @ref False.
 
 
       Function object tied to simd::is_nle

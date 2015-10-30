@@ -37,6 +37,8 @@ namespace boost { namespace simd
     ulp stands for Unit in the Last Place.
 
 
+    @see ulpdist, eps, Eps
+
     @return a value of same type as the input
 
 **/

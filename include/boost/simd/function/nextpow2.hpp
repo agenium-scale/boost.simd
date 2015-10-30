@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-ieee
 
-    Returns the least integer n such that abs(x) is less or equal to \f$2^n\f$
+    Returns the greatest integer n such that abss(x) is greater or equal to \f$2^n\f$
 
     @par Semantic:
 
@@ -30,7 +30,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T n = ceil(log2(abs(x)));
+    T n = floor(log2(abss(x)));
     @endcode
 
 
@@ -44,7 +44,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-ieee
 
-      Returns the least integer n such that abs(x) is less or equal to \f$2^n\f$
+      Returns the greatest integer n such that abs(x) is greater or equal to \f$2^n\f$
 
 
       Function object tied to simd::nextpow2

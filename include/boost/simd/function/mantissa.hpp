@@ -34,9 +34,10 @@ namespace boost { namespace simd
     @endcode
 
     @par Note
-    The exponent e and signed mantissa m of a floating point entry a are related by
-    \f$a = m\times 2^e\f$, with the absolute value of m between one (included) ans two (excluded)
+    The @ref exponent e and signed @ref mantissa m of a floating point entry a are related by
+    \f$a = m\times 2^e\f$, with the absolute value of m between one (included) ans two (excluded).
 
+    @see frexp
 
     @return a value of same type as the input
 
