@@ -75,6 +75,7 @@ set ( SOURCES
   pi.cpp
   pio_2.cpp
   quarter.cpp
+  real.cpp
   ratio.cpp
   seven.cpp
   signmask.cpp
