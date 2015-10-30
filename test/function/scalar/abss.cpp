@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/abss.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <nontrivial.hpp>
 
 // // PAS FINI

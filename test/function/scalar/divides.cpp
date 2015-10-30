@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/divides.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <nontrivial.hpp>
 
 STF_CASE_TPL( "Check divides behavior with floating", (double)(float) )

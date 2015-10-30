@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/minus.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <nontrivial.hpp>
 
 STF_CASE_TPL( "Check minus behavior with floating", (double)(float) )
