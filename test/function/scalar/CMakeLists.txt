@@ -373,6 +373,7 @@ set ( SOURCES
    remfix.cpp
    itrunc.cpp
    angle.cpp
+   b_xor.cpp
   )
 
 make_unit( "boost.simd.function.scalar"     ${SOURCES})
