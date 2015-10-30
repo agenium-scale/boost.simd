@@ -35,6 +35,10 @@ namespace boost { namespace simd
     as_integer_t<T> r = toints(round2even(x));
     @endcode
 
+    @par Note:
+    Speed can be gained using iround2even(x, fast_) that uses @ref
+    toint in place of @ref toints,  but be aware that large values can be not correctly converted
+    and that invalid entries lead to undefined results
 
     @return an integral value of the integral type associated to the input.
 

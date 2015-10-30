@@ -32,10 +32,8 @@ set ( SOURCES
    divround2even.cpp
    divround.cpp
    divs.cpp
-#   fast_hypot.cpp
 #   fast_iround2even.cpp
 #   fast_rec.cpp
-#   fast_sqrt.cpp
 #   fast_toint.cpp
    floor.cpp
    fma.cpp

@@ -18,6 +18,7 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/mzero.hpp>
+#include <boost/simd/options.hpp>
 
 STF_CASE_TPL(" rec",  STF_IEEE_TYPES)
 {
@@ -37,4 +38,25 @@ STF_CASE_TPL(" rec",  STF_IEEE_TYPES)
   STF_IEEE_EQUAL(rec(bs::Nan<T>()), bs::Nan<T>());
   STF_IEEE_EQUAL(rec(bs::One<T>()), bs::One<T>());
   STF_IEEE_EQUAL(rec(bs::Zero<T>()), bs::Inf<T>());
+} // end of test for floating_
+
+STF_CASE_TPL(" rec",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::rec;
+  using bs::fast_;
+
+
+  // return type conformity test
+  STF_EXPR_IS( rec(T()) , T );
+  //For scalar is it a call redirected to rec
+  // specific values tests
+  STF_IEEE_EQUAL(rec(bs::Inf<T>(), fast_), bs::Zero<T>());
+  STF_IEEE_EQUAL(rec(bs::Minf<T>(), fast_), bs::Zero<T>());
+  STF_IEEE_EQUAL(rec(bs::Mone<T>(), fast_), bs::Mone<T>());
+  STF_IEEE_EQUAL(rec(bs::Mzero<T>(), fast_), bs::Minf<T>());
+  STF_IEEE_EQUAL(rec(bs::Nan<T>(), fast_), bs::Nan<T>());
+  STF_IEEE_EQUAL(rec(bs::One<T>(), fast_), bs::One<T>());
+  STF_IEEE_EQUAL(rec(bs::Zero<T>(), fast_), bs::Inf<T>());
 } // end of test for floating_

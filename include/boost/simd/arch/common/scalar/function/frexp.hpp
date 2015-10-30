@@ -29,6 +29,7 @@
 #include <boost/simd/function/scalar/bitwise_or.hpp>
 #include <boost/simd/function/scalar/is_invalid.hpp>
 #include <boost/simd/function/scalar/shr.hpp>
+#include <boost/simd/options.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
@@ -78,6 +79,26 @@ namespace boost { namespace simd { namespace ext
       }
     }
   };
+
+ BOOST_DISPATCH_OVERLOAD ( frexp_
+                         , (typename A0, typename A1)
+                         , bd::cpu_
+                         , bd::scalar_< bd::floating_<A0> >
+                         , bd::scalar_< bd::floating_<A0> >
+                         , bd::scalar_< bd::integer_<A1>  >
+                         , boost::simd::fast_tag
+                         )
+ {
+    BOOST_FORCEINLINE void operator() ( A0 a0,A0 & r0,A1& r1
+                                      , fast_tag const&) const BOOST_NOEXCEPT
+    {
+      r1  = bitwise_cast<A1>(bitwise_and(Mask1frexp<A0>(), a0));
+      A0  x = bitwise_andnot(a0, Mask1frexp<A0>());
+      r1  = shr(r1,Nbmantissabits<A0>()) - Maxexponentm1<A0>();
+      r0  = bitwise_or(x,Mask2frexp<A0>());
+    }
+  };
+
 } } }
 
 

@@ -38,8 +38,9 @@ namespace boost { namespace simd
 
     @par Note
 
-    If full accuracy is not needed a sometimes faster version of the function
-    can be used callling : rsqrt(x, fast_);
+    If full accuracy is not needed a sometimes faster less accurate version of the function
+    can be used callling : rsqrt(x, fast_).
+
 
     @return      a value of the type of the input.
 
