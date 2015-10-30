@@ -19,7 +19,6 @@ set ( SOURCES
    arg.cpp
    average.cpp
    ceil.cpp
-#   chop.cpp
    conj.cpp
    correct_fma.cpp
    dec.cpp
@@ -31,9 +30,6 @@ set ( SOURCES
    divround2even.cpp
    divround.cpp
    divs.cpp
-#   fast_iround2even.cpp
-#   fast_rec.cpp
-#   fast_toint.cpp
    floor.cpp
    fma.cpp
    fms.cpp
@@ -61,9 +57,7 @@ set ( SOURCES
    negs.cpp
    oneminus.cpp
    oneplus.cpp
-#   raw_rec.cpp
    rec.cpp
-#   refine_rec.cpp
    remainder.cpp
    rem.cpp
    remquo.cpp
@@ -147,8 +141,6 @@ set ( SOURCES
    eps.cpp
    exponentbits.cpp
    exponent.cpp
-#   fast_frexp.cpp
-#   fast_ldexp.cpp
    frac.cpp
    frexp.cpp
    ilogb.cpp
@@ -184,7 +176,6 @@ set ( SOURCES
    comma.cpp
    complement.cpp
    divides.cpp
-#   fast_divides.cpp
    if_else.cpp
    is_equal.cpp
    is_greater_equal.cpp
@@ -195,7 +186,6 @@ set ( SOURCES
    logical_and.cpp
    logical_not.cpp
    logical_or.cpp
-#   map.cpp
    minus.cpp
    modulo.cpp
    multiplies.cpp
@@ -265,35 +255,19 @@ set ( SOURCES
    prod.cpp
    sum.cpp
 #swar
-#   all_reduce.cpp
    broadcast.cpp
-#   combine.cpp
    cummax.cpp
    cummin.cpp
    cumprod.cpp
    cumsum.cpp
-#   deinterleave_first.cpp
-#   deinterleave_second.cpp
    enumerate.cpp
-#   group.cpp
-#   groups.cpp
-#   interleave_first.cpp
-#   interleave_second.cpp
    lookup.cpp
-#   repeat_lower_half.cpp
-#   repeat_upper_half.cpp
    reverse.cpp
-#   shuffle.cpp
-#   slice.cpp
    sort.cpp
    splatted_maximum.cpp
    splatted_minimum.cpp
    splatted_prod.cpp
    splatted_sum.cpp
-#   split_high.cpp
-#   split.cpp
-#   split_low.cpp
-#   split_multiplies.cpp
 # aliases
    b_and.cpp
    compare_eq.cpp
@@ -313,10 +287,6 @@ set ( SOURCES
    rdivide.cpp
    if_zero_else_allbits.cpp
    if_allbits_else_zero.cpp
-#   demote.cpp
-#   narrow.cpp
-#   demotes.cpp
-#   narrows.cpp
    if_nan_else.cpp
    if_else_nan.cpp
    where.cpp
