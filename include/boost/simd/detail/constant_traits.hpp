@@ -59,7 +59,7 @@ namespace boost { namespace simd { namespace detail
                                           >::type;
 
 
-  template<typename T, bits_t<T> N>
+  template<typename T, bits_t<T> N, bits_t<T> M = 0>
   struct  constantify
   {
     using type = std::integral_constant<T,T(N)>;
@@ -70,9 +70,19 @@ namespace boost { namespace simd { namespace detail
     using type = brigand::double_<V>;
   };
 
-  template<bits_t<float> V> struct constantify<float,V>
+  template<bits_t<double> V, bits_t<float> W> struct constantify<double,V,W>
+  {
+    using type = brigand::double_<V>;
+  };
+
+  template<bits_t<double> V> struct constantify<float,V>
   {
     using type = brigand::single_<V>;
+  };
+
+  template<bits_t<double> V, bits_t<float> W> struct constantify<float,V,W>
+  {
+    using type = brigand::single_<W>;
   };
 } } }
 
