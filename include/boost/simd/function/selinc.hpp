@@ -19,11 +19,11 @@ namespace boost { namespace simd
 
     @ingroup group-boolean
 
-    Increments a value by 1 if a predicate is true.
+    Increments a value by @ref One if a predicate is @ref True.
 
     @par Semantic:
 
-    For every parameters of types respectively COND, T:
+    For every parameters of types respectively C, T:
 
     @code
     T1 r = selinc(cond,y);
@@ -32,7 +32,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T1 r = cond ? t+one : t  ;
+    T1 r = cond ? t+One<T>() : t  ;
     @endcode
 
     @par Alias:
@@ -43,14 +43,14 @@ namespace boost { namespace simd
     @return a value of the same type as the second parameter
 
 **/
-  template<typename COND, typename T> auto selinc(COND const& cond, T const& t) {}
+  template<typename C, typename T> auto selinc(C const& cond, T const& t) {}
 
   namespace functional
   {
     /*!
       @ingroup group-callable-boolean
 
-      Increments a value by 1 if a predicate is true.
+      Increments a value by @ref One if a predicate is true.
 
 
       Function object tied to simd::selinc

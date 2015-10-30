@@ -36,7 +36,7 @@ namespace boost { namespace simd
 
     @par Note
 
-    The result is never negative. For floating, it can of course be Nan.
+    The result is never negative. For floating, it can of course be @ref Nan.
 
     @see  ulpdist
 

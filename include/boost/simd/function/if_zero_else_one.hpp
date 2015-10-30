@@ -19,11 +19,11 @@ namespace boost { namespace simd
 
     @ingroup group-boolean
 
-    If cond is true returns zero else returns one
+    If cond is @ref True returns @ref Zero else returns one
 
     @par Semantic:
 
-    For every parameters of type COND:
+    For every parameters of type C:
 
     @code
     T r = if_zero_else_one(cond);
@@ -32,12 +32,12 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T r =  cond ? zero :  one;
+    T r =  cond ? Zero :  One;
     @endcode
 
     @par Note:
 
-    The return type is generally COND except in the case where COND is as_logical_t<T>. in which case
+    The return type is generally C except in the case where C is as_logical_t<T>. in which case
     the return type is T.
 
     @return a value of the type associated to the logical value cond
@@ -50,7 +50,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-boolean
 
-      If cond is true returns zero else returns one
+      If cond is @ref True returns @ref Zero else returns one
 
 
       Function object tied to simd::if_zero_else_one

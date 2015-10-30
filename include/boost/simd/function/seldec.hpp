@@ -19,20 +19,20 @@ namespace boost { namespace simd
 
     @ingroup group-boolean
 
-    Decrements a value by 1 if a predicate is true.
+    Decrements a value by @ref One if a predicate is @ref True.
 
     @par Semantic:
 
-    For every parameters of types respectively COND, T:
+    For every parameters of types respectively C, T:
 
     @code
-    T1 r = seldec(cond,t);
+    T r = seldec(cond,t);
     @endcode
 
     is similar to:
 
     @code
-    T1 r = cond : t-one : t;
+    T r = cond : t-One<T>() : t;
     @endcode
 
     @par Alias:
@@ -43,14 +43,14 @@ namespace boost { namespace simd
     @return a value of the same type as the second parameter
 
 **/
-  template<typename COND, typename T> auto seldec(COND const& cond, T const& t) {}
+  template<typename C, typename T> auto seldec(C const& cond, T const& t) {}
 
   namespace functional
   {
     /*!
       @ingroup group-callable-boolean
 
-      Decrements a value by 1 if a predicate is true.
+      Decrements a value by @ref One if a predicate is true.
 
 
       Function object tied to simd::seldec

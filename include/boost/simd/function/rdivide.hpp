@@ -21,7 +21,7 @@ namespace boost { namespace simd
 
     Computes  the truncated saturated division of its parameters.
 
-    This is a convenient alias of divs
+    This is a convenient alias of @ref divs
 **/
   template<typename T> auto rdivide(T const& x, T const& y) {}
 

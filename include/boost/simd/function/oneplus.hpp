@@ -20,7 +20,7 @@ namespace boost { namespace simd
     @ingroup group-arithmetic
 
     Returns the entry plus one, saturated in the entry type.
-    If @c x is not Nan, @c oneplus(x) is greater or equal to x.
+    If @c x is not @ref Nan, @c oneplus(x) is greater or equal to x.
 
     @par semantic:
     For any given value @c x of type @c T:
@@ -35,6 +35,7 @@ namespace boost { namespace simd
     T r = (x == Valmax) ? x : 1+x
     @endcode
 
+    @see raw_rec
 
     @return      a value of the same type as the input.
 
@@ -48,7 +49,7 @@ namespace boost { namespace simd
       @ingroup group-callable-arithmetic
 
       Returns the entry plus one, saturated in the entry type.
-      If @c x is not Nan, @c oneplus(x) is greater or equal to x.
+      If @c x is not @ref Nan, @c oneplus(x) is greater or equal to x.
 
 
       Function object tied to simd::oneplus

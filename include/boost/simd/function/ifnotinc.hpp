@@ -19,11 +19,11 @@ namespace boost { namespace simd
 
     @ingroup group-boolean
 
-    Increments a value by 1 if a predicate is false.
+    Increments a value by @ref One if a predicate is @ref False.
 
     @par Semantic:
 
-    For every parameters of types respectively COND, T:
+    For every parameters of types respectively C, T:
 
     @code
     T r = ifnotdec(cond,t);
@@ -38,7 +38,7 @@ namespace boost { namespace simd
     @return a value of the same type as the second parameter
 
 **/
-   template<typename COND, typename T> auto ifnotinc(COND const& cond, T const& t) {}
+   template<typename C, typename T> auto ifnotinc(C const& cond, T const& t) {}
 
 
   namespace functional
@@ -46,7 +46,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-boolean
 
-      Increments a value by 1 if a predicate is false.
+      Increments a value by @ref One if a predicate is false.
 
 
       Function object tied to simd::ifnotinc

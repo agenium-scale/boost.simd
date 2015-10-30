@@ -19,18 +19,18 @@ namespace boost { namespace simd
 
     @ingroup group-boolean
 
-    If cond is true returns t else returns allbits
+    If cond is @ref True returns t else returns allbits
 
-    This is a convenient alias of if_else_allbits
+    This is a convenient alias of @ref if_else_allbits
 **/
-  template<typename COND, typename T> auto if_else_nan(COND const& cond, const T& t) {}
+  template<typename C, typename T> auto if_else_nan(C const& cond, T const & t) {}
 
   namespace functional
   {
     /*!
       @ingroup group-callable-boolean
 
-      If cond is true returns t else returns allbits
+      If cond is @ref True returns t else returns allbits
 
 
       Function object tied to simd::if_else_nan

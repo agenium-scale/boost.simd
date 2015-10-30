@@ -21,7 +21,7 @@ namespace boost { namespace simd
 
     Returns True if x is not greater or equal to y else returns False.
 
-    This is a convenient alias of is_not_greater_equal
+    This is a convenient alias of @ref is_not_greater_equal
 **/
   template<typename T> auto is_nge(T const& x, T const& y) {}
 

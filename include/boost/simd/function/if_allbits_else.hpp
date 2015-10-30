@@ -19,11 +19,11 @@ namespace boost { namespace simd
 
     @ingroup group-boolean
 
-    If cond is true returns allbits else returns f
+    If cond is @ref True returns allbits else returns f
 
     @par Semantic:
 
-    For every parameters of types respectively COND, T:
+    For every parameters of types respectively C, T:
 
     @code
     T r = if_allbits_else(cond,f);
@@ -44,14 +44,14 @@ namespace boost { namespace simd
     @return a value of the same type as the second parameter
 
 **/
-  template<typename COND, typename T> auto if_allbits_else(COND const& cond, T const & f) {}
+  template<typename C, typename T> auto if_allbits_else(C const& cond, T const & f) {}
 
   namespace functional
   {
     /*!
       @ingroup group-callable-boolean
 
-      If cond is true returns allbits else returns f
+      If cond is @ref True returns allbits else returns f
 
 
       Function object tied to simd::if_allbits_else

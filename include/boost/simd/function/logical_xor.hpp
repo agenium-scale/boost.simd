@@ -21,22 +21,22 @@ namespace boost { namespace simd
 
     return the logical xor of the first parameter and of the second parameter.
 
-    The operands must share the same Cardinal_of value.
+    The operands must share the same @ref cardinal_of value.
 
     The result type is logical type associated to the first parameter.
 
 
     @par semantic:
-    For every parameters of types respectively T0, T1:
+    For every parameters of types respectively T1, T2:
 
     @code
-    as_logical_t<T0> r = logical_xor(x,y);
+    as_logical_t<T1> r = logical_xor(x,y);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<T0> r = !x != !y;
+    as_logical_t<T1> r = !x != !y;
     @endcode
 
     @see  logical_or, logical_ornot, logical_notand,
@@ -45,7 +45,7 @@ namespace boost { namespace simd
     @return a logical value of the logical type associated to the input.
 
 **/
-  template<typename T1, typename T2> auto logical_ornot(T1 const& x, T2 const& y) {}
+  template<typename T1, typename T2> auto logical_xor(T1 const& x, T2 const& y) {}
 
 
   namespace functional

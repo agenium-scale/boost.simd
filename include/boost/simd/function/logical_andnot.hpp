@@ -19,11 +19,11 @@ namespace boost { namespace simd
 
     @ingroup group-boolean
 
-    The operands must share the same Cardinal_of value.
+    The operands must share the same @ref cardinal_of value.
 
     return the logical and of the first parameter and of the negation the second parameter.
 
-    The operands must share the same Cardinal_of value.
+    The operands must share the same @ref cardinal_of value.
 
     The result type is logical type associated to the first parameter.
 
@@ -57,7 +57,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-boolean
 
-      The operands must share the same Cardinal_of value.
+      The operands must share the same @ref cardinal_of value.
 
 
       Function object tied to simd::logical_andnot

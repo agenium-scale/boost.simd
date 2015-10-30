@@ -33,8 +33,8 @@ namespace boost { namespace simd
 
     @par Note
 
-    return the number of bits of the entry if input is zero,
-    which is an illegal bit index.
+    Be aware that our @c ctz returns the number of bits of the entry if @c x is @ref Zero
+    (which is an illegal bit index in @c x).
 
     @see  clz, popcnt
 

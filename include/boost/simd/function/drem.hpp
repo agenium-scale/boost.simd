@@ -21,11 +21,11 @@ namespace boost { namespace simd
 
     Computes the drem of division.
     The return value is x-n*y, where n is the value x/y,
-    rounded to the nearest integer (using round2even).
+    rounded to the nearest integer (using @ref round2even).
 
-    This is a convenient alias of remainder
+    This is a convenient alias of @ref remainder
 **/
-  template<typename T> auto drem(T const& x, const T& y) {}
+  template<typename T> auto drem(T const& x, T const & y) {}
 
   namespace functional
   {
@@ -34,7 +34,7 @@ namespace boost { namespace simd
 
       Computes the drem of division.
       The return value is x-n*y, where n is the value x/y,
-      rounded to the nearest integer (using round2even).
+      rounded to the nearest integer (using @ref round2even).
 
 
       Function object tied to simd::drem

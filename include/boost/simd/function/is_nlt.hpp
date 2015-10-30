@@ -21,7 +21,7 @@ namespace boost { namespace simd
 
     TODO Put description here
 
-    This is a convenient alias of is_not_less
+    This is a convenient alias of @ref is_not_less
 **/
   template<typename T> auto is_nlt(T const& x, T const& y) {}
 

@@ -25,7 +25,7 @@ namespace boost { namespace simd
 
     The result type is the one of the first operand.
 
-    This is a convenient alias of bitwise_notor
+    This is a convenient alias of @ref bitwise_notor
 **/
   template<typename T0, typename T1> auto b_notor(T0 const& x, T1 const& y) {}
 

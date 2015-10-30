@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True or False according x is zero or not.
+    Returns True or False according x is @ref Zero or not.
 
     @par Semantic:
 
@@ -44,7 +44,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-predicates
 
-      Returns True or False according x is zero or not.
+      Returns True or False according x is @ref Zero or not.
 
 
       Function object tied to simd::is_eq

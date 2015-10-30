@@ -19,11 +19,11 @@ namespace boost { namespace simd
 
     @ingroup group-boolean
 
-    If cond is true returns zero one returns zero
+    If cond is @ref True returns @ref One else returns @ref Zero
 
     @par Semantic:
 
-    For every parameter of type COND:
+    For every parameter @c cond of type C:
 
     @code
     auto r = if_one_else_zero(cond);
@@ -32,26 +32,26 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    auto r = cond ? one : zero;
+    auto r = cond ? One : Zero;
     @endcode
 
     @par Note:
 
-    The return type is generally COND except in the case where COND is as_logical_t<T>. in which case
+    The return type is generally C except in the case where C is as_logical_t<T>. in which case
     the return type is T.
 
 
     @return a value of the type associated to the logical value cond
 
 **/
-  template<typename T> auto if_one_else_zero(COND const& cond) {}
+  template<typename T> auto if_one_else_zero(C const& cond) {}
 
   namespace functional
   {
     /*!
       @ingroup group-callable-boolean
 
-      If cond is true returns zero one returns zero
+      If cond is @ref True returns @ref Zero one returns zero
 
 
       Function object tied to simd::if_one_else_zero

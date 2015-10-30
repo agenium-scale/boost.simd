@@ -31,15 +31,16 @@ namespace boost { namespace simd
     The code is similar to:
 
     @code
-    as_integer_t<T,unsigned> r = static_cast<as_integer_t<T,unsigned> >(saturate<as_integer_t<T,unsigned> (x)))
+    using T_t = as_integer_t<T,unsigned>;
+    as_integer_t<T,unsigned> r = static_cast<T_t>(saturate<as_integer_t<T,unsigned> (x)))
     @endcode
 
     @par Notes:
 
-    The Inf, Nan and negative values are treated properly and go respectively to
-    Valmax, and Zero of the destination integral type.
+    The @ref Inf, @ref Nan and negative values are treated properly and go respectively to
+    @ref Valmax, and @ref Zero of the destination integral type.
 
-    All values superior (resp. less) than Valmax (resp. Valmin) of the return type
+    All values superior (resp. less) than @ref Valmax (resp. @ref Valmin) of the return type
     are saturated accordingly.
 
     If you do not care about invalid values or overflows toint is speedier.

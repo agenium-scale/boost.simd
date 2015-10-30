@@ -34,13 +34,12 @@ namespace boost { namespace simd
     T r = round2even(x/y);
     @endcode
 
-    for integral types, if y is null, it returns Valmax or Valmin
+    for integral types, if y is null, it returns @ref Valmax or @ref Valmin
     if x is positive (resp. negative) and 0 if x is null.
-    Take also care that dividing Valmin by -1 for signed integral types has
+    Take also care that dividing @ref Valmin by -1 for signed integral types has
     undefined behaviour.
 
-    @see  divides, rec, divs, divfloor,
-    divceil, divround, divfix
+    @see  divides, rec, divs, divfloor, divceil, divround, divfix
 
     @return      a value of the same type as the input.
 

@@ -36,7 +36,7 @@ namespace boost { namespace simd
     @endcode
 
     @par Note
-    If x is non zero the result is non zero. Take care that negatenz distinguish
+    If x is non @ref Zero the result is non zero. Take care that negatenz distinguish
     between the signs of T(0) and -T(0) if T is floating.
 
     @see negatenz,  Mzero,  is_positive, is_negative

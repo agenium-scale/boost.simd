@@ -34,18 +34,17 @@ namespace boost { namespace simd
     T r = trunc(x/y);
     @endcode
 
-    for integral types, if y is null, it returns Valmax (resp. Valmin)
-    if x is positive (resp. negative) and 0 if x is null.
+    for integral types, if y is @ref Zero, it returns @ref Valmax (resp. @ref Valmin)
+    if x is positive (resp. negative) and @ref Zero if x is @ref Zero.
 
     Saturated means that for signed integer types,
-    @c divs(Valmin,-1) returns Valmax.
+    @c divs(Valmin,-1) returns @ref Valmax.
 
     @par Alias
 
     @c rdivide
 
-    @see  divides, rec, divfloor,
-    divceil, divround, divround2even, divfix
+    @see  divides, rec, divfloor, divceil, divround, divround2even, divfix
 
     @return      a value of the same type as the input.
 

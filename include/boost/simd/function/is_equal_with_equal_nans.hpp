@@ -34,7 +34,7 @@ namespace boost { namespace simd
     as_logical_t<T> r = (x == y) || ((x!= x) && (y!= y));
     @endcode
 
-
+    @see Nan
 
     @return a logical value
 

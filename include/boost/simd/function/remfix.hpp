@@ -23,9 +23,9 @@ namespace boost { namespace simd
     The return value is x-n*y, where n is the value x/y,
     rounded toward zero.
 
-    This is a convenient alias of rem
+    This is a convenient alias of @ref rem
 **/
-  template<typename T> auto remfix(T const& x, const T& y) {}
+  template<typename T> auto remfix(T const& x, T const & y) {}
 
   namespace functional
   {

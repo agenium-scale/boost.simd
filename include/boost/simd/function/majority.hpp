@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True if at least two inputs are not zero else False.
+    Returns True if at least two inputs are not @ref Zero else False.
 
     @par Semantic:
 
@@ -46,7 +46,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-predicates
 
-      Returns True if at least two inputs are not zero else False.
+      Returns True if at least two inputs are not @ref Zero else False.
 
 
       Function object tied to simd::majority

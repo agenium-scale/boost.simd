@@ -34,13 +34,12 @@ namespace boost { namespace simd
     T r = ceil(x/y);
     @endcode
 
-    for integral types, if y is null, it returns Valmax (resp. Valmin)
+    for integral types, if y is null, it returns @ref Valmax (resp. @ref Valmin)
     if x is positive (resp. negative), and 0 if x is null.
-    Take care also that dividing Valmin by -1 for signed integral types has
+    Take care also that dividing @ref Valmin by -1 for signed integral types has
     undefined behaviour.
 
-    @see  divides, rec, divs, divfloor,
-    divround, divround2even, divfix
+    @see  divides, rec, divs, divfloor, divround, divround2even, divfix
 
     @return      a value of the same type as the input.
 

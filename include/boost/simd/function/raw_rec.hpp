@@ -40,7 +40,7 @@ namespace boost { namespace simd
     on current hardware but with the least precision.
 
 
-    @see rec
+    @see raw_rec, rec
 
     @return      a value of the type of the input.
 

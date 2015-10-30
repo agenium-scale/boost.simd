@@ -36,9 +36,9 @@ namespace boost { namespace simd
 
     @par Notes:
 
-    The Inf, -Inf and Nan values are treated properly and go respectively to
-    Valmax, Valmin and Zero of the destination integral type
-    All values superior (resp.) less than Valmax (resp. Valmin) of the return type
+    The @ref Inf, @ref Minf and @ref Nan values are treated properly and go respectively to
+    @ref Valmax, @ref Valmin and @ref Zero of the destination integral type
+    All values superior (resp.) less than @ref Valmax (resp. @ref Valmin) of the return type
     are saturated accordingly.
 
     If you do not care about invalid values or overflows toint is speedier.

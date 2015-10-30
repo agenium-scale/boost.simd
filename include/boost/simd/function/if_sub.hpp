@@ -24,9 +24,9 @@ namespace boost { namespace simd
     second and third entries, according to the first entry being False
     or True
 
-    This is a convenient alias of selsub
+    This is a convenient alias of @ref selsub
 **/
- template<typename COND, typename T> auto if_sub(COND const& cond, T const& t1, T const& t2) {}
+ template<typename C, typename T> auto if_sub(C const& cond, T const& t1, T const& t2) {}
 
   namespace functional
   {

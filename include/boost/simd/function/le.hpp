@@ -24,7 +24,7 @@ namespace boost { namespace simd
 
     Infix notation can be used with operator '<='.
 
-    This is a convenient alias of is_less_equal
+    This is a convenient alias of @ref is_less_equal
 **/
   template<typename T> auto le(T const& x, T const& y) {}
 

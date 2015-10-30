@@ -28,11 +28,11 @@ namespace boost { namespace simd
     T r = subs(x, y);
     @endcode
 
-    This function coincides with minus for floating point parameters.
+    This function coincides with @ref minus for floating point parameters.
     For integers is similar to:
 
     @code
-    T r = (x-y > Valmax) ? Valmax : (x-y <  Valmin ? Valmin : x-y);
+    T r = (x-y > @ref Valmax) ? @ref Valmax : (x-y <  @ref Valmin ? @ref Valmin : x-y);
     @endcode
 
     @return      a value of the same type as the input.

@@ -19,9 +19,9 @@ namespace boost { namespace simd
 
     @ingroup group-arithmetic
 
-    Computes the truncation toward zero of its parameter.
+    Computes the truncation toward @ref Zero of its parameter.
 
-    This is a convenient alias of trunc
+    This is a convenient alias of @ref trunc
 **/
   template<typename T> auto fix(T const& x) {}
 
@@ -30,7 +30,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-arithmetic
 
-      Computes the truncation toward zero of its parameter.
+      Computes the truncation toward @ref Zero of its parameter.
 
 
       Function object tied to simd::fix

@@ -21,7 +21,7 @@ namespace boost { namespace simd
 
      Returns the minimum value, ignoring nans.
 
-    This is a convenient alias of minnum
+    This is a convenient alias of @ref minnum
 **/
   template<typename T> auto fmin(T const& x, T const& y) {}
 

@@ -19,17 +19,17 @@ namespace boost { namespace simd
 
     @ingroup group-bitwise
 
-    return the bitwise xor of the two parameters
+    return the bitwise or of the two parameters
 
     The operands must share the same bit size.
 
     The result type is the one of the first operand.
 
-    Infix notation can be used with operator '^',
+    Infix notation can be used with operator '|',
     but this will not work in scalar mode if any
     operand is floating point because of C++ limitations.
 
-    This is a convenient alias of bitwise_xor
+    This is a convenient alias of @ref bitwise_or
 **/
   template<typename T0, typename T1> auto b_or(T0 const& x, T1 const& y) {}
 
@@ -38,7 +38,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-bitwise
 
-      return the bitwise xor of the two parameters
+      return the bitwise or of the two parameters
 
 
       Function object tied to simd::b_or

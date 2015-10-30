@@ -21,7 +21,7 @@ namespace boost { namespace simd
 
     Returns the maximum value, ignoring nans.
 
-    This is a convenient alias of maxnum
+    This is a convenient alias of @ref maxnum
 **/
   template<typename T> auto fmax(T const& x, T const& y) {}
 

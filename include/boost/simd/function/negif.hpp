@@ -19,11 +19,11 @@ namespace boost { namespace simd
 
     @ingroup group-boolean
 
-    The function returns -x if cond is true and x otherwise.
+    The function returns -x if cond is @ref True and x otherwise.
 
     @par Semantic:
 
-    For every parameters of types respectively COND, T:
+    For every parameters of types respectively C, T:
 
     @code
     T r = negif(cond,x);
@@ -40,14 +40,14 @@ namespace boost { namespace simd
     @return a value of the same type as the second parameter
 
 **/
-  template<typename COND, typename T> auto negif(COND const& cond, T const& x) {}
+  template<typename C, typename T> auto negif(C const& cond, T const& x) {}
 
   namespace functional
   {
     /*!
       @ingroup group-callable-boolean
 
-      The function returns -x if cond is true and x otherwise.
+      The function returns -x if cond is @ref True and x otherwise.
 
 
       Function object tied to simd::negif

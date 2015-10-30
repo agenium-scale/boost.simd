@@ -23,7 +23,7 @@ namespace boost { namespace simd
     Infix notation can be used with operator '!='.
 
 
-    This is a convenient alias of is_not_equal
+    This is a convenient alias of @ref is_not_equal
 **/
   template<typename T> auto neq(T const& x) {}
 

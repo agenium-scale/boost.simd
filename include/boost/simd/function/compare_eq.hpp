@@ -21,12 +21,12 @@ namespace boost { namespace simd
 
     Returns a logical scalar value that is the result of the lexicographic
     test for equality of all elements of the entries,
-    i.e. return true if and only if all corresponding entries
+    i.e. return @ref True if and only if all corresponding entries
     elements are equal.
 
     It is probably not what you wish. Have a look to <tt>is_equal</tt>
 
-    This is a convenient alias of compare_equal
+    This is a convenient alias of @ref compare_equal
 **/
   template<typename T> auto compare_eq(T const& x, T const& y) {}
 
@@ -37,7 +37,7 @@ namespace boost { namespace simd
 
       Returns a logical scalar value that is the result of the lexicographic
       test for equality of all elements of the entries,
-      i.e. return true if and only if all corresponding entries
+      i.e. return @ref True if and only if all corresponding entries
       elements are equal.
 
 

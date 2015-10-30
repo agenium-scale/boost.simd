@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-arithmetic
 
-    Computes the truncation toward zero of its parameter.
+    Computes the truncation toward @ref Zero of its parameter.
 
     @par semantic:
     For any given value @c x of type @c T:
@@ -37,7 +37,7 @@ namespace boost { namespace simd
     @par Note:
 
     For floating point number it is also one of the two ouputs of
-    the modf function.
+    the @ref modf function.
     And we have:
 
     @code
@@ -50,7 +50,7 @@ namespace boost { namespace simd
 
     fix
 
-    @see abs, frac, floor, sign
+    @see abs, frac, floor, sign, modf
 
     @return      a value of the same type as the input.
 
@@ -63,7 +63,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-arithmetic
 
-      Computes the truncation toward zero of its parameter.
+      Computes the truncation toward @ref Zero of its parameter.
 
 
       Function object tied to simd::trunc

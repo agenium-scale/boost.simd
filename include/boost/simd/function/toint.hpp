@@ -50,16 +50,16 @@ namespace boost { namespace simd
     @endcode
 
 
-    will return false whilst the test:
+    will return @ref False whilst the test:
 
     @code
     Inf<double>() == 1.0/0.0
     @endcode
 
 
-    returns true !)
+    returns @ref True !)
 
-    If you intend to use nans and infs entries,  consider using @c toints instead.
+    If you intend to use @ref Nan and @ref Inf entries,  consider using @ref toints instead.
     Nethertheless, on integral typed values, @c toint acts as identity.
 
     @see toints

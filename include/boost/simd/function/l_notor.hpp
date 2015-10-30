@@ -21,11 +21,11 @@ namespace boost { namespace simd
 
     return the logical or of the negation of the first parameter and the second parameter.
 
-    The operands must share the same Cardinal_of value.
+    The operands must share the same @ref cardinal_of value.
 
     The result type is logical type associated to the first parameter.
 
-    This is a convenient alias of logical_notor
+    This is a convenient alias of @ref logical_notor
 **/
   template<typename T1, typename T2> auto l_notor(T1 const& x, T2 const& y) {}
 

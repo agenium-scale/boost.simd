@@ -34,9 +34,9 @@ namespace boost { namespace simd
     T r = trunc(x/y);
     @endcode
 
-    for integral types, if y is null, it returns Valmax (resp. Valmin)
-    if x is positive (resp. negative) and 0 if x is null.
-    Take also care that dividing Valmin by -1 for signed integral types has
+    for integral types, if y is @ref Zero, it returns @ref Valmax (resp. @ref Valmin)
+    if x is positive (resp. negative) and @ref Zero if x is @ref Zero.
+    Take also care that dividing @ref Valmin by -1 for signed integral types has
     undefined behaviour.
 
     @par Alias

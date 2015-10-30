@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    This is a convenient alias of is_not_less_equal
+    This is a convenient alias of @ref is_not_less_equal
 **/
   template<typename T> auto is_nle(T const& x, T const& y) {}
 

@@ -30,18 +30,18 @@ namespace boost { namespace simd
     is equivalent to:
 
     @code
-    T r = (is_nan(x)) ? x :(x < zero) ? pi : zero;
+    T r = (@ref is_nan(x)) ? x :(x < @ref Zero) ? pi : @ref Zero;
     @endcode
 
     @par Note:
 
-    Returns 0 or \f$\pi\f$  (or Nan if and only if the input is Nan)
-    according to the input sign,
+    Returns 0 or \f$\pi\f$  (or @ref Nan if and only if the input is Nan)
+    according to the input @ref sign,
 
     This function is the restriction to real numbers of the complex
     argument function.
 
-    @par Alias
+    @par Alias:
 
     angle
 

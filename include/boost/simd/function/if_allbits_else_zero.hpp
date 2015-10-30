@@ -20,9 +20,9 @@ namespace boost { namespace simd
     @ingroup group-bitwise
 
     Returns a mask of bits. All ones if the
-    input element is non zero else all zeros.
+    input element is non @ref Zero else all zeros.
 
-    This is a convenient alias of genmask
+    This is a convenient alias of @ref genmask
 **/
   template<typename T> auto if_allbits_else_zero(T const& x) {}
 
@@ -32,7 +32,7 @@ namespace boost { namespace simd
       @ingroup group-callable-bitwise
 
       Returns a mask of bits. All ones if the
-      input element is non zero else all zeros.
+      input element is non @ref Zero else all zeros.
 
 
       Function object tied to simd::if_allbits_else_zero

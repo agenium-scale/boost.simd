@@ -22,7 +22,7 @@ namespace boost { namespace simd
     return the bitwise bitwise_not of the entry
     Infix notation can be used with operator '~'
 
-    This is a convenient alias of complement
+    This is a convenient alias of @ref complement
 **/
   template<typename T> auto bitwise_not(T const& x) {}
 

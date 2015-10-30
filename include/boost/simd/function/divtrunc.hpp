@@ -21,7 +21,7 @@ namespace boost { namespace simd
 
     Computes the truncated division of its parameters.
 
-    This is a convenient alias of divfix
+    This is a convenient alias of @ref divfix
 **/
   template<typename T> auto divtrunc(T const& x, T const& y) {}
 
@@ -33,7 +33,7 @@ namespace boost { namespace simd
       Computes the truncated division of its parameters.
 
 
-      Function object tied to simd::divtrunc
+      Function object tied to divtrunc
 
       @see simd::divtrunc
     **/

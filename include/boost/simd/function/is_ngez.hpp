@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True if x is not greater or equal to zero else returns False.
+    Returns True if x is not greater or equal to @ref Zero else returns False.
 
     @par Semantic:
 
@@ -49,7 +49,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-predicates
 
-      Returns True if x is not greater or equal to zero else returns False.
+      Returns True if x is not greater or equal to @ref Zero else returns False.
 
 
       Function object tied to simd::is_nge

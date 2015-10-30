@@ -34,7 +34,7 @@ namespace boost { namespace simd
     @endcode
 
     @par Note
-    If y is zero the result is zero. If you want to avoid that use negatenz.
+    If y is @ref Zero the result is zero. If you want to avoid that use negatenz.
 
     @see sign, negatenz
 

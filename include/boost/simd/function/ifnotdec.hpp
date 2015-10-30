@@ -19,11 +19,11 @@ namespace boost { namespace simd
 
     @ingroup group-boolean
 
-    Decrements a value by 1 if a predicate is False.
+    Decrements a value by @ref One if a predicate is @ref False.
 
     @par Semantic:
 
-    For every parameters of types respectively COND, T:
+    For every parameters of types respectively C, T:
 
     @code
     T r = ifnotdec(cond,t);
@@ -32,7 +32,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T r = cond : t : t-one;
+    T r = cond : t : t-One<T>();
     @endcode
 
     @return a value of the same type as the second parameter
@@ -45,7 +45,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-boolean
 
-      Decrements a value by 1 if a predicate is False.
+      Decrements a value by @ref One if a predicate is False.
 
 
       Function object tied to simd::ifnotdec

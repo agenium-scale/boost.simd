@@ -18,18 +18,18 @@ namespace boost { namespace simd
   /*!
     @ingroup group-boolean
 
-    If cond is true returns t else returns f
+    If cond is @ref True returns t else returns f
 
-    This is a convenient alias of if_else
+    This is a convenient alias of @ref if_else
   **/
-  template<typename COND typename T1, typename T2>
-  auto sel(COND const& cond, T1 const& t, T2 const& f );
+  template<typename C typename T1, typename T2>
+  auto sel(C const& cond, T1 const& t, T2 const& f );
   namespace functional
   {
     /*!
       @ingroup group-callable-boolean
 
-      If cond is true returns t else returns f
+      If cond is @ref True returns t else returns f
 
 
       Function object tied to boost::simd::sel

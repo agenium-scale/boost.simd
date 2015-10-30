@@ -23,7 +23,7 @@ namespace boost { namespace simd
 
     Infix notation can be used with operator '>='.
 
-    This is a convenient alias of is_greater_equal
+    This is a convenient alias of @ref is_greater_equal
 **/
   template<typename T> auto ge(T const& x, T const& y) {}
 

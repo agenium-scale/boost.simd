@@ -34,7 +34,7 @@ namespace boost { namespace simd
 
 
 **/
-  template<typename T> auto two_add(T const& x, const T& y) {}
+  template<typename T> auto two_add(T const& x, T const& y) {}
 
   namespace functional
   {

@@ -20,7 +20,7 @@ namespace boost { namespace simd
     @ingroup group-bitwise
 
     Returns a mask of bits. All ones if the
-    input element is non zero else all zeros.
+    input element is non @ref Zero else all zeros.
 
     @par semantic:
     For any given value @c x of type @c T:
@@ -52,7 +52,7 @@ namespace boost { namespace simd
       @ingroup group-callable-bitwise
 
       Returns a mask of bits. All ones if the
-      input element is non zero else all zeros.
+      input element is non @ref Zero else all zeros.
 
 
       Function object tied to simd::genmask

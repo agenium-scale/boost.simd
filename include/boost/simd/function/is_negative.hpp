@@ -44,8 +44,8 @@ namespace boost { namespace simd
     @par Note:
 
     Mzero is the floating point 'minus zero',
-    i.e. all bits are zero but the sign bit.
-    Such a value is treated as zero by ieee standards.
+    i.e. all bits are @ref Zero but the sign bit.
+    Such a value is treated as @ref Zero by ieee standards.
 
     behaviour of is_negative on nan is undefined.
 

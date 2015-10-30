@@ -24,7 +24,7 @@ namespace boost { namespace simd
     of elements as the first parameter
     Infix notation can be used with operator '>>'
 
-    This is a convenient alias of shift_right
+    This is a convenient alias of @ref shift_right
 **/
   template<typename T> auto shra(T const& x) {}
 

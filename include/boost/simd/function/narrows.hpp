@@ -26,7 +26,7 @@ namespace boost { namespace simd
     Of course the applicability is conditioned by the existence of compatible
     SIMD vector types
 
-    This is a convenient alias of groups
+    This is a convenient alias of @ref groups
 **/
   template<typename T> auto narrows(T const& x) {}
 

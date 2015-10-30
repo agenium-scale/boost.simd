@@ -19,14 +19,13 @@ namespace boost { namespace simd
 
     @ingroup group-boolean
 
-
     The function returns the second entry or the sum of the second
-    and third entries, according to the first entry being False or
-    True
+    and third entries, according to the first entry being @ref False or
+    @ref True
 
-    This is a convenient alias of seladd
+    This is a convenient alias of @ref seladd
 **/
-  template<typename COND, typename T> auto if_add(COND const& cond, T const& t1, T const& t2) {}
+  template<typename C, typename T> auto if_add(C const& cond, T const& t1, T const& t2) {}
 
 
   namespace functional
@@ -34,7 +33,9 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-boolean
 
-
+      The function returns the second entry or the sum of the second
+      and third entries, according to the first entry being @ref False or
+      @ref True
 
       Function object tied to simd::if_add
 

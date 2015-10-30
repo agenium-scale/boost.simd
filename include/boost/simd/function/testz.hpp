@@ -21,9 +21,9 @@ namespace boost { namespace simd
 
     Returns True is only if all bits set in x are not set in y
 
-    This is a convenient alias of is_included_c
+    This is a convenient alias of @ref is_included_c
 **/
-  template<typename T> auto testz(T0 const& x, T1 const& y) {}
+  template<typename T> auto testz(T1 const& x, T2 const& y) {}
 
   namespace functional
   {

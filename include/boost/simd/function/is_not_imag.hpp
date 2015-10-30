@@ -21,7 +21,7 @@ namespace boost { namespace simd
 
     Returns True or False according x is not pure imaginary or is.
 
-    For non complex numbers it is true except if x is zero.
+    For non complex numbers it is @ref True except if x is zero.
 
     @par Semantic:
 

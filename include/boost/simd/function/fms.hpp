@@ -25,7 +25,7 @@ namespace boost { namespace simd
     For any given value @c x,  @c y,  @c z of type @c T:
 
     @code
-    T r = fnsm(x, y, z);
+    T r = fms(x, y, z);
     @endcode
 
     The code is similar to:
