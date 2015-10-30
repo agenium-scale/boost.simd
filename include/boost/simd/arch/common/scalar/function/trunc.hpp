@@ -65,6 +65,7 @@ namespace boost { namespace simd { namespace ext
       return a0;
     }
   };
+
   BOOST_DISPATCH_OVERLOAD ( trunc_
                           , (typename A0)
                           , bd::cpu_

@@ -34,6 +34,10 @@ namespace boost { namespace simd
     T r = T(1)/x;
     @endcode
 
+    @par Note:
+    Speed can be sometimes gained using rec(x, fast_) but fast means here
+    that the computation is possibly done through some
+    low precision intrinsic. The result can be not fully accurate.
 
 
     @return      a value of the type of the input.

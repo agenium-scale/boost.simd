@@ -29,6 +29,8 @@ namespace boost { namespace simd
     T r = sqrt(x);
     @endcode
 
+    If full accuracy is not needed a sometimes faster less accurate version of the function
+    can be used callling : sqrt(x, fast_).
 
     @return      a value of the same type as the input.
 

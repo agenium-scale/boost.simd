@@ -16,6 +16,7 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
+#include <boost/simd/options.hpp>
 
 
 STF_CASE_TPL (" toint real",  STF_IEEE_TYPES)
@@ -68,3 +69,20 @@ STF_CASE_TPL (" toint signed",  STF_SIGNED_INTEGRAL_TYPES)
 } // end of test for signed_int_
 
 
+STF_CASE_TPL (" toint real fast",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::toint;
+  using bs::fast_;
+   using r_t = decltype(toint(T()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, (bd::as_integer_t<T, signed>));
+
+  // specific values tests
+  STF_EQUAL(toint(bs::Mone<T>(), fast_), bs::Mone<r_t>());
+  STF_EQUAL(toint(bs::One<T>(), fast_),  bs::One<r_t>());
+  STF_EQUAL(toint(bs::Zero<T>(), fast_), bs::Zero<r_t>());
+
+} // end of test for floating_

@@ -25,6 +25,7 @@
 #include <boost/simd/constant/minexponent.hpp>
 #include <boost/simd/constant/smallestposval.hpp>
 #include <boost/simd/function/scalar/dec.hpp>
+#include <boost/simd/options.hpp>
 
 STF_CASE_TPL("ldexp", STF_IEEE_TYPES)
 {
@@ -76,4 +77,30 @@ STF_CASE_TPL("ldexp", STF_INTEGRAL_TYPES)
   STF_EQUAL(ldexp(bs::One <T>(), 2), r_t(4));
   STF_EQUAL(ldexp(bs::Three<T>(), 2), r_t(12));
   STF_EQUAL(ldexp(bs::Mone<T>(), 2), r_t(-4));
+}
+
+STF_CASE_TPL("ldexp fast", STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::ldexp;
+
+  using bs::dec;
+  using bs::fast_;
+  using iT = bd::as_integer_t<T>;
+  using r_t = decltype(ldexp(T(), iT()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, T);
+
+#ifndef STF_NO_INVALIDS
+  STF_EQUAL(ldexp(bs::Inf<T>(),  2, fast_), bs::Inf<r_t>());
+  STF_EQUAL(ldexp(bs::Minf<T>(), 2, fast_), bs::Minf<r_t>());
+  STF_IEEE_EQUAL(ldexp(bs::Nan<T>(),  2, fast_), bs::Nan<r_t>());
+#endif
+  STF_EQUAL(ldexp(bs::Mone<T>(), 2, fast_), -bs::Four<r_t>());
+  STF_EQUAL(ldexp(bs::One<T>(),  2, fast_), bs::Four<r_t>());
+  STF_EQUAL(ldexp(bs::Zero<T>(), 2, fast_), bs::Zero<r_t>());
+  STF_EQUAL(ldexp(bs::One <T>(), bs::Minexponent<T>()), bs::Smallestposval<r_t>());
+  STF_EQUAL(ldexp(bs::One<T>()-bs::Halfeps<T>(),  bs::Maxexponent<T>(), fast_), bs::Valmax<T>()/2);
 }

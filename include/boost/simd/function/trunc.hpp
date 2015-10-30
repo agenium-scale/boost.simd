@@ -36,18 +36,21 @@ namespace boost { namespace simd
 
     @par Note:
 
-    For floating point number it is also one of the two ouputs of
-    the @ref modf function.
-    And we have:
+      - For floating point number it is also one of the two ouputs of
+        the @ref modf function.
+        And we have:
+        @code
+        trunc(x) + frac(x) == x;
+        @endcode
+        except for nans
 
-    @code
-    trunc(x) + frac(x) == x;
-    @endcode
+      - If large numbers correct behaviour is not needed trunc(x, fast_) can be used,
+        but 'fast_' means that no provisions are taken for floating values  too large to fit
+         in the same size integer type.
 
-    except for nans
 
-    @par Alias
 
+    @par Alias:
     fix
 
     @see abs, frac, floor, sign, modf

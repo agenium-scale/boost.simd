@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_TOINT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_TOINT_HPP_INCLUDED
 
+#include <boost/simd/options.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
@@ -41,6 +42,21 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE result_t operator() ( A0  a0) const BOOST_NOEXCEPT
     {
       return result_t(a0);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( toint_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::unspecified_<A0> >
+                          , boost::simd::fast_tag
+                          )
+  {
+    using result_t = bd::as_integer_t<A0, signed>;
+    BOOST_FORCEINLINE result_t operator() ( A0 const& a0
+                                          , fast_tag const&) const BOOST_NOEXCEPT
+    {
+      return toint(a0);
     }
   };
 } } }
