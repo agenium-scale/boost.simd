@@ -20,11 +20,11 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True if x is negative else False.
+    Returns @ref True if x is negative else @ref False.
 
-    This function differs from is_ltz from floating point argument,
-    because Mzero is negative but not less than zero.  and Mzero is
-    not positive and not greater than zero, It's probably is_ltz that
+    This function differs from @ref is_ltz for floating point arguments,
+    because @ref Mzero is negative but not less than zero, and @ref Mzero is
+    not positive and not greater than zero, It's probably @ref is_ltz that
     you want.
 
     @par Semantic:
@@ -39,16 +39,18 @@ namespace boost { namespace simd
     if T is signed
       as_logical_t<T> r = bitofsign(x) == 1;
     else
-      as_logical_t<T> r = False;
+      as_logical_t<T> r = @ref False;
     @endcode
 
     @par Note:
 
-    Mzero is the floating point 'minus zero',
+    @ref Mzero is the floating point 'minus zero',
     i.e. all bits are @ref Zero but the sign bit.
-    Such a value is treated as @ref Zero by ieee standards.
+    Such a value is treated as @ref Zero by IEEE standards.
 
-    behaviour of is_negative on nan is undefined.
+    behaviour of is_negative on @ref Nan entry is undefined.
+
+    @see is_positive,  Mzero, bitofsign
 
     @return a logical value
 
@@ -60,8 +62,8 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-predicates
 
-      Returns True if x is negative else False.
-
+      Returns @ref True if x is negative else @ref False.
+      This function differs from @ref is_ltz !
 
       Function object tied to simd::is_negative
 

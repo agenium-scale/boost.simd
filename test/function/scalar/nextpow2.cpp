@@ -21,6 +21,8 @@
 #include <boost/simd/constant/three.hpp>
 #include <boost/simd/constant/mtwo.hpp>
 #include <boost/simd/constant/mthree.hpp>
+#include <boost/simd/constant/valmax.hpp>
+#include <boost/simd/constant/valmin.hpp>
 
 STF_CASE_TPL (" nextpow2 real",  STF_IEEE_TYPES)
 {
@@ -59,6 +61,7 @@ STF_CASE_TPL (" nextpow2 unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
   STF_EQUAL(nextpow2(bs::Zero<T>()), bs::Zero<r_t>());
   STF_EQUAL(nextpow2(bs::Two <T>()), bs::One<r_t>());
   STF_EQUAL(nextpow2(bs::Three <T>()), bs::One<r_t>());
+  STF_EQUAL(nextpow2(bs::Valmax <T>()), r_t(sizeof(T)*8-1));
 }
 
 STF_CASE_TPL (" nextpow2 signed_int",  STF_SIGNED_INTEGRAL_TYPES)
@@ -80,4 +83,6 @@ STF_CASE_TPL (" nextpow2 signed_int",  STF_SIGNED_INTEGRAL_TYPES)
   STF_EQUAL(nextpow2(bs::Three <T>()), bs::One<r_t>());
   STF_EQUAL(nextpow2(bs::Mtwo <T>()), bs::One<r_t>());
   STF_EQUAL(nextpow2(bs::Mthree <T>()), bs::One<r_t>());
+  STF_EQUAL(nextpow2(bs::Valmin <T>()), r_t(sizeof(T)*8)-2);
+  STF_EQUAL(nextpow2(bs::Valmax <T>()), r_t(sizeof(T)*8)-2);
 }

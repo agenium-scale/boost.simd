@@ -10,8 +10,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_IS_FINITE_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_IS_FINITE_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_IS_NOT_INVALID_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_IS_NOT_INVALID_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
@@ -22,25 +22,9 @@ namespace boost { namespace simd
 
     Returns @ref True if x is not inf, -inf or nan, else returns @ref False.
 
-    @par Semantic:
-
-    @code
-    as_logical_t<T> r = is_finite(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    as_logical_t<T> r = x-x ==  0;
-    @endcode
-
-    @par Alias:
-    is_not_invalid
-
-    @return a logical value
-
+    This is a convenient alias of @ref is_finite
 **/
-  template<typename T> auto is_finite(T const& x) {}
+  template<typename T> auto is_not_invalid(T const& x) {}
 
   namespace functional
   {
@@ -50,17 +34,17 @@ namespace boost { namespace simd
       Returns @ref True if x is not inf, -inf or nan, else returns @ref False.
 
 
-      Function object tied to simd::is_finite
+      Function object tied to simd::is_not_invalid
 
-      @see simd::is_finite
+      @see simd::is_not_invalid
     **/
-    const boost::dispatch::functor<tag::is_finite_> is_finite = {};
+    const boost::dispatch::functor<tag::is_not_invalid_> is_not_invalid = {};
   }
 } }
 #endif
 
-#include <boost/simd/function/definition/is_finite.hpp>
+#include <boost/simd/function/definition/is_not_invalid.hpp>
 #include <boost/simd/arch/common/scalar/function/is_finite.hpp>
-#include <boost/simd/function/simd/is_finite.hpp>
+#include <boost/simd/function/simd/is_not_invalid.hpp>
 
 #endif

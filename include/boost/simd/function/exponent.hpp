@@ -36,8 +36,8 @@ namespace boost { namespace simd
 
     @par Note:
 
-     The sign \f$ \pm \f$ , exponent e and mantissa m of a floating point entry a are related by
-    \f$a = \pm m\times 2^e\f$, with m between one (included) and two (excluded).
+     The sign \f$ \pm \f$ , exponent e and mantissa m of a floating point entry x are related by
+    x = \f$\pm m\times 2^e\f$, with m between one (included) and two (excluded).
 
     For integral type inputs exponent is always 0 and mantissa reduces to identity.
 

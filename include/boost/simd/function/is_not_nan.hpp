@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns False or True according x is nan or not.
+    Returns @ref False or @ref True according x is @ref Nan or not.
 
     @par Semantic:
 
@@ -45,7 +45,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-predicates
 
-      Returns False or True according x is nan or not.
+      Returns @ref False or @ref True according x is @ref Nan or not.
 
 
       Function object tied to simd::is_not_nan

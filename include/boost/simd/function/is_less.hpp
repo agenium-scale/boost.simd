@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True< or False according x is less than y or not.
+    Returns  @ref True or @ref False according x is less than y or not.
    Infix notation can be used with operator '<'.
 
 
@@ -54,7 +54,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-predicates
 
-      Returns True< or False according x is less than y or not.
+      Returns True < or @ref False according x is less than y or not.
      Infix notation can be used with operator '<'.
 
 

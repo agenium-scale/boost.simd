@@ -20,9 +20,9 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True or False according x is not pure imaginary or is.
+    Returns @ref True or @ref False according x is not pure imaginary or is.
 
-    For non complex numbers it is @ref True except if x is zero.
+    For non complex numbers it is @ref True except if x is @ref Zero.
 
     @par Semantic:
 
@@ -47,7 +47,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-predicates
 
-      Returns True or False according x is not pure imaginary or is.
+      Returns @ref True or @ref False according x is not pure imaginary or is.
 
 
       Function object tied to simd::is_not_imag

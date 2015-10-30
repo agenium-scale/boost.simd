@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True or False according x and y are equal or not.
+    Returns @ref True or @ref False according x and y are equal or not.
     Nans are considered equal
 
     @par Semantic:
@@ -47,7 +47,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-predicates
 
-      Returns True or False according x and y are equal or not.
+      Returns @ref True or @ref False according x and y are equal or not.
       Nans are considered equal
 
 

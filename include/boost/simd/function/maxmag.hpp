@@ -34,7 +34,7 @@ namespace boost { namespace simd
     T r = abs(x) > abs(y) ? x : abs(y) > abs(x) ? y : max(x, y);
     @endcode
 
-
+    @see max, maxnum, maxnummag
 
     @return a value of same type as the inputs
 

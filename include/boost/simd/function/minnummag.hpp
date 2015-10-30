@@ -34,7 +34,7 @@ namespace boost { namespace simd
     T r =  isnan(x) ? y : (isnan(y) ? x : minmag(x, y));;
     @endcode
 
-
+    @see min, minnum, minmag
 
     @return a value of same type as the inputs
 

@@ -21,9 +21,9 @@ namespace boost { namespace simd
     @ingroup group-ieee
 
     Returns the sign of x. i.e. -1, 0 or 1, according
-    x is less than zero, @ref Zero or greater than zero.
+    x is less than @ref Zero, @ref Zero or greater than @ref Zero.
 
-    For floating,  the sign of nan is nan
+    For floating,  the sign of @ref Nan is @ref Nan
 
     @par Semantic:
 
@@ -34,7 +34,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T r = (x > 0) ? T(1) : ((x < 0) ? T(-1) : ((x == 0) ? 0 : @ref Nan<T>()));
+    T r = (x > 0) ? T(1) : ((x < 0) ? T(-1) : ((x == 0) ? 0 : Nan<T>()));
     @endcode
 
 
@@ -49,7 +49,8 @@ namespace boost { namespace simd
       @ingroup group-callable-ieee
 
       Returns the sign of x. i.e. -1, 0 or 1, according
-      x is less than zero, @ref Zero or greater than zero.
+      x is less than @ref Zero, @ref Zero or greater than @ref Zero.
+      For floating,  the sign of @ref Nan is @ref Nan
 
 
       Function object tied to simd::sign

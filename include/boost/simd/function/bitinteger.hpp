@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
     Transforms a floating point value in a pattern of bits
     stored in an integer with different formulas according to
-    the floating point sign (the converse of bitfloating)
+    the floating point @ref bitofsign (the converse of @ref bitfloating)
 
     @par Semantic:
 
@@ -39,6 +39,10 @@ namespace boost { namespace simd
            Signmask<as_integer_t<T>>()-bitwise_cast<as_integer_t<T>>(x);
     @endcode
 
+    @par Note:
+    This is an utility function related to the computation of flating successors or predecessors
+
+    @see next, prev, successor,  predecessor,  nextafter
 
     @return a value of the integer type associated to the input
 

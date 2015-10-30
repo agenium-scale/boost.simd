@@ -38,6 +38,7 @@ namespace boost { namespace simd
         r =  r > x[i] ? x[i] : r;
     @endcode
 
+    @see min, minnummag, minmag
 
     @return a value of the scalar type associated to the parameter
 

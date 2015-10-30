@@ -41,6 +41,7 @@ namespace boost { namespace simd
       r = 1;
     @endcode
 
+    @see ulp,  ulpdist,  Eps
 
     @return a value of same type as the input
 

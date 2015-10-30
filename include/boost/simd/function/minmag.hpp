@@ -34,6 +34,7 @@ namespace boost { namespace simd
     T r = abs(x) < abs(y) ? x : abs(y) < abs(x) ? y : min(x, y);
     @endcode
 
+   @see min, minnummag, minnum
 
 
     @return a value of same type as the inputs

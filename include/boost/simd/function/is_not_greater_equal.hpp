@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True if x is not greater or equal to y else returns False.
+    Returns @ref True if x is not greater or equal to y else returns @ref False.
 
     @par Semantic:
 
@@ -56,7 +56,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-predicates
 
-      Returns True if x is not greater or equal to y else returns False.
+      Returns @ref True if x is not greater or equal to y else returns @ref False.
 
 
       Function object tied to simd::is_not_greater_equal

@@ -20,23 +20,9 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True if x is  inf, -inf or nan, else returns False.
+    Returns @ref True if x is inf, -inf or nan else returns @ref False
 
-    @par Semantic:
-
-    @code
-    as_logical_t<T> r = is_not_finite(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    as_logical_t<T> r = x-x != 0;
-    @endcode
-
-
-    @return a logical value
-
+    This is a convenient alias of @ref is_invalid
 **/
   template<typename T> auto is_not_finite(T const& x) {}
 
@@ -45,7 +31,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-predicates
 
-      Returns True if x is  inf, -inf or nan, else returns False.
+      Returns @ref True if x is inf, -inf or nan else returns @ref False
 
 
       Function object tied to simd::is_not_finite
@@ -58,7 +44,7 @@ namespace boost { namespace simd
 #endif
 
 #include <boost/simd/function/definition/is_not_finite.hpp>
-#include <boost/simd/arch/common/scalar/function/is_not_finite.hpp>
+#include <boost/simd/arch/common/scalar/function/is_invalid.hpp>
 #include <boost/simd/function/simd/is_not_finite.hpp>
 
 #endif

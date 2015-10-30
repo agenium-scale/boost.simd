@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
+    Returns @ref True  or @ref False depending on whether x is
+    not less or equal to y or is.
+
     This is a convenient alias of @ref is_not_less_equal
 **/
   template<typename T> auto is_nle(T const& x, T const& y) {}

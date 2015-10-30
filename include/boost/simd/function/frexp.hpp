@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     @ingroup group-ieee
 
-    Computes the mantissa and the exponent of the input
+    Computes a mantissa and an exponent pair for the input
 
     @code
     m = frexp(x, e);
@@ -43,11 +43,12 @@ namespace boost { namespace simd
 
     @par Note:
 
-    @c frexp splits a floating point value @c v f in its signed mantissa @c m and
-    exponent @c e so that:  @f$v = m\times 2^e@f$, with absolute value of @c m between 0.5 (included)
-    and 1 (excluded)
+    @c frexp splits a floating point value @c v f in a signed mantissa @c m and
+    an exponent @c e so that:  @f$v = m\times 2^e@f$, with absolute value of @c m
+    between 0.5 (included) and 1 (excluded)
 
-    Take care that these results differ from the returns of the functions mantssa and exponent
+    Take care that these results differ from the returns of the functions @ref mantissa
+    and @ref exponent
 
     @see exponent,  mantissa
 

@@ -230,7 +230,6 @@ set ( SOURCES
    is_nltz.cpp
    is_not_denormal.cpp
    is_not_equal_with_equal_nans.cpp
-   is_not_finite.cpp
    is_not_greater_equal.cpp
    is_not_greater.cpp
    is_not_imag.cpp
@@ -374,6 +373,8 @@ set ( SOURCES
    itrunc.cpp
    angle.cpp
    b_xor.cpp
+   is_not_finite.cpp
+   is_not_invalid.cpp
   )
 
 make_unit( "boost.simd.function.scalar"     ${SOURCES})

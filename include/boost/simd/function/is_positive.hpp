@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True if x is positive else False.
+    Returns @ref True if x is positive else @ref False.
 
     This function differs from @ref is_gtz for floating point arguments,
     because @ref Zero is positive but not greater than 0, and @ref Mzero is
@@ -38,9 +38,9 @@ namespace boost { namespace simd
 
     @code
     if T is signed
-      as_logical_t<T> r = @ref bitofsign(x) == 0;
+      as_logical_t<T> r = bitofsign(x) == 0;
     else
-      as_logical_t<T> r = @ref True;
+      as_logical_t<T> r = True ;
     @endcode
 
 
@@ -52,6 +52,8 @@ namespace boost { namespace simd
 
     behaviour of is_positive on @ref Nan is undefined.
 
+    @see is_negative,  Mzero, bitofsign
+
     @return a logical value
 
 **/
@@ -62,7 +64,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-predicates
 
-      Returns True if x is positive else False.
+      Returns @ref True if x is positive else @ref False.
 
 
       Function object tied to simd::is_positive

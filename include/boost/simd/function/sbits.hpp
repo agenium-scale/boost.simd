@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     @ingroup group-ieee
 
-    Returns the signed integer value which has the same bits of the input
+    Returns the signed integer value which has the bit pattern of the input
 
     @par Semantic:
 
@@ -45,7 +45,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-ieee
 
-      Returns the signed integer value which has the same bits of the input
+      Returns the signed integer value which has the bit pattern of the input
 
 
       Function object tied to simd::sbits
