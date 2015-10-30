@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/constant/fact_10.hpp>
 #include <boost/simd/as.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 
 
 

@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/constant/fact_6.hpp>
 #include <boost/simd/as.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 
 STF_CASE_TPL( "Check fact_6 behavior for integral types"
             , (std::uint16_t)(std::uint32_t)(std::uint64_t)(std::int16_t)(std::int32_t)(std::int64_t)

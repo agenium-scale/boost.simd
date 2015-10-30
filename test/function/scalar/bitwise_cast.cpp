@@ -8,7 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/bitwise_cast.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <nontrivial.hpp>
 #include <boost/dispatch/as.hpp>
 

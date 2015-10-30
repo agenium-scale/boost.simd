@@ -7,7 +7,7 @@
 */
 //==================================================================================================
 #include <boost/simd/cardinal_of.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 
 using namespace boost::simd;
 

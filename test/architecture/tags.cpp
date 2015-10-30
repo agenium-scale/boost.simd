@@ -7,7 +7,7 @@
 */
 //==================================================================================================
 #include <boost/simd/arch/tags.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 
 STF_CASE( "Check for basic SIMD tag parent" )
 {

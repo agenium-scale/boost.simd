@@ -10,7 +10,7 @@
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/as.hpp>
 #include <limits>
-#include <stf.hpp>
+#include <simd_test.hpp>
 
 STF_CASE_TPL( "Check valmax behavior"
             , (double)(float)

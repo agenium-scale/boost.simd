@@ -8,7 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/bitwise_or.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <nontrivial.hpp>
 
 

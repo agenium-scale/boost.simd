@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/constant/sqrt_1o_5.hpp>
 #include <boost/simd/as.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 
 STF_CASE_TPL( "Check sqrt_1o_5 behavior for integral types"
             , (std::uint8_t)(std::uint16_t)(std::uint32_t)(std::uint64_t)

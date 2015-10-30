@@ -8,7 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/if_else.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <nontrivial.hpp>
 
 // // PAS FINI

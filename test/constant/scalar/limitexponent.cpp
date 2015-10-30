@@ -10,7 +10,7 @@
 #include <boost/simd/constant/limitexponent.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/as.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 
 STF_CASE_TPL( "Check limitexponent behavior for integral types"
             , (std::uint8_t)(std::uint16_t)(std::uint32_t)(std::uint64_t)

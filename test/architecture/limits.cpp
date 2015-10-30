@@ -8,7 +8,7 @@
 //==================================================================================================
 #include <boost/simd/arch/limits.hpp>
 #include <boost/simd/arch/spec.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 
 using namespace boost::simd;
 

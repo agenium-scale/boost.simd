@@ -8,7 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/multiplies.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <nontrivial.hpp>
 
 STF_CASE_TPL( "Check multiplies behavior with floating", (double)(float) )

@@ -10,7 +10,7 @@
 #include <boost/simd/constant/bitincrement.hpp>
 //#include <boost/simd/function/next.hpp>
 #include <boost/simd/as.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 //TODO
 STF_CASE_TPL( "Check bitincrement behavior for integral types"
             , (std::uint8_t)(std::uint16_t)(std::uint32_t)(std::uint64_t)

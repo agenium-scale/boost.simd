@@ -11,7 +11,7 @@
 #include <boost/simd/constant/valmax.hpp>
 //#include <boost/simd/constant/itrunc.hpp>
 #include <boost/simd/as.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 //TODO
 // STF_CASE_TPL( "Check sqrtvalmax behavior for integral types"
 //             , (std::uint8_t)(std::uint16_t)(std::uint32_t)(std::uint64_t)
