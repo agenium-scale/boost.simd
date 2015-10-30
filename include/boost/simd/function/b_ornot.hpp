@@ -26,7 +26,7 @@ namespace boost { namespace simd
 
     The result type is the one of the first operand.
 
-    This is a convenient alias of bitwise_ornot
+    This is a convenient alias of @ref bitwise_ornot
 **/
   template<typename T0, typename T1> auto b_ornot(T0 const& x, T1 const& y) {}
 

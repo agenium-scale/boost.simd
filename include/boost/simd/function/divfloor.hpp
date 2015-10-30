@@ -35,13 +35,12 @@ namespace boost { namespace simd
     T r = floor(x/y);
     @endcode
 
-    for integral types, if y is null, it returns Valmax or Valmin
-    if x is positive (resp. negative) and 0 if x is null.
-    Take also care that dividing Valmin by -1 for signed integral types has
+    for integral types, if y is @ref Zero, it returns @ref Valmax or @ref Valmin
+    if x is positive (resp. negative) and @ref Zero if x is @ref Zero.
+    Take also care that dividing @ref Valmin by -1 for signed integral types has
     undefined behaviour.
 
-    @see  divides, rec, divs, divfix,
-    divround, divround2even
+    @see  divides, rec, divs, divfix, divround, divround2even
 
     @return      a value of the same type as the input.
 

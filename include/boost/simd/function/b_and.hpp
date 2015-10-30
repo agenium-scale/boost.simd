@@ -30,7 +30,7 @@ namespace boost { namespace simd
     but this will not work in scalar mode if any
     operand is floating point because of C++ limitations.
 
-    This is a convenient alias of bitwise_and
+    This is a convenient alias of @ref bitwise_and
 **/
   template<typename T0, typename T1> auto b_and(T0 const& x, T1 const& y) {}
 

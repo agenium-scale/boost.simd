@@ -41,7 +41,7 @@ namespace boost { namespace simd
 
     As r can be negative, @c remainder is not defined for unsigned types.
 
-    @see mod, rem
+    @see mod, rem, modulo
     @par Alias
 
     @c drem
@@ -51,7 +51,7 @@ namespace boost { namespace simd
 
 
 **/
-  template<typename T> auto remainder(T const& x, const T& y) {}
+  template<typename T> auto remainder(T const& x, T const & y) {}
 
   namespace functional
   {

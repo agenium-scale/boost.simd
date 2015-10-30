@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     @ingroup group-reduction
 
-    Returns the number of non zero elements of the input SIMD vector.
+    Returns the number of non @ref Zero elements of the input SIMD vector.
 
     @par Semantic:
 
@@ -47,7 +47,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-reduction
 
-      Returns the number of non zero elements of the input SIMD vector.
+      Returns the number of non @ref Zero elements of the input SIMD vector.
 
 
       Function object tied to simd::nbtrue

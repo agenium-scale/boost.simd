@@ -22,21 +22,21 @@ namespace boost { namespace simd
 
 
     The function returns the second entry or the sum of the second
-    and third entries, according to the first entry being False or
-    True
+    and third entries, according to the first entry being @ref False or
+    @ref True
 
     @par Semantic:
 
-    For every parameters of types respectively COND, T1, T1:
+    For every parameters of types respectively C, T, T:
 
     @code
-    T1 r = seladd(cond,t1,t2);
+    T r = seladd(cond,t1,t2);
     @endcode
 
     is similar to:
 
     @code
-    T1 r = cond ? t1+t2 : t1;
+    T r = cond ? t1+t2 : t1;
     @endcode
 
     @par Alias:
@@ -45,7 +45,7 @@ namespace boost { namespace simd
     @return a value of the same type as the second parameter
 
 **/
-  template<typename COND, typename T> auto seladd(COND const& cond, T const& t1, T const& t2) {}
+  template<typename C, typename T> auto seladd(C const& cond, T const& t1, T const& t2) {}
 
 
   namespace functional

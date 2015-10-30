@@ -51,7 +51,8 @@ namespace boost { namespace simd
 
     The method is the following:
 
-     - if one is Nan the result is Nan,  if both are Nans the result is 0
+     - if one and only one of the parameters is @ref Nan the result is @ref Nan,
+     if both are Nans the result is @ref Zero
 
      - Else, properly normalize the two numbers by the same factor in a way
      that the largest of the two numbers exponents will be brought to
@@ -66,7 +67,7 @@ namespace boost { namespace simd
     This means \f$2^-23\f$ for float and \f$2^-52\f$ for double.
 
     \arg For instance if two floating numbers (of same type) have an ulpdist of
-    zero that means that their floating representation are identical or they are
+    @ref Zero that means that their floating representation are identical or they are
     both Nans.
 
     \arg Generally equality up to 0.5 ulp is the best that one can wish beyond

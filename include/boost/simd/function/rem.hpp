@@ -41,13 +41,13 @@ namespace boost { namespace simd
 
     @c fmod,  @c remfix
 
-    @see remainder, mod
+    @see remainder, mod, modulo
 
     @return      a value of the same type as the input.
 
 
 **/
-  template<typename T> auto rem(T const& x, const T& y) {}
+  template<typename T> auto rem(T const& x, T const & y) {}
 
   namespace functional
   {

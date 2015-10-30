@@ -20,11 +20,11 @@ namespace boost { namespace simd
 
     @ingroup group-boolean
 
-    If cond is true returns zero else returns f
+    If cond is @ref True returns @ref Zero else returns f
 
     @par Semantic:
 
-    For every parameters of types respectively COND, T:
+    For every parameters of types respectively C, T:
 
     @code
     T r = if_zero_else(cond,f);
@@ -33,7 +33,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T r = cond ? zero : f;
+    T r = cond ? Zero<T>() : f;
     @endcode
 
     @return a value of the same type as the second parameter
@@ -46,7 +46,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-boolean
 
-      If cond is true returns zero else returns f
+      If cond is @ref True returns @ref Zero else returns f
 
 
       Function object tied to simd::if_zero_else

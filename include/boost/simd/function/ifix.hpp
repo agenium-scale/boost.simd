@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
     Convert to integer by saturated truncation.
 
-    This is a convenient alias of toints
+    This is a convenient alias of @ref toints
 **/
   template<typename T> auto ifix(T const& x) {}
 

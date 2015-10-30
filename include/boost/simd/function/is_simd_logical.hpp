@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     @ingroup group-reduction
 
-    returns true if each vector elements have all bits or no bit set.
+    returns @ref True if each vector elements have all bits or no bit set.
 
     @par Semantic:
 
@@ -48,7 +48,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-reduction
 
-      returns true if each vector elements have all bits or no bit set.
+      returns @ref True if each vector elements have all bits or no bit set.
 
 
       Function object tied to simd::is_simd_logical

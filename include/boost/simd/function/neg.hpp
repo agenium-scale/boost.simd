@@ -24,7 +24,7 @@ namespace boost { namespace simd
 
     Infix notation can be used with operator '-'
 
-    This is a convenient alias of unary_minus
+    This is a convenient alias of @ref unary_minus
 **/
   template<typename T> auto neg(T const& x) {}
 

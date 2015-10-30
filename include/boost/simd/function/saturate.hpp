@@ -32,15 +32,15 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    if (x > Inf<Target>()) r =  T(Inf<Target>());
+    if (x >  Inf<Target>()) r =  T(Inf<Target>());
     else if  (x <  Minf<Target>()) r =  T(Minf<Target>());
     else r = x;
     @endcode
 
     @see Minf, Inf
 
-    Note let us recall that Valmin and Minf (resp. Valmax and Inf) are identical if Target is
-    an integer type.
+    Note let us recall that @ref Valmin and @ref Minf (resp. @ref Valmax and @ref Inf)
+    are identical if Target is  an integer type.
 
     @return a value of same type as the inputs
 

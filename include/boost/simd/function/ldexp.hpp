@@ -23,7 +23,7 @@ namespace boost { namespace simd
     The function multiply a floating entry \f$x\f$
     by \f$2^{n}\f$
 
-    Cardinal_of the types of x and n must be identical
+    @ref cardinal_of the types of x and n must be identical
 
     @par Semantic:
 

@@ -22,11 +22,11 @@ namespace boost { namespace simd
 
     return the logical or of the two parameters
 
-    The operands must share the same Cardinal_of value.
+    The operands must share the same @ref cardinal_of value.
 
     Infix notation can be used with operator '||'
 
-    This is a convenient alias of logical_or
+    This is a convenient alias of @ref logical_or
 **/
   template<typename T1, typename T2> auto l_or(T1 const& x, T2 const& y) {}
 

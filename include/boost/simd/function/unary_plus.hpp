@@ -23,20 +23,19 @@ namespace boost { namespace simd
     return the elementwise unary plus of the parameter
 
     Infix notation can be used with operator '+'
-    This is in fact identity.
 
     @par Semantic:
 
-    For every parameter of type T0
+    For every parameter of type T
 
     @code
-    T0 r = unary_plus(x);
+    T r = unary_plus(x);
     @endcode
 
     is similar to:
 
     @code
-    T0 r = +x;
+    T r = +x;
     @endcode
 
     @see  plus, unary_minus

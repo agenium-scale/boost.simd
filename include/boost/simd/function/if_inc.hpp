@@ -20,18 +20,18 @@ namespace boost { namespace simd
 
     @ingroup group-boolean
 
-    Increments a value by 1 if a predicate is true.
+    Increments a value by @ref One if a predicate is true.
 
-    This is a convenient alias of selinc
+    This is a convenient alias of @ref selinc
 **/
-  template<typename COND, typename T> auto if_inc(COND const& cond, T const& t) {}
+  template<typename C, typename T> auto if_inc(C const& cond, T const& t) {}
 
   namespace functional
   {
     /*!
       @ingroup group-callable-boolean
 
-      Increments a value by 1 if a predicate is true.
+      Increments a value by @ref One if a predicate is true.
 
 
       Function object tied to simd::if_inc

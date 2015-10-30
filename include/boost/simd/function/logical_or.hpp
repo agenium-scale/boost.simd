@@ -22,22 +22,22 @@ namespace boost { namespace simd
 
     return the logical or of the two parameters
 
-    The operands must share the same Cardinal_of value.
+    The operands must share the same @ref cardinal_of value.
 
     Infix notation can be used with operator '||'
 
     @par Semantic:
 
-    For every parameters of types respectively T0, T1:
+    For every parameters of types respectively T1, T2:
 
     @code
-    as_logical_t<T0> r = logical_or(x,y);
+    as_logical_t<T1> r = logical_or(x,y);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<T0> r = x || y;
+    as_logical_t<T1> r = x || y;
     @endcode
 
     @par Alias:

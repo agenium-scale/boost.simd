@@ -35,7 +35,7 @@ namespace boost { namespace simd
 
 
 **/
-  template<typename T> auto two_prod(T const& x) {}
+  template<typename T> auto two_prod(T const& x, Tconst& y) {}
 
   namespace functional
   {

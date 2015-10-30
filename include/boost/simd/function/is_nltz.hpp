@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     @ingroup group-predicates
 
-    Returns True if x is not less than zero else returns False.
+    Returns True if x is not less than @ref Zero else returns False.
 
     @par Semantic:
 
@@ -51,7 +51,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-predicates
 
-      Returns True if x is not less than zero else returns False.
+      Returns True if x is not less than @ref Zero else returns False.
 
 
       Function object tied to simd::is_nlt

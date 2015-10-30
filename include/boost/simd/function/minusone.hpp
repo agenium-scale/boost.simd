@@ -21,7 +21,7 @@ namespace boost { namespace simd
     @ingroup group-arithmetic
 
     Return the entry minus one, saturated in the entry type.
-    If @c x is not Nan, @c minusone(x) is always less or equal to x.
+    If @c x is not @ref Nan, @c minusone(x) is less or equal to x.
 
     @par semantic:
     For any given value @c x of type @c T:
@@ -33,7 +33,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T r = (x > Valmin) ? x-1 : x;
+    T r = (x > @ref Valmin) ? x-1 : x;
     @endcode
 
 
@@ -49,7 +49,7 @@ namespace boost { namespace simd
       @ingroup group-callable-arithmetic
 
       Return the entry minus one, saturated in the entry type.
-      If @c x is not Nan, @c minusone(x) is always less or equal to x.
+      If @c x is not @ref Nan, @c minusone(x) is always less or equal to x.
 
 
       Function object tied to simd::minusone

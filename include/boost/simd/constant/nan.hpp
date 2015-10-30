@@ -18,28 +18,28 @@ namespace boost { namespace simd
   /*!
     @ingroup group-constant
 
-    Generate the Not a Number (NaN) constant.
+    Generate the Not a Number (Nan) constant.
 
     @par Semantic
 
     For any type @c T,
 
     @code
-    T x = NaN<T>();
+    T x = Nan<T>();
     @endcode
 
-    return the NaN representation for this type, i.e QuietNaN for IEEE reals and
+    return the Nan representation for this type, i.e QuietNan for IEEE reals and
     0 for integers.
 
-    @return The NaN constant for the proper type
+    @return The Nan constant for the proper type
   **/
-  template<typename T> T NaN();
+  template<typename T> T Nan();
 
   namespace functional
   {
     /*!
       @ingroup group-callable-constant
-      Generate the Not a Number (NaN) constant.
+      Generate the Not a Number (Nan) constant.
 
       @par Semantic
 
@@ -49,10 +49,10 @@ namespace boost { namespace simd
       T x = nan(as(T{}));
       @endcode
 
-      return the NaN representation for this type, i.e QuietNaN for IEEE reals and
+      return the Nan representation for this type, i.e QuietNan for IEEE reals and
       0 for integers.
 
-      @return The NaN constant for the proper type
+      @return The Nan constant for the proper type
     **/
     const boost::dispatch::functor<tag::nan_> nan = {};
   }

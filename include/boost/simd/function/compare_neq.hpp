@@ -22,12 +22,12 @@ namespace boost { namespace simd
 
     Returns a logical scalar that is the result of the lexicographic
     test for != on elements of the entries,
-    i.e. return true if and only if two corresponding entries
+    i.e. return @ref True if and only if two corresponding entries
     elements are not equal.
 
     It is probably not what you wish. Have a look to <tt>is_not_equal</tt>
 
-    This is a convenient alias of compare_not_equal
+    This is a convenient alias of @ref compare_not_equal
 **/
   template<typename T> auto compare_neq(T const& x, T const& y) {}
 
@@ -38,7 +38,7 @@ namespace boost { namespace simd
 
       Returns a logical scalar that is the result of the lexicographic
       test for != on elements of the entries,
-      i.e. return true if and only if two corresponding entries
+      i.e. return @ref True if and only if two corresponding entries
       elements are not equal.
 
 

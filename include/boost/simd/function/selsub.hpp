@@ -22,12 +22,12 @@ namespace boost { namespace simd
 
 
     The function returns the second entry or the difference of the
-    second and third entries, according to the first entry being False
-    or True
+    second and third entries, according to the first entry being @ref False
+    or @ref True
 
     @par Semantic:
 
-    For every parameters of types respectively COND, T1, T1:
+    For every parameters of types respectively C, T, T:
 
     @code
     T1 r = selsub(x,y,a2);
@@ -46,7 +46,7 @@ namespace boost { namespace simd
     @return a value of the same type as the second parameter
 
 **/
- template<typename COND, typename T> auto selsub(COND const& cond, T const& t1, T const& t2) {}
+ template<typename C, typename T> auto selsub(C const& cond, T const& t1, T const& t2) {}
 
   namespace functional
   {

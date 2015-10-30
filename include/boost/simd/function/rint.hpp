@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
     Computes the rounded to even value of its parameter.
 
-    This is a convenient alias of round2even
+    This is a convenient alias of @ref round2even
 **/
   template<typename T> auto rint(T const& x) {}
 

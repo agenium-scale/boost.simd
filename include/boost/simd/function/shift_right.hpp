@@ -23,20 +23,21 @@ namespace boost { namespace simd
     return right shift of the first operand by the second
     that must be of integer type and of the same number
     of elements as the first parameter
+
     Infix notation can be used with operator '>>'
 
     @par Semantic:
 
-    For every parameters of types respectively T0, T1:
+    For every parameters of types respectively T, N:
 
     @code
-    T0 r = shift_right(x,y);
+    T r = shift_right(x,y);
     @endcode
 
     is similar to:
 
     @code
-    T0 r = x >> y;
+    T r = x >> y;
     @endcode
 
     @par Alias:
@@ -48,7 +49,7 @@ namespace boost { namespace simd
     @return a value of the same type as the second parameter
 
 **/
-  template<typename T> auto shift_right(T const& x) {}
+  template<typename T, typename N> auto shift_right(T const& x, N const& n) {}
 
   namespace functional
   {

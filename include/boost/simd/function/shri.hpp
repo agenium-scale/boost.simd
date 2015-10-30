@@ -24,7 +24,7 @@ namespace boost { namespace simd
     by value of the second entry. If the second entry is negative
     the result is not defined.
 
-    This is a convenient alias of shr
+    This is a convenient alias of @ref shr
 **/
   template<typename T, template N> auto shri(T const& x,  N const& n) {}
 

@@ -24,7 +24,7 @@ namespace boost { namespace simd
 
     remquo computes the remainder (rem) and a part of the quotient (quo) upon division of
     @c x by @c y. By design, the value of the remainder is the same as that
-    computed by the remainder function. The value of the computed quotient has
+    computed by the @ref remainder function. The value of the computed quotient has
     the sign of @c x/y and agrees with the actual quotient in at least the low
     order 3 bits.
 

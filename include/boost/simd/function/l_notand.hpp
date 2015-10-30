@@ -22,11 +22,11 @@ namespace boost { namespace simd
 
     return the logical and of the negation of the first parameter and the second parameter
 
-    The operands must share the same Cardinal_of value.
+    The operands must share the same @ref cardinal_of value.
 
     The result type is logical type associated to the first parameter.
 
-    This is a convenient alias of logical_notand
+    This is a convenient alias of @ref logical_notand
 **/
   template<typename T1, typename T2> auto l_notand(T1 const& x, T2 const& y) {}
 
@@ -36,7 +36,6 @@ namespace boost { namespace simd
       @ingroup group-callable-boolean
 
       return the logical and of the negation of the first parameter and the second parameter
-
 
       Function object tied to simd::l_notand
 

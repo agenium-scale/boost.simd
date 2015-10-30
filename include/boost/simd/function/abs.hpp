@@ -37,15 +37,15 @@ namespace boost { namespace simd
 
     @par Note:
 
-    Take care that for signed integers the absolute value of @c Valmin is
-    @c Valmin (thus negative!). This is a side effect of the 2-complement
+    Take care that for signed integers the absolute value of @ref Valmin is
+    @ref Valmin (thus negative!). This is a side effect of the 2-complement
     representation of integers. To avoid this, you can use the abss
     saturated functor or convert the input parameter to a larger type
     before taking the absolute value.
 
 
     Also abs is a very current function name and sometimes a C version can be
-    an unwanted concurrent of boost::simd::abs,  you can prefix abs or
+    an unwanted concurrent of simd::abs,  you can just prefix abs or
     use the alias modulus instead to circumvent this problem.
 
     @par Alias

@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
     Returns a logical scalar value that is the result of the lexicographic
     test for equality of all elements of the entries,
-    i.e. return true if and only if all corresponding entries
+    i.e. return @ref True if and only if all corresponding entries
     elements are equal.
 
     It is probably not what you wish. Have a look to <tt>is_equal</tt>
@@ -59,7 +59,7 @@ namespace boost { namespace simd
 
       Returns a logical scalar value that is the result of the lexicographic
       test for equality of all elements of the entries,
-      i.e. return true if and only if all corresponding entries
+      i.e. return @ref True if and only if all corresponding entries
       elements are equal.
 
 

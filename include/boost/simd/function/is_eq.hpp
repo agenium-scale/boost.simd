@@ -23,7 +23,7 @@ namespace boost { namespace simd
     Returns True or False
     according x and y are equal or not. Infix notation can be used with operator '=='
 
-    This is a convenient alias of is_equal
+    This is a convenient alias of @ref is_equal
 **/
   template<typename T> auto is_eq(T const& x) {}
 

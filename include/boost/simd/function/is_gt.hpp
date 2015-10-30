@@ -24,7 +24,7 @@ namespace boost { namespace simd
 
     Infix notation can be used with operator '>'.
 
-    This is a convenient alias of is_greater
+    This is a convenient alias of @ref is_greater
 **/
   template<typename T> auto is_gt(T const& x, T const& y) {}
 

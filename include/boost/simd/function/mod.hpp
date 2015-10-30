@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
     Computes the remainder of division.
     The return value is x-n*y, where n is the value x/y,
-    truncated to -inf.
+    truncated to \f$-\infty\f$.
 
     @par semantic:
     For any given value @c x, @c y of type @c T:
@@ -37,13 +37,13 @@ namespace boost { namespace simd
     T r = x-divfloor(x, y)*y;
     @endcode
 
-    @see remainder, rem
+    @see remainder, rem,  modulo
 
     @return      a value of the same type as the input.
 
 
 **/
-  template<typename T> auto mod(T const& x, const T& y) {}
+  template<typename T> auto mod(T const& x, T const & y) {}
 
   namespace functional
   {

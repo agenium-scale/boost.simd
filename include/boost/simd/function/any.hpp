@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     @ingroup group-reduction
 
-    Returns true if at least one element of the input vector is non zero.
+    Returns @ref True if at least one element of the input vector is non zero.
 
     @par Semantic:
 
@@ -49,7 +49,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-reduction
 
-      Returns true if at least one element of the input vector is non zero.
+      Returns @ref True if at least one element of the input vector is non zero.
 
 
       Function object tied to simd::any

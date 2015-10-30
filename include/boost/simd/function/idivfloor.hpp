@@ -35,8 +35,8 @@ namespace boost { namespace simd
     as_integer_t<T> r = toints(floor(x/y));
     @endcode
 
-    If y is null, it returns Valmax (resp. Valmin)
-    if x is positive (resp. negative) and 0 if x is null.
+    If y is @ref Zero, it returns @ref Valmax (resp. @ref Valmin)
+    if x is positive (resp. negative) and 0 if x is @ref Zero.
 
     @see toints, floor
 

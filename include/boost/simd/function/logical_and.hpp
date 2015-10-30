@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
     return the logical and of the two parameters.
 
-    The operands must share the same Cardinal_of value.
+    The operands must share the same @ref cardinal_of value.
 
     Infix notation can be used with operator '&&'.
 

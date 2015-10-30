@@ -22,11 +22,11 @@ namespace boost { namespace simd
 
     return the logical and of the two parameters.
 
-    The operands must share the same Cardinal_of value.
+    The operands must share the same @ref cardinal_of value.
 
     Infix notation can be used with operator '&&'.
 
-    This is a convenient alias of logical_and
+    This is a convenient alias of @ref logical_and
 **/
   template<typename T1, typename T2> auto l_and(T1 const& x, T2 const& y) {}
 

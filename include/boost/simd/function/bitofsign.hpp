@@ -23,7 +23,7 @@ namespace boost { namespace simd
     Returns a value of the same type as the input with all bits set to zero
     except the bit of sign which is preserved.
 
-    Returns always zero for unsigned types
+    Returns always @ref Zero for unsigned types
 
     @par Semantic:
 

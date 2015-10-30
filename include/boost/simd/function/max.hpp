@@ -32,7 +32,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T r =  if (x > y) ? x : y;
+    T r =  (x > y) ? x : y;
     @endcode
 
 

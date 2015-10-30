@@ -22,11 +22,11 @@ namespace boost { namespace simd
 
     return the logical negation of the parameter,
     i.e. True or False of the logical type associated entry type according that
-    the input is zero or non zero (False or True).
+    the input is @ref Zero or non @ref Zero (False or True).
 
     Infix notation can be used with operator '!'
 
-    This is a convenient alias of logical_not
+    This is a convenient alias of @ref logical_not
 **/
   template<typename T> auto l_not(T const& x) {}
 
@@ -37,7 +37,7 @@ namespace boost { namespace simd
 
       return the logical negation of the parameter,
       i.e. True or False of the logical type associated entry type according that
-      the input is zero or non zero (False or True).
+      the input is @ref Zero or non @ref Zero (False or True).
 
 
       Function object tied to simd::l_not

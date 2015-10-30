@@ -26,13 +26,13 @@ namespace boost { namespace simd
     For any given value @c x of type @c T:
 
     @code
-    as_floating<T> r = tofloat(x);
+    as_floating_t<T> r = tofloat(x);
     @endcode
 
     The code is similar to:
 
     @code
-    as_floating<T> r = static_cast < as_floating<T> >(x)
+    as_floating_t<T> r = static_cast < as_floating_t<T> >(x)
     @endcode
 
 

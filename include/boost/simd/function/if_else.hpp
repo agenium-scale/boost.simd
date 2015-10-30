@@ -19,11 +19,11 @@ namespace boost { namespace simd
   /*!
     @ingroup group-boolean
 
-    If cond is true returns t else returns f
+    If cond is @ref True returns t else returns f
 
     @par Semantic:
 
-    For every parameters of types respectively COND, T1, T2:
+    For every parameters of types respectively C, T1, T2:
 
     @code
     T1 r = if_else(cond,t,f);
@@ -32,7 +32,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    COND r = cond ? t : f;
+    T1 r = cond ? t : f;
     @endcode
 
     @par Alias:
@@ -43,20 +43,20 @@ namespace boost { namespace simd
     if_allbits_else, if_one_else_zero, if_zero_else_one, bitwise_select
     @param cond condition
 
-    @param t true result
+    @param t @ref True result
 
-    @param f false result
+    @param f @ref False result
 
     @return a value of the same type as the second parameter
   **/
-  template<typename COND typename T1, typename T2>
-  auto if_else(COND const& cond, T1 const& t, T2 const& f );
+  template<typename C typename T1, typename T2>
+  auto if_else(C const& cond, T1 const& t, T2 const& f );
   namespace functional
   {
     /*!
       @ingroup group-callable-boolean
 
-      If cond is true returns t else returns f
+      If cond is @ref True returns t else returns f
 
 
       Function object tied to boost::simd::if_else

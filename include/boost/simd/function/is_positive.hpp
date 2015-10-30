@@ -22,9 +22,9 @@ namespace boost { namespace simd
 
     Returns True if x is positive else False.
 
-    This function differs from is_gtz from floating point argument,
-    because Zero is positive but not greater than zero, and Mzero is
-    not positive and not greater than zero, It's probably is_gtz that
+    This function differs from @ref is_gtz for floating point arguments,
+    because @ref Zero is positive but not greater than 0, and @ref Mzero is
+    not positive and not greater than 0, It's probably @ref is_gtz that
     you want.
 
 
@@ -38,19 +38,19 @@ namespace boost { namespace simd
 
     @code
     if T is signed
-      as_logical_t<T> r = bitofsign(x) == 0;
+      as_logical_t<T> r = @ref bitofsign(x) == 0;
     else
-      as_logical_t<T> r = True;
+      as_logical_t<T> r = @ref True;
     @endcode
 
 
     @par Note:
 
     Mzero is the floating point 'minus zero',
-    i.e. all bits are zero but the sign bit.
-    Such a value is treated as zero by ieee standards.
+    i.e. all bits are @ref Zero but the sign bit.
+    Such a value is treated as @ref Zero by ieee standards.
 
-    behaviour of is_positive on Nan is undefined.
+    behaviour of is_positive on @ref Nan is undefined.
 
     @return a logical value
 

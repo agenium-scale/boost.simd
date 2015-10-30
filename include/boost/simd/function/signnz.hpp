@@ -23,7 +23,7 @@ namespace boost { namespace simd
     Returns the sign of x. I.e. -1 or 1, according
     x is negative or positive.
 
-    This function never returns zero (zero is considered positive for integers.
+    This function never returns @ref Zero (zero is considered positive for integers.
 
     For floating point numbers the bit of sign is taken into account and so
     we always have signnz(-z) == -signnz(z)).

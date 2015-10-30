@@ -32,16 +32,16 @@ namespace boost { namespace simd
     is equivalent to:
 
     @code
-    T r = (x == Valmin) ? Valmax : (x < T(0) ? -x : x);
+    T r = (x == @ref Valmin) ? @ref Valmax : (x < T(0) ? -x : x);
     @endcode
 
     @par Note:
 
     For integral types, the function always returns a positive value of the same type as the
-    entry. For floating types Nan is the obvious and lone exception to this rule.
+    entry. For floating types @ref Nan is the obvious and lone exception to this rule.
 
     This is generally equivalent to @c abs functor except for signed integer
-    types for which \c abss(Valmin) is \c Valmax.
+    types for which \c abss(@ref Valmin) is  @ref Valmax.
 
     @see  abs, sqr_abss, sqrs
 

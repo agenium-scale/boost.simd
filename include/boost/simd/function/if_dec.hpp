@@ -20,18 +20,18 @@ namespace boost { namespace simd
 
     @ingroup group-boolean
 
-    Decrements a value by 1 if a predicate is true.
+    Decrements a value by @ref One if a predicate is true.
 
-    This is a convenient alias of seldec
+    This is a convenient alias of @ref seldec
 **/
-  template<typename COND, typename T> auto if_dec(COND const& cond, T const& t) {}
+  template<typename C, typename T> auto if_dec(C const& cond, T const& t) {}
 
   namespace functional
   {
     /*!
       @ingroup group-callable-boolean
 
-      Decrements a value by 1 if a predicate is true.
+      Decrements a value by @ref One if a predicate is true.
 
 
       Function object tied to simd::if_dec

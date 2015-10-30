@@ -21,7 +21,7 @@ namespace boost { namespace simd
 
     Computes the absolute value of its parameter.
 
-    This is a convenient alias of abs
+    This is a convenient alias of @ref abs
   **/
   template<typename T> auto modulus(T const& x) {}
 

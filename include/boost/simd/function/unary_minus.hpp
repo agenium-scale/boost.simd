@@ -26,16 +26,16 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of type T0
+    For every parameter of type T
 
     @code
-    T0 r = unary_minus(x);
+    T r = unary_minus(x);
     @endcode
 
     is similar to:
 
     @code
-    T0 r = -x;
+    T r = -x;
     @endcode
 
     @par Alias:

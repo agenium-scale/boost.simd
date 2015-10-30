@@ -24,10 +24,10 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of type T0
+    For every parameter of type T
 
     @code
-    T0 r = sort(x);
+    T r = sort(x);
     @endcode
 
 

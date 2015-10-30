@@ -26,16 +26,16 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of type T0:
+    For every parameters of type T:
 
     @code
-    T0 r = modulo(x,y);
+    T r = modulo(x,y);
     @endcode
 
     is similar to:
 
     @code
-    T0 r = x % y;
+    T r = x % y;
     @endcode
 
     @see  rem, remainder, mod,
@@ -44,7 +44,7 @@ namespace boost { namespace simd
     @return a value of the same type as the parameters
 
 **/
-  template<typename T> auto modulo(T const& x, const T& y) {}
+  template<typename T> auto modulo(T const& x, T const & y) {}
 
   namespace functional
   {

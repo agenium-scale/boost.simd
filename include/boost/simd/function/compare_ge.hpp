@@ -25,7 +25,7 @@ namespace boost { namespace simd
 
     It is probably not what you wish. Have a look to is_greater_equal.
 
-    This is a convenient alias of compare_greater_equal
+    This is a convenient alias of @ref compare_greater_equal
 **/
   template<typename T> auto compare_ge(T const& x, T const& y) {}
 
