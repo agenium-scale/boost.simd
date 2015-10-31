@@ -31,7 +31,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T r = x*x > @ref Valmax ? @ref Valmax : x*x;
+    T r = x*x > Valmax ? Valmax : x*x;
     @endcode
 
     @return      a value of the same type as the input.

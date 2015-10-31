@@ -30,7 +30,7 @@ namespace boost { namespace simd
     is equivalent to:
 
     @code
-    T r = (@ref is_nan(x)) ? x :(x < @ref Zero) ? pi : @ref Zero;
+    T r = (is_nan(x)) ? x :(x < Zero) ? pi : Zero;
     @endcode
 
     @par Note:
