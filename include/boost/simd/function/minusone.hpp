@@ -33,7 +33,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T r = (x > @ref Valmin) ? x-1 : x;
+    T r = (x > Valmin) ? x-1 : x;
     @endcode
 
 

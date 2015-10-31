@@ -33,7 +33,7 @@ namespace boost { namespace simd
     For integers is similar to:
 
     @code
-    T r = (x-y > @ref Valmax) ? @ref Valmax : (x-y <  @ref Valmin ? @ref Valmin : x-y);
+    T r = (x-y > Valmax) ? Valmax : (x-y <  Valmin ? Valmin : x-y);
     @endcode
 
     @return      a value of the same type as the input.
