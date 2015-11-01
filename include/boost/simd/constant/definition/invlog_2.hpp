@@ -1,0 +1,49 @@
+//==================================================================================================
+/*!
+  @file
+
+  @copyright 2012-2015 NumScale SAS
+
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+*/
+//==================================================================================================
+#ifndef BOOST_SIMD_CONSTANT_DEFINITION_INVLOG_2_HPP_INCLUDED
+#define BOOST_SIMD_CONSTANT_DEFINITION_INVLOG_2_HPP_INCLUDED
+
+#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/dispatch.hpp>
+#include <boost/simd/detail/constant_traits.hpp>
+#include <boost/dispatch/function/make_callable.hpp>
+#include <boost/dispatch/hierarchy/functions.hpp>
+#include <boost/dispatch/as.hpp>
+
+namespace boost { namespace simd
+{
+  namespace tag
+  {
+    struct invlog_2_ : boost::dispatch::constant_value_<invlog_2_>
+    {
+      BOOST_DISPATCH_MAKE_CALLABLE(ext,invlog_2_,boost::dispatch::constant_value_<invlog_2_>);
+      BOOST_SIMD_REGISTER_CONSTANT(1, 0x3fb8aa3bUL, 0x3ff71547652b82feULL);
+    };
+  }
+
+  namespace ext
+  {
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag,invlog_2_);
+  }
+
+  namespace functional
+  {
+    BOOST_DISPATCH_CALLABLE_DEFINITION(tag::invlog_2_,invlog_2);
+  }
+
+  template<typename T> BOOST_FORCEINLINE auto Invlog_2() BOOST_NOEXCEPT
+  -> decltype(functional::invlog_2( boost::dispatch::as_<T>{}))
+  {
+    return functional::invlog_2( boost::dispatch::as_<T>{} );
+  }
+} }
+
+#endif
