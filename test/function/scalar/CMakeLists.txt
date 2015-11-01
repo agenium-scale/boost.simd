@@ -268,7 +268,31 @@ set ( SOURCES
    splatted_minimum.cpp
    splatted_prod.cpp
    splatted_sum.cpp
-# aliases
+#exponential
+   cbrt.cpp
+   exp.cpp
+   exp10.cpp
+   exp2.cpp
+   expm1.cpp
+   exprecneg.cpp
+   exprecnegc.cpp
+   expx2.cpp
+   log.cpp
+   log10.cpp
+   log1p.cpp
+   log2.cpp
+   logspace_add.cpp
+   logspace_sub.cpp
+   nthroot.cpp
+   pow.cpp
+   pow2.cpp
+   pow_abs.cpp
+   reallog.cpp
+   realpow.cpp
+   realsqrt.cpp
+   significants.cpp
+   sqrt1pm1.cpp
+#aliases
    b_and.cpp
    compare_eq.cpp
    b_andnot.cpp
