@@ -20,7 +20,6 @@
 // #include <boost/simd/constant/true.hpp>
 // #include <boost/simd/constant/false.hpp>
 //TODO LOGICAL
-#include <simd_test.hpp>
 #include <nontrivial.hpp>
 
 STF_CASE_TPL (" if_else integer",  STF_INTEGRAL_TYPES)
