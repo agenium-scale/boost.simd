@@ -31,16 +31,17 @@ STF_CASE_TPL( "Check constant behavior for unsigned integral values", STF_UNSIGN
   STF_EXPR_IS( (Constant<T,42>()  ) , T      );
   STF_EQUAL  ( (Constant<T,42>()  ) , T(42)  );
 
-  STF_EXPR_IS( (Constant<T,~0>()  ) , T      );
-  STF_EQUAL  ( (Constant<T,~0>()  ) , T(~0) );
+  STF_EXPR_IS( (Constant<T,T(~0)>()  ) , T      );
+  STF_EQUAL  ( (Constant<T,T(~0)>()  ) , T(~0) );
 }
 
 STF_CASE( "Check constant behavior for double values")
 {
   using boost::simd::Constant;
 
-  STF_EXPR_IS   ( (Constant<double,0x402ABD70A3D70A3DULL>() ) , double  );
-  STF_IEEE_EQUAL( (Constant<double,0x402ABD70A3D70A3DULL>() ) , 13.37   );
+  STF_EXPR_IS   ( (Constant<double,0x402ABD70A3D70A3DULL>()   ) , double  );
+  STF_IEEE_EQUAL( (Constant<double,0x402ABD70A3D70A3DULL>()   ) , 13.37   );
+  STF_IEEE_EQUAL( (Constant<double,13817391734754107382ULL>() ) , -0.13466110473359521604 );
 }
 
 STF_CASE( "Check constant behavior for single values")
@@ -50,3 +51,4 @@ STF_CASE( "Check constant behavior for single values")
   STF_EXPR_IS   ( (Constant<float,0x4155EB85UL>() ) , float   );
   STF_IEEE_EQUAL( (Constant<float,0x4155EB85UL>() ) , 13.37f  );
 }
+
