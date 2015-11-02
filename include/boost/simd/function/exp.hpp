@@ -16,9 +16,21 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-trigonometry
+  @ingroup group-exponential
 
-    Computes exp value of its parameter.
+   Computes the exponential function: \f$e^{x}\f$
+
+    @par Semantic:
+
+    For every parameter of floating type T
+
+    @code
+    T r = exp(x);
+    @endcode
+
+    @see exp2, exp10, pow, expm1, log
+
+    @return a value of the same type as the parameter
 
   **/
   template<typename T> auto exp(T const& x) {}
@@ -26,7 +38,9 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-callable-trigonometry
+      @ingroup group-callable-exponential
+
+      Computes the exponential function: \f$e^{x}\f$
 
       Function object tied to simd::exp
 
@@ -37,8 +51,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/exp.hpp>
-#include <boost/simd/arch/common/scalar/function/exp.hpp>
+#include <boost/simd/function/scalar/exp.hpp>
 #include <boost/simd/function/simd/exp.hpp>
 
 #endif

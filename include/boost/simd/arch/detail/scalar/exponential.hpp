@@ -17,3 +17,4 @@
 #include <boost/simd/arch/detail/scalar/expo_base.hpp>
 
 #endif
+

@@ -12,31 +12,30 @@
 #ifndef BOOST_SIMD_ARCH_DETAIL_SCALAR_F_EXPO_REDUCTION_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_DETAIL_SCALAR_F_EXPO_REDUCTION_HPP_INCLUDED
 
-#include <boost/simd/options.hpp>
 #include <boost/simd/arch/detail/scalar/horner.hpp>
-#include <boost/simd/constant/maxlog.hpp>
-#include <boost/simd/constant/minlog.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
-#include <boost/simd/logical.hpp>
 #include <boost/simd/arch/detail/scalar/horner.hpp>
-#include <boost/simd/function/scalar/inc.hpp>
-#include <boost/simd/function/scalar/sqr.hpp>
-#include <boost/simd/function/scalar/fma.hpp>
-#include <boost/simd/function/scalar/round2even.hpp>
-#include <boost/simd/constant/invlog_2.hpp>
-#include <boost/simd/function/scalar/fnms.hpp>
-#include <boost/simd/constant/log_2hi.hpp>
-#include <boost/simd/constant/log_2lo.hpp>
-#include <boost/simd/constant/log_2.hpp>
-#include <boost/simd/constant/minlog2.hpp>
-#include <boost/simd/constant/maxlog2.hpp>
-#include <boost/simd/constant/minlog10.hpp>
-#include <boost/simd/constant/maxlog10.hpp>
 #include <boost/simd/constant/invlog10_2.hpp>
+#include <boost/simd/constant/invlog_2.hpp>
 #include <boost/simd/constant/log10_2hi.hpp>
 #include <boost/simd/constant/log10_2lo.hpp>
 #include <boost/simd/constant/log_10.hpp>
-
+#include <boost/simd/constant/log_2.hpp>
+#include <boost/simd/constant/log_2hi.hpp>
+#include <boost/simd/constant/log_2lo.hpp>
+#include <boost/simd/constant/maxlog.hpp>
+#include <boost/simd/constant/maxlog10.hpp>
+#include <boost/simd/constant/maxlog2.hpp>
+#include <boost/simd/constant/minlog.hpp>
+#include <boost/simd/constant/minlog10.hpp>
+#include <boost/simd/constant/minlog2.hpp>
+#include <boost/simd/function/scalar/fma.hpp>
+#include <boost/simd/function/scalar/fnms.hpp>
+#include <boost/simd/function/scalar/inc.hpp>
+#include <boost/simd/function/scalar/round2even.hpp>
+#include <boost/simd/function/scalar/sqr.hpp>
+#include <boost/simd/logical.hpp>
+#include <boost/simd/options.hpp>
+#include <boost/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd
 {
@@ -44,8 +43,6 @@ namespace boost { namespace simd
   {
     namespace bd =  boost::dispatch;
     namespace bs =  boost::simd;
-    template< class A0, class Tag, class Base_A0 = bd::scalar_of_t<A0> >
-    struct exp_reduction;
 
     template<class A0> struct exp_reduction <A0,natural_tag,float>
     {

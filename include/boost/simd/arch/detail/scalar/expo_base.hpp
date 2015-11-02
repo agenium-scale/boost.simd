@@ -12,21 +12,18 @@
 #ifndef BOOST_SIMD_ARCH_DETAIL_SCALAR_EXPO_BASE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_DETAIL_SCALAR_EXPO_BASE_HPP_INCLUDED
 
-#include <boost/simd/options.hpp>
-#include <boost/simd/arch/detail/tags.hpp>
-#include <boost/simd/arch/detail/scalar/horner.hpp>
-#include <boost/simd/arch/detail/scalar/expo_base.hpp>
-#include <boost/simd/arch/detail/scalar/f_expo_reduction.hpp>
-#include <boost/simd/arch/detail/scalar/d_expo_reduction.hpp>
-#include <boost/simd/arch/detail/scalar/expo_scale.hpp>
-#include <boost/simd/constant/inf.hpp>
-#include <boost/simd/constant/zero.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
-#include <boost/config.hpp>
-
 #ifndef BOOST_SIMD_NO_INVALIDS
 #include <boost/simd/function/scalar/is_nan.hpp>
 #endif
+#include <boost/simd/arch/detail/scalar/expo_reduction.hpp>
+#include <boost/simd/arch/detail/scalar/expo_scale.hpp>
+#include <boost/simd/arch/detail/scalar/horner.hpp>
+#include <boost/simd/arch/detail/tags.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/options.hpp>
+#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd
 {

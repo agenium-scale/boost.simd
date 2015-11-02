@@ -31,12 +31,12 @@ STF_CASE_TPL ( "exp",  STF_IEEE_TYPES)
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
   STF_ULP_EQUAL(exp(bs::Inf<T>()), bs::Inf<r_t>(), 0);
-  STF_ULP_EQUAL(exp(bs::Minf<T>()), bs::Zero<r_t>(), 0.75);
+  STF_ULP_EQUAL(exp(bs::Minf<T>()), bs::Zero<r_t>(), 0);
   STF_ULP_EQUAL(exp(bs::Nan<T>()), bs::Nan<r_t>(), 0);
 #endif
-  STF_ULP_EQUAL(exp(bs::Mone<T>()), bs::One<r_t>()/bs::Exp_1<r_t>(), 0.75);
-  STF_ULP_EQUAL(exp(bs::One<T>()), bs::Exp_1<r_t>(), 0.75);
-  STF_ULP_EQUAL(exp(bs::Zero<T>()), bs::One<r_t>(), 0.75);
+  STF_ULP_EQUAL(exp(bs::Mone<T>()), bs::One<r_t>()/bs::Exp_1<r_t>(), 0.5);
+  STF_ULP_EQUAL(exp(bs::One<T>()), bs::Exp_1<r_t>(), 0.5);
+  STF_ULP_EQUAL(exp(bs::Zero<T>()), bs::One<r_t>(), 0.5);
 }
 
 
