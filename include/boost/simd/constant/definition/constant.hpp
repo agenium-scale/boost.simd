@@ -16,6 +16,7 @@
 #include <boost/simd/detail/constant_traits.hpp>
 #include <boost/dispatch/function/make_callable.hpp>
 #include <boost/dispatch/hierarchy/functions.hpp>
+#include <boost/dispatch/meta/scalar_of.hpp>
 #include <cstdint>
 
 namespace boost { namespace simd
@@ -38,9 +39,9 @@ namespace boost { namespace simd
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::constant_,constant);
   }
 
-  template<typename Type, std::uintmax_t Bits>
-  BOOST_FORCEINLINE     auto Constant() BOOST_NOEXCEPT
-                    ->  decltype(detail::constant(typename detail::constantify<Type,Bits>::type{}))
+  template<typename Type, detail::bits_t<dispatch::scalar_of_t<Type>> Bits>
+  BOOST_FORCEINLINE   auto Constant() BOOST_NOEXCEPT
+                  ->  decltype(detail::constant(typename detail::constantify<Type,Bits>::type{}))
   {
     return detail::constant( typename detail::constantify<Type,Bits>::type{} );
   }

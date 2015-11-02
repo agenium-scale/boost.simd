@@ -18,6 +18,7 @@
 #include <boost/dispatch/property_of.hpp>
 #include <boost/dispatch/hierarchy.hpp>
 #include <boost/config.hpp>
+#include <type_traits>
 
 #ifdef BOOST_MSVC
 #pragma warning(push)
@@ -50,21 +51,27 @@ namespace boost { namespace simd { namespace detail
     using type = decltype( base::value(key()) );
   };
 
-  template<typename RealType, std::intmax_t N, std::intmax_t D = 1>
-  struct ratio {};
+  template<typename RealType, std::intmax_t N, std::intmax_t D = 1> struct ratio {};
 
-  template<typename T, std::uintmax_t N>
+  template<typename T>
+  using bits_t = typename std::conditional< std::is_integral<T>::value && std::is_signed<T>::value
+                                          , std::intmax_t
+                                          , std::uintmax_t
+                                          >::type;
+
+
+  template<typename T, bits_t<T> N>
   struct  constantify
   {
     using type = std::integral_constant<T,T(N)>;
   };
 
-  template<std::uintmax_t V> struct constantify<double,V>
+  template<bits_t<double> V> struct constantify<double,V>
   {
     using type = brigand::double_<V>;
   };
 
-  template<std::uintmax_t V> struct constantify<float,V>
+  template<bits_t<float> V> struct constantify<float,V>
   {
     using type = brigand::single_<V>;
   };
