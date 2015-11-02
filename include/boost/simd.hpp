@@ -154,6 +154,15 @@ namespace boost
       defined for SIMD types but may, in some cases, have a valid scalar semantic.
     **/
 
+    /*!
+      @ingroup group-functions
+      @defgroup group-exponential Exponential Functions
+
+      Those functions provides algorithms for coputing exponential, logarithm,  hyperbolic
+      and properly trigonometric functions as sine and cosine,  providing scalar and simd
+      version for elements of types float and double.
+    **/
+
     /// Boost.SIMD Callable Objects namespace
     namespace functional {}
 
@@ -259,6 +268,15 @@ namespace boost
 
       Their specific semantic limitations are similar to those of their function
       equivalents as described in the @ref group-swar section.
+    **/
+
+    /*!
+      @ingroup group-callable
+      @defgroup group-callable-exponential Exponential Callable Objects
+      Callable objects version of @ref group-exponential
+
+      Their specific semantic limitations are similar to those of their function
+      equivalents as described in the @ref group-trigonometric section.
     **/
 
     /*!
