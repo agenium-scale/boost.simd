@@ -8,7 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/all.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 
 STF_CASE_TPL ( "all", STF_ALL_TYPES)

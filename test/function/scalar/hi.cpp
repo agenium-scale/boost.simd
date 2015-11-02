@@ -8,7 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/hi.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/function/splat.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>

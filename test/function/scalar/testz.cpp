@@ -8,7 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/testz.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/constant/one.hpp>

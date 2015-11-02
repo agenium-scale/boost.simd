@@ -8,7 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/modf.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <boost/simd/function/trunc.hpp>
 #include <boost/simd/function/frac.hpp>
 #include <utility>

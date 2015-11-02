@@ -8,7 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/modulo.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/two.hpp>

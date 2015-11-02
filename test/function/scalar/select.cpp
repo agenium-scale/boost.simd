@@ -8,7 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/select.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <boost/simd/logical.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
