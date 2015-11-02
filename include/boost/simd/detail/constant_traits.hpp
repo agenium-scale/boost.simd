@@ -52,18 +52,18 @@ namespace boost { namespace simd { namespace detail
   template<typename RealType, std::intmax_t N, std::intmax_t D = 1>
   struct ratio {};
 
-  template<typename T, std::intmax_t N>
+  template<typename T, std::uintmax_t N>
   struct  constantify
   {
     using type = std::integral_constant<T,T(N)>;
   };
 
-  template<std::intmax_t V> struct constantify<double,V>
+  template<std::uintmax_t V> struct constantify<double,V>
   {
     using type = brigand::double_<V>;
   };
 
-  template<std::intmax_t V> struct constantify<float,V>
+  template<std::uintmax_t V> struct constantify<float,V>
   {
     using type = brigand::single_<V>;
   };

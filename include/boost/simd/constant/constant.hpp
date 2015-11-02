@@ -36,7 +36,7 @@ namespace boost { namespace simd
 
     @return A value of type @c T which bits are exactly equals to @c N
   **/
-  template<typename Type, std::intmax_t Bits> auto Constant();
+  template<typename Type, std::uintmax_t Bits> auto Constant();
 } }
 #endif
 
