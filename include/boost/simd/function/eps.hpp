@@ -48,25 +48,11 @@ namespace boost { namespace simd
 **/
   template<typename T> auto eps(T const& x) {}
 
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-ieee
 
-      This is the distance between x and the next representable value of the type.
-
-
-      Function object tied to simd::eps
-
-      @see simd::eps
-    **/
-    const boost::dispatch::functor<tag::eps_> eps = {};
-  }
 } }
 #endif
 
-#include <boost/simd/function/definition/eps.hpp>
-#include <boost/simd/arch/common/scalar/function/eps.hpp>
+#include <boost/simd/function/scalar/eps.hpp>
 #include <boost/simd/function/simd/eps.hpp>
 
 #endif

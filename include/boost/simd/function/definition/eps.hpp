@@ -13,29 +13,16 @@
 #ifndef BOOST_SIMD_FUNCTION_DEFINITION_EPS_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_DEFINITION_EPS_HPP_INCLUDED
 
-#include <boost/dispatch/function/make_callable.hpp>
+#include <boost/simd/constant/definition/eps.hpp>
 #include <boost/dispatch/hierarchy/functions.hpp>
-#include <boost/simd/detail/dispatch.hpp>
+
 
 namespace boost { namespace simd
 {
-//   namespace tag
-//   {
-//     BOOST_DISPATCH_MAKE_TAG(ext, eps_, boost::dispatch::elementwise_<eps_>);
-//   }
 
-//   namespace ext
-//   {
-//     BOOST_DISPATCH_FUNCTION_DECLARATION(tag, eps_);
-//   }
-
-//   namespace functional
-//   {
-//     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::eps_,eps);
-//   }
-
-//  BOOST_DISPATCH_FUNCTION_DEFINITION(tag::eps_, eps);
+ BOOST_DISPATCH_FUNCTION_DEFINITION(tag::eps_, eps);
 
 } }
 
 #endif
+
