@@ -53,6 +53,7 @@ namespace boost { namespace simd { namespace detail
 
   template<typename RealType, std::intmax_t N, std::intmax_t D = 1> struct ratio {};
 
+<<<<<<< HEAD
   template<typename T>
   using bits_t = typename std::conditional< std::is_integral<T>::value && std::is_signed<T>::value
                                           , std::intmax_t

@@ -14,6 +14,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_LOGSPACE_ADD_HPP_INCLUDED
 
 #include <boost/simd/function/definition/logspace_add.hpp>
-#include <boost/simd/arch/common/function/scalar/logspace_add.hpp>
+#include <boost/simd/arch/common/scalar/function/logspace_add.hpp>
 
 #endif

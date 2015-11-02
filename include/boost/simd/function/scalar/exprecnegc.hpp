@@ -14,6 +14,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_EXPRECNEGC_HPP_INCLUDED
 
 #include <boost/simd/function/definition/exprecnegc.hpp>
-#include <boost/simd/arch/common/function/scalar/exprecnegc.hpp>
+#include <boost/simd/arch/common/generic/function/exprecnegc.hpp>
 
 #endif

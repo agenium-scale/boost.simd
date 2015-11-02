@@ -14,6 +14,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_LOG_HPP_INCLUDED
 
 #include <boost/simd/function/definition/log.hpp>
-#include <boost/simd/arch/common/function/scalar/log.hpp>
+#include <boost/simd/arch/common/scalar/function/log.hpp>
 
 #endif

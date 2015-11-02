@@ -39,7 +39,7 @@ namespace boost { namespace simd
 #endif
 
 #include <boost/simd/function/definition/realsqrt.hpp>
-#include <boost/simd/arch/common/scalar/function/realsqrt.hpp>
+#include <boost/simd/arch/common/generic/function/realsqrt.hpp>
 #include <boost/simd/function/simd/realsqrt.hpp>
 
 #endif

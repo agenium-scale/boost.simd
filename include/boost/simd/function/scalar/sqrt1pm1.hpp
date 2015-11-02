@@ -14,6 +14,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_SQRT1PM1_HPP_INCLUDED
 
 #include <boost/simd/function/definition/sqrt1pm1.hpp>
-#include <boost/simd/arch/common/function/scalar/sqrt1pm1.hpp>
+#include <boost/simd/arch/common/generic/function/sqrt1pm1.hpp>
 
 #endif

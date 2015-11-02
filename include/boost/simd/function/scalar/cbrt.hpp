@@ -14,6 +14,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_CBRT_HPP_INCLUDED
 
 #include <boost/simd/function/definition/cbrt.hpp>
-#include <boost/simd/arch/common/function/scalar/cbrt.hpp>
+#include <boost/simd/arch/common/scalar/function/cbrt.hpp>
 
 #endif

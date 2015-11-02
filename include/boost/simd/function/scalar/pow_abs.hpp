@@ -14,6 +14,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_POW_ABS_HPP_INCLUDED
 
 #include <boost/simd/function/definition/pow_abs.hpp>
-#include <boost/simd/arch/common/function/scalar/pow_abs.hpp>
+#include <boost/simd/arch/common/scalar/function/pow_abs.hpp>
 
 #endif
