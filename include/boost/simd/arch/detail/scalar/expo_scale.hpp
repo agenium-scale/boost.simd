@@ -13,13 +13,13 @@
 #ifndef BOOST_SIMD_ARCH_DETAIL_SCALAR_D_EXPO_SCALE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_DETAIL_SCALAR_D_EXPO_SCALE_HPP_INCLUDED
 
-#include <boost/simd/options.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/simd/function/scalar/toint.hpp>
 #include <boost/simd/constant/maxexponent.hpp>
-#include <boost/simd/function/scalar/shift_left.hpp>
 #include <boost/simd/constant/nbmantissabits.hpp>
 #include <boost/simd/function/scalar/bitwise_cast.hpp>
+#include <boost/simd/function/scalar/shift_left.hpp>
+#include <boost/simd/function/scalar/toint.hpp>
+#include <boost/simd/options.hpp>
+#include <boost/dispatch/meta/as_integer.hpp>
 
 namespace boost { namespace simd
 {
