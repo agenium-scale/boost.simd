@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/scalar/splat.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <boost/simd/as.hpp>
 
 

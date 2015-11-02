@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/fms.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 
 
 STF_CASE_TPL(" fms",  STF_IEEE_TYPES)

@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/b_or.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <nontrivial.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>

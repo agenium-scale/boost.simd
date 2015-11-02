@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/fnma.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 
 STF_CASE_TPL(" fnma",  STF_IEEE_TYPES)

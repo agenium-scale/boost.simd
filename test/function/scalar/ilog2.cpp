@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/ilog2.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/three.hpp>
 #include <boost/simd/constant/four.hpp>

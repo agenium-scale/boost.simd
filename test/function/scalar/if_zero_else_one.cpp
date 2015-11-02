@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/if_zero_else_one.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
