@@ -38,7 +38,7 @@ namespace boost { namespace simd
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::constant_,constant);
   }
 
-  template<typename Type, std::intmax_t Bits>
+  template<typename Type, std::uintmax_t Bits>
   BOOST_FORCEINLINE     auto Constant() BOOST_NOEXCEPT
                     ->  decltype(detail::constant(typename detail::constantify<Type,Bits>::type{}))
   {
