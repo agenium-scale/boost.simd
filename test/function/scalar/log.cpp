@@ -18,9 +18,26 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/mzero.hpp>
 
-STF_CASE("log TO DO")
+STF_CASE_TPL (" log",  STF_IEEE_TYPES)
 {
-  STF_FAIL("TO DO");
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::log;
 
+  using r_t = decltype(log(T()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, T);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_ULP_EQUAL(log(bs::Inf<T>()), bs::Inf<r_t>(), 0);
+  STF_ULP_EQUAL(log(bs::Minf<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(log(bs::Mone<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(log(bs::Nan<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(log(bs::Zero<T>()), bs::Minf<r_t>(), 0);
+#endif
+  STF_ULP_EQUAL(log(bs::One<T>()), bs::Zero<r_t>(), 0);
 }
+
 

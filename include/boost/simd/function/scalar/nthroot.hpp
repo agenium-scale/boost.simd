@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_NTHROOT_HPP_INCLUDED
 
 #include <boost/simd/function/definition/nthroot.hpp>
-#include <boost/simd/arch/common/function/scalar/nthroot.hpp>
+#include <boost/simd/arch/common/scalar/function/nthroot.hpp>
 
 #endif

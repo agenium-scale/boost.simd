@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_LOG10_HPP_INCLUDED
 
 #include <boost/simd/function/definition/log10.hpp>
-#include <boost/simd/arch/common/function/scalar/log10.hpp>
+#include <boost/simd/arch/common/scalar/function/log10.hpp>
 
 #endif

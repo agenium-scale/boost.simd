@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_SIGNIFICANTS_HPP_INCLUDED
 
 #include <boost/simd/function/definition/significants.hpp>
-#include <boost/simd/arch/common/function/scalar/significants.hpp>
+#include <boost/simd/arch/common/scalar/function/significants.hpp>
 
 #endif

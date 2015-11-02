@@ -17,10 +17,26 @@
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/mzero.hpp>
+#include <boost/simd/constant/sqrt_2.hpp>
 
-STF_CASE("sqrt1pm1 TO DO")
+STF_CASE_TPL (" sqrt1pm1",  STF_IEEE_TYPES)
 {
-  STF_FAIL("TO DO");
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::sqrt1pm1;
 
+  using r_t = decltype(sqrt1pm1(T()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, T);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_ULP_EQUAL(sqrt1pm1(bs::Inf<T>()), bs::Inf<r_t>(), 0);
+  STF_ULP_EQUAL(sqrt1pm1(bs::Minf<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(sqrt1pm1(bs::Nan<T>()), bs::Nan<r_t>(), 0);
+#endif
+  STF_ULP_EQUAL(sqrt1pm1(bs::Mone<T>()), bs::Mone<r_t>(), 0);
+  STF_ULP_EQUAL(sqrt1pm1(bs::One<T>()), bs::Sqrt_2<r_t>()-bs::One<r_t>(), 2);
+  STF_ULP_EQUAL(sqrt1pm1(bs::Zero<T>()), bs::Zero<r_t>(), 0);
 }
-

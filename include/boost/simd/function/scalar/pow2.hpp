@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_POW2_HPP_INCLUDED
 
 #include <boost/simd/function/definition/pow2.hpp>
-#include <boost/simd/arch/common/function/scalar/pow2.hpp>
+#include <boost/simd/arch/common/generic/function/pow2.hpp>
 
 #endif

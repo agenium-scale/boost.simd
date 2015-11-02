@@ -17,10 +17,27 @@
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/mzero.hpp>
+#include <boost/simd/constant/exp_1.hpp>
 
-STF_CASE("exprecneg TO DO")
+STF_CASE_TPL (" exprecneg",  STF_IEEE_TYPES)
 {
-  STF_FAIL("TO DO");
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::exprecneg;
 
+  using r_t = decltype(exprecneg(T()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t,T);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_ULP_EQUAL(exprecneg(bs::Inf<T>()), bs::One<r_t>(), 0);
+  STF_ULP_EQUAL(exprecneg(bs::Minf<T>()), bs::One<r_t>(), 0);
+  STF_ULP_EQUAL(exprecneg(bs::Nan<T>()), bs::Nan<r_t>(), 0);
+#endif
+  STF_ULP_EQUAL(exprecneg(bs::Mone<T>()),bs::Exp_1<r_t>(), 0.75);
+  STF_ULP_EQUAL(exprecneg(bs::One<T>()), bs::rec(bs::Exp_1<r_t>()), 0.75);
+  STF_ULP_EQUAL(exprecneg(bs::Zero<T>()), bs::Zero<r_t>(), 0.75);
+  STF_ULP_EQUAL(exprecneg(bs::Mzero<T>()), bs::Inf<r_t>(), 0.75);
 }
-

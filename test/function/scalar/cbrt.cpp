@@ -18,9 +18,27 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/mzero.hpp>
 
-STF_CASE("cbrt TO DO")
+STF_CASE_TPL (" cbrt",  STF_IEEE_TYPES)
 {
-  STF_FAIL("TO DO");
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::cbrt;
 
+  using r_t = decltype(cbrt(T()));
+
+  // return type conformity test
+  STF_EXPR_IS(cbrt(T()), T);
+
+  // specific values tests
+#ifndef STF_NO_INVALIDS
+  STF_ULP_EQUAL(cbrt(bs::Inf<T>()), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(cbrt(bs::Minf<T>()), bs::Minf<r_t>(), 0.5);
+  STF_ULP_EQUAL(cbrt(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
+#endif
+  STF_ULP_EQUAL(cbrt(bs::Mone<T>()), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(cbrt(bs::One<T>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(cbrt(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(cbrt(T(8)), T(2), 0.5);
 }
+
 

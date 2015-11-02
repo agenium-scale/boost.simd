@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_REALPOW_HPP_INCLUDED
 
 #include <boost/simd/function/definition/realpow.hpp>
-#include <boost/simd/arch/common/function/scalar/realpow.hpp>
+#include <boost/simd/arch/common/scalar/function/realpow.hpp>
 
 #endif

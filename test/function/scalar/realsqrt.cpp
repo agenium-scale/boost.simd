@@ -18,9 +18,23 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/mzero.hpp>
 
-STF_CASE("realsqrt TO DO")
+STF_CASE_TPL (" realsqrt",  STF_IEEE_TYPES)
 {
-  STF_FAIL("TO DO");
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::realsqrt;
 
+  using r_t =  decltype(realsqrt(T()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, T);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_ULP_EQUAL(realsqrt(bs::Inf<T>()), bs::Inf<r_t>(), 0);
+  STF_ULP_EQUAL(realsqrt(bs::Nan<T>()), bs::Nan<r_t>(), 0);
+#endif
+  STF_ULP_EQUAL(realsqrt(bs::One<T>()), bs::One<r_t>(), 0);
+  STF_ULP_EQUAL(realsqrt(bs::Zero<T>()), bs::Zero<r_t>(), 0);
+  STF_ASSERT(   realsqrt(bs::Mone<T>()));
 }
-

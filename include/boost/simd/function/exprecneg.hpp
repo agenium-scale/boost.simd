@@ -38,7 +38,7 @@ namespace boost { namespace simd
 #endif
 
 #include <boost/simd/function/definition/exprecneg.hpp>
-#include <boost/simd/arch/common/scalar/function/exprecneg.hpp>
+#include <boost/simd/arch/common/generic/function/exprecneg.hpp>
 #include <boost/simd/function/simd/exprecneg.hpp>
 
 #endif

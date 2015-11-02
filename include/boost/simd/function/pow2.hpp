@@ -38,7 +38,7 @@ namespace boost { namespace simd
 #endif
 
 #include <boost/simd/function/definition/pow2.hpp>
-#include <boost/simd/arch/common/scalar/function/pow2.hpp>
+#include <boost/simd/arch/common/generic/function/pow2.hpp>
 #include <boost/simd/function/simd/pow2.hpp>
 
 #endif

@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_EXPRECNEG_HPP_INCLUDED
 
 #include <boost/simd/function/definition/exprecneg.hpp>
-#include <boost/simd/arch/common/function/scalar/exprecneg.hpp>
+#include <boost/simd/arch/common/generic/function/exprecneg.hpp>
 
 #endif

@@ -17,10 +17,27 @@
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/mzero.hpp>
+#include <boost/simd/constant/half.hpp>
+#include <boost/simd/constant/two.hpp>
 
-STF_CASE("exp2 TO DO")
+STF_CASE_TPL ( "exp2",  STF_IEEE_TYPES)
 {
-  STF_FAIL("TO DO");
+  namespace bs = boost::simd;
+  using bs::exp2;
+  using r_t = decltype(exp2(T()));
 
+  // return type conformity test
+  STF_TYPE_IS(r_t, T);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_ULP_EQUAL(exp2(bs::Inf<T>()), bs::Inf<r_t>(), 0);
+  STF_ULP_EQUAL(exp2(bs::Minf<T>()), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(exp2(bs::Nan<T>()), bs::Nan<r_t>(), 0);
+#endif
+  STF_ULP_EQUAL(exp2(bs::Mone<T>()), bs::Half<r_t>(), 0.75);
+  STF_ULP_EQUAL(exp2(bs::One<T>()), bs::Two<r_t>(), 0.75);
+  STF_ULP_EQUAL(exp2(bs::Zero<T>()), bs::One<r_t>(), 0.75);
 }
+
 

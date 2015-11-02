@@ -18,9 +18,27 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/mzero.hpp>
 
-STF_CASE("realpow TO DO")
+STF_CASE_TPL (" realpow",  STF_IEEE_TYPES)
 {
-  STF_FAIL("TO DO");
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::realpow;
 
+  using r_t = decltype(realpow(T(), T()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, T);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_ULP_EQUAL(realpow(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>(), 0);
+  STF_ASSERT(realpow(bs::Minf<T>(), bs::Minf<T>()));
+  STF_ULP_EQUAL(realpow(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>(), 0);
+#endif
+  STF_ASSERT(realpow(T(-1), T(0.5)));
+  STF_ULP_EQUAL(realpow(bs::Mone<T>(), bs::Mone<T>()), bs::Mone<r_t>(), 0);
+  STF_ULP_EQUAL(realpow(bs::One<T>(), bs::One<T>()), bs::One<r_t>(), 0);
+  STF_ULP_EQUAL(realpow(bs::Zero<T>(), bs::Zero<T>()), bs::One<r_t>(), 0);
+  STF_ULP_EQUAL(realpow(T(-1),T(5)), T(-1), 0);
+  STF_ULP_EQUAL(realpow(T(-1),T(6)), T(1), 0);
 }
-

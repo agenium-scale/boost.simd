@@ -38,7 +38,7 @@ namespace boost { namespace simd
 #endif
 
 #include <boost/simd/function/definition/sqrt1pm1.hpp>
-#include <boost/simd/arch/common/scalar/function/sqrt1pm1.hpp>
+#include <boost/simd/arch/common/generic/function/sqrt1pm1.hpp>
 #include <boost/simd/function/simd/sqrt1pm1.hpp>
 
 #endif
