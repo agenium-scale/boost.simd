@@ -12,8 +12,12 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_NTHROOT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_NTHROOT_HPP_INCLUDED
 
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/config.hpp>
+#ifndef BOOST_SIMD_NO_INFINITIES
+#include <boost/simd/function/scalar/is_inf.hpp>
+#endif
+#ifndef BOOST_SIMD_NO_INVALID
+#include <boost/simd/function/scalar/is_nan.hpp>
+#endif
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
@@ -25,15 +29,14 @@
 #include <boost/simd/function/scalar/rec.hpp>
 #include <boost/simd/function/scalar/sign.hpp>
 #include <boost/simd/options.hpp>
-
-#ifndef BOOST_SIMD_NO_INFINITIES
-#include <boost/simd/function/scalar/is_inf.hpp>
-#endif
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
+
   BOOST_DISPATCH_OVERLOAD ( nthroot_
                           , (typename A0, typename A1)
                           , bd::cpu_
@@ -43,7 +46,10 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
-      bool is_ltza0 = is_ltz(a0);
+      #ifndef BOOST_SIMD_NO_INVALID
+      if (is_nan(a0)) return a0;
+      #endif
+       bool is_ltza0 = is_ltz(a0);
       bool is_odda1 = is_odd(a1);
       if (is_ltza0 && !is_odda1) return Nan<A0>();
       A0 x = bs::abs(a0);
@@ -57,7 +63,7 @@ namespace boost { namespace simd { namespace ext
       A0 y = bs::pow(x,rec(aa1));
       // Correct numerical errors (since, e.g., 64^(1/3) is not exactly 4)
       // by one iteration of Newton's method
-      if (y) y -= (bs::pow(y, a1) - x) / (aa1* bs::pow(y,minusone(a1)));
+      if (y) y -= (bs::pow(y, aa1) - x) / (aa1* bs::pow(y,minusone(aa1)));
       return (is_ltza0 && is_odda1)? -y : y;
     }
   };
