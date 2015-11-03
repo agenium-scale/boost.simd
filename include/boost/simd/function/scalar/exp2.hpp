@@ -16,3 +16,4 @@
 #include <boost/simd/arch/common/scalar/function/exp2.hpp>
 
 #endif
+

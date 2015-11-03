@@ -19,6 +19,7 @@
 #include <boost/simd/constant/mzero.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/two.hpp>
+#include <boost/simd/function/is_flint.hpp>
 
 STF_CASE_TPL ( "exp2",  STF_IEEE_TYPES)
 {
@@ -38,6 +39,11 @@ STF_CASE_TPL ( "exp2",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(exp2(bs::Mone<T>()), bs::Half<r_t>(), 0.75);
   STF_ULP_EQUAL(exp2(bs::One<T>()), bs::Two<r_t>(), 0.75);
   STF_ULP_EQUAL(exp2(bs::Zero<T>()), bs::One<r_t>(), 0.75);
+
+ for(int i=0; i < 100 ; i++)
+ {
+   STF_TEST(bs::is_flint(exp2(T(i))));
+ }
 }
 
 
