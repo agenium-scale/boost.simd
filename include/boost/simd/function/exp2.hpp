@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2009-2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
-  @copyright 2012-2015 NumScale SAS
+  @copyright 2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
+  @copyright 2015 NumScale SAS
   @copyright 2015 J.T.Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     @ingroup group-exponential
 
-    Base two exponential function: \f$2^{x}\f$
+    base two exponential function: \f$2^{x}\f$
 
     @par Semantic:
 
@@ -37,7 +37,7 @@ namespace boost { namespace simd
     @endcode
 
     @par Note:
-    provisions are made for obtaining a flint result from a flint input.
+    provisions are made for otaining a flint result from a flint input
 
     @see exp, exp10, pow, pow2
 
@@ -49,7 +49,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-callable-trigonometry
+      @ingroup group-callable-exponential
 
       base two exponential function: \f$2^{x}\f$
 
