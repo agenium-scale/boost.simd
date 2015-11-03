@@ -13,8 +13,6 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_SQRT1PM1_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_SQRT1PM1_HPP_INCLUDED
 
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/config.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/function/abs.hpp>
 #include <boost/simd/function/divides.hpp>
@@ -23,6 +21,8 @@
 #include <boost/simd/function/minusone.hpp>
 #include <boost/simd/function/oneplus.hpp>
 #include <boost/simd/function/sqrt.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
