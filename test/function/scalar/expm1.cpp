@@ -10,7 +10,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/expm1.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/nan.hpp>
@@ -19,6 +19,7 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/mzero.hpp>
 #include <boost/simd/constant/exp_1.hpp>
+#include <boost/simd/constant/eps.hpp>
 
 STF_CASE_TPL ( "expm1",  STF_IEEE_TYPES)
 {
@@ -38,4 +39,6 @@ STF_CASE_TPL ( "expm1",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(expm1(bs::Mone<T>()), bs::One<r_t>()/bs::Exp_1<r_t>()-bs::One<r_t>(), 1.0);
   STF_ULP_EQUAL(expm1(bs::One<T>()), bs::Exp_1<r_t>()-bs::One<r_t>(), 1.0);
   STF_ULP_EQUAL(expm1(bs::Zero<T>()), bs::Zero<r_t>(), 1.0);
+  STF_ULP_EQUAL(expm1(bs::Eps<T>()), bs::Eps<r_t>(), 1.0);
+  STF_ULP_EQUAL(expm1(-bs::Eps<T>()), -bs::Eps<r_t>(), 1.0);
 }

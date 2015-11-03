@@ -13,8 +13,10 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_EXPM1_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_EXPM1_HPP_INCLUDED
 
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/config.hpp>
+#ifndef BOOST_SIMD_NO_INVALIDS
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/function/scalar/is_nan.hpp>
+#endif
 #include <boost/simd/arch/detail/generic/expm1_kernel.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/logeps.hpp>
@@ -22,10 +24,8 @@
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/function/scalar/is_greater.hpp>
 #include <boost/simd/function/scalar/is_less.hpp>
-#ifndef BOOST_SIMD_NO_INVALIDS
-#include <boost/simd/function/scalar/is_nan.hpp>
-#include <boost/simd/constant/nan.hpp>
-#endif
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
