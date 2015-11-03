@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/exprecneg.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/nan.hpp>
@@ -36,8 +36,8 @@ STF_CASE_TPL (" exprecneg",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(exprecneg(bs::Minf<T>()), bs::One<r_t>(), 0);
   STF_ULP_EQUAL(exprecneg(bs::Nan<T>()), bs::Nan<r_t>(), 0);
 #endif
-  STF_ULP_EQUAL(exprecneg(bs::Mone<T>()),bs::Exp_1<r_t>(), 0.75);
-  STF_ULP_EQUAL(exprecneg(bs::One<T>()), bs::rec(bs::Exp_1<r_t>()), 0.75);
-  STF_ULP_EQUAL(exprecneg(bs::Zero<T>()), bs::Zero<r_t>(), 0.75);
-  STF_ULP_EQUAL(exprecneg(bs::Mzero<T>()), bs::Inf<r_t>(), 0.75);
+  STF_ULP_EQUAL(exprecneg(bs::Mone<T>()),bs::Exp_1<r_t>(), 0.5);
+  STF_ULP_EQUAL(exprecneg(bs::One<T>()), bs::rec(bs::Exp_1<r_t>()), 0.5);
+  STF_ULP_EQUAL(exprecneg(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(exprecneg(bs::Mzero<T>()), bs::Inf<r_t>(), 0.5);
 }
