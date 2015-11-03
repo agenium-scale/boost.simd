@@ -33,7 +33,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T r = exp(x)-one;
+    T r = minusone(exp(x));
     @endcode
 
     \par Note:
