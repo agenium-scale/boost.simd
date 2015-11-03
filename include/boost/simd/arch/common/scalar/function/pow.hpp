@@ -13,13 +13,13 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_POW_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_POW_HPP_INCLUDED
 
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/config.hpp>
+#include <boost/simd/constant/nan.hpp>
 #include <boost/simd/function/scalar/is_flint.hpp>
 #include <boost/simd/function/scalar/is_ltz.hpp>
 #include <boost/simd/function/scalar/is_odd.hpp>
 #include <boost/simd/function/scalar/pow_abs.hpp>
-#include <boost/simd/constant/nan.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

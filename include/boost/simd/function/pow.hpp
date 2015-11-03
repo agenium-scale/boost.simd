@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2009-2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
-  @copyright 2012-2015 NumScale SAS
+  @copyright 2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
+  @copyright 2015 NumScale SAS
   @copyright 2015 J.T.Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
@@ -17,17 +17,40 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-trigonometry
 
-    Computes pow value of its parameter.
+    @ingroup group-exponential
 
-  **/
-  template<typename T> auto pow(T const& x) {}
+    Computes \f$x^y\f$
+
+    @par Semantic:
+
+    For every parameters of floating types respectively T, U:
+
+    @code
+    T r = pow(x,y);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = exp(y*log(x));
+    @endcode
+
+
+
+    @return a value of the same type as the first parameter
+
+**/
+  template<typename T, typename U> auto pow(T const& x, U const& y) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-callable-trigonometry
+      @ingroup group-callable-exponential
+
+
+      Computes  \f$x^y\f$
+
 
       Function object tied to simd::pow
 
@@ -38,8 +61,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/pow.hpp>
-#include <boost/simd/arch/common/scalar/function/pow.hpp>
+#include <boost/simd/function/scalar/pow.hpp>
 #include <boost/simd/function/simd/pow.hpp>
 
 #endif
