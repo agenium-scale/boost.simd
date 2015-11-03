@@ -12,13 +12,21 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_POW_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_POW_HPP_INCLUDED
 
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/config.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/detail/assert_utils.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/is_flint.hpp>
 #include <boost/simd/function/is_ltz.hpp>
 #include <boost/simd/function/is_odd.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/negif.hpp>
 #include <boost/simd/function/pow_abs.hpp>
-#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/function/rec.hpp>
+#include <boost/simd/function/sqr.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/assert.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -148,7 +156,7 @@ namespace boost { namespace simd { namespace ext
     {
       BOOST_ASSERT_MSG( boost::simd::assert_all(a1 >= 0), "integral pow with signed exponent" );
 
-      using u_t =  bd::as_integer_t<A1>;
+      using u_t =  bd::as_integer_t<A1, unsigned>;
       return pow(a0, bitwise_cast<u_t>(a1));
     }
   };
@@ -165,7 +173,7 @@ namespace boost { namespace simd { namespace ext
 
     A0 operator() ( A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
     {
-      using u_t =  bd::as_integer_t<A1>;
+      using u_t =  bd::as_integer_t<A1, unsigned>;
       auto ltza1 = is_ltz(a1);
       A0 p = pow(a0, bitwise_cast<u_t>(negif(ltza1, a1)));
       return if_else(ltza1, rec(p), p);
