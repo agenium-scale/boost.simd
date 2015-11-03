@@ -275,7 +275,7 @@ namespace boost
       Callable objects version of @ref group-exponential
 
       Their specific semantic limitations are similar to those of their function
-      equivalents as described in the @ref group-trigonometric section.
+      equivalents as described in the @ref group-exponential section.
     **/
 
     /*!
