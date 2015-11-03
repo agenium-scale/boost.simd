@@ -13,11 +13,11 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_EXPRECNEGC_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_EXPRECNEGC_HPP_INCLUDED
 
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/config.hpp>
 #include <boost/simd/function/simd/expm1.hpp>
 #include <boost/simd/function/simd/rec.hpp>
 #include <boost/simd/function/simd/unary_minus.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

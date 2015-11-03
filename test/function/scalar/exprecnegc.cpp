@@ -10,7 +10,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/exprecnegc.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/nan.hpp>
@@ -33,12 +33,12 @@ STF_CASE_TPL (" exprecnegc",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(exprecnegc(bs::Inf<T>()), bs::Zero<r_t>(), 0.75);
-  STF_ULP_EQUAL(exprecnegc(bs::Minf<T>()), bs::Zero<r_t>(), 0.75);
-  STF_ULP_EQUAL(exprecnegc(bs::Nan<T>()), bs::Nan<r_t>(), 0.75);
+  STF_ULP_EQUAL(exprecnegc(bs::Inf<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(exprecnegc(bs::Minf<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(exprecnegc(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(exprecnegc(bs::Mone<T>()), bs::oneminus(bs::Exp_1<r_t>()),0.75);
-  STF_ULP_EQUAL(exprecnegc(bs::One<T>()), bs::oneminus(bs::rec(bs::Exp_1<r_t>())), 0.75);
-  STF_ULP_EQUAL(exprecnegc(bs::Zero<T>()), bs::One<r_t>(), 0.75);
-  STF_ULP_EQUAL(exprecnegc(bs::Mzero<T>()), bs::Minf<r_t>(), 0.75);
+  STF_ULP_EQUAL(exprecnegc(bs::Mone<T>()), bs::oneminus(bs::Exp_1<r_t>()),0.5);
+  STF_ULP_EQUAL(exprecnegc(bs::One<T>()), bs::oneminus(bs::rec(bs::Exp_1<r_t>())), 0.5);
+  STF_ULP_EQUAL(exprecnegc(bs::Zero<T>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(exprecnegc(bs::Mzero<T>()), bs::Minf<r_t>(), 0.5);
 }
