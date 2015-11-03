@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/sqrt1pm1.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/nan.hpp>
@@ -18,6 +18,8 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/mzero.hpp>
 #include <boost/simd/constant/sqrt_2.hpp>
+#include <boost/simd/constant/eps.hpp>
+#include <boost/simd/constant/halfeps.hpp>
 
 STF_CASE_TPL (" sqrt1pm1",  STF_IEEE_TYPES)
 {
@@ -39,4 +41,5 @@ STF_CASE_TPL (" sqrt1pm1",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(sqrt1pm1(bs::Mone<T>()), bs::Mone<r_t>(), 0);
   STF_ULP_EQUAL(sqrt1pm1(bs::One<T>()), bs::Sqrt_2<r_t>()-bs::One<r_t>(), 2);
   STF_ULP_EQUAL(sqrt1pm1(bs::Zero<T>()), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(sqrt1pm1(bs::Eps<T>()), bs::Halfeps<r_t>(), 0.5);
 }

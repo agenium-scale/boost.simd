@@ -16,17 +16,41 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-trigonometry
 
-    Computes sqrt1pm1 value of its parameter.
+    @ingroup group-arithmetic
 
-  **/
+    Returns \f$\sqrt{1+x}-1\f$ and the
+    result is accurate even for x  with small modulus
+
+    @par Semantic:
+
+    For every parameter of floating type T
+
+    @code
+    T r = sqrt1pm1(x);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = minusone(sqrt(Oneplus(x));
+    @endcode
+
+
+    @return a value of the same type as the parameter
+
+**/
   template<typename T> auto sqrt1pm1(T const& x) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-callable-trigonometry
+      @ingroup group-callable-arithmetic
+
+
+      Returns \f$\sqrt{1+a_0}-1\f$ and the
+      result is accurate even for small x
+
 
       Function object tied to simd::sqrt1pm1
 
@@ -37,8 +61,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/sqrt1pm1.hpp>
-#include <boost/simd/arch/common/generic/function/sqrt1pm1.hpp>
+#include <boost/simd/function/scalar/sqrt1pm1.hpp>
 #include <boost/simd/function/simd/sqrt1pm1.hpp>
 
 #endif
