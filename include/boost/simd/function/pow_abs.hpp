@@ -16,17 +16,41 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-trigonometry
 
-    Computes pow_abs value of its parameter.
+    @ingroup group-exponential
 
-  **/
-  template<typename T> auto pow_abs(T const& x) {}
+    Computes \f$|x|^y\f$.
+
+    @par Semantic:
+
+    For every parameters of floating type  T:
+
+    @code
+    T r = pow_abs(x, y);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = pow(abs(x), y);
+    @endcode
+
+    @see pow, abs
+
+
+    @return a value of the same type as the parameter
+
+**/
+  template<typename T> auto pow_abs(T const& x, T const& y) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-callable-trigonometry
+      @ingroup group-callable-exponential
+
+
+      Computes  \f$|x|^y\f$.
+
 
       Function object tied to simd::pow_abs
 
@@ -37,8 +61,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/pow_abs.hpp>
-#include <boost/simd/arch/common/scalar/function/pow_abs.hpp>
+#include <boost/simd/function/scalar/pow_abs.hpp>
 #include <boost/simd/function/simd/pow_abs.hpp>
 
 #endif
