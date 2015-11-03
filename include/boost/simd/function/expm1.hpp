@@ -16,17 +16,43 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-trigonometry
 
-    Computes expm1 value of its parameter.
+    @ingroup group-exponential
 
-  **/
+    exponential function minus one:\f$e^{x}-1\f$
+
+    @par Semantic:
+
+    For every parameter of floating type T
+
+    @code
+    T r = expm1(x);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = exp(x)-one;
+    @endcode
+
+    \par Note:
+    result is accurate even for x of small modulus
+
+    @see exp
+
+    @return a value of the same type as the parameter
+
+**/
   template<typename T> auto expm1(T const& x) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-callable-trigonometry
+      @ingroup group-callable-exponential
+
+
+      exponential function minus one:\f$e^{x}-1\f$
+
 
       Function object tied to simd::expm1
 
@@ -37,8 +63,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/expm1.hpp>
-#include <boost/simd/arch/common/scalar/function/expm1.hpp>
+#include <boost/simd/function/scalar/expm1.hpp>
 #include <boost/simd/function/simd/expm1.hpp>
 
 #endif
