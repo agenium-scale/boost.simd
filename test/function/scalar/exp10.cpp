@@ -10,7 +10,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/exp10.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/nan.hpp>
@@ -20,8 +20,9 @@
 #include <boost/simd/constant/mzero.hpp>
 #include <boost/simd/constant/ten.hpp>
 #include <boost/simd/constant/ratio.hpp>
+#include <boost/simd/function/is_flint.hpp>
 
-STF_CASE_TPL ( "exp10",  STF_IEEE_TYPES)
+STF_CASE_TPL ("exp10",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   using bs::exp10;
@@ -39,6 +40,11 @@ STF_CASE_TPL ( "exp10",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(exp10(bs::Mone<T>()), (bs::Ratio<r_t, 1, 10>()), 0.75);
   STF_ULP_EQUAL(exp10(bs::One<T>()), bs::Ten<r_t>(), 0.75);
   STF_ULP_EQUAL(exp10(bs::Zero<T>()), bs::One<r_t>(), 0.75);
+
+  for(int i=0; i < 30 ; i++)
+  {
+    STF_EXPECT(bs::is_flint(exp2(T(i))));
+  }
 }
 
 
