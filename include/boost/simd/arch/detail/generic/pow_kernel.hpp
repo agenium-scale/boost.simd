@@ -19,7 +19,7 @@
 #include <boost/simd/constant/nine.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/two.hpp>
-#include <boost/simd/function/simd/divides.hpp>
+#include <boost/simd/function/divides.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/inc.hpp>
 #include <boost/simd/function/is_greater_equal.hpp>

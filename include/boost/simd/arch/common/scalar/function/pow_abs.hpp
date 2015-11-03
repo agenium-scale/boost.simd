@@ -13,14 +13,18 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_POW_ABS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_POW_ABS_HPP_INCLUDED
 
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/config.hpp>
+#ifndef BOOST_SIMD_NO_INVALIDS
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/function/is_nan.hpp>
+#endif
 #include <boost/simd/arch/detail/generic/pow_kernel.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/log2_em1.hpp>
 #include <boost/simd/constant/mhalf.hpp>
+#include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/powlargelim.hpp>
 #include <boost/simd/constant/powlowlim.hpp>
+#include <boost/simd/constant/ratio.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/abs.hpp>
 #include <boost/simd/function/floor.hpp>
@@ -32,15 +36,9 @@
 #include <boost/simd/function/ldexp.hpp>
 #include <boost/simd/function/pow2.hpp>
 #include <boost/simd/function/sqr.hpp>
-#include <boost/simd/constant/minf.hpp>
-#include <boost/simd/constant/ratio.hpp>
+#include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
-
-
-#ifndef BOOST_SIMD_NO_INVALIDS
-#include <boost/simd/constant/nan.hpp>
-#include <boost/simd/function/is_nan.hpp>
-#endif
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
