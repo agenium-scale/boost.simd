@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/exp2.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/nan.hpp>
@@ -42,7 +42,7 @@ STF_CASE_TPL ( "exp2",  STF_IEEE_TYPES)
 
  for(int i=0; i < 100 ; i++)
  {
-   STF_TEST(bs::is_flint(exp2(T(i))));
+   STF_EXPECT(bs::is_flint(exp2(T(i))));
  }
 }
 

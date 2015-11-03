@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-exponential
 
-    Base two exponential function: \f$2^{x}\f$
+    base two exponential function: \f$2^{x}\f$
 
     @par Semantic:
 
@@ -36,7 +36,7 @@ namespace boost { namespace simd
     @endcode
 
     @par Note:
-    provisions are made for obtaining a flint result from a flint input.
+    provisions are made for otaining a flint result from a flint input
 
     @see exp, exp10, pow, pow2
 
@@ -48,7 +48,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-callable-trigonometry
+      @ingroup group-callable-exponential
 
       base two exponential function: \f$2^{x}\f$
 
