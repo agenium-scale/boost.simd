@@ -51,7 +51,6 @@ STF_CASE_TPL( "Check abs behavior with exotic type", STF_IEEE_TYPES )
   using foo::nontrivial;
   using r_t = decltype(bs::abs(nontrivial<T>()));
   STF_TYPE_IS(r_t, nontrivial<T>);
-  std::cout << stf::type_id<boost::dispatch::hierarchy_of_t<nontrivial<T>>>()<< std::endl;
   STF_EQUAL(bs::abs(nontrivial<T>(1, 2)), nontrivial<T>(2, 6));
 }
 
