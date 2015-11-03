@@ -12,17 +12,17 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_POW2_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_POW2_HPP_INCLUDED
 
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/config.hpp>
-#include <boost/assert.hpp>
-#include <boost/simd/options.hpp>
-#include <boost/simd/constant/one.hpp>
-#include <boost/simd/function/ldexp.hpp>
-#include <boost/simd/function/toint.hpp>
 #ifndef BOOST_SIMD_NO_INVALIDS
 #include <boost/simd/detail/assert_utils.hpp>
 #include <boost/simd/function/is_finite.hpp>
 #endif
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/function/ldexp.hpp>
+#include <boost/simd/function/toint.hpp>
+#include <boost/simd/options.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/assert.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
