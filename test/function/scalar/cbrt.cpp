@@ -10,7 +10,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/cbrt.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/nan.hpp>
@@ -40,6 +40,9 @@ STF_CASE_TPL (" cbrt",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(cbrt(bs::One<T>()), bs::One<r_t>(), 0.5);
   STF_ULP_EQUAL(cbrt(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
   STF_ULP_EQUAL(cbrt(T(8)), T(2), 0.5);
+  STF_ULP_EQUAL(cbrt(T(27)),T(3), 0.5);
+  STF_ULP_EQUAL(cbrt(T(-8)), T(-2), 0.5);
+  STF_ULP_EQUAL(cbrt(T(-27)),T(-3), 0.5);
 }
 
 

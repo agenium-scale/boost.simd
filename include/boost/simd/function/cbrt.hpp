@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2009-2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
-  @copyright 2012-2015 NumScale SAS
+  @copyright 2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
+  @copyright 2015 NumScale SAS
   @copyright 2015 J.T.Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
@@ -17,17 +17,40 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-trigonometry
 
-    Computes cbrt value of its parameter.
+    @ingroup group-exponential
 
-  **/
+    Compute the cubic root: \f$\sqrt[3]{x}\f$
+
+    @par Semantic:
+
+    For every parameter of floating type T
+
+    @code
+    T r = cbrt(x);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = pow(x, T(1/3.0));
+    @endcode
+
+    @see pow, boost::simd::sqrt
+
+    @return a value of the same type as the parameter
+
+**/
   template<typename T> auto cbrt(T const& x) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-callable-trigonometry
+      @ingroup group-callable-exponential
+
+
+      Compute the cubic root: \f$\sqrt[3]{x}\f$
+
 
       Function object tied to simd::cbrt
 
@@ -38,8 +61,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/cbrt.hpp>
-#include <boost/simd/arch/common/scalar/function/cbrt.hpp>
+#include <boost/simd/function/scalar/cbrt.hpp>
 #include <boost/simd/function/simd/cbrt.hpp>
 
 #endif
