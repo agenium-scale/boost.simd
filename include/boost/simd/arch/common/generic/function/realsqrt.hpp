@@ -13,12 +13,12 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_REALSQRT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_REALSQRT_HPP_INCLUDED
 
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/config.hpp>
-#include <boost/assert.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
 #include <boost/simd/function/is_nltz.hpp>
 #include <boost/simd/function/sqrt.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/assert.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
