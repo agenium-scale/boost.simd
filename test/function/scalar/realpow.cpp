@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/realpow.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/nan.hpp>
