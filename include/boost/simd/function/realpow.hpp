@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2009-2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
-  @copyright 2012-2015 NumScale SAS
+  @copyright 2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
+  @copyright 2015 NumScale SAS
   @copyright 2015 J.T.Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
@@ -17,17 +17,42 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-trigonometry
 
-    Computes realpow value of its parameter.
+    @ingroup group-exponential
 
-  **/
-  template<typename T> auto realpow(T const& x) {}
+    Returns power function,  but
+    asserts if the result is to be complex.
+
+    @par Semantic:
+
+    For every parameters of floating type T:
+
+    @code
+    T r = realpow(x,y);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = pow(x, y);
+    @endcode
+
+
+
+    @return a value of the same type as the parameter
+
+**/
+  template<typename T> auto realpow(T const& x, T const& y) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-callable-trigonometry
+      @ingroup group-callable-exponential
+
+
+      Returns power function,  but
+      asserts if the result is to be complex
+
 
       Function object tied to simd::realpow
 
@@ -38,8 +63,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/realpow.hpp>
-#include <boost/simd/arch/common/scalar/function/realpow.hpp>
+#include <boost/simd/function/scalar/realpow.hpp>
 #include <boost/simd/function/simd/realpow.hpp>
 
 #endif
