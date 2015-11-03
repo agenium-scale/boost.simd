@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2009-2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
-  @copyright 2012-2015 NumScale SAS
+  @copyright 2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
+  @copyright 2015 NumScale SAS
   @copyright 2015 J.T.Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
@@ -17,17 +17,41 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-trigonometry
 
-    Computes pow2 value of its parameter.
+    @ingroup group-exponential
 
-  **/
+    Returns \f$ x 2^y\f$.  (the result is undefined on overflow and
+    the function asserts for invalid second parameter )
+
+    @par Semantic:
+
+    For every parameters of floating type T
+
+    @code
+    T r = pow2(x, y);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = x*exp2(trunc(y));
+    @endcode
+
+    @see exp2, trunc, ldexp
+
+    @return a value of the same type as the parameter
+
+**/
   template<typename T> auto pow2(T const& x) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-callable-trigonometry
+      @ingroup group-callable-exponential
+
+
+      Returns \f$ x 2^y\f$.
+
 
       Function object tied to simd::pow2
 
@@ -38,8 +62,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/pow2.hpp>
-#include <boost/simd/arch/common/generic/function/pow2.hpp>
+#include <boost/simd/function/scalar/pow2.hpp>
 #include <boost/simd/function/simd/pow2.hpp>
 
 #endif
