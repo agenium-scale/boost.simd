@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2009-2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
-  @copyright 2012-2015 NumScale SAS
+  @copyright 2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
+  @copyright 2015 NumScale SAS
   @copyright 2015 J.T.Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
@@ -26,22 +26,25 @@ namespace boost { namespace simd
     For any value @c a and @c b of type @c T,
 
     @code
-    T x = divides(a,b);
+    T r = divides(a,b);
     @endcode
 
     returns the quotient of @c a by @c b
 
-    @param a0 First  parameter of the quotient
-    @param a1 Second parameter of the quotient
+    @param a First  parameter of the quotient
+    @param b Second parameter of the quotient
 
     @return The quotient of the two parameters.
   **/
-  template<typename T> auto divides(T const& a0, T const& a1);
+  template<typename T> auto divides(T const& a, T const& b);
 
   namespace functional
   {
     /*!
       @ingroup group-callable-operator
+
+      Perform the quotient of two parameters of the same type.
+
 
       Function object tied to boost::simd::divides
 
@@ -53,7 +56,8 @@ namespace boost { namespace simd
 #endif
 
 #include <boost/simd/function/definition/divides.hpp>
-#include <boost/simd/arch/common/function/scalar/divides.hpp>
-//#include <boost/simd/arch/common/function/simd/divides.hpp>
+#include <boost/simd/arch/common/scalar/function/divides.hpp>
+#include <boost/simd/arch/common/generic/function/divides.hpp>
+#include <boost/simd/function/simd/divides.hpp>
 
 #endif

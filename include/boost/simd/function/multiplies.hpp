@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2009-2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
-  @copyright 2012-2015 NumScale SAS
+  @copyright 2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
+  @copyright 2015 NumScale SAS
   @copyright 2015 J.T.Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
@@ -31,17 +31,20 @@ namespace boost { namespace simd
 
     returns the product of @c a and @c b
 
-    @param a0 First  parameter of the product
-    @param a1 Second parameter of the product
+    @param x First  parameter of the product
+    @param y Second parameter of the product
 
     @return The product of the two parameters.
   **/
-  template<typename T> auto multiplies(T const& a0, T const& a1);
+  template<typename T> auto multiplies(T const& x, T const& y);
 
   namespace functional
   {
     /*!
       @ingroup group-callable-operator
+
+      Perform the product of two parameters of the same type.
+
 
       Function object tied to boost::simd::multiplies
 
@@ -53,7 +56,7 @@ namespace boost { namespace simd
 #endif
 
 #include <boost/simd/function/definition/multiplies.hpp>
-#include <boost/simd/arch/common/function/scalar/multiplies.hpp>
-//#include <boost/simd/arch/common/function/simd/multiplies.hpp>
+#include <boost/simd/arch/common/scalar/function/multiplies.hpp>
+#include <boost/simd/function/simd/multiplies.hpp>
 
 #endif

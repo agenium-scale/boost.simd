@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2009-2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
-  @copyright 2012-2015 NumScale SAS
+  @copyright 2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
+  @copyright 2015 NumScale SAS
   @copyright 2015 J.T.Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
@@ -18,12 +18,16 @@
 
 namespace boost { namespace simd
 {
-  namespace functional
+  namespace tag
   {
-    BOOST_DISPATCH_CALLABLE_DEFINITION(tag::abs_,modulus);
+    using modulus_ = abs_;
   }
 
-  BOOST_DISPATCH_FUNCTION_DEFINITION(tag::abs_,modulus);
+  namespace functional
+  {
+    BOOST_DISPATCH_CALLABLE_DEFINITION(tag::modulus_,modulus);
+  }
+  BOOST_DISPATCH_FUNCTION_DEFINITION(tag::modulus_,modulus);
 } }
 
 #endif

@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2009-2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
-  @copyright 2012-2015 NumScale SAS
+  @copyright 2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
+  @copyright 2015 NumScale SAS
   @copyright 2015 J.T.Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
@@ -23,17 +23,14 @@ namespace boost { namespace simd
   {
     BOOST_DISPATCH_MAKE_TAG(ext, multiplies_, boost::dispatch::elementwise_<multiplies_>);
   }
-
   namespace ext
   {
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag, multiplies_);
   }
-
   namespace functional
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::multiplies_,multiplies);
   }
-
   BOOST_DISPATCH_FUNCTION_DEFINITION(tag::multiplies_,multiplies);
 } }
 
