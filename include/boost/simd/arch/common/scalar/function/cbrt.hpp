@@ -12,6 +12,15 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_CBRT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_CBRT_HPP_INCLUDED
 
+#ifndef BOOST_SIMD_NO_INFINITIES
+#include <boost/simd/constant/inf.hpp>
+#endif
+#ifndef BOOST_SIMD_NO_DENORMALS
+#include <boost/simd/constant/smallestposval.hpp>
+#include <boost/simd/constant/twotomnmbo_3.hpp>
+#include <boost/simd/constant/twotonmb.hpp>
+#endif
+#include <boost/simd/arch/detail/scalar/horner.hpp>
 #include <boost/simd/constant/constant.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/third.hpp>
@@ -21,27 +30,19 @@
 #include <boost/simd/function/scalar/bitofsign.hpp>
 #include <boost/simd/function/scalar/bitwise_or.hpp>
 #include <boost/simd/function/scalar/frexp.hpp>
-#include <boost/simd/function/scalar/ldexp.hpp>
 #include <boost/simd/function/scalar/is_gez.hpp>
+#include <boost/simd/function/scalar/ldexp.hpp>
 #include <boost/simd/function/scalar/negate.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
-#include <boost/simd/arch/detail/scalar/horner.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#ifndef BOOST_SIMD_NO_INFINITIES
-#include <boost/simd/constant/inf.hpp>
-#endif
-#ifndef BOOST_SIMD_NO_DENORMALS
-#include <boost/simd/constant/smallestposval.hpp>
-#include <boost/simd/constant/twotomnmbo_3.hpp>
-#include <boost/simd/constant/twotonmb.hpp>
-#endif
 #include <boost/dispatch/function/overload.hpp>
+#include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
+
   BOOST_DISPATCH_OVERLOAD ( cbrt_
                           , (typename A0)
                           , bd::cpu_
