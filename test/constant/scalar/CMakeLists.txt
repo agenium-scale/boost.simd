@@ -104,8 +104,6 @@ set ( SOURCES
   euler.cpp
   exp_1.cpp
   expnibig.cpp
-  expx2c1.cpp
-  expx2c2.cpp
   invexp_1.cpp
   invlog10_2.cpp
   invlog_10.cpp
