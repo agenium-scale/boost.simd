@@ -1,12 +1,15 @@
+#ifndef NONTRIVIAL_HPP
+#define NONTRIVIAL_HPP
+
+#include <iostream>
+
 namespace foo
 {
   template<class T>
   struct nontrivial
   {
-    nontrivial(const T & aa, const T & bb)
-      :a(aa), b(bb){};
-    nontrivial()
-      :nontrivial(0, 0){};
+    nontrivial(const T & aa, const T & bb) :a(aa), b(bb){};
+    nontrivial() :nontrivial(0, 0){};
     T a, b;
   };
 
@@ -15,16 +18,19 @@ namespace foo
   {
     return (z1.a == z2.a) &&  (z1.b == z2.b);
   }
+
   template < class T>
   bool compare_less (const nontrivial<T> & z1, const nontrivial<T> & z2)
   {
     return (z1.a < z2.a) &&  (z2.b < z2.b);
   }
+
   template < class T>
   nontrivial<T> perform (const nontrivial<T> & z1, const nontrivial<T> & z2)
   {
     return nontrivial<T>(z1.a + z2.a,  z1.b * z2.b);
   }
+
   template < class T>
   nontrivial<T> perform (const nontrivial<T> & z1)
   {
@@ -38,3 +44,5 @@ namespace foo
     return os;
   }
 }
+
+#endif
