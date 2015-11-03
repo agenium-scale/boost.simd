@@ -16,17 +16,44 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-trigonometry
 
-    Computes expx2 value of its parameter.
+    @ingroup group-exponential
 
-  **/
-  template<typename T> auto expx2(T const& x) {}
+    exponential of square function: \f$e^{x^2}\f$ or \f$e^{-x^2}\f$
+
+    @par Semantic:
+
+    For every parameters of floating type T
+
+    @code
+    T r = expx2(x, s);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r =  exp(signnz(s)*x*x);
+    @endcode
+
+    @par Note:
+    provisions are made for obtaining more accurate results for large x.
+    s default to 1.
+
+    @see exp
+
+    @return a value of the same type as the parameter
+
+**/
+  template<typename T> auto expx2(T const& x, T const& s) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-callable-trigonometry
+      @ingroup group-callable-exponential
+
+
+      exponential of square function: \f$e^{x^2}\f$ or \f$e^{-x^2}\f$
+
 
       Function object tied to simd::expx2
 
@@ -37,8 +64,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/expx2.hpp>
-#include <boost/simd/arch/common/scalar/function/expx2.hpp>
+#include <boost/simd/function/scalar/expx2.hpp>
 #include <boost/simd/function/simd/expx2.hpp>
 
 #endif
