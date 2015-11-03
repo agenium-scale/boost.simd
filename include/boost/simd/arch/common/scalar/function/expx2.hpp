@@ -13,13 +13,12 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_EXPX2_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_EXPX2_HPP_INCLUDED
 
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/config.hpp>
-#include <boost/simd/constant/expx2c1.hpp>
-#include <boost/simd/constant/expx2c2.hpp>
+// #include <boost/simd/constant/expx2c1.hpp>
+// #include <boost/simd/constant/expx2c2.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/maxlog.hpp>
+#include <boost/simd/constant/real.hpp>
 #include <boost/simd/constant/two.hpp>
 #include <boost/simd/function/scalar/abs.hpp>
 #include <boost/simd/function/scalar/exp.hpp>
@@ -27,6 +26,8 @@
 #include <boost/simd/function/scalar/fma.hpp>
 #include <boost/simd/function/scalar/signnz.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -44,8 +45,10 @@ namespace boost { namespace simd { namespace ext
       if (is_inf(a0)) return Inf<A0>();
     #endif
       A0 x =  bs::abs(a0);
+      const A0 Expx2c1 = Real<A0, 0x4060000000000000ull, 0x42000000UL>();
+      const A0 Expx2c2 = Real<A0, 0x3f80000000000000ull, 0x3d000000UL>();
       /* Represent x as an exact multiple of 1/32 plus a residual.  */
-      A0 m = Expx2c1<A0>() * bs::floor(fma(Expx2c2<A0>(), x, Half<A0>()));
+      A0 m = Expx2c1 * bs::floor(fma(Expx2c2, x, Half<A0>()));
       x -= m;
       /* x**2 = m**2 + 2mf + f**2 */
       A0 u = sqr(m);
@@ -65,13 +68,15 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 s) const BOOST_NOEXCEPT
     {
+      const A0 Expx2c1 = Real<A0, 0x4060000000000000ull, 0x42000000UL>();
+      const A0 Expx2c2 = Real<A0, 0x3f80000000000000ull, 0x3d000000UL>();
       A0 sgn =  signnz(s);
       A0 x =  a0*sgn;
     #ifndef BOOST_SIMD_NO_INFINITIES
       if (bs::is_inf(a0)) return bs::Inf<A0>();
     #endif
       // Represent x as an exact multiple of 1/32 plus a residual.
-      A0 m = Expx2c1<A0>()*floor(fma(Expx2c2<A0>(), x, Half<A0>()));
+      A0 m = Expx2c1*floor(fma(Expx2c2, x, Half<A0>()));
       A0 f =  x-m;
       // x**2 = m**2 + 2mf + f**2
       A0 u = sgn*sqr(m);
