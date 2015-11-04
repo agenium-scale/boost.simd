@@ -9,6 +9,7 @@
 
 set ( SOURCES
       cardinal_of.cpp
+      is_scalar.cpp
       logical.cpp
     )
 
