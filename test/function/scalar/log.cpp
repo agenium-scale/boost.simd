@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/log.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/nan.hpp>
@@ -17,6 +17,7 @@
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/mzero.hpp>
+#include <boost/simd/constant/log_2.hpp>
 
 STF_CASE_TPL (" log",  STF_IEEE_TYPES)
 {
@@ -38,6 +39,7 @@ STF_CASE_TPL (" log",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(log(bs::Zero<T>()), bs::Minf<r_t>(), 0);
 #endif
   STF_ULP_EQUAL(log(bs::One<T>()), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(log(bs::Two<T>()), bs::Log_2<r_t>(), 0);
 }
 
 
