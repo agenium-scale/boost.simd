@@ -17,7 +17,7 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/function/is_nan.hpp>
 #endif
-#include <boost/simd/arch/detail/generic/pow_kernel.hpp>
+#include <boost/simd/arch/common/detail/generic/pow_kernel.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/log2_em1.hpp>
 #include <boost/simd/constant/mhalf.hpp>

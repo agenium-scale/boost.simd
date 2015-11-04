@@ -14,8 +14,8 @@
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_EXP2_HPP_INCLUDED
 
 #include <boost/dispatch/function/overload.hpp>
-#include <boost/simd/arch/detail/scalar/exponential.hpp>
-#include <boost/simd/arch/detail/tags.hpp>
+#include <boost/simd/arch/common/detail/scalar/exponential.hpp>
+#include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

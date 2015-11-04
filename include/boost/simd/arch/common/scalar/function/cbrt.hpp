@@ -21,7 +21,7 @@
 #include <boost/simd/constant/twotomnmbo_3.hpp>
 #include <boost/simd/constant/twotonmb.hpp>
 #endif
-#include <boost/simd/arch/detail/scalar/horner.hpp>
+#include <boost/simd/arch/common/detail/generic/horner.hpp>
 #include <boost/simd/constant/constant.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/third.hpp>
