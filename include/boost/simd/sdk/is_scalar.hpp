@@ -1,0 +1,38 @@
+//==================================================================================================
+/*!
+  @file
+
+  @copyright 2015 NumScale SAS
+
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+
+**/
+//==================================================================================================
+#ifndef BOOST_SIMD_SDK_IS_SCALAR_HPP_INCLUDED
+#define BOOST_SIMD_SDK_IS_SCALAR_HPP_INCLUDED
+
+#include <boost/simd/detail/brigand.hpp>
+#include <boost/dispatch/hierarchy/unspecified.hpp>
+#include <boost/dispatch/hierarchy/scalar.hpp>
+#include <boost/dispatch/models.hpp>
+
+namespace boost { namespace simd
+{
+  namespace bd = boost::dispatch;
+
+  /*!
+    @ingroup  group-api
+    @brief    Checks if type is scalar
+
+    For a given type @c Type, checks if said type is a scalar type, i.e not a type stored in a
+    hardware wide register.
+
+    @tparam Type      Type to check
+  **/
+  template<typename T>
+  struct is_scalar : bd::models_t<T, bd::scalar_<bd::unspecified_<brigand::_1>> >
+  {};
+} }
+
+#endif
