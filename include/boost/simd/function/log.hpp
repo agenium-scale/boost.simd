@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2009-2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
-  @copyright 2012-2015 NumScale SAS
+  @copyright 2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
+  @copyright 2015 NumScale SAS
   @copyright 2015 J.T.Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
@@ -17,17 +17,35 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-trigonometry
 
-    Computes log value of its parameter.
+    @ingroup group-exponential
 
-  **/
+    Natural logarithm function.
+
+    @par Semantic:
+
+    For every parameter of floating type T
+
+    @code
+    T r = log(x);
+    @endcode
+
+    @see log10, log2, log1p
+
+
+    @return a value of the same type as the parameter
+
+**/
   template<typename T> auto log(T const& x) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-callable-trigonometry
+      @ingroup group-callable-exponential
+
+
+      Natural logarithm function.
+
 
       Function object tied to simd::log
 
@@ -38,8 +56,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/log.hpp>
-#include <boost/simd/arch/common/scalar/function/log.hpp>
+#include <boost/simd/function/scalar/log.hpp>
 #include <boost/simd/function/simd/log.hpp>
 
 #endif
