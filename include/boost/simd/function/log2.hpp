@@ -16,17 +16,40 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-trigonometry
 
-    Computes log2 value of its parameter.
+    @ingroup group-exponential
 
-  **/
+    base two logarithm function.
+
+    @par Semantic:
+
+    For every parameter of floating type T
+
+    @code
+    T r = log2(x);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r =  log(x)/log(Two<T>());;
+    @endcode
+
+
+    @see log10, log, log1p
+    @return a value of the same type as the parameter
+
+**/
   template<typename T> auto log2(T const& x) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-callable-trigonometry
+      @ingroup group-callable-exponential
+
+
+      base two logarithm function.
+
 
       Function object tied to simd::log2
 
@@ -37,8 +60,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/log2.hpp>
-#include <boost/simd/arch/common/scalar/function/log2.hpp>
+#include <boost/simd/function/scalar/log2.hpp>
 #include <boost/simd/function/simd/log2.hpp>
 
 #endif
