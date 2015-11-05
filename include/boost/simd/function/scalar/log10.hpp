@@ -14,5 +14,6 @@
 
 #include <boost/simd/function/definition/log10.hpp>
 #include <boost/simd/arch/common/scalar/function/log10.hpp>
+#include <boost/simd/arch/common/generic/function/log10.hpp>
 
 #endif

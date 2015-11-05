@@ -287,9 +287,6 @@ set ( SOURCES
    pow.cpp
    pow2.cpp
    pow_abs.cpp
-   reallog.cpp
-   realpow.cpp
-   realsqrt.cpp
    significants.cpp
    sqrt1pm1.cpp
 #aliases
