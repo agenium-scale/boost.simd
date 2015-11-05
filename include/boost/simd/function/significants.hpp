@@ -16,17 +16,36 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-trigonometry
 
-    Computes significants value of its parameter.
+    @ingroup group-exponential
 
-  **/
-  template<typename T> auto significants(T const& x) {}
+    Compute the rounding to n significants digits
+
+    @par Semantic:
+
+    For every parameter of floating type T and strictly positive integer n
+
+    @code
+    T r = significants(x, n);
+    @endcode
+
+    is equivalent to round(x, m) where m is n-iceil(log10(abs(x)))
+
+    @see round,  iceil, log10
+
+    @return a value of the same type as the parameter
+
+**/
+  template<typename T, typename N> auto significants(T const& x, N const& n) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-callable-trigonometry
+      @ingroup group-callable-exponential
+
+
+      Compute the rounding to n significants digits
+
 
       Function object tied to simd::significants
 
@@ -37,8 +56,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/significants.hpp>
-#include <boost/simd/arch/common/scalar/function/significants.hpp>
+#include <boost/simd/function/scalar/significants.hpp>
 #include <boost/simd/function/simd/significants.hpp>
 
 #endif
