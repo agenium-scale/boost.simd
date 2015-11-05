@@ -16,17 +16,42 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-trigonometry
 
-    Computes logspace_add value of its parameter.
+    @ingroup group-exponential
 
-  **/
-  template<typename T> auto logspace_add(T const& x) {}
+     Compute the log of a sum from logs of terms
+     properly compute \f$\log (\exp (\log x) + \exp (\log y))\f$
+
+    @par Semantic:
+
+    For every parameters of floating types T:
+
+    @code
+    T r = logspace_add(x, y);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = log(exp(log(x)) + exp(log(y)));
+    @endcode
+
+
+
+    @return a value of the same type as the parameter
+
+**/
+  template<typename T> auto logspace_add(T const& x, T const& y) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-callable-trigonometry
+      @ingroup group-callable-exponential
+
+
+       Compute the log of a sum from logs of terms
+       properly compute \f$\log (\exp (\log x) + \exp (\log y))\f$
+
 
       Function object tied to simd::logspace_add
 
@@ -37,8 +62,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/logspace_add.hpp>
-#include <boost/simd/arch/common/scalar/function/logspace_add.hpp>
+#include <boost/simd/function/scalar/logspace_add.hpp>
 #include <boost/simd/function/simd/logspace_add.hpp>
 
 #endif
