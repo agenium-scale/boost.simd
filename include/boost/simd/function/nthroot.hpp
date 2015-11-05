@@ -52,7 +52,7 @@ namespace boost { namespace simd
     @return a value of the same type as the parameter
 
 **/
-  template<typename T> auto nthroot(T const& x) {}
+  template<typename T, typename N> auto nthroot(T const& x, N const & n) {}
 
   namespace functional
   {

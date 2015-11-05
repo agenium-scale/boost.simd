@@ -42,7 +42,7 @@ namespace boost { namespace simd
     @return a value of the same type as the parameter
 
 **/
-  template<typename T> auto pow2(T const& x) {}
+  template<typename T> auto pow2(T const& x, T const& y) {}
 
   namespace functional
   {
