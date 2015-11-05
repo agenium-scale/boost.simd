@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2009-2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
-  @copyright 2012-2015 NumScale SAS
+  @copyright 2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
+  @copyright 2015 NumScale SAS
   @copyright 2015 J.T.Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
@@ -17,17 +17,42 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-trigonometry
 
-    Computes logspace_sub value of its parameter.
+    @ingroup group-exponential
 
-  **/
-  template<typename T> auto logspace_sub(T const& x) {}
+     Compute the log of a sum from logs of terms
+     properly compute \f$\log (\exp (\log x) - \exp (\log y))\f$
+
+    @par Semantic:
+
+    For every parameters of floating type T:
+
+    @code
+    T r = logspace_sub(x, y);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r =  log(exp(log(x)) - exp(log(y)));
+    @endcode
+
+
+
+    @return a value of the same type as the parameter
+
+**/
+  template<typename T> auto logspace_sub(T const& x, T const& y) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-callable-trigonometry
+      @ingroup group-callable-exponential
+
+
+       Compute the log of a sum from logs of terms
+       properly compute \f$\log (\exp (\log x) - \exp (\log y))\f$
+
 
       Function object tied to simd::logspace_sub
 
@@ -38,8 +63,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/logspace_sub.hpp>
-#include <boost/simd/arch/common/scalar/function/logspace_sub.hpp>
+#include <boost/simd/function/scalar/logspace_sub.hpp>
 #include <boost/simd/function/simd/logspace_sub.hpp>
 
 #endif
