@@ -10,10 +10,11 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_SDK_IS_SCALAR_HPP_INCLUDED
-#define BOOST_SIMD_SDK_IS_SCALAR_HPP_INCLUDED
+#ifndef BOOST_SIMD_SDK_IS_NOT_SCALAR_HPP_INCLUDED
+#define BOOST_SIMD_SDK_IS_NOT_SCALAR_HPP_INCLUDED
 
 #include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/sdk/is_scalar.hpp>
 #include <boost/dispatch/hierarchy/unspecified.hpp>
 #include <boost/dispatch/hierarchy/scalar.hpp>
 #include <boost/dispatch/models.hpp>
@@ -24,18 +25,18 @@ namespace boost { namespace simd
 
   /*!
     @ingroup  group-api
-    @brief    Checks if type is scalar
+    @brief    Checks if type is not scalar
 
-    For a given type @c Type, checks if said type is a scalar type, i.e not a type stored in a
+    For a given type @c Type, checks if said type is not a scalar type, i.e a type stored in a
     hardware wide register.
 
     @tparam Type      Type to check
   **/
   template<typename T>
-  struct is_scalar : bd::models_t<T, bd::scalar_<bd::unspecified_<brigand::_1>> >
+  struct is_not_scalar : brigand::not_ < is_scalar < T>>
   {};
   template<typename T>
-  using is_scalar_t = typename is_scalar<T>::type;
+  using is_not_scalar_t = typename is_not_scalar<T>::type;
 } }
 
 #endif

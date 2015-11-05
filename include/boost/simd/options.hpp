@@ -68,7 +68,23 @@ namespace boost { namespace simd
 
   const ten_tag ten_ = {};
 
+  /// selection tags for throwing and asserting
 
+  struct assert_tag
+  {
+    using parent = assert_tag;
+    using hierarchy_tag = void; //dispatch::detail::hierarchy_tag;
+  };
+
+  const assert_tag assert_ = {};
+
+  struct throw_tag
+  {
+    using parent = throw_tag;
+    using hierarchy_tag = void; //dispatch::detail::hierarchy_tag;
+  };
+
+  const throw_tag throw_ = {};
 } }
 
 #endif

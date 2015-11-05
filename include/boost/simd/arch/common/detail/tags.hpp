@@ -3,8 +3,8 @@
 
 namespace boost { namespace simd { namespace tag
 {
-  typedef boost::mpl::false_ not_simd_type;
-  typedef boost::mpl::true_      simd_type;
+  typedef std::integral_constant<bool, false> not_simd_type;
+  typedef std::integral_constant<bool, true>  simd_type;
   struct accu_tag{};
 
 } } }
