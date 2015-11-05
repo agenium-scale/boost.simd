@@ -148,21 +148,16 @@ namespace boost { namespace simd
 #endif
         A0 x, fe, x2, y;
         kernel_t::log(z, fe, x, x2, y);
+
         y = fma(Mhalf<A0>(), x2, y);
-//        y = amul(y, Mhalf<A0>(), x2);
         z = (x+y)*Log10_elo<A0>();
         z = fma( y, Log10_ehi<A0>(), z);
-          //        z = amul(z, y, Log10_ehi<A0>());
-        z = fma(Log10_ehi<A0>(),z, x);
-//        z = amul(z, x, Log10_ehi<A0>());
-        z = fma(Log10_2hi<A0>(), z, fe);
-//        z = amul(z, fe, Log10_2hi<A0>());
+        z = fma(Log10_ehi<A0>(), y,  z);
+        z = fma(Log10_2hi<A0>(), fe, z);
 #ifdef BOOST_SIMD_NO_DENORMALS
-        return fma(Log10_2lo<A0>(),z, fe);
-//        return amul(z, fe, Log10_2lo<A0>());
+        return fma(Log10_2lo<A0>(), fe, z);
 #else
-        return fma(Log10_2lo<A0>(),z+t, fe);
-//        return amul(z+t, fe, Log10_2lo<A0>());
+        return fma(Log10_2lo<A0>(),fe, z+t);
 #endif
       }
     };
