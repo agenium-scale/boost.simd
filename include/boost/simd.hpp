@@ -157,9 +157,7 @@ namespace boost
       @ingroup group-functions
       @defgroup group-exponential Exponential Functions
 
-      Those functions provides algorithms for coputing exponential, logarithm,  hyperbolic
-      and properly trigonometric functions as sine and cosine,  providing scalar and simd
-      version for elements of types float and double.
+      Those functions provides algorithms for computing exponentials and logarithms.
     **/
 
     /// Boost.SIMD Callable Objects namespace
