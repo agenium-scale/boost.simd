@@ -31,6 +31,15 @@ namespace boost { namespace simd
 
     @see log10, log2, log1p
 
+    @par Note:
+
+    log(x) return Nan for negative enties (peculiarly Mzero
+    for floating numbers).
+
+    The call log(x, assert_) asserts is x is negative (peculiarly
+    take care that it asserts for Mzero but not Zero in case of floating numbers)
+
+    @see is_negative,  Mzero
 
     @return a value of the same type as the parameter
 

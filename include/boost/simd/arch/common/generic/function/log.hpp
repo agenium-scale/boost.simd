@@ -9,18 +9,23 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_LOG_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_LOG_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_LOG_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_LOG_HPP_INCLUDED
 
 #include <boost/simd/arch/common/detail/scalar/logarithm.hpp>
-#include <boost/simd/arch/common/detail/tags.hpp>
+#include <boost/simd/function/is_not_nan.hpp>
+#include <boost/simd/function/is_positive.hpp>
+#include <boost/simd/options.hpp>
+#include <boost/simd/sdk/is_not_scalar.hpp>
 #include <boost/dispatch/function/overload.hpp>
+#include <boost/assert.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
+
   BOOST_DISPATCH_OVERLOAD ( log_
                           , (typename A0)
                           , bd::cpu_
@@ -29,7 +34,23 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() (A0 const & a0) const BOOST_NOEXCEPT
     {
-      return detail::logarithm<A0,tag::not_simd_type>::log(a0);
+      return detail::logarithm<A0,is_not_scalar_t<A0>>::log(a0);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( log_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::generic_< bd::floating_<A0> >
+                          , boost::simd::assert_tag
+                           )
+  {
+    BOOST_FORCEINLINE A0 operator() (A0 const & a0
+                                    , assert_tag const& ) const BOOST_NOEXCEPT
+    {
+      BOOST_ASSERT_MSG(bs::assert_all(is_positive(a0)&&is_not_nan(a0)),
+                       "log(x, assert_) cannot produce complex result.");
+       return bs::log(a0);
     }
   };
 } } }
