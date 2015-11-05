@@ -20,6 +20,11 @@
 #include <boost/simd/function/is_flint.hpp>
 #include <boost/simd/function/is_ltz.hpp>
 #include <boost/simd/function/is_odd.hpp>
+#include <boost/simd/function/is_not_nan.hpp>
+#include <boost/simd/function/is_positive.hpp>
+#include <boost/simd/function/logical_and.hpp>
+#include <boost/simd/function/logical_or.hpp>
+#include <boost/simd/options.hpp>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/negif.hpp>
 #include <boost/simd/function/pow_abs.hpp>
@@ -180,6 +185,24 @@ namespace boost { namespace simd { namespace ext
       return if_else(ltza1, rec(p), p);
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( pow_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::arithmetic_<A0> >
+                          , bd::scalar_< bd::arithmetic_<A0> >
+                          , boost::simd::assert_tag
+                           )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0  const& a0, A0 const&  a1
+                                    , assert_tag const& ) const BOOST_NOEXCEPT
+    {
+      BOOST_ASSERT_MSG(bs::assert_all((is_positive(a0)&&is_not_nan(a0)) || is_flint(a1)),
+                       "pow(a0, a1, assert_) cannot produce complex result." );
+      return  pow(a0, a1);
+    }
+  };
+
 } } }
 
 
