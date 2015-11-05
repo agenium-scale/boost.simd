@@ -30,8 +30,6 @@ STF_CASE_TPL (" log10",  STF_IEEE_TYPES)
 
   // return type conformity test
   STF_TYPE_IS(r_t, T);
-//   using is_not_scalar_t = typename bs::is_not_scalar<T>::type; //is_scalar_t<A0>;
-//       std::cout << stf::type_id<is_not_scalar_t>() << std::endl;
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
@@ -42,6 +40,7 @@ STF_CASE_TPL (" log10",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(log10(bs::Zero<T>()), bs::Minf<r_t>(), 0);
 #endif
   STF_ULP_EQUAL(log10(bs::One<T>()), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(log10(bs::Two<T>()), T(0.301029995663981195213738894724), 0);
 }
 
 STF_CASE_TPL (" log10unsigned_uint8",  (uint8_t))
