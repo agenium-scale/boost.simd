@@ -289,6 +289,21 @@ set ( SOURCES
    pow_abs.cpp
    significants.cpp
    sqrt1pm1.cpp
+#hyperbolic
+   acosh.cpp
+   acoth.cpp
+   acsch.cpp
+   asech.cpp
+   asinh.cpp
+   atanh.cpp
+   cosh.cpp
+   coth.cpp
+   csch.cpp
+   sech.cpp
+   sinhc.cpp
+   sinhcosh.cpp
+   sinh.cpp
+   tanh.cpp
 #aliases
    b_and.cpp
    compare_eq.cpp
