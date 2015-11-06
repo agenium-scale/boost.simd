@@ -1,0 +1,117 @@
+//==================================================================================================
+/*!
+  @file
+
+  @copyright 2015 NumScale SAS
+  @copyright 2015 J.T. Lapreste
+
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+*/
+//==================================================================================================
+#ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_ASINH_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_ASINH_HPP_INCLUDED
+
+#include <boost/simd/constant/log_2.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/oneosqrteps.hpp>
+#include <boost/simd/constant/sqrteps.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/function/scalar/abs.hpp>
+#include <boost/simd/function/scalar/bitofsign.hpp>
+#include <boost/simd/function/scalar/bitwise_xor.hpp>
+#include <boost/simd/function/scalar/fma.hpp>
+#include <boost/simd/function/scalar/hypot.hpp>
+#include <boost/simd/function/scalar/log.hpp>
+#include <boost/simd/function/scalar/log1p.hpp>
+#include <boost/simd/function/scalar/rec.hpp>
+#include <boost/simd/function/scalar/sqr.hpp>
+#include <boost/simd/function/scalar/sqrt.hpp>
+#include <boost/simd/arch/common/detail/generic/horner.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
+
+namespace boost { namespace simd { namespace ext
+{
+  namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
+  BOOST_DISPATCH_OVERLOAD ( asinh_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::double_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    {
+      A0 x = bs::abs(a0);
+      if  (BOOST_UNLIKELY(x < bs::Sqrteps<A0>() ))
+      {
+        return a0;
+      }
+      else
+      {
+        A0 z;
+        if (x < 0.5)
+        {
+          A0 invx = bs::rec(x);
+          z = bs::log1p(x + x/(invx + bs::sqrt(fma(invx, invx, bs::One<A0>()))));
+        }
+        else if (BOOST_UNLIKELY(x > Oneosqrteps<A0>()))
+        {
+          z = log(x)+Log_2<A0>();
+        }
+        else
+        {
+          z =  log(x+hypot(One<A0>(), x));
+        }
+        return bitwise_xor(z, bitofsign(a0));
+      }
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( asinh_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::single_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    {
+      // Exhaustive test for: boost::dispatch::functor<bs::tag::asinh_, boost::simd::tag::sse4_2_>
+      //              versus:  float(boost::math::asinh(double)
+      //              With T: float
+      //            in range: [-3.40282e+38, 3.40282e+38]
+      // 4278190078 values computed.
+      // 3628470338 values (84.81%)  within 0.0 ULPs
+      //  649693884 values (15.19%)  within 0.5 ULPs
+      //      25856 values ( 0.00%)  within 1.0 ULPs
+      A0 x = bs::abs(a0);
+      A0 x2 = bs::sqr(x);
+      A0 z = Zero<A0>();
+
+      if( x < 0.5f)
+      {
+        z = horner < BOOST_SIMD_HORNER_COEFF_T(A0, 5,
+                                               ( 0x3ca4d6e6
+                                               , 0xbd2ee581
+                                               , 0x3d9949b1
+                                               , 0xbe2aa9ad
+                                               , 0x3f800000
+                                               )
+                                              )> (x2)*x;
+      }
+      else if (BOOST_UNLIKELY(x > Oneosqrteps<A0>()))
+      {
+        z = log(x)+Log_2<A0>();
+      }
+      else
+      {
+        z =  log(x+hypot(One<A0>(), x));
+      }
+      return bitwise_xor(z, bitofsign(a0));
+    }
+  };
+} } }
+
+
+#endif
