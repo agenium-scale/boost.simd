@@ -51,7 +51,7 @@ namespace boost { namespace simd { namespace ext
   {
 
 
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       A0 z =  bs::abs(a0);
     #ifndef BOOST_SIMD_NO_INFINITIES
@@ -104,11 +104,11 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( cbrt_
                           , (typename A0)
-                             , bd::cpu_
-                            , bd::scalar_< bd::single_<A0> >
-                            )
+                          , bd::cpu_
+                          , bd::scalar_< bd::single_<A0> >
+                          )
   {
-    A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       A0 z =  bs::abs(a0);
     #ifndef BOOST_SIMD_NO_INFINITIES
