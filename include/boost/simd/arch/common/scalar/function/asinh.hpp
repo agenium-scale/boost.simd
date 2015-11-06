@@ -41,7 +41,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::double_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
     {
       A0 x = bs::abs(a0);
       if  (BOOST_UNLIKELY(x < bs::Sqrteps<A0>() ))
@@ -75,7 +75,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::single_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
     {
       // Exhaustive test for: boost::dispatch::functor<bs::tag::asinh_, boost::simd::tag::sse4_2_>
       //              versus:  float(boost::math::asinh(double)

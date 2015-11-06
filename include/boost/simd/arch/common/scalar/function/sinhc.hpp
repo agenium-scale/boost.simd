@@ -40,7 +40,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
 
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
     {
       //////////////////////////////////////////////////////////////////////////////
       // if x = abs(a0) is less than 1 sinhc is computed using a polynomial(float)

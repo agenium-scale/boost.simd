@@ -37,7 +37,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
     {
       //////////////////////////////////////////////////////////////////////////////
       // if x = abs(a0) is less than 1 sinh is computed using a polynomial(float)
