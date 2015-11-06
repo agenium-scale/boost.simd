@@ -165,7 +165,8 @@ namespace boost
       @ingroup group-functions
       @defgroup group-hyperbolic Hyperbolic Functions
 
-      Those functions provides algorithms for computing hyperbolics and logarithms.
+      Those functions provides algorithms for computing hyperbolic and inverse hyperbolic
+      functions.
     **/
 
    /// Boost.SIMD Callable Objects namespace
