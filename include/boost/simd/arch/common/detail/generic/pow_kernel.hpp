@@ -51,7 +51,7 @@ namespace boost { namespace simd
     {
       using i_t = bd::as_integer_t<A0>;
       using s_t = bd::scalar_of_t<A0>;
-      static BOOST_FORCEINLINE A0 pow1(const A0& x, const A0& z)
+      static BOOST_FORCEINLINE A0 pow1(const A0& x, const A0& z) BOOST_NOEXCEPT
       {
         return  z*x*horner<BOOST_SIMD_HORNER_COEFF_T(s_t, 4, (0xbe2a61b2, //  -0.1663883081054895f
                                                               0x3e4d2fa3, //  +0.2003770364206271f
@@ -60,7 +60,7 @@ namespace boost { namespace simd
                                                     )>(x);
       }
 
-      static BOOST_FORCEINLINE A0 pow2(const A0& x)
+      static BOOST_FORCEINLINE A0 pow2(const A0& x) BOOST_NOEXCEPT
       {
         return horner<BOOST_SIMD_HORNER_COEFF_T(s_t, 4, (0x3c1a49bc, // 9.416993633606397E-003f
                                                          0x3d634d38, // 5.549356188719141E-002f
@@ -69,7 +69,7 @@ namespace boost { namespace simd
                                                )>(x);
       }
 
-      static BOOST_FORCEINLINE A0 twomio16(const i_t& i)
+      static BOOST_FORCEINLINE A0 twomio16(const i_t& i) BOOST_NOEXCEPT
       {
         /* 2^(-i/16)
          * The decimal values are rounded to 24-bit precision
@@ -96,7 +96,7 @@ namespace boost { namespace simd
         return A[i];//load<A0>(A.begin(), i); //A[i];
       }
 
-      static BOOST_FORCEINLINE A0 continuation(const i_t& i)
+      static BOOST_FORCEINLINE A0 continuation(const i_t& i) BOOST_NOEXCEPT
       {
         /* continuation, for even i only
          * 2^(i/16)  =  A[i] + B[i/2]
@@ -115,7 +115,7 @@ namespace boost { namespace simd
         return B[i]; //load<A0>(B.begin(), i);
       }
 
-      static BOOST_FORCEINLINE i_t select(A0& x)
+      static BOOST_FORCEINLINE i_t select(A0& x) BOOST_NOEXCEPT
       {
         // find significand in antilog table A[]
         i_t i = One<i_t>();
@@ -138,7 +138,7 @@ namespace boost { namespace simd
     {
       using i_t = bd::as_integer_t<A0>;
       using s_t = bd::scalar_of_t<A0>;
-      static BOOST_FORCEINLINE A0 pow1(const A0& x, const A0& z)
+      static BOOST_FORCEINLINE A0 pow1(const A0& x, const A0& z) BOOST_NOEXCEPT
       {
         return  x*(z*horner<BOOST_SIMD_HORNER_COEFF_T(s_t, 4,
                                                       (
@@ -158,7 +158,7 @@ namespace boost { namespace simd
                                           )>(x));
   }
 
-      static BOOST_FORCEINLINE A0 pow2(const A0& x)
+      static BOOST_FORCEINLINE A0 pow2(const A0& x) BOOST_NOEXCEPT
       {
         return horner<BOOST_SIMD_HORNER_COEFF_T(s_t, 7, (
                                                   0x3eef6307d7f2937fll,//  1.49664108433729301083E-5,
@@ -171,7 +171,7 @@ namespace boost { namespace simd
                                                 )
                                                )>(x);
   }
-    static BOOST_FORCEINLINE A0 twomio16(const i_t& i)
+    static BOOST_FORCEINLINE A0 twomio16(const i_t& i) BOOST_NOEXCEPT
     {
       /* 2^(-i/16), IEEE precision */
       static const boost::array < s_t, 17> A = {{
@@ -196,7 +196,7 @@ namespace boost { namespace simd
       return  A[i]; //load<A0>(A.begin(), i); //A[i];
     }
 
-    static BOOST_FORCEINLINE A0 continuation(const i_t& i)
+    static BOOST_FORCEINLINE A0 continuation(const i_t& i) BOOST_NOEXCEPT
     {
       /* continuation, for even i only
        * 2^(i/16)  =  A[i] + B[i/2]
@@ -215,7 +215,7 @@ namespace boost { namespace simd
       return  B[i]; //load<A0>(B.begin(), i);
     }
 
-    static BOOST_FORCEINLINE i_t select(A0& x)
+    static BOOST_FORCEINLINE i_t select(A0& x) BOOST_NOEXCEPT
     {
       // find significand in antilog table A[]
       i_t i = One<i_t>();
