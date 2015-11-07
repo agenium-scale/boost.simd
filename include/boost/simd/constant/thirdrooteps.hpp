@@ -17,7 +17,7 @@ namespace boost { namespace simd
   /*!
     @ingroup group-constant
 
-    Generate the cubic root of boost::simd::Eps
+    Generate the cubic root of @ref Eps
 
     @par Semantic:
 

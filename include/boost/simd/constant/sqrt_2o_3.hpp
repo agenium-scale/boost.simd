@@ -28,7 +28,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T r = T(sqrt(as_floating<T>(2)))/T(3);
+    T r = T(sqrt(T(2)))/T(3);
     @endcode
 
     @return The Sqrt_2o_3 constant for the proper type

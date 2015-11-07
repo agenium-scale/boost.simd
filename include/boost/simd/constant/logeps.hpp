@@ -17,7 +17,7 @@ namespace boost { namespace simd
   /*!
     @ingroup group-constant
 
-    Generate the  logarithm of two times the machine epsilon.
+    Generate the  logarithm of the Eps constant.
 
     @par Semantic:
 

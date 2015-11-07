@@ -15,18 +15,29 @@
 namespace boost { namespace simd
 {
   /*!
+
     @ingroup group-constant
 
-    Generate the constant log2_em1.
+    Generates constant Log2_em1 : \f$\log2(e)-1\f$
 
-    @return The Log2_em1 constant for the proper type
-  **/
+    @par Semantic:
+
+    @code
+    T r = log2_em1<T>();
+    @endcode
+
+
+**/
   template<typename T> T Log2_em1();
 
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
+
+
+      Generates constant Log2_em1. (\f$\log2(e)-1\f$)
+
       Generate the  constant log2_em1.
 
       @return The Log2_em1 constant for the proper type

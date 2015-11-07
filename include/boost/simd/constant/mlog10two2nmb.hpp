@@ -15,18 +15,35 @@
 namespace boost { namespace simd
 {
   /*!
+
     @ingroup group-constant
 
-    Generate the constant mlog10two2nmb.
+    Generates constant Mlog10two2nmb.
 
-    @return The Mlog10two2nmb constant for the proper type
-  **/
+    @par Semantic:
+
+    @code
+    T r = Mlog10two2nmb<T>();
+    @endcode
+
+    is similar to:
+
+    @code
+      r =  -log10(exp2(T(Nbmantissabits<T>())));
+    @endcode
+
+
+**/
   template<typename T> T Mlog10two2nmb();
 
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
+
+
+      Generates constant Mlog10two2nmb.
+
       Generate the  constant mlog10two2nmb.
 
       @return The Mlog10two2nmb constant for the proper type

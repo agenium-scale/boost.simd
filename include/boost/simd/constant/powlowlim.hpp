@@ -15,18 +15,29 @@
 namespace boost { namespace simd
 {
   /*!
+
     @ingroup group-constant
 
-    Generate the constant powlowlim.
+    Generates constant powlowlim
 
-    @return The Powlowlim constant for the proper type
-  **/
+    @par Semantic:
+
+    @code
+    T r = powlowlim<T>();
+    @endcode
+
+
+**/
   template<typename T> T Powlowlim();
 
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
+
+
+      Generates constant powlowlim
+
       Generate the  constant powlowlim.
 
       @return The Powlowlim constant for the proper type

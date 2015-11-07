@@ -15,18 +15,36 @@
 namespace boost { namespace simd
 {
   /*!
+
     @ingroup group-constant
 
-    Generate the constant exp_1.
+    Generates constant e.
 
-    @return The Exp_1 constant for the proper type
-  **/
+    @par Semantic:
+    The e constant is the real number such that \f$\log(e) = 1\f$
+
+    @code
+    T r = Exp_1<T>();
+    @endcode
+
+    is similar to:
+
+    @code
+      r =  T(2.71828182845904523536028747135266249775724709369995);
+    @endcode
+
+
+**/
   template<typename T> T Exp_1();
 
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
+
+
+      Generates constant e.
+
       Generate the  constant exp_1.
 
       @return The Exp_1 constant for the proper type

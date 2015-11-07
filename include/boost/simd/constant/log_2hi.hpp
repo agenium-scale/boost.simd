@@ -15,18 +15,33 @@
 namespace boost { namespace simd
 {
   /*!
+
     @ingroup group-constant
 
-    Generate the constant log_2hi.
+    Generates constant Log_2hi.This constant is coupled with Log2_lo and is
+    used in the float logarithms computations
+    We have double(Log_2hi<float>())+double(Log2_lo<float>()) == Log_2<double>()
 
-    @return The Log_2hi constant for the proper type
-  **/
+    @par Semantic:
+
+    @code
+    T r = log_2hi<T>();
+    @endcode
+
+
+**/
   template<typename T> T Log_2hi();
 
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
+
+
+      Generates constant Log_2hi.This constant is coupled with Log2_lo and is
+      used in the float logarithms computations
+      We have double(Log_2hi<float>())+double(Log2_lo<float>()) == Log_2<double>()
+
       Generate the  constant log_2hi.
 
       @return The Log_2hi constant for the proper type

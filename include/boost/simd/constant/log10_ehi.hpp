@@ -15,18 +15,33 @@
 namespace boost { namespace simd
 {
   /*!
+
     @ingroup group-constant
 
-    Generate the constant log10_ehi.
+    Generates constant log10_ehi.This constant is coupled with Log10_elo and is
+    used in the float logarithms computations
+    We have double(log10_ehi<float>())+double(Log10_elo<float>()) == Log_10(e)
 
-    @return The Log10_ehi constant for the proper type
-  **/
+    @par Semantic:
+
+    @code
+    T r = log10_ehi<T>();
+    @endcode
+
+
+**/
   template<typename T> T Log10_ehi();
 
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
+
+
+      Generates constant log10_ehi.This constant is coupled with Log10_elo and is
+      used in the float logarithms computations
+      We have double(log10_ehi<float>())+double(Log10_elo<float>()) == Log_10(e)
+
       Generate the  constant log10_ehi.
 
       @return The Log10_ehi constant for the proper type

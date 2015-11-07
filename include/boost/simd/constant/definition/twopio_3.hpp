@@ -8,10 +8,9 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_CONSTANT_DEFINITION_MAXGAMMALN_HPP_INCLUDED
-#define BOOST_SIMD_CONSTANT_DEFINITION_MAXGAMMALN_HPP_INCLUDED
+#ifndef BOOST_SIMD_CONSTANT_DEFINITION_TWOPIO_3_HPP_INCLUDED
+#define BOOST_SIMD_CONSTANT_DEFINITION_TWOPIO_3_HPP_INCLUDED
 
-#include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/detail/constant_traits.hpp>
@@ -23,27 +22,27 @@ namespace boost { namespace simd
 {
   namespace tag
   {
-    struct maxgammaln_ : boost::dispatch::constant_value_<maxgammaln_>
+    struct twopio_3_ : boost::dispatch::constant_value_<twopio_3_>
     {
-      BOOST_DISPATCH_MAKE_CALLABLE(ext,maxgammaln_,boost::dispatch::constant_value_<maxgammaln_>);
-      BOOST_SIMD_REGISTER_CONSTANT(1, 0x7bc3f8eaUL, 0x7f574c5dd06d2516ULL);
+      BOOST_DISPATCH_MAKE_CALLABLE(ext,twopio_3_,boost::dispatch::constant_value_<twopio_3_>);
+      BOOST_SIMD_REGISTER_CONSTANT(0, 0X40060A92LL, 0X4000C152382D7366ULL);
     };
   }
 
   namespace ext
   {
-    BOOST_DISPATCH_FUNCTION_DECLARATION(tag,maxgammaln_);
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag,twopio_3_);
   }
 
   namespace functional
   {
-    BOOST_DISPATCH_CALLABLE_DEFINITION(tag::maxgammaln_,maxgammaln);
+    BOOST_DISPATCH_CALLABLE_DEFINITION(tag::twopio_3_,twopio_3);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Maxgammaln() BOOST_NOEXCEPT
-  -> decltype(functional::maxgammaln( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Twopio_3() BOOST_NOEXCEPT
+  -> decltype(functional::twopio_3( boost::dispatch::as_<T>{}))
   {
-    return functional::maxgammaln( boost::dispatch::as_<T>{} );
+    return functional::twopio_3( boost::dispatch::as_<T>{} );
   }
 } }
 

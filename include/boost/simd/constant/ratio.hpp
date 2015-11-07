@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     @tparam Type        Type of the generated constant
     @tparam Numerator   Numerator of the generated constant
-    @tparam Denumerator Denumerator of the generated constant
+    @tparam Denominator Denominator of the generated constant
   **/
   template<typename Type, std::uintmax_t Numerator, std::uintmax_t Denumerator> auto Ratio();
 } }

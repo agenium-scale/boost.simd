@@ -15,18 +15,29 @@
 namespace boost { namespace simd
 {
   /*!
+
     @ingroup group-constant
 
-    Generate the constant powlargelim.
+    Generates constant powlargelim
 
-    @return The Powlargelim constant for the proper type
-  **/
+    @par Semantic:
+
+    @code
+    T r = powlargelim<T>();
+    @endcode
+
+
+**/
   template<typename T> T Powlargelim();
 
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
+
+
+      Generates constant powlargelim
+
       Generate the  constant powlargelim.
 
       @return The Powlargelim constant for the proper type

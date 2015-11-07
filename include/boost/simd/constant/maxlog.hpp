@@ -15,18 +15,42 @@
 namespace boost { namespace simd
 {
   /*!
+
     @ingroup group-constant
 
-    Generate the constant maxlog.
+    Generates constant MaxLog used in logarithm/exponential computations
+    log(x) return inf if x is greater than Maxlog (overflow)
 
-    @return The Maxlog constant for the proper type
-  **/
+    @par Semantic:
+
+    @code
+    T r = Maxlog<T>();
+    @endcode
+
+    is similar to:
+
+    @code
+    if T is double
+      r = 709.78271289338400;
+    else if T is float
+      r =  88.3762626647949
+    @endcode
+
+    @see Minlog
+
+
+**/
   template<typename T> T Maxlog();
 
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
+
+
+      Generates constant MaxLog used in logarithm/exponential computations
+      nt2::log(x) return inf if x is greater than Maxlog (overflow)
+
       Generate the  constant maxlog.
 
       @return The Maxlog constant for the proper type

@@ -15,18 +15,35 @@
 namespace boost { namespace simd
 {
   /*!
+
     @ingroup group-constant
 
-    Generate the constant log_2.
+    Generates constant Log_2 : \f$\log(2)\f$.
 
-    @return The Log_2 constant for the proper type
-  **/
+    @par Semantic:
+
+    @code
+    T r = Log_2<T>();
+    @endcode
+
+    is similar to:
+
+    @code
+      r =  T(0.6931471805599453094172321214581765680755001343602553);
+    @endcode
+
+
+**/
   template<typename T> T Log_2();
 
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
+
+
+      Generates constant Log_2. (\f$\log(2)\f$)
+
       Generate the  constant log_2.
 
       @return The Log_2 constant for the proper type

@@ -15,18 +15,36 @@
 namespace boost { namespace simd
 {
   /*!
+
     @ingroup group-constant
 
-    Generate the constant euler.
+    GeneratesEuler constant.
 
-    @return The Euler constant for the proper type
-  **/
+    @par Semantic:
+    The Euler constant can be defined as \f$\displaystyle \lim_{n \rightarrow \infty} \left(\sum_1^n \frac1n -\log n\right)\f$
+
+    @code
+    T r = Euler<T>();
+    @endcode
+
+    is similar to:
+
+    @code
+      r =  T(0.577215664901532860606512090082402431042159335939923598805767234884867726777664670936947063291746749);
+    @endcode
+
+
+**/
   template<typename T> T Euler();
 
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
+
+
+      GeneratesEuler constant.
+
       Generate the  constant euler.
 
       @return The Euler constant for the proper type

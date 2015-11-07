@@ -19,8 +19,10 @@ namespace boost { namespace simd
     @brief Generate a constant from a static real number representation.
 
     @tparam Type    Type of the generated constant
-    @tparam Double  Numerator of the generated constant
-    @tparam Single  Denumerator of the generated constant
+    @tparam Double  Bits of the double representation as an uint64_t
+    @tparam Single  Bits of the float  representation as an uint32_t
+
+    The return value is selected by the type Type amaong the two representations.
   **/
   template<typename Type, std::uintmax_t Double, std::uintmax_t Single> auto Real();
 } }

@@ -15,18 +15,35 @@
 namespace boost { namespace simd
 {
   /*!
+
     @ingroup group-constant
 
-    Generate the constant invlog_2.
+    Generates constant 1/log(2).
 
-    @return The Invlog_2 constant for the proper type
-  **/
+    @par Semantic:
+
+    @code
+    T r = Invlog_2<T>();
+    @endcode
+
+    is similar to:
+
+    @code
+     r =  T(1.442695040888963407359924681001892137426645954152986);
+    @endcode
+
+
+**/
   template<typename T> T Invlog_2();
 
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
+
+
+      Generates constant 1/log(2).
+
       Generate the  constant invlog_2.
 
       @return The Invlog_2 constant for the proper type

@@ -15,18 +15,42 @@
 namespace boost { namespace simd
 {
   /*!
+
     @ingroup group-constant
 
-    Generate the constant minlog.
+    Generates constant Minlog used in logarithm/exponential computations
+    nt2::log(x) return  0 if x is less than Minlog (underflow)
 
-    @return The Minlog constant for the proper type
-  **/
+    @par Semantic:
+
+    @code
+    T r = Minlog<T>();
+    @endcode
+
+    is similar to:
+
+    @code
+    if T is double
+      r = -708.3964185322641;
+    else if T is float
+      r = -88.3762626647949
+    @endcode
+
+    @see Maxlog
+
+
+**/
   template<typename T> T Minlog();
 
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
+
+
+      Generates constant Minlog used in logarithm/exponential computations
+      nt2::log(x) return  0 if x is less than Minlog (underflow)
+
       Generate the  constant minlog.
 
       @return The Minlog constant for the proper type
