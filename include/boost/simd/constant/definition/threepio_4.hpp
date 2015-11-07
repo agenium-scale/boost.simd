@@ -2,15 +2,15 @@
 /*!
   @file
 
-  @copyright 2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
-  @copyright 2015 NumScale SAS
+  @copyright 2009-2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
+  @copyright 2012-2015 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_CONSTANT_DEFINITION_MAXGAMMALN_HPP_INCLUDED
-#define BOOST_SIMD_CONSTANT_DEFINITION_MAXGAMMALN_HPP_INCLUDED
+#ifndef BOOST_SIMD_CONSTANT_DEFINITION_THREEPIO_4_HPP_INCLUDED
+#define BOOST_SIMD_CONSTANT_DEFINITION_THREEPIO_4_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
@@ -24,27 +24,27 @@ namespace boost { namespace simd
 {
   namespace tag
   {
-    struct maxgammaln_ : boost::dispatch::constant_value_<maxgammaln_>
+    struct threepio_4_ : boost::dispatch::constant_value_<threepio_4_>
     {
-      BOOST_DISPATCH_MAKE_CALLABLE(ext,maxgammaln_,boost::dispatch::constant_value_<maxgammaln_>);
-      BOOST_SIMD_REGISTER_CONSTANT(1, 0x7bc3f8eaUL, 0x7f574c5dd06d2516ULL);
+      BOOST_DISPATCH_MAKE_CALLABLE(ext,threepio_4_,boost::dispatch::constant_value_<threepio_4_>);
+      BOOST_SIMD_REGISTER_CONSTANT(2, 0X4016CBE4, 0X4002D97C7F3321D2LL);
     };
   }
 
   namespace ext
   {
-    BOOST_DISPATCH_FUNCTION_DECLARATION(tag,maxgammaln_);
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag,threepio_4_);
   }
 
   namespace functional
   {
-    BOOST_DISPATCH_CALLABLE_DEFINITION(tag::maxgammaln_,maxgammaln);
+    BOOST_DISPATCH_CALLABLE_DEFINITION(tag::threepio_4_,threepio_4);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Maxgammaln() BOOST_NOEXCEPT
-  -> decltype(functional::maxgammaln( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Threepio_4() BOOST_NOEXCEPT
+  -> decltype(functional::threepio_4( boost::dispatch::as_<T>{}))
   {
-    return functional::maxgammaln( boost::dispatch::as_<T>{} );
+    return functional::threepio_4( boost::dispatch::as_<T>{} );
   }
 } }
 

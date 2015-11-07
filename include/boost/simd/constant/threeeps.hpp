@@ -18,7 +18,7 @@ namespace boost { namespace simd
   /*!
     @ingroup group-constant
 
-    Generate  a value equal to 3 times boost::simd::Eps of the chosen type
+    Generate  a value equal to 3 times @ref Eps of the chosen type
 
     @par Semantic:
 

@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2009-2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
-  @copyright 2012-2015 NumScale SAS
+  @copyright 2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
+  @copyright 2015 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -16,18 +16,35 @@
 namespace boost { namespace simd
 {
   /*!
+
     @ingroup group-constant
 
-    Generate the constant log_10.
+    Generates constant Log_10 : \f$\log(10)\f$
 
-    @return The Log_10 constant for the proper type
-  **/
+    @par Semantic:
+
+    @code
+    T r = Log_10<T>();
+    @endcode
+
+    is similar to:
+
+    @code
+      r =  T(2.302585092994045684017991454684364207601101488628773);
+    @endcode
+
+
+**/
   template<typename T> T Log_10();
 
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
+
+
+      Generates constant Log_10. (\f$\log(10)\f$)
+
       Generate the  constant log_10.
 
       @return The Log_10 constant for the proper type

@@ -2,15 +2,15 @@
 /*!
   @file
 
-  @copyright 2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
   @copyright 2015 NumScale SAS
+  @copyright 2015 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_CONSTANT_MAXGAMMALN_HPP_INCLUDED
-#define BOOST_SIMD_CONSTANT_MAXGAMMALN_HPP_INCLUDED
+#ifndef BOOST_SIMD_CONSTANT_FOURPI_HPP_INCLUDED
+#define BOOST_SIMD_CONSTANT_FOURPI_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
@@ -18,42 +18,40 @@ namespace boost { namespace simd
   /*!
     @ingroup group-constant
 
-    Generate the constant maxgammaln which is the greatest valuefor whixh gammaln
-    is computable in the current type.
+   Constant \f$4\pi\f$.
 
-@par Semantic:
+    @par Semantic:
+
+    For type T:
 
     @code
-    T r = Maxgammaln<T>();
+    T r = Fouropi<T>();
     @endcode
 
     is similar to:
 
     @code
-    if T is float
-      T r = 2.035093e36f
-    else if T is double
-      T r = 2.556348e305
+    T r = Four<T>()*Pi<T>();
     @endcode
 
-    @return The Maxgammaln constant for the proper type
+    @return The Fourpi constant for the proper type
   **/
-  template<typename T> T Maxgammaln();
+  template<typename T> T Fourpi();
 
   namespace functional
   {
     /*!
       @ingroup group-callable-constant
-      Generate the  constant maxgammaln.
+      Generate the  constant fourpi.
 
-      @return The Maxgammaln constant for the proper type
+      @return The Fourpi constant for the proper type
     **/
-    const boost::dispatch::functor<tag::maxgammaln_> maxgammaln = {};
+    const boost::dispatch::functor<tag::fourpi_> fourpi = {};
   }
 } }
 #endif
 
-#include <boost/simd/constant/definition/maxgammaln.hpp>
+#include <boost/simd/constant/definition/fourpi.hpp>
 #include <boost/simd/arch/common/scalar/constant/constant_value.hpp>
 
 #endif

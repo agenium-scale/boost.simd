@@ -18,7 +18,7 @@ namespace boost { namespace simd
   /*!
     @ingroup group-constant
 
-    Generate base ten logarithm of pi used in boost::simd::pispace (\f$\log\!10(\pi)\f$)
+    Generate base ten logarithm of pi (\f$\log\!10(\pi)\f$)
 
     @par Semantic:
 

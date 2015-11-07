@@ -9,10 +9,9 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_CONSTANT_DEFINITION_EXPNIBIG_HPP_INCLUDED
-#define BOOST_SIMD_CONSTANT_DEFINITION_EXPNIBIG_HPP_INCLUDED
+#ifndef BOOST_SIMD_CONSTANT_DEFINITION_INV2PI_HPP_INCLUDED
+#define BOOST_SIMD_CONSTANT_DEFINITION_INV2PI_HPP_INCLUDED
 
-#include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/detail/constant_traits.hpp>
@@ -24,27 +23,27 @@ namespace boost { namespace simd
 {
   namespace tag
   {
-    struct expnibig_ : boost::dispatch::constant_value_<expnibig_>
+    struct inv2pi_ : boost::dispatch::constant_value_<inv2pi_>
     {
-      BOOST_DISPATCH_MAKE_CALLABLE(ext,expnibig_,boost::dispatch::constant_value_<expnibig_>);
-      BOOST_SIMD_REGISTER_CONSTANT(0, 0x4b800000UL, 0x4380000000000000ull);       // 2^24 2^57
+      BOOST_DISPATCH_MAKE_CALLABLE(ext,inv2pi_,boost::dispatch::constant_value_<inv2pi_>);
+      BOOST_SIMD_REGISTER_CONSTANT(0, 0X3E22F983, 0X3FC45F306DC9C883LL);
     };
   }
 
   namespace ext
   {
-    BOOST_DISPATCH_FUNCTION_DECLARATION(tag,expnibig_);
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag,inv2pi_);
   }
 
   namespace functional
   {
-    BOOST_DISPATCH_CALLABLE_DEFINITION(tag::expnibig_,expnibig);
+    BOOST_DISPATCH_CALLABLE_DEFINITION(tag::inv2pi_,inv2pi);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Expnibig() BOOST_NOEXCEPT
-  -> decltype(functional::expnibig( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Inv2pi() BOOST_NOEXCEPT
+  -> decltype(functional::inv2pi( boost::dispatch::as_<T>{}))
   {
-    return functional::expnibig( boost::dispatch::as_<T>{} );
+    return functional::inv2pi( boost::dispatch::as_<T>{} );
   }
 } }
 

@@ -19,8 +19,8 @@ namespace boost { namespace simd
     @ingroup group-constant
 
     Generate  a constant used to split a floating number in two parts,
-    in floating point routines (such boost::simd::two_add and
-    boost::simd::two_prod) to get extra precision.
+    in floating point routines (such @ref two_add and
+    @ref two_prod) to get extra precision.
 
     @par Semantic:
 

@@ -165,10 +165,17 @@ namespace boost
       @ingroup group-functions
       @defgroup group-hyperbolic Hyperbolic Functions
 
-      Those functions provides algorithms for computing hyperbolic and inverse hyperbolic
+      Algorithms for computing hyperbolic and inverse hyperbolic
       functions.
     **/
 
+     /*!
+      @ingroup group-functions
+      @defgroup group-trigonometric Trigonometric Functions
+
+      Algorithms for computing trigonometric and inverse trigonometric
+      functions.
+    **/
    /// Boost.SIMD Callable Objects namespace
     namespace functional {}
 
@@ -287,13 +294,21 @@ namespace boost
 
     /*!
       @ingroup group-callable
+      @defgroup group-callable-trigonometric Trigonometric Callable Objects
+      Callable objects version of @ref group-trigonometric
+
+      Their specific semantic limitations are similar to those of their function
+      equivalents as described in the @ref group-trigonometric section.
+    **/
+
+    /*!
+      @ingroup group-callable
       @defgroup group-callable-hyperbolic Hyperbolic Callable Objects
       Callable objects version of @ref group-hyperbolic
 
       Their specific semantic limitations are similar to those of their function
       equivalents as described in the @ref group-hyperbolic section.
     **/
-
     /*!
       @defgroup group-config Configuration
       Configuration options

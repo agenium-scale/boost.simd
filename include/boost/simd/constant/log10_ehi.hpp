@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2009-2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
-  @copyright 2012-2015 NumScale SAS
+  @copyright 2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
+  @copyright 2015 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -16,18 +16,33 @@
 namespace boost { namespace simd
 {
   /*!
+
     @ingroup group-constant
 
-    Generate the constant log10_ehi.
+    Generates constant log10_ehi.This constant is coupled with Log10_elo and is
+    used in the float logarithms computations
+    We have double(log10_ehi<float>())+double(Log10_elo<float>()) == Log_10(e)
 
-    @return The Log10_ehi constant for the proper type
-  **/
+    @par Semantic:
+
+    @code
+    T r = log10_ehi<T>();
+    @endcode
+
+
+**/
   template<typename T> T Log10_ehi();
 
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
+
+
+      Generates constant log10_ehi.This constant is coupled with Log10_elo and is
+      used in the float logarithms computations
+      We have double(log10_ehi<float>())+double(Log10_elo<float>()) == Log_10(e)
+
       Generate the  constant log10_ehi.
 
       @return The Log10_ehi constant for the proper type

@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2009-2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
-  @copyright 2012-2015 NumScale SAS
+  @copyright 2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
+  @copyright 2015 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -16,18 +16,29 @@
 namespace boost { namespace simd
 {
   /*!
+
     @ingroup group-constant
 
-    Generate the constant log2_em1.
+    Generates constant Log2_em1 : \f$\log2(e)-1\f$
 
-    @return The Log2_em1 constant for the proper type
-  **/
+    @par Semantic:
+
+    @code
+    T r = log2_em1<T>();
+    @endcode
+
+
+**/
   template<typename T> T Log2_em1();
 
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
+
+
+      Generates constant Log2_em1. (\f$\log2(e)-1\f$)
+
       Generate the  constant log2_em1.
 
       @return The Log2_em1 constant for the proper type
