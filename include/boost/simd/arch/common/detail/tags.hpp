@@ -23,8 +23,8 @@ namespace boost { namespace simd { namespace tag
   struct log2_;
   struct log10_;
 
-  using  not_simd_type = std::integral_constant<bool, false>;
-  using  simd_type = std::integral_constant<bool, true>;
+  using not_simd_type = std::integral_constant<bool, false>;
+  using simd_type = std::integral_constant<bool, true>;
 
   struct fast {};
   struct regular {};
