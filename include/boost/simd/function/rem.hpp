@@ -30,11 +30,23 @@ namespace boost { namespace simd
     T r = rem(x, y);
     @endcode
 
-    For floating point values the code is equivalent to:
+    For floating point values the code is similar to:
 
     @code
     T r = x-divfix(x, y)*y;
     @endcode
+
+    For floating entries:
+       -  if x is +/-inf , Nan is returned
+       -  if x is +/-0 and y is not 0 x is returned
+       -  If y is +/-0, Nan is returned
+       -  If either argument is NaN, Nan is returned
+
+    If correct values for these limit cases do not matter for you, calling
+    remainder(x, y, fast_) can gain some cycles.
+
+
+    The returned value has the same sign as x and is less than y in magnitude.
 
     @par Alias
 
