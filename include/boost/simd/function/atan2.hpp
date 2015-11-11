@@ -23,7 +23,7 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of floating types respectively T, T1:
+    For every parameters of floating type T:
 
     @code
     T r = atan2(x, y);
@@ -37,15 +37,15 @@ namespace boost { namespace simd
 
     as it is quadrant aware.
 
-    For any real arguments @c x and @c y not both equal to zero, <tt>atan2(x, y)</tt>
+    For any real arguments @c x and @c y not both equal to zero, <tt>atan2(x,y)</tt>
     is the angle in radians between the positive x-axis of a plane and the point
-    given by the coordinates  <tt>(y, x)</tt>.
+    given by the coordinates  <tt>(y,x)</tt>.
 
-    It is also the angle in \f$[-\pi,\pi[\f$ such that
+    It is also the angle in \f$[-\pi,\pi[\f$ for which
     \f$x/\sqrt{x^2+y^2}\f$ and \f$y/\sqrt{x^2+y^2}\f$
     are respectively the sine and the cosine.
 
-    @see atan
+    @see atan, atand, atanpi
 
 
     @return a value of the same type as the parameters
