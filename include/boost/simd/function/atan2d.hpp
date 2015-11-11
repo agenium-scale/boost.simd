@@ -41,11 +41,11 @@ namespace boost { namespace simd
     is the angle in degrees between the positive x-axis of a plane and the point
     given by the coordinates  <tt>(y, x)</tt>.
 
-    It is also the angle in \f$[-180,180[\f$ such that
+    It is also the angle in \f$[-180,180[\f$ for which
     \f$x/\sqrt{x^2+y^2}\f$ and \f$y/\sqrt{x^2+y^2}\f$
     are respectively the sine and the cosine.
 
-    @see atand
+    @see atand, atan2, atan
 
 
     @return a value of the same type as the parameters

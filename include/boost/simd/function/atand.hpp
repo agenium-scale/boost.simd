@@ -32,7 +32,7 @@ namespace boost { namespace simd
     Returns the arc @c r in the interval
     \f$[-90, 90[\f$ such that <tt>tand(r) == x</tt>.
 
-    @see atan2, atan, atanpi, nbd_atan2
+    @see atan2d, atan2, atan, atanpi
 
     @return a value of the same type as the parameter
 
