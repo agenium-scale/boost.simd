@@ -22,7 +22,7 @@ namespace boost { namespace simd
     This constant is such that, for pairs of types (Tup, T)
     (namely (float,  double) and (double, long double)) the sum:
 
-    abs(Tup(Pio_4lo<T>())+Tup(Pio_4<T>())-Pio_4<Tup>())  is  lesser than
+    abs(Tup(Pio_4lo<T>())+Tup(Pio_4<T>())-Pio_4\<Tup\>())  is  less than
     a few Eps<Tup>().
 
     This is used to improve accurracy when computing sums of the kind
