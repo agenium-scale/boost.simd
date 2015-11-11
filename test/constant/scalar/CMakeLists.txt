@@ -43,7 +43,6 @@ set ( SOURCES
   maxexponent.cpp
   maxexponentm1.cpp
   maxflint.cpp
-  maxgammaln.cpp
   maxinit.cpp
   maxleftshift.cpp
   meight.cpp
@@ -103,7 +102,6 @@ set ( SOURCES
 #exponential
   euler.cpp
   exp_1.cpp
-  expnibig.cpp
   invexp_1.cpp
   invlog10_2.cpp
   invlog_10.cpp
@@ -123,14 +121,14 @@ set ( SOURCES
   maxlog2.cpp
   maxlog.cpp
   minlog10.cpp
-minlog2.cpp
-minlog.cpp
-mlog10two2nmb.cpp
-mlog2two2nmb.cpp
-mlogtwo2nmb.cpp
-powlargelim.cpp
-powlowlim.cpp
-twotomnmbo_3.cpp
+  minlog2.cpp
+  minlog.cpp
+  mlog10two2nmb.cpp
+  mlog2two2nmb.cpp
+  mlogtwo2nmb.cpp
+  powlargelim.cpp
+  powlowlim.cpp
+  twotomnmbo_3.cpp
   )
 
 make_unit( "boost.simd.constant.scalar"     ${SOURCES})
