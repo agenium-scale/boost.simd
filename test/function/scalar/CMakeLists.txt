@@ -306,6 +306,54 @@ set ( SOURCES
    sinhcosh.cpp
    sinh.cpp
    tanh.cpp
+#trigonometric
+   acosd.cpp
+   acos.cpp
+   acospi.cpp
+   acotd.cpp
+   acot.cpp
+   acscd.cpp
+   acsc.cpp
+   asecd.cpp
+   asec.cpp
+   asind.cpp
+   asin.cpp
+   asinpi.cpp
+   atan2d.cpp
+   atan2.cpp
+   atand.cpp
+   atan.cpp
+   atanpi.cpp
+   cosd.cpp
+   cos.cpp
+   cospi.cpp
+   cotd.cpp
+   cot.cpp
+   cotpi.cpp
+   cscd.cpp
+   csc.cpp
+   cscpi.cpp
+   indeg.cpp
+   inrad.cpp
+   rem_2pi.cpp
+   rem_pio2_cephes.cpp
+   rem_pio2.cpp
+   rem_pio2_medium.cpp
+   rem_pio2_straight.cpp
+   secd.cpp
+   sec.cpp
+   secpi.cpp
+   sinc.cpp
+   sincosd.cpp
+   sincos.cpp
+   sincospi.cpp
+   sincpi.cpp
+   sind.cpp
+   sin.cpp
+   sinpi.cpp
+   tand.cpp
+   tan.cpp
+   tanpi.cpp
 #aliases
    b_and.cpp
    compare_eq.cpp
@@ -382,5 +430,5 @@ set ( SOURCES
    is_not_invalid.cpp
   )
 
-make_unit( "boost.simd.function.scalar"     ${SOURCES})
+make_unit( "boost.simd.function.scalar"   ${SOURCES})
 make_coverage("boost.simd.function.scalar"  ${SOURCES})
