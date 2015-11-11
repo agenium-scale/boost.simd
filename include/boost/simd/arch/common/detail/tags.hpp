@@ -34,7 +34,6 @@ namespace boost { namespace simd { namespace tag
   struct degree_tag {};
   struct pi_tag     {};
 
-<<<<<<< HEAD
   enum reduction
   {
     r_0_pio4, r_0_pio2, r_0_20pi, r_0_mpi, r_0_dmpi, r_0_inf
@@ -155,9 +154,6 @@ namespace boost { namespace simd { namespace tag
 
   const clipped_medium_tag clipped_medium_ = {};
 
-
-=======
->>>>>>> base kernels for inverse trigonometry
 } } }
 
 
