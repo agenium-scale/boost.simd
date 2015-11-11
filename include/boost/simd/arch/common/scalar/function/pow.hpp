@@ -11,9 +11,13 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_POW_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_POW_HPP_INCLUDED
 
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/function/scalar/is_flint.hpp>
+#include <boost/simd/function/scalar/is_inf.hpp>
 #include <boost/simd/function/scalar/is_ltz.hpp>
+#include <boost/simd/function/scalar/is_negative.hpp>
 #include <boost/simd/function/scalar/is_odd.hpp>
 #include <boost/simd/function/scalar/pow_abs.hpp>
 #include <boost/dispatch/function/overload.hpp>
@@ -33,9 +37,12 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       bool ltza0 = is_ltz(a0);
-      if( (ltza0 && !is_flint(a1)) ) return Nan<A0>();
+      auto isinfa1 = is_inf(a1);
+      if( a0 == Mone<A0>() && isinfa1 ) return One<A0>();
+      if( ltza0 && !is_flint(a1) && !is_inf(a1) ) return Nan<A0>();
       A0 z = pow_abs(a0, a1);
-      return  (ltza0 && is_odd(a1)) ? -z : z;
+      if (isinfa1) return z;
+      return  (is_negative(a0) && is_odd(a1)) ? -z : z;
     }
   };
 } } }

@@ -20,6 +20,8 @@
 #include <boost/simd/constant/eight.hpp>
 #include <boost/simd/constant/third.hpp>
 #include <boost/simd/constant/ratio.hpp>
+#include <boost/simd/function/is_negative.hpp>
+#include <boost/simd/function/is_positive.hpp>
 
 STF_CASE_TPL("pow",  STF_IEEE_TYPES)
 {
@@ -35,7 +37,7 @@ STF_CASE_TPL("pow",  STF_IEEE_TYPES)
 #ifndef BOOST_SIMD_NO_INVALIDS
   STF_ULP_EQUAL(pow(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>(), 0);
   STF_ULP_EQUAL(pow(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(pow(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(pow(bs::Minf<T>(), bs::Minf<T>()), bs::Zero<r_t>(), 0);
   STF_ULP_EQUAL(pow(bs::Inf<T>(), bs::Minf<T>()), bs::Zero<r_t>(), 0);
 #endif
   STF_ULP_EQUAL(pow(T(-1),T(6)), T(1), 0);
@@ -102,3 +104,40 @@ STF_CASE_TPL("powint",  STF_INTEGRAL_TYPES)
 // }
 
 
+STF_CASE_TPL("pow conformity",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::pow;
+  using r_t =  decltype(pow(T(), T()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, T);
+
+  // specific values tests
+  STF_ULP_EQUAL(pow(T(0), T(-1)), bs::Inf<r_t>(), 0);
+  STF_ULP_EQUAL(pow(-T(0), T(-1)), bs::Minf<r_t>(), 0);
+  STF_ULP_EQUAL(pow(-T(0), T(-2)), bs::Inf<T>(), 0);
+  STF_ULP_EQUAL(pow(T(0), T(-2)), bs::Inf<T>(), 0);
+  STF_ULP_EQUAL(pow(T(0),  bs::Minf<T>()),  bs::Inf<T>(), 0);
+  STF_ULP_EQUAL(pow(-T(0),  bs::Minf<T>()),  bs::Inf<T>(), 0);
+  STF_ULP_EQUAL(pow(-T(1),  bs::Minf<T>()),  bs::One<T>(), 0);
+  STF_ULP_EQUAL(pow(-T(1),  bs::Inf <T>()),  bs::One<T>(), 0);
+  STF_ULP_EQUAL(pow(T(1), bs::Nan<T>()) ,  bs::One<T>(), 0);
+  STF_ULP_EQUAL(pow(bs::Nan<T>(), T(0)) ,  bs::One<T>(), 0);
+  STF_ULP_EQUAL(pow(bs::Nan<T>(), -T(0)) ,  bs::One<T>(), 0);
+  STF_ULP_EQUAL(pow(T(0.5), bs::Inf<T>()),  bs::Zero<T>(), 0);
+  STF_ULP_EQUAL(pow(T(2), bs::Inf<T>()),  bs::Inf<T>(), 0);
+  STF_ULP_EQUAL(pow(T(0.5), bs::Minf<T>()),  bs::Inf<T>(), 0);
+  STF_ULP_EQUAL(pow(T(2), bs::Minf<T>()),  bs::Zero<T>(), 0);
+  STF_ULP_EQUAL(pow(-T(0.5), bs::Inf<T>()),  bs::Zero<T>(), 0);
+  STF_ULP_EQUAL(pow(-T(2), bs::Inf<T>()),  bs::Inf<T>(), 0);
+  STF_ULP_EQUAL(pow(-T(0.5), bs::Minf<T>()),  bs::Inf<T>(), 0);
+  STF_ULP_EQUAL(pow(-T(2), bs::Minf<T>()),  bs::Zero<T>(), 0);
+  STF_ULP_EQUAL(pow(bs::Minf<T>(), T(-3) ),  bs::Mzero<T>(), 0);
+  STF_EXPECT(bs::is_negative(pow(bs::Minf<T>(), T(-3) )));
+  STF_ULP_EQUAL(pow(bs::Minf<T>(), T(-4) ),  bs::Zero<T>(), 0);
+  STF_EXPECT(bs::is_positive(pow(bs::Minf<T>(), T(-4) )));
+  STF_ULP_EQUAL(pow(bs::Inf<T>(), T(4) ),  bs::Inf<T>(), 0);
+  STF_ULP_EQUAL(pow(bs::Inf<T>(), T(-4) ),  bs::Zero<T>(), 0);
+}
