@@ -18,6 +18,7 @@
 #include <boost/simd/constant/pi.hpp>
 #include <boost/simd/constant/pio_2.hpp>
 #include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/ratio.hpp>
 #include <boost/simd/function/scalar/abs.hpp>
 #include <boost/simd/function/scalar/acsc.hpp>
 #include <boost/simd/function/scalar/is_equal.hpp>
