@@ -42,7 +42,7 @@ namespace boost { namespace simd
     \par
 
     The sign of zero can be accessed through the @ref is_negative
-    and @refis_positive predicates or the @ref bitofsign functions.
+    and @ref is_positive predicates or the @ref bitofsign functions.
 
     @return The Mzero constant for the proper type
   **/

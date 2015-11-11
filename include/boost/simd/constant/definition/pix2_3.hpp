@@ -25,7 +25,7 @@ namespace boost { namespace simd
     struct pix2_3_ : boost::dispatch::constant_value_<pix2_3_>
     {
       BOOST_DISPATCH_MAKE_CALLABLE(ext,pix2_3_,boost::dispatch::constant_value_<pix2_3_>);
-      BOOST_SIMD_REGISTER_CONSTANT(1, 0X31885A30, 0X3BC3198A2E037073LL//3B498A2E03707345LL);
+      BOOST_SIMD_REGISTER_CONSTANT(1, 0X31885A30, 0X3BC3198A2E037073LL); //3B498A2E03707345LL);
     };
   }
 
