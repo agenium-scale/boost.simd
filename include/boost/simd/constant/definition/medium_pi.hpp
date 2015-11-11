@@ -26,7 +26,7 @@ namespace boost { namespace simd
     struct medium_pi_ : boost::dispatch::constant_value_<medium_pi_>
     {
       BOOST_DISPATCH_MAKE_CALLABLE(ext,medium_pi_,boost::dispatch::constant_value_<medium_pi_>);
-      BOOST_SIMD_REGISTER_CONSTANT(201, 0X43490FDB//2^6/PI, 0X412921FB54442D18LL//2^{18}/PI);
+      BOOST_SIMD_REGISTER_CONSTANT(201, 0X43490FDB, 0X412921FB54442D18LL); //2^6/pi, //2^{18}/pi;
     };
   }
 
