@@ -17,6 +17,7 @@
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/mzero.hpp>
+#include <boost/simd/function/is_negative.hpp>
 
 STF_CASE_TPL (" cbrt",  STF_IEEE_TYPES)
 {
@@ -42,6 +43,7 @@ STF_CASE_TPL (" cbrt",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(cbrt(T(27)),T(3), 0.5);
   STF_ULP_EQUAL(cbrt(T(-8)), T(-2), 0.5);
   STF_ULP_EQUAL(cbrt(T(-27)),T(-3), 0.5);
+  STF_EXPECT(bs::is_negative(cbrt(bs::Mzero<T>())));
 }
 
 
