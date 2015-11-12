@@ -35,7 +35,7 @@ STF_CASE_TPL (" rem real",  STF_IEEE_TYPES)
 #endif
   STF_EQUAL(rem(bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
   STF_EQUAL(rem(bs::One<T>(), bs::One<T>()), bs::Zero<T>());
-  STF_EQUAL(rem(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
+  STF_IEEE_EQUAL(rem(bs::Zero<T>(), bs::Zero<T>()), bs::Nan<T>());
 } // end of test for floating_
 
 STF_CASE_TPL (" rem unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
