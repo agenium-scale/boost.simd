@@ -28,13 +28,14 @@ namespace boost { namespace simd { namespace ext
                           , bd::cpu_
                           , bd::generic_<bd::floating_<A0> >
                           , bd::generic_<bd::floating_<A0> >
-                          , boost::simd::fast_tag
+                          , bs::fast_tag
                           )
   {
 
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1, fast_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A0 const& a1
+                                    , fast_tag const&) const BOOST_NOEXCEPT
     {
-      return boost::simd::sqrt(boost::simd::fma(a0, a0, sqr(a1)));
+      return boost::simd::sqrt(bs::fma(a0, a0, sqr(a1)));
     }
   };
 } } }
