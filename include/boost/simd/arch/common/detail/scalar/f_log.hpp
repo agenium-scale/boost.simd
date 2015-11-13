@@ -100,9 +100,9 @@ namespace boost { namespace simd
         if (BOOST_UNLIKELY(a0 == Inf<A0>())) return a0;
 #endif
 #ifdef BOOST_SIMD_NO_NANS
-        if (BOOST_UNLIKELY(is_negative(a0))) return Nan<A0>();
+        if (BOOST_UNLIKELY(is_ltz(a0))) return Nan<A0>();
 #else
-        if (BOOST_UNLIKELY(is_nan(a0)||is_negative(a0))) return Nan<A0>();
+        if (BOOST_UNLIKELY(is_nan(a0)||is_ltz(a0))) return Nan<A0>();
 #endif
         if (BOOST_UNLIKELY(is_eqz(a0))) return Minf<A0>();
         A0 z = a0;
@@ -131,9 +131,9 @@ namespace boost { namespace simd
         if (BOOST_UNLIKELY(a0 == Inf<A0>())) return a0;
 #endif
 #ifdef BOOST_SIMD_NO_NANS
-        if (BOOST_UNLIKELY(is_negative(a0))) return Nan<A0>();
+        if (BOOST_UNLIKELY(is_ltz(a0))) return Nan<A0>();
 #else
-        if (BOOST_UNLIKELY(is_nan(a0)||is_negative(a0))) return Nan<A0>();
+        if (BOOST_UNLIKELY(is_nan(a0)||is_ltz(a0))) return Nan<A0>();
 #endif
         if (BOOST_UNLIKELY(is_eqz(a0))) return Minf<A0>();
         A0 z = a0;

@@ -118,9 +118,9 @@ namespace boost { namespace simd
         if (a0 == Inf<A0>()) return a0;
       #endif
       #ifdef BOOST_SIMD_NO_NANS
-        if (is_negative(a0)) return Nan<A0>();
+        if (is_ltz(a0)) return Nan<A0>();
       #else
-        if (is_nan(a0)||is_negative(a0)) return Nan<A0>();
+        if (is_nan(a0)||is_ltz(a0)) return Nan<A0>();
       #endif
         if (is_eqz(a0)) return Minf<A0>();
         A0 dk, hfsq, s, R, f;
@@ -134,9 +134,9 @@ namespace boost { namespace simd
         if (a0 == Inf<A0>()) return a0;
       #endif
       #ifdef BOOST_SIMD_NO_NANS
-        if (is_negative(a0)) return Nan<A0>();
+        if (is_ltz(a0)) return Nan<A0>();
       #else
-        if (is_nan(a0)||is_negative(a0)) return Nan<A0>();
+        if (is_nan(a0)||is_ltz(a0)) return Nan<A0>();
       #endif
         if (is_eqz(a0)) return Minf<A0>();
         A0 dk, hfsq, s, R, f;
@@ -210,9 +210,9 @@ namespace boost { namespace simd
     static BOOST_FORCEINLINE A0 finalize(const A0& a0, const A0& y) BOOST_NOEXCEPT
     {
     #ifdef BOOST_SIMD_NO_NANS
-      auto test =  is_negative(a0);
+      auto test =  is_ltz(a0);
     #else
-      auto test =  logical_or(is_negative(a0), is_nan(a0));
+      auto test =  logical_or(is_ltz(a0), is_nan(a0));
     #endif
       A0 y1 = if_nan_else(test, y);
     #ifndef BOOST_SIMD_NO_INFINITIES
