@@ -141,3 +141,28 @@ STF_CASE_TPL("pow conformity",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(pow(bs::Inf<T>(), T(4) ),  bs::Inf<T>(), 0);
   STF_ULP_EQUAL(pow(bs::Inf<T>(), T(-4) ),  bs::Zero<T>(), 0);
 }
+STF_CASE_TPL("pow std",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::pow;
+  using r_t =  decltype(pow(T(), T()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, T);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_ULP_EQUAL(pow(bs::Inf<T>(), bs::Inf<T>(), bs::std_), bs::Inf<r_t>(), 0);
+  STF_ULP_EQUAL(pow(bs::Nan<T>(), bs::Nan<T>(), bs::std_), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(pow(bs::Minf<T>(), bs::Minf<T>(), bs::std_), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(pow(bs::Inf<T>(), bs::Minf<T>(), bs::std_), bs::Zero<r_t>(), 0);
+#endif
+  STF_ULP_EQUAL(pow(T(-1),T(6), bs::std_), T(1), 0);
+  STF_ULP_EQUAL(pow(bs::Mone<T>(), bs::Mone<T>(), bs::std_), bs::Mone<r_t>(), 0);
+  STF_ULP_EQUAL(pow(bs::One<T>(), bs::One<T>(), bs::std_), bs::One<r_t>(), 0);
+  STF_ULP_EQUAL(pow(bs::Zero<T>(), bs::Zero<T>(), bs::std_), bs::One<r_t>(), 0);
+  STF_ULP_EQUAL(pow(T(-1),T(5), bs::std_), T(-1), 0);
+  STF_ULP_EQUAL(pow(bs::Zero<T>(), bs::One<T>(), bs::std_), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(pow(T(8),bs::Third<T>(), bs::std_), r_t(2), 0.5);
+}
