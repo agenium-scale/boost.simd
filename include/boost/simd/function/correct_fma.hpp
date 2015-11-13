@@ -54,7 +54,10 @@ namespace boost { namespace simd
     you can define BOOST_SIMD_DONT_CARE_CORRECT_FMA_OVERFLOW to get better
     performances
 
-    This function is never used internally in boost/simd.
+    Moreover if correct_fma is caled with a fourth parameter std_, the stdlic++ std::fma
+    is called.
+
+    correct_fma is never used internally in boost/simd.
 
     @see  fma
 
