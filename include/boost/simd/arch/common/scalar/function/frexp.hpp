@@ -97,6 +97,59 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
+ BOOST_DISPATCH_OVERLOAD ( frexp_
+                         , (typename A0, typename A1)
+                         , bd::cpu_
+                         , bd::scalar_< bd::floating_<A0> >
+                         , bd::scalar_< bd::integer_<A1>  >
+                         , boost::simd::std_tag
+                         )
+ {
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, A1& r1
+                                      , std_tag const&) const BOOST_NOEXCEPT
+    {
+      int e = Zero<int>();
+      A0 r = std::frexp(a0, &e);
+      r1 = e;
+      return r;
+    }
+  };
+
+ BOOST_DISPATCH_OVERLOAD ( frexp_
+                         , (typename A0, typename A1)
+                         , bd::cpu_
+                         , bd::scalar_< bd::floating_<A0> >
+                         , bd::scalar_< bd::floating_<A0> >
+                         , bd::scalar_< bd::integer_<A1>  >
+                         , boost::simd::std_tag
+                         )
+ {
+    BOOST_FORCEINLINE void operator() ( A0 a0, A0& r1, A1& r2
+                                      , std_tag const&) const BOOST_NOEXCEPT
+    {
+      int e = Zero<int>();
+      r1 = std::frexp(a0, &e);
+      r2 = e;
+    }
+  };
+
+ BOOST_DISPATCH_OVERLOAD ( frexp_
+                         , (typename A0)
+                         , bd::cpu_
+                         , bd::scalar_< bd::floating_<A0> >
+                         , boost::simd::std_tag
+                         )
+ {
+   using i_t = bd::as_integer_t<A0, signed>;
+   BOOST_FORCEINLINE std::pair < A0, i_t> operator() ( A0 a0
+                                                     , std_tag const&) const BOOST_NOEXCEPT
+    {
+      int e = Zero<int>();
+      A0 r1 = std::frexp(a0, &e);
+      return {r1, i_t(e)};
+    }
+  };
+
 } } }
 
 
