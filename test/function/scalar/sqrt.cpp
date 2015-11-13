@@ -16,9 +16,12 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/mzero.hpp>
 #include <boost/simd/constant/sqrt_2.hpp>
 #include <boost/simd/constant/four.hpp>
 #include <boost/simd/constant/two.hpp>
+#include <boost/simd/function/is_negative.hpp>
+#include <boost/simd/function/is_positive.hpp>
 #include <boost/simd/options.hpp>
 
 STF_CASE_TPL (" sqrt real",  STF_IEEE_TYPES)
@@ -41,7 +44,10 @@ STF_CASE_TPL (" sqrt real",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(sqrt(bs::One<T>()), bs::One<r_t>(), 0);
   STF_ULP_EQUAL(sqrt(bs::Two<T>()), bs::Sqrt_2<r_t>(), 0.5);
   STF_ULP_EQUAL(sqrt(bs::Zero<T>()), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(sqrt(bs::Mzero<T>()), bs::Mzero<r_t>(), 0);
   STF_ULP_EQUAL(sqrt(bs::Four<T>()), bs::Two<r_t>(), 0);
+  STF_EXPECT(bs::is_negative(sqrt(bs::Mzero<T>())));
+  STF_EXPECT(bs::is_positive(sqrt(bs::Zero<T>())));
 } // end of test for floating_
 
 
@@ -126,5 +132,8 @@ STF_CASE_TPL (" sqrt std",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(sqrt(bs::One<T>(), bs::std_), bs::One<r_t>(), 0);
   STF_ULP_EQUAL(sqrt(bs::Two<T>(), bs::std_), bs::Sqrt_2<r_t>(), 0.5);
   STF_ULP_EQUAL(sqrt(bs::Zero<T>(), bs::std_), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(sqrt(bs::Mzero<T>(), bs::std_), bs::Mzero<r_t>(), 0);
   STF_ULP_EQUAL(sqrt(bs::Four<T>(), bs::std_), bs::Two<r_t>(), 0);
+  STF_EXPECT(bs::is_negative(sqrt(bs::Mzero<T>(), bs::std_)));
+  STF_EXPECT(bs::is_positive(sqrt(bs::Zero<T>(), bs::std_)));
 } // end of test for floating_
