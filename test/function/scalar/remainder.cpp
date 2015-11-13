@@ -106,3 +106,25 @@ STF_CASE_TPL (" remainder limits",  STF_IEEE_TYPES)
   STF_IEEE_EQUAL(remainder(T(2), bs::Minf<T>()), T(2));
 
 }
+
+STF_CASE_TPL (" remainder std",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::remainder;
+  using r_t = decltype(remainder(T(), T()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, T);
+
+  // specific values tests
+#ifndef STF_NO_INVALIDS
+  STF_IEEE_EQUAL(remainder(bs::Inf<T>(), bs::Inf<T>(), bs::std_), bs::Nan<T>());
+  STF_IEEE_EQUAL(remainder(bs::Minf<T>(), bs::Minf<T>(), bs::std_), bs::Nan<T>());
+  STF_IEEE_EQUAL(remainder(bs::Nan<T>(), bs::Nan<T>(), bs::std_), bs::Nan<T>());
+#endif
+  STF_EQUAL(remainder(bs::Mone<T>(), bs::Mone<T>(), bs::std_), bs::Zero<T>());
+  STF_EQUAL(remainder(bs::One<T>(), bs::One<T>(), bs::std_), bs::Zero<T>());
+  STF_IEEE_EQUAL(remainder(bs::One<T>(),bs::Zero<T>(), bs::std_), bs::Nan<T>());
+  STF_IEEE_EQUAL(remainder(bs::Zero<T>(),bs::Zero<T>(), bs::std_), bs::Nan<T>());
+} // end of test for floating_

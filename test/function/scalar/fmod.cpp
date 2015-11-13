@@ -116,3 +116,24 @@ STF_CASE_TPL (" fmod limits",  STF_IEEE_TYPES)
   STF_IEEE_EQUAL(fmod(T(2), bs::Minf<T>()), T(2));
 
 }
+
+STF_CASE_TPL (" fmod std",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::fmod;
+  using r_t = decltype(fmod(T(), T()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, T);
+
+  // specific values tests
+#ifndef STF_NO_INVALIDS
+  STF_IEEE_EQUAL(fmod(bs::Inf<T>(), bs::Inf<T>(), bs::std_), bs::Nan<T>());
+  STF_IEEE_EQUAL(fmod(bs::Minf<T>(), bs::Minf<T>(), bs::std_), bs::Nan<T>());
+  STF_IEEE_EQUAL(fmod(bs::Nan<T>(), bs::Nan<T>(), bs::std_), bs::Nan<T>());
+#endif
+  STF_EQUAL(fmod(bs::Mone<T>(), bs::Mone<T>(), bs::std_), bs::Zero<T>());
+  STF_EQUAL(fmod(bs::One<T>(), bs::One<T>(), bs::std_), bs::Zero<T>());
+  STF_IEEE_EQUAL(fmod(bs::Zero<T>(), bs::Zero<T>(), bs::std_), bs::Nan<T>());
+} // end of

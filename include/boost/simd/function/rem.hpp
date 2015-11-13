@@ -48,6 +48,8 @@ namespace boost { namespace simd
 
     The returned value has the same sign as x and is less than y in magnitude.
 
+    A call to rem(x, std_) uses the std::libc++ std::fmod function
+
     @par Alias
 
     @c fmod,  @c remfix
