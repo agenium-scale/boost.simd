@@ -218,6 +218,7 @@ set ( SOURCES
    is_ngtz.cpp
    is_nlez.cpp
    is_nltz.cpp
+   is_normal.cpp
    is_not_denormal.cpp
    is_not_equal_with_equal_nans.cpp
    is_not_greater_equal.cpp
