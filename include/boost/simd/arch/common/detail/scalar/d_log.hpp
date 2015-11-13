@@ -39,7 +39,7 @@
 #include <boost/simd/function/is_equal.hpp>
 #include <boost/simd/function/is_eqz.hpp>
 #include <boost/simd/function/is_greater.hpp>
-#include <boost/simd/function/is_negative.hpp>
+#include <boost/simd/function/is_ltz.hpp>
 #include <boost/simd/function/logical_or.hpp>
 #include <boost/simd/function/minus.hpp>
 #include <boost/simd/function/minusone.hpp>
@@ -101,9 +101,9 @@ namespace boost { namespace simd
         if (a0 == Inf<A0>()) return a0;
       #endif
       #ifdef BOOST_SIMD_NO_NANS
-        if (is_negative(a0)) return Nan<A0>();
+        if (is_ltz(a0)) return Nan<A0>();
       #else
-        if (is_nan(a0)||is_negative(a0)) return Nan<A0>();
+        if (is_nan(a0)||is_ltz(a0)) return Nan<A0>();
       #endif
         if (is_eqz(a0)) return Minf<A0>();
         A0 dk, hfsq, s, R, f;
