@@ -32,10 +32,10 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    as_logical_t<T> r = !(is_denormal(x) || is_invalid(x));
+    as_logical_t<T> r = !(is_denormal(x) || is_invalid(x) || is_eqz(a0));
     @endcode
 
-    @see is_invalid,  is_denormal
+    @see is_invalid, is_denormal, is_eqz
 
 
     @return a logical value

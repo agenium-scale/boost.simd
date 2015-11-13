@@ -14,6 +14,7 @@
 
 #include <boost/simd/constant/smallestposval.hpp>
 #include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/function/is_not_denormal.hpp>
 #include <boost/simd/function/is_finite.hpp>
 #include <boost/simd/function/logical_and.hpp>
@@ -44,7 +45,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE logical<A0> operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      return is_not_denormal(a0) && is_finite(a0);
+      return is_not_denormal(a0) && is_finite(a0) && is_nez(a0);
     }
   };
 } } }

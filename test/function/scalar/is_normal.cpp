@@ -41,13 +41,13 @@ STF_CASE_TPL (" is_normal",  STF_IEEE_TYPES)
   STF_EQUAL(is_normal(bs::Minf<T>()), r_t(false));
   STF_EQUAL(is_normal(bs::Nan<T>()), r_t(false));
 #endif
-  STF_EQUAL(is_normal(-bs::Zero<T>()), r_t(true));
+  STF_EQUAL(is_normal(-bs::Zero<T>()), r_t(false));
   STF_EQUAL(is_normal(bs::Half<T>()), r_t(true));
   STF_EQUAL(is_normal(bs::Mone<T>()), r_t(true));
   STF_EQUAL(is_normal(bs::One<T>()), r_t(true));
   STF_EQUAL(is_normal(bs::Quarter<T>()), r_t(true));
   STF_EQUAL(is_normal(bs::Two<T>()), r_t(true));
-  STF_EQUAL(is_normal(bs::Zero<T>()), r_t(true));
+  STF_EQUAL(is_normal(bs::Zero<T>()), r_t(false));
   STF_EQUAL(is_normal(bs::Smallestposval<T>()),  r_t(true));
 #ifndef STF_NO_NORMAL
   STF_EQUAL(is_normal(bs::Mindenormal<T>()), r_t(false));
@@ -106,3 +106,33 @@ STF_CASE ( "is_normal bool")
 }
 
 
+STF_CASE_TPL (" is_normal std",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::is_normal;
+
+  using r_t = decltype(is_normal(T()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, bs::logical<T>);
+
+  // specific values tests
+#ifndef STF_NO_INVALIDS
+  STF_EQUAL(is_normal(bs::Inf<T>(), bs::std_), r_t(false));
+  STF_EQUAL(is_normal(bs::Minf<T>(), bs::std_), r_t(false));
+  STF_EQUAL(is_normal(bs::Nan<T>(), bs::std_), r_t(false));
+#endif
+  STF_EQUAL(is_normal(-bs::Zero<T>(), bs::std_), r_t(false));
+  STF_EQUAL(is_normal(bs::Half<T>(), bs::std_), r_t(true));
+  STF_EQUAL(is_normal(bs::Mone<T>(), bs::std_), r_t(true));
+  STF_EQUAL(is_normal(bs::One<T>(), bs::std_), r_t(true));
+  STF_EQUAL(is_normal(bs::Quarter<T>(), bs::std_), r_t(true));
+  STF_EQUAL(is_normal(bs::Two<T>(), bs::std_), r_t(true));
+  STF_EQUAL(is_normal(bs::Zero<T>(), bs::std_), r_t(false));
+  STF_EQUAL(is_normal(bs::Smallestposval<T>(), bs::std_),  r_t(true));
+#ifndef STF_NO_NORMAL
+  STF_EQUAL(is_normal(bs::Mindenormal<T>(), bs::std_), r_t(false));
+  STF_EQUAL(is_normal(bs::Smallestposval<T>()/bs::Two<T>(), bs::std_), r_t(false));
+#endif
+}
