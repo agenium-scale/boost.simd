@@ -17,6 +17,7 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/three.hpp>
+#include <boost/simd/constant/two.hpp>
 
 STF_CASE_TPL (" drem real",  STF_IEEE_TYPES)
 {

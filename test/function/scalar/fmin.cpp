@@ -104,7 +104,7 @@ STF_CASE_TPL (" fmin std",  STF_IEEE_TYPES)
   STF_EQUAL(fmin(bs::Nan<T>(),bs::One<T>(), bs::std_), bs::One<r_t>());
   STF_EQUAL(fmin(bs::One<T>(),bs::Nan<T>(), bs::std_), bs::One<r_t>());
 #endif
-  STF_EQUAL(fmin(bs::Mone<T>(), bs::Mone<T>(, bs::std_)), bs::Mone<r_t>());
+  STF_EQUAL(fmin(bs::Mone<T>(), bs::Mone<T>(), bs::std_), bs::Mone<r_t>());
   STF_EQUAL(fmin(bs::One<T>(),  bs::One<T>(), bs::std_),  bs::One<r_t>());
   STF_EQUAL(fmin(bs::Zero<T>(), bs::Zero<T>(), bs::std_), bs::Zero<r_t>());
   STF_EQUAL(fmin(bs::Mone<T>(), bs::One <T>(), bs::std_), bs::Mone<r_t>());

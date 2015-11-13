@@ -11,6 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_MINNUM_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_MINNUM_HPP_INCLUDED
 
+#include <boost/simd/options.hpp>
 #include <boost/simd/function/scalar/is_nan.hpp>
 #include <boost/simd/function/scalar/min.hpp>
 #include <boost/dispatch/function/overload.hpp>
@@ -19,6 +20,7 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
  BOOST_DISPATCH_OVERLOAD ( minnum_
                          , (typename A0)
                          , bd::cpu_
@@ -51,7 +53,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::cpu_
                           , bd::scalar_< bd::floating_<A0> >
                           , bd::scalar_< bd::floating_<A0> >
-                          , boost::simd::std_tag
+                          , bs::std_tag
                           )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1, std_tag const&) const BOOST_NOEXCEPT

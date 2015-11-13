@@ -53,7 +53,7 @@ namespace boost { namespace simd { namespace ext
       if (!(v <=  Maxflint<A0>()))
         return a0;
       A0 c =  boost::simd::ceil(v);
-      return copysign(seldec(c-Half<A0>() > v, c), a0);
+       return copysign(seldec(c-Half<A0>() > v, c), a0);
     #endif
     }
   };
