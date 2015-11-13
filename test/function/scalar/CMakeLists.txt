@@ -32,6 +32,7 @@ set ( SOURCES
    divround2even.cpp
    divround.cpp
    divs.cpp
+   fdim.cpp
    floor.cpp
    fma.cpp
    fms.cpp
