@@ -430,6 +430,7 @@ set ( SOURCES
    b_xor.cpp
    is_not_finite.cpp
    is_not_invalid.cpp
+   signbit.cpp
   )
 
 make_unit( "boost.simd.function.scalar"   ${SOURCES})
