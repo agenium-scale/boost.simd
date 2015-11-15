@@ -293,6 +293,10 @@ set ( SOURCES
    pow_abs.cpp
    significants.cpp
    sqrt1pm1.cpp
+#euler
+   erf.cpp
+   erfc.cpp
+   erfcx.cpp
 #hyperbolic
    acosh.cpp
    acoth.cpp
