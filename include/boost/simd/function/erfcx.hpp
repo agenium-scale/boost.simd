@@ -18,7 +18,7 @@ namespace boost { namespace simd
   /*!
   @ingroup group-euler
 
-   Computes the  underflow-compensating error function erfcx(x) = exp(x^2) erfc(x):
+   Computes the  underflow-compensating (scaled) error function:
    \f$\displaystyle e^{x^2}\frac{2}{\sqrt\pi}\int_0^{x} e^{-t^2}\mbox{d}t\f$
 
     @par Semantic:

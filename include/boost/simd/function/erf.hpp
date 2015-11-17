@@ -41,7 +41,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-euler
 
-      Computes the erfonential function:
+      Computes the error function:
       \f$\displaystyle \frac{2}{\sqrt\pi}\int_0^{x} e^{-t^2}\mbox{d}t\f$
 
       Function object tied to simd::erf

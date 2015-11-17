@@ -45,7 +45,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-euler
 
-      Computes the erfconential function: \f$e^{x}\f$
+      Computes the complementary error function: \f$e^{x}\f$
 
       Function object tied to simd::erfc
 

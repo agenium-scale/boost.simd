@@ -50,7 +50,7 @@ STF_CASE_TPL (" erfc",  STF_IEEE_TYPES)
 
   STF_ULP_EQUAL(erfc(-T(0.1)),        erfc(-T(0.1), bs::std_),        0.5);
   STF_ULP_EQUAL(erfc(-T(0.4)),        erfc(-T(0.4), bs::std_),        0.5);
-  STF_ULP_EQUAL(erfc(-bs::Half<T>()), erfc(-bs::Half<T>(), bs::std_), 0);
+  STF_ULP_EQUAL(erfc(-bs::Half<T>()), erfc(-bs::Half<T>(), bs::std_), 0.5);
   STF_ULP_EQUAL(erfc(-bs::One<T>()),  erfc(-bs::One<T>(), bs::std_),  0.5);
   STF_ULP_EQUAL(erfc(-bs::Two<T>()),  erfc(-bs::Two<T>(), bs::std_),  1);
   STF_ULP_EQUAL(erfc(T(-6)), T(2), 0);
