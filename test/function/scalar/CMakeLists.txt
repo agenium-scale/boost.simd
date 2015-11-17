@@ -297,6 +297,9 @@ set ( SOURCES
    erf.cpp
    erfc.cpp
    erfcx.cpp
+   gamma.cpp
+   stirling.cpp
+   tgamma.cpp
 #hyperbolic
    acosh.cpp
    acoth.cpp
