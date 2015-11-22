@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_POW_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_POW_HPP_INCLUDED
 
+#include <boost/simd/arch/common/detail/generic/pow_expander.hpp>
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
@@ -37,49 +38,6 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
-
-  template<std::uintmax_t Exp, std::uintmax_t Odd = Exp%2>
-  struct pow_expander;
-
-  template<std::uintmax_t Exp>
-  struct pow_expander<Exp, 0ULL>
-  {
-    template<class A0>
-    static BOOST_FORCEINLINE A0 call( A0 const& a0) BOOST_NOEXCEPT
-    {
-      return pow_expander<Exp/2>::call(sqr(a0));
-    }
-  };
-
-  template<std::uintmax_t Exp>
-  struct pow_expander<Exp, 1ULL>
-  {
-    template<class A0>
-    static BOOST_FORCEINLINE A0 call( A0 const& a0) BOOST_NOEXCEPT
-    {
-      return a0*pow_expander<Exp/2>::call(sqr(a0));
-    }
-  };
-
-  template<>
-  struct pow_expander<0ULL, 0ULL>
-  {
-    template<class A0>
-    static BOOST_FORCEINLINE A0 call( A0 const&) BOOST_NOEXCEPT
-    {
-      return One<A0>();
-    }
-  };
-
-  template<>
-  struct pow_expander<0ULL, 1ULL>
-  {
-    template<class A0>
-    static BOOST_FORCEINLINE A0 call( A0 const&) BOOST_NOEXCEPT
-    {
-      return One<A0>();
-    }
-  };
 
   BOOST_DISPATCH_OVERLOAD ( pow_
                           , (typename A0, typename A1)

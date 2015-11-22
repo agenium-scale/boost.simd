@@ -49,7 +49,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0, fast_tag const& ) const BOOST_NOEXCEPT
     {
-          return sqrt(a0);
+      return sqrt(a0);
     }
   };
 
@@ -60,10 +60,10 @@ namespace boost { namespace simd { namespace ext
                           , boost::simd::assert_tag
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, fast_tag const& ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, assert_tag const& ) const BOOST_NOEXCEPT
     {
-      BOOST_ASSERT_MSG(bs::assert_all(is_positive(a0)&&is_not_nan(a0)),
-                       "sqrt(x, assert_) cannot produce complex result.");
+      BOOST_ASSERT_MSG(bs::assert_all(is_positive(a0)),
+                       "sqrt integer domain is restricted to positive integer.");
       return sqrt(a0);
     }
   };
