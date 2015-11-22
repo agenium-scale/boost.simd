@@ -13,6 +13,7 @@
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_GENERIC_F_EXPO_REDUCTION_HPP_INCLUDED
 
 #include <boost/simd/arch/common/detail/generic/horner.hpp>
+#include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/constant/invlog10_2.hpp>
 #include <boost/simd/constant/invlog_2.hpp>
 #include <boost/simd/constant/log10_2hi.hpp>
@@ -43,7 +44,7 @@ namespace boost { namespace simd
     namespace bd =  boost::dispatch;
     namespace bs =  boost::simd;
 
-    template<class A0> struct exp_reduction <A0,natural_tag,float>
+    template<class A0> struct exp_reduction <A0,exp_,float>
     {
       using l_t = logical<A0>;
       static BOOST_FORCEINLINE l_t isgemaxlog(A0 const& a0) BOOST_NOEXCEPT
@@ -83,7 +84,7 @@ namespace boost { namespace simd
       }
     };
 
-    template < class A0 > struct exp_reduction < A0, two_tag, float>
+    template < class A0 > struct exp_reduction < A0, exp2_, float>
     {
       using l_t = logical<A0>;
       static BOOST_FORCEINLINE l_t isgemaxlog(A0 const& a0) BOOST_NOEXCEPT
@@ -122,7 +123,7 @@ namespace boost { namespace simd
       }
     };
 
-    template < class A0 > struct exp_reduction < A0, ten_tag, float>
+    template < class A0 > struct exp_reduction < A0, exp10_, float>
     {
       using l_t = logical<A0>;
       static BOOST_FORCEINLINE l_t isgemaxlog(A0 const& a0) BOOST_NOEXCEPT

@@ -45,17 +45,16 @@ namespace boost { namespace simd
     // compute exp(ax) where a is 1, 2 or ten depending on Tag
     static BOOST_FORCEINLINE A0 expa(A0 a0) BOOST_NOEXCEPT
     {
-//      return a0;
-       if (reduc_t::isgemaxlog(a0)) return Inf<A0>();
-       if (reduc_t::isleminlog(a0)) return Zero<A0>();
+      if (reduc_t::isgemaxlog(a0)) return Inf<A0>();
+      if (reduc_t::isleminlog(a0)) return Zero<A0>();
      #ifndef BOOST_SIMD_NO_INVALIDS
-       if (is_nan(a0)) return a0;
+      if (is_nan(a0)) return a0;
      #endif
-       A0 hi = Zero<A0>(), lo = Zero<A0>(), x = Zero<A0>();
-       A0 k = reduc_t::reduce(a0, hi, lo, x);
-       A0 c = reduc_t::approx(x);
-       c = reduc_t::finalize(x, c, hi, lo);
-       return  scale(c, k);
+      A0 hi = Zero<A0>(), lo = Zero<A0>(), x = Zero<A0>();
+      A0 k = reduc_t::reduce(a0, hi, lo, x);
+      A0 c = reduc_t::approx(x);
+      c = reduc_t::finalize(x, c, hi, lo);
+      return  scale(c, k);
     }
   };
 
