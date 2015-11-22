@@ -298,6 +298,7 @@ set ( SOURCES
    erfc.cpp
    erfcx.cpp
    gamma.cpp
+   gammaln.cpp
    stirling.cpp
    tgamma.cpp
 #hyperbolic
