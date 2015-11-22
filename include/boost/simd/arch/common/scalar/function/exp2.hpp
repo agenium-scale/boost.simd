@@ -20,7 +20,6 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
-  namespace bs = boost::simd;
 
   BOOST_DISPATCH_OVERLOAD ( exp2_
                           , (typename A0)
@@ -30,7 +29,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
     {
-      return detail::exponential<A0,two_tag,tag::not_simd_type,tag::accu_tag>::expa(a0);
+      return detail::exponential<A0,exp2_,tag::not_simd_type,tag::accu_tag>::expa(a0);
     }
   };
 } } }
