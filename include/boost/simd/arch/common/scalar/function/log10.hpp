@@ -45,7 +45,8 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
-      return (a0 >= 100u) ? 2 : (a0 >= 10u) ? 1 : 0;
+      return (a0 >= 100u) ? 2 :
+             (a0 >= 10u)  ? 1 : 0;
     }
   };
 
@@ -58,7 +59,9 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return (a0 >= 10000u) ? 4 :
-        (a0 >= 1000u) ? 3 : (a0 >= 100u) ? 2 : (a0 >= 10u) ? 1 : 0;
+             (a0 >= 1000u)  ? 3 :
+             (a0 >= 100u)   ? 2 :
+             (a0 >= 10u)    ? 1 : 0;
     }
 
   };
@@ -71,9 +74,15 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
-      return (a0 >= 1000000000u) ? 9 : (a0 >= 100000000u) ? 8 : (a0 >= 10000000u) ? 7 :
-        (a0 >= 1000000u) ? 6 : (a0 >= 100000u) ? 5 : (a0 >= 10000u) ? 4 :
-        (a0 >= 1000u) ? 3 : (a0 >= 100u) ? 2 : (a0 >= 10u) ? 1 : 0;
+      return (a0 >= 1000000000u) ? 9 :
+             (a0 >= 100000000u) ?  8 :
+             (a0 >= 10000000u) ?   7 :
+             (a0 >= 1000000u) ?    6 :
+             (a0 >= 100000u) ?     5 :
+             (a0 >= 10000u) ?      4 :
+             (a0 >= 1000u) ?       3 :
+             (a0 >= 100u) ?        2 :
+             (a0 >= 10u) ?         1 : 0;
     }
   };
 
@@ -85,25 +94,25 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
-      return(a0 >= 10000000000000000000ull)? 19 :
-        (a0 >= 1000000000000000000ull)? 18 :
-        (a0 >= 100000000000000000ull)? 17 :
-        (a0 >= 10000000000000000ull)? 16 :
-        (a0 >= 1000000000000000ull)? 15 :
-        (a0 >= 100000000000000ull)? 14 :
-        (a0 >= 10000000000000ull)? 13 :
-        (a0 >= 1000000000000ull)? 12 :
-        (a0 >= 100000000000ull)? 11 :
-        (a0 >= 10000000000ull)? 10 :
-        (a0 >= 1000000000ull)? 9 :
-        (a0 >= 100000000ull)? 8 :
-        (a0 >= 10000000ull)? 7 :
-        (a0 >= 1000000ull)? 6 :
-        (a0 >= 100000ull)? 5 :
-        (a0 >= 10000ull)? 4 :
-        (a0 >= 1000ull)? 3 :
-        (a0 >= 100ull)? 2 :
-        (a0 >= 10ull)? 1 : 0;
+      return(a0 >= 10000000000000000000ull) ? 19 :
+            (a0 >= 1000000000000000000ull) ?  18 :
+            (a0 >= 100000000000000000ull) ?   17 :
+            (a0 >= 10000000000000000ull) ?    16 :
+            (a0 >= 1000000000000000ull) ?     15 :
+            (a0 >= 100000000000000ull) ?      14 :
+            (a0 >= 10000000000000ull) ?       13 :
+            (a0 >= 1000000000000ull) ?        12 :
+            (a0 >= 100000000000ull) ?         11 :
+            (a0 >= 10000000000ull) ?          10 :
+            (a0 >= 1000000000ull) ?            9 :
+            (a0 >= 100000000ull) ?             8 :
+            (a0 >= 10000000ull) ?              7 :
+            (a0 >= 1000000ull) ?               6 :
+            (a0 >= 100000ull) ?                5 :
+            (a0 >= 10000ull) ?                 4 :
+            (a0 >= 1000ull) ?                  3 :
+            (a0 >= 100ull) ?                   2 :
+            (a0 >= 10ull) ?                    1 : 0;
     }
   };
 

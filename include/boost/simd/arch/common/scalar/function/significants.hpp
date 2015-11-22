@@ -52,11 +52,10 @@ namespace boost { namespace simd { namespace ext
       A0 fac = tenpower(exp);
       A0 scaled = round(a0*fac);
     #ifndef BOOST_SIMD_NO_INVALIDS
-      A0 r = is_invalid(a0) ? a0 : scaled/fac;
+      return is_invalid(a0) ? a0 : scaled/fac;
     #else
-      A0 r =  scaled/fac;
+      return scaled/fac;
     #endif
-      return r;
     }
   };
 } } }

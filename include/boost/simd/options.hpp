@@ -41,33 +41,6 @@ namespace boost { namespace simd
 
   const raw_tag raw_ = {};
 
-
-  /// selection tags for exponential and logarithms
-
-  struct natural_tag
-  {
-    using parent = natural_tag;
-    using hierarchy_tag = void; //dispatch::detail::hierarchy_tag;
-  };
-
-  const natural_tag natural_ = {};
-
-  struct two_tag
-  {
-    using parent = two_tag;
-    using hierarchy_tag = void; //dispatch::detail::hierarchy_tag;
-  };
-
-  const two_tag two_ = {};
-
-  struct ten_tag
-  {
-    using parent = ten_tag;
-    using hierarchy_tag = void; //dispatch::detail::hierarchy_tag;
-  };
-
-  const ten_tag ten_ = {};
-
   /// selection tags for throwing and asserting
 
   struct assert_tag
