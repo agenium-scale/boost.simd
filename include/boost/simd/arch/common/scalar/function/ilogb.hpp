@@ -20,6 +20,7 @@
 #include <boost/dispatch/meta/as_floating.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
+#include <cmath>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -79,6 +80,20 @@ namespace boost { namespace simd { namespace ext
       return is_gtz(a0) ? bs::exponent(a0) : Zero<result_t>();
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( ilogb_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bs::std_tag
+                         )
+  {
+    BOOST_FORCEINLINE int operator() ( A0  a0, std_tag const&) const BOOST_NOEXCEPT
+    {
+      return std::ilogb(a0);
+    }
+  };
+
 } } }
 
 

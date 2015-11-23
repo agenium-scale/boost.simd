@@ -16,6 +16,7 @@
 #include <boost/simd/arch/common/detail/scalar/exponential.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/config.hpp>
+#include <cmath>
 
 namespace boost { namespace simd { namespace ext
 {

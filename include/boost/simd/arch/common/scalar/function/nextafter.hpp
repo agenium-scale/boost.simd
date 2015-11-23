@@ -21,6 +21,7 @@
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <boost/math/special_functions/next.hpp>
+#include <cmath>
 // workaround for boost.math bug #5823
 
 namespace boost { namespace simd {
@@ -111,6 +112,21 @@ namespace boost { namespace simd {
       BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
       {
         return (a1 == a0) ? a0 : (a1 > a0) ? oneplus(a0) : minusone(a0);
+      }
+    };
+
+    BOOST_DISPATCH_OVERLOAD ( nextafter_
+                            , (typename A0)
+                            , bd::cpu_
+                            , bd::scalar_< bd::floating_<A0> >
+                            , bd::scalar_< bd::floating_<A0> >
+                            , boost::simd::std_tag
+                            )
+    {
+      BOOST_FORCEINLINE A0 operator() (A0  a0, A0 a1
+                                      , std_tag const& ) const BOOST_NOEXCEPT
+      {
+        return std::nextafter(a0, a1);
       }
     };
   }

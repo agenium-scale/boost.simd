@@ -32,6 +32,7 @@
 #include <boost/simd/constant/inf.hpp>
 #endif
 #include <boost/config.hpp>
+#include <cmath>
 
 namespace boost { namespace simd { namespace ext
 {
