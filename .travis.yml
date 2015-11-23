@@ -9,7 +9,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-4.8']
-      env: CXX_STD=11 TOOLSET=g++-4.8 SIMD_EXT=-msse2
+      env: CXX_STD=11 TOOLSET=g++-4.8 SIMD_EXT=-msse2 OPT=-ftrack-macro-expansion=0
 
     - os: linux
       compiler: gcc
@@ -17,7 +17,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-4.8']
-      env: CXX_STD=11 TOOLSET=g++-4.8 SIMD_EXT=-mavx
+      env: CXX_STD=11 TOOLSET=g++-4.8 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0
 
     - os: linux
       compiler: gcc
@@ -25,7 +25,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-4.9']
-      env: CXX_STD=11 TOOLSET=g++-4.9 SIMD_EXT=-msse2
+      env: CXX_STD=11 TOOLSET=g++-4.9 SIMD_EXT=-msse2 OPT=-ftrack-macro-expansion=0
 
     - os: linux
       compiler: gcc
@@ -33,7 +33,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-4.9']
-      env: CXX_STD=11 TOOLSET=g++-4.9 SIMD_EXT=-mavx
+      env: CXX_STD=11 TOOLSET=g++-4.9 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0
 
     - os: linux
       compiler: gcc
@@ -41,7 +41,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-5']
-      env: CXX_STD=11 TOOLSET=g++-5 SIMD_EXT=-msse2
+      env: CXX_STD=11 TOOLSET=g++-5 SIMD_EXT=-msse2 OPT=-ftrack-macro-expansion=0
 
     - os: linux
       compiler: gcc
@@ -49,7 +49,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-5']
-      env: CXX_STD=14 TOOLSET=g++-5 SIMD_EXT=-msse2
+      env: CXX_STD=14 TOOLSET=g++-5 SIMD_EXT=-msse2 OPT=-ftrack-macro-expansion=0
 
     - os: linux
       compiler: gcc
@@ -57,7 +57,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-5']
-      env: CXX_STD=11 TOOLSET=g++-5 SIMD_EXT=-mavx
+      env: CXX_STD=11 TOOLSET=g++-5 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0
 
     - os: linux
       compiler: clang
@@ -112,7 +112,7 @@ before_install:
 before_script:
   - mkdir build
   - cd build
-  - cmake .. -DCMAKE_CXX_COMPILER=$TOOLSET -DCMAKE_CXX_FLAGS="$SIMD_EXT -I$HOME/dispatch/include" -DSIMD_EXT=$SIMD_EXT -DCXX_STD=$CXX_STD -DTOOLSET=$TOOLSET
+  - cmake .. -DCMAKE_CXX_COMPILER=$TOOLSET -DCMAKE_CXX_FLAGS="$SIMD_EXT $OPT -I$HOME/dispatch/include" -DSIMD_EXT=$SIMD_EXT -DCXX_STD=$CXX_STD -DTOOLSET=$TOOLSET
 
 # Build unit and run test
 script:
