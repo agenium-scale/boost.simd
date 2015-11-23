@@ -93,6 +93,19 @@ namespace boost { namespace simd { namespace ext
       return is_ltz(a1) ? round(tmp) : tmp;
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( round_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bs::std_tag
+                         )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0  a0, std_tag const&) const BOOST_NOEXCEPT
+    {
+      return std::round(a0);
+    }
+  };
 } } }
 
 

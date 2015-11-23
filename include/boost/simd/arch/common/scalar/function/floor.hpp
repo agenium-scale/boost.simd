@@ -46,6 +46,19 @@ namespace boost { namespace simd { namespace ext
       return std::floor(a0);
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( floor_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::double_<A0> >
+                          , bs::std_tag
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, std_tag const&) const BOOST_NOEXCEPT
+    {
+      return std::floor(a0);
+    }
+  };
 } } }
 
 
