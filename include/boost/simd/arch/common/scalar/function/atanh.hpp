@@ -45,6 +45,19 @@ namespace boost { namespace simd { namespace ext
                         );
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( atanh_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bs::std_tag
+                         )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0  a0, std_tag const&) const BOOST_NOEXCEPT
+    {
+      return std::atanh(a0);
+    }
+  };
 } } }
 
 
