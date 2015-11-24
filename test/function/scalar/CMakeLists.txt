@@ -144,6 +144,7 @@ set ( SOURCES
    eps.cpp
    exponentbits.cpp
    exponent.cpp
+   fpclassify.cpp
    frac.cpp
    frexp.cpp
    ilogb.cpp
