@@ -12,8 +12,6 @@ set ( SOURCES
    extract.cpp
    load.cpp
    splat.cpp
-#alias
-   modulus.cpp
 #arithmetic
    abs.cpp
    abss.cpp
@@ -366,6 +364,8 @@ set ( SOURCES
    tan.cpp
    tanpi.cpp
 #aliases
+   fabs.cpp
+   modulus.cpp
    b_and.cpp
    compare_eq.cpp
    b_andnot.cpp

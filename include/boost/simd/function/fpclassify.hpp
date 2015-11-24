@@ -27,6 +27,22 @@ namespace boost { namespace simd
     If you want the standard behaviour which return an int in scalar mode you
     can call fpclassify(x, std_).
 
+    fpclassify returns a value of type int that matches one of the classification
+    macro constants, depending on the value of x:
+
+    value description:
+
+    - FP_INFINITE Positive or negative infinity
+    - FP_NAN  Not-A-Number
+    - FP_ZERO Value of zero
+    - FP_SUBNORMAL  Sub-normal value
+    - FP_NORMAL Normal value (none of the above)
+
+    Note that each value pertains to a single category: for fpclassify zero is not a
+    normal value.
+
+    These macro constants of type int are defined in header cmath
+
     @see is_eqz, is_denormal, is_normal, is_inf, is_nan
 
   **/
