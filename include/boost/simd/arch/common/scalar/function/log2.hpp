@@ -30,7 +30,7 @@ namespace boost { namespace simd { namespace ext
                           , boost::simd::std_tag
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (A0 const & a0
+    BOOST_FORCEINLINE A0 operator() (A0 a0
                                     , std_tag const& ) const BOOST_NOEXCEPT
     {
        return std::log2(a0);

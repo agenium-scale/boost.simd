@@ -13,12 +13,14 @@
 
 #include <boost/simd/arch/common/generic/function/ceil.hpp>
 #include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/options.hpp>
 #include <boost/config.hpp>
 #include <cmath>
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
   BOOST_DISPATCH_OVERLOAD ( ceil_
                           , (typename A0)
                           , bd::cpu_
