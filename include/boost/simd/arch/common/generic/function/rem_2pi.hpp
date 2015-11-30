@@ -78,14 +78,14 @@ namespace boost { namespace simd { namespace ext
         BOOST_ASSERT_MSG(false, "wrong target for rem_2pi");
       }
     };
-    template < class dummy> struct rem2pi < big_tag, dummy>
+    template < class dummy> struct rem2pi < tag::big_tag, dummy>
     {
       static BOOST_FORCEINLINE A0 rem( A0 const& x) BOOST_NOEXCEPT
       {
         return rem_2pi(x);
       }
     };
-    template < class dummy> struct rem2pi < very_small_tag, dummy > // |a0| <2*pi
+    template < class dummy> struct rem2pi < tag::very_small_tag, dummy > // |a0| <2*pi
     {
       static BOOST_FORCEINLINE A0 rem( A0 const& x) BOOST_NOEXCEPT
       {
@@ -93,7 +93,7 @@ namespace boost { namespace simd { namespace ext
                        if_else(lt(x, -Pi<A0>()), x+Twopi<A0>(), x));
       }
     };
-    template < class dummy> struct rem2pi < small_tag, dummy >// |a0| <= 20*pi
+    template < class dummy> struct rem2pi < tag::small_tag, dummy >// |a0| <= 20*pi
     {
       static BOOST_FORCEINLINE A0 rem( A0 const& x) BOOST_NOEXCEPT
       {
@@ -105,7 +105,7 @@ namespace boost { namespace simd { namespace ext
       }
     };
 
-    template < class dummy> struct rem2pi < medium_tag, dummy >
+    template < class dummy> struct rem2pi < tag::medium_tag, dummy >
     {
       static BOOST_FORCEINLINE A0 rem( A0 const& x) BOOST_NOEXCEPT
       {

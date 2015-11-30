@@ -89,7 +89,7 @@ namespace boost { namespace simd { namespace ext
       }
     };
 
-    template < class dummy> struct rempio2 < big_tag, dummy>
+    template < class dummy> struct rempio2 < tag::big_tag, dummy>
     {
       static BOOST_FORCEINLINE result_t rem( A0 const& x, A0 & xr) BOOST_NOEXCEPT
       {
@@ -97,7 +97,7 @@ namespace boost { namespace simd { namespace ext
       }
     };
 
-    template < class dummy> struct rempio2 < very_small_tag, dummy >
+    template < class dummy> struct rempio2 < tag::very_small_tag, dummy >
     {
       static BOOST_FORCEINLINE result_t rem( A0 const& x, A0 & xr) BOOST_NOEXCEPT
       {
@@ -105,7 +105,7 @@ namespace boost { namespace simd { namespace ext
       }
     };
 
-    template < class dummy> struct rempio2 < small_tag, dummy >
+    template < class dummy> struct rempio2 < tag::small_tag, dummy >
     {
       static BOOST_FORCEINLINE result_t rem( A0 const& x, A0 & xr) BOOST_NOEXCEPT
       {
@@ -113,7 +113,7 @@ namespace boost { namespace simd { namespace ext
       }
     };
 
-    template < class dummy> struct rempio2 < medium_tag, dummy >
+    template < class dummy> struct rempio2 < tag::medium_tag, dummy >
     {
       static BOOST_FORCEINLINE result_t rem( A0 const& x, A0 & xr) BOOST_NOEXCEPT
       {

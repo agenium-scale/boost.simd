@@ -34,7 +34,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      return cscd(a0, big_);
+      return cscd(a0, tag::big_);
     }
   };
 
@@ -48,7 +48,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1 const&) const BOOST_NOEXCEPT
     {
       return if_nan_else( is_nez(a0)&&is_flint(a0*Ratio<A0,1,180>())
-                        , rec(sind(a0, big_)));
+                        , rec(sind(a0, tag::big_)));
     }
   };
 

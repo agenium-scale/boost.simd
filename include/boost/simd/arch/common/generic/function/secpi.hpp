@@ -33,7 +33,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      return secpi(a0, big_);
+      return secpi(a0, tag::big_);
     }
   };
 
@@ -54,7 +54,7 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0)
                           , bd::cpu_
                           , bd::generic_< bd::floating_<A0> >
-                          ,  bs::fast_tag
+                          , bs::fast_tag
                           )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, fast_tag const&) const BOOST_NOEXCEPT

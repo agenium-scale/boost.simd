@@ -75,6 +75,7 @@ STF_CASE_TPL (" csc fast_",  STF_IEEE_TYPES)
 STF_CASE_TPL (" csc clipped_small_",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
+  namespace bst = bs::tag;
   namespace bd = boost::dispatch;
   using bs::csc;
 
@@ -85,14 +86,14 @@ STF_CASE_TPL (" csc clipped_small_",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(csc(-bs::Zero<T>(), bs::clipped_small_), bs::Minf<r_t>(), 0.5);
-  STF_ULP_EQUAL(csc(bs::Inf<T>(), bs::clipped_small_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(csc(bs::Minf<T>(), bs::clipped_small_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(csc(bs::Nan<T>(), bs::clipped_small_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(csc(bs::Zero<T>(), bs::clipped_small_), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(csc(-bs::Zero<T>(), bst::clipped_small_), bs::Minf<r_t>(), 0.5);
+  STF_ULP_EQUAL(csc(bs::Inf<T>(), bst::clipped_small_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(csc(bs::Minf<T>(), bst::clipped_small_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(csc(bs::Nan<T>(), bst::clipped_small_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(csc(bs::Zero<T>(), bst::clipped_small_), bs::Inf<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(csc(-bs::Pio_2<T>(), bs::clipped_small_), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(csc(-bs::Pio_4<T>(), bs::clipped_small_), -bs::Sqrt_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(csc(bs::Pio_2<T>(), bs::clipped_small_), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(csc(bs::Pio_4<T>(), bs::clipped_small_), bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(csc(-bs::Pio_2<T>(), bst::clipped_small_), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(csc(-bs::Pio_4<T>(), bst::clipped_small_), -bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(csc(bs::Pio_2<T>(), bst::clipped_small_), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(csc(bs::Pio_4<T>(), bst::clipped_small_), bs::Sqrt_2<r_t>(), 0.5);
 }

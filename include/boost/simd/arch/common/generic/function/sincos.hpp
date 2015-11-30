@@ -33,7 +33,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0,A0 & a2) const
     {
-      return detail::trig_base <A0,radian_tag,is_not_scalar_t<A0>,big_tag>::sincosa(a0,a2);
+      return detail::trig_base <A0,tag::radian_tag,is_not_scalar_t<A0>,tag::big_tag>::sincosa(a0,a2);
     }
   };
 

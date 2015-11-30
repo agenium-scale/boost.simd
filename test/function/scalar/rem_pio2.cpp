@@ -60,19 +60,19 @@ STF_CASE_TPL (" rem_pio2 targeted",  STF_IEEE_TYPES)
 
   iT n;
   T x = bs::Pio_2<T>(), xr;
-  n = rem_pio2(x, xr, bd::as_<bs::big_tag>());
+  n = rem_pio2(x, xr, bd::as_<bs::tag::big_tag>());
   STF_ULP_EQUAL( xr, bs::Zero<T>(), 0.5);
   STF_ULP_EQUAL( n, bs::One<iT>(), 0);
 
-  n = rem_pio2(x, xr, bd::as_<bs::medium_tag>());
+  n = rem_pio2(x, xr, bd::as_<bs::tag::medium_tag>());
   STF_ULP_EQUAL( xr, bs::Zero<T>(), 0.5);
   STF_ULP_EQUAL( n, bs::One<iT>(), 0);
 
-  n = rem_pio2(x, xr, bd::as_<bs::small_tag>());
+  n = rem_pio2(x, xr, bd::as_<bs::tag::small_tag>());
   STF_ULP_EQUAL( xr, bs::Zero<T>(), 0.5);
   STF_ULP_EQUAL( n, bs::One<iT>(), 0);
 
-  n = rem_pio2(x, xr, bd::as_<bs::very_small_tag>());
+  n = rem_pio2(x, xr, bd::as_<bs::tag::very_small_tag>());
   STF_ULP_EQUAL( xr, bs::Zero<T>(), 0.5);
   STF_ULP_EQUAL( n, bs::One<iT>(), 0);
 }

@@ -30,7 +30,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      return detail::trig_base<A0,radian_tag,is_not_scalar_t<A0>,big_tag>::cosa(a0);
+      return detail::trig_base<A0,tag::radian_tag,is_not_scalar_t<A0>,tag::big_tag>::cosa(a0);
     }
   };
 
@@ -43,7 +43,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0,  A1 const &) const BOOST_NOEXCEPT
     {
-      return detail::trig_base<A0,radian_tag,is_not_scalar_t<A0>,A1>::cosa(a0);
+      return detail::trig_base<A0, tag::radian_tag,is_not_scalar_t<A0>,A1>::cosa(a0);
     }
   };
 
@@ -56,7 +56,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0,  fast_tag const &) const BOOST_NOEXCEPT
     {
-      return detail::trig_base<A0,radian_tag,is_not_scalar_t<A0>,clipped_pio4_tag>::cosa(a0);
+      return detail::trig_base<A0, tag::radian_tag,is_not_scalar_t<A0>,tag::clipped_pio4_tag>::cosa(a0);
     }
   };
 } } }

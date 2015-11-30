@@ -78,6 +78,7 @@ STF_CASE_TPL (" sin",  STF_IEEE_TYPES)
 STF_CASE_TPL (" sin",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
+  namespace bst = bs::tag;
   namespace bd = boost::dispatch;
   using bs::sin;
 
@@ -88,21 +89,22 @@ STF_CASE_TPL (" sin",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(sin(bs::Inf<T>(), bs::clipped_small_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(sin(bs::Minf<T>(), bs::clipped_small_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(sin(bs::Nan<T>(), bs::clipped_small_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(sin(bs::Inf<T>(), bst::clipped_small_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(sin(bs::Minf<T>(), bst::clipped_small_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(sin(bs::Nan<T>(), bst::clipped_small_), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(sin(-bs::Pio_2<T>(), bs::clipped_small_), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(sin(-bs::Pio_4<T>(), bs::clipped_small_), -bs::Sqrt_2o_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(sin(bs::Pio_2<T>(), bs::clipped_small_), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(sin(bs::Pio_4<T>(), bs::clipped_small_), bs::Sqrt_2o_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(sin(bs::Zero<T>(), bs::clipped_small_), bs::Zero<r_t>(), 0.5);
-  STF_EXPECT(bs::is_negative(sin(bs::Mzero<T>(), bs::clipped_small_)));
-  STF_EXPECT(bs::is_positive(sin(bs::Zero<T>(), bs::clipped_small_)));
+  STF_ULP_EQUAL(sin(-bs::Pio_2<T>(), bst::clipped_small_), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(sin(-bs::Pio_4<T>(), bst::clipped_small_), -bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(sin(bs::Pio_2<T>(), bst::clipped_small_), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(sin(bs::Pio_4<T>(), bst::clipped_small_), bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(sin(bs::Zero<T>(), bst::clipped_small_), bs::Zero<r_t>(), 0.5);
+  STF_EXPECT(bs::is_negative(sin(bs::Mzero<T>(), bst::clipped_small_)));
+  STF_EXPECT(bs::is_positive(sin(bs::Zero<T>(), bst::clipped_small_)));
 }
 STF_CASE_TPL (" sin",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
+  namespace bst = bs::tag;
   namespace bd = boost::dispatch;
   using bs::sin;
 
@@ -113,15 +115,15 @@ STF_CASE_TPL (" sin",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(sin(bs::Inf<T>(), bs::clipped_medium_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(sin(bs::Minf<T>(), bs::clipped_medium_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(sin(bs::Nan<T>(), bs::clipped_medium_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(sin(bs::Inf<T>(), bst::clipped_medium_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(sin(bs::Minf<T>(), bst::clipped_medium_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(sin(bs::Nan<T>(), bst::clipped_medium_), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(sin(-bs::Pio_2<T>(), bs::clipped_medium_), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(sin(-bs::Pio_4<T>(), bs::clipped_medium_), -bs::Sqrt_2o_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(sin(bs::Pio_2<T>(), bs::clipped_medium_), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(sin(bs::Pio_4<T>(), bs::clipped_medium_), bs::Sqrt_2o_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(sin(bs::Zero<T>(), bs::clipped_medium_), bs::Zero<r_t>(), 0.5);
-  STF_EXPECT(bs::is_negative(sin(bs::Mzero<T>(), bs::clipped_medium_)));
-  STF_EXPECT(bs::is_positive(sin(bs::Zero<T>(), bs::clipped_medium_)));
+  STF_ULP_EQUAL(sin(-bs::Pio_2<T>(), bst::clipped_medium_), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(sin(-bs::Pio_4<T>(), bst::clipped_medium_), -bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(sin(bs::Pio_2<T>(), bst::clipped_medium_), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(sin(bs::Pio_4<T>(), bst::clipped_medium_), bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(sin(bs::Zero<T>(), bst::clipped_medium_), bs::Zero<r_t>(), 0.5);
+  STF_EXPECT(bs::is_negative(sin(bs::Mzero<T>(), bst::clipped_medium_)));
+  STF_EXPECT(bs::is_positive(sin(bs::Zero<T>(), bst::clipped_medium_)));
 }

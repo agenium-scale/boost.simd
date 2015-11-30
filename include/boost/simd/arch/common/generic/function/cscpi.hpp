@@ -34,7 +34,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      return cscpi(a0, big_);
+      return cscpi(a0, tag::big_);
     }
   };
 
