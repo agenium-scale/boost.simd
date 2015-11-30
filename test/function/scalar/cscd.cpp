@@ -76,6 +76,7 @@ STF_CASE_TPL (" cscd fast_",  STF_IEEE_TYPES)
 STF_CASE_TPL (" cscd clipped_small_",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
+  namespace bst = bs::tag;
   namespace bd = boost::dispatch;
   using bs::cscd;
 
@@ -86,23 +87,24 @@ STF_CASE_TPL (" cscd clipped_small_",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(cscd(-bs::Zero<T>(), bs::clipped_small_), bs::Minf<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscd(-T(180), bs::clipped_small_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscd(bs::Inf<T>(), bs::clipped_small_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscd(bs::Minf<T>(), bs::clipped_small_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscd(bs::Nan<T>(), bs::clipped_small_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscd(bs::Zero<T>(), bs::clipped_small_), bs::Inf<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscd(T(180), bs::clipped_small_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscd(-bs::Zero<T>(), bst::clipped_small_), bs::Minf<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscd(-T(180), bst::clipped_small_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscd(bs::Inf<T>(), bst::clipped_small_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscd(bs::Minf<T>(), bst::clipped_small_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscd(bs::Nan<T>(), bst::clipped_small_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscd(bs::Zero<T>(), bst::clipped_small_), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscd(T(180), bst::clipped_small_), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(cscd(-T(45), bs::clipped_small_), -bs::Sqrt_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscd(-T(90), bs::clipped_small_), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscd(T(45), bs::clipped_small_), bs::Sqrt_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscd(T(90), bs::clipped_small_), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscd(-T(45), bst::clipped_small_), -bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscd(-T(90), bst::clipped_small_), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscd(T(45), bst::clipped_small_), bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscd(T(90), bst::clipped_small_), bs::One<r_t>(), 0.5);
 }
 
 STF_CASE_TPL (" cscd clipped_medium_",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
+  namespace bst = bs::tag;
   namespace bd = boost::dispatch;
   using bs::cscd;
 
@@ -113,16 +115,16 @@ STF_CASE_TPL (" cscd clipped_medium_",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(cscd(-bs::Zero<T>(), bs::clipped_medium_), bs::Minf<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscd(-T(180), bs::clipped_medium_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscd(bs::Inf<T>(), bs::clipped_medium_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscd(bs::Minf<T>(), bs::clipped_medium_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscd(bs::Nan<T>(), bs::clipped_medium_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscd(bs::Zero<T>(), bs::clipped_medium_), bs::Inf<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscd(T(180), bs::clipped_medium_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscd(-bs::Zero<T>(), bst::clipped_medium_), bs::Minf<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscd(-T(180), bst::clipped_medium_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscd(bs::Inf<T>(), bst::clipped_medium_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscd(bs::Minf<T>(), bst::clipped_medium_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscd(bs::Nan<T>(), bst::clipped_medium_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscd(bs::Zero<T>(), bst::clipped_medium_), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscd(T(180), bst::clipped_medium_), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(cscd(-T(45), bs::clipped_medium_), -bs::Sqrt_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscd(-T(90), bs::clipped_medium_), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscd(T(45), bs::clipped_medium_), bs::Sqrt_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscd(T(90), bs::clipped_medium_), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscd(-T(45), bst::clipped_medium_), -bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscd(-T(90), bst::clipped_medium_), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscd(T(45), bst::clipped_medium_), bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscd(T(90), bst::clipped_medium_), bs::One<r_t>(), 0.5);
 }

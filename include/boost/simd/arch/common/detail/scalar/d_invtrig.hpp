@@ -44,7 +44,7 @@ namespace boost { namespace simd
     namespace bs =  boost::simd;
 
     template < class A0 >
-    struct invtrig_base<A0,radian_tag,tag::not_simd_type, double>
+    struct invtrig_base<A0,tag::radian_tag,tag::not_simd_type, double>
     {
       static BOOST_FORCEINLINE A0 asin(A0 a0) BOOST_NOEXCEPT
       {

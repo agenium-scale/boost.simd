@@ -72,6 +72,7 @@ STF_CASE_TPL (" sec fast_",  STF_IEEE_TYPES)
 STF_CASE_TPL (" sec clipped_small_",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
+  namespace bst = bs::tag;
   namespace bd = boost::dispatch;
   using bs::sec;
 
@@ -82,20 +83,21 @@ STF_CASE_TPL (" sec clipped_small_",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(sec(bs::Inf<T>(), bs::clipped_small_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(sec(bs::Minf<T>(), bs::clipped_small_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(sec(bs::Nan<T>(), bs::clipped_small_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(sec(bs::Inf<T>(), bst::clipped_small_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(sec(bs::Minf<T>(), bst::clipped_small_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(sec(bs::Nan<T>(), bst::clipped_small_), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(sec(-bs::Pi<T>(), bs::clipped_small_), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(sec(-bs::Pio_4<T>(), bs::clipped_small_), bs::Sqrt_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(sec(bs::Pi<T>(), bs::clipped_small_), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(sec(bs::Pio_4<T>(), bs::clipped_small_), bs::Sqrt_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(sec(bs::Zero<T>(), bs::clipped_small_), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(sec(-bs::Pi<T>(), bst::clipped_small_), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(sec(-bs::Pio_4<T>(), bst::clipped_small_), bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(sec(bs::Pi<T>(), bst::clipped_small_), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(sec(bs::Pio_4<T>(), bst::clipped_small_), bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(sec(bs::Zero<T>(), bst::clipped_small_), bs::One<r_t>(), 0.5);
 }
 
 STF_CASE_TPL (" sec clipped_medium_",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
+  namespace bst = bs::tag;
   namespace bd = boost::dispatch;
   using bs::sec;
 
@@ -106,13 +108,13 @@ STF_CASE_TPL (" sec clipped_medium_",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(sec(bs::Inf<T>(), bs::clipped_medium_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(sec(bs::Minf<T>(), bs::clipped_medium_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(sec(bs::Nan<T>(), bs::clipped_medium_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(sec(bs::Inf<T>(), bst::clipped_medium_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(sec(bs::Minf<T>(), bst::clipped_medium_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(sec(bs::Nan<T>(), bst::clipped_medium_), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(sec(-bs::Pi<T>(), bs::clipped_medium_), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(sec(-bs::Pio_4<T>(), bs::clipped_medium_), bs::Sqrt_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(sec(bs::Pi<T>(), bs::clipped_medium_), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(sec(bs::Pio_4<T>(), bs::clipped_medium_), bs::Sqrt_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(sec(bs::Zero<T>(), bs::clipped_medium_), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(sec(-bs::Pi<T>(), bst::clipped_medium_), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(sec(-bs::Pio_4<T>(), bst::clipped_medium_), bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(sec(bs::Pi<T>(), bst::clipped_medium_), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(sec(bs::Pio_4<T>(), bst::clipped_medium_), bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(sec(bs::Zero<T>(), bst::clipped_medium_), bs::One<r_t>(), 0.5);
 }

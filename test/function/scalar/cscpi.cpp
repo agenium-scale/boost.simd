@@ -75,6 +75,7 @@ STF_CASE_TPL (" cscpi fast",  STF_IEEE_TYPES)
 STF_CASE_TPL (" cscpi clipped_smal",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
+  namespace bst = bs::tag;
   namespace bd = boost::dispatch;
   using bs::cscpi;
 
@@ -85,23 +86,24 @@ STF_CASE_TPL (" cscpi clipped_smal",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(cscpi(-bs::Zero<T>(), bs::clipped_small_), bs::Minf<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::Inf<T>(), bs::clipped_small_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::Minf<T>(), bs::clipped_small_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::Mone<T>(), bs::clipped_small_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::Nan<T>(), bs::clipped_small_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::One<T>(), bs::clipped_small_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::Zero<T>(), bs::clipped_small_), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscpi(-bs::Zero<T>(), bst::clipped_small_), bs::Minf<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscpi(bs::Inf<T>(), bst::clipped_small_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscpi(bs::Minf<T>(), bst::clipped_small_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscpi(bs::Mone<T>(), bst::clipped_small_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscpi(bs::Nan<T>(), bst::clipped_small_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscpi(bs::One<T>(), bst::clipped_small_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscpi(bs::Zero<T>(), bst::clipped_small_), bs::Inf<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(cscpi(-bs::Quarter<T>(), bs::clipped_small_), -bs::Sqrt_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::Half<T>(), bs::clipped_small_), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::Mhalf<T>(), bs::clipped_small_), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::Quarter<T>(), bs::clipped_small_), bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscpi(-bs::Quarter<T>(), bst::clipped_small_), -bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscpi(bs::Half<T>(), bst::clipped_small_), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscpi(bs::Mhalf<T>(), bst::clipped_small_), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscpi(bs::Quarter<T>(), bst::clipped_small_), bs::Sqrt_2<r_t>(), 0.5);
 }
 
 STF_CASE_TPL (" cscpi",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
+  namespace bst = bs::tag;
   namespace bd = boost::dispatch;
   using bs::cscpi;
 
@@ -112,16 +114,16 @@ STF_CASE_TPL (" cscpi",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(cscpi(-bs::Zero<T>(), bs::clipped_medium_), bs::Minf<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::Inf<T>(), bs::clipped_medium_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::Minf<T>(), bs::clipped_medium_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::Mone<T>(), bs::clipped_medium_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::Nan<T>(), bs::clipped_medium_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::One<T>(), bs::clipped_medium_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::Zero<T>(), bs::clipped_medium_), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscpi(-bs::Zero<T>(), bst::clipped_medium_), bs::Minf<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscpi(bs::Inf<T>(), bst::clipped_medium_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscpi(bs::Minf<T>(), bst::clipped_medium_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscpi(bs::Mone<T>(), bst::clipped_medium_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscpi(bs::Nan<T>(), bst::clipped_medium_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscpi(bs::One<T>(), bst::clipped_medium_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscpi(bs::Zero<T>(), bst::clipped_medium_), bs::Inf<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(cscpi(-bs::Quarter<T>(), bs::clipped_medium_), -bs::Sqrt_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::Half<T>(), bs::clipped_medium_), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::Mhalf<T>(), bs::clipped_medium_), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::Quarter<T>(), bs::clipped_medium_), bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscpi(-bs::Quarter<T>(), bst::clipped_medium_), -bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscpi(bs::Half<T>(), bst::clipped_medium_), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscpi(bs::Mhalf<T>(), bst::clipped_medium_), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(cscpi(bs::Quarter<T>(), bst::clipped_medium_), bs::Sqrt_2<r_t>(), 0.5);
 }

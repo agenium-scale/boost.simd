@@ -51,7 +51,7 @@ namespace boost { namespace simd { namespace ext
         a1 = copysign(One<A0>(), a1);
       }
       #endif
-      A0 z = detail::invtrig_base<A0,radian_tag, tag::not_simd_type>::kernel_atan(a0/a1);
+      A0 z = detail::invtrig_base<A0,tag::radian_tag, tag::not_simd_type>::kernel_atan(a0/a1);
       z = if_else(is_gtz(a1), z, Pi<A0>()-z)*signnz(a0);
       return if_else(is_eqz(a0), if_else_zero(is_ltz(a1), Pi<A0>()), z);
     }

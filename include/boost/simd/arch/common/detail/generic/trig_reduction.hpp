@@ -80,7 +80,7 @@ namespace boost { namespace simd
     // trigonometric functions with different policies
 
     template<class A0, class style, class mode>
-    struct trig_reduction < A0, radian_tag, style, mode>
+    struct trig_reduction < A0, tag::radian_tag, style, mode>
     {
       using l_t     = logical<A0>; //as_logical
       using i_t = bd::as_integer_t<A0, signed>;
@@ -133,19 +133,19 @@ namespace boost { namespace simd
           return clipto(x, boost::mpl::int_<Mode::range>());
         }
       private :
-        static BOOST_FORCEINLINE A0 clipto(const A0& x, boost::mpl::int_<r_0_pio4> const&)
+        static BOOST_FORCEINLINE A0 clipto(const A0& x, boost::mpl::int_<tag::r_0_pio4> const&)
         {
           return if_else_nan(is_0_pio4_reduced(x), x);
         }
-        static BOOST_FORCEINLINE A0 clipto(const A0& x, boost::mpl::int_<r_0_20pi> const&)
+        static BOOST_FORCEINLINE A0 clipto(const A0& x, boost::mpl::int_<tag::r_0_20pi> const&)
         {
           return if_else_nan(is_0_20pi_reduced(x), x);
         }
-        static BOOST_FORCEINLINE A0 clipto(const A0& x, boost::mpl::int_<r_0_mpi> const&)
+        static BOOST_FORCEINLINE A0 clipto(const A0& x, boost::mpl::int_<tag::r_0_mpi> const&)
         {
           return if_else_nan(is_0_mpi_reduced(x), x);
         }
-        static BOOST_FORCEINLINE A0 clipto(const A0& x, boost::mpl::int_<r_0_dmpi> const&)
+        static BOOST_FORCEINLINE A0 clipto(const A0& x, boost::mpl::int_<tag::r_0_dmpi> const&)
         {
           return if_else_nan(is_0_dmpi_reduced(x), x);
         }
@@ -154,7 +154,7 @@ namespace boost { namespace simd
       static BOOST_FORCEINLINE i_t
       select_range( const A0& xx, A0& xr
                   , boost::mpl::true_ const&
-                  , boost::mpl::int_<r_0_pio4> const&
+                  , boost::mpl::int_<tag::r_0_pio4> const&
                   )
       {
         xr = xx;
@@ -164,32 +164,32 @@ namespace boost { namespace simd
       static BOOST_FORCEINLINE i_t
       select_range( const A0& xx, A0& xr
                   , boost::mpl::false_ const&
-                  , boost::mpl::int_<r_0_pio4> const& r
+                  , boost::mpl::int_<tag::r_0_pio4> const& r
                   )
       {
         if(all(is_0_pio4_reduced(xx)))
           return select_range(xx,xr,boost::mpl::true_(), r);
 
-        return select_mode(xx,xr,boost::mpl::int_<r_0_pio2>());
+        return select_mode(xx,xr,boost::mpl::int_<tag::r_0_pio2>());
       }
 
       static BOOST_FORCEINLINE i_t
-      select_mode(const A0& xx, A0& xr, boost::mpl::int_<r_0_pio4> const& r)
+      select_mode(const A0& xx, A0& xr, boost::mpl::int_<tag::r_0_pio4> const& r)
       {
-        return select_range(xx,xr,boost::mpl::bool_<mode::range == r_0_pio4>(),r);
+        return select_range(xx,xr,boost::mpl::bool_<mode::range == tag::r_0_pio4>(),r);
       }
 
-      static BOOST_FORCEINLINE i_t select_mode(const A0& xx, A0& xr, boost::mpl::int_<r_0_pio2> const&)
+      static BOOST_FORCEINLINE i_t select_mode(const A0& xx, A0& xr, boost::mpl::int_<tag::r_0_pio2> const&)
       {
         if(all(is_0_pio2_reduced(xx)))
           return rem_pio2_straight(xx, xr);
-        return select_mode(xx,xr,boost::mpl::int_<r_0_20pi>());
+        return select_mode(xx,xr,boost::mpl::int_<tag::r_0_20pi>());
       }
 
       static BOOST_FORCEINLINE i_t
       select_range( const A0& xx, A0& xr
                   , boost::mpl::true_ const&
-                  , boost::mpl::int_<r_0_20pi> const&
+                  , boost::mpl::int_<tag::r_0_20pi> const&
                   )
       {
         return rem_pio2_cephes(xx, xr);
@@ -198,19 +198,19 @@ namespace boost { namespace simd
       static BOOST_FORCEINLINE i_t
       select_range( const A0& xx, A0& xr
                   , boost::mpl::false_ const&
-                  , boost::mpl::int_<r_0_20pi> const& r
+                  , boost::mpl::int_<tag::r_0_20pi> const& r
                   )
       {
         if(all(is_0_20pi_reduced(xx)))
           return select_range(xx,xr,boost::mpl::true_(), r);
 
-        return select_mode(xx,xr,boost::mpl::int_<r_0_mpi>());
+        return select_mode(xx,xr,boost::mpl::int_<tag::r_0_mpi>());
       }
 
       static BOOST_FORCEINLINE i_t
-      select_mode(const A0& xx, A0& xr, boost::mpl::int_< r_0_20pi> const& r)
+      select_mode(const A0& xx, A0& xr, boost::mpl::int_< tag::r_0_20pi> const& r)
       {
-        return select_range(xx,xr,boost::mpl::bool_<mode::range == r_0_20pi>(),r);
+        return select_range(xx,xr,boost::mpl::bool_<mode::range == tag::r_0_20pi>(),r);
       }
 
 
@@ -218,7 +218,7 @@ namespace boost { namespace simd
       static BOOST_FORCEINLINE i_t
       select_range( const A0& xx, A0& xr
                   , boost::mpl::true_ const&
-                  , boost::mpl::int_<r_0_mpi> const&
+                  , boost::mpl::int_<tag::r_0_mpi> const&
                   )
       {
         return rem_pio2_medium(xx, xr);
@@ -227,21 +227,21 @@ namespace boost { namespace simd
       static BOOST_FORCEINLINE i_t
       select_range( const A0& xx, A0& xr
                   , boost::mpl::false_ const&
-                  , boost::mpl::int_<r_0_mpi> const& r
+                  , boost::mpl::int_<tag::r_0_mpi> const& r
                   )
       {
         if(all(is_0_mpi_reduced(xx)))
           return select_range(xx,xr,boost::mpl::true_(), r);
 
-        return select_mode(xx,xr,boost::mpl::int_<r_0_dmpi>());
+        return select_mode(xx,xr,boost::mpl::int_<tag::r_0_dmpi>());
       }
 
-      static BOOST_FORCEINLINE i_t select_mode(const A0& xx, A0& xr, boost::mpl::int_< r_0_mpi> const& r)
+      static BOOST_FORCEINLINE i_t select_mode(const A0& xx, A0& xr, boost::mpl::int_< tag::r_0_mpi> const& r)
       {
-        return select_range(xx,xr,boost::mpl::bool_<mode::range == r_0_mpi>(),r);
+        return select_range(xx,xr,boost::mpl::bool_<mode::range == tag::r_0_mpi>(),r);
       }
 
-      static BOOST_FORCEINLINE i_t select_mode(const A0& xx, A0& xr, boost::mpl::int_< r_0_dmpi> const&)
+      static BOOST_FORCEINLINE i_t select_mode(const A0& xx, A0& xr, boost::mpl::int_< tag::r_0_dmpi> const&)
       {
         if(all(is_0_dmpi_reduced(xx)))
            return use_conversion(xx, xr, style(), conversion_allowed_t());
@@ -257,7 +257,7 @@ namespace boost { namespace simd
       {
         // all of x are in [0, 2^18*pi],  conversion to double is used to reduce
         using uA0 = bd::upgrade_t<A0>;
-        typedef trig_reduction< uA0, radian_tag,  tag::not_simd_type, mode, double> aux_reduction;
+        typedef trig_reduction< uA0, tag::radian_tag,  tag::not_simd_type, mode, double> aux_reduction;
         uA0 ux = xx, uxr;
         i_t n = static_cast<i_t>(aux_reduction::reduce(ux, uxr));
         xr = static_cast<A0>(uxr);
@@ -268,7 +268,7 @@ namespace boost { namespace simd
       {
         // all of x are in [0, 2^18*pi],  conversion to double is used to reduce
         using uA0 = bd::upgrade_t<A0>;
-        using aux_reduc_t = trig_reduction< uA0, radian_tag,  tag::simd_type, mode, double>;
+        using aux_reduc_t = trig_reduction< uA0, tag::radian_tag,  tag::simd_type, mode, double>;
         uA0 ux1, ux2, uxr1, uxr2;
         split(x, ux1, ux2);
         auto n1 = aux_reduc_t::reduce(ux1, uxr1);
@@ -280,7 +280,7 @@ namespace boost { namespace simd
     };
 
     template<class A0, class style>
-    struct trig_reduction<A0,degree_tag, style, big_tag>
+    struct trig_reduction<A0,tag::degree_tag, style, tag::big_tag>
     {
       using l_t     = logical<A0>; //as_logical
       using i_t = bd::as_integer_t<A0, signed>;
@@ -300,7 +300,7 @@ namespace boost { namespace simd
 
 #ifdef BOOST_SIMD_HAS_X87
     template<class A0>
-    struct trig_reduction<A0,degree_tag, tag::not_simd_type, big_tag>
+    struct trig_reduction<A0,degree_tag, tag::not_simd_type, tag::big_tag>
     {
       using l_t     = logical<A0>; //as_logical
       using i_t = bd::as_integer_t<A0, signed>;
@@ -320,7 +320,7 @@ namespace boost { namespace simd
 #endif
 
     template < class A0, class style>
-    struct trig_reduction < A0, pi_tag,  style, big_tag>
+    struct trig_reduction < A0, tag::pi_tag,  style, tag::big_tag>
     {
       using l_t     = logical<A0>; //as_logical
       using i_t = bd::as_integer_t<A0, signed>;

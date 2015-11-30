@@ -78,6 +78,7 @@ STF_CASE_TPL (" cos fast_",  STF_IEEE_TYPES)
 STF_CASE_TPL (" cos clipped_small_",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
+  namespace bst = bs::tag;
   namespace bd = boost::dispatch;
   using bs::cos;
 
@@ -88,22 +89,23 @@ STF_CASE_TPL (" cos clipped_small_",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(cos(bs::Inf<T>(), bs::clipped_small_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cos(bs::Minf<T>(), bs::clipped_small_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cos(bs::Nan<T>(), bs::clipped_small_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(bs::Inf<T>(), bst::clipped_small_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(bs::Minf<T>(), bst::clipped_small_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(bs::Nan<T>(), bst::clipped_small_), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(cos(-bs::Pi<T>(), bs::clipped_small_), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(cos(-bs::Pio_2<T>(), bs::clipped_small_), bs::Zero<r_t>(), 0.5);
-  STF_ULP_EQUAL(cos(-bs::Pio_4<T>(), bs::clipped_small_), bs::Sqrt_2o_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(cos(bs::Pi<T>(), bs::clipped_small_), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(cos(bs::Pio_2<T>(), bs::clipped_small_), bs::Zero<r_t>(), 0.5);
-  STF_ULP_EQUAL(cos(bs::Pio_4<T>(), bs::clipped_small_), bs::Sqrt_2o_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(cos(bs::Zero<T>(), bs::clipped_small_), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(-bs::Pi<T>(), bst::clipped_small_), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(-bs::Pio_2<T>(), bst::clipped_small_), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(-bs::Pio_4<T>(), bst::clipped_small_), bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(bs::Pi<T>(), bst::clipped_small_), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(bs::Pio_2<T>(), bst::clipped_small_), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(bs::Pio_4<T>(), bst::clipped_small_), bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(bs::Zero<T>(), bst::clipped_small_), bs::One<r_t>(), 0.5);
 }
 
 STF_CASE_TPL (" cos clipped_medium_",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
+  namespace bst = bs::tag;
   namespace bd = boost::dispatch;
   using bs::cos;
 
@@ -114,15 +116,15 @@ STF_CASE_TPL (" cos clipped_medium_",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(cos(bs::Inf<T>(), bs::clipped_medium_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cos(bs::Minf<T>(), bs::clipped_medium_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cos(bs::Nan<T>(), bs::clipped_medium_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(bs::Inf<T>(), bst::clipped_medium_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(bs::Minf<T>(), bst::clipped_medium_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(bs::Nan<T>(), bst::clipped_medium_), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(cos(-bs::Pi<T>(), bs::clipped_medium_), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(cos(-bs::Pio_2<T>(), bs::clipped_medium_), bs::Zero<r_t>(), 0.5);
-  STF_ULP_EQUAL(cos(-bs::Pio_4<T>(), bs::clipped_medium_), bs::Sqrt_2o_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(cos(bs::Pi<T>(), bs::clipped_medium_), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(cos(bs::Pio_2<T>(), bs::clipped_medium_), bs::Zero<r_t>(), 0.5);
-  STF_ULP_EQUAL(cos(bs::Pio_4<T>(), bs::clipped_medium_), bs::Sqrt_2o_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(cos(bs::Zero<T>(), bs::clipped_medium_), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(-bs::Pi<T>(), bst::clipped_medium_), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(-bs::Pio_2<T>(), bst::clipped_medium_), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(-bs::Pio_4<T>(), bst::clipped_medium_), bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(bs::Pi<T>(), bst::clipped_medium_), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(bs::Pio_2<T>(), bst::clipped_medium_), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(bs::Pio_4<T>(), bst::clipped_medium_), bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(bs::Zero<T>(), bst::clipped_medium_), bs::One<r_t>(), 0.5);
 }

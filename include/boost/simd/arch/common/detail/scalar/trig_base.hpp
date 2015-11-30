@@ -60,17 +60,17 @@ namespace boost { namespace simd
     // (sorry no long double for lack of portability)
 
     template < typename A0, typename unit_tag> struct trig_ranges;
-    template < typename A0>  struct trig_ranges<A0, radian_tag>
+    template < typename A0>  struct trig_ranges<A0, tag::radian_tag>
     {
       static BOOST_FORCEINLINE A0    max_range() BOOST_NOEXCEPT {return Pio_4<A0>(); }
       static BOOST_FORCEINLINE A0    scale()     BOOST_NOEXCEPT {return One<A0>(); }
     };
-    template < typename A0>  struct trig_ranges<A0, pi_tag>
+    template < typename A0>  struct trig_ranges<A0, tag::pi_tag>
     {
       static BOOST_FORCEINLINE A0    max_range() BOOST_NOEXCEPT {return Quarter<A0>(); }
       static BOOST_FORCEINLINE A0    scale()     BOOST_NOEXCEPT {return Pi<A0>(); }
     };
-    template < typename A0>  struct trig_ranges<A0, degree_tag>
+    template < typename A0>  struct trig_ranges<A0, tag::degree_tag>
     {
       static BOOST_FORCEINLINE A0    max_range() BOOST_NOEXCEPT {return Ratio<A0, 45>(); }
       static BOOST_FORCEINLINE A0    scale()     BOOST_NOEXCEPT {return Deginrad<A0>(); }
@@ -102,7 +102,7 @@ namespace boost { namespace simd
     template < typename A0,
                typename unit_tag,
                typename style,
-               typename mode =  big_tag>
+               typename mode =  tag::big_tag>
     struct trig_base{};
 
     template < typename A0,
