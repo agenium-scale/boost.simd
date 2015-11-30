@@ -32,14 +32,13 @@ namespace boost { namespace simd
     template < typename A0,
                typename Tag,
                typename Style ,
-               typename Speed_Tag = fast_tag,
                typename base_A0 = bd::scalar_of_t<A0>
              >
     struct exponential{};
 
 
-  template < typename A0, typename Tag,  typename Speed_Tag>
-  struct exponential< A0, Tag, tag::not_simd_type, Speed_Tag, double>
+  template < typename A0, typename Tag>
+  struct exponential< A0, Tag, tag::not_simd_type, double>
   {
     typedef exp_reduction<A0,Tag>                        reduc_t;
     // compute exp(ax) where a is 1, 2 or ten depending on Tag
@@ -58,8 +57,8 @@ namespace boost { namespace simd
     }
   };
 
-  template < typename A0, typename Tag,  typename Speed_Tag>
-  struct exponential< A0, Tag, tag::not_simd_type, Speed_Tag, float>
+  template < typename A0, typename Tag>
+  struct exponential< A0, Tag, tag::not_simd_type, float>
   {
     typedef exp_reduction<A0,Tag>                        reduc_t;
     // compute exp(ax) where a is 1, 2 or ten depending on Tag

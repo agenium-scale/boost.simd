@@ -30,7 +30,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
     {
-      return detail::exponential<A0,exp_,tag::not_simd_type,tag::accu_tag>::expa(a0);
+      return detail::exponential<A0,bs::tag::exp_,tag::not_simd_type>::expa(a0);
     }
   };
 } } }
