@@ -47,7 +47,7 @@ namespace boost { namespace simd
     namespace bd =  boost::dispatch;
     namespace bs =  boost::simd;
 
-    template < class A0> struct exp_reduction < A0, exp_, double>
+    template < class A0> struct exp_reduction < A0, bs::tag::exp_, double>
     {
       using l_t = logical<A0>;
       static BOOST_FORCEINLINE l_t isgemaxlog(A0 const& a0) BOOST_NOEXCEPT
@@ -90,7 +90,7 @@ namespace boost { namespace simd
 
     };
 
-    template < class A0 > struct exp_reduction < A0, exp2_, double>
+    template < class A0 > struct exp_reduction < A0, bs::tag::exp2_, double>
     {
       using l_t = logical<A0>;
       static BOOST_FORCEINLINE l_t isgemaxlog(A0 const& a0) BOOST_NOEXCEPT
@@ -129,7 +129,7 @@ namespace boost { namespace simd
       }
     };
 
-    template < class A0 > struct exp_reduction < A0, exp10_, double>
+    template < class A0 > struct exp_reduction < A0, bs::tag::exp10_, double>
     {
       using l_t = logical<A0>;
       static BOOST_FORCEINLINE l_t isgemaxlog(A0 const& a0) BOOST_NOEXCEPT

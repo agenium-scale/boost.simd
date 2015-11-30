@@ -34,7 +34,6 @@
 #include <boost/simd/arch/common/detail/generic/horner.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/dispatch/meta/scalar_of.hpp>
-#include <boost/array.hpp>
 
 namespace boost { namespace simd
 {
@@ -74,7 +73,7 @@ namespace boost { namespace simd
         /* 2^(-i/16)
          * The decimal values are rounded to 24-bit precision
          */
-        const s_t A[17] =  { //static const boost::array<s_t, 17> A = {{
+        const s_t A[17] =  {
             s_t(1.00000000000000000000E0),
             s_t(9.57603275775909423828125E-1),
             s_t(9.17004048824310302734375E-1),
@@ -93,7 +92,6 @@ namespace boost { namespace simd
             s_t(5.22136867046356201171875E-1),
             s_t(5.00000000000000000000E-1)
         };
-//          }};
         return A[i];//load<A0>(A.begin(), i); //A[i];
       }
 
@@ -102,7 +100,7 @@ namespace boost { namespace simd
         /* continuation, for even i only
          * 2^(i/16)  =  A[i] + B[i/2]
          */
-        const s_t B[9] =  { //static const boost::array<s_t, 9> B = {{
+        const s_t B[9] =  {
             s_t( 0.00000000000000000000E0),
             s_t(-5.61963907099083340520586E-9),
             s_t(-1.23776636307969995237668E-8),
@@ -113,7 +111,6 @@ namespace boost { namespace simd
             s_t(-6.53877009617774467211965E-9),
             s_t( 0.00000000000000000000E0)
         };
-//          }};
         return B[i]; //load<A0>(B.begin(), i);
       }
 
@@ -176,7 +173,7 @@ namespace boost { namespace simd
     static BOOST_FORCEINLINE A0 twomio16(const i_t& i) BOOST_NOEXCEPT
     {
       /* 2^(-i/16), IEEE precision */
-      static const boost::array < s_t, 17> A = {{
+      const s_t A[17] =  {
           s_t(1.00000000000000000000E0),
           s_t(9.57603280698573700036E-1),
           s_t(9.17004043204671215328E-1),
@@ -194,7 +191,7 @@ namespace boost { namespace simd
           s_t(5.45253866332628844837E-1),
           s_t(5.22136891213706877402E-1),
           s_t(5.00000000000000000000E-1)
-        }};
+        };
       return  A[i]; //load<A0>(A.begin(), i); //A[i];
     }
 
@@ -203,17 +200,17 @@ namespace boost { namespace simd
       /* continuation, for even i only
        * 2^(i/16)  =  A[i] + B[i/2]
        */
-      static const boost::array < s_t, 9> B = {{
-          s_t( 0.00000000000000000000E0),
-          s_t( 1.64155361212281360176E-17),
-          s_t( 4.09950501029074826006E-17),
-          s_t( 3.97491740484881042808E-17),
-          s_t(-4.83364665672645672553E-17),
-          s_t( 1.26912513974441574796E-17),
-          s_t( 1.99100761573282305549E-17),
-          s_t(-1.52339103990623557348E-17),
-          s_t( 0.00000000000000000000E0)
-        }};
+       const s_t B[9] =  {
+         s_t( 0.00000000000000000000E0),
+         s_t( 1.64155361212281360176E-17),
+         s_t( 4.09950501029074826006E-17),
+         s_t( 3.97491740484881042808E-17),
+         s_t(-4.83364665672645672553E-17),
+         s_t( 1.26912513974441574796E-17),
+         s_t( 1.99100761573282305549E-17),
+         s_t(-1.52339103990623557348E-17),
+         s_t( 0.00000000000000000000E0)
+        };
       return  B[i]; //load<A0>(B.begin(), i);
     }
 
