@@ -2,7 +2,6 @@
 /*!
   @file
 
-  @copyright 2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
   @copyright 2015 NumScale SAS
   @copyright 2015 J.T. Lapreste
 
@@ -13,6 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_SQRT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_SQRT_HPP_INCLUDED
 
+#include <boost/simd/detail/assert_utils.hpp>
 #include <boost/simd/function/if_else_zero.hpp>
 #include <boost/simd/function/is_gez.hpp>
 #include <boost/simd/function/multiplies.hpp>
@@ -39,6 +39,7 @@ namespace boost { namespace simd { namespace ext
           return if_else_zero(a0, a0 * rsqrt(a0, f));
     }
   };
+
   BOOST_DISPATCH_OVERLOAD ( sqrt_
                           , (typename A0)
                           , bd::cpu_
@@ -48,7 +49,22 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0, fast_tag const& ) const BOOST_NOEXCEPT
     {
-          return sqrt(a0);
+      return sqrt(a0);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( sqrt_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::generic_< bd::integer_<A0> >
+                          , boost::simd::assert_tag
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, assert_tag const& ) const BOOST_NOEXCEPT
+    {
+      BOOST_ASSERT_MSG(bs::assert_all(is_positive(a0)),
+                       "sqrt integer domain is restricted to positive integer.");
+      return sqrt(a0);
     }
   };
 } } }

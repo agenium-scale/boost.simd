@@ -101,6 +101,37 @@ set ( SOURCES
   valmax.cpp
   valmin.cpp
   zero.cpp
+#exponential
+  euler.cpp
+  exp_1.cpp
+  expnibig.cpp
+  invexp_1.cpp
+  invlog10_2.cpp
+  invlog_10.cpp
+  invlog_2.cpp
+  log10_2hi.cpp
+  log10_2lo.cpp
+  log10_ehi.cpp
+  log10_elo.cpp
+  log_10.cpp
+  log2_e.cpp
+  log2_em1.cpp
+  log_2hi.cpp
+  log_2.cpp
+  log_2lo.cpp
+  log_2olog_10.cpp
+  maxlog10.cpp
+  maxlog2.cpp
+  maxlog.cpp
+  minlog10.cpp
+minlog2.cpp
+minlog.cpp
+mlog10two2nmb.cpp
+mlog2two2nmb.cpp
+mlogtwo2nmb.cpp
+powlargelim.cpp
+powlowlim.cpp
+twotomnmbo_3.cpp
   )
 
 make_unit( "boost.simd.constant.scalar"     ${SOURCES})

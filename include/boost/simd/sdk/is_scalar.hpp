@@ -34,6 +34,8 @@ namespace boost { namespace simd
   template<typename T>
   struct is_scalar : bd::models_t<T, bd::scalar_<bd::unspecified_<brigand::_1>> >
   {};
+  template<typename T>
+  using is_scalar_t = typename is_scalar<T>::type;
 } }
 
 #endif

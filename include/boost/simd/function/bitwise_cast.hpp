@@ -1,7 +1,6 @@
 //==================================================================================================
 /*!
   @file
-
   Copyright 2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
   Copyright 2015 NumScale SAS
   Copyright 2015 J.T.Lapreste
