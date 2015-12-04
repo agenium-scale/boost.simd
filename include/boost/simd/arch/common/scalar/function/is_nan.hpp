@@ -12,6 +12,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_NAN_HPP_INCLUDED
 
 #include <boost/simd/logical.hpp>
+#include <boost/simd/options.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>
@@ -19,6 +20,7 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
   BOOST_DISPATCH_OVERLOAD ( is_nan_
                           , (typename A0)
                           , bd::cpu_
@@ -59,7 +61,7 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0)
                           , bd::cpu_
                           , bd::scalar_< bd::floating_<A0> >
-                          , boost::simd::std_tag
+                          , bs::std_tag
                           )
   {
     BOOST_FORCEINLINE bool operator() ( A0 a0

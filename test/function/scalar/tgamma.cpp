@@ -44,13 +44,13 @@ STF_CASE_TPL (" gamma",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(tgamma(bs::Mzero<T>()), bs::Minf<r_t>(), 0);
   STF_ULP_EQUAL(tgamma(bs::Halfeps<T>()), tgamma(bs::Halfeps<T>(), bs::std_), 0.5);
   STF_ULP_EQUAL(tgamma(bs::Eps<T>()), tgamma(bs::Eps<T>(), bs::std_), 0.5);
-  STF_ULP_EQUAL(tgamma(bs::Half<T>()), tgamma(bs::Half<T>(), bs::std_), 0);
+  STF_ULP_EQUAL(tgamma(bs::Half<T>()), tgamma(bs::Half<T>(), bs::std_), 0.5);
   STF_ULP_EQUAL(tgamma(T(1.5)), tgamma(T(1.5), bs::std_), 0);
   STF_ULP_EQUAL(tgamma(T(2.5)), tgamma(T(2.5), bs::std_), 0.5);
   STF_ULP_EQUAL(tgamma(T(13.5)) , tgamma(T(13.5), bs::std_), 15);
   STF_ULP_EQUAL(tgamma(T(-0.1)),           tgamma(T(-0.1), bs::std_),         0.5);
   STF_ULP_EQUAL(tgamma(-bs::Half<T>()),    tgamma(-bs::Half<T>(), bs::std_),  0.5);
   STF_ULP_EQUAL(tgamma(-bs::Halfeps<T>()), tgamma(-bs::Halfeps<T>(), bs::std_), 0);
-  STF_ULP_EQUAL(tgamma(T(-27.5)),            tgamma(T(-27.5), bs::std_),            3);
+  STF_ULP_EQUAL(tgamma(T(-27.5)),            tgamma(T(-27.5), bs::std_),            3.5);
 }
 

@@ -38,6 +38,8 @@ namespace boost { namespace simd
     but not equivalent because pow cannot raise a negative base to a fractional exponent.
     we have for all non Nan floating values cbrt(-x) = -cbrt(x).
 
+    cbrt(x, std_) calls std::cbrt from stdlibc++
+
     @see pow, sqrt
 
     @return a value of the same type as the parameter

@@ -36,7 +36,7 @@ namespace boost { namespace simd
     @endcode
 
     @par Note:
-    provisions are made for otaining a flint result from a flint input
+    provisions are made to obtain a flint result from a flint input
 
     @see exp, exp10, pow, pow2
 

@@ -77,7 +77,7 @@ namespace boost { namespace simd { namespace ext
         if (is_nez(res))
         {
           parity = is_odd(y1);
-          fact = -Pi<A0>()/sinpi(res, bs::small_); // res is between 0 and 1
+          fact = -Pi<A0>()/sinpi(res, bs::tag::small_); // res is between 0 and 1
           y =  inc(y);
         }
         else

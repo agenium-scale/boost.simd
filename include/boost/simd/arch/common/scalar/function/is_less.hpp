@@ -11,6 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_LESS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_LESS_HPP_INCLUDED
 
+#include <boost/simd/options.hpp>
 #include <boost/simd/logical.hpp>
 #include <boost/dispatch/adapted/std/integral_constant.hpp>
 #include <boost/dispatch/function/overload.hpp>
@@ -19,6 +20,7 @@
 
 namespace boost { namespace simd { namespace ext
 {
+  namespace bs = boost::simd;
   namespace bd = boost::dispatch;
   BOOST_DISPATCH_OVERLOAD ( is_less_
                           , (typename A0)

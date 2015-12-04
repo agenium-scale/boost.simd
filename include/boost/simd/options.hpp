@@ -58,8 +58,6 @@ namespace boost { namespace simd
 
   const throw_tag throw_ = {};
 
- /// selection tag for accssing to stdlibc++ versions
-
   struct std_tag
   {
     using parent = std_tag;
@@ -67,8 +65,6 @@ namespace boost { namespace simd
   };
 
   const std_tag std_ = {};
-
-
 } }
 
 #endif
