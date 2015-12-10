@@ -37,12 +37,12 @@ namespace boost { namespace simd { namespace ext
   };
 
   BOOST_DISPATCH_OVERLOAD ( fms_
-                          , (typename A0)
+                          , (typename A0, typename TAG)
                           , bd::cpu_
                           , bd::generic_< bd::unspecified_<A0> >
                           , bd::generic_< bd::unspecified_<A0> >
                           , bd::generic_< bd::unspecified_<A0> >
-                          , bd::scalar<unspecified_<TAG>>
+                          , bd::scalar_<bd::unspecified_<TAG>>
                           )
   {
     BOOST_FORCEINLINE
