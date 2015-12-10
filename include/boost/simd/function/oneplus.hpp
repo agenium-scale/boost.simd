@@ -32,12 +32,16 @@ namespace boost { namespace simd
     The code is similar to:
 
     @code
-    T r = (x == Valmax) ? x : 1+x
+    T r = (x == Valmax) ? x : inc(x)
     @endcode
 
-    @see raw_rec
+    @see inc, plus, adds
 
-    @return      a value of the same type as the input.
+    @par Alias
+
+    incs
+
+    @return a value of the same type as the input.
 
 
 **/

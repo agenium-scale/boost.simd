@@ -19,7 +19,8 @@ namespace boost { namespace simd
 
     @ingroup group-arithmetic
 
-    Returns \f$10^n\f$ in the floating type  corresponding to A0
+    Returns \f$10^n\f$ in the floating type associated to
+    the integral type of parameter n
 
     @par semantic:
     For any given value n  of integral type @c I

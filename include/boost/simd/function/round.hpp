@@ -36,11 +36,11 @@ namespace boost { namespace simd
 
     @par Note:
 
-    n > 0: round to n digits to the right of the decimal point.
+    - n > 0: round to n digits to the right of the decimal point.
 
-    n = 0: round to the nearest integer.
+    - n = 0: round to the nearest integer.
 
-    n < 0: round to n digits to the left of the decimal point.
+    - n < 0: round to n digits to the left of the decimal point.
 
     aways from 0 means that half integer values are rounded to the nearest
     integer of greatest absolute value

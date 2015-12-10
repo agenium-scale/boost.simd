@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     True or false according to the bit of sign set or not set.
 
-    This is a convenient alias of @ref is_negative.
+    This is a convenience alias of @ref is_negative used by stdlibc++.
   **/
   template<typename T> auto signbit(T const& x) {}
 
