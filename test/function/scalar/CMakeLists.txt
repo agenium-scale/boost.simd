@@ -364,6 +364,8 @@ set ( SOURCES
    tan.cpp
    tanpi.cpp
 #aliases
+   decs.cpp
+   incs.cpp
    fabs.cpp
    modulus.cpp
    b_and.cpp

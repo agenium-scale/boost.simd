@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_MODULUS_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_MODULUS_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_INCS_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_INCS_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
@@ -18,31 +18,30 @@ namespace boost { namespace simd
   /*!
   @ingroup group-arithmetic
 
-    Computes the absolute value of its parameter.
+    Returns the entry plus one, saturated in the entry type.
 
     This is a convenient alias of @ref abs
   **/
-  template<typename T> auto modulus(T const& x) {}
+  template<typename T> auto incs(T const& x) {}
 
   namespace functional
   {
     /*!
       @ingroup group-callable-arithmetic
 
-      Computes the absolute value of its parameter.
+      Returns the entry plus one, saturated in the entry type.
 
+      Function object tied to simd::incs
 
-      Function object tied to simd::modulus
-
-      @see simd::modulus
+      @see simd::incs
     **/
-    const boost::dispatch::functor<tag::modulus_> modulus = {};
+    const boost::dispatch::functor<tag::incs_> incs = {};
   }
 } }
 #endif
 
-#include <boost/simd/function/definition/modulus.hpp>
-#include <boost/simd/arch/common/scalar/function/abs.hpp>
-#include <boost/simd/function/simd/modulus.hpp>
+#include <boost/simd/function/definition/incs.hpp>
+#include <boost/simd/arch/common/generic/function/oneplus.hpp>
+//#include <boost/simd/function/simd/incs.hpp>
 
 #endif
