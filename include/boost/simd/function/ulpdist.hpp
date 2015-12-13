@@ -63,7 +63,7 @@ namespace boost { namespace simd
     The roundind error is the ulp (unit in the last place) value, i.e. the
     floating number, the exponent of which is 0 and the mantissa is all zeros
     but a 1 in the last digit (it is not hard coded that way however).
-    This means \f$2^-23\f$ for float and \f$2^-52\f$ for double.
+    This means \f$2^{-23}\f$ for float and \f$2^{-52}\f$ for double.
 
     \arg For instance if two floating numbers (of same type) have an ulpdist of
     @ref Zero that means that their floating representation are identical or they are
@@ -76,9 +76,9 @@ namespace boost { namespace simd
 
     \arg Typically if a double is compared to the float representation of
     its floating conversion (they are exceptions as for fully representable
-    reals) the ulpdist will be around 2^26.5 (~10^8)
+    reals) the ulpdist will be around \f$2^26.5\f$ (~\f$10^8\f$)
 
-    \arg The ulpdist is also roughly equivalent to the number of representable
+    \arg The integer truncation of ulpdist is also roughly equivalent to the number of representable
     floating points values between two given floating points values.
 
     \arg  @c ulpdist(1.0,1+Eps\<double\>())==0.5

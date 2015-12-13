@@ -27,7 +27,7 @@ namespace boost { namespace simd
     If you want the standard behaviour which return an int in scalar mode you
     can call fpclassify(x, std_).
 
-    fpclassify returns a value of type int that matches one of the classification
+    fpclassify returns a value of integral type that matches one of the classification
     macro constants, depending on the value of x:
 
     value description:

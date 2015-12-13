@@ -33,7 +33,7 @@ namespace boost { namespace simd
     T r =  x-trunc(x);
     @endcode
 
-    @see trunc
+    @see trunc,  modf
 
     @return a value of same type as the input
 
