@@ -2,7 +2,7 @@
 /*!
   @file
 
-  Defines various macro for controlling math functions behavior
+  Defines various macro for controlling Boost.SIMD behavior
 
   @copyright 2012 - 2015 NumScale SAS
 
@@ -13,6 +13,13 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_CONFIG_HPP_INCLUDED
 #define BOOST_SIMD_CONFIG_HPP_INCLUDED
+
+// Setup the dispatch default architecture
+#if !defined(BOOST_DISPATCH_DEFAULT_SITE)
+#  include <boost/simd/arch.hpp>
+#  define BOOST_DISPATCH_DEFAULT_SITE BOOST_SIMD_DEFAULT_SITE
+#  include <boost/dispatch/hierarchy/default_site.hpp>
+#endif
 
 #if defined(__FAST_MATH__) && !defined(BOOST_SIMD_FAST_MATH) || defined(DOXYGEN_ONLY)
 

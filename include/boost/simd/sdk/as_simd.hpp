@@ -14,6 +14,7 @@
 #ifndef BOOST_SIMD_SDK_AS_SIMD_HPP_INCLUDED
 #define BOOST_SIMD_SDK_AS_SIMD_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/simd/arch/spec.hpp>
 
 namespace boost { namespace simd

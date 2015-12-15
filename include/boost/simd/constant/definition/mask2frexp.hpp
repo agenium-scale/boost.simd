@@ -10,7 +10,8 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_CONSTANT_DEFINITION_MASK2FREXP_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_DEFINITION_MASK2FREXP_HPP_INCLUDED
-//TODO
+
+#include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/detail/constant_traits.hpp>

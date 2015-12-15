@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_AS_HPP_INCLUDED
 #define BOOST_SIMD_AS_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/dispatch/as.hpp>
 
 namespace boost { namespace simd

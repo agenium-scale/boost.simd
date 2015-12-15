@@ -16,6 +16,9 @@
 int main(int argc, const char** argv)
 {
   std::cout << "CTEST_FULL_OUTPUT\n";
+  std::cout << "Compiled for: "
+            << stf::type_id<BOOST_DISPATCH_DEFAULT_SITE>()
+            << "\n";
   return simd_test(argc,argv);
 }
 

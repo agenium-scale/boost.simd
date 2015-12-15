@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_CARDINAL_OF_HPP_INCLUDED
 #define BOOST_SIMD_CARDINAL_OF_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/core/ignore_unused.hpp>
 #include <boost/config.hpp>
 #include <type_traits>
