@@ -16,7 +16,7 @@
 
 // Setup the dispatch default architecture
 #if !defined(BOOST_DISPATCH_DEFAULT_SITE)
-#  include <boost/simd/arch.hpp>
+#  include <boost/simd/arch/spec.hpp>
 #  define BOOST_DISPATCH_DEFAULT_SITE BOOST_SIMD_DEFAULT_SITE
 #  include <boost/dispatch/hierarchy/default_site.hpp>
 #endif
