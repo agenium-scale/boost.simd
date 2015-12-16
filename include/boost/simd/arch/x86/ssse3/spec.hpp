@@ -23,7 +23,7 @@
   #define BOOST_SIMD_DEFAULT_FAMILY  ::boost::simd::sse_
 #endif
 
-#define BOOST_SIMD_DEFAULT_SITE       ::boost::simd::sss3e_
+#define BOOST_SIMD_DEFAULT_SITE       ::boost::simd::ssse3_
 
 #include <tmmintrin.h>
 #include <boost/simd/arch/x86/sse2/as_simd.hpp>
