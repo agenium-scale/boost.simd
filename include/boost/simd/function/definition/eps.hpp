@@ -13,14 +13,12 @@
 #define BOOST_SIMD_FUNCTION_DEFINITION_EPS_HPP_INCLUDED
 
 #include <boost/simd/constant/definition/eps.hpp>
+#include <boost/dispatch/function/make_callable.hpp>
 #include <boost/dispatch/hierarchy/functions.hpp>
-
 
 namespace boost { namespace simd
 {
-
- BOOST_DISPATCH_FUNCTION_DEFINITION(tag::eps_, eps);
-
+  BOOST_DISPATCH_FUNCTION_DEFINITION(tag::eps_, eps);
 } }
 
 #endif

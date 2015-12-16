@@ -51,6 +51,7 @@ namespace boost { namespace simd
 } }
 #endif
 
+#include <boost/simd/function/definition/eps.hpp>
 #include <boost/simd/function/scalar/eps.hpp>
 #include <boost/simd/function/simd/eps.hpp>
 
