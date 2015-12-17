@@ -17,6 +17,8 @@
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/mzero.hpp>
+#include <boost/simd/constant/pi.hpp>
+#include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/pio_4.hpp>
 #include <boost/simd/constant/pio_2.hpp>
 #include <boost/simd/constant/threepio_4.hpp>
