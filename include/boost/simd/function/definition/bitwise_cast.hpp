@@ -13,6 +13,7 @@
 #ifndef BOOST_SIMD_FUNCTION_DEFINITION_BITWISE_CAST_INCLUDED
 #define BOOST_SIMD_FUNCTION_DEFINITION_BITWISE_CAST_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/dispatch/function/make_callable.hpp>
 #include <boost/dispatch/hierarchy/functions.hpp>
 #include <boost/dispatch/as.hpp>

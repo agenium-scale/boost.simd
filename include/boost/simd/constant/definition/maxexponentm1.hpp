@@ -12,13 +12,14 @@
 #ifndef BOOST_SIMD_CONSTANT_DEFINITION_MAXEXPONENTM1_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_DEFINITION_MAXEXPONENTM1_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/detail/constant_traits.hpp>
 #include <boost/dispatch/function/make_callable.hpp>
 #include <boost/dispatch/hierarchy/functions.hpp>
 #include <boost/dispatch/as.hpp>
-//sa
+
 namespace boost { namespace simd
 {
   namespace tag

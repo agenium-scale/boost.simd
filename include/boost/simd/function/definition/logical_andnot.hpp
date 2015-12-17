@@ -13,6 +13,7 @@
 #ifndef BOOST_SIMD_FUNCTION_DEFINITION_LOGICAL_ANDNOT_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_DEFINITION_LOGICAL_ANDNOT_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/dispatch/function/make_callable.hpp>
 #include <boost/dispatch/hierarchy/functions.hpp>
 #include <boost/simd/detail/dispatch.hpp>

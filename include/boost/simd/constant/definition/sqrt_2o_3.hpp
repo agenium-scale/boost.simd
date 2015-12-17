@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_CONSTANT_DEFINITION_SQRT_2O_3_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_DEFINITION_SQRT_2O_3_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/detail/constant_traits.hpp>

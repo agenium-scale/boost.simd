@@ -13,6 +13,7 @@
 #ifndef BOOST_SIMD_FUNCTION_DEFINITION_SPLAT_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_DEFINITION_SPLAT_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/simd/as.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/dispatch/function/make_callable.hpp>

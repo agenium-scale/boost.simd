@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_CONSTANT_DEFINITION_MINF_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_DEFINITION_MINF_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/detail/constant_traits.hpp>
@@ -20,7 +21,6 @@
 #include <boost/dispatch/hierarchy/functions.hpp>
 #include <boost/dispatch/as.hpp>
 
-//TODO link it to valmin  for integers if possible to avoid duplication
 namespace boost { namespace simd
 {
   namespace tag
