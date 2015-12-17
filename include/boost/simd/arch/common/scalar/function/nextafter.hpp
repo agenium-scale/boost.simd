@@ -24,18 +24,21 @@
 #include <cmath>
 
 namespace boost { namespace simd {
-  namespace detail
-  {
-    template<typename T>
-    BOOST_FORCEINLINE T nextafter(T x, T y)
-    {
-      if (y >  x)  return next(x);
-      else if (y <  x)  return prev(x);
-      else if (y == x)  return x;
-  }
-
   namespace ext
   {
+    namespace bd = boost::dispatch;
+    BOOST_DISPATCH_OVERLOAD ( nextafter_
+                            , (typename A0)
+                            , bd::cpu_
+                            , bd::scalar_< bd::floating_<A0> >
+                            , bd::scalar_< bd::floating_<A0> >
+                            )
+    {
+      BOOST_FORCEINLINE A0 operator() ( A0 x, A0 y) const BOOST_NOEXCEPT
+      {
+        return  (y >  x)  ? next(x) : ((y <  x) ?  prev(x) : x);
+      }
+    };
     namespace bd = boost::dispatch;
     BOOST_DISPATCH_OVERLOAD ( nextafter_
                             , (typename A0)

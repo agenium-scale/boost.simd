@@ -18,10 +18,8 @@
 #include <boost/simd/function/is_not_less.hpp>
 #include <boost/simd/function/logical_or.hpp>
 #include <boost/simd/logical.hpp>
-//#include <boost/simd/constant/true.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
-//TODO LOGICAL
 
 namespace boost { namespace simd { namespace ext
 {
@@ -46,7 +44,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE logical<A0> operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      return logical_or(is_eqz(a0), is_not_less(simd::abs(a0), Smallestposval<A0>()));
+      return is_eqz(a0) || is_not_less(simd::abs(a0), Smallestposval<A0>());
     }
   };
 } } }
