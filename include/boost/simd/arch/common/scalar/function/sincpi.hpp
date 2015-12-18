@@ -12,6 +12,17 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_SINCPI_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_SINCPI_HPP_INCLUDED
 
+#if !defined(BOOST_SIMD_NO_DENORMALS)
+#include <boost/simd/constant/eps.hpp>
+#include <boost/simd/function/scalar/abs.hpp>
+#endif
+#if !defined(BOOST_SIMD_NO_INFINITIES)
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/function/scalar/is_inf.hpp>
+#endif
+#include <boost/simd/constant/invpi.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/function/scalar/sinpi.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
@@ -19,7 +30,28 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
+  BOOST_DISPATCH_OVERLOAD ( sincpi_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::floating_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
+    {
+      #if !defined(BOOST_SIMD_NO_INFINITIES)
+      if(is_inf(a0)) return Zero<A0>();
+      #endif
 
+      #if !defined(BOOST_SIMD_NO_DENORMALS)
+      return (abs(a0) < Eps<A0>())
+        ? One<A0>()
+        : Invpi<A0>()*sinpi(a0)/a0;
+      #else
+      return a0 ? Invpi<A0>()*sinpi(a0)/a0
+                : One<A0>();
+      #endif
+    }
+  };
 } } }
 
 
