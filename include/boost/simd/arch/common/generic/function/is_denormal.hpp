@@ -18,7 +18,6 @@
 #include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/function/logical_and.hpp>
 #include <boost/simd/logical.hpp>
-//#include <boost/simd/constant/false.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
