@@ -16,9 +16,26 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-hyperbolic
+    @ingroup group-trigonometric
 
-    Computes sincpi value of its parameter.
+    Computes the sinpi cardinal  value of its parameter that is sin(Pi*x)/(Pi*x).
+    @par Semantic:
+
+    For every parameter of floating type T
+
+    @code
+    T r = sincpi(x);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = x ? sinpi(x)/(Pi<T>()*x) : One;
+    @endcode
+
+    @see sin, sinc, sinhc
+
+    @return a value of the same type as the parameter
 
   **/
   template<typename T> auto sincpi(T const& x) {}
@@ -26,7 +43,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-callable-hyperbolic
+      @ingroup group-callable-trigonometric
 
       Function object tied to simd::sincpi
 

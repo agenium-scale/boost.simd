@@ -37,15 +37,17 @@ namespace boost { namespace simd
 
     as it is quadrant aware.
 
-    For any real arguments @c x and @c y not both equal to zero, <tt>atan2(y, xy)</tt>
+    @par Notes
+
+    - For any real arguments @c x and @c y not both equal to zero, <tt>atan2(y, xy)</tt>
     is the angle in radians between the positive x-axis of a plane and the point
     given by the coordinates  <tt>(y,x)</tt>.
 
-    It is also the angle in \f$[-\pi,\pi[\f$ for which
+    - It is also the angle in \f$[-\pi,\pi[\f$ for which
     \f$x/\sqrt{x^2+y^2}\f$ and \f$y/\sqrt{x^2+y^2}\f$
     are respectively the sine and the cosine.
 
-    Following IEEE norms
+    - Following IEEE norms
      -  If y is \f$\pm0\f$ and x is negative or -0,\f$\pm\pi\f$ is returned
      -  If y is \f$\pm0\f$ and x is positive or +0, \f$\pm0\f$ is returned
      -  If y is \f$\pm\infty\f$ and x is finite, \f$\pm\pi/2\f$ is returned
@@ -59,9 +61,11 @@ namespace boost { namespace simd
      -  If x is \f$+\infty\f$ and y is finite and negative, -0 is returned
      -  If either x is Nan or y is Nan, Nan is returned
 
-     If you want to gain some cycles a fast_ tag is provided. If you use it pairs (x, y)
+    - If you want to gain some cycles a fast_ tag is provided. If you use it pairs (x, y)
      where both are null or both are infinite will produce a Nan result which in fact
      is not more absurd than the IEEE choices and will be conforming in all other cases.
+
+    - atan(x, y, std_) use the call to std::atan2 from stdlibc++
 
   @see atan, atand, atanpi
 

@@ -230,6 +230,7 @@ set ( SOURCES
    is_not_real.cpp
    is_odd.cpp
    is_ord.cpp
+   is_lessgreater.cpp
    is_positive.cpp
    is_real.cpp
    is_unord.cpp
