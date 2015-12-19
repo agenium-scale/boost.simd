@@ -36,6 +36,7 @@
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
+#include <iostream>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -50,9 +51,12 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
       using i_t = bd::as_integer_t<A0>;
+      std::cout << "a0 " << a0 << std::endl;
       A0 xr;
-      i_t n = rem_pio2(a0, xr);
+      i_t n = bs::rem_pio2(a0, xr);
+      std::cout << "xr " << xr << std::endl;
       xr = xr+tofloat(n)*Pio_2<A0>();
+      std::cout << "xr " << xr << std::endl;
       return if_else((xr > Pi<A0>()), xr-Twopi<A0>(), xr);
     }
 

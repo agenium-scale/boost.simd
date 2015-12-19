@@ -58,7 +58,8 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE result_t operator() ( A0 const& a0,
                                             A0 & xr) const BOOST_NOEXCEPT
     {
-      return rem_pio2(a0, xr);
+      A0 xc;
+      return rem_pio2(a0, xr, xc);
     }
   };
 
