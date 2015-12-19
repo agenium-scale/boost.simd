@@ -23,7 +23,7 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of type T0, T1:
+    For every parameters of type T0, T1 of same bit size:
 
     @code
     logical<scalar_of_t<T0>> r = is_included(x,y);

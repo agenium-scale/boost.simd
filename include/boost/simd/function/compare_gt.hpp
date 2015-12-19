@@ -22,7 +22,7 @@ namespace boost { namespace simd
     return a bool that is the result of the lexicographic
     test for > on all elements of the entries
 
-    It is probably not what you wish. Have a look to is_greater
+    It is probably not what you wish. Have a look to @ref is_greater
 
     This is a convenient alias of @ref compare_greater
 **/
