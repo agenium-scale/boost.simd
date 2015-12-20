@@ -29,7 +29,7 @@ namespace boost { namespace simd
     T r = gamma(x);
     @endcode
 
-    @see gammac
+    @see gammaln
 
     @return a value of the same type as the parameter
 

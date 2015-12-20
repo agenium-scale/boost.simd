@@ -33,7 +33,10 @@ namespace boost { namespace simd
   T0 r = oneminus(erf(x));
   @endcode
 
-  @see erf,  oneminus
+
+  erfc(x, std_) use the call to std::erfc from stdlibc++
+
+  @see erf, erfcx, oneminus
 
   @return a value of the same type as the parameter
 

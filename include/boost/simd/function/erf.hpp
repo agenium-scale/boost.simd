@@ -29,7 +29,10 @@ namespace boost { namespace simd
     T r = erf(x);
     @endcode
 
-    @see erfc
+
+    erf(x, std_) use the call to std::erf from stdlibc++
+
+    @see erfc,  erfcx
 
     @return a value of the same type as the parameter
 
