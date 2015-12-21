@@ -36,18 +36,28 @@ namespace boost { namespace simd
     T r = log(gamma(abs(x)));
     @endcode
 
-    @par Note
+    @par Notes
 
-    The accuracy of the function is not uniformly good for negative entries
-    The algorithm used is currently an adapted vesion of the cephes one.
-    For better accuracy in the negative entry case one can use the extern
-    boost_math gammaln functor but at a loss of speed.
+    - The accuracy of the function is not uniformly good for negative entries
+      The algorithm used is currently an adapted vesion of the cephes one.
+      For better accuracy in the negative entry case one can use the extern
+      boost_math gammaln functor but at a loss of speed.
 
-    However,  as stated in boost math:
+      However,  as stated in boost math:
 
       "While the relative errors near the positive roots of lgamma are very low,
        the  function has an infinite number of irrational roots for negative arguments:
        very close to these negative roots only a low absolute error can be guaranteed."
+
+    - The call gammaln(x, sgn) also returns the sign of gamma in the output parameter sgn.
+
+    - The call  gammaln(x, std_) uses std::lgamma to compute the value.
+
+       Be aware that POSIX version of lgamma is not thread-safe: each execution of the function
+       stores the sign of the gamma function of x in the static external variable signgam. boost.simd
+       also provides @ref signgam which independantly computes the sign.
+
+       @see gamma, signgam
 
     @return a value of the same type as the parameter
 

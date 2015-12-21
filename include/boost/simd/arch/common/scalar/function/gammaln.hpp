@@ -186,6 +186,19 @@ namespace boost { namespace simd { namespace ext
       return q;
     }
   };
+  BOOST_DISPATCH_OVERLOAD ( gammaln_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bs::std_tag
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() (A0 a0, A0&sgn) const BOOST_NOEXCEPT
+    {
+      sgn = signgam(a0)
+      return std::lgamma(a0);
+    }
+  };
 
   BOOST_DISPATCH_OVERLOAD ( gammaln_
                           , (typename A0)

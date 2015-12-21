@@ -34,6 +34,7 @@ namespace boost { namespace simd
     T0 r = sign(gamma(x));
     @endcode
 
+    signgam does not computes @ref gamma and is fast.
 
     @see gamma,  gammaln
 
