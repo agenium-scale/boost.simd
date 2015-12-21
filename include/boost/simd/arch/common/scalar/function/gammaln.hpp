@@ -190,12 +190,12 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0)
                           , bd::cpu_
                           , bd::scalar_< bd::floating_<A0> >
-                          , bs::std_tag
+                          , bd::scalar_< bd::floating_<A0> >
                           )
   {
     BOOST_FORCEINLINE A0 operator() (A0 a0, A0&sgn) const BOOST_NOEXCEPT
     {
-      sgn = signgam(a0)
+      sgn = signgam(a0);
       return std::lgamma(a0);
     }
   };
