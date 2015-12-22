@@ -18,9 +18,9 @@ namespace boost { namespace simd
   /*!
   @ingroup group-arithmetic
 
-    Returns the one minus the entry, saturated in the entry type.
+    Returns the entry minus 1, saturated in the entry type.
 
-    This is a convenient alias of @ref oneminus
+    This is a convenient alias of @ref minusone
   **/
   template<typename T> auto decs(T const& x) {}
 
@@ -29,10 +29,10 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-arithmetic
 
-      Returns the one minus the entry, saturated in the entry type.
+      Returns the entry minus 1, saturated in the entry type.
 
 
-      Function object tied to simd::oneminus
+      Function object tied to simd::minusone
 
       @see simd::decs
     **/
@@ -42,7 +42,7 @@ namespace boost { namespace simd
 #endif
 
 #include <boost/simd/function/definition/decs.hpp>
-#include <boost/simd/arch/common/generic/function/oneminus.hpp>
+#include <boost/simd/arch/common/scalar/function/minusone.hpp>
 #include <boost/simd/function/simd/decs.hpp>
 
 #endif

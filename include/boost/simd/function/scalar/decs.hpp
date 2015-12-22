@@ -14,6 +14,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_DECS_HPP_INCLUDED
 
 #include <boost/simd/function/definition/decs.hpp>
-//#include <boost/simd/arch/common/scalar/function/oneminus.hpp>
+#include <boost/simd/arch/common/scalar/function/minusone.hpp>
 
 #endif

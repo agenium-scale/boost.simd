@@ -13,14 +13,14 @@
 #ifndef BOOST_SIMD_FUNCTION_DEFINITION_DECS_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_DEFINITION_DECS_HPP_INCLUDED
 
-#include <boost/simd/function/definition/oneminus.hpp>
+#include <boost/simd/function/definition/minusone.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 
 namespace boost { namespace simd
 {
   namespace tag
   {
-    using decs_ = oneminus_;
+    using decs_ = minusone_;
   }
 
   namespace functional
