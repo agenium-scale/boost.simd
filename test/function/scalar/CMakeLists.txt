@@ -390,6 +390,7 @@ set ( SOURCES
    if_allbits_else_zero.cpp
    if_nan_else.cpp
    if_else_nan.cpp
+   pluss.cpp
    where.cpp
    select.cpp
    sel.cpp
