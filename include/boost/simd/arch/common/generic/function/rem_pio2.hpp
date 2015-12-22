@@ -43,7 +43,7 @@ namespace boost { namespace simd { namespace ext
     {
       A0 second, third;
       itype const first = rem_pio2(a0, second,third);
-      return {first, second, third};
+      return result_t(first, second, third); //brace constructor is explicit in copy initialisation.
     }
   };
 
