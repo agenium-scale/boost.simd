@@ -23,9 +23,9 @@ namespace boost { namespace simd { namespace ext
   namespace bs = boost::simd;
   BOOST_DISPATCH_OVERLOAD ( sech_
                           , (typename A0)
-                             , bd::cpu_
-                            , bd::generic_< bd::unspecified_<A0> >
-                            )
+                          , bd::cpu_
+                          , bd::generic_< bd::unspecified_<A0> >
+                          )
   {
     using result_t = A0;
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT

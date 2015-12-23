@@ -27,8 +27,7 @@ namespace boost { namespace simd { namespace ext
                             , bd::generic_< bd::unspecified_<A0> >
                             )
   {
-    using result_t = A0;
-    A0 operator() ( A0 const& a0) const
+    BOOST_FORCEINLINE A0 operator() (A0 const& a0) const BOOST_NOEXCEPT
     {
       return bs::asinh(bs::rec(a0));
     }
