@@ -31,7 +31,7 @@ namespace boost { namespace simd { namespace ext
                             )
   {
     static_assert
-      ( bd::cardinal_of<A0>::value == bd::cardinal_of<A2>::value
+      ( bs::cardinal_of<A0>::value == bs::cardinal_of<A2>::value
       , "boost.simd cardinalities are inconsistent in frexp call"
       );
 
@@ -70,7 +70,7 @@ namespace boost { namespace simd { namespace ext
                             )
   {
     static_assert
-      ( bd::cardinal_of<A0>::value == bd::cardinal_of<A2>::value
+      ( bs::cardinal_of<A0>::value == bs::cardinal_of<A2>::value
       , "boost.simd cardinalities are inconsistent in frexp call"
       );
 

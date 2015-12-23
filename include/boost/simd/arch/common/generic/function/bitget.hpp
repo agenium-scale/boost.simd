@@ -28,6 +28,8 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
+
   BOOST_DISPATCH_OVERLOAD ( bitget_
                           , (typename A0, typename A1)
                           , bd::cpu_
@@ -38,7 +40,7 @@ namespace boost { namespace simd { namespace ext
     using result_t = bd::as_integer_t<A0, unsigned>;
 
     static_assert
-      ( bd::cardinal_of<A0>::value == bd::cardinal_of<A1>::value
+      ( bs::cardinal_of<A0>::value == bs::cardinal_of<A1>::value
       , "boost.simd cardinalities are inconsistent in biget call"
       );
 
