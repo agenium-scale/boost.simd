@@ -14,7 +14,6 @@
 
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/detail/brigand.hpp>
-#include <boost/simd/detail/make_dependent.hpp>
 #include <boost/simd/function/scalar/exponent.hpp>
 #include <boost/simd/function/scalar/is_gtz.hpp>
 #include <boost/simd/math.hpp>
@@ -35,18 +34,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0 ) const BOOST_NOEXCEPT
     {
-      return impl(a0, typename brigand::bool_<sizeof(A0) >= 4>::type());
-    }
-
-    static BOOST_FORCEINLINE A0 impl( A0  a0,  brigand::true_ const &) BOOST_NOEXCEPT
-    {
-      using f_t = bd::as_floating_t<A0> ;
-      return bs::ilogb(f_t(a0));
-    }
-     static BOOST_FORCEINLINE A0 impl( A0  a0,  brigand::false_ const &) BOOST_NOEXCEPT
-    {
-      using f_t = typename detail::make_dependent<float, A0>::type;
-      return bs::ilogb(f_t(a0));
+      return bs::ilogb(static_cast<bd::as_floating_t<A0>>(a0));
     }
   };
 
