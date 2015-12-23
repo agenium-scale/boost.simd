@@ -33,17 +33,6 @@ namespace boost { namespace simd { namespace ext
                             , bd::scalar_< bd::floating_<A0> >
                             )
   {
-    // Exhaustive test for: boost::dispatch::functor<bs::tag::atanh_, boost::simd::tag::sse4_2_>
-    //              versus: float(boost::simd::atanh(double))
-    //              With T: float
-    //            in range: [-1, 1]
-    // 2130706432 values computed.
-    // 1965486672 values (92.25%)  within 0.0 ULPs
-    //  165215696 values (7.75%) within 0.5 ULPs in range [-9.999999404e-01, 9.999999404e-01].
-    //            Example: -9.999999404e-01 returns -8.664339066e+00 instead of -8.664340019e+00
-    //       4064 values (0.00%) within 1.0 ULPs in range [-1.243482381e-01, 1.243482381e-01].
-    //            Example: -1.243482381e-01 returns -1.249951422e-01 instead of -1.249951646e-01
-
     BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
     {
       A0 absa0 = bs::abs(a0);

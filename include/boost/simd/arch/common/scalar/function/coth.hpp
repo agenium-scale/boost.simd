@@ -38,8 +38,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    using result_t = A0;
-    BOOST_FORCEINLINE result_t operator() (A0 a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
     {
       //////////////////////////////////////////////////////////////////////////////
       // if x = abs(a0) is less than 5/8 sinh is computed using a polynomial(float)
@@ -47,7 +46,7 @@ namespace boost { namespace simd { namespace ext
       // else
       // coth(a0) is  sign(a0)*(1 + 2/(exp(2*x)-1))
       //////////////////////////////////////////////////////////////////////////////
-      result_t x = bs::abs(a0);
+      A0 x = bs::abs(a0);
       A0 r;
       if( x < Ratio<A0, 5, 8>())
       {
