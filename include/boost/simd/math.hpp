@@ -19,7 +19,7 @@
 #endif
 
 // C99 / POSIX.1-2001
-#if (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L) || (defined(_POSIX_VERSION) && _POSIX_VERSION >= 200112L)
+#if (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L) || (defined(_POSIX_VERSION) && _POSIX_VERSION >= 200112L) || defined(__MINGW32__)
 #define BOOST_SIMD_HAS_TGAMMA
 #define BOOST_SIMD_HAS_TGAMMAF
 #define BOOST_SIMD_HAS_LGAMMA
