@@ -10,7 +10,7 @@
 //==================================================================================================
 #include <boost/simd/constant/log_10.hpp>
 #include <boost/simd/as.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 
 STF_CASE_TPL( "Check log_10 behavior for integral types"
             , (std::uint32_t)(std::uint64_t)
