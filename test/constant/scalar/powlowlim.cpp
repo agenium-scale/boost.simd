@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/constant/powlowlim.hpp>
 #include <boost/simd/as.hpp>
-#include <stf.hpp>
+#include <simd_test.hpp>
 
 STF_CASE_TPL( "Check powlowlim behavior for integral types"
             , (std::uint32_t)(std::uint64_t)
