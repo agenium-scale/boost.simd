@@ -54,8 +54,12 @@ namespace boost { namespace simd { namespace ext
       }
       #endif
       A0 z = detail::invtrig_base<A0,tag::radian_tag, tag::not_simd_type>::kernel_atan(a0/a1);
-      z = if_else(is_positive(a1), z, Pi<A0>()-z)*signnz(a0);
-      return if_else(is_eqz(a0), if_else_zero(is_negative(a1), Pi<A0>()*signnz(a0)), z);
+//      A0 bsa0 = bitofsign(a0);
+//       z = copysign(if_else(is_positive(a1), z, Pi<A0>()-z), a0);
+//       return if_else(is_eqz(a0), if_else_zero(is_negative(a1), copysign(Pi<A0>(), a0)), z);
+      A0 sgn = signnz(a0);
+      z = if_else(is_positive(a1), z, Pi<A0>()-z)*sgn;
+      return if_else(is_eqz(a0), if_else_zero(is_negative(a1), Pi<A0>()*sgn), z);
     }
   };
 
