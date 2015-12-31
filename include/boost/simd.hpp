@@ -161,7 +161,15 @@ namespace boost
       Those functions provides algorithms for computing exponentials and logarithms.
     **/
 
-    /// Boost.SIMD Callable Objects namespace
+     /*!
+      @ingroup group-functions
+      @defgroup group-hyperbolic Hyperbolic Functions
+
+      Those functions provides algorithms for computing hyperbolic and inverse hyperbolic
+      functions.
+    **/
+
+   /// Boost.SIMD Callable Objects namespace
     namespace functional {}
 
     /*!
@@ -275,6 +283,15 @@ namespace boost
 
       Their specific semantic limitations are similar to those of their function
       equivalents as described in the @ref group-exponential section.
+    **/
+
+    /*!
+      @ingroup group-callable
+      @defgroup group-callable-hyperbolic Hyperbolic Callable Objects
+      Callable objects version of @ref group-hyperbolic
+
+      Their specific semantic limitations are similar to those of their function
+      equivalents as described in the @ref group-hyperbolic section.
     **/
 
     /*!

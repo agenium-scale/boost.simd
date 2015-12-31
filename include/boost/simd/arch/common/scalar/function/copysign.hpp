@@ -12,11 +12,14 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_COPYSIGN_HPP_INCLUDED
 
 #include <boost/simd/function/scalar/abss.hpp>
+#include <boost/simd/function/scalar/bitwise_notand.hpp>
+#include <boost/simd/function/scalar/bitofsign.hpp>
 #include <boost/simd/function/scalar/signnz.hpp>
+#include <boost/simd/constant/signmask.hpp>
 #include <boost/simd/math.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
-#include <boost/math/special_functions/sign.hpp>
+
 
 namespace boost { namespace simd { namespace ext
 {
@@ -49,7 +52,7 @@ namespace boost { namespace simd { namespace ext
     #elif defined(BOOST_SIMD_HAS__COPYSIGN) && !defined(__MSVCRT__)
       return ::_copysign(a0, a1);
     #else
-      return boost::math::copysign(a0, a1);
+      return bitwise_or(bitofsign(a1), bitwise_notand(Signmask<A0>(), a0));
     #endif
     }
   };
@@ -68,7 +71,7 @@ namespace boost { namespace simd { namespace ext
     #elif defined(BOOST_SIMD_HAS__COPYSIGNF)
       return ::_copysignf(a0, a1);
     #else
-        return boost::math::copysign(a0, a1);
+       return bitwise_or(bitofsign(a1), bitwise_notand(Signmask<A0>(), a0));
     #endif
     }
   };
