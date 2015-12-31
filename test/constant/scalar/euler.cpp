@@ -33,7 +33,8 @@ STF_CASE_TPL( "Check euler behavior for floating types"
   using boost::simd::as;
   using boost::simd::functional::euler;
   using boost::simd::Euler;
-  T e = 0.5772156649015328606065120900821;
+  T e = static_cast<T>(0.5772156649015328606065120900821);
+
   STF_TYPE_IS(decltype(Euler<T>()), T);
   STF_IEEE_EQUAL(Euler<T>(), e);
   STF_IEEE_EQUAL(euler( as(T{}) ), e);
