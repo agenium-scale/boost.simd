@@ -9,6 +9,7 @@
 set ( SOURCES
 #memory
    extract.cpp
+   load.cpp
    splat.cpp
 #alias
    modulus.cpp
