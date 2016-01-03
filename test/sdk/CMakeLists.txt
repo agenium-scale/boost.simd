@@ -8,6 +8,8 @@
 
 set ( SOURCES
       as_logical.cpp
+      aligned.cpp
+      masked.cpp
       real_of.cpp
     )
 
