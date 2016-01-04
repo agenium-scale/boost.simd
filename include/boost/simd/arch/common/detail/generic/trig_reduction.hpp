@@ -169,6 +169,7 @@ namespace boost { namespace simd
       {
         if(all(is_0_pio4_reduced(xx)))
           return select_range(xx,xr,boost::mpl::true_(), r);
+
         return select_mode(xx,xr,boost::mpl::int_<tag::r_0_pio2>());
       }
 
@@ -202,6 +203,7 @@ namespace boost { namespace simd
       {
         if(all(is_0_20pi_reduced(xx)))
           return select_range(xx,xr,boost::mpl::true_(), r);
+
         return select_mode(xx,xr,boost::mpl::int_<tag::r_0_mpi>());
       }
 
@@ -209,12 +211,6 @@ namespace boost { namespace simd
       select_mode(const A0& xx, A0& xr, boost::mpl::int_< tag::r_0_20pi> const& r)
       {
         return select_range(xx,xr,boost::mpl::bool_<mode::range == tag::r_0_20pi>(),r);
-      }
-
-      static BOOST_FORCEINLINE i_t
-      select_mode(const A0& xx, A0& xr, boost::mpl::int_< r_0_20pi> const& r)
-      {
-        return select_range(xx,xr,boost::mpl::bool_<mode::range == r_0_20pi>(),r);
       }
 
 
@@ -236,6 +232,7 @@ namespace boost { namespace simd
       {
         if(all(is_0_mpi_reduced(xx)))
           return select_range(xx,xr,boost::mpl::true_(), r);
+
         return select_mode(xx,xr,boost::mpl::int_<tag::r_0_dmpi>());
       }
 
@@ -245,15 +242,6 @@ namespace boost { namespace simd
       }
 
       static BOOST_FORCEINLINE i_t select_mode(const A0& xx, A0& xr, boost::mpl::int_< tag::r_0_dmpi> const&)
-        return select_mode(xx,xr,boost::mpl::int_<r_0_dmpi>());
-      }
-
-      static BOOST_FORCEINLINE i_t select_mode(const A0& xx, A0& xr, boost::mpl::int_< r_0_mpi> const& r)
-      {
-        return select_range(xx,xr,boost::mpl::bool_<mode::range == r_0_mpi>(),r);
-      }
-
-      static BOOST_FORCEINLINE i_t select_mode(const A0& xx, A0& xr, boost::mpl::int_< r_0_dmpi> const&)
       {
         if(all(is_0_dmpi_reduced(xx)))
            return use_conversion(xx, xr, style(), conversion_allowed_t());
