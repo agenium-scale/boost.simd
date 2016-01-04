@@ -26,8 +26,8 @@ namespace boost { namespace simd { namespace tag
   using  not_simd_type = std::integral_constant<bool, false>;
   using  simd_type = std::integral_constant<bool, true>;
 
-//   struct fast {};
-//   struct regular {};
+  struct fast {};
+  struct regular {};
 
   // tags allowing to choose angle unit in trigonometric functions
   struct radian_tag {};
