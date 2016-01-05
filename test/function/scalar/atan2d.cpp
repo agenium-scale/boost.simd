@@ -17,6 +17,8 @@
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/mzero.hpp>
+#include <boost/simd/constant/half.hpp>
+#include <boost/simd/constant/mhalf.hpp>
 
 STF_CASE_TPL (" atan2d",  STF_IEEE_TYPES)
 {
