@@ -6,5 +6,11 @@
 ##                            http://www.boost.org/LICENSE_1_0.txt
 ##===================================================================================================
 
-add_subdirectory(meta)
-add_subdirectory(pack)
+set ( SOURCES
+      cardinal_of.cpp
+      is_scalar.cpp
+      logical.cpp
+    )
+
+make_unit( "boost.simd.api.meta" ${SOURCES})
+make_coverage("boost.simd.api.meta" ${SOURCES})
