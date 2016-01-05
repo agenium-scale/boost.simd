@@ -16,6 +16,7 @@
 #include <boost/simd/logical.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
+#include <cmath>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -56,6 +57,20 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE logical<A0> operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       return simd::is_nan(a0) || simd::is_nan(a1);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( is_unord_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bs::std_tag
+                          )
+  {
+    BOOST_FORCEINLINE bool operator() (A0 a0, A0 a1,  bs::std_tag const&) const BOOST_NOEXCEPT
+    {
+      return std::isunordered(a0, a1);
     }
   };
 } } }
