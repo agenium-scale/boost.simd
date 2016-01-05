@@ -14,13 +14,13 @@
 
 namespace boost { namespace simd
 {
-     /*!
-      @ingroup group-functions
-      @defgroup group-trigonometric Trigonometric Functions
+  /*!
+    @ingroup group-functions
+    @defgroup group-trigonometric Trigonometric Functions
 
-      Algorithms for computing scalar and SIMD version of
-      trigonometric and inverse trigonometric functions.
-    **/
+    Algorithms for computing scalar and SIMD version of
+    trigonometric and inverse trigonometric functions.
+  **/
 
   /*!
     @ingroup group-callable
@@ -81,50 +81,3 @@ namespace boost { namespace simd
 #include <boost/simd/function/tanpi.hpp>
 
 #endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
