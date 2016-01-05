@@ -21,6 +21,7 @@
 #include <boost/simd/constant/pi.hpp>
 #include <boost/simd/constant/twopio_3.hpp>
 #include <boost/simd/constant/pio_3.hpp>
+#include <boost/simd/constant/two.hpp>
 
 
 STF_CASE_TPL (" asec",  STF_IEEE_TYPES)
