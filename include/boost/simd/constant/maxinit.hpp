@@ -2,7 +2,6 @@
 /*!
   @file
 
-  @copyright 2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
   @copyright 2015 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
@@ -18,8 +17,8 @@ namespace boost { namespace simd
   /*!
     @ingroup group-constant
 
-    Generate the constant maxinit whixh is identical to boost::simd::minf for
-    arithmetic real types but that must be specialized for complex values ordring.
+    Generate the constant maxinit which is identical to minf for
+    arithmetic real types but that must be specialized for complex values ordering.
 
     maxinit is the value to be returned when a maximum of the elements function is used on an
     empty container.

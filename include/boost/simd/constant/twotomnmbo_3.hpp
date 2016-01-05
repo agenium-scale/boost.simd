@@ -2,8 +2,7 @@
 /*!
   @file
 
-  @copyright 2009-2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
-  @copyright 2012-2015 NumScale SAS
+  @copyright 2015 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -16,18 +15,39 @@
 namespace boost { namespace simd
 {
   /*!
+
     @ingroup group-constant
 
-    Generate the constant twotomnmbo_3.
+    Generates constant e.
 
-    @return The Twotomnmbo_3 constant for the proper type
-  **/
+    @par Semantic:
+    \f$2^(-nmb/3)\f$
+
+    @code
+    T r = twotomnmbo_3<T>();
+    @endcode
+
+    is similar to:
+
+    @code
+    if T is float
+      r = 4.921566601151848e-03f
+    else
+      r = 4.806217383937348e-06
+    @endcode
+
+
+**/
   template<typename T> T Twotomnmbo_3();
 
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
+
+
+      Generates constant e.
+
       Generate the  constant twotomnmbo_3.
 
       @return The Twotomnmbo_3 constant for the proper type

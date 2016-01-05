@@ -4,7 +4,6 @@
 
   Convenience header for Boost.SIMD
 
-  @copyright 2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
   @copyright 2015 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
@@ -161,15 +160,7 @@ namespace boost
       Those functions provides algorithms for computing exponentials and logarithms.
     **/
 
-     /*!
-      @ingroup group-functions
-      @defgroup group-hyperbolic Hyperbolic Functions
-
-      Those functions provides algorithms for computing hyperbolic and inverse hyperbolic
-      functions.
-    **/
-
-   /// Boost.SIMD Callable Objects namespace
+  /// Boost.SIMD Callable Objects namespace
     namespace functional {}
 
     /*!
@@ -283,15 +274,6 @@ namespace boost
 
       Their specific semantic limitations are similar to those of their function
       equivalents as described in the @ref group-exponential section.
-    **/
-
-    /*!
-      @ingroup group-callable
-      @defgroup group-callable-hyperbolic Hyperbolic Callable Objects
-      Callable objects version of @ref group-hyperbolic
-
-      Their specific semantic limitations are similar to those of their function
-      equivalents as described in the @ref group-hyperbolic section.
     **/
 
     /*!

@@ -2,8 +2,7 @@
 /*!
   @file
 
-  @copyright 2009-2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
-  @copyright 2012-2015 NumScale SAS
+  @copyright 2015 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -16,18 +15,35 @@
 namespace boost { namespace simd
 {
   /*!
+
     @ingroup group-constant
 
-    Generate the constant mlog2two2nmb.
+    Generates constant Mlog2two2nmb.
 
-    @return The Mlog2two2nmb constant for the proper type
-  **/
+    @par Semantic:
+
+    @code
+    T r = Mlog2two2nmb<T>();
+    @endcode
+
+    is similar to:
+
+    @code
+      r =  T(Nbmantissabits<T>());
+    @endcode
+
+
+**/
   template<typename T> T Mlog2two2nmb();
 
   namespace functional
   {
     /*!
-      @ingroup group-constant
+      @ingroup group-callable-constant
+
+
+      Generates constant Mlog2two2nmb.
+
       Generate the  constant mlog2two2nmb.
 
       @return The Mlog2two2nmb constant for the proper type

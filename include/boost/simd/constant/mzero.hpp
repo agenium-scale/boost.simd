@@ -2,7 +2,6 @@
 /*!
   @file
 
-  @copyright 2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
   @copyright 2015 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
@@ -42,8 +41,8 @@ namespace boost { namespace simd
     choosing between \f$+\infty\f$ and \f$-\infty\f$ instead of nan in computing 1/0.
     \par
 
-    The sign of zero can be accessed through the @c boost::simd::is_negative
-    and @c boost::simd::is_positive predicates or the boost::simd::bitofsign function.
+    The sign of zero can be accessed through the @ref is_negative
+    and @ref is_positive predicates or the @ref bitofsign functions.
 
     @return The Mzero constant for the proper type
   **/

@@ -2,7 +2,6 @@
 /*!
   @file
 
-  @copyright 2015 LRI UMR 8623 CNRS/Univ Paris Sud XI
   @copyright 2015 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
@@ -18,7 +17,7 @@ namespace boost { namespace simd
   /*!
     @ingroup group-constant
 
-    Generate the 4th root of constant @c Eps.
+    Generate the 4th root of constant @ref Eps : \f$\sqrt[4]\epsilon\f$.
 
     @par Semantic:
 
