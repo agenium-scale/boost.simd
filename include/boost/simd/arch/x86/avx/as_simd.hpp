@@ -14,7 +14,7 @@
 #ifndef BOOST_SIMD_ARCH_X86_AVX_AS_SIMD_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_AVX_AS_SIMD_HPP_INCLUDED
 
-#include <boost/simd/arch/common/simd/as_simd.hpp>
+#include <boost/simd/arch/x86/sse2/as_simd.hpp>
 #include <boost/dispatch/meta/is_natural.hpp>
 
 namespace boost { namespace simd

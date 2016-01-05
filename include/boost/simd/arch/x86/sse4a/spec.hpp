@@ -16,16 +16,17 @@
 
 #include <boost/simd/sdk/predef.hpp>
 
-#if BOOST_HW_SIMD_X86 == BOOST_HW_SIMD_X86_AMD_SSE4A_VERSION
-
-#ifndef BOOST_SIMD_DEFAULT_FAMILY
-  #define BOOST_SIMD_DEFAULT_FAMILY  ::boost::simd::sse_
+#if !defined(BOOST_SIMD_DEFAULT_FAMILY)
+  #if BOOST_HW_SIMD_X86_AMD == BOOST_HW_SIMD_X86_AMD_SSE4A_VERSION
+    #define BOOST_SIMD_DEFAULT_FAMILY ::boost::simd::sse_
+    #define BOOST_SIMD_DEFAULT_SITE   ::boost::simd::sse4a_
+  #endif
 #endif
 
-#define BOOST_SIMD_DEFAULT_SITE       ::boost::simd::sse4a_
-
-#include <ammintrin.h>
-#include <boost/simd/arch/x86/sse2/as_simd.hpp>
-
+#if BOOST_HW_SIMD_X86_AMD >= BOOST_HW_SIMD_X86_AMD_SSE4A_VERSION
+  #include <ammintrin.h>
+  #include <boost/simd/arch/x86/sse4a/as_simd.hpp>
+  #include <boost/simd/arch/x86/sse4a/pack_traits.hpp>
 #endif
+
 #endif

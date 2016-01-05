@@ -16,24 +16,23 @@
 
 #include <boost/simd/sdk/predef.hpp>
 
-#if BOOST_HW_SIMD_X86 == BOOST_HW_SIMD_X86_AMD_FMA4_VERSION
-
-#ifndef BOOST_SIMD_DEFAULT_FAMILY
-  #define BOOST_SIMD_DEFAULT_FAMILY  ::boost::simd::avx_
+#if !defined(BOOST_SIMD_DEFAULT_FAMILY)
+  #if BOOST_HW_SIMD_X86_AMD == BOOST_HW_SIMD_X86_AMD_FMA4_VERSION
+    #define BOOST_SIMD_DEFAULT_FAMILY ::boost::simd::avx_
+    #define BOOST_SIMD_DEFAULT_SITE   ::boost::simd::fma4_
+  #endif
 #endif
 
-#define BOOST_SIMD_DEFAULT_SITE       ::boost::simd::fma4_
-
-// FMA4 header not standardized
-#ifdef _MSC_VER
-#include <intrin.h>
-#else
-#include <x86intrin.h>
-#include <fma4intrin.h>
+#if BOOST_HW_SIMD_X86_AMD >= BOOST_HW_SIMD_X86_AMD_FMA4_VERSION
+  // FMA4 header not standardized
+  #ifdef _MSC_VER
+    #include <intrin.h>
+  #else
+    #include <x86intrin.h>
+    #include <fma4intrin.h>
+  #endif
+  #include <boost/simd/arch/x86/fma4/as_simd.hpp>
+  #include <boost/simd/arch/x86/fma4/pack_traits.hpp>
 #endif
 
-#include <boost/simd/arch/x86/sse2/as_simd.hpp>
-#include <boost/simd/arch/x86/avx/as_simd.hpp>
-
-#endif
 #endif
