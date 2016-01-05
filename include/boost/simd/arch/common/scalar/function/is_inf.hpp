@@ -12,12 +12,14 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_INF_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_INF_HPP_INCLUDED
 
+#include <boost/simd/options.hpp>
 #include <boost/simd/constant/false.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/logical.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
+#include <cmath>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -55,6 +57,20 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE logical<A0> operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return ((a0 == Inf<A0>()) || (a0 == Minf<A0>()));
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( is_inf_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::floating_<A0> >
+                          , boost::simd::std_tag
+                          )
+  {
+    BOOST_FORCEINLINE bool operator() ( A0 a0
+                                      , std_tag const&) const BOOST_NOEXCEPT
+    {
+      return std::isinf(a0);
     }
   };
 } } }

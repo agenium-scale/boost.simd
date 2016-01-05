@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_NEGATIVE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_NEGATIVE_HPP_INCLUDED
 
+#include <boost/simd/options.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/sbits.hpp>
 #include <boost/simd/logical.hpp>
@@ -21,6 +22,7 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
   BOOST_DISPATCH_OVERLOAD ( is_negative_
                           , (typename A0)
                           , bd::cpu_
@@ -55,6 +57,20 @@ namespace boost { namespace simd { namespace ext
       return (sbits(a0) < 0);
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( is_negative_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bs::std_tag
+                          )
+  {
+    BOOST_FORCEINLINE bool operator() (A0 a0,  bs::std_tag const&) const BOOST_NOEXCEPT
+    {
+      return std::signbit(a0);
+    }
+  };
+
 } } }
 
 
