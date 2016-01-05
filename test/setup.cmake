@@ -41,17 +41,6 @@ if(MSVC)
 endif()
 
 ##==================================================================================================
-## Remove /EHsc from CMAKE_CXX_FLAGS and re-add per configuration; avoid 'overriding' warnings
-##==================================================================================================
-if(CMAKE_CXX_FLAGS MATCHES "/EHsc")
-  string(REPLACE " /EHsc" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
-  foreach(config Debug Release)
-    string(TOUPPER ${config} config_U)
-    set(CMAKE_CXX_FLAGS_${config_U} "/EHsc ${CMAKE_CXX_FLAGS_${config_U}}")
-  endforeach()
-endif()
-
-##==================================================================================================
 ## MSVC12 needs /FS if building in debug in parallel
 ##==================================================================================================
 if(MSVC AND (MSVC_VERSION EQUAL 1800 OR MSVC_VERSION GREATER 1800))
@@ -66,7 +55,7 @@ set(SIMD_FLAGS_BENCH "${CMAKE_CXX_FLAGS_RELEASE} -DBRIGAND_LEAN_AND_MEAN")
 ##==================================================================================================
 if(MSVC)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /fp:precise")
-  set(SIMD_FLAGS_TEST "${SIMD_FLAGS_TEST} /MDd /Oxt /EHa")
+  set(SIMD_FLAGS_TEST "${SIMD_FLAGS_TEST} /MDd /Oxt")
   set(SIMD_FLAGS_BENCH "/DNDEBUG /MD /D_SECURE_SCL=0 /GL /Oxt /wd4530")
 
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "Intel")
@@ -76,7 +65,7 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "Intel")
     set(SIMD_FLAGS_BENCH "${SIMD_FLAGS_BENCH} -fno-exceptions")
   else()
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /fp:precise")
-    set(SIMD_FLAGS_TEST "${SIMD_FLAGS_TEST} /O2 /EHa")
+    set(SIMD_FLAGS_TEST "${SIMD_FLAGS_TEST} /O2")
     string(REPLACE "/EHsc" "" SIMD_FLAGS_BENCH "${SIMD_FLAGS_BENCH}")
   endif()
 
@@ -91,6 +80,13 @@ endif()
 if(MSVC)
   set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} /LTCG")
   set(CMAKE_SHARED_LINKER_FLAGS_RELEASE "${CMAKE_SHARED_LINKER_FLAGS_RELEASE} /LTCG")
+endif()
+
+##==================================================================================================
+## MSVC STL warnings
+##==================================================================================================
+if(MSVC)
+  set(SIMD_FLAGS_TEST "${SIMD_FLAGS_TEST} /D_SCL_SECURE_NO_WARNINGS")
 endif()
 
 ##==================================================================================================
