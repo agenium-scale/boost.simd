@@ -20,7 +20,7 @@ function(add_target_parent target)
     set_property(TARGET ${target} PROPERTY FOLDER ${suffix})
   endif()
 
-  if(NOT parent_target STREQUAL ${target})
+  if(NOT ${parent_target} STREQUAL ${target})
     add_target_parent(${parent_target})
     add_dependencies(${parent_target} ${target})
   endif()
