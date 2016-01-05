@@ -16,6 +16,7 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/function/scalar/is_nan.hpp>
 #endif
+#include <boost/simd/options.hpp>
 #include <boost/simd/arch/common/detail/generic/expm1_kernel.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/logeps.hpp>
@@ -25,6 +26,7 @@
 #include <boost/simd/function/scalar/is_less.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
+#include <cmath>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -44,6 +46,19 @@ namespace boost { namespace simd { namespace ext
       if((a0 < Logeps<A0>())) return Mone<A0>();
       if((a0 > Maxlog<A0>())) return  Inf<A0>();
       return detail::expm1_kernel<A0>::expm1(a0);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( expm1_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bs::std_tag
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() (A0 a0, std_tag const&) const BOOST_NOEXCEPT
+    {
+      return std::expm1(a0);
     }
   };
 } } }
