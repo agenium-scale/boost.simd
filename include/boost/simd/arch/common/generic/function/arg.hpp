@@ -19,29 +19,56 @@
 #include <boost/simd/constant/pi.hpp>
 #include <boost/simd/function/simd/if_else_zero.hpp>
 #include <boost/simd/function/simd/is_ltz.hpp>
+#include <boost/simd/function/simd/is_negative.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
-namespace boost { namespace simd { namespace ext
-{
-  namespace bd = boost::dispatch;
-  BOOST_DISPATCH_OVERLOAD ( arg_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bd::generic_< bd::floating_<A0> >
-                          )
-  {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
-    {
-      // a0 >= 0 -> 0, a0 < 0 ->Pi, a0 is Nan -> Nan
-      A0 r = if_else_zero(is_ltz(a0),Pi<A0>());
-      #ifndef BOOST_SIMD_NO_NANS
-        return if_allbits_else(is_nan(a0),r);
-      #else
-        return r;
-      #endif
-    }
-  };
+namespace boost { namespace simd
+ {
+   struct use_signbit_tag
+   {
+     using parent = use_signbit_tag;
+     using hierarchy_tag = void; //dispatch::detail::hierarchy_tag;
+   };
+
+   const use_signbit_tag use_signbit_ = {};
+
+
+   namespace ext
+   {
+     namespace bd = boost::dispatch;
+     namespace bs = boost::simd;
+     BOOST_DISPATCH_OVERLOAD ( arg_
+                             , (typename A0)
+                             , bd::cpu_
+                             , bd::generic_< bd::floating_<A0> >
+                             )
+     {
+       BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+       {
+         A0 r = if_else_zero(is_ltz(a0),Pi<A0>());
+       #ifndef BOOST_SIMD_NO_NANS
+         return if_allbits_else(is_nan(a0),r);
+       #else
+         return r;
+       #endif
+       }
+     };
+
+     BOOST_DISPATCH_OVERLOAD ( arg_
+                             , (typename A0)
+                             , bd::cpu_
+                             , bd::generic_< bd::floating_<A0> >
+                             , bs::use_signbit_tag
+                             )
+     {
+       BOOST_FORCEINLINE A0 operator() ( A0 const& a0
+                                       , use_signbit_tag const&) const BOOST_NOEXCEPT
+       {
+         return if_else_zero(is_negative(a0),Pi<A0>());
+       }
+     };
+
 } } }
 
 
