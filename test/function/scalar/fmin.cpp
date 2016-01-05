@@ -84,3 +84,35 @@ STF_CASE_TPL (" fmin signed_int",  STF_SIGNED_INTEGRAL_TYPES)
   STF_EQUAL(fmin(bs::One<T>(), bs::One<T>()), bs::One<r_t>());
   STF_EQUAL(fmin(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
 }
+
+STF_CASE_TPL (" fmin std",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::fmin;
+
+  using r_t = decltype(fmin(T(), T()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, T);
+
+  // specific values tests
+#ifndef STF_NO_INVALIDS
+  STF_EQUAL(fmin(bs::Inf<T>(), bs::Inf<T>(), bs::std_), bs::Inf<r_t>());
+  STF_EQUAL(fmin(bs::Minf<T>(), bs::Minf<T>(), bs::std_), bs::Minf<r_t>());
+  STF_IEEE_EQUAL(fmin(bs::Nan<T>(), bs::Nan<T>(), bs::std_), bs::Nan<r_t>());
+  STF_EQUAL(fmin(bs::Nan<T>(),bs::One<T>(), bs::std_), bs::One<r_t>());
+  STF_EQUAL(fmin(bs::One<T>(),bs::Nan<T>(), bs::std_), bs::One<r_t>());
+#endif
+  STF_EQUAL(fmin(bs::Mone<T>(), bs::Mone<T>(), bs::std_), bs::Mone<r_t>());
+  STF_EQUAL(fmin(bs::One<T>(),  bs::One<T>(), bs::std_),  bs::One<r_t>());
+  STF_EQUAL(fmin(bs::Zero<T>(), bs::Zero<T>(), bs::std_), bs::Zero<r_t>());
+  STF_EQUAL(fmin(bs::Mone<T>(), bs::One <T>(), bs::std_), bs::Mone<r_t>());
+  STF_EQUAL(fmin(bs::One <T>(), bs::Mone<T>(), bs::std_), bs::Mone<r_t>());
+  STF_EQUAL(fmin(bs::One <T>(), bs::Two <T>(), bs::std_), bs::One<r_t>());
+  STF_EQUAL(fmin(bs::Two <T>(), bs::One <T>(), bs::std_), bs::One<r_t>());
+  STF_EQUAL(fmin(bs::Mtwo<T>(), bs::One <T>(), bs::std_), bs::Mtwo<r_t>());
+  STF_EQUAL(fmin(bs::One <T>(), bs::Mtwo<T>(), bs::std_), bs::Mtwo<r_t>());
+  STF_EQUAL(fmin(bs::Two <T>(), bs::Mone<T>(), bs::std_), bs::Mone<r_t>());
+  STF_EQUAL(fmin(bs::Mone<T>(), bs::Two <T>(), bs::std_), bs::Mone<r_t>());
+}

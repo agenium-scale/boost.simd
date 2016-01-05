@@ -36,7 +36,7 @@ namespace boost { namespace simd
     T r = x&SignMask;
     @endcode
 
-    @see sign, signnz
+    @see sign, signnz, is_negative, is_positive, Mzero, SignMask;
 
     @return a value of same type as the input
 

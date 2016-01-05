@@ -30,22 +30,27 @@ namespace boost { namespace simd
     is equivalent to:
 
     @code
-    T r = (is_nan(x)) ? x :(x < Zero) ? pi : Zero;
+    T r = (is_nan(x)) ? x : (is_negative(x)) ? Pi<T>() : Zero<T>();
     @endcode
 
     @par Note:
 
-    Returns 0 or \f$\pi\f$  (or @ref Nan if and only if the input is Nan)
-    according to the input @ref sign,
+    - Returns \f$+0\f$ or \f$\pi\f$  (or @ref Nan if and only if the input is @ref Nan)
+    according to the input @ref sign bit,
 
-    This function is the restriction to real numbers of the complex
-    argument function.
+    - arg(x, use_signbit_) always returns \f$+0\f$ or \f$\pi\f$ taking into account the bit of sign
+    even in the Nan case and is a bit speedier.
+
+    - This function is the restriction to real numbers of the complex
+    arg(ument) function.
 
     @par Alias:
 
     angle
 
-    @return      a value of the type T.
+    @see is_negative,  is_ltz,  Pi
+
+    @return a value of the type T.
   **/
   template<typename T> auto arg(T const& x) {}
 

@@ -11,14 +11,17 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_GREATER_EQUAL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_GREATER_EQUAL_HPP_INCLUDED
 
+#include <boost/simd/options.hpp>
 #include <boost/simd/logical.hpp>
 #include <boost/dispatch/adapted/std/integral_constant.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
+#include <cmath>
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
   BOOST_DISPATCH_OVERLOAD ( is_greater_equal_
                           , (typename A0)
                           , bd::cpu_
@@ -95,6 +98,21 @@ namespace boost { namespace simd { namespace ext
       return a >=  b;
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( is_greater_equal_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bs::std_tag
+                          )
+  {
+    BOOST_FORCEINLINE bool operator() (A0 a0, A0 a1,  bs::std_tag const&) const BOOST_NOEXCEPT
+    {
+      return std::isgreaterequal(a0, a1);
+    }
+  };
+
 } } }
 
 #endif

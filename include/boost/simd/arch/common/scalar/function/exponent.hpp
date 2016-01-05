@@ -23,6 +23,7 @@
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
+#include <cmath>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -85,6 +86,20 @@ namespace boost { namespace simd { namespace ext
       const int nmb = int(Nbmantissabits<A0>());
       const result_t x = shr(exponentbits(a0), nmb);
       return x-if_else_zero(a0, Maxexponent<A0>());
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( exponent_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::arithmetic_<A0> >
+                          , boost::simd::std_tag
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() (A0 const & a0
+                                    , std_tag const& ) const BOOST_NOEXCEPT
+    {
+       return std::logb(a0);
     }
   };
 } } }

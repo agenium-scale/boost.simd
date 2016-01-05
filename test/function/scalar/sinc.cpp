@@ -9,6 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/sinc.hpp>
+#include <boost/simd/function/sin.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -18,6 +19,9 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/mzero.hpp>
 #include <boost/simd/constant/eps.hpp>
+#include <boost/simd/constant/pio_2.hpp>
+#include <boost/simd/constant/pio_4.hpp>
+#include <boost/simd/constant/pi.hpp>
 #include <boost/simd/constant/mindenormal.hpp>
 
 STF_CASE_TPL(" sinc",  STF_IEEE_TYPES)

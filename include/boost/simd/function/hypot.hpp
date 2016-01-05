@@ -36,12 +36,13 @@ namespace boost { namespace simd
 
     @par Note
 
-    Provision are made to avoid overflow as possible and to compute
+    - Provision are made to avoid overflow as possible and to compute
     @c hypot accurately.
 
-    If these considerations can be put aside use the call
+    - If these considerations can be put aside use the call
     hypot(x,y,fast_).
 
+    - hypot(x,y,std_) uses the stdlibc++ function std::hypot
 
     @return      a value of the same type as the input.
 

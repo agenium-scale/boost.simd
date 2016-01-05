@@ -33,6 +33,8 @@ namespace boost { namespace simd
     \f$[-\pi/2, \pi/2]\f$ such that <tt>sin(r) == x</tt>.
     If @c x is outside \f$[-1, 1]\f$ the result is Nan.
 
+    asin(x, std_) use the call to std::asin from stdlibc++
+
     @see asind, asinpi
 
     @return a value of the same type as the parameter

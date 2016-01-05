@@ -11,51 +11,28 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_REMAINDER_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_REMAINDER_HPP_INCLUDED
 
-#include <boost/simd/function/divround2even.hpp>
-#include <boost/simd/function/idivround2even.hpp>
-#include <boost/simd/function/is_nez.hpp>
-#include <boost/simd/function/minus.hpp>
-#include <boost/simd/function/multiplies.hpp>
-#include <boost/simd/function/selsub.hpp>
+#include <boost/simd/options.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
-// As the result can be negative the functor is not defined for unsigned
-// The drem function is just an alias for the same thing.
-// The remainder() function computes the remainder of dividing x by y.  The
-// entries
-// integer.  If the boost::simd::absolute value of x-n*y is 0.5, n is chosen
-// return value is x-n*y, where n is the value x / y, rounded to the nearest
-// to be even.
-/////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////
+#include <cmath>
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
-  BOOST_DISPATCH_OVERLOAD ( remainder_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bd::generic_< bd::signed_<A0> >
-                          , bd::generic_< bd::signed_<A0> >
-                          )
-  {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
-    {
-      return selsub(is_nez(a1),a0,
-                    simd::multiplies(idivround2even(a0, a1), a1));
-    }
-  };
+  namespace bs = boost::simd;
 
   BOOST_DISPATCH_OVERLOAD ( remainder_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::generic_< bd::floating_<A0> >
-                          , bd::generic_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bs::std_tag
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1
+                                    , std_tag const&) const BOOST_NOEXCEPT
     {
-      return a0-divround2even(a0, a1)*a1;
+      return std::remainder(a0, a1);
     }
   };
 } } }

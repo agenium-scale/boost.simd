@@ -30,7 +30,7 @@ namespace boost { namespace simd
     computes the n-th greatest representable value strictly less than x in its type.
     n must be positive or null.
 
-    For integer it saturate at @ref Valmin, for floating point numbers @ref Minf
+    For integer it saturate at @ref Valmin, for floating point numbers, all @ref Minf
     strict predecessors are @ref Nan.
 
     @see next, prev, successor, nextafter, Minf, Valmin, Nan

@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-arithmetic
 
-    Increments a value by 1.
+    Increments a value by 1. This operation is not saturated.
 
     @par semantic:
     For any given value @c x of type @c T:

@@ -38,3 +38,25 @@ STF_CASE_TPL (" arg real",  STF_IEEE_TYPES)
 } // end of test for floating_
 
 
+STF_CASE_TPL (" arg real use_signbit_",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  using bs::arg;
+  using r_t = decltype(arg(T(), bs::use_signbit_));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, T);
+
+  // specific values tests
+#ifndef STF_NO_INVALIDS
+  STF_EQUAL(arg(bs::Inf<T>(), bs::use_signbit_), bs::Zero<r_t>());
+  STF_EQUAL(arg(bs::Minf<T>(), bs::use_signbit_), bs::Pi<r_t>());
+  STF_IEEE_EQUAL(arg(bs::Nan<T>(), bs::use_signbit_), bs::Pi<r_t>());
+  STF_IEEE_EQUAL(arg(-bs::Nan<T>(), bs::use_signbit_), bs::Zero<r_t>());
+#endif
+  STF_EQUAL(arg(bs::Mone<T>(), bs::use_signbit_), bs::Pi<r_t>());
+  STF_EQUAL(arg(bs::One<T>(), bs::use_signbit_), bs::Zero<r_t>());
+  STF_EQUAL(arg(bs::Zero<T>(), bs::use_signbit_), bs::Zero<r_t>());
+} // end of test for floating_
+
+

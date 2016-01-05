@@ -17,7 +17,7 @@ namespace boost { namespace simd
 {
   /*!
 
-    @ingroup group-bitwise
+    @ingroup group-bolean
 
     Returns a mask of bits. All ones if the
     input element is non @ref Zero else all zeros.
@@ -29,7 +29,7 @@ namespace boost { namespace simd
   namespace functional
   {
     /*!
-      @ingroup group-callable-bitwise
+      @ingroup group-callable-boolean
 
       Returns a mask of bits. All ones if the
       input element is non @ref Zero else all zeros.

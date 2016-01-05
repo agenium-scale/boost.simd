@@ -34,6 +34,18 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( negs_
                           , (typename A0)
                           , bd::cpu_
+                          , bd::scalar_<bd::uint_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0 ) const BOOST_NOEXCEPT
+    {
+      return Valmin<A0>();
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( negs_
+                          , (typename A0)
+                          , bd::cpu_
                           , bd::scalar_<bd::floating_<A0> >
                           )
   {

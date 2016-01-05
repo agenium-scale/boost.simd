@@ -12,9 +12,11 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_SWAPBYTES_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_SWAPBYTES_HPP_INCLUDED
 
+#include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/shift_left.hpp>
 #include <boost/simd/function/shr.hpp>
 #include <boost/dispatch/function/overload.hpp>
+#include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -45,7 +47,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( swapbytes_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::generic_< bd::type32_<A0> >
+                          , bd::generic_< bd::ints32_<A0> >
                           )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const & a0) const BOOST_NOEXCEPT
@@ -57,7 +59,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( swapbytes_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::generic_< bd::type64_<A0> >
+                          , bd::generic_< bd::ints64_<A0> >
                           )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const & a0) const BOOST_NOEXCEPT
@@ -67,6 +69,21 @@ namespace boost { namespace simd { namespace ext
       return shift_left(val, 32) | shr(val,32);
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( swapbytes_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::generic_< bd::floating_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0 const & a0) const BOOST_NOEXCEPT
+    {
+      using i_t =  boost::dispatch::as_integer_t<A0>;
+      return bitwise_cast<A0>(swapbytes(bitwise_cast<i_t>(a0)));
+    }
+  };
+
+
 } } }
 
 

@@ -90,6 +90,45 @@ namespace boost
       Those functions provides scalar and SIMD algorithms for boolean operations and operators.
       Boolean operations provided include logical operator, prefix form of the ternary operator and
       selected variations and conditional operations.
+
+      These functions are mostly intended to be used in SIMD programming intents and
+      must be used cautiously.
+
+      The rationale is to overcome the difficulty of tests with SIMD variables.
+
+      For instance if cond is an SIMD vector of length N of logical<float>, the code:
+      @code
+        T r = if_else(cond, f(x),  g(x));
+      @endcode
+
+      where f and g are two distinct functions that return an simd vector of N floats,
+      implies that  the 2N values sqrt(x) and  sqr(x) wil be computed and the N results
+      will be selected according the N boolean value contained in cond.
+
+      In the case (for instance) where f and g are equally complicated and nearly of the same cost
+      as their scalar version, it is quite obvious that if N = 2, the previous code gives
+      no substantial gain against a scalar pseudo code as:
+
+       @code
+        T r;
+        if (cond[0]) r[0] = f(x[0]); else r[0] = g(x[0]);
+        if (cond[1]) r[1] = f(x[1]); else r[1] = g(x[1]);
+      @endcode
+
+      as 2 calls are needed in all cases.
+
+      even a loss if N = 1 as both f and g need to be called with if_else.
+      However there is still a gain if N is strictly greater than 2.
+
+      A thumb rule is to always have less SIMD tests than p if \f$N = 2^p\f$ or to
+      use some horizontal tricks in a succesion of tests impying expansive branches.
+
+      Examples of such tricks can be seen
+      in the simd code of functions as @ref erf where different formulas are to be used to
+      compute the function value acoording to the parameters range.
+
+      The numerous variants of conditionnals are provided as they can offer optimization
+      in most SIMD APIs against a mere @ref if_else.
     **/
 
     /*!
@@ -160,7 +199,30 @@ namespace boost
       Those functions provides algorithms for computing exponentials and logarithms.
     **/
 
-  /// Boost.SIMD Callable Objects namespace
+    /*!
+      @ingroup group-functions
+      @defgroup group-hyperbolic Hyperbolic Functions
+
+      Algorithms for computing hyperbolic and inverse hyperbolic
+      functions.
+    **/
+
+     /*!
+      @ingroup group-functions
+      @defgroup group-trigonometric Trigonometric Functions
+
+      Algorithms for computing trigonometric and inverse trigonometric
+      functions.
+    **/
+
+    /*!
+      @ingroup group-functions
+      @defgroup group-euler Eulerian Functions
+
+      Those functions provides algorithms for computing eulerian funcs as erf or gamma.
+    **/
+
+   /// Boost.SIMD Callable Objects namespace
     namespace functional {}
 
     /*!
@@ -276,6 +338,32 @@ namespace boost
       equivalents as described in the @ref group-exponential section.
     **/
 
+    /*!
+      @ingroup group-callable
+      @defgroup group-callable-euler Eulerian Callable Objects
+      Callable objects version of @ref group-euler
+
+      Their specific semantic limitations are similar to those of their function
+      equivalents as described in the @ref group-euler section.
+    **/
+
+    /*!
+      @ingroup group-callable
+      @defgroup group-callable-trigonometric Trigonometric Callable Objects
+      Callable objects version of @ref group-trigonometric
+
+      Their specific semantic limitations are similar to those of their function
+      equivalents as described in the @ref group-trigonometric section.
+    **/
+
+    /*!
+      @ingroup group-callable
+      @defgroup group-callable-hyperbolic Hyperbolic Callable Objects
+      Callable objects version of @ref group-hyperbolic
+
+      Their specific semantic limitations are similar to those of their function
+      equivalents as described in the @ref group-hyperbolic section.
+    **/
     /*!
       @defgroup group-config Configuration
       Configuration options

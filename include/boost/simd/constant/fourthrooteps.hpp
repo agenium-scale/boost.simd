@@ -17,7 +17,7 @@ namespace boost { namespace simd
   /*!
     @ingroup group-constant
 
-    Generate the 4th root of constant @ref Eps : \f$\sqrt[4]\epsilon\f$.
+    Generate the 4th root of constant @ref Eps: \f$\sqrt[4]\epsilon\f$.
 
     @par Semantic:
 

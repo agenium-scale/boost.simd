@@ -17,6 +17,7 @@
 #include <boost/simd/function/scalar/oneplus.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
+#include <cmath>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -39,6 +40,19 @@ namespace boost { namespace simd { namespace ext
       if (a0 == Mone<A0>())   return Minf<A0>();
       A0 u = oneplus(a0);
       return log(u)+(a0-minusone(u))/u;
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( log1p_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bs::std_tag
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() (A0 a0, std_tag const&) const BOOST_NOEXCEPT
+    {
+      return std::log1p(a0);
     }
   };
 } } }

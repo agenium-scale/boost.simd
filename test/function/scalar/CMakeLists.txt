@@ -12,8 +12,6 @@ set ( SOURCES
    extract.cpp
    load.cpp
    splat.cpp
-#alias
-   modulus.cpp
 #arithmetic
    abs.cpp
    abss.cpp
@@ -32,6 +30,7 @@ set ( SOURCES
    divround2even.cpp
    divround.cpp
    divs.cpp
+   fdim.cpp
    floor.cpp
    fma.cpp
    fms.cpp
@@ -143,6 +142,7 @@ set ( SOURCES
    eps.cpp
    exponentbits.cpp
    exponent.cpp
+   fpclassify.cpp
    frac.cpp
    frexp.cpp
    ilogb.cpp
@@ -217,6 +217,7 @@ set ( SOURCES
    is_ngtz.cpp
    is_nlez.cpp
    is_nltz.cpp
+   is_normal.cpp
    is_not_denormal.cpp
    is_not_equal_with_equal_nans.cpp
    is_not_greater_equal.cpp
@@ -229,6 +230,7 @@ set ( SOURCES
    is_not_real.cpp
    is_odd.cpp
    is_ord.cpp
+   is_lessgreater.cpp
    is_positive.cpp
    is_real.cpp
    is_unord.cpp
@@ -291,6 +293,15 @@ set ( SOURCES
    pow_abs.cpp
    significants.cpp
    sqrt1pm1.cpp
+#euler
+   erf.cpp
+   erfc.cpp
+   erfcx.cpp
+   gamma.cpp
+   gammaln.cpp
+   signgam.cpp
+   stirling.cpp
+   tgamma.cpp
 #hyperbolic
    acosh.cpp
    acoth.cpp
@@ -355,6 +366,10 @@ set ( SOURCES
    tan.cpp
    tanpi.cpp
 #aliases
+   decs.cpp
+   incs.cpp
+   fabs.cpp
+   modulus.cpp
    b_and.cpp
    compare_eq.cpp
    b_andnot.cpp
@@ -375,6 +390,7 @@ set ( SOURCES
    if_allbits_else_zero.cpp
    if_nan_else.cpp
    if_else_nan.cpp
+   pluss.cpp
    where.cpp
    select.cpp
    sel.cpp
@@ -428,6 +444,7 @@ set ( SOURCES
    b_xor.cpp
    is_not_finite.cpp
    is_not_invalid.cpp
+   signbit.cpp
   )
 
 make_unit( "boost.simd.function.scalar"   ${SOURCES})

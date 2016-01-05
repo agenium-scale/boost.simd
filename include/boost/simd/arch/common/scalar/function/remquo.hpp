@@ -13,7 +13,7 @@
 
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/function/divides.hpp>
-#include <boost/simd/function/if_allbits_else.hpp>
+#include <boost/simd/function/if_nan_else.hpp>
 #include <boost/simd/function/is_eqz.hpp>
 #include <boost/simd/function/is_invalid.hpp>
 #include <boost/simd/function/logical_or.hpp>
@@ -90,9 +90,9 @@ namespace boost { namespace simd { namespace ext
       A0 const d = round2even(a0/a1);
 
 #if defined(BOOST_SIMD_NO_INVALIDS)
-      a2 = if_allbits_else(is_eqz(a1), a0-d*a1);
+      a2 = if_nan_else(is_eqz(a1), a0-d*a1);
 #else
-      a2 = if_allbits_else(logical_or(is_invalid(a0), is_eqz(a1)), a0-d*a1);
+      a2 = if_nan_else(is_invalid(a0)||is_eqz(a1), a0-d*a1);
 #endif
 
       a3 = toint(d);

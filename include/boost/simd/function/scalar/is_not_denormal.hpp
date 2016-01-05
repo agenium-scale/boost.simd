@@ -14,5 +14,6 @@
 
 #include <boost/simd/function/definition/is_not_denormal.hpp>
 #include <boost/simd/arch/common/scalar/function/is_not_denormal.hpp>
+#include <boost/simd/arch/common/generic/function/is_not_denormal.hpp>
 
 #endif

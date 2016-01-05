@@ -16,7 +16,10 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/pi.hpp>
+#include <boost/simd/function/remainder.hpp>
 #include <utility>
+#include <cmath>
 
 #ifndef STF_NO_INVALIDS
 // All these tests should return NaN
@@ -183,3 +186,4 @@ STF_CASE_TPL(" remquo valid", STF_IEEE_TYPES)
     }
   }
 }
+

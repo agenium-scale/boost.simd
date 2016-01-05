@@ -24,6 +24,7 @@
 #include <boost/simd/options.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
+#include <cmath>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -102,6 +103,22 @@ namespace boost { namespace simd { namespace ext
       return a0*bitwise_cast<A0>(ik);
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( ldexp_
+                          , (typename A0, typename A1)
+                          , bd::cpu_
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::integer_<A1> >
+                          , boost::simd::std_tag
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, A1 a1
+                                    , bs::std_tag const &  ) const BOOST_NOEXCEPT
+    {
+      return std::ldexp(a0, a1);
+    }
+  };
+
 } } }
 
 

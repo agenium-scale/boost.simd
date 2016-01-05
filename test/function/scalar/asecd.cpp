@@ -17,6 +17,7 @@
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/mzero.hpp>
+#include <boost/simd/constant/two.hpp>
 
 
 STF_CASE_TPL (" asecd",  STF_IEEE_TYPES)

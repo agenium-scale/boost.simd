@@ -14,5 +14,6 @@
 
 #include <boost/simd/function/definition/remainder.hpp>
 #include <boost/simd/arch/common/scalar/function/remainder.hpp>
+#include <boost/simd/arch/common/generic/function/remainder.hpp>
 
 #endif
