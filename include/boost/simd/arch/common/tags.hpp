@@ -15,7 +15,6 @@
 #define BOOST_SIMD_ARCH_COMMON_TAGS_HPP_INCLUDED
 
 #include <boost/dispatch/hierarchy/cpu.hpp>
-#include <cstddef>
 
 namespace boost { namespace simd
 {
@@ -42,6 +41,15 @@ namespace boost { namespace simd
   {
     using parent = boost::simd::simd_;
   };
+
+  /// @brief tag indicating a wide register is stored natively
+  struct native_storage {};
+
+  /// @brief tag indicating a wide register is stored as a scalar aggregate
+  struct scalar_storage {};
+
+  /// @brief tag indicating a wide register is stored as a wide registers aggregate
+  struct aggregate_storage {};
 } }
 
 #endif
