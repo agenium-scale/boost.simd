@@ -9,10 +9,9 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_LOG2_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_LOG2_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_COSH_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_COSH_HPP_INCLUDED
 
-#include <boost/simd/arch/common/detail/scalar/logarithm.hpp>
 #include <boost/simd/options.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
@@ -21,18 +20,17 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
-
-  BOOST_DISPATCH_OVERLOAD ( log2_
+  namespace bs = boost::simd;
+  BOOST_DISPATCH_OVERLOAD ( cosh_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::arithmetic_<A0> >
-                          , boost::simd::std_tag
-                          )
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bs::std_tag
+                         )
   {
-    BOOST_FORCEINLINE A0 operator() (A0 a0
-                                    , std_tag const& ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0  a0, std_tag const&) const BOOST_NOEXCEPT
     {
-       return std::log2(a0);
+      return std::cosh(a0);
     }
   };
 } } }
