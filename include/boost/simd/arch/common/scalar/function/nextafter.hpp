@@ -40,7 +40,7 @@ namespace boost { namespace simd {
         return  (y >  x)  ? next(x) : ((y <  x) ?  prev(x) : x);
       }
     };
-    namespace bd = boost::dispatch;
+
     BOOST_DISPATCH_OVERLOAD ( nextafter_
                             , (typename A0)
                             , bd::cpu_
