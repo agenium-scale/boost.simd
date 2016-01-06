@@ -13,9 +13,11 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_MAXNUM_HPP_INCLUDED
 
 #include <boost/simd/function/scalar/is_nan.hpp>
+#include <boost/simd/options.hpp>
 #include <boost/simd/function/scalar/max.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
+#include <cmath>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -44,6 +46,20 @@ namespace boost { namespace simd { namespace ext
     {
       if (is_nan(a0)) return a1;
       else return simd::max(a1, a0);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( maxnum_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
+                          , boost::simd::std_tag
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1, std_tag const&) const BOOST_NOEXCEPT
+    {
+      return std::fmax(a0, a1);
     }
   };
 } } }
