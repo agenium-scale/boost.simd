@@ -61,24 +61,29 @@ STF_CASE_TPL (" log2int",  STF_INTEGRAL_TYPES)
   STF_ULP_EQUAL(log2(T(64)), T(6), 0);
 }
 
-STF_CASE_TPL (" log2 assert",  STF_IEEE_TYPES)
+STF_CASE_TPL (" log2 std",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
   using bs::log2;
-  using bs::assert_;
+  using bs::std_;
 
-  using r_t = decltype(log2(T()));
+  using r_t = decltype(log2(T(), bs::std_));
 
   // return type conformity test
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
+  // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(log2(bs::Inf<T>(), assert_), bs::Inf<r_t>(), 0);
-   STF_ULP_EQUAL(log2(bs::Nan<T>(), assert_), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(log2(bs::Inf<T>(), bs::std_), bs::Inf<r_t>(), 0);
+  STF_ULP_EQUAL(log2(bs::Minf<T>(), bs::std_), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(log2(bs::Nan<T>(), bs::std_), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(log2(bs::Mone<T>(), bs::std_), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(log2(bs::Zero<T>(), bs::std_), bs::Minf<r_t>(), 0);
 #endif
-  STF_ULP_EQUAL(log2(bs::Zero<T>()), bs::Minf<r_t>(), 0);
-  STF_ASSERT(log2(bs::Mzero<T>(), assert_));
-  STF_ASSERT(log2(bs::Mone<T>(), assert_));
+  STF_ULP_EQUAL(log2(bs::One<T>(), bs::std_), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(log2(T(2), bs::std_), T(1), 0);
+  STF_ULP_EQUAL(log2(T(8), bs::std_), T(3), 0);
+  STF_ULP_EQUAL(log2(T(64), bs::std_), T(6), 0);
 }

@@ -104,3 +104,35 @@ STF_CASE_TPL("ldexp fast", STF_IEEE_TYPES)
   STF_EQUAL(ldexp(bs::One <T>(), bs::Minexponent<T>()), bs::Smallestposval<r_t>());
   STF_EQUAL(ldexp(bs::One<T>()-bs::Halfeps<T>(),  bs::Maxexponent<T>(), fast_), bs::Valmax<T>()/2);
 }
+
+STF_CASE_TPL("ldexp std", STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::ldexp;
+
+  using bs::dec;
+  using iT = bd::as_integer_t<T>;
+  using r_t = decltype(ldexp(T(), iT()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, T);
+
+#ifndef STF_NO_INVALIDS
+  STF_EQUAL(ldexp(bs::Inf<T>(),  2, bs::std_), bs::Inf<r_t>());
+  STF_EQUAL(ldexp(bs::Minf<T>(), 2, bs::std_), bs::Minf<r_t>());
+  STF_IEEE_EQUAL(ldexp(bs::Nan<T>(),  2, bs::std_), bs::Nan<r_t>());
+#endif
+  STF_EQUAL(ldexp(bs::Mone<T>(), 2, bs::std_), -bs::Four<r_t>());
+  STF_EQUAL(ldexp(bs::One<T>(),  2, bs::std_), bs::Four<r_t>());
+  STF_EQUAL(ldexp(bs::Zero<T>(), 2, bs::std_), bs::Zero<r_t>());
+  STF_EQUAL(ldexp(bs::One <T>(), bs::Minexponent<T>(), bs::std_), bs::Smallestposval<r_t>());
+  STF_EQUAL(ldexp(bs::One<T>()-bs::Halfeps<T>(),  bs::Maxexponent<T>(), bs::std_), bs::Valmax<T>()/2);
+  STF_EQUAL(ldexp(bs::One<T>()-bs::Halfeps<T>(),  bs::Limitexponent<T>(), bs::std_), bs::Valmax<T>());
+#ifndef STF_NO_DENORMALS
+  STF_EQUAL(ldexp(bs::One <T>(), dec(bs::Minexponent<T>()), bs::std_), bs::Smallestposval<T>()/2);
+  STF_EQUAL(ldexp(bs::Two <T>(), dec(bs::Minexponent<T>()), bs::std_), bs::Smallestposval<T>());
+  STF_EQUAL(ldexp(bs::Two <T>(), dec(bs::Minexponent<T>()-1), bs::std_), bs::Smallestposval<T>()/2);
+  STF_EQUAL(ldexp(bs::One <T>(), bs::Minexponent<T>()-5, bs::std_), bs::Smallestposval<T>()/32);
+#endif
+}

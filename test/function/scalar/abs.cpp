@@ -53,3 +53,20 @@ STF_CASE_TPL( "Check abs behavior with exotic type", STF_IEEE_TYPES )
   STF_EQUAL(bs::abs(nontrivial<T>(1, 2)), nontrivial<T>(2, 6));
 }
 
+STF_CASE_TPL( "Check std abs behavior with floating", STF_IEEE_TYPES )
+{
+  namespace bs = boost::simd;
+  using bs::abs;
+  using r_t = decltype(abs(T()));
+  STF_TYPE_IS(r_t, T);
+
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_IEEE_EQUAL(abs(bs::Inf<T>(), bs::std_),  bs::Inf<r_t>());
+  STF_IEEE_EQUAL(abs(bs::Minf<T>(), bs::std_), bs::Inf<r_t>());
+  STF_IEEE_EQUAL(abs(bs::Nan<T>(), bs::std_),  bs::Nan<r_t>());
+#endif
+  STF_IEEE_EQUAL(abs(bs::Zero<T>(), bs::std_), bs::Zero<r_t>());
+  STF_IEEE_EQUAL(abs(bs::One<T>(), bs::std_),  bs::One<r_t>());
+  STF_IEEE_EQUAL(abs(bs::Mone<T>(), bs::std_), bs::One<r_t>());
+}
+
