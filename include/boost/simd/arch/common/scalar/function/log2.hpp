@@ -21,7 +21,6 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
-  namespace bs = boost::simd;
 
   BOOST_DISPATCH_OVERLOAD ( log2_
                           , (typename A0)
