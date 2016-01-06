@@ -15,7 +15,7 @@
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/function/scalar/inc.hpp>
-#include <boost/simd/function/scalar/nextafter.hpp>
+#include <boost/simd/function/scalar/successor.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
@@ -42,7 +42,8 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
-      return boost::simd::nextafter(a0, boost::simd::Inf<A0>());
+      if (a0 == Inf<A0>()) return a0;
+      return successor(a0);
     }
   };
 } } }

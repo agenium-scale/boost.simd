@@ -23,6 +23,7 @@
 #include <boost/simd/math.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
+#include <cmath>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -54,7 +55,7 @@ namespace boost { namespace simd { namespace ext
       if (!(v <=  Maxflint<A0>()))
         return a0;
       A0 c =  boost::simd::ceil(v);
-      return copysign(seldec(c-Half<A0>() > v, c), a0);
+       return copysign(seldec(c-Half<A0>() > v, c), a0);
     #endif
     }
   };
@@ -92,6 +93,19 @@ namespace boost { namespace simd { namespace ext
       A0 fac = tenpower(i_t(a1));
       A0 tmp = round(a0*fac)/fac;
       return is_ltz(a1) ? round(tmp) : tmp;
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( round_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bs::std_tag
+                         )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0  a0, std_tag const&) const BOOST_NOEXCEPT
+    {
+      return std::round(a0);
     }
   };
 } } }

@@ -29,6 +29,7 @@
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
+#include <cmath>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -54,6 +55,22 @@ namespace boost { namespace simd { namespace ext
       i_t e =  exponent(bs::max(i, r));
       e = bs::min(bs::max(e,Minexponent<A0>()),Maxexponentm1<A0>());
       return bs::ldexp(sqrt(sqr(bs::ldexp(r, -e))+sqr(bs::ldexp(i, -e))), e);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( hypot_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_<bd::floating_<A0> >
+                          , bd::scalar_<bd::floating_<A0> >
+                          , boost::simd::std_tag
+                          )
+  {
+
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1
+                                    , std_tag const&) const BOOST_NOEXCEPT
+    {
+      return std::hypot(a0, a1);
     }
   };
 } } }
