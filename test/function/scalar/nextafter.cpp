@@ -39,3 +39,4 @@ STF_CASE_TPL (" nextafter real",  STF_IEEE_TYPES)
   STF_EQUAL(nextafter(bs::Mone<T>(), bs::One<T>()), bs::Mone<r_t>()+bs::Eps<r_t>()/2);
   STF_EQUAL(nextafter(bs::Zero<T>(), bs::One<T>()), bs::Bitincrement<T>());
 }
+
