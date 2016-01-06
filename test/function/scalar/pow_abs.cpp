@@ -53,3 +53,28 @@ STF_CASE_TPL (" pow_abs",  STF_IEEE_TYPES)
 }
 
 
+STF_CASE_TPL("pow conformity",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::pow_abs;
+  using r_t =  decltype(pow_abs(T(), T()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, T);
+
+  // specific values tests
+  STF_ULP_EQUAL(pow_abs(T(0), T(-1)), bs::Inf<r_t>(), 0);
+  STF_ULP_EQUAL(pow_abs(T(0), T(-2)), bs::Inf<T>(), 0);
+  STF_ULP_EQUAL(pow_abs(T(1), bs::Nan<T>()), bs::One<T>(), 0);
+  STF_ULP_EQUAL(pow_abs(T(1), bs::Inf<T>()), bs::One<T>(), 0);
+  STF_ULP_EQUAL(pow_abs(bs::Inf<T>(), T(-2)),  bs::Zero<T>(), 0);
+  STF_ULP_EQUAL(pow_abs(bs::Inf<T>(), T( 2)),  bs::Inf<T>(), 0);
+  STF_ULP_EQUAL(pow_abs(T(0.5), bs::Inf<T>()),  bs::Zero<T>(), 0);
+  STF_ULP_EQUAL(pow_abs(T(2), bs::Inf<T>()),  bs::Inf<T>(), 0);
+  STF_ULP_EQUAL(pow_abs(T(0.5), bs::Minf<T>()),  bs::Inf<T>(), 0);
+  STF_ULP_EQUAL(pow_abs(T(2), bs::Minf<T>()),  bs::Zero<T>(), 0);
+  STF_ULP_EQUAL(pow_abs(bs::Nan<T>(), T(0)),  bs::One<T>(), 0);
+  STF_ULP_EQUAL(pow_abs(bs::Nan<T>(), -T(0)),  bs::One<T>(), 0);
+
+}
