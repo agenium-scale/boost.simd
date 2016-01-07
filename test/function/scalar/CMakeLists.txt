@@ -436,7 +436,10 @@ set ( SOURCES
    gamma.cpp
    tgamma.cpp
    signgam.cpp
-  )
+   erf.cpp
+   erfc.cpp
+   erfcx.cpp
+)
 
 make_unit( "boost.simd.function.scalar"   ${SOURCES})
 make_coverage("boost.simd.function.scalar"  ${SOURCES})
