@@ -20,6 +20,7 @@
 #include <boost/align/is_aligned.hpp>
 #include <boost/config.hpp>
 #include <iterator>
+#include <iostream>
 #include <cstddef>
 
 namespace boost { namespace simd
