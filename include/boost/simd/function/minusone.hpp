@@ -36,6 +36,10 @@ namespace boost { namespace simd
     @endcode
 
 
+    @par Alias
+
+    decs
+
     @return      a value of the same type as the input.
 
 
