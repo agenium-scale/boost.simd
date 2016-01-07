@@ -429,7 +429,6 @@ set ( SOURCES
    is_not_invalid.cpp
    decs.cpp
    incs.cpp
-   pluss.cpp
 #eulerian
    stirling.cpp
    gamma.cpp

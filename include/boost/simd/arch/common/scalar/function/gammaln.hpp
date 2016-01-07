@@ -73,7 +73,7 @@ namespace boost { namespace simd { namespace ext
       }
     }
   private:
-    BOOST_FORCEINLINE A0 gammaln_pos(A0 x) const BOOST_NOEXCEPT
+    static /*BOOST_FORCEINLINE*/ A0 gammaln_pos(A0 x) BOOST_NOEXCEPT
     {
       if( x < 6.5f )
       {
@@ -162,7 +162,7 @@ namespace boost { namespace simd { namespace ext
       }
     }
   private:
-    BOOST_FORCEINLINE A0 gammaln_pos(A0 x) const BOOST_NOEXCEPT
+    static /*BOOST_FORCEINLINE*/ A0 gammaln_pos(A0 x) BOOST_NOEXCEPT
     {
       if( x < 13.0 )
       {

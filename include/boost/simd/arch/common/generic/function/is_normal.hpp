@@ -18,7 +18,7 @@
 #include <boost/simd/function/is_not_denormal.hpp>
 #include <boost/simd/function/is_finite.hpp>
 #include <boost/simd/function/logical_and.hpp>
-#include <boost/simd/logical.hpp>
+#include <boost/simd/sdk/as_logical.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
@@ -32,7 +32,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::generic_< bd::arithmetic_<A0> >
                           )
   {
-    BOOST_FORCEINLINE logical<A0> operator() ( A0 ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE as_logical_t<A0> operator() ( A0 ) const BOOST_NOEXCEPT
     {
       return {true};
     }
@@ -43,7 +43,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::generic_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE logical<A0> operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE as_logical_t<A0> operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
       return is_not_denormal(a0) && is_finite(a0) && is_nez(a0);
     }
