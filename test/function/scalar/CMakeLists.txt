@@ -432,7 +432,6 @@ set ( SOURCES
 #eulerian
    stirling.cpp
    gamma.cpp
-   tgamma.cpp
    signgam.cpp
    erf.cpp
    erfc.cpp
