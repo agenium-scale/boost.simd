@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_ADDS_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_ADDS_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_PLUSS_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_PLUSS_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
@@ -20,27 +20,9 @@ namespace boost { namespace simd
 
     Computes the saturated sum of its parameters.
 
-    @par semantic:
-    For any given value @c x,  @c y of type @c T:
-
-    @code
-    T r = adds(x, y);
-    @endcode
-
-    The function coincide with plus for floating point parameters.
-    For integers is similar to:
-
-    @code
-    T r = (x+y > Valmax) ? Valmax : (x+y < Valmin ? Valmin : x+y);
-    @endcode
-
-    @par Alias pluss
-
-    @see  plus, oneplus, inc
-
-    @return      a value of the same type as the input.
+    This is a convenient alias of @ref adds
   **/
-  template<typename T> auto adds(T const& x) {}
+  template<typename T> auto pluss(T const& x) {}
 
   namespace functional
   {
@@ -50,17 +32,17 @@ namespace boost { namespace simd
       Computes the saturated sum of its parameters.
 
 
-      Function object tied to simd::adds
+      Function object tied to simd::pluss
 
-      @see simd::adds
+      @see simd::pluss
     **/
-    const boost::dispatch::functor<tag::adds_> adds = {};
+    const boost::dispatch::functor<tag::pluss_> pluss = {};
   }
 } }
 #endif
 
-#include <boost/simd/function/definition/adds.hpp>
+#include <boost/simd/function/definition/pluss.hpp>
 #include <boost/simd/arch/common/scalar/function/adds.hpp>
-#include <boost/simd/function/simd/adds.hpp>
+#include <boost/simd/function/simd/pluss.hpp>
 
 #endif
