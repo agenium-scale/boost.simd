@@ -432,7 +432,7 @@ set ( SOURCES
    incs.cpp
    pluss.cpp
 #eulerian
-   stirling.hpp
+   stirling.cpp
   )
 
 make_unit( "boost.simd.function.scalar"   ${SOURCES})
