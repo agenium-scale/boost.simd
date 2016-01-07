@@ -441,6 +441,7 @@ set ( SOURCES
    gammaln.cpp
 #libc
    is_lessgreater.cpp
+   is_normal.cpp
 )
 
 make_unit( "boost.simd.function.scalar"   ${SOURCES})
