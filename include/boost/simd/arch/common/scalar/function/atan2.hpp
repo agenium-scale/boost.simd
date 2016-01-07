@@ -22,6 +22,8 @@
 #include <boost/simd/function/scalar/is_gtz.hpp>
 #include <boost/simd/function/scalar/is_inf.hpp>
 #include <boost/simd/function/scalar/is_ltz.hpp>
+#include <boost/simd/function/scalar/is_negative.hpp>
+#include <boost/simd/function/scalar/is_positive.hpp>
 #include <boost/simd/function/scalar/is_nan.hpp>
 #include <boost/simd/function/scalar/signnz.hpp>
 #include <boost/dispatch/function/overload.hpp>
@@ -52,8 +54,38 @@ namespace boost { namespace simd { namespace ext
       }
       #endif
       A0 z = detail::invtrig_base<A0,tag::radian_tag, tag::not_simd_type>::kernel_atan(a0/a1);
-      z = if_else(is_gtz(a1), z, Pi<A0>()-z)*signnz(a0);
-      return if_else(is_eqz(a0), if_else_zero(is_ltz(a1), Pi<A0>()), z);
+      A0 sgn = signnz(a0);
+      z = if_else(is_positive(a1), z, Pi<A0>()-z)*sgn;
+      return if_else(is_eqz(a0), if_else_zero(is_negative(a1), Pi<A0>()*sgn), z);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( atan2_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bs::std_tag
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1, std_tag const&) const BOOST_NOEXCEPT
+    {
+      return std::atan2(a0, a1);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( atan2_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bs::fast_tag
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1, fast_tag const&) const BOOST_NOEXCEPT
+    {
+      A0 z = detail::invtrig_base<A0,tag::radian_tag, tag::not_simd_type>::kernel_atan(a0/a1);
+      return if_else(is_positive(a1), z, Pi<A0>()-z)*signnz(a0);
     }
   };
 } } }

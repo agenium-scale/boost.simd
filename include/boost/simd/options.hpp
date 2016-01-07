@@ -27,7 +27,7 @@ namespace boost { namespace simd
   struct fast_tag
   {
     using parent = fast_tag;
-    using hierarchy_tag = void; //dispatch::detail::hierarchy_tag;
+    using hierarchy_tag = void;
   };
 
   const fast_tag fast_ = {};
@@ -45,7 +45,7 @@ namespace boost { namespace simd
   struct assert_tag
   {
     using parent = assert_tag;
-    using hierarchy_tag = void; //dispatch::detail::hierarchy_tag;
+    using hierarchy_tag = void;
   };
 
   const assert_tag assert_ = {};
@@ -53,10 +53,18 @@ namespace boost { namespace simd
   struct throw_tag
   {
     using parent = throw_tag;
-    using hierarchy_tag = void; //dispatch::detail::hierarchy_tag;
+    using hierarchy_tag = void;
   };
 
   const throw_tag throw_ = {};
+
+  struct std_tag
+  {
+    using parent = std_tag;
+    using hierarchy_tag = void;
+  };
+
+  const std_tag std_ = {};
 } }
 
 #endif

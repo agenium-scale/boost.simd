@@ -41,8 +41,8 @@ STF_CASE_TPL (" hypot real",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(hypot(bs::Mone<T>(), bs::Mone<T>()), bs::Sqrt_2<r_t>(), 0.5);
   STF_ULP_EQUAL(hypot(bs::One<T>(), bs::One<T>()), bs::Sqrt_2<r_t>(), 0.5);
   STF_ULP_EQUAL(hypot(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>(), 0);
-  STF_ULP_EQUAL(hypot(bs::Valmax<T>(), bs::Zero<T>()), bs::Valmax<T>(), 0.5);
-  STF_ULP_EQUAL(hypot(bs::Zero<T>(), bs::Valmax<T>()), bs::Valmax<T>(), 0.5);
+  STF_ULP_EQUAL(hypot(bs::Valmax<T>(), bs::Zero<T>()), bs::Valmax<T>(), 0);
+  STF_ULP_EQUAL(hypot(bs::Zero<T>(), bs::Valmax<T>()), bs::Valmax<T>(), 0);
 } // end of test for floating_
 
 
@@ -51,7 +51,7 @@ STF_CASE_TPL (" hypot real fast",  STF_IEEE_TYPES)
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
   using bs::hypot;
-  using r_t = decltype(hypot(T(), T()));
+  using r_t = decltype(hypot(T(), T(), bs::fast_));
 
   // return type conformity test
   STF_TYPE_IS(r_t, T);
@@ -67,6 +67,31 @@ STF_CASE_TPL (" hypot real fast",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(hypot(bs::Mone<T>(), bs::Mone<T>(), bs::fast_), bs::Sqrt_2<r_t>(), 0.5);
   STF_ULP_EQUAL(hypot(bs::One<T>(), bs::One<T>(), bs::fast_), bs::Sqrt_2<r_t>(), 0.5);
   STF_ULP_EQUAL(hypot(bs::Zero<T>(), bs::Zero<T>(), bs::fast_), bs::Zero<T>(), 0);
-  STF_ULP_EQUAL(hypot(bs::Valmax<T>(), bs::Zero<T>(), bs::fast_), bs::Inf<T>(), 0.5);
-  STF_ULP_EQUAL(hypot(bs::Zero<T>(), bs::Valmax<T>(), bs::fast_), bs::Inf<T>(), 0.5);
+  STF_ULP_EQUAL(hypot(bs::Valmax<T>(), bs::Zero<T>(), bs::fast_), bs::Inf<T>(), 0);
+  STF_ULP_EQUAL(hypot(bs::Zero<T>(), bs::Valmax<T>(), bs::fast_), bs::Inf<T>(), 0);
+} // end of test for floating_
+
+STF_CASE_TPL (" hypot real std",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::hypot;
+  using r_t = decltype(hypot(T(), T(), bs::std_));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, T);
+
+  // specific values tests
+#ifndef STF_NO_INVALIDS
+  STF_ULP_EQUAL(hypot(bs::Inf<T>(), bs::Inf<T>(), bs::std_), bs::Inf<r_t>(), 0);
+  STF_ULP_EQUAL(hypot(bs::Minf<T>(), bs::Minf<T>(), bs::std_), bs::Inf<r_t>(), 0);
+  STF_ULP_EQUAL(hypot(bs::Nan<T>(), bs::Nan<T>(), bs::std_), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(hypot(bs::Nan<T>(), bs::Inf<T>(), bs::std_), bs::Inf<r_t>(), 0);
+  STF_ULP_EQUAL(hypot(bs::Inf<T>(), bs::Nan<T>(), bs::std_), bs::Inf<r_t>(), 0);
+#endif
+  STF_ULP_EQUAL(hypot(bs::Mone<T>(), bs::Mone<T>(), bs::std_), bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(hypot(bs::One<T>(), bs::One<T>(), bs::std_), bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(hypot(bs::Zero<T>(), bs::Zero<T>(), bs::std_), bs::Zero<T>(), 0);
+  STF_ULP_EQUAL(hypot(bs::Valmax<T>(), bs::Zero<T>(), bs::std_), bs::Valmax<T>(), 0);
+  STF_ULP_EQUAL(hypot(bs::Zero<T>(), bs::Valmax<T>(), bs::std_), bs::Valmax<T>(), 0);
 } // end of test for floating_

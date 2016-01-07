@@ -63,6 +63,23 @@ namespace boost { namespace simd { namespace ext
       return {first, second};
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( modf_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_ < bd::arithmetic_<A0> >
+                          , bd::scalar_ < bd::arithmetic_<A0> >
+                          , bs::std_tag
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 & ent, std_tag const&) const BOOST_NOEXCEPT
+    {
+      A0 frac;
+      frac = std::modf(a0,&ent);
+      return frac;
+    }
+  };
+
 } } }
 
 

@@ -25,7 +25,7 @@
 #include <boost/simd/function/scalar/sqr.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
-
+#include <cmath>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -69,6 +69,19 @@ namespace boost { namespace simd { namespace ext
         }
         return bitwise_xor(r, bitofsign(a0));
       }
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( sinh_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bs::std_tag
+                         )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0  a0, std_tag const&) const BOOST_NOEXCEPT
+    {
+      return std::sinh(a0);
     }
   };
 } } }

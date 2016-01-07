@@ -20,8 +20,9 @@
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/two.hpp>
 #include <boost/simd/function/oneplus.hpp>
-// TODO double when times come
-STF_CASE_TPL (" correct_fma real",  (float))//STF_IEEE_TYPES)
+#include <cmath>
+
+STF_CASE_TPL (" correct_fma real",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
 
@@ -76,4 +77,24 @@ STF_CASE_TPL (" correct_fma unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
   STF_EQUAL(correct_fma(bs::Zero<T>(), bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
 } // end of test for unsigned_int_
 
+STF_CASE_TPL (" correct_fma std real",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
 
+  using bs::correct_fma;
+
+  // return type conformity test
+  STF_EXPR_IS(correct_fma(T(),T(),T()), T);
+
+  // specific values tests
+#ifndef STF_NO_INVALIDS
+  STF_EQUAL(correct_fma(bs::Inf<T>(), bs::Inf<T>(), bs::Inf<T>(), bs::std_), bs::Inf<T>());
+  STF_IEEE_EQUAL(correct_fma(bs::Minf<T>(), bs::Minf<T>(), bs::Minf<T>(), bs::std_), bs::Nan<T>());
+  STF_IEEE_EQUAL(correct_fma(bs::Nan<T>(), bs::Nan<T>(), bs::Nan<T>(), bs::std_), bs::Nan<T>());
+#endif
+  STF_EQUAL(correct_fma(bs::Mone<T>(), bs::Mone<T>(), bs::Mone<T>(), bs::std_), bs::Zero<T>());
+  STF_EQUAL(correct_fma(bs::One<T>(), bs::One<T>(), bs::One<T>(), bs::std_), bs::Two<T>());
+  STF_EQUAL(correct_fma(bs::One<T>()+bs::Eps<T>(), bs::One<T>()-bs::Eps<T>(),bs::Mone<T>(), bs::std_), -bs::Eps<T>()*bs::Eps<T>());
+  STF_EQUAL(correct_fma(bs::Zero<T>(), bs::Zero<T>(), bs::Zero<T>(), bs::std_), bs::Zero<T>());
+  STF_EQUAL(correct_fma(bs::Valmax<T>(), bs::Two<T>(), -bs::Valmax<T>(), bs::std_), bs::Valmax<T>());
+} // end of test for floating_

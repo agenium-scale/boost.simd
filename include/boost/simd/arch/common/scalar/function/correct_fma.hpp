@@ -11,6 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_CORRECT_FMA_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_CORRECT_FMA_HPP_INCLUDED
 
+#include <boost/simd/options.hpp>
 #include <boost/simd/function/scalar/bitwise_cast.hpp>
 #include <boost/simd/function/scalar/exponent.hpp>
 #include <boost/simd/function/scalar/ldexp.hpp>
@@ -22,6 +23,7 @@
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
+#include <cmath>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -107,6 +109,21 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1, A0 a2) const BOOST_NOEXCEPT
     {
       return multiplies(a0, a1)+a2;
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( correct_fma_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
+                          , boost::simd::std_tag
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1, A0 a2, std_tag const&) const BOOST_NOEXCEPT
+    {
+      return std::fma(a0, a1, a2);
     }
   };
 } } }

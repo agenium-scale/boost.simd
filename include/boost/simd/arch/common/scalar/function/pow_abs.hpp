@@ -31,6 +31,7 @@
 #include <boost/simd/function/frexp.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/is_eqz.hpp>
+#include <boost/simd/function/is_ltz.hpp>
 #include <boost/simd/function/ldexp.hpp>
 #include <boost/simd/function/pow2.hpp>
 #include <boost/simd/function/sqr.hpp>
@@ -57,7 +58,7 @@ namespace boost { namespace simd { namespace ext
       const i_t Sixteen = Ratio<i_t, 16>();
       A0 x =  bs::abs(a0);
       if (x == One<A0>()) return x;
-      if (is_eqz(x)) return is_eqz(a1);
+      if (is_eqz(x)) return is_eqz(a1) ? One<A0>() : is_ltz(a1) ? Inf<A0>() : Zero<A0>();
     #ifndef BOOST_SIMD_NO_INFINITIES
       if(x == a1 && a1 == Inf<A0>())  return Inf<A0>();
       if(x == Inf<A0>() && a1 == Minf<A0>()) return Zero<A0>();
@@ -66,7 +67,8 @@ namespace boost { namespace simd { namespace ext
       if(x == Inf<A0>()) return (a1 < Zero<A0>()) ? Zero<A0>() : ((a1 == Zero<A0>()) ? One<A0>() : Inf<A0>());
     #endif
     #ifndef BOOST_SIMD_NO_INVALIDS
-      if(is_nan(a0) || is_nan(a1)) return Nan<A0>();
+      if(is_nan(a0)) return is_eqz(a1) ? One<A0>() : a0;
+      if(is_nan(a1)) return Nan<A0>();
     #endif
       i_t e;
       x = frexp(x, e);
