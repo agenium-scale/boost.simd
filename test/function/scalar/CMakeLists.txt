@@ -443,6 +443,7 @@ set ( SOURCES
 #libc
    is_lessgreater.cpp
    is_normal.cpp
+   fabs.cpp
 )
 
 make_unit( "boost.simd.function.scalar"   ${SOURCES})
