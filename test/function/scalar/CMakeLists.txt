@@ -434,6 +434,7 @@ set ( SOURCES
    stirling.cpp
    gamma.cpp
    tgamma.cpp
+   signgam.cpp
   )
 
 make_unit( "boost.simd.function.scalar"   ${SOURCES})
