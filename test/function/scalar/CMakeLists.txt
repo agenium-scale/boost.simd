@@ -444,6 +444,7 @@ set ( SOURCES
    is_lessgreater.cpp
    is_normal.cpp
    fabs.cpp
+   fpclassify.cpp
 )
 
 make_unit( "boost.simd.function.scalar"   ${SOURCES})
