@@ -438,6 +438,7 @@ set ( SOURCES
    erf.cpp
    erfc.cpp
    erfcx.cpp
+   gammaln.cpp
 )
 
 make_unit( "boost.simd.function.scalar"   ${SOURCES})
