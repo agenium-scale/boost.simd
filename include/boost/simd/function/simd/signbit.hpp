@@ -9,12 +9,11 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_SIMD_REMAINDER_INCLUDED
-#define BOOST_SIMD_FUNCTION_SIMD_REMAINDER_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_SIMD_SIGNBIT_INCLUDED
+#define BOOST_SIMD_FUNCTION_SIMD_SIGNBIT_INCLUDED
 
-#include <boost/simd/function/scalar/remainder.hpp>
-//#include <boost/simd/arch/common/function/simd/remainder.hpp>
+#include <boost/simd/function/scalar/signbit.hpp>
+//#include <boost/simd/arch/common/function/simd/is_negative.hpp>
 
 #endif
-
 
