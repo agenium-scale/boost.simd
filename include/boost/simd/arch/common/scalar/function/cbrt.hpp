@@ -20,6 +20,7 @@
 #include <boost/simd/constant/twotomnmbo_3.hpp>
 #include <boost/simd/constant/twotonmb.hpp>
 #endif
+#include <boost/simd/options.hpp>
 #include <boost/simd/arch/common/detail/generic/horner.hpp>
 #include <boost/simd/constant/constant.hpp>
 #include <boost/simd/constant/one.hpp>
@@ -37,6 +38,7 @@
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
+#include <cmath>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -156,6 +158,19 @@ namespace boost { namespace simd { namespace ext
     #else
       return bitwise_or(x, bitofsign(a0));
     #endif
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( cbrt_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bs::std_tag
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0  a0,  bs::std_tag const&) const BOOST_NOEXCEPT
+    {
+      return std::cbrt(a0);
     }
   };
 } } }
