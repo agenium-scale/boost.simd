@@ -16,17 +16,17 @@
 
 #include <boost/simd/sdk/predef.hpp>
 
-#if BOOST_HW_SIMD_X86 == BOOST_HW_SIMD_X86_FMA3_VERSION
-
-#ifndef BOOST_SIMD_DEFAULT_FAMILY
-  #define BOOST_SIMD_DEFAULT_FAMILY  ::boost::simd::avx_
+#if !defined(BOOST_SIMD_DEFAULT_FAMILY)
+  #if BOOST_HW_SIMD_X86 == BOOST_HW_SIMD_X86_FMA3_VERSION
+    #define BOOST_SIMD_DEFAULT_FAMILY ::boost::simd::avx_
+    #define BOOST_SIMD_DEFAULT_SITE   ::boost::simd::fma3_
+  #endif
 #endif
 
-#define BOOST_SIMD_DEFAULT_SITE       ::boost::simd::fma3_
-
-#include <immintrin.h>
-#include <boost/simd/arch/x86/sse2/as_simd.hpp>
-#include <boost/simd/arch/x86/avx/as_simd.hpp>
-
+#if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_FMA3_VERSION
+  #include <immintrin.h>
+  #include <boost/simd/arch/x86/fma3/as_simd.hpp>
+  #include <boost/simd/arch/x86/fma3/pack_traits.hpp>
 #endif
+
 #endif

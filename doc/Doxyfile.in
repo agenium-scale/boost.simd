@@ -90,6 +90,8 @@ SEARCH_INCLUDES         = YES
 INCLUDE_PATH            = @Boost.SIMD_SOURCE_DIR@/include
 INCLUDE_FILE_PATTERNS   =
 PREDEFINED              = DOXYGEN_ONLY
+PREDEFINED              += BOOST_NOEXCEPT=noexcept
+PREDEFINED              += BOOST_FORCEINLINE=
 SKIP_FUNCTION_MACROS    = NO
 
 # Source browsing

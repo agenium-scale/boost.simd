@@ -23,40 +23,40 @@
 */
 
 #if defined(_MSC_VER)
-  #if defined(BOOST_SIMD_HAS_SSE3_SUPPORT)
-  #define __SSE3__
+  #if defined(BOOST_SIMD_ASSUME_SSE3)
+    #define __SSE3__
   #endif
 
-  #if defined(BOOST_SIMD_HAS_SSSE3_SUPPORT)
-  #define __SSSE3__
+  #if defined(BOOST_SIMD_ASSUME_SSSE3)
+    #define __SSSE3__
   #endif
 
-  #if defined(BOOST_SIMD_HAS_SSE4_1_SUPPORT)
-  #define __SSE4_1__
+  #if defined(BOOST_SIMD_ASSUME_SSE4_1)
+    #define __SSE4_1__
   #endif
 
-  #if defined(BOOST_SIMD_HAS_SSE4_2_SUPPORT)
-  #define __SSE4_2__
+  #if defined(BOOST_SIMD_ASSUME_SSE4_2)
+    #define __SSE4_2__
   #endif
 
-  #if defined(BOOST_SIMD_HAS_SSE4A_SUPPORT)
-  #define __SSE4A__
+  #if defined(BOOST_SIMD_ASSUME_SSE4A)
+    #define __SSE4A__
   #endif
 
-  #if defined(BOOST_SIMD_HAS_XOP_SUPPORT)
-  #define __XOP__
+  #if defined(BOOST_SIMD_ASSUME_XOP)
+    #define __XOP__
   #endif
 
-  #if defined(BOOST_SIMD_HAS_FMA4_SUPPORT)
-  #define __FMA4__
+  #if defined(BOOST_SIMD_ASSUME_FMA4)
+    #define __FMA4__
   #endif
 
-  #if defined(BOOST_SIMD_HAS_FMA3_SUPPORT)
-  #define __FMA3__
+  #if defined(BOOST_SIMD_ASSUME_FMA3)
+    #define __FMA3__
   #endif
 
-  #if defined(BOOST_SIMD_HAS_MIC_SUPPORT)
-  #define __MIC__
+  #if defined(BOOST_SIMD_ASSUME_MIC)
+    #define __MIC__
   #endif
 #endif
 

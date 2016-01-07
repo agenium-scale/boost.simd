@@ -16,16 +16,17 @@
 
 #include <boost/simd/sdk/predef.hpp>
 
-#if BOOST_HW_SIMD_X86 == BOOST_HW_SIMD_X86_MIC_VERSION
-
-#ifndef BOOST_SIMD_DEFAULT_FAMILY
-  #define BOOST_SIMD_DEFAULT_FAMILY  ::boost::simd::mic_
+#if !defined(BOOST_SIMD_DEFAULT_FAMILY)
+  #if BOOST_HW_SIMD_X86 == BOOST_HW_SIMD_X86_MIC_VERSION
+    #define BOOST_SIMD_DEFAULT_FAMILY ::boost::simd::mic_
+    #define BOOST_SIMD_DEFAULT_SITE   ::boost::simd::mic_
+  #endif
 #endif
 
-#define BOOST_SIMD_DEFAULT_SITE       ::boost::simd::mic_
-
-#include <immintrin.h>
-#include <boost/simd/arch/x86/mic/as_simd.hpp>
-
+#if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_MIC_VERSION
+  #include <immintrin.h>
+  #include <boost/simd/arch/x86/mic/as_simd.hpp>
+  #include <boost/simd/arch/x86/mic/pack_traits.hpp>
 #endif
+
 #endif
