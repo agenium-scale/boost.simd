@@ -439,6 +439,8 @@ set ( SOURCES
    erfc.cpp
    erfcx.cpp
    gammaln.cpp
+#libc
+   is_lessgreater.cpp
 )
 
 make_unit( "boost.simd.function.scalar"   ${SOURCES})
