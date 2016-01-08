@@ -16,7 +16,7 @@ namespace boost { namespace simd
 {
   /*!
     @ingroup group-functions
-    @defgroup group-operator Native C++ operators
+    @defgroup group-operator Operators
 
     Those functions provides scalar and SIMD version of the native C and C++ operators.
   **/
