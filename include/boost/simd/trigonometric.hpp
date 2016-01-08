@@ -16,7 +16,7 @@ namespace boost { namespace simd
 {
   /*!
     @ingroup group-functions
-    @defgroup group-trigonometric Trigonometric Functions
+    @defgroup group-trigonometric Trigonometric functions
 
     Algorithms for computing scalar and SIMD version of
     trigonometric and inverse trigonometric functions.

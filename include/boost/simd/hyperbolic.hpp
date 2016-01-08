@@ -16,10 +16,10 @@ namespace boost { namespace simd
 {
   /*!
     @ingroup group-functions
-    @defgroup group-hyperbolic Native C++ hyperbolics
+    @defgroup group-hyperbolic  Hyperbolic functions
 
     Those functions provides scalar and SIMD version of
-    hyperbolic  and inverse hyperbolic functionss.
+    hyperbolic  and inverse hyperbolic functions.
   **/
 
   /*!
