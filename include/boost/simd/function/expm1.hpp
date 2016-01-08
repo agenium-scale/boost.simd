@@ -35,8 +35,11 @@ namespace boost { namespace simd
     T r = minusone(exp(x));
     @endcode
 
-    \par Note:
-    result is accurate even for x of small modulus
+    @par Notes:
+
+    - result is accurate even for x of small modulus
+
+    - exp2(x, std_) use the call to std::exp2 from stdlibc++
 
     @see exp
 

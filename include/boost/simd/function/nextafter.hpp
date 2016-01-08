@@ -37,10 +37,15 @@ namespace boost { namespace simd
 
     @see next, prev, successor, predecessor
 
+    @par Note:
+    C++11 standard library also defines nexttoward, but as (for SIMD consideration)
+    x and y must be here of type,  the two function would coincide and nexttoward is not
+    defined in boost.simd.
+
     @return a value of same type as the inputs
 
 **/
-  template<typename T> auto nextafter(T const& x) {}
+  template<typename T> auto nextafter(T const& x, T const& y) {}
 
   namespace functional
   {

@@ -33,11 +33,13 @@ namespace boost { namespace simd
 
     @par Note:
 
-    log(x) return Nan for negative enties (peculiarly Mzero
+    - log(x) return Nan for negative enties (peculiarly Mzero
     for floating numbers).
 
-    The call log(x, assert_) asserts is x is negative (peculiarly
+    - The call log(x, assert_) asserts is x is negative (peculiarly
     take care that it asserts for Mzero but not Zero in case of floating numbers)
+
+    - log(x, std_) use the call to std::log from stdlibc++
 
     @see is_negative,  Mzero
 

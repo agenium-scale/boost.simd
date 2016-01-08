@@ -37,7 +37,7 @@ namespace boost { namespace simd
     @par Note
 
     The result can be negative for signed integers as @ref abs(@ref Valmin) is @ref Valmin.
-    To avoid the problem you can use the saturated version dists.
+    To avoid the problem you can use the saturated version @ref dists.
 
 
     @see  dists, ulpdist

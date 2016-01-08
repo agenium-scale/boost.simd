@@ -36,7 +36,10 @@ namespace boost { namespace simd
     @endcode
 
     @par Note:
-    provisions are made for otaining a flint result from a flint input
+
+    - provisions are made to obtain a flint result from a flint input
+
+    - exp2(x, std_) use the call to std::exp2 from stdlibc++
 
     @see exp, exp10, pow, pow2
 

@@ -38,23 +38,26 @@ namespace boost { namespace simd
 
     @par Note:
 
-    For integer x*y+z is performed
+    - For integer x*y+z is performed
 
-    For floating points numbers, always computes the correct fused multiply add,
+    - For floating points numbers, always computes the correct fused multiply add,
     this means the computation of x*y+z with only one rounding operation.
     On machines not possessing this hard wired capability this can be very
     expansive.
 
-    @c correct_fma is in fact a transitory function that allows to ensure
+    - @c correct_fma is in fact a transitory function that allows to ensure
     strict @ref fma capabilities,  i.e. only one rounding operation and no undue
     overflow in intermediate computations.
 
-    If you are using this function for a system with no hard wired @ref fma
+    - If you are using this function for a system with no hard wired @ref fma
     and are sure that overflow is not a problem
     you can define BOOST_SIMD_DONT_CARE_CORRECT_FMA_OVERFLOW to get better
-    performances
+    performances.
 
-    This function is never used internally in boost/simd.
+    - If correct_fma is called with a fourth parameter std_, the stdlic++ std::fma
+    is called.
+
+    correct_fma is never used internally in boost.simd.
 
     @see  fma
 
