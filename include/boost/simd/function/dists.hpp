@@ -36,9 +36,14 @@ namespace boost { namespace simd
 
     @par Note
 
-    The result is never negative. For floating, it can of course be @ref Nan.
+    The result is never stricly negative moreover it satisfies the predicate
 
-    @see  ulpdist
+     @code  is_positive(dist(x, y)) || is_unord(x, y) @endcode
+
+
+    For floating, it can of course be @ref Nan.
+
+    @see  abss, ulpdist
 
     @return      a value of the same type as the input.
 

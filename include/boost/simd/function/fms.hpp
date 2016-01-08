@@ -34,7 +34,11 @@ namespace boost { namespace simd
     T r = x*y-z;
     @endcode
 
-    @see fma,  correct_fma
+    @par Note:
+
+    fms can be called with the same syntax as @ref fma
+
+    @see fma, fnma, fnms, correct_fma
 
     @return a value of the same type as the input.
 

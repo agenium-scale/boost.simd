@@ -30,7 +30,7 @@ namespace boost { namespace simd
     T r = remainder(x, y);
     @endcode
 
-    For floating point values the code is equivalent to:
+    For floating point values the code is similar to:
 
     @code
     T r = x-divround2even(x, y)*y;
@@ -40,7 +40,17 @@ namespace boost { namespace simd
 
     As r can be negative, @c remainder is not defined for unsigned types.
 
+    For floating entries:
+       -  if x is +/-inf , Nan is returned
+       -  If y is +/-0   , Nan is returned
+       -  If either argument is NaN, Nan is returned
+       -  If the returned value is 0, it will have the same sign as x.
+
+    If correct values for these limit cases do not matter for you, calling
+    remainder(x, y, fast_) can gain some cycles.
+
     @see mod, rem, modulo
+
     @par Alias
 
     @c drem

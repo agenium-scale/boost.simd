@@ -22,7 +22,7 @@ namespace boost { namespace simd
     Returns a logical scalar that is the result of the lexicographic
     test for >= on all elements of the entries
 
-    It is probably not what you wish. Have a look to is_greater_equal.
+    It is probably not what you wish. Have a look to @ref is_greater_equal.
 
     This is a convenient alias of @ref compare_greater_equal
 **/

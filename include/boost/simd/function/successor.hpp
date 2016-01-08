@@ -30,8 +30,8 @@ namespace boost { namespace simd
     computes the @c n-th least representable value strictly greater than x in its type.
     n must be positive or null.
 
-    For integer it saturate at @ref Valmax, for floating point numbers @ref Inf
-    strict successor are @ref Nan.
+    For integer it saturate at @ref Valmax, for floating point numbers, all @ref Inf
+    strict successors are @ref Nan.
 
     @return a value of same type as the inputs
 

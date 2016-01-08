@@ -29,10 +29,10 @@ namespace boost { namespace simd
     @endcode
 
     This function coincides with @ref minus for floating point parameters.
-    For integers is similar to:
+    For integral type, it is similar to:
 
     @code
-    T r = (x-y > Valmax) ? Valmax : (x-y <  Valmin ? Valmin : x-y);
+    T r = (x-y > Valmax) ? Valmax : (x-y < Valmin ? Valmin : x-y);
     @endcode
 
     @return      a value of the same type as the input.

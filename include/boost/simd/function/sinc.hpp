@@ -16,17 +16,34 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-hyperbolic
+  @ingroup group-trigonometric
 
-    Computes sinc value of its parameter.
+    Computes the sinus cardinal  value of its parameter that is sin(x)/x.
 
+    @par Semantic:
+
+    For every parameter of floating type T
+
+    @code
+    T r = sinc(x);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = x ? sin(x)/x : One;
+    @endcode
+
+    @see sin, sincpi, sinhc
+
+    @return a value of the same type as the parameter
   **/
   template<typename T> auto sinc(T const& x) {}
 
   namespace functional
   {
     /*!
-      @ingroup group-callable-hyperbolic
+      @ingroup group-callable-trigonometric
 
       Function object tied to simd::sinc
 

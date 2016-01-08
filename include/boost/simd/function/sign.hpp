@@ -36,6 +36,7 @@ namespace boost { namespace simd
     T r = (x > 0) ? T(1) : ((x < 0) ? T(-1) : ((x == 0) ? 0 : Nan<T>()));
     @endcode
 
+    @see signnz, is_negative, is_positive,  bitofsign
 
     @return a value of same type as the input
 

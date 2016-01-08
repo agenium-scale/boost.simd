@@ -19,6 +19,7 @@ namespace boost { namespace simd
     @ingroup group-arithmetic
 
     Computes the saturated absolute value of its parameter.
+    The result is always positive or 0.
 
     @par Semantic
 
@@ -39,7 +40,8 @@ namespace boost { namespace simd
     For integral types, the function always returns a positive value of the same type as the
     entry. For floating types @ref Nan is the obvious and lone exception to this rule.
 
-    This is generally equivalent to @c abs functor except for signed integer
+    @par Note
+    This functor is generally equivalent to @c abs functor except for signed integer
     types for which \c abss(@ref Valmin) is  @ref Valmax.
 
     @see  abs, sqr_abss, sqrs

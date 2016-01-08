@@ -29,6 +29,10 @@ namespace boost { namespace simd
 
     computes the smallest integral value of type @c T greater or equal to @c x.
 
+    @par Note
+
+    ceil(x, std_) use the call to std::ceil from stdlibc++
+
     @see  floor, round, round2even, trunc, iceil
 
     @return      an integral value of the same type as the input.

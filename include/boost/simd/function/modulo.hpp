@@ -20,7 +20,8 @@ namespace boost { namespace simd
     @ingroup group-arithmetic
 
     return the elementwise modulo of the two parameters
-    Infix notation can be used with operator '\%'
+    Infix notation can be used with operator '\%'.
+
     Does not work for floating point entries.
 
     @par Semantic:

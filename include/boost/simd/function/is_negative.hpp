@@ -49,6 +49,10 @@ namespace boost { namespace simd
 
     behaviour of is_negative on @ref Nan entry is undefined.
 
+    @par Alias
+
+    signbit
+
     @see is_positive,  Mzero, bitofsign
 
     @return a logical value

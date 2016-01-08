@@ -36,7 +36,7 @@ namespace boost { namespace simd
     @endcode
 
     @par Note
-    If x is non @ref Zero the result is @ref Zero. Take care that negatenz distinguish
+    If x is  null the result is @ref \f$\pm0\f$. Take care that negatenz distinguish
     between the signs of T(0) and -T(0) when T is a floating type.
 
     @see negatenz, Mzero, is_positive, is_negative

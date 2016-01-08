@@ -24,7 +24,7 @@ namespace boost { namespace simd
     i.e. return @ref True if and only if two corresponding entries
     elements are not equal.
 
-    It is probably not what you wish. Have a look to <tt>is_not_equal</tt>
+    It is probably not what you wish. Have a look to @ref is_not_equal
 
     This is a convenient alias of @ref compare_not_equal
 **/

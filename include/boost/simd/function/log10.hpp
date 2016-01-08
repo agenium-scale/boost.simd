@@ -36,13 +36,15 @@ namespace boost { namespace simd
     T r = log(x)/log(10);
     @endcode
 
-    log10(x) return Nan for negative enties (peculiarly Mzero
+    - log10(x) return Nan for negative enties (peculiarly Mzero
     for floating numbers).
 
-    The call log10(x, assert_) asserts is x is negative (peculiarly
+    - The call log10(x, assert_) asserts is x is negative (peculiarly
     take care that it asserts for Mzero but not Zero in case of floating numbers)
 
-    @see log, log2, log1p, is_negative,  Mzero
+    - log10(x, std_) use the call to std::log10 from stdlibc++
+
+    @see log, log2, log1p, is_negative, Mzero
 
     @return a value of the same type as the parameter
 

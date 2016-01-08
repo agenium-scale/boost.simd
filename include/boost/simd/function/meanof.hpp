@@ -39,6 +39,7 @@ namespace boost { namespace simd
     from \c ceil((a+b)/2.0) or \c floor((a+b)/2.0), but is always one of
     the two values.
 
+    @see average
 
     @return a value of the same type as the input.
 

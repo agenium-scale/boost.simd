@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     Returns the entry plus one, saturated in the entry type.
 
-    This is a convenient alias of @ref oneplus
+    This is a convenient alias of @ref abs
   **/
   template<typename T> auto incs(T const& x) {}
 
@@ -42,5 +42,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/definition/incs.hpp>
 #include <boost/simd/arch/common/generic/function/oneplus.hpp>
+//#include <boost/simd/function/simd/incs.hpp>
 
 #endif

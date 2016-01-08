@@ -36,7 +36,7 @@ namespace boost { namespace simd
     @par Alias:
     @c fmin
 
-
+    With a third parameter std_  minnum(x, y, std_) calls the stdlibc++ function std::fmin.
 
     @return a value of same type as the inputs
 

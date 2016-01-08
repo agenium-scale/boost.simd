@@ -62,7 +62,7 @@ namespace boost { namespace simd
     If you intend to use @ref Nan and @ref Inf entries,  consider using @ref toints instead.
     Nethertheless, on integral typed values, @c toint acts as identity.
 
-    @see toints
+    @see toints, touint, touints
 
     @return      a value of the integer type associated to the input.
 

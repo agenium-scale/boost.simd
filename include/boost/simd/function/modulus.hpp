@@ -29,7 +29,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-arithmetic
 
-      Computes the modulusolute value of its parameter.
+      Computes the absolute value of its parameter.
 
 
       Function object tied to simd::modulus
@@ -42,7 +42,7 @@ namespace boost { namespace simd
 #endif
 
 #include <boost/simd/function/definition/modulus.hpp>
-#include <boost/simd/arch/common/scalar/function/modulus.hpp>
+#include <boost/simd/arch/common/scalar/function/abs.hpp>
 #include <boost/simd/function/simd/modulus.hpp>
 
 #endif

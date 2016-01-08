@@ -39,7 +39,8 @@ namespace boost { namespace simd
     @endcode
 
     @par Note:
-    This is an utility function related to the computation of flating successors or predecessors
+    This is an utility function related to the computation of floating
+    successors or predecessors
 
     @see next, prev, successor,  predecessor,  nextafter
 

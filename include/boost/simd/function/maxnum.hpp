@@ -36,6 +36,8 @@ namespace boost { namespace simd
     @par Alias:
     @c fmax
 
+    With a third parameter std_  maxnum(x, y, std_) calls the stdlibc++ function std::fmax.
+
     @see max, maxnummag,  maxmag
 
     @return a value of same type as the inputs

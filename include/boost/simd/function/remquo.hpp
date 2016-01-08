@@ -45,9 +45,17 @@ namespace boost { namespace simd
     computes the two values.
 
     @par Note
-    This function mimics a standard C library one that was mainly written in its time to
-    help computation of trigonometric functions : three bits of quo allowing to know the
-    'quadrant'
+
+      - This function mimics a standard C library one that was mainly written in its time to
+      help computation of periodic functions : three bits of quo allowing to know the
+      'octant'
+
+      - Your implementation differs from std::remquo as the quotient is not returned as a pointer,  and
+      his type is not int the the signed integer type associated to the floating one,  to allow
+      proper SIMD implementation.
+
+      - also note that the double implementation of std::remquo is flawed in GNU C
+      Library until version 2.21 (2.22 has a corrective).
 **/
   template<typename T, typename I> auto remquo(T const& x, T const& y, I & quo) {}
 

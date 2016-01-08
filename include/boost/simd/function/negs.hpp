@@ -28,16 +28,18 @@ namespace boost { namespace simd
     T r = negs(x);
     @endcode
 
-    The code is equivalent to:
+    For floating the code is equivalent to:
 
     @code
     T r = -x
     @endcode
 
-    @par Note:
-    For integers types negs(@ref Valmin) returns @ref Valmax.
 
-    @c negs is not defined for unsigned types.
+    @par Note:
+
+    - For signed integral types negs(@ref Valmin) returns @ref Valmax.
+
+    - For unsigned integral types negs always returns 0.
 
      @return      a value of the same type as the input.
 

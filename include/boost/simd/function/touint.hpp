@@ -43,7 +43,9 @@ namespace boost { namespace simd
     Peculiarly,  that implies that the behaviour of this function on invalid or negative
     entries is not defined and possibly unpredictable.
 
-    If you intend to use nans, infs or negative entries, consider using touints instead.
+    If you intend to use @ref Nan, @ref Inf or negative entries, consider using @ref touints instead.
+
+    @see toint, toints,  touints
 
     @return      a value of the unsigned integer type associated to the input.
 

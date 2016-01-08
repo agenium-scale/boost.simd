@@ -34,10 +34,8 @@ namespace boost { namespace simd
     T r = x
     @endcode
 
-    @par Alias
-
-    conjugate
-
+    This function is the restriction to real numbers of the complex
+    conj(ugate) function.
 
     @return      a value of the same type as the input.
 

@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-bitwise
 
-    Returns the value of th ith bit in x as an unsigned integer
+    Returns the value of the ith bit in x as an unsigned integer
 
     @par semantic:
     For any given value @c x of type @c T, i  of type @c I:
@@ -32,7 +32,7 @@ namespace boost { namespace simd
 
     @see  bitset
 
-    @return      a value of the unsigned integer type associated to the first input.
+    @return a value of the unsigned integer type associated to the first input.
 
 
 **/

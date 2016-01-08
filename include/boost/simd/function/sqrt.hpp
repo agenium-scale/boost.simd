@@ -32,7 +32,9 @@ namespace boost { namespace simd
     If full accuracy is not needed a sometimes faster less accurate version of the function
     can be used callling : sqrt(x, fast_).
 
-    @return      a value of the same type as the input.
+    sqrt(x, std_) calls std::sqrt from stdlibc++
+
+   @return      a value of the same type as the input.
 
 
 **/
