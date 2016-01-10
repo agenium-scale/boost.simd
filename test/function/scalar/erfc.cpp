@@ -73,8 +73,8 @@ STF_CASE_TPL (" erfc std",  STF_IEEE_TYPES)
 #endif
   STF_ULP_EQUAL(erfc(bs::Mzero<T>(), bs::std_), bs::One<r_t>(), 0);
   STF_ULP_EQUAL(erfc(bs::Half<T>(), bs::std_), T(0.479500122186953462317253346108), 0);
-  STF_ULP_EQUAL(erfc(bs::One<T>(), bs::std_), T(0.157299207050285130658779364917), 0);
-  STF_ULP_EQUAL(erfc(bs::Two<T>(), bs::std_), T(0.00467773498104726583793074363275), 0.5);
+  STF_ULP_EQUAL(erfc(bs::One<T>(), bs::std_), T(0.157299207050285130658779364917), 0.5);
+  STF_ULP_EQUAL(erfc(bs::Two<T>(), bs::std_), T(0.00467773498104726583793074363275), 1.0);
   STF_ULP_EQUAL(erfc(bs::Zero<T>(), bs::std_), bs::One<r_t>(), 0);
   STF_ULP_EQUAL(erfc(T(6), bs::std_), T(0.0000000000000000215197367124989131165933503992), 0.5);
   STF_EXPECT(bs::is_less(erfc(bs::Ten<T>(), bs::std_)- T(2.088487583762545e-45), bs::Eps<T>()));
