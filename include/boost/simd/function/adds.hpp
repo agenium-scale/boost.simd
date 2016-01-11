@@ -31,8 +31,10 @@ namespace boost { namespace simd
     For integers is similar to:
 
     @code
-    T r = (x+y > Valmax) ? Valmax : (x+y <  Valmin ? Valmin : x+y);
+    T r = (x+y > Valmax) ? Valmax : (x+y < Valmin ? Valmin : x+y);
     @endcode
+
+    @par Alias pluss
 
     @see  plus, oneplus, inc
 

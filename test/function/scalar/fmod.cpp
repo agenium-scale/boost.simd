@@ -16,6 +16,9 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
+#include <boost/simd/function/is_positive.hpp>
+#include <boost/simd/function/is_negative.hpp>
+#include <cmath>
 
 STF_CASE_TPL (" fmod real",  STF_IEEE_TYPES)
 {
@@ -35,7 +38,27 @@ STF_CASE_TPL (" fmod real",  STF_IEEE_TYPES)
 #endif
   STF_EQUAL(fmod(bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
   STF_EQUAL(fmod(bs::One<T>(), bs::One<T>()), bs::Zero<T>());
-  STF_EQUAL(fmod(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
+  STF_IEEE_EQUAL(fmod(bs::Zero<T>(), bs::Zero<T>()), bs::Nan<T>());
+} // end of test for floating_
+
+STF_CASE_TPL (" fmod real fast",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::fmod;
+  using r_t = decltype(fmod(T(), T()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, T);
+
+  // specific values tests
+#ifndef STF_NO_INVALIDS
+  STF_IEEE_EQUAL(fmod(bs::Inf<T>(), bs::Inf<T>(), bs::fast_), bs::Nan<T>());
+  STF_IEEE_EQUAL(fmod(bs::Minf<T>(), bs::Minf<T>(), bs::fast_), bs::Nan<T>());
+  STF_IEEE_EQUAL(fmod(bs::Nan<T>(), bs::Nan<T>(), bs::fast_), bs::Nan<T>());
+#endif
+  STF_EQUAL(fmod(bs::Mone<T>(), bs::Mone<T>(), bs::fast_), bs::Zero<T>());
+  STF_EQUAL(fmod(bs::One<T>(), bs::One<T>(), bs::fast_), bs::Zero<T>());
 } // end of test for floating_
 
 STF_CASE_TPL (" fmod unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
@@ -68,3 +91,49 @@ STF_CASE_TPL (" fmod signed_int",  STF_SIGNED_INTEGRAL_TYPES)
   STF_EQUAL(fmod(bs::One<T>(), bs::One<T>()), bs::Zero<T>());
   STF_EQUAL(fmod(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
 } // end of test for signed_int_
+
+
+STF_CASE_TPL (" fmod limits",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::fmod;
+  using r_t = decltype(fmod(T(), T()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, T);
+
+  // specific values tests
+  STF_IEEE_EQUAL(fmod(T(0), T(1)),  T(0));
+  STF_IEEE_EQUAL(fmod(-T(0), T(1)),  T(-0));
+  STF_EXPECT(bs::is_negative(fmod(-T(0), T(1))));
+  STF_EXPECT(bs::is_positive(fmod(T(0), T(1))));
+  STF_IEEE_EQUAL(fmod(bs::Inf<T>(), T(1)),  bs::Nan<T>());
+  STF_IEEE_EQUAL(fmod(bs::Minf<T>(), T(1)), bs::Nan<T>());
+  STF_IEEE_EQUAL(fmod(T(1), T(0)),  bs::Nan<T>());
+  STF_IEEE_EQUAL(fmod(T(1), T(-0)), bs::Nan<T>());
+  STF_IEEE_EQUAL(fmod(T(2), bs::Inf<T>()), T(2));
+  STF_IEEE_EQUAL(fmod(T(2), bs::Minf<T>()), T(2));
+
+}
+
+STF_CASE_TPL (" fmod std",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::fmod;
+  using r_t = decltype(fmod(T(), T()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, T);
+
+  // specific values tests
+#ifndef STF_NO_INVALIDS
+  STF_IEEE_EQUAL(fmod(bs::Inf<T>(), bs::Inf<T>(), bs::std_), bs::Nan<T>());
+  STF_IEEE_EQUAL(fmod(bs::Minf<T>(), bs::Minf<T>(), bs::std_), bs::Nan<T>());
+  STF_IEEE_EQUAL(fmod(bs::Nan<T>(), bs::Nan<T>(), bs::std_), bs::Nan<T>());
+#endif
+  STF_EQUAL(fmod(bs::Mone<T>(), bs::Mone<T>(), bs::std_), bs::Zero<T>());
+  STF_EQUAL(fmod(bs::One<T>(), bs::One<T>(), bs::std_), bs::Zero<T>());
+  STF_IEEE_EQUAL(fmod(bs::Zero<T>(), bs::Zero<T>(), bs::std_), bs::Nan<T>());
+} // end of

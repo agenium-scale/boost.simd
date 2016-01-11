@@ -428,7 +428,23 @@ set ( SOURCES
    b_xor.cpp
    is_not_finite.cpp
    is_not_invalid.cpp
-  )
+   decs.cpp
+   incs.cpp
+#eulerian
+   stirling.cpp
+   gamma.cpp
+   signgam.cpp
+   erf.cpp
+   erfc.cpp
+   erfcx.cpp
+   gammaln.cpp
+#libc
+   is_lessgreater.cpp
+   is_normal.cpp
+   fabs.cpp
+   fpclassify.cpp
+   signbit.cpp
+)
 
 make_unit( "boost.simd.function.scalar"   ${SOURCES})
 make_coverage("boost.simd.function.scalar"  ${SOURCES})
