@@ -43,10 +43,3 @@ namespace boost { namespace simd
 #include <boost/simd/function/stirling.hpp>
 
 #endif
-
-
-
-
-
-
-
