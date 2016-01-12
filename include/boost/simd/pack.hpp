@@ -164,6 +164,12 @@ namespace boost { namespace simd
     /// @brief Conversion to underlying storage data
     BOOST_FORCEINLINE operator storage_type() const BOOST_NOEXCEPT { return data_; }
 
+    /// @brief Get reference to internal storage
+    BOOST_FORCEINLINE storage_type& storage() BOOST_NOEXCEPT { return data_; }
+
+    /// @overload
+    BOOST_FORCEINLINE storage_type const& storage() const BOOST_NOEXCEPT { return data_; }
+
     /*!
       @brief Random-access to the pack elements
 
