@@ -35,6 +35,14 @@ find_package(Boost   QUIET)
 find_package(Doxygen QUIET)
 
 #===================================================================================================
+# Install pre-commit git hook
+#===================================================================================================
+execute_process(COMMAND ${CMAKE_COMMAND} -E copy
+                ${PROJECT_SOURCE_DIR}/script/git/pre-commit
+                ${PROJECT_SOURCE_DIR}/.git/hooks
+               )
+
+#===================================================================================================
 # Compute version string and mode
 #===================================================================================================
 include(parse_revision)
