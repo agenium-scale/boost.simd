@@ -51,7 +51,7 @@ namespace boost { namespace simd { namespace ext
     }
 
     static BOOST_FORCEINLINE A0 impl( A0 a0, A0 a1
-                                    , const brigand::false_ &) BOOST_NOEXCEPT
+                                    , const std::false_type &) BOOST_NOEXCEPT
     {
       using u_t = bd::upgrade_t<A0>;
       using s_t = bd::as_signed_t<u_t>;
@@ -60,7 +60,7 @@ namespace boost { namespace simd { namespace ext
 
 
     static BOOST_FORCEINLINE A0 impl( A0 a0, A0 a1
-                                    , const brigand::true_ &) BOOST_NOEXCEPT
+                                    , const std::true_type &) BOOST_NOEXCEPT
     {
       using un_t = bd::as_unsigned_t<A0>;
 

@@ -33,7 +33,7 @@ namespace boost { namespace simd
     @tparam Extension SIMD Extension tag
   **/
   template<typename Type, typename Extension>
-  struct expected_cardinal : brigand::int_<limits<Extension>::bytes/sizeof(Type)>
+  struct expected_cardinal : brigand::int32_t<limits<Extension>::bytes/sizeof(Type)>
   {};
 
   template<typename Type, typename Extension>

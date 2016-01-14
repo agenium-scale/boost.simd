@@ -45,7 +45,7 @@ namespace boost { namespace simd { namespace ext
     }
 
     BOOST_FORCEINLINE A0 impl( A0 const& a0
-                                        , const brigand::true_ &) const BOOST_NOEXCEPT
+                                        , const std::true_type &) const BOOST_NOEXCEPT
     {
       using starget_t = bd::scalar_of_t<typename T::type>;
       const A0 vma = splat<A0>(Valmax<starget_t>());
@@ -53,7 +53,7 @@ namespace boost { namespace simd { namespace ext
       return if_else(is_inf(a0), a0, min(vma, max(vmi, a0)));
     }
     BOOST_FORCEINLINE A0 impl( A0 const& a0
-                                             , const brigand::false_ &) const BOOST_NOEXCEPT
+                                             , const std::false_type &) const BOOST_NOEXCEPT
     {
       return a0;
     }
@@ -93,12 +93,12 @@ namespace boost { namespace simd { namespace ext
                    );
     }
     static BOOST_FORCEINLINE A0 impl( A0 const& a0
-                                        , const brigand::true_ &) BOOST_NOEXCEPT
+                                        , const std::true_type &) BOOST_NOEXCEPT
     {
       return a0;
     }
     static BOOST_FORCEINLINE A0 impl( A0 const& a0
-                                        , const brigand::false_ &) BOOST_NOEXCEPT
+                                        , const std::false_type &) BOOST_NOEXCEPT
     {
       using starget_t = bd::scalar_of_t<typename T::type>;
       const A0 vma = splat<A0>(Valmax<starget_t>());
@@ -124,12 +124,12 @@ namespace boost { namespace simd { namespace ext
                    );
     }
     static BOOST_FORCEINLINE A0 impl( A0 const& a0
-                                        , const brigand::true_ &) BOOST_NOEXCEPT
+                                        , const std::true_type &) BOOST_NOEXCEPT
     {
       return max(Zero<A0>(), a0);
     }
     static BOOST_FORCEINLINE A0 impl( A0 const& a0
-                                        , const brigand::false_ &) BOOST_NOEXCEPT
+                                        , const std::false_type &) BOOST_NOEXCEPT
     {
       using starget_t = bd::scalar_of_t<typename T::type>;
       const A0 vma = splat<A0>(Valmax<starget_t>());
@@ -170,12 +170,12 @@ namespace boost { namespace simd { namespace ext
                    );
     }
     static BOOST_FORCEINLINE A0 impl( A0 const& a0
-                                        , const brigand::true_ &) BOOST_NOEXCEPT
+                                        , const std::true_type &) BOOST_NOEXCEPT
     {
       return a0;
     }
     static BOOST_FORCEINLINE A0 impl( A0 const& a0
-                                        , const brigand::false_ &) BOOST_NOEXCEPT
+                                        , const std::false_type &) BOOST_NOEXCEPT
     {
       using starget_t = bd::scalar_of_t<typename T::type>;
       const A0 vma = splat<A0>(Valmax<starget_t>());

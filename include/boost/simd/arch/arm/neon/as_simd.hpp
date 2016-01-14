@@ -62,34 +62,34 @@ namespace boost { namespace simd
                   , typename std::enable_if<boost::dispatch::is_natural<T>::value>
                   >
     {
-      using t2b = brigand::map< brigand::pair < brigand::list<brigand::int_<1>,signed>
+      using t2b = brigand::map< brigand::pair < brigand::list<brigand::int32_t<1>,signed>
                                               , int8x16_t
                                               >
-                              , brigand::pair < brigand::list<brigand::int_<2>,signed>
+                              , brigand::pair < brigand::list<brigand::int32_t<2>,signed>
                                               , int16x8_t
                                               >
-                              , brigand::pair < brigand::list<brigand::int_<4>,signed>
+                              , brigand::pair < brigand::list<brigand::int32_t<4>,signed>
                                               , int32x4_t
                                               >
-                              , brigand::pair < brigand::list<brigand::int_<8>,signed>
+                              , brigand::pair < brigand::list<brigand::int32_t<8>,signed>
                                               , int64x2_t
                                               >
-                              , brigand::pair < brigand::list<brigand::int_<1>,unsigned>
+                              , brigand::pair < brigand::list<brigand::int32_t<1>,unsigned>
                                               , uint8x16_t
                                               >
-                              , brigand::pair < brigand::list<brigand::int_<2>,unsigned>
+                              , brigand::pair < brigand::list<brigand::int32_t<2>,unsigned>
                                               , uint16x8_t
                                               >
-                              , brigand::pair < brigand::list<brigand::int_<4>,unsigned>
+                              , brigand::pair < brigand::list<brigand::int32_t<4>,unsigned>
                                               , uint32x4_t
                                               >
-                              , brigand::pair < brigand::list<brigand::int_<8>,unsigned>
+                              , brigand::pair < brigand::list<brigand::int32_t<8>,unsigned>
                                               , uint64x2_t
                                               >
                               >;
 
       using type = brigand::at< t2b
-                              , brigand::list<brigand::int_<sizeof(T)>,boost::dispatch::sign_of<T>>
+                              , brigand::list<brigand::int32_t<sizeof(T)>,boost::dispatch::sign_of<T>>
                               >;
     };
 
@@ -98,34 +98,34 @@ namespace boost { namespace simd
                   , typename std::enable_if<boost::dispatch::is_natural<T>::value>
                   >
     {
-      using t2b = brigand::map< brigand::pair < brigand::list<brigand::int_<1>,signed>
+      using t2b = brigand::map< brigand::pair < brigand::list<brigand::int32_t<1>,signed>
                                               , int8x8_t
                                               >
-                              , brigand::pair < brigand::list<brigand::int_<2>,signed>
+                              , brigand::pair < brigand::list<brigand::int32_t<2>,signed>
                                               , int16x4_t
                                               >
-                              , brigand::pair < brigand::list<brigand::int_<4>,signed>
+                              , brigand::pair < brigand::list<brigand::int32_t<4>,signed>
                                               , int32x2_t
                                               >
-                              , brigand::pair < brigand::list<brigand::int_<8>,signed>
+                              , brigand::pair < brigand::list<brigand::int32_t<8>,signed>
                                               , int64x1_t
                                               >
-                              , brigand::pair < brigand::list<brigand::int_<1>,unsigned>
+                              , brigand::pair < brigand::list<brigand::int32_t<1>,unsigned>
                                               , uint8x8_t
                                               >
-                              , brigand::pair < brigand::list<brigand::int_<2>,unsigned>
+                              , brigand::pair < brigand::list<brigand::int32_t<2>,unsigned>
                                               , uint16x4_t
                                               >
-                              , brigand::pair < brigand::list<brigand::int_<4>,unsigned>
+                              , brigand::pair < brigand::list<brigand::int32_t<4>,unsigned>
                                               , uint32x2_t
                                               >
-                              , brigand::pair < brigand::list<brigand::int_<8>,unsigned>
+                              , brigand::pair < brigand::list<brigand::int32_t<8>,unsigned>
                                               , uint64x1_t
                                               >
                               >;
 
       using type = brigand::at< t2b
-                              , brigand::list<brigand::int_<sizeof(T)>,boost::dispatch::sign_of<T>>
+                              , brigand::list<brigand::int32_t<sizeof(T)>,boost::dispatch::sign_of<T>>
                               >;
     };
   }

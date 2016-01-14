@@ -57,14 +57,14 @@ namespace boost { namespace simd { namespace ext
     }
 
     static BOOST_FORCEINLINE A0 impl( A0 a0, A0 a1
-                                    , const brigand::false_ &) BOOST_NOEXCEPT
+                                    , const std::false_type &) BOOST_NOEXCEPT
     {
       using utype = bd::upgrade_t<A0>;
       return static_cast<A0>(saturate<A0>(utype(a0)+utype(a1)));
     }
 
     static BOOST_FORCEINLINE A0 impl( A0  a0, A0  a1
-                                    , const brigand::true_ &) BOOST_NOEXCEPT
+                                    , const std::true_type &) BOOST_NOEXCEPT
     {
       using utype = bd::as_unsigned_t<A0>;
 
@@ -92,13 +92,13 @@ namespace boost { namespace simd { namespace ext
     }
 
     static BOOST_FORCEINLINE A0 impl( A0 a0, A0 a1
-                                      , const brigand::false_ &) BOOST_NOEXCEPT
+                                      , const std::false_type &) BOOST_NOEXCEPT
     {
       typedef typename bd::upgrade<A0>::type utype;
       return static_cast<A0>(boost::simd::min(utype(boost::simd::Valmax<A0>()), utype(a0+a1)));
     }
     static BOOST_FORCEINLINE A0 impl( A0 a0, A0 a1
-                                      , const brigand::true_ &) BOOST_NOEXCEPT
+                                      , const std::true_type &) BOOST_NOEXCEPT
     {
       A0 res = a0 + a1;
       res |= -(res < a0);

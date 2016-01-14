@@ -43,7 +43,7 @@ namespace boost { namespace simd
 {
   template < int N,  class A> A broadcast(const A& a)
   {
-    return broadcast(a, brigand::int_<N>());
+    return broadcast(a, brigand::int32_t<N>());
   }
 } }
 

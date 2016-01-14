@@ -23,13 +23,13 @@
 namespace boost { namespace simd { namespace detail
 {
   // Status for emulated SIMD storage
-  using emulated_status   = brigand::int_<-1>;
+  using emulated_status   = brigand::int32_t<-1>;
 
   // Status for native SIMD storage
-  using native_status     = brigand::int_<+0>;
+  using native_status     = brigand::int32_t<+0>;
 
   // Status for aggregated SIMD storage
-  using aggregated_status = brigand::int_<+1>;
+  using aggregated_status = brigand::int32_t<+1>;
 
   /*!
     @ingroup group-detail
@@ -39,7 +39,7 @@ namespace boost { namespace simd { namespace detail
     hardware registers proposed by extension @c X.
   **/
   template< typename T, std::size_t C, typename X>
-  struct storage_status : brigand::int_<   (expected_cardinal<T,X>::value!=C)
+  struct storage_status : brigand::int32_t<   (expected_cardinal<T,X>::value!=C)
                                         * ( (expected_cardinal<T,X>::value<C) ? +1 : -1)
                                       >
   {};

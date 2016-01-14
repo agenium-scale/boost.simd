@@ -22,7 +22,7 @@ STF_CASE_TPL( "Check splat behavior with all types", STF_NUMERIC_TYPES )
 {
   namespace bs = boost::simd;
   using bs::broadcast;
-//   using r_t = decltype(broadcast(T(2), brigand::int_<0>()));
+//   using r_t = decltype(broadcast(T(2), brigand::int32_t<0>()));
 //   STF_TYPE_IS(r_t, T);
 
   STF_EQUAL(broadcast<0>(T(2)),  T(2));

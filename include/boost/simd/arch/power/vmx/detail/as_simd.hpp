@@ -33,12 +33,12 @@ namespace boost { namespace simd
     template<typename T>
     struct as_simd<logical<T>, boost::simd::vmx_>
     {
-      using t2b = brigand::map< brigand::pair<brigand::int_<1>,__vector __bool char  >
-                              , brigand::pair<brigand::int_<2>,__vector __bool short >
-                              , brigand::pair<brigand::int_<4>,__vector __bool int   >
+      using t2b = brigand::map< brigand::pair<brigand::int32_t<1>,__vector __bool char  >
+                              , brigand::pair<brigand::int32_t<2>,__vector __bool short >
+                              , brigand::pair<brigand::int32_t<4>,__vector __bool int   >
                               >;
 
-      using type = brigand::at<t2b, brigand::int_<sizeof(T)>>;
+      using type = brigand::at<t2b, brigand::int32_t<sizeof(T)>>;
     };
 
     template<typename T>
@@ -46,28 +46,28 @@ namespace boost { namespace simd
                   , typename std::enable_if<boost::dispatch::is_natural<T>::value>
                   >
     {
-      using t2b = brigand::map< brigand::pair < brigand::list<brigand::int_<1>,signed>
+      using t2b = brigand::map< brigand::pair < brigand::list<brigand::int32_t<1>,signed>
                                               , __vector signed char
                                               >
-                              , brigand::pair < brigand::list<brigand::int_<2>,signed>
+                              , brigand::pair < brigand::list<brigand::int32_t<2>,signed>
                                               , __vector signed short
                                               >
-                              , brigand::pair < brigand::list<brigand::int_<4>,signed>
+                              , brigand::pair < brigand::list<brigand::int32_t<4>,signed>
                                               , __vector signed int
                                               >
-                              , brigand::pair < brigand::list<brigand::int_<1>,unsigned>
+                              , brigand::pair < brigand::list<brigand::int32_t<1>,unsigned>
                                               , __vector unsigned char
                                               >
-                              , brigand::pair < brigand::list<brigand::int_<2>,unsigned>
+                              , brigand::pair < brigand::list<brigand::int32_t<2>,unsigned>
                                               , __vector unsigned short
                                               >
-                              , brigand::pair < brigand::list<brigand::int_<4>,unsigned>
+                              , brigand::pair < brigand::list<brigand::int32_t<4>,unsigned>
                                               , __vector unsigned int
                                               >
                               >;
 
       using type = brigand::at< t2b
-                              , brigand::list<brigand::int_<sizeof(T)>,boost::dispacth::sign_of<T>>
+                              , brigand::list<brigand::int32_t<sizeof(T)>,boost::dispacth::sign_of<T>>
                               >;
     };
   }
