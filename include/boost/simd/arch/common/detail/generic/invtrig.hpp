@@ -12,9 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_DETAIL_GENERIC_INVTRIG_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_GENERIC_INVTRIG_HPP_INCLUDED
 
-#include <boost/simd/arch/common/detail/generic/horner.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
-//#include <boost/simd/arch/common/detail/generic/trigo/fallback.hpp>
 #include <boost/simd/arch/common/detail/scalar/f_invtrig.hpp>
 #include <boost/simd/arch/common/detail/scalar/d_invtrig.hpp>
 
