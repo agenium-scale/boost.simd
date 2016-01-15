@@ -21,7 +21,7 @@
 #include <boost/simd/constant/twotonmb.hpp>
 #endif
 #include <boost/simd/options.hpp>
-#include <boost/simd/arch/common/detail/generic/horner.hpp>
+#include <boost/simd/function/horn.hpp>
 #include <boost/simd/constant/constant.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/third.hpp>
@@ -76,13 +76,13 @@ namespace boost { namespace simd { namespace ext
       using i_t = bd::as_integer_t<A0, signed>;
       i_t e;
       A0 x = frexp(z, e, fast_);
-      x = horner < BOOST_SIMD_HORNER_COEFF_T(A0, 5,
-                                             (0xbfc13c93386fdff6ll,
-                                              0x3fe17e1fc7e59d58ll,
-                                              0xbfee8a4ca3ba37b8ll,
-                                              0x3ff23d6ee505873all,
-                                              0x3fd9c0c12122a4fell)
-                                            ) > (x);
+      x = horn<A0,
+               0x3fd9c0c12122a4fell,
+               0x3ff23d6ee505873all,
+               0xbfee8a4ca3ba37b8ll,
+               0x3fe17e1fc7e59d58ll,
+               0xbfc13c93386fdff6ll
+               > (x);
       const bool flag = is_gez(e);
       i_t e1 =  bs::abs(e);
       i_t rem = e1;
@@ -133,13 +133,13 @@ namespace boost { namespace simd { namespace ext
       using i_t = bd::as_integer_t<A0, signed>;
       i_t e;
       A0 x = frexp(z, e, fast_);
-      x = horner < BOOST_SIMD_HORNER_COEFF_T(A0, 5,
-                                             (0xbe09e49a,
-                                              0x3f0bf0fe,
-                                              0xbf745265,
-                                              0x3f91eb77,
-                                              0x3ece0609)
-                                            ) > (x);
+      x = horn<A0,
+               0x3ece0609,
+               0x3f91eb77,
+               0xbf745265,
+               0x3f0bf0fe,
+               0xbe09e49a
+               > (x);
       const bool flag = is_gez(e);
       i_t e1 =  bs::abs(e);
       i_t rem = e1;
