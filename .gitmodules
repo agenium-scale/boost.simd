@@ -1,4 +1,0 @@
-[submodule "doc/html"]
-    path = doc/html
-    url = git@github.com:NumScale/boost.simd.git
-    branch = gh-pages
