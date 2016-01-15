@@ -27,7 +27,6 @@
 #include <boost/simd/function/scalar/abs.hpp>
 #endif
 #include <boost/simd/arch/common/detail/generic/f_log_kernel.hpp>
-#include <boost/simd/arch/common/detail/generic/horner.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/constant/log10_2hi.hpp>
 #include <boost/simd/constant/log10_2lo.hpp>
