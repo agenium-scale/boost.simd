@@ -40,7 +40,7 @@
 #include <boost/simd/function/sqr.hpp>
 #include <boost/simd/function/toint.hpp>
 #include <boost/simd/function/unary_minus.hpp>
-#include <boost/simd/arch/common/detail/generic/horner.hpp>
+#include <boost/simd/function/horn.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/dispatch/meta/scalar_of.hpp>
 
@@ -67,11 +67,11 @@ namespace boost { namespace simd
         x =  fnms(k, Log_2lo<A0>(), x);
         A0 hx  = x*Half<A0>();
         A0 hxs = x*hx;
-        A0 r1 = horner<BOOST_SIMD_HORNER_COEFF_T(s_t, 3,
-                                          (0X3ACF6DB4UL, // 1.5825541E-03
-                                           0XBD08887FUL, // -3.3333298E-02
-                                           0X3F800000UL) // 1
-                                         )> (hxs);
+        A0 r1 = horn<s_t,
+                     0X3F800000UL,// 1
+                     0XBD08887FUL, // -3.3333298E-02
+                     0X3ACF6DB4UL  // 1.5825541E-03
+                     > (hxs);
         A0 t  = fnms(r1, hx, Three<A0>());
         A0 e  = hxs*((r1-t)/(Six<A0>() - x*t));
         e  = fms(x, e, hxs);
@@ -95,14 +95,14 @@ namespace boost { namespace simd
         A0 lo = k*Log_2lo<A0>();
         A0 x  = hi-lo;
         A0 hxs = sqr(x)*Half<A0>();
-        A0 r1 = horner<BOOST_SIMD_HORNER_COEFF_T(s_t, 6,
-                                          (0XBE8AFDB76E09C32DULL,
-                                           0X3ED0CFCA86E65239ULL,
-                                           0XBF14CE199EAADBB7ULL,
-                                           0X3F5A01A019FE5585ULL,
-                                           0XBFA11111111110F4ULL,
-                                           0X3FF0000000000000ULL)
-                                         )> (hxs);
+        A0 r1 = horn<s_t,
+                     0X3FF0000000000000ULL,
+                     0XBFA11111111110F4ULL,
+                     0X3F5A01A019FE5585ULL,
+                     0XBF14CE199EAADBB7ULL,
+                     0X3ED0CFCA86E65239ULL,
+                     0XBE8AFDB76E09C32DULL
+                     > (hxs);
         A0 t  = Three<A0>()-r1*Half<A0>()*x;
         A0 e  = hxs*((r1-t)/(Six<A0>() - x*t));
         A0 c = (hi-x)-lo;

@@ -25,7 +25,7 @@
 #include <boost/simd/constant/mone.hpp>
 
 
-#include <boost/simd/arch/common/detail/generic/horner.hpp>
+#include <boost/simd/function/horn.hpp>
 #include <boost/simd/logical.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 
@@ -66,18 +66,16 @@ namespace boost { namespace simd { namespace detail
       //    3058340 values (0.14%)   within 0.5 ULPs
       // bench produces  8.9 cycles/value (simd) 34.5 cycles/value (scalar) full computation
       // bench produces  7.1 cycles/value (simd) 32.2 cycles/value (scalar) with NO_DENORMALS, NO_INVALIDS etc.
-      y =  horner< BOOST_SIMD_HORNER_COEFF_T( s_t
-                                     , 8
-                                     , (0xbda5dff0, //     -8.0993533e-02
-                                        0x3e0229f9, //      1.2711324e-01
-                                        0xbe04d6b7, //     -1.2972532e-01
-                                        0x3e116e80, //      1.4202309e-01
-                                        0xbe2a6aa0, //     -1.6642237e-01
-                                        0x3e4cd0a3, //      2.0001464e-01
-                                        0xbe800064, //     -2.5000298e-01
-                                        0x3eaaaaa9  //      3.3333328e-01
-                                       )
-                                      )>(x)*x*x2;
+      y =  horn< s_t,
+        0x3eaaaaa9, //      3.3333328e-01
+        0xbe800064, //     -2.5000298e-01
+        0x3e4cd0a3, //      2.0001464e-01
+        0xbe2a6aa0, //     -1.6642237e-01
+        0x3e116e80, //      1.4202309e-01
+        0xbe04d6b7, //     -1.2972532e-01
+        0x3e0229f9, //      1.2711324e-01
+        0xbda5dff0  //     -8.0993533e-02
+        >(x)*x*x2;
     }
   };
 } } }
