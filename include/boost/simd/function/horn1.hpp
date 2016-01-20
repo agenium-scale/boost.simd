@@ -10,6 +10,12 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_FUNCTION_HORN1_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_HORN1_HPP_INCLUDED
+#include <boost/simd/constant/constant.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/function/fma.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/config.hpp>
+#include <cmath>
 
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
@@ -52,7 +58,29 @@ namespace boost { namespace simd
  } }
 #endif
 
-#include <boost/simd/function/scalar/horn1.hpp>
-#include <boost/simd/function/simd/horn1.hpp>
+namespace boost { namespace simd
+{
+  namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
+
+  template < typename T>
+  BOOST_FORCEINLINE T horn1(T) BOOST_NOEXCEPT
+  {
+    return bs::One<T>();
+  }
+
+  template < typename T,  uintmax_t Coef>
+  BOOST_FORCEINLINE T horn1(const T & x) BOOST_NOEXCEPT
+  {
+    return x +  bs::Constant<T, Coef>();
+  }
+
+  template < typename T, uintmax_t Coef0, uintmax_t Coef1, uintmax_t... Args>
+  BOOST_FORCEINLINE T horn1(const T & x) BOOST_NOEXCEPT
+  {
+    return bs::fma(x, horn1 < T, Coef1, Args...>(x),  bs::Constant<T, Coef0>());
+  }
+
+} }
 
 #endif
