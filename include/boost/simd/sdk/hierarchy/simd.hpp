@@ -14,7 +14,10 @@
 #ifndef BOOST_SIMD_SDK_HIERARCHY_SIMD_HPP_INCLUDED
 #define BOOST_SIMD_SDK_HIERARCHY_SIMD_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
+#include <boost/simd/sdk/abi_of.hpp>
 #include <boost/simd/sdk/extension_of.hpp>
+#include <boost/simd/sdk/native_cardinal.hpp>
 #include <boost/dispatch/hierarchy/generic.hpp>
 #include <boost/dispatch/hierarchy/unspecified.hpp>
 #include <boost/dispatch/meta/value_of.hpp>
@@ -24,6 +27,13 @@
 
 namespace boost { namespace simd
 {
+  // Forward declaration of pack
+  template< typename T
+          , std::size_t N = native_cardinal<T>::value
+          , typename ABI  = abi_of_t<T,N>
+          >
+  class pack;
+
   /*!
     @ingroup group-sdk
     @brief SIMD register type hierarchy tag
@@ -50,7 +60,8 @@ namespace boost { namespace simd
   {
     // Short-cut for extension_of
     template<typename T, std::size_t N>
-    struct extension_of<pack<T,N>> : boost::simd::extension_of< typename pack<T,N>::storage_type >
+    struct  extension_of<pack<T,N>>
+          : boost::simd::extension_of< boost::simd::storage_of_t<T,N> >
     {};
   }
 } }
