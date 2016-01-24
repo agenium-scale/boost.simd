@@ -4,8 +4,8 @@
 
   Main header for the unit test system
 
-<<<<<<< HEAD:test/nstest.hpp
-  @copyright 2012 - 2015 NumScale SAS
+  @copyright 2015 Joel Falcou
+
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -781,51 +781,6 @@ do                                                                              
 #define STF_UNUSED(X) X
 #endif
 
-
-#if !defined(BOOST_ENABLE_ASSERT_HANDLER)
-#error BOOST_ENABLE_ASSERT_HANDLER must be defined to use STF_ASSERT() macro
-#endif
-
-#include <boost/assert.hpp>
-#include <sstream>
-#include <memory>
-#include <string>
-
-namespace stf { namespace detail
-{
-  inline std::unique_ptr<std::string>& current_assertion()
-  {
-    static std::unique_ptr<std::string> ptr;
-    return ptr;
-  }
-} }
-
-namespace boost
-{
-    inline void assertion_failed( char const* expr, char const* fn, char const* f, long l )
-  {
-    std::ostringstream os;
-    os  << "Assertion    '"  << expr << "' failed\n"
-        << " in function '"  << fn << "'\n"
-        << " from         "  << ::stf::at(f,l)    << " \n";
-
-    stf::detail::current_assertion().reset( new std::string(os.str()) ) ;
-  }
-
-    inline void assertion_failed_msg( char const* expr, char const* msg
-                                  , char const* fn, char const* f, long l
-                                  )
-  {
-    std::ostringstream os;
-    os  << "Assertion    '"  << expr << "' failed\n"
-        << " in function '"  << fn << "'\n"
-        << " from         "  << ::stf::at(f,l)    << " \n"
-        << " because:     "  << msg  << " \n";
-
-    stf::detail::current_assertion().reset( new std::string(os.str()) ) ;
-  }
-}
-
 #include <boost/preprocessor/punctuation/remove_parens.hpp>
 
 #define STF_THROW( X, T )                                                                           \
@@ -852,36 +807,6 @@ do                                                                              
     STF_FAIL( STF_STRING(X) << " throws while not expected to" );                                   \
   else                                                                                              \
     STF_PASS( STF_STRING(X) << " doesn't throw" );                                                  \
-} while( ::stf::is_false() )                                                                        \
-
-#define STF_ASSERT(X)                                                                               \
-do                                                                                                  \
-{                                                                                                   \
-  STF_UNUSED(BOOST_PP_REMOVE_PARENS(X));                                                            \
-  if(stf::detail::current_assertion())                                                              \
-  {                                                                                                 \
-    STF_PASS( STF_STRING(X) << " triggered: \n" << *stf::detail::current_assertion() << "\n" );     \
-  }                                                                                                 \
-  else                                                                                              \
-  {                                                                                                 \
-    STF_FAIL( STF_STRING(X) << " didn't trigger any assertion." );                                  \
-  }                                                                                                 \
-  stf::detail::current_assertion().reset();                                                         \
-} while( ::stf::is_false() )                                                                        \
-
-#define STF_NO_ASSERT(X)                                                                            \
-do                                                                                                  \
-{                                                                                                   \
-  STF_UNUSED(BOOST_PP_REMOVE_PARENS(X));                                                            \
-  if(stf::detail::current_assertion())                                                              \
-  {                                                                                                 \
-    STF_FAIL( STF_STRING(X) << " triggered: \n" << *stf::detail::current_assertion() << "\n" );     \
-  }                                                                                                 \
-  else                                                                                              \
-  {                                                                                                 \
-    STF_PASS( STF_STRING(X) << " didn't trigger any assertion." );                                  \
-  }                                                                                                 \
-  stf::detail::current_assertion().reset();                                                         \
 } while( ::stf::is_false() )                                                                        \
 
 
@@ -1021,7 +946,7 @@ namespace stf
     if( (a0 == a1) || ((a0!=a0) && (a1!=a1)) )  return 0.;
     if( (a0!=a0) || (a1!=a1) )                  return std::numeric_limits<T>::infinity();
 
-    int e1,e2;
+    int e1 = 0,e2 = 0;
     T   m1,m2;
     m1 = std::frexp(a0, &e1);
     m2 = std::frexp(a1, &e2);
@@ -1368,11 +1293,5 @@ namespace stf
   {
   }
 }
-
-// #define STF_INTEGRAL_SIGNED_TYPES (int8_t)(int16_t)(int32_t)(int64_t)
-// #define STF_UNSIGNED_TYPES (uint8_t)(uint16_t)(uint32_t)(uint64_t)
-// #define STF_INTEGRAL_TYPES (int8_t)(int16_t)(int32_t)(int64_t)(uint8_t)(uint16_t)(uint32_t)(uint64_t)
-// #define STF_REAL_TYPES (float)(double)
-// #define STF_TYPES STF_INTEGRAL_TYPES STF_REAL_TYPES
 
 #endif

@@ -152,7 +152,7 @@ namespace boost { namespace simd
     }
 
     /// @brief Conversion from underlying storage data
-    BOOST_FORCEINLINE explicit pack(storage_type const& reg) BOOST_NOEXCEPT : data_(reg) {}
+    BOOST_FORCEINLINE pack(storage_type const& reg) BOOST_NOEXCEPT : data_(reg) {}
 
     /// @brief Assignment from underlying storage data
     BOOST_FORCEINLINE pack& operator=( storage_type const& reg ) BOOST_NOEXCEPT

@@ -6,8 +6,6 @@
 ##                            http://www.boost.org/LICENSE_1_0.txt
 ##===================================================================================================
 
-add_definitions(-DBOOST_ENABLE_ASSERT_HANDLER)
-
 set ( SOURCES
       concepts.cpp
       hierarchy.cpp
