@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_DETAIL_SCALAR_F_TRIG_EVALUATION_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_SCALAR_F_TRIG_EVALUATION_HPP_INCLUDED
 
-#include <boost/simd/arch/common/detail/generic/horner.hpp>
+#include <boost/simd/function/horn.hpp>
 #include <boost/simd/constant/mhalf.hpp>
 #include <boost/simd/function/scalar/fma.hpp>
 #include <boost/simd/function/scalar/oneplus.hpp>
@@ -45,31 +45,35 @@ namespace boost { namespace simd
     {
       static BOOST_FORCEINLINE A0 cos_eval(A0 z) BOOST_NOEXCEPT
       {
-        const A0 y = horner< BOOST_SIMD_HORNER_COEFF_T(A0, 3,
-                                                       ( 0x37ccf5ce
-                                                       , 0xbab60619
-                                                       , 0x3d2aaaa5) ) > (z);
+        const A0 y = horn<A0
+          , 0x3d2aaaa5
+          , 0xbab60619
+          , 0x37ccf5ce
+          > (z);
         return oneplus( fma(z,Mhalf<A0>(), y* sqr(z)));
       }
 
       static BOOST_FORCEINLINE A0 sin_eval(A0 z, A0 x) BOOST_NOEXCEPT
       {
-        const A0 y1 = horner< BOOST_SIMD_HORNER_COEFF_T(A0, 3,
-                                                             ( 0xb94ca1f9
-                                                             , 0x3c08839d
-                                                             , 0xbe2aaaa2) ) > (z);
+        const A0 y1 = horn<A0
+          , 0xbe2aaaa2
+          , 0x3c08839d
+          , 0xb94ca1f9
+          > (z);
         return fma(y1*z,x,x);
       }
 
       static BOOST_FORCEINLINE A0 base_tan_eval(A0 z) BOOST_NOEXCEPT
       {
         const A0 zz = sqr(z);
-        A0 y = horner< BOOST_SIMD_HORNER_COEFF_T(A0, 6, (0x3c19c53b,
-                                                         0x3b4c779c,
-                                                         0x3cc821b5,
-                                                         0x3d5ac5c9,
-                                                         0x3e0896dd,
-                                                         0x3eaaaa6f))>(zz)*zz*z+z;
+        A0 y = horn<A0,
+          0x3eaaaa6f,
+          0x3e0896dd,
+          0x3d5ac5c9,
+          0x3cc821b5,
+          0x3b4c779c,
+          0x3c19c53b
+          >(zz)*zz*z+z;
         return y;
       }
 

@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_DETAIL_GENERIC_STIRLING_KERNEL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_GENERIC_STIRLING_KERNEL_HPP_INCLUDED
 
-#include <boost/simd/arch/common/detail/generic/horner.hpp>
+#include <boost/simd/function/horn.hpp>
 #include <boost/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd
@@ -31,13 +31,12 @@ namespace boost { namespace simd
       using s_t = bd::scalar_of_t<A0>;
       static BOOST_FORCEINLINE A0 stirling1(const A0& x)
       {
-        return  horner<BOOST_SIMD_HORNER_COEFF_T(s_t, 4,
-                                          (0xb970b359,
-                                           0xbb2fb930,
-                                           0x3b638e39,
-                                           0x3daaaaab
-                                          )
-                                         )>(x);
+        return  horn<s_t,
+                     0x3daaaaab,
+                     0x3b638e39,
+                     0xbb2fb930,
+                     0xb970b359
+                     >(x);
       }
     };
 
@@ -47,14 +46,13 @@ namespace boost { namespace simd
       using s_t = bd::scalar_of_t<A0>;
       static BOOST_FORCEINLINE A0 stirling1(const A0& x)
       {
-        return  horner<BOOST_SIMD_HORNER_COEFF_T(s_t, 5,
-                                        (0x3f49cc72592d7293ll, //   7.87311395793093628397E-4
-                                         0xbf2e166b27e61d7cll, //  -2.29549961613378126380E-4
-                                         0xbf65f72607d44fd7ll, //  -2.68132617805781232825E-3
-                                         0x3f6c71c71b98c5fdll, //   3.47222221605458667310E-3
-                                         0x3fb5555555555986ll  //   8.33333333333482257126E-2
-                                        )
-                                       )>(x);
+        return  horn<s_t,
+                     0x3fb5555555555986ll, //   8.33333333333482257126E-2
+                     0x3f6c71c71b98c5fdll, //   3.47222221605458667310E-3
+                     0xbf65f72607d44fd7ll, //  -2.68132617805781232825E-3
+                     0xbf2e166b27e61d7cll, //  -2.29549961613378126380E-4
+                     0x3f49cc72592d7293ll  //   7.87311395793093628397E-4
+                     >(x);
       }
     };
   }

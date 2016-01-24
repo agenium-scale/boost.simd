@@ -27,7 +27,7 @@
 #include <boost/simd/function/scalar/rec.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
 #include <boost/simd/function/scalar/sqrt.hpp>
-#include <boost/simd/arch/common/detail/generic/horner.hpp>
+#include <boost/simd/function/horn.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
@@ -91,14 +91,13 @@ namespace boost { namespace simd { namespace ext
 
       if( x < 0.5f)
       {
-        z = horner < BOOST_SIMD_HORNER_COEFF_T(A0, 5,
-                                               ( 0x3ca4d6e6
-                                               , 0xbd2ee581
-                                               , 0x3d9949b1
-                                               , 0xbe2aa9ad
-                                               , 0x3f800000
-                                               )
-                                              )> (x2)*x;
+        z = horn<A0
+          , 0x3f800000
+          , 0xbe2aa9ad
+          , 0x3d9949b1
+          , 0xbd2ee581
+          , 0x3ca4d6e6
+          > (x2)*x;
       }
       else if (BOOST_UNLIKELY(x > Oneosqrteps<A0>()))
       {

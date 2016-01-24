@@ -18,7 +18,7 @@
 #ifndef BOOST_SIMD_NO_INFINITIES
 #include <boost/simd/constant/inf.hpp>
 #endif
-#include <boost/simd/arch/common/detail/generic/horner.hpp>
+#include <boost/simd/function/horn.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/invlog_10.hpp>
@@ -78,17 +78,17 @@ namespace boost { namespace simd
         s = f/(Two<A0>()+f);
         A0 z = sqr(s);
         A0 w = sqr(z);
-        A0 t1= w*horner<BOOST_SIMD_HORNER_COEFF_T(A0, 3,
-                                                 (0x3fc39a09d078c69fll,
-                                                  0x3fcc71c51d8e78afll,
-                                                  0x3fd999999997fa04ll)
-                                                )> (w);
-        A0 t2= z*horner<BOOST_SIMD_HORNER_COEFF_T(A0, 4,
-                                                 (0x3fc2f112df3e5244ll,
-                                                  0x3fc7466496cb03dell,
-                                                  0x3fd2492494229359ll,
-                                                  0x3fe5555555555593ll)
-                                                )> (w);
+        A0 t1= w*horn<A0,
+                      0x3fd999999997fa04ll,
+                      0x3fcc71c51d8e78afll,
+                      0x3fc39a09d078c69fll
+                      > (w);
+        A0 t2= z*horn<A0,
+                      0x3fe5555555555593ll,
+                      0x3fd2492494229359ll,
+                      0x3fc7466496cb03dell,
+                      0x3fc2f112df3e5244ll
+                      > (w);
         r = t2+t1;
         hfsq = Half<A0>()*sqr(f);
       }
@@ -166,17 +166,17 @@ namespace boost { namespace simd
       s = f/(Two<A0>()+f);
       A0 z = sqr(s);
       A0 w = sqr(z);
-      A0 t1= w*horner<BOOST_SIMD_HORNER_COEFF_T(s_t, 3,
-                                                (0x3fc39a09d078c69fll,
-                                                 0x3fcc71c51d8e78afll,
-                                                 0x3fd999999997fa04ll)
-                                               )> (w);
-      A0 t2= z*horner<BOOST_SIMD_HORNER_COEFF_T(s_t, 4,
-                                                (0x3fc2f112df3e5244ll,
-                                                 0x3fc7466496cb03dell,
-                                                 0x3fd2492494229359ll,
-                                                 0x3fe5555555555593ll)
-                                               )> (w);
+      A0 t1= w*horn<s_t,
+                    0x3fd999999997fa04ll,
+                    0x3fcc71c51d8e78afll,
+                    0x3fc39a09d078c69fll
+                    > (w);
+      A0 t2= z*horn<s_t,
+                    0x3fe5555555555593ll,
+                    0x3fd2492494229359ll,
+                    0x3fc7466496cb03dell,
+                    0x3fc2f112df3e5244ll
+                    > (w);
       r = t2+t1;
       hfsq = mul(Half<A0>(), sqr(f));
     }

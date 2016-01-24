@@ -17,7 +17,6 @@
 #endif
 #include <boost/simd/arch/common/detail/scalar/expo_reduction.hpp>
 #include <boost/simd/arch/common/detail/scalar/expo_scale.hpp>
-#include <boost/simd/arch/common/detail/generic/horner.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/zero.hpp>

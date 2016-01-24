@@ -13,7 +13,6 @@
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_SCALAR_LOGARITHM_HPP_INCLUDED
 
 #include <boost/simd/options.hpp>
-#include <boost/simd/arch/common/detail/generic/horner.hpp>
 #include <boost/simd/arch/common/detail/scalar/f_log.hpp>
 #include <boost/simd/arch/common/detail/scalar/d_log.hpp>
 

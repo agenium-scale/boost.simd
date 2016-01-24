@@ -9,13 +9,9 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_DETAIL_SCALAR_TRIGO_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_DETAIL_SCALAR_TRIGO_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_SCALAR_HORN1_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_SCALAR_HORN1_HPP_INCLUDED
 
-#include <boost/simd/options.hpp>
-#include <boost/simd/arch/common/detail/tags.hpp>
-#include <boost/simd/arch/common/detail/scalar/f_trig_evaluation.hpp>
-#include <boost/simd/arch/common/detail/scalar/d_trig_evaluation.hpp>
-#include <boost/simd/arch/common/detail/scalar/trig_base.hpp>
+#include <boost/simd/arch/common/generic/function/horn1.hpp>
 
 #endif
