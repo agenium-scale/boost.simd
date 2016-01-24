@@ -28,8 +28,10 @@ STF_CASE_TPL (" rorinteger", STF_INTEGRAL_TYPES)
     STF_EQUAL(ror(T(1),i), T(T(1)<<((w-i) & (w-1))));
   }
 
+/*
   STF_ASSERT(ror(T(1),T(-1)));
   STF_ASSERT(ror(T(1),T(w+1)));
+*/
 }
 
 STF_CASE_TPL (" rorreal", STF_IEEE_TYPES)
@@ -48,7 +50,8 @@ STF_CASE_TPL (" rorreal", STF_IEEE_TYPES)
     STF_EQUAL( ror(bitwise_cast<T>(iT(1)),i)
                   , bitwise_cast<T>(iT(1)<<((w-i) & (w-1)))
                   );
-
+/*
   STF_ASSERT(ror(T(1),iT(-1)));
   STF_ASSERT(ror(T(1),iT(w+1)));
+*/
 }

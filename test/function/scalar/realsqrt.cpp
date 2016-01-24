@@ -36,5 +36,5 @@ STF_CASE_TPL (" realsqrt",  STF_IEEE_TYPES)
 #endif
   STF_ULP_EQUAL(realsqrt(bs::One<T>()), bs::One<r_t>(), 0);
   STF_ULP_EQUAL(realsqrt(bs::Zero<T>()), bs::Zero<r_t>(), 0);
-  STF_ASSERT(   realsqrt(bs::Mone<T>()));
+//  STF_ASSERT(   realsqrt(bs::Mone<T>()));
 }
