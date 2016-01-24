@@ -31,11 +31,11 @@ STF_CASE_TPL (" realpow",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
+//  STF_ASSERT(realpow(bs::Minf<T>(), bs::Minf<T>()));
   STF_ULP_EQUAL(realpow(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>(), 0);
-  STF_ASSERT(realpow(bs::Minf<T>(), bs::Minf<T>()));
   STF_ULP_EQUAL(realpow(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>(), 0);
 #endif
-  STF_ASSERT(realpow(T(-1), T(0.5)));
+//  STF_ASSERT(realpow(T(-1), T(0.5)));
   STF_ULP_EQUAL(realpow(bs::Mone<T>(), bs::Mone<T>()), bs::Mone<r_t>(), 0);
   STF_ULP_EQUAL(realpow(bs::One<T>(), bs::One<T>()), bs::One<r_t>(), 0);
   STF_ULP_EQUAL(realpow(bs::Zero<T>(), bs::Zero<T>()), bs::One<r_t>(), 0);
