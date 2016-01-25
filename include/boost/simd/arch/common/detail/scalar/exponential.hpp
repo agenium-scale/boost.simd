@@ -13,7 +13,6 @@
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_SCALAR_EXPONENTIAL_HPP_INCLUDED
 
 #include <boost/simd/options.hpp>
-#include <boost/simd/arch/common/detail/generic/horner.hpp>
 #include <boost/simd/arch/common/detail/scalar/expo_base.hpp>
 
 #endif

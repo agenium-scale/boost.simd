@@ -7,6 +7,9 @@
 ##===================================================================================================
 
 set ( SOURCES
+   horner.cpp
+   horn.cpp
+   horn1.cpp
 #memory
    extract.cpp
    load.cpp
