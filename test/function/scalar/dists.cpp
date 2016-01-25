@@ -21,7 +21,7 @@
 #include <boost/simd/constant/two.hpp>
 #include <boost/simd/constant/three.hpp>
 #include <boost/simd/constant/valmax.hpp>
-#include <boost/simd/constant/constant.hpp>
+
 
 STF_CASE_TPL (" dists real",  STF_IEEE_TYPES)
 {
@@ -68,7 +68,7 @@ STF_CASE_TPL (" dists integer_si",  STF_SIGNED_INTEGRAL_TYPES)
   STF_EQUAL(dists(bs::Zero<T>(), bs::Valmin<T>()), bs::Valmax<T>());
   STF_EQUAL(dists(bs::Valmin<T>(), bs::Zero<T>()), bs::Valmax<T>());
 
-  STF_EQUAL(dists(bs::Ten<T>(), bs::Mten<T>()), (bs::Constant<T, 20>()));
-  STF_EQUAL(dists(bs::Mten<T>(), bs::Ten<T>()), (bs::Constant<T, 20>()));
+  STF_EQUAL(dists(bs::Ten<T>(), bs::Mten<T>()), (T(20)));
+  STF_EQUAL(dists(bs::Mten<T>(), bs::Ten<T>()), (T(20)));
 }
 

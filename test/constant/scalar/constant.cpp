@@ -13,7 +13,6 @@
 STF_CASE_TPL( "Check constant behavior for signed integral values", STF_SIGNED_INTEGRAL_TYPES)
 {
   using boost::simd::Constant;
-
   STF_EXPR_IS( (Constant<T,42>()  ) , T      );
   STF_EQUAL  ( (Constant<T,42>()  ) , T(42)  );
 

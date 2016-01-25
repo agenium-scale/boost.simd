@@ -9,8 +9,9 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_BITWISE_OR_INCLUDED
-#define BOOST_SIMD_FUNCTION_BITWISE_OR_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_BITWISE_OR_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_BITWISE_OR_HPP_INCLUDED
+
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
@@ -52,6 +53,7 @@ namespace boost { namespace simd
 #endif
 
 #include <boost/simd/function/scalar/bitwise_or.hpp>
-#include <boost/simd/function/scalar/bitwise_or.hpp>
+#include <boost/simd/arch/common/scalar/function/bitwise_or.hpp>
+#include <boost/simd/function/simd/bitwise_or.hpp>
 
 #endif

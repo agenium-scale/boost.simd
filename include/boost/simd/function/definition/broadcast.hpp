@@ -30,19 +30,14 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag, broadcast_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::broadcast_,broadcast);
   }
 
-
-} }
-
-namespace boost { namespace simd
-{
-  template < int N,  class A> A broadcast(const A& a)
+  template < int N, typename T> BOOST_FORCEINLINE T broadcast(const T& a) BOOST_NOEXCEPT
   {
-    return functional::broadcast(a, brigand::int32_t<N>());
+    return detail::broadcast(a, brigand::int32_t<N>());
   }
 } }
 

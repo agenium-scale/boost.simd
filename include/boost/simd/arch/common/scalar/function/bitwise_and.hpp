@@ -46,11 +46,11 @@ namespace boost { namespace simd { namespace ext
 
                           )
   {
-    BOOST_FORCEINLINE A0 operator()(A0 a0, A1 a1
-                                   , typename std::enable_if<sizeof(A1) == sizeof(A0)>::type* = 0
-                                   ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE
+    typename std::enable_if<sizeof(A1) == sizeof(A0), A0>::type
+    operator()(A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
-      using b_t = dispatch::as_integer_t<A0, unsigned>;
+      using b_t = bd::as_integer_t<A0, unsigned>;
       return bitwise_cast<A0>(b_t(bitwise_cast<b_t>(a0) & bitwise_cast<b_t>(a1)));
     }
   };

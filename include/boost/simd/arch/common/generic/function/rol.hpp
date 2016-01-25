@@ -16,9 +16,10 @@
 #include <boost/simd/detail/assert_utils.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/bitwise_or.hpp>
+#include <boost/simd/function/dec.hpp>
 #include <boost/simd/function/minus.hpp>
 #include <boost/simd/function/shift_left.hpp>
-#include <boost/simd/function/shr.hpp>
+#include <boost/simd/function/shift_right.hpp>
 #include <boost/simd/function/splat.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
@@ -38,15 +39,15 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1 const& a1
-                                    , typename std::enable_if<bs::cardinal_of<A1>::value
-                                     == bs::cardinal_of<A0>::value>::type* = 0
+//TODO                                     , typename std::enable_if<bs::cardinal_of<A1>::value
+//                                      == bs::cardinal_of<A0>::value, int>::type* = 0
       ) const
     {
       using s_t = bd::scalar_of_t<A0>;
       BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "rol : rotation is out of range");
 
       s_t const width = sizeof(s_t)*CHAR_BIT;
-      return shift_left(a0, a1) | shr(a0, (width-splat<A0>(a1)) & (width-1)); //seems odd to me JTL
+      return shift_left(a0, a1) | shift_right(a0, (width-a1) & (dec(width))); //seems odd to me JTL
     }
   };
 
@@ -58,13 +59,13 @@ namespace boost { namespace simd { namespace ext
   )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1 const& a1
-                                    , typename std::enable_if<bs::cardinal_of<A1>::value
-                                     == bs::cardinal_of<A0>::value>::type* = 0
+//  TODO                                   , typename std::enable_if<bs::cardinal_of<A1>::value
+//                                      == bs::cardinal_of<A0>::value, int>::type* = 0
                                     ) const
     {
       using i_t = bd::as_integer_t<A0, unsigned>;
       return bitwise_cast<A0>( rol ( bitwise_cast<i_t>(a0)
-                                   , splat<i_t>(a1)
+                                   , i_t(a1)
                                    )
                              );
     }

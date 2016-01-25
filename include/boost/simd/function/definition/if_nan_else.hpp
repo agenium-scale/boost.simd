@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_DEFINITION_IF_NAN_ELSE_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_DEFINITION_IF_NAN_ELSE_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/simd/function/definition/if_allbits_else.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 

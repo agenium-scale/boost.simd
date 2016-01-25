@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_DEFINITION_DIVTRUNC_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_DEFINITION_DIVTRUNC_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/simd/function/definition/divfix.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 

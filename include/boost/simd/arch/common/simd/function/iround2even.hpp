@@ -1,0 +1,67 @@
+//==================================================================================================
+/*!
+  @file
+
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
+
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+*/
+//==================================================================================================
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IROUND2EVEN_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IROUND2EVEN_HPP_INCLUDED
+
+#include <boost/simd/pack.hpp>
+#include <boost/simd/constant/valmax.hpp>
+#include <boost/simd/constant/valmin.hpp>
+#include <boost/simd/function/simd/if_else.hpp>
+#include <boost/simd/function/simd/is_greater.hpp>
+#include <boost/simd/function/simd/is_less.hpp>
+#include <boost/simd/function/simd/splat.hpp>
+#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/dispatch/meta/as_integer.hpp>
+
+#ifndef BOOST_SIMD_NO_NANS
+#include <boost/simd/function/simd/is_nan.hpp>
+#include <boost/simd/function/simd/if_zero_else.hpp>
+#endif
+
+namespace boost { namespace simd { namespace ext
+{
+   namespace bd = boost::dispatch;
+   namespace bs = boost::simd;
+   BOOST_DISPATCH_OVERLOAD(iround2even_
+                          , (typename A0, typename X)
+                          , bd::cpu_
+                          , bs::pack_<bd::single_<A0>, X>
+                          )
+   {
+      using result = bd::as_integer_t<A0>;
+      BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
+      {
+        using sr_t = bd::scalar_of_t<result>;
+        static const A0 Vax =  splat<A0>(bs::Valmax<sr_t>());
+        static const A0 Vix =  splat<A0>(bs::Valmin<sr_t>());
+      #ifndef BOOST_SIMD_NO_NANS
+        A0 aa0 = if_zero_else(is_nan(a0), a0);
+        return if_else(bs::lt(aa0, Vix), Valmin<result>(),
+                       if_else(bs::gt(aa0, Vax), Valmax<result>(),
+                               iround2even(aa0, bs::fast_)
+                              )
+                      );
+      #else
+        return if_else(bs::lt(a0, Vix), Valmin<result>(),
+                       if_else(bs::gt(a0, Vax), Valmax<result>(),
+                               iround2even(a0, bs::fast_)
+                              )
+                      );
+      #endif
+      }
+   };
+
+} } }
+
+
+#endif
+

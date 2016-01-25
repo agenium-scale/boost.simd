@@ -15,6 +15,7 @@
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/sqrtvalmax.hpp>
 #include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/divides.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/is_nez.hpp>
 #include <boost/dispatch/function/overload.hpp>
@@ -31,7 +32,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      return if_else(is_nez(a0), Sqrtvalmax<A0>()/simd::abs(a0),
+      return if_else(is_nez(a0), Sqrtvalmax<A0>()/bs::abs(a0),
                      Inf<A0>());
     }
   };

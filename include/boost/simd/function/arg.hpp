@@ -46,6 +46,8 @@ namespace boost { namespace simd
     - This function is the restriction to real numbers of the complex
     arg(ument) function.
 
+    - This function is not defined for integral types.
+
     @par Alias:
 
     angle

@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_DEFINITION_BITWISE_OR_INCLUDED
-#define BOOST_SIMD_FUNCTION_DEFINITION_BITWISE_OR_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_DEFINITION_BITWISE_OR_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_DEFINITION_BITWISE_OR_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
 #include <boost/dispatch/function/make_callable.hpp>
@@ -27,7 +27,9 @@ namespace boost { namespace simd
   {
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag, bitwise_or_);
   }
+
   BOOST_DISPATCH_CALLABLE_DEFINITION(tag::bitwise_or_,bitwise_or);
+
 } }
 
 #endif

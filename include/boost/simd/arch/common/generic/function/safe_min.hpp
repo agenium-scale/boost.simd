@@ -20,6 +20,7 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
   BOOST_DISPATCH_OVERLOAD ( safe_min_
                           , (typename A0)
                           , bd::cpu_
@@ -28,7 +29,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      return Sqrtsmallestposval<A0>()*simd::abs(a0);
+      return Sqrtsmallestposval<A0>()*bs::abs(a0);
     }
   };
 } } }

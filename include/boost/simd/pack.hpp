@@ -30,6 +30,7 @@
 #include <boost/simd/function/unary_plus.hpp>
 #include <boost/simd/function/inc.hpp>
 #include <boost/simd/function/dec.hpp>
+#include <boost/utility/enable_if.hpp>
 #include <boost/align/is_aligned.hpp>
 #include <boost/config.hpp>
 #include <iterator>
@@ -365,6 +366,7 @@ namespace boost { namespace simd
 
     return os << ')';
   }
+
 } }
 
 #include <boost/simd/detail/pack_info.hpp>

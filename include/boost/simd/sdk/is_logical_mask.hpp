@@ -1,0 +1,62 @@
+//==================================================================================================
+/*!
+  @file
+
+  @copyright 2016 NumScale SAS
+  @copyright 2016J.T. Lapreste
+
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+
+**/
+//==================================================================================================
+#ifndef BOOST_SIMD_SDK_IS_LOGICAL_MASK_HPP_INCLUDED
+#define BOOST_SIMD_SDK_IS_LOGICAL_MASK_HPP_INCLUDED
+
+#include <boost/simd/config.hpp>
+#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/sdk/as_logical.hpp>
+#include <boost/simd/logical.hpp>
+#include <boost/simd/pack.hpp>
+#include <boost/simd/sdk/is_bitwise_logical.hpp>
+#include <boost/simd/logical.hpp>
+
+namespace boost { namespace simd
+{
+  namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
+
+/*!
+  @brief Is a SIMD vector both bitwise_logical and contain either all 0 or ~0.
+
+  This metafunction represents a subset of is_bitwise_logical and returns true
+  if the same SIMD registers are used by both arithmetic and logical vectors and
+  if logical vectors are represented by either all 0 or ~0. This is assumed to be
+  true - otherwise overloads must be provided on architectures where logical types
+  are bitwise_logical but do not contain either all 0 or ~0 - for example qpx.
+
+  @par semantic
+   boost::simd::meta::is_logical_mask<T>::value = true/false
+
+  @param T - a SIMD register on the target architecture
+*/
+
+  template<class T >
+  struct is_logical_mask : std::false_type
+  {
+  };
+
+  template<class T, std::size_t N>
+  struct is_logical_mask< pack<logical<T>,N>>
+    : is_bitwise_logical<pack<logical<T>, N>>
+  {
+  };
+//   template<class T, std::size_t N>
+//   struct is_logical_mask< pack<T,N>>
+//     : is_bitwise_logical<pack<logical<T>, N>>
+//   {
+//   };
+
+} }
+
+#endif

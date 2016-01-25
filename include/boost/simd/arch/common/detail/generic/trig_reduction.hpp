@@ -6,7 +6,7 @@
   @copyright 2015 J.T.Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
-  (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+  (See accompanying file LICENSE.md or copy at http://boost.org/LICENSbd:E_1_0.txt)
 */
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_DETAIL_GENERIC_TRIG_REDUCTION_HPP_INCLUDED
@@ -83,37 +83,51 @@ namespace boost { namespace simd
     template<class A0, class style, class mode>
     struct trig_reduction < A0, tag::radian_tag, style, mode>
     {
-      using l_t     = logical<A0>; //as_logical
       using i_t = bd::as_integer_t<A0, signed>;
-      using conversion_allowed_t = std::false_type; //bd::is_upgradable_on_ext_<A0>;
+      using l_t = bs::as_logical_t<A0>;
+      using conversion_allowed_t = std::false_type; //bd::is_upgradable_on_ext_<A0>; // TODO
 
-      static BOOST_FORCEINLINE l_t is_0_pio4_reduced(const A0&a0) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE auto is_0_pio4_reduced(const A0&a0) BOOST_NOEXCEPT
+      ->  decltype(is_ngt(a0, Pio_4<A0>()))
       {
         return is_ngt(a0, Pio_4<A0>());
       }
-      static BOOST_FORCEINLINE l_t is_0_pio2_reduced(const A0&a0) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE auto is_0_pio2_reduced(const A0&a0) BOOST_NOEXCEPT
+      ->  decltype(is_ngt(a0, Pio_2<A0>()))
       {
         return is_ngt(a0, Pio_2<A0>());
       }
-      static BOOST_FORCEINLINE l_t is_0_20pi_reduced(const A0&a0) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE auto is_0_20pi_reduced(const A0&a0) BOOST_NOEXCEPT
+      ->  decltype(is_ngt(a0, Real<A0, 0X404F6A7A2955385EULL, 0X427B53D1UL>()))
       {
         return is_ngt(a0, Real<A0, 0X404F6A7A2955385EULL, 0X427B53D1UL>()); //20 pi;
       }
-      static BOOST_FORCEINLINE l_t is_0_mpi_reduced (const A0&a0) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE auto is_0_mpi_reduced (const A0&a0) BOOST_NOEXCEPT
+      ->  decltype(is_ngt(a0, Medium_pi<A0>()))
       {
         return is_ngt(a0, Medium_pi<A0>()); //2^6 pi
       }
-      static BOOST_FORCEINLINE l_t is_0_dmpi_reduced(const A0&a0) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE auto is_0_dmpi_reduced(const A0&a0) BOOST_NOEXCEPT
+      ->  decltype(is_ngt(a0,Constant<A0,262144>()))
       {
         return is_ngt(a0, Ratio<A0,262144>()); //2^18 pi
       }
 
-      static BOOST_FORCEINLINE l_t cot_invalid(const A0& ) { return False<l_t>(); }
-      static BOOST_FORCEINLINE l_t tan_invalid(const A0& ) { return False<l_t>(); }
+      static BOOST_FORCEINLINE l_t cot_invalid(const A0& )  BOOST_NOEXCEPT
+      {
+        return False<l_t>();
+      }
+      static BOOST_FORCEINLINE l_t tan_invalid(const A0& )  BOOST_NOEXCEPT
+      {
+        return False<l_t>();
+      }
 
-      static BOOST_FORCEINLINE i_t reduce(const A0& x, A0& xr) { return inner_reduce(x, xr); }
+      static BOOST_FORCEINLINE i_t reduce(const A0& x, A0& xr)  BOOST_NOEXCEPT
+      {
+        return inner_reduce(x, xr);
+      }
 
-      static BOOST_FORCEINLINE i_t inner_reduce(const A0& x, A0& xr)
+      static BOOST_FORCEINLINE i_t inner_reduce(const A0& x, A0& xr) BOOST_NOEXCEPT
       {
         A0 xx =  preliminary<mode>::clip(x);
         return select_mode(xx, xr, boost::mpl::int_<mode::start>());
@@ -122,31 +136,35 @@ namespace boost { namespace simd
       template < class Mode, bool clipped = Mode::clipped>
       struct preliminary
       {
-        static BOOST_FORCEINLINE A0 const& clip(const A0& x) { return x; }
+        static BOOST_FORCEINLINE A0 const& clip(const A0& x) BOOST_NOEXCEPT  { return x; }
       };
 
 
       template < class Mode>
       struct preliminary<Mode, true>
       {
-        static BOOST_FORCEINLINE A0 clip(const A0& x)
+        static BOOST_FORCEINLINE A0 clip(const A0& x) BOOST_NOEXCEPT
         {
           return clipto(x, boost::mpl::int_<Mode::range>());
         }
       private :
-        static BOOST_FORCEINLINE A0 clipto(const A0& x, boost::mpl::int_<tag::r_0_pio4> const&)
+        static BOOST_FORCEINLINE A0 clipto(const A0& x
+                                          , boost::mpl::int_<tag::r_0_pio4> const&) BOOST_NOEXCEPT
         {
           return if_else_nan(is_0_pio4_reduced(x), x);
         }
-        static BOOST_FORCEINLINE A0 clipto(const A0& x, boost::mpl::int_<tag::r_0_20pi> const&)
+        static BOOST_FORCEINLINE A0 clipto(const A0& x
+                                          , boost::mpl::int_<tag::r_0_20pi> const&) BOOST_NOEXCEPT
         {
           return if_else_nan(is_0_20pi_reduced(x), x);
         }
-        static BOOST_FORCEINLINE A0 clipto(const A0& x, boost::mpl::int_<tag::r_0_mpi> const&)
+        static BOOST_FORCEINLINE A0 clipto(const A0& x
+                                          , boost::mpl::int_<tag::r_0_mpi> const&) BOOST_NOEXCEPT
         {
           return if_else_nan(is_0_mpi_reduced(x), x);
         }
-        static BOOST_FORCEINLINE A0 clipto(const A0& x, boost::mpl::int_<tag::r_0_dmpi> const&)
+        static BOOST_FORCEINLINE A0 clipto(const A0& x
+                                          , boost::mpl::int_<tag::r_0_dmpi> const&) BOOST_NOEXCEPT
         {
           return if_else_nan(is_0_dmpi_reduced(x), x);
         }
@@ -156,7 +174,7 @@ namespace boost { namespace simd
       select_range( const A0& xx, A0& xr
                   , boost::mpl::true_ const&
                   , boost::mpl::int_<tag::r_0_pio4> const&
-                  )
+                  ) BOOST_NOEXCEPT
       {
         xr = xx;
         return Zero<i_t>();
@@ -166,7 +184,7 @@ namespace boost { namespace simd
       select_range( const A0& xx, A0& xr
                   , boost::mpl::false_ const&
                   , boost::mpl::int_<tag::r_0_pio4> const& r
-                  )
+                  ) BOOST_NOEXCEPT
       {
         if(all(is_0_pio4_reduced(xx)))
           return select_range(xx,xr,boost::mpl::true_(), r);
@@ -175,12 +193,15 @@ namespace boost { namespace simd
       }
 
       static BOOST_FORCEINLINE i_t
-      select_mode(const A0& xx, A0& xr, boost::mpl::int_<tag::r_0_pio4> const& r)
+      select_mode(const A0& xx, A0& xr
+                 , boost::mpl::int_<tag::r_0_pio4> const& r) BOOST_NOEXCEPT
       {
         return select_range(xx,xr,boost::mpl::bool_<mode::range == tag::r_0_pio4>(),r);
       }
 
-      static BOOST_FORCEINLINE i_t select_mode(const A0& xx, A0& xr, boost::mpl::int_<tag::r_0_pio2> const&)
+      static BOOST_FORCEINLINE i_t
+      select_mode(const A0& xx, A0& xr
+                 , boost::mpl::int_<tag::r_0_pio2> const&) BOOST_NOEXCEPT
       {
         if(all(is_0_pio2_reduced(xx)))
           return rem_pio2_straight(xx, xr);
@@ -191,7 +212,7 @@ namespace boost { namespace simd
       select_range( const A0& xx, A0& xr
                   , boost::mpl::true_ const&
                   , boost::mpl::int_<tag::r_0_20pi> const&
-                  )
+                  ) BOOST_NOEXCEPT
       {
         return rem_pio2_cephes(xx, xr);
       }
@@ -200,7 +221,7 @@ namespace boost { namespace simd
       select_range( const A0& xx, A0& xr
                   , boost::mpl::false_ const&
                   , boost::mpl::int_<tag::r_0_20pi> const& r
-                  )
+                  ) BOOST_NOEXCEPT
       {
         if(all(is_0_20pi_reduced(xx)))
           return select_range(xx,xr,boost::mpl::true_(), r);
@@ -209,7 +230,8 @@ namespace boost { namespace simd
       }
 
       static BOOST_FORCEINLINE i_t
-      select_mode(const A0& xx, A0& xr, boost::mpl::int_< tag::r_0_20pi> const& r)
+      select_mode(const A0& xx, A0& xr
+                 , boost::mpl::int_< tag::r_0_20pi> const& r) BOOST_NOEXCEPT
       {
         return select_range(xx,xr,boost::mpl::bool_<mode::range == tag::r_0_20pi>(),r);
       }
@@ -220,7 +242,7 @@ namespace boost { namespace simd
       select_range( const A0& xx, A0& xr
                   , boost::mpl::true_ const&
                   , boost::mpl::int_<tag::r_0_mpi> const&
-                  )
+                  ) BOOST_NOEXCEPT
       {
         return rem_pio2_medium(xx, xr);
       }
@@ -229,7 +251,7 @@ namespace boost { namespace simd
       select_range( const A0& xx, A0& xr
                   , boost::mpl::false_ const&
                   , boost::mpl::int_<tag::r_0_mpi> const& r
-                  )
+                  ) BOOST_NOEXCEPT
       {
         if(all(is_0_mpi_reduced(xx)))
           return select_range(xx,xr,boost::mpl::true_(), r);
@@ -237,35 +259,45 @@ namespace boost { namespace simd
         return select_mode(xx,xr,boost::mpl::int_<tag::r_0_dmpi>());
       }
 
-      static BOOST_FORCEINLINE i_t select_mode(const A0& xx, A0& xr, boost::mpl::int_< tag::r_0_mpi> const& r)
+      static BOOST_FORCEINLINE i_t
+      select_mode(const A0& xx, A0& xr
+                 , boost::mpl::int_< tag::r_0_mpi> const& r) BOOST_NOEXCEPT
       {
         return select_range(xx,xr,boost::mpl::bool_<mode::range == tag::r_0_mpi>(),r);
       }
 
-      static BOOST_FORCEINLINE i_t select_mode(const A0& xx, A0& xr, boost::mpl::int_< tag::r_0_dmpi> const&)
+      static BOOST_FORCEINLINE i_t
+      select_mode(const A0& xx, A0& xr
+                 , boost::mpl::int_< tag::r_0_dmpi> const&) BOOST_NOEXCEPT
       {
         if(all(is_0_dmpi_reduced(xx)))
            return use_conversion(xx, xr, style(), conversion_allowed_t());
         return rem_pio2(xx, xr);
       }
 
-      static BOOST_FORCEINLINE i_t use_conversion(const A0 & xx,  A0& xr,  const style &, std::false_type)
+      static BOOST_FORCEINLINE i_t
+      use_conversion(const A0 & xx,  A0& xr
+                    ,  const style &, std::false_type) BOOST_NOEXCEPT
       {
         return rem_pio2(xx, xr);
       }
 
-      static BOOST_FORCEINLINE i_t use_conversion(const A0 & xx,  A0& xr,  const tag::not_simd_type &, std::true_type)
+      static BOOST_FORCEINLINE i_t
+      use_conversion(const A0 & xx,  A0& xr
+                    ,  const tag::not_simd_type &, std::true_type) BOOST_NOEXCEPT
       {
         // all of x are in [0, 2^18*pi],  conversion to double is used to reduce
         using uA0 = bd::upgrade_t<A0>;
-        typedef trig_reduction< uA0, tag::radian_tag,  tag::not_simd_type, mode, double> aux_reduction;
+        using aux_reduction = trig_reduction< uA0,tag::radian_tag,tag::not_simd_type,mode,double>;
         uA0 ux = xx, uxr;
         i_t n = static_cast<i_t>(aux_reduction::reduce(ux, uxr));
         xr = static_cast<A0>(uxr);
         return n;
       }
 
-      static BOOST_FORCEINLINE i_t use_conversion(const A0 & x,  A0& xr,  const tag::simd_type &,std::true_type)
+      static BOOST_FORCEINLINE i_t
+      use_conversion(const A0 & x,  A0& xr
+                    , const tag::simd_type &,std::true_type) BOOST_NOEXCEPT
       {
         // all of x are in [0, 2^18*pi],  conversion to double is used to reduce
         using uA0 = bd::upgrade_t<A0>;
@@ -283,13 +315,20 @@ namespace boost { namespace simd
     template<class A0, class style>
     struct trig_reduction<A0,tag::degree_tag, style, tag::big_tag>
     {
-      using l_t     = logical<A0>; //as_logical
       using i_t = bd::as_integer_t<A0, signed>;
 
-      static BOOST_FORCEINLINE l_t cot_invalid(const A0& x) { return is_nez(x)&&is_flint(x*Ratio<A0,1,180>()); }
-      static BOOST_FORCEINLINE l_t tan_invalid(const A0& x) { return is_flint((x- Ratio<A0,90>())*Ratio<A0,1,180>()); }
+      static BOOST_FORCEINLINE auto cot_invalid(const A0& x) BOOST_NOEXCEPT
+      -> decltype(is_nez(x)&&is_flint(x*Ratio<A0,1,180>()))
+      {
+        return is_nez(x)&&is_flint(x*Ratio<A0,1,180>());
+      }
+      static BOOST_FORCEINLINE auto tan_invalid(const A0& x) BOOST_NOEXCEPT
+      -> decltype(is_flint((x- Ratio<A0,90>())*Ratio<A0,1,180>()))
+      {
+        return is_flint((x- Ratio<A0,90>())*Ratio<A0,1,180>());
+      }
 
-      static BOOST_FORCEINLINE i_t reduce(const A0& x, A0& xr)
+      static BOOST_FORCEINLINE i_t reduce(const A0& x, A0& xr) BOOST_NOEXCEPT
       {
         A0 xi = round2even(x*Ratio<A0,1,90>());
         A0 x2 = x - xi * Ratio<A0,90>();
@@ -303,13 +342,20 @@ namespace boost { namespace simd
     template<class A0>
     struct trig_reduction<A0,degree_tag, tag::not_simd_type, tag::big_tag>
     {
-      using l_t     = logical<A0>; //as_logical
       using i_t = bd::as_integer_t<A0, signed>;
 
-      static BOOST_FORCEINLINE l_t cot_invalid(const A0& x) { return is_nez(x)&&is_flint(x/Ratio<A0, 180>()); }
-      static BOOST_FORCEINLINE l_t tan_invalid(const A0& x) { return is_flint((x-Ratio<A0,90>())/Ratio<A0, 180>()); }
+      static BOOST_FORCEINLINE auto cot_invalid(const A0& x) BOOST_NOEXCEPT
+      -> decltype(is_nez(x)&&is_flint(x*Ratio<A0,1,180>()))
+      {
+        return is_nez(x)&&is_flint(x/Constant<A0,180>());
+      }
+      static BOOST_FORCEINLINE auto tan_invalid(const A0& x) BOOST_NOEXCEPT
+      -> decltype(is_flint((x- Ratio<A0,90>())/Constant<A0,180>()))
+      {
+        return is_flint((x- Ratio<A0,90>())*Ratio<A0,1,180>());
+      }
 
-      static BOOST_FORCEINLINE i_t reduce(const A0& x, A0& xr)
+      static BOOST_FORCEINLINE i_t reduce(const A0& x, A0& xr) BOOST_NOEXCEPT
       {
         A0 xi = round2even(x*Ratio<A0,1,90>());
         A0 x2 = x - xi * Ratio<A0,90>();
@@ -323,13 +369,20 @@ namespace boost { namespace simd
     template < class A0, class style>
     struct trig_reduction < A0, tag::pi_tag,  style, tag::big_tag>
     {
-      using l_t     = logical<A0>; //as_logical
       using i_t = bd::as_integer_t<A0, signed>;
 
-      static BOOST_FORCEINLINE l_t cot_invalid(const A0& x) { return is_nez(x)&&is_flint(x); }
-      static BOOST_FORCEINLINE l_t tan_invalid(const A0& x) { return is_flint(x-Half<A0>()) ; }
+      static BOOST_FORCEINLINE auto cot_invalid(const A0& x) BOOST_NOEXCEPT
+      -> decltype(is_nez(x)&&is_flint(x))
+      {
+        return is_nez(x)&&is_flint(x);
+      }
+      static BOOST_FORCEINLINE auto tan_invalid(const A0& x) BOOST_NOEXCEPT
+      -> decltype(is_flint(x-Half<A0>()))
+      {
+        return is_flint(x-Half<A0>()) ;
+      }
 
-      static BOOST_FORCEINLINE i_t reduce(const A0& x,  A0& xr)
+      static BOOST_FORCEINLINE i_t reduce(const A0& x,  A0& xr) BOOST_NOEXCEPT
       {
         A0 xi = round2even(x*Two<A0>());
         A0 x2 = x - xi * Half<A0>();

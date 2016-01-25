@@ -45,6 +45,7 @@ namespace boost { namespace simd
 
   **/
   const boost::dispatch::functor<tag::is_not_equal_> is_not_equal = {};
+
 } }
 #endif
 

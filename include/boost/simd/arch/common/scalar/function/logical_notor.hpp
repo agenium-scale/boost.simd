@@ -26,7 +26,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::bool_<A1> >
                           )
   {
-    BOOST_FORCEINLINE bool operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE logical<A0> operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
       return (!a0 || a1);
     }

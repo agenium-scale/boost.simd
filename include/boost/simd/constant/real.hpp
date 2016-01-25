@@ -33,3 +33,4 @@ namespace boost { namespace simd
 #include <boost/simd/arch/common/simd/constant/constant_generator.hpp>
 
 #endif
+

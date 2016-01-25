@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_DEFINITION_COMPARE_EQ_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_DEFINITION_COMPARE_EQ_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/simd/function/definition/compare_equal.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 

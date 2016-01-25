@@ -118,7 +118,7 @@ set ( SOURCES
    rshl.cpp
    rshr.cpp
    shr.cpp
-   swapbytes.cpp
+##   swapbytes.cpp
    twopower.cpp
 #boolean
    if_allbits_else.cpp
@@ -255,8 +255,8 @@ set ( SOURCES
    is_included_c.cpp
    is_included.cpp
    is_simd_logical.cpp
-   maximum.cpp
-   minimum.cpp
+#   maximum.cpp
+#   minimum.cpp
    nbtrue.cpp
    none.cpp
    posmax.cpp
@@ -273,10 +273,10 @@ set ( SOURCES
    lookup.cpp
    reverse.cpp
    sort.cpp
-   splatted_maximum.cpp
-   splatted_minimum.cpp
-   splatted_prod.cpp
-   splatted_sum.cpp
+##   splatted_maximum.cpp
+##   splatted_minimum.cpp
+##   splatted_prod.cpp
+##   splatted_sum.cpp
 #exponential
    cbrt.cpp
    exp.cpp

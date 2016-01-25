@@ -13,6 +13,7 @@
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_LOG2_HPP_INCLUDED
 
 #include <boost/simd/arch/common/detail/scalar/logarithm.hpp>
+#include <boost/simd/arch/common/detail/simd/logarithm.hpp>
 #include <boost/simd/function/frexp.hpp>
 #include <boost/simd/function/ilog2.hpp>
 #include <boost/simd/meta/is_not_scalar.hpp>

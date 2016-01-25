@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_DEFINITION_IS_NOT_FINITE_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_DEFINITION_IS_NOT_FINITE_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/simd/function/definition/is_invalid.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 

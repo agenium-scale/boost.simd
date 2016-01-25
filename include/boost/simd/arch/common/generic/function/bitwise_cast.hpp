@@ -29,10 +29,10 @@ namespace boost { namespace simd { namespace ext
   {
     using result_t =  typename A1::type;
 
-    static_assert
-    ( (sizeof(A0) == sizeof(typename A1::type))
-    , "boost.simd target is not same size as source in bitwise_cast"
-    );
+ //    static_assert
+//     ( (sizeof(A0) == sizeof(typename A1::type))
+//     , "boost.simd target is not same size as source in bitwise_cast"
+//     );
 
     BOOST_FORCEINLINE result_t operator()(A0 const& a0, A1 const& ) const BOOST_NOEXCEPT
     {

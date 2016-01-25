@@ -3,6 +3,7 @@
   @file
 
   @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -14,6 +15,7 @@
 
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/meta/as_arithmetic.hpp>
+#include <boost/simd/config.hpp>
 #include <type_traits>
 
 namespace boost { namespace simd
@@ -41,6 +43,7 @@ namespace boost { namespace simd
   **/
   template<typename T>
   using is_bitwise_logical_t = typename is_bitwise_logical<T>::type;
+
 } }
 
 #endif

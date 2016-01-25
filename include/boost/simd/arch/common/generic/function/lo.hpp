@@ -14,7 +14,7 @@
 
 #include <boost/simd/function/bitwise_and.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
-#include <boost/simd/function/splat.hpp>
+#include <boost/simd/constant/ratio.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/dispatch/meta/scalar_of.hpp>
@@ -29,14 +29,14 @@ namespace boost { namespace simd { namespace ext
                           , bd::generic_< bd::arithmetic_<A0> >
                           )
   {
-    using result_t = bd::as_integer_t<A0,unsigned>;
-    using s_t = bd::scalar_of_t<result_t>;
+    using result = bd::as_integer_t<A0,unsigned>;
+    using s_t = bd::scalar_of_t<result>;
 
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE result operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
       static const s_t pattern = (s_t(1) << sizeof(s_t)*(CHAR_BIT/2)) - 1;
-      return bitwise_and( splat<result_t>(bitwise_cast<result_t>(pattern)),  a0 );
-//      return bitwise_and( integral_constant<result_t, pattern>(), a0 );
+      return bitwise_and( Ratio<result, pattern>() ,  a0 );
+//      return bitwise_and( integral_constant<result, pattern>(), a0 );
     }
   };
 } } }

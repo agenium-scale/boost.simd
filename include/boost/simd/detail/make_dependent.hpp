@@ -18,6 +18,9 @@ namespace boost { namespace simd { namespace detail
   {
     using type = T;
   };
+
+  template < typename T,  typename U>
+  using make_dependent_t = typename make_dependent<T, U>::type;
 } } }
 
 
