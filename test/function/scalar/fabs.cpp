@@ -14,7 +14,6 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <nontrivial.hpp>
 
 #include <simd_test.hpp>
 

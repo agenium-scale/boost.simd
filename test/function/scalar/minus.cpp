@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/minus.hpp>
 #include <simd_test.hpp>
-#include <nontrivial.hpp>
+//#include <nontrivial.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>
@@ -33,23 +33,23 @@ STF_CASE_TPL( "Check minus behavior with floating", STF_IEEE_TYPES )
   STF_IEEE_EQUAL(minus(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
 }
 
-namespace foo
-{
-  template <class T>
-  nontrivial<T> operator -(const nontrivial<T> & z1, const nontrivial<T> z2)
-  {
-    return perform(z1, z2);
-  }
-}
+// namespace foo
+// {
+//   template <class T>
+//   nontrivial<T> operator -(const nontrivial<T> & z1, const nontrivial<T> z2)
+//   {
+//     return perform(z1, z2);
+//   }
+// }
 
-STF_CASE_TPL( "Check minus behavior with exotic type", STF_IEEE_TYPES )
-{
-  namespace bs = boost::simd;
-  using bs::minus;
-  using foo::nontrivial;
-  using r_t = decltype(minus(nontrivial<T>(), nontrivial<T>()));
-  STF_TYPE_IS(r_t, nontrivial<T>);
+// STF_CASE_TPL( "Check minus behavior with exotic type", STF_IEEE_TYPES )
+// {
+//   namespace bs = boost::simd;
+//   using bs::minus;
+//   using foo::nontrivial;
+//   using r_t = decltype(minus(nontrivial<T>(), nontrivial<T>()));
+//   STF_TYPE_IS(r_t, nontrivial<T>);
 
-  STF_EQUAL(minus(nontrivial<T>(1, 2), nontrivial<T>(3, 4)), nontrivial<T>(4, 8));
-}
+//   STF_EQUAL(minus(nontrivial<T>(1, 2), nontrivial<T>(3, 4)), nontrivial<T>(4, 8));
+// }
 
