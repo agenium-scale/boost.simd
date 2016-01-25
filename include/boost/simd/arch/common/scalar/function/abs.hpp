@@ -92,18 +92,6 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( abs_
                           , (typename T)
                           , bd::cpu_
-                          , bd::scalar_<bd::unspecified_<T>>
-                          )
-  {
-    BOOST_FORCEINLINE T operator()(T const& a) const BOOST_NOEXCEPT
-    {
-      return abs(a);
-    }
-  };
-
-  BOOST_DISPATCH_OVERLOAD ( abs_
-                          , (typename T)
-                          , bd::cpu_
                           , bd::scalar_<bd::floating_<T>>
                           , boost::simd::std_tag
                           )
