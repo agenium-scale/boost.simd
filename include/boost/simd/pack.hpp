@@ -17,6 +17,7 @@
 #include <boost/simd/config.hpp>
 #include <boost/simd/detail/pack_traits.hpp>
 #include <boost/simd/sdk/is_power_of_2.hpp>
+#include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/align/is_aligned.hpp>
 #include <boost/config.hpp>
 #include <iterator>
@@ -34,12 +35,14 @@ namespace boost { namespace simd
 
     @pre @c N must be a power of two.
 
-    @tparam T  Type of the stored elements
-    @tparam N  Number of element stored
+    @tparam T   Type of the stored elements
+    @tparam N   Number of element stored
+    @tparam ABI Binary flag to prevent ABI issue
    **/
-  template < typename T
-           , std::size_t N
-           >
+  template< typename T
+          , std::size_t N
+          , typename ABI
+          >
   class pack {
 
     static_assert( boost::simd::is_power_of_2_<N>::value
@@ -308,9 +311,6 @@ namespace boost { namespace simd
     os << ')';
     return os;
   }
-
 } }
-
-#include <boost/simd/sdk/hierarchy/simd.hpp>
 
 #endif
