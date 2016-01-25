@@ -23,7 +23,6 @@ STF_CASE_TPL (" bitwise_notand real",  STF_IEEE_TYPES)
   namespace bs = boost::simd;
   using bs::bitwise_notand;
   using r_t = decltype(bitwise_notand(T(), T()));
-  using bs::bitwise_notand;
 
   // return type conformity test
   STF_EXPR_IS(bitwise_notand(T(), T()), T);
