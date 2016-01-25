@@ -34,9 +34,9 @@ namespace boost { namespace simd
   }
 
   template < typename Target,  typename Arg > BOOST_FORCEINLINE
-  Target bitwise_cast(Arg&& arg) BOOST_NOEXCEPT
+  Target bitwise_cast(Arg&& a0) BOOST_NOEXCEPT
   {
-    return functional::bitwise_cast(std::forward<Arg>(arg), boost::dispatch::as_<Target>{});
+    return functional::bitwise_cast(std::forward<Arg>(a0), boost::dispatch::as_<Target>{});
   }
 } }
 
