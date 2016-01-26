@@ -103,18 +103,16 @@ matrix:
       compiler: clang
       env: CXX_STD=11 TOOLSET=clang++ SIMD_EXT=-msse2
 
-# Install boost
-before_install:
-  - bash ./script/travis/install.sh
-  - export BOOST_ROOT="$HOME/boost-trunk"
-
 # Prepare build
 before_script:
+  - export BOOST_ROOT=build/_install/include
   - mkdir build
   - cd build
-  - cmake .. -DCMAKE_CXX_COMPILER=$TOOLSET -DCMAKE_CXX_FLAGS="$SIMD_EXT $OPT -I$HOME/dispatch/include" -DSIMD_EXT=$SIMD_EXT -DCXX_STD=$CXX_STD -DTOOLSET=$TOOLSET
+  - cmake .. -DIS_TRAVIS_CI= -DCMAKE_CXX_COMPILER=$TOOLSET -DCMAKE_CXX_FLAGS="$SIMD_EXT $OPT -I$HOME/dispatch/include" -DSIMD_EXT=$SIMD_EXT -DCXX_STD=$CXX_STD -DTOOLSET=$TOOLSET
 
 # Build unit and run test
 script:
+  - make update.boost-header-only | grep -v "^-- Install" # Silent installation
+  - make update.boost.dispatch
   - make -k unit
   - ctest -D Experimental
