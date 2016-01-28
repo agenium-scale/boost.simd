@@ -23,7 +23,10 @@
 #include <cstring>
 #include <iterator>
 
-namespace boost { namespace simd { namespace detail
+namespace boost { namespace simd
+{
+
+namespace detail
 {
   template < typename T
            , std::size_t N
@@ -34,9 +37,83 @@ namespace boost { namespace simd { namespace detail
   // Needed for const pack_proxy
   template <typename T, std::size_t N, typename Storage>
   class pack_traits<const T, N, const Storage> : public pack_traits<T, N, Storage> {};
+}
 
-  template<typename T> using rconst = typename std::remove_const<T>::type;
-} } }
+template < typename T
+         , std::size_t N
+         , typename Storage
+         >
+class pack_traits_base
+{
+  public:
+  using storage_type            = Storage;
+  using storage_value_type      = Storage;
+
+  using value_type              = T;
+  using size_type               = std::size_t;
+
+  enum { static_size = N };
+
+  using reference               = detail::pack_proxy<value_type, static_size, storage_type>;
+  using const_reference         = detail::pack_proxy<value_type const, static_size, storage_type const>;
+
+  using storage_kind            = ::boost::simd::native_storage;
+
+  static BOOST_FORCEINLINE
+  value_type get(storage_type const& data, std::size_t index) BOOST_NOEXCEPT
+  {
+    typename std::remove_const<value_type>::type temp[N];
+    memcpy(&temp[0], (void*)(&data), sizeof(data));
+    return temp[index];
+  }
+
+  static BOOST_FORCEINLINE
+  void set(storage_type& data, std::size_t index, value_type const& other) BOOST_NOEXCEPT
+  {
+    value_type temp[N];
+    /* read first */
+    memcpy(&temp[0], (void*)(&data), sizeof(data));
+    /* modify the element */
+    temp[index] = other;
+    /* now write back the result */
+    memcpy((void*)(&data), (void*)&temp[0], sizeof(data));
+  }
+
+  static BOOST_FORCEINLINE
+  reference at(storage_type& v, std::size_t i) BOOST_NOEXCEPT
+  {
+    return {&v, i};
+  }
+
+  static BOOST_FORCEINLINE
+  const_reference at(storage_type const& v, std::size_t i) BOOST_NOEXCEPT
+  {
+    return {&v, i};
+  }
+
+  template <typename F>
+  static BOOST_FORCEINLINE
+  void apply(storage_type& v, F f)
+  {
+    f(v);
+  }
+
+  template <typename F, typename AnotherStorage>
+  static BOOST_FORCEINLINE
+  void map(storage_type& in, AnotherStorage& out, F f)
+  {
+    f(in, out);
+  }
+
+  template <typename F, typename DefaultValue>
+  static BOOST_FORCEINLINE
+  auto fold(storage_type& v, DefaultValue const& d, F f) -> decltype(f(d, v))
+  {
+    return f(d, v);
+  }
+};
+
+} }
 
 #define BOOST_SIMD_DEFINE_PACK_TRAITS_TPL_M0(z, n, _) value_type BOOST_PP_CAT(e, n)
 
@@ -50,20 +127,12 @@ namespace boost { namespace simd { namespace detail
 
 #define BOOST_SIMD_DEFINE_PACK_TRAITS_TPL(TPL, TYPE, N, VTYPE, VFILL, VLOAD, VSPLAT)               \
   template <TPL>                                                                                   \
-  class pack_traits<TYPE, N, VTYPE> {                                                              \
+  class pack_traits<TYPE, N, VTYPE> : public pack_traits_base<TYPE, N, VTYPE> {                    \
+    using super = pack_traits_base<TYPE, N, VTYPE>;                                                \
                                                                                                    \
     public:                                                                                        \
-    using storage_type              = VTYPE;                                                       \
-                                                                                                   \
-    using value_type                = TYPE;                                                        \
-    using size_type                 = std::size_t;                                                 \
-                                                                                                   \
-    enum { static_size = N };                                                                      \
-                                                                                                   \
-    using reference               = pack_proxy<value_type, static_size, storage_type>;             \
-    using const_reference         = pack_proxy<value_type const, static_size, storage_type const>; \
-                                                                                                   \
-    using storage_kind = ::boost::simd::native_storage;                                            \
+    using storage_type              = typename super::storage_type;                                \
+    using value_type                = typename super::value_type;                                  \
                                                                                                    \
     BOOST_FORCEINLINE static void fill(                                                            \
         storage_type& v,                                                                           \
@@ -73,50 +142,23 @@ namespace boost { namespace simd { namespace detail
       v = VFILL(BOOST_PP_ENUM(N, BOOST_SIMD_DEFINE_PACK_TRAITS_TPL_M1, N));                        \
     }                                                                                              \
                                                                                                    \
-    BOOST_FORCEINLINE static value_type get(storage_type const& data, std::size_t index)           \
-    BOOST_NOEXCEPT                                                                                 \
-    {                                                                                              \
-      rconst<value_type> temp[N];                                                                  \
-      memcpy(&temp[0], (void*)(&data), sizeof(data));                                              \
-      return temp[index];                                                                          \
-    }                                                                                              \
-                                                                                                   \
-    BOOST_FORCEINLINE static                                                                       \
-    void set(storage_type& data, std::size_t index, value_type const& other) BOOST_NOEXCEPT        \
-    {                                                                                              \
-      value_type temp[N];                                                                          \
-      /* read first */                                                                             \
-      memcpy(&temp[0], (void*)(&data), sizeof(data));                                              \
-      /* modify the element */                                                                     \
-      temp[index] = other;                                                                         \
-      /* now write back the result */                                                              \
-      memcpy((void*)(&data), (void*)&temp[0], sizeof(data));                                       \
-    }                                                                                              \
-                                                                                                   \
-    static BOOST_FORCEINLINE reference at(storage_type& v, std::size_t i) BOOST_NOEXCEPT           \
-    {                                                                                              \
-      return {&v, i};                                                                              \
-    }                                                                                              \
-                                                                                                   \
-    static BOOST_FORCEINLINE const_reference at(storage_type const& v, std::size_t i) BOOST_NOEXCEPT\
-    {                                                                                              \
-      return {&v, i};                                                                              \
-    }                                                                                              \
-                                                                                                   \
-    BOOST_FORCEINLINE static void load(storage_type& v, value_type const* ptr) BOOST_NOEXCEPT      \
+    static BOOST_FORCEINLINE                                                                       \
+    void load(storage_type& v, value_type const* ptr) BOOST_NOEXCEPT                               \
     {                                                                                              \
       v = VLOAD(ptr);                                                                              \
     }                                                                                              \
                                                                                                    \
     template <typename Iterator>                                                                   \
-    BOOST_FORCEINLINE static void load(storage_type& v, Iterator b, Iterator e) BOOST_NOEXCEPT     \
+    static BOOST_FORCEINLINE                                                                       \
+    void load(storage_type& v, Iterator b, Iterator e) BOOST_NOEXCEPT                              \
     {                                                                                              \
       BOOST_PP_REPEAT(N, BOOST_SIMD_DEFINE_PACK_TRAITS_TPL_M2, auto e)                             \
                                                                                                    \
       fill(v, BOOST_PP_ENUM(N, BOOST_SIMD_DEFINE_PACK_TRAITS_TPL_M3, BOOST_PP_EMPTY()));           \
     }                                                                                              \
                                                                                                    \
-    BOOST_FORCEINLINE static void splat(storage_type& v, value_type a) BOOST_NOEXCEPT              \
+    static BOOST_FORCEINLINE                                                                       \
+    void splat(storage_type& v, value_type a) BOOST_NOEXCEPT                                       \
     {                                                                                              \
       v = VSPLAT(a);                                                                               \
     }                                                                                              \
