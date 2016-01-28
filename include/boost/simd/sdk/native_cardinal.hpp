@@ -15,24 +15,22 @@
 #define BOOST_SIMD_SDK_NATIVE_CARDINAL_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
-#include <boost/simd/arch/limits.hpp>
-#include <type_traits>
+#include <boost/simd/sdk/expected_cardinal.hpp>
 
 namespace boost { namespace simd
 {
-  template<typename T> struct logical;
-
   /*!
+    @ingroup group-api
+    @brief Expected cardinal of current architecture register
 
+    Computes the cardinal a potential SIMD register containing elements of type @c Type on
+    the currently selected hardware
+
+    @tparam Type      Element type of the expected register
   **/
-  template< typename T
-          , typename Familly = BOOST_SIMD_DEFAULT_SITE
-          >
-  struct  native_cardinal
-        : std::integral_constant<std::size_t, limits<BOOST_SIMD_DEFAULT_SITE>::bytes / sizeof(T) >
+  template<typename T>
+  struct  native_cardinal : expected_cardinal<T, BOOST_SIMD_DEFAULT_SITE>
   {};
-
-  template<typename T> struct native_cardinal< logical<T> > : native_cardinal<T>  {};
 } }
 
 #endif
