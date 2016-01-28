@@ -28,6 +28,7 @@ namespace boost { namespace simd { namespace detail
   class pack_traits<T, N, std::array<T, N> > {
     public:
     using storage_type              = std::array<T, N>;
+    using storage_value_type        = typename storage_type::value_type;
 
     using value_type                = T;
     using size_type                 = std::size_t;
@@ -71,6 +72,26 @@ namespace boost { namespace simd { namespace detail
     BOOST_FORCEINLINE static void splat(storage_type& s, Value v) BOOST_NOEXCEPT
     {
       s.fill(v);
+    }
+
+    template <typename F>
+    BOOST_FORCEINLINE static void apply(storage_type& s, F f)
+    {
+      std::for_each(s.begin(), s.end(), f);
+    }
+
+    template <typename F, typename AnotherT>
+    BOOST_FORCEINLINE static
+    void map(storage_type& in, std::array<AnotherT, N>& out, F f)
+    {
+      std::transform(in.begin(), in.end(), out.begin(), f);
+    }
+
+    template <typename F, typename DefaultValue>
+    BOOST_FORCEINLINE static
+    auto fold(storage_type& s, DefaultValue const& d, F f) -> decltype(f(d, std::declval<T>()))
+    {
+      return std::accumulate(s.begin(), s.end(), d, f);
     }
   };
 
@@ -139,6 +160,7 @@ namespace boost { namespace simd { namespace detail
     };
 
     using storage_type              = std::array<SIMD, NumberOfVectors>;
+    using storage_value_type        = typename storage_type::value_type;
     using internal_pack_traits      = pack_traits<T, cardinal, SIMD>;
 
     using value_type                = T;
@@ -170,10 +192,10 @@ namespace boost { namespace simd { namespace detail
 
     BOOST_FORCEINLINE static void load(storage_type& s, value_type const* ptr)
     {
-      for (auto& a : s) {
+      apply(s, [&ptr](storage_value_type& a) {
         internal_pack_traits::load(a, ptr);
         ptr += cardinal;
-      }
+      });
     }
 
     template <typename Iterator>
@@ -198,9 +220,43 @@ namespace boost { namespace simd { namespace detail
     template <typename Value>
     BOOST_FORCEINLINE static void splat(storage_type& s, Value v) BOOST_NOEXCEPT
     {
-      for (auto& a : s) {
+      apply(s, [&v](storage_value_type& a) {
         internal_pack_traits::splat(a, v);
+      });
+    }
+
+    template <typename F>
+    BOOST_FORCEINLINE static void apply(storage_type& s, F f)
+    {
+      for (auto& a : s) {
+        internal_pack_traits::apply(a, f);
       }
+    }
+
+    template <typename F, typename AnotherSIMD>
+    BOOST_FORCEINLINE static
+    void map(storage_type& in, std::array<AnotherSIMD, NumberOfVectors>& out, F f)
+    {
+      auto it0 = in.begin();
+      auto it1 = out.begin();
+      // That's okay to check for only it0 as `in` and `out` have the same number of elements
+      for (; it0 != in.end(); ++it0, ++it1) {
+        internal_pack_traits::map(*it0, *it1, f);
+      }
+    }
+
+    template <typename F, typename DefaultValue>
+    BOOST_FORCEINLINE static
+    auto fold(storage_type& s, DefaultValue const& d, F f)
+    -> decltype(internal_pack_traits::fold(std::declval<storage_value_type>(), d, f))
+    {
+      using ret_t = decltype(internal_pack_traits::fold(std::declval<storage_value_type>(), d, f));
+
+      ret_t acc;
+      for (auto& a : s) {
+        acc = internal_pack_traits::fold(a, d, f);
+      }
+      return acc;
     }
   };
 
