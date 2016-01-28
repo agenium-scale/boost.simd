@@ -313,4 +313,6 @@ namespace boost { namespace simd
   }
 } }
 
+#include <boost/simd/detail/pack_info.hpp>
+
 #endif
