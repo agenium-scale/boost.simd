@@ -60,8 +60,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/cumsum.hpp>
-#include <boost/simd/arch/common/scalar/function/cumsum.hpp>
+#include <boost/simd/function/scalar/cumsum.hpp>
 #include <boost/simd/function/simd/cumsum.hpp>
 
 #endif

@@ -44,8 +44,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/eq.hpp>
-#include <boost/simd/arch/common/scalar/function/is_equal.hpp>
+#include <boost/simd/function/scalar/is_equal.hpp>
 #include <boost/simd/function/simd/eq.hpp>
 
 #endif

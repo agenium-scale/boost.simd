@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_ATAN_INCLUDED
 
 #include <boost/simd/function/scalar/atan.hpp>
-//#include <boost/simd/arch/common/function/simd/atan.hpp>
+//#include <boost/simd/arch/common/simd/function/atan.hpp>
 
 #endif
 

@@ -37,8 +37,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/log1p.hpp>
-#include <boost/simd/arch/common/scalar/function/log1p.hpp>
+#include <boost/simd/function/scalar/log1p.hpp>
 #include <boost/simd/function/simd/log1p.hpp>
 
 #endif

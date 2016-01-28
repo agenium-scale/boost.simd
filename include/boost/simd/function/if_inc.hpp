@@ -42,8 +42,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/if_inc.hpp>
-#include <boost/simd/arch/common/scalar/function/selinc.hpp>
+#include <boost/simd/function/scalar/selinc.hpp>
 #include <boost/simd/function/simd/if_inc.hpp>
 
 #endif

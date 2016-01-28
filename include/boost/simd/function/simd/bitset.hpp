@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_BITSET_INCLUDED
 
 #include <boost/simd/function/scalar/bitset.hpp>
-//#include <boost/simd/arch/common/function/simd/bitset.hpp>
+//#include <boost/simd/arch/common/simd/function/bitset.hpp>
 
 #endif
 

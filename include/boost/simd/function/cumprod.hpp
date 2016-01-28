@@ -64,8 +64,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/cumprod.hpp>
-#include <boost/simd/arch/common/scalar/function/cumprod.hpp>
+#include <boost/simd/function/scalar/cumprod.hpp>
 #include <boost/simd/function/simd/cumprod.hpp>
 
 #endif

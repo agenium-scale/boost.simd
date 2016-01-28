@@ -61,8 +61,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/is_odd.hpp>
-#include <boost/simd/arch/common/scalar/function/is_odd.hpp>
+#include <boost/simd/function/scalar/is_odd.hpp>
 #include <boost/simd/function/simd/is_odd.hpp>
 
 #endif

@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_LOGICAL_NOTAND_INCLUDED
 
 #include <boost/simd/function/scalar/logical_notand.hpp>
-//#include <boost/simd/arch/common/function/simd/logical_notand.hpp>
+//#include <boost/simd/arch/common/simd/function/logical_notand.hpp>
 
 #endif
 

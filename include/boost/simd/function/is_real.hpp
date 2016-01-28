@@ -58,9 +58,8 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/is_real.hpp>
-#include <boost/simd/arch/common/scalar/function/is_real.hpp>
-#include <boost/simd/arch/common/generic/function/is_real.hpp>
+#include <boost/simd/function/scalar/is_real.hpp>
+#include <boost/simd/function/scalar/is_real.hpp>
 #include <boost/simd/function/simd/is_real.hpp>
 
 #endif

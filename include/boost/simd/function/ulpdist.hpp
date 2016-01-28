@@ -112,8 +112,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/ulpdist.hpp>
-#include <boost/simd/arch/common/scalar/function/ulpdist.hpp>
+#include <boost/simd/function/scalar/ulpdist.hpp>
 #include <boost/simd/function/simd/ulpdist.hpp>
 
 #endif

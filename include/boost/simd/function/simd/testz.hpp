@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_TESTZ_INCLUDED
 
 #include <boost/simd/function/scalar/testz.hpp>
-//#include <boost/simd/arch/common/function/simd/is_included_c.hpp>
+//#include <boost/simd/arch/common/simd/function/is_included_c.hpp>
 
 #endif

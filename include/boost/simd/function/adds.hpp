@@ -59,8 +59,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/adds.hpp>
-#include <boost/simd/arch/common/scalar/function/adds.hpp>
+#include <boost/simd/function/scalar/adds.hpp>
 #include <boost/simd/function/simd/adds.hpp>
 
 #endif

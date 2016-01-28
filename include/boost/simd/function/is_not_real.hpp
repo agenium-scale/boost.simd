@@ -58,9 +58,8 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/is_not_real.hpp>
-#include <boost/simd/arch/common/scalar/function/is_not_real.hpp>
-#include <boost/simd/arch/common/generic/function/is_not_real.hpp>
+#include <boost/simd/function/scalar/is_not_real.hpp>
+#include <boost/simd/function/scalar/is_not_real.hpp>
 #include <boost/simd/function/simd/is_not_real.hpp>
 
 #endif

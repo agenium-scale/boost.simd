@@ -49,8 +49,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/demote.hpp>
-#include <boost/simd/arch/common/scalar/function/group.hpp>
+#include <boost/simd/function/scalar/group.hpp>
 #include <boost/simd/function/simd/demote.hpp>
 
 #endif

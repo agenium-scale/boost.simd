@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IS_NORMAL_INCLUDED
 
 #include <boost/simd/function/scalar/is_normal.hpp>
-//#include <boost/simd/arch/common/function/simd/is_normal.hpp>
+//#include <boost/simd/arch/common/simd/function/is_normal.hpp>
 
 #endif
 

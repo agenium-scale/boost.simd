@@ -58,8 +58,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/is_flint.hpp>
-#include <boost/simd/arch/common/scalar/function/is_flint.hpp>
+#include <boost/simd/function/scalar/is_flint.hpp>
 #include <boost/simd/function/simd/is_flint.hpp>
 
 #endif

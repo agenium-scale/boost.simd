@@ -61,8 +61,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/deinterleave_second.hpp>
-#include <boost/simd/arch/common/scalar/function/deinterleave_second.hpp>
+#include <boost/simd/function/scalar/deinterleave_second.hpp>
 #include <boost/simd/function/simd/deinterleave_second.hpp>
 
 #endif

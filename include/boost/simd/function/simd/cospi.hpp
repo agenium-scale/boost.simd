@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_COSPI_INCLUDED
 
 #include <boost/simd/function/scalar/cospi.hpp>
-//#include <boost/simd/arch/common/function/simd/cospi.hpp>
+//#include <boost/simd/arch/common/simd/function/cospi.hpp>
 
 #endif
 

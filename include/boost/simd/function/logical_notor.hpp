@@ -68,8 +68,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/logical_notor.hpp>
-#include <boost/simd/arch/common/scalar/function/logical_notor.hpp>
+#include <boost/simd/function/scalar/logical_notor.hpp>
 #include <boost/simd/function/simd/logical_notor.hpp>
 
 #endif

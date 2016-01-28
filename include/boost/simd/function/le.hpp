@@ -46,8 +46,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/le.hpp>
-#include <boost/simd/arch/common/scalar/function/is_less_equal.hpp>
+#include <boost/simd/function/scalar/is_less_equal.hpp>
 #include <boost/simd/function/simd/le.hpp>
 
 #endif

@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SINCOSPI_INCLUDED
 
 #include <boost/simd/function/scalar/sincospi.hpp>
-//#include <boost/simd/arch/common/function/simd/sincospi.hpp>
+//#include <boost/simd/arch/common/simd/function/sincospi.hpp>
 
 #endif
 

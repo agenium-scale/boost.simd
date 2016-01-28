@@ -62,8 +62,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/iround2even.hpp>
-#include <boost/simd/arch/common/generic/function/iround2even.hpp>
+#include <boost/simd/function/scalar/iround2even.hpp>
 #include <boost/simd/function/simd/iround2even.hpp>
 
 #endif

@@ -40,8 +40,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/map.hpp>
-#include <boost/simd/arch/common/scalar/function/map.hpp>
+#include <boost/simd/function/scalar/map.hpp>
 #include <boost/simd/function/simd/map.hpp>
 
 #endif

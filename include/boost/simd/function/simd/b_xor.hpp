@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_B_XOR_INCLUDED
 
 #include <boost/simd/function/scalar/b_xor.hpp>
-//#include <boost/simd/arch/common/function/simd/bitwise_xor.hpp>
+//#include <boost/simd/arch/common/simd/function/bitwise_xor.hpp>
 
 #endif

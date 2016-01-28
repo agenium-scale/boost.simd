@@ -45,8 +45,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/ne.hpp>
-#include <boost/simd/arch/common/scalar/function/is_not_equal.hpp>
+#include <boost/simd/function/scalar/is_not_equal.hpp>
 #include <boost/simd/function/simd/ne.hpp>
 
 #endif

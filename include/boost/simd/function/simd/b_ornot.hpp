@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_B_ORNOT_INCLUDED
 
 #include <boost/simd/function/scalar/b_ornot.hpp>
-//#include <boost/simd/arch/common/function/simd/bitwise_ornot.hpp>
+//#include <boost/simd/arch/common/simd/function/bitwise_ornot.hpp>
 
 #endif

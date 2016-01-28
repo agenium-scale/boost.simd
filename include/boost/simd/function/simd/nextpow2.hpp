@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_NEXTPOW2_INCLUDED
 
 #include <boost/simd/function/scalar/nextpow2.hpp>
-//#include <boost/simd/arch/common/function/simd/nextpow2.hpp>
+//#include <boost/simd/arch/common/simd/function/nextpow2.hpp>
 
 #endif
 

@@ -64,8 +64,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/oneminus.hpp>
-#include <boost/simd/arch/common/generic/function/oneminus.hpp>
+#include <boost/simd/function/scalar/oneminus.hpp>
 #include <boost/simd/function/simd/oneminus.hpp>
 
 #endif

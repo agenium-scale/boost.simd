@@ -44,8 +44,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/if_zero_else_allbits.hpp>
-#include <boost/simd/arch/common/scalar/function/genmaskc.hpp>
+#include <boost/simd/function/scalar/genmaskc.hpp>
 #include <boost/simd/function/simd/if_zero_else_allbits.hpp>
 
 #endif

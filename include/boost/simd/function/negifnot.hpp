@@ -59,8 +59,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/negifnot.hpp>
-#include <boost/simd/arch/common/scalar/function/negifnot.hpp>
+#include <boost/simd/function/scalar/negifnot.hpp>
 #include <boost/simd/function/simd/negifnot.hpp>
 
 #endif

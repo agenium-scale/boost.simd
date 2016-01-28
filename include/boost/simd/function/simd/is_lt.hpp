@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IS_LT_INCLUDED
 
 #include <boost/simd/function/scalar/is_lt.hpp>
-//#include <boost/simd/arch/common/function/simd/is_less.hpp>
+//#include <boost/simd/arch/common/simd/function/is_less.hpp>
 
 #endif

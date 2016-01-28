@@ -56,8 +56,7 @@ z    **/
 } }
 #endif
 
-#include <boost/simd/function/definition/is_gtz.hpp>
-#include <boost/simd/arch/common/scalar/function/is_gtz.hpp>
+#include <boost/simd/function/scalar/is_gtz.hpp>
 #include <boost/simd/function/simd/is_gtz.hpp>
 
 #endif

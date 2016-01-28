@@ -60,8 +60,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/conj.hpp>
-#include <boost/simd/arch/common/generic/function/conj.hpp>
+#include <boost/simd/function/scalar/conj.hpp>
 
 #include <boost/simd/function/simd/conj.hpp>
 

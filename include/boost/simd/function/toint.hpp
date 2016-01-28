@@ -87,8 +87,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/toint.hpp>
-#include <boost/simd/arch/common/scalar/function/toint.hpp>
+#include <boost/simd/function/scalar/toint.hpp>
 #include <boost/simd/function/simd/toint.hpp>
 
 #endif

@@ -56,8 +56,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/sbits.hpp>
-#include <boost/simd/arch/common/scalar/function/sbits.hpp>
+#include <boost/simd/function/scalar/sbits.hpp>
 #include <boost/simd/function/simd/sbits.hpp>
 
 #endif

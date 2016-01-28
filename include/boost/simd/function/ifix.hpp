@@ -42,8 +42,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/ifix.hpp>
-#include <boost/simd/arch/common/scalar/function/toints.hpp>
+#include <boost/simd/function/scalar/toints.hpp>
 #include <boost/simd/function/simd/ifix.hpp>
 
 #endif

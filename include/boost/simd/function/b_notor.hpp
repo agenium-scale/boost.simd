@@ -47,8 +47,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/b_notor.hpp>
-#include <boost/simd/arch/common/scalar/function/bitwise_notor.hpp>
+#include <boost/simd/function/scalar/bitwise_notor.hpp>
 #include <boost/simd/function/simd/b_notor.hpp>
 
 #endif

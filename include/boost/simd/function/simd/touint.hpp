@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_TOUINT_INCLUDED
 
 #include <boost/simd/function/scalar/touint.hpp>
-//#include <boost/simd/arch/common/function/simd/touint.hpp>
+//#include <boost/simd/arch/common/simd/function/touint.hpp>
 
 #endif
 

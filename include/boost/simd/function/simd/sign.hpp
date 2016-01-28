@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SIGN_INCLUDED
 
 #include <boost/simd/function/scalar/sign.hpp>
-//#include <boost/simd/arch/common/function/simd/sign.hpp>
+//#include <boost/simd/arch/common/simd/function/sign.hpp>
 
 #endif
 

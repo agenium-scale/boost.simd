@@ -58,8 +58,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/iround.hpp>
-#include <boost/simd/arch/common/generic/function/iround.hpp>
+#include <boost/simd/function/scalar/iround.hpp>
 #include <boost/simd/function/simd/iround.hpp>
 
 #endif

@@ -58,8 +58,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/sqr.hpp>
-#include <boost/simd/arch/common/generic/function/sqr.hpp>
+#include <boost/simd/function/scalar/sqr.hpp>
 #include <boost/simd/function/simd/sqr.hpp>
 
 #endif

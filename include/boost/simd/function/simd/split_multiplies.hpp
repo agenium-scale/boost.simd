@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SPLIT_MULTIPLIES_INCLUDED
 
 #include <boost/simd/function/scalar/split_multiplies.hpp>
-//#include <boost/simd/arch/common/function/simd/split_multiplies.hpp>
+//#include <boost/simd/arch/common/simd/function/split_multiplies.hpp>
 
 #endif
 

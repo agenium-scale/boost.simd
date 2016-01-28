@@ -60,8 +60,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/interleave_odd.hpp>
-#include <boost/simd/arch/common/scalar/function/interleave_odd.hpp>
+#include <boost/simd/function/scalar/interleave_odd.hpp>
 #include <boost/simd/function/simd/interleave_odd.hpp>
 
 #endif

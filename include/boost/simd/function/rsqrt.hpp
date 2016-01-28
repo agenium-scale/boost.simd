@@ -63,9 +63,8 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/rsqrt.hpp>
-#include <boost/simd/arch/common/scalar/function/rsqrt.hpp>
-#include <boost/simd/arch/common/generic/function/rsqrt.hpp>
+#include <boost/simd/function/scalar/rsqrt.hpp>
+#include <boost/simd/function/scalar/rsqrt.hpp>
 #include <boost/simd/function/simd/rsqrt.hpp>
 
 #endif

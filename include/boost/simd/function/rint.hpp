@@ -42,8 +42,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/rint.hpp>
-#include <boost/simd/arch/common/scalar/function/round2even.hpp>
+#include <boost/simd/function/scalar/round2even.hpp>
 #include <boost/simd/function/simd/rint.hpp>
 
 #endif

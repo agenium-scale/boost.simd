@@ -67,9 +67,8 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/hypot.hpp>
-#include <boost/simd/arch/common/scalar/function/hypot.hpp>
-#include <boost/simd/arch/common/generic/function/hypot.hpp>
+#include <boost/simd/function/scalar/hypot.hpp>
+#include <boost/simd/function/scalar/hypot.hpp>
 #include <boost/simd/function/simd/hypot.hpp>
 
 #endif

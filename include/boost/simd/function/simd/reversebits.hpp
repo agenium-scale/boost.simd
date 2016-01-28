@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_REVERSEBITS_INCLUDED
 
 #include <boost/simd/function/scalar/reversebits.hpp>
-//#include <boost/simd/arch/common/function/simd/reversebits.hpp>
+//#include <boost/simd/arch/common/simd/function/reversebits.hpp>
 
 #endif
 

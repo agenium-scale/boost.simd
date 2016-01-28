@@ -62,8 +62,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/idivfloor.hpp>
-#include <boost/simd/arch/common/generic/function/idivfloor.hpp>
+#include <boost/simd/function/scalar/idivfloor.hpp>
 #include <boost/simd/function/simd/idivfloor.hpp>
 
 #endif

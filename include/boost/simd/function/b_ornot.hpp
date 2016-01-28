@@ -47,8 +47,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/b_ornot.hpp>
-#include <boost/simd/arch/common/scalar/function/bitwise_ornot.hpp>
+#include <boost/simd/function/scalar/bitwise_ornot.hpp>
 #include <boost/simd/function/simd/b_ornot.hpp>
 
 #endif

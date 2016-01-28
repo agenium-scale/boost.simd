@@ -61,8 +61,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/minimum.hpp>
-#include <boost/simd/arch/common/scalar/function/minimum.hpp>
+#include <boost/simd/function/scalar/minimum.hpp>
 #include <boost/simd/function/simd/minimum.hpp>
 
 #endif

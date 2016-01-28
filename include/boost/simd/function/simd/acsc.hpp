@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_ACSC_INCLUDED
 
 #include <boost/simd/function/scalar/acsc.hpp>
-//#include <boost/simd/arch/common/function/simd/acsc.hpp>
+//#include <boost/simd/arch/common/simd/function/acsc.hpp>
 
 #endif
 

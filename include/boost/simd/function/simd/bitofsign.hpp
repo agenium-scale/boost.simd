@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_BITOFSIGN_INCLUDED
 
 #include <boost/simd/function/scalar/bitofsign.hpp>
-//#include <boost/simd/arch/common/function/simd/bitofsign.hpp>
+//#include <boost/simd/arch/common/simd/function/bitofsign.hpp>
 
 #endif
 

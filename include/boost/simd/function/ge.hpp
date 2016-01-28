@@ -44,8 +44,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/ge.hpp>
-#include <boost/simd/arch/common/scalar/function/is_greater_equal.hpp>
+#include <boost/simd/function/scalar/is_greater_equal.hpp>
 #include <boost/simd/function/simd/ge.hpp>
 
 #endif

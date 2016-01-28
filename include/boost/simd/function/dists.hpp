@@ -68,8 +68,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/dists.hpp>
-#include <boost/simd/arch/common/scalar/function/dists.hpp>
+#include <boost/simd/function/scalar/dists.hpp>
 #include <boost/simd/function/simd/dists.hpp>
 
 #endif

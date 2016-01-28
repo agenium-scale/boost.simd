@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_L_NOT_INCLUDED
 
 #include <boost/simd/function/scalar/l_not.hpp>
-//#include <boost/simd/arch/common/function/simd/logical_not.hpp>
+//#include <boost/simd/arch/common/simd/function/logical_not.hpp>
 
 #endif

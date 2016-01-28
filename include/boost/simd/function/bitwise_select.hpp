@@ -69,8 +69,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/bitwise_select.hpp>
-#include <boost/simd/arch/common/generic/function/bitwise_select.hpp>
+#include <boost/simd/function/scalar/bitwise_select.hpp>
 #include <boost/simd/function/simd/bitwise_select.hpp>
 
 #endif

@@ -46,8 +46,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/l_ornot.hpp>
-#include <boost/simd/arch/common/scalar/function/logical_ornot.hpp>
+#include <boost/simd/function/scalar/logical_ornot.hpp>
 #include <boost/simd/function/simd/l_ornot.hpp>
 
 #endif

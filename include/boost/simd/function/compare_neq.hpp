@@ -50,8 +50,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/compare_neq.hpp>
-#include <boost/simd/arch/common/scalar/function/compare_not_equal.hpp>
+#include <boost/simd/function/scalar/compare_not_equal.hpp>
 #include <boost/simd/function/simd/compare_neq.hpp>
 
 #endif

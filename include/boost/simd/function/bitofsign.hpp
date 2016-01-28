@@ -61,8 +61,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/bitofsign.hpp>
-#include <boost/simd/arch/common/scalar/function/bitofsign.hpp>
+#include <boost/simd/function/scalar/bitofsign.hpp>
 #include <boost/simd/function/simd/bitofsign.hpp>
 
 #endif

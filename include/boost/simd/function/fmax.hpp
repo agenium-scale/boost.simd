@@ -42,8 +42,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/fmax.hpp>
-#include <boost/simd/arch/common/scalar/function/maxnum.hpp>
+#include <boost/simd/function/scalar/maxnum.hpp>
 #include <boost/simd/function/simd/fmax.hpp>
 
 #endif

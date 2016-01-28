@@ -46,8 +46,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/l_and.hpp>
-#include <boost/simd/arch/common/scalar/function/logical_and.hpp>
+#include <boost/simd/function/scalar/logical_and.hpp>
 #include <boost/simd/function/simd/l_and.hpp>
 
 #endif

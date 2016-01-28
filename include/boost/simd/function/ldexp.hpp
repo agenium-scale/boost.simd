@@ -61,8 +61,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/ldexp.hpp>
-#include <boost/simd/arch/common/scalar/function/ldexp.hpp>
+#include <boost/simd/function/scalar/ldexp.hpp>
 #include <boost/simd/function/simd/ldexp.hpp>
 
 #endif

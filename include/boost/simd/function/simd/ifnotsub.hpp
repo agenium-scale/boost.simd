@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IFNOTSUB_INCLUDED
 
 #include <boost/simd/function/scalar/ifnotsub.hpp>
-//#include <boost/simd/arch/common/function/simd/ifnotsub.hpp>
+//#include <boost/simd/arch/common/simd/function/ifnotsub.hpp>
 
 #endif
 

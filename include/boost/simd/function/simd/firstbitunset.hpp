@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_FIRSTBITUNSET_INCLUDED
 
 #include <boost/simd/function/scalar/firstbitunset.hpp>
-//#include <boost/simd/arch/common/function/simd/firstbitunset.hpp>
+//#include <boost/simd/arch/common/simd/function/firstbitunset.hpp>
 
 #endif
 

@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_ROR_INCLUDED
 
 #include <boost/simd/function/scalar/ror.hpp>
-//#include <boost/simd/arch/common/function/simd/ror.hpp>
+//#include <boost/simd/arch/common/simd/function/ror.hpp>
 
 #endif
 

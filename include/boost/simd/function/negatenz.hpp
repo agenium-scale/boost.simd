@@ -63,8 +63,7 @@ z    **/
 } }
 #endif
 
-#include <boost/simd/function/definition/negatenz.hpp>
-#include <boost/simd/arch/common/generic/function/negatenz.hpp>
+#include <boost/simd/function/scalar/negatenz.hpp>
 #include <boost/simd/function/simd/negatenz.hpp>
 
 #endif

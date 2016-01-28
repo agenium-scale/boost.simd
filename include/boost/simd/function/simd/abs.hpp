@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_ABS_INCLUDED
 
 #include <boost/simd/function/scalar/abs.hpp>
-//#include <boost/simd/arch/common/function/simd/abs.hpp>
+//#include <boost/simd/arch/common/simd/function/abs.hpp>
 
 #endif
 

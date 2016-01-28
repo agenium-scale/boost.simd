@@ -58,8 +58,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/bits.hpp>
-#include <boost/simd/arch/common/generic/function/bits.hpp>
+#include <boost/simd/function/scalar/bits.hpp>
 #include <boost/simd/function/simd/bits.hpp>
 
 #endif

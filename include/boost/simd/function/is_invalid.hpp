@@ -58,8 +58,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/is_invalid.hpp>
-#include <boost/simd/arch/common/scalar/function/is_invalid.hpp>
+#include <boost/simd/function/scalar/is_invalid.hpp>
 #include <boost/simd/function/simd/is_invalid.hpp>
 
 #endif

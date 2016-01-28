@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_RROL_INCLUDED
 
 #include <boost/simd/function/scalar/rrol.hpp>
-//#include <boost/simd/arch/common/function/simd/rrol.hpp>
+//#include <boost/simd/arch/common/simd/function/rrol.hpp>
 
 #endif
 

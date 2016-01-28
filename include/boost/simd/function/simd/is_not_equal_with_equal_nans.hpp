@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IS_NOT_EQUAL_WITH_EQUAL_NANS_INCLUDED
 
 #include <boost/simd/function/scalar/is_not_equal_with_equal_nans.hpp>
-//#include <boost/simd/arch/common/function/simd/is_not_equal_with_equal_nans.hpp>
+//#include <boost/simd/arch/common/simd/function/is_not_equal_with_equal_nans.hpp>
 
 #endif
 

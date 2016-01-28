@@ -70,8 +70,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/bitwise_ornot.hpp>
-#include <boost/simd/arch/common/scalar/function/bitwise_ornot.hpp>
+#include <boost/simd/function/scalar/bitwise_ornot.hpp>
 #include <boost/simd/function/simd/bitwise_ornot.hpp>
 
 #endif

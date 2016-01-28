@@ -69,8 +69,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/round.hpp>
-#include <boost/simd/arch/common/scalar/function/round.hpp>
+#include <boost/simd/function/scalar/round.hpp>
 #include <boost/simd/function/simd/round.hpp>
 
 #endif

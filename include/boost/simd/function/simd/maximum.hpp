@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_MAXIMUM_INCLUDED
 
 #include <boost/simd/function/scalar/maximum.hpp>
-//#include <boost/simd/arch/common/function/simd/maximum.hpp>
+//#include <boost/simd/arch/common/simd/function/maximum.hpp>
 
 #endif
 

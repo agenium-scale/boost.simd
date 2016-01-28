@@ -71,8 +71,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/compare_equal.hpp>
-#include <boost/simd/arch/common/scalar/function/compare_equal.hpp>
+#include <boost/simd/function/scalar/compare_equal.hpp>
 #include <boost/simd/function/simd/compare_equal.hpp>
 
 #endif

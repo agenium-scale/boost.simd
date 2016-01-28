@@ -57,8 +57,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/rshl.hpp>
-#include <boost/simd/arch/common/scalar/function/rshl.hpp>
+#include <boost/simd/function/scalar/rshl.hpp>
 #include <boost/simd/function/simd/rshl.hpp>
 
 #endif

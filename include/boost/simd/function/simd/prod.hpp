@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_PROD_INCLUDED
 
 #include <boost/simd/function/scalar/prod.hpp>
-//#include <boost/simd/arch/common/function/simd/prod.hpp>
+//#include <boost/simd/arch/common/simd/function/prod.hpp>
 
 #endif
 

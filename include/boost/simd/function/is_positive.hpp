@@ -75,8 +75,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/is_positive.hpp>
-#include <boost/simd/arch/common/scalar/function/is_positive.hpp>
+#include <boost/simd/function/scalar/is_positive.hpp>
 #include <boost/simd/function/simd/is_positive.hpp>
 
 #endif

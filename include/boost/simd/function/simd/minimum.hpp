@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_MINIMUM_INCLUDED
 
 #include <boost/simd/function/scalar/minimum.hpp>
-//#include <boost/simd/arch/common/function/simd/minimum.hpp>
+//#include <boost/simd/arch/common/simd/function/minimum.hpp>
 
 #endif
 

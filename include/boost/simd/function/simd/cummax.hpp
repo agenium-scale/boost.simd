@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_CUMMAX_INCLUDED
 
 #include <boost/simd/function/scalar/cummax.hpp>
-//#include <boost/simd/arch/common/function/simd/cummax.hpp>
+//#include <boost/simd/arch/common/simd/function/cummax.hpp>
 
 #endif
 

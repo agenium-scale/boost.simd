@@ -57,8 +57,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/maxmag.hpp>
-#include <boost/simd/arch/common/scalar/function/maxmag.hpp>
+#include <boost/simd/function/scalar/maxmag.hpp>
 #include <boost/simd/function/simd/maxmag.hpp>
 
 #endif

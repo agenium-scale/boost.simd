@@ -52,8 +52,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/reversebits.hpp>
-#include <boost/simd/arch/common/scalar/function/reversebits.hpp>
+#include <boost/simd/function/scalar/reversebits.hpp>
 #include <boost/simd/function/simd/reversebits.hpp>
 
 #endif

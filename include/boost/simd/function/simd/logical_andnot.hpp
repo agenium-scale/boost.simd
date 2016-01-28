@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_LOGICAL_ANDNOT_INCLUDED
 
 #include <boost/simd/function/scalar/logical_andnot.hpp>
-//#include <boost/simd/arch/common/function/simd/logical_andnot.hpp>
+//#include <boost/simd/arch/common/simd/function/logical_andnot.hpp>
 
 #endif
 

@@ -62,8 +62,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/ifnotsub.hpp>
-#include <boost/simd/arch/common/scalar/function/ifnotsub.hpp>
+#include <boost/simd/function/scalar/ifnotsub.hpp>
 #include <boost/simd/function/simd/ifnotsub.hpp>
 
 #endif

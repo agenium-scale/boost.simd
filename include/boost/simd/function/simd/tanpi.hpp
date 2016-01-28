@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_TANPI_INCLUDED
 
 #include <boost/simd/function/scalar/tanpi.hpp>
-//#include <boost/simd/arch/common/function/simd/tanpi.hpp>
+//#include <boost/simd/arch/common/simd/function/tanpi.hpp>
 
 #endif
 

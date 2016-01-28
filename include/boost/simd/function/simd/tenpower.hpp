@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_TENPOWER_INCLUDED
 
 #include <boost/simd/function/scalar/tenpower.hpp>
-//#include <boost/simd/arch/common/function/simd/tenpower.hpp>
+//#include <boost/simd/arch/common/simd/function/tenpower.hpp>
 
 #endif
 

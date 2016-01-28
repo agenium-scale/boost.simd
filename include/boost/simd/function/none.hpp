@@ -58,8 +58,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/none.hpp>
-#include <boost/simd/arch/common/scalar/function/none.hpp>
+#include <boost/simd/function/scalar/none.hpp>
 #include <boost/simd/function/simd/none.hpp>
 
 #endif

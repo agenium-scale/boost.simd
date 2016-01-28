@@ -57,8 +57,6 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/saturate_at.hpp>
-#include <boost/simd/arch/common/generic/function/saturate_at.hpp>
-//#include <boost/simd/arch/common/function/simd/saturate_at.hpp>
+#include <boost/simd/function/scalar/saturate_at.hpp>
 
 #endif

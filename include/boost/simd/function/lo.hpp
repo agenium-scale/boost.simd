@@ -58,8 +58,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/lo.hpp>
-#include <boost/simd/arch/common/generic/function/lo.hpp>
+#include <boost/simd/function/scalar/lo.hpp>
 #include <boost/simd/function/simd/lo.hpp>
 
 #endif

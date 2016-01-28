@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_REPEAT_UPPER_HALF_INCLUDED
 
 #include <boost/simd/function/scalar/repeat_upper_half.hpp>
-//#include <boost/simd/arch/common/function/simd/repeat_upper_half.hpp>
+//#include <boost/simd/arch/common/simd/function/repeat_upper_half.hpp>
 
 #endif
 

@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_REPEAT_LOWER_HALF_INCLUDED
 
 #include <boost/simd/function/scalar/repeat_lower_half.hpp>
-//#include <boost/simd/arch/common/function/simd/repeat_lower_half.hpp>
+//#include <boost/simd/arch/common/simd/function/repeat_lower_half.hpp>
 
 #endif
 

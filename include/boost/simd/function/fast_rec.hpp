@@ -40,8 +40,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/fast_rec.hpp>
-#include <boost/simd/arch/common/scalar/function/fast_rec.hpp>
+#include <boost/simd/function/scalar/fast_rec.hpp>
 #include <boost/simd/function/simd/fast_rec.hpp>
 
 #endif

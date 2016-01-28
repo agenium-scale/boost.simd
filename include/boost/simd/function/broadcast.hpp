@@ -62,8 +62,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/broadcast.hpp>
-#include <boost/simd/arch/common/scalar/function/broadcast.hpp>
+#include <boost/simd/function/scalar/broadcast.hpp>
 #include <boost/simd/function/simd/broadcast.hpp>
 
 #endif

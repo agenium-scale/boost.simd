@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_DEINTERLEAVE_SECOND_INCLUDED
 
 #include <boost/simd/function/scalar/deinterleave_second.hpp>
-//#include <boost/simd/arch/common/function/simd/deinterleave_second.hpp>
+//#include <boost/simd/arch/common/simd/function/deinterleave_second.hpp>
 
 #endif
 

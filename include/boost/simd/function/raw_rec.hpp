@@ -65,8 +65,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/raw_rec.hpp>
-#include <boost/simd/arch/common/scalar/function/raw_rec.hpp>
+#include <boost/simd/function/scalar/raw_rec.hpp>
 #include <boost/simd/function/simd/raw_rec.hpp>
 
 #endif
