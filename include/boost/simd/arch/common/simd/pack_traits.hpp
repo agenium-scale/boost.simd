@@ -40,37 +40,37 @@ namespace boost { namespace simd { namespace detail
     enum { static_size = N };
 
     template <typename... Ts>
-    BOOST_FORCEINLINE static void fill(storage_type& d, Ts const&... v) BOOST_NOEXCEPT
+    BOOST_FORCEINLINE static void fill(storage_type& s, Ts const&... v) BOOST_NOEXCEPT
     {
-      d = std::array<T, N>{{ static_cast<T>(v)... }};
+      s = std::array<T, N>{{ static_cast<T>(v)... }};
     }
 
-    BOOST_FORCEINLINE static reference at(storage_type& d, std::size_t i) BOOST_NOEXCEPT
+    BOOST_FORCEINLINE static reference at(storage_type& s, std::size_t i) BOOST_NOEXCEPT
     {
-      return d[i];
+      return s[i];
     }
 
-    BOOST_FORCEINLINE static const_reference at(storage_type const& d, std::size_t i) BOOST_NOEXCEPT
+    BOOST_FORCEINLINE static const_reference at(storage_type const& s, std::size_t i) BOOST_NOEXCEPT
     {
-      return d[i];
-    }
-
-    template <typename Iterator>
-    BOOST_FORCEINLINE static void load(storage_type& d, Iterator it) BOOST_NOEXCEPT
-    {
-      std::copy(it, it+N, d.begin());
+      return s[i];
     }
 
     template <typename Iterator>
-    BOOST_FORCEINLINE static void load(storage_type& d, Iterator b, Iterator e) BOOST_NOEXCEPT
+    BOOST_FORCEINLINE static void load(storage_type& s, Iterator it) BOOST_NOEXCEPT
     {
-      std::copy(b, e, d.begin());
+      std::copy(it, it + N, s.begin());
+    }
+
+    template <typename Iterator>
+    BOOST_FORCEINLINE static void load(storage_type& s, Iterator b, Iterator e) BOOST_NOEXCEPT
+    {
+      std::copy(b, e, s.begin());
     }
 
     template <typename Value>
-    BOOST_FORCEINLINE static void splat(storage_type& d, Value v) BOOST_NOEXCEPT
+    BOOST_FORCEINLINE static void splat(storage_type& s, Value v) BOOST_NOEXCEPT
     {
-      d.fill(v);
+      s.fill(v);
     }
   };
 
@@ -151,54 +151,54 @@ namespace boost { namespace simd { namespace detail
 
     public:
     template <typename... Ts>
-    BOOST_FORCEINLINE static void fill(storage_type& d, Ts const&... v) BOOST_NOEXCEPT
+    BOOST_FORCEINLINE static void fill(storage_type& s, Ts const&... v) BOOST_NOEXCEPT
     {
       // We do need to statically unroll `pack_traits::fill` as `v` is variadic.
       // We decompose `v` in `cardinal` arguments (`NumberOfVectors` times).
-      static_unrolled_fill<T, 0, NumberOfVectors, SIMD, cardinal>::fill(d, v...);
+      static_unrolled_fill<T, 0, NumberOfVectors, SIMD, cardinal>::fill(s, v...);
     }
 
-    BOOST_FORCEINLINE static reference at(storage_type& d, std::size_t i)
+    BOOST_FORCEINLINE static reference at(storage_type& s, std::size_t i)
     {
-      return internal_pack_traits::at(d[i / cardinal], i % cardinal);
+      return internal_pack_traits::at(s[i / cardinal], i % cardinal);
     }
 
-    BOOST_FORCEINLINE static const_reference at(storage_type const& d, std::size_t i)
+    BOOST_FORCEINLINE static const_reference at(storage_type const& s, std::size_t i)
     {
-      return internal_pack_traits::at(d[i / cardinal], i % cardinal);
+      return internal_pack_traits::at(s[i / cardinal], i % cardinal);
     }
 
-    BOOST_FORCEINLINE static void load(storage_type& d, value_type const* ptr)
+    BOOST_FORCEINLINE static void load(storage_type& s, value_type const* ptr)
     {
-      for (auto& a : d) {
+      for (auto& a : s) {
         internal_pack_traits::load(a, ptr);
         ptr += cardinal;
       }
     }
 
     template <typename Iterator>
-    BOOST_FORCEINLINE static void load(storage_type& d, Iterator b, Iterator e)
+    BOOST_FORCEINLINE static void load(storage_type& s, Iterator b, Iterator e)
     {
       auto it = b;
       for (std::size_t i = 0; i < NumberOfVectors && it != e; ++i) {
-        // Do not use `internal_pack_traits::load(d[i], it)` here as `b` could be
+        // Do not use `internal_pack_traits::load(s[i], it)` here as `b` could be
         // a forward iterator, which mean that we can only use `++` operator.
         //
-        // Calling `internal_pack_traits::load(d[i], it)` will move
+        // Calling `internal_pack_traits::load(s[i], it)` will move
         // the iterator inside the function and we won't be able to move the
         // iterator using the following: `b += N` as `b` can be a forward iterator.
         //
         // Instead, we doing it by hand using `internal_pack_traits::at`!
         for (std::size_t j = 0; j < cardinal && it != e; ++j, ++it) {
-          internal_pack_traits::at(d[i], j) = *it;
+          internal_pack_traits::at(s[i], j) = *it;
         }
       }
     }
 
     template <typename Value>
-    BOOST_FORCEINLINE static void splat(storage_type& d, Value v) BOOST_NOEXCEPT
+    BOOST_FORCEINLINE static void splat(storage_type& s, Value v) BOOST_NOEXCEPT
     {
-      for (auto& a : d) {
+      for (auto& a : s) {
         internal_pack_traits::splat(a, v);
       }
     }
