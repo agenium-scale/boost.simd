@@ -603,7 +603,7 @@ namespace stf { namespace detail
 #define STF_DUMP(R)                                                                                 \
 $.stream()  << "failing because:\n" << R.lhs << R.op << R.rhs << "\n" << "is incorrect.\n";         \
 
-
+  
 namespace stf
 {
   template<typename LHS, typename RHS>
@@ -684,7 +684,7 @@ namespace stf { namespace detail
               , stf::to_string( lhs ), stf::split_line(lhs,rhs,SB), stf::to_string(rhs)             \
               };                                                                                    \
     }                                                                                               \
-
+    
     STF_BINARY_DECOMPOSE( ==, "==", eq  )
     STF_BINARY_DECOMPOSE( !=, "!=", neq )
     STF_BINARY_DECOMPOSE( < , "<" , lt  )
