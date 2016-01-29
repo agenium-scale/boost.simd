@@ -1,15 +1,18 @@
 ##==================================================================================================
-##                 Copyright 2012 - 2015   NumScale SAS
+##                               Copyright 2015   NumScale SAS
 ##
 ##                   Distributed under the Boost Software License, Version 1.0.
 ##                        See accompanying file LICENSE.txt or copy at
 ##                            http://www.boost.org/LICENSE_1_0.txt
 ##==================================================================================================
-FUNCTION(ENABLE_COVERAGE root)
 
-    SET(BOOST_FILTER "'${Boost_INCLUDE_DIRS}/*'")
+include(${NS_CMAKE_ROOT}/ns.cmake)
+NS_guard(NS_CMAKE_COVERAGE)
 
-    ADD_CUSTOM_TARGET( coverage
+function(enable_coverage root)
+
+    set(BOOST_FILTER "'${Boost_INCLUDE_DIRS}/*'")
+    add_custom_target( coverage
 
         COMMAND ${CMAKE_COMMAND} -E remove coverage.info coverage.info.cleaned
         COMMAND ${LCOV_PATH} --directory . --zerocounters
@@ -20,49 +23,49 @@ FUNCTION(ENABLE_COVERAGE root)
         COMMENT "Processing code coverage counters."
     )
 
-    ADD_DEPENDENCIES(tests coverage)
+    add_dependencies(tests coverage)
 
-ENDFUNCTION()
+endfunction()
 
-IF(NOT CMAKE_COMPILER_IS_GNUCXX)
-    MESSAGE(STATUS "[coverage] Compiler does not support gcov. coverage targets disabled")
-    return()
-ENDIF() ## NOT CMAKE_COMPILER_IS_GNUCXX
-
-FIND_PROGRAM( GCOV_PATH gcov )
-FIND_PROGRAM( LCOV_PATH lcov )
-
-IF(NOT GCOV_PATH)
-  MESSAGE(STATUS "[coverage] gcov not found! Coverage disabled")
+if(NOT CMAKE_COMPILER_IS_GNUCXX)
+  NS_say("Compiler does not support gcov. coverage targets disabled")
   return()
-ENDIF()
+endif() ## NOT CMAKE_COMPILER_IS_GNUCXX
 
-IF(NOT LCOV_PATH)
-  MESSAGE(STATUS "[coverage] lcov not found! Coverage disabled")
+find_program( GCOV_PATH gcov )
+find_program( LCOV_PATH lcov )
+
+if(NOT GCOV_PATH)
+  NS_say("gcov not found! Coverage disabled")
   return()
-ENDIF()
+endif()
 
-SET(CMAKE_CXX_FLAGS_COVERAGE
+if(NOT LCOV_PATH)
+  NS_say("lcov not found! Coverage disabled")
+  return()
+endif()
+
+set(CMAKE_CXX_FLAGS_COVERAGE
     "-g -O0 --coverage -fprofile-arcs -ftest-coverage"
     CACHE STRING "Flags used by the C++ compiler during coverage builds."
-    FORCE )
-SET(CMAKE_C_FLAGS_COVERAGE
+    FORCE)
+set(CMAKE_C_FLAGS_COVERAGE
     "-g -O0 --coverage -fprofile-arcs -ftest-coverage"
     CACHE STRING "Flags used by the C compiler during coverage builds."
-    FORCE )
-SET(CMAKE_EXE_LINKER_FLAGS_COVERAGE
+    FORCE)
+set(CMAKE_EXE_LINKER_FLAGS_COVERAGE
     "-lgcov -fprofile-arcs "
     CACHE STRING "Flags used for linking binaries during coverage builds."
-    FORCE )
-SET(CMAKE_SHARED_LINKER_FLAGS_COVERAGE
+    FORCE)
+set(CMAKE_SHARED_LINKER_FLAGS_COVERAGE
     "-lgcov -fprofile-arcs "
     CACHE STRING "Flags used by the shared libraries linker during coverage builds."
-    FORCE )
+    FORCE)
 
-MARK_AS_ADVANCED(
+mark_as_advanced(
     CMAKE_CXX_FLAGS_COVERAGE
     CMAKE_C_FLAGS_COVERAGE
     CMAKE_EXE_LINKER_FLAGS_COVERAGE
-    CMAKE_SHARED_LINKER_FLAGS_COVERAGE )
+    CMAKE_SHARED_LINKER_FLAGS_COVERAGE)
 
-SET(COVERAGE_SUPPORTED 1)
+set(COVERAGE_SUPPORTED TRUE)
