@@ -38,7 +38,7 @@ namespace boost { namespace simd { namespace detail
     using reference                 = value_type&;
     using const_reference           = value_type const&;
 
-    using storage_kind = ::boost::simd::scalar_storage;
+    using storage_kind              = ::boost::simd::scalar_storage;
 
     enum { static_size = N };
 
@@ -171,7 +171,7 @@ namespace boost { namespace simd { namespace detail
     using reference                 = typename internal_pack_traits::reference;
     using const_reference           = typename internal_pack_traits::const_reference;
 
-    using storage_kind = ::boost::simd::aggregate_storage;
+    using storage_kind              = ::boost::simd::aggregate_storage;
 
     public:
     template <typename... Ts>
