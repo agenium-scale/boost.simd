@@ -19,6 +19,8 @@
 #include <boost/simd/arch/common/tags.hpp>
 #include <boost/simd/arch/spec.hpp>
 #include <array>
+#include <numeric>
+#include <algorithm>
 
 namespace boost { namespace simd { namespace detail
 {
