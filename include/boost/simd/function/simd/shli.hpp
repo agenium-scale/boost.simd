@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SHLI_INCLUDED
 
 #include <boost/simd/function/scalar/shli.hpp>
-//#include <boost/simd/arch/common/function/simd/shift_left.hpp>
+//#include <boost/simd/arch/common/simd/function/shift_left.hpp>
 
 #endif

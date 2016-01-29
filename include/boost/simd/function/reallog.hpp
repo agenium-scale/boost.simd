@@ -37,8 +37,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/reallog.hpp>
-#include <boost/simd/arch/common/scalar/function/reallog.hpp>
+#include <boost/simd/function/scalar/reallog.hpp>
 #include <boost/simd/function/simd/reallog.hpp>
 
 #endif

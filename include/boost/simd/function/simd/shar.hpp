@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SHAR_INCLUDED
 
 #include <boost/simd/function/scalar/shar.hpp>
-//#include <boost/simd/arch/common/function/simd/shift_right.hpp>
+//#include <boost/simd/arch/common/simd/function/shift_right.hpp>
 
 #endif

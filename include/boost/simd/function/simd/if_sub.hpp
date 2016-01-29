@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IF_SUB_INCLUDED
 
 #include <boost/simd/function/scalar/if_sub.hpp>
-//#include <boost/simd/arch/common/function/simd/selsub.hpp>
+//#include <boost/simd/arch/common/simd/function/selsub.hpp>
 
 #endif

@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_COTH_INCLUDED
 
 #include <boost/simd/function/scalar/coth.hpp>
-//#include <boost/simd/arch/common/function/simd/coth.hpp>
+//#include <boost/simd/arch/common/simd/function/coth.hpp>
 
 #endif
 

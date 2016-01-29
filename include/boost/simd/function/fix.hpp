@@ -42,8 +42,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/fix.hpp>
-#include <boost/simd/arch/common/scalar/function/trunc.hpp>
+#include <boost/simd/function/scalar/trunc.hpp>
 #include <boost/simd/function/simd/fix.hpp>
 
 #endif

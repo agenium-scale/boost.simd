@@ -64,8 +64,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/divfloor.hpp>
-#include <boost/simd/arch/common/scalar/function/divfloor.hpp>
+#include <boost/simd/function/scalar/divfloor.hpp>
 #include <boost/simd/function/simd/divfloor.hpp>
 
 #endif

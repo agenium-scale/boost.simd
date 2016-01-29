@@ -24,6 +24,7 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
   BOOST_DISPATCH_OVERLOAD ( abss_
                           , (typename T)
                           , bd::cpu_
@@ -56,7 +57,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE T operator()(T const& a0) const BOOST_NOEXCEPT
     {
-      T a =  simd::abs(a0);
+      T a =  bs::abs(a0);
       return if_else(is_equal(a0,Valmin<T>()),Valmax<T>(),a);
     }
   };

@@ -37,8 +37,6 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/fast_hypot.hpp>
-#include <boost/simd/arch/common/scalar/function/fast_hypot.hpp>
-//#include <boost/simd/arch/common/function/simd/fast_hypot.hpp>
+#include <boost/simd/function/scalar/fast_hypot.hpp>
 
 #endif

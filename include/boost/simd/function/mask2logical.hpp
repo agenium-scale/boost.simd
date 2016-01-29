@@ -62,8 +62,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/mask2logical.hpp>
-#include <boost/simd/arch/common/generic/function/mask2logical.hpp>
+#include <boost/simd/function/scalar/mask2logical.hpp>
 #include <boost/simd/function/simd/mask2logical.hpp>
 
 #endif

@@ -58,8 +58,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/is_finite.hpp>
-#include <boost/simd/arch/common/scalar/function/is_finite.hpp>
+#include <boost/simd/function/scalar/is_finite.hpp>
 #include <boost/simd/function/simd/is_finite.hpp>
 
 #endif

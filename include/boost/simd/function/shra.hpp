@@ -48,8 +48,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/shra.hpp>
-#include <boost/simd/arch/common/scalar/function/shift_right.hpp>
+#include <boost/simd/function/scalar/shift_right.hpp>
 #include <boost/simd/function/simd/shra.hpp>
 
 #endif

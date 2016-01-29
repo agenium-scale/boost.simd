@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_EXPRECNEG_INCLUDED
 
 #include <boost/simd/function/scalar/exprecneg.hpp>
-//#include <boost/simd/arch/common/function/simd/exprecneg.hpp>
+//#include <boost/simd/arch/common/simd/function/exprecneg.hpp>
 
 #endif
 

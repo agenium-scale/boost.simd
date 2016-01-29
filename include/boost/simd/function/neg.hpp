@@ -44,8 +44,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/neg.hpp>
-#include <boost/simd/arch/common/scalar/function/unary_minus.hpp>
+#include <boost/simd/function/scalar/unary_minus.hpp>
 #include <boost/simd/function/simd/neg.hpp>
 
 #endif

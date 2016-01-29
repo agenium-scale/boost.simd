@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_CSCH_INCLUDED
 
 #include <boost/simd/function/scalar/csch.hpp>
-//#include <boost/simd/arch/common/function/simd/csch.hpp>
+//#include <boost/simd/arch/common/simd/function/csch.hpp>
 
 #endif
 

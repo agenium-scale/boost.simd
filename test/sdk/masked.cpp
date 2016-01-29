@@ -33,7 +33,7 @@ STF_CASE( "Check masked pointer interface" )
 STF_CASE( "Check masked pointer interface over aligned pointer" )
 {
   double       x{};
-  std::uint64_t const const_x{};
+//  std::uint64_t const const_x{};
 
   auto ax = mask( aligned(&x), true);
 //  auto acx = mask(&const_x, false);

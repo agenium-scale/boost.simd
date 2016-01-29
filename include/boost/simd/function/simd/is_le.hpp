@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IS_LE_INCLUDED
 
 #include <boost/simd/function/scalar/is_le.hpp>
-//#include <boost/simd/arch/common/function/simd/is_less_equal.hpp>
+//#include <boost/simd/arch/common/simd/function/is_less_equal.hpp>
 
 #endif

@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_B_AND_INCLUDED
 
 #include <boost/simd/function/scalar/b_and.hpp>
-//#include <boost/simd/arch/common/function/simd/bitwise_and.hpp>
+//#include <boost/simd/arch/common/simd/function/bitwise_and.hpp>
 
 #endif

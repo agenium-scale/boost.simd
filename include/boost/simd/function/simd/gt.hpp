@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_GT_INCLUDED
 
 #include <boost/simd/function/scalar/gt.hpp>
-//#include <boost/simd/arch/common/function/simd/is_greater.hpp>
+//#include <boost/simd/arch/common/simd/function/is_greater.hpp>
 
 #endif

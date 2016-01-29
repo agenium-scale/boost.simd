@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_RINT_INCLUDED
 
 #include <boost/simd/function/scalar/rint.hpp>
-//#include <boost/simd/arch/common/function/simd/round2even.hpp>
+//#include <boost/simd/arch/common/simd/function/round2even.hpp>
 
 #endif

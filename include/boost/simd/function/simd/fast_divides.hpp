@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_FAST_DIVIDES_INCLUDED
 
 #include <boost/simd/function/scalar/fast_divides.hpp>
-//#include <boost/simd/arch/common/function/simd/fast_divides.hpp>
+//#include <boost/simd/arch/common/simd/function/fast_divides.hpp>
 
 #endif
 

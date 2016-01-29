@@ -60,8 +60,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/cummax.hpp>
-#include <boost/simd/arch/common/scalar/function/cummax.hpp>
+#include <boost/simd/function/scalar/cummax.hpp>
 #include <boost/simd/function/simd/cummax.hpp>
 
 #endif

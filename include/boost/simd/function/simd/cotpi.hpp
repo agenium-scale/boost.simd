@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_COTPI_INCLUDED
 
 #include <boost/simd/function/scalar/cotpi.hpp>
-//#include <boost/simd/arch/common/function/simd/cotpi.hpp>
+//#include <boost/simd/arch/common/simd/function/cotpi.hpp>
 
 #endif
 

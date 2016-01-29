@@ -59,8 +59,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/muls.hpp>
-#include <boost/simd/arch/common/scalar/function/muls.hpp>
+#include <boost/simd/function/scalar/muls.hpp>
 #include <boost/simd/function/simd/muls.hpp>
 
 #endif

@@ -41,8 +41,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/fabs.hpp>
-#include <boost/simd/arch/common/scalar/function/fabs.hpp>
+#include <boost/simd/function/scalar/fabs.hpp>
 #include <boost/simd/function/simd/fabs.hpp>
 
 #endif

@@ -68,8 +68,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/bitinteger.hpp>
-#include <boost/simd/arch/common/scalar/function/bitinteger.hpp>
+#include <boost/simd/function/scalar/bitinteger.hpp>
 #include <boost/simd/function/simd/bitinteger.hpp>
 
 #endif

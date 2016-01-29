@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SIGNNZ_INCLUDED
 
 #include <boost/simd/function/scalar/signnz.hpp>
-//#include <boost/simd/arch/common/function/simd/signnz.hpp>
+//#include <boost/simd/arch/common/simd/function/signnz.hpp>
 
 #endif
 

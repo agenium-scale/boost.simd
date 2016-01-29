@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_INCS_HPP_INCLUDED
 
 #include <boost/simd/function/definition/incs.hpp>
-#include <boost/simd/arch/common/scalar/function/oneplus.hpp>
+#include <boost/simd/arch/common/generic/function/oneplus.hpp>
 
 #endif
 

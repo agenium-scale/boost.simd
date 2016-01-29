@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_FFS_INCLUDED
 
 #include <boost/simd/function/scalar/ffs.hpp>
-//#include <boost/simd/arch/common/function/simd/ffs.hpp>
+//#include <boost/simd/arch/common/simd/function/ffs.hpp>
 
 #endif
 

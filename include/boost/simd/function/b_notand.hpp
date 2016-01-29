@@ -46,8 +46,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/b_notand.hpp>
-#include <boost/simd/arch/common/scalar/function/bitwise_notand.hpp>
+#include <boost/simd/function/scalar/bitwise_notand.hpp>
 #include <boost/simd/function/simd/b_notand.hpp>
 
 #endif

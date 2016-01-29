@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IDIVROUND2EVEN_INCLUDED
 
 #include <boost/simd/function/scalar/idivround2even.hpp>
-//#include <boost/simd/arch/common/function/simd/idivround2even.hpp>
+//#include <boost/simd/arch/common/simd/function/idivround2even.hpp>
 
 #endif
 

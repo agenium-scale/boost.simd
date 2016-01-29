@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SIGNBIT_INCLUDED
 
 #include <boost/simd/function/scalar/signbit.hpp>
-//#include <boost/simd/arch/common/function/simd/is_negative.hpp>
+//#include <boost/simd/arch/common/simd/function/is_negative.hpp>
 
 #endif
 

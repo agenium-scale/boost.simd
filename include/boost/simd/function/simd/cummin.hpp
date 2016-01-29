@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_CUMMIN_INCLUDED
 
 #include <boost/simd/function/scalar/cummin.hpp>
-//#include <boost/simd/arch/common/function/simd/cummin.hpp>
+//#include <boost/simd/arch/common/simd/function/cummin.hpp>
 
 #endif
 

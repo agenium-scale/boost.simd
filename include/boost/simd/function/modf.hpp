@@ -62,8 +62,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/modf.hpp>
-#include <boost/simd/arch/common/scalar/function/modf.hpp>
+#include <boost/simd/function/scalar/modf.hpp>
 #include <boost/simd/function/simd/modf.hpp>
 
 #endif

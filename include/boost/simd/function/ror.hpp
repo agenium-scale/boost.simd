@@ -58,8 +58,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/ror.hpp>
-#include <boost/simd/arch/common/generic/function/ror.hpp>
+#include <boost/simd/function/scalar/ror.hpp>
 #include <boost/simd/function/simd/ror.hpp>
 
 #endif

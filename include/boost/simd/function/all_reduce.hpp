@@ -39,8 +39,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/all_reduce.hpp>
-#include <boost/simd/arch/common/scalar/function/all_reduce.hpp>
+#include <boost/simd/function/scalar/all_reduce.hpp>
 #include <boost/simd/function/simd/all_reduce.hpp>
 
 #endif

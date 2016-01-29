@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_MINMOD_INCLUDED
 
 #include <boost/simd/function/scalar/minmod.hpp>
-//#include <boost/simd/arch/common/function/simd/minmod.hpp>
+//#include <boost/simd/arch/common/simd/function/minmod.hpp>
 
 #endif
 

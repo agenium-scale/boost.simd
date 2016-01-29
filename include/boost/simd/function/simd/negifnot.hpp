@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_NEGIFNOT_INCLUDED
 
 #include <boost/simd/function/scalar/negifnot.hpp>
-//#include <boost/simd/arch/common/function/simd/negifnot.hpp>
+//#include <boost/simd/arch/common/simd/function/negifnot.hpp>
 
 #endif
 

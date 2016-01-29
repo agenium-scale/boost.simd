@@ -64,8 +64,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/divround2even.hpp>
-#include <boost/simd/arch/common/scalar/function/divround2even.hpp>
+#include <boost/simd/function/scalar/divround2even.hpp>
 #include <boost/simd/function/simd/divround2even.hpp>
 
 #endif

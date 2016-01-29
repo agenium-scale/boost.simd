@@ -63,8 +63,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/ifnotadd.hpp>
-#include <boost/simd/arch/common/scalar/function/ifnotadd.hpp>
+#include <boost/simd/function/scalar/ifnotadd.hpp>
 #include <boost/simd/function/simd/ifnotadd.hpp>
 
 #endif

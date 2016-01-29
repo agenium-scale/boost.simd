@@ -43,8 +43,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/is_nle.hpp>
-#include <boost/simd/arch/common/scalar/function/is_not_less_equal.hpp>
+#include <boost/simd/function/scalar/is_not_less_equal.hpp>
 #include <boost/simd/function/simd/is_nle.hpp>
 
 #endif

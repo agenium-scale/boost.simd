@@ -57,8 +57,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/minnummag.hpp>
-#include <boost/simd/arch/common/scalar/function/minnummag.hpp>
+#include <boost/simd/function/scalar/minnummag.hpp>
 #include <boost/simd/function/simd/minnummag.hpp>
 
 #endif

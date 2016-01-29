@@ -44,8 +44,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/b_not.hpp>
-#include <boost/simd/arch/common/scalar/function/complement.hpp>
+#include <boost/simd/function/scalar/complement.hpp>
 #include <boost/simd/function/simd/b_not.hpp>
 
 #endif

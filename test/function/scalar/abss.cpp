@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/abss.hpp>
 #include <simd_test.hpp>
-#include <nontrivial.hpp>
+//#include <nontrivial.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>
@@ -39,22 +39,22 @@ STF_CASE_TPL( "Check abss behavior with floating", STF_IEEE_TYPES )
   STF_IEEE_EQUAL(abss(bs::Zero<T>()), bs::Zero<T>());
 }
 
-namespace foo
-{
-  template <class T>
-  nontrivial<T> abss(const nontrivial<T> & z1)
-  {
-    return perform(z1);
-  }
-}
+// namespace foo
+// {
+//   template <class T>
+//   nontrivial<T> abss(const nontrivial<T> & z1)
+//   {
+//     return perform(z1);
+//   }
+// }
 
-STF_CASE_TPL( "Check abss behavior with exotic type", STF_IEEE_TYPES )
-{
-  namespace bs = boost::simd;
-  using foo::nontrivial;
-  using r_t = decltype(bs::abss(nontrivial<T>()));
-  STF_TYPE_IS(r_t, nontrivial<T>);
-  std::cout << stf::type_id<boost::dispatch::hierarchy_of_t<nontrivial<T>>>()<< std::endl;
-  STF_EQUAL(bs::abss(nontrivial<T>(1, 2)), nontrivial<T>(2, 6));
-}
+// STF_CASE_TPL( "Check abss behavior with exotic type", STF_IEEE_TYPES )
+// {
+//   namespace bs = boost::simd;
+//   using foo::nontrivial;
+//   using r_t = decltype(bs::abss(nontrivial<T>()));
+//   STF_TYPE_IS(r_t, nontrivial<T>);
+//   std::cout << stf::type_id<boost::dispatch::hierarchy_of_t<nontrivial<T>>>()<< std::endl;
+//   STF_EQUAL(bs::abss(nontrivial<T>(1, 2)), nontrivial<T>(2, 6));
+// }
 

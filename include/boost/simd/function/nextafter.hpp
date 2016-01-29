@@ -64,8 +64,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/nextafter.hpp>
-#include <boost/simd/arch/common/scalar/function/nextafter.hpp>
+#include <boost/simd/function/scalar/nextafter.hpp>
 #include <boost/simd/function/simd/nextafter.hpp>
 
 #endif

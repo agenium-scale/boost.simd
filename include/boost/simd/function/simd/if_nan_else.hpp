@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IF_NAN_ELSE_INCLUDED
 
 #include <boost/simd/function/scalar/if_nan_else.hpp>
-//#include <boost/simd/arch/common/function/simd/if_allbits_else.hpp>
+//#include <boost/simd/arch/common/simd/function/if_allbits_else.hpp>
 
 #endif

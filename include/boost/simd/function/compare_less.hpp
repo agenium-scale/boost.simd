@@ -72,8 +72,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/compare_less.hpp>
-#include <boost/simd/arch/common/scalar/function/compare_less.hpp>
+#include <boost/simd/function/scalar/compare_less.hpp>
 #include <boost/simd/function/simd/compare_less.hpp>
 
 #endif

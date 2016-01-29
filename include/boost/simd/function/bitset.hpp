@@ -53,8 +53,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/bitset.hpp>
-#include <boost/simd/arch/common/generic/function/bitset.hpp>
+#include <boost/simd/function/scalar/bitset.hpp>
 #include <boost/simd/function/simd/bitset.hpp>
 
 #endif

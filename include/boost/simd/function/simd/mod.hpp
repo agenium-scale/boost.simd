@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_MOD_INCLUDED
 
 #include <boost/simd/function/scalar/mod.hpp>
-//#include <boost/simd/arch/common/function/simd/mod.hpp>
+//#include <boost/simd/arch/common/simd/function/mod.hpp>
 
 #endif
 

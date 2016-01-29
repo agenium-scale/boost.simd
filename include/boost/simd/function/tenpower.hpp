@@ -65,8 +65,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/tenpower.hpp>
-#include <boost/simd/arch/common/scalar/function/tenpower.hpp>
+#include <boost/simd/function/scalar/tenpower.hpp>
 #include <boost/simd/function/simd/tenpower.hpp>
 
 #endif

@@ -72,8 +72,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/bitwise_xor.hpp>
-#include <boost/simd/arch/common/scalar/function/bitwise_xor.hpp>
+#include <boost/simd/function/scalar/bitwise_xor.hpp>
 #include <boost/simd/function/simd/bitwise_xor.hpp>
 
 #endif

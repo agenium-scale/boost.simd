@@ -65,8 +65,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/bitfloating.hpp>
-#include <boost/simd/arch/common/scalar/function/bitfloating.hpp>
+#include <boost/simd/function/scalar/bitfloating.hpp>
 #include <boost/simd/function/simd/bitfloating.hpp>
 
 #endif

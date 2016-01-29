@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_INTERLEAVE_ODD_INCLUDED
 
 #include <boost/simd/function/scalar/interleave_odd.hpp>
-//#include <boost/simd/arch/common/function/simd/interleave_odd.hpp>
+//#include <boost/simd/arch/common/simd/function/interleave_odd.hpp>
 
 #endif
 

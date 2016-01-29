@@ -41,8 +41,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/signbit.hpp>
-#include <boost/simd/arch/common/scalar/function/is_negative.hpp>
+#include <boost/simd/function/scalar/is_negative.hpp>
 #include <boost/simd/function/simd/signbit.hpp>
 
 #endif

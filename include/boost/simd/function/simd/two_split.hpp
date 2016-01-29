@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_TWO_SPLIT_INCLUDED
 
 #include <boost/simd/function/scalar/two_split.hpp>
-//#include <boost/simd/arch/common/function/simd/two_split.hpp>
+//#include <boost/simd/arch/common/simd/function/two_split.hpp>
 
 #endif
 

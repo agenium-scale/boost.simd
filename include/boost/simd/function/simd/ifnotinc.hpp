@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IFNOTINC_INCLUDED
 
 #include <boost/simd/function/scalar/ifnotinc.hpp>
-//#include <boost/simd/arch/common/function/simd/ifnotinc.hpp>
+//#include <boost/simd/arch/common/simd/function/ifnotinc.hpp>
 
 #endif
 

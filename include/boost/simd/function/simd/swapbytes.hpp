@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SWAPBYTES_INCLUDED
 
 #include <boost/simd/function/scalar/swapbytes.hpp>
-//#include <boost/simd/arch/common/function/simd/swapbytes.hpp>
+//#include <boost/simd/arch/common/simd/function/swapbytes.hpp>
 
 #endif
 

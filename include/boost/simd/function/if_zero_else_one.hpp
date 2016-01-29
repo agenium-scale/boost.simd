@@ -62,8 +62,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/if_zero_else_one.hpp>
-#include <boost/simd/arch/common/scalar/function/if_zero_else_one.hpp>
+#include <boost/simd/function/scalar/if_zero_else_one.hpp>
 #include <boost/simd/function/simd/if_zero_else_one.hpp>
 
 #endif

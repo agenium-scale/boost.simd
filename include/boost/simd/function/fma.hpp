@@ -50,7 +50,6 @@ namespace boost { namespace simd
 
     Also :
 
-    - fma(x, y, z, accurate_) always gives a result in accordance to the full definition of fma
 
     - fma(x, y, z, nooverflow_) provides a "only one rounding" mode but does not care for possible
     intermediate overflow.
@@ -86,8 +85,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/fma.hpp>
-#include <boost/simd/arch/common/generic/function/fma.hpp>
+#include <boost/simd/function/scalar/fma.hpp>
 #include <boost/simd/function/simd/fma.hpp>
 
 #endif

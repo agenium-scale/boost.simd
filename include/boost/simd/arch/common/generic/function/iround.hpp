@@ -14,7 +14,7 @@
 
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/mhalf.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
+#include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/simd/is_ltz.hpp>
 #include <boost/simd/function/simd/plus.hpp>
 #include <boost/simd/function/simd/toints.hpp>

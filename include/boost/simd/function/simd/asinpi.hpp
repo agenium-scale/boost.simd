@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_ASINPI_INCLUDED
 
 #include <boost/simd/function/scalar/asinpi.hpp>
-//#include <boost/simd/arch/common/function/simd/asinpi.hpp>
+//#include <boost/simd/arch/common/simd/function/asinpi.hpp>
 
 #endif
 

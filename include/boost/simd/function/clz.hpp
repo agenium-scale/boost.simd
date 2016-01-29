@@ -53,8 +53,7 @@ z    **/
 } }
 #endif
 
-#include <boost/simd/function/definition/clz.hpp>
-#include <boost/simd/arch/common/scalar/function/clz.hpp>
+#include <boost/simd/function/scalar/clz.hpp>
 #include <boost/simd/function/simd/clz.hpp>
 
 #endif

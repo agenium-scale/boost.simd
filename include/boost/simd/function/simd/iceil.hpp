@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_ICEIL_INCLUDED
 
 #include <boost/simd/function/scalar/iceil.hpp>
-//#include <boost/simd/arch/common/function/simd/iceil.hpp>
+//#include <boost/simd/arch/common/simd/function/iceil.hpp>
 
 #endif
 

@@ -41,8 +41,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/modulus.hpp>
-#include <boost/simd/arch/common/scalar/function/abs.hpp>
+#include <boost/simd/function/scalar/abs.hpp>
 #include <boost/simd/function/simd/modulus.hpp>
 
 #endif

@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_MAXNUMMAG_INCLUDED
 
 #include <boost/simd/function/scalar/maxnummag.hpp>
-//#include <boost/simd/arch/common/function/simd/maxnummag.hpp>
+//#include <boost/simd/arch/common/simd/function/maxnummag.hpp>
 
 #endif
 

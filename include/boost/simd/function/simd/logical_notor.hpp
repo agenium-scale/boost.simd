@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_LOGICAL_NOTOR_INCLUDED
 
 #include <boost/simd/function/scalar/logical_notor.hpp>
-//#include <boost/simd/arch/common/function/simd/logical_notor.hpp>
+//#include <boost/simd/arch/common/simd/function/logical_notor.hpp>
 
 #endif
 

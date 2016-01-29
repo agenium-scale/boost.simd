@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IF_ZERO_ELSE_ALLBITS_INCLUDED
 
 #include <boost/simd/function/scalar/if_zero_else_allbits.hpp>
-//#include <boost/simd/arch/common/function/simd/genmaskc.hpp>
+//#include <boost/simd/arch/common/simd/function/genmaskc.hpp>
 
 #endif

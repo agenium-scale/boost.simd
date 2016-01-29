@@ -42,8 +42,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/rdivide.hpp>
-#include <boost/simd/arch/common/scalar/function/divs.hpp>
+#include <boost/simd/function/scalar/divs.hpp>
 #include <boost/simd/function/simd/rdivide.hpp>
 
 #endif

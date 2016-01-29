@@ -18,7 +18,7 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/three.hpp>
 #include <boost/simd/function/shift_left.hpp>
-#include <nontrivial.hpp>
+//#include <nontrivial.hpp>
 
 
 STF_CASE_TPL ("check complement for floating",  STF_IEEE_TYPES)
@@ -54,22 +54,22 @@ STF_CASE_TPL ("check complement for integral",  STF_INTEGRAL_TYPES)
   STF_EQUAL(complement(bs::Zero<T>()), bs::Mone<r_t>());
 } // end of test for integer_
 
-namespace foo
-{
-  template <class T>
-  nontrivial<T> operator ~(const nontrivial<T> & z1)
-  {
-    return perform(z1);
-  }
-}
+// namespace foo
+// {
+//   template <class T>
+//   nontrivial<T> operator ~(const nontrivial<T> & z1)
+//   {
+//     return perform(z1);
+//   }
+// }
 
-STF_CASE_TPL( "Check complement behavior with exotic type", STF_IEEE_TYPES )
-{
-  namespace bs = boost::simd;
-  using bs::complement;
-  using foo::nontrivial;
-  using r_t = decltype(complement(nontrivial<T>()));
-  STF_TYPE_IS(r_t, nontrivial<T>);
+// STF_CASE_TPL( "Check complement behavior with exotic type", STF_IEEE_TYPES )
+// {
+//   namespace bs = boost::simd;
+//   using bs::complement;
+//   using foo::nontrivial;
+//   using r_t = decltype(complement(nontrivial<T>()));
+//   STF_TYPE_IS(r_t, nontrivial<T>);
 
-  STF_EQUAL(complement(nontrivial<T>(1, 2)), nontrivial<T>(2, 6));
-}
+//   STF_EQUAL(complement(nontrivial<T>(1, 2)), nontrivial<T>(2, 6));
+// }

@@ -44,8 +44,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/if_sub.hpp>
-#include <boost/simd/arch/common/scalar/function/selsub.hpp>
+#include <boost/simd/function/scalar/selsub.hpp>
 #include <boost/simd/function/simd/if_sub.hpp>
 
 #endif

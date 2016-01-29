@@ -64,8 +64,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/hmsb.hpp>
-#include <boost/simd/arch/common/scalar/function/hmsb.hpp>
+#include <boost/simd/function/scalar/hmsb.hpp>
 #include <boost/simd/function/simd/hmsb.hpp>
 
 #endif

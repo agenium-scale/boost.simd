@@ -48,8 +48,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/split_high.hpp>
-#include <boost/simd/arch/common/scalar/function/split_high.hpp>
+#include <boost/simd/function/scalar/split_high.hpp>
 #include <boost/simd/function/simd/split_high.hpp>
 
 #endif

@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_MULTIPLIES_INCLUDED
 
 #include <boost/simd/function/scalar/multiplies.hpp>
-//#include <boost/simd/arch/common/function/simd/multiplies.hpp>
+//#include <boost/simd/arch/common/simd/function/multiplies.hpp>
 
 #endif
 

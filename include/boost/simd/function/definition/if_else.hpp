@@ -2,8 +2,8 @@
 /*!
   @file
 
-  Copyright 2015 NumScale SAS
-  Copyright 2015 NumScale J.T.Lapreste
+  Copyright 2016 NumScale SAS
+  Copyright 2016 NumScale J.T.Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -27,17 +27,12 @@ namespace boost { namespace simd
   {
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag, if_else_);
   }
-  namespace fun
-  {
-    BOOST_DISPATCH_CALLABLE_DEFINITION(tag::if_else_,if_else);
-//     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::if_else_,where);
-//     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::if_else_,select);
-//     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::if_else_,sel);
-   }
-     BOOST_DISPATCH_FUNCTION_DEFINITION(tag::if_else_,if_else);
-//     BOOST_DISPATCH_FUNCTION_DEFINITION(tag::if_else_,where);
-//     BOOST_DISPATCH_FUNCTION_DEFINITION(tag::if_else_,select);
-//     BOOST_DISPATCH_FUNCTION_DEFINITION(tag::if_else_,sel);
+
+  BOOST_DISPATCH_CALLABLE_DEFINITION(tag::if_else_,if_else);
+//   BOOST_DISPATCH_CALLABLE_DEFINITION(tag::if_else_,where);
+//   BOOST_DISPATCH_CALLABLE_DEFINITION(tag::if_else_,select);
+//   BOOST_DISPATCH_CALLABLE_DEFINITION(tag::if_else_,sel);
+
 } }
 
 #endif

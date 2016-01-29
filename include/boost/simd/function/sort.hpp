@@ -52,8 +52,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/sort.hpp>
-#include <boost/simd/arch/common/scalar/function/sort.hpp>
+#include <boost/simd/function/scalar/sort.hpp>
 #include <boost/simd/function/simd/sort.hpp>
 
 #endif

@@ -53,8 +53,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/swapbytes.hpp>
-#include <boost/simd/arch/common/generic/function/swapbytes.hpp>
+#include <boost/simd/function/scalar/swapbytes.hpp>
 #include <boost/simd/function/simd/swapbytes.hpp>
 
 #endif

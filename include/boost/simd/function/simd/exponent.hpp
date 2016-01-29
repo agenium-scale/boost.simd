@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_EXPONENT_INCLUDED
 
 #include <boost/simd/function/scalar/exponent.hpp>
-//#include <boost/simd/arch/common/function/simd/exponent.hpp>
+//#include <boost/simd/arch/common/simd/function/exponent.hpp>
 
 #endif
 

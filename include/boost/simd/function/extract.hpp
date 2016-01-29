@@ -71,8 +71,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/extract.hpp>
-#include <boost/simd/arch/common/scalar/function/extract.hpp>
+#include <boost/simd/function/scalar/extract.hpp>
 #include <boost/simd/function/simd/extract.hpp>
 
 #endif

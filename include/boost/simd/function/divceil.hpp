@@ -64,8 +64,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/divceil.hpp>
-#include <boost/simd/arch/common/scalar/function/divceil.hpp>
+#include <boost/simd/function/scalar/divceil.hpp>
 #include <boost/simd/function/simd/divceil.hpp>
 
 #endif

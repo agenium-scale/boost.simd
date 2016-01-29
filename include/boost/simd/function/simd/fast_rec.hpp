@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_FAST_REC_INCLUDED
 
 #include <boost/simd/function/scalar/fast_rec.hpp>
-//#include <boost/simd/arch/common/function/simd/fast_rec.hpp>
+//#include <boost/simd/arch/common/simd/function/fast_rec.hpp>
 
 #endif
 

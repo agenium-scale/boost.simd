@@ -43,6 +43,27 @@ namespace boost { namespace simd { namespace ext
     #endif
     }
   };
+
+    BOOST_DISPATCH_OVERLOAD ( if_else_
+                          , (typename COND, typename T, typename F)
+                          , bd::cpu_
+                          , bd::scalar_<bd::unspecified_<COND>>
+                          , bd::scalar_<bd::fundamental_<T>>
+                          , bd::scalar_<bd::fundamental_<F>>
+                          )
+  {
+    BOOST_FORCEINLINE T operator()( COND cond
+                                  , T t
+                                  , F  f
+                                  ) const BOOST_NOEXCEPT
+    {
+    #ifdef BOOST_SIMD_BRANCH_FREE_IF_ELSE
+      return bitwise_select(genmask(cond), t, f);
+    #else
+      return cond ? t : T(f);
+    #endif
+    }
+  };
 } } }
 
 

@@ -64,8 +64,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/exponent.hpp>
-#include <boost/simd/arch/common/scalar/function/exponent.hpp>
+#include <boost/simd/function/scalar/exponent.hpp>
 #include <boost/simd/function/simd/exponent.hpp>
 
 #endif

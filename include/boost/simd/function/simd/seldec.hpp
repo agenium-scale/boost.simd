@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SELDEC_INCLUDED
 
 #include <boost/simd/function/scalar/seldec.hpp>
-//#include <boost/simd/arch/common/function/simd/seldec.hpp>
+//#include <boost/simd/arch/common/simd/function/seldec.hpp>
 
 #endif
 

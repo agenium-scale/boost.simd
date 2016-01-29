@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_EPS_INCLUDED
 
 #include <boost/simd/function/scalar/eps.hpp>
-//#include <boost/simd/arch/common/function/simd/eps.hpp>
+//#include <boost/simd/arch/common/simd/function/eps.hpp>
 
 #endif
 

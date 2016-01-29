@@ -11,7 +11,7 @@
 #include <boost/simd/sdk/aligned.hpp>
 #include <boost/simd/sdk/masked.hpp>
 #include <boost/simd/logical.hpp>
-#include <nontrivial.hpp>
+//#include <nontrivial.hpp>
 
 #include <simd_test.hpp>
 

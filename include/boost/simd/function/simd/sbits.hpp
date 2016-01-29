@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SBITS_INCLUDED
 
 #include <boost/simd/function/scalar/sbits.hpp>
-//#include <boost/simd/arch/common/function/simd/sbits.hpp>
+//#include <boost/simd/arch/common/simd/function/sbits.hpp>
 
 #endif
 

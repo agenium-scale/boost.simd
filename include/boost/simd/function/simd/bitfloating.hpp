@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_BITFLOATING_INCLUDED
 
 #include <boost/simd/function/scalar/bitfloating.hpp>
-//#include <boost/simd/arch/common/function/simd/bitfloating.hpp>
+//#include <boost/simd/arch/common/simd/function/bitfloating.hpp>
 
 #endif
 

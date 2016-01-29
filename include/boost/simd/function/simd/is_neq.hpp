@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IS_NEQ_INCLUDED
 
 #include <boost/simd/function/scalar/is_neq.hpp>
-//#include <boost/simd/arch/common/function/simd/is_not_equal.hpp>
+//#include <boost/simd/arch/common/simd/function/is_not_equal.hpp>
 
 #endif

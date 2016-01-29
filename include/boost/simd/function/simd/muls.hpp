@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_MULS_INCLUDED
 
 #include <boost/simd/function/scalar/muls.hpp>
-//#include <boost/simd/arch/common/function/simd/muls.hpp>
+//#include <boost/simd/arch/common/simd/function/muls.hpp>
 
 #endif
 

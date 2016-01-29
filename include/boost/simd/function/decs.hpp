@@ -41,8 +41,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/decs.hpp>
-#include <boost/simd/arch/common/scalar/function/minusone.hpp>
+#include <boost/simd/function/scalar/minusone.hpp>
 #include <boost/simd/function/simd/decs.hpp>
 
 #endif

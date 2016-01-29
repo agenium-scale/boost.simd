@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SQR_ABS_INCLUDED
 
 #include <boost/simd/function/scalar/sqr_abs.hpp>
-//#include <boost/simd/arch/common/function/simd/sqr_abs.hpp>
+//#include <boost/simd/arch/common/simd/function/sqr_abs.hpp>
 
 #endif
 

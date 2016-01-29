@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_FMIN_INCLUDED
 
 #include <boost/simd/function/scalar/fmin.hpp>
-//#include <boost/simd/arch/common/function/simd/minnum.hpp>
+//#include <boost/simd/arch/common/simd/function/minnum.hpp>
 
 #endif

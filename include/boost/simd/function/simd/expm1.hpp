@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_EXPM1_INCLUDED
 
 #include <boost/simd/function/scalar/expm1.hpp>
-//#include <boost/simd/arch/common/function/simd/expm1.hpp>
+//#include <boost/simd/arch/common/simd/function/expm1.hpp>
 
 #endif
 

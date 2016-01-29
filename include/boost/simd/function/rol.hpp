@@ -58,8 +58,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/rol.hpp>
-#include <boost/simd/arch/common/generic/function/rol.hpp>
+#include <boost/simd/function/scalar/rol.hpp>
 #include <boost/simd/function/simd/rol.hpp>
 
 #endif

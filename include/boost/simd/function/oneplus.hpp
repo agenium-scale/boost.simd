@@ -65,8 +65,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/oneplus.hpp>
-#include <boost/simd/arch/common/generic/function/oneplus.hpp>
+#include <boost/simd/function/scalar/oneplus.hpp>
 #include <boost/simd/function/simd/oneplus.hpp>
 
 #endif

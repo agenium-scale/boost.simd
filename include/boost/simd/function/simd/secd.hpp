@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SECD_INCLUDED
 
 #include <boost/simd/function/scalar/secd.hpp>
-//#include <boost/simd/arch/common/function/simd/secd.hpp>
+//#include <boost/simd/arch/common/simd/function/secd.hpp>
 
 #endif
 
