@@ -41,10 +41,10 @@ if(MSVC)
 endif()
 
 ##==================================================================================================
-## MSVC STL warnings
+## MSVC STL warnings & noexcept
 ##==================================================================================================
 if(MSVC)
-  set(SIMD_FLAGS_TEST "${SIMD_FLAGS_TEST} /D_SCL_SECURE_NO_WARNINGS")
+  set(SIMD_FLAGS_TEST "${SIMD_FLAGS_TEST} /D_SCL_SECURE_NO_WARNINGS /EHsc")
 endif()
 
 ##==================================================================================================
