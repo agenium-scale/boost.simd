@@ -222,7 +222,7 @@ namespace boost { namespace simd { namespace detail
     template <typename Value>
     BOOST_FORCEINLINE static void splat(storage_type& s, Value v) BOOST_NOEXCEPT
     {
-      apply(s, [&v](storage_value_type& a) {
+      apply(s, [v](storage_value_type& a) {
         internal_pack_traits::splat(a, v);
       });
     }
