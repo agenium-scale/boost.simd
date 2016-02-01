@@ -59,5 +59,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/constant/definition/greatestnoninteger.hpp>
 #include <boost/simd/arch/common/scalar/constant/constant_value.hpp>
+#include <boost/simd/arch/common/simd/constant/constant_value.hpp>
 
 #endif
