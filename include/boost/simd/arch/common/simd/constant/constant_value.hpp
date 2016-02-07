@@ -11,6 +11,8 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_CONSTANT_CONSTANT_VALUE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_CONSTANT_CONSTANT_VALUE_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
+#if defined(BOOST_SIMD_DETECTED)
 #include <boost/simd/pack.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/constant_traits.hpp>
@@ -59,5 +61,7 @@ namespace boost { namespace simd { namespace ext
     }
   };*/
 } } }
+
+#endif
 
 #endif
