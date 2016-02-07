@@ -12,19 +12,13 @@ cmake_minimum_required(VERSION 2.8.7)
 project(Boost.SIMD CXX)
 set(PROJECT_DOC_DIR ${PROJECT_SOURCE_DIR}/doc)
 
-## Setup target for MSVC
-## -------------------------------------------------------------------------------------------------
-if(NOT CMAKE_GENERATOR MATCHES "Make|Ninja")
-  set(CMAKE_CONFIGURATION_TYPES Release Debug SIMDTest SIMDTestDebug SIMDBench CACHE STRING "" FORCE)
-endif()
-
 ## Requirements for ns.cmake:
 ## -------------------------------------------------------------------------------------------------
 set(NS_CMAKE_GIT_TAG master)
-include(cmake/ns.cmake.install.cmake)                                                                           
-if (NOT NS_CMAKE_INSTALLED)                                                                         
-  return()                                                                                          
-endif()   
+include(cmake/ns.cmake.install.cmake)
+if (NOT NS_CMAKE_INSTALLED)
+  return()
+endif()
 include(cmake/ns/ns.cmake)
 ## -------------------------------------------------------------------------------------------------
 
