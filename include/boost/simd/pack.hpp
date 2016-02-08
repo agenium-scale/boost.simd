@@ -66,6 +66,9 @@ namespace boost { namespace simd
 
     enum { static_size = N };
 
+    /// @brief pack type rebinding alias
+    template<typename U> using rebind = pack<U,N>;
+
     public:
 
     /*!
@@ -129,7 +132,7 @@ namespace boost { namespace simd
       @param vn Remaining scalar values to insert
     **/
     template <typename T0, typename T1, typename... Ts>
-    BOOST_FORCEINLINE pack(T0 const& v0, T1 const& v1, Ts const&... vn) BOOST_NOEXCEPT
+    BOOST_FORCEINLINE pack(T0 const& v0, T1 const& v1, Ts const&... vn)
     {
       static_assert( 2 + sizeof...(vn) == static_size
                    , "number of parameters must be the exact same size of N"
@@ -142,7 +145,7 @@ namespace boost { namespace simd
 
       @param value The value to replicate
     **/
-    BOOST_FORCEINLINE explicit pack(T const& value) BOOST_NOEXCEPT
+    BOOST_FORCEINLINE explicit pack(T const& value)
     {
       traits::splat(data_, value);
     }
