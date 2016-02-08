@@ -44,10 +44,11 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD_FALLBACK( (typename V)
+  BOOST_DISPATCH_OVERLOAD_FALLBACK( (typename X, typename V)
                                   , boost::dispatch::constant_value_<tag::constant_>
                                   , boost::dispatch::cpu_
                                   , bd::scalar_<bd::unspecified_<V>>
+                                  , bd::target_< bd::unspecified_<X> >
                                   )
   {
     template<typename T, T N>
@@ -68,7 +69,8 @@ namespace boost { namespace simd { namespace ext
       return T(double(N)/double(D));
     }
 
-    BOOST_FORCEINLINE auto operator()(V const& v) const BOOST_NOEXCEPT -> decltype(impl(v))
+    BOOST_FORCEINLINE
+    auto operator()(V const& v, X const&) const BOOST_NOEXCEPT -> decltype(impl(v))
     {
       return impl( v );
     }

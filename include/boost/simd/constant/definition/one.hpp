@@ -40,8 +40,8 @@ namespace boost { namespace simd
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::one_,one);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto One() BOOST_NOEXCEPT
-  -> decltype(functional::one( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE
+  auto One() BOOST_NOEXCEPT_DECLTYPE(functional::one( boost::dispatch::as_<T>{}))
   {
     return functional::one( boost::dispatch::as_<T>{} );
   }
