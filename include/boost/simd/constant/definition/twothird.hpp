@@ -26,7 +26,7 @@ namespace boost { namespace simd
     struct twothird_ : boost::dispatch::constant_value_<twothird_>
     {
       BOOST_DISPATCH_MAKE_CALLABLE(ext,twothird_,boost::dispatch::constant_value_<twothird_>);
-      BOOST_SIMD_REGISTER_CONSTANT(0, 0x3f2aaaabUL, 0x3fe5555555555555ULL);
+      BOOST_SIMD_REGISTER_CONSTANT(0, 0X3F2AAAABUL, 0X3FE5555555555555ULL);
     };
   }
 
