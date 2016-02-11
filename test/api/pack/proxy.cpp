@@ -20,7 +20,7 @@ void test(Env& $)
   {
     std::array<T, N> a;
     std::iota(a.begin(), a.end(), T(1));
-    bs::pack<T, N> p0(a.begin(), a.end()), ref;
+    bs::pack<T, N> p0(a.begin(), a.end()), ref(a.begin(), a.end());
 
     std::transform(p0.begin(),p0.end(),ref.begin(), [](T e) { return e; } );
     STF_EXPECT(( std::equal(ref.begin(),ref.end(), a.begin()) ));
@@ -30,7 +30,7 @@ void test(Env& $)
   {
     std::array<T, N> a;
     std::iota(a.begin(), a.end(), T(1));
-    bs::pack<T, N> p0(a.begin(), a.end()), ref;
+    bs::pack<T, N> p0(a.begin(), a.end()), ref(a.begin(), a.end());
 
     bool compares_equals = true;
     for (auto it0 = p0.begin(); it0 != p0.end() ; ++it0)
@@ -43,7 +43,7 @@ void test(Env& $)
   {
     std::array<T, N> a;
     std::iota(a.begin(), a.end(), T(1));
-    bs::pack<T, N> p0(a.begin(), a.end()), ref;
+    bs::pack<T, N> p0(a.begin(), a.end()), ref(a.begin(), a.end());
 
     bool compares_not_equals = true;
     for (auto it0 = p0.begin(); it0 != p0.end() ; ++it0)
@@ -56,7 +56,7 @@ void test(Env& $)
   {
     std::array<T, N> a;
     std::iota(a.begin(), a.end(), T(1));
-    bs::pack<T, N> p0(a.begin(), a.end()), ref;
+    bs::pack<T, N> p0(a.begin(), a.end()), ref(a.begin(), a.end());
 
     bool supports_logical_not = true;
     for (auto it0 = p0.begin(); it0 != p0.end(); ++it0)
@@ -69,7 +69,7 @@ void test(Env& $)
   {
     std::array<T, N> a;
     std::iota(a.begin(), a.end(), T(1));
-    bs::pack<T, N> p0(a.begin(), a.end()), ref;
+    bs::pack<T, N> p0(a.begin(), a.end()), ref(a.begin(), a.end());
 
     bool supports_plus    = true;
     bool supports_minus   = true;
