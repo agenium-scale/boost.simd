@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,greatestnoninteger_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::greatestnoninteger_,greatestnoninteger);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Greatestnoninteger() BOOST_NOEXCEPT
-  -> decltype(functional::greatestnoninteger( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Greatestnoninteger()
+  BOOST_NOEXCEPT_DECLTYPE(detail::greatestnoninteger( boost::dispatch::as_<T>{}))
   {
-    return functional::greatestnoninteger( boost::dispatch::as_<T>{} );
+    return detail::greatestnoninteger( boost::dispatch::as_<T>{} );
   }
 } }
 

@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check mantissamask behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::mantissamask;
+  using boost::simd::detail::mantissamask;
   using boost::simd::Mantissamask;
 
   STF_TYPE_IS(decltype(Mantissamask<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check mantissamask behavior for double type"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::mantissamask;
+  using boost::simd::detail::mantissamask;
   using boost::simd::Mantissamask;
 
   STF_TYPE_IS(decltype(Mantissamask<T>()), T);
@@ -42,7 +42,7 @@ STF_CASE_TPL( "Check mantissamask behavior for float type"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::mantissamask;
+  using boost::simd::detail::mantissamask;
   using boost::simd::Mantissamask;
 
   STF_TYPE_IS(decltype(Mantissamask<T>()), T);

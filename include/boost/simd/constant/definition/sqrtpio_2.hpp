@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,sqrtpio_2_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::sqrtpio_2_,sqrtpio_2);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Sqrtpio_2() BOOST_NOEXCEPT
-  -> decltype(functional::sqrtpio_2( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Sqrtpio_2()
+  BOOST_NOEXCEPT_DECLTYPE(detail::sqrtpio_2( boost::dispatch::as_<T>{}))
   {
-    return functional::sqrtpio_2( boost::dispatch::as_<T>{} );
+    return detail::sqrtpio_2( boost::dispatch::as_<T>{} );
   }
 } }
 

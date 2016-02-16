@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,pio2_3t_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::pio2_3t_,pio2_3t);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Pio2_3t() BOOST_NOEXCEPT
-  -> decltype(functional::pio2_3t( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Pio2_3t()
+  BOOST_NOEXCEPT_DECLTYPE(detail::pio2_3t( boost::dispatch::as_<T>{}))
   {
-    return functional::pio2_3t( boost::dispatch::as_<T>{} );
+    return detail::pio2_3t( boost::dispatch::as_<T>{} );
   }
 } }
 

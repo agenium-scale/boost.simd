@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check fiveo_8 behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::fiveo_8;
+  using boost::simd::detail::fiveo_8;
   using boost::simd::Fiveo_8;
 
   STF_TYPE_IS(decltype(Fiveo_8<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check fiveo_8 behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::fiveo_8;
+  using boost::simd::detail::fiveo_8;
   using boost::simd::Fiveo_8;
 
   STF_TYPE_IS(decltype(Fiveo_8<T>()), T);

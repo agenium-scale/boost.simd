@@ -46,15 +46,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,allbits_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::allbits_,allbits);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Allbits() BOOST_NOEXCEPT
-  -> decltype(functional::allbits( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Allbits()
+  BOOST_NOEXCEPT_DECLTYPE(detail::allbits( boost::dispatch::as_<T>{}))
   {
-    return functional::allbits( boost::dispatch::as_<T>{} );
+    return detail::allbits( boost::dispatch::as_<T>{} );
   }
 } }
 

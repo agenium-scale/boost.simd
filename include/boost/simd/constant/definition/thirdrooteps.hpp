@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,thirdrooteps_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::thirdrooteps_,thirdrooteps);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Thirdrooteps() BOOST_NOEXCEPT
-  -> decltype(functional::thirdrooteps( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Thirdrooteps()
+  BOOST_NOEXCEPT_DECLTYPE(detail::thirdrooteps( boost::dispatch::as_<T>{}))
   {
-    return functional::thirdrooteps( boost::dispatch::as_<T>{} );
+    return detail::thirdrooteps( boost::dispatch::as_<T>{} );
   }
 } }
 

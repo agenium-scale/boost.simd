@@ -19,7 +19,7 @@
 //             )
 // {
 //   using boost::simd::as;
-//   using boost::simd::functional::sqrtvalmax;
+//   using boost::simd::detail::sqrtvalmax;
 //   using boost::simd::Sqrtvalmax;
 //   using boost::simd::Valmax;
 
@@ -33,7 +33,7 @@ STF_CASE_TPL( "Check sqrtvalmax behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::sqrtvalmax;
+  using boost::simd::detail::sqrtvalmax;
   using boost::simd::Sqrtvalmax;
   using boost::simd::Valmax;
 

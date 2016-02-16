@@ -47,15 +47,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,maxinit_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::maxinit_,maxinit);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Maxinit() BOOST_NOEXCEPT
-  -> decltype(functional::maxinit( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Maxinit()
+  BOOST_NOEXCEPT_DECLTYPE(detail::maxinit( boost::dispatch::as_<T>{}))
   {
-    return functional::maxinit( boost::dispatch::as_<T>{} );
+    return detail::maxinit( boost::dispatch::as_<T>{} );
   }
 } }
 

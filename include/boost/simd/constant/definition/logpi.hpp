@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,logpi_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::logpi_,logpi);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Logpi() BOOST_NOEXCEPT
-  -> decltype(functional::logpi( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Logpi()
+  BOOST_NOEXCEPT_DECLTYPE(detail::logpi( boost::dispatch::as_<T>{}))
   {
-    return functional::logpi( boost::dispatch::as_<T>{} );
+    return detail::logpi( boost::dispatch::as_<T>{} );
   }
 } }
 

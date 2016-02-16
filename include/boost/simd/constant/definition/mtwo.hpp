@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,mtwo_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::mtwo_,mtwo);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Mtwo() BOOST_NOEXCEPT
-  -> decltype(functional::mtwo( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Mtwo()
+  BOOST_NOEXCEPT_DECLTYPE(detail::mtwo( boost::dispatch::as_<T>{}))
   {
-    return functional::mtwo( boost::dispatch::as_<T>{} );
+    return detail::mtwo( boost::dispatch::as_<T>{} );
   }
 } }
 

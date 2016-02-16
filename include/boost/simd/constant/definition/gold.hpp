@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,gold_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::gold_,gold);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Gold() BOOST_NOEXCEPT
-  -> decltype(functional::gold( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Gold()
+  BOOST_NOEXCEPT_DECLTYPE(detail::gold( boost::dispatch::as_<T>{}))
   {
-    return functional::gold( boost::dispatch::as_<T>{} );
+    return detail::gold( boost::dispatch::as_<T>{} );
   }
 } }
 

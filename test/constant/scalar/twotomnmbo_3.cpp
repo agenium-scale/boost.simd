@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check twotomnmbo_3 behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::twotomnmbo_3;
+  using boost::simd::detail::twotomnmbo_3;
   using boost::simd::Twotomnmbo_3;
   T ref = T(0);
   STF_TYPE_IS(decltype(Twotomnmbo_3<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check twotomnmbo_3 behavior for double"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::twotomnmbo_3;
+  using boost::simd::detail::twotomnmbo_3;
   using boost::simd::Twotomnmbo_3;
   T ref = T( 4.806217383937348e-06);
 
@@ -44,7 +44,7 @@ STF_CASE_TPL( "Check twotomnmbo_3 behavior for float"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::twotomnmbo_3;
+  using boost::simd::detail::twotomnmbo_3;
   using boost::simd::Twotomnmbo_3;
   T ref = T( 4.921566601151848e-03f);
   STF_TYPE_IS(decltype(Twotomnmbo_3<T>()), T);

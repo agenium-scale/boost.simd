@@ -46,15 +46,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,minexponent_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::minexponent_,minexponent);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Minexponent() BOOST_NOEXCEPT
-  -> decltype(functional::minexponent( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Minexponent()
+  BOOST_NOEXCEPT_DECLTYPE(detail::minexponent( boost::dispatch::as_<T>{}))
   {
-    return functional::minexponent( boost::dispatch::as_<T>{} );
+    return detail::minexponent( boost::dispatch::as_<T>{} );
   }
 } }
 

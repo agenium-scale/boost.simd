@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check nbmantissabits behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::nbmantissabits;
+  using boost::simd::detail::nbmantissabits;
   using boost::simd::Nbmantissabits;
 
   STF_TYPE_IS(decltype(Nbmantissabits<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check nbmantissabits behavior for double"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::nbmantissabits;
+  using boost::simd::detail::nbmantissabits;
   using boost::simd::Nbmantissabits;
 
   STF_TYPE_IS(decltype(Nbmantissabits<T>()), std::int64_t);
@@ -42,7 +42,7 @@ STF_CASE_TPL( "Check nbmantissabits behavior for float"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::nbmantissabits;
+  using boost::simd::detail::nbmantissabits;
   using boost::simd::Nbmantissabits;
 
   STF_TYPE_IS(decltype(Nbmantissabits<T>()), std::int32_t);

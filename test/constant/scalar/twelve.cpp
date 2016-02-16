@@ -18,7 +18,7 @@ STF_CASE_TPL( "Check twelve behavior for all types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::twelve;
+  using boost::simd::detail::twelve;
   using boost::simd::Twelve;
 
   STF_TYPE_IS(decltype(Twelve<T>()), T);

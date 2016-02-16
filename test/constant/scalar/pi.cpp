@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check pi behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::pi;
+  using boost::simd::detail::pi;
   using boost::simd::Pi;
 
   STF_TYPE_IS(decltype(Pi<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check pi behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::pi;
+  using boost::simd::detail::pi;
   using boost::simd::Pi;
 
   STF_TYPE_IS(decltype(Pi<T>()), T);

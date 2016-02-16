@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,int_splat_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::int_splat_,int_splat);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Int_splat() BOOST_NOEXCEPT
-  -> decltype(functional::int_splat( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Int_splat()
+  BOOST_NOEXCEPT_DECLTYPE(detail::int_splat( boost::dispatch::as_<T>{}))
   {
-    return functional::int_splat( boost::dispatch::as_<T>{} );
+    return detail::int_splat( boost::dispatch::as_<T>{} );
   }
 } }
 

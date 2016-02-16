@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,moneo_6_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::moneo_6_,moneo_6);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Moneo_6() BOOST_NOEXCEPT
-  -> decltype(functional::moneo_6( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Moneo_6()
+  BOOST_NOEXCEPT_DECLTYPE(detail::moneo_6( boost::dispatch::as_<T>{}))
   {
-    return functional::moneo_6( boost::dispatch::as_<T>{} );
+    return detail::moneo_6( boost::dispatch::as_<T>{} );
   }
 } }
 

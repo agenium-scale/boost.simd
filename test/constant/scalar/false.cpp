@@ -15,7 +15,7 @@
 STF_CASE_TPL( "Check false behavior", STF_NUMERIC_TYPES )
 {
   using boost::simd::as;
-  using boost::simd::functional::false_;
+  using boost::simd::detail::false_;
   using boost::simd::logical;
   using boost::simd::False;
 

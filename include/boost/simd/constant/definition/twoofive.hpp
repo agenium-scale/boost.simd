@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,twoofive_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::twoofive_,twoofive);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Twoofive() BOOST_NOEXCEPT
-  -> decltype(functional::twoofive( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Twoofive()
+  BOOST_NOEXCEPT_DECLTYPE(detail::twoofive( boost::dispatch::as_<T>{}))
   {
-    return functional::twoofive( boost::dispatch::as_<T>{} );
+    return detail::twoofive( boost::dispatch::as_<T>{} );
   }
 } }
 

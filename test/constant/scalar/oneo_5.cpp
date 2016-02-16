@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check oneo_5 behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::oneo_5;
+  using boost::simd::detail::oneo_5;
   using boost::simd::Oneo_5;
 
   STF_TYPE_IS(decltype(Oneo_5<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check oneo_5 behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::oneo_5;
+  using boost::simd::detail::oneo_5;
   using boost::simd::Oneo_5;
 
   STF_TYPE_IS(decltype(Oneo_5<T>()), T);

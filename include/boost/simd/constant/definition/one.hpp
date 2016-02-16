@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,one_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::one_,one);
   }
 
   template<typename T> BOOST_FORCEINLINE
-  auto One() BOOST_NOEXCEPT_DECLTYPE(functional::one( boost::dispatch::as_<T>{}))
+  auto One() BOOST_NOEXCEPT_DECLTYPE(detail::one( boost::dispatch::as_<T>{}))
   {
-    return functional::one( boost::dispatch::as_<T>{} );
+    return detail::one( boost::dispatch::as_<T>{} );
   }
 } }
 

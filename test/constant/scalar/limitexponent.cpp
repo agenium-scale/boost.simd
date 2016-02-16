@@ -18,7 +18,7 @@ STF_CASE_TPL( "Check limitexponent behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::limitexponent;
+  using boost::simd::detail::limitexponent;
   using boost::simd::Limitexponent;
 
   STF_TYPE_IS(decltype(Limitexponent<T>()), T);
@@ -31,7 +31,7 @@ STF_CASE_TPL( "Check limitexponent behavior for float"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::limitexponent;
+  using boost::simd::detail::limitexponent;
   using boost::simd::Limitexponent;
 
   STF_TYPE_IS(decltype(Limitexponent<T>()), boost::dispatch::as_integer_t<T>);
@@ -43,7 +43,7 @@ STF_CASE_TPL( "Check limitexponent behavior for double types"
             , (double)            )
 {
   using boost::simd::as;
-  using boost::simd::functional::limitexponent;
+  using boost::simd::detail::limitexponent;
   using boost::simd::Limitexponent;
 
   STF_TYPE_IS(decltype(Limitexponent<T>()), boost::dispatch::as_integer_t<T>);

@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check five behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::five;
+  using boost::simd::detail::five;
   using boost::simd::Five;
 
   STF_TYPE_IS(decltype(Five<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check five behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::five;
+  using boost::simd::detail::five;
   using boost::simd::Five;
 
   STF_TYPE_IS(decltype(Five<T>()), T);

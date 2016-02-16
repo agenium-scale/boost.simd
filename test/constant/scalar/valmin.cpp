@@ -18,7 +18,7 @@ STF_CASE_TPL( "Check valmin behavior on integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::valmin;
+  using boost::simd::detail::valmin;
   using boost::simd::Valmin;
 
   STF_IEEE_EQUAL(Valmin<T>(), std::numeric_limits<T>::min());
@@ -29,7 +29,7 @@ STF_CASE_TPL( "Check behavior on floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::valmin;
+  using boost::simd::detail::valmin;
   using boost::simd::Valmin;
 
   STF_IEEE_EQUAL(Valmin<T>(), -std::numeric_limits<T>::max());

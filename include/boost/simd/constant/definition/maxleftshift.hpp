@@ -40,15 +40,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,maxleftshift_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::maxleftshift_,maxleftshift);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Maxleftshift() BOOST_NOEXCEPT
-  -> decltype(functional::maxleftshift( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Maxleftshift()
+  BOOST_NOEXCEPT_DECLTYPE(detail::maxleftshift( boost::dispatch::as_<T>{}))
   {
-    return functional::maxleftshift( boost::dispatch::as_<T>{} );
+    return detail::maxleftshift( boost::dispatch::as_<T>{} );
   }
 } }
 

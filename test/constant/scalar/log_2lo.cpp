@@ -20,7 +20,7 @@ STF_CASE_TPL( "Check log_2lo behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::log_2lo;
+  using boost::simd::detail::log_2lo;
   using boost::simd::Log_2lo;
   T ref = T(0);
   STF_TYPE_IS(decltype(Log_2lo<T>()), T);
@@ -33,7 +33,7 @@ STF_CASE_TPL( "Check log_2lo behavior for double"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::log_2lo;
+  using boost::simd::detail::log_2lo;
   using boost::simd::Log_2lo;
   T ref = T(1.9082149292705877e-10);
   #ifdef HAS_LONG_DOUBLE
@@ -52,7 +52,7 @@ STF_CASE_TPL( "Check log_2lo behavior for float"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::log_2lo;
+  using boost::simd::detail::log_2lo;
   using boost::simd::Log_2lo;
   using boost::simd::Log_2hi;
   using boost::simd::Log_2;

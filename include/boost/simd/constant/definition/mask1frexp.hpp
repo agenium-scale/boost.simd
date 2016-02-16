@@ -46,15 +46,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,mask1frexp_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::mask1frexp_,mask1frexp);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Mask1frexp() BOOST_NOEXCEPT
-  -> decltype(functional::mask1frexp( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Mask1frexp()
+  BOOST_NOEXCEPT_DECLTYPE(detail::mask1frexp( boost::dispatch::as_<T>{}))
   {
-    return functional::mask1frexp( boost::dispatch::as_<T>{} );
+    return detail::mask1frexp( boost::dispatch::as_<T>{} );
   }
 } }
 

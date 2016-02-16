@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check mindenormal behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::mindenormal;
+  using boost::simd::detail::mindenormal;
   using boost::simd::Mindenormal;
 
   STF_TYPE_IS(decltype(Mindenormal<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check mindenormal behavior for double"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::mindenormal;
+  using boost::simd::detail::mindenormal;
   using boost::simd::Mindenormal;
 
   STF_TYPE_IS(decltype(Mindenormal<T>()), T);
@@ -42,7 +42,7 @@ STF_CASE_TPL( "Check mindenormal behavior for float"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::mindenormal;
+  using boost::simd::detail::mindenormal;
   using boost::simd::Mindenormal;
 
   STF_TYPE_IS(decltype(Mindenormal<T>()), T);

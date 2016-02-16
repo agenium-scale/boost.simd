@@ -15,7 +15,7 @@ STF_CASE_TPL( "Check fact_12 behavior for integral types"
             , (std::uint32_t)(std::uint64_t)(std::int32_t)(std::int64_t))
 {
   using boost::simd::as;
-  using boost::simd::functional::fact_12;
+  using boost::simd::detail::fact_12;
   using boost::simd::Fact_12;
 
   STF_TYPE_IS(decltype(Fact_12<T>()), T);
@@ -28,7 +28,7 @@ STF_CASE_TPL( "Check fact_12 behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::fact_12;
+  using boost::simd::detail::fact_12;
   using boost::simd::Fact_12;
 
   STF_TYPE_IS(decltype(Fact_12<T>()), T);

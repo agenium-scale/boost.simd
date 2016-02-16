@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check powlargelim behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::powlargelim;
+  using boost::simd::detail::powlargelim;
   using boost::simd::Powlargelim;
   T ref = T(0);
   STF_TYPE_IS(decltype(Powlargelim<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check powlargelim behavior for double"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::powlargelim;
+  using boost::simd::detail::powlargelim;
   using boost::simd::Powlargelim;
   T ref = T(16383);
 
@@ -44,7 +44,7 @@ STF_CASE_TPL( "Check powlargelim behavior for float"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::powlargelim;
+  using boost::simd::detail::powlargelim;
   using boost::simd::Powlargelim;
   T ref = T(2047);
   STF_TYPE_IS(decltype(Powlargelim<T>()), T);

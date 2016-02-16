@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check mask2frexp behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::mask2frexp;
+  using boost::simd::detail::mask2frexp;
   using boost::simd::Mask2frexp;
 
   STF_TYPE_IS(decltype(Mask2frexp<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check mask2frexp behavior for integral types"
 //             )
 // {
 //   using boost::simd::as;
-//   using boost::simd::functional::mask2frexp;
+//   using boost::simd::detail::mask2frexp;
 //   using boost::simd::Mask2frexp;
 
 //   STF_TYPE_IS(decltype(Mask2frexp<T>()), T);

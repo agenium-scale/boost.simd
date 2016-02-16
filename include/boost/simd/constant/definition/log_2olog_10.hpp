@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,log_2olog_10_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::log_2olog_10_,log_2olog_10);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Log_2olog_10() BOOST_NOEXCEPT
-  -> decltype(functional::log_2olog_10( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Log_2olog_10()
+  BOOST_NOEXCEPT_DECLTYPE(detail::log_2olog_10( boost::dispatch::as_<T>{}))
   {
-    return functional::log_2olog_10( boost::dispatch::as_<T>{} );
+    return detail::log_2olog_10( boost::dispatch::as_<T>{} );
   }
 } }
 

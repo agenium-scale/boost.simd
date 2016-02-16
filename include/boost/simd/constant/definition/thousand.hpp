@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,thousand_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::thousand_,thousand);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Thousand() BOOST_NOEXCEPT
-  -> decltype(functional::thousand( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Thousand()
+  BOOST_NOEXCEPT_DECLTYPE(detail::thousand( boost::dispatch::as_<T>{}))
   {
-    return functional::thousand( boost::dispatch::as_<T>{} );
+    return detail::thousand( boost::dispatch::as_<T>{} );
   }
 } }
 

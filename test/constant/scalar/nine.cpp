@@ -18,7 +18,7 @@ STF_CASE_TPL( "Check nine behavior for all types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::nine;
+  using boost::simd::detail::nine;
   using boost::simd::Nine;
 
   STF_TYPE_IS(decltype(Nine<T>()), T);

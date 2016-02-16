@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check maxflint behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::maxflint;
+  using boost::simd::detail::maxflint;
   using boost::simd::Maxflint;
 
   STF_TYPE_IS(decltype(Maxflint<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check maxflint behavior for double"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::maxflint;
+  using boost::simd::detail::maxflint;
   using boost::simd::Maxflint;
 
   STF_TYPE_IS(decltype(Maxflint<T>()), T);
@@ -42,7 +42,7 @@ STF_CASE_TPL( "Check maxflint behavior for float"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::maxflint;
+  using boost::simd::detail::maxflint;
   using boost::simd::Maxflint;
 
   STF_TYPE_IS(decltype(Maxflint<T>()), T);

@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,radindegr_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::radindegr_,radindegr);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Radindegr() BOOST_NOEXCEPT
-  -> decltype(functional::radindegr( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Radindegr()
+  BOOST_NOEXCEPT_DECLTYPE(detail::radindegr( boost::dispatch::as_<T>{}))
   {
-    return functional::radindegr( boost::dispatch::as_<T>{} );
+    return detail::radindegr( boost::dispatch::as_<T>{} );
   }
 } }
 

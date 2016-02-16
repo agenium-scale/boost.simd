@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check powlowlim behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::powlowlim;
+  using boost::simd::detail::powlowlim;
   using boost::simd::Powlowlim;
   T ref = T(0);
   STF_TYPE_IS(decltype(Powlowlim<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check powlowlim behavior for double"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::powlowlim;
+  using boost::simd::detail::powlowlim;
   using boost::simd::Powlowlim;
   T ref = T(-17183);
 
@@ -44,7 +44,7 @@ STF_CASE_TPL( "Check powlowlim behavior for float"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::powlowlim;
+  using boost::simd::detail::powlowlim;
   using boost::simd::Powlowlim;
   T ref = T(-2400);
   STF_TYPE_IS(decltype(Powlowlim<T>()), T);

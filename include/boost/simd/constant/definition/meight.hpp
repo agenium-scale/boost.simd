@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,meight_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::meight_,meight);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Meight() BOOST_NOEXCEPT
-  -> decltype(functional::meight( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Meight()
+  BOOST_NOEXCEPT_DECLTYPE(detail::meight( boost::dispatch::as_<T>{}))
   {
-    return functional::meight( boost::dispatch::as_<T>{} );
+    return detail::meight( boost::dispatch::as_<T>{} );
   }
 } }
 

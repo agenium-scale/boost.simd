@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check int_splat behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::int_splat;
+  using boost::simd::detail::int_splat;
   using boost::simd::Int_splat;
 
   STF_TYPE_IS(decltype(Int_splat<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check int_splat behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::int_splat;
+  using boost::simd::detail::int_splat;
   using boost::simd::Int_splat;
 
   STF_TYPE_IS(decltype(Int_splat<T>()), T);

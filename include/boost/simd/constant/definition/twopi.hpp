@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,twopi_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::twopi_,twopi);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Twopi() BOOST_NOEXCEPT
-  -> decltype(functional::twopi( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Twopi()
+  BOOST_NOEXCEPT_DECLTYPE(detail::twopi( boost::dispatch::as_<T>{}))
   {
-    return functional::twopi( boost::dispatch::as_<T>{} );
+    return detail::twopi( boost::dispatch::as_<T>{} );
   }
 } }
 

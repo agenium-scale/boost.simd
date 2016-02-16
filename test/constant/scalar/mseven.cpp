@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check mseven behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::mseven;
+  using boost::simd::detail::mseven;
   using boost::simd::Mseven;
 
   STF_TYPE_IS(decltype(Mseven<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check mseven behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::mseven;
+  using boost::simd::detail::mseven;
   using boost::simd::Mseven;
 
   STF_TYPE_IS(decltype(Mseven<T>()), T);

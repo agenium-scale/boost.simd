@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,nan_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::nan_,nan);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Nan() BOOST_NOEXCEPT
-  -> decltype(functional::nan( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Nan()
+  BOOST_NOEXCEPT_DECLTYPE(detail::nan( boost::dispatch::as_<T>{}))
   {
-    return functional::nan( boost::dispatch::as_<T>{} );
+    return detail::nan( boost::dispatch::as_<T>{} );
   }
 } }
 

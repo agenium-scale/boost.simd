@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check thousand behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::thousand;
+  using boost::simd::detail::thousand;
   using boost::simd::Thousand;
 
   STF_TYPE_IS(decltype(Thousand<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check thousand behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::thousand;
+  using boost::simd::detail::thousand;
   using boost::simd::Thousand;
 
   STF_TYPE_IS(decltype(Thousand<T>()), T);

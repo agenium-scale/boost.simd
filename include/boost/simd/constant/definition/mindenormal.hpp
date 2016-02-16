@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,mindenormal_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::mindenormal_,mindenormal);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Mindenormal() BOOST_NOEXCEPT
-  -> decltype(functional::mindenormal( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Mindenormal()
+  BOOST_NOEXCEPT_DECLTYPE(detail::mindenormal( boost::dispatch::as_<T>{}))
   {
-    return functional::mindenormal( boost::dispatch::as_<T>{} );
+    return detail::mindenormal( boost::dispatch::as_<T>{} );
   }
 } }
 

@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,deginrad_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::deginrad_,deginrad);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Deginrad() BOOST_NOEXCEPT
-  -> decltype(functional::deginrad( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Deginrad()
+  BOOST_NOEXCEPT_DECLTYPE(detail::deginrad( boost::dispatch::as_<T>{}))
   {
-    return functional::deginrad( boost::dispatch::as_<T>{} );
+    return detail::deginrad( boost::dispatch::as_<T>{} );
   }
 } }
 

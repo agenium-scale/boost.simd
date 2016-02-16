@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,medium_pi_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::medium_pi_,medium_pi);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Medium_pi() BOOST_NOEXCEPT
-  -> decltype(functional::medium_pi( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Medium_pi()
+  BOOST_NOEXCEPT_DECLTYPE(detail::medium_pi( boost::dispatch::as_<T>{}))
   {
-    return functional::medium_pi( boost::dispatch::as_<T>{} );
+    return detail::medium_pi( boost::dispatch::as_<T>{} );
   }
 } }
 

@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check twotom10 behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::twotom10;
+  using boost::simd::detail::twotom10;
   using boost::simd::Twotom10;
 
   STF_TYPE_IS(decltype(Twotom10<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check twotom10 behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::twotom10;
+  using boost::simd::detail::twotom10;
   using boost::simd::Twotom10;
 
   STF_TYPE_IS(decltype(Twotom10<T>()), T);

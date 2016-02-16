@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,fouropi_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::fouropi_,fouropi);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Fouropi() BOOST_NOEXCEPT
-  -> decltype(functional::fouropi( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Fouropi()
+  BOOST_NOEXCEPT_DECLTYPE(detail::fouropi( boost::dispatch::as_<T>{}))
   {
-    return functional::fouropi( boost::dispatch::as_<T>{} );
+    return detail::fouropi( boost::dispatch::as_<T>{} );
   }
 } }
 

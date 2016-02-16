@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,sqrt_2o_3_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::sqrt_2o_3_,sqrt_2o_3);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Sqrt_2o_3() BOOST_NOEXCEPT
-  -> decltype(functional::sqrt_2o_3( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Sqrt_2o_3()
+  BOOST_NOEXCEPT_DECLTYPE(detail::sqrt_2o_3( boost::dispatch::as_<T>{}))
   {
-    return functional::sqrt_2o_3( boost::dispatch::as_<T>{} );
+    return detail::sqrt_2o_3( boost::dispatch::as_<T>{} );
   }
 } }
 

@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,twothird_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::twothird_,twothird);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Twothird() BOOST_NOEXCEPT
-  -> decltype(functional::twothird( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Twothird()
+  BOOST_NOEXCEPT_DECLTYPE(detail::twothird( boost::dispatch::as_<T>{}))
   {
-    return functional::twothird( boost::dispatch::as_<T>{} );
+    return detail::twothird( boost::dispatch::as_<T>{} );
   }
 } }
 

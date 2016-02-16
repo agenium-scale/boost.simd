@@ -47,15 +47,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,inf_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::inf_,inf);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Inf() BOOST_NOEXCEPT
-  -> decltype(functional::inf(boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Inf()
+  -> decltype(detail::inf(boost::dispatch::as_<T>{}))
   {
-    return functional::inf( boost::dispatch::as_<T>{} );
+    return detail::inf( boost::dispatch::as_<T>{} );
   }
 } }
 

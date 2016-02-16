@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,eps_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::eps_,eps);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Eps() BOOST_NOEXCEPT
-  -> decltype(functional::eps( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Eps()
+  BOOST_NOEXCEPT_DECLTYPE(detail::eps( boost::dispatch::as_<T>{}))
   {
-    return functional::eps( boost::dispatch::as_<T>{} );
+    return detail::eps( boost::dispatch::as_<T>{} );
   }
 } }
 

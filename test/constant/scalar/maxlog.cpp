@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check maxlog behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::maxlog;
+  using boost::simd::detail::maxlog;
   using boost::simd::Maxlog;
   T ref = T(0);
   STF_TYPE_IS(decltype(Maxlog<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check maxlog behavior for double"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::maxlog;
+  using boost::simd::detail::maxlog;
   using boost::simd::Maxlog;
   T ref = T(709.78271289338400);
 
@@ -44,7 +44,7 @@ STF_CASE_TPL( "Check maxlog behavior for float"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::maxlog;
+  using boost::simd::detail::maxlog;
   using boost::simd::Maxlog;
   T ref = T(88.3762626647949);
   STF_TYPE_IS(decltype(Maxlog<T>()), T);

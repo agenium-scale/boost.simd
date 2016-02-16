@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check gold behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::gold;
+  using boost::simd::detail::gold;
   using boost::simd::Gold;
 
   STF_TYPE_IS(decltype(Gold<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check gold behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::gold;
+  using boost::simd::detail::gold;
   using boost::simd::Gold;
 
   STF_TYPE_IS(decltype(Gold<T>()), T);

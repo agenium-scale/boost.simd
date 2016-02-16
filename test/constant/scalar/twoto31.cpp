@@ -16,7 +16,7 @@ STF_CASE_TPL( "Check twoto31 behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::twoto31;
+  using boost::simd::detail::twoto31;
   using boost::simd::Twoto31;
 
   STF_TYPE_IS(decltype(Twoto31<T>()), T);
@@ -29,7 +29,7 @@ STF_CASE_TPL( "Check twoto31 behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::twoto31;
+  using boost::simd::detail::twoto31;
   using boost::simd::Twoto31;
 
   STF_TYPE_IS(decltype(Twoto31<T>()), T);
