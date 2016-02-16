@@ -8,8 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_CONSTANT_CONSTANT_VALUE_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_SIMD_CONSTANT_CONSTANT_VALUE_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_CONSTANT_CONSTANT_GENERATOR_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_CONSTANT_CONSTANT_GENERATOR_HPP_INCLUDED
 
 #if defined(BOOST_SIMD_DETECTED)
 #include <boost/simd/pack.hpp>
@@ -19,25 +19,25 @@
 #include <boost/config.hpp>
 #include <type_traits>
 
-
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
 
-  BOOST_DISPATCH_OVERLOAD_FALLBACK( (typename Constant, typename T, typename X)
-                                  , boost::dispatch::constant_value_<Constant>
+  BOOST_DISPATCH_OVERLOAD_FALLBACK( (typename T, typename V, typename X)
+                                  , boost::dispatch::constant_value_<tag::constant_>
                                   , bs::simd_
+                                  , bd::scalar_<bd::unspecified_<V>>
                                   , bd::target_< bs::pack_<bd::unspecified_<T>,X> >
                                   )
   {
     using value_t   = typename T::type::value_type;
-    using scalar_t  = decltype(bd::functor<Constant>{}(bd::as_<value_t>()));
+    using scalar_t  = decltype(bd::functor<tag::constant_>{}(V(),bd::as_<value_t>()));
     using result_t  = typename T::type::template rebind<scalar_t>;
 
-    BOOST_FORCEINLINE result_t operator()(T const&) const
+    BOOST_FORCEINLINE result_t operator()(V const& v, T const&) const
     {
-      return result_t{ bd::functor<Constant>{}(bd::as_<value_t>()) };
+      return result_t{ bd::functor<tag::constant_>{}(v,bd::as_<value_t>()) };
     }
   };
 } } }
