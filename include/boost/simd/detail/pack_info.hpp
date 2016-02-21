@@ -14,6 +14,7 @@
 
 #include <boost/simd/cardinal_of.hpp>
 #include <boost/dispatch/meta/downgrade.hpp>
+#include <boost/dispatch/meta/upgrade.hpp>
 
 namespace boost { namespace simd
 {
@@ -33,6 +34,17 @@ namespace boost { namespace dispatch { namespace detail
 
     static_assert ( sizeof(downgrade_t<T,Sign>) != sizeof(T)
                   , "boost::dispatch::downgrade can't compute a valid type"
+                  );
+  };
+
+  // Overload for upgrade
+  template<typename T, std::size_t N, typename ABI,typename Sign>
+  struct upgrade<boost::simd::pack<T,N,ABI>,Sign>
+  {
+    using type = boost::simd::pack<upgrade_t<T,Sign>, N/2>;
+
+    static_assert ( sizeof(upgrade_t<T,Sign>) != sizeof(T)
+                  , "boost::dispatch::upgrade can't compute a valid type"
                   );
   };
 } } }
