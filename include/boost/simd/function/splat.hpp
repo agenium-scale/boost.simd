@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -16,31 +16,13 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-ieee
-
-    splat the value of its parameter on the Target.
 
   **/
-  template<typename Target, typename T> auto splat(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-ieee
-
-      splat the value of its parameter on the Target.
-
-
-      Function object tied to simd::splat
-
-      @see simd::splat
-    **/
-    const boost::dispatch::functor<tag::splat_> splat = {};
-  }
+  template<typename T, typename U> T splat(U const& x) {}
 } }
 #endif
 
 #include <boost/simd/function/scalar/splat.hpp>
-
+#include <boost/simd/function/simd/splat.hpp>
 
 #endif
