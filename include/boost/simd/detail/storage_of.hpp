@@ -14,11 +14,24 @@
 #ifndef BOOST_SIMD_DETAIL_STORAGE_OF_HPP_INCLUDED
 #define BOOST_SIMD_DETAIL_STORAGE_OF_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/simd/sdk/as_simd.hpp>
 #include <boost/simd/sdk/expected_cardinal.hpp>
+#include <boost/simd/sdk/native_cardinal.hpp>
+#include <boost/simd/sdk/abi_of.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <type_traits>
 #include <array>
+
+namespace boost { namespace simd
+{
+  // Forward declaration of pack
+  template< typename T
+          , std::size_t N = native_cardinal<T>::value
+          , typename ABI  = abi_of_t<T,N>
+          >
+  class pack;
+} }
 
 namespace boost { namespace simd { namespace detail
 {
@@ -96,7 +109,7 @@ namespace boost { namespace simd { namespace detail
     enum { expected = expected_cardinal<Type,SIMDFamily>::value };
     enum { size     = Cardinal / expected };
 
-    using base = typename storage_of<Type,expected,SIMDFamily>::type;
+    using base = pack<Type,expected>;
     using type = std::array<base,size>;
   };
 } } }

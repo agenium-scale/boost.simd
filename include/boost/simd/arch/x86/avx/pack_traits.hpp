@@ -59,6 +59,16 @@ namespace boost { namespace simd
     {
       using type = ::boost::simd::avx_;
     };
+
+    template<typename Enable> struct abi_of<float,8,Enable>
+    {
+      using type = ::boost::simd::avx_;
+    };
+
+    template<typename Enable> struct abi_of<double,4,Enable>
+    {
+      using type = ::boost::simd::avx_;
+    };
   }
 } }
 

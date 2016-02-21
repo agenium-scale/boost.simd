@@ -11,7 +11,6 @@
 
 **/
 //==================================================================================================
-
 #ifndef BOOST_SIMD_ARCH_X86_SSE2_PACK_TRAITS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE2_PACK_TRAITS_HPP_INCLUDED
 
@@ -21,25 +20,17 @@
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/pack_traits.hpp>
 #include <boost/simd/detail/pack_proxy.hpp>
+#include <type_traits>
 
 namespace boost { namespace simd
 {
   namespace detail
   {
-    BOOST_SIMD_DEFINE_PACK_TRAITS(double, 2, __m128d, _mm_set_pd, _mm_load_pd, _mm_set1_pd);
-
-    struct mm_load_pi {
-      template <typename T>
-      BOOST_FORCEINLINE __m128i operator()(T const* ptr) const BOOST_NOEXCEPT {
-        return _mm_load_si128(reinterpret_cast<__m128i const*>(ptr));
-      }
-    };
-
-    // TODO use a static instance instead? Because we're header only there is no proper way to do that?
-    BOOST_SIMD_DEFINE_PACK_TRAITS_TPL(typename T, T,  2, __m128i, _mm_set_epi64x, mm_load_pi{}, _mm_set1_epi64x);
-    BOOST_SIMD_DEFINE_PACK_TRAITS_TPL(typename T, T,  4, __m128i, _mm_set_epi32,  mm_load_pi{}, _mm_set1_epi32);
-    BOOST_SIMD_DEFINE_PACK_TRAITS_TPL(typename T, T,  8, __m128i, _mm_set_epi16,  mm_load_pi{}, _mm_set1_epi16);
-    BOOST_SIMD_DEFINE_PACK_TRAITS_TPL(typename T, T, 16, __m128i, _mm_set_epi8,   mm_load_pi{}, _mm_set1_epi8);
+    BOOST_SIMD_DEFINE_PACK_TRAITS(double, 2, __m128d);
+    BOOST_SIMD_DEFINE_PACK_TRAITS_TPL(typename T, T,  2, __m128i);
+    BOOST_SIMD_DEFINE_PACK_TRAITS_TPL(typename T, T,  4, __m128i);
+    BOOST_SIMD_DEFINE_PACK_TRAITS_TPL(typename T, T,  8, __m128i);
+    BOOST_SIMD_DEFINE_PACK_TRAITS_TPL(typename T, T, 16, __m128i);
   }
 
   namespace ext
@@ -51,6 +42,21 @@ namespace boost { namespace simd
     };
 
     template<typename Enable> struct extension_of<__m128d,Enable>
+    {
+      using type = ::boost::simd::sse_;
+    };
+
+    template<typename Enable> struct abi_of<double,2,Enable>
+    {
+      using type = ::boost::simd::sse_;
+    };
+
+    template<typename T, std::size_t N>
+    struct abi_of<  T, N
+                  , typename std::enable_if<   std::is_integral<T>::value
+                                            && (N*sizeof(T) == 16)
+                                            >::type
+                  >
     {
       using type = ::boost::simd::sse_;
     };

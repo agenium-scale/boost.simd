@@ -16,8 +16,10 @@
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/detail/pack_traits.hpp>
+#include <boost/simd/detail/storage_of.hpp>
 #include <boost/simd/sdk/is_power_of_2.hpp>
 #include <boost/simd/sdk/hierarchy/simd.hpp>
+#include <boost/simd/function/splat.hpp>
 #include <boost/align/is_aligned.hpp>
 #include <boost/config.hpp>
 #include <iterator>
@@ -50,9 +52,9 @@ namespace boost { namespace simd
                  );
 
     public:
-    using traits                    = detail::pack_traits<T, N>;
-
+    using traits                    = detail::pack_traits<T, N,typename detail::storage_of<T, N>::type>;
     using storage_type              = typename traits::storage_type;
+    using storage_kind              = typename traits::storage_kind;
     using value_type                = typename traits::value_type;
     using size_type                 = typename traits::size_type;
 
@@ -81,6 +83,7 @@ namespace boost { namespace simd
     /// @brief Copy constructor
     BOOST_FORCEINLINE pack(pack const& rhs) BOOST_NOEXCEPT : data_(rhs.data_) {}
 
+#if 0
     /*!
       @brief Construct a pack from aligned, contiguous memory
 
@@ -98,7 +101,9 @@ namespace boost { namespace simd
                       );
       traits::load(data_, ptr);
     }
+#endif
 
+#if 0
     /*!
       @brief Construct a pack from a range of element
 
@@ -118,7 +123,9 @@ namespace boost { namespace simd
     {
       traits::load(data_, b, e);
     }
+#endif
 
+#if 0
     /*!
       @brief Construct a pack from a set of scalar values
 
@@ -139,16 +146,16 @@ namespace boost { namespace simd
                    );
       traits::fill(data_, static_cast<T>(v0), static_cast<T>(v1), static_cast<T>(vn)...);
     }
+#endif
 
     /*!
       @brief Construct a pack by replicating a scalar value
 
       @param value The value to replicate
     **/
-    BOOST_FORCEINLINE explicit pack(T const& value)
-    {
-      traits::splat(data_, value);
-    }
+    BOOST_FORCEINLINE explicit pack(T const& value) BOOST_NOEXCEPT
+                      : data_( boost::simd::splat<pack>(value).storage() )
+    {}
 
     /// @brief Pack assignment operator
     BOOST_FORCEINLINE pack& operator=(pack const& rhs) BOOST_NOEXCEPT
@@ -176,6 +183,7 @@ namespace boost { namespace simd
     /// @overload
     BOOST_FORCEINLINE storage_type const& storage() const BOOST_NOEXCEPT { return data_; }
 
+#if 1
     /*!
       @brief Random-access to the pack elements
 
@@ -195,6 +203,7 @@ namespace boost { namespace simd
     {
       return traits::at(data_, i);
     }
+#endif
 
     public:
 

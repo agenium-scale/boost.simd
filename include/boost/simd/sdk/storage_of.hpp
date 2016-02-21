@@ -32,7 +32,7 @@ namespace boost { namespace simd
   **/
   template<typename Type, std::size_t N> struct storage_of
   {
-    using type = typename detail::pack_traits<Type, N>::storage_type;
+    using type = typename detail::storage_of<Type, N>::type;
   };
 
   /// @brief Eager short-cut to storage_of

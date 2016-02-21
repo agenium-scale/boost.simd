@@ -27,13 +27,6 @@
 
 namespace boost { namespace simd
 {
-  // Forward declaration of pack
-  template< typename T
-          , std::size_t N = native_cardinal<T>::value
-          , typename ABI  = abi_of_t<T,N>
-          >
-  class pack;
-
   /*!
     @ingroup group-sdk
     @brief SIMD register type hierarchy tag
@@ -59,10 +52,11 @@ namespace boost { namespace simd
   namespace ext
   {
     // Short-cut for extension_of
-    template<typename T, std::size_t N>
-    struct  extension_of<pack<T,N>>
-          : boost::simd::extension_of< boost::simd::storage_of_t<T,N> >
-    {};
+    template<typename T, std::size_t N, typename ABI>
+    struct  extension_of<pack<T,N,ABI>>
+    {
+      using type = ABI;
+    };
   }
 } }
 

@@ -15,7 +15,6 @@
 #define BOOST_SIMD_DETAIL_PACK_TRAITS_HPP_INCLUDED
 
 #include <boost/simd/arch/common/tags.hpp>
-#include <boost/simd/detail/storage_of.hpp>
 #include <boost/simd/detail/pack_iterator.hpp>
 #include <boost/simd/detail/pack_proxy.hpp>
 #include <boost/preprocessor/repetition/enum.hpp>
@@ -27,7 +26,7 @@ namespace boost { namespace simd { namespace detail
 {
   template < typename T
            , std::size_t N
-           , typename Storage = typename detail::storage_of<T, N>::type
+           , typename Storage
            >
   class pack_traits;
 
@@ -38,17 +37,7 @@ namespace boost { namespace simd { namespace detail
   template<typename T> using rconst = typename std::remove_const<T>::type;
 } } }
 
-#define BOOST_SIMD_DEFINE_PACK_TRAITS_TPL_M0(z, n, _) value_type BOOST_PP_CAT(e, n)
-
-#define BOOST_SIMD_DEFINE_PACK_TRAITS_TPL_M1(z, n, N)\
-  BOOST_PP_CAT(e, BOOST_PP_SUB(N, BOOST_PP_ADD(n, 1)))
-
-#define BOOST_SIMD_DEFINE_PACK_TRAITS_TPL_M2(z, n, text)\
-  BOOST_PP_CAT(text, n) = (b != e ? *(b++) : value_type());
-
-#define BOOST_SIMD_DEFINE_PACK_TRAITS_TPL_M3(z, n, _) BOOST_PP_CAT(e, n)
-
-#define BOOST_SIMD_DEFINE_PACK_TRAITS_TPL(TPL, TYPE, N, VTYPE, VFILL, VLOAD, VSPLAT)               \
+#define BOOST_SIMD_DEFINE_PACK_TRAITS_TPL(TPL, TYPE, N, VTYPE)                                     \
   template <TPL>                                                                                   \
   class pack_traits<TYPE, N, VTYPE> {                                                              \
                                                                                                    \
@@ -64,14 +53,6 @@ namespace boost { namespace simd { namespace detail
     using const_reference         = pack_proxy<value_type const, static_size, storage_type const>; \
                                                                                                    \
     using storage_kind = ::boost::simd::native_storage;                                            \
-                                                                                                   \
-    BOOST_FORCEINLINE static void fill(                                                            \
-        storage_type& v,                                                                           \
-        BOOST_PP_ENUM(N, BOOST_SIMD_DEFINE_PACK_TRAITS_TPL_M0, BOOST_PP_EMPTY())                   \
-        ) BOOST_NOEXCEPT                                                                           \
-    {                                                                                              \
-      v = VFILL(BOOST_PP_ENUM(N, BOOST_SIMD_DEFINE_PACK_TRAITS_TPL_M1, N));                        \
-    }                                                                                              \
                                                                                                    \
     BOOST_FORCEINLINE static value_type get(storage_type const& data, std::size_t index)           \
     BOOST_NOEXCEPT                                                                                 \
@@ -102,28 +83,11 @@ namespace boost { namespace simd { namespace detail
     {                                                                                              \
       return {&v, i};                                                                              \
     }                                                                                              \
-                                                                                                   \
-    BOOST_FORCEINLINE static void load(storage_type& v, value_type const* ptr) BOOST_NOEXCEPT      \
-    {                                                                                              \
-      v = VLOAD(ptr);                                                                              \
-    }                                                                                              \
-                                                                                                   \
-    template <typename Iterator>                                                                   \
-    BOOST_FORCEINLINE static void load(storage_type& v, Iterator b, Iterator e) BOOST_NOEXCEPT     \
-    {                                                                                              \
-      BOOST_PP_REPEAT(N, BOOST_SIMD_DEFINE_PACK_TRAITS_TPL_M2, auto e)                             \
-                                                                                                   \
-      fill(v, BOOST_PP_ENUM(N, BOOST_SIMD_DEFINE_PACK_TRAITS_TPL_M3, BOOST_PP_EMPTY()));           \
-    }                                                                                              \
-                                                                                                   \
-    BOOST_FORCEINLINE static void splat(storage_type& v, value_type a) BOOST_NOEXCEPT              \
-    {                                                                                              \
-      v = VSPLAT(a);                                                                               \
-    }                                                                                              \
   };                                                                                               \
   /**/
 
-#define BOOST_SIMD_DEFINE_PACK_TRAITS(TYPE, N, VTYPE, VFILL, VLOAD, VSPLAT)                        \
-  BOOST_SIMD_DEFINE_PACK_TRAITS_TPL(BOOST_PP_EMPTY(), TYPE, N, VTYPE, VFILL, VLOAD, VSPLAT)
+#define BOOST_SIMD_DEFINE_PACK_TRAITS(TYPE, N, VTYPE)                                              \
+BOOST_SIMD_DEFINE_PACK_TRAITS_TPL(BOOST_PP_EMPTY(), TYPE, N, VTYPE)                                \
+/**/
 
 #endif
