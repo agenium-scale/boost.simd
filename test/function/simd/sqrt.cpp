@@ -15,10 +15,11 @@
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
 
+namespace bs = boost::simd;
+
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
 {
-  namespace bs = boost::simd;
   using p_t = bs::pack<T, N>;
 
   T a1[N], b[N];
@@ -29,17 +30,13 @@ void test(Env& $)
   }
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
-  std::cout << a1 << std::endl;
-  std::cout << bb << std::endl;
-  std::cout <<bs::sqrt(aa1)<< std::endl;
-  STF_IEEE_EQUAL(bs::sqrt(aa1), bb);
+  STF_ULP_EQUAL(bs::sqrt(aa1), bb, 0.5);
 }
 
-STF_CASE_TPL("Check sqrt on pack" , STF_IEEE_TYPES) //TODO NUMERIC
+STF_CASE_TPL("Check sqrt on pack", STF_IEEE_TYPES)
 {
-  namespace bs = boost::simd;
-  using p_t = bs::pack<T>;
-  static const std::size_t N = bs::cardinal_of<p_t>::value;
+  static const std::size_t N = bs::pack<T>::static_size;
+
   test<T, N>($);
   test<T, N/2>($);
   test<T, N*2>($);
