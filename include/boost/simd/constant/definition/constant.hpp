@@ -41,13 +41,13 @@ namespace boost { namespace simd
   }
 
   template<typename Type, detail::bits_t<dispatch::scalar_of_t<Type>> Bits>
-  BOOST_FORCEINLINE   auto Constant() BOOST_NOEXCEPT
-                  ->  decltype( detail::constant( typename  detail::constantify
-                                                            < boost::dispatch::scalar_of_t<Type>
-                                                            , Bits
-                                                            >::type{}
-                                                , boost::simd::as_<Type>{}
-                                                )
+  BOOST_FORCEINLINE auto Constant()
+  BOOST_NOEXCEPT_DECLTYPE( detail::constant ( typename  detail::constantify
+                                                        < boost::dispatch::scalar_of_t<Type>
+                                                        , Bits
+                                                        >::type{}
+                                            , boost::simd::as_<Type>{}
+                                            )
                               )
   {
     using cst_t = typename detail::constantify<boost::dispatch::scalar_of_t<Type>,Bits>::type;

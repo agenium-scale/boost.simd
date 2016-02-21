@@ -11,6 +11,7 @@ allbits.cpp
 bitincrement.cpp
 c180.cpp
 cgold.cpp
+constant.cpp
 deginrad.cpp
 eight.cpp
 eleven.cpp
@@ -142,8 +143,8 @@ powlowlim.cpp
 quarter.cpp
 radindeg.cpp
 radindegr.cpp
-#ratio.cpp
-#real.cpp
+ratio.cpp
+real.cpp
 seven.cpp
 signmask.cpp
 six.cpp
