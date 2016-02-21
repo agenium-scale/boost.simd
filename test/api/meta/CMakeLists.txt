@@ -8,6 +8,7 @@
 
 set ( SOURCES
       cardinal_of.cpp
+      downgrade.cpp
       is_scalar.cpp
       logical.cpp
     )

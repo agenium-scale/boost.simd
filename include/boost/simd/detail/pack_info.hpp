@@ -13,6 +13,7 @@
 #define BOOST_SIMD_DETAIL_PACK_INFO_HPP_INCLUDED
 
 #include <boost/simd/cardinal_of.hpp>
+#include <boost/dispatch/meta/downgrade.hpp>
 
 namespace boost { namespace simd
 {
@@ -21,5 +22,19 @@ namespace boost { namespace simd
   struct cardinal_of<pack<T,N,ABI>> : std::integral_constant<std::size_t,N>
   {};
 } }
+
+namespace boost { namespace dispatch { namespace detail
+{
+  // Overload for downgrade
+  template<typename T, std::size_t N, typename ABI,typename Sign>
+  struct downgrade<boost::simd::pack<T,N,ABI>,Sign>
+  {
+    using type = boost::simd::pack<downgrade_t<T,Sign>, N*2>;
+
+    static_assert ( sizeof(downgrade_t<T,Sign>) != sizeof(T)
+                  , "boost::dispatch::downgrade can't compute a valid type"
+                  );
+  };
+} } }
 
 #endif
