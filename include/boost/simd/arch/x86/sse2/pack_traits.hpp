@@ -15,9 +15,7 @@
 #define BOOST_SIMD_ARCH_X86_SSE2_PACK_TRAITS_HPP_INCLUDED
 
 #include <boost/config.hpp>
-#include <boost/simd/arch/common/simd/extension_of.hpp>
 #include <boost/simd/arch/x86/sse1/pack_traits.hpp>
-#include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/pack_traits.hpp>
 #include <boost/simd/detail/pack_proxy.hpp>
 #include <type_traits>
@@ -35,17 +33,6 @@ namespace boost { namespace simd
 
   namespace ext
   {
-    // __m128* storage are supported by SSE hardware
-    template<typename Enable> struct extension_of<__m128i,Enable>
-    {
-      using type = ::boost::simd::sse_;
-    };
-
-    template<typename Enable> struct extension_of<__m128d,Enable>
-    {
-      using type = ::boost::simd::sse_;
-    };
-
     template<typename Enable> struct abi_of<double,2,Enable>
     {
       using type = ::boost::simd::sse_;

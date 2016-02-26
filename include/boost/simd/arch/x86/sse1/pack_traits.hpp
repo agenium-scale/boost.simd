@@ -19,7 +19,6 @@
 #include <boost/simd/detail/pack_traits.hpp>
 #include <boost/simd/detail/pack_proxy.hpp>
 #include <boost/simd/arch/common/simd/abi_of.hpp>
-#include <boost/simd/arch/common/simd/extension_of.hpp>
 
 namespace boost { namespace simd
 {
@@ -30,12 +29,6 @@ namespace boost { namespace simd
 
   namespace ext
   {
-    // __m128 storage are supported by SSE hardware
-    template<typename Enable> struct extension_of<__m128,Enable>
-    {
-      using type = ::boost::simd::sse_;
-    };
-
     template<typename Enable> struct abi_of<float,4,Enable>
     {
       using type = ::boost::simd::sse_;

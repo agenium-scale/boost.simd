@@ -20,7 +20,18 @@
 
 namespace boost { namespace simd
 {
-  template<> struct limits<boost::simd::avx2_> : limits<boost::simd::avx_> {};
+  template<> struct limits<boost::simd::avx2_> : limits<boost::simd::avx_>
+  {
+    struct largest_integer
+    {
+      template<typename Sign> struct apply : boost::dispatch::make_integer<8,Sign> {};
+    };
+
+    struct smallest_integer
+    {
+      template<typename Sign> struct apply : boost::dispatch::make_integer<1,Sign> {};
+    };
+  };
 } }
 
 #endif
