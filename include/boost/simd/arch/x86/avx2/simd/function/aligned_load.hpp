@@ -24,7 +24,7 @@ namespace boost { namespace simd { namespace ext
   namespace bs = ::boost::simd;
 
   //------------------------------------------------------------------------------------------------
-  // load from an aligned pointer of double
+  // load from an aligned pointer of integers
   BOOST_DISPATCH_OVERLOAD ( aligned_load_
                           , (typename Target, typename Pointer)
                           , bs::avx2_
