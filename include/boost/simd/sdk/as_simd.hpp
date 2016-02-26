@@ -29,8 +29,10 @@ namespace boost { namespace simd
     @tparam Type      Type of the elements
     @tparam Extension Architectural tag for target extension
   **/
+  template<typename Type, typename Extension> struct as_simd : ext::as_simd<Type,Extension> {};
+
   template<typename Type, typename Extension>
-  using as_simd = typename ext::as_simd<Type,Extension>::type;
+  using as_simd_t = typename as_simd<Type,Extension>::type;
 } }
 
 #endif

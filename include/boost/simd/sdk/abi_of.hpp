@@ -31,7 +31,7 @@ namespace boost { namespace simd
   **/
   template<typename Type, std::size_t N> struct abi_of : ext::abi_of<Type,N> {};
 
-  /// @brief Eager short-cut to extension_of
+  /// @brief Eager short-cut to abi_of
   template<typename Type, std::size_t N> using abi_of_t = typename abi_of<Type,N>::type;
 } }
 
