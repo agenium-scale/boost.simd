@@ -22,7 +22,6 @@
 // Used as fallbacks for generic cases
 #include <boost/simd/arch/common/simd/abi_of.hpp>
 #include <boost/simd/arch/common/simd/as_simd.hpp>
-#include <boost/simd/arch/common/simd/extension_of.hpp>
 #include <boost/simd/arch/common/simd/pack_traits.hpp>
 
 #endif
