@@ -39,6 +39,24 @@ namespace boost { namespace simd { namespace ext
   };
 
   //------------------------------------------------------------------------------------------------
+  // load from an input range
+  BOOST_DISPATCH_OVERLOAD ( load_
+                          , (typename Target, typename Begin, typename End)
+                          , bd::cpu_
+                          , bd::input_iterator_<bd::scalar_<bd::unspecified_<Begin>>>
+                          , bd::input_iterator_<bd::scalar_<bd::unspecified_<End>>>
+                          , bd::target_< bd::scalar_<bd::unspecified_<Target>> >
+                          )
+  {
+    using target = typename Target::type;
+
+    BOOST_FORCEINLINE target operator()(Begin b, End, Target const&) const BOOST_NOEXCEPT
+    {
+      return *b;
+    }
+  };
+
+  //------------------------------------------------------------------------------------------------
   // load from a masked pointer
   BOOST_DISPATCH_OVERLOAD ( load_
                           , (typename Target, typename Pointer)
