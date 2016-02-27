@@ -19,6 +19,8 @@
 #include <boost/simd/detail/storage_of.hpp>
 #include <boost/simd/sdk/is_power_of_2.hpp>
 #include <boost/simd/sdk/hierarchy/simd.hpp>
+#include <boost/simd/function/aligned_load.hpp>
+#include <boost/simd/function/load.hpp>
 #include <boost/simd/function/splat.hpp>
 #include <boost/align/is_aligned.hpp>
 #include <boost/config.hpp>
@@ -41,10 +43,7 @@ namespace boost { namespace simd
     @tparam N   Number of element stored
     @tparam ABI Binary flag to prevent ABI issue
    **/
-  template< typename T
-          , std::size_t N
-          , typename ABI
-          >
+  template<typename T, std::size_t N, typename ABI>
   class pack {
 
     static_assert( boost::simd::is_power_of_2_<N>::value
@@ -52,14 +51,14 @@ namespace boost { namespace simd
                  );
 
     public:
-    using traits                    = detail::pack_traits<T, N,typename detail::storage_of<T, N>::type>;
-    using storage_type              = typename traits::storage_type;
-    using storage_kind              = typename traits::storage_kind;
-    using value_type                = typename traits::value_type;
-    using size_type                 = typename traits::size_type;
+    using traits                = detail::pack_traits<T, N,typename detail::storage_of<T,N,ABI>::type>;
+    using storage_type          = typename traits::storage_type;
+    using storage_kind          = typename traits::storage_kind;
+    using value_type            = typename traits::value_type;
+    using size_type             = typename traits::size_type;
 
-    using reference                 = typename traits::reference;
-    using const_reference           = typename traits::const_reference;
+    using reference             = typename traits::reference;
+    using const_reference       = typename traits::const_reference;
 
     using iterator                  = detail::pack_iterator<pack>;
     using const_iterator            = detail::pack_iterator<pack const>;
@@ -83,7 +82,6 @@ namespace boost { namespace simd
     /// @brief Copy constructor
     BOOST_FORCEINLINE pack(pack const& rhs) BOOST_NOEXCEPT : data_(rhs.data_) {}
 
-#if 0
     /*!
       @brief Construct a pack from aligned, contiguous memory
 
@@ -94,16 +92,10 @@ namespace boost { namespace simd
 
       @param ptr Pointer to load from
     **/
-    BOOST_FORCEINLINE explicit pack(T const* ptr)
-    {
-      BOOST_ASSERT_MSG( (boost::alignment::is_aligned(sizeof(storage_type), ptr))
-                      , "pack(ctor) pointer must be aligned"
-                      );
-      traits::load(data_, ptr);
-    }
-#endif
+    BOOST_FORCEINLINE explicit pack(T const* ptr) BOOST_NOEXCEPT
+                              : data_( boost::simd::aligned_load<pack>(ptr).storage() )
+    {}
 
-#if 0
     /*!
       @brief Construct a pack from a range of element
 
@@ -120,10 +112,8 @@ namespace boost { namespace simd
              , typename = typename std::enable_if<!std::is_fundamental<Iterator>::value>::type
              >
     BOOST_FORCEINLINE pack(Iterator b, Iterator e)
-    {
-      traits::load(data_, b, e);
-    }
-#endif
+                    : data_( boost::simd::load<pack>(b,e).storage() )
+    {}
 
 #if 0
     /*!

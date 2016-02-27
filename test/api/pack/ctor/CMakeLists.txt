@@ -7,7 +7,7 @@
 ##===================================================================================================
 
 set ( SOURCES
-      list.cpp
+#      list.cpp
       default.cpp
       pointer.cpp
       iterator.cpp
