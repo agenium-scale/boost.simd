@@ -19,6 +19,8 @@
 
 namespace boost { namespace simd
 {
+  template<typename T> struct logical;
+
   /*!
     @ingroup  group-api
     @brief    Type/Size to ABI mapping
@@ -29,7 +31,8 @@ namespace boost { namespace simd
     @tparam Type Type to store
     @tparam N    Number of elements to store
   **/
-  template<typename Type, std::size_t N> struct abi_of : ext::abi_of<Type,N> {};
+  template<typename Type, std::size_t N> struct abi_of                  : ext::abi_of<Type,N> {};
+  template<typename Type, std::size_t N> struct abi_of<logical<Type>,N> : ext::abi_of<Type,N> {};
 
   /// @brief Eager short-cut to abi_of
   template<typename Type, std::size_t N> using abi_of_t = typename abi_of<Type,N>::type;
