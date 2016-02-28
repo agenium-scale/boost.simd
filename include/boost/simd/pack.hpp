@@ -115,7 +115,6 @@ namespace boost { namespace simd
                     : data_( boost::simd::load<pack>(b,e).storage() )
     {}
 
-#if 0
     /*!
       @brief Construct a pack from a set of scalar values
 
@@ -132,11 +131,12 @@ namespace boost { namespace simd
     BOOST_FORCEINLINE pack(T0 const& v0, T1 const& v1, Ts const&... vn)
     {
       static_assert( 2 + sizeof...(vn) == static_size
-                   , "number of parameters must be the exact same size of N"
+                   , "pack<T,N>(T v...) must take exactly N arguments"
                    );
-      traits::fill(data_, static_cast<T>(v0), static_cast<T>(v1), static_cast<T>(vn)...);
+
+      std::initializer_list<T> lst{static_cast<T>(v0), static_cast<T>(v1), static_cast<T>(vn)...};
+      data_ = boost::simd::load<pack>(lst.begin()).storage();
     }
-#endif
 
     /*!
       @brief Construct a pack by replicating a scalar value
@@ -299,17 +299,12 @@ namespace boost { namespace simd
   template <typename T, std::size_t N>
   std::ostream& operator<<(std::ostream& os, pack<T, N> const& p)
   {
-    os << '(';
-    auto it = p.cbegin();
-    os << T(*it);
-    // This is safe to increment without checking because pack has always at least 1 element
-    ++it;
-    for (; it != p.cend(); ++it) {
-      os << ", ";
-      os << T(*it);
-    }
-    os << ')';
-    return os;
+    os << '(' << p[0];
+
+    for (std::size_t i=1; i != N; ++i)
+      os << ", " << p[i];
+
+    return os << ')';
   }
 } }
 
