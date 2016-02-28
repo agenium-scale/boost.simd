@@ -17,7 +17,6 @@
 #include <boost/config.hpp>
 #include <boost/simd/arch/x86/sse1/pack_traits.hpp>
 #include <boost/simd/detail/pack_traits.hpp>
-#include <boost/simd/detail/pack_proxy.hpp>
 #include <type_traits>
 
 namespace boost { namespace simd

@@ -18,10 +18,10 @@
 #include <boost/simd/detail/pack_traits.hpp>
 #include <boost/simd/detail/storage_of.hpp>
 #include <boost/simd/sdk/is_power_of_2.hpp>
-#include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/simd/function/aligned_load.hpp>
-#include <boost/simd/function/load.hpp>
+#include <boost/simd/function/extract.hpp>
 #include <boost/simd/function/splat.hpp>
+#include <boost/simd/function/load.hpp>
 #include <boost/align/is_aligned.hpp>
 #include <boost/config.hpp>
 #include <iterator>
@@ -173,7 +173,6 @@ namespace boost { namespace simd
     /// @overload
     BOOST_FORCEINLINE storage_type const& storage() const BOOST_NOEXCEPT { return data_; }
 
-#if 1
     /*!
       @brief Random-access to the pack elements
 
@@ -185,15 +184,14 @@ namespace boost { namespace simd
     **/
     BOOST_FORCEINLINE reference operator[](std::size_t i)
     {
-      return traits::at(data_, i);
+      return extract(*this, i);
     }
 
     /// @overload
     BOOST_FORCEINLINE const_reference operator[](std::size_t i) const
     {
-      return traits::at(data_, i);
+      return extract(*this, i);
     }
-#endif
 
     public:
 

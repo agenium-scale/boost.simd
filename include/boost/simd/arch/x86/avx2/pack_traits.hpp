@@ -16,7 +16,6 @@
 
 #include <boost/simd/arch/x86/avx/pack_traits.hpp>
 #include <boost/simd/detail/pack_traits.hpp>
-#include <boost/simd/detail/pack_proxy.hpp>
 #include <boost/config.hpp>
 #include <type_traits>
 

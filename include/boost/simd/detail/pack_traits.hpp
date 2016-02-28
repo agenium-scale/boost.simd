@@ -16,14 +16,14 @@
 
 #include <boost/simd/arch/common/tags.hpp>
 #include <boost/simd/detail/pack_iterator.hpp>
-#include <boost/simd/detail/pack_proxy.hpp>
-#include <boost/preprocessor/repetition/enum.hpp>
+#include <iterator>
 #include <cstddef>
 #include <cstring>
-#include <iterator>
 
 namespace boost { namespace simd { namespace detail
 {
+  template<typename T> struct logical;
+
   template < typename T
            , std::size_t N
            , typename Storage
@@ -34,7 +34,23 @@ namespace boost { namespace simd { namespace detail
   template <typename T, std::size_t N, typename Storage>
   class pack_traits<const T, N, const Storage> : public pack_traits<T, N, Storage> {};
 
-  template<typename T> using rconst = typename std::remove_const<T>::type;
+  // WIP logical
+  template <typename T, std::size_t N, typename Storage>
+  class pack_traits<boost::simd::logical<T>, N, Storage> {
+
+    public:
+    using storage_type              = Storage;
+
+    using value_type                = boost::simd::logical<T>;
+    using size_type                 = std::size_t;
+
+    enum { static_size = N };
+
+    using reference               = value_type&;
+    using const_reference         = value_type const&;
+
+    using storage_kind = ::boost::simd::native_storage;
+  };
 } } }
 
 #define BOOST_SIMD_DEFINE_PACK_TRAITS_TPL(TPL, TYPE, N, VTYPE)                                     \
@@ -49,40 +65,10 @@ namespace boost { namespace simd { namespace detail
                                                                                                    \
     enum { static_size = N };                                                                      \
                                                                                                    \
-    using reference               = pack_proxy<value_type, static_size, storage_type>;             \
-    using const_reference         = pack_proxy<value_type const, static_size, storage_type const>; \
+    using reference               = value_type&;             \
+    using const_reference         = value_type const&; \
                                                                                                    \
     using storage_kind = ::boost::simd::native_storage;                                            \
-                                                                                                   \
-    BOOST_FORCEINLINE static value_type get(storage_type const& data, std::size_t index)           \
-    BOOST_NOEXCEPT                                                                                 \
-    {                                                                                              \
-      rconst<value_type> temp[N];                                                                  \
-      memcpy(&temp[0], (void*)(&data), sizeof(data));                                              \
-      return temp[index];                                                                          \
-    }                                                                                              \
-                                                                                                   \
-    BOOST_FORCEINLINE static                                                                       \
-    void set(storage_type& data, std::size_t index, value_type const& other) BOOST_NOEXCEPT        \
-    {                                                                                              \
-      value_type temp[N];                                                                          \
-      /* read first */                                                                             \
-      memcpy(&temp[0], (void*)(&data), sizeof(data));                                              \
-      /* modify the element */                                                                     \
-      temp[index] = other;                                                                         \
-      /* now write back the result */                                                              \
-      memcpy((void*)(&data), (void*)&temp[0], sizeof(data));                                       \
-    }                                                                                              \
-                                                                                                   \
-    static BOOST_FORCEINLINE reference at(storage_type& v, std::size_t i) BOOST_NOEXCEPT           \
-    {                                                                                              \
-      return {&v, i};                                                                              \
-    }                                                                                              \
-                                                                                                   \
-    static BOOST_FORCEINLINE const_reference at(storage_type const& v, std::size_t i) BOOST_NOEXCEPT\
-    {                                                                                              \
-      return {&v, i};                                                                              \
-    }                                                                                              \
   };                                                                                               \
   /**/
 

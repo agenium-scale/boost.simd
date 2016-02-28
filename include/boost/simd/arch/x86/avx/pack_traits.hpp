@@ -18,7 +18,6 @@
 #include <boost/simd/arch/x86/sse2/pack_traits.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/pack_traits.hpp>
-#include <boost/simd/detail/pack_proxy.hpp>
 
 namespace boost { namespace simd
 {

@@ -17,7 +17,6 @@
 #include <boost/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/pack_traits.hpp>
-#include <boost/simd/detail/pack_proxy.hpp>
 #include <boost/simd/arch/common/simd/abi_of.hpp>
 
 namespace boost { namespace simd
