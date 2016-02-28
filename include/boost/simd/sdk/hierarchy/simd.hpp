@@ -15,8 +15,7 @@
 #define BOOST_SIMD_SDK_HIERARCHY_SIMD_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
-//*#include <boost/simd/sdk/abi_of.hpp>
-//#include <boost/simd/sdk/native_cardinal.hpp>
+#include <boost/simd/forward.hpp>
 #include <boost/dispatch/hierarchy/generic.hpp>
 #include <boost/dispatch/hierarchy/unspecified.hpp>
 #include <boost/dispatch/meta/value_of.hpp>
