@@ -21,14 +21,7 @@
 namespace boost { namespace simd
 {
   template<typename Type, detail::bits_t<double> Double, detail::bits_t<float> Single>
-  BOOST_FORCEINLINE auto Real()
-  BOOST_NOEXCEPT_DECLTYPE ( detail::constant
-                                ( typename detail::constantify< boost::dispatch::scalar_of_t<Type>
-                                                              , Double,Single
-                                                              >::type{}
-                                , boost::simd::as_<Type>{}
-                                )
-                          )
+  BOOST_FORCEINLINE Type Real()
   {
     return detail::constant ( typename detail::constantify< boost::dispatch::scalar_of_t<Type>
                                                           , Double,Single
