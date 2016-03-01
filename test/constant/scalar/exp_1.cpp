@@ -32,7 +32,8 @@ STF_CASE_TPL( "Check exp_1 behavior for floating types"
   using boost::simd::as;
   using boost::simd::functional::exp_1;
   using boost::simd::Exp_1;
-  T e = 2.71828182845904523536028747135;
+  T e = T(2.71828182845904523536028747135);
+
   STF_TYPE_IS(decltype(Exp_1<T>()), T);
   STF_IEEE_EQUAL(Exp_1<T>(), e);
   STF_IEEE_EQUAL(exp_1( as(T{}) ), e);
