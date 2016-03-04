@@ -16,7 +16,7 @@ if (NOT DEFINED STF_GIT_TAG)
 endif()
 
 if (NOT DEFINED STF_DESTINATION)
-  NS_set(STF_DESTINATION ${NS_CMAKE_EXTERNAL_PROJECTS_DESTINATION})
+  set(STF_DESTINATION ${NS_CMAKE_EXTERNAL_PROJECTS_DESTINATION})
 endif()
 
 ## -------------------------------------------------------------------------------------------------

@@ -179,9 +179,9 @@ function (NS_project_global_destination dir)
 endfunction()
 
 ## Include project configuration
-function (NS_project_include project)
+macro (NS_project_include project)
   NS_include(projects/${project})
-endfunction()
+endmacro()
 
 macro (_NS_project_target_setup name)
   set(GIT ${GIT_EXECUTABLE} -C ${PROJECT_SOURCE_DIR})
@@ -332,3 +332,27 @@ add_custom_target(update     DEPENDS update.check)
 add_custom_target(git.update)
 NS_project_global_workspace(${PROJECT_BINARY_DIR}/_deps)
 NS_project_global_destination(${PROJECT_BINARY_DIR}/_install)
+
+## Add target shortcuts for ns.cmake now
+## -------------------------------------------------------------------------------------------------
+
+# It is better to do that here instead of `ns.cmake.install.cmake` cause we do have
+# all the helpers we need here!
+
+add_custom_target(update.ns.cmake
+  DEPENDS ${NS_CMAKE_INSTALL_TARGET}
+  COMMENT "Updating ns.cmake"
+)
+
+add_dependencies(update update.ns.cmake)
+
+NS_project_add_git_update_target(ns.cmake
+  ${NS_CMAKE_INSTALL_DIR}/ns.cmake
+)
+
+set(NS_CMAKE_INSTALL_TARGET NS_CMAKE-install)
+
+set(NS_CMAKE_EXTERNAL_PROJECTS
+  ${NS_CMAKE_EXTERNAL_PROJECTS}
+  NS_CMAKE
+)
