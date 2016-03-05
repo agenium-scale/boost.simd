@@ -18,7 +18,7 @@ STF_CASE_TPL( "Check bitincrement behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::bitincrement;
+  using boost::simd::detail::bitincrement;
   using boost::simd::Bitincrement;
 
   STF_TYPE_IS(decltype(Bitincrement<T>()), T);
@@ -31,7 +31,7 @@ STF_CASE_TPL( "Check bitincrement behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::bitincrement;
+  using boost::simd::detail::bitincrement;
   using boost::simd::Bitincrement;
 
   STF_TYPE_IS(decltype(Bitincrement<T>()), T);

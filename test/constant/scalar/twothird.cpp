@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check twothird behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::twothird;
+  using boost::simd::detail::twothird;
   using boost::simd::Twothird;
 
   STF_TYPE_IS(decltype(Twothird<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check twothird behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::twothird;
+  using boost::simd::detail::twothird;
   using boost::simd::Twothird;
 
   STF_TYPE_IS(decltype(Twothird<T>()), T);

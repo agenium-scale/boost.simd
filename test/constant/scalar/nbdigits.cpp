@@ -19,7 +19,7 @@ STF_CASE_TPL( "Check inf behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::nbdigits;
+  using boost::simd::detail::nbdigits;
   using boost::simd::Nbdigits;
 
   STF_TYPE_IS(decltype(Nbdigits<T>()), T);
@@ -31,7 +31,7 @@ STF_CASE_TPL( "Check inf behavior for float type"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::nbdigits;
+  using boost::simd::detail::nbdigits;
   using boost::simd::Nbdigits;
 
   STF_TYPE_IS(decltype(Nbdigits<T>()), boost::dispatch::as_integer_t<T>);
@@ -42,7 +42,7 @@ STF_CASE_TPL( "Check inf behavior for double type"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::nbdigits;
+  using boost::simd::detail::nbdigits;
   using boost::simd::Nbdigits;
 
   STF_TYPE_IS(decltype(Nbdigits<T>()), boost::dispatch::as_integer_t<T>);

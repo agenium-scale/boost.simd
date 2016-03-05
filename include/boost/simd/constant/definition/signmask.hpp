@@ -68,15 +68,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,signmask_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::signmask_,signmask);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Signmask() BOOST_NOEXCEPT
-  -> decltype(functional::signmask( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Signmask()
+  BOOST_NOEXCEPT_DECLTYPE(detail::signmask( boost::dispatch::as_<T>{}))
   {
-    return functional::signmask( boost::dispatch::as_<T>{} );
+    return detail::signmask( boost::dispatch::as_<T>{} );
   }
 } }
 

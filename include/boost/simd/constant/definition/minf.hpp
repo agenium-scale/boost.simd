@@ -47,15 +47,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,minf_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::minf_,minf);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Minf() BOOST_NOEXCEPT
-  -> decltype(functional::minf(boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Minf()
+  -> decltype(detail::minf(boost::dispatch::as_<T>{}))
   {
-    return functional::minf( boost::dispatch::as_<T>{} );
+    return detail::minf( boost::dispatch::as_<T>{} );
   }
 } }
 

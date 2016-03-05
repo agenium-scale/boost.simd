@@ -18,8 +18,6 @@
 #include <boost/config.hpp>
 #include <type_traits>
 
-namespace boost { namespace simd { namespace tag { struct constant_; }}}
-
 #ifdef BOOST_MSVC
 #pragma warning(push)
 #pragma warning(disable: 4310) // Truncation
@@ -41,36 +39,6 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE typename value_t::value_type operator()(T const&) const BOOST_NOEXCEPT
     {
       return value_t{};
-    }
-  };
-
-  BOOST_DISPATCH_OVERLOAD_FALLBACK( (typename V)
-                                  , boost::dispatch::constant_value_<tag::constant_>
-                                  , boost::dispatch::cpu_
-                                  , bd::scalar_<bd::unspecified_<V>>
-                                  )
-  {
-    template<typename T, T N>
-    static BOOST_FORCEINLINE T impl(std::integral_constant<T,N> const&) BOOST_NOEXCEPT
-    {
-      return std::integral_constant<T,N>{};
-    }
-
-    template<typename R, typename T, T N>
-    static BOOST_FORCEINLINE R impl(brigand::real_<R,T,N> const& ) BOOST_NOEXCEPT
-    {
-      return static_cast<R>(brigand::real_<R,T,N>{});
-    }
-
-    template<typename T, std::intmax_t N, std::intmax_t D>
-    static BOOST_FORCEINLINE T impl(detail::ratio<T,N,D> const&) BOOST_NOEXCEPT
-    {
-      return T(double(N)/double(D));
-    }
-
-    BOOST_FORCEINLINE auto operator()(V const& v) const BOOST_NOEXCEPT -> decltype(impl(v))
-    {
-      return impl( v );
     }
   };
 } } }

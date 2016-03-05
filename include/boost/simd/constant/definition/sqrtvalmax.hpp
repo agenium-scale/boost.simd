@@ -64,15 +64,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,sqrtvalmax_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::sqrtvalmax_,sqrtvalmax);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Sqrtvalmax() BOOST_NOEXCEPT
-  -> decltype(functional::sqrtvalmax( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Sqrtvalmax()
+  BOOST_NOEXCEPT_DECLTYPE(detail::sqrtvalmax( boost::dispatch::as_<T>{}))
   {
-    return functional::sqrtvalmax( boost::dispatch::as_<T>{} );
+    return detail::sqrtvalmax( boost::dispatch::as_<T>{} );
   }
 } }
 

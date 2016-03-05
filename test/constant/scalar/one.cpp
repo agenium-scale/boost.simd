@@ -19,7 +19,7 @@ STF_CASE_TPL( "Check one behavior"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::one;
+  using boost::simd::detail::one;
   using boost::simd::One;
 
   STF_IEEE_EQUAL(One<T>(), T(1));

@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check mten behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::mten;
+  using boost::simd::detail::mten;
   using boost::simd::Mten;
 
   STF_TYPE_IS(decltype(Mten<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check mten behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::mten;
+  using boost::simd::detail::mten;
   using boost::simd::Mten;
 
   STF_TYPE_IS(decltype(Mten<T>()), T);

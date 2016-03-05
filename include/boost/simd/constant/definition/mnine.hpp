@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,mnine_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::mnine_,mnine);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Mnine() BOOST_NOEXCEPT
-  -> decltype(functional::mnine( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Mnine()
+  BOOST_NOEXCEPT_DECLTYPE(detail::mnine( boost::dispatch::as_<T>{}))
   {
-    return functional::mnine( boost::dispatch::as_<T>{} );
+    return detail::mnine( boost::dispatch::as_<T>{} );
   }
 } }
 

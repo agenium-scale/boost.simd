@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,quarter_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::quarter_,quarter);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Quarter() BOOST_NOEXCEPT
-  -> decltype(functional::quarter( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Quarter()
+  BOOST_NOEXCEPT_DECLTYPE(detail::quarter( boost::dispatch::as_<T>{}))
   {
-    return functional::quarter( boost::dispatch::as_<T>{} );
+    return detail::quarter( boost::dispatch::as_<T>{} );
   }
 } }
 

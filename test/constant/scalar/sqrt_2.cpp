@@ -18,7 +18,7 @@ STF_CASE_TPL( "Check sqrt_2 behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::sqrt_2;
+  using boost::simd::detail::sqrt_2;
   using boost::simd::Sqrt_2;
 
   STF_TYPE_IS(decltype(Sqrt_2<T>()), T);
@@ -31,7 +31,7 @@ STF_CASE_TPL( "Check sqrt_2 behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::sqrt_2;
+  using boost::simd::detail::sqrt_2;
   using boost::simd::Sqrt_2;
   using boost::simd::Two;
 

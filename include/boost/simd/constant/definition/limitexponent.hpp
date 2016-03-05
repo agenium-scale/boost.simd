@@ -46,15 +46,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,limitexponent_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::limitexponent_,limitexponent);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Limitexponent() BOOST_NOEXCEPT
-  -> decltype(functional::limitexponent( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Limitexponent()
+  BOOST_NOEXCEPT_DECLTYPE(detail::limitexponent( boost::dispatch::as_<T>{}))
   {
-    return functional::limitexponent( boost::dispatch::as_<T>{} );
+    return detail::limitexponent( boost::dispatch::as_<T>{} );
   }
 } }
 

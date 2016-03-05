@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check msix behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::msix;
+  using boost::simd::detail::msix;
   using boost::simd::Msix;
 
   STF_TYPE_IS(decltype(Msix<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check msix behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::msix;
+  using boost::simd::detail::msix;
   using boost::simd::Msix;
 
   STF_TYPE_IS(decltype(Msix<T>()), T);

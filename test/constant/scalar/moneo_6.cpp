@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check moneo_6 behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::moneo_6;
+  using boost::simd::detail::moneo_6;
   using boost::simd::Moneo_6;
 
   STF_TYPE_IS(decltype(Moneo_6<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check moneo_6 behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::moneo_6;
+  using boost::simd::detail::moneo_6;
   using boost::simd::Moneo_6;
 
   STF_TYPE_IS(decltype(Moneo_6<T>()), T);

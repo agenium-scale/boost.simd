@@ -18,7 +18,7 @@ STF_CASE_TPL( "Check twotonmb behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::twotonmb;
+  using boost::simd::detail::twotonmb;
   using boost::simd::Twotonmb;
 
   STF_TYPE_IS(decltype(Twotonmb<T>()), T);
@@ -31,7 +31,7 @@ STF_CASE_TPL( "Check twotonmb behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::twotonmb;
+  using boost::simd::detail::twotonmb;
   using boost::simd::Twotonmb;
   using boost::simd::Nbmantissabits;
 

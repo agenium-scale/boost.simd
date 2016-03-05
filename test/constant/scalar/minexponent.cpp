@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check minexponent behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::minexponent;
+  using boost::simd::detail::minexponent;
   using boost::simd::Minexponent;
 
   STF_TYPE_IS(decltype(Minexponent<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check minexponent behavior for double"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::minexponent;
+  using boost::simd::detail::minexponent;
   using boost::simd::Minexponent;
 
   STF_TYPE_IS(decltype(Minexponent<T>()), int64_t);
@@ -43,7 +43,7 @@ STF_CASE_TPL( "Check minexponent behavior for float"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::minexponent;
+  using boost::simd::detail::minexponent;
   using boost::simd::Minexponent;
 
   STF_TYPE_IS(decltype(Minexponent<T>()), int32_t);

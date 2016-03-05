@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check fact_5 behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::fact_5;
+  using boost::simd::detail::fact_5;
   using boost::simd::Fact_5;
 
   STF_TYPE_IS(decltype(Fact_5<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check fact_5 behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::fact_5;
+  using boost::simd::detail::fact_5;
   using boost::simd::Fact_5;
 
   STF_TYPE_IS(decltype(Fact_5<T>()), T);

@@ -18,7 +18,7 @@ STF_CASE_TPL( "Check sqrtsmallestposval behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::sqrtsmallestposval;
+  using boost::simd::detail::sqrtsmallestposval;
   using boost::simd::Sqrtsmallestposval;
 
   STF_TYPE_IS(decltype(Sqrtsmallestposval<T>()), T);
@@ -31,7 +31,7 @@ STF_CASE_TPL( "Check sqrtsmallestposval behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::sqrtsmallestposval;
+  using boost::simd::detail::sqrtsmallestposval;
   using boost::simd::Sqrtsmallestposval;
   using boost::simd::Smallestposval;
 

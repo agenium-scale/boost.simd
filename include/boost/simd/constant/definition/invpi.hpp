@@ -11,6 +11,7 @@
 #ifndef BOOST_SIMD_CONSTANT_DEFINITION_INVPI_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_DEFINITION_INVPI_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/detail/constant_traits.hpp>
@@ -34,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,invpi_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::invpi_,invpi);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Invpi() BOOST_NOEXCEPT
-  -> decltype(functional::invpi( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Invpi()
+  BOOST_NOEXCEPT_DECLTYPE(detail::invpi( boost::dispatch::as_<T>{}))
   {
-    return functional::invpi( boost::dispatch::as_<T>{} );
+    return detail::invpi( boost::dispatch::as_<T>{} );
   }
 } }
 

@@ -18,7 +18,7 @@ STF_CASE_TPL( "Check mzero behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::mzero;
+  using boost::simd::detail::mzero;
   using boost::simd::Mzero;
 
   STF_TYPE_IS(decltype(Mzero<T>()), T);
@@ -31,7 +31,7 @@ STF_CASE_TPL( "Check mzero behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::mzero;
+  using boost::simd::detail::mzero;
   using boost::simd::Mzero;
   using boost::simd::Signmask;
 

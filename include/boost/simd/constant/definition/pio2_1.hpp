@@ -11,6 +11,7 @@
 #ifndef BOOST_SIMD_CONSTANT_DEFINITION_PIO2_1_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_DEFINITION_PIO2_1_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/detail/constant_traits.hpp>
@@ -34,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,pio2_1_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::pio2_1_,pio2_1);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Pio2_1() BOOST_NOEXCEPT
-  -> decltype(functional::pio2_1( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Pio2_1()
+  BOOST_NOEXCEPT_DECLTYPE(detail::pio2_1( boost::dispatch::as_<T>{}))
   {
-    return functional::pio2_1( boost::dispatch::as_<T>{} );
+    return detail::pio2_1( boost::dispatch::as_<T>{} );
   }
 } }
 

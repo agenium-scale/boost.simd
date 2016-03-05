@@ -19,7 +19,7 @@ STF_CASE_TPL( "Check allbits behavior"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::allbits;
+  using boost::simd::detail::allbits;
   using boost::simd::Allbits;
 
   STF_TYPE_IS(decltype(Allbits<T>()), T);
@@ -32,7 +32,7 @@ STF_CASE_TPL( "Check allbits behavior"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::allbits;
+  using boost::simd::detail::allbits;
   using boost::simd::Allbits;
 
   STF_TYPE_IS(decltype(Allbits<T>()), T);

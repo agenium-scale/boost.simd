@@ -18,7 +18,7 @@ STF_CASE_TPL( "Check threeeps behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::threeeps;
+  using boost::simd::detail::threeeps;
   using boost::simd::Threeeps;
 
   STF_TYPE_IS(decltype(Threeeps<T>()), T);
@@ -31,7 +31,7 @@ STF_CASE_TPL( "Check threeeps behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::threeeps;
+  using boost::simd::detail::threeeps;
   using boost::simd::Threeeps;
   using boost::simd::Eps;
 

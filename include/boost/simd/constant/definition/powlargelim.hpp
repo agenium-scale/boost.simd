@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,powlargelim_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::powlargelim_,powlargelim);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Powlargelim() BOOST_NOEXCEPT
-  -> decltype(functional::powlargelim( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Powlargelim()
+  BOOST_NOEXCEPT_DECLTYPE(detail::powlargelim( boost::dispatch::as_<T>{}))
   {
-    return functional::powlargelim( boost::dispatch::as_<T>{} );
+    return detail::powlargelim( boost::dispatch::as_<T>{} );
   }
 } }
 

@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,maxlog10_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::maxlog10_,maxlog10);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Maxlog10() BOOST_NOEXCEPT
-  -> decltype(functional::maxlog10( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Maxlog10()
+  BOOST_NOEXCEPT_DECLTYPE(detail::maxlog10( boost::dispatch::as_<T>{}))
   {
-    return functional::maxlog10( boost::dispatch::as_<T>{} );
+    return detail::maxlog10( boost::dispatch::as_<T>{} );
   }
 } }
 

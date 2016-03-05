@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check c180 behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::c180;
+  using boost::simd::detail::c180;
   using boost::simd::C180;
 
   STF_TYPE_IS(decltype(C180<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check c180 behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::c180;
+  using boost::simd::detail::c180;
   using boost::simd::C180;
 
   STF_TYPE_IS(decltype(C180<T>()), T);

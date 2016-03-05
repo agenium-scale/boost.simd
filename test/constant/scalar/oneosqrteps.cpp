@@ -18,7 +18,7 @@ STF_CASE_TPL( "Check oneosqrteps behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::oneosqrteps;
+  using boost::simd::detail::oneosqrteps;
   using boost::simd::Oneosqrteps;
 
   STF_TYPE_IS(decltype(Oneosqrteps<T>()), T);
@@ -31,7 +31,7 @@ STF_CASE_TPL( "Check oneosqrteps behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::oneosqrteps;
+  using boost::simd::detail::oneosqrteps;
   using boost::simd::Oneosqrteps;
   using boost::simd::Sqrteps;
 

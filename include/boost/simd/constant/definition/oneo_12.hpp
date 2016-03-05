@@ -11,6 +11,7 @@
 #ifndef BOOST_SIMD_CONSTANT_DEFINITION_ONEO_12_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_DEFINITION_ONEO_12_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/detail/constant_traits.hpp>
@@ -34,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,oneo_12_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::oneo_12_,oneo_12);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Oneo_12() BOOST_NOEXCEPT
-  -> decltype(functional::oneo_12( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Oneo_12()
+  BOOST_NOEXCEPT_DECLTYPE(detail::oneo_12( boost::dispatch::as_<T>{}))
   {
-    return functional::oneo_12( boost::dispatch::as_<T>{} );
+    return detail::oneo_12( boost::dispatch::as_<T>{} );
   }
 } }
 

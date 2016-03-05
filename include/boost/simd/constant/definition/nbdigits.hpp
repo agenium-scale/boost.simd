@@ -46,15 +46,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,nbdigits_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::nbdigits_,nbdigits);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Nbdigits() BOOST_NOEXCEPT
-  -> decltype(functional::nbdigits( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Nbdigits()
+  BOOST_NOEXCEPT_DECLTYPE(detail::nbdigits( boost::dispatch::as_<T>{}))
   {
-    return functional::nbdigits( boost::dispatch::as_<T>{} );
+    return detail::nbdigits( boost::dispatch::as_<T>{} );
   }
 } }
 

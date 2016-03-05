@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check greatestnoninteger behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::greatestnoninteger;
+  using boost::simd::detail::greatestnoninteger;
   using boost::simd::Greatestnoninteger;
 
   STF_TYPE_IS(decltype(Greatestnoninteger<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check greatestnoninteger behavior for double type"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::greatestnoninteger;
+  using boost::simd::detail::greatestnoninteger;
   using boost::simd::Greatestnoninteger;
 
   STF_TYPE_IS(decltype(Greatestnoninteger<T>()), T);
@@ -42,7 +42,7 @@ STF_CASE_TPL( "Check greatestnoninteger behavior for float type"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::greatestnoninteger;
+  using boost::simd::detail::greatestnoninteger;
   using boost::simd::Greatestnoninteger;
 
   STF_TYPE_IS(decltype(Greatestnoninteger<T>()), T);

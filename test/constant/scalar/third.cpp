@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check third behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::third;
+  using boost::simd::detail::third;
   using boost::simd::Third;
 
   STF_TYPE_IS(decltype(Third<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check third behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::third;
+  using boost::simd::detail::third;
   using boost::simd::Third;
 
   STF_TYPE_IS(decltype(Third<T>()), T);

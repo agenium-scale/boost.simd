@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,twotom10_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::twotom10_,twotom10);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Twotom10() BOOST_NOEXCEPT
-  -> decltype(functional::twotom10( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Twotom10()
+  BOOST_NOEXCEPT_DECLTYPE(detail::twotom10( boost::dispatch::as_<T>{}))
   {
-    return functional::twotom10( boost::dispatch::as_<T>{} );
+    return detail::twotom10( boost::dispatch::as_<T>{} );
   }
 } }
 

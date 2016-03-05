@@ -19,7 +19,7 @@ STF_CASE_TPL( "Check maxinit behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::maxinit;
+  using boost::simd::detail::maxinit;
   using boost::simd::Maxinit;
   using boost::simd::Valmin;
 
@@ -35,7 +35,7 @@ STF_CASE_TPL( "Check maxinit behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::maxinit;
+  using boost::simd::detail::maxinit;
   using boost::simd::Maxinit;
   using boost::simd::Minf;
 

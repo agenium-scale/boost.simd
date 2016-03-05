@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,msix_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::msix_,msix);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Msix() BOOST_NOEXCEPT
-  -> decltype(functional::msix( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Msix()
+  BOOST_NOEXCEPT_DECLTYPE(detail::msix( boost::dispatch::as_<T>{}))
   {
-    return functional::msix( boost::dispatch::as_<T>{} );
+    return detail::msix( boost::dispatch::as_<T>{} );
   }
 } }
 

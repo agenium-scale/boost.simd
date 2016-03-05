@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,mhalf_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::mhalf_,mhalf);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Mhalf() BOOST_NOEXCEPT
-  -> decltype(functional::mhalf( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Mhalf()
+  BOOST_NOEXCEPT_DECLTYPE(detail::mhalf( boost::dispatch::as_<T>{}))
   {
-    return functional::mhalf( boost::dispatch::as_<T>{} );
+    return detail::mhalf( boost::dispatch::as_<T>{} );
   }
 } }
 

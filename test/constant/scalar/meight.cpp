@@ -18,7 +18,7 @@ STF_CASE_TPL( "Check meight behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::meight;
+  using boost::simd::detail::meight;
   using boost::simd::Meight;
 
   STF_TYPE_IS(decltype(Meight<T>()), T);

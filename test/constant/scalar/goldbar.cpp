@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check goldbar behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::goldbar;
+  using boost::simd::detail::goldbar;
   using boost::simd::Goldbar;
 
   STF_TYPE_IS(decltype(Goldbar<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check goldbar behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::goldbar;
+  using boost::simd::detail::goldbar;
   using boost::simd::Goldbar;
 
   STF_TYPE_IS(decltype(Goldbar<T>()), T);

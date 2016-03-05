@@ -26,7 +26,7 @@ namespace boost { namespace simd
     struct twothird_ : boost::dispatch::constant_value_<twothird_>
     {
       BOOST_DISPATCH_MAKE_CALLABLE(ext,twothird_,boost::dispatch::constant_value_<twothird_>);
-      BOOST_SIMD_REGISTER_CONSTANT(0, 0x3f2aaaabUL, 0x3fe5555555555555ULL);
+      BOOST_SIMD_REGISTER_CONSTANT(0, 0X3F2AAAABUL, 0X3FE5555555555555ULL);
     };
   }
 
@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,twothird_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::twothird_,twothird);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Twothird() BOOST_NOEXCEPT
-  -> decltype(functional::twothird( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Twothird()
+  BOOST_NOEXCEPT_DECLTYPE(detail::twothird( boost::dispatch::as_<T>{}))
   {
-    return functional::twothird( boost::dispatch::as_<T>{} );
+    return detail::twothird( boost::dispatch::as_<T>{} );
   }
 } }
 

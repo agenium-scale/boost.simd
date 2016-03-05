@@ -55,15 +55,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,maxexponent_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::maxexponent_,maxexponent);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Maxexponent() BOOST_NOEXCEPT
-  -> decltype(functional::maxexponent( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Maxexponent()
+  BOOST_NOEXCEPT_DECLTYPE(detail::maxexponent( boost::dispatch::as_<T>{}))
   {
-    return functional::maxexponent( boost::dispatch::as_<T>{} );
+    return detail::maxexponent( boost::dispatch::as_<T>{} );
   }
 } }
 

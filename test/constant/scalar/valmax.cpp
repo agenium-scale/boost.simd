@@ -19,7 +19,7 @@ STF_CASE_TPL( "Check valmax behavior"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::valmax;
+  using boost::simd::detail::valmax;
   using boost::simd::Valmax;
 
   STF_IEEE_EQUAL(Valmax<T>()      , std::numeric_limits<T>::max());

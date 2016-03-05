@@ -18,7 +18,7 @@ STF_CASE_TPL( "Check inf behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::inf;
+  using boost::simd::detail::inf;
   using boost::simd::Inf;
 
   STF_IEEE_EQUAL(Inf<T>(), std::numeric_limits<T>::max());
@@ -29,7 +29,7 @@ STF_CASE_TPL( "Check inf behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::inf;
+  using boost::simd::detail::inf;
   using boost::simd::Inf;
 
   STF_IEEE_EQUAL(Inf<T>(), std::numeric_limits<T>::infinity());

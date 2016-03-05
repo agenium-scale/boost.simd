@@ -40,7 +40,7 @@ namespace boost { namespace simd { namespace detail
     enum { static_size = N };
 
     template <typename... Ts>
-    BOOST_FORCEINLINE static void fill(storage_type& d, Ts const&... v) BOOST_NOEXCEPT
+    BOOST_FORCEINLINE static void fill(storage_type& d, Ts const&... v)
     {
       d = std::array<T, N>{{ static_cast<T>(v)... }};
     }
@@ -56,19 +56,19 @@ namespace boost { namespace simd { namespace detail
     }
 
     template <typename Iterator>
-    BOOST_FORCEINLINE static void load(storage_type& d, Iterator it) BOOST_NOEXCEPT
+    BOOST_FORCEINLINE static void load(storage_type& d, Iterator it)
     {
       std::copy(it, it+N, d.begin());
     }
 
     template <typename Iterator>
-    BOOST_FORCEINLINE static void load(storage_type& d, Iterator b, Iterator e) BOOST_NOEXCEPT
+    BOOST_FORCEINLINE static void load(storage_type& d, Iterator b, Iterator e)
     {
       std::copy(b, e, d.begin());
     }
 
     template <typename Value>
-    BOOST_FORCEINLINE static void splat(storage_type& d, Value v) BOOST_NOEXCEPT
+    BOOST_FORCEINLINE static void splat(storage_type& d, Value v)
     {
       d.fill(v);
     }
@@ -151,7 +151,7 @@ namespace boost { namespace simd { namespace detail
 
     public:
     template <typename... Ts>
-    BOOST_FORCEINLINE static void fill(storage_type& d, Ts const&... v) BOOST_NOEXCEPT
+    BOOST_FORCEINLINE static void fill(storage_type& d, Ts const&... v)
     {
       // We do need to statically unroll `pack_traits::fill` as `v` is variadic.
       // We decompose `v` in `cardinal` arguments (`NumberOfVectors` times).
@@ -196,7 +196,7 @@ namespace boost { namespace simd { namespace detail
     }
 
     template <typename Value>
-    BOOST_FORCEINLINE static void splat(storage_type& d, Value v) BOOST_NOEXCEPT
+    BOOST_FORCEINLINE static void splat(storage_type& d, Value v)
     {
       for (auto& a : d) {
         internal_pack_traits::splat(a, v);

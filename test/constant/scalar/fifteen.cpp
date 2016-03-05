@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check fifteen behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::fifteen;
+  using boost::simd::detail::fifteen;
   using boost::simd::Fifteen;
 
   STF_TYPE_IS(decltype(Fifteen<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check fifteen behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::fifteen;
+  using boost::simd::detail::fifteen;
   using boost::simd::Fifteen;
 
   STF_TYPE_IS(decltype(Fifteen<T>()), T);

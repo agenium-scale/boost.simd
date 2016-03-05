@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,powlowlim_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::powlowlim_,powlowlim);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Powlowlim() BOOST_NOEXCEPT
-  -> decltype(functional::powlowlim( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Powlowlim()
+  BOOST_NOEXCEPT_DECLTYPE(detail::powlowlim( boost::dispatch::as_<T>{}))
   {
-    return functional::powlowlim( boost::dispatch::as_<T>{} );
+    return detail::powlowlim( boost::dispatch::as_<T>{} );
   }
 } }
 

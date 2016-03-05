@@ -18,7 +18,7 @@ STF_CASE_TPL( "Check signmask behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::signmask;
+  using boost::simd::detail::signmask;
   using boost::simd::Signmask;
 
   STF_TYPE_IS(decltype(Signmask<T>()), T);
@@ -31,7 +31,7 @@ STF_CASE_TPL( "Check signmask behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::signmask;
+  using boost::simd::detail::signmask;
   using boost::simd::Signmask;
   using boost::simd::Mzero;
 

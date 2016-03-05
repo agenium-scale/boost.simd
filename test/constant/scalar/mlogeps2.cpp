@@ -20,7 +20,7 @@ STF_CASE_TPL( "Check mlogeps2 behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::mlogeps2;
+  using boost::simd::detail::mlogeps2;
   using boost::simd::Mlogeps2;
 
   STF_TYPE_IS(decltype(Mlogeps2<T>()), T);
@@ -33,7 +33,7 @@ STF_CASE_TPL( "Check mlogeps2 behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::mlogeps2;
+  using boost::simd::detail::mlogeps2;
   using boost::simd::Mlogeps2;
 
   STF_TYPE_IS(decltype(Mlogeps2<T>()), T);

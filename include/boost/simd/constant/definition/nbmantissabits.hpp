@@ -45,15 +45,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,nbmantissabits_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::nbmantissabits_,nbmantissabits);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Nbmantissabits() BOOST_NOEXCEPT
-  -> decltype(functional::nbmantissabits( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Nbmantissabits()
+  BOOST_NOEXCEPT_DECLTYPE(detail::nbmantissabits( boost::dispatch::as_<T>{}))
   {
-    return functional::nbmantissabits( boost::dispatch::as_<T>{} );
+    return detail::nbmantissabits( boost::dispatch::as_<T>{} );
   }
 } }
 

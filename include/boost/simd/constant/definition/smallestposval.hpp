@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,smallestposval_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::smallestposval_,smallestposval);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Smallestposval() BOOST_NOEXCEPT
-  -> decltype(functional::smallestposval( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Smallestposval()
+  BOOST_NOEXCEPT_DECLTYPE(detail::smallestposval( boost::dispatch::as_<T>{}))
   {
-    return functional::smallestposval( boost::dispatch::as_<T>{} );
+    return detail::smallestposval( boost::dispatch::as_<T>{} );
   }
 } }
 

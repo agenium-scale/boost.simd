@@ -18,7 +18,7 @@ STF_CASE_TPL( "Check mone behavior on signed types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::mone;
+  using boost::simd::detail::mone;
   using boost::simd::Mone;
 
   STF_IEEE_EQUAL(Mone<T>(), T(-1));
@@ -29,7 +29,7 @@ STF_CASE_TPL( "Check mone behavior on signed types"
 //             )
 // {
 //   using boost::simd::as;
-//   using boost::simd::functional::mone;
+//   using boost::simd::detail::mone;
 //   using boost::simd::Mone;
 
 //   STF_IEEE_EQUAL(Mone<T>(), T(-1));

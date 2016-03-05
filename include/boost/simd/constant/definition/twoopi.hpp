@@ -11,6 +11,7 @@
 #ifndef BOOST_SIMD_CONSTANT_DEFINITION_TWOOPI_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_DEFINITION_TWOOPI_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/detail/constant_traits.hpp>
@@ -34,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,twoopi_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::twoopi_,twoopi);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Twoopi() BOOST_NOEXCEPT
-  -> decltype(functional::twoopi( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Twoopi()
+  BOOST_NOEXCEPT_DECLTYPE(detail::twoopi( boost::dispatch::as_<T>{}))
   {
-    return functional::twoopi( boost::dispatch::as_<T>{} );
+    return detail::twoopi( boost::dispatch::as_<T>{} );
   }
 } }
 

@@ -18,7 +18,7 @@ STF_CASE_TPL( "Check minf behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::minf;
+  using boost::simd::detail::minf;
   using boost::simd::Minf;
 
   STF_IEEE_EQUAL(Minf<T>(), std::numeric_limits<T>::min());
@@ -29,7 +29,7 @@ STF_CASE_TPL( "Check minf behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::minf;
+  using boost::simd::detail::minf;
   using boost::simd::Minf;
 
   STF_IEEE_EQUAL(Minf<T>(), -std::numeric_limits<T>::infinity());

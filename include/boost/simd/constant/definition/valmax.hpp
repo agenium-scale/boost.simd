@@ -60,15 +60,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,valmax_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::valmax_,valmax);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Valmax() BOOST_NOEXCEPT
-  -> decltype(functional::valmax(boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Valmax()
+  -> decltype(detail::valmax(boost::dispatch::as_<T>{}))
   {
-    return functional::valmax( boost::dispatch::as_<T>{} );
+    return detail::valmax( boost::dispatch::as_<T>{} );
   }
 } }
 
