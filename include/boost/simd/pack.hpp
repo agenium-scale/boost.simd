@@ -73,7 +73,7 @@ namespace boost { namespace simd
 
       Constructs a pack without initializing any of its elements.
     **/
-    BOOST_FORCEINLINE pack() BOOST_NOEXCEPT {}
+    BOOST_FORCEINLINE pack() BOOST_NOEXCEPT : data_() {}
 
     /// @brief Copy constructor
     BOOST_FORCEINLINE pack(pack const& rhs) BOOST_NOEXCEPT : data_(rhs.data_) {}
