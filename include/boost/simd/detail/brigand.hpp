@@ -185,112 +185,169 @@ namespace detail
     template<class... Ts>
     using map = typename detail::make_map<Ts...>::type;
 }
-#include <type_traits>
 namespace brigand
 {
-  template <typename A>
-  struct next : std::integral_constant < typename A::value_type, A::value + 1 > {};
+  template <class... L> struct append_impl;
+  template <class... L> using append = typename append_impl<L...>::type;
+  template <> struct append_impl<>
+  {
+    using type = brigand::empty_sequence;
+  };
+  template<template<class...> class L, class... T>
+  struct append_impl<L<T...>>
+  {
+    using type = L<T...>;
+  };
+  template<template<class...> class L1, class... T1, template<class...> class L2, class... T2, class... Lr>
+  struct append_impl<L1<T1...>, L2<T2...>, Lr...>
+  {
+    using type = append<L1<T1..., T2...>, Lr...>;
+  };
 }
 namespace brigand
 {
 namespace detail
 {
-  template<class Start, unsigned N, template<class> class Next, class List, bool = (N > 8)>
-  struct make_sequence_impl;
-  template<class Start, template<class> class Next, template<class...> class List, class... E>
-  struct make_sequence_impl<Start, 0, Next, List<E...>, false>
+  template<
+    class T, template<class...> class List,
+    class L1, class L2, class L3, class L4, class L5, class L6,
+    class L7, class L8, class L9, class L10, class L11, class L12,
+    class L13, class L14, class L15, class L16, class L17, class L18,
+    class L19, class L20, class L21, class L22, class L23, class L24
+  >
+  struct filled_list_cat;
+  template<class T, class U>
+  struct type_adapt
   {
-    using type = List<E...>;
+    using type = U;
   };
-  template<class Start, template<class> class Next, template<class...> class List, class... E>
-  struct make_sequence_impl<Start, 1, Next, List<E...>, false>
+  template<
+    class T, template<class...> class List,
+    class... Ts1, class... Ts2, class... Ts3, class... Ts4, class... Ts5,
+    class... Ts6, class... Ts7, class... Ts8, class... Ts9, class... Ts10,
+    class... Ts11, class... Ts12, class... Ts13, class... Ts14, class... Ts15,
+    class... Ts16, class... Ts17, class... Ts18, class... Ts19, class... Ts20,
+    class... Ts21, class... Ts22, class... Ts23, class... Ts24
+  >
+  struct filled_list_cat<
+    T, List,
+    list<Ts1...>, list<Ts2...>, list<Ts3...>, list<Ts4...>, list<Ts5...>,
+    list<Ts6...>, list<Ts7...>, list<Ts8...>, list<Ts9...>, list<Ts10...>,
+    list<Ts11...>, list<Ts12...>, list<Ts13...>, list<Ts14...>, list<Ts15...>,
+    list<Ts16...>, list<Ts17...>, list<Ts18...>, list<Ts19...>, list<Ts20...>,
+    list<Ts21...>, list<Ts22...>, list<Ts23...>, list<Ts24...>
+  >
   {
-    using type = List<E..., Start>;
+    using type = List<
+      typename type_adapt<Ts1,T>::type..., typename type_adapt<Ts2,T>::type...,
+      typename type_adapt<Ts3,T>::type..., typename type_adapt<Ts4,T>::type...,
+      typename type_adapt<Ts5,T>::type..., typename type_adapt<Ts6,T>::type...,
+      typename type_adapt<Ts7,T>::type..., typename type_adapt<Ts8,T>::type...,
+      typename type_adapt<Ts9,T>::type..., typename type_adapt<Ts10,T>::type...,
+      typename type_adapt<Ts11,T>::type..., typename type_adapt<Ts12,T>::type...,
+      typename type_adapt<Ts13,T>::type..., typename type_adapt<Ts14,T>::type...,
+      typename type_adapt<Ts15,T>::type..., typename type_adapt<Ts16,T>::type...,
+      typename type_adapt<Ts17,T>::type..., typename type_adapt<Ts18,T>::type...,
+      typename type_adapt<Ts19,T>::type..., typename type_adapt<Ts20,T>::type...,
+      typename type_adapt<Ts21,T>::type..., typename type_adapt<Ts22,T>::type...,
+      typename type_adapt<Ts23,T>::type..., typename type_adapt<Ts24,T>::type...
+    >;
   };
-  template<class Start, template<class> class Next, template<class...> class List, class... E>
-  struct make_sequence_impl<Start, 2, Next, List<E...>, false>
+  template<
+    template<class...> class List,
+    class... Ts1, class... Ts2, class... Ts3, class... Ts4, class... Ts5,
+    class... Ts6, class... Ts7, class... Ts8, class... Ts9, class... Ts10,
+    class... Ts11, class... Ts12, class... Ts13, class... Ts14, class... Ts15,
+    class... Ts16, class... Ts17, class... Ts18, class... Ts19, class... Ts20,
+    class... Ts21, class... Ts22, class... Ts23, class... Ts24
+  >
+  struct filled_list_cat<
+    int, List,
+    list<Ts1...>, list<Ts2...>, list<Ts3...>, list<Ts4...>, list<Ts5...>,
+    list<Ts6...>, list<Ts7...>, list<Ts8...>, list<Ts9...>, list<Ts10...>,
+    list<Ts11...>, list<Ts12...>, list<Ts13...>, list<Ts14...>, list<Ts15...>,
+    list<Ts16...>, list<Ts17...>, list<Ts18...>, list<Ts19...>, list<Ts20...>,
+    list<Ts21...>, list<Ts22...>, list<Ts23...>, list<Ts24...>
+  >
   {
-    using type = List<E..., Start, Next<Start>>;
+    using type = List<
+      Ts1..., Ts2..., Ts3..., Ts4..., Ts5..., Ts6...,
+      Ts7..., Ts8..., Ts9..., Ts10..., Ts11..., Ts12...,
+      Ts13..., Ts14..., Ts15..., Ts16..., Ts17..., Ts18...,
+      Ts19..., Ts20..., Ts21..., Ts22..., Ts23..., Ts24...
+    >;
   };
-  template<class Start, template<class> class Next, template<class...> class List, class... E>
-  struct make_sequence_impl<Start, 3, Next, List<E...>, false>
+  template<unsigned N, class... E>
+  struct filled_list_p2
   {
-    using t1 = Next<Start>;
-    using type = List<E..., Start, t1, Next<t1>>;
+    using type = typename filled_list_p2<N/2, E..., E...>::type;
   };
-  template<class Start, template<class> class Next, template<class...> class List, class... E>
-  struct make_sequence_impl<Start, 4, Next, List<E...>, false>
+  template<>
+  struct filled_list_p2<0>
   {
-    using t1 = Next<Start>;
-    using t2 = Next<t1>;
-    using type = List<E..., Start, t1, t2, Next<t2>>;
+    using type = list<>;
   };
-  template<class Start, template<class> class Next, template<class...> class List, class... E>
-  struct make_sequence_impl<Start, 5, Next, List<E...>, false>
+  template<>
+  struct filled_list_p2<1>
   {
-    using t1 = Next<Start>;
-    using t2 = Next<t1>;
-    using t3 = Next<t2>;
-    using type = List<E..., Start, t1, t2, t3, Next<t3>>;
+    using type = list<int>;
   };
-  template<class Start, template<class> class Next, template<class...> class List, class... E>
-  struct make_sequence_impl<Start, 6, Next, List<E...>, false>
+  template<>
+  struct filled_list_p2<2>
   {
-    using t1 = Next<Start>;
-    using t2 = Next<t1>;
-    using t3 = Next<t2>;
-    using t4 = Next<t3>;
-    using type = List<E..., Start, t1, t2, t3, t4, Next<t4>>;
+    using type = list<int, int>;
   };
-  template<class Start, template<class> class Next, template<class...> class List, class... E>
-  struct make_sequence_impl<Start, 7, Next, List<E...>, false>
+  template<>
+  struct filled_list_p2<4>
   {
-    using t1 = Next<Start>;
-    using t2 = Next<t1>;
-    using t3 = Next<t2>;
-    using t4 = Next<t3>;
-    using t5 = Next<t4>;
-    using type = List<E..., Start, t1, t2, t3, t4, t5, Next<t5>>;
+    using type = list<int, int, int, int>;
   };
-  template<class Start, template<class> class Next, template<class...> class List, class... E>
-  struct make_sequence_impl<Start, 8, Next, List<E...>, false>
+  template<>
+  struct filled_list_p2<8>
   {
-    using t1 = Next<Start>;
-    using t2 = Next<t1>;
-    using t3 = Next<t2>;
-    using t4 = Next<t3>;
-    using t5 = Next<t4>;
-    using t6 = Next<t5>;
-    using type = List<E..., Start, t1, t2, t3, t4, t5, t6, Next<t6>>;
+    using type = list<int, int, int, int, int, int, int, int>;
   };
-  template<class Start, unsigned N, template<class> class Next, template<class...> class List, class... E>
-  struct make_sequence_impl<Start, N, Next, List<E...>, true>
+  template<unsigned N>
+  struct filled_list_p2<N>
   {
-    using t1 = Next<Start>;
-    using t2 = Next<t1>;
-    using t3 = Next<t2>;
-    using t4 = Next<t3>;
-    using t5 = Next<t4>;
-    using t6 = Next<t5>;
-    using t7 = Next<t6>;
-    using type = typename make_sequence_impl<Next<t7>, N-8, Next, List<E..., Start, t1, t2, t3, t4, t5, t6, t7>>::type;
+    using type = typename filled_list_p2<
+      N/2, int, int, int, int, int, int, int, int
+    >::type;
+  };
+  template<class... E>
+  struct filled_list_p2<8, E...>
+  {
+    using type = list<E..., E...>;
   };
 }
-  template<class Start, unsigned N, template<class> class Next = next, template<class...> class List = list>
-  using make_sequence = typename detail::make_sequence_impl<Start, N, Next, List<>>::type;
-}
-#include <type_traits>
-namespace brigand
-{
-  template <typename A>
-  struct prev : std::integral_constant < typename A::value_type, A::value - 1 > {};
-}
-namespace brigand
-{
-    template<class T, T Start, T Stop>
-    using range = make_sequence<std::integral_constant<T, Start>, Stop - Start>;
-    template<class T, T Start, T Stop>
-    using reverse_range = make_sequence<std::integral_constant<T, Start>, Start - Stop, prev>;
+  template<class T, unsigned N, template<class...> class List = list>
+  using filled_list = typename detail::filled_list_cat<
+    T, List,
+    typename detail::filled_list_p2<N & (1 << 0)>::type,
+    typename detail::filled_list_p2<N & (1 << 1)>::type,
+    typename detail::filled_list_p2<N & (1 << 2)>::type,
+    typename detail::filled_list_p2<N & (1 << 3)>::type,
+    typename detail::filled_list_p2<N & (1 << 4)>::type,
+    typename detail::filled_list_p2<N & (1 << 5)>::type,
+    typename detail::filled_list_p2<N & (1 << 6)>::type,
+    typename detail::filled_list_p2<N & (1 << 7)>::type,
+    typename detail::filled_list_p2<N & (1 << 8)>::type,
+    typename detail::filled_list_p2<N & (1 << 9)>::type,
+    typename detail::filled_list_p2<N & (1 << 10)>::type,
+    typename detail::filled_list_p2<N & (1 << 11)>::type,
+    typename detail::filled_list_p2<N & (1 << 12)>::type,
+    typename detail::filled_list_p2<N & (1 << 13)>::type,
+    typename detail::filled_list_p2<N & (1 << 14)>::type,
+    typename detail::filled_list_p2<N & (1 << 15)>::type,
+    typename detail::filled_list_p2<N & (1 << 16)>::type,
+    typename detail::filled_list_p2<N & (1 << 17)>::type,
+    typename detail::filled_list_p2<N & (1 << 18)>::type,
+    typename detail::filled_list_p2<N & (1 << 19)>::type,
+    typename detail::filled_list_p2<N & (1 << 20)>::type,
+    typename detail::filled_list_p2<N & (1 << 21)>::type,
+    typename detail::filled_list_p2<N & (1 << 22)>::type,
+    typename detail::filled_list_p2<N & (1 << 23)>::type
+  >::type;
 }
 namespace brigand
 {
@@ -307,7 +364,7 @@ namespace brigand
     template<std::size_t N, template<typename...> class L, typename... Ts >
     struct at_impl<N,L<Ts...>>
     {
-      using base = decltype(element_at<brigand::range<int,0,N>>()(brigand::type_<Ts>()...));
+      using base = decltype(element_at<brigand::filled_list<int,N>>()(brigand::type_<Ts>()...));
       using type = typename base::type;
     };
   }
@@ -368,7 +425,7 @@ namespace brigand
 }
 namespace brigand
 {
-  template<typename... T> struct has_placeholders;
+  template<typename... T> struct has_placeholders : std::false_type {};
   template<typename T> struct has_placeholders<T> : is_placeholder<T> {};
   template<template<class...>class T,typename... Ts>
   struct has_placeholders<T<Ts...>> : has_placeholders<Ts...> {};
@@ -563,10 +620,18 @@ namespace brigand
 }
 namespace brigand
 {
-  template <typename... T>
-  using list_wrapper = typename brigand::list<T...>;
-  template <typename L>
-  using as_list = wrap<L, list_wrapper>;
+namespace detail
+{
+    template <typename L, template <class...> class Sequence>
+    struct as_sequence_impl
+    {
+        using type = wrap<L, Sequence>;
+    };
+}
+template <typename L, template <class...> class Sequence>
+using as_sequence = typename detail::as_sequence_impl<L, Sequence>::type;
+template <typename L>
+using as_list = as_sequence<L, brigand::list>;
 }
 #include <utility>
 namespace brigand
@@ -687,35 +752,65 @@ namespace brigand
   template<class... T>
   using count = std::integral_constant<std::size_t, sizeof...(T)>;
 }
-namespace brigand { namespace detail
+namespace brigand
 {
-  template< typename Predicate, class Sequence>
-  struct find_if_impl
-  {
-    using type = Sequence;
-  };
-  template<typename Status, typename Predicate, class Sequence>
-  struct find_if_shortcut;
-  template< typename Predicate
-          , template<class...> class Sequence
-          , typename H, typename... T
-          >
-  struct  find_if_impl<Predicate,Sequence<H,T...>>
-        : find_if_shortcut<brigand::apply<Predicate,H>, Predicate, Sequence<H,T...> >
-  {};
-  template<typename Predicate, class Sequence>
-  struct find_if_shortcut<std::true_type,Predicate,Sequence>
-  {
-    using type = Sequence;
-  };
-  template< typename Predicate
-          , template<class...> class Sequence
-          , typename H, typename... T
-          >
-  struct  find_if_shortcut<std::false_type,Predicate, Sequence<H,T...>>
-        : find_if_impl<Predicate,Sequence<T...>>
-  {};
-} }
+namespace detail
+{
+    template <typename P, template <class...> class Sequence>
+    struct finder
+    {
+        template <typename T>
+        struct Pred : brigand::apply<P, T>
+        {
+        };
+        template <bool C, bool F, typename... Ts>
+        struct find
+        {
+            using type = Sequence<>;
+        };
+        template <bool F, typename T1, typename... Ts>
+        struct find<true, F, T1, Ts...>
+        {
+            using type = Sequence<T1, Ts...>;
+        };
+        template <typename T1, typename T2, typename... Ts>
+        struct find<false, true, T1, T2, Ts...> : find<Pred<T2>::value, true, T2, Ts...>
+        {
+        };
+        template <typename T1, typename T2, typename T3, typename T4, typename T5, typename T6,
+                  typename T7, typename T8, typename T9, typename... Ts>
+        struct find<false, false, T1, T2, T3, T4, T5, T6, T7, T8, T9, Ts...>
+            : find<
+                  Pred<T9>::value,
+                  true ,
+                  T9, Ts...>
+        {
+        };
+        template <typename T1, typename T2, typename T3, typename T4, typename T5, typename T6,
+                  typename T7, typename T8, typename T9, typename T10, typename T11, typename T12,
+                  typename T13, typename T14, typename T15, typename T16, typename... Ts>
+        struct find<false, false, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15,
+                    T16, Ts...>
+            : find<Pred<T9>::value,
+                   (Pred<T9>::value || Pred<T10>::value || Pred<T11>::value || Pred<T12>::value ||
+                    Pred<T13>::value || Pred<T14>::value || Pred<T15>::value || Pred<T16>::value),
+                   T9, T10, T11, T12, T13, T14, T15, T16, Ts...>
+        {
+        };
+    };
+    template <typename Predicate, class Sequence>
+    struct find_if_impl
+    {
+        using type = Sequence;
+    };
+    template <typename Predicate, template <class...> class Sequence, typename T1, typename... T>
+    struct find_if_impl<Predicate, Sequence<T1, T...>>
+        : finder<Predicate, Sequence>::template find<false, false, void, void, void, void, void,
+                                                     void, void, void, T1, T...>
+    {
+    };
+}
+}
 #include <type_traits>
 #include <cstdint>
 #include <cstddef>
@@ -745,25 +840,6 @@ namespace brigand
 namespace brigand
 {
   template<class L> using size = wrap<L, count>;
-}
-namespace brigand
-{
-  template <class... L> struct append_impl;
-  template <class... L> using append = typename append_impl<L...>::type;
-  template <> struct append_impl<>
-  {
-    using type = brigand::empty_sequence;
-  };
-  template<template<class...> class L, class... T>
-  struct append_impl<L<T...>>
-  {
-    using type = L<T...>;
-  };
-  template<template<class...> class L1, class... T1, template<class...> class L2, class... T2, class... Lr>
-  struct append_impl<L1<T1...>, L2<T2...>, Lr...>
-  {
-    using type = append<L1<T1..., T2...>, Lr...>;
-  };
 }
 namespace brigand
 {
@@ -840,22 +916,32 @@ namespace brigand
 {
 namespace lazy
 {
-    template<typename Sequence, typename Predicate = detail::non_null>
+    template <typename Sequence, typename Predicate = brigand::detail::non_null>
     using find = typename detail::find_if_impl<Predicate, Sequence>;
 }
-template<typename Sequence, typename Predicate = detail::non_null>
-using find = typename ::brigand::lazy::find<Sequence, Predicate>::type;
+template <typename Sequence, typename Predicate = brigand::detail::non_null>
+using find = typename lazy::find<Sequence, Predicate>::type;
 namespace lazy
 {
-    template<typename Sequence, typename Predicate = detail::non_null>
-    using reverse_find = ::brigand::lazy::reverse< ::brigand::find< brigand::reverse<Sequence>, Predicate> >;
+    template <typename Sequence, typename Predicate = detail::non_null>
+    using reverse_find =
+        ::brigand::lazy::reverse<::brigand::find<brigand::reverse<Sequence>, Predicate>>;
 }
 template <typename Sequence, typename Predicate = detail::non_null>
 using reverse_find = typename ::brigand::lazy::reverse_find<Sequence, Predicate>::type;
-template<typename Sequence, typename Predicate = detail::non_null>
-using not_found = typename std::is_same<find<Sequence, Predicate>, empty_sequence>::type;
-template<typename Sequence, typename Predicate = detail::non_null>
-using found = bool_<!std::is_same<find<Sequence, Predicate>, empty_sequence>::value>;
+namespace detail
+{
+    template <typename Sequence, typename Predicate>
+    using find_size = size<brigand::find<Sequence, Predicate>>;
+    template <typename Sequence, typename Predicate>
+    using empty_find = bool_<find_size<Sequence, Predicate>::value == 0>;
+    template <typename Sequence, typename Predicate>
+    using non_empty_find = bool_<find_size<Sequence, Predicate>::value != 0>;
+}
+template <typename Sequence, typename Predicate = detail::non_null>
+using not_found = typename detail::empty_find<Sequence, Predicate>;
+template <typename Sequence, typename Predicate = detail::non_null>
+using found = typename detail::non_empty_find<Sequence, Predicate>;
 }
 namespace brigand
 {
@@ -1022,6 +1108,268 @@ namespace brigand
   {
     return detail::for_each_impl( List{}, f );
   }
+}
+#include <type_traits>
+namespace brigand
+{
+  template <typename A>
+  struct next : std::integral_constant < typename A::value_type, A::value + 1 > {};
+}
+namespace brigand
+{
+  namespace detail
+  {
+    template<class T, class If = void>
+    struct quote_impl
+    {
+      using type = T;
+    };
+    template<class T>
+    struct quote_impl<T, typename has_type<typename T::type>::type>
+    {
+      using type = typename T::type;
+    };
+  }
+  template<template<class ...> class Metafunction> struct quote
+  {
+    template<typename... Us> struct apply : detail::quote_impl<Metafunction<Us...>> {};
+  };
+}
+namespace brigand
+{
+namespace detail
+{
+  template<class Start, unsigned N, class Next, class List>
+  struct make_sequence_impl;
+  template<class Start, class Next, template<class...> class List, class... E>
+  struct make_sequence_impl<Start, 0, Next, List<E...>>
+  {
+    using type = List<E...>;
+  };
+  template<class Start, class Next, template<class...> class List, class... E>
+  struct make_sequence_impl<Start, 1, Next, List<E...>>
+  {
+    using type = List<E..., Start>;
+  };
+  template<class Start, class Next, template<class...> class List, class... E>
+  struct make_sequence_impl<Start, 2, Next, List<E...>>
+  {
+    using t1 = brigand::apply<Next, Start>;
+    using type = List<E..., Start, t1>;
+  };
+  template<class Start, class Next, template<class...> class List, class... E>
+  struct make_sequence_impl<Start, 3, Next, List<E...>>
+  {
+    using t1 = brigand::apply<Next, Start>;
+    using t2 = brigand::apply<Next, t1>;
+    using type = List<E..., Start, t1, t2>;
+  };
+  template<class Start, class Next, template<class...> class List, class... E>
+  struct make_sequence_impl<Start, 4, Next, List<E...>>
+  {
+    using t1 = brigand::apply<Next, Start>;
+    using t2 = brigand::apply<Next, t1>;
+    using t3 = brigand::apply<Next, t2>;
+    using type = List<E..., Start, t1, t2, t3>;
+  };
+  template<class Start, class Next, template<class...> class List, class... E>
+  struct make_sequence_impl<Start, 5, Next, List<E...>>
+  {
+    using t1 = brigand::apply<Next, Start>;
+    using t2 = brigand::apply<Next, t1>;
+    using t3 = brigand::apply<Next, t2>;
+    using t4 = brigand::apply<Next, t3>;
+    using type = List<E..., Start, t1, t2, t3, t4>;
+  };
+  template<class Start, class Next, template<class...> class List, class... E>
+  struct make_sequence_impl<Start, 6, Next, List<E...>>
+  {
+    using t1 = brigand::apply<Next, Start>;
+    using t2 = brigand::apply<Next, t1>;
+    using t3 = brigand::apply<Next, t2>;
+    using t4 = brigand::apply<Next, t3>;
+    using t5 = brigand::apply<Next, t4>;
+    using type = List<E..., Start, t1, t2, t3, t4, t5>;
+  };
+  template<class Start, class Next, template<class...> class List, class... E>
+  struct make_sequence_impl<Start, 7, Next, List<E...>>
+  {
+    using t1 = brigand::apply<Next, Start>;
+    using t2 = brigand::apply<Next, t1>;
+    using t3 = brigand::apply<Next, t2>;
+    using t4 = brigand::apply<Next, t3>;
+    using t5 = brigand::apply<Next, t4>;
+    using t6 = brigand::apply<Next, t5>;
+    using type = List<E..., Start, t1, t2, t3, t4, t5, t6>;
+  };
+  template<class Start, class Next, template<class...> class List, class... E>
+  struct make_sequence_impl<Start, 8, Next, List<E...>>
+  {
+    using t1 = brigand::apply<Next, Start>;
+    using t2 = brigand::apply<Next, t1>;
+    using t3 = brigand::apply<Next, t2>;
+    using t4 = brigand::apply<Next, t3>;
+    using t5 = brigand::apply<Next, t4>;
+    using t6 = brigand::apply<Next, t5>;
+    using t7 = brigand::apply<Next, t6>;
+    using type = List<E..., Start, t1, t2, t3, t4, t5, t6, t7>;
+  };
+  template<class Start, class Next, template<class...> class List, class... E>
+  struct make_sequence_impl<Start, 9, Next, List<E...>>
+  {
+    using t1 = brigand::apply<Next, Start>;
+    using t2 = brigand::apply<Next, t1>;
+    using t3 = brigand::apply<Next, t2>;
+    using t4 = brigand::apply<Next, t3>;
+    using t5 = brigand::apply<Next, t4>;
+    using t6 = brigand::apply<Next, t5>;
+    using t7 = brigand::apply<Next, t6>;
+    using t8 = brigand::apply<Next, t7>;
+    using type = List<E..., Start, t1, t2, t3, t4, t5, t6, t7, t8>;
+  };
+  template<class Start, class Next, template<class...> class List, class... E>
+  struct make_sequence_impl<Start, 10, Next, List<E...>>
+  {
+    using t1 = brigand::apply<Next, Start>;
+    using t2 = brigand::apply<Next, t1>;
+    using t3 = brigand::apply<Next, t2>;
+    using t4 = brigand::apply<Next, t3>;
+    using t5 = brigand::apply<Next, t4>;
+    using t6 = brigand::apply<Next, t5>;
+    using t7 = brigand::apply<Next, t6>;
+    using t8 = brigand::apply<Next, t7>;
+    using t9 = brigand::apply<Next, t8>;
+    using type = List<E..., Start, t1, t2, t3, t4, t5, t6, t7, t8, t9>;
+  };
+  template<class Start, class Next, template<class...> class List, class... E>
+  struct make_sequence_impl<Start, 11, Next, List<E...>>
+  {
+    using t1 = brigand::apply<Next, Start>;
+    using t2 = brigand::apply<Next, t1>;
+    using t3 = brigand::apply<Next, t2>;
+    using t4 = brigand::apply<Next, t3>;
+    using t5 = brigand::apply<Next, t4>;
+    using t6 = brigand::apply<Next, t5>;
+    using t7 = brigand::apply<Next, t6>;
+    using t8 = brigand::apply<Next, t7>;
+    using t9 = brigand::apply<Next, t8>;
+    using t10 = brigand::apply<Next, t9>;
+    using type = List<E..., Start, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10>;
+  };
+  template<class Start, class Next, template<class...> class List, class... E>
+  struct make_sequence_impl<Start, 12, Next, List<E...>>
+  {
+    using t1 = brigand::apply<Next, Start>;
+    using t2 = brigand::apply<Next, t1>;
+    using t3 = brigand::apply<Next, t2>;
+    using t4 = brigand::apply<Next, t3>;
+    using t5 = brigand::apply<Next, t4>;
+    using t6 = brigand::apply<Next, t5>;
+    using t7 = brigand::apply<Next, t6>;
+    using t8 = brigand::apply<Next, t7>;
+    using t9 = brigand::apply<Next, t8>;
+    using t10 = brigand::apply<Next, t9>;
+    using t11 = brigand::apply<Next, t10>;
+    using type = List<E..., Start, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11>;
+  };
+  template<class Start, class Next, template<class...> class List, class... E>
+  struct make_sequence_impl<Start, 13, Next, List<E...>>
+  {
+    using t1 = brigand::apply<Next, Start>;
+    using t2 = brigand::apply<Next, t1>;
+    using t3 = brigand::apply<Next, t2>;
+    using t4 = brigand::apply<Next, t3>;
+    using t5 = brigand::apply<Next, t4>;
+    using t6 = brigand::apply<Next, t5>;
+    using t7 = brigand::apply<Next, t6>;
+    using t8 = brigand::apply<Next, t7>;
+    using t9 = brigand::apply<Next, t8>;
+    using t10 = brigand::apply<Next, t9>;
+    using t11 = brigand::apply<Next, t10>;
+    using t12 = brigand::apply<Next, t11>;
+    using type = List<E..., Start, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12>;
+  };
+  template<class Start, class Next, template<class...> class List, class... E>
+  struct make_sequence_impl<Start, 14, Next, List<E...>>
+  {
+    using t1 = brigand::apply<Next, Start>;
+    using t2 = brigand::apply<Next, t1>;
+    using t3 = brigand::apply<Next, t2>;
+    using t4 = brigand::apply<Next, t3>;
+    using t5 = brigand::apply<Next, t4>;
+    using t6 = brigand::apply<Next, t5>;
+    using t7 = brigand::apply<Next, t6>;
+    using t8 = brigand::apply<Next, t7>;
+    using t9 = brigand::apply<Next, t8>;
+    using t10 = brigand::apply<Next, t9>;
+    using t11 = brigand::apply<Next, t10>;
+    using t12 = brigand::apply<Next, t11>;
+    using t13 = brigand::apply<Next, t12>;
+    using type = List<E..., Start, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13>;
+  };
+  template<class Start, class Next, template<class...> class List, class... E>
+  struct make_sequence_impl<Start, 15, Next, List<E...>>
+  {
+    using t1 = brigand::apply<Next, Start>;
+    using t2 = brigand::apply<Next, t1>;
+    using t3 = brigand::apply<Next, t2>;
+    using t4 = brigand::apply<Next, t3>;
+    using t5 = brigand::apply<Next, t4>;
+    using t6 = brigand::apply<Next, t5>;
+    using t7 = brigand::apply<Next, t6>;
+    using t8 = brigand::apply<Next, t7>;
+    using t9 = brigand::apply<Next, t8>;
+    using t10 = brigand::apply<Next, t9>;
+    using t11 = brigand::apply<Next, t10>;
+    using t12 = brigand::apply<Next, t11>;
+    using t13 = brigand::apply<Next, t12>;
+    using t14 = brigand::apply<Next, t13>;
+    using type = List<E..., Start, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14>;
+  };
+  template<class Start, class Next, template<class...> class List, class... E>
+  struct make_sequence_impl<Start, 16, Next, List<E...>>
+  {
+    using t1 = brigand::apply<Next, Start>;
+    using t2 = brigand::apply<Next, t1>;
+    using t3 = brigand::apply<Next, t2>;
+    using t4 = brigand::apply<Next, t3>;
+    using t5 = brigand::apply<Next, t4>;
+    using t6 = brigand::apply<Next, t5>;
+    using t7 = brigand::apply<Next, t6>;
+    using t8 = brigand::apply<Next, t7>;
+    using t9 = brigand::apply<Next, t8>;
+    using t10 = brigand::apply<Next, t9>;
+    using t11 = brigand::apply<Next, t10>;
+    using t12 = brigand::apply<Next, t11>;
+    using t13 = brigand::apply<Next, t12>;
+    using t14 = brigand::apply<Next, t13>;
+    using t15 = brigand::apply<Next, t14>;
+    using type = List<E..., Start, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15>;
+  };
+  template<class Start, unsigned N, class Next, template<class...> class List, class... E>
+  struct make_sequence_impl<Start, N, Next, List<E...>>
+  {
+    using t1 = brigand::apply<Next, Start>;
+    using t2 = brigand::apply<Next, t1>;
+    using t3 = brigand::apply<Next, t2>;
+    using t4 = brigand::apply<Next, t3>;
+    using t5 = brigand::apply<Next, t4>;
+    using t6 = brigand::apply<Next, t5>;
+    using t7 = brigand::apply<Next, t6>;
+    using t8 = brigand::apply<Next, t7>;
+    using t9 = brigand::apply<Next, t8>;
+    using t10 = brigand::apply<Next, t9>;
+    using t11 = brigand::apply<Next, t10>;
+    using t12 = brigand::apply<Next, t11>;
+    using t13 = brigand::apply<Next, t12>;
+    using t14 = brigand::apply<Next, t13>;
+    using t15 = brigand::apply<Next, t14>;
+    using t16 = brigand::apply<Next, t15>;
+    using type = typename make_sequence_impl<t16, N-16, Next, List<E..., Start, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15>>::type;
+  };
+}
+  template<class Start, unsigned N, class Next = quote<next>, template<class...> class List = list>
+  using make_sequence = typename detail::make_sequence_impl<Start, N, Next, List<>>::type;
 }
 namespace brigand
 {
@@ -1244,35 +1592,6 @@ namespace brigand
 }
 namespace brigand
 {
-  namespace detail
-  {
-    template<template<class ...> class Metafunction,typename Us, typename If = void>
-    struct quote_impl;
-    template< template<class ...> class Metafunction
-            , template<class...> class L, typename... Us
-            , typename If
-            >
-    struct quote_impl<Metafunction,L<Us...>, If>
-    {
-      using type = Metafunction<Us...>;
-    };
-    template< template<class ...> class Metafunction
-            , template<class...> class L, typename... Us
-            >
-    struct quote_impl < Metafunction, L<Us...>
-                , typename has_type<typename Metafunction<Us...>::type>::type
-                >
-    {
-      using type = typename Metafunction<Us...>::type;
-    };
-  }
-  template<template<class ...> class Metafunction> struct quote
-  {
-    template<typename... Us> struct apply : detail::quote_impl<Metafunction,list<Us...>> {};
-  };
-}
-namespace brigand
-{
 namespace lazy
 {
 template <typename Sequence, typename Predicate, typename NewType>
@@ -1357,29 +1676,131 @@ namespace brigand
 }
 namespace brigand
 {
-  namespace detail
-  {
-    template<class Comp, class Seq>
+namespace detail
+{
+    template <typename P>
+    struct S
+    {
+        template <typename T, typename U>
+        struct Pred : brigand::apply<P, T, U>
+        {
+        };
+        template <typename Out, typename In, bool Tag, bool FTag, typename... Ts>
+        struct insert;
+        template <typename... Os, typename In, typename... Ts>
+        struct insert<list<Os...>, list<In>, false, false, Ts...>
+        {
+            using type = list<Os..., In, Ts...>;
+        };
+        template <typename... Os, typename... Ins, typename T>
+        struct insert<list<Os...>, list<Ins...>, true, false, T>
+        {
+            using type = list<Os..., T, Ins...>;
+        };
+        template <typename... Os, typename In1, typename In2, typename... Ins, typename T,
+                  typename... Ts>
+        struct insert<list<Os...>, list<In1, In2, Ins...>, false, false, T, Ts...>
+            : insert<list<Os..., In1>, list<In2, Ins...>, Pred<T, In2>::value, false, T, Ts...>
+        {
+        };
+        template <typename... Os, typename In1, typename In2, typename... Ins, typename T1,
+                  typename T2, typename T3, typename T4, typename T5, typename T6, typename T7,
+                  typename T8, typename... Ts>
+        struct insert<list<Os...>, list<In1, In2, Ins...>, false, false, T1, T2, T3, T4, T5, T6, T7,
+                      T8, Ts...>
+            : insert<list<Os..., In1>, list<In2, Ins...>, Pred<T1, In2>::value,
+                     Pred<T8, In2>::value, T1, T2, T3, T4, T5, T6, T7, T8, Ts...>
+        {
+        };
+        template <typename... Os, typename In, typename... Ins, typename T1, typename T2,
+                  typename... Ts>
+        struct insert<list<Os...>, list<In, Ins...>, true, false, T1, T2, Ts...>
+            : insert<list<Os..., T1>, list<In, Ins...>, Pred<T2, In>::value, false, T2, Ts...>
+        {
+        };
+        template <typename... Os, typename In, typename... Ins, typename T1, typename T2,
+                  typename T3, typename T4, typename T5, typename T6, typename T7, typename T8>
+        struct insert<list<Os...>, list<In, Ins...>, true, true, T1, T2, T3, T4, T5, T6, T7, T8>
+        {
+            using type = list<Os..., T1, T2, T3, T4, T5, T6, T7, T8, In, Ins...>;
+        };
+        template <typename... Os, typename In, typename... Ins, typename T1, typename T2,
+                  typename T3, typename T4, typename T5, typename T6, typename T7, typename T8,
+                  typename T9, typename... Ts>
+        struct insert<list<Os...>, list<In, Ins...>, true, true, T1, T2, T3, T4, T5, T6, T7, T8, T9,
+                      Ts...> : insert<list<Os..., T1, T2, T3, T4, T5, T6, T7, T8>, list<In, Ins...>,
+                                      Pred<T9, In>::value, false, T9, Ts...>
+        {
+        };
+        template <typename... Os, typename In, typename... Ins, typename T1, typename T2,
+                  typename T3, typename T4, typename T5, typename T6, typename T7, typename T8,
+                  typename T9, typename T10, typename T11, typename T12, typename T13, typename T14,
+                  typename T15, typename T16, typename... Ts>
+        struct insert<list<Os...>, list<In, Ins...>, true, true, T1, T2, T3, T4, T5, T6, T7, T8, T9,
+                      T10, T11, T12, T13, T14, T15, T16, Ts...>
+            : insert<list<Os..., T1, T2, T3, T4, T5, T6, T7, T8>, list<In, Ins...>,
+                     Pred<T9, In>::value, Pred<T16, In>::value, T9, T10, T11, T12, T13, T14, T15,
+                     T16, Ts...>
+        {
+        };
+        template <typename Out, typename In>
+        struct insert_helper;
+        template <typename O, typename... Os, typename In, typename... Ins>
+        struct insert_helper<list<O, Os...>, list<In, Ins...>>
+            : insert<list<>, list<In, Ins...>, Pred<O, In>::value, false, O, Os...>
+        {
+        };
+        template <typename O1, typename O2, typename O3, typename O4, typename O5, typename O6,
+                  typename O7, typename O8, typename... Os, typename In, typename... Ins>
+        struct insert_helper<list<O1, O2, O3, O4, O5, O6, O7, O8, Os...>, list<In, Ins...>>
+            : insert<list<>, list<In, Ins...>, Pred<O1, In>::value, Pred<O8, In>::value, O1, O2, O3,
+                     O4, O5, O6, O7, O8, Os...>
+        {
+        };
+        template <typename Out, typename... Ts>
+        struct sort_loop
+        {
+            using type = Out;
+        };
+        template <typename Out, typename In, typename... Ts>
+        struct sort_loop<Out, In, Ts...>
+            : sort_loop<typename insert_helper<Out, list<In>>::type, Ts...>
+        {
+        };
+        template <typename Out, typename T1, typename T2, typename T3, typename T4, typename T5,
+                  typename T6, typename T7, typename T8, typename T9, typename T10, typename T11,
+                  typename T12, typename T13, typename T14, typename T15, typename T16,
+                  typename... Ts>
+        struct sort_loop<Out, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16,
+                         Ts...>
+            : sort_loop<typename insert_helper<
+                            Out, typename sort_loop<list<T1>, T2, T3, T4, T5, T6, T7, T8, T9, T10,
+                                                    T11, T12, T13, T14, T15, T16>::type>::type,
+                        Ts...>
+        {
+        };
+    };
+    template <typename Seq, typename Comp>
     struct sort_impl;
-    template<class Comp, template<class...> class Seq, class... T>
-    struct sort_impl<Comp, Seq<T...>>
+    template <template <class...> class Seq, typename... T, typename Comp>
+    struct sort_impl<Seq<T...>, Comp>
     {
-      using type = Seq<T...>;
+        using type = Seq<T...>;
     };
-    template<class Comp, template<class...> class Seq, class Pivot, class T, class... Ts>
-    struct sort_impl<Comp, Seq<Pivot, T, Ts...>>
+    template <template <class...> class Seq, typename T, typename Comp>
+    struct sort_impl<Seq<T>, Comp>
     {
-      template<class U> struct Pred { using type = brigand::apply<Comp, U, Pivot>; };
-      using p = brigand::partition<Seq<T, Ts...>, Pred<brigand::_1>>;
-      using type = brigand::append<
-        typename sort_impl<Comp, typename p::first_type>::type,
-        brigand::list<Pivot>,
-        typename sort_impl<Comp, typename p::second_type>::type
-      >;
+        using type = Seq<T>;
     };
-  }
-  template<class Seq, class Comp = quote<less>>
-  using sort = typename detail::sort_impl<Comp, Seq>::type;
+    template <template <class...> class Seq, typename T, typename U, typename... Ts, typename Comp>
+    struct sort_impl<Seq<T, U, Ts...>, Comp>
+    {
+        using type =
+            brigand::wrap<typename S<Comp>::template sort_loop<list<T>, U, Ts...>::type, Seq>;
+    };
+}
+template <typename Seq, typename Comp = quote<less>>
+using sort = typename detail::sort_impl<Seq, Comp>::type;
 }
 #include <type_traits>
 namespace brigand
@@ -1444,6 +1865,12 @@ namespace brigand
 {
   template <typename A, typename B>
   struct plus : std::integral_constant < typename A::value_type, A::value + B::value > {};
+}
+#include <type_traits>
+namespace brigand
+{
+  template <typename A>
+  struct prev : std::integral_constant < typename A::value_type, A::value - 1 > {};
 }
 #include <type_traits>
 namespace brigand
@@ -1634,65 +2061,70 @@ namespace brigand
   template<typename T>
   struct sizeof_ : std::integral_constant <std::size_t, sizeof(T)> {};
 }
-namespace brigand { namespace detail
+namespace brigand
 {
-  template <template <class...> class L, class First, class... R>
-  struct without_last_element
-  {
-    using type = append<L<First>, typename without_last_element<L, R...>::type>;
-  };
-  template <template <class...> class L, class Last>
-  struct without_last_element<L, Last>
-  {
-    using type = empty_sequence;
-  };
-  template <class... R> struct last_element;
-  template <class T0>
-  struct last_element<T0>
-  {
-    using type = T0;
-  };
-  template <class T0,class T1>
-  struct last_element<T0,T1>
-  {
-    using type = T1;
-  };
-  template <class T0,class T1,class T2>
-  struct last_element<T0,T1,T2>
-  {
-    using type = T2;
-  };
-  template <class T0,class T1,class T2,class T3>
-  struct last_element<T0,T1,T2,T3>
-  {
-    using type = T3;
-  };
-  template <class T0,class T1,class T2,class T3,class T4>
-  struct last_element<T0,T1,T2,T3,T4>
-  {
-    using type = T4;
-  };
-  template <class T0,class T1,class T2,class T3,class T4,class T5>
-  struct last_element<T0,T1,T2,T3,T4,T5>
-  {
-    using type = T5;
-  };
-  template <class T0,class T1,class T2,class T3,class T4,class T5,class T6>
-  struct last_element<T0,T1,T2,T3,T4,T5,T6>
-  {
-    using type = T6;
-  };
-  template <class T0,class T1,class T2,class T3,class T4,class T5,class T6,class T7>
-  struct last_element<T0,T1,T2,T3,T4,T5,T6,T7>
-  {
-    using type = T7;
-  };
-  template <class T0,class T1,class T2,class T3,class T4,class T5,class T6,class T7,class... R>
-  struct last_element<T0,T1,T2,T3,T4,T5,T6,T7,R...>
-  {
-    using type = typename last_element<R...>::type;
-  };
-} }
+namespace detail
+{
+    template <template <class...> class L, class First, class... R>
+    struct without_last_element
+    {
+        using type = append<L<First>, typename without_last_element<L, R...>::type>;
+    };
+    template <template <class...> class L, class Last>
+    struct without_last_element<L, Last>
+    {
+        using type = L<>;
+    };
+    template <class... R>
+    struct last_element;
+    template <class T0>
+    struct last_element<T0>
+    {
+        using type = T0;
+    };
+    template <class T0, class T1>
+    struct last_element<T0, T1>
+    {
+        using type = T1;
+    };
+    template <class T0, class T1, class T2>
+    struct last_element<T0, T1, T2>
+    {
+        using type = T2;
+    };
+    template <class T0, class T1, class T2, class T3>
+    struct last_element<T0, T1, T2, T3>
+    {
+        using type = T3;
+    };
+    template <class T0, class T1, class T2, class T3, class T4>
+    struct last_element<T0, T1, T2, T3, T4>
+    {
+        using type = T4;
+    };
+    template <class T0, class T1, class T2, class T3, class T4, class T5>
+    struct last_element<T0, T1, T2, T3, T4, T5>
+    {
+        using type = T5;
+    };
+    template <class T0, class T1, class T2, class T3, class T4, class T5, class T6>
+    struct last_element<T0, T1, T2, T3, T4, T5, T6>
+    {
+        using type = T6;
+    };
+    template <class T0, class T1, class T2, class T3, class T4, class T5, class T6, class T7>
+    struct last_element<T0, T1, T2, T3, T4, T5, T6, T7>
+    {
+        using type = T7;
+    };
+    template <class T0, class T1, class T2, class T3, class T4, class T5, class T6, class T7,
+              class... R>
+    struct last_element<T0, T1, T2, T3, T4, T5, T6, T7, R...>
+    {
+        using type = typename last_element<R...>::type;
+    };
+}
+}
 namespace brigand
 {
   namespace detail
@@ -1765,6 +2197,13 @@ namespace brigand
   };
   template <class L>
   using pop_front = typename pop_front_impl<L>::type;
+}
+namespace brigand
+{
+    template<class T, T Start, T Stop>
+    using range = make_sequence<std::integral_constant<T, Start>, Stop - Start>;
+    template<class T, T Start, T Stop>
+    using reverse_range = make_sequence<std::integral_constant<T, Start>, Start - Stop, quote<prev>>;
 }
 #include <type_traits>
 namespace brigand
