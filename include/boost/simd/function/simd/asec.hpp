@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_ASEC_INCLUDED
 
 #include <boost/simd/function/scalar/asec.hpp>
-//#include <boost/simd/arch/common/function/simd/asec.hpp>
+//#include <boost/simd/arch/common/simd/function/asec.hpp>
 
 #endif
 

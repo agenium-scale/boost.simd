@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_NEGATE_INCLUDED
 
 #include <boost/simd/function/scalar/negate.hpp>
-//#include <boost/simd/arch/common/function/simd/negate.hpp>
+//#include <boost/simd/arch/common/simd/function/negate.hpp>
 
 #endif
 

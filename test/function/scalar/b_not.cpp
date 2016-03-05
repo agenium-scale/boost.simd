@@ -18,7 +18,7 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/three.hpp>
 #include <boost/simd/function/shift_left.hpp>
-#include <nontrivial.hpp>
+//#include <nontrivial.hpp>
 
 
 STF_CASE_TPL ("check b_not for floating",  STF_IEEE_TYPES)
@@ -54,11 +54,11 @@ STF_CASE_TPL ("check b_not for integral",  STF_INTEGRAL_TYPES)
   STF_EQUAL(b_not(bs::Zero<T>()), bs::Mone<r_t>());
 } // end of test for integer_
 
-namespace foo
-{
-  template <class T>
-  nontrivial<T> operator ~(const nontrivial<T> & z1)
-  {
-    return perform(z1);
-  }
-}
+// namespace foo
+// {
+//   template <class T>
+//   nontrivial<T> operator ~(const nontrivial<T> & z1)
+//   {
+//     return perform(z1);
+//   }
+// }

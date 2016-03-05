@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_ASECD_INCLUDED
 
 #include <boost/simd/function/scalar/asecd.hpp>
-//#include <boost/simd/arch/common/function/simd/asecd.hpp>
+//#include <boost/simd/arch/common/simd/function/asecd.hpp>
 
 #endif
 

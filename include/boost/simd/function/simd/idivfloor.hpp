@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IDIVFLOOR_INCLUDED
 
 #include <boost/simd/function/scalar/idivfloor.hpp>
-//#include <boost/simd/arch/common/function/simd/idivfloor.hpp>
+//#include <boost/simd/arch/common/simd/function/idivfloor.hpp>
 
 #endif
 

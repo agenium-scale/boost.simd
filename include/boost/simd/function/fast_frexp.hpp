@@ -40,8 +40,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/fast_frexp.hpp>
-#include <boost/simd/arch/common/scalar/function/fast_frexp.hpp>
+#include <boost/simd/function/scalar/fast_frexp.hpp>
 #include <boost/simd/function/simd/fast_frexp.hpp>
 
 #endif

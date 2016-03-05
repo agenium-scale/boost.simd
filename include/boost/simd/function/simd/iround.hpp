@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IROUND_INCLUDED
 
 #include <boost/simd/function/scalar/iround.hpp>
-//#include <boost/simd/arch/common/function/simd/iround.hpp>
+//#include <boost/simd/arch/common/simd/function/iround.hpp>
 
 #endif
 

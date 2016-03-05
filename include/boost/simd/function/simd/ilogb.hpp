@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_ILOGB_INCLUDED
 
 #include <boost/simd/function/scalar/ilogb.hpp>
-//#include <boost/simd/arch/common/function/simd/ilogb.hpp>
+//#include <boost/simd/arch/common/simd/function/ilogb.hpp>
 
 #endif
 

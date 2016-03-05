@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_ACOTD_INCLUDED
 
 #include <boost/simd/function/scalar/acotd.hpp>
-//#include <boost/simd/arch/common/function/simd/acotd.hpp>
+//#include <boost/simd/arch/common/simd/function/acotd.hpp>
 
 #endif
 

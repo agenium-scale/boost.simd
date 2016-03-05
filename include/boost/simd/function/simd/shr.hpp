@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SHR_INCLUDED
 
 #include <boost/simd/function/scalar/shr.hpp>
-//#include <boost/simd/arch/common/function/simd/shr.hpp>
+//#include <boost/simd/arch/common/simd/function/shr.hpp>
 
 #endif
 

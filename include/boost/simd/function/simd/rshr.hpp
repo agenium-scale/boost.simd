@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_RSHR_INCLUDED
 
 #include <boost/simd/function/scalar/rshr.hpp>
-//#include <boost/simd/arch/common/function/simd/rshr.hpp>
+//#include <boost/simd/arch/common/simd/function/rshr.hpp>
 
 #endif
 

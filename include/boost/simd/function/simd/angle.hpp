@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_ANGLE_INCLUDED
 
 #include <boost/simd/function/scalar/angle.hpp>
-//#include <boost/simd/arch/common/function/simd/arg.hpp>
+//#include <boost/simd/arch/common/simd/function/arg.hpp>
 
 #endif

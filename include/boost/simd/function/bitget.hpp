@@ -55,8 +55,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/bitget.hpp>
-#include <boost/simd/arch/common/generic/function/bitget.hpp>
+#include <boost/simd/function/scalar/bitget.hpp>
 #include <boost/simd/function/simd/bitget.hpp>
 
 #endif

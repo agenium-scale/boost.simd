@@ -62,8 +62,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/idivround.hpp>
-#include <boost/simd/arch/common/generic/function/idivround.hpp>
+#include <boost/simd/function/scalar/idivround.hpp>
 #include <boost/simd/function/simd/idivround.hpp>
 
 #endif

@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_GROUPS_INCLUDED
 
 #include <boost/simd/function/scalar/groups.hpp>
-//#include <boost/simd/arch/common/function/simd/groups.hpp>
+//#include <boost/simd/arch/common/simd/function/groups.hpp>
 
 #endif
 

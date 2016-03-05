@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_FNMA_INCLUDED
 
 #include <boost/simd/function/scalar/fnma.hpp>
-//#include <boost/simd/arch/common/function/simd/fnma.hpp>
+//#include <boost/simd/arch/common/simd/function/fnma.hpp>
 
 #endif
 

@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_EXP10_INCLUDED
 
 #include <boost/simd/function/scalar/exp10.hpp>
-//#include <boost/simd/arch/common/function/simd/exp10.hpp>
+//#include <boost/simd/arch/common/simd/function/exp10.hpp>
 
 #endif
 

@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IS_ODD_INCLUDED
 
 #include <boost/simd/function/scalar/is_odd.hpp>
-//#include <boost/simd/arch/common/function/simd/is_odd.hpp>
+//#include <boost/simd/arch/common/simd/function/is_odd.hpp>
 
 #endif
 

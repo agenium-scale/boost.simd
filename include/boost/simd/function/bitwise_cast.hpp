@@ -63,6 +63,6 @@ namespace boost { namespace simd
 #endif
 
 #include <boost/simd/function/scalar/bitwise_cast.hpp>
-#include <boost/simd/arch/common/generic/function/bitwise_cast.hpp>
+#include <boost/simd/function/scalar/bitwise_cast.hpp>
 
 #endif

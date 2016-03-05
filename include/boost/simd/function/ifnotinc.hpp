@@ -58,8 +58,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/ifnotinc.hpp>
-#include <boost/simd/arch/common/scalar/function/ifnotinc.hpp>
+#include <boost/simd/function/scalar/ifnotinc.hpp>
 #include <boost/simd/function/simd/ifnotinc.hpp>
 
 #endif

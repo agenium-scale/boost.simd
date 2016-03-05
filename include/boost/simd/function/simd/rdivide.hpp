@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_RDIVIDE_INCLUDED
 
 #include <boost/simd/function/scalar/rdivide.hpp>
-//#include <boost/simd/arch/common/function/simd/divs.hpp>
+//#include <boost/simd/arch/common/simd/function/divs.hpp>
 
 #endif

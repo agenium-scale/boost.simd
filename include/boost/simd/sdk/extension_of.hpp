@@ -28,13 +28,10 @@ namespace boost { namespace simd
 
     @tparam Type Type
   **/
-  template<typename Type>
-  struct extension_of : ext::extension_of<Type>
-  {};
+  template<typename Type> struct extension_of : ext::extension_of<Type> {};
 
   /// @brief Eager short-cut to extension_of
-  template<typename Type>
-  using extension_of_t = typename ext::extension_of<Type>::type;
+  template<typename Type> using extension_of_t = typename extension_of<Type>::type;
 } }
 
 #endif

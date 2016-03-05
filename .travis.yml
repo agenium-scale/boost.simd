@@ -1,3 +1,10 @@
+##===================================================================================================
+##                 Copyright 2015   NumScale SAS
+##
+##                   Distributed under the Boost Software License, Version 1.0.
+##                        See accompanying file LICENSE.txt or copy at
+##                            http://www.boost.org/LICENSE_1_0.txt
+##===================================================================================================
 sudo: false
 language: cpp
 
@@ -9,23 +16,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-4.8']
-      env: CXX_STD=11 TOOLSET=g++-4.8 SIMD_EXT=-msse2 OPT=-ftrack-macro-expansion=0
-
-    - os: linux
-      compiler: gcc
-      addons:
-        apt:
-          sources: ['ubuntu-toolchain-r-test']
-          packages: ['g++-4.8']
       env: CXX_STD=11 TOOLSET=g++-4.8 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0
-
-    - os: linux
-      compiler: gcc
-      addons:
-        apt:
-          sources: ['ubuntu-toolchain-r-test']
-          packages: ['g++-4.9']
-      env: CXX_STD=11 TOOLSET=g++-4.9 SIMD_EXT=-msse2 OPT=-ftrack-macro-expansion=0
 
     - os: linux
       compiler: gcc
@@ -41,31 +32,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-5']
-      env: CXX_STD=11 TOOLSET=g++-5 SIMD_EXT=-msse2 OPT=-ftrack-macro-expansion=0
-
-    - os: linux
-      compiler: gcc
-      addons:
-        apt:
-          sources: ['ubuntu-toolchain-r-test']
-          packages: ['g++-5']
-      env: CXX_STD=14 TOOLSET=g++-5 SIMD_EXT=-msse2 OPT=-ftrack-macro-expansion=0
-
-    - os: linux
-      compiler: gcc
-      addons:
-        apt:
-          sources: ['ubuntu-toolchain-r-test']
-          packages: ['g++-5']
       env: CXX_STD=11 TOOLSET=g++-5 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0
-
-    - os: linux
-      compiler: clang
-      addons:
-        apt:
-          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-precise-3.5']
-          packages: ['clang-3.5']
-      env: CXX_STD=11 TOOLSET=clang++-3.5 SIMD_EXT=-msse2
 
     - os: linux
       compiler: clang
@@ -81,40 +48,17 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-precise-3.6']
           packages: ['clang-3.6']
-      env: CXX_STD=11 TOOLSET=clang++-3.6 SIMD_EXT=-msse2
-
-    - os: linux
-      compiler: clang
-      addons:
-        apt:
-          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-precise-3.6']
-          packages: ['clang-3.6']
       env: CXX_STD=11 TOOLSET=clang++-3.6 SIMD_EXT=-mavx
-
-    - os: linux
-      compiler: clang
-      addons:
-        apt:
-          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-precise-3.6']
-          packages: ['clang-3.6']
-      env: CXX_STD=14 TOOLSET=clang++-3.6 SIMD_EXT=-msse2
-
-    - os: osx
-      compiler: clang
-      env: CXX_STD=11 TOOLSET=clang++ SIMD_EXT=-msse2
-
-# Install boost
-before_install:
-  - bash ./script/travis/install.sh
-  - export BOOST_ROOT="$HOME/boost-trunk"
 
 # Prepare build
 before_script:
+  - export BOOST_ROOT=build/_install/include
   - mkdir build
   - cd build
-  - cmake .. -DCMAKE_CXX_COMPILER=$TOOLSET -DCMAKE_CXX_FLAGS="$SIMD_EXT $OPT -I$HOME/dispatch/include" -DSIMD_EXT=$SIMD_EXT -DCXX_STD=$CXX_STD -DTOOLSET=$TOOLSET
+  - cmake .. -DIS_TRAVIS_CI= -DCMAKE_CXX_COMPILER=$TOOLSET -DCMAKE_CXX_FLAGS="$SIMD_EXT $OPT -I$HOME/dispatch/include" -DSIMD_EXT=$SIMD_EXT -DCXX_STD=$CXX_STD -DTOOLSET=$TOOLSET
 
 # Build unit and run test
 script:
+  - make update.boost-header-only | grep -v "^-- Install" # Silent installation
+  - make update.boost.dispatch    | grep -v "^-- Install" # Silent installation
   - make -k unit
-  - ctest -D Experimental

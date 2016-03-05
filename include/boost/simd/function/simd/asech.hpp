@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_ASECH_INCLUDED
 
 #include <boost/simd/function/scalar/asech.hpp>
-//#include <boost/simd/arch/common/function/simd/asech.hpp>
+//#include <boost/simd/arch/common/simd/function/asech.hpp>
 
 #endif
 

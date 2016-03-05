@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IS_SIMD_LOGICAL_INCLUDED
 
 #include <boost/simd/function/scalar/is_simd_logical.hpp>
-//#include <boost/simd/arch/common/function/simd/is_simd_logical.hpp>
+//#include <boost/simd/arch/common/simd/function/is_simd_logical.hpp>
 
 #endif
 

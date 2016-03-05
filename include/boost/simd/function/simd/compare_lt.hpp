@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_COMPARE_LT_INCLUDED
 
 #include <boost/simd/function/scalar/compare_lt.hpp>
-//#include <boost/simd/arch/common/function/simd/compare_less.hpp>
+//#include <boost/simd/arch/common/simd/function/compare_less.hpp>
 
 #endif

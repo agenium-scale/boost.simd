@@ -61,8 +61,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/ulp.hpp>
-#include <boost/simd/arch/common/scalar/function/ulp.hpp>
+#include <boost/simd/function/scalar/ulp.hpp>
 #include <boost/simd/function/simd/ulp.hpp>
 
 #endif

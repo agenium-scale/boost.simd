@@ -58,8 +58,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/inbtrue.hpp>
-#include <boost/simd/arch/common/scalar/function/inbtrue.hpp>
+#include <boost/simd/function/scalar/inbtrue.hpp>
 #include <boost/simd/function/simd/inbtrue.hpp>
 
 #endif

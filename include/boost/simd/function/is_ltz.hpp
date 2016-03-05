@@ -56,8 +56,7 @@ z    **/
 } }
 #endif
 
-#include <boost/simd/function/definition/is_ltz.hpp>
-#include <boost/simd/arch/common/scalar/function/is_ltz.hpp>
+#include <boost/simd/function/scalar/is_ltz.hpp>
 #include <boost/simd/function/simd/is_ltz.hpp>
 
 #endif

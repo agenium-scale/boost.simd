@@ -12,7 +12,8 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_DETAIL_GENERIC_D_EXPO_REDUCTION_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_GENERIC_D_EXPO_REDUCTION_HPP_INCLUDED
 
-#include <boost/simd/arch/common/detail/generic/horner.hpp>
+#include <boost/simd/function/horn.hpp>
+#include <boost/simd/function/horn1.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/constant/invlog10_2.hpp>
 #include <boost/simd/constant/invlog_2.hpp>
@@ -73,15 +74,15 @@ namespace boost { namespace simd
       static BOOST_FORCEINLINE A0 approx(A0 x) BOOST_NOEXCEPT
       {
         A0 const t = sqr(x);
-        return fnms(t, horner<BOOST_SIMD_HORNER_COEFF_T(A0, 5,
-                                                        ( 0x3e66376972bea4d0ull
-                                                        , 0xbebbbd41c5d26bf1ull
-                                                        , 0x3f11566aaf25de2cull
-                                                        , 0xbf66c16c16bebd93ull
-                                                        , 0x3fc555555555553eull
-                                                        )
-                                                       )>(t), x); //x-h*t
-      }
+        return fnms(t,
+                    horn<A0
+                         , 0x3fc555555555553eull
+                         , 0xbf66c16c16bebd93ull
+                         , 0x3f11566aaf25de2cull
+                         , 0xbebbbd41c5d26bf1ull
+                         , 0x3e66376972bea4d0ull
+                    >(t), x); //x-h*t
+    }
 
       static BOOST_FORCEINLINE A0 finalize(A0 x, A0 c, A0 hi, A0 lo) BOOST_NOEXCEPT
       {
@@ -113,14 +114,14 @@ namespace boost { namespace simd
       static BOOST_FORCEINLINE A0 approx(A0 x) BOOST_NOEXCEPT
       {
         const A0 t =  sqr(x);
-        return fnms(t, horner<BOOST_SIMD_HORNER_COEFF_T(A0, 5,
-                                                        ( 0x3e66376972bea4d0ull
-                                                        , 0xbebbbd41c5d26bf1ull
-                                                        , 0x3f11566aaf25de2cull
-                                                        , 0xbf66c16c16bebd93ull
-                                                        , 0x3fc555555555553eull
-                                                        )
-                                                       )> (t), x); //x-h*t
+        return fnms(t,
+                    horn<A0
+                         , 0x3fc555555555553eull
+                         , 0xbf66c16c16bebd93ull
+                         , 0x3f11566aaf25de2cull
+                         , 0xbebbbd41c5d26bf1ull
+                         , 0x3e66376972bea4d0ull
+                    > (t), x); //x-h*t
       }
 
       static BOOST_FORCEINLINE A0 finalize( A0 x, A0 c, A0, A0& ) BOOST_NOEXCEPT
@@ -153,18 +154,18 @@ namespace boost { namespace simd
       static BOOST_FORCEINLINE A0 approx(A0 x) BOOST_NOEXCEPT
       {
         A0 xx = sqr(x);
-        A0 px = x*horner<BOOST_SIMD_HORNER_COEFF_T(A0, 4,
-                                                   (0x3fa4fd75f3062dd4ull,
-                                                    0x40277d9474c55934ull,
-                                                    0x40796b7a050349e4ull,
-                                                    0x40a2b4798e134a01ull)
-                                                  )> (xx);
-        A0 x2 =  px/(horner<BOOST_SIMD_HORNER_COEFF_T(A0, 4,
-                                                      (0x3ff0000000000000ull,
-                                                       0x405545fdce51ca08ull,
-                                                       0x4093e05eefd67782ull,
-                                                       0x40a03f37650df6e2ull)
-                                                     )> (xx)-px);
+        A0 px = x*horn<A0,
+                       0x40a2b4798e134a01ull,
+                       0x40796b7a050349e4ull,
+                       0x40277d9474c55934ull,
+                       0x3fa4fd75f3062dd4ull
+                       > (xx);
+        A0 x2 =  px/(horn1<A0,
+                          0x40a03f37650df6e2ull,
+                          0x4093e05eefd67782ull,
+                          0x405545fdce51ca08ull
+                     //   0x3ff0000000000000ull
+                          > (xx)-px);
         return oneplus(x2+x2);
       }
 

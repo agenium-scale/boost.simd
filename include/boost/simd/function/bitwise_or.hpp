@@ -72,6 +72,6 @@ namespace boost { namespace simd
 #endif
 
 #include <boost/simd/function/scalar/bitwise_or.hpp>
-#include <boost/simd/arch/common/scalar/function/bitwise_or.hpp>
+#include <boost/simd/function/scalar/bitwise_or.hpp>
 
 #endif

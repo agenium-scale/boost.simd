@@ -59,8 +59,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/exponentbits.hpp>
-#include <boost/simd/arch/common/scalar/function/exponentbits.hpp>
+#include <boost/simd/function/scalar/exponentbits.hpp>
 #include <boost/simd/function/simd/exponentbits.hpp>
 
 #endif

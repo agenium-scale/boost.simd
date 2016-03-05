@@ -57,8 +57,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/is_lessgreater.hpp>
-#include <boost/simd/arch/common/scalar/function/is_lessgreater.hpp>
+#include <boost/simd/function/scalar/is_lessgreater.hpp>
 #include <boost/simd/function/simd/is_lessgreater.hpp>
 
 #endif

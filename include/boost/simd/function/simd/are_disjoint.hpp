@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_ARE_DISJOINT_INCLUDED
 
 #include <boost/simd/function/scalar/are_disjoint.hpp>
-//#include <boost/simd/arch/common/function/simd/is_included_c.hpp>
+//#include <boost/simd/arch/common/simd/function/is_included_c.hpp>
 
 #endif

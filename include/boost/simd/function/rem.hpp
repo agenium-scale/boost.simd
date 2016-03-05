@@ -81,8 +81,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/rem.hpp>
-#include <boost/simd/arch/common/scalar/function/rem.hpp>
+#include <boost/simd/function/scalar/rem.hpp>
 #include <boost/simd/function/simd/rem.hpp>
 
 #endif

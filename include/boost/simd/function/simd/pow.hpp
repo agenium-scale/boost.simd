@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_POW_INCLUDED
 
 #include <boost/simd/function/scalar/pow.hpp>
-//#include <boost/simd/arch/common/function/simd/pow.hpp>
+//#include <boost/simd/arch/common/simd/function/pow.hpp>
 
 #endif
 

@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_COMMA_INCLUDED
 
 #include <boost/simd/function/scalar/comma.hpp>
-//#include <boost/simd/arch/common/function/simd/comma.hpp>
+//#include <boost/simd/arch/common/simd/function/comma.hpp>
 
 #endif
 

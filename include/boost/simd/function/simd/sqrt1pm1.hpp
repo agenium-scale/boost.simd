@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SQRT1PM1_INCLUDED
 
 #include <boost/simd/function/scalar/sqrt1pm1.hpp>
-//#include <boost/simd/arch/common/function/simd/sqrt1pm1.hpp>
+//#include <boost/simd/arch/common/simd/function/sqrt1pm1.hpp>
 
 #endif
 

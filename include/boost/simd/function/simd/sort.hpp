@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SORT_INCLUDED
 
 #include <boost/simd/function/scalar/sort.hpp>
-//#include <boost/simd/arch/common/function/simd/sort.hpp>
+//#include <boost/simd/arch/common/simd/function/sort.hpp>
 
 #endif
 

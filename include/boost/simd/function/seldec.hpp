@@ -62,8 +62,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/seldec.hpp>
-#include <boost/simd/arch/common/scalar/function/seldec.hpp>
+#include <boost/simd/function/scalar/seldec.hpp>
 #include <boost/simd/function/simd/seldec.hpp>
 
 #endif

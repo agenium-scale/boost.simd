@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SUM_INCLUDED
 
 #include <boost/simd/function/scalar/sum.hpp>
-//#include <boost/simd/arch/common/function/simd/sum.hpp>
+//#include <boost/simd/arch/common/simd/function/sum.hpp>
 
 #endif
 

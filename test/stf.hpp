@@ -33,7 +33,7 @@ namespace stf
       args_map()
       {
                 std::pair<std::string,std::string>
-        envvars[] = { {"STF_COMPACT" , "compact"}
+        envvars[] = { {"STF_VERBOSE" , "verbose"}
                     };
 
                 for(auto const& id : envvars)
@@ -156,10 +156,10 @@ namespace stf
 
             std::ostream& invalid() const
       {
-        if(compact_mode)
-          return os << "I";
-        else
+        if(!compact_mode)
           return os << "[IVLD]" << " - ";
+        else
+          return os;
       }
 
             env(env const&)             = delete;
@@ -206,7 +206,7 @@ namespace stf
     }
     else
     {
-      env.stream()  << "Scenario: " << t.name << " : ";
+      env.stream() << "Scenario: " << t.name << std::endl;
     }
   }
 
@@ -215,10 +215,7 @@ namespace stf
     if(count == env.tests())
     {
       env.as_invalid();
-      if(!env.is_compact())
-        env.invalid() << "Empty test case" << std::endl;
-      else
-        env.stream() << "!";
+      env.invalid() << "Empty test case" << std::endl;
     }
   }
 }
@@ -305,7 +302,7 @@ void STF_FUNCTION( ::stf::unit::env& $ )                                        
   $.stream() << std::endl;                                                                          \
   $.stream() <<  "With T = [" << STF_STRING(BOOST_PP_SEQ_ELEM(n,t))                                 \
                         << "] ";                                                                    \
-  if(!$.is_compact()) $.stream() << std::endl;                                                      \
+  $.stream() << std::endl;                                                                          \
   STF_FUNCTION<T>($);                                                                               \
 }                                                                                                   \
 
@@ -358,7 +355,7 @@ namespace stf
   template<typename Environment, typename Suite, typename... Setup>
   inline bool run(Environment& environment, Suite& tests, Setup const&... setup)
   {
-        auto is_compact = args("compact",false);
+        auto is_compact = !args("verbose",false);
     environment.compact(is_compact);
 
         if(auto seed = args("random",0u))
@@ -375,7 +372,7 @@ namespace stf
 
       process_invalid(environment, count);
 
-      environment.stream() << std::endl;
+      if(!is_compact) environment.stream() << std::endl;
     }
 
     return ::stf::report(environment,setup...);
@@ -603,7 +600,7 @@ namespace stf { namespace detail
 #define STF_DUMP(R)                                                                                 \
 $.stream()  << "failing because:\n" << R.lhs << R.op << R.rhs << "\n" << "is incorrect.\n";         \
 
-
+  
 namespace stf
 {
   template<typename LHS, typename RHS>
@@ -684,7 +681,7 @@ namespace stf { namespace detail
               , stf::to_string( lhs ), stf::split_line(lhs,rhs,SB), stf::to_string(rhs)             \
               };                                                                                    \
     }                                                                                               \
-
+    
     STF_BINARY_DECOMPOSE( ==, "==", eq  )
     STF_BINARY_DECOMPOSE( !=, "!=", neq )
     STF_BINARY_DECOMPOSE( < , "<" , lt  )
@@ -711,7 +708,7 @@ namespace stf { namespace detail
 #define STF_DISPLAY( INDICATOR, MESSAGE )                                                           \
 do                                                                                                  \
 {                                                                                                   \
-  if(!$.is_compact()) $.stream() << INDICATOR << MESSAGE << std::endl;                              \
+  $.stream() << INDICATOR << MESSAGE << std::endl;                                                  \
 } while( ::stf::is_false() )                                                                        \
 
 #define STF_INFO( MESSAGE ) STF_DISPLAY("[INFO] ", MESSAGE)
@@ -728,24 +725,13 @@ do                                                                              
   {                                                                                                 \
     $.pass() << MESSAGE << " in: " << ::stf::at(__FILE__,__LINE__) << std::endl;                    \
   }                                                                                                 \
-  else                                                                                              \
-  {                                                                                                 \
-    $.stream() << "+";                                                                              \
-  }                                                                                                 \
 } while( ::stf::is_false() )                                                                        \
 
 #define STF_FAIL( MESSAGE )                                                                         \
 do                                                                                                  \
 {                                                                                                   \
   $.as_failure();                                                                                   \
-  if(!$.is_compact())                                                                               \
-  {                                                                                                 \
-    $.fail() << MESSAGE << " in: " << ::stf::at(__FILE__,__LINE__) << std::endl;                    \
-  }                                                                                                 \
-  else                                                                                              \
-  {                                                                                                 \
-    $.stream() << "-";                                                                              \
-  }                                                                                                 \
+  $.fail() << MESSAGE << " in: " << ::stf::at(__FILE__,__LINE__) << std::endl;                      \
 } while( ::stf::is_false() )                                                                        \
 
 
@@ -757,7 +743,7 @@ do                                                                              
   else                                                                                              \
   {                                                                                                 \
     STF_FAIL( "Expecting: " << STF_STRING(EXPR));                                                   \
-    if(!$.is_compact()) STF_DUMP( stf_local_r );                                                    \
+    STF_DUMP( stf_local_r );                                                                        \
   }                                                                                                 \
 } while( ::stf::is_false() )                                                                        \
 
@@ -767,7 +753,7 @@ do                                                                              
   if( ::stf::detail::result stf_local_r = STF_DECOMPOSE(EXPR) )                                     \
   {                                                                                                 \
     STF_FAIL( "Not expecting: " << STF_STRING(EXPR));                                               \
-    if(!$.is_compact()) STF_DUMP( stf_local_r );                                                    \
+    STF_DUMP( stf_local_r );                                                                        \
   }                                                                                                 \
   else                                                                                              \
     STF_PASS( "Not expecting: " << STF_STRING(EXPR));                                               \

@@ -60,8 +60,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/all.hpp>
-#include <boost/simd/arch/common/scalar/function/all.hpp>
+#include <boost/simd/function/scalar/all.hpp>
 #include <boost/simd/function/simd/all.hpp>
 
 #endif

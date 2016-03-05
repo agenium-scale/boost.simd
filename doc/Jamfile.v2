@@ -1,0 +1,92 @@
+# (c) 2016 NumScale SAS
+#
+# Distributed under the Boost Software
+# License, Version 1.0.
+# http://boost.org/LICENSE_1_0.txt
+# --------------------------------------------------------------------------------------------------
+
+# Setup
+# --------------------------------------------------------------------------------------------------
+path-constant project_dir : $(BOOST_ROOT)/libs/simd ;
+
+# Imports
+# --------------------------------------------------------------------------------------------------
+import regex ;
+import string ;
+import print ;
+import path ;
+import doxygen ;
+
+# Project informations
+# --------------------------------------------------------------------------------------------------
+PROJECT_SOURCE_DIR      = $(project_dir) ;
+PROJECT_VERSION_STRING  = "(alpha)" ;
+PROJECT_RELEASE         = "(pre-release" ;
+
+# Simulate CMake config_file
+# --------------------------------------------------------------------------------------------------
+rule generate-doxygen-config ( source )
+{
+    if $(NT) {
+        sh_cat  = "type" ;
+    } else {
+        sh_cat  = "cat" ;
+    }
+
+    local content = "" ;
+    local config  = [ SHELL "$(sh_cat) $(source)" ] ;
+    for local line in [ SPLIT_BY_CHARACTERS $(config) : "\n" ] {
+        local new_line = "" ;
+        local subst    = "" ;
+        local in_subst = false ;
+        for local c in [ string.chars $(line) ] {
+            if $(c) = @ {
+                if $(in_subst) = true {
+                    if $($(subst)) {
+                        new_line = $(new_line)$($(subst)) ;
+                        subst = "" ;
+                    } else {
+                        import errors ;
+                        errors.user-error "\"$(subst)\" referenced in config file but none b2 variables have been defined with the same name!" ;
+                    }
+                    in_subst = false ;
+                } else {
+                    in_subst = true ;
+                }
+            } else {
+                if $(in_subst) = true {
+                    subst = $(subst)$(c) ;
+                } else {
+                    new_line = $(new_line)$(c) ;
+                }
+            }
+        }
+        content = $(content)\n$(new_line) ;
+    }
+    return $(content) ;
+}
+
+rule doxygen-config-to-doxygen-params ( source )
+{
+    local content = [ generate-doxygen-config $(source) ] ;
+          content = "$(content)\n" ;
+
+    variant params ;
+    for local line in [ SPLIT_BY_CHARACTERS $(content) : "\n" ] {
+        params += <doxygen:param>"$(line)" ;
+    }
+    return $(params) ;
+}
+
+# Finally, setup rules
+# --------------------------------------------------------------------------------------------------
+using doxygen ;
+
+# Get the doxygen config
+local doxygen_config = $(project_dir)/doc/Doxyfile.in ;
+local doxygen_params = [ doxygen-config-to-doxygen-params $(doxygen_config) ] ;
+
+doxygen index.html
+    : [ glob $(project_dir)/include/boost/simd/*.hpp ]
+    : $(doxygen_params)
+    ;

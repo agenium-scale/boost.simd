@@ -62,8 +62,7 @@ z    **/
 } }
 #endif
 
-#include <boost/simd/function/definition/ctz.hpp>
-#include <boost/simd/arch/common/scalar/function/ctz.hpp>
+#include <boost/simd/function/scalar/ctz.hpp>
 #include <boost/simd/function/simd/ctz.hpp>
 
 #endif

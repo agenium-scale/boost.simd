@@ -61,8 +61,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/posmax.hpp>
-#include <boost/simd/arch/common/scalar/function/posmax.hpp>
+#include <boost/simd/function/scalar/posmax.hpp>
 #include <boost/simd/function/simd/posmax.hpp>
 
 #endif

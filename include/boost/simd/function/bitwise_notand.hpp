@@ -70,8 +70,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/bitwise_notand.hpp>
-#include <boost/simd/arch/common/scalar/function/bitwise_notand.hpp>
+#include <boost/simd/function/scalar/bitwise_notand.hpp>
 #include <boost/simd/function/simd/bitwise_notand.hpp>
 
 #endif

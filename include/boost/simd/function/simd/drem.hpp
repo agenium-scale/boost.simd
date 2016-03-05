@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_DREM_INCLUDED
 
 #include <boost/simd/function/scalar/drem.hpp>
-//#include <boost/simd/arch/common/function/simd/remainder.hpp>
+//#include <boost/simd/arch/common/simd/function/remainder.hpp>
 
 #endif

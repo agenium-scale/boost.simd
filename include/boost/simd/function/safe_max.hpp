@@ -59,8 +59,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/safe_max.hpp>
-#include <boost/simd/arch/common/generic/function/safe_max.hpp>
+#include <boost/simd/function/scalar/safe_max.hpp>
 #include <boost/simd/function/simd/safe_max.hpp>
 
 #endif

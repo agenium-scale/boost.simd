@@ -66,8 +66,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/is_not_less.hpp>
-#include <boost/simd/arch/common/scalar/function/is_not_less.hpp>
+#include <boost/simd/function/scalar/is_not_less.hpp>
 #include <boost/simd/function/simd/is_not_less.hpp>
 
 #endif

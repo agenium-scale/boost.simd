@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_DECS_INCLUDED
 
 #include <boost/simd/function/scalar/decs.hpp>
-//#include <boost/simd/arch/common/function/simd/decs.hpp>
+//#include <boost/simd/arch/common/simd/function/decs.hpp>
 
 #endif
 

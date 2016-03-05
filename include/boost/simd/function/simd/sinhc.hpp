@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SINHC_INCLUDED
 
 #include <boost/simd/function/scalar/sinhc.hpp>
-//#include <boost/simd/arch/common/function/simd/sinhc.hpp>
+//#include <boost/simd/arch/common/simd/function/sinhc.hpp>
 
 #endif
 

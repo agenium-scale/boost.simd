@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_COMPARE_NOT_EQUAL_INCLUDED
 
 #include <boost/simd/function/scalar/compare_not_equal.hpp>
-//#include <boost/simd/arch/common/function/simd/compare_not_equal.hpp>
+//#include <boost/simd/arch/common/simd/function/compare_not_equal.hpp>
 
 #endif
 

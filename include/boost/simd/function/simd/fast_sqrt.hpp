@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_FAST_SQRT_INCLUDED
 
 #include <boost/simd/function/scalar/fast_sqrt.hpp>
-//#include <boost/simd/arch/common/function/simd/fast_sqrt.hpp>
+//#include <boost/simd/arch/common/simd/function/fast_sqrt.hpp>
 
 #endif
 

@@ -54,8 +54,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/two_add.hpp>
-#include <boost/simd/arch/common/generic/function/two_add.hpp>
+#include <boost/simd/function/scalar/two_add.hpp>
 #include <boost/simd/function/simd/two_add.hpp>
 
 #endif

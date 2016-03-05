@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_DEMOTE_INCLUDED
 
 #include <boost/simd/function/scalar/demote.hpp>
-//#include <boost/simd/arch/common/function/simd/group.hpp>
+//#include <boost/simd/arch/common/simd/function/group.hpp>
 
 #endif

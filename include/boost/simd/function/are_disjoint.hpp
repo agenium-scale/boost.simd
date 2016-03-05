@@ -42,8 +42,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/are_disjoint.hpp>
-#include <boost/simd/arch/common/scalar/function/is_included_c.hpp>
+#include <boost/simd/function/scalar/is_included_c.hpp>
 #include <boost/simd/function/simd/are_disjoint.hpp>
 
 #endif

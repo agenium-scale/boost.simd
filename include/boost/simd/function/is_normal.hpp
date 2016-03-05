@@ -60,9 +60,8 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/is_normal.hpp>
-#include <boost/simd/arch/common/scalar/function/is_normal.hpp>
-#include <boost/simd/arch/common/generic/function/is_normal.hpp>
+#include <boost/simd/function/scalar/is_normal.hpp>
+#include <boost/simd/function/scalar/is_normal.hpp>
 #include <boost/simd/function/simd/is_normal.hpp>
 
 #endif

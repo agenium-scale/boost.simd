@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SPLIT_LOW_INCLUDED
 
 #include <boost/simd/function/scalar/split_low.hpp>
-//#include <boost/simd/arch/common/function/simd/split_low.hpp>
+//#include <boost/simd/arch/common/simd/function/split_low.hpp>
 
 #endif
 

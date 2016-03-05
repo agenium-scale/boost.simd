@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IF_ADD_INCLUDED
 
 #include <boost/simd/function/scalar/if_add.hpp>
-//#include <boost/simd/arch/common/function/simd/seladd.hpp>
+//#include <boost/simd/arch/common/simd/function/seladd.hpp>
 
 #endif

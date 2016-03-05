@@ -63,8 +63,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/if_allbits_else.hpp>
-#include <boost/simd/arch/common/scalar/function/if_allbits_else.hpp>
+#include <boost/simd/function/scalar/if_allbits_else.hpp>
 #include <boost/simd/function/simd/if_allbits_else.hpp>
 
 #endif

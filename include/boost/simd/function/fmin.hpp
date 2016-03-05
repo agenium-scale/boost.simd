@@ -42,8 +42,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/fmin.hpp>
-#include <boost/simd/arch/common/scalar/function/minnum.hpp>
+#include <boost/simd/function/scalar/minnum.hpp>
 #include <boost/simd/function/simd/fmin.hpp>
 
 #endif

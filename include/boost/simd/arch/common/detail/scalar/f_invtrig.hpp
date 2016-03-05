@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_DETAIL_SCALAR_F_INVTRIG_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_SCALAR_F_INVTRIG_HPP_INCLUDED
 
-#include <boost/simd/arch/common/detail/generic/horner.hpp>
+#include <boost/simd/function/horn.hpp>
 #include <boost/simd/constant/constant.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/mhalf.hpp>
@@ -77,14 +77,13 @@ namespace boost { namespace simd
       {
         z = sqr(x);
       }
-      A0 z1 = horner<BOOST_SIMD_HORNER_COEFF_T(A0, 5,
-                                        ( 0x3d2cb352,
-                                          0x3cc617e3,
-                                          0x3d3a3ec7,
-                                          0x3d9980f6,
-                                          0x3e2aaae4
-                                        )
-                                       )> (z);
+      A0 z1 = horn<A0,
+        0x3e2aaae4,
+        0x3d9980f6,
+        0x3d3a3ec7,
+        0x3cc617e3,
+        0x3d2cb352
+        > (z);
       z1 = fma(z1, z*x, x);
       if(bx_larger_05)
       {
@@ -129,14 +128,13 @@ namespace boost { namespace simd
         x = minusone(x)/oneplus(x);
       }
       A0 z = sqr(x);
-      A0 z1 = horner<BOOST_SIMD_HORNER_COEFF_T(A0, 4,
-                                         ( 0x3da4f0d1ul  //  8.5460119e-02
-                                         , 0xbe0e1b85ul  // -1.4031009e-01
-                                         , 0x3e4c925ful  //  1.9991724e-01
-                                         , 0xbeaaaa2aul  // -3.3333293e-01
-                                         )
-                                       )> (z);
-      z1 = fma(x, z1*z, x);
+      A0 z1 = horn<A0
+        , 0xbeaaaa2aul  // -3.3333293e-01
+        , 0x3e4c925ful  //  1.9991724e-01
+        , 0xbe0e1b85ul  // -1.4031009e-01
+        , 0x3da4f0d1ul  //  8.5460119e-02
+        > (z);
+    z1 = fma(x, z1*z, x);
 
       return y+(z1+more);
     }

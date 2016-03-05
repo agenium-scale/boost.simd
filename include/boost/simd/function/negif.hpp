@@ -59,8 +59,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/negif.hpp>
-#include <boost/simd/arch/common/scalar/function/negif.hpp>
+#include <boost/simd/function/scalar/negif.hpp>
 #include <boost/simd/function/simd/negif.hpp>
 
 #endif

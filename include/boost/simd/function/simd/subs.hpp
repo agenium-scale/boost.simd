@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SUBS_INCLUDED
 
 #include <boost/simd/function/scalar/subs.hpp>
-//#include <boost/simd/arch/common/function/simd/subs.hpp>
+//#include <boost/simd/arch/common/simd/function/subs.hpp>
 
 #endif
 

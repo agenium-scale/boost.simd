@@ -59,8 +59,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/dot.hpp>
-#include <boost/simd/arch/common/scalar/function/dot.hpp>
+#include <boost/simd/function/scalar/dot.hpp>
 #include <boost/simd/function/simd/dot.hpp>
 
 #endif

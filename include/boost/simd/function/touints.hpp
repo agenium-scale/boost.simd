@@ -70,8 +70,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/touints.hpp>
-#include <boost/simd/arch/common/scalar/function/touints.hpp>
+#include <boost/simd/function/scalar/touints.hpp>
 #include <boost/simd/function/simd/touints.hpp>
 
 #endif

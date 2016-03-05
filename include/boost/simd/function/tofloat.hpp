@@ -58,8 +58,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/tofloat.hpp>
-#include <boost/simd/arch/common/scalar/function/tofloat.hpp>
+#include <boost/simd/function/scalar/tofloat.hpp>
 #include <boost/simd/function/simd/tofloat.hpp>
 
 #endif

@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SELSUB_INCLUDED
 
 #include <boost/simd/function/scalar/selsub.hpp>
-//#include <boost/simd/arch/common/function/simd/selsub.hpp>
+//#include <boost/simd/arch/common/simd/function/selsub.hpp>
 
 #endif
 

@@ -65,8 +65,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/logical_xor.hpp>
-#include <boost/simd/arch/common/scalar/function/logical_xor.hpp>
+#include <boost/simd/function/scalar/logical_xor.hpp>
 #include <boost/simd/function/simd/logical_xor.hpp>
 
 #endif

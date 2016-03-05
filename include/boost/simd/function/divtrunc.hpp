@@ -42,8 +42,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/divtrunc.hpp>
-#include <boost/simd/arch/common/scalar/function/divfix.hpp>
+#include <boost/simd/function/scalar/divfix.hpp>
 #include <boost/simd/function/simd/divtrunc.hpp>
 
 #endif

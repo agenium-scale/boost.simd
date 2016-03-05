@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_ACOSPI_INCLUDED
 
 #include <boost/simd/function/scalar/acospi.hpp>
-//#include <boost/simd/arch/common/function/simd/acospi.hpp>
+//#include <boost/simd/arch/common/simd/function/acospi.hpp>
 
 #endif
 

@@ -45,8 +45,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/l_notand.hpp>
-#include <boost/simd/arch/common/scalar/function/logical_notand.hpp>
+#include <boost/simd/function/scalar/logical_notand.hpp>
 #include <boost/simd/function/simd/l_notand.hpp>
 
 #endif

@@ -6,49 +6,7 @@
 ##                            http://www.boost.org/LICENSE_1_0.txt
 ##==================================================================================================
 
-##==================================================================================================
-## C++ Standard selector
-##==================================================================================================
-if(CXX_STD)
-  string(REGEX MATCH "1(1|4|7)" MATCHED ${CXX_STD})
-  if(NOT MATCHED)
-    message(WARNING "CXX_STD did not match any valid C++ standard, falling back to c++11")
-    set(CXX_STD "11")
-  endif()
-else()
-  set(CXX_STD "11")
-endif()
-
-if(NOT ${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++${CXX_STD} -Wall -Wshadow -Wextra")
-endif()
-
-##==================================================================================================
-## Handle warning level in MSVC
-##==================================================================================================
-if(MSVC)
-  if("${CMAKE_C_FLAGS}" MATCHES "/W[1-4]")
-    string(REGEX REPLACE "/W[1-4]" "/W4" CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
-  else()
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W4")
-  endif()
-
-  if("${CMAKE_CXX_FLAGS}" MATCHES "/W[1-4]")
-    string(REGEX REPLACE "/W[1-4]" "/W4" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
-  else()
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
-  endif()
-endif()
-
-##==================================================================================================
-## MSVC12 needs /FS if building in debug in parallel
-##==================================================================================================
-if(MSVC AND (MSVC_VERSION EQUAL 1800 OR MSVC_VERSION GREATER 1800))
-  set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /FS")
-endif()
-
-set(SIMD_FLAGS_TEST "${SIMD_FLAGS_TEST} -DBRIGAND_LEAN_AND_MEAN")
-set(SIMD_FLAGS_BENCH "${CMAKE_CXX_FLAGS_RELEASE} -DBRIGAND_LEAN_AND_MEAN")
+NS_include(compilers)
 
 ##==================================================================================================
 ## Precision and optimization settings
@@ -83,10 +41,10 @@ if(MSVC)
 endif()
 
 ##==================================================================================================
-## MSVC STL warnings
+## MSVC STL warnings & noexcept
 ##==================================================================================================
 if(MSVC)
-  set(SIMD_FLAGS_TEST "${SIMD_FLAGS_TEST} /D_SCL_SECURE_NO_WARNINGS")
+  set(SIMD_FLAGS_TEST "${SIMD_FLAGS_TEST} /D_SCL_SECURE_NO_WARNINGS /EHsc")
 endif()
 
 ##==================================================================================================
@@ -95,6 +53,6 @@ endif()
 set(CMAKE_CXX_FLAGS_RELEASE "${SIMD_FLAGS_BENCH}")
 set(CMAKE_CXX_FLAGS_DEBUG   "${SIMD_FLAGS_TEST}")
 
-message(STATUS "[boost.simd] Global flags: ${CMAKE_CXX_FLAGS}")
-message(STATUS "[boost.simd] Test flags: ${CMAKE_CXX_FLAGS_DEBUG}")
-message(STATUS "[boost.simd] Benchmark flags: ${CMAKE_CXX_FLAGS_RELEASE}")
+NS_say("Global flags: ${CMAKE_CXX_FLAGS}")
+NS_say("Test flags: ${CMAKE_CXX_FLAGS_DEBUG}")
+NS_say("Benchmark flags: ${CMAKE_CXX_FLAGS_RELEASE}")

@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_REALLOG_INCLUDED
 
 #include <boost/simd/function/scalar/reallog.hpp>
-//#include <boost/simd/arch/common/function/simd/reallog.hpp>
+//#include <boost/simd/arch/common/simd/function/reallog.hpp>
 
 #endif
 

@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IFNOTADD_INCLUDED
 
 #include <boost/simd/function/scalar/ifnotadd.hpp>
-//#include <boost/simd/arch/common/function/simd/ifnotadd.hpp>
+//#include <boost/simd/arch/common/simd/function/ifnotadd.hpp>
 
 #endif
 

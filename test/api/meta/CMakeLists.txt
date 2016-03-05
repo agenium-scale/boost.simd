@@ -8,8 +8,10 @@
 
 set ( SOURCES
       cardinal_of.cpp
+      downgrade.cpp
       is_scalar.cpp
       logical.cpp
+      upgrade.cpp
     )
 
 make_unit( "boost.simd.api.meta" ${SOURCES})

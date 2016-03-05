@@ -58,9 +58,8 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/definition/is_denormal.hpp>
-#include <boost/simd/arch/common/scalar/function/is_denormal.hpp>
-#include <boost/simd/arch/common/generic/function/is_denormal.hpp>
+#include <boost/simd/function/scalar/is_denormal.hpp>
+#include <boost/simd/function/scalar/is_denormal.hpp>
 #include <boost/simd/function/simd/is_denormal.hpp>
 
 #endif
