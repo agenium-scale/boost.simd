@@ -11,9 +11,11 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_ALIGNED_LOAD_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_ALIGNED_LOAD_HPP_INCLUDED
 
-#include <boost/simd/pack.hpp>
+#include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/adapted/common/pointer.hpp>
+#include <boost/align/is_aligned.hpp>
+#include <boost/assert.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -22,11 +24,11 @@ namespace boost { namespace simd { namespace ext
   namespace bs = ::boost::simd;
 
   //------------------------------------------------------------------------------------------------
-  // load from an aligned pointer
-  BOOST_DISPATCH_OVERLOAD ( load_
+  // load from an aligned pointer of single
+  BOOST_DISPATCH_OVERLOAD ( aligned_load_
                           , (typename Target, typename Pointer)
-                          , bd::sse_
-                          , bd::pointer<bd::scalar_<bd::single_<Pointer>>>
+                          , bs::sse_
+                          , bd::pointer_<bd::scalar_<bd::single_<Pointer>>,1u>
                           , bd::target_<bs::pack_<bd::single_<Target>,bs::sse_>>
                           )
   {
@@ -34,6 +36,10 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE target operator()(Pointer p, Target const&) const
     {
+      BOOST_ASSERT_MSG( boost::alignment::is_aligned(p, sizeof(target))
+                      , "boost::simd::aligned_load was performed on an unaligned pointer of float"
+                      );
+
       return _mm_load_ps(p);
     }
   };

@@ -15,11 +15,12 @@
 #define BOOST_SIMD_SDK_ABI_OF_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
-#include <boost/simd/sdk/storage_of.hpp>
-#include <boost/simd/sdk/extension_of.hpp>
+#include <boost/simd/arch/spec.hpp>
 
 namespace boost { namespace simd
 {
+  template<typename T> struct logical;
+
   /*!
     @ingroup  group-api
     @brief    Type/Size to ABI mapping
@@ -30,9 +31,10 @@ namespace boost { namespace simd
     @tparam Type Type to store
     @tparam N    Number of elements to store
   **/
-  template<typename Type, std::size_t N> struct abi_of : extension_of< storage_of_t<Type,N> > {};
+  template<typename Type, std::size_t N> struct abi_of                  : ext::abi_of<Type,N> {};
+  template<typename Type, std::size_t N> struct abi_of<logical<Type>,N> : ext::abi_of<Type,N> {};
 
-  /// @brief Eager short-cut to extension_of
+  /// @brief Eager short-cut to abi_of
   template<typename Type, std::size_t N> using abi_of_t = typename abi_of<Type,N>::type;
 } }
 

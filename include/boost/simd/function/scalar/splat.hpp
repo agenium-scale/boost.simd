@@ -14,6 +14,5 @@
 
 #include <boost/simd/function/definition/splat.hpp>
 #include <boost/simd/arch/common/scalar/function/splat.hpp>
-#include <boost/simd/as.hpp>
 
 #endif

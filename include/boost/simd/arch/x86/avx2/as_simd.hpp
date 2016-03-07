@@ -15,5 +15,20 @@
 #define BOOST_SIMD_ARCH_X86_AVX2_DETAIL_AS_SIMD_HPP_INCLUDED
 
 #include <boost/simd/arch/x86/avx/as_simd.hpp>
+#include <boost/dispatch/meta/is_natural.hpp>
+
+namespace boost { namespace simd
+{
+  namespace ext
+  {
+    template<typename T>
+    struct as_simd< T, boost::simd::avx_
+                  , typename std::enable_if<boost::dispatch::is_natural<T>::value>::type
+                  >
+    {
+      using type = __m256i;
+    };
+  }
+} }
 
 #endif

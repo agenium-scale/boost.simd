@@ -16,8 +16,12 @@
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/detail/pack_traits.hpp>
+#include <boost/simd/detail/storage_of.hpp>
 #include <boost/simd/sdk/is_power_of_2.hpp>
-#include <boost/simd/sdk/hierarchy/simd.hpp>
+#include <boost/simd/function/aligned_load.hpp>
+#include <boost/simd/function/extract.hpp>
+#include <boost/simd/function/splat.hpp>
+#include <boost/simd/function/load.hpp>
 #include <boost/align/is_aligned.hpp>
 #include <boost/config.hpp>
 #include <iterator>
@@ -39,10 +43,7 @@ namespace boost { namespace simd
     @tparam N   Number of element stored
     @tparam ABI Binary flag to prevent ABI issue
    **/
-  template< typename T
-          , std::size_t N
-          , typename ABI
-          >
+  template<typename T, std::size_t N, typename ABI>
   class pack {
 
     static_assert( boost::simd::is_power_of_2_<N>::value
@@ -50,14 +51,14 @@ namespace boost { namespace simd
                  );
 
     public:
-    using traits                    = detail::pack_traits<T, N>;
+    using traits                = detail::pack_traits<T, N,typename detail::storage_of<T,N,ABI>::type>;
+    using storage_type          = typename traits::storage_type;
+    using storage_kind          = typename traits::storage_kind;
+    using value_type            = typename traits::value_type;
+    using size_type             = typename traits::size_type;
 
-    using storage_type              = typename traits::storage_type;
-    using value_type                = typename traits::value_type;
-    using size_type                 = typename traits::size_type;
-
-    using reference                 = typename traits::reference;
-    using const_reference           = typename traits::const_reference;
+    using reference             = typename traits::reference;
+    using const_reference       = typename traits::const_reference;
 
     using iterator                  = detail::pack_iterator<pack>;
     using const_iterator            = detail::pack_iterator<pack const>;
@@ -91,13 +92,9 @@ namespace boost { namespace simd
 
       @param ptr Pointer to load from
     **/
-    BOOST_FORCEINLINE explicit pack(T const* ptr)
-    {
-      BOOST_ASSERT_MSG( (boost::alignment::is_aligned(sizeof(storage_type), ptr))
-                      , "pack(ctor) pointer must be aligned"
-                      );
-      traits::load(data_, ptr);
-    }
+    BOOST_FORCEINLINE explicit pack(T const* ptr) BOOST_NOEXCEPT
+                              : data_( boost::simd::aligned_load<pack>(ptr).storage() )
+    {}
 
     /*!
       @brief Construct a pack from a range of element
@@ -115,9 +112,8 @@ namespace boost { namespace simd
              , typename = typename std::enable_if<!std::is_fundamental<Iterator>::value>::type
              >
     BOOST_FORCEINLINE pack(Iterator b, Iterator e)
-    {
-      traits::load(data_, b, e);
-    }
+                    : data_( boost::simd::load<pack>(b,e).storage() )
+    {}
 
     /*!
       @brief Construct a pack from a set of scalar values
@@ -135,9 +131,11 @@ namespace boost { namespace simd
     BOOST_FORCEINLINE pack(T0 const& v0, T1 const& v1, Ts const&... vn)
     {
       static_assert( 2 + sizeof...(vn) == static_size
-                   , "number of parameters must be the exact same size of N"
+                   , "pack<T,N>(T v...) must take exactly N arguments"
                    );
-      traits::fill(data_, static_cast<T>(v0), static_cast<T>(v1), static_cast<T>(vn)...);
+
+      std::initializer_list<T> lst{static_cast<T>(v0), static_cast<T>(v1), static_cast<T>(vn)...};
+      data_ = boost::simd::load<pack>(lst.begin()).storage();
     }
 
     /*!
@@ -145,10 +143,9 @@ namespace boost { namespace simd
 
       @param value The value to replicate
     **/
-    BOOST_FORCEINLINE explicit pack(T const& value)
-    {
-      traits::splat(data_, value);
-    }
+    BOOST_FORCEINLINE explicit pack(T const& value) BOOST_NOEXCEPT
+                      : data_( boost::simd::splat<pack>(value).storage() )
+    {}
 
     /// @brief Pack assignment operator
     BOOST_FORCEINLINE pack& operator=(pack const& rhs) BOOST_NOEXCEPT
@@ -187,13 +184,13 @@ namespace boost { namespace simd
     **/
     BOOST_FORCEINLINE reference operator[](std::size_t i)
     {
-      return traits::at(data_, i);
+      return extract(*this, i);
     }
 
     /// @overload
     BOOST_FORCEINLINE const_reference operator[](std::size_t i) const
     {
-      return traits::at(data_, i);
+      return extract(*this, i);
     }
 
     public:
@@ -302,17 +299,12 @@ namespace boost { namespace simd
   template <typename T, std::size_t N>
   std::ostream& operator<<(std::ostream& os, pack<T, N> const& p)
   {
-    os << '(';
-    auto it = p.cbegin();
-    os << T(*it);
-    // This is safe to increment without checking because pack has always at least 1 element
-    ++it;
-    for (; it != p.cend(); ++it) {
-      os << ", ";
-      os << T(*it);
-    }
-    os << ')';
-    return os;
+    os << '(' << p[0];
+
+    for (std::size_t i=1; i != N; ++i)
+      os << ", " << p[i];
+
+    return os << ')';
   }
 } }
 

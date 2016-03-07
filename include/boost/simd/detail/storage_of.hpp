@@ -14,6 +14,8 @@
 #ifndef BOOST_SIMD_DETAIL_STORAGE_OF_HPP_INCLUDED
 #define BOOST_SIMD_DETAIL_STORAGE_OF_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
+#include <boost/simd/forward.hpp>
 #include <boost/simd/sdk/as_simd.hpp>
 #include <boost/simd/sdk/expected_cardinal.hpp>
 #include <boost/simd/detail/brigand.hpp>
@@ -22,14 +24,17 @@
 
 namespace boost { namespace simd { namespace detail
 {
-  // Status for emulated SIMD storage
+  // Status for emulated SIMD storage via array of scalar
   using emulated_status   = brigand::int32_t<-1>;
 
   // Status for native SIMD storage
   using native_status     = brigand::int32_t<+0>;
 
-  // Status for aggregated SIMD storage
+  // Status for emulated SIMD storage via array of pack
   using aggregated_status = brigand::int32_t<+1>;
+
+  // Status for SIMD storage to be determined
+  using unknown_status = brigand::int32_t<42>;
 
   /*!
     @ingroup group-detail
@@ -44,9 +49,9 @@ namespace boost { namespace simd { namespace detail
                                       >
   {};
 
-  // Forcibly emualted SIMD register stays emulated
+  // If ABI is not supported by current hardware, search for proper emulated storage later
   template< typename T, std::size_t C>
-  struct storage_status<T,C,simd_emulation_> : emulated_status
+  struct  storage_status<T,C,simd_emulation_> : unknown_status
   {};
 
   /*!
@@ -59,22 +64,27 @@ namespace boost { namespace simd { namespace detail
     @tparam Type      Type of the stored elements
     @tparam Cardinal  Number of element stored
   **/
-  template< typename Type, std::size_t Cardinal
-          , typename SIMDFamily = BOOST_SIMD_DEFAULT_FAMILY
-          , typename Status = typename storage_status<Type,Cardinal,SIMDFamily>::type
+  template< typename Type, std::size_t Cardinal, typename ABI
+          , typename Status = typename storage_status<Type,Cardinal,ABI>::type
           , typename Enable = void
           >
   struct storage_of
   {};
 
-  // If the cardinal requested is slower than the expected one,
-  // then try to find a suitable storage in parent extension.
-  template< typename Type, std::size_t Cardinal, typename SIMDFamily>
-  struct  storage_of<Type,Cardinal,SIMDFamily,emulated_status>
-        : storage_of<Type,Cardinal, typename limits<SIMDFamily>::parent>
+  // Unknown ABI requires checks on aggregation/emulation
+  template< typename Type, std::size_t Cardinal>
+  struct  storage_of<Type,Cardinal,simd_emulation_,unknown_status>
+        : storage_of<Type,Cardinal,BOOST_SIMD_DEFAULT_FAMILY>
   {};
 
-  // If the cardinal requested is slower than the expected one and no extension fits,
+  // If the cardinal requested is lower than the expected one,
+  // then try to find a suitable storage in parent extension.
+  template< typename Type, std::size_t Cardinal, typename ABI>
+  struct  storage_of<Type,Cardinal,ABI,emulated_status>
+        : storage_of<Type,Cardinal, typename limits<ABI>::parent>
+  {};
+
+  // If the cardinal requested is lower than the expected one and no extension fits,
   // then use an array of scalar.
   template< typename Type, std::size_t Cardinal>
   struct storage_of<Type,Cardinal,boost::simd::simd_,emulated_status>
@@ -82,21 +92,28 @@ namespace boost { namespace simd { namespace detail
     using type = std::array<Type,Cardinal>;
   };
 
-  // If we match cardinals, use as_simd for current Familly
-  template< typename Type, std::size_t Cardinal, typename SIMDFamily>
-  struct storage_of<Type,Cardinal,SIMDFamily,native_status>
+  // If we match cardinals, use as_simd for current Familly unless Type is no_such_type_
+  template< typename Type, std::size_t Cardinal, typename ABI>
+  struct storage_of<Type,Cardinal,ABI,native_status>
   {
-    using type = boost::simd::as_simd<Type,SIMDFamily>;
+    using parent = storage_of<Type,Cardinal,typename limits<ABI>::parent>;
+    using base   = boost::simd::as_simd<Type,ABI>;
+    using type   = typename std::conditional< std::is_same< typename base::type
+                                                          , brigand::no_such_type_
+                                                          >::value
+                                            , parent
+                                            , base
+                                            >::type::type;
   };
 
   // IF we request more than needed, we aggregate smaller SIMD registers
-  template< typename Type, std::size_t Cardinal, typename SIMDFamily>
-  struct storage_of<Type,Cardinal,SIMDFamily,aggregated_status>
+  template< typename Type, std::size_t Cardinal, typename ABI>
+  struct storage_of<Type,Cardinal,ABI,aggregated_status>
   {
-    enum { expected = expected_cardinal<Type,SIMDFamily>::value };
+    enum { expected = expected_cardinal<Type,ABI>::value };
     enum { size     = Cardinal / expected };
 
-    using base = typename storage_of<Type,expected,SIMDFamily>::type;
+    using base = pack<Type,expected>;
     using type = std::array<base,size>;
   };
 } } }

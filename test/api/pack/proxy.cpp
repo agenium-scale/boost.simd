@@ -6,140 +6,186 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-
 #include <boost/simd/pack.hpp>
+#include <algorithm>
 #include <numeric>
 #include <simd_test.hpp>
 
 namespace bs = boost::simd;
 
 template <typename T, std::size_t N, typename Env>
-void test(Env& $)
+void test_cast(Env& $)
 {
-  // T(...) cast operator and assignment
-  {
-    std::array<T, N> a;
-    std::iota(a.begin(), a.end(), T(1));
-    bs::pack<T, N> p0(a.begin(), a.end()), ref(a.begin(), a.end());
+  std::array<T, N> a;
+  std::iota(a.begin(), a.end(), T(1));
+  bs::pack<T, N> p0(a.begin(), a.end()), ref;
 
-    std::transform(p0.begin(),p0.end(),ref.begin(), [](T e) { return e; } );
-    STF_EXPECT(( std::equal(ref.begin(),ref.end(), a.begin()) ));
-  }
-
-  // ==
-  {
-    std::array<T, N> a;
-    std::iota(a.begin(), a.end(), T(1));
-    bs::pack<T, N> p0(a.begin(), a.end()), ref(a.begin(), a.end());
-
-    bool compares_equals = true;
-    for (auto it0 = p0.begin(); it0 != p0.end() ; ++it0)
-      compares_equals = compares_equals && (*it0 == *it0);
-
-    STF_EXPECT( compares_equals );
-  }
-
-  // !=
-  {
-    std::array<T, N> a;
-    std::iota(a.begin(), a.end(), T(1));
-    bs::pack<T, N> p0(a.begin(), a.end()), ref(a.begin(), a.end());
-
-    bool compares_not_equals = true;
-    for (auto it0 = p0.begin(); it0 != p0.end() ; ++it0)
-      compares_not_equals = compares_not_equals && ((*it0+1) != *it0);
-
-    STF_EXPECT( compares_not_equals );
-  }
-
-  // !
-  {
-    std::array<T, N> a;
-    std::iota(a.begin(), a.end(), T(1));
-    bs::pack<T, N> p0(a.begin(), a.end()), ref(a.begin(), a.end());
-
-    bool supports_logical_not = true;
-    for (auto it0 = p0.begin(); it0 != p0.end(); ++it0)
-      supports_logical_not = supports_logical_not && !(!(*it0));
-
-    STF_EXPECT( supports_logical_not );
-  }
-
-  // a ? b
-  {
-    std::array<T, N> a;
-    std::iota(a.begin(), a.end(), T(1));
-    bs::pack<T, N> p0(a.begin(), a.end()), ref(a.begin(), a.end());
-
-    bool supports_plus    = true;
-    bool supports_minus   = true;
-    bool supports_times   = true;
-    bool supports_divides = true;
-
-    auto it0 = p0.begin();
-    auto it1 = a.begin();
-
-    for (; it0 != p0.end() && it1 != a.end(); ++it0, ++it1)
-    {
-      supports_plus    = supports_plus    && ((*it0 + *it0) == T(*it1 + *it1));
-      supports_minus   = supports_minus   && ((*it0 - *it0) == T(*it1 - *it1));
-      supports_times   = supports_times   && ((*it0 * *it0) == T(*it1 * *it1));
-      supports_divides = supports_divides && ((*it0 / *it0) == T(*it1 / *it1));
-    }
-
-    STF_EXPECT( supports_plus     );
-    STF_EXPECT( supports_minus    );
-    STF_EXPECT( supports_times    );
-    STF_EXPECT( supports_divides  );
-  }
-
-  // a ?= b
-  {
-    std::array<T, N> a;
-    std::iota(a.begin(), a.end(), T(1));
-
-    bool supports_plus_assign    = true;
-    bool supports_minus_assign   = true;
-    bool supports_times_assign   = true;
-    bool supports_div_assign = true;
-    T inc{2};
-
-    bs::pack<T, N> p0 = bs::pack<T, N>(a.begin(), a.end());
-    auto it0 = p0.begin();
-    auto it1 = a.begin();
-    for (; it0 != p0.end() && it1 != a.end(); ++it0, ++it1)
-      supports_plus_assign = supports_plus_assign && ((*it0 += inc) == T(*it1 + inc));
-
-    it0 = p0.begin();
-    it1 = a.begin();
-    p0 = bs::pack<T, N>(a.begin(), a.end());
-    for (; it0 != p0.end() && it1 != a.end(); ++it0, ++it1)
-      supports_minus_assign = supports_minus_assign && ((*it0 -= inc) == T(*it1 - inc));
-
-    it0 = p0.begin();
-    it1 = a.begin();
-    p0 = bs::pack<T, N>(a.begin(), a.end());
-    for (; it0 != p0.end() && it1 != a.end(); ++it0, ++it1)
-      supports_times_assign = supports_times_assign && ((*it0 *= inc) == T(*it1 * inc));
-
-    it0 = p0.begin();
-    it1 = a.begin();
-    p0 = bs::pack<T, N>(a.begin(), a.end());
-    for (; it0 != p0.end() && it1 != a.end(); ++it0, ++it1)
-      supports_div_assign = supports_div_assign && ((*it0 /= inc) == T(*it1 / inc));
-
-    STF_EXPECT( supports_plus_assign  );
-    STF_EXPECT( supports_minus_assign );
-    STF_EXPECT( supports_times_assign );
-    STF_EXPECT( supports_div_assign   );
-  }
+  std::transform(p0.begin(),p0.end(),ref.begin(), [](T e) { return e; } );
+  STF_EXPECT(( std::equal(ref.begin(),ref.end(), a.begin()) ));
 }
 
-STF_CASE_TPL( "Check pack's operators" , STF_NUMERIC_TYPES)
+template <typename T, std::size_t N, typename Env>
+void test_is_equal(Env& $)
 {
-  test<T,  2>($);
-  test<T,  4>($);
-  test<T,  8>($);
-  test<T, 16>($);
-  test<T, 32>($);
+  std::array<T, N> a;
+  std::iota(a.begin(), a.end(), T(1));
+  bs::pack<T, N> p(a.begin(), a.end());
+
+  STF_EXPECT(( std::all_of(p.begin() , p.end(), [](T e) { return e == e; } ) ));
+}
+
+template <typename T, std::size_t N, typename Env>
+void test_not_equal(Env& $)
+{
+  std::array<T, N> a;
+  std::iota(a.begin(), a.end(), T(1));
+  bs::pack<T, N> p(a.begin(), a.end());
+
+  STF_EXPECT(( std::none_of(p.begin() , p.end(), [](T e) { return e != e; } ) ));
+}
+
+template <typename T, std::size_t N, typename Env>
+void test_not(Env& $)
+{
+  std::array<T, N> a;
+  std::iota(a.begin(), a.end(), T(1));
+  bs::pack<T, N> p0(a.begin(), a.end()), ref(a.begin(), a.end());
+
+  bool supports_logical_not = true;
+  for (auto it0 = p0.begin(); it0 != p0.end(); ++it0)
+    supports_logical_not = supports_logical_not && !(!(*it0));
+
+  STF_EXPECT( supports_logical_not );
+}
+
+template <typename T, std::size_t N, typename Env, typename Op>
+void test_binop(Env& $, Op op)
+{
+  std::array<T, N> a;
+  std::iota(a.begin(), a.end(), T(1));
+  bs::pack<T, N> p0(a.begin(), a.end()), ref;
+
+  std::transform(p0.begin(),p0.end(),p0.begin(),ref.begin(), op );
+  std::transform(a.begin() ,a.end() ,a.begin() ,a.begin()  , op );
+  STF_EXPECT(( std::equal(ref.begin(),ref.end(), a.begin()) ));
+}
+
+STF_CASE_TPL( "Check proxy access" , STF_NUMERIC_TYPES)
+{
+  test_cast<T,  2>($);
+  test_cast<T,  4>($);
+  test_cast<T,  8>($);
+  test_cast<T, 16>($);
+  test_cast<T, 32>($);
+}
+
+STF_CASE_TPL( "Check proxy comparison" , STF_NUMERIC_TYPES)
+{
+  test_is_equal<T,  2>($);
+  test_is_equal<T,  4>($);
+  test_is_equal<T,  8>($);
+  test_is_equal<T, 16>($);
+  test_is_equal<T, 32>($);
+}
+
+STF_CASE_TPL( "Check proxy non equal comparison" , STF_NUMERIC_TYPES)
+{
+  test_not_equal<T,  2>($);
+  test_not_equal<T,  4>($);
+  test_not_equal<T,  8>($);
+  test_not_equal<T, 16>($);
+  test_not_equal<T, 32>($);
+}
+
+STF_CASE_TPL( "Check proxy bitwise negation" , STF_NUMERIC_TYPES)
+{
+  test_not<T,  2>($);
+  test_not<T,  4>($);
+  test_not<T,  8>($);
+  test_not<T, 16>($);
+  test_not<T, 32>($);
+}
+
+STF_CASE_TPL( "Check proxy + operator" , STF_NUMERIC_TYPES)
+{
+  std::plus<T> op;
+  test_binop<T,  2>($,op);
+  test_binop<T,  4>($,op);
+  test_binop<T,  8>($,op);
+  test_binop<T, 16>($,op);
+  test_binop<T, 32>($,op);
+}
+
+STF_CASE_TPL( "Check proxy - operator" , STF_NUMERIC_TYPES)
+{
+  std::minus<T> op;
+  test_binop<T,  2>($,op);
+  test_binop<T,  4>($,op);
+  test_binop<T,  8>($,op);
+  test_binop<T, 16>($,op);
+  test_binop<T, 32>($,op);
+}
+
+STF_CASE_TPL( "Check proxy * operator" , STF_NUMERIC_TYPES)
+{
+  std::multiplies<T> op;
+  test_binop<T,  2>($,op);
+  test_binop<T,  4>($,op);
+  test_binop<T,  8>($,op);
+  test_binop<T, 16>($,op);
+  test_binop<T, 32>($,op);
+}
+
+STF_CASE_TPL( "Check proxy / operator" , STF_NUMERIC_TYPES)
+{
+  std::divides<T> op;
+  test_binop<T,  2>($,op);
+  test_binop<T,  4>($,op);
+  test_binop<T,  8>($,op);
+  test_binop<T, 16>($,op);
+  test_binop<T, 32>($,op);
+}
+
+STF_CASE_TPL( "Check proxy += operator" , STF_NUMERIC_TYPES)
+{
+  auto op = [](T& a, T b) { return a+= b; };
+
+  test_binop<T,  2>($,op);
+  test_binop<T,  4>($,op);
+  test_binop<T,  8>($,op);
+  test_binop<T, 16>($,op);
+  test_binop<T, 32>($,op);
+}
+
+STF_CASE_TPL( "Check proxy -= operator" , STF_NUMERIC_TYPES)
+{
+  auto op = [](T& a, T b) { return a -= b; };
+
+  test_binop<T,  2>($,op);
+  test_binop<T,  4>($,op);
+  test_binop<T,  8>($,op);
+  test_binop<T, 16>($,op);
+  test_binop<T, 32>($,op);
+}
+
+STF_CASE_TPL( "Check proxy *= operator" , STF_NUMERIC_TYPES)
+{
+  auto op = [](T& a, T b) { return a*= b; };
+
+  test_binop<T,  2>($,op);
+  test_binop<T,  4>($,op);
+  test_binop<T,  8>($,op);
+  test_binop<T, 16>($,op);
+  test_binop<T, 32>($,op);
+}
+
+STF_CASE_TPL( "Check proxy /= operator" , STF_NUMERIC_TYPES)
+{
+  auto op = [](T& a, T b) { return a /= b; };
+
+  test_binop<T,  2>($,op);
+  test_binop<T,  4>($,op);
+  test_binop<T,  8>($,op);
+  test_binop<T, 16>($,op);
+  test_binop<T, 32>($,op);
 }

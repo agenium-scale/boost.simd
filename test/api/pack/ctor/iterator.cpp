@@ -8,17 +8,18 @@
 //==================================================================================================
 
 #include <boost/simd/pack.hpp>
-#include <limits>
+#include <boost/simd/function/load.hpp>
+#include <list>
 #include <numeric>
 #include <simd_test.hpp>
 
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
 {
-  std::vector<T> v(N);
+  std::list<T> v(N);
   std::iota(v.begin(), v.end(), T{1});
-  boost::simd::pack<T, N> p(v.begin(), v.end());
 
+  boost::simd::pack<T, N> p(v.begin(), v.end());
   STF_EXPECT( std::equal(p.begin(),p.end(), v.begin()) );
 }
 

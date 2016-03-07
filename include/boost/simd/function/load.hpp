@@ -33,6 +33,6 @@ namespace boost { namespace simd
 #endif
 
 #include <boost/simd/function/scalar/load.hpp>
-//#include <boost/simd/function/simd/load.hpp>
+#include <boost/simd/function/simd/load.hpp>
 
 #endif

@@ -16,7 +16,7 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
+    @ingroup group-arithmetic
 
     Random-access extraction of a value subcomponent
 
@@ -24,7 +24,6 @@ namespace boost { namespace simd
 
     @par Semantic
 
-    Depending on the type of its arguments, extract exhibits different semantics.
     For any value @c v of type @c Value and @c o of type @c Offset:
 
     @code
@@ -33,13 +32,13 @@ namespace boost { namespace simd
 
     is similar to:
 
-    - If @c v is a scalar type:
+    - If @c v is a scalar value:
 
       @code
       x = v;
       @endcode
 
-    - If @c v is a SIMD type:
+    - If @c v is a SIMD value:
 
       @code
       x = v[o];
@@ -49,25 +48,10 @@ namespace boost { namespace simd
     @param o   Position to extract from (offset)
 
     @return The extracted value
-
   **/
-  template<typename Value, typename Offset> auto extract( Value const& v
-                                                        ,  Offset const& o) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-arithmetic
-
-      Random-access extraction of a value subcomponent
-
-
-      Function object tied to simd::extract
-
-      @see simd::extract
-    **/
-    const boost::dispatch::functor<tag::extract_> extract = {};
-  }
+  template<typename Value, typename Offset>
+  auto extract( Value const& v, Offset const& o)
+  {}
 } }
 #endif
 

@@ -15,7 +15,6 @@
 #define BOOST_SIMD_SDK_MASKED_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
-#include <boost/simd/sdk/aligned.hpp>
 #include <boost/dispatch/adapted/common/pointer.hpp>
 #include <boost/dispatch/hierarchy/unspecified.hpp>
 #include <boost/dispatch/meta/value_of.hpp>
@@ -31,23 +30,6 @@ namespace boost { namespace simd
     template<typename T, typename Mask> struct masked_pointer
     {
       using pointer       = T*;
-      using element_type  = T;
-      using mask_type     = Mask;
-
-      BOOST_FORCEINLINE operator      pointer() const BOOST_NOEXCEPT { return ptr;      }
-      BOOST_FORCEINLINE pointer       get()     const BOOST_NOEXCEPT { return ptr;      }
-      BOOST_FORCEINLINE Mask          mask()    const BOOST_NOEXCEPT { return status;   }
-      BOOST_FORCEINLINE element_type  value()   const BOOST_NOEXCEPT { return fallback; }
-
-      pointer       ptr;
-      element_type  fallback;
-      Mask          status;
-    };
-
-    // specialization or mask(aligned(x),s)
-    template<typename T, typename Mask> struct masked_pointer<aligned_pointer<T>,Mask>
-    {
-      using pointer       = aligned_pointer<T>;
       using element_type  = T;
       using mask_type     = Mask;
 
@@ -80,30 +62,6 @@ namespace boost { namespace simd
   BOOST_FORCEINLINE detail::masked_pointer<T,Mask> mask(T* ptr, Mask status) BOOST_NOEXCEPT
   {
     return {ptr,T{0},status};
-  }
-
-  /// @overload
-  template<typename T, typename Mask>
-  BOOST_FORCEINLINE detail::masked_pointer<detail::aligned_pointer<T>,Mask>
-  mask(detail::aligned_pointer<T> const& ptr, T const& v, Mask status) BOOST_NOEXCEPT
-  {
-    return {ptr,v,status};
-  }
-
-  /// @overload
-  template<typename T, typename Mask>
-  BOOST_FORCEINLINE detail::masked_pointer<detail::aligned_pointer<T>,Mask>
-  mask(detail::aligned_pointer<T> const& ptr, Mask status) BOOST_NOEXCEPT
-  {
-    return {ptr,T{0},status};
-  }
-
-  /// @overload
-  template<typename T, typename Mask>
-  BOOST_FORCEINLINE detail::masked_pointer<detail::aligned_pointer<T>,Mask>
-  aligned(detail::masked_pointer<T,Mask> const& ptr) BOOST_NOEXCEPT
-  {
-    return {::boost::simd::aligned(ptr.get()),ptr.value(),ptr.mask()};
   }
 } }
 

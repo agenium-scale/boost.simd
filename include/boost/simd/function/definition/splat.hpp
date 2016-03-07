@@ -31,14 +31,14 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag, splat_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::splat_,splat);
   }
 
-  template<typename T, typename A> BOOST_FORCEINLINE T splat(const A& a) BOOST_NOEXCEPT
+  template<typename T, typename A>  BOOST_FORCEINLINE T splat(const A& a) BOOST_NOEXCEPT
   {
-    return functional::splat(a, as_<T>());
+    return detail::splat(a, as_<T>());
   }
 } }
 
