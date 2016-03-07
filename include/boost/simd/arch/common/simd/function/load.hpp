@@ -43,7 +43,7 @@ namespace boost { namespace simd { namespace ext
 
     // How many elements does each load loads ?
     template<typename I>
-    using offset_t = std::integral_constant<std::size_t,I::value*target_t::traits::cardinal>;
+    using offset_t = std::integral_constant<std::size_t,I::value*target_t::traits::element_size>;
 
     template<typename... N>
     static inline storage_t do_(Pointer p, brigand::list<N...> const&) BOOST_NOEXCEPT
@@ -72,7 +72,7 @@ namespace boost { namespace simd { namespace ext
     }
 
     template<typename I>
-    using offset_t = std::integral_constant<std::size_t,target_t::traits::cardinal>;
+    using offset_t = std::integral_constant<std::size_t,target_t::traits::element_size>;
 
     template<typename... N>
     static inline storage_t do_(Begin const& b, brigand::list<N...> const&) BOOST_NOEXCEPT
@@ -109,10 +109,10 @@ namespace boost { namespace simd { namespace ext
 
     // How many elements does each load loads ?
     template<typename I>
-    using begin_t = std::integral_constant<std::size_t,I::value*target_t::traits::cardinal>;
+    using begin_t = std::integral_constant<std::size_t,I::value*target_t::traits::element_size>;
 
     template<typename I>
-    using end_t = std::integral_constant<std::size_t,(1+I::value)*target_t::traits::cardinal>;
+    using end_t = std::integral_constant<std::size_t,(1+I::value)*target_t::traits::element_size>;
 
     template<typename... N>
     static inline storage_t do_(Begin const& b, brigand::list<N...> const&) BOOST_NOEXCEPT

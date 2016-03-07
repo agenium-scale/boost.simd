@@ -38,7 +38,7 @@ namespace boost { namespace simd { namespace detail
 
     using storage_kind = ::boost::simd::scalar_storage;
 
-    enum { static_size = N, cardinal = 1 };
+    enum { static_size = N, element_size = 1 };
 
     BOOST_FORCEINLINE static reference at(storage_type& d, std::size_t i) BOOST_NOEXCEPT
     {
@@ -56,9 +56,10 @@ namespace boost { namespace simd { namespace detail
   template <typename T, typename SIMD, std::size_t N, std::size_t NumberOfVectors>
   class pack_traits<T, N, std::array<SIMD, NumberOfVectors> > {
     public:
+
     enum {
-      static_size = N,
-      cardinal = N / NumberOfVectors
+      static_size  = N,
+      element_size = N / NumberOfVectors
     };
 
     using storage_type              = std::array<SIMD, NumberOfVectors>;
@@ -75,12 +76,12 @@ namespace boost { namespace simd { namespace detail
 
     BOOST_FORCEINLINE static reference at(storage_type& d, std::size_t i)
     {
-      return d[i / cardinal][i % cardinal];
+      return d[i / element_size][i % element_size];
     }
 
     BOOST_FORCEINLINE static const_reference at(storage_type const& d, std::size_t i)
     {
-      return d[i / cardinal][i % cardinal];
+      return d[i / element_size][i % element_size];
     }
   };
 

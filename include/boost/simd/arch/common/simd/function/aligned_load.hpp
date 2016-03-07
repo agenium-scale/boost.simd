@@ -47,7 +47,7 @@ namespace boost { namespace simd { namespace ext
 
     // How many elements does each aligned_load loads ?
     template<typename I>
-    using offset_t = std::integral_constant<std::size_t,I::value*target_t::traits::cardinal>;
+    using offset_t = std::integral_constant<std::size_t,I::value*target_t::traits::element_size>;
 
     template<typename... N>
     static inline storage_t do_(Pointer p, brigand::list<N...> const&) BOOST_NOEXCEPT

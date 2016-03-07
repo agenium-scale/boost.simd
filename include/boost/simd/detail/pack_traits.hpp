@@ -63,10 +63,10 @@ namespace boost { namespace simd { namespace detail
     using value_type                = TYPE;                                                        \
     using size_type                 = std::size_t;                                                 \
                                                                                                    \
-    enum { static_size = N };                                                                      \
+    enum { static_size = N, element_size = 1 };                                                    \
                                                                                                    \
-    using reference               = value_type&;             \
-    using const_reference         = value_type const&; \
+    using reference               = value_type&;                                                   \
+    using const_reference         = value_type const&;                                             \
                                                                                                    \
     using storage_kind = ::boost::simd::native_storage;                                            \
   };                                                                                               \

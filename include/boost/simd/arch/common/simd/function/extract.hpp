@@ -42,6 +42,29 @@ namespace boost { namespace simd { namespace ext
       return reinterpret_cast<typename detail::may_alias<value_t>::type*>(&a0.storage())[a1];
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( extract_
+                          , (typename A0, typename A1)
+                          , bs::simd_
+                          , bs::pack_<bd::unspecified_<A0>,bs::simd_emulation_>
+                          , bd::scalar_< bd::integer_<A1> >
+                          )
+  {
+    using traits_t = typename A0::traits;
+    using cref_t   = typename A0::const_reference;
+    using ref_t    = typename A0::reference;
+
+    BOOST_FORCEINLINE cref_t operator() ( A0 const& a0, A1 i) const BOOST_NOEXCEPT
+    {
+      return traits_t::at(a0.storage(),i);
+    }
+
+    BOOST_FORCEINLINE ref_t operator() ( A0& a0, A1 i) const BOOST_NOEXCEPT
+    {
+      return traits_t::at(a0.storage(),i);
+    }
+  };
+
 } } }
 
 #endif
