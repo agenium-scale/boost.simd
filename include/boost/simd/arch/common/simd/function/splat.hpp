@@ -46,7 +46,8 @@ namespace boost { namespace simd { namespace ext
     template<typename... N>
     static inline storage_t do_(V const& v, brigand::list<N...> const&) BOOST_NOEXCEPT
     {
-      return { make<N>(value_t(v))... };
+      value_t s(v);
+      return { make<N>(s)... };
     }
   };
 } } }
