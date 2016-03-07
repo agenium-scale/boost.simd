@@ -52,7 +52,7 @@ namespace boost { namespace simd { namespace ext
     template<typename... N>
     static inline storage_t do_(Pointer p, brigand::list<N...> const&) BOOST_NOEXCEPT
     {
-      return { aligned_load<value_t>(p+offset_t<N>::value)... };
+      return {{ aligned_load<value_t>(p+offset_t<N>::value)... }};
     }
   };
 } } }

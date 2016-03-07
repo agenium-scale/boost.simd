@@ -48,7 +48,7 @@ namespace boost { namespace simd { namespace ext
     template<typename... N>
     static inline storage_t do_(Pointer p, brigand::list<N...> const&) BOOST_NOEXCEPT
     {
-      return { load<value_t>(p+offset_t<N>::value)... };
+      return {{ load<value_t>(p+offset_t<N>::value)... }};
     }
   };
 
@@ -80,11 +80,11 @@ namespace boost { namespace simd { namespace ext
       Begin lb, le = b;
 
       // This code is built so every unpacking generates the least amount of calls to std::advance
-      return {  ( lb = le
-                , std::advance(le,offset_t<N>::value)
-                , load<value_t>(lb,le)
-                )...
-              };
+      return  {{  ( lb = le
+                  , std::advance(le,offset_t<N>::value)
+                  , load<value_t>(lb,le)
+                  )...
+              }};
     }
   };
 
@@ -118,7 +118,7 @@ namespace boost { namespace simd { namespace ext
     static inline storage_t do_(Begin const& b, brigand::list<N...> const&) BOOST_NOEXCEPT
     {
       // For RandomAccessIterator, we just offset to the proper place
-      return { load<value_t>(b+begin_t<N>::value, b+end_t<N>::value)... };
+      return {{ load<value_t>(b+begin_t<N>::value, b+end_t<N>::value)... }};
     }
   };
 } } }
