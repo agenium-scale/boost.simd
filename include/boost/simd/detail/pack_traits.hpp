@@ -20,10 +20,13 @@
 #include <cstddef>
 #include <cstring>
 
-namespace boost { namespace simd { namespace detail
+namespace boost { namespace simd
 {
   template<typename T> struct logical;
+} }
 
+namespace boost { namespace simd { namespace detail
+{
   template < typename T
            , std::size_t N
            , typename Storage
