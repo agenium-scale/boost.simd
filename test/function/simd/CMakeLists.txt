@@ -6,5 +6,9 @@
 ##                            http://www.boost.org/LICENSE_1_0.txt
 ##===================================================================================================
 
-add_subdirectory(scalar)
-add_subdirectory(simd)
+set ( SOURCES
+extract.cpp
+)
+
+make_unit( "boost.simd.function.simd"  ${SOURCES})
+make_coverage("boost.simd.function.simd"  ${SOURCES})
