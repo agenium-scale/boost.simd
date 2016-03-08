@@ -7,6 +7,7 @@
 ##===================================================================================================
 
 set ( SOURCES
+      as_arithmetic.cpp
       as_logical.cpp
       masked.cpp
       real_of.cpp

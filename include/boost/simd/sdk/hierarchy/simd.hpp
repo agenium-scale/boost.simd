@@ -62,6 +62,11 @@ namespace boost { namespace dispatch
       using type = T;
     };
 
+    template<typename T,std::size_t N> struct scalar_of<boost::simd::pack<T,N>>
+    {
+      using type = T;
+    };
+
     template<typename T, std::size_t N, typename ABI,typename Origin>
     struct hierarchy_of<boost::simd::pack<T,N,ABI>,Origin>
     {
