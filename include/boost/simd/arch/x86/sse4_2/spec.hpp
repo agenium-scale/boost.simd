@@ -2,7 +2,7 @@
 /*!
   @file
 
-  Defines the SSE4.1 specifications
+  Defines the SSE4.2 specifications
 
   @copyright 2012 - 2015 NumScale SAS
 
@@ -11,22 +11,22 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_X86_SSE41_SPEC_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_X86_SSE41_SPEC_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_X86_SSE4_2_SPEC_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_X86_SSE4_2_SPEC_HPP_INCLUDED
 
 #include <boost/simd/sdk/predef.hpp>
 
 #if !defined(BOOST_SIMD_DEFAULT_FAMILY)
-  #if BOOST_HW_SIMD_X86 == BOOST_HW_SIMD_X86_SSE4_1_VERSION
+  #if BOOST_HW_SIMD_X86 == BOOST_HW_SIMD_X86_SSE4_2_VERSION
     #define BOOST_SIMD_DEFAULT_FAMILY ::boost::simd::sse_
-    #define BOOST_SIMD_DEFAULT_SITE   ::boost::simd::sse4_1_
+    #define BOOST_SIMD_DEFAULT_SITE   ::boost::simd::sse4_2_
   #endif
 #endif
 
-#if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_SSE4_1_VERSION
-  #include <smmintrin.h>
-  #include <boost/simd/arch/x86/sse41/as_simd.hpp>
-  #include <boost/simd/arch/x86/sse41/pack_traits.hpp>
+#if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_SSE4_2_VERSION
+  #include <nmmintrin.h>
+  #include <boost/simd/arch/x86/sse4_2/as_simd.hpp>
+  #include <boost/simd/arch/x86/sse4_2/pack_traits.hpp>
 #endif
 
 #endif

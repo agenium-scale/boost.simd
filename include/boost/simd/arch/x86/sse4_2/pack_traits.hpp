@@ -2,7 +2,7 @@
 /*!
   @file
 
-  Defines SSE4.1 functions for SIMD storage used by pack
+  Defines SSE4.2 functions for SIMD storage used by pack
 
   @copyright 2012 - 2015 NumScale SAS
 
@@ -11,8 +11,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_X86_SSE41_PACK_TRAITS_SIMD_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_X86_SSE41_PACK_TRAITS_SIMD_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_X86_SSE4_2_PACK_TRAITS_SIMD_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_X86_SSE4_2_PACK_TRAITS_SIMD_HPP_INCLUDED
 
 #include <boost/simd/arch/x86/sse2/pack_traits.hpp>
 

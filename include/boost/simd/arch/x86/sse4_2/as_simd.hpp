@@ -11,9 +11,10 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_X86_SSE42_AS_SIMD_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_X86_SSE42_AS_SIMD_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_X86_SSE4_2_AS_SIMD_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_X86_SSE4_2_AS_SIMD_HPP_INCLUDED
 
 #include <boost/simd/arch/x86/sse2/as_simd.hpp>
 
 #endif
+
