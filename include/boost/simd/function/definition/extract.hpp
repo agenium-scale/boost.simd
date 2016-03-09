@@ -29,7 +29,27 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag, extract_);
   }
 
-  BOOST_DISPATCH_CALLABLE_DEFINITION(tag::extract_,extract);
+  namespace detail
+  {
+    BOOST_DISPATCH_CALLABLE_DEFINITION(tag::extract_,extract);
+  }
+
+  template <class T,  class I> BOOST_FORCEINLINE auto extract(const T & a, const I& i) BOOST_NOEXCEPT
+  -> decltype(detail::extract(a, i))
+  {
+    return detail::extract(a, i);
+  }
+  template <class T,  class I> BOOST_FORCEINLINE auto extract( T & a, const I& i) BOOST_NOEXCEPT
+  -> decltype(detail::extract(a, i))
+  {
+    return detail::extract(a, i);
+  }
+  template < size_t N, class T> BOOST_FORCEINLINE dispatch::scalar_of_t<T> extract(const T & a) BOOST_NOEXCEPT
+  {
+    brigand::size_t<N> n;
+    return detail::extract(a, n);
+  }
+
 } }
 
 #endif

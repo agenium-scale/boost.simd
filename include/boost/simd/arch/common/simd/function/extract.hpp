@@ -13,13 +13,15 @@
 
 #include <boost/simd/detail/aliasing.hpp>
 #include <boost/simd/sdk/hierarchy/simd.hpp>
+#include <boost/simd/constant/constant.hpp>
 #include <boost/dispatch/function/overload.hpp>
+#include <boost/dispatch/meta/scalar_of.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
-  namespace bd = boost::dispatch;
   namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
 
   BOOST_DISPATCH_OVERLOAD ( extract_
                           , (typename A0, typename Ext, typename A1)
@@ -65,6 +67,9 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-} } }
+}
+
+} }
+
 
 #endif
