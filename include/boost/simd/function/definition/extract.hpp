@@ -46,8 +46,7 @@ namespace boost { namespace simd
   }
   template < size_t N, class T> BOOST_FORCEINLINE dispatch::scalar_of_t<T> extract(const T & a) BOOST_NOEXCEPT
   {
-    brigand::size_t<N> n;
-    return detail::extract(a, n);
+    return detail::extract(a, brigand::size_t<N>());
   }
 
 } }
