@@ -10,29 +10,31 @@
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/simd/aligned_load.hpp>
 #include <simd_test.hpp>
-#include <boost/align/aligned_allocator.hpp>
+#include <boost/align/aligned_alloc.hpp>
 #include <vector>
-
-template<class T, std::size_t Alignment = 1>
-using aligned_vector = std::vector<T, boost::alignment::aligned_allocator<T, Alignment> >;
 
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
 {
+  namespace ba = boost::alignment;
   namespace bs = boost::simd;
   using p_t = bs::pack<T, N>;
 
-  aligned_vector<T, 32 > a1(3*N);
+  std::size_t alg = sizeof(typename p_t::storage_type); //this work but is not really required if the asserts were corrected
+
+  T* a1 = static_cast<T*>(ba::aligned_alloc(alg, (sizeof(T)) * N*3));
   STF_TYPE_IS(p_t, decltype(bs::aligned_load<p_t>(&a1[0])));
   STF_TYPE_IS(p_t, decltype(bs::aligned_load<p_t>(&a1[0], std::size_t())));
 
   for(std::size_t i = 0; i < 3*N; ++i){
     a1[i] = T(i);
   }
-
-  p_t aa1(&a1[0], &a1[N]);
-  STF_IEEE_EQUAL(bs::aligned_load<p_t>(&a1[0]), aa1);
-
+  for(int i = 0; i <= 2;  ++i)
+  {
+    p_t aa1(a1+i*N, a1+(i+1)*N);
+    STF_IEEE_EQUAL(bs::aligned_load<p_t>(a1+i*N), aa1);
+  }
+  ba::aligned_free(a1);
 }
 
 STF_CASE_TPL( "Check aligned_load behavior with all types", STF_NUMERIC_TYPES )
