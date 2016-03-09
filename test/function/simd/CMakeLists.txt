@@ -7,7 +7,10 @@
 ##===================================================================================================
 
 set ( SOURCES
-extract.cpp
+  aligned_load.cpp
+  extract.cpp
+  splat.cpp
+  load.cpp
 )
 
 make_unit( "boost.simd.function.simd"  ${SOURCES})
