@@ -102,6 +102,6 @@ STF_CASE_TPL("Check extract on pack" , STF_NUMERIC_TYPES)
   test<T, N/2>($);
   test<T, N*2>($);
   test_st<T, N>($);
-//   test_st<T, N/2>($);
-//   test_st<T, N*2>($);
+  test_st<T, N/2>($);
+  test_st<T, N*2>($);
 }

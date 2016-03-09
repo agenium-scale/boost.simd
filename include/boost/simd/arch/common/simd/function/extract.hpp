@@ -17,6 +17,7 @@
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/scalar_of.hpp>
 #include <boost/config.hpp>
+#include <boost/dispatch/adapted/std/integral_constant.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -64,6 +65,19 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE ref_t operator() ( A0& a0, A1 i) const BOOST_NOEXCEPT
     {
       return traits_t::at(a0.storage(),i);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( extract_
+                          , (typename A0, typename Ext, typename A1)
+                          , bs::simd_
+                          , bs::pack_<bd::unspecified_<A0>, Ext>
+                          , bd::constant_<bd::integer_<A1>>
+                          )
+  {
+    BOOST_FORCEINLINE bd::scalar_of_t<A0> operator()(A0 const & a0, A1 const &) const
+    {
+      return bs::extract(a0, A1::value);
     }
   };
 
