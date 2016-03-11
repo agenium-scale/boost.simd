@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check mtwo behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::mtwo;
+  using boost::simd::detail::mtwo;
   using boost::simd::Mtwo;
 
   STF_TYPE_IS(decltype(Mtwo<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check mtwo behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::mtwo;
+  using boost::simd::detail::mtwo;
   using boost::simd::Mtwo;
 
   STF_TYPE_IS(decltype(Mtwo<T>()), T);

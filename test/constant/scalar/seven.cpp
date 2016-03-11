@@ -18,7 +18,7 @@ STF_CASE_TPL( "Check seven behavior for all types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::seven;
+  using boost::simd::detail::seven;
   using boost::simd::Seven;
 
   STF_TYPE_IS(decltype(Seven<T>()), T);

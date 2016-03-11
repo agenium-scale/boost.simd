@@ -11,6 +11,7 @@
 #ifndef BOOST_SIMD_CONSTANT_DEFINITION_TANPIO_8_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_DEFINITION_TANPIO_8_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/detail/constant_traits.hpp>
@@ -34,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,tanpio_8_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::tanpio_8_,tanpio_8);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Tanpio_8() BOOST_NOEXCEPT
-  -> decltype(functional::tanpio_8( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Tanpio_8()
+  BOOST_NOEXCEPT_DECLTYPE(detail::tanpio_8( boost::dispatch::as_<T>{}))
   {
-    return functional::tanpio_8( boost::dispatch::as_<T>{} );
+    return detail::tanpio_8( boost::dispatch::as_<T>{} );
   }
 } }
 

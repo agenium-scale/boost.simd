@@ -9,7 +9,7 @@
 
 #include <boost/simd/pack.hpp>
 #include <boost/dispatch/hierarchy_of.hpp>
-#include <boost/simd/sdk/extension_of.hpp>
+#include <boost/simd/sdk/abi_of.hpp>
 #include <simd_test.hpp>
 
 template <typename T, std::size_t N, typename Env>
@@ -17,7 +17,7 @@ void test(Env& $)
 {
   using pack_t = boost::simd::pack<T, N>;
   using prop_t = boost::dispatch::property_of_t<pack_t>;
-  using ext_t  = boost::simd::extension_of_t<pack_t>;
+  using ext_t  = boost::simd::abi_of_t<T,N>;
 
   STF_TYPE_IS ( boost::dispatch::hierarchy_of_t<pack_t>
               , (boost::simd::pack_<prop_t, ext_t >)

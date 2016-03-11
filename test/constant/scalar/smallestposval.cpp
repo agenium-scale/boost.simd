@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check smallestposval behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::smallestposval;
+  using boost::simd::detail::smallestposval;
   using boost::simd::Smallestposval;
 
   STF_TYPE_IS(decltype(Smallestposval<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check smallestposval behavior for float"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::smallestposval;
+  using boost::simd::detail::smallestposval;
   using boost::simd::Smallestposval;
 
   STF_TYPE_IS(decltype(Smallestposval<T>()), T);
@@ -42,7 +42,7 @@ STF_CASE_TPL( "Check smallestposval behavior for double"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::smallestposval;
+  using boost::simd::detail::smallestposval;
   using boost::simd::Smallestposval;
 
   STF_TYPE_IS(decltype(Smallestposval<T>()), T);

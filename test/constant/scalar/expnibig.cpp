@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check expnibig behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::expnibig;
+  using boost::simd::detail::expnibig;
   using boost::simd::Expnibig;
   T ref = T(0);
   STF_TYPE_IS(decltype(Expnibig<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check expnibig behavior for double"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::expnibig;
+  using boost::simd::detail::expnibig;
   using boost::simd::Expnibig;
   T ref = T(144115188075855872.0);
 
@@ -44,7 +44,7 @@ STF_CASE_TPL( "Check expnibig behavior for float"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::expnibig;
+  using boost::simd::detail::expnibig;
   using boost::simd::Expnibig;
   T ref = T(16777216);
   STF_TYPE_IS(decltype(Expnibig<T>()), T);

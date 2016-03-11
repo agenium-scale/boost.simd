@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,fourthrooteps_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::fourthrooteps_,fourthrooteps);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Fourthrooteps() BOOST_NOEXCEPT
-  -> decltype(functional::fourthrooteps( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Fourthrooteps()
+  BOOST_NOEXCEPT_DECLTYPE(detail::fourthrooteps( boost::dispatch::as_<T>{}))
   {
-    return functional::fourthrooteps( boost::dispatch::as_<T>{} );
+    return detail::fourthrooteps( boost::dispatch::as_<T>{} );
   }
 } }
 

@@ -59,15 +59,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,valmin_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::valmin_,valmin);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Valmin() BOOST_NOEXCEPT
-  -> decltype(functional::valmin(boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Valmin()
+  -> decltype(detail::valmin(boost::dispatch::as_<T>{}))
   {
-    return functional::valmin( boost::dispatch::as_<T>{} );
+    return detail::valmin( boost::dispatch::as_<T>{} );
   }
 } }
 

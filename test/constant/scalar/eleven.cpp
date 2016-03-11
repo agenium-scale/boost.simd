@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check eleven behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::eleven;
+  using boost::simd::detail::eleven;
   using boost::simd::Eleven;
 
   STF_TYPE_IS(decltype(Eleven<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check eleven behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::eleven;
+  using boost::simd::detail::eleven;
   using boost::simd::Eleven;
 
   STF_TYPE_IS(decltype(Eleven<T>()), T);

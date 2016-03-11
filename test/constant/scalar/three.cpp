@@ -18,7 +18,7 @@ STF_CASE_TPL( "Check three behavior for all types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::three;
+  using boost::simd::detail::three;
   using boost::simd::Three;
 
   STF_TYPE_IS(decltype(Three<T>()), T);

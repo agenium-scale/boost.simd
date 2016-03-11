@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,mantissamask_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::mantissamask_,mantissamask);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Mantissamask() BOOST_NOEXCEPT
-  -> decltype(functional::mantissamask( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Mantissamask()
+  BOOST_NOEXCEPT_DECLTYPE(detail::mantissamask( boost::dispatch::as_<T>{}))
   {
-    return functional::mantissamask( boost::dispatch::as_<T>{} );
+    return detail::mantissamask( boost::dispatch::as_<T>{} );
   }
 } }
 

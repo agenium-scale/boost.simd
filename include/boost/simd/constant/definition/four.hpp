@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,four_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::four_,four);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Four() BOOST_NOEXCEPT
-  -> decltype(functional::four( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Four()
+  BOOST_NOEXCEPT_DECLTYPE(detail::four( boost::dispatch::as_<T>{}))
   {
-    return functional::four( boost::dispatch::as_<T>{} );
+    return detail::four( boost::dispatch::as_<T>{} );
   }
 } }
 

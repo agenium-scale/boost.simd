@@ -45,15 +45,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,nbexponentbits_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::nbexponentbits_,nbexponentbits);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Nbexponentbits() BOOST_NOEXCEPT
-  -> decltype(functional::nbexponentbits( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Nbexponentbits()
+  BOOST_NOEXCEPT_DECLTYPE(detail::nbexponentbits( boost::dispatch::as_<T>{}))
   {
-    return functional::nbexponentbits( boost::dispatch::as_<T>{} );
+    return detail::nbexponentbits( boost::dispatch::as_<T>{} );
   }
 } }
 

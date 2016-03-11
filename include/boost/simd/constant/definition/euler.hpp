@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,euler_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::euler_,euler);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Euler() BOOST_NOEXCEPT
-  -> decltype(functional::euler( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Euler()
+  BOOST_NOEXCEPT_DECLTYPE(detail::euler( boost::dispatch::as_<T>{}))
   {
-    return functional::euler( boost::dispatch::as_<T>{} );
+    return detail::euler( boost::dispatch::as_<T>{} );
   }
 } }
 

@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check invlog10_2 behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::invlog10_2;
+  using boost::simd::detail::invlog10_2;
   using boost::simd::Invlog10_2;
   T ref = T(0);
   STF_TYPE_IS(decltype(Invlog10_2<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check invlog10_2 behavior for double/float"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::invlog10_2;
+  using boost::simd::detail::invlog10_2;
   using boost::simd::Invlog10_2;
   T ref = T(3.32192809488736234787031942949);
 

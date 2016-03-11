@@ -18,7 +18,7 @@ STF_CASE_TPL( "Check sixteen behavior for all types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::sixteen;
+  using boost::simd::detail::sixteen;
   using boost::simd::Sixteen;
 
   STF_TYPE_IS(decltype(Sixteen<T>()), T);

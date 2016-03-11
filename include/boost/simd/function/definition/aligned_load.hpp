@@ -1,0 +1,44 @@
+//==================================================================================================
+/*!
+  @file
+
+  @copyright 2015 NumScale SAS
+
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+*/
+//==================================================================================================
+#ifndef BOOST_SIMD_FUNCTION_DEFINITION_ALIGNED_LOAD_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_DEFINITION_ALIGNED_LOAD_HPP_INCLUDED
+
+#include <boost/simd/config.hpp>
+#include <boost/simd/as.hpp>
+#include <boost/dispatch/function/make_callable.hpp>
+#include <boost/dispatch/hierarchy/functions.hpp>
+#include <boost/simd/detail/dispatch.hpp>
+
+namespace boost { namespace simd
+{
+  namespace tag
+  {
+    BOOST_DISPATCH_MAKE_TAG(ext, aligned_load_, boost::dispatch::abstract_<aligned_load_>);
+  }
+
+  namespace ext
+  {
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, aligned_load_);
+  }
+
+  namespace detail
+  {
+    BOOST_DISPATCH_CALLABLE_DEFINITION(tag::aligned_load_,aligned_load);
+  }
+
+  template<typename T, typename Pointer, typename... Opts>
+  BOOST_FORCEINLINE T aligned_load(Pointer p, Opts&&... o)
+  {
+    return detail::aligned_load( p, std::forward<Opts>(o)..., boost::simd::as_<T>() );
+  }
+} }
+
+#endif

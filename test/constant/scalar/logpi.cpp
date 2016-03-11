@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check logpi behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::logpi;
+  using boost::simd::detail::logpi;
   using boost::simd::Logpi;
 
   STF_TYPE_IS(decltype(Logpi<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check logpi behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::logpi;
+  using boost::simd::detail::logpi;
   using boost::simd::Logpi;
 
   STF_TYPE_IS(decltype(Logpi<T>()), T);

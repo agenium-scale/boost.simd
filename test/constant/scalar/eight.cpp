@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check eight behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::eight;
+  using boost::simd::detail::eight;
   using boost::simd::Eight;
 
   STF_TYPE_IS(decltype(Eight<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check eight behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::eight;
+  using boost::simd::detail::eight;
   using boost::simd::Eight;
 
   STF_TYPE_IS(decltype(Eight<T>()), T);

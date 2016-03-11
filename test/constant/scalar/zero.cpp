@@ -19,7 +19,7 @@ STF_CASE_TPL( "Check zero behavior"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::zero;
+  using boost::simd::detail::zero;
   using boost::simd::Zero;
 
   STF_IEEE_EQUAL(Zero<T>(), T(0));

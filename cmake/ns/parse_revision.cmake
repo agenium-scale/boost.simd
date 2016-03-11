@@ -13,8 +13,8 @@ NS_guard(NS_CMAKE_PARSE_REVISION)
 ## Parse revision number in variables
 ##==================================================================================================
 function(parse_revision version_string prefix)
-  set(version_regex_release "^([0-9]+)\\.([0-9]+)\\.([0-9]+)$")
-  set(version_regex_prerelease "^([0-9]+)\\.([0-9]+)\\.([0-9]+)-([0-9A-Za-z.-]+)$")
+  set(version_regex_release ".*([0-9]+)\\.([0-9]+)\\.([0-9]+)$")
+  set(version_regex_prerelease ".*([0-9]+)\\.([0-9]+)[\\.-]([0-9]+)-([0-9A-Za-z.-]+)$")
 
   if ("${version_string}" MATCHES ${version_regex_release})
     set(version_regex ${version_regex_release})
@@ -70,6 +70,8 @@ if (NOT PROJECT_VERSION_STRING OR NOT "${GIT_TAG_IS_AVAILABLE}" STREQUAL "")
 endif()
 
 parse_revision("${PROJECT_VERSION_STRING}" PROJECT_VERSION)
+
+NS_say("Project version is ${PROJECT_VERSION}")
 
 set(PROJECT_RELEASE "(release)")
 if (PROJECT_VERSION_IS_PRERELEASE)

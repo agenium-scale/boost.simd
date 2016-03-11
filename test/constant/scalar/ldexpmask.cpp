@@ -18,7 +18,7 @@ STF_CASE_TPL( "Check ldexpmask behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::ldexpmask;
+  using boost::simd::detail::ldexpmask;
   using boost::simd::Ldexpmask;
 
   STF_TYPE_IS(decltype(Ldexpmask<T>()), T);
@@ -31,7 +31,7 @@ STF_CASE_TPL( "Check ldexpmask behavior for float"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::ldexpmask;
+  using boost::simd::detail::ldexpmask;
   using boost::simd::Ldexpmask;
 
   STF_TYPE_IS(decltype(Ldexpmask<T>()), boost::dispatch::as_integer_t<T>);
@@ -43,7 +43,7 @@ STF_CASE_TPL( "Check ldexpmask behavior for double types"
             , (double)            )
 {
   using boost::simd::as;
-  using boost::simd::functional::ldexpmask;
+  using boost::simd::detail::ldexpmask;
   using boost::simd::Ldexpmask;
 
   STF_TYPE_IS(decltype(Ldexpmask<T>()), boost::dispatch::as_integer_t<T>);

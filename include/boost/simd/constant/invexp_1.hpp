@@ -56,5 +56,6 @@ namespace boost { namespace simd
 
 #include <boost/simd/constant/definition/invexp_1.hpp>
 #include <boost/simd/arch/common/scalar/constant/constant_value.hpp>
+#include <boost/simd/arch/common/simd/constant/constant_value.hpp>
 
 #endif

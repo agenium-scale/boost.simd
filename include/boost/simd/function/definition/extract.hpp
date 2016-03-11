@@ -30,8 +30,6 @@ namespace boost { namespace simd
   }
 
   BOOST_DISPATCH_CALLABLE_DEFINITION(tag::extract_,extract);
-
-
 } }
 
 #endif

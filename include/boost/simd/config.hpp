@@ -21,6 +21,9 @@
 #  include <boost/dispatch/hierarchy/default_site.hpp>
 #endif
 
+// decltype + noexcept combo
+#define BOOST_NOEXCEPT_DECLTYPE(X) BOOST_NOEXCEPT_IF(BOOST_NOEXCEPT_EXPR(X)) -> decltype(X)
+
 #if defined(__FAST_MATH__) && !defined(BOOST_SIMD_FAST_MATH) || defined(DOXYGEN_ONLY)
 
   /*!

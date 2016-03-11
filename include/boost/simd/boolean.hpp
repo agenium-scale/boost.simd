@@ -51,17 +51,12 @@ namespace boost { namespace simd
 #include <boost/simd/function/if_zero_else_allbits.hpp>
 #include <boost/simd/function/if_zero_else.hpp>
 #include <boost/simd/function/if_zero_else_one.hpp>
-#include <boost/simd/function/l_and.hpp>
-#include <boost/simd/function/l_andnot.hpp>
-#include <boost/simd/function/l_notand.hpp>
-#include <boost/simd/function/l_notor.hpp>
 #include <boost/simd/function/logical_and.hpp>
 #include <boost/simd/function/logical_andnot.hpp>
 #include <boost/simd/function/logical_notand.hpp>
 #include <boost/simd/function/logical_notor.hpp>
 #include <boost/simd/function/logical_ornot.hpp>
 #include <boost/simd/function/logical_xor.hpp>
-#include <boost/simd/function/l_ornot.hpp>
 #include <boost/simd/function/mask2logical.hpp>
 #include <boost/simd/function/negif.hpp>
 #include <boost/simd/function/negifnot.hpp>

@@ -12,6 +12,7 @@
 #define BOOST_SIMD_CONSTANT_DEFINITION_BITINCREMENT_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
+#include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/detail/constant_traits.hpp>
@@ -35,15 +36,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,bitincrement_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::bitincrement_,bitincrement);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Bitincrement() BOOST_NOEXCEPT
-  -> decltype(functional::bitincrement( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Bitincrement()
+  BOOST_NOEXCEPT_DECLTYPE(detail::bitincrement( boost::dispatch::as_<T>{}))
   {
-    return functional::bitincrement( boost::dispatch::as_<T>{} );
+    return detail::bitincrement( boost::dispatch::as_<T>{} );
   }
 } }
 

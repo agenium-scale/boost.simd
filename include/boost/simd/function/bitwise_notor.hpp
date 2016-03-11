@@ -39,10 +39,6 @@ namespace boost { namespace simd
     T1 r = ~x | y;
     @endcode
 
-    @par Alias
-
-    b_notor
-
     @see  bitwise_and, bitwise_or, bitwise_xor, bitwise_notand,
     bitwise_and, bitwise_ornot, complement
 

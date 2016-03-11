@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check four behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::four;
+  using boost::simd::detail::four;
   using boost::simd::Four;
 
   STF_TYPE_IS(decltype(Four<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check four behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::four;
+  using boost::simd::detail::four;
   using boost::simd::Four;
 
   STF_TYPE_IS(decltype(Four<T>()), T);

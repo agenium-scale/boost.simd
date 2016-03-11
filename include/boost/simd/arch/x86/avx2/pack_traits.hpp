@@ -15,5 +15,32 @@
 #define BOOST_SIMD_ARCH_X86_AVX2_PACK_TRAITS_SIMD_HPP_INCLUDED
 
 #include <boost/simd/arch/x86/avx/pack_traits.hpp>
+#include <boost/simd/detail/pack_traits.hpp>
+#include <boost/config.hpp>
+#include <type_traits>
+
+namespace boost { namespace simd
+{
+  namespace detail
+  {
+    BOOST_SIMD_DEFINE_PACK_TRAITS_TPL(typename T, T,  4, __m256i);
+    BOOST_SIMD_DEFINE_PACK_TRAITS_TPL(typename T, T,  8, __m256i);
+    BOOST_SIMD_DEFINE_PACK_TRAITS_TPL(typename T, T, 16, __m256i);
+    BOOST_SIMD_DEFINE_PACK_TRAITS_TPL(typename T, T, 32, __m256i);
+  }
+
+  namespace ext
+  {
+    template<typename T, std::size_t N>
+    struct abi_of<  T, N
+                  , typename std::enable_if<   std::is_integral<T>::value
+                                            && (N*sizeof(T) == 32)
+                                            >::type
+                  >
+    {
+      using type = ::boost::simd::avx_;
+    };
+  }
+} }
 
 #endif

@@ -11,6 +11,7 @@
 #ifndef BOOST_SIMD_CONSTANT_DEFINITION_SIXTEEN_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_DEFINITION_SIXTEEN_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/detail/constant_traits.hpp>
@@ -34,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,sixteen_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::sixteen_,sixteen);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Sixteen() BOOST_NOEXCEPT
-  -> decltype(functional::sixteen( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Sixteen()
+  BOOST_NOEXCEPT_DECLTYPE(detail::sixteen( boost::dispatch::as_<T>{}))
   {
-    return functional::sixteen( boost::dispatch::as_<T>{} );
+    return detail::sixteen( boost::dispatch::as_<T>{} );
   }
 } }
 

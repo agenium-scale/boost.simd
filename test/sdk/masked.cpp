@@ -7,7 +7,6 @@
 */
 //==================================================================================================
 #include <boost/simd/sdk/masked.hpp>
-#include <boost/simd/sdk/aligned.hpp>
 #include <boost/dispatch/hierarchy_of.hpp>
 #include <boost/pointee.hpp>
 #include <simd_test.hpp>
@@ -28,33 +27,6 @@ STF_CASE( "Check masked pointer interface" )
 
   STF_EQUAL( ax.mask()   , true   );
   STF_EQUAL( acx.mask()  , false  );
-}
-
-STF_CASE( "Check masked pointer interface over aligned pointer" )
-{
-  double       x{};
-//  std::uint64_t const const_x{};
-
-  auto ax = mask( aligned(&x), true);
-//  auto acx = mask(&const_x, false);
-
-  STF_EQUAL( ax.get().get()   , &x        );
-//  STF_EQUAL( acx.get()  , &const_x  );
-
-  STF_EQUAL( ax.mask()   , true   );
-//  STF_EQUAL( acx.mask()  , false  );
-}
-
-STF_CASE( "pointee of masked pointer")
-{
-  float f{};
-  char const c{};
-
-  using masked_ptr_t   = decltype(mask(&f, true));
-  using c_masked_ptr_t = decltype(mask(&c, false));
-
-  STF_TYPE_IS( boost::pointee<masked_ptr_t>::type, float );
-  STF_TYPE_IS( boost::pointee<c_masked_ptr_t>::type, char const );
 }
 
 STF_CASE( "hierarchy_of of masked pointer")

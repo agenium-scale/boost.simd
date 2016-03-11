@@ -36,15 +36,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,threepio_4_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::threepio_4_,threepio_4);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Threepio_4() BOOST_NOEXCEPT
-  -> decltype(functional::threepio_4( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Threepio_4()
+  BOOST_NOEXCEPT_DECLTYPE(detail::threepio_4( boost::dispatch::as_<T>{}))
   {
-    return functional::threepio_4( boost::dispatch::as_<T>{} );
+    return detail::threepio_4( boost::dispatch::as_<T>{} );
   }
 } }
 

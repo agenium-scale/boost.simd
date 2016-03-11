@@ -59,6 +59,7 @@ before_script:
 
 # Build unit and run test
 script:
-  - make update.boost-header-only | grep -v "^-- Install" # Silent installation
-  - make update.boost.dispatch    | grep -v "^-- Install" # Silent installation
+  - make update.boost-header-only | grep -v "^-- " # Silent installation
+  - make update.boost.dispatch    | grep -v "^-- " # Silent installation
   - make -k unit
+  - ctest

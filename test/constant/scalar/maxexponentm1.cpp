@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check maxexponentm1 behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::maxexponentm1;
+  using boost::simd::detail::maxexponentm1;
   using boost::simd::Maxexponentm1;
 
   STF_TYPE_IS(decltype(Maxexponentm1<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check maxexponentm1 behavior for double"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::maxexponentm1;
+  using boost::simd::detail::maxexponentm1;
   using boost::simd::Maxexponentm1;
 
   STF_TYPE_IS(decltype(Maxexponentm1<T>()), int64_t);
@@ -42,7 +42,7 @@ STF_CASE_TPL( "Check maxexponentm1 behavior for float"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::maxexponentm1;
+  using boost::simd::detail::maxexponentm1;
   using boost::simd::Maxexponentm1;
 
   STF_TYPE_IS(decltype(Maxexponentm1<T>()), int32_t);

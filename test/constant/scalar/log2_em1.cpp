@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check log2_em1 behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::log2_em1;
+  using boost::simd::detail::log2_em1;
   using boost::simd::Log2_em1;
   T ref = T(0);
   STF_TYPE_IS(decltype(Log2_em1<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check log2_em1 behavior for double"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::log2_em1;
+  using boost::simd::detail::log2_em1;
   using boost::simd::Log2_em1;
   T ref = T(0.442695040888963407359924681002);
 
@@ -44,7 +44,7 @@ STF_CASE_TPL( "Check log2_em1 behavior for float"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::log2_em1;
+  using boost::simd::detail::log2_em1;
   using boost::simd::Log2_em1;
   T ref = T(0.4426950408889634073599246810020);
   STF_TYPE_IS(decltype(Log2_em1<T>()), T);

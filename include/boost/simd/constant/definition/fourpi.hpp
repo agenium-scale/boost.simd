@@ -11,6 +11,7 @@
 #ifndef BOOST_SIMD_CONSTANT_DEFINITION_FOURPI_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_DEFINITION_FOURPI_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/detail/constant_traits.hpp>
@@ -25,7 +26,7 @@ namespace boost { namespace simd
     struct fourpi_ : boost::dispatch::constant_value_<fourpi_>
     {
       BOOST_DISPATCH_MAKE_CALLABLE(ext,fourpi_,boost::dispatch::constant_value_<fourpi_>);
-      BOOST_SIMD_REGISTER_CONSTANT(ivalue, fvalue, dvalue);
+      BOOST_SIMD_REGISTER_CONSTANT(12, 0X41490FDBUL, 0X402921FB54442D18ULL);
     };
   }
 
@@ -34,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,fourpi_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::fourpi_,fourpi);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Fourpi() BOOST_NOEXCEPT
-  -> decltype(functional::fourpi( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Fourpi()
+  BOOST_NOEXCEPT_DECLTYPE(detail::fourpi( boost::dispatch::as_<T>{}))
   {
-    return functional::fourpi( boost::dispatch::as_<T>{} );
+    return detail::fourpi( boost::dispatch::as_<T>{} );
   }
 } }
 

@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check mthree behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::mthree;
+  using boost::simd::detail::mthree;
   using boost::simd::Mthree;
 
   STF_TYPE_IS(decltype(Mthree<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check mthree behavior for floating types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::mthree;
+  using boost::simd::detail::mthree;
   using boost::simd::Mthree;
 
   STF_TYPE_IS(decltype(Mthree<T>()), T);

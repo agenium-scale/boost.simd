@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,logsqrt2pi_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::logsqrt2pi_,logsqrt2pi);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Logsqrt2pi() BOOST_NOEXCEPT
-  -> decltype(functional::logsqrt2pi( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Logsqrt2pi()
+  BOOST_NOEXCEPT_DECLTYPE(detail::logsqrt2pi( boost::dispatch::as_<T>{}))
   {
-    return functional::logsqrt2pi( boost::dispatch::as_<T>{} );
+    return detail::logsqrt2pi( boost::dispatch::as_<T>{} );
   }
 } }
 

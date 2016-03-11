@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,maxflint_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::maxflint_,maxflint);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Maxflint() BOOST_NOEXCEPT
-  -> decltype(functional::maxflint( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Maxflint()
+  BOOST_NOEXCEPT_DECLTYPE(detail::maxflint( boost::dispatch::as_<T>{}))
   {
-    return functional::maxflint( boost::dispatch::as_<T>{} );
+    return detail::maxflint( boost::dispatch::as_<T>{} );
   }
 } }
 

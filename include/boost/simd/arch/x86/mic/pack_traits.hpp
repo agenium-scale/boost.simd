@@ -47,17 +47,17 @@ namespace boost { namespace simd
   namespace ext
   {
     // __m512* storage are supported by MIC hardware
-    template<typename Enable> struct extension_of<__m512d,Enable>
+    template<typename Enable> struct abi_of<__m512d,Enable>
     {
       using type = ::boost::simd::mic_;
     };
 
-    template<typename Enable> struct extension_of<__m512,Enable>
+    template<typename Enable> struct abi_of<__m512,Enable>
     {
       using type = ::boost::simd::mic_;
     };
 
-    template<typename Enable> struct extension_of<__m512i,Enable>
+    template<typename Enable> struct abi_of<__m512i,Enable>
     {
       using type = ::boost::simd::mic_;
     };

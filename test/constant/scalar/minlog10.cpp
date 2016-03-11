@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check minlog10 behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::minlog10;
+  using boost::simd::detail::minlog10;
   using boost::simd::Minlog10;
   T ref = T(0);
   STF_TYPE_IS(decltype(Minlog10<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check minlog10 behavior for double"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::minlog10;
+  using boost::simd::detail::minlog10;
   using boost::simd::Minlog10;
   T ref = T(-308.2547155599167);
 
@@ -44,7 +44,7 @@ STF_CASE_TPL( "Check minlog10 behavior for float"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::minlog10;
+  using boost::simd::detail::minlog10;
   using boost::simd::Minlog10;
   T ref = T(-37.89999771118164);
   STF_TYPE_IS(decltype(Minlog10<T>()), T);

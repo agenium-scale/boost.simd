@@ -19,8 +19,7 @@ void test(Env& $)
   std::array<T,N> ref;
   ref.fill(v);
 
-  boost::simd::pack<T, N> p( v );
-
+  boost::simd::pack<T,N> p( v );
   STF_EXPECT( std::equal(p.begin(),p.end(), ref.begin()) );
 }
 
@@ -32,5 +31,3 @@ STF_CASE_TPL("Check pack constructs from a simple scalar" , STF_NUMERIC_TYPES)
   test<T, 16>($);
   test<T, 32>($);
 }
-
-

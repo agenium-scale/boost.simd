@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check splitfactor behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::splitfactor;
+  using boost::simd::detail::splitfactor;
   using boost::simd::Splitfactor;
 
   STF_TYPE_IS(decltype(Splitfactor<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check splitfactor behavior for float"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::splitfactor;
+  using boost::simd::detail::splitfactor;
   using boost::simd::Splitfactor;
 
   STF_TYPE_IS(decltype(Splitfactor<T>()), T);
@@ -42,7 +42,7 @@ STF_CASE_TPL( "Check splitfactor behavior for double"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::splitfactor;
+  using boost::simd::detail::splitfactor;
   using boost::simd::Splitfactor;
 
   STF_TYPE_IS(decltype(Splitfactor<T>()), T);

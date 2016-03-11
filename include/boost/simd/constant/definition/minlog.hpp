@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,minlog_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::minlog_,minlog);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Minlog() BOOST_NOEXCEPT
-  -> decltype(functional::minlog( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Minlog()
+  BOOST_NOEXCEPT_DECLTYPE(detail::minlog( boost::dispatch::as_<T>{}))
   {
-    return functional::minlog( boost::dispatch::as_<T>{} );
+    return detail::minlog( boost::dispatch::as_<T>{} );
   }
 } }
 

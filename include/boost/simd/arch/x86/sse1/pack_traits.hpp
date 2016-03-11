@@ -11,27 +11,24 @@
 
 **/
 //==================================================================================================
-
 #ifndef BOOST_SIMD_ARCH_X86_SSE1_PACK_TRAITS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE1_PACK_TRAITS_HPP_INCLUDED
 
 #include <boost/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/pack_traits.hpp>
-#include <boost/simd/detail/pack_proxy.hpp>
-#include <boost/simd/arch/common/simd/extension_of.hpp>
+#include <boost/simd/arch/common/simd/abi_of.hpp>
 
 namespace boost { namespace simd
 {
   namespace detail
   {
-    BOOST_SIMD_DEFINE_PACK_TRAITS(float, 4, __m128, _mm_set_ps, _mm_load_ps, _mm_set1_ps);
+    BOOST_SIMD_DEFINE_PACK_TRAITS(float, 4, __m128);
   }
 
   namespace ext
   {
-    // __m128 storage are supported by SSE hardware
-    template<typename Enable> struct extension_of<__m128,Enable>
+    template<typename Enable> struct abi_of<float,4,Enable>
     {
       using type = ::boost::simd::sse_;
     };

@@ -30,16 +30,16 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,true_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::true_,true_);
   }
 
   template<typename T>
-  BOOST_FORCEINLINE     auto True() BOOST_NOEXCEPT
-                    ->  decltype(functional::true_( boost::dispatch::as_<T>{}))
+  BOOST_FORCEINLINE     auto True()
+                    ->  decltype(detail::true_( boost::dispatch::as_<T>{}))
   {
-    return functional::true_( boost::dispatch::as_<T>{} );
+    return detail::true_( boost::dispatch::as_<T>{} );
   }
 } }
 

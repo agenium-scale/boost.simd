@@ -19,7 +19,7 @@ STF_CASE_TPL( "Check maxleftshift behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::maxleftshift;
+  using boost::simd::detail::maxleftshift;
   using boost::simd::Maxleftshift;
   using int_t = typename boost::dispatch::as_integer<T>::type;
   STF_TYPE_IS(decltype(Maxleftshift<T>()), int_t);

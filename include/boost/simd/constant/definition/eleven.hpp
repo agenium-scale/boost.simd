@@ -11,6 +11,7 @@
 #ifndef BOOST_SIMD_CONSTANT_DEFINITION_ELEVEN_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_DEFINITION_ELEVEN_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/detail/constant_traits.hpp>
@@ -34,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,eleven_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::eleven_,eleven);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Eleven() BOOST_NOEXCEPT
-  -> decltype(functional::eleven( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Eleven()
+  BOOST_NOEXCEPT_DECLTYPE(detail::eleven( boost::dispatch::as_<T>{}))
   {
-    return functional::eleven( boost::dispatch::as_<T>{} );
+    return detail::eleven( boost::dispatch::as_<T>{} );
   }
 } }
 

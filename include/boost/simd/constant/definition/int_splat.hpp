@@ -11,6 +11,7 @@
 #ifndef BOOST_SIMD_CONSTANT_DEFINITION_INT_SPLAT_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_DEFINITION_INT_SPLAT_HPP_INCLUDED
 //TODO
+#include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/detail/constant_traits.hpp>
@@ -34,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,int_splat_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::int_splat_,int_splat);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Int_splat() BOOST_NOEXCEPT
-  -> decltype(functional::int_splat( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Int_splat()
+  BOOST_NOEXCEPT_DECLTYPE(detail::int_splat( boost::dispatch::as_<T>{}))
   {
-    return functional::int_splat( boost::dispatch::as_<T>{} );
+    return detail::int_splat( boost::dispatch::as_<T>{} );
   }
 } }
 

@@ -29,6 +29,7 @@ namespace boost { namespace simd { namespace detail
     public:
     using storage_type              = std::array<T, N>;
 
+    using internal_pack_traits      = storage_type;
     using value_type                = T;
     using size_type                 = std::size_t;
 
@@ -37,13 +38,7 @@ namespace boost { namespace simd { namespace detail
 
     using storage_kind = ::boost::simd::scalar_storage;
 
-    enum { static_size = N };
-
-    template <typename... Ts>
-    BOOST_FORCEINLINE static void fill(storage_type& d, Ts const&... v) BOOST_NOEXCEPT
-    {
-      d = std::array<T, N>{{ static_cast<T>(v)... }};
-    }
+    enum { static_size = N, element_size = 1 };
 
     BOOST_FORCEINLINE static reference at(storage_type& d, std::size_t i) BOOST_NOEXCEPT
     {
@@ -54,153 +49,39 @@ namespace boost { namespace simd { namespace detail
     {
       return d[i];
     }
-
-    template <typename Iterator>
-    BOOST_FORCEINLINE static void load(storage_type& d, Iterator it) BOOST_NOEXCEPT
-    {
-      std::copy(it, it+N, d.begin());
-    }
-
-    template <typename Iterator>
-    BOOST_FORCEINLINE static void load(storage_type& d, Iterator b, Iterator e) BOOST_NOEXCEPT
-    {
-      std::copy(b, e, d.begin());
-    }
-
-    template <typename Value>
-    BOOST_FORCEINLINE static void splat(storage_type& d, Value v) BOOST_NOEXCEPT
-    {
-      d.fill(v);
-    }
   };
 
   // aggregated_storage: *
   //-----------------------------------------------------------------------------------------------
-
-  // Static unroll of call to `pack_traits::fill` for aggregated storage.
-
-  // static_unrolled_fill: base case
-  template < typename T
-           , std::size_t Index
-           , std::size_t NumberOfVectors
-           , typename SIMD
-           , std::size_t Card
-           , bool Stop = Index == NumberOfVectors // Needed to avoid ambiguity
-           >
-  struct static_unrolled_fill {
-    template <typename... Ts>
-    BOOST_FORCEINLINE static void fill(std::array<SIMD, NumberOfVectors>&, Ts const&...) {
-    }
-  };
-
-  // static_unrolled_fill: Cardinal == 2
-
-#define BOOST_SIMD_PACK_TRAITS_STATIC_UNROLLED_FILL_M0(z, n, text)\
-  T const& BOOST_PP_CAT(text, n)
-
-#define BOOST_SIMD_PACK_TRAITS_STATIC_UNROLLED_FILL_M1(z, n, text)\
-  BOOST_PP_CAT(text, n)
-
-#define BOOST_SIMD_PACK_TRAITS_STATIC_UNROLLED_FILL(N)                                             \
-  template < typename T                                                                            \
-           , std::size_t Index                                                                     \
-           , std::size_t NumberOfVectors                                                           \
-           , typename SIMD                                                                         \
-           >                                                                                       \
-  struct static_unrolled_fill<T, Index, NumberOfVectors, SIMD, N, false> {                         \
-    template <typename... Ts>                                                                      \
-    BOOST_FORCEINLINE static void fill(                                                            \
-        std::array<SIMD, NumberOfVectors>& storage                                                 \
-        , BOOST_PP_ENUM(N, BOOST_SIMD_PACK_TRAITS_STATIC_UNROLLED_FILL_M0, e)                      \
-        , Ts const&... en                                                                          \
-        )                                                                                          \
-    {                                                                                              \
-      pack_traits<T, N, SIMD>::fill(                                                               \
-          storage[Index],                                                                          \
-          BOOST_PP_ENUM(N, BOOST_SIMD_PACK_TRAITS_STATIC_UNROLLED_FILL_M1, e));                    \
-                                                                                                   \
-      static_unrolled_fill<T, Index + 1, NumberOfVectors, SIMD, N>::fill(storage, static_cast<T>(en)...);          \
-    }                                                                                              \
-  };                                                                                               \
-  /**/
-
-  BOOST_SIMD_PACK_TRAITS_STATIC_UNROLLED_FILL(2);
-  BOOST_SIMD_PACK_TRAITS_STATIC_UNROLLED_FILL(4);
-  BOOST_SIMD_PACK_TRAITS_STATIC_UNROLLED_FILL(8);
-  BOOST_SIMD_PACK_TRAITS_STATIC_UNROLLED_FILL(16);
-  BOOST_SIMD_PACK_TRAITS_STATIC_UNROLLED_FILL(32);
-
   template <typename T, typename SIMD, std::size_t N, std::size_t NumberOfVectors>
   class pack_traits<T, N, std::array<SIMD, NumberOfVectors> > {
     public:
+
     enum {
-      static_size = N,
-      cardinal = N / NumberOfVectors
+      static_size  = N,
+      element_size = N / NumberOfVectors
     };
 
     using storage_type              = std::array<SIMD, NumberOfVectors>;
-    using internal_pack_traits      = pack_traits<T, cardinal, SIMD>;
 
     using value_type                = T;
     using size_type                 = std::size_t;
 
-    using reference                 = typename internal_pack_traits::reference;
-    using const_reference           = typename internal_pack_traits::const_reference;
+    using reference                 = typename SIMD::reference;
+    using const_reference           = typename SIMD::const_reference;
 
     using storage_kind = ::boost::simd::aggregate_storage;
 
     public:
-    template <typename... Ts>
-    BOOST_FORCEINLINE static void fill(storage_type& d, Ts const&... v) BOOST_NOEXCEPT
-    {
-      // We do need to statically unroll `pack_traits::fill` as `v` is variadic.
-      // We decompose `v` in `cardinal` arguments (`NumberOfVectors` times).
-      static_unrolled_fill<T, 0, NumberOfVectors, SIMD, cardinal>::fill(d, v...);
-    }
 
     BOOST_FORCEINLINE static reference at(storage_type& d, std::size_t i)
     {
-      return internal_pack_traits::at(d[i / cardinal], i % cardinal);
+      return d[i / element_size][i % element_size];
     }
 
     BOOST_FORCEINLINE static const_reference at(storage_type const& d, std::size_t i)
     {
-      return internal_pack_traits::at(d[i / cardinal], i % cardinal);
-    }
-
-    BOOST_FORCEINLINE static void load(storage_type& d, value_type const* ptr)
-    {
-      for (auto& a : d) {
-        internal_pack_traits::load(a, ptr);
-        ptr += cardinal;
-      }
-    }
-
-    template <typename Iterator>
-    BOOST_FORCEINLINE static void load(storage_type& d, Iterator b, Iterator e)
-    {
-      auto it = b;
-      for (std::size_t i = 0; i < NumberOfVectors && it != e; ++i) {
-        // Do not use `internal_pack_traits::load(d[i], it)` here as `b` could be
-        // a forward iterator, which mean that we can only use `++` operator.
-        //
-        // Calling `internal_pack_traits::load(d[i], it)` will move
-        // the iterator inside the function and we won't be able to move the
-        // iterator using the following: `b += N` as `b` can be a forward iterator.
-        //
-        // Instead, we doing it by hand using `internal_pack_traits::at`!
-        for (std::size_t j = 0; j < cardinal && it != e; ++j, ++it) {
-          internal_pack_traits::at(d[i], j) = *it;
-        }
-      }
-    }
-
-    template <typename Value>
-    BOOST_FORCEINLINE static void splat(storage_type& d, Value v) BOOST_NOEXCEPT
-    {
-      for (auto& a : d) {
-        internal_pack_traits::splat(a, v);
-      }
+      return d[i / element_size][i % element_size];
     }
   };
 

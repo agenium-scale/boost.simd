@@ -11,6 +11,7 @@
 #ifndef BOOST_SIMD_CONSTANT_DEFINITION_MEDIUM_PI_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_DEFINITION_MEDIUM_PI_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/detail/constant_traits.hpp>
@@ -34,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,medium_pi_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::medium_pi_,medium_pi);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Medium_pi() BOOST_NOEXCEPT
-  -> decltype(functional::medium_pi( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Medium_pi()
+  BOOST_NOEXCEPT_DECLTYPE(detail::medium_pi( boost::dispatch::as_<T>{}))
   {
-    return functional::medium_pi( boost::dispatch::as_<T>{} );
+    return detail::medium_pi( boost::dispatch::as_<T>{} );
   }
 } }
 

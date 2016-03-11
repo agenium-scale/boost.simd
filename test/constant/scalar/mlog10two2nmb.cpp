@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check mlog10two2nmb behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::mlog10two2nmb;
+  using boost::simd::detail::mlog10two2nmb;
   using boost::simd::Mlog10two2nmb;
   T ref = T(0);
   STF_TYPE_IS(decltype(Mlog10two2nmb<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check mlog10two2nmb behavior for double"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::mlog10two2nmb;
+  using boost::simd::detail::mlog10two2nmb;
   using boost::simd::Mlog10two2nmb;
   T ref = T(-15.9545897701910033463281614204);
 
@@ -44,7 +44,7 @@ STF_CASE_TPL( "Check mlog10two2nmb behavior for float"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::mlog10two2nmb;
+  using boost::simd::detail::mlog10two2nmb;
   using boost::simd::Mlog10two2nmb;
   T ref = T(-6.92368990027156748991599457866);
   STF_TYPE_IS(decltype(Mlog10two2nmb<T>()), T);

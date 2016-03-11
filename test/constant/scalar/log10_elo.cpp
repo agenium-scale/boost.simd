@@ -20,7 +20,7 @@ STF_CASE_TPL( "Check log10_elo behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::log10_elo;
+  using boost::simd::detail::log10_elo;
   using boost::simd::Log10_elo;
   T ref = T(0);
   STF_TYPE_IS(decltype(Log10_elo<T>()), T);
@@ -33,7 +33,7 @@ STF_CASE_TPL( "Check log10_elo behavior for double"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::log10_elo;
+  using boost::simd::detail::log10_elo;
   using boost::simd::Log10_elo;
   T ref = T(0);
 
@@ -47,7 +47,7 @@ STF_CASE_TPL( "Check log10_elo behavior for float"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::log10_elo;
+  using boost::simd::detail::log10_elo;
   using boost::simd::Log10_elo;
   using boost::simd::Log10_ehi;
   using boost::simd::Eps;

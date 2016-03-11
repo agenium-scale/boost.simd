@@ -18,7 +18,7 @@ STF_CASE_TPL( "Check ten behavior for all types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::ten;
+  using boost::simd::detail::ten;
   using boost::simd::Ten;
 
   STF_TYPE_IS(decltype(Ten<T>()), T);

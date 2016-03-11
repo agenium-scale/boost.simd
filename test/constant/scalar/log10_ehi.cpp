@@ -17,7 +17,7 @@ STF_CASE_TPL( "Check log10_ehi behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::log10_ehi;
+  using boost::simd::detail::log10_ehi;
   using boost::simd::Log10_ehi;
   T ref = T(0);
   STF_TYPE_IS(decltype(Log10_ehi<T>()), T);
@@ -30,7 +30,7 @@ STF_CASE_TPL( "Check log10_ehi behavior for double"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::log10_ehi;
+  using boost::simd::detail::log10_ehi;
   using boost::simd::Log10_ehi;
   T ref = T(4.3429448190325190e-1);
 
@@ -44,7 +44,7 @@ STF_CASE_TPL( "Check log10_ehi behavior for float"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::log10_ehi;
+  using boost::simd::detail::log10_ehi;
   using boost::simd::Log10_ehi;
   T ref = T(4.3359375000000000e-1);
   STF_TYPE_IS(decltype(Log10_ehi<T>()), T);

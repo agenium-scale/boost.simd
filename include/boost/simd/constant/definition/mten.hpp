@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,mten_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::mten_,mten);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Mten() BOOST_NOEXCEPT
-  -> decltype(functional::mten( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Mten()
+  BOOST_NOEXCEPT_DECLTYPE(detail::mten( boost::dispatch::as_<T>{}))
   {
-    return functional::mten( boost::dispatch::as_<T>{} );
+    return detail::mten( boost::dispatch::as_<T>{} );
   }
 } }
 

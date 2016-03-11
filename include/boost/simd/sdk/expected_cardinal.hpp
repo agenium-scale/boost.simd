@@ -16,7 +16,7 @@
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/arch/limits.hpp>
-#include <boost/simd/detail/brigand.hpp>
+#include <type_traits>
 
 namespace boost { namespace simd
 {
@@ -33,11 +33,13 @@ namespace boost { namespace simd
     @tparam Extension SIMD Extension tag
   **/
   template<typename Type, typename Extension>
-  struct expected_cardinal : brigand::int32_t<limits<Extension>::bytes/sizeof(Type)>
+  struct  expected_cardinal
+        : std::integral_constant<std::size_t,limits<Extension>::bytes/sizeof(Type)>
   {};
 
   template<typename Type, typename Extension>
-  struct expected_cardinal<logical<Type>,Extension> : expected_cardinal<Type,Extension>
+  struct  expected_cardinal<logical<Type>,Extension>
+        : std::integral_constant<std::size_t,limits<Extension>::bytes/sizeof(Type)>
   {};
 } }
 

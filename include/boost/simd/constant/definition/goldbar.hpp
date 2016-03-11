@@ -11,6 +11,7 @@
 #ifndef BOOST_SIMD_CONSTANT_DEFINITION_GOLDBAR_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_DEFINITION_GOLDBAR_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/detail/constant_traits.hpp>
@@ -34,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,goldbar_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::goldbar_,goldbar);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Goldbar() BOOST_NOEXCEPT
-  -> decltype(functional::goldbar( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Goldbar()
+  BOOST_NOEXCEPT_DECLTYPE(detail::goldbar( boost::dispatch::as_<T>{}))
   {
-    return functional::goldbar( boost::dispatch::as_<T>{} );
+    return detail::goldbar( boost::dispatch::as_<T>{} );
   }
 } }
 

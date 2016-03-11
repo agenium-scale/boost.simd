@@ -35,15 +35,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag,splitfactor_);
   }
 
-  namespace functional
+  namespace detail
   {
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::splitfactor_,splitfactor);
   }
 
-  template<typename T> BOOST_FORCEINLINE auto Splitfactor() BOOST_NOEXCEPT
-  -> decltype(functional::splitfactor( boost::dispatch::as_<T>{}))
+  template<typename T> BOOST_FORCEINLINE auto Splitfactor()
+  BOOST_NOEXCEPT_DECLTYPE(detail::splitfactor( boost::dispatch::as_<T>{}))
   {
-    return functional::splitfactor( boost::dispatch::as_<T>{} );
+    return detail::splitfactor( boost::dispatch::as_<T>{} );
   }
 } }
 

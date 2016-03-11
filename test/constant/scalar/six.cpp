@@ -18,7 +18,7 @@ STF_CASE_TPL( "Check six behavior for integral types"
             )
 {
   using boost::simd::as;
-  using boost::simd::functional::six;
+  using boost::simd::detail::six;
   using boost::simd::Six;
 
   STF_TYPE_IS(decltype(Six<T>()), T);
