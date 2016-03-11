@@ -32,7 +32,6 @@ fact_9.cpp
 #false.cpp
 fifteen.cpp
 five.cpp
-fiveo_8.cpp
 four.cpp
 fouropi.cpp
 fourpi.cpp
@@ -96,7 +95,6 @@ mlogeps2.cpp
 mlogtwo2nmb.cpp
 mnine.cpp
 mone.cpp
-moneo_6.cpp
 mseven.cpp
 msix.cpp
 mten.cpp
@@ -109,16 +107,6 @@ nbexponentbits.cpp
 nbmantissabits.cpp
 nine.cpp
 one.cpp
-oneo_10.cpp
-oneo_120.cpp
-oneo_12.cpp
-oneo_15.cpp
-oneo_16.cpp
-oneo_180.cpp
-oneo_6.cpp
-oneo_7.cpp
-oneo_8.cpp
-oneo_9.cpp
 oneosqrt5.cpp
 oneosqrteps.cpp
 oneotwoeps.cpp
@@ -174,11 +162,9 @@ threepio_4.cpp
 twelve.cpp
 twenty.cpp
 two.cpp
-twoofive.cpp
 twoopi.cpp
 twopi.cpp
 twopio_3.cpp
-twothird.cpp
 twoto31.cpp
 twotom10.cpp
 twotomnmbo_3.cpp
