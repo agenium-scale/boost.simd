@@ -29,6 +29,7 @@ set ( SOURCES
    dec.cpp
    dist.cpp
    dists.cpp
+   div.cpp
    divceil.cpp
    divfix.cpp
    divfloor.cpp
