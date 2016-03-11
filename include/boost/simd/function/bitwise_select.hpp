@@ -37,11 +37,6 @@ namespace boost { namespace simd
     T1 r = (x&sel)|(y&~sel);
     @endcode
 
-    @par Alias
-
-    b_select
-
-
     @return      a value of the same type as the second input.
 
 

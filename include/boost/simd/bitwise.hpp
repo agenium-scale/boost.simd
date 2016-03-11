@@ -40,8 +40,6 @@ namespace boost { namespace simd
   **/
 } }
 
-#include <boost/simd/function/b_and.hpp>
-#include <boost/simd/function/b_andnot.hpp>
 #include <boost/simd/function/bitget.hpp>
 #include <boost/simd/function/bitset.hpp>
 #include <boost/simd/function/bits.hpp>
@@ -54,11 +52,6 @@ namespace boost { namespace simd
 #include <boost/simd/function/bitwise_ornot.hpp>
 #include <boost/simd/function/bitwise_select.hpp>
 #include <boost/simd/function/bitwise_xor.hpp>
-#include <boost/simd/function/b_notand.hpp>
-#include <boost/simd/function/b_notor.hpp>
-#include <boost/simd/function/b_or.hpp>
-#include <boost/simd/function/b_ornot.hpp>
-#include <boost/simd/function/b_xor.hpp>
 #include <boost/simd/function/clz.hpp>
 #include <boost/simd/function/ctz.hpp>
 #include <boost/simd/function/ffs.hpp>
