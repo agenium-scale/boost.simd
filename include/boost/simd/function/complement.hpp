@@ -37,7 +37,7 @@ namespace boost { namespace simd
     @endcode
 
     @par Alias:
-    @c b_not, @c bitwise_not
+    @c @c bitwise_not
 
     @see  bitwise_and, bitwise_or, bitwise_xor, bitwise_notand,
     bitwise_andnot, bitwise_notor, bitwise_ornot

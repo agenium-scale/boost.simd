@@ -357,19 +357,12 @@ set ( SOURCES
    tan.cpp
    tanpi.cpp
 #aliases
-   b_and.cpp
    compare_eq.cpp
-   b_andnot.cpp
-   b_notand.cpp
-   b_notor.cpp
-   b_or.cpp
-   b_ornot.cpp
    compare_ge.cpp
    compare_gt.cpp
    compare_le.cpp
    compare_lt.cpp
    compare_neq.cpp
-   b_not.cpp
    bitwise_not.cpp
    divtrunc.cpp
    rdivide.cpp
@@ -399,13 +392,6 @@ set ( SOURCES
    is_ngt.cpp
    is_nle.cpp
    is_nlt.cpp
-   l_and.cpp
-   l_andnot.cpp
-   l_notand.cpp
-   l_not.cpp
-   l_notor.cpp
-   l_or.cpp
-   l_ornot.cpp
    fmax.cpp
    fmin.cpp
    drem.cpp
@@ -427,7 +413,6 @@ set ( SOURCES
    remfix.cpp
    itrunc.cpp
    angle.cpp
-   b_xor.cpp
    is_not_finite.cpp
    is_not_invalid.cpp
    decs.cpp
