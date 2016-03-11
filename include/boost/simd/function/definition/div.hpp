@@ -52,8 +52,8 @@ namespace boost { namespace simd
   }
 
   template < typename T, typename O>
-  BOOST_FORCEINLINE T div(T const& a, T const& b, O const& )
-  BOOST_NOEXCEPT
+  BOOST_FORCEINLINE auto div(T const& a, T const& b, O const& )
+  BOOST_DECL_NOEXCEPT
   {
     namespace bs = boost::simd;
     return bs::divides(a, b, O());
