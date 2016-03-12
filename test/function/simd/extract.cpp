@@ -17,11 +17,6 @@
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
 
-//   template < size_t N, class T> bd::scalar_of_t<T> extract(const T & )
-//   {
-//     return (0); //bs::extract(a, brigand::size_t<N>());
-//   }
-
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
 {

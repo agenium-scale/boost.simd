@@ -89,7 +89,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE bd::scalar_of_t<A0> operator()(A0 const & a0, A1 const &) const
     {
-     float f;
+      float f;
       enum { value = A1::value };
       _MM_EXTRACT_FLOAT(f, a0, value);
       return f;
