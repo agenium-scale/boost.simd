@@ -30,8 +30,9 @@ namespace boost { namespace simd
     returns the quotient of @c a by @c b according to the option
 
     if there is no option the call is equivalent to divides(a, b),  else
-    option can be ceil_(), floor_(), fix_(), round_(), round2even_() and provide the
-    sme result as divceil(a, b), divfloor(a, b), divfix(a, b), divround(a, b)
+    option can be ceil, floor, fix, round, round2even (in the namespace booost::simd)
+    and provide the same result as the calls divceil(a, b), divfloor(a, b),
+    divfix(a, b), divround(a, b).
 
     @param a First  parameter of the quotient
     @param b Second parameter of the quotient

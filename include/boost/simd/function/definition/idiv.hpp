@@ -43,6 +43,7 @@ namespace boost { namespace simd
   }
 
   namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
   template < typename T>
   BOOST_FORCEINLINE auto idiv(T const& a, T const& b )
     BOOST_NOEXCEPT_DECLTYPE(bs::idivfix(a, b))
@@ -53,7 +54,7 @@ namespace boost { namespace simd
 #define BOOST_SIMD_IDIV_WITH_OPTION(option)                      \
   template < typename T>                                         \
   BOOST_FORCEINLINE auto idiv(T const& a, T const& b             \
-                         , boost::simd::tag::option##_ const& )  \
+                             , bd::functor<bs::tag::option##_> const& ) \
     BOOST_NOEXCEPT_DECLTYPE(bs::idiv##option(a, b))              \
   {                                                              \
     return idiv##option(a, b);                                   \

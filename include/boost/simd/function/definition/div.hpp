@@ -43,15 +43,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::div_,div);
   }
 
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
   template < typename T>
   BOOST_FORCEINLINE T div(T const& a, T const& b )
   BOOST_NOEXCEPT
   {
-    namespace bs = boost::simd;
     return bs::divides(a, b);
   }
 
-  namespace bs = boost::simd;
   template < typename T, typename O>
   auto div(T const& a, T const& b, O const& )
     BOOST_NOEXCEPT_DECLTYPE(bs::divides(a, b, O()))
@@ -62,7 +62,7 @@ namespace boost { namespace simd
 #define BOOST_SIMD_DIV_WITH_OPTION(option)                      \
   template < typename T>                                        \
   BOOST_FORCEINLINE auto div(T const& a, T const& b             \
-                         , boost::simd::tag::option##_ const& ) \
+                         , bd::functor<bs::tag::option##_> const& ) \
     BOOST_NOEXCEPT_DECLTYPE(bs::div##option(a, b))              \
   {                                                             \
     return bs::div##option(a, b);                               \
