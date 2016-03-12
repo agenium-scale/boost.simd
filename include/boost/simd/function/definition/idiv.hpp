@@ -16,15 +16,15 @@
 #include <boost/dispatch/function/make_callable.hpp>
 #include <boost/dispatch/hierarchy/functions.hpp>
 #include <boost/simd/detail/dispatch.hpp>
-#include <boost/simd/function/ceil.hpp>
+#include <boost/simd/function/definition/ceil.hpp>
 #include <boost/simd/function/idivceil.hpp>
-#include <boost/simd/function/floor.hpp>
+#include <boost/simd/function/definition/floor.hpp>
 #include <boost/simd/function/idivfloor.hpp>
-#include <boost/simd/function/round.hpp>
+#include <boost/simd/function/definition/round.hpp>
 #include <boost/simd/function/idivround.hpp>
-#include <boost/simd/function/round2even.hpp>
+#include <boost/simd/function/definition/round2even.hpp>
 #include <boost/simd/function/idivround2even.hpp>
-#include <boost/simd/function/fix.hpp>
+#include <boost/simd/function/definition/fix.hpp>
 #include <boost/simd/function/idivfix.hpp>
 
 namespace boost { namespace simd

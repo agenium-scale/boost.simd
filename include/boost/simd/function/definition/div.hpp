@@ -17,15 +17,15 @@
 #include <boost/dispatch/hierarchy/functions.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/function/divides.hpp>
-#include <boost/simd/function/ceil.hpp>
+#include <boost/simd/function/definition/ceil.hpp>
 #include <boost/simd/function/divceil.hpp>
-#include <boost/simd/function/floor.hpp>
+#include <boost/simd/function/definition/floor.hpp>
 #include <boost/simd/function/divfloor.hpp>
-#include <boost/simd/function/round.hpp>
+#include <boost/simd/function/definition/round.hpp>
 #include <boost/simd/function/divround.hpp>
-#include <boost/simd/function/round2even.hpp>
+#include <boost/simd/function/definition/round2even.hpp>
 #include <boost/simd/function/divround2even.hpp>
-#include <boost/simd/function/fix.hpp>
+#include <boost/simd/function/definition/fix.hpp>
 #include <boost/simd/function/divfix.hpp>
 
 namespace boost { namespace simd
@@ -51,21 +51,21 @@ namespace boost { namespace simd
     return bs::divides(a, b);
   }
 
+  namespace bs = boost::simd;
   template < typename T, typename O>
-  BOOST_FORCEINLINE auto div(T const& a, T const& b, O const& )
-  BOOST_DECL_NOEXCEPT
+  auto div(T const& a, T const& b, O const& )
+    BOOST_NOEXCEPT_DECLTYPE(bs::divides(a, b, O()))
   {
-    namespace bs = boost::simd;
     return bs::divides(a, b, O());
   }
 
 #define BOOST_SIMD_DIV_WITH_OPTION(option)                      \
   template < typename T>                                        \
-  BOOST_FORCEINLINE T div(T const& a, T const& b                \
+  BOOST_FORCEINLINE auto div(T const& a, T const& b             \
                          , boost::simd::tag::option##_ const& ) \
-    BOOST_NOEXCEPT                                              \
+    BOOST_NOEXCEPT_DECLTYPE(bs::div##option(a, b))              \
   {                                                             \
-    return div##option(a, b);                                   \
+    return bs::div##option(a, b);                               \
   }                                                             \
 /**/
 

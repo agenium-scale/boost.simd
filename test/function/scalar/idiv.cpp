@@ -54,4 +54,9 @@ STF_CASE_TPL( "Check idiv behavior with options", STF_NUMERIC_TYPES )
   STF_IEEE_EQUAL(idiv(bs::One<T>(), bs::Two<T>(), bs::tag::round_()), bs::One<r_t>());
   STF_IEEE_EQUAL(idiv(bs::One<T>(), bs::Two<T>(), bs::tag::round2even_()), bs::Zero<r_t>());
   STF_IEEE_EQUAL(idiv(bs::One<T>(), bs::Two<T>(), bs::tag::fix_()), bs::Zero<r_t>());
+//   STF_IEEE_EQUAL(idiv(bs::One<T>(), bs::Two<T>(), bs::ceil), bs::One<r_t>());
+//   STF_IEEE_EQUAL(idiv(bs::One<T>(), bs::Two<T>(), bs::floor), bs::Zero<r_t>());
+//   STF_IEEE_EQUAL(idiv(bs::One<T>(), bs::Two<T>(), bs::round), bs::One<r_t>());
+//   STF_IEEE_EQUAL(idiv(bs::One<T>(), bs::Two<T>(), bs::round2even), bs::Zero<r_t>());
+//   STF_IEEE_EQUAL(idiv(bs::One<T>(), bs::Two<T>(), bs::fix), bs::Zero<r_t>());
 }
