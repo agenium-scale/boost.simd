@@ -2,7 +2,7 @@
 /*!
   @file
 
-  Aggregate SIMD numerical and type limits for X86 SSE4.1
+  Aggregate SIMD numerical and type limits for X86 SSE4.2
 
   @copyright 2012 - 2015 NumScale SAS
 
@@ -11,8 +11,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_X86_SSE41_LIMITS_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_X86_SSE41_LIMITS_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_X86_SSE4_2_LIMITS_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_X86_SSE4_2_LIMITS_HPP_INCLUDED
 
 #include <boost/simd/arch/x86/tags.hpp>
 #include <boost/simd/arch/common/limits.hpp>
@@ -20,7 +20,7 @@
 
 namespace boost { namespace simd
 {
-  template<> struct limits<boost::simd::sse4_1_> : limits<boost::simd::sse2_> {};
+  template<> struct limits<boost::simd::sse4_2_> : limits<boost::simd::sse2_> {};
 } }
 
 #endif

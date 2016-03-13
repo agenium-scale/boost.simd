@@ -74,24 +74,6 @@ namespace boost { namespace simd { namespace ext
   };
 
   //------------------------------------------------------------------------------------------------
-  // load from an input iterator and an integral offset
-  BOOST_DISPATCH_OVERLOAD ( load_
-                          , (typename Target, typename Pointer, typename Offset)
-                          , bd::cpu_
-                          , bd::input_iterator_<bd::scalar_<bd::unspecified_<Pointer>>>
-                          , bd::scalar_<bd::integer_<Offset>>
-                          , bd::target_< bd::scalar_<bd::unspecified_<Target>> >
-                          )
-  {
-    using target = typename Target::type;
-
-    BOOST_FORCEINLINE target operator()(Pointer p, Offset o, Target const&) const BOOST_NOEXCEPT
-    {
-      return boost::simd::load<target>(p+o);
-    }
-  };
-
-  //------------------------------------------------------------------------------------------------
   // load from a masked pointer and an integral offset
   BOOST_DISPATCH_OVERLOAD ( load_
                           , (typename Target, typename Pointer, typename Offset)

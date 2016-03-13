@@ -13,5 +13,6 @@
 
 #include <boost/simd/function/definition/load.hpp>
 #include <boost/simd/arch/common/scalar/function/load.hpp>
+#include <boost/simd/arch/common/generic/function/load.hpp>
 
 #endif
