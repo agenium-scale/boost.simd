@@ -11,10 +11,17 @@
 #include <simd_test.hpp>
 
 using namespace boost::simd;
+using namespace boost::dispatch;
 
 STF_CASE_TPL( "Check as_logical on numeric types", STF_NUMERIC_TYPES )
 {
   STF_TYPE_IS( as_logical_t<T>, logical<T> );
+}
+
+STF_CASE_TPL( "Check as_logical on pack types", STF_NUMERIC_TYPES )
+{
+  STF_TYPE_IS( as_logical_t<pack<T>>          , pack<logical<T>> );
+  STF_TYPE_IS( as_logical_t<pack<logical<T>>> , pack<logical<T>> );
 }
 
 STF_CASE_TPL( "Check as_logical on already logical types", STF_NUMERIC_TYPES )

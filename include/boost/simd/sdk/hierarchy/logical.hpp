@@ -16,6 +16,7 @@
 
 #include <boost/dispatch/meta/value_of.hpp>
 #include <boost/dispatch/meta/model_of.hpp>
+#include <boost/simd/sdk/real_of.hpp>
 #include <boost/dispatch/hierarchy/fundamental.hpp>
 #include <boost/dispatch/property_of.hpp>
 
@@ -32,6 +33,12 @@ namespace boost { namespace simd
   template<typename T> struct logical_ : boost::dispatch::fundamental_<T>
   {
     using parent = boost::dispatch::fundamental_<T>;
+  };
+
+  template<typename T>
+  struct real_of< boost::simd::logical<T> >
+  {
+    using type = boost::simd::logical<T>;
   };
 } }
 
@@ -55,12 +62,11 @@ namespace boost { namespace dispatch
       using type = boost::simd::logical_<Origin>;
     };
 
-    template<class T>
+    template<typename T>
     struct scalar_of< simd::logical<T> >
     {
-      typedef boost::simd::logical<T> type;
+      using type = boost::simd::logical<T>;
     };
-  }
-} }
+} } }
 
 #endif

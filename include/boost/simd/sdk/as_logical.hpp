@@ -15,6 +15,7 @@
 #define BOOST_SIMD_SDK_AS_LOGICAL_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
+#include <boost/simd/logical.hpp>
 #include <boost/simd/sdk/real_of.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/dispatch/meta/factory_of.hpp>
@@ -22,7 +23,26 @@
 
 namespace boost { namespace simd
 {
-  template<typename T> struct logical;
+  namespace details
+  {
+    template<typename T, typename F>
+    struct  as_logical
+    {
+      using type = brigand::apply<F, logical<T> >;
+    };
+
+    template<typename T, typename F>
+    struct  as_logical< logical<T>, F >
+    {
+      using type = brigand::apply<F, logical<T> >;
+    };
+
+    template<typename F>
+    struct  as_logical<bool, F>
+    {
+      using type = brigand::apply<F, bool >;
+    };
+  }
 
   /*!
     @ingroup  group-api
@@ -35,20 +55,10 @@ namespace boost { namespace simd
   **/
   template<typename T>
   struct  as_logical
+        : details::as_logical < real_of_t<T>
+                              , dispatch::factory_of<T,dispatch::scalar_of_t<T>>
+                              >
   {
-    using type = brigand::apply < dispatch::factory_of<T, dispatch::scalar_of_t<T>>
-                                , logical<real_of_t<T>>
-                                >;
-  };
-
-  template<typename T> struct as_logical< logical<T> >
-  {
-    using type = logical<T>;
-  };
-
-  template<> struct as_logical< bool >
-  {
-    using type = bool;
   };
 
   /*!
