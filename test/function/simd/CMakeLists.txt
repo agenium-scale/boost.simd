@@ -9,9 +9,10 @@
 set ( SOURCES
   aligned_load.cpp
   extract.cpp
-  splat.cpp
+  insert.cpp
   load.cpp
+  splat.cpp
 )
 
-make_unit( "boost.simd.function.simd"  ${SOURCES})
+make_unit( "boost.simd.function.simd"   ${SOURCES})
 make_coverage("boost.simd.function.simd"  ${SOURCES})
