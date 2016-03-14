@@ -33,10 +33,6 @@ void test(Env& $)
     std::cout << "i -> " <<  i << std::endl;
     STF_IEEE_EQUAL(a1[i], a2[i]);
   }
-  for(std::size_t i=0; i <N ; ++i)
-  {
-    std::cout << "i -> " <<  i << " "<< a1[i] << " == "<< a2[i] << std::endl;
-  }
 }
 
 STF_CASE_TPL( "Check store behavior with all types", STF_NUMERIC_TYPES )

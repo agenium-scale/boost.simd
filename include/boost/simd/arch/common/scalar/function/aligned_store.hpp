@@ -28,7 +28,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::integer_<A2>>
                           )
   {
-    BOOST_FORCEINLINE void operator() ( A0 const& a0, A1 a1,  A2 const & a2) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE void operator() ( A0 a0, A1 a1,  A2 a2) const BOOST_NOEXCEPT
     {
       *(a1+a2) = a0;
     }
@@ -42,43 +42,11 @@ namespace boost { namespace simd { namespace ext
                           , bd::pointer_<bd::scalar_<bd::unspecified_<A1>>,1u>
                           )
   {
-    BOOST_FORCEINLINE void operator() ( A0 const& a0, A1 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE void operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
       *a1 = a0;
     }
   };
-
-  /// INTERNAL ONLY -  scalar masked aligned_store
-  BOOST_DISPATCH_OVERLOAD ( aligned_store_
-                          , (typename A0, typename A1, typename A2)
-                          , bd::cpu_
-                          , bd::scalar_< bd::unspecified_<A0> >
-                          , bd::pointer_<bd::scalar_<bd::unspecified_<A1>>,1u>
-                          , bd::scalar_ < bd::fundamental_<A2>>
-                          )
-  {
-    BOOST_FORCEINLINE void operator() ( A0 const& a0, A1 a1, A2 const& a2) const BOOST_NOEXCEPT
-    {
-      if (a2) *a1 = a0;
-    }
-  };
-
-  /// INTERNAL ONLY -  scalar masked aligned_store
-  BOOST_DISPATCH_OVERLOAD ( aligned_store_
-                          , (typename A0, typename A1, typename A2, typename A3)
-                          , bd::cpu_
-                          , bd::scalar_< bd::unspecified_<A0> >
-                          , bd::pointer_<bd::scalar_<bd::unspecified_<A1>>,1u>
-                          , bd::scalar_<bd::integer_<A2>>
-                          , bd::scalar_ < bd::fundamental_<A3>>
-                          )
-  {
-    BOOST_FORCEINLINE void operator() ( A0 const& a0, A1 a1, A2 const& a2, A3 const& a3) const BOOST_NOEXCEPT
-    {
-      if (a3) *(a1+a2) = a0;
-    }
-  };
-
 } } }
 
 

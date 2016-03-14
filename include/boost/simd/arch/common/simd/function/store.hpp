@@ -28,7 +28,7 @@ namespace boost { namespace simd { namespace ext
   /// INTERNAL ONLY - SIMD store without offset
   BOOST_DISPATCH_OVERLOAD ( store_
                           , (typename Src, typename Pointer)
-                          , bd::cpu_
+                          , bs::simd_
                           , bs::pack_<bd::unspecified_<Src>,bs::simd_emulation_>
                           , bd::pointer_<bd::scalar_<bd::unspecified_<Pointer>>,1u>
                           )
@@ -47,9 +47,9 @@ namespace boost { namespace simd { namespace ext
     }
 
     template < typename I>
-    static BOOST_FORCEINLINE s_t sto_(const Src& s, Pointer  p) BOOST_NOEXCEPT
+    static BOOST_FORCEINLINE void sto_(const Src& s, Pointer  p) BOOST_NOEXCEPT
     {
-      return p[I::value] = static_cast<s_t>(s[I::value]);
+      p[I::value] = static_cast<s_t>(s[I::value]);
     }
 
     template<typename... N>

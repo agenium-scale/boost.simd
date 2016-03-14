@@ -14,6 +14,7 @@
 #include <boost/simd/detail/aliasing.hpp>
 #include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/dispatch/function/overload.hpp>
+#include <boost/align/is_aligned.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -23,7 +24,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( aligned_store_
                           , (typename Vec, typename Pointer)
-                          , bs::sse2_ //TODO make it work with sse1 !
+                          , bs::sse2_
                           , bs::pack_ < bd::single_ < Vec>, bs::sse_>
                           , bd::pointer_<bd::scalar_<bd::single_<Pointer>>,1u>
                           )

@@ -87,13 +87,17 @@ namespace boost { namespace simd
     @param offset Optional memory offset.
     @param mask   Optional logical mask. Only stores values for which the mask is true.
   **/
-  template<typename Value, typename Pointer, typename Offset> void aligned_store( Value const& val, Pointer const& ptr, Offset const& offset) {}
+  template<typename Value, typename Pointer, typename Offset>
+  void aligned_store( Value const& val, Pointer const& ptr, Offset const& offset) {}
 
   /// @overload
-  template<typename Value, typename Pointer> void aligned_store( Value const& val, Pointer ptr) {}
+  template<typename Value, typename Pointer>
+  void aligned_store( Value const& val, Pointer ptr) {}
+
   /// @overload
-  template<typename Value, typename Pointer, typename Offset> void aligned_store( Value const& val, Pointer const& ptr
-                                                                        , Offset const& offset, Mask const& mask) {}
+  template<typename Value, typename Pointer, typename Offset>
+  void aligned_store( Value const& val, Pointer const& ptr
+                    , Offset const& offset, Mask const& mask) {}
 
 } }
 #endif

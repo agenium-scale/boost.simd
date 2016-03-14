@@ -9,16 +9,22 @@
 //==================================================================================================
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/aligned_store.hpp>
+#include <boost/align/aligned_alloc.hpp>
 #include <simd_test.hpp>
 
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
 {
+  namespace ba = boost::alignment;
   namespace bs = boost::simd;
   using p_t = bs::pack<T, N>;
 
+  std::size_t alg = sizeof(typename p_t::storage_type); //this work but is not really required if the asserts were corrected
 
-  T a1[N], a2[N];
+
+  T* a1 = static_cast<T*>(ba::aligned_alloc(alg, (sizeof(T)) * N));
+  T* a2 = static_cast<T*>(ba::aligned_alloc(alg, (sizeof(T)) * N));
+
   for(std::size_t i = 0; i < N; ++i)
   {
     a1[i] = T(27);
@@ -29,10 +35,11 @@ void test(Env& $)
   bs::aligned_store(aa1, &a2[0]);
 
   for(std::size_t i=0; i <N ; ++i)
- {
-   std::cout << "i -> " <<  i << std::endl;
-  STF_IEEE_EQUAL(a1[i], a2[i]);
- }
+  {
+    STF_IEEE_EQUAL(a1[i], a2[i]);
+  }
+  ba::aligned_free(a1);
+  ba::aligned_free(a2);
 }
 
 STF_CASE_TPL( "Check aligned_store behavior with all types", STF_NUMERIC_TYPES )
