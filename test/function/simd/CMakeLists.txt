@@ -11,7 +11,11 @@ set ( SOURCES
   extract.cpp
   insert.cpp
   load.cpp
+<<<<<<< Updated upstream
   splat.cpp
+=======
+  store.cpp
+>>>>>>> Stashed changes
 )
 
 make_unit( "boost.simd.function.simd"   ${SOURCES})
