@@ -1,0 +1,60 @@
+//==================================================================================================
+/*!
+  @file
+
+  @copyright 2015 NumScale SAS
+
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+*/
+//==================================================================================================
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ALIGNED_STORE_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ALIGNED_STORE_HPP_INCLUDED
+#include <boost/simd/pack.hpp>
+#include <boost/simd/sdk/hierarchy/simd.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/dispatch/adapted/common/pointer.hpp>
+#include <boost/simd/function/extract.hpp>
+#include <boost/simd/function/insert.hpp>
+#include <boost/config.hpp>
+#include <tuple>
+
+namespace boost { namespace simd { namespace ext
+{
+  namespace bd = ::boost::dispatch;
+  namespace bs = ::boost::simd;
+
+  //------------------------------------------------------------------------------------------------
+  /// INTERNAL ONLY - SIMD aligned_store without offset
+  BOOST_DISPATCH_OVERLOAD ( aligned_store_
+                          , (typename A0, typename A1, typename X)
+                          , bd::cpu_
+                          , bs::pack_<bd::unspecified_<A0>, X>
+                          , bd::pointer_<bd::scalar_<bd::unspecified_<A1>>,1u>
+                          )
+  {
+
+    BOOST_FORCEINLINE void operator()(const A0& a0, A1  a1) const BOOST_NOEXCEPT
+    {
+      using storage_t = typename A0::storage_type;
+      do_(a0, a1, brigand::range<std::size_t,0,std::tuple_size<storage_t>::value>{} );
+    }
+    using s_t =  typename boost::pointee<A1>::type;
+
+    template < typename I>
+      static BOOST_FORCEINLINE s_t sto(const A0& a0, A1  a1) BOOST_NOEXCEPT
+    {
+      return a1[I::value] = static_cast<s_t>( bs::extract<I::value>(a0) );
+    }
+
+    template<typename... N>
+      static inline void do_(A0 const & a0, A1 a1, brigand::list<N...> const&)
+    {
+      (void)std::initializer_list<bool>{(sto<N>(a0,a1),true)...};
+    }
+  };
+
+
+} } }
+
+#endif

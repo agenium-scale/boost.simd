@@ -49,7 +49,7 @@ namespace boost { namespace simd { namespace ext
     template < typename I>
     static BOOST_FORCEINLINE s_t sto_(const Src& s, Pointer  p) BOOST_NOEXCEPT
     {
-      return p[I::value] = static_cast<s_t>( s[I::value]);
+      return p[I::value] = static_cast<s_t>(s[I::value]);
     }
 
     template<typename... N>
