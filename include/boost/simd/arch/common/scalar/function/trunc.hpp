@@ -77,8 +77,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE A0 operator() ( A0 a0, fast_tag const&) const BOOST_NOEXCEPT
     {
-      using i_t = bd::as_integer_t<A0>;
-      return i_t(a0);
+      return static_cast<A0>(static_cast<bd::as_integer_t<A0>>(a0));
     }
   };
 
