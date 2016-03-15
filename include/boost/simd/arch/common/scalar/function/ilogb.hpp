@@ -34,7 +34,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0 ) const BOOST_NOEXCEPT
     {
-      return bs::ilogb(static_cast<bd::as_floating_t<A0>>(a0));
+      return static_cast<A0>(bs::ilogb(static_cast<bd::as_floating_t<A0>>(a0)));
     }
   };
 
