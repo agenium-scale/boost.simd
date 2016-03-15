@@ -20,9 +20,7 @@ void test(Env& $)
   namespace bs = boost::simd;
   using p_t = bs::pack<T, N>;
 
-  std::size_t alg = sizeof(typename p_t::storage_type); //this work but is not really required if the asserts were corrected
-
-  T* a1 = static_cast<T*>(ba::aligned_alloc(alg, (sizeof(T)) * N*3));
+  T* a1 = static_cast<T*>(ba::aligned_alloc(p_t::alignment, (sizeof(T)) * N*3));
   STF_TYPE_IS(p_t, decltype(bs::aligned_load<p_t>(&a1[0])));
   STF_TYPE_IS(p_t, decltype(bs::aligned_load<p_t>(&a1[0], std::size_t())));
 
@@ -46,4 +44,3 @@ STF_CASE_TPL( "Check aligned_load behavior with all types", STF_NUMERIC_TYPES )
   test<T, N/2>($);
   test<T, N*2>($);
 }
-

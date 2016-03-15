@@ -67,6 +67,8 @@ namespace boost { namespace simd
 
     enum { static_size = N };
 
+    enum { alignment = traits::alignment };
+
     /// @brief pack type rebinding alias
     template<typename U> using rebind = pack<U,N>;
 

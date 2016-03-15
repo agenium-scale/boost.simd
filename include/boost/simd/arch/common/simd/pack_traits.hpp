@@ -39,6 +39,7 @@ namespace boost { namespace simd { namespace detail
     using storage_kind = ::boost::simd::scalar_storage;
 
     enum { static_size = N, element_size = 1 };
+    enum { alignment = sizeof(T) };
 
     BOOST_FORCEINLINE static reference at(storage_type& d, std::size_t i) BOOST_NOEXCEPT
     {
@@ -61,6 +62,8 @@ namespace boost { namespace simd { namespace detail
       static_size  = N,
       element_size = N / NumberOfVectors
     };
+
+    enum { alignment = SIMD::alignment };
 
     using storage_type              = std::array<SIMD, NumberOfVectors>;
 
