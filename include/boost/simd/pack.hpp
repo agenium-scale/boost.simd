@@ -51,19 +51,20 @@ namespace boost { namespace simd
                  );
 
     public:
-    using traits                = detail::pack_traits<T, N,typename detail::storage_of<T,N,ABI>::type>;
-    using storage_type          = typename traits::storage_type;
-    using storage_kind          = typename traits::storage_kind;
-    using value_type            = typename traits::value_type;
-    using size_type             = typename traits::size_type;
+    using traits                  = detail::pack_traits<T, N,typename detail::storage_of<T,N,ABI>::type>;
+    using storage_type            = typename traits::storage_type;
+    using substorage_type         = typename traits::substorage_type;
+    using storage_kind            = typename traits::storage_kind;
+    using value_type              = typename traits::value_type;
+    using size_type               = typename traits::size_type;
 
-    using reference             = typename traits::reference;
-    using const_reference       = typename traits::const_reference;
+    using reference               = typename traits::reference;
+    using const_reference         = typename traits::const_reference;
 
-    using iterator                  = detail::pack_iterator<pack>;
-    using const_iterator            = detail::pack_iterator<pack const>;
-    using reverse_iterator          = std::reverse_iterator<iterator>;
-    using const_reverse_iterator    = std::reverse_iterator<const_iterator>;
+    using iterator                = detail::pack_iterator<pack>;
+    using const_iterator          = detail::pack_iterator<pack const>;
+    using reverse_iterator        = std::reverse_iterator<iterator>;
+    using const_reverse_iterator  = std::reverse_iterator<const_iterator>;
 
     enum { static_size = N };
 
