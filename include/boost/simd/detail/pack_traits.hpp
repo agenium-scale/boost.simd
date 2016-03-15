@@ -48,6 +48,7 @@ namespace boost { namespace simd { namespace detail
     using size_type                 = std::size_t;
 
     enum { static_size = N };
+    enum { alignment = sizeof(Storage) };
 
     using reference               = value_type&;
     using const_reference         = value_type const&;
@@ -67,6 +68,7 @@ namespace boost { namespace simd { namespace detail
     using size_type                 = std::size_t;                                                 \
                                                                                                    \
     enum { static_size = N, element_size = 1 };                                                    \
+    enum { alignment = sizeof(VTYPE) };                                                            \
                                                                                                    \
     using reference               = value_type&;                                                   \
     using const_reference         = value_type const&;                                             \
