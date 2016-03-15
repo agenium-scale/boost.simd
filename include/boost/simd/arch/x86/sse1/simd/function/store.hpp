@@ -11,9 +11,10 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_STORE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_STORE_HPP_INCLUDED
 
-#include <boost/simd/detail/aliasing.hpp>
+#include <boost/simd/pack.hpp>
 #include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/dispatch/function/overload.hpp>
+#include <boost/dispatch/adapted/common/pointer.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -23,8 +24,8 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( store_
                           , (typename Vec, typename Pointer)
-                          , bs::sse2_
-                          , bs::pack_ < bd::single_ < Vec>, bs::sse_>
+                          , bs::sse_
+                          , bs::pack_<bd::single_<Vec>, bs::sse_>
                           , bd::pointer_<bd::scalar_<bd::single_<Pointer>>,1u>
                           )
   {

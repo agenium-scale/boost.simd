@@ -38,7 +38,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( store_
                           , (typename Vec, typename Pointer)
                           , bs::sse2_
-                          , bs::pack_ < bd::arithmetic_ < Vec>, bs::sse_>
+                          , bs::pack_ < bd::integer_ < Vec>, bs::sse_>
                           , bd::pointer_<bd::scalar_<bd::arithmetic_<Pointer>>,1u>
                           )
   {

@@ -28,7 +28,7 @@ namespace boost { namespace simd { namespace ext
   /// INTERNAL ONLY - SIMD aligned_store in simd emulation without offset
   BOOST_DISPATCH_OVERLOAD ( aligned_store_
                           , (typename A0, typename A1)
-                          , bd::simd_
+                          , bs::simd_
                           , bs::pack_<bd::unspecified_<A0>,bs::simd_emulation_>
                           , bd::pointer_<bd::scalar_<bd::unspecified_<A1>>,1u>
                           )
