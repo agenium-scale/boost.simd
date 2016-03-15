@@ -57,14 +57,6 @@ namespace boost { namespace simd
   };
 
   const throw_tag throw_ = {};
-
-  struct std_tag
-  {
-    using parent = std_tag;
-    using hierarchy_tag = void;
-  };
-
-  const std_tag std_ = {};
 } }
 
 #endif
