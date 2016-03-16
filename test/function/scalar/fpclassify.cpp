@@ -9,6 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/fpclassify.hpp>
+#include <boost/simd/function/std.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -53,21 +54,21 @@ STF_CASE_TPL (" fpclassify std",  STF_IEEE_TYPES)
   namespace bd = boost::dispatch;
   using bs::fpclassify;
 
-  using r_t = decltype(fpclassify(T(), bs::std_));
+  using r_t = decltype(bs::std_(fpclassify)(T()));
 
   // return type conformity test
   STF_TYPE_IS(r_t, int);
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(fpclassify(bs::Inf<T>(), bs::std_), FP_INFINITE);
-  STF_EQUAL(fpclassify(bs::Minf<T>(), bs::std_), FP_INFINITE);
-  STF_EQUAL(fpclassify(bs::Nan<T>(), bs::std_), FP_NAN);
+  STF_EQUAL(bs::std_(fpclassify)(bs::Inf<T>()), FP_INFINITE);
+  STF_EQUAL(bs::std_(fpclassify)(bs::Minf<T>()), FP_INFINITE);
+  STF_EQUAL(bs::std_(fpclassify)(bs::Nan<T>()), FP_NAN);
 #endif
-  STF_EQUAL(fpclassify(bs::Half<T>(), bs::std_), FP_NORMAL);
-  STF_EQUAL(fpclassify(bs::Mhalf<T>(), bs::std_), FP_NORMAL);
-  STF_EQUAL(fpclassify(bs::Mone<T>(), bs::std_), FP_NORMAL);
-  STF_EQUAL(fpclassify(bs::Mindenormal<T>(), bs::std_), FP_SUBNORMAL);
-  STF_EQUAL(fpclassify(bs::Zero<T>(), bs::std_), FP_ZERO);
-  STF_EQUAL(fpclassify(bs::Mzero<T>(), bs::std_), FP_ZERO);
+  STF_EQUAL(bs::std_(fpclassify)(bs::Half<T>()), FP_NORMAL);
+  STF_EQUAL(bs::std_(fpclassify)(bs::Mhalf<T>()), FP_NORMAL);
+  STF_EQUAL(bs::std_(fpclassify)(bs::Mone<T>()), FP_NORMAL);
+  STF_EQUAL(bs::std_(fpclassify)(bs::Mindenormal<T>()), FP_SUBNORMAL);
+  STF_EQUAL(bs::std_(fpclassify)(bs::Zero<T>()), FP_ZERO);
+  STF_EQUAL(bs::std_(fpclassify)(bs::Mzero<T>()), FP_ZERO);
 }

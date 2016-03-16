@@ -16,6 +16,7 @@
 #include <boost/simd/constant/zero.hpp>
 //#include <nontrivial.hpp>
 
+#include <boost/simd/function/std.hpp>
 #include <simd_test.hpp>
 
 STF_CASE_TPL( "Check abs behavior with floating", STF_IEEE_TYPES )

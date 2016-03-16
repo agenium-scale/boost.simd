@@ -9,6 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/pow.hpp>
+#include <boost/simd/function/std.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -153,16 +154,16 @@ STF_CASE_TPL("pow std",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(pow(bs::Inf<T>(), bs::Inf<T>(), bs::std_), bs::Inf<r_t>(), 0);
-  STF_ULP_EQUAL(pow(bs::Nan<T>(), bs::Nan<T>(), bs::std_), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(pow(bs::Minf<T>(), bs::Minf<T>(), bs::std_), bs::Zero<r_t>(), 0);
-  STF_ULP_EQUAL(pow(bs::Inf<T>(), bs::Minf<T>(), bs::std_), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(pow)(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(pow)(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(pow)(bs::Minf<T>(), bs::Minf<T>()), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(pow)(bs::Inf<T>(), bs::Minf<T>()), bs::Zero<r_t>(), 0);
 #endif
-  STF_ULP_EQUAL(pow(T(-1),T(6), bs::std_), T(1), 0);
-  STF_ULP_EQUAL(pow(bs::Mone<T>(), bs::Mone<T>(), bs::std_), bs::Mone<r_t>(), 0);
-  STF_ULP_EQUAL(pow(bs::One<T>(), bs::One<T>(), bs::std_), bs::One<r_t>(), 0);
-  STF_ULP_EQUAL(pow(bs::Zero<T>(), bs::Zero<T>(), bs::std_), bs::One<r_t>(), 0);
-  STF_ULP_EQUAL(pow(T(-1),T(5), bs::std_), T(-1), 0);
-  STF_ULP_EQUAL(pow(bs::Zero<T>(), bs::One<T>(), bs::std_), bs::Zero<r_t>(), 0);
-  STF_ULP_EQUAL(pow(T(8),bs::Third<T>(), bs::std_), r_t(2), 0.5);
+  STF_ULP_EQUAL(bs::std_(pow)(T(-1),T(6)), T(1), 0);
+  STF_ULP_EQUAL(bs::std_(pow)(bs::Mone<T>(), bs::Mone<T>()), bs::Mone<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(pow)(bs::One<T>(), bs::One<T>()), bs::One<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(pow)(bs::Zero<T>(), bs::Zero<T>()), bs::One<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(pow)(T(-1),T(5)), T(-1), 0);
+  STF_ULP_EQUAL(bs::std_(pow)(bs::Zero<T>(), bs::One<T>()), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(pow)(T(8),bs::Third<T>()), r_t(2), 0.5);
 }

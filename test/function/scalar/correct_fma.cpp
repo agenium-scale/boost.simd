@@ -8,6 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/correct_fma.hpp>
+#include <boost/simd/function/std.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -88,13 +89,13 @@ STF_CASE_TPL (" correct_fma std real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef STF_NO_INVALIDS
-  STF_EQUAL(correct_fma(bs::Inf<T>(), bs::Inf<T>(), bs::Inf<T>(), bs::std_), bs::Inf<T>());
-  STF_IEEE_EQUAL(correct_fma(bs::Minf<T>(), bs::Minf<T>(), bs::Minf<T>(), bs::std_), bs::Nan<T>());
-  STF_IEEE_EQUAL(correct_fma(bs::Nan<T>(), bs::Nan<T>(), bs::Nan<T>(), bs::std_), bs::Nan<T>());
+  STF_EQUAL( bs::std_(correct_fma)(bs::Inf<T>(), bs::Inf<T>(), bs::Inf<T>()), bs::Inf<T>());
+  STF_IEEE_EQUAL( bs::std_(correct_fma)(bs::Minf<T>(), bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL( bs::std_(correct_fma)(bs::Nan<T>(), bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());
 #endif
-  STF_EQUAL(correct_fma(bs::Mone<T>(), bs::Mone<T>(), bs::Mone<T>(), bs::std_), bs::Zero<T>());
-  STF_EQUAL(correct_fma(bs::One<T>(), bs::One<T>(), bs::One<T>(), bs::std_), bs::Two<T>());
-  STF_EQUAL(correct_fma(bs::One<T>()+bs::Eps<T>(), bs::One<T>()-bs::Eps<T>(),bs::Mone<T>(), bs::std_), -bs::Eps<T>()*bs::Eps<T>());
-  STF_EQUAL(correct_fma(bs::Zero<T>(), bs::Zero<T>(), bs::Zero<T>(), bs::std_), bs::Zero<T>());
-  STF_EQUAL(correct_fma(bs::Valmax<T>(), bs::Two<T>(), -bs::Valmax<T>(), bs::std_), bs::Valmax<T>());
+  STF_EQUAL( bs::std_(correct_fma)(bs::Mone<T>(), bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
+  STF_EQUAL( bs::std_(correct_fma)(bs::One<T>(), bs::One<T>(), bs::One<T>()), bs::Two<T>());
+  STF_EQUAL( bs::std_(correct_fma)(bs::One<T>()+bs::Eps<T>(), bs::One<T>()-bs::Eps<T>(),bs::Mone<T>()), -bs::Eps<T>()*bs::Eps<T>());
+  STF_EQUAL( bs::std_(correct_fma)(bs::Zero<T>(), bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
+  STF_EQUAL( bs::std_(correct_fma)(bs::Valmax<T>(), bs::Two<T>(), -bs::Valmax<T>()), bs::Valmax<T>());
 } // end of test for floating_

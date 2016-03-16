@@ -9,6 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/log.hpp>
+#include <boost/simd/function/std.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -60,13 +61,13 @@ STF_CASE_TPL (" log std",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(log(bs::Inf<T>(), bs::std_), bs::Inf<r_t>(), 0);
-  STF_ULP_EQUAL(log(bs::Minf<T>(), bs::std_), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(log(bs::Nan<T>(), bs::std_), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(log)(bs::Inf<T>()), bs::Inf<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(log)(bs::Minf<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(log)(bs::Nan<T>()), bs::Nan<r_t>(), 0);
 #endif
-  STF_ULP_EQUAL(log(bs::Mone<T>(), bs::std_), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(log(bs::Mzero<T>(), bs::std_), bs::Minf<r_t>(), 0);
-  STF_ULP_EQUAL(log(bs::Zero<T>(), bs::std_), bs::Minf<r_t>(), 0);
-  STF_ULP_EQUAL(log(bs::One<T>(), bs::std_), bs::Zero<r_t>(), 0);
-  STF_ULP_EQUAL(log(bs::Two<T>(), bs::std_), bs::Log_2<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(log)(bs::Mone<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(log)(bs::Mzero<T>()), bs::Minf<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(log)(bs::Zero<T>()), bs::Minf<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(log)(bs::One<T>()), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(log)(bs::Two<T>()), bs::Log_2<r_t>(), 0);
 }

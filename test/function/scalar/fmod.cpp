@@ -8,6 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/fmod.hpp>
+#include <boost/simd/function/std.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -129,11 +130,11 @@ STF_CASE_TPL (" fmod std",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef STF_NO_INVALIDS
-  STF_IEEE_EQUAL(fmod(bs::Inf<T>(), bs::Inf<T>(), bs::std_), bs::Nan<T>());
-  STF_IEEE_EQUAL(fmod(bs::Minf<T>(), bs::Minf<T>(), bs::std_), bs::Nan<T>());
-  STF_IEEE_EQUAL(fmod(bs::Nan<T>(), bs::Nan<T>(), bs::std_), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::std_(fmod)(bs::Inf<T>(), bs::Inf<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::std_(fmod)(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::std_(fmod)(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());
 #endif
-  STF_EQUAL(fmod(bs::Mone<T>(), bs::Mone<T>(), bs::std_), bs::Zero<T>());
-  STF_EQUAL(fmod(bs::One<T>(), bs::One<T>(), bs::std_), bs::Zero<T>());
-  STF_IEEE_EQUAL(fmod(bs::Zero<T>(), bs::Zero<T>(), bs::std_), bs::Nan<T>());
+  STF_EQUAL(bs::std_(fmod)(bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
+  STF_EQUAL(bs::std_(fmod)(bs::One<T>(), bs::One<T>()), bs::Zero<T>());
+  STF_IEEE_EQUAL(bs::std_(fmod)(bs::Zero<T>(), bs::Zero<T>()), bs::Nan<T>());
 } // end of

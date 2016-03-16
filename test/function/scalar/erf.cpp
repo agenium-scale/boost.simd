@@ -9,6 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/erf.hpp>
+#include <boost/simd/function/std.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -73,14 +74,14 @@ STF_CASE_TPL (" erf",  STF_IEEE_TYPES)
 
 //   // specific values tests
 // #ifndef BOOST_SIMD_NO_INVALIDS
-//   STF_ULP_EQUAL(erf(bs::Inf<T>(), bs::std_), bs::One<r_t>(), 0);
-//   STF_ULP_EQUAL(erf(bs::Nan<T>(), bs::std_), bs::Nan<r_t>(), 0);
+//   STF_ULP_EQUAL(bs::std_(erf)(bs::Inf<T>()), bs::One<r_t>(), 0);
+//   STF_ULP_EQUAL(bs::std_(erf)(bs::Nan<T>()), bs::Nan<r_t>(), 0);
 // #endif
-//   STF_ULP_EQUAL(erf(bs::Mzero<T>(), bs::std_), bs::Zero<r_t>(), 0);
-//   STF_ULP_EQUAL(erf(bs::Half<T>(), bs::std_), T(0.520499877813046537682746653892), 0);
-//   STF_ULP_EQUAL(erf(bs::One<T>(), bs::std_), T(0.842700792949714869341220635083), 0);
-//   STF_ULP_EQUAL(erf(bs::Two<T>(), bs::std_), T(0.995322265018952734162069256367), 0);
-//   STF_ULP_EQUAL(erf(bs::Zero<T>(), bs::std_), bs::Zero<r_t>(), 0);
+//   STF_ULP_EQUAL(bs::std_(erf)(bs::Mzero<T>()), bs::Zero<r_t>(), 0);
+//   STF_ULP_EQUAL(bs::std_(erf)(bs::Half<T>()), T(0.520499877813046537682746653892), 0);
+//   STF_ULP_EQUAL(bs::std_(erf)(bs::One<T>()), T(0.842700792949714869341220635083), 0);
+//   STF_ULP_EQUAL(bs::std_(erf)(bs::Two<T>()), T(0.995322265018952734162069256367), 0);
+//   STF_ULP_EQUAL(bs::std_(erf)(bs::Zero<T>()), bs::Zero<r_t>(), 0);
 // }
 
 // #include <boost/simd/arch/common/detail/generic/erf_kernel.hpp>
@@ -95,12 +96,12 @@ STF_CASE_TPL (" erf",  STF_IEEE_TYPES)
 //  STF_TYPE_IS(r_t, T);
 
 //   // specific values tests
-//   STF_ULP_EQUAL(pipo(T(0.1)), erf(T(0.1), bs::std_), 0);
-//   STF_ULP_EQUAL(pipo(T(0.45)), erf(T(0.45), bs::std_), 0);
-//   STF_ULP_EQUAL(pipo(T(0.5)), erf(T(0.5) , bs::std_), 0.5);
-//   STF_ULP_EQUAL(pipo(T(3.5)), erf(T(3.5) , bs::std_), 0.5);
-//   STF_ULP_EQUAL(pipo(T(5.0)), erf(T(5.0) , bs::std_), 0.5);
-//   STF_ULP_EQUAL(pipo(bs::Inf<T>()), erf(bs::Inf<T>() , bs::std_), 0);
+//   STF_ULP_EQUAL(pipo(T(0.1)), bs::std_(erf)(T(0.1)), 0);
+//   STF_ULP_EQUAL(pipo(T(0.45)), bs::std_(erf)(T(0.45)), 0);
+//   STF_ULP_EQUAL(pipo(T(0.5)), bs::std_(erf)(T(0.5) ), 0.5);
+//   STF_ULP_EQUAL(pipo(T(3.5)), bs::std_(erf)(T(3.5) ), 0.5);
+//   STF_ULP_EQUAL(pipo(T(5.0)), bs::std_(erf)(T(5.0) ), 0.5);
+//   STF_ULP_EQUAL(pipo(bs::Inf<T>()), bs::std_(erf)(bs::Inf<T>() ), 0);
 // #ifndef BOOST_SIMD_NO_INVALIDS
 //   STF_ULP_EQUAL(pipo(bs::Inf<T>()), bs::One<r_t>(), 0);
 //   STF_ULP_EQUAL(pipo(bs::Nan<T>()), bs::Nan<r_t>(), 0);
