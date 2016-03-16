@@ -13,7 +13,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ABS_HPP_INCLUDED
 
 #include <boost/simd/math.hpp>
-#include <boost/simd/options.hpp>
+#include <boost/simd/function/std.hpp>
 #include <boost/dispatch/meta/as_unsigned.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
@@ -99,6 +99,19 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE T operator()(T a, std_tag const&) const BOOST_NOEXCEPT
     {
       return std::fabs(a);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( abs_
+                          , (typename T)
+                          , bd::cpu_
+                          , bd::scalar_<bd::integer_<T>>
+                          , boost::simd::std_tag
+                          )
+  {
+    BOOST_FORCEINLINE T operator()(T a, std_tag const&) const BOOST_NOEXCEPT
+    {
+      return std::abs(a);
     }
   };
 } } }

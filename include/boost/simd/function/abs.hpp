@@ -51,6 +51,10 @@ namespace boost { namespace simd
 
     modulus, fabs
 
+    @par Decorators
+
+    std_ for floating entries
+
     @see  abss, sqr_abs, sqrs
 
     @param x value whose absolute value will be returned
