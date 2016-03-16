@@ -299,17 +299,10 @@ void STF_FUNCTION( ::stf::unit::env& $ )                                        
 #define STF_RTYPE(z, n, t)                                                                          \
 {                                                                                                   \
   using T = BOOST_PP_SEQ_ELEM(n,t);                                                                 \
-  if(!$.is_compact())                                                                               \
-  {                                                                                                 \
-    $.stream() << std::endl;                                                                        \
-    $.stream() <<  "With T = [" << STF_STRING(BOOST_PP_SEQ_ELEM(n,t))                               \
+  $.stream() << std::endl;                                                                          \
+  $.stream() <<  "With T = [" << STF_STRING(BOOST_PP_SEQ_ELEM(n,t))                                 \
                         << "] ";                                                                    \
-    $.stream() << std::endl;                                                                        \
-  }                                                                                                 \
-  else                                                                                              \
-  {                                                                                                 \
-    $.stream() << "[" << STF_STRING(BOOST_PP_SEQ_ELEM(n,t)) << "]";                                 \
-  }                                                                                                 \
+  $.stream() << std::endl;                                                                          \
   STF_FUNCTION<T>($);                                                                               \
 }                                                                                                   \
 
@@ -323,7 +316,6 @@ namespace                                                                       
                       , [](::stf::unit::env& $) -> void                                             \
                         {                                                                           \
                           BOOST_PP_REPEAT(BOOST_PP_SEQ_SIZE(TYPES),STF_RTYPE,TYPES)                 \
-                          if($.is_compact()) $.stream() << "\n";                                    \
                         }                                                                           \
                       )                                                                             \
                     };                                                                              \
@@ -608,7 +600,7 @@ namespace stf { namespace detail
 #define STF_DUMP(R)                                                                                 \
 $.stream()  << "failing because:\n" << R.lhs << R.op << R.rhs << "\n" << "is incorrect.\n";         \
 
-
+  
 namespace stf
 {
   template<typename LHS, typename RHS>
@@ -689,7 +681,7 @@ namespace stf { namespace detail
               , stf::to_string( lhs ), stf::split_line(lhs,rhs,SB), stf::to_string(rhs)             \
               };                                                                                    \
     }                                                                                               \
-
+    
     STF_BINARY_DECOMPOSE( ==, "==", eq  )
     STF_BINARY_DECOMPOSE( !=, "!=", neq )
     STF_BINARY_DECOMPOSE( < , "<" , lt  )
