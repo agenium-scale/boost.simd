@@ -14,6 +14,59 @@
 
 #include <boost/simd/detail/decorator.hpp>
 
+#if defined(DOXYGEN_ONLY)
+namespace boost { namespace simd
+{
+  /*!
+  @ingroup group-decoratorc
+
+    call the corresponding standard libc++ function.
+
+    @par Semantic
+
+    For scalar parameters,
+
+    @code
+    T r = std_(func)(< func parameters >);
+    @endcode
+
+    is equivalent to:
+
+    @code
+    T r = std::func(< func parameters >);
+    @endcode
+
+    @par Note:
+
+    - for simd vector parameter a map of the standard function is done
+      for each vector element: this is never vectorized.
+
+
+    - std_ is given to be able to shortly compare boost.simd functors
+    and stdlibc++ equivalent behaviours.
+
+    @see  fast_,  raw_
+
+  **/
+  template<typename T> auto abs(T const& x) {}
+
+  namespace functional
+  {
+    /*!
+      @ingroup group-callable-arithmetic
+
+      Computes the absolute value of its parameter.
+
+
+      Function object tied to simd::abs
+
+      @see simd::abs
+    **/
+    const boost::dispatch::functor<tag::abs_> abs = {};
+  }
+} }
+#endif
+
 namespace boost { namespace simd
 {
   struct std_tag
