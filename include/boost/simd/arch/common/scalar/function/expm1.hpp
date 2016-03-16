@@ -11,6 +11,7 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_EXPM1_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_EXPM1_HPP_INCLUDED
+#include <boost/simd/function/std.hpp>
 
 #ifndef BOOST_SIMD_NO_INVALIDS
 #include <boost/simd/constant/nan.hpp>

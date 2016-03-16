@@ -11,6 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_FPCLASSIFY_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_FPCLASSIFY_HPP_INCLUDED
 
+#include <boost/simd/function/std.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/options.hpp>

@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_HYPOT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_HYPOT_HPP_INCLUDED
 
+
 #ifndef BOOST_SIMD_NO_INVALIDS
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/function/scalar/is_inf.hpp>
@@ -28,6 +29,7 @@
 #include <boost/simd/function/scalar/sqrt.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/function/std.hpp>
 #include <boost/config.hpp>
 #include <cmath>
 

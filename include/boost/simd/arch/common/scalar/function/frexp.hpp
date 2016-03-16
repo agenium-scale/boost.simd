@@ -11,6 +11,7 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_FREXP_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_FREXP_HPP_INCLUDED
+#include <boost/simd/function/std.hpp>
 
 #ifndef BOOST_SIMD_NO_DENORMALS
 #include <boost/simd/constant/twotonmb.hpp>

@@ -11,6 +11,7 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_SINH_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_SINH_HPP_INCLUDED
+#include <boost/simd/function/std.hpp>
 
 #include <boost/simd/arch/common/detail/generic/sinh_kernel.hpp>
 #include <boost/simd/constant/half.hpp>

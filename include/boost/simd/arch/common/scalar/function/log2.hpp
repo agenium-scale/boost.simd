@@ -11,6 +11,7 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_LOG2_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_LOG2_HPP_INCLUDED
+#include <boost/simd/function/std.hpp>
 
 #include <boost/simd/arch/common/detail/scalar/logarithm.hpp>
 #include <boost/simd/options.hpp>
