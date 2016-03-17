@@ -24,13 +24,13 @@ namespace boost { namespace simd
 
   **/
 
-  struct fast_tag
-  {
-    using parent = fast_tag;
-    using hierarchy_tag = void;
-  };
+//   struct fast_tag
+//   {
+//     using parent = fast_tag;
+//     using hierarchy_tag = void;
+//   };
 
-  const fast_tag fast_ = {};
+//  const fast_tag fast_ = {};
 
   struct raw_tag
   {

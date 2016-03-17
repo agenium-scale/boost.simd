@@ -13,6 +13,7 @@
 #define BOOST_SIMD_ARCH_DETAIL_SCALAR_D_LOG_HPP_INCLUDED
 
 #include <boost/simd/options.hpp>
+#include <boost/simd/function/fast.hpp>
 #include <boost/simd/arch/detail/tags.hpp>
 #include <boost/simd/function/minusone.hpp>
 #include <boost/simd/function/tofloat.hpp>
@@ -72,7 +73,7 @@ namespace boost { namespace simd
         using i_t = bd::as_integer_t<A0, signed>;
         A0 x;
         i_t k;
-        frexp(a0, x, k, fast_);
+        bs::fast(frexp)(a0, x, k);
         const i_t x_lt_sqrthf = (Sqrt_2o_2<A0>() > x) ? Mone<i_t>() : Zero<i_t>();
         k += x_lt_sqrthf;
         f = minusone(x+bitwise_and(x, genmask(x_lt_sqrthf)));

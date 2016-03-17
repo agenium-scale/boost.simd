@@ -18,6 +18,7 @@
 #ifndef BOOST_SIMD_NO_INFINITIES
 #include <boost/simd/constant/inf.hpp>
 #endif
+#include <boost/simd/function/fast.hpp>
 #include <boost/simd/function/horn.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/constant/half.hpp>
@@ -70,7 +71,7 @@ namespace boost { namespace simd
         using i_t = bd::as_integer_t<A0, signed>;
         A0 x;
         i_t k;
-        frexp(a0, x, k, fast_);
+        fast_(frexp)(a0, x, k);
         const i_t x_lt_sqrthf = (Sqrt_2o_2<A0>() > x) ? Mone<i_t>() : Zero<i_t>();
         k += x_lt_sqrthf;
         f = minusone(x+bitwise_and(x, genmask(x_lt_sqrthf)));
@@ -158,7 +159,7 @@ namespace boost { namespace simd
       using i_t = bd::as_integer_t<A0, signed>;
       using s_t = bd::scalar_of_t<A0>;
       i_t k;
-      A0 x = frexp(a0, k, fast_);
+      A0 x = fast_(frexp)(a0, k);
       const i_t x_lt_sqrthf = if_else_zero((Sqrt_2o_2<A0>() > x),Mone<i_t>());
       k += x_lt_sqrthf;
       f = minusone(x+bitwise_and(x, x_lt_sqrthf));

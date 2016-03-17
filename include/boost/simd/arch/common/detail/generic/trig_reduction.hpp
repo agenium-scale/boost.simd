@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_DETAIL_GENERIC_TRIG_REDUCTION_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_GENERIC_TRIG_REDUCTION_HPP_INCLUDED
 
+#include <boost/simd/function/fast.hpp>
 #include <boost/simd/function/rem_pio2_medium.hpp>
 #include <boost/simd/function/rem_pio2_cephes.hpp>
 #include <boost/simd/function/rem_pio2_straight.hpp>
@@ -294,7 +295,7 @@ namespace boost { namespace simd
         A0 x2 = x - xi * Ratio<A0,90>();
 
         xr =  inrad(x2);
-        return toint(xi, fast_);
+        return bs::fast_(toint)(xi);
       }
     };
 
@@ -314,7 +315,7 @@ namespace boost { namespace simd
         A0 x2 = x - xi * Ratio<A0,90>();
 
         xr =  inrad(x2);
-        return toint(xi, fast_);
+        return bs::fast_(toint)(xi);
       }
     };
 #endif
@@ -333,7 +334,7 @@ namespace boost { namespace simd
         A0 xi = round2even(x*Two<A0>());
         A0 x2 = x - xi * Half<A0>();
         xr = x2*Pi<A0>();
-        return toint(xi, fast_);
+        return fast_(toint)(xi);
       }
     };
   }

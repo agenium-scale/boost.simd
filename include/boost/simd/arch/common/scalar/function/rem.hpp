@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_REM_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_REM_HPP_INCLUDED
 #include <boost/simd/function/std.hpp>
+#include <boost/simd/function/fast.hpp>
 
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/function/scalar/idivfix.hpp>

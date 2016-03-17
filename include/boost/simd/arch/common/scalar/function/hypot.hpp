@@ -11,6 +11,8 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_HYPOT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_HYPOT_HPP_INCLUDED
+#include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/fast.hpp>
 
 
 #ifndef BOOST_SIMD_NO_INVALIDS

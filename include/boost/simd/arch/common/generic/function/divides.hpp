@@ -48,9 +48,9 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     BOOST_FORCEINLINE T operator()(T const& a, T const& b
-                                  , fast_tag const& f) const BOOST_NOEXCEPT
+                                  , fast_tag const& ) const BOOST_NOEXCEPT
     {
-      return a*rec(b, f);
+      return a*fast_(rec)(b);
     }
   };
 

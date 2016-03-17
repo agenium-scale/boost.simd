@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_SECD_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_SECD_HPP_INCLUDED
 
+#include <boost/simd/function/fast.hpp>
 #include <boost/simd/options.hpp>
 #include <boost/simd/constant/ratio.hpp>
 #include <boost/simd/function/cosd.hpp>
@@ -60,7 +61,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, fast_tag const&) const BOOST_NOEXCEPT
     {
-      return rec(cosd(a0, fast_));
+      return fast_(rec)(fast_(cosd)(a0));
     }
   };
 } } }

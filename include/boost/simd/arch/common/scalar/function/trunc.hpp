@@ -11,7 +11,10 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_TRUNC_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_TRUNC_HPP_INCLUDED
+#include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/fast.hpp>
 #include <boost/simd/function/std.hpp>
+#include <boost/simd/function/fast.hpp>
 
 #include <boost/simd/function/scalar/abs.hpp>
 #include <boost/simd/function/scalar/bitofsign.hpp>
@@ -75,7 +78,6 @@ namespace boost { namespace simd { namespace ext
                           , boost::simd::fast_tag
                          )
   {
-
     BOOST_FORCEINLINE A0 operator() ( A0 a0, fast_tag const&) const BOOST_NOEXCEPT
     {
       return static_cast<A0>(static_cast<bd::as_integer_t<A0>>(a0));
