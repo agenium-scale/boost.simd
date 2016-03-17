@@ -39,7 +39,10 @@ namespace boost { namespace simd
     - The call log(x, assert_) asserts is x is negative (peculiarly
     take care that it asserts for Mzero but not Zero in case of floating numbers)
 
-    - log(x, std_) use the call to std::log from stdlibc++
+
+    @par Decorators
+
+    std_ for floating entries
 
     @see is_negative,  Mzero
 

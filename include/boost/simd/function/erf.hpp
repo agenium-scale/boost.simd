@@ -28,8 +28,9 @@ namespace boost { namespace simd
     T r = erf(x);
     @endcode
 
+    @par Decorators
 
-    erf(x, std_) use the call to std::erf from stdlibc++
+    std_ for floating entries
 
     @see erfc,  erfcx
 

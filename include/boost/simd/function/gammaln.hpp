@@ -51,13 +51,15 @@ namespace boost { namespace simd
 
     - The call gammaln(x, sgn) also returns the sign of gamma in the output parameter sgn.
 
-    - The call  gammaln(x, std_) uses std::lgamma to compute the value.
-
        Be aware that POSIX version of lgamma is not thread-safe: each execution of the function
        stores the sign of the gamma function of x in the static external variable signgam. boost.simd
        also provides @ref signgam which independantly computes the sign.
 
-       @see gamma, signgam
+    @par Decorators
+
+    std_ for floating entries
+
+    @see gamma, signgam
 
     @return a value of the same type as the parameter
 

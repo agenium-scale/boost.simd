@@ -36,7 +36,12 @@ namespace boost { namespace simd
     @par Alias:
     @c fmin
 
-    With a third parameter std_  minnum(x, y, std_) calls the stdlibc++ function std::fmin.
+    With the std_ decorator std_(minnum)(x, y) calls the stdlibc++ function std::fmin.
+
+
+    @par Decorators
+
+    std_ for floating entries
 
     @return a value of same type as the inputs
 

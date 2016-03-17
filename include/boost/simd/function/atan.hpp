@@ -33,7 +33,9 @@ namespace boost { namespace simd
     \f$[-\pi/2, \pi/2[\f$ such that <tt>tan(r) == x</tt>.
     If @c x is outside \f$[-1, 1[\f$ the result is Nan.
 
-    atan(x, std_) use the call to std::atan from stdlibc++
+    @par Decorators
+
+    std_, fast_ for floating entries
 
     @see atan2, atand, atanpi
 

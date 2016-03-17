@@ -65,7 +65,9 @@ namespace boost { namespace simd
      where both are null or both are infinite will produce a Nan result which in fact
      is not more absurd than the IEEE choices and will be conforming in all other cases.
 
-    - atan(x, y, std_) use the call to std::atan2 from stdlibc++
+    @par Decorators
+
+    std_ for floating entries
 
   @see atan, atand, atanpi
 

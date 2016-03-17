@@ -38,7 +38,11 @@ namespace boost { namespace simd
     @par Note
 
     If full accuracy is not needed a sometimes faster less accurate version of the function
-    can be used callling : rsqrt(x, fast_).
+    can be sppeded by the fast_ decorator : fast_(rsqrt)(x).
+
+    @par Decorators
+
+    fast_ for floating entries
 
 
     @return      a value of the type of the input.

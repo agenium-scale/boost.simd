@@ -28,7 +28,9 @@ namespace boost { namespace simd
     T r = exp(x);
     @endcode
 
-    exp(x, std_) use the call to std::exp from stdlibc++
+    @par Decorators
+
+    std_ for floating entries
 
 
     @see exp2, exp10, pow, expm1, log

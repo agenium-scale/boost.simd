@@ -33,7 +33,9 @@ namespace boost { namespace simd
     \f$[0, \pi[\f$ such that <tt>cos(r) == x</tt>.
     If @c x is outside \f$[-1, 1[\f$ the result is Nan.
 
-    acos(x, std_) use the call to std::acos from stdlibc++
+    @par Decorators
+
+    std_ for floating entries
 
     @see acosd, acospi
 
