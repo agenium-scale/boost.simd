@@ -18,7 +18,6 @@
 #include <boost/simd/function/scalar/is_gez.hpp>
 #include <boost/simd/math.hpp>
 #include <boost/simd/function/std.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/assert.hpp>
 #include <boost/config.hpp>

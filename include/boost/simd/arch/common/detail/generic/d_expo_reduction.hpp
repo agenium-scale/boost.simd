@@ -38,7 +38,6 @@
 #include <boost/simd/function/simd/round2even.hpp>
 #include <boost/simd/function/simd/sqr.hpp>
 #include <boost/simd/logical.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd

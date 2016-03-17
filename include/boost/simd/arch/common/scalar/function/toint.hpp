@@ -13,7 +13,6 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_TOINT_HPP_INCLUDED
 #include <boost/simd/function/fast.hpp>
 
-#include <boost/simd/options.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>

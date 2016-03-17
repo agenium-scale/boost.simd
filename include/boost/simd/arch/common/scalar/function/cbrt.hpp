@@ -22,7 +22,6 @@
 #include <boost/simd/constant/twotomnmbo_3.hpp>
 #include <boost/simd/constant/twotonmb.hpp>
 #endif
-#include <boost/simd/options.hpp>
 #include <boost/simd/function/horn.hpp>
 #include <boost/simd/constant/constant.hpp>
 #include <boost/simd/constant/one.hpp>

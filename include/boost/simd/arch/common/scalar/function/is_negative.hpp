@@ -13,7 +13,6 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_NEGATIVE_HPP_INCLUDED
 #include <boost/simd/function/std.hpp>
 
-#include <boost/simd/options.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/sbits.hpp>
 #include <boost/simd/logical.hpp>

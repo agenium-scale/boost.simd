@@ -13,7 +13,6 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_GREATER_EQUAL_HPP_INCLUDED
 #include <boost/simd/function/std.hpp>
 
-#include <boost/simd/options.hpp>
 #include <boost/simd/logical.hpp>
 #include <boost/dispatch/adapted/std/integral_constant.hpp>
 #include <boost/dispatch/function/overload.hpp>

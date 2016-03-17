@@ -15,7 +15,6 @@
 
 #include <boost/simd/arch/common/generic/function/ceil.hpp>
 #include <boost/dispatch/function/overload.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/config.hpp>
 #include <cmath>
 

@@ -13,7 +13,6 @@
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_SECD_HPP_INCLUDED
 
 #include <boost/simd/function/fast.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/simd/constant/ratio.hpp>
 #include <boost/simd/function/cosd.hpp>
 #include <boost/simd/function/if_nan_else.hpp>

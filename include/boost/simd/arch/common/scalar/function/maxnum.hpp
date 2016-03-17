@@ -14,7 +14,6 @@
 #include <boost/simd/function/std.hpp>
 
 #include <boost/simd/function/scalar/is_nan.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/simd/function/scalar/max.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>

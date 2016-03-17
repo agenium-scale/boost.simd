@@ -14,7 +14,6 @@
 #include <boost/simd/function/std.hpp>
 #include <boost/config.hpp>
 #include <boost/simd/function/scalar/is_ord.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/simd/logical.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <cmath>

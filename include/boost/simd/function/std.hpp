@@ -18,7 +18,7 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-decoratorc
+  @ingroup group-decorator
 
     call the corresponding standard libc++ function.
 
@@ -48,22 +48,8 @@ namespace boost { namespace simd
     @see  fast_,  raw_
 
   **/
-  template<typename T> auto abs(T const& x) {}
+  template<typename T> auto std_(T const& x) {}
 
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-arithmetic
-
-      Computes the absolute value of its parameter.
-
-
-      Function object tied to simd::abs
-
-      @see simd::abs
-    **/
-    const boost::dispatch::functor<tag::abs_> abs = {};
-  }
 } }
 #endif
 

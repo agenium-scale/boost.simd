@@ -12,7 +12,6 @@
 #ifndef BOOST_SIMD_ARCH_DETAIL_SCALAR_D_LOG_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_DETAIL_SCALAR_D_LOG_HPP_INCLUDED
 
-#include <boost/simd/options.hpp>
 #include <boost/simd/function/fast.hpp>
 #include <boost/simd/arch/detail/tags.hpp>
 #include <boost/simd/function/minusone.hpp>

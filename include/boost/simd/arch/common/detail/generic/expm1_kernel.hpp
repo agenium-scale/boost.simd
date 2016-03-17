@@ -12,7 +12,6 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_DETAIL_GENERIC_EXPM1_KERNEL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_GENERIC_EXPM1_KERNEL_HPP_INCLUDED
 
-#include <boost/simd/options.hpp>
 #include <boost/simd/function/fast.hpp>
 #include <boost/simd/constant/ratio.hpp>
 #include <boost/simd/constant/half.hpp>

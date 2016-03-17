@@ -25,7 +25,6 @@
 #include <boost/simd/function/is_positive.hpp>
 #include <boost/simd/function/logical_and.hpp>
 #include <boost/simd/function/logical_or.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/negif.hpp>
 #include <boost/simd/function/pow_abs.hpp>

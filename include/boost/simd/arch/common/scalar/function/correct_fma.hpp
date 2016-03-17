@@ -13,7 +13,6 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_CORRECT_FMA_HPP_INCLUDED
 #include <boost/simd/function/std.hpp>
 
-#include <boost/simd/options.hpp>
 #include <boost/simd/function/scalar/bitwise_cast.hpp>
 #include <boost/simd/function/scalar/exponent.hpp>
 #include <boost/simd/function/scalar/ldexp.hpp>

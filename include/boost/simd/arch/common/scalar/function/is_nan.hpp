@@ -14,7 +14,6 @@
 #include <boost/simd/function/std.hpp>
 
 #include <boost/simd/logical.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>

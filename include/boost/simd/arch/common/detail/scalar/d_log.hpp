@@ -50,7 +50,6 @@
 #include <boost/simd/function/sqr.hpp>
 #include <boost/simd/function/tofloat.hpp>
 #include <boost/simd/function/unary_minus.hpp>
-#include <boost/simd/options.hpp>
 
 namespace boost { namespace simd
 {

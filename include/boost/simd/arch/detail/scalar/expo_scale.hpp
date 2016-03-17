@@ -17,7 +17,6 @@
 #include <boost/simd/function/scalar/bitwise_cast.hpp>
 #include <boost/simd/function/scalar/shift_left.hpp>
 #include <boost/simd/function/scalar/toint.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 
 namespace boost { namespace simd

@@ -13,7 +13,6 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_INF_HPP_INCLUDED
 #include <boost/simd/function/std.hpp>
 
-#include <boost/simd/options.hpp>
 #include <boost/simd/constant/false.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>

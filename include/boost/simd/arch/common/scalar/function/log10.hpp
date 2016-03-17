@@ -14,7 +14,6 @@
 #include <boost/simd/function/std.hpp>
 
 
-#include <boost/simd/options.hpp>
 #include <boost/simd/arch/common/detail/scalar/logarithm.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/dispatch/function/overload.hpp>

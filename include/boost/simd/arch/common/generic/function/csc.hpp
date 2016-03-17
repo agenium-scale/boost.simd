@@ -13,7 +13,6 @@
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_CSC_HPP_INCLUDED
 
 #include <boost/simd/function/fast.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/simd/function/rec.hpp>
 #include <boost/simd/function/sin.hpp>
 #include <boost/dispatch/function/overload.hpp>

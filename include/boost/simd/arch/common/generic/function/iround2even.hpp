@@ -15,7 +15,6 @@
 #include <boost/simd/function/round2even.hpp>
 #include <boost/simd/function/toint.hpp>
 #include <boost/simd/function/toints.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>

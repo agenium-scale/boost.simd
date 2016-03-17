@@ -17,7 +17,6 @@
 #include <boost/simd/function/assert.hpp>
 #include <boost/simd/function/is_not_nan.hpp>
 #include <boost/simd/function/is_positive.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/simd/sdk/is_not_scalar.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>

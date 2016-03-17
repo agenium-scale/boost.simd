@@ -16,7 +16,6 @@
 #include <boost/simd/function/fast.hpp>
 
 #include <boost/simd/function/bitwise_cast.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>

@@ -20,7 +20,6 @@
 #include <boost/simd/function/scalar/bitofsign.hpp>
 #include <boost/simd/function/scalar/bitwise_or.hpp>
 #include <boost/simd/function/scalar/floor.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>

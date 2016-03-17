@@ -22,7 +22,6 @@
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/fast.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/dispatch/meta/scalar_of.hpp>
 #include <boost/config.hpp>
 

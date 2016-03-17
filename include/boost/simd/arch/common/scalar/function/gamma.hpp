@@ -13,7 +13,6 @@
 
 #include <boost/simd/function/std.hpp>
 #include <boost/config.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/simd/arch/common/detail/generic/gamma_kernel.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/inf.hpp>
