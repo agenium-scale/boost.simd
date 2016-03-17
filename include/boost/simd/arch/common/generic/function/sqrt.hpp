@@ -14,6 +14,7 @@
 
 #include <boost/simd/function/fast.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
+#include <boost/simd/function/assert.hpp>
 #include <boost/simd/function/if_else_zero.hpp>
 #include <boost/simd/function/is_gez.hpp>
 #include <boost/simd/function/multiplies.hpp>

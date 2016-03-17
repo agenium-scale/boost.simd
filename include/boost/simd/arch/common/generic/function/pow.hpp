@@ -16,6 +16,7 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
+#include <boost/simd/function/assert.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/is_flint.hpp>
 #include <boost/simd/function/is_ltz.hpp>
