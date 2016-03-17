@@ -44,7 +44,7 @@ namespace boost { namespace simd
         @endcode
         except for nans
 
-      - If large numbers correct behaviour is not needed trunc(x, fast_) can be used,
+      - If large numbers correct behaviour is not needed the fast_ decorator can be used,
         but 'fast_' means that no provisions are taken for floating values  too large to fit
          in the same size integer type.
 
@@ -52,6 +52,10 @@ namespace boost { namespace simd
 
     @par Alias:
     fix
+
+    @par Decorators
+
+    std_, fast_ for floating entries
 
     @see abs, frac, floor, sign, modf
 

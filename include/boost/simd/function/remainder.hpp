@@ -46,8 +46,8 @@ namespace boost { namespace simd
        -  If either argument is NaN, Nan is returned
        -  If the returned value is 0, it will have the same sign as x.
 
-    If correct values for these limit cases do not matter for you, calling
-    remainder(x, y, fast_) can gain some cycles.
+    If correct values for these limit cases do not matter for you, using the fast_ decorator
+    can gain some cycles.
 
     @see mod, rem, modulo
 
@@ -55,6 +55,9 @@ namespace boost { namespace simd
 
     @c drem
 
+    @par Decorators
+
+    fast_ for floating entries
 
     @return      a value of the same type as the input.
 
