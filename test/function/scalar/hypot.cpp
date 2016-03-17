@@ -21,7 +21,6 @@
 #include <boost/simd/constant/sqrt_2.hpp>
 #include <boost/simd/options.hpp>
 
-
 STF_CASE_TPL (" hypot real",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
@@ -46,7 +45,6 @@ STF_CASE_TPL (" hypot real",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(hypot(bs::Valmax<T>(), bs::Zero<T>()), bs::Valmax<T>(), 0);
   STF_ULP_EQUAL(hypot(bs::Zero<T>(), bs::Valmax<T>()), bs::Valmax<T>(), 0);
 } // end of test for floating_
-
 
 STF_CASE_TPL (" hypot real fast",  STF_IEEE_TYPES)
 {

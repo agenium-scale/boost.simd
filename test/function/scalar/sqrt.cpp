@@ -22,6 +22,7 @@
 #include <boost/simd/function/is_negative.hpp>
 #include <boost/simd/function/is_positive.hpp>
 #include <boost/simd/function/std.hpp>
+#include <boost/simd/function/fast.hpp>
 #include <simd_test.hpp>
 
 STF_CASE_TPL (" sqrt real",  STF_IEEE_TYPES)
@@ -50,7 +51,6 @@ STF_CASE_TPL (" sqrt real",  STF_IEEE_TYPES)
   STF_EXPECT(bs::is_positive(sqrt(bs::Zero<T>())));
 } // end of test for floating_
 
-
 STF_CASE_TPL (" sqrt si",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
@@ -68,7 +68,6 @@ STF_CASE_TPL (" sqrt si",  STF_SIGNED_INTEGRAL_TYPES)
   STF_EQUAL(sqrt(bs::Zero<T>()), bs::Zero<r_t>());
   STF_EQUAL(sqrt(bs::Four<T>()), bs::Two<r_t>());
 } // end of test for floating_
-
 
 STF_CASE_TPL (" sqrt ui",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
@@ -89,7 +88,6 @@ STF_CASE_TPL (" sqrt ui",  STF_UNSIGNED_INTEGRAL_TYPES)
   STF_EQUAL(sqrt(bs::Four<T>()), bs::Two<r_t>());
 } // end of test for floating_
 
-
 STF_CASE_TPL (" sqrt real fast",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
@@ -102,14 +100,14 @@ STF_CASE_TPL (" sqrt real fast",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef STF_NO_INVALIDS
-  STF_ULP_EQUAL(sqrt(bs::Minf<T>(), bs::fast_), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(sqrt(bs::Nan<T>(), bs::fast_), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::fast_(sqrt)(bs::Minf<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::fast_(sqrt)(bs::Nan<T>()), bs::Nan<r_t>(), 0);
 #endif
-  STF_ULP_EQUAL(sqrt(bs::Mone<T>(), bs::fast_), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(sqrt(bs::One<T>(), bs::fast_), bs::One<r_t>(), 20);
-  STF_ULP_EQUAL(sqrt(bs::Two<T>(), bs::fast_), bs::Sqrt_2<r_t>(), 1);
-  STF_ULP_EQUAL(sqrt(bs::Zero<T>(), bs::fast_), bs::Zero<r_t>(), 0);
-  STF_ULP_EQUAL(sqrt(bs::Four<T>(), bs::fast_), bs::Two<r_t>(), 20);
+  STF_ULP_EQUAL(bs::fast_(sqrt)(bs::Mone<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::fast_(sqrt)(bs::One<T>()), bs::One<r_t>(), 20);
+  STF_ULP_EQUAL(bs::fast_(sqrt)(bs::Two<T>()), bs::Sqrt_2<r_t>(), 1);
+  STF_ULP_EQUAL(bs::fast_(sqrt)(bs::Zero<T>()), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(bs::fast_(sqrt)(bs::Four<T>()), bs::Two<r_t>(), 20);
 } // end of test for floating_
 
 STF_CASE_TPL (" sqrt std",  STF_IEEE_TYPES)

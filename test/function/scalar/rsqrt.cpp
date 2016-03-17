@@ -8,6 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/rsqrt.hpp>
+#include <boost/simd/function/fast.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -51,7 +52,7 @@ STF_CASE_TPL( "fast rsqrt", STF_IEEE_TYPES )
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
   using bs::rsqrt;
-  using r_t = decltype(rsqrt(T(), bs::fast_));
+  using r_t = decltype(bs::fast_(rsqrt)(T()));
 
   // return type conformity test
   STF_TYPE_IS(r_t, T);

@@ -8,6 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/frexp.hpp>
+#include <boost/simd/function/fast.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -65,7 +66,6 @@ STF_CASE_TPL(" frexp0", STF_IEEE_TYPES)
     STF_EQUAL(ldexp(m,e),a);
   }
 
-
   {
     namespace bs = boost::simd;
     iT e;
@@ -86,7 +86,6 @@ STF_CASE_TPL(" frexp", STF_IEEE_TYPES)
   namespace bd = boost::dispatch;
   using bs::frexp;
   using iT = bd::as_integer_t<T,signed>;
-
 
   STF_EXPR_IS( (frexp(T()))
              , (std::pair<T,iT>)
@@ -163,7 +162,6 @@ STF_CASE_TPL(" frexp0", STF_IEEE_TYPES)
     STF_EQUAL(ldexp(m,e),a);
   }
 
-
   {
     namespace bs = boost::simd;
     iT e;
@@ -186,8 +184,7 @@ STF_CASE_TPL(" frexp fast", STF_IEEE_TYPES)
   using bs::fast_;
   using iT = bd::as_integer_t<T,signed>;
 
-
-  STF_EXPR_IS( (frexp(T(), fast_))
+  STF_EXPR_IS( (bs::fast_(frexp)(T()))
              , (std::pair<T,iT>)
              );
 
@@ -196,7 +193,7 @@ STF_CASE_TPL(" frexp fast", STF_IEEE_TYPES)
     iT e;
     T  m;
 
-    frexp(bs::One<T>(), m, e, fast_);
+    bs::fast_(frexp)(bs::One<T>(), m, e);
     STF_EQUAL(m, bs::Half<T>());
     STF_EQUAL(e, bs::One<iT>());
   }
@@ -206,7 +203,7 @@ STF_CASE_TPL(" frexp fast", STF_IEEE_TYPES)
     iT e;
     T  m;
 
-    m = frexp(bs::One<T>(), e, fast_);
+    m = bs::fast_(frexp)(bs::One<T>(), e);
     STF_EQUAL(m, bs::Half<T>());
     STF_EQUAL(e, bs::One<iT>());
   }
@@ -215,7 +212,7 @@ STF_CASE_TPL(" frexp fast", STF_IEEE_TYPES)
     namespace bs = boost::simd;
     std::pair<T,iT> p;
 
-    p = frexp(bs::One<T>(), fast_);
+    p = bs::fast_(frexp)(bs::One<T>());
     STF_EQUAL(p.first  , bs::Half<T>());
     STF_EQUAL(p.second , bs::One<iT>());
   }

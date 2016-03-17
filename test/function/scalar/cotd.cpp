@@ -9,6 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/cotd.hpp>
+#include <boost/simd/function/fast.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -56,15 +57,15 @@ STF_CASE_TPL (" cotd",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(cotd(-bs::Zero<T>(), bs::fast_), -bs::Inf<r_t>(), 0.5);
-  STF_ULP_EQUAL(cotd(bs::Inf<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cotd(bs::Minf<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cotd(bs::Nan<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cotd(bs::Zero<T>(), bs::fast_), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cotd)(-bs::Zero<T>()), -bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cotd)(bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cotd)(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cotd)(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cotd)(bs::Zero<T>()), bs::Inf<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(cotd(-T(45), bs::fast_), bs::Mone<r_t>(), 4.0);
-  STF_ULP_EQUAL(cotd(-T(90), bs::fast_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cotd(T(45), bs::fast_), bs::One<r_t>(), 4.0);
-  STF_ULP_EQUAL(cotd(T(90), bs::fast_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cotd)(-T(45)), bs::Mone<r_t>(), 4.0);
+  STF_ULP_EQUAL(bs::fast_(cotd)(-T(90)), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cotd)(T(45)), bs::One<r_t>(), 4.0);
+  STF_ULP_EQUAL(bs::fast_(cotd)(T(90)), bs::Nan<r_t>(), 0.5);
 }
 
