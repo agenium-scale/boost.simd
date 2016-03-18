@@ -15,8 +15,10 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
     @ingroup group-arithmetic
+    Function object implementing abss capabilities
 
     Computes the saturated absolute value of its parameter.
     The result is always positive or 0.
@@ -46,26 +48,8 @@ namespace boost { namespace simd
 
     @see  abs, sqr_abss, sqrs
 
-    @param x value whose absolute value will be returned
-
-    @return The  saturated absolute value of the parameter.
   **/
-  template<typename T> auto abss(T const& x);
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-arithmetic
-
-      Computes the saturated absolute value of its parameter.
-
-
-      Function object tied to boost::simd::abss
-
-      @see abs
-    **/
-    const boost::dispatch::functor<tag::abss_> abss = {};
-  }
+  const boost::dispatch::functor<tag::abss_> abss = {};
 } }
 #endif
 

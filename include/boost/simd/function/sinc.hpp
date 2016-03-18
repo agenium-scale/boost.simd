@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,8 +15,10 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
   @ingroup group-trigonometric
+    Function object implementing sinc capabilities
 
     Computes the sinus cardinal  value of its parameter that is sin(x)/x.
 
@@ -36,21 +38,8 @@ namespace boost { namespace simd
 
     @see sin, sincpi, sinhc
 
-    @return a value of the same type as the parameter
   **/
-  template<typename T> auto sinc(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-trigonometric
-
-      Function object tied to simd::sinc
-
-      @see simd::sinc
-    **/
-    const boost::dispatch::functor<tag::sinc_> sinc = {};
-  }
+  const boost::dispatch::functor<tag::sinc_> sinc = {};
 } }
 #endif
 

@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-trigonometric
+    Function object implementing asind capabilities
 
     inverse sine in degree.
 
@@ -33,27 +35,8 @@ namespace boost { namespace simd
     \f$[-90, 90[\f$ such that <tt>sin(r) == x</tt>.
     If @c x is outside \f$[-1, 1[\f$ the result is Nan.
 
-
-    @return a value of the same type as the parameter
-
-**/
-  template<typename T> auto asind(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-trigonometric
-
-
-      inverse sine in degree.
-
-
-      Function object tied to simd::asind
-
-      @see simd::asind
-    **/
-    const boost::dispatch::functor<tag::asind_> asind = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::asind_> asind = {};
 } }
 #endif
 

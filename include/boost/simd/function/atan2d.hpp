@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-trigonometric
+    Function object implementing atan2d capabilities
 
     atan2d function : atan2 in degrees.
 
@@ -47,27 +49,8 @@ namespace boost { namespace simd
 
     @see atand, atan2, atan
 
-
-    @return a value of the same type as the parameters
-
-**/
-  template<typename T> auto atan2d(T const& x, T const& y) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-trigonometric
-
-
-      atan2d function : atan2 in degrees.
-
-
-      Function object tied to simd::atan2d
-
-      @see simd::atan2d
-    **/
-    const boost::dispatch::functor<tag::atan2d_> atan2d = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::atan2d_> atan2d = {};
 } }
 #endif
 

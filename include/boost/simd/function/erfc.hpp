@@ -1,8 +1,8 @@
 //==================================================================================================
 /*!
   @file
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -14,8 +14,10 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
   @ingroup group-euler
+    Function object implementing erfc capabilities
 
   Computes the complementary error function
 
@@ -33,31 +35,14 @@ namespace boost { namespace simd
   T0 r = oneminus(erf(x));
   @endcode
 
-
   @par Decorators
 
   std_ for floating entries
 
   @see erf, erfcx, oneminus
 
-  @return a value of the same type as the parameter
-
   **/
-  template<typename T> auto erfc(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-euler
-
-      Computes the complementary error function: \f$e^{x}\f$
-
-      Function object tied to simd::erfc
-
-      @see simd::erfc
-    **/
-    const boost::dispatch::functor<tag::erfc_> erfc = {};
-  }
+  const boost::dispatch::functor<tag::erfc_> erfc = {};
 } }
 #endif
 

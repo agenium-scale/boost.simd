@@ -18,6 +18,7 @@ namespace boost { namespace simd
   /*!
 
     @ingroup group-arithmetic
+    Function object function implementing fma capabilities
 
     Computes the (fused) multiply add of the three parameters.
 
@@ -63,25 +64,7 @@ namespace boost { namespace simd
     @c madd
 
     @see  correct_fma, fms, fnma, fnms
-
-    @return  a value of the same type as the input.
-
-
-**/
-  template<typename T> auto fma(T const& x, T const& y, T const& z) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-arithmetic
-
-      Computes the (fused) multiply add of the three parameters.
-
-
-      Function object tied to simd::fma
-
-      @see simd::fma
-    **/
+  **/
     const boost::dispatch::functor<tag::fma_> fma = {};
   }
 } }

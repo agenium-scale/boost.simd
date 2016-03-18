@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-reduction
+    Function object implementing compare_greater_equal capabilities
 
     Returns a logical scalar that is the result of the lexicographic
     test for >= on all elements of the entries
@@ -43,27 +45,8 @@ namespace boost { namespace simd
 
     @see is_greater_equal
 
-
-    @return a value of the scalar logical type associated to the parameters
-
-**/
-  template<typename T> auto compare_greater_equal(T const& x, T const& y) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-reduction
-
-      Returns a logical scalar that is the result of the lexicographic
-      test for >= on all elements of the entries
-
-
-      Function object tied to simd::compare_greater_equal
-
-      @see simd::compare_greater_equal
-    **/
-    const boost::dispatch::functor<tag::compare_greater_equal_> compare_greater_equal = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::compare_greater_equal_> compare_greater_equal = {};
 } }
 #endif
 

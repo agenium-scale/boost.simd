@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-exponential
+    Function object implementing log2 capabilities
 
     base two logarithm function.
 
@@ -41,32 +43,13 @@ namespace boost { namespace simd
     - The call log2(x, assert_) asserts is x is negative (peculiarly
     take care that it asserts for Mzero but not Zero in case of floating numbers)
 
-
     @par Decorators
 
     std_ for floating entries
 
     @see log10, log, log1p, is_negative,  Mzero
-    @return a value of the same type as the parameter
-
-**/
-  template<typename T> auto log2(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-exponential
-
-
-      base two logarithm function.
-
-
-      Function object tied to simd::log2
-
-      @see simd::log2
-    **/
-    const boost::dispatch::functor<tag::log2_> log2 = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::log2_> log2 = {};
 } }
 #endif
 

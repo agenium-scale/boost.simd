@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-arithmetic
+    Function object implementing unary_plus capabilities
 
     return the elementwise unary plus of the parameter
 
@@ -39,25 +41,8 @@ namespace boost { namespace simd
 
     @see  plus, unary_minus
 
-    @return a value of the same type as the parameter
-
-**/
-  template<typename T> auto unary_plus(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-arithmetic
-
-      return the elementwise unary plus of the parameter
-
-
-      Function object tied to simd::unary_plus
-
-      @see simd::unary_plus
-    **/
-    const boost::dispatch::functor<tag::unary_plus_> unary_plus = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::unary_plus_> unary_plus = {};
 } }
 #endif
 

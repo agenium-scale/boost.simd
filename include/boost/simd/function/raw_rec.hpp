@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-arithmetic
+    Function object implementing raw_rec capabilities
 
     Computes an rough approximation of the inverse of its parameter.
 
@@ -39,29 +41,10 @@ namespace boost { namespace simd
     Raw means that the computation is possibly done with the most speed available
     on current hardware but with the least precision.
 
-
     @see raw_rec, rec
 
-    @return      a value of the type of the input.
-
-
-**/
-  template<typename T> auto raw_rec(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-arithmetic
-
-      Computes an rough approximation of the inverse of its parameter.
-
-
-      Function object tied to simd::raw_rec
-
-      @see simd::raw_rec
-    **/
-    const boost::dispatch::functor<tag::raw_rec_> raw_rec = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::raw_rec_> raw_rec = {};
 } }
 #endif
 

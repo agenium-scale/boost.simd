@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,10 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-boolean
-
+    Function object implementing selsub capabilities
 
     The function returns the second entry or the difference of the
     second and third entries, according to the first entry being @ref False
@@ -38,28 +39,11 @@ namespace boost { namespace simd
     T1 r = x ? y-a2 : y;
     @endcode
 
-
     @par Alias:
     @c if_sub
 
-    @return a value of the same type as the second parameter
-
-**/
- template<typename C, typename T> auto selsub(C const& cond, T const& t1, T const& t2) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-boolean
-
-
-
-      Function object tied to simd::selsub
-
-      @see simd::selsub
-    **/
-    const boost::dispatch::functor<tag::selsub_> selsub = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::selsub_> selsub = {};
 } }
 #endif
 

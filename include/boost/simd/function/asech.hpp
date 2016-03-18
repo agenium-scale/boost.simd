@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-hyperbolic
+    Function object implementing asech capabilities
 
     Returns the hyperbolic secant argument \f$\mathop{\textrm{acosh}}(1/x)\f$
 
@@ -37,26 +39,8 @@ namespace boost { namespace simd
 
     @see acosh, cosh, rec
 
-    @return a value of the same type as the parameter
-
-**/
-  template<typename T> auto asech(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-hyperbolic
-
-
-      Returns the hyperbolic secant argument \f$\mathop{\textrm{acosh}}(1/x)\f$
-
-
-      Function object tied to simd::asech
-
-      @see simd::asech
-    **/
-    const boost::dispatch::functor<tag::asech_> asech = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::asech_> asech = {};
 } }
 #endif
 

@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,13 +15,14 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-trigonometric
+    Function object implementing rem_pio2_medium capabilities
 
     Computes the remainder modulo \f$\pi/2\f$ with medium algorithm,
     and the angle quadrant between 0 and 3.
-
 
     @par Semantic:
 
@@ -57,26 +58,8 @@ namespace boost { namespace simd
 
     @see rem_pio2, rem_pio2_straight,rem_2pi,  rem_pio2_cephes,
 
-
-**/
-  template<typename T> auto rem_pio2_medium(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-trigonometric
-
-
-      Computes the remainder modulo \f$\pi/2\f$ with medium algorithm,
-      and the angle quadrant between 0 and 3.
-
-
-      Function object tied to simd::rem_pio2_medium
-
-      @see simd::rem_pio2_medium
-    **/
-    const boost::dispatch::functor<tag::rem_pio2_medium_> rem_pio2_medium = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::rem_pio2_medium_> rem_pio2_medium = {};
 } }
 #endif
 

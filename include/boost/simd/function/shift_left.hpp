@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-operator
+    Function object implementing shift_left capabilities
 
     return left shift of the first operand by the second
     that must be of integer type and of the same number
@@ -44,30 +46,8 @@ namespace boost { namespace simd
 
     @see  shift_right, shr, rshl, rshr, rol, ror
 
-
-    @return a value of the same type as the second parameter
-
-**/
-  template<typename T, typename N> auto shift_left(T const& x, N const& n) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-operator
-
-      return left shift of the first operand by the second
-      that must be of integer type and of the same number
-      of elements as the first parameter
-
-      Infix notation can be used with operator '<<'
-
-
-      Function object tied to simd::shift_left
-
-      @see simd::shift_left
-    **/
-    const boost::dispatch::functor<tag::shift_left_> shift_left = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::shift_left_> shift_left = {};
 } }
 #endif
 

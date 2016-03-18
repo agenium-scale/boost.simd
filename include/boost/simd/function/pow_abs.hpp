@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-exponential
+    Function object implementing pow_abs capabilities
 
     Computes \f$|x|^y\f$.
 
@@ -37,27 +39,8 @@ namespace boost { namespace simd
 
     @see pow, abs
 
-
-    @return a value of the same type as the parameter
-
-**/
-  template<typename T> auto pow_abs(T const& x, T const& y) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-exponential
-
-
-      Computes  \f$|x|^y\f$.
-
-
-      Function object tied to simd::pow_abs
-
-      @see simd::pow_abs
-    **/
-    const boost::dispatch::functor<tag::pow_abs_> pow_abs = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::pow_abs_> pow_abs = {};
 } }
 #endif
 

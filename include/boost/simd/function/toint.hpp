@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-arithmetic
+    Function object implementing toint capabilities
 
     Convert to integer by truncation.
 
@@ -49,13 +51,11 @@ namespace boost { namespace simd
     toint(Inf<double>()) ==  toint(1.0/0.0)
     @endcode
 
-
     will return @ref False whilst the test:
 
     @code
     Inf<double>() == 1.0/0.0
     @endcode
-
 
     returns @ref True !)
 
@@ -64,26 +64,8 @@ namespace boost { namespace simd
 
     @see toints, touint, touints
 
-    @return      a value of the integer type associated to the input.
-
-
-**/
-  template<typename T> auto toint(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-arithmetic
-
-      Convert to integer by truncation.
-
-
-      Function object tied to simd::toint
-
-      @see simd::toint
-    **/
-    const boost::dispatch::functor<tag::toint_> toint = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::toint_> toint = {};
 } }
 #endif
 

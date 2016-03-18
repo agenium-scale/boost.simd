@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-hyperbolic
+    Function object implementing sinhcosh capabilities
 
     Computes simultaneously (and more rapidly) the sinh and cosh of the input
 
@@ -35,28 +37,10 @@ namespace boost { namespace simd
     T ch = cosh(x);
     @endcode
 
-
     @see  sinh, cosh
 
-
-**/
-  template<typename T> auto sinhcosh(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-hyperbolic
-
-
-      Computes simultaneously the sinh and cosh of the input
-
-
-      Function object tied to simd::sinhcosh
-
-      @see simd::sinhcosh
-    **/
-    const boost::dispatch::functor<tag::sinhcosh_> sinhcosh = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::sinhcosh_> sinhcosh = {};
 } }
 #endif
 

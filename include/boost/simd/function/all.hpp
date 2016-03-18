@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-reduction
+    Function object implementing all capabilities
 
     Returns @ref True if all elements of the input vector are non zero.
 
@@ -37,26 +39,8 @@ namespace boost { namespace simd
       if (!x[i]) {r =  False; break; }
     @endcode
 
-
-    @return a value of the scalar logical type asssociated to the parameter
-
-**/
-  template<typename T> auto all(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-reduction
-
-      Returns @ref True if all elements of the input vector are non zero.
-
-
-      Function object tied to simd::all
-
-      @see simd::all
-    **/
-    const boost::dispatch::functor<tag::all_> all = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::all_> all = {};
 } }
 #endif
 

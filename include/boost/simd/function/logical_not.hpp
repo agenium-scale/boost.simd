@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-operator
+    Function object implementing logical_not capabilities
 
     return the logical negation of the parameter,
     i.e. True or False of the logical type associated entry type according that
@@ -45,27 +47,8 @@ namespace boost { namespace simd
     @see  logical_or, logical_xor, logical_notand,
     logical_andnot, logical_notor, logical_ornot
 
-    @return a value of the logical type associated to the parameter
-
-**/
-  template<typename T> auto logical_not(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-operator
-
-      return the logical negation of the parameter,
-      i.e. True or False of the logical type associated entry type according that
-      the input is @ref Zero or non @ref Zero (False or True).
-
-
-      Function object tied to simd::logical_not
-
-      @see simd::logical_not
-    **/
-    const boost::dispatch::functor<tag::logical_not_> logical_not = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::logical_not_> logical_not = {};
 } }
 #endif
 

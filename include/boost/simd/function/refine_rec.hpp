@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,41 +15,21 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-arithmetic
+    Function object implementing refine_rec capabilities
 
     Performs a Newton-Raphson step to improve precision of reciprocate estimate.
     This function can be used in conjunction with raw_rec or
     fast_rec to add more precision to the estimate if their default
     precision is not enough.
 
-
     @see rec
 
-    @return  A value estimating rec(x) with twice as much precision
-
-
-**/
-  template<typename T> auto refine_rec(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-arithmetic
-
-      Performs a Newton-Raphson step to improve precision of reciprocate estimate.
-      This function can be used in conjunction with raw_rec or
-      fast_rec to add more precision to the estimate if their default
-      precision is not enough.
-
-
-      Function object tied to simd::refine_rec
-
-      @see simd::refine_rec
-    **/
-    const boost::dispatch::functor<tag::refine_rec_> refine_rec = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::refine_rec_> refine_rec = {};
 } }
 #endif
 

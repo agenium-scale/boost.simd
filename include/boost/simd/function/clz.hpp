@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-bitwise
+    Function object implementing clz capabilities
 
     Returns  the bit count of leading zeros.
 
@@ -30,26 +32,8 @@ namespace boost { namespace simd
 
     @see  ctz, popcnt
 
-    @return      a value unsigned integral type associated to the input.
-
-
-**/
-  template<typename T> auto clz(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-bitwise
-
-      Returns  the bit count of leading zeros.
-
-
-      Function object tied to simd::cl
-
-z      @see simd::cl
-z    **/
-    const boost::dispatch::functor<tag::clz_> clz = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::clz_> clz = {};
 } }
 #endif
 

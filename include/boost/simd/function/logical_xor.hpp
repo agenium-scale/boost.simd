@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,16 +15,17 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-boolean
+    Function object implementing logical_xor capabilities
 
     return the logical xor of the first parameter and of the second parameter.
 
     The operands must share the same @ref cardinal_of value.
 
     The result type is logical type associated to the first parameter.
-
 
     @par semantic:
     For every parameters of types respectively T1, T2:
@@ -42,26 +43,8 @@ namespace boost { namespace simd
     @see  logical_or, logical_ornot, logical_notand,
     logical_andnot, logical_notor, logical_and, logical_not
 
-    @return a logical value of the logical type associated to the input.
-
-**/
-  template<typename T1, typename T2> auto logical_xor(T1 const& x, T2 const& y) {}
-
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-boolean
-
-      return the logical xor of the first parameter and of the second parameter.
-
-
-      Function object tied to simd::logical_xor
-
-      @see simd::logical_xor
-    **/
-    const boost::dispatch::functor<tag::logical_xor_> logical_xor = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::logical_xor_> logical_xor = {};
 } }
 #endif
 

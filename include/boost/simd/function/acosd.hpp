@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-trigonometric
+    Function object implementing acosd capabilities
 
     inverse cosine in degree.
 
@@ -35,26 +37,8 @@ namespace boost { namespace simd
 
     @see acos, acospi
 
-    @return a value of the same type as the parameter
-
-**/
-  template<typename T> auto acosd(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-trigonometric
-
-
-      inverse cosine in degree.
-
-
-      Function object tied to simd::acosd
-
-      @see simd::acosd
-    **/
-    const boost::dispatch::functor<tag::acosd_> acosd = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::acosd_> acosd = {};
 } }
 #endif
 

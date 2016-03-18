@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-trigonometric
+    Function object implementing rem_pio2 capabilities
 
     Computes the remainder modulo \f$\pi/2\f$.
 
@@ -43,27 +45,8 @@ namespace boost { namespace simd
     The Range parameter is a type among big_,  medium_,  small_,  very_small_
     that allow to statically choose the computation process.
 
-
-    @return  the remainder
-
-**/
-  template<typename T> auto rem_pio2(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-trigonometric
-
-
-      Computes the remainder modulo \f$\pi/2\f$.
-
-
-      Function object tied to simd::rem_pio2
-
-      @see simd::rem_pio2
-    **/
-    const boost::dispatch::functor<tag::rem_pio2_> rem_pio2 = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::rem_pio2_> rem_pio2 = {};
 } }
 #endif
 

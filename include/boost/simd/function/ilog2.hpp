@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-bitwise
+    Function object implementing ilog2 capabilities
 
     Returns the integer part of the base 2
     logarithm of the input.
@@ -40,28 +42,9 @@ namespace boost { namespace simd
 
     @see  twopower, exponent
 
-    @return      a value of the integer
                  type associated to the input.
-
-
-**/
-  template<typename T> auto ilog2(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-bitwise
-
-      Returns the integer part of the base 2
-      logarithm of the input.
-
-
-      Function object tied to simd::ilog2
-
-      @see simd::ilog2
-    **/
-    const boost::dispatch::functor<tag::ilog2_> ilog2 = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::ilog2_> ilog2 = {};
 } }
 #endif
 
