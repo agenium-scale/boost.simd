@@ -10,21 +10,20 @@
 */
 //==================================================================================================
 #include <boost/simd/pack.hpp>
-#include <boost/simd/function/definition/extract.hpp>
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/constant/constant.hpp>
 #include <simd_test.hpp>
-  namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
+
+namespace bs = boost::simd;
+namespace bd = boost::dispatch;
 
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
 {
   using p_t = bs::pack<T, N>;
-
-  STF_TYPE_IS(const T&, decltype(bs::extract(p_t(), std::size_t())));
   p_t p;
-  STF_TYPE_IS(T&, decltype(bs::extract(p, std::size_t())));
+
+  STF_TYPE_IS(T, decltype(bs::extract(p, std::size_t())));
 
   T a1[N];
   for(std::size_t i = 0; i < N; ++i)
@@ -35,17 +34,6 @@ void test(Env& $)
   for(std::size_t i = 0; i < N; ++i)
   {
     STF_EQUAL(bs::extract(aa1, i), a1[i]);
-  }
-
-  for(std::size_t i = 0; i < N; ++i)
-  {
-    T tmp = a1[i];
-    p_t z = aa1;
-    bs::extract(z, i) = T(27);
-    a1[i] = T(27);
-    p_t aa2(&a1[0], &a1[N]);
-    STF_IEEE_EQUAL(z, aa2);
-    a1[i] = tmp;
   }
 }
 
@@ -68,7 +56,6 @@ template <typename T, std::size_t N, typename Env> struct test_static < T, N, 0,
   }
 };
 
-
 template <typename T, std::size_t N, typename Env>
 void test_st(Env& $)
 {
@@ -77,7 +64,6 @@ void test_st(Env& $)
 
   STF_TYPE_IS(T, decltype(bs::extract<0>(p_t())));
   p_t p;
-
 
   T a1[N];
   for(std::size_t i = 0; i < N; ++i)
@@ -88,7 +74,7 @@ void test_st(Env& $)
   test_static<T, N, N-1, Env>()($, aa1, a1);
 }
 
-STF_CASE_TPL("Check extract on pack" , STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check dynamic extract on pack" , STF_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
@@ -96,6 +82,13 @@ STF_CASE_TPL("Check extract on pack" , STF_NUMERIC_TYPES)
   test<T, N>($);
   test<T, N/2>($);
   test<T, N*2>($);
+}
+
+STF_CASE_TPL("Check static extract on pack" , STF_NUMERIC_TYPES)
+{
+  namespace bs = boost::simd;
+  using p_t = bs::pack<T>;
+  static const std::size_t N = p_t::static_size;
   test_st<T, N>($);
   test_st<T, N/2>($);
   test_st<T, N*2>($);

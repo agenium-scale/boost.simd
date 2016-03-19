@@ -13,6 +13,7 @@
 
 #include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/dispatch/adapted/std/integral_constant.hpp>
+#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -44,7 +45,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE bd::scalar_of_t<A0> operator()(A0 const & a0, A1 const &) const
     {
-      return _mm_extract_epi16(a0, A1::value);
+      return static_cast<bd::scalar_of_t<A0>>(_mm_extract_epi16(a0, A1::value));
     }
   };
 
@@ -62,6 +63,7 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
+#if !defined(BOOST_MSVC)
   //------------------------------------------------------------------------------------------------
   BOOST_DISPATCH_OVERLOAD ( extract_
                           , (typename A0, typename A1)
@@ -75,6 +77,7 @@ namespace boost { namespace simd { namespace ext
       return _mm_cvtsi128_si64(_mm_srli_si128(a0, A1::value * 8));
     }
   };
+#endif
 
   //------------------------------------------------------------------------------------------------
   BOOST_DISPATCH_OVERLOAD ( extract_
@@ -103,7 +106,6 @@ namespace boost { namespace simd { namespace ext
       return _mm_cvtsd_f64(_mm_castsi128_pd(_mm_srli_si128(_mm_castpd_si128(a0), A1::value * 8)));
     }
   };
-
 } } }
 
 #endif

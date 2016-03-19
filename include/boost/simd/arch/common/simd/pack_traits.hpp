@@ -96,7 +96,6 @@ namespace boost { namespace simd { namespace detail
       return d[i / element_size][i % element_size];
     }
   };
-
 } } }
 
 #endif

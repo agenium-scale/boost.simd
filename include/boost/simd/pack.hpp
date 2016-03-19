@@ -19,7 +19,6 @@
 #include <boost/simd/detail/storage_of.hpp>
 #include <boost/simd/sdk/is_power_of_2.hpp>
 #include <boost/simd/function/aligned_load.hpp>
-#include <boost/simd/function/extract.hpp>
 #include <boost/simd/function/splat.hpp>
 #include <boost/simd/function/load.hpp>
 #include <boost/align/is_aligned.hpp>
@@ -187,13 +186,13 @@ namespace boost { namespace simd
     **/
     BOOST_FORCEINLINE reference operator[](std::size_t i)
     {
-      return extract(*this, i);
+      return traits::at(*this, i);
     }
 
     /// @overload
     BOOST_FORCEINLINE const_reference operator[](std::size_t i) const
     {
-      return extract(*this, i);
+      return traits::at(*this, i);
     }
 
     public:
