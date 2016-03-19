@@ -16,17 +16,6 @@
 #include <boost/dispatch/function/make_callable.hpp>
 #include <boost/dispatch/hierarchy/functions.hpp>
 #include <boost/simd/detail/dispatch.hpp>
-#include <boost/simd/function/divides.hpp>
-#include <boost/simd/function/definition/ceil.hpp>
-#include <boost/simd/function/divceil.hpp>
-#include <boost/simd/function/definition/floor.hpp>
-#include <boost/simd/function/divfloor.hpp>
-#include <boost/simd/function/definition/round.hpp>
-#include <boost/simd/function/divround.hpp>
-#include <boost/simd/function/definition/round2even.hpp>
-#include <boost/simd/function/divround2even.hpp>
-#include <boost/simd/function/definition/fix.hpp>
-#include <boost/simd/function/divfix.hpp>
 
 namespace boost { namespace simd
 {
@@ -38,42 +27,40 @@ namespace boost { namespace simd
   {
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag, div_);
   }
-  namespace detail
-  {
-    BOOST_DISPATCH_CALLABLE_DEFINITION(tag::div_,div);
-  }
 
-  namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
-  template < typename T>
-  BOOST_FORCEINLINE T div(T const& a, T const& b )
-  BOOST_NOEXCEPT
-  {
-    return bs::divides(a, b);
-  }
+  BOOST_DISPATCH_CALLABLE_DEFINITION(tag::div_,div);
 
-  template < typename T, typename O>
-  auto div(T const& a, T const& b, O const& )
-    BOOST_NOEXCEPT_DECLTYPE(bs::divides(a, b, O()))
-  {
-    return bs::divides(a, b, O());
-  }
+//   namespace bs = boost::simd;
+//   namespace bd = boost::dispatch;
+//   template < typename T>
+//   BOOST_FORCEINLINE T div(T const& a, T const& b )
+//   BOOST_NOEXCEPT
+//   {
+//     return bs::divides(a, b);
+//   }
 
-#define BOOST_SIMD_DIV_WITH_OPTION(option)                      \
-  template < typename T>                                        \
-  BOOST_FORCEINLINE auto div(T const& a, T const& b             \
-                         , bd::functor<bs::tag::option##_> const& ) \
-    BOOST_NOEXCEPT_DECLTYPE(bs::div##option(a, b))              \
-  {                                                             \
-    return bs::div##option(a, b);                               \
-  }                                                             \
-/**/
+//   template < typename T, typename O>
+//   auto div(T const& a, T const& b, O const& )
+//     BOOST_NOEXCEPT_DECLTYPE(bs::divides(a, b, O()))
+//   {
+//     return bs::divides(a, b, O());
+//   }
 
-BOOST_SIMD_DIV_WITH_OPTION(ceil)
-BOOST_SIMD_DIV_WITH_OPTION(fix)
-BOOST_SIMD_DIV_WITH_OPTION(floor)
-BOOST_SIMD_DIV_WITH_OPTION(round)
-BOOST_SIMD_DIV_WITH_OPTION(round2even)
+// #define BOOST_SIMD_DIV_WITH_OPTION(option)                      \
+//   template < typename T>                                        \
+//   BOOST_FORCEINLINE auto div(T const& a, T const& b             \
+//                          , bd::functor<bs::tag::option##_> const& ) \
+//     BOOST_NOEXCEPT_DECLTYPE(bs::div##option(a, b))              \
+//   {                                                             \
+//     return bs::div##option(a, b);                               \
+//   }                                                             \
+// /**/
+
+// BOOST_SIMD_DIV_WITH_OPTION(ceil)
+// BOOST_SIMD_DIV_WITH_OPTION(fix)
+// BOOST_SIMD_DIV_WITH_OPTION(floor)
+// BOOST_SIMD_DIV_WITH_OPTION(round)
+// BOOST_SIMD_DIV_WITH_OPTION(round2even)
 
 } }
 
