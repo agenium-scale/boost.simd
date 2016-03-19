@@ -20,7 +20,6 @@
 #include <boost/simd/constant/four.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/sqrt_2.hpp>
-#include <boost/simd/options.hpp>
 
 STF_CASE_TPL (" rsqrtreal",  STF_IEEE_TYPES)
 {

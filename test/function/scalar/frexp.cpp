@@ -23,7 +23,6 @@
 #include <boost/simd/constant/smallestposval.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/halfeps.hpp>
-#include <boost/simd/options.hpp>
 
 STF_CASE_TPL(" frexp0", STF_IEEE_TYPES)
 {

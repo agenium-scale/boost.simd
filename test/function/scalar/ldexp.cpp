@@ -27,7 +27,6 @@
 #include <boost/simd/constant/minexponent.hpp>
 #include <boost/simd/constant/smallestposval.hpp>
 #include <boost/simd/function/scalar/dec.hpp>
-#include <boost/simd/options.hpp>
 
 STF_CASE_TPL("ldexp", STF_IEEE_TYPES)
 {

@@ -20,7 +20,6 @@
 #include <boost/simd/constant/mzero.hpp>
 #include <boost/simd/constant/log_2.hpp>
 #include <boost/simd/constant/two.hpp>
-#include <boost/simd/options.hpp>
 
 STF_CASE_TPL (" log",  STF_IEEE_TYPES)
 {

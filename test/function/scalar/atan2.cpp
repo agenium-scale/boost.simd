@@ -27,7 +27,6 @@
 #include <boost/simd/constant/mhalf.hpp>
 #include <boost/simd/function/is_negative.hpp>
 #include <boost/simd/function/is_positive.hpp>
-#include <boost/simd/options.hpp>
 
 STF_CASE_TPL (" atan2",  STF_IEEE_TYPES)
 {

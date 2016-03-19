@@ -17,7 +17,6 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/options.hpp>
 
 STF_CASE_TPL (" toint real",  STF_IEEE_TYPES)
 {

@@ -19,7 +19,6 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/pi.hpp>
 #include <boost/simd/constant/three.hpp>
-#include <boost/simd/options.hpp>
 
 STF_CASE_TPL (" trunc real",  STF_IEEE_TYPES)
 {

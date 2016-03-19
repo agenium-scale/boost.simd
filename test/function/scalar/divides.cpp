@@ -13,6 +13,7 @@
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/zero.hpp>
 
 #ifdef BOOST_MSVC
   #pragma warning(push)

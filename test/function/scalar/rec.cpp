@@ -18,7 +18,6 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/mzero.hpp>
-#include <boost/simd/options.hpp>
 
 STF_CASE_TPL(" rec",  STF_IEEE_TYPES)
 {

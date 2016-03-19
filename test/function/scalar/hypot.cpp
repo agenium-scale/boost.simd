@@ -19,7 +19,6 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/sqrt_2.hpp>
-#include <boost/simd/options.hpp>
 
 STF_CASE_TPL (" hypot real",  STF_IEEE_TYPES)
 {
