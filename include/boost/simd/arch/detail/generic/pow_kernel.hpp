@@ -12,7 +12,6 @@
 #ifndef BOOST_SIMD_ARCH_DETAIL_GENERIC_POW_KERNEL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_DETAIL_GENERIC_POW_KERNEL_HPP_INCLUDED
 
-#include <boost/simd/options.hpp>
 #include <boost/simd/constant/four.hpp>
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/constant/nine.hpp>

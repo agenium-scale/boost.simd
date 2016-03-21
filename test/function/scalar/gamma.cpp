@@ -22,6 +22,7 @@
 #include <boost/simd/constant/pi.hpp>
 #include <boost/simd/constant/five.hpp>
 #include <boost/simd/function/rsqrt.hpp>
+#include <boost/simd/function/std.hpp>
 #include <simd_test.hpp>
 
 STF_CASE_TPL (" gamma",  STF_IEEE_TYPES)
@@ -42,14 +43,14 @@ STF_CASE_TPL (" gamma",  STF_IEEE_TYPES)
 #endif
   STF_ULP_EQUAL(gamma(bs::Zero<T>()), bs::Inf<r_t>(), 0);
   STF_ULP_EQUAL(gamma(bs::Mzero<T>()), bs::Minf<r_t>(), 0);
-//   STF_ULP_EQUAL(gamma(bs::Halfeps<T>()), gamma(bs::Halfeps<T>(), bs::std_), 1);
-//   STF_ULP_EQUAL(gamma(bs::Eps<T>()), gamma(bs::Eps<T>(), bs::std_), 0.5);
-//   STF_ULP_EQUAL(gamma(bs::Half<T>()), gamma(bs::Half<T>(), bs::std_), 1);
-//   STF_ULP_EQUAL(gamma(T(1.5)), gamma(T(1.5), bs::std_), 0.5);
-//   STF_ULP_EQUAL(gamma(T(2.5)), gamma(T(2.5), bs::std_), 0.5);
-//   STF_ULP_EQUAL(gamma(T(13.5)) , gamma(T(13.5), bs::std_), 0);
-//   STF_ULP_EQUAL(gamma(T(-0.1)),           gamma(T(-0.1), bs::std_),         1);
-//   STF_ULP_EQUAL(gamma(-bs::Half<T>()),    gamma(-bs::Half<T>(), bs::std_),  0.5);
-//   STF_ULP_EQUAL(gamma(-bs::Halfeps<T>()), gamma(-bs::Halfeps<T>(), bs::std_), 0.5);
-//   STF_ULP_EQUAL(gamma(T(-27.5)),            gamma(T(-27.5), bs::std_),            3);
+//   STF_ULP_EQUAL(gamma(bs::Halfeps<T>()), bs::std_(gamma)(bs::Halfeps<T>()), 1);
+//   STF_ULP_EQUAL(gamma(bs::Eps<T>()), bs::std_(gamma)(bs::Eps<T>()), 0.5);
+//   STF_ULP_EQUAL(gamma(bs::Half<T>()), bs::std_(gamma)(bs::Half<T>()), 1);
+//   STF_ULP_EQUAL(gamma(T(1.5)), bs::std_(gamma)(T(1.5)), 0.5);
+//   STF_ULP_EQUAL(gamma(T(2.5)), bs::std_(gamma)(T(2.5)), 0.5);
+//   STF_ULP_EQUAL(gamma(T(13.5)) , bs::std_(gamma)(T(13.5)), 0);
+//   STF_ULP_EQUAL(gamma(T(-0.1)),           bs::std_(gamma)(T(-0.1)),         1);
+//   STF_ULP_EQUAL(gamma(-bs::Half<T>()),    bs::std_(gamma)(-bs::Half<T>()),  0.5);
+//   STF_ULP_EQUAL(gamma(-bs::Halfeps<T>()), bs::std_(gamma)(-bs::Halfeps<T>()), 0.5);
+//   STF_ULP_EQUAL(gamma(T(-27.5)),            bs::std_(gamma)(T(-27.5)),            3);
  }

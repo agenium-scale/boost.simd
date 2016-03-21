@@ -8,6 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/is_normal.hpp>
+#include <boost/simd/function/std.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -118,20 +119,20 @@ STF_CASE_TPL (" is_normal std",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef STF_NO_INVALIDS
-  STF_EQUAL(is_normal(bs::Inf<T>(), bs::std_), r_t(false));
-  STF_EQUAL(is_normal(bs::Minf<T>(), bs::std_), r_t(false));
-  STF_EQUAL(is_normal(bs::Nan<T>(), bs::std_), r_t(false));
+  STF_EQUAL(bs::std_(is_normal)(bs::Inf<T>()), r_t(false));
+  STF_EQUAL(bs::std_(is_normal)(bs::Minf<T>()), r_t(false));
+  STF_EQUAL(bs::std_(is_normal)(bs::Nan<T>()), r_t(false));
 #endif
-  STF_EQUAL(is_normal(-bs::Zero<T>(), bs::std_), r_t(false));
-  STF_EQUAL(is_normal(bs::Half<T>(), bs::std_), r_t(true));
-  STF_EQUAL(is_normal(bs::Mone<T>(), bs::std_), r_t(true));
-  STF_EQUAL(is_normal(bs::One<T>(), bs::std_), r_t(true));
-  STF_EQUAL(is_normal(bs::Quarter<T>(), bs::std_), r_t(true));
-  STF_EQUAL(is_normal(bs::Two<T>(), bs::std_), r_t(true));
-  STF_EQUAL(is_normal(bs::Zero<T>(), bs::std_), r_t(false));
-  STF_EQUAL(is_normal(bs::Smallestposval<T>(), bs::std_),  r_t(true));
+  STF_EQUAL(bs::std_(is_normal)(-bs::Zero<T>()), r_t(false));
+  STF_EQUAL(bs::std_(is_normal)(bs::Half<T>()), r_t(true));
+  STF_EQUAL(bs::std_(is_normal)(bs::Mone<T>()), r_t(true));
+  STF_EQUAL(bs::std_(is_normal)(bs::One<T>()), r_t(true));
+  STF_EQUAL(bs::std_(is_normal)(bs::Quarter<T>()), r_t(true));
+  STF_EQUAL(bs::std_(is_normal)(bs::Two<T>()), r_t(true));
+  STF_EQUAL(bs::std_(is_normal)(bs::Zero<T>()), r_t(false));
+  STF_EQUAL(bs::std_(is_normal)(bs::Smallestposval<T>()),  r_t(true));
 #ifndef STF_NO_NORMAL
-  STF_EQUAL(is_normal(bs::Mindenormal<T>(), bs::std_), r_t(false));
-  STF_EQUAL(is_normal(bs::Smallestposval<T>()/bs::Two<T>(), bs::std_), r_t(false));
+  STF_EQUAL(bs::std_(is_normal)(bs::Mindenormal<T>()), r_t(false));
+  STF_EQUAL(bs::std_(is_normal)(bs::Smallestposval<T>()/bs::Two<T>()), r_t(false));
 #endif
 }

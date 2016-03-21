@@ -54,7 +54,9 @@ namespace boost { namespace simd
     - fma(x, y, z, nooverflow_) provides a "only one rounding" mode but does not care for possible
     intermediate overflow.
 
-    - fma((x, y, z, std_) calls the stdlibc++ function std::fma
+    @par Decorators
+
+    std_ for floating entries
 
     @par Alias
 

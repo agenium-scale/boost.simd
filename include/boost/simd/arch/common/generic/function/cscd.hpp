@@ -61,7 +61,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, fast_tag const&) const BOOST_NOEXCEPT
     {
-      return rec(sind(a0, fast_));
+      return rec(fast_(sind)(a0));
     }
   };
 } } }

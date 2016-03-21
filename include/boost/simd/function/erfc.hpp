@@ -34,7 +34,9 @@ namespace boost { namespace simd
   @endcode
 
 
-  erfc(x, std_) use the call to std::erfc from stdlibc++
+  @par Decorators
+
+  std_ for floating entries
 
   @see erf, erfcx, oneminus
 

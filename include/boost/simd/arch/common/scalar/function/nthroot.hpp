@@ -11,6 +11,7 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_NTHROOT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_NTHROOT_HPP_INCLUDED
+#include <boost/simd/function/fast.hpp>
 
 #ifndef BOOST_SIMD_NO_INFINITIES
 #include <boost/simd/function/scalar/is_inf.hpp>
@@ -28,7 +29,6 @@
 #include <boost/simd/function/scalar/pow.hpp>
 #include <boost/simd/function/scalar/rec.hpp>
 #include <boost/simd/function/scalar/sign.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

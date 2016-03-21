@@ -25,7 +25,7 @@ namespace boost { namespace simd
     is the integral signed type associated to the floating input type.
 
     If you want the standard behaviour which return an int in scalar mode you
-    can call fpclassify(x, std_).
+    can use the std_ decorator.
 
     fpclassify returns a value of integral type that matches one of the classification
     macro constants, depending on the value of x:
@@ -42,6 +42,10 @@ namespace boost { namespace simd
     normal value.
 
     These macro constants of type int are defined in header cmath
+
+    @par Decorators
+
+    std_ for floating entries
 
     @see is_eqz, is_denormal, is_normal, is_inf, is_nan
 

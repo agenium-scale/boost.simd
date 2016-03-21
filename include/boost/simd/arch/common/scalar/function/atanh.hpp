@@ -11,6 +11,7 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_ATANH_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_ATANH_HPP_INCLUDED
+#include <boost/simd/function/std.hpp>
 
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/function/scalar/abs.hpp>

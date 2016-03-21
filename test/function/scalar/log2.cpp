@@ -9,6 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/log2.hpp>
+#include <boost/simd/function/std.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -68,7 +69,7 @@ STF_CASE_TPL (" log2 std",  STF_IEEE_TYPES)
   using bs::log2;
   using bs::std_;
 
-  using r_t = decltype(log2(T(), bs::std_));
+  using r_t = decltype(bs::std_(log2)(T()));
 
   // return type conformity test
   STF_TYPE_IS(r_t, T);
@@ -76,14 +77,14 @@ STF_CASE_TPL (" log2 std",  STF_IEEE_TYPES)
   // specific values tests
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(log2(bs::Inf<T>(), bs::std_), bs::Inf<r_t>(), 0);
-  STF_ULP_EQUAL(log2(bs::Minf<T>(), bs::std_), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(log2(bs::Nan<T>(), bs::std_), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(log2(bs::Mone<T>(), bs::std_), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(log2(bs::Zero<T>(), bs::std_), bs::Minf<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(log2)(bs::Inf<T>()), bs::Inf<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(log2)(bs::Minf<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(log2)(bs::Nan<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(log2)(bs::Mone<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(log2)(bs::Zero<T>()), bs::Minf<r_t>(), 0);
 #endif
-  STF_ULP_EQUAL(log2(bs::One<T>(), bs::std_), bs::Zero<r_t>(), 0);
-  STF_ULP_EQUAL(log2(T(2), bs::std_), T(1), 0);
-  STF_ULP_EQUAL(log2(T(8), bs::std_), T(3), 0);
-  STF_ULP_EQUAL(log2(T(64), bs::std_), T(6), 0);
+  STF_ULP_EQUAL(bs::std_(log2)(bs::One<T>()), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(log2)(T(2)), T(1), 0);
+  STF_ULP_EQUAL(bs::std_(log2)(T(8)), T(3), 0);
+  STF_ULP_EQUAL(bs::std_(log2)(T(64)), T(6), 0);
 }

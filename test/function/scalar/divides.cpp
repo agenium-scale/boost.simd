@@ -8,10 +8,12 @@
 */
 //==================================================================================================
 #include <boost/simd/function/divides.hpp>
+#include <boost/simd/function/fast.hpp>
+#include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/nan.hpp>
-#include <simd_test.hpp>
+#include <boost/simd/constant/zero.hpp>
 
 #ifdef BOOST_MSVC
   #pragma warning(push)
@@ -35,6 +37,20 @@ STF_CASE_TPL( "Check divides behavior with floating", STF_IEEE_TYPES )
   STF_IEEE_EQUAL(divides(T(1), T(1)), bs::One<r_t>());
 }
 
+
+STF_CASE_TPL( "Check fast divides behavior with floating", STF_IEEE_TYPES )
+{
+  namespace bs = boost::simd;
+  using bs::divides;
+  using r_t = decltype(bs::fast_(divides)(T(), T()));
+  STF_TYPE_IS(r_t, T);
+
+  STF_IEEE_EQUAL(bs::fast_(divides)(bs::One<T>(),bs::Zero<T>()), bs::Inf<r_t>());
+  STF_IEEE_EQUAL(bs::fast_(divides)(bs::Zero<T>(), bs::Zero<T>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(bs::fast_(divides)(bs::One<T>(), bs::One<T>()), bs::One<r_t>());
+}
+
 #ifdef BOOST_MSVC
   #pragma warning(pop)
 #endif
+

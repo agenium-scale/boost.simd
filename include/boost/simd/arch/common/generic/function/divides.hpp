@@ -15,7 +15,7 @@
 #include <boost/simd/function/divides.hpp>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/rec.hpp>
-#include <boost/simd/options.hpp>
+#include <boost/simd/function/fast.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/hierarchy.hpp>
 #include <boost/config.hpp>
@@ -48,9 +48,9 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     BOOST_FORCEINLINE T operator()(T const& a, T const& b
-                                  , fast_tag const& f) const BOOST_NOEXCEPT
+                                  , fast_tag const& ) const BOOST_NOEXCEPT
     {
-      return a*rec(b, f);
+      return a*fast_(rec)(b);
     }
   };
 

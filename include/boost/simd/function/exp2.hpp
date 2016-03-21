@@ -39,7 +39,9 @@ namespace boost { namespace simd
 
     - provisions are made to obtain a flint result from a flint input
 
-    - exp2(x, std_) use the call to std::exp2 from stdlibc++
+    @par Decorators
+
+    std_ for floating entries
 
     @see exp, exp10, pow, pow2
 

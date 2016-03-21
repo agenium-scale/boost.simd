@@ -9,6 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/sec.hpp>
+#include <boost/simd/function/fast.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -20,7 +21,6 @@
 #include <boost/simd/constant/sqrt_2.hpp>
 #include <boost/simd/constant/pio_2.hpp>
 #include <boost/simd/constant/pio_4.hpp>
-
 
 STF_CASE_TPL (" sec",  STF_IEEE_TYPES)
 {
@@ -58,15 +58,15 @@ STF_CASE_TPL (" sec fast_",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(sec(bs::Inf<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(sec(bs::Minf<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(sec(bs::Nan<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(sec)(bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(sec)(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(sec)(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(sec(-bs::Pi<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(sec(-bs::Pio_4<T>(), bs::fast_), bs::Sqrt_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(sec(bs::Pi<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(sec(bs::Pio_4<T>(), bs::fast_), bs::Sqrt_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(sec(bs::Zero<T>(), bs::fast_), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(sec)(-bs::Pi<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(sec)(-bs::Pio_4<T>()), bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(sec)(bs::Pi<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(sec)(bs::Pio_4<T>()), bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(sec)(bs::Zero<T>()), bs::One<r_t>(), 0.5);
 }
 
 STF_CASE_TPL (" sec clipped_small_",  STF_IEEE_TYPES)

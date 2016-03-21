@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_SECPI_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_SECPI_HPP_INCLUDED
 
-#include <boost/simd/options.hpp>
+#include <boost/simd/function/fast.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/function/if_nan_else.hpp>
 #include <boost/simd/function/is_flint.hpp>
@@ -59,7 +59,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, fast_tag const&) const BOOST_NOEXCEPT
     {
-      return rec(cospi(a0, fast_));
+      return fast_(rec)(fast_(cospi)(a0, fast_));
     }
   };
 } } }

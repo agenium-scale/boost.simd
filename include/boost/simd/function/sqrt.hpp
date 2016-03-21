@@ -30,9 +30,12 @@ namespace boost { namespace simd
     @endcode
 
     If full accuracy is not needed a sometimes faster less accurate version of the function
-    can be used callling : sqrt(x, fast_).
+    can be reached using the fast_ decorator.
 
-    sqrt(x, std_) calls std::sqrt from stdlibc++
+    @par Decorators
+
+    std_, fast_ for floating entries
+
 
    @return      a value of the same type as the input.
 

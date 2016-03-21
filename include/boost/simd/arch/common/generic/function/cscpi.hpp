@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_CSCPI_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_CSCPI_HPP_INCLUDED
 
+#include <boost/simd/function/fast.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/function/if_nan_else.hpp>
@@ -60,7 +61,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, fast_tag const&) const BOOST_NOEXCEPT
     {
-      return rec(sinpi(a0, fast_));
+      return rec(fast_(sinpi)(a0));
     }
   };
 } } }

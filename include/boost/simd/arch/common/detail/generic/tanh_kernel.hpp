@@ -12,7 +12,6 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_DETAIL_GENERIC_TANH_KERNEL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_GENERIC_TANH_KERNEL_HPP_INCLUDED
 
-#include <boost/simd/options.hpp>
 #include <boost/simd/function/horn.hpp>
 #include <boost/simd/function/horn1.hpp>
 #include <boost/simd/function/multiplies.hpp>

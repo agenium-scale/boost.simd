@@ -42,13 +42,14 @@ namespace boost { namespace simd
        -  If y is +/-0, Nan is returned
        -  If either argument is NaN, Nan is returned
 
-    If correct values for these limit cases do not matter for you, calling
-    remainder(x, y, fast_) can gain some cycles.
-
+       If correct values for these limit cases do not matter for you, using the fast_ decorator
+    can gain some cycles.
 
     The returned value has the same sign as x and is less than y in magnitude.
 
-    A call to rem(x, std_) uses the std::libc++ std::fmod function
+    @par Decorators
+
+    std_,  fast_ for floating entries
 
     @par Alias
 

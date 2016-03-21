@@ -9,6 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/cscpi.hpp>
+#include <boost/simd/function/fast.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -58,18 +59,18 @@ STF_CASE_TPL (" cscpi fast",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(cscpi(-bs::Zero<T>(), bs::fast_), bs::Minf<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::Inf<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::Minf<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::Mone<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::Nan<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::One<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::Zero<T>(), bs::fast_), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cscpi)(-bs::Zero<T>()), bs::Minf<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cscpi)(bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cscpi)(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cscpi)(bs::Mone<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cscpi)(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cscpi)(bs::One<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cscpi)(bs::Zero<T>()), bs::Inf<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(cscpi(-bs::Quarter<T>(), bs::fast_), -bs::Sqrt_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::Half<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::Mhalf<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cscpi(bs::Quarter<T>(), bs::fast_), bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cscpi)(-bs::Quarter<T>()), -bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cscpi)(bs::Half<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cscpi)(bs::Mhalf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cscpi)(bs::Quarter<T>()), bs::Sqrt_2<r_t>(), 0.5);
 }
 
 STF_CASE_TPL (" cscpi clipped_smal",  STF_IEEE_TYPES)

@@ -11,9 +11,9 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_NAN_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_NAN_HPP_INCLUDED
+#include <boost/simd/function/std.hpp>
 
 #include <boost/simd/logical.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>

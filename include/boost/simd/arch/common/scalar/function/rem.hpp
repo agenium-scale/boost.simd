@@ -11,13 +11,14 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_REM_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_REM_HPP_INCLUDED
+#include <boost/simd/function/std.hpp>
+#include <boost/simd/function/fast.hpp>
 
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/function/scalar/idivfix.hpp>
 #include <boost/simd/function/scalar/is_eqz.hpp>
 #include <boost/simd/function/scalar/is_finite.hpp>
 #include <boost/simd/function/scalar/is_inf.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>

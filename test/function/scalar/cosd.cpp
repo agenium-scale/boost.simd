@@ -9,6 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/cosd.hpp>
+#include <boost/simd/function/fast.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -18,7 +19,6 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/mzero.hpp>
 #include <boost/simd/constant/sqrt_2o_2.hpp>
-
 
 STF_CASE_TPL (" cosd",  STF_IEEE_TYPES)
 {
@@ -59,17 +59,17 @@ STF_CASE_TPL (" cosd bs::fast_",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(cosd(bs::Inf<T>(), bs::fast_),  bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cosd(bs::Minf<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cosd(bs::Nan<T>(), bs::fast_),  bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cosd)(bs::Inf<T>()),  bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cosd)(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cosd)(bs::Nan<T>()),  bs::Nan<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(cosd(T(-180), bs::fast_),       bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cosd(T(-45), bs::fast_),        bs::Sqrt_2o_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(cosd(T(-90), bs::fast_),        bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cosd(T(180), bs::fast_),        bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cosd(T(45), bs::fast_),         bs::Sqrt_2o_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(cosd(T(90), bs::fast_),         bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(cosd(bs::Zero<T>(), bs::fast_), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cosd)(T(-180)),       bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cosd)(T(-45)),        bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cosd)(T(-90)),        bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cosd)(T(180)),        bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cosd)(T(45)),         bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cosd)(T(90)),         bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(cosd)(bs::Zero<T>()), bs::One<r_t>(), 0.5);
 }
 STF_CASE_TPL (" cosd clipped_small",  STF_IEEE_TYPES)
 {

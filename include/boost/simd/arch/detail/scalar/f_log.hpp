@@ -12,7 +12,6 @@
 #ifndef BOOST_SIMD_ARCH_DETAIL_SCALAR_F_LOG_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_DETAIL_SCALAR_F_LOG_HPP_INCLUDED
 
-#include <boost/simd/options.hpp>
 #include <boost/simd/arch/detail/tags.hpp>
 #include <boost/simd/arch/detail/scalar/horner.hpp>
 #include <boost/simd/arch/detail/generic/f_log_kernel.hpp>

@@ -35,7 +35,7 @@ namespace boost { namespace simd
     T r = sin(Pi<T>()*x);
     @endcode
 
-    @see sine, fast_sin, sincospi, sin, sind
+    @see sine, sincospi, sin, sind
 
     @return a value of the same type as the parameter
 
