@@ -31,10 +31,10 @@ set ( SOURCES
    dists.cpp
    div.cpp
    divceil.cpp
-   divfix.cpp
    divfloor.cpp
-   divround2even.cpp
    divround.cpp
+   divround2even.cpp
+   divtrunc.cpp
    divs.cpp
    floor.cpp
    fma.cpp
@@ -47,8 +47,8 @@ set ( SOURCES
    idivceil.cpp
    idivfix.cpp
    idivfloor.cpp
-   idivround2even.cpp
    idivround.cpp
+   idivround2even.cpp
    ifloor.cpp
    inc.cpp
    iround2even.cpp
