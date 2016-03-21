@@ -34,8 +34,8 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( div_
                           , (typename T)
                           , bd::cpu_
-                          , bd::generic_<bd::floating_<T>>
-                          , bd::generic_<bd::floating_<T>>
+                          , bd::generic_<bd::arithmetic_<T>>
+                          , bd::generic_<bd::arithmetic_<T>>
                           )
   {
     BOOST_FORCEINLINE T operator()(T const& a, T const& b ) const BOOST_NOEXCEPT
@@ -45,11 +45,11 @@ namespace boost { namespace simd { namespace ext
   };
 
   BOOST_DISPATCH_OVERLOAD ( div_
-                          , (typename T, typename A0)
+                          , (typename T)
                           , bd::cpu_
-                          , bd::generic_<bd::floating_<T>>
-                          , bd::generic_<bd::floating_<T>>
-                          , bd::unspecified_<A0>
+                          , bd::generic_<bd::arithmetic_<T>>
+                          , bd::generic_<bd::arithmetic_<T>>
+                          , bs::tag::ceil_
                           )
   {
     BOOST_FORCEINLINE T operator()(T const& a, T const& b
@@ -62,13 +62,13 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( div_
                           , (typename T)
                           , bd::cpu_
-                          , bd::generic_<bd::floating_<T>>
-                          , bd::generic_<bd::floating_<T>>
+                          , bd::generic_<bd::arithmetic_<T>>
+                          , bd::generic_<bd::arithmetic_<T>>
                           , bs::tag::floor_
                           )
   {
     BOOST_FORCEINLINE T operator()(T const& a, T const& b
-                                  ,  bs::tag::floor_ const& ) const BOOST_NOEXCEPT
+                                  ,  bd::functor<bs::tag::floor_> const& ) const BOOST_NOEXCEPT
     {
       return divfloor(a, b);
     }
@@ -77,13 +77,13 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( div_
                           , (typename T)
                           , bd::cpu_
-                          , bd::generic_<bd::floating_<T>>
-                          , bd::generic_<bd::floating_<T>>
+                          , bd::generic_<bd::arithmetic_<T>>
+                          , bd::generic_<bd::arithmetic_<T>>
                           , bs::tag::fix_
                           )
   {
     BOOST_FORCEINLINE T operator()(T const& a, T const& b
-                                  ,  bs::tag::fix_ const& ) const BOOST_NOEXCEPT
+                                  ,  bd::functor<bs::tag::fix_> const& ) const BOOST_NOEXCEPT
     {
       return divfix(a, b);
     }
@@ -92,13 +92,13 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( div_
                           , (typename T)
                           , bd::cpu_
-                          , bd::generic_<bd::floating_<T>>
-                          , bd::generic_<bd::floating_<T>>
+                          , bd::generic_<bd::arithmetic_<T>>
+                          , bd::generic_<bd::arithmetic_<T>>
                           , bs::tag::round_
                           )
   {
     BOOST_FORCEINLINE T operator()(T const& a, T const& b
-                                  ,  bs::tag::round_ const& ) const BOOST_NOEXCEPT
+                                  ,  bd::functor<bs::tag::round_> const& ) const BOOST_NOEXCEPT
     {
       return divround(a, b);
     }
@@ -107,13 +107,13 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( div_
                           , (typename T)
                           , bd::cpu_
-                          , bd::generic_<bd::floating_<T>>
-                          , bd::generic_<bd::floating_<T>>
+                          , bd::generic_<bd::arithmetic_<T>>
+                          , bd::generic_<bd::arithmetic_<T>>
                           , bs::tag::round2even_
                           )
   {
     BOOST_FORCEINLINE T operator()(T const& a, T const& b
-                                  ,  bs::tag::round2even_ const& ) const BOOST_NOEXCEPT
+                                  ,  bd::functor<bs::tag::round2even_> const& ) const BOOST_NOEXCEPT
     {
       return divround2even(a, b);
     }
