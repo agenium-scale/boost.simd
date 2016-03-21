@@ -24,7 +24,7 @@ namespace boost { namespace simd { namespace detail
 
     template<typename... Args> BOOST_FORCEINLINE
     auto operator()(Args&&... args) const
-        -> decltype(parent::operator()( std::forward<Args>(args)..., Decorator()) )
+        -> decltype(std::declval<parent const>()( std::forward<Args>(args)..., Decorator()) )
     {
       return parent::operator()( std::forward<Args>(args)..., Decorator());
     }
