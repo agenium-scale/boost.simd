@@ -39,12 +39,13 @@ namespace boost { namespace simd { namespace detail
 
     using static_range	            = brigand::range<std::size_t, 0, N>;
 
-    using storage_kind = ::boost::simd::scalar_storage;
+    using storage_kind              = ::boost::simd::scalar_storage;
 
     enum {
       static_size  = N,
       element_size = 1,
-      alignment = sizeof(T)
+      alignment = sizeof(T),
+      number_of_vectors = 0
     };
 
     BOOST_FORCEINLINE static reference at(storage_type& d, std::size_t i) BOOST_NOEXCEPT
@@ -65,7 +66,8 @@ namespace boost { namespace simd { namespace detail
     public:
     enum {
       static_size  = N,
-      element_size = N / NumberOfVectors
+      element_size = N / NumberOfVectors,
+      number_of_vectors = NumberOfVectors
     };
 
     enum { alignment = SIMD::alignment };
@@ -81,7 +83,7 @@ namespace boost { namespace simd { namespace detail
 
     using static_range	            = brigand::range<std::size_t, 0, NumberOfVectors>;
 
-    using storage_kind = ::boost::simd::aggregate_storage;
+    using storage_kind              = ::boost::simd::aggregate_storage;
 
     public:
     BOOST_FORCEINLINE static reference at(storage_type& d, std::size_t i)

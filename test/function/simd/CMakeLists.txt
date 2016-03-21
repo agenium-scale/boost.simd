@@ -14,7 +14,7 @@ set ( SOURCES
   load.cpp
   splat.cpp
   store.cpp
-  map_identity.cpp
+  automap.cpp
 )
 
 make_unit( "boost.simd.function.simd"   ${SOURCES})
