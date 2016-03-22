@@ -19,6 +19,8 @@
 #include <boost/simd/detail/storage_of.hpp>
 #include <boost/simd/sdk/is_power_of_2.hpp>
 #include <boost/simd/function/aligned_load.hpp>
+#include <boost/simd/function/extract.hpp>
+#include <boost/simd/function/insert.hpp>
 #include <boost/simd/function/splat.hpp>
 #include <boost/simd/function/load.hpp>
 #include <boost/align/is_aligned.hpp>
@@ -57,8 +59,8 @@ namespace boost { namespace simd
     using value_type              = typename traits::value_type;
     using size_type               = typename traits::size_type;
 
-    using reference               = typename traits::reference;
-    using const_reference         = typename traits::const_reference;
+    using reference             = typename detail::pack_references<traits,pack>::reference;
+    using const_reference       = typename detail::pack_references<traits,pack>::const_reference;
 
     using iterator                = detail::pack_iterator<pack>;
     using const_iterator          = detail::pack_iterator<pack const>;
@@ -193,6 +195,16 @@ namespace boost { namespace simd
     BOOST_FORCEINLINE const_reference operator[](std::size_t i) const
     {
       return traits::at(*this, i);
+    }
+
+    BOOST_FORCEINLINE value_type get(std::size_t i) const
+    {
+      return ::boost::simd::extract(*this, i);
+    }
+
+    BOOST_FORCEINLINE void set(std::size_t i, T const& v)
+    {
+      ::boost::simd::insert(*this, i, v);
     }
 
     public:

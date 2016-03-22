@@ -48,14 +48,16 @@ namespace boost { namespace simd { namespace detail
       number_of_vectors = 0
     };
 
-    BOOST_FORCEINLINE static reference at(storage_type& d, std::size_t i) BOOST_NOEXCEPT
+    template<typename Pack>
+    BOOST_FORCEINLINE static reference at(Pack& d, std::size_t i)
     {
-      return d[i];
+      return (d.storage())[i];
     }
 
-    BOOST_FORCEINLINE static const_reference at(storage_type const& d, std::size_t i) BOOST_NOEXCEPT
+    template<typename Pack>
+    BOOST_FORCEINLINE static const_reference at(Pack const& d, std::size_t i)
     {
-      return d[i];
+      return (d.storage())[i];
     }
   };
 
@@ -86,14 +88,16 @@ namespace boost { namespace simd { namespace detail
     using storage_kind              = ::boost::simd::aggregate_storage;
 
     public:
-    BOOST_FORCEINLINE static reference at(storage_type& d, std::size_t i)
+    template<typename Pack> BOOST_FORCEINLINE
+    static reference at(Pack& d, std::size_t i)
     {
-      return d[i / element_size][i % element_size];
+      return (d.storage())[i / element_size][i % element_size];
     }
 
-    BOOST_FORCEINLINE static const_reference at(storage_type const& d, std::size_t i)
+    template<typename Pack> BOOST_FORCEINLINE
+    static const_reference at(Pack const& d, std::size_t i)
     {
-      return d[i / element_size][i % element_size];
+      return (d.storage())[i / element_size][i % element_size];
     }
   };
 } } }

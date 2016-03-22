@@ -16,6 +16,7 @@
 
 #include <boost/simd/arch/common/tags.hpp>
 #include <boost/simd/detail/pack_iterator.hpp>
+#include <boost/simd/detail/pack_proxy.hpp>
 #include <boost/simd/detail/aliasing.hpp>
 #include <iterator>
 #include <cstddef>
@@ -33,6 +34,19 @@ namespace boost { namespace simd { namespace detail
            , typename Storage
            >
   class pack_traits;
+
+  template<typename T, typename P, typename Enable = void> struct pack_references
+  {
+    using reference       = pack_proxy<P>;
+    using const_reference = pack_proxy<P const>;
+  };
+
+  template <typename T,typename P>
+  struct pack_references<T, P, typename enable_if_has_type<typename T::reference>::type>
+  {
+    using reference       = typename T::reference;
+    using const_reference = typename T::const_reference;
+  };
 
   // Needed for const pack_proxy
   template <typename T, std::size_t N, typename Storage>
@@ -57,23 +71,20 @@ namespace boost { namespace simd { namespace detail
       alignment = sizeof(VTYPE)                                                                    \
     };                                                                                             \
                                                                                                    \
-    using reference               = value_type&;                                                   \
-    using const_reference         = value_type const&;                                             \
-                                                                                                   \
     using static_range            = brigand::range<std::size_t, 0, N>;                             \
                                                                                                    \
     using storage_kind            = ::boost::simd::native_storage;                                 \
                                                                                                    \
-    BOOST_FORCEINLINE                                                                              \
-    static reference at(storage_type& d, std::size_t i) BOOST_NOEXCEPT                             \
+    template<typename Pack> BOOST_FORCEINLINE                                                      \
+    static typename Pack::reference at(Pack& d, std::size_t i) BOOST_NOEXCEPT                      \
     {                                                                                              \
-      return reinterpret_cast<typename detail::may_alias<TYPE>::type*>(&d)[i];                     \
+      return {&d,i};                                                                               \
     }                                                                                              \
                                                                                                    \
-    BOOST_FORCEINLINE                                                                              \
-    static const_reference at(storage_type const& d, std::size_t i) BOOST_NOEXCEPT                 \
+    template<typename Pack> BOOST_FORCEINLINE                                                      \
+    static typename Pack::const_reference at(Pack const& d, std::size_t i) BOOST_NOEXCEPT          \
     {                                                                                              \
-      return reinterpret_cast<typename detail::may_alias<TYPE const>::type*>(&d)[i];               \
+      return {&d,i};                                                                               \
     }                                                                                              \
   };                                                                                               \
 /**/
