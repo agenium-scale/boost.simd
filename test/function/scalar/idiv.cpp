@@ -16,7 +16,6 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/simd/function/ceil.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 

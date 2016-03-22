@@ -47,13 +47,8 @@ namespace boost { namespace simd
 #include <boost/simd/function/decs.hpp>
 #include <boost/simd/function/dist.hpp>
 #include <boost/simd/function/dists.hpp>
-#include <boost/simd/function/divceil.hpp>
-#include <boost/simd/function/divfix.hpp>
-#include <boost/simd/function/divfloor.hpp>
-#include <boost/simd/function/divround2even.hpp>
-#include <boost/simd/function/divround.hpp>
+#include <boost/simd/function/div.hpp>
 #include <boost/simd/function/divs.hpp>
-#include <boost/simd/function/divtrunc.hpp>
 #include <boost/simd/function/drem.hpp>
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/function/fabs.hpp>
@@ -66,11 +61,7 @@ namespace boost { namespace simd
 #include <boost/simd/function/fnms.hpp>
 #include <boost/simd/function/hypot.hpp>
 #include <boost/simd/function/iceil.hpp>
-#include <boost/simd/function/idivceil.hpp>
-#include <boost/simd/function/idivfix.hpp>
-#include <boost/simd/function/idivfloor.hpp>
-#include <boost/simd/function/idivround2even.hpp>
-#include <boost/simd/function/idivround.hpp>
+#include <boost/simd/function/idiv.hpp>
 #include <boost/simd/function/ifix.hpp>
 #include <boost/simd/function/ifloor.hpp>
 #include <boost/simd/function/inc.hpp>

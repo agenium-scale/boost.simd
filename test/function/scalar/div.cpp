@@ -9,14 +9,13 @@
 //==================================================================================================
 #include <boost/simd/function/div.hpp>
 #include <simd_test.hpp>
-//#include <nontrivial.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/options.hpp>
+#include <boost/simd/constant/half.hpp>
 #include <boost/simd/function/ceil.hpp>
 
 STF_CASE_TPL( "Check div behavior with floating", STF_IEEE_TYPES )
@@ -35,16 +34,6 @@ STF_CASE_TPL( "Check div behavior with floating", STF_IEEE_TYPES )
   STF_IEEE_EQUAL(div(bs::Zero<T>(), bs::Zero<T>()), bs::Nan<r_t>());
   STF_IEEE_EQUAL(div(bs::One<T>(), bs::One<T>()), bs::One<r_t>());
 }
-
-
-// STF_CASE_TPL( "Check div behavior with fast option", STF_IEEE_TYPES )
-// {
-//   namespace bs = boost::simd;
-//   using bs::div;
-//   using bs::fast_;
-
-//   STF_EQUAL(div(T(1), T(2), fast_), T(1/2.0));
-// }
 
 
 STF_CASE_TPL( "Check div behavior with options", STF_NUMERIC_TYPES )
