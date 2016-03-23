@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-ieee
+    Function object implementing signnz capabilities
 
     Returns the sign of x. I.e. -1 or 1, according
     x is negative or positive.
@@ -43,26 +45,8 @@ namespace boost { namespace simd
 
     @see Mzero,  sign, is_negative, is_positive
 
-    @return a value of same type as the input
-
-**/
-  template<typename T> auto signnz(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-ieee
-
-      Returns the sign of x. I.e. -1 or 1, according
-      x is negative or positive.
-
-
-      Function object tied to simd::signn
-
-z      @see simd::signn
-z    **/
-    const boost::dispatch::functor<tag::signnz_> signnz = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::signnz_> signnz = {};
 } }
 #endif
 

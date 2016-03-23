@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-hyperbolic
+    Function object implementing coth capabilities
 
     Returns the hyperbolic cotangent
 
@@ -37,26 +39,8 @@ namespace boost { namespace simd
 
     @see sinh, cosh, sinhcosh
 
-    @return a value of the same type as the parameter
-
-**/
-  template<typename T> auto coth(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-hyperbolic
-
-
-      Returns the hyperbolic cotangent
-
-
-      Function object tied to simd::coth
-
-      @see simd::coth
-    **/
-    const boost::dispatch::functor<tag::coth_> coth = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::coth_> coth = {};
 } }
 #endif
 

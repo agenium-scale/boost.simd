@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-boolean
+    Function object implementing if_zero_else_one capabilities
 
     If cond is @ref True returns @ref Zero else returns one
 
@@ -40,25 +42,8 @@ namespace boost { namespace simd
     The return type is generally C except in the case where C is as_logical_t<T>. in which case
     the return type is T.
 
-    @return a value of the type associated to the logical value cond
-
-**/
-  template<typename T> auto if_zero_else_one(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-boolean
-
-      If cond is @ref True returns @ref Zero else returns one
-
-
-      Function object tied to simd::if_zero_else_one
-
-      @see simd::if_zero_else_one
-    **/
-    const boost::dispatch::functor<tag::if_zero_else_one_> if_zero_else_one = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::if_zero_else_one_> if_zero_else_one = {};
 } }
 #endif
 

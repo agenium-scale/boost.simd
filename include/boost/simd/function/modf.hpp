@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-ieee
+    Function object implementing modf capabilities
 
     Computes the integer and  fractional parts of the input
 
@@ -42,23 +44,8 @@ namespace boost { namespace simd
 
     @see frac,  trunc
 
-**/
-  template<typename T> auto modf(T const& x, T& f) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-ieee
-
-      Computes the integer and  fractional parts of the input
-
-
-      Function object tied to simd::modf
-
-      @see simd::modf
-    **/
-    const boost::dispatch::functor<tag::modf_> modf = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::modf_> modf = {};
 } }
 #endif
 

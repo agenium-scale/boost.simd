@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-arithmetic
+    Function object implementing negs capabilities
 
     Computes the saturated negation of the input.
 
@@ -34,33 +36,14 @@ namespace boost { namespace simd
     T r = -x
     @endcode
 
-
     @par Note:
 
     - For signed integral types negs(@ref Valmin) returns @ref Valmax.
 
     - For unsigned integral types negs always returns 0.
 
-     @return      a value of the same type as the input.
-
-
-**/
-  template<typename T> auto negs(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-arithmetic
-
-      Computes the saturated negation of the input.
-
-
-      Function object tied to simd::negs
-
-      @see simd::negs
-    **/
-    const boost::dispatch::functor<tag::negs_> negs = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::negs_> negs = {};
 } }
 #endif
 

@@ -14,8 +14,10 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
     @ingroup group-bitwise
+    Function object implementing bitwise_or capabilities
 
     return the bitwise or of the two parameters
 
@@ -44,26 +46,8 @@ namespace boost { namespace simd
     @see  bitwise_and, bitwise_or, bitwise_xor, bitwise_notand,
     bitwise_notor, bitwise_ornot, complement
 
-    @return      a value of the same type as the first input.
-
   **/
-  template<typename T0, typename T1> auto bitwise_or(T0 const& x, T1 const& y) {}
-
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-bitwise
-
-      return the bitwise or of the two parameters
-
-
-      Function object tied to boost::simd::bitwise_or
-
-      @see boost::simd::bitwise_or
-    **/
-    const boost::dispatch::functor<tag::bitwise_or_> bitwise_or = {};
-  }
+  const boost::dispatch::functor<tag::bitwise_or_> bitwise_or = {};
 } }
 #endif
 

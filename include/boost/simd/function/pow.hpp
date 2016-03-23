@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-exponential
+    Function object implementing pow capabilities
 
     Computes \f$x^y\f$
 
@@ -37,7 +39,6 @@ namespace boost { namespace simd
 
     The pow function is conformant to std:pow considering the limits behaviours
     defined by the standard:
-
 
          - pow(+0, y), where y is a negative odd integer, returns +Inf
          - pow(-0, y), where y is a negative odd integer, returns -Inf
@@ -63,24 +64,8 @@ namespace boost { namespace simd
 
          But return a value of the same type as the first parameter, which is necessary for good SIMD behaviour.
 
-**/
-  template<typename T, typename U> auto pow(T const& x, U const& y) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-exponential
-
-
-      Computes  \f$x^y\f$
-
-
-      Function object tied to simd::pow
-
-      @see simd::pow
-    **/
-    const boost::dispatch::functor<tag::pow_> pow = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::pow_> pow = {};
 } }
 #endif
 

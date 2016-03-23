@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-ieee
+    Function object implementing exponent capabilities
 
     Returns the exponent of the floating input.
 
@@ -42,25 +44,8 @@ namespace boost { namespace simd
 
     @see mantissa,  frexp, ldexp
 
-    @return a value of same type as the input
-
-**/
-  template<typename T> auto exponent(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-ieee
-
-      Returns the exponent of the floating input.
-
-
-      Function object tied to simd::exponent
-
-      @see simd::exponent
-    **/
-    const boost::dispatch::functor<tag::exponent_> exponent = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::exponent_> exponent = {};
 } }
 #endif
 

@@ -15,34 +15,20 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
     @ingroup group-boolean
+    Function object implementing select capabilities
 
     If cond is @ref True returns t else returns f
 
     This is a convenient alias of @ref if_else
   **/
-  template<typename C typename T1, typename T2>
-  auto select(C const& cond, T1 const& t, T2 const& f );
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-boolean
-
-      If cond is @ref True returns t else returns f
-
-
-      Function object tied to boost::simd::select
-
-      @see boost::simd::select
-    **/
-    const boost::dispatch::functor<tag::select_> select = {};
-  }
+  const boost::dispatch::functor<tag::select_> select = {};
 } }
 #endif
 
 #include <boost/simd/function/scalar/select.hpp>
 #include <boost/simd/function/simd/select.hpp>
-
 
 #endif

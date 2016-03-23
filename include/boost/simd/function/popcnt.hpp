@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-bitwise
+    Function object implementing popcnt capabilities
 
     Returns the number of bit sets in the input.
 
@@ -28,29 +30,11 @@ namespace boost { namespace simd
     as_integer_t<T, unsigned> r = popcnt(x);
     @endcode
 
-    @see  clz, ctz
+    @see  clz, ct
 
-    @return      a value of the unsigned integer
                  type associated to the input.
-
-
-**/
-  template<typename T> auto popcnt(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-bitwise
-
-      Returns the number of bit sets in the input.
-
-
-      Function object tied to simd::popcnt
-
-      @see simd::popcnt
-    **/
-    const boost::dispatch::functor<tag::popcnt_> popcnt = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::popcnt_> popcnt = {};
 } }
 #endif
 

@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-ieee
+    Function object implementing ulpdist capabilities
 
     Returns ulp distance of the two values.
 
@@ -47,7 +49,6 @@ namespace boost { namespace simd
 
     - If the common type is floating point the ulpdist is is computed,
     by the above described method.
-
 
     The method is the following:
 
@@ -90,25 +91,8 @@ namespace boost { namespace simd
 
     @see ulp, Eps, eps
 
-    @return a value of same type as the inputs
-
-**/
-  template<typename T> auto ulpdist(T const& x, T const& y) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-ieee
-
-      Returns ulp distance of the two values.
-
-
-      Function object tied to simd::ulpdist
-
-      @see simd::ulpdist
-    **/
-    const boost::dispatch::functor<tag::ulpdist_> ulpdist = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::ulpdist_> ulpdist = {};
 } }
 #endif
 

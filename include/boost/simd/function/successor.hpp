@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-ieee
+    Function object implementing successor capabilities
 
     Returns the n-th least element strictly greater than the parameter
 
@@ -33,25 +35,8 @@ namespace boost { namespace simd
     For integer it saturate at @ref Valmax, for floating point numbers, all @ref Inf
     strict successors are @ref Nan.
 
-    @return a value of same type as the inputs
-
-**/
-  template<typename T, typename N> auto successor(T const& x, N const& n) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-ieee
-
-      Returns the n-th least element strictly greater than the parameter
-
-
-      Function object tied to simd::successor
-
-      @see simd::successor
-    **/
-    const boost::dispatch::functor<tag::successor_> successor = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::successor_> successor = {};
 } }
 #endif
 

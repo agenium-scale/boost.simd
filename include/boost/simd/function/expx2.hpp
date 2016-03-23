@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-exponential
+    Function object implementing expx2 capabilities
 
     exponential of square function: \f$e^{x^2}\f$ or \f$e^{-x^2}\f$
 
@@ -41,26 +43,8 @@ namespace boost { namespace simd
 
     @see exp
 
-    @return a value of the same type as the parameter
-
-**/
-  template<typename T> auto expx2(T const& x, T const& s) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-exponential
-
-
-      exponential of square function: \f$e^{x^2}\f$ or \f$e^{-x^2}\f$
-
-
-      Function object tied to simd::expx2
-
-      @see simd::expx2
-    **/
-    const boost::dispatch::functor<tag::expx2_> expx2 = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::expx2_> expx2 = {};
 } }
 #endif
 

@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-ieee
+    Function object implementing predecessor capabilities
 
     Returns the n-th greatest element strictly less than the parameter
 
@@ -35,25 +37,8 @@ namespace boost { namespace simd
 
     @see next, prev, successor, nextafter, Minf, Valmin, Nan
 
-    @return a value of same type as the inputs
-
-**/
-  template<typename T, typename N> auto predecessor(T const& x, N const& n) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-ieee
-
-      Returns the n-th greatest element strictly less than the parameter
-
-
-      Function object tied to simd::predecessor
-
-      @see simd::predecessor
-    **/
-    const boost::dispatch::functor<tag::predecessor_> predecessor = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::predecessor_> predecessor = {};
 } }
 #endif
 

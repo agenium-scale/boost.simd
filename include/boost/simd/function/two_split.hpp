@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-arithmetic
+    Function object implementing two_split capabilities
 
     For any real @c x, two_split computes two reals @c r0 and @c r1 (in an std::pair)
     such that:
@@ -28,25 +30,8 @@ namespace boost { namespace simd
 
     and where @c r0 and @c r1 bit pattern don't overlap.
 
-
-**/
-  template<typename T> auto two_split(T const& x, T const& y) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-arithmetic
-
-      For any real @c x, two_split computes two reals @c r0 and @c r1 (in an std::pair)
-      such that:
-
-
-      Function object tied to simd::two_split
-
-      @see simd::two_split
-    **/
-    const boost::dispatch::functor<tag::two_split_> two_split = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::two_split_> two_split = {};
 } }
 #endif
 

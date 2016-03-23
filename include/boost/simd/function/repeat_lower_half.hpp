@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-swar
+    Function object implementing repeat_lower_half capabilities
 
     Repeat lower half of a vector
 
@@ -40,26 +42,8 @@ namespace boost { namespace simd
       }
     @endcode
 
-
-    @return a value of the same type as the parameter
-
-**/
-  template<typename T> auto repeat_lower_half(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-swar
-
-      Repeat lower half of a vector
-
-
-      Function object tied to simd::repeat_lower_half
-
-      @see simd::repeat_lower_half
-    **/
-    const boost::dispatch::functor<tag::repeat_lower_half_> repeat_lower_half = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::repeat_lower_half_> repeat_lower_half = {};
 } }
 #endif
 

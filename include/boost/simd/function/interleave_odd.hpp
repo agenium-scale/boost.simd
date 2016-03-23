@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-swar
+    Function object implementing interleave_odd capabilities
 
     Computes a vector from a combination of the two inputs.
 
@@ -37,26 +39,8 @@ namespace boost { namespace simd
 
     with <tt> n = cardinal_of<T>::value </tt>
 
-
-    @return a value of the same type as the parameters
-
-**/
-  template<typename T> auto interleave_odd(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-swar
-
-      Computes a vector from a combination of the two inputs.
-
-
-      Function object tied to simd::interleave_odd
-
-      @see simd::interleave_odd
-    **/
-    const boost::dispatch::functor<tag::interleave_odd_> interleave_odd = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::interleave_odd_> interleave_odd = {};
 } }
 #endif
 

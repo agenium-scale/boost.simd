@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,8 +15,10 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
     @ingroup group-operator
+    Function object implementing divides capabilities
 
     Perform the quotient of two parameters of the same type.
 
@@ -30,27 +32,8 @@ namespace boost { namespace simd
 
     returns the quotient of @c a by @c b
 
-    @param a First  parameter of the quotient
-    @param b Second parameter of the quotient
-
-    @return The quotient of the two parameters.
   **/
-  template<typename T> auto divides(T const& a, T const& b);
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-operator
-
-      Perform the quotient of two parameters of the same type.
-
-
-      Function object tied to boost::simd::divides
-
-      @see boost::simd::divides
-    **/
-    const boost::dispatch::functor<tag::divides_> divides = {};
-  }
+  const boost::dispatch::functor<tag::divides_> divides = {};
 } }
 #endif
 

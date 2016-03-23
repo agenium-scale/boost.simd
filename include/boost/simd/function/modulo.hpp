@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-arithmetic
+    Function object implementing modulo capabilities
 
     return the elementwise modulo of the two parameters
     Infix notation can be used with operator '\%'.
@@ -40,28 +42,8 @@ namespace boost { namespace simd
 
     @see  rem, remainder, mod,
 
-
-    @return a value of the same type as the parameters
-
-**/
-  template<typename T> auto modulo(T const& x, T const & y) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-arithmetic
-
-      return the elementwise modulo of the two parameters
-      Infix notation can be used with operator '\%'
-      Does not work for floating point entries.
-
-
-      Function object tied to simd::modulo
-
-      @see simd::modulo
-    **/
-    const boost::dispatch::functor<tag::modulo_> modulo = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::modulo_> modulo = {};
 } }
 #endif
 

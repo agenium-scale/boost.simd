@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-arithmetic
+    Function object implementing two_add capabilities
 
     For any two reals @c x and @c y two_add computes two reals (in an std::pair)
     @c r0 and @c r1 such that:
@@ -32,25 +34,8 @@ namespace boost { namespace simd
     Its main usage is to be able to compute
     sum of reals and the residual error using IEEE  754 arithmetic.
 
-
-**/
-  template<typename T> auto two_add(T const& x, T const& y) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-arithmetic
-
-      For any two reals @c x and @c y two_add computes two reals (in an std::pair)
-      @c r0 and @c r1 such that:
-
-
-      Function object tied to simd::two_add
-
-      @see simd::two_add
-    **/
-    const boost::dispatch::functor<tag::two_add_> two_add = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::two_add_> two_add = {};
 } }
 #endif
 

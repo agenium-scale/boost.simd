@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-swar
+    Function object implementing splatted_minimum capabilities
 
     Splatted minimum
 
@@ -38,25 +40,8 @@ namespace boost { namespace simd
     for(int i=0;i<T::static_size;++i) x[i] = minimum(x);
     @endcode
 
-
-    @return a value of the same type as the parameter
-**/
-  template<typename T> auto splatted_minimum(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-swar
-
-      Splatted minimum
-
-
-      Function object tied to simd::splatted_minimum
-
-      @see simd::splatted_minimum
-    **/
-    const boost::dispatch::functor<tag::splatted_minimum_> splatted_minimum = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::splatted_minimum_> splatted_minimum = {};
 } }
 #endif
 

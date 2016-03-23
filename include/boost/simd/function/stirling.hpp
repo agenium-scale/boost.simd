@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-euler
+    Function object implementing stirling capabilities
 
     Computes stirling formula for the gamma function
 
@@ -36,26 +38,8 @@ namespace boost { namespace simd
 
     @see gamma
 
-    @return a value of the same type as the parameter
-
-**/
-  template<typename T> auto stirling(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-euler
-
-
-      Computes stirling formula for the gamma function
-
-
-      Function object tied to simd::stirling
-
-      @see simd::stirling
-    **/
-    const boost::dispatch::functor<tag::stirling_> stirling = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::stirling_> stirling = {};
 } }
 #endif
 

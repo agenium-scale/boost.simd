@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,8 +15,10 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
   @ingroup group-arithmetic
+    Function object implementing ceil capabilities
 
    Computes the ceil of its parameter.
 
@@ -33,37 +35,10 @@ namespace boost { namespace simd
 
     std_ for floating entries
 
-
     @see  floor, round, round2even, trunc, iceil
-
-    @return      an integral value of the same type as the input.
 
   **/
-  template<typename T> auto ceil(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-
-    Computes the ceil of its parameter.
-
-    @par semantic:
-    For any given value @c x of type @c T:
-
-    @code
-    T r = ceil(x);
-    @endcode
-
-    smallest integral value of type @c T greater or equal to @c x.
-
-    @see  floor, round, round2even, trunc, iceil
-
-    @return      an integral value of the same type as the input.
-
-
-**/
-    const boost::dispatch::functor<tag::ceil_> ceil = {};
-  }
+{
 } }
 #endif
 

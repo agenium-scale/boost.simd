@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,30 +15,17 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-boolean
+    Function object implementing if_nan_else capabilities
 
     If cond is @ref True returns @ref Allbits else returns f
 
     This is a convenient alias of @ref if_allbits_else
-**/
-  template<typename C, typename T> auto if_nan_else(C const& cond, T const & f) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-boolean
-
-      If cond is @ref True returns @ref Allbits else returns f
-
-
-      Function object tied to simd::if_nan_else
-
-      @see simd::if_nan_else
-    **/
-    const boost::dispatch::functor<tag::if_nan_else_> if_nan_else = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::if_nan_else_> if_nan_else = {};
 } }
 #endif
 

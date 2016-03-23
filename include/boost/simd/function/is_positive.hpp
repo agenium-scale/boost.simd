@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-predicates
+    Function object implementing is_positive capabilities
 
     Returns @ref True if x is positive else @ref False.
 
@@ -25,7 +27,6 @@ namespace boost { namespace simd
     because @ref Zero is positive but not greater than 0, and @ref Mzero is
     not positive and not greater than 0, It's probably @ref is_gtz that
     you want.
-
 
     @par Semantic:
 
@@ -42,7 +43,6 @@ namespace boost { namespace simd
       as_logical_t<T> r = True ;
     @endcode
 
-
     @par Note:
 
     Mzero is the floating point 'minus zero',
@@ -53,25 +53,8 @@ namespace boost { namespace simd
 
     @see is_negative,  Mzero, bitofsign
 
-    @return a logical value
-
-**/
-  template<typename T> auto is_positive(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-predicates
-
-      Returns @ref True if x is positive else @ref False.
-
-
-      Function object tied to simd::is_positive
-
-      @see simd::is_positive
-    **/
-    const boost::dispatch::functor<tag::is_positive_> is_positive = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::is_positive_> is_positive = {};
 } }
 #endif
 

@@ -18,6 +18,7 @@ namespace boost { namespace simd
   /*!
 
     @ingroup group-ieee
+    Function object implementing eps capabilities
 
     This is the distance between x and the next representable value of the type.
 
@@ -45,7 +46,7 @@ namespace boost { namespace simd
     @return a value of same type as the input
 
 **/
-  template<typename T> auto eps(T const& x) {}
+  const boost::dispatch::functor<tag::abs_> eps = {};
 
 
 } }

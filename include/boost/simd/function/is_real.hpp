@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-predicates
+    Function object implementing is_real capabilities
 
     Returns @ref True or @ref False according x is real or not.
     For non complex numbers this is always true.
@@ -34,27 +36,8 @@ namespace boost { namespace simd
     as_logical_t<T> r = True ;
     @endcode
 
-
-    @return a logical value
-
-**/
-  template<typename T> auto is_real(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-predicates
-
-      Returns @ref True or @ref False according x is real or not.
-      For non complex numbers this is always true.
-
-
-      Function object tied to simd::is_real
-
-      @see simd::is_real
-    **/
-    const boost::dispatch::functor<tag::is_real_> is_real = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::is_real_> is_real = {};
 } }
 #endif
 

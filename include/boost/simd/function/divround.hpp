@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-arithmetic
+    Function object implementing divround capabilities
 
     Computes the round of the division.
 
@@ -42,26 +44,8 @@ namespace boost { namespace simd
     @see  divides, rec, divs, divfloor,
     divceil, divround2even, divfix
 
-    @return      a value of the same type as the input.
-
-
-**/
-  template<typename T> auto divround(T const& x, T const& y) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-arithmetic
-
-      Computes the round of the division.
-
-
-      Function object tied to simd::divround
-
-      @see simd::divround
-    **/
-    const boost::dispatch::functor<tag::divround_> divround = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::divround_> divround = {};
 } }
 #endif
 

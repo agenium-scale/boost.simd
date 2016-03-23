@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-swar
+    Function object implementing splatted_maximum capabilities
 
     Splatted maximum
 
@@ -38,26 +40,8 @@ namespace boost { namespace simd
     for(int i=0;i<T::static_size;++i) x[i] = maximum(x);
     @endcode
 
-
-    @return a value of the same type as the parameter
-
-**/
-  template<typename T> auto splatted_maximum(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-swar
-
-      Splatted maximum
-
-
-      Function object tied to simd::splatted_maximum
-
-      @see simd::splatted_maximum
-    **/
-    const boost::dispatch::functor<tag::splatted_maximum_> splatted_maximum = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::splatted_maximum_> splatted_maximum = {};
 } }
 #endif
 

@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,30 +15,17 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-reduction
+    Function object implementing are_disjoint capabilities
 
     Returns True is only if all bits set in x are not set in y
 
     This is a convenient alias of @ref is_included_c
-**/
-  template<typename T> auto are_disjoint(T0 const& x, T1 const& y) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-reduction
-
-      Returns True is only if all bits set in x are not set in y
-
-
-      Function object tied to simd::are_disjoint
-
-      @see simd::are_disjoint
-    **/
-    const boost::dispatch::functor<tag::are_disjoint_> are_disjoint = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::are_disjoint_> are_disjoint = {};
 } }
 #endif
 

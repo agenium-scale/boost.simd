@@ -1,8 +1,8 @@
 //==================================================================================================
 /*!
   @file
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -14,8 +14,10 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
   @ingroup group-euler
+    Function object implementing erfcx capabilities
 
    Computes the  underflow-compensating (scaled) error function:
    \f$\displaystyle e^{x^2}\frac{2}{\sqrt\pi}\int_0^{x} e^{-t^2}\mbox{d}t\f$
@@ -38,25 +40,8 @@ namespace boost { namespace simd
 
     @see erfc, erf
 
-    @return a value of the same type as the parameter
-
   **/
-  template<typename T> auto erfcx(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-euler
-
-      Underflow-compensating error function:
-      \f$\displaystyle e^{x^2}\frac{2}{\sqrt\pi}\int_0^{x} e^{-t^2}\mbox{d}t\f$
-
-      Function object tied to simd::erfcx
-
-      @see simd::erfcx
-    **/
-    const boost::dispatch::functor<tag::erfcx_> erfcx = {};
-  }
+  const boost::dispatch::functor<tag::erfcx_> erfcx = {};
 } }
 #endif
 

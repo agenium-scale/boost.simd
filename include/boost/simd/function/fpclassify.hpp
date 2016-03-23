@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,8 +15,10 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
     @ingroup group-ieee
+    Function object implementing fpclassify capabilities
 
     Categorizes floating point value arg into the following categories:
     zero, subnormal, normal, infinite, NAN, or implementation-defined category.
@@ -50,19 +52,7 @@ namespace boost { namespace simd
     @see is_eqz, is_denormal, is_normal, is_inf, is_nan
 
   **/
-  template<typename T> auto fpclassify(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-ieee
-
-      Function object tied to simd::fpclassify
-
-      @see simd::fpclassify
-    **/
-    const boost::dispatch::functor<tag::fpclassify_> fpclassify = {};
-  }
+  const boost::dispatch::functor<tag::fpclassify_> fpclassify = {};
 } }
 #endif
 

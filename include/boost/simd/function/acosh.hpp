@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-hyperbolic
+    Function object implementing acosh capabilities
 
     Returns the hyperbolic cosine argument: \f$\log(x+\sqrt{x^2-1})\f$.
 
@@ -37,26 +39,8 @@ namespace boost { namespace simd
 
     @see log, sqrt, cosh, minusone
 
-    @return a value of the same type as the parameter
-
-**/
-  template<typename T> auto acosh(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-hyperbolic
-
-
-      Returns the hyperbolic cosine argument: \f$\log(x+\sqrt{x^2-1})\f$.
-
-
-      Function object tied to simd::acosh
-
-      @see simd::acosh
-    **/
-    const boost::dispatch::functor<tag::acosh_> acosh = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::acosh_> acosh = {};
 } }
 #endif
 

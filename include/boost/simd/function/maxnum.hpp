@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-ieee
+    Function object implementing maxnum capabilities
 
     Returns the maximum value, ignoring nans.
 
@@ -38,32 +40,14 @@ namespace boost { namespace simd
 
     With the std_ decorator std_(maxnum)(x, y) calls the stdlibc++ function std::fmax.
 
-
     @par Decorators
 
     std_ for floating entries
 
     @see max, maxnummag,  maxmag
 
-    @return a value of same type as the inputs
-
-**/
-  template<typename T> auto maxnum(T const& x, T const& y) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-ieee
-
-      Returns the maximum value, ignoring nans.
-
-
-      Function object tied to simd::maxnum
-
-      @see simd::maxnum
-    **/
-    const boost::dispatch::functor<tag::maxnum_> maxnum = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::maxnum_> maxnum = {};
 } }
 #endif
 
