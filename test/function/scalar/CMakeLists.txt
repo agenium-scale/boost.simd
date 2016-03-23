@@ -367,7 +367,6 @@ set ( SOURCES
    compare_lt.cpp
    compare_neq.cpp
    bitwise_not.cpp
-   divtrunc.cpp
    rdivide.cpp
    if_zero_else_allbits.cpp
    if_allbits_else_zero.cpp

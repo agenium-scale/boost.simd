@@ -24,6 +24,7 @@ STF_CASE_TPL (" divreal",  STF_IEEE_TYPES)
   using bs::div;
   using r_t = decltype(div(T(), T()));
 
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_IEEE_EQUAL(div(bs::Inf<T>(), bs::Inf<T>(), bs::round), bs::Nan<r_t>());
   STF_IEEE_EQUAL(div(bs::Minf<T>(), bs::Minf<T>(), bs::round), bs::Nan<r_t>());
   STF_IEEE_EQUAL(div(bs::Nan<T>(), bs::Nan<T>(), bs::round), bs::Nan<r_t>());

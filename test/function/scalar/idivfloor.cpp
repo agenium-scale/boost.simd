@@ -27,6 +27,7 @@ STF_CASE_TPL (" idivreal",  STF_IEEE_TYPES)
   using bs::idiv;
   using r_t = decltype(idiv(T(), T()));
 
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(idiv(bs::Inf<T>(), bs::Inf<T>(), bs::floor), bs::Zero<r_t>());
   STF_EQUAL(idiv(bs::Minf<T>(), bs::Minf<T>(), bs::floor), bs::Zero<r_t>());
   STF_EQUAL(idiv(bs::Nan<T>(), bs::Nan<T>(), bs::floor), bs::Zero<r_t>());
@@ -50,9 +51,9 @@ STF_CASE_TPL (" idivunsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
   using bs::idiv;
   using r_t = decltype(idiv(T(), T()));
 
-  STF_EQUAL(idivfloor(T(4),T(3)), T(1));
-  STF_EQUAL(idivfloor(bs::One<T>(), bs::One<T>()), bs::One<r_t>());
-  STF_EQUAL(idivfloor(bs::One<T>(), bs::Zero<T>()), bs::Valmax<r_t>());
+  STF_EQUAL(idiv(T(4),T(3), bs::floor), T(1));
+  STF_EQUAL(idiv(bs::One<T>(), bs::One<T>(), bs::floor), bs::One<r_t>());
+  STF_EQUAL(idiv(bs::One<T>(), bs::Zero<T>(), bs::floor), bs::Valmax<r_t>());
 } // end of test for unsigned_int_
 
 STF_CASE_TPL (" idiv signed_int",  STF_SIGNED_INTEGRAL_TYPES)

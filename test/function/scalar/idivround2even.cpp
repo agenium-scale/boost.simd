@@ -30,6 +30,7 @@ STF_CASE_TPL (" idivround2evenreal",  STF_IEEE_TYPES)
   // return type conformity test
   STF_TYPE_IS(r_t,  bd::as_integer_t<T>);
 
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(idiv(bs::Inf<T>(), bs::Inf<T>(), bs::round2even), bs::Zero<r_t>());
   STF_EQUAL(idiv(bs::Minf<T>(), bs::Minf<T>(), bs::round2even), bs::Zero<r_t>());
   STF_EQUAL(idiv(bs::Nan<T>(), bs::Nan<T>(), bs::round2even), bs::Zero<r_t>());

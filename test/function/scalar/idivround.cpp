@@ -28,6 +28,7 @@ STF_CASE_TPL (" idivreal",  STF_IEEE_TYPES)
   using bs::idiv;
 
   using r_t = decltype(idiv(T(), T()));
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(idiv(bs::Inf<T>(), bs::Inf<T>(), bs::round), bs::Zero<r_t>());
   STF_EQUAL(idiv(bs::Minf<T>(), bs::Minf<T>(), bs::round), bs::Zero<r_t>());
   STF_EQUAL(idiv(bs::Nan<T>(), bs::Nan<T>(), bs::round), bs::Zero<r_t>());
