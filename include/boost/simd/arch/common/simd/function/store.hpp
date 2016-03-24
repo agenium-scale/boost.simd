@@ -10,7 +10,7 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_STORE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_STORE_HPP_INCLUDED
-#include <boost/simd/pack.hpp>
+
 #include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/adapted/common/pointer.hpp>
@@ -34,12 +34,11 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using storage_t = typename Src::storage_type;
-    using src_t  = Src;
     using value_t   = typename storage_t::value_type;
     using s_t       = typename boost::pointee<Pointer>::type;
     // How many elements does each store stores ?
     template<typename I>
-    using rsize_t = std::integral_constant<std::size_t,I::value*src_t::traits::element_size>;
+    using rsize_t = std::integral_constant<std::size_t,I::value*Src::traits::element_size>;
 
     BOOST_FORCEINLINE void operator()(const Src& s, Pointer p) const BOOST_NOEXCEPT
     {

@@ -19,7 +19,7 @@ void test(Env& $)
   namespace bs = boost::simd;
   using p_t = bs::pack<T, N>;
 
-  std::size_t alg = sizeof(typename p_t::storage_type); //this work but is not really required if the asserts were corrected
+  std::size_t alg = p_t::alignment;
 
 
   T* a1 = static_cast<T*>(ba::aligned_alloc(alg, (sizeof(T)) * N));

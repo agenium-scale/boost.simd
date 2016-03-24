@@ -10,7 +10,6 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ALIGNED_STORE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ALIGNED_STORE_HPP_INCLUDED
-#include <boost/simd/pack.hpp>
 #include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/adapted/common/pointer.hpp>
@@ -36,7 +35,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE void operator()(const A0& a0, A1  a1) const BOOST_NOEXCEPT
     {
-      BOOST_ASSERT_MSG( boost::alignment::is_aligned(a1, sizeof(A0))
+      BOOST_ASSERT_MSG( boost::alignment::is_aligned(a1, A0::alignment)
                       , "boost::simd::aligned_load was performed on an unaligned pointer of integer"
                       );
       bs::store(a0, a1);

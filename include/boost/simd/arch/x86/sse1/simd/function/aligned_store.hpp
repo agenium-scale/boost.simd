@@ -11,7 +11,6 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_ALIGNED_STORE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_ALIGNED_STORE_HPP_INCLUDED
 
-#include <boost/simd/detail/aliasing.hpp>
 #include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/align/is_aligned.hpp>
