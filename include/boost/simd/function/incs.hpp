@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
     Returns the entry plus one, saturated in the entry type.
 
-    This is a convenient alias of @ref abs
+    This is a convenient alias of @ref oneplus
   **/
   const boost::dispatch::functor<tag::incs_> incs = {};
 } }

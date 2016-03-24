@@ -29,11 +29,12 @@ set ( SOURCES
    dec.cpp
    dist.cpp
    dists.cpp
+   div.cpp
    divceil.cpp
-   divfix.cpp
    divfloor.cpp
-   divround2even.cpp
    divround.cpp
+   divround2even.cpp
+   divtrunc.cpp
    divs.cpp
    floor.cpp
    fma.cpp
@@ -42,11 +43,12 @@ set ( SOURCES
    fnms.cpp
    hypot.cpp
    iceil.cpp
+   idiv.cpp
    idivceil.cpp
    idivfix.cpp
    idivfloor.cpp
-   idivround2even.cpp
    idivround.cpp
+   idivround2even.cpp
    ifloor.cpp
    inc.cpp
    iround2even.cpp
@@ -365,7 +367,6 @@ set ( SOURCES
    compare_lt.cpp
    compare_neq.cpp
    bitwise_not.cpp
-   divtrunc.cpp
    rdivide.cpp
    if_zero_else_allbits.cpp
    if_allbits_else_zero.cpp

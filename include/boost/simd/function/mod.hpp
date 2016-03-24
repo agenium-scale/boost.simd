@@ -35,7 +35,7 @@ namespace boost { namespace simd
     The code is similar to:
 
     @code
-    T r = x-divfloor(x, y)*y;
+    T r = x-div(x, y, floor)*y;
     @endcode
 
     @see remainder, rem,  modulo
