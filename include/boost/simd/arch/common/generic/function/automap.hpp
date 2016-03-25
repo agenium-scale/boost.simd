@@ -15,6 +15,7 @@
 #include <boost/dispatch/hierarchy/functions.hpp>
 #include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/simd/arch/common/tags.hpp>
+#include <boost/simd/detail/diagnostic.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -22,7 +23,6 @@ namespace boost { namespace simd { namespace ext
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
   namespace br = brigand;
-
 
   BOOST_DISPATCH_OVERLOAD_FALLBACK ( ( typename F
                                      , typename... Pn, typename... En
@@ -353,13 +353,21 @@ namespace boost { namespace simd { namespace ext
     )
 
     BOOST_FORCEINLINE auto operator()(Pn const&... pn) const
-    BOOST_NOEXCEPT_DECLTYPE_BODY
+    BOOST_NOEXCEPT_DECLTYPE
     ( map_( storage_kind{}
           , result_storage_kind{}
           , result_static_range{}
           , pn...
           )
     )
+    {
+      BOOST_SIMD_DIAG("automap for: " << *this);
+      return map_( storage_kind{}
+                 , result_storage_kind{}
+                 , result_static_range{}
+                 , pn...
+                 );
+    }
 
   };
 
