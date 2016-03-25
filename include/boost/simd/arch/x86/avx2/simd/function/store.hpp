@@ -8,8 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_STORE_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_STORE_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_X86_AVX2_SIMD_FUNCTION_STORE_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_X86_AVX2_SIMD_FUNCTION_STORE_HPP_INCLUDED
 
 #include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/dispatch/function/overload.hpp>
@@ -23,29 +23,17 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( store_
                           , (typename Vec, typename Pointer)
-                          , bs::avx_
-                          , bs::pack_ < bd::double_ < Vec>, bs::avx_>
-                          , bd::pointer_<bd::scalar_<bd::double_<Pointer>>,1u>
+                          , bs::avx2_
+                          , bs::pack_ < bd::integer_ < Vec>, bs::avx_>
+                          , bd::pointer_<bd::scalar_<bd::arithmetic_<Pointer>>,1u>
                           )
   {
     BOOST_FORCEINLINE void operator() (const Vec& a0, Pointer a1) const BOOST_NOEXCEPT
     {
-      _mm256_storeu_pd(a1,a0);
+       _mm256_storeu_si256(reinterpret_cast<__m256i*>(a1), a0);
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( store_
-                          , (typename Vec, typename Pointer)
-                          , bs::avx_
-                          , bs::pack_ < bd::single_ < Vec>, bs::avx_>
-                          , bd::pointer_<bd::scalar_<bd::single_<Pointer>>,1u>
-                          )
-  {
-    BOOST_FORCEINLINE void operator() (const Vec& a0, Pointer a1) const BOOST_NOEXCEPT
-    {
-      _mm256_storeu_ps(a1,a0);
-    }
-  };
 } } }
 
 #endif

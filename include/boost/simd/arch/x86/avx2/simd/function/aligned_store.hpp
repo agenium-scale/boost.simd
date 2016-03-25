@@ -8,9 +8,11 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_STORE_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_STORE_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_X86_AVX2_SIMD_FUNCTION_ALIGNED_STORE_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_X86_AVX2_SIMD_FUNCTION_ALIGNED_STORE_HPP_INCLUDED
 
+#include <boost/dispatch/adapted/common/pointer.hpp>
+#include <boost/align/is_aligned.hpp>
 #include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
@@ -20,32 +22,22 @@ namespace boost { namespace simd { namespace ext
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
 
-
-  BOOST_DISPATCH_OVERLOAD ( store_
+  BOOST_DISPATCH_OVERLOAD ( aligned_store_
                           , (typename Vec, typename Pointer)
-                          , bs::avx_
-                          , bs::pack_ < bd::double_ < Vec>, bs::avx_>
-                          , bd::pointer_<bd::scalar_<bd::double_<Pointer>>,1u>
+                          , bs::avx2_
+                          , bs::pack_ < bd::integer_ < Vec>, bs::avx_>
+                          , bd::pointer_<bd::scalar_<bd::arithmetic_<Pointer>>,1u>
                           )
   {
     BOOST_FORCEINLINE void operator() (const Vec& a0, Pointer a1) const BOOST_NOEXCEPT
     {
-      _mm256_storeu_pd(a1,a0);
+      BOOST_ASSERT_MSG( boost::alignment::is_aligned(a1, Vec::alignment)
+                      , "boost::simd::aligned_load was performed on an unaligned pointer of integer"
+                      );
+       _mm256_store_si256(reinterpret_cast<__m256i*>(a1), a0);
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( store_
-                          , (typename Vec, typename Pointer)
-                          , bs::avx_
-                          , bs::pack_ < bd::single_ < Vec>, bs::avx_>
-                          , bd::pointer_<bd::scalar_<bd::single_<Pointer>>,1u>
-                          )
-  {
-    BOOST_FORCEINLINE void operator() (const Vec& a0, Pointer a1) const BOOST_NOEXCEPT
-    {
-      _mm256_storeu_ps(a1,a0);
-    }
-  };
 } } }
 
 #endif

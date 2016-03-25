@@ -30,7 +30,6 @@ void test(Env& $)
 
   for(std::size_t i=0; i <N ; ++i)
   {
-    std::cout << "i -> " <<  i << std::endl;
     STF_IEEE_EQUAL(a1[i], a2[i]);
   }
 }
