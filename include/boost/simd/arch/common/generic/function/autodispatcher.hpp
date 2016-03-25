@@ -12,5 +12,6 @@
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_AUTODISPATCHER_HPP_INCLUDED
 
 #include <boost/simd/arch/common/generic/function/automap.hpp>
+#include <boost/simd/arch/common/generic/function/autosplat.hpp>
 
 #endif
