@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_MINMAG_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_MINMAG_INCLUDED
 
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/minmag.hpp>
 //#include <boost/simd/arch/common/simd/function/minmag.hpp>
 

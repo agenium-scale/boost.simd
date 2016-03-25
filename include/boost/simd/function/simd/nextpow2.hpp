@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_NEXTPOW2_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_NEXTPOW2_INCLUDED
 
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/nextpow2.hpp>
 //#include <boost/simd/arch/common/simd/function/nextpow2.hpp>
 

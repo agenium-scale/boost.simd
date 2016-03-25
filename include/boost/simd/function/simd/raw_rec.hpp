@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_RAW_REC_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_RAW_REC_INCLUDED
 
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/raw_rec.hpp>
 //#include <boost/simd/arch/common/simd/function/raw_rec.hpp>
 

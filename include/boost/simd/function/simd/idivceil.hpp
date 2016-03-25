@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_IDIVCEIL_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_IDIVCEIL_INCLUDED
 
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/idivceil.hpp>
 //#include <boost/simd/arch/common/simd/function/idivceil.hpp>
 

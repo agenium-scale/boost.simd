@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_COMPARE_LT_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_COMPARE_LT_INCLUDED
 
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/compare_lt.hpp>
 //#include <boost/simd/arch/common/simd/function/compare_less.hpp>
 

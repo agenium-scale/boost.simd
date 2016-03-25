@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_EPS_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_EPS_INCLUDED
 
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/eps.hpp>
 //#include <boost/simd/arch/common/simd/function/eps.hpp>
 

@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_DIVTRUNC_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_DIVTRUNC_INCLUDED
 
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/divtrunc.hpp>
 //#include <boost/simd/arch/common/simd/function/divfix.hpp>
 

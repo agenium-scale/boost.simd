@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_BITWISE_NOTAND_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_BITWISE_NOTAND_INCLUDED
 
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/bitwise_notand.hpp>
 //#include <boost/simd/arch/common/simd/function/bitwise_notand.hpp>
 

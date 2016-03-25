@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_POSMAX_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_POSMAX_INCLUDED
 
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/posmax.hpp>
 //#include <boost/simd/arch/common/simd/function/posmax.hpp>
 

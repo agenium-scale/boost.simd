@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_UNARY_PLUS_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_UNARY_PLUS_INCLUDED
 
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/unary_plus.hpp>
 //#include <boost/simd/arch/common/simd/function/unary_plus.hpp>
 

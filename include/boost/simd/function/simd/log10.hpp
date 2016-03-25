@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_LOG10_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_LOG10_INCLUDED
 
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/log10.hpp>
 //#include <boost/simd/arch/common/simd/function/log10.hpp>
 

@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_SHAR_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_SHAR_INCLUDED
 
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/shar.hpp>
 //#include <boost/simd/arch/common/simd/function/shift_right.hpp>
 

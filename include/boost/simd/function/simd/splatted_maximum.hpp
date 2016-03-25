@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_SPLATTED_MAXIMUM_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_SPLATTED_MAXIMUM_INCLUDED
 
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/splatted_maximum.hpp>
 //#include <boost/simd/arch/common/simd/function/splatted_maximum.hpp>
 

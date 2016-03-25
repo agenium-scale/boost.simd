@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_MASK2LOGICAL_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_MASK2LOGICAL_INCLUDED
 
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/mask2logical.hpp>
 //#include <boost/simd/arch/common/simd/function/mask2logical.hpp>
 

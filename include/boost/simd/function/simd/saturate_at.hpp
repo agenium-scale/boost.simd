@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_SATURATE_AT_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_SATURATE_AT_INCLUDED
 
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/generic/saturate_at.hpp>
 //#include <boost/simd/arch/common/simd/function/saturate_at.hpp>
 

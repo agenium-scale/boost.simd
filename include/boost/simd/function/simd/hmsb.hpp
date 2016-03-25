@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_HMSB_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_HMSB_INCLUDED
 
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/hmsb.hpp>
 //#include <boost/simd/arch/common/simd/function/hmsb.hpp>
 
