@@ -85,8 +85,7 @@ class pack_iterator
       return static_cast<std::ptrdiff_t>(other.idx_ - idx_);
     }
 
-    BOOST_FORCEINLINE auto dereference() const
-                      -> decltype(std::declval<Pack>()[std::declval<std::size_t>()])
+    BOOST_FORCEINLINE ref_constness<Pack> dereference() const
     {
       return (*pack_)[idx_];
     }
