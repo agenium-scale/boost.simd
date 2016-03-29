@@ -7,6 +7,7 @@
 */
 //==================================================================================================
 #include <boost/simd/sdk/as_logical.hpp>
+#include <boost/simd/pack.hpp>
 #include <boost/simd/logical.hpp>
 #include <simd_test.hpp>
 

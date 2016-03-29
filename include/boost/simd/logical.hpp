@@ -109,5 +109,6 @@ namespace boost { namespace simd
 } }
 
 #include <boost/simd/sdk/hierarchy/logical.hpp>
+#include <boost/simd/detail/logical.hpp>
 
 #endif
