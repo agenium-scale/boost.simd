@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_POW_ABS_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_POW_ABS_INCLUDED
 
-#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/pow_abs.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/pow_abs.hpp>
 
 #endif

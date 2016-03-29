@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_ASEC_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_ASEC_INCLUDED
 
-#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/asec.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/asec.hpp>
 
 #endif

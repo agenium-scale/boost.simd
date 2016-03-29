@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_IF_ELSE_NAN_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_IF_ELSE_NAN_INCLUDED
 
-#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/if_else_nan.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/if_else_allbits.hpp>
 
 #endif

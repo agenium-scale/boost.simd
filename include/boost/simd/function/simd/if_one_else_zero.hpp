@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_IF_ONE_ELSE_ZERO_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_IF_ONE_ELSE_ZERO_INCLUDED
 
-#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/if_one_else_zero.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/if_one_else_zero.hpp>
 
 #endif

@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_SPLATTED_MINIMUM_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_SPLATTED_MINIMUM_INCLUDED
 
-#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/splatted_minimum.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/splatted_minimum.hpp>
 
 #endif

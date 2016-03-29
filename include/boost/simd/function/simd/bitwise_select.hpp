@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_BITWISE_SELECT_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_BITWISE_SELECT_INCLUDED
 
-#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/bitwise_select.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/bitwise_select.hpp>
 
 #endif

@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_FAST_RSQRT_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_FAST_RSQRT_INCLUDED
 
-#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/fast_rsqrt.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/fast_rsqrt.hpp>
 
 #endif

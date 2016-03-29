@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_FAST_IROUND2EVEN_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_FAST_IROUND2EVEN_INCLUDED
 
-#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/fast_iround2even.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/fast_iround2even.hpp>
 
 #endif

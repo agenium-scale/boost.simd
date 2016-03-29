@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_SPLIT_MULTIPLIES_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_SPLIT_MULTIPLIES_INCLUDED
 
-#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/split_multiplies.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/split_multiplies.hpp>
 
 #endif

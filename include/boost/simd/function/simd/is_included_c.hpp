@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_IS_INCLUDED_C_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_IS_INCLUDED_C_INCLUDED
 
-#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/is_included_c.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/is_included_c.hpp>
 
 #endif

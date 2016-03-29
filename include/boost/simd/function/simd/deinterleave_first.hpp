@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_DEINTERLEAVE_FIRST_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_DEINTERLEAVE_FIRST_INCLUDED
 
-#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/deinterleave_first.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/deinterleave_first.hpp>
 
 #endif

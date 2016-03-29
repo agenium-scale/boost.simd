@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_SPLATTED_SUM_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_SPLATTED_SUM_INCLUDED
 
-#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/splatted_sum.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/splatted_sum.hpp>
 
 #endif

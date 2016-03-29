@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_SIGNIFICANTS_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_SIGNIFICANTS_INCLUDED
 
-#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/significants.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/significants.hpp>
 
 #endif

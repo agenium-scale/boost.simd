@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_REM_PIO2_CEPHES_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_REM_PIO2_CEPHES_INCLUDED
 
-#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/rem_pio2_cephes.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/rem_pio2_cephes.hpp>
 
 #endif

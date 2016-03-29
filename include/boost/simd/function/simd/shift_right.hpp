@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_SHIFT_RIGHT_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_SHIFT_RIGHT_INCLUDED
 
-#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/shift_right.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/shift_right.hpp>
 
 #endif

@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_INTERLEAVE_SECOND_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_INTERLEAVE_SECOND_INCLUDED
 
-#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/interleave_second.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/interleave_second.hpp>
 
 #endif

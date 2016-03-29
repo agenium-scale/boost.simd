@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_DIVFLOOR_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_DIVFLOOR_INCLUDED
 
-#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/divfloor.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/divfloor.hpp>
 
 #endif

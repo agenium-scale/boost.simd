@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_IS_NOT_GREATER_EQUAL_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_IS_NOT_GREATER_EQUAL_INCLUDED
 
-#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/is_not_greater_equal.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/is_not_greater_equal.hpp>
 
 #endif

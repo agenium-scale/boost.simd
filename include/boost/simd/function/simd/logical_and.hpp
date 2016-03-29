@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_LOGICAL_AND_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_LOGICAL_AND_INCLUDED
 
-#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/logical_and.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/logical_and.hpp>
 
 #endif

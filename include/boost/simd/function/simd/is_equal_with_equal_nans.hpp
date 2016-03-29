@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_IS_EQUAL_WITH_EQUAL_NANS_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_IS_EQUAL_WITH_EQUAL_NANS_INCLUDED
 
-#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/is_equal_with_equal_nans.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/is_equal_with_equal_nans.hpp>
 
 #endif

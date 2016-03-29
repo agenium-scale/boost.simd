@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_REM_2PI_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_REM_2PI_INCLUDED
 
-#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/function/scalar/rem_2pi.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/rem_2pi.hpp>
 
 #endif
