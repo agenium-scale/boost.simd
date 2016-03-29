@@ -12,6 +12,7 @@ set ( SOURCES
   extract.cpp
   insert.cpp
   load.cpp
+  make.cpp
   splat.cpp
   store.cpp
   automap.cpp

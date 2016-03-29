@@ -16,6 +16,7 @@ set ( SOURCES
    extract.cpp
    load.cpp
    splat.cpp
+   make.cpp
 #alias
    modulus.cpp
 #arithmetic
