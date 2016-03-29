@@ -44,7 +44,7 @@ namespace boost { namespace simd { namespace ext
                           , (typename Vec, typename Pointer)
                           , bs::sse2_
                           , bs::pack_ < bd::integer_ < Vec>, bs::sse_>
-                          , bd::pointer_<bd::scalar_<bd::arithmetic_<Pointer>>,1u>
+                          , bd::pointer_<bd::scalar_<bd::integer_<Pointer>>,1u>
                           )
   {
     BOOST_FORCEINLINE void operator() (const Vec& a0, Pointer a1) const BOOST_NOEXCEPT
