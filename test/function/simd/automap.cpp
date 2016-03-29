@@ -16,10 +16,10 @@
 namespace bs = boost::simd;
 namespace bd = boost::dispatch;
 
-static std::size_t count;
+static std::size_t fake_count;
 
 void reset() {
-  count = 1;
+  fake_count = 1;
 }
 
 namespace boost { namespace simd
@@ -50,7 +50,7 @@ namespace boost { namespace simd
     {
       float operator()(T const&) const BOOST_NOEXCEPT
       {
-        return static_cast<float>(count++);
+        return static_cast<float>(fake_count++);
       }
     };
 
@@ -62,7 +62,7 @@ namespace boost { namespace simd
     {
       boost::simd::pack<float, T::static_size> operator()(T const&) const BOOST_NOEXCEPT
       {
-        return bs::pack<float, T::static_size>{static_cast<float>(count++)};
+        return bs::pack<float, T::static_size>{static_cast<float>(fake_count++)};
       }
     };
 
@@ -77,7 +77,7 @@ namespace boost { namespace simd
     {
       double operator()(T const&) const BOOST_NOEXCEPT
       {
-        return static_cast<double>(count++);
+        return static_cast<double>(fake_count++);
       }
     };
 
@@ -89,7 +89,7 @@ namespace boost { namespace simd
     {
       boost::simd::pack<double, T::static_size> operator()(T const&) const BOOST_NOEXCEPT
       {
-        return bs::pack<double, T::static_size>{static_cast<double>(count++)};
+        return bs::pack<double, T::static_size>{static_cast<double>(fake_count++)};
       }
     };
 
@@ -104,7 +104,7 @@ namespace boost { namespace simd
     {
       float operator()(T const&) const BOOST_NOEXCEPT
       {
-        return static_cast<float>(count++);
+        return static_cast<float>(fake_count++);
       }
     };
 
@@ -116,7 +116,7 @@ namespace boost { namespace simd
     {
       boost::simd::pack<float, T::static_size> operator()(T const&) const BOOST_NOEXCEPT
       {
-        return bs::pack<float, T::static_size>{static_cast<float>(count++)};
+        return bs::pack<float, T::static_size>{static_cast<float>(fake_count++)};
       }
     };
 
@@ -131,7 +131,7 @@ namespace boost { namespace simd
     {
       short operator()(T const&) const BOOST_NOEXCEPT
       {
-        return static_cast<short>(count++);
+        return static_cast<short>(fake_count++);
       }
     };
 
@@ -147,7 +147,7 @@ namespace boost { namespace simd
     {
       float operator()(T const&, T const&) const BOOST_NOEXCEPT
       {
-        return static_cast<float>(count++);
+        return static_cast<float>(fake_count++);
       }
     };
 
@@ -163,7 +163,7 @@ namespace boost { namespace simd
     {
       double operator()(T const&, T const&) const BOOST_NOEXCEPT
       {
-        return static_cast<double>(count++);
+        return static_cast<double>(fake_count++);
       }
     };
 
@@ -176,7 +176,7 @@ namespace boost { namespace simd
     {
       bs::pack<double, T::static_size> operator()(T const&, T const&) const BOOST_NOEXCEPT
       {
-        return bs::pack<double, T::static_size>{static_cast<double>(count++)};
+        return bs::pack<double, T::static_size>{static_cast<double>(fake_count++)};
       }
     };
 
@@ -192,7 +192,7 @@ namespace boost { namespace simd
     {
       float operator()(T const&, T const&) const BOOST_NOEXCEPT
       {
-        return static_cast<float>(count++);
+        return static_cast<float>(fake_count++);
       }
     };
 
@@ -205,7 +205,7 @@ namespace boost { namespace simd
     {
       bs::pack<float, T::static_size> operator()(T const&, T const&) const BOOST_NOEXCEPT
       {
-        return bs::pack<float, T::static_size>{static_cast<float>(count++)};
+        return bs::pack<float, T::static_size>{static_cast<float>(fake_count++)};
       }
     };
 
@@ -221,7 +221,7 @@ namespace boost { namespace simd
     {
       short operator()(T const&, T const&) const BOOST_NOEXCEPT
       {
-        return static_cast<short>(count++);
+        return static_cast<short>(fake_count++);
       }
     };
 
@@ -273,13 +273,8 @@ void test2(Env& $)
   STF_INFO("-----------------------------------------");
 }
 
-struct _ {};
-STF_CASE_TPL("Check automap behaviour on pack" , (_))
+STF_CASE("Check automap behaviour on pack")
 {
-  std::cout << std::endl;
-
-  // --
-
   test1<double, 2>($);
   test1<double, 4>($);
   test1<double, 8>($);
@@ -310,5 +305,5 @@ STF_CASE_TPL("Check automap behaviour on pack" , (_))
 
   // --
 
-  STF_EQUAL(0, 0);
+  STF_PASS("Now take a look on how packs have been filled using automap");
 }
