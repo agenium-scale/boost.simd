@@ -16,6 +16,7 @@
 
 #include <boost/config.hpp>
 #include <type_traits>
+#include <iostream>
 
 namespace boost { namespace simd { namespace detail
 {
@@ -151,6 +152,13 @@ namespace boost { namespace simd { namespace detail
   BOOST_FORCEINLINE bool operator!(pack_proxy<Storage> const& p) BOOST_NOEXCEPT
   {
     return !p.get();
+  }
+
+  // operator: <<
+  template<typename Storage>
+  inline std::ostream& operator<<(std::ostream& os, pack_proxy<Storage> const& p)
+  {
+    return os << p.get();
   }
 } } }
 
