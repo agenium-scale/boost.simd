@@ -8,6 +8,7 @@
 
 set ( SOURCES
    insert.cpp
+   store.cpp
    horner.cpp
    horn.cpp
    horn1.cpp

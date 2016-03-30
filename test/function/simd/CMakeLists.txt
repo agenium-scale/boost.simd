@@ -8,10 +8,12 @@
 
 set ( SOURCES
   aligned_load.cpp
+  aligned_store.cpp
   extract.cpp
   insert.cpp
   load.cpp
   splat.cpp
+  store.cpp
 )
 
 make_unit( "boost.simd.function.simd"   ${SOURCES})
