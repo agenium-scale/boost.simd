@@ -56,8 +56,14 @@ namespace boost { namespace simd { namespace ext
 
     template <typename S, typename E>
     struct traits_checker {
-      using type = br::pair< br::bool_<S::first_type::value  && E::static_size == traits::static_size>
-                           , br::bool_<S::second_type::value && E::number_of_vectors == result_traits::number_of_vectors>
+      using type = br::pair< br::bool_<  S::first_type::value
+                                      && std::size_t(E::static_size)
+                                      == std::size_t(traits::static_size)
+                                      >
+                           , br::bool_<  S::second_type::value
+                                      && std::size_t(E::number_of_vectors)
+                                      == std::size_t(result_traits::number_of_vectors)
+                                      >
                            >;
     };
 
