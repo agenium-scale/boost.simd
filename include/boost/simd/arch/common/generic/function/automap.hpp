@@ -341,13 +341,13 @@ namespace boost { namespace simd { namespace ext
     template <typename... N>
     BOOST_FORCEINLINE static auto map_( ::boost::simd::aggregate_storage const&
                                       , ::boost::simd::aggregate_storage const&
-                                      , br::list<N...> const& vectors_range
+                                      , br::list<N...> const& element_range
                                       , Pn const&... pn
                                       )
     BOOST_NOEXCEPT_DECLTYPE_BODY
     ( map_( br::bool_<same_number_of_vectors>{}
-          , element_range{}
-          , vectors_range // ::static_range (vectors_range here) is the number of vectors for aggregate_storage
+          , element_range
+          , result_static_range{} // ::static_range is the number of vectors for aggregate_storage
           , pn...
           )
     )
@@ -356,7 +356,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_NOEXCEPT_DECLTYPE
     ( map_( storage_kind{}
           , result_storage_kind{}
-          , result_static_range{}
+          , element_range{}
           , pn...
           )
     )
@@ -364,7 +364,7 @@ namespace boost { namespace simd { namespace ext
       BOOST_SIMD_DIAG("automap for: " << *this);
       return map_( storage_kind{}
                  , result_storage_kind{}
-                 , result_static_range{}
+                 , element_range{}
                  , pn...
                  );
     }
