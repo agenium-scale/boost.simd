@@ -12,6 +12,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LOAD_HPP_INCLUDED
 
 #include <boost/simd/sdk/hierarchy/simd.hpp>
+#include <boost/simd/detail/unroll.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/adapted/common/pointer.hpp>
 #include <boost/dispatch/adapted/std/iterator.hpp>
@@ -25,7 +26,7 @@ namespace boost { namespace simd { namespace ext
   namespace bs = ::boost::simd;
 
   //------------------------------------------------------------------------------------------------
-  // load from a pointer
+  // load from a pointer into emulated vector
   BOOST_DISPATCH_OVERLOAD ( load_
                           , (typename Target, typename Pointer)
                           , bs::simd_
@@ -54,7 +55,7 @@ namespace boost { namespace simd { namespace ext
   };
 
   //------------------------------------------------------------------------------------------------
-  // load from a range
+  // load from a range into emulated vector
   BOOST_DISPATCH_OVERLOAD ( load_
                           , (typename Target, typename Begin, typename End)
                           , bs::simd_
@@ -120,6 +121,63 @@ namespace boost { namespace simd { namespace ext
     {
       // For RandomAccessIterator, we just offset to the proper place
       return {{ load<value_t>(b+begin_t<N>::value, b+end_t<N>::value)... }};
+    }
+  };
+
+  //------------------------------------------------------------------------------------------------
+  // load from a pointer into pack of whatever
+  BOOST_DISPATCH_OVERLOAD ( load_
+                          , (typename Target, typename Pointer, typename Ext)
+                          , bs::simd_
+                          , bd::pointer_<bd::scalar_<bd::unspecified_<Pointer>>,1u>
+                          , bd::target_<bs::pack_<bd::unspecified_<Target>,Ext>>
+                          )
+  {
+    using target_t  = typename Target::type;
+    using storage_t = typename target_t::storage_type;
+    using base_t = typename target_t::value_type::value_type;
+
+    BOOST_FORCEINLINE target_t operator()(Pointer const& p, Target const&) const BOOST_NOEXCEPT
+    {
+      return do_(p, brigand::range<std::size_t,0,target_t::static_size>{} );
+    }
+
+    template<typename... N>
+    static inline target_t do_(Pointer const& b, brigand::list<N...> const&) BOOST_NOEXCEPT
+    {
+      target_t that;
+      BOOST_SIMD_LOCAL_UNROLL( that[N::value] = static_cast<base_t>(b[N::value]) );
+      return that;
+    }
+  };
+
+  //------------------------------------------------------------------------------------------------
+  // load from a range into pack of whatever
+  BOOST_DISPATCH_OVERLOAD ( load_
+                          , (typename Target, typename Begin, typename End,typename Ext)
+                          , bs::simd_
+                          , bd::input_iterator_<bd::scalar_<bd::unspecified_<Begin>>>
+                          , bd::input_iterator_<bd::scalar_<bd::unspecified_<End>>>
+                          , bd::target_<bs::pack_<bd::unspecified_<Target>,Ext>>
+                          )
+  {
+    using target_t  = typename Target::type;
+    using storage_t = typename target_t::storage_type;
+    using base_t    = typename target_t::value_type::value_type;
+
+    BOOST_FORCEINLINE target_t operator()(Begin const& b, End const&, Target const&) const BOOST_NOEXCEPT
+    {
+      return do_(b, brigand::range<std::size_t,0,target_t::static_size>{} );
+    }
+
+    template<typename... N>
+    static inline target_t do_(Begin const& p, brigand::list<N...> const&) BOOST_NOEXCEPT
+    {
+      target_t that;
+      Begin b = p;
+      BOOST_SIMD_LOCAL_UNROLL( that[N::value] = static_cast<base_t>(*b++) );
+
+      return that;
     }
   };
 } } }

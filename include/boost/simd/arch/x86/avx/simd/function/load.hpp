@@ -77,11 +77,11 @@ namespace boost { namespace simd { namespace ext
     static BOOST_FORCEINLINE T const& make(T const& v) BOOST_NOEXCEPT { return v; }
 
     template<typename... N>
-    static inline storage_t do_(Begin const& b, brigand::list<N...> const&) BOOST_NOEXCEPT
+    static inline target_t do_(Begin const& b, brigand::list<N...> const&) BOOST_NOEXCEPT
     {
       Begin p = b;
-      storage_t that{ make<N>(*p++)...};
-      return that;
+      typename target_t::value_type data[target_t::static_size] = { make<N>(*p++)...};
+      return load<target_t>( &data[0] );
     }
   };
 } } }

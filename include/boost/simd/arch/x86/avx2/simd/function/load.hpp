@@ -44,7 +44,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::avx2_
                           , bd::input_iterator_<bd::scalar_<bd::integer_<Begin>>>
                           , bd::input_iterator_<bd::scalar_<bd::integer_<End>>>
-                          , bd::target_<bs::pack_<bd::arithmetic_<Target>,bs::avx_>>
+                          , bd::target_<bs::pack_<bd::integer_<Target>,bs::avx_>>
                           )
   {
     using target_t  = typename Target::type;
@@ -59,11 +59,11 @@ namespace boost { namespace simd { namespace ext
     static BOOST_FORCEINLINE T make(T const& v) BOOST_NOEXCEPT { return v; }
 
     template<typename... N>
-    static inline storage_t do_(Begin const& b, brigand::list<N...> const&) BOOST_NOEXCEPT
+    static inline target_t do_(Begin const& b, brigand::list<N...> const&) BOOST_NOEXCEPT
     {
       Begin p = b;
       typename target_t::value_type data[target_t::static_size] = { make<N>(*p++)...};
-      return _mm256_loadu_si256( (__m256i*)(&data[0]) );
+      return load<target_t>( &data[0] );
     }
   };
 } } }
