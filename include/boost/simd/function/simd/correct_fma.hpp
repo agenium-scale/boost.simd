@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_CORRECT_FMA_INCLUDED
 
 #include <boost/simd/function/scalar/correct_fma.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/correct_fma.hpp>
 
 #endif

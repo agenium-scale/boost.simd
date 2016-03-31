@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IF_INC_INCLUDED
 
 #include <boost/simd/function/scalar/if_inc.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/selinc.hpp>
 
 #endif

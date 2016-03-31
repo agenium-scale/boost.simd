@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IS_NLE_INCLUDED
 
 #include <boost/simd/function/scalar/is_nle.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/is_not_less_equal.hpp>
 
 #endif

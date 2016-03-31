@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SINCPI_INCLUDED
 
 #include <boost/simd/function/scalar/sincpi.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/sincpi.hpp>
 
 #endif

@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SHRA_INCLUDED
 
 #include <boost/simd/function/scalar/shra.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/shift_right.hpp>
 
 #endif

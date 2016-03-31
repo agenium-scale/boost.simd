@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SINH_INCLUDED
 
 #include <boost/simd/function/scalar/sinh.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/sinh.hpp>
 
 #endif

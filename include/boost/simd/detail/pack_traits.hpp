@@ -43,6 +43,7 @@ namespace boost { namespace simd { namespace detail
 
     public:
     using storage_type              = Storage;
+    using substorage_type           = T; // T or logical<T> ?
 
     using value_type                = boost::simd::logical<T>;
     using size_type                 = std::size_t;
@@ -50,10 +51,12 @@ namespace boost { namespace simd { namespace detail
     enum { static_size = N };
     enum { alignment = sizeof(Storage) };
 
-    using reference               = value_type&;
-    using const_reference         = value_type const&;
+    using reference                 = value_type&;
+    using const_reference           = value_type const&;
 
-    using storage_kind = ::boost::simd::native_storage;
+    using static_range              = brigand::range<std::size_t, 0, N>;
+
+    using storage_kind              = ::boost::simd::native_storage;
   };
 } } }
 
@@ -63,17 +66,24 @@ namespace boost { namespace simd { namespace detail
                                                                                                    \
     public:                                                                                        \
     using storage_type              = VTYPE;                                                       \
+    using substorage_type           = VTYPE;                                                       \
                                                                                                    \
     using value_type                = TYPE;                                                        \
     using size_type                 = std::size_t;                                                 \
                                                                                                    \
-    enum { static_size = N, element_size = 1 };                                                    \
-    enum { alignment = sizeof(VTYPE) };                                                            \
+    enum {                                                                                         \
+      static_size = N,                                                                             \
+      element_size = 1,                                                                            \
+      number_of_vectors = 1,                                                                       \
+      alignment = sizeof(VTYPE)                                                                    \
+    };                                                                                             \
                                                                                                    \
     using reference               = value_type&;                                                   \
     using const_reference         = value_type const&;                                             \
                                                                                                    \
-    using storage_kind = ::boost::simd::native_storage;                                            \
+    using static_range            = brigand::range<std::size_t, 0, N>;                             \
+                                                                                                   \
+    using storage_kind            = ::boost::simd::native_storage;                                 \
   };                                                                                               \
   /**/
 

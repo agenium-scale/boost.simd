@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_WHERE_INCLUDED
 
 #include <boost/simd/function/scalar/where.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/if_else.hpp>
 
 #endif

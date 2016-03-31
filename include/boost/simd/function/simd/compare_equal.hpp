@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_COMPARE_EQUAL_INCLUDED
 
 #include <boost/simd/function/scalar/compare_equal.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/compare_equal.hpp>
 
 #endif

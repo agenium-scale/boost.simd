@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_LOGICAL_XOR_INCLUDED
 
 #include <boost/simd/function/scalar/logical_xor.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/logical_xor.hpp>
 
 #endif

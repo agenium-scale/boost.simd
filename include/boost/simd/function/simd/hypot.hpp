@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_HYPOT_INCLUDED
 
 #include <boost/simd/function/scalar/hypot.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/hypot.hpp>
 
 #endif

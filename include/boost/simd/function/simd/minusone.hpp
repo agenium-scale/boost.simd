@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_MINUSONE_INCLUDED
 
 #include <boost/simd/function/scalar/minusone.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/minusone.hpp>
 
 #endif

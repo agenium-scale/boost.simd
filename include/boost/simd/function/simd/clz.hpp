@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_CLZ_INCLUDED
 
 #include <boost/simd/function/scalar/clz.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/clz.hpp>
 
 #endif

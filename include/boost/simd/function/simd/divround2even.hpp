@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_DIVROUND2EVEN_INCLUDED
 
 #include <boost/simd/function/scalar/divround2even.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/divround2even.hpp>
 
 #endif

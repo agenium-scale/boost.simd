@@ -32,6 +32,12 @@ elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang" OR ${CMAKE_CXX_COMPILER_ID} STR
   set(SIMD_FLAGS_BENCH "-DNDEBUG -O3 -fomit-frame-pointer -fno-exceptions")
 endif()
 
+if (${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
+  # Gcc is clasing while using `stf::type_id` with SIMD vectors of double cause they have the
+  # same signature. This option is required to fix this error.
+  set(SIMD_FLAGS_TEST "${SIMD_FLAGS_TEST} -fabi-version=6")
+endif()
+
 ##==================================================================================================
 ## MSVC Linker settings
 ##==================================================================================================

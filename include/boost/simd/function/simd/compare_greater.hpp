@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_COMPARE_GREATER_INCLUDED
 
 #include <boost/simd/function/scalar/compare_greater.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/compare_greater.hpp>
 
 #endif

@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_ERFCX_INCLUDED
 
 #include <boost/simd/function/scalar/erfcx.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/erfcx.hpp>
 
 #endif

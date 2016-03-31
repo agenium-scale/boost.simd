@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IFNOTDEC_INCLUDED
 
 #include <boost/simd/function/scalar/ifnotdec.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/ifnotdec.hpp>
 
 #endif

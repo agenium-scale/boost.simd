@@ -26,10 +26,12 @@
 #endif
 
 #if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_AVX_VERSION
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/x86/avx/simd/function/extract.hpp>
 #endif
 
 #if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_AVX2_VERSION
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/x86/avx2/simd/function/extract.hpp>
 #endif
 

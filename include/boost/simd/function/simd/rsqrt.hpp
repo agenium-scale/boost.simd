@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_RSQRT_INCLUDED
 
 #include <boost/simd/function/scalar/rsqrt.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/rsqrt.hpp>
 
 #endif

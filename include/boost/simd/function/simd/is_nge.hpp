@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IS_NGE_INCLUDED
 
 #include <boost/simd/function/scalar/is_nge.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 //#include <boost/simd/arch/common/simd/function/is_not_greater_equal.hpp>
 
 #endif
