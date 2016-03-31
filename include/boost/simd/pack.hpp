@@ -18,7 +18,7 @@
 #include <boost/simd/detail/pack_traits.hpp>
 #include <boost/simd/detail/pack_operators.hpp>
 #include <boost/simd/detail/storage_of.hpp>
-#include <boost/simd/sdk/is_power_of_2.hpp>
+#include <boost/simd/meta/is_power_of_2.hpp>
 #include <boost/simd/function/aligned_load.hpp>
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/function/insert.hpp>
