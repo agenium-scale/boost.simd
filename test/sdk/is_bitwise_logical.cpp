@@ -6,10 +6,10 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <simd_test.hpp>
-#include <boost/simd/sdk/is_bitwise_logical.hpp>
-#include <boost/simd/pack.hpp>
+#include <boost/simd/meta/is_bitwise_logical.hpp>
 #include <boost/simd/logical.hpp>
+#include <boost/simd/pack.hpp>
+#include <simd_test.hpp>
 
 using namespace boost::simd;
 
