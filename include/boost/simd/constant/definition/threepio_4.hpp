@@ -2,7 +2,6 @@
 /*!
   @file
 
-<<<<<<< HEAD:include/boost/simd/constant/definition/maxgammaln.hpp
   @copyright 2012-2015 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
