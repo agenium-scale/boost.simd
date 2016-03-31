@@ -134,8 +134,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using target_t  = typename Target::type;
-    using storage_t = typename target_t::storage_type;
-    using base_t = typename target_t::value_type::value_type;
+    using value_t   = typename target_t::value_type;
 
     BOOST_FORCEINLINE target_t operator()(Pointer const& p, Target const&) const BOOST_NOEXCEPT
     {
@@ -146,7 +145,7 @@ namespace boost { namespace simd { namespace ext
     static inline target_t do_(Pointer const& b, brigand::list<N...> const&) BOOST_NOEXCEPT
     {
       target_t that;
-      BOOST_SIMD_LOCAL_UNROLL( that[N::value] = static_cast<base_t>(b[N::value]) );
+      BOOST_SIMD_LOCAL_UNROLL( that[N::value] = static_cast<value_t>(b[N::value]) );
       return that;
     }
   };
@@ -162,8 +161,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using target_t  = typename Target::type;
-    using storage_t = typename target_t::storage_type;
-    using base_t    = typename target_t::value_type::value_type;
+    using value_t   = typename target_t::value_type;
 
     BOOST_FORCEINLINE target_t operator()(Begin const& b, End const&, Target const&) const BOOST_NOEXCEPT
     {
@@ -175,8 +173,7 @@ namespace boost { namespace simd { namespace ext
     {
       target_t that;
       Begin b = p;
-      BOOST_SIMD_LOCAL_UNROLL( that[N::value] = static_cast<base_t>(*b++) );
-
+      BOOST_SIMD_LOCAL_UNROLL( that[N::value] = static_cast<value_t>(*b++) );
       return that;
     }
   };
