@@ -19,7 +19,7 @@
 #include <boost/simd/as.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/logical.hpp>
-#include <boost/simd/math.hpp>
+#include <boost/simd/detail/math.hpp>
 #include <boost/simd/pack.hpp>
 
 /// Main Boost namespace
