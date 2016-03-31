@@ -16,7 +16,7 @@
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/logical.hpp>
-#include <boost/simd/sdk/real_of.hpp>
+#include <boost/simd/meta/real_of.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/dispatch/meta/factory_of.hpp>
 #include <boost/dispatch/meta/scalar_of.hpp>
