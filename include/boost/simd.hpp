@@ -17,7 +17,7 @@
 #include <boost/simd/config.hpp>
 #include <boost/simd/arch.hpp>
 #include <boost/simd/as.hpp>
-#include <boost/simd/cardinal_of.hpp>
+#include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/logical.hpp>
 #include <boost/simd/math.hpp>
 #include <boost/simd/pack.hpp>

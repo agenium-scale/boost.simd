@@ -16,7 +16,7 @@
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/allbits.hpp>
-#include <boost/simd/cardinal_of.hpp>
+#include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/dispatch/meta/scalar_of.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 
