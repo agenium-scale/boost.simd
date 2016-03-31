@@ -6,7 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/sdk/is_scalar.hpp>
+#include <boost/simd/meta/is_scalar.hpp>
 #include <boost/dispatch/adapted/std/array.hpp>
 #include <array>
 #include <simd_test.hpp>

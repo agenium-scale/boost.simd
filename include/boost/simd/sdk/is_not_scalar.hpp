@@ -13,7 +13,7 @@
 #define BOOST_SIMD_SDK_IS_NOT_SCALAR_HPP_INCLUDED
 
 #include <boost/simd/detail/brigand.hpp>
-#include <boost/simd/sdk/is_scalar.hpp>
+#include <boost/simd/meta/is_scalar.hpp>
 #include <boost/dispatch/hierarchy/unspecified.hpp>
 #include <boost/dispatch/hierarchy/scalar.hpp>
 #include <boost/dispatch/models.hpp>
