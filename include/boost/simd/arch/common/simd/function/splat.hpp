@@ -14,7 +14,7 @@
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/genmask.hpp>
 #include <boost/simd/sdk/hierarchy/simd.hpp>
-#include <boost/simd/as_arithmetic.hpp>
+#include <boost/simd/meta/as_arithmetic.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>

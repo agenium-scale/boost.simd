@@ -6,7 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/as_arithmetic.hpp>
+#include <boost/simd/meta/as_arithmetic.hpp>
 #include <boost/simd/logical.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>

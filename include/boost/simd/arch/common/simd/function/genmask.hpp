@@ -15,7 +15,7 @@
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/sdk/hierarchy/logical.hpp>
 #include <boost/simd/sdk/hierarchy/simd.hpp>
-#include <boost/simd/as_arithmetic.hpp>
+#include <boost/simd/meta/as_arithmetic.hpp>
 #include <boost/simd/constant/allbits.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/dispatch/function/overload.hpp>
