@@ -18,7 +18,7 @@
 #include <boost/simd/function/is_not_denormal.hpp>
 #include <boost/simd/function/is_finite.hpp>
 #include <boost/simd/function/logical_and.hpp>
-#include <boost/simd/sdk/as_logical.hpp>
+#include <boost/simd/meta/as_logical.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_SDK_IS_BITWISE_LOGICAL_HPP_INCLUDED
 #define BOOST_SIMD_SDK_IS_BITWISE_LOGICAL_HPP_INCLUDED
 
-#include <boost/simd/sdk/as_logical.hpp>
+#include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/meta/as_arithmetic.hpp>
 #include <type_traits>
 
