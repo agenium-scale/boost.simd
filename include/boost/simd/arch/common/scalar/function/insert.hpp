@@ -25,7 +25,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( insert_
                           , (typename A0, typename A1, typename A2)
                           , bd::cpu_
-                          , bd::unspecified_<A0>
+                          , bd::scalar_< bd::unspecified_<A0> >
                           , bd::scalar_< bd::integer_<A1>>
                           , bd::scalar_< bd::unspecified_<A2>>
                           )

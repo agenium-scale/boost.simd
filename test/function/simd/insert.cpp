@@ -14,88 +14,55 @@
 #include <boost/simd/function/insert.hpp>
 #include <boost/simd/constant/constant.hpp>
 #include <simd_test.hpp>
+#include <array>
 
 namespace bs = boost::simd;
 namespace bd = boost::dispatch;
 
-
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
 {
-  using p_t = bs::pack<T, N>;
+  bs::pack<T, N> p;
+  std::array<T,N> a;
 
-  p_t p;
-  STF_TYPE_IS(void, decltype(bs::insert(p, std::size_t(), T())));
-
-  T a1[N];
   for(std::size_t i = 0; i < N; ++i)
   {
-    a1[i] = T(i*2);
+    bs::insert(p, i, T(i+1));
+    a[i] = T(i+1);
   }
-  p_t aa1(&a1[0], &a1[N]);
-  for(std::size_t i = 0; i < N; ++i)
-  {
-    bs::insert(aa1, i, T(i+1));
-    a1[i] = T(i+1);
-    STF_IEEE_EQUAL(aa1, p_t(&a1[0], &a1[N]));
-  }
+
+  bs::pack<T, N> ref(&a[0], &a[0] + N);
+  STF_IEEE_EQUAL(ref, p);
 }
 
-template <typename T, std::size_t N, std::size_t I, typename Env> struct test_static
+template<typename A, typename P, typename... N>
+void f( brigand::list<N...> const&, A& a, P& p)
 {
-  template < class P>
-  void operator()(Env& $, P & aa1,  T a1[N])
-  {
-    using p_t = bs::pack<T, N>;
-    a1[I] = T(I+5);
-    p_t aa2(&a1[0], &a1[N]);
-    bs::insert<I>(aa1, T(I+5));
-    STF_IEEE_EQUAL(aa1,  aa2);
-    test_static < T, N, I-1, Env>()($, aa1, a1);
-  }
-};
-
-template <typename T, std::size_t N, typename Env> struct test_static < T, N, 0, Env>
-{
-  template < class P>
-  void operator()(Env& $, P & aa1,  T a1[N])
-  {
-    using p_t = bs::pack<T, N>;
-    bs::insert<0>(aa1, T(5));
-    a1[0] = T(5);
-    p_t aa2(&a1[0], &a1[N]);
-    STF_IEEE_EQUAL(aa1,  aa2);
-  }
-};
-
+  using T = typename P::value_type;
+  BOOST_SIMD_LOCAL_UNROLL( a[N::value] = T(N::value+1) );
+  BOOST_SIMD_LOCAL_UNROLL( (bs::insert(p, N::value, T(N::value+1))) );
+}
 
 template <typename T, std::size_t N, typename Env>
 void test_st(Env& $)
 {
-  namespace bs = boost::simd;
-  using p_t = bs::pack<T, N>;
+  bs::pack<T, N> p;
+  std::array<T,N> a;
 
-  p_t p;
-  STF_TYPE_IS(void, decltype(bs::insert<0>(p, T())));
+  f( brigand::range<std::size_t, 0, N>(),a,p);
 
-
-  T a1[N];
-  for(std::size_t i = 0; i < N; ++i)
-  {
-    a1[i] = T(i*2);
-  }
-  p_t aa1(&a1[0], &a1[N]);
-  test_static<T, N, N-1, Env>()($, aa1, a1);
+  bs::pack<T, N> ref(&a[0], &a[0] + N);
+  STF_IEEE_EQUAL(ref, p);
 }
 
 STF_CASE_TPL("Check insert on pack" , STF_NUMERIC_TYPES)
 {
-  namespace bs = boost::simd;
-  using p_t = bs::pack<T>;
-  static const std::size_t N = p_t::static_size;
+  static const std::size_t N = boost::simd::pack<T>::static_size;
+
   test<T, N>($);
   test<T, N/2>($);
   test<T, N*2>($);
+
   test_st<T, N>($);
   test_st<T, N/2>($);
   test_st<T, N*2>($);
