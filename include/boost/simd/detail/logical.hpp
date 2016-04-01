@@ -36,6 +36,7 @@ namespace boost { namespace simd { namespace detail
     using reference         = value_type&;
     using const_reference   = value_type const&;
     using storage_kind      = ::boost::simd::scalar_storage;
+    using substorage_type   = boost::simd::logical<T>;
 
     enum { static_size = N, element_size = 1 };
     enum { alignment = sizeof(T) };
@@ -64,6 +65,7 @@ namespace boost { namespace simd { namespace detail
     using reference       = typename SIMD::reference;
     using const_reference = typename SIMD::const_reference;
     using storage_kind    = ::boost::simd::aggregate_storage;
+    using substorage_type = SIMD;
 
     enum  { static_size = N, element_size = N / NumberOfVectors};
     enum  { alignment   = SIMD::alignment };
