@@ -14,6 +14,8 @@
 #ifndef BOOST_SIMD_DETAIL_PACK_PROXY_HPP_INCLUDED
 #define BOOST_SIMD_DETAIL_PACK_PROXY_HPP_INCLUDED
 
+#include <boost/dispatch/meta/value_of.hpp>
+#include <boost/dispatch/hierarchy_of.hpp>
 #include <boost/config.hpp>
 #include <type_traits>
 #include <iostream>
@@ -162,4 +164,23 @@ namespace boost { namespace simd { namespace detail
   }
 } } }
 
+namespace boost { namespace dispatch
+{
+  namespace ext
+  {
+    template<typename S>
+    struct  value_of<boost::simd::detail::pack_proxy<S>>
+          : dispatch::value_of<typename S::value_type>
+    {};
+
+    template<typename S> struct scalar_of<boost::simd::detail::pack_proxy<S>>
+          : dispatch::scalar_of<typename S::value_type>
+    {};
+
+    template<typename S,typename Origin>
+    struct  hierarchy_of<boost::simd::detail::pack_proxy<S>,Origin>
+          : dispatch::hierarchy_of<typename S::value_type>
+    {};
+  }
+} }
 #endif
