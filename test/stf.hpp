@@ -1006,7 +1006,8 @@ namespace stf
   template<typename T, typename U>
   inline detail::are_not_containers<T,U,double> ulpdist(T const& a0, U const& a1)
   {
-    return ulpdist(static_cast<detail::common_t<T,float>>(a0), static_cast<detail::common_t<U,float>>(a1));
+    using type_t = detail::common_t<T,detail::common_t<U,float>>;
+    return ulpdist(static_cast<type_t>(a0), static_cast<type_t>(a1));
   }
 }
 
