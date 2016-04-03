@@ -331,7 +331,7 @@ template<typename T> void STF_FUNCTION( stf::unit::env& $ )                     
 
 #define STF_SIGNED_INTEGRAL_TYPES     (std::int8_t)(std::int16_t)(std::int32_t)(std::int64_t)
 #define STF_UNSIGNED_INTEGRAL_TYPES   (std::uint8_t)(std::uint16_t)(std::uint32_t)(std::uint64_t)
-#define STF_INTEGRAL_TYPES            STF_SIGNED_INTEGRAL_TYPES STF_UNSIGNED_INTEGRAL_TYPES
+#define STF_INTEGRAL_TYPES            (char)STF_SIGNED_INTEGRAL_TYPES STF_UNSIGNED_INTEGRAL_TYPES
 
 #define STF_IEEE_TYPES (float)(double)
 
@@ -603,45 +603,50 @@ namespace stf { namespace detail
 #define STF_DUMP(R)                                                                                 \
 $.stream()  << "failing because:\n" << R.lhs << R.op << R.rhs << "\n" << "is incorrect.\n";         \
 
-
+  
 namespace stf
 {
-  template<typename LHS, typename RHS>
-  inline bool compare_equal(LHS const& l, RHS const& r)
+  namespace ext
   {
-        return (l == r);
-  }
+    template<typename LHS, typename RHS, typename EnableIf = void>
+    struct equal
+    {
+      inline bool operator()(LHS const& l, RHS const& r) const
+      {
+        return l == r;
+      }
+    };
 
-  template<typename LHS, typename RHS>
-  inline bool compare_less(LHS const& l, RHS const& r)
-  {
-    return l < r;
+    template<typename LHS, typename RHS, typename EnableIf = void>
+    struct less
+    {
+      inline bool operator()(LHS const& l, RHS const& r) const
+      {
+        return l < r;
+      }
+    };
   }
 
   namespace detail
   {
     template<typename LHS, typename RHS> inline bool eq(LHS const& l, RHS const& r)
     {
-      using stf::compare_equal;
-      return compare_equal(l, r);
+      return ::stf::ext::equal<LHS,RHS>()(l, r);
     }
 
     template<typename LHS, typename RHS> inline bool neq(LHS const& l, RHS const& r)
     {
-      using stf::compare_equal;
-      return !compare_equal(l, r);
+      return !eq(l, r);
     }
 
     template<typename LHS, typename RHS> inline bool lt(LHS const& l, RHS const& r)
     {
-      using stf::compare_less;
-      return compare_less(l, r);
+      return ::stf::ext::less<LHS,RHS>()(l, r);
     }
 
     template<typename LHS, typename RHS> inline bool ge(LHS const& l, RHS const& r)
     {
-      using stf::compare_less;
-      return !compare_less(l, r);
+      return !lt(l, r);
     }
 
     template<typename LHS, typename RHS> inline bool gt(LHS const& l, RHS const& r)
@@ -684,7 +689,7 @@ namespace stf { namespace detail
               , stf::to_string( lhs ), stf::split_line(lhs,rhs,SB), stf::to_string(rhs)             \
               };                                                                                    \
     }                                                                                               \
-
+    
     STF_BINARY_DECOMPOSE( ==, "==", eq  )
     STF_BINARY_DECOMPOSE( !=, "!=", neq )
     STF_BINARY_DECOMPOSE( < , "<" , lt  )
@@ -827,10 +832,16 @@ namespace stf
       size_mismatch = detail::size(ref) != detail::size(data);
       if(size_mismatch) return false;
 
-      auto dist = m(data,ref);
-
       auto br = detail::begin(data);
+      auto er = detail::end(data);
       auto bi = detail::begin(ref);
+
+      std::vector<double> dist;
+      while(br != er)
+        dist.push_back( m(*br++,*bi++) );
+
+      bi = detail::begin(ref);
+      br = detail::begin(data);
       auto bd = detail::begin(dist);
       auto sz = detail::size(data);
 
@@ -896,10 +907,16 @@ namespace stf
     return os << "{\n"  + ls.str() + "}\n with a maximal error of " + s.str();
   }
 
-    template<typename Measure, typename Reference, typename U>
-  inline bool compare_equal(U const& l, approx_<Measure, Reference> const& r)
+  namespace ext
   {
-    return r.compare(l);
+    template<typename T, typename Measure, typename Reference, typename EnableIf>
+    struct equal<T,stf::approx_<Measure, Reference>,EnableIf>
+    {
+      inline bool operator()(T const& l, stf::approx_<Measure, Reference> const& r) const
+      {
+        return r.compare(l);
+      }
+    };
   }
 }
 
@@ -915,100 +932,89 @@ namespace stf { namespace detail
   template<typename T, typename R>
   using if_real = typename std::enable_if<std::is_floating_point<T>::value, R>::type;
 
-  template<typename T, typename U>
+    template<typename T, typename U>
   using common_t = typename std::common_type<T,U>::type;
 } }
 
+#include <type_traits>
 #include <algorithm>
 #include <iterator>
 #include <cmath>
 
 namespace stf
 {
-#if defined(DOXYGEN_ONLY)
-  template<typename T, typename U> inline auto ulpdist(T a0, U a1);
-#else
+  namespace ext
+  {
+    template< typename T1, typename T2 = T1
+            , typename EnableIF = void
+            >
+    struct ulpdist
+    {
+      inline double operator()(T1 a, T2 b) const
+      {
+        using common_t = detail::common_t<T1,T2>;
+        return ext::ulpdist<common_t>() ( static_cast<common_t>(a)
+                                        , static_cast<common_t>(b)
+                                        );
+      }
+    };
+
+        template< typename T>
+    struct ulpdist<T,T,typename std::enable_if<std::is_same<T,bool>::value>::type>
+    {
+      inline double operator()(T a, T b) const
+      {
+        return a == b ? 0. : 1.;
+      }
+    };
+
+        template<typename T>
+    struct ulpdist< T, T
+                  , typename std::enable_if<std::is_floating_point<T>::value>::type
+                  >
+    {
+      inline double operator()(T a, T b) const
+      {
+        if( (a==b) || ((a!=a) && (b!=b)) )  return 0.;
+        if( (a!=a) || (b!=b) )              return std::numeric_limits<T>::infinity();
+
+        int e1 = 0,e2 = 0;
+        T   m1,m2;
+        m1 = std::frexp(a, &e1);
+        m2 = std::frexp(b, &e2);
+
+        int expo = -std::max(e1, e2);
+
+        T e = (e1 == e2)  ? std::abs(m1-m2)
+                          : std::abs(std::ldexp(a, expo)- std::ldexp(b, expo));
+
+        return double(e/std::numeric_limits<T>::epsilon());
+      }
+    };
+
+        template<typename T>
+    struct ulpdist< T, T
+                  , typename std::enable_if <   std::is_integral<T>::value
+                                            &&  !std::is_same<T,bool>::value
+                                            >::type
+                  >
+    {
+      inline double operator()(T a, T b) const
+      {
+        using u_t = typename std::make_unsigned<T>::type;
+        return static_cast<double>( (a<b) ? u_t(b-a) : u_t(a-b) );
+      }
+    };
+  }
+
+  template<typename T, typename U> inline double ulpdist(T a0, U a1)
+  {
+    return ext::ulpdist<T,U>()(a0,a1);
+  }
+
+#if 0
 
 #endif
-
-  inline double ulpdist(bool a0, bool a1) { return a0 == a1 ? 0. : 1.; }
-
-  template<typename T>
-  inline detail::if_integral<T,double> ulpdist(T const& a0, T const& a1)
-  {
-    using u_t = typename std::make_unsigned<T>::type;
-    return static_cast<double>( (a0<a1) ? u_t(a1-a0) : u_t(a0-a1) );
-  }
-
-  template<typename T>
-  inline detail::if_real<T,double> ulpdist(T const& a0, T const& a1)
-  {
-    if( (a0 == a1) || ((a0!=a0) && (a1!=a1)) )  return 0.;
-    if( (a0!=a0) || (a1!=a1) )                  return std::numeric_limits<T>::infinity();
-
-    int e1 = 0,e2 = 0;
-    T   m1,m2;
-    m1 = std::frexp(a0, &e1);
-    m2 = std::frexp(a1, &e2);
-
-    int expo = -std::max(e1, e2);
-
-    T e = (e1 == e2)  ? std::abs(m1-m2)
-                      : std::abs(std::ldexp(a0, expo)- std::ldexp(a1, expo));
-
-    return double(e/std::numeric_limits<T>::epsilon());
-  }
-
-  template<typename T>
-  inline detail::if_container<T,std::vector<double>> ulpdist(T const& a0, T const& a1)
-  {
-    using type = decltype(*a0.begin());
-    std::vector<double> ulps;
-
-    std::transform( a0.begin(), a0.end(), a1.begin()
-                  , std::back_inserter(ulps)
-                  , [](type const& a,type const& b) { using ::stf::ulpdist; return ulpdist(a,b); }
-                  );
-
-    return ulps;
-  }
-
-  template<typename T, typename U>
-  inline detail::if_container<T,std::vector<double>>
-  ulpdist(T const& a0, U const& a1)
-  {
-    using type = decltype(*a0.begin());
-    std::vector<double> ulps;
-
-    std::transform( a0.begin(), a0.end()
-                  , std::back_inserter(ulps)
-                  , [&a1](type const& a) { using ::stf::ulpdist; return ulpdist(a,a1); }
-                  );
-
-    return ulps;
-  }
-
-  template<typename T, typename U>
-  inline detail::if_container<T,std::vector<double>>
-  ulpdist(U const& a1,T const& a0)
-  {
-    using type = decltype(*a0.begin());
-    std::vector<double> ulps;
-
-    std::transform( a0.begin(), a0.end()
-                  , std::back_inserter(ulps)
-                  , [&a1](type const& a) { using ::stf::ulpdist; return ulpdist(a1,a); }
-                  );
-
-    return ulps;
-  }
-
-  template<typename T, typename U>
-  inline detail::are_not_containers<T,U,double> ulpdist(T const& a0, U const& a1)
-  {
-    using type_t = detail::common_t<T,detail::common_t<U,float>>;
-    return ulpdist(static_cast<type_t>(a0), static_cast<type_t>(a1));
-  }
 }
 
 #include <string>
@@ -1020,10 +1026,9 @@ namespace stf
     struct ulp_measure
     {
       template<typename T, typename U>
-      auto operator()(T const& data, U const& ref) const -> decltype(ulpdist(data,ref))
+      double operator()(T const& data, U const& ref) const
       {
-        using stf::ulpdist;
-        return ulpdist(data,ref);
+        return stf::ulpdist(data,ref);
       }
 
       template<typename Stream> static void to_stream(Stream& s, double v)
@@ -1039,86 +1044,75 @@ namespace stf
 
 
 
+#include <type_traits>
 #include <algorithm>
 #include <iterator>
 #include <cmath>
 
 namespace stf
 {
-#if defined(DOXYGEN_ONLY)
-  template<typename T, typename U> inline auto reldist(T a0, U a1);
-#else
-
-#endif
-
-  inline double reldist(bool a0, bool a1) { return a0 == a1 ? 0. : 1.; }
-
-  template<typename T,typename U> using dependent = U;
-
-  template<typename T>
-  inline detail::if_real<T,double> reldist(T const& a0, T const& a1)
+  namespace ext
   {
-    if( (a0 == a1) || ((a0!=a0) && (a1!=a1)) )  return 0.;
-    if( (a0!=a0) || (a1!=a1) )                  return std::numeric_limits<T>::infinity();
+    template< typename T1, typename T2 = T1
+            , typename EnableIF = void
+            >
+    struct reldist
+    {
+      inline double operator()(T1 a, T2 b) const
+      {
+        using common_t = detail::common_t<T1,T2>;
+        return ext::reldist<common_t>() ( static_cast<common_t>(a)
+                                        , static_cast<common_t>(b)
+                                        );
+      }
+    };
 
-    return std::abs(a0-a1) / std::max(T(1), std::max(std::abs(a0),std::abs(a1)));
+        template< typename T>
+    struct reldist<T,T,typename std::enable_if<std::is_same<T,bool>::value>::type>
+    {
+      inline double operator()(T a, T b) const
+      {
+        return a == b ? 0. : 1.;
+      }
+    };
+
+        template<typename T>
+    struct reldist< T, T
+                  , typename std::enable_if<std::is_floating_point<T>::value>::type
+                  >
+    {
+      inline double operator()(T a, T b) const
+      {
+        auto inf_ = std::numeric_limits<T>::infinity();
+        auto aa   = std::abs(a);
+        auto ab   = std::abs(b);
+
+        if( (a == b  ) || ((a != a) && (b!=b)) )  return 0.;
+        if( (a != a  ) || (b  != b) )             return inf_;
+        if( (aa==inf_) || (ab == inf_) )          return inf_;
+
+        return std::abs(a-b) / std::max(T(1), std::max(aa,ab));
+      }
+    };
+
+        template<typename T>
+    struct reldist< T, T
+                  , typename std::enable_if <   std::is_integral<T>::value
+                                            &&  !std::is_same<T,bool>::value
+                                            >::type
+                  >
+    {
+      inline double operator()(T a, T b) const
+      {
+        auto d0 = static_cast<double>(a), d1 = static_cast<double>(b);
+        return reldist<double>()(d0,d1);
+      }
+    };
   }
 
-  template<typename T>
-  inline detail::if_integral<T,double> reldist(T const& a0, T const& a1)
+  template<typename T, typename U> inline double reldist(T a0, U a1)
   {
-    dependent<T,double> d0 = static_cast<double>(a0), d1 = static_cast<double>(a1);
-    return reldist(d0,d1);
-  }
-
-  template<typename T>
-  inline detail::if_container<T,std::vector<double>> reldist(T const& a0, T const& a1)
-  {
-    using type = decltype(*a0.begin());
-    std::vector<double> rels;
-
-    std::transform( a0.begin(), a0.end(), a1.begin()
-                  , std::back_inserter(rels)
-                  , [](type const& a,type const& b) { using ::stf::reldist; return reldist(a,b); }
-                  );
-
-    return rels;
-  }
-
-  template<typename T, typename U>
-  inline detail::if_container<T,std::vector<double>>
-  reldist(U const& a1,T const& a0)
-  {
-    using type = decltype(*a0.begin());
-    std::vector<double> rels;
-
-    std::transform( a0.begin(), a0.end()
-                  , std::back_inserter(rels)
-                  , [&a1](type const& a) { using ::stf::reldist; return reldist(a1,a); }
-                  );
-
-    return rels;
-  }
-
-  template<typename T, typename U>
-  inline detail::if_container<T,std::vector<double>>
-  reldist(T const& a0,U const& a1)
-  {
-    using type = decltype(*a0.begin());
-    std::vector<double> rels;
-
-    std::transform( a0.begin(), a0.end()
-                  , std::back_inserter(rels)
-                  , [&a1](type const& a) { using ::stf::reldist; return reldist(a,a1); }
-                  );
-
-    return rels;
-  }
-
-  template<typename T, typename U>
-  inline detail::are_not_containers<T,U,double> reldist(T const& a0, U const& a1)
-  {
-    return reldist(static_cast<detail::common_t<T,U>>(a0), static_cast<detail::common_t<T,U>>(a1));
+    return ext::reldist<T,U>()(a0,a1);
   }
 }
 
@@ -1131,10 +1125,9 @@ namespace stf
     struct relative_measure
     {
       template<typename T, typename U>
-      auto operator()(T const& data, U const& ref) const -> decltype(reldist(data,ref))
+      double operator()(T const& data, U const& ref) const
       {
-        using ::stf::reldist;
-        return reldist(data,ref);
+        return ::stf::reldist(data,ref);
       }
 
       template<typename Stream> static void to_stream(Stream& s, double v)
@@ -1154,6 +1147,21 @@ namespace stf
 #define STF_ULP_EQUAL(A,B,X)                                                                        \
 do                                                                                                  \
 {                                                                                                   \
+  auto stf_local_r = ::stf::ulpdist((A),(B));                                                       \
+  if( stf_local_r <= (X) )                                                                          \
+    STF_PASS( "Expecting: " << STF_STRING(A) " == " STF_STRING(B) << " within " << X << " ULPs." ); \
+  else                                                                                              \
+    STF_FAIL( "Expecting: " << STF_STRING(A) " == " STF_STRING(B)                                   \
+                             << " within " << X << " ULPs " << "but found:\n" << stf_local_r        \
+            );                                                                                      \
+} while( ::stf::is_false() )                                                                        \
+
+#define STF_IEEE_EQUAL(A,B)  STF_ULP_EQUAL(A,B,0.)
+
+
+#define STF_ALL_ULP_EQUAL(A,B,X)                                                                    \
+do                                                                                                  \
+{                                                                                                   \
   auto stf_local_r = STF_DECOMPOSE((A) == ::stf::ulp(B,X));                                         \
   if( stf_local_r )                                                                                 \
     STF_PASS( "Expecting: " << STF_STRING(A) " == " STF_STRING(B) << " within " << X << " ULPs." ); \
@@ -1163,10 +1171,22 @@ do                                                                              
             );                                                                                      \
 } while( ::stf::is_false() )                                                                        \
 
-
-#define STF_IEEE_EQUAL(A,B)  STF_ULP_EQUAL(A,B,0.)
+#define STF_ALL_IEEE_EQUAL(A,B)  STF_ALL_ULP_EQUAL(A,B,0.)
 
 #define STF_RELATIVE_EQUAL(A,B,X)                                                                   \
+do                                                                                                  \
+{                                                                                                   \
+  auto stf_local_r = ::stf::reldist((A),(B));                                                       \
+  if( stf_local_r <= (X/100.))                                                                      \
+    STF_PASS( "Expecting: " << STF_STRING(A) " == " STF_STRING(B) << " within " << X << " %.");     \
+  else                                                                                              \
+    STF_FAIL( "Expecting: " << STF_STRING(A) " == " STF_STRING(B)                                   \
+                            << " within " << X << " % "                                             \
+                            << "but found:\n" << stf_local_r                                        \
+            );                                                                                      \
+} while( ::stf::is_false() )                                                                        \
+
+#define STF_ALL_RELATIVE_EQUAL(A,B,X)                                                               \
 do                                                                                                  \
 {                                                                                                   \
   auto stf_local_r = STF_DECOMPOSE((A) == ::stf::relative(B,X));                                    \
