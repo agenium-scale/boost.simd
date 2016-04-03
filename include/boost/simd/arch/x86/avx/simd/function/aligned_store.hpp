@@ -32,7 +32,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE void operator() (const Vec& a0, Pointer a1) const BOOST_NOEXCEPT
     {
-      BOOST_ASSERT_MSG( boost::alignment::is_aligned(a1, Vec::alignment)
+      BOOST_ASSERT_MSG( boost::alignment::is_aligned(Vec::alignment, a1)
                       , "boost::simd::aligned_load was performed on an unaligned pointer of integer"
                       );
       _mm256_store_pd(a1,a0);
@@ -48,7 +48,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE void operator() (const Vec& a0, Pointer a1) const BOOST_NOEXCEPT
     {
-      BOOST_ASSERT_MSG( boost::alignment::is_aligned(a1, Vec::alignment)
+      BOOST_ASSERT_MSG( boost::alignment::is_aligned(Vec::alignment, a1)
                       , "boost::simd::aligned_load was performed on an unaligned pointer of integer"
                       );
       _mm256_store_ps(a1,a0);
