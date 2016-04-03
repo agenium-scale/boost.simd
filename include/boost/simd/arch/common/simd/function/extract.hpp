@@ -11,6 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_EXTRACT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_EXTRACT_HPP_INCLUDED
 
+#include <boost/simd/detail/aliasing.hpp>
 #include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
@@ -30,7 +31,7 @@ namespace boost { namespace simd { namespace ext
     using result_t = typename A0::value_type;
     BOOST_FORCEINLINE result_t operator() ( A0 const& a0, A1 i) const BOOST_NOEXCEPT
     {
-      return result_t(reinterpret_cast<result_t const*>( &(a0.storage()) )[i]);
+      return result_t(reinterpret_cast<detail::may_alias_t<result_t const>*>( &(a0.storage()) )[i]);
     }
   };
 } } }
