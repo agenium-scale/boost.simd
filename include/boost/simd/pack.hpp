@@ -16,6 +16,7 @@
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/detail/pack_traits.hpp>
+#include <boost/simd/detail/pack_operators.hpp>
 #include <boost/simd/detail/storage_of.hpp>
 #include <boost/simd/sdk/is_power_of_2.hpp>
 #include <boost/simd/function/aligned_load.hpp>
@@ -23,6 +24,12 @@
 #include <boost/simd/function/insert.hpp>
 #include <boost/simd/function/splat.hpp>
 #include <boost/simd/function/load.hpp>
+#include <boost/simd/function/logical_not.hpp>
+#include <boost/simd/function/bitwise_not.hpp>
+#include <boost/simd/function/unary_minus.hpp>
+#include <boost/simd/function/unary_plus.hpp>
+#include <boost/simd/function/inc.hpp>
+#include <boost/simd/function/dec.hpp>
 #include <boost/align/is_aligned.hpp>
 #include <boost/config.hpp>
 #include <iterator>
@@ -52,20 +59,20 @@ namespace boost { namespace simd
                  );
 
     public:
-    using traits                  = detail::pack_traits<T, N,typename detail::storage_of<T,N,ABI>::type>;
-    using storage_type            = typename traits::storage_type;
-    using substorage_type         = typename traits::substorage_type;
-    using storage_kind            = typename traits::storage_kind;
-    using value_type              = typename traits::value_type;
-    using size_type               = typename traits::size_type;
+    using traits          = detail::pack_traits<T, N, typename detail::storage_of<T, N, ABI>::type>;
+    using storage_type    = typename traits::storage_type;
+    using substorage_type = typename traits::substorage_type;
+    using storage_kind    = typename traits::storage_kind;
+    using value_type      = typename traits::value_type;
+    using size_type       = typename traits::size_type;
 
-    using reference             = typename detail::pack_references<traits,pack>::reference;
-    using const_reference       = typename detail::pack_references<traits,pack>::const_reference;
+    using reference       = typename detail::pack_references<traits, pack>::reference;
+    using const_reference = typename detail::pack_references<traits, pack>::const_reference;
 
-    using iterator                = detail::pack_iterator<pack>;
-    using const_iterator          = detail::pack_iterator<pack const>;
-    using reverse_iterator        = std::reverse_iterator<iterator>;
-    using const_reverse_iterator  = std::reverse_iterator<const_iterator>;
+    using iterator               = detail::pack_iterator<pack>;
+    using const_iterator         = detail::pack_iterator<pack const>;
+    using reverse_iterator       = std::reverse_iterator<iterator>;
+    using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
     enum { static_size = N };
 
@@ -280,6 +287,42 @@ namespace boost { namespace simd
     {
       return const_reverse_iterator(cbegin());
     }
+
+    public:
+    BOOST_FORCEINLINE
+    rebind<logical<T>> operator!() const BOOST_NOEXCEPT { return logical_not(*this); }
+
+    BOOST_FORCEINLINE pack operator+() const BOOST_NOEXCEPT { return unary_plus(*this); }
+    BOOST_FORCEINLINE pack operator-() const BOOST_NOEXCEPT { return unary_minus(*this); }
+    BOOST_FORCEINLINE pack operator~() const BOOST_NOEXCEPT { return bitwise_not(*this); }
+
+    BOOST_FORCEINLINE pack& operator++() BOOST_NOEXCEPT { return (*this = inc(*this)); }
+    BOOST_FORCEINLINE pack& operator--() BOOST_NOEXCEPT { return (*this = dec(*this)); }
+
+    BOOST_FORCEINLINE
+    pack operator++(int) BOOST_NOEXCEPT { pack that = *this; ++(*this); return that; }
+    BOOST_FORCEINLINE
+    pack operator--(int) BOOST_NOEXCEPT { pack that = *this; --(*this); return that; }
+
+    template <typename Other>
+    BOOST_FORCEINLINE
+    void operator+=(Other const& other) BOOST_NOEXCEPT { *this = *this + other; }
+
+    template <typename Other>
+    BOOST_FORCEINLINE
+    void operator-=(Other const& other) BOOST_NOEXCEPT { *this = *this - other; }
+
+    template <typename Other>
+    BOOST_FORCEINLINE
+    void operator*=(Other const& other) BOOST_NOEXCEPT { *this = *this * other; }
+
+    template <typename Other>
+    BOOST_FORCEINLINE
+    void operator/=(Other const& other) BOOST_NOEXCEPT { *this = *this / other; }
+
+    template <typename Other>
+    BOOST_FORCEINLINE
+    void operator%=(Other const& other) BOOST_NOEXCEPT { *this = *this % other; }
 
     public:
     /// @brief Retrieve the pack's cardinal, i.e the number of element in the pack.
