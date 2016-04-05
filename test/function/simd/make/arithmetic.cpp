@@ -8,7 +8,6 @@
 */
 //==================================================================================================
 #include <boost/simd/function/simd/make.hpp>
-#include <boost/simd/logical.hpp>
 #include <boost/simd/pack.hpp>
 #include <algorithm>
 #include <simd_test.hpp>
@@ -16,19 +15,21 @@
 STF_CASE_TPL( "Check make(a0,a1)", STF_NUMERIC_TYPES )
 {
   namespace bs = boost::simd;
+
   std::array<T,2> ref = {{ T(1), T(2) }};
   auto p = bs::make<bs::pack<T,2>>(1,2);
 
-  STF_EXPECT( (std::equal(p.begin(),p.end(),ref.begin())) );
+  STF_ALL_EQUAL(p, ref);
 }
 
 STF_CASE_TPL( "Check make(a0,...,a3)", STF_NUMERIC_TYPES )
 {
   namespace bs = boost::simd;
+
   std::array<T,4> ref = {{ T(1), T(2), T(3), T(4) }};
   auto p = bs::make<bs::pack<T,4>>(1,2,3,4);
 
-  STF_EXPECT( (std::equal(p.begin(),p.end(),ref.begin())) );
+  STF_ALL_EQUAL(p, ref);
 }
 
 STF_CASE_TPL( "Check make(a0,...,a7)", STF_NUMERIC_TYPES )
@@ -37,7 +38,7 @@ STF_CASE_TPL( "Check make(a0,...,a7)", STF_NUMERIC_TYPES )
   std::array<T,8> ref = {{ T(1), T(2), T(3), T(4), T(5), T(6), T(7), T(8) }};
   auto p = bs::make<bs::pack<T,8>>(1,2,3,4,5,6,7,8);
 
-  STF_EXPECT( (std::equal(p.begin(),p.end(),ref.begin())) );
+  STF_ALL_EQUAL(p, ref);
 }
 
 STF_CASE_TPL( "Check make(a0,...,a15)", STF_NUMERIC_TYPES )
@@ -48,7 +49,7 @@ STF_CASE_TPL( "Check make(a0,...,a15)", STF_NUMERIC_TYPES )
                           }};
   auto p = bs::make<bs::pack<T,16>>(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16);
 
-  STF_EXPECT( (std::equal(p.begin(),p.end(),ref.begin())) );
+  STF_ALL_EQUAL(p, ref);
 }
 
 STF_CASE_TPL( "Check make(a0,...,a31)", STF_NUMERIC_TYPES )
@@ -63,5 +64,5 @@ STF_CASE_TPL( "Check make(a0,...,a31)", STF_NUMERIC_TYPES )
                                     ,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32
                                     );
 
-  STF_EXPECT( (std::equal(p.begin(),p.end(),ref.begin())) );
+  STF_ALL_EQUAL(p, ref);
 }
