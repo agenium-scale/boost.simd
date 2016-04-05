@@ -145,8 +145,7 @@ namespace boost { namespace simd
                    , "pack<T,N>(T v...) must take exactly N arguments"
                    );
 
-      std::initializer_list<T> lst{static_cast<T>(v0), static_cast<T>(v1), static_cast<T>(vn)...};
-      data_ = boost::simd::load<pack>(lst.begin()).storage();
+      data_ = boost::simd::make<pack>(v0,v1,vn...).storage();
     }
 
     /*!
