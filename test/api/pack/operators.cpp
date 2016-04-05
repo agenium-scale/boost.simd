@@ -56,9 +56,9 @@ AUTO_LOGICAL_OP(auto_ge, >=);
 template <typename P, typename T, typename U, typename Op, typename Env>
 void test_op(Env& $, T const& s0, U const& s1, Op const& op)
 {
-  P p0{s0};
-  P p1{s1};
-  P ref = P{op(s0, s1)};
+  P p0(s0);
+  P p1(s1);
+  P ref = P(op(s0, s1));
 
   STF_EQUAL(op(p0, p1), ref);
   STF_EQUAL(op(s0, p1), ref);
@@ -71,10 +71,10 @@ void test_op(Env& $, T const& s0, U const& s1, Op const& op)
 template <typename P, typename T, typename U, typename Op, typename Env>
 void test_logical_op(Env& $, T const& s0, U const& s1, Op const& op)
 {
-  P p0{s0};
-  P p1{s1};
-  P ref0 = P{boost::simd::logical<typename P::value_type>(op(s0, s1))};
-  P ref1 = P{boost::simd::logical<typename P::value_type>(op(s1, s0))};
+  P p0(s0);
+  P p1(s1);
+  P ref0 = P(boost::simd::logical<typename P::value_type>(op(s0, s1)));
+  P ref1 = P(boost::simd::logical<typename P::value_type>(op(s1, s0)));
 
   STF_EQUAL(op(p0, p1), ref0);
   STF_EQUAL(op(s0, p1), ref0);
@@ -88,30 +88,30 @@ void test_logical_op(Env& $, T const& s0, U const& s1, Op const& op)
 template <typename P, typename T, typename Env>
 void test_unary_op(Env& $, T const& s0)
 {
-  //STF_EQUAL(!P{s0}, P{!s0});
-  STF_EQUAL(~P{s0}, P{~s0});
+  //STF_EQUAL(!P(s0), P(!s0));
+  STF_EQUAL(~P(s0), P(~s0));
 
-  STF_EQUAL(-P{s0}, P{-s0});
-  STF_EQUAL(+P{s0}, P{+s0});
-
-  {
-    P p{s0};
-    STF_EQUAL(++p, P{s0 + T(1)});
-  }
-  {
-    P p{s0};
-    STF_EQUAL(p++, P{s0});
-    STF_EQUAL(p,   P{s0 + T(1)});
-  }
+  STF_EQUAL(-P(s0), P(-s0));
+  STF_EQUAL(+P(s0), P(+s0));
 
   {
-    P p{s0};
-    STF_EQUAL(--p, P{s0 - T(1)});
+    P p(s0);
+    STF_EQUAL(++p, P(s0 + T(1)));
   }
   {
-    P p{s0};
-    STF_EQUAL(p--, P{s0});
-    STF_EQUAL(p,   P{s0 - T(1)});
+    P p(s0);
+    STF_EQUAL(p++, P(s0));
+    STF_EQUAL(p,   P(s0 + T(1)));
+  }
+
+  {
+    P p(s0);
+    STF_EQUAL(--p, P(s0 - T(1)));
+  }
+  {
+    P p(s0);
+    STF_EQUAL(p--, P(s0));
+    STF_EQUAL(p,   P(s0 - T(1)));
   }
 }
 
