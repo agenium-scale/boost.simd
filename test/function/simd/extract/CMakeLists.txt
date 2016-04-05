@@ -6,22 +6,12 @@
 ##                            http://www.boost.org/LICENSE_1_0.txt
 ##===================================================================================================
 
-## Larger test suites go there
-add_subdirectory(extract)
-##add_subdirectory(insert)
-
 set ( SOURCES
-  aligned_load.cpp
-  aligned_store.cpp
-  insert.cpp
-  load.cpp
-  make.cpp
-  splat.cpp
-  store.cpp
-  automap.cpp
-  autofold.cpp
-  autosplat.cpp
+  dynamic.arithmetic.cpp
+  dynamic.logical.cpp
+  static.arithmetic.cpp
+  static.logical.cpp
 )
 
-make_unit( "boost.simd.function.simd"   ${SOURCES})
-make_coverage("boost.simd.function.simd"  ${SOURCES})
+make_unit( "boost.simd.function.simd.extract"   ${SOURCES})
+make_coverage("boost.simd.function.simd.extract"  ${SOURCES})
