@@ -146,4 +146,6 @@ STF_CASE_TPL("Check pack's operators", STF_NUMERIC_TYPES)
   test<T,  8>($, 2, 4);
   //test<T, 16>($, 2, 4);
   //test<T, 32>($, 2, 4);
+
+  STF_PASS("You should have the same pack at lhs and rhs of ==");
 }
