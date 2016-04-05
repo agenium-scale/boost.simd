@@ -64,9 +64,10 @@ namespace boost { namespace simd { namespace ext
     }
 
     template<typename... N>
-    static inline target_t do_(Begin b, brigand::list<N...> const&) BOOST_NOEXCEPT
+    static inline target_t do_(Begin const& b, brigand::list<N...> const&) BOOST_NOEXCEPT
     {
-      std::initializer_list<value_t> lst{ value<N>(b)... };
+      auto pb = b;
+      std::initializer_list<value_t> lst{ value<N>(pb)... };
 
       auto p = lst.begin();
       return make<target_t>(p[N::value]...);
