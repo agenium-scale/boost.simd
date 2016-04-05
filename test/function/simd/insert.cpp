@@ -22,7 +22,7 @@ namespace bd = boost::dispatch;
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
 {
-  bs::pack<T, N> p;
+  bs::pack<T, N>  p;
   std::array<T,N> a;
 
   for(std::size_t i = 0; i < N; ++i)
@@ -55,13 +55,18 @@ void test_st(Env& $)
   STF_IEEE_EQUAL(ref, p);
 }
 
-STF_CASE_TPL("Check insert on pack" , STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check dynamic insert on pack" , STF_NUMERIC_TYPES)
 {
   static const std::size_t N = boost::simd::pack<T>::static_size;
 
   test<T, N>($);
   test<T, N/2>($);
   test<T, N*2>($);
+}
+
+STF_CASE_TPL("Check static insert on pack" , STF_NUMERIC_TYPES)
+{
+  static const std::size_t N = boost::simd::pack<T>::static_size;
 
   test_st<T, N>($);
   test_st<T, N/2>($);
