@@ -86,6 +86,26 @@ namespace stf { namespace ext
       return stf::ulpdist(value_t(l),value_t(r));
     }
   };
+
+  template<typename T>
+  struct reldist<boost::simd::logical<T>,boost::simd::logical<T>>
+  {
+    using type_t  = boost::simd::logical<T>;
+    inline double operator()(type_t const& l, type_t const& r) const
+    {
+      return stf::reldist(bool(l),bool(r));
+    }
+  };
+
+  template<typename T>
+  struct ulpdist<boost::simd::logical<T>,boost::simd::logical<T>>
+  {
+    using type_t  = boost::simd::logical<T>;
+    inline double operator()(type_t const& l, type_t const& r) const
+    {
+      return stf::ulpdist(bool(l),bool(r));
+    }
+  };
 } }
 
 // -------------------------------------------------------------------------------------------------
