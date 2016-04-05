@@ -603,7 +603,7 @@ namespace stf { namespace detail
 #define STF_DUMP(R)                                                                                 \
 $.stream()  << "failing because:\n" << R.lhs << R.op << R.rhs << "\n" << "is incorrect.\n";         \
 
-  
+
 namespace stf
 {
   namespace ext
@@ -689,7 +689,7 @@ namespace stf { namespace detail
               , stf::to_string( lhs ), stf::split_line(lhs,rhs,SB), stf::to_string(rhs)             \
               };                                                                                    \
     }                                                                                               \
-    
+
     STF_BINARY_DECOMPOSE( ==, "==", eq  )
     STF_BINARY_DECOMPOSE( !=, "!=", neq )
     STF_BINARY_DECOMPOSE( < , "<" , lt  )
@@ -1152,7 +1152,8 @@ do                                                                              
     STF_PASS( "Expecting: " << STF_STRING(A) " == " STF_STRING(B) << " within " << X << " ULPs." ); \
   else                                                                                              \
     STF_FAIL( "Expecting: " << STF_STRING(A) " == " STF_STRING(B)                                   \
-                             << " within " << X << " ULPs " << "but found:\n" << stf_local_r        \
+                            << " within " << X << " ULPs " << "but found:\n" << stf_local_r         \
+                            << " ULPs instead."                                                     \
             );                                                                                      \
 } while( ::stf::is_false() )                                                                        \
 
