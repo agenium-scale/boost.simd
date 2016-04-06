@@ -89,9 +89,9 @@ template <typename P, typename T, typename Env>
 void test_unary_op(Env& $, T const& s0)
 {
   //STF_EQUAL(!P(s0), P(!s0));
-  STF_EQUAL(~P(s0), P(~s0));
+  //STF_EQUAL(~P(s0), P(~s0));
 
-  STF_EQUAL(-P(s0), P(-s0));
+  //STF_EQUAL(-P(s0), P(-s0));
   STF_EQUAL(+P(s0), P(+s0));
 
   {
@@ -144,8 +144,8 @@ STF_CASE_TPL("Check pack's operators", STF_NUMERIC_TYPES)
   test<T,  2>($, 2, 4);
   test<T,  4>($, 2, 4);
   test<T,  8>($, 2, 4);
-  //test<T, 16>($, 2, 4);
-  //test<T, 32>($, 2, 4);
+  test<T, 16>($, 2, 4);
+//  test<T, 32>($, 2, 4);
 
   STF_PASS("You should have the same pack at lhs and rhs of ==");
 }
