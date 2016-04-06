@@ -64,6 +64,28 @@ namespace stf { namespace ext
       return max_rel;
     }
   };
+
+  template<typename S>
+  struct reldist<boost::simd::detail::pack_proxy<S>,boost::simd::detail::pack_proxy<S>>
+  {
+    using type_t  = boost::simd::detail::pack_proxy<S>;
+    using value_t = typename type_t::value_type;
+    inline double operator()(type_t const& l, type_t const& r) const
+    {
+      return stf::reldist(value_t(l),value_t(r));
+    }
+  };
+
+  template<typename S>
+  struct ulpdist<boost::simd::detail::pack_proxy<S>,boost::simd::detail::pack_proxy<S>>
+  {
+    using type_t  = boost::simd::detail::pack_proxy<S>;
+    using value_t = typename type_t::value_type;
+    inline double operator()(type_t const& l, type_t const& r) const
+    {
+      return stf::ulpdist(value_t(l),value_t(r));
+    }
+  };
 } }
 
 // -------------------------------------------------------------------------------------------------
