@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_IS_LEZ_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_IS_LEZ_HPP_INCLUDED
 
-#include <boost/simd/pack.hpp>
+#include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/simd/sdk/as_logical.hpp>
 #include <boost/simd/function/logical_or.hpp>
 #include <boost/simd/function/is_ltz.hpp>

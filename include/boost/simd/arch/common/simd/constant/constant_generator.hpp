@@ -12,7 +12,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_CONSTANT_CONSTANT_GENERATOR_HPP_INCLUDED
 
 #if defined(BOOST_SIMD_DETECTED)
-#include <boost/simd/pack.hpp>
+#include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/simd/detail/constant_traits.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/as.hpp>

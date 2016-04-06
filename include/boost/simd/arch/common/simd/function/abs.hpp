@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ABS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ABS_HPP_INCLUDED
 
-#include <boost/simd/pack.hpp>
+#include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/simd/constant/maxleftshift.hpp>
 #include <boost/simd/constant/mzero.hpp>
 #include <boost/simd/function/simd/bitwise_notand.hpp>
@@ -62,9 +62,6 @@ namespace boost { namespace simd { namespace ext
         return bitwise_notand(Mzero<A0>(),a0);
       }
    };
-
 } } }
 
-
 #endif
-

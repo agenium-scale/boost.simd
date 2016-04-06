@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SLICE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SLICE_HPP_INCLUDED
 
-#include <boost/simd/pack.hpp>
+#include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -55,8 +55,6 @@ namespace boost { namespace simd { namespace ext
         a2 = bitwise_cast<A1>(l2);
       }
    };
-
 } } }
 
 #endif
-

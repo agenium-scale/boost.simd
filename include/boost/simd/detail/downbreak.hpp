@@ -11,6 +11,7 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_DETAIL_DOWNBREAK_HPP_INCLUDED
 #define BOOST_SIMD_DETAIL_DOWNBREAK_HPP_INCLUDED
+
 #include <boost/simd/pack.hpp>
 #include <boost/simd/cardinal_of.hpp>
 #include <boost/dispatch/meta/scalar_of.hpp>
@@ -45,8 +46,6 @@ namespace boost { namespace simd { namespace detail
   using downbreaks_t = typename downbreaks<T>::type;
   template < typename T>
   using downbreaku_t = typename downbreaku<T>::type;
-
 } } }
-
 
 #endif

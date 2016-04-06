@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_DIVCEIL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_DIVCEIL_HPP_INCLUDED
 
-#include <boost/simd/pack.hpp>
+#include <boost/simd/sdk/hierarchy/simd.hpp>
 //#include <boost/simd/sdk/meta/is_upgradable.hpp>//TODO
 #include <boost/simd/function/simd/ceil.hpp>
 #include <boost/simd/function/simd/divides.hpp>

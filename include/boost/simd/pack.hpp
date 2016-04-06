@@ -16,7 +16,6 @@
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/detail/pack_traits.hpp>
-#include <boost/simd/detail/pack_operators.hpp>
 #include <boost/simd/detail/storage_of.hpp>
 #include <boost/simd/meta/is_power_of_2.hpp>
 #include <boost/simd/function/aligned_load.hpp>
@@ -370,5 +369,6 @@ namespace boost { namespace simd
 } }
 
 #include <boost/simd/detail/pack_info.hpp>
+#include <boost/simd/detail/pack_operators.hpp>
 
 #endif

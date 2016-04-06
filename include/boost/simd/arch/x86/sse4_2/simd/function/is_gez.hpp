@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSE4_2_SIMD_FUNCTION_IS_GEZ_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE4_2_SIMD_FUNCTION_IS_GEZ_HPP_INCLUDED
 
-#include <boost/simd/pack.hpp>
+#include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/is_greater.hpp>
 #include <boost/simd/function/simd/logical_not.hpp>
 #include <boost/simd/constant/zero.hpp>

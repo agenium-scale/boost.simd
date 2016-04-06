@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SIMD_EXP_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SIMD_EXP_HPP_INCLUDED
 
-#include <boost/simd/pack.hpp>
+#include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/simd/arch/common/detail/simd/exponential.hpp>
 #include <boost/config.hpp>

@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_TRUNC_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_TRUNC_HPP_INCLUDED
 
-#include <boost/simd/pack.hpp>
+#include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/abs.hpp>
 #include <boost/simd/function/simd/bitofsign.hpp>
 #include <boost/simd/function/simd/bitwise_or.hpp>
@@ -22,6 +22,7 @@ namespace boost { namespace simd { namespace ext
 {
    namespace bd = boost::dispatch;
    namespace bs = boost::simd;
+
    BOOST_DISPATCH_OVERLOAD(trunc_
                           , (typename A0, typename X)
                           , bd::cpu_
@@ -45,8 +46,6 @@ namespace boost { namespace simd { namespace ext
         return  bitwise_or(floor(bs::abs(a0)), bitofsign(a0));
       }
    };
-
 } } }
 
 #endif
-

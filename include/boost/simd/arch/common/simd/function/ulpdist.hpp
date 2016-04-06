@@ -12,8 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ULPDIST_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ULPDIST_HPP_INCLUDED
 
-#include <boost/simd/pack.hpp>
-#include <boost/simd/constant/eps.hpp>
+#include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/abs.hpp>
 #include <boost/simd/function/simd/divides.hpp>
 #include <boost/simd/function/simd/frexp.hpp>
@@ -26,11 +25,13 @@
 #include <boost/simd/function/simd/logical_or.hpp>
 #include <boost/simd/function/simd/max.hpp>
 #include <boost/simd/function/simd/minus.hpp>
+#include <boost/simd/constant/eps.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
    namespace bd = boost::dispatch;
    namespace bs = boost::simd;
+
    BOOST_DISPATCH_OVERLOAD(ulpdist_
                           , (typename A0, typename X)
                           , bd::cpu_
@@ -56,9 +57,6 @@ namespace boost { namespace simd { namespace ext
                            );
       }
    };
-
 } } }
 
-
 #endif
-

@@ -34,15 +34,4 @@
 
 #endif
 
-#if defined(BOOST_HW_SIMD_ARM)
-
-#  if BOOST_HW_SIMD_ARM >= BOOST_HW_SIMD_ARM_NEON_VERSION
-// #    include <boost/simd/arch/arm/neon/simd/function/abs.hpp>
-#  endif
-#  if BOOST_HW_SIMD_ARM >= BOOST_HW_SIMD_ARM_NEON64_VERSION
-// #    include <boost/simd/arch/arm/neon64/simd/function/abs.hpp>
-#  endif
-
-#endif
-
 #endif

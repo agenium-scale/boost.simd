@@ -14,15 +14,4 @@
 
 #include <boost/simd/function/scalar/splatted_prod.hpp>
 
-#if defined(BOOST_HW_SIMD_ARM)
-
-#  if BOOST_HW_SIMD_ARM >= BOOST_HW_SIMD_ARM_NEON_VERSION
-#    include <boost/simd/arch/arm/neon/simd/function/splatted_prod.hpp>
-#  endif
-#  if BOOST_HW_SIMD_ARM >= BOOST_HW_SIMD_ARM_NEON64_VERSION
-#    include <boost/simd/arch/arm/neon64/simd/function/splatted_prod.hpp>
-#  endif
-
-#endif
-
 #endif

@@ -16,8 +16,8 @@
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 #include <boost/simd/function/simd/eq.hpp>
 #include <boost/simd/function/simd/gt.hpp>
-#include <boost/simd/function/simd/l_and.hpp>
-#include <boost/simd/function/simd/l_or.hpp>
+#include <boost/simd/function/simd/logical_and.hpp>
+#include <boost/simd/function/simd/logical_or.hpp>
 #include <boost/simd/function/simd/minus.hpp>
 #include <boost/simd/function/simd/shuffle.hpp>
 #include <boost/simd/constant/signmask.hpp>

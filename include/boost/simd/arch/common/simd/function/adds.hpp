@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ADDS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ADDS_HPP_INCLUDED
 
-#include <boost/simd/pack.hpp>
+#include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
@@ -78,7 +78,6 @@ namespace boost { namespace simd { namespace ext
         return bitwise_cast<A0>(if_else(t, ux, res));
       }
    };
-
 } } }
-#endif
 
+#endif

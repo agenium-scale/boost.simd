@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ROUND_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ROUND_HPP_INCLUDED
 
-#include <boost/simd/pack.hpp>
+#include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/function/simd/abs.hpp>
 #include <boost/simd/function/simd/ceil.hpp>
@@ -110,9 +110,6 @@ namespace boost { namespace simd { namespace ext
         return round(a0, splat<itype_t>(a1));
       }
    };
-
-
 } } }
 
 #endif
-

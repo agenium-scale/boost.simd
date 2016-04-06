@@ -43,6 +43,6 @@ namespace boost { namespace simd { namespace ext
       return _mm_load_ps(p);
     }
   };
-
 } } }
 
+#endif

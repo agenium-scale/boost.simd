@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_RSHL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_RSHL_HPP_INCLUDED
 
-#include <boost/simd/pack.hpp>
+#include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
 #include <boost/simd/function/simd/is_gtz.hpp>
 #include <boost/simd/function/simd/shift_left.hpp>
@@ -57,9 +57,6 @@ namespace boost { namespace simd { namespace ext
        return shl(a0, a1);
      }
    };
-
-
 } } }
 
 #endif
-

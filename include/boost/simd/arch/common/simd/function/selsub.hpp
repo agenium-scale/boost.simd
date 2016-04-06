@@ -12,24 +12,24 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SELSUB_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SELSUB_HPP_INCLUDED
 
-#include <boost/simd/pack.hpp>
-#include <boost/simd/cardinal_of.hpp>
+#include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/if_else_zero.hpp>
+#include <boost/simd/function/simd/unary_minus.hpp>
 #include <boost/simd/function/simd/minus.hpp>
 #include <boost/simd/function/simd/plus.hpp>
-#include <boost/simd/function/simd/unary_minus.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
-   namespace bd = boost::dispatch;
-   namespace bs = boost::simd;
-   BOOST_DISPATCH_OVERLOAD(selsub_
-                             , (typename A0, typename A1, typename X)
-                             , bd::cpu_
-                             , bs::pack_<bd::fundamental_<A0>, X>
-                             , bs::pack_<bd::unspecified_<A1>, X>
-                             , bs::pack_<bd::unspecified_<A1>, X>
-                             )
+  namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
+
+  BOOST_DISPATCH_OVERLOAD ( selsub_
+                          , (typename A0, typename A1, typename X)
+                          , bd::cpu_
+                          , bs::pack_<bd::fundamental_<A0>, X>
+                          , bs::pack_<bd::unspecified_<A1>, X>
+                          , bs::pack_<bd::unspecified_<A1>, X>
+                          )
    {
      BOOST_FORCEINLINE A1 operator()(A0 const& a0, A1 const& a1, A1 const& a2) const
       {
@@ -37,13 +37,13 @@ namespace boost { namespace simd { namespace ext
       }
    };
 
-   BOOST_DISPATCH_OVERLOAD(selsub_
-                             , (typename A0, typename A1, typename X)
-                             , bd::cpu_
-                             , bs::pack_<bd::fundamental_<A0>, X>
-                             , bs::pack_<bd::floating_<A1>, X>
-                             , bs::pack_<bd::floating_<A1>, X>
-                             )
+   BOOST_DISPATCH_OVERLOAD( selsub_
+                           , (typename A0, typename A1, typename X)
+                           , bd::cpu_
+                           , bs::pack_<bd::fundamental_<A0>, X>
+                           , bs::pack_<bd::floating_<A1>, X>
+                           , bs::pack_<bd::floating_<A1>, X>
+                          )
    {
      BOOST_FORCEINLINE A1 operator()(A0 const& a0, A1 const& a1, A1 const& a2) const
       {
@@ -53,8 +53,6 @@ namespace boost { namespace simd { namespace ext
        return a1 + if_else_zero(a0, -a2);
       }
    };
-
 } } }
 
 #endif
-

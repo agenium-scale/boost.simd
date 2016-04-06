@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_RROR_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_RROR_HPP_INCLUDED
 
-#include <boost/simd/pack.hpp>
+#include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/simd/cardinal_of.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
@@ -27,9 +27,10 @@
 
 namespace boost { namespace simd { namespace ext
 {
-   namespace bd = boost::dispatch;
-   namespace bs = boost::simd;
-   BOOST_DISPATCH_OVERLOAD(rror_
+  namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
+
+  BOOST_DISPATCH_OVERLOAD(rror_
                              , (typename A0, typename A1, typename X)
                              , bd::cpu_
                              , bs::pack_<bd::arithmetic_<A0>, X>
@@ -70,8 +71,6 @@ namespace boost { namespace simd { namespace ext
         return bitwise_cast<A0>( ror( bitwise_cast<A1>(a0), a1 ) );
       }
    };
-
 } } }
 
 #endif
-

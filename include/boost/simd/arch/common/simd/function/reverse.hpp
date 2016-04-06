@@ -12,8 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_REVERSE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_REVERSE_HPP_INCLUDED
 
-#include <boost/simd/pack.hpp>
-#include <boost/simd/cardinal_of.hpp>
+#include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/simd/sdk/is_bitwise_logical.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 
@@ -32,12 +31,10 @@ namespace boost { namespace simd { namespace ext
      BOOST_FORCEINLINE typename enable_if< bs::is_bitwise_logical<A0_>, A0>::type
      operator()( const A0_& a0) const BOOST_NOEXCEPT
      {
-       using type = pack<typename A0::value_type,bs::cardinal_of<A0>::value>;
+       using type = pack<typename A0::value_type,A0::static_size>;
        return bitwise_cast<A0>(reverse( bitwise_cast<type>(a0)));
       }
    };
-
 } } }
 
 #endif
-

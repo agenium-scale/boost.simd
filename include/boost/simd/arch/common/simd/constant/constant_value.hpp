@@ -19,7 +19,6 @@
 #include <boost/config.hpp>
 #include <type_traits>
 
-
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
@@ -45,5 +44,3 @@ namespace boost { namespace simd { namespace ext
 #endif
 
 #endif
-
-

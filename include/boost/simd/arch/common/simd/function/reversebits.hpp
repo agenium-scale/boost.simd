@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_REVERSEBITS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_REVERSEBITS_HPP_INCLUDED
 
-#include <boost/simd/pack.hpp>
+#include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/bitwise_and.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 #include <boost/simd/function/simd/bitwise_or.hpp>
@@ -134,8 +134,6 @@ namespace boost { namespace simd { namespace ext
         return bitwise_cast<A0>(v);
         }
    };
-
 } } }
 
 #endif
-

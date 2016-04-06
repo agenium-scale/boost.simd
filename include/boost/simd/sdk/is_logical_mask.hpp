@@ -16,10 +16,9 @@
 #include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/sdk/as_logical.hpp>
-#include <boost/simd/logical.hpp>
-#include <boost/simd/pack.hpp>
 #include <boost/simd/sdk/is_bitwise_logical.hpp>
 #include <boost/simd/logical.hpp>
+#include <boost/simd/pack.hpp>
 
 namespace boost { namespace simd
 {
@@ -41,22 +40,13 @@ namespace boost { namespace simd
   @param T - a SIMD register on the target architecture
 */
 
-  template<class T >
-  struct is_logical_mask : std::false_type
-  {
-  };
+  template<typename T > struct is_logical_mask : std::false_type
+  {};
 
-  template<class T, std::size_t N>
-  struct is_logical_mask< pack<logical<T>,N>>
-    : is_bitwise_logical<pack<logical<T>, N>>
-  {
-  };
-//   template<class T, std::size_t N>
-//   struct is_logical_mask< pack<T,N>>
-//     : is_bitwise_logical<pack<logical<T>, N>>
-//   {
-//   };
-
+  template<typename T, std::size_t N>
+  struct  is_logical_mask< pack<logical<T>,N>>
+        : is_bitwise_logical<pack<logical<T>, N>>
+  {};
 } }
 
 #endif
