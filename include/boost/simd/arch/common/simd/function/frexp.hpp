@@ -65,10 +65,10 @@ namespace boost { namespace simd { namespace ext
   #else
         A0 aa0 = a0;
   #endif
-        r1 = simd::bitwise_cast<int_type>(b_and(aa0, Mask1frexp<A0>())); //extract exp.
+        r1 = simd::bitwise_cast<int_type>(bitwise_and(aa0, Mask1frexp<A0>())); //extract exp.
         A0  x   = bitwise_andnot(aa0, Mask1frexp<A0>());
         r1  = shr(r1,Nbmantissabits<s_type>()) - Maxexponentm1<A0>();
-        r0  = b_or(x,Mask2frexp<A0>());
+        r0  = bitwise_or(x,Mask2frexp<A0>());
         auto test0 = is_nez(aa0);
         auto test1 = is_greater(r1,Limitexponent<A0>());
         r1 = if_else_zero(logical_notand(test1, test0), r1);

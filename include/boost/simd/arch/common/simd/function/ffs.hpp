@@ -13,7 +13,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_FFS_HPP_INCLUDED
 
 #include <boost/simd/pack.hpp>
-#include <boost/simd/function/simd/b_and.hpp>
+#include <boost/simd/function/simd/bitwise_and.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 #include <boost/simd/function/simd/firstbitset.hpp>
 #include <boost/simd/function/simd/genmask.hpp>
@@ -42,9 +42,9 @@ namespace boost { namespace simd { namespace ext
       {
         using ltype = pack<uint64_t>; //typename limits<X>::largest_integer;
         result v = firstbitset(a0);
-        return  b_and(genmask(v), inc(b_or(b_or((-( genmask(b_and(v, ltype(0xAAAAAAAAAAAAAAAAull)))))
-                                               , shift_left(-( genmask(b_and(v, ltype(0xCCCCCCCCCCCCCCCCull)))), 1))
-                                          , shift_left(-( genmask(b_and(v, ltype(0xF0F0F0F0F0F0F0F0ull)))), 2))));
+        return  bitwise_and(genmask(v), inc(bitwise_or(bitwise_or((-( genmask(bitwise_and(v, ltype(0xAAAAAAAAAAAAAAAAull)))))
+                                               , shift_left(-( genmask(bitwise_and(v, ltype(0xCCCCCCCCCCCCCCCCull)))), 1))
+                                          , shift_left(-( genmask(bitwise_and(v, ltype(0xF0F0F0F0F0F0F0F0ull)))), 2))));
       }
    };
 
@@ -76,10 +76,10 @@ namespace boost { namespace simd { namespace ext
       {
         using ltype =  pack < uint64_t > ; //typename limits<X>::largest_integer;
         result v = firstbitset(a0);
-        return  b_and(genmask(v), inc(b_or(b_or(b_or((-( genmask(b_and(v, ltype(0xAAAAAAAAAAAAAAAAull)))))
-                                                     , shift_left(-( genmask(b_and(v, ltype(0xCCCCCCCCCCCCCCCCull)))), 1))
-                                                , shift_left(-( genmask(b_and(v, ltype(0xF0F0F0F0F0F0F0F0ull)))), 2))
-                                           , shift_left(-( genmask(b_and(v, ltype(0xFF00FF00FF00FF00ull)))), 3))));
+        return  bitwise_and(genmask(v), inc(bitwise_or(bitwise_or(bitwise_or((-( genmask(bitwise_and(v, ltype(0xAAAAAAAAAAAAAAAAull)))))
+                                                     , shift_left(-( genmask(bitwise_and(v, ltype(0xCCCCCCCCCCCCCCCCull)))), 1))
+                                                , shift_left(-( genmask(bitwise_and(v, ltype(0xF0F0F0F0F0F0F0F0ull)))), 2))
+                                           , shift_left(-( genmask(bitwise_and(v, ltype(0xFF00FF00FF00FF00ull)))), 3))));
       }
    };
 
@@ -94,11 +94,11 @@ namespace boost { namespace simd { namespace ext
       {
         using ltype =  pack < uint64_t>; //typename limits<X>::largest_integer;
         result v = firstbitset(a0);
-        return  b_and(genmask(v), inc(b_or(b_or(b_or(b_or((-( genmask(b_and(v, ltype(0xAAAAAAAAAAAAAAAAull)))))
-                                                         , shift_left(-( genmask(b_and(v, ltype(0xCCCCCCCCCCCCCCCCull)))), 1))
-                                                    , shift_left(-( genmask(b_and(v, ltype(0xF0F0F0F0F0F0F0F0ull)))), 2))
-                                               , shift_left(-( genmask(b_and(v, ltype(0xFF00FF00FF00FF00ull)))), 3))
-                                          , shift_left(-( genmask(b_and(v, ltype(0xFFFF0000FFFF0000ull)))), 4))));
+        return  bitwise_and(genmask(v), inc(bitwise_or(bitwise_or(bitwise_or(bitwise_or((-( genmask(bitwise_and(v, ltype(0xAAAAAAAAAAAAAAAAull)))))
+                                                         , shift_left(-( genmask(bitwise_and(v, ltype(0xCCCCCCCCCCCCCCCCull)))), 1))
+                                                    , shift_left(-( genmask(bitwise_and(v, ltype(0xF0F0F0F0F0F0F0F0ull)))), 2))
+                                               , shift_left(-( genmask(bitwise_and(v, ltype(0xFF00FF00FF00FF00ull)))), 3))
+                                          , shift_left(-( genmask(bitwise_and(v, ltype(0xFFFF0000FFFF0000ull)))), 4))));
       }
    };
 

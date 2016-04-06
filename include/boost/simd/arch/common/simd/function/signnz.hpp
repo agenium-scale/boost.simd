@@ -62,9 +62,9 @@ namespace boost { namespace simd { namespace ext
       BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
         #ifndef BOOST_SIMD_NO_NANS
-        return if_allbits_else(is_nan(a0), b_or(One<A0>(), b_and(Signmask<A0>(), a0)));
+        return if_allbits_else(is_nan(a0), bitwise_or(One<A0>(), bitwise_and(Signmask<A0>(), a0)));
         #else
-        return b_or(One<A0>(), b_and(Signmask<A0>(), a0));
+        return bitwise_or(One<A0>(), bitwise_and(Signmask<A0>(), a0));
         #endif
         ;
       }

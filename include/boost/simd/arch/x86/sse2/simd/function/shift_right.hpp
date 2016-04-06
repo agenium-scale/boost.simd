@@ -13,9 +13,9 @@
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_SHIFT_RIGHT_HPP_INCLUDED
 
 #include <boost/simd/detail/make_dependent.hpp>
-#include <boost/simd/function/simd/b_and.hpp>
-#include <boost/simd/function/simd/b_or.hpp>
-#include <boost/simd/function/simd/b_ornot.hpp>
+#include <boost/simd/function/simd/bitwise_and.hpp>
+#include <boost/simd/function/simd/bitwise_or.hpp>
+#include <boost/simd/function/simd/bitwise_ornot.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 #include <boost/simd/function/simd/if_else_allbits.hpp>
 #include <boost/simd/function/simd/is_ltz.hpp>
@@ -93,7 +93,7 @@ namespace boost { namespace simd { namespace ext
       BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "shift_right sse2 int64: a shift is out of range");
       A0 that = _mm_srli_epi64(a0, int(a1));
       A0 mask = _mm_srli_epi64(Allbits<A0>(), int(a1));
-      return b_ornot(that, if_else_allbits(is_ltz(a0), mask));
+      return bitwise_ornot(that, if_else_allbits(is_ltz(a0), mask));
     }
   };
 
@@ -116,12 +116,12 @@ namespace boost { namespace simd { namespace ext
 //      A0 const Mask2 = bitwise_cast<A0>(Ratio<gen_t, int_t(0xff00ff00)>());
       A0 const Mask2 = bitwise_cast<A0>(splat<gen_t>(0xff00ff00ll));
 
-      A0 tmp  = b_and(a0, Mask1);
+      A0 tmp  = bitwise_and(a0, Mask1);
       A0 tmp1 = _mm_srli_epi16(tmp, int(a1));
-      tmp1 = b_and(tmp1, Mask1);
-      tmp = b_and(a0, Mask2);
+      tmp1 = bitwise_and(tmp1, Mask1);
+      tmp = bitwise_and(a0, Mask2);
       A0 tmp3 = _mm_srli_epi16(tmp, int(a1));
-      return tmp1 | b_and(tmp3, Mask2);
+      return tmp1 | bitwise_and(tmp3, Mask2);
     }
   };
 } } }

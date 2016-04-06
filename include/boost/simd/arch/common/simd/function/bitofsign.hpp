@@ -30,7 +30,7 @@ namespace boost { namespace simd { namespace ext
    {
       BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
-        return b_and(a0, bs::Signmask<A0>());
+        return bitwise_and(a0, bs::Signmask<A0>());
       }
    };
 

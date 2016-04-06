@@ -65,19 +65,19 @@ namespace boost { namespace simd { namespace ext
       const A0 mask =  Constant<A0, 0x7f>();
       A0 n = a0;
       A0 i = One<A0>();
-      n = b_and(MKN8(_mm_srli_epi16(n, 1)), mask);
+      n = bitwise_and(MKN8(_mm_srli_epi16(n, 1)), mask);
       i = seladd(is_nez(n), i, One<A0>());
-      n = b_and(MKN8(_mm_srli_epi16(n, 1)), mask);
+      n = bitwise_and(MKN8(_mm_srli_epi16(n, 1)), mask);
       i = seladd(is_nez(n), i, One<A0>());
-      n = b_and(MKN8(_mm_srli_epi16(n, 1)), mask);
+      n = bitwise_and(MKN8(_mm_srli_epi16(n, 1)), mask);
       i = seladd(is_nez(n), i, One<A0>());
-      n = b_and(MKN8(_mm_srli_epi16(n, 1)), mask);
+      n = bitwise_and(MKN8(_mm_srli_epi16(n, 1)), mask);
       i = seladd(is_nez(n), i, One<A0>());
-      n = b_and(MKN8(_mm_srli_epi16(n, 1)), mask);
+      n = bitwise_and(MKN8(_mm_srli_epi16(n, 1)), mask);
       i = seladd(is_nez(n), i, One<A0>());
-      n = b_and(MKN8(_mm_srli_epi16(n, 1)), mask);
+      n = bitwise_and(MKN8(_mm_srli_epi16(n, 1)), mask);
       i = seladd(is_nez(n), i, One<A0>());
-      n = b_and(MKN8(_mm_srli_epi16(n, 1)), mask);
+      n = bitwise_and(MKN8(_mm_srli_epi16(n, 1)), mask);
       i = seladd(is_nez(n), i, One<A0>());
       return dec(i);
     }

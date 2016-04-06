@@ -14,7 +14,7 @@
 
 #include <boost/simd/pack.hpp>
 #include <boost/simd/sdk/as_logical.hpp>
-#include <boost/simd/function/b_and.hpp>
+#include <boost/simd/function/bitwise_and.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/shuffle.hpp>
 #include <boost/simd/constant/zero.hpp>

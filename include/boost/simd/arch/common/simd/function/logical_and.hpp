@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LOGICAL_AND_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LOGICAL_AND_HPP_INCLUDED
 #include <boost/simd/pack.hpp>
-#include <boost/simd/function/simd/b_and.hpp>
+#include <boost/simd/function/simd/bitwise_and.hpp>
 //#include <boost/simd/function/cardinal_of.hpp>
 #include <boost/simd/function/simd/genmask.hpp>
 #include <boost/simd/function/simd/mask2logical.hpp>
@@ -38,7 +38,7 @@ namespace boost { namespace simd { namespace ext
                                          >::type* = 0
                                        ) const BOOST_NOEXCEPT
     {
-      return mask2logical(b_and(genmask(a0), genmask(a1)));
+      return mask2logical(bitwise_and(genmask(a0), genmask(a1)));
     }
   };
 

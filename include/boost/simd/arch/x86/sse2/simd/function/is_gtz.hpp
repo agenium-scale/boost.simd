@@ -13,7 +13,7 @@
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_IS_GTZ_HPP_INCLUDED
 
 #include <boost/simd/sdk/as_logical.hpp>
-#include <boost/simd/function/l_and.hpp>
+#include <boost/simd/function/logical_and.hpp>
 #include <boost/simd/function/is_gez.hpp>
 #include <boost/simd/function/is_nez.hpp>
 
@@ -29,10 +29,9 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE bs::as_logical_t<A0> operator() ( const A0 & a0 ) const BOOST_NOEXCEPT
     {
-      return l_and(is_gez(a0), is_nez(a0));
+      return logical_and(is_gez(a0), is_nez(a0));
     }
   };
-
 } } }
 
 #endif
