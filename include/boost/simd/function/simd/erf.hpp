@@ -13,5 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_ERF_INCLUDED
 
 #include <boost/simd/function/scalar/erf.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 
 #endif

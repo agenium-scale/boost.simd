@@ -13,5 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_STIRLING_INCLUDED
 
 #include <boost/simd/function/scalar/stirling.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 
 #endif

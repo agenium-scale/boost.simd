@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_CUMMIN_INCLUDED
 
 #include <boost/simd/function/scalar/cummin.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 
 #if defined(BOOST_HW_SIMD_X86)
 

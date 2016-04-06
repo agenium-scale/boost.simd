@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_FNMA_INCLUDED
 
 #include <boost/simd/function/scalar/fnma.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/generic/function/fnma.hpp>
 
 #if defined(BOOST_HW_SIMD_X86)

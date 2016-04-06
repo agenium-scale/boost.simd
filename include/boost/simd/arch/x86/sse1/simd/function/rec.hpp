@@ -13,12 +13,13 @@
 #define BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_REC_HPP_INCLUDED
 
 #include <boost/simd/sdk/hierarchy/simd.hpp>
-#include <boost/simd/options.hpp>
+#include <boost/simd/function/fast.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd =  boost::dispatch;
   namespace bs =  boost::simd;
+
   BOOST_DISPATCH_OVERLOAD ( rec_
                           , (typename A0)
                           , bs::sse_
@@ -26,7 +27,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::fast_tag
                          )
   {
-    BOOST_FORCEINLINE A0 operator() (const A0 & a0, fast_tag const& ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()(const A0 & a0, fast_tag const& ) const BOOST_NOEXCEPT
     {
       return _mm_rcp_ps( a0 );
     }
@@ -34,4 +35,3 @@ namespace boost { namespace simd { namespace ext
 } } }
 
 #endif
-

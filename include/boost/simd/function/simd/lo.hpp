@@ -14,5 +14,6 @@
 
 #include <boost/simd/function/scalar/lo.hpp>
 #include <boost/simd/arch/common/generic/function/lo.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 
 #endif

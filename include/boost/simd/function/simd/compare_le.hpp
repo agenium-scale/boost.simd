@@ -13,5 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_COMPARE_LE_INCLUDED
 
 #include <boost/simd/function/scalar/compare_le.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 
 #endif

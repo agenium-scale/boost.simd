@@ -13,5 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_EXP2_INCLUDED
 
 #include <boost/simd/function/scalar/exp2.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
+
 
 #endif

@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SUCCESSOR_INCLUDED
 
 #include <boost/simd/function/scalar/successor.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/simd/function/successor.hpp>
 
 #endif

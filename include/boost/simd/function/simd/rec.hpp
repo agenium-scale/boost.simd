@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_REC_INCLUDED
 
 #include <boost/simd/function/scalar/rec.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/simd/function/rec.hpp>
 #include <boost/simd/arch/common/generic/function/rec.hpp>
 
@@ -28,14 +29,6 @@
 
 #  if BOOST_HW_SIMD_PPC >= BOOST_HW_SIMD_PPC_VMX_VERSION
 // #    include <boost/simd/arch/power/vmx/simd/function/rec.hpp>
-#  endif
-
-#endif
-
-#if defined(BOOST_HW_SIMD_ARM)
-
-#  if BOOST_HW_SIMD_ARM >= BOOST_HW_SIMD_ARM_NEON_VERSION
-// #    include <boost/simd/arch/arm/neon/simd/function/rec.hpp>
 #  endif
 
 #endif

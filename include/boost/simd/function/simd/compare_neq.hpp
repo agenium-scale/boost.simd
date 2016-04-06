@@ -13,5 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_COMPARE_NEQ_INCLUDED
 
 #include <boost/simd/function/scalar/compare_neq.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 
 #endif

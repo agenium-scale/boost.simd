@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_ATAN2D_INCLUDED
 
 #include <boost/simd/function/scalar/atan2d.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/generic/function/atan2d.hpp>
 
 #endif

@@ -12,6 +12,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_DIV_INCLUDED
 
 #include <boost/simd/function/scalar/div.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 
 #endif
 

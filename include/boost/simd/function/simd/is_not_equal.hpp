@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IS_NOT_EQUAL_INCLUDED
 
 #include <boost/simd/function/scalar/is_not_equal.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/simd/function/is_not_equal.hpp>
 
 #if defined(BOOST_HW_SIMD_X86)
@@ -28,14 +29,6 @@
 #  endif
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_XOP_VERSION
 // #    include <boost/simd/arch/x86/xop/simd/function/is_not_equal.hpp>
-#  endif
-
-#endif
-
-#if defined(BOOST_HW_SIMD_ARM)
-
-#  if BOOST_HW_SIMD_ARM >= BOOST_HW_SIMD_ARM_NEON_VERSION
-// #    include <boost/simd/arch/arm/neon/simd/function/is_not_equal.hpp>
 #  endif
 
 #endif

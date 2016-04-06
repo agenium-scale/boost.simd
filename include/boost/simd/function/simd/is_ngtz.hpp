@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IS_NGTZ_INCLUDED
 
 #include <boost/simd/function/scalar/is_ngtz.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/simd/function/is_ngtz.hpp>
 
 #endif

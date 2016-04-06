@@ -12,6 +12,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_MAKE_INCLUDED
 
 #include <boost/simd/function/scalar/make.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/simd/function/make.hpp>
 
 #if defined(BOOST_HW_SIMD_X86)

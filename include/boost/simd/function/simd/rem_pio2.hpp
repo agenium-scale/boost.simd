@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_REM_PIO2_INCLUDED
 
 #include <boost/simd/function/scalar/rem_pio2.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/generic/function/rem_pio2.hpp>
 
 #endif

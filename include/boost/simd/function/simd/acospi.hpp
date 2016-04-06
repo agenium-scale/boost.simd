@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_ACOSPI_INCLUDED
 
 #include <boost/simd/function/scalar/acospi.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/generic/function/acospi.hpp>
 
 #endif

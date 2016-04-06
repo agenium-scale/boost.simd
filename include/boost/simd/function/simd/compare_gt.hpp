@@ -13,5 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_COMPARE_GT_INCLUDED
 
 #include <boost/simd/function/scalar/compare_gt.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 
 #endif

@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_TOUINTS_INCLUDED
 
 #include <boost/simd/function/scalar/touints.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/simd/function/touints.hpp>
 
 #if defined(BOOST_HW_SIMD_PPC)

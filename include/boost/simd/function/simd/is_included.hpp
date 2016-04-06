@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IS_INCLUDED_INCLUDED
 
 #include <boost/simd/function/scalar/is_included.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/simd/function/is_included.hpp>
 
 #if defined(BOOST_HW_SIMD_X86)

@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_MIN_INCLUDED
 
 #include <boost/simd/function/scalar/min.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/simd/function/min.hpp>
 
 #if defined(BOOST_HW_SIMD_X86)
@@ -39,17 +40,6 @@
 
 #  if BOOST_HW_SIMD_PPC >= BOOST_HW_SIMD_PPC_VMX_VERSION
 // #    include <boost/simd/arch/power/vmx/simd/function/min.hpp>
-#  endif
-
-#endif
-
-#if defined(BOOST_HW_SIMD_ARM)
-
-#  if BOOST_HW_SIMD_ARM >= BOOST_HW_SIMD_ARM_NEON_VERSION
-// #    include <boost/simd/arch/arm/neon/simd/function/min.hpp>
-#  endif
-#  if BOOST_HW_SIMD_ARM >= BOOST_HW_SIMD_ARM_NEON64_VERSION
-// #    include <boost/simd/arch/arm/neon64/simd/function/min.hpp>
 #  endif
 
 #endif

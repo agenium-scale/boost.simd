@@ -13,5 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IF_DEC_INCLUDED
 
 #include <boost/simd/function/scalar/if_dec.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 
 #endif

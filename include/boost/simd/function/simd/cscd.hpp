@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_CSCD_INCLUDED
 
 #include <boost/simd/function/scalar/cscd.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/generic/function/cscd.hpp>
 
 #endif

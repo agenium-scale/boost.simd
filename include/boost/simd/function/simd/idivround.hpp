@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IDIVROUND_INCLUDED
 
 #include <boost/simd/function/scalar/idivround.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/generic/function/idivround.hpp>
 
 #endif

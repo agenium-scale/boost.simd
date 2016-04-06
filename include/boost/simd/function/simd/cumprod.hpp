@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_CUMPROD_INCLUDED
 
 #include <boost/simd/function/scalar/cumprod.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 
 #if defined(BOOST_HW_SIMD_X86)
 

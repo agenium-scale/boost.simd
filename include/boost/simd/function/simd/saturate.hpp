@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SATURATE_INCLUDED
 
 #include <boost/simd/function/scalar/saturate.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/generic/function/saturate.hpp>
 
 #endif

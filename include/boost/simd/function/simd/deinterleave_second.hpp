@@ -37,15 +37,4 @@
 
 #endif
 
-#if defined(BOOST_HW_SIMD_ARM)
-
-#  if BOOST_HW_SIMD_ARM >= BOOST_HW_SIMD_ARM_NEON_VERSION
-// #    include <boost/simd/arch/arm/neon/simd/function/deinterleave_second.hpp>
-#  endif
-#  if BOOST_HW_SIMD_ARM >= BOOST_HW_SIMD_ARM_NEON64_VERSION
-// #    include <boost/simd/arch/arm/neon64/simd/function/deinterleave_second.hpp>
-#  endif
-
-#endif
-
 #endif

@@ -13,13 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_REFINE_REC_INCLUDED
 
 #include <boost/simd/function/scalar/refine_rec.hpp>
-
-#if defined(BOOST_HW_SIMD_ARM)
-
-#  if BOOST_HW_SIMD_ARM >= BOOST_HW_SIMD_ARM_NEON_VERSION
-#    include <boost/simd/arch/arm/neon/simd/function/refine_rec.hpp>
-#  endif
-
-#endif
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 
 #endif

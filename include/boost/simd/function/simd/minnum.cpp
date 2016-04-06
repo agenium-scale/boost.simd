@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_MINNUM_INCLUDED
 
 #include <boost/simd/function/scalar/minnum.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/simd/function/minnum.hpp>
 
 #endif

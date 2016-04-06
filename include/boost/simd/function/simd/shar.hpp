@@ -13,5 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SHAR_INCLUDED
 
 #include <boost/simd/function/scalar/shar.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 
 #endif

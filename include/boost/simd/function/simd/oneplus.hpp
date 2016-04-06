@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_ONEPLUS_INCLUDED
 
 #include <boost/simd/function/scalar/oneplus.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/generic/function/oneplus.hpp>
 
 #endif

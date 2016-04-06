@@ -13,5 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_TESTZ_INCLUDED
 
 #include <boost/simd/function/scalar/testz.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 
 #endif

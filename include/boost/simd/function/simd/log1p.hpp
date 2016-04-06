@@ -13,5 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_LOG1P_INCLUDED
 
 #include <boost/simd/function/scalar/log1p.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 
 #endif

@@ -13,16 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SIMD_PROD_INCLUDED
 
 #include <boost/simd/function/scalar/prod.hpp>
-
-#if defined(BOOST_HW_SIMD_ARM)
-
-#  if BOOST_HW_SIMD_ARM >= BOOST_HW_SIMD_ARM_NEON_VERSION
-#    include <boost/simd/arch/arm/neon/simd/function/prod.hpp>
-#  endif
-#  if BOOST_HW_SIMD_ARM >= BOOST_HW_SIMD_ARM_NEON64_VERSION
-#    include <boost/simd/arch/arm/neon64/simd/function/prod.hpp>
-#  endif
-
-#endif
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 
 #endif

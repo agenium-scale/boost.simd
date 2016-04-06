@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_IF_ELSE_INCLUDED
 
 #include <boost/simd/function/scalar/if_else.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/simd/function/if_else.hpp>
 
 #if defined(BOOST_HW_SIMD_X86)

@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SPLIT_HIGH_INCLUDED
 
 #include <boost/simd/function/scalar/split_high.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/simd/function/split_high.hpp>
 
 #if defined(BOOST_HW_SIMD_X86)

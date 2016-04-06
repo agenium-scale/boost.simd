@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_EXTRACT_INCLUDED
 
 #include <boost/simd/function/scalar/extract.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/simd/function/extract.hpp>
 
 #endif

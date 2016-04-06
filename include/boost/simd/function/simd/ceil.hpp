@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_CEIL_INCLUDED
 
 #include <boost/simd/function/scalar/ceil.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/simd/function/ceil.hpp>
 #include <boost/simd/arch/common/generic/function/ceil.hpp>
 

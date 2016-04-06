@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_MOD_INCLUDED
 
 #include <boost/simd/function/scalar/mod.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/generic/function/mod.hpp>
 
 #endif

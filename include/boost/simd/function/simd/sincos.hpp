@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_SINCOS_INCLUDED
 
 #include <boost/simd/function/scalar/sincos.hpp>
+#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/generic/function/sincos.hpp>
 
 #endif
