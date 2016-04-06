@@ -21,7 +21,7 @@
 #    include <boost/simd/arch/x86/sse1/simd/function/rol.hpp>
 #  endif
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_XOP_VERSION
-#    include <boost/simd/arch/x86/xop/simd/function/rol.hpp>
+// #    include <boost/simd/arch/x86/xop/simd/function/rol.hpp>
 #  endif
 
 #endif
@@ -29,7 +29,7 @@
 #if defined(BOOST_HW_SIMD_PPC)
 
 #  if BOOST_HW_SIMD_PPC >= BOOST_HW_SIMD_PPC_VMX_VERSION
-#    include <boost/simd/arch/power/vmx/simd/function/rol.hpp>
+// #    include <boost/simd/arch/power/vmx/simd/function/rol.hpp>
 #  endif
 
 #endif

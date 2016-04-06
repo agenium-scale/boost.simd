@@ -21,10 +21,10 @@
 #    include <boost/simd/arch/x86/sse1/simd/function/deinterleave_first.hpp>
 #  endif
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_AVX_VERSION
-#    include <boost/simd/arch/x86/avx/simd/function/deinterleave_first.hpp>
+// #    include <boost/simd/arch/x86/avx/simd/function/deinterleave_first.hpp>
 #  endif
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_AVX2_VERSION
-#    include <boost/simd/arch/x86/avx2/simd/function/deinterleave_first.hpp>
+// #    include <boost/simd/arch/x86/avx2/simd/function/deinterleave_first.hpp>
 #  endif
 
 #endif
@@ -32,7 +32,7 @@
 #if defined(BOOST_HW_SIMD_PPC)
 
 #  if BOOST_HW_SIMD_PPC >= BOOST_HW_SIMD_PPC_VMX_VERSION
-#    include <boost/simd/arch/power/vmx/simd/function/deinterleave_first.hpp>
+// #    include <boost/simd/arch/power/vmx/simd/function/deinterleave_first.hpp>
 #  endif
 
 #endif
@@ -40,10 +40,10 @@
 #if defined(BOOST_HW_SIMD_ARM)
 
 #  if BOOST_HW_SIMD_ARM >= BOOST_HW_SIMD_ARM_NEON_VERSION
-#    include <boost/simd/arch/arm/neon/simd/function/deinterleave_first.hpp>
+// #    include <boost/simd/arch/arm/neon/simd/function/deinterleave_first.hpp>
 #  endif
 #  if BOOST_HW_SIMD_ARM >= BOOST_HW_SIMD_ARM_NEON64_VERSION
-#    include <boost/simd/arch/arm/neon64/simd/function/deinterleave_first.hpp>
+// #    include <boost/simd/arch/arm/neon64/simd/function/deinterleave_first.hpp>
 #  endif
 
 #endif

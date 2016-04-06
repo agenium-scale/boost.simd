@@ -12,6 +12,6 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_LESS_EQUAL_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_LESS_EQUAL_INCLUDED
 
-#include <boost/simd/function/scalar/less_equal.hpp>
+// #include <boost/simd/function/scalar/less_equal.hpp>
 
 #endif

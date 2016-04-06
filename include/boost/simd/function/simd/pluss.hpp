@@ -12,6 +12,6 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_PLUSS_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_PLUSS_INCLUDED
 
-#include <boost/simd/function/scalar/pluss.hpp>
+// #include <boost/simd/function/scalar/pluss.hpp>
 
 #endif

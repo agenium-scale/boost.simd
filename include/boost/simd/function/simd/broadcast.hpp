@@ -20,7 +20,7 @@
 #    include <boost/simd/arch/x86/ssse3/simd/function/broadcast.hpp>
 #  endif
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_AVX_VERSION
-#    include <boost/simd/arch/x86/avx/simd/function/broadcast.hpp>
+// #    include <boost/simd/arch/x86/avx/simd/function/broadcast.hpp>
 #  endif
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_SSSE3_VERSION
 #    include <boost/simd/arch/x86/ssse3/simd/function/broadcast.hpp>
