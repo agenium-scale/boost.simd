@@ -11,7 +11,6 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_DETAIL_SIMD_LOGARITHM_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_SIMD_LOGARITHM_HPP_INCLUDED
 
-#include <boost/simd/options.hpp>
 #include <boost/simd/arch/common/detail/simd/f_log.hpp>
 #include <boost/simd/arch/common/detail/simd/d_log.hpp>
 

@@ -12,10 +12,10 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_RSQRT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_RSQRT_HPP_INCLUDED
 
-#include <boost/simd/options.hpp>
 #include <boost/simd/function/simd/multiplies.hpp>
 #include <boost/simd/function/simd/fnma.hpp>
 #include <boost/simd/function/simd/sqr.hpp>
+#include <boost/simd/function/fast.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/mthree.hpp>
 

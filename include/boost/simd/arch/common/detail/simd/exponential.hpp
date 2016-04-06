@@ -12,7 +12,6 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_DETAIL_SIMD_EXPONENTIAL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_SIMD_EXPONENTIAL_HPP_INCLUDED
 
-#include <boost/simd/options.hpp>
 #include <boost/simd/arch/common/detail/simd/expo_base.hpp>
 
 #endif
