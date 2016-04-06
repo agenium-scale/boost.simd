@@ -33,11 +33,10 @@ namespace boost { namespace simd { namespace ext
                                    )
   {
     using functor = bd::functor<F>;
+    using value_t = typename P0::value_type;
 
-    auto operator()( S0 const& s0
-                   , P0 const& p0
-                   ) const
-    BOOST_NOEXCEPT_DECLTYPE_BODY(functor()(P0(s0), p0))
+    auto operator()( S0 const& s0, P0 const& p0) const
+    BOOST_NOEXCEPT_DECLTYPE_BODY(functor()(P0(value_t(s0)), p0))
   };
 
   // -----------------------------------------------------------------------------------------------
@@ -50,11 +49,12 @@ namespace boost { namespace simd { namespace ext
                                    )
   {
     using functor = bd::functor<F>;
+    using value_t = typename P0::value_type;
 
     auto operator()( P0 const& p0
                    , S0 const& s0
                    ) const
-    BOOST_NOEXCEPT_DECLTYPE_BODY(functor()(p0, P0(s0)))
+    BOOST_NOEXCEPT_DECLTYPE_BODY(functor()(p0, P0(value_t(s0)) ) )
   };
 
   // ({P,S},{P,S},{P,S})
@@ -73,12 +73,13 @@ namespace boost { namespace simd { namespace ext
                                    )
   {
     using functor = bd::functor<F>;
+    using value_t = typename P0::value_type;
 
     auto operator()( P0 const& p0
                    , P0 const& p1
                    , S0 const& s0
                    ) const
-    BOOST_NOEXCEPT_DECLTYPE_BODY(functor()(p0, p1, P0(s0)))
+    BOOST_NOEXCEPT_DECLTYPE_BODY(functor()(p0, p1, P0(value_t(s0))))
   };
 
   // -----------------------------------------------------------------------------------------------
@@ -96,12 +97,13 @@ namespace boost { namespace simd { namespace ext
                                    )
   {
     using functor = bd::functor<F>;
+    using value_t = typename P0::value_type;
 
     auto operator()( P0 const& p0
                    , S0 const& s0
                    , P0 const& p1
                    ) const
-    BOOST_NOEXCEPT_DECLTYPE_BODY(functor()(p0, P0(s0), p1))
+    BOOST_NOEXCEPT_DECLTYPE_BODY(functor()(p0, P0(value_t(s0)), p1))
   };
 
   // -----------------------------------------------------------------------------------------------
@@ -119,12 +121,13 @@ namespace boost { namespace simd { namespace ext
                                    )
   {
     using functor = bd::functor<F>;
+    using value_t = typename P0::value_type;
 
     auto operator()( S0 const& s0
                    , P0 const& p0
                    , P0 const& p1
                    ) const
-    BOOST_NOEXCEPT_DECLTYPE_BODY(functor()(P0(s0), p0, p1))
+    BOOST_NOEXCEPT_DECLTYPE_BODY(functor()(P0(value_t(s0)), p0, p1))
   };
 
   // -----------------------------------------------------------------------------------------------
@@ -143,12 +146,13 @@ namespace boost { namespace simd { namespace ext
                                    )
   {
     using functor = bd::functor<F>;
+    using value_t = typename P0::value_type;
 
     auto operator()( S0 const& s0
                    , S1 const& s1
                    , P0 const& p0
                    ) const
-    BOOST_NOEXCEPT_DECLTYPE_BODY(functor()(P0(s0), P0(s1), p0))
+    BOOST_NOEXCEPT_DECLTYPE_BODY(functor()(P0(value_t(s0)), P0(value_t(s1)), p0))
   };
 
   // -----------------------------------------------------------------------------------------------
@@ -167,12 +171,13 @@ namespace boost { namespace simd { namespace ext
                                    )
   {
     using functor = bd::functor<F>;
+    using value_t = typename P0::value_type;
 
     auto operator()( S0 const& s0
                    , P0 const& p0
                    , S1 const& s1
                    ) const
-    BOOST_NOEXCEPT_DECLTYPE_BODY(functor()(P0(s0), p0, P0(s1)))
+    BOOST_NOEXCEPT_DECLTYPE_BODY(functor()(P0(value_t(s0)), p0, P0(value_t(s1))))
   };
 
   // -----------------------------------------------------------------------------------------------
@@ -191,12 +196,13 @@ namespace boost { namespace simd { namespace ext
                                    )
   {
     using functor = bd::functor<F>;
+    using value_t = typename P0::value_type;
 
     auto operator()( P0 const& p0
                    , S0 const& s0
                    , S1 const& s1
                    ) const
-    BOOST_NOEXCEPT_DECLTYPE_BODY(functor()(p0, P0(s0), P0(s1)))
+    BOOST_NOEXCEPT_DECLTYPE_BODY(functor()(p0, P0(value_t(s0)), P0(value_t(s1))))
   };
 
 } } }
