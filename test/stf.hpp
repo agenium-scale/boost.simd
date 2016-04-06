@@ -603,7 +603,7 @@ namespace stf { namespace detail
 #define STF_DUMP(R)                                                                                 \
 $.stream()  << "failing because:\n" << R.lhs << R.op << R.rhs << "\n" << "is incorrect.\n";         \
 
-
+  
 namespace stf
 {
   namespace ext
@@ -689,7 +689,7 @@ namespace stf { namespace detail
               , stf::to_string( lhs ), stf::split_line(lhs,rhs,SB), stf::to_string(rhs)             \
               };                                                                                    \
     }                                                                                               \
-
+    
     STF_BINARY_DECOMPOSE( ==, "==", eq  )
     STF_BINARY_DECOMPOSE( !=, "!=", neq )
     STF_BINARY_DECOMPOSE( < , "<" , lt  )
@@ -909,8 +909,8 @@ namespace stf
 
   namespace ext
   {
-    template<typename T, typename Measure, typename Reference, typename EnableIf>
-    struct equal<T,stf::approx_<Measure, Reference>,EnableIf>
+    template<typename T, typename Measure, typename Reference>
+    struct equal<T,stf::approx_<Measure, Reference>>
     {
       inline bool operator()(T const& l, stf::approx_<Measure, Reference> const& r) const
       {
@@ -1148,11 +1148,12 @@ namespace stf
 do                                                                                                  \
 {                                                                                                   \
   auto stf_local_r = ::stf::ulpdist((A),(B));                                                       \
+  auto stf_local_d = STF_DECOMPOSE((A) == (B));                                                     \
   if( stf_local_r <= (X) )                                                                          \
     STF_PASS( "Expecting: " << STF_STRING(A) " == " STF_STRING(B) << " within " << X << " ULPs." ); \
   else                                                                                              \
-    STF_FAIL( "Expecting: " << STF_STRING(A) " == " STF_STRING(B)                                   \
-                            << " within " << X << " ULPs " << "but found:\n" << stf_local_r         \
+    STF_FAIL( "Expecting: " << stf_local_d.lhs << " == " << stf_local_d.rhs                         \
+                            << " within " << X << " ULPs " << "but found: " << stf_local_r          \
                             << " ULPs instead."                                                     \
             );                                                                                      \
 } while( ::stf::is_false() )                                                                        \
@@ -1168,7 +1169,8 @@ do                                                                              
     STF_PASS( "Expecting: " << STF_STRING(A) " == " STF_STRING(B) << " within " << X << " ULPs." ); \
   else                                                                                              \
     STF_FAIL( "Expecting: " << STF_STRING(A) " == " STF_STRING(B)                                   \
-                             << " within " << X << " ULPs " << "but found:\n" << stf_local_r.rhs    \
+                            << " within " << X << " ULPs " << "but found: " << stf_local_r.rhs      \
+                            << " ULPs instead."                                                     \
             );                                                                                      \
 } while( ::stf::is_false() )                                                                        \
 
@@ -1178,12 +1180,14 @@ do                                                                              
 do                                                                                                  \
 {                                                                                                   \
   auto stf_local_r = ::stf::reldist((A),(B));                                                       \
+  auto stf_local_d = STF_DECOMPOSE((A) == (B));                                                     \
   if( stf_local_r <= (X/100.))                                                                      \
-    STF_PASS( "Expecting: " << STF_STRING(A) " == " STF_STRING(B) << " within " << X << " %.");     \
+    STF_PASS( "Expecting: " << STF_STRING(A) " == " STF_STRING(B) << " ~ " << X << " %.");\
   else                                                                                              \
-    STF_FAIL( "Expecting: " << STF_STRING(A) " == " STF_STRING(B)                                   \
+    STF_FAIL( "Expecting: " << stf_local_d.lhs << " == " << stf_local_d.rhs                         \
                             << " within " << X << " % "                                             \
-                            << "but found:\n" << stf_local_r                                        \
+                            << "but found: " << 100*stf_local_r                                     \
+                            << " % instead."                                                        \
             );                                                                                      \
 } while( ::stf::is_false() )                                                                        \
 
@@ -1196,9 +1200,12 @@ do                                                                              
   else                                                                                              \
     STF_FAIL( "Expecting: " << STF_STRING(A) " == " STF_STRING(B)                                   \
                             << " within " << X << " % "                                             \
-                            << "but found:\n" << stf_local_r.rhs                                    \
+                            << "but found: " << stf_local_r.rhs                                     \
+                            << " % instead."                                                        \
             );                                                                                      \
 } while( ::stf::is_false() )                                                                        \
+
+#define STF_ALL_EQUAL(A,B) STF_ALL_RELATIVE_EQUAL(A,B,0)
 
 
 
