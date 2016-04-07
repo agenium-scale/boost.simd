@@ -25,9 +25,9 @@ namespace boost { namespace simd { namespace detail
   template<typename Storage>
   class pack_proxy {
 
+    public:
     using value_type = typename Storage::value_type;
 
-    public:
     BOOST_FORCEINLINE pack_proxy(Storage* data, std::size_t index) : data_(data), index_(index) {}
 
     BOOST_FORCEINLINE value_type get() const BOOST_NOEXCEPT
