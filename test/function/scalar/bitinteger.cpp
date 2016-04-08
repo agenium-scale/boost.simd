@@ -31,7 +31,7 @@ STF_CASE_TPL (" bit integerreal",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef STF_NO_INVALIDS
-  STF_IEEE_EQUAL(bitinteger(bs::Nan<T>()), -bs::Valmax<r_t>());
+  STF_EQUAL(bitinteger(bs::Nan<T>()), -bs::Valmax<r_t>());
 #endif
 #if !defined(STF_NO_DENORMALS)
   STF_EQUAL(bitinteger(bs::Bitincrement<T>()), bs::One<r_t>());

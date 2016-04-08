@@ -41,9 +41,9 @@ STF_CASE_TPL( "Check horn1 behavior with floating", STF_IEEE_TYPES )
 {
   namespace bs = boost::simd;
 
-  STF_IEEE_EQUAL(g(bs::Zero<T>()), T(1.0));
-  STF_IEEE_EQUAL(g(bs::One<T>()),  T(11.0));
-  STF_IEEE_EQUAL(g(bs::Mone<T>()), T(-1.0));
+  STF_EQUAL(g(bs::Zero<T>()), T(1.0));
+  STF_EQUAL(g(bs::One<T>()),  T(11.0));
+  STF_EQUAL(g(bs::Mone<T>()), T(-1.0));
 }
 
 

@@ -31,10 +31,10 @@ STF_CASE_TPL (" ifnotsub real",  STF_IEEE_TYPES)
   // specific values tests
   STF_EQUAL(ifnotsub(T(0),T(1),T(2)), T(-1));
   STF_EQUAL(ifnotsub(T(1),T(1),T(2)), T(1));
-  STF_IEEE_EQUAL(ifnotsub(T(1),bs::Inf<T>(),bs::Inf<T>()), bs::Inf<r_t>());
+  STF_EQUAL(ifnotsub(T(1),bs::Inf<T>(),bs::Inf<T>()), bs::Inf<r_t>());
   STF_IEEE_EQUAL(ifnotsub(T(0),bs::Minf<T>(),bs::Minf<T>()), bs::Nan<r_t>());
   STF_IEEE_EQUAL(ifnotsub(T(0),bs::Nan<T>(),bs::Nan<T>()), bs::Nan<r_t>());
-  STF_IEEE_EQUAL(ifnotsub(T(0),bs::Zero<T>(),bs::One<T>()), bs::Mone<r_t>());
+  STF_EQUAL(ifnotsub(T(0),bs::Zero<T>(),bs::One<T>()), bs::Mone<r_t>());
 } // end of test for floating_
 
 STF_CASE_TPL (" ifnotsub integer",  STF_INTEGRAL_TYPES)

@@ -30,7 +30,7 @@ STF_CASE_TPL (" bitwise xor_real",  STF_IEEE_TYPES)
 #ifndef STF_NO_INVALIDS
   STF_EQUAL(bitwise_xor(bs::Inf<T>(), bs::Inf<T>()), bs::Zero<r_t>());
   STF_EQUAL(bitwise_xor(bs::Minf<T>(), bs::Minf<T>()), bs::Zero<r_t>());
-  STF_EQUAL(bitwise_xor(bs::Nan<T>(), bs::Nan<T>()), bs::Zero<r_t>());
+  STF_IEEE_EQUAL(bitwise_xor(bs::Nan<T>(), bs::Nan<T>()), bs::Zero<r_t>());
 #endif
   STF_EQUAL(bitwise_xor(bs::One<T>(),bs::Zero<T>()), bs::One<r_t>());
   STF_EQUAL(bitwise_xor(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());

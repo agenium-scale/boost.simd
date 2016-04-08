@@ -53,6 +53,7 @@ STF_CASE_TPL ("Check genmask behavior when re-targeted",  STF_NUMERIC_TYPES)
   STF_EQUAL(genmask<char>(T(0)) , char(0));
 }
 
+
 STF_CASE_TPL ("Check genmask logical behavior when re-targeted",  STF_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;

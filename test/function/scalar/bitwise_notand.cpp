@@ -54,6 +54,6 @@ STF_CASE_TPL("bitwise_notand mix", STF_IEEE_TYPES)
   // specific values tests
   STF_IEEE_EQUAL(bitwise_notand(bs::Zero<T>(),bs::Valmax<uiT>()), bs::Nan<T>());
   STF_IEEE_EQUAL(bitwise_notand(bs::Zero<T>(), bs::Mone<siT>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bitwise_notand(bs::Zero<siT>(),bs::Nan<T>()), bs::Mone<siT>());
+  STF_EQUAL(bitwise_notand(bs::Zero<siT>(),bs::Nan<T>()), bs::Mone<siT>());
   STF_EQUAL(bitwise_notand(bs::Zero<uiT>(), bs::Nan<T>()), bs::Valmax<uiT>());
 }

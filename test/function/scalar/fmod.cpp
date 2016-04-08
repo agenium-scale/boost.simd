@@ -105,16 +105,16 @@ STF_CASE_TPL (" fmod limits",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-  STF_IEEE_EQUAL(fmod(T(0), T(1)),  T(0));
-  STF_IEEE_EQUAL(fmod(-T(0), T(1)),  T(-0));
+  STF_EQUAL(fmod(T(0), T(1)),  T(0));
+  STF_EQUAL(fmod(-T(0), T(1)),  T(-0));
   STF_EXPECT(bs::is_negative(fmod(-T(0), T(1))));
   STF_EXPECT(bs::is_positive(fmod(T(0), T(1))));
   STF_IEEE_EQUAL(fmod(bs::Inf<T>(), T(1)),  bs::Nan<T>());
   STF_IEEE_EQUAL(fmod(bs::Minf<T>(), T(1)), bs::Nan<T>());
   STF_IEEE_EQUAL(fmod(T(1), T(0)),  bs::Nan<T>());
   STF_IEEE_EQUAL(fmod(T(1), T(-0)), bs::Nan<T>());
-  STF_IEEE_EQUAL(fmod(T(2), bs::Inf<T>()), T(2));
-  STF_IEEE_EQUAL(fmod(T(2), bs::Minf<T>()), T(2));
+  STF_EQUAL(fmod(T(2), bs::Inf<T>()), T(2));
+  STF_EQUAL(fmod(T(2), bs::Minf<T>()), T(2));
 
 }
 

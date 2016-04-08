@@ -28,8 +28,8 @@ STF_CASE_TPL( "Check minus behavior with floating", STF_IEEE_TYPES )
   STF_IEEE_EQUAL(minus(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<r_t>());
   STF_IEEE_EQUAL(minus(bs::Nan<T>(),  bs::Nan<T>()), bs::Nan<r_t>());
 #endif
-  STF_IEEE_EQUAL(minus(bs::One<T>(),bs::Zero<T>()), bs::One<r_t>());
-  STF_IEEE_EQUAL(minus(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
+  STF_EQUAL(minus(bs::One<T>(),bs::Zero<T>()), bs::One<r_t>());
+  STF_EQUAL(minus(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
 }
 
 

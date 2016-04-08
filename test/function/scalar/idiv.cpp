@@ -27,13 +27,13 @@ STF_CASE_TPL( "Check idiv behavior with floating", STF_IEEE_TYPES )
   STF_TYPE_IS(r_t, bd::as_integer_t<T>);
 
 #ifndef STF_NO_INVALIDS
-  STF_IEEE_EQUAL(idiv(bs::Inf<T>(),  bs::Inf<T>()), bs::Nan<r_t>());
-  STF_IEEE_EQUAL(idiv(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<r_t>());
-  STF_IEEE_EQUAL(idiv(bs::Nan<T>(),  bs::Nan<T>()), bs::Nan<r_t>());
+  STF_EQUAL(idiv(bs::Inf<T>(),  bs::Inf<T>()), bs::Nan<r_t>());
+  STF_EQUAL(idiv(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<r_t>());
+  STF_EQUAL(idiv(bs::Nan<T>(),  bs::Nan<T>()), bs::Nan<r_t>());
 #endif
-  STF_IEEE_EQUAL(idiv(bs::One<T>(),bs::Zero<T>()), bs::Inf<r_t>());
-  STF_IEEE_EQUAL(idiv(bs::Zero<T>(), bs::Zero<T>()), bs::Nan<r_t>());
-  STF_IEEE_EQUAL(idiv(bs::One<T>(), bs::One<T>()), bs::One<r_t>());
+  STF_EQUAL(idiv(bs::One<T>(),bs::Zero<T>()), bs::Inf<r_t>());
+  STF_EQUAL(idiv(bs::Zero<T>(), bs::Zero<T>()), bs::Nan<r_t>());
+  STF_EQUAL(idiv(bs::One<T>(), bs::One<T>()), bs::One<r_t>());
 }
 
 
@@ -46,11 +46,11 @@ STF_CASE_TPL( "Check idiv behavior with options", STF_NUMERIC_TYPES )
   using r_t = decltype(idiv(T(), T()));
   STF_TYPE_IS(r_t, bd::as_integer_t<T>);
 
-  STF_IEEE_EQUAL(idiv(bs::One<T>(), bs::Two<T>()), bs::Zero<r_t>());
+  STF_EQUAL(idiv(bs::One<T>(), bs::Two<T>()), bs::Zero<r_t>());
 
-  STF_IEEE_EQUAL(idiv(bs::One<T>(), bs::Two<T>(), bs::ceil), bs::One<r_t>());
-  STF_IEEE_EQUAL(idiv(bs::One<T>(), bs::Two<T>(), bs::floor), bs::Zero<r_t>());
-  STF_IEEE_EQUAL(idiv(bs::One<T>(), bs::Two<T>(), bs::round), bs::One<r_t>());
-  STF_IEEE_EQUAL(idiv(bs::One<T>(), bs::Two<T>(), bs::round2even), bs::Zero<r_t>());
-  STF_IEEE_EQUAL(idiv(bs::One<T>(), bs::Two<T>(), bs::fix), bs::Zero<r_t>());
+  STF_EQUAL(idiv(bs::One<T>(), bs::Two<T>(), bs::ceil), bs::One<r_t>());
+  STF_EQUAL(idiv(bs::One<T>(), bs::Two<T>(), bs::floor), bs::Zero<r_t>());
+  STF_EQUAL(idiv(bs::One<T>(), bs::Two<T>(), bs::round), bs::One<r_t>());
+  STF_EQUAL(idiv(bs::One<T>(), bs::Two<T>(), bs::round2even), bs::Zero<r_t>());
+  STF_EQUAL(idiv(bs::One<T>(), bs::Two<T>(), bs::fix), bs::Zero<r_t>());
 }

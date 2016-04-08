@@ -53,7 +53,7 @@ STF_CASE_TPL (" if_else_allbitssigned_int",  STF_SIGNED_INTEGRAL_TYPES)
   STF_EXPR_IS( if_else_allbits(T(), T()), T );
 
   // specific values tests
-  STF_EQUAL(if_else_allbits(T(0), T(1)), Allbits<T>());
+  STF_IEEE_EQUAL(if_else_allbits(T(0), T(1)), Allbits<T>());
   STF_EQUAL(if_else_allbits(T(1), T(1)),  T(1));
-  STF_EQUAL(if_else_allbits(bs::Zero<T>(), T(1)),  Allbits<T>());
+  STF_IEEE_EQUAL(if_else_allbits(bs::Zero<T>(), T(1)),  Allbits<T>());
 } // end of test for signed_int_

@@ -27,15 +27,15 @@ STF_CASE_TPL( "Check abss behavior with floating", STF_IEEE_TYPES )
   STF_TYPE_IS(r_t, T);
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_IEEE_EQUAL(abss(bs::Inf<T>()),  bs::Inf<r_t>());
-  STF_IEEE_EQUAL(abss(bs::Minf<T>()), bs::Inf<r_t>());
+  STF_EQUAL(abss(bs::Inf<T>()),  bs::Inf<r_t>());
+  STF_EQUAL(abss(bs::Minf<T>()), bs::Inf<r_t>());
   STF_IEEE_EQUAL(abss(bs::Nan<T>()),  bs::Nan<r_t>());
 #endif
-  STF_IEEE_EQUAL(abss(bs::Mone<T>()), bs::One<T>());
-  STF_IEEE_EQUAL(abss(bs::One<T>()), bs::One<T>());
-  STF_IEEE_EQUAL(abss(bs::Valmax<T>()), bs::Valmax<T>());
-  STF_IEEE_EQUAL(abss(bs::Valmin<T>()), bs::Valmax<T>());
-  STF_IEEE_EQUAL(abss(bs::Zero<T>()), bs::Zero<T>());
+  STF_EQUAL(abss(bs::Mone<T>()), bs::One<T>());
+  STF_EQUAL(abss(bs::One<T>()), bs::One<T>());
+  STF_EQUAL(abss(bs::Valmax<T>()), bs::Valmax<T>());
+  STF_EQUAL(abss(bs::Valmin<T>()), bs::Valmax<T>());
+  STF_EQUAL(abss(bs::Zero<T>()), bs::Zero<T>());
 }
 
 

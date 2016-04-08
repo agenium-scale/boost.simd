@@ -31,7 +31,7 @@ STF_CASE_TPL (" idiv real",  STF_IEEE_TYPES)
 #ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(idiv(bs::Inf<T>(), bs::Inf<T>(), bs::fix), bs::Zero<r_t>());
   STF_EQUAL(idiv(bs::Minf<T>(), bs::Minf<T>(), bs::fix), bs::Zero<r_t>());
-  STF_IEEE_EQUAL(idiv(bs::Nan<T>(), bs::Nan<T>(), bs::fix), bs::Zero<r_t>());
+  STF_EQUAL(idiv(bs::Nan<T>(), bs::Nan<T>(), bs::fix), bs::Zero<r_t>());
 #endif
  STF_EQUAL(idiv(bs::Mone<T>(), bs::Mone<T>(), bs::fix), bs::One<r_t>());
   STF_EQUAL(idiv(bs::Mone<T>(),bs::Zero<T>(), bs::fix), bs::Minf<r_t>());

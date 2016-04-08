@@ -32,7 +32,7 @@ STF_CASE_TPL (" if_zero_else_one real",  STF_IEEE_TYPES)
   STF_EQUAL(if_zero_else_one(T(1)), 0);
   STF_EQUAL(if_zero_else_one(bs::Inf<T>()) , 0);
   STF_EQUAL(if_zero_else_one(bs::Minf<T>()), 0);
-  STF_IEEE_EQUAL(if_zero_else_one(bs::Nan<T>()) , 0);
+  STF_EQUAL(if_zero_else_one(bs::Nan<T>()) , 0);
   STF_EQUAL(if_zero_else_one(bs::Zero<T>()), 1);
 
 

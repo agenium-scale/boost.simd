@@ -30,7 +30,7 @@ STF_CASE_TPL (" bits real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef STF_NO_INVALIDS
-  STF_EQUAL(bits(bs::Nan<T>()), bs::Mone<r_t>());
+  STF_IEEE_EQUAL(bits(bs::Nan<T>()), bs::Mone<r_t>());
 #endif
   STF_EQUAL(bits(bs::Zero<T>()), bs::Zero<r_t>());
 } // end of test for floating_

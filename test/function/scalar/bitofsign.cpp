@@ -31,7 +31,7 @@ STF_CASE_TPL (" bitofsign real",  STF_IEEE_TYPES)
 #ifndef STF_NO_INVALIDS
   STF_EQUAL(bitofsign(bs::Inf<T>()), bs::Zero<r_t>());
   STF_EQUAL(bitofsign(bs::Minf<T>()), bs::Mzero<r_t>());
-  STF_EQUAL(bitofsign(bs::Nan<T>()), bs::Mzero<r_t>());
+  STF_IEEE_EQUAL(bitofsign(bs::Nan<T>()), bs::Mzero<r_t>());
 #endif
   STF_EQUAL(bitofsign(bs::Mzero<T>()), bs::Mzero<r_t>());
   STF_EQUAL(bitofsign(bs::One<T>()), bs::Zero<r_t>());

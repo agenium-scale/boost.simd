@@ -25,13 +25,13 @@ STF_CASE_TPL( "Check modulus behavior with floating", STF_IEEE_TYPES )
   STF_TYPE_IS(r_t, T);
 
 #ifndef STF_NO_INVALIDS
-  STF_IEEE_EQUAL(modulus(bs::Inf<T>()),  bs::Inf<r_t>());
-  STF_IEEE_EQUAL(modulus(bs::Minf<T>()), bs::Inf<r_t>());
+  STF_EQUAL(modulus(bs::Inf<T>()),  bs::Inf<r_t>());
+  STF_EQUAL(modulus(bs::Minf<T>()), bs::Inf<r_t>());
   STF_IEEE_EQUAL(modulus(bs::Nan<T>()),  bs::Nan<r_t>());
 #endif
-  STF_IEEE_EQUAL(modulus(bs::Zero<T>()), bs::Zero<r_t>());
-  STF_IEEE_EQUAL(modulus(bs::One<T>()),  bs::One<r_t>());
-  STF_IEEE_EQUAL(modulus(bs::Mone<T>()), bs::One<r_t>());
+  STF_EQUAL(modulus(bs::Zero<T>()), bs::Zero<r_t>());
+  STF_EQUAL(modulus(bs::One<T>()),  bs::One<r_t>());
+  STF_EQUAL(modulus(bs::Mone<T>()), bs::One<r_t>());
 
 }
 

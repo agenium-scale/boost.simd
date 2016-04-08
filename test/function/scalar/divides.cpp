@@ -32,9 +32,9 @@ STF_CASE_TPL( "Check divides behavior with floating", STF_IEEE_TYPES )
   STF_IEEE_EQUAL(divides(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<r_t>());
   STF_IEEE_EQUAL(divides(bs::Nan<T>(),  bs::Nan<T>()), bs::Nan<r_t>());
 #endif
-  STF_IEEE_EQUAL(divides(T(1), T(0)), bs::Inf<r_t>());
+  STF_EQUAL(divides(T(1), T(0)), bs::Inf<r_t>());
   STF_IEEE_EQUAL(divides(T(0), T(0)), bs::Nan<r_t>());
-  STF_IEEE_EQUAL(divides(T(1), T(1)), bs::One<r_t>());
+  STF_EQUAL(divides(T(1), T(1)), bs::One<r_t>());
 }
 
 
@@ -45,9 +45,9 @@ STF_CASE_TPL( "Check fast divides behavior with floating", STF_IEEE_TYPES )
   using r_t = decltype(bs::fast_(divides)(T(), T()));
   STF_TYPE_IS(r_t, T);
 
-  STF_IEEE_EQUAL(bs::fast_(divides)(bs::One<T>(),bs::Zero<T>()), bs::Inf<r_t>());
+  STF_EQUAL(bs::fast_(divides)(bs::One<T>(),bs::Zero<T>()), bs::Inf<r_t>());
   STF_IEEE_EQUAL(bs::fast_(divides)(bs::Zero<T>(), bs::Zero<T>()), bs::Nan<r_t>());
-  STF_IEEE_EQUAL(bs::fast_(divides)(bs::One<T>(), bs::One<T>()), bs::One<r_t>());
+  STF_EQUAL(bs::fast_(divides)(bs::One<T>(), bs::One<T>()), bs::One<r_t>());
 }
 
 #ifdef BOOST_MSVC

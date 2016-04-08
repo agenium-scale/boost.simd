@@ -33,7 +33,7 @@ STF_CASE_TPL (" clz real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef STF_NO_INVALIDS
-  STF_IEEE_EQUAL(clz(bs::Nan<T>()), bs::Zero<r_t>());
+  STF_EQUAL(clz(bs::Nan<T>()), bs::Zero<r_t>());
 #endif
   STF_EQUAL(clz(bs::Mone<T>()), bs::Zero<r_t>());
   STF_EQUAL(clz(bs::Signmask<T>()),bs::Zero<r_t>());

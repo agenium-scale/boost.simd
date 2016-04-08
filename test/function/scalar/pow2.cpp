@@ -31,16 +31,6 @@ STF_CASE_TPL (" pow2",  STF_IEEE_TYPES)
   // return type conformity test
   STF_TYPE_IS(r_t, T);
 
-#ifndef BOOST_SIMD_NO_INVALIDS
-/*
-  STF_ASSERT(pow2(bs::Inf<T>()));
-  STF_ASSERT(pow2(bs::Minf<T>()));
-  STF_ASSERT(pow2(bs::Nan<T>()));
-  STF_ASSERT(pow2(T(1), bs::Inf<T>()));
-  STF_ASSERT(pow2(T(1), bs::Minf<T>()));
-  STF_ASSERT(pow2(T(1), bs::Nan<T>()));
-*/
-#endif
   // specific values tests
   STF_EQUAL(pow2(bs::Inf<T>(),  2), bs::Inf<r_t>());
   STF_EQUAL(pow2(bs::Minf<T>(), 2), bs::Minf<r_t>());
