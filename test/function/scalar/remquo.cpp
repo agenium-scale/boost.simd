@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/remquo.hpp>
+#include <boost/simd/function/scalar/remquo.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -19,7 +19,6 @@
 #include <utility>
 
 #ifndef STF_NO_INVALIDS
-// All these tests should return NaN
 STF_CASE_TPL(" remquo invalid", STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;

@@ -52,7 +52,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
+    inline A0 operator() ( A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
     {
       const A0 Oneo_16 = Ratio<A0, 1, 16>();
       using i_t = bd::as_integer_t<A0>;

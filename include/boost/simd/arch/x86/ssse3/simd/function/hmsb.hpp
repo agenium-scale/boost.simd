@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSSE3_SIMD_FUNCTION_HMSB_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSSE3_SIMD_FUNCTION_HMSB_HPP_INCLUDED
 #include <boost/simd/sdk/hierarchy/simd.hpp>
+#include <boost/simd/pack.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -26,14 +27,11 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE std::size_t operator() ( const A0 & a0) const BOOST_NOEXCEPT
     {
-      using s8type = pack<int8_t, 16>;
-       return _mm_movemask_epi8(
-         _mm_shuffle_epi8(bitwise_cast<s8type>(a0)
-                         , s8type{0x01,0x03,0x05,0x07,0x09,0x0B,0x0D,0x0F
+      using s8type = bs::pack<int8_t, 16>;
+      s8type mask = {0x01,0x03,0x05,0x07,0x09,0x0B,0x0D,0x0F
                                        ,-128,-128,-128,-128,-128,-128,-128,-128
-                                       }
-                         )
-       );
+                                       };
+      return _mm_movemask_epi8( _mm_shuffle_epi8(bitwise_cast<s8type>(a0), mask));
     }
   };
 

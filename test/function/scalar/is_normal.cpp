@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/is_normal.hpp>
+#include <boost/simd/function/scalar/is_normal.hpp>
 #include <boost/simd/function/std.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
@@ -69,7 +69,7 @@ STF_CASE_TPL (" is_normal signed_int",  STF_SIGNED_INTEGRAL_TYPES)
   STF_EQUAL(is_normal(bs::Mone<T>()), r_t(true));
   STF_EQUAL(is_normal(bs::One<T>()), r_t(true));
   STF_EQUAL(is_normal(bs::Two<T>()), r_t(true));
-  STF_EQUAL(is_normal(bs::Zero<T>()), r_t(true));
+  STF_EQUAL(is_normal(bs::Zero<T>()), r_t(false));
 }
 
 STF_CASE_TPL (" is_normal unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
@@ -87,7 +87,7 @@ STF_CASE_TPL (" is_normal unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
   // specific values tests
   STF_EQUAL(is_normal(bs::One<T>()), r_t(true));
   STF_EQUAL(is_normal(bs::Two<T>()), r_t(true));
-  STF_EQUAL(is_normal(bs::Zero<T>()), r_t(true));
+  STF_EQUAL(is_normal(bs::Zero<T>()), r_t(false));
 }
 
 STF_CASE ( "is_normal bool")
@@ -102,7 +102,7 @@ STF_CASE ( "is_normal bool")
 
   // specific values tests
   STF_EQUAL(is_normal(true), true);
-  STF_EQUAL(is_normal(true), true);
+  STF_EQUAL(is_normal(false), false);
 }
 
 

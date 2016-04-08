@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/lo.hpp>
+#include <boost/simd/function/scalar/lo.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/function/splat.hpp>
@@ -23,20 +23,9 @@ STF_CASE_TPL (" return_type",  STF_NUMERIC_TYPES)
   STF_EXPR_IS( lo(T()), (bd::as_integer_t<T,unsigned>));
 }
 
-// STF_CASE_TPL (" real lo",  STF_IEEE_TYPES)
-// {
-//   namespace bs = boost::simd;
-//   namespace bd = boost::dispatch;
-//   using bs::lo;
 
-//   typedef bd::as_integer_t<T,unsigned  iT;
 
-//   T  val = bs::real_constant<T, 0xFFFFFFFF12345678LL, 0xFFFF1234>();
-//   T  res = bs::real_constant<T, 0x0000000012345678LL, 0x00001234>();
-//   iT ref = bs::bitwise_cast<iT>(res);
 
-//   STF_EQUAL( lo(val), ref );
-// }
 
 STF_CASE_TPL (" real lo",  (float))
 {

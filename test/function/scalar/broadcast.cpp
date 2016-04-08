@@ -6,7 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#include <boost/simd/function/broadcast.hpp>
+#include <boost/simd/function/scalar/broadcast.hpp>
 #include <simd_test.hpp>
 
 STF_CASE_TPL( "Check broadcast behavior", STF_NUMERIC_TYPES )

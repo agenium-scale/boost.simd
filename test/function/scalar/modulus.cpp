@@ -9,7 +9,6 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/modulus.hpp>
 #include <simd_test.hpp>
-//#include <nontrivial.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>
@@ -36,23 +35,6 @@ STF_CASE_TPL( "Check modulus behavior with floating", STF_IEEE_TYPES )
 
 }
 
-// namespace foo
-// {
-//   template <class T>
-//   nontrivial<T> abs(const nontrivial<T> & z1)
-//   {
-//     return perform(z1);
-//   }
-// }
 
-// STF_CASE_TPL( "Check modulus behavior with exotic type", STF_IEEE_TYPES )
-// {
-//   namespace bs = boost::simd;
-//   using foo::nontrivial;
-//   using r_t = decltype(bs::modulus(nontrivial<T>()));
-//   STF_TYPE_IS(r_t, nontrivial<T>);
-//   std::cout << stf::type_id<boost::dispatch::hierarchy_of_t<nontrivial<T>>>()<< std::endl;
-//   STF_EQUAL(bs::modulus(nontrivial<T>(1, 2)), nontrivial<T>(2, 6));
-// }
 
 

@@ -14,6 +14,7 @@
 
 #include <boost/simd/sdk/as_logical.hpp>
 #include <boost/simd/function/simd/genmask.hpp>
+#include <boost/simd/logical.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -25,7 +26,8 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::type16_<A0>, bs::sse_>
                          )
   {
-    BOOST_FORCEINLINE bool operator() ( const A0 & a0) const BOOST_NOEXCEPT
+    using sA0 =  bd::scalar_of_t<A0>;
+    BOOST_FORCEINLINE logical<sA0> operator() ( const A0 & a0) const BOOST_NOEXCEPT
     {
       return _mm_movemask_epi8(genmask(a0)) == 0xFFFF;
     }

@@ -7,9 +7,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/idiv.hpp>
+#include <boost/simd/function/scalar/idiv.hpp>
 #include <simd_test.hpp>
-//#include <nontrivial.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>

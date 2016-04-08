@@ -28,14 +28,15 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::arithmetic_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE bool operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
-      {
+     using sA0 =  bd::scalar_of_t<A0>;
+     BOOST_FORCEINLINE logical<sA0> operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+     {
         for(std::size_t i=0;i<bs::cardinal_of<A0>::value;++i)
         {
-          if (a0[i] < a1[i])  return true;
-          if (a1[i] < a0[i])  return false;
+          if (a0[i] < a1[i])  return {true};
+          if (a1[i] < a0[i])  return {false};
         }
-        return false;
+          return {false};
       }
    };
 

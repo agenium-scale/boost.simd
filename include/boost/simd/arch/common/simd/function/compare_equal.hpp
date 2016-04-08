@@ -27,15 +27,14 @@ namespace boost { namespace simd { namespace ext
                           )
 
   {
-    BOOST_FORCEINLINE bool operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+    using sA0 =  bd::scalar_of_t<A0>;
+    BOOST_FORCEINLINE logical<sA0> operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
     {
       for(unsigned int i=0; i < A0::static_size; ++i)
       {
         if (a0[i] != a1[i]) return {false};
       }
       return {true};
-//       using i_t =  bd::as_integer_t<A0>;
-//       return bs::all(is_equal(bitwise_cast<i_t>(a0), bitwise_cast<i_t>(a1)));
     }
 
   };

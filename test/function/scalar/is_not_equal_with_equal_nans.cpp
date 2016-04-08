@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/is_not_equal_with_equal_nans.hpp>
+#include <boost/simd/function/scalar/is_not_equal_with_equal_nans.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -17,7 +17,6 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/logical.hpp>
-// TODO LOGICAL
 
 STF_CASE_TPL (" is_not_equal_with_equal_nans integer",  STF_INTEGRAL_TYPES)
 {
@@ -51,22 +50,9 @@ STF_CASE_TPL (" is_not_equal_with_equal_nans real",  STF_IEEE_TYPES)
   STF_EQUAL(is_not_equal_with_equal_nans(bs::Zero<T>(), bs::Zero<T>()), r_t(false));
 } // end of test for floating_
 
-// STF_CASE_TPL (" is_not_equal_with_equal_nans logical",  STF_SIMD_TYPES)
-// {
-//   namespace bs = boost::simd;
 
-//   using bs::is_not_equal_with_equal_nans;
-//   using r_t = decltype(is_not_equal_with_equal_nans(T(), T()));
-//   typedef bs::logical<T> wished_r_t;
 
-//   // return type conformity test
-//   STF_TYPE_IS(r_t, wished_r_t);
 
-//   STF_EQUAL(is_not_equal_with_equal_nans(bs::True< bs::logical<T> >(), bs::True< bs::logical<T> >()), r_t(true));
-//   STF_EQUAL(is_not_equal_with_equal_nans(bs::False< bs::logical<T> >(), bs::False< bs::logical<T> >()), r_t(true));
-//   STF_EQUAL(is_not_equal_with_equal_nans(bs::True< bs::logical<T> >(), bs::False< bs::logical<T> >()), r_t(false));
-//   STF_EQUAL(is_not_equal_with_equal_nans(bs::False< bs::logical<T> >(), bs::True< bs::logical<T> >()), r_t(false));
-// }
 
 STF_CASE ( "is_not_equal_with_equal_nans bool")
 {

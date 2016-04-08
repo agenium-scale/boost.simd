@@ -28,7 +28,7 @@ namespace boost { namespace simd { namespace ext
                          )
   {
     using sA0 = bd::scalar_of_t<A0>;
-    BOOST_FORCEINLINE bool operator() ( const A0 & a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE logical<sA0> operator() ( const A0 & a0) const BOOST_NOEXCEPT
     {
       return !_mm_testz_si128(a0, Allbits<A0>());
     }
@@ -41,7 +41,7 @@ namespace boost { namespace simd { namespace ext
                          )
   {
     using sA0 = bd::scalar_of_t<A0>;
-    BOOST_FORCEINLINE bool operator() ( const A0 & a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE logical<sA0> operator() ( const A0 & a0) const BOOST_NOEXCEPT
     {
       using i_t = bd::as_integer_t<A0>;
       return any(bitwise_cast<i_t>(a0));

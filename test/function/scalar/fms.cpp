@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/fms.hpp>
+#include <boost/simd/function/scalar/fms.hpp>
 #include <simd_test.hpp>
 
 

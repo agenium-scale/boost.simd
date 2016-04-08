@@ -15,6 +15,7 @@
 #include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/genmask.hpp>
 #include <boost/simd/function/simd/hmsb.hpp>
+#include <boost/simd/logical.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -27,7 +28,8 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::fundamental_<A0>, X>
                           )
   {
-    BOOST_FORCEINLINE bool operator()( const A0& a0) const BOOST_NOEXCEPT
+    using sA0 =  bd::scalar_of_t<A0>;
+    BOOST_FORCEINLINE logical<sA0> operator()( const A0& a0) const BOOST_NOEXCEPT
     {
       return hmsb(genmask(a0)) == (1ull << A0::static_size)-1;
     }
