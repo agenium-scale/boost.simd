@@ -54,36 +54,6 @@ namespace boost { namespace simd { namespace ext
       return _mm256_loadu_ps(p);
     }
   };
-
-  //------------------------------------------------------------------------------------------------
-  // load from a range of floating point value
-  BOOST_DISPATCH_OVERLOAD ( load_
-                          , (typename Target, typename Begin, typename End)
-                          , bs::avx_
-                          , bd::input_iterator_<bd::scalar_<bd::floating_<Begin>>>
-                          , bd::input_iterator_<bd::scalar_<bd::floating_<End>>>
-                          , bd::target_<bs::pack_<bd::floating_<Target>,bs::avx_>>
-                          )
-  {
-    using target_t  = typename Target::type;
-    using storage_t = typename target_t::storage_type;
-
-    BOOST_FORCEINLINE target_t operator()(Begin const& b, End const&, Target const&) const BOOST_NOEXCEPT
-    {
-      return do_(b, brigand::range<std::size_t,0,target_t::static_size>{} );
-    }
-
-    template<typename I, typename T>
-    static BOOST_FORCEINLINE T const& make(T const& v) BOOST_NOEXCEPT { return v; }
-
-    template<typename... N>
-    static inline target_t do_(Begin const& b, brigand::list<N...> const&) BOOST_NOEXCEPT
-    {
-      Begin p = b;
-      typename target_t::value_type data[target_t::static_size] = { make<N>(*p++)...};
-      return load<target_t>( &data[0] );
-    }
-  };
 } } }
 
 #endif
