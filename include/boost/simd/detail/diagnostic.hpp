@@ -51,7 +51,7 @@ class diagnostic
   class stream_flusher
   {
     public:
-    stream_flusher(stream_type& os) : os_(os) {}
+    stream_flusher(stream_type& pos) : os_(pos) {}
 
     ~stream_flusher()
     {
