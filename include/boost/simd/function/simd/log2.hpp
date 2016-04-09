@@ -14,6 +14,6 @@
 
 #include <boost/simd/function/scalar/log2.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/log2.hpp>
+#include <boost/simd/arch/common/simd/function/log2.hpp>
 
 #endif
