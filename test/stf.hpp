@@ -603,7 +603,7 @@ namespace stf { namespace detail
 #define STF_DUMP(R)                                                                                 \
 $.stream()  << "failing because:\n" << R.lhs << R.op << R.rhs << "\n" << "is incorrect.\n";         \
 
-  
+
 namespace stf
 {
   namespace ext
@@ -689,7 +689,7 @@ namespace stf { namespace detail
               , stf::to_string( lhs ), stf::split_line(lhs,rhs,SB), stf::to_string(rhs)             \
               };                                                                                    \
     }                                                                                               \
-    
+
     STF_BINARY_DECOMPOSE( ==, "==", eq  )
     STF_BINARY_DECOMPOSE( !=, "!=", neq )
     STF_BINARY_DECOMPOSE( < , "<" , lt  )
@@ -843,9 +843,9 @@ namespace stf
       bi = detail::begin(ref);
       br = detail::begin(data);
       auto bd = detail::begin(dist);
-      auto sz = detail::size(data);
+      std::ptrdiff_t sz = detail::size(data);
 
-      for(std::size_t idx=0;idx < sz; ++idx)
+      for(std::ptrdiff_t idx=0;idx < sz; ++idx)
         check( *bd++, *br++, *bi++, (sz>1 ? idx : -1) );
 
       return errors.size() == 0;
