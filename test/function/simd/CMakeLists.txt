@@ -17,6 +17,7 @@ add_subdirectory(splat)
 set ( SOURCES
   aligned_load.cpp
   aligned_store.cpp
+  bitwise_cast.cpp
   store.cpp
   automap.cpp
   autofold.cpp
