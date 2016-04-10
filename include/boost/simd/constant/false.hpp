@@ -37,21 +37,10 @@ namespace boost { namespace simd
     @see functional::false
   **/
   template<typename T> T False();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the constant false.
-
-      @return The False constant for the proper type
-    **/
-    const boost::dispatch::functor<tag::false_> false_ = {};
-  }
 } }
 #endif
 
 #include <boost/simd/constant/definition/false.hpp>
-#include <boost/simd/arch/common/scalar/constant/false.hpp>
+#include <boost/simd/arch/common/generic/constant/false.hpp>
 
 #endif
