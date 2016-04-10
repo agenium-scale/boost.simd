@@ -16,6 +16,7 @@ set ( SOURCES
   splat.cpp
   store.cpp
   automap.cpp
+  autofold.cpp
   autosplat.cpp
 )
 
