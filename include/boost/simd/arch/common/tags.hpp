@@ -42,6 +42,11 @@ namespace boost { namespace simd
     using parent = boost::simd::simd_;
   };
 
+  struct simd_native_ : boost::simd::simd_
+  {
+    using parent = boost::simd::simd_;
+  };
+
   /// @brief tag indicating a wide register is stored natively
   struct native_storage {};
 

@@ -25,7 +25,7 @@ namespace boost { namespace simd
 
     This tag represent architectures implementing the Intel SSE SIMD instructions set.
   **/
-  struct sse_   : simd_ { using parent = simd_; };
+  struct sse_   : simd_native_ { using parent = simd_native_; };
 
   /*!
     @ingroup group-hierarchy
