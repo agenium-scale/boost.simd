@@ -15,9 +15,7 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-
  /*!
-
     @ingroup group-bitwise
     Function object implementing genmask capabilities
 
@@ -43,7 +41,9 @@ namespace boost { namespace simd
     @see if_allbits_else
 
   **/
-  const boost::dispatch::functor<tag::genmask_> genmask = {};
+  template<typename A>  A genmask(const A& a) {}
+
+  template<typename T, typename A> T genmask(const A& a) {}
 } }
 #endif
 

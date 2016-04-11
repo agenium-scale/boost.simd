@@ -16,6 +16,7 @@
 #include <boost/dispatch/function/make_callable.hpp>
 #include <boost/dispatch/hierarchy/functions.hpp>
 #include <boost/simd/detail/dispatch.hpp>
+#include <boost/simd/as.hpp>
 
 namespace boost { namespace simd
 {
@@ -29,9 +30,18 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag, genmask_);
   }
 
-  BOOST_DISPATCH_CALLABLE_DEFINITION(tag::genmask_,genmask);
+  namespace detail
+  {
+    BOOST_DISPATCH_CALLABLE_DEFINITION(tag::genmask_,genmask);
+  }
 
+  template<typename A>  BOOST_FORCEINLINE
+  auto genmask(const A& a) BOOST_NOEXCEPT_DECLTYPE_BODY(detail::genmask(a));
 
+  template<typename T, typename A> BOOST_FORCEINLINE T genmask(const A& a) BOOST_NOEXCEPT
+  {
+    return detail::genmask(a, as_<T>());
+  }
 } }
 
 #endif
