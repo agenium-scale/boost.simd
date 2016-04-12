@@ -16,7 +16,7 @@
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/sdk/native_cardinal.hpp>
-#include <boost/simd/sdk/abi_of.hpp>
+#include <boost/simd/meta/abi_of.hpp>
 
 namespace boost { namespace simd
 {
