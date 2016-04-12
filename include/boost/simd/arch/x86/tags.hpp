@@ -14,7 +14,7 @@
 #ifndef BOOST_SIMD_ARCH_X86_TAGS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_TAGS_HPP_INCLUDED
 
-#include <boost/simd/sdk/predef.hpp>
+#include <boost/simd/detail/predef.hpp>
 #include <boost/simd/arch/common/tags.hpp>
 
 namespace boost { namespace simd
