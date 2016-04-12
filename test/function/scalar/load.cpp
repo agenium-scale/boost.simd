@@ -8,7 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/load.hpp>
-#include <boost/simd/sdk/masked.hpp>
+#include <boost/simd/mask.hpp>
 #include <boost/simd/logical.hpp>
 
 #include <simd_test.hpp>
