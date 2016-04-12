@@ -62,6 +62,9 @@ namespace boost { namespace simd
     /// Logical not operator
     BOOST_FORCEINLINE logical operator !() { return {!value_}; }
 
+    /// Unary + operator
+    BOOST_FORCEINLINE logical operator +() const { return *this; }
+
     /// Convert a logical value to bool
     BOOST_FORCEINLINE operator bool() const { return value_; }
 

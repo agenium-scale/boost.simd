@@ -152,9 +152,9 @@ namespace boost { namespace simd { namespace detail
   // operator: +
   template<typename Storage>
   BOOST_FORCEINLINE
-  typename Storage::value_type operator+(pack_proxy<Storage> const& p) BOOST_NOEXCEPT
+  auto operator+(pack_proxy<Storage> const& p) BOOST_NOEXCEPT -> decltype(+p.get())
   {
-    return p.get();
+    return +p.get();
   }
 
   // operator: !
