@@ -57,10 +57,10 @@ namespace boost { namespace simd
     }
 
     /// Bitwise complement operator
-    BOOST_FORCEINLINE logical operator ~() { return {!value_}; }
+    BOOST_FORCEINLINE logical operator ~() const { return {!value_}; }
 
     /// Logical not operator
-    BOOST_FORCEINLINE logical operator !() { return {!value_}; }
+    BOOST_FORCEINLINE logical operator !() const { return {!value_}; }
 
     /// Unary + operator
     BOOST_FORCEINLINE logical operator +() const { return *this; }
