@@ -9,8 +9,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_SDK_IS_PACK_HPP_INCLUDED
-#define BOOST_SIMD_SDK_IS_PACK_HPP_INCLUDED
+#ifndef BOOST_SIMD_META_IS_PACK_HPP_INCLUDED
+#define BOOST_SIMD_META_IS_PACK_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
@@ -33,8 +33,30 @@ namespace boost { namespace simd
   template <typename T, std::size_t N, typename ABI>
   struct is_pack<pack<T, N, ABI>> : brigand::bool_<true> {};
 
+  /*!
+    @ingroup group-api
+    Eager short-cut for is_pack_t
+  **/
   template <typename T>
   using is_pack_t = typename is_pack<T>::type;
+
+   /*!
+    @ingroup  group-api
+    @brief    Checks if type is not a pack
+
+    For a given type @c Type, checks if said type is not a pack type
+
+    @tparam Type      Type to check
+  **/
+  template <typename T>
+  struct is_not_pack : brigand::not_<is_pack<T>> {};
+
+  /*!
+    @ingroup group-api
+    Eager short-cut for is_not_pack_t
+  **/
+  template <typename T>
+  using is_not_pack_t = typename is_not_pack<T>::type;
 } }
 
 #endif
