@@ -6,23 +6,10 @@
 ##                            http://www.boost.org/LICENSE_1_0.txt
 ##===================================================================================================
 
-## Larger test suites go there
-add_subdirectory(extract)
-add_subdirectory(genmask)
-add_subdirectory(insert)
-add_subdirectory(load)
-add_subdirectory(make)
-add_subdirectory(splat)
-
 set ( SOURCES
-  aligned_load.cpp
-  aligned_store.cpp
-  bitwise_cast.cpp
-  store.cpp
-  automap.cpp
-  autofold.cpp
-  autosplat.cpp
+  arithmetic.cpp
+  logical.cpp
 )
 
-make_unit( "boost.simd.function.simd"   ${SOURCES})
-make_coverage("boost.simd.function.simd"  ${SOURCES})
+make_unit( "boost.simd.function.simd.genmask"   ${SOURCES})
+make_coverage("boost.simd.function.simd.genmask"  ${SOURCES})

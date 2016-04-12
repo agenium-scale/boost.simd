@@ -30,27 +30,27 @@ namespace boost { namespace simd { namespace detail
   class pack_traits<boost::simd::logical<T>, N, std::array<boost::simd::logical<T>, N> >
   {
     public:
-    using storage_type      = std::array<boost::simd::logical<T>, N>;
+    using storage_type      = std::array<T, N>;
     using value_type        = boost::simd::logical<T>;
     using size_type         = std::size_t;
-    using reference         = value_type&;
-    using const_reference   = value_type const&;
     using storage_kind      = ::boost::simd::scalar_storage;
-    using substorage_type   = boost::simd::logical<T>;
+    using substorage_type   = T;
 
-    enum { static_size = N, element_size = 1 };
+    using static_range      = brigand::range<std::size_t, 0, N>;
+
+    enum { static_size = N, element_size = 1, number_of_vectors = 0 };
     enum { alignment = sizeof(T) };
 
-    template<typename Pack>
-    BOOST_FORCEINLINE static reference at(Pack& d, std::size_t i)
+    template<typename Pack> BOOST_FORCEINLINE
+    static typename Pack::reference at(Pack& d, std::size_t i) BOOST_NOEXCEPT
     {
-      return (d.storage())[i];
+      return {&d,i};
     }
 
-    template<typename Pack>
-    BOOST_FORCEINLINE static const_reference at(Pack const& d, std::size_t i)
+    template<typename Pack> BOOST_FORCEINLINE
+    static typename Pack::const_reference at(Pack const& d, std::size_t i) BOOST_NOEXCEPT
     {
-      return (d.storage())[i];
+      return {&d,i};
     }
   };
 
@@ -67,7 +67,13 @@ namespace boost { namespace simd { namespace detail
     using storage_kind    = ::boost::simd::aggregate_storage;
     using substorage_type = SIMD;
 
-    enum  { static_size = N, element_size = N / NumberOfVectors};
+    using static_range    = brigand::range<std::size_t, 0, NumberOfVectors>;
+
+    enum  { static_size = N
+          , element_size = N / NumberOfVectors
+          , number_of_vectors = NumberOfVectors
+          };
+
     enum  { alignment   = SIMD::alignment };
 
     public:

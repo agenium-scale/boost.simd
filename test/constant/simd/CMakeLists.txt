@@ -29,7 +29,7 @@ fact_6.cpp
 fact_7.cpp
 fact_8.cpp
 fact_9.cpp
-#false.cpp
+false.cpp
 fifteen.cpp
 five.cpp
 four.cpp
@@ -158,7 +158,7 @@ thousand.cpp
 three.cpp
 threeeps.cpp
 threepio_4.cpp
-#true.cpp
+true.cpp
 twelve.cpp
 twenty.cpp
 two.cpp
