@@ -355,10 +355,10 @@ namespace boost { namespace simd
   template <typename T, std::size_t N>
   std::ostream& operator<<(std::ostream& os, pack<T, N> const& p)
   {
-    os << '(' << p[0];
+    os << '(' << +p[0];
 
     for (std::size_t i=1; i != N; ++i)
-      os << ", " << p[i];
+      os << ", " << +p[i];
 
     return os << ')';
   }

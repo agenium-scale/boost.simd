@@ -149,6 +149,14 @@ namespace boost { namespace simd { namespace detail
 
 #undef  M0
 
+  // operator: +
+  template<typename Storage>
+  BOOST_FORCEINLINE
+  typename Storage::value_type operator+(pack_proxy<Storage> const& p) BOOST_NOEXCEPT
+  {
+    return p.get();
+  }
+
   // operator: !
   template<typename Storage>
   BOOST_FORCEINLINE bool operator!(pack_proxy<Storage> const& p) BOOST_NOEXCEPT
