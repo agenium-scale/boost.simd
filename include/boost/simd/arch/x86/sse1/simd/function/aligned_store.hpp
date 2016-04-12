@@ -13,7 +13,7 @@
 
 #include <boost/dispatch/adapted/common/pointer.hpp>
 #include <boost/align/is_aligned.hpp>
-#include <boost/simd/sdk/hierarchy/simd.hpp>
+#include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

@@ -14,7 +14,7 @@
 
 #include <boost/simd/function/scalar/unary_minus.hpp>
 #include <boost/simd/function/scalar/bitwise_cast.hpp>
-#include <boost/simd/sdk/hierarchy/logical.hpp>
+#include <boost/simd/meta/hierarchy/logical.hpp>
 #include <boost/simd/meta/as_arithmetic.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>

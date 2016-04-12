@@ -11,7 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_AUTOFOLD_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_AUTOFOLD_HPP_INCLUDED
 
-#include <boost/simd/sdk/hierarchy/simd.hpp>
+#include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/detail/diagnostic.hpp>
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/arch/common/tags.hpp>

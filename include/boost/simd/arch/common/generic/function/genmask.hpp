@@ -13,7 +13,7 @@
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_GENMASK_HPP_INCLUDED
 
 #include <boost/simd/function/scalar/bitwise_cast.hpp>
-#include <boost/simd/sdk/hierarchy/logical.hpp>
+#include <boost/simd/meta/hierarchy/logical.hpp>
 #include <boost/simd/meta/as_arithmetic.hpp>
 #include <boost/simd/constant/allbits.hpp>
 #include <boost/simd/constant/zero.hpp>
