@@ -11,8 +11,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_SDK_EXPECTED_CARDINAL_HPP_INCLUDED
-#define BOOST_SIMD_SDK_EXPECTED_CARDINAL_HPP_INCLUDED
+#ifndef BOOST_SIMD_META_EXPECTED_CARDINAL_HPP_INCLUDED
+#define BOOST_SIMD_META_EXPECTED_CARDINAL_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/arch/limits.hpp>

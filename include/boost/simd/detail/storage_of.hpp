@@ -17,7 +17,7 @@
 #include <boost/simd/config.hpp>
 #include <boost/simd/forward.hpp>
 #include <boost/simd/detail/as_simd.hpp>
-#include <boost/simd/sdk/expected_cardinal.hpp>
+#include <boost/simd/meta/expected_cardinal.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <type_traits>
 #include <array>
