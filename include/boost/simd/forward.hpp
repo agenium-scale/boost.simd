@@ -15,7 +15,7 @@
 #define BOOST_SIMD_FORWARD_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
-#include <boost/simd/sdk/native_cardinal.hpp>
+#include <boost/simd/meta/native_cardinal.hpp>
 #include <boost/simd/meta/abi_of.hpp>
 
 namespace boost { namespace simd

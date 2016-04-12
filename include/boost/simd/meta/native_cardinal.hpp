@@ -11,11 +11,11 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_SDK_NATIVE_CARDINAL_HPP_INCLUDED
-#define BOOST_SIMD_SDK_NATIVE_CARDINAL_HPP_INCLUDED
+#ifndef BOOST_SIMD_META_NATIVE_CARDINAL_HPP_INCLUDED
+#define BOOST_SIMD_META_NATIVE_CARDINAL_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
-#include <boost/simd/sdk/expected_cardinal.hpp>
+#include <boost/simd/meta/expected_cardinal.hpp>
 
 namespace boost { namespace simd
 {
