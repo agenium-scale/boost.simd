@@ -16,7 +16,7 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/function/is_odd.hpp>
-#include <boost/simd/sdk/is_not_scalar.hpp>
+#include <boost/simd/meta/is_not_scalar.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_floating.hpp>
 #include <boost/config.hpp>

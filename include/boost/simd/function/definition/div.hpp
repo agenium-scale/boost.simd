@@ -29,39 +29,6 @@ namespace boost { namespace simd
   }
 
   BOOST_DISPATCH_CALLABLE_DEFINITION(tag::div_,div);
-
-//   namespace bs = boost::simd;
-//   namespace bd = boost::dispatch;
-//   template < typename T>
-//   BOOST_FORCEINLINE T div(T const& a, T const& b )
-//   BOOST_NOEXCEPT
-//   {
-//     return bs::divides(a, b);
-//   }
-
-//   template < typename T, typename O>
-//   auto div(T const& a, T const& b, O const& )
-//     BOOST_NOEXCEPT_DECLTYPE(bs::divides(a, b, O()))
-//   {
-//     return bs::divides(a, b, O());
-//   }
-
-// #define BOOST_SIMD_DIV_WITH_OPTION(option)                      \
-//   template < typename T>                                        \
-//   BOOST_FORCEINLINE auto div(T const& a, T const& b             \
-//                          , bd::functor<bs::tag::option##_> const& ) \
-//     BOOST_NOEXCEPT_DECLTYPE(bs::div##option(a, b))              \
-//   {                                                             \
-//     return bs::div##option(a, b);                               \
-//   }                                                             \
-// /**/
-
-// BOOST_SIMD_DIV_WITH_OPTION(ceil)
-// BOOST_SIMD_DIV_WITH_OPTION(fix)
-// BOOST_SIMD_DIV_WITH_OPTION(floor)
-// BOOST_SIMD_DIV_WITH_OPTION(round)
-// BOOST_SIMD_DIV_WITH_OPTION(round2even)
-
 } }
 
 #endif

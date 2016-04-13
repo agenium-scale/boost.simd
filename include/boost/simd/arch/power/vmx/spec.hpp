@@ -14,7 +14,7 @@
 #ifndef BOOST_SIMD_ARCH_POWER_VMX_SPEC_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_POWER_VMX_SPEC_HPP_INCLUDED
 
-#include <boost/simd/sdk/predef.hpp>
+#include <boost/simd/detail/predef.hpp>
 
 #if BOOST_HW_SIMD_PPC == BOOST_HW_SIMD_PPC_VMX_VERSION
 

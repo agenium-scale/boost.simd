@@ -7,10 +7,12 @@
 ##===================================================================================================
 
 set ( SOURCES
+      as_arithmetic.cpp
+      as_logical.cpp
       cardinal_of.cpp
       downgrade.cpp
       is_scalar.cpp
-      logical.cpp
+      real_of.cpp
       upgrade.cpp
     )
 

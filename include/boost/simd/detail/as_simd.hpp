@@ -11,16 +11,16 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_SDK_AS_SIMD_HPP_INCLUDED
-#define BOOST_SIMD_SDK_AS_SIMD_HPP_INCLUDED
+#ifndef BOOST_SIMD_DETAIL_AS_SIMD_HPP_INCLUDED
+#define BOOST_SIMD_DETAIL_AS_SIMD_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/arch/spec.hpp>
 
-namespace boost { namespace simd
+namespace boost { namespace simd { namespace detail
 {
   /*!
-    @ingroup  group-api
+    @ingroup  group-detail
     @brief    Extension to Type mapping
 
     For a given couple @c Type x @c Cardinal, provides type and utility functions to handle data
@@ -30,9 +30,6 @@ namespace boost { namespace simd
     @tparam Extension Architectural tag for target extension
   **/
   template<typename Type, typename Extension> struct as_simd : ext::as_simd<Type,Extension> {};
-
-  template<typename Type, typename Extension>
-  using as_simd_t = typename as_simd<Type,Extension>::type;
-} }
+} } }
 
 #endif

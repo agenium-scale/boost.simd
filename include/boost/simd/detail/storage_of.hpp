@@ -16,8 +16,8 @@
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/forward.hpp>
-#include <boost/simd/sdk/as_simd.hpp>
-#include <boost/simd/sdk/expected_cardinal.hpp>
+#include <boost/simd/detail/as_simd.hpp>
+#include <boost/simd/meta/expected_cardinal.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <type_traits>
 #include <array>
@@ -97,7 +97,7 @@ namespace boost { namespace simd { namespace detail
   struct storage_of<Type,Cardinal,ABI,native_status>
   {
     using parent = storage_of<Type,Cardinal,typename limits<ABI>::parent>;
-    using base   = boost::simd::as_simd<Type,ABI>;
+    using base   = boost::simd::detail::as_simd<Type,ABI>;
     using type   = typename std::conditional< std::is_same< typename base::type
                                                           , brigand::no_such_type_
                                                           >::value

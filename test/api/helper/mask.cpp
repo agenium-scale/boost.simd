@@ -6,7 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/sdk/masked.hpp>
+#include <boost/simd/mask.hpp>
 #include <boost/dispatch/hierarchy_of.hpp>
 #include <boost/pointee.hpp>
 #include <simd_test.hpp>

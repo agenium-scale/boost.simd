@@ -18,7 +18,7 @@
 #include <boost/simd/function/simd/rem_pio2_straight.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/dispatch/meta/scalar_of.hpp>
-#include <boost/simd/cardinal_of.hpp>
+#include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/assert.hpp>

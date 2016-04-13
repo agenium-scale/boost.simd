@@ -17,7 +17,7 @@
 #include <boost/simd/function/abs.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/is_equal.hpp>
-#include <boost/simd/math.hpp>
+#include <boost/simd/detail/math.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

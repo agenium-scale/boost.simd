@@ -23,7 +23,7 @@
 #include <boost/simd/function/is_less_equal.hpp>
 #include <boost/simd/function/is_greater.hpp>
 #include <boost/simd/function/is_greater_equal.hpp>
-#include <boost/simd/sdk/is_not_pack.hpp>
+#include <boost/simd/meta/is_pack.hpp>
 
 namespace boost { namespace simd
 {

@@ -16,7 +16,7 @@
 
 #include <boost/dispatch/meta/value_of.hpp>
 #include <boost/dispatch/meta/model_of.hpp>
-#include <boost/simd/sdk/real_of.hpp>
+#include <boost/simd/meta/real_of.hpp>
 #include <boost/dispatch/hierarchy/fundamental.hpp>
 #include <boost/dispatch/property_of.hpp>
 

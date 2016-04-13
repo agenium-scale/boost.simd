@@ -11,8 +11,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_SDK_PREDEF_HPP_INCLUDED
-#define BOOST_SIMD_SDK_PREDEF_HPP_INCLUDED
+#ifndef BOOST_SIMD_DETAIL_PREDEF_HPP_INCLUDED
+#define BOOST_SIMD_DETAIL_PREDEF_HPP_INCLUDED
 
 /*
   Force the setup of specific SIMD x86 extension on MSVC.

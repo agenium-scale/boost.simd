@@ -12,7 +12,7 @@
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_LOAD_HPP_INCLUDED
 
 #include <boost/config.hpp>
-#include <boost/simd/sdk/masked.hpp>
+#include <boost/simd/mask.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/adapted/common/pointer.hpp>
 #include <boost/dispatch/adapted/std/iterator.hpp>
