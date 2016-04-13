@@ -13,8 +13,8 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IF_ZERO_ELSE_HPP_INCLUDED
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/cardinal_of.hpp>
-#include <boost/simd/sdk/is_bitwise_logical.hpp>
+#include <boost/simd/meta/cardinal_of.hpp>
+#include <boost/simd/meta/is_bitwise_logical.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/simd/bitwise_andnot.hpp>
 #include <boost/simd/function/simd/genmask.hpp>

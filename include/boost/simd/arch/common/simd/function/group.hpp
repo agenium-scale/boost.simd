@@ -13,7 +13,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_GROUP_HPP_INCLUDED
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/cardinal_of.hpp>
+#include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 #include <boost/simd/function/simd/deinterleave_first.hpp>
 #include <boost/simd/function/simd/deinterleave_second.hpp>

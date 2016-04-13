@@ -15,7 +15,7 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/constant/true.hpp>
 #include <boost/simd/constant/allbits.hpp>
-#include <boost/simd/sdk/as_logical.hpp>
+#include <boost/simd/meta/as_logical.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

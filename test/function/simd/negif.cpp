@@ -13,7 +13,7 @@
 #include <boost/simd/function/negif.hpp>
 #include <boost/simd/function/plus.hpp>
 #include <boost/simd/function/multiplies.hpp>
-#include <boost/simd/cardinal_of.hpp>
+#include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
 
 template <typename T, int N, typename Env>

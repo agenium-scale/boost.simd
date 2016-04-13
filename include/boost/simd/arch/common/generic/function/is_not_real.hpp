@@ -13,7 +13,7 @@
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_IS_NOT_REAL_HPP_INCLUDED
 
 #include <boost/simd/constant/false.hpp>
-#include <boost/simd/sdk/as_logical.hpp>
+#include <boost/simd/meta/as_logical.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

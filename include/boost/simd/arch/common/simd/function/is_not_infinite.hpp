@@ -13,7 +13,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IS_NOT_INFINITE_HPP_INCLUDED
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/sdk/as_logical.hpp>
+#include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/true.hpp>

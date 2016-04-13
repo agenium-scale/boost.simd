@@ -13,7 +13,7 @@
 #define BOOST_SIMD_DETAIL_DOWNBREAK_HPP_INCLUDED
 
 #include <boost/simd/pack.hpp>
-#include <boost/simd/cardinal_of.hpp>
+#include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/dispatch/meta/scalar_of.hpp>
 #include <boost/dispatch/meta/downgrade.hpp>
 

@@ -14,7 +14,7 @@
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/logical.hpp>
-#include <boost/simd/sdk/as_logical.hpp>
+#include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/function/simd/genmask.hpp>
 #include <boost/simd/function/simd/hmsb.hpp>
 #include <boost/dispatch/meta/scalar_of.hpp>

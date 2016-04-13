@@ -12,7 +12,7 @@
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/exp.hpp>
 #include <boost/simd/function/bits.hpp>
-#include <boost/simd/cardinal_of.hpp>
+#include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/options.hpp>
 

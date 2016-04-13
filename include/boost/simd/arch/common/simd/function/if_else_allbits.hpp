@@ -13,7 +13,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IF_ELSE_ALLBITS_HPP_INCLUDED
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/cardinal_of.hpp>
+#include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/function/simd/bitwise_ornot.hpp>
 #include <boost/simd/function/simd/genmask.hpp>
 #include <boost/simd/function/simd/if_else.hpp>

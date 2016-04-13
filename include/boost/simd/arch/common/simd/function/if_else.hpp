@@ -19,7 +19,7 @@
 #include <boost/simd/function/simd/logical_and.hpp>
 #include <boost/simd/function/simd/logical_andnot.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/sdk/is_bitwise_logical.hpp>
+#include <boost/simd/meta/is_bitwise_logical.hpp>
 //#include <boost/dispatch/meta/as_arithmetic.hpp>
 #include <boost/utility/enable_if.hpp>
 

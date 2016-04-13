@@ -13,7 +13,7 @@
 #define BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_IS_NOT_GREATER_EQUAL_HPP_INCLUDED
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/sdk/as_logical.hpp>
+#include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 
 namespace boost { namespace simd { namespace ext

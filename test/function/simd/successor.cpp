@@ -13,7 +13,7 @@
 #include <boost/simd/function/successor.hpp>
 #include <boost/simd/function/bitinteger.hpp>
 #include <boost/simd/function/adds.hpp>
-#include <boost/simd/cardinal_of.hpp>
+#include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/logical.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>

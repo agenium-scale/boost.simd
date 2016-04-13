@@ -13,7 +13,7 @@
 #include <boost/simd/function/log10.hpp>
 #include <boost/simd/function/rec.hpp>
 #include <boost/simd/function/bits.hpp>
-#include <boost/simd/cardinal_of.hpp>
+#include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/options.hpp>
 

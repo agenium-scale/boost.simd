@@ -13,8 +13,8 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IS_EQUAL_HPP_INCLUDED
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/sdk/as_logical.hpp>
-#include <boost/simd/cardinal_of.hpp>
+#include <boost/simd/meta/as_logical.hpp>
+#include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/utility/enable_if.hpp>
 

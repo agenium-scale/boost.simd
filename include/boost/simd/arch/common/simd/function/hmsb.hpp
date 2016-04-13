@@ -13,7 +13,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_HMSB_HPP_INCLUDED
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/cardinal_of.hpp>
+#include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/function/simd/genmask.hpp>

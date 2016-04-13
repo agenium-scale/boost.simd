@@ -17,7 +17,7 @@
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/function/simd/is_eqz.hpp>
 #include <boost/simd/function/simd/minus.hpp>
-#include <boost/simd/sdk/as_logical.hpp>
+#include <boost/simd/meta/as_logical.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

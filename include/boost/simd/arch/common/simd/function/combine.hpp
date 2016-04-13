@@ -13,7 +13,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_COMBINE_HPP_INCLUDED
 
 // #include <boost/simd/meta/hierarchy/simd.hpp>
-// #include <boost/simd/sdk/is_bitwise_logical.hpp>
+// #include <boost/simd/meta/is_bitwise_logical.hpp>
 // #include <boost/simd/sdk/meta/iterate.hpp>
 // #include <boost/simd/sdk/simd/meta/vector_of.hpp>
 // #include <boost/simd/sdk/meta/is_bitwise_logical.hpp>

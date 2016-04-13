@@ -16,7 +16,7 @@
 #include <boost/simd/function/simd/is_equal.hpp>
 #include <boost/simd/function/simd/neq.hpp>
 #include <boost/simd/function/simd/logical_not.hpp>
-#include <boost/simd/sdk/as_logical.hpp>
+#include <boost/simd/meta/as_logical.hpp>
 //#include <boost/simd/sdk/meta/as_arithmetic.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 

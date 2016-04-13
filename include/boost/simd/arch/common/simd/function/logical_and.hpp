@@ -16,7 +16,7 @@
 //#include <boost/simd/function/cardinal_of.hpp>
 #include <boost/simd/function/simd/genmask.hpp>
 #include <boost/simd/function/simd/mask2logical.hpp>
-#include <boost/simd/sdk/as_logical.hpp>
+#include <boost/simd/meta/as_logical.hpp>
 #include <boost/utility/enable_if.hpp>
 
 namespace boost { namespace simd { namespace ext

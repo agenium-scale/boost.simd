@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_ALL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_ALL_HPP_INCLUDED
 
-#include <boost/simd/sdk/as_logical.hpp>
+#include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/function/simd/genmask.hpp>
 #include <boost/simd/logical.hpp>
 

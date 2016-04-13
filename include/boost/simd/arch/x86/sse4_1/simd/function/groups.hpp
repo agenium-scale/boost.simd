@@ -13,7 +13,7 @@
 #define BOOST_SIMD_ARCH_X86_SSE4_1_SIMD_FUNCTION_GROUPS_HPP_INCLUDED
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/sdk/as_logical.hpp>
+#include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 #include <boost/simd/function/simd/shift_right.hpp>
 #include <boost/dispatch/meta/downgrade.hpp>

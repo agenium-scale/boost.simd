@@ -14,7 +14,7 @@
 #define BOOST_SIMD_SDK_IS_LOGICAL_MASK_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
-#include <boost/simd/sdk/is_bitwise_logical.hpp>
+#include <boost/simd/meta/is_bitwise_logical.hpp>
 
 namespace boost { namespace simd
 {

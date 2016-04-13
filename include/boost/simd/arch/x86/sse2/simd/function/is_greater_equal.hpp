@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_IS_GREATER_EQUAL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_IS_GREATER_EQUAL_HPP_INCLUDED
 
-#include <boost/simd/sdk/as_logical.hpp>
+#include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/function/simd/logical_not.hpp>
 #include <boost/simd/function/simd/is_less.hpp>
 
