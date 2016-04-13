@@ -22,10 +22,10 @@ namespace boost { namespace simd { namespace ext
    namespace bd = boost::dispatch;
    namespace bs = boost::simd;
    BOOST_DISPATCH_OVERLOAD(is_not_less_
-                          , (typename A0, typename X)
-                          , bd::cpu_
-                          , bs::pack_<bd::arithmetic_<A0>, X>
-                          , bs::pack_<bd::arithmetic_<A0>, X>
+                          , (typename A0)
+                          , bs::simd_
+                          , bs::pack_<bd::arithmetic_<A0>, bs::simd_native_>
+                          , bs::pack_<bd::arithmetic_<A0>, bs::simd_native_>
                           )
    {
       BOOST_FORCEINLINE bs::as_logical_t<A0> operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT

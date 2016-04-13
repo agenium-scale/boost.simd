@@ -14,8 +14,7 @@
 
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/eq.hpp>
-#include <boost/simd/function/simd/gt.hpp>
+#include <boost/simd/function/simd/is_equal.hpp>
 #include <boost/simd/function/simd/logical_and.hpp>
 #include <boost/simd/function/simd/logical_or.hpp>
 #include <boost/simd/function/simd/minus.hpp>
@@ -120,7 +119,7 @@ namespace boost { namespace simd { namespace ext
       type ah  = shuffle<1,1,3,3>(bitwise_cast<type >(a0));
       type bh  = shuffle<1,1,3,3>(bitwise_cast<type >(a1));
 
-      return bitwise_cast<result>(l_or(gt(ah,bh), l_and(eq(ah,bh), gt(al,bl))));
+      return bitwise_cast<result>(logical_or(is_greater(ah,bh), logical_and(is_equal(ah,bh), is_greater(al,bl))));
     }
   };
 
