@@ -18,6 +18,7 @@
 #include <boost/simd/detail/pack_traits.hpp>
 #include <boost/simd/detail/storage_of.hpp>
 #include <boost/simd/meta/is_power_of_2.hpp>
+#include <boost/simd/meta/is_not_scalar.hpp>
 #include <boost/simd/function/aligned_load.hpp>
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/function/insert.hpp>
@@ -123,7 +124,7 @@ namespace boost { namespace simd
       @param e End of the range to load from
     **/
     template < typename Iterator
-             , typename = typename std::enable_if<!std::is_fundamental<Iterator>::value>::type
+             , typename = typename std::enable_if<is_not_scalar<Iterator>::value>::type
              >
     BOOST_FORCEINLINE pack(Iterator b, Iterator e)
                     : data_( boost::simd::load<pack>(b,e).storage() )
