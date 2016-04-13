@@ -6,7 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/sdk/is_logical_mask.hpp>
+#include <boost/simd/meta/is_logical_mask.hpp>
 #include <boost/dispatch/adapted/std/array.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/simd/sdk/as_logical.hpp>

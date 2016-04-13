@@ -15,7 +15,7 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 #include <boost/simd/meta/as_logical.hpp>
-#include <boost/simd/sdk/is_logical_mask.hpp>
+#include <boost/simd/meta/is_logical_mask.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
 
 namespace boost { namespace simd { namespace ext
