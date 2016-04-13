@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_MAX_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_MAX_HPP_INCLUDED
 
-#include <boost/simd/sdk/hierarchy/simd.hpp>
+#include <boost/simd/meta/hierarchy/simd.hpp>
 #if !defined(BOOST_SIMD_NO_NANS) && defined(BOOST_SIMD_COMPILER_GCC)
 #  include <boost/simd/function/simd/multiplies.hpp>
 #  include <boost/simd/function/simd/if_else.hpp>

@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_CBRT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_CBRT_HPP_INCLUDED
 
-#include <boost/simd/sdk/hierarchy/simd.hpp>
+#include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/real_splat.hpp>
 #include <boost/simd/constant/third.hpp>

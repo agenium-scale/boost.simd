@@ -11,7 +11,7 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_INTERLEAVE_SECOND_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_INTERLEAVE_SECOND_HPP_INCLUDED
-#include <boost/simd/sdk/hierarchy/simd.hpp>
+#include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/function/shuffle.hpp>
 
 namespace boost { namespace simd { namespace ext

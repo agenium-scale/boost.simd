@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSE4_1_SIMD_FUNCTION_FLOOR_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE4_1_SIMD_FUNCTION_FLOOR_HPP_INCLUDED
 
-#include <boost/simd/sdk/hierarchy/simd.hpp>
+#include <boost/simd/meta/hierarchy/simd.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

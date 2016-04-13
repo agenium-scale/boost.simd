@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_HYPOT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_HYPOT_HPP_INCLUDED
 
-#include <boost/simd/sdk/hierarchy/simd.hpp>
+#include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/constant/maxexponentm1.hpp>
 #include <boost/simd/constant/minexponent.hpp>
 #include <boost/simd/function/simd/abs.hpp>

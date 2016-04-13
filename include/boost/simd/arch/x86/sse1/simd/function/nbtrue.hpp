@@ -11,7 +11,7 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_NBTRUE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_NBTRUE_HPP_INCLUDED
-#include <boost/simd/sdk/hierarchy/simd.hpp>
+#include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/inbtrue.hpp>
 
 namespace boost { namespace simd { namespace ext

@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SUBS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SUBS_HPP_INCLUDED
 
-#include <boost/simd/sdk/hierarchy/simd.hpp>
+#include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/simd/bitwise_and.hpp>

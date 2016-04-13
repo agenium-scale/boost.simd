@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_REM_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_REM_HPP_INCLUDED
 
-#include <boost/simd/sdk/hierarchy/simd.hpp>
+#include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/divfix.hpp>
 #include <boost/simd/function/simd/idivfix.hpp>
 #include <boost/simd/function/simd/is_invalid.hpp>

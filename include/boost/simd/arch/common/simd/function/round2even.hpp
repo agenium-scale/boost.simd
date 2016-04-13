@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ROUND2EVEN_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ROUND2EVEN_HPP_INCLUDED
 
-#include <boost/simd/sdk/hierarchy/simd.hpp>
+#include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/bitofsign.hpp>
 #include <boost/simd/function/simd/bitwise_xor.hpp>
 #include <boost/simd/function/simd/if_else.hpp>

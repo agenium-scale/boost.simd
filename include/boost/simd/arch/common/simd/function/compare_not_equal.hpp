@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_COMPARE_NOT_EQUAL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_COMPARE_NOT_EQUAL_HPP_INCLUDED
 
-#include <boost/simd/sdk/hierarchy/simd.hpp>
+#include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/any.hpp>
 #include <boost/simd/function/simd/is_not_equal.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
