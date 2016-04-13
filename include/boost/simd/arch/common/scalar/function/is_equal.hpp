@@ -45,19 +45,6 @@ namespace boost { namespace simd { namespace ext
   };
 
   BOOST_DISPATCH_OVERLOAD ( is_equal_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bd::scalar_< logical_<A0> >
-                          , bd::scalar_< logical_<A0> >
-                          )
-  {
-    BOOST_FORCEINLINE A0 operator()(A0 a0, A0 a1) const BOOST_NOEXCEPT
-    {
-      return (a0.value() == a1.value());
-    }
-  };
-
-  BOOST_DISPATCH_OVERLOAD ( is_equal_
                           , (typename T)
                           ,  bd::cpu_
                           ,  bd::scalar_<bd::unspecified_<T>>
