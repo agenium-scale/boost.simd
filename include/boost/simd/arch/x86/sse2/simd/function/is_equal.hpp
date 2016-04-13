@@ -12,18 +12,13 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_IS_EQUAL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_IS_EQUAL_HPP_INCLUDED
 
-#if defined(BOOST_SIMD_COMPILER_GCC) && BOOST_SIMD_GCC_VERSION < 40603
-#include <boost/simd/function/simd/if_nan_else.hpp>
-#include <boost/simd/function/simd/is_eqz_else.hpp>
-#include <boost/simd/function/simd/logical_and.hpp>
-#endif
 #include <boost/simd/meta/as_logical.hpp>
-
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd =  boost::dispatch;
   namespace bs =  boost::simd;
+
   BOOST_DISPATCH_OVERLOAD ( is_equal_
                           , (typename A0)
                           , bs::sse2_
@@ -38,6 +33,47 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
+BOOST_DISPATCH_OVERLOAD ( is_equal_
+                        , (typename A0)
+                        , bs::sse2_
+                        , bs::pack_<bd::ints8_<A0>,bs::sse_>
+                        , bs::pack_<bd::ints8_<A0>,bs::sse_>
+                        )
+  {
+    BOOST_FORCEINLINE bs::as_logical_t<A0> operator() ( const A0 & a0
+                                                      , const A0 & a1 ) const BOOST_NOEXCEPT
+    {
+      return _mm_cmpeq_epi8(a0,a1);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( is_equal_
+                          , (typename A0)
+                          , bs::sse2_
+                          , bs::pack_<bd::ints16_<A0>,bs::sse_>
+                          , bs::pack_<bd::ints16_<A0>,bs::sse_>
+                          )
+  {
+    BOOST_FORCEINLINE bs::as_logical_t<A0> operator() ( const A0 & a0
+                                                      , const A0 & a1 ) const BOOST_NOEXCEPT
+    {
+      return _mm_cmpeq_epi16(a0,a1);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( is_equal_
+                          , (typename A0)
+                          , bs::sse2_
+                          , bs::pack_<bd::ints32_<A0>,bs::sse_>
+                          , bs::pack_<bd::ints32_<A0>,bs::sse_>
+                          )
+  {
+    BOOST_FORCEINLINE bs::as_logical_t<A0> operator() ( const A0 & a0
+                                                      , const A0 & a1 ) const BOOST_NOEXCEPT
+    {
+      return _mm_cmpeq_epi32(a0,a1);
+    }
+  };
 } } }
 
 #endif
