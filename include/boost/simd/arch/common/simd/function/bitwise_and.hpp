@@ -16,6 +16,7 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/dispatch/function/overload.hpp>
+#include <type_traits>
 
 namespace boost { namespace simd { namespace ext
 {
