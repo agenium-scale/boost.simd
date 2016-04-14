@@ -13,45 +13,27 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_BITWISE_OR_HPP_INCLUDED
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/utility/enable_if.hpp>
+#include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
+#include <type_traits>
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
 
-  BOOST_DISPATCH_OVERLOAD(bitwise_or_
-                         , (typename A0,typename A1,typename X)
-                         , bd::cpu_
+  BOOST_DISPATCH_OVERLOAD_IF(bitwise_or_
+                         , (typename A0,typename A1,typename X, typename Y)
+                         , (brigand::not_<std::is_same<A0,A1>>)
+                         , bs::simd_
                          , bs::pack_<bd::arithmetic_<A0>,X>
-                         , bs::pack_<bd::arithmetic_<A1>,X>
+                         , bs::pack_<bd::arithmetic_<A1>,Y>
                          )
 
   {
-    BOOST_FORCEINLINE A0 operator()( const A0& a0, const A1& a1
-                                   , typename std::enable_if<
-                                     sizeof(A1) == sizeof(A0)
-                                     >::type* = 0
-      ) const BOOST_NOEXCEPT
-      {
-        return bitwise_or(a0, simd::bitwise_cast<A0>(a1));
-      }
-  };
-
-  BOOST_DISPATCH_OVERLOAD(bitwise_or_
-                         , (typename A0,typename X)
-                         , bd::cpu_
-                         , bs::pack_<bd::floating_<A0>,X>
-                         , bs::pack_<bd::arithmetic_<A0>,X>
-                         )
-
-  {
-    BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1
-                                   ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()( const A0& a0, const A1& a1) const BOOST_NOEXCEPT
     {
-      using iA0 = bd::as_integer_t<A0>;
-      return bitwise_cast<A0>(bitwise_or(bitwise_cast<iA0>(a0), a1));
+      return bitwise_or(a0, simd::bitwise_cast<A0>(a1));
     }
   };
 } } }

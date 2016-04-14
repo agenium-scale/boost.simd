@@ -9,9 +9,13 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
+#define BOOST_SIMD_ENABLE_DIAG
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/bitwise_and.hpp>
+#include <boost/simd/function/unary_minus.hpp>
+#include <boost/simd/constant/nan.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
+#include <boost/dispatch/meta/as_integer.hpp>
 #include <simd_test.hpp>
 
 template <typename T, std::size_t N, typename Env>
@@ -24,15 +28,14 @@ void test(Env& $)
   T a1[N], a2[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
-     a1[i] = (i%2) ? T(i) : T(-i);
-     a2[i] = (i%2) ? T(i+N) : T(-(i+N));
+     a1[i] = (i%2) ? T(i) : T(2*i);
+     a2[i] = (i%2) ? T(i+N) : T(1);
      b[i] = bs::bitwise_and(a1[i], a2[i]);
    }
   p_t aa1(&a1[0], &a1[N]);
   p_t aa2(&a2[0], &a2[N]);
   p_t bb(&b[0], &b[N]);
-  STF_EQUAL(bs::bitwise_and(aa1, aa2), bb);
-
+  STF_IEEE_EQUAL(bs::bitwise_and(aa1, aa2), bb);
 }
 
 STF_CASE_TPL("Check bitwise_and on pack" , STF_NUMERIC_TYPES)
@@ -40,51 +43,54 @@ STF_CASE_TPL("Check bitwise_and on pack" , STF_NUMERIC_TYPES)
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
-  test<T, N>($);
+ test<T, N>($);
   test<T, N/2>($);
-  test<T, N*2>($);
+ test<T, N*2>($);
 }
 
 template <typename T, std::size_t N, typename Env>
 void testm(Env& $)
 {
   namespace bs = boost::simd;
-  const std::size_t N1 = N*sizeof(T);
+  namespace bd = boost::dispatch;
+  using iT = bd::as_integer_t<T, unsigned>;
   using p_t = bs::pack<T, N>;
-  using pi_t = bs::pack<int8_t, N1>;
+  using pi_t = bs::pack<iT,N>;
 
-  T a1[N], b1[N];
-  int8_t a2[N1], b2[N1];
+  T a1[N], b1[N], b3[N];
+  iT a2[N], a3[N], b2[N], b4[N];
   for(std::size_t i = 0; i < N; ++i)
   {
-    a1[i] = (i%2) ? T(i) : T(-i);
+    a1[i] = T(i);
+    a2[i] = iT(1) << (sizeof(iT)*8-1);
+    a3[i] = iT(1);
   }
-  for(std::size_t i = 0; i < N1; ++i)
-  {
-     a2[i] = (i%2) ? T(i+N) : T(-(i+N));
-  }
-  auto za2 = reinterpret_cast<T*>(a2);
   for(std::size_t i = 0; i < N; ++i)
   {
-     b1[i] = bs::bitwise_and(a1[i], za2[i]);
+     b1[i] = bs::bitwise_and(a1[i], a2[i]);
+     b2[i] = bs::bitwise_and(a2[i], a1[i]);
+     b3[i] = bs::bitwise_and(a1[i], a3[i]);
+     b4[i] = bs::bitwise_and(a3[i], a1[i]);
   }
-  auto za1 = reinterpret_cast<int8_t*>(a1);
-  for(std::size_t i = 0; i < N1; ++i)
-  {
-     b2[i] = bs::bitwise_and(za1[i], a2[i]);
-  }
-
   p_t  aa1(&a1[0], &a1[0]+N);
-  pi_t aa2(&a2[0], &a2[0]+N1);
+  pi_t aa2(&a2[0], &a2[0]+N);
+  pi_t aa3(&a3[0], &a3[0]+N);
 
   p_t  bb1(&b1[0], &b1[0]+N);
-  STF_EQUAL(bs::bitwise_and(aa1, aa2), bb1);
+  p_t  bb3(&b3[0], &b3[0]+N);
+  STF_IEEE_EQUAL(bs::bitwise_and(aa1, aa2), bb1);
+  STF_IEEE_EQUAL(bs::bitwise_and(aa1, aa3), bb3);
 
-  pi_t bb2(&b2[0], &b2[0]+N1);
-  STF_EQUAL(bs::bitwise_and(aa2, aa1), bb2);
+
+  pi_t bb2(&b2[0], &b2[0]+N);
+  pi_t bb4(&b4[0], &b4[0]+N);
+  STF_IEEE_EQUAL(bs::bitwise_and(aa2, aa1), bb2);
+  STF_IEEE_EQUAL(bs::bitwise_and(aa3, aa1), bb4);
 }
 
-STF_CASE_TPL("Check bitwise_and on mixed type packs" , STF_IEEE_TYPES)
+
+
+STF_CASE_TPL("Check bitwise_and on pack" , STF_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
@@ -93,4 +99,3 @@ STF_CASE_TPL("Check bitwise_and on mixed type packs" , STF_IEEE_TYPES)
   testm<T, N/2>($);
   testm<T, N*2>($);
 }
-
