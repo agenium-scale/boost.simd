@@ -16,12 +16,15 @@ ALIASES += intconst="<a href=\"http://www.boost.org/doc/libs/release/libs/mpl/do
 
 # Resources
 OUTPUT_DIRECTORY        =
-INPUT                    = @Boost.SIMD_SOURCE_DIR@/include/
+INPUT                    = @Boost.SIMD_SOURCE_DIR@/include/boost/
+INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/
+INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/meta
+INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/meta/hierarchy
+INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/constant
+INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/function
 INPUT                   += @Boost.SIMD_SOURCE_DIR@/doc
 FILE_PATTERNS           = *.md *.hpp
-RECURSIVE               = YES
-
-EXCLUDE                = @Boost.SIMD_SOURCE_DIR@/include/boost/simd/detail/brigand.hpp
+RECURSIVE               = NO
 
 EXAMPLE_PATH            = @Boost.SIMD_SOURCE_DIR@/example
 #EXAMPLE_PATH           += @Boost.SIMD_SOURCE_DIR@/test/unit
@@ -42,7 +45,7 @@ QT_AUTOBRIEF            = YES
 MULTILINE_CPP_IS_BRIEF  = YES
 INHERIT_DOCS            = NO
 SEPARATE_MEMBER_PAGES   = YES
-DISTRIBUTE_GROUP_DOC    = NO
+DISTRIBUTE_GROUP_DOC    = YES
 SUBGROUPING             = NO
 INLINE_GROUPED_CLASSES  = NO
 INLINE_SIMPLE_STRUCTS   = NO
