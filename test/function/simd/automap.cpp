@@ -8,6 +8,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
+#define BOOST_SIMD_ENABLE_DIAG
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/definition/extract.hpp>
 #include <boost/simd/arch/common/generic/function/automap.hpp>
@@ -284,10 +285,10 @@ STF_CASE("Check automap behaviour on pack")
 
   test1<int, 4>($);
   test1<int, 8>($);
+  test1<int, 16>($);
 
   test1<char, 4>($);
   test1<char, 8>($);
-
   // --
 
   test2<double, 2>($);
@@ -299,6 +300,7 @@ STF_CASE("Check automap behaviour on pack")
 
   test2<int, 4>($);
   test2<int, 8>($);
+  test2<int, 16>($);
 
   test2<char, 4>($);
   test2<char, 8>($);
