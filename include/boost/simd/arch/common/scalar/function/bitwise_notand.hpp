@@ -23,7 +23,7 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
-  BOOST_DISPATCH_OVERLOAD ( bitwise_notor_
+  BOOST_DISPATCH_OVERLOAD ( bitwise_notand_
                           , (typename A0, typename A1)
                           , bd::cpu_
                           , bd::scalar_< bd::bool_<A0> >
