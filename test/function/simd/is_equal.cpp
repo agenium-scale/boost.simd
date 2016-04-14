@@ -45,7 +45,7 @@ STF_CASE_TPL("Check is_equal on pack", STF_NUMERIC_TYPES)
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
-//  test<T, N/2>($);
+  test<T, N/2>($);
   test<T, N*2>($);
 }
 
@@ -74,6 +74,7 @@ STF_CASE_TPL("Check is_equal on pack of logical", STF_NUMERIC_TYPES)
   using p_t = bs::pack<bs::logical<T>>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   testl<T, N>($);
-//  testl<T, N/2>($);
+  testl<T, N/2>($);
   testl<T, N*2>($);
 }
+
