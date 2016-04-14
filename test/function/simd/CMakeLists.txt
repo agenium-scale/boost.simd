@@ -18,6 +18,7 @@ set ( SOURCES
   aligned_load.cpp
   aligned_store.cpp
   bitwise_cast.cpp
+  enumerate.cpp
   store.cpp
   automap.cpp
   autofold.cpp
