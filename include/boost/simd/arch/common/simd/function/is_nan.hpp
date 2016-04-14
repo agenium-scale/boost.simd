@@ -15,7 +15,7 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/constant/false.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/simd/is_not_equal.hpp>
+#include <boost/simd/function/simd/is_unord.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -42,7 +42,7 @@ namespace boost { namespace simd { namespace ext
    {
       BOOST_FORCEINLINE bs::as_logical_t<A0>  operator()( const A0& a0) const BOOST_NOEXCEPT
       {
-         return (a0!=a0);
+         return is_unord(a0, a0);
       }
    };
 

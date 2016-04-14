@@ -14,7 +14,6 @@
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/meta/as_logical.hpp>
-#include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/constant/true.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/simd/is_greater_equal.hpp>
@@ -43,9 +42,9 @@ namespace boost { namespace simd { namespace ext
    {
      using result = bs::as_logical_t<A0>;
      inline result operator()(const A0&)const
-      {
-        return bs::True<result>();
-      }
+     {
+       return bs::True<result>();
+     }
    };
 
 } } }

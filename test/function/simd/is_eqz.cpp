@@ -9,40 +9,38 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
+#define BOOST_SIMD_ENABLE_DIAG
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/is_eqz.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
+#include <boost/simd/logical.hpp>
 #include <simd_test.hpp>
 
-template <typename T, int N, typename Env>
+template <typename T, std::size_t N, typename Env>
 void test(Env& $)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T, N>;
+  using pl_t = bs::pack<bs::logical<T>, N>;
 
-  namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
-
-  T a1[N], b[N];
-  for(int i = 0; i < N; ++i)
+  T a1[N];
+  bs::logical<T> b[N];
+  for(std::size_t i = 0; i < N; ++i)
   {
-     a1[i] = (i%2) ? T(i) : T(-i);
+     a1[i] = (i%2) ? T(0) : T(i);
      b[i] = bs::is_eqz(a1[i]);
    }
-  p_t aa1(&a1[0], &a1[N]);
-  p_t bb(&b[0], &b[N]);
-  std::cout << "aa1             " << aa1 << std::endl;
-  std::cout << "bb              " << bb << std::endl;
-  std::cout << "bs::is_eqz(aa1) " << bs::is_eqz(aa1) << std::endl;
-  STF_IEEE_EQUAL(bs::is_eqz(aa1), bb);
+  p_t aa1(&a1[0], &a1[0]+N);
+  pl_t bb(&b[0], &b[0]+N);
+  STF_EQUAL(bs::is_eqz(aa1), bb);
 }
 
-STF_CASE_TPL("Check is_eqz on pack" , STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check is_eqz on pack", STF_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
-//  test<T, N/2>($);
-//  test<T, Nx2>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }

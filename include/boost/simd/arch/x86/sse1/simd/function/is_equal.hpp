@@ -25,10 +25,10 @@ namespace boost { namespace simd { namespace ext
                           , bs::sse_
                           , bs::pack_<bd::single_<A0>, bs::sse_>
                           , bs::pack_<bd::single_<A0>, bs::sse_>
-                         )
+                          )
   {
     BOOST_FORCEINLINE bs::as_logical_t<A0> operator() ( const A0 & a0
-                                        , const A0 & a1 ) const BOOST_NOEXCEPT
+                                                      , const A0 & a1 ) const BOOST_NOEXCEPT
     {
       return _mm_cmpeq_ps(a0,a1);
     }
