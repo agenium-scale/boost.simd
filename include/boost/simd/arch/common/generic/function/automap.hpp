@@ -86,7 +86,6 @@ namespace boost { namespace simd { namespace ext
     BOOST_NOEXCEPT_IF(is_noexcept)
     {
       functor f;
-      std::cout << "noexcept " << std::boolalpha << is_noexcept << "\n";
       return result_type{ f(p0[N::value])... };
     }
 
@@ -102,7 +101,6 @@ namespace boost { namespace simd { namespace ext
       functor f;
       return result_type{ f(p0[N::value], p1[N::value])...  };
     }
-
 
     // ---------------------------------------------------------------------------------------------
     // (P, P, P)
