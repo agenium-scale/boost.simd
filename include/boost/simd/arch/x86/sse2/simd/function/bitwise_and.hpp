@@ -22,22 +22,20 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::integer_<A1>, bs::sse_>
                          )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0
-                                    , const A1 & a1 ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()( const A0 & a0, const A1 & a1 ) const BOOST_NOEXCEPT
     {
       return _mm_and_si128(a0, a1);
     }
   };
 
   BOOST_DISPATCH_OVERLOAD ( bitwise_and_
-                          , (typename A0, typename A1)
+                          , (typename A0)
                           , bs::sse2_
                           , bs::pack_<bd::double_<A0>, bs::sse_>
-                          , bs::pack_<bd::double_<A1>, bs::sse_>
+                          , bs::pack_<bd::double_<A0>, bs::sse_>
                          )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0
-                                    , const A1 & a1 ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()( const A0 & a0, const A0 & a1 ) const BOOST_NOEXCEPT
     {
       return _mm_and_pd(a0, a1);
     }

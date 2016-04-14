@@ -12,11 +12,11 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_BITWISE_AND_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_BITWISE_AND_HPP_INCLUDED
 
-#include <boost/simd/function/bitwise_and.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/detail/brigand.hpp>
 #include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/hierarchy.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/dispatch/hierarchy.hpp>
 #include <boost/config.hpp>
 #include <type_traits>
 
@@ -38,17 +38,15 @@ namespace boost { namespace simd { namespace ext
 
 
   namespace bd = boost::dispatch;
-  BOOST_DISPATCH_OVERLOAD ( bitwise_and_
-                          , (typename A0, typename A1)
-                          , bd::cpu_
-                          , bd::scalar_<bd::fundamental_<A0>>
-                          , bd::scalar_<bd::fundamental_<A1>>
-
-                          )
+  BOOST_DISPATCH_OVERLOAD_IF( bitwise_and_
+                            , (typename A0, typename A1)
+                            , (brigand::bool_<sizeof(A1) == sizeof(A0)>)
+                            , bd::cpu_
+                            , bd::scalar_<bd::fundamental_<A0>>
+                            , bd::scalar_<bd::fundamental_<A1>>
+                            )
   {
-    BOOST_FORCEINLINE
-    typename std::enable_if<sizeof(A1) == sizeof(A0), A0>::type
-    operator()(A0 a0, A1 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()(A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
       using b_t = bd::as_integer_t<A0, unsigned>;
       return bitwise_cast<A0>(b_t(bitwise_cast<b_t>(a0) & bitwise_cast<b_t>(a1)));
