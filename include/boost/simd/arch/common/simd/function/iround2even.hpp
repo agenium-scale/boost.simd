@@ -19,6 +19,7 @@
 #include <boost/simd/function/simd/is_greater.hpp>
 #include <boost/simd/function/simd/is_less.hpp>
 #include <boost/simd/function/simd/splat.hpp>
+#include <boost/simd/function/fast.hpp>
 #include <boost/dispatch/meta/scalar_of.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 
@@ -46,14 +47,14 @@ namespace boost { namespace simd { namespace ext
       #ifndef BOOST_SIMD_NO_NANS
         A0 aa0 = if_zero_else(is_nan(a0), a0);
         return if_else(bs::lt(aa0, Vix), Valmin<result>(),
-                       if_else(bs::gt(aa0, Vax), Valmax<result>(),
-                               iround2even(aa0, bs::fast_)
+                       if_else(bs::is_greater(aa0, Vax), Valmax<result>(),
+                               bs::fast_(iround2even)(aa0)
                               )
                       );
       #else
         return if_else(bs::lt(a0, Vix), Valmin<result>(),
-                       if_else(bs::gt(a0, Vax), Valmax<result>(),
-                               iround2even(a0, bs::fast_)
+                       if_else(bs::is_greater(a0, Vax), Valmax<result>(),
+                               bs::fast_(iround2even(a0))
                               )
                       );
       #endif

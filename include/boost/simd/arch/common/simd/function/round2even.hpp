@@ -45,12 +45,12 @@ namespace boost { namespace simd { namespace ext
       BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
         const A0 s   = bitofsign(a0);
-        const A0 v   = a0 ^ s;
+        const A0 v   = bitwise_xor(a0, s);
         const A0 t2n = bs::Twotonmb<A0>();
         const A0 d0  = v+t2n;
         const A0 d   = d0-t2n;
         const A0 d1  = if_else(lt(v,t2n),d,v);
-        return (d1^s);
+        return bitwise_xor(d1, s);
       }
    };
 } } }
