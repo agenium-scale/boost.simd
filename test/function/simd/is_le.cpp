@@ -47,3 +47,4 @@ STF_CASE_TPL("Check is_le on pack" , STF_NUMERIC_TYPES)
   test<T, N/2>($);
   test<T, Nx2>($);
 }
+
