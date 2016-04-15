@@ -22,7 +22,7 @@ namespace boost { namespace simd
 {
   namespace tag
   {
-    BOOST_DISPATCH_MAKE_TAG(ext, broadcast_, boost::dispatch::elementwise_<broadcast_>);
+    BOOST_DISPATCH_MAKE_TAG(ext, broadcast_, boost::dispatch::unspecified_<broadcast_>);
   }
 
   namespace ext

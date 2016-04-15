@@ -18,6 +18,7 @@ set ( SOURCES
   aligned_load.cpp
   aligned_store.cpp
   bitwise_cast.cpp
+  broadcast.cpp
   enumerate.cpp
   store.cpp
   automap.cpp
