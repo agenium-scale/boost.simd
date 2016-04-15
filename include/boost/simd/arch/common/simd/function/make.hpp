@@ -42,16 +42,32 @@ namespace boost { namespace simd { namespace ext
     }
 
     static inline Target do_( Values const&... vs
-                              , ::boost::simd::aggregate_storage const&
-                              ) BOOST_NOEXCEPT
+                            , ::boost::simd::aggregate_storage const&
+                            ) BOOST_NOEXCEPT
+    {
+      using value_type = typename Target::value_type;
+      std::initializer_list<value_type> lst{ static_cast<value_type>(vs)... };
+      return load<Target>(lst.begin());
+    }
+  };
+
+  template<typename Target, typename... Values>
+  struct make_logical_helper
+  {
+    using storage_t = typename Target::storage_type;
+
+    static inline Target do_( Values const&... vs
+                            , ::boost::simd::aggregate_storage const&
+                            ) BOOST_NOEXCEPT
     {
       using value_type = typename Target::value_type;
       std::initializer_list<value_type> lst{ static_cast<value_type>(vs)... };
       return load<Target>(lst.begin());
     }
 
+    template<typename K>
     static inline Target do_( Values const&... vs
-                            , ::boost::simd::native_storage const&
+                            , K const&
                             ) BOOST_NOEXCEPT
     {
       using   value_t = typename as_arithmetic_t<Target>::value_type;
@@ -99,7 +115,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE target_t operator()(Target const&, Values const&... vs) const BOOST_NOEXCEPT
     {
-      return make_helper<target_t,Values...>::do_(vs..., typename target_t::storage_kind{});
+      return make_logical_helper<target_t,Values...>::do_(vs..., typename target_t::storage_kind{});
     }
   };
 } } }
