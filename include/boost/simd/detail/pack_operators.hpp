@@ -37,7 +37,6 @@
 #include <boost/simd/detail/brigand.hpp>
 
 #include <boost/simd/meta/is_pack.hpp>
-#include <boost/simd/meta/is_logical.hpp>
 
 namespace boost { namespace simd
 {
