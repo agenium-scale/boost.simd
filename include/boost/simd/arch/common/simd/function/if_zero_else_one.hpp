@@ -15,13 +15,13 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/if_zero_else.hpp>
 #include <boost/simd/constant/one.hpp>
+#include <boost/simd/meta/as_arithmetic.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
    namespace bd = boost::dispatch;
    namespace bs = boost::simd;
    BOOST_DISPATCH_OVERLOAD(if_zero_else_one_
-
                           , (typename A0, typename X)
                           , bd::cpu_
                           , bs::pack_<bd::arithmetic_<A0>, X>
@@ -40,7 +40,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bs::logical_<A0>, X>
                           )
    {
-      using result = A0;
+     using result = bs::as_arithmetic_t<A0>;
       BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
       {
         return if_zero_else(a0, One<result>());

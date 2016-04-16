@@ -11,11 +11,11 @@
 //==================================================================================================
 #define BOOST_SIMD_ENABLE_DIAG
 #include <boost/simd/pack.hpp>
-#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/false.hpp>
 #include <boost/simd/constant/true.hpp>
-#include <boost/simd/constant/allbits.hpp>
-#include <boost/simd/function/if_allbits_else.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/function/if_one_else_zero.hpp>
 #include <boost/simd/function/plus.hpp>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
@@ -27,20 +27,18 @@ void test(Env& $)
   namespace bs = boost::simd;
   using p_t = bs::pack<T, N>;
 
-  T a1[N], a2[N], b[N];
+  T a1[N], b[N];
   for(int i = 0; i < N; ++i)
   {
-     a1[i] = (i%2) ? T(1) : T(0);
-     a2[i] = (i%2) ? T(i+N) : T(-(i+N));
-    b[i] = a1[i] ? bs::Allbits<T>() :a2[i];
+     a1[i] = (i%2) ? T(2) : T(0);
+    b[i] = a1[i] ? bs::One<T>():bs::Zero<T>();
    }
   p_t aa1(&a1[0], &a1[N]);
-  p_t aa2(&a2[0], &a2[N]);
   p_t bb(&b[0], &b[N]);
-  STF_IEEE_EQUAL(bs::if_allbits_else(aa1, aa2), bb);
+  STF_IEEE_EQUAL(bs::if_one_else_zero(aa1), bb);
 }
 
-STF_CASE_TPL("Check if_allbits_else on pack" , STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check if_one_else_zero on pack" , STF_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
@@ -59,20 +57,18 @@ void testl(Env& $)
   using pl_t = bs::pack<lT, N>;
 
   lT a1[N];
-  T a2[N], b[N];
+  T  b[N];
   for(int i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? bs::True<lT>() : bs::False<lT>();
-    a2[i] = (i%2) ? T(i+N) : T(-(i+N));
-    b[i] = a1[i] ? bs::Allbits<T>() :a2[i];
+    b[i] = a1[i] ? bs::One<T>():bs::Zero<T>();
   }
   pl_t aa1(&a1[0], &a1[N]);
-  p_t aa2(&a2[0], &a2[N]);
   p_t bb(&b[0], &b[N]);
-  STF_IEEE_EQUAL(bs::if_allbits_else(aa1, aa2), bb);
+  STF_IEEE_EQUAL(bs::if_one_else_zero(aa1), bb);
 }
 
-STF_CASE_TPL("Check if_allbits_else on pack of logical" , STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check if_one_else_zero on pack of logical" , STF_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
