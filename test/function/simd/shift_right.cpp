@@ -9,6 +9,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
+#define BOOST_SIMD_ENABLE_DIAG
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/shift_right.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
@@ -34,19 +35,18 @@ void test(Env& $)
   p_t aa1(&a1[0], &a1[N]);
   p_t bb(&b[0], &b[N]);
   p_t cc(&c[0], &c[N]);
-  std::cout <<" aa1 "<<  aa1 << std::endl;
-  std::cout <<" bb  "<<  bb  << std::endl;
-  std::cout <<" cc  "<<  cc  << std::endl;
   STF_IEEE_EQUAL(bs::shift_right(aa1, sh1), bb);
   STF_IEEE_EQUAL(bs::shift_right(aa1, sh2), cc);
+  STF_IEEE_EQUAL(aa1 >> sh1, bb);
+  STF_IEEE_EQUAL(aa1 >> sh2, cc);
 }
 
-STF_CASE_TPL("Check shift_right on pack" ,  (uint8_t)(int16_t)(int32_t)(int64_t)(uint16_t)(uint32_t)(uint64_t)(float)(double))//STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check shift_right on pack" ,  STF_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
-//  test<T, N/2>($);
-//  test<T, Nx2>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }

@@ -30,7 +30,7 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd =  boost::dispatch;
   namespace bs =  boost::simd;
-  //TODO
+  //TODO as split available
 //   BOOST_DISPATCH_OVERLOAD ( shift_right_
 //                           , (typename A0,typename A1 )
 //                           , bs::sse2_
@@ -53,7 +53,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( shift_right_
                           , (typename A0,typename A1 )
                           , bs::sse2_
-                          , bs::pack_<bd::ints16_<A0>, bs::sse_>
+                          , bs::pack_<bd::int16_<A0>, bs::sse_>
                           , bd::scalar_<bd::integer_<A1>>
                          )
   {
@@ -62,6 +62,35 @@ namespace boost { namespace simd { namespace ext
     {
       BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "shift_right sse2: a shift is out of range");
       return _mm_srai_epi16(a0, a1);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( shift_right_
+                          , (typename A0,typename A1 )
+                          , bs::sse2_
+                          , bs::pack_<bd::uint16_<A0>, bs::sse_>
+                          , bd::scalar_<bd::integer_<A1>>
+                         )
+  {
+    BOOST_FORCEINLINE A0 operator() ( const A0 & a0
+                                    , const A1 & a1 ) const BOOST_NOEXCEPT
+    {
+      BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "shift_right sse2: a shift is out of range");
+      return _mm_srli_epi16(a0, a1);
+    }
+  };
+  BOOST_DISPATCH_OVERLOAD ( shift_right_
+                          , (typename A0,typename A1 )
+                          , bs::sse2_
+                          , bs::pack_<bd::uint32_<A0>, bs::sse_>
+                          , bd::scalar_<bd::integer_<A1>>
+                         )
+  {
+    BOOST_FORCEINLINE A0 operator() ( const A0 & a0
+                                    , const A1 & a1 ) const BOOST_NOEXCEPT
+    {
+      BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "shift_right sse2: a shift is out of range");
+      return _mm_srli_epi32(a0, int(a1));
     }
   };
 
@@ -79,7 +108,6 @@ namespace boost { namespace simd { namespace ext
       return _mm_srai_epi32(a0, int(a1));
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( shift_right_
                           , (typename A0,typename A1 )
                           , bs::sse2_
@@ -111,9 +139,7 @@ namespace boost { namespace simd { namespace ext
     {
       BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "shift_right sse2 uint8: a shift is out of range");
       using gen_t = pack<int_t, 4>;
-//      A0 const Mask1 = bitwise_cast<A0>(Ratio<gen_t, int_t(0x00ff00ff)>());
       A0 const Mask1 = bitwise_cast<A0>(splat<gen_t>(0x00ff00ffll));
-//      A0 const Mask2 = bitwise_cast<A0>(Ratio<gen_t, int_t(0xff00ff00)>());
       A0 const Mask2 = bitwise_cast<A0>(splat<gen_t>(0xff00ff00ll));
 
       A0 tmp  = bitwise_and(a0, Mask1);
@@ -121,7 +147,7 @@ namespace boost { namespace simd { namespace ext
       tmp1 = bitwise_and(tmp1, Mask1);
       tmp = bitwise_and(a0, Mask2);
       A0 tmp3 = _mm_srli_epi16(tmp, int(a1));
-      return tmp1 | bitwise_and(tmp3, Mask2);
+      return bitwise_or(tmp1, bitwise_and(tmp3, Mask2));
     }
   };
 } } }

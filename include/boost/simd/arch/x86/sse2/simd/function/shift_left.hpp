@@ -43,16 +43,14 @@ namespace boost { namespace simd { namespace ext
       using int_t =  detail::make_dependent_t<std::uint64_t,A0>;
       using gen_t = pack<int_t>;
       BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "shift_left ints8 sse2: a shift is out of range");
-//      A0 const Mask1 = bitwise_cast<A0>( Constant<gen_t, 0x00ff00ff00ff00ffull>());
-      A0 const Mask1 = bitwise_cast<A0>(splat<gen_t>(0x00ff00ff00ff00ffull));
-//      A0 const Mask2 = bitwise_cast<A0>( Constant<gen_t, 0xff00ff00ff00ff00ull>());
-      A0 const Mask2 = bitwise_cast<A0>(splat<gen_t>(0xff00ff00ff00ff00ull));
+      A0 const Mask1 = bitwise_cast<A0>( Constant<gen_t, 0x00ff00ff00ff00ffull>());
+      A0 const Mask2 = bitwise_cast<A0>( Constant<gen_t, 0xff00ff00ff00ff00ull>());
       A0 tmp  = bitwise_and(a0, Mask1);
       A0 tmp1 = _mm_slli_epi16(tmp, int(a1));
       tmp1 = bitwise_and(tmp1, Mask1);
       tmp = bitwise_and(a0, Mask2);
       A0 tmp3 = _mm_slli_epi16(tmp, int(a1));
-      return tmp1 | bitwise_and(tmp3, Mask2);
+      return bitwise_or(tmp1, bitwise_and(tmp3, Mask2));
     }
   };
   BOOST_DISPATCH_OVERLOAD ( shift_left_
@@ -88,3 +86,4 @@ namespace boost { namespace simd { namespace ext
 } } }
 
 #endif
+
