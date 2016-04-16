@@ -9,6 +9,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
+#define BOOST_SIMD_ENABLE_DIAG
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/sqrt.hpp>
 #include <boost/simd/function/bits.hpp>
@@ -21,13 +22,10 @@ void test(Env& $)
   namespace bs = boost::simd;
   using p_t = bs::pack<T, N>;
 
-  namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
-
   T a1[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
-    a1[i] =  T(i);
+    a1[i] =  T(N-i);
     b[i] = bs::sqrt(a1[i]) ;
   }
   p_t aa1(&a1[0], &a1[N]);
@@ -38,12 +36,12 @@ void test(Env& $)
   STF_IEEE_EQUAL(bs::sqrt(aa1), bb);
 }
 
-STF_CASE_TPL("Check sqrt on pack" , (float)(double)(uint32_t)STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check sqrt on pack" , STF_IEEE_TYPES) //TODO NUMERIC
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
-//  test<T, N/2>($);
-//  test<T, Nx2>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }
