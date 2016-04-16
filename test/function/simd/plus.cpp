@@ -1,54 +1,47 @@
-//==============================================================================
-//         Copyright 2003 - 2012   LASMEA UMR 6602 CNRS/Univ. Clermont II
-//         Copyright 2009 - 2012   LRI    UMR 8623 CNRS/Univ Paris Sud XI
-//
-//          Distributed under the Boost Software License, Version 1.0.
-//                 See accompanying file LICENSE.txt or copy at
-//                     http://www.boost.org/LICENSE_1_0.txt
-//==============================================================================
-#include <boost/simd/function/plus.hpp>
-#include <simd_test.hpp>
+//==================================================================================================
+/*!
+  @file
+
+  Copyright 2016 NumScale SAS
+  Copyright 2016 J.T. Lapreste
+
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+*/
+//==================================================================================================
+#define BOOST_SIMD_ENABLE_DIAG
 #include <boost/simd/pack.hpp>
+#include <boost/simd/function/plus.hpp>
+#include <boost/simd/meta/cardinal_of.hpp>
+#include <simd_test.hpp>
 
-
-STF_CASE_TPL("plus", STF_NUMERIC_TYPES)
+template <typename T, std::size_t N, typename Env>
+void test(Env& $)
 {
   namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
-  using bs::plus;
-  using p_t = bs::pack < T> ;
-  static const std::size_t N = bs::cardinal_of<p_t>::value;
-  T a[16] = {1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4 };
-  p_t aa(&a[0], &a[N]);
-  T b[16] = {5, 6, 7, 8, 5, 6, 7, 8, 5, 6, 7, 8, 5, 6, 7, 8 };
+  using p_t = bs::pack<T, N>;
+
+  T a1[N], a2[N], b[N];
+  for(std::size_t i = 0; i < N; ++i)
+  {
+     a1[i] = (i%2) ? T(i) : T(-i);
+     a2[i] = (i%2) ? T(i+N) : T(-(i+N));
+     b[i] = bs::plus(a1[i], a2[i]);
+   }
+  p_t aa1(&a1[0], &a1[N]);
+  p_t aa2(&a2[0], &a2[N]);
   p_t bb(&b[0], &b[N]);
-  T c[16] = {6, 8, 10, 12, 6, 8, 10, 12, 6, 8, 10, 12, 6, 8, 10, 12 };
-  p_t cc(&c[0], &c[N]);
-  p_t dd = (aa+bb);
-  p_t ee = plus(aa, bb);
-  STF_IEEE_EQUAL(cc, dd);
-  STF_IEEE_EQUAL(cc, ee);
+  STF_IEEE_EQUAL(bs::plus(aa1, aa2), bb);
+  STF_IEEE_EQUAL(aa1+aa2, bb);
+
 }
 
-STF_CASE_TPL("plus 2 ", STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check plus on pack" , STF_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
-  using bs::plus;
-  using p_t = bs::pack < T, 4> ;
+  using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
-  T a[16] = {1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4 };
-  p_t aa(&a[0], &a[N]);
-  T b[16] = {5, 6, 7, 8, 5, 6, 7, 8, 5, 6, 7, 8, 5, 6, 7, 8 };
-  p_t bb(&b[0], &b[N]);
-  T c[16] = {6, 8, 10, 12, 6, 8, 10, 12, 6, 8, 10, 12, 6, 8, 10, 12 };
-  p_t cc(&c[0], &c[N]);
-  p_t dd = (aa+bb);
-  p_t ee = plus(aa, bb);
-  STF_IEEE_EQUAL(cc, dd);
-  std::cout << "aa " << aa << std::endl;
-  std::cout << "bb " << bb << std::endl;
-  std::cout << "ee " << dd << std::endl;
-  STF_IEEE_EQUAL(cc, ee);
+  test<T, N>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }
-
