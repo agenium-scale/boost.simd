@@ -36,6 +36,7 @@ void test(Env& $)
   p_t aa2(&a2[0], &a2[N]);
   p_t bb(&b[0], &b[N]);
   STF_IEEE_EQUAL(bs::bitwise_xor(aa1, aa2), bb);
+  STF_IEEE_EQUAL(aa1^aa2, bb);
 }
 
 STF_CASE_TPL("Check bitwise_xor on pack" , STF_NUMERIC_TYPES)
@@ -80,7 +81,6 @@ void testm(Env& $)
   p_t  bb3(&b3[0], &b3[0]+N);
   STF_IEEE_EQUAL(bs::bitwise_xor(aa1, aa2), bb1);
   STF_IEEE_EQUAL(bs::bitwise_xor(aa1, aa3), bb3);
-
 
   pi_t bb2(&b2[0], &b2[0]+N);
   pi_t bb4(&b4[0], &b4[0]+N);

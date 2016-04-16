@@ -81,7 +81,6 @@ void testm(Env& $)
   STF_IEEE_EQUAL(bs::bitwise_or(aa1, aa2), bb1);
   STF_IEEE_EQUAL(bs::bitwise_or(aa1, aa3), bb3);
 
-
   pi_t bb2(&b2[0], &b2[0]+N);
   pi_t bb4(&b4[0], &b4[0]+N);
   STF_IEEE_EQUAL(bs::bitwise_or(aa2, aa1), bb2);

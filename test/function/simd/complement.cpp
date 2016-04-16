@@ -31,6 +31,7 @@ void test(Env& $)
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
   STF_IEEE_EQUAL(bs::complement(aa1), bb);
+  STF_IEEE_EQUAL(~aa1, bb);
 }
 
 STF_CASE_TPL("Check complement on pack" , STF_NUMERIC_TYPES)
@@ -42,3 +43,4 @@ STF_CASE_TPL("Check complement on pack" , STF_NUMERIC_TYPES)
   test<T, N/2>($);
   test<T, N*2>($);
 }
+
