@@ -34,6 +34,7 @@ void test(Env& $)
   p_t aa2(&a2[0], &a2[N]);
   p_t bb(&b[0], &b[N]);
   STF_IEEE_EQUAL(bs::divides(aa1, aa2), bb);
+  STF_IEEE_EQUAL(aa1/aa2, bb);
 }
 
 STF_CASE_TPL("Check divides on pack" , STF_NUMERIC_TYPES)
@@ -42,6 +43,6 @@ STF_CASE_TPL("Check divides on pack" , STF_NUMERIC_TYPES)
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
-//  test<T, N/2>($);
-//  test<T, Nx2>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }
