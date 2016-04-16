@@ -81,6 +81,9 @@ namespace boost { namespace simd
     /// @brief pack type rebinding alias
     template<typename U> using rebind = pack<U,N>;
 
+    /// @brief pack type rebinding alias
+    template<std::size_t M> using resize = pack<T,M>;
+
     public:
 
     /*!
