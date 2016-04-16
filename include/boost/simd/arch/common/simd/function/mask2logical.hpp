@@ -31,11 +31,10 @@ namespace boost { namespace simd { namespace ext
   {
     using result =  bs::as_logical_t<A0> ;
     BOOST_FORCEINLINE result operator()( const A0& a0
-//                                        , typename std::enable_if<
-//                                             bs::is_logical_mask<typename result::type>
-//                                          >*= 0
                                        ) const BOOST_NOEXCEPT
     {
+//       std::cout << a0 << std::endl;
+//       std::cout << typeindex::type_id < A0>() << std::endl;
       BOOST_ASSERT_MSG(assert_is_mask(a0), "Argument to mask2logical is not a valid logical mask");
       return bitwise_cast<result>(a0);
     }

@@ -16,22 +16,25 @@
 #include <boost/simd/function/simd/bitwise_andnot.hpp>
 #include <boost/simd/function/simd/genmask.hpp>
 #include <boost/simd/function/simd/mask2logical.hpp>
+#include <boost/simd/meta/as_logical.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
    namespace bd = boost::dispatch;
    namespace bs = boost::simd;
-   BOOST_DISPATCH_OVERLOAD(logical_andnot_
-                          , (typename A0, typename A1, typename X)
-                          , bd::cpu_
-                          , bs::pack_<bd::fundamental_<A0>, X>
-                          , bs::pack_<bd::fundamental_<A1>, X>
-                          )
-   {
-      BOOST_FORCEINLINE bs::as_logical_t<A0>  operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
-      {
-        return mask2logical(bitwise_andnot(genmask(a0), genmask(a1)));
-      }
+  BOOST_DISPATCH_OVERLOAD_IF(logical_andnot_
+                            , (typename A0, typename A1, typename X)
+                            , (brigand::bool_<A1::static_size == A0::static_size>)
+                            , bd::cpu_
+                            , bs::pack_<bd::fundamental_<A0>, X>
+                            , bs::pack_<bd::fundamental_<A1>, X>
+                            )
+  {
+    BOOST_FORCEINLINE bs::as_logical_t<A0>  operator()( const A0& a0
+                                                       , const A1& a1) const BOOST_NOEXCEPT
+     {
+       return mask2logical(bitwise_andnot(genmask(a0), genmask(a1)));
+     }
    };
 
 } } }
