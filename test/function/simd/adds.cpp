@@ -9,6 +9,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
+#define BOOST_SIMD_ENABLE_DIAG
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/adds.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
@@ -20,14 +21,11 @@ void test(Env& $)
   namespace bs = boost::simd;
   using p_t = bs::pack<T, N>;
 
-  namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
-
   T a1[N], a2[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
      a1[i] = (i%2) ? T(i) : T(-i);
-     a2[i] = T(i); //(i%2) ? T(i+N) : T(-(i+N));
+     a2[i] = T(i);
      b[i] = bs::adds(a1[i], a2[i]);
    }
   p_t aa1(&a1[0], &a1[N]);
@@ -43,6 +41,6 @@ STF_CASE_TPL("Check adds on pack" , STF_NUMERIC_TYPES)
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
-//  test<T, N/2>($);
-//  test<T, Nx2>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }

@@ -22,6 +22,7 @@
 #include <boost/simd/function/simd/genmask.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
 #include <boost/simd/function/simd/if_zero_else_one.hpp>
+#include <boost/simd/function/simd/inc.hpp>
 #include <boost/simd/function/simd/is_eqz.hpp>
 #include <boost/simd/function/simd/is_nez.hpp>
 #include <boost/simd/function/simd/logical_and.hpp>
@@ -74,7 +75,7 @@ namespace boost { namespace simd { namespace ext
         using sA0 = bd::scalar_of_t<A0>;
         auto iseqza1 = is_eqz(a1);
         // replace valmin/-1 by (valmin+1)/-1
-        A0 x = a0 + if_zero_else_one((a1 + One<A0>()) | (a0 + Valmin<A0>()));
+        A0 x = a0 + if_zero_else_one(inc(a1) | (a0 + Valmin<A0>()));
         // negative -> valmin
         // positive -> valmax
         const A0 x2 = bitwise_xor(Valmax<A0>(), shift_right(x, sizeof(sA0)*CHAR_BIT-1));

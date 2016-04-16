@@ -73,7 +73,12 @@ namespace boost { namespace simd { namespace ext
         utype uy = bitwise_cast<utype>(a1);
         utype res = ux - uy;
         ux = shr(ux, sizeof(stype)*CHAR_BIT-1) + splat<utype>(Valmax<stype>());
-        return bitwise_cast<A0>(if_else(is_ltz(bitwise_cast<A0>((ux ^ uy) & (ux ^ res))), ux, res));
+        return bitwise_cast<A0>(if_else(is_ltz(bitwise_cast<A0>(bitwise_and(bitwise_xor(ux,uy)
+                                                                           , (bitwise_xor(ux,res))))
+                                              )
+                                       , ux
+                                       , res)
+                               );
       }
    };
 

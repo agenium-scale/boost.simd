@@ -38,14 +38,14 @@ namespace boost { namespace simd { namespace ext
       BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
   // workaround for UBSan
-  #ifdef USE_UBSAN
+#ifdef USE_UBSAN
         using utype = bs::as_unsigned_t<A0>;
-        return if_else(gt(abss(a0), bs::Sqrtvalmax<A0>()),
-          bs::Valmax<A0>(), bitwise_cast<A0>(sqr(bitwise_cast<utype>(a0))));
-  #else
-        return if_else(gt(abss(a0), bs::Sqrtvalmax<A0>()),
+        return if_else(is_greater(abss(a0), bs::Sqrtvalmax<A0>()),
+                       bs::Valmax<A0>(), bitwise_cast<A0>(sqr(bitwise_cast<utype>(a0))));
+#else
+        return if_else(is_greater(abss(a0), bs::Sqrtvalmax<A0>()),
                        bs::Valmax<A0>(), sqr(a0));
-  #endif
+#endif
       }
    };
 
@@ -57,7 +57,7 @@ namespace boost { namespace simd { namespace ext
    {
       BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
-        return if_else(gt(a0, bs::Sqrtvalmax<A0>()),
+        return if_else(is_greater(a0, bs::Sqrtvalmax<A0>()),
                        bs::Valmax<A0>(), sqr(a0));
       }
    };

@@ -55,7 +55,7 @@ namespace boost { namespace simd { namespace ext
       BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
         A0 a0pa1 = a0+a1;
-        return a0pa1 | genmask(is_less(a0pa1, a0));
+        return bitwise_or(a0pa1, genmask(is_less(a0pa1, a0)));
       }
    };
 
@@ -74,7 +74,7 @@ namespace boost { namespace simd { namespace ext
         utype uy = bitwise_cast<utype>(a1);
         utype res = ux + uy;
         ux = shr(ux, sizeof(stype)*CHAR_BIT-1) + splat<utype>(Valmax<stype>()); //+ static_cast<bd::scalar_of_t<utype>>(Valmax<stype>());
-        auto t = is_gez(bitwise_cast<A0>(ux ^ uy) | ~(uy ^ res));
+        auto t = is_gez(bitwise_cast<A0>(bitwise_ornot(bitwise_xor(ux, uy), bitwise_xor(uy, res))));
         return bitwise_cast<A0>(if_else(t, ux, res));
       }
    };
