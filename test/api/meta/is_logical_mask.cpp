@@ -9,7 +9,7 @@
 #include <boost/simd/meta/is_logical_mask.hpp>
 #include <boost/dispatch/adapted/std/array.hpp>
 #include <boost/simd/pack.hpp>
-#include <boost/simd/sdk/as_logical.hpp>
+#include <boost/simd/meta/as_logical.hpp>
 #include <array>
 #include <simd_test.hpp>
 
