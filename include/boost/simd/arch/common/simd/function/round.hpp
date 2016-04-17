@@ -16,6 +16,7 @@
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/function/simd/abs.hpp>
 #include <boost/simd/function/simd/ceil.hpp>
+#include <boost/simd/function/simd/logical_andnot.hpp>
 #include <boost/simd/function/simd/copysign.hpp>
 #include <boost/simd/function/simd/divides.hpp>
 #include <boost/simd/function/simd/is_flint.hpp>
@@ -25,7 +26,6 @@
 #include <boost/simd/function/simd/multiplies.hpp>
 #include <boost/simd/function/simd/none.hpp>
 #include <boost/simd/function/simd/round2even.hpp>
-#include <boost/simd/function/simd/seldec.hpp>
 #include <boost/simd/function/simd/tenpower.hpp>
 #include <boost/simd/function/simd/trunc.hpp>
 #include <boost/simd/function/simd/unary_minus.hpp>
@@ -56,15 +56,10 @@ namespace boost { namespace simd { namespace ext
    {
       BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
-        auto isf = bitwise_andnot(is_flint(a0+a0), is_flint(a0));
+        auto isf = logical_andnot(is_flint(a0+a0), is_flint(a0));
         auto r1 = round2even(a0);
-        if (none(isf)) return r1;
-        auto z = -trunc(-a0);
-        return if_else(isf, z, r1);
-
-//          A0 absa0 = bs::abs(a0);
-//          A0 c =  bs::ceil(absa0);
-//          return copysign(seldec(is_greater(c-Half<A0>(), absa0), c), a0);
+//        if (none(isf)) return r1; // TODO none
+        return if_else(isf, -trunc(-a0), r1);
       }
    };
 
