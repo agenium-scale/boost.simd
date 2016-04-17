@@ -16,6 +16,7 @@
 #include <boost/simd/function/simd/if_else.hpp>
 #include <boost/simd/function/simd/is_equal.hpp>
 #include <boost/simd/function/simd/is_greater.hpp>
+#include <boost/simd/function/simd/is_less.hpp>
 #include <boost/simd/function/simd/next.hpp>
 #include <boost/simd/function/simd/oneplus.hpp>
 #include <boost/simd/function/simd/prev.hpp>
@@ -35,7 +36,7 @@ namespace boost { namespace simd { namespace ext
       {
         return  if_else(bs::is_equal(a0,a1),
                       a0,
-                      if_else(gt(a1,a0),oneplus(a0),minusone(a0)));
+                      if_else(is_greater(a1,a0),oneplus(a0),minusone(a0)));
       }
    };
 
@@ -48,7 +49,7 @@ namespace boost { namespace simd { namespace ext
    {
       BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
-        return if_else(lt(a0, a1), next(a0), if_else(eq(a0, a1),  a0, prev(a0)));
+        return if_else(is_less(a0, a1), next(a0), if_else(is_equal(a0, a1),  a0, prev(a0)));
       }
    };
 
