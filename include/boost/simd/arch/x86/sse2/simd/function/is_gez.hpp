@@ -31,7 +31,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::int64_<A0>, bs::sse_>
                          )
   {
-    using result = A0; // bs::as_logical_t<A0>;
+    using result = bs::as_logical_t<A0>;
     BOOST_FORCEINLINE result operator() ( const A0 & a0 ) const BOOST_NOEXCEPT
     {
       using itype = bd::as_integer_t<A0, signed>;
