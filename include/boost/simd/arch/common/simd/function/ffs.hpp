@@ -48,22 +48,22 @@ namespace boost { namespace simd { namespace ext
       }
    };
 
-   BOOST_DISPATCH_OVERLOAD(ffs_
-                          , (typename A0, typename X)
-                          , bd::cpu_
-                          , bs::pack_<bd::type64_<A0>, X>
-                          )
-   {
-      using result = bd::as_integer_t<A0, unsigned>;
-      BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
-      {
-        using si_t = bd::scalar_of_t<A0>;
-        si_t z0 =  ffs(si_t(a0[0]));
-        si_t z1 =  ffs(si_t(a0[1]));
-        return {z0, z1};
-//        return  simd::bitwise_cast<rtype>(map(dispatch::functor<bs::tag::ffs_>(), simd::bitwise_cast<rtype>(a0)));
-      }
-   };
+//    BOOST_DISPATCH_OVERLOAD(ffs_
+//                           , (typename A0, typename X)
+//                           , bd::cpu_
+//                           , bs::pack_<bd::type64_<A0>, X>
+//                           )
+//    {
+//       using result = bd::as_integer_t<A0, unsigned>;
+//       BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
+//       {
+//         using si_t = bd::scalar_of_t<A0>;
+//         si_t z0 =  ffs(si_t(a0[0]));
+//         si_t z1 =  ffs(si_t(a0[1]));
+//         return {z0, z1};
+//          //        return  simd::bitwise_cast<rtype>(map(dispatch::functor<bs::tag::ffs_>(), simd::bitwise_cast<rtype>(a0)));
+//       }
+//    };
 
    BOOST_DISPATCH_OVERLOAD(ffs_
                           , (typename A0, typename X)
