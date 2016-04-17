@@ -20,7 +20,7 @@
 namespace stf { namespace ext
 {
   // -----------------------------------------------------------------------------------------------
-  // equal for pack
+  // STF conformance for pack
   template<typename T, std::size_t N, typename A>
   struct equal<boost::simd::pack<T,N,A>,boost::simd::pack<T,N,A>>
   {
@@ -33,8 +33,6 @@ namespace stf { namespace ext
     }
   };
 
-  // -----------------------------------------------------------------------------------------------
-  // ulpdist for pack
   template<typename T, std::size_t N, typename A>
   struct ulpdist<boost::simd::pack<T,N,A>,boost::simd::pack<T,N,A>>
   {
@@ -49,8 +47,6 @@ namespace stf { namespace ext
     }
   };
 
-  // -----------------------------------------------------------------------------------------------
-  // reldist for pack
   template<typename T, std::size_t N, typename A>
   struct reldist<boost::simd::pack<T,N,A>,boost::simd::pack<T,N,A>>
   {
@@ -62,6 +58,28 @@ namespace stf { namespace ext
         max_rel = std::max( max_rel, stf::reldist(T(l[i]),T(r[i])) );
 
       return max_rel;
+    }
+  };
+
+  // -----------------------------------------------------------------------------------------------
+  // STF conformance for pack_proxy
+  template<typename S, typename T>
+  struct equal<boost::simd::detail::pack_proxy<S>,T>
+  {
+    using type_t  = boost::simd::detail::pack_proxy<S>;
+    inline double operator()(type_t const& l, T const& r) const
+    {
+      return T(l) == r;
+    }
+  };
+
+  template<typename S, typename T>
+  struct equal<T,boost::simd::detail::pack_proxy<S>>
+  {
+    using type_t  = boost::simd::detail::pack_proxy<S>;
+    inline double operator()(T const& l, type_t const& r) const
+    {
+      return l == T(r);
     }
   };
 
@@ -87,6 +105,8 @@ namespace stf { namespace ext
     }
   };
 
+  // -----------------------------------------------------------------------------------------------
+  // STF conformance for logical
   template<typename T>
   struct reldist<boost::simd::logical<T>,boost::simd::logical<T>>
   {
