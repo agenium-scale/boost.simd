@@ -36,50 +36,46 @@ namespace boost { namespace simd { namespace ext
     using value_t  = typename Arg::value_type;
     using result_t = decltype( bd::functor<F>()( std::declval<value_t>() ) );
 
-    template<typename N>
-    BOOST_FORCEINLINE result_t fold_(Arg const& a0, brigand::list<N> const&) const
+    template<typename K, typename N>
+    BOOST_FORCEINLINE result_t fold_(Arg const& a0, brigand::list<N> const&, K const&) const
     {
       // Condense if needed over the only element we require
-      return bd::functor<F>( bs::extract<0>(a0) );
+      return bd::functor<F>()( bs::extract<0>(a0) );
     }
 
-    template<typename K, typename N0, typename... N>
-    BOOST_FORCEINLINE result_t fold_(Arg const& a0, brigand::list<N0,N...> const&, K const&) const
+    template<typename K, typename N0, typename N1, typename... N>
+    BOOST_FORCEINLINE result_t fold_(Arg const& a0, brigand::list<N0,N1,N...> const&, K const&) const
     {
       bd::functor<BinOp> bop;
       bd::functor<NeutralElement> ne;
 
       auto r = bop( ne( as_<typename Arg::value_type>{} ), bs::extract<0>(a0) );
+           r = bop( r                                    , bs::extract<1>(a0) );
+
       (void)std::initializer_list<bool> { ((r = bop(r, bs::extract<N::value>(a0))),true)... };
 
       return bd::functor<F>{}(r);
     }
 
-    template<typename N0, typename... N>
-    BOOST_FORCEINLINE result_t fold_(Arg const& a0, brigand::list<N0,N...> const&, aggregate_storage const&) const
+    template<typename N0, typename N1, typename... N>
+    BOOST_FORCEINLINE result_t fold_( Arg const& a0, brigand::list<N0,N1,N...> const&
+                                    , aggregate_storage const&
+                                    ) const
     {
       bd::functor<BinOp> bop;
       bd::functor<NeutralElement> ne;
 
       auto r = bop( ne( as_<typename Arg::value_type>{} ), a0.storage()[0]);
-      (void)std::initializer_list<bool> { ((r = bop(r, a0.storage()[N::value])),true)... };
+           r = bop( r                                    , a0.storage()[1]);
 
       return bd::functor<F>{}(r);
     }
 
     BOOST_FORCEINLINE result_t operator()(Arg const& a0) const
     {
-      using kind_t        = typename Arg::storage_kind;
-      using storage_range = typename Arg::traits::static_range;
-      using element_range = br::range<std::size_t, 0, Arg::static_size>;
-      using count_range   = std::conditional< std::is_same<kind_t,aggregate_storage>::value
-                                            , storage_range
-                                            , element_range
-                                            >;
-
       BOOST_SIMD_DIAG("autofold for: " << *this);
 
-      return fold_( a0, typename count_range::type{}, kind_t{} );
+      return fold_( a0, typename Arg::traits::static_range{}, typename Arg::storage_kind{} );
     }
   };
 } } }
