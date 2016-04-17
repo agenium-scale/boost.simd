@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,23 +15,13 @@
 namespace boost { namespace simd
 {
   /*!
-    @ingroup group-functions
     @defgroup group-swar Intra register Functions
+    @ingroup  group-functions
 
     Those functions provides algorithms for interleaving, aggregation, splitting and, more
     generally, wide registers sub-element manipulation. Those functions are usually only
     defined for SIMD types but may, in some cases, have a valid scalar semantic.
   **/
-
-  /*!
-    @ingroup group-callable
-    @defgroup group-callable-swar Intra register Callable Objects
-    Callable objects version of @ref group-swar
-
-    Their specific semantic limitations are similar to those of their function
-    equivalents as described in the @ref group-swar section.
-  **/
-
 } }
 
 #include <boost/simd/function/broadcast.hpp>

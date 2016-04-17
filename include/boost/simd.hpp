@@ -75,41 +75,6 @@ namespace boost
       Those changes are motivated by the fact SIMD operations require similar limitations.
     **/
 
-    /// Boost.SIMD Callable Objects namespace
-    namespace functional {}
-
-    /*!
-      @ingroup group-api
-      @defgroup group-callable Callable Objects
-
-      Boost.SIMD provides a Callable Object version of most of its scalar and SIMD functions.
-      All those Callable Objects are accessible in the boost::simd::functional namespace. Those
-      callable objects are meant to be used as parameters by other, higher-order functions and
-      algorithms without having to perform complex tricks to pass a function template as an
-      argument.
-
-      As an example, the following code demonstrates how to apply boost::simd::abs
-      on each value in a std::vector via the standard @c transform algorithm.
-
-      @code
-      std::vector<float> data(1024), output(1024);
-
-      std::transform(data.begin(), data.end(), output.begin(), functional::abs);
-      @endcode
-
-      For most functions and constant generators, the syntax will be similar to the function version.
-      The main exception is the required use of boost::simd::as or boost::simd::as_ to pass type
-      informations to the callable object as demonstrated below:
-
-      @code
-      // Use the type of an existing value
-      auto many = functional::inf( boost::simd::as(1.f) );
-
-      // Use an arbitrary type
-      auto a_lot = functional::inf( boost::simd::as_<double>{} );
-      @endcode
-    **/
-
      /*!
       @defgroup group-config Configuration
       Configuration options
