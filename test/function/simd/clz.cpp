@@ -33,9 +33,6 @@ void test(Env& $)
    }
   p_t aa1(&a1[0], &a1[N]);
   i_t bb(&b[0], &b[N]);
-  std::cout << "aa1" << aa1 << std::endl;
-  std::cout << "bb " << bb << std::endl;
-  std::cout << "rs " << bs::clz(aa1)<< std::endl;
   STF_EQUAL(bs::clz(aa1), bb);
 }
 

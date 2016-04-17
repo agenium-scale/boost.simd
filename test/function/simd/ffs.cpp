@@ -9,6 +9,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
+#define BOOST_SIMD_ENABLE_DIAG
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/ffs.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
@@ -35,9 +36,6 @@ void test(Env& $)
    }
   p_t aa1(&a1[0], &a1[N]);
   pi_t bb(&b[0], &b[N]);
-  std::cout << "aa1" << aa1 << std::endl;
-  std::cout << "bb " << bb << std::endl;
-  std::cout << "rs " << bs::ffs(aa1)<< std::endl;
   STF_EQUAL(bs::ffs(aa1), bb);
 }
 

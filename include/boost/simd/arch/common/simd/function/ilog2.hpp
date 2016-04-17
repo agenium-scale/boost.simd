@@ -48,7 +48,11 @@ namespace boost { namespace simd { namespace ext
       BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
       {
         using s_type = bd::scalar_of_t<A0>;
-        return bs::minusone(bs::splat<result>(sizeof(s_type)*8)-bitwise_cast<result>(bs::clz(a0)));
+//         std::cout << "clz  " << bitwise_cast<result>(bs::clz(a0)) << std::endl;
+//          std::cout << "st*8 " <<result(sizeof(s_type)*8)  << std::endl;
+//          std::cout << "dif "  <<result(sizeof(s_type)*8)-bitwise_cast<result>(bs::clz(a0)) << std::endl;
+//          std::cout << "res " << bs::minusone(result(sizeof(s_type)*8)-bitwise_cast<result>(bs::clz(a0))) << std::endl;
+        return bs::minusone(result(sizeof(s_type)*8)-bitwise_cast<result>(bs::clz(a0)));
       }
    };
 

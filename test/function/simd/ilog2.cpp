@@ -9,9 +9,10 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-//#define BOOST_SIMD_ENABLE_DIAG
+#define BOOST_SIMD_ENABLE_DIAG
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/ilog2.hpp>
+#include <boost/simd/function/max.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
 
@@ -29,11 +30,13 @@ void test(Env& $)
   iT b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
-    a1[i] = T(N+i+1);
-     b[i] = bs::ilog2(a1[i]);
-   }
+    a1[i] = i == 0 ? T(3) : bs::max(T(a1[i-1]*T(3)), T(1)); //T(N+i+1);
+    b[i] = bs::ilog2(a1[i]);
+  }
   p_t aa1(&a1[0], &a1[N]);
   i_t bb(&b[0], &b[N]);
+//   std::cout << "aa1 " << aa1 << std::endl;
+//   std::cout << "bb  " << bb  << std::endl;
   STF_EQUAL(bs::ilog2(aa1), bb);
 }
 
@@ -42,7 +45,7 @@ STF_CASE_TPL("Check ilog2 on pack" ,  STF_NUMERIC_TYPES)
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
-  test<T, N>($);
-  test<T, N/2>($);
-//  test<T, N*2>($);
+   test<T, N>($);
+   test<T, N/2>($);
+   test<T, N*2>($);
 }

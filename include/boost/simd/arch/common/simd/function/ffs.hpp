@@ -40,30 +40,15 @@ namespace boost { namespace simd { namespace ext
       using result = bd::as_integer_t<A0, unsigned>;
       BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
       {
-        using ltype = pack<uint64_t>; //typename limits<X>::largest_integer;
         result v = firstbitset(a0);
-        return  bitwise_and(genmask(v), inc(bitwise_or(bitwise_or((-( genmask(bitwise_and(v, ltype(0xAAAAAAAAAAAAAAAAull)))))
-                                               , shift_left(-( genmask(bitwise_and(v, ltype(0xCCCCCCCCCCCCCCCCull)))), 1))
-                                          , shift_left(-( genmask(bitwise_and(v, ltype(0xF0F0F0F0F0F0F0F0ull)))), 2))));
+        return  bitwise_and(genmask(v)
+                           ,inc(bitwise_or(
+                                  bitwise_or(
+                                    (-( genmask(bitwise_and(v,result(0xAA)))))
+                                    , shift_left(-(genmask(bitwise_and(v, result(0xCC)))),1))
+                                  , shift_left(-(genmask(bitwise_and(v, result(0xF0)))),2))));
       }
    };
-
-//    BOOST_DISPATCH_OVERLOAD(ffs_
-//                           , (typename A0, typename X)
-//                           , bd::cpu_
-//                           , bs::pack_<bd::type64_<A0>, X>
-//                           )
-//    {
-//       using result = bd::as_integer_t<A0, unsigned>;
-//       BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
-//       {
-//         using si_t = bd::scalar_of_t<A0>;
-//         si_t z0 =  ffs(si_t(a0[0]));
-//         si_t z1 =  ffs(si_t(a0[1]));
-//         return {z0, z1};
-//          //        return  simd::bitwise_cast<rtype>(map(dispatch::functor<bs::tag::ffs_>(), simd::bitwise_cast<rtype>(a0)));
-//       }
-//    };
 
    BOOST_DISPATCH_OVERLOAD(ffs_
                           , (typename A0, typename X)
@@ -74,34 +59,42 @@ namespace boost { namespace simd { namespace ext
       using result = bd::as_integer_t<A0, unsigned>;
       BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
       {
-        using ltype =  pack < uint64_t > ; //typename limits<X>::largest_integer;
         result v = firstbitset(a0);
-        return  bitwise_and(genmask(v), inc(bitwise_or(bitwise_or(bitwise_or((-( genmask(bitwise_and(v, ltype(0xAAAAAAAAAAAAAAAAull)))))
-                                                     , shift_left(-( genmask(bitwise_and(v, ltype(0xCCCCCCCCCCCCCCCCull)))), 1))
-                                                , shift_left(-( genmask(bitwise_and(v, ltype(0xF0F0F0F0F0F0F0F0ull)))), 2))
-                                           , shift_left(-( genmask(bitwise_and(v, ltype(0xFF00FF00FF00FF00ull)))), 3))));
+        return  bitwise_and(genmask(v)
+                           ,inc(bitwise_or(
+                                  bitwise_or(
+                                    bitwise_or(
+                                      (-( genmask(bitwise_and(v, result(0xAAAA)))))
+                                      ,shift_left(-( genmask(bitwise_and(v,result(0xCCCC)))),1))
+                                    ,shift_left(-( genmask(bitwise_and(v,result(0xF0F0)))),2))
+                                  ,shift_left(-( genmask(bitwise_and(v,result(0xFF00)))),3))));
       }
    };
 
-   BOOST_DISPATCH_OVERLOAD(ffs_
-                          , (typename A0, typename X)
-                          , bd::cpu_
-                          , bs::pack_<bd::type32_<A0>, X>
-                          )
-   {
-      using result = bd::as_integer_t<A0, unsigned>;
-      BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
-      {
-        using ltype =  pack < uint64_t>; //typename limits<X>::largest_integer;
-        result v = firstbitset(a0);
-        return  bitwise_and(genmask(v), inc(bitwise_or(bitwise_or(bitwise_or(bitwise_or((-( genmask(bitwise_and(v, ltype(0xAAAAAAAAAAAAAAAAull)))))
-                                                         , shift_left(-( genmask(bitwise_and(v, ltype(0xCCCCCCCCCCCCCCCCull)))), 1))
-                                                    , shift_left(-( genmask(bitwise_and(v, ltype(0xF0F0F0F0F0F0F0F0ull)))), 2))
-                                               , shift_left(-( genmask(bitwise_and(v, ltype(0xFF00FF00FF00FF00ull)))), 3))
-                                          , shift_left(-( genmask(bitwise_and(v, ltype(0xFFFF0000FFFF0000ull)))), 4))));
-      }
-   };
+  BOOST_DISPATCH_OVERLOAD(ffs_
+                         , (typename A0, typename X)
+                         , bd::cpu_
+                         , bs::pack_<bd::type32_<A0>, X>
+                         )
+  {
+    using result = bd::as_integer_t<A0, unsigned>;
+    BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
+    {
+      result v = firstbitset(a0);
+      return  bitwise_and(genmask(v)
+                         ,inc(bitwise_or(
+                                bitwise_or(
+                                  bitwise_or(
+                                    bitwise_or(
+                                      (-( genmask(bitwise_and(v,result(0xAAAAAAAA)))))
+                                      ,shift_left(-(genmask(bitwise_and(v,result(0xCCCCCCCC)))),1))
+                                    , shift_left(-(genmask(bitwise_and(v,result(0xF0F0F0F0)))),2))
+                                  , shift_left(-(genmask(bitwise_and(v,result(0xFF00FF00)))), 3))
+                                , shift_left(-(genmask(bitwise_and(v,result(0xFFFF0000)))),4))));
+    }
+  };
 
+  //Let automap do the job for type64
 } } }
 
 
