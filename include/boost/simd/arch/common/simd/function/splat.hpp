@@ -18,7 +18,6 @@
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
-#include <tuple>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -85,7 +84,7 @@ namespace boost { namespace simd { namespace ext
     storage_t do_(V const& v, aggregate_storage const&, brigand::list<N...> const&) BOOST_NOEXCEPT
     {
       typename storage_t::value_type s(v);
-      return {{ value<N>(s)... }};
+      return {{ s, s }};
     }
   };
 } } }
