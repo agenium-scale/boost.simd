@@ -9,6 +9,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
+#define BOOST_SIMD_ENABLE_DIAG
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/is_positive.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -21,19 +22,17 @@ void test(Env& $)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T, N>;
-
-  namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
+  using pl_t = bs::pack<bs::logical<T>, N>;
 
   T a1[N];
-  T b[N];
+  bs::logical<T> b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? T(i) : T(-i);
     b[i] = bs::is_positive(a1[i]);
    }
   p_t aa1(&a1[0], &a1[N]);
-  p_t bb(&b[0], &b[N]);
+  pl_t bb(&b[0], &b[N]);
   STF_IEEE_EQUAL(bs::is_positive(aa1), bb);
 }
 
@@ -43,6 +42,6 @@ STF_CASE_TPL("Check is_positive on pack" , STF_NUMERIC_TYPES)
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
-//  test<T, N/2>($);
-//  test<T, Nx2>($);
+  test<T, N/2>($);
+ test<T, N*2>($);
 }

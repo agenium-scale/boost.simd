@@ -33,7 +33,7 @@ void test(Env& $)
    }
   p_t aa1(&a1[0], &a1[N]);
   p_t aa2(&a2[0], &a2[N]);
-  pl_t bb(&b[0], &b[N]);//logical
+  pl_t bb(&b[0], &b[N]);
   STF_IEEE_EQUAL(bs::is_lt(aa1, aa2), bb);
 }
 
@@ -44,6 +44,6 @@ STF_CASE_TPL("Check is_lt on pack" , STF_NUMERIC_TYPES)
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
   test<T, N/2>($);
-  test<T, Nx2>($);
+  test<T, N*2>($);
 }
 
