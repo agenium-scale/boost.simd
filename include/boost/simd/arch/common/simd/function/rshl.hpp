@@ -38,9 +38,9 @@ namespace boost { namespace simd { namespace ext
       BOOST_FORCEINLINE A0 operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
       {
         #ifndef NDEBUG
-        return if_else(is_gtz(a1), shl(a0, max(Zero<A1>(), a1)), shr(a0, max(Zero<A1>(), -a1)));
+        return if_else(is_gtz(a1), shift_left(a0, max(Zero<A1>(), a1)), shr(a0, max(Zero<A1>(), -a1)));
         #else
-        return if_else(is_gtz(a1), shl(a0, a1), shr(a0, -a1));
+        return if_else(is_gtz(a1), shift_left(a0, a1), shr(a0, -a1));
         #endif
       }
    };
@@ -54,7 +54,7 @@ namespace boost { namespace simd { namespace ext
    {
      BOOST_FORCEINLINE A0 operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
      {
-       return shl(a0, a1);
+       return shift_left(a0, a1);
      }
    };
 } } }
