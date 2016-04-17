@@ -9,6 +9,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
+#define BOOST_SIMD_ENABLE_DIAG
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/log.hpp>
 #include <boost/simd/function/rec.hpp>
@@ -22,9 +23,6 @@ void test(Env& $)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T, N>;
-
-  namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
 
   T a1[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
@@ -45,6 +43,6 @@ STF_CASE_TPL("Check log on pack" , STF_IEEE_TYPES)
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
-//  test<T, N/2>($);
-//  test<T, Nx2>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }
