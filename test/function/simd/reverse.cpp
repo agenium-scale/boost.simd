@@ -14,7 +14,6 @@
 #include <boost/simd/function/bits.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
-#include <boost/simd/options.hpp>
 
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
@@ -42,6 +41,6 @@ STF_CASE_TPL("Check reverse on pack" , STF_NUMERIC_TYPES)
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
-//  test<T, N/2>($);
-//  test<T, Nx2>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }

@@ -35,6 +35,25 @@ namespace boost { namespace simd { namespace ext
        return bitwise_cast<A0>(reverse( bitwise_cast<type>(a0)));
       }
    };
+
+   BOOST_DISPATCH_OVERLOAD(reverse_
+                          , (typename A0, typename X)
+                          , bd::cpu_
+                          , bs::pack_<bd::unspecified_<A0>, X>
+                          )
+   {
+     BOOST_FORCEINLINE A0
+     operator()( const A0& a0) const BOOST_NOEXCEPT
+     {
+       const std::size_t N =  A0::static_size; //TO DO unroll
+       A0 res;
+       for(std::size_t i=0; i < N; i++)
+       {
+         res[i] = a0[N-i-1];
+       }
+       return res;
+     }
+   };
 } } }
 
 #endif
