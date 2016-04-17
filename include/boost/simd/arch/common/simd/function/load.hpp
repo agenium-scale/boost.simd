@@ -89,8 +89,8 @@ namespace boost { namespace simd { namespace ext
       return do_(b, typename target_t::storage_kind(), typename target_t::traits::static_range{});
     }
 
-    template<typename I>
-    using offset_t = std::integral_constant<std::size_t,target_t::traits::element_size>;
+    // template<typename I>
+    // using offset_t = std::integral_constant<std::size_t,target_t::traits::element_size>;
 
     /*
       Emulation case: fill in the storage by calling load on the underlying data
@@ -101,12 +101,16 @@ namespace boost { namespace simd { namespace ext
     template<typename... N>
     static inline storage_t do_(Begin b, aggregate_storage const&, brigand::list<N...> const&) BOOST_NOEXCEPT
     {
-      Begin lb, le = b;
+      Begin b0 = b;
 
-      return  {{  ( lb = le
-                  , std::advance(le,offset_t<N>::value)
-                  , load<typename target_t::substorage_type>(lb,le)
-                  )...
+      Begin b1 = b0;
+      std::advance(b1,target_t::traits::element_size);
+
+      Begin b2 = b1;
+      std::advance(b2,target_t::traits::element_size);
+
+      return  {{  load<typename target_t::substorage_type>(b0,b1)
+                , load<typename target_t::substorage_type>(b1,b2)
               }};
     }
 
@@ -146,21 +150,19 @@ namespace boost { namespace simd { namespace ext
       return do_(b, typename target_t::storage_kind(), typename target_t::traits::static_range{});
     }
 
-    // How many elements does each load loads ?
-    template<typename I>
-    using begin_t = std::integral_constant<std::size_t,I::value*target_t::traits::element_size>;
-
-    template<typename I>
-    using end_t = std::integral_constant<std::size_t,(1+I::value)*target_t::traits::element_size>;
-
     /*
       Emulation case: fill in the storage by calling load on the underlying data
       while jumping inside the RandomAccessRange.
     */
-    template<typename... N>
-    static inline storage_t do_(Begin b, aggregate_storage const&, brigand::list<N...> const&) BOOST_NOEXCEPT
+    template<typename... N> static inline
+    storage_t do_(Begin b, aggregate_storage const&, brigand::list<N...> const&) BOOST_NOEXCEPT
     {
-      return {{ load<typename target_t::substorage_type>(b+begin_t<N>::value, b+end_t<N>::value)... }};
+      Begin   b1 = b  + target_t::traits::element_size
+            , b2 = b1 + target_t::traits::element_size;
+
+      return  {{  load<typename target_t::substorage_type>(b, b1)
+                , load<typename target_t::substorage_type>(b1,b2)
+              }};
     }
 
     /*
