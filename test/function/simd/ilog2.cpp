@@ -9,6 +9,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
+//#define BOOST_SIMD_ENABLE_DIAG
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/ilog2.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
@@ -33,8 +34,6 @@ void test(Env& $)
    }
   p_t aa1(&a1[0], &a1[N]);
   i_t bb(&b[0], &b[N]);
-  std::cout << aa1 << std::endl;
-  std::cout << bb << std::endl;
   STF_EQUAL(bs::ilog2(aa1), bb);
 }
 
@@ -44,6 +43,6 @@ STF_CASE_TPL("Check ilog2 on pack" ,  STF_NUMERIC_TYPES)
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
-//  test<T, N/2>($);
-//  test<T, Nx2>($);
+  test<T, N/2>($);
+//  test<T, N*2>($);
 }

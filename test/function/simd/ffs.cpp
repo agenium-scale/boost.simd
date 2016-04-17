@@ -30,11 +30,14 @@ void test(Env& $)
   iT b[N];
   for(int i = 0; i < N; ++i)
   {
-    a1[i] = (i%2) ? T(i+1):T(-(i+1));
+    a1[i] = (i == 0) ? 1 : a1[i-1]*2; //(i%2) ? T(i+1):T(-(i+1));
      b[i] = bs::ffs(a1[i]);
    }
   p_t aa1(&a1[0], &a1[N]);
   pi_t bb(&b[0], &b[N]);
+  std::cout << "aa1" << aa1 << std::endl;
+  std::cout << "bb " << bb << std::endl;
+  std::cout << "rs " << bs::ffs(aa1)<< std::endl;
   STF_EQUAL(bs::ffs(aa1), bb);
 }
 
@@ -44,6 +47,6 @@ STF_CASE_TPL("Check ffs on pack" ,  STF_NUMERIC_TYPES)
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
-//  test<T, N/2>($);
-//  test<T, Nx2>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }
