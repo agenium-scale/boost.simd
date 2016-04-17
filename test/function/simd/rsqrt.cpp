@@ -33,7 +33,7 @@ void test(Env& $)
   STF_ULP_EQUAL(bs::fast_(bs::rsqrt)(aa1), bb, 100);
 }
 
-STF_CASE_TPL("Check rsqrt on pack" , STF_IEEE_TYPES)
+STF_CASE_TPL("Check rsqrt on pack" , (float))//STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;

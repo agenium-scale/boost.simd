@@ -14,15 +14,12 @@
 #include <boost/simd/function/bits.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
-#include <boost/simd/options.hpp>
 
 template <typename T, int N, typename Env>
 void test(Env& $)
 {
   namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
   using p_t = bs::pack<T, N>;
-
 
   T a1[N], b[N], a2[N], c[N];
   for(int i = 0; i < N; ++i)
@@ -46,6 +43,6 @@ STF_CASE_TPL("Check round2even on pack" , STF_NUMERIC_TYPES)
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
-//  test<T, N/2>($);
-//  test<T, Nx2>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }

@@ -9,18 +9,17 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
+#define BOOST_SIMD_ENABLE_DIAG
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/floor.hpp>
 #include <boost/simd/function/bits.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
-#include <boost/simd/options.hpp>
 
 template <typename T,int N, typename Env>
 void test(Env& $)
 {
   namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
   using p_t = bs::pack<T, N>;
 
   T a1[N], b[N];
@@ -40,6 +39,6 @@ STF_CASE_TPL("Check floor on pack" , STF_NUMERIC_TYPES)
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
-//  test<T, N/2>($);
-//  test<T, Nx2>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }
