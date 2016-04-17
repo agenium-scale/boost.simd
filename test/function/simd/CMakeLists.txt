@@ -39,7 +39,7 @@ bitwise_ornot.cpp
 bitwise_xor.cpp
 broadcast.cpp
 ceil.cpp
-clz.cpp
+########clz.cpp
 complement.cpp
 conj.cpp
 copysign.cpp
@@ -50,7 +50,7 @@ divides.cpp
 divs.cpp
 exp.cpp
 enumerate.cpp
-ffs.cpp
+########ffs.cpp
 firstbitset.cpp
 firstbitunset.cpp
 floor.cpp
@@ -77,7 +77,7 @@ ifnotsub.cpp
 if_one_else_zero.cpp
 if_zero_else.cpp
 if_zero_else_one.cpp
-ilog2.cpp
+########ilog2.cpp
 ilogb.cpp
 inbtrue.cpp
 indeg.cpp
