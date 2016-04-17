@@ -39,11 +39,11 @@ namespace boost { namespace simd { namespace ext
         const utype m2  = bs::Ratio<utype,0x33>(); //binary: 00110011..
         const utype m4  = bs::Ratio<utype,0x0f>(); //binary:  4 zeros,  4 ones ...
         // swap odd and even bits
-        v = (shr(v, 1) & m1) | shift_left((v & m1), 1);
+        v = bitwise_or(bitwise_and(shr(v, 1), m1), shift_left(bitwise_and(v, m1), 1));
         // swap consecutive pairs
-        v = (shr(v, 2) & m2) | shift_left((v & m2), 2);
+        v = bitwise_or(bitwise_and(shr(v, 2), m2), shift_left(bitwise_and(v, m2), 2));
         // swap nibbles ...
-        v = (shr(v, 4) & m4) | shift_left((v & m4), 4);
+        v = bitwise_or(bitwise_and(shr(v, 4), m4), shift_left(bitwise_and(v, m4), 4));
         return bitwise_cast<A0>(v);
         }
    };
@@ -65,17 +65,17 @@ namespace boost { namespace simd { namespace ext
         const A0 m16 = A0(0x0000ffff0000ffffull); //binary:  16 zeros,  16 ones ...
         const A0 m32 = A0(0x00000000ffffffffull); //binary:  32 zeros,  32 ones ...
         // swap odd and even bits
-        v = (shr(v, 1) & m1) | shift_left((v & m1), 1);
+        v = bitwise_or(bitwise_and(shr(v, 1), m1), shift_left(bitwise_and(v, m1), 1));
         // swap consecutive pairs
-        v = (shr(v, 2) & m2) | shift_left((v & m2), 2);
+        v = bitwise_or(bitwise_and(shr(v, 2), m2), shift_left(bitwise_and(v, m2), 2));
         // swap nibbles ...
-        v = (shr(v, 4) & m4) | shift_left((v & m4), 4);
+        v = bitwise_or(bitwise_and(shr(v, 4), m4), shift_left(bitwise_and(v, m4), 4));
         // swap bytes ...
-        v = (shr(v, 8) & m8) | shift_left((v & m8), 8);
+        v = bitwise_or(bitwise_and(shr(v, 8), m8), shift_left(bitwise_and(v, m8), 8));
         // swap shorts ...
-        v = (shr(v, 16) & m16) | shift_left((v & m16), 16);
+        v = bitwise_or(bitwise_and(shr(v, 16), m16), shift_left(bitwise_and(v, m16), 16));
         // swap ints ...
-        v = (shr(v, 32) & m32) | shift_left((v & m32), 32);
+        v = bitwise_or(bitwise_and(shr(v, 32), m32), shift_left(bitwise_and(v, m32), 32));
         return bitwise_cast<A0>(v);
         }
    };
@@ -95,13 +95,13 @@ namespace boost { namespace simd { namespace ext
         const A0 m4  = bs::Ratio<A0,0x0f0f>(); //binary:  4 zeros,  4 ones ...
         const A0 m8  = bs::Ratio<A0,0x00ff>(); //binary:  8 zeros,  8 ones ...
         // swap odd and even bits
-        v = (shr(v, 1) & m1) | shift_left((v & m1), 1);
+        v = bitwise_or(bitwise_and(shr(v, 1), m1), shift_left(bitwise_and(v, m1), 1));
         // swap consecutive pairs
-        v = (shr(v, 2) & m2) | shift_left((v & m2), 2);
+        v = bitwise_or(bitwise_and(shr(v, 2), m2), shift_left(bitwise_and(v, m2), 2));
         // swap nibbles ...
-        v = (shr(v, 4) & m4) | shift_left((v & m4), 4);
+        v = bitwise_or(bitwise_and(shr(v, 4), m4), shift_left(bitwise_and(v, m4), 4));
         // swap bytes ...
-        v = (shr(v, 8) & m8) | shift_left((v & m8), 8);
+        v = bitwise_or(bitwise_and(shr(v, 8), m8), shift_left(bitwise_and(v, m8), 8));
         return bitwise_cast<A0>(v);
         }
    };
@@ -122,15 +122,15 @@ namespace boost { namespace simd { namespace ext
         const A0 m8  = bs::Ratio<A0,0x00ff00ff>(); //binary:  8 zeros,  8 ones ...
         const A0 m16 = bs::Ratio<A0,0x0000ffff>(); //binary:  16 zeros,  16 ones ...
         // swap odd and even bits
-        v = (shr(v, 1) & m1) | shift_left((v & m1), 1);
+        v = bitwise_or(bitwise_and(shr(v, 1), m1), shift_left(bitwise_and(v, m1), 1));
         // swap consecutive pairs
-        v = (shr(v, 2) & m2) | shift_left((v & m2), 2);
+        v = bitwise_or(bitwise_and(shr(v, 2), m2), shift_left(bitwise_and(v, m2), 2));
         // swap nibbles ...
-        v = (shr(v, 4) & m4) | shift_left((v & m4), 4);
+        v = bitwise_or(bitwise_and(shr(v, 4), m4), shift_left(bitwise_and(v, m4), 4));
         // swap bytes ...
-        v = (shr(v, 8) & m8) | shift_left((v & m8), 8);
+        v = bitwise_or(bitwise_and(shr(v, 8), m8), shift_left(bitwise_and(v, m8), 8));
         // swap shorts ...
-        v = (shr(v, 16) & m16) | shift_left((v & m16), 16);
+        v = bitwise_or(bitwise_and(shr(v, 16), m16), shift_left(bitwise_and(v, m16), 16));
         return bitwise_cast<A0>(v);
         }
    };
