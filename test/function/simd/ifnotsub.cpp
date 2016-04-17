@@ -9,6 +9,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
+#define BOOST_SIMD_ENABLE_DIAG
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/ifnotsub.hpp>
 #include <boost/simd/function/plus.hpp>
@@ -31,7 +32,7 @@ void test(Env& $)
      a1[i] = (i%2) ? T(1) : T(0);
      a2[i] = (i%2) ? T(i+N) : T(-(i+N));
      a3[i] = (i%2) ? T(i+2*N) : T(-(i+2*N));
-     b[i] = a1[i] ? a1[i] : a2[i];
+     b[i] = bs::ifnotsub(a1[i], a2[i], a3[i]);
    }
   p_t aa1(&a1[0], &a1[N]);
   p_t aa2(&a2[0], &a2[N]);
@@ -46,6 +47,6 @@ STF_CASE_TPL("Check ifnotsub on pack" , STF_NUMERIC_TYPES)
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
-//  test<T, N/2>($);
-//  test<T, Nx2>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }

@@ -14,10 +14,7 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/false.hpp>
 #include <boost/simd/constant/true.hpp>
-#include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/if_else_zero.hpp>
-#include <boost/simd/function/plus.hpp>
-#include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
 
