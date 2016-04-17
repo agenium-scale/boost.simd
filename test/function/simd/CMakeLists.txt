@@ -7,6 +7,7 @@
 ##===================================================================================================
 
 ## Larger test suites go there
+add_subdirectory(combine)
 add_subdirectory(extract)
 add_subdirectory(genmask)
 add_subdirectory(insert)

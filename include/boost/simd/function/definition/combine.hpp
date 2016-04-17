@@ -30,8 +30,6 @@ namespace boost { namespace simd
   }
 
   BOOST_DISPATCH_CALLABLE_DEFINITION(tag::combine_,combine);
-
-
 } }
 
 #endif
