@@ -29,7 +29,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/scalar/is_invalid.hpp>
+#include <boost/simd/function/scalar/is_not_finite.hpp>
 #include <boost/simd/function/simd/is_not_finite.hpp>
 
 #endif

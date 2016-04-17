@@ -14,6 +14,6 @@
 
 #include <boost/simd/function/scalar/is_not_finite.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/simd/function/is_not_finite.hpp>
+#include <boost/simd/arch/common/simd/function/is_invalid.hpp>
 
 #endif
