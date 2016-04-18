@@ -44,7 +44,7 @@ namespace boost { namespace simd { namespace ext
                     log(u),
                     (a0-minusone(u))/u); // cancels errors with IEEE arithmetic
 #ifndef BOOST_SIMD_NO_INFINITIES
-      r = if_else(eq(u, Inf<A0>()),u, r);
+      r = if_else(is_equal(u, Inf<A0>()),u, r);
 #endif
       return r;
     }

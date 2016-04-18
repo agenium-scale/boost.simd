@@ -30,7 +30,7 @@ namespace boost { namespace simd { namespace ext
    {
       BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
-        return if_else(eq(a0, Valmin<A0>()),Valmax<A0>(),unary_minus(a0));
+        return if_else(is_equal(a0, Valmin<A0>()),Valmax<A0>(),unary_minus(a0));
       }
    };
 

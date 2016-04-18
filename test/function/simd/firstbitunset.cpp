@@ -21,7 +21,7 @@ void test(Env& $)
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
   using p_t = bs::pack<T, N>;
-  using iT =  bd::as_integer_t<T, unsigned>;
+  using iT =  bd::as_integer_t<T>;
   using pi_t = bs::pack<iT, N>;
 
   T a1[N];

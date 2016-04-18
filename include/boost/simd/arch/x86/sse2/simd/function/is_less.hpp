@@ -52,7 +52,7 @@ namespace boost { namespace simd { namespace ext
     {
       using s_t = bd::as_integer_t<A0, signed>;
       s_t sm = Signmask<s_t>();
-      return  bitwise_cast<result>(lt(bitwise_cast<s_t>(a0) - sm
+      return  bitwise_cast<result>(is_less(bitwise_cast<s_t>(a0) - sm
                                      , bitwise_cast<s_t>(a1) - sm
                                      )
                                   );
