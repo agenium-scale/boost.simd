@@ -11,6 +11,7 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_IROUND2EVEN_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_IROUND2EVEN_HPP_INCLUDED
+#include <boost/simd/detail/overload.hpp>
 
 #include <boost/dispatch/meta/as_integer.hpp>
 

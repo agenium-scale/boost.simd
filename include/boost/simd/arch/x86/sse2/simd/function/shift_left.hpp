@@ -11,6 +11,7 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_SHIFT_LEFT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_SHIFT_LEFT_HPP_INCLUDED
+#include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/function/simd/bitwise_and.hpp>
 #include <boost/simd/function/simd/bitwise_or.hpp>

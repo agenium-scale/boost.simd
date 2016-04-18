@@ -11,6 +11,7 @@
 */
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_X86_SSSE3_SIMD_FUNCTION_ABS_HPP_INCLUDED
+#include <boost/simd/detail/overload.hpp>
 #define BOOST_SIMD_ARCH_X86_SSSE3_SIMD_FUNCTION_ABS_HPP_INCLUDED
 
 #include <boost/simd/meta/as_logical.hpp>

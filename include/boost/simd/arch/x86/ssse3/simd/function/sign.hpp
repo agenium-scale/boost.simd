@@ -11,6 +11,7 @@
 */
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_X86_SSE3_SIMD_FUNCTION_SIGN_HPP_INCLUDED
+#include <boost/simd/detail/overload.hpp>
 #define BOOST_SIMD_ARCH_X86_SSE3_SIMD_FUNCTION_SIGN_HPP_INCLUDED
 
 #include <boost/simd/constant/one.hpp>

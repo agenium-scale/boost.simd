@@ -10,7 +10,7 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_BITWISE_AND_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_BITWISE_AND_HPP_INCLUDED
-#include <boost/simd/meta/hierarchy/simd.hpp>
+#include <boost/simd/detail/overload.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

@@ -11,6 +11,7 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_BITWISE_ANDNOT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_BITWISE_ANDNOT_HPP_INCLUDED
+#include <boost/simd/detail/overload.hpp>
 
 
 namespace boost { namespace simd { namespace ext

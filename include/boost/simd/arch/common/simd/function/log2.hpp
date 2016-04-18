@@ -11,6 +11,7 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SIMD_LOG2_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SIMD_LOG2_HPP_INCLUDED
+#include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/sdk/hierarchy/simd.hpp>
 #include <boost/simd/arch/common/detail/simd/logarithm.hpp>

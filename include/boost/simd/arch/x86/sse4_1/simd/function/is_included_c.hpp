@@ -11,8 +11,8 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_X86_SSE4_1_SIMD_FUNCTION_IS_INCLUDED_C_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE4_1_SIMD_FUNCTION_IS_INCLUDED_C_HPP_INCLUDED
+#include <boost/simd/detail/overload.hpp>
 
-#include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>

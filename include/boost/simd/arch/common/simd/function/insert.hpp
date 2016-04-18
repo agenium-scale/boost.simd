@@ -11,6 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_INSERT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_INSERT_HPP_INCLUDED
 
+#include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/genmask.hpp>
 #include <boost/simd/detail/aliasing.hpp>
 #include <boost/simd/meta/hierarchy/simd.hpp>

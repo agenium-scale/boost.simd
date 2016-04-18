@@ -11,9 +11,9 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_IS_NOT_EQUAL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_IS_NOT_EQUAL_HPP_INCLUDED
+#include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/as_logical.hpp>
-#include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/logical.hpp>
 
 namespace boost { namespace simd { namespace ext

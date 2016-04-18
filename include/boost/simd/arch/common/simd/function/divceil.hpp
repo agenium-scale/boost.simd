@@ -11,6 +11,7 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_DIVCEIL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_DIVCEIL_HPP_INCLUDED
+#include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
 //#include <boost/simd/sdk/meta/is_upgradable.hpp>//TODO

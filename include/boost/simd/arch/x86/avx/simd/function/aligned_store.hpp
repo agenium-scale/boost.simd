@@ -11,11 +11,9 @@
 #ifndef BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_ALIGNED_STORE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_ALIGNED_STORE_HPP_INCLUDED
 
+#include <boost/simd/detail/overload.hpp>
 #include <boost/dispatch/adapted/common/pointer.hpp>
 #include <boost/align/is_aligned.hpp>
-#include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

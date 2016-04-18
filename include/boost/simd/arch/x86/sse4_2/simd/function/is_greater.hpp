@@ -11,8 +11,8 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_X86_SSE4_2_SIMD_FUNCTION_IS_GREATER_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE4_2_SIMD_FUNCTION_IS_GREATER_HPP_INCLUDED
+#include <boost/simd/detail/overload.hpp>
 
-#include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/logical_not.hpp>
 
 namespace boost { namespace simd { namespace ext
