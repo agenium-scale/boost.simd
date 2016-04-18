@@ -9,9 +9,9 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#define BOOST_SIMD_ENABLE_DIAG
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/ffs.hpp>
+#include <boost/simd/function/max.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <simd_test.hpp>
@@ -22,7 +22,7 @@ void test(Env& $)
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
   using p_t = bs::pack<T, N>;
-  using iT =  bd::as_integer_t<T, unsigned>;
+  using iT =  bd::as_integer_t<T>;
   using pi_t = bs::pack<iT, N>;
 
   namespace bs = boost::simd;
@@ -31,7 +31,7 @@ void test(Env& $)
   iT b[N];
   for(int i = 0; i < N; ++i)
   {
-    a1[i] = (i == 0) ? 1 : a1[i-1]*2; //(i%2) ? T(i+1):T(-(i+1));
+    a1[i] = i == 0 ? T(1) : T(bs::max(T(a1[i-1]*3), T(1)));
      b[i] = bs::ffs(a1[i]);
    }
   p_t aa1(&a1[0], &a1[N]);

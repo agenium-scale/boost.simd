@@ -24,15 +24,12 @@ void test(Env& $)
   T a1[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
-    a1[i] = T(1); //(i%2) ? T(i) : T(-i);
+    a1[i] = (i%2) ? T(i) : T(-i);
     b[i] = bs::reversebits(a1[i]) ;
   }
   p_t aa1(&a1[0], &a1[N]);
   p_t bb (&b[0], &b[N]);
   STF_IEEE_EQUAL(bs::reversebits(aa1), bb);
-  std::cout << "aa1                  "<< aa1                  << std::endl;
-  std::cout << "bb                   "<< bb                   << std::endl;
-  std::cout << "bs::reversebits(aa1) "<< bs::reversebits(aa1) << std::endl;
 }
 
 STF_CASE_TPL("Check reversebits on pack" , STF_INTEGRAL_TYPES)

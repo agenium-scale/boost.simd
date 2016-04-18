@@ -29,7 +29,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::type64_<A0> >
                           )
   {
-    using result_t = bd::as_integer_t<A0, unsigned>;
+    using result_t = bd::as_integer_t<A0>;
     result_t operator() ( A0 a0) const
     {
       result_t t1 = bitwise_cast<result_t>(a0);
@@ -80,7 +80,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::type32_<A0> >
                           )
   {
-    using result_t = bd::as_integer_t<A0, unsigned>;
+    using result_t = bd::as_integer_t<A0>;
 
     result_t operator() ( A0 a0) const
     {
@@ -116,7 +116,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::arithmetic_<A0> >
                           )
   {
-    using result_t = typename bd::as_integer_t<A0, unsigned>;
+    using result_t = typename bd::as_integer_t<A0>;
 
     result_t operator() ( A0 a0) const
     {

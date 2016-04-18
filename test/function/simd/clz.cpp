@@ -9,9 +9,9 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#define BOOST_SIMD_ENABLE_DIAG
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/clz.hpp>
+#include <boost/simd/function/max.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
 
@@ -28,7 +28,7 @@ void test(Env& $)
   iT b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
-    a1[i] = i == 0 ? 1 : a1[i-1]*2; //(i%2) ? T(i+1) : T(-(i+1));
+    a1[i] = i == 0 ? T(1) : T(bs::max(T(a1[i-1]*3), T(1)));
     b[i] = bs::clz(a1[i]);
    }
   p_t aa1(&a1[0], &a1[N]);
@@ -36,12 +36,12 @@ void test(Env& $)
   STF_EQUAL(bs::clz(aa1), bb);
 }
 
-STF_CASE_TPL("Check clz on pack" , (uint16_t))//STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check clz on pack", STF_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
-  test<T, N/2>($);
-  test<T, N*2>($);
+   test<T, N/2>($);
+   test<T, N*2>($);
 }
