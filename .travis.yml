@@ -62,4 +62,4 @@ script:
   - make update.boost-header-only | grep -v "^-- " # Silent installation
   - make update.boost.dispatch    | grep -v "^-- " # Silent installation
   - make -k boost.simd.function.simd.unit
-  - ctest
+  - ctest -R ^boost.simd.function.simd.*.unit$
