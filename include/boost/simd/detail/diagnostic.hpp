@@ -92,7 +92,7 @@ class diagnostic
   };
 
   private:
-  diagnostic(stream_type* os = &std::clog) : os_(os) {}
+  diagnostic(stream_type* os = &std::cout) : os_(os) {}
 
   public:
   ~diagnostic() { delete instance_; }
