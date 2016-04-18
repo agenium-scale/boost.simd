@@ -30,7 +30,7 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd =  boost::dispatch;
   namespace bs =  boost::simd;
-  //TODO as split available
+  //TODO as split group available
 //   BOOST_DISPATCH_OVERLOAD ( shift_right_
 //                           , (typename A0,typename A1 )
 //                           , bs::sse2_
@@ -132,15 +132,15 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::integer_<A1>>
                          )
   {
-    using  int_t = typename detail::make_dependent_t<int32_t,A0>;
+    using  int_t = typename detail::make_dependent_t<int16_t,A0>;
 
     BOOST_FORCEINLINE A0 operator() ( const A0 & a0
                                     , const A1 & a1 ) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "shift_right sse2 uint8: a shift is out of range");
-      using gen_t = pack<int_t, 4>;
-      A0 const Mask1 = bitwise_cast<A0>(splat<gen_t>(0x00ff00ffll));
-      A0 const Mask2 = bitwise_cast<A0>(splat<gen_t>(0xff00ff00ll));
+      using gen_t = pack<int_t, A0::static_size/2>;
+      A0 const Mask1 = bitwise_cast<A0>(gen_t(0x00ff));
+      A0 const Mask2 = bitwise_cast<A0>(gen_t(0xff00));
 
       A0 tmp  = bitwise_and(a0, Mask1);
       A0 tmp1 = _mm_srli_epi16(tmp, int(a1));
