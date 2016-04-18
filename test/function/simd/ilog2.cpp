@@ -9,7 +9,6 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#define BOOST_SIMD_ENABLE_DIAG
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/ilog2.hpp>
 #include <boost/simd/function/max.hpp>
@@ -40,7 +39,7 @@ void test(Env& $)
   STF_EQUAL(bs::ilog2(aa1), bb);
 }
 
-STF_CASE_TPL("Check ilog2 on pack" ,  STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check ilog2 on pack",  STF_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;

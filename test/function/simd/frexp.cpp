@@ -9,11 +9,11 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
+#include <simd_test.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/frexp.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
-#include <simd_test.hpp>
 
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
@@ -46,6 +46,6 @@ STF_CASE_TPL("Check frexp on pack" , STF_IEEE_TYPES)
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
-//  test<T, N/2>($);
-//  test<T, Nx2>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }
