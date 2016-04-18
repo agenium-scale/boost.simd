@@ -37,7 +37,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::type8_<A0>, X>
                           )
    {
-      using result = bd::as_integer_t<A0, unsigned>;
+      using result = bd::as_integer_t<A0>;
       BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
       {
         result v = firstbitset(a0);
@@ -56,7 +56,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::type16_<A0>, X>
                           )
    {
-      using result = bd::as_integer_t<A0, unsigned>;
+      using result = bd::as_integer_t<A0>;
       BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
       {
         result v = firstbitset(a0);
@@ -77,7 +77,7 @@ namespace boost { namespace simd { namespace ext
                          , bs::pack_<bd::type32_<A0>, X>
                          )
   {
-    using result = bd::as_integer_t<A0, unsigned>;
+    using result = bd::as_integer_t<A0>;
     BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
     {
       result v = firstbitset(a0);
