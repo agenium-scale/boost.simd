@@ -46,7 +46,7 @@ namespace boost { namespace simd { namespace ext
         static const A0 Vix =  splat<A0>(bs::Valmin<sr_t>());
       #ifndef BOOST_SIMD_NO_NANS
         A0 aa0 = if_zero_else(is_nan(a0), a0);
-        return if_else(bs::lt(aa0, Vix), Valmin<result>(),
+        return if_else(bs::is_less(aa0, Vix), Valmin<result>(),
                        if_else(bs::is_greater(aa0, Vax), Valmax<result>(),
                                bs::fast_(iround2even)(aa0)
                               )

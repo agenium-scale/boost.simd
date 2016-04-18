@@ -66,15 +66,14 @@ namespace boost { namespace simd { namespace ext
       {
         using iA0 = bd::as_integer_t<A0>;
         using sA0 = bd::scalar_of_t<A0>;
-//        using bA0 = bs::as_logical_t<iA0>;
         iA0 e = a1;
         A0 f = One<A0>();
   #ifndef BOOST_SIMD_NO_DENORMALS
-        auto denormal =  lt(e, Minexponent<A0>());
+        auto denormal =  is_less(e, Minexponent<A0>());
         e = selsub(denormal, e, Minexponent<A0>());
         f = if_else(denormal, Smallestposval<A0>(), One<A0>());
   #endif
-        auto test = eq(e, Limitexponent<A0>());
+        auto test = is_equal(e, Limitexponent<A0>());
         f = seladd(test, f, One<A0>());
         e = selsub(test, e, One<iA0>());
         e = e+Maxexponent<A0>();

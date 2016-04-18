@@ -69,7 +69,6 @@ STF_CASE_TPL (" saturate signed_int16",  (int16_t))
   using bs::saturate;
   using bs::Valmax;
   using bs::Valmin;
-  using uint = unsigned long long;
   // specific values tests
   STF_ULP_EQUAL(1u,           saturate<T>(1ull        ), 0);
   STF_ULP_EQUAL(2u,           saturate<T>(2ull        ), 0);
@@ -115,7 +114,6 @@ STF_CASE_TPL (" saturate unsigned_uint16",  (uint16_t))
   using bs::saturate;
   using bs::Valmax;
   using bs::Valmin;
-  using uint = unsigned long long;
   // specific values tests
   STF_ULP_EQUAL(1u,           saturate<T>(1ull        ), 0);
   STF_ULP_EQUAL(2u,           saturate<T>(2ull        ), 0);
