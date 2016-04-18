@@ -52,7 +52,7 @@ namespace boost { namespace simd { namespace ext
                               )
                       );
       #else
-        return if_else(bs::lt(a0, Vix), Valmin<result>(),
+        return if_else(bs::is_less(a0, Vix), Valmin<result>(),
                        if_else(bs::is_greater(a0, Vax), Valmax<result>(),
                                bs::fast_(iround2even(a0))
                               )

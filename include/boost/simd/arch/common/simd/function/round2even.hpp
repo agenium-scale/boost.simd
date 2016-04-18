@@ -49,7 +49,7 @@ namespace boost { namespace simd { namespace ext
         const A0 t2n = bs::Twotonmb<A0>();
         const A0 d0  = v+t2n;
         const A0 d   = d0-t2n;
-        const A0 d1  = if_else(lt(v,t2n),d,v);
+        const A0 d1  = if_else(is_less(v,t2n),d,v);
         return bitwise_xor(d1, s);
       }
    };
