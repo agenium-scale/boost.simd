@@ -37,31 +37,29 @@ namespace boost { namespace simd { namespace ext
     using target_t  = typename Target::type;
     using storage_t = typename target_t::storage_type;
 
-    BOOST_FORCEINLINE target_t operator()(Pointer p, Target const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE target_t operator()(Pointer p, Target const&) const
     {
       return do_(p, typename target_t::storage_kind(), typename target_t::traits::static_range{} );
     }
-
-    // How many elements does each load loads ?
-    template<typename I>
-    using offset_t = std::integral_constant<std::size_t,I::value*target_t::traits::element_size>;
 
     /*
       Emulation case: fill in the storage by calling load on the underlying data over successive
       jump in the pointer.
     */
-    template<typename K, typename... N>
-    static inline storage_t do_(Pointer p, K const&, brigand::list<N...> const&) BOOST_NOEXCEPT
+    template<typename... N>
+    static inline storage_t do_(Pointer p, aggregate_storage const&, brigand::list<N...> const&)
     {
-      return {{ load<typename storage_t::value_type>(p+offset_t<N>::value)... }};
+      return  {{  load<typename storage_t::value_type>(p)
+                , load<typename storage_t::value_type>(p+target_t::traits::element_size)
+              }};
     }
 
     /*
       Native case: We doesn't know what we're storing but we know we fill a pack.
       So we prepare data then call make on the proper target type.
     */
-    template<typename... N> static inline
-    target_t do_(Pointer const& b, native_storage const&, brigand::list<N...> const&) BOOST_NOEXCEPT
+    template<typename K, typename... N> static inline
+    target_t do_(Pointer const& b, K const&, brigand::list<N...> const&)
     {
       using value_t   = typename target_t::value_type;
       std::initializer_list<value_t> lst{ static_cast<value_t>(b[N::value])... };
@@ -84,41 +82,41 @@ namespace boost { namespace simd { namespace ext
     using target_t  = typename Target::type;
     using storage_t = typename target_t::storage_type;
 
-    BOOST_FORCEINLINE target_t operator()(Begin const& b, End const&, Target const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE target_t operator()(Begin const& b, End const&, Target const&) const
     {
       return do_(b, typename target_t::storage_kind(), typename target_t::traits::static_range{});
     }
 
-    template<typename I>
-    using offset_t = std::integral_constant<std::size_t,target_t::traits::element_size>;
-
     /*
       Emulation case: fill in the storage by calling load on the underlying data
-      We use advance as we're dealing with InputIterator and the dances with lb/le is
-      there so we don't call advance from the beginning each time, thus doing ++ exactly N times
-      and note N.(N-1)/2 times.
+      We use advance as we're dealing with InputIterator and we prepare the intermediate
+      iterator with the proper amount of advance calls.
     */
-    template<typename K, typename... N>
-    static inline storage_t do_(Begin b, K const&, brigand::list<N...> const&) BOOST_NOEXCEPT
+    template<typename... N>
+    static inline storage_t do_(Begin b, aggregate_storage const&, brigand::list<N...> const&)
     {
-      Begin lb, le = b;
+      std::ptrdiff_t off = target_t::traits::element_size;
 
-      return  {{  ( lb = le
-                  , std::advance(le,offset_t<N>::value)
-                  , load<typename target_t::substorage_type>(lb,le)
-                  )...
+      Begin b0 = b, b1 = b;
+      std::advance(b1,off);
+
+      Begin b2 = b1;
+      std::advance(b2,off);
+
+      return  {{  load<typename target_t::substorage_type>(b0,b1)
+                , load<typename target_t::substorage_type>(b1,b2)
               }};
     }
 
     template<typename N> static inline
-    typename target_t::value_type value(Begin& b) BOOST_NOEXCEPT { return *b++; }
+    typename target_t::value_type value(Begin& b) { return *b++; }
 
     /*
       Native case: We doesn't know what we're storing but we know we fill a pack.
       So we just prepare data then call make on the proper target type.
     */
-    template<typename... N> static inline
-    target_t do_(Begin b, native_storage const&, brigand::list<N...> const&) BOOST_NOEXCEPT
+    template<typename K, typename... N> static inline
+    target_t do_(Begin b, K const&, brigand::list<N...> const&)
     {
       using value_t   = typename target_t::value_type;
       std::initializer_list<value_t> lst{ value<N>(b)... };
@@ -141,26 +139,24 @@ namespace boost { namespace simd { namespace ext
     using target_t  = typename Target::type;
     using storage_t = typename target_t::storage_type;
 
-    BOOST_FORCEINLINE target_t operator()(Begin const& b, End const&, Target const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE target_t operator()(Begin const& b, End const&, Target const&) const
     {
       return do_(b, typename target_t::storage_kind(), typename target_t::traits::static_range{});
     }
-
-    // How many elements does each load loads ?
-    template<typename I>
-    using begin_t = std::integral_constant<std::size_t,I::value*target_t::traits::element_size>;
-
-    template<typename I>
-    using end_t = std::integral_constant<std::size_t,(1+I::value)*target_t::traits::element_size>;
 
     /*
       Emulation case: fill in the storage by calling load on the underlying data
       while jumping inside the RandomAccessRange.
     */
-    template<typename K, typename... N>
-    static inline storage_t do_(Begin b, K const&, brigand::list<N...> const&) BOOST_NOEXCEPT
+    template<typename... N> static inline
+    storage_t do_(Begin b, aggregate_storage const&, brigand::list<N...> const&)
     {
-      return {{ load<typename target_t::substorage_type>(b+begin_t<N>::value, b+end_t<N>::value)... }};
+      Begin   b1 = b  + target_t::traits::element_size
+            , b2 = b1 + target_t::traits::element_size;
+
+      return  {{  load<typename target_t::substorage_type>(b, b1)
+                , load<typename target_t::substorage_type>(b1,b2)
+              }};
     }
 
     /*
@@ -168,8 +164,8 @@ namespace boost { namespace simd { namespace ext
       So we just call make on the proper target type with every randomly accessed
       values.
     */
-    template<typename... N> static inline
-    target_t do_(Begin b, native_storage const&, brigand::list<N...> const&) BOOST_NOEXCEPT
+    template<typename K, typename... N> static inline
+    target_t do_(Begin b, K const&, brigand::list<N...> const&)
     {
       return make<target_t>(b[N::value]...);
     }

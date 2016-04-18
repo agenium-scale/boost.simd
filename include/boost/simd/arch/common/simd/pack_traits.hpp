@@ -69,6 +69,7 @@ namespace boost { namespace simd { namespace detail
     enum {
       static_size  = N,
       element_size = N / NumberOfVectors,
+      element_mask = element_size-1,
       number_of_vectors = NumberOfVectors
     };
 
@@ -91,13 +92,13 @@ namespace boost { namespace simd { namespace detail
     template<typename Pack> BOOST_FORCEINLINE
     static reference at(Pack& d, std::size_t i)
     {
-      return (d.storage())[i / element_size][i % element_size];
+      return (d.storage())[(i&element_size) !=0][i&element_mask];
     }
 
     template<typename Pack> BOOST_FORCEINLINE
     static const_reference at(Pack const& d, std::size_t i)
     {
-      return (d.storage())[i / element_size][i % element_size];
+      return (d.storage())[(i&element_size) !=0][i&element_mask];
     }
   };
 } } }

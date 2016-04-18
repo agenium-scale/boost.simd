@@ -284,10 +284,10 @@ STF_CASE("Check automap behaviour on pack")
 
   test1<int, 4>($);
   test1<int, 8>($);
+  test1<int, 16>($);
 
   test1<char, 4>($);
   test1<char, 8>($);
-
   // --
 
   test2<double, 2>($);
@@ -299,6 +299,7 @@ STF_CASE("Check automap behaviour on pack")
 
   test2<int, 4>($);
   test2<int, 8>($);
+  test2<int, 16>($);
 
   test2<char, 4>($);
   test2<char, 8>($);

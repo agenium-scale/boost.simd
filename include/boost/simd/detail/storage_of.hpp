@@ -106,15 +106,12 @@ namespace boost { namespace simd { namespace detail
                                             >::type::type;
   };
 
-  // IF we request more than needed, we aggregate smaller SIMD registers
+  // IF we request more than needed, we aggregate exactly 2 smaller SIMD registers
   template< typename Type, std::size_t Cardinal, typename ABI>
   struct storage_of<Type,Cardinal,ABI,aggregated_status>
   {
-    enum { expected = expected_cardinal<Type,ABI>::value };
-    enum { size     = Cardinal / expected };
-
-    using base = pack<Type,expected>;
-    using type = std::array<base,size>;
+    using base = pack<Type,Cardinal/2>;
+    using type = std::array<base,2>;
   };
 } } }
 

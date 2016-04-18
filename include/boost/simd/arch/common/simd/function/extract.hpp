@@ -69,36 +69,6 @@ namespace boost { namespace simd { namespace ext
       return do_(a0,i, typename A0::storage_kind{});
     }
   };
-
-  // -----------------------------------------------------------------------------------------------
-  // extract on logical pack potentially use bitwise cast but still optimizes static indexing
-  BOOST_DISPATCH_OVERLOAD ( extract_
-                          , (typename A0, typename Ext, typename A1)
-                          , bs::simd_
-                          , bs::pack_<bs::logical_<A0>,Ext>
-                          , bd::constant_< bd::integer_<A1> >
-                          )
-  {
-    using result_t = typename A0::value_type;
-
-    static BOOST_FORCEINLINE
-    result_t do_( A0 const& a0, A1 const&, native_storage const&) BOOST_NOEXCEPT
-    {
-      auto bits = bitwise_cast<as_arithmetic_t<A0>>(a0);
-      return result_t( boost::simd::extract<A1::value>(bits));
-    }
-
-    template<typename K>
-    static BOOST_FORCEINLINE result_t do_( A0 const& a0, A1 const&, K const&) BOOST_NOEXCEPT
-    {
-      return A0::traits::at(a0,A1::value);
-    }
-
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0, A1 const& i) const BOOST_NOEXCEPT
-    {
-      return do_(a0,i, typename A0::storage_kind{});
-    }
-  };
 } } }
 
 #endif

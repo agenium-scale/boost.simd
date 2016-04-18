@@ -30,12 +30,7 @@ namespace boost { namespace simd
   }
 
   template<typename T, typename... Args> BOOST_FORCEINLINE
-  auto load(Args&&... args) BOOST_NOEXCEPT
-          -> decltype ( tag::load_::dispatch_to ( boost::dispatch::default_site<tag::load_>()
-                                                , boost::dispatch::hierarchy_of_t<Args>()...
-                                                , boost::dispatch::hierarchy_of_t<boost::simd::as_<T>>()
-                                                )(std::forward<Args>(args)...,boost::simd::as_<T>())
-                      )
+  T load(Args&&... args)
   {
     return tag::load_::dispatch_to( boost::dispatch::default_site<tag::load_>()
                                   , boost::dispatch::hierarchy_of_t<Args>()...
