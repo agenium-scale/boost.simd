@@ -79,7 +79,7 @@ if_zero_else.cpp
 if_zero_else_one.cpp
 ilog2.cpp
 ilogb.cpp
-inbtrue.cpp
+
 indeg.cpp
 inrad.cpp
 iround2even.cpp
@@ -160,7 +160,6 @@ minus.cpp
 minusone.cpp
 modf.cpp
 multiplies.cpp
-nbtrue.cpp
 negate.cpp
 negatenz.cpp
 negif.cpp
@@ -208,7 +207,7 @@ trunc.cpp
 two_add.cpp
 two_prod.cpp
 two_split.cpp
-ulpdist.cpp
+#ulpdist.cpp
 unary_minus.cpp
 unary_plus.cpp
 
@@ -233,12 +232,14 @@ unary_plus.cpp
 #idivfix.cpp
 #idivfloor.cpp
 #idivround.cpp
+#inbtrue.cpp
 #interleave_even.cpp
 #interleave_odd.cpp
 #is_included_c.cpp
 #is_included.cpp
 #mod.cpp
 #muls.cpp
+#nbtrue.cpp
 #none
 #rem.cpp TODO
 #rem_pio2.cpp TODO waitin for map
