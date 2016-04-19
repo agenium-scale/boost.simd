@@ -11,21 +11,23 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LOGICAL_AND_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LOGICAL_AND_HPP_INCLUDED
-#include <boost/simd/detail/overload.hpp>
 
-#include <boost/simd/meta/hierarchy/simd.hpp>
+#include <boost/simd/detail/overload.hpp>
+#include <boost/simd/detail/traits.hpp>
+#include <boost/simd/function/simd/mask2logical.hpp>
 #include <boost/simd/function/simd/bitwise_and.hpp>
 #include <boost/simd/function/simd/genmask.hpp>
-#include <boost/simd/function/simd/mask2logical.hpp>
+#include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/meta/as_logical.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
    namespace bd = boost::dispatch;
    namespace bs = boost::simd;
+
    BOOST_DISPATCH_OVERLOAD_IF(logical_and_
                              , (typename A0,typename A1,typename X)
-                             , (brigand::bool_<A1::static_size == A0::static_size>)
+                             , (detail::same_size<A0,A1>)
                              , bd::cpu_
                              , bs::pack_<bd::fundamental_<A0>,X>
                              , bs::pack_<bd::fundamental_<A1>,X>

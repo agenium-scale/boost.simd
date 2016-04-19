@@ -11,6 +11,7 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LOGICAL_NOT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LOGICAL_NOT_HPP_INCLUDED
+
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/is_eqz.hpp>
@@ -47,9 +48,6 @@ namespace boost { namespace simd { namespace ext
       return mask2logical(complement(genmask(a0)));
     }
   };
-
 } } }
 
-
 #endif
-
