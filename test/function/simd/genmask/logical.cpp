@@ -7,7 +7,6 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#define BOOST_SIMD_ENABLE_DIAG
 #include <boost/simd/function/genmask.hpp>
 #include <boost/simd/constant/allbits.hpp>
 #include <boost/simd/logical.hpp>
