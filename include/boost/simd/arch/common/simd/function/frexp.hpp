@@ -74,7 +74,7 @@ namespace boost { namespace simd { namespace ext
         auto test1 = is_greater(r1,Limitexponent<A0>());
         r1 = if_else_zero(logical_notand(test1, test0), r1);
   #ifndef BOOST_SIMD_NO_DENORMALS
-        r1 =  r1-t; //-= t ;
+        r1 -= t ;
   #endif
         r0 = if_else_zero(test0, seladd(test1,r0,aa0));
       }
