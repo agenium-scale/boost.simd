@@ -20,6 +20,7 @@ abss.cpp
 adds.cpp
 aligned_load.cpp
 aligned_store.cpp
+all.cpp
 arg.cpp
 autofold.cpp
 automap.cpp
@@ -211,7 +212,6 @@ two_split.cpp
 unary_minus.cpp
 unary_plus.cpp
 
-#all.cpp
 #any.cpp
 #compare_equal.cpp
 #compare_greater.cpp

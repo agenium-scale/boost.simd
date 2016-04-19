@@ -32,6 +32,7 @@ void test(Env& $)
   }
   p_t aa1(&a1[0], &a1[N]);
   p_t aa2(&a2[0], &a2[N]);
+
   STF_EQUAL(bs::all(aa1), b);
   STF_EQUAL(bs::all(aa2), c);
 }
@@ -39,8 +40,8 @@ void test(Env& $)
 STF_CASE_TPL("Check all on pack" , STF_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
-  using p_t = bs::pack<T>;
-  static const std::size_t N = bs::cardinal_of<p_t>::value;
+  static const std::size_t N = bs::pack<T>::static_size;
+
   test<T, N>($);
   test<T, N/2>($);
   test<T, N*2>($);
