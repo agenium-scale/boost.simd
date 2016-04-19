@@ -11,6 +11,7 @@
 
 #include <boost/simd/function/make.hpp>
 #include <boost/simd/function/extract.hpp>
+#include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/dispatch/hierarchy.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>

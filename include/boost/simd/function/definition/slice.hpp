@@ -30,8 +30,6 @@ namespace boost { namespace simd
   }
 
   BOOST_DISPATCH_CALLABLE_DEFINITION(tag::slice_,slice);
-
-
 } }
 
 #endif
