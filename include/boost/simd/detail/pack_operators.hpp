@@ -27,6 +27,7 @@
 #include <boost/simd/function/bitwise_or.hpp>
 #include <boost/simd/function/bitwise_xor.hpp>
 #include <boost/simd/function/complement.hpp>
+#include <boost/simd/function/logical_not.hpp>
 #include <boost/simd/function/shift_left.hpp>
 #include <boost/simd/function/shift_right.hpp>
 #include <boost/simd/function/logical_and.hpp>
@@ -78,6 +79,12 @@ BOOST_SIMD_PACK_DEFINE_OP(logical<T>, operator>=, is_greater_equal)
 BOOST_SIMD_PACK_DEFINE_OP(logical<T>, operator!=, is_not_equal)
 
 #undef BOOST_SIMD_PACK_DEFINE_OP
+
+  template <typename T, std::size_t N>
+  BOOST_FORCEINLINE pack<as_logical_t<T>,N> operator!(pack<T,N> const& a) BOOST_NOEXCEPT
+  {
+    return logical_not(a);
+  }
 
 } }
 
