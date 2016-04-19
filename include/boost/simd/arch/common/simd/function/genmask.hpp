@@ -11,23 +11,17 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_GENMASK_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_GENMASK_HPP_INCLUDED
-#include <boost/simd/detail/overload.hpp>
 
+#include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/meta/hierarchy/logical.hpp>
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/meta/as_arithmetic.hpp>
 // if_else_zero is not stil correct
 #include <boost/simd/function/simd/is_nez.hpp>
-#include <boost/simd/function/simd/if_else_zero.hpp>
-#include <boost/simd/function/simd/is_nez.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
-
 #include <boost/simd/constant/allbits.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

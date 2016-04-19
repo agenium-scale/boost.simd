@@ -11,19 +11,18 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_NEGIF_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_NEGIF_HPP_INCLUDED
-#include <boost/simd/detail/overload.hpp>
 
+#include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/meta/cardinal_of.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/unary_minus.hpp>
-#include <boost/mpl/equal_to.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/unary_minus.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
-   namespace bd = boost::dispatch;
-   namespace bs = boost::simd;
-  BOOST_DISPATCH_OVERLOAD(negif_
+  namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
+
+  BOOST_DISPATCH_OVERLOAD( negif_
                          , (typename A0, typename A1, typename X)
                          , bd::cpu_
                          , bs::pack_<bd::unspecified_<A0>, X>
@@ -35,7 +34,6 @@ namespace boost { namespace simd { namespace ext
         return if_else(a0,unary_minus(a1),a1);
       }
    };
-
 } } }
 
 #endif
