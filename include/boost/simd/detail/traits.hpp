@@ -11,6 +11,7 @@
 #ifndef BOOST_SIMD_DETAIL_TRAITS_HPP_INCLUDED
 #define BOOST_SIMD_DETAIL_TRAITS_HPP_INCLUDED
 
+#include <boost/simd/arch/common/tags.hpp>
 #include <boost/config.hpp>
 #include <type_traits>
 
@@ -24,6 +25,11 @@ namespace boost { namespace simd { namespace detail
   template<typename A0, typename A1>
   struct same_sizeof
         : brigand::bool_<sizeof(A0) == sizeof(A1)>
+  {};
+
+  template<typename X>
+  struct is_native
+        : brigand::bool_<!std::is_same<X,boost::simd::simd_emulation_>::value>
   {};
 } } }
 
