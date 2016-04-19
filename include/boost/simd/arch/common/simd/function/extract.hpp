@@ -38,14 +38,12 @@ namespace boost { namespace simd { namespace ext
     using result_t = typename A0::value_type;
     BOOST_FORCEINLINE result_t operator() ( A0 const& a0, A1 i) const BOOST_NOEXCEPT
     {
-      auto ptr = &(a0.storage());
-
       #if BOOST_COMP_CLANG == BOOST_VERSION_NUMBER(3,6,0)
       result_t data[A0::static_size];
-      memcpy(&data[0], ptr, sizeof(A0));
+      memcpy(&data[0], &(a0.storage()), sizeof(A0));
       return data[i];
       #else
-      return result_t(reinterpret_cast<result_t const*>( ptr )[i]);
+      return result_t(reinterpret_cast<detail::may_alias_t<result_t const>*>( &(a0.storage()) )[i]);
       #endif
     }
   };
