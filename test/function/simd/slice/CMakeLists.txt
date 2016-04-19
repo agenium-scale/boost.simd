@@ -7,8 +7,10 @@
 ##===================================================================================================
 
 set ( SOURCES
+  arithmetic.cpp
   arithmetic.high.cpp
   arithmetic.low.cpp
+  logical.cpp
   logical.high.cpp
   logical.low.cpp
 )
