@@ -24,7 +24,8 @@ namespace boost { namespace simd { namespace ext
 {
    namespace bd = boost::dispatch;
    namespace bs = boost::simd;
-   BOOST_DISPATCH_OVERLOAD(ctz_
+
+   BOOST_DISPATCH_OVERLOAD( ctz_
                           , (typename A0, typename X)
                           , bd::cpu_
                           , bs::pack_<bd::arithmetic_<A0>, X>
@@ -33,14 +34,11 @@ namespace boost { namespace simd { namespace ext
       using result = bd::as_integer_t<A0>;
       BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
       {
-        result t =  bitwise_cast<result>(a0);
         BOOST_ASSERT_MSG( assert_all(a0), "ctz not defined for 0" );
-        return bitwise_cast<result>(dec(bs::ffs(t)));
+
+        return bs::ffs(bitwise_cast<result>(a0))-1;
       }
    };
-
 } } }
 
-
 #endif
-
