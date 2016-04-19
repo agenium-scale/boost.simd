@@ -26,7 +26,7 @@
 #include <boost/simd/function/simd/unary_minus.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/dispatch/meta/scalar_of.hpp>
- #include <boost/simd/constant/ratio.hpp>
+#include <boost/simd/constant/ratio.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -95,9 +95,6 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  //Let automap do the job for type64
 } } }
 
-
 #endif
-
