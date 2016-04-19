@@ -293,8 +293,7 @@ namespace boost { namespace simd
 
     public:
     BOOST_FORCEINLINE
-    rebind<logical<T>>
-    operator!() const BOOST_NOEXCEPT { return logical_not(*this); }
+    as_logical_t<pack> operator!() const BOOST_NOEXCEPT { return logical_not(*this); }
 
     BOOST_FORCEINLINE pack operator+() const BOOST_NOEXCEPT { return unary_plus(*this); }
     BOOST_FORCEINLINE pack operator-() const BOOST_NOEXCEPT { return unary_minus(*this); }
