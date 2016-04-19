@@ -27,15 +27,19 @@ void test(Env& $)
 
   T a1[N];
   iT b[N];
-  for(std::size_t i = 0; i < N; ++i)
+
+  a1[0] = T(3);
+  b[0]  = bs::ilog2(a1[0]);
+
+  for(std::size_t i = 1; i < N; ++i)
   {
-    a1[i] = i == 0 ? T(3) : bs::max(T(a1[i-1]*T(3)), T(1)); //T(N+i+1);
-    b[i] = bs::ilog2(a1[i]);
+    a1[i] = bs::max(T(a1[i-1]*T(3)), T(1));
+    b[i]  = bs::ilog2(a1[i]);
   }
+
   p_t aa1(&a1[0], &a1[N]);
   i_t bb(&b[0], &b[N]);
-//   std::cout << "aa1 " << aa1 << std::endl;
-//   std::cout << "bb  " << bb  << std::endl;
+
   STF_EQUAL(bs::ilog2(aa1), bb);
 }
 

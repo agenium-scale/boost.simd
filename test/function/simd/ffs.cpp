@@ -29,13 +29,19 @@ void test(Env& $)
   namespace bd = boost::dispatch;
   T a1[N];
   iT b[N];
-  for(int i = 0; i < N; ++i)
+
+  a1[0] = T(1);
+  b[0] = bs::ffs(a1[0]);
+
+  for(int i = 1; i < N; ++i)
   {
-    a1[i] = i == 0 ? T(1) : T(bs::max(T(a1[i-1]*3), T(1)));
+    a1[i] = T(bs::max(T(a1[i-1]*3), T(1)));
      b[i] = bs::ffs(a1[i]);
-   }
+  }
+
   p_t aa1(&a1[0], &a1[N]);
   pi_t bb(&b[0], &b[N]);
+
   STF_EQUAL(bs::ffs(aa1), bb);
 }
 

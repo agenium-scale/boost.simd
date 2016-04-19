@@ -18,7 +18,6 @@
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
 {
-
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
   using p_t = bs::pack<T, N>;
@@ -27,11 +26,16 @@ void test(Env& $)
 
   T a1[N];
   iT b[N];
-  for(std::size_t i = 0; i < N; ++i)
+
+  a1[0] = T(1);
+  b[0]  = bs::ctz(a1[0]);
+
+  for(std::size_t i = 1; i < N; ++i)
   {
-    a1[i] =i == 0 ? T(1) : T(bs::max(T(a1[i-1]*3), T(1)));
-    b[i] = bs::ctz(a1[i]);
-   }
+    a1[i] = T(bs::max(T(a1[i-1]*3), T(1)));
+    b[i]  = bs::ctz(a1[i]);
+  }
+
   p_t aa1(&a1[0], &a1[N]);
   i_t bb(&b[0], &b[N]);
   STF_EQUAL(bs::ctz(aa1), bb);
