@@ -14,6 +14,7 @@
 
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/traits.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/dispatch/hierarchy.hpp>
@@ -41,7 +42,7 @@ namespace boost { namespace simd { namespace ext
   namespace bd = boost::dispatch;
   BOOST_DISPATCH_OVERLOAD_IF( bitwise_and_
                             , (typename A0, typename A1)
-                            , (brigand::bool_<sizeof(A1) == sizeof(A0)>)
+                            , (detail::same_sizeof<A0,A1>)
                             , bd::cpu_
                             , bd::scalar_<bd::fundamental_<A0>>
                             , bd::scalar_<bd::fundamental_<A1>>

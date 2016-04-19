@@ -20,6 +20,11 @@ namespace boost { namespace simd { namespace detail
   struct same_size
         : brigand::bool_<std::decay<A1>::type::static_size == std::decay<A0>::type::static_size>
   {};
+
+  template<typename A0, typename A1>
+  struct same_sizeof
+        : brigand::bool_<sizeof(A0) == sizeof(A1)>
+  {};
 } } }
 
 #endif
