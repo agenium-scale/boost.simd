@@ -38,7 +38,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( is_normal_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::integer_<A0> >
+                          , bd::scalar_< bd::fundamental_<A0> >
                           )
   {
     BOOST_FORCEINLINE bs::as_logical_t<A0> operator() ( A0 a0) const BOOST_NOEXCEPT

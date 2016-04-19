@@ -111,7 +111,7 @@ namespace boost { namespace simd { namespace ext
   {
     using result =  bs::as_logical_t<A0>;
     BOOST_FORCEINLINE result operator() ( const A0 & a0
-                                                      , const A0 & a1 ) const BOOST_NOEXCEPT
+                                        , const A0 & a1 ) const BOOST_NOEXCEPT
     {
       using type = bd::downgrade_t<A0, signed>;
       using utype = bd::downgrade_t<A0, unsigned>;
@@ -119,8 +119,10 @@ namespace boost { namespace simd { namespace ext
       utype bl = shuffle<0,0,2,2>(bitwise_cast<utype>(a1));
       type ah  = shuffle<1,1,3,3>(bitwise_cast<type >(a0));
       type bh  = shuffle<1,1,3,3>(bitwise_cast<type >(a1));
-
-      return bitwise_cast<result>(logical_or(is_less(ah,bh), logical_and(is_equal(ah,bh), is_less(al,bl))));
+      using il_t =  as_logical_t<type >;
+      return bitwise_cast<result>(logical_or(is_less(ah,bh)
+                                            , logical_and(is_equal(ah,bh),
+                                                          bitwise_cast<il_t>(is_less(al,bl)))));
     }
   };
 

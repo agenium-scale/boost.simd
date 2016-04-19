@@ -20,6 +20,8 @@
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/quarter.hpp>
 #include <boost/simd/constant/two.hpp>
+#include <boost/simd/constant/true.hpp>
+#include <boost/simd/constant/false.hpp>
 #include <boost/simd/logical.hpp>
 
 STF_CASE_TPL (" is_ngez  _real",  STF_IEEE_TYPES)
@@ -93,6 +95,21 @@ STF_CASE ( "is_ngez _bool")
   // specific values tests
   STF_EQUAL(is_ngez(true), false);
   STF_EQUAL(is_ngez(false), false);
+}
+STF_CASE_TPL ( "is_ngez _logical", STF_NUMERIC_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::is_ngez;
+  using lT = bs::logical<T>;
+  using r_t = decltype(is_ngez(lT()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, lT);
+
+  // specific values tests
+  STF_EQUAL(is_ngez(bs::True<lT>()), bs::False<lT>());
+  STF_EQUAL(is_ngez(bs::False<lT>()), bs::False<lT>());
 }
 
 

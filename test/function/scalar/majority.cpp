@@ -18,6 +18,8 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/two.hpp>
+#include <boost/simd/constant/true.hpp>
+#include <boost/simd/constant/false.hpp>
 #include <boost/simd/constant/quarter.hpp>
 
 STF_CASE_TPL (" majorityreal",  STF_IEEE_TYPES)
@@ -94,4 +96,25 @@ STF_CASE ( "majority bool")
   STF_EQUAL(majority(false, true, true), true);
   STF_EQUAL(majority(true, true, false), true);
   STF_EQUAL(majority(false, false, true), false);
+}
+
+STF_CASE_TPL ( "majority bool", STF_NUMERIC_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::majority;
+  using lT = bs::logical<T>;
+  using r_t = decltype(majority(lT(),lT(),lT()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, lT);
+
+
+  // specific values tests
+  STF_EQUAL(majority(bs::True<lT>(), bs::False<lT>(), bs::True<lT>()), bs::True<lT>());
+  STF_EQUAL(majority(bs::False<lT>(), bs::True<lT>(), bs::True<lT>()), bs::True<lT>());
+  STF_EQUAL(majority(bs::True<lT>(), bs::True<lT>(), bs::False<lT>()), bs::True<lT>());
+  STF_EQUAL(majority(bs::False<lT>(), bs::False<lT>(), bs::True<lT>()), bs::False<lT>());
+  STF_EQUAL(majority(bs::False<lT>(), bs::True<lT>(), bs::False<lT>()), bs::False<lT>());
+  STF_EQUAL(majority(bs::True<lT>(), bs::False<lT>(), bs::False<lT>()), bs::False<lT>());
 }

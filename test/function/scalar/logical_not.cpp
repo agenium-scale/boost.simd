@@ -18,7 +18,7 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/logical.hpp>
 
-STF_CASE_TPL (" logical_not integer",  STF_NUMERIC_TYPES)
+STF_CASE_TPL (" logical_not ",  STF_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -37,5 +37,21 @@ STF_CASE_TPL (" logical_not integer",  STF_NUMERIC_TYPES)
 } // end of test for integer_
 
 
+STF_CASE_TPL (" logical_not logical",  STF_NUMERIC_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::logical_not;
+  using lT =  bs::logical<T>;
+
+  using r_t = decltype(logical_not(lT()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t,lT);
+
+  // specific values tests
+  STF_EQUAL(logical_not(bs::True<lT>()), r_t(false));
+  STF_EQUAL(logical_not(bs::False<lT>()), r_t(true));
+} // end of test for logical_
 
 

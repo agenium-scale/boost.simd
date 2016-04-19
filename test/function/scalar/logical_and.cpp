@@ -16,6 +16,8 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/true.hpp>
+#include <boost/simd/constant/false.hpp>
 #include <boost/simd/logical.hpp>
 
 STF_CASE_TPL ( "logical_and integer",  STF_INTEGRAL_TYPES)
@@ -69,5 +71,22 @@ STF_CASE ( "logical_and bool")
   STF_EQUAL(logical_and(false, false), false);
 }
 
+STF_CASE_TPL ( "logical_and logical", STF_NUMERIC_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::logical_and;
+  using lT =  bs::logical<T>;
+  using r_t = decltype(logical_and(lT(), lT()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, lT);
+
+  // specific values tests
+  STF_EQUAL(logical_and(bs::True<lT>(), bs::False<lT>()), bs::False<lT>());
+  STF_EQUAL(logical_and(bs::False<lT>(), bs::True<lT>()), bs::False<lT>());
+  STF_EQUAL(logical_and(bs::True<lT>(), bs::True<lT>()), bs::True<lT>());
+  STF_EQUAL(logical_and(bs::False<lT>(), bs::False<lT>()), bs::False<lT>());
+}
 
 

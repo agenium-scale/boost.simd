@@ -22,6 +22,8 @@
 #include <boost/simd/constant/mindenormal.hpp>
 #include <boost/simd/constant/quarter.hpp>
 #include <boost/simd/constant/half.hpp>
+#include <boost/simd/constant/true.hpp>
+#include <boost/simd/constant/false.hpp>
 #include <boost/simd/logical.hpp>
 
 STF_CASE_TPL (" is_normal",  STF_IEEE_TYPES)
@@ -103,6 +105,22 @@ STF_CASE ( "is_normal bool")
   // specific values tests
   STF_EQUAL(is_normal(true), true);
   STF_EQUAL(is_normal(false), false);
+}
+
+STF_CASE_TPL ( "is_normal _logical", STF_NUMERIC_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::is_normal;
+  using lT = bs::logical<T>;
+  using r_t = decltype(is_normal(lT()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, lT);
+
+  // specific values tests
+  STF_EQUAL(is_normal(bs::True<lT>()), bs::True<lT>());
+  STF_EQUAL(is_normal(bs::False<lT>()), bs::False<lT>());
 }
 
 

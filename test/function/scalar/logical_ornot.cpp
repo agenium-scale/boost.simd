@@ -16,6 +16,8 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/true.hpp>
+#include <boost/simd/constant/false.hpp>
 #include <boost/simd/logical.hpp>
 
 STF_CASE_TPL (" logical_ornotreal",  STF_IEEE_TYPES)
@@ -82,3 +84,21 @@ STF_CASE_TPL (" logical_ornot mix",  STF_IEEE_TYPES)
   STF_EQUAL(logical_ornot(r_t(false), iT(1)), r_t(false));
   STF_EQUAL(logical_ornot(r_t(true), iT(1)), r_t(true));
 } // end of test for floating_
+
+STF_CASE_TPL ( "logical_ornot logical", STF_NUMERIC_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::logical_ornot;
+  using lT =  bs::logical<T>;
+  using r_t = decltype(logical_ornot(lT(), lT()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, lT);
+
+  // specific values tests
+  STF_EQUAL(logical_ornot(bs::True<lT>(), bs::False<lT>()), bs::True<lT>());
+  STF_EQUAL(logical_ornot(bs::False<lT>(), bs::True<lT>()), bs::False<lT>());
+  STF_EQUAL(logical_ornot(bs::True<lT>(), bs::True<lT>()), bs::True<lT>());
+  STF_EQUAL(logical_ornot(bs::False<lT>(), bs::False<lT>()), bs::True<lT>());
+}
