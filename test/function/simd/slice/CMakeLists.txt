@@ -8,7 +8,9 @@
 
 set ( SOURCES
   arithmetic.high.cpp
+  arithmetic.low.cpp
   logical.high.cpp
+  logical.low.cpp
 )
 
 make_unit( "boost.simd.function.simd.slice"   ${SOURCES})
