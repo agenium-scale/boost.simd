@@ -31,8 +31,6 @@ void test(Env& $)
   p_t aa2(&a2[0], &a2[N]);
   p_t bb(&b[0], &b[N]);
   STF_IEEE_EQUAL(bs::multiplies_s(aa1, aa2), bb);
-  STF_IEEE_EQUAL(aa1*aa2, bb);
-
 }
 
 STF_CASE_TPL("Check multiplies_s on pack" , STF_NUMERIC_TYPES)
