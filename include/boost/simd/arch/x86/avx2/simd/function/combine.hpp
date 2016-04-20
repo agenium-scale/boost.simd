@@ -9,12 +9,9 @@
 #ifndef BOOST_SIMD_ARCH_X86_AVX2_SIMD_FUNCTION_COMBINE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_AVX2_SIMD_FUNCTION_COMBINE_HPP_INCLUDED
 
+#include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/meta/as_arithmetic.hpp>
-#include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/hierarchy.hpp>
-#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

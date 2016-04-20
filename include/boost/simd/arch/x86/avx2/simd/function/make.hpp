@@ -1,12 +1,10 @@
 //==================================================================================================
-/*!
-  @file
-
-  @copyright 2016 NumScale SAS
+/**
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_X86_AVX2_SIMD_FUNCTION_MAKE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_AVX2_SIMD_FUNCTION_MAKE_HPP_INCLUDED
@@ -23,25 +21,22 @@ namespace boost { namespace simd { namespace ext
   //------------------------------------------------------------------------------------------------
   // make a pack of int64
   BOOST_DISPATCH_OVERLOAD ( make_
-                          , (typename Target, typename V0, typename V1, typename V2, typename V3)
+                          , (typename Target, typename... Values)
                           , bs::avx2_
                           , bd::target_<bs::pack_<bd::ints64_<Target>,bs::avx_>>
-                          , bd::scalar_<bd::unspecified_<V0>>
-                          , bd::scalar_<bd::unspecified_<V1>>
-                          , bd::scalar_<bd::unspecified_<V2>>
-                          , bd::scalar_<bd::unspecified_<V3>>
+                          , bd::scalar_<bd::unspecified_<Values>>...
                           )
   {
     using target_t  = typename Target::type;
 
-    BOOST_FORCEINLINE target_t
-    operator()(Target const&, V0 const& v0, V1 const& v1
-                            , V2 const& v2, V3 const& v3) const BOOST_NOEXCEPT
+    static_assert ( sizeof...(Values) == 4
+                  , "boost::simd::make - Invalid number of parameters"
+                  );
+
+    BOOST_FORCEINLINE target_t operator()(Target const&, Values const&... vs) const BOOST_NOEXCEPT
     {
       using value_t = typename target_t::value_type;
-      return _mm256_set_epi64x( static_cast<value_t>(v3), static_cast<value_t>(v2)
-                              , static_cast<value_t>(v1), static_cast<value_t>(v0)
-                              );
+      return _mm256_setr_epi64x( static_cast<value_t>(vs)... );
     }
   };
 
