@@ -11,5 +11,5 @@ set ( SOURCES
   logical.cpp
 )
 
-make_unit( "boost.simd.function.simd.genmask"   ${SOURCES})
-make_coverage("boost.simd.function.simd.genmask"  ${SOURCES})
+make_unit( "function.simd.genmask"   ${SOURCES})
+make_coverage("function.simd.genmask"  ${SOURCES})
