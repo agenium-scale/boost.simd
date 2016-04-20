@@ -209,6 +209,7 @@ reversebits.cpp
 reverse.cpp
 round.cpp
 round2even.cpp
+rsqrt.cpp
 safe_max.cpp
 safe_min.cpp
 seladd.cpp
@@ -292,7 +293,6 @@ unary_plus.cpp
 ####rem_pio2_straight.cpp
 ####repeat_lower_half.cpp
 ####repeat_upper_half.cpp
-####rsqrt.cpp
 )
 
 make_unit( "function.simd"  ${SOURCES})

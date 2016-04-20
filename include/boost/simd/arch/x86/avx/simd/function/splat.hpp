@@ -1,12 +1,11 @@
 //==================================================================================================
-/*!
-  @file
-
-  @copyright 2016 NumScale SAS
+/**
+  Copyright 2016 NumScale SAS
+  Copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_SPLAT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_SPLAT_HPP_INCLUDED
@@ -23,7 +22,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( splat_
                           , (typename Target, typename Value)
                           , bs::avx_
-                          , bd::scalar_< bd::unspecified_<Value> >
+                          , bd::scalar_<bd::unspecified_<Value> >
                           , bd::target_<bs::pack_<bd::single_<Target>,bs::avx_>>
                           )
   {
@@ -40,7 +39,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( splat_
                           , (typename Target, typename Value)
                           , bs::avx_
-                          , bd::scalar_< bd::unspecified_<Value> >
+                          , bd::scalar_<bd::unspecified_<Value> >
                           , bd::target_<bs::pack_<bd::double_<Target>,bs::avx_>>
                           )
   {
