@@ -1,13 +1,11 @@
 //==================================================================================================
-/*!
-  @file
-
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T. Lapreste
+/**
+  Copyright 2015 NumScale SAS
+  Copyright 2015 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_SHIFT_LEFT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_SHIFT_LEFT_HPP_INCLUDED
@@ -25,13 +23,13 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename A1)
                           , bd::cpu_
                           , bd::scalar_< bd::floating_<A0> >
-                          , bd::scalar_< bd::integer_<A1> >
+                          , bd::scalar_< bd::fundamental_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()(A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
-      using itype = dispatch::as_integer_t<A0, signed>;
-      return bitwise_cast<A0>(shift_left(bitwise_cast<itype>(a0),a1));
+      using itype = bd::as_integer_t<A0, signed>;
+      return bitwise_cast<A0>(shift_left(bitwise_cast<itype>(a0),bd::as_integer_t<A0>(a1)));
     }
   };
 
@@ -39,19 +37,18 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename A1)
                           , bd::cpu_
                           , bd::scalar_< bd::integer_<A0> >
-                          , bd::scalar_< bd::integer_<A1> >
+                          , bd::scalar_< bd::fundamental_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()(A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG( assert_good_shift<A0>(a1)
                       , "shift_left: a shift is out of range"
                       );
 
-      return a0 << a1;
+      return a0 << bd::as_integer_t<A0>(a1);
     }
   };
 } } }
-
 
 #endif
