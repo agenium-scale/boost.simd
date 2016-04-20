@@ -24,9 +24,6 @@
 #include <boost/simd/function/insert.hpp>
 #include <boost/simd/function/splat.hpp>
 #include <boost/simd/function/load.hpp>
-#include <boost/simd/function/complement.hpp>
-#include <boost/simd/function/unary_minus.hpp>
-#include <boost/simd/function/unary_plus.hpp>
 #include <boost/simd/function/inc.hpp>
 #include <boost/simd/function/dec.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -291,10 +288,6 @@ namespace boost { namespace simd
     }
 
     public:
-    BOOST_FORCEINLINE pack operator+() const BOOST_NOEXCEPT { return unary_plus(*this); }
-    BOOST_FORCEINLINE pack operator-() const BOOST_NOEXCEPT { return unary_minus(*this); }
-    BOOST_FORCEINLINE pack operator~() const BOOST_NOEXCEPT { return complement(*this); }
-
     BOOST_FORCEINLINE pack& operator++() BOOST_NOEXCEPT { return (*this = inc(*this)); }
     BOOST_FORCEINLINE pack& operator--() BOOST_NOEXCEPT { return (*this = dec(*this)); }
 
@@ -362,7 +355,6 @@ namespace boost { namespace simd
 
     return os << ')';
   }
-
 } }
 
 #include <boost/simd/detail/pack_info.hpp>
