@@ -13,5 +13,5 @@ set ( SOURCES
   static.logical.cpp
 )
 
-make_unit( "boost.simd.function.simd.extract"   ${SOURCES})
-make_coverage("boost.simd.function.simd.extract"  ${SOURCES})
+make_unit( "function.simd.extract"   ${SOURCES})
+make_coverage("function.simd.extract"  ${SOURCES})

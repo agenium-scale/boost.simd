@@ -1,5 +1,5 @@
 ##===================================================================================================
-##                               Copyright 2016 NumScale SAS
+##                              Copyright 2016 NumScale SAS
 ##
 ##                   Distributed under the Boost Software License, Version 1.0.
 ##                        See accompanying file LICENSE.txt or copy at
@@ -264,5 +264,5 @@ unary_plus.cpp
 ####rsqrt.cpp
 )
 
-make_unit( "boost.simd.function.simd"  ${SOURCES})
-make_coverage("boost.simd.function.simd"  ${SOURCES})
+make_unit( "function.simd"  ${SOURCES})
+make_coverage("function.simd"  ${SOURCES})

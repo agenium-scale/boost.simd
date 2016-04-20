@@ -15,5 +15,5 @@ set ( SOURCES
   # gather.logical.cpp
 )
 
-make_unit( "boost.simd.function.simd.load"   ${SOURCES})
-make_coverage("boost.simd.function.simd.load"  ${SOURCES})
+make_unit( "function.simd.load"   ${SOURCES})
+make_coverage("function.simd.load"  ${SOURCES})
