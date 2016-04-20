@@ -15,6 +15,8 @@
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/traits.hpp>
 #include <boost/simd/meta/hierarchy/simd.hpp>
+#include <boost/simd/function/bitwise_or.hpp>
+#include <boost/simd/function/bitwise_and.hpp>
 #include <boost/simd/function/bitwise_andnot.hpp>
 #include <boost/simd/function/genmask.hpp>
 #include <boost/simd/function/is_nez.hpp>
@@ -36,7 +38,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A1 operator()(const A0& a0, const A1& a1, const A1& a2) const BOOST_NOEXCEPT
     {
       auto m = genmask(a0);
-      return (a1 & m) | bitwise_andnot(a2,m);
+      return bitwise_or(bitwise_and(a1,m), bitwise_andnot(a2,m));
     }
   };
 
