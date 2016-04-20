@@ -8,7 +8,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/sech.hpp>
+#include <boost/simd/function/scalar/sech.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>

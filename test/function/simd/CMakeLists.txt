@@ -15,16 +15,254 @@ add_subdirectory(make)
 add_subdirectory(splat)
 
 set ( SOURCES
-  aligned_load.cpp
-  aligned_store.cpp
-  bitwise_cast.cpp
-  broadcast.cpp
-  enumerate.cpp
-  store.cpp
-  automap.cpp
-  autofold.cpp
-  autosplat.cpp
+abs.cpp
+abss.cpp
+adds.cpp
+aligned_load.cpp
+aligned_store.cpp
+all.cpp
+arg.cpp
+autofold.cpp
+automap.cpp
+autosplat.cpp
+average.cpp
+bitfloating.cpp
+bitinteger.cpp
+bitget.cpp
+bitset.cpp
+bitwise_and.cpp
+bitwise_andnot.cpp
+bitwise_cast.cpp
+bitwise_notand.cpp
+bitwise_notor.cpp
+bitwise_or.cpp
+bitwise_ornot.cpp
+bitwise_xor.cpp
+broadcast.cpp
+ceil.cpp
+clz.cpp
+complement.cpp
+conj.cpp
+copysign.cpp
+ctz.cpp
+dist.cpp
+dists.cpp
+divides.cpp
+divs.cpp
+exp.cpp
+enumerate.cpp
+ffs.cpp
+firstbitset.cpp
+firstbitunset.cpp
+floor.cpp
+fma.cpp
+fms.cpp
+fnma.cpp
+fnms.cpp
+frac.cpp
+frexp.cpp
+genmaskc.cpp
+hi.cpp
+hmsb.cpp
+hypot.cpp
+iceil.cpp
+if_allbits_else.cpp
+if_else_allbits.cpp
+if_else.cpp
+if_else_zero.cpp
+ifloor.cpp
+ifnotadd.cpp
+ifnotdec.cpp
+ifnotinc.cpp
+ifnotsub.cpp
+if_one_else_zero.cpp
+if_zero_else.cpp
+if_zero_else_one.cpp
+ilog2.cpp
+ilogb.cpp
+
+indeg.cpp
+inrad.cpp
+iround2even.cpp
+iround.cpp
+is_denormal.cpp
+is_equal.cpp
+is_equal_with_equal_nans.cpp
+is_eqz.cpp
+is_even.cpp
+is_finite.cpp
+is_flint.cpp
+is_ge.cpp
+is_gez.cpp
+is_greater.cpp
+is_greater_equal.cpp
+is_gt.cpp
+is_gtz.cpp
+is_imag.cpp
+is_invalid.cpp
+is_inf.cpp
+is_le.cpp
+is_less.cpp
+is_less_equal.cpp
+is_lessgreater.cpp
+is_lez.cpp
+is_lt.cpp
+is_ltz.cpp
+is_nan.cpp
+is_negative.cpp
+is_nez.cpp
+is_nge.cpp
+is_ngez.cpp
+is_ngt.cpp
+is_ngtz.cpp
+is_nle.cpp
+is_nlez.cpp
+is_nlt.cpp
+is_nltz.cpp
+is_normal.cpp
+is_not_denormal.cpp
+is_not_equal.cpp
+is_not_finite.cpp
+is_not_greater.cpp
+is_not_greater_equal.cpp
+is_not_infinite.cpp
+is_not_less.cpp
+is_not_less_equal.cpp
+is_not_nan.cpp
+is_not_real.cpp
+is_odd.cpp
+is_ord.cpp
+is_positive.cpp
+is_real.cpp
+is_unord.cpp
+ldexp.cpp
+lo.cpp
+logical_and.cpp
+logical_andnot.cpp
+logical_notand.cpp
+logical_not.cpp
+logical_notor.cpp
+logical_or.cpp
+logical_ornot.cpp
+logical_xor.cpp
+lookup.cpp
+majority.cpp
+mantissa.cpp
+max.cpp
+maxmag.cpp
+maxnum.cpp
+maxnummag.cpp
+meanof.cpp
+min.cpp
+minmag.cpp
+minnum.cpp
+minnummag.cpp
+minus.cpp
+minusone.cpp
+modf.cpp
+multiplies.cpp
+negate.cpp
+negatenz.cpp
+negif.cpp
+negifnot.cpp
+negs.cpp
+nextafter.cpp
+next.cpp
+oneminus.cpp
+oneplus.cpp
+plus.cpp
+posmax.cpp
+posmin.cpp
+predecessor.cpp
+prev.cpp
+rec.cpp
+remquo.cpp
+reversebits.cpp
+reverse.cpp
+round.cpp
+round2even.cpp
+safe_max.cpp
+safe_min.cpp
+seladd.cpp
+seldec.cpp
+selinc.cpp
+selsub.cpp
+shift_left.cpp
+shift_right.cpp
+sign.cpp
+significants.cpp
+signnz.cpp
+sort.cpp
+sqr_abs.cpp
+sqr.cpp
+sqrs.cpp
+sqrt1pm1.cpp
+sqrt.cpp
+store.cpp
+subs.cpp
+successor.cpp
+tenpower.cpp
+tofloat.cpp
+toint.cpp
+trunc.cpp
+two_add.cpp
+two_prod.cpp
+two_split.cpp
+#ulpdist.cpp
+unary_minus.cpp
+unary_plus.cpp
+
+#any.cpp
+#compare_equal.cpp
+#compare_greater.cpp
+#compare_greater_equal.cpp
+#compare_less.cpp
+#compare_less_equal.cpp
+#compare_not_equal.cpp
+#correct_fma.cpp TODO
+#divceil
+#divfix
+#divfloor
+#divround
+#fma.cpp TODO
+#fms.cpp TODO
+#fnma.cpp TODO
+#fnms.cpp ODO
+#idivceil.cpp
+#idivfix.cpp
+#idivfloor.cpp
+#idivround.cpp
+#inbtrue.cpp
+#interleave_even.cpp
+#interleave_odd.cpp
+#is_included_c.cpp
+#is_included.cpp
+#mod.cpp
+#muls.cpp
+#nbtrue.cpp
+#none
+#rem.cpp TODO
+#rem_pio2.cpp TODO waitin for map
+#rol.cpp
+#ror.cpp
+#rrol.cpp TODO
+#rror.cpp TODO
+#splatted_maximum.cpp//TODO all_reduce
+#splatted_minimum.cpp
+#twopower.cpp //TODO shift_left multi index
+####deinterleave_first.cpp
+####deinterleave_second.cpp
+####dot.cpp
+####interleave_first.cpp
+####interleave_second.cpp
+####pow2.cpp
+####rem_pio2_cephes.cpp
+####rem_pio2_medium.cpp
+####rem_pio2_straight.cpp
+####repeat_lower_half.cpp
+####repeat_upper_half.cpp
+####rsqrt.cpp
 )
 
-make_unit( "boost.simd.function.simd"   ${SOURCES})
+make_unit( "boost.simd.function.simd"  ${SOURCES})
 make_coverage("boost.simd.function.simd"  ${SOURCES})

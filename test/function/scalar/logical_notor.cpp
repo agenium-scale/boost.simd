@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/logical_notor.hpp>
+#include <boost/simd/function/scalar/logical_notor.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -15,6 +15,8 @@
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/true.hpp>
+#include <boost/simd/constant/false.hpp>
 #include <boost/simd/constant/zero.hpp>
 
 STF_CASE_TPL (" logical_notor real",  STF_IEEE_TYPES)
@@ -83,3 +85,23 @@ STF_CASE_TPL (" logical_notor mix",  STF_IEEE_TYPES)
 
 
 } // end of test for floating_
+
+STF_CASE_TPL ( "logical_notor logical", STF_NUMERIC_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::logical_notor;
+  using lT =  bs::logical<T>;
+  using r_t = decltype(logical_notor(lT(), lT()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, lT);
+
+  // specific values tests
+  STF_EQUAL(logical_notor(bs::True<lT>(), bs::False<lT>()), bs::False<lT>());
+  STF_EQUAL(logical_notor(bs::False<lT>(), bs::True<lT>()), bs::True<lT>());
+  STF_EQUAL(logical_notor(bs::True<lT>(), bs::True<lT>()), bs::True<lT>());
+  STF_EQUAL(logical_notor(bs::False<lT>(), bs::False<lT>()), bs::True<lT>());
+}
+
+

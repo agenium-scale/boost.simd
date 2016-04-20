@@ -12,7 +12,9 @@
 #ifndef BOOST_SIMD_FUNCTION_FAST_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_FAST_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/simd/detail/decorator.hpp>
+#include <boost/simd/detail/dispatch.hpp>
 
 namespace boost { namespace simd
 {

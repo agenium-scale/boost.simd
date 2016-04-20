@@ -42,6 +42,7 @@ namespace boost { namespace simd
 
   **/
   const boost::dispatch::functor<tag::adds_> adds = {};
+
 } }
 #endif
 

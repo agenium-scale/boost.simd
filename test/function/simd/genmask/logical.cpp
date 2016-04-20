@@ -13,42 +13,36 @@
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
 
-STF_CASE_TPL ("Check genmask logical behavior",  STF_NUMERIC_TYPES)
+template <typename T, std::size_t N, typename Env>
+void testl(Env& $)
 {
   namespace bs = boost::simd;
-  using bs::genmask;
-  static const std::size_t N = bs::pack<T>::static_size;
-
-  STF_TYPE_IS(decltype(bs::genmask( bs::pack<bs::logical<T>,N   >())), (bs::pack<T,N  >));
-  STF_TYPE_IS(decltype(bs::genmask( bs::pack<bs::logical<T>,N/2 >())), (bs::pack<T,N/2>));
-  STF_TYPE_IS(decltype(bs::genmask( bs::pack<bs::logical<T>,N*2 >())), (bs::pack<T,N*2>));
-
-  STF_IEEE_EQUAL( genmask ( bs::pack<bs::logical<T>,N>(true))
-                          , (bs::Allbits<bs::pack<T,N>>()
-                          )
-                );
-  STF_IEEE_EQUAL( genmask ( bs::pack<bs::logical<T>,N/2>(true))
-                          , (bs::Allbits<bs::pack<T,N/2>>()
-                          )
-                );
-  STF_IEEE_EQUAL( genmask ( bs::pack<bs::logical<T>,N*2>(true))
-                          , (bs::Allbits<bs::pack<T,N*2>>()
-                          )
-                );
-
-  STF_IEEE_EQUAL( genmask ( bs::pack<bs::logical<T>,N>(bs::logical<T>(false)))
-                          , (bs::pack<T,N>(T(0))
-                          )
-                );
-  STF_IEEE_EQUAL( genmask ( bs::pack<bs::logical<T>,N/2>(bs::logical<T>(false)))
-                          , (bs::pack<T,N/2>(T(0))
-                          )
-                );
-  STF_IEEE_EQUAL( genmask ( bs::pack<bs::logical<T>,N*2>(bs::logical<T>(false)))
-                          , (bs::pack<T,N*2>(T(0))
-                          )
-                );
+  using lT = bs::logical<T>;
+  using pl_t = bs::pack<lT, N>;
+  using p_t = bs::pack<T, N>;
+  lT a1[N];
+  T b[N];
+  for(std::size_t i = 0; i < N; ++i)
+  {
+    a1[i] = (i%2) ? bs::True<lT>() : bs::False<lT>();
+    b[i] = bs::genmask(a1[i]);
+  }
+  pl_t aa1(&a1[0], &a1[0]+N);
+  p_t bb(&b[0], &b[0]+N);
+  STF_IEEE_EQUAL(bs::genmask(aa1), bb);
 }
+
+STF_CASE_TPL("Check genmask on pack of logical", STF_NUMERIC_TYPES)
+{
+  namespace bs = boost::simd;
+  using p_t = bs::pack<bs::logical<T>>;
+  static const std::size_t N = bs::cardinal_of<p_t>::value;
+  testl<T, N>($);
+  testl<T, N/2>($);
+  testl<T, N*2>($);
+}
+
+
 
 // TODO when if_else_zero is available
 #if 0

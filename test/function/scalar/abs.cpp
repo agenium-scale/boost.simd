@@ -14,7 +14,6 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
-//#include <nontrivial.hpp>
 
 #include <boost/simd/function/std.hpp>
 #include <simd_test.hpp>
@@ -27,13 +26,13 @@ STF_CASE_TPL( "Check abs behavior with floating", STF_IEEE_TYPES )
   STF_TYPE_IS(r_t, T);
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_IEEE_EQUAL(abs(bs::Inf<T>()),  bs::Inf<r_t>());
-  STF_IEEE_EQUAL(abs(bs::Minf<T>()), bs::Inf<r_t>());
+  STF_EQUAL(abs(bs::Inf<T>()),  bs::Inf<r_t>());
+  STF_EQUAL(abs(bs::Minf<T>()), bs::Inf<r_t>());
   STF_IEEE_EQUAL(abs(bs::Nan<T>()),  bs::Nan<r_t>());
 #endif
-  STF_IEEE_EQUAL(abs(bs::Zero<T>()), bs::Zero<r_t>());
-  STF_IEEE_EQUAL(abs(bs::One<T>()),  bs::One<r_t>());
-  STF_IEEE_EQUAL(abs(bs::Mone<T>()), bs::One<r_t>());
+  STF_EQUAL(abs(bs::Zero<T>()), bs::Zero<r_t>());
+  STF_EQUAL(abs(bs::One<T>()),  bs::One<r_t>());
+  STF_EQUAL(abs(bs::Mone<T>()), bs::One<r_t>());
 }
 
 STF_CASE_TPL( "Check abs behavior with signed integral", STF_SIGNED_INTEGRAL_TYPES )
@@ -44,13 +43,13 @@ STF_CASE_TPL( "Check abs behavior with signed integral", STF_SIGNED_INTEGRAL_TYP
   STF_TYPE_IS(r_t, T);
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_IEEE_EQUAL(abs(bs::Inf<T>()),  bs::Inf<r_t>());
-  STF_IEEE_EQUAL(abs(bs::Minf<T>()), bs::Minf<r_t>());
-  STF_IEEE_EQUAL(abs(bs::Nan<T>()),  bs::Nan<r_t>());
+  STF_EQUAL(abs(bs::Inf<T>()),  bs::Inf<r_t>());
+  STF_EQUAL(abs(bs::Minf<T>()), bs::Minf<r_t>());
+  STF_EQUAL(abs(bs::Nan<T>()),  bs::Nan<r_t>());
 #endif
-  STF_IEEE_EQUAL(abs(bs::Zero<T>()), bs::Zero<r_t>());
-  STF_IEEE_EQUAL(abs(bs::One<T>()),  bs::One<r_t>());
-  STF_IEEE_EQUAL(abs(bs::Mone<T>()), bs::One<r_t>());
+  STF_EQUAL(abs(bs::Zero<T>()), bs::Zero<r_t>());
+  STF_EQUAL(abs(bs::One<T>()),  bs::One<r_t>());
+  STF_EQUAL(abs(bs::Mone<T>()), bs::One<r_t>());
 }
 
 STF_CASE_TPL( "Check std abs behavior with floating", STF_IEEE_TYPES )
@@ -61,13 +60,13 @@ STF_CASE_TPL( "Check std abs behavior with floating", STF_IEEE_TYPES )
   STF_TYPE_IS(r_t, T);
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_IEEE_EQUAL(bs::std_(abs)(bs::Inf<T>()),  bs::Inf<r_t>());
-  STF_IEEE_EQUAL(bs::std_(abs)(bs::Minf<T>()), bs::Inf<r_t>());
+  STF_EQUAL(bs::std_(abs)(bs::Inf<T>()),  bs::Inf<r_t>());
+  STF_EQUAL(bs::std_(abs)(bs::Minf<T>()), bs::Inf<r_t>());
   STF_IEEE_EQUAL(bs::std_(abs)(bs::Nan<T>()),  bs::Nan<r_t>());
 #endif
-  STF_IEEE_EQUAL(bs::std_(abs)(bs::Zero<T>()), bs::Zero<r_t>());
-  STF_IEEE_EQUAL(bs::std_(abs)(bs::One<T>()),  bs::One<r_t>());
-  STF_IEEE_EQUAL(bs::std_(abs)(bs::Mone<T>()), bs::One<r_t>());
+  STF_EQUAL(bs::std_(abs)(bs::Zero<T>()), bs::Zero<r_t>());
+  STF_EQUAL(bs::std_(abs)(bs::One<T>()),  bs::One<r_t>());
+  STF_EQUAL(bs::std_(abs)(bs::Mone<T>()), bs::One<r_t>());
 }
 
 STF_CASE_TPL( "Check std abs behavior with signed integral", STF_SIGNED_INTEGRAL_TYPES )
@@ -78,10 +77,10 @@ STF_CASE_TPL( "Check std abs behavior with signed integral", STF_SIGNED_INTEGRAL
   STF_TYPE_IS(r_t, T);
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_IEEE_EQUAL(bs::std_(abs)(bs::Inf<T>()),  bs::Inf<r_t>());
-  STF_IEEE_EQUAL(bs::std_(abs)(bs::Nan<T>()),  bs::Nan<r_t>());
+  STF_EQUAL(bs::std_(abs)(bs::Inf<T>()),  bs::Inf<r_t>());
+  STF_EQUAL(bs::std_(abs)(bs::Nan<T>()),  bs::Nan<r_t>());
 #endif
-  STF_IEEE_EQUAL(bs::std_(abs)(bs::Zero<T>()), bs::Zero<r_t>());
-  STF_IEEE_EQUAL(bs::std_(abs)(bs::One<T>()),  bs::One<r_t>());
-  STF_IEEE_EQUAL(bs::std_(abs)(bs::Mone<T>()), bs::One<r_t>());
+  STF_EQUAL(bs::std_(abs)(bs::Zero<T>()), bs::Zero<r_t>());
+  STF_EQUAL(bs::std_(abs)(bs::One<T>()),  bs::One<r_t>());
+  STF_EQUAL(bs::std_(abs)(bs::Mone<T>()), bs::One<r_t>());
 }

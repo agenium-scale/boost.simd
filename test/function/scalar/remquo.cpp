@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/remquo.hpp>
+#include <boost/simd/function/scalar/remquo.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -19,7 +19,6 @@
 #include <utility>
 
 #ifndef STF_NO_INVALIDS
-// All these tests should return NaN
 STF_CASE_TPL(" remquo invalid", STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
@@ -154,8 +153,8 @@ STF_CASE_TPL(" remquo valid", STF_IEEE_TYPES)
     for(std::size_t i=0;i<nb;++i)
     {
       remquo(a0[i],a1[i], r, n);
-      STF_IEEE_EQUAL(n, iT(a0[i] / a1[i]));
-      STF_IEEE_EQUAL(r, a0[i] - n*a1[i]);
+      STF_EQUAL(n, iT(a0[i] / a1[i]));
+      STF_EQUAL(r, a0[i] - n*a1[i]);
     }
   }
 
@@ -166,8 +165,8 @@ STF_CASE_TPL(" remquo valid", STF_IEEE_TYPES)
     for(std::size_t i=0;i<nb;++i)
     {
       r = remquo(a0[i],a1[i], n);
-      STF_IEEE_EQUAL(n, iT(a0[i] / a1[i]));
-      STF_IEEE_EQUAL(r, a0[i] - n*a1[i]);
+      STF_EQUAL(n, iT(a0[i] / a1[i]));
+      STF_EQUAL(r, a0[i] - n*a1[i]);
     }
   }
 
@@ -178,8 +177,8 @@ STF_CASE_TPL(" remquo valid", STF_IEEE_TYPES)
     for(std::size_t i=0;i<nb;++i)
     {
       p = remquo(a0[i],a1[i]);
-      STF_IEEE_EQUAL(p.second, iT(a0[i] / a1[i]));
-      STF_IEEE_EQUAL(p.first, a0[i] - p.second*a1[i]);
+      STF_EQUAL(p.second, iT(a0[i] / a1[i]));
+      STF_EQUAL(p.first, a0[i] - p.second*a1[i]);
     }
   }
 }

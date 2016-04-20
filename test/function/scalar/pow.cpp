@@ -8,7 +8,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/pow.hpp>
+#include <boost/simd/function/scalar/pow.hpp>
 #include <boost/simd/function/std.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -91,18 +91,6 @@ STF_CASE_TPL("powint",  STF_INTEGRAL_TYPES)
   STF_EQUAL(pow(bs::Zero<T>(),3), bs::Zero<r_t>());
 }
 
-// TODO template version
-// STF_CASE("pow static int ")
-// {
-//   namespace bs = boost::simd;
-//   namespace bd = boost::dispatch;
-//   using bs::pow;
-//   STF_ULP_EQUAL(pow(4.f, boost::mpl::integral_c<unsigned, 3u>()), 64.f, 0);
-//   STF_ULP_EQUAL(pow<3>(4.f), 64.f, 0);
-//   STF_ULP_EQUAL(pow<-3>(4.f), 0.015625f, 0);
-//   STF_ULP_EQUAL(pow<3>(4), 64, 0);
-//   STF_ULP_EQUAL(pow(7.f, boost::mpl::integral_c<unsigned, 4u>()), 2401.f, 0);
-// }
 
 
 STF_CASE_TPL("pow conformity",  STF_IEEE_TYPES)

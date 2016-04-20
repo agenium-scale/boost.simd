@@ -27,7 +27,7 @@ namespace boost { namespace simd
     For any given value @c x of type @c T:
 
     @code
-    as_integer_t<T,unsigned> r = clz(x);
+    as_integer_t<T> r = clz(x);
     @endcode
 
     @see  ctz, popcnt

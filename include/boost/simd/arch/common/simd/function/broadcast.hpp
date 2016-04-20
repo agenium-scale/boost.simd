@@ -1,6 +1,6 @@
 //==================================================================================================
 /**
-  Copyright 2015 NumScale SAS
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -11,6 +11,7 @@
 
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/constant/zero.hpp>
+#include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>

@@ -15,6 +15,7 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/ten.hpp>
 #include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/scalar/is_ltz.hpp>
 #include <boost/simd/function/scalar/is_odd.hpp>
 #include <boost/simd/function/scalar/rec.hpp>
 #include <boost/simd/function/sqr.hpp>
@@ -38,7 +39,7 @@ namespace boost { namespace simd { namespace ext
 
       result_t result = One<result_t>();
       result_t base = Ten<result_t>();
-      bool neg = exp < 0;
+      auto neg = is_ltz(exp);
       exp =  boost::simd::abs(exp);
       while(exp)
       {

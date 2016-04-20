@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/is_neq.hpp>
+#include <boost/simd/function/scalar/is_neq.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -17,7 +17,6 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/logical.hpp>
-//#include <nontrivial.hpp>
 
 STF_CASE_TPL (" is_neq integer",  STF_INTEGRAL_TYPES)
 {
@@ -73,22 +72,5 @@ STF_CASE ( "is_neq bool")
 }
 
 
-// namespace foo
-// {
-//   template <class T>
-//   nontrivial<T> operator !=(const nontrivial<T> & z1, const nontrivial<T> z2)
-//   {
-//     return perform(z1, z2);
-//   }
-// }
 
-// STF_CASE_TPL( "Check is_neq behavior with exotic type", STF_IEEE_TYPES )
-// {
-//   namespace bs = boost::simd;
-//   using bs::is_neq;
-//   using foo::nontrivial;
-//   using r_t = decltype(is_neq(nontrivial<T>(), nontrivial<T>()));
-//   STF_TYPE_IS(r_t, nontrivial<T>);
 
-//   STF_EQUAL(is_neq(nontrivial<T>(1, 2), nontrivial<T>(3, 4)), nontrivial<T>(4, 8));
-// }

@@ -25,13 +25,26 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( negatenz_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::generic_<bd::arithmetic_<A0> >
-                          , bd::generic_<bd::arithmetic_<A0> >
+                          , bd::generic_<bd::signed_<A0> >
+                          , bd::generic_<bd::signed_<A0> >
                           )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
     {
-      return a0*signnz(a1);
+      return multiplies(a0, signnz(a1));
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( negatenz_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::generic_<bd::unsigned_<A0> >
+                          , bd::generic_<bd::unsigned_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A0) const BOOST_NOEXCEPT
+    {
+      return a0;
     }
   };
 

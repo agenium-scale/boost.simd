@@ -36,3 +36,4 @@ STF_CASE_TPL( "Check broadcast<N>() behavior", STF_NUMERIC_TYPES )
   test<T>($, brigand::range<std::size_t, 0, N/2>{});
   test<T>($, brigand::range<std::size_t, 0, N*2>{});
 }
+

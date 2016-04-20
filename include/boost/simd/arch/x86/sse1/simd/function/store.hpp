@@ -11,10 +11,8 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_STORE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_STORE_HPP_INCLUDED
 
-#include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/overload.hpp>
 #include <boost/dispatch/adapted/common/pointer.hpp>
-#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

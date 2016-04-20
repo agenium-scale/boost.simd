@@ -39,8 +39,11 @@ namespace boost { namespace simd { namespace ext
     template<typename K, typename N>
     BOOST_FORCEINLINE result_t fold_(Arg const& a0, brigand::list<N> const&, K const&) const
     {
-      // Condense if needed over the only element we require
-      return bd::functor<F>()( bs::extract<0>(a0) );
+      bd::functor<BinOp> bop;
+      bd::functor<NeutralElement> ne;
+      auto r = bop( ne( as_<result_t>{} ), bs::extract<0>(a0) );
+
+      return bd::functor<F>()( r );
     }
 
     template<typename K, typename N0, typename N1, typename... N>
@@ -49,11 +52,10 @@ namespace boost { namespace simd { namespace ext
       bd::functor<BinOp> bop;
       bd::functor<NeutralElement> ne;
 
-      auto r = bop( ne( as_<typename Arg::value_type>{} ), bs::extract<0>(a0) );
-           r = bop( r                                    , bs::extract<1>(a0) );
+      auto r = bop( ne( as_<result_t>{} ), bs::extract<0>(a0) );
+           r = bop( r                    , bs::extract<1>(a0) );
 
       (void)std::initializer_list<bool> { ((r = bop(r, bs::extract<N::value>(a0))),true)... };
-
       return bd::functor<F>{}(r);
     }
 
@@ -64,9 +66,10 @@ namespace boost { namespace simd { namespace ext
     {
       bd::functor<BinOp> bop;
       bd::functor<NeutralElement> ne;
+      using presult_t = typename Arg::substorage_type::template rebind<result_t>;
 
-      auto r = bop( ne( as_<typename Arg::value_type>{} ), a0.storage()[0]);
-           r = bop( r                                    , a0.storage()[1]);
+      auto r = bop( ne( as_<presult_t>{} ), a0.storage()[0]);
+           r = bop( r                     , a0.storage()[1]);
 
       return bd::functor<F>{}(r);
     }

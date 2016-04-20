@@ -8,7 +8,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/rem_2pi.hpp>
+#include <boost/simd/function/scalar/rem_2pi.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -43,27 +43,12 @@ STF_CASE_TPL (" rem_2pi",  STF_IEEE_TYPES)
   }
 } // end of test for floating_
 
-// STF_CASE_TPL (" rem_2pi targeted",  STF_IEEE_TYPES)
-// {
-//   namespace bs = boost::simd;
-//   namespace bd = boost::dispatch;
-
-//   using bs::rem_2pi;
-
-//   T x = bs::Twopi<T>(), xr;
-//   xr = rem_2pi(x, bs::meta::as_<bs::big_tag>());
-//   STF_ULP_EQUAL( xr, bs::Zero<T>(), 1.5);
 
 
-//   xr = rem_2pi(x, bs::meta::as_<bs::medium_tag>());
-//   STF_ULP_EQUAL( xr, bs::Zero<T>(), 1.5);
 
 
-//   xr = rem_2pi(x, bs::meta::as_<bs::small_tag>());
-//   STF_ULP_EQUAL( xr, bs::Zero<T>(), 1.5);
 
 
-//   xr = rem_2pi(x, bs::meta::as_<bs::very_small_tag>());
-//   STF_ULP_EQUAL( xr, bs::Zero<T>(), 1.5);
 
-// }
+
+

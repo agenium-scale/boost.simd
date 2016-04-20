@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/negifnot.hpp>
+#include <boost/simd/function/scalar/negifnot.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -33,7 +33,7 @@ STF_CASE_TPL (" negifnot real",  STF_IEEE_TYPES)
   STF_EQUAL(negifnot(logical<T>(T(1)),T(1)), 1);
   STF_EQUAL(negifnot(logical<T>(bs::Inf<T>()),T(1)), 1);
   STF_EQUAL(negifnot(logical<T>(bs::Minf<T>()),T(1)), 1);
-  STF_EQUAL(negifnot(logical<T>(bs::Nan<T>()),T(1)), 1);
+  STF_IEEE_EQUAL(negifnot(logical<T>(bs::Nan<T>()),T(1)), 1);
   STF_EQUAL(negifnot(logical<T>(bs::Zero<T>()),T(1)), -1);
 } // end of test for floating_
 

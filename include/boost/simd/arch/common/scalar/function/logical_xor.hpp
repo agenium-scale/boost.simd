@@ -22,26 +22,26 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( logical_xor_
                           , (typename A0, typename A1)
                           , bd::cpu_
-                          , bd::scalar_< bd::bool_<A0> >
-                          , bd::scalar_< bd::bool_<A1> >
+                          , bd::scalar_< bd::integer_<A0> >
+                          , bd::scalar_< bd::integer_<A1> >
                           )
   {
-    BOOST_FORCEINLINE bool operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE logical<A0> operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
-      return (!a0 != !a1);
+      return {(a0 != a1)};
     }
   };
 
   BOOST_DISPATCH_OVERLOAD ( logical_xor_
                           , (typename A0, typename A1)
                           , bd::cpu_
-                          , bd::scalar_< bd::fundamental_<A0> >
-                          , bd::scalar_< bd::fundamental_<A1> >
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A1> >
                           )
   {
     BOOST_FORCEINLINE logical<A0> operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
-      return (!a0 != !a1);
+      return {(!a0 != !a1)};
     }
   };
 
@@ -54,7 +54,20 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
-      return (!a0.value() != !a1.value());
+      return {(a0.value() != a1.value())};
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( logical_xor_
+                          , (typename T)
+                          ,  bd::cpu_
+                          ,  bd::scalar_<bd::unspecified_<T>>
+                          ,  bd::scalar_<bd::unspecified_<T>>
+                          )
+  {
+    BOOST_FORCEINLINE auto operator()(T const& a, T const& b) const BOOST_NOEXCEPT -> decltype(!a != !b)
+    {
+      return !a != !b;
     }
   };
 } } }

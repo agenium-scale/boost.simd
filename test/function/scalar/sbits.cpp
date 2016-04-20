@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/sbits.hpp>
+#include <boost/simd/function/scalar/sbits.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -30,7 +30,7 @@ STF_CASE_TPL (" sbits real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef STF_NO_INVALIDS
-  STF_EQUAL(sbits(bs::Nan<T>()), bs::Mone<r_t>());
+  STF_IEEE_EQUAL(sbits(bs::Nan<T>()), bs::Mone<r_t>());
 #endif
   STF_EQUAL(sbits(bs::Zero<T>()), bs::Zero<r_t>());
 }

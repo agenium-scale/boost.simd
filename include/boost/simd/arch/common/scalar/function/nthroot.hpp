@@ -44,21 +44,21 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::integer_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
+    inline A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
-      #ifndef BOOST_SIMD_NO_INVALID
+#ifndef BOOST_SIMD_NO_INVALID
       if (is_nan(a0)) return a0;
-      #endif
-       bool is_ltza0 = is_ltz(a0);
-      bool is_odda1 = is_odd(a1);
+#endif
+      auto is_ltza0 = is_ltz(a0);
+      auto is_odda1 = is_odd(a1);
       if (is_ltza0 && !is_odda1) return Nan<A0>();
       A0 x = bs::abs(a0);
       if (x == One<A0>()) return a0;
       if (!a1) return (x < One<A0>()) ? Zero<A0>() : sign(a0)*Inf<A0>();
       if (!a0) return Zero<A0>();
-      #ifndef BOOST_SIMD_NO_INFINITIES
+#ifndef BOOST_SIMD_NO_INFINITIES
       if (is_inf(a0)) return (a1) ? a0 : One<A0>();
-      #endif
+#endif
       A0 aa1 = static_cast<A0>(a1);
       A0 y = bs::pow(x,rec(aa1));
       // Correct numerical errors (since, e.g., 64^(1/3) is not exactly 4)
@@ -76,11 +76,11 @@ namespace boost { namespace simd { namespace ext
                           , boost::simd::fast_tag
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A1 a1
-                                    , fast_tag const&) const BOOST_NOEXCEPT
+    inline A0 operator() ( A0 a0, A1 a1
+                         , fast_tag const&) const BOOST_NOEXCEPT
     {
-      bool is_ltza0 = is_ltz(a0);
-      bool is_odda1 = is_odd(a1);
+      auto is_ltza0 = is_ltz(a0);
+      auto is_odda1 = is_odd(a1);
       if (is_ltza0 && !is_odda1) return Nan<A0>();
       A0 x = bs::abs(a0);
       if (x == One<A0>()) return a0;

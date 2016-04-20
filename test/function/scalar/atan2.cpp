@@ -8,7 +8,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/atan2.hpp>
+#include <boost/simd/function/scalar/atan2.hpp>
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/function/fast.hpp>
 #include <simd_test.hpp>

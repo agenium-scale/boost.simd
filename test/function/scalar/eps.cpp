@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/eps.hpp>
+#include <boost/simd/function/scalar/eps.hpp>
 #include <simd_test.hpp>
 
 #include <boost/dispatch/meta/as_integer.hpp>

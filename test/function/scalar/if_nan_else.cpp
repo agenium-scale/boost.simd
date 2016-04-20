@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/if_nan_else.hpp>
+#include <boost/simd/function/scalar/if_nan_else.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -18,7 +18,6 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/logical.hpp>
 
-//TODO LOGICAL
 STF_CASE_TPL (" if_nan_else real",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
@@ -37,8 +36,6 @@ STF_CASE_TPL (" if_nan_else real",  STF_IEEE_TYPES)
   STF_IEEE_EQUAL(if_nan_else(bs::Minf<T>(), T(1)), Nan<T>());
   STF_IEEE_EQUAL(if_nan_else(bs::Nan<T>(), T(1)) , Nan<T>());
   STF_EQUAL(if_nan_else(bs::Zero<T>(), T(1)), T(1));
-//   STF_IEEE_EQUAL(if_nan_else(bs::True< bs::logical<T> >(), T(1)), Nan<T>());
-//   STF_EQUAL(if_nan_else(bs::False< bs::logical<T> >(), T(1)), T(1));
 
 
 } // end of test for floating_
@@ -57,6 +54,4 @@ STF_CASE_TPL (" if_allbits_elsesigned_ int",  STF_SIGNED_INTEGRAL_TYPES)
   // specific values tests
   STF_EQUAL(if_nan_else(T(0), T(1)), T(1));
   STF_EQUAL(if_nan_else(T(1), T(1)), Allbits<T>());
-//   STF_EQUAL(if_nan_else(bs::True< bs::logical<T> >(), T(1)), Allbits<T>());
-//   STF_EQUAL(if_nan_else(bs::False< bs::logical<T> >(), T(1)), T(1));
 } // end of test for signed_int_

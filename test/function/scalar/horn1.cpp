@@ -24,7 +24,6 @@ float g(const float & x)
     0x40000000ul, //2
     0x40400000ul, //3
     0x40800000ul  //4
-//    0x3f800000ul, //1    is implicit
  >(x);
 }
 
@@ -35,7 +34,6 @@ float g(const double & x)
     0x4000000000000000ull, //2
     0x4008000000000000ull, //3
     0x4010000000000000ull  //4
-//    0x3ff0000000000000ull, //1    is implicit
  >(x);
 }
 
@@ -43,9 +41,9 @@ STF_CASE_TPL( "Check horn1 behavior with floating", STF_IEEE_TYPES )
 {
   namespace bs = boost::simd;
 
-  STF_IEEE_EQUAL(g(bs::Zero<T>()), T(1.0));
-  STF_IEEE_EQUAL(g(bs::One<T>()),  T(11.0));
-  STF_IEEE_EQUAL(g(bs::Mone<T>()), T(-1.0));
+  STF_EQUAL(g(bs::Zero<T>()), T(1.0));
+  STF_EQUAL(g(bs::One<T>()),  T(11.0));
+  STF_EQUAL(g(bs::Mone<T>()), T(-1.0));
 }
 
 

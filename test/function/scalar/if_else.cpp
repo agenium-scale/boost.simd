@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/scalar/if_else.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/logical.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -17,10 +17,6 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/two.hpp>
-// #include <boost/simd/constant/true.hpp>
-// #include <boost/simd/constant/false.hpp>
-//TODO LOGICAL
-//#include <nontrivial.hpp>
 
 STF_CASE_TPL (" if_else integer",  STF_INTEGRAL_TYPES)
 {
@@ -61,40 +57,10 @@ STF_CASE_TPL (" if_else real",  STF_IEEE_TYPES)
 } // end of test for floating_
 
 
-// STF_CASE_TPL (" if_else integer",  STF_INTEGRAL_TYPES)
-// {
-//   namespace bs = boost::simd;
-//   namespace bd = boost::dispatch;
-//   using bs::if_else;
-//   using bs::logical;
-//   using r_t = decltype(if_else(logical<T>(),T(),T()));
 
-//   // return type conformity test
-//   STF_TYPE_IS(r_t, T);
 
-//   // specific values tests
-//   STF_EQUAL(if_else( bs::True< logical<T> >(), bs::One<T>(), bs::One<T>()), bs::One<r_t>());
-//   STF_EQUAL(if_else( bs::True< logical<T> >(), bs::Zero<T>(),bs::Two<T>()), bs::Zero<r_t>());
-//   STF_EQUAL(if_else( bs::False< logical<T> >(), bs::One<T>(), bs::Zero<T>()), bs::Zero<r_t>());
-// } // end of test for integer_
 
-// STF_CASE_TPL (" if_else real",  STF_IEEE_TYPES)
-// {
-//   namespace bs = boost::simd;
-//   namespace bd = boost::dispatch;
 
-//   using bs::if_else;
 
-//   using bs::logical;
-//   using r_t = decltype(if_else(logical<T>(),T(),T()));
 
-//   // return type conformity test
-//   STF_TYPE_IS(r_t, T);
 
-//   // specific values tests
-// #ifndef STF_NO_INVALIDS
-//   STF_EQUAL(if_else( bs::True< logical<T> >(), bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>());
-// #endif
-//   STF_EQUAL(if_else( bs::True< logical<T> >(),bs::Zero<T>(),bs::Two<T>()), bs::Zero<r_t>());
-//   STF_EQUAL(if_else( bs::False< logical<T> >(), bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
-// } // end of test for floating_

@@ -8,7 +8,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/log10.hpp>
+#include <boost/simd/function/scalar/log10.hpp>
 #include <boost/simd/function/std.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>

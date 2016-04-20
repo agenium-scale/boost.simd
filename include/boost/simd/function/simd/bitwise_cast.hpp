@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_BITWISE_CAST_INCLUDED
 
 #include <boost/simd/function/scalar/bitwise_cast.hpp>
+#include <boost/simd/arch/common/generic/function/bitwise_cast.hpp>
 
 #if defined(BOOST_HW_SIMD_X86)
 

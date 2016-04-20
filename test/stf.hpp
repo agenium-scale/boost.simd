@@ -1007,7 +1007,7 @@ namespace stf
     };
   }
 
-  template<typename T, typename U> inline double ulpdist(T a0, U a1)
+  template<typename T, typename U> inline double ulpdist(T const& a0, U const& a1)
   {
     return ext::ulpdist<T,U>()(a0,a1);
   }
@@ -1110,7 +1110,7 @@ namespace stf
     };
   }
 
-  template<typename T, typename U> inline double reldist(T a0, U a1)
+  template<typename T, typename U> inline double reldist(T const& a0, U const& a1)
   {
     return ext::reldist<T,U>()(a0,a1);
   }

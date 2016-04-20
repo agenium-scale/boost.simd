@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/dist.hpp>
+#include <boost/simd/function/scalar/dist.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -21,7 +21,7 @@
 #include <boost/simd/constant/two.hpp>
 #include <boost/simd/constant/three.hpp>
 #include <boost/simd/constant/valmax.hpp>
-#include <boost/simd/constant/constant.hpp>
+#include <boost/simd/constant/ratio.hpp>
 
 STF_CASE_TPL (" dist real",  STF_IEEE_TYPES)
 {
@@ -67,7 +67,7 @@ STF_CASE_TPL (" dist integer_si",  STF_SIGNED_INTEGRAL_TYPES)
   STF_EQUAL(dist(bs::Zero<T>(), bs::Valmax<T>()), bs::Valmax<T>());
   STF_EQUAL(dist(bs::Zero<T>(), bs::Valmin<T>()), bs::Valmin<T>());
 
-  STF_EQUAL(dist(bs::Ten<T>(), bs::Mten<T>()), (bs::Constant<T, 20>()));
-  STF_EQUAL(dist(bs::Mten<T>(), bs::Ten<T>()), (bs::Constant<T, 20>()));
+  STF_EQUAL(dist(bs::Ten<T>(), bs::Mten<T>()), (bs::Ratio<T, 20>()));
+  STF_EQUAL(dist(bs::Mten<T>(), bs::Ten<T>()), (bs::Ratio<T, 20>()));
 }
 

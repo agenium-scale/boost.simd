@@ -37,6 +37,18 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( oneminus_
                           , (typename A0)
                           , bd::cpu_
+                          , bd::generic_<bd::floating_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    {
+      return (One<A0>()-a0);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( oneminus_
+                          , (typename A0)
+                          , bd::cpu_
                           , bd::generic_<bd::unsigned_<A0> >
                           )
   {

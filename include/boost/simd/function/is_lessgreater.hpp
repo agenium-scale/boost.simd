@@ -21,7 +21,7 @@ namespace boost { namespace simd
     @ingroup group-predicates
     Function object implementing is_lessgreater capabilities
 
-    Returns @ref True if neither x nor y is @ref Nan.
+    Returns @ref True if neither x nor y is @ref Nan and x is not equal to y.
 
     @par Semantic:
 
@@ -32,7 +32,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    as_logical_t<T> r = (x == x) && (y == y);
+    as_logical_t<T> r = (x == x) && (y == y) && (x!= y);
     @endcode
 
   **/

@@ -11,9 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_SPLAT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_SPLAT_HPP_INCLUDED
 
-#include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/config.hpp>
+#include <boost/simd/detail/overload.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -50,7 +48,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE target operator()(Value const& v, Target const&) const BOOST_NOEXCEPT
     {
-      return _mm_set1_epi8( v );
+      return _mm_set1_epi8( static_cast<char>(v) );
     }
   };
 
@@ -67,7 +65,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE target operator()(Value const& v, Target const&) const BOOST_NOEXCEPT
     {
-      return _mm_set1_epi16( v );
+      return _mm_set1_epi16( static_cast<short>(v) );
     }
   };
 
@@ -84,7 +82,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE target operator()(Value const& v, Target const&) const BOOST_NOEXCEPT
     {
-      return _mm_set1_epi32( v );
+      return _mm_set1_epi32( static_cast<int>(v) );
     }
   };
 
@@ -101,7 +99,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE target operator()(Value const& v, Target const&) const BOOST_NOEXCEPT
     {
-      return _mm_set1_epi64x(v);
+      return _mm_set1_epi64x( static_cast<long int>(v));
     }
   };
 } } }

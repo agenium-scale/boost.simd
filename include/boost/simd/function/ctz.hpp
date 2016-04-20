@@ -25,22 +25,16 @@ namespace boost { namespace simd
 
     Finds the first bit set in x, and returns the index of that bit, 0 being
     the least significant bit index.
+    @ ctz assert is the entry is 0
 
     @par semantic:
     For any given value @c x of type @c T:
 
     @code
-    as_integer_t<T,unsigned> r = ctz(x);
+    as_integer_t<T> r = ctz(x);
     @endcode
 
-    @par Note
-
-    Be aware that our @c ctz returns the number of bits of the entry if @c x is @ref Zero
-    (which is an illegal bit index in @c x).
-
     @see  clz, popcnt
-
-            set in x.
   **/
   const boost::dispatch::functor<tag::ctz_> ctz = {};
 } }

@@ -12,11 +12,11 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_SHIFT_RIGHT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_SHIFT_RIGHT_HPP_INCLUDED
 
+#include <boost/config.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

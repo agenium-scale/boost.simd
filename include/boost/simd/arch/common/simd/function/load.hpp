@@ -11,6 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LOAD_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LOAD_HPP_INCLUDED
 
+#include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/make.hpp>
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/dispatch/function/overload.hpp>

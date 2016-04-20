@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/remfix.hpp>
+#include <boost/simd/function/scalar/remfix.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -35,7 +35,7 @@ STF_CASE_TPL (" remfix real",  STF_IEEE_TYPES)
 #endif
   STF_EQUAL(remfix(bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
   STF_EQUAL(remfix(bs::One<T>(), bs::One<T>()), bs::Zero<T>());
-  STF_IEEE_EQUAL(remfix(bs::Zero<T>(), bs::Nan<T>()), bs::Zero<T>());
+  STF_EQUAL(remfix(bs::Zero<T>(), bs::Nan<T>()), bs::Zero<T>());
 } // end of test for floating_
 
 STF_CASE_TPL (" remfix unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

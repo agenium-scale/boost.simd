@@ -54,7 +54,7 @@ namespace boost { namespace simd { namespace ext
   {
 
 
-    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    inline A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       A0 z =  bs::abs(a0);
     #ifndef BOOST_SIMD_NO_INFINITIES
@@ -84,7 +84,7 @@ namespace boost { namespace simd { namespace ext
                0x3fe17e1fc7e59d58ll,
                0xbfc13c93386fdff6ll
                > (x);
-      const bool flag = is_gez(e);
+      const auto flag = is_gez(e);
       i_t e1 =  bs::abs(e);
       i_t rem = e1;
       e1 /= Three<i_t>();
@@ -111,7 +111,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::single_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    inline A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       A0 z =  bs::abs(a0);
     #ifndef BOOST_SIMD_NO_INFINITIES
@@ -141,7 +141,7 @@ namespace boost { namespace simd { namespace ext
                0x3f0bf0fe,
                0xbe09e49a
                > (x);
-      const bool flag = is_gez(e);
+      const auto flag = is_gez(e);
       i_t e1 =  bs::abs(e);
       i_t rem = e1;
       e1 /= Three<i_t>();

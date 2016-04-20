@@ -49,10 +49,25 @@ namespace boost { namespace simd { namespace ext
     // We need to iterate over output type cardinal to fill it
     using element_range       = br::range<std::size_t, 0, pack::static_size>;
 
-    // Constructing the output depends on the storage_kind of both input and output
-    using storage_kind        = typename traits::storage_kind;
+    // Constructing the output depends on the storage_kind of all the inputs
+    struct storage_checker
+    {
+      template <typename S, typename E>
+      struct apply : br::bool_<  S::value
+                            && std::is_same<typename E::storage_kind, aggregate_storage>::value
+                            >
+      {};
+    };
+
+    using storage_kind  = br::fold< br::list<typename Pn::traits...>
+                                  , br::bool_<true>
+                                  , storage_checker
+                                  >;
+
+    // Constructing the output also depends on the storage_kind the output
     using result_storage_kind = typename result_traits::storage_kind;
 
+    // CHecks some basic assertions
     struct traits_checker
     {
       template <typename S, typename E>
@@ -86,7 +101,6 @@ namespace boost { namespace simd { namespace ext
     BOOST_NOEXCEPT_IF(is_noexcept)
     {
       functor f;
-      std::cout << "noexcept " << std::boolalpha << is_noexcept << "\n";
       return result_type{ f(p0[N::value])... };
     }
 
@@ -102,7 +116,6 @@ namespace boost { namespace simd { namespace ext
       functor f;
       return result_type{ f(p0[N::value], p1[N::value])...  };
     }
-
 
     // ---------------------------------------------------------------------------------------------
     // (P, P, P)
@@ -144,7 +157,7 @@ namespace boost { namespace simd { namespace ext
     }
 
     template <typename... N>
-    BOOST_FORCEINLINE static result_type map_ ( ::boost::simd::aggregate_storage const&
+    BOOST_FORCEINLINE static result_type map_ ( brigand::bool_<true> const&
                                               , ::boost::simd::aggregate_storage const&
                                               , br::list<N...> const&
                                               , Pn const&... pn

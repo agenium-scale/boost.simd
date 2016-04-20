@@ -34,7 +34,7 @@ namespace boost { namespace simd
     is equivalent to :
 
     @code
-    r = [ x[1] x[3] ... x[n/2+1] y[1] y[3] ... y[n/2+1] ]
+    r = [ x[n/2] x[n/2+1] ... x[n-1] y[n/2] y[n/2+1] ... y[n-1] ]
     @endcode
 
     with <tt> n = cardinal_of<T>::value </tt>

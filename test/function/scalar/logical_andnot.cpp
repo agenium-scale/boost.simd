@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/logical_andnot.hpp>
+#include <boost/simd/function/scalar/logical_andnot.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -16,6 +16,8 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/true.hpp>
+#include <boost/simd/constant/false.hpp>
 #include <boost/simd/logical.hpp>
 
 STF_CASE_TPL (" logical_andnot real",  STF_IEEE_TYPES)
@@ -86,3 +88,23 @@ STF_CASE_TPL (" logical_andnot mix",  STF_IEEE_TYPES)
 
 
 } // end of test for floating_STF_CASE
+
+STF_CASE_TPL ( "logical_andnot logical", STF_NUMERIC_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::logical_andnot;
+  using lT =  bs::logical<T>;
+  using r_t = decltype(logical_andnot(lT(), lT()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, lT);
+
+  // specific values tests
+  STF_EQUAL(logical_andnot(bs::True<lT>(), bs::False<lT>()), bs::True<lT>());
+  STF_EQUAL(logical_andnot(bs::False<lT>(), bs::True<lT>()), bs::False<lT>());
+  STF_EQUAL(logical_andnot(bs::True<lT>(), bs::True<lT>()), bs::False<lT>());
+  STF_EQUAL(logical_andnot(bs::False<lT>(), bs::False<lT>()), bs::False<lT>());
+}
+
+

@@ -16,20 +16,20 @@
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/detail/pack_traits.hpp>
-#include <boost/simd/detail/pack_operators.hpp>
 #include <boost/simd/detail/storage_of.hpp>
 #include <boost/simd/meta/is_power_of_2.hpp>
+#include <boost/simd/meta/is_not_scalar.hpp>
 #include <boost/simd/function/aligned_load.hpp>
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/function/insert.hpp>
 #include <boost/simd/function/splat.hpp>
 #include <boost/simd/function/load.hpp>
-#include <boost/simd/function/logical_not.hpp>
-#include <boost/simd/function/bitwise_not.hpp>
+#include <boost/simd/function/complement.hpp>
 #include <boost/simd/function/unary_minus.hpp>
 #include <boost/simd/function/unary_plus.hpp>
 #include <boost/simd/function/inc.hpp>
 #include <boost/simd/function/dec.hpp>
+#include <boost/utility/enable_if.hpp>
 #include <boost/align/is_aligned.hpp>
 #include <boost/config.hpp>
 #include <iterator>
@@ -123,7 +123,7 @@ namespace boost { namespace simd
       @param e End of the range to load from
     **/
     template < typename Iterator
-             , typename = typename std::enable_if<!std::is_fundamental<Iterator>::value>::type
+             , typename = typename std::enable_if<is_not_scalar<Iterator>::value>::type
              >
     BOOST_FORCEINLINE pack(Iterator b, Iterator e)
                     : data_( boost::simd::load<pack>(b,e).storage() )
@@ -291,12 +291,9 @@ namespace boost { namespace simd
     }
 
     public:
-    BOOST_FORCEINLINE
-    rebind<logical<T>> operator!() const BOOST_NOEXCEPT { return logical_not(*this); }
-
     BOOST_FORCEINLINE pack operator+() const BOOST_NOEXCEPT { return unary_plus(*this); }
     BOOST_FORCEINLINE pack operator-() const BOOST_NOEXCEPT { return unary_minus(*this); }
-    BOOST_FORCEINLINE pack operator~() const BOOST_NOEXCEPT { return bitwise_not(*this); }
+    BOOST_FORCEINLINE pack operator~() const BOOST_NOEXCEPT { return complement(*this); }
 
     BOOST_FORCEINLINE pack& operator++() BOOST_NOEXCEPT { return (*this = inc(*this)); }
     BOOST_FORCEINLINE pack& operator--() BOOST_NOEXCEPT { return (*this = dec(*this)); }
@@ -365,8 +362,10 @@ namespace boost { namespace simd
 
     return os << ')';
   }
+
 } }
 
 #include <boost/simd/detail/pack_info.hpp>
+#include <boost/simd/detail/pack_operators.hpp>
 
 #endif

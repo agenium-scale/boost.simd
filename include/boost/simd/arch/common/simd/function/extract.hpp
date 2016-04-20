@@ -3,6 +3,7 @@
   @file
 
   @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -11,14 +12,14 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_EXTRACT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_EXTRACT_HPP_INCLUDED
 
+#include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/detail/aliasing.hpp>
 #include <boost/simd/meta/as_arithmetic.hpp>
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/meta/hierarchy/logical.hpp>
-#include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/adapted/std/integral_constant.hpp>
-#include <boost/config.hpp>
+#include <boost/predef/compiler.h>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -37,7 +38,13 @@ namespace boost { namespace simd { namespace ext
     using result_t = typename A0::value_type;
     BOOST_FORCEINLINE result_t operator() ( A0 const& a0, A1 i) const BOOST_NOEXCEPT
     {
+      #if BOOST_COMP_CLANG == BOOST_VERSION_NUMBER(3,6,0)
+      result_t data[A0::static_size];
+      memcpy(&data[0], &(a0.storage()), sizeof(A0));
+      return data[i];
+      #else
       return result_t(reinterpret_cast<detail::may_alias_t<result_t const>*>( &(a0.storage()) )[i]);
+      #endif
     }
   };
 

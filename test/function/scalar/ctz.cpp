@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/ctz.hpp>
+#include <boost/simd/function/scalar/ctz.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -32,7 +32,6 @@ STF_CASE_TPL (" ctz real",  STF_IEEE_TYPES)
 #ifndef STF_NO_INVALIDS
   STF_EQUAL(ctz(bs::Inf<T>()), r_t(bs::Nbmantissabits<T>()));
   STF_EQUAL(ctz(bs::Minf<T>()), r_t(bs::Nbmantissabits<T>()));
-  // STF_EQUAL(ctz(bs::Nan<T>()), r_t(bs::Zero<r_t>()));
 #endif
   STF_EQUAL(ctz(bs::Zero<T>()), r_t(sizeof(T)*8));
   STF_EQUAL(ctz(bs::Signmask<T>()), r_t(sizeof(T)*8-1));

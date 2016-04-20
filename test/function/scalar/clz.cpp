@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/clz.hpp>
+#include <boost/simd/function/scalar/clz.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -33,7 +33,7 @@ STF_CASE_TPL (" clz real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef STF_NO_INVALIDS
-  STF_IEEE_EQUAL(clz(bs::Nan<T>()), bs::Zero<r_t>());
+  STF_EQUAL(clz(bs::Nan<T>()), bs::Zero<r_t>());
 #endif
   STF_EQUAL(clz(bs::Mone<T>()), bs::Zero<r_t>());
   STF_EQUAL(clz(bs::Signmask<T>()),bs::Zero<r_t>());

@@ -67,7 +67,7 @@ namespace boost { namespace simd { namespace detail
       //    3058340 values (0.14%)   within 0.5 ULPs
       // bench produces  8.9 cycles/value (simd) 34.5 cycles/value (scalar) full computation
       // bench produces  7.1 cycles/value (simd) 32.2 cycles/value (scalar) with NO_DENORMALS, NO_INVALIDS etc.
-      y =  horn< s_t,
+      y =  horn< A0,
         0x3eaaaaa9, //      3.3333328e-01
         0xbe800064, //     -2.5000298e-01
         0x3e4cd0a3, //      2.0001464e-01

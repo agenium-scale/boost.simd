@@ -42,7 +42,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
     {
       A0 m = min(a0, a1);
-      return if_else( is_finite(a0) && is_finite(a1),
+      return if_else( bitwise_and(is_finite(a0), is_finite(a1)),//is_finite(a0) && is_finite(a1),
                       m + (max(a0, a1)-m)*Half<result_type>(),
                       average(a0, a1)
                     );
@@ -51,8 +51,8 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( meanof_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::generic_< bd::arithmetic_<A0> >
-                          , bd::generic_< bd::arithmetic_<A0> >
+                          , bd::generic_< bd::integer_<A0> >
+                          , bd::generic_< bd::integer_<A0> >
                           )
   {
     using result_type = A0;
