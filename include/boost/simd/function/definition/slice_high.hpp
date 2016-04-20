@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_DEFINITION_SLICE_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_DEFINITION_SLICE_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_DEFINITION_SLICE_HIGH_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_DEFINITION_SLICE_HIGH_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
 #include <boost/dispatch/function/make_callable.hpp>
@@ -21,15 +21,15 @@ namespace boost { namespace simd
 {
   namespace tag
   {
-    BOOST_DISPATCH_MAKE_TAG(ext, slice_, boost::dispatch::elementwise_<slice_>);
+    BOOST_DISPATCH_MAKE_TAG(ext, slice_high_, boost::dispatch::elementwise_<slice_high_>);
   }
 
   namespace ext
   {
-    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, slice_);
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, slice_high_);
   }
 
-  BOOST_DISPATCH_CALLABLE_DEFINITION(tag::slice_,slice);
+  BOOST_DISPATCH_CALLABLE_DEFINITION(tag::slice_high_,slice_high);
 } }
 
 #endif
