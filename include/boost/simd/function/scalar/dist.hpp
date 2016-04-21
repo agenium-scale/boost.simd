@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_DIST_HPP_INCLUDED
 
 #include <boost/simd/function/definition/dist.hpp>
+#include <boost/simd/arch/common/generic/function/dist.hpp>
 #include <boost/simd/arch/common/scalar/function/dist.hpp>
 
 #endif

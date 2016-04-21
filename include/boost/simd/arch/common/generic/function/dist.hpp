@@ -30,7 +30,8 @@ namespace boost { namespace simd { namespace ext
                           ,  bs::saturated_tag
                           )
   {
-    BOOST_FORCEINLINE T operator()(const T& a, const T& b, const saturated_tag &) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE T operator()(const T& a, const T& b
+                                  , const bs::saturated_tag &) const BOOST_NOEXCEPT
     {
       return dist_s(a, b);
     }
