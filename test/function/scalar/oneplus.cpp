@@ -34,7 +34,7 @@ STF_CASE_TPL (" oneplus signed_int",  STF_SIGNED_INTEGRAL_TYPES)
   // specific values tests
   STF_EQUAL(oneplus(bs::Mone<T>()), bs::Zero<T>());
   STF_EQUAL(oneplus(bs::One<T>()), bs::Two<T>());
-  STF_EQUAL(oneplus(bs::Valmax<T>()), bs::Valmax<T>());
+  STF_EQUAL(oneplus(bs::Valmax<T>()), bs::Valmin<T>());
   STF_EQUAL(oneplus(bs::Zero<T>()), bs::One<T>());
 }
 

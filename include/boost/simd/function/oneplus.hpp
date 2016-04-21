@@ -22,7 +22,6 @@ namespace boost { namespace simd
     Function object implementing oneplus capabilities
 
     Returns the entry plus one.
-    If @c x is not @ref Nan, @c oneplus(x) is greater or equal to x.
 
     @par semantic:
     For any given value @c x of type @c T:

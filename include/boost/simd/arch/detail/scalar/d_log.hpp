@@ -14,7 +14,7 @@
 
 #include <boost/simd/function/fast.hpp>
 #include <boost/simd/arch/detail/tags.hpp>
-#include <boost/simd/function/minusone.hpp>
+#include <boost/simd/function/minusone_s.hpp>
 #include <boost/simd/function/tofloat.hpp>
 #include <boost/simd/function/sqr.hpp>
 #include <boost/simd/function/fast.hpp>
@@ -76,7 +76,7 @@ namespace boost { namespace simd
         std::tie(x, k) = bs::fast_(frexp)(a0);
         const i_t x_lt_sqrthf = (Sqrt_2o_2<A0>() > x) ? Mone<i_t>() : Zero<i_t>();
         k += x_lt_sqrthf;
-        f = minusone(x+bitwise_and(x, genmask(x_lt_sqrthf)));
+        f = minusone_s(x+bitwise_and(x, genmask(x_lt_sqrthf)));
         dk = tofloat(k);
         s = f/(Two<A0>()+f);
         A0 z = sqr(s);
@@ -165,7 +165,7 @@ namespace boost { namespace simd
 //       std::tie(x, k) = bs::fast_(frexp)(a0);
 //       const i_t x_lt_sqrthf = if_else_zero((Sqrt_2o_2<A0>() > x),Mone<i_t>());
 //       k += x_lt_sqrthf;
-//       f = minusone(x+bitwise_and(x, x_lt_sqrthf));
+//       f = minusone_s(x+bitwise_and(x, x_lt_sqrthf));
 //       dk = tofloat(k);
 //       s = f/(Two<A0>()+f);
 //       A0 z = sqr(s);

@@ -19,7 +19,7 @@
 #include <boost/simd/function/scalar/bitinteger.hpp>
 #include <boost/simd/function/scalar/is_gez.hpp>
 #include <boost/simd/function/scalar/is_nan.hpp>
-#include <boost/simd/function/scalar/oneplus.hpp>
+#include <boost/simd/function/scalar/oneplus_s.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/assert.hpp>
 #include <boost/config.hpp>
@@ -35,7 +35,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
-       return oneplus(a0);
+       return oneplus_s(a0);
     }
   };
 
@@ -48,7 +48,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       if (is_nan(a0)) return a0;
-      return bitfloating(oneplus(bitinteger(a0)));
+      return bitfloating(oneplus_s(bitinteger(a0)));
     }
   };
 

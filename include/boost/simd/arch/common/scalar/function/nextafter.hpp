@@ -16,9 +16,9 @@
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/one.hpp>
-#include <boost/simd/function/scalar/minusone.hpp>
+#include <boost/simd/function/scalar/minusone_s.hpp>
 #include <boost/simd/function/scalar/next.hpp>
-#include <boost/simd/function/scalar/oneplus.hpp>
+#include <boost/simd/function/scalar/oneplus_s.hpp>
 #include <boost/simd/function/scalar/prev.hpp>
 #include <boost/simd/function/scalar/sign.hpp>
 #include <boost/dispatch/function/overload.hpp>
@@ -62,7 +62,7 @@ namespace boost { namespace simd {
     {
       BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
       {
-        return (a1 == a0) ? a0 : (a1 > a0) ? oneplus(a0) : minusone(a0);
+        return (a1 == a0) ? a0 : (a1 > a0) ? oneplus_s(a0) : minusone_s(a0);
       }
     };
     BOOST_DISPATCH_OVERLOAD ( nextafter_

@@ -13,11 +13,12 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_NEXTPOW2_HPP_INCLUDED
 
 #include <boost/simd/constant/half.hpp>
+#include <boost/simd/function/saturated.hpp>
 #include <boost/simd/function/scalar/abs.hpp>
 #include <boost/simd/function/scalar/abss.hpp>
 #include <boost/simd/function/scalar/ffs.hpp>
 #include <boost/simd/function/scalar/frexp.hpp>
-#include <boost/simd/function/scalar/minusone.hpp>
+#include <boost/simd/function/scalar/minusone_s.hpp>
 #include <boost/simd/function/scalar/reversebits.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
@@ -66,7 +67,7 @@ namespace boost { namespace simd { namespace ext
       A0 m;
       result_t p;
       std::tie(m, p) = simd::frexp(simd::abs(a0));
-      return (m == Half<A0>())  ? minusone(p) :  p;
+      return (m == Half<A0>())  ? saturated_(minusone(p)) :  p;
     }
   };
 } } }
