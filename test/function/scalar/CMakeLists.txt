@@ -83,7 +83,6 @@ set ( SOURCES
    sqr.cpp
    sqr_s.cpp
    sqrt.cpp
-   subs.cpp
    tenpower.cpp
    tofloat.cpp
    toint.cpp

@@ -28,7 +28,7 @@
 #include <boost/simd/function/simd/plus.hpp>
 #include <boost/simd/function/simd/seladd.hpp>
 #include <boost/simd/function/simd/selsub.hpp>
-#include <boost/simd/function/simd/subs.hpp>
+#include <boost/simd/function/simd/minus_s.hpp>
 #include <boost/assert.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -83,7 +83,7 @@ namespace boost { namespace simd { namespace ext
       BOOST_FORCEINLINE A0 operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
       {
         BOOST_ASSERT_MSG(assert_all(is_gez(a1)), "predecessor rank must be non negative");
-        return if_allbits_else(is_nan(a0), bitfloating(subs(bitinteger(a0), a1)));
+        return if_allbits_else(is_nan(a0), bitfloating(minus_s(bitinteger(a0), a1)));
       }
    };
 

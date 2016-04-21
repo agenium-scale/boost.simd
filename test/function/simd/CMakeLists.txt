@@ -220,14 +220,14 @@ successor.cpp
 tenpower.cpp
 tofloat.cpp
 toint.cpp
-toint_s.cpp
+#toint_s.cpp
 #touint.cpp
-touint_s.cpp
+#touint_s.cpp
 trunc.cpp
 two_add.cpp
 two_prod.cpp
 two_split.cpp
-#ulpdist.cpp
+ulpdist.cpp
 unary_minus.cpp
 unary_minus_s.cpp
 unary_plus.cpp

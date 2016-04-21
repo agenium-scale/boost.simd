@@ -15,7 +15,7 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/function/min.hpp>
 #include <boost/simd/function/minus.hpp>
-#include <boost/simd/function/subs.hpp>
+#include <boost/simd/function/minus_s.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
@@ -30,7 +30,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      return subs(One<A0>(), a0);
+      return minus_s(One<A0>(), a0);
     }
   };
 
