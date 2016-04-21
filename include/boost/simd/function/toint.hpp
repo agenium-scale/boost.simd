@@ -59,10 +59,10 @@ namespace boost { namespace simd
 
     returns @ref True !)
 
-    If you intend to use @ref Nan and @ref Inf entries,  consider using @ref toints instead.
+    If you intend to use @ref Nan and @ref Inf entries,  consider using @ref toint_s instead.
     Nethertheless, on integral typed values, @c toint acts as identity.
 
-    @see toints, touint, touints
+    @see toint_s, touint, touint_s
 
   **/
   const boost::dispatch::functor<tag::toint_> toint = {};

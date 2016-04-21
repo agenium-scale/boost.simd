@@ -14,7 +14,7 @@
 
 #include <boost/simd/function/round2even.hpp>
 #include <boost/simd/function/toint.hpp>
-#include <boost/simd/function/toints.hpp>
+#include <boost/simd/function/toint_s.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
@@ -41,7 +41,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE bd::as_integer_t<A0> operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      return toints(round2even(a0));
+      return toint_s(round2even(a0));
     }
   };
   BOOST_DISPATCH_OVERLOAD ( iround2even_

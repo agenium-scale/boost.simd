@@ -33,7 +33,7 @@ namespace boost { namespace simd
     is equivalent to:
 
     @code
-    as_integer_t<T> r = toints(ceil(x));
+    as_integer_t<T> r = toint_s(ceil(x));
     @endcode
 
     @par Note:

@@ -33,13 +33,13 @@ namespace boost { namespace simd
     The code is similar to:
 
     @code
-    as_integer_t<T> r = toints(ceil(x/y));
+    as_integer_t<T> r = toint_s(ceil(x/y));
     @endcode
 
     If y is @ref Zero, it returns @ref Valmax (resp. @ref Valmin)
     if x is positive (resp. negative) and @ref Zero if x is @ref Zero.
 
-    @see toints, ceil
+    @see toint_s, ceil
 
   **/
   const boost::dispatch::functor<tag::idivceil_> idivceil = {};
