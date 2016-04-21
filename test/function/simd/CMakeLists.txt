@@ -19,6 +19,10 @@ add_subdirectory(splat)
 set ( SOURCES
 abs.cpp
 abs_s.cpp
+<<<<<<< Updated upstream
+=======
+#adds.cpp
+>>>>>>> Stashed changes
 aligned_load.cpp
 aligned_store.cpp
 all.cpp
@@ -85,7 +89,11 @@ if_zero_else.cpp
 if_zero_else_one.cpp
 ilog2.cpp
 ilogb.cpp
+<<<<<<< Updated upstream
 inc.cpp
+=======
+#inc.cpp
+>>>>>>> Stashed changes
 inc_s.cpp
 indeg.cpp
 inrad.cpp
@@ -168,7 +176,11 @@ minmag.cpp
 minnum.cpp
 minnummag.cpp
 minus.cpp
+<<<<<<< Updated upstream
 minus_s.cpp
+=======
+minus_s.cpp
+>>>>>>> Stashed changes
 minusone.cpp
 minusone_s.cpp
 modf.cpp
@@ -220,16 +232,26 @@ successor.cpp
 tenpower.cpp
 tofloat.cpp
 toint.cpp
+<<<<<<< Updated upstream
 #toint_s.cpp
 #touint.cpp
 #touint_s.cpp
+=======
+toint_s.cpp
+#touint.cpp
+touint_s.cpp
+>>>>>>> Stashed changes
 trunc.cpp
 two_add.cpp
 two_prod.cpp
 two_split.cpp
 ulpdist.cpp
 unary_minus.cpp
+<<<<<<< Updated upstream
 unary_minus_s.cpp
+=======
+unary_minus_s.cpp
+>>>>>>> Stashed changes
 unary_plus.cpp
 
 #any.cpp
