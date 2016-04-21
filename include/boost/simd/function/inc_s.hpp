@@ -35,7 +35,7 @@ namespace boost { namespace simd
     T r = (x == Valmax) ? x : inc(x)
     @endcode
 
-    @see inc, plus, adds
+    @see inc, dec_s,  saturated_
 
     @par Alias
 

@@ -34,9 +34,7 @@ namespace boost { namespace simd
     T r = (x+y > Valmax) ? Valmax : (x+y < Valmin ? Valmin : x+y);
     @endcode
 
-    @par Alias pluss
-
-    @see  plus, oneplus, inc
+    @see  plus, oneplus_s, inc_s,  saturated_
 
     @return      a value of the same type as the input.
   **/

@@ -14,7 +14,7 @@
 
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/function/scalar/abs.hpp>
-#include <boost/simd/function/scalar/adds.hpp>
+#include <boost/simd/function/scalar/plus_s.hpp>
 #include <boost/simd/function/scalar/bitfloating.hpp>
 #include <boost/simd/function/scalar/bitinteger.hpp>
 #include <boost/simd/function/scalar/is_gez.hpp>
@@ -79,7 +79,7 @@ namespace boost { namespace simd { namespace ext
       BOOST_ASSERT_MSG(is_gez(a1), "predecessor rank must be non negative");
       using itype = bd::as_integer_t<A0, signed>;
       if (is_nan(a0)) return a0;
-      return bitfloating(adds(bitinteger(a0), itype(a1)));
+      return bitfloating(plus_s(bitinteger(a0), itype(a1)));
     }
   };
 } } }

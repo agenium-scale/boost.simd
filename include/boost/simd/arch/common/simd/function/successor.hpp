@@ -17,7 +17,7 @@
 #include <boost/simd/detail/assert_utils.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/valmax.hpp>
-#include <boost/simd/function/simd/adds.hpp>
+#include <boost/simd/function/simd/plus_s.hpp>
 #include <boost/simd/function/simd/bitfloating.hpp>
 #include <boost/simd/function/simd/bitinteger.hpp>
 #include <boost/simd/function/simd/if_allbits_else.hpp>
@@ -86,7 +86,7 @@ namespace boost { namespace simd { namespace ext
       BOOST_FORCEINLINE A0 operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
       {
         BOOST_ASSERT_MSG(assert_all(is_gez(a1)), "successor rank must be non negative");
-        return if_allbits_else(is_nan(a0), bitfloating(adds(bitinteger(a0), a1)));
+        return if_allbits_else(is_nan(a0), bitfloating(plus_s(bitinteger(a0), a1)));
       }
    };
 

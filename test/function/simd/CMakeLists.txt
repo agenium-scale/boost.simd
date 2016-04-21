@@ -19,7 +19,6 @@ add_subdirectory(splat)
 set ( SOURCES
 abs.cpp
 abs_s.cpp
-#adds.cpp
 aligned_load.cpp
 aligned_store.cpp
 all.cpp
