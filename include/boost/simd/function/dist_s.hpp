@@ -31,7 +31,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T r = abss(x-y);
+    T r = abs_s(x-y);
     @endcode
 
     @par Note

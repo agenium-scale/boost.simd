@@ -15,7 +15,7 @@
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/function/saturated.hpp>
 #include <boost/simd/function/scalar/abs.hpp>
-#include <boost/simd/function/scalar/abss.hpp>
+#include <boost/simd/function/scalar/abs_s.hpp>
 #include <boost/simd/function/scalar/ffs.hpp>
 #include <boost/simd/function/scalar/frexp.hpp>
 #include <boost/simd/function/scalar/minusone_s.hpp>
@@ -29,6 +29,8 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
+
   BOOST_DISPATCH_OVERLOAD ( nextpow2_
                           , (typename A0)
                           , bd::cpu_
@@ -51,7 +53,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       if (!a0) return a0;
-      return sizeof(A0)*8-ffs(reversebits(abss(a0)));
+      return sizeof(A0)*8-ffs(reversebits(abs_s(a0)));
     }
   };
 
@@ -66,7 +68,7 @@ namespace boost { namespace simd { namespace ext
     {
       A0 m;
       result_t p;
-      std::tie(m, p) = simd::frexp(simd::abs(a0));
+      std::tie(m, p) = simd::frexp(bs::abs(a0));
       return (m == Half<A0>())  ? saturated_(minusone(p)) :  p;
     }
   };

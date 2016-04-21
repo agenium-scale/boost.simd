@@ -100,7 +100,6 @@ namespace boost { namespace simd
 #include <boost/simd/function/signbit.hpp>
 #include <boost/simd/function/sqr_abs.hpp>
 #include <boost/simd/function/sqr.hpp>
-#include <boost/simd/function/sqrs.hpp>
 #include <boost/simd/function/sqr_s.hpp>
 #include <boost/simd/function/sqrt1pm1.hpp>
 #include <boost/simd/function/sqrt.hpp>

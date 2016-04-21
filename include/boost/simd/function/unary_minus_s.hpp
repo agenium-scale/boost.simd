@@ -44,7 +44,7 @@ namespace boost { namespace simd
     This functor is generally equivalent to @c unary_minus_ functor except for signed integer
     types for which \c unary_minus_s(@ref Valmin) is  @ref Valmax.
 
-    @see  unary_minus_, sqr_unary_minus_s, sqrs
+    @see  unary_minus_, sqr_unary_minus_s, sqr_s
 
     @param x value whose unary_minus_olute value will be returned
 

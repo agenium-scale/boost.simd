@@ -44,7 +44,7 @@ namespace boost { namespace simd
     This functor is generally equivalent to @c abs_ functor except for signed integer
     types for which \c abs_s(@ref Valmin) is  @ref Valmax.
 
-    @see  abs_, sqr_abs_s, sqrs
+    @see  abs_, sqr_abs_s, sqr_s
 
     @param x value whose abs_olute value will be returned
 
