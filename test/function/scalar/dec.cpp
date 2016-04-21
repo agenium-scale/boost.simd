@@ -19,7 +19,7 @@
 #include <boost/simd/constant/mtwo.hpp>
 #include <boost/simd/constant/two.hpp>
 
-STF_CASE_TPL (" decsigned_int",  STF_SIGNED_INTEGRAL_TYPES)
+STF_CASE_TPL (" dec signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using bs::dec;
@@ -47,7 +47,7 @@ STF_CASE_TPL (" decunsigned_uint",  STF_UNSIGNED_INTEGRAL_TYPES)
   STF_EQUAL(dec(bs::Zero<T>()), bs::Valmax<T>());
 }
 
-STF_CASE_TPL(" decfloating", STF_IEEE_TYPES)
+STF_CASE_TPL(" dec floating", STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   using bs::dec;
