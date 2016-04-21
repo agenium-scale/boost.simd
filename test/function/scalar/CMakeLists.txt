@@ -423,8 +423,6 @@ set ( SOURCES
    angle.cpp
    is_not_finite.cpp
    is_not_invalid.cpp
-   decs.cpp
-   incs.cpp
 #eulerian
    stirling.cpp
    gamma.cpp

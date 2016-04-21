@@ -34,14 +34,14 @@ namespace boost { namespace simd
     The code is similar to:
 
     @code
-    T r =  inc(x)
+    T r =  x+One<T>()
     @endcode
 
     @see inc, inc_s,  saturated_
 
     @par Alias
 
-    incs
+    inc
 
   **/
   const boost::dispatch::functor<tag::oneplus_> oneplus = {};
