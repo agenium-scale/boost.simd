@@ -39,7 +39,7 @@ namespace boost { namespace simd
 
     @par Alias
 
-    incs
+    oneplus_s
 
     @return a value of the same type as the input.
 
