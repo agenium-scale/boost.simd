@@ -19,7 +19,7 @@
 #if defined(BOOST_HW_SIMD_X86)
 
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_AVX_VERSION
-// #    include <boost/simd/arch/x86/avx/simd/function/is_not_equal_with_equal_nans.hpp>
+#    include <boost/simd/arch/x86/avx/simd/function/is_not_equal_with_equal_nans.hpp>
 #  endif
 
 #endif
