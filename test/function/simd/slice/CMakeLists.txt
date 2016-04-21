@@ -15,5 +15,5 @@ set ( SOURCES
   logical.low.cpp
 )
 
-make_unit( "boost.simd.function.simd.slice"   ${SOURCES})
-make_coverage("boost.simd.function.simd.slice"  ${SOURCES})
+make_unit( "function.simd.slice"   ${SOURCES})
+make_coverage("function.simd.slice"  ${SOURCES})
