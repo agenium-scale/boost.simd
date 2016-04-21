@@ -41,7 +41,7 @@ namespace boost { namespace simd
     Take also care that dividing @ref Valmin by -1 for signed integral types has
     undefined behaviour.
 
-    @see  divides, rec, divs, divfloor,
+    @see  divides, rec, divides_s, divfloor,
     divceil, divround2even, divfix
 
   **/

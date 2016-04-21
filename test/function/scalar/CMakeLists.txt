@@ -37,7 +37,7 @@ set ( SOURCES
    divround.cpp
    divround2even.cpp
    divtrunc.cpp
-   divs.cpp
+   divides_s.cpp
    floor.cpp
    fma.cpp
    fms.cpp
