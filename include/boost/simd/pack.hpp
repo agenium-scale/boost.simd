@@ -288,13 +288,29 @@ namespace boost { namespace simd
     }
 
     public:
-    BOOST_FORCEINLINE pack& operator++() BOOST_NOEXCEPT { return (*this = inc(*this)); }
-    BOOST_FORCEINLINE pack& operator--() BOOST_NOEXCEPT { return (*this = dec(*this)); }
+    BOOST_FORCEINLINE pack& operator++() BOOST_NOEXCEPT_IF_EXPR(inc(std::declval<pack>()))
+    {
+      return (*this = inc(*this));
+    }
 
-    BOOST_FORCEINLINE
-    pack operator++(int) BOOST_NOEXCEPT { pack that = *this; ++(*this); return that; }
-    BOOST_FORCEINLINE
-    pack operator--(int) BOOST_NOEXCEPT { pack that = *this; --(*this); return that; }
+    BOOST_FORCEINLINE pack& operator--() BOOST_NOEXCEPT_IF_EXPR(dec(std::declval<pack>()))
+    {
+      return (*this = dec(*this));
+    }
+
+    BOOST_FORCEINLINE pack operator++(int) BOOST_NOEXCEPT_IF_EXPR(++std::declval<pack>())
+    {
+      pack that = *this;
+      ++(*this);
+      return that;
+    }
+
+    BOOST_FORCEINLINE pack operator--(int)  BOOST_NOEXCEPT_IF_EXPR(--std::declval<pack>())
+    {
+      pack that = *this;
+      --(*this);
+      return that;
+    }
 
     template <typename Other>
     BOOST_FORCEINLINE

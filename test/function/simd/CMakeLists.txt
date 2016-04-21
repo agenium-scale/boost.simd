@@ -45,6 +45,7 @@ complement.cpp
 conj.cpp
 copysign.cpp
 ctz.cpp
+dec.cpp
 dist.cpp
 dists.cpp
 divides.cpp
@@ -80,7 +81,7 @@ if_zero_else.cpp
 if_zero_else_one.cpp
 ilog2.cpp
 ilogb.cpp
-
+inc.cpp
 indeg.cpp
 inrad.cpp
 iround2even.cpp
