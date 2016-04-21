@@ -14,5 +14,6 @@
 
 #include <boost/simd/function/definition/neg.hpp>
 #include <boost/simd/arch/common/scalar/function/unary_minus.hpp>
+#include <boost/simd/arch/common/generic/function/unary_minus.hpp>
 
 #endif

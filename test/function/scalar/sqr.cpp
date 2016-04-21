@@ -16,6 +16,7 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
+#include <boost/simd/function/saturated.hpp>
 
 STF_CASE_TPL (" sqr real",  STF_IEEE_TYPES)
 {
@@ -70,3 +71,14 @@ STF_CASE_TPL (" sqr signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 } // end of test for signed_int_
 
 
+STF_CASE_TPL( "Check saturated sqr behavior ", STF_SIGNED_INTEGRAL_TYPES )
+{
+  namespace bs = boost::simd;
+  using bs::sqr;
+  using r_t = decltype(bs::saturated_(sqr)(T()));
+  STF_TYPE_IS(r_t, T);
+
+  STF_EQUAL(bs::saturated_(sqr)(bs::Zero<T>()), bs::Zero<r_t>());
+  STF_EQUAL(bs::saturated_(sqr)(bs::One<T>()),  bs::One<r_t>());
+  STF_EQUAL(bs::saturated_(sqr)(bs::Mone<T>()), bs::One<r_t>());
+}

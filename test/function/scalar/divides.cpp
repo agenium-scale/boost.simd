@@ -9,11 +9,12 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/divides.hpp>
 #include <boost/simd/function/fast.hpp>
-#include <simd_test.hpp>
+#include <boost/simd/function/saturated.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/zero.hpp>
+#include <simd_test.hpp>
 
 #ifdef BOOST_MSVC
   #pragma warning(push)
@@ -50,7 +51,19 @@ STF_CASE_TPL( "Check fast divides behavior with floating", STF_IEEE_TYPES )
   STF_EQUAL(bs::fast_(divides)(bs::One<T>(), bs::One<T>()), bs::One<r_t>());
 }
 
+
+STF_CASE_TPL( "Check divides saturated behavior", STF_NUMERIC_TYPES )
+{
+  namespace bs = boost::simd;
+  using bs::divides;
+  using r_t = decltype(bs::saturated_(divides)(T(), T()));
+  STF_TYPE_IS(r_t, T);
+
+  STF_EQUAL(bs::saturated_(divides)(bs::One<T>(),bs::One<T>()), bs::One<r_t>());
+  STF_EQUAL(bs::saturated_(divides)(bs::One<T>(), bs::Zero<T>()), bs::Inf<r_t>());
+}
+
+
 #ifdef BOOST_MSVC
   #pragma warning(pop)
 #endif
-

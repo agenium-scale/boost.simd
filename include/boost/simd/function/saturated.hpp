@@ -9,11 +9,22 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_SCALAR_MINUS_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_SCALAR_MINUS_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_SATURATED_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_SATURATED_HPP_INCLUDED
 
-#include <boost/simd/function/definition/minus.hpp>
-#include <boost/simd/arch/common/generic/function/minus.hpp>
-#include <boost/simd/arch/common/scalar/function/minus.hpp>
+#include <boost/simd/config.hpp>
+#include <boost/simd/detail/decorator.hpp>
+#include <boost/simd/detail/dispatch.hpp>
+
+namespace boost { namespace simd
+{
+  struct saturated_tag
+  {
+    using parent = saturated_tag;
+    using hierarchy_tag = void;
+  };
+
+  const detail::decorator<saturated_tag> saturated_ = {};
+} }
 
 #endif

@@ -35,4 +35,16 @@ STF_CASE_TPL( "Check multiplies behavior with floating", STF_IEEE_TYPES )
 
 
 
+STF_CASE_TPL( "Check multiplies saturated behavior", STF_NUMERIC_TYPES)
+{
+  namespace bs = boost::simd;
+  using bs::multiplies;
+  using r_t = decltype(bs::saturated_(multiplies)(T(), T()));
+  STF_TYPE_IS(r_t, T);
+
+  STF_EQUAL(bs::saturated_(multiplies)(bs::One<T>(),bs::Zero<T>()), bs::Zero<r_t>());
+  STF_EQUAL(bs::saturated_(multiplies)(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
+}
+
+
 

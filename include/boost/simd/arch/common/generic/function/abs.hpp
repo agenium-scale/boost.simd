@@ -1,38 +1,26 @@
 //==================================================================================================
-/**
+/*!
+  @file
+
   Copyright 2015 NumScale SAS
   Copyright 2015 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-**/
+*/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_INC_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_INC_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ABS_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ABS_HPP_INCLUDED
 
-#include <boost/simd/constant/one.hpp>
-#include <boost/simd/function/plus.hpp>
-#include <boost/simd/function/oneplus.hpp>
+#include <boost/simd/function/abs_s.hpp>
+#include <boost/simd/function/saturated.hpp>
 #include <boost/dispatch/function/overload.hpp>
-#include <boost/simd/function/plus.hpp>
 #include <boost/config.hpp>
+
 
 namespace boost { namespace simd { namespace ext
 {
-  namespace bd = boost::dispatch;
-  BOOST_DISPATCH_OVERLOAD ( inc_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bd::generic_< bd::arithmetic_<A0> >
-                          )
-  {
-    BOOST_FORCEINLINE A0 operator()(A0 const& a0) const BOOST_NOEXCEPT_IF_EXPR(a0+A0(1))
-    {
-      return a0+A0(1);
-    }
-  };
-
-  BOOST_DISPATCH_OVERLOAD ( inc_
+   BOOST_DISPATCH_OVERLOAD ( abs_
                           , (typename T)
                           ,  bd::cpu_
                           ,  bd::generic_<bd::fundamental_<T>>
@@ -42,10 +30,10 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE T operator()(const T& a
                                   , const saturated_tag &) const BOOST_NOEXCEPT
     {
-      return oneplus(a);
+      return abs_s(a);
     }
   };
-
 } } }
+
 
 #endif
