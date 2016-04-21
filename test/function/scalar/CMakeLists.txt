@@ -21,14 +21,14 @@ set ( SOURCES
    modulus.cpp
 #arithmetic
    abs.cpp
-   abss.cpp
-   adds.cpp
+   abs_s.cpp
    arg.cpp
    average.cpp
    ceil.cpp
    conj.cpp
    correct_fma.cpp
    dec.cpp
+   dec_s.cpp
    dist.cpp
    dists.cpp
    div.cpp
@@ -53,6 +53,7 @@ set ( SOURCES
    idivround2even.cpp
    ifloor.cpp
    inc.cpp
+   inc_s.cpp
    iround2even.cpp
    iround.cpp
    logical_xor.cpp
@@ -61,11 +62,15 @@ set ( SOURCES
    min.cpp
    minmod.cpp
    minusone.cpp
+   minusone_s.cpp
    mod.cpp
-   muls.cpp
-   negs.cpp
+   multiplies_s.cpp
+   neg_s.cpp
    oneminus.cpp
+   oneminus_s.cpp
    oneplus.cpp
+   oneplus_s.cpp
+   plus_s.cpp
    rec.cpp
    remainder.cpp
    rem.cpp
@@ -76,15 +81,15 @@ set ( SOURCES
    rsqrt.cpp
    sqr_abs.cpp
    sqr.cpp
-   sqrs.cpp
+   sqr_s.cpp
    sqrt.cpp
    subs.cpp
    tenpower.cpp
    tofloat.cpp
    toint.cpp
-   toints.cpp
+   toint_s.cpp
    touint.cpp
-   touints.cpp
+   touint_s.cpp
    trunc.cpp
    two_add.cpp
    two_prod.cpp
@@ -202,6 +207,7 @@ set ( SOURCES
    shift_left.cpp
    shift_right.cpp
    unary_minus.cpp
+   unary_minus_s.cpp
    unary_plus.cpp
 #predicates
    is_denormal.cpp

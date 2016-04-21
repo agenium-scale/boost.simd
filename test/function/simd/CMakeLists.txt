@@ -18,8 +18,8 @@ add_subdirectory(splat)
 
 set ( SOURCES
 abs.cpp
-abss.cpp
-adds.cpp
+abs_s.cpp
+#adds.cpp
 aligned_load.cpp
 aligned_store.cpp
 all.cpp
@@ -48,10 +48,11 @@ conj.cpp
 copysign.cpp
 ctz.cpp
 dec.cpp
+dec_s.cpp
 dist.cpp
-dists.cpp
+dist_s.cpp
 divides.cpp
-divs.cpp
+divides_s.cpp
 exp.cpp
 exp2.cpp
 expm1.cpp
@@ -86,6 +87,7 @@ if_zero_else_one.cpp
 ilog2.cpp
 ilogb.cpp
 inc.cpp
+inc_s.cpp
 indeg.cpp
 inrad.cpp
 iround2even.cpp
@@ -167,19 +169,26 @@ minmag.cpp
 minnum.cpp
 minnummag.cpp
 minus.cpp
+minus_s.cpp
 minusone.cpp
+minusone_s.cpp
 modf.cpp
 multiplies.cpp
+multiplies_s.cpp
 negate.cpp
 negatenz.cpp
 negif.cpp
 negifnot.cpp
-negs.cpp
+#neg.cpp
+neg_s.cpp
 nextafter.cpp
 next.cpp
 oneminus.cpp
+oneminus_s.cpp
 oneplus.cpp
+oneplus_s.cpp
 plus.cpp
+plus_s.cpp
 posmax.cpp
 posmin.cpp
 predecessor.cpp
@@ -204,21 +213,24 @@ signnz.cpp
 sort.cpp
 sqr_abs.cpp
 sqr.cpp
-sqrs.cpp
+sqr_s.cpp
 sqrt1pm1.cpp
 sqrt.cpp
 store.cpp
-subs.cpp
 successor.cpp
 tenpower.cpp
 tofloat.cpp
 toint.cpp
+toint_s.cpp
+#touint.cpp
+touint_s.cpp
 trunc.cpp
 two_add.cpp
 two_prod.cpp
 two_split.cpp
 #ulpdist.cpp
 unary_minus.cpp
+unary_minus_s.cpp
 unary_plus.cpp
 
 #any.cpp
