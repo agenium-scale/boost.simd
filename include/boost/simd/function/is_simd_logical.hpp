@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-reduction
+    Function object implementing is_simd_logical capabilities
 
     returns @ref True if each vector elements have all bits or no bit set.
 
@@ -37,25 +39,8 @@ namespace boost { namespace simd
 
     @see mask2logical
 
-    @return a value of the scalar logical type associated to the parameter
-
-**/
-  template<typename T> auto is_simd_logical(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-reduction
-
-      returns @ref True if each vector elements have all bits or no bit set.
-
-
-      Function object tied to simd::is_simd_logical
-
-      @see simd::is_simd_logical
-    **/
-    const boost::dispatch::functor<tag::is_simd_logical_> is_simd_logical = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::is_simd_logical_> is_simd_logical = {};
 } }
 #endif
 

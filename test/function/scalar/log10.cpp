@@ -8,7 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/log10.hpp>
+#include <boost/simd/function/scalar/log10.hpp>
+#include <boost/simd/function/std.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -37,7 +38,7 @@ STF_CASE_TPL (" log10",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(log10(bs::Nan<T>()), bs::Nan<r_t>(), 0);
   STF_ULP_EQUAL(log10(bs::Mone<T>()), bs::Nan<r_t>(), 0);
   STF_ULP_EQUAL(log10(bs::Zero<T>()), bs::Minf<r_t>(), 0);
-  STF_ULP_EQUAL(log10(bs::Mzero<T>(), bs::std_), bs::Minf<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(log10)(bs::Mzero<T>()), bs::Minf<r_t>(), 0);
 #endif
   STF_ULP_EQUAL(log10(bs::One<T>()), bs::Zero<r_t>(), 0);
   STF_ULP_EQUAL(log10(bs::Two<T>()), T(0.301029995663981195213738894724), 0);
@@ -167,13 +168,13 @@ STF_CASE_TPL (" log10 std",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(log10(bs::Inf<T>(), bs::std_), bs::Inf<r_t>(), 0);
-  STF_ULP_EQUAL(log10(bs::Minf<T>(), bs::std_), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(log10(bs::Nan<T>(), bs::std_), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(log10(bs::Mone<T>(), bs::std_), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(log10(bs::Zero<T>(), bs::std_), bs::Minf<r_t>(), 0);
-  STF_ULP_EQUAL(log10(bs::Mzero<T>(), bs::std_), bs::Minf<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(log10)(bs::Inf<T>()), bs::Inf<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(log10)(bs::Minf<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(log10)(bs::Nan<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(log10)(bs::Mone<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(log10)(bs::Zero<T>()), bs::Minf<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(log10)(bs::Mzero<T>()), bs::Minf<r_t>(), 0);
 #endif
-  STF_ULP_EQUAL(log10(bs::One<T>(), bs::std_), bs::Zero<r_t>(), 0);
-  STF_ULP_EQUAL(log10(bs::Two<T>(), bs::std_), T(0.301029995663981195213738894724), 0);
+  STF_ULP_EQUAL(bs::std_(log10)(bs::One<T>()), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(log10)(bs::Two<T>()), T(0.301029995663981195213738894724), 0);
 }

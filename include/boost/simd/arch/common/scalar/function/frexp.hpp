@@ -11,6 +11,10 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_FREXP_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_FREXP_HPP_INCLUDED
+#include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/std.hpp>
+#include <boost/simd/function/fast.hpp>
 
 #ifndef BOOST_SIMD_NO_DENORMALS
 #include <boost/simd/constant/twotonmb.hpp>
@@ -28,7 +32,6 @@
 #include <boost/simd/function/scalar/bitwise_or.hpp>
 #include <boost/simd/function/scalar/is_invalid.hpp>
 #include <boost/simd/function/scalar/shr.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>

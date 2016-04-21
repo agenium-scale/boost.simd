@@ -13,9 +13,8 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_NGEZ_HPP_INCLUDED
 
 #include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/false.hpp>
 #include <boost/simd/function/scalar/is_nan.hpp>
-//#include <boost/simd/function/scalar/logical_or.hpp>
-//#include <boost/simd/sdk/meta/as_logical.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
@@ -33,6 +32,7 @@ namespace boost { namespace simd { namespace ext
       return false;
     }
   };
+
   BOOST_DISPATCH_OVERLOAD ( is_ngez_
                           , (typename A0)
                           , bd::cpu_
@@ -56,6 +56,19 @@ namespace boost { namespace simd { namespace ext
       return (a0 < Zero<A0>()) || is_nan(a0);
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( is_ngez_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bs::logical_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( const A0& ) const BOOST_NOEXCEPT
+    {
+      return False<A0>();
+    }
+  };
+
 } } }
 
 

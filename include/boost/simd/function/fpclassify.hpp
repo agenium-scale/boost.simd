@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,8 +15,10 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
     @ingroup group-ieee
+    Function object implementing fpclassify capabilities
 
     Categorizes floating point value arg into the following categories:
     zero, subnormal, normal, infinite, NAN, or implementation-defined category.
@@ -25,7 +27,7 @@ namespace boost { namespace simd
     is the integral signed type associated to the floating input type.
 
     If you want the standard behaviour which return an int in scalar mode you
-    can call fpclassify(x, std_).
+    can use the std_ decorator.
 
     fpclassify returns a value of integral type that matches one of the classification
     macro constants, depending on the value of x:
@@ -43,22 +45,14 @@ namespace boost { namespace simd
 
     These macro constants of type int are defined in header cmath
 
+    @par Decorators
+
+    std_ for floating entries
+
     @see is_eqz, is_denormal, is_normal, is_inf, is_nan
 
   **/
-  template<typename T> auto fpclassify(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-ieee
-
-      Function object tied to simd::fpclassify
-
-      @see simd::fpclassify
-    **/
-    const boost::dispatch::functor<tag::fpclassify_> fpclassify = {};
-  }
+  const boost::dispatch::functor<tag::fpclassify_> fpclassify = {};
 } }
 #endif
 

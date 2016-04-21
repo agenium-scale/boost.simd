@@ -17,11 +17,19 @@
 #include <boost/simd/config.hpp>
 #include <boost/simd/detail/pack_traits.hpp>
 #include <boost/simd/detail/storage_of.hpp>
-#include <boost/simd/sdk/is_power_of_2.hpp>
+#include <boost/simd/meta/is_power_of_2.hpp>
+#include <boost/simd/meta/is_not_scalar.hpp>
 #include <boost/simd/function/aligned_load.hpp>
 #include <boost/simd/function/extract.hpp>
+#include <boost/simd/function/insert.hpp>
 #include <boost/simd/function/splat.hpp>
 #include <boost/simd/function/load.hpp>
+#include <boost/simd/function/complement.hpp>
+#include <boost/simd/function/unary_minus.hpp>
+#include <boost/simd/function/unary_plus.hpp>
+#include <boost/simd/function/inc.hpp>
+#include <boost/simd/function/dec.hpp>
+#include <boost/utility/enable_if.hpp>
 #include <boost/align/is_aligned.hpp>
 #include <boost/config.hpp>
 #include <iterator>
@@ -51,24 +59,30 @@ namespace boost { namespace simd
                  );
 
     public:
-    using traits                = detail::pack_traits<T, N,typename detail::storage_of<T,N,ABI>::type>;
-    using storage_type          = typename traits::storage_type;
-    using storage_kind          = typename traits::storage_kind;
-    using value_type            = typename traits::value_type;
-    using size_type             = typename traits::size_type;
+    using traits          = detail::pack_traits<T, N, typename detail::storage_of<T, N, ABI>::type>;
+    using storage_type    = typename traits::storage_type;
+    using substorage_type = typename traits::substorage_type;
+    using storage_kind    = typename traits::storage_kind;
+    using value_type      = typename traits::value_type;
+    using size_type       = typename traits::size_type;
 
-    using reference             = typename traits::reference;
-    using const_reference       = typename traits::const_reference;
+    using reference       = typename detail::pack_references<traits, pack>::reference;
+    using const_reference = typename detail::pack_references<traits, pack>::const_reference;
 
-    using iterator                  = detail::pack_iterator<pack>;
-    using const_iterator            = detail::pack_iterator<pack const>;
-    using reverse_iterator          = std::reverse_iterator<iterator>;
-    using const_reverse_iterator    = std::reverse_iterator<const_iterator>;
+    using iterator               = detail::pack_iterator<pack>;
+    using const_iterator         = detail::pack_iterator<pack const>;
+    using reverse_iterator       = std::reverse_iterator<iterator>;
+    using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
     enum { static_size = N };
 
+    enum { alignment = traits::alignment };
+
     /// @brief pack type rebinding alias
     template<typename U> using rebind = pack<U,N>;
+
+    /// @brief pack type rebinding alias
+    template<std::size_t M> using resize = pack<T,M>;
 
     public:
 
@@ -109,7 +123,7 @@ namespace boost { namespace simd
       @param e End of the range to load from
     **/
     template < typename Iterator
-             , typename = typename std::enable_if<!std::is_fundamental<Iterator>::value>::type
+             , typename = typename std::enable_if<is_not_scalar<Iterator>::value>::type
              >
     BOOST_FORCEINLINE pack(Iterator b, Iterator e)
                     : data_( boost::simd::load<pack>(b,e).storage() )
@@ -134,8 +148,7 @@ namespace boost { namespace simd
                    , "pack<T,N>(T v...) must take exactly N arguments"
                    );
 
-      std::initializer_list<T> lst{static_cast<T>(v0), static_cast<T>(v1), static_cast<T>(vn)...};
-      data_ = boost::simd::load<pack>(lst.begin()).storage();
+      data_ = boost::simd::make<pack>(v0,v1,vn...).storage();
     }
 
     /*!
@@ -184,13 +197,23 @@ namespace boost { namespace simd
     **/
     BOOST_FORCEINLINE reference operator[](std::size_t i)
     {
-      return extract(*this, i);
+      return traits::at(*this, i);
     }
 
     /// @overload
     BOOST_FORCEINLINE const_reference operator[](std::size_t i) const
     {
-      return extract(*this, i);
+      return traits::at(*this, i);
+    }
+
+    BOOST_FORCEINLINE value_type get(std::size_t i) const
+    {
+      return ::boost::simd::extract(*this, i);
+    }
+
+    BOOST_FORCEINLINE void set(std::size_t i, T const& v)
+    {
+      ::boost::simd::insert(*this, i, v);
     }
 
     public:
@@ -268,6 +291,39 @@ namespace boost { namespace simd
     }
 
     public:
+    BOOST_FORCEINLINE pack operator+() const BOOST_NOEXCEPT { return unary_plus(*this); }
+    BOOST_FORCEINLINE pack operator-() const BOOST_NOEXCEPT { return unary_minus(*this); }
+    BOOST_FORCEINLINE pack operator~() const BOOST_NOEXCEPT { return complement(*this); }
+
+    BOOST_FORCEINLINE pack& operator++() BOOST_NOEXCEPT { return (*this = inc(*this)); }
+    BOOST_FORCEINLINE pack& operator--() BOOST_NOEXCEPT { return (*this = dec(*this)); }
+
+    BOOST_FORCEINLINE
+    pack operator++(int) BOOST_NOEXCEPT { pack that = *this; ++(*this); return that; }
+    BOOST_FORCEINLINE
+    pack operator--(int) BOOST_NOEXCEPT { pack that = *this; --(*this); return that; }
+
+    template <typename Other>
+    BOOST_FORCEINLINE
+    void operator+=(Other const& other) BOOST_NOEXCEPT { *this = *this + other; }
+
+    template <typename Other>
+    BOOST_FORCEINLINE
+    void operator-=(Other const& other) BOOST_NOEXCEPT { *this = *this - other; }
+
+    template <typename Other>
+    BOOST_FORCEINLINE
+    void operator*=(Other const& other) BOOST_NOEXCEPT { *this = *this * other; }
+
+    template <typename Other>
+    BOOST_FORCEINLINE
+    void operator/=(Other const& other) BOOST_NOEXCEPT { *this = *this / other; }
+
+    template <typename Other>
+    BOOST_FORCEINLINE
+    void operator%=(Other const& other) BOOST_NOEXCEPT { *this = *this % other; }
+
+    public:
     /// @brief Retrieve the pack's cardinal, i.e the number of element in the pack.
     static BOOST_FORCEINLINE size_type size()     BOOST_NOEXCEPT { return static_size; }
 
@@ -299,15 +355,17 @@ namespace boost { namespace simd
   template <typename T, std::size_t N>
   std::ostream& operator<<(std::ostream& os, pack<T, N> const& p)
   {
-    os << '(' << p[0];
+    os << '(' << +p[0];
 
     for (std::size_t i=1; i != N; ++i)
-      os << ", " << p[i];
+      os << ", " << +p[i];
 
     return os << ')';
   }
+
 } }
 
 #include <boost/simd/detail/pack_info.hpp>
+#include <boost/simd/detail/pack_operators.hpp>
 
 #endif

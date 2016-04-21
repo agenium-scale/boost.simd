@@ -15,34 +15,20 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
     @ingroup group-boolean
+    Function object implementing sel capabilities
 
     If cond is @ref True returns t else returns f
 
     This is a convenient alias of @ref if_else
   **/
-  template<typename C typename T1, typename T2>
-  auto sel(C const& cond, T1 const& t, T2 const& f );
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-boolean
-
-      If cond is @ref True returns t else returns f
-
-
-      Function object tied to boost::simd::sel
-
-      @see boost::simd::sel
-    **/
-    const boost::dispatch::functor<tag::sel_> sel = {};
-  }
+  const boost::dispatch::functor<tag::sel_> sel = {};
 } }
 #endif
 
 #include <boost/simd/function/scalar/sel.hpp>
 #include <boost/simd/function/simd/sel.hpp>
-
 
 #endif

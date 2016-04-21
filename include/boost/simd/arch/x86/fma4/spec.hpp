@@ -14,7 +14,7 @@
 #ifndef BOOST_SIMD_ARCH_X86_FMA4_SPEC_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_FMA4_SPEC_HPP_INCLUDED
 
-#include <boost/simd/sdk/predef.hpp>
+#include <boost/simd/detail/predef.hpp>
 
 #if !defined(BOOST_SIMD_DEFAULT_FAMILY)
   #if BOOST_HW_SIMD_X86_AMD == BOOST_HW_SIMD_X86_AMD_FMA4_VERSION

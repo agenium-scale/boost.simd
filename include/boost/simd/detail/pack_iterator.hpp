@@ -57,14 +57,14 @@ class pack_iterator
 
     BOOST_FORCEINLINE void increment() BOOST_NOEXCEPT
     {
+      BOOST_ASSERT_MSG(idx_+1 <= pack_->size(), "pack_iterator index out of bound (> size)");
       idx_ += 1;
-      BOOST_ASSERT_MSG(idx_ <= pack_->size(), "pack_iterator index out of bound (> size)");
     }
 
     BOOST_FORCEINLINE void decrement() BOOST_NOEXCEPT
     {
+      BOOST_ASSERT_MSG(idx_ != 0, "pack_iterator index out of bound (< 0)");
       idx_ -= 1;
-      BOOST_ASSERT_MSG(idx_ >= 0, "pack_iterator index out of bound (< 0)");
     }
 
     BOOST_FORCEINLINE bool equal(pack_iterator const& other) const BOOST_NOEXCEPT
@@ -74,10 +74,10 @@ class pack_iterator
 
     BOOST_FORCEINLINE void advance(int n) BOOST_NOEXCEPT
     {
-      idx_ += n;
-      BOOST_ASSERT_MSG( idx_ <= pack_->size() || idx_ >= 0
+      BOOST_ASSERT_MSG( idx_+n <= pack_->size()
                       , "pack_iterator index out of bound (> size || < 0)"
                       );
+      idx_ += n;
     }
 
     BOOST_FORCEINLINE std::ptrdiff_t distance_to(pack_iterator const& other) const BOOST_NOEXCEPT
@@ -85,8 +85,7 @@ class pack_iterator
       return static_cast<std::ptrdiff_t>(other.idx_ - idx_);
     }
 
-    BOOST_FORCEINLINE auto dereference() const
-                      -> decltype(std::declval<Pack>()[std::declval<std::size_t>()])
+    BOOST_FORCEINLINE ref_constness<Pack> dereference() const
     {
       return (*pack_)[idx_];
     }

@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_DEFINITION_IF_ZERO_ELSE_ALLBITS_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_DEFINITION_IF_ZERO_ELSE_ALLBITS_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/simd/function/definition/genmaskc.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 

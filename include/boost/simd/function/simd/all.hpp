@@ -2,8 +2,8 @@
 /*!
   @file
 
-  Copyright 2015 NumScale SAS
-  Copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -13,7 +13,26 @@
 #define BOOST_SIMD_FUNCTION_SIMD_ALL_INCLUDED
 
 #include <boost/simd/function/scalar/all.hpp>
-//#include <boost/simd/arch/common/simd/function/all.hpp>
+#include <boost/simd/arch/common/generic/function/autofold.hpp>
+#include <boost/simd/arch/common/simd/function/all.hpp>
+
+#if defined(BOOST_HW_SIMD_X86)
+
+#  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_SSE2_VERSION
+#    include <boost/simd/arch/x86/sse2/simd/function/all.hpp>
+#  endif
+#  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_AVX_VERSION
+// #    include <boost/simd/arch/x86/avx/simd/function/all.hpp>
+#  endif
 
 #endif
 
+#if defined(BOOST_HW_SIMD_PPC)
+
+#  if BOOST_HW_SIMD_PPC >= BOOST_HW_SIMD_PPC_VMX_VERSION
+// #    include <boost/simd/arch/power/vmx/simd/function/all.hpp>
+#  endif
+
+#endif
+
+#endif

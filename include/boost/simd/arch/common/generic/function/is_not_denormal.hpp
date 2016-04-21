@@ -13,15 +13,14 @@
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_IS_NOT_DENORMAL_HPP_INCLUDED
 
 #include <boost/simd/constant/smallestposval.hpp>
+#include <boost/simd/constant/true.hpp>
 #include <boost/simd/function/abs.hpp>
 #include <boost/simd/function/is_eqz.hpp>
 #include <boost/simd/function/is_not_less.hpp>
 #include <boost/simd/function/logical_or.hpp>
-#include <boost/simd/logical.hpp>
-//#include <boost/simd/constant/true.hpp>
+#include <boost/simd/meta/as_logical.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
-//TODO LOGICAL
 
 namespace boost { namespace simd { namespace ext
 {
@@ -32,9 +31,10 @@ namespace boost { namespace simd { namespace ext
                           , bd::generic_< bd::arithmetic_<A0> >
                           )
   {
-    BOOST_FORCEINLINE logical<A0> operator() (const A0& ) const BOOST_NOEXCEPT
+    using result = bs::as_logical_t<A0>;
+    BOOST_FORCEINLINE result operator() (const A0& ) const BOOST_NOEXCEPT
     {
-      return {true};
+      return True<result>();
     }
   };
 
@@ -44,9 +44,9 @@ namespace boost { namespace simd { namespace ext
                           , bd::generic_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE logical<A0> operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE  bs::as_logical_t<A0> operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      return logical_or(is_eqz(a0), is_not_less(simd::abs(a0), Smallestposval<A0>()));
+      return logical_or(is_eqz(a0), is_not_less(bs::abs(a0), Smallestposval<A0>()));
     }
   };
 } } }

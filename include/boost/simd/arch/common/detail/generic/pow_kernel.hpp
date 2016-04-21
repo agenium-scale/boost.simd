@@ -12,7 +12,6 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_DETAIL_GENERIC_POW_KERNEL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_GENERIC_POW_KERNEL_HPP_INCLUDED
 
-#include <boost/simd/options.hpp>
 #include <boost/simd/constant/four.hpp>
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/constant/nine.hpp>
@@ -23,7 +22,7 @@
 #include <boost/simd/function/inc.hpp>
 #include <boost/simd/function/is_greater_equal.hpp>
 #include <boost/simd/function/is_less_equal.hpp>
-//#include <boost/simd/function/load.hpp>
+#include <boost/simd/function/load.hpp>
 #include <boost/simd/function/minus.hpp>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/plus.hpp>
@@ -114,22 +113,22 @@ namespace boost { namespace simd
             s_t(-6.53877009617774467211965E-9),
             s_t( 0.00000000000000000000E0)
         };
-        return B[i]; //load<A0>(B.begin(), i);
+        return load<A0>(&B[0], i);
       }
 
       static BOOST_FORCEINLINE i_t select(A0& x) BOOST_NOEXCEPT
       {
         // find significand in antilog table A[]
         i_t i = One<i_t>();
-        i = if_else((x <= twomio16(Nine<i_t>()))  , Nine<i_t>(), i);
-        i = seladd ((x <= twomio16(i+Four<i_t>())), i, Four<i_t>());
-        i = seladd ((x <= twomio16(i+Two<i_t>())) , i, Two<i_t>() );
-        i = if_else((x >= twomio16(One<i_t>()))   , Mone<i_t>(), i);
+        i = if_else(is_less_equal(x, twomio16(Nine<i_t>()))  , Nine<i_t>(), i);
+        i = seladd (is_less_equal(x, twomio16(i+Four<i_t>())), i, Four<i_t>());
+        i = seladd (is_less_equal(x, twomio16(i+Two<i_t>())) , i, Two<i_t>() );
+        i = if_else(is_greater_equal(x, twomio16(One<i_t>()))   , Mone<i_t>(), i);
         i = inc(i);
         A0 tmp = twomio16(i);
-        x -= tmp;
-        x -= continuation(shr(i, 1));
-        x /= tmp;
+        x = x-tmp; //-=
+        x = x-continuation(shr(i, 1)); //-=
+        x = x/tmp; // /=
         return i;
       }
 
@@ -210,22 +209,22 @@ namespace boost { namespace simd
          s_t(-1.52339103990623557348E-17),
          s_t( 0.00000000000000000000E0)
         };
-      return  B[i]; //load<A0>(B.begin(), i);
+      return load<A0>(&B[0], i);
     }
 
     static BOOST_FORCEINLINE i_t select(A0& x) BOOST_NOEXCEPT
     {
       // find significand in antilog table A[]
       i_t i = One<i_t>();
-      i = if_else((x <= twomio16(Nine<i_t>()))  , Nine<i_t>(), i);
-      i = seladd ((x <= twomio16(i+Four<i_t>())), i, Four<i_t>());
-      i = seladd ((x <= twomio16(i+Two<i_t>())) , i, Two<i_t>() );
-      i = if_else((x >= twomio16(One<i_t>()))   , Mone<i_t>(), i);
+      i = if_else(is_less_equal(x, twomio16(Nine<i_t>()))  , Nine<i_t>(), i);
+      i = seladd (is_less_equal(x, twomio16(i+Four<i_t>())), i, Four<i_t>());
+      i = seladd (is_less_equal(x, twomio16(i+Two<i_t>())) , i, Two<i_t>() );
+      i = if_else(is_greater_equal(x, twomio16(One<i_t>()))   , Mone<i_t>(), i);
       i = inc(i);
       A0 tmp = twomio16(i);
-      x -= tmp;
-      x -= continuation(shr(i, 1));
-      x /= tmp;
+      x = x-tmp; //-=
+      x = x-continuation(shr(i, 1));//-=
+      x = x/tmp;// /=
       return i;
     }
 

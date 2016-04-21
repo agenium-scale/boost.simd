@@ -17,9 +17,8 @@ void test(Env& $)
 {
   namespace ba = boost::alignment;
   using pack_t = boost::simd::pack<T, N>;
-  std::size_t alg = sizeof(typename pack_t::storage_type);
 
-  T* ptr = static_cast<T*>(ba::aligned_alloc(alg, (sizeof(T)) * N));
+  T* ptr = static_cast<T*>(ba::aligned_alloc(pack_t::alignment, (sizeof(T)) * N));
   std::iota(ptr, ptr + N, T{1});
 
   pack_t p(ptr);

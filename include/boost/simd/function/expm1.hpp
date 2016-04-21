@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-exponential
+    Function object implementing expm1 capabilities
 
     exponential function minus one:\f$e^{x}-1\f$
 
@@ -39,30 +41,14 @@ namespace boost { namespace simd
 
     - result is accurate even for x of small modulus
 
-    - exp2(x, std_) use the call to std::exp2 from stdlibc++
+    @par Decorators
+
+    std_ for floating entries
 
     @see exp
 
-    @return a value of the same type as the parameter
-
-**/
-  template<typename T> auto expm1(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-exponential
-
-
-      exponential function minus one:\f$e^{x}-1\f$
-
-
-      Function object tied to simd::expm1
-
-      @see simd::expm1
-    **/
-    const boost::dispatch::functor<tag::expm1_> expm1 = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::expm1_> expm1 = {};
 } }
 #endif
 

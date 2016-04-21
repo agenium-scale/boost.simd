@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-trigonometric
+    Function object implementing sin capabilities
 
     sine of the input in radians.
 
@@ -34,26 +36,8 @@ namespace boost { namespace simd
 
     @see sincos, sind, sinpi
 
-    @return a value of the same type as the parameter
-
-**/
-  template<typename T> auto sin(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-trigonometric
-
-
-      sine of the input in radians.
-
-
-      Function object tied to simd::sin
-
-      @see simd::sin
-    **/
-    const boost::dispatch::functor<tag::sin_> sin = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::sin_> sin = {};
 } }
 #endif
 

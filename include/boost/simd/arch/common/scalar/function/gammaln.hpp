@@ -11,6 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_GAMMALN_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_GAMMALN_HPP_INCLUDED
 
+#include <boost/simd/function/std.hpp>
 #include <boost/simd/arch/common/detail/generic/gammaln_kernel.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/invpi.hpp>

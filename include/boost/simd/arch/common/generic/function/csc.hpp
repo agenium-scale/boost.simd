@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_CSC_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_CSC_HPP_INCLUDED
 
-#include <boost/simd/options.hpp>
+#include <boost/simd/function/fast.hpp>
 #include <boost/simd/function/rec.hpp>
 #include <boost/simd/function/sin.hpp>
 #include <boost/dispatch/function/overload.hpp>
@@ -56,7 +56,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, fast_tag const&) const BOOST_NOEXCEPT
     {
-      return rec(sin(a0, fast_));
+      return rec(fast_(sin)(a0));
     }
   };
 } } }

@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-exponential
+    Function object implementing exp2 capabilities
 
     base two exponential function: \f$2^{x}\f$
 
@@ -39,28 +41,14 @@ namespace boost { namespace simd
 
     - provisions are made to obtain a flint result from a flint input
 
-    - exp2(x, std_) use the call to std::exp2 from stdlibc++
+    @par Decorators
+
+    std_ for floating entries
 
     @see exp, exp10, pow, pow2
 
-    @return a value of the same type as the parameter
-
-**/
-  template<typename T> auto exp2(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-exponential
-
-      base two exponential function: \f$2^{x}\f$
-
-      Function object tied to simd::exp2
-
-      @see simd::exp2
-    **/
-    const boost::dispatch::functor<tag::exp2_> exp2 = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::exp2_> exp2 = {};
 } }
 #endif
 

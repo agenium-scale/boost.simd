@@ -12,13 +12,14 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_SQRT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_SQRT_HPP_INCLUDED
 
+#include <boost/simd/function/fast.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
+#include <boost/simd/function/assert.hpp>
 #include <boost/simd/function/if_else_zero.hpp>
 #include <boost/simd/function/is_gez.hpp>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/rsqrt.hpp>
-#include <boost/simd/math.hpp>
-#include <boost/simd/options.hpp>
+#include <boost/simd/detail/math.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/assert.hpp>
 #include <boost/config.hpp>

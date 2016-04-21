@@ -17,6 +17,7 @@ namespace boost { namespace simd
 {
 /*!
       @ingroup group-bitwise
+      Function object function implementing bitwise_cast capabilities
 
       Performs a bit-preserving cast of its parameters into an arbitrary
       type @c Target.
@@ -42,27 +43,12 @@ namespace boost { namespace simd
 
       @return A value of type @c Target which is bit-equivalent to @c x.
     **/
-  template<typename Target, typename T> auto bitwise_cast(T const& x);
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-bitwise
-
-        Performs a bit-preserving cast of its parameters into an arbitrary
-        type @c Target.
-
-
-      Function object tied to boost::simd::bitwise_cast
-
-      @see boost::simd::bitwise_cast
-    **/
     const boost::dispatch::functor<tag::bitwise_cast_> bitwise_cast = {};
   }
 } }
 #endif
 
 #include <boost/simd/function/scalar/bitwise_cast.hpp>
-#include <boost/simd/function/scalar/bitwise_cast.hpp>
+#include <boost/simd/function/simd/bitwise_cast.hpp>
 
 #endif

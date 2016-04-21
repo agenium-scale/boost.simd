@@ -43,6 +43,9 @@ namespace boost { namespace simd { namespace detail
   {
     typedef T type;
   };
+
+  template < typename T>
+  using  may_alias_t =  typename may_alias<T>::type;
 } } }
 
 #endif

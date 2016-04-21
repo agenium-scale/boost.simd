@@ -12,7 +12,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_LOAD_HPP_INCLUDED
 
 #include <boost/config.hpp>
-#include <boost/simd/sdk/masked.hpp>
+#include <boost/simd/mask.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/adapted/common/pointer.hpp>
 #include <boost/dispatch/adapted/std/iterator.hpp>
@@ -70,24 +70,6 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE target operator()(Pointer p, Target const&) const BOOST_NOEXCEPT
     {
       return p.mask() ? boost::simd::load<target>(p.get()) : static_cast<target>(p.value());
-    }
-  };
-
-  //------------------------------------------------------------------------------------------------
-  // load from an input iterator and an integral offset
-  BOOST_DISPATCH_OVERLOAD ( load_
-                          , (typename Target, typename Pointer, typename Offset)
-                          , bd::cpu_
-                          , bd::input_iterator_<bd::scalar_<bd::unspecified_<Pointer>>>
-                          , bd::scalar_<bd::integer_<Offset>>
-                          , bd::target_< bd::scalar_<bd::unspecified_<Target>> >
-                          )
-  {
-    using target = typename Target::type;
-
-    BOOST_FORCEINLINE target operator()(Pointer p, Offset o, Target const&) const BOOST_NOEXCEPT
-    {
-      return boost::simd::load<target>(p+o);
     }
   };
 

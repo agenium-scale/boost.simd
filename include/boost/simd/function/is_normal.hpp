@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-predicates
+    Function object implementing is_normal capabilities
 
     Returns @ref True or @ref False according x is normal or not.
 
@@ -35,28 +37,10 @@ namespace boost { namespace simd
     as_logical_t<T> r = !(is_denormal(x) || is_invalid(x) || is_eqz(a0));
     @endcode
 
-    @see is_invalid, is_denormal, is_eqz
+    @see is_invalid, is_denormal, is_eq
 
-
-    @return a logical value
-
-**/
-  template<typename T> auto is_normal(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-predicates
-
-      Returns @ref True or @ref False according x is normal or not.
-
-
-      Function object tied to simd::is_normal
-
-      @see simd::is_normal
-    **/
-    const boost::dispatch::functor<tag::is_normal_> is_normal = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::is_normal_> is_normal = {};
 } }
 #endif
 

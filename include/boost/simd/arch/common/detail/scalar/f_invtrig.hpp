@@ -67,7 +67,7 @@ namespace boost { namespace simd
       sign = bitofsign(a0);
       if ((x < Constant<A0,0x38d1b717>())) return a0; //1.0e-4
       if ((x >  One<A0>())) return Nan<A0>();
-      bool bx_larger_05    = (x > Half<A0>());
+      auto bx_larger_05    = (x > Half<A0>());
       if (bx_larger_05)
       {
         z = Half<A0>()*oneminus(x);

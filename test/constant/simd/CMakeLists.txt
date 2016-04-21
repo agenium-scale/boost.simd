@@ -1,5 +1,5 @@
 ##===================================================================================================
-##                 Copyright 2012 - 2015   NumScale SAS
+##                              Copyright 2016 NumScale SAS
 ##
 ##                   Distributed under the Boost Software License, Version 1.0.
 ##                        See accompanying file LICENSE.txt or copy at
@@ -29,7 +29,7 @@ fact_6.cpp
 fact_7.cpp
 fact_8.cpp
 fact_9.cpp
-#false.cpp
+false.cpp
 fifteen.cpp
 five.cpp
 four.cpp
@@ -158,7 +158,7 @@ thousand.cpp
 three.cpp
 threeeps.cpp
 threepio_4.cpp
-#true.cpp
+true.cpp
 twelve.cpp
 twenty.cpp
 two.cpp
@@ -174,5 +174,5 @@ valmin.cpp
 zero.cpp
   )
 
-make_unit( "boost.simd.constant.simd"     ${SOURCES})
-make_coverage("boost.simd.constant.simd"  ${SOURCES})
+make_unit( "constant.simd"     ${SOURCES})
+make_coverage("constant.simd"  ${SOURCES})

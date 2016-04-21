@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-exponential
+    Function object implementing log10 capabilities
 
     base ten logarithm function. For integer input types log10 return the truncation
     of the real result.
@@ -42,31 +44,14 @@ namespace boost { namespace simd
     - The call log10(x, assert_) asserts is x is negative (peculiarly
     take care that it asserts for Mzero but not Zero in case of floating numbers)
 
-    - log10(x, std_) use the call to std::log10 from stdlibc++
+    @par Decorators
+
+    std_ for floating entries
 
     @see log, log2, log1p, is_negative, Mzero
 
-    @return a value of the same type as the parameter
-
-**/
-  template<typename T> auto log10(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-exponential
-
-
-      base ten logarithm function. For integer input types log10 return the truncation
-      of the real result.
-
-
-      Function object tied to simd::log10
-
-      @see simd::log10
-    **/
-    const boost::dispatch::functor<tag::log10_> log10 = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::log10_> log10 = {};
 } }
 #endif
 

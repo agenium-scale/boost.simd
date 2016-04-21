@@ -11,7 +11,10 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_NORMAL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_NORMAL_HPP_INCLUDED
 
-#include <boost/simd/options.hpp>
+#include <boost/simd/function/scalar/is_nez.hpp>
+#include <boost/simd/function/scalar/is_not_denormal.hpp>
+#include <boost/simd/function/scalar/is_finite.hpp>
+#include <boost/simd/function/std.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>
@@ -26,9 +29,33 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::bool_<A0> >
                           )
   {
-    BOOST_FORCEINLINE bool operator() (A0 ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE bool operator() (A0 a0 ) const BOOST_NOEXCEPT
     {
-      return true;
+      return a0;
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( is_normal_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::fundamental_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE bs::as_logical_t<A0> operator() ( A0 a0) const BOOST_NOEXCEPT
+    {
+      return is_nez(a0);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( is_normal_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::floating_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE  bs::as_logical_t<A0> operator() ( A0 a0) const BOOST_NOEXCEPT
+    {
+      return   is_finite(a0)&&is_nez(a0)&&is_not_denormal(a0);
     }
   };
 
@@ -39,7 +66,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::std_tag
                           )
   {
-    BOOST_FORCEINLINE bool operator() (A0 a0,  bs::std_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE logical<A0> operator() (A0 a0,  bs::std_tag const&) const BOOST_NOEXCEPT
     {
       return std::isnormal(a0);
     }

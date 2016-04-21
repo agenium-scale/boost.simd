@@ -11,8 +11,115 @@
 #define SIMD_TEST_HPP_INCLUDED
 
 #define STF_CUSTOM_DRIVER_FUNCTION simd_test
+#include <boost/simd/function/compare_equal.hpp>
+namespace stf
+{
+  template < typename T, std::size_t N,  typename X  >
+  inline bool compare_equal( const boost::simd::pack < T, N, X >  &l
+                           , const boost::simd::pack < T, N, X >  &r )
+  {
+    return boost::simd::compare_equal(l, r);
+  }
+}
 #include <stf.hpp>
 
+#include <boost/simd/pack.hpp>
+
+// -------------------------------------------------------------------------------------------------
+// adapt pack for STF testing
+namespace stf { namespace ext
+{
+  // -----------------------------------------------------------------------------------------------
+  // equal for pack
+  template<typename T, std::size_t N, typename A>
+  struct equal<boost::simd::pack<T,N,A>,boost::simd::pack<T,N,A>>
+  {
+    using type_t = boost::simd::pack<T,N,A>;
+    inline bool operator()(type_t const& l, type_t const& r) const
+    {
+      for(std::size_t i = 0; i < N; ++i)
+        if(l[i] != r[i]) return false;
+      return true;
+    }
+  };
+
+  // -----------------------------------------------------------------------------------------------
+  // ulpdist for pack
+  template<typename T, std::size_t N, typename A>
+  struct ulpdist<boost::simd::pack<T,N,A>,boost::simd::pack<T,N,A>>
+  {
+    using type_t = boost::simd::pack<T,N,A>;
+    inline double operator()(type_t const& l, type_t const& r) const
+    {
+      double max_ulp = 0;
+      for(std::size_t i = 0; i < N; ++i)
+        max_ulp = std::max( max_ulp, stf::ulpdist(T(l[i]),T(r[i])) );
+
+      return max_ulp;
+    }
+  };
+
+  // -----------------------------------------------------------------------------------------------
+  // reldist for pack
+  template<typename T, std::size_t N, typename A>
+  struct reldist<boost::simd::pack<T,N,A>,boost::simd::pack<T,N,A>>
+  {
+    using type_t = boost::simd::pack<T,N,A>;
+    inline double operator()(type_t const& l, type_t const& r) const
+    {
+      double max_rel = 0;
+      for(std::size_t i = 0; i < N; ++i)
+        max_rel = std::max( max_rel, stf::reldist(T(l[i]),T(r[i])) );
+
+      return max_rel;
+    }
+  };
+
+  template<typename S>
+  struct reldist<boost::simd::detail::pack_proxy<S>,boost::simd::detail::pack_proxy<S>>
+  {
+    using type_t  = boost::simd::detail::pack_proxy<S>;
+    using value_t = typename type_t::value_type;
+    inline double operator()(type_t const& l, type_t const& r) const
+    {
+      return stf::reldist(value_t(l),value_t(r));
+    }
+  };
+
+  template<typename S>
+  struct ulpdist<boost::simd::detail::pack_proxy<S>,boost::simd::detail::pack_proxy<S>>
+  {
+    using type_t  = boost::simd::detail::pack_proxy<S>;
+    using value_t = typename type_t::value_type;
+    inline double operator()(type_t const& l, type_t const& r) const
+    {
+      return stf::ulpdist(value_t(l),value_t(r));
+    }
+  };
+
+  template<typename T>
+  struct reldist<boost::simd::logical<T>,boost::simd::logical<T>>
+  {
+    using type_t  = boost::simd::logical<T>;
+    inline double operator()(type_t const& l, type_t const& r) const
+    {
+      return stf::reldist(bool(l),bool(r));
+    }
+  };
+
+  template<typename T>
+  struct ulpdist<boost::simd::logical<T>,boost::simd::logical<T>>
+  {
+    using type_t  = boost::simd::logical<T>;
+    inline double operator()(type_t const& l, type_t const& r) const
+    {
+      return stf::ulpdist(bool(l),bool(r));
+    }
+  };
+} }
+
+// -------------------------------------------------------------------------------------------------
+// Test driver entry point
 int main(int argc, const char** argv)
 {
   std::cout << "CTEST_FULL_OUTPUT\n";

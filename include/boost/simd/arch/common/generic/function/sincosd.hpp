@@ -14,7 +14,7 @@
 
 
 #include <boost/simd/arch/common/detail/generic/trigo.hpp>
-#include <boost/simd/sdk/is_not_scalar.hpp>
+#include <boost/simd/meta/is_not_scalar.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <boost/fusion/include/std_pair.hpp>

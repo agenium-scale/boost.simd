@@ -8,7 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/csc.hpp>
+#include <boost/simd/function/scalar/csc.hpp>
+#include <boost/simd/function/fast.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -20,7 +21,6 @@
 #include <boost/simd/constant/sqrt_2.hpp>
 #include <boost/simd/constant/pio_2.hpp>
 #include <boost/simd/constant/pio_4.hpp>
-
 
 STF_CASE_TPL (" csc",  STF_IEEE_TYPES)
 {
@@ -60,16 +60,16 @@ STF_CASE_TPL (" csc fast_",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(csc(-bs::Zero<T>(), bs::fast_), bs::Minf<r_t>(), 0.5);
-  STF_ULP_EQUAL(csc(bs::Inf<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(csc(bs::Minf<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(csc(bs::Nan<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(csc(bs::Zero<T>(), bs::fast_), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(csc)(-bs::Zero<T>()), bs::Minf<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(csc)(bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(csc)(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(csc)(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(csc)(bs::Zero<T>()), bs::Inf<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(csc(-bs::Pio_2<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(csc(-bs::Pio_4<T>(), bs::fast_), -bs::Sqrt_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(csc(bs::Pio_2<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(csc(bs::Pio_4<T>(), bs::fast_), bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(csc)(-bs::Pio_2<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(csc)(-bs::Pio_4<T>()), -bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(csc)(bs::Pio_2<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(csc)(bs::Pio_4<T>()), bs::Sqrt_2<r_t>(), 0.5);
 }
 
 STF_CASE_TPL (" csc clipped_small_",  STF_IEEE_TYPES)

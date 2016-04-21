@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,10 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-arithmetic
-
+    Function object implementing chop capabilities
 
   chop (x, ndigits, base)
   truncate elements of x to a length of ndigits such that the
@@ -26,25 +27,8 @@ namespace boost { namespace simd
   specified it defaults to 10.
   chop(x,n) chops aways from 0 to n digits:
 
-  @return      a value of the same type as the input.
-
-
-**/
-  template<typename T> auto chop(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-arithmetic
-
-
-
-      Function object tied to simd::chop
-
-      @see simd::chop
-    **/
-    const boost::dispatch::functor<tag::chop_> chop = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::chop_> chop = {};
 } }
 #endif
 

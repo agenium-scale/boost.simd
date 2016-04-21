@@ -68,8 +68,10 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE int_t operator() ( A0 const& x, A0 & xr) const BOOST_NOEXCEPT
     {
       xr = x-Pio2_1<A0>();
-      xr -= Pio2_2<A0>();
-      xr -= Pio2_3<A0>();
+      xr = xr-Pio2_2<A0>();
+      xr = xr-Pio2_3<A0>();
+//       xr -= Pio2_2<A0>(); TODO
+//       xr -= Pio2_3<A0>();
       return One<int_t>();
     }
   };

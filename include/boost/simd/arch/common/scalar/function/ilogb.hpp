@@ -16,7 +16,7 @@
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/function/scalar/exponent.hpp>
 #include <boost/simd/function/scalar/is_gtz.hpp>
-#include <boost/simd/math.hpp>
+#include <boost/simd/detail/math.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_floating.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
@@ -34,7 +34,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0 ) const BOOST_NOEXCEPT
     {
-      return bs::ilogb(static_cast<bd::as_floating_t<A0>>(a0));
+      return static_cast<A0>(bs::ilogb(static_cast<bd::as_floating_t<A0>>(a0)));
     }
   };
 

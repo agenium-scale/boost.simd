@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-arithmetic
+    Function object implementing rsqrt capabilities
 
     Returns the inverse of the square root of the input.
 
@@ -38,28 +40,14 @@ namespace boost { namespace simd
     @par Note
 
     If full accuracy is not needed a sometimes faster less accurate version of the function
-    can be used callling : rsqrt(x, fast_).
+    can be sppeded by the fast_ decorator : fast_(rsqrt)(x).
 
+    @par Decorators
 
-    @return      a value of the type of the input.
+    fast_ for floating entries
 
-**/
-  template<typename T> auto rsqrt(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-arithmetic
-
-      Returns the inverse of the square root of the input.
-
-
-      Function object tied to simd::rsqrt
-
-      @see simd::rsqrt
-    **/
-    const boost::dispatch::functor<tag::rsqrt_> rsqrt = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::rsqrt_> rsqrt = {};
 } }
 #endif
 

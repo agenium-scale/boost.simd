@@ -3,6 +3,7 @@
   @file
 
   @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -11,60 +12,70 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_EXTRACT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_EXTRACT_HPP_INCLUDED
 
+#include <boost/simd/detail/overload.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/detail/aliasing.hpp>
-#include <boost/simd/sdk/hierarchy/simd.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/config.hpp>
+#include <boost/simd/meta/as_arithmetic.hpp>
+#include <boost/simd/meta/hierarchy/simd.hpp>
+#include <boost/simd/meta/hierarchy/logical.hpp>
+#include <boost/dispatch/adapted/std/integral_constant.hpp>
+#include <boost/predef/compiler.h>
 
 namespace boost { namespace simd { namespace ext
 {
-  namespace bd = boost::dispatch;
   namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
 
+  // -----------------------------------------------------------------------------------------------
+  // extract get the value out of the storage
   BOOST_DISPATCH_OVERLOAD ( extract_
                           , (typename A0, typename Ext, typename A1)
                           , bs::simd_
-                          , bs::pack_<bd::unspecified_<A0>,Ext>
+                          , bs::pack_<bd::arithmetic_<A0>,Ext>
                           , bd::scalar_< bd::integer_<A1> >
                           )
   {
-    using value_t = typename A0::value_type;
-    using cref_t  = typename A0::const_reference;
-    using ref_t   = typename A0::reference;
-
-    BOOST_FORCEINLINE cref_t operator() ( A0 const& a0, A1 a1) const BOOST_NOEXCEPT
+    using result_t = typename A0::value_type;
+    BOOST_FORCEINLINE result_t operator() ( A0 const& a0, A1 i) const BOOST_NOEXCEPT
     {
-      return reinterpret_cast<typename detail::may_alias<value_t const>::type*>(&a0.storage())[a1];
-    }
-
-    BOOST_FORCEINLINE ref_t operator() ( A0& a0, A1 a1) const BOOST_NOEXCEPT
-    {
-      return reinterpret_cast<typename detail::may_alias<value_t>::type*>(&a0.storage())[a1];
+      #if BOOST_COMP_CLANG == BOOST_VERSION_NUMBER(3,6,0)
+      result_t data[A0::static_size];
+      memcpy(&data[0], &(a0.storage()), sizeof(A0));
+      return data[i];
+      #else
+      return result_t(reinterpret_cast<detail::may_alias_t<result_t const>*>( &(a0.storage()) )[i]);
+      #endif
     }
   };
 
+  // -----------------------------------------------------------------------------------------------
+  // extract on logical pack potentially use bitwise cast
   BOOST_DISPATCH_OVERLOAD ( extract_
-                          , (typename A0, typename A1)
+                          , (typename A0, typename Ext, typename A1)
                           , bs::simd_
-                          , bs::pack_<bd::unspecified_<A0>,bs::simd_emulation_>
+                          , bs::pack_<bs::logical_<A0>,Ext>
                           , bd::scalar_< bd::integer_<A1> >
                           )
   {
-    using traits_t = typename A0::traits;
-    using cref_t   = typename A0::const_reference;
-    using ref_t    = typename A0::reference;
+    using result_t = typename A0::value_type;
 
-    BOOST_FORCEINLINE cref_t operator() ( A0 const& a0, A1 i) const BOOST_NOEXCEPT
+    template<typename K>
+    static BOOST_FORCEINLINE result_t do_( A0 const& a0, A1 i, K const&) BOOST_NOEXCEPT
     {
-      return traits_t::at(a0.storage(),i);
+      auto bits = bitwise_cast<as_arithmetic_t<A0>>(a0);
+      return result_t( boost::simd::extract(bits,i));
     }
 
-    BOOST_FORCEINLINE ref_t operator() ( A0& a0, A1 i) const BOOST_NOEXCEPT
+    static BOOST_FORCEINLINE result_t do_( A0 const& a0, A1 i, aggregate_storage const&) BOOST_NOEXCEPT
     {
-      return traits_t::at(a0.storage(),i);
+      return A0::traits::at(a0,i);
+    }
+
+    BOOST_FORCEINLINE result_t operator() ( A0 const& a0, A1 i) const BOOST_NOEXCEPT
+    {
+      return do_(a0,i, typename A0::storage_kind{});
     }
   };
-
 } } }
 
 #endif

@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-hyperbolic
+    Function object implementing cosh capabilities
 
     Returns the hyperbolic cosine: \f$\frac{e^{x}+e^{-x}}2\f$.
 
@@ -37,26 +39,8 @@ namespace boost { namespace simd
 
     @see exp, sinh, Half
 
-    @return a value of the same type as the parameter
-
-**/
-  template<typename T> auto cosh(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-hyperbolic
-
-
-      Returns the hyperbolic cosine: \f$\frac{e^{x}+e^{-x}}2\f$.
-
-
-      Function object tied to simd::cosh
-
-      @see simd::cosh
-    **/
-    const boost::dispatch::functor<tag::cosh_> cosh = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::cosh_> cosh = {};
 } }
 #endif
 

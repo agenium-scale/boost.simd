@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-arithmetic
+    Function object implementing subs capabilities
 
     Computes the saturated difference of its parameters.
 
@@ -35,26 +37,9 @@ namespace boost { namespace simd
     T r = (x-y > Valmax) ? Valmax : (x-y < Valmin ? Valmin : x-y);
     @endcode
 
-    @return      a value of the same type as the input.
+  **/
+  const boost::dispatch::functor<tag::subs_> subs = {};
 
-
-**/
-  template<typename T> auto subs(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-arithmetic
-
-      Computes the saturated difference of its parameters.
-
-
-      Function object tied to simd::subs
-
-      @see simd::subs
-    **/
-    const boost::dispatch::functor<tag::subs_> subs = {};
-  }
 } }
 #endif
 

@@ -11,6 +11,7 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_UNORD_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_UNORD_HPP_INCLUDED
+#include <boost/simd/function/std.hpp>
 
 #include <boost/simd/function/scalar/is_nan.hpp>
 #include <boost/simd/logical.hpp>
@@ -68,7 +69,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::std_tag
                           )
   {
-    BOOST_FORCEINLINE bool operator() (A0 a0, A0 a1,  bs::std_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE logical<A0> operator() (A0 a0, A0 a1,  bs::std_tag const&) const BOOST_NOEXCEPT
     {
       return std::isunordered(a0, a1);
     }

@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_DETAIL_GENERIC_F_LOG_KERNEL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_DETAIL_GENERIC_F_LOG_KERNEL_HPP_INCLUDED
 
+#include <boost/simd/function/fast.hpp>
 #include <boost/dispatch/meta/scalar_of.hpp>
 #include <boost/simd/function/simd/frexp.hpp>
 #include <boost/simd/function/simd/is_less.hpp>
@@ -53,7 +54,7 @@ namespace boost { namespace simd { namespace detail
                            A0& y) BOOST_NOEXCEPT
     {
       i_t e;
-      x = frexp(a0, e, fast_);
+      x = fast_(frexp)(a0, e);
       auto xltsqrthf = (x < Sqrt_2o_2<A0>());
       fe = seladd(xltsqrthf, tofloat(e), Mone<A0>());
       x =  minusone(seladd(xltsqrthf, x, x));

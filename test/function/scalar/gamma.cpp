@@ -8,7 +8,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/gamma.hpp>
+#include <boost/simd/function/scalar/gamma.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/nan.hpp>
@@ -22,6 +22,7 @@
 #include <boost/simd/constant/pi.hpp>
 #include <boost/simd/constant/five.hpp>
 #include <boost/simd/function/rsqrt.hpp>
+#include <boost/simd/function/std.hpp>
 #include <simd_test.hpp>
 
 STF_CASE_TPL (" gamma",  STF_IEEE_TYPES)
@@ -42,14 +43,4 @@ STF_CASE_TPL (" gamma",  STF_IEEE_TYPES)
 #endif
   STF_ULP_EQUAL(gamma(bs::Zero<T>()), bs::Inf<r_t>(), 0);
   STF_ULP_EQUAL(gamma(bs::Mzero<T>()), bs::Minf<r_t>(), 0);
-//   STF_ULP_EQUAL(gamma(bs::Halfeps<T>()), gamma(bs::Halfeps<T>(), bs::std_), 1);
-//   STF_ULP_EQUAL(gamma(bs::Eps<T>()), gamma(bs::Eps<T>(), bs::std_), 0.5);
-//   STF_ULP_EQUAL(gamma(bs::Half<T>()), gamma(bs::Half<T>(), bs::std_), 1);
-//   STF_ULP_EQUAL(gamma(T(1.5)), gamma(T(1.5), bs::std_), 0.5);
-//   STF_ULP_EQUAL(gamma(T(2.5)), gamma(T(2.5), bs::std_), 0.5);
-//   STF_ULP_EQUAL(gamma(T(13.5)) , gamma(T(13.5), bs::std_), 0);
-//   STF_ULP_EQUAL(gamma(T(-0.1)),           gamma(T(-0.1), bs::std_),         1);
-//   STF_ULP_EQUAL(gamma(-bs::Half<T>()),    gamma(-bs::Half<T>(), bs::std_),  0.5);
-//   STF_ULP_EQUAL(gamma(-bs::Halfeps<T>()), gamma(-bs::Halfeps<T>(), bs::std_), 0.5);
-//   STF_ULP_EQUAL(gamma(T(-27.5)),            gamma(T(-27.5), bs::std_),            3);
  }

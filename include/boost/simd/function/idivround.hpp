@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-arithmetic
+    Function object implementing idivround capabilities
 
     Computes the integer conversion of the rounded division of its parameters.
 
@@ -39,26 +41,8 @@ namespace boost { namespace simd
 
     @see toints, round
 
-    @return      a value of the integral type associated to the input.
-
-
-**/
-  template<typename T> auto idivround(T const& x, T const& y) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-arithmetic
-
-      Computes the integer conversion of the rounded division of its parameters.
-
-
-      Function object tied to simd::idivround
-
-      @see simd::idivround
-    **/
-    const boost::dispatch::functor<tag::idivround_> idivround = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::idivround_> idivround = {};
 } }
 #endif
 

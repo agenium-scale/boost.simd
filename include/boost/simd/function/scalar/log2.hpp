@@ -14,6 +14,5 @@
 
 #include <boost/simd/function/definition/log2.hpp>
 #include <boost/simd/arch/common/scalar/function/log2.hpp>
-#include <boost/simd/arch/common/generic/function/log2.hpp>
 
 #endif

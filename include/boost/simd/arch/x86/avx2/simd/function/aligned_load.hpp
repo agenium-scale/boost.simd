@@ -11,7 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_X86_AVX2_SIMD_FUNCTION_ALIGNED_LOAD_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_AVX2_SIMD_FUNCTION_ALIGNED_LOAD_HPP_INCLUDED
 
-#include <boost/simd/sdk/hierarchy/simd.hpp>
+#include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/adapted/common/pointer.hpp>
 #include <boost/align/is_aligned.hpp>
@@ -35,7 +35,7 @@ namespace boost { namespace simd { namespace ext
     using target = typename Target::type;
     BOOST_FORCEINLINE target operator()(Pointer p, Target const&) const
     {
-      BOOST_ASSERT_MSG( boost::alignment::is_aligned(p, sizeof(target))
+      BOOST_ASSERT_MSG( boost::alignment::is_aligned(target::alignment, p)
                       , "boost::simd::aligned_load was performed on an unaligned pointer of integer"
                       );
 

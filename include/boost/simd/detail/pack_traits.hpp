@@ -16,6 +16,8 @@
 
 #include <boost/simd/arch/common/tags.hpp>
 #include <boost/simd/detail/pack_iterator.hpp>
+#include <boost/simd/detail/pack_proxy.hpp>
+#include <boost/simd/detail/aliasing.hpp>
 #include <iterator>
 #include <cstddef>
 #include <cstring>
@@ -33,27 +35,22 @@ namespace boost { namespace simd { namespace detail
            >
   class pack_traits;
 
+  template<typename T, typename P, typename Enable = void> struct pack_references
+  {
+    using reference       = pack_proxy<P>;
+    using const_reference = pack_proxy<P const>;
+  };
+
+  template <typename T,typename P>
+  struct pack_references<T, P, typename enable_if_has_type<typename T::reference>::type>
+  {
+    using reference       = typename T::reference;
+    using const_reference = typename T::const_reference;
+  };
+
   // Needed for const pack_proxy
   template <typename T, std::size_t N, typename Storage>
   class pack_traits<const T, N, const Storage> : public pack_traits<T, N, Storage> {};
-
-  // WIP logical
-  template <typename T, std::size_t N, typename Storage>
-  class pack_traits<boost::simd::logical<T>, N, Storage> {
-
-    public:
-    using storage_type              = Storage;
-
-    using value_type                = boost::simd::logical<T>;
-    using size_type                 = std::size_t;
-
-    enum { static_size = N };
-
-    using reference               = value_type&;
-    using const_reference         = value_type const&;
-
-    using storage_kind = ::boost::simd::native_storage;
-  };
 } } }
 
 #define BOOST_SIMD_DEFINE_PACK_TRAITS_TPL(TPL, TYPE, N, VTYPE)                                     \
@@ -62,18 +59,35 @@ namespace boost { namespace simd { namespace detail
                                                                                                    \
     public:                                                                                        \
     using storage_type              = VTYPE;                                                       \
+    using substorage_type           = VTYPE;                                                       \
                                                                                                    \
     using value_type                = TYPE;                                                        \
     using size_type                 = std::size_t;                                                 \
                                                                                                    \
-    enum { static_size = N, element_size = 1 };                                                    \
+    enum {                                                                                         \
+      static_size = N,                                                                             \
+      element_size = 1,                                                                            \
+      number_of_vectors = 1,                                                                       \
+      alignment = sizeof(VTYPE)                                                                    \
+    };                                                                                             \
                                                                                                    \
-    using reference               = value_type&;                                                   \
-    using const_reference         = value_type const&;                                             \
+    using static_range            = brigand::range<std::size_t, 0, N>;                             \
                                                                                                    \
-    using storage_kind = ::boost::simd::native_storage;                                            \
+    using storage_kind            = ::boost::simd::native_storage;                                 \
+                                                                                                   \
+    template<typename Pack> BOOST_FORCEINLINE                                                      \
+    static typename Pack::reference at(Pack& d, std::size_t i) BOOST_NOEXCEPT                      \
+    {                                                                                              \
+      return {&d,i};                                                                               \
+    }                                                                                              \
+                                                                                                   \
+    template<typename Pack> BOOST_FORCEINLINE                                                      \
+    static typename Pack::const_reference at(Pack const& d, std::size_t i) BOOST_NOEXCEPT          \
+    {                                                                                              \
+      return {&d,i};                                                                               \
+    }                                                                                              \
   };                                                                                               \
-  /**/
+/**/
 
 #define BOOST_SIMD_DEFINE_PACK_TRAITS(TYPE, N, VTYPE)                                              \
 BOOST_SIMD_DEFINE_PACK_TRAITS_TPL(BOOST_PP_EMPTY(), TYPE, N, VTYPE)                                \

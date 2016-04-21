@@ -57,10 +57,13 @@ namespace boost { namespace simd
     }
 
     /// Bitwise complement operator
-    BOOST_FORCEINLINE logical operator ~() { return {!value_}; }
+    BOOST_FORCEINLINE logical operator ~() const { return {!value_}; }
 
     /// Logical not operator
-    BOOST_FORCEINLINE logical operator !() { return {!value_}; }
+    BOOST_FORCEINLINE logical operator !() const { return {!value_}; }
+
+    /// Unary + operator
+    BOOST_FORCEINLINE logical operator +() const { return *this; }
 
     /// Convert a logical value to bool
     BOOST_FORCEINLINE operator bool() const { return value_; }
@@ -108,6 +111,7 @@ namespace boost { namespace simd
   }
 } }
 
-#include <boost/simd/sdk/hierarchy/logical.hpp>
+#include <boost/simd/meta/hierarchy/logical.hpp>
+#include <boost/simd/detail/logical.hpp>
 
 #endif

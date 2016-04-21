@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/max.hpp>
+#include <boost/simd/function/scalar/max.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -35,7 +35,7 @@ STF_CASE_TPL (" max real",  STF_IEEE_TYPES)
   STF_EQUAL(max(bs::Mone<T>(), bs::Mone<T>()), bs::Mone<T>());
   STF_EQUAL(max(bs::One<T>(),  bs::One<T>()),  bs::One<T>());
   STF_EQUAL(max(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
-  STF_EQUAL(max(bs::Nan<T>(),  bs::One<T>()),  bs::One<T>());
+  STF_IEEE_EQUAL(max(bs::Nan<T>(),  bs::One<T>()),  bs::One<T>());
   STF_IEEE_EQUAL(max(bs::One<T>(),  bs::Nan<T>()),  bs::Nan<T>());
   STF_EQUAL(max(bs::One<T>(),  bs::Two<T>()),  bs::Two<T>());
   STF_EQUAL(max(bs::Two<T>(),  bs::One<T>()),  bs::Two<T>());

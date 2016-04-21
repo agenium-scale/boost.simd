@@ -9,13 +9,16 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_BITWISE_OR_INCLUDED
-#define BOOST_SIMD_FUNCTION_BITWISE_OR_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_BITWISE_OR_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_BITWISE_OR_HPP_INCLUDED
+
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
     @ingroup group-bitwise
+    Function object implementing bitwise_or capabilities
 
     return the bitwise or of the two parameters
 
@@ -44,30 +47,13 @@ namespace boost { namespace simd
     @see  bitwise_and, bitwise_or, bitwise_xor, bitwise_notand,
     bitwise_notor, bitwise_ornot, complement
 
-    @return      a value of the same type as the first input.
-
   **/
-  template<typename T0, typename T1> auto bitwise_or(T0 const& x, T1 const& y) {}
-
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-bitwise
-
-      return the bitwise or of the two parameters
-
-
-      Function object tied to boost::simd::bitwise_or
-
-      @see boost::simd::bitwise_or
-    **/
-    const boost::dispatch::functor<tag::bitwise_or_> bitwise_or = {};
-  }
+  const boost::dispatch::functor<tag::bitwise_or_> bitwise_or = {};
 } }
 #endif
 
 #include <boost/simd/function/scalar/bitwise_or.hpp>
-#include <boost/simd/function/scalar/bitwise_or.hpp>
+#include <boost/simd/arch/common/scalar/function/bitwise_or.hpp>
+#include <boost/simd/function/simd/bitwise_or.hpp>
 
 #endif

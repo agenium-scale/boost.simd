@@ -13,7 +13,6 @@
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_REC_HPP_INCLUDED
 
 #include <boost/simd/function/rec.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

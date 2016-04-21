@@ -28,13 +28,14 @@
 #include <boost/simd/constant/minlog.hpp>
 #include <boost/simd/constant/minlog10.hpp>
 #include <boost/simd/constant/minlog2.hpp>
+#include <boost/simd/function/simd/is_greater_equal.hpp>
+#include <boost/simd/function/simd/is_less_equal.hpp>
 #include <boost/simd/function/scalar/fma.hpp>
 #include <boost/simd/function/scalar/fnms.hpp>
 #include <boost/simd/function/scalar/inc.hpp>
 #include <boost/simd/function/scalar/round2even.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
 #include <boost/simd/logical.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd
@@ -46,15 +47,16 @@ namespace boost { namespace simd
 
     template<class A0> struct exp_reduction <A0,bs::tag::exp_,float>
     {
-      using l_t = logical<A0>;
-      static BOOST_FORCEINLINE l_t isgemaxlog(A0 const& a0) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE auto isgemaxlog(A0 const& a0) BOOST_NOEXCEPT
+        -> decltype(is_greater_equal(a0, Maxlog<A0>()))
       {
-        return (a0 >= Maxlog<A0>());
+        return is_greater_equal(a0, Maxlog<A0>());
       }
 
-      static BOOST_FORCEINLINE l_t isleminlog(A0 const& a0) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE auto isleminlog(A0 const& a0) BOOST_NOEXCEPT
+       -> decltype(is_less_equal(a0, Minlog<A0>()))
       {
-        return (a0 <= Minlog<A0>());
+        return is_less_equal(a0, Minlog<A0>());
       }
 
       static BOOST_FORCEINLINE A0 approx(A0 x) BOOST_NOEXCEPT
@@ -85,15 +87,16 @@ namespace boost { namespace simd
 
     template < class A0 > struct exp_reduction < A0, bs::tag::exp2_, float>
     {
-      using l_t = logical<A0>;
-      static BOOST_FORCEINLINE l_t isgemaxlog(A0 const& a0) BOOST_NOEXCEPT
+     static BOOST_FORCEINLINE auto isgemaxlog(A0 const& a0) BOOST_NOEXCEPT
+        -> decltype(is_greater_equal(a0, Maxlog2<A0>()))
       {
-        return (a0 >= Maxlog2<A0>());
+        return is_greater_equal(a0, Maxlog2<A0>());
       }
 
-      static BOOST_FORCEINLINE l_t isleminlog(A0 const& a0) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE auto isleminlog(A0 const& a0) BOOST_NOEXCEPT
+        -> decltype(is_less_equal(a0, Minlog2<A0>()))
       {
-        return (a0 <= Minlog2<A0>());
+        return is_less_equal(a0, Minlog2<A0>());
       }
 
       static BOOST_FORCEINLINE A0 approx(A0 x) BOOST_NOEXCEPT
@@ -123,15 +126,16 @@ namespace boost { namespace simd
 
     template < class A0 > struct exp_reduction < A0, bs::tag::exp10_, float>
     {
-      using l_t = logical<A0>;
-      static BOOST_FORCEINLINE l_t isgemaxlog(A0 const& a0) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE auto isgemaxlog(A0 const& a0) BOOST_NOEXCEPT
+        -> decltype(is_greater_equal(a0, Maxlog10<A0>()))
       {
-        return (a0 >= Maxlog10<A0>());
+        return is_greater_equal(a0, Maxlog10<A0>());
       }
 
-      static BOOST_FORCEINLINE l_t isleminlog(A0 const& a0) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE auto isleminlog(A0 const& a0) BOOST_NOEXCEPT
+        -> decltype(is_less_equal(a0, Minlog10<A0>()))
       {
-        return (a0 <= Minlog10<A0>());
+        return is_less_equal(a0, Minlog10<A0>());
       }
 
       static BOOST_FORCEINLINE A0 reduce(A0 const& a0, A0& x) BOOST_NOEXCEPT

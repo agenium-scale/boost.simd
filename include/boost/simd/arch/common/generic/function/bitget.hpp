@@ -12,13 +12,13 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_BITGET_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_BITGET_HPP_INCLUDED
 
-#include <boost/simd/cardinal_of.hpp>
+#include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/dec.hpp>
 #include <boost/simd/function/minus.hpp>
 #include <boost/simd/function/shift_left.hpp>
-#include <boost/simd/function/shr.hpp>
+#include <boost/simd/function/shift_right.hpp>
 #include <boost/simd/function/splat.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
@@ -51,7 +51,7 @@ namespace boost { namespace simd { namespace ext
       BOOST_ASSERT_MSG(assert_good_shift<A0>(c-a1)&&assert_good_shift<A0>(dec(c))
                       , "bitget :index is out of range");
 
-      return shr(shift_left(bitwise_cast<result_t>(a0), c-a1), dec(c));
+      return shift_right(shift_left(bitwise_cast<result_t>(a0), c-a1), dec(c));
     }
   };
 
@@ -70,7 +70,7 @@ namespace boost { namespace simd { namespace ext
       A1 c = sizeof(sA0)*CHAR_BIT;
       BOOST_ASSERT_MSG(assert_good_shift<A0>(c-a1)&&assert_good_shift<A0>(dec(c))
                       , "bitget :index is out of range");
-      return shr(shift_left(bitwise_cast<result_t>(a0), c-a1), dec(c));
+      return shift_right(shift_left(bitwise_cast<result_t>(a0), c-a1), dec(c));
     }
   };
 } } }

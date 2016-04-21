@@ -12,13 +12,13 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_PLUS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_PLUS_HPP_INCLUDED
 
-#include <boost/simd/math.hpp>
+#include <boost/simd/detail/math.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
-  namespace bd = boost::dispatch;
+   namespace bd = boost::dispatch;
   BOOST_DISPATCH_OVERLOAD ( plus_
                           , (typename T)
                           ,  bd::cpu_

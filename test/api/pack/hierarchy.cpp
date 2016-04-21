@@ -9,7 +9,7 @@
 
 #include <boost/simd/pack.hpp>
 #include <boost/dispatch/hierarchy_of.hpp>
-#include <boost/simd/sdk/abi_of.hpp>
+#include <boost/simd/meta/abi_of.hpp>
 #include <simd_test.hpp>
 
 template <typename T, std::size_t N, typename Env>

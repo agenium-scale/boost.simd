@@ -11,6 +11,8 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_CBRT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_CBRT_HPP_INCLUDED
+#include <boost/simd/function/std.hpp>
+#include <boost/simd/function/fast.hpp>
 
 #ifndef BOOST_SIMD_NO_INFINITIES
 #include <boost/simd/constant/inf.hpp>
@@ -20,7 +22,6 @@
 #include <boost/simd/constant/twotomnmbo_3.hpp>
 #include <boost/simd/constant/twotonmb.hpp>
 #endif
-#include <boost/simd/options.hpp>
 #include <boost/simd/function/horn.hpp>
 #include <boost/simd/constant/constant.hpp>
 #include <boost/simd/constant/one.hpp>
@@ -53,7 +54,7 @@ namespace boost { namespace simd { namespace ext
   {
 
 
-    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    inline A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       A0 z =  bs::abs(a0);
     #ifndef BOOST_SIMD_NO_INFINITIES
@@ -75,7 +76,7 @@ namespace boost { namespace simd { namespace ext
       const A0 CBRT4I = Constant< A0, 0x3fe428a2f98d728bll> ();
       using i_t = bd::as_integer_t<A0, signed>;
       i_t e;
-      A0 x = frexp(z, e, fast_);
+      A0 x = fast_(frexp)(z, e);
       x = horn<A0,
                0x3fd9c0c12122a4fell,
                0x3ff23d6ee505873all,
@@ -83,7 +84,7 @@ namespace boost { namespace simd { namespace ext
                0x3fe17e1fc7e59d58ll,
                0xbfc13c93386fdff6ll
                > (x);
-      const bool flag = is_gez(e);
+      const auto flag = is_gez(e);
       i_t e1 =  bs::abs(e);
       i_t rem = e1;
       e1 /= Three<i_t>();
@@ -93,7 +94,7 @@ namespace boost { namespace simd { namespace ext
       const A0 cbrt4 = flag ? CBRT4 : CBRT4I;
       A0 fact = (rem == One<i_t>()) ? cbrt2: One<A0>();
       fact = (rem == Two<i_t>() ? cbrt4 : fact);
-      x = ldexp(x*fact, e, fast_);
+      x = fast_(ldexp)(x*fact, e);
       x -= (x-z/sqr(x))*Third<A0>();
       x -= (x-z/sqr(x))*Third<A0>(); //two newton passes
     #ifndef BOOST_SIMD_NO_DENORMALS
@@ -110,7 +111,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::single_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    inline A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       A0 z =  bs::abs(a0);
     #ifndef BOOST_SIMD_NO_INFINITIES
@@ -132,7 +133,7 @@ namespace boost { namespace simd { namespace ext
       const A0 CBRT4I = Constant< A0, 0x3f214518> ();
       using i_t = bd::as_integer_t<A0, signed>;
       i_t e;
-      A0 x = frexp(z, e, fast_);
+      A0 x = fast_(frexp)(z, e);
       x = horn<A0,
                0x3ece0609,
                0x3f91eb77,
@@ -140,7 +141,7 @@ namespace boost { namespace simd { namespace ext
                0x3f0bf0fe,
                0xbe09e49a
                > (x);
-      const bool flag = is_gez(e);
+      const auto flag = is_gez(e);
       i_t e1 =  bs::abs(e);
       i_t rem = e1;
       e1 /= Three<i_t>();
@@ -151,7 +152,7 @@ namespace boost { namespace simd { namespace ext
       const A0 cbrt4 = flag ? CBRT4 : CBRT4I;
       A0 fact = (rem ==  One<i_t>()) ? cbrt2 : One<A0>();
       fact = (rem == Two<i_t>()) ? cbrt4 : fact;
-      x = ldexp(x*fact, e, fast_);
+      x = fast_(ldexp)(x*fact, e);
       x -= (x-z/sqr(x))*Third<A0>();
     #ifndef BOOST_SIMD_NO_DENORMALS
       return bitwise_or(x, bitofsign(a0))*f;

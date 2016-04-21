@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -12,55 +12,44 @@
 #ifndef BOOST_SIMD_FUNCTION_BROADCAST_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_BROADCAST_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
+#if defined(DOXYGEN_ONLY)
   /*!
-
     @ingroup group-swar
-
     Vector element broadcast
 
-    Splat the Nth element of a SIMD register into a new register
+    Return a pack filled with the value of the @c N th value from its argument
 
     @par Semantic:
 
-    For every parameter of type T and any integer @c N
+    For any value @c v of type @c T and any integral constant @c N
 
     @code
-    Type r = broadcast<N>(x);
+    T r = broadcast<N>(v);
     @endcode
 
-    is similar to:
+    is equivalent to:
 
     @code
-    for(int i=0;i<Type::static_size;++i)
-      r[i] = x[N];
+    T r = splat<T>(v[N]);
     @endcode
 
-    @tparam N index of the value to broadcast everywhere
+    If @c N is lower than 0 or greater than @c v cardinal,
+    then the code is equivalent to:
 
-    @return A SIMD register full of <tt>x[N]</tt>
+    @code
+    T r = Zero<T>();
+    @endcode
 
-**/
-  template<std::size_t N, typename T> auto broadcast(T const& x) {}
+    @tparam N index of the value to broadcast
+    @param  v register to broadcast value from
 
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-swar
-
-      Vector element broadcast
-
-
-      Function object tied to simd::broadcast
-
-      @see simd::broadcast
-    **/
-    const boost::dispatch::functor<tag::broadcast_> broadcast = {};
-  }
-} }
+    @return A pack filled with the @c N th value of @c x
+  **/
+  template<typename T, std::size_t N> T broadcast(T const& v) noexcept;
 #endif
+} }
 
 #include <boost/simd/function/scalar/broadcast.hpp>
 #include <boost/simd/function/simd/broadcast.hpp>

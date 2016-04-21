@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/genmaskc.hpp>
+#include <boost/simd/function/scalar/genmaskc.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -54,5 +54,5 @@ STF_CASE_TPL (" genmaskc integer",  (int16_t)(int32_t)(int64_t)(uint32_t)(uint64
   STF_EQUAL(genmaskc(bs::One<T>()), bs::Zero<r_t>());
   STF_EQUAL(genmaskc(bs::Valmax<T>()), bs::Zero<r_t>());
   STF_EQUAL(genmaskc(bs::plus(bs::Valmin<T>(), bs::One<T>())), bs::Zero<r_t>());
-  STF_EQUAL(genmaskc(bs::Zero<T>()), bs::Allbits<r_t>());
+  STF_IEEE_EQUAL(genmaskc(bs::Zero<T>()), bs::Allbits<r_t>());
 } // end of test for integer_

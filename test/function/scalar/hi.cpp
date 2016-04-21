@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/hi.hpp>
+#include <boost/simd/function/scalar/hi.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/function/splat.hpp>
@@ -21,22 +21,10 @@ STF_CASE_TPL (" return_type",  STF_NUMERIC_TYPES)
 
   STF_EXPR_IS( hi(T()), (bd::as_integer_t<T,unsigned>));
 }
-//TODO what is replacing real constant ?
 
-// STF_CASE_TPL (" real_hi",  STF_IEEE_TYPES)
-// {
-//   namespace bs = boost::simd;
-//   namespace bd = boost::dispatch;
-//   using bs::hi;
 
-//   using iT = bd::as_integer_t<T,unsigned>;
 
-//   T  val = bs::real_constant<T, 0x12345678FFFFFFFFLL, 0x1234FFFF>();
-//   T  res = bs::real_constant<T, 0x0000000012345678LL, 0x00001234>();
-//   iT ref = bs::bitwise_cast<iT>(res);
 
-//   STF_EQUAL( hi(val), ref );
-// }
 
 STF_CASE_TPL (" real_hi",  (float))
 {

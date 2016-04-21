@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-operator
+    Function object implementing is_equal capabilities
 
     Returns @ref True or @ref False
     according x and y are equal or not. Infix notation can be used with operator '=='
@@ -41,27 +43,8 @@ namespace boost { namespace simd
 
     @see  is_not_equal, is_eqz, is_equal_with_equal_nans
 
-
-    @return a logical value
-
-**/
-  template<typename T> auto is_equal(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-operator
-
-      Returns @ref True or @ref False
-      according x and y are equal or not. Infix notation can be used with operator '=='
-
-
-      Function object tied to simd::is_equal
-
-      @see simd::is_equal
-    **/
-    const boost::dispatch::functor<tag::is_equal_> is_equal = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::is_equal_> is_equal = {};
 } }
 #endif
 

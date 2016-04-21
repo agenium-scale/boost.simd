@@ -7,7 +7,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/is_normal.hpp>
+#include <boost/simd/function/scalar/is_normal.hpp>
+#include <boost/simd/function/std.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -21,6 +22,8 @@
 #include <boost/simd/constant/mindenormal.hpp>
 #include <boost/simd/constant/quarter.hpp>
 #include <boost/simd/constant/half.hpp>
+#include <boost/simd/constant/true.hpp>
+#include <boost/simd/constant/false.hpp>
 #include <boost/simd/logical.hpp>
 
 STF_CASE_TPL (" is_normal",  STF_IEEE_TYPES)
@@ -68,7 +71,7 @@ STF_CASE_TPL (" is_normal signed_int",  STF_SIGNED_INTEGRAL_TYPES)
   STF_EQUAL(is_normal(bs::Mone<T>()), r_t(true));
   STF_EQUAL(is_normal(bs::One<T>()), r_t(true));
   STF_EQUAL(is_normal(bs::Two<T>()), r_t(true));
-  STF_EQUAL(is_normal(bs::Zero<T>()), r_t(true));
+  STF_EQUAL(is_normal(bs::Zero<T>()), r_t(false));
 }
 
 STF_CASE_TPL (" is_normal unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
@@ -86,7 +89,7 @@ STF_CASE_TPL (" is_normal unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
   // specific values tests
   STF_EQUAL(is_normal(bs::One<T>()), r_t(true));
   STF_EQUAL(is_normal(bs::Two<T>()), r_t(true));
-  STF_EQUAL(is_normal(bs::Zero<T>()), r_t(true));
+  STF_EQUAL(is_normal(bs::Zero<T>()), r_t(false));
 }
 
 STF_CASE ( "is_normal bool")
@@ -101,7 +104,23 @@ STF_CASE ( "is_normal bool")
 
   // specific values tests
   STF_EQUAL(is_normal(true), true);
-  STF_EQUAL(is_normal(true), true);
+  STF_EQUAL(is_normal(false), false);
+}
+
+STF_CASE_TPL ( "is_normal _logical", STF_NUMERIC_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::is_normal;
+  using lT = bs::logical<T>;
+  using r_t = decltype(is_normal(lT()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, lT);
+
+  // specific values tests
+  STF_EQUAL(is_normal(bs::True<lT>()), bs::True<lT>());
+  STF_EQUAL(is_normal(bs::False<lT>()), bs::False<lT>());
 }
 
 
@@ -118,20 +137,20 @@ STF_CASE_TPL (" is_normal std",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef STF_NO_INVALIDS
-  STF_EQUAL(is_normal(bs::Inf<T>(), bs::std_), r_t(false));
-  STF_EQUAL(is_normal(bs::Minf<T>(), bs::std_), r_t(false));
-  STF_EQUAL(is_normal(bs::Nan<T>(), bs::std_), r_t(false));
+  STF_EQUAL(bs::std_(is_normal)(bs::Inf<T>()), r_t(false));
+  STF_EQUAL(bs::std_(is_normal)(bs::Minf<T>()), r_t(false));
+  STF_EQUAL(bs::std_(is_normal)(bs::Nan<T>()), r_t(false));
 #endif
-  STF_EQUAL(is_normal(-bs::Zero<T>(), bs::std_), r_t(false));
-  STF_EQUAL(is_normal(bs::Half<T>(), bs::std_), r_t(true));
-  STF_EQUAL(is_normal(bs::Mone<T>(), bs::std_), r_t(true));
-  STF_EQUAL(is_normal(bs::One<T>(), bs::std_), r_t(true));
-  STF_EQUAL(is_normal(bs::Quarter<T>(), bs::std_), r_t(true));
-  STF_EQUAL(is_normal(bs::Two<T>(), bs::std_), r_t(true));
-  STF_EQUAL(is_normal(bs::Zero<T>(), bs::std_), r_t(false));
-  STF_EQUAL(is_normal(bs::Smallestposval<T>(), bs::std_),  r_t(true));
+  STF_EQUAL(bs::std_(is_normal)(-bs::Zero<T>()), r_t(false));
+  STF_EQUAL(bs::std_(is_normal)(bs::Half<T>()), r_t(true));
+  STF_EQUAL(bs::std_(is_normal)(bs::Mone<T>()), r_t(true));
+  STF_EQUAL(bs::std_(is_normal)(bs::One<T>()), r_t(true));
+  STF_EQUAL(bs::std_(is_normal)(bs::Quarter<T>()), r_t(true));
+  STF_EQUAL(bs::std_(is_normal)(bs::Two<T>()), r_t(true));
+  STF_EQUAL(bs::std_(is_normal)(bs::Zero<T>()), r_t(false));
+  STF_EQUAL(bs::std_(is_normal)(bs::Smallestposval<T>()),  r_t(true));
 #ifndef STF_NO_NORMAL
-  STF_EQUAL(is_normal(bs::Mindenormal<T>(), bs::std_), r_t(false));
-  STF_EQUAL(is_normal(bs::Smallestposval<T>()/bs::Two<T>(), bs::std_), r_t(false));
+  STF_EQUAL(bs::std_(is_normal)(bs::Mindenormal<T>()), r_t(false));
+  STF_EQUAL(bs::std_(is_normal)(bs::Smallestposval<T>()/bs::Two<T>()), r_t(false));
 #endif
 }

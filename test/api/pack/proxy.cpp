@@ -70,6 +70,22 @@ void test_binop(Env& $, Op op)
   STF_EXPECT(( std::equal(ref.begin(),ref.end(), a.begin()) ));
 }
 
+template <typename T, std::size_t N, typename Env, typename Op>
+void test_selfop(Env& $, Op op)
+{
+  std::array<T, N> a;
+  std::iota(a.begin(), a.end(), T(1));
+  bs::pack<T, N> p0(a.begin(), a.end());
+
+  for(std::size_t i=0;i<N;++i)
+  {
+    op(p0[i],p0[i]);
+    op(a[i] ,a[i]);
+  }
+
+  STF_EXPECT(( std::equal(p0.begin(),p0.end(), a.begin()) ));
+}
+
 STF_CASE_TPL( "Check proxy access" , STF_NUMERIC_TYPES)
 {
   test_cast<T,  2>($);
@@ -146,46 +162,78 @@ STF_CASE_TPL( "Check proxy / operator" , STF_NUMERIC_TYPES)
   test_binop<T, 32>($,op);
 }
 
+struct op_plus
+{
+  template<typename T, typename U> void operator()(T&& out, U const& in) const
+  {
+    std::forward<T>(out) += in;
+  }
+};
+
+struct op_minus
+{
+  template<typename T, typename U> void operator()(T&& out, U const& in) const
+  {
+    std::forward<T>(out) -= in;
+  }
+};
+
+struct op_times
+{
+  template<typename T, typename U> void operator()(T&& out, U const& in) const
+  {
+    std::forward<T>(out) *= in;
+  }
+};
+
+struct op_divides
+{
+  template<typename T, typename U> void operator()(T&& out, U const& in) const
+  {
+    std::forward<T>(out) /= in;
+  }
+};
+
 STF_CASE_TPL( "Check proxy += operator" , STF_NUMERIC_TYPES)
 {
-  auto op = [](T& a, T b) { return a+= b; };
+  op_plus op;
 
-  test_binop<T,  2>($,op);
-  test_binop<T,  4>($,op);
-  test_binop<T,  8>($,op);
-  test_binop<T, 16>($,op);
-  test_binop<T, 32>($,op);
+  test_selfop<T,  2>($,op);
+  test_selfop<T,  4>($,op);
+  test_selfop<T,  8>($,op);
+  test_selfop<T, 16>($,op);
+  test_selfop<T, 32>($,op);
 }
 
 STF_CASE_TPL( "Check proxy -= operator" , STF_NUMERIC_TYPES)
 {
-  auto op = [](T& a, T b) { return a -= b; };
+  op_minus op;
 
-  test_binop<T,  2>($,op);
-  test_binop<T,  4>($,op);
-  test_binop<T,  8>($,op);
-  test_binop<T, 16>($,op);
-  test_binop<T, 32>($,op);
+  test_selfop<T,  2>($,op);
+  test_selfop<T,  4>($,op);
+  test_selfop<T,  8>($,op);
+  test_selfop<T, 16>($,op);
+  test_selfop<T, 32>($,op);
 }
 
 STF_CASE_TPL( "Check proxy *= operator" , STF_NUMERIC_TYPES)
 {
-  auto op = [](T& a, T b) { return a*= b; };
+  op_times op;
 
-  test_binop<T,  2>($,op);
-  test_binop<T,  4>($,op);
-  test_binop<T,  8>($,op);
-  test_binop<T, 16>($,op);
-  test_binop<T, 32>($,op);
+  test_selfop<T,  2>($,op);
+  test_selfop<T,  4>($,op);
+  test_selfop<T,  8>($,op);
+  test_selfop<T, 16>($,op);
+  test_selfop<T, 32>($,op);
 }
 
 STF_CASE_TPL( "Check proxy /= operator" , STF_NUMERIC_TYPES)
 {
-  auto op = [](T& a, T b) { return a /= b; };
+  op_divides op;
 
-  test_binop<T,  2>($,op);
-  test_binop<T,  4>($,op);
-  test_binop<T,  8>($,op);
-  test_binop<T, 16>($,op);
-  test_binop<T, 32>($,op);
+  test_selfop<T,  2>($,op);
+  test_selfop<T,  4>($,op);
+  test_selfop<T,  8>($,op);
+  test_selfop<T, 16>($,op);
+  test_selfop<T, 32>($,op);
 }

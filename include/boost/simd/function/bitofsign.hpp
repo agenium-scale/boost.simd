@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-ieee
+    Function object implementing bitofsign capabilities
 
     Returns a value of the same type as the input with all bits set to zero
     except the bit of sign which is preserved.
@@ -38,26 +40,8 @@ namespace boost { namespace simd
 
     @see sign, signnz, is_negative, is_positive, Mzero, SignMask;
 
-    @return a value of same type as the input
-
-**/
-  template<typename T> auto bitofsign(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-ieee
-
-      Returns a value of the same type as the input with all bits set to zero
-      except the bit of sign which is preserved.
-
-
-      Function object tied to simd::bitofsign
-
-      @see simd::bitofsign
-    **/
-    const boost::dispatch::functor<tag::bitofsign_> bitofsign = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::bitofsign_> bitofsign = {};
 } }
 #endif
 

@@ -19,22 +19,11 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
   BOOST_DISPATCH_OVERLOAD ( logical_not_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::bool_<A0> >
-                          )
-  {
-     BOOST_FORCEINLINE bool operator() ( A0 a0) const BOOST_NOEXCEPT
-     {
-       return !a0;
-     }
-  };
-
-  BOOST_DISPATCH_OVERLOAD ( logical_not_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bd::scalar_< bd::fundamental_<A0> >
+                          , bd::scalar_<bd::arithmetic_<A0> >
                           )
   {
     BOOST_FORCEINLINE logical<A0> operator() ( A0 a0) const BOOST_NOEXCEPT
@@ -46,7 +35,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( logical_not_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< logical_<A0> >
+                          , bd::scalar_<bs::logical_<A0> >
                           )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT

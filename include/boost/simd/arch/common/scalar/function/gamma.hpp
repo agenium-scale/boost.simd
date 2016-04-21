@@ -11,8 +11,8 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_GAMMA_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_GAMMA_HPP_INCLUDED
 
+#include <boost/simd/function/std.hpp>
 #include <boost/config.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/simd/arch/common/detail/generic/gamma_kernel.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -59,7 +59,7 @@ namespace boost { namespace simd { namespace ext
         return std::tgamma(a0);
         A0 st = stirling(q);
         A0 p =  floor(q);
-        bool iseven =  is_even((int32_t)p);
+        auto iseven =  is_even((int32_t)p);
         if (p == q) return Nan<A0>();
         A0 z = q - p;
         if( z > Half<A0>() )

@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-arithmetic
+    Function object implementing rem capabilities
 
     Computes the remainder of division.
     The return value is x-n*y, where n is the value x/y,
@@ -42,13 +44,14 @@ namespace boost { namespace simd
        -  If y is +/-0, Nan is returned
        -  If either argument is NaN, Nan is returned
 
-    If correct values for these limit cases do not matter for you, calling
-    remainder(x, y, fast_) can gain some cycles.
-
+       If correct values for these limit cases do not matter for you, using the fast_ decorator
+    can gain some cycles.
 
     The returned value has the same sign as x and is less than y in magnitude.
 
-    A call to rem(x, std_) uses the std::libc++ std::fmod function
+    @par Decorators
+
+    std_,  fast_ for floating entries
 
     @par Alias
 
@@ -56,28 +59,8 @@ namespace boost { namespace simd
 
     @see remainder, mod, modulo
 
-    @return      a value of the same type as the input.
-
-
-**/
-  template<typename T> auto rem(T const& x, T const & y) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-arithmetic
-
-      Computes the remainder of division.
-      The return value is x-n*y, where n is the value x/y,
-      rounded toward zero.
-
-
-      Function object tied to simd::rem
-
-      @see simd::rem
-    **/
-    const boost::dispatch::functor<tag::rem_> rem = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::rem_> rem = {};
 } }
 #endif
 

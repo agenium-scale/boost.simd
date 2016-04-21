@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,33 +15,19 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-swar
+    Function object implementing split_multiplies capabilities
 
     SIMD register type-based multiplies and split
 
     @c split_multiplies multiplies two x-bit SIMD registers and returns two 2x-bit registers
     each having half the cardinal of the original inputs.
 
-
-**/
-  template<typename T> auto split_multiplies(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-swar
-
-      SIMD register type-based multiplies and split
-
-
-      Function object tied to simd::split_multiplies
-
-      @see simd::split_multiplies
-    **/
-    const boost::dispatch::functor<tag::split_multiplies_> split_multiplies = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::split_multiplies_> split_multiplies = {};
 } }
 #endif
 

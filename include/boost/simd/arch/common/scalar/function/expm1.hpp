@@ -11,12 +11,12 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_EXPM1_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_EXPM1_HPP_INCLUDED
+#include <boost/simd/function/std.hpp>
 
 #ifndef BOOST_SIMD_NO_INVALIDS
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/function/scalar/is_nan.hpp>
 #endif
-#include <boost/simd/options.hpp>
 #include <boost/simd/arch/common/detail/generic/expm1_kernel.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/logeps.hpp>

@@ -8,7 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/sin.hpp>
+#include <boost/simd/function/scalar/sin.hpp>
+#include <boost/simd/function/fast.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -49,30 +50,26 @@ STF_CASE_TPL (" sin",  STF_IEEE_TYPES)
   STF_EXPECT(bs::is_positive(sin(bs::Zero<T>())));
 }
 
-STF_CASE_TPL (" sin",  STF_IEEE_TYPES)
+STF_CASE_TPL (" sin fast ",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
   using bs::sin;
-
-  using r_t = decltype(sin(T(), bs::fast_));
-
-  // return type conformity test
-  STF_TYPE_IS(r_t, T);
+  using r_t = decltype(sin(T()));
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(sin(bs::Inf<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(sin(bs::Minf<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(sin(bs::Nan<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(sin)(bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(sin)(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(sin)(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(sin(-bs::Pio_2<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(sin(-bs::Pio_4<T>(), bs::fast_), -bs::Sqrt_2o_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(sin(bs::Pio_2<T>(), bs::fast_), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(sin(bs::Pio_4<T>(), bs::fast_), bs::Sqrt_2o_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(sin(bs::Zero<T>(), bs::fast_), bs::Zero<r_t>(), 0.5);
-  STF_EXPECT(bs::is_negative(sin(bs::Mzero<T>(), bs::fast_)));
-  STF_EXPECT(bs::is_positive(sin(bs::Zero<T>(), bs::fast_)));
+  STF_ULP_EQUAL(bs::fast_(sin)(-bs::Pio_2<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(sin)(-bs::Pio_4<T>()), -bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(sin)(bs::Pio_2<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(sin)(bs::Pio_4<T>()), bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(sin)(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
+  STF_EXPECT(bs::is_negative(bs::fast_(sin)(bs::Mzero<T>())));
+  STF_EXPECT(bs::is_positive(bs::fast_(sin)(bs::Zero<T>())));
 }
 
 STF_CASE_TPL (" sin",  STF_IEEE_TYPES)

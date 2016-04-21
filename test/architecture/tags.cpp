@@ -13,14 +13,15 @@ STF_CASE( "Check for basic SIMD tag parent" )
 {
   STF_TYPE_IS( boost::simd::simd_::parent          , boost::dispatch::cpu_ );
   STF_TYPE_IS( boost::simd::simd_emulation_::parent, boost::simd::simd_    );
+  STF_TYPE_IS( boost::simd::simd_native_::parent   , boost::simd::simd_    );
 }
 
 STF_CASE( "Check for architectural tag parent for X86/AMD" )
 {
-  STF_TYPE_IS( boost::simd::sse_::parent    , boost::simd::simd_   );
-  STF_TYPE_IS( boost::simd::sse2_::parent   , boost::simd::sse_    );
-  STF_TYPE_IS( boost::simd::sse3_::parent   , boost::simd::sse2_   );
-  STF_TYPE_IS( boost::simd::ssse3_::parent  , boost::simd::sse3_   );
+  STF_TYPE_IS( boost::simd::sse_::parent    , boost::simd::simd_native_ );
+  STF_TYPE_IS( boost::simd::sse2_::parent   , boost::simd::sse_         );
+  STF_TYPE_IS( boost::simd::sse3_::parent   , boost::simd::sse2_        );
+  STF_TYPE_IS( boost::simd::ssse3_::parent  , boost::simd::sse3_        );
 
   #ifdef BOOST_HW_SIMD_X86_AMD_AVAILABLE
   STF_TYPE_IS( boost::simd::sse4a_::parent , boost::simd::ssse3_  );

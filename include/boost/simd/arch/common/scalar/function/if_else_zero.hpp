@@ -45,6 +45,19 @@ namespace boost { namespace simd { namespace ext
       return is_nez(a0) ? a1 : Zero<A1>();
     }
   };
+
+   BOOST_DISPATCH_OVERLOAD ( if_else_zero_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::bool_<A0> >
+                          , bd::scalar_< bd::bool_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE bool operator() ( A0 a0, A0  a1) const BOOST_NOEXCEPT
+    {
+      return a0 ? a1 : false;
+    }
+  };
 } } }
 
 

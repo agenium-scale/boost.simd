@@ -16,8 +16,8 @@
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/forward.hpp>
-#include <boost/simd/sdk/as_simd.hpp>
-#include <boost/simd/sdk/expected_cardinal.hpp>
+#include <boost/simd/detail/as_simd.hpp>
+#include <boost/simd/meta/expected_cardinal.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <type_traits>
 #include <array>
@@ -97,7 +97,7 @@ namespace boost { namespace simd { namespace detail
   struct storage_of<Type,Cardinal,ABI,native_status>
   {
     using parent = storage_of<Type,Cardinal,typename limits<ABI>::parent>;
-    using base   = boost::simd::as_simd<Type,ABI>;
+    using base   = boost::simd::detail::as_simd<Type,ABI>;
     using type   = typename std::conditional< std::is_same< typename base::type
                                                           , brigand::no_such_type_
                                                           >::value
@@ -106,15 +106,12 @@ namespace boost { namespace simd { namespace detail
                                             >::type::type;
   };
 
-  // IF we request more than needed, we aggregate smaller SIMD registers
+  // IF we request more than needed, we aggregate exactly 2 smaller SIMD registers
   template< typename Type, std::size_t Cardinal, typename ABI>
   struct storage_of<Type,Cardinal,ABI,aggregated_status>
   {
-    enum { expected = expected_cardinal<Type,ABI>::value };
-    enum { size     = Cardinal / expected };
-
-    using base = pack<Type,expected>;
-    using type = std::array<base,size>;
+    using base = pack<Type,Cardinal/2>;
+    using type = std::array<base,2>;
   };
 } } }
 

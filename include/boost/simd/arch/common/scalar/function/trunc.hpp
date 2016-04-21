@@ -11,12 +11,15 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_TRUNC_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_TRUNC_HPP_INCLUDED
+#include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/std.hpp>
+#include <boost/simd/function/fast.hpp>
 
 #include <boost/simd/function/scalar/abs.hpp>
 #include <boost/simd/function/scalar/bitofsign.hpp>
 #include <boost/simd/function/scalar/bitwise_or.hpp>
 #include <boost/simd/function/scalar/floor.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
@@ -74,11 +77,9 @@ namespace boost { namespace simd { namespace ext
                           , boost::simd::fast_tag
                          )
   {
-
     BOOST_FORCEINLINE A0 operator() ( A0 a0, fast_tag const&) const BOOST_NOEXCEPT
     {
-      using i_t = bd::as_integer_t<A0>;
-      return i_t(a0);
+      return static_cast<A0>(static_cast<bd::as_integer_t<A0>>(a0));
     }
   };
 

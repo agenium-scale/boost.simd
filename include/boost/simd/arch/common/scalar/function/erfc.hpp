@@ -11,7 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_ERFC_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_ERFC_HPP_INCLUDED
 
-#include <boost/simd/options.hpp>
+#include <boost/simd/function/std.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/simd/arch/common/detail/generic/erf_kernel.hpp>
 #include <boost/simd/constant/pi.hpp>

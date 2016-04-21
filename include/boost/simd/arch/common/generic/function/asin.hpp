@@ -13,7 +13,7 @@
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_ASIN_HPP_INCLUDED
 
 #include <boost/simd/arch/common/detail/generic/invtrig.hpp>
-#include <boost/simd/sdk/is_not_scalar.hpp>
+#include <boost/simd/meta/is_not_scalar.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

@@ -18,6 +18,7 @@ namespace boost { namespace simd
   /*!
 
     @ingroup group-arithmetic
+    Function object function implementing correct_fma capabilities
 
     Computes fused multiply/add of its parameter.
 
@@ -54,35 +55,15 @@ namespace boost { namespace simd
     you can define BOOST_SIMD_DONT_CARE_CORRECT_FMA_OVERFLOW to get better
     performances.
 
-    - If correct_fma is called with a fourth parameter std_, the stdlic++ std::fma
-    is called.
-
     correct_fma is never used internally in boost.simd.
 
+    @par Decorators
+
+    std_ for floating entries
+
     @see  fma
-
-
-
-    @return      a value of the same type as the input.
-
-
 **/
-  template<typename T> auto correct_fma(T const& x, T const& y, T const& z) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-arithmetic
-
-      Computes fused multiply/add of its parameter.
-
-
-      Function object tied to simd::correct_fma
-
-      @see simd::correct_fma
-    **/
-    const boost::dispatch::functor<tag::correct_fma_> correct_fma = {};
-  }
+     const boost::dispatch::functor<tag::correct_fma_> correct_fma = {};
 } }
 #endif
 

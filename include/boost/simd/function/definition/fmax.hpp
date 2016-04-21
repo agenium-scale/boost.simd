@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_DEFINITION_FMAX_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_DEFINITION_FMAX_HPP_INCLUDED
 
+#include <boost/simd/config.hpp>
 #include <boost/simd/function/definition/maxnum.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 

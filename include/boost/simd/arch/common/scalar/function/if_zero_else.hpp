@@ -48,13 +48,13 @@ namespace boost { namespace simd { namespace ext
   };
 
   BOOST_DISPATCH_OVERLOAD ( if_zero_else_
-                          , (typename A0, typename A1)
+                          , (typename A0)
                           , bd::cpu_
                           , bd::scalar_< bd::bool_<A0> >
-                          , bd::scalar_< bd::bool_<A1> >
+                          , bd::scalar_< bd::bool_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A1 operator() ( A0 a0, A1  a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE bool operator() ( A0 a0, A0  a1) const BOOST_NOEXCEPT
     {
       return a0 ? false : a1;
     }

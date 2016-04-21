@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-arithmetic
+    Function object implementing trunc capabilities
 
     Computes the truncation toward @ref Zero of its parameter.
 
@@ -44,37 +46,21 @@ namespace boost { namespace simd
         @endcode
         except for nans
 
-      - If large numbers correct behaviour is not needed trunc(x, fast_) can be used,
+      - If large numbers correct behaviour is not needed the fast_ decorator can be used,
         but 'fast_' means that no provisions are taken for floating values  too large to fit
          in the same size integer type.
-
-
 
     @par Alias:
     fix
 
+    @par Decorators
+
+    std_, fast_ for floating entries
+
     @see abs, frac, floor, sign, modf
 
-    @return      a value of the same type as the input.
-
-
-**/
-  template<typename T> auto trunc(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-arithmetic
-
-      Computes the truncation toward @ref Zero of its parameter.
-
-
-      Function object tied to simd::trunc
-
-      @see simd::trunc
-    **/
-    const boost::dispatch::functor<tag::trunc_> trunc = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::trunc_> trunc = {};
 } }
 #endif
 

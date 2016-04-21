@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/bitinteger.hpp>
+#include <boost/simd/function/scalar/bitinteger.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -31,7 +31,7 @@ STF_CASE_TPL (" bit integerreal",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef STF_NO_INVALIDS
-  STF_IEEE_EQUAL(bitinteger(bs::Nan<T>()), -bs::Valmax<r_t>());
+  STF_EQUAL(bitinteger(bs::Nan<T>()), -bs::Valmax<r_t>());
 #endif
 #if !defined(STF_NO_DENORMALS)
   STF_EQUAL(bitinteger(bs::Bitincrement<T>()), bs::One<r_t>());

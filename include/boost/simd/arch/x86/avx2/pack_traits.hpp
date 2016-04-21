@@ -23,10 +23,15 @@ namespace boost { namespace simd
 {
   namespace detail
   {
-    BOOST_SIMD_DEFINE_PACK_TRAITS_TPL(typename T, T,  4, __m256i);
-    BOOST_SIMD_DEFINE_PACK_TRAITS_TPL(typename T, T,  8, __m256i);
-    BOOST_SIMD_DEFINE_PACK_TRAITS_TPL(typename T, T, 16, __m256i);
-    BOOST_SIMD_DEFINE_PACK_TRAITS_TPL(typename T, T, 32, __m256i);
+    BOOST_SIMD_DEFINE_PACK_TRAITS(std::int64_t  ,  4, __m256i);
+    BOOST_SIMD_DEFINE_PACK_TRAITS(std::uint64_t ,  4, __m256i);
+    BOOST_SIMD_DEFINE_PACK_TRAITS(std::int32_t  ,  8, __m256i);
+    BOOST_SIMD_DEFINE_PACK_TRAITS(std::uint32_t ,  8, __m256i);
+    BOOST_SIMD_DEFINE_PACK_TRAITS(std::int16_t  , 16, __m256i);
+    BOOST_SIMD_DEFINE_PACK_TRAITS(std::uint16_t , 16, __m256i);
+    BOOST_SIMD_DEFINE_PACK_TRAITS(std::int8_t   , 32, __m256i);
+    BOOST_SIMD_DEFINE_PACK_TRAITS(std::uint8_t  , 32, __m256i);
+    BOOST_SIMD_DEFINE_PACK_TRAITS(char          , 32, __m256i);
   }
 
   namespace ext

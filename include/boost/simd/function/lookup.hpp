@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-swar
+    Function object implementing lookup capabilities
 
     shuffles the elements of x using indices in n
 
@@ -37,27 +39,8 @@ namespace boost { namespace simd
       r[i] = x[n[i]];
     @endcode
 
-
-
-    @return a value of the same type as the first parameter
-
-**/
-  template<typename T, typename N> auto lookup(T const& x, N const& n) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-swar
-
-      shuffles the elements of x using indices in n
-
-
-      Function object tied to simd::lookup
-
-      @see simd::lookup
-    **/
-    const boost::dispatch::functor<tag::lookup_> lookup = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::lookup_> lookup = {};
 } }
 #endif
 

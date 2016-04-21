@@ -11,10 +11,9 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_LOAD_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_LOAD_HPP_INCLUDED
 
-#include <boost/simd/sdk/hierarchy/simd.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/overload.hpp>
+#include <boost/simd/function/make.hpp>
 #include <boost/dispatch/adapted/common/pointer.hpp>
-#include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -52,66 +51,6 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE target operator() ( Pointer p, Target const& ) const
     {
       return _mm_loadu_si128( (__m128i*)(p) );
-    }
-  };
-
-  //------------------------------------------------------------------------------------------------
-  // load from a range of double
-  BOOST_DISPATCH_OVERLOAD ( load_
-                          , (typename Target, typename Begin, typename End)
-                          , bs::sse2_
-                          , bd::input_iterator_<bd::scalar_<bd::double_<Begin>>>
-                          , bd::input_iterator_<bd::scalar_<bd::double_<End>>>
-                          , bd::target_<bs::pack_<bd::double_<Target>,bs::sse_>>
-                          )
-  {
-    using target_t  = typename Target::type;
-    using storage_t = typename target_t::storage_type;
-
-    BOOST_FORCEINLINE target_t operator()(Begin const& b, End const&, Target const&) const BOOST_NOEXCEPT
-    {
-      return do_(b, brigand::range<std::size_t,0,target_t::static_size>{} );
-    }
-
-    template<typename I, typename T>
-    static BOOST_FORCEINLINE T make(T const& v) BOOST_NOEXCEPT { return v; }
-
-    template<typename... N>
-    static inline storage_t do_(Begin const& b, brigand::list<N...> const&) BOOST_NOEXCEPT
-    {
-      Begin p = b;
-      storage_t that{ make<N>(*p++)...};
-      return that;
-    }
-  };
-
-  //------------------------------------------------------------------------------------------------
-  // load from a range of integers
-  BOOST_DISPATCH_OVERLOAD ( load_
-                          , (typename Target, typename Begin, typename End)
-                          , bs::sse2_
-                          , bd::input_iterator_<bd::scalar_<bd::integer_<Begin>>>
-                          , bd::input_iterator_<bd::scalar_<bd::integer_<End>>>
-                          , bd::target_<bs::pack_<bd::integer_<Target>,bs::sse_>>
-                          )
-  {
-    using target_t  = typename Target::type;
-    using storage_t = typename target_t::storage_type;
-
-    BOOST_FORCEINLINE target_t operator()(Begin const& b, End const&, Target const&) const BOOST_NOEXCEPT
-    {
-      return do_(b, brigand::range<std::size_t,0,target_t::static_size>{} );
-    }
-
-    template<typename I, typename T>
-    static BOOST_FORCEINLINE T make(T const& v) BOOST_NOEXCEPT { return v; }
-
-    template<typename... N>
-    static inline storage_t do_(Begin const& b, brigand::list<N...> const&) BOOST_NOEXCEPT
-    {
-      Begin p = b;
-      typename target_t::value_type data[target_t::static_size] = { make<N>(*p++)...};
-      return _mm_loadu_si128( (__m128i*)(&data[0]) );
     }
   };
 } } }

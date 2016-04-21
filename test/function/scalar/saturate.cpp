@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/saturate.hpp>
+#include <boost/simd/function/scalar/saturate.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -69,20 +69,19 @@ STF_CASE_TPL (" saturate signed_int16",  (int16_t))
   using bs::saturate;
   using bs::Valmax;
   using bs::Valmin;
-
   // specific values tests
-  STF_ULP_EQUAL(1,           saturate<T>(1ull        ), 0);
-  STF_ULP_EQUAL(2,           saturate<T>(2ull        ), 0);
-  STF_ULP_EQUAL(6,           saturate<T>(6ull        ), 0);
-  STF_ULP_EQUAL(24,          saturate<T>(24ull       ), 0);
-  STF_ULP_EQUAL(120,         saturate<T>(120ull      ), 0);
-  STF_ULP_EQUAL(720,         saturate<T>(720ull      ), 0);
-  STF_ULP_EQUAL(5040,        saturate<T>(5040ull     ), 0);
-  STF_ULP_EQUAL(Valmax<T>(), saturate<T>(40320ull    ), 0);
-  STF_ULP_EQUAL(Valmax<T>(), saturate<T>(362880ull   ), 0);
-  STF_ULP_EQUAL(Valmax<T>(), saturate<T>(3628800ull  ), 0);
-  STF_ULP_EQUAL(Valmax<T>(), saturate<T>(39916800ull ), 0);
-  STF_ULP_EQUAL(Valmax<T>(), saturate<T>(479001600ull), 0);
+  STF_ULP_EQUAL(1u,           saturate<T>(1ull        ), 0);
+  STF_ULP_EQUAL(2u,           saturate<T>(2ull        ), 0);
+  STF_ULP_EQUAL(6u,           saturate<T>(6ull        ), 0);
+  STF_ULP_EQUAL(24u,          saturate<T>(24ull       ), 0);
+  STF_ULP_EQUAL(120u,         saturate<T>(120ull      ), 0);
+  STF_ULP_EQUAL(720u,         saturate<T>(720ull      ), 0);
+  STF_ULP_EQUAL(5040u,        saturate<T>(5040ull     ), 0);
+  STF_ULP_EQUAL(uint(Valmax<T>()), saturate<T>(40320ull    ), 0);
+  STF_ULP_EQUAL(uint(Valmax<T>()), saturate<T>(362880ull   ), 0);
+  STF_ULP_EQUAL(uint(Valmax<T>()), saturate<T>(3628800ull  ), 0);
+  STF_ULP_EQUAL(uint(Valmax<T>()), saturate<T>(39916800ull ), 0);
+  STF_ULP_EQUAL(uint(Valmax<T>()), saturate<T>(479001600ull), 0);
   STF_ULP_EQUAL(1,           saturate<T>(1ll        ), 0);
   STF_ULP_EQUAL(2,           saturate<T>(2ll        ), 0);
   STF_ULP_EQUAL(6,           saturate<T>(6ll        ), 0);
@@ -115,20 +114,19 @@ STF_CASE_TPL (" saturate unsigned_uint16",  (uint16_t))
   using bs::saturate;
   using bs::Valmax;
   using bs::Valmin;
-
   // specific values tests
-  STF_ULP_EQUAL(1,           saturate<T>(1ull        ), 0);
-  STF_ULP_EQUAL(2,           saturate<T>(2ull        ), 0);
-  STF_ULP_EQUAL(6,           saturate<T>(6ull        ), 0);
-  STF_ULP_EQUAL(24,          saturate<T>(24ull       ), 0);
-  STF_ULP_EQUAL(120,         saturate<T>(120ull      ), 0);
-  STF_ULP_EQUAL(720,         saturate<T>(720ull      ), 0);
-  STF_ULP_EQUAL(5040,        saturate<T>(5040ull     ), 0);
-  STF_ULP_EQUAL(40320,       saturate<T>(40320ull    ), 0);
-  STF_ULP_EQUAL(Valmax<T>(), saturate<T>(362880ull   ), 0);
-  STF_ULP_EQUAL(Valmax<T>(), saturate<T>(3628800ull  ), 0);
-  STF_ULP_EQUAL(Valmax<T>(), saturate<T>(39916800ull ), 0);
-  STF_ULP_EQUAL(Valmax<T>(), saturate<T>(479001600ull), 0);
+  STF_ULP_EQUAL(1u,           saturate<T>(1ull        ), 0);
+  STF_ULP_EQUAL(2u,           saturate<T>(2ull        ), 0);
+  STF_ULP_EQUAL(6u,           saturate<T>(6ull        ), 0);
+  STF_ULP_EQUAL(24u,          saturate<T>(24ull       ), 0);
+  STF_ULP_EQUAL(120u,         saturate<T>(120ull      ), 0);
+  STF_ULP_EQUAL(720u,         saturate<T>(720ull      ), 0);
+  STF_ULP_EQUAL(5040u,        saturate<T>(5040ull     ), 0);
+  STF_ULP_EQUAL(40320u,       saturate<T>(40320ull    ), 0);
+  STF_ULP_EQUAL(uint(Valmax<T>()), saturate<T>(362880ull   ), 0);
+  STF_ULP_EQUAL(uint(Valmax<T>()), saturate<T>(3628800ull  ), 0);
+  STF_ULP_EQUAL(uint(Valmax<T>()), saturate<T>(39916800ull ), 0);
+  STF_ULP_EQUAL(uint(Valmax<T>()), saturate<T>(479001600ull), 0);
   STF_ULP_EQUAL(1,           saturate<T>(1ll        ), 0);
   STF_ULP_EQUAL(2,           saturate<T>(2ll        ), 0);
   STF_ULP_EQUAL(6,           saturate<T>(6ll        ), 0);
@@ -151,18 +149,18 @@ STF_CASE_TPL (" saturate int8",  (int8_t))
   using bs::Valmin;
 
   // specific values tests
-  STF_ULP_EQUAL(1,           saturate<T>(1ull        ), 0);
-  STF_ULP_EQUAL(2,           saturate<T>(2ull        ), 0);
-  STF_ULP_EQUAL(6,           saturate<T>(6ull        ), 0);
-  STF_ULP_EQUAL(24,          saturate<T>(24ull       ), 0);
-  STF_ULP_EQUAL(120,         saturate<T>(120ull      ), 0);
-  STF_ULP_EQUAL(Valmax<T>(), saturate<T>(720ull      ), 0);
-  STF_ULP_EQUAL(Valmax<T>(), saturate<T>(5040ull     ), 0);
-  STF_ULP_EQUAL(Valmax<T>(), saturate<T>(40320ull    ), 0);
-  STF_ULP_EQUAL(Valmax<T>(), saturate<T>(362880ull   ), 0);
-  STF_ULP_EQUAL(Valmax<T>(), saturate<T>(3628800ull  ), 0);
-  STF_ULP_EQUAL(Valmax<T>(), saturate<T>(39916800ull ), 0);
-  STF_ULP_EQUAL(Valmax<T>(), saturate<T>(479001600ull), 0);
+  STF_ULP_EQUAL(1u,           saturate<T>(1ull        ), 0);
+  STF_ULP_EQUAL(2u,           saturate<T>(2ull        ), 0);
+  STF_ULP_EQUAL(6u,           saturate<T>(6ull        ), 0);
+  STF_ULP_EQUAL(24u,          saturate<T>(24ull       ), 0);
+  STF_ULP_EQUAL(120u,         saturate<T>(120ull      ), 0);
+  STF_ULP_EQUAL(uint(Valmax<T>()), saturate<T>(720ull      ), 0);
+  STF_ULP_EQUAL(uint(Valmax<T>()), saturate<T>(5040ull     ), 0);
+  STF_ULP_EQUAL(uint(Valmax<T>()), saturate<T>(40320ull    ), 0);
+  STF_ULP_EQUAL(uint(Valmax<T>()), saturate<T>(362880ull   ), 0);
+  STF_ULP_EQUAL(uint(Valmax<T>()), saturate<T>(3628800ull  ), 0);
+  STF_ULP_EQUAL(uint(Valmax<T>()), saturate<T>(39916800ull ), 0);
+  STF_ULP_EQUAL(uint(Valmax<T>()), saturate<T>(479001600ull), 0);
   STF_ULP_EQUAL(1,           saturate<T>(1ll        ), 0);
   STF_ULP_EQUAL(2,           saturate<T>(2ll        ), 0);
   STF_ULP_EQUAL(6,           saturate<T>(6ll        ), 0);
@@ -197,18 +195,18 @@ STF_CASE_TPL (" saturate unsigned_uint8",  (uint8_t))
   using bs::Valmin;
 
   // specific values tests
-  STF_ULP_EQUAL(1,           saturate<T>(1ull        ), 0);
-  STF_ULP_EQUAL(2,           saturate<T>(2ull        ), 0);
-  STF_ULP_EQUAL(6,           saturate<T>(6ull        ), 0);
-  STF_ULP_EQUAL(24,          saturate<T>(24ull       ), 0);
-  STF_ULP_EQUAL(120,         saturate<T>(120ull      ), 0);
-  STF_ULP_EQUAL(Valmax<T>(), saturate<T>(720ull      ), 0);
-  STF_ULP_EQUAL(Valmax<T>(), saturate<T>(5040ull     ), 0);
-  STF_ULP_EQUAL(Valmax<T>(), saturate<T>(40320ull    ), 0);
-  STF_ULP_EQUAL(Valmax<T>(), saturate<T>(362880ull   ), 0);
-  STF_ULP_EQUAL(Valmax<T>(), saturate<T>(3628800ull  ), 0);
-  STF_ULP_EQUAL(Valmax<T>(), saturate<T>(39916800ull ), 0);
-  STF_ULP_EQUAL(Valmax<T>(), saturate<T>(479001600ull), 0);
+  STF_ULP_EQUAL(1u,           saturate<T>(1ull        ), 0);
+  STF_ULP_EQUAL(2u,           saturate<T>(2ull        ), 0);
+  STF_ULP_EQUAL(6u,           saturate<T>(6ull        ), 0);
+  STF_ULP_EQUAL(24u,          saturate<T>(24ull       ), 0);
+  STF_ULP_EQUAL(120u,         saturate<T>(120ull      ), 0);
+  STF_ULP_EQUAL(uint(Valmax<T>()), saturate<T>(720ull      ), 0);
+  STF_ULP_EQUAL(uint(Valmax<T>()), saturate<T>(5040ull     ), 0);
+  STF_ULP_EQUAL(uint(Valmax<T>()), saturate<T>(40320ull    ), 0);
+  STF_ULP_EQUAL(uint(Valmax<T>()), saturate<T>(362880ull   ), 0);
+  STF_ULP_EQUAL(uint(Valmax<T>()), saturate<T>(3628800ull  ), 0);
+  STF_ULP_EQUAL(uint(Valmax<T>()), saturate<T>(39916800ull ), 0);
+  STF_ULP_EQUAL(uint(Valmax<T>()), saturate<T>(479001600ull), 0);
   STF_ULP_EQUAL(1,           saturate<T>(1ll        ), 0);
   STF_ULP_EQUAL(2,           saturate<T>(2ll        ), 0);
   STF_ULP_EQUAL(6,           saturate<T>(6ll        ), 0);

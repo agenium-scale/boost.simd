@@ -1,5 +1,5 @@
 ##===================================================================================================
-##                               Copyright 2015   NumScale SAS
+##                              Copyright 2016 NumScale SAS
 ##
 ##                   Distributed under the Boost Software License, Version 1.0.
 ##                        See accompanying file LICENSE.txt or copy at
@@ -7,12 +7,15 @@
 ##===================================================================================================
 
 set ( SOURCES
+      as_arithmetic.cpp
+      as_logical.cpp
       cardinal_of.cpp
-      downgrade.cpp
+      is_bitwise_logical.cpp
+      is_logical_mask.cpp
       is_scalar.cpp
-      logical.cpp
+      real_of.cpp
       upgrade.cpp
     )
 
-make_unit( "boost.simd.api.meta" ${SOURCES})
-make_coverage("boost.simd.api.meta" ${SOURCES})
+make_unit( "api.meta" ${SOURCES})
+make_coverage("api.meta" ${SOURCES})

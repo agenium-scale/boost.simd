@@ -1,8 +1,8 @@
 //==================================================================================================
 /*!
   @file
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -14,8 +14,10 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
   @ingroup group-euler
+    Function object implementing erf capabilities
 
    Computes the error function:
    \f$\displaystyle \frac{2}{\sqrt\pi}\int_0^{x} e^{-t^2}\mbox{d}t\f$
@@ -28,30 +30,14 @@ namespace boost { namespace simd
     T r = erf(x);
     @endcode
 
+    @par Decorators
 
-    erf(x, std_) use the call to std::erf from stdlibc++
+    std_ for floating entries
 
     @see erfc,  erfcx
 
-    @return a value of the same type as the parameter
-
   **/
-  template<typename T> auto erf(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-euler
-
-      Computes the error function:
-      \f$\displaystyle \frac{2}{\sqrt\pi}\int_0^{x} e^{-t^2}\mbox{d}t\f$
-
-      Function object tied to simd::erf
-
-      @see simd::erf
-    **/
-    const boost::dispatch::functor<tag::erf_> erf = {};
-  }
+  const boost::dispatch::functor<tag::erf_> erf = {};
 } }
 #endif
 

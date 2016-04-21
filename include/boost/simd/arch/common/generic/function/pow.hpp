@@ -16,6 +16,7 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
+#include <boost/simd/function/assert.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/is_flint.hpp>
 #include <boost/simd/function/is_ltz.hpp>
@@ -24,7 +25,6 @@
 #include <boost/simd/function/is_positive.hpp>
 #include <boost/simd/function/logical_and.hpp>
 #include <boost/simd/function/logical_or.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/negif.hpp>
 #include <boost/simd/function/pow_abs.hpp>

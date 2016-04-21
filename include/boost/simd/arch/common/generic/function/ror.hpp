@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ROR_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ROR_HPP_INCLUDED
 
-#include <boost/simd/cardinal_of.hpp>
+#include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/bitwise_or.hpp>
@@ -38,8 +38,8 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A0 const& a1
-                                    , typename std::enable_if<bs::cardinal_of<A1>::value
-                                     == bs::cardinal_of<A0>::value>::type* = 0
+//  TODO                                   , typename std::enable_if<bs::cardinal_of<A1>::value
+//                                      == bs::cardinal_of<A0>::value>::type* = 0
                                     ) const
     {
       using s_t = bd::scalar_of_t<A0>;
@@ -58,8 +58,8 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1 const& a1
-                                    , typename std::enable_if<bs::cardinal_of<A1>::value
-                                     == bs::cardinal_of<A0>::value>::type* = 0
+//   TODO                                  , typename std::enable_if<bs::cardinal_of<A1>::value
+//                                      == bs::cardinal_of<A0>::value>::type* = 0
                                     ) const
     {
       using i_t = bd::as_integer_t<A0, unsigned>;

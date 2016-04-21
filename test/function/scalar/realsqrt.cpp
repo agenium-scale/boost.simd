@@ -8,7 +8,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/realsqrt.hpp>
+#include <boost/simd/function/scalar/realsqrt.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -36,5 +36,4 @@ STF_CASE_TPL (" realsqrt",  STF_IEEE_TYPES)
 #endif
   STF_ULP_EQUAL(realsqrt(bs::One<T>()), bs::One<r_t>(), 0);
   STF_ULP_EQUAL(realsqrt(bs::Zero<T>()), bs::Zero<r_t>(), 0);
-//  STF_ASSERT(   realsqrt(bs::Mone<T>()));
 }

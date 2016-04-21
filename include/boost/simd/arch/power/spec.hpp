@@ -15,7 +15,7 @@
 #define BOOST_SIMD_ARCH_POWER_SPEC_HPP_INCLUDED
 
 #include <boost/predef/architecture.h>
-#include <boost/simd/sdk/predef.hpp>
+#include <boost/simd/detail/predef.hpp>
 
 #include <boost/simd/arch/power/qpx/spec.hpp>
 #include <boost/simd/arch/power/vsx/spec.hpp>

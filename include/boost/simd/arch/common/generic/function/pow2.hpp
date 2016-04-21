@@ -16,10 +16,10 @@
 #include <boost/simd/detail/assert_utils.hpp>
 #include <boost/simd/function/is_finite.hpp>
 #endif
+#include <boost/simd/function/fast.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/function/ldexp.hpp>
 #include <boost/simd/function/toint.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/assert.hpp>
 #include <boost/config.hpp>
@@ -37,7 +37,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1 const& a1) const
     {
-      return ldexp(a0, a1, fast_);
+      return fast_(ldexp)(a0, a1);
     }
   };
 
@@ -54,7 +54,7 @@ namespace boost { namespace simd { namespace ext
       BOOST_ASSERT_MSG(boost::simd::assert_all(is_finite(a1)),
                        "pow2 is not defined for an invalid second parameter");
     #endif
-      return ldexp(a0, bs::toint(a1), fast_);
+      return fast_(ldexp)(a0, bs::toint(a1));
     }
   };
 
@@ -67,7 +67,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
     {
-      return ldexp(a0, a1, fast_);
+      return fast_(ldexp)(a0, a1);
     }
   };
 
@@ -79,7 +79,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      return ldexp(One<A0>(), a0, fast_);
+      return fast_(ldexp)(One<A0>(), a0);
     }
   };
 
@@ -95,7 +95,7 @@ namespace boost { namespace simd { namespace ext
       BOOST_ASSERT_MSG(boost::simd::assert_all(is_finite(a0)),
                        "pow2 with one parameter is not defined for an invalid entry");
     #endif
-      return ldexp(One<A0>(), toint(a0), fast_);
+      return fast_(ldexp)(One<A0>(), toint(a0));
     }
   };
 } } }

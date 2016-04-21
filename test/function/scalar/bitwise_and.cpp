@@ -7,9 +7,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/bitwise_and.hpp>
+#include <boost/simd/function/scalar/bitwise_and.hpp>
 #include <simd_test.hpp>
-//#include <nontrivial.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -84,22 +83,3 @@ STF_CASE_TPL("bitwise_and_mix", STF_IEEE_TYPES)
   STF_EQUAL(bitwise_and(bs::Zero<uiT>(), bs::Nan<T>()), bs::Zero<uiT>());
 }
 
-// namespace foo
-// {
-//   template <class T>
-//   nontrivial<T> operator &(const nontrivial<T> & z1, const nontrivial<T> z2)
-//   {
-//     return perform(z1, z2);
-//   }
-// }
-
-// STF_CASE_TPL( "Check bitwise_and behavior with exotic type", STF_IEEE_TYPES )
-// {
-//   namespace bs = boost::simd;
-//   using bs::bitwise_and;
-//   using foo::nontrivial;
-//   using r_t = decltype(bitwise_and(nontrivial<T>(), nontrivial<T>()));
-//   STF_TYPE_IS(r_t, nontrivial<T>);
-
-//   STF_EQUAL(bitwise_and(nontrivial<T>(1, 2), nontrivial<T>(3, 4)), nontrivial<T>(4, 8));
-// }

@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-arithmetic
+    Function object implementing minmod capabilities
 
     Return the minimum of the two entries
     if they have the same sign, otherwise 0
@@ -35,28 +37,8 @@ namespace boost { namespace simd
     T r =  x*y > 0 ? min(x, y) : 0;
     @endcode
 
-
-    @return      a value of the same type as the inputs.
-
-
-**/
-  template<typename T> auto minmod(T const& x, T const& y) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-arithmetic
-
-      Return the minimum of the two entries
-      if they have the same sign, otherwise 0
-
-
-      Function object tied to simd::minmod
-
-      @see simd::minmod
-    **/
-    const boost::dispatch::functor<tag::minmod_> minmod = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::minmod_> minmod = {};
 } }
 #endif
 

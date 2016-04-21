@@ -73,9 +73,11 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE i_t operator() ( A0 const& x, A0 & xr) const
     {
       A0 xi =  bs::round2even(x*bs::Twoopi<A0>());
+//       xr -= xi*bs::Pio2_2<A0>();//TODO
+//       xr -= xi*bs::Pio2_3<A0>();
       xr  = x-xi*bs::Pio2_1<A0>();
-      xr -= xi*bs::Pio2_2<A0>();
-      xr -= xi*bs::Pio2_3<A0>();
+      xr = xr-xi*bs::Pio2_2<A0>();
+      xr = xr-xi*bs::Pio2_3<A0>();
       return bitwise_and(bs::toint(xi), Three<i_t>());
     }
   };

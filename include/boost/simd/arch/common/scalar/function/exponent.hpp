@@ -20,7 +20,7 @@
 #include <boost/simd/function/scalar/is_eqz.hpp>
 #include <boost/simd/function/scalar/is_invalid.hpp>
 #include <boost/simd/function/scalar/shr.hpp>
-#include <boost/simd/math.hpp>
+#include <boost/simd/detail/math.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>

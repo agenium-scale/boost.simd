@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,12 +15,13 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-euler
+    Function object implementing gammaln capabilities
 
     Natural logarithm of the absolute value of the Gamma function
-
 
     @par Semantic:
 
@@ -51,34 +52,18 @@ namespace boost { namespace simd
 
     - The call gammaln(x, sgn) also returns the sign of gamma in the output parameter sgn.
 
-    - The call  gammaln(x, std_) uses std::lgamma to compute the value.
-
        Be aware that POSIX version of lgamma is not thread-safe: each execution of the function
        stores the sign of the gamma function of x in the static external variable signgam. boost.simd
        also provides @ref signgam which independantly computes the sign.
 
-       @see gamma, signgam
+    @par Decorators
 
-    @return a value of the same type as the parameter
+    std_ for floating entries
 
-**/
-  template<typename T> auto gammaln(T const& x) {}
+    @see gamma, signgam
 
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-euler
-
-
-      Natural logarithm of the absolute value of the Gamma function
-
-
-      Function object tied to simd::gammaln
-
-      @see simd::gammaln
-    **/
-    const boost::dispatch::functor<tag::gammaln_> gammaln = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::gammaln_> gammaln = {};
 } }
 #endif
 

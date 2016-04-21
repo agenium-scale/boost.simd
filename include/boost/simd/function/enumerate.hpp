@@ -2,47 +2,59 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_FUNCTION_ENUMERATE_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_ENUMERATE_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
+#if defined(DOXYGEN_ONLY)
   /*!
-
     @ingroup group-swar
 
     Linear enumeration of value
 
-    Return a SIMD register containing a linear enumeration of value defined
-    by a seed value and a step.
+    Return a SIMD register containing a linear enumeration of values defined
+    by a @c seed value and a @c step value.
 
     @par Semantic:
 
-    For any given SIMD type @c T, and any value @c seed and @c step of a scalar
-    type @c S, the following  code :
+    For any given SIMD type @c T, the following code:
 
     @code
-    T r = enumerate<T>(seed, step);
+    T r = enumerate<T>();
     @endcode
 
     is equivalent to
 
     @code
-    T r = make<T>(seed, seed + step, ... ,  seed + (N-1)*step);
+    T r = make<T>(0, 1, ... , N-1);
     @endcode
 
     where @c N is the equal to <tt>cardinal_of<T>::value</tt>.
 
-    For any given SIMD type @c T, and any value @c seed and @c step of a SIMD
-    type @c S, the following  code :
+    For any given SIMD type @c T, and any value @c seed of a scalar type @c S, the following code:
+
+    @code
+    T r = enumerate<T>(seed);
+    @endcode
+
+    is equivalent to
+
+    @code
+    T r = make<T>(seed, seed + 1, ... ,  seed + (N-1));
+    @endcode
+
+    where @c N is the equal to <tt>cardinal_of<T>::value</tt>.
+
+    For any given SIMD type @c T, and any value @c seed and @c step of a SIMD type @c S, the
+    following code:
 
     @code
     T r = enumerate<T>(seed, step);
@@ -51,30 +63,19 @@ namespace boost { namespace simd
     is equivalent to
 
     @code
-    T r = splat<T>(seed) + splat<T>(step)*enumerate<T>();
+    T r = seed + step*enumerate<T>();
     @endcode
 
-    @return A SIMD register of scalar type @c T
+    @param seed Initial value of the enumeration. By default, equals to 0.
+    @param step Initial value of the enumeration. By default, equals to 1.
 
-**/
-  template<typename T> auto enumerate(T const& x) {}
+    @return A pack containing the enumeration based on @c seed and @c step
+  **/
+  template<class T, class B, class S>
+  T enumerate(const B& seed = 0, const S& step = 1) noexcept;
 
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-swar
-
-      Linear enumeration of value
-
-
-      Function object tied to simd::enumerate
-
-      @see simd::enumerate
-    **/
-    const boost::dispatch::functor<tag::enumerate_> enumerate = {};
-  }
-} }
 #endif
+} }
 
 #include <boost/simd/function/scalar/enumerate.hpp>
 #include <boost/simd/function/simd/enumerate.hpp>

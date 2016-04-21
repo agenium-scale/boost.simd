@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/touints.hpp>
+#include <boost/simd/function/scalar/touints.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -30,7 +30,6 @@ STF_CASE_TPL (" touints signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 
   STF_TYPE_IS( r_t, (bd::as_integer_t<T, unsigned>));
 
-//  STF_EQUAL(touints(bs::Mone<T>()), bs::Valmax<r_t>());
   STF_EQUAL(touints(bs::Mone<T>()), bs::Zero<r_t>());
   STF_EQUAL(touints(bs::One<T>()), bs::One<r_t>());
   STF_EQUAL(touints(bs::Zero<T>()), bs::Zero<r_t>());

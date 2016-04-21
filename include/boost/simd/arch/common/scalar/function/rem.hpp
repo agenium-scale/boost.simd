@@ -11,13 +11,14 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_REM_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_REM_HPP_INCLUDED
+#include <boost/simd/function/std.hpp>
+#include <boost/simd/function/fast.hpp>
 
 #include <boost/simd/constant/nan.hpp>
-#include <boost/simd/function/scalar/idivfix.hpp>
+#include <boost/simd/function/scalar/idiv.hpp>
 #include <boost/simd/function/scalar/is_eqz.hpp>
 #include <boost/simd/function/scalar/is_finite.hpp>
 #include <boost/simd/function/scalar/is_inf.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>
@@ -48,7 +49,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       if (is_inf(a0) || is_eqz(a1)) return Nan<A0>();
-      return is_finite(a1) ? a0-a1*idivfix(a0,a1) : a0;
+      return is_finite(a1) ? a0-a1*idiv(a0,a1,fix) : a0;
     }
   };
 
@@ -62,7 +63,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1, fast_tag const&) const BOOST_NOEXCEPT
     {
-      return a0-a1*idivfix(a0,a1);
+      return a0-a1*idiv(a0,a1, fix);
     }
   };
   BOOST_DISPATCH_OVERLOAD ( rem_

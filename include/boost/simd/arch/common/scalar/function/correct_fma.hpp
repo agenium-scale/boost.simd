@@ -11,8 +11,8 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_CORRECT_FMA_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_CORRECT_FMA_HPP_INCLUDED
+#include <boost/simd/function/std.hpp>
 
-#include <boost/simd/options.hpp>
 #include <boost/simd/function/scalar/bitwise_cast.hpp>
 #include <boost/simd/function/scalar/exponent.hpp>
 #include <boost/simd/function/scalar/ldexp.hpp>
@@ -65,7 +65,7 @@ namespace boost { namespace simd { namespace ext
       iA0 e1 = exponent(a1);
       iA0 e = -bs::max(e0, e1)/2;
       A0 ae2  = ldexp(a2, e);
-      bool choose = (e0 > e1);
+      auto choose = (e0 > e1);
       A0 amax = choose ? ldexp(a0, e) : ldexp(a1, e);
       A0 amin = choose ? a1 : a0;
       two_prod(amax, amin, p, rp);

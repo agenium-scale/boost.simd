@@ -11,6 +11,7 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_POW_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_POW_HPP_INCLUDED
+#include <boost/simd/function/std.hpp>
 
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/constant/one.hpp>
@@ -36,9 +37,9 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
+    inline A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
-      bool ltza0 = is_ltz(a0);
+      auto ltza0 = is_ltz(a0);
       auto isinfa1 = is_inf(a1);
       if( a0 == Mone<A0>() && isinfa1 ) return One<A0>();
       if( ltza0 && !is_flint(a1) && !is_inf(a1) ) return Nan<A0>();
@@ -56,7 +57,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::std_tag
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1, std_tag const&) const BOOST_NOEXCEPT
+    inline A0 operator() ( A0 a0, A0 a1, std_tag const&) const BOOST_NOEXCEPT
     {
       return std::pow(a0, a1);
     }

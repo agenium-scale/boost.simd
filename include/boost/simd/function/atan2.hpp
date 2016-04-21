@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-trigonometric
+    Function object implementing atan2 capabilities
 
     atan2 function.
 
@@ -65,31 +67,14 @@ namespace boost { namespace simd
      where both are null or both are infinite will produce a Nan result which in fact
      is not more absurd than the IEEE choices and will be conforming in all other cases.
 
-    - atan(x, y, std_) use the call to std::atan2 from stdlibc++
+    @par Decorators
+
+    std_ for floating entries
 
   @see atan, atand, atanpi
 
-
-    @return a value of the same type as the parameters
-
-**/
-  template<typename T> auto atan2(T const& x, T const& y) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-trigonometric
-
-
-      atan2 function.
-
-
-      Function object tied to simd::atan2
-
-      @see simd::atan2
-    **/
-    const boost::dispatch::functor<tag::atan2_> atan2 = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::atan2_> atan2 = {};
 } }
 #endif
 

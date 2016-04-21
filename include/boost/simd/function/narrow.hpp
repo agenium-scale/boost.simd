@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup narrow-swar
+    Function object implementing narrow capabilities
 
     take two SIMD vectors of same type and elements of size n
     and return a vector collecting the two in a vector in which
@@ -27,25 +29,8 @@ namespace boost { namespace simd
     SIMD vector types
 
     This is a convenient alias of @ref group
-**/
-  template<typename T> auto narrow(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup narrow-callable-swar
-
-      take two SIMD vectors of same type and elements of size n
-      and return a vector collecting the two in a vector in which
-      the elements have size n/2
-
-
-      Function object tied to simd::narrow
-
-      @see simd::narrow
-    **/
-    const boost::dispatch::functor<tag::narrow_> narrow = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::narrow_> narrow = {};
 } }
 #endif
 

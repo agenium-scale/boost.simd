@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,8 +15,10 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
     @ingroup group-trigonometric
+    Function object implementing sincpi capabilities
 
     Computes the sinpi cardinal  value of its parameter that is sin(Pi*x)/(Pi*x).
     @par Semantic:
@@ -35,22 +37,8 @@ namespace boost { namespace simd
 
     @see sin, sinc, sinhc
 
-    @return a value of the same type as the parameter
-
   **/
-  template<typename T> auto sincpi(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-trigonometric
-
-      Function object tied to simd::sincpi
-
-      @see simd::sincpi
-    **/
-    const boost::dispatch::functor<tag::sincpi_> sincpi = {};
-  }
+  const boost::dispatch::functor<tag::sincpi_> sincpi = {};
 } }
 #endif
 

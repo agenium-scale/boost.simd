@@ -8,7 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/expm1.hpp>
+#include <boost/simd/function/scalar/expm1.hpp>
+#include <boost/simd/function/std.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -52,13 +53,13 @@ STF_CASE_TPL ( "expm1 std",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(expm1(bs::Inf<T>(), bs::std_), bs::Inf<r_t>(), 0);
-  STF_ULP_EQUAL(expm1(bs::Minf<T>(), bs::std_), bs::Mone<r_t>(), 0);
-  STF_ULP_EQUAL(expm1(bs::Nan<T>(), bs::std_), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(expm1)(bs::Inf<T>()), bs::Inf<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(expm1)(bs::Minf<T>()), bs::Mone<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(expm1)(bs::Nan<T>()), bs::Nan<r_t>(), 0);
 #endif
-  STF_ULP_EQUAL(expm1(bs::Mone<T>(), bs::std_), bs::One<r_t>()/bs::Exp_1<r_t>()-bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(expm1(bs::One<T>(), bs::std_), bs::Exp_1<r_t>()-bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(expm1(bs::Zero<T>(), bs::std_), bs::Zero<r_t>(), 0);
-  STF_ULP_EQUAL(expm1(bs::Eps<T>(), bs::std_), bs::Eps<r_t>(), 0.5);
-  STF_ULP_EQUAL(expm1(-bs::Eps<T>(), bs::std_), -bs::Eps<r_t>(), 0.25);
+  STF_ULP_EQUAL(bs::std_(expm1)(bs::Mone<T>()), bs::One<r_t>()/bs::Exp_1<r_t>()-bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::std_(expm1)(bs::One<T>()), bs::Exp_1<r_t>()-bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::std_(expm1)(bs::Zero<T>()), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(bs::std_(expm1)(bs::Eps<T>()), bs::Eps<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::std_(expm1)(-bs::Eps<T>()), -bs::Eps<r_t>(), 0.25);
 }

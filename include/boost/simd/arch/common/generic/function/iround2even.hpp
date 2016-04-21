@@ -15,7 +15,6 @@
 #include <boost/simd/function/round2even.hpp>
 #include <boost/simd/function/toint.hpp>
 #include <boost/simd/function/toints.hpp>
-#include <boost/simd/options.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
@@ -26,7 +25,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( iround2even_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::generic_<bd::arithmetic_<A0> >
+                          , bd::generic_<bd::integer_<A0> >
                           )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
@@ -50,7 +49,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( iround2even_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::generic_<bd::arithmetic_<A0> >
+                          , bd::generic_<bd::integer_<A0> >
                           , boost::simd::fast_tag
                           )
   {

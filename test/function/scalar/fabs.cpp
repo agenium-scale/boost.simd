@@ -25,11 +25,11 @@ STF_CASE_TPL( "Check fabs behavior with floating", STF_IEEE_TYPES )
   STF_TYPE_IS(r_t, T);
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_IEEE_EQUAL(fabs(bs::Inf<T>()),  bs::Inf<r_t>());
-  STF_IEEE_EQUAL(fabs(bs::Minf<T>()), bs::Inf<r_t>());
+  STF_EQUAL(fabs(bs::Inf<T>()),  bs::Inf<r_t>());
+  STF_EQUAL(fabs(bs::Minf<T>()), bs::Inf<r_t>());
   STF_IEEE_EQUAL(fabs(bs::Nan<T>()),  bs::Nan<r_t>());
 #endif
-  STF_IEEE_EQUAL(fabs(bs::Zero<T>()), bs::Zero<r_t>());
-  STF_IEEE_EQUAL(fabs(bs::One<T>()),  bs::One<r_t>());
-  STF_IEEE_EQUAL(fabs(bs::Mone<T>()), bs::One<r_t>());
+  STF_EQUAL(fabs(bs::Zero<T>()), bs::Zero<r_t>());
+  STF_EQUAL(fabs(bs::One<T>()),  bs::One<r_t>());
+  STF_EQUAL(fabs(bs::Mone<T>()), bs::One<r_t>());
 }

@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-exponential
+    Function object implementing cbrt capabilities
 
     Compute the cubic root: \f$\sqrt[3]{x}\f$
 
@@ -38,30 +40,14 @@ namespace boost { namespace simd
     but not equivalent because pow cannot raise a negative base to a fractional exponent.
     we have for all non Nan floating values cbrt(-x) = -cbrt(x).
 
-    cbrt(x, std_) calls std::cbrt from stdlibc++
+    @par Decorators
+
+    std_ for floating entries
 
     @see pow, sqrt
 
-    @return a value of the same type as the parameter
-
-**/
-  template<typename T> auto cbrt(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-exponential
-
-
-      Compute the cubic root: \f$\sqrt[3]{x}\f$
-
-
-      Function object tied to simd::cbrt
-
-      @see simd::cbrt
-    **/
-    const boost::dispatch::functor<tag::cbrt_> cbrt = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::cbrt_> cbrt = {};
 } }
 #endif
 

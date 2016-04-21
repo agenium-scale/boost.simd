@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/bitofsign.hpp>
+#include <boost/simd/function/scalar/bitofsign.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -31,7 +31,7 @@ STF_CASE_TPL (" bitofsign real",  STF_IEEE_TYPES)
 #ifndef STF_NO_INVALIDS
   STF_EQUAL(bitofsign(bs::Inf<T>()), bs::Zero<r_t>());
   STF_EQUAL(bitofsign(bs::Minf<T>()), bs::Mzero<r_t>());
-  STF_EQUAL(bitofsign(bs::Nan<T>()), bs::Mzero<r_t>());
+  STF_IEEE_EQUAL(bitofsign(bs::Nan<T>()), bs::Mzero<r_t>());
 #endif
   STF_EQUAL(bitofsign(bs::Mzero<T>()), bs::Mzero<r_t>());
   STF_EQUAL(bitofsign(bs::One<T>()), bs::Zero<r_t>());

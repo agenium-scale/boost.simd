@@ -8,7 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/gammaln.hpp>
+#include <boost/simd/function/scalar/gammaln.hpp>
+#include <boost/simd/function/std.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -47,15 +48,15 @@ STF_CASE_TPL (" gammaln",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(gammaln(bs::Two<T>()), bs::Zero<r_t>(), 0);
   STF_ULP_EQUAL(gammaln(bs::Mzero<T>()),         bs::Inf<r_t>(), 0);
 
-  STF_ULP_EQUAL(gammaln(bs::Halfeps<T>()),       gammaln(bs::Halfeps<T>(), bs::std_), 1);
-  STF_ULP_EQUAL(gammaln(bs::Eps<T>()),           gammaln(bs::Eps<T>(), bs::std_), 0.5);
-  STF_ULP_EQUAL(gammaln(bs::Half<T>()),          gammaln(bs::Half<T>(), bs::std_), 0.5);
-  STF_ULP_EQUAL(gammaln(T(1.5)),                 gammaln(T(1.5), bs::std_), 1.5);
-  STF_ULP_EQUAL(gammaln(T(2.5)),                 gammaln(T(2.5), bs::std_), 0.5);
-  STF_ULP_EQUAL(gammaln(T(13)) ,                 gammaln(T(13), bs::std_), 0.5);
-  STF_ULP_EQUAL(gammaln(T(13.5)) ,               gammaln(T(13.5), bs::std_), 0.5);
-  STF_ULP_EQUAL(gammaln(T(-0.1)),                gammaln(T(-0.1), bs::std_),         1);
-  STF_ULP_EQUAL(gammaln(-bs::Half<T>()),         gammaln(-bs::Half<T>(), bs::std_),  0.5);
-  STF_ULP_EQUAL(gammaln(-bs::Halfeps<T>()),      gammaln(-bs::Halfeps<T>(), bs::std_), 0.5);
-  STF_ULP_EQUAL(gammaln(T(-27.5)),               gammaln(T(-27.5), bs::std_),            3);
+  STF_ULP_EQUAL(gammaln(bs::Halfeps<T>()),       bs::std_(gammaln)(bs::Halfeps<T>()), 1);
+  STF_ULP_EQUAL(gammaln(bs::Eps<T>()),           bs::std_(gammaln)(bs::Eps<T>()), 0.5);
+  STF_ULP_EQUAL(gammaln(bs::Half<T>()),          bs::std_(gammaln)(bs::Half<T>()), 0.5);
+  STF_ULP_EQUAL(gammaln(T(1.5)),                 bs::std_(gammaln)(T(1.5)), 1.5);
+  STF_ULP_EQUAL(gammaln(T(2.5)),                 bs::std_(gammaln)(T(2.5)), 0.5);
+  STF_ULP_EQUAL(gammaln(T(13)) ,                 bs::std_(gammaln)(T(13)), 0.5);
+  STF_ULP_EQUAL(gammaln(T(13.5)) ,               bs::std_(gammaln)(T(13.5)), 0.5);
+  STF_ULP_EQUAL(gammaln(T(-0.1)),                bs::std_(gammaln)(T(-0.1)),         1);
+  STF_ULP_EQUAL(gammaln(-bs::Half<T>()),         bs::std_(gammaln)(-bs::Half<T>()),  0.5);
+  STF_ULP_EQUAL(gammaln(-bs::Halfeps<T>()),      bs::std_(gammaln)(-bs::Halfeps<T>()), 0.5);
+  STF_ULP_EQUAL(gammaln(T(-27.5)),               bs::std_(gammaln)(T(-27.5)),            3);
 }

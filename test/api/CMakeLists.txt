@@ -6,5 +6,6 @@
 ##                            http://www.boost.org/LICENSE_1_0.txt
 ##===================================================================================================
 
+add_subdirectory(helper)
 add_subdirectory(meta)
 add_subdirectory(pack)

@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-boolean
+    Function object implementing ifnotinc capabilities
 
     Increments a value by @ref One if a predicate is @ref False.
 
@@ -35,26 +37,8 @@ namespace boost { namespace simd
     T r = cond : t : t+one;
     @endcode
 
-    @return a value of the same type as the second parameter
-
-**/
-   template<typename C, typename T> auto ifnotinc(C const& cond, T const& t) {}
-
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-boolean
-
-      Increments a value by @ref One if a predicate is false.
-
-
-      Function object tied to simd::ifnotinc
-
-      @see simd::ifnotinc
-    **/
-    const boost::dispatch::functor<tag::ifnotinc_> ifnotinc = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::ifnotinc_> ifnotinc = {};
 } }
 #endif
 

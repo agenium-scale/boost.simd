@@ -14,10 +14,9 @@
 
 #include <boost/simd/constant/maxexponent.hpp>
 #include <boost/simd/constant/nbmantissabits.hpp>
-#include <boost/simd/function/scalar/bitwise_cast.hpp>
-#include <boost/simd/function/scalar/shift_left.hpp>
-#include <boost/simd/function/scalar/toint.hpp>
-#include <boost/simd/options.hpp>
+#include <boost/simd/function/simd/bitwise_cast.hpp>
+#include <boost/simd/function/simd/shift_left.hpp>
+#include <boost/simd/function/simd/toint.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 
 namespace boost { namespace simd
@@ -32,7 +31,7 @@ namespace boost { namespace simd
     {
       using i_t = bd::as_integer_t<A0>;
       i_t ik =  toint(k);
-      ik +=  Maxexponent<A0>();
+      ik =  ik + Maxexponent<A0>();//+=  Maxexponent<A0>();
       ik = shift_left(ik, Nbmantissabits<A0>());
       return y*bitwise_cast<A0>(ik);;
     }

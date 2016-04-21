@@ -22,21 +22,10 @@ namespace boost { namespace simd
     @return The True constant for the proper type
   **/
   template<typename T> T True();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant true.
-
-      @return The True constant for the proper type
-    **/
-    const boost::dispatch::functor<tag::true_> true_ = {};
-  }
 } }
 #endif
 
 #include <boost/simd/constant/definition/true.hpp>
-#include <boost/simd/arch/common/scalar/constant/true.hpp>
+#include <boost/simd/arch/common/generic/constant/true.hpp>
 
 #endif

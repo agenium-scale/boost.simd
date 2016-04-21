@@ -11,8 +11,8 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_INF_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_INF_HPP_INCLUDED
+#include <boost/simd/function/std.hpp>
 
-#include <boost/simd/options.hpp>
 #include <boost/simd/constant/false.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -44,7 +44,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE logical<A0> operator() ( A0 ) const BOOST_NOEXCEPT
     {
-      return {false};
+      return false;
     }
   };
 
@@ -67,7 +67,7 @@ namespace boost { namespace simd { namespace ext
                           , boost::simd::std_tag
                           )
   {
-    BOOST_FORCEINLINE bool operator() ( A0 a0
+    BOOST_FORCEINLINE logical<A0> operator() ( A0 a0
                                       , std_tag const&) const BOOST_NOEXCEPT
     {
       return std::isinf(a0);

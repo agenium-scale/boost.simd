@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-trigonometric
+    Function object implementing asin capabilities
 
     inverse sine.
 
@@ -33,30 +35,14 @@ namespace boost { namespace simd
     \f$[-\pi/2, \pi/2]\f$ such that <tt>sin(r) == x</tt>.
     If @c x is outside \f$[-1, 1]\f$ the result is Nan.
 
-    asin(x, std_) use the call to std::asin from stdlibc++
+    @par Decorators
+
+    std_ for floating entries
 
     @see asind, asinpi
 
-    @return a value of the same type as the parameter
-
-**/
-  template<typename T> auto asin(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-trigonometric
-
-
-      inverse sine.
-
-
-      Function object tied to simd::asin
-
-      @see simd::asin
-    **/
-    const boost::dispatch::functor<tag::asin_> asin = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::asin_> asin = {};
 } }
 #endif
 

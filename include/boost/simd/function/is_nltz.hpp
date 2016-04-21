@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-predicates
+    Function object implementing is_nltz capabilities
 
     Returns @ref True if x is not less than @ref Zero else returns @ref False.
 
@@ -33,32 +35,13 @@ namespace boost { namespace simd
     as_logical_t<T> r = !(x < 0);
     @endcode
 
-
     @par Note:
 
     Due to existence of nan, this is not equivalent to @c is_gez(x)
     for floating types
 
-
-    @return a logical value
-
-**/
-  template<typename T> auto is_nltz(T const& x) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-predicates
-
-      Returns @ref True if x is not less than @ref Zero else returns @ref False.
-
-
-      Function object tied to simd::is_nlt
-
-z      @see simd::is_nlt
-z    **/
-    const boost::dispatch::functor<tag::is_nltz_> is_nltz = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::is_nltz_> is_nltz = {};
 } }
 #endif
 

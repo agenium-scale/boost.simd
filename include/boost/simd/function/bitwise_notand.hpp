@@ -2,8 +2,8 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +15,11 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  /*!
+
+ /*!
 
     @ingroup group-bitwise
+    Function object implementing bitwise_notand capabilities
 
     Computes the bitwise not and of its parameters.
 
@@ -42,27 +44,8 @@ namespace boost { namespace simd
     @see  bitwise_or, bitwise_xor, bitwise_and,
     bitwise_andnot, bitwise_notor, bitwise_ornot, complement
 
-
-    @return      a value of the same type as the first input.
-
-
-**/
-  template<typename T0, typename T1> auto bitwise_notand(T0 const& x, T1 const& y) {}
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-bitwise
-
-      Computes the bitwise not and of its parameters.
-
-
-      Function object tied to simd::bitwise_notand
-
-      @see simd::bitwise_notand
-    **/
-    const boost::dispatch::functor<tag::bitwise_notand_> bitwise_notand = {};
-  }
+  **/
+  const boost::dispatch::functor<tag::bitwise_notand_> bitwise_notand = {};
 } }
 #endif
 

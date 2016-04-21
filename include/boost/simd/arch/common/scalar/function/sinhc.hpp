@@ -61,7 +61,7 @@ namespace boost { namespace simd { namespace ext
       }
       else
       {
-        bool test1 = (x >  Maxlog<A0>()-Log_2<A0>());
+        auto test1 = (x >  Maxlog<A0>()-Log_2<A0>());
         A0 fac = if_else(test1, Half<A0>(), One<A0>());
         A0 tmp = exp(x*fac);
         A0 tmp1 = (Half<A0>()*tmp)/x;

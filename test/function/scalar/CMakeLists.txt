@@ -1,5 +1,5 @@
 ##===================================================================================================
-##                 Copyright 2012 - 2015   NumScale SAS
+##                              Copyright 2016 NumScale SAS
 ##
 ##                   Distributed under the Boost Software License, Version 1.0.
 ##                        See accompanying file LICENSE.txt or copy at
@@ -7,6 +7,8 @@
 ##===================================================================================================
 
 set ( SOURCES
+   insert.cpp
+   store.cpp
    horner.cpp
    horn.cpp
    horn1.cpp
@@ -14,6 +16,7 @@ set ( SOURCES
    extract.cpp
    load.cpp
    splat.cpp
+   make.cpp
 #alias
    modulus.cpp
 #arithmetic
@@ -28,11 +31,12 @@ set ( SOURCES
    dec.cpp
    dist.cpp
    dists.cpp
+   div.cpp
    divceil.cpp
-   divfix.cpp
    divfloor.cpp
-   divround2even.cpp
    divround.cpp
+   divround2even.cpp
+   divtrunc.cpp
    divs.cpp
    floor.cpp
    fma.cpp
@@ -41,11 +45,12 @@ set ( SOURCES
    fnms.cpp
    hypot.cpp
    iceil.cpp
+   idiv.cpp
    idivceil.cpp
    idivfix.cpp
    idivfloor.cpp
-   idivround2even.cpp
    idivround.cpp
+   idivround2even.cpp
    ifloor.cpp
    inc.cpp
    iround2even.cpp
@@ -113,7 +118,7 @@ set ( SOURCES
    rshl.cpp
    rshr.cpp
    shr.cpp
-   swapbytes.cpp
+##   swapbytes.cpp
    twopower.cpp
 #boolean
    if_allbits_else.cpp
@@ -250,8 +255,8 @@ set ( SOURCES
    is_included_c.cpp
    is_included.cpp
    is_simd_logical.cpp
-   maximum.cpp
-   minimum.cpp
+#   maximum.cpp
+#   minimum.cpp
    nbtrue.cpp
    none.cpp
    posmax.cpp
@@ -268,10 +273,10 @@ set ( SOURCES
    lookup.cpp
    reverse.cpp
    sort.cpp
-   splatted_maximum.cpp
-   splatted_minimum.cpp
-   splatted_prod.cpp
-   splatted_sum.cpp
+##   splatted_maximum.cpp
+##   splatted_minimum.cpp
+##   splatted_prod.cpp
+##   splatted_sum.cpp
 #exponential
    cbrt.cpp
    exp.cpp
@@ -287,7 +292,7 @@ set ( SOURCES
    log2.cpp
    logspace_add.cpp
    logspace_sub.cpp
-   nthroot.cpp
+#   nthroot.cpp # long compilation time to fix
    pow.cpp
    pow2.cpp
    pow_abs.cpp
@@ -364,7 +369,6 @@ set ( SOURCES
    compare_lt.cpp
    compare_neq.cpp
    bitwise_not.cpp
-   divtrunc.cpp
    rdivide.cpp
    if_zero_else_allbits.cpp
    if_allbits_else_zero.cpp
@@ -433,5 +437,5 @@ set ( SOURCES
    signbit.cpp
 )
 
-make_unit( "boost.simd.function.scalar"   ${SOURCES})
-make_coverage("boost.simd.function.scalar"  ${SOURCES})
+make_unit( "function.scalar"   ${SOURCES})
+make_coverage("function.scalar"  ${SOURCES})

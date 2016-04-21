@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/ffs.hpp>
+#include <boost/simd/function/scalar/ffs.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -27,7 +27,7 @@ STF_CASE_TPL (" ffs real",  STF_IEEE_TYPES)
   using bs::ffs;
   using r_t = decltype(ffs(T()));
   // return type conformity test
-  STF_TYPE_IS(r_t, (bd::as_integer_t<T, unsigned>));
+  STF_TYPE_IS(r_t, (bd::as_integer_t<T>));
 
 
   // specific values tests
@@ -49,11 +49,11 @@ STF_CASE_TPL (" ffs signed_int",  STF_SIGNED_INTEGRAL_TYPES)
   using r_t = decltype(ffs(T()));
 
   // return type conformity test
-  STF_TYPE_IS(r_t, (bd::as_integer_t<T, unsigned>));
+  STF_TYPE_IS(r_t, (bd::as_integer_t<T>));
 
   // specific values tests
   STF_EQUAL(ffs(bs::One<T>()), bs::One<r_t>());
-  STF_EQUAL(ffs(bs::Signmask<T>()), sizeof(T)*8);
+  STF_EQUAL(ffs(bs::Signmask<T>()), r_t(sizeof(T)*8));
   STF_EQUAL(ffs(bs::Zero<T>()), bs::Zero<r_t>());
 } // end of test for signed_int_
 
@@ -66,7 +66,7 @@ STF_CASE_TPL (" ffs unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
   using r_t = decltype(ffs(T()));
 
   // return type conformity test
-  STF_TYPE_IS(r_t, (bd::as_integer_t<T, unsigned>));
+  STF_TYPE_IS(r_t, (bd::as_integer_t<T>));
 
   // specific values tests
   STF_EQUAL(ffs(bs::One<T>()), bs::One<r_t>());

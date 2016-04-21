@@ -13,11 +13,12 @@
 #define BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_LOG10_HPP_INCLUDED
 
 #include <boost/simd/arch/common/detail/scalar/logarithm.hpp>
+#include <boost/simd/arch/common/detail/simd/logarithm.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
+#include <boost/simd/function/assert.hpp>
 #include <boost/simd/function/is_not_nan.hpp>
 #include <boost/simd/function/is_positive.hpp>
-#include <boost/simd/options.hpp>
-#include <boost/simd/sdk/is_not_scalar.hpp>
+#include <boost/simd/meta/is_not_scalar.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

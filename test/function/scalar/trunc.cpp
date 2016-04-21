@@ -7,7 +7,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/trunc.hpp>
+#include <boost/simd/function/scalar/trunc.hpp>
+#include <boost/simd/function/fast.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -18,7 +19,6 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/pi.hpp>
 #include <boost/simd/constant/three.hpp>
-#include <boost/simd/options.hpp>
 
 STF_CASE_TPL (" trunc real",  STF_IEEE_TYPES)
 {
@@ -80,7 +80,6 @@ STF_CASE_TPL (" trunc signed_int",  STF_SIGNED_INTEGRAL_TYPES)
   STF_EQUAL(trunc(bs::Zero<T>()), bs::Zero<T>());
 } // end of test for signed_int_
 
-
 STF_CASE_TPL ( "fast trunc real",  STF_IEEE_TYPES)
 {
 
@@ -93,17 +92,17 @@ STF_CASE_TPL ( "fast trunc real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-  STF_EQUAL(trunc(bs::One<T>(), bs::fast_), bs::One<T>());
-  STF_EQUAL(trunc(bs::Mone<T>(), bs::fast_), bs::Mone<T>());
-  STF_EQUAL(trunc(bs::Zero<T>(), bs::fast_), bs::Zero<T>());
-  STF_EQUAL(trunc(bs::Pi<T>(), bs::fast_), bs::Three<T>());
-  STF_EQUAL(trunc(T(1.4), bs::fast_), T(1));
-  STF_EQUAL(trunc(T(1.5), bs::fast_), T(1));
-  STF_EQUAL(trunc(T(1.6), bs::fast_), T(1));
-  STF_EQUAL(trunc(T(2.5), bs::fast_), T(2));
-  STF_EQUAL(trunc(T(-1.4), bs::fast_), T(-1));
-  STF_EQUAL(trunc(T(-1.5), bs::fast_), T(-1));
-  STF_EQUAL(trunc(T(-1.6), bs::fast_), T(-1));
-  STF_EQUAL(trunc(T(-2.5), bs::fast_), T(-2));
+  STF_EQUAL(bs::fast_(trunc)(bs::One<T>()), bs::One<T>());
+  STF_EQUAL(bs::fast_(trunc)(bs::Mone<T>()), bs::Mone<T>());
+  STF_EQUAL(bs::fast_(trunc)(bs::Zero<T>()), bs::Zero<T>());
+  STF_EQUAL(bs::fast_(trunc)(bs::Pi<T>()), bs::Three<T>());
+  STF_EQUAL(bs::fast_(trunc)(T(1.4)), T(1));
+  STF_EQUAL(bs::fast_(trunc)(T(1.5)), T(1));
+  STF_EQUAL(bs::fast_(trunc)(T(1.6)), T(1));
+  STF_EQUAL(bs::fast_(trunc)(T(2.5)), T(2));
+  STF_EQUAL(bs::fast_(trunc)(T(-1.4)), T(-1));
+  STF_EQUAL(bs::fast_(trunc)(T(-1.5)), T(-1));
+  STF_EQUAL(bs::fast_(trunc)(T(-1.6)), T(-1));
+  STF_EQUAL(bs::fast_(trunc)(T(-2.5)), T(-2));
 } // end of test for floating_
 
