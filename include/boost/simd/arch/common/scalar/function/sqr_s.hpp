@@ -14,45 +14,52 @@
 
 #include <boost/simd/constant/sqrtvalmax.hpp>
 #include <boost/simd/constant/valmax.hpp>
-#include <boost/simd/function/scalar/abs_s.hpp>
+#include <boost/simd/function/scalar/abs.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
+#include <boost/simd/function/saturated.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
-  BOOST_DISPATCH_OVERLOAD ( sqr_s_
+  BOOST_DISPATCH_OVERLOAD ( sqr_
                           , (typename A0)
                           , bd::cpu_
                           , bd::scalar_< bd::int_<A0> >
+                          , bs::saturated_tag
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0
+                                    , const saturated_tag &) const BOOST_NOEXCEPT
     {
-      return abs_s(a0) > Sqrtvalmax<A0>() ? Valmax<A0>() : sqr(a0);
+      return saturated_(abs)(a0) > Sqrtvalmax<A0>() ? Valmax<A0>() : sqr(a0);
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( sqr_s_
+  BOOST_DISPATCH_OVERLOAD ( sqr_
                           , (typename A0)
                           , bd::cpu_
                           , bd::scalar_< bd::uint_<A0> >
+                          , bs::saturated_tag
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0
+                                    , const saturated_tag &) const BOOST_NOEXCEPT
     {
       return a0 > Sqrtvalmax<A0>() ? Valmax<A0>() : sqr(a0);
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( sqr_s_
+  BOOST_DISPATCH_OVERLOAD ( sqr_
                           , (typename A0)
                           , bd::cpu_
                           , bd::scalar_< bd::floating_<A0> >
+                          , bs::saturated_tag
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0
+                                    , const saturated_tag &) const BOOST_NOEXCEPT
     {
       return sqr(a0);
     }

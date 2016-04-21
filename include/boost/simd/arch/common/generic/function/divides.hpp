@@ -16,8 +16,7 @@
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/rec.hpp>
 #include <boost/simd/function/fast.hpp>
-#include <boost/simd/function/saturated.hpp>
-#include <boost/simd/function/divides_s.hpp>
+#include <boost/simd/function/divides.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/hierarchy.hpp>
 #include <boost/config.hpp>
@@ -64,7 +63,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE T operator()(const T& a, const T& b, const saturated_tag &) const BOOST_NOEXCEPT
     {
-      return divides_s(a, b);
+      return saturated_(divides)(a, b);
     }
   };
 } } }

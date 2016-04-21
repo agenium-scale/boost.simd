@@ -10,7 +10,7 @@
 */
 //==================================================================================================
 #include <boost/simd/pack.hpp>
-#include <boost/simd/function/minus_s.hpp>
+#include <boost/simd/function/minus.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
 
@@ -18,6 +18,7 @@ template <typename T, std::size_t N, typename Env>
 void test(Env& $)
 {
   namespace bs = boost::simd;
+  using bs::minus;
   using p_t = bs::pack<T, N>;
 
   T a1[N], a2[N], b[N];
@@ -25,15 +26,15 @@ void test(Env& $)
   {
      a1[i] = (i%2) ? T(i) : T(-i);
      a2[i] = (i%2) ? T(i+N) : T(-(i+N));
-     b[i] = bs::minus_s(a1[i], a2[i]);
+     b[i] = bs::saturated_(minus)(a1[i], a2[i]);
    }
   p_t aa1(&a1[0], &a1[N]);
   p_t aa2(&a2[0], &a2[N]);
   p_t bb(&b[0], &b[N]);
-  STF_IEEE_EQUAL(bs::minus_s(aa1, aa2), bb);
+  STF_IEEE_EQUAL(bs::saturated_(minus)(aa1, aa2), bb);
 }
 
-STF_CASE_TPL("Check minus_s on pack" , STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check saturated_(minus) on pack" , STF_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;

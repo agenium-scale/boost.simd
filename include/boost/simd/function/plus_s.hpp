@@ -24,7 +24,7 @@ namespace boost { namespace simd
     For any given value @c x,  @c y of type @c T:
 
     @code
-    T r = plus_s(x, y);
+    T r = saturated_(plus)(x, y);
     @endcode
 
     The function coincide with plus for floating point parameters.

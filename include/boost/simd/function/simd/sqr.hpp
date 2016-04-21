@@ -15,5 +15,6 @@
 #include <boost/simd/function/scalar/sqr.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/generic/function/sqr.hpp>
+#include <boost/simd/arch/common/simd/function/sqr_s.hpp>
 
 #endif

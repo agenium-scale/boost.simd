@@ -18,8 +18,6 @@
 #include <boost/simd/function/plus.hpp>
 #include <boost/simd/function/seladd.hpp>
 #include <boost/config.hpp>
-#include <boost/simd/function/saturated.hpp>
-#include <boost/simd/function/oneplus_s.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -36,19 +34,19 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( oneplus_
-                          , (typename T)
-                          ,  bd::cpu_
-                          ,  bd::generic_<bd::fundamental_<T>>
-                          ,  bs::saturated_tag
-                          )
-  {
-    BOOST_FORCEINLINE T operator()(const T& a
-                                  , const saturated_tag &) const BOOST_NOEXCEPT
-    {
-      return oneplus_s(a);
-    }
-  };
+//   BOOST_DISPATCH_OVERLOAD ( oneplus_
+//                           , (typename T)
+//                           ,  bd::cpu_
+//                           ,  bd::generic_<bd::fundamental_<T>>
+//                           ,  bs::saturated_tag
+//                           )
+//   {
+//     BOOST_FORCEINLINE T operator()(const T& a
+//                                   , const saturated_tag &) const BOOST_NOEXCEPT
+//     {
+//       return oneplus_s(a);
+//     }
+//   };
 } } }
 
 

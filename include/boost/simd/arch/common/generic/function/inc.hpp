@@ -42,7 +42,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE T operator()(const T& a
                                   , const saturated_tag &) const BOOST_NOEXCEPT
     {
-      return oneplus(a);
+      return saturated_(oneplus)(a);
     }
   };
 

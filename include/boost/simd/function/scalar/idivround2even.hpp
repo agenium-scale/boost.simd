@@ -15,5 +15,6 @@
 #include <boost/simd/function/definition/idivround2even.hpp>
 #include <boost/simd/arch/common/scalar/function/idivround2even.hpp>
 #include <boost/simd/arch/common/generic/function/idivround2even.hpp>
+#include <boost/simd/arch/common/scalar/function/idivround2even.hpp>
 
 #endif

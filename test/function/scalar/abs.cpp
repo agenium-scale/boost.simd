@@ -86,7 +86,7 @@ STF_CASE_TPL( "Check std abs behavior with signed integral", STF_SIGNED_INTEGRAL
   STF_EQUAL(bs::std_(abs)(bs::Mone<T>()), bs::One<r_t>());
 }
 
-STF_CASE_TPL( "Check saturated abs behavior ", STF_SIGNED_INTEGRAL_TYPES )
+STF_CASE_TPL( "Check saturated abs behavior ", STF_SIGNED_NUMERIC_TYPES )
 {
   namespace bs = boost::simd;
   using bs::abs;

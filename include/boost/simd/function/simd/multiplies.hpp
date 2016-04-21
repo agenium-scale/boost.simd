@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_MULTIPLIES_INCLUDED
 
 #include <boost/simd/function/scalar/multiplies.hpp>
+#include <boost/simd/arch/common/simd/function/multiplies_s.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 
 #if defined(BOOST_HW_SIMD_X86)
@@ -22,15 +23,16 @@
 #  endif
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_SSE2_VERSION
 #    include <boost/simd/arch/x86/sse2/simd/function/multiplies.hpp>
+#    include <boost/simd/arch/x86/sse2/simd/function/multiplies_s.hpp>
 #  endif
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_SSE4_1_VERSION
 #    include <boost/simd/arch/x86/sse4_1/simd/function/multiplies.hpp>
 #  endif
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_AVX_VERSION
-// #    include <boost/simd/arch/x86/avx/simd/function/multiplies.hpp>
+#    include <boost/simd/arch/x86/avx/simd/function/multiplies.hpp>
 #  endif
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_AVX2_VERSION
-// #    include <boost/simd/arch/x86/avx2/simd/function/multiplies.hpp>
+#    include <boost/simd/arch/x86/avx2/simd/function/multiplies.hpp>
 #  endif
 
 #endif

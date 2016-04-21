@@ -16,10 +16,9 @@
 #include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/scalar/ceil.hpp>
-#include <boost/simd/function/scalar/divides_s.hpp>
 #include <boost/simd/function/scalar/iceil.hpp>
 #include <boost/simd/function/scalar/inc.hpp>
-#include <boost/simd/function/scalar/oneplus_s.hpp>
+#include <boost/simd/function/scalar/oneplus.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
@@ -40,7 +39,7 @@ namespace boost { namespace simd { namespace ext
       {
         A0 q = a0/a1;
         A0 r =a0-q*a1;
-        if ((r != Zero<A0>())&&((a0^a1) >= 0)) return oneplus_s(q);
+        if ((r != Zero<A0>())&&((a0^a1) >= 0)) return saturated_(oneplus)(q);
         return q;
       }
       else

@@ -12,29 +12,29 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_MINUS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_MINUS_HPP_INCLUDED
 
-#include <boost/simd/detail/math.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/config.hpp>
-#include <boost/simd/function/saturated.hpp>
-#include <boost/simd/function/minus_s.hpp>
+// #include <boost/simd/detail/math.hpp>
+// #include <boost/dispatch/function/overload.hpp>
+// #include <boost/config.hpp>
+// #include <boost/simd/function/saturated.hpp>
 
-namespace boost { namespace simd { namespace ext
-{
-  namespace bd = boost::dispatch;
+// namespace boost { namespace simd { namespace ext
+// {
+//   namespace bd = boost::dispatch;
 
-  BOOST_DISPATCH_OVERLOAD ( minus_
-                          , (typename T)
-                          ,  bd::cpu_
-                          ,  bd::generic_<bd::fundamental_<T>>
-                          ,  bd::generic_<bd::fundamental_<T>>
-                          ,  bs::saturated_tag
-                          )
-  {
-    BOOST_FORCEINLINE T operator()(const T& a, const T& b, const saturated_tag &) const BOOST_NOEXCEPT
-    {
-      return minus_s(a, b);
-    }
-  };
-} } }
+//   BOOST_DISPATCH_OVERLOAD ( minus_
+//                           , (typename T)
+//                           ,  bd::cpu_
+//                           ,  bd::generic_<bd::fundamental_<T>>
+//                           ,  bd::generic_<bd::fundamental_<T>>
+//                           ,  bs::saturated_tag
+//                           )
+//   {
+//     BOOST_FORCEINLINE T operator()(const T& a, const T& b
+//                                   , const saturated_tag &) const BOOST_NOEXCEPT
+//     {
+//       return saturated_(minus)(a, b);
+//     }
+//   };
+// } } }
 
 #endif

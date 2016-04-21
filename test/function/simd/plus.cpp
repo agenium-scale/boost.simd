@@ -55,9 +55,6 @@ void tests(Env& $)
   namespace bs = boost::simd;
   using p_t = bs::pack<T, N>;
 
-  namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
-
   T a1[N], a2[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
@@ -72,10 +69,9 @@ void tests(Env& $)
 
 }
 
-STF_CASE_TPL("Check plus on pack" , STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check saturated plus on pack" , STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
-
   tests<T, N>($);
   tests<T, N/2>($);
   tests<T, N*2>($);

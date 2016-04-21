@@ -15,5 +15,6 @@
 #include <boost/simd/function/definition/divides.hpp>
 #include <boost/simd/arch/common/scalar/function/divides.hpp>
 #include <boost/simd/arch/common/generic/function/divides.hpp>
+#include <boost/simd/arch/common/scalar/function/divides_s.hpp>
 
 #endif

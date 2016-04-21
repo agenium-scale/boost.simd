@@ -22,20 +22,20 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
 
-  BOOST_DISPATCH_OVERLOAD ( dist_
-                          , (typename T)
-                          ,  bd::cpu_
-                          ,  bd::generic_<bd::fundamental_<T>>
-                          ,  bd::generic_<bd::fundamental_<T>>
-                          ,  bs::saturated_tag
-                          )
-  {
-    BOOST_FORCEINLINE T operator()(const T& a, const T& b
-                                  , const bs::saturated_tag &) const BOOST_NOEXCEPT
-    {
-      return dist_s(a, b);
-    }
-  };
+//   BOOST_DISPATCH_OVERLOAD ( dist_
+//                           , (typename T)
+//                           ,  bd::cpu_
+//                           ,  bd::generic_<bd::fundamental_<T>>
+//                           ,  bd::generic_<bd::fundamental_<T>>
+//                           ,  bs::saturated_tag
+//                           )
+//   {
+//     BOOST_FORCEINLINE T operator()(const T& a, const T& b
+//                                   , const bs::saturated_tag &) const BOOST_NOEXCEPT
+//     {
+//       return dist_s(a, b);
+//     }
+//   };
 } } }
 
 #endif

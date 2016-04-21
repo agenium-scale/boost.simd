@@ -18,25 +18,28 @@
 #include <boost/simd/function/simd/groups.hpp>
 #include <boost/simd/function/simd/multiplies.hpp>
 #include <boost/simd/function/simd/split_multiplies.hpp>
+#include <boost/simd/function/saturated.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
    namespace bd = boost::dispatch;
    namespace bs = boost::simd;
-   BOOST_DISPATCH_OVERLOAD(multiplies_s_
+   BOOST_DISPATCH_OVERLOAD(multiplies_
                           , (typename A0, typename X)
                           , bd::cpu_
                           , bs::pack_<bd::floating_<A0>, X>
                           , bs::pack_<bd::floating_<A0>, X>
+                          , bs::saturated_tag
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+      BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1
+                                    , const saturated_tag &) const BOOST_NOEXCEPT
       {
         return a0*a1;
       }
    };
 
-//    BOOST_DISPATCH_OVERLOAD(multiplies_s_
+//    BOOST_DISPATCH_OVERLOAD(multiplies_
 //                           , (typename A0, typename X)
 //                           , bd::cpu_
 //                           , bs::pack_<bd::integer_<A0>, X>
@@ -47,6 +50,7 @@ namespace boost { namespace simd { namespace ext
 // //                                      , typename std::enable_if< // TODO
 // //                                        bs::is_upgradable_on_ext_t<A0>::value
 // //                                        >::type* = 0
+//                                   , const saturated_tag &
 //         ) const BOOST_NOEXCEPT
 //       {
 //         using utype = bd::upgrade_t<A0>;

@@ -70,7 +70,7 @@ void tests(Env& $)
   STF_IEEE_EQUAL(bs::saturated_(bs::multiplies)(aa1, aa2), bb);
 }
 
-STF_CASE_TPL("Check multiplies on pack" , STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check multiplies on pack" , (float)(int8_t))//STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 

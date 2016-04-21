@@ -17,7 +17,7 @@
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/function/scalar/min.hpp>
 #include <boost/simd/function/scalar/saturate.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/function/saturated.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/hierarchy.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
@@ -29,28 +29,32 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
- BOOST_DISPATCH_OVERLOAD ( plus_s_
+ BOOST_DISPATCH_OVERLOAD ( plus_
                          , (typename A0)
                          , bd::cpu_
                          , bd::scalar_< bd::floating_<A0> >
                          , bd::scalar_< bd::floating_<A0> >
+                         , bs::saturated_tag
                          )
  {
-   BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
+   BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1
+                                   , const saturated_tag &) const BOOST_NOEXCEPT
    {
-     return a0+a1;
+     return plus(a0, a1);
    }
  };
 
   // for signed integers
-  BOOST_DISPATCH_OVERLOAD ( plus_s_
+  BOOST_DISPATCH_OVERLOAD ( plus_
                           , (typename A0)
                           , bd::cpu_
                           , bd::scalar_< bd::int_<A0> >
                           , bd::scalar_< bd::int_<A0> >
+                          , bs::saturated_tag
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1
+                                   , const saturated_tag &) const BOOST_NOEXCEPT
     {
       using sz_t = typename brigand::bool_<sizeof(A0) == 4 || sizeof(A0) == 8>::type;
       return impl(a0, a1, sz_t());
@@ -78,14 +82,16 @@ namespace boost { namespace simd { namespace ext
   };
 
   // for unsigned integers
-  BOOST_DISPATCH_OVERLOAD ( plus_s_
+  BOOST_DISPATCH_OVERLOAD ( plus_
                           , (typename A0)
                           , bd::cpu_
                           , bd::scalar_< bd::uint_<A0> >
                           , bd::scalar_< bd::uint_<A0> >
+                          , bs::saturated_tag
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1
+                                    , const saturated_tag &) const BOOST_NOEXCEPT
     {
       using sz_t = typename brigand::bool_<sizeof(A0) == 4 || sizeof(A0) == 8>::type;
       return impl(a0, a1, sz_t());

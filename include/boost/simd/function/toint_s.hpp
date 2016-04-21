@@ -25,7 +25,7 @@ namespace boost { namespace simd
     For any given value @c x of type @c T:
 
     @code
-    as_integer_t<T> r = toint_s(x);
+    as_integer_t<T> r = saturated_(toint)(x);
     @endcode
 
     The code is similar to:

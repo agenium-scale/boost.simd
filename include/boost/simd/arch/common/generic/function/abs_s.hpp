@@ -17,7 +17,7 @@
 #include <boost/simd/function/abs.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/is_equal.hpp>
-//#include <boost/simd/math.hpp>
+#include <boost/simd/function/saturated.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
@@ -25,52 +25,59 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
-  BOOST_DISPATCH_OVERLOAD ( abs_s_
+  BOOST_DISPATCH_OVERLOAD ( abs_
                           , (typename T)
                           , bd::cpu_
                           , bd::generic_<bd::unsigned_<T>>
+                          , bs::saturated_tag
                           )
   {
-    BOOST_FORCEINLINE T operator()(T const& a) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE T operator()(T const& a
+                                  , const saturated_tag &) const BOOST_NOEXCEPT
     {
       return a;
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( abs_s_
+  BOOST_DISPATCH_OVERLOAD ( abs_
                           , (typename T)
                           , bd::cpu_
                           , bd::generic_<bd::floating_<T>>
+                          , bs::saturated_tag
                           )
   {
-    BOOST_FORCEINLINE T operator()(T const& a) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE T operator()(T const& a
+                                  ,  const saturated_tag &) const BOOST_NOEXCEPT
     {
       return simd::abs(a);
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( abs_s_
+  BOOST_DISPATCH_OVERLOAD ( abs_
                           , (typename T)
                           , bd::cpu_
                           , bd::generic_<bd::signed_<T>>
+                          , bs::saturated_tag
                           )
   {
-    BOOST_FORCEINLINE T operator()(T const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE T operator()(T const& a0
+                                  ,  const saturated_tag &) const BOOST_NOEXCEPT
     {
       T a =  bs::abs(a0);
       return if_else(is_equal(a0,Valmin<T>()),Valmax<T>(),a);
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( abs_s_
+  BOOST_DISPATCH_OVERLOAD ( abs_
                           , (typename T)
                           , bd::cpu_
                           , bd::generic_<bd::unspecified_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()(T const& a) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE T operator()(T const& a
+                                  ,  const saturated_tag &) const BOOST_NOEXCEPT
     {
-      return abs_s(a);
+      return saturated_(abs)(a);
     }
   };
 } } }

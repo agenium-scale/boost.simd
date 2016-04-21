@@ -37,7 +37,6 @@ void test(Env& $)
   p_t bb(&b[0], &b[N]);
   STF_EQUAL(bs::minus(aa1, aa2), bb);
   STF_EQUAL(aa1- aa2, bb);
-
 }
 
 STF_CASE_TPL("Check minus on pack" , STF_NUMERIC_TYPES)

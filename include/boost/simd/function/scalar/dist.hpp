@@ -15,5 +15,6 @@
 #include <boost/simd/function/definition/dist.hpp>
 #include <boost/simd/arch/common/generic/function/dist.hpp>
 #include <boost/simd/arch/common/scalar/function/dist.hpp>
+#include <boost/simd/arch/common/scalar/function/dist_s.hpp>
 
 #endif

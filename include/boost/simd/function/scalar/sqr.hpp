@@ -14,5 +14,6 @@
 
 #include <boost/simd/function/definition/sqr.hpp>
 #include <boost/simd/arch/common/generic/function/sqr.hpp>
+#include <boost/simd/arch/common/scalar/function/sqr_s.hpp>
 
 #endif

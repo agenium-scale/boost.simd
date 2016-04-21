@@ -20,19 +20,19 @@
 
 namespace boost { namespace simd { namespace ext
 {
-   BOOST_DISPATCH_OVERLOAD ( abs_
-                          , (typename T)
-                          ,  bd::cpu_
-                          ,  bd::generic_<bd::fundamental_<T>>
-                          ,  bs::saturated_tag
-                          )
-  {
-    BOOST_FORCEINLINE T operator()(const T& a
-                                  , const saturated_tag &) const BOOST_NOEXCEPT
-    {
-      return abs_s(a);
-    }
-  };
+//    BOOST_DISPATCH_OVERLOAD ( abs_
+//                           , (typename T)
+//                           ,  bd::cpu_
+//                           ,  bd::generic_<bd::fundamental_<T>>
+//                           ,  bs::saturated_tag
+//                           )
+//   {
+//     BOOST_FORCEINLINE T operator()(const T& a
+//                                   , const saturated_tag &) const BOOST_NOEXCEPT
+//     {
+//       return abs_s(a);
+//     }
+//   };
 } } }
 
 

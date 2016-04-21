@@ -18,7 +18,7 @@
 #include <boost/simd/function/simd/clz.hpp>
 #include <boost/simd/function/simd/exponent.hpp>
 #include <boost/simd/function/simd/minus.hpp>
-#include <boost/simd/function/simd/minusone_s.hpp>
+#include <boost/simd/function/simd/minusone.hpp>
 #include <boost/simd/function/simd/splat.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 
@@ -48,7 +48,7 @@ namespace boost { namespace simd { namespace ext
       using result = bd::as_integer_t<A0>;
       BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
       {
-        return minusone_s(sizeof(bd::scalar_of_t<A0>)*8-bs::clz(bitwise_cast<result>(a0)));
+        return saturated_(minusone)(sizeof(bd::scalar_of_t<A0>)*8-bs::clz(bitwise_cast<result>(a0)));
       }
    };
 

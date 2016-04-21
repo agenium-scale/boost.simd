@@ -28,27 +28,31 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
-  BOOST_DISPATCH_OVERLOAD ( multiplies_s_
+  BOOST_DISPATCH_OVERLOAD ( multiplies_
                           , (typename A0)
                           , bd::cpu_
                           , bd::scalar_< bd::floating_<A0> >
                           , bd::scalar_< bd::floating_<A0> >
+                          , bs::saturated_tag
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1
+                                    , const saturated_tag &) const BOOST_NOEXCEPT
     {
       return a0*a1;
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( multiplies_s_
+  BOOST_DISPATCH_OVERLOAD ( multiplies_
                           , (typename A0)
                           , bd::cpu_
                           , bd::scalar_< bd::unsigned_<A0> >
                           , bd::scalar_< bd::unsigned_<A0> >
+                          , bs::saturated_tag
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1
+                                    , const saturated_tag &) const BOOST_NOEXCEPT
     {
       using up_t =  bd::upgrade_t<A0>;
       up_t res = up_t(a0)*up_t(a1);
@@ -56,29 +60,33 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( multiplies_s_
+  BOOST_DISPATCH_OVERLOAD ( multiplies_
                           , (typename A0)
                           , bd::cpu_
                           , bd::scalar_< bd::integer_<A0> >
                           , bd::scalar_< bd::integer_<A0> >
+                          , bs::saturated_tag
                           )
   {
 
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1
+                                    , const saturated_tag &) const BOOST_NOEXCEPT
     {
       using up_t =  bd::upgrade_t<A0>;
       return A0(saturate<A0>(static_cast<up_t>(a0)*static_cast<up_t>(a1)));
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( multiplies_s_
+  BOOST_DISPATCH_OVERLOAD ( multiplies_
                           , (typename A0)
                           , bd::cpu_
                           , bd::scalar_< bd::int32_<A0> >
                           , bd::scalar_< bd::int32_<A0> >
+                          , bs::saturated_tag
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1
+                                    , const saturated_tag &) const BOOST_NOEXCEPT
     {
       using un_t = bd::as_unsigned_t<A0>;
       using up_t = bd::upgrade_t<A0>;
@@ -96,14 +104,16 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( multiplies_s_
+  BOOST_DISPATCH_OVERLOAD ( multiplies_
                           , (typename A0)
                           , bd::cpu_
                           , bd::scalar_< bd::uint64_<A0> >
                           , bd::scalar_< bd::uint64_<A0> >
+                          , bs::saturated_tag
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1
+                                    , const saturated_tag &) const BOOST_NOEXCEPT
     {
       if (a1 == 0 || a0 == 0) return Zero<A0>();
       if (a1 >= a0)
@@ -119,15 +129,17 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( multiplies_s_
+  BOOST_DISPATCH_OVERLOAD ( multiplies_
                           , (typename A0)
                           , bd::cpu_
                           , bd::scalar_< bd::int64_<A0> >
                           , bd::scalar_< bd::int64_<A0> >
+                          , bs::saturated_tag
                           )
   {
     using un_t = bd::as_unsigned_t<A0>;
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1
+                                    , const saturated_tag &) const BOOST_NOEXCEPT
     {
       if (a1 == 0 || a0 == 0) return Zero<A0>();
       A0 sign =  bitwise_xor(bitofsign(a0), bitofsign(a1));

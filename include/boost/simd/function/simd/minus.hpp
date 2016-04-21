@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_MINUS_INCLUDED
 
 #include <boost/simd/function/scalar/minus.hpp>
+#include <boost/simd/arch/common/simd/function/minus_s.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 
 #if defined(BOOST_HW_SIMD_X86)
@@ -22,12 +23,13 @@
 #  endif
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_SSE2_VERSION
 #    include <boost/simd/arch/x86/sse2/simd/function/minus.hpp>
+#    include <boost/simd/arch/x86/sse2/simd/function/minus_s.hpp>
 #  endif
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_AVX_VERSION
-// #    include <boost/simd/arch/x86/avx/simd/function/minus.hpp>
+#    include <boost/simd/arch/x86/avx/simd/function/minus.hpp>
 #  endif
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_AVX2_VERSION
-// #    include <boost/simd/arch/x86/avx2/simd/function/minus.hpp>
+#    include <boost/simd/arch/x86/avx2/simd/function/minus.hpp>
 #  endif
 
 #endif
@@ -35,7 +37,7 @@
 #if defined(BOOST_HW_SIMD_PPC)
 
 #  if BOOST_HW_SIMD_PPC >= BOOST_HW_SIMD_PPC_VMX_VERSION
-// #    include <boost/simd/arch/power/vmx/simd/function/minus.hpp>
+#    include <boost/simd/arch/power/vmx/simd/function/minus.hpp>
 #  endif
 
 #endif

@@ -14,5 +14,6 @@
 
 #include <boost/simd/function/definition/minusone.hpp>
 #include <boost/simd/arch/common/generic/function/minusone.hpp>
+#include <boost/simd/arch/common/generic/function/minusone_s.hpp>
 
 #endif
