@@ -16,6 +16,7 @@ add_subdirectory(make)
 add_subdirectory(slice)
 add_subdirectory(slide)
 add_subdirectory(splat)
+add_subdirectory(split)
 
 set ( SOURCES
 abs.cpp
