@@ -9,42 +9,41 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_SLICE_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_SLICE_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_SLICE_HIGH_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_SLICE_HIGH_HPP_INCLUDED
 
 namespace boost { namespace simd
 {
 #if defined(DOXYGEN_ONLY)
   /*!
     @ingroup group-swar
-    Type-preserving pack slicing
+    Type-preserving pack higher slicing
 
-    This function object slices a simd::pack into two simd::pack of same type but twice as small.
+    This function object returns the lower slice of a simd::pack, i.e a simd::pack of same type
+    containing the higher half of ts argument.
 
     @par Semantic:
 
-    For any value @c a of type @c T , the following code:
+    For any value @c a of type @c T and cardinal @c N, the following code:
 
     @code
-    auto c = slice(a);
+    pack<T,N/2> c = slice_high(a);
     @endcode
 
-    returns an array type which behaves so that:
+    is equivalent to
 
     @code
-    compare_equal(a, combine(c[0],c[1]));
+    pack<T,N/2> c( a[N/2], ..., a[N-1]);
     @endcode
 
-    evaluates to @c true.
-
-    @see combine
+    @see slice
     @see slice_low
-    @see slice_high
+    @see combine
   **/
-  const boost::dispatch::functor<tag::slice_> slice = {};
+  const boost::dispatch::functor<tag::slice_high_> slice_high = {};
 #endif
 } }
 
-#include <boost/simd/function/simd/slice.hpp>
+#include <boost/simd/function/simd/slice_high.hpp>
 
 #endif

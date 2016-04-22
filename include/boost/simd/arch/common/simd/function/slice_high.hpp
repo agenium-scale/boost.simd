@@ -6,11 +6,11 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SLICE_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SLICE_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SLICE_HIGH_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SLICE_HIGH_HPP_INCLUDED
 
-#include <boost/simd/function/slice_high.hpp>
-#include <boost/simd/function/slice_low.hpp>
+#include <boost/simd/function/make.hpp>
+#include <boost/simd/function/extract.hpp>
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/dispatch/hierarchy.hpp>
 #include <boost/dispatch/function/overload.hpp>
@@ -22,30 +22,34 @@ namespace boost { namespace simd { namespace ext
   namespace bs = boost::simd;
   namespace br = brigand;
 
-  BOOST_DISPATCH_OVERLOAD ( slice_
+  BOOST_DISPATCH_OVERLOAD ( slice_high_
                           , (typename T, typename X)
                           , bd::cpu_
                           , bs::pack_< bd::unspecified_<T>, X >
                           )
   {
-    using base_t   = typename T::template resize<T::static_size/2>;
-    using result_t = std::array<base_t,2>;
+    static const std::size_t half = T::static_size/2;
+    using result_t   = typename T::template resize<half>;
 
     template<typename... N>
-    static BOOST_FORCEINLINE result_t do_ ( T const& a, aggregate_storage const&) BOOST_NOEXCEPT
+    static BOOST_FORCEINLINE
+    result_t do_ ( T const& a, aggregate_storage const&, br::list<N...> const&) BOOST_NOEXCEPT
     {
-      return a.storage();
+      return a.storage()[1];
     }
 
-    template<typename K>
-    static BOOST_FORCEINLINE result_t do_( T const& a, K const&) BOOST_NOEXCEPT
+    template<typename K, typename... N>
+    static BOOST_FORCEINLINE
+    result_t do_( T const& a, K const&, br::list<N...> const&) BOOST_NOEXCEPT
     {
-      return {{ slice_low(a), slice_high(a) }};
+      return  make<result_t>( bs::extract<N::value>(a)... );
     }
 
     BOOST_FORCEINLINE result_t operator()(T const& a) const BOOST_NOEXCEPT
     {
-      return do_( a, typename base_t::traits::storage_kind{} );
+      return do_( a, typename result_t::traits::storage_kind{}
+                , brigand::range<std::size_t, half, T::static_size>{}
+                );
     }
   };
 } } }
