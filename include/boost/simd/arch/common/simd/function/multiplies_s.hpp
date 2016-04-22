@@ -39,26 +39,28 @@ namespace boost { namespace simd { namespace ext
       }
    };
 
-//    BOOST_DISPATCH_OVERLOAD(multiplies_
-//                           , (typename A0, typename X)
-//                           , bd::cpu_
-//                           , bs::pack_<bd::integer_<A0>, X>
-//                           , bs::pack_<bd::integer_<A0>, X>
-//                           )
-//    {
-//       BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1
-// //                                      , typename std::enable_if< // TODO
-// //                                        bs::is_upgradable_on_ext_t<A0>::value
-// //                                        >::type* = 0
-//                                   , const saturated_tag &
-//         ) const BOOST_NOEXCEPT
-//       {
+   BOOST_DISPATCH_OVERLOAD(multiplies_
+                          , (typename A0, typename X)
+                          , bd::cpu_
+                          , bs::pack_<bd::integer_<A0>, X>
+                          , bs::pack_<bd::integer_<A0>, X>
+                          , bs::saturated_tag
+                          )
+   {
+      BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1
+ //                                    , typename std::enable_if< // TODO
+//                                        bs::is_upgradable_on_ext_t<A0>::value
+//                                        >::type* = 0
+                                  , const saturated_tag &
+        ) const BOOST_NOEXCEPT
+      {
+        return a0*a1;
 //         using utype = bd::upgrade_t<A0>;
 //         utype res0, res1;
 //         split_multiplies(a0, a1, res0, res1);
 //         return groups(res0, res1);
-//       }
-//    };
+      }
+   };
 
 } } }
 

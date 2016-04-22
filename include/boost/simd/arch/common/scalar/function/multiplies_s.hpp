@@ -160,6 +160,21 @@ namespace boost { namespace simd { namespace ext
         : mini*maxi;
     }
   };
+  BOOST_DISPATCH_OVERLOAD ( multiplies_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::fundamental_<A0> >
+                          , bd::scalar_< bd::fundamental_<A0> >
+                          , bs::saturated_tag
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1
+                                    , const saturated_tag &) const BOOST_NOEXCEPT
+    {
+      return saturated_(multiplies(a0, a1));
+    }
+  };
+
 } } }
 
 
