@@ -73,6 +73,7 @@ fnms.cpp
 frac.cpp
 frexp.cpp
 genmaskc.cpp
+group.cpp
 hi.cpp
 hmsb.cpp
 hypot.cpp
