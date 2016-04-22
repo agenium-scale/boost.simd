@@ -14,5 +14,6 @@
 
 #include <boost/simd/function/definition/touint.hpp>
 #include <boost/simd/arch/common/scalar/function/touint.hpp>
+#include <boost/simd/arch/common/scalar/function/touint_s.hpp>
 
 #endif

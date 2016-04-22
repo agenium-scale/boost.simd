@@ -28,11 +28,11 @@ void test(Env& $)
   for(std::size_t i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? T(i) : T(-i);
-    b[i] = bs::abs_s(a1[i]) ;
+    b[i] = bs::saturated_(bs::abs)(a1[i]) ;
   }
   p_t aa1(&a1[0], &a1[N]);
   p_t bb (&b[0], &b[N]);
-  STF_IEEE_EQUAL(bs::abs_s(aa1), bb);
+  STF_IEEE_EQUAL(bs::saturated_(bs::abs)(aa1), bb);
 }
 
 STF_CASE_TPL("Check abs_s on pack" , STF_NUMERIC_TYPES)

@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/scalar/neg_s.hpp>
+#include <boost/simd/function/scalar/neg.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -19,45 +19,43 @@
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/valmin.hpp>
 
-STF_CASE_TPL (" neg_s real",  STF_IEEE_TYPES)
+STF_CASE_TPL (" bs::saturated_(bs::neg) real",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
-  using bs::neg_s;
-  using r_t = decltype(neg_s(T()));
+  using r_t = decltype(bs::saturated_(bs::neg)(T()));
 
   // return type conformity test
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
 #ifndef STF_NO_INVALIDS
-  STF_EQUAL(neg_s(bs::Inf<T>()), bs::Minf<T>());
-  STF_EQUAL(neg_s(bs::Minf<T>()), bs::Inf<T>());
-  STF_IEEE_EQUAL(neg_s(bs::Nan<T>()), bs::Nan<T>());
+  STF_EQUAL(bs::saturated_(bs::neg)(bs::Inf<T>()), bs::Minf<T>());
+  STF_EQUAL(bs::saturated_(bs::neg)(bs::Minf<T>()), bs::Inf<T>());
+  STF_IEEE_EQUAL(bs::saturated_(bs::neg)(bs::Nan<T>()), bs::Nan<T>());
 #endif
-  STF_EQUAL(neg_s(bs::Mone<T>()), bs::One<T>());
-  STF_EQUAL(neg_s(bs::One<T>()), bs::Mone<T>());
-  STF_EQUAL(neg_s(bs::Valmax<T>()), bs::Valmin<T>());
-  STF_EQUAL(neg_s(bs::Valmin<T>()), bs::Valmax<T>());
-  STF_EQUAL(neg_s(bs::Zero<T>()), bs::Zero<T>());
-  STF_EQUAL(neg_s(T(100)), T(-100));
+  STF_EQUAL(bs::saturated_(bs::neg)(bs::Mone<T>()), bs::One<T>());
+  STF_EQUAL(bs::saturated_(bs::neg)(bs::One<T>()), bs::Mone<T>());
+  STF_EQUAL(bs::saturated_(bs::neg)(bs::Valmax<T>()), bs::Valmin<T>());
+  STF_EQUAL(bs::saturated_(bs::neg)(bs::Valmin<T>()), bs::Valmax<T>());
+  STF_EQUAL(bs::saturated_(bs::neg)(bs::Zero<T>()), bs::Zero<T>());
+  STF_EQUAL(bs::saturated_(bs::neg)(T(100)), T(-100));
 } // end of test for floating_
 
-STF_CASE_TPL (" neg_s signed_int",  STF_SIGNED_INTEGRAL_TYPES)
+STF_CASE_TPL (" bs::saturated_(bs::neg) signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
-  using bs::neg_s;
-  using r_t = decltype(neg_s(T()));
+  using r_t = decltype(bs::saturated_(bs::neg)(T()));
 
   // return type conformity test
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-  STF_EQUAL(neg_s(T(100)), T(-100));
-  STF_EQUAL(neg_s(bs::Mone<T>()), bs::One<T>());
-  STF_EQUAL(neg_s(bs::One<T>()), bs::Mone<T>());
-  STF_EQUAL(neg_s(bs::Valmax<T>()), -bs::Valmax<T>());
-  STF_EQUAL(neg_s(bs::Valmin<T>()), bs::Valmax<T>());
-  STF_EQUAL(neg_s(bs::Zero<T>()), bs::Zero<T>());
+  STF_EQUAL(bs::saturated_(bs::neg)(T(100)), T(-100));
+  STF_EQUAL(bs::saturated_(bs::neg)(bs::Mone<T>()), bs::One<T>());
+  STF_EQUAL(bs::saturated_(bs::neg)(bs::One<T>()), bs::Mone<T>());
+  STF_EQUAL(bs::saturated_(bs::neg)(bs::Valmax<T>()), -bs::Valmax<T>());
+  STF_EQUAL(bs::saturated_(bs::neg)(bs::Valmin<T>()), bs::Valmax<T>());
+  STF_EQUAL(bs::saturated_(bs::neg)(bs::Zero<T>()), bs::Zero<T>());
 } // end of test for signed_int_

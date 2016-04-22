@@ -62,7 +62,7 @@ namespace boost { namespace simd {
     {
       BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
       {
-        return (a1 == a0) ? a0 : (a1 > a0) ? saturated_oneplus)(a0) : saturated_(minusone)(a0);
+        return (a1 == a0) ? a0 : (a1 > a0) ? saturated_(oneplus)(a0) : saturated_(minusone)(a0);
       }
     };
     BOOST_DISPATCH_OVERLOAD ( nextafter_

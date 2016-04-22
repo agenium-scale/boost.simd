@@ -14,5 +14,6 @@
 
 #include <boost/simd/function/definition/inc_s.hpp>
 #include <boost/simd/arch/common/generic/function/inc_s.hpp>
+#include <boost/simd/arch/common/generic/function/inc_s.hpp>
 
 #endif

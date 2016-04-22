@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/scalar/touint_s.hpp>
+#include <boost/simd/function/scalar/touint.hpp>
 #include <simd_test.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -25,12 +25,11 @@ STF_CASE_TPL (" touint_s signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
-  using bs::touint_s;
-  using r_t = decltype( touint_s(T()));
+  using r_t = decltype( bs::saturated_(bs::touint)(T()));
 
   STF_TYPE_IS( r_t, (bd::as_integer_t<T, unsigned>));
 
-  STF_EQUAL(touint_s(bs::Mone<T>()), bs::Zero<r_t>());
-  STF_EQUAL(touint_s(bs::One<T>()), bs::One<r_t>());
-  STF_EQUAL(touint_s(bs::Zero<T>()), bs::Zero<r_t>());
+  STF_EQUAL(bs::saturated_(bs::touint)(bs::Mone<T>()), bs::Zero<r_t>());
+  STF_EQUAL(bs::saturated_(bs::touint)(bs::One<T>()), bs::One<r_t>());
+  STF_EQUAL(bs::saturated_(bs::touint)(bs::Zero<T>()), bs::Zero<r_t>());
 } // end of test for signed_int_

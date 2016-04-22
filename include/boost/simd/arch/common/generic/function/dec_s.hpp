@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_DEC_S_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_DEC_S_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_DEC_S_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_DEC_S_HPP_INCLUDED
 
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/valmin.hpp>

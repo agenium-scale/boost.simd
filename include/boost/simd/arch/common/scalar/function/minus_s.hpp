@@ -90,7 +90,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1
-                                    , const std::true_type &) const BOOST_NOEXCEPT
+                                    , const saturated_tag &) const BOOST_NOEXCEPT
     {
       A0 res = a0 - a1;
       res &= -(res <= a0);

@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/scalar/unary_minus_s.hpp>
+#include <boost/simd/function/scalar/unary_minus.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -19,39 +19,37 @@
 #include <boost/simd/constant/valmin.hpp>
 
 
-STF_CASE_TPL( "Check unary_minus_s behavior with floating", STF_IEEE_TYPES )
+STF_CASE_TPL( "Check bs::saturated_(bs::unary_minus_s) behavior with floating", STF_IEEE_TYPES )
 {
   namespace bs = boost::simd;
-  using bs::unary_minus_s;
-  using r_t = decltype(unary_minus_s(T()));
+  using r_t = decltype(bs::saturated_(bs::unary_minus)(T()));
   STF_TYPE_IS(r_t, T);
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(unary_minus_s(bs::Inf<T>()),  bs::Minf<r_t>());
-  STF_EQUAL(unary_minus_s(bs::Minf<T>()), bs::Inf<r_t>());
-  STF_IEEE_EQUAL(unary_minus_s(bs::Nan<T>()),  bs::Nan<r_t>());
+  STF_EQUAL(bs::saturated_(bs::unary_minus)(bs::Inf<T>()),  bs::Minf<r_t>());
+  STF_EQUAL(bs::saturated_(bs::unary_minus)(bs::Minf<T>()), bs::Inf<r_t>());
+  STF_IEEE_EQUAL(bs::saturated_(bs::unary_minus)(bs::Nan<T>()),  bs::Nan<r_t>());
 #endif
-  STF_EQUAL(unary_minus_s(bs::Mone<T>()), bs::One<T>());
-  STF_EQUAL(unary_minus_s(bs::One<T>()), bs::Mone<T>());
-  STF_EQUAL(unary_minus_s(bs::Valmax<T>()), bs::Valmin<T>());
-  STF_EQUAL(unary_minus_s(bs::Valmin<T>()), bs::Valmax<T>());
-  STF_EQUAL(unary_minus_s(bs::Zero<T>()), bs::Zero<T>());
+  STF_EQUAL(bs::saturated_(bs::unary_minus)(bs::Mone<T>()), bs::One<T>());
+  STF_EQUAL(bs::saturated_(bs::unary_minus)(bs::One<T>()), bs::Mone<T>());
+  STF_EQUAL(bs::saturated_(bs::unary_minus)(bs::Valmax<T>()), bs::Valmin<T>());
+  STF_EQUAL(bs::saturated_(bs::unary_minus)(bs::Valmin<T>()), bs::Valmax<T>());
+  STF_EQUAL(bs::saturated_(bs::unary_minus)(bs::Zero<T>()), bs::Zero<T>());
 }
 
 
-STF_CASE_TPL( "Check unary_minus_s behavior with floating", STF_SIGNED_INTEGRAL_TYPES)
+STF_CASE_TPL( "Check bs::saturated_(bs::unary_minus) behavior with floating", STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
-  using bs::unary_minus_s;
-  using r_t = decltype(unary_minus_s(T()));
+  using r_t = decltype(bs::saturated_(bs::unary_minus)(T()));
   STF_TYPE_IS(r_t, T);
 
-  STF_EQUAL(unary_minus_s(bs::Mone<T>()), bs::One<T>());
-  STF_EQUAL(unary_minus_s(bs::One<T>()), bs::Mone<T>());
-  STF_EQUAL(unary_minus_s(bs::Valmax<T>()), bs::Valmin<T>()+bs::One<T>());
-  STF_EQUAL(unary_minus_s(bs::Valmin<T>()), bs::Valmax<T>());
-  STF_EQUAL(unary_minus_s(bs::Valmin<T>()+bs::One<T>()), bs::Valmax<T>());
-  STF_EQUAL(unary_minus_s(bs::Zero<T>()), bs::Zero<T>());
+  STF_EQUAL(bs::saturated_(bs::unary_minus)(bs::Mone<T>()), bs::One<T>());
+  STF_EQUAL(bs::saturated_(bs::unary_minus)(bs::One<T>()), bs::Mone<T>());
+  STF_EQUAL(bs::saturated_(bs::unary_minus)(bs::Valmax<T>()), bs::Valmin<T>()+bs::One<T>());
+  STF_EQUAL(bs::saturated_(bs::unary_minus)(bs::Valmin<T>()), bs::Valmax<T>());
+  STF_EQUAL(bs::saturated_(bs::unary_minus)(bs::Valmin<T>()+bs::One<T>()), bs::Valmax<T>());
+  STF_EQUAL(bs::saturated_(bs::unary_minus)(bs::Zero<T>()), bs::Zero<T>());
 }
 
 

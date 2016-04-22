@@ -29,7 +29,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/scalar/divides_s.hpp>
+#include <boost/simd/function/scalar/divides.hpp>
 #include <boost/simd/function/simd/rdivide.hpp>
 
 #endif

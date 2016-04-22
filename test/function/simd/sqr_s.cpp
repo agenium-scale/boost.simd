@@ -10,7 +10,7 @@
 */
 //==================================================================================================
 #include <boost/simd/pack.hpp>
-#include <boost/simd/function/sqr_s.hpp>
+#include <boost/simd/function/sqr.hpp>
 #include <boost/simd/function/bits.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
@@ -28,14 +28,14 @@ void test(Env& $)
   for(std::size_t i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? T(i) : T(-i);
-    b[i] = bs::sqr_s(a1[i]) ;
+    b[i] = bs::saturated_(bs::sqr)(a1[i]) ;
   }
   p_t aa1(&a1[0], &a1[N]);
   p_t bb (&b[0], &b[N]);
-  STF_IEEE_EQUAL(bs::sqr_s(aa1), bb);
+  STF_IEEE_EQUAL(bs::saturated_(bs::sqr)(aa1), bb);
 }
 
-STF_CASE_TPL("Check sqr_s on pack" , STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check sqr on pack" , STF_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
