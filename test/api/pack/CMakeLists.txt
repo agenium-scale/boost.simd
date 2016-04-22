@@ -12,7 +12,6 @@ set ( SOURCES
       concepts.cpp
       hierarchy.cpp
       iterators.cpp
-      operators.cpp
       proxy.cpp
     )
 
