@@ -55,10 +55,9 @@ namespace boost { namespace simd
 
 namespace boost { namespace simd
 {
-  struct std_tag
+  struct std_tag : boost::dispatch::unspecified_<std_tag>
   {
-    using parent = std_tag;
-    using hierarchy_tag = void;
+    using parent = boost::dispatch::unspecified_<std_tag>;
   };
 
   const detail::decorator<std_tag> std_ = {};
