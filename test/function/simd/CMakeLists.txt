@@ -14,6 +14,7 @@ add_subdirectory(insert)
 add_subdirectory(load)
 add_subdirectory(make)
 add_subdirectory(slice)
+add_subdirectory(slide)
 add_subdirectory(splat)
 
 set ( SOURCES
