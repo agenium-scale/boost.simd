@@ -67,6 +67,20 @@ namespace boost { namespace simd { namespace ext
       return std::isfinite(a0);
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( is_finite_
+                          , (typename A0)
+                          , bd::cpu_
+                          , boost::simd::std_tag
+                          , bd::scalar_< bd::integer_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE logical<A0> operator() (const std_tag &,  A0
+                                      ) const BOOST_NOEXCEPT
+    {
+      return true;
+    }
+  };
 } } }
 
 

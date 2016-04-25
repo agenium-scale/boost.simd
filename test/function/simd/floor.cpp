@@ -11,25 +11,27 @@
 //==================================================================================================
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/floor.hpp>
-#include <boost/simd/function/bits.hpp>
+#include <boost/simd/function/std.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
 
-template <typename T,int N, typename Env>
+template <typename T, int N, typename Env>
 void test(Env& $)
 {
   namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
   using p_t = bs::pack<T, N>;
 
   T a1[N], b[N];
   for(int i = 0; i < N; ++i)
   {
-    a1[i] = ((i%2) ? T(2*i) : T(-2*i))/T(3);
+    a1[i] = ((i%2) ? T(i*2) : T(-2*i))/T(3);
     b[i] = bs::floor(a1[i]) ;
   }
   p_t aa1(&a1[0], &a1[N]);
   p_t bb (&b[0], &b[N]);
   STF_IEEE_EQUAL(bs::floor(aa1), bb);
+  STF_EQUAL(bs::std_(bs::floor)(aa1), bb);
 }
 
 STF_CASE_TPL("Check floor on pack" , STF_NUMERIC_TYPES)

@@ -17,7 +17,7 @@
 #include <boost/dispatch/adapted/std/integral_constant.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
-#include <cmath>
+#include <functional>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -99,13 +99,13 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0)
                           , bd::cpu_
                           , bs::std_tag
-                          , bd::scalar_< bd::floating_<A0> >
-                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::arithmetic_<A0> >
+                          , bd::scalar_< bd::arithmetic_<A0> >
                           )
   {
-    BOOST_FORCEINLINE logical<A0> operator() (const std_tag &, A0 a0, A0 a1,  bs::std_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE logical<A0> operator() (const std_tag &, A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
-      return std::isgreater(a0, a1);
+      return std::greater<A0>()(a0, a1);
     }
   };
 } } }
