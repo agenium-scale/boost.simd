@@ -61,30 +61,28 @@ namespace boost { namespace simd { namespace ext
       return if_else(is_eqz(a0), if_else_zero(is_negative(a1), Pi<A0>()*sgn), z);
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( atan2_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::floating_<A0> >
-                          , bd::scalar_< bd::floating_<A0> >
                           , bs::std_tag
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1, std_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const std_tag &,  A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       return std::atan2(a0, a1);
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( atan2_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::floating_<A0> >
-                          , bd::scalar_< bd::floating_<A0> >
                           , bs::fast_tag
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1, fast_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       A0 z = detail::invtrig_base<A0,tag::radian_tag, tag::not_simd_type>::kernel_atan(a0/a1);
       return if_else(is_positive(a1), z, Pi<A0>()-z)*signnz(a0);

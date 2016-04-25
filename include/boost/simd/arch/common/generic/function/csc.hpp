@@ -33,7 +33,6 @@ namespace boost { namespace simd { namespace ext
       return csc(a0, tag::big_);
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( csc_
                           , (typename A0, typename A1)
                           , bd::cpu_
@@ -46,15 +45,14 @@ namespace boost { namespace simd { namespace ext
       return rec(sin(a0, A1()));
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( csc_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::generic_< bd::floating_<A0> >
                           ,  bs::fast_tag
+                          , bd::generic_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, fast_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 const& a0) const BOOST_NOEXCEPT
     {
       return rec(fast_(sin)(a0));
     }

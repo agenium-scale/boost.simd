@@ -26,14 +26,14 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( hypot_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::generic_<bd::floating_<A0> >
-                          , bd::generic_<bd::floating_<A0> >
                           , bs::fast_tag
+                          , bd::generic_<bd::floating_<A0> >
+                          , bd::generic_<bd::floating_<A0> >
                           )
   {
 
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A0 const& a1
-                                    , fast_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 const& a0, A0 const& a1
+                                    ) const BOOST_NOEXCEPT
     {
       return boost::simd::sqrt(bs::fma(a0, a0, sqr(a1)));
     }

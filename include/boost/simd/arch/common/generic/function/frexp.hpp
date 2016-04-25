@@ -41,7 +41,6 @@ namespace boost { namespace simd { namespace ext
       return a1;
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( frexp_
                           , (typename A0)
                           , bd::cpu_
@@ -58,14 +57,12 @@ namespace boost { namespace simd { namespace ext
       return {first, second};
     }
   };
-
-
   BOOST_DISPATCH_OVERLOAD ( frexp_
                           , (typename A0, typename A2)
                           , bd::cpu_
+                          , boost::simd::fast_tag
                           , bd::generic_< bd::floating_<A0> >
                           , bd::generic_< bd::integer_<A2> >
-                          , boost::simd::fast_tag
                             )
   {
     static_assert
@@ -73,30 +70,31 @@ namespace boost { namespace simd { namespace ext
       , "boost.simd cardinalities are inconsistent in frexp call"
       );
 
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0,A2 & a2
-                                    , bs::fast_tag const& f) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()(const fast_tag &
+                                   , A0 const& a0, A2 & a2
+                                   ) const BOOST_NOEXCEPT
     {
       A0 a1;
-      bs::frexp(a0, a1, a2, f);
+      fast_(bs::frexp)(a0, a1, a2);
       return a1;
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( frexp_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::generic_<bd::floating_<A0> >
                           , boost::simd::fast_tag
+                          , bd::generic_<bd::floating_<A0> >
                           )
   {
     using exponent_t = bd::as_integer_t<A0, signed>;
 
-    BOOST_FORCEINLINE std::pair<A0,exponent_t>  operator() ( A0 const& a0
-                                                           , bs::fast_tag const & f    ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE std::pair<A0,exponent_t>  operator() (const fast_tag &
+                                                           ,  A0 const& a0
+                                                           ) const BOOST_NOEXCEPT
     {
       A0 first;
       exponent_t second;
-      bs::frexp( a0, first, second ,f);
+      fast_(bs::frexp)( a0, first, second);
       return {first, second};
     }
   };

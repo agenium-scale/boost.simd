@@ -82,18 +82,17 @@ namespace boost { namespace simd { namespace ext
       }
     }
   };
-
  BOOST_DISPATCH_OVERLOAD ( frexp_
                          , (typename A0, typename A1)
                          , bd::cpu_
+                         , boost::simd::fast_tag
                          , bd::scalar_< bd::floating_<A0> >
                          , bd::scalar_< bd::floating_<A0> >
                          , bd::scalar_< bd::integer_<A1>  >
-                         , boost::simd::fast_tag
                          )
  {
-    BOOST_FORCEINLINE void operator() ( A0 a0,A0 & r0,A1& r1
-                                      , fast_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE void operator() (const fast_tag &,  A0 a0,A0 & r0,A1& r1
+                                      ) const BOOST_NOEXCEPT
     {
       r1  = bitwise_cast<A1>(bitwise_and(Mask1frexp<A0>(), a0));
       A0  x = bitwise_andnot(a0, Mask1frexp<A0>());
@@ -101,17 +100,16 @@ namespace boost { namespace simd { namespace ext
       r0  = bitwise_or(x,Mask2frexp<A0>());
     }
   };
-
  BOOST_DISPATCH_OVERLOAD ( frexp_
                          , (typename A0, typename A1)
                          , bd::cpu_
+                         , boost::simd::std_tag
                          , bd::scalar_< bd::floating_<A0> >
                          , bd::scalar_< bd::integer_<A1>  >
-                         , boost::simd::std_tag
                          )
  {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A1& r1
-                                      , std_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const std_tag &,  A0 a0, A1& r1
+                                      ) const BOOST_NOEXCEPT
     {
       int e = Zero<int>();
       A0 r = std::frexp(a0, &e);
@@ -119,35 +117,33 @@ namespace boost { namespace simd { namespace ext
       return r;
     }
   };
-
  BOOST_DISPATCH_OVERLOAD ( frexp_
                          , (typename A0, typename A1)
                          , bd::cpu_
+                         , boost::simd::std_tag
                          , bd::scalar_< bd::floating_<A0> >
                          , bd::scalar_< bd::floating_<A0> >
                          , bd::scalar_< bd::integer_<A1>  >
-                         , boost::simd::std_tag
                          )
  {
-    BOOST_FORCEINLINE void operator() ( A0 a0, A0& r1, A1& r2
-                                      , std_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE void operator() (const std_tag &,  A0 a0, A0& r1, A1& r2
+                                      ) const BOOST_NOEXCEPT
     {
       int e = Zero<int>();
       r1 = std::frexp(a0, &e);
       r2 = e;
     }
   };
-
  BOOST_DISPATCH_OVERLOAD ( frexp_
                          , (typename A0)
                          , bd::cpu_
-                         , bd::scalar_< bd::floating_<A0> >
                          , boost::simd::std_tag
+                         , bd::scalar_< bd::floating_<A0> >
                          )
  {
    using i_t = bd::as_integer_t<A0, signed>;
-   BOOST_FORCEINLINE std::pair < A0, i_t> operator() ( A0 a0
-                                                     , std_tag const&) const BOOST_NOEXCEPT
+   BOOST_FORCEINLINE std::pair < A0, i_t> operator() (const std_tag &,  A0 a0
+                                                     ) const BOOST_NOEXCEPT
     {
       int e = Zero<int>();
       A0 r1 = std::frexp(a0, &e);

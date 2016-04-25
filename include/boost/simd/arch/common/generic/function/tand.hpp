@@ -32,7 +32,6 @@ namespace boost { namespace simd { namespace ext
       return detail::trig_base<A0,tag::degree_tag,is_not_scalar_t<A0>,tag::big_tag>::tana(a0);
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( tand_
                           , (typename A0, typename A1)
                           , bd::cpu_
@@ -45,15 +44,14 @@ namespace boost { namespace simd { namespace ext
       return detail::trig_base<A0,tag::degree_tag,is_not_scalar_t<A0>,A1>::tana(a0);
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( tand_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::generic_< bd::floating_<A0> >
                           , bs::fast_tag
+                          , bd::generic_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0,  fast_tag const &) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 const& a0) const BOOST_NOEXCEPT
     {
       return detail::trig_base<A0,tag::degree_tag,is_not_scalar_t<A0>,tag::clipped_pio4_tag>::tana(a0);
     }

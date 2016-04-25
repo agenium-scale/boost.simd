@@ -22,12 +22,12 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( rec_
                           , (typename T)
                           , bd::cpu_
-                          , bd::generic_<bd::unspecified_<T>>
                           , boost::simd::fast_tag
+                          , bd::generic_<bd::unspecified_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()(T const& a
-                                  , fast_tag const& ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE T operator()(const fast_tag &, T const& a
+                                  ) const BOOST_NOEXCEPT
     {
       return rec(a);
     }

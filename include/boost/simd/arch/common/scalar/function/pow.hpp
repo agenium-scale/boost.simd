@@ -48,16 +48,15 @@ namespace boost { namespace simd { namespace ext
       return  (is_negative(a0) && is_odd(a1)) ? -z : z;
     }
   };
-
    BOOST_DISPATCH_OVERLOAD ( pow_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::floating_<A0> >
-                          , bd::scalar_< bd::floating_<A0> >
                           , bs::std_tag
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    inline A0 operator() ( A0 a0, A0 a1, std_tag const&) const BOOST_NOEXCEPT
+    inline A0 operator() (const std_tag &,  A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       return std::pow(a0, a1);
     }

@@ -46,8 +46,6 @@ namespace boost { namespace simd { namespace ext
                             );
     }
   };
-
-
   BOOST_DISPATCH_OVERLOAD ( correct_fma_
                           , (typename A0)
                           , bd::cpu_
@@ -78,7 +76,6 @@ namespace boost { namespace simd { namespace ext
     #endif
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( correct_fma_
                           , (typename A0)
                           , bd::cpu_
@@ -97,8 +94,6 @@ namespace boost { namespace simd { namespace ext
       return A0(correct_fma(u_t(a0), u_t(a1), u_t(a2)));
     }
   };
-
-
   BOOST_DISPATCH_OVERLOAD ( correct_fma_
                           , (typename A0)
                           , bd::cpu_
@@ -112,17 +107,16 @@ namespace boost { namespace simd { namespace ext
       return multiplies(a0, a1)+a2;
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( correct_fma_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::floating_<A0> >
-                          , bd::scalar_< bd::floating_<A0> >
-                          , bd::scalar_< bd::floating_<A0> >
                           , boost::simd::std_tag
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1, A0 a2, std_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const std_tag &,  A0 a0, A0 a1, A0 a2) const BOOST_NOEXCEPT
     {
       return std::fma(a0, a1, a2);
     }
