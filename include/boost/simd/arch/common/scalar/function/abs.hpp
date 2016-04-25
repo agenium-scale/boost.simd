@@ -19,6 +19,7 @@
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>
+#include <cstdlib>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -101,6 +102,19 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE T operator()( std_tag const&, T a) const BOOST_NOEXCEPT
     {
       return std::fabs(a);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( abs_
+                          , (typename T)
+                          , bd::cpu_
+                          , bs::std_tag
+                          , bd::scalar_<bd::unsigned_<T>>
+                          )
+  {
+    BOOST_FORCEINLINE T operator()( std_tag const&, T a) const BOOST_NOEXCEPT
+    {
+      return a;
     }
   };
 

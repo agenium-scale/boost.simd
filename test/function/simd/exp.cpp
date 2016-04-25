@@ -11,7 +11,7 @@
 //==================================================================================================
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/exp.hpp>
-#include <boost/simd/function/bits.hpp>
+#include <boost/simd/function/std.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
 
@@ -21,15 +21,18 @@ void test(Env& $)
   namespace bs = boost::simd;
   using p_t = bs::pack<T, N>;
 
-  T a1[N], b[N];
+  T a1[N], b[N], c[N];
   for(std::size_t i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? T(i) : T(-i);
     b[i] = bs::exp(a1[i]) ;
+    c[i] = bs::std_(bs::exp)(a1[i]) ;
   }
   p_t aa1(&a1[0], &a1[N]);
   p_t bb (&b[0], &b[N]);
+  p_t cc (&c[0], &c[N]);
   STF_IEEE_EQUAL(bs::exp(aa1), bb);
+  STF_IEEE_EQUAL(bs::std_(bs::exp)(aa1), cc);
 }
 
 STF_CASE_TPL("Check exp on pack" , STF_IEEE_TYPES)

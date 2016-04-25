@@ -11,7 +11,7 @@
 //==================================================================================================
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/ceil.hpp>
-#include <boost/simd/function/bits.hpp>
+#include <boost/simd/function/std.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
 
@@ -31,6 +31,7 @@ void test(Env& $)
   p_t aa1(&a1[0], &a1[N]);
   p_t bb (&b[0], &b[N]);
   STF_IEEE_EQUAL(bs::ceil(aa1), bb);
+  STF_EQUAL(bs::std_(bs::ceil)(aa1), bb);
 }
 
 STF_CASE_TPL("Check ceil on pack" , STF_NUMERIC_TYPES)

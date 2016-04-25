@@ -16,6 +16,7 @@
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/simd/arch/common/detail/scalar/exponential.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
+#include <boost/simd/function/std.hpp>
 #include <boost/config.hpp>
 #include <cmath>
 

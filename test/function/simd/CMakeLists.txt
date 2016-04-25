@@ -53,6 +53,7 @@ dists.cpp
 divides.cpp
 divs.cpp
 exp.cpp
+exp2.cpp
 enumerate.cpp
 ffs.cpp
 firstbitset.cpp

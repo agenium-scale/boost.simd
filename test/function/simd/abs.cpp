@@ -9,6 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/abs.hpp>
 #include <boost/simd/pack.hpp>
+#include <boost/simd/function/std.hpp>
 #include <simd_test.hpp>
 
 namespace bs = boost::simd;
@@ -18,17 +19,19 @@ void test(Env& $)
 {
   using p_t = bs::pack<T, N>;
 
-  T a1[N], b[N];
+  T a1[N], b[N], c[N];
   for(std::size_t i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? T(i) : T(-i);
     b[i] = bs::abs(a1[i]) ;
+    c[i] = bs::std_(bs::abs)(a1[i]);
   }
 
   p_t aa1(&a1[0], &a1[N]);
   p_t bb (&b[0], &b[N]);
-
+  p_t cc (&c[0], &c[N]);
   STF_EQUAL(bs::abs(aa1), bb);
+  STF_EQUAL(bs::std_(bs::abs)(aa1), cc);
 }
 
 STF_CASE_TPL("Check abs on pack" , STF_NUMERIC_TYPES)
