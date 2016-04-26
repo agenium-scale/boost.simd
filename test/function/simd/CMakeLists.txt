@@ -142,6 +142,10 @@ is_real.cpp
 is_unord.cpp
 ldexp.cpp
 lo.cpp
+log.cpp
+log10.cpp
+log1p.cpp
+log2.cpp
 logical_and.cpp
 logical_andnot.cpp
 logical_notand.cpp

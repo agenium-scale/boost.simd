@@ -50,6 +50,7 @@
 #include <boost/simd/function/sqr.hpp>
 #include <boost/simd/function/tofloat.hpp>
 #include <boost/simd/function/unary_minus.hpp>
+#include <tuple>
 
 namespace boost { namespace simd
 {
@@ -70,7 +71,7 @@ namespace boost { namespace simd
         using i_t = bd::as_integer_t<A0, signed>;
         A0 x;
         i_t k;
-        fast_(frexp)(a0, x, k);
+        std::tie(x, k) = fast_(frexp)(a0);
         const i_t x_lt_sqrthf = (Sqrt_2o_2<A0>() > x) ? Mone<i_t>() : Zero<i_t>();
         k += x_lt_sqrthf;
         f = minusone(x+bitwise_and(x, genmask(x_lt_sqrthf)));

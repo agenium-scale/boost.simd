@@ -17,7 +17,7 @@
 #include <boost/simd/function/simd/is_greater.hpp>
 #include <boost/simd/function/simd/is_ltz.hpp>
 #include <boost/simd/function/simd/is_equal.hpp>
-#include <boost/simd/function/simd/fast_frexp.hpp>
+#include <boost/simd/function/simd/frexp.hpp>
 #include <boost/simd/function/simd/seladd.hpp>
 #include <boost/simd/function/simd/plus.hpp>
 #include <boost/simd/function/simd/minus.hpp>
@@ -42,6 +42,7 @@
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/dispatch/meta/scalar_of.hpp>
 #include <boost/config.hpp>
+#include <tuple>
 
 #ifndef BOOST_SIMD_NO_NANS
 #include <boost/simd/function/simd/is_nan.hpp>
@@ -69,7 +70,8 @@ namespace boost { namespace simd
     {
       using i_t = bd::as_integer_t<A0, signed>;
       i_t k;
-      A0 x = frexp(a0, k); //, fast_);
+      A0 x = a0;
+      std::tie(x, k) = fast_(frexp)(x);
       const i_t x_lt_sqrthf = if_else_zero(is_greater(Sqrt_2o_2<A0>(), x),Mone<i_t>());
       k = k+x_lt_sqrthf; //+=
       f = minusone(x+bitwise_and(x, x_lt_sqrthf));
@@ -126,7 +128,7 @@ namespace boost { namespace simd
     #endif
       A0 y1 = if_nan_else(test, y);
     #ifndef BOOST_SIMD_NO_INFINITIES
-      y1 = if_else(eq(a0, Inf<A0>()), a0, y1);
+      y1 = if_else(is_equal(a0, Inf<A0>()), a0, y1);
     #endif
       return if_else(is_eqz(a0), Minf<A0>(), y1);
     }
