@@ -15,6 +15,5 @@
 #include <boost/simd/function/scalar/frexp.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/simd/function/frexp.hpp>
-#include <boost/simd/arch/common/generic/function/frexp.hpp>
 
 #endif
