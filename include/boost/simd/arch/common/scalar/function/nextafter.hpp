@@ -79,6 +79,20 @@ namespace boost { namespace simd {
         return std::nextafter(a0, a1);
       }
     };
+    BOOST_DISPATCH_OVERLOAD ( nextafter_
+                            , (typename A0)
+                            , bd::cpu_
+                            , boost::simd::std_tag
+                            , bd::scalar_< bd::integer_<A0> >
+                            , bd::scalar_< bd::integer_<A0> >
+                            )
+    {
+      BOOST_FORCEINLINE A0 operator() (const std_tag &, A0  a0, A0 a1
+                                      ) const BOOST_NOEXCEPT
+      {
+        return bs::nextafter(a0, a1);
+      }
+    };
   }
 } }
 

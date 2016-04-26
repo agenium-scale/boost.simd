@@ -32,6 +32,7 @@
 #include <boost/simd/function/simd/seladd.hpp>
 #include <boost/simd/function/simd/shr.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
+#include <utility>
 
 #ifndef BOOST_SIMD_NO_DENORMALS
 #include <boost/simd/function/simd/is_less.hpp>
@@ -48,37 +49,55 @@ namespace boost { namespace simd { namespace ext
    namespace bd = boost::dispatch;
    namespace bs = boost::simd;
    BOOST_DISPATCH_OVERLOAD(frexp_
-                             , (typename A0, typename A1, typename A2, typename X, typename Y)
-                             , bd::cpu_
-                             , bs::pack_<bd::floating_<A0>, X>
-                             , bs::pack_<bd::floating_<A1>, X>
-                             , bs::pack_<bd::integer_<A2>,Y>
-                             )
+                          , (typename A0, typename X)
+                          , bs::simd_
+                          , bs::pack_<bd::floating_<A0>, X>
+                          )
    {
-     BOOST_FORCEINLINE void operator()(A0 const& a0, A1 & r0, A2 & r1) const
-      {
-        using int_type = bd::as_integer_t<A0, signed>;
-        using s_type = bd::scalar_of_t<A0>;
-  #ifndef BOOST_SIMD_NO_DENORMALS
-        auto test = logical_and(is_less(bs::abs(a0), Smallestposval<A0>()), is_nez(a0));
-        A0 aa0 = if_else(test, Twotonmb<A0>()*a0, a0);
-        A2 t = if_else_zero(test,Nbmantissabits<A0>());
-  #else
-        A0 aa0 = a0;
-  #endif
-        r1 = simd::bitwise_cast<int_type>(bitwise_and(aa0, Mask1frexp<A0>())); //extract exp.
-        A0  x   = bitwise_andnot(aa0, Mask1frexp<A0>());
-        r1  = shr(r1,Nbmantissabits<s_type>()) - Maxexponentm1<A0>();
-        r0  = bitwise_or(x,Mask2frexp<A0>());
-        auto test0 = is_nez(aa0);
-        auto test1 = is_greater(r1,Limitexponent<A0>());
-        r1 = if_else_zero(logical_notand(test1, test0), r1);
-  #ifndef BOOST_SIMD_NO_DENORMALS
-        r1 -= t ;
-  #endif
-        r0 = if_else_zero(test0, seladd(test1,r0,aa0));
-      }
+     using i_t = bd::as_integer_t<A0, signed>;
+     BOOST_FORCEINLINE std::pair<A0,i_t> operator()(A0 const& a0) const
+     {
+       A0 r0;
+       i_t r1;
+       using s_type = bd::scalar_of_t<A0>;
+#ifndef BOOST_SIMD_NO_DENORMALS
+       auto test = logical_and(is_less(bs::abs(a0), Smallestposval<A0>()), is_nez(a0));
+       A0 aa0 = if_else(test, Twotonmb<A0>()*a0, a0);
+       i_t t = if_else_zero(test,Nbmantissabits<A0>());
+#else
+       A0 aa0 = a0;
+#endif
+       r1 = simd::bitwise_cast<i_t>(bitwise_and(aa0, Mask1frexp<A0>())); //extract exp.
+       A0 x = bitwise_andnot(aa0, Mask1frexp<A0>());
+       r1 = shr(r1,Nbmantissabits<s_type>()) - Maxexponentm1<A0>();
+       r0 = bitwise_or(x,Mask2frexp<A0>());
+       auto test0 = is_nez(aa0);
+       auto test1 = is_greater(r1,Limitexponent<A0>());
+       r1 = if_else_zero(logical_notand(test1, test0), r1);
+#ifndef BOOST_SIMD_NO_DENORMALS
+       r1 -= t ;
+#endif
+       r0 = if_else_zero(test0, seladd(test1,r0,aa0));
+       return {r0, r1};
+     }
    };
+
+  BOOST_DISPATCH_OVERLOAD ( frexp_
+                          , (typename A0, typename X)
+                          , bs::simd_
+                          , boost::simd::fast_tag
+                          , bs::pack_< bd::floating_<A0>, X>
+                          )
+  {
+    using i_t = bd::as_integer_t<A0, signed>;
+    BOOST_FORCEINLINE std::pair<A0,i_t> operator() (const fast_tag &
+                                                   , A0 a0 ) const BOOST_NOEXCEPT
+    {
+      i_t r1  = bitwise_cast<i_t>(bitwise_and(Mask1frexp<A0>(), a0));
+      A0  x = bitwise_andnot(a0, Mask1frexp<A0>());
+      return {bitwise_or(x,Mask2frexp<A0>()), shr(r1,Nbmantissabits<A0>()) - Maxexponentm1<A0>()};
+    }
+  };
 
 } } }
 

@@ -58,12 +58,13 @@ namespace boost { namespace simd { namespace ext
       return is_ord(a0,a1)&&(a0!=a1);
     }
   };
+
   BOOST_DISPATCH_OVERLOAD ( is_lessgreater_
                           , (typename A0)
                           , bd::cpu_
                           , bs::std_tag
-                          , bd::scalar_< bd::floating_<A0> >
-                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::arithmetic_<A0> >
+                          , bd::scalar_< bd::arithmetic_<A0> >
                           )
   {
     BOOST_FORCEINLINE logical<A0> operator() (const std_tag &,  A0 a0, A0 a1
@@ -72,6 +73,8 @@ namespace boost { namespace simd { namespace ext
       return std::islessgreater(a0, a1);
     }
   };
+
+
 } } }
 
 

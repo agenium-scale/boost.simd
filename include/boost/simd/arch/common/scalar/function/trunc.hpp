@@ -83,12 +83,26 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0)
                           , bd::cpu_
                           , bs::std_tag
-                          , bd::scalar_< bd::double_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const std_tag &,  A0 a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const std_tag &
+                                    ,  A0 a0) const BOOST_NOEXCEPT
     {
       return std::trunc(a0);
+    }
+  };
+  BOOST_DISPATCH_OVERLOAD ( trunc_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bs::std_tag
+                          , bd::scalar_< bd::integer_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() (const std_tag &
+                                    ,  A0 a0) const BOOST_NOEXCEPT
+    {
+      return a0;
     }
   };
 

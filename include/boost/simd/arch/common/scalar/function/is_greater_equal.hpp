@@ -95,19 +95,7 @@ namespace boost { namespace simd { namespace ext
       return a >=  b;
     }
   };
-  BOOST_DISPATCH_OVERLOAD ( is_greater_equal_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bs::std_tag
-                          , bd::scalar_< bd::floating_<A0> >
-                          , bd::scalar_< bd::floating_<A0> >
-                          )
-  {
-    BOOST_FORCEINLINE logical<A0> operator() (const std_tag &, A0 a0, A0 a1,  bs::std_tag const&) const BOOST_NOEXCEPT
-    {
-      return std::isgreaterequal(a0, a1);
-    }
-  };
+
 
 } } }
 

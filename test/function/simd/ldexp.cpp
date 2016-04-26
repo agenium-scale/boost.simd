@@ -11,6 +11,7 @@
 //==================================================================================================
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/ldexp.hpp>
+#include <boost/simd/function/std.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/logical.hpp>
 #include <simd_test.hpp>
@@ -25,18 +26,24 @@ void test(Env& $)
   using p_t = bs::pack<T, N>;
   using pi_t = bs::pack<iT, N>;
 
-  T a1[N],  b[N];
+  T a1[N],  b[N], c[N], d[N];
   iT a2[N];
   for(std::size_t i = 0; i < N; ++i)
   {
      a1[i] = (i%2) ? T(i) : T(-i);
      a2[i] = i%(sizeof(T)*8-1);
      b[i] = bs::ldexp(a1[i], a2[i]);
+     c[i] = bs::std_(bs::ldexp)(a1[i], a2[i]);
+     d[i] = bs::fast_(bs::ldexp)(a1[i], a2[i]);
    }
   p_t aa1(&a1[0], &a1[N]);
   pi_t aa2(&a2[0], &a2[N]);
   p_t bb(&b[0], &b[N]);
+  p_t cc(&c[0], &c[N]);
+  p_t dd(&d[0], &d[N]);
   STF_IEEE_EQUAL(bs::ldexp(aa1, aa2), bb);
+  STF_IEEE_EQUAL(bs::std_(bs::ldexp)(aa1, aa2), cc);
+  STF_IEEE_EQUAL(bs::fast_(bs::ldexp)(aa1, aa2), dd);
 }
 
 STF_CASE_TPL("Check ldexp on pack" , STF_NUMERIC_TYPES)

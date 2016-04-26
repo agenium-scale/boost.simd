@@ -104,6 +104,7 @@ namespace boost { namespace simd { namespace ext
       return a0*bitwise_cast<A0>(ik);
     }
   };
+
   BOOST_DISPATCH_OVERLOAD ( ldexp_
                           , (typename A0, typename A1)
                           , bd::cpu_
@@ -118,7 +119,20 @@ namespace boost { namespace simd { namespace ext
       return std::ldexp(a0, a1);
     }
   };
-
+  BOOST_DISPATCH_OVERLOAD ( ldexp_
+                          , (typename A0, typename A1)
+                          , bd::cpu_
+                          , boost::simd::std_tag
+                          , bd::scalar_< bd::integer_<A0> >
+                          , bd::scalar_< bd::integer_<A1> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() (const std_tag &
+                                    ,  A0 a0, A1 a1 ) const BOOST_NOEXCEPT
+    {
+      return bs::ldexp(a0, a1);
+    }
+  };
 } } }
 
 

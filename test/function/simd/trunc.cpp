@@ -11,7 +11,7 @@
 //==================================================================================================
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/trunc.hpp>
-#include <boost/simd/function/bits.hpp>
+#include <boost/simd/function/std.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
 
@@ -25,12 +25,13 @@ void test(Env& $)
   T a1[N], b[N];
   for(int i = 0; i < N; ++i)
   {
-    a1[i] = ((i%2) ? T(2*i) : T(-2*i))/T(3);
+    a1[i] = ((i%2) ? T(i*2) : T(-2*i))/T(3);
     b[i] = bs::trunc(a1[i]) ;
   }
   p_t aa1(&a1[0], &a1[N]);
   p_t bb (&b[0], &b[N]);
   STF_IEEE_EQUAL(bs::trunc(aa1), bb);
+  STF_EQUAL(bs::std_(bs::trunc)(aa1), bb);
 }
 
 STF_CASE_TPL("Check trunc on pack" , STF_NUMERIC_TYPES)
