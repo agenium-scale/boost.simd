@@ -72,6 +72,7 @@ namespace boost { namespace simd { namespace detail
     };                                                                                             \
                                                                                                    \
     using static_range            = brigand::range<std::size_t, 0, N>;                             \
+    using element_range           = brigand::range<std::size_t, 0, N>;                             \
                                                                                                    \
     using storage_kind            = ::boost::simd::native_storage;                                 \
                                                                                                    \

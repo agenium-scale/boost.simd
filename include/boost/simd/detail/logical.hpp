@@ -37,6 +37,7 @@ namespace boost { namespace simd { namespace detail
     using substorage_type   = T;
 
     using static_range      = brigand::range<std::size_t, 0, N>;
+    using element_range     = brigand::range<std::size_t, 0, N>;
 
     enum { static_size = N, element_size = 1, number_of_vectors = 0 };
     enum { alignment = sizeof(T) };
@@ -68,6 +69,7 @@ namespace boost { namespace simd { namespace detail
     using substorage_type = SIMD;
 
     using static_range    = brigand::range<std::size_t, 0, NumberOfVectors>;
+    using element_range     = brigand::range<std::size_t, 0, N>;
 
     enum  { static_size = N
           , element_size = N / NumberOfVectors
