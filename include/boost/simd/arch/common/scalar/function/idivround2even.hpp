@@ -16,8 +16,8 @@
 // 04/24/2016
 
 #include <boost/predef/compiler.h>
-#if BOOST_COMP_CLANG >= BOOST_VERSION_NUMBER(3,7,0)
 
+#if BOOST_COMP_CLANG >= BOOST_VERSION_NUMBER(3,7,0)
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/constant/valmax.hpp>
@@ -30,9 +30,6 @@
 
 namespace boost { namespace simd { namespace ext
 {
-
-
-
   BOOST_DISPATCH_OVERLOAD ( idivround2even_
                           , (typename A0)
                           , bd::cpu_
@@ -46,12 +43,9 @@ namespace boost { namespace simd { namespace ext
       if (a1) return  iround2even(a0/a1);
       if (!a0) return  Nan<result_t>();
       return is_negative(bitwise_or(a0, a1)) ? Valmin<result_t>() : Valmax<result_t>();
-
     }
   };
 } } }
 
 #endif
-
-
 #endif
