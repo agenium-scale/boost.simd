@@ -15,6 +15,7 @@
 #include <boost/dispatch/hierarchy/functions.hpp>
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/arch/common/tags.hpp>
+#include <boost/simd/detail/decorator.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -54,6 +55,41 @@ namespace boost { namespace simd { namespace ext
     auto operator()( P0 const& p0
                    , S0 const& s0
                    ) const
+    BOOST_NOEXCEPT_DECLTYPE_BODY(functor()(p0, P0(value_t(s0)) ) )
+  };
+
+  // ({D,P,S},{D,S,P})
+  // -----------------------------------------------------------------------------------------------
+
+  BOOST_DISPATCH_OVERLOAD_FALLBACK ( (typename F, typename D, typename P0, typename S0, typename E0)
+                                   , bd::elementwise_<F>
+                                   , bd::cpu_
+                                   , bd::unspecified_<D>
+                                   , bd::scalar_<bd::unspecified_<S0>>
+                                   , bs::pack_<bd::unspecified_<P0>, E0>
+                                   )
+  {
+    using functor = decltype(detail::decorator<D>()(bd::functor<F>()));
+    using value_t = typename P0::value_type;
+
+    auto operator()( D const&, S0 const& s0, P0 const& p0 ) const
+    BOOST_NOEXCEPT_DECLTYPE_BODY(functor()(P0(value_t(s0)), p0))
+  };
+
+  // -----------------------------------------------------------------------------------------------
+
+  BOOST_DISPATCH_OVERLOAD_FALLBACK ( (typename F, typename D, typename P0, typename S0, typename E0)
+                                   , bd::elementwise_<F>
+                                   , bd::cpu_
+                                   , bd::unspecified_<D>
+                                   , bs::pack_<bd::unspecified_<P0>, E0>
+                                   , bd::scalar_<bd::unspecified_<S0>>
+                                   )
+  {
+    using functor = decltype(detail::decorator<D>()(bd::functor<F>()));
+    using value_t = typename P0::value_type;
+
+    auto operator()( D const&, P0 const& p0, S0 const& s0 ) const
     BOOST_NOEXCEPT_DECLTYPE_BODY(functor()(p0, P0(value_t(s0)) ) )
   };
 

@@ -47,7 +47,6 @@ namespace boost { namespace simd { namespace ext
       return (a0 >= a1);
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( is_greater_equal_
                           , (typename A0, typename A1)
                           , bd::cpu_
@@ -60,7 +59,6 @@ namespace boost { namespace simd { namespace ext
       return (a0 >= A1::value);
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( is_greater_equal_
                           , (typename A0, typename A1)
                           , bd::cpu_
@@ -73,7 +71,6 @@ namespace boost { namespace simd { namespace ext
       return (A0::value >= a1);
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( is_greater_equal_
                           , (typename A0)
                           , bd::cpu_
@@ -86,7 +83,6 @@ namespace boost { namespace simd { namespace ext
       return {true};
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( is_greater_equal_
                           , (typename T)
                           ,  bd::cpu_
@@ -100,19 +96,6 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( is_greater_equal_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bd::scalar_< bd::floating_<A0> >
-                          , bd::scalar_< bd::floating_<A0> >
-                          , bs::std_tag
-                          )
-  {
-    BOOST_FORCEINLINE logical<A0> operator() (A0 a0, A0 a1,  bs::std_tag const&) const BOOST_NOEXCEPT
-    {
-      return std::isgreaterequal(a0, a1);
-    }
-  };
 
 } } }
 

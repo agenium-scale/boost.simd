@@ -24,11 +24,12 @@ namespace boost { namespace simd { namespace ext
 //   BOOST_DISPATCH_OVERLOAD ( toint_
 //                           , (typename A0)
 //                           , bs::sse2_
-//                           , bs::pack_<bd::double_<A0>, bs::sse_>
 //                           , bs::fast_tag
+//                           , bs::pack_<bd::double_<A0>, bs::sse_>
 //                          )
 //   {
-//     BOOST_FORCEINLINE  bd::as_integer_t<A0>  operator() ( const A0 & a0, const fast_tag &) const BOOST_NOEXCEPT
+//     BOOST_FORCEINLINE  bd::as_integer_t<A0>  operator() (const fast_tag &
+//                              , const A0 & a0) const BOOST_NOEXCEPT
 //     {
 //       auto out = _mm_cvttpd_epi32(a0);
 //       return bs::split_low(out);

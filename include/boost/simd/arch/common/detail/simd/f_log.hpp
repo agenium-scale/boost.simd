@@ -128,7 +128,7 @@ namespace boost { namespace simd
       {
         A0 z =  a0;
 #ifndef BOOST_SIMD_NO_DENORMALS
-        auto denormal = lt(bs::abs(z), Smallestposval<A0>());
+        auto denormal = is_less(bs::abs(z), Smallestposval<A0>());
         z = if_else(denormal, z*Twotonmb<A0>(), z);
         A0 t = if_else_zero(denormal, Mlog2two2nmb<A0>());
 #endif
@@ -150,7 +150,7 @@ namespace boost { namespace simd
       {
         A0 z = a0;
 #ifndef BOOST_SIMD_NO_DENORMALS
-        auto denormal = lt(bs::abs(z), Smallestposval<A0>());
+        auto denormal = is_less(bs::abs(z), Smallestposval<A0>());
         z = if_else(denormal, z*Twotonmb<A0>(), z);
         A0 t = if_else_zero(denormal, Mlog10two2nmb<A0>());
 #endif
@@ -159,7 +159,7 @@ namespace boost { namespace simd
         A0 x, fe, x2, y;
         kernel_t::log(z, fe, x, x2, y);
         y = bs::fma(x2, Mhalf<A0>(), y);
-        z = (x+y* Log10_elo<A0>());
+        z = (x+y)* Log10_elo<A0>();
         z = bs::fma(y, Log10_ehi<A0>(), z);
         z = bs::fma( x, Log10_ehi<A0>(), z);
         z = bs::fma(fe, Log10_2hi<A0>(), z);

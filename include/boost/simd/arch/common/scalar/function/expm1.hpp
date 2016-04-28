@@ -22,6 +22,7 @@
 #include <boost/simd/constant/logeps.hpp>
 #include <boost/simd/constant/maxlog.hpp>
 #include <boost/simd/constant/mone.hpp>
+#include <boost/simd/function/std.hpp>
 #include <boost/simd/function/scalar/is_greater.hpp>
 #include <boost/simd/function/scalar/is_less.hpp>
 #include <boost/dispatch/function/overload.hpp>
@@ -35,7 +36,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( expm1_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::generic_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
                           )
   {
     BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
@@ -48,15 +49,14 @@ namespace boost { namespace simd { namespace ext
       return detail::expm1_kernel<A0>::expm1(a0);
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( expm1_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::floating_<A0> >
                           , bs::std_tag
+                          , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (A0 a0, std_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const std_tag &, A0 a0) const BOOST_NOEXCEPT
     {
       return std::expm1(a0);
     }

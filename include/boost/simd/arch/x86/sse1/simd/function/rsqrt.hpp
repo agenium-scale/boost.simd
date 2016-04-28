@@ -27,12 +27,12 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( rsqrt_
                           , (typename A0)
                           , bs::sse_
-                          , bs::pack_<bd::single_<A0>, bs::sse_>
                           , bs::fast_tag
-                         )
+                          , bs::pack_<bd::single_<A0>, bs::sse_>
+                          )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0
-                                    , fast_tag const& ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (fast_tag const&
+                                    , const A0 & a0) const BOOST_NOEXCEPT
     {
       A0 nr  = _mm_rsqrt_ps(a0);
       return nr*Half<A0>() * fnma(a0, sqr(nr), Mthree<A0>());

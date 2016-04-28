@@ -31,7 +31,6 @@ namespace boost { namespace simd { namespace ext
       return a0;
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( toint_
                           , (typename A0)
                           , bd::cpu_
@@ -44,17 +43,16 @@ namespace boost { namespace simd { namespace ext
       return result_t(a0);
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( toint_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::unspecified_<A0> >
                           , boost::simd::fast_tag
+                          , bd::scalar_< bd::unspecified_<A0> >
                           )
   {
     using result_t = bd::as_integer_t<A0, signed>;
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0
-                                          , fast_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE result_t operator() (const fast_tag &,  A0 const& a0
+                                          ) const BOOST_NOEXCEPT
     {
       return toint(a0);
     }

@@ -40,6 +40,7 @@
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
 #include <cmath>
+#include <tuple>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -76,7 +77,8 @@ namespace boost { namespace simd { namespace ext
       const A0 CBRT4I = Constant< A0, 0x3fe428a2f98d728bll> ();
       using i_t = bd::as_integer_t<A0, signed>;
       i_t e;
-      A0 x = fast_(frexp)(z, e);
+      A0 x;
+      std::tie(x, e) = fast_(frexp)(z);
       x = horn<A0,
                0x3fd9c0c12122a4fell,
                0x3ff23d6ee505873all,
@@ -104,7 +106,6 @@ namespace boost { namespace simd { namespace ext
     #endif
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( cbrt_
                           , (typename A0)
                           , bd::cpu_
@@ -133,7 +134,8 @@ namespace boost { namespace simd { namespace ext
       const A0 CBRT4I = Constant< A0, 0x3f214518> ();
       using i_t = bd::as_integer_t<A0, signed>;
       i_t e;
-      A0 x = fast_(frexp)(z, e);
+      A0 x;
+      std::tie(x, e)= fast_(frexp)(z);
       x = horn<A0,
                0x3ece0609,
                0x3f91eb77,
@@ -161,15 +163,14 @@ namespace boost { namespace simd { namespace ext
     #endif
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( cbrt_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::floating_<A0> >
                           , bs::std_tag
+                          , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0  a0,  bs::std_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const std_tag &,  A0  a0,  bs::std_tag const&) const BOOST_NOEXCEPT
     {
       return std::cbrt(a0);
     }

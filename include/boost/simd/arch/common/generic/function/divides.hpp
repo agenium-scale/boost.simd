@@ -26,29 +26,27 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( divides_
                           , (typename T)
                           , bd::cpu_
-                          , bd::generic_<bd::unspecified_<T>>
-                          , bd::generic_<bd::unspecified_<T>>
                           , boost::simd::fast_tag
+                          , bd::generic_<bd::unspecified_<T>>
+                          , bd::generic_<bd::unspecified_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()(T const& a, T const& b
-                                  , fast_tag const& ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE T operator()(const fast_tag &, T const& a, T const& b
+                                  ) const BOOST_NOEXCEPT
     {
       return divides(a, b);
     }
   };
-
-  namespace bd = boost::dispatch;
   BOOST_DISPATCH_OVERLOAD ( divides_
                           , (typename T)
                           , bd::cpu_
-                          , bd::generic_<bd::floating_<T>>
-                          , bd::generic_<bd::floating_<T>>
                           , boost::simd::fast_tag
+                          , bd::generic_<bd::floating_<T>>
+                          , bd::generic_<bd::floating_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()(T const& a, T const& b
-                                  , fast_tag const& ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE T operator()(const fast_tag &, T const& a, T const& b
+                                  ) const BOOST_NOEXCEPT
     {
       return a*fast_(rec)(b);
     }

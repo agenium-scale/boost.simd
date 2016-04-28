@@ -25,11 +25,11 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( rsqrt_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::single_<A0> >
                           , boost::simd::fast_tag
+                          , bd::scalar_< bd::single_<A0> >
                          )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, fast_tag const& ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 a0) const BOOST_NOEXCEPT
     {
       typedef bd::as_integer_t<A0> i_t;
 
@@ -48,15 +48,14 @@ namespace boost { namespace simd { namespace ext
       return  y2 * ( 1.5f - ( x2 * y2 * y2 ) );
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( rsqrt_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::double_<A0> >
                           , boost::simd::fast_tag
+                          , bd::scalar_< bd::double_<A0> >
                          )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, fast_tag const& ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 a0) const BOOST_NOEXCEPT
     {
       return simd::rsqrt(a0);
     }

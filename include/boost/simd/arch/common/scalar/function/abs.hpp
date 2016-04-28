@@ -19,10 +19,12 @@
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>
+#include <cstdlib>
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
   BOOST_DISPATCH_OVERLOAD ( abs_
                           , (typename T)
                           , bd::cpu_
@@ -93,11 +95,11 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( abs_
                           , (typename T)
                           , bd::cpu_
+                          , bs::std_tag
                           , bd::scalar_<bd::floating_<T>>
-                          , boost::simd::std_tag
                           )
   {
-    BOOST_FORCEINLINE T operator()(T a, std_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE T operator()( std_tag const&, T a) const BOOST_NOEXCEPT
     {
       return std::fabs(a);
     }
@@ -106,11 +108,24 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( abs_
                           , (typename T)
                           , bd::cpu_
-                          , bd::scalar_<bd::integer_<T>>
-                          , boost::simd::std_tag
+                          , bs::std_tag
+                          , bd::scalar_<bd::unsigned_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()(T a, std_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE T operator()( std_tag const&, T a) const BOOST_NOEXCEPT
+    {
+      return a;
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( abs_
+                          , (typename T)
+                          , bd::cpu_
+                          , boost::simd::std_tag
+                          , bd::scalar_<bd::integer_<T>>
+                          )
+  {
+    BOOST_FORCEINLINE T operator()( std_tag const&,T a) const BOOST_NOEXCEPT
     {
       return std::abs(a);
     }

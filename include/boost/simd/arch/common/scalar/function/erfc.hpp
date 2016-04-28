@@ -67,7 +67,6 @@ namespace boost { namespace simd { namespace ext
       return (a0 < 0.0f) ? 2.0f-r1 : r1;
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( erfc_
                           , (typename A0)
                           , bd::cpu_
@@ -103,15 +102,14 @@ namespace boost { namespace simd { namespace ext
       else return Zero<A0>();
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( erfc_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::floating_<A0> >
                           , bs::std_tag
+                          , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (A0 a0, std_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const std_tag &, A0 a0) const BOOST_NOEXCEPT
     {
       return std::erfc(a0);
     }

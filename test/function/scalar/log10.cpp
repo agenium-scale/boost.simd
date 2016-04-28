@@ -19,8 +19,9 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/mzero.hpp>
 #include <boost/simd/constant/ten.hpp>
+#include <boost/simd/constant/three.hpp>
 
-STF_CASE_TPL (" log10",  STF_IEEE_TYPES)
+STF_CASE_TPL (" log10", STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -30,7 +31,6 @@ STF_CASE_TPL (" log10",  STF_IEEE_TYPES)
 
   // return type conformity test
   STF_TYPE_IS(r_t, T);
-
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
   STF_ULP_EQUAL(log10(bs::Inf<T>()), bs::Inf<r_t>(), 0);
@@ -42,6 +42,7 @@ STF_CASE_TPL (" log10",  STF_IEEE_TYPES)
 #endif
   STF_ULP_EQUAL(log10(bs::One<T>()), bs::Zero<r_t>(), 0);
   STF_ULP_EQUAL(log10(bs::Two<T>()), T(0.301029995663981195213738894724), 0);
+  STF_ULP_EQUAL(log10(bs::Three<T>()),T(0.477121254719662437295027903255), 0.5);
 }
 
 STF_CASE_TPL (" log10 uint8",  (uint8_t))

@@ -22,11 +22,12 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( iround2even_
                           , (typename A0)
                           , bs::sse2_
-                          , bs::pack_<bd::single_<A0>, bs::sse_>
                           , bs::fast_tag
-                         )
+                          , bs::pack_<bd::single_<A0>, bs::sse_>
+                          )
   {
-    BOOST_FORCEINLINE  bd::as_integer_t<A0> operator() ( const A0 & a0, const fast_tag &) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE  bd::as_integer_t<A0> operator() (fast_tag const&
+                                                       , const A0 & a0) const BOOST_NOEXCEPT
     {
       return _mm_cvtps_epi32(a0);
     }

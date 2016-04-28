@@ -23,11 +23,11 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( rec_
                           , (typename A0)
                           , bs::sse_
-                          , bs::pack_<bd::single_<A0>, bs::sse_>
                           , bs::fast_tag
+                          , bs::pack_<bd::single_<A0>, bs::sse_>
                          )
   {
-    BOOST_FORCEINLINE A0 operator()(const A0 & a0, fast_tag const& ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()(fast_tag const&, const A0 & a0) const BOOST_NOEXCEPT
     {
       return _mm_rcp_ps( a0 );
     }

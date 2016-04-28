@@ -53,6 +53,8 @@ dists.cpp
 divides.cpp
 divs.cpp
 exp.cpp
+exp2.cpp
+expm1.cpp
 enumerate.cpp
 ffs.cpp
 firstbitset.cpp
@@ -140,6 +142,10 @@ is_real.cpp
 is_unord.cpp
 ldexp.cpp
 lo.cpp
+log.cpp
+log10.cpp
+log1p.cpp
+log2.cpp
 logical_and.cpp
 logical_andnot.cpp
 logical_notand.cpp

@@ -23,6 +23,7 @@
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
+#include <tuple>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -64,7 +65,7 @@ namespace boost { namespace simd { namespace ext
     {
       A0 m;
       result_t p;
-      simd::frexp(simd::abs(a0), m, p);
+      std::tie(m, p) = simd::frexp(simd::abs(a0));
       return (m == Half<A0>())  ? minusone(p) :  p;
     }
   };
