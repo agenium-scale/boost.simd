@@ -18,7 +18,7 @@
 #include <boost/simd/function/scalar/abs_s.hpp>
 #include <boost/simd/function/scalar/ffs.hpp>
 #include <boost/simd/function/scalar/frexp.hpp>
-#include <boost/simd/function/scalar/minusone_s.hpp>
+#include <boost/simd/function/scalar/minusone.hpp>
 #include <boost/simd/function/scalar/reversebits.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
@@ -53,7 +53,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       if (!a0) return a0;
-      return sizeof(A0)*8-ffs(reversebits(abs_s(a0)));
+      return sizeof(A0)*8-ffs(reversebits(saturated_(abs)(a0)));
     }
   };
 
@@ -69,7 +69,7 @@ namespace boost { namespace simd { namespace ext
       A0 m;
       result_t p;
       std::tie(m, p) = simd::frexp(bs::abs(a0));
-      return (m == Half<A0>())  ? saturated_(minusone(p)) :  p;
+      return (m == Half<A0>()) ? saturated_(minusone)(p) :  p;
     }
   };
 } } }

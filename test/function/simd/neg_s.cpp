@@ -10,29 +10,30 @@
 */
 //==================================================================================================
 #include <boost/simd/pack.hpp>
-#include <boost/simd/function/neg_s.hpp>
+#include <boost/simd/function/neg.hpp>
 #include <boost/simd/function/bits.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
 
-template <typename T, int N, typename Env>
+template <typename T, std::size_t N, typename Env>
 void test(Env& $)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T, N>;
 
   T a1[N], b[N];
-  for(int i = 0; i < N; ++i)
+  for(std::size_t i = 0; i < N; ++i)
   {
-    a1[i] = (i%2) ? T(i) : T(-i);
-    b[i] = bs::neg_s(a1[i]) ;
+    a1[i] = (i%2) ? T(i) : T(2*i);
+    b[i] = bs::saturated_(bs::neg)(a1[i]) ;
   }
-  p_t aa1(&a1[0], &a1[N]);
-  p_t bb (&b[0], &b[N]);
-  STF_IEEE_EQUAL(bs::neg_s(aa1), bb);
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t bb (&b[0], &b[0]+N);
+  STF_IEEE_EQUAL(bs::saturated_(bs::neg)(aa1), bb);
+  STF_IEEE_EQUAL(-aa1, bb);
 }
 
-STF_CASE_TPL("Check neg_s on pack" , STF_SIGNED_NUMERIC_TYPES)
+STF_CASE_TPL("Check bs::saturated_(bs::neg) on pack" , (float))//STF_SIGNED_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;

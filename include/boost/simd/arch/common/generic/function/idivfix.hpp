@@ -50,7 +50,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE bd::as_integer_t<A0> operator() ( A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
     {
-      return /*saturated_TODO*/(toint)(a0/a1);
+      return saturated_(toint)(a0/a1);
     }
   };
 } } }

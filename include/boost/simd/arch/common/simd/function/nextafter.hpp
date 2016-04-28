@@ -38,7 +38,7 @@ namespace boost { namespace simd { namespace ext
       {
         return  if_else(bs::is_equal(a0,a1),
                       a0,
-                        if_else(is_greater(a1,a0),saturated_(oneplus(a0)),saturated_(minusone)(a0)));
+                        if_else(is_greater(a1,a0),saturated_(oneplus)(a0),saturated_(minusone)(a0)));
       }
    };
 

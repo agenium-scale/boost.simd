@@ -10,7 +10,7 @@
 */
 //==================================================================================================
 #include <boost/simd/pack.hpp>
-#include <boost/simd/function/touint_s.hpp>
+#include <boost/simd/function/touint.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <simd_test.hpp>
@@ -22,7 +22,7 @@ void test(Env& $)
   namespace bd = boost::dispatch;
 
   using p_t = bs::pack<T, N>;
-  using iT = bd::as_integer_t<T>;
+  using iT = bd::as_integer_t<T, unsigned>;
   using i_t = bs::pack<iT, N>;
 
   T a1[N];
@@ -30,11 +30,11 @@ void test(Env& $)
   for(int i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? T(i) : T(-i);
-    b[i] = bs::touint_s(a1[i]) ;
+    b[i] = bs::saturated_(bs::touint)(a1[i]) ;
   }
   p_t aa1(&a1[0], &a1[N]);
   i_t bb (&b[0], &b[N]);
-  STF_EQUAL(bs::touint_s(aa1), bb);
+  STF_EQUAL(bs::saturated_(bs::touint)(aa1), bb);
 }
 
 STF_CASE_TPL("Check touint_s on pack" , STF_IEEE_TYPES)

@@ -30,6 +30,7 @@ set ( SOURCES
    dec.cpp
    dec_s.cpp
    dist.cpp
+   dist_s.cpp
    div.cpp
    divceil.cpp
    divfloor.cpp

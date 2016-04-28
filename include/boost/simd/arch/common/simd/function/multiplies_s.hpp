@@ -14,7 +14,7 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-//#include <boost/simd/sdk/meta/is_upgradable.hpp>
+//#include <boost/simd/meta/is_upgradable.hpp>
 #include <boost/simd/function/simd/groups.hpp>
 #include <boost/simd/function/simd/multiplies.hpp>
 #include <boost/simd/function/simd/split_multiplies.hpp>
@@ -32,7 +32,8 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()(const saturated_tag &,  const A0& a0, const A0& a1
+      BOOST_FORCEINLINE A0 operator()(const saturated_tag &
+                                     ,  const A0& a0, const A0& a1
                                     ) const BOOST_NOEXCEPT
       {
         return a0*a1;
@@ -46,10 +47,11 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::integer_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()(const saturated_tag &,  const A0& a0, const A0& a1
+      BOOST_FORCEINLINE A0 operator()(const saturated_tag &
+                                     ,  const A0& a0, const A0& a1
  //                                    , typename std::enable_if< // TODO
-//                                        bs::is_upgradable_on_ext_t<A0>::value
-//                                        >::type* = 0
+ //                                      bs::is_upgradable_on_ext_t<A0>::value
+ //                                       >::type* = 0
                                   ) const BOOST_NOEXCEPT
       {
         return a0*a1;

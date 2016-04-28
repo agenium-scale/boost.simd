@@ -220,9 +220,9 @@ successor.cpp
 tenpower.cpp
 tofloat.cpp
 toint.cpp
-#toint_s.cpp
-#touint.cpp
-#touint_s.cpp
+toint_s.cpp
+touint.cpp
+touint_s.cpp
 trunc.cpp
 two_add.cpp
 two_prod.cpp

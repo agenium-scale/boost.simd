@@ -44,8 +44,9 @@ namespace boost { namespace simd { namespace ext
       {
         using itype = bd::as_integer_t<A0>;
         itype e1, e2;
-        A0 m1 = bs::frexp(a0, e1);
-        A0 m2 = bs::frexp(a1, e2);
+        A0 m1, m2;
+        std::tie(m1, e1) = bs::frexp(a0);
+        std::tie(m2, e2) = bs::frexp(a1);
         itype expo = -bs::max(e1, e2);
         A0 e = if_else( bs::is_equal(e1, e2)
                       , bs::abs(m1-m2)

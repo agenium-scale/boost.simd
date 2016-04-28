@@ -15,5 +15,6 @@
 #include <boost/simd/function/scalar/touint.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/simd/function/touint.hpp>
+#include <boost/simd/arch/common/simd/function/touint_s.hpp>
 
 #endif

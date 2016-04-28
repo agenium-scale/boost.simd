@@ -10,7 +10,7 @@
 */
 //==================================================================================================
 #include <boost/simd/pack.hpp>
-#include <boost/simd/function/multiplies_s.hpp>
+#include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
 
@@ -25,15 +25,15 @@ void test(Env& $)
   {
      a1[i] = (i%2) ? T(i) : T(-i);
      a2[i] = (i%2) ? T(i+N) : T(-(i+N));
-     b[i] = bs::multiplies_s(a1[i], a2[i]);
+     b[i] = bs::saturated_(bs::multiplies)(a1[i], a2[i]);
    }
   p_t aa1(&a1[0], &a1[N]);
   p_t aa2(&a2[0], &a2[N]);
   p_t bb(&b[0], &b[N]);
-  STF_IEEE_EQUAL(bs::multiplies_s(aa1, aa2), bb);
+  STF_IEEE_EQUAL( bs::saturated_(bs::multiplies)(aa1, aa2), bb);
 }
 
-STF_CASE_TPL("Check multiplies_s on pack" , STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check multiplies_s on pack" , (uint8_t))//STF_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;

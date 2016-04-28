@@ -27,14 +27,15 @@ namespace boost { namespace simd { namespace ext
   namespace bs = boost::simd;
   BOOST_DISPATCH_OVERLOAD ( dist_
                           , (typename A0, typename X)
-                          , bd::cpu_
+                          , bs::simd_
                           , bs::saturated_tag
                           , bs::pack_< bd::signed_<A0>, X>
                           , bs::pack_< bd::signed_<A0>, X>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const saturated_tag &,  A0 a0, A0 a1
-                                   ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const saturated_tag &
+                                    , A0 a0, A0 a1
+                                    ) const BOOST_NOEXCEPT
     {
       A0 tmp = dist(a0, a1);
       return if_else(is_ltz(tmp), Valmax<A0>(), tmp);
@@ -42,13 +43,14 @@ namespace boost { namespace simd { namespace ext
   };
   BOOST_DISPATCH_OVERLOAD ( dist_
                           , (typename A0, typename X)
-                          , bd::cpu_
+                          , bs::simd_
                           , bs::saturated_tag
                           , bs::pack_< bd::unsigned_<A0>, X >
                           , bs::pack_< bd::unsigned_<A0>, X >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const saturated_tag &,  A0 a0, A0 a1
+    BOOST_FORCEINLINE A0 operator() (const saturated_tag &
+                                    , A0 a0, A0 a1
                                     ) const BOOST_NOEXCEPT
     {
       return dist(a0, a1);
@@ -56,14 +58,15 @@ namespace boost { namespace simd { namespace ext
   };
   BOOST_DISPATCH_OVERLOAD ( dist_
                           , (typename A0, typename X)
-                          , bd::cpu_
+                          , bs::simd_
                           , bs::saturated_tag
                           , bs::pack_<bd::floating_<A0>, X >
                           , bs::pack_<bd::floating_<A0>, X >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const saturated_tag &,  A0 a0, A0 a1
-                                   ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const saturated_tag &
+                                    , A0 a0, A0 a1
+                                    ) const BOOST_NOEXCEPT
     {
       return dist(a0, a1);
     }

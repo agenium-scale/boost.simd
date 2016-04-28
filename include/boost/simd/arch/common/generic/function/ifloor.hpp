@@ -42,7 +42,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE bd::as_integer_t<A0> operator() ( A0 a0) const BOOST_NOEXCEPT
     {
-      return /*saturated_TODO*/(toint)(bs::floor(a0));
+      return saturated_(toint)(bs::floor(a0));
     }
   };
 } } }

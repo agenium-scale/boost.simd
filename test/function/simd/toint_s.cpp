@@ -10,7 +10,7 @@
 */
 //==================================================================================================
 #include <boost/simd/pack.hpp>
-#include <boost/simd/function/toint_s.hpp>
+#include <boost/simd/function/toint.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <simd_test.hpp>
@@ -30,11 +30,11 @@ void test(Env& $)
   for(int i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? T(i) : T(-i);
-    b[i] = bs::toint_s(a1[i]) ;
+    b[i] = bs::saturated_(bs::toint)(a1[i]) ;
   }
   p_t aa1(&a1[0], &a1[N]);
   i_t bb (&b[0], &b[N]);
-  STF_EQUAL(bs::toint_s(aa1), bb);
+  STF_EQUAL(bs::saturated_(bs::toint)(aa1), bb);
 }
 
 STF_CASE_TPL("Check toint_s on pack" , STF_IEEE_TYPES)
