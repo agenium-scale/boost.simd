@@ -15,7 +15,6 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/function/min.hpp>
 #include <boost/simd/function/minus.hpp>
-#include <boost/simd/function/oneminus_s.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
@@ -33,19 +32,7 @@ namespace boost { namespace simd { namespace ext
       return minus(One<A0>(), a0);
     }
   };
-//   BOOST_DISPATCH_OVERLOAD ( oneminus_
-//                           , (typename T)
-//                           ,  bd::cpu_
-//                           ,  bs::saturated_tag
-//                           ,  bd::generic_<bd::fundamental_<T>>
-//                           )
-//   {
-//     BOOST_FORCEINLINE T operator()(const saturated_tag &, const T& a
-//                                   ) const BOOST_NOEXCEPT
-//     {
-//       return oneminus_s(a);
-//     }
-//   };
+
 } } }
 
 

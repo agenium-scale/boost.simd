@@ -18,10 +18,9 @@
 
 namespace boost { namespace simd
 {
-  struct saturated_tag
+  struct saturated_tag : boost::dispatch::unspecified_<saturated_tag>
   {
-    using parent = saturated_tag;
-    using hierarchy_tag = void;
+    using parent = boost::dispatch::unspecified_<saturated_tag>;
   };
 
   const detail::decorator<saturated_tag> saturated_ = {};

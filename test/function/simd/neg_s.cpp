@@ -33,7 +33,7 @@ void test(Env& $)
   STF_IEEE_EQUAL(-aa1, bb);
 }
 
-STF_CASE_TPL("Check bs::saturated_(bs::neg) on pack" , (float))//STF_SIGNED_NUMERIC_TYPES)
+STF_CASE_TPL("Check bs::saturated_(bs::neg) on pack" , STF_SIGNED_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;

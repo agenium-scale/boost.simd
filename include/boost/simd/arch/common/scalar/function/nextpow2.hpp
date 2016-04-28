@@ -15,7 +15,6 @@
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/function/saturated.hpp>
 #include <boost/simd/function/scalar/abs.hpp>
-#include <boost/simd/function/scalar/abs_s.hpp>
 #include <boost/simd/function/scalar/ffs.hpp>
 #include <boost/simd/function/scalar/frexp.hpp>
 #include <boost/simd/function/scalar/minusone.hpp>

@@ -31,7 +31,7 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd =  boost::dispatch;
 
-  BOOST_DISPATCH_OVERLOAD ( multiplies_s_
+  BOOST_DISPATCH_OVERLOAD ( multiplies_
                           , (typename A0)
                           , bs::sse2_
                           , bs::pack_<bd::int32_<A0>, bs::sse_>
@@ -63,7 +63,7 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( multiplies_s_
+  BOOST_DISPATCH_OVERLOAD ( multiplies_
                           , (typename A0)
                           , bs::sse2_
                           , bs::pack_<bd::uint32_<A0>, bs::sse_>

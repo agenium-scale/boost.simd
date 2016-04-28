@@ -36,7 +36,7 @@ void test(Env& $)
   STF_IEEE_EQUAL(bs::saturated_(bs::dist)(aa1, aa2), bb);
 }
 
-STF_CASE_TPL("Check dist_s on pack" , (float))//STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check dist_s on pack" , STF_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;

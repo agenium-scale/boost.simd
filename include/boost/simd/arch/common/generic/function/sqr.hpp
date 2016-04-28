@@ -16,7 +16,6 @@
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <boost/simd/function/saturated.hpp>
-#include <boost/simd/function/sqr_s.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -32,18 +31,6 @@ namespace boost { namespace simd { namespace ext
       return multiplies(a0, a0);
     }
   };
-//   BOOST_DISPATCH_OVERLOAD ( sqr_
-//                           , (typename T)
-//                           ,  bd::cpu_
-//                           ,  bs::saturated_tag
-//                           ,  bd::generic_<bd::fundamental_<T>>
-//                           )
-//   {
-//     BOOST_FORCEINLINE T operator()(const saturated_tag &, const T& a) const BOOST_NOEXCEPT
-//     {
-//       return sqr_s(a);
-//     }
-//  };
 } } }
 
 

@@ -13,7 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_MINUS_HPP_INCLUDED
 
 #include <boost/simd/function/definition/minus.hpp>
-#include <boost/simd/arch/common/generic/function/minus.hpp>
 #include <boost/simd/arch/common/scalar/function/minus.hpp>
 #include <boost/simd/arch/common/scalar/function/minus_s.hpp>
 

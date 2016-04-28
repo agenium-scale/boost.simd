@@ -10,8 +10,7 @@
 */
 //==================================================================================================
 #include <boost/simd/pack.hpp>
-#include <boost/simd/function/abs_s.hpp>
-#include <boost/simd/function/bits.hpp>
+#include <boost/simd/function/abs.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
 
