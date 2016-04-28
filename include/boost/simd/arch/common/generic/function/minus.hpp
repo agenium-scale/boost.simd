@@ -24,13 +24,13 @@
 //   BOOST_DISPATCH_OVERLOAD ( minus_
 //                           , (typename T)
 //                           ,  bd::cpu_
-//                           ,  bd::generic_<bd::fundamental_<T>>
-//                           ,  bd::generic_<bd::fundamental_<T>>
 //                           ,  bs::saturated_tag
+//                           ,  bd::generic_<bd::fundamental_<T>>
+//                           ,  bd::generic_<bd::fundamental_<T>>
 //                           )
 //   {
-//     BOOST_FORCEINLINE T operator()(const T& a, const T& b
-//                                   , const saturated_tag &) const BOOST_NOEXCEPT
+//     BOOST_FORCEINLINE T operator()(const saturated_tag &, const T& a, const T& b
+//                                   ) const BOOST_NOEXCEPT
 //     {
 //       return saturated_(minus)(a, b);
 //     }

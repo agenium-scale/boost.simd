@@ -33,12 +33,12 @@ namespace boost { namespace simd { namespace ext
    BOOST_DISPATCH_OVERLOAD(sqr_
                           , (typename A0, typename X)
                           , bd::cpu_
-                          , bs::pack_<bd::int_<A0>, X>
                           , bs::saturated_tag
+                          , bs::pack_<bd::int_<A0>, X>
                           )
    {
-     BOOST_FORCEINLINE A0 operator()( const A0& a0
-                                    , const saturated_tag & ) const BOOST_NOEXCEPT
+     BOOST_FORCEINLINE A0 operator()(const saturated_tag &,  const A0& a0
+                                    ) const BOOST_NOEXCEPT
      {
        // workaround for UBSan
 #ifdef USE_UBSAN
@@ -51,31 +51,29 @@ namespace boost { namespace simd { namespace ext
 #endif
      }
    };
-
   BOOST_DISPATCH_OVERLOAD(sqr_
                          , (typename A0, typename X)
                          , bd::cpu_
-                         , bs::pack_<bd::uint_<A0>, X>
                          , bs::saturated_tag
+                         , bs::pack_<bd::uint_<A0>, X>
                          )
   {
-    BOOST_FORCEINLINE A0 operator()( const A0& a0
-                                   , const saturated_tag & ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()(const saturated_tag &,  const A0& a0
+                                   ) const BOOST_NOEXCEPT
     {
       return if_else(is_greater(a0, bs::Sqrtvalmax<A0>()),
                      bs::Valmax<A0>(), sqr(a0));
     }
   };
-
   BOOST_DISPATCH_OVERLOAD(sqr_
                          , (typename A0, typename X)
                          , bd::cpu_
-                         , bs::pack_<bd::floating_<A0>, X>
                          , bs::saturated_tag
+                         , bs::pack_<bd::floating_<A0>, X>
                          )
   {
-    BOOST_FORCEINLINE A0 operator()( const A0& a0
-                                   , const saturated_tag & ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()(const saturated_tag &,  const A0& a0
+                                   ) const BOOST_NOEXCEPT
     {
       return sqr(a0);
     }

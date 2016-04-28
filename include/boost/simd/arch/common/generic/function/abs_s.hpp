@@ -28,46 +28,45 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( abs_
                           , (typename T)
                           , bd::cpu_
-                          , bd::generic_<bd::unsigned_<T>>
                           , bs::saturated_tag
+                          , bd::generic_<bd::unsigned_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()(T const& a
-                                  , const saturated_tag &) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE T operator()(const saturated_tag &, T const& a
+                                  ) const BOOST_NOEXCEPT
     {
       return a;
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( abs_
                           , (typename T)
                           , bd::cpu_
-                          , bd::generic_<bd::floating_<T>>
                           , bs::saturated_tag
+                          , bd::generic_<bd::floating_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()(T const& a
-                                  ,  const saturated_tag &) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE T operator()(const saturated_tag &
+                                  , T const& a
+                                  ) const BOOST_NOEXCEPT
     {
       return simd::abs(a);
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( abs_
                           , (typename T)
                           , bd::cpu_
-                          , bd::generic_<bd::signed_<T>>
                           , bs::saturated_tag
+                          , bd::generic_<bd::signed_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()(T const& a0
-                                  ,  const saturated_tag &) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE T operator()(const saturated_tag &
+                                  , T const& a0
+                                  ) const BOOST_NOEXCEPT
     {
       T a =  bs::abs(a0);
       return if_else(is_equal(a0,Valmin<T>()),Valmax<T>(),a);
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( abs_
                           , (typename T)
                           , bd::cpu_

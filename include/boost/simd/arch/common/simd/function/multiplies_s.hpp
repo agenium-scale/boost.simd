@@ -27,32 +27,30 @@ namespace boost { namespace simd { namespace ext
    BOOST_DISPATCH_OVERLOAD(multiplies_
                           , (typename A0, typename X)
                           , bd::cpu_
-                          , bs::pack_<bd::floating_<A0>, X>
-                          , bs::pack_<bd::floating_<A0>, X>
                           , bs::saturated_tag
+                          , bs::pack_<bd::floating_<A0>, X>
+                          , bs::pack_<bd::floating_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1
-                                    , const saturated_tag &) const BOOST_NOEXCEPT
+      BOOST_FORCEINLINE A0 operator()(const saturated_tag &,  const A0& a0, const A0& a1
+                                    ) const BOOST_NOEXCEPT
       {
         return a0*a1;
       }
    };
-
    BOOST_DISPATCH_OVERLOAD(multiplies_
                           , (typename A0, typename X)
                           , bd::cpu_
-                          , bs::pack_<bd::integer_<A0>, X>
-                          , bs::pack_<bd::integer_<A0>, X>
                           , bs::saturated_tag
+                          , bs::pack_<bd::integer_<A0>, X>
+                          , bs::pack_<bd::integer_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1
+      BOOST_FORCEINLINE A0 operator()(const saturated_tag &,  const A0& a0, const A0& a1
  //                                    , typename std::enable_if< // TODO
 //                                        bs::is_upgradable_on_ext_t<A0>::value
 //                                        >::type* = 0
-                                  , const saturated_tag &
-        ) const BOOST_NOEXCEPT
+                                  ) const BOOST_NOEXCEPT
       {
         return a0*a1;
 //         using utype = bd::upgrade_t<A0>;

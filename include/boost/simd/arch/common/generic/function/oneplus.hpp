@@ -33,16 +33,15 @@ namespace boost { namespace simd { namespace ext
       return plus(a0, One<A0>());
     }
   };
-
 //   BOOST_DISPATCH_OVERLOAD ( oneplus_
 //                           , (typename T)
 //                           ,  bd::cpu_
-//                           ,  bd::generic_<bd::fundamental_<T>>
 //                           ,  bs::saturated_tag
+//                           ,  bd::generic_<bd::fundamental_<T>>
 //                           )
 //   {
-//     BOOST_FORCEINLINE T operator()(const T& a
-//                                   , const saturated_tag &) const BOOST_NOEXCEPT
+//     BOOST_FORCEINLINE T operator()(const saturated_tag &, const T& a
+//                                   ) const BOOST_NOEXCEPT
 //     {
 //       return oneplus_s(a);
 //     }

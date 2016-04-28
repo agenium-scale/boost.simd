@@ -35,44 +35,42 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD( plus_
                             , (typename A0, typename X)
                             , bd::cpu_
-                            , bs::pack_<bd::floating_<A0>, X>
-                            , bs::pack_<bd::floating_<A0>, X>
                             , bs::saturated_tag
+                            , bs::pack_<bd::floating_<A0>, X>
+                            , bs::pack_<bd::floating_<A0>, X>
                             )
   {
-    BOOST_FORCEINLINE A0 operator()(const A0& a0, const A0& a1
-                                   , const saturated_tag & ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()(const saturated_tag &, const A0& a0, const A0& a1
+                                   ) const BOOST_NOEXCEPT
     {
       return a0+a1;
     }
   };
-
   BOOST_DISPATCH_OVERLOAD( plus_
                             , (typename A0, typename X)
                             , bd::cpu_
-                            , bs::pack_<bd::uint_<A0>, X>
-                            , bs::pack_<bd::uint_<A0>, X>
                             , bs::saturated_tag
+                            , bs::pack_<bd::uint_<A0>, X>
+                            , bs::pack_<bd::uint_<A0>, X>
                             )
   {
-    BOOST_FORCEINLINE A0 operator()(const A0& a0, const A0& a1
-                                   , const saturated_tag & ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()(const saturated_tag &, const A0& a0, const A0& a1
+                                   ) const BOOST_NOEXCEPT
     {
       A0 const s = a0+a1;
       return s | genmask(s < a0);
     }
   };
-
   BOOST_DISPATCH_OVERLOAD( plus_
                             , (typename A0, typename X)
                             , bd::cpu_
-                            , bs::pack_<bd::int_<A0>, X>
-                            , bs::pack_<bd::int_<A0>, X>
                             , bs::saturated_tag
+                            , bs::pack_<bd::int_<A0>, X>
+                            , bs::pack_<bd::int_<A0>, X>
                             )
   {
-    BOOST_FORCEINLINE A0 operator()(const A0& a0, const A0& a1
-                                   , const saturated_tag & ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()(const saturated_tag &, const A0& a0, const A0& a1
+                                   ) const BOOST_NOEXCEPT
     {
       using utype = bd::as_unsigned_t<A0>;
       using stype = typename A0::value_type;

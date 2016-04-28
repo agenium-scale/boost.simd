@@ -28,46 +28,44 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( toint_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::int_<A0> >
                           , bs::saturated_tag
+                          , bd::scalar_< bd::int_<A0> >
                           )
   {
     using result_t = A0;
 
-    BOOST_FORCEINLINE result_t operator() ( A0 a0
-                                    , const saturated_tag &) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE result_t operator() (const saturated_tag &,  A0 a0
+                                    ) const BOOST_NOEXCEPT
     {
       return a0;
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( toint_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::uint_<A0> >
                           , bs::saturated_tag
+                          , bd::scalar_< bd::uint_<A0> >
                           )
   {
     using result_t = bd::as_integer_t<A0, signed>;
 
-    BOOST_FORCEINLINE result_t operator() ( A0 a0
-                                    , const saturated_tag &) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE result_t operator() (const saturated_tag &,  A0 a0
+                                    ) const BOOST_NOEXCEPT
     {
       return result_t(saturate<result_t>(a0));
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( toint_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::floating_<A0> >
                           , bs::saturated_tag
+                          , bd::scalar_< bd::floating_<A0> >
                           )
   {
     using result_t = bd::as_integer_t<A0>;
 
-    BOOST_FORCEINLINE result_t operator() ( A0 a0
-                                    , const saturated_tag &) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE result_t operator() (const saturated_tag &,  A0 a0
+                                    ) const BOOST_NOEXCEPT
     {
     #ifndef BOOST_SIMD_NO_NANS
       if (simd::is_nan(a0)) return Zero<result_t>();

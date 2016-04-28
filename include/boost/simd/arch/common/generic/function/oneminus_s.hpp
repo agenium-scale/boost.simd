@@ -24,26 +24,25 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( oneminus_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::generic_<bd::signed_<A0> >
                           , bs::saturated_tag
+                          , bd::generic_<bd::signed_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0
-                                    , const saturated_tag &) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const saturated_tag &,  A0 const& a0
+                                    ) const BOOST_NOEXCEPT
     {
-      return saturated_(minus)(One<A0>(), a0);
+      return /*saturated_TODO*/(minus)(One<A0>(), a0);
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( oneminus_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::generic_<bd::unsigned_<A0> >
                           , bs::saturated_tag
+                          , bd::generic_<bd::unsigned_<A0> >
                          )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0
-                                    , const saturated_tag &) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const saturated_tag &,  A0 const& a0
+                                    ) const BOOST_NOEXCEPT
     {
       return One<A0>()-simd::min(a0, One<A0>());
     }

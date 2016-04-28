@@ -21,15 +21,16 @@
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/function/ldexp.hpp>
 
-STF_CASE_TPL (" touint_s signed_int",  STF_SIGNED_INTEGRAL_TYPES)
-{
-  namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
-  using r_t = decltype( bs::saturated_(bs::touint)(T()));
+// saturated_TODO
+// STF_CASE_TPL (" touint_s signed_int",  STF_SIGNED_INTEGRAL_TYPES)
+// {
+//   namespace bs = boost::simd;
+//   namespace bd = boost::dispatch;
+//   using r_t = decltype( bs::saturated_(bs::touint)(T()));
 
-  STF_TYPE_IS( r_t, (bd::as_integer_t<T, unsigned>));
+//   STF_TYPE_IS( r_t, (bd::as_integer_t<T, unsigned>));
 
-  STF_EQUAL(bs::saturated_(bs::touint)(bs::Mone<T>()), bs::Zero<r_t>());
-  STF_EQUAL(bs::saturated_(bs::touint)(bs::One<T>()), bs::One<r_t>());
-  STF_EQUAL(bs::saturated_(bs::touint)(bs::Zero<T>()), bs::Zero<r_t>());
-} // end of test for signed_int_
+//   STF_EQUAL(bs::saturated_(bs::touint)(bs::Mone<T>()), bs::Zero<r_t>());
+//   STF_EQUAL(bs::saturated_(bs::touint)(bs::One<T>()), bs::One<r_t>());
+//   STF_EQUAL(bs::saturated_(bs::touint)(bs::Zero<T>()), bs::Zero<r_t>());
+// } // end of test for signed_int_

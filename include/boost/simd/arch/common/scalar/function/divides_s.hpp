@@ -32,32 +32,27 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( divides_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::floating_<A0> >
-                          , bd::scalar_< bd::floating_<A0> >
                           , bs::saturated_tag
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1
-                                    , const saturated_tag &) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const saturated_tag &,  A0 a0, A0 a1
+                                    ) const BOOST_NOEXCEPT
     {
       return a0/a1;
     }
   };
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
   BOOST_DISPATCH_OVERLOAD ( divides_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::int_<A0> >
-                          , bd::scalar_< bd::int_<A0> >
                           , bs::saturated_tag
+                          , bd::scalar_< bd::int_<A0> >
+                          , bd::scalar_< bd::int_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1
-                                    , const saturated_tag &) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const saturated_tag &,  A0 a0, A0 a1
+                                    ) const BOOST_NOEXCEPT
     {
       typedef bd::as_unsigned_t<A0> utype;
       A0 const aa0 = a0 + !((a1 + One<A0>()) | ((utype)a0 + Valmin<A0>()));
@@ -69,17 +64,16 @@ namespace boost { namespace simd { namespace ext
         return Zero<A0>();
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( divides_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::uint_<A0> >
-                          , bd::scalar_< bd::uint_<A0> >
                           , bs::saturated_tag
+                          , bd::scalar_< bd::uint_<A0> >
+                          , bd::scalar_< bd::uint_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1
-                                    , const saturated_tag &) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const saturated_tag &,  A0 a0, A0 a1
+                                    ) const BOOST_NOEXCEPT
     {
       return a1 ? a0/a1 : genmask(a0);
     }

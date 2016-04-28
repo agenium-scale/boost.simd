@@ -29,45 +29,43 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( unary_minus_
                           , (typename T)
                           , bd::cpu_
-                          , bd::generic_<bd::floating_<T>>
                           , bs::saturated_tag
+                          , bd::generic_<bd::floating_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()(T const& a
-                                  , const saturated_tag &) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE T operator()(const saturated_tag &, T const& a
+                                  ) const BOOST_NOEXCEPT
     {
       return unary_minus(a);
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( unary_minus_
                           , (typename T)
                           , bd::cpu_
-                          , bd::generic_<bd::signed_<T>>
                           , bs::saturated_tag
+                          , bd::generic_<bd::signed_<T>>
                            )
   {
-    BOOST_FORCEINLINE T operator()(T const& a0
-                                  , const saturated_tag &) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE T operator()(const saturated_tag &, T const& a0
+                                  ) const BOOST_NOEXCEPT
     {
       T a =  bs::unary_minus(a0);
       return if_else(is_equal(a0,Valmin<T>()),Valmax<T>(),a);
     }
   };
-
-//   BOOST_DISPATCH_OVERLOAD ( unary_minus_
-//                           , (typename T)
-//                           , bd::cpu_
-//                           , bd::generic_<bd::unspecified_<T>>
-//                           , bs::saturated_tag
-//                           )
-//   {
-//     BOOST_FORCEINLINE T operator()(T const& a
-//                                   , const saturated_tag &) const BOOST_NOEXCEPT
-//     {
-//       return unary_minus(a);
-//     }
-//   };
+  BOOST_DISPATCH_OVERLOAD ( unary_minus_
+                          , (typename T)
+                          , bd::cpu_
+                          , bs::saturated_tag
+                          , bd::generic_<bd::unspecified_<T>>
+                          )
+  {
+    BOOST_FORCEINLINE T operator()(const saturated_tag &, T const& a
+                                  ) const BOOST_NOEXCEPT
+    {
+      return unary_minus(a);
+    }
+  };
 } } }
 
 

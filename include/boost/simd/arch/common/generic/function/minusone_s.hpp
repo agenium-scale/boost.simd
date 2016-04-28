@@ -26,26 +26,25 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( minusone_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::generic_<bd::arithmetic_<A0> >
                           , bs::saturated_tag
+                          , bd::generic_<bd::arithmetic_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0
-                                    , const saturated_tag &) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const saturated_tag &,  A0 a0
+                                    ) const BOOST_NOEXCEPT
     {
       return selsub(is_not_equal(a0, Valmin<A0>()), a0, One<A0>());
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( minusone_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::generic_<bd::floating_<A0> >
                           , bs::saturated_tag
+                          , bd::generic_<bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0
-                                    , const saturated_tag &) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const saturated_tag &,  A0 a0
+                                    ) const BOOST_NOEXCEPT
     {
       return a0-One<A0>();
     }

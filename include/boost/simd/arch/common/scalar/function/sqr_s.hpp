@@ -26,40 +26,38 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( sqr_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::int_<A0> >
                           , bs::saturated_tag
+                          , bd::scalar_< bd::int_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0
-                                    , const saturated_tag &) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const saturated_tag &,  A0 a0
+                                    ) const BOOST_NOEXCEPT
     {
       return saturated_(abs)(a0) > Sqrtvalmax<A0>() ? Valmax<A0>() : sqr(a0);
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( sqr_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::uint_<A0> >
                           , bs::saturated_tag
+                          , bd::scalar_< bd::uint_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0
-                                    , const saturated_tag &) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const saturated_tag &,  A0 a0
+                                    ) const BOOST_NOEXCEPT
     {
       return a0 > Sqrtvalmax<A0>() ? Valmax<A0>() : sqr(a0);
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( sqr_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::floating_<A0> >
                           , bs::saturated_tag
+                          , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0
-                                    , const saturated_tag &) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const saturated_tag &,  A0 a0
+                                    ) const BOOST_NOEXCEPT
     {
       return sqr(a0);
     }

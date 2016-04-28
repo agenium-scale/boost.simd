@@ -27,29 +27,27 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( minus_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::floating_<A0> >
-                          , bd::scalar_< bd::floating_<A0> >
                           , bs::saturated_tag
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1
-                                    , const saturated_tag & ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const saturated_tag &,  A0 a0, A0 a1
+                                    ) const BOOST_NOEXCEPT
     {
       return a0-a1;
     }
   };
-
-  // for int8/int16
   BOOST_DISPATCH_OVERLOAD ( minus_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::int_<A0> >
-                          , bd::scalar_< bd::int_<A0> >
                           , bs::saturated_tag
+                          , bd::scalar_< bd::int_<A0> >
+                          , bd::scalar_< bd::int_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1
-                                    , const saturated_tag & ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const saturated_tag &,  A0 a0, A0 a1
+                                    ) const BOOST_NOEXCEPT
     {
       using sz_t = typename brigand::bool_<sizeof(A0) == 4 || sizeof(A0) == 8>::type;
       return impl(a0, a1, sz_t());
@@ -80,17 +78,16 @@ namespace boost { namespace simd { namespace ext
       return res;
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( minus_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::uint_<A0> >
-                          , bd::scalar_< bd::uint_<A0> >
                           , bs::saturated_tag
+                          , bd::scalar_< bd::uint_<A0> >
+                          , bd::scalar_< bd::uint_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1
-                                    , const saturated_tag &) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const saturated_tag &,  A0 a0, A0 a1
+                                    ) const BOOST_NOEXCEPT
     {
       A0 res = a0 - a1;
       res &= -(res <= a0);

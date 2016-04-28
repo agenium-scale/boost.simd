@@ -40,7 +40,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE bd::as_integer_t<A0> operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      return saturated_(toint)(round2even(a0));
+      return /*saturated_TODO*/(toint)(round2even(a0));
     }
   };
   BOOST_DISPATCH_OVERLOAD ( iround2even_

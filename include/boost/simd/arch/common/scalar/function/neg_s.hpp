@@ -23,26 +23,25 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( neg_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_<bd::signed_<A0> >
                           , bs::saturated_tag
+                          , bd::scalar_<bd::signed_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0
-                                    , const saturated_tag &) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const saturated_tag &,  A0 a0
+                                    ) const BOOST_NOEXCEPT
     {
       return a0 == Valmin<A0>() ? Valmax<A0>() : -a0;
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( neg_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_<bd::floating_<A0> >
                           , bs::saturated_tag
+                          , bd::scalar_<bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0
-                                    , const saturated_tag ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const saturated_tag &,  A0 a0
+                                    ) const BOOST_NOEXCEPT
     {
       return -a0;
     }
