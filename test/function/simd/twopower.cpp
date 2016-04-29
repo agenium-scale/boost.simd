@@ -14,7 +14,6 @@
 #include <boost/simd/function/bits.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
-#include <boost/simd/options.hpp>
 
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
@@ -28,7 +27,7 @@ void test(Env& $)
   T a1[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
-    a1[i] = (i%2) ? T(i) : T(-i);
+    a1[i] = T(i)%(8*sizeof(T));
     b[i] = bs::twopower(a1[i]) ;
   }
   p_t aa1(&a1[0], &a1[N]);
@@ -42,6 +41,6 @@ STF_CASE_TPL("Check twopower on pack" , STF_INTEGRAL_TYPES)
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
-//  test<T, N/2>($);
-//  test<T, Nx2>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }

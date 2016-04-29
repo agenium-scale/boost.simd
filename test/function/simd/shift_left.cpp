@@ -32,9 +32,9 @@ void test(Env& $)
     c[i] = bs::shift_left(a1[i], sh2);
   }
 
-  p_t aa1(&a1[0], &a1[N]);
-  p_t bb(&b[0], &b[N]);
-  p_t cc(&c[0], &c[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t bb(&b[0], &b[0]+N);
+  p_t cc(&c[0], &c[0]+N);
 
   STF_IEEE_EQUAL(bs::shift_left(aa1, sh1), bb);
   STF_IEEE_EQUAL(bs::shift_left(aa1, sh2), cc);
@@ -49,4 +49,38 @@ STF_CASE_TPL("Check shift_left on pack" , STF_INTEGRAL_TYPES)
   test<T, N>($);
   test<T, N/2>($);
   test<T, N*2>($);
+}
+
+template <typename T, int N, typename Env>
+void tests(Env& $)
+{
+  namespace bd = boost::dispatch;
+  using iT =  bd::as_integer_t<T>;
+  using p_t = bs::pack<T, N>;
+  using i_t = bs::pack<iT, N>;
+  T a1[N];
+  T b[N];
+  iT sh[N];
+
+  for(int i = 0; i < N; ++i)
+  {
+    sh[i] = i%(8*sizeof(T));
+    a1[i] = (i%2) ? T(i) : T(-i);
+    b[i] = bs::shift_left(a1[i],sh[i]);
+  }
+
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t bb(&b[0], &b[0]+N);
+  i_t sh1(&sh[0], &sh[0]+N);
+  STF_IEEE_EQUAL(bs::shift_left(aa1, sh1), bb);
+  STF_IEEE_EQUAL((aa1 << sh1), bb);
+}
+
+STF_CASE_TPL("Check shift_left on pack" , STF_INTEGRAL_TYPES)
+{
+  static const std::size_t N = bs::pack<T>::static_size;
+
+  tests<T, N>($);
+  tests<T, N/2>($);
+  tests<T, N*2>($);
 }
