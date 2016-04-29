@@ -11,7 +11,7 @@
 //==================================================================================================
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/touint.hpp>
-#include <boost/simd/constant/valmax.hpp>
+#include <boost/simd/constant/maxflint.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <simd_test.hpp>
@@ -30,7 +30,7 @@ void test(Env& $)
   iT b[N];
   for(int i = 0; i < N; ++i)
   {
-    a1[i] = (i%2) ? T(i) : T(bs::Valmax<T>()/T(i) );
+    a1[i] = (i%2) ? T(i) : T(bs::Maxflint<T>()-i);
     b[i] = bs::touint(a1[i]) ;
   }
   p_t aa1(&a1[0], &a1[N]);
@@ -44,6 +44,6 @@ STF_CASE_TPL("Check touint on pack" , STF_IEEE_TYPES)
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
-//   test<T, N/2>($);
-//   test<T, N*2>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }
