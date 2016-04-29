@@ -15,6 +15,7 @@
 #include <boost/simd/function/scalar/divides.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/generic/function/divides.hpp>
+#include <boost/simd/arch/common/simd/function/divides_s.hpp>
 
 #if defined(BOOST_HW_SIMD_X86)
 
@@ -25,7 +26,7 @@
 #    include <boost/simd/arch/x86/sse2/simd/function/divides.hpp>
 #  endif
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_AVX_VERSION
-// #    include <boost/simd/arch/x86/avx/simd/function/divides.hpp>
+#    include <boost/simd/arch/x86/avx/simd/function/divides.hpp>
 #  endif
 
 #endif

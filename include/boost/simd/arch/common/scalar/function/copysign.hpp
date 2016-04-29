@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_COPYSIGN_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_COPYSIGN_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/abss.hpp>
+#include <boost/simd/function/scalar/abs.hpp>
 #include <boost/simd/function/scalar/bitwise_notand.hpp>
 #include <boost/simd/function/scalar/bitofsign.hpp>
 #include <boost/simd/function/scalar/signnz.hpp>
@@ -34,7 +34,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
-      return abss(a0)*signnz(a1);
+      return saturated_(abs)(a0)*signnz(a1);
     }
   };
 

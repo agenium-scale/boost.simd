@@ -15,7 +15,7 @@
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/scalar/divs.hpp>
+#include <boost/simd/function/scalar/divides.hpp>
 #include <boost/simd/function/scalar/floor.hpp>
 #include <boost/simd/function/scalar/iceil.hpp>
 #include <boost/simd/function/scalar/minusone.hpp>
@@ -37,9 +37,9 @@ namespace boost { namespace simd { namespace ext
       if (!a0) return  Zero<A0>();
       if(a1)
       {
-        A0 q = divs(a0, a1);
+        A0 q = saturated_(divides)(a0, a1);
         A0 r = a0-q*a1;
-        if ((r != Zero<A0>())&&((a0^a1) <= 0)) return minusone(q);
+        if ((r != Zero<A0>())&&((a0^a1) <= 0)) return saturated_(minusone)(q);
         return q;
       }
       else
@@ -75,7 +75,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       if(a1)
-        return divs(a0, a1);
+        return saturated_(divides)(a0, a1);
       else
         return (a0) ? Valmax<A0>() : Zero<A0>();
     }

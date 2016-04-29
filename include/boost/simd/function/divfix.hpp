@@ -45,7 +45,7 @@ namespace boost { namespace simd
 
     @c divtrunc
 
-    @see  divides, rec, divs, divfloor,
+    @see  divides, rec, divides_s, divfloor,
     divround, divround2even
 
   **/

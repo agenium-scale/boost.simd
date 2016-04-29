@@ -36,7 +36,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T r = toints(log2(x));
+    T r = toint_s(log2(x));
     @endcode
 
     @see exponent

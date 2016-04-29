@@ -34,7 +34,7 @@ namespace boost { namespace simd
     The code is similar to
 
     @code
-    as_integer_t<T> r = toints(log2(x));
+    as_integer_t<T> r = toint_s(log2(x));
     @endcode
 
     @par Note
@@ -42,7 +42,6 @@ namespace boost { namespace simd
 
     @see  twopower, exponent
 
-                 type associated to the input.
   **/
   const boost::dispatch::functor<tag::ilog2_> ilog2 = {};
 } }

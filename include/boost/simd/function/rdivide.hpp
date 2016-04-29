@@ -23,13 +23,13 @@ namespace boost { namespace simd
 
     Computes  the truncated saturated division of its parameters.
 
-    This is a convenient alias of @ref divs
+    This is a convenient alias of @ref divides_s
   **/
   const boost::dispatch::functor<tag::rdivide_> rdivide = {};
 } }
 #endif
 
-#include <boost/simd/function/scalar/divs.hpp>
+#include <boost/simd/function/scalar/divides.hpp>
 #include <boost/simd/function/simd/rdivide.hpp>
 
 #endif

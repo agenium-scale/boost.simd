@@ -18,6 +18,7 @@
 #include <boost/simd/function/simd/is_equal.hpp>
 #include <boost/simd/function/simd/is_greater.hpp>
 #include <boost/simd/function/simd/is_less.hpp>
+#include <boost/simd/function/simd/minusone.hpp>
 #include <boost/simd/function/simd/next.hpp>
 #include <boost/simd/function/simd/oneplus.hpp>
 #include <boost/simd/function/simd/prev.hpp>
@@ -37,7 +38,7 @@ namespace boost { namespace simd { namespace ext
       {
         return  if_else(bs::is_equal(a0,a1),
                       a0,
-                      if_else(is_greater(a1,a0),oneplus(a0),minusone(a0)));
+                        if_else(is_greater(a1,a0),saturated_(oneplus)(a0),saturated_(minusone)(a0)));
       }
    };
 

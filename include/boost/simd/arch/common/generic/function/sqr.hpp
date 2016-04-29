@@ -15,6 +15,7 @@
 #include <boost/simd/function/simd/multiplies.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
+#include <boost/simd/function/saturated.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

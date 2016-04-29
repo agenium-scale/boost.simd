@@ -30,23 +30,22 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      return seladd(is_not_equal(a0, Valmax<A0>()),
-                    a0,
-                    One<A0>());
+      return plus(a0, One<A0>());
     }
   };
-
-  BOOST_DISPATCH_OVERLOAD ( oneplus_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bd::generic_< bd::floating_<A0> >
-                          )
-  {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
-    {
-      return a0+One<A0>();
-    }
-  };
+//   BOOST_DISPATCH_OVERLOAD ( oneplus_
+//                           , (typename T)
+//                           ,  bd::cpu_
+//                           ,  bs::saturated_tag
+//                           ,  bd::generic_<bd::fundamental_<T>>
+//                           )
+//   {
+//     BOOST_FORCEINLINE T operator()(const saturated_tag &, const T& a
+//                                   ) const BOOST_NOEXCEPT
+//     {
+//       return oneplus_s(a);
+//     }
+//   };
 } } }
 
 

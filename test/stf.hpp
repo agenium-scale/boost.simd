@@ -950,7 +950,7 @@ namespace stf
             >
     struct ulpdist
     {
-      inline double operator()(T1 a, T2 b) const
+      inline double operator()(T1 const& a, T2 const& b) const
       {
         using common_t = detail::common_t<T1,T2>;
         return ext::ulpdist<common_t>() ( static_cast<common_t>(a)
@@ -1011,10 +1011,6 @@ namespace stf
   {
     return ext::ulpdist<T,U>()(a0,a1);
   }
-
-#if 0
-
-#endif
 }
 
 #include <string>
@@ -1058,7 +1054,7 @@ namespace stf
             >
     struct reldist
     {
-      inline double operator()(T1 a, T2 b) const
+      inline double operator()(T1 const& a, T2 const& b) const
       {
         using common_t = detail::common_t<T1,T2>;
         return ext::reldist<common_t>() ( static_cast<common_t>(a)

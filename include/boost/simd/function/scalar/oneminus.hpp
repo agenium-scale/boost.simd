@@ -14,5 +14,6 @@
 
 #include <boost/simd/function/definition/oneminus.hpp>
 #include <boost/simd/arch/common/generic/function/oneminus.hpp>
+#include <boost/simd/arch/common/generic/function/oneminus_s.hpp>
 
 #endif

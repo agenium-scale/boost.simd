@@ -21,8 +21,7 @@ namespace boost { namespace simd
     @ingroup group-arithmetic
     Function object implementing oneplus capabilities
 
-    Returns the entry plus one, saturated in the entry type.
-    If @c x is not @ref Nan, @c oneplus(x) is greater or equal to x.
+    Returns the entry plus one.
 
     @par semantic:
     For any given value @c x of type @c T:
@@ -34,14 +33,14 @@ namespace boost { namespace simd
     The code is similar to:
 
     @code
-    T r = (x == Valmax) ? x : inc(x)
+    T r =  x+One<T>()
     @endcode
 
-    @see inc, plus, adds
+    @see inc, inc_s,  saturated_
 
     @par Alias
 
-    incs
+    inc
 
   **/
   const boost::dispatch::functor<tag::oneplus_> oneplus = {};

@@ -35,8 +35,7 @@ namespace boost { namespace simd
 } }
 
 #include <boost/simd/function/abs.hpp>
-#include <boost/simd/function/abss.hpp>
-#include <boost/simd/function/adds.hpp>
+#include <boost/simd/function/abs_s.hpp>
 #include <boost/simd/function/angle.hpp>
 #include <boost/simd/function/arg.hpp>
 #include <boost/simd/function/average.hpp>
@@ -44,11 +43,11 @@ namespace boost { namespace simd
 #include <boost/simd/function/conj.hpp>
 #include <boost/simd/function/correct_fma.hpp>
 #include <boost/simd/function/dec.hpp>
-#include <boost/simd/function/decs.hpp>
+#include <boost/simd/function/dec_s.hpp>
 #include <boost/simd/function/dist.hpp>
-#include <boost/simd/function/dists.hpp>
+#include <boost/simd/function/dist_s.hpp>
 #include <boost/simd/function/div.hpp>
-#include <boost/simd/function/divs.hpp>
+#include <boost/simd/function/divide_s.hpp>
 #include <boost/simd/function/drem.hpp>
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/function/fabs.hpp>
@@ -65,7 +64,7 @@ namespace boost { namespace simd
 #include <boost/simd/function/ifix.hpp>
 #include <boost/simd/function/ifloor.hpp>
 #include <boost/simd/function/inc.hpp>
-#include <boost/simd/function/incs.hpp>
+#include <boost/simd/function/inc_s.hpp>
 #include <boost/simd/function/iround2even.hpp>
 #include <boost/simd/function/iround.hpp>
 #include <boost/simd/function/itrunc.hpp>
@@ -74,14 +73,19 @@ namespace boost { namespace simd
 #include <boost/simd/function/min.hpp>
 #include <boost/simd/function/minmod.hpp>
 #include <boost/simd/function/minusone.hpp>
+#include <boost/simd/function/minusone_s.hpp>
+#include <boost/simd/function/minus_s.hpp>
 #include <boost/simd/function/mod.hpp>
 #include <boost/simd/function/modulo.hpp>
 #include <boost/simd/function/modulus.hpp>
-#include <boost/simd/function/muls.hpp>
+#include <boost/simd/function/multiplie_s.hpp>
 #include <boost/simd/function/neg.hpp>
-#include <boost/simd/function/negs.hpp>
+#include <boost/simd/function/neg_s.hpp>
 #include <boost/simd/function/oneminus.hpp>
+#include <boost/simd/function/oneminus_s.hpp>
 #include <boost/simd/function/oneplus.hpp>
+#include <boost/simd/function/oneplus_s.hpp>
+#include <boost/simd/function/plus_s.hpp
 #include <boost/simd/function/rdivide.hpp>
 #include <boost/simd/function/rec.hpp>
 #include <boost/simd/function/remainder.hpp>
@@ -96,21 +100,21 @@ namespace boost { namespace simd
 #include <boost/simd/function/signbit.hpp>
 #include <boost/simd/function/sqr_abs.hpp>
 #include <boost/simd/function/sqr.hpp>
-#include <boost/simd/function/sqrs.hpp>
+#include <boost/simd/function/sqr_s.hpp>
 #include <boost/simd/function/sqrt1pm1.hpp>
 #include <boost/simd/function/sqrt.hpp>
-#include <boost/simd/function/subs.hpp>
 #include <boost/simd/function/tenpower.hpp>
 #include <boost/simd/function/tofloat.hpp>
 #include <boost/simd/function/toint.hpp>
-#include <boost/simd/function/toints.hpp>
+#include <boost/simd/function/toint_s.hpp>
 #include <boost/simd/function/touint.hpp>
-#include <boost/simd/function/touints.hpp>
+#include <boost/simd/function/touint_s.hpp>
 #include <boost/simd/function/trunc.hpp>
 #include <boost/simd/function/two_add.hpp>
 #include <boost/simd/function/two_prod.hpp>
 #include <boost/simd/function/two_split.hpp>
 #include <boost/simd/function/unary_minus.hpp>
+#include <boost/simd/function/unary_minus_s.hpp>
 #include <boost/simd/function/unary_plus.hpp>
 
 

@@ -14,5 +14,6 @@
 
 #include <boost/simd/function/definition/dec.hpp>
 #include <boost/simd/arch/common/generic/function/dec.hpp>
+#include <boost/simd/arch/common/generic/function/dec_s.hpp>
 
 #endif

@@ -34,13 +34,13 @@ namespace boost { namespace simd
     The code is similar to:
 
     @code
-    as_integer_t<T> r = toints(round2even(x/y));
+    as_integer_t<T> r = toint_s(round2even(x/y));
     @endcode
 
     If y is @ref Zero, it returns @ref Valmax (resp. @ref Valmin)
     if x is positive (resp. negative) and 0 if x is @ref Zero.
 
-    @see toints, round2even
+    @see toint_s, round2even
 
   **/
   const boost::dispatch::functor<tag::idivround2even_> idivround2even = {};

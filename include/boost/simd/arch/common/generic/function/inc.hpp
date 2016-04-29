@@ -10,6 +10,9 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_INC_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_INC_HPP_INCLUDED
 
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/function/plus.hpp>
+#include <boost/simd/function/oneplus.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/simd/function/plus.hpp>
 #include <boost/config.hpp>
@@ -28,6 +31,20 @@ namespace boost { namespace simd { namespace ext
       return a0+A0(1);
     }
   };
+  BOOST_DISPATCH_OVERLOAD ( inc_
+                          , (typename T)
+                          ,  bd::cpu_
+                          ,  bs::saturated_tag
+                          ,  bd::generic_<bd::fundamental_<T>>
+                          )
+  {
+    BOOST_FORCEINLINE T operator()(const saturated_tag &, const T& a
+                                  ) const BOOST_NOEXCEPT
+    {
+      return saturated_(oneplus)(a);
+    }
+  };
+
 } } }
 
 #endif

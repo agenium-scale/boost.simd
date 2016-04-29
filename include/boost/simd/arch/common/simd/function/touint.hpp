@@ -55,7 +55,10 @@ namespace boost { namespace simd { namespace ext
        using signed_integer = bd::as_integer_t<typename bd::scalar_of_t<A0>, signed>;
        A0 sign_f = inc(splat<A0>(Valmax<signed_integer>()));
        result sign_i = inc(splat<result>(Valmax<signed_integer>()));
-       return if_else(is_less(a0, sign_f), bitwise_cast<result>(toint(a0)), bitwise_cast<result>(toint(a0 - sign_f)) + sign_i);
+       return if_else(is_less(a0, sign_f)
+                     , bitwise_cast<result>(toint(a0))
+                     , bitwise_cast<result>(toint(a0 - sign_f)) + sign_i
+                     );
      }
    };
 

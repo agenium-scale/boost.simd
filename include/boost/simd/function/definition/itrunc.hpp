@@ -13,17 +13,12 @@
 #define BOOST_SIMD_FUNCTION_DEFINITION_ITRUNC_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
-#include <boost/simd/function/definition/toints.hpp>
+#include <boost/simd/function/toint.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 
 namespace boost { namespace simd
 {
-  namespace tag
-  {
-    using itrunc_ = toints_;
-  }
-
-  BOOST_DISPATCH_CALLABLE_DEFINITION(tag::itrunc_,itrunc);
+    auto itrunc = boost::simd::saturated_(toint);
 } }
 
 #endif

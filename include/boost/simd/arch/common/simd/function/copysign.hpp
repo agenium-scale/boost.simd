@@ -14,7 +14,7 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/abss.hpp>
+#include <boost/simd/function/simd/abs.hpp>
 #include <boost/simd/function/simd/bitofsign.hpp>
 #include <boost/simd/function/simd/bitwise_or.hpp>
 #include <boost/simd/function/simd/multiplies.hpp>
@@ -32,7 +32,7 @@ namespace boost { namespace simd { namespace ext
    {
       BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
-        return bs::abss(a0)*bs::signnz(a1);
+        return saturated_(bs::abs)(a0)*bs::signnz(a1);
       }
    };
 

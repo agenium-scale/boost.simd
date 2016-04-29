@@ -21,7 +21,7 @@
 #include <boost/simd/function/simd/split.hpp>
 #include <boost/simd/function/simd/tofloat.hpp>
 #include <boost/simd/function/simd/toint.hpp>
-#include <boost/simd/function/simd/touints.hpp>
+#include <boost/simd/function/simd/touint.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -40,8 +40,8 @@ namespace boost { namespace simd { namespace ext
         ivtype a0l, a0h, a1l, a1h;
         bs::split(a0, a0l, a0h );
         bs::split(a1, a1l, a1h );
-        ivtype d0 = toints(divceil(tofloat(a0l), tofloat(a1l)));
-        ivtype d1 = toints(divceil(tofloat(a0h), tofloat(a1h)));
+        ivtype d0 = saturated_(toint)(divceil(tofloat(a0l), tofloat(a1l)));
+        ivtype d1 = saturated_(toint)(divceil(tofloat(a0h), tofloat(a1h)));
         return groups(d0, d1);
       }
    };
@@ -59,8 +59,8 @@ namespace boost { namespace simd { namespace ext
         ivtype a0l, a0h, a1l, a1h;
         bs::split(a0, a0l, a0h );
         bs::split(a1, a1l, a1h );
-        ivtype d0 = touints(divceil(tofloat(a0l), tofloat(a1l)));
-        ivtype d1 = touints(divceil(tofloat(a0h), tofloat(a1h)));
+        ivtype d0 = saturated_(touint)(divceil(tofloat(a0l), tofloat(a1l)));
+        ivtype d1 = saturated_(touint)(divceil(tofloat(a0h), tofloat(a1h)));
         return groups(d0, d1);
       }
    };

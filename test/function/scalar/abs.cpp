@@ -16,6 +16,7 @@
 #include <boost/simd/constant/zero.hpp>
 
 #include <boost/simd/function/std.hpp>
+#include <boost/simd/function/saturated.hpp>
 #include <simd_test.hpp>
 
 STF_CASE_TPL( "Check abs behavior with floating", STF_IEEE_TYPES )
@@ -83,4 +84,16 @@ STF_CASE_TPL( "Check std abs behavior with signed integral", STF_SIGNED_INTEGRAL
   STF_EQUAL(bs::std_(abs)(bs::Zero<T>()), bs::Zero<r_t>());
   STF_EQUAL(bs::std_(abs)(bs::One<T>()),  bs::One<r_t>());
   STF_EQUAL(bs::std_(abs)(bs::Mone<T>()), bs::One<r_t>());
+}
+
+STF_CASE_TPL( "Check saturated abs behavior ", STF_SIGNED_NUMERIC_TYPES )
+{
+  namespace bs = boost::simd;
+  using bs::abs;
+  using r_t = decltype(bs::saturated_(abs)(T()));
+  STF_TYPE_IS(r_t, T);
+
+  STF_EQUAL(bs::saturated_(abs)(bs::Zero<T>()), bs::Zero<r_t>());
+  STF_EQUAL(bs::saturated_(abs)(bs::One<T>()),  bs::One<r_t>());
+  STF_EQUAL(bs::saturated_(abs)(bs::Mone<T>()), bs::One<r_t>());
 }

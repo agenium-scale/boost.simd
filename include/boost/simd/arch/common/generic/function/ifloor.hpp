@@ -13,7 +13,7 @@
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_IFLOOR_HPP_INCLUDED
 
 #include <boost/simd/function/floor.hpp>
-#include <boost/simd/function/toints.hpp>
+#include <boost/simd/function/toint.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
@@ -42,7 +42,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE bd::as_integer_t<A0> operator() ( A0 a0) const BOOST_NOEXCEPT
     {
-      return toints(bs::floor(a0));
+      return saturated_(toint)(bs::floor(a0));
     }
   };
 } } }

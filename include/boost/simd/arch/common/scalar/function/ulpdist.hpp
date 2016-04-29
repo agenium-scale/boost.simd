@@ -20,7 +20,7 @@
 #include <boost/simd/function/scalar/is_nan.hpp>
 #include <boost/simd/function/scalar/ldexp.hpp>
 #include <boost/simd/function/scalar/max.hpp>
-#include <boost/simd/function/scalar/subs.hpp>
+#include <boost/simd/function/scalar/minus.hpp>
 #include <boost/simd/function/scalar/tofloat.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
@@ -39,7 +39,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
-      return (a0>a1) ? subs(a0,a1) : subs(a1,a0);
+      return (a0>a1) ? saturated_(minus)(a0,a1) : saturated_(minus)(a1,a0);
     }
   };
 

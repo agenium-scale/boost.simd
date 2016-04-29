@@ -14,5 +14,6 @@
 
 #include <boost/simd/function/definition/abs.hpp>
 #include <boost/simd/arch/common/scalar/function/abs.hpp>
+#include <boost/simd/arch/common/generic/function/abs_s.hpp>
 
 #endif

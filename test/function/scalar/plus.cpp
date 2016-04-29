@@ -15,6 +15,7 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
+#include <boost/simd/function/saturated.hpp>
 
 STF_CASE_TPL( "Check plus behavior with floating", STF_IEEE_TYPES )
 {
@@ -29,6 +30,17 @@ STF_CASE_TPL( "Check plus behavior with floating", STF_IEEE_TYPES )
 #endif
   STF_EQUAL(plus(bs::One<T>(),bs::Zero<T>()), bs::One<r_t>());
   STF_EQUAL(plus(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
+}
+
+STF_CASE_TPL( "Check plus saturated behavior", STF_NUMERIC_TYPES )
+{
+  namespace bs = boost::simd;
+  using bs::plus;
+  using r_t = decltype(bs::saturated_(plus)(T(), T()));
+  STF_TYPE_IS(r_t, T);
+
+  STF_EQUAL(bs::saturated_(plus)(bs::One<T>(),bs::Zero<T>()), bs::One<r_t>());
+  STF_EQUAL(bs::saturated_(plus)(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
 }
 
 

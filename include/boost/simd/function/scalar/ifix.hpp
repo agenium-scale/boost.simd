@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_IFIX_HPP_INCLUDED
 
 #include <boost/simd/function/definition/ifix.hpp>
-#include <boost/simd/arch/common/scalar/function/toints.hpp>
+#include <boost/simd/arch/common/scalar/function/toint_s.hpp>
 
 #endif

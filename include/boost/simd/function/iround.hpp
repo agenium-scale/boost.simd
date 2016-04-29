@@ -33,7 +33,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    as_integer_t<T> r = toints(round(x));
+    as_integer_t<T> r = saturated_(toint)(round(x));
     @endcode
 
   **/

@@ -33,12 +33,12 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    as_integer_t<T> r = toints(round2even(x));
+    as_integer_t<T> r = toint_s(round2even(x));
     @endcode
 
     @par Note:
     Speed can be gained using iround2even(x, fast_) that uses @ref
-    toint in place of @ref toints,  but be aware that large values can be not correctly converted
+    toint in place of @ref toint_s,  but be aware that large values can be not correctly converted
     and that invalid entries lead to undefined results
 
   **/

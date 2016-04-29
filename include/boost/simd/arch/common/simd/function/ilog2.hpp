@@ -48,7 +48,7 @@ namespace boost { namespace simd { namespace ext
       using result = bd::as_integer_t<A0>;
       BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
       {
-        return minusone(sizeof(bd::scalar_of_t<A0>)*8-bs::clz(bitwise_cast<result>(a0)));
+        return saturated_(minusone)(sizeof(bd::scalar_of_t<A0>)*8-bs::clz(bitwise_cast<result>(a0)));
       }
    };
 

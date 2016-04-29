@@ -14,6 +14,7 @@
 
 #include <boost/simd/function/definition/multiplies.hpp>
 #include <boost/simd/arch/common/scalar/function/multiplies.hpp>
-//#include <boost/simd/arch/common/function/simd/multiplies.hpp>
+//#include <boost/simd/arch/common/generic/function/multiplies.hpp>
+#include <boost/simd/arch/common/scalar/function/multiplies_s.hpp>
 
 #endif

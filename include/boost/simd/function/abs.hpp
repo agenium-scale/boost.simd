@@ -40,7 +40,7 @@ namespace boost { namespace simd
 
     - Take care that for signed integers the absolute value of @ref Valmin is
     @ref Valmin (thus negative!). This is a side effect of the 2-complement
-    representation of integers. To avoid this, you can use the abss
+    representation of integers. To avoid this, you can use the abs_s
     saturated functor or convert the input parameter to a larger type
     before taking the absolute value.
 
@@ -56,7 +56,7 @@ namespace boost { namespace simd
 
     std_ for floating entries
 
-    @see  abss, sqr_abs, sqrs
+    @see  abs_s, sqr_abs, sqr_ss
 
   **/
   const boost::dispatch::functor<tag::abs_> abs = {};

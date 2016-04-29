@@ -9,6 +9,8 @@
 //==================================================================================================
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/pack.hpp>
+#include <boost/simd/function/saturated.hpp>
+#include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
 
 namespace bs = boost::simd;
@@ -17,6 +19,9 @@ template <typename T, std::size_t N, typename Env>
 void test(Env& $)
 {
   using p_t = bs::pack<T, N>;
+
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
 
   T a1[N], a2[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
@@ -29,16 +34,17 @@ void test(Env& $)
   p_t aa1(&a1[0], &a1[N]);
   p_t aa2(&a2[0], &a2[N]);
   p_t bb(&b[0], &b[N]);
-
   STF_EQUAL(bs::multiplies(aa1, aa2), bb);
   STF_EQUAL(aa1*aa2, bb);
 }
 
 STF_CASE_TPL("Check multiplies on pack" , STF_NUMERIC_TYPES)
 {
-  static const std::size_t N = bs::pack<T>::static_size;
-
+  namespace bs = boost::simd;
+  using p_t = bs::pack<T>;
+  static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
   test<T, N/2>($);
   test<T, N*2>($);
 }
+

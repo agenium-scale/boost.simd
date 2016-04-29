@@ -49,7 +49,7 @@ STF_CASE_TPL (" oneminus unsigned_uint",  STF_UNSIGNED_INTEGRAL_TYPES)
 
   // specific values tests
   STF_EQUAL(oneminus(bs::One<T>()), bs::Zero<T>());
-  STF_EQUAL(oneminus(bs::Two<T>()), bs::Zero<T>());
+  STF_EQUAL(oneminus(bs::Two<T>()), bs::Valmax<T>());
   STF_EQUAL(oneminus(bs::Zero<T>()), bs::One<T>());
 }
 

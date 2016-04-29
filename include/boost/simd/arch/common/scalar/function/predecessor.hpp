@@ -18,7 +18,7 @@
 #include <boost/simd/function/scalar/is_gez.hpp>
 #include <boost/simd/function/scalar/is_nan.hpp>
 #include <boost/simd/function/scalar/minusone.hpp>
-#include <boost/simd/function/scalar/subs.hpp>
+#include <boost/simd/function/scalar/minus.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/assert.hpp>
 #include <boost/config.hpp>
@@ -49,7 +49,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
-      return minusone(a0);
+      return saturated_(minusone)(a0);
     }
   };
 
@@ -65,7 +65,7 @@ namespace boost { namespace simd { namespace ext
       using i_t = bd::as_integer_t<A0>;
       BOOST_ASSERT_MSG(is_gez(a1), "predecessor rank must be non negative");
       if (is_nan(a0)) return a0;
-      return bitfloating(subs(bitinteger(a0), i_t(a1)));
+      return bitfloating(saturated_(minus)(bitinteger(a0), i_t(a1)));
     }
   };
 
@@ -78,7 +78,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       if (is_nan(a0)) return a0;
-      return bitfloating(minusone(bitinteger(a0)));
+      return bitfloating(saturated_(minusone)(bitinteger(a0)));
     }
   };
 } } }

@@ -34,7 +34,7 @@ STF_CASE_TPL (" MINUSONE SIGNED_INT",  STF_SIGNED_INTEGRAL_TYPES)
   // specific values tests
   STF_EQUAL(minusone(bs::Mone<T>()), bs::Mtwo<T>());
   STF_EQUAL(minusone(bs::One<T>()), bs::Zero<T>());
-  STF_EQUAL(minusone(bs::Valmin<T>()), bs::Valmin<T>());
+  STF_EQUAL(minusone(bs::Valmin<T>()), bs::Valmax<T>());
   STF_EQUAL(minusone(bs::Zero<T>()), bs::Mone<T>());
 }
 
@@ -52,7 +52,8 @@ STF_CASE_TPL (" minusone unsigned_uint",  STF_UNSIGNED_INTEGRAL_TYPES)
   // specific values tests
   STF_EQUAL(minusone(bs::One<T>()), bs::Zero<T>());
   STF_EQUAL(minusone(bs::Two<T>()), bs::One<T>());
-  STF_EQUAL(minusone(bs::Zero<T>()), bs::Zero<T>());
+  STF_EQUAL(minusone(bs::Zero<T>()), bs::Valmax<T>());
+
 }
 
 STF_CASE_TPL(" minusone floating", STF_IEEE_TYPES)

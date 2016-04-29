@@ -15,5 +15,6 @@
 #include <boost/simd/function/scalar/dist.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/simd/function/dist.hpp>
+#include <boost/simd/arch/common/simd/function/dist_s.hpp>
 
 #endif

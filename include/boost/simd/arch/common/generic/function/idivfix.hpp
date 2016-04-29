@@ -14,7 +14,7 @@
 
 #include <boost/simd/function/divfix.hpp>
 #include <boost/simd/function/divides.hpp>
-#include <boost/simd/function/toints.hpp>
+#include <boost/simd/function/toint.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
@@ -50,7 +50,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE bd::as_integer_t<A0> operator() ( A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
     {
-      return toints(a0/a1);
+      return saturated_(toint)(a0/a1);
     }
   };
 } } }

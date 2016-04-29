@@ -14,7 +14,7 @@
 
 #include <boost/simd/function/definition/plus.hpp>
 #include <boost/simd/arch/common/scalar/function/plus.hpp>
-//#include <boost/simd/arch/common/function/simd/plus.hpp>
+#include <boost/simd/arch/common/scalar/function/plus_s.hpp>
 
 #endif
 

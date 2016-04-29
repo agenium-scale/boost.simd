@@ -14,6 +14,6 @@
 
 #include <boost/simd/function/definition/minus.hpp>
 #include <boost/simd/arch/common/scalar/function/minus.hpp>
-//#include <boost/simd/arch/common/function/simd/minus.hpp>
+#include <boost/simd/arch/common/scalar/function/minus_s.hpp>
 
 #endif

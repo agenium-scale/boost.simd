@@ -33,13 +33,13 @@ namespace boost { namespace simd
     The code is similar to:
 
     @code
-    as_integer_t<T> r = toints(trunc(x/y));
+    as_integer_t<T> r = toint_s(trunc(x/y));
     @endcode
 
     If y is @ref Zero, it returns @ref Valmax (resp. @ref Valmin)
     if x is positive (resp. negative) and 0 if x is @ref Zero.
 
-    @see toints, trunc
+    @see toint_s, trunc
   **/
   const boost::dispatch::functor<tag::idivfix_> idivfix = {};
 } }

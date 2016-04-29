@@ -41,7 +41,7 @@ namespace boost { namespace simd
     Take also care that dividing @ref Valmin by -1 for signed integral types has
     undefined behaviour.
 
-    @see  divides, rec, divs, divfloor, divceil, divround, divfix
+    @see  divides, rec, divides_s, divfloor, divceil, divround, divfix
 
   **/
   const boost::dispatch::functor<tag::divround2even_> divround2even = {};

@@ -21,7 +21,7 @@ namespace boost { namespace simd
     @ingroup group-arithmetic
     Function object implementing oneminus capabilities
 
-    Returns the one minus the entry, saturated in the entry type.
+    Returns the one minus the entry.
 
     @par semantic:
     For any given value @c x of type @c T:
@@ -36,11 +36,6 @@ namespace boost { namespace simd
     T r = 1-x
     @endcode
 
-    For unsigned type it is equivalent (due to saturation) to:
-
-    @code
-    T r = x == 0 ? 1 : 0
-    @endcode
 
   **/
   const boost::dispatch::functor<tag::oneminus_> oneminus = {};

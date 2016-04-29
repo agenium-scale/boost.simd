@@ -13,7 +13,7 @@
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ICEIL_HPP_INCLUDED
 
 #include <boost/simd/function/ceil.hpp>
-#include <boost/simd/function/toints.hpp>
+#include <boost/simd/function/toint.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
@@ -42,7 +42,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE bd::as_integer_t<A0> operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      return toints(bs::ceil(a0));
+      return saturated_(toint)(bs::ceil(a0));
     }
   };
 } } }
