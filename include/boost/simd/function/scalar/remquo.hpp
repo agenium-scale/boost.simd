@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_REMQUO_HPP_INCLUDED
 
 #include <boost/simd/function/definition/remquo.hpp>
+#include <boost/simd/arch/common/scalar/function/remquo.hpp>
 #include <boost/simd/arch/common/generic/function/remquo.hpp>
 
 #endif
