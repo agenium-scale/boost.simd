@@ -23,21 +23,6 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
-  BOOST_DISPATCH_OVERLOAD ( two_split_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bd::generic_< bd::floating_<A0> >
-                          , bd::generic_< bd::floating_<A0> >
-                          )
-  {
-    BOOST_FORCEINLINE
-      A0 operator() ( A0 const& a0,A0& a2) const BOOST_NOEXCEPT
-    {
-      A0 a1;
-      boost::simd::two_split(a0, a1, a2);
-      return a1;
-    }
-  };
 
   BOOST_DISPATCH_OVERLOAD ( two_split_
                           , (typename A0)
@@ -46,29 +31,13 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using result_t = std::pair<A0,A0>;                                 ;
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0) const BOOST_NOEXCEPT
-    {
-      A0 first, second;
-      boost::simd::two_split( a0, first, second );
-      return  {first, second};
-    }
-  };
-
-  BOOST_DISPATCH_OVERLOAD ( two_split_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bd::generic_< bd::floating_<A0> >
-                          , bd::generic_< bd::floating_<A0> >
-                          , bd::generic_< bd::floating_<A0> >
-                          )
-  {
-    BOOST_FORCEINLINE void operator() ( A0 const& a, A0 & r0,A0 & r1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE result_t operator() ( A0 const& a) const BOOST_NOEXCEPT
     {
       detail::enforce_precision<A0> enforcer;
       A0 const c = Splitfactor<A0>()*a;
       A0 const c1 = c-a;
-      r0 = c-c1;
-      r1 = a-r0;
+      A0 r0 = c-c1;
+      return {r0, a-r0};
     }
   };
 } } }

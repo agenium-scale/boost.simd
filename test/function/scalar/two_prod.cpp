@@ -37,63 +37,21 @@ STF_CASE_TPL(" two_prod", STF_IEEE_TYPES)
   T eps_    = bs::Eps<T>();
   T meps2_   = -eps_*eps_;
 
-  {
-    T s,r;
+  std::pair<T,T> p;
 
-    two_prod(inf_,one_, s, r);
-    STF_EQUAL(s, inf_);
-    STF_EQUAL(r, zero_);
+  p = two_prod(inf_,one_);
+  STF_EQUAL(p.first, inf_);
+  STF_EQUAL(p.second, zero_);
 
-    two_prod(one_, inf_, s, r);
-    STF_EQUAL(s, inf_);
-    STF_EQUAL(r, zero_);
+  p = two_prod(one_, inf_);
+  STF_EQUAL(p.first, inf_);
+  STF_EQUAL(p.second, zero_);
 
-    two_prod(one_ + eps_, one_ - eps_, s, r);
-    STF_EQUAL(s, one_);
-    STF_EQUAL(r, meps2_);
+  p = two_prod(one_ + eps_, one_ - eps_);
+  STF_EQUAL(p.first, one_);
+  STF_EQUAL(p.second, meps2_);
 
-    two_prod(one_ - eps_,one_ + eps_, s, r);
-    STF_EQUAL(s, one_);
-    STF_EQUAL(r, meps2_);
-  }
-
-  {
-    T s,r;
-
-    s = two_prod(inf_,one_, r);
-    STF_EQUAL(s, inf_);
-    STF_EQUAL(r, zero_);
-
-    s = two_prod(one_, inf_, r);
-    STF_EQUAL(s, inf_);
-    STF_EQUAL(r, zero_);
-
-    s = two_prod(one_ + eps_, one_ - eps_, r);
-    STF_EQUAL(s, one_);
-    STF_EQUAL(r, meps2_);
-
-    s = two_prod(one_ - eps_,one_ + eps_, r);
-    STF_EQUAL(s, one_);
-    STF_EQUAL(r, meps2_);
-  }
-
-  {
-    std::pair<T,T> p;
-
-    p = two_prod(inf_,one_);
-    STF_EQUAL(p.first, inf_);
-    STF_EQUAL(p.second, zero_);
-
-    p = two_prod(one_, inf_);
-    STF_EQUAL(p.first, inf_);
-    STF_EQUAL(p.second, zero_);
-
-    p = two_prod(one_ + eps_, one_ - eps_);
-    STF_EQUAL(p.first, one_);
-    STF_EQUAL(p.second, meps2_);
-
-    p = two_prod(one_ - eps_,one_ + eps_);
-    STF_EQUAL(p.first, one_);
-    STF_EQUAL(p.second, meps2_);
-  }
+  p = two_prod(one_ - eps_,one_ + eps_);
+  STF_EQUAL(p.first, one_);
+  STF_EQUAL(p.second, meps2_);
 }
