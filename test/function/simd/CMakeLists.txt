@@ -41,6 +41,7 @@ bitwise_or.cpp
 bitwise_ornot.cpp
 bitwise_xor.cpp
 broadcast.cpp
+cbrt.cpp
 ceil.cpp
 clz.cpp
 complement.cpp
