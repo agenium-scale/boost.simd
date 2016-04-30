@@ -25,19 +25,17 @@ void test(Env& $)
   using p_t = bs::pack<T, N>;
 
 
-  T a1[N], a2[N], r1[N], r2[N];
+  T a1[N], r1[N], r2[N];
   for(std::size_t i = 0; i < N; ++i)
   {
      a1[i] = (i%2) ? T(i) : T(-i);
-     a2[i] = (i%2) ? T(i+N) :T(-(i+2*N*bs::Eps<T>()));
-     std::tie(r1[i], r2[i]) = bs::two_split(a1[i], a2[i]);
+     std::tie(r1[i], r2[i]) = bs::two_split(a1[i]);
    }
   p_t aa1(&a1[0], &a1[N]);
-  p_t aa2(&a2[0], &a2[N]);
   p_t rr21, rr22;
   p_t rr1(&r1[0], &r1[N]);
   p_t rr2(&r2[0], &r2[N]);
-  std::tie(rr21, rr22) = bs::two_split(aa1, aa2);
+  std::tie(rr21, rr22) = bs::two_split(aa1);
   STF_IEEE_EQUAL(rr21, rr1);
   STF_IEEE_EQUAL(rr22, rr2);
 }

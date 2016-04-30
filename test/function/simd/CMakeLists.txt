@@ -45,6 +45,7 @@ clz.cpp
 complement.cpp
 conj.cpp
 copysign.cpp
+correct_fma.cpp
 ctz.cpp
 dec.cpp
 dec_s.cpp
@@ -239,7 +240,7 @@ unary_plus.cpp
 #compare_less.cpp
 #compare_less_equal.cpp
 #compare_not_equal.cpp
-#correct_fma.cpp TODO
+
 #divceil
 #divfix
 #divfloor

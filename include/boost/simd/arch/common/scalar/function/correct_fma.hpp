@@ -25,6 +25,7 @@
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
 #include <cmath>
+#include <tuple>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -66,12 +67,12 @@ namespace boost { namespace simd { namespace ext
       auto choose = (e0 > e1);
       A0 amax = choose ? ldexp(a0, e) : ldexp(a1, e);
       A0 amin = choose ? a1 : a0;
-      two_prod(amax, amin, p, rp);
-      two_add(p, ae2, s, rs);
+      std::tie(p, rp) = two_prod(amax, amin);
+      std::tie(s, rs) = two_add(p, ae2);
       return ldexp(s+(rp+rs), -e);
     #else
-      two_prod(a0, a1, p, rp);
-      two_add(p, a2, s, rs);
+      std::tie(p, rp) = two_prod(a0, a1);
+      std::tie(s, rs) = two_add(p, a2);
       return s+(rp+rs);
     #endif
     }
