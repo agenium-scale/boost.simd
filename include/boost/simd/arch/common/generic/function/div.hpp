@@ -118,6 +118,7 @@ namespace boost { namespace simd { namespace ext
       return divround2even(a, b);
     }
   };
+
 } } }
 
 #endif

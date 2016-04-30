@@ -184,6 +184,7 @@ negifnot.cpp
 neg_s.cpp
 nextafter.cpp
 next.cpp
+nthroot.cpp
 oneminus.cpp
 oneminus_s.cpp
 oneplus.cpp
@@ -192,6 +193,8 @@ plus.cpp
 plus_s.cpp
 posmax.cpp
 posmin.cpp
+pow.cpp
+pow_abs.cpp
 predecessor.cpp
 prev.cpp
 rec.cpp
