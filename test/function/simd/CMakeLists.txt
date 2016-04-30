@@ -228,6 +228,7 @@ two_add.cpp
 two_prod.cpp
 two_split.cpp
 ulpdist.cpp
+twopower.cpp
 unary_minus.cpp
 unary_minus_s.cpp
 unary_plus.cpp
@@ -269,7 +270,6 @@ unary_plus.cpp
 #rror.cpp TODO
 #splatted_maximum.cpp//TODO all_reduce
 #splatted_minimum.cpp
-#twopower.cpp //TODO shift_left multi index
 ####deinterleave_first.cpp
 ####deinterleave_second.cpp
 ####dot.cpp
