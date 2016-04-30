@@ -1,25 +1,25 @@
 //==================================================================================================
-/*!
-  @file
-
-  @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
+/**
+  Copyright 2016 NumScale SAS
+  Copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SPLAT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SPLAT_HPP_INCLUDED
-#include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/function/bitwise_cast.hpp>
-#include <boost/simd/function/genmask.hpp>
-#include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/meta/as_arithmetic.hpp>
+#include <boost/simd/function/genmask.hpp>
+#include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/brigand.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/config.hpp>
+
+#ifdef BOOST_MSVC
+#pragma warning(push)
+#pragma warning(disable: 4244) // conversion and loss of data
+#endif
 
 namespace boost { namespace simd { namespace ext
 {
@@ -85,10 +85,14 @@ namespace boost { namespace simd { namespace ext
     template<typename... N> static inline
     storage_t do_(V const& v, aggregate_storage const&, brigand::list<N...> const&) BOOST_NOEXCEPT
     {
-      typename storage_t::value_type s(v);
+      typename storage_t::value_type s(!!v);
       return {{ s, s }};
     }
   };
 } } }
+
+#ifdef BOOST_MSVC
+#pragma warning(pop)
+#endif
 
 #endif
