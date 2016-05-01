@@ -9,8 +9,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_SDK_IS_SCALAR_HPP_INCLUDED
-#define BOOST_SIMD_SDK_IS_SCALAR_HPP_INCLUDED
+#ifndef BOOST_SIMD_META_IS_SCALAR_HPP_INCLUDED
+#define BOOST_SIMD_META_IS_SCALAR_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>

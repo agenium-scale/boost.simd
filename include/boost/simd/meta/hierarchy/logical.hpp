@@ -11,8 +11,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_SDK_HIERARCHY_LOGICAL_HPP_INCLUDED
-#define BOOST_SIMD_SDK_HIERARCHY_LOGICAL_HPP_INCLUDED
+#ifndef BOOST_SIMD_META_HIERARCHY_LOGICAL_HPP_INCLUDED
+#define BOOST_SIMD_META_HIERARCHY_LOGICAL_HPP_INCLUDED
 
 #include <boost/dispatch/meta/value_of.hpp>
 #include <boost/dispatch/meta/model_of.hpp>
