@@ -11,8 +11,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_X86_FMA3_DETAIL_AS_SIMD_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_X86_FMA3_DETAIL_AS_SIMD_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_X86_FMA3_AS_SIMD_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_X86_FMA3_AS_SIMD_HPP_INCLUDED
 
 #include <boost/simd/arch/x86/avx/as_simd.hpp>
 

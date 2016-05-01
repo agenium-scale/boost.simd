@@ -9,8 +9,8 @@
     (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_X86_SSE4_2_SIMD_FUNCTION_IS_GEZ_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_X86_SSE4_2_SIMD_FUNCTION_IS_GEZ_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_X86_SSE4_2_SIMD_FUNCTION_IS_GEZ_HH_INCLUDED
+#define BOOST_SIMD_ARCH_X86_SSE4_2_SIMD_FUNCTION_IS_GEZ_HH_INCLUDED
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/is_greater.hpp>

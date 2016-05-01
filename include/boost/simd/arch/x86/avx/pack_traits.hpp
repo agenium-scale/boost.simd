@@ -11,8 +11,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_X86_AVX_PACK_TRAITS_SIMD_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_X86_AVX_PACK_TRAITS_SIMD_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_X86_AVX_PACK_TRAITS_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_X86_AVX_PACK_TRAITS_HPP_INCLUDED
 
 #include <boost/config.hpp>
 #include <boost/simd/arch/x86/sse2/pack_traits.hpp>
