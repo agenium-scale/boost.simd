@@ -15,6 +15,7 @@ set ( SOURCES
 #memory
    extract.cpp
    load.cpp
+   slide.cpp
    splat.cpp
    make.cpp
 #alias
