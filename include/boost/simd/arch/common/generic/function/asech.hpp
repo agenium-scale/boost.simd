@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_ASECH_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_ASECH_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ASECH_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ASECH_HPP_INCLUDED
 
 #include <boost/simd/function/acosh.hpp>
 #include <boost/simd/function/rec.hpp>
