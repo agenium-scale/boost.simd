@@ -58,6 +58,8 @@ divides_s.cpp
 exp.cpp
 exp2.cpp
 expm1.cpp
+exprecneg.cpp
+exprecnegc.cpp
 expx2.cpp
 enumerate.cpp
 ffs.cpp
