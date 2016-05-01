@@ -83,6 +83,7 @@ deinterleave_first.cpp
 deinterleave_second.cpp
 dist.cpp
 dist_s.cpp
+divfix.cpp
 divides.cpp
 divides_s.cpp
 exp.cpp
