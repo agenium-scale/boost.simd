@@ -47,10 +47,10 @@ namespace boost { namespace simd { namespace ext
 //                           )
 //   {
 //     BOOST_FORCEINLINE bd::as_integer_t<T>
-//     operator()(T const& a, T const& b
-//                , bd::functor<bs::tag::trunc_> ) const BOOST_NOEXCEPT
+//     operator()(bd::functor<bs::tag::trunc_>, T const& a, T const& b
+//                ) const BOOST_NOEXCEPT
 //     {
-//       return idiv(a, b, fix);
+//       return idiv(fix, a, b,);
 //     }
 //   };
 

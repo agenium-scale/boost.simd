@@ -48,7 +48,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       if (is_inf(a0) || is_eqz(a1)) return Nan<A0>();
-      return is_finite(a1) ? a0-a1*idiv(a0,a1,fix) : a0;
+      return is_finite(a1) ? a0-a1*idiv(fix, a0, a1) : a0;
     }
   };
   BOOST_DISPATCH_OVERLOAD ( rem_
@@ -61,7 +61,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
-      return a0-a1*idiv(a0,a1, fix);
+      return a0-a1*idiv(fix, a0, a1);
     }
   };
   BOOST_DISPATCH_OVERLOAD ( rem_

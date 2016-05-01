@@ -25,7 +25,7 @@ namespace boost { namespace simd
     For any value @c a and @c b of type @c T,
 
     @code
-    T r = idiv(a, b{, option});
+    T r = idiv({option, }a, b);
     @endcode
 
     returns the quotient of @c a by @c b according to the option

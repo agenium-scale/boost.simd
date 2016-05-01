@@ -30,20 +30,20 @@ STF_CASE_TPL (" idiv real",  STF_IEEE_TYPES)
   using r_t = decltype(idiv(T(), T()));
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(idiv(bs::Inf<T>(), bs::Inf<T>(), bs::ceil), bs::Zero<r_t>());
-  STF_EQUAL(idiv(bs::Minf<T>(), bs::Minf<T>(), bs::ceil), bs::Zero<r_t>());
-  STF_EQUAL(idiv(bs::Nan<T>(), bs::Nan<T>(), bs::ceil), bs::Zero<r_t>());
+  STF_EQUAL(idiv(bs::ceil, bs::Inf<T>(), bs::Inf<T>()), bs::Zero<r_t>());
+  STF_EQUAL(idiv(bs::ceil, bs::Minf<T>(), bs::Minf<T>()), bs::Zero<r_t>());
+  STF_EQUAL(idiv(bs::ceil, bs::Nan<T>(), bs::Nan<T>()), bs::Zero<r_t>());
 #endif
- STF_EQUAL(idiv(bs::Mone<T>(), bs::Mone<T>(), bs::ceil), bs::One<r_t>());
-  STF_EQUAL(idiv(bs::Mone<T>(),bs::Zero<T>(), bs::ceil), bs::Minf<r_t>());
-  STF_EQUAL(idiv(bs::One<T>(), bs::One<T>(), bs::ceil), bs::One<r_t>());
-  STF_EQUAL(idiv(bs::One<T>(),bs::Zero<T>(), bs::ceil), bs::Valmax<r_t>());
-  STF_EQUAL(idiv(bs::One<T>(),bs::Mzero<T>(), bs::ceil), bs::Valmin<r_t>());
-  STF_EQUAL(idiv(bs::Zero<T>(),bs::Zero<T>(), bs::ceil), bs::Zero<r_t>());
-  STF_EQUAL(idiv(T(4),T(3)  , bs::ceil), r_t(2) );
-  STF_EQUAL(idiv(T(-4),T(-3), bs::ceil), r_t(2) );
-  STF_EQUAL(idiv(T(-4),T(3) , bs::ceil), r_t(-1));
-  STF_EQUAL(idiv(T(4),T(-3) , bs::ceil), r_t(-1));
+ STF_EQUAL(idiv(bs::ceil, bs::Mone<T>(), bs::Mone<T>()), bs::One<r_t>());
+  STF_EQUAL(idiv(bs::ceil, bs::Mone<T>(),bs::Zero<T>()), bs::Minf<r_t>());
+  STF_EQUAL(idiv(bs::ceil, bs::One<T>(), bs::One<T>()), bs::One<r_t>());
+  STF_EQUAL(idiv(bs::ceil, bs::One<T>(),bs::Zero<T>()), bs::Valmax<r_t>());
+  STF_EQUAL(idiv(bs::ceil, bs::One<T>(),bs::Mzero<T>()), bs::Valmin<r_t>());
+  STF_EQUAL(idiv(bs::ceil, bs::Zero<T>(),bs::Zero<T>()), bs::Zero<r_t>());
+  STF_EQUAL(idiv(bs::ceil, T(4),T(3)  ), r_t(2) );
+  STF_EQUAL(idiv(bs::ceil, T(-4),T(-3)), r_t(2) );
+  STF_EQUAL(idiv(bs::ceil, T(-4),T(3) ), r_t(-1));
+  STF_EQUAL(idiv(bs::ceil, T(4),T(-3) ), r_t(-1));
 } // end of test for floating_
 
 STF_CASE_TPL (" idiv unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
@@ -52,11 +52,11 @@ STF_CASE_TPL (" idiv unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
   namespace bd = boost::dispatch;
 
   using bs::idiv;
-  using r_t = decltype(idiv(T(), T()));
+  using r_t = decltype(idiv(bs::ceil, T(), T()));
 
-  STF_EQUAL(idiv(T(4),T(3), bs::ceil), T(2));
-  STF_EQUAL(idiv(bs::One<T>(), bs::One<T>(), bs::ceil), bs::One<r_t>());
-  STF_EQUAL(idiv(bs::One<T>(), bs::Zero<T>(), bs::ceil), bs::Valmax<r_t>());
+  STF_EQUAL(idiv(bs::ceil, T(4),T(3)), T(2));
+  STF_EQUAL(idiv(bs::ceil, bs::One<T>(), bs::One<T>()), bs::One<r_t>());
+  STF_EQUAL(idiv(bs::ceil, bs::One<T>(), bs::Zero<T>()), bs::Valmax<r_t>());
 } // end of test for unsigned_int_
 
 STF_CASE_TPL (" idiv signed_int",  STF_SIGNED_INTEGRAL_TYPES)
@@ -65,16 +65,16 @@ STF_CASE_TPL (" idiv signed_int",  STF_SIGNED_INTEGRAL_TYPES)
   namespace bd = boost::dispatch;
   using bs::idiv;
 
-  using r_t = decltype(idiv(T(), T()));
+  using r_t = decltype(idiv(bs::ceil, T(), T()));
 
-  STF_EQUAL(idiv(T(4),T(3), bs::ceil), r_t(2));
-  STF_EQUAL(idiv(T(-4),T(-3), bs::ceil), r_t(2));
-  STF_EQUAL(idiv(T(-4),T(3), bs::ceil), r_t(-1));
-  STF_EQUAL(idiv(T(4),T(-3), bs::ceil), r_t(-1));
-  STF_EQUAL(idiv(bs::Mone<T>(), bs::Mone<T>(), bs::ceil), bs::One<r_t>());
-  STF_EQUAL(idiv(bs::One<T>(), bs::One<T>(), bs::ceil), bs::One<r_t>());
-  STF_EQUAL(idiv(bs::One<T>(), bs::Zero<T>(), bs::ceil), bs::Valmax<r_t>());
-  STF_EQUAL(idiv(bs::Mone<T>(), bs::Zero<T>(), bs::ceil), bs::Valmin<r_t>());
+  STF_EQUAL(idiv(bs::ceil, T(4),T(3)), r_t(2));
+  STF_EQUAL(idiv(bs::ceil, T(-4),T(-3)), r_t(2));
+  STF_EQUAL(idiv(bs::ceil, T(-4),T(3)), r_t(-1));
+  STF_EQUAL(idiv(bs::ceil, T(4),T(-3)), r_t(-1));
+  STF_EQUAL(idiv(bs::ceil, bs::Mone<T>(), bs::Mone<T>()), bs::One<r_t>());
+  STF_EQUAL(idiv(bs::ceil, bs::One<T>(), bs::One<T>()), bs::One<r_t>());
+  STF_EQUAL(idiv(bs::ceil, bs::One<T>(), bs::Zero<T>()), bs::Valmax<r_t>());
+  STF_EQUAL(idiv(bs::ceil, bs::Mone<T>(), bs::Zero<T>()), bs::Valmin<r_t>());
 
 } // end of test for signed_int_
 

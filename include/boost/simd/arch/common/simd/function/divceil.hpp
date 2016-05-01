@@ -27,62 +27,63 @@ namespace boost { namespace simd { namespace ext
 {
    namespace bd = boost::dispatch;
    namespace bs = boost::simd;
-   BOOST_DISPATCH_OVERLOAD(divceil_
-                             , (typename A0, typename X)
-                             , bd::cpu_
-                             , bs::pack_<bd::int_<A0>, X>
-                             , bs::pack_<bd::int_<A0>, X>
-                             )
-   {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
-      {
-        using ivtype = bd::upgrade_t<A0>;
-        ivtype a0l, a0h, a1l, a1h;
-        bs::split(a0, a0l, a0h );
-        bs::split(a1, a1l, a1h );
-        ivtype d0 = saturated_(toint)(divceil(tofloat(a0l), tofloat(a1l)));
-        ivtype d1 = saturated_(toint)(divceil(tofloat(a0h), tofloat(a1h)));
-        return groups(d0, d1);
-      }
-   };
+  //TODO wait for split etc.
+//    BOOST_DISPATCH_OVERLOAD(divceil_
+//                              , (typename A0, typename X)
+//                              , bd::cpu_
+//                              , bs::pack_<bd::int_<A0>, X>
+//                              , bs::pack_<bd::int_<A0>, X>
+//                              )
+//    {
+//       BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+//       {
+//         using ivtype = bd::upgrade_t<A0>;
+//         ivtype a0l, a0h, a1l, a1h;
+//         bs::split(a0, a0l, a0h );
+//         bs::split(a1, a1l, a1h );
+//         ivtype d0 = saturated_(toint)(divceil(tofloat(a0l), tofloat(a1l)));
+//         ivtype d1 = saturated_(toint)(divceil(tofloat(a0h), tofloat(a1h)));
+//         return groups(d0, d1);
+//       }
+//    };
 
-   BOOST_DISPATCH_OVERLOAD(divceil_
-                             , (typename A0, typename X)
-                             , bd::cpu_
-                             , bs::pack_<bd::uint_<A0>, X>
-                             , bs::pack_<bd::uint_<A0>, X>
-                             )
-   {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
-      {
-        using ivtype = bd::upgrade_t<A0>;
-        ivtype a0l, a0h, a1l, a1h;
-        bs::split(a0, a0l, a0h );
-        bs::split(a1, a1l, a1h );
-        ivtype d0 = saturated_(touint)(divceil(tofloat(a0l), tofloat(a1l)));
-        ivtype d1 = saturated_(touint)(divceil(tofloat(a0h), tofloat(a1h)));
-        return groups(d0, d1);
-      }
-   };
+//    BOOST_DISPATCH_OVERLOAD(divceil_
+//                              , (typename A0, typename X)
+//                              , bd::cpu_
+//                              , bs::pack_<bd::uint_<A0>, X>
+//                              , bs::pack_<bd::uint_<A0>, X>
+//                              )
+//    {
+//       BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+//       {
+//         using ivtype = bd::upgrade_t<A0>;
+//         ivtype a0l, a0h, a1l, a1h;
+//         bs::split(a0, a0l, a0h );
+//         bs::split(a1, a1l, a1h );
+//         ivtype d0 = saturated_(touint)(divceil(tofloat(a0l), tofloat(a1l)));
+//         ivtype d1 = saturated_(touint)(divceil(tofloat(a0h), tofloat(a1h)));
+//         return groups(d0, d1);
+//       }
+//    };
 
-   BOOST_DISPATCH_OVERLOAD(divceil_
-                          , (typename A0, typename X)
-                          , bd::cpu_
-                          , bs::pack_<bd::ints8_<A0>, X>
-                          , bs::pack_<bd::ints8_<A0>, X>
-                          )
-   {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
-      {
-        using ivtype = bd::upgrade_t<A0>;
-        ivtype a0l, a0h, a1l, a1h;
-        bs::split(a0, a0l, a0h);
-        bs::split(a1, a1l, a1h);
-        ivtype d0 = divceil(a0l, a1l);
-        ivtype d1 = divceil(a0h, a1h);
-        return groups(d0, d1);
-      }
-   };
+//    BOOST_DISPATCH_OVERLOAD(divceil_
+//                           , (typename A0, typename X)
+//                           , bd::cpu_
+//                           , bs::pack_<bd::ints8_<A0>, X>
+//                           , bs::pack_<bd::ints8_<A0>, X>
+//                           )
+//    {
+//       BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+//       {
+//         using ivtype = bd::upgrade_t<A0>;
+//         ivtype a0l, a0h, a1l, a1h;
+//         bs::split(a0, a0l, a0h);
+//         bs::split(a1, a1l, a1h);
+//         ivtype d0 = divceil(a0l, a1l);
+//         ivtype d1 = divceil(a0h, a1h);
+//         return groups(d0, d1);
+//       }
+//    };
 
    BOOST_DISPATCH_OVERLOAD(divceil_
                           , (typename A0, typename X)

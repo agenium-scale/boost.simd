@@ -43,7 +43,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       return selsub(is_nez(a1),a0,
-                    simd::multiplies(idiv(a0, a1, round2even), a1));
+                    simd::multiplies(idiv(round2even, a0, a1), a1));
     }
   };
 
@@ -56,7 +56,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
-      return a0-div(a0, a1, round2even)*a1;
+      return a0-div(round2even, a0, a1)*a1;
     }
   };
 } } }

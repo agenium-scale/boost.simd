@@ -34,6 +34,7 @@ set ( SOURCES
    dist_s.cpp
    div.cpp
    divceil.cpp
+   divfix.cpp
    divfloor.cpp
    divround.cpp
    divround2even.cpp

@@ -51,14 +51,14 @@ namespace boost { namespace simd
     return bs::idivfix(a, b);
   }
 
-#define BOOST_SIMD_IDIV_WITH_OPTION(option)                      \
-  template < typename T>                                         \
-  BOOST_FORCEINLINE auto idiv(T const& a, T const& b             \
-                             , bd::functor<bs::tag::option##_> const& ) \
-    BOOST_NOEXCEPT_DECLTYPE(bs::idiv##option(a, b))              \
-  {                                                              \
-    return idiv##option(a, b);                                   \
-  }                                                              \
+#define BOOST_SIMD_IDIV_WITH_OPTION(option)                             \
+  template < typename T>                                                \
+  BOOST_FORCEINLINE auto idiv(bd::functor<bs::tag::option##_> const&    \
+                             , T const& a, T const& b )                 \
+    BOOST_NOEXCEPT_DECLTYPE(bs::idiv##option(a, b))                     \
+  {                                                                     \
+    return idiv##option(a, b);                                          \
+  }                                                                     \
 /**/
 
 BOOST_SIMD_IDIV_WITH_OPTION(ceil)

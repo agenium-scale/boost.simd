@@ -48,9 +48,9 @@ STF_CASE_TPL( "Check idiv behavior with options", STF_NUMERIC_TYPES )
 
   STF_EQUAL(idiv(bs::One<T>(), bs::Two<T>()), bs::Zero<r_t>());
 
-  STF_EQUAL(idiv(bs::One<T>(), bs::Two<T>(), bs::ceil), bs::One<r_t>());
-  STF_EQUAL(idiv(bs::One<T>(), bs::Two<T>(), bs::floor), bs::Zero<r_t>());
-  STF_EQUAL(idiv(bs::One<T>(), bs::Two<T>(), bs::round), bs::One<r_t>());
-  STF_EQUAL(idiv(bs::One<T>(), bs::Two<T>(), bs::round2even), bs::Zero<r_t>());
-  STF_EQUAL(idiv(bs::One<T>(), bs::Two<T>(), bs::fix), bs::Zero<r_t>());
+  STF_EQUAL(idiv(bs::ceil      , bs::One<T>(), bs::Two<T>()), bs::One<r_t>());
+  STF_EQUAL(idiv(bs::floor     , bs::One<T>(), bs::Two<T>()), bs::Zero<r_t>());
+  STF_EQUAL(idiv(bs::round     , bs::One<T>(), bs::Two<T>()), bs::One<r_t>());
+  STF_EQUAL(idiv(bs::round2even, bs::One<T>(), bs::Two<T>()), bs::Zero<r_t>());
+  STF_EQUAL(idiv(bs::fix       , bs::One<T>(), bs::Two<T>()), bs::Zero<r_t>());
 }

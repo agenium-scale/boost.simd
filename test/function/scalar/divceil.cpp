@@ -28,17 +28,17 @@ STF_CASE_TPL (" div real",  STF_IEEE_TYPES)
   using r_t = decltype(div(T(), T()));
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_IEEE_EQUAL(div(bs::Inf<T>(), bs::Inf<T>(), bs::ceil), bs::Nan<r_t>());
-  STF_IEEE_EQUAL(div(bs::Minf<T>(), bs::Minf<T>(), bs::ceil), bs::Nan<r_t>());
-  STF_IEEE_EQUAL(div(bs::Nan<T>(), bs::Nan<T>(), bs::ceil), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(div(bs::ceil, bs::Inf<T>(), bs::Inf<T>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(div(bs::ceil, bs::Minf<T>(), bs::Minf<T>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(div(bs::ceil, bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>());
 #endif
-  STF_EQUAL(div(T(4),T(0), bs::ceil), bs::Inf<r_t>());
-  STF_EQUAL(div(T(4),T(3), bs::ceil), 2);
-  STF_EQUAL(div(bs::Mone<T>(), bs::Mone<T>(), bs::ceil), bs::One<r_t>());
-  STF_EQUAL(div(bs::Mone<T>(),bs::Zero<T>(), bs::ceil), bs::Minf<r_t>());
-  STF_EQUAL(div(bs::One<T>(), bs::One<T>(), bs::ceil), bs::One<r_t>());
-  STF_EQUAL(div(bs::One<T>(),bs::Zero<T>(), bs::ceil), bs::Inf<r_t>());
-  STF_IEEE_EQUAL(div(bs::Zero<T>(),bs::Zero<T>(), bs::ceil), bs::Nan<r_t>());
+  STF_EQUAL(div(bs::ceil, T(4),T(0)), bs::Inf<r_t>());
+  STF_EQUAL(div(bs::ceil, T(4),T(3)), 2);
+  STF_EQUAL(div(bs::ceil, bs::Mone<T>(), bs::Mone<T>()), bs::One<r_t>());
+  STF_EQUAL(div(bs::ceil, bs::Mone<T>(),bs::Zero<T>()), bs::Minf<r_t>());
+  STF_EQUAL(div(bs::ceil, bs::One<T>(), bs::One<T>()), bs::One<r_t>());
+  STF_EQUAL(div(bs::ceil, bs::One<T>(),bs::Zero<T>()), bs::Inf<r_t>());
+  STF_IEEE_EQUAL(div(bs::ceil, bs::Zero<T>(),bs::Zero<T>()), bs::Nan<r_t>());
 } // end of test for floating_
 
 STF_CASE_TPL (" div unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
@@ -47,10 +47,10 @@ STF_CASE_TPL (" div unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
   using bs::div;
   using r_t = decltype(div(T(), T()));
 
-  STF_EQUAL(div(T(4),T(0), bs::ceil), bs::Valmax<r_t>());
-  STF_EQUAL(div(T(4),T(3), bs::ceil), T(2));
-  STF_EQUAL(div(bs::One<T>(), bs::One<T>(), bs::ceil), bs::One<r_t>());
-  STF_EQUAL(div(bs::Valmax<T>(),  bs::Two<T>(), bs::ceil), bs::Valmax<r_t>()/bs::Two<T>()+bs::One<T>());
+  STF_EQUAL(div(bs::ceil, T(4),T(0)), bs::Valmax<r_t>());
+  STF_EQUAL(div(bs::ceil, T(4),T(3)), T(2));
+  STF_EQUAL(div(bs::ceil, bs::One<T>(), bs::One<T>()), bs::One<r_t>());
+  STF_EQUAL(div(bs::ceil, bs::Valmax<T>(),  bs::Two<T>()), bs::Valmax<r_t>()/bs::Two<T>()+bs::One<T>());
 } // end of test for unsigned_int_
 
 STF_CASE_TPL (" div signed_int",  STF_SIGNED_INTEGRAL_TYPES)
@@ -59,14 +59,14 @@ STF_CASE_TPL (" div signed_int",  STF_SIGNED_INTEGRAL_TYPES)
   using bs::div;
   using r_t = decltype(div(T(), T()));
 
-  STF_EQUAL(div(T(-4),T(0), bs::ceil), bs::Valmin<r_t>());
-  STF_EQUAL(div(T(4),T(0), bs::ceil), bs::Valmax<r_t>());
-  STF_EQUAL(div(T(4),T(3), bs::ceil), T(2));
-  STF_EQUAL(div(T(-4),T(-3), bs::ceil), T(2));
-  STF_EQUAL(div(T(4),T(-3), bs::ceil), T(-1));
-  STF_EQUAL(div(T(-4),T(3), bs::ceil), T(-1));
-  STF_EQUAL(div(bs::Mone<T>(), bs::Mone<T>(), bs::ceil), bs::One<r_t>());
-  STF_EQUAL(div(bs::One<T>(), bs::One<T>(), bs::ceil), bs::One<r_t>());
+  STF_EQUAL(div(bs::ceil, T(-4),T(0)), bs::Valmin<r_t>());
+  STF_EQUAL(div(bs::ceil, T(4),T(0)), bs::Valmax<r_t>());
+  STF_EQUAL(div(bs::ceil, T(4),T(3)), T(2));
+  STF_EQUAL(div(bs::ceil, T(-4),T(-3)), T(2));
+  STF_EQUAL(div(bs::ceil, T(4),T(-3)), T(-1));
+  STF_EQUAL(div(bs::ceil, T(-4),T(3)), T(-1));
+  STF_EQUAL(div(bs::ceil, bs::Mone<T>(), bs::Mone<T>()), bs::One<r_t>());
+  STF_EQUAL(div(bs::ceil, bs::One<T>(), bs::One<T>()), bs::One<r_t>());
 } // end of test for signed_int_
 
 
