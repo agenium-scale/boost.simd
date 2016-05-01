@@ -9,35 +9,36 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_TWO_SPLIT_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_TWO_SPLIT_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_REMQUO_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_REMQUO_HPP_INCLUDED
 
-#include <boost/simd/constant/splitfactor.hpp>
-#include <boost/simd/detail/enforce_precision.hpp>
-#include <boost/simd/function/minus.hpp>
-#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/std.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <utility>
+#include <cmath>
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
 
-  BOOST_DISPATCH_OVERLOAD ( two_split_
+  BOOST_DISPATCH_OVERLOAD ( remquo_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::generic_< bd::floating_<A0> >
+                          , bs::std_tag
+                          , bd::scalar_<bd::floating_<A0> >
+                          , bd::scalar_<bd::floating_<A0> >
                           )
   {
-    using result_t = std::pair<A0,A0>;                                 ;
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a) const BOOST_NOEXCEPT
+    using result_type = std::pair<A0,int>;
+
+    BOOST_FORCEINLINE result_type operator() ( A0 a0, A0 a1
+                                             ) const BOOST_NOEXCEPT
     {
-      detail::enforce_precision<A0> enforcer;
-      A0 const c = Splitfactor<A0>()*a;
-      A0 const c1 = c-a;
-      A0 r0 = c-c1;
-      return {r0, a-r0};
+      int q;
+      A0 r = std::remquo(a0, a1, &q);
+      return {r, q};
     }
   };
 } } }

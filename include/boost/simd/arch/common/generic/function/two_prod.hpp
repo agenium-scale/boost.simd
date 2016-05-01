@@ -25,23 +25,6 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
-  BOOST_DISPATCH_OVERLOAD ( two_prod_
-
-                          , (typename A0)
-                          , bd::cpu_
-                          , bd::generic_< bd::floating_<A0> >
-                          , bd::generic_< bd::floating_<A0> >
-                          , bd::generic_< bd::floating_<A0> >
-                          )
-  {
-    BOOST_FORCEINLINE
-      A0 operator() ( A0 const& a0,A0 const& a1,A0& a3) const BOOST_NOEXCEPT
-    {
-      A0 a2;
-      boost::simd::two_prod(a0, a1, a2, a3);
-      return a2;
-    }
-  };
 
   BOOST_DISPATCH_OVERLOAD ( two_prod_
                           , (typename A0)
@@ -51,37 +34,18 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using result_t = std::pair<A0,A0>;
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0,A0 const& a1) const BOOST_NOEXCEPT
-    {
-      A0 first, second;
-      boost::simd::two_prod( a0, a1, first, second );
-      return  {first, second};
-    }
-  };
-
-  BOOST_DISPATCH_OVERLOAD ( two_prod_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bd::generic_< bd::floating_<A0> >
-                          , bd::generic_< bd::floating_<A0> >
-                          , bd::generic_< bd::floating_<A0> >
-                          , bd::generic_< bd::floating_<A0> >
-                          )
-  {
     BOOST_FORCEINLINE
-      void operator() ( A0 const& a,A0 const& b, A0 & r0,A0 & r1) const BOOST_NOEXCEPT
+      result_t operator() ( A0 const& a,A0 const& b) const BOOST_NOEXCEPT
     {
       detail::enforce_precision<A0> enforcer;
       A0 a1, a2, b1, b2;
-      r0  = a*b;
-
-      two_split(a, a1, a2);
-      two_split(b, b1, b2);
-
+      std::tie(a1, a2) = two_split(a);
+      std::tie(b1, b2) = two_split(b);
+      A0 r0 = a*b;
 #if defined(BOOST_SIMD_NO_INVALIDS)
-      r1 = a2*b2 -(((r0-a1*b1)-a2*b1)-a1*b2);
+      return {r0, a2*b2 -(((r0-a1*b1)-a2*b1)-a1*b2)};
 #else
-      r1 = if_zero_else(is_invalid(r0), a2*b2 -(((r0-a1*b1)-a2*b1)-a1*b2));
+      return {r0, if_zero_else(is_invalid(r0), a2*b2 -(((r0-a1*b1)-a2*b1)-a1*b2))};
 #endif
 
     }

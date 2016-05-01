@@ -38,63 +38,21 @@ STF_CASE_TPL(" two_add", STF_IEEE_TYPES)
   T eps_    = bs::Eps<T>();
   T eps_2_  = eps_/T(2);
 
-  {
-    T s,r;
+  std::pair<T,T> p;
 
-    two_add(inf_,zero_, s, r);
-    STF_EQUAL(s, inf_);
-    STF_EQUAL(r, zero_);
+  p = two_add(inf_,zero_);
+  STF_EQUAL(p.first, inf_);
+  STF_EQUAL(p.second, zero_);
 
-    two_add(zero_, inf_, s, r);
-    STF_EQUAL(s, inf_);
-    STF_EQUAL(r, zero_);
+  p = two_add(zero_, inf_);
+  STF_EQUAL(p.first, inf_);
+  STF_EQUAL(p.second, zero_);
 
-    two_add(half_+ eps_2_, half_, s, r);
-    STF_EQUAL(s, one_);
-    STF_EQUAL(r, eps_2_);
+  p = two_add(half_+ eps_2_, half_);
+  STF_EQUAL(p.first, one_);
+  STF_EQUAL(p.second, eps_2_);
 
-    two_add(half_, half_+ eps_2_, s, r);
-    STF_EQUAL(s, one_);
-    STF_EQUAL(r, eps_2_);
-  }
-
-  {
-    T s,r;
-
-    s = two_add(inf_,zero_, r);
-    STF_EQUAL(s, inf_);
-    STF_EQUAL(r, zero_);
-
-    s = two_add(zero_, inf_, r);
-    STF_EQUAL(s, inf_);
-    STF_EQUAL(r, zero_);
-
-    s = two_add(half_+ eps_2_, half_, r);
-    STF_EQUAL(s, one_);
-    STF_EQUAL(r, eps_2_);
-
-    s = two_add(half_, half_+ eps_2_, r);
-    STF_EQUAL(s, one_);
-    STF_EQUAL(r, eps_2_);
-  }
-
-  {
-    std::pair<T,T> p;
-
-    p = two_add(inf_,zero_);
-    STF_EQUAL(p.first, inf_);
-    STF_EQUAL(p.second, zero_);
-
-    p = two_add(zero_, inf_);
-    STF_EQUAL(p.first, inf_);
-    STF_EQUAL(p.second, zero_);
-
-    p = two_add(half_+ eps_2_, half_);
-    STF_EQUAL(p.first, one_);
-    STF_EQUAL(p.second, eps_2_);
-
-    p = two_add(half_, half_+ eps_2_);
-    STF_EQUAL(p.first, one_);
-    STF_EQUAL(p.second, eps_2_);
-  }
+  p = two_add(half_, half_+ eps_2_);
+  STF_EQUAL(p.first, one_);
+  STF_EQUAL(p.second, eps_2_);
 }

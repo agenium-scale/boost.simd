@@ -34,28 +34,10 @@ STF_CASE_TPL(" two_split", STF_IEEE_TYPES)
   T eps_ = bs::Eps<T>();
   T one_ = bs::One<T>();
 
-  {
-    T f,s;
+  std::pair<T,T> p;
 
-    two_split(one_-eps_, f, s);
-    STF_EQUAL(f, one_);
-    STF_EQUAL(s, -eps_);
-  }
-
-  {
-    T f,s;
-
-    f = two_split(one_-eps_, s);
-    STF_EQUAL(f, one_);
-    STF_EQUAL(s, -eps_);
-  }
-
-  {
-    std::pair<T,T> p;
-
-    p = two_split(one_-eps_);
-    STF_EQUAL(p.first, one_);
-    STF_EQUAL(p.second, -eps_);
-  }
+  p = two_split(one_-eps_);
+  STF_EQUAL(p.first, one_);
+  STF_EQUAL(p.second, -eps_);
 }
 
