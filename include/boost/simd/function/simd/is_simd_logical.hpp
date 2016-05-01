@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_SIMD_IS_SIMD_LOGICAL_INCLUDED
-#define BOOST_SIMD_FUNCTION_SIMD_IS_SIMD_LOGICAL_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_SIMD_IS_SIMD_LOGICAL_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_SIMD_IS_SIMD_LOGICAL_HPP_INCLUDED
 
 #include <boost/simd/function/scalar/is_simd_logical.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>

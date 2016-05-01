@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_SIMD_MOD_INCLUDED
-#define BOOST_SIMD_FUNCTION_SIMD_MOD_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_SIMD_MOD_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_SIMD_MOD_HPP_INCLUDED
 
 #include <boost/simd/function/scalar/mod.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>

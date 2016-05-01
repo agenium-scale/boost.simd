@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_SIMD_IS_NOT_REAL_INCLUDED
-#define BOOST_SIMD_FUNCTION_SIMD_IS_NOT_REAL_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_SIMD_IS_NOT_REAL_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_SIMD_IS_NOT_REAL_HPP_INCLUDED
 
 #include <boost/simd/function/scalar/is_not_real.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>

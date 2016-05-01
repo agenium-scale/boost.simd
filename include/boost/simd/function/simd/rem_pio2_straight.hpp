@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_SIMD_REM_PIO2_STRAIGHT_INCLUDED
-#define BOOST_SIMD_FUNCTION_SIMD_REM_PIO2_STRAIGHT_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_SIMD_REM_PIO2_STRAIGHT_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_SIMD_REM_PIO2_STRAIGHT_HPP_INCLUDED
 
 #include <boost/simd/function/scalar/rem_pio2_straight.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
