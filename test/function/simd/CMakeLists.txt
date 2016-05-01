@@ -58,6 +58,7 @@ divides_s.cpp
 exp.cpp
 exp2.cpp
 expm1.cpp
+expx2.cpp
 enumerate.cpp
 ffs.cpp
 firstbitset.cpp
