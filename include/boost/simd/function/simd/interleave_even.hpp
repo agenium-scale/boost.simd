@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_INTERLEAVE_EVEN_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_INTERLEAVE_EVEN_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/interleave_even.hpp>
-#include <boost/simd/arch/common/simd/function/interleave_even.hpp>
+#include <boost/simd/function/definition/interleave_even.hpp>
+//#include <boost/simd/arch/common/simd/function/interleave_even.hpp>
 
 #if defined(BOOST_HW_SIMD_X86)
 
