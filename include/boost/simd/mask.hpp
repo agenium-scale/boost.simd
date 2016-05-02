@@ -11,8 +11,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_META_MASK_HPP_INCLUDED
-#define BOOST_SIMD_META_MASK_HPP_INCLUDED
+#ifndef BOOST_SIMD_MASK_HPP_INCLUDED
+#define BOOST_SIMD_MASK_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
 #include <boost/dispatch/adapted/common/pointer.hpp>

@@ -11,8 +11,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_SDK_AS_LOGICAL_HPP_INCLUDED
-#define BOOST_SIMD_SDK_AS_LOGICAL_HPP_INCLUDED
+#ifndef BOOST_SIMD_META_AS_LOGICAL_HPP_INCLUDED
+#define BOOST_SIMD_META_AS_LOGICAL_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/logical.hpp>

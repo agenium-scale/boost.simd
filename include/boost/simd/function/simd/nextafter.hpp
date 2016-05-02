@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_SIMD_NEXTAFTER_INCLUDED
-#define BOOST_SIMD_FUNCTION_SIMD_NEXTAFTER_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_SIMD_NEXTAFTER_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_SIMD_NEXTAFTER_HPP_INCLUDED
 
 #include <boost/simd/function/scalar/nextafter.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>

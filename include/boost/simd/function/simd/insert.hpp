@@ -8,8 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_SIMD_INSERT_INCLUDED
-#define BOOST_SIMD_FUNCTION_SIMD_INSERT_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_SIMD_INSERT_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_SIMD_INSERT_HPP_INCLUDED
 
 #include <boost/simd/function/scalar/insert.hpp>
 #include <boost/simd/arch/common/simd/function/insert.hpp>

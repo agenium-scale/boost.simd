@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_DEFINITION_IF_ELSE_INCLUDED
-#define BOOST_SIMD_FUNCTION_DEFINITION_IF_ELSE_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_DEFINITION_IF_ELSE_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_DEFINITION_IF_ELSE_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
 #include <boost/dispatch/function/make_callable.hpp>

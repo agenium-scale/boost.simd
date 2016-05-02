@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_SIMD_IF_ALLBITS_ELSE_INCLUDED
-#define BOOST_SIMD_FUNCTION_SIMD_IF_ALLBITS_ELSE_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_SIMD_IF_ALLBITS_ELSE_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_SIMD_IF_ALLBITS_ELSE_HPP_INCLUDED
 
 #include <boost/simd/function/scalar/if_allbits_else.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>

@@ -11,8 +11,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_SDK_HIERARCHY_SIMD_HPP_INCLUDED
-#define BOOST_SIMD_SDK_HIERARCHY_SIMD_HPP_INCLUDED
+#ifndef BOOST_SIMD_META_HIERARCHY_SIMD_HPP_INCLUDED
+#define BOOST_SIMD_META_HIERARCHY_SIMD_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/forward.hpp>
