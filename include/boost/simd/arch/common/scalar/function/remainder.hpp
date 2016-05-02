@@ -13,21 +13,18 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_REMAINDER_HPP_INCLUDED
 
 #include <boost/simd/function/div.hpp>
-#include <boost/simd/function/idiv.hpp>
 #include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/function/minus.hpp>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/selsub.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
-// As the result can be negative the functor is not defined for unsigned
-// The drem function is just an alias for the same thing.
-// The remainder() function computes the remainder of dividing x by y.  The
-// entries
-// integer.  If the boost::simd::absolute value of x-n*y is 0.5, n is chosen
-// return value is x-n*y, where n is the value x / y, rounded to the nearest
-// to be even.
 /////////////////////////////////////////////////////////////////////////////
+// The remainder() function computes the remainder of dividing x by y.  The
+// return value is x-n*y, where n is the value x / y, rounded to the nearest
+// integer.  If the boost::simd::absolute value of x-n*y is 0.5, n is chosen
+// to be even.
+// The drem function is just an alias for the same thing.
 /////////////////////////////////////////////////////////////////////////////
 
 namespace boost { namespace simd { namespace ext
@@ -43,7 +40,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       return selsub(is_nez(a1),a0,
-                    simd::multiplies(idiv(round2even, a0, a1), a1));
+                    simd::multiplies(div(iround2even, a0, a1), a1));
     }
   };
 

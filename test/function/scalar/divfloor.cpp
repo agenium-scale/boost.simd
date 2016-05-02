@@ -1,7 +1,7 @@
 //==================================================================================================
 /*!
 
-  Copyright 2015 NumScale SAS
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -16,14 +16,16 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/valmax.hpp>
+#include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/constant/two.hpp>
 
 
-STF_CASE_TPL (" divreal",  STF_IEEE_TYPES)
+STF_CASE_TPL (" div real",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   using bs::div;
-  using r_t = decltype(div(bs::floor, T(), T()));
+  using r_t = decltype(bs::div(bs::floor, T(), T()));
 
   // return type conformity test
   STF_TYPE_IS(r_t,T);

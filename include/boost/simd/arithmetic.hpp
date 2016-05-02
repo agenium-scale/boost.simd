@@ -60,7 +60,6 @@ namespace boost { namespace simd
 #include <boost/simd/function/fnms.hpp>
 #include <boost/simd/function/hypot.hpp>
 #include <boost/simd/function/iceil.hpp>
-#include <boost/simd/function/idiv.hpp>
 #include <boost/simd/function/ifix.hpp>
 #include <boost/simd/function/ifloor.hpp>
 #include <boost/simd/function/inc.hpp>

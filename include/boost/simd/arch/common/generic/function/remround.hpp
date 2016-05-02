@@ -13,7 +13,6 @@
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_REMROUND_HPP_INCLUDED
 
 #include <boost/simd/function/div.hpp>
-#include <boost/simd/function/idiv.hpp>
 #include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/function/minus.hpp>
 #include <boost/simd/function/multiplies.hpp>
@@ -42,7 +41,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       return selsub(is_nez(a1),a0,
-                    simd::multiplies(idiv(round, a0, a1), a1));
+                    simd::multiplies(div(iround, a0, a1), a1));
     }
   };
 

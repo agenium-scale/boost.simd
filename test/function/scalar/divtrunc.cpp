@@ -42,7 +42,7 @@ STF_CASE_TPL (" divtrunc real",  STF_IEEE_TYPES)
   STF_EQUAL(div(bs::trunc, T(-4),T(3)), T(-1));
 } // end of test for floating_
 
-STF_CASE_TPL (" div unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
+STF_CASE_TPL (" divtrunc unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using bs::div;
@@ -59,11 +59,11 @@ STF_CASE_TPL (" div unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
   STF_EQUAL(div(bs::trunc, bs::One<T>(), bs::Zero<T>()), bs::Valmax<r_t>());
 } // end of test for unsigned_int_
 
-STF_CASE_TPL (" div signed_int",  STF_SIGNED_INTEGRAL_TYPES)
+STF_CASE_TPL (" divtrunc signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using bs::div;
-  using r_t = decltype(bs::trunc, div(T(), T()));
+  using r_t = decltype(div(bs::trunc, T(), T()));
 
   STF_TYPE_IS(r_t, T);
 

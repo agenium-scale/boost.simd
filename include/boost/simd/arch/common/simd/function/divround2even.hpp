@@ -31,11 +31,13 @@ namespace boost { namespace simd { namespace ext
 //    BOOST_DISPATCH_OVERLOAD(divround2even_
 //                              , (typename A0, typename X)
 //                              , bd::cpu_
+//                              , bs::tag::round2even_
 //                              , bs::pack_<bd::int_<A0>, X>
 //                              , bs::pack_<bd::int_<A0>, X>
 //                              )
 //    {
-//       BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+//       BOOST_FORCEINLINE A0 operator()(  bd::functor<bs::tag::round2even_> const&
+//                                 ,  const A0& a0, const A0& a1) const BOOST_NOEXCEPT
 //       {
 //         using ivtype = bd::upgrade_t<A0>;
 //         ivtype a0l, a0h, a1l, a1h;
@@ -50,11 +52,13 @@ namespace boost { namespace simd { namespace ext
 //    BOOST_DISPATCH_OVERLOAD(divround2even_
 //                              , (typename A0, typename X)
 //                              , bd::cpu_
+//                              , bs::tag::round2even_
 //                              , bs::pack_<bd::uint_<A0>, X>
 //                              , bs::pack_<bd::uint_<A0>, X>
 //                              )
 //    {
-//       BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+//       BOOST_FORCEINLINE A0 operator()(  bd::functor<bs::tag::round2even_> const&
+//                                 ,  const A0& a0, const A0& a1) const BOOST_NOEXCEPT
 //       {
 //         using ivtype = bd::upgrade_t<A0>;
 //         ivtype a0l, a0h, a1l, a1h;
@@ -69,11 +73,13 @@ namespace boost { namespace simd { namespace ext
 //    BOOST_DISPATCH_OVERLOAD(divround2even_
 //                           , (typename A0, typename X)
 //                           , bd::cpu_
+//                              , bs::tag::round2even_
 //                           , bs::pack_<bd::ints8_<A0>, X>
 //                           , bs::pack_<bd::ints8_<A0>, X>
 //                           )
 //    {
-//       BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+//       BOOST_FORCEINLINE A0 operator()(  bd::functor<bs::tag::round2even_> const&
+//                                 ,   const A0& a0, const A0& a1) const BOOST_NOEXCEPT
 //       {
 //         using ivtype = bd::upgrade_t<A0>;
 //         ivtype a0l, a0h, a1l, a1h;
@@ -85,14 +91,16 @@ namespace boost { namespace simd { namespace ext
 //       }
 //    };
 
-   BOOST_DISPATCH_OVERLOAD(divround2even_
+   BOOST_DISPATCH_OVERLOAD(div_
                           , (typename A0, typename X)
                           , bd::cpu_
+                          , bs::tag::round2even_
                           , bs::pack_<bd::floating_<A0>, X>
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+      BOOST_FORCEINLINE A0 operator()(  bd::functor<bs::tag::round2even_> const&
+                                    ,const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
         return bs::round2even(a0/a1);
       }

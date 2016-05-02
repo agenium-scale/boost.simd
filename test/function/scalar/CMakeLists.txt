@@ -47,7 +47,6 @@ set ( SOURCES
    fnms.cpp
    hypot.cpp
    iceil.cpp
-   idiv.cpp
    idivceil.cpp
    idivfix.cpp
    idivfloor.cpp

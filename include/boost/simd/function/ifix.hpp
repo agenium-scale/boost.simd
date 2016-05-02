@@ -29,7 +29,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/function/scalar/toint_s.hpp>
+#include <boost/simd/function/scalar/ifix.hpp>
 #include <boost/simd/function/simd/ifix.hpp>
 
 #endif

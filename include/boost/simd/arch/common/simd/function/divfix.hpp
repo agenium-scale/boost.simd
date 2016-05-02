@@ -21,7 +21,7 @@
 #include <boost/simd/function/simd/tofloat.hpp>
 #include <boost/simd/function/simd/toint.hpp>
 #include <boost/simd/function/simd/touint.hpp>
-#include <boost/simd/function/simd/trunc.hpp>
+#include <boost/simd/function/simd/fix.hpp>
 
 //TODO wait for split groups
 namespace boost { namespace simd { namespace ext
@@ -85,14 +85,16 @@ namespace boost { namespace simd { namespace ext
 //       }
 //    };
 
-   BOOST_DISPATCH_OVERLOAD(divfix_
+   BOOST_DISPATCH_OVERLOAD(div_
                           , (typename A0, typename X)
                           , bd::cpu_
+                          , bs::tag::fix_
                           , bs::pack_<bd::floating_<A0>, X>
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+      BOOST_FORCEINLINE A0 operator()( bd::functor<bs::tag::fix_> const&
+                                    ,  const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
         return bs::trunc(a0/a1);
       }

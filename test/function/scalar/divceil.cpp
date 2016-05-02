@@ -25,7 +25,7 @@ STF_CASE_TPL (" div real",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   using bs::div;
-  using r_t = decltype(div(T(), T()));
+  using r_t = decltype(bs::ceil, div(T(), T()));
 
 #ifndef BOOST_SIMD_NO_INVALIDS
   STF_IEEE_EQUAL(div(bs::ceil, bs::Inf<T>(), bs::Inf<T>()), bs::Nan<r_t>());
