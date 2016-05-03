@@ -49,6 +49,7 @@ complement.cpp
 conj.cpp
 copysign.cpp
 correct_fma.cpp
+cos.cpp
 ctz.cpp
 dec.cpp
 dec_s.cpp

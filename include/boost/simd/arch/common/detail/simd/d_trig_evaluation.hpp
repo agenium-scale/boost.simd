@@ -2,26 +2,26 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T.Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_DETAIL_SCALAR_D_TRIG_EVALUATION_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_DETAIL_SCALAR_D_TRIG_EVALUATION_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_DETAIL_SIMD_D_TRIG_EVALUATION_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_DETAIL_SIMD_D_TRIG_EVALUATION_HPP_INCLUDED
 
 #include <boost/simd/function/horn.hpp>
 #include <boost/simd/function/horn1.hpp>
 #include <boost/simd/constant/mhalf.hpp>
-#include <boost/simd/function/scalar/fma.hpp>
-#include <boost/simd/function/scalar/oneminus.hpp>
-#include <boost/simd/function/scalar/rec.hpp>
-#include <boost/simd/function/scalar/sqr.hpp>
+#include <boost/simd/function/simd/fma.hpp>
+#include <boost/simd/function/simd/oneminus.hpp>
+#include <boost/simd/function/simd/rec.hpp>
+#include <boost/simd/function/simd/sqr.hpp>
 #include <boost/dispatch/meta/scalar_of.hpp>
 
-//TODO some factoring with simd
+//TODO some factoring with scalar
 namespace boost { namespace simd
 {
   namespace detail
@@ -29,11 +29,12 @@ namespace boost { namespace simd
     namespace bd =  boost::dispatch;
     namespace bs =  boost::simd;
 
-    template < class A0>
-    struct trig_evaluation < A0, tag::not_simd_type, double >
+    template <class A0> struct trig_evaluation < A0,  tag::simd_type, double>
     {
+      typedef typename bd::as_integer<A0, signed>::type     iA0;
+      typedef typename bd::scalar_of<A0>::type            stype;
 
-      static inline A0 cos_eval(A0 z) BOOST_NOEXCEPT
+      static inline A0 cos_eval(const A0 z)
       {
         const A0 y = horn<A0,
           0x3fe0000000000000ll,
@@ -44,10 +45,9 @@ namespace boost { namespace simd
           0xbe21eea7c1e514d4ll,
           0x3da8ff831ad9b219ll
           > (z);
-        return oneminus(y*z);
+        return bs::oneminus(y*z);
       }
-
-      static inline A0 sin_eval(A0 z, A0 x) BOOST_NOEXCEPT
+      static inline A0 sin_eval(const A0& z, const A0& x)
       {
         const A0 y1 = horn<A0,
           0xbfc5555555555548ll,
@@ -57,10 +57,9 @@ namespace boost { namespace simd
           0xbe5ae5e5a9291691ll,
           0x3de5d8fd1fcf0ec1ll
           > (z);
-        return fma(y1*z,x,x);
+          return bs::fma(y1*z,x,x);
       }
-
-      static inline A0 base_tan_eval( A0 x) BOOST_NOEXCEPT
+      static inline A0 base_tancot_eval(const A0& x)
       {
         const A0 zz = sqr(x);
         const A0 num = horn<A0,
@@ -77,16 +76,15 @@ namespace boost { namespace simd
           >(zz);
         return fma(x, (zz*(num/den)), x);
       }
-
-      static inline A0 tan_eval(A0 x, const int n ) BOOST_NOEXCEPT
+      static inline A0 tan_eval(const A0& z, const iA0& n )
       {
-        A0 y =  base_tan_eval(x);
-        if (n == 1) return y;  else return -rec(y);
+        A0 y = base_tancot_eval(z);
+        return bs::if_else(bs::is_equal(n, One<iA0>()),y,-rec(y));
       }
-      static inline A0 cot_eval(A0 x, const int n ) BOOST_NOEXCEPT
+      static inline A0 cot_eval(const A0&z, const iA0& n )
       {
-        A0 y =  base_tan_eval(x);
-        if (n == 1) return rec(y);  else return -y;
+        const A0 y = base_tancot_eval(z);
+        return bs::if_else(bs::is_equal(n, One<iA0>()),rec(y),-y);
       }
     };
   }

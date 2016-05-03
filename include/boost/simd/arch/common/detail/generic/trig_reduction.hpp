@@ -47,7 +47,7 @@
 #include <boost/simd/constant/real.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/dispatch/meta/scalar_of.hpp>
-
+#include <utility>
 
 //#include <nt2/sdk/meta/as_logical.hpp>
 //#include <boost/simd/sdk/meta/is_upgradable.hpp>
@@ -287,7 +287,7 @@ namespace boost { namespace simd
       }
 
       static BOOST_FORCEINLINE i_t
-      use_conversion(const A0 & xx,  A0& xr
+      use_conversion(const A0 & xx,  A0& /*xr*/
                     ,  const style &, std::false_type) BOOST_NOEXCEPT
       {
         i_t n;
