@@ -31,56 +31,26 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
-  BOOST_DISPATCH_OVERLOAD ( rem_pio2_cephes_
-                          , (typename A0, typename A1)
-                          , bd::cpu_
-                          , bd::generic_ < bd::floating_<A0> >
-                          , bd::generic_ < bd::integer_<A1>  >
-                          , bd::generic_ < bd::floating_<A0> >
-                          )
-  {
-    BOOST_FORCEINLINE void operator() ( A0 const& x, A1 & n, A0 & xr)
-    {
-      n = bs::rem_pio2_cephes(x, xr);
-    }
-  };
 
   BOOST_DISPATCH_OVERLOAD ( rem_pio2_cephes_
                           , (typename A0)
-                             , bd::cpu_
-                            , bd::generic_ < bd::floating_<A0> >
-                            )
+                          , bd::cpu_
+                          , bd::generic_ < bd::floating_<A0> >
+                          )
   {
     using i_t = bd::as_integer_t<A0>;
     using result_t = std::pair<i_t, A0>              ;
 
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0) const
+    BOOST_FORCEINLINE result_t operator() ( A0 const& x) const
     {
-      A0 second;
-      i_t const first = bs::rem_pio2_cephes(a0,second);
-      return {first, second};
+      A0 xi =  bs::round2even(x*bs::Twoopi<A0>());
+      A0 xr  = x-xi*bs::Pio2_1<A0>(); // fnms ?
+      xr -= xi*bs::Pio2_2<A0>();
+      xr -= xi*bs::Pio2_3<A0>();
+      return {bitwise_and(bs::toint(xi), Three<i_t>()), xr};
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( rem_pio2_cephes_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bd::generic_< bd::floating_<A0> >
-                          , bd::generic_< bd::floating_<A0> >
-                          )
-  {
-    using i_t = bd::as_integer_t<A0>;
-    BOOST_FORCEINLINE i_t operator() ( A0 const& x, A0 & xr) const
-    {
-      A0 xi =  bs::round2even(x*bs::Twoopi<A0>());
-//       xr -= xi*bs::Pio2_2<A0>();//TODO
-//       xr -= xi*bs::Pio2_3<A0>();
-      xr  = x-xi*bs::Pio2_1<A0>();
-      xr = xr-xi*bs::Pio2_2<A0>();
-      xr = xr-xi*bs::Pio2_3<A0>();
-      return bitwise_and(bs::toint(xi), Three<i_t>());
-    }
-  };
 } } }
 
 

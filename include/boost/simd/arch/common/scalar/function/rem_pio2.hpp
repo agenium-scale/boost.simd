@@ -25,6 +25,7 @@
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <boost/detail/endian.hpp>
+#include <boost/fusion/tuple.hpp>
 
 
 /* Prevent while(0) warning on MSVC */
@@ -55,14 +56,13 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_ < bd::single_<A0> >
                           )
   {
-    using result_t =  bd::as_integer_t<A0>;
-    inline result_t operator()(A0 const& a0, A0 & xr, A0& xc) const
+    using iA0 =  bd::as_integer_t<A0>;
+    using result_t = boost::fusion::tuple<iA0,A0,A0>;
+    inline result_t operator()(A0 const& a0) const
     {
       A0 y[2];
       std::int32_t n = __ieee754_rem_pio2f(a0, y);
-      xr = y[0];
-      xc = y[1];
-      return n&3;
+      return result_t(iA0(n&3), y[0], y[1]);
     }
   private :
     /*
@@ -78,7 +78,7 @@ namespace boost { namespace simd { namespace ext
 #define GET_A0_WORD(i,d)                                                       \
 do {                                                                           \
   A0 f = (d);                                                                  \
-  (i) = bs::bitwise_cast<std::uint32_t>(f);                           \
+  (i) = bs::bitwise_cast<std::uint32_t>(f);                                    \
 } ONCE0                                                                        \
 /**/
 
@@ -86,7 +86,7 @@ do {                                                                           \
 #define SET_A0_WORD(d,i)                                                       \
 do {                                                                           \
   int ii = (i);                                                                \
-  (d) = bs::bitwise_cast<A0>(ii);                                     \
+  (d) = bs::bitwise_cast<A0>(ii);                                              \
 } ONCE0                                                                        \
 /**/
 
