@@ -204,7 +204,12 @@ namespace boost { namespace simd
                  , boost::mpl::int_<tag::r_0_pio2> const&) BOOST_NOEXCEPT
       {
         if(all(is_0_pio2_reduced(xx)))
-          return rem_pio2_straight(xx, xr);
+        {
+          i_t n;
+          std::tie(n, xr) = rem_pio2_straight(xx);
+          return n;
+        }
+
         return select_mode(xx,xr,boost::mpl::int_<tag::r_0_20pi>());
       }
 
@@ -214,7 +219,9 @@ namespace boost { namespace simd
                   , boost::mpl::int_<tag::r_0_20pi> const&
                   ) BOOST_NOEXCEPT
       {
-        return rem_pio2_cephes(xx, xr);
+        i_t n;
+        std::tie(n, xr) = rem_pio2_cephes(xx);
+        return n;
       }
 
       static BOOST_FORCEINLINE i_t
@@ -244,7 +251,9 @@ namespace boost { namespace simd
                   , boost::mpl::int_<tag::r_0_mpi> const&
                   ) BOOST_NOEXCEPT
       {
-        return rem_pio2_medium(xx, xr);
+        i_t n;
+        std::tie(n, xr) = rem_pio2_medium(xx);
+        return n;
       }
 
       static BOOST_FORCEINLINE i_t
@@ -272,14 +281,18 @@ namespace boost { namespace simd
       {
         if(all(is_0_dmpi_reduced(xx)))
            return use_conversion(xx, xr, style(), conversion_allowed_t());
-        return rem_pio2(xx, xr);
+        i_t n;
+        std::tie(n, xr) = rem_pio2(xx);
+        return n;
       }
 
       static BOOST_FORCEINLINE i_t
       use_conversion(const A0 & xx,  A0& xr
                     ,  const style &, std::false_type) BOOST_NOEXCEPT
       {
-        return rem_pio2(xx, xr);
+        i_t n;
+        std::tie(n, xr) = rem_pio2(xx);
+        return n;
       }
 
       static BOOST_FORCEINLINE i_t

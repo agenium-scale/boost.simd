@@ -17,7 +17,6 @@
 #include <boost/simd/function/simd/round2even.hpp>
 #include <boost/simd/function/simd/toint.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/fusion/include/std_pair.hpp>
 #include <boost/simd/constant/three.hpp>
 #include <boost/simd/constant/pio2_1.hpp>
 #include <boost/simd/constant/pio2_1t.hpp>
@@ -30,6 +29,7 @@
 #include <boost/simd/function/simd/multiplies.hpp>
 #include <boost/simd/function/simd/bitwise_and.hpp>
 #include <boost/simd/function/simd/minus.hpp>
+#include <utility>
 
 namespace boost { namespace simd { namespace ext
 {
