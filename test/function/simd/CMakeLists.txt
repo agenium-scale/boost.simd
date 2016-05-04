@@ -208,6 +208,9 @@ pow_abs.cpp
 predecessor.cpp
 prev.cpp
 rec.cpp
+rem_pio2_cephes.cpp
+rem_pio2_medium.cpp
+rem_pio2_straight.cpp
 remquo.cpp
 reversebits.cpp
 reverse.cpp
@@ -286,9 +289,7 @@ unary_plus.cpp
 #splatted_minimum.cpp
 ####dot.cpp
 ####pow2.cpp
-####rem_pio2_cephes.cpp
-####rem_pio2_medium.cpp
-####rem_pio2_straight.cpp
+
 ####repeat_lower_half.cpp
 ####repeat_upper_half.cpp
 )

@@ -33,11 +33,24 @@ STF_CASE_TPL (" rem_pio2_medium",  STF_IEEE_TYPES)
   STF_TYPE_IS( r_t, (std::pair<iT,T>));
 
   {
-    T r1;
-    STF_EQUAL( rem_pio2_medium(bs::Pio_2<T>(), r1), bs::One<iT>());
-    STF_ULP_EQUAL( r1, bs::Zero<T>(), 0.5);
-    STF_EQUAL( rem_pio2_medium(bs::Pio_4<T>()*bs::Half<T>(), r1), bs::Zero<iT>());
-    STF_ULP_EQUAL( r1, bs::Pio_4<T>()*bs::Half<T>(), 0.5);
+    r_t res = rem_pio2_medium(bs::Zero<T>());
+    STF_ULP_EQUAL( res.first, bs::Zero<iT>(), 0.5);
+    STF_ULP_EQUAL( res.second, bs::Zero<T>(), 0.5);
+  }
+  {
+    r_t res = rem_pio2_medium(bs::Pio_4<T>());
+    STF_ULP_EQUAL( res.first, bs::Zero<iT>(), 0.5);
+    STF_ULP_EQUAL( res.second, bs::Pio_4<T>(), 0.5);
+  }
+  {
+    r_t res = rem_pio2_medium(bs::Pio_2<T>());
+    STF_ULP_EQUAL( res.first, bs::One<iT>(), 0.5);
+    STF_ULP_EQUAL( res.second, bs::Zero<T>(), 0.5);
+  }
+  {
+    r_t res = rem_pio2_medium(bs::Pio_4<T>()*bs::Half<T>());
+    STF_ULP_EQUAL( res.first, bs::Zero<iT>(), 0.5);
+    STF_ULP_EQUAL(res.second, bs::Pio_4<T>()*bs::Half<T>(), 0.5);
   }
 }
 

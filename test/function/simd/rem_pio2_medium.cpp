@@ -30,13 +30,14 @@ void test(Env& $)
   for(std::size_t i = 0; i < N; ++i)
   {
      a1[i] = (i%2) ? T(i) : T(-i);
-     e[i] = bs::rem_pio2_medium(a1[i], m[i]);
+     std::tie(e[i], m[i]) = bs::rem_pio2_medium(a1[i]);
    }
   p_t aa1(&a1[0], &a1[0]+N);
   p_t mm1;
   p_t mm(&m[0], &m[0]+N);
-  i_t ee(&e[0], &e[0]+N);
-  STF_IEEE_EQUAL(bs::rem_pio2_medium(aa1, mm1), ee);
+  i_t ee(&e[0], &e[0]+N), ee1;
+  std::tie(ee1, mm1) = bs::rem_pio2_medium(aa1);
+  STF_IEEE_EQUAL(ee1, ee);
   STF_IEEE_EQUAL(mm1, mm);
 }
 
@@ -46,6 +47,6 @@ STF_CASE_TPL("Check rem_pio2_medium on pack" , STF_IEEE_TYPES)
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
-//  test<T, N/2>($);
-//  test<T, Nx2>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }
