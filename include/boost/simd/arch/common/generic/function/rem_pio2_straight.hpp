@@ -19,9 +19,9 @@
 #include <boost/simd/constant/pio2_2.hpp>
 #include <boost/simd/constant/pio2_3.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/fusion/include/std_pair.hpp>
 #include <boost/simd/function/simd/multiplies.hpp>
 #include <boost/simd/function/simd/minus.hpp>
+#include <utility>
 
 namespace boost { namespace simd { namespace ext
 {

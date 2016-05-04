@@ -51,8 +51,9 @@ namespace boost { namespace simd { namespace ext
     {
       using i_t = bd::as_integer_t<A0>;
       A0 xr;
-      i_t n = rem_pio2(a0, xr);
-      xr = xr+tofloat(n)*Pio_2<A0>();
+      i_t n;
+      std::tie(n, xr) = rem_pio2(a0);
+      xr += tofloat(n)*Pio_2<A0>();
       return if_else((xr > Pi<A0>()), xr-Twopi<A0>(), xr);
     }
 

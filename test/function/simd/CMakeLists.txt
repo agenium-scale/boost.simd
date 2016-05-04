@@ -195,6 +195,7 @@ posmin.cpp
 predecessor.cpp
 prev.cpp
 rec.cpp
+rem_pio2.cpp
 rem_pio2_cephes.cpp
 rem_pio2_medium.cpp
 rem_pio2_straight.cpp
