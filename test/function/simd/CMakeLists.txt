@@ -16,6 +16,7 @@ add_subdirectory(make)
 add_subdirectory(slice)
 add_subdirectory(slide)
 add_subdirectory(splat)
+add_subdirectory(split)
 
 set ( SOURCES
 abs.cpp
@@ -73,6 +74,7 @@ fnms.cpp
 frac.cpp
 frexp.cpp
 genmaskc.cpp
+group.cpp
 hi.cpp
 hmsb.cpp
 hypot.cpp

@@ -12,16 +12,16 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_GROUP_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_GROUP_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/group.hpp>
-#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
+#include <boost/simd/function/definition/group.hpp>
 #include <boost/simd/arch/common/simd/function/group.hpp>
 
 #if defined(BOOST_HW_SIMD_X86)
-
-#  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_AVX_VERSION
-// #    include <boost/simd/arch/x86/avx/simd/function/group.hpp>
+#  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_SSE2_VERSION
+#    include <boost/simd/arch/x86/sse2/simd/function/group.hpp>
 #  endif
-
+#  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_AVX_VERSION
+#    include <boost/simd/arch/x86/avx/simd/function/group.hpp>
+#  endif
 #endif
 
 #if defined(BOOST_HW_SIMD_PPC)
