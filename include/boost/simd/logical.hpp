@@ -44,7 +44,7 @@ namespace boost { namespace simd
     BOOST_FORCEINLINE logical(bool v) : value_(v) {}
 
     /// Constructor from non-boolean value
-    template<typename U> BOOST_FORCEINLINE explicit logical(U&& v) : value_(v != 0) {}
+    template<typename U> BOOST_FORCEINLINE explicit logical(U&& v) : value_(!!v) {}
 
     // Assignment operator
     BOOST_FORCEINLINE logical& operator=(logical const& v) = default;
