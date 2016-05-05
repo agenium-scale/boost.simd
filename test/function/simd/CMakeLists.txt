@@ -50,7 +50,11 @@ conj.cpp
 copysign.cpp
 correct_fma.cpp
 cos.cpp
+cosd.cpp
+cospi.cpp
 cot.cpp
+cotd.cpp
+cotpi.cpp
 ctz.cpp
 dec.cpp
 dec_s.cpp
@@ -232,6 +236,8 @@ sign.cpp
 significants.cpp
 signnz.cpp
 sin.cpp
+sind.cpp
+sinpi.cpp
 sqr_abs.cpp
 sqr.cpp
 sqr_s.cpp
@@ -240,6 +246,8 @@ sqrt.cpp
 store.cpp
 successor.cpp
 tan.cpp
+tand.cpp
+tanpi.cpp
 tenpower.cpp
 tofloat.cpp
 toint.cpp
