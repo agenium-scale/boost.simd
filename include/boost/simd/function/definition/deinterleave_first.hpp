@@ -21,7 +21,7 @@ namespace boost { namespace simd
 {
   namespace tag
   {
-    BOOST_DISPATCH_MAKE_TAG(ext, deinterleave_first_, boost::dispatch::elementwise_<deinterleave_first_>);
+    BOOST_DISPATCH_MAKE_TAG(ext, deinterleave_first_, boost::dispatch::abstract_<deinterleave_first_>);
   }
 
   namespace ext

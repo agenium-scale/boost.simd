@@ -12,21 +12,22 @@
 #ifndef BOOST_SIMD_FUNCTION_SIMD_DEINTERLEAVE_FIRST_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_DEINTERLEAVE_FIRST_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/deinterleave_first.hpp>
+#include <boost/simd/function/definition/deinterleave_first.hpp>
 #include <boost/simd/arch/common/simd/function/deinterleave_first.hpp>
 
 #if defined(BOOST_HW_SIMD_X86)
-
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_SSE_VERSION
 #    include <boost/simd/arch/x86/sse1/simd/function/deinterleave_first.hpp>
 #  endif
+#  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_SSE2_VERSION
+#    include <boost/simd/arch/x86/sse2/simd/function/deinterleave_first.hpp>
+#  endif
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_AVX_VERSION
-// #    include <boost/simd/arch/x86/avx/simd/function/deinterleave_first.hpp>
+#    include <boost/simd/arch/x86/avx/simd/function/deinterleave_first.hpp>
 #  endif
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_AVX2_VERSION
-// #    include <boost/simd/arch/x86/avx2/simd/function/deinterleave_first.hpp>
+#    include <boost/simd/arch/x86/avx2/simd/function/deinterleave_first.hpp>
 #  endif
-
 #endif
 
 #if defined(BOOST_HW_SIMD_PPC)

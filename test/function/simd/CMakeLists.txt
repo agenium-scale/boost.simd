@@ -52,6 +52,8 @@ correct_fma.cpp
 ctz.cpp
 dec.cpp
 dec_s.cpp
+deinterleave_first.cpp
+deinterleave_second.cpp
 dist.cpp
 dist_s.cpp
 divides.cpp
@@ -97,6 +99,10 @@ inc.cpp
 inc_s.cpp
 indeg.cpp
 inrad.cpp
+#interleave_first.cpp
+#interleave_second.cpp
+#interleave_even.cpp
+#interleave_odd.cpp
 iround2even.cpp
 iround.cpp
 is_denormal.cpp
@@ -264,8 +270,6 @@ unary_plus.cpp
 #idivfloor.cpp
 #idivround.cpp
 #inbtrue.cpp
-#interleave_even.cpp
-#interleave_odd.cpp
 #is_included_c.cpp
 #is_included.cpp
 #mod.cpp
@@ -280,11 +284,7 @@ unary_plus.cpp
 #rror.cpp TODO
 #splatted_maximum.cpp//TODO all_reduce
 #splatted_minimum.cpp
-####deinterleave_first.cpp
-####deinterleave_second.cpp
 ####dot.cpp
-####interleave_first.cpp
-####interleave_second.cpp
 ####pow2.cpp
 ####rem_pio2_cephes.cpp
 ####rem_pio2_medium.cpp

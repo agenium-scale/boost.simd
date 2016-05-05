@@ -12,12 +12,11 @@
 #ifndef BOOST_SIMD_FUNCTION_DEINTERLEAVE_FIRST_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_DEINTERLEAVE_FIRST_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
 
- /*!
-
+#if defined(DOXYGEN_ONLY)
+  /*!
     @ingroup group-swar
     Function object implementing deinterleave_first capabilities
 
@@ -33,17 +32,16 @@ namespace boost { namespace simd
     is equivalent to :
 
     @code
-    r = [ x[0] x[1] ... x[n/2] y[0] y[1] ... y[n/2] ]
+    r = [ x[0] x[2] ... x[n/2] y[0] y[2] ... y[n/2] ]
     @endcode
 
     with <tt> n = cardinal_of<T>::value </tt>
 
   **/
   const boost::dispatch::functor<tag::deinterleave_first_> deinterleave_first = {};
-} }
 #endif
+} }
 
-#include <boost/simd/function/scalar/deinterleave_first.hpp>
 #include <boost/simd/function/simd/deinterleave_first.hpp>
 
 #endif
