@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_COS_HPP_INCLUDED
 
 #include <boost/simd/function/definition/cos.hpp>
+#include <boost/simd/arch/common/scalar/function/cos.hpp>
 #include <boost/simd/arch/common/generic/function/cos.hpp>
 
 #endif

@@ -13,6 +13,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_COSH_HPP_INCLUDED
 #include <boost/simd/function/std.hpp>
 
+#include <boost/simd/function/std.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>

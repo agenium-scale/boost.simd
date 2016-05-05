@@ -11,13 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_COS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_COS_HPP_INCLUDED
 
-#include <boost/simd/function/fast.hpp>
-#include <boost/simd/function/fast.hpp>
 #include <boost/simd/function/std.hpp>
-#include <boost/simd/detail/enforce_precision.hpp>
-#include <boost/simd/function/scalar/log.hpp>
-#include <boost/simd/function/scalar/minusone.hpp>
-#include <boost/simd/function/scalar/oneplus.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>

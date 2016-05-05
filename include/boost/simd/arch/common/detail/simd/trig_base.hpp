@@ -78,19 +78,15 @@ namespace boost { namespace simd
 
       static inline A0 cosa(const A0 a0, const tag::regular&)
       {
-        std::cout << "icitte" << std::endl;
-
-         const A0 x = bs::abs(a0);
-         A0 xr = Nan<A0>(), xc;
-         const int_type n =  redu_t::reduce(x, xr);
-         std::cout << xr << n << xc << std::endl;
-//         const int_type swap_bit = n&One<int_type>();
-//         const int_type sign_bit = shift_left(bitwise_xor(swap_bit, shr(n&Two<int_type>(), 1)), Maxleftshift<sint_type>());
-//         const A0 z = sqr(xr);
-//         const A0 se = eval_t::sin_eval(z, xr);
-//         const A0 ce = eval_t::cos_eval(z);
-//         return  bitwise_xor(if_else(is_nez(swap_bit), se, ce), sign_bit);
-        return a0;
+        const A0 x = bs::abs(a0);
+        A0 xr = Nan<A0>();
+        const int_type n =  redu_t::reduce(x, xr);
+        const int_type swap_bit = n&One<int_type>();
+        const int_type sign_bit = shift_left(bitwise_xor(swap_bit, shr(n&Two<int_type>(), 1)), Maxleftshift<sint_type>());
+        const A0 z = sqr(xr);
+        const A0 se = eval_t::sin_eval(z, xr);
+        const A0 ce = eval_t::cos_eval(z);
+        return  bitwise_xor(if_else(is_nez(swap_bit), se, ce), sign_bit);
       }
 
       static inline A0 sina(const A0 a0_n, const tag::fast&)
@@ -104,15 +100,15 @@ namespace boost { namespace simd
       {
         const A0 a0 = a0_n;
         const A0 x = bs::abs(a0);
-        A0 xr = Nan<A0>(), xc;
+        A0 xr = Nan<A0>();
         const int_type n = redu_t::reduce(x, xr);
         const int_type swap_bit = n&One<int_type>();
-        const A0 sign_bit = b_xor(bitofsign(a0),
-                                  shli(n&Two<int_type>(),Maxleftshift<sint_type>()-1));
+        const A0 sign_bit = bitwise_xor(bitofsign(a0),
+                                        shift_left(n&Two<int_type>(),Maxleftshift<sint_type>()-1));
         const A0 z = sqr(xr);
         const A0 se = eval_t::sin_eval(z, xr);
         const A0 ce = eval_t::cos_eval(z);
-        return b_xor(sel(is_eqz(swap_bit),se, ce), sign_bit);
+        return bitwise_xor(if_else(is_eqz(swap_bit),se, ce), sign_bit);
       }
 
       static inline A0 tana(const A0 a0_n, const tag::fast&)
@@ -125,12 +121,12 @@ namespace boost { namespace simd
       {
         const A0 a0 = a0_n;
         const A0 x =  bs::abs(a0);
-        A0 xr = Nan<A0>(); //, xc;
+        A0 xr = Nan<A0>();
         const int_type n = redu_t::reduce(x, xr);
-        const A0 y = eval_t::tan_eval(xr, oneminus(shli((n&One<int_type>()), 1)));
+        const A0 y = eval_t::tan_eval(xr, oneminus(shift_left((n&One<int_type>()), 1)));
         // 1 -- n even  -1 -- n odd
         const bA0 testnan = redu_t::tan_invalid(a0);
-        return if_nan_else(testnan, b_xor(y, bitofsign(a0)));
+        return if_allbits_else(testnan, bitwise_xor(y, bitofsign(a0)));
       }
 
       static inline A0 cota(const A0 a0_n, const tag::fast&)
@@ -141,14 +137,14 @@ namespace boost { namespace simd
       static inline A0 cota(const A0& a0, const tag::regular&)
       {
         const A0 x = bs::abs(a0);
-        A0 xr = Nan<A0>(); //, xc;
+        A0 xr = Nan<A0>();
         const int_type n = redu_t::reduce(x, xr);
-        const A0 y = eval_t::cot_eval(xr, oneminus(shli((n&One<int_type>()), 1)));
+        const A0 y = eval_t::cot_eval(xr, oneminus(shift_left((n&One<int_type>()), 1)));
         // 1 -- n even -1 -- n odd
         const bA0 testnan = redu_t::cot_invalid(a0);
         // this if_else is normally not needed but with clang the zero value if eroneous
         // if not there !
-        return if_else(is_nez(a0), if_nan_else(testnan, b_xor(y, bitofsign(a0))), rec(a0));
+        return if_else(is_nez(a0), if_allbits_else(testnan, bitwise_xor(y, bitofsign(a0))), rec(a0));
       }
 
       // simultaneous cosa and sina function
@@ -163,17 +159,21 @@ namespace boost { namespace simd
       static inline A0 sincosa(const A0& a0, A0& c, const tag::regular&)
       {
         const A0 x =  bs::abs(a0);
-        A0 xr = Nan<A0>(); //, xc;
+        A0 xr = Nan<A0>();
         const int_type n = redu_t::reduce(x, xr);
         const int_type swap_bit = n&One<int_type>();
         const A0 z = bs::sqr(xr);
-        const int_type cos_sign_bit = shli(b_xor(swap_bit, shri(n&Two<int_type>(), 1)),  Maxleftshift<sint_type>());
-        const int_type sin_sign_bit = b_xor(shli(n&Two<int_type>(), Maxleftshift<sint_type>()-1), bitofsign(a0));
+        const int_type cos_sign_bit = shift_left(bitwise_xor(swap_bit
+                                                            , shri(n&Two<int_type>(), 1))
+                                                ,  Maxleftshift<sint_type>());
+        const int_type sin_sign_bit = bitwise_xor(shift_left(n&Two<int_type>()
+                                                            , Maxleftshift<sint_type>()-1)
+                                                 , bitofsign(a0));
         const A0 t1 = eval_t::sin_eval(z, xr);
         const A0 t2 = eval_t::cos_eval(z);
         const bint_type test = is_nez(swap_bit);
-        c = b_xor(sel(test, t1, t2),cos_sign_bit);
-        return b_xor(sel(test, t2, t1),sin_sign_bit);
+        c = bitwise_xor(if_else(test, t1, t2),cos_sign_bit);
+        return bitwise_xor(if_else(test, t2, t1),sin_sign_bit);
       }
 
       static inline A0 scale(const A0& a0)
