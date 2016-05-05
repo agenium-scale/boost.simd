@@ -41,6 +41,7 @@ bitwise_or.cpp
 bitwise_ornot.cpp
 bitwise_xor.cpp
 broadcast.cpp
+cbrt.cpp
 ceil.cpp
 clz.cpp
 complement.cpp
@@ -57,6 +58,9 @@ divides_s.cpp
 exp.cpp
 exp2.cpp
 expm1.cpp
+exprecneg.cpp
+exprecnegc.cpp
+expx2.cpp
 enumerate.cpp
 ffs.cpp
 firstbitset.cpp
@@ -184,6 +188,7 @@ negifnot.cpp
 neg_s.cpp
 nextafter.cpp
 next.cpp
+nthroot.cpp
 oneminus.cpp
 oneminus_s.cpp
 oneplus.cpp
@@ -192,6 +197,8 @@ plus.cpp
 plus_s.cpp
 posmax.cpp
 posmin.cpp
+pow.cpp
+pow_abs.cpp
 predecessor.cpp
 prev.cpp
 rec.cpp

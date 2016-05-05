@@ -13,9 +13,8 @@
 #include <boost/simd/function/nthroot.hpp>
 #include <boost/simd/function/rec.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/simd/cardinal_of.hpp>
+#include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
-#include <boost/simd/options.hpp>
 
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
