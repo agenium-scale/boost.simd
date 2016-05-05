@@ -67,12 +67,12 @@ namespace boost { namespace simd
       static inline A0 sina(const A0 a0){ return sina(a0, style()); }
       static inline A0 tana(const A0 a0){ return tana(a0, style()); }
       static inline A0 cota(const A0 a0){ return cota(a0, style()); }
-      static inline A0 sincosa(const A0 a0, A0& c){ return sincosa(a0,c,style()); }
+      static inline std::pair<A0,A0> sincosa(const A0 a0){ return sincosa(a0,style()); }
 
     private:
-      static inline A0 cosa(const A0 a0_n, const tag::fast&)
+      static inline A0 cosa(const A0 a0, const tag::fast&)
       {
-        const A0 x =  scale(a0_n);
+        const A0 x =  scale(a0);
         return  eval_t::cos_eval(sqr(x));
       }
 
@@ -144,19 +144,19 @@ namespace boost { namespace simd
         const bA0 testnan = redu_t::cot_invalid(a0);
         // this if_else is normally not needed but with clang the zero value if eroneous
         // if not there !
-        return if_else(is_nez(a0), if_allbits_else(testnan, bitwise_xor(y, bitofsign(a0))), rec(a0));
+        return if_else(is_nez(a0), if_allbits_else(testnan
+                                                  , bitwise_xor(y, bitofsign(a0))), rec(a0));
       }
 
       // simultaneous cosa and sina function
-      static inline A0 sincosa(const A0& a0, A0& c, const tag::fast&)
+      static inline std::pair<A0, A0> sincosa(const A0& a0, const tag::fast&)
       {
-        const A0 x = scale(a0);
-        const A0 z = sqr(x);
-        c = eval_t::cos_eval(z);
-        return eval_t::sin_eval(z, x);
+        A0 x =  scale(a0);
+        A0 z =  sqr(x);
+        return {eval_t::sin_eval(z, x), eval_t::cos_eval(z)};
       }
 
-      static inline A0 sincosa(const A0& a0, A0& c, const tag::regular&)
+      static inline  std::pair<A0, A0> sincosa(const A0& a0, const tag::regular&)
       {
         const A0 x =  bs::abs(a0);
         A0 xr = Nan<A0>();
@@ -164,7 +164,7 @@ namespace boost { namespace simd
         const int_type swap_bit = n&One<int_type>();
         const A0 z = bs::sqr(xr);
         const int_type cos_sign_bit = shift_left(bitwise_xor(swap_bit
-                                                            , shri(n&Two<int_type>(), 1))
+                                                            , shr(n&Two<int_type>(), 1))
                                                 ,  Maxleftshift<sint_type>());
         const int_type sin_sign_bit = bitwise_xor(shift_left(n&Two<int_type>()
                                                             , Maxleftshift<sint_type>()-1)
@@ -172,13 +172,13 @@ namespace boost { namespace simd
         const A0 t1 = eval_t::sin_eval(z, xr);
         const A0 t2 = eval_t::cos_eval(z);
         const bint_type test = is_nez(swap_bit);
-        c = bitwise_xor(if_else(test, t1, t2),cos_sign_bit);
-        return bitwise_xor(if_else(test, t2, t1),sin_sign_bit);
+        return { bitwise_xor(if_else(test, t2, t1),sin_sign_bit)
+               , bitwise_xor(if_else(test, t1, t2),cos_sign_bit) };
       }
 
       static inline A0 scale(const A0& a0)
       {
-        return if_nan_else(gt(bs::abs(a0),
+        return if_allbits_else(is_greater(bs::abs(a0),
                               trig_ranges<A0,unit_tag>::max_range()), a0)
           *trig_ranges<A0,unit_tag>::scale();
       }

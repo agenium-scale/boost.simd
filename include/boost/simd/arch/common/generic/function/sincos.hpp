@@ -28,41 +28,12 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0)
                           , bd::cpu_
                           , bd::generic_< bd::floating_<A0> >
-                          , bd::generic_< bd::floating_<A0> >
-                          )
-  {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0,A0 & a2) const
-    {
-      return detail::trig_base <A0,tag::radian_tag,is_not_scalar_t<A0>,tag::big_tag>::sincosa(a0,a2);
-    }
-  };
-
-  BOOST_DISPATCH_OVERLOAD ( sincos_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bd::generic_< bd::floating_<A0> >
                           )
   {
     using result_t = std::pair<A0, A0>                     ;
     BOOST_FORCEINLINE result_t operator() ( A0 const& a0) const
     {
-      A0 first, second;
-      sincos(a0, first, second);
-      return {first, second};
-    }
-  };
-
-  BOOST_DISPATCH_OVERLOAD ( sincos_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bd::generic_< bd::floating_<A0> >
-                          , bd::generic_< bd::floating_<A0> >
-                          , bd::generic_< bd::floating_<A0> >
-                          )
-  {
-    BOOST_FORCEINLINE void operator() ( A0 const& a0,A0 & a1,A0 & a2) const
-    {
-      a1 = sincos(a0, a2);
+      return detail::trig_base <A0,tag::radian_tag,is_not_scalar_t<A0>,tag::big_tag>::sincosa(a0);
     }
   };
 

@@ -236,6 +236,9 @@ sign.cpp
 significants.cpp
 signnz.cpp
 sin.cpp
+sincos.cpp
+sincosd.cpp
+sincospi.cpp
 sind.cpp
 sinpi.cpp
 sqr_abs.cpp
