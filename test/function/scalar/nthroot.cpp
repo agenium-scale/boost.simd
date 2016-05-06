@@ -36,10 +36,10 @@ STF_CASE_TPL (" nthroot",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(nthroot(bs::Inf<T>(),iT(3)), bs::Inf<r_t>(), 0.5);
   STF_ULP_EQUAL(nthroot(bs::Inf<T>(),iT(4)), bs::Inf<r_t>(), 0.5);
   STF_ULP_EQUAL(nthroot(bs::Minf<T>(),iT(3)), bs::Minf<r_t>(), 0.5);
-  STF_IEEE_ULP_EQUAL(nthroot(bs::Minf<T>(),iT(4)), bs::Nan<r_t>(), 0.5);
-  STF_IEEE_ULP_EQUAL(nthroot(bs::Nan<T>(),iT(3)), bs::Nan<r_t>(), 0.5);
-  STF_IEEE_ULP_EQUAL(nthroot(bs::Nan<T>(),iT(4)), bs::Nan<r_t>(), 0.5);
-  STF_IEEE_ULP_EQUAL(nthroot(bs::Mone<T>(),iT(4)), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(nthroot(bs::Minf<T>(),iT(4)), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(nthroot(bs::Nan<T>(),iT(3)), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(nthroot(bs::Nan<T>(),iT(4)), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(nthroot(bs::Mone<T>(),iT(4)), bs::Nan<r_t>(), 0.5);
 #endif
   STF_ULP_EQUAL(nthroot(bs::Mone<T>(),iT(0)), bs::Nan<r_t>(), 0.5);
   STF_ULP_EQUAL(nthroot(bs::One <T>(),iT(0)), bs::One<r_t>(), 0.5);
