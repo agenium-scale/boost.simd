@@ -32,7 +32,7 @@ namespace boost { namespace simd
     @endcode
 
     Returns the arc @c r in the interval
-    \f$[0, \pi[\f$ such that <tt>cotpi(r) == x</tt>.
+    \f$[0, 1[\f$ such that <tt>cotpi(r) == x</tt>.
 
     @see acot
 

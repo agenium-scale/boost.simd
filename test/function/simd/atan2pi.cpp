@@ -7,11 +7,10 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#include <simd_test.hpp>
-#include <boost/simd/function/atanpi.hpp>
+#include <boost/simd/function/atan2pi.hpp>
 #include <boost/simd/pack.hpp>
-#include <boost/simd/function/std.hpp>
-
+#include <boost/simd/meta/cardinal_of.hpp>
+#include <simd_test.hpp>
 
 namespace bs = boost::simd;
 
@@ -20,24 +19,30 @@ void test(Env& $)
 {
   using p_t = bs::pack<T, N>;
 
-  T a1[N], b[N];
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+
+  T a1[N], a2[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
-    a1[i] = i%2 ?T(i)/N : -T(i)/N;
-    b[i] = bs::atanpi(a1[i]);
+    a1[i] = (i%2) ? T(i) : T(1+i);
+    a2[i] = (i%2) ? T(i+N) : T(2*i);
+    b[i] = bs::atan2pi(a1[i], a2[i]);
   }
 
   p_t aa1(&a1[0], &a1[N]);
-  p_t bb (&b[0], &b[N]);
-  STF_ULP_EQUAL(bs::atanpi(aa1), bb, 0.5);
+  p_t aa2(&a2[0], &a2[N]);
+  p_t bb(&b[0], &b[N]);
+
+  STF_IEEE_EQUAL(bs::atan2pi(aa1, aa2), bb);
 }
 
-STF_CASE_TPL("Check atanpi on pack" , STF_IEEE_TYPES)
+STF_CASE_TPL("Check atan2pi on pack" , STF_IEEE_TYPES)
 {
-  static const std::size_t N = bs::pack<T>::static_size;
-
+  namespace bs = boost::simd;
+  using p_t = bs::pack<T>;
+  static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
   test<T, N/2>($);
   test<T, N*2>($);
 }
-

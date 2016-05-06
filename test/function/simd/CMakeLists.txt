@@ -35,6 +35,9 @@ asin.cpp
 asind.cpp
 asinpi.cpp
 atan.cpp
+atan2.cpp
+atan2d.cpp
+atan2pi.cpp
 atand.cpp
 atanpi.cpp
 autofold.cpp
