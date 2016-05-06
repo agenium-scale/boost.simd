@@ -45,7 +45,7 @@ namespace boost { namespace simd { namespace ext
         A0 z1 = oneminus(absa0);
         bA0 test =  lt(absa0, Half<A0>());
         A0 tmp = if_else(test, absa0, t)/z1;
-        return b_xor(bitofsign(a0), Half<A0>()*log1p(if_else(test, fma(t,tmp,t), tmp)));
+        return bitwise_xor(bitofsign(a0), Half<A0>()*log1p(if_else(test, fma(t,tmp,t), tmp)));
       }
    };
 

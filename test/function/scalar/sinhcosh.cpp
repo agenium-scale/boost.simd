@@ -33,26 +33,6 @@ STF_CASE_TPL("sinhcosh", STF_IEEE_TYPES)
                   );
 
   {
-    T s, c;
-    for(size_t i=0; i < N; ++i)
-    {
-      sinhcosh(a[i], s, c);
-      STF_ULP_EQUAL(s, bs::sinh(a[i]), 1);
-      STF_ULP_EQUAL(c, bs::cosh(a[i]), 1);
-    }
-  }
-
-  {
-    T s, c;
-    for(size_t i=0; i < N; ++i)
-    {
-      s = sinhcosh(a[i], c);
-      STF_ULP_EQUAL(s, bs::sinh(a[i]), 1);
-      STF_ULP_EQUAL(c, bs::cosh(a[i]), 1);
-    }
-  }
-
-  {
     for(size_t i=0; i < N; ++i)
     {
       std::pair<T,T> p = sinhcosh(a[i]);
@@ -64,26 +44,6 @@ STF_CASE_TPL("sinhcosh", STF_IEEE_TYPES)
   T b[] = {bs::Inf<T>(), bs::Minf<T>(), bs::Nan<T>()};
   N =  sizeof(b)/sizeof(T);
 #ifndef BOOST_SIMD_NO_INVALIDS
-
-  {
-    T s, c;
-    for(size_t i=0; i < N; ++i)
-    {
-      sinhcosh(b[i], s, c);
-      STF_ULP_EQUAL(s, bs::sinh(b[i]), 1);
-      STF_ULP_EQUAL(c, bs::cosh(b[i]), 1);
-    }
-  }
-
-  {
-    T s, c;
-    for(size_t i=0; i < N; ++i)
-    {
-      s = sinhcosh(b[i], c);
-      STF_ULP_EQUAL(s, bs::sinh(b[i]), 1);
-      STF_ULP_EQUAL(c, bs::cosh(b[i]), 1);
-    }
-  }
 
   {
     for(size_t i=0; i < N; ++i)

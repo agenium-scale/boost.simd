@@ -21,12 +21,17 @@ add_subdirectory(split)
 set ( SOURCES
 abs.cpp
 abs_s.cpp
+<<<<<<< 2f37803e637351ab9c0a40375e48c0bc8ae61c51
 acos.cpp
 acosd.cpp
 acospi.cpp
 acot.cpp
 acotd.cpp
 acotpi.cpp
+=======
+acosh.cpp
+acoth.cpp
+>>>>>>> sinhcosh and inverse hyper
 aligned_load.cpp
 aligned_store.cpp
 all.cpp
@@ -47,6 +52,8 @@ atan2d.cpp
 atan2pi.cpp
 atand.cpp
 atanpi.cpp
+asinh.cpp
+atanh.cpp
 autofold.cpp
 automap.cpp
 autosplat.cpp
@@ -262,7 +269,6 @@ shift_right.cpp
 sign.cpp
 significants.cpp
 signnz.cpp
-<<<<<<< b155e93dba37c8465c127b35d179241c640231b2
 sin.cpp
 sinc.cpp
 sincpi.cpp
@@ -273,7 +279,7 @@ sind.cpp
 sinpi.cpp
 #sort.cpp
 split_multiplies.cpp
-sincosh.cpp
+sinhcosh.cpp
 sinh.cpp
 tanh.cpp
 sqr_abs.cpp

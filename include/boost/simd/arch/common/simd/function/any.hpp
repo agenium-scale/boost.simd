@@ -37,6 +37,18 @@ namespace boost { namespace simd { namespace ext
         return result(hmsb(genmask(a0)) != 0);
       }
    };
+   BOOST_DISPATCH_OVERLOAD(any_
+                          , (typename A0, typename X)
+                          , bd::cpu_
+                          , bs::pack_<bs::logical_<A0>, X>
+                          )
+   {
+     using result =  bd::scalar_of_t<A0>;
+      BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
+      {
+        return result(hmsb(genmask(a0)) != 0);
+      }
+   };
 
 } } }
 
