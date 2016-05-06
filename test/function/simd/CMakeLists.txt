@@ -77,6 +77,8 @@ cospi.cpp
 cot.cpp
 cotd.cpp
 cotpi.cpp
+cosh.cpp
+coth.cpp
 ctz.cpp
 dec.cpp
 dec_s.cpp
@@ -260,6 +262,7 @@ shift_right.cpp
 sign.cpp
 significants.cpp
 signnz.cpp
+<<<<<<< b155e93dba37c8465c127b35d179241c640231b2
 sin.cpp
 sinc.cpp
 sincpi.cpp
@@ -270,6 +273,9 @@ sind.cpp
 sinpi.cpp
 #sort.cpp
 split_multiplies.cpp
+sincosh.cpp
+sinh.cpp
+tanh.cpp
 sqr_abs.cpp
 sqr.cpp
 sqr_s.cpp
