@@ -21,10 +21,14 @@ add_subdirectory(split)
 set ( SOURCES
 abs.cpp
 abs_s.cpp
+acos.cpp
+acot.cpp
 aligned_load.cpp
 aligned_store.cpp
 all.cpp
 arg.cpp
+asin.cpp
+atan.cpp
 autofold.cpp
 automap.cpp
 autosplat.cpp

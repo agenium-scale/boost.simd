@@ -15,5 +15,7 @@
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/arch/common/detail/scalar/f_invtrig.hpp>
 #include <boost/simd/arch/common/detail/scalar/d_invtrig.hpp>
+#include <boost/simd/arch/common/detail/simd/f_invtrig.hpp>
+#include <boost/simd/arch/common/detail/simd/d_invtrig.hpp>
 
 #endif
