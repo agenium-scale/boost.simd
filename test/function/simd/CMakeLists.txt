@@ -31,6 +31,12 @@ aligned_load.cpp
 aligned_store.cpp
 all.cpp
 arg.cpp
+acsc.cpp
+acscd.cpp
+acscpi.cpp
+asec.cpp
+asecd.cpp
+asecpi.cpp
 asin.cpp
 asind.cpp
 asinpi.cpp
