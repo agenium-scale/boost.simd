@@ -24,9 +24,10 @@
 #include <boost/simd/function/simd/bitofsign.hpp>
 #include <boost/simd/function/simd/bitwise_or.hpp>
 #include <boost/simd/function/simd/divides.hpp>
-#include <boost/simd/function/simd/fast_frexp.hpp>
-#include <boost/simd/function/simd/fast_ldexp.hpp>
+#include <boost/simd/function/simd/frexp.hpp>
+#include <boost/simd/function/simd/ldexp.hpp>
 #include <boost/simd/function/horn.hpp>
+#include <boost/simd/function/fast.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
 #include <boost/simd/function/simd/is_equal.hpp>
 #include <boost/simd/function/simd/is_eqz.hpp>
@@ -75,7 +76,7 @@ namespace boost { namespace simd { namespace ext
         const A0 CBRT2I = Constant< A0, 0x3f4b2ff5> ();
         const A0 CBRT4I = Constant< A0, 0x3f214518> ();
         int_type e;
-        A0 x = fast_frexp(z, e);
+        A0 x; std::tie(x, e) = fast_(frexp)(z, e);
         x = horn <stype, 0xbe09e49a,
                          0x3f0bf0fe,
                          0xbf745265,
@@ -92,7 +93,7 @@ namespace boost { namespace simd { namespace ext
         const A0 cbrt4 = if_else(flag, CBRT4, CBRT4I);
         A0 fact = if_else(is_equal(rem, One<int_type>()), cbrt2, One<A0>());
         fact = if_else(is_equal(rem, Two<int_type>()), cbrt4, fact);
-        x = fast_ldexp(x*fact, e);
+        x = fast_(ldexp)(x*fact, e);
         x -= (x-z/sqr(x))*Third<A0>();
   #ifndef BOOST_SIMD_NO_DENORMALS
         x = bitwise_or(x, bitofsign(a0))*f;

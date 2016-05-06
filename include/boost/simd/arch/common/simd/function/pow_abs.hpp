@@ -51,6 +51,8 @@
 #include <boost/simd/function/simd/toint.hpp>
 #include <boost/simd/function/simd/unary_minus.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
+#include <utility>
+
 
 #ifndef BOOST_SIMD_NO_INFINITIES
 #include <boost/simd/constant/minf.hpp>
@@ -79,7 +81,8 @@ namespace boost { namespace simd { namespace ext
         using iA0 = bd::as_integer_t<A0>;
         iA0 e;
         A0 ax = bs::abs(a0);
-        A0 x = frexp(ax, e);
+        A0 x;
+        std::tie(x, e) = frexp(ax, e);
         iA0 i  = detail::pow_kernel<A0>::select(x);
         A0 z = sqr(x);
         A0 w = detail::pow_kernel<A0>::pow1(x, z);

@@ -15,7 +15,6 @@
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/arch/common/detail/simd/logarithm.hpp>
-#include <boost/simd/function/frexp.hpp>
 #include <boost/simd/function/ilog2.hpp>
 #include <boost/simd/meta/is_not_scalar.hpp>
 #include <boost/dispatch/function/overload.hpp>
@@ -51,32 +50,6 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( log2_
-                          , (typename A0, typename A1,typename X)
-                          , bs::simd_
-                          , bs::pack_< bd::floating_<A0>, X >
-                          , bs::pack_< bd::integer_<A1>, X >
-                          )
-  {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1& a1) const BOOST_NOEXCEPT
-    {
-      return frexp(a0, a1);
-    }
-  };
-
-  BOOST_DISPATCH_OVERLOAD ( log2_
-                          , (typename A0, typename A1, typename A2,typename X)
-                          , bs::simd_
-                          , bs::pack_< bd::floating_<A0>, X >
-                          , bs::pack_< bd::floating_<A1>, X >
-                          , bs::pack_< bd::integer_<A2>, X >
-                          )
-  {
-    BOOST_FORCEINLINE void operator() ( A0 const& a0, A1& a1, A2& a2) const
-    {
-      return frexp(a0, a1, a2);
-    }
-  };
 } } }
 
 
