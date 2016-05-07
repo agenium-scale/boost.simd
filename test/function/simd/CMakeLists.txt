@@ -30,6 +30,7 @@ acotpi.cpp
 aligned_load.cpp
 aligned_store.cpp
 all.cpp
+any.cpp
 arg.cpp
 acsc.cpp
 acscd.cpp
@@ -222,6 +223,7 @@ negif.cpp
 negifnot.cpp
 nextafter.cpp
 next.cpp
+none.cpp
 nthroot.cpp
 oneminus.cpp
 oneminus_s.cpp
