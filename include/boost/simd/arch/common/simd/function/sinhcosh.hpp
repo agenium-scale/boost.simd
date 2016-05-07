@@ -2,18 +2,17 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T. Lapreste
+  @copyright 2016 NumScale SAS
+  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SINCOSH_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SINCOSH_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SINHCOSH_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SINHCOSH_HPP_INCLUDED
 
 #include <boost/dispatch/function/overload.hpp>
-#include <boost/fusion/include/std_pair.hpp>
 #include <boost/simd/arch/common/detail/generic/sinh_kernel.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/log_2.hpp>
@@ -33,6 +32,8 @@
 #include <boost/simd/function/simd/rec.hpp>
 #include <boost/simd/function/simd/sqr.hpp>
 #include <boost/simd/function/simd/unary_minus.hpp>
+#include <utility>
+
 
 namespace boost { namespace simd { namespace ext
 {
@@ -62,8 +63,7 @@ namespace boost { namespace simd { namespace ext
       A0 bts = bitofsign(a0);
       A0 s = Zero<A0>();
       auto z = bs::any(lt1);
-      std::cout << stf::type_id(z) << std::endl;
-      if(z.value())
+      if(z.value()) //TO DO any
       {
         s = detail::sinh_kernel<A0>::compute(x, sqr(x));
       }

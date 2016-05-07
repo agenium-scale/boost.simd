@@ -24,7 +24,7 @@
 #include <boost/simd/function/simd/exp.hpp>
 #include <boost/simd/function/simd/fma.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/inbtrue.hpp>
+#include <boost/simd/function/simd/nbtrue.hpp>
 #include <boost/simd/function/simd/is_less.hpp>
 #include <boost/simd/function/simd/minusone.hpp>
 #include <boost/simd/function/simd/plus.hpp>
@@ -52,7 +52,7 @@ namespace boost { namespace simd { namespace ext
         A0 x = bs::abs(a0);
         auto test0= is_less(x, Ratio<A0, 5, 8>());
         A0 bts = bitofsign(a0);
-        std::size_t nb = 1; // TODO inbtrue(test0);
+        std::size_t nb = nbtrue(test0);
         A0 z = One<A0>();
         if(nb> 0)
         {

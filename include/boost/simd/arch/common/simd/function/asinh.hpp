@@ -26,7 +26,7 @@
 #include <boost/simd/function/simd/divides.hpp>
 #include <boost/simd/function/simd/hypot.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/inbtrue.hpp>
+#include <boost/simd/function/simd/nbtrue.hpp>
 #include <boost/simd/function/simd/is_greater.hpp>
 #include <boost/simd/function/simd/is_less.hpp>
 #include <boost/simd/function/simd/log.hpp>
@@ -84,7 +84,7 @@ namespace boost { namespace simd { namespace ext
         auto lthalf = is_less(x,Half<A0>());
         A0 x2 = bs::sqr(x);
         A0 z = Zero<A0>();
-        std::size_t nb = 1; //TODO inbtrue(lthalf);
+        std::size_t nb = nbtrue(lthalf);
         A0 bts = bitofsign(a0);
         if(nb > 0)
         {

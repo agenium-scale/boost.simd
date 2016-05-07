@@ -48,7 +48,7 @@ namespace boost { namespace simd { namespace ext
         A0 x = bs::abs(a0);
         auto lt1= is_less(x, One<A0>());
         A0 bts = bitofsign(a0);
-        std::size_t nb = 1; //TODO inbtrue(lt1);
+        std::size_t nb = nbtrue(lt1);
         A0 z = Zero<A0>();
         if(nb > 0)
         {
