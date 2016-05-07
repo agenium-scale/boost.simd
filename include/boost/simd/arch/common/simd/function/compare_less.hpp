@@ -15,7 +15,6 @@
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/meta/as_logical.hpp>
-#include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/meta/as_logical.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -32,7 +31,7 @@ namespace boost { namespace simd { namespace ext
      using sA0 =  bd::scalar_of_t<A0>;
      BOOST_FORCEINLINE logical<sA0> operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
      {
-        for(std::size_t i=0;i<bs::cardinal_of<A0>::value;++i)
+       for(std::size_t i=0;i<A0::static_size;++i)
         {
           if (a0[i] < a1[i])  return {true};
           if (a1[i] < a0[i])  return {false};
