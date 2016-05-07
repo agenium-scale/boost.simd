@@ -24,7 +24,7 @@ void test(Env& $)
   namespace bd = boost::dispatch;
 
   T a1[N];
-  T r = 0;
+  std::size_t r = 0;
   for(std::size_t i = 0; i < N; ++i)
   {
      a1[i] = (i%2) ? T(i) : T(-i);
@@ -40,6 +40,6 @@ STF_CASE_TPL("Check nbtrue on pack" , STF_NUMERIC_TYPES)
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
-//  test<T, N/2>($);
-//  test<T, Nx2>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }

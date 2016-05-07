@@ -217,6 +217,7 @@ minusone_s.cpp
 modf.cpp
 multiplies.cpp
 multiplies_s.cpp
+nbtrue.cpp
 negate.cpp
 negatenz.cpp
 negif.cpp
@@ -311,7 +312,6 @@ unary_plus.cpp
 #idivfix.cpp
 #idivfloor.cpp
 #idivround.cpp
-#inbtrue.cpp
 #is_included_c.cpp
 #is_included.cpp
 #mod.cpp

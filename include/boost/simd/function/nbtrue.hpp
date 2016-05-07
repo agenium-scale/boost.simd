@@ -28,13 +28,13 @@ namespace boost { namespace simd
     For every parameter of type T
 
     @code
-    T r = nbtrue(x);
+    size_t r = nbtrue(x);
     @endcode
 
     is similar to:
 
     @code
-    T r = sum(if_one_else_zero(x));
+    sizet r = size_t(sum(if_one_else_zero(x)));
     @endcode
 
   **/
