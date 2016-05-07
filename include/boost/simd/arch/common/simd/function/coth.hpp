@@ -12,11 +12,9 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_COTH_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_COTH_HPP_INCLUDED
 
-#include <boost/simd/pack.hpp>
-#include <boost/simd/hyperbolic/function/details/tanh_kernel.hpp>
-#include <boost/simd/meta/as_logical.hpp>
-#include <boost/simd/sdk/meta/cardinal_of.hpp>
-#include <boost/simd/constant/fiveo_8.hpp>
+#include <boost/simd/detail/overload.hpp>
+#include <boost/simd/arch/common/detail/generic/tanh_kernel.hpp>
+#include <boost/simd/constant/ratio.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/two.hpp>
 #include <boost/simd/function/simd/abs.hpp>
@@ -39,7 +37,7 @@ namespace boost { namespace simd { namespace ext
    namespace bs = boost::simd;
    BOOST_DISPATCH_OVERLOAD( coth_
                           , (typename A0, typename X)
-                          , bs::cpu_
+                          , bd::cpu_
                           , bs::pack_< bd::floating_<A0>, X>
                           )
    {
@@ -51,19 +49,18 @@ namespace boost { namespace simd { namespace ext
         // else
         // coth(a0) is  sign(a0)*(1 + 2/(exp(2*x)-1))
         //////////////////////////////////////////////////////////////////////////////
-        using bA0 =  bs::as_logical_t<A0>;
         A0 x = bs::abs(a0);
-        bA0 test0= lt(x, Fiveo_8<A0>());
+        auto test0= is_less(x, Ratio<A0, 5, 8>());
         A0 bts = bitofsign(a0);
-        std::size_t nb = inbtrue(test0);
+        std::size_t nb = 1; // TODO inbtrue(test0);
         A0 z = One<A0>();
         if(nb> 0)
         {
           z = detail::tanh_kernel<A0>::coth(x, sqr(x));
-          if(nb >= meta::cardinal_of<A0>::value) return  b_xor(z, bts);
+          if(nb >= A0::static_size) return  bitwise_xor(z, bts);
         }
         A0 r = fma(Two<A0>(), rec(minusone(exp(x+x))), One<A0>());
-        return b_xor(if_else(test0, z, r), bts);
+        return bitwise_xor(if_else(test0, z, r), bts);
       }
    };
 

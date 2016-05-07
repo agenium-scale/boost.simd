@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ATANH_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ATANH_HPP_INCLUDED
 
-#include <boost/simd/pack.hpp>
+#include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/function/simd/abs.hpp>
@@ -33,17 +33,16 @@ namespace boost { namespace simd { namespace ext
    namespace bs = boost::simd;
    BOOST_DISPATCH_OVERLOAD( atanh_
                           , (typename A0, typename X)
-                          , bs::cpu_
+                          , bd::cpu_
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
       BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
-        using bA0 =  bs::as_logical_t<A0>;
         A0 absa0 = bs::abs(a0);
         A0 t =  absa0+absa0;
         A0 z1 = oneminus(absa0);
-        bA0 test =  lt(absa0, Half<A0>());
+        auto test =  is_less(absa0, Half<A0>());
         A0 tmp = if_else(test, absa0, t)/z1;
         return bitwise_xor(bitofsign(a0), Half<A0>()*log1p(if_else(test, fma(t,tmp,t), tmp)));
       }

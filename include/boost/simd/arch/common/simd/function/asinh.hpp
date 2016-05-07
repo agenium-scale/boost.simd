@@ -1,9 +1,8 @@
 //==================================================================================================
-/*!
-  @file
+/**
 
-  @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
+  Copyright 2016 NumScale SAS
+  Copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -12,11 +11,9 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ASINH_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ASINH_HPP_INCLUDED
 
-#include <boost/simd/pack.hpp>
+#include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/as_logical.hpp>
-#include <boost/simd/polynomials/function/scalar/impl/horner.hpp>
-#include <boost/simd/sdk/config.hpp>
-#include <boost/simd/sdk/meta/cardinal_of.hpp>
+#include <boost/simd/function/horn.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/log_2.hpp>
 #include <boost/simd/constant/one.hpp>
@@ -50,15 +47,14 @@ namespace boost { namespace simd { namespace ext
    namespace bs = boost::simd;
    BOOST_DISPATCH_OVERLOAD( asinh_
                           , (typename A0, typename X)
-                          , bs::cpu_
+                          , bd::cpu_
                           , bs::pack_<bd::double_<A0>, X>
                           )
    {
       BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
-        using bA0 =  bs::as_logical_t<A0>;
         A0 x =  bs::abs(a0);
-        bA0 test = gt(x,Oneosqrteps<A0>());
+        auto test = is_greater(x,Oneosqrteps<A0>());
         A0 z = if_else(test,minusone(x), x+sqr(x)/bs::oneplus(hypot(One<A0>(), x)));
         #ifndef BOOST_SIMD_NO_INFINITIES
         z = if_else(is_equal(x, Inf<A0>()),x, z);
@@ -70,7 +66,7 @@ namespace boost { namespace simd { namespace ext
 
    BOOST_DISPATCH_OVERLOAD( asinh_
                           , (typename A0, typename X)
-                          , bs::cpu_
+                          , bd::cpu_
                           , bs::pack_<bd::single_<A0>, X>
                           )
    {
@@ -84,29 +80,27 @@ namespace boost { namespace simd { namespace ext
         // 3619320676 values (84.60%)  within 0.0 ULPs
         //  658843138 values (15.40%)  within 0.5 ULPs
         //      26262 values ( 0.00%)  within 1.0 ULPs
-        using bA0 =  bs::as_logical_t<A0>;
-        using sA0 =  bd::scalar_of_t<A0>;
         A0 x = bs::abs(a0);
-        bA0 lthalf = lt(x,Half<A0>());
+        auto lthalf = is_less(x,Half<A0>());
         A0 x2 = bs::sqr(x);
         A0 z = Zero<A0>();
-        std::size_t nb = inbtrue(lthalf);
+        std::size_t nb = 1; //TODO inbtrue(lthalf);
         A0 bts = bitofsign(a0);
         if(nb > 0)
         {
-          z = horner < NT2_HORNER_COEFF_T(sA0, 5,
-                                          ( 0x3ca4d6e6
-                                          , 0xbd2ee581
-                                          , 0x3d9949b1
-                                          , 0xbe2aa9ad
-                                          , 0x3f800000
-                                          )
-                                         )> (x2)*x;
-          if(nb >= meta::cardinal_of<A0>::value) return  b_xor(z, bts);
+          z = horn<A0
+            , 0x3f800000
+            , 0xbe2aa9ad
+            , 0x3d9949b1
+            , 0xbd2ee581
+            , 0x3ca4d6e6
+            > (x2)*x;
+
+          if(nb >= A0::static_size) return  bitwise_xor(z, bts);
         }
-        A0 tmp =  if_else(gt(x, Oneosqrteps<A0>()),
-                         x, average(x, hypot(One<A0>(), x)));
-       return b_xor(if_else(lthalf, z, log(tmp)+Log_2<A0>()), bts);
+        A0 tmp =  if_else(is_greater(x, Oneosqrteps<A0>()),
+                          x, average(x, hypot(One<A0>(), x)));
+       return bitwise_xor(if_else(lthalf, z, log(tmp)+Log_2<A0>()), bts);
       }
    };
 
