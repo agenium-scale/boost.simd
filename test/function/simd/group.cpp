@@ -29,7 +29,7 @@ void test( Env& $, std::true_type const& )
 
   T a1[N], a2[N];
   type b[2*N];
-  for(int i = 0; i < N; ++i)
+  for(size_t i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? T(i*2) : T(3+i);
     a2[i] = (i%2) ? T(7+i) : T(i);

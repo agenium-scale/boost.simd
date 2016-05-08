@@ -94,7 +94,7 @@ namespace boost { namespace simd
             s_t(5.22136867046356201171875E-1),
             s_t(5.00000000000000000000E-1)
         };
-        return A[i];//load<A0>(A.begin(), i); //A[i];
+        return load<A0>(&A[0], i); //A[i];
       }
 
       static BOOST_FORCEINLINE A0 continuation(const i_t& i) BOOST_NOEXCEPT

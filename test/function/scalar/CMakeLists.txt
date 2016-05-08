@@ -298,7 +298,7 @@ set ( SOURCES
    log2.cpp
    logspace_add.cpp
    logspace_sub.cpp
-#   nthroot.cpp # long compilation time to fix
+   nthroot.cpp
    pow.cpp
    pow2.cpp
    pow_abs.cpp
