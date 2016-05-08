@@ -281,6 +281,7 @@ sinpi.cpp
 split_multiplies.cpp
 sinhcosh.cpp
 sinh.cpp
+sinhc.cpp
 tanh.cpp
 sqr_abs.cpp
 sqr.cpp

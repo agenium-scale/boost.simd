@@ -12,9 +12,8 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SINHC_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/hyperbolic/function/details/sinhc_kernel.hpp>
+#include <boost/simd/arch/common/detail/generic/sinhc_kernel.hpp>
 #include <boost/simd/meta/as_logical.hpp>
-#include <boost/simd/sdk/config.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/log_2.hpp>
 #include <boost/simd/constant/maxlog.hpp>
@@ -44,7 +43,7 @@ namespace boost { namespace simd { namespace ext
    namespace bs = boost::simd;
    BOOST_DISPATCH_OVERLOAD( sinhc_
                           , (typename A0, typename X)
-                          , bs::cpu_
+                          , bd::cpu_
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
