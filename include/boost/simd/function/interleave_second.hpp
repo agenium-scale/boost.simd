@@ -12,11 +12,10 @@
 #ifndef BOOST_SIMD_FUNCTION_INTERLEAVE_SECOND_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_INTERLEAVE_SECOND_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-
- /*!
+#if defined(DOXYGEN_ONLY)
+  /*!
 
     @ingroup group-swar
     Function object implementing interleave_second capabilities
@@ -41,10 +40,9 @@ namespace boost { namespace simd
 
   **/
   const boost::dispatch::functor<tag::interleave_second_> interleave_second = {};
-} }
 #endif
+} }
 
-#include <boost/simd/function/scalar/interleave_second.hpp>
 #include <boost/simd/function/simd/interleave_second.hpp>
 
 #endif

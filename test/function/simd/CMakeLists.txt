@@ -100,7 +100,7 @@ inc_s.cpp
 indeg.cpp
 inrad.cpp
 interleave_first.cpp
-#interleave_second.cpp
+interleave_second.cpp
 #interleave_even.cpp
 #interleave_odd.cpp
 iround2even.cpp
