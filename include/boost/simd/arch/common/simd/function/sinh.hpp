@@ -25,7 +25,7 @@
 #include <boost/simd/function/simd/bitwise_xor.hpp>
 #include <boost/simd/function/simd/exp.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/inbtrue.hpp>
+#include <boost/simd/function/simd/nbtrue.hpp>
 #include <boost/simd/function/simd/is_greater.hpp>
 #include <boost/simd/function/simd/is_less.hpp>
 #include <boost/simd/function/simd/minus.hpp>

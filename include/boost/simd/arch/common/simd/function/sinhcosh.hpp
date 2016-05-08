@@ -62,8 +62,7 @@ namespace boost { namespace simd { namespace ext
       auto lt1= is_less(x, One<A0>());
       A0 bts = bitofsign(a0);
       A0 s = Zero<A0>();
-      auto z = bs::any(lt1);
-      if(z.value()) //TO DO any
+      if( bs::any(lt1))
       {
         s = detail::sinh_kernel<A0>::compute(x, sqr(x));
       }

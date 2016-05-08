@@ -10,8 +10,6 @@
 #include <simd_test.hpp>
 #include <boost/simd/function/sinhcosh.hpp>
 #include <boost/simd/pack.hpp>
-#include <boost/simd/function/std.hpp>
-
 
 namespace bs = boost::simd;
 
