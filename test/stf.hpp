@@ -471,6 +471,11 @@ namespace stf { namespace detail
 
 #else
 
+#ifdef _MSC_VER
+#pragma warning(push)
+#pragma warning(disable: 4100) // unused parameter
+#endif
+
   template<typename C>
   inline detail::if_container<C,std::size_t> size(C const& c)   { return c.size(); }
 
@@ -488,6 +493,10 @@ namespace stf { namespace detail
 
   template<typename C>
   inline detail::if_not_container<C,C const*> end(C const& t) { return (&t)+1; }
+
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 
 #endif
 } }
