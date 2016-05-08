@@ -1,17 +1,20 @@
 //==================================================================================================
-/*!
-  @file
-
-  @copyright 2016 NumScale SAS
+/**
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_SPLAT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_SPLAT_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
+
+#ifdef BOOST_MSVC
+# pragma warning(push)
+# pragma warning(disable: 4244) // conversion loss of data
+#endif
 
 namespace boost { namespace simd { namespace ext
 {
@@ -48,7 +51,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE target operator()(Value const& v, Target const&) const BOOST_NOEXCEPT
     {
-      return _mm_set1_epi8( static_cast<char>(v) );
+      return _mm_set1_epi8(v);
     }
   };
 
@@ -65,7 +68,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE target operator()(Value const& v, Target const&) const BOOST_NOEXCEPT
     {
-      return _mm_set1_epi16( static_cast<short>(v) );
+      return _mm_set1_epi16(v);
     }
   };
 
@@ -82,7 +85,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE target operator()(Value const& v, Target const&) const BOOST_NOEXCEPT
     {
-      return _mm_set1_epi32( static_cast<int>(v) );
+      return _mm_set1_epi32(v);
     }
   };
 
@@ -97,11 +100,27 @@ namespace boost { namespace simd { namespace ext
   {
     using target = typename Target::type;
 
+    BOOST_FORCEINLINE target do_(long int v, std::true_type const&) const BOOST_NOEXCEPT
+    {
+      return _mm_set1_epi64x(v);
+    }
+
+    BOOST_FORCEINLINE target do_(long int v, std::false_type const&) const BOOST_NOEXCEPT
+    {
+      return target(v,v);
+    }
+
     BOOST_FORCEINLINE target operator()(Value const& v, Target const&) const BOOST_NOEXCEPT
     {
-      return _mm_set1_epi64x( static_cast<long int>(v));
+      return do_( static_cast<long int>(v)
+                , typename detail::support_mm_set1_epi64x<long int>::type{}
+                );
     }
   };
 } } }
+
+#ifdef BOOST_MSVC
+# pragma warning(pop)
+#endif
 
 #endif
