@@ -13,7 +13,6 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_EXPX2_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/sdk/config.hpp>
 #include <boost/simd/constant/expx2c1.hpp>
 #include <boost/simd/constant/expx2c2.hpp>
 #include <boost/simd/constant/half.hpp>
@@ -41,7 +40,7 @@ namespace boost { namespace simd { namespace ext
    namespace bs = boost::simd;
    BOOST_DISPATCH_OVERLOAD( expx2_
                           , (typename A0, typename X)
-                          , bs::cpu_
+                          , bd::cpu_
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
@@ -55,11 +54,11 @@ namespace boost { namespace simd { namespace ext
         A0 u = bs::sqr(m);
         A0 u1 = fma(m+m,f,sqr(f));
         // u is exact, u1 is small.
-        A0 r = bs::if_else(bs::gt(u+u1, bs::Maxlog<A0>()),
+        A0 r = bs::if_else(bs::is_greater(u+u1, bs::Maxlog<A0>()),
                             bs::Inf<A0>(),
                             bs::exp(u)*bs::exp(u1));
         #ifndef BOOST_SIMD_NO_INFINITIES
-        r =  bs::if_else(eq(x, Inf<A0>()), x, r);
+        r =  bs::if_else(is_equal(x, Inf<A0>()), x, r);
         #endif
         return r;
       }
@@ -67,7 +66,7 @@ namespace boost { namespace simd { namespace ext
 
    BOOST_DISPATCH_OVERLOAD( expx2_
                           , (typename A0, typename X)
-                          , bs::cpu_
+                          , bd::cpu_
                           , bs::pack_<bd::floating_<A0>, X>
                           , bs::pack_<bd::floating_<A0>, X>
                           )
@@ -83,11 +82,11 @@ namespace boost { namespace simd { namespace ext
         A0 u = sgn*bs::sqr(m);
         A0 u1 = sgn*fma(m+m,f,sqr(f));
         // u is exact, u1 is small.
-        A0 r = bs::if_else(bs::gt(u+u1, bs::Maxlog<A0>()),
+        A0 r = bs::if_else(bs::is_greater(u+u1, bs::Maxlog<A0>()),
                             bs::Inf<A0>(),
                             bs::exp(u)*bs::exp(u1));
         #ifndef BOOST_SIMD_NO_INFINITIES
-        r =  bs::if_else(eq(x, Inf<A0>()), x, r);
+        r =  bs::if_else(is_equal(x, Inf<A0>()), x, r);
         #endif
         return r;
       }
