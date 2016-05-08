@@ -102,7 +102,7 @@ inrad.cpp
 interleave_first.cpp
 interleave_second.cpp
 #interleave_even.cpp
-#interleave_odd.cpp
+interleave_odd.cpp
 iround2even.cpp
 iround.cpp
 is_denormal.cpp
