@@ -61,5 +61,15 @@ before_script:
 script:
   - make update.boost-header-only | grep -v "^-- " # Silent installation
   - make update.boost.dispatch    | grep -v "^-- " # Silent installation
-  - make -k unit
-  - ctest
+  - make  -j 4 -k  api.unit
+  - ctest -j 4 -R ^api.*.unit
+  - make  -j 4 -k  architecture.unit
+  - ctest -j 4 -R ^architecture.*.unit
+  - make  -j 4 -k  function.simd.unit
+  - ctest -j 4 -R ^function.simd.*.unit
+  - make  -j 4 -k  constant.simd.unit
+  - ctest -j 4 -R ^constant.simd.*.unit
+  - make  -j 4 -k  function.scalar.unit
+  - ctest -j 4 -R ^function.scalar.*.unit
+  - make  -j 4 -k  constant.scalar.unit
+  - ctest -j 4 -R ^constant.scalar.*.unit
