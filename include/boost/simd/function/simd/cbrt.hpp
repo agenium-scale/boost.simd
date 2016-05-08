@@ -14,6 +14,6 @@
 
 #include <boost/simd/function/scalar/cbrt.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/function/simd/cbrt.hpp>
+#include <boost/simd/arch/common/simd/function/cbrt.hpp>
 
 #endif
