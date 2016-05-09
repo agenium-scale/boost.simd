@@ -13,7 +13,6 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SINCPI_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/sdk/config.hpp>
 #include <boost/simd/constant/invpi.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/function/simd/divides.hpp>
@@ -47,7 +46,7 @@ namespace boost { namespace simd { namespace ext
       {
         A0 r1 = bs::Invpi<A0>()*(bs::sinpi(a0)/a0);
         #if !defined(BOOST_SIMD_NO_DENORMALS)
-        r1 = bs::if_else ( bs::lt(bs::abs(a0), bs::Eps<A0>())
+        r1 = bs::if_else ( bs::is_less(bs::abs(a0), bs::Eps<A0>())
                           , bs::One<A0>()
                           , r1
                           );

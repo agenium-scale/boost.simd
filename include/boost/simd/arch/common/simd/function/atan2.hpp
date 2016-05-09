@@ -14,8 +14,7 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/as_logical.hpp>
-#include <boost/simd/sdk/config.hpp>
-#include <boost/simd/trigonometric/function/simd/common/impl/invtrig.hpp>
+#include <boost/simd/arch/common/detail/generic/invtrig.hpp>
 #include <boost/simd/constant/pi.hpp>
 #include <boost/simd/function/simd/divides.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
@@ -49,27 +48,24 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
-     inline A0 operator()(const typename A0::native_type a0_n,
-                                    const typename A0::native_type a1_n) const
+     inline A0 operator()(const A0& a0,const A0& a1) const
       {
-        A0 a0 = a0_n;
-        A0 a1 = a1_n;
-        using lA0 =  bs::as_logical_t<A0>;
+        A0 a00 = a0, a10 = a1;
   #ifndef BOOST_SIMD_NO_INFINITIES
-        lA0 test =  bs::logical_and(bs::is_inf(a0),  bs::is_inf(a1));
-        a0 =  bs::if_else(test, bs::copysign(One<A0>(), a0), a0);
-        a1 =  bs::if_else(test, bs::copysign(One<A0>(), a1), a1);
+        auto test =  bs::logical_and(bs::is_inf(a0),  bs::is_inf(a1));
+        a00 =  bs::if_else(test, bs::copysign(One<A0>(), a0), a0);
+        a10 =  bs::if_else(test, bs::copysign(One<A0>(), a1), a1);
   #endif
-        A0 z = detail::invtrig_base<A0,radian_tag, tag::simd_type>::kernel_atan(a0/a1);
+        A0 z = detail::invtrig_base<A0,tag::radian_tag, tag::simd_type>::kernel_atan(a00/a10);
         //A0 z = atan(abs(a0/a1));  // case a1 > 0,  a0 > 0
-        z = bs::negatenz(bs::if_else(bs::is_gtz(a1), z, bs::Pi<A0>()-z), a0);
-        z =  bs::if_else( bs::is_eqz(a0),
-                           bs::if_else_zero( bs::is_ltz(a1),  bs::Pi<A0>()),
+        z = bs::negatenz(bs::if_else(bs::is_gtz(a10), z, bs::Pi<A0>()-z), a00);
+        z =  bs::if_else( bs::is_eqz(a00),
+                           bs::if_else_zero( bs::is_ltz(a10),  bs::Pi<A0>()),
                            z);
   #ifdef BOOST_SIMD_NO_NANS
         return z;
   #else
-        return  bs::if_nan_else( bs::logical_or( bs::is_nan(a0),  bs::is_nan(a1)), z);
+        return  bs::if_nan_else( bs::logical_or( bs::is_nan(a00),  bs::is_nan(a10)), z);
   #endif
       }
    };

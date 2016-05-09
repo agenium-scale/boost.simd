@@ -8,10 +8,8 @@
 **/
 //==================================================================================================
 #include <simd_test.hpp>
-#include <boost/simd/function/sin.hpp>
+#include <boost/simd/function/sinhc.hpp>
 #include <boost/simd/pack.hpp>
-#include <boost/simd/function/std.hpp>
-
 
 namespace bs = boost::simd;
 
@@ -20,22 +18,19 @@ void test(Env& $)
 {
   using p_t = bs::pack<T, N>;
 
-  T a1[N], b[N], c[N];
+  T a1[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
-    a1[i] = (i%2) ? T(i) : -T(i);
-    b[i] = bs::sin(a1[i]) ;
-    c[i] = bs::std_(bs::sin)(a1[i]);
+    a1[i] = T(i);
+    b[i] = bs::sinhc(a1[i]) ;
   }
 
   p_t aa1(&a1[0], &a1[N]);
   p_t bb (&b[0], &b[N]);
-  p_t cc (&c[0], &c[N]);
-  STF_EQUAL(bs::sin(aa1), bb);
-  STF_EQUAL(bs::std_(bs::sin)(aa1), cc);
+  STF_ULP_EQUAL(bs::sinhc(aa1), bb, 0.5);
 }
 
-STF_CASE_TPL("Check sin on pack" , STF_IEEE_TYPES)
+STF_CASE_TPL("Check sinhc on pack" , STF_IEEE_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 

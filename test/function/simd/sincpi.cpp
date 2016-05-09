@@ -8,9 +8,8 @@
 **/
 //==================================================================================================
 #include <simd_test.hpp>
-#include <boost/simd/function/sin.hpp>
+#include <boost/simd/function/sincpi.hpp>
 #include <boost/simd/pack.hpp>
-#include <boost/simd/function/std.hpp>
 
 
 namespace bs = boost::simd;
@@ -24,18 +23,16 @@ void test(Env& $)
   for(std::size_t i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? T(i) : -T(i);
-    b[i] = bs::sin(a1[i]) ;
-    c[i] = bs::std_(bs::sin)(a1[i]);
+    b[i] = bs::sincpi(a1[i]) ;
   }
 
   p_t aa1(&a1[0], &a1[N]);
   p_t bb (&b[0], &b[N]);
   p_t cc (&c[0], &c[N]);
-  STF_EQUAL(bs::sin(aa1), bb);
-  STF_EQUAL(bs::std_(bs::sin)(aa1), cc);
+  STF_EQUAL(bs::sincpi(aa1), bb);
 }
 
-STF_CASE_TPL("Check sin on pack" , STF_IEEE_TYPES)
+STF_CASE_TPL("Check sincpi on pack" , STF_IEEE_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 

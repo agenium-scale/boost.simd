@@ -257,6 +257,8 @@ sign.cpp
 significants.cpp
 signnz.cpp
 sin.cpp
+sinc.cpp
+sincpi.cpp
 sincos.cpp
 sincosd.cpp
 sincospi.cpp
