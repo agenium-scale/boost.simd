@@ -1,23 +1,19 @@
 //==================================================================================================
-/*!
-  @file
-
-  @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
+/**
+  Copyright 2016 NumScale SAS
+  Copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_FUNCTION_DEINTERLEAVE_SECOND_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_DEINTERLEAVE_SECOND_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-
- /*!
-
+#if defined(DOXYGEN_ONLY)
+  /*!
     @ingroup group-swar
     Function object implementing deinterleave_second capabilities
 
@@ -41,10 +37,9 @@ namespace boost { namespace simd
 
   **/
   const boost::dispatch::functor<tag::deinterleave_second_> deinterleave_second = {};
-} }
 #endif
+} }
 
-#include <boost/simd/function/scalar/deinterleave_second.hpp>
 #include <boost/simd/function/simd/deinterleave_second.hpp>
 
 #endif

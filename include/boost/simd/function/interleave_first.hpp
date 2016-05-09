@@ -12,12 +12,10 @@
 #ifndef BOOST_SIMD_FUNCTION_INTERLEAVE_FIRST_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_INTERLEAVE_FIRST_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-
- /*!
-
+#if defined(DOXYGEN_ONLY)
+  /*!
     @ingroup group-swar
     Function object implementing interleave_first capabilities
 
@@ -41,10 +39,9 @@ namespace boost { namespace simd
 
   **/
   const boost::dispatch::functor<tag::interleave_first_> interleave_first = {};
-} }
 #endif
+} }
 
-#include <boost/simd/function/scalar/interleave_first.hpp>
 #include <boost/simd/function/simd/interleave_first.hpp>
 
 #endif

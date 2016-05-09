@@ -7,12 +7,13 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_INTERLEAVE_EVEN_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_INTERLEAVE_EVEN_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_INTERLEAVE_FIRST_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_INTERLEAVE_FIRST_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/function/combine.hpp>
+#include <boost/simd/function/slide.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -20,7 +21,7 @@ namespace boost { namespace simd { namespace ext
   namespace bs = boost::simd;
   namespace br = brigand;
 
-  BOOST_DISPATCH_OVERLOAD ( interleave_even_
+  BOOST_DISPATCH_OVERLOAD ( interleave_first_
                           , (typename T, typename X)
                           , bd::cpu_
                           , bs::pack_< bd::unspecified_<T>, X >
@@ -31,14 +32,14 @@ namespace boost { namespace simd { namespace ext
     static BOOST_FORCEINLINE
     typename V::value_type value(V const& x, V const&, std::true_type const&)
     {
-      return bs::extract<2*(N::value/2)>(x);
+      return bs::extract<N::value/2>(x);
     }
 
     template<typename N, typename V>
     static BOOST_FORCEINLINE
     typename V::value_type value(V const&, V const& y, std::false_type const&)
     {
-      return bs::extract<2*(N::value/2)>(y);
+      return bs::extract<N::value/2>(y);
     }
 
     template<typename K, typename... N> static BOOST_FORCEINLINE
@@ -50,12 +51,12 @@ namespace boost { namespace simd { namespace ext
     template<typename... N> static BOOST_FORCEINLINE
     T do_( T const& x, T const& y, aggregate_storage const&, br::list<N...> const&) BOOST_NOEXCEPT
     {
-       auto const& x0 = x.storage()[0];
-       auto const& x1 = x.storage()[1];
-       auto const& y0 = y.storage()[0];
-       auto const& y1 = y.storage()[1];
+      auto const& x0 = x.storage()[0];
+      auto const& y0 = y.storage()[0];
 
-       return  combine(interleave_even(x0,y0), interleave_even(x1,y1));
+      return  combine ( interleave_first(x0,y0)
+                      , interleave_first(slide<sizeof...(N)/4>(x0), slide<sizeof...(N)/4>(y0))
+                      );
     }
 
     BOOST_FORCEINLINE T operator()(T const& x, T const& y) const BOOST_NOEXCEPT
