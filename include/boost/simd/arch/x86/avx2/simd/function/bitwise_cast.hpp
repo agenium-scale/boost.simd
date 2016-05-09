@@ -1,12 +1,10 @@
 //==================================================================================================
-/*!
-  @file
-
-  @copyright 2016 NumScale SAS
+/**
+  Copyright 2016 Numscale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_X86_AVX2_SIMD_FUNCTION_BITWISE_CAST_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_AVX2_SIMD_FUNCTION_BITWISE_CAST_HPP_INCLUDED
@@ -19,6 +17,7 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = ::boost::dispatch;
   namespace bs = ::boost::simd;
+
   //------------------------------------------------------------------------------------------------
   // bitwise cast float<->integer
   BOOST_DISPATCH_OVERLOAD ( bitwise_cast_
@@ -28,8 +27,8 @@ namespace boost { namespace simd { namespace ext
                           , bd::target_<bs::pack_<bd::integer_<Target>,bs::avx_>>
                           )
   {
-    using target = typename Target::type;
-    BOOST_FORCEINLINE target operator()(A0 const& a0, Target const&) const
+    BOOST_FORCEINLINE
+    typename Target::type operator()(A0 const& a0, Target const&) const BOOST_NOEXCEPT
     {
       return _mm256_castps_si256(a0);
     }
@@ -44,8 +43,8 @@ namespace boost { namespace simd { namespace ext
                           , bd::target_<bs::pack_<bd::integer_<Target>,bs::avx_>>
                           )
   {
-    using target = typename Target::type;
-    BOOST_FORCEINLINE target operator()(A0 const& a0, Target const&) const
+    BOOST_FORCEINLINE
+    typename Target::type operator()(A0 const& a0, Target const&) const BOOST_NOEXCEPT
     {
       return _mm256_castpd_si256(a0);
     }
@@ -60,8 +59,8 @@ namespace boost { namespace simd { namespace ext
                           , bd::target_<bs::pack_<bd::single_<Target>,bs::avx_>>
                           )
   {
-    using target = typename Target::type;
-    BOOST_FORCEINLINE target operator()(A0 const& a0, Target const&) const
+    BOOST_FORCEINLINE
+    typename Target::type operator()(A0 const& a0, Target const&) const BOOST_NOEXCEPT
     {
       return _mm256_castsi256_ps(a0);
     }
@@ -76,8 +75,8 @@ namespace boost { namespace simd { namespace ext
                           , bd::target_<bs::pack_<bd::double_<Target>,bs::avx_>>
                           )
   {
-    using target = typename Target::type;
-    BOOST_FORCEINLINE target operator()(A0 const& a0, Target const&) const
+    BOOST_FORCEINLINE
+    typename Target::type operator()(A0 const& a0, Target const&) const BOOST_NOEXCEPT
     {
       return _mm256_castsi256_pd(a0);
     }

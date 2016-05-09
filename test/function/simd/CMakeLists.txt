@@ -163,7 +163,7 @@ logical_notor.cpp
 logical_or.cpp
 logical_ornot.cpp
 logical_xor.cpp
-lookup.cpp
+#lookup.cpp
 majority.cpp
 mantissa.cpp
 max.cpp
@@ -186,8 +186,6 @@ negate.cpp
 negatenz.cpp
 negif.cpp
 negifnot.cpp
-#neg.cpp
-neg_s.cpp
 nextafter.cpp
 next.cpp
 nthroot.cpp
@@ -209,6 +207,7 @@ reversebits.cpp
 reverse.cpp
 round.cpp
 round2even.cpp
+rsqrt.cpp
 safe_max.cpp
 safe_min.cpp
 seladd.cpp
@@ -220,7 +219,7 @@ shift_right.cpp
 sign.cpp
 significants.cpp
 signnz.cpp
-sort.cpp
+#sort.cpp
 sqr_abs.cpp
 sqr.cpp
 sqr_s.cpp
@@ -292,7 +291,6 @@ unary_plus.cpp
 ####rem_pio2_straight.cpp
 ####repeat_lower_half.cpp
 ####repeat_upper_half.cpp
-####rsqrt.cpp
 )
 
 make_unit( "function.simd"  ${SOURCES})

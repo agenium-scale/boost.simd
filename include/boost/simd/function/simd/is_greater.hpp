@@ -27,10 +27,10 @@
 #    include <boost/simd/arch/x86/sse4_2/simd/function/is_greater.hpp>
 #  endif
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_AVX_VERSION
-// #    include <boost/simd/arch/x86/avx/simd/function/is_greater.hpp>
+#    include <boost/simd/arch/x86/avx/simd/function/is_greater.hpp>
 #  endif
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_AVX2_VERSION
-// #    include <boost/simd/arch/x86/avx2/simd/function/is_greater.hpp>
+#    include <boost/simd/arch/x86/avx2/simd/function/is_greater.hpp>
 #  endif
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_XOP_VERSION
 // #    include <boost/simd/arch/x86/xop/simd/function/is_greater.hpp>

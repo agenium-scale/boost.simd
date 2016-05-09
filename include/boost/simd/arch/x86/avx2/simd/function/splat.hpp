@@ -1,19 +1,16 @@
 //==================================================================================================
-/*!
-  @file
-
-  @copyright 2016 NumScale SAS
+/**
+  Copyright 2016 NumScale SAS
+  Copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_X86_AVX2_SIMD_FUNCTION_SPLAT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_AVX2_SIMD_FUNCTION_SPLAT_HPP_INCLUDED
 
-#include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/config.hpp>
+#include <boost/simd/detail/overload.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -25,7 +22,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( splat_
                           , (typename Target, typename Value)
                           , bs::avx2_
-                          , bd::scalar_< bd::unspecified_<Value> >
+                          , bd::scalar_<bd::unspecified_<Value>>
                           , bd::target_<bs::pack_<bd::ints8_<Target>,bs::avx_>>
                           )
   {
@@ -42,7 +39,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( splat_
                           , (typename Target, typename Value)
                           , bs::avx2_
-                          , bd::scalar_< bd::unspecified_<Value> >
+                          , bd::scalar_<bd::unspecified_<Value>>
                           , bd::target_<bs::pack_<bd::ints16_<Target>,bs::avx_>>
                           )
   {
@@ -59,7 +56,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( splat_
                           , (typename Target, typename Value)
                           , bs::avx2_
-                          , bd::scalar_< bd::unspecified_<Value> >
+                          , bd::scalar_<bd::unspecified_<Value>>
                           , bd::target_<bs::pack_<bd::ints32_<Target>,bs::avx_>>
                           )
   {
@@ -76,7 +73,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( splat_
                           , (typename Target, typename Value)
                           , bs::avx2_
-                          , bd::scalar_< bd::unspecified_<Value> >
+                          , bd::scalar_<bd::unspecified_<Value>>
                           , bd::target_<bs::pack_<bd::ints64_<Target>,bs::avx_>>
                           )
   {
