@@ -28,6 +28,10 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_< bd::unspecified_<T>, X >
                           )
   {
+    static_assert ( T::static_size >= 2
+                  , "interleave_first requires at least two elements"
+                  );
+
     template<typename N, typename V>
     static BOOST_FORCEINLINE
     typename V::value_type value(V const& x, V const&, std::true_type const&)

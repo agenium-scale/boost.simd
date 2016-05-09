@@ -44,7 +44,7 @@ void test(Env& $, std::true_type const& = {})
 STF_CASE_TPL("Check deinterleave_second on pack" , STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
-  test<T, N>($, brigand::bool_<(N>1)>());
+  test<T, N  >($, brigand::bool_<(N>1)>());
   test<T, N/2>($, brigand::bool_<(N>2)>());
   test<T, N*2>($);
 }

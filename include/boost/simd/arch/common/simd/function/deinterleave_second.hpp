@@ -27,6 +27,10 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_< bd::unspecified_<T>, X >
                           )
   {
+    static_assert ( T::static_size >= 2
+                  , "deinterleave_second requires at least two elements"
+                  );
+
     template<typename K, typename... N> static BOOST_FORCEINLINE
     T do_( T const& x, T const& y, K const&, br::list<N...> const&) BOOST_NOEXCEPT
     {
