@@ -32,11 +32,11 @@ void test(Env& $)
      a2[i] = (i%2) ? T(i+N) :T(-(i+2*N*bs::Eps<T>()));
      std::tie(r1[i], r2[i]) = bs::two_prod(a1[i], a2[i]);
    }
-  p_t aa1(&a1[0], &a1[N]);
-  p_t aa2(&a2[0], &a2[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t aa2(&a2[0], &a2[0]+N);
   p_t rr21, rr22;
-  p_t rr1(&r1[0], &r1[N]);
-  p_t rr2(&r2[0], &r2[N]);
+  p_t rr1(&r1[0], &r1[0]+N);
+  p_t rr2(&r2[0], &r2[0]+N);
   std::tie(rr21, rr22) = bs::two_prod(aa1, aa2);
   STF_IEEE_EQUAL(rr21, rr1);
   STF_IEEE_EQUAL(rr22, rr2);

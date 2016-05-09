@@ -32,9 +32,9 @@ void test(Env& $)
      b[i] = bs::fast_(bs::iround2even)(a1[i]);
      c[i] = bs::iround2even(a1[i]);
    }
-  p_t aa1(&a1[0], &a1[N]);
-  pi_t bb(&b[0], &b[N]);
-  pi_t cc(&c[0], &c[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  pi_t bb(&b[0], &b[0]+N);
+  pi_t cc(&c[0], &c[0]+N);
   STF_EQUAL(bs::fast_(bs::iround2even)(aa1), bb);
   STF_EQUAL(bs::iround2even(aa1), cc);
 }

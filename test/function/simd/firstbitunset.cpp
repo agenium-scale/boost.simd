@@ -31,8 +31,8 @@ void test(Env& $)
      a1[i] = T(i+1);
      b[i] = bs::firstbitunset(a1[i]);
    }
-  p_t aa1(&a1[0], &a1[N]);
-  pi_t bb(&b[0], &b[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  pi_t bb(&b[0], &b[0]+N);
   STF_EQUAL(bs::firstbitunset(aa1), bb);
 }
 

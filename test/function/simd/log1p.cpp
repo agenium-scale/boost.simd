@@ -29,9 +29,9 @@ void test(Env& $)
     b[i] = bs::log1p(a1[i]) ;
     c[i] = bs::std_(bs::log1p)(a1[i]) ;
   }
-  p_t aa1(&a1[0], &a1[N]);
-  p_t bb (&b[0], &b[N]);
-  p_t cc (&c[0], &c[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t bb (&b[0], &b[0]+N);
+  p_t cc (&c[0], &c[0]+N);
   STF_IEEE_EQUAL(bs::log1p(aa1), bb);
   STF_IEEE_EQUAL(bs::std_(bs::log1p)(aa1), cc);
 }

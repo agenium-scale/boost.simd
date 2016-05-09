@@ -27,8 +27,8 @@ void pre_test(Env& $)
     b[i] = a1[i] + T(1);
   }
 
-  p_t aa1(&a1[0], &a1[N]), aa2;
-  p_t bb(&b[0], &b[N]);
+  p_t aa1(&a1[0], &a1[0]+N), aa2;
+  p_t bb(&b[0], &b[0]+N);
 
   aa2 = ++aa1;
   STF_EQUAL(aa2, bb);
@@ -56,8 +56,8 @@ void post_test(Env& $)
     b[i] = a1[i] + T(1);
   }
 
-  p_t aa1(&a1[0], &a1[N]), prev(aa1), aa2;
-  p_t bb(&b[0], &b[N]);
+  p_t aa1(&a1[0], &a1[0]+N), prev(aa1), aa2;
+  p_t bb(&b[0], &b[0]+N);
 
   aa2 = aa1++;
   STF_EQUAL(aa2, prev);
@@ -85,8 +85,8 @@ void tests(Env& $)
     b[i] = bs::inc(a1[i]) ;
   }
 
-  p_t aa1(&a1[0], &a1[N]);
-  p_t bb (&b[0], &b[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t bb (&b[0], &b[0]+N);
 
   STF_EQUAL(bs::saturated_(bs::inc)(aa1), bb);
 }

@@ -28,8 +28,8 @@ void test(Env& $)
      a1[i] = (i%2) ? T(i) : T(-i);
      b[i] = bs::is_even(a1[i]);
    }
-  p_t aa1(&a1[0], &a1[N]);
-  pl_t bb(&b[0], &b[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  pl_t bb(&b[0], &b[0]+N);
   STF_IEEE_EQUAL(bs::is_even(aa1), bb);
 }
 

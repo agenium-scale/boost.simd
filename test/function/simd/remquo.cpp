@@ -33,11 +33,11 @@ void test(Env& $)
      a2[i] = (i%2) ? T(i+N) : T(-(i+N));
      std::tie(m[i], e[i]) = bs::remquo(a1[i], a2[i]);
    }
-  p_t aa1(&a1[0], &a1[N]);
-  p_t aa2(&a2[0], &a2[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t aa2(&a2[0], &a2[0]+N);
   i_t ee1;
-  p_t mm(&m[0], &m[N]);
-  i_t ee(&e[0], &e[N]);
+  p_t mm(&m[0], &m[0]+N);
+  i_t ee(&e[0], &e[0]+N);
   p_t mm1;
   std::tie(mm1, ee1) = bs::remquo(aa1, aa2);
   STF_IEEE_EQUAL(mm1, mm);

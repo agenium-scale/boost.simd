@@ -31,7 +31,7 @@ void test(Env& $)
     a1[i] = -1; //(i%2) ? T(i) : T(-i);
     r |= (bs::bits(a1[i]) >> (sizeof(T)*8 - 1)) << i;
   }
-  p_t aa1(&a1[0], &a1[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
   STF_EQUAL(bs::hmsb(aa1), r);
 }
 

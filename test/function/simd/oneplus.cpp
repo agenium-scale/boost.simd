@@ -27,8 +27,8 @@ void test(Env& $)
     b[i] = bs::oneplus(a1[i]) ;
   }
 
-  p_t aa1(&a1[0], &a1[N]);
-  p_t bb (&b[0], &b[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t bb (&b[0], &b[0]+N);
 
   STF_EQUAL(bs::oneplus(aa1), bb);
 }
@@ -54,8 +54,8 @@ void tests(Env& $)
     b[i] = bs::oneplus(a1[i]) ;
   }
 
-  p_t aa1(&a1[0], &a1[N]);
-  p_t bb (&b[0], &b[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t bb (&b[0], &b[0]+N);
 
   STF_EQUAL(bs::saturated_(bs::oneplus)(aa1), bb);
 }

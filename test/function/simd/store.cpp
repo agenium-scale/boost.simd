@@ -25,7 +25,7 @@ void test(Env& $)
     a2[i] = T(0);
   }
 
-  p_t aa1(&a1[0], &a1[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
   bs::store(aa1, &a2[0]);
 
   for(std::size_t i=0; i <N ; ++i)

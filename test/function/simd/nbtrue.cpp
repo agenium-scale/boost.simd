@@ -30,7 +30,7 @@ void test(Env& $)
      a1[i] = (i%2) ? T(i) : T(-i);
      r += a1[i] != T(0);
    }
-  p_t aa1(&a1[0], &a1[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
   STF_IEEE_EQUAL(bs::nbtrue(aa1), r);
 }
 
