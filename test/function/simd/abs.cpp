@@ -29,9 +29,9 @@ void test(Env& $)
     c[i] = bs::std_(bs::abs)(a1[i]);
   }
 
-  p_t aa1(&a1[0], &a1[N]);
-  p_t bb (&b[0], &b[N]);
-  p_t cc (&c[0], &c[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t bb (&b[0], &b[0]+N);
+  p_t cc (&c[0], &c[0]+N);
   STF_EQUAL(bs::abs(aa1), bb);
   STF_EQUAL(bs::std_(bs::abs)(aa1), cc);
 }
@@ -57,8 +57,8 @@ void tests(Env& $)
     b[i] = bs::abs(a1[i]) ;
   }
 
-  p_t aa1(&a1[0], &a1[N]);
-  p_t bb (&b[0], &b[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t bb (&b[0], &b[0]+N);
 
   STF_EQUAL(bs::saturated_(bs::abs)(aa1), bb);
 }

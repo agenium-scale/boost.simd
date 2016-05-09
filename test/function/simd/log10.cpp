@@ -29,9 +29,9 @@ void test(Env& $)
     b[i] = bs::log10(a1[i]) ;
     c[i] = bs::std_(bs::log10)(a1[i]) ;
   }
-  p_t aa1(&a1[0], &a1[N]);
-  p_t bb (&b[0], &b[N]);
-  p_t cc (&c[0], &c[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t bb (&b[0], &b[0]+N);
+  p_t cc (&c[0], &c[0]+N);
   std::cout << "aa1 " << aa1 << std::endl;
   STF_ULP_EQUAL(bb, cc, 0.5);
   STF_IEEE_EQUAL(bs::log10(aa1), bb);

@@ -27,8 +27,8 @@ void test(Env& $)
     a1[i] = (i%2) ? T(i) : T(-i);
     a2[i] = (i%2) ? T(i+1) : T(-i);
   }
-  p_t aa1(&a1[0], &a1[N]);
-  p_t aa2(&a2[0], &a2[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t aa2(&a2[0], &a2[0]+N);
   STF_EXPECT(bs::compare_less_equal(aa1, aa1));
   STF_EXPECT(!bs::compare_less_equal(aa2, aa1));
 }

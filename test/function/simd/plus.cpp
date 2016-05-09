@@ -31,9 +31,9 @@ void test(Env& $)
     b[i] = bs::plus(a1[i], a2[i]);
   }
 
-  p_t aa1(&a1[0], &a1[N]);
-  p_t aa2(&a2[0], &a2[N]);
-  p_t bb(&b[0], &b[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t aa2(&a2[0], &a2[0]+N);
+  p_t bb(&b[0], &b[0]+N);
 
   STF_IEEE_EQUAL(bs::plus(aa1, aa2), bb);
   STF_IEEE_EQUAL(aa1+aa2, bb);
@@ -62,9 +62,9 @@ void tests(Env& $)
     a2[i] = (i%2) ? T(i+N) : T(-(i+N));
     b[i] = bs::saturated_(bs::plus)(a1[i], a2[i]);
   }
-  p_t aa1(&a1[0], &a1[N]);
-  p_t aa2(&a2[0], &a2[N]);
-  p_t bb(&b[0], &b[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t aa2(&a2[0], &a2[0]+N);
+  p_t bb(&b[0], &b[0]+N);
   STF_IEEE_EQUAL(bs::saturated_(bs::plus)(aa1, aa2), bb);
 
 }

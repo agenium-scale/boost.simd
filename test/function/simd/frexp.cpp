@@ -37,17 +37,17 @@ void test(Env& $)
      std::tie(m[i], e[i]) = bs::frexp(a1[i]);
      std::tie(mf[i], ef[i])= bs::fast_(bs::frexp)(a1[i]);
    }
-  p_t aa1(&a1[0], &a1[N]);
-  p_t mm(&m[0], &m[N]);
-  i_t ee(&e[0], &e[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t mm(&m[0], &m[0]+N);
+  i_t ee(&e[0], &e[0]+N);
   i_t ee1, eef;
   p_t mm1, mmf;
   std::tie(mm1, ee1) = bs::frexp(aa1);
   STF_IEEE_EQUAL(mm1, mm);
   STF_IEEE_EQUAL(ee1, ee);
   std::tie(mmf, eef) = bs::fast_(bs::frexp)(aa1);
-  p_t mmf1(&mf[0], &mf[N]);
-  i_t eef1(&ef[0], &ef[N]);
+  p_t mmf1(&mf[0], &mf[0]+N);
+  i_t eef1(&ef[0], &ef[0]+N);
   STF_IEEE_EQUAL(mmf, mmf1);
   STF_IEEE_EQUAL(eef, eef1);
 }

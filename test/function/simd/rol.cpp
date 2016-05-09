@@ -31,10 +31,10 @@ void test(Env& $)
      c[i] = bs::rol(a1[i], N/2);
      d[i] = bs::rol(a1[i], N-1);
    }
-  p_t aa1(&a1[0], &a1[N]);
-  p_t bb(&b[0], &b[N]);
-  p_t cc(&c[0], &c[N]);
-  p_t dd(&d[0], &d[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t bb(&b[0], &b[0]+N);
+  p_t cc(&c[0], &c[0]+N);
+  p_t dd(&d[0], &d[0]+N);
   STF_IEEE_EQUAL(bs::rol(aa1, 1), bb);
   STF_IEEE_EQUAL(bs::rol(aa1, N/2), cc);
   STF_IEEE_EQUAL(bs::rol(aa1, N-1), dd);

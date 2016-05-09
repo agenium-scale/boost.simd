@@ -25,8 +25,8 @@ void test_fast(Env& $)
     a1[i] = (i%2) ? T(2*i) : T(2*i+1);
     b[i] = bs::fast_(bs::rsqrt)(a1[i]) ;
   }
-  p_t aa1(&a1[0], &a1[N]);
-  p_t bb (&b[0], &b[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t bb (&b[0], &b[0]+N);
 
   STF_ULP_EQUAL(bs::fast_(bs::rsqrt)(aa1), bb, 100);
 }
@@ -52,8 +52,8 @@ void test(Env& $)
     a1[i] = (i%2) ? T(2*i) : T(2*i+1);
     b[i]  = bs::rsqrt(a1[i]) ;
   }
-  p_t aa1(&a1[0], &a1[N]);
-  p_t bb (&b[0], &b[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t bb (&b[0], &b[0]+N);
 
   STF_ULP_EQUAL(bs::rsqrt(aa1), bb, 0);
 }

@@ -34,9 +34,9 @@ void test(Env& $, std::true_type const& = {})
     b[i] = (i%2) ? a2[2*(i/2)] : a1[2*(i/2)];
   }
 
-  p_t aa1(&a1[0], &a1[N]);
-  p_t aa2(&a2[0], &a2[N]);
-  p_t bb(&b[0], &b[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t aa2(&a2[0], &a2[0]+N);
+  p_t bb(&b[0], &b[0]+N);
 
   STF_EQUAL(bs::interleave_even(aa1, aa2), bb);
 }

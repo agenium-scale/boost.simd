@@ -32,10 +32,10 @@ void test(Env& $)
      a1[i] = (i%2) ? T(i) : T(-i);
      e[i] = bs::rem_pio2(a1[i], m[i]);
    }
-  p_t aa1(&a1[0], &a1[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
   p_t mm1;
-  p_t mm(&m[0], &m[N]);
-  i_t ee(&e[0], &e[N]);
+  p_t mm(&m[0], &m[0]+N);
+  i_t ee(&e[0], &e[0]+N);
   STF_IEEE_EQUAL(bs::rem_pio2(aa1, mm1), ee);
   STF_IEEE_EQUAL(mm1, mm);
 }
