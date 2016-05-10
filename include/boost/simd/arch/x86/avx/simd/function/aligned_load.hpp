@@ -14,6 +14,11 @@
 #include <boost/align/is_aligned.hpp>
 #include <boost/assert.hpp>
 
+#ifdef BOOST_MSVC
+  #pragma warning(push)
+  #pragma warning(disable: 4308) // signed/unsigned conversion
+#endif
+
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = ::boost::dispatch;
@@ -59,6 +64,41 @@ namespace boost { namespace simd { namespace ext
       return _mm256_load_ps(p);
     }
   };
+
+  //------------------------------------------------------------------------------------------------
+  // load from an aligned pointer of whatever with a misalignment
+  BOOST_DISPATCH_OVERLOAD_IF( aligned_load_
+                            , (typename Target, typename Pointer, typename Misalignment)
+                            , (bs::is_pointing_to<Pointer,typename Target::type::value_type>)
+                            , bs::avx_
+                            , bd::pointer_<bd::scalar_<bd::arithmetic_<Pointer>>,1u>
+                            , bd::constant_< bd::integer_<Misalignment>>
+                            , bd::target_<bs::pack_<bd::arithmetic_<Target>,bs::avx_>>
+                            )
+  {
+    using target  = typename Target::type;
+    static const std::size_t                        card = target::static_size;
+    static const typename Misalignment::value_type  unalignment = Misalignment::value % card;
+
+    BOOST_FORCEINLINE target operator() ( Pointer p, Misalignment const&, Target const& ) const
+    {
+      return do_(p, brigand::bool_<unalignment != 0>());
+    }
+
+    BOOST_FORCEINLINE target do_( Pointer p, std::true_type const& ) const
+    {
+      return load<target>(p);
+    }
+
+    BOOST_FORCEINLINE target do_( Pointer p, std::false_type const& ) const
+    {
+      return aligned_load<target>(p);
+    }
+  };
 } } }
+
+#ifdef BOOST_MSVC
+  #pragma warning(pop)
+#endif
 
 #endif
