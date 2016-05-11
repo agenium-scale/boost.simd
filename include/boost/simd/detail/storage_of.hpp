@@ -84,10 +84,17 @@ namespace boost { namespace simd { namespace detail
         : storage_of<Type,Cardinal, typename limits<ABI>::parent>
   {};
 
-  // If the cardinal requested is lower than the expected one and no extension fits,
-  // then use an array of scalar.
+  // If the cardinal requested is lower than the expected one then use an array of scalar.
   template< typename Type, std::size_t Cardinal>
   struct storage_of<Type,Cardinal,boost::simd::simd_,emulated_status>
+  {
+    using type = std::array<Type,Cardinal>;
+  };
+
+  // If the cardinal requested is OK but type is unsupported by this extension,
+  // then use an array of scalar.
+  template< typename Type, std::size_t Cardinal>
+  struct storage_of<Type,Cardinal,boost::simd::simd_,native_status>
   {
     using type = std::array<Type,Cardinal>;
   };
