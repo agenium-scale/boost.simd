@@ -23,7 +23,7 @@ namespace boost { namespace simd
 {
   namespace tag
   {
-    BOOST_DISPATCH_MAKE_TAG(ext, splat_, boost::dispatch::elementwise_<splat_>);
+    BOOST_DISPATCH_MAKE_TAG(ext, splat_, boost::dispatch::abstract_<splat_>);
   }
 
   namespace ext
@@ -36,7 +36,7 @@ namespace boost { namespace simd
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::splat_,splat);
   }
 
-  template<typename T, typename A>  BOOST_FORCEINLINE T splat(const A& a) BOOST_NOEXCEPT
+  template<typename T, typename A> BOOST_FORCEINLINE T splat(const A& a) BOOST_NOEXCEPT
   {
     return detail::splat(a, as_<T>());
   }

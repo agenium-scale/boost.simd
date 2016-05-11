@@ -27,7 +27,7 @@ void test(Env& $)
 
   p_t aa1(&a1[0], &a1[N]);
   p_t bb (&b[0], &b[N]);
-  STF_EQUAL(bs::atanh(aa1), bb);
+  STF_ULP_EQUAL(bs::atanh(aa1), bb, 0.5);
 }
 
 STF_CASE_TPL("Check atanh on pack" , STF_IEEE_TYPES)

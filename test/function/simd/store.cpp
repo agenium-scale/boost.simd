@@ -25,7 +25,7 @@ void test(Env& $)
   }
 
   p_t aa1(&a1[0], &a1[0]+N);
-  bs::store(aa1, &a2[0]);
+  bs::store(aa1, &a2[3]);
 
   STF_ALL_EQUAL(a1, a2);
 }

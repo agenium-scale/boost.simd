@@ -1,23 +1,19 @@
 //==================================================================================================
-/*!
-  @file
-
-  @copyright 2016 NumScale SAS
+/**
+  Cpyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_NBTRUE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_NBTRUE_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/scalar/is_nez.hpp>
+#include <boost/simd/function/is_nez.hpp>
+#include <boost/simd/function/extract.hpp>
+#include <boost/simd/function/slice.hpp>
 #include <boost/simd/function/scalar/if_one_else_zero.hpp>
-#include <boost/simd/detail/dispatch/function/overload.hpp>
-#include <boost/config.hpp>
-
 
 namespace boost { namespace simd { namespace ext
 {
@@ -25,18 +21,17 @@ namespace boost { namespace simd { namespace ext
   namespace bs = ::boost::simd;
 
   BOOST_DISPATCH_OVERLOAD ( nbtrue_
-                          , (typename A0)
+                          , (typename A0, typename X)
                           , bs::simd_
-                          , bs::pack_<bd::fundamental_<A0>,bs::simd_emulation_>
+                          , bs::pack_<bd::fundamental_<A0>,X>
                           )
   {
     BOOST_FORCEINLINE std::size_t operator()(A0 const& a0) const BOOST_NOEXCEPT
     {
-      std::size_t n = 0;
-      for(size_t i=0; i < A0::static_size; ++i) n += is_nez(a0[i]);
-      return n;
+      return nbtrue(is_nez(a0));
     }
   };
+
   BOOST_DISPATCH_OVERLOAD ( nbtrue_
                           , (typename A0, typename X)
                           , bs::simd_
@@ -45,12 +40,30 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE std::size_t operator()(A0 const& a0) const BOOST_NOEXCEPT
     {
-      std::size_t n = 0;
-      for(size_t i=0; i < A0::static_size; ++i) n += if_one_else_zero(a0[i]);
-      return n;
+      return do_( a0, typename A0::storage_kind(), typename A0::traits::static_range{});
+    }
+
+    // Aggregate case: add the nbtrue of both sides
+    template<typename... N> static BOOST_FORCEINLINE
+    std::size_t do_(A0 const& a0, aggregate_storage const&, brigand::list<N...> const&) BOOST_NOEXCEPT
+    {
+      return nbtrue(slice_low(a0)) + nbtrue(slice_high(a0));
+    }
+
+    // Other case: Compute nbtrue piecewise
+    template<typename K, typename... N> static BOOST_FORCEINLINE
+    std::size_t do_(A0 const& a0, K const&, brigand::list<N...> const&) BOOST_NOEXCEPT
+    {
+      std::size_t that = 0;
+
+      (void)std::initializer_list<std::size_t>
+      {
+        (that += if_one_else_zero(bs::extract<N::value>(a0)))...
+      };
+
+      return that;
     }
   };
-
 } } }
 
 #endif

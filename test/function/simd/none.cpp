@@ -25,8 +25,8 @@ void test(Env& $)
   bs::logical<T> b = true,  c = true;
   for(std::size_t i = 0; i < N; ++i)
   {
-    a1[i] = T(0);
-    a2[i] = (i%2) ? T(0) : T(i+1);
+    a1[i] = (i%2) ? T(i) : T(-i);
+    a2[i] = (i%2) ? T(i+1) : T(-i*2+1);
     b = b && a1[i] == 0;
     c = c && a2[i] == 0;
   }

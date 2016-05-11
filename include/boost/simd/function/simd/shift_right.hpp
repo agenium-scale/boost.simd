@@ -27,7 +27,7 @@
 
 #if defined(BOOST_HW_SIMD_PPC)
 #  if BOOST_HW_SIMD_PPC >= BOOST_HW_SIMD_PPC_VMX_VERSION
-// #    include <boost/simd/arch/power/vmx/simd/function/shift_right.hpp>
+#    include <boost/simd/arch/ppc/vmx/simd/function/shift_right.hpp>
 #  endif
 #endif
 

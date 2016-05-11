@@ -1,56 +1,36 @@
 //==================================================================================================
-/*!
-  @file
-
-  @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
+/**
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ANY_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ANY_HPP_INCLUDED
-#include <boost/simd/detail/overload.hpp>
 
-#include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/logical.hpp>
-#include <boost/simd/meta/as_logical.hpp>
+#include <boost/simd/detail/overload.hpp>
+#include <boost/simd/detail/traits.hpp>
 #include <boost/simd/function/simd/genmask.hpp>
 #include <boost/simd/function/simd/hmsb.hpp>
-#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
-   namespace bd = boost::dispatch;
-   namespace bs = boost::simd;
-   BOOST_DISPATCH_OVERLOAD(any_
-                          , (typename A0, typename X)
-                          , bd::cpu_
-                          , bs::pack_<bd::arithmetic_<A0>, X>
-                          )
-   {
-     using sA0 =  bd::scalar_of_t<A0>;
-     using result =bs::as_logical_t<sA0>;
-      BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
-      {
-        return result(hmsb(genmask(a0)) != 0);
-      }
-   };
-   BOOST_DISPATCH_OVERLOAD(any_
-                          , (typename A0, typename X)
-                          , bd::cpu_
-                          , bs::pack_<bs::logical_<A0>, X>
-                          )
-   {
-     using result =  bd::scalar_of_t<A0>;
-      BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
-      {
-        return result(hmsb(genmask(a0)) != 0);
-      }
-   };
+  namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
 
+  BOOST_DISPATCH_OVERLOAD_IF( any_
+                            , (typename A0, typename X)
+                            , (detail::is_native<X>)
+                            , bd::cpu_
+                            , bs::pack_<bd::fundamental_<A0>, X>
+                            )
+  {
+    BOOST_FORCEINLINE bool operator()( const A0& a0) const BOOST_NOEXCEPT
+    {
+      return hmsb(genmask(a0)) != 0;
+    }
+  };
 } } }
 
 #endif
-
