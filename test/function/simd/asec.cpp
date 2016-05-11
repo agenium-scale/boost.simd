@@ -29,10 +29,10 @@ void test(Env& $)
     c[i] = bs::asec(a2[i]);
   }
 
-  p_t aa1(&a1[0], &a1[N]);
-  p_t aa2(&a2[0], &a2[N]);
-  p_t bb (&b[0], &b[N]);
-  p_t cc (&c[0], &c[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t aa2(&a2[0], &a2[0]+N);
+  p_t bb (&b[0], &b[0]+N);
+  p_t cc (&c[0], &c[0]+N);
   STF_ULP_EQUAL(bs::asec(aa1), bb, 1);
   STF_ULP_EQUAL(bs::asec(aa2), cc, 1);
 }
