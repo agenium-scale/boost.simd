@@ -23,13 +23,13 @@ void test(Env& $)
   T a1[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
-    a1[i] = i%2 ?T(i)/N : -T(i)/N;
+    a1[i] = i%2 ?T(i)/N : -T(i)/N ;
     b[i] = bs::acos(a1[i]);
   }
 
   p_t aa1(&a1[0], &a1[N]);
   p_t bb (&b[0], &b[N]);
-  STF_EQUAL(bs::acos(aa1), bb);
+  STF_ULP_EQUAL(bs::acos(aa1), bb, 0.5);
 }
 
 STF_CASE_TPL("Check acos on pack" , STF_IEEE_TYPES)

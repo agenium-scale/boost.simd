@@ -36,7 +36,6 @@ void test(Env& $)
 
    }
   p_t aa1(&a1[0], &a1[0]+N);
-  p_t mm1;
   p_t mm(&m[0], &m[0]+N);
   i_t ee(&e[0], &e[0]+N);
   p_t xx(&x[0], &x[0]+N);
@@ -53,6 +52,6 @@ STF_CASE_TPL("Check rem_pio2 on pack" , STF_IEEE_TYPES)
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
-//  test<T, N/2>($);
-//  test<T, Nx2>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }
