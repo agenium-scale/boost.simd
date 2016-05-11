@@ -2,7 +2,7 @@
 /*!
   @file
 
-  Aggregates SIMD extension tags for PowerPC
+  Aggregate SIMD numerical and type limits for PPC
 
   @copyright 2012 - 2015 NumScale SAS
 
@@ -11,9 +11,9 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_POWER_TAGS_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_POWER_TAGS_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_PPC_LIMITS_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_PPC_LIMITS_HPP_INCLUDED
 
-#include <boost/simd/arch/power/vmx/tags.hpp>
+#include <boost/simd/arch/ppc/vmx/limits.hpp>
 
 #endif

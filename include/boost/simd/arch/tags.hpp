@@ -16,7 +16,7 @@
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/arch/common/tags.hpp>
-#include <boost/simd/arch/power/tags.hpp>
+#include <boost/simd/arch/ppc/tags.hpp>
 #include <boost/simd/arch/x86/tags.hpp>
 #endif
 

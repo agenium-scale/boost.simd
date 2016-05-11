@@ -11,10 +11,10 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_POWER_VMX_LIMITS_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_POWER_VMX_LIMITS_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_PPC_VMX_LIMITS_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_PPC_VMX_LIMITS_HPP_INCLUDED
 
-#include <boost/simd/arch/power/tags.hpp>
+#include <boost/simd/arch/ppc/tags.hpp>
 #include <boost/simd/arch/common/limits.hpp>
 #include <boost/simd/detail/dispatch/meta/make_integer.hpp>
 #include <boost/simd/detail/brigand.hpp>

@@ -2,18 +2,18 @@
 /*!
   @file
 
-  Gather informations for PowerPC SIMD extensions
+  Aggregates SIMD extension tags for PowerPC
 
-  @copyright 2016 NumScale SAS
+  @copyright 2012 - 2015 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_POWER_SPEC_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_POWER_SPEC_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_PPC_TAGS_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_PPC_TAGS_HPP_INCLUDED
 
-#include <boost/simd/arch/power/vmx/spec.hpp>
+#include <boost/simd/arch/power/vmx/tags.hpp>
 
 #endif

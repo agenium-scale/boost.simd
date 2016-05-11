@@ -11,24 +11,32 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_POWER_VMX_DETAIL_AS_SIMD_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_POWER_VMX_DETAIL_AS_SIMD_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_PPC_VMX_AS_SIMD_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_PPC_VMX_AS_SIMD_HPP_INCLUDED
 
-#include <boost/simd/arch/common/simd/detail/as_simd.hpp>
-#include <boost/simd/detail/dispatch/meta/introspection/is_natural.hpp>
-#include <boost/simd/detail/dispatch/meta/introspection/sign_of.hpp>
+#include <boost/simd/arch/ppc/tags.hpp>
+#include <boost/simd/arch/common/simd/as_simd.hpp>
+#include <boost/simd/detail/dispatch/meta/is_natural.hpp>
+#include <boost/simd/detail/dispatch/meta/sign_of.hpp>
 #include <boost/simd/detail/brigand.hpp>
 
 namespace boost { namespace simd
 {
   template<typename T> struct logical;
 
-  namespace detail
+  namespace ext
   {
     template<> struct as_simd<float, boost::simd::vmx_>
     {
       using type = __vector float;
     };
+
+#if BOOST_HW_SIMD_PPC == BOOST_HW_SIMD_PPC_VSX_VERSION
+    template<> struct as_simd<double, boost::simd::vmx_>
+    {
+      using type = __vector double;
+    };
+#endif
 
     template<typename T>
     struct as_simd<logical<T>, boost::simd::vmx_>
@@ -36,6 +44,9 @@ namespace boost { namespace simd
       using t2b = brigand::map< brigand::pair<brigand::int32_t<1>,__vector __bool char  >
                               , brigand::pair<brigand::int32_t<2>,__vector __bool short >
                               , brigand::pair<brigand::int32_t<4>,__vector __bool int   >
+#if BOOST_HW_SIMD_PPC == BOOST_HW_SIMD_PPC_VSX_VERSION
+                              , brigand::pair<brigand::int32_t<8>,__vector __bool long  >
+#endif
                               >;
 
       using type = brigand::at<t2b, brigand::int32_t<sizeof(T)>>;
@@ -49,25 +60,33 @@ namespace boost { namespace simd
       using t2b = brigand::map< brigand::pair < brigand::list<brigand::int32_t<1>,signed>
                                               , __vector signed char
                                               >
-                              , brigand::pair < brigand::list<brigand::int32_t<2>,signed>
-                                              , __vector signed short
-                                              >
-                              , brigand::pair < brigand::list<brigand::int32_t<4>,signed>
-                                              , __vector signed int
-                                              >
                               , brigand::pair < brigand::list<brigand::int32_t<1>,unsigned>
                                               , __vector unsigned char
+                                              >
+                              , brigand::pair < brigand::list<brigand::int32_t<2>,signed>
+                                              , __vector signed short
                                               >
                               , brigand::pair < brigand::list<brigand::int32_t<2>,unsigned>
                                               , __vector unsigned short
                                               >
+                              , brigand::pair < brigand::list<brigand::int32_t<4>,signed>
+                                              , __vector signed int
+                                              >
                               , brigand::pair < brigand::list<brigand::int32_t<4>,unsigned>
                                               , __vector unsigned int
                                               >
+#if BOOST_HW_SIMD_PPC == BOOST_HW_SIMD_PPC_VSX_VERSION
+                              , brigand::pair < brigand::list<brigand::int32_t<8>,signed>
+                                              , __vector signed long
+                                              >
+                              , brigand::pair < brigand::list<brigand::int32_t<8>,unsigned>
+                                              , __vector unsigned long
+                                              >
+#endif
                               >;
 
       using type = brigand::at< t2b
-                              , brigand::list<brigand::int32_t<sizeof(T)>,boost::dispacth::sign_of<T>>
+                              , brigand::list<brigand::int32_t<sizeof(T)>,boost::dispatch::sign_of<T>>
                               >;
     };
   }
