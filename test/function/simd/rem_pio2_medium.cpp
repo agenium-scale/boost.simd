@@ -29,7 +29,7 @@ void test(Env& $)
   iT e[N];
   for(std::size_t i = 0; i < N; ++i)
   {
-     a1[i] = (i%2) ? T(i) : T(-i);
+    a1[i] = (i%2) ? T(i+N) : -T((i+N));
      std::tie(e[i], m[i]) = bs::rem_pio2_medium(a1[i]);
    }
   p_t aa1(&a1[0], &a1[0]+N);
