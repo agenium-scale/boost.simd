@@ -21,6 +21,7 @@ namespace boost { namespace simd
     These functions provide scalar and SIMD implementations of classical arithmetic operators and
     functions provided by the C and C++ standard library. Other functionality, in particular,
     saturated operations are also provided.
+
   **/
 
   /*!
