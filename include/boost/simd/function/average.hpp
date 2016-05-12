@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -18,7 +17,7 @@ namespace boost { namespace simd
 
  /*!
     @ingroup group-arithmetic
-    Function object implementing average capabilities
+    Function object implementing average
 
     Computes the arithmetic mean of its parameters.
 
@@ -35,9 +34,9 @@ namespace boost { namespace simd
     T r = (x+y)/T(2);
     @endcode
 
-    for integer types  it returns a rounded value at a distance guaranteed
-    less or equal to 0.5 of the average floating value,  but can differ
-    of one unity from the truncation given by (x1+x2)/T(2).
+    for integer types, it returns a rounded value at a distance guaranteed
+    to be less than or equal to 0.5 of the average floating value, but may differ
+    by unity from the truncation given by (x1+x2)/T(2).
 
     @par Note:
 

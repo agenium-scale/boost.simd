@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 J.T.Lapreste
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -17,7 +17,7 @@ namespace boost { namespace simd
   /*!
     @ingroup group-operator
 
-    Perform the quotient of two parameters of the same type with or without options.
+    Calculate the quotient of the two parameters of the same type with or without options.
 
     @par Semantic
 
@@ -27,10 +27,10 @@ namespace boost { namespace simd
     T r = div({option, }a, b);
     @endcode
 
-    returns the quotient of @c a by @c b according to the option
+    returns the quotient of @c a by @c b respecting to the options specified.
 
-    if there is no option the call is equivalent to divides(a, b),  else
-    option can be ceil, floor, fix, round, round2even (in the namespace booost::simd)
+    By default, this functions is equivalent to divides(a, b).
+    Options may be ceil, floor, fix, round, round2even (in the namespace booost::simd)
     and provide the same result as the calls divceil(a, b), divfloor(a, b),
     divfix(a, b), divround(a, b).
 
