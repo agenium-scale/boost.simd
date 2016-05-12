@@ -101,9 +101,6 @@ namespace boost { namespace simd
        -  if x is +/-0 and y is not 0 x is returned
        -  If y is +/-0, Nan is returned
        -  If either argument is NaN, Nan is returned
-
-
-
   **/
 
   /*!
