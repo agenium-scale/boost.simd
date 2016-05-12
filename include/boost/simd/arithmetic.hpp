@@ -144,6 +144,7 @@ namespace boost { namespace simd
 #include <boost/simd/function/minmod.hpp>
 #include <boost/simd/function/mod.hpp>
 #include <boost/simd/function/modulo.hpp>
+#include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/modulus.hpp>
 #include <boost/simd/function/oneminus.hpp>
 #include <boost/simd/function/rec.hpp>
