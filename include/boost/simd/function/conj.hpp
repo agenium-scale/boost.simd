@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -21,7 +20,7 @@ namespace boost { namespace simd
     @ingroup group-arithmetic
     Function object implementing conj capabilities
 
-    Computes the conjugate value of its parameter (identity for reals).
+    Computes the complex conjugate of its parameter
 
     @par semantic:
     For any given value @c x of type @c T:
@@ -30,14 +29,13 @@ namespace boost { namespace simd
     T r = conj(x);
     @endcode
 
-    for real parameters is equivalent to:
+    for a real parameter, this is equivalent to:
 
     @code
     T r = x
     @endcode
 
-    This function is the restriction to real numbers of the complex
-    conj(ugate) function.
+    This function is restricted to real numbers
 
   **/
   const boost::dispatch::functor<tag::conj_> conj = {};
