@@ -41,9 +41,9 @@ namespace boost { namespace simd
     according to the input @ref sign bit,
 
     - arg(x, use_signbit_) always returns \f$+0\f$ or \f$\pi\f$ taking into account the bit of sign
-    even in the Nan case and is a bit speedier.
+    even in the Nan case and is quicker.
 
-    - This function is the restriction to real numbers of the complex
+    - This function is restricted to real numbers of the complex
     arg(ument) function.
 
     - This function is not defined for integral types.

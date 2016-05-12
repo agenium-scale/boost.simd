@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -19,7 +18,7 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-arithmetic
-    Function object implementing dist capabilities
+    Function object implementing dist
 
     Computes the absolute value of the difference of its parameters.
 
@@ -38,7 +37,7 @@ namespace boost { namespace simd
 
     @par Note
 
-    The result can be negative for signed integers as @ref abs(@ref Valmin) is @ref Valmin.
+    The result may be negative for signed integers as @ref abs(@ref Valmin) is @ref Valmin.
     To avoid the problem you can use the saturated version @ref dists.
 
     @see  dists, ulpdist
