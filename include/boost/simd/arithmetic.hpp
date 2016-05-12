@@ -18,9 +18,9 @@ namespace boost { namespace simd
     @ingroup group-functions
     @defgroup group-arithmetic Arithmetic functions
 
-    Those functions provides scalar and SIMD algorithms for classical arithmetic operators and
-    functions provided by the C and C++ standard library. Other functions like, in particular,
-    provision for saturated operations are also provided.
+    These functions provide scalar and SIMD implementations of classical arithmetic operators and
+    functions provided by the C and C++ standard library. Other functionality, in particular,
+    saturated operations are also provided.
 
   **/
 
