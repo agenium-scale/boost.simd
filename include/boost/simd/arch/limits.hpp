@@ -16,7 +16,6 @@
 
 #include <boost/simd/arch/common/limits.hpp>
 #include <boost/simd/arch/power/limits.hpp>
-#include <boost/simd/arch/arm/limits.hpp>
 #include <boost/simd/arch/x86/limits.hpp>
 
 #endif

@@ -14,8 +14,6 @@
 #ifndef BOOST_SIMD_ARCH_POWER_LIMITS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_POWER_LIMITS_HPP_INCLUDED
 
-#include <boost/simd/arch/power/qpx/limits.hpp>
-#include <boost/simd/arch/power/vsx/limits.hpp>
 #include <boost/simd/arch/power/vmx/limits.hpp>
 
 #endif

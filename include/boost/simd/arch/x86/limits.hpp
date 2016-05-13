@@ -14,7 +14,6 @@
 #ifndef BOOST_SIMD_ARCH_X86_LIMITS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_LIMITS_HPP_INCLUDED
 
-#include <boost/simd/arch/x86/mic/limits.hpp>
 #include <boost/simd/arch/x86/avx2/limits.hpp>
 #include <boost/simd/arch/x86/fma3/limits.hpp>
 #include <boost/simd/arch/x86/xop/limits.hpp>
