@@ -14,7 +14,6 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -33,7 +32,7 @@ namespace boost { namespace simd { namespace ext
         std::size_t p = 0;
         stype m = a0[0];
         // TODO UNROLL
-        for(size_t i=1; i < bs::cardinal_of<A0>::value; i++)
+        for(size_t i=1; i < A0::static_size; i++)
         {
           if (m < a0[i])
           {

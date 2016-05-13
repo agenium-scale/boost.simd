@@ -32,7 +32,7 @@ namespace boost { namespace simd { namespace ext
       BOOST_FORCEINLINE A1
       operator()(A0 const& a0, A1 const& a1, A1 const& a2
                , typename std::enable_if<
-                bs::cardinal_of<A0>::value == bs::cardinal_of<A1>::value
+                A0::static_size == A1::static_size
                 >::type* = 0
        ) const BOOST_NOEXCEPT
        {
