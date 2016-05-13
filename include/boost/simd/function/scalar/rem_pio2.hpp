@@ -14,6 +14,5 @@
 
 #include <boost/simd/function/definition/rem_pio2.hpp>
 #include <boost/simd/arch/common/scalar/function/rem_pio2.hpp>
-#include <boost/simd/arch/common/generic/function/rem_pio2.hpp>
 
 #endif

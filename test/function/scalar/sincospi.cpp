@@ -36,26 +36,6 @@ STF_CASE_TPL (" sincospi",  STF_IEEE_TYPES)
              );
 
   {
-    T s, c;
-    for(size_t i=0; i < N; ++i)
-    {
-      sincospi(a[i], s, c);
-      STF_IEEE_EQUAL(s, bs::sinpi(a[i]));
-      STF_IEEE_EQUAL(c, bs::cospi(a[i]));
-    }
-  }
-
-  {
-    T s, c;
-    for(size_t i=0; i < N; ++i)
-    {
-      s = sincospi(a[i], c);
-      STF_IEEE_EQUAL(s, bs::sinpi(a[i]));
-      STF_IEEE_EQUAL(c, bs::cospi(a[i]));
-    }
-  }
-
-  {
     for(size_t i=0; i < N; ++i)
     {
       std::pair<T,T> p = sincospi(a[i]);

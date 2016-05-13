@@ -27,7 +27,7 @@ namespace boost { namespace simd
 
     @code
     T s, c;
-    sincosd(x, s, c);
+    std::tie(s, c) = sincosd(x);
     @endcode
 
     is similar to:

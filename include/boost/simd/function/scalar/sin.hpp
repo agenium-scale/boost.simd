@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_SIN_HPP_INCLUDED
 
 #include <boost/simd/function/definition/sin.hpp>
+#include <boost/simd/arch/common/scalar/function/sin.hpp>
 #include <boost/simd/arch/common/generic/function/sin.hpp>
 
 #endif

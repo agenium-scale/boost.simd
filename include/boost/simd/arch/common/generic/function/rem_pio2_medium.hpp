@@ -17,7 +17,6 @@
 #include <boost/simd/function/simd/round2even.hpp>
 #include <boost/simd/function/simd/toint.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/fusion/include/std_pair.hpp>
 #include <boost/simd/constant/three.hpp>
 #include <boost/simd/constant/pio2_1.hpp>
 #include <boost/simd/constant/pio2_1t.hpp>
@@ -30,24 +29,12 @@
 #include <boost/simd/function/simd/multiplies.hpp>
 #include <boost/simd/function/simd/bitwise_and.hpp>
 #include <boost/simd/function/simd/minus.hpp>
+#include <utility>
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
-  BOOST_DISPATCH_OVERLOAD (rem_pio2_medium_
-                          , (typename A0, typename A1)
-                          , bd::cpu_
-                          , bd::generic_ < bd::floating_<A0> >
-                          , bd::generic_ < bd::integer_<A1>  >
-                          , bd::generic_ < bd::floating_<A0> >
-                          )
-  {
-    BOOST_FORCEINLINE void operator() ( A0 const& x, A1 & n, A0 & xr) BOOST_NOEXCEPT
-    {
-      n = bs::rem_pio2_medium(x, xr);
-    }
-  };
 
   BOOST_DISPATCH_OVERLOAD (rem_pio2_medium_
                           , (typename A0)
@@ -57,23 +44,7 @@ namespace boost { namespace simd { namespace ext
   {
     using int_t = bd::as_integer_t<A0>;
     using result_t = std::pair<int_t, A0>;
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0) const
-    {
-      A0 second;
-      int_t const first = bs::rem_pio2_medium(a0,second);
-      return {first, second};
-    }
-  };
-
-  BOOST_DISPATCH_OVERLOAD (rem_pio2_medium_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bd::generic_ < bd::floating_<A0> >
-                          , bd::generic_ < bd::floating_<A0> >
-                          )
-  {
-    using int_t = bd::as_integer_t<A0>;
-    BOOST_FORCEINLINE  int_t operator() ( A0 const& t, A0 & xr) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE result_t operator() ( A0 const& t) const
     {
       const A0 fn = round2even(t*Twoopi<A0>());
       A0 r  = t-fn*Pio2_1<A0>();
@@ -86,10 +57,10 @@ namespace boost { namespace simd { namespace ext
       w  = fn*Pio2_3<A0>();
       r  = t2-w;
       w  = fn*Pio2_3t<A0>()-((t2-r)-w);
-      xr = r-w;
-      return  bitwise_and(toint(fn), Three<int_t>());
+      return  {bitwise_and(toint(fn), Three<int_t>()), r-w};
     }
   };
+
 } } }
 
 

@@ -14,5 +14,6 @@
 
 #include <boost/simd/function/scalar/sincpi.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
+#include <boost/simd/arch/common/simd/function/sincpi.hpp>
 
 #endif

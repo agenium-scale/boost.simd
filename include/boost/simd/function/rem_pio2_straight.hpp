@@ -28,23 +28,25 @@ namespace boost { namespace simd
     For every parameter of floating type T
 
     @code
-    T r, rc;
+    T r;
     as_integer<T> n;
-    rem_pio2_straight<Range>(x, n, r);
+    std::tie(n, r) = rem_pio2_straight(x);
     @endcode
 
     is similar to:
 
     @code
-    as_integer<T> n = idivround2even(x, Pio_2<T>());
-    T r =  remainder(x, Pio_2<T>());
+    as_integer<T> n = One<T>)
+    T r =  x-Pio_2<T>();
     @endcode
 
     @par Note:
-    @c rem_pio2_straight computes the remainder modulo \f$\pi/2\f$ with straight algorithm,
+    @c rem_pio2_straight computes the remainder modulo \f$\pi/2\f$ with "straight" algorithm,
     and returns an angle quadrant which is always 1.
-    This is a very quick version accurate if the input
-    is in \f$[\pi/4,\pi/2]\f$. In fact it only substract \f$\pi/2\f$ to the input
+    This is a very quick version only correct if the input
+    is in \f$[\pi/4,\pi/2]\f$.
+
+    In fact it only substract \f$\pi/2\f$ to the input
     so it can be viewed as a specially accurate minuspio_2 function outside
     the interval in which it can be used as a substitute to rem_pio2.
 

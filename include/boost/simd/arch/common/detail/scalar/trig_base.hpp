@@ -126,7 +126,7 @@ namespace boost { namespace simd
        static BOOST_FORCEINLINE A0 sina(A0 a0){ return sina(a0, style_t()); }
        static BOOST_FORCEINLINE A0 tana(A0 a0){ return tana(a0, style_t()); }
        static BOOST_FORCEINLINE A0 cota(A0 a0){ return cota(a0, style_t()); }
-       static BOOST_FORCEINLINE A0 sincosa(const A0& a0, A0& c){ return sincosa(a0,c,style_t()); }
+       static BOOST_FORCEINLINE std::pair<A0,A0> sincosa(const A0& a0){ return sincosa(a0,style_t()); }
 
        static BOOST_FORCEINLINE A0 cosa(A0 a0, const tag::regular&)
        {
@@ -187,10 +187,10 @@ namespace boost { namespace simd
          return bitwise_xor(y, bos);
        }
 
-       static BOOST_FORCEINLINE A0 sincosa(A0 a0,  A0& c, const tag::regular&) BOOST_NOEXCEPT
+       static BOOST_FORCEINLINE std::pair<A0,A0> sincosa(A0 a0, const tag::regular&) BOOST_NOEXCEPT
        {
-         A0 s;
-         if (is_invalid(a0)) { c = Nan<A0>(); return c; }
+         A0 s, c;
+         if (is_invalid(a0)) return {Nan<A0>(), Nan<A0>()};
          const A0 x =  abs(a0);
          static const i_t de = static_cast<i_t>(sizeof(i_t)*8-1);
          A0 xr;
@@ -210,8 +210,7 @@ namespace boost { namespace simd
            c = eval_t::cos_eval(z);
            s = eval_t::sin_eval(z, xr);
          }
-         c = bitwise_xor(c,cos_sign_bit);
-         return bitwise_xor(s,sin_sign_bit);
+         return {bitwise_xor(s,sin_sign_bit), bitwise_xor(c,cos_sign_bit)};
        }
 
        static BOOST_FORCEINLINE A0 cosa(A0 a0, const tag::fast &) BOOST_NOEXCEPT
@@ -257,14 +256,13 @@ namespace boost { namespace simd
           }
        }
 
-       static BOOST_FORCEINLINE A0 sincosa(A0 a0, A0& c, const tag::fast&) BOOST_NOEXCEPT
+       static BOOST_FORCEINLINE std::pair<A0, A0>sincosa(A0 a0, const tag::fast&) BOOST_NOEXCEPT
        {
-         if (is_eqz(a0)) {c = One<A0>(); return a0; }
-         if(not_in_range(a0)){c = Nan<A0>(); return c; }
+         if (is_eqz(a0))       return {a0, One<A0>()} ;
+         if(not_in_range(a0))  return {Nan<A0>(), Nan<A0>()};
          A0 x =  scale(a0);
          A0 z =  sqr(x);
-         c = eval_t::cos_eval(z);
-         return eval_t::sin_eval(z, x);
+         return { eval_t::sin_eval(z, x), eval_t::cos_eval(z)};
        }
 
        static BOOST_FORCEINLINE bool not_in_range(A0 a0) BOOST_NOEXCEPT

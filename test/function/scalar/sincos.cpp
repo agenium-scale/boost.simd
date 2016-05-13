@@ -35,27 +35,7 @@ STF_CASE_TPL (" sincos",  STF_IEEE_TYPES)
              , (std::pair<T,T>)
              );
 
-  {
-    T s, c;
-    for(size_t i=0; i < N; ++i)
-    {
-      sincos(a[i], s, c);
-      STF_IEEE_EQUAL(s, bs::sin(a[i]));
-      STF_IEEE_EQUAL(c, bs::cos(a[i]));
-    }
-  }
-
-  {
-    T s, c;
-    for(size_t i=0; i < N; ++i)
-    {
-      s = sincos(a[i], c);
-      STF_IEEE_EQUAL(s, bs::sin(a[i]));
-      STF_IEEE_EQUAL(c, bs::cos(a[i]));
-    }
-  }
-
-  {
+   {
     for(size_t i=0; i < N; ++i)
     {
       std::pair<T,T> p = sincos(a[i]);

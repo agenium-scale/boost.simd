@@ -47,7 +47,7 @@
 #include <boost/simd/constant/real.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
 #include <boost/dispatch/meta/scalar_of.hpp>
-
+#include <utility>
 
 //#include <nt2/sdk/meta/as_logical.hpp>
 //#include <boost/simd/sdk/meta/is_upgradable.hpp>
@@ -92,10 +92,10 @@ namespace boost { namespace simd
       {
         return is_ngt(a0, Pio_4<A0>());
       }
-      static BOOST_FORCEINLINE auto is_0_pio2_reduced(const A0&a0) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE auto is_pio4_pio2_reduced(const A0&a0) BOOST_NOEXCEPT
       ->  decltype(is_ngt(a0, Pio_2<A0>()))
       {
-        return is_ngt(a0, Pio_2<A0>());
+        return bitwise_and(is_ngt(a0, Pio_2<A0>()), is_greater(a0, Pio_4<A0>() ));
       }
       static BOOST_FORCEINLINE auto is_0_20pi_reduced(const A0&a0) BOOST_NOEXCEPT
       ->  decltype(is_ngt(a0, Real<A0, 0X404F6A7A2955385EULL, 0X427B53D1UL>()))
@@ -203,8 +203,13 @@ namespace boost { namespace simd
       select_mode(const A0& xx, A0& xr
                  , boost::mpl::int_<tag::r_0_pio2> const&) BOOST_NOEXCEPT
       {
-        if(all(is_0_pio2_reduced(xx)))
-          return rem_pio2_straight(xx, xr);
+        if(all(is_pio4_pio2_reduced(xx)))
+        {
+          i_t n;
+          std::tie(n, xr) = rem_pio2_straight(xx);
+          return n;
+        }
+
         return select_mode(xx,xr,boost::mpl::int_<tag::r_0_20pi>());
       }
 
@@ -214,7 +219,9 @@ namespace boost { namespace simd
                   , boost::mpl::int_<tag::r_0_20pi> const&
                   ) BOOST_NOEXCEPT
       {
-        return rem_pio2_cephes(xx, xr);
+        i_t n;
+        std::tie(n, xr) = rem_pio2_cephes(xx);
+        return n;
       }
 
       static BOOST_FORCEINLINE i_t
@@ -244,7 +251,9 @@ namespace boost { namespace simd
                   , boost::mpl::int_<tag::r_0_mpi> const&
                   ) BOOST_NOEXCEPT
       {
-        return rem_pio2_medium(xx, xr);
+        i_t n;
+        std::tie(n, xr) = rem_pio2_medium(xx);
+        return n;
       }
 
       static BOOST_FORCEINLINE i_t
@@ -272,14 +281,18 @@ namespace boost { namespace simd
       {
         if(all(is_0_dmpi_reduced(xx)))
            return use_conversion(xx, xr, style(), conversion_allowed_t());
-        return rem_pio2(xx, xr);
+        i_t n;
+        std::tie(n, xr) = rem_pio2(xx);
+        return n;
       }
 
       static BOOST_FORCEINLINE i_t
       use_conversion(const A0 & xx,  A0& xr
                     ,  const style &, std::false_type) BOOST_NOEXCEPT
       {
-        return rem_pio2(xx, xr);
+        i_t n;
+        std::tie(n, xr) = rem_pio2(xx);
+        return n;
       }
 
       static BOOST_FORCEINLINE i_t
