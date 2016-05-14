@@ -16,7 +16,6 @@
 
 #if !defined(BOOST_SIMD_NO_SIMD)
   #include <boost/simd/arch/power/spec.hpp>
-  #include <boost/simd/arch/arm/spec.hpp>
   #include <boost/simd/arch/x86/spec.hpp>
 #endif
 
