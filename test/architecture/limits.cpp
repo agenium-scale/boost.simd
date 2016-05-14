@@ -30,7 +30,6 @@ STF_CASE_TPL( "Check existence of limits for SSE1 extension", (sse_) )
 STF_CASE_TPL ( "Check existence of limits for SSE2-like extensions"
                 , (sse2_)(sse3_)(ssse3_)
                   (sse4_1_)(sse4_2_)(sse4a_)
-                  (vsx_)
                 )
 {
   STF_TYPE_IS( typename limits<T>::smallest_real, float);

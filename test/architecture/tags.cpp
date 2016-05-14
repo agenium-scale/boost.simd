@@ -56,10 +56,3 @@ STF_CASE( "Check for architectural tag parent for PowerPC" )
   STF_TYPE_IS( boost::simd::vmx_::parent , boost::simd::simd_  );
 }
 #endif
-
-#ifdef BOOST_ARCH_ARM_AVAILABLE
-STF_CASE( "Check for architectural tag parent for ARM" )
-{
-  STF_PASS("");
-}
-#endif
