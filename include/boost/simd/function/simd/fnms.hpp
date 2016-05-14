@@ -17,22 +17,18 @@
 #include <boost/simd/arch/common/generic/function/fnms.hpp>
 
 #if defined(BOOST_HW_SIMD_X86)
-
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_FMA3_VERSION
-// #    include <boost/simd/arch/x86/fma3/simd/function/fnms.hpp>
+#    include <boost/simd/arch/x86/fma3/simd/function/fnms.hpp>
 #  endif
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_FMA4_VERSION
 // #    include <boost/simd/arch/x86/fma4/simd/function/fnms.hpp>
 #  endif
-
 #endif
 
 #if defined(BOOST_HW_SIMD_PPC)
-
 #  if BOOST_HW_SIMD_PPC >= BOOST_HW_SIMD_PPC_VMX_VERSION
 // #    include <boost/simd/arch/power/vmx/simd/function/fnms.hpp>
 #  endif
-
 #endif
 
 #endif
