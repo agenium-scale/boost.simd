@@ -1,13 +1,11 @@
 //==================================================================================================
-/*!
-  @file
-
-  @copyright 2016 NumScale SAS
-  @copyright 2016 J.T.Lapreste
+/**
+  Copyright 2016 NumScale SAS
+  Copyright 2016 J.T.Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_FUNCTION_DEFINITION_SPLIT_MULTIPLIES_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_DEFINITION_SPLIT_MULTIPLIES_HPP_INCLUDED
@@ -21,7 +19,7 @@ namespace boost { namespace simd
 {
   namespace tag
   {
-    BOOST_DISPATCH_MAKE_TAG(ext, split_multiplies_, boost::dispatch::elementwise_<split_multiplies_>);
+    BOOST_DISPATCH_MAKE_TAG(ext, split_multiplies_, boost::dispatch::abstract_<split_multiplies_>);
   }
 
   namespace ext
@@ -30,8 +28,6 @@ namespace boost { namespace simd
   }
 
   BOOST_DISPATCH_CALLABLE_DEFINITION(tag::split_multiplies_,split_multiplies);
-
-
 } }
 
 #endif
