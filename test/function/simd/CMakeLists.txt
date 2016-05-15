@@ -264,6 +264,8 @@ sincosd.cpp
 sincospi.cpp
 sind.cpp
 sinpi.cpp
+#sort.cpp
+split_multiplies.cpp
 sqr_abs.cpp
 sqr.cpp
 sqr_s.cpp
