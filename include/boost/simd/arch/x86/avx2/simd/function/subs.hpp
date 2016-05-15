@@ -46,8 +46,8 @@ namespace boost { namespace simd { namespace ext
    BOOST_DISPATCH_OVERLOAD( subs_
                           , (typename A0)
                           , bs::avx2_
-                          , bs::pack_< ubd::int16_<A0>, bs::avx_>
-                          , bs::pack_< ubd::int16_<A0>, bs::avx_>
+                          , bs::pack_< bd::uint16_<A0>, bs::avx_>
+                          , bs::pack_< bd::uint16_<A0>, bs::avx_>
                           )
    {
       BOOST_FORCEINLINE A0 operator()(A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
@@ -59,8 +59,8 @@ namespace boost { namespace simd { namespace ext
    BOOST_DISPATCH_OVERLOAD( subs_
                           , (typename A0)
                           , bs::avx2_
-                          , bs::pack_< ubd::int8_<A0>, bs::avx_>
-                          , bs::pack_< ubd::int8_<A0>, bs::avx_>
+                          , bs::pack_< bd::uint8_<A0>, bs::avx_>
+                          , bs::pack_< bd::uint8_<A0>, bs::avx_>
                           )
    {
       BOOST_FORCEINLINE A0 operator()(A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT

@@ -24,16 +24,17 @@ void test(Env& $)
   for(std::size_t i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? T(i) : -T(i);
-    std::tie(s[i], c[i])= bs::sincos(a1[i]) ;
+    std::tie(s[i], c[i])= bs::sincos(a1[i]);
   }
 
   p_t aa1(&a1[0], &a1[0]+N);
   p_t ss (&s[0], &s[0]+N);
   p_t cc (&c[0], &c[0]+N);
   p_t ss1, cc1;
-  std::tie(ss1, cc1)= bs::sincos(aa1) ;
-  STF_IEEE_EQUAL(ss1, ss);
-  STF_IEEE_EQUAL(cc1, cc);
+  std::tie(ss1, cc1)= bs::sincos(aa1);
+
+  STF_ULP_EQUAL(ss1, ss,0.5);
+  STF_ULP_EQUAL(cc1, cc,0.5);
 }
 
 STF_CASE_TPL("Check sincos on pack" , STF_IEEE_TYPES)

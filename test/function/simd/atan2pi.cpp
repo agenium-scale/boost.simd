@@ -34,7 +34,7 @@ void test(Env& $)
   p_t aa2(&a2[0], &a2[0]+N);
   p_t bb(&b[0], &b[0]+N);
 
-  STF_ULP_EQUAL(bs::atan2pi(aa1, aa2), bb, 0.5);
+  STF_ULP_EQUAL(bs::atan2pi(aa1, aa2), bb, 1);
 }
 
 STF_CASE_TPL("Check atan2pi on pack" , STF_IEEE_TYPES)
