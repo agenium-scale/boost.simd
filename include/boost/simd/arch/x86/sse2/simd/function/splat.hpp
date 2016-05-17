@@ -100,21 +100,9 @@ namespace boost { namespace simd { namespace ext
   {
     using target = typename Target::type;
 
-    BOOST_FORCEINLINE target do_(long int v, std::true_type const&) const BOOST_NOEXCEPT
-    {
-      return _mm_set1_epi64x(v);
-    }
-
-    BOOST_FORCEINLINE target do_(long int v, std::false_type const&) const BOOST_NOEXCEPT
-    {
-      return target(v,v);
-    }
-
     BOOST_FORCEINLINE target operator()(Value const& v, Target const&) const BOOST_NOEXCEPT
     {
-      return do_( static_cast<long int>(v)
-                , typename detail::support_mm_set1_epi64x<long int>::type{}
-                );
+      return target(v,v);
     }
   };
 } } }
