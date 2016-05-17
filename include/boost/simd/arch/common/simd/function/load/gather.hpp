@@ -37,7 +37,7 @@ namespace boost { namespace simd { namespace ext
     using target_t  = typename Target::type;
     using storage_t = typename target_t::storage_type;
 
-    static_assert ( Offset::static_size == target_t::static_size
+    static_assert ( int(Offset::static_size) == int(target_t::static_size)
                   , "boost::simd::load - Mismatched gather offset cardinal"
                   );
 
