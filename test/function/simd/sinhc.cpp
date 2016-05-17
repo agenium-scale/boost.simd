@@ -21,7 +21,7 @@ void test(Env& $)
   T a1[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
-    a1[i] = T(i);
+    a1[i] = (i%2) ? T(i) : -T(i);
     b[i] = bs::sinhc(a1[i]) ;
   }
 
@@ -30,7 +30,8 @@ void test(Env& $)
   STF_ULP_EQUAL(bs::sinhc(aa1), bb, 0.5);
 }
 
-STF_CASE_TPL("Check sinhc on pack" , STF_IEEE_TYPES)
+
+STF_CASE_TPL("Check sinhc saturated on pack" , STF_IEEE_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
@@ -38,4 +39,3 @@ STF_CASE_TPL("Check sinhc on pack" , STF_IEEE_TYPES)
   test<T, N/2>($);
   test<T, N*2>($);
 }
-

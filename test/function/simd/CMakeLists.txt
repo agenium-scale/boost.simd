@@ -21,17 +21,14 @@ add_subdirectory(split)
 set ( SOURCES
 abs.cpp
 abs_s.cpp
-<<<<<<< 2f37803e637351ab9c0a40375e48c0bc8ae61c51
 acos.cpp
 acosd.cpp
 acospi.cpp
 acot.cpp
 acotd.cpp
 acotpi.cpp
-=======
 acosh.cpp
 acoth.cpp
->>>>>>> sinhcosh and inverse hyper
 aligned_load.cpp
 aligned_store.cpp
 all.cpp
