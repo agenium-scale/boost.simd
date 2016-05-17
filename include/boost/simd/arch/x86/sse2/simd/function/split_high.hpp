@@ -53,7 +53,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE bd::upgrade_t<A0> operator()(const A0& a0) const BOOST_NOEXCEPT
     {
-      return _mm_unpacklo_epi16(a0, is_ltz(a0));
+      return _mm_unpackhi_epi16(a0, is_ltz(a0));
     }
   };
 
