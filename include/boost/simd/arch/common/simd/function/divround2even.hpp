@@ -16,7 +16,7 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 //#include <boost/simd/sdk/meta/is_upgradable.hpp>//TODO
 #include <boost/simd/function/simd/divides.hpp>
-#include <boost/simd/function/simd/groups.hpp>
+#include <boost/simd/function/simd/group.hpp>
 #include <boost/simd/function/simd/round2even.hpp>
 #include <boost/simd/function/simd/split.hpp>
 #include <boost/simd/function/simd/tofloat.hpp>
