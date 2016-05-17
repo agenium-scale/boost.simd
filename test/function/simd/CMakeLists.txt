@@ -304,10 +304,6 @@ unary_plus.cpp
 #divfix
 #divfloor
 #divround
-#fma.cpp TODO
-#fms.cpp TODO
-#fnma.cpp TODO
-#fnms.cpp ODO
 #idivceil.cpp
 #idivfix.cpp
 #idivfloor.cpp
@@ -320,11 +316,6 @@ unary_plus.cpp
 #nbtrue.cpp
 #none
 #rem.cpp TODO
-#rem_pio2.cpp TODO waitin for map
-#rol.cpp
-#ror.cpp
-#rrol.cpp TODO
-#rror.cpp TODO
 #splatted_maximum.cpp//TODO all_reduce
 #splatted_minimum.cpp
 ####dot.cpp

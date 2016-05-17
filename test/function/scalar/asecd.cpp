@@ -33,11 +33,12 @@ STF_CASE_TPL (" asecd",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(asecd(bs::Inf<T>()), 90, 0);
-  STF_ULP_EQUAL(asecd(bs::Minf<T>()), 90, 0);
-  STF_ULP_EQUAL(asecd(bs::Nan<T>()), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(asecd(bs::Zero<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(asecd(bs::Inf<T>()), 90, 0.5);
+  STF_ULP_EQUAL(asecd(bs::Minf<T>()), 90, 0.5);
+  STF_IEEE_EQUAL(asecd(bs::Nan<T>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(asecd(bs::Zero<T>()), bs::Nan<r_t>());
 #endif
+
   STF_ULP_EQUAL(asecd(-bs::Two<T>()), T(120), 0.5);
   STF_ULP_EQUAL(asecd(bs::Mone<T>()), T(180), 0.5);
   STF_ULP_EQUAL(asecd(bs::One<T>()), bs::Zero<r_t>(), 0.5);

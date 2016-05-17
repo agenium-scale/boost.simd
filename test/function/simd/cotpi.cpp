@@ -22,13 +22,12 @@ void test(Env& $)
   for(std::size_t i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? T(2*i)/N : -T(2*i)/N;
-
     b[i] = bs::cotpi(a1[i]) ;
   }
 
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
-  STF_IEEE_EQUAL(bs::cotpi(aa1), bb);
+  STF_ULP_EQUAL(bs::cotpi(aa1), bb, 0.5);
 }
 
 STF_CASE_TPL("Check cotpi on pack" , STF_IEEE_TYPES)

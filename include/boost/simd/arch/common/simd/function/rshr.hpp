@@ -6,8 +6,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_RSHL_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_RSHL_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_RSHR_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_RSHR_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
@@ -27,7 +27,7 @@ namespace boost { namespace simd { namespace ext
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
 
-  BOOST_DISPATCH_OVERLOAD_IF( rshl_
+  BOOST_DISPATCH_OVERLOAD_IF( rshr_
                             , (typename A0, typename A1, typename X)
                             , (brigand::bool_<bs::cardinal_of<A0>::value == bs::cardinal_of<A1>::value>)
                             , bd::cpu_
@@ -38,14 +38,14 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
     {
       #ifndef NDEBUG
-      return if_else(is_gtz(a1), shift_left(a0, max(Zero<A1>(), a1)), shr(a0, max(Zero<A1>(), -a1)));
+      return if_else(is_gtz(a1), shr(a0, max(Zero<A1>(), a1)), shl(a0, max(Zero<A1>(), -a1)));
       #else
-      return if_else(is_gtz(a1), shift_left(a0, a1), shr(a0, -a1));
+      return if_else(is_gtz(a1), shr(a0, a1), shl(a0, -a1));
       #endif
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD_IF( rshl_
+  BOOST_DISPATCH_OVERLOAD_IF( rshr_
                             , (typename A0, typename A1, typename X)
                             , (brigand::bool_<bs::cardinal_of<A0>::value == bs::cardinal_of<A1>::value>)
                             , bd::cpu_
@@ -55,7 +55,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
     {
-      return shift_left(a0, a1);
+      return shr(a0, a1);
     }
   };
 } } }

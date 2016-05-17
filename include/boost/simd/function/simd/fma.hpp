@@ -21,7 +21,7 @@
 #    include <boost/simd/arch/x86/fma4/simd/function/fma.hpp>
 #  endif
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_XOP_VERSION
-// #    include <boost/simd/arch/x86/xop/simd/function/fma.hpp>
+#    include <boost/simd/arch/x86/xop/simd/function/fma.hpp>
 #  endif
 #endif
 

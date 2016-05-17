@@ -49,7 +49,7 @@ set(STF_STANDALONE_DESTINATION     ${PROJECT_SOURCE_DIR}/test)
 set(BRIGAND_STANDALONE_DESTINATION ${PROJECT_SOURCE_DIR}/include/boost/simd/detail)
 
 NS_project_include(brigand.standalone)
-NS_project_include(stf.standalone)
+
 if (DEFINED USE_SELF_BOOST)
   set(BOOST_HEADER_ONLY_GIT_TAG develop)
   NS_project_include(boost-header-only)
@@ -61,6 +61,11 @@ if (DEFINED USE_SELF_BOOST)
   set(BOOST_DISPATCH_OPTIONS
     CMAKE_ARGS "-DBOOST_ROOT=${BOOST_HEADER_ONLY_DESTINATION}/include"
   )
+
+  set( STF_OPTIONS
+       CMAKE_ARGS "-DBOOST_ROOT=${BOOST_HEADER_ONLY_DESTINATION}/include"
+      )
+
   NS_project_include(boost.dispatch)
   add_dependencies(BOOST_DISPATCH BOOST_HEADER_ONLY)
   add_dependencies(BOOST_DISPATCH-install BOOST_HEADER_ONLY)
@@ -70,6 +75,8 @@ if (DEFINED USE_SELF_BOOST)
     ${BOOST_HEADER_ONLY_DESTINATION}/include
   )
 endif()
+
+NS_project_include(stf.standalone)
 
 ## Compute version string and mode + Documentation
 ## -------------------------------------------------------------------------------------------------
