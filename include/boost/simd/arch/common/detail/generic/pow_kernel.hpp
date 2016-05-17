@@ -52,7 +52,7 @@ namespace boost { namespace simd
       using s_t = bd::scalar_of_t<A0>;
       static BOOST_FORCEINLINE A0 pow1(const A0& x, const A0& z) BOOST_NOEXCEPT
       {
-        return  z*x*horn<s_t,
+        return  z*x*horn<A0,
                          0x3eaaaaa3, //  +0.3333331095506474f
                          0xbe800015, //  -0.2500006373383951f
                          0x3e4d2fa3, //  +0.2003770364206271f
@@ -62,7 +62,7 @@ namespace boost { namespace simd
 
       static BOOST_FORCEINLINE A0 pow2(const A0& x) BOOST_NOEXCEPT
       {
-        return horn<s_t,
+        return horn<A0,
                     0x3f317218, // 6.931471791490764E-001f
                     0x3e75fde1, // 2.402262883964191E-001f
                     0x3d634d38, // 5.549356188719141E-002f
@@ -94,7 +94,6 @@ namespace boost { namespace simd
             s_t(5.22136867046356201171875E-1),
             s_t(5.00000000000000000000E-1)
         };
-
         return boost::simd::load<A0>(&A[0], i);
       }
 
@@ -127,9 +126,9 @@ namespace boost { namespace simd
         i = if_else(is_greater_equal(x, twomio16(One<i_t>()))   , Mone<i_t>(), i);
         i = inc(i);
         A0 tmp = twomio16(i);
-        x = x-tmp; //-=
-        x = x-continuation(shr(i, 1)); //-=
-        x = x/tmp; // /=
+        x -= tmp;
+        x -= continuation(shr(i, 1));
+        x /= tmp;
         return i;
       }
 
@@ -142,13 +141,13 @@ namespace boost { namespace simd
       using s_t = bd::scalar_of_t<A0>;
       static BOOST_FORCEINLINE A0 pow1(const A0& x, const A0& z) BOOST_NOEXCEPT
       {
-        return  x*(z*horn<s_t,
+        return  x*(z*horn<A0,
                           0x4012aa83b65c9b74ll,//  4.66651806774358464979E0
                           0x401eccbd7f78eb6fll,//  7.69994162726912503298E0,
                           0x400dddefea9edf15ll,//  3.73336776063286838734E0,
                            0x3fdfdb997f5b5cf0ll //  4.97778295871696322025E-1
                           >(x)/
-          horn1<s_t,
+          horn1<A0,
                0x402bffc5918ae92ell,//  1.39995542032307539578E1
                0x4040ccbc1b176402ll,//  3.35994905342304405431E1,
                0x403bffff41c1c9f5ll,//  2.79999886606328401649E1,
@@ -159,7 +158,7 @@ namespace boost { namespace simd
 
       static BOOST_FORCEINLINE A0 pow2(const A0& x) BOOST_NOEXCEPT
       {
-        return horn<s_t,
+        return horn<A0,
                     0x3fe62e42fefa39efll,//  6.93147180559945308821E-1
                     0x3fcebfbdff82c56dll,//  2.40226506959099779976E-1,
                     0x3fac6b08d7041a92ll,//  5.55041086645832347466E-2,
@@ -225,9 +224,9 @@ namespace boost { namespace simd
       i = if_else(is_greater_equal(x, twomio16(One<i_t>()))   , Mone<i_t>(), i);
       i = inc(i);
       A0 tmp = twomio16(i);
-      x = x-tmp; //-=
-      x = x-continuation(shr(i, 1));//-=
-      x = x/tmp;// /=
+      x -= tmp;
+      x -= continuation(shr(i, 1));
+      x /= tmp;
       return i;
     }
 

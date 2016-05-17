@@ -22,7 +22,7 @@
 #include <boost/simd/function/inc.hpp>
 #include <boost/simd/function/is_greater_equal.hpp>
 #include <boost/simd/function/is_less_equal.hpp>
-//#include <boost/simd/function/load.hpp>
+#include <boost/simd/function/load.hpp>
 #include <boost/simd/function/minus.hpp>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/plus.hpp>
@@ -92,7 +92,8 @@ namespace boost { namespace simd
             s_t(5.22136867046356201171875E-1),
             s_t(5.00000000000000000000E-1)
           }};
-        return A[i];//load<A0>(A.begin(), i); //A[i];
+        std::cout << "icitte" << std::endl;
+        return load<A0>(A.begin(), i); //A[i];
       }
 
       static BOOST_FORCEINLINE A0 continuation(const i_t& i)
@@ -111,7 +112,7 @@ namespace boost { namespace simd
             s_t(-6.53877009617774467211965E-9),
             s_t( 0.00000000000000000000E0)
           }};
-        return B[i]; //load<A0>(B.begin(), i);
+        return load<A0>(B.begin(), i);
       }
 
       static BOOST_FORCEINLINE i_t select(A0& x)
@@ -192,7 +193,7 @@ namespace boost { namespace simd
           s_t(5.22136891213706877402E-1),
           s_t(5.00000000000000000000E-1)
         }};
-      return  A[i]; //load<A0>(A.begin(), i); //A[i];
+      return  load<A0>(A.begin(), i); //A[i];
     }
 
     static BOOST_FORCEINLINE A0 continuation(const i_t& i)
@@ -211,7 +212,7 @@ namespace boost { namespace simd
           s_t(-1.52339103990623557348E-17),
           s_t( 0.00000000000000000000E0)
         }};
-      return  B[i]; //load<A0>(B.begin(), i);
+      return  load<A0>(B.begin(), i);
     }
 
     static BOOST_FORCEINLINE i_t select(A0& x)
