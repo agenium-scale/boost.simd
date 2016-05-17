@@ -11,16 +11,6 @@
 #define SIMD_TEST_HPP_INCLUDED
 
 #define STF_CUSTOM_DRIVER_FUNCTION simd_test
-#include <boost/simd/function/compare_equal.hpp>
-namespace stf
-{
-  template < typename T, std::size_t N,  typename X  >
-  inline bool compare_equal( const boost::simd::pack < T, N, X >  &l
-                           , const boost::simd::pack < T, N, X >  &r )
-  {
-    return boost::simd::compare_equal(l, r);
-  }
-}
 #include <stf.hpp>
 
 #include <boost/simd/pack.hpp>

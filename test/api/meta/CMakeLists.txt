@@ -12,6 +12,7 @@ set ( SOURCES
       cardinal_of.cpp
       is_bitwise_logical.cpp
       is_logical_mask.cpp
+      is_pointing_to.cpp
       is_scalar.cpp
       real_of.cpp
       upgrade.cpp

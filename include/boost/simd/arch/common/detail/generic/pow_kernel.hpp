@@ -94,7 +94,8 @@ namespace boost { namespace simd
             s_t(5.22136867046356201171875E-1),
             s_t(5.00000000000000000000E-1)
         };
-        return load<A0>(&A[0], i); //A[i];
+
+        return boost::simd::load<A0>(&A[0], i);
       }
 
       static BOOST_FORCEINLINE A0 continuation(const i_t& i) BOOST_NOEXCEPT
@@ -113,7 +114,7 @@ namespace boost { namespace simd
             s_t(-6.53877009617774467211965E-9),
             s_t( 0.00000000000000000000E0)
         };
-        return load<A0>(&B[0], i);
+        return boost::simd::load<A0>(&B[0], i);
       }
 
       static BOOST_FORCEINLINE i_t select(A0& x) BOOST_NOEXCEPT
@@ -190,7 +191,8 @@ namespace boost { namespace simd
           s_t(5.22136891213706877402E-1),
           s_t(5.00000000000000000000E-1)
         };
-      return  A[i]; //load<A0>(A.begin(), i); //A[i];
+
+      return boost::simd::load<A0>(&A[0], i);
     }
 
     static BOOST_FORCEINLINE A0 continuation(const i_t& i) BOOST_NOEXCEPT
@@ -209,7 +211,8 @@ namespace boost { namespace simd
          s_t(-1.52339103990623557348E-17),
          s_t( 0.00000000000000000000E0)
         };
-      return load<A0>(&B[0], i);
+
+      return boost::simd::load<A0>(&B[0], i);
     }
 
     static BOOST_FORCEINLINE i_t select(A0& x) BOOST_NOEXCEPT

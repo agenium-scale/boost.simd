@@ -29,13 +29,15 @@ namespace boost { namespace simd
     BOOST_DISPATCH_FUNCTION_DECLARATION(tag, load_);
   }
 
-  template<typename T, typename... Args> BOOST_FORCEINLINE
-  T load(Args&&... args)
+  namespace detail
   {
-    return tag::load_::dispatch_to( boost::dispatch::default_site<tag::load_>()
-                                  , boost::dispatch::hierarchy_of_t<Args>()...
-                                  , boost::dispatch::hierarchy_of_t<boost::simd::as_<T>>()
-                                  )( std::forward<Args>(args)..., boost::simd::as_<T>() );
+    BOOST_DISPATCH_CALLABLE_DEFINITION(tag::load_,load_impl);
+  }
+
+  template<typename Type, typename Source, typename... Opts>
+  BOOST_FORCEINLINE Type load(Source const& p, Opts&&... o)
+  {
+    return detail::load_impl( p, std::forward<Opts>(o)..., boost::simd::as_<Type>() );
   }
 } }
 
