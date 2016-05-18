@@ -43,7 +43,7 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename A1)
                           , bd::cpu_
                           , bd::generic_< bd::arithmetic_<A0> >
-                          , bd::constant_< bd::scalar_< bd::uint_<A1> > >
+                          , bd::constant_< bd::uint_<A1> >
                           )
   {
     using result_type = A0;
@@ -58,7 +58,7 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename A1)
                           , bd::cpu_
                           , bd::generic_< bd::floating_<A0> >
-                          , bd::constant_< bd::scalar_< bd::int_<A1> > >
+                          , bd::constant_< bd::int_<A1> >
                           )
   {
     using result_type = A0;
