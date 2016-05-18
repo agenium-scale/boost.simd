@@ -23,7 +23,7 @@ STF_CASE_TPL( "Check plus behavior with floating", STF_IEEE_TYPES )
   using bs::plus;
   using r_t = decltype(plus(T(), T()));
   STF_TYPE_IS(r_t, T);
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(plus(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>());
   STF_EQUAL(plus(bs::Minf<T>(), bs::Minf<T>()), bs::Minf<r_t>());
   STF_IEEE_EQUAL(plus(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>());

@@ -28,7 +28,7 @@ STF_CASE_TPL (" ceil real",  STF_IEEE_TYPES)
   STF_EXPR_IS(ceil(T()), T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(ceil(bs::Inf<T>()), bs::Inf<T>());
   STF_EQUAL(ceil(bs::Minf<T>()), bs::Minf<T>());
   STF_IEEE_EQUAL(ceil(bs::Nan<T>()), bs::Nan<T>());

@@ -31,7 +31,7 @@ STF_CASE_TPL ("check bitwise_not for floating",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(bitwise_not(bs::Nan<T>()), bs::Zero<r_t>());
 #endif
   STF_IEEE_EQUAL(bitwise_not(bs::Zero<T>()), bs::Nan<r_t>());

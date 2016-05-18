@@ -29,7 +29,7 @@ STF_CASE_TPL (" remainder real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_IEEE_EQUAL(remainder(bs::Inf<T>(), bs::Inf<T>()), bs::Nan<T>());
   STF_IEEE_EQUAL(remainder(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
   STF_IEEE_EQUAL(remainder(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());

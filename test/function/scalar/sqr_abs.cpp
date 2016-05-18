@@ -29,7 +29,7 @@ STF_CASE_TPL (" sqr_abs real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(sqr_abs(bs::Inf<T>()), bs::Inf<T>());
   STF_EQUAL(sqr_abs(bs::Minf<T>()), bs::Inf<T>());
   STF_IEEE_EQUAL(sqr_abs(bs::Nan<T>()), bs::Nan<T>());

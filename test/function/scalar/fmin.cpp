@@ -32,7 +32,7 @@ STF_CASE_TPL (" fmin real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(fmin(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>());
   STF_EQUAL(fmin(bs::Minf<T>(), bs::Minf<T>()), bs::Minf<r_t>());
   STF_IEEE_EQUAL(fmin(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>());

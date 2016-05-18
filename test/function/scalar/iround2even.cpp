@@ -29,7 +29,7 @@ STF_CASE_TPL (" iround2even real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t,  bd::as_integer_t<T>);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(iround2even(bs::Inf<T>()), bs::Inf<r_t>());
   STF_EQUAL(iround2even(bs::Minf<T>()), bs::Minf<r_t>());
   STF_EQUAL(iround2even(bs::Nan<T>()), bs::Zero<r_t>());
@@ -90,7 +90,7 @@ STF_CASE_TPL (" iround2even real fast",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t,  bd::as_integer_t<T>);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(bs::fast_(iround2even)(bs::Minf<T>()), bs::Minf<r_t>());
 #endif
   STF_EQUAL(bs::fast_(iround2even)(bs::Mone<T>()), bs::Mone<r_t>());

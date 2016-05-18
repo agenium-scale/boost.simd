@@ -28,7 +28,7 @@ STF_CASE_TPL (" signnz real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t,T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(signnz(bs::Inf<T>()), bs::One<r_t>());
   STF_EQUAL(signnz(bs::Minf<T>()), bs::Mone<r_t>());
   STF_IEEE_EQUAL(signnz(bs::Nan<T>()), bs::Nan<r_t>());

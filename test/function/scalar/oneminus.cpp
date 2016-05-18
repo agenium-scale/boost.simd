@@ -63,7 +63,7 @@ STF_CASE_TPL(" oneminus floating", STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(oneminus(bs::Inf<T>()), bs::Minf<T>());
   STF_IEEE_EQUAL(oneminus(bs::Nan<T>()), bs::Nan<T>());
   STF_EQUAL(oneminus(bs::Minf<T>()), bs::Inf<T>());

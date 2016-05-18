@@ -28,7 +28,7 @@ STF_CASE_TPL (" iround real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, bd::as_integer_t<T>);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(iround(bs::Inf<T>()), bs::Inf<r_t>());
   STF_EQUAL(iround(bs::Minf<T>()), bs::Minf<r_t>());
   STF_EQUAL(iround(bs::Nan<T>()), bs::Zero<r_t>());

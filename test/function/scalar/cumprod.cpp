@@ -27,7 +27,7 @@ STF_CASE_TPL (" cumprod real",  STF_IEEE_TYPES)
   STF_EXPR_IS(cumprod(T()), T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(cumprod(bs::Inf<T>()), bs::Inf<T>());
   STF_EQUAL(cumprod(bs::Minf<T>()), bs::Minf<T>());
   STF_IEEE_EQUAL(cumprod(bs::Nan<T>()), bs::Nan<T>());

@@ -33,7 +33,7 @@ STF_CASE_TPL (" fmod real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_IEEE_EQUAL(fmod(bs::Inf<T>(), bs::Inf<T>()), bs::Nan<T>());
   STF_IEEE_EQUAL(fmod(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
   STF_IEEE_EQUAL(fmod(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());
@@ -54,7 +54,7 @@ STF_CASE_TPL (" fmod real fast",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_IEEE_EQUAL(bs::fast_(fmod)(bs::Inf<T>(), bs::Inf<T>()), bs::Nan<T>());
   STF_IEEE_EQUAL(bs::fast_(fmod)(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
   STF_IEEE_EQUAL(bs::fast_(fmod)(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());
@@ -129,7 +129,7 @@ STF_CASE_TPL (" fmod std",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_IEEE_EQUAL(bs::std_(fmod)(bs::Inf<T>(), bs::Inf<T>()), bs::Nan<T>());
   STF_IEEE_EQUAL(bs::std_(fmod)(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
   STF_IEEE_EQUAL(bs::std_(fmod)(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());

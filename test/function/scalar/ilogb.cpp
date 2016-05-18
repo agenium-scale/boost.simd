@@ -30,7 +30,7 @@ STF_CASE_TPL (" ilogb real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, (bd::as_integer_t<T>));
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(ilogb(bs::Minf<T>()), bs::Zero<r_t>());
   STF_EQUAL(ilogb(bs::Nan<T>()), bs::Zero<r_t>());
 #endif

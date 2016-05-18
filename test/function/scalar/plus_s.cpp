@@ -70,7 +70,7 @@ STF_CASE_TPL (" plus real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, wished_r_t);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(bs::saturated_(plus)(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<T>());
   STF_EQUAL(bs::saturated_(plus)(bs::Minf<T>(), bs::Minf<T>()), bs::Minf<T>());
   STF_IEEE_EQUAL(bs::saturated_(plus)(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());

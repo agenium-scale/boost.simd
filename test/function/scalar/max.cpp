@@ -27,7 +27,7 @@ STF_CASE_TPL (" max real",  STF_IEEE_TYPES)
   STF_EXPR_IS(max(T(),T()), T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(max(bs::Inf<T>(),  bs::Inf<T>()),  bs::Inf<T>());
   STF_EQUAL(max(bs::Minf<T>(), bs::Minf<T>()), bs::Minf<T>());
   STF_IEEE_EQUAL(max(bs::Nan<T>(),  bs::Nan<T>()),  bs::Nan<T>());

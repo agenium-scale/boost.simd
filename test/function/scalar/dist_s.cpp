@@ -29,7 +29,7 @@ STF_CASE_TPL (" bs::saturated_(bs::dist)_s real",  STF_IEEE_TYPES)
 
   STF_EXPR_IS( bs::saturated_(bs::dist)(T(), T()), T );
 
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_IEEE_EQUAL(bs::saturated_(bs::dist)(bs::Inf<T>() , bs::Inf<T>()) , bs::Nan<T>());
   STF_IEEE_EQUAL(bs::saturated_(bs::dist)(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
   STF_IEEE_EQUAL(bs::saturated_(bs::dist)(bs::Nan<T>() , bs::Nan<T>()) , bs::Nan<T>());

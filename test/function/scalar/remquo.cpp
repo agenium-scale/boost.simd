@@ -18,7 +18,7 @@
 #include <boost/simd/constant/zero.hpp>
 #include <utility>
 
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
 STF_CASE_TPL(" remquo invalid", STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;

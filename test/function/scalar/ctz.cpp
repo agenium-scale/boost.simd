@@ -29,7 +29,7 @@ STF_CASE_TPL (" ctz real",  STF_IEEE_TYPES)
   STF_EXPR_IS(ctz(T()), bd::as_integer_t<T>);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(ctz(bs::Inf<T>()), r_t(bs::Nbmantissabits<T>()));
   STF_EQUAL(ctz(bs::Minf<T>()), r_t(bs::Nbmantissabits<T>()));
 #endif

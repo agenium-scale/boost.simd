@@ -64,7 +64,7 @@ STF_CASE_TPL(" bs::saturated_(oneplus) floating", STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(bs::saturated_(oneplus)(bs::Inf<T>()), bs::Inf<T>());
   STF_IEEE_EQUAL(bs::saturated_(oneplus)(bs::Nan<T>()), bs::Nan<T>());
   STF_EQUAL(bs::saturated_(oneplus)(bs::Minf<T>()), bs::Minf<T>());
