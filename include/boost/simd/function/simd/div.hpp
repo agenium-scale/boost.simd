@@ -12,8 +12,8 @@
 #define BOOST_SIMD_FUNCTION_SIMD_DIV_HPP_INCLUDED
 
 #include <boost/simd/function/scalar/div.hpp>
-#include <boost/simd/arch/common/simd/function/div.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
+#include <boost/simd/arch/common/simd/function/div.hpp>
 
 #endif
 

@@ -59,7 +59,7 @@ namespace boost { namespace simd { namespace ext
       {
         auto isf = logical_andnot(is_flint(a0+a0), is_flint(a0));
         auto r1 = round2even(a0);
-//        if (none(isf)) return r1; // TODO none
+//        if (none(isf)) return r1;
         return if_else(isf, -trunc(-a0), r1);
       }
    };
