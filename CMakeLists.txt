@@ -75,6 +75,7 @@ if (DEFINED USE_SELF_BOOST)
   )
 endif()
 
+set(NS_BENCH_GIT_TAG develop)
 NS_project_include(ns.bench.standalone)
 NS_project_include(brigand.standalone)
 NS_project_include(stf.standalone)

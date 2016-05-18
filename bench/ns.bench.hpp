@@ -951,9 +951,7 @@ class benchmark {
       local.before_run();
       auto t0 = time_clock::now();
       auto c0 = cycle_clock::now();
-      __asm__ __volatile__ ("cpuid");
       local.run();
-      __asm__ __volatile__ ("cpuid");
       auto c1 = cycle_clock::now();
       auto t1 = time_clock::now();
       local.after_run();
