@@ -104,6 +104,7 @@ frac.cpp
 frexp.cpp
 genmaskc.cpp
 group.cpp
+groups.cpp
 hi.cpp
 hmsb.cpp
 hypot.cpp
