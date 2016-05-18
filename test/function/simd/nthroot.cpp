@@ -38,10 +38,6 @@ void test(Env& $)
   pi_t aa2(&a2[0], &a2[0]+N);
   p_t bb (&b[0], &b[0]+N);
 
-  std::cout  << "aa1                   "<< aa1                   << std::endl;
-  std::cout  << "aa2                   "<< aa2                   << std::endl;
-  std::cout  << "bs::nthroot(aa1, aa2) "<< bs::nthroot(aa1, aa2) << std::endl;
-  std::cout  << "bb                    "<< bb                    << std::endl;
   STF_ULP_EQUAL(bs::nthroot(aa1, aa2), bb, 1);
 }
 
