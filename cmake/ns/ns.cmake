@@ -200,7 +200,7 @@ macro (_NS_project_is_in_source)
   endforeach(SRC)
 endmacro()
 
-##
+## 
 function (NS_project_add_check_target name)
   _NS_project_is_in_source(${ARGN})
   _NS_project_target_setup(${name})
@@ -225,7 +225,7 @@ function (NS_project_add_check_target name)
   )
 endfunction()
 
-##
+## 
 function (NS_project_add_git_update_target name)
   # --
   if (NOT TARGET update.${name}.check)
