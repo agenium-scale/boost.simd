@@ -47,6 +47,7 @@ namespace boost { namespace simd { namespace ext
       return r;
     }
   };
+
   BOOST_DISPATCH_OVERLOAD_IF(div_
                             , (typename A0, typename X)
                             , (bd::is_upgradable<A0>)
@@ -123,7 +124,6 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator()( bd::functor<bs::tag::round_> const&
                                    ,  const A0& a0, const A0& a1) const BOOST_NOEXCEPT
     {
-      std::cout << "float" << std::endl;
       return simd::round(a0/a1);
     }
   };
