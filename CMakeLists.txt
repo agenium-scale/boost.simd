@@ -45,27 +45,26 @@ NS_prevent_in_source_build()
 
 ## External projects
 ## -------------------------------------------------------------------------------------------------
-set(STF_STANDALONE_DESTINATION     ${PROJECT_SOURCE_DIR}/test)
-set(BRIGAND_STANDALONE_DESTINATION ${PROJECT_SOURCE_DIR}/include/boost/simd/detail)
+set(STF_STANDALONE_DESTINATION      ${PROJECT_SOURCE_DIR}/test)
+set(BRIGAND_STANDALONE_DESTINATION  ${PROJECT_SOURCE_DIR}/include/boost/simd/detail)
+set(NS_BENCH_STANDALONE_DESTINATION ${PROJECT_SOURCE_DIR}/bench)
 
-NS_project_include(brigand.standalone)
-
+set(NS_CMAKE_PROJECT_OPTIONS
+  CMAKE_ARGS "-DBOOST_ROOT=${BOOST_HEADER_ONLY_DESTINATION}/include"
+)
 if (DEFINED USE_SELF_BOOST)
   set(BOOST_HEADER_ONLY_GIT_TAG develop)
   NS_project_include(boost-header-only)
+  set(Boost_INCLUDE_DIRS ${BOOST_HEADER_ONLY_DESTINATION}/include)
+endif()
 
-  # NOTE: (workaround)
-  # We DO need to use `CMAKE_ARGS` here otherwise, travis is not able to find boost even when
-  # exporting BOOST_ROOT using shell export...
+# Use the same BOOST_ROOT for every projects
+set(NS_CMAKE_PROJECT_OPTIONS
+  CMAKE_ARGS "-DBOOST_ROOT=${Boost_INCLUDE_DIRS}"
+)
+
+if (DEFINED USE_SELF_BOOST)
   set(BOOST_DISPATCH_GIT_TAG    develop)
-  set(BOOST_DISPATCH_OPTIONS
-    CMAKE_ARGS "-DBOOST_ROOT=${BOOST_HEADER_ONLY_DESTINATION}/include"
-  )
-
-  set( STF_OPTIONS
-       CMAKE_ARGS "-DBOOST_ROOT=${BOOST_HEADER_ONLY_DESTINATION}/include"
-      )
-
   NS_project_include(boost.dispatch)
   add_dependencies(BOOST_DISPATCH BOOST_HEADER_ONLY)
   add_dependencies(BOOST_DISPATCH-install BOOST_HEADER_ONLY)
@@ -76,6 +75,8 @@ if (DEFINED USE_SELF_BOOST)
   )
 endif()
 
+NS_project_include(ns.bench.standalone)
+NS_project_include(brigand.standalone)
 NS_project_include(stf.standalone)
 
 ## Compute version string and mode + Documentation
@@ -97,16 +98,21 @@ endif()
 include_directories(
   ${PROJECT_SOURCE_DIR}/include
   ${PROJECT_SOURCE_DIR}/test
+  ${PROJECT_SOURCE_DIR}/bench
   ${Boost_INCLUDE_DIRS}
 )
 
-## Setup Unit & Coverage Test
+## Setup Unit/Bench & Coverage Test
 ## -------------------------------------------------------------------------------------------------
+include(./setup.cmake) # Import compiler specific setup
 include(CTest)
 add_custom_target(tests)
 add_custom_target(unit)
 add_dependencies(tests unit)
 add_subdirectory(test)
+
+add_custom_target(bench)
+add_subdirectory(bench)
 
 if (NOT DEFINED IS_TRAVIS_CI)
   NS_include(coverage)

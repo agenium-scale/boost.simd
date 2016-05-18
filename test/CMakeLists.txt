@@ -6,7 +6,6 @@
 ##                            http://www.boost.org/LICENSE_1_0.txt
 ##===================================================================================================
 
-include(${CMAKE_CURRENT_LIST_DIR}/setup.cmake)
 NS_include(make_unit)
 NS_include(make_coverage)
 
