@@ -36,7 +36,7 @@ void test(Env& $)
   STF_IEEE_EQUAL(bs::div(bs::floor,aa1, aa2), bb);
 }
 
-STF_CASE_TPL("Check divfloor on pack" , STF_IEEE_TYPES)
+STF_CASE_TPL("Check divfloor on pack" , STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 

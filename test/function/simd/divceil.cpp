@@ -36,8 +36,7 @@ void test(Env& $)
   STF_IEEE_EQUAL(bs::div(bs::ceil,aa1, aa2), bb);
 }
 
-STF_CASE_TPL("Check divround on pack" , (int8_t)(uint8_t)(int16_t)(uint16_t)
-             (int32_t)(uint32_t)(float)(double))//STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check divround on pack" , STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 

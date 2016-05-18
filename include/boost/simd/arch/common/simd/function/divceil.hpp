@@ -28,6 +28,25 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
+  BOOST_DISPATCH_OVERLOAD(div_
+                         , (typename A0, typename X)
+                         , bd::cpu_
+                         , bs::tag::ceil_
+                         , bs::pack_<bd::arithmetic_<A0>, X>
+                         , bs::pack_<bd::arithmetic_<A0>, X>
+                         )
+  {
+    BOOST_FORCEINLINE A0 operator()( bd::functor<bs::tag::ceil_> const&
+                                   , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+    {
+      A0 r;
+      for(unsigned int i=0; i <A0::static_size ; i++)
+      {
+        r[i] = div(ceil, a0[i], a1[i]);
+      }
+      return r;
+    }
+  };
   BOOST_DISPATCH_OVERLOAD_IF(div_
                             , (typename A0, typename X)
                             , (bd::is_upgradable<A0>)
