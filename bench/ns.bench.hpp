@@ -1049,10 +1049,11 @@ namespace detail {
   template <std::size_t ExpSize, typename F, typename... Args>
   struct basic_common_function_experiment : mutable_experiment {
     enum {
+      result_array_size = 32,
       experiment_size = 1024
     };
     using return_t       = decltype(std::declval<F>()(std::declval<Args>()()...));
-    using return_array_t = std::array<return_t, experiment_size>;
+    using return_array_t = std::array<return_t, result_array_size>;
     static_assert( !std::is_same<void, return_t>::value
                  , "Functions passed to function_experiment must not return void"
                  );
@@ -1073,7 +1074,7 @@ namespace detail {
     }
     public:
     F f_;
-    std::tuple<std::array<decltype(std::declval<Args>()()), experiment_size>...> args_;
+    std::tuple<decltype(std::declval<Args>()())...> args_;
     std::tuple<Args...> args_gen_;
     std::shared_ptr<return_array_t> results_;
   };
@@ -1089,7 +1090,7 @@ namespace detail {
     }
     void run() {
       for (std::size_t i = 0; i < super::experiment_size; ++i) {
-        (*this->results_)[i] =
+        (*this->results_)[i % super::result_array_size] =
           this->f_();
       }
     }
@@ -1104,14 +1105,12 @@ namespace detail {
     using super = basic_common_function_experiment<ExpSize, F, Args...>;
     using super::super;
     virtual void before_run() {
-      for (std::size_t i = 0; i < super::experiment_size; ++i) {
-        std::get<0>(this->args_)[i] = std::get<0>(this->args_gen_)();
-      }
+      std::get<0>(this->args_) = std::get<0>(this->args_gen_)();
     }
     void run() {
       for (std::size_t i = 0; i < super::experiment_size; ++i) {
-        (*this->results_)[i] =
-          this->f_(std::get<0>(this->args_)[i]);
+        (*this->results_)[i % super::result_array_size] =
+          this->f_(std::get<0>(this->args_));
       }
     }
     virtual std::string description() const {
@@ -1125,16 +1124,14 @@ namespace detail {
     using super = basic_common_function_experiment<ExpSize, F, Args...>;
     using super::super;
     virtual void before_run() {
-      for (std::size_t i = 0; i < super::experiment_size; ++i) {
-        std::get<0>(this->args_)[i] = std::get<0>(this->args_gen_)();
-        std::get<1>(this->args_)[i] = std::get<1>(this->args_gen_)();
-      }
+      std::get<0>(this->args_) = std::get<0>(this->args_gen_)();
+      std::get<1>(this->args_) = std::get<1>(this->args_gen_)();
     }
     void run() {
       for (std::size_t i = 0; i < super::experiment_size; ++i) {
-        (*this->results_)[i] =
-          this->f_( std::get<0>(this->args_)[i]
-                  , std::get<1>(this->args_)[i]
+        (*this->results_)[i % super::result_array_size] =
+          this->f_( std::get<0>(this->args_)
+                  , std::get<1>(this->args_)
                   );
       }
     }
@@ -1153,18 +1150,16 @@ namespace detail {
     using super = basic_common_function_experiment<ExpSize, F, Args...>;
     using super::super;
     virtual void before_run() {
-      for (std::size_t i = 0; i < super::experiment_size; ++i) {
-        std::get<0>(this->args_)[i] = std::get<0>(this->args_gen_)();
-        std::get<1>(this->args_)[i] = std::get<1>(this->args_gen_)();
-        std::get<2>(this->args_)[i] = std::get<2>(this->args_gen_)();
-      }
+      std::get<0>(this->args_) = std::get<0>(this->args_gen_)();
+      std::get<1>(this->args_) = std::get<1>(this->args_gen_)();
+      std::get<2>(this->args_) = std::get<2>(this->args_gen_)();
     }
     void run() {
       for (std::size_t i = 0; i < super::experiment_size; ++i) {
-        (*this->results_)[i] =
-          this->f_( std::get<0>(this->args_)[i]
-                  , std::get<1>(this->args_)[i]
-                  , std::get<2>(this->args_)[i]
+        (*this->results_)[i % super::result_array_size] =
+          this->f_( std::get<0>(this->args_)
+                  , std::get<1>(this->args_)
+                  , std::get<2>(this->args_)
                   );
       }
     }
@@ -1184,20 +1179,18 @@ namespace detail {
     using super = basic_common_function_experiment<ExpSize, F, Args...>;
     using super::super;
     virtual void before_run() {
-      for (std::size_t i = 0; i < super::experiment_size; ++i) {
-        std::get<0>(this->args_)[i] = std::get<0>(this->args_gen_)();
-        std::get<1>(this->args_)[i] = std::get<1>(this->args_gen_)();
-        std::get<2>(this->args_)[i] = std::get<2>(this->args_gen_)();
-        std::get<3>(this->args_)[i] = std::get<3>(this->args_gen_)();
-      }
+      std::get<0>(this->args_) = std::get<0>(this->args_gen_)();
+      std::get<1>(this->args_) = std::get<1>(this->args_gen_)();
+      std::get<2>(this->args_) = std::get<2>(this->args_gen_)();
+      std::get<3>(this->args_) = std::get<3>(this->args_gen_)();
     }
     void run() {
       for (std::size_t i = 0; i < super::experiment_size; ++i) {
-        (*this->results_)[i] =
-          this->f_( std::get<0>(this->args_)[i]
-                  , std::get<1>(this->args_)[i]
-                  , std::get<2>(this->args_)[i]
-                  , std::get<3>(this->args_)[i]
+        (*this->results_)[i % super::result_array_size] =
+          this->f_( std::get<0>(this->args_)
+                  , std::get<1>(this->args_)
+                  , std::get<2>(this->args_)
+                  , std::get<3>(this->args_)
                   );
       }
     }
