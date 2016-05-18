@@ -14,6 +14,7 @@
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/function/scalar/is_nez.hpp>
+#include <boost/simd/function/scalar/if_one_else_zero.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
@@ -45,7 +46,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE std::size_t operator()(A0 const& a0) const BOOST_NOEXCEPT
     {
       std::size_t n = 0;
-      for(size_t i=0; i < A0::static_size; ++i) n += is_nez(a0[i]);
+      for(size_t i=0; i < A0::static_size; ++i) n += if_one_else_zero(a0[i]);
       return n;
     }
   };

@@ -24,6 +24,7 @@
 #include <boost/simd/function/simd/bitofsign.hpp>
 #include <boost/simd/function/simd/bitwise_xor.hpp>
 #include <boost/simd/function/simd/exp.hpp>
+#include <boost/simd/function/simd/genmask.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
 #include <boost/simd/function/simd/nbtrue.hpp>
 #include <boost/simd/function/simd/is_greater.hpp>
@@ -48,7 +49,7 @@ namespace boost { namespace simd { namespace ext
         A0 x = bs::abs(a0);
         auto lt1= is_less(x, One<A0>());
         A0 bts = bitofsign(a0);
-        std::size_t nb = nbtrue(lt1);
+        std::size_t nb = nbtrue(genmask(lt1));
         A0 z = Zero<A0>();
         if(nb > 0)
         {
