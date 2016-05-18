@@ -88,13 +88,10 @@ struct bitwise_and_std
 int main(int argc, char **argv) {
    nsb::parse_args(argc, argv);
 
-   nsb::make_for_each<bitwise_and_packed, short>(-10, 10);
-   //nsb::make_for_each<bitwise_and_scalar, short>(-10, 10);
-
-   //nsb::make_for_each<bitwise_and_packed, uint64_t>(0, 20);
-   //nsb::make_for_each<bitwise_and_packed, NS_BENCH_NUMERIC_TYPES>(-10, 10);
-   //nsb::make_for_each<bitwise_and_scalar, NS_BENCH_NUMERIC_TYPES>(-10, 10);
-   //nsb::make_for_each<bitwise_and_std,    NS_BENCH_INTEGRAL_TYPES>(-10, 10);
+   nsb::make_for_each<bitwise_and_packed, uint64_t>(0, 20);
+   nsb::make_for_each<bitwise_and_packed, NS_BENCH_NUMERIC_TYPES>(-10, 10);
+   nsb::make_for_each<bitwise_and_scalar, NS_BENCH_NUMERIC_TYPES>(-10, 10);
+   nsb::make_for_each<bitwise_and_std,    NS_BENCH_INTEGRAL_TYPES>(-10, 10);
    return 0;
 }
 
