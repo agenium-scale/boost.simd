@@ -63,7 +63,11 @@ namespace boost { namespace simd { namespace ext
       A0 y = bs::pow(x,rec(aa1));
       // Correct numerical errors (since, e.g., 64^(1/3) is not exactly 4)
       // by one iteration of Newton's method
-      if (y) y -= (bs::pow(y, aa1) - x) / (aa1* bs::pow(y,minusone(aa1)));
+      if (y)
+      {
+        y -= (bs::pow(y, aa1) - x) / (aa1* bs::pow(y,minusone(aa1)));
+      }
+
       return (is_ltza0 && is_odda1)? -y : y;
     }
   };

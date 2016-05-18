@@ -29,7 +29,7 @@ STF_CASE_TPL (" nthroot",  STF_IEEE_TYPES)
   using r_t = decltype(nthroot(T(), iT()));
 
   // return type conformity test
-  STF_TYPE_IS(r_t, T);
+ STF_TYPE_IS(r_t, T);
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
@@ -56,6 +56,7 @@ STF_CASE_TPL (" nthroot",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(nthroot(T(-8),iT(3)), r_t(-2), 0.5);
   STF_ULP_EQUAL(nthroot(T(256),iT(4)), r_t(4), 0.5);
   STF_ULP_EQUAL(nthroot(T(8),iT(3)), r_t(2), 0.5);
+  STF_ULP_EQUAL(nthroot(T(0.5), iT(4)), r_t(0.84089641525371454303112547623321), 0.5);
 }
 
 
