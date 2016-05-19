@@ -1,7 +1,6 @@
 //==================================================================================================
 /**
   Copyright 2016 NumScale SAS
-  Copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,21 +14,21 @@
 
 namespace boost { namespace simd { namespace ext
 {
-   namespace bd = boost::dispatch;
-   namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
 
-   BOOST_DISPATCH_OVERLOAD( rec_
+  BOOST_DISPATCH_OVERLOAD ( rec_
                           , (typename A0)
                           , bs::avx_
-                          , bs::pack_<bd::single_<A0>, bs::avx_>
                           , bs::raw_tag
+                          , bs::pack_<bd::single_<A0>, bs::avx_>
                           )
-   {
-      BOOST_FORCEINLINE A0 operator()(A0 const& a0, raw_tag const&) const BOOST_NOEXCEPT
-      {
-        return _mm256_rcp_ps( a0 );
-      }
-   };
+  {
+    BOOST_FORCEINLINE A0 operator()(raw_tag const&, A0 const& a0) const BOOST_NOEXCEPT
+    {
+      return _mm256_rcp_ps( a0 );
+    }
+  };
 } } }
 
 #endif
