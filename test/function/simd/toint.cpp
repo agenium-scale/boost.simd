@@ -9,7 +9,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/si md/pack.hpp>
+#include <boost/simd/pack.hpp>
 #include <boost/simd/function/toint.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
@@ -34,7 +34,6 @@ void test(Env& $)
   }
   p_t aa1(&a1[0], &a1[0]+N);
   i_t bb (&b[0], &b[0]+N);
-  std::cout << aa1 << std::endl;
   STF_EQUAL(bs::toint(aa1), bb);
 }
 
