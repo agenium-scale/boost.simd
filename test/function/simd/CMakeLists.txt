@@ -12,6 +12,7 @@ add_subdirectory(extract)
 add_subdirectory(genmask)
 add_subdirectory(insert)
 add_subdirectory(load)
+add_subdirectory(aligned_load)
 add_subdirectory(make)
 add_subdirectory(slice)
 add_subdirectory(slide)
@@ -29,7 +30,6 @@ acotd.cpp
 acotpi.cpp
 acosh.cpp
 acoth.cpp
-aligned_load.cpp
 aligned_store.cpp
 all.cpp
 any.cpp
