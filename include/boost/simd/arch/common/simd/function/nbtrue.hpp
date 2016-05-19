@@ -38,9 +38,9 @@ namespace boost { namespace simd { namespace ext
     }
   };
   BOOST_DISPATCH_OVERLOAD ( nbtrue_
-                          , (typename A0)
+                          , (typename A0, typename X)
                           , bs::simd_
-                          , bs::pack_<bs::logical_<A0>,bs::simd_emulation_>
+                          , bs::pack_<bs::logical_<A0>,X>
                           )
   {
     BOOST_FORCEINLINE std::size_t operator()(A0 const& a0) const BOOST_NOEXCEPT
