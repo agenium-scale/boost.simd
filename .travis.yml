@@ -61,6 +61,8 @@ before_script:
 script:
   - make update.boost-header-only | grep -v "^-- " # Silent installation
   - make update.boost.dispatch    | grep -v "^-- " # Silent installation
+  - make  -j 4 -k  regression.unit
+  - ctest -j 4 -R ^regression.*.unit
   - make  -j 4 -k  api.unit
   - ctest -j 4 -R ^api.*.unit
   - make  -j 4 -k  architecture.unit
