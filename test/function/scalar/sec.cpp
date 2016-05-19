@@ -66,7 +66,7 @@ STF_CASE_TPL (" sec fast_",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(bs::fast_(sec)(-bs::Pio_4<T>()), bs::Sqrt_2<r_t>(), 0.5);
   STF_ULP_EQUAL(bs::fast_(sec)(bs::Pi<T>()), bs::Nan<r_t>(), 0.5);
   STF_ULP_EQUAL(bs::fast_(sec)(bs::Pio_4<T>()), bs::Sqrt_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(sec)(bs::Zero<T>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(sec)(bs::Zero<T>()), bs::One<r_t>(), 16);
 }
 
 STF_CASE_TPL (" sec clipped_small_",  STF_IEEE_TYPES)
