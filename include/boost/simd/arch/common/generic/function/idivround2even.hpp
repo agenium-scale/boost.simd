@@ -13,7 +13,7 @@
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_IDIVROUND2EVEN_HPP_INCLUDED
 
 #include <boost/simd/function/divides.hpp>
-#include <boost/simd/function/divround2even.hpp>
+#include <boost/simd/function/round2even.hpp>
 #include <boost/simd/function/iround2even.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/meta/as_integer.hpp>
@@ -22,16 +22,18 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
-  BOOST_DISPATCH_OVERLOAD ( idivround2even_
+  BOOST_DISPATCH_OVERLOAD ( div_
                           , (typename A0)
                           , bd::cpu_
+                          , bs::tag::iround2even_
                           , bd::generic_< bd::arithmetic_<A0> >
                           , bd::generic_< bd::arithmetic_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( bd::functor<bs::tag::iround2even_> const&,
+                                      A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
     {
-      return divround2even(a0, a1);
+      return div(round2even, a0, a1);
     }
   };
 
@@ -40,14 +42,17 @@ namespace boost { namespace simd { namespace ext
   #pragma warning(disable: 4723) // potential divide by 0
 #endif
 
-  BOOST_DISPATCH_OVERLOAD ( idivround2even_
+  BOOST_DISPATCH_OVERLOAD ( div_
                           , (typename A0)
                           , bd::cpu_
+                          , bs::tag::iround2even_
                           , bd::generic_< bd::floating_<A0> >
                           , bd::generic_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE bd::as_integer_t<A0> operator() ( A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE bd::as_integer_t<A0> operator() ( bd::functor<bs::tag::iround2even_> const&
+                                                      , A0 const& a0
+                                                      , A0 const& a1) const BOOST_NOEXCEPT
     {
       return iround2even(a0/a1);
     }

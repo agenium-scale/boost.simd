@@ -23,7 +23,7 @@ void test(Env& $)
   T a1[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
-    a1[i] = (i%2) ? T(i) : T(-i);
+    a1[i] = (i%2) ? T(i+1) : T(N+i+1);
     b[i] = bs::sqr(a1[i]) ;
   }
 
@@ -33,7 +33,7 @@ void test(Env& $)
   STF_EQUAL(bs::sqr(aa1), bb);
 }
 
-STF_CASE_TPL("Check sqr saturated on pack" , STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check sqr on pack" , STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
@@ -60,7 +60,7 @@ void tests(Env& $)
   STF_EQUAL(bs::saturated_(bs::sqr)(aa1), bb);
 }
 
-STF_CASE_TPL("Check sqr on pack" , STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check saturated sqr on pack" , STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 

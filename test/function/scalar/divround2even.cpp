@@ -21,13 +21,13 @@ STF_CASE_TPL (" div real",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   using bs::div;
-  using r_t = decltype(div(T(), T()));
+  using r_t = decltype(div(bs::round2even, T(), T()));
 
-  STF_IEEE_EQUAL(div(bs::Inf<T>(), bs::Inf<T>(), bs::round2even), bs::Nan<r_t>());
-  STF_IEEE_EQUAL(div(bs::Minf<T>(), bs::Minf<T>(), bs::round2even), bs::Nan<r_t>());
-  STF_EQUAL(div(bs::Mone<T>(), bs::Mone<T>(), bs::round2even), bs::One<r_t>());
-  STF_IEEE_EQUAL(div(bs::Nan<T>(), bs::Nan<T>(), bs::round2even), bs::Nan<r_t>());
-  STF_EQUAL(div(bs::One<T>(), bs::One<T>(), bs::round2even), bs::One<r_t>());
+  STF_IEEE_EQUAL(div(bs::round2even, bs::Inf<T>(), bs::Inf<T>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(div(bs::round2even, bs::Minf<T>(), bs::Minf<T>()), bs::Nan<r_t>());
+  STF_EQUAL(div(bs::round2even, bs::Mone<T>(), bs::Mone<T>()), bs::One<r_t>());
+  STF_IEEE_EQUAL(div(bs::round2even, bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>());
+  STF_EQUAL(div(bs::round2even, bs::One<T>(), bs::One<T>()), bs::One<r_t>());
 } // end of test for floating_
 
 STF_CASE_TPL (" div unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
@@ -35,20 +35,20 @@ STF_CASE_TPL (" div unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
   namespace bs = boost::simd;
 
   using bs::div;
-  using r_t = decltype(div(T(), T()));
+  using r_t = decltype(div(bs::round2even, T(), T()));
 
-  STF_EQUAL(div(bs::One<T>(), bs::One<T>(), bs::round2even), bs::One<r_t>());
-  STF_EQUAL(div(T(5), T(2), bs::round2even), T(2));
-  STF_EQUAL(div(T(7), T(2), bs::round2even), T(4));
-  STF_EQUAL(div(T(9), T(3), bs::round2even), T(3));
-  STF_EQUAL(div(T(10), T(3), bs::round2even), T(3));
-  STF_EQUAL(div(T(11), T(3), bs::round2even), T(4));
-  STF_EQUAL(div(T(12), T(3), bs::round2even), T(4));
-  STF_EQUAL(div(T(18), T(6), bs::round2even), T(3));
-  STF_EQUAL(div(T(20), T(6), bs::round2even), T(3));
-  STF_EQUAL(div(T(22), T(6), bs::round2even), T(4));
-  STF_EQUAL(div(T(24), T(6), bs::round2even), T(4));
-  STF_EQUAL(div(bs::Valmax<T>(),bs::Two<T>(), bs::round2even), bs::Valmax<T>()/bs::Two<T>()+bs::One<T>());
+  STF_EQUAL(div(bs::round2even, bs::One<T>(), bs::One<T>()), bs::One<r_t>());
+  STF_EQUAL(div(bs::round2even, T(5), T(2)), T(2));
+  STF_EQUAL(div(bs::round2even, T(7), T(2)), T(4));
+  STF_EQUAL(div(bs::round2even, T(9), T(3)), T(3));
+  STF_EQUAL(div(bs::round2even, T(10), T(3)), T(3));
+  STF_EQUAL(div(bs::round2even, T(11), T(3)), T(4));
+  STF_EQUAL(div(bs::round2even, T(12), T(3)), T(4));
+  STF_EQUAL(div(bs::round2even, T(18), T(6)), T(3));
+  STF_EQUAL(div(bs::round2even, T(20), T(6)), T(3));
+  STF_EQUAL(div(bs::round2even, T(22), T(6)), T(4));
+  STF_EQUAL(div(bs::round2even, T(24), T(6)), T(4));
+  STF_EQUAL(div(bs::round2even, bs::Valmax<T>(),bs::Two<T>()), bs::Valmax<T>()/bs::Two<T>()+bs::One<T>());
 
 } // end of test for unsigned_int_
 
@@ -58,43 +58,43 @@ STF_CASE_TPL (" div signed_int", STF_SIGNED_INTEGRAL_TYPES)
   using bs::div;
   using r_t = decltype(div(T(), T()));
 
-  STF_EQUAL(div(bs::Mone<T>(), bs::Mone<T>(), bs::round2even), bs::One<r_t>());
-  STF_EQUAL(div(bs::One<T>(), bs::One<T>(), bs::round2even), bs::One<r_t>());
-  STF_EQUAL(div(T(5), T(2), bs::round2even), T(2));
-  STF_EQUAL(div(T(7), T(2), bs::round2even), T(4));
-  STF_EQUAL(div(T(-5), T(2), bs::round2even), T(-2));
-  STF_EQUAL(div(T(-7), T(2), bs::round2even), T(-4));
-  STF_EQUAL(div(T(-4),T(0), bs::round2even), bs::Valmin<r_t>());
-  STF_EQUAL(div(T(4),T(0), bs::round2even), bs::Valmax<r_t>());
-  STF_EQUAL(div(T(4),T(3), bs::round2even), T(1));
-  STF_EQUAL(div(T(-4),T(-3), bs::round2even), T(1));
-  STF_EQUAL(div(T(4),T(-3), bs::round2even), T(-1));
-  STF_EQUAL(div(T(-4),T(3), bs::round2even), T(-1));
-  STF_EQUAL(div(T(5),T(3), bs::round2even), T(2));
-  STF_EQUAL(div(T(-5),T(-3), bs::round2even), T(2));
-  STF_EQUAL(div(T(5),T(-3), bs::round2even), T(-2));
-  STF_EQUAL(div(T(-5),T(3), bs::round2even), T(-2));
+  STF_EQUAL(div(bs::round2even, bs::Mone<T>(), bs::Mone<T>()), bs::One<r_t>());
+  STF_EQUAL(div(bs::round2even, bs::One<T>(), bs::One<T>()), bs::One<r_t>());
+  STF_EQUAL(div(bs::round2even, T(5), T(2)), T(2));
+  STF_EQUAL(div(bs::round2even, T(7), T(2)), T(4));
+  STF_EQUAL(div(bs::round2even, T(-5), T(2)), T(-2));
+  STF_EQUAL(div(bs::round2even, T(-7), T(2)), T(-4));
+  STF_EQUAL(div(bs::round2even, T(-4),T(0)), bs::Valmin<r_t>());
+  STF_EQUAL(div(bs::round2even, T(4),T(0)), bs::Valmax<r_t>());
+  STF_EQUAL(div(bs::round2even, T(4),T(3)), T(1));
+  STF_EQUAL(div(bs::round2even, T(-4),T(-3)), T(1));
+  STF_EQUAL(div(bs::round2even, T(4),T(-3)), T(-1));
+  STF_EQUAL(div(bs::round2even, T(-4),T(3)), T(-1));
+  STF_EQUAL(div(bs::round2even, T(5),T(3)), T(2));
+  STF_EQUAL(div(bs::round2even, T(-5),T(-3)), T(2));
+  STF_EQUAL(div(bs::round2even, T(5),T(-3)), T(-2));
+  STF_EQUAL(div(bs::round2even, T(-5),T(3)), T(-2));
 
-  STF_EQUAL(div(T(5),T(4), bs::round2even), T(1));
-  STF_EQUAL(div(T(-5),T(-4), bs::round2even), T(1));
-  STF_EQUAL(div(T(5),T(-4), bs::round2even), T(-1));
-  STF_EQUAL(div(T(-5),T(4), bs::round2even), T(-1));
-  STF_EQUAL(div(T(6),T(4), bs::round2even), T(2));
-  STF_EQUAL(div(T(-6),T(-4), bs::round2even), T(2));
-  STF_EQUAL(div(T(6),T(-4), bs::round2even), T(-2));
-  STF_EQUAL(div(T(-6),T(4), bs::round2even), T(-2));
-  STF_EQUAL(div(T(8),T(4), bs::round2even), T(2));
-  STF_EQUAL(div(T(-8),T(-4), bs::round2even), T(2));
-  STF_EQUAL(div(T(8),T(-4), bs::round2even), T(-2));
-  STF_EQUAL(div(T(-8),T(4), bs::round2even), T(-2));
-  STF_EQUAL(div(T(9),T(4), bs::round2even), T(2));
-  STF_EQUAL(div(T(-9),T(-4), bs::round2even), T(2));
-  STF_EQUAL(div(T(9),T(-4), bs::round2even), T(-2));
-  STF_EQUAL(div(T(-9),T(4), bs::round2even), T(-2));
-  STF_EQUAL(div(T(10),T(4), bs::round2even), T(2));
-  STF_EQUAL(div(T(-10),T(-4), bs::round2even), T(2));
-  STF_EQUAL(div(T(10),T(-4), bs::round2even), T(-2));
-  STF_EQUAL(div(T(-10),T(4), bs::round2even), T(-2));
+  STF_EQUAL(div(bs::round2even, T(5),T(4)), T(1));
+  STF_EQUAL(div(bs::round2even, T(-5),T(-4)), T(1));
+  STF_EQUAL(div(bs::round2even, T(5),T(-4)), T(-1));
+  STF_EQUAL(div(bs::round2even, T(-5),T(4)), T(-1));
+  STF_EQUAL(div(bs::round2even, T(6),T(4)), T(2));
+  STF_EQUAL(div(bs::round2even, T(-6),T(-4)), T(2));
+  STF_EQUAL(div(bs::round2even, T(6),T(-4)), T(-2));
+  STF_EQUAL(div(bs::round2even, T(-6),T(4)), T(-2));
+  STF_EQUAL(div(bs::round2even, T(8),T(4)), T(2));
+  STF_EQUAL(div(bs::round2even, T(-8),T(-4)), T(2));
+  STF_EQUAL(div(bs::round2even, T(8),T(-4)), T(-2));
+  STF_EQUAL(div(bs::round2even, T(-8),T(4)), T(-2));
+  STF_EQUAL(div(bs::round2even, T(9),T(4)), T(2));
+  STF_EQUAL(div(bs::round2even, T(-9),T(-4)), T(2));
+  STF_EQUAL(div(bs::round2even, T(9),T(-4)), T(-2));
+  STF_EQUAL(div(bs::round2even, T(-9),T(4)), T(-2));
+  STF_EQUAL(div(bs::round2even, T(10),T(4)), T(2));
+  STF_EQUAL(div(bs::round2even, T(-10),T(-4)), T(2));
+  STF_EQUAL(div(bs::round2even, T(10),T(-4)), T(-2));
+  STF_EQUAL(div(bs::round2even, T(-10),T(4)), T(-2));
 
 } // end of test for signed_int_
 

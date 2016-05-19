@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_DIVROUND2EVEN_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_DIVROUND2EVEN_HPP_INCLUDED
 
+#include <boost/simd/function/definition/round2even.hpp>
 #include <boost/simd/constant/two.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/valmin.hpp>
@@ -29,14 +30,16 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
-  BOOST_DISPATCH_OVERLOAD ( divround2even_
+  BOOST_DISPATCH_OVERLOAD ( div_
                           , (typename A0)
                           , bd::cpu_
+                          , bs::tag::round2even_
                           , bd::scalar_< bd::int64_<A0> >
                           , bd::scalar_< bd::int64_<A0> >
                           )
   {
-    A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
+    A0 operator() ( bd::functor<bs::tag::round2even_> const&
+                  , A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       using ui_t = bd::as_integer_t<A0, unsigned>;
       if (!a0) return  Zero<A0>();
@@ -58,14 +61,16 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( divround2even_
+  BOOST_DISPATCH_OVERLOAD ( div_
                           , (typename A0)
                           , bd::cpu_
+                          , bs::tag::round2even_
                           , bd::scalar_< bd::signed_<A0> >
                           , bd::scalar_< bd::signed_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( bd::functor<bs::tag::round2even_> const&
+                                    , A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       if(a1)
         return static_cast<A0 >(round2even(static_cast<double>(a0)/static_cast<double>(a1)));
@@ -76,14 +81,16 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( divround2even_
+  BOOST_DISPATCH_OVERLOAD ( div_
                           , (typename A0)
                           , bd::cpu_
+                          , bs::tag::round2even_
                           , bd::scalar_< bd::unsigned_<A0> >
                           , bd::scalar_< bd::unsigned_<A0> >
                           )
   {
-    A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
+    A0 operator() ( bd::functor<bs::tag::round2even_> const&
+                  , A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       if(a1)
       {
@@ -106,14 +113,16 @@ namespace boost { namespace simd { namespace ext
 #pragma warning(disable: 4723) // potential divide by 0
 #endif
 
-  BOOST_DISPATCH_OVERLOAD ( divround2even_
+  BOOST_DISPATCH_OVERLOAD ( div_
                           , (typename A0)
                           , bd::cpu_
+                          , bs::tag::round2even_
                           , bd::scalar_< bd::floating_<A0> >
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( bd::functor<bs::tag::round2even_> const&
+                                    , A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       return round2even(a0/a1);
     }

@@ -13,12 +13,26 @@
 #define BOOST_SIMD_FUNCTION_DEFINITION_IFIX_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
-#include <boost/simd/function/toint.hpp>
+#include <boost/dispatch/function/make_callable.hpp>
+#include <boost/dispatch/hierarchy/functions.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 
 namespace boost { namespace simd
 {
-    auto ifix = boost::simd::saturated_(toint);
+  namespace tag
+  {
+    BOOST_DISPATCH_MAKE_TAG(ext, ifix_, boost::dispatch::elementwise_<ifix_>);
+  }
+
+  namespace ext
+  {
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, ifix_);
+  }
+
+  BOOST_DISPATCH_CALLABLE_DEFINITION(tag::ifix_,ifix);
+
+
 } }
+
 
 #endif

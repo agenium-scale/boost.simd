@@ -90,6 +90,12 @@ deinterleave_first.cpp
 deinterleave_second.cpp
 dist.cpp
 dist_s.cpp
+divceil.cpp
+divfix.cpp
+divfloor.cpp
+divround.cpp
+divround2even.cpp
+divtrunc.cpp
 divides.cpp
 divides_s.cpp
 exp.cpp

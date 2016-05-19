@@ -29,7 +29,7 @@ void test(Env& $)
   iT b[N];
   for(int i = 0; i < N; ++i)
   {
-    a1[i] = (i%2) ? T(i) : T(-i);
+    a1[i] = (i%2) ? T(i) : T(i+N);
     b[i] = bs::toint(a1[i]) ;
   }
   p_t aa1(&a1[0], &a1[0]+N);

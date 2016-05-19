@@ -13,7 +13,6 @@
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_MOD_HPP_INCLUDED
 
 #include <boost/simd/function/div.hpp>
-#include <boost/simd/function/idiv.hpp>
 #include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/selsub.hpp>
@@ -32,7 +31,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A0  a1) const BOOST_NOEXCEPT
     {
-      return selsub(is_nez(a1),a0,div(a0,a1,floor)*a1 );
+      return selsub(is_nez(a1),a0,div(floor, a0, a1)*a1 );
     }
   };
 
@@ -45,7 +44,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
-      return selsub(is_nez(a1),a0,simd::multiplies(idiv(a0,a1,floor),a1));
+      return selsub(is_nez(a1),a0,simd::multiplies(div(ifloor, a0, a1),a1));
     }
   };
 } } }

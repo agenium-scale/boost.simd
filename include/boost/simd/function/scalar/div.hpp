@@ -12,6 +12,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_DIV_HPP_INCLUDED
 
 #include <boost/simd/function/definition/div.hpp>
-#include <boost/simd/arch/common/generic/function/div.hpp>
+#include <boost/simd/arch/common/scalar/function/div.hpp>
 
 #endif

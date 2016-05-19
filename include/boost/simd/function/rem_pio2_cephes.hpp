@@ -38,7 +38,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    as_integer<T> n = idivround2even(x, Pio_2<T>());
+    as_integer<T> n = div(iround2even, x, Pio_2<T>());
     T r =  remainder(x, Pio_2<T>());
     @endcode
 
