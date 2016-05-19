@@ -14,6 +14,5 @@
 
 #include <boost/simd/function/definition/sinhcosh.hpp>
 #include <boost/simd/arch/common/scalar/function/sinhcosh.hpp>
-#include <boost/simd/arch/common/generic/function/sinhcosh.hpp>
 
 #endif

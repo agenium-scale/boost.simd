@@ -27,9 +27,12 @@ acospi.cpp
 acot.cpp
 acotd.cpp
 acotpi.cpp
+acosh.cpp
+acoth.cpp
 aligned_load.cpp
 aligned_store.cpp
 all.cpp
+any.cpp
 arg.cpp
 acsc.cpp
 acscd.cpp
@@ -46,6 +49,8 @@ atan2d.cpp
 atan2pi.cpp
 atand.cpp
 atanpi.cpp
+asinh.cpp
+atanh.cpp
 autofold.cpp
 automap.cpp
 autosplat.cpp
@@ -76,6 +81,8 @@ cospi.cpp
 cot.cpp
 cotd.cpp
 cotpi.cpp
+cosh.cpp
+coth.cpp
 ctz.cpp
 dec.cpp
 dec_s.cpp
@@ -216,12 +223,14 @@ minusone_s.cpp
 modf.cpp
 multiplies.cpp
 multiplies_s.cpp
+nbtrue.cpp
 negate.cpp
 negatenz.cpp
 negif.cpp
 negifnot.cpp
 nextafter.cpp
 next.cpp
+none.cpp
 nthroot.cpp
 oneminus.cpp
 oneminus_s.cpp
@@ -267,6 +276,10 @@ sind.cpp
 sinpi.cpp
 #sort.cpp
 split_multiplies.cpp
+sinhcosh.cpp
+sinh.cpp
+sinhc.cpp
+tanh.cpp
 sqr_abs.cpp
 sqr.cpp
 sqr_s.cpp
@@ -309,7 +322,6 @@ unary_plus.cpp
 #idivfix.cpp
 #idivfloor.cpp
 #idivround.cpp
-#inbtrue.cpp
 #is_included_c.cpp
 #is_included.cpp
 #mod.cpp

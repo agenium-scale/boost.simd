@@ -55,7 +55,6 @@ namespace boost { namespace simd
 #include <boost/simd/function/cumsum.hpp>
 #include <boost/simd/function/dot.hpp>
 #include <boost/simd/function/hmsb.hpp>
-#include <boost/simd/function/inbtrue.hpp>
 #include <boost/simd/function/is_included_c.hpp>
 #include <boost/simd/function/is_included.hpp>
 #include <boost/simd/function/is_simd_logical.hpp>

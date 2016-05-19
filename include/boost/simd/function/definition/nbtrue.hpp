@@ -14,6 +14,8 @@
 
 #include <boost/simd/config.hpp>
 #include <boost/dispatch/function/make_callable.hpp>
+#include <boost/simd/function/definition/plus.hpp>
+#include <boost/simd/constant/definition/zero.hpp>
 #include <boost/dispatch/hierarchy/functions.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 
@@ -21,7 +23,7 @@ namespace boost { namespace simd
 {
   namespace tag
   {
-    BOOST_DISPATCH_MAKE_TAG(ext, nbtrue_, boost::dispatch::elementwise_<nbtrue_>);
+    BOOST_DISPATCH_MAKE_TAG(ext, nbtrue_, (boost::dispatch::unspecified_<nbtrue_>));
   }
 
   namespace ext

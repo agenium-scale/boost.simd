@@ -36,8 +36,6 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0)
                           , bd::cpu_
                           , bd::scalar_<bd::floating_<A0> >
-                          , bd::scalar_<bd::floating_<A0> >
-                          , bd::scalar_<bd::floating_<A0> >
                           )
   {
     //////////////////////////////////////////////////////////////////////////////
@@ -49,7 +47,8 @@ namespace boost { namespace simd { namespace ext
     // * in the second     sinh and cosh are (e/2)*e (avoiding undue overflow)
     // Threshold is Maxlog - Log_2
     //////////////////////////////////////////////////////////////////////////////
-    BOOST_FORCEINLINE void operator() ( A0 a0,A0 & a1,A0 & a2) const BOOST_NOEXCEPT
+    using result_t = std::pair<A0, A0>;
+    BOOST_FORCEINLINE result_t operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       A0 x = bs::abs(a0);
       auto test1 = (x >  Maxlog<A0>()-Log_2<A0>());
@@ -58,11 +57,11 @@ namespace boost { namespace simd { namespace ext
       A0 tmp1 = Half<A0>()*tmp;
       A0 rtmp = rec(tmp);
       A0 r =  test1 ? tmp1*tmp : tmp1-Half<A0>()*rtmp;
-      a1 = bitwise_xor(((x < One<A0>())
-                  ? detail::sinh_kernel<A0>::compute(x, sqr(x))
-                  : r),
-                 bitofsign(a0));
-      a2 = test1 ? r : bs::average(tmp, rtmp);
+      return {bitwise_xor(((x < One<A0>())
+                           ? detail::sinh_kernel<A0>::compute(x, sqr(x))
+                           : r),
+                          bitofsign(a0)),
+          test1 ? r : bs::average(tmp, rtmp)};
     }
   };
 } } }

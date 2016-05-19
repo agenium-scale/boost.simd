@@ -14,5 +14,6 @@
 
 #include <boost/simd/function/scalar/sinhc.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
+#include <boost/simd/arch/common/simd/function/sinhc.hpp>
 
 #endif

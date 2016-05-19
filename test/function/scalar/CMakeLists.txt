@@ -257,7 +257,6 @@ set ( SOURCES
    compare_not_equal.cpp
    dot.cpp
    hmsb.cpp
-   inbtrue.cpp
    is_included_c.cpp
    is_included.cpp
    is_simd_logical.cpp
