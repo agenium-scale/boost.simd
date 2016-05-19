@@ -37,19 +37,6 @@ namespace boost { namespace simd { namespace ext
       return divides(a, b);
     }
   };
-//   BOOST_DISPATCH_OVERLOAD ( div_
-//                           , (typename T, typename X)
-//                           , bd::cpu_
-//                           , bs::tag::fix_
-//                           , bs::pack_<bd::arithmetic_<T>, X>
-//                           , bs::pack_<bd::arithmetic_<T>, X>
-//                           )
-//   {
-//     BOOST_FORCEINLINE T operator()(T const& a, T const& b ) const BOOST_NOEXCEPT
-//     {
-//       return div(bs::trunc, a, b);
-//     }
-//   };
 
 } } }
 
