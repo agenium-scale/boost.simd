@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -12,16 +11,13 @@
 #ifndef BOOST_SIMD_FUNCTION_REPEAT_LOWER_HALF_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_REPEAT_LOWER_HALF_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-
- /*!
-
+#if defined(DOXYGEN_ONLY)
+  /*!
     @ingroup group-swar
-    Function object implementing repeat_lower_half capabilities
 
-    Repeat lower half of a vector
+    Repeat the lower half of a vector
 
     @par Semantic:
 
@@ -44,10 +40,9 @@ namespace boost { namespace simd
 
   **/
   const boost::dispatch::functor<tag::repeat_lower_half_> repeat_lower_half = {};
-} }
 #endif
+} }
 
-#include <boost/simd/function/scalar/repeat_lower_half.hpp>
 #include <boost/simd/function/simd/repeat_lower_half.hpp>
 
 #endif
