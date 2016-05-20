@@ -257,7 +257,7 @@ rem_pio2_medium.cpp
 rem_pio2_straight.cpp
 remquo.cpp
 repeat_lower_half.cpp
-####repeat_upper_half.cpp
+repeat_upper_half.cpp
 reversebits.cpp
 reverse.cpp
 round.cpp

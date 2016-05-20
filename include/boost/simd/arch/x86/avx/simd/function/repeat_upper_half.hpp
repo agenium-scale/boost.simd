@@ -6,8 +6,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_REPEAT_UPPER_HALF_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_REPEAT_UPPER_HALF_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_REPEAT_UPPER_HALF_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_REPEAT_UPPER_HALF_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
 
@@ -18,13 +18,25 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( repeat_upper_half_
                           , (typename A0)
-                          , bs::sse_
-                          , bs::pack_<bd::single_<A0>, bs::sse_>
+                          , bs::avx_
+                          , bs::pack_<bd::double_<A0>, bs::avx_>
                          )
   {
     BOOST_FORCEINLINE A0 operator() ( const A0 & a0 ) const BOOST_NOEXCEPT
     {
-      return _mm_movehl_ps(a0,a0);
+      return _mm256_permute2f128_pd(a0,a0,0x11);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( repeat_upper_half_
+                          , (typename A0)
+                          , bs::avx_
+                          , bs::pack_<bd::single_<A0>, bs::avx_>
+                         )
+  {
+    BOOST_FORCEINLINE A0 operator() ( const A0 & a0 ) const BOOST_NOEXCEPT
+    {
+      return _mm256_permute2f128_ps(a0,a0,0x11);
     }
   };
 } } }

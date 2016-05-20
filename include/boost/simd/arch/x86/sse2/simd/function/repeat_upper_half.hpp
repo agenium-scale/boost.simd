@@ -6,10 +6,11 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_REPEAT_UPPER_HALF_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_REPEAT_UPPER_HALF_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_REPEAT_UPPER_HALF_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_REPEAT_UPPER_HALF_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
+#include <boost/simd/function/interleave_second.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -18,13 +19,25 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( repeat_upper_half_
                           , (typename A0)
-                          , bs::sse_
-                          , bs::pack_<bd::single_<A0>, bs::sse_>
+                          , bs::sse2_
+                          , bs::pack_<bd::ints32_<A0>, bs::sse_>
                          )
   {
     BOOST_FORCEINLINE A0 operator() ( const A0 & a0 ) const BOOST_NOEXCEPT
     {
-      return _mm_movehl_ps(a0,a0);
+      return _mm_shuffle_epi32(a0, _MM_SHUFFLE(3,2,3,2));
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( repeat_upper_half_
+                          , (typename A0)
+                          , bs::sse2_
+                          , bs::pack_<bd::type64_<A0>, bs::sse_>
+                         )
+  {
+    BOOST_FORCEINLINE A0 operator() ( const A0 & a0 ) const BOOST_NOEXCEPT
+    {
+      return interleave_second(a0,a0);
     }
   };
 } } }
