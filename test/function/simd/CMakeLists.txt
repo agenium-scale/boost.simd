@@ -256,6 +256,8 @@ rem_pio2_cephes.cpp
 rem_pio2_medium.cpp
 rem_pio2_straight.cpp
 remquo.cpp
+repeat_lower_half.cpp
+repeat_upper_half.cpp
 reversebits.cpp
 reverse.cpp
 round.cpp
@@ -339,9 +341,6 @@ unary_plus.cpp
 #splatted_minimum.cpp
 ####dot.cpp
 ####pow2.cpp
-
-####repeat_lower_half.cpp
-####repeat_upper_half.cpp
 )
 
 make_unit( "function.simd"  ${SOURCES})

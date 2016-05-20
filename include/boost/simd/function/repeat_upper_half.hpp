@@ -12,12 +12,10 @@
 #ifndef BOOST_SIMD_FUNCTION_REPEAT_UPPER_HALF_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_REPEAT_UPPER_HALF_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-
- /*!
-
+#if defined(DOXYGEN_ONLY)
+  /*!
     @ingroup group-swar
     Function object implementing repeat_upper_half capabilities
 
@@ -45,10 +43,9 @@ namespace boost { namespace simd
 
   **/
   const boost::dispatch::functor<tag::repeat_upper_half_> repeat_upper_half = {};
-} }
 #endif
+} }
 
-#include <boost/simd/function/scalar/repeat_upper_half.hpp>
 #include <boost/simd/function/simd/repeat_upper_half.hpp>
 
 #endif
