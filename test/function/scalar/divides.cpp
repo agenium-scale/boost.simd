@@ -46,9 +46,9 @@ STF_CASE_TPL( "Check fast divides behavior with floating", STF_IEEE_TYPES )
   using r_t = decltype(bs::fast_(divides)(T(), T()));
   STF_TYPE_IS(r_t, T);
 
-  STF_EQUAL(bs::fast_(divides)(bs::One<T>(),bs::Zero<T>()), bs::Inf<r_t>());
-  STF_IEEE_EQUAL(bs::fast_(divides)(bs::Zero<T>(), bs::Zero<T>()), bs::Nan<r_t>());
-  STF_EQUAL(bs::fast_(divides)(bs::One<T>(), bs::One<T>()), bs::One<r_t>());
+  STF_ULP_EQUAL(bs::fast_(divides)(T(1),T(1)), T(1), 16);
+  STF_ULP_EQUAL(bs::fast_(divides)(T(1),T(2)), T(0.5), 16);
+  STF_ULP_EQUAL(bs::fast_(divides)(T(5),T(3)), T(5)/T(3), 16);
 }
 
 
