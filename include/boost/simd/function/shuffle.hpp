@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -12,12 +11,10 @@
 #ifndef BOOST_SIMD_FUNCTION_SHUFFLE_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_SHUFFLE_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-
- /*!
-
+  #if defined(DOXYGEN_ONLY)
+  /*!
     @ingroup group-swar
     Function object implementing shuffle capabilities
 
@@ -50,9 +47,13 @@ namespace boost { namespace simd
     @tparam Perm Permutation pattern @metafunction
 
   **/
-  const boost::dispatch::functor<tag::shuffle_> shuffle = {};
-} }
+  template<std::ptrdiff_t... Ps, typename T>  T shuffle(T const& a);
+  template<std::ptrdiff_t... Ps, typename T>  T shuffle(T const& a,T const& b);
+
+  template<typename Permutation, typename T>  T shuffle(T const& a);
+  template<typename Permutation, typename T>  T shuffle(T const& a,T const& b);
 #endif
+} }
 
 #include <boost/simd/function/scalar/shuffle.hpp>
 #include <boost/simd/function/simd/shuffle.hpp>

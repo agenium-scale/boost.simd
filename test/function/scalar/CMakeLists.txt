@@ -265,6 +265,7 @@ set ( SOURCES
    prod.cpp
    sum.cpp
 #swar
+  shuffle.cpp
    broadcast.cpp
    cummax.cpp
    cummin.cpp
