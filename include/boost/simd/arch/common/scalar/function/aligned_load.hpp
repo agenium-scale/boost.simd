@@ -12,6 +12,7 @@
 #include <boost/simd/mask.hpp>
 #include <boost/dispatch/function/overload.hpp>
 #include <boost/dispatch/adapted/std/iterator.hpp>
+#include <boost/dispatch/adapted/common/pointer.hpp>
 #include <boost/dispatch/adapted/std/integral_constant.hpp>
 #include <boost/config.hpp>
 
@@ -58,9 +59,9 @@ namespace boost { namespace simd { namespace ext
   //------------------------------------------------------------------------------------------------
   // aligned_load from a masked pointer
   BOOST_DISPATCH_OVERLOAD ( aligned_load_
-                          , (typename Target, typename Pointer)
+                          , (typename Target, typename Pointer, typename Zero)
                           , bd::cpu_
-                          , bd::masked_pointer_<bd::scalar_<bd::unspecified_<Pointer>>>
+                          , bd::masked_pointer_<bd::scalar_<bd::unspecified_<Pointer>>,Zero>
                           , bd::target_< bd::scalar_<bd::unspecified_<Target>> >
                           )
   {

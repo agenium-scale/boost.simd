@@ -35,13 +35,13 @@ namespace boost { namespace simd
   }
 
   template<typename T, typename Pointer, typename... Opts>
-  BOOST_FORCEINLINE T aligned_load(Pointer p, Opts&&... o)
+  BOOST_FORCEINLINE T aligned_load(Pointer const& p, Opts&&... o)
   {
     return detail::aligned_load( p, std::forward<Opts>(o)..., boost::simd::as_<T>() );
   }
 
   template<typename T, std::ptrdiff_t Misalignment, typename Pointer, typename... Opts>
-  BOOST_FORCEINLINE T aligned_load(Pointer p, Opts&&... o)
+  BOOST_FORCEINLINE T aligned_load(Pointer const& p, Opts&&... o)
   {
     return detail::aligned_load ( p, std::forward<Opts>(o)...
                                 , std::integral_constant<std::ptrdiff_t,Misalignment>()

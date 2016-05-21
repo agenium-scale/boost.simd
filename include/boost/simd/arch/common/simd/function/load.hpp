@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LOAD_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LOAD_HPP_INCLUDED
 
+#include <boost/simd/arch/common/simd/function/load/mask.hpp>
 #include <boost/simd/arch/common/simd/function/load/gather.hpp>
 #include <boost/simd/arch/common/simd/function/load/pointer.hpp>
 #include <boost/simd/arch/common/simd/function/load/input_iterator.hpp>
