@@ -36,7 +36,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using result_t = typename A0::value_type;
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0, A1 i) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE result_t operator() ( A0 const& a0, A1 i) const
     {
       #if BOOST_COMP_CLANG == BOOST_VERSION_NUMBER(3,6,0)
       result_t data[A0::static_size];
@@ -60,18 +60,18 @@ namespace boost { namespace simd { namespace ext
     using result_t = typename A0::value_type;
 
     template<typename K>
-    static BOOST_FORCEINLINE result_t do_( A0 const& a0, A1 i, K const&) BOOST_NOEXCEPT
+    static BOOST_FORCEINLINE result_t do_( A0 const& a0, A1 i, K const&)
     {
       auto bits = bitwise_cast<as_arithmetic_t<A0>>(a0);
       return result_t( boost::simd::extract(bits,i));
     }
 
-    static BOOST_FORCEINLINE result_t do_( A0 const& a0, A1 i, aggregate_storage const&) BOOST_NOEXCEPT
+    static BOOST_FORCEINLINE result_t do_( A0 const& a0, A1 i, aggregate_storage const&)
     {
       return A0::traits::at(a0,i);
     }
 
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0, A1 i) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE result_t operator() ( A0 const& a0, A1 i) const
     {
       return do_(a0,i, typename A0::storage_kind{});
     }

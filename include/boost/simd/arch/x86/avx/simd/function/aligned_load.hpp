@@ -10,6 +10,7 @@
 #define BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_ALIGNED_LOAD_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
+#include <boost/simd/function/if_else.hpp>
 #include <boost/dispatch/adapted/common/pointer.hpp>
 #include <boost/align/is_aligned.hpp>
 #include <boost/assert.hpp>
@@ -93,6 +94,92 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE target do_( Pointer p, std::false_type const& ) const
     {
       return aligned_load<target>(p);
+    }
+  };
+
+  //------------------------------------------------------------------------------------------------
+  // mask-load from an aligned pointer of single
+  BOOST_DISPATCH_OVERLOAD ( aligned_load_
+                          , (typename Target, typename Pointer)
+                          , bs::avx_
+                          , bd::masked_pointer_<bd::scalar_<bd::single_<Pointer>>,std::true_type>
+                          , bd::target_<bs::pack_<bd::single_<Target>,bs::avx_>>
+                          )
+  {
+    using target  = typename Target::type;
+
+    BOOST_FORCEINLINE target operator()(Pointer const& p, Target const& ) const
+    {
+      BOOST_ASSERT_MSG( boost::alignment::is_aligned(target::alignment, p)
+                      , "boost::simd::aligned_load was performed on an unaligned masked pointer of float"
+                      );
+      __m256i msk = _mm256_castps_si256(bs::as_logical_t<target>(p.mask()).storage());
+      return _mm256_maskload_ps(p.get(), msk);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( aligned_load_
+                          , (typename Target, typename Pointer)
+                          , bs::avx_
+                          , bd::masked_pointer_<bd::scalar_<bd::single_<Pointer>>,std::false_type>
+                          , bd::target_<bs::pack_<bd::single_<Target>,bs::avx_>>
+                          )
+  {
+    using target  = typename Target::type;
+
+    BOOST_FORCEINLINE target operator()(Pointer const& p, Target const& ) const
+    {
+      BOOST_ASSERT_MSG( boost::alignment::is_aligned(target::alignment, p)
+                      , "boost::simd::aligned_load was performed on an unaligned masked pointer of float"
+                      );
+      auto const& msk = p.mask();
+      return  if_else ( bs::as_logical_t<target>(msk)
+                      , aligned_load<target>( mask(p.get(),msk) )
+                      , target(p.value())
+                      );
+    }
+  };
+
+  //------------------------------------------------------------------------------------------------
+  // mask-load from an aligned pointer of double
+  BOOST_DISPATCH_OVERLOAD ( aligned_load_
+                          , (typename Target, typename Pointer)
+                          , bs::avx_
+                          , bd::masked_pointer_<bd::scalar_<bd::double_<Pointer>>,std::true_type>
+                          , bd::target_<bs::pack_<bd::double_<Target>,bs::avx_>>
+                          )
+  {
+    using target  = typename Target::type;
+
+    BOOST_FORCEINLINE target operator()(Pointer const& p, Target const& ) const
+    {
+      BOOST_ASSERT_MSG( boost::alignment::is_aligned(target::alignment, p)
+                      , "boost::simd::aligned_load was performed on an unaligned masked pointer of double"
+                      );
+      __m256i msk = _mm256_castpd_si256(bs::as_logical_t<target>(p.mask()).storage());
+      return _mm256_maskload_pd(p.get(), msk);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( aligned_load_
+                          , (typename Target, typename Pointer)
+                          , bs::avx_
+                          , bd::masked_pointer_<bd::scalar_<bd::double_<Pointer>>,std::false_type>
+                          , bd::target_<bs::pack_<bd::double_<Target>,bs::avx_>>
+                          )
+  {
+    using target  = typename Target::type;
+
+    BOOST_FORCEINLINE target operator()(Pointer const& p, Target const& ) const
+    {
+      BOOST_ASSERT_MSG( boost::alignment::is_aligned(target::alignment, p)
+                      , "boost::simd::aligned_load was performed on an unaligned masked pointer of float"
+                      );
+      auto const& msk = p.mask();
+      return  if_else ( bs::as_logical_t<target>(msk)
+                      , aligned_load<target>( mask(p.get(),msk) )
+                      , target(p.value())
+                      );
     }
   };
 } } }

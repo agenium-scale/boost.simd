@@ -9,6 +9,8 @@
 set ( SOURCES
   pointer.arithmetic.cpp
   pointer.logical.cpp
+  mask.arithmetic.cpp
+#  mask.logical.cpp
   misaligned.arithmetic.cpp
 #  misaligned.logical.cpp
 )

@@ -10,6 +10,7 @@
 #define BOOST_SIMD_ARCH_X86_AVX2_SIMD_FUNCTION_LOAD_HPP_INCLUDED
 
 #include <boost/simd/arch/x86/avx2/simd/function/load/pointer.hpp>
+#include <boost/simd/arch/x86/avx2/simd/function/load/mask.hpp>
 #include <boost/simd/arch/x86/avx2/simd/function/load/gather_128.hpp>
 #include <boost/simd/arch/x86/avx2/simd/function/load/gather_256.hpp>
 

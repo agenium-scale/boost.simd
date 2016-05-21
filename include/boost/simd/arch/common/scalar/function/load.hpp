@@ -59,9 +59,9 @@ namespace boost { namespace simd { namespace ext
   //------------------------------------------------------------------------------------------------
   // load from a masked pointer
   BOOST_DISPATCH_OVERLOAD ( load_
-                          , (typename Target, typename Pointer)
+                          , (typename Target, typename Pointer, typename Zero)
                           , bd::cpu_
-                          , bd::masked_pointer_<bd::scalar_<bd::unspecified_<Pointer>>>
+                          , bd::masked_pointer_<bd::scalar_<bd::unspecified_<Pointer>>, Zero>
                           , bd::target_< bd::scalar_<bd::unspecified_<Target>> >
                           )
   {
@@ -76,9 +76,9 @@ namespace boost { namespace simd { namespace ext
   //------------------------------------------------------------------------------------------------
   // load from a masked pointer and an integral offset
   BOOST_DISPATCH_OVERLOAD ( load_
-                          , (typename Target, typename Pointer, typename Offset)
+                          , (typename Target, typename Pointer, typename Zero, typename Offset)
                           , bd::cpu_
-                          , bd::masked_pointer_<bd::scalar_<bd::unspecified_<Pointer>>>
+                          , bd::masked_pointer_<bd::scalar_<bd::unspecified_<Pointer>>,Zero>
                           , bd::scalar_<bd::integer_<Offset>>
                           , bd::target_< bd::scalar_<bd::unspecified_<Target>> >
                           )

@@ -64,7 +64,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( aligned_load_
                           , (typename Target, typename Pointer, typename Offset)
                           , bd::cpu_
-                          , bd::masked_pointer_<bd::unspecified_<Pointer>>
+                          , bd::masked_pointer_<bd::unspecified_<Pointer>,std::false_type>
                           , bd::scalar_<bd::integer_<Offset>>
                           , bd::target_<bd::unspecified_<Target>>
                           )
@@ -74,6 +74,22 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE target operator()(Pointer p, Offset o, Target const&) const BOOST_NOEXCEPT
     {
       return boost::simd::aligned_load<target>(boost::simd::mask(p.get()+o,p.value(),p.mask()));
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( aligned_load_
+                          , (typename Target, typename Pointer, typename Offset)
+                          , bd::cpu_
+                          , bd::masked_pointer_<bd::unspecified_<Pointer>,std::true_type>
+                          , bd::scalar_<bd::integer_<Offset>>
+                          , bd::target_<bd::unspecified_<Target>>
+                          )
+  {
+    using target = typename Target::type;
+
+    BOOST_FORCEINLINE target operator()(Pointer p, Offset o, Target const&) const BOOST_NOEXCEPT
+    {
+      return boost::simd::aligned_load<target>(boost::simd::mask(p.get()+o,p.mask()));
     }
   };
 } } }

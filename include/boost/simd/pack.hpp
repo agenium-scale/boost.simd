@@ -143,11 +143,12 @@ namespace boost { namespace simd
     **/
     template <typename T0, typename T1, typename... Ts>
     BOOST_FORCEINLINE pack(T0 const& v0, T1 const& v1, Ts const&... vn)
-                    : data_( boost::simd::make<pack>(v0,v1,vn...).storage() )
     {
       static_assert( 2 + sizeof...(vn) == static_size
                    , "pack<T,N>(T v...) must take exactly N arguments"
                    );
+
+      data_ = boost::simd::make<pack>(v0,v1,vn...).storage();
     }
 
     /*!

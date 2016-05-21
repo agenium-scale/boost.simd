@@ -38,7 +38,6 @@ namespace boost { namespace simd { namespace ext
       return boost::simd::load<target>(p+o);
     }
   };
-
 } } }
 
 #endif

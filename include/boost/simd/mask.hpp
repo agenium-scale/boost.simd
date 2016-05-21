@@ -2,23 +2,19 @@
 /*!
   @file
 
-  Defines the masked hint
+  Defines the mask adapter for pointer
 
-  @copyright 2015 NumScale SAS
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
 **/
 //==================================================================================================
 #ifndef BOOST_SIMD_MASK_HPP_INCLUDED
 #define BOOST_SIMD_MASK_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
-#include <boost/dispatch/adapted/common/pointer.hpp>
 #include <boost/dispatch/hierarchy/unspecified.hpp>
-#include <boost/dispatch/meta/value_of.hpp>
-#include <boost/dispatch/meta/model_of.hpp>
 #include <boost/dispatch/hierarchy_of.hpp>
 #include <boost/config.hpp>
 
@@ -27,7 +23,7 @@ namespace boost { namespace simd
   namespace detail
   {
     // Hint-type for masked pointer
-    template<typename T, typename Mask> struct masked_pointer
+    template<typename T, typename Mask, bool isZero = false> struct masked_pointer
     {
       using pointer       = T*;
       using element_type  = T;
@@ -48,18 +44,18 @@ namespace boost { namespace simd
     @ingroup group-api
     @brief Marks a pointer as being masked
 
-    @param ptr Type to mark
+    @param ptr Type to mask
     @return ...
   **/
-  template<typename T, typename Mask>
-  BOOST_FORCEINLINE detail::masked_pointer<T,Mask> mask(T* ptr, T const& v, Mask status) BOOST_NOEXCEPT
+  template<typename T, typename U, typename Mask> BOOST_FORCEINLINE
+  detail::masked_pointer<T,Mask> mask(T* ptr, U const& v, Mask const& status)
   {
-    return {ptr,v,status};
+    return {ptr,T(v),status};
   }
 
   /// @overload
   template<typename T, typename Mask>
-  BOOST_FORCEINLINE detail::masked_pointer<T,Mask> mask(T* ptr, Mask status) BOOST_NOEXCEPT
+  BOOST_FORCEINLINE detail::masked_pointer<T,Mask, true> mask(T* ptr, Mask const& status)
   {
     return {ptr,T{0},status};
   }
@@ -69,40 +65,25 @@ namespace boost { namespace simd
 // Hierarchy and dispatch helpers for masked_pointer
 namespace boost { namespace dispatch
 {
-  template<typename T>
-  struct masked_pointer_ : masked_pointer_<typename T::parent>
+  template<typename T, typename Zero>
+  struct masked_pointer_ : masked_pointer_<typename T::parent, Zero>
   {
-    using parent = masked_pointer_<typename T::parent>;
+    using parent = masked_pointer_<typename T::parent, Zero>;
   };
 
-  template<typename T>
-  struct  masked_pointer_<unspecified_<T>> : hierarchy_of_t<typename T::pointer>
+  template<typename T, typename Zero>
+  struct  masked_pointer_<unspecified_<T>,Zero> : unspecified_<T>
   {
-    // We lose the notion of masked_pointer in the underlying type
-    using parent = hierarchy_of_t<typename T::pointer>;
+    using parent = unspecified_<T>;
   };
 
   namespace ext
   {
-    template<typename T, typename Mask> struct model_of<boost::simd::detail::masked_pointer<T,Mask>>
+    template<typename T, typename Mask, bool Zero, typename Origin>
+    struct hierarchy_of< boost::simd::detail::masked_pointer<T,Mask,Zero>, Origin >
     {
-      template<typename X> struct apply
-      {
-        using type = boost::simd::detail::masked_pointer<X,Mask>;
-      };
-    };
-
-    template<typename T, typename Mask> struct value_of<boost::simd::detail::masked_pointer<T,Mask>>
-    {
-      using base = typename boost::simd::detail::masked_pointer<T,Mask>::element_type;
-      using type = boost::dispatch::value_of_t<base>;
-    };
-
-    template<typename T, typename Mask, typename Origin>
-    struct hierarchy_of< boost::simd::detail::masked_pointer<T,Mask>, Origin >
-    {
-      using base = typename boost::simd::detail::masked_pointer<T,Mask>::element_type;
-      using type = masked_pointer_< boost::dispatch::hierarchy_of_t<base,Origin> >;
+      using base = typename boost::simd::detail::masked_pointer<T,Mask,Zero>::element_type;
+      using type = masked_pointer_< boost::dispatch::hierarchy_of_t<base,Origin>, brigand::bool_<Zero> >;
     };
   }
 } }
