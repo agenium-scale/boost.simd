@@ -18,7 +18,7 @@
 #include <boost/simd/detail/pack_traits.hpp>
 #include <boost/simd/detail/storage_of.hpp>
 #include <boost/simd/meta/is_power_of_2.hpp>
-#include <boost/simd/meta/is_not_scalar.hpp>
+#include <boost/simd/meta/is_iterator.hpp>
 #include <boost/simd/function/aligned_load.hpp>
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/function/insert.hpp>
@@ -123,7 +123,7 @@ namespace boost { namespace simd
       @param e End of the range to load from
     **/
     template < typename Iterator
-             , typename = typename std::enable_if<is_not_scalar<Iterator>::value>::type
+             , typename = typename std::enable_if<is_iterator<Iterator>::value>::type
              >
     BOOST_FORCEINLINE pack(Iterator b, Iterator e)
                     : data_( boost::simd::load<pack>(b,e).storage() )
@@ -141,7 +141,7 @@ namespace boost { namespace simd
       @param v1 Second scalar value to insert
       @param vn Remaining scalar values to insert
     **/
-    template <typename T0, typename T1, typename... Ts>
+    template<typename T0, typename T1, typename... Ts>
     BOOST_FORCEINLINE pack(T0 const& v0, T1 const& v1, Ts const&... vn)
     {
       static_assert( 2 + sizeof...(vn) == static_size
@@ -156,7 +156,10 @@ namespace boost { namespace simd
 
       @param value The value to replicate
     **/
-    BOOST_FORCEINLINE explicit pack(T const& value) BOOST_NOEXCEPT
+    template<typename U
+            , typename = typename std::enable_if< !std::is_pointer<U>::value >::type
+            >
+    BOOST_FORCEINLINE explicit pack(U const& value) BOOST_NOEXCEPT
                       : data_( boost::simd::splat<pack>(value).storage() )
     {}
 

@@ -20,11 +20,12 @@ void test(Env& $)
   std::iota(v.begin(), v.end(), T{1});
 
   boost::simd::pack<T, N> p(v.begin(), v.end());
-  STF_EXPECT( std::equal(p.begin(),p.end(), v.begin()) );
+  STF_ALL_EQUAL(p, v);
 }
 
 STF_CASE_TPL( "Check that pack constructs from iterators pair" , STF_NUMERIC_TYPES)
 {
+  test<T,  1>($);
   test<T,  2>($);
   test<T,  4>($);
   test<T,  8>($);
