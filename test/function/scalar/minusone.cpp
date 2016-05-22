@@ -67,7 +67,7 @@ STF_CASE_TPL(" minusone floating", STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(minusone(bs::Inf<T>()), bs::Inf<T>());
   STF_IEEE_EQUAL(minusone(bs::Nan<T>()), bs::Nan<T>());
   STF_EQUAL(minusone(bs::Minf<T>()), bs::Minf<T>());

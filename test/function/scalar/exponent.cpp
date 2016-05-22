@@ -29,7 +29,7 @@ STF_CASE_TPL (" exponent real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, bd::as_integer_t<T>);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(exponent(bs::Minf<T>()), bs::Zero<r_t>());
   STF_EQUAL(exponent(bs::Inf <T>()), bs::Zero<r_t>());
   STF_EQUAL(exponent(bs::Nan <T>()), bs::Zero<r_t>());

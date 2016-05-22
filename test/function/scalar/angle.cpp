@@ -27,7 +27,7 @@ STF_CASE_TPL (" angle real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(angle(bs::Inf<T>()), bs::Zero<r_t>());
   STF_EQUAL(angle(bs::Minf<T>()), bs::Pi<r_t>());
   STF_IEEE_EQUAL(angle(bs::Nan<T>()), bs::Nan<r_t>());

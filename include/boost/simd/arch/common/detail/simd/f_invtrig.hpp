@@ -59,7 +59,7 @@ namespace boost { namespace simd
       A0 sign, x;
       x = bs::abs(a0);
       sign = bs::bitofsign(a0);
-      const auto x_larger_05 = gt(x, bs::Half<A0>());
+      const auto x_larger_05 = x > bs::Half<A0>();
       A0 z = if_else(x_larger_05, bs::Half<A0>()*bs::oneminus(x), bs::sqr(x));
       x = if_else(x_larger_05, sqrt(z), x);
       // remez polynomial of degree 4 for (asin(rx)-rx)/(rx*rx*rx) in [0, 0.25]
@@ -89,7 +89,7 @@ namespace boost { namespace simd
       x  = if_else(x_larger_05, bs::sqrt(fma(bs::Mhalf<A0>(), x, bs::Half<A0>())), a0);
       x  = asin(x);
       x =  seladd(x_larger_05, x, x);
-      x  = bs::if_else(lt(a0, bs::Mhalf<A0>()), bs::Pi<A0>()-x, x);
+      x  = bs::if_else(a0 < bs::Mhalf<A0>(), bs::Pi<A0>()-x, x);
       return bs::if_else(x_larger_05, x, bs::Pio_2<A0>()-x);
     }
 
@@ -108,8 +108,8 @@ namespace boost { namespace simd
       const A0 x = bs::abs(a0);
 
       //here x is positive
-      const auto flag1 = bs::lt(x, Tan_3pio_8<A0>());
-      const auto flag2 = bs::logical_and(bs::ge(x,Constant<A0, 0x3ed413cd>()), flag1);
+      const auto flag1 = x < Tan_3pio_8<A0>();
+      const auto flag2 = bs::logical_and(x >= Constant<A0, 0x3ed413cd>(), flag1);
       A0 yy =  bs::if_zero_else(flag1, Pio_2<A0>());
       yy =  bs::if_else(flag2, Pio_4<A0>(), yy);
       A0 xx =   bs::if_else(flag1, x, -rec(x));

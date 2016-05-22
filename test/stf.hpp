@@ -352,12 +352,10 @@ namespace stf { namespace detail
   template<typename C> inline auto begin(C const& v);
   template<typename C> inline auto end(C const& v);
 #else
-
 #ifdef _MSC_VER
 #pragma warning(push)
-#pragma warning(disable: 4100) // unused parameter
+#pragma warning(disable: 4100)
 #endif
-
   template<typename C>
   inline detail::if_container<C,std::size_t> size(C const& c)   { return c.size(); }
   template<typename C>
@@ -370,12 +368,9 @@ namespace stf { namespace detail
   inline detail::if_container<C,typename C::const_iterator> end(C const& c) { return c.end(); }
   template<typename C>
   inline detail::if_not_container<C,C const*> end(C const& t) { return (&t)+1; }
-
 #ifdef _MSC_VER
 #pragma warning(pop)
 #endif
-
-
 #endif
 } }
 #include <cstddef>

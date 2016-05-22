@@ -61,7 +61,7 @@ STF_CASE_TPL(" bs::saturated_(bs::inc) floating", STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(bs::saturated_(bs::inc)(bs::Inf<T>()), bs::Inf<T>());
   STF_IEEE_EQUAL(bs::saturated_(bs::inc)(bs::Nan<T>()), bs::Nan<T>());
   STF_EQUAL(bs::saturated_(bs::inc)(bs::Minf<T>()), bs::Minf<T>());

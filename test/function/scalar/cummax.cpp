@@ -27,7 +27,7 @@ STF_CASE_TPL (" cummax real",  STF_IEEE_TYPES)
   STF_EXPR_IS(cummax(T()), T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(cummax(bs::Inf<T>()), bs::Inf<T>());
   STF_EQUAL(cummax(bs::Minf<T>()), bs::Minf<T>());
   STF_IEEE_EQUAL(cummax(bs::Nan<T>()), bs::Nan<T>());

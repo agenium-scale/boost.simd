@@ -32,7 +32,7 @@ STF_CASE_TPL (" is_not_invalid real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, bs::logical<T>);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(is_not_invalid(bs::Inf<T>()), r_t(false));
   STF_EQUAL(is_not_invalid(bs::Minf<T>()), r_t(false));
   STF_EQUAL(is_not_invalid(bs::Nan<T>()), r_t(false));

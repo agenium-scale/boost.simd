@@ -35,7 +35,7 @@ STF_CASE_TPL (" round real",  STF_IEEE_TYPES)
   STF_TYPE_IS( r_t, T );
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(round(bs::Inf<T>()), bs::Inf<r_t>());
   STF_EQUAL(round(bs::Minf<T>()), bs::Minf<r_t>());
   STF_IEEE_EQUAL(round(bs::Nan<T>()), bs::Nan<r_t>());
@@ -77,7 +77,7 @@ STF_CASE_TPL (" round real2",  STF_IEEE_TYPES)
   STF_TYPE_IS( r_t, T );
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(round(bs::Inf<T>(), 2), bs::Inf<r_t>());
   STF_EQUAL(round(bs::Minf<T>(), 2), bs::Minf<r_t>());
   STF_IEEE_EQUAL(round(bs::Nan<T>(), 2), bs::Nan<r_t>());

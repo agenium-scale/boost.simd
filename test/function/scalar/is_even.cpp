@@ -31,7 +31,7 @@ STF_CASE_TPL (" is_even real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, bs::logical<T>);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(is_even(bs::Inf<T>()), r_t(false));
   STF_EQUAL(is_even(bs::Minf<T>()), r_t(false));
   STF_EQUAL(is_even(bs::Nan<T>()), r_t(false));

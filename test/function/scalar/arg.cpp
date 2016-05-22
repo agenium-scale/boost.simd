@@ -27,7 +27,7 @@ STF_CASE_TPL (" arg real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(arg(bs::Inf<T>()), bs::Zero<r_t>());
   STF_EQUAL(arg(bs::Minf<T>()), bs::Pi<r_t>());
   STF_IEEE_EQUAL(arg(bs::Nan<T>()), bs::Nan<r_t>());

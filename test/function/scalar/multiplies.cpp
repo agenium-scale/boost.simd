@@ -23,7 +23,7 @@ STF_CASE_TPL( "Check multiplies behavior with floating", STF_IEEE_TYPES )
   using r_t = decltype(multiplies(T(), T()));
   STF_TYPE_IS(r_t, T);
 
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(multiplies(bs::Inf<T>(),  bs::Inf<T>()), bs::Inf<r_t>());
   STF_EQUAL(multiplies(bs::Minf<T>(), bs::Minf<T>()), bs::Inf<r_t>());
   STF_IEEE_EQUAL(multiplies(bs::Nan<T>(),  bs::Nan<T>()), bs::Nan<r_t>());

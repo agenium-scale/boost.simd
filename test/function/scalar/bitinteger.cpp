@@ -30,10 +30,10 @@ STF_CASE_TPL (" bit integerreal",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, bd::as_integer_t<T>);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(bitinteger(bs::Nan<T>()), -bs::Valmax<r_t>());
 #endif
-#if !defined(STF_NO_DENORMALS)
+#if !defined(BOOST_SIMD_NO_DENORMALS)
   STF_EQUAL(bitinteger(bs::Bitincrement<T>()), bs::One<r_t>());
   STF_EQUAL(bitinteger(-bs::Bitincrement<T>()), bs::Mone<r_t>());
 #endif

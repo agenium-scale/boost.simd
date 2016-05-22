@@ -31,7 +31,7 @@ STF_CASE_TPL (" bitwise_notor real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_IEEE_EQUAL(bitwise_notor(bs::Inf<T>(), bs::Inf<T>()), bs::Nan<r_t>());
   STF_IEEE_EQUAL(bitwise_notor(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<r_t>());
   STF_IEEE_EQUAL(bitwise_notor(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>());

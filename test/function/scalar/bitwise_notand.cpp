@@ -28,7 +28,7 @@ STF_CASE_TPL (" bitwise_notand real",  STF_IEEE_TYPES)
   STF_EXPR_IS(bitwise_notand(T(), T()), T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(bitwise_notand(bs::Inf<T>(), bs::Inf<T>()), bs::Zero<r_t>());
   STF_EQUAL(bitwise_notand(bs::Minf<T>(), bs::Minf<T>()), bs::Zero<r_t>());
   STF_EQUAL(bitwise_notand(bs::Nan<T>(), bs::Nan<T>()), bs::Zero<r_t>());

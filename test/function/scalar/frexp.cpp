@@ -45,7 +45,7 @@ STF_CASE_TPL(" frexp0", STF_IEEE_TYPES)
     STF_EQUAL(ldexp(m,e),a);
   }
 
-#ifndef STF_NO_DENORMALS
+#ifndef BOOST_SIMD_NO_DENORMALS
   {
     namespace bs = boost::simd;
     iT e;
@@ -131,7 +131,7 @@ STF_CASE_TPL(" frexp0", STF_IEEE_TYPES)
     STF_EQUAL(ldexp(m,e),a);
   }
 
-#ifndef STF_NO_DENORMALS
+#ifndef BOOST_SIMD_NO_DENORMALS
   {
     namespace bs = boost::simd;
     iT e;

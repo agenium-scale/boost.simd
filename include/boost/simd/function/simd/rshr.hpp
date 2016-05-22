@@ -14,7 +14,7 @@
 #include <boost/simd/arch/common/simd/function/rshr.hpp>
 
 #if defined(BOOST_HW_SIMD_X86)
-#  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_XOP_VERSION
+#  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_AMD_XOP_VERSION
 #    include <boost/simd/arch/x86/xop/simd/function/rshr.hpp>
 #  endif
 #endif

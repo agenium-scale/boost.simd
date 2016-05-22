@@ -29,7 +29,7 @@ STF_CASE_TPL (" popcnt real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, (bd::as_integer_t<T, unsigned>));
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(popcnt(bs::Nan<T>()), sizeof(T)*8);
 #endif
   STF_EQUAL(popcnt(bs::Zero<T>()), bs::Zero<r_t>());

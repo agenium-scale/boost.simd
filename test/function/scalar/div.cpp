@@ -25,7 +25,7 @@ STF_CASE_TPL( "Check div behavior with floating", STF_IEEE_TYPES )
   using r_t = decltype(div(T(), T()));
   STF_TYPE_IS(r_t, T);
 
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_IEEE_EQUAL(div(bs::Inf<T>(),  bs::Inf<T>()), bs::Nan<r_t>());
   STF_IEEE_EQUAL(div(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<r_t>());
   STF_IEEE_EQUAL(div(bs::Nan<T>(),  bs::Nan<T>()), bs::Nan<r_t>());

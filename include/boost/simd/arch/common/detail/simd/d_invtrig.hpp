@@ -93,10 +93,7 @@ namespace boost { namespace simd
         return bs::if_nan_else(bs::is_greater(x,bs::One<A0>()),
                                bs::bitwise_xor(bs::if_else( small_,
                                                             x,
-                                                            bs::if_else(bs::gt(x, ct1)
-                                                                       , zz1
-                                                                       , zz2
-                                                                       )
+                                                            bs::if_else(x > ct1, zz1, zz2)
                                                           )
                                               , bs::bitofsign(a0)
                                               )
@@ -106,7 +103,7 @@ namespace boost { namespace simd
       static inline A0 acos(const A0& a0)
       {
         A0 x = bs::abs(a0);
-        auto x_larger_05 = gt(x, bs::Half<A0>());
+        auto x_larger_05 = x > bs::Half<A0>();
         x  = if_else(x_larger_05, bs::sqrt(fma(bs::Mhalf<A0>(), x, bs::Half<A0>())), a0);
         x  = asin(x);
         x =  seladd(x_larger_05, x, x);
@@ -124,7 +121,7 @@ namespace boost { namespace simd
       {
         const A0 x =  bs::abs(a0);
         auto flag1 = bs::is_less(x,  Tan_3pio_8<A0>());
-        auto flag2 = bs::logical_and(bs::ge(x, Tanpio_8<A0>()), flag1);
+        auto flag2 = bs::logical_and(x >= Tanpio_8<A0>(), flag1);
         A0 yy = bs::if_zero_else(flag1, bs::Pio_2<A0>());
         yy = bs::if_else(flag2, bs::Pio_4<A0>(), yy);
         A0 xx = bs::if_else(flag1, x, -bs::rec(x));

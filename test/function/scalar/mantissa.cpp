@@ -30,7 +30,7 @@ STF_CASE_TPL (" mantissareal",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(mantissa(bs::Inf<T>()), bs::Inf<r_t>());
   STF_EQUAL(mantissa(bs::Minf<T>()), bs::Minf<r_t>());
   STF_IEEE_EQUAL(mantissa(bs::Nan<T>()), bs::Nan<r_t>());

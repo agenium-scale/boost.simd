@@ -30,7 +30,7 @@ STF_CASE_TPL (" iceil real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, bd::as_integer_t<T>);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(iceil(bs::Inf<T>()), bs::Inf<r_t>());
   STF_EQUAL(iceil(bs::Minf<T>()), bs::Minf<r_t>());
   STF_EQUAL(iceil(bs::Nan<T>()), bs::Zero<r_t>());

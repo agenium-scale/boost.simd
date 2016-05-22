@@ -32,7 +32,7 @@ STF_CASE_TPL (" clz real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, bd::as_integer_t<T>);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(clz(bs::Nan<T>()), bs::Zero<r_t>());
 #endif
   STF_EQUAL(clz(bs::Mone<T>()), bs::Zero<r_t>());

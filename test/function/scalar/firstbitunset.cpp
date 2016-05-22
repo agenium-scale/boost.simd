@@ -30,7 +30,7 @@ STF_CASE_TPL (" firstbitunsetreal",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, (bd::as_integer_t<T, unsigned>));
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(firstbitunset(bs::Inf<T>()), bs::One<r_t>());
   STF_EQUAL(firstbitunset(bs::Minf<T>()), bs::One<r_t>());
   STF_EQUAL(firstbitunset(bs::Nan<T>()), bs::Zero<r_t>());

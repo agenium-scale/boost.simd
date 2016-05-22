@@ -33,7 +33,7 @@ STF_CASE_TPL (" negatenz real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(negatenz(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>());
   STF_EQUAL(negatenz(bs::Minf<T>(), bs::Minf<T>()), bs::Inf<r_t>());
   STF_IEEE_EQUAL(negatenz(bs::Nan<T>(), bs::Zero<T>()), bs::Nan<r_t>());

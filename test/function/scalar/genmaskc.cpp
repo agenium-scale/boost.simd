@@ -30,7 +30,7 @@ STF_CASE_TPL (" genmaskc real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(genmaskc(bs::Inf<T>()), bs::Zero<r_t>());
   STF_EQUAL(genmaskc(bs::Minf<T>()), bs::Zero<r_t>());
   STF_EQUAL(genmaskc(bs::Nan<T>()), bs::Zero<r_t>());

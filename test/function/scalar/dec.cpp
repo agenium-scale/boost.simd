@@ -56,7 +56,7 @@ STF_CASE_TPL(" dec floating", STF_IEEE_TYPES)
   STF_EXPR_IS(dec(T()), T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(dec(bs::Inf<T>()), bs::Inf<T>());
   STF_IEEE_EQUAL(dec(bs::Nan<T>()), bs::Nan<T>());
   STF_EQUAL(dec(bs::Minf<T>()), bs::Minf<T>());
