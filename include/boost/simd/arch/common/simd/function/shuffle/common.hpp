@@ -25,7 +25,7 @@ namespace boost { namespace simd { namespace ext
   // Unary common cases
   BOOST_DISPATCH_OVERLOAD ( shuffle_
                           , (int... Ps, typename A0, typename X)
-                          , bd::cpu_
+                          , bs::simd_
                           , bsd::any_pattern_<bsd::pattern_<Ps...>>
                           , bs::pack_< bd::unspecified_<A0>, X >
                           )
@@ -55,7 +55,7 @@ namespace boost { namespace simd { namespace ext
   // Binary common cases
   BOOST_DISPATCH_OVERLOAD ( shuffle_
                           , (int... Ps, typename A0, typename X)
-                          , bd::cpu_
+                          , bs::simd_
                           , bsd::any_pattern_<bsd::pattern_<Ps...>>
                           , bs::pack_< bd::unspecified_<A0>, X >
                           , bs::pack_< bd::unspecified_<A0>, X >

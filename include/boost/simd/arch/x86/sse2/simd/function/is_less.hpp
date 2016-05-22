@@ -1,28 +1,20 @@
 //==================================================================================================
-/*!
-    @file
+/**
+  Copyright 2016 Numscale SAS
 
-    @Copyright 2016 Numscale SAS
-    @copyright 2016 J.T.Lapreste
-
-    Distributed under the Boost Software License, Version 1.0.
-    (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_IS_LESS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_IS_LESS_HPP_INCLUDED
-#include <boost/simd/detail/overload.hpp>
 
+#include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/is_equal.hpp>
 #include <boost/simd/function/simd/is_less.hpp>
-#include <boost/simd/function/simd/logical_and.hpp>
-#include <boost/simd/function/simd/logical_or.hpp>
 #include <boost/simd/function/simd/minus.hpp>
-#include <boost/simd/function/simd/shuffle.hpp>
 #include <boost/simd/constant/signmask.hpp>
-#include <boost/simd/detail/dispatch/meta/downgrade.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
