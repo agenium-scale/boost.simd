@@ -12,7 +12,8 @@
 #include <boost/simd/config.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/detail/brigand.hpp>
-#include <boost/dispatch/hierarchy/unspecified.hpp>
+#include <boost/simd/detail/dispatch/hierarchy/unspecified.hpp>
+#include <boost/simd/detail/dispatch/hierarchy_of.hpp>
 
 namespace boost { namespace simd
 {
@@ -23,10 +24,18 @@ namespace boost { namespace simd
   namespace detail
   {
     // -----------------------------------------------------------------------------------------------
-    // normalized permutation pattern holder - also acts as its own hierarchy
-    template<int... Ps> struct pattern_ : boost::dispatch::unspecified_<pattern_<Ps...>>
+    // Parent of all shuffle patterns
+    template<typename P> struct any_pattern_ : boost::dispatch::unspecified_<P>
     {
-      using parent = boost::dispatch::unspecified_<pattern_<Ps...>>;
+      using parent = boost::dispatch::unspecified_<P>;
+    };
+
+    // -----------------------------------------------------------------------------------------------
+    // normalized permutation pattern holder - also acts as its own hierarchy
+    template<int... Ps> struct pattern_ : any_pattern_<pattern_<Ps...>>
+    {
+      static const std::size_t static_size = sizeof...(Ps);
+      using parent = any_pattern_<pattern_<Ps...>>;
     };
 
     // -----------------------------------------------------------------------------------------------
@@ -66,5 +75,26 @@ namespace boost { namespace simd
     };
   } }
 }
+
+namespace boost { namespace dispatch
+{
+  namespace bsd = boost::simd::detail;
+
+  namespace ext
+  {
+    template<typename Ps,typename Origin, typename Enable =void>
+    struct pattern_hierarchy
+    {
+      using type = Ps;
+    };
+  }
+
+  // ---------------------------------------------------------------------------------------------
+  // Give a proper hierarchy to identify pattern
+  template<int... Ps,typename Origin>
+  struct  hierarchy_of < bsd::pattern_<Ps...>,Origin>
+        : ext::pattern_hierarchy<bsd::pattern_<Ps...>,Origin>
+  {};
+} }
 
 #endif

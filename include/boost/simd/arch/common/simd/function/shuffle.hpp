@@ -9,13 +9,14 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SHUFFLE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SHUFFLE_HPP_INCLUDED
 
+#include <boost/simd/arch/common/simd/function/shuffle/broadcast.hpp>
 #include <boost/simd/arch/common/simd/function/shuffle/cardinal_1.hpp>
-/*
-#include <boost/simd/arch/common/simd/function/shuffle/cardinal_2.hpp>
-#include <boost/simd/arch/common/simd/function/shuffle/cardinal_4.hpp>
-#include <boost/simd/arch/common/simd/function/shuffle/cardinal_8.hpp>
-#include <boost/simd/arch/common/simd/function/shuffle/cardinal_16.hpp>
-*/
+#include <boost/simd/arch/common/simd/function/shuffle/common.hpp>
+#include <boost/simd/arch/common/simd/function/shuffle/deinterleave.hpp>
+#include <boost/simd/arch/common/simd/function/shuffle/identity.hpp>
+#include <boost/simd/arch/common/simd/function/shuffle/reverse.hpp>
+#include <boost/simd/arch/common/simd/function/shuffle/repeat.hpp>
+#include <boost/simd/arch/common/simd/function/shuffle/slide.hpp>
 
 #endif
 

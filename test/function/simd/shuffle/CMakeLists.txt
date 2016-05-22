@@ -8,6 +8,18 @@
 
 set ( SOURCES
   cardinal_1.cpp
+  cardinal_2.cpp
+  cardinal_4.cpp
+  binary.broadcast.cpp
+  full.deinterleave.cpp
+  front.deinterleave.cpp
+  back.deinterleave.cpp
+  unary.broadcast.cpp
+  identity.cpp
+  interleave.cpp
+  repeat.cpp
+  reverse.cpp
+  slide.cpp
 )
 
 make_unit( "function.simd.shuffle"   ${SOURCES})

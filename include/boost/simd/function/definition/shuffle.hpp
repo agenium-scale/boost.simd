@@ -37,7 +37,6 @@ namespace boost { namespace simd
   {
     return detail::shuffle_impl(detail::pattern_<Ps...>(), a);
   }
-
   template<int... Ps, typename T> BOOST_FORCEINLINE T shuffle(T const& a,T const& b) BOOST_NOEXCEPT
   {
     return detail::shuffle_impl(detail::pattern_<Ps...>(), a, b);
