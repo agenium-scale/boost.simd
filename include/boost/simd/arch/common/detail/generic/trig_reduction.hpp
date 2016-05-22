@@ -85,7 +85,7 @@ namespace boost { namespace simd
     {
       using i_t = bd::as_integer_t<A0, signed>;
       using l_t = bs::as_logical_t<A0>;
-      using conversion_allowed_t = std::false_type; //bd::is_upgradable_on_ext_<A0>; // TODO
+      using conversion_allowed_t = bd::is_upgradable<A0>;
 
       static BOOST_FORCEINLINE auto is_0_pio4_reduced(const A0&a0) BOOST_NOEXCEPT
       ->  decltype(is_ngt(a0, Pio_4<A0>()))
@@ -316,11 +316,11 @@ namespace boost { namespace simd
         using uA0 = bd::upgrade_t<A0>;
         using aux_reduc_t = trig_reduction< uA0, tag::radian_tag,  tag::simd_type, mode, double>;
         uA0 ux1, ux2, uxr1, uxr2;
-        split(x, ux1, ux2);
+        std::tie(ux1, ux2) = split(x);
         auto n1 = aux_reduc_t::reduce(ux1, uxr1);
         auto n2 = aux_reduc_t::reduce(ux2, uxr2);
         xr = group(uxr1, uxr2);
-        split(xr, ux1, ux2);
+        std::tie(ux1, ux2) = split(xr);
         return group(n1, n2);
       }
     };
