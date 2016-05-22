@@ -16,6 +16,7 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/is_nlt.hpp>
+#include <boost/simd/meta/as_logical.hpp>
 
 
 namespace boost { namespace simd { namespace ext
@@ -28,7 +29,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::arithmetic_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE  bs::bs::as_logical_t<A0> operator()( const A0& a0) const BOOST_NOEXCEPT
+      BOOST_FORCEINLINE bs::as_logical_t<A0> operator()( const A0& a0) const BOOST_NOEXCEPT
       {
         return is_nlt(a0, Zero<A0>());
       }

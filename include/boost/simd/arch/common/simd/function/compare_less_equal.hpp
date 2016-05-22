@@ -12,9 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_COMPARE_LESS_EQUAL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_COMPARE_LESS_EQUAL_HPP_INCLUDED
 #include <boost/simd/detail/overload.hpp>
-
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/function/simd/compare_less.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -29,8 +27,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::arithmetic_<A0>, X>
                           )
    {
-     using sA0 =  bd::scalar_of_t<A0>;
-     BOOST_FORCEINLINE logical<sA0> operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+     BOOST_FORCEINLINE bool operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
         return !compare_less(a1,a0);
       }

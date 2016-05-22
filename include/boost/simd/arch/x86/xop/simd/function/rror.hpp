@@ -19,8 +19,8 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( rror_
                           , (typename A0, typename A1)
                           , bs::xop_
-                          , bs::pack_< ints64_<A0>, bs::sse_>
-                          , bs::pack_< ints64_<A1>, bs::sse_>
+                          , bs::pack_< bd::ints64_<A0>, bs::sse_>
+                          , bs::pack_< bd::ints64_<A1>, bs::sse_>
                           )
   {
     BOOST_FORCEINLINE A0 operator()(A0 const& a0, A1 const& a1) const
@@ -32,8 +32,8 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( rror_
                           , (typename A0, typename A1)
                           , bs::xop_
-                          , bs::pack_< ints32_<A0>, bs::sse_>
-                          , bs::pack_< ints32_<A1>, bs::sse_>
+                          , bs::pack_< bd::ints32_<A0>, bs::sse_>
+                          , bs::pack_< bd::ints32_<A1>, bs::sse_>
                           )
   {
     BOOST_FORCEINLINE A0 operator()(A0 const& a0, A1 const& a1) const
@@ -45,8 +45,8 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( rror_
                           , (typename A0, typename A1)
                           , bs::xop_
-                          , bs::pack_< ints16_<A0>, bs::sse_>
-                          , bs::pack_< ints16_<A1>, bs::sse_>
+                          , bs::pack_< bd::ints16_<A0>, bs::sse_>
+                          , bs::pack_< bd::ints16_<A1>, bs::sse_>
                           )
   {
     BOOST_FORCEINLINE A0 operator()(A0 const& a0, A1 const& a1) const
@@ -58,8 +58,8 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( rror_
                           , (typename A0, typename A1)
                           , bs::xop_
-                          , bs::pack_< ints8_<A0>, bs::sse_>
-                          , bs::pack_< ints8_<A1>, bs::sse_>
+                          , bs::pack_< bd::ints8_<A0>, bs::sse_>
+                          , bs::pack_< bd::ints8_<A1>, bs::sse_>
                           )
   {
     BOOST_FORCEINLINE A0 operator()(A0 const& a0, A1 const& a1) const

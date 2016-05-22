@@ -19,7 +19,7 @@
 #include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/function/simd/bitfloating.hpp>
 #include <boost/simd/function/simd/bitinteger.hpp>
-#include <boost/simd/function/simd/if_allbits_else.hpp>
+#include <boost/simd/function/simd/if_nan_else.hpp>
 #include <boost/simd/function/simd/is_gez.hpp>
 #include <boost/simd/function/simd/is_less.hpp>
 #include <boost/simd/function/simd/is_nan.hpp>

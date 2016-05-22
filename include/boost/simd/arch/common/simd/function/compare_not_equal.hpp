@@ -29,8 +29,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::arithmetic_<A0>, X>
                           )
    {
-     using sA0 =  bd::scalar_of_t<A0>;
-     BOOST_FORCEINLINE logical<sA0> operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+     BOOST_FORCEINLINE bool operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
      {
        using i_t =  bd::as_integer_t<A0>;
        return bs::any(is_not_equal(bitwise_cast<i_t>(a0), bitwise_cast<i_t>(a1)));
