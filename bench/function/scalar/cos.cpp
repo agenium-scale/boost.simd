@@ -22,7 +22,9 @@ struct cos_scalar
      using ret_type = T;
      nsb::make_function_experiment_cpe_sized_<1>
        ( [](const T & x0) -> ret_type
-         { return bs::cos(x0); }
+         {
+           std::cout << x0 << std::endl;
+           return bs::cos(x0); }
        , nsb::generators::rand<T>(min0, max0)
        );
    }
@@ -43,6 +45,7 @@ struct fast_cos_scalar
 };
 
 int main(int argc, char **argv) {
+<<<<<<< Updated upstream
   nsb::parse_args(argc, argv);
   nsb::make_for_each<fast_cos_scalar, NS_BENCH_IEEE_TYPES>(-0.5, 0.5);
   nsb::make_for_each<cos_scalar, NS_BENCH_IEEE_TYPES>(-0.5, 0.5);
