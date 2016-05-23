@@ -14,6 +14,6 @@
 
 #include <boost/simd/function/scalar/rem_pio2_straight.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/rem_pio2_straight.hpp>
+#include <boost/simd/arch/common/simd/function/rem_pio2_straight.hpp>
 
 #endif

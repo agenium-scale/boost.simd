@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_REM_PIO2_STRAIGHT_HPP_INCLUDED
 
 #include <boost/simd/function/definition/rem_pio2_straight.hpp>
-#include <boost/simd/arch/common/generic/function/rem_pio2_straight.hpp>
+#include <boost/simd/arch/common/scalar/function/rem_pio2_straight.hpp>
 
 #endif
