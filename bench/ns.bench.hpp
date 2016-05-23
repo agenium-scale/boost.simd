@@ -1330,6 +1330,7 @@ namespace ns { namespace bench { namespace generators {
 #include <algorithm>
 #include <cstdlib>
 #include <cmath>
+#include <random>
 namespace ns { namespace bench { namespace generators {
 template <typename U, typename IS = typename std::is_scalar<U>::type>
 struct rand {};
@@ -1355,7 +1356,7 @@ struct rand<T, std::true_type>
     static std::mt19937 gen(rd());
     static std::uniform_real_distribution<> dist(0.0, 1.0);
     double f = (max_ - min_);
-    return std::lround(min_ + f * dist(gen));
+    return min_ + f * dist(gen);
   }
   inline T operator()() {
     return random();
