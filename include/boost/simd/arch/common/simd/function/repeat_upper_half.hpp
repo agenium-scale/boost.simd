@@ -30,6 +30,12 @@ namespace boost { namespace simd { namespace ext
       return T( x[N::value]..., x[N::value]... );
     }
 
+    template<typename K, typename N> static BOOST_FORCEINLINE
+    T do_( T const& x, K const&, br::list<N> const&) BOOST_NOEXCEPT
+    {
+      return T( x[N::value] );
+    }
+
     template<typename... N> static BOOST_FORCEINLINE
     typename T::storage_type
     do_( T const& x, aggregate_storage const&, br::list<N...> const&) BOOST_NOEXCEPT
