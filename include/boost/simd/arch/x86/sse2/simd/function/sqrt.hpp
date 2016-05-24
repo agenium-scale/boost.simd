@@ -16,13 +16,13 @@
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 #include <boost/simd/function/simd/plus.hpp>
 #include <boost/simd/function/simd/divides.hpp>
-#include <boost/simd/function/simd/gt.hpp>
-#include <boost/simd/function/simd/if_add.hpp>
+#include <boost/simd/function/simd/seladd.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
 #include <boost/simd/function/simd/if_one_else_zero.hpp>
 #include <boost/simd/function/simd/is_gez.hpp>
 #include <boost/simd/function/simd/is_gtz.hpp>
-#include <boost/simd/function/simd/ge.hpp>
+#include <boost/simd/function/simd/is_greater.hpp>
+#include <boost/simd/function/simd/is_greater_equal.hpp>
 #include <boost/simd/function/simd/is_nez.hpp>
 #include <boost/simd/function/simd/lt.hpp>
 #include <boost/simd/function/simd/minus.hpp>
@@ -96,7 +96,7 @@ namespace boost { namespace simd { namespace ext
 
       ok = lt(n1, n);
       n  = if_else(ok, n1, n);
-      n  = if_add( gt(n*n,a0), n, Mone<A0>());
+      n  = seladd( is_greater(n*n,a0), n, Mone<A0>());
       return n+if_one_else_zero(na);
     }
   };
@@ -130,9 +130,9 @@ namespace boost { namespace simd { namespace ext
 
       ok =  lt(n1, n);
       n  = if_else(ok, n1, n);
-      n  = if_add( gt(n*n,a0), n, Mone<A0>());
+      n  = seladd( is_greater(n*n,a0), n, Mone<A0>());
 
-     return if_add(na, Zero<A0>(), n);
+     return seladd(na, Zero<A0>(), n);
     }
   };
 
@@ -149,11 +149,11 @@ namespace boost { namespace simd { namespace ext
       A0 const z2 = plus(shift_right(a0,10),   Ratio<A0,256>());
       A0 const z3 = plus(shift_right(a0,13),  Ratio<A0,2048>());
       A0 const z4 = plus(shift_right(a0,16), Ratio<A0,16384>());
-      A0 n  = if_else( gt(a0, Ratio<A0,177155824>())
+      A0 n  = if_else( is_greater(a0, Ratio<A0,177155824>())
                   , z4
-                  , if_else( gt(a0, Ratio<A0,4084387>())
+                  , if_else( is_greater(a0, Ratio<A0,4084387>())
                         , z3
-                        , if_else( gt(a0, Ratio<A0,31679>())
+                        , if_else( is_greater(a0, Ratio<A0,31679>())
                                 , z2
                                 , z1
                                 )
@@ -175,8 +175,8 @@ namespace boost { namespace simd { namespace ext
       n  = if_else(ok, n1, n);
 
       A0 tmp = minus(n*minus(n, One<A0>()), One<A0>());
-      n  = if_add( ge(tmp+n,a0), n, Mone<A0>());
-      n =  if_add(na, Zero<A0>(), n);
+      n  = seladd( is_greater_equal(tmp+n,a0), n, Mone<A0>());
+      n =  seladd(na, Zero<A0>(), n);
 
       return n;
      }

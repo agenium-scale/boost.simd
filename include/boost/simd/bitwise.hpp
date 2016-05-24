@@ -71,7 +71,6 @@ namespace boost { namespace simd
 #include <boost/simd/function/rshl.hpp>
 #include <boost/simd/function/rshr.hpp>
 #include <boost/simd/function/shr.hpp>
-#include <boost/simd/function/shri.hpp>
 #include <boost/simd/function/swapbytes.hpp>
 #include <boost/simd/function/twopower.hpp>
 

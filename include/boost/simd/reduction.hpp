@@ -36,18 +36,13 @@ namespace boost { namespace simd
 
 #include <boost/simd/function/all.hpp>
 #include <boost/simd/function/any.hpp>
-#include <boost/simd/function/are_disjoint.hpp>
 #include <boost/simd/function/compare_eq.hpp>
 #include <boost/simd/function/compare_equal.hpp>
 #include <boost/simd/function/compare_ge.hpp>
 #include <boost/simd/function/compare_greater_equal.hpp>
 #include <boost/simd/function/compare_greater.hpp>
-#include <boost/simd/function/compare_gt.hpp>
-#include <boost/simd/function/compare_le.hpp>
 #include <boost/simd/function/compare_less_equal.hpp>
 #include <boost/simd/function/compare_less.hpp>
-#include <boost/simd/function/compare_lt.hpp>
-#include <boost/simd/function/compare_neq.hpp>
 #include <boost/simd/function/compare_not_equal.hpp>
 #include <boost/simd/function/cummax.hpp>
 #include <boost/simd/function/cummin.hpp>
@@ -66,7 +61,6 @@ namespace boost { namespace simd
 #include <boost/simd/function/posmin.hpp>
 #include <boost/simd/function/prod.hpp>
 #include <boost/simd/function/sum.hpp>
-#include <boost/simd/function/testz.hpp>
 
 #endif
 
