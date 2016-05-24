@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -18,16 +18,16 @@ namespace boost { namespace simd
     @ingroup group-functions
     @defgroup group-bitwise Bitwise functions
 
-      Those functions provides scalar and SIMD algorithms for bit manipulations and bitwise
-      operators. Bitwise operations are provided along more specific ones like bit-level rotations,
+      These functions provides scalar and SIMD implementations of bit manipulations and bitwise
+      operators. Bitwise operations are provided alongside more specific ones such as bit-level rotations,
       bit set, get and toggling and mapping for compiler-specific first bit set or population count
       operations.
 
-      Note that bitwise functions operators may accept IEEE types as arguments. The implied semantic
+      Note that bitwise function operators may accept IEEE types as arguments. The implied semantic
       is then that the operations are applied to the IEEE bit patterns.
 
-      Be also aware that all binary bitwise function return a result of the type of the first argument
-      and that the second argument is only required to be of the same bit size as the first.
+      Be also aware that all binary bitwise functions return a result of the type of the first argument
+      and that the second argument must only have the same number of bits of the first.
   **/
 
   /*!

@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -79,10 +79,7 @@ namespace boost { namespace simd
 
    Extensions:
 
-      @ref division and @ref remainder operators have extensions.
-
-
-
+      @ref division and @ref remainder operators have extensions to be seen following the links.
 
   **/
 } }
