@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -21,7 +21,6 @@ namespace boost { namespace simd
     These functions provide scalar and SIMD implementations of classical arithmetic operators and
     functions provided by the C and C++ standard library. Other functionality, in particular,
     saturated operations are also provided.
-
   **/
 
   /*!
