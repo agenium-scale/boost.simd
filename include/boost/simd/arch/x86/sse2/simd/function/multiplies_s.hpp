@@ -17,7 +17,7 @@
 #include <boost/simd/function/simd/genmask.hpp>
 #include <boost/simd/function/simd/group.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/shrai.hpp>
+#include <boost/simd/function/simd/shift_right.hpp>
 #include <boost/simd/function/simd/split_multiplies.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/dispatch/meta/as_unsigned.hpp>
@@ -50,15 +50,15 @@ namespace boost { namespace simd { namespace ext
       utype res0, res1;
       std::tie(res0, res1) = split_multiplies(a0, a1);
 
-      untype res2 = shrai(bitwise_cast<untype>(a0 ^ a1), sizeof(stype)*CHAR_BIT-1)
+      untype res2 = shift_right(bitwise_cast<untype>(a0 ^ a1), sizeof(stype)*CHAR_BIT-1)
                   + static_cast<typename bd::scalar_of<untype>::type>(Valmax<stype>());
 
-      A0 hi = group( shrai(res0, sizeof(stype)*CHAR_BIT)
-                   , shrai(res1, sizeof(stype)*CHAR_BIT)
+      A0 hi = group( shift_right(res0, sizeof(stype)*CHAR_BIT)
+                   , shift_right(res1, sizeof(stype)*CHAR_BIT)
                    );
       A0 lo = group(res0, res1);
 
-      return if_else( hi != shrai(lo, sizeof(stype)*CHAR_BIT-1)
+      return if_else( hi != shift_right(lo, sizeof(stype)*CHAR_BIT-1)
                     , bitwise_cast<A0>(res2)
                     , lo
                     );
@@ -84,8 +84,8 @@ namespace boost { namespace simd { namespace ext
       std::tie(res0, res1) = split_multiplies(a0, a1);
 
       return group(res0, res1)
-           | genmask( group( shrai(res0, sizeof(stype)*CHAR_BIT)
-                           , shrai(res1, sizeof(stype)*CHAR_BIT)
+           | genmask( group( shift_right(res0, sizeof(stype)*CHAR_BIT)
+                           , shift_right(res1, sizeof(stype)*CHAR_BIT)
                            )
                     );
     }

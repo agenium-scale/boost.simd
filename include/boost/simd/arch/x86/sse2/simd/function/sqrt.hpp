@@ -24,7 +24,7 @@
 #include <boost/simd/function/simd/is_greater.hpp>
 #include <boost/simd/function/simd/is_greater_equal.hpp>
 #include <boost/simd/function/simd/is_nez.hpp>
-#include <boost/simd/function/simd/lt.hpp>
+#include <boost/simd/function/simd/is_less.hpp>
 #include <boost/simd/function/simd/minus.hpp>
 #include <boost/simd/function/simd/shift_right.hpp>
 #include <boost/simd/function/simd/tofloat.hpp>
@@ -90,11 +90,11 @@ namespace boost { namespace simd { namespace ext
       A0 n   = plus(shift_right(a0, 4), Four<A0>());
       A0 n1  = shift_right(n+a0/n, 1);
 
-      auto ok = lt(n1, n);
+      auto ok = is_less(n1, n);
       n  = if_else(ok, n1, n);
       n1 = if_else(ok, shift_right(n+a0/n, 1), n1);
 
-      ok = lt(n1, n);
+      ok = is_less(n1, n);
       n  = if_else(ok, n1, n);
       n  = seladd( is_greater(n*n,a0), n, Mone<A0>());
       return n+if_one_else_zero(na);
@@ -114,21 +114,21 @@ namespace boost { namespace simd { namespace ext
       A0 const  z2 = plus(shift_right(a0,10), Ratio<A0, 256>());
       A0 const  C1 = Ratio<A0, 31679>();
       // choose a proper starting point for approximation
-      A0 n  = if_else(lt(a0, C1), z1, z2);
+      A0 n  = if_else(is_less(a0, C1), z1, z2);
       auto ok =  is_gtz(n);
       n  = if_else(ok, n, One<A0>());
 
       A0 n1 = if_else(ok, shift_right(n+a0/n, 1), One<A0>());
 
-      ok = lt(n1, n);
+      ok = is_less(n1, n);
       n  = if_else(ok, n1, n);
       n1 = if_else(ok, shift_right(n+a0/n, 1), n1);
 
-      ok = lt(n1, n);
+      ok = is_less(n1, n);
       n  = if_else(ok, n1, n);
       n1 = if_else(ok, shift_right(n+a0/n, 1), n1);
 
-      ok =  lt(n1, n);
+      ok =  is_less(n1, n);
       n  = if_else(ok, n1, n);
       n  = seladd( is_greater(n*n,a0), n, Mone<A0>());
 
@@ -163,15 +163,15 @@ namespace boost { namespace simd { namespace ext
       n = if_else(ok, n, One<A0>());
       A0 n1 = if_else(ok, shift_right(n+a0/n, 1), One<A0>());
 
-      ok = lt(n1, n);
+      ok = is_less(n1, n);
       n  = if_else(ok, n1, n);
       n1 = if_else(ok, shift_right(n+a0/n, 1), n1);
 
-      ok =  lt(n1, n);
+      ok =  is_less(n1, n);
       n  = if_else(ok, n1, n);
       n1 = if_else(ok, shift_right(n+a0/n, 1), n1);
 
-      ok =  lt(n1, n);
+      ok =  is_less(n1, n);
       n  = if_else(ok, n1, n);
 
       A0 tmp = minus(n*minus(n, One<A0>()), One<A0>());
