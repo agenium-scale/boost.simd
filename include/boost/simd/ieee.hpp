@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -18,8 +18,8 @@ namespace boost { namespace simd
     @ingroup group-functions
     @defgroup group-ieee Ieee functions
 
-      Those functions provides scalar and SIMD algorithms for inspecting, generating or
-      decomposing IEEE 754 floating point numbers. Operations like exponent and mantissa
+      These functions provide scalar and SIMD algorithms for inspecting, generating or
+      decomposing IEEE 754 floating point numbers. Operationssuch as exponent and mantissa
       extraction, floating point modulo, IEEE bit patterns manipulation and magnitude comparison
       are provided.
 

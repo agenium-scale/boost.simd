@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -18,9 +18,9 @@ namespace boost { namespace simd
     @ingroup group-functions
     @defgroup group-predicates Predicates functions
 
-      Those functions provides scalar and SIMD algorithms for testing values properties.
-      Tests like checks for validity, infinity, sign and others are provided. As for @ref
-      group-boolean, those functions handles and returns typed logical types.
+      These functions provide scalar and SIMD algorithms for testing properties of values.
+      Tests such as checks for validity, infinity, sign and others are provided. As for @ref
+      group-boolean, these functions handle and return typed logical types.
   **/
 
   /*!

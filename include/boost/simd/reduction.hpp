@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -18,8 +18,8 @@ namespace boost { namespace simd
     @ingroup group-functions
     @defgroup group-reduction Reduction Functions
 
-    Those functions provides algorithms for in-register reduction and prefix-scan operations.
-    Those functions are usually only defined for SIMD types but may, in some cases like sum or
+    These functions provide algorithms for in-register reduction and prefix-scan operations.
+    Those functions are usually only defined for SIMD types but may, in some cases such as sum or
     product, have a valid scalar semantic.
   **/
 
