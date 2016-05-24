@@ -23,7 +23,7 @@ namespace boost { namespace simd
     @ingroup group-api
     @brief Expected cardinal of current architecture register
 
-    Computes the cardinal a potential SIMD register containing elements of type @c Type on
+    Computes the cardinal of a SIMD register containing elements of type @c Type on
     the currently selected hardware
 
     @tparam Type      Element type of the expected register
