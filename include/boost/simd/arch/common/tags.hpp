@@ -4,7 +4,7 @@
 
   Aggregates SIMD extension tags for common cases
 
-  @copyright 2012 - 2015 NumScale SAS
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -34,8 +34,8 @@ namespace boost { namespace simd
     @brief Emulated SIMD architecture hierarchy tag
 
     This tag represent any architecture requiring some SIMD register to be emulated as an
-    array of scalars or other SIMD registers. This is often the case when dealing with pack of data
-    which size is not coherent with hardware specifications.
+    array of scalars or other SIMD registers. This is often the case when dealing with a pack 
+    of data of a size which is not compatible with hardware specifications.
   **/
   struct simd_emulation_ : boost::simd::simd_
   {

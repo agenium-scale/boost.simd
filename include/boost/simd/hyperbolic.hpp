@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -18,8 +18,8 @@ namespace boost { namespace simd
     @ingroup group-functions
     @defgroup group-hyperbolic  Hyperbolic functions
 
-    Those functions provides scalar and SIMD version of
-    hyperbolic  and inverse hyperbolic functions.
+    These functions provide scalar and SIMD versions of
+    hyperbolic and inverse hyperbolic functions.
   **/
 
   /*!
