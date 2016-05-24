@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2012 - 2015 NumScale SAS
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -24,8 +24,8 @@ namespace boost { namespace simd
     Typed boolean value.
 
     logical<T> is a typed boolean value which can be vectorized in a portable
-    way (contrary to bool). Its semantic is equivalent to bool on all aspect
-    but may provide a compiler dependent, optimized bool-to-type conversion.
+    manner (contrary to bool). Its semantic is equivalent to bool in all aspects,
+    however, a compiler dependent, optimized bool-to-type conversion may be performed.
 
     @tparam T Type the boolean value is generated from.
   **/
