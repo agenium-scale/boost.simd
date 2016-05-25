@@ -48,20 +48,67 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       if (is_inf(a0) || is_eqz(a1)) return Nan<A0>();
-      return is_finite(a1) ? a0-a1*div(ifix, a0, a1) : a0;
+      return is_finite(a1) ? a0-a1*div(fix, a0, a1) : a0;
+    }
+  };
+
+   BOOST_DISPATCH_OVERLOAD ( rem_
+                          , (typename T)
+                          , bd::cpu_
+                          , bs::tag::fix_
+                          , bd::scalar_<bd::arithmetic_<T>>
+                          , bd::scalar_<bd::arithmetic_<T>>
+                          )
+  {
+    BOOST_FORCEINLINE T operator()( bd::functor<bs::tag::fix_> const&
+                                  , T const& a, T const& b ) const BOOST_NOEXCEPT
+    {
+     return rem(a, b);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( rem_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bs::fast_tag
+                          , bd::scalar_< bd::arithmetic_<A0> >
+                          , bd::scalar_< bd::arithmetic_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 a0, A0 a1) const BOOST_NOEXCEPT
+    {
+      return a0-a1*div(fix, a0, a1);
     }
   };
   BOOST_DISPATCH_OVERLOAD ( rem_
                           , (typename A0)
                           , bd::cpu_
-                          , bs::fast_tag
+                          , bs::std_tag
+                          , bs::tag::fix_
                           , bd::scalar_< bd::floating_<A0> >
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 a0, A0 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const std_tag &, bd::functor<bs::tag::fix_> const&
+                                    , A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
-      return a0-a1*div(ifix, a0, a1);
+      return std::fmod(a0, a1);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( rem_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bs::fast_tag
+                          , bs::tag::fix_
+                          , bd::scalar_< bd::arithmetic_<A0> >
+                          , bd::scalar_< bd::arithmetic_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() (const fast_tag &, bd::functor<bs::tag::fix_> const&
+                                    ,  A0 a0, A0 a1) const BOOST_NOEXCEPT
+    {
+      return a0-a1*div(fix, a0, a1);
     }
   };
   BOOST_DISPATCH_OVERLOAD ( rem_
@@ -74,9 +121,10 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() (const std_tag &,  A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
-      return std::fmod(a0, a1);
+     return std::fmod(a0, a1);
     }
   };
+
 } } }
 
 

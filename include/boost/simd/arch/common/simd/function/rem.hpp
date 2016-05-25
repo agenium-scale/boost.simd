@@ -15,6 +15,7 @@
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/div.hpp>
+#include <boost/simd/function/simd/fix.hpp>
 #include <boost/simd/function/simd/if_nan_else.hpp>
 #include <boost/simd/function/simd/is_invalid.hpp>
 #include <boost/simd/function/simd/is_nez.hpp>
@@ -52,6 +53,66 @@ namespace boost { namespace simd { namespace ext
       }
    };
 
+   BOOST_DISPATCH_OVERLOAD(rem_
+                          , (typename A0, typename X)
+                          , bd::cpu_
+                          , bs::fast_tag
+                          , bs::pack_<bd::arithmetic_<A0>, X>
+                          , bs::pack_<bd::arithmetic_<A0>, X>
+                          )
+   {
+      BOOST_FORCEINLINE A0 operator()(const fast_tag &
+                                     , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+      {
+        return  a0-div(fix, a0, a1)*a1;
+      }
+   };
+   BOOST_DISPATCH_OVERLOAD(rem_
+                          , (typename A0, typename X)
+                          , bd::cpu_
+                          , bs::tag::fix_
+                          , bs::pack_<bd::arithmetic_<A0>, X>
+                          , bs::pack_<bd::arithmetic_<A0>, X>
+                          )
+   {
+      BOOST_FORCEINLINE A0 operator()(bd::functor<bs::tag::fix_> const&
+                                     , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+      {
+        return  rem(a0, a1);
+      }
+   };
+   BOOST_DISPATCH_OVERLOAD(rem_
+                          , (typename A0, typename X)
+                          , bd::cpu_
+                          , bs::fast_tag
+                          , bs::tag::fix_
+                          , bs::pack_<bd::arithmetic_<A0>, X>
+                          , bs::pack_<bd::arithmetic_<A0>, X>
+                          )
+   {
+      BOOST_FORCEINLINE A0 operator()(const fast_tag &
+                                     , bd::functor<bs::tag::fix_> const&
+                                     , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+      {
+        return a0-div(fix, a0,a1)*a1;
+      }
+   };
+   BOOST_DISPATCH_OVERLOAD(rem_
+                          , (typename A0, typename X)
+                          , bd::cpu_
+                          , bs::fast_tag
+                          , bs::tag::fix_
+                          , bs::pack_<bd::floating_<A0>, X>
+                          , bs::pack_<bd::floating_<A0>, X>
+                          )
+   {
+      BOOST_FORCEINLINE A0 operator()(const fast_tag &
+                                     , bd::functor<bs::tag::fix_> const&
+                                     , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+      {
+        return a0-div(fix, a0,a1)*a1;
+      }
+   };
 } } }
 
 #endif

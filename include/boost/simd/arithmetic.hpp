@@ -66,11 +66,8 @@ namespace boost { namespace simd
 #include <boost/simd/function/modulus.hpp>
 #include <boost/simd/function/oneminus.hpp>
 #include <boost/simd/function/rec.hpp>
-#include <boost/simd/function/remainder.hpp>
-#include <boost/simd/function/remfix.hpp>
 #include <boost/simd/function/rem.hpp>
 #include <boost/simd/function/remquo.hpp>
-#include <boost/simd/function/remround.hpp>
 #include <boost/simd/function/round2even.hpp>
 #include <boost/simd/function/round.hpp>
 #include <boost/simd/function/rsqrt.hpp>

@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/scalar/remainder.hpp>
+#include <boost/simd/function/scalar/rem.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -22,37 +22,37 @@ STF_CASE_TPL (" remainder real",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
-  using bs::remainder;
-  using r_t = decltype(remainder(T(), T()));
+  using bs::rem;
+  using r_t = decltype(rem(bs::ceil, T(), T()));
 
   // return type conformity test
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_IEEE_EQUAL(remainder(bs::Inf<T>(), bs::Inf<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(remainder(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(remainder(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(rem(bs::ceil, bs::Inf<T>(), bs::Inf<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(rem(bs::ceil, bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(rem(bs::ceil, bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());
 #endif
-  STF_EQUAL(remainder(bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
-  STF_EQUAL(remainder(bs::One<T>(), bs::One<T>()), bs::Zero<T>());
-  STF_IEEE_EQUAL(remainder(bs::One<T>(),bs::Zero<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(remainder(bs::Zero<T>(),bs::Zero<T>()), bs::Nan<T>());
+  STF_EQUAL(rem(bs::ceil, bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
+  STF_EQUAL(rem(bs::ceil, bs::One<T>(), bs::One<T>()), bs::Zero<T>());
+  STF_IEEE_EQUAL(rem(bs::ceil, bs::One<T>(),bs::Zero<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(rem(bs::ceil, bs::Zero<T>(),bs::Zero<T>()), bs::Nan<T>());
 } // end of test for floating_
 
 STF_CASE_TPL (" remainder signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
-  using bs::remainder;
-  using r_t = decltype(remainder(T(), T()));
+  using bs::rem;
+  using r_t = decltype(rem(bs::ceil, T(), T()));
 
   // return type conformity test
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-  STF_EQUAL(remainder(bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
-  STF_EQUAL(remainder(bs::One<T>(), bs::One<T>()), bs::Zero<T>());
-  STF_EQUAL(remainder(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
-  STF_EQUAL(remainder(bs::Two<T>(), bs::Three<T>()), bs::Mone<T>());
+  STF_EQUAL(rem(bs::ceil, bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
+  STF_EQUAL(rem(bs::ceil, bs::One<T>(), bs::One<T>()), bs::Zero<T>());
+  STF_EQUAL(rem(bs::ceil, bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
+  STF_EQUAL(rem(bs::ceil, bs::Two<T>(), bs::Three<T>()), bs::Mone<T>());
 } // end of test for signed_int_

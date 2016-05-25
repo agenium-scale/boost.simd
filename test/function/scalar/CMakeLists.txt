@@ -62,17 +62,18 @@ set ( SOURCES
    meanof.cpp
    min.cpp
    minmod.cpp
-   mod.cpp
    multiplies_s.cpp
    neg_s.cpp
    oneminus.cpp
    oneminus_s.cpp
    plus_s.cpp
    rec.cpp
-   remainder.cpp
    rem.cpp
-   remquo.cpp
+   remfloor.cpp
+   remceil.cpp
    remround.cpp
+   remround2even.cpp
+   remquo.cpp
    round2even.cpp
    round.cpp
    rsqrt.cpp
@@ -197,7 +198,6 @@ set ( SOURCES
    logical_not.cpp
    logical_or.cpp
    minus.cpp
-   modulo.cpp
    multiplies.cpp
    plus.cpp
    shift_left.cpp

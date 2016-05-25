@@ -14,8 +14,8 @@
 #include <boost/simd/function/minus.hpp>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/divides.hpp>
-#include <boost/simd/function/modulo.hpp>
 #include <boost/simd/function/is_equal.hpp>
+#include <boost/simd/function/rem.hpp>
 #include <boost/simd/function/is_less.hpp>
 #include <boost/simd/function/is_less_equal.hpp>
 #include <boost/simd/function/is_greater.hpp>
@@ -56,7 +56,7 @@ namespace boost { namespace simd
 
 BOOST_SIMD_PACK_DEFINE_BINOP(T, operator+, plus)
 BOOST_SIMD_PACK_DEFINE_BINOP(T, operator-, minus)
-BOOST_SIMD_PACK_DEFINE_BINOP(T, operator%, modulo)
+BOOST_SIMD_PACK_DEFINE_BINOP(T, operator%, rem)
 BOOST_SIMD_PACK_DEFINE_BINOP(T, operator/, divides)
 BOOST_SIMD_PACK_DEFINE_BINOP(T, operator*, multiplies)
 

@@ -29,16 +29,31 @@ namespace boost { namespace simd
     For any given value @c x, @c y of type @c T:
 
     @code
-    T r = rem(x, y);
+    T r = rem({option, }x, y);
     @endcode
 
-    For floating point values the code is similar to:
+    if there is no option the call is similar to:
+    @code
+    T r = x-div(fix, x, y)*y;
+    @endcode
+
+    else option can be ceil, floor, fix, round, round2even (in the namespace booost::simd)
+    and the code is similar to :
 
     @code
-    T r = x-divfix(x, y)*y;
+    T r = x-div(option, x, y)*y;
     @endcode
 
-    For floating entries:
+    @Notes
+
+    -Supported types
+     unsigned types are not supported but for the option @c fix, as in other cases result can be negative
+
+    -Limiting values
+
+      -option @c round2even
+      -option @c fix
+       For floating entries:
        -  if x is +/-inf , Nan is returned
        -  if x is +/-0 and y is not 0 x is returned
        -  If y is +/-0, Nan is returned
@@ -47,17 +62,17 @@ namespace boost { namespace simd
        If correct values for these limit cases do not matter for you, using the fast_ decorator
     can gain some cycles.
 
-    The returned value has the same sign as x and is less than y in magnitude.
 
     @par Decorators
 
-    std_,  fast_ for floating entries
+    with floating entries decorator std_ calls the stdlibc++ corresponding function (caution : no simd acceleration)
 
-    @par Alias
+      -option fix        calls std::fmod
+      -option round2even calls std::remainder
+      The other options have no standard correspondant
 
-    @c fmod,  @c remfix
+    fast_ for floating entries
 
-    @see remainder, mod, modulo
 
   **/
   const boost::dispatch::functor<tag::rem_> rem = {};
