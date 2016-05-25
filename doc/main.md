@@ -19,18 +19,22 @@ In order to exploit these powerful instruction sets, developers must use low-lev
   + standard compliant iterators to iterate over contiguous range of data in a _SIMD_ compatible way;
   + standard compliant iterators encapsulating complex _SIMD_ idioms like sliding window or de-interleaving of data on the fly.
 
+In summary, **Boost.SIMD** allows one to write _SIMD_ vectorized code that is portable across all (supported) compilers and architectures.
+
 
 @section main-support Supported Compilers and Hardware
 
 ----------------------------------------------------------------------------------------------------
 The current set of SIMD extensions supported by **Boost.SIMD** includes:
 
-Architecture | Extensions
--------------|------------------------------------------------------------
-X86          | SSE2, SSE3, SSSE3, SSE4.1, SSE4.2, AVX, FMA3, AVX2, MIC
-AMD          | SSE4a, XOP, FMA4
-PowerPC      | VMX, VSX, QPX
-ARM          | Neon
+#TODO: Make sure the free/paid columns are correct, maybe instead of column bold the free extensions?
+
+Architecture | Extensions                                                 | Accessibility
+-------------|------------------------------------------------------------|-----------------
+X86          | SSE2, SSE3, SSSE3, SSE4.1, SSE4.2, AVX, FMA3, AVX2, MIC    | **Free**
+AMD          | SSE4a, XOP, FMA4                                           | Paid
+PowerPC      | VMX, VSX, QPX                                              | Paid
+ARM          | Neon                                                       | Paid
 
 **Boost.SIMD** requires a C++11 compliant compiler and is thoroughly tested on the following compilers:
 
@@ -40,11 +44,33 @@ g++          | 4.8 and above
 clang++      | 3.5 and above
 Visual VC++  | 13.0 and above
 
+@section main-install Installation
+
+----------------------------------------------------------------------------------------------------
+
+## Through BOOST
+
+**Boost.SIMD** aims to integrate into the **Boost** C++ library, in which case it would be installed by default with the rest of the library. Unfortunately, this is not yet the case.
+
+
+## Standalone X86
+
+**Boost.SIMD** depends on the **Boost** library (Version 1.59 or later).
+
+
+## Adding Paid Architectures
+
+To be completed...
+
+
 @section main-howto How to use this documentation
 
 ----------------------------------------------------------------------------------------------------
 The structure of this documention (available in the menu to the left) is as
 follows:
+
+  - @ref tutorials\n
+    Tutorial for writing Boost.SIMD code.
 
   - @ref group-api\n
     Public functions and type API of Boost.SIMD
