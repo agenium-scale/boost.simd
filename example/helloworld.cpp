@@ -1,6 +1,6 @@
 //==================================================================================================
 /*
-  Copyright 2012 - 2015 NumScale SAS
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -30,11 +30,8 @@ int main()
   pack_t tens{10};
   //! [hello-splat-ctor]
 
-  //! [hello-enum-ctor]
-  pack_t eleven_init{11,11,11,11}; // may use registers inefficiently
-  //! [hello-enum-ctor]
   //! [hello-splat-explicit]
-  pack_t eleven_splat = bs::splat<pack_t>(11);
+  pack_t eleven(11);
   //! [hello-splat-explicit]
 
   //! [hello-ops]

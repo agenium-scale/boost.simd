@@ -1,9 +1,9 @@
-Main Page {#mainpage}
+Overview {#mainpage}
 =========
 
 @tableofcontents
 
-@section main-preface Preface
+@section main-preface Introduction
 
 ----------------------------------------------------------------------------------------------------
 Single instruction, multiple data (_SIMD_) instructions or **multimedia extensions** have been developed by processor manufacturers for several decades. They are designed to significantly accelerate code execution, however they require expertise to correctly use and they depend on potentially fragile compiler support, or vendor-specific libraries to be correctly and successfully exploited. The introduction of these instruction sets has allowed developers to exploit the latent data parallelism available in applications by executing a given instruction simultaneously on multiple data stored in dedicated cpu registers. The SIMD unit is built as an independent computation unit in the processor, it comes in addition to the regular computation unit complete with a special register file, dispatching and pipelining unit.
@@ -12,50 +12,46 @@ In order to exploit these powerful instruction sets, developers must use low-lev
 
 **Boost.SIMD** is a Boost candidate library which aims to abstract the use of _SIMD_ extensions in an architecture, compiler and vendor neutral manner. This abstraction provide more than simple portable wrappers above hardware-specific registers, it also standardizes the use of common _SIMD_ programming idioms.
 
-**Boost.SIMD** solves these issues by providing :
+**Boost.SIMD** allows one to write _SIMD_ vectorized code that is portable across all (supported) compilers, architectures and operating systems.
+
+**Boost.SIMD** achieves this by providing:
 
   + a proper value semantic wrapper for _SIMD_ registers;
-  + an automatic system to detect and exploit extension specific optimization opportunities;
+  + an automatic system to detect and exploit architecture specific optimization opportunities;
   + standard compliant iterators to iterate over contiguous range of data in a _SIMD_ compatible way;
   + standard compliant iterators encapsulating complex _SIMD_ idioms like sliding window or de-interleaving of data on the fly.
-
-In summary, **Boost.SIMD** allows one to write _SIMD_ vectorized code that is portable across all (supported) compilers and architectures.
-
 
 @section main-support Supported Compilers and Hardware
 
 ----------------------------------------------------------------------------------------------------
+The open-source version of **Boost.SIMD** includes support for x86 processors. Optional modules with support for 
 The current set of SIMD extensions supported by **Boost.SIMD** includes:
 
 #TODO: Make sure the free/paid columns are correct, maybe instead of column bold the free extensions?
 
-Architecture | Extensions                                                 | Accessibility
--------------|------------------------------------------------------------|-----------------
-X86          | SSE2, SSE3, SSSE3, SSE4.1, SSE4.2, AVX, FMA3, AVX2, MIC    | **Free**
-AMD          | SSE4a, XOP, FMA4                                           | Paid
-PowerPC      | VMX, VSX, QPX                                              | Paid
-ARM          | Neon                                                       | Paid
+Architecture | Extensions                                          | Accessibility
+-------------|-----------------------------------------------------|-----------------
+x86          | SSE2, SSE3, SSSE3, SSE4.1, SSE4.2, AVX, FMA3, AVX2  | **Free**
+x86          | Xeon Phi                                            | 
+AMD          | SSE4a, XOP, FMA4                                    | Paid
+PowerPC      | VMX, VSX, QPX                                       | Paid
+ARM          | Neon                                                | Paid
 
 **Boost.SIMD** requires a C++11 compliant compiler and is thoroughly tested on the following compilers:
 
-Compiler     | Version
--------------|----------------
-g++          | 4.8 and above
-clang++      | 3.5 and above
-Visual VC++  | 13.0 and above
+Compiler                | Version
+------------------------|-------------------
+g++                     | 4.8 and above
+clang++                 | 3.5 and above
+Microsoft Visual Studio | 13.0 and above
 
-@section main-install Installation
+@section main-install Quick Start Guide
 
 ----------------------------------------------------------------------------------------------------
 
-## Through BOOST
-
-**Boost.SIMD** aims to integrate into the **Boost** C++ library, in which case it would be installed by default with the rest of the library. Unfortunately, this is not yet the case.
-
-
 ## Standalone X86
 
-**Boost.SIMD** depends on the **Boost** library (Version 1.59 or later).
+**Boost.SIMD** requires **Boost** version 1.60 or newer.
 
 
 ## Adding Paid Architectures
