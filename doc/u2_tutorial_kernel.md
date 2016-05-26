@@ -12,14 +12,14 @@ These tutorials present the general principles of **Boost.SIMD**:
   + compiling **Boost.SIMD** code
   + using _SIMD_ specific idioms like reduction, branching or shuffling
   + vectorizing code using the Standard Template Library
-  + handling _SIMD_ instructions set runtime detection
+  + _SIMD_ runtime dispatching
 
-For this tutorial, we will assume the use of a 128 bit wide _SIMD_ extensions (such as SSE or Altivec). Depending on your actual architecture, the output of the various tutorial applications may varies.
+For this tutorial, we will assume the use of a 128 bit wide _SIMD_ extensions (such as SSE or Altivec). Depending on your actual architecture, the output of the various tutorial applications may vary.
 
 @section tutorial-kernel A Simple SIMD Kernel
 
 ----------------------------------------------------------------------------------------------------
-Here is a simple program demonstrating a few basic **Boost.SIMD** functionalities.
+Here is a simple program demonstrating some basic **Boost.SIMD** functionality.
 
 @snippet helloworld.cpp hello
 
@@ -27,19 +27,19 @@ This small code sample presents the basic building blocks of **Boost.SIMD**, whi
 
 ## The Boost.SIMD namespace
 
-When using a **Boost.SIMD** type or function, it is necessary to use the boost::simd namespace. In order to simplify the writing of code, you may wish to give it an alias, as shown by
+When using a **Boost.SIMD** type or function, it is necessary to use the boost::simd namespace. In order to simplify the code, you may wish to give it an alias: 
 
 @snippet helloworld.cpp hello-namespace
 
-This avoids having to type the full namespace every time you use **Boost.SIMD** functions.
+This avoids having to type the full namespace every time you use a **Boost.SIMD** function.
 
 ## The boost::simd::pack abstraction
 
-The base of any code using **Boost.SIMD** is the boost::simd::pack class included by
+The basis of any code using **Boost.SIMD** is the boost::simd::pack class included by
 
 @snippet helloworld.cpp hello-include-pack
 
-The pack can be considered analagous to an _SIMD_ register on your (or any other) machine. Operations performed on packs - from elementary operations like addition to full functions like sin(x) - will be performed using _SIMD_ registers and operations if supported by your hardware. As shown in the following example, data must still be loaded into and stored from these registers.
+The pack may be considered analagous to an _SIMD_ register on your (or any other) machine. Operations performed on packs - from elementary operations like addition to full functions like sin(x) - will be performed using _SIMD_ registers and operations if supported by your hardware. As shown in the following example, data must still be loaded into and stored from these registers.
 
 ## Is it better practice to use the pack as an array?
 
@@ -63,8 +63,8 @@ Finally, you can also initializes every element of the boost::simd::pack itself 
 
 @snippet helloworld.cpp hello-enum-ctor
 
-Note that this constructor make the strong assumption that the size of your boost::simd::pack is correct. Unless required, it's generally a good idea to try to avoid depending on a fixed size for boost::simd::pack unless
-the algorithm requires it. The splat function is recommended over this usage whenever possible.
+Note that this constructor makes the strong assumption that the size of your boost::simd::pack is correct. Unless required, it's generally a good idea to try to avoid depending on a fixed size for boost::simd::pack unless
+the algorithm requires it. The splat function is recommended over this usage wherenever possible.
 
 ## Operations on boost::simd::pack
 
