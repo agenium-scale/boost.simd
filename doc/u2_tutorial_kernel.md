@@ -179,28 +179,38 @@ Here is a full code, should you wish to compile it.
 
 #TODO: Aligned memory
 
-## The result
-
-@section tutorial-ifelse Branching and Selection
+@section tutorial-process Processing data the SIMD way
 
 ----------------------------------------------------------------------------------------------------
-Scalar code is often using branching to specify how an application code path should be structured.
-However, in _SIMD_, all the computations must follow a single code path. The solution is to use
-selection operations to turn scalar `if-else` control blocks into _SIMD_ computation.
+This tutorial will present how data can be processed using Boost.SIMD by writing a naive dot product using Boost.SIMD.
 
-## The result
-
-@section tutorial-process Data Processing
-
-----------------------------------------------------------------------------------------------------
-For now, we only cared about computing values in and out of a small amount of explicitly constructed
-boost::simd::pack instances. WE will now build a simple _SIMD_ function processing large chunk of memory.
-As an example, consider a simple sequential, scalar `DOT` function defined as:
+A simple sequential, scalar dot product can be simply defined as:
 
 @snippet dot.cpp scalar-dot
 
-## The result
+dot simply iterates over data pointed by first1 and first2, computes the product of said data and sum them along.
 
+@subsection tutorial-simd-way Transition from scalar to SIMD code
+
+In this case the algorithm is clearly vectorizable, we shall modify it so that this becomes evident.
+
+First, we unroll the loop arbitrarily showing the inherent data parallelism:
+
+@snippet dotunroll.cpp scalar-dot-unroll
+
+The algorithm is split into two parts:
+
+First, we loop over each element inside both datasets and multiply them.
+Then, we sum the intermediate values into the final result.
+By unrolling this pattern arbitrarily, we expose the fact that the multiplication between the two dataset is purely "vertical" and so, is vectorizable. The sum of the partial result itself is a "horizontal" operation, i.e a vectorizable computation operating across the element of a single vector (see @intra-register operation).
+
+@subsection simd_loop Building a SIMD loop
+We are now going to use boost::simd::pack to vectorize this loop. The main idea is to compute partial sums inside an instance of boost::simd::pack and then perform a final summation. To do so, we will use boost::simd::load to load data from first1 and first2, process these boost::simd::pack instances using the proper operators and advance the pointers by the size of the boost::simd::pack.
+
+@snippet dotsimd.cpp scalar-dot-simd
+That's it! Look at how similar the computation code is to the scalar version, we simply jump over data using alarger step size.
+
+@subsection prepare-data Preparing the data
 @section tutorial-shuffle Memory Access
 
 ----------------------------------------------------------------------------------------------------
