@@ -32,10 +32,11 @@ The current set of SIMD extensions supported by **Boost.SIMD** includes:
 Architecture | Extensions                                          | Accessibility
 -------------|-----------------------------------------------------|-----------------
 x86          | SSE2, SSE3, SSSE3, SSE4.1, SSE4.2, AVX, FMA3, AVX2  | **Free**
-x86          | Xeon Phi                                            | 
-AMD          | SSE4a, XOP, FMA4                                    | Paid
-PowerPC      | VMX, VSX, QPX                                       | Paid
-ARM          | Neon                                                | Paid
+x86          | Xeon Phi                                            | Premium
+AMD          | SSE4a, XOP, FMA4                                    | Premium
+PowerPC      | VMX                                                 | **Free**
+PowerPC      | VMX, VSX, QPX                                       | Premium
+ARM          | Neon                                                | Premium
 
 **Boost.SIMD** requires a C++11 compliant compiler and is thoroughly tested on the following compilers:
 
@@ -44,10 +45,6 @@ Compiler                | Version
 g++                     | 4.8 and above
 clang++                 | 3.5 and above
 Microsoft Visual Studio | 13.0 and above
-
-@section main-install Quick Start Guide
-
-----------------------------------------------------------------------------------------------------
 
 ## Standalone X86
 
