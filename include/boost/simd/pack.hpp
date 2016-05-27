@@ -29,6 +29,7 @@
 #include <boost/utility/enable_if.hpp>
 #include <boost/align/is_aligned.hpp>
 #include <boost/config.hpp>
+#include <array>
 #include <iterator>
 #include <iostream>
 #include <cstddef>
@@ -108,6 +109,24 @@ namespace boost { namespace simd
     **/
     BOOST_FORCEINLINE explicit pack(T const* ptr) BOOST_NOEXCEPT
                               : data_( boost::simd::aligned_load<pack>(ptr).storage() )
+    {}
+
+    /*!
+      @brief Construct a pack from a standard array of element
+
+      Construct a pack by loading, every element contained inside the standard array
+      @c a .
+
+      @param a Array to load from
+    **/
+    template<typename U
+            , typename = typename std::enable_if< !std::is_same < storage_type
+                                                                , std::array<U,N>
+                                                                >::value
+                                                >::type
+            >
+    BOOST_FORCEINLINE pack( std::array<U,N> const& a )
+                    : data_( boost::simd::load<pack>(&a[0]).storage() )
     {}
 
     /*!
