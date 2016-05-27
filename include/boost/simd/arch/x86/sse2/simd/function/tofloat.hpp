@@ -18,9 +18,9 @@
 #include <boost/simd/function/simd/seladd.hpp>
 #include <boost/simd/constant/signmask.hpp>
 #include <boost/simd/constant/twoto31.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
-#include <boost/dispatch/meta/as_floating.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/as_floating.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

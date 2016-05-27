@@ -11,7 +11,7 @@
 #define BOOST_SIMD_ARCH_X86_SSE4_1_SIMD_FUNCTION_SPLIT_LOW_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/dispatch/meta/upgrade.hpp>
+#include <boost/simd/detail/dispatch/meta/upgrade.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

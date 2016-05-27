@@ -11,7 +11,7 @@
 #define BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_LOAD_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/dispatch/adapted/common/pointer.hpp>
+#include <boost/simd/detail/dispatch/adapted/common/pointer.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

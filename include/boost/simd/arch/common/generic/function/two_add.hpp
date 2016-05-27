@@ -17,7 +17,7 @@
 #include <boost/simd/function/simd/is_inf.hpp>
 #include <boost/simd/function/simd/minus.hpp>
 #include <boost/simd/function/simd/plus.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <utility>
 

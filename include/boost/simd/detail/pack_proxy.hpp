@@ -14,8 +14,8 @@
 #ifndef BOOST_SIMD_DETAIL_PACK_PROXY_HPP_INCLUDED
 #define BOOST_SIMD_DETAIL_PACK_PROXY_HPP_INCLUDED
 
-#include <boost/dispatch/meta/value_of.hpp>
-#include <boost/dispatch/hierarchy_of.hpp>
+#include <boost/simd/detail/dispatch/meta/value_of.hpp>
+#include <boost/simd/detail/dispatch/hierarchy_of.hpp>
 #include <boost/config.hpp>
 #include <type_traits>
 #include <iostream>

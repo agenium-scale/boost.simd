@@ -17,7 +17,7 @@
 #include <boost/simd/function/simd/genmask.hpp>
 #include <boost/simd/function/simd/popcnt.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/simd/detail/make_dependent.hpp>
 
 namespace boost { namespace simd { namespace ext

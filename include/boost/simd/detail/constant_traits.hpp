@@ -12,10 +12,10 @@
 #ifndef BOOST_SIMD_DETAIL_CONSTANT_TRAITS_HPP_INCLUDED
 #define BOOST_SIMD_DETAIL_CONSTANT_TRAITS_HPP_INCLUDED
 
-#include <boost/dispatch/meta/scalar_of.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/property_of.hpp>
-#include <boost/dispatch/hierarchy.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/property_of.hpp>
+#include <boost/simd/detail/dispatch/hierarchy.hpp>
 #include <boost/config.hpp>
 #include <type_traits>
 

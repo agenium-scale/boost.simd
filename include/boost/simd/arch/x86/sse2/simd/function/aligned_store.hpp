@@ -12,7 +12,7 @@
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_ALIGNED_STORE_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/dispatch/adapted/common/pointer.hpp>
+#include <boost/simd/detail/dispatch/adapted/common/pointer.hpp>
 #include <boost/align/is_aligned.hpp>
 #include <boost/simd/detail/aliasing.hpp>
 

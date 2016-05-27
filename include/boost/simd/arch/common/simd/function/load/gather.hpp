@@ -14,7 +14,7 @@
 #include <boost/simd/function/combine.hpp>
 #include <boost/simd/function/slice_low.hpp>
 #include <boost/simd/function/slice_high.hpp>
-#include <boost/dispatch/adapted/common/pointer.hpp>
+#include <boost/simd/detail/dispatch/adapted/common/pointer.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

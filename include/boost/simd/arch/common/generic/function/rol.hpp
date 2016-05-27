@@ -21,9 +21,9 @@
 #include <boost/simd/function/shift_left.hpp>
 #include <boost/simd/function/shift_right.hpp>
 #include <boost/simd/function/splat.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

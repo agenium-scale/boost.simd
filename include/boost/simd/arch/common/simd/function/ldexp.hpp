@@ -29,7 +29,7 @@
 #include <boost/simd/function/simd/seladd.hpp>
 #include <boost/simd/function/simd/selsub.hpp>
 #include <boost/simd/function/simd/shift_left.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 #ifndef BOOST_SIMD_NO_DENORMALS
 #include <boost/simd/constant/minexponent.hpp>

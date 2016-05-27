@@ -26,7 +26,7 @@
 #include <boost/simd/function/simd/rec.hpp>
 #include <boost/simd/function/simd/shift_right.hpp>
 #include <boost/simd/function/simd/sqr.hpp>
-#include <boost/dispatch/meta/as_floating.hpp>
+#include <boost/simd/detail/dispatch/meta/as_floating.hpp>
 #include <boost/mpl/equal_to.hpp>
 
 namespace boost { namespace simd { namespace ext

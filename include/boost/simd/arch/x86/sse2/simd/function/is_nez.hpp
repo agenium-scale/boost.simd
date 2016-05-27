@@ -14,13 +14,13 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/as_logical.hpp>
-#include <boost/dispatch/meta/downgrade.hpp>
+#include <boost/simd/detail/dispatch/meta/downgrade.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/is_ltz.hpp>
 #include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/function/logical_or.hpp>
 #include <boost/simd/function/shuffle.hpp>
-#include <boost/dispatch/meta/downgrade.hpp>
+#include <boost/simd/detail/dispatch/meta/downgrade.hpp>
 
 
 namespace boost { namespace simd { namespace ext

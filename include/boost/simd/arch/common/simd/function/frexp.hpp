@@ -31,7 +31,7 @@
 #include <boost/simd/function/simd/multiplies.hpp>
 #include <boost/simd/function/simd/seladd.hpp>
 #include <boost/simd/function/simd/shr.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <utility>
 
 #ifndef BOOST_SIMD_NO_DENORMALS

@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_DETAIL_DISPATCH_HPP_INCLUDED
 #define BOOST_SIMD_DETAIL_DISPATCH_HPP_INCLUDED
 
-#include <boost/dispatch/function/register_namespace.hpp>
+#include <boost/simd/detail/dispatch/function/register_namespace.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

@@ -22,8 +22,8 @@
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/round2even.hpp>
 #include <boost/simd/function/toint.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
 #include <utility>
 

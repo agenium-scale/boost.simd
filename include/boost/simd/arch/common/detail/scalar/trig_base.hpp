@@ -37,7 +37,7 @@
 #include <boost/simd/constant/two.hpp>
 #include <boost/simd/constant/ratio.hpp>
 #include <boost/config.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 // trigonometric functions are implemented using the classical cephes/fdlibm/libc principles
 // however the formal reduce/eval/return is properly divided to allow choices versus

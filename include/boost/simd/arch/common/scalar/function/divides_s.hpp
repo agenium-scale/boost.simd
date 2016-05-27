@@ -17,8 +17,8 @@
 #include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/scalar/genmask.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_unsigned.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_unsigned.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

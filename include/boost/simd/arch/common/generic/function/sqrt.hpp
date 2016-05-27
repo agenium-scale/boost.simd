@@ -20,7 +20,7 @@
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/rsqrt.hpp>
 #include <boost/simd/detail/math.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/assert.hpp>
 #include <boost/config.hpp>
 

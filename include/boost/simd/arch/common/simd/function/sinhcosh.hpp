@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SINHCOSH_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SINHCOSH_HPP_INCLUDED
 
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/arch/common/detail/generic/sinh_kernel.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/log_2.hpp>

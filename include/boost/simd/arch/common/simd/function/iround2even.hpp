@@ -21,8 +21,8 @@
 #include <boost/simd/function/simd/is_less.hpp>
 #include <boost/simd/function/simd/splat.hpp>
 #include <boost/simd/function/fast.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 #ifndef BOOST_SIMD_NO_NANS
 #include <boost/simd/function/simd/is_nan.hpp>

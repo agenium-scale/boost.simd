@@ -19,7 +19,7 @@
 #include <boost/simd/function/is_not_nan.hpp>
 #include <boost/simd/function/is_positive.hpp>
 #include <boost/simd/meta/is_not_scalar.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

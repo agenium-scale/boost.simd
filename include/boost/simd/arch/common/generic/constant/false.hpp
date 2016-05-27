@@ -12,9 +12,9 @@
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_CONSTANT_FALSE_HPP_INCLUDED
 
 #include <boost/simd/logical.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/models.hpp>
-#include <boost/dispatch/as.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/models.hpp>
+#include <boost/simd/detail/dispatch/as.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

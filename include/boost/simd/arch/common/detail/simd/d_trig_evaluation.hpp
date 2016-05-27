@@ -19,7 +19,7 @@
 #include <boost/simd/function/simd/oneminus.hpp>
 #include <boost/simd/function/simd/rec.hpp>
 #include <boost/simd/function/simd/sqr.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 //TODO some factoring with scalar
 namespace boost { namespace simd

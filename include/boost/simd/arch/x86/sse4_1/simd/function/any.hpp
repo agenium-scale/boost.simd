@@ -15,7 +15,7 @@
 
 #include <boost/simd/function/simd/genmask.hpp>
 #include <boost/simd/constant/allbits.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

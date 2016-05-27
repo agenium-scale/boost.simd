@@ -13,8 +13,8 @@
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_BITS_HPP_INCLUDED
 
 #include <boost/simd/function/bitwise_cast.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

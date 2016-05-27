@@ -14,7 +14,7 @@
 #include <boost/simd/function/slice_high.hpp>
 #include <boost/simd/function/combine.hpp>
 #include <boost/simd/function/split.hpp>
-#include <boost/dispatch/meta/upgrade.hpp>
+#include <boost/simd/detail/dispatch/meta/upgrade.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

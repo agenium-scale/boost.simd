@@ -16,8 +16,8 @@
 #include <boost/simd/function/complement.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/traits.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

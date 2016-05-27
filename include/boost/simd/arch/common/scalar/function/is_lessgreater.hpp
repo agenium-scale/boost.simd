@@ -15,7 +15,7 @@
 #include <boost/config.hpp>
 #include <boost/simd/function/scalar/is_ord.hpp>
 #include <boost/simd/logical.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <cmath>
 
 namespace boost { namespace simd { namespace ext

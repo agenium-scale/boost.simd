@@ -11,8 +11,8 @@
 
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/dispatch/adapted/std/integral_constant.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/adapted/std/integral_constant.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

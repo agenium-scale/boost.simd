@@ -16,8 +16,8 @@
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/arch/common/tags.hpp>
 #include <boost/simd/as.hpp>
-#include <boost/dispatch/hierarchy/functions.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/hierarchy/functions.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

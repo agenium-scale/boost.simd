@@ -13,7 +13,7 @@
 #define BOOST_SIMD_AS_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
-#include <boost/dispatch/as.hpp>
+#include <boost/simd/detail/dispatch/as.hpp>
 
 namespace boost { namespace simd
 {

@@ -20,7 +20,7 @@
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd

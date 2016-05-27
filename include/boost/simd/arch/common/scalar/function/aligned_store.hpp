@@ -11,8 +11,8 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ALIGNED_STORE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ALIGNED_STORE_HPP_INCLUDED
 
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/adapted/common/pointer.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/adapted/common/pointer.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

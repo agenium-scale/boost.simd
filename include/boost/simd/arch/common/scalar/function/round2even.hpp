@@ -17,7 +17,7 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/detail/enforce_precision.hpp>
 #include <boost/simd/function/scalar/abs.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

@@ -15,8 +15,8 @@
 
 #include <boost/simd/detail/math.hpp>
 #include <boost/simd/function/std.hpp>
-#include <boost/dispatch/meta/as_unsigned.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_unsigned.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>
 #include <cstdlib>

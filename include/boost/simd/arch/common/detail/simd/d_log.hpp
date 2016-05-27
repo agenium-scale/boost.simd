@@ -39,8 +39,8 @@
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/config.hpp>
 #include <tuple>
 

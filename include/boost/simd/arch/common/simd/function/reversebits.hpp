@@ -20,7 +20,7 @@
 #include <boost/simd/function/simd/shift_left.hpp>
 #include <boost/simd/function/simd/shr.hpp>
 #include <boost/simd/constant/ratio.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

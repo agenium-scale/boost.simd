@@ -22,7 +22,7 @@
 #include <boost/simd/function/scalar/seldec.hpp>
 #include <boost/simd/function/scalar/tenpower.hpp>
 #include <boost/simd/detail/math.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>
 

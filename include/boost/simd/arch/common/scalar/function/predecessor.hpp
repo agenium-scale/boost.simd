@@ -19,7 +19,7 @@
 #include <boost/simd/function/scalar/is_nan.hpp>
 #include <boost/simd/function/scalar/minusone.hpp>
 #include <boost/simd/function/scalar/minus.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/assert.hpp>
 #include <boost/config.hpp>
 

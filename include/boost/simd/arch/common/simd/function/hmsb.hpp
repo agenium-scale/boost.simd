@@ -15,9 +15,9 @@
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/function/simd/genmask.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <climits>
 #include <cstddef>
 

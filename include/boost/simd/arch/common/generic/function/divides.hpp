@@ -17,8 +17,8 @@
 #include <boost/simd/function/rec.hpp>
 #include <boost/simd/function/fast.hpp>
 #include <boost/simd/function/divides.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/hierarchy.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/hierarchy.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

@@ -14,7 +14,7 @@
 #include <boost/simd/function/slice_high.hpp>
 #include <boost/simd/function/combine.hpp>
 #include <boost/simd/function/slide.hpp>
-#include <boost/dispatch/meta/as_floating.hpp>
+#include <boost/simd/detail/dispatch/meta/as_floating.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
