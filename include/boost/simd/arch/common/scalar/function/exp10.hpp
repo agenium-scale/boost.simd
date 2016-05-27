@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_EXP10_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_EXP10_HPP_INCLUDED
 
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/arch/common/detail/scalar/exponential.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/config.hpp>

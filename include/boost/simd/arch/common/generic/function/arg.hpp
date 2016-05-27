@@ -20,7 +20,7 @@
 #include <boost/simd/function/simd/if_else_zero.hpp>
 #include <boost/simd/function/simd/is_ltz.hpp>
 #include <boost/simd/function/simd/is_negative.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd

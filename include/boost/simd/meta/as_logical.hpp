@@ -18,8 +18,8 @@
 #include <boost/simd/logical.hpp>
 #include <boost/simd/meta/real_of.hpp>
 #include <boost/simd/detail/brigand.hpp>
-#include <boost/dispatch/meta/factory_of.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/factory_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd
 {

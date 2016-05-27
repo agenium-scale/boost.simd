@@ -25,7 +25,7 @@
 #include <boost/simd/function/simd/sqr.hpp>
 #include <boost/simd/function/simd/sqrt.hpp>
 #include <boost/simd/function/simd/unary_minus.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 #ifndef BOOST_SIMD_NO_INVALIDS
 #include <boost/simd/function/simd/if_else.hpp>

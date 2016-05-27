@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_DETAIL_DECORATOR_HPP_INCLUDED
 #define BOOST_SIMD_DETAIL_DECORATOR_HPP_INCLUDED
 
-#include <boost/dispatch/function/functor.hpp>
+#include <boost/simd/detail/dispatch/function/functor.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace detail

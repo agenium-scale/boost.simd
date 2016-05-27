@@ -15,8 +15,8 @@
 #define BOOST_SIMD_ARCH_POWER_VMX_DETAIL_AS_SIMD_HPP_INCLUDED
 
 #include <boost/simd/arch/common/simd/detail/as_simd.hpp>
-#include <boost/dispatch/meta/introspection/is_natural.hpp>
-#include <boost/dispatch/meta/introspection/sign_of.hpp>
+#include <boost/simd/detail/dispatch/meta/introspection/is_natural.hpp>
+#include <boost/simd/detail/dispatch/meta/introspection/sign_of.hpp>
 #include <boost/simd/detail/brigand.hpp>
 
 namespace boost { namespace simd

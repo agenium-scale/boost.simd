@@ -13,7 +13,7 @@
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/split.hpp>
-#include <boost/dispatch/meta/upgrade.hpp>
+#include <boost/simd/detail/dispatch/meta/upgrade.hpp>
 #include <utility>
 
 namespace boost { namespace simd { namespace ext

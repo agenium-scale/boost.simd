@@ -16,7 +16,7 @@
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/function/scalar/inc.hpp>
 #include <boost/simd/function/scalar/successor.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

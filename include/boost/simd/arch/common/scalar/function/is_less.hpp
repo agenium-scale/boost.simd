@@ -14,8 +14,8 @@
 #include <boost/simd/function/std.hpp>
 
 #include <boost/simd/logical.hpp>
-#include <boost/dispatch/adapted/std/integral_constant.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/adapted/std/integral_constant.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>
 

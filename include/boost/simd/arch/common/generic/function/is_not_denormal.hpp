@@ -19,7 +19,7 @@
 #include <boost/simd/function/is_not_less.hpp>
 #include <boost/simd/function/logical_or.hpp>
 #include <boost/simd/meta/as_logical.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

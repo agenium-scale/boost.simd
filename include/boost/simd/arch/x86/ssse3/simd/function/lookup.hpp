@@ -15,7 +15,7 @@
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/simd/shift_left.hpp>
 #include <boost/simd/function/simd/plus.hpp>
-#include <boost/dispatch/meta/downgrade.hpp>
+#include <boost/simd/detail/dispatch/meta/downgrade.hpp>
 
 
 namespace boost { namespace simd { namespace ext

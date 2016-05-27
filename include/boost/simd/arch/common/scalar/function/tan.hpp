@@ -16,7 +16,7 @@
 #include <boost/simd/function/scalar/log.hpp>
 #include <boost/simd/function/scalar/minusone.hpp>
 #include <boost/simd/function/scalar/oneplus.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>
 

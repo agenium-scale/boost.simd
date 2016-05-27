@@ -14,8 +14,8 @@
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/constant/definition/eps.hpp>
-#include <boost/dispatch/function/make_callable.hpp>
-#include <boost/dispatch/hierarchy/functions.hpp>
+#include <boost/simd/detail/dispatch/function/make_callable.hpp>
+#include <boost/simd/detail/dispatch/hierarchy/functions.hpp>
 
 namespace boost { namespace simd
 {

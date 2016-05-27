@@ -20,7 +20,7 @@
 #include <boost/simd/function/simd/minus.hpp>
 #include <boost/simd/function/simd/minusone.hpp>
 #include <boost/simd/function/simd/splat.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

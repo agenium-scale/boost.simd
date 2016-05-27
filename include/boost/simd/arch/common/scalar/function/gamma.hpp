@@ -30,7 +30,7 @@
 #include <boost/simd/function/scalar/sinpi.hpp>
 #include <boost/simd/function/scalar/stirling.hpp>
 
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <cmath>
 
 namespace boost { namespace simd { namespace ext

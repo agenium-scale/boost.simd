@@ -16,7 +16,7 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/any.hpp>
 #include <boost/simd/function/simd/is_not_equal.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

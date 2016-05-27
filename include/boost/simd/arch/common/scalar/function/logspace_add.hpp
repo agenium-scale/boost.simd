@@ -19,7 +19,7 @@
 #include <boost/simd/function/scalar/exp.hpp>
 #include <boost/simd/function/scalar/log1p.hpp>
 #include <boost/simd/function/scalar/max.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

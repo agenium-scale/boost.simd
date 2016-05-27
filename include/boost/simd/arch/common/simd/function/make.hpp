@@ -18,7 +18,7 @@
 #include <boost/simd/meta/hierarchy/logical.hpp>
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/meta/as_arithmetic.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <initializer_list>
 

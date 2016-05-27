@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_BITWISE_CAST_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_BITWISE_CAST_HPP_INCLUDED
 
-#include <boost/dispatch/as.hpp>
-#include <boost/dispatch/hierarchy.hpp>
+#include <boost/simd/detail/dispatch/as.hpp>
+#include <boost/simd/detail/dispatch/hierarchy.hpp>
 #include <cstring>
 
 namespace boost { namespace simd { namespace ext

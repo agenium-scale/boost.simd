@@ -15,7 +15,7 @@
 #include <boost/simd/function/scalar/is_not_denormal.hpp>
 #include <boost/simd/function/scalar/is_finite.hpp>
 #include <boost/simd/function/std.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>
 

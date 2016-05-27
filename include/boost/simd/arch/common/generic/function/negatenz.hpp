@@ -16,7 +16,7 @@
 #include <boost/simd/function/bitwise_xor.hpp>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/signnz.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

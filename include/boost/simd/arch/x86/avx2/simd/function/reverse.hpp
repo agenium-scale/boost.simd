@@ -13,7 +13,7 @@
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/combine.hpp>
 #include <boost/simd/function/slice.hpp>
-#include <boost/dispatch/meta/as_floating.hpp>
+#include <boost/simd/detail/dispatch/meta/as_floating.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

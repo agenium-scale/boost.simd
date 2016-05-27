@@ -16,8 +16,8 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/scalar/is_ngez.hpp>
 #include <boost/simd/function/scalar/saturate.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

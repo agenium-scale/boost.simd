@@ -19,7 +19,7 @@
 #include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/scalar/saturate.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

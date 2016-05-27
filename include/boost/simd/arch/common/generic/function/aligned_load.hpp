@@ -10,9 +10,9 @@
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ALIGNED_LOAD_HPP_INCLUDED
 
 #include <boost/simd/mask.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/adapted/common/pointer.hpp>
-#include <boost/dispatch/adapted/std/integral_constant.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/adapted/common/pointer.hpp>
+#include <boost/simd/detail/dispatch/adapted/std/integral_constant.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

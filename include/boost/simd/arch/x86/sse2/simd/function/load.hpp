@@ -11,7 +11,7 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/is_pointing_to.hpp>
-#include <boost/dispatch/adapted/common/pointer.hpp>
+#include <boost/simd/detail/dispatch/adapted/common/pointer.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

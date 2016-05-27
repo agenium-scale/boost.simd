@@ -20,9 +20,9 @@
 #include <boost/simd/function/scalar/bitwise_xor.hpp>
 #include <boost/simd/function/scalar/genmask.hpp>
 #include <boost/simd/function/scalar/saturate.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_unsigned.hpp>
-#include <boost/dispatch/meta/upgrade.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_unsigned.hpp>
+#include <boost/simd/detail/dispatch/meta/upgrade.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

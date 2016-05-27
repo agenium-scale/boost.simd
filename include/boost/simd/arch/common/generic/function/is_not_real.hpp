@@ -14,7 +14,7 @@
 
 #include <boost/simd/constant/false.hpp>
 #include <boost/simd/meta/as_logical.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

@@ -14,11 +14,11 @@
 #ifndef BOOST_SIMD_META_HIERARCHY_LOGICAL_HPP_INCLUDED
 #define BOOST_SIMD_META_HIERARCHY_LOGICAL_HPP_INCLUDED
 
-#include <boost/dispatch/meta/value_of.hpp>
-#include <boost/dispatch/meta/model_of.hpp>
+#include <boost/simd/detail/dispatch/meta/value_of.hpp>
+#include <boost/simd/detail/dispatch/meta/model_of.hpp>
 #include <boost/simd/meta/real_of.hpp>
-#include <boost/dispatch/hierarchy/fundamental.hpp>
-#include <boost/dispatch/property_of.hpp>
+#include <boost/simd/detail/dispatch/hierarchy/fundamental.hpp>
+#include <boost/simd/detail/dispatch/property_of.hpp>
 
 namespace boost { namespace simd
 {

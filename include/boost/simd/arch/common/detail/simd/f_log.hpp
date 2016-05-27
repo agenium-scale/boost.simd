@@ -29,8 +29,8 @@
 #include <boost/simd/constant/log10_elo.hpp>
 #include <boost/simd/constant/log10_2hi.hpp>
 #include <boost/simd/constant/log10_2lo.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 #ifndef BOOST_SIMD_NO_NANS
 #include <boost/simd/function/simd/is_nan.hpp>

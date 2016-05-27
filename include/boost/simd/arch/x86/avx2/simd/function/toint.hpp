@@ -12,7 +12,7 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/fast.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

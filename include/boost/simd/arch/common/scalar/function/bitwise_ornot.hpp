@@ -16,8 +16,8 @@
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/complement.hpp>
 #include <boost/simd/detail/traits.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
 #include <type_traits>
 

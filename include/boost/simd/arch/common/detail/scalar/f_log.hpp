@@ -42,8 +42,8 @@
 #include <boost/simd/function/scalar/fma.hpp>
 #include <boost/simd/function/scalar/is_eqz.hpp>
 #include <boost/simd/function/scalar/is_ltz.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd
 {

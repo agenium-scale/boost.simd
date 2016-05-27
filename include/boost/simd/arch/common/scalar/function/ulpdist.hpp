@@ -22,8 +22,8 @@
 #include <boost/simd/function/scalar/max.hpp>
 #include <boost/simd/function/scalar/minus.hpp>
 #include <boost/simd/function/scalar/tofloat.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
 #include <tuple>
 

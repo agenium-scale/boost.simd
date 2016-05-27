@@ -12,8 +12,8 @@
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/combine.hpp>
 #include <boost/simd/function/load.hpp>
-#include <boost/dispatch/adapted/common/pointer.hpp>
-#include <boost/dispatch/adapted/std/integral_constant.hpp>
+#include <boost/simd/detail/dispatch/adapted/common/pointer.hpp>
+#include <boost/simd/detail/dispatch/adapted/std/integral_constant.hpp>
 #include <boost/align/is_aligned.hpp>
 #include <boost/assert.hpp>
 

@@ -11,8 +11,8 @@
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
-#include <boost/dispatch/function/make_callable.hpp>
-#include <boost/dispatch/hierarchy/functions.hpp>
+#include <boost/simd/detail/dispatch/function/make_callable.hpp>
+#include <boost/simd/detail/dispatch/hierarchy/functions.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 
 namespace boost { namespace simd

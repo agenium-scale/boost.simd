@@ -19,7 +19,7 @@
 #include <boost/simd/function/is_flint.hpp>
 #include <boost/simd/function/rec.hpp>
 #include <boost/simd/function/sind.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

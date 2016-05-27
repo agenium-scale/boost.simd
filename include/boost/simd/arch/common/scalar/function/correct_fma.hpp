@@ -21,8 +21,8 @@
 #include <boost/simd/function/scalar/sign.hpp>
 #include <boost/simd/function/scalar/two_add.hpp>
 #include <boost/simd/function/scalar/two_prod.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
 #include <cmath>
 #include <tuple>

@@ -15,7 +15,7 @@
 #define BOOST_SIMD_ARCH_COMMON_LIMITS_HPP_INCLUDED
 
 #include <boost/simd/arch/x86/tags.hpp>
-#include <boost/dispatch/meta/make_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/make_integer.hpp>
 
 namespace boost { namespace simd
 {

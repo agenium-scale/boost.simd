@@ -11,7 +11,7 @@
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_GROUP_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/dispatch/meta/downgrade.hpp>
+#include <boost/simd/detail/dispatch/meta/downgrade.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

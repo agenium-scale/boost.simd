@@ -35,8 +35,8 @@
 #include <boost/simd/function/simd/multiplies.hpp>
 #include <boost/simd/function/simd/negate.hpp>
 #include <boost/simd/function/simd/sqr.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 #ifndef BOOST_SIMD_NO_DENORMALS
 #include <boost/simd/constant/smallestposval.hpp>

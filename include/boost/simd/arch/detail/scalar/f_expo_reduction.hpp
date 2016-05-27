@@ -34,7 +34,7 @@
 #include <boost/simd/function/scalar/round2even.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
 #include <boost/simd/logical.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd
 {

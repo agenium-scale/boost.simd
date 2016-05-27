@@ -17,7 +17,7 @@
 #include <boost/simd/arch/common/detail/simd/logarithm.hpp>
 #include <boost/simd/function/ilog2.hpp>
 #include <boost/simd/meta/is_not_scalar.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 

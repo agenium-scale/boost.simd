@@ -12,8 +12,8 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_CONSTANT_ZERO_HPP_INCLUDED
 
 #include <boost/simd/logical.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/as.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/as.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
