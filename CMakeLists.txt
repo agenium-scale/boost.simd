@@ -63,18 +63,6 @@ set(NS_CMAKE_PROJECT_OPTIONS
   CMAKE_ARGS "-DBOOST_ROOT=${Boost_INCLUDE_DIRS}"
 )
 
-if (DEFINED USE_SELF_BOOST)
-  set(BOOST_DISPATCH_GIT_TAG    develop)
-  NS_project_include(boost.dispatch)
-  add_dependencies(BOOST_DISPATCH BOOST_HEADER_ONLY)
-  add_dependencies(BOOST_DISPATCH-install BOOST_HEADER_ONLY)
-  add_dependencies(update.boost.dispatch update.boost-header-only)
-  set(Boost_INCLUDE_DIRS
-    ${BOOST_DISPATCH_DESTINATION}/include
-    ${BOOST_HEADER_ONLY_DESTINATION}/include
-  )
-endif()
-
 set(NS_BENCH_GIT_TAG develop)
 NS_project_include(ns.bench.standalone)
 NS_project_include(brigand.standalone)

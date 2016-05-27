@@ -17,7 +17,7 @@
 #include <boost/simd/function/scalar/is_gez.hpp>
 #include <boost/simd/function/scalar/is_nltz.hpp>
 #include <boost/simd/function/scalar/min.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

@@ -16,7 +16,7 @@
 #include <boost/simd/function/fma.hpp>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/divides.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd
 {

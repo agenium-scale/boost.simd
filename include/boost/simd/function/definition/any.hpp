@@ -15,8 +15,8 @@
 #include <boost/simd/config.hpp>
 #include <boost/simd/function/definition/logical_or.hpp>
 #include <boost/simd/constant/definition/false.hpp>
-#include <boost/dispatch/function/make_callable.hpp>
-#include <boost/dispatch/hierarchy/functions.hpp>
+#include <boost/simd/detail/dispatch/function/make_callable.hpp>
+#include <boost/simd/detail/dispatch/hierarchy/functions.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 
 namespace boost { namespace simd

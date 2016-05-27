@@ -27,7 +27,7 @@
 #include <boost/simd/function/scalar/oneplus.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
 #include <boost/simd/function/scalar/sqrt.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #ifndef BOOST_SIMD_NO_INVALIDS
 #include <boost/simd/function/scalar/is_nan.hpp>
 #endif
@@ -35,7 +35,7 @@
 #include <boost/simd/function/scalar/is_inf.hpp>
 #include <boost/simd/function/scalar/signnz.hpp>
 #endif
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

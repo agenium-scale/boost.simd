@@ -13,9 +13,9 @@
 #define BOOST_SIMD_FUNCTION_DEFINITION_BITWISE_CAST_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
-#include <boost/dispatch/function/make_callable.hpp>
-#include <boost/dispatch/hierarchy/functions.hpp>
-#include <boost/dispatch/as.hpp>
+#include <boost/simd/detail/dispatch/function/make_callable.hpp>
+#include <boost/simd/detail/dispatch/hierarchy/functions.hpp>
+#include <boost/simd/detail/dispatch/as.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 
 namespace boost { namespace simd

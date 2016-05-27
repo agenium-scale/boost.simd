@@ -18,7 +18,7 @@
 #include <boost/simd/function/scalar/is_gtz.hpp>
 #include <boost/simd/function/scalar/is_ltz.hpp>
 #include <boost/simd/function/scalar/shift_right.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

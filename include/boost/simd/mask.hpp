@@ -14,8 +14,8 @@
 #define BOOST_SIMD_MASK_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
-#include <boost/dispatch/hierarchy/unspecified.hpp>
-#include <boost/dispatch/hierarchy_of.hpp>
+#include <boost/simd/detail/dispatch/hierarchy/unspecified.hpp>
+#include <boost/simd/detail/dispatch/hierarchy_of.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd

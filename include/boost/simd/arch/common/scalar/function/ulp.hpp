@@ -21,8 +21,8 @@
 #include <boost/simd/function/scalar/is_invalid.hpp>
 #include <boost/simd/function/scalar/min.hpp>
 #include <boost/simd/function/scalar/prev.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

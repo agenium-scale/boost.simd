@@ -18,7 +18,7 @@
 #include <boost/simd/function/scalar/hi.hpp>
 #include <boost/simd/function/scalar/lo.hpp>
 #include <boost/simd/function/scalar/sbits.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

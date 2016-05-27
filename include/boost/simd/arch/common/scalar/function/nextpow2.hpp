@@ -19,9 +19,9 @@
 #include <boost/simd/function/scalar/frexp.hpp>
 #include <boost/simd/function/scalar/minusone.hpp>
 #include <boost/simd/function/scalar/reversebits.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
 #include <tuple>
 

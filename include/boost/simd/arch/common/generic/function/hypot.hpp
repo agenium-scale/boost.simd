@@ -16,7 +16,7 @@
 #include <boost/simd/function/fma.hpp>
 #include <boost/simd/function/sqr.hpp>
 #include <boost/simd/function/sqrt.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

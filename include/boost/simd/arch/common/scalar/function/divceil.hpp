@@ -20,7 +20,7 @@
 #include <boost/simd/function/scalar/iceil.hpp>
 #include <boost/simd/function/scalar/inc.hpp>
 #include <boost/simd/function/scalar/oneplus.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

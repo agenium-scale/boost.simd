@@ -25,8 +25,8 @@
 #include <boost/simd/function/scalar/round.hpp>
 #include <boost/simd/function/scalar/tenpower.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/assert.hpp>
 #include <boost/config.hpp>
 

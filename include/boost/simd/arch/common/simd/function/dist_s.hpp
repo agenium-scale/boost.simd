@@ -18,7 +18,7 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/simd/dist.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

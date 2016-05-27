@@ -37,7 +37,7 @@
 #include <boost/simd/function/simd/rec.hpp>
 #include <boost/simd/function/simd/sqr.hpp>
 #include <boost/simd/function/simd/sqrt.hpp>
-//#include <boost/dispatch/meta/simd_of.hpp>
+//#include <boost/simd/detail/dispatch/meta/simd_of.hpp>
 
 namespace boost { namespace simd
 {

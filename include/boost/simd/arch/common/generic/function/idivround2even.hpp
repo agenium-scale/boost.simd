@@ -15,8 +15,8 @@
 #include <boost/simd/function/divides.hpp>
 #include <boost/simd/function/round2even.hpp>
 #include <boost/simd/function/iround2even.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

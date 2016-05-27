@@ -19,7 +19,7 @@
 #include <boost/simd/function/simd/if_else.hpp>
 #include <boost/simd/function/simd/is_positive.hpp>
 #include <boost/simd/function/simd/minus.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

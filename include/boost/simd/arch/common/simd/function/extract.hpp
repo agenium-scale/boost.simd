@@ -18,7 +18,7 @@
 #include <boost/simd/meta/as_arithmetic.hpp>
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/meta/hierarchy/logical.hpp>
-#include <boost/dispatch/adapted/std/integral_constant.hpp>
+#include <boost/simd/detail/dispatch/adapted/std/integral_constant.hpp>
 #include <boost/predef/compiler.h>
 
 namespace boost { namespace simd { namespace ext

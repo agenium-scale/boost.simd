@@ -23,9 +23,9 @@
 #include <boost/simd/function/detail/slide_pattern.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/dispatch/meta/as_floating.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/dispatch/attributes.hpp>
+#include <boost/simd/detail/dispatch/meta/as_floating.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/attributes.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

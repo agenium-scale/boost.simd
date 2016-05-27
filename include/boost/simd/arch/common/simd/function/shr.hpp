@@ -17,7 +17,7 @@
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 #include <boost/simd/function/simd/shift_right.hpp>
 #include <boost/assert.hpp>
-#include <boost/dispatch/meta/as_unsigned.hpp>
+#include <boost/simd/detail/dispatch/meta/as_unsigned.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

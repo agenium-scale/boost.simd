@@ -27,7 +27,7 @@
 #include <boost/simd/function/simd/round.hpp>
 #include <boost/simd/function/simd/tenpower.hpp>
 #include <boost/assert.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 #ifndef BOOST_SIMD_NO_INVALIDS
 #include <boost/simd/function/simd/if_else.hpp>

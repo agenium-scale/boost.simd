@@ -13,7 +13,7 @@
 #include <boost/simd/function/simd/saturate.hpp>
 #include <boost/simd/function/simd/group.hpp>
 #include <boost/simd/function/saturated.hpp>
-#include <boost/dispatch/meta/downgrade.hpp>
+#include <boost/simd/detail/dispatch/meta/downgrade.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

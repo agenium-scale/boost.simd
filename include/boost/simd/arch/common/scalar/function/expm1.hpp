@@ -25,7 +25,7 @@
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/function/scalar/is_greater.hpp>
 #include <boost/simd/function/scalar/is_less.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>
 

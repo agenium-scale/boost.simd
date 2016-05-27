@@ -22,8 +22,8 @@
 #include <boost/simd/function/simd/split.hpp>
 #include <boost/simd/function/simd/two_add.hpp>
 #include <boost/simd/function/simd/two_prod.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/dispatch/meta/upgrade.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/upgrade.hpp>
 #include <tuple>
 
 #ifndef BOOST_SIMD_DONT_CARE_FMA_OVERFLOW

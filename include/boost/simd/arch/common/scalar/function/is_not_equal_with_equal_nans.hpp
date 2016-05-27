@@ -13,7 +13,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_NOT_EQUAL_WITH_EQUAL_NANS_HPP_INCLUDED
 
 #include <boost/simd/function/scalar/is_nan.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #
 

@@ -25,7 +25,7 @@
 #include <boost/simd/function/simd/plus.hpp>
 #include <boost/simd/function/simd/shr.hpp>
 #include <boost/simd/function/simd/splat.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

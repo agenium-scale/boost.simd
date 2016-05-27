@@ -28,7 +28,7 @@
 #include <boost/simd/function/scalar/is_positive.hpp>
 #include <boost/simd/function/scalar/is_nan.hpp>
 #include <boost/simd/function/scalar/signnz.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

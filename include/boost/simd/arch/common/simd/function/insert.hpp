@@ -16,7 +16,7 @@
 #include <boost/simd/detail/aliasing.hpp>
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/meta/hierarchy/logical.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

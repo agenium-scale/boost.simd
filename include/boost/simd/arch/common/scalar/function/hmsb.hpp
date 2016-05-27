@@ -14,8 +14,8 @@
 
 #include <boost/simd/constant/signmask.hpp>
 #include <boost/simd/function/scalar/bitwise_and.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
 // TODO is size_t the good result type ?
 

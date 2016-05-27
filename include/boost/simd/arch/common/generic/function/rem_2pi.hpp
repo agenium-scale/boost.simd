@@ -34,7 +34,7 @@
 #include <boost/simd/function/round2even.hpp>
 #include <boost/simd/function/tofloat.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

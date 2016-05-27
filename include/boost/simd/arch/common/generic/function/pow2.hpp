@@ -20,7 +20,7 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/function/ldexp.hpp>
 #include <boost/simd/function/toint.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/assert.hpp>
 #include <boost/config.hpp>
 

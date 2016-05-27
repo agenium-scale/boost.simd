@@ -15,7 +15,7 @@
 #include <boost/simd/function/scalar/is_flint.hpp>
 #include <boost/simd/function/scalar/is_nltz.hpp>
 #include <boost/simd/function/scalar/pow.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/assert.hpp>
 #include <boost/config.hpp>
 

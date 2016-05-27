@@ -12,7 +12,7 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/slice_low.hpp>
-#include <boost/dispatch/meta/upgrade.hpp>
+#include <boost/simd/detail/dispatch/meta/upgrade.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

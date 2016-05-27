@@ -16,12 +16,12 @@
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/forward.hpp>
-#include <boost/dispatch/hierarchy/generic.hpp>
-#include <boost/dispatch/hierarchy/unspecified.hpp>
-#include <boost/dispatch/meta/value_of.hpp>
-#include <boost/dispatch/meta/model_of.hpp>
-#include <boost/dispatch/hierarchy_of.hpp>
-#include <boost/dispatch/property_of.hpp>
+#include <boost/simd/detail/dispatch/hierarchy/generic.hpp>
+#include <boost/simd/detail/dispatch/hierarchy/unspecified.hpp>
+#include <boost/simd/detail/dispatch/meta/value_of.hpp>
+#include <boost/simd/detail/dispatch/meta/model_of.hpp>
+#include <boost/simd/detail/dispatch/hierarchy_of.hpp>
+#include <boost/simd/detail/dispatch/property_of.hpp>
 
 namespace boost { namespace simd
 {
