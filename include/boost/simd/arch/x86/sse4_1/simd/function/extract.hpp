@@ -64,6 +64,7 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
+#if !defined(BOOST_MSVC)
   //------------------------------------------------------------------------------------------------
   BOOST_DISPATCH_OVERLOAD ( extract_
                           , (typename A0, typename A1)
@@ -78,6 +79,7 @@ namespace boost { namespace simd { namespace ext
       return _mm_extract_epi64(a0, value);
     }
   };
+#endif
 
   //------------------------------------------------------------------------------------------------
   BOOST_DISPATCH_OVERLOAD ( extract_
