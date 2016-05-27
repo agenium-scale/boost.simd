@@ -24,7 +24,7 @@ struct cos_simd
      using ret_type = bs::pack<T>;
      nsb::make_function_experiment_cpe_sized_<pack_t::static_size>
        ( [](const pack_t & x0) -> ret_type
-       { //  std::cout << "x " << x0 << std::endl;
+       {
            return bs::cos(x0); }
        , nsb::generators::range<pack_t>(min0, max0)
        );
@@ -37,7 +37,6 @@ struct fast_cos_simd
    template <typename U>
    void operator()(U min1, U max1)
    {
-<<<<<<< Updated upstream
      using pack_t = bs::pack<T>;
      using ret_type = bs::pack<T>;
      nsb::make_function_experiment_cpe_sized_<pack_t::static_size>

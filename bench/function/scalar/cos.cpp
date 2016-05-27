@@ -45,7 +45,6 @@ struct fast_cos_scalar
 };
 
 int main(int argc, char **argv) {
-<<<<<<< Updated upstream
   nsb::parse_args(argc, argv);
   nsb::make_for_each<fast_cos_scalar, NS_BENCH_IEEE_TYPES>(-0.5, 0.5);
   nsb::make_for_each<cos_scalar, NS_BENCH_IEEE_TYPES>(-0.5, 0.5);
