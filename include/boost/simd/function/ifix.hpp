@@ -23,7 +23,7 @@ namespace boost { namespace simd
 
     Convert to integer by saturated truncation.
 
-    This is a convenient alias of @ref toint_s
+    This is a convenient alias of @ref saturated_(toint)
   **/
   const boost::dispatch::functor<tag::ifix_> ifix = {};
 } }

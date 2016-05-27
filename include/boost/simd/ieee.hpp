@@ -42,8 +42,6 @@ namespace boost { namespace simd
 #include <boost/simd/function/eps.hpp>
 #include <boost/simd/function/exponentbits.hpp>
 #include <boost/simd/function/exponent.hpp>
-#include <boost/simd/function/fmax.hpp>
-#include <boost/simd/function/fmin.hpp>
 #include <boost/simd/function/fpclassify.hpp>
 #include <boost/simd/function/frac.hpp>
 #include <boost/simd/function/frexp.hpp>

@@ -13,17 +13,6 @@
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_MINUS_HPP_INCLUDED
 #include <boost/simd/detail/overload.hpp>
 
-#include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/genmask.hpp>
-#include <boost/simd/function/simd/group.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/shrai.hpp>
-#include <boost/simd/function/simd/split_multiplies.hpp>
-#include <boost/simd/constant/valmax.hpp>
-#include <boost/dispatch/meta/as_unsigned.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
-#include <boost/dispatch/meta/upgrade.hpp>
-
 /* No native groups for 64-bit SSE;
  * we use bit tricks instead of calling saturate. */
 

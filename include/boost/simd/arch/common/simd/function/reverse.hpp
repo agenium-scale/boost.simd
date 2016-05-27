@@ -54,7 +54,7 @@ namespace boost { namespace simd { namespace ext
     A0 do_(const A0& a0, aggregate_storage const&, brigand::list<N...> const&) const BOOST_NOEXCEPT
     {
       // reverse each half and permute them
-      return {{ reverse(a0.storage()[1]), reverse(a0.storage()[0]) }};
+      return {{ {reverse(a0.storage()[1]), reverse(a0.storage()[0])} }};
     }
   };
 } } }

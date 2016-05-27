@@ -26,7 +26,7 @@
 #include <boost/simd/function/toint.hpp>
 #include <boost/simd/function/round2even.hpp>
 #include <boost/simd/function/if_else_nan.hpp>
-#include <boost/simd/function/is_ngt.hpp>
+#include <boost/simd/function/is_not_greater.hpp>
 #include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/function/is_flint.hpp>
 #include <boost/simd/function/all.hpp>
@@ -88,29 +88,29 @@ namespace boost { namespace simd
       using conversion_allowed_t = bd::is_upgradable<A0>;
 
       static BOOST_FORCEINLINE auto is_0_pio4_reduced(const A0&a0) BOOST_NOEXCEPT
-      ->  decltype(is_ngt(a0, Pio_4<A0>()))
+      ->  decltype(is_not_greater(a0, Pio_4<A0>()))
       {
-        return is_ngt(a0, Pio_4<A0>());
+        return is_not_greater(a0, Pio_4<A0>());
       }
       static BOOST_FORCEINLINE auto is_pio4_pio2_reduced(const A0&a0) BOOST_NOEXCEPT
-      ->  decltype(is_ngt(a0, Pio_2<A0>()))
+      ->  decltype(is_not_greater(a0, Pio_2<A0>()))
       {
-        return bitwise_and(is_ngt(a0, Pio_2<A0>()), is_greater(a0, Pio_4<A0>() ));
+        return bitwise_and(is_not_greater(a0, Pio_2<A0>()), is_greater(a0, Pio_4<A0>() ));
       }
       static BOOST_FORCEINLINE auto is_0_20pi_reduced(const A0&a0) BOOST_NOEXCEPT
-      ->  decltype(is_ngt(a0, Real<A0, 0X404F6A7A2955385EULL, 0X427B53D1UL>()))
+      ->  decltype(is_not_greater(a0, Real<A0, 0X404F6A7A2955385EULL, 0X427B53D1UL>()))
       {
-        return is_ngt(a0, Real<A0, 0X404F6A7A2955385EULL, 0X427B53D1UL>()); //20 pi;
+        return is_not_greater(a0, Real<A0, 0X404F6A7A2955385EULL, 0X427B53D1UL>()); //20 pi;
       }
       static BOOST_FORCEINLINE auto is_0_mpi_reduced (const A0&a0) BOOST_NOEXCEPT
-      ->  decltype(is_ngt(a0, Medium_pi<A0>()))
+      ->  decltype(is_not_greater(a0, Medium_pi<A0>()))
       {
-        return is_ngt(a0, Medium_pi<A0>()); //2^6 pi
+        return is_not_greater(a0, Medium_pi<A0>()); //2^6 pi
       }
       static BOOST_FORCEINLINE auto is_0_dmpi_reduced(const A0&a0) BOOST_NOEXCEPT
-      ->  decltype(is_ngt(a0,Constant<A0,262144>()))
+      ->  decltype(is_not_greater(a0,Constant<A0,262144>()))
       {
-        return is_ngt(a0, Ratio<A0,262144>()); //2^18 pi
+        return is_not_greater(a0, Ratio<A0,262144>()); //2^18 pi
       }
 
       static BOOST_FORCEINLINE l_t cot_invalid(const A0& )  BOOST_NOEXCEPT
