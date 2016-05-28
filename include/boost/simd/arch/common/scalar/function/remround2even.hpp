@@ -34,15 +34,17 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0)
                           , bd::cpu_
                           , bs::tag::round2even_
-                          , bd::generic_< bd::signed_<A0> >
-                          , bd::generic_< bd::signed_<A0> >
+                          , bd::generic_< bd::int_<A0> >
+                          , bd::generic_< bd::int_<A0> >
                           )
   {
     BOOST_FORCEINLINE A0 operator() (bd::functor<bs::tag::round2even_> const&
                                     , A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
-      return selsub(is_nez(a1),a0,
-                    simd::multiplies(div(round2even, a0, a1), a1));
+      if (is_nez(a1))
+        return fnms(div(round2even, a0, a1), a1, a0);
+      else
+        return a0;
     }
   };
 
@@ -57,7 +59,8 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() (bd::functor<bs::tag::round2even_> const&
                                     , A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
-      return a0-div(round2even, a0, a1)*a1;
+      if (is_nez(a1)&&is_eqz(a0)) return a0;
+      return  fnms(div(round2even, a0, a1), a1, a0);
     }
   };
 
@@ -66,15 +69,32 @@ namespace boost { namespace simd { namespace ext
                           , bd::cpu_
                           , bs::fast_tag
                           , bs::tag::round2even_
-                          , bd::generic_< bd::signed_<A0> >
-                          , bd::generic_< bd::signed_<A0> >
+                          , bd::generic_< bd::int_<A0> >
+                          , bd::generic_< bd::int_<A0> >
                           )
   {
     BOOST_FORCEINLINE A0 operator() (const fast_tag &
                                     , bd::functor<bs::tag::round2even_> const&
                                     , A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
-      return a0-fast_(div)(round2even, a0, a1)*a1;
+      return fnms(div(round2even, a0, a1), a1, a0);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( rem_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bs::fast_tag
+                          , bs::tag::round2even_
+                          , bd::generic_< bd::floating_<A0> >
+                          , bd::generic_< bd::floating_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() (const fast_tag &
+                                    , bd::functor<bs::tag::round2even_> const&
+                                    , A0 a0, A0 a1) const BOOST_NOEXCEPT
+    {
+      return fnms(div(round2even, a0, a1), a1, a0);
     }
   };
 

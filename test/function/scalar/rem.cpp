@@ -16,6 +16,8 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
+#include <boost/simd/function/is_positive.hpp>
+#include <boost/simd/function/is_negative.hpp>
 
 STF_CASE_TPL (" rem real",  STF_IEEE_TYPES)
 {
@@ -32,10 +34,16 @@ STF_CASE_TPL (" rem real",  STF_IEEE_TYPES)
   STF_IEEE_EQUAL(rem(bs::Inf<T>(), bs::Inf<T>()), bs::Nan<T>());
   STF_IEEE_EQUAL(rem(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
   STF_IEEE_EQUAL(rem(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(rem(bs::Inf<T>(), bs::One<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(rem(bs::One<T>(), bs::Zero<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(rem(bs::Zero<T>(), bs::Zero<T>()), bs::Nan<T>());
 #endif
   STF_EQUAL(rem(bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
   STF_EQUAL(rem(bs::One<T>(), bs::One<T>()), bs::Zero<T>());
+  STF_IEEE_EQUAL(rem(bs::One<T>(),bs::Zero<T>()), bs::Nan<T>());
   STF_IEEE_EQUAL(rem(bs::Zero<T>(), bs::Zero<T>()), bs::Nan<T>());
+  STF_EXPECT(bs::is_negative(rem(-T(0), T(1))));
+  STF_EXPECT(bs::is_positive(rem(T(0), T(1))));
 } // end of test for floating_
 
 STF_CASE_TPL (" rem unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
@@ -128,7 +136,19 @@ STF_CASE_TPL (" rem option fix",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_IEEE_EQUAL(bs::fast_(rem)(bs::fix, bs::Inf<T>(), bs::Inf<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::fast_(rem)(bs::fix, bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::fast_(rem)(bs::fix, bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::fast_(rem)(bs::fix, bs::Inf<T>(), bs::One<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::fast_(rem)(bs::fix, bs::Minf<T>(), bs::One<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::fast_(rem)(bs::fix, bs::One<T>(), bs::Zero<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::fast_(rem)(bs::fix, bs::Zero<T>(), bs::Zero<T>()), bs::Nan<T>());
+#endif
   STF_EQUAL(bs::fast_(rem)(bs::fix, bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
   STF_EQUAL(bs::fast_(rem)(bs::fix, bs::One<T>(), bs::One<T>()), bs::Zero<T>());
   STF_EQUAL(bs::fast_(rem)(bs::fix, T(3), T(2)), bs::One<T>());
+  STF_IEEE_EQUAL(bs::fast_(rem)(bs::fix, bs::Two<T>(), bs::Zero<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::fast_(rem)(bs::fix, bs::Two<T>(), bs::Mzero<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::fast_(rem)(bs::fix, bs::Zero<T>(), bs::One<T>()), bs::Zero<T>());
 } // end of test for signed_int_

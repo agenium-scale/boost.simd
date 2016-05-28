@@ -16,6 +16,7 @@
 
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/function/scalar/div.hpp>
+#include <boost/simd/function/scalar/fnms.hpp>
 #include <boost/simd/function/scalar/is_eqz.hpp>
 #include <boost/simd/function/scalar/is_finite.hpp>
 #include <boost/simd/function/scalar/is_inf.hpp>
@@ -47,8 +48,8 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
-      if (is_inf(a0) || is_eqz(a1)) return Nan<A0>();
-      return is_finite(a1) ? a0-a1*div(fix, a0, a1) : a0;
+      if (is_nez(a1)&&is_eqz(a0)) return a0;
+      return fnms(div(fix, a0, a1), a1, a0);
     }
   };
 
@@ -77,7 +78,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
-      return a0-a1*div(fix, a0, a1);
+      return fnms(a1, div(fix, a0, a1), a0);
     }
   };
   BOOST_DISPATCH_OVERLOAD ( rem_
@@ -108,7 +109,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() (const fast_tag &, bd::functor<bs::tag::fix_> const&
                                     ,  A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
-      return a0-a1*div(fix, a0, a1);
+      return fnms(a1, div(fix, a0, a1), a0);
     }
   };
   BOOST_DISPATCH_OVERLOAD ( rem_

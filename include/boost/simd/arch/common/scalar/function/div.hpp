@@ -20,19 +20,23 @@
 #include <boost/simd/arch/common/scalar/function/divround.hpp>
 #include <boost/simd/arch/common/scalar/function/divround2even.hpp>
 #include <boost/simd/arch/common/scalar/function/divtrunc.hpp>
-#include <boost/simd/arch/common/generic/function/idivceil.hpp>
-#include <boost/simd/arch/common/generic/function/idivfloor.hpp>
-#include <boost/simd/arch/common/generic/function/idivround.hpp>
-#include <boost/simd/arch/common/generic/function/idivround2even.hpp>
-#include <boost/simd/arch/common/generic/function/idivfix.hpp>
+// #include <boost/simd/arch/common/generic/function/idivceil.hpp>
+// #include <boost/simd/arch/common/generic/function/idivfloor.hpp>
+// #include <boost/simd/arch/common/generic/function/idivround.hpp>
+// #include <boost/simd/arch/common/generic/function/idivround2even.hpp>
+// #include <boost/simd/arch/common/generic/function/idivfix.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/hierarchy.hpp>
+//#include <boost/simd/function/fast.hpp>
+#include <boost/dispatch/function/overload.hpp>
+#include <boost/dispatch/hierarchy.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
 
   namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
   BOOST_DISPATCH_OVERLOAD ( div_
                           , (typename T)
                           , bd::cpu_

@@ -49,17 +49,14 @@ namespace boost { namespace simd
     -Supported types
      unsigned types are not supported but for the option @c fix, as in other cases result can be negative
 
-    -Limiting values
+    -Limiting values for floating entries:
 
-      -option @c round2even
-      -option @c fix
-       For floating entries:
        -  if x is +/-inf , Nan is returned
        -  if x is +/-0 and y is not 0 x is returned
        -  If y is +/-0, Nan is returned
        -  If either argument is NaN, Nan is returned
 
-       If correct values for these limit cases do not matter for you, using the fast_ decorator
+       If insurance of correct 0 sign in the second case does not matter for you, using the fast_ decorator
     can gain some cycles.
 
 
@@ -71,7 +68,7 @@ namespace boost { namespace simd
       -option round2even calls std::remainder
       The other options have no standard correspondant
 
-    fast_ for floating entries
+    fast_ for floating entries,  but if x is +/-0 and y is not 0  +/-0 is returned with a non garanteed sign.
 
 
   **/

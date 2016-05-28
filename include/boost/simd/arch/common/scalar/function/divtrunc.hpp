@@ -16,6 +16,7 @@
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/constant/zero.hpp>
+#include <boost/simd/function/fast.hpp>
 #include <boost/simd/function/scalar/trunc.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
@@ -67,6 +68,39 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
+  BOOST_DISPATCH_OVERLOAD ( div_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bs::fast_tag
+                          , bs::tag::trunc_
+                          , bd::scalar_< bd::int_<A0> >
+                          , bd::scalar_< bd::int_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() (const fast_tag&
+                                    , bd::functor<bs::tag::trunc_> const&
+                                    , A0 a0, A0 a1) const BOOST_NOEXCEPT
+    {
+        return a0/a1;
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( div_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bs::fast_tag
+                          , bs::tag::trunc_
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() (const fast_tag&
+                                    , bd::functor<bs::tag::trunc_> const&
+                                    , A0 a0, A0 a1) const BOOST_NOEXCEPT
+    {
+      return div(bs::trunc, a0, a1);
+    }
+  };
 
 #ifdef BOOST_MSVC
 #pragma warning(push)

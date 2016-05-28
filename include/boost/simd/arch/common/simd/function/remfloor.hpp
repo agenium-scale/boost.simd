@@ -15,9 +15,8 @@
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/div.hpp>
-#include <boost/simd/function/simd/fix.hpp>
-#include <boost/simd/function/simd/if_nan_else.hpp>
-#include <boost/simd/function/simd/is_invalid.hpp>
+#include <boost/simd/function/simd/fnms.hpp>
+#include <boost/simd/function/simd/floor.hpp>
 #include <boost/simd/function/simd/is_nez.hpp>
 #include <boost/simd/function/simd/multiplies.hpp>
 #include <boost/simd/function/simd/selsub.hpp>
@@ -30,14 +29,14 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename X)
                           , bd::cpu_
                           , bs::tag::floor_
-                          , bs::pack_<bd::signed_<A0>, X>
-                          , bs::pack_<bd::signed_<A0>, X>
+                          , bs::pack_<bd::int_<A0>, X>
+                          , bs::pack_<bd::int_<A0>, X>
                           )
    {
       BOOST_FORCEINLINE A0 operator()(bd::functor<bs::tag::floor_> const&
                                      , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
-        return selsub(is_nez(a1), a0, div(round2even,a0,a1)*a1);
+        return selsub(is_nez(a1), a0, div(floor,a0,a1)*a1);
       }
    };
    BOOST_DISPATCH_OVERLOAD(rem_
@@ -53,23 +52,23 @@ namespace boost { namespace simd { namespace ext
                                      , bd::functor<bs::tag::floor_> const&
                                      , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
-        return a0-div(floor, a0,a1)*a1;
+        return fnms(div(floor, a0,a1), a1, a0);
       }
    };
    BOOST_DISPATCH_OVERLOAD(rem_
                           , (typename A0, typename X)
                           , bd::cpu_
-                          , bs::fast_tag
                           , bs::tag::floor_
                           , bs::pack_<bd::floating_<A0>, X>
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()(const fast_tag &
-                                     , bd::functor<bs::tag::floor_> const&
+      BOOST_FORCEINLINE A0 operator()( bd::functor<bs::tag::floor_> const&
                                      , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
-        return a0-div(floor, a0,a1)*a1;
+      auto is_eqza1 = is_eqz(a1);
+      return if_nan_else(logical_or(is_invalid(a1), is_eqza1),
+                         selsub(logical_notand(is_eqza1, is_nez(a0)), a0, div(floor, a0,a1)*a1));
       }
    };
 } } }

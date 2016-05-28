@@ -33,6 +33,9 @@ STF_CASE_TPL (" remainder real",  STF_IEEE_TYPES)
   STF_IEEE_EQUAL(rem(bs::round2even, bs::Inf<T>(), bs::Inf<T>()), bs::Nan<T>());
   STF_IEEE_EQUAL(rem(bs::round2even, bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
   STF_IEEE_EQUAL(rem(bs::round2even, bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(rem(bs::floor, bs::Inf<T>(), bs::One<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(rem(bs::floor, bs::One<T>(), bs::Zero<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(rem(bs::floor, bs::Zero<T>(), bs::Zero<T>()), bs::Nan<T>());
 #endif
   STF_EQUAL(rem(bs::round2even, bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
   STF_EQUAL(rem(bs::round2even, bs::One<T>(), bs::One<T>()), bs::Zero<T>());
@@ -55,4 +58,33 @@ STF_CASE_TPL (" remainder signed_int",  STF_SIGNED_INTEGRAL_TYPES)
   STF_EQUAL(rem(bs::round2even, bs::One<T>(), bs::One<T>()), bs::Zero<T>());
   STF_EQUAL(rem(bs::round2even, bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
   STF_EQUAL(rem(bs::round2even, bs::Two<T>(), bs::Three<T>()), bs::Mone<T>());
+} // end of test for signed_int_
+
+
+STF_CASE_TPL (" rem round2even fast",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::rem;
+  using r_t = decltype(rem(bs::round2even, T(), T()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, T);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_IEEE_EQUAL(bs::fast_(rem)(bs::round2even, bs::Inf<T>(), bs::Inf<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::fast_(rem)(bs::round2even, bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::fast_(rem)(bs::round2even, bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::fast_(rem)(bs::round2even, bs::Inf<T>(), bs::One<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::fast_(rem)(bs::round2even, bs::Minf<T>(), bs::One<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::fast_(rem)(bs::round2even, bs::One<T>(), bs::Zero<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::fast_(rem)(bs::round2even, bs::Zero<T>(), bs::Zero<T>()), bs::Nan<T>());
+#endif
+  STF_EQUAL(bs::fast_(rem)(bs::round2even, bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
+  STF_EQUAL(bs::fast_(rem)(bs::round2even, bs::One<T>(), bs::One<T>()), bs::Zero<T>());
+  STF_EQUAL(bs::fast_(rem)(bs::round2even, bs::Two<T>(), bs::Three<T>()), bs::Mone<T>());
+  STF_IEEE_EQUAL(bs::fast_(rem)(bs::round2even, bs::Two<T>(), bs::Zero<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::fast_(rem)(bs::round2even, bs::Two<T>(), bs::Mzero<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::fast_(rem)(bs::round2even, bs::Zero<T>(), bs::One<T>()), bs::Zero<T>());
 } // end of test for signed_int_
