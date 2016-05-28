@@ -18,7 +18,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( repeat_upper_half_
                           , (typename A0)
-                          , bs::sse_
+                          , bs::sse1_
                           , bs::pack_<bd::single_<A0>, bs::sse_>
                          )
   {

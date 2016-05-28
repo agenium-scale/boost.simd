@@ -13,7 +13,7 @@
 
 using namespace boost::simd;
 
-STF_CASE_TPL( "Check existence of limits for SSE1 extension", (sse_) )
+STF_CASE_TPL( "Check existence of limits for SSE1 extension", (sse1_) )
 {
   STF_TYPE_IS( typename limits<T>::smallest_real, float);
   STF_TYPE_IS( typename limits<T>::largest_real , float);

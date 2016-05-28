@@ -20,8 +20,8 @@ STF_CASE( "Check for basic SIMD tag parent" )
 #ifdef BOOST_ARCH_X86_AVAILABLE
 STF_CASE( "Check for architectural tag parent for X86/AMD" )
 {
-  STF_TYPE_IS( boost::simd::sse_::parent    , boost::simd::simd_native_ );
-  STF_TYPE_IS( boost::simd::sse2_::parent   , boost::simd::sse_         );
+  STF_TYPE_IS( boost::simd::sse1_::parent   , boost::simd::simd_native_ );
+  STF_TYPE_IS( boost::simd::sse2_::parent   , boost::simd::sse1_        );
   STF_TYPE_IS( boost::simd::sse3_::parent   , boost::simd::sse2_        );
   STF_TYPE_IS( boost::simd::ssse3_::parent  , boost::simd::sse3_        );
 

@@ -26,7 +26,7 @@ namespace boost { namespace simd { namespace ext
   namespace bs =  boost::simd;
   BOOST_DISPATCH_OVERLOAD ( rsqrt_
                           , (typename A0)
-                          , bs::sse_
+                          , bs::sse1_
                           , bs::fast_tag
                           , bs::pack_<bd::single_<A0>, bs::sse_>
                           )

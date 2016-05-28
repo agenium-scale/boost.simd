@@ -22,7 +22,7 @@ namespace boost { namespace simd { namespace ext
   // splat from a scalar into a pack of float
   BOOST_DISPATCH_OVERLOAD ( splat_
                           , (typename Target, typename Value)
-                          , bs::sse_
+                          , bs::sse1_
                           , bd::scalar_< bd::unspecified_<Value> >
                           , bd::target_<bs::pack_<bd::single_<Target>,bs::sse_>>
                           )
