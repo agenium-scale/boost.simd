@@ -29,7 +29,7 @@ namespace boost { namespace simd { namespace ext
     using result_t = bd::upgrade_t<A0>;
 
     template<typename... N>
-    static BOOST_FORCEINLINE result_t do_(A0 const& a, br::list<N...> const&) BOOST_NOEXCEPT
+    static BOOST_FORCEINLINE result_t do_(A0 const& a, brigand::list<N...> const&) BOOST_NOEXCEPT
     {
       using type = typename result_t::value_type;
       return result_t( static_cast<type>(bs::extract<sizeof...(N)+N::value>(a))... );
