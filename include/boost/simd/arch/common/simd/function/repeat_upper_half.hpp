@@ -27,13 +27,13 @@ namespace boost { namespace simd { namespace ext
     template<typename K, typename... N> static BOOST_FORCEINLINE
     T do_( T const& x, K const&, br::list<N...> const&) BOOST_NOEXCEPT
     {
-      return T( x[N::value]..., x[N::value]... );
+      return T( extract<N::value>(x)..., extract<N::value>(x)... );
     }
 
     template<typename K, typename N> static BOOST_FORCEINLINE
     T do_( T const& x, K const&, br::list<N> const&) BOOST_NOEXCEPT
     {
-      return T( x[N::value] );
+      return T( extract<N::value>(x) );
     }
 
     template<typename... N> static BOOST_FORCEINLINE
