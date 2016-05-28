@@ -11,7 +11,7 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/combine.hpp>
-#include <boost/dispatch/adapted/std/iterator.hpp>
+#include <boost/simd/detail/dispatch/adapted/std/iterator.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

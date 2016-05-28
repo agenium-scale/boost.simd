@@ -12,8 +12,8 @@
 #include <boost/simd/function/slice_high.hpp>
 #include <boost/simd/function/slice_low.hpp>
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/dispatch/hierarchy.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/hierarchy.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

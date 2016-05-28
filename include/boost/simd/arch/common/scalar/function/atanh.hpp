@@ -20,7 +20,7 @@
 #include <boost/simd/function/scalar/fma.hpp>
 #include <boost/simd/function/scalar/log1p.hpp>
 #include <boost/simd/function/scalar/oneminus.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>
 

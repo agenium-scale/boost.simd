@@ -24,8 +24,8 @@
 #include <boost/simd/function/simd/shift_left.hpp>
 #include <boost/simd/function/simd/shr.hpp>
 #include <boost/simd/function/simd/unary_minus.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/simd/constant/ratio.hpp>
 
 namespace boost { namespace simd { namespace ext

@@ -20,7 +20,7 @@
 #include <boost/simd/function/scalar/floor.hpp>
 #include <boost/simd/function/scalar/iceil.hpp>
 #include <boost/simd/function/scalar/minusone.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

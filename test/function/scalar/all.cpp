@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/all.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 STF_CASE_TPL ( "all", STF_ALL_TYPES)
 {

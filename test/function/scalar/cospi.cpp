@@ -21,7 +21,7 @@
 #include <boost/simd/constant/quarter.hpp>
 #include <boost/simd/constant/sqrt_2.hpp>
 #include <boost/simd/constant/sqrt_2o_2.hpp>
-#include <boost/dispatch/meta/as_floating.hpp>
+#include <boost/simd/detail/dispatch/meta/as_floating.hpp>
 
 STF_CASE_TPL (" cospi",  STF_IEEE_TYPES)
 {

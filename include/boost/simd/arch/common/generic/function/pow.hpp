@@ -30,7 +30,7 @@
 #include <boost/simd/function/pow_abs.hpp>
 #include <boost/simd/function/rec.hpp>
 #include <boost/simd/function/sqr.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/assert.hpp>
 #include <boost/config.hpp>
 

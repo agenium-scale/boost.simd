@@ -21,7 +21,7 @@
 #include <boost/simd/function/simd/toint.hpp>
 #include <boost/simd/function/simd/touint.hpp>
 #include <boost/simd/function/simd/fix.hpp>
-#include <boost/dispatch/meta/upgrade.hpp>
+#include <boost/simd/detail/dispatch/meta/upgrade.hpp>
 #include <utility>
 
 namespace boost { namespace simd { namespace ext

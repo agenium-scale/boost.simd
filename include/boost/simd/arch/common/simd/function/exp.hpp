@@ -14,7 +14,7 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/arch/common/detail/simd/exponential.hpp>
 #include <boost/config.hpp>
 #include <cmath>

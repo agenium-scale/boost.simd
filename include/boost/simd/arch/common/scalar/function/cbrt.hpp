@@ -36,8 +36,8 @@
 #include <boost/simd/function/scalar/ldexp.hpp>
 #include <boost/simd/function/scalar/negate.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
 #include <cmath>
 #include <tuple>

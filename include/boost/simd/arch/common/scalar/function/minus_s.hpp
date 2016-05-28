@@ -17,9 +17,9 @@
 #include <boost/simd/function/scalar/min.hpp>
 #include <boost/simd/function/scalar/saturate.hpp>
 #include <boost/simd/function/saturated.hpp>
-#include <boost/dispatch/meta/as_signed.hpp>
-#include <boost/dispatch/meta/as_unsigned.hpp>
-#include <boost/dispatch/meta/upgrade.hpp>
+#include <boost/simd/detail/dispatch/meta/as_signed.hpp>
+#include <boost/simd/detail/dispatch/meta/as_unsigned.hpp>
+#include <boost/simd/detail/dispatch/meta/upgrade.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

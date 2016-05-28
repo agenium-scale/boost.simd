@@ -14,9 +14,9 @@
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
-#include <boost/dispatch/hierarchy/unspecified.hpp>
-#include <boost/dispatch/hierarchy/scalar.hpp>
-#include <boost/dispatch/models.hpp>
+#include <boost/simd/detail/dispatch/hierarchy/unspecified.hpp>
+#include <boost/simd/detail/dispatch/hierarchy/scalar.hpp>
+#include <boost/simd/detail/dispatch/models.hpp>
 
 namespace boost { namespace simd
 {

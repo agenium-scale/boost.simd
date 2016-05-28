@@ -19,9 +19,9 @@
 #include <boost/simd/swar/functions/simd/sse/sse2/details/topology.hpp>
 #include <boost/simd/swar/functions/details/topology.hpp>
 #include <boost/simd/swar/functions/details/permuted.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/dispatch/meta/as_floating.hpp>
-#include <boost/dispatch/attributes.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_floating.hpp>
+#include <boost/simd/detail/dispatch/attributes.hpp>
 #include <boost/mpl/bool.hpp>
 #include <boost/mpl/int.hpp>
 

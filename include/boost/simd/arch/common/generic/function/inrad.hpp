@@ -14,7 +14,7 @@
 
 #include <boost/simd/function/simd/multiplies.hpp>
 #include <boost/simd/constant/deginrad.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

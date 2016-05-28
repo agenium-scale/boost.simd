@@ -10,7 +10,7 @@
 #define BOOST_SIMD_ARCH_X86_AVX2_SIMD_FUNCTION_MAKE_HPP_INCLUDED
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

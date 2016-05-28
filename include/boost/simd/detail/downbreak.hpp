@@ -14,8 +14,8 @@
 
 #include <boost/simd/pack.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
-#include <boost/dispatch/meta/downgrade.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/downgrade.hpp>
 
 namespace boost { namespace simd { namespace detail
 {

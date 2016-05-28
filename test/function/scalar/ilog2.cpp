@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/ilog2.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/three.hpp>
 #include <boost/simd/constant/four.hpp>
 #include <boost/simd/constant/pi.hpp>

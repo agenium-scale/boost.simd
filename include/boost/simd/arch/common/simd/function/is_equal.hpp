@@ -17,7 +17,7 @@
 #include <boost/simd/meta/as_arithmetic.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 #include <boost/simd/meta/as_logical.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/utility/enable_if.hpp>
 
 namespace boost { namespace simd { namespace ext

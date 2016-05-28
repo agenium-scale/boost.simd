@@ -15,7 +15,7 @@
 #include <boost/simd/constant/invpi.hpp>
 #include <boost/simd/function/acos.hpp>
 #include <boost/simd/function/multiplies.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

@@ -13,9 +13,6 @@
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_MINUS_HPP_INCLUDED
 #include <boost/simd/detail/overload.hpp>
 
-/* No native groups for 64-bit SSE;
- * we use bit tricks instead of calling saturate. */
-
 namespace boost { namespace simd { namespace ext
 {
   namespace bd =  boost::dispatch;
@@ -61,9 +58,6 @@ namespace boost { namespace simd { namespace ext
       return _mm_sub_epi8(a0,a1);
     }
   };
-
-
-
 } } }
 
 #endif

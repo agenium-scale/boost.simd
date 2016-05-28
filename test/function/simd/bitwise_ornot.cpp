@@ -14,7 +14,7 @@
 #include <boost/simd/function/unary_minus.hpp>
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <simd_test.hpp>
 
 template <typename T, std::size_t N, typename Env>

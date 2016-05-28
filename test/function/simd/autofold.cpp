@@ -11,8 +11,8 @@
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/plus.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/dispatch/hierarchy/functions.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/hierarchy/functions.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/arch/common/generic/function/autofold.hpp>
 #include <simd_test.hpp>
 

@@ -1,19 +1,15 @@
 //==================================================================================================
-/*!
-  @file
-
+/**
   Copyright 2016 NumScale SAS
-  Copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/two_prod.hpp>
 #include <boost/simd/constant/eps.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
 #include <simd_test.hpp>
 
 template <typename T, std::size_t N, typename Env>

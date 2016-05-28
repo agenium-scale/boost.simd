@@ -18,11 +18,11 @@
 #include <boost/simd/function/scalar/min.hpp>
 #include <boost/simd/function/scalar/saturate.hpp>
 #include <boost/simd/function/saturated.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/hierarchy.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/dispatch/meta/as_unsigned.hpp>
-#include <boost/dispatch/meta/upgrade.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/hierarchy.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_unsigned.hpp>
+#include <boost/simd/detail/dispatch/meta/upgrade.hpp>
 #include <boost/config.hpp>
 #include <type_traits>
 

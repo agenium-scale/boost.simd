@@ -32,8 +32,8 @@
 #include <boost/simd/function/unary_minus.hpp>
 #include <boost/simd/function/horn.hpp>
 #include <boost/simd/function/horn1.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd
 {

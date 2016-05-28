@@ -15,7 +15,7 @@
 #include <boost/simd/as.hpp>
 #include <boost/simd/constant/constant.hpp>
 #include <boost/simd/detail/constant_traits.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <cstdint>
 
 namespace boost { namespace simd

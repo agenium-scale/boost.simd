@@ -6,7 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/dispatch/meta/upgrade.hpp>
+#include <boost/simd/detail/dispatch/meta/upgrade.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
 

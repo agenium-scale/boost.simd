@@ -10,8 +10,8 @@
 #define BOOST_SIMD_DETAIL_PACK_INFO_HPP_INCLUDED
 
 #include <boost/simd/meta/cardinal_of.hpp>
-#include <boost/dispatch/meta/downgrade.hpp>
-#include <boost/dispatch/meta/upgrade.hpp>
+#include <boost/simd/detail/dispatch/meta/downgrade.hpp>
+#include <boost/simd/detail/dispatch/meta/upgrade.hpp>
 #include <type_traits>
 
 namespace boost { namespace simd

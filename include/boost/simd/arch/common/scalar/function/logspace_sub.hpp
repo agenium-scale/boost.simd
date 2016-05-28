@@ -19,7 +19,7 @@
 #include <boost/simd/function/scalar/is_eqz.hpp>
 #include <boost/simd/function/scalar/log.hpp>
 #include <boost/simd/function/scalar/log1p.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

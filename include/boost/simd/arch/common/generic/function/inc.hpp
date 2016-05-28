@@ -13,7 +13,7 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/function/plus.hpp>
 #include <boost/simd/function/oneplus.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/function/plus.hpp>
 #include <boost/config.hpp>
 

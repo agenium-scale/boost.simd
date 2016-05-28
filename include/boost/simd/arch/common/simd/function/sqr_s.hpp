@@ -23,7 +23,7 @@
 
 #ifdef USE_UBSAN
 #include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/dispatch/meta/as_unsigned.hpp>
+#include <boost/simd/detail/dispatch/meta/as_unsigned.hpp>
 #endif
 
 namespace boost { namespace simd { namespace ext

@@ -15,7 +15,7 @@
 #include <boost/simd/detail/assert_utils.hpp>
 #include <boost/simd/function/is_nltz.hpp>
 #include <boost/simd/function/sqrt.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/assert.hpp>
 #include <boost/config.hpp>
 

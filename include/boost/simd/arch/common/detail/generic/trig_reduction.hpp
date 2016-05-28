@@ -20,7 +20,7 @@
 #include <boost/simd/function/logical_and.hpp>
 #include <boost/simd/function/split.hpp>
 #include <boost/simd/function/group.hpp>
-#include <boost/dispatch/meta/upgrade.hpp>
+#include <boost/simd/detail/dispatch/meta/upgrade.hpp>
 
 #include <boost/simd/function/all.hpp>
 #include <boost/simd/function/toint.hpp>
@@ -45,8 +45,8 @@
 #include <boost/simd/constant/ratio.hpp>
 #include <boost/simd/constant/constant.hpp>
 #include <boost/simd/constant/real.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <utility>
 
 //#include <nt2/sdk/meta/as_logical.hpp>

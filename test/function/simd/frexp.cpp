@@ -15,7 +15,7 @@
 #include <boost/simd/function/fast.hpp>
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <utility>
 #include <tuple>
 

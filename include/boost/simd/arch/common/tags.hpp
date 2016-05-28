@@ -14,7 +14,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_TAGS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_TAGS_HPP_INCLUDED
 
-#include <boost/dispatch/hierarchy/cpu.hpp>
+#include <boost/simd/detail/dispatch/hierarchy/cpu.hpp>
 
 namespace boost { namespace simd
 {

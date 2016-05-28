@@ -15,7 +15,7 @@
 #include <boost/simd/function/simd/exp.hpp>
 #include <boost/simd/function/simd/rec.hpp>
 #include <boost/simd/function/simd/unary_minus.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

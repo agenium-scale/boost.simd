@@ -18,7 +18,7 @@
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/is_equal.hpp>
 #include <boost/simd/function/saturated.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

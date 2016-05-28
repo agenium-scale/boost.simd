@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_DETAIL_GENERIC_F_LOG_KERNEL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_GENERIC_F_LOG_KERNEL_HPP_INCLUDED
 
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/simd/function/fast.hpp>
 #include <boost/simd/function/simd/frexp.hpp>
 #include <boost/simd/function/simd/is_less.hpp>
@@ -28,7 +28,7 @@
 
 #include <boost/simd/function/horn.hpp>
 #include <boost/simd/logical.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <tuple>
 
 namespace boost { namespace simd { namespace detail

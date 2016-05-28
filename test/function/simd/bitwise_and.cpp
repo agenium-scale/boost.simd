@@ -8,7 +8,7 @@
 **/
 //==================================================================================================
 #include <boost/simd/function/bitwise_and.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
 

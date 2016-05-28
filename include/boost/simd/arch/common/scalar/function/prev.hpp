@@ -15,7 +15,7 @@
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/function/scalar/dec.hpp>
 #include <boost/simd/function/scalar/predecessor.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

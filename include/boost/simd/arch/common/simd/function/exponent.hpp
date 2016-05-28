@@ -20,8 +20,8 @@
 #include <boost/simd/function/simd/exponentbits.hpp>
 #include <boost/simd/function/simd/selsub.hpp>
 #include <boost/simd/function/simd/shr.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 #ifndef BOOST_SIMD_NO_INVALIDS
 #include <boost/simd/function/simd/if_zero_else.hpp>

@@ -16,7 +16,7 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/sbits.hpp>
 #include <boost/simd/logical.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>
 

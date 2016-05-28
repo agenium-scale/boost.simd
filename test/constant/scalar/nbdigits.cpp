@@ -8,7 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/constant/nbdigits.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/as.hpp>
 #include <limits>
 #include <simd_test.hpp>
