@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/all_reduce.hpp>
 #include <stf.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>

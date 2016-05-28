@@ -6,7 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/dispatch/hierarchy_of.hpp>
+#include <boost/simd/detail/dispatch/hierarchy_of.hpp>
 #include <boost/simd/meta/abi_of.hpp>
 #include <boost/simd/logical.hpp>
 #include <boost/simd/pack.hpp>

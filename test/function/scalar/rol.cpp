@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/rol.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 
 STF_CASE_TPL (" rol integer", STF_INTEGRAL_TYPES)

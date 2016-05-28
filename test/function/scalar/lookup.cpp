@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/lookup.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 
 STF_CASE_TPL( "Check extract behavior with all types", STF_NUMERIC_TYPES )

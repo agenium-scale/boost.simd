@@ -14,7 +14,7 @@
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/logical.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
