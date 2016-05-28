@@ -20,7 +20,7 @@
 
 namespace boost { namespace simd
 {
-  template<> struct limits<boost::simd::sse_>
+  template<> struct limits<boost::simd::sse1_>
   {
     using parent = boost::simd::simd_;
 

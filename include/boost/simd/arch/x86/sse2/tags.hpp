@@ -24,7 +24,7 @@ namespace boost { namespace simd
 
     This tag represent architectures implementing the Intel SSE2 SIMD instructions set.
   **/
-  struct sse2_  : sse_  { using parent = sse_ ; };
+  struct sse2_  : sse1_  { using parent = sse1_ ; };
 
 
 } }
