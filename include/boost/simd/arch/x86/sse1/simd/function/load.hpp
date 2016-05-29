@@ -23,7 +23,7 @@ namespace boost { namespace simd { namespace ext
   // load from a pointer of single
   BOOST_DISPATCH_OVERLOAD ( load_
                           , (typename Target, typename Pointer)
-                          , bs::sse_
+                          , bs::sse1_
                           , bd::pointer_<bd::scalar_<bd::single_<Pointer>>,1u>
                           , bd::target_<bs::pack_<bd::single_<Target>,bs::sse_>>
                           )

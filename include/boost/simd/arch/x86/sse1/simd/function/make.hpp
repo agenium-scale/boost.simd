@@ -22,7 +22,7 @@ namespace boost { namespace simd { namespace ext
   // make a pack of single
   BOOST_DISPATCH_OVERLOAD ( make_
                           , (typename Target, typename... Values)
-                          , bs::sse_
+                          , bs::sse1_
                           , bd::target_<bs::pack_<bd::single_<Target>,bs::sse_>>
                           , bd::scalar_<bd::unspecified_<Values>>...
                           )

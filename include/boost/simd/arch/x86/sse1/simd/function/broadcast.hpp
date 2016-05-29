@@ -19,7 +19,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( broadcast_
                           , (typename A0, typename A1)
-                          , bs::sse_
+                          , bs::sse1_
                           , bs::pack_<bd::single_<A0>,bs::sse_>
                           , bd::constant_<bd::integer_<A1>>
                           )

@@ -20,7 +20,7 @@ namespace boost { namespace simd { namespace ext
   namespace bs =  boost::simd;
   BOOST_DISPATCH_OVERLOAD ( ror_
                           , (typename A0, typename A1)
-                          , bs::sse_
+                          , bs::sse1_
                           , bs::pack_<bd::single_<A0>, bs::sse_>
                           , bd::scalar_<bd::integer_<A1>>
                          )

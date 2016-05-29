@@ -21,7 +21,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( store_
                           , (typename Vec, typename Pointer)
-                          , bs::sse_
+                          , bs::sse1_
                           , bs::pack_<bd::single_<Vec>, bs::sse_>
                           , bd::pointer_<bd::scalar_<bd::single_<Pointer>>,1u>
                           )

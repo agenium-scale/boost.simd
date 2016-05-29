@@ -31,7 +31,7 @@ namespace boost { namespace simd { namespace ext
   // load from an aligned pointer of single
   BOOST_DISPATCH_OVERLOAD ( aligned_load_
                           , (typename Target, typename Pointer)
-                          , bs::sse_
+                          , bs::sse1_
                           , bd::pointer_<bd::scalar_<bd::single_<Pointer>>,1u>
                           , bd::target_<bs::pack_<bd::single_<Target>,bs::sse_>>
                           )
@@ -53,7 +53,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD_IF( aligned_load_
                             , (typename Target, typename Pointer, typename Misalignment)
                             , (bs::is_pointing_to<Pointer,typename Target::type::value_type>)
-                            , bs::sse_
+                            , bs::sse1_
                             , bd::pointer_<bd::scalar_<bd::arithmetic_<Pointer>>,1u>
                             , bd::constant_< bd::integer_<Misalignment>>
                             , bd::target_<bs::pack_<bd::arithmetic_<Target>,bs::sse_>>
