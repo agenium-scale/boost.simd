@@ -58,6 +58,34 @@ namespace boost { namespace simd { namespace ext
       return _mm_sub_epi8(a0,a1);
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( minus_
+                          , (typename A0)
+                          , bs::sse2_
+                          , bs::pack_<bd::ints32_<A0>, bs::sse_>
+                          , bs::pack_<bd::ints32_<A0>, bs::sse_>
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( const A0 & a0
+                                    , const A0 & a1 ) const BOOST_NOEXCEPT
+    {
+      return _mm_sub_epi32(a0,a1);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( minus_
+                          , (typename A0)
+                          , bs::sse2_
+                          , bs::pack_<bd::ints64_<A0>, bs::sse_>
+                          , bs::pack_<bd::ints64_<A0>, bs::sse_>
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( const A0 & a0
+                                    , const A0 & a1 ) const BOOST_NOEXCEPT
+    {
+      return _mm_sub_epi64(a0,a1);
+    }
+  };
 } } }
 
 #endif
