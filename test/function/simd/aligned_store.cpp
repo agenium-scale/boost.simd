@@ -12,15 +12,15 @@
 #include <boost/align/aligned_alloc.hpp>
 #include <simd_test.hpp>
 
+namespace ba = boost::alignment;
+namespace bs = boost::simd;
+
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
 {
-  namespace ba = boost::alignment;
-  namespace bs = boost::simd;
   using p_t = bs::pack<T, N>;
 
   std::size_t alg = p_t::alignment;
-
 
   T* a1 = static_cast<T*>(ba::aligned_alloc(alg, (sizeof(T)) * N));
   T* a2 = static_cast<T*>(ba::aligned_alloc(alg, (sizeof(T)) * N));
@@ -34,19 +34,16 @@ void test(Env& $)
   p_t aa1(&a1[0], &a1[0]+N);
   bs::aligned_store(aa1, &a2[0]);
 
-  for(std::size_t i=0; i <N ; ++i)
-  {
-    STF_IEEE_EQUAL(a1[i], a2[i]);
-  }
+  for(std::size_t i=0; i <N ; ++i) STF_EQUAL(a1[i], a2[i]);
+
   ba::aligned_free(a1);
   ba::aligned_free(a2);
 }
 
 STF_CASE_TPL( "Check aligned_store behavior with all types", STF_NUMERIC_TYPES )
 {
-  namespace bs = boost::simd;
-  using p_t = bs::pack<T>;
-  static const std::size_t N = p_t::static_size;
+  static const std::size_t N = bs::pack<T>::static_size;
+
   test<T, N>($);
   test<T, N/2>($);
   test<T, N*2>($);
