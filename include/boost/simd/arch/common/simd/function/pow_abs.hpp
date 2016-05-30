@@ -41,8 +41,8 @@
 #include <boost/simd/function/simd/oneplus.hpp>
 #include <boost/simd/function/simd/plus.hpp>
 #include <boost/simd/function/simd/pow2.hpp>
-#include <boost/simd/function/simd/selinc.hpp>
-#include <boost/simd/function/simd/selsub.hpp>
+#include <boost/simd/function/simd/if_inc.hpp>
+#include <boost/simd/function/simd/if_minus.hpp>
 #include <boost/simd/function/simd/shift_right.hpp>
 #include <boost/simd/function/simd/signnz.hpp>
 #include <boost/simd/function/simd/sqr.hpp>
@@ -107,10 +107,10 @@ namespace boost { namespace simd { namespace ext
         e = toint(w);
         Wb = W - Wb;
         auto test = is_gtz(Wb);
-        e = selinc(test, e);
-        Wb = selsub(test, Wb, Ratio<A0, 1, 16>());
+        e = if_inc(test, e);
+        Wb = if_minus(test, Wb, Ratio<A0, 1, 16>());
         z = detail::pow_kernel<A0>::pow2(Wb)*Wb;
-        i = selinc(is_gtz(e), (e/Sixteen<iA0>()));
+        i = if_inc(is_gtz(e), (e/Sixteen<iA0>()));
         e = (i*Sixteen<iA0>()) - e;
         w =  detail::pow_kernel<A0>::twomio16(e);
         z = fma(w, z, w);

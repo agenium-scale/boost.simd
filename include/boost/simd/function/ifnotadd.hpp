@@ -39,7 +39,7 @@ namespace boost { namespace simd
     T r = cond ? t1 :  t1+t2;
     @endcode
 
-    @see seladd
+    @see if_plus
 
   **/
   const boost::dispatch::functor<tag::ifnotadd_> ifnotadd = {};

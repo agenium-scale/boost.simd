@@ -19,7 +19,7 @@
 #include <boost/simd/function/simd/log1p.hpp>
 #include <boost/simd/function/simd/minusone.hpp>
 #include <boost/simd/function/simd/plus.hpp>
-#include <boost/simd/function/simd/seladd.hpp>
+#include <boost/simd/function/simd/if_plus.hpp>
 #include <boost/simd/function/simd/sqr.hpp>
 #include <boost/simd/function/simd/sqrt.hpp>
 
@@ -38,7 +38,7 @@ namespace boost { namespace simd { namespace ext
         A0 t = minusone(a0);
         auto test = is_greater(t,Oneotwoeps<A0>());
         A0 z = if_else(test, a0, t+sqrt(t+t+sqr(t)));
-        return seladd(test, log1p(z), Log_2<A0>());
+        return if_plus(test, log1p(z), Log_2<A0>());
       }
    };
 

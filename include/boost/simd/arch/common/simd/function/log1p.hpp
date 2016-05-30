@@ -20,7 +20,7 @@
 #include <boost/simd/function/simd/minus.hpp>
 #include <boost/simd/function/simd/minusone.hpp>
 #include <boost/simd/function/simd/oneplus.hpp>
-#include <boost/simd/function/simd/seladd.hpp>
+#include <boost/simd/function/simd/if_plus.hpp>
 
 #ifndef BOOST_SIMD_NO_INFINITIES
 #include <boost/simd/constant/inf.hpp>
@@ -41,7 +41,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator()( const A0& a0) BOOST_NOEXCEPT
     {
       A0 u = oneplus(a0);
-      A0 r = seladd(is_nez(u),
+      A0 r = if_plus(is_nez(u),
                     log(u),
                     (a0-minusone(u))/u); // cancels errors with IEEE arithmetic
 #ifndef BOOST_SIMD_NO_INFINITIES

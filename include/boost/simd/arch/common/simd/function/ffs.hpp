@@ -20,7 +20,7 @@
 #include <boost/simd/function/simd/genmask.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
 #include <boost/simd/function/simd/inc.hpp>
-#include <boost/simd/function/simd/seladd.hpp>
+#include <boost/simd/function/simd/if_plus.hpp>
 #include <boost/simd/function/simd/shift_left.hpp>
 #include <boost/simd/function/simd/shr.hpp>
 #include <boost/simd/function/simd/unary_minus.hpp>

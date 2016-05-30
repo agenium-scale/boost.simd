@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/scalar/if_add.hpp>
+#include <boost/simd/function/scalar/if_plus.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -18,40 +18,40 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/logical.hpp>
 
-STF_CASE_TPL (" if_add real",  STF_IEEE_TYPES)
+STF_CASE_TPL (" if_plus real",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
-  using bs::if_add;
+  using bs::if_plus;
   using bs::logical;
-  using r_t = decltype(if_add(logical<T>(),T(),T()));
+  using r_t = decltype(if_plus(logical<T>(),T(),T()));
 
   // return type conformity test
   STF_TYPE_IS( r_t, T );
 
   // specific values tests
-  STF_EQUAL(if_add(logical<T>(T(0)),T(1),T(2)), T(1));
-  STF_EQUAL(if_add(logical<T>(bs::Nan<T>()),T(1),T(2)), T(3));
-  STF_EQUAL(if_add(logical<T>(bs::Nan<T>()),bs::Inf<T>(),bs::Inf<T>()), bs::Inf<r_t>());
-  STF_EQUAL(if_add(logical<T>(bs::Nan<T>()),bs::Minf<T>(),bs::Minf<T>()), bs::Minf<r_t>());
-  STF_IEEE_EQUAL(if_add(logical<T>(bs::Nan<T>()),bs::Nan<T>(),bs::Nan<T>()), bs::Nan<r_t>());
-  STF_EQUAL(if_add(logical<T>(bs::Nan<T>()),bs::Zero<T>(),bs::Zero<T>()), bs::Zero<r_t>());
+  STF_EQUAL(if_plus(logical<T>(T(0)),T(1),T(2)), T(1));
+  STF_EQUAL(if_plus(logical<T>(bs::Nan<T>()),T(1),T(2)), T(3));
+  STF_EQUAL(if_plus(logical<T>(bs::Nan<T>()),bs::Inf<T>(),bs::Inf<T>()), bs::Inf<r_t>());
+  STF_EQUAL(if_plus(logical<T>(bs::Nan<T>()),bs::Minf<T>(),bs::Minf<T>()), bs::Minf<r_t>());
+  STF_IEEE_EQUAL(if_plus(logical<T>(bs::Nan<T>()),bs::Nan<T>(),bs::Nan<T>()), bs::Nan<r_t>());
+  STF_EQUAL(if_plus(logical<T>(bs::Nan<T>()),bs::Zero<T>(),bs::Zero<T>()), bs::Zero<r_t>());
 } // end of test for floating_
 
-STF_CASE_TPL (" if_add integer",  STF_INTEGRAL_TYPES)
+STF_CASE_TPL (" if_plus integer",  STF_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
-  using bs::if_add;
+  using bs::if_plus;
   using bs::logical;
-  using r_t = decltype(if_add(logical<T>(),T(),T()));
+  using r_t = decltype(if_plus(logical<T>(),T(),T()));
 
   // return type conformity test
   STF_TYPE_IS( r_t, T );
 
   // specific values tests
-  STF_EQUAL(if_add(logical<T>(T(-1)),T(1),T(2)), T(3));
-  STF_EQUAL(if_add(logical<T>(T(0)),T(1),T(2)), T(1));
-  STF_EQUAL(if_add(logical<T>(bs::Zero<T>()),bs::Zero<T>(),bs::Zero<T>()), bs::Zero<r_t>());
+  STF_EQUAL(if_plus(logical<T>(T(-1)),T(1),T(2)), T(3));
+  STF_EQUAL(if_plus(logical<T>(T(0)),T(1),T(2)), T(1));
+  STF_EQUAL(if_plus(logical<T>(bs::Zero<T>()),bs::Zero<T>(),bs::Zero<T>()), bs::Zero<r_t>());
 } // end of test for integer_
 

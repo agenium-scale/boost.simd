@@ -21,15 +21,15 @@ namespace boost { namespace simd
 {
   namespace tag
   {
-    BOOST_DISPATCH_MAKE_TAG(ext, if_add_, boost::dispatch::elementwise_<if_add_>);
+    BOOST_DISPATCH_MAKE_TAG(ext, if_plus_, boost::dispatch::elementwise_<if_plus_>);
   }
 
   namespace ext
   {
-    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, if_add_);
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, if_plus_);
   }
 
-  BOOST_DISPATCH_CALLABLE_DEFINITION(tag::if_add_,if_add);
+  BOOST_DISPATCH_CALLABLE_DEFINITION(tag::if_plus_,if_plus);
 
 
 } }

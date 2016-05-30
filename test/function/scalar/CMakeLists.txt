@@ -143,10 +143,10 @@ set ( SOURCES
    mask2logical.cpp
    negif.cpp
    negifnot.cpp
-   seladd.cpp
-   seldec.cpp
-   selinc.cpp
-   selsub.cpp
+   if_plus.cpp
+   if_dec.cpp
+   if_inc.cpp
+   if_minus.cpp
 #ieee
    bitfloating.cpp
    bitinteger.cpp

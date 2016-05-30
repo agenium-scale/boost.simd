@@ -18,7 +18,7 @@
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 #include <boost/simd/function/simd/genmask.hpp>
 #include <boost/simd/function/simd/plus.hpp>
-#include <boost/simd/function/simd/if_sub.hpp>
+#include <boost/simd/function/simd/if_minus.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -46,7 +46,7 @@ namespace boost { namespace simd { namespace ext
    {
       BOOST_FORCEINLINE A1 operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
       {
-        return if_sub(a0, a1, One<A1>());
+        return if_minus(a0, a1, One<A1>());
       }
    };
 

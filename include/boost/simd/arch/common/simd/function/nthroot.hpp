@@ -38,7 +38,7 @@
 #include <boost/simd/function/simd/multiplies.hpp>
 #include <boost/simd/function/simd/pow.hpp>
 #include <boost/simd/function/simd/rec.hpp>
-#include <boost/simd/function/simd/seladd.hpp>
+#include <boost/simd/function/simd/if_plus.hpp>
 #include <boost/simd/function/simd/tofloat.hpp>
 #include <boost/simd/function/simd/unary_minus.hpp>
 
@@ -63,7 +63,7 @@ namespace boost { namespace simd { namespace ext
       bA0 is_ltza0 = is_ltz(a0);
       bA0 is_odda1 = bitwise_cast<bA0>(is_odd(a1));
       A0 a11 = bs::tofloat(a1-bs::if_else_zero(nul_a1, Mone<A1>()));
-      y = bs::seladd( bs::logical_or(bs::is_nez(y), nul_a1)
+      y = bs::if_plus( bs::logical_or(bs::is_nez(y), nul_a1)
                      , y
                      , -(bs::pow(y, aa1) - x)/(aa1* bs::pow(y, bs::minusone(a11)))
                      );

@@ -28,7 +28,7 @@
 #include <boost/simd/function/simd/minus.hpp>
 #include <boost/simd/function/simd/oneplus.hpp>
 #include <boost/simd/function/simd/plus.hpp>
-#include <boost/simd/function/simd/seladd.hpp>
+#include <boost/simd/function/simd/if_plus.hpp>
 #include <boost/assert.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -43,7 +43,7 @@ namespace boost { namespace simd { namespace ext
    {
       BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
-        return seladd(is_not_equal(a0, Valmax<A0>()), a0, One<A0>());
+        return if_plus(is_not_equal(a0, Valmax<A0>()), a0, One<A0>());
       }
    };
 

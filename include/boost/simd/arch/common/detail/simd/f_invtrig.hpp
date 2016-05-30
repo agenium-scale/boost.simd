@@ -34,7 +34,7 @@
 #include <boost/simd/function/simd/bitwise_xor.hpp>
 #include <boost/simd/function/simd/fma.hpp>
 #include <boost/simd/function/simd/ifnotadd.hpp>
-#include <boost/simd/function/simd/seladd.hpp>
+#include <boost/simd/function/simd/if_plus.hpp>
 #include <boost/simd/function/simd/is_eqz.hpp>
 #include <boost/simd/function/simd/is_inf.hpp>
 #include <boost/simd/function/simd/minusone.hpp>
@@ -88,7 +88,7 @@ namespace boost { namespace simd
       auto x_larger_05 = is_greater(x, bs::Half<A0>());
       x  = if_else(x_larger_05, bs::sqrt(fma(bs::Mhalf<A0>(), x, bs::Half<A0>())), a0);
       x  = asin(x);
-      x =  seladd(x_larger_05, x, x);
+      x =  if_plus(x_larger_05, x, x);
       x  = bs::if_else(a0 < bs::Mhalf<A0>(), bs::Pi<A0>()-x, x);
       return bs::if_else(x_larger_05, x, bs::Pio_2<A0>()-x);
     }
@@ -122,7 +122,7 @@ namespace boost { namespace simd
         , 0x3da4f0d1ul  //  8.5460119e-02
         > (z);
       z1 = bs::fma(xx, bs::multiplies( z1, z), xx);
-      z1 = seladd(flag2, z1, Pio_4lo<A0>());
+      z1 = if_plus(flag2, z1, Pio_4lo<A0>());
       z1 = ifnotadd(flag1, z1, Pio_2lo<A0>());
       return yy+z1;
     }

@@ -256,10 +256,10 @@ round2even.cpp
 rsqrt.cpp
 safe_max.cpp
 safe_min.cpp
-seladd.cpp
-seldec.cpp
-selinc.cpp
-selsub.cpp
+if_plus.cpp
+if_dec.cpp
+if_inc.cpp
+if_minus.cpp
 shift_left.cpp
 shift_right.cpp
 sign.cpp

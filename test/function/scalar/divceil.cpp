@@ -25,7 +25,7 @@ STF_CASE_TPL (" div real",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   using bs::div;
-  using r_t = decltype(bs::ceil, div(T(), T()));
+  using r_t = decltype(div(bs::ceil, T(), T()));
 
 #ifndef BOOST_SIMD_NO_INVALIDS
   STF_IEEE_EQUAL(div(bs::ceil, bs::Inf<T>(), bs::Inf<T>()), bs::Nan<r_t>());
@@ -45,7 +45,7 @@ STF_CASE_TPL (" div unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using bs::div;
-  using r_t = decltype(div(T(), T()));
+  using r_t = decltype(div(bs::ceil, T(), T()));
 
   STF_EQUAL(div(bs::ceil, T(4),T(0)), bs::Valmax<r_t>());
   STF_EQUAL(div(bs::ceil, T(4),T(3)), T(2));
@@ -57,7 +57,7 @@ STF_CASE_TPL (" div signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using bs::div;
-  using r_t = decltype(div(T(), T()));
+  using r_t = decltype(div(bs::ceil, T(), T()));
 
   STF_EQUAL(div(bs::ceil, T(-4),T(0)), bs::Valmin<r_t>());
   STF_EQUAL(div(bs::ceil, T(4),T(0)), bs::Valmax<r_t>());

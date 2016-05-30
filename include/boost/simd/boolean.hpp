@@ -56,9 +56,9 @@ namespace boost { namespace simd
 #include <boost/simd/function/mask2logical.hpp>
 #include <boost/simd/function/negif.hpp>
 #include <boost/simd/function/negifnot.hpp>
-#include <boost/simd/function/seladd.hpp>
-#include <boost/simd/function/seldec.hpp>
-#include <boost/simd/function/selinc.hpp>
-#include <boost/simd/function/selsub.hpp>
+#include <boost/simd/function/if_plus.hpp>
+#include <boost/simd/function/if_dec.hpp>
+#include <boost/simd/function/if_inc.hpp>
+#include <boost/simd/function/if_minus.hpp>
 
 #endif

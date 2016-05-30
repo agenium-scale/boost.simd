@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_FUNCTION_SCALAR_IF_SUB_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_SCALAR_IF_SUB_HPP_INCLUDED
 
-#include <boost/simd/function/definition/if_sub.hpp>
-#include <boost/simd/arch/common/scalar/function/if_sub.hpp>
+#include <boost/simd/function/definition/if_minus.hpp>
+#include <boost/simd/arch/common/scalar/function/if_minus.hpp>
 
 #endif

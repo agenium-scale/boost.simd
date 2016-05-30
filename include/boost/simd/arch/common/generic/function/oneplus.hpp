@@ -16,7 +16,7 @@
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/function/is_not_equal.hpp>
 #include <boost/simd/function/plus.hpp>
-#include <boost/simd/function/seladd.hpp>
+#include <boost/simd/function/if_plus.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
