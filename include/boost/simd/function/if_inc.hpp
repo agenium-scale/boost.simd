@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_SELDEC_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_SELDEC_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_IF_INC_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_IF_INC_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
@@ -19,33 +19,33 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-boolean
-    Function object implementing seldec capabilities
+    Function object implementing if_inc capabilities
 
-    Decrements a value by @ref One if a predicate is @ref True.
+    Increments a value by @ref One if a predicate is @ref True.
 
     @par Semantic:
 
     For every parameters of types respectively C, T:
 
     @code
-    T r = seldec(cond,t);
+    T1 r = if_inc(cond,y);
     @endcode
 
     is similar to:
 
     @code
-    T r = cond : t-One<T>() : t;
+    T1 r = cond ? t+One<T>() : t  ;
     @endcode
 
     @par Alias:
-    @c if_dec
+    @c if_inc
 
   **/
-  const boost::dispatch::functor<tag::seldec_> seldec = {};
+  const boost::dispatch::functor<tag::if_inc_> if_inc = {};
 } }
 #endif
 
-#include <boost/simd/function/scalar/seldec.hpp>
-#include <boost/simd/function/simd/seldec.hpp>
+#include <boost/simd/function/scalar/if_inc.hpp>
+#include <boost/simd/function/simd/if_inc.hpp>
 
 #endif

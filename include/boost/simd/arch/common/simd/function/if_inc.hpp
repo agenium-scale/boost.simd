@@ -9,22 +9,21 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SELDEC_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SELDEC_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IF_INC_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IF_INC_HPP_INCLUDED
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/logical.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 #include <boost/simd/function/simd/genmask.hpp>
 #include <boost/simd/function/simd/plus.hpp>
-#include <boost/simd/function/simd/selsub.hpp>
+#include <boost/simd/function/simd/if_add.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
    namespace bd = boost::dispatch;
    namespace bs = boost::simd;
-   BOOST_DISPATCH_OVERLOAD(seldec_
+   BOOST_DISPATCH_OVERLOAD(if_inc_
                           , (typename A0, typename A1, typename X)
                           , bd::cpu_
                           , bs::pack_<bs::logical_<A0>, X>
@@ -33,11 +32,11 @@ namespace boost { namespace simd { namespace ext
    {
       BOOST_FORCEINLINE A1 operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
       {
-        return a1 + bitwise_cast<A1>(genmask(a0));
+        return a1 - bitwise_cast<A1>(genmask(a0));
       }
    };
 
-   BOOST_DISPATCH_OVERLOAD(seldec_
+   BOOST_DISPATCH_OVERLOAD(if_inc_
                           , (typename A0, typename A1, typename X)
                           , bd::cpu_
                           , bs::pack_<bd::arithmetic_<A0>, X>
@@ -46,7 +45,7 @@ namespace boost { namespace simd { namespace ext
    {
       BOOST_FORCEINLINE A1 operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
       {
-        return selsub(a0, a1, One<A1>());
+        return if_add(a0, a1, One<A1>());
       }
    };
 

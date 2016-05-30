@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_SELADD_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_SELADD_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_IF_ADD_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_IF_ADD_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
@@ -19,7 +19,7 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-boolean
-    Function object implementing seladd capabilities
+    Function object implementing if_add capabilities
 
     The function returns the second entry or the sum of the second
     and third entries, according to the first entry being @ref False or
@@ -30,7 +30,7 @@ namespace boost { namespace simd
     For every parameters of types respectively C, T, T:
 
     @code
-    T r = seladd(cond,t1,t2);
+    T r = if_add(cond,t1,t2);
     @endcode
 
     is similar to:
@@ -43,11 +43,11 @@ namespace boost { namespace simd
     @c if_add
 
   **/
-  const boost::dispatch::functor<tag::seladd_> seladd = {};
+  const boost::dispatch::functor<tag::if_add_> if_add = {};
 } }
 #endif
 
-#include <boost/simd/function/scalar/seladd.hpp>
-#include <boost/simd/function/simd/seladd.hpp>
+#include <boost/simd/function/scalar/if_add.hpp>
+#include <boost/simd/function/simd/if_add.hpp>
 
 #endif

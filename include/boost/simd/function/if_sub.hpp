@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_SELSUB_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_SELSUB_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_IF_SUB_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_IF_SUB_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
@@ -19,7 +19,7 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-boolean
-    Function object implementing selsub capabilities
+    Function object implementing if_sub capabilities
 
     The function returns the second entry or the difference of the
     second and third entries, according to the first entry being @ref False
@@ -30,7 +30,7 @@ namespace boost { namespace simd
     For every parameters of types respectively C, T, T:
 
     @code
-    T1 r = selsub(x,y,a2);
+    T1 r = if_sub(x,y,a2);
     @endcode
 
     is similar to:
@@ -43,11 +43,11 @@ namespace boost { namespace simd
     @c if_sub
 
   **/
-  const boost::dispatch::functor<tag::selsub_> selsub = {};
+  const boost::dispatch::functor<tag::if_sub_> if_sub = {};
 } }
 #endif
 
-#include <boost/simd/function/scalar/selsub.hpp>
-#include <boost/simd/function/simd/selsub.hpp>
+#include <boost/simd/function/scalar/if_sub.hpp>
+#include <boost/simd/function/simd/if_sub.hpp>
 
 #endif
