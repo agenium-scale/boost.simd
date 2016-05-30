@@ -18,8 +18,6 @@ set ( SOURCES
    slide.cpp
    splat.cpp
    make.cpp
-#alias
-   modulus.cpp
 #arithmetic
    abs.cpp
    abs_s.cpp
@@ -353,12 +351,6 @@ set ( SOURCES
    tand.cpp
    tan.cpp
    tanpi.cpp
-#aliases
-   bitwise_not.cpp
-   if_zero_else_allbits.cpp
-   if_allbits_else_zero.cpp
-   if_nan_else.cpp
-   if_else_nan.cpp
 #eulerian
    stirling.cpp
    gamma.cpp

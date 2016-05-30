@@ -133,6 +133,11 @@ hi.cpp
 hmsb.cpp
 hypot.cpp
 iceil.cpp
+idivfix.cpp
+idivfloor.cpp
+idivceil.cpp
+idivround.cpp
+idivround2even.cpp
 if_allbits_else.cpp
 if_else_allbits.cpp
 if_else.cpp
