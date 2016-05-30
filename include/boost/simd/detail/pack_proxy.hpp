@@ -79,7 +79,7 @@ namespace boost { namespace simd { namespace detail
 #undef  M0
 
     // operator: (cast)
-    operator value_type() const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE operator value_type() const BOOST_NOEXCEPT
     {
       return get();
     }
