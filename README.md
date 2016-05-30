@@ -50,7 +50,7 @@ int main() {
   using pack_t = bs::pack<float, 4>;
 
   float data[pack_t::static_size] = { 1.f, 2.f, 3.f, 4.f };
-  pack_t p{data};
+  pack_t p{&data[0]};
 
   std::cout << p << std::endl;
 
