@@ -23,7 +23,7 @@
 #include <boost/simd/function/is_ltz.hpp>
 #include <boost/simd/function/is_equal.hpp>
 #include <boost/simd/function/frexp.hpp>
-#include <boost/simd/function/seladd.hpp>
+#include <boost/simd/function/if_plus.hpp>
 #include <boost/simd/function/plus.hpp>
 #include <boost/simd/function/minus.hpp>
 #include <boost/simd/function/minusone.hpp>

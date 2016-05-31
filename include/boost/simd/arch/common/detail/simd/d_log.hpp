@@ -18,7 +18,7 @@
 #include <boost/simd/function/simd/is_ltz.hpp>
 #include <boost/simd/function/simd/is_equal.hpp>
 #include <boost/simd/function/simd/frexp.hpp>
-#include <boost/simd/function/simd/seladd.hpp>
+#include <boost/simd/function/simd/if_plus.hpp>
 #include <boost/simd/function/simd/plus.hpp>
 #include <boost/simd/function/simd/minus.hpp>
 #include <boost/simd/function/simd/multiplies.hpp>

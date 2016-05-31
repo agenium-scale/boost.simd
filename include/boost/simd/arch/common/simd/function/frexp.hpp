@@ -29,7 +29,7 @@
 #include <boost/simd/function/simd/logical_notand.hpp>
 #include <boost/simd/function/simd/minus.hpp>
 #include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/seladd.hpp>
+#include <boost/simd/function/simd/if_plus.hpp>
 #include <boost/simd/function/simd/shr.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <utility>
@@ -77,7 +77,7 @@ namespace boost { namespace simd { namespace ext
 #ifndef BOOST_SIMD_NO_DENORMALS
        r1 -= t ;
 #endif
-       r0 = if_else_zero(test0, seladd(test1,r0,aa0));
+       r0 = if_else_zero(test0, if_plus(test1,r0,aa0));
        return {r0, r1};
      }
    };

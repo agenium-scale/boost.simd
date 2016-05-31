@@ -129,10 +129,10 @@ set ( SOURCES
    if_allbits_else.cpp
    if_else_allbits.cpp
    if_else_zero.cpp
-   ifnotadd.cpp
-   ifnotdec.cpp
-   ifnotinc.cpp
-   ifnotsub.cpp
+   ifnot_plus.cpp
+   ifnot_dec.cpp
+   ifnot_inc.cpp
+   ifnot_minus.cpp
    if_one_else_zero.cpp
    if_zero_else.cpp
    if_zero_else_one.cpp
@@ -143,10 +143,10 @@ set ( SOURCES
    mask2logical.cpp
    negif.cpp
    negifnot.cpp
-   seladd.cpp
-   seldec.cpp
-   selinc.cpp
-   selsub.cpp
+   if_plus.cpp
+   if_dec.cpp
+   if_inc.cpp
+   if_minus.cpp
 #ieee
    bitfloating.cpp
    bitinteger.cpp

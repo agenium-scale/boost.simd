@@ -106,7 +106,7 @@ namespace boost { namespace simd
         auto x_larger_05 = x > bs::Half<A0>();
         x  = if_else(x_larger_05, bs::sqrt(fma(bs::Mhalf<A0>(), x, bs::Half<A0>())), a0);
         x  = asin(x);
-        x =  seladd(x_larger_05, x, x);
+        x =  if_plus(x_larger_05, x, x);
         x  = bs::if_else(is_less(a0, bs::Mhalf<A0>()), bs::Pi<A0>()-x, x);
         return bs::if_else(x_larger_05, x, bs::Pio_2<A0>()-x);
       }
@@ -142,7 +142,7 @@ namespace boost { namespace simd
           0x4038dbc45b14603cll
           >(z);
         z = bs::fma(xx, z, xx);
-        z = bs::seladd(flag2, z, Pio_4lo<A0>());
+        z = bs::if_plus(flag2, z, Pio_4lo<A0>());
         z = z+bs::if_zero_else(flag1, Pio_2lo<A0>());
         return yy + z;
       }

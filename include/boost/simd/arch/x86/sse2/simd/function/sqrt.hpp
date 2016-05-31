@@ -16,7 +16,7 @@
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 #include <boost/simd/function/simd/plus.hpp>
 #include <boost/simd/function/simd/divides.hpp>
-#include <boost/simd/function/simd/seladd.hpp>
+#include <boost/simd/function/simd/if_plus.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
 #include <boost/simd/function/simd/if_one_else_zero.hpp>
 #include <boost/simd/function/simd/is_gez.hpp>
@@ -96,7 +96,7 @@ namespace boost { namespace simd { namespace ext
 
       ok = is_less(n1, n);
       n  = if_else(ok, n1, n);
-      n  = seladd( is_greater(n*n,a0), n, Mone<A0>());
+      n  = if_plus( is_greater(n*n,a0), n, Mone<A0>());
       return n+if_one_else_zero(na);
     }
   };
@@ -130,9 +130,9 @@ namespace boost { namespace simd { namespace ext
 
       ok =  is_less(n1, n);
       n  = if_else(ok, n1, n);
-      n  = seladd( is_greater(n*n,a0), n, Mone<A0>());
+      n  = if_plus( is_greater(n*n,a0), n, Mone<A0>());
 
-     return seladd(na, Zero<A0>(), n);
+     return if_plus(na, Zero<A0>(), n);
     }
   };
 
@@ -175,8 +175,8 @@ namespace boost { namespace simd { namespace ext
       n  = if_else(ok, n1, n);
 
       A0 tmp = minus(n*minus(n, One<A0>()), One<A0>());
-      n  = seladd( is_greater_equal(tmp+n,a0), n, Mone<A0>());
-      n =  seladd(na, Zero<A0>(), n);
+      n  = if_plus( is_greater_equal(tmp+n,a0), n, Mone<A0>());
+      n =  if_plus(na, Zero<A0>(), n);
 
       return n;
      }

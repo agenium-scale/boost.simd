@@ -27,7 +27,7 @@
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/plus.hpp>
 #include <boost/simd/function/pow2.hpp>
-#include <boost/simd/function/seladd.hpp>
+#include <boost/simd/function/if_plus.hpp>
 #include <boost/simd/function/shr.hpp>
 #include <boost/simd/function/unary_minus.hpp>
 #include <boost/simd/arch/detail/scalar/horner.hpp>
@@ -120,8 +120,8 @@ namespace boost { namespace simd
         // find significand in antilog table A[]
         i_t i = One<i_t>();
         i = if_else((x <= twomio16(Nine<i_t>()))  , Nine<i_t>(), i);
-        i = seladd ((x <= twomio16(i+Four<i_t>())), i, Four<i_t>());
-        i = seladd ((x <= twomio16(i+Two<i_t>())) , i, Two<i_t>() );
+        i = if_plus ((x <= twomio16(i+Four<i_t>())), i, Four<i_t>());
+        i = if_plus ((x <= twomio16(i+Two<i_t>())) , i, Two<i_t>() );
         i = if_else((x >= twomio16(One<i_t>()))   , Mone<i_t>(), i);
         i = inc(i);
         A0 tmp = twomio16(i);
@@ -220,8 +220,8 @@ namespace boost { namespace simd
       // find significand in antilog table A[]
       i_t i = One<i_t>();
       i = if_else((x <= twomio16(Nine<i_t>()))  , Nine<i_t>(), i);
-      i = seladd ((x <= twomio16(i+Four<i_t>())), i, Four<i_t>());
-      i = seladd ((x <= twomio16(i+Two<i_t>())) , i, Two<i_t>() );
+      i = if_plus ((x <= twomio16(i+Four<i_t>())), i, Four<i_t>());
+      i = if_plus ((x <= twomio16(i+Two<i_t>())) , i, Two<i_t>() );
       i = if_else((x >= twomio16(One<i_t>()))   , Mone<i_t>(), i);
       i = inc(i);
       A0 tmp = twomio16(i);

@@ -18,7 +18,7 @@
 #include <boost/simd/function/simd/dec.hpp>
 #include <boost/simd/function/simd/exponent.hpp>
 #include <boost/simd/function/simd/group.hpp>
-#include <boost/simd/function/simd/seladd.hpp>
+#include <boost/simd/function/simd/if_plus.hpp>
 #include <boost/simd/function/simd/split.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
 #include <boost/simd/function/simd/if_zero_else.hpp>
@@ -67,19 +67,19 @@ namespace boost { namespace simd { namespace ext
       A0 n = a0;
       A0 i = One<A0>();
       n = bitwise_and(MKN8(_mm_srli_epi16(n, 1)), mask);
-      i = seladd(is_nez(n), i, One<A0>());
+      i = if_plus(is_nez(n), i, One<A0>());
       n = bitwise_and(MKN8(_mm_srli_epi16(n, 1)), mask);
-      i = seladd(is_nez(n), i, One<A0>());
+      i = if_plus(is_nez(n), i, One<A0>());
       n = bitwise_and(MKN8(_mm_srli_epi16(n, 1)), mask);
-      i = seladd(is_nez(n), i, One<A0>());
+      i = if_plus(is_nez(n), i, One<A0>());
       n = bitwise_and(MKN8(_mm_srli_epi16(n, 1)), mask);
-      i = seladd(is_nez(n), i, One<A0>());
+      i = if_plus(is_nez(n), i, One<A0>());
       n = bitwise_and(MKN8(_mm_srli_epi16(n, 1)), mask);
-      i = seladd(is_nez(n), i, One<A0>());
+      i = if_plus(is_nez(n), i, One<A0>());
       n = bitwise_and(MKN8(_mm_srli_epi16(n, 1)), mask);
-      i = seladd(is_nez(n), i, One<A0>());
+      i = if_plus(is_nez(n), i, One<A0>());
       n = bitwise_and(MKN8(_mm_srli_epi16(n, 1)), mask);
-      i = seladd(is_nez(n), i, One<A0>());
+      i = if_plus(is_nez(n), i, One<A0>());
       return dec(i);
     }
 #undef MKN8

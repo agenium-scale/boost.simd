@@ -59,7 +59,7 @@ namespace boost { namespace simd { namespace ext
         #ifndef BOOST_SIMD_NO_INFINITIES
         z = if_else(is_equal(x, Inf<A0>()),x, z);
         #endif
-        z =  seladd(test, log1p(z), Log_2<A0>());
+        z =  if_plus(test, log1p(z), Log_2<A0>());
         return bitwise_xor(bitofsign(a0), z);
       }
    };

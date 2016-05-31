@@ -46,7 +46,7 @@
 #include <boost/simd/function/minusone.hpp>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/plus.hpp>
-#include <boost/simd/function/seladd.hpp>
+#include <boost/simd/function/if_plus.hpp>
 #include <boost/simd/function/sqr.hpp>
 #include <boost/simd/function/tofloat.hpp>
 #include <boost/simd/function/unary_minus.hpp>

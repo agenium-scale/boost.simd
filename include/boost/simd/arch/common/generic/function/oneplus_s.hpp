@@ -16,7 +16,7 @@
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/function/is_not_equal.hpp>
 #include <boost/simd/function/plus.hpp>
-#include <boost/simd/function/seladd.hpp>
+#include <boost/simd/function/if_plus.hpp>
 #include <boost/simd/function/saturated.hpp>
 #include <boost/config.hpp>
 
@@ -33,7 +33,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() (const saturated_tag &,  A0 const& a0
                                     ) const BOOST_NOEXCEPT
     {
-      return seladd(is_not_equal(a0, Valmax<A0>()),
+      return if_plus(is_not_equal(a0, Valmax<A0>()),
                     a0,
                     One<A0>());
     }
