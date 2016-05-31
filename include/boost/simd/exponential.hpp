@@ -32,23 +32,21 @@ namespace boost { namespace simd
 
 } }
 
-#include <boost/simd/functioncbrt.hpp>
-#include <boost/simd/functionexp10.hpp>
-#include <boost/simd/functionexp2.hpp>
-#include <boost/simd/functionexp.hpp>
-#include <boost/simd/functionexpm1.hpp>
-#include <boost/simd/functionexprecnegc.hpp>
-#include <boost/simd/functionexprecneg.hpp>
-#include <boost/simd/functionexpx2.hpp>
-#include <boost/simd/functionlog10.hpp>
-#include <boost/simd/functionlog2.hpp>
-#include <boost/simd/functionlog.hpp>
-#include <boost/simd/functionlogspace_add.hpp>
-#include <boost/simd/functionlogspace_sub.hpp>
-#include <boost/simd/functionnthroot.hpp>
-#include <boost/simd/functionpow2.hpp>
-#include <boost/simd/functionpow_abs.hpp>
-#include <boost/simd/functionpow.hpp>
-#include <boost/simd/functionsignificants.hpp>
+#include <boost/simd/function/cbrt.hpp>
+#include <boost/simd/function/exp10.hpp>
+#include <boost/simd/function/exp2.hpp>
+#include <boost/simd/function/exp.hpp>
+#include <boost/simd/function/expm1.hpp>
+#include <boost/simd/function/exprecnegc.hpp>
+#include <boost/simd/function/exprecneg.hpp>
+#include <boost/simd/function/expx2.hpp>
+#include <boost/simd/function/log10.hpp>
+#include <boost/simd/function/log2.hpp>
+#include <boost/simd/function/log.hpp>
+#include <boost/simd/function/nthroot.hpp>
+#include <boost/simd/function/pow2.hpp>
+#include <boost/simd/function/pow_abs.hpp>
+#include <boost/simd/function/pow.hpp>
+#include <boost/simd/function/significants.hpp>
 
 #endif

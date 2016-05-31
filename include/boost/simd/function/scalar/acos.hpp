@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_ACOS_HPP_INCLUDED
 
 #include <boost/simd/function/definition/acos.hpp>
+#include <boost/simd/arch/common/scalar/function/acos.hpp>
 #include <boost/simd/arch/common/generic/function/acos.hpp>
 
 #endif

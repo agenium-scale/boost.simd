@@ -16,6 +16,9 @@
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_SSE_VERSION
 #    include <boost/simd/arch/x86/sse1/simd/function/broadcast.hpp>
 #  endif
+#  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_SS2_VERSION
+#    include <boost/simd/arch/x86/sse2/simd/function/broadcast.hpp>
+#  endif
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_SSSE3_VERSION
 #    include <boost/simd/arch/x86/ssse3/simd/function/broadcast.hpp>
 #  endif

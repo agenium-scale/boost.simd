@@ -34,14 +34,14 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( multiplies_
                           , (typename A0)
                           , bs::sse2_
-                          , bs::pack_<bd::int32_<A0>, bs::sse_>
-                          , bs::pack_<bd::int32_<A0>, bs::sse_>
                           , bs::saturated_tag
+                          , bs::pack_<bd::int32_<A0>, bs::sse_>
+                          , bs::pack_<bd::int32_<A0>, bs::sse_>
                          )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0
-                                    , const A0 & a1
-                                    , const saturated_tag & ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( const saturated_tag &
+                                    , const A0 & a0
+                                    , const A0 & a1 ) const BOOST_NOEXCEPT
     {
       using stype  = bd::scalar_of_t<A0>;
       using untype = bd::as_unsigned_t<A0>;
@@ -68,14 +68,15 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( multiplies_
                           , (typename A0)
                           , bs::sse2_
-                          , bs::pack_<bd::uint32_<A0>, bs::sse_>
-                          , bs::pack_<bd::uint32_<A0>, bs::sse_>
                           , bs::saturated_tag
+                          , bs::pack_<bd::uint32_<A0>, bs::sse_>
+                          , bs::pack_<bd::uint32_<A0>, bs::sse_>
                          )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0
+    BOOST_FORCEINLINE A0 operator() ( const saturated_tag &
+                                    ,  const A0 & a0
                                     , const A0 & a1
-                                    , const saturated_tag & ) const BOOST_NOEXCEPT
+                                    ) const BOOST_NOEXCEPT
     {
       using stype  = bd::scalar_of_t<A0>;
       using utype  = bd::upgrade_t<A0>;
