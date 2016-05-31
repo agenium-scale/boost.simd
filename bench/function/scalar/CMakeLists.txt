@@ -107,10 +107,10 @@ set(SOURCES
     if_else.cpp
     if_else_zero.cpp
     ifloor.cpp
-    ifnotadd.cpp
-    ifnotdec.cpp
-    ifnotinc.cpp
-    ifnotsub.cpp
+    ifnot_plus.cpp
+    ifnot_dec.cpp
+    ifnot_inc.cpp
+    ifnot_minus.cpp
     if_one_else_zero.cpp
     if_zero_else.cpp
     if_zero_else_one.cpp

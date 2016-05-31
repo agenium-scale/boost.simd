@@ -39,10 +39,10 @@ namespace boost { namespace simd
 #include <boost/simd/function/if_else_nan.hpp>
 #include <boost/simd/function/if_else_zero.hpp>
 #include <boost/simd/function/if_nan_else.hpp>
-#include <boost/simd/function/ifnotadd.hpp>
-#include <boost/simd/function/ifnotdec.hpp>
-#include <boost/simd/function/ifnotinc.hpp>
-#include <boost/simd/function/ifnotsub.hpp>
+#include <boost/simd/function/ifnot_plus.hpp>
+#include <boost/simd/function/ifnot_dec.hpp>
+#include <boost/simd/function/ifnot_inc.hpp>
+#include <boost/simd/function/ifnot_minus.hpp>
 #include <boost/simd/function/if_one_else_zero.hpp>
 #include <boost/simd/function/if_zero_else_allbits.hpp>
 #include <boost/simd/function/if_zero_else.hpp>

@@ -33,7 +33,7 @@
 #include <boost/simd/function/simd/bitofsign.hpp>
 #include <boost/simd/function/simd/bitwise_xor.hpp>
 #include <boost/simd/function/simd/fma.hpp>
-#include <boost/simd/function/simd/ifnotadd.hpp>
+#include <boost/simd/function/simd/ifnot_plus.hpp>
 #include <boost/simd/function/simd/if_plus.hpp>
 #include <boost/simd/function/simd/is_eqz.hpp>
 #include <boost/simd/function/simd/is_inf.hpp>
@@ -123,7 +123,7 @@ namespace boost { namespace simd
         > (z);
       z1 = bs::fma(xx, bs::multiplies( z1, z), xx);
       z1 = if_plus(flag2, z1, Pio_4lo<A0>());
-      z1 = ifnotadd(flag1, z1, Pio_2lo<A0>());
+      z1 = ifnot_plus(flag1, z1, Pio_2lo<A0>());
       return yy+z1;
     }
   };
