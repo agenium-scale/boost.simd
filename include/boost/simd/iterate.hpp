@@ -20,6 +20,7 @@
 
 #include <initializer_list>
 
+namespace boost { namespace simd {
 template<typename F, typename... V>
 inline void unroll_impl(F&& f, brigand::list<V...> const&)
 {
@@ -32,4 +33,5 @@ void iterate(F &&f)
   unroll_impl( std::forward<F>(f), brigand::range<int, 0, N>{});    
 }
 
+} }
 #endif
