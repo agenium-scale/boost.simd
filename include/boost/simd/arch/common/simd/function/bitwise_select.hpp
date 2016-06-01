@@ -13,6 +13,7 @@
 #include <boost/simd/function/bitwise_and.hpp>
 #include <boost/simd/function/bitwise_andnot.hpp>
 #include <boost/simd/function/bitwise_or.hpp>
+#include <boost/simd/function/genmask.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -30,7 +31,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A1 operator()(A0 const& a0, A1 const& a1, A1 const& a2) const BOOST_NOEXCEPT
     {
-      return (a1 & a0) | (a2 & !a0);
+      return bitwise_or(bitwise_and(a1, a0), bitwise_andnot(a2,a0));
     }
   };
 } } }

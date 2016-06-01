@@ -25,7 +25,7 @@ void test(Env& $)
 
   for(std::size_t i = 0; i < N; ++i)
   {
-     a1[i] = (i%2) ? T(i) : T(-i);
+     a1[i] = (i%2) ? T(i) : T(2*i);
      a2[i] = (N-i)/2+N/3;
   }
 
