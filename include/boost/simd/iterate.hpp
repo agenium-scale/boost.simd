@@ -15,10 +15,10 @@
 #ifndef BOOST_SIMD_ITERATE_HPP_INCLUDED
 #define BOOST_SIMD_ITERATE_HPP_INCLUDED
 
-#include <initializer_list>
-
 #include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
+
+#include <initializer_list>
 
 template<typename F, typename... V>
 inline void unroll_impl(F&& f, brigand::list<V...> const&)
