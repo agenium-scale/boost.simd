@@ -62,4 +62,11 @@
 
 #include <boost/predef/hardware/simd.h>
 
+// Ensure a cross X86/AMD selection
+#if BOOST_HW_SIMD_X86 > BOOST_HW_SIMD_X86_AMD
+#define BOOST_HW_SIMD_X86_OR_AMD BOOST_HW_SIMD_X86
+#else
+#define BOOST_HW_SIMD_X86_OR_AMD BOOST_HW_SIMD_X86_AMD
+#endif
+
 #endif
