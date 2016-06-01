@@ -6,8 +6,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_MEMORY_FUNCTIONS_SIMD_PPC_VMX_ALIGNED_LOAD_HPP_INCLUDED
-#define BOOST_SIMD_MEMORY_FUNCTIONS_SIMD_PPC_VMX_ALIGNED_LOAD_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_PPC_VMX_SIMD_FUNCTION_ALIGNED_LOAD_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_PPC_VMX_SIMD_FUNCTION_ALIGNED_LOAD_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/is_pointing_to.hpp>

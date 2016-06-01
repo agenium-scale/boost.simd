@@ -11,8 +11,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_POWER_REGISTER_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_POWER_REGISTER_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_PPC_REGISTER_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_PPC_REGISTER_HPP_INCLUDED
 
 #include <boost/predef/architecture.h>
 

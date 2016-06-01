@@ -10,8 +10,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_POWER_VMX_TAGS_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_POWER_VMX_TAGS_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_PPC_VMX_TAGS_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_PPC_VMX_TAGS_HPP_INCLUDED
 
 #include <boost/simd/arch/common/tags.hpp>
 
