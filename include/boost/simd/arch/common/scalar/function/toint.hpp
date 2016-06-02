@@ -7,7 +7,7 @@
 **/
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_TOINT_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_TOINT_HPP_INCLUDE
+#define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_TOINT_HPP_INCLUDED
 
 #include <boost/simd/function/fast.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>

@@ -7,7 +7,7 @@
 **/
 //==================================================================================================
 #ifndef BOOST_SIMD_FUNCTION_SCALAR_TOFLOAT_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_SCALAR_TOFLOAT_HPP_INCLUDE
+#define BOOST_SIMD_FUNCTION_SCALAR_TOFLOAT_HPP_INCLUDED
 
 #include <boost/simd/function/definition/tofloat.hpp>
 #include <boost/simd/arch/common/scalar/function/tofloat.hpp>

@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_SCALAR_IF_SUB_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_SCALAR_IF_SUB_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_SCALAR_IF_MINUS_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_SCALAR_IF_MINUS_HPP_INCLUDED
 
 #include <boost/simd/function/definition/if_minus.hpp>
 #include <boost/simd/arch/common/scalar/function/if_minus.hpp>
