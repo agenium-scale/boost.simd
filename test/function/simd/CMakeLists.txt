@@ -32,8 +32,8 @@ acosh.cpp
 acoth.cpp
 aligned_store.cpp
 all.cpp
-any.cpp
 arg.cpp
+any.cpp
 acsc.cpp
 acscd.cpp
 acscpi.cpp
@@ -52,7 +52,6 @@ atanpi.cpp
 asinh.cpp
 atanh.cpp
 autofold.cpp
-automap.cpp
 autosplat.cpp
 average.cpp
 bitfloating.cpp
@@ -66,12 +65,19 @@ bitwise_notand.cpp
 bitwise_notor.cpp
 bitwise_or.cpp
 bitwise_ornot.cpp
+bitwise_select.cpp
 bitwise_xor.cpp
 broadcast.cpp
 cbrt.cpp
 ceil.cpp
 clz.cpp
 complement.cpp
+compare_equal.cpp
+#compare_greater.cpp
+#compare_greater_equal.cpp
+#compare_less.cpp
+#compare_less_equal.cpp
+compare_not_equal.cpp
 conj.cpp
 copysign.cpp
 correct_fma.cpp
@@ -201,7 +207,7 @@ logical_notor.cpp
 logical_or.cpp
 logical_ornot.cpp
 logical_xor.cpp
-#lookup.cpp
+lookup.cpp
 majority.cpp
 mantissa.cpp
 max.cpp
@@ -305,28 +311,11 @@ unary_minus.cpp
 unary_minus_s.cpp
 unary_plus.cpp
 
-#any.cpp
-#compare_equal.cpp
-#compare_greater.cpp
-#compare_greater_equal.cpp
-#compare_less.cpp
-#compare_less_equal.cpp
-#compare_not_equal.cpp
-
-#divceil
-#divfix
-#divfloor
-#divround
-#idivceil.cpp
-#idivfix.cpp
-#idivfloor.cpp
-#idivround.cpp
 #is_included_c.cpp
 #is_included.cpp
 #mod.cpp
 #muls.cpp
 #nbtrue.cpp
-#none
 #rem.cpp TODO
 #splatted_maximum.cpp//TODO all_reduce
 #splatted_minimum.cpp

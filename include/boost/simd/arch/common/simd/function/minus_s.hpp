@@ -21,6 +21,7 @@
 #include <boost/simd/function/simd/if_else.hpp>
 #include <boost/simd/function/simd/if_else_zero.hpp>
 #include <boost/simd/function/simd/is_less_equal.hpp>
+#include <boost/simd/function/simd/is_ltz.hpp>
 #include <boost/simd/function/simd/minus.hpp>
 #include <boost/simd/function/simd/plus.hpp>
 #include <boost/simd/function/simd/shr.hpp>

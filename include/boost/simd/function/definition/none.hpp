@@ -23,7 +23,7 @@ namespace boost { namespace simd
 {
   namespace tag
   {
-    BOOST_DISPATCH_MAKE_TAG(ext, none_, (boost::dispatch::reduction_<none_, logical_andnot_, true_>));
+    BOOST_DISPATCH_MAKE_TAG(ext, none_, boost::dispatch::abstract_<none_>);
   }
 
   namespace ext
@@ -32,8 +32,6 @@ namespace boost { namespace simd
   }
 
   BOOST_DISPATCH_CALLABLE_DEFINITION(tag::none_,none);
-
-
 } }
 
 #endif

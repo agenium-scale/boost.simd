@@ -21,7 +21,7 @@ namespace boost { namespace simd
 {
   namespace tag
   {
-    BOOST_DISPATCH_MAKE_TAG(ext, compare_less_, boost::dispatch::elementwise_<compare_less_>);
+    BOOST_DISPATCH_MAKE_TAG(ext, compare_less_, boost::dispatch::abstract_<compare_less_>);
   }
 
   namespace ext

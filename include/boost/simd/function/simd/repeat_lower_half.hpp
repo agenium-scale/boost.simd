@@ -29,7 +29,7 @@
 
 #if defined(BOOST_HW_SIMD_PPC)
 #  if BOOST_HW_SIMD_PPC >= BOOST_HW_SIMD_PPC_VMX_VERSION
-// #    include <boost/simd/arch/power/vmx/simd/function/repeat_lower_half.hpp>
+#    include <boost/simd/arch/ppc/vmx/simd/function/repeat_lower_half.hpp>
 #  endif
 #endif
 

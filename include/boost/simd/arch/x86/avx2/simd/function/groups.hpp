@@ -6,8 +6,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_X86_SSE4_1_SIMD_FUNCTION_GROUPS_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_X86_SSE4_1_SIMD_FUNCTION_GROUPS_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_X86_AVX2_SIMD_FUNCTION_GROUPS_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_X86_AVX2_SIMD_FUNCTION_GROUPS_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/constant/constant.hpp>

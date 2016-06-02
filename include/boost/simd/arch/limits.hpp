@@ -15,7 +15,7 @@
 #define BOOST_SIMD_ARCH_LIMITS_HPP_INCLUDED
 
 #include <boost/simd/arch/common/limits.hpp>
-#include <boost/simd/arch/power/limits.hpp>
+#include <boost/simd/arch/ppc/limits.hpp>
 #include <boost/simd/arch/x86/limits.hpp>
 
 #endif

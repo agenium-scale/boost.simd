@@ -24,7 +24,7 @@ void test( Env& $, std::true_type const& )
   using type = bd::upgrade_t<bs::logical<T>>;
 
   std::array<bs::logical<T>,N> data;
-  for(std::size_t i=0;i<data.size();++i)  data[i] = !!(i % 2);
+  for(std::size_t i=0;i<data.size();++i)  data[i] = !!(i % 3);
 
   std::array<type,N/2> dref;
   for(std::size_t i=0;i<dref.size();++i)  dref[i] = static_cast<type>(data[i+N/2]);

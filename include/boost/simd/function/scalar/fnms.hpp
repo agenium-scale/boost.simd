@@ -13,6 +13,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_FNMS_HPP_INCLUDED
 
 #include <boost/simd/function/definition/fnms.hpp>
-#include <boost/simd/arch/common/generic/function/fnms.hpp>
+#include <boost/simd/arch/common/scalar/function/fnms.hpp>
 
 #endif

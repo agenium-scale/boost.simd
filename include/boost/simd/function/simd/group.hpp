@@ -30,8 +30,7 @@
 
 #if defined(BOOST_HW_SIMD_PPC)
 #  if BOOST_HW_SIMD_PPC >= BOOST_HW_SIMD_PPC_VMX_VERSION
-//#    include <boost/simd/arch/power/vmx/simd/function/group.hpp>
-//#    include <boost/simd/arch/power/vmx/simd/function/groups.hpp>
+#    include <boost/simd/arch/ppc/vmx/simd/function/group.hpp>
 #  endif
 #endif
 

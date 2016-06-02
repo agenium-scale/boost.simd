@@ -1,41 +1,49 @@
 //==================================================================================================
-/*!
-  @file
-
-  @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
+/**
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_COMPARE_NOT_EQUAL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_COMPARE_NOT_EQUAL_HPP_INCLUDED
-#include <boost/simd/detail/overload.hpp>
 
-#include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/any.hpp>
+#include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/simd/is_not_equal.hpp>
-#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/function/simd/slice.hpp>
+#include <boost/simd/function/simd/any.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
-   namespace bd = boost::dispatch;
-   namespace bs = boost::simd;
-   BOOST_DISPATCH_OVERLOAD(compare_not_equal_
+  namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
+
+  BOOST_DISPATCH_OVERLOAD ( compare_not_equal_
                           , (typename A0, typename X)
                           , bd::cpu_
-                          , bs::pack_<bd::arithmetic_<A0>, X>
-                          , bs::pack_<bd::arithmetic_<A0>, X>
+                          , bs::pack_<bd::fundamental_<A0>, X>
+                          , bs::pack_<bd::fundamental_<A0>, X>
                           )
-   {
-     BOOST_FORCEINLINE bool operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
-     {
-       using i_t =  bd::as_integer_t<A0>;
-       return bs::any(is_not_equal(bitwise_cast<i_t>(a0), bitwise_cast<i_t>(a1)));
-     }
-   };
+  {
+    BOOST_FORCEINLINE bool operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+    {
+      return do_(a0,a1, typename A0::storage_kind{});
+    }
 
+    BOOST_FORCEINLINE
+    bool do_( const A0& a0, const A0& a1, aggregate_storage const&) const BOOST_NOEXCEPT
+    {
+      return compare_not_equal(slice_low(a0)  , slice_low(a1) )
+          || compare_not_equal(slice_high(a0) , slice_high(a1));
+    }
+
+    template<typename K>
+    BOOST_FORCEINLINE bool do_( const A0& a0, const A0& a1, K const&) const BOOST_NOEXCEPT
+    {
+      return bs::any(is_not_equal(a0,a1));
+    }
+  };
 } } }
 
 #endif

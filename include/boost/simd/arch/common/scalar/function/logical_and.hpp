@@ -18,6 +18,7 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+
   BOOST_DISPATCH_OVERLOAD ( logical_and_
                           , (typename A0, typename A1)
                           , bd::cpu_

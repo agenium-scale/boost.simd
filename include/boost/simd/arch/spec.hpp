@@ -15,7 +15,7 @@
 #define BOOST_SIMD_ARCH_SPEC_HPP_INCLUDED
 
 #if !defined(BOOST_SIMD_NO_SIMD)
-  #include <boost/simd/arch/power/spec.hpp>
+  #include <boost/simd/arch/ppc/spec.hpp>
   #include <boost/simd/arch/x86/spec.hpp>
 #endif
 
@@ -26,4 +26,3 @@
 #endif
 
 #endif
-
