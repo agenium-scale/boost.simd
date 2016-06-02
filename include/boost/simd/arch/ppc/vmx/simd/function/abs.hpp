@@ -49,7 +49,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     BOOST_FORCEINLINE A0 operator()(bs::saturated_tag const&, const A0& a0) const BOOST_NOEXCEPT
-    {puts("LOL");
+    {
       return vec_abss( a0.storage() );
     }
   };
