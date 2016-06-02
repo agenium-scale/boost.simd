@@ -11,9 +11,8 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_TOUINT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_TOUINT_HPP_INCLUDED
-#include <boost/simd/detail/overload.hpp>
 
-#include <boost/simd/meta/hierarchy/simd.hpp>
+#include <boost/simd/detail/overload.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
@@ -64,5 +63,6 @@ namespace boost { namespace simd { namespace ext
 
 } } }
 
-#endif
+#include <boost/simd/arch/common/simd/function/touint_s.hpp>
 
+#endif

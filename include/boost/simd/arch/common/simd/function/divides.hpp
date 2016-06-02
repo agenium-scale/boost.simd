@@ -9,11 +9,10 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_DIVIDES_S_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_DIVIDES_S_HPP_INCLUDED
-#include <boost/simd/detail/overload.hpp>
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_DIVIDES_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_DIVIDES_HPP_INCLUDED
 
-#include <boost/simd/meta/hierarchy/simd.hpp>
+#include <boost/simd/detail/overload.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/valmin.hpp>
@@ -95,4 +94,3 @@ namespace boost { namespace simd { namespace ext
 } } }
 
 #endif
-

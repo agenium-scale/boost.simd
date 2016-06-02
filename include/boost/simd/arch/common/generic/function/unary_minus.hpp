@@ -1,16 +1,13 @@
 //==================================================================================================
-/*!
-  @file
-
-  Copyright 2015 NumScale SAS
-  Copyright 2015 J.T. Lapreste
+/**
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_UNARY_MINUS_S_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_UNARY_MINUS_S_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_UNARY_MINUS_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_UNARY_MINUS_HPP_INCLUDED
 
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/valmin.hpp>
@@ -30,29 +27,15 @@ namespace boost { namespace simd { namespace ext
                           , (typename T)
                           , bd::cpu_
                           , bs::saturated_tag
-                          , bd::generic_<bd::floating_<T>>
-                          )
-  {
-    BOOST_FORCEINLINE T operator()(const saturated_tag &, T const& a
-                                  ) const BOOST_NOEXCEPT
-    {
-      return unary_minus(a);
-    }
-  };
-  BOOST_DISPATCH_OVERLOAD ( unary_minus_
-                          , (typename T)
-                          , bd::cpu_
-                          , bs::saturated_tag
                           , bd::generic_<bd::signed_<T>>
                            )
   {
-    BOOST_FORCEINLINE T operator()(const saturated_tag &, T const& a0
-                                  ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE T operator()(const saturated_tag &, T const& a0) const BOOST_NOEXCEPT
     {
-      T a =  bs::unary_minus(a0);
-      return if_else(is_equal(a0,Valmin<T>()),Valmax<T>(),a);
+      return if_else(a0 == Valmin<T>(),Valmax<T>(),bs::unary_minus(a0));
     }
   };
+
   BOOST_DISPATCH_OVERLOAD ( unary_minus_
                           , (typename T)
                           , bd::cpu_
@@ -60,13 +43,11 @@ namespace boost { namespace simd { namespace ext
                           , bd::generic_<bd::unspecified_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()(const saturated_tag &, T const& a
-                                  ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE T operator()(const saturated_tag &, T const& a) const BOOST_NOEXCEPT
     {
       return unary_minus(a);
     }
   };
 } } }
-
 
 #endif

@@ -11,8 +11,8 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_PLUS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_PLUS_HPP_INCLUDED
-#include <boost/simd/detail/overload.hpp>
 
+#include <boost/simd/detail/overload.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -83,7 +83,8 @@ namespace boost { namespace simd { namespace ext
       return _mm_add_epi64(a0, a1);
     }
   };
-
 } } }
+
+#include <boost/simd/arch/x86/sse2/simd/function/plus_s.hpp>
 
 #endif

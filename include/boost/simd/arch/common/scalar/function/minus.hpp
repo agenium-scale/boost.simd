@@ -43,6 +43,8 @@ namespace boost { namespace simd { namespace ext
       return a-b;
     }
   };
-} }  }
+} } }
+
+#include <boost/simd/arch/common/scalar/function/minus_s.hpp>
 
 #endif

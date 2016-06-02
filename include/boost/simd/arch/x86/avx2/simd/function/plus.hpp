@@ -70,4 +70,6 @@ namespace boost { namespace simd { namespace ext
    };
 } } }
 
+#include <boost/simd/arch/x86/avx2/simd/function/plus_s.hpp>
+
 #endif

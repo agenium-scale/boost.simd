@@ -47,5 +47,6 @@ namespace boost { namespace simd { namespace ext
   };
 } } }
 
+#include <boost/simd/arch/common/scalar/function/dist_s.hpp>
 
 #endif
