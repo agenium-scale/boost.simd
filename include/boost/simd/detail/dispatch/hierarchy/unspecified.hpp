@@ -11,8 +11,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_DISPATCH_HIERARCHY_UNSPECIFIED_HPP_INCLUDED
-#define BOOST_DISPATCH_HIERARCHY_UNSPECIFIED_HPP_INCLUDED
+#ifndef BOOST_SIMD_DETAIL_DISPATCH_HIERARCHY_UNSPECIFIED_HPP_INCLUDED
+#define BOOST_SIMD_DETAIL_DISPATCH_HIERARCHY_UNSPECIFIED_HPP_INCLUDED
 
 #include <boost/simd/detail/dispatch/hierarchy/base.hpp>
 

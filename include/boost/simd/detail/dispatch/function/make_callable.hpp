@@ -11,8 +11,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_DISPATCH_FUNCTION_MAKE_CALLABLE_HPP_INCLUDED
-#define BOOST_DISPATCH_FUNCTION_MAKE_CALLABLE_HPP_INCLUDED
+#ifndef BOOST_SIMD_DETAIL_DISPATCH_FUNCTION_MAKE_CALLABLE_HPP_INCLUDED
+#define BOOST_SIMD_DETAIL_DISPATCH_FUNCTION_MAKE_CALLABLE_HPP_INCLUDED
 
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/function/functor.hpp>

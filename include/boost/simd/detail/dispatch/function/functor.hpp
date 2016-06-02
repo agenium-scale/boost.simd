@@ -6,8 +6,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_DISPATCH_FUNCTION_FUNCTOR_HPP_INCLUDED
-#define BOOST_DISPATCH_FUNCTION_FUNCTOR_HPP_INCLUDED
+#ifndef BOOST_SIMD_DETAIL_DISPATCH_FUNCTION_FUNCTOR_HPP_INCLUDED
+#define BOOST_SIMD_DETAIL_DISPATCH_FUNCTION_FUNCTOR_HPP_INCLUDED
 
 #include <boost/simd/detail/dispatch/hierarchy/default_site.hpp>
 #include <boost/simd/detail/dispatch/hierarchy_of.hpp>

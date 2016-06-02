@@ -11,8 +11,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_DISPATCH_DETAIL_HIERARCHY_OF_HPP_INCLUDED
-#define BOOST_DISPATCH_DETAIL_HIERARCHY_OF_HPP_INCLUDED
+#ifndef BOOST_SIMD_DETAIL_DISPATCH_DETAIL_HIERARCHY_OF_HPP_INCLUDED
+#define BOOST_SIMD_DETAIL_DISPATCH_DETAIL_HIERARCHY_OF_HPP_INCLUDED
 
 #include <boost/simd/detail/dispatch/hierarchy/scalar.hpp>
 #include <boost/simd/detail/dispatch/property_of.hpp>

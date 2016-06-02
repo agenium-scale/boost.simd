@@ -11,8 +11,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_DISPATCH_HIERARCHY_SIZED_TYPE_HPP_INCLUDED
-#define BOOST_DISPATCH_HIERARCHY_SIZED_TYPE_HPP_INCLUDED
+#ifndef BOOST_SIMD_DETAIL_DISPATCH_HIERARCHY_SIZED_TYPES_HPP_INCLUDED
+#define BOOST_SIMD_DETAIL_DISPATCH_HIERARCHY_SIZED_TYPES_HPP_INCLUDED
 
 #include <boost/simd/detail/dispatch/hierarchy/integer.hpp>
 #include <boost/simd/detail/dispatch/hierarchy/floating.hpp>

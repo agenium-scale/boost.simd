@@ -11,8 +11,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_DISPATCH_META_IS_HOMOGENEOUS_HPP_INCLUDED
-#define BOOST_DISPATCH_META_IS_HOMOGENEOUS_HPP_INCLUDED
+#ifndef BOOST_SIMD_DETAIL_DISPATCH_META_IS_HOMOGENEOUS_HPP_INCLUDED
+#define BOOST_SIMD_DETAIL_DISPATCH_META_IS_HOMOGENEOUS_HPP_INCLUDED
 
 #include <boost/fusion/include/is_sequence.hpp>
 #include <boost/fusion/include/as_vector.hpp>

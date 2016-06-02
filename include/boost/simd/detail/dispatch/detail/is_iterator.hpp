@@ -7,8 +7,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_DISPATCH_META_DETAIL_IS_ITERATOR_HPP_INCLUDED
-#define BOOST_DISPATCH_META_DETAIL_IS_ITERATOR_HPP_INCLUDED
+#ifndef BOOST_SIMD_DETAIL_DISPATCH_DETAIL_IS_ITERATOR_HPP_INCLUDED
+#define BOOST_SIMD_DETAIL_DISPATCH_DETAIL_IS_ITERATOR_HPP_INCLUDED
 
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/dispatch/detail/is_pointer.hpp>
