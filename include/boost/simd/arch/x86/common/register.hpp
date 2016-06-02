@@ -6,9 +6,20 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_PPC_REGISTER_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_PPC_REGISTER_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_X86_COMMON_REGISTER_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_X86_COMMON_REGISTER_HPP_INCLUDED
 
-#include <boost/simd/arch/ppc/common/register.hpp>
+#include <boost/predef/architecture.h>
+
+#if BOOST_HW_SIMD_X86
+namespace boost { namespace simd
+{
+  struct register_count
+  {
+    using general = 2*sizeof(void*);
+    using simd    = 2*sizeof(void*);
+  };
+} }
+#endif
 
 #endif
