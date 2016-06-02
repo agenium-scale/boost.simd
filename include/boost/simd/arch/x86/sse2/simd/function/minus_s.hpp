@@ -20,14 +20,14 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( minus_
                           , (typename A0)
                           , bs::sse2_
-                          , bs::pack_<bd::uint8_<A0>, bs::sse_>
-                          , bs::pack_<bd::uint8_<A0>, bs::sse_>
                           , bs::saturated_tag
+                          , bs::pack_<bd::uint8_<A0>, bs::sse_>
+                          , bs::pack_<bd::uint8_<A0>, bs::sse_>
                          )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0
-                                    , const A0 & a1
-                                    , const saturated_tag &  ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( const saturated_tag &
+                                    , const A0 & a0
+                                    , const A0 & a1) const BOOST_NOEXCEPT
     {
       return _mm_subs_epu8(a0, a1);
     }
@@ -36,14 +36,14 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( minus_
                           , (typename A0)
                           , bs::sse2_
-                          , bs::pack_<bd::int8_<A0>, bs::sse_>
-                          , bs::pack_<bd::int8_<A0>, bs::sse_>
                           , bs::saturated_tag
+                          , bs::pack_<bd::int8_<A0>, bs::sse_>
+                          , bs::pack_<bd::int8_<A0>, bs::sse_>
                          )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0
-                                    , const A0 & a1
-                                    , const saturated_tag &  ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( const saturated_tag &
+                                    , const A0 & a0
+                                    , const A0 & a1 ) const BOOST_NOEXCEPT
     {
       return _mm_subs_epi8(a0, a1);
     }
@@ -51,14 +51,14 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( minus_
                           , (typename A0)
                           , bs::sse2_
-                          , bs::pack_<bd::uint16_<A0>, bs::sse_>
-                          , bs::pack_<bd::uint16_<A0>, bs::sse_>
                           , bs::saturated_tag
+                          , bs::pack_<bd::uint16_<A0>, bs::sse_>
+                          , bs::pack_<bd::uint16_<A0>, bs::sse_>
                         )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0
-                                    , const A0 & a1
-                                    , const saturated_tag &  ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( const saturated_tag &
+                                    , const A0 & a0
+                                    , const A0 & a1 ) const BOOST_NOEXCEPT
     {
       return _mm_subs_epu16(a0, a1);
     }
@@ -66,14 +66,14 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( minus_
                           , (typename A0)
                           , bs::sse2_
-                          , bs::pack_<bd::int16_<A0>, bs::sse_>
-                          , bs::pack_<bd::int16_<A0>, bs::sse_>
                           , bs::saturated_tag
+                          , bs::pack_<bd::int16_<A0>, bs::sse_>
+                          , bs::pack_<bd::int16_<A0>, bs::sse_>
                         )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0
-                                    , const A0 & a1
-                                    , const saturated_tag &  ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( const saturated_tag &
+                                    , const A0 & a0
+                                    , const A0 & a1 ) const BOOST_NOEXCEPT
     {
       return _mm_subs_epi16(a0, a1);
     }

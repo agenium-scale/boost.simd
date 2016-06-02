@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_ASIN_HPP_INCLUDED
 
 #include <boost/simd/function/definition/asin.hpp>
+#include <boost/simd/arch/common/scalar/function/asin.hpp>
 #include <boost/simd/arch/common/generic/function/asin.hpp>
 
 #endif

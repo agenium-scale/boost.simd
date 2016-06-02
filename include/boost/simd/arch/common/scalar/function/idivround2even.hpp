@@ -33,13 +33,13 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( div_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::iround2even_
+                          , bs::tag::iround2even_
                           , bd::scalar_< bd::floating_<A0> >
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
     using result_t =  bd::as_integer_t<A0>;
-    BOOST_FORCEINLINE result_t operator() ( bd::functor<bs::tag::iround2even__> const&
+    BOOST_FORCEINLINE result_t operator() ( bd::functor<bs::tag::iround2even_> const&
                                           , A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
     {
       if (a1) return  iround2even(a0/a1);

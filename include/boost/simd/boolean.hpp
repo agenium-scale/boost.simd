@@ -34,6 +34,7 @@ namespace boost { namespace simd
 } }
 
 #include <boost/simd/function/if_allbits_else.hpp>
+#include <boost/simd/function/if_allbits_else_zero.hpp>
 #include <boost/simd/function/if_else_allbits.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/if_else_nan.hpp>

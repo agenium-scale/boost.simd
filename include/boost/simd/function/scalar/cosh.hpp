@@ -13,6 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_COSH_HPP_INCLUDED
 
 #include <boost/simd/function/definition/cosh.hpp>
+#include <boost/simd/arch/common/scalar/function/cosh.hpp>
 #include <boost/simd/arch/common/generic/function/cosh.hpp>
 
 #endif

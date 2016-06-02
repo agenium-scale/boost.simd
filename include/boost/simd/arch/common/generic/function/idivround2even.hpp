@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_IDIVROUND2EVEN_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_IDIVROUND2EVEN_HPP_INCLUDED
 
+#include <boost/simd/arch/common/scalar/function/idivround2even.hpp>
 #include <boost/simd/function/divides.hpp>
 #include <boost/simd/function/round2even.hpp>
 #include <boost/simd/function/iround2even.hpp>

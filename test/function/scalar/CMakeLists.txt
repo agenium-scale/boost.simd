@@ -295,8 +295,6 @@ set ( SOURCES
    log10.cpp
    log1p.cpp
    log2.cpp
-   logspace_add.cpp
-   logspace_sub.cpp
    nthroot.cpp
    pow.cpp
    pow2.cpp
