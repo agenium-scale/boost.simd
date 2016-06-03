@@ -23,11 +23,10 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0)
                           , bs::avx2_
                           , bs::pack_< bd::double_<A0>, bs::avx_>
-                          , bs::fast_tag
                           )
    {
       BOOST_FORCEINLINE bd::as_integer_t<A0>
-      operator()(const A0& a0, const fast_tag&) const BOOST_NOEXCEPT
+      operator()(const A0& a0) const BOOST_NOEXCEPT
       {
         return _mm256_cvtepi32_epi64( _mm256_cvttpd_epi32(a0));
       }
