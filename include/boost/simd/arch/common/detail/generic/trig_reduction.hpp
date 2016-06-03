@@ -347,7 +347,7 @@ namespace boost { namespace simd
         A0 x2 = x - xi * Ratio<A0,90>();
 
         xr =  inrad(x2);
-        return bs::fast_(toint)(xi);
+        return toint(xi);
       }
     };
 
@@ -374,7 +374,7 @@ namespace boost { namespace simd
         A0 x2 = x - xi * Ratio<A0,90>();
 
         xr =  inrad(x2);
-        return bs::fast_(toint)(xi);
+        return toint(xi);
       }
     };
 #endif
@@ -400,7 +400,7 @@ namespace boost { namespace simd
         A0 xi = round2even(x*Two<A0>());
         A0 x2 = x - xi * Half<A0>();
         xr = x2*Pi<A0>();
-        return fast_(toint)(xi);
+        return toint(xi);
       }
     };
   }
