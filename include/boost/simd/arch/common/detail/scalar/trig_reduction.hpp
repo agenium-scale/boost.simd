@@ -17,12 +17,12 @@
 #include <boost/simd/function/rem_pio2_cephes.hpp>
 #include <boost/simd/function/rem_pio2.hpp>
 #include <boost/simd/function/logical_and.hpp>
-#include <boost/dispatch/meta/upgrade.hpp>
+#include <boost/simd/detail/dispatch/meta/upgrade.hpp>
 
 #include <boost/simd/function/toint.hpp>
 #include <boost/simd/function/round2even.hpp>
 #include <boost/simd/function/if_else_nan.hpp>
-#include <boost/simd/function/is_ngt.hpp>
+#include <boost/simd/function/is_not_greater.hpp>
 #include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/function/is_flint.hpp>
 #include <boost/simd/function/inrad.hpp>
@@ -40,8 +40,8 @@
 #include <boost/simd/constant/ratio.hpp>
 #include <boost/simd/constant/constant.hpp>
 #include <boost/simd/constant/real.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <utility>
 
 namespace boost { namespace simd
@@ -71,29 +71,29 @@ namespace boost { namespace simd
       using conversion_allowed_t = bd::is_upgradable<A0>;
 
       static BOOST_FORCEINLINE auto is_0_pio4_reduced(A0 a0) BOOST_NOEXCEPT
-      ->  decltype(is_ngt(a0, Pio_4<A0>()))
+      ->  decltype(is_not_greater(a0, Pio_4<A0>()))
       {
-        return is_ngt(a0, Pio_4<A0>());
+        return is_not_greater(a0, Pio_4<A0>());
       }
       static BOOST_FORCEINLINE auto is_0_pio2_reduced(A0 a0) BOOST_NOEXCEPT
-      ->  decltype(is_ngt(a0, Pio_2<A0>()))
+      ->  decltype(is_not_greater(a0, Pio_2<A0>()))
       {
-        return is_ngt(a0, Pio_2<A0>());
+        return is_not_greater(a0, Pio_2<A0>());
       }
       static BOOST_FORCEINLINE auto is_0_20pi_reduced(A0 a0) BOOST_NOEXCEPT
-      ->  decltype(is_ngt(a0, Real<A0, 0X404F6A7A2955385EULL, 0X427B53D1UL>()))
+      ->  decltype(is_not_greater(a0, Real<A0, 0X404F6A7A2955385EULL, 0X427B53D1UL>()))
       {
-        return is_ngt(a0, Real<A0, 0X404F6A7A2955385EULL, 0X427B53D1UL>()); //20 pi;
+        return is_not_greater(a0, Real<A0, 0X404F6A7A2955385EULL, 0X427B53D1UL>()); //20 pi;
       }
       static BOOST_FORCEINLINE auto is_0_mpi_reduced (A0 a0) BOOST_NOEXCEPT
-      ->  decltype(is_ngt(a0, Medium_pi<A0>()))
+      ->  decltype(is_not_greater(a0, Medium_pi<A0>()))
       {
-        return is_ngt(a0, Medium_pi<A0>()); //2^6 pi
+        return is_not_greater(a0, Medium_pi<A0>()); //2^6 pi
       }
       static BOOST_FORCEINLINE auto is_0_dmpi_reduced(A0 a0) BOOST_NOEXCEPT
-      ->  decltype(is_ngt(a0,Constant<A0,262144>()))
+      ->  decltype(is_not_greater(a0,Constant<A0,262144>()))
       {
-        return is_ngt(a0, Ratio<A0,262144>()); //2^18 pi
+        return is_not_greater(a0, Ratio<A0,262144>()); //2^18 pi
       }
 
       static BOOST_FORCEINLINE l_t cot_invalid(A0  )  BOOST_NOEXCEPT

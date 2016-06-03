@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_REM_PIO2_STRAIGHT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_REM_PIO2_STRAIGHT_HPP_INCLUDED
 
-#include <boost/dispatch/detail/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
@@ -20,7 +20,7 @@
 #include <boost/simd/constant/pio2_2.hpp>
 #include <boost/simd/constant/pio2_3.hpp>
 #include <boost/simd/constant/pio_4.hpp>
-#include <boost/dispatch/detail/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
 #include <boost/simd/function/simd/is_greater.hpp>
 #include <boost/simd/function/simd/genmask.hpp>

@@ -19,7 +19,7 @@
 #include <boost/simd/constant/pio2_2.hpp>
 #include <boost/simd/constant/pio2_3.hpp>
 #include <boost/simd/constant/pio_4.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
 #include <boost/simd/function/simd/is_greater.hpp>
 #include <boost/simd/function/simd/genmask.hpp>
