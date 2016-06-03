@@ -46,4 +46,6 @@ namespace boost { namespace simd { namespace ext
   };
 } } }
 
+#include <boost/simd/arch/common/scalar/function/divides_s.hpp>
+
 #endif

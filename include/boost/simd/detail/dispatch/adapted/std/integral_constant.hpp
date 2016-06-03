@@ -9,8 +9,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_DISPATCH_ADAPTED_STD_INTEGRAL_CONSTANT_HPP_INCLUDED
-#define BOOST_DISPATCH_ADAPTED_STD_INTEGRAL_CONSTANT_HPP_INCLUDED
+#ifndef BOOST_SIMD_DETAIL_DISPATCH_ADAPTED_STD_INTEGRAL_CONSTANT_HPP_INCLUDED
+#define BOOST_SIMD_DETAIL_DISPATCH_ADAPTED_STD_INTEGRAL_CONSTANT_HPP_INCLUDED
 
 #include <boost/simd/detail/dispatch/meta/value_of.hpp>
 #include <boost/simd/detail/dispatch/meta/model_of.hpp>

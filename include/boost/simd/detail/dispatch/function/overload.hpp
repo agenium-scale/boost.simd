@@ -11,8 +11,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_DISPATCH_FUNCTION_OVERLOAD_HPP_INCLUDED
-#define BOOST_DISPATCH_FUNCTION_OVERLOAD_HPP_INCLUDED
+#ifndef BOOST_SIMD_DETAIL_DISPATCH_FUNCTION_OVERLOAD_HPP_INCLUDED
+#define BOOST_SIMD_DETAIL_DISPATCH_FUNCTION_OVERLOAD_HPP_INCLUDED
 
 #include <boost/preprocessor/cat.hpp>
 #include <boost/preprocessor/tuple/rem.hpp>

@@ -1,13 +1,10 @@
 //==================================================================================================
-/*!
-  @file
-
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T. Lapreste
+/**
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ONEPLUS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ONEPLUS_HPP_INCLUDED
@@ -33,20 +30,8 @@ namespace boost { namespace simd { namespace ext
       return plus(a0, One<A0>());
     }
   };
-//   BOOST_DISPATCH_OVERLOAD ( oneplus_
-//                           , (typename T)
-//                           ,  bd::cpu_
-//                           ,  bs::saturated_tag
-//                           ,  bd::generic_<bd::fundamental_<T>>
-//                           )
-//   {
-//     BOOST_FORCEINLINE T operator()(const saturated_tag &, const T& a
-//                                   ) const BOOST_NOEXCEPT
-//     {
-//       return oneplus_s(a);
-//     }
-//   };
 } } }
 
+#include <boost/simd/arch/common/generic/function/oneplus_s.hpp>
 
 #endif

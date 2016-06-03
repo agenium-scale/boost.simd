@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_IF_ADD_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_IF_ADD_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_IF_PLUS_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_IF_PLUS_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd

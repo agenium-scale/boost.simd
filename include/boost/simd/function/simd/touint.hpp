@@ -12,7 +12,6 @@
 #include <boost/simd/function/scalar/touint.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/simd/function/touint.hpp>
-#include <boost/simd/arch/common/simd/function/touint_s.hpp>
 
 #if defined(BOOST_HW_SIMD_PPC)
 #  if BOOST_HW_SIMD_PPC >= BOOST_HW_SIMD_PPC_VMX_VERSION

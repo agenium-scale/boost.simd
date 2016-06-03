@@ -11,8 +11,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_DISPATCH_PROPERTY_OF_HPP_INCLUDED
-#define BOOST_DISPATCH_PROPERTY_OF_HPP_INCLUDED
+#ifndef BOOST_SIMD_DETAIL_DISPATCH_PROPERTY_OF_HPP_INCLUDED
+#define BOOST_SIMD_DETAIL_DISPATCH_PROPERTY_OF_HPP_INCLUDED
 
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/simd/detail/dispatch/detail/property_of.hpp>
