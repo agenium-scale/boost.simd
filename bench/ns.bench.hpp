@@ -1336,12 +1336,6 @@ namespace ns { namespace bench { namespace generators {
 
 namespace ns { namespace bench { namespace generators {
 
-  template < class T >
-  T val()
-  {
-    return static_cast<T>(double(std::rand())/(RAND_MAX));
-  }
-
 template <typename U, typename IS = typename std::is_scalar<U>::type>
 struct rand {};
 template <typename T>

@@ -68,7 +68,7 @@ void testcs(Env& $)
   STF_EQUAL(bs::std_(bs::cos)(aa1), cc);
 }
 
-STF_CASE_TPL("Check cos cos clipped_small_ on pack" , (float))//STF_IEEE_TYPES)
+STF_CASE_TPL("Check cos cos clipped_small_ on pack" , STF_IEEE_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
@@ -99,7 +99,7 @@ void testcm(Env& $)
   STF_EQUAL(bs::std_(bs::cos)(aa1), cc);
 }
 
-STF_CASE_TPL("Check cos cos clipped_medium_ on pack" , (float))//STF_IEEE_TYPES)
+STF_CASE_TPL("Check cos cos clipped_medium_ on pack" , STF_IEEE_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
