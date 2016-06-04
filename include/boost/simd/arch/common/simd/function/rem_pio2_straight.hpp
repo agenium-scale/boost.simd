@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_REM_PIO2_STRAIGHT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_REM_PIO2_STRAIGHT_HPP_INCLUDED
 
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/pio2_1.hpp>
