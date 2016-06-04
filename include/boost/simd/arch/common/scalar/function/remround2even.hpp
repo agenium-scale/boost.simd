@@ -17,8 +17,8 @@
 #include <boost/simd/function/minus.hpp>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/round2even.hpp>
-#include <boost/simd/function/selsub.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/function/if_minus.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 /////////////////////////////////////////////////////////////////////////////
 // The remround2even() function computes the remround2even of dividing x by y.  The

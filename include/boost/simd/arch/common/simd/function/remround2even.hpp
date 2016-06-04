@@ -24,7 +24,7 @@
 #include <boost/simd/function/simd/logical_notand.hpp>
 #include <boost/simd/function/simd/logical_or.hpp>
 #include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/selsub.hpp>
+#include <boost/simd/function/simd/if_minus.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -41,7 +41,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator()(bd::functor<bs::tag::round2even_> const&
                                    , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
     {
-      return selsub(is_nez(a1), a0, div(round,a0,a1)*a1);
+      return if_minus(is_nez(a1), a0, div(round,a0,a1)*a1);
     }
   };
 
@@ -58,7 +58,7 @@ namespace boost { namespace simd { namespace ext
     {
       auto is_eqza1 = is_eqz(a1);
       return if_nan_else(logical_or(is_invalid(a1), is_eqza1),
-                         selsub(logical_notand(is_eqza1, is_nez(a0)), a0, div(round2even, a0,a1)*a1));
+                         if_minus(logical_notand(is_eqza1, is_nez(a0)), a0, div(round2even, a0,a1)*a1));
     }
   };
 

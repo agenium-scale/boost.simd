@@ -24,7 +24,7 @@
 #include <boost/simd/function/toint.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
-#include <boost/dispatch/hierarchy.hpp>
+#include <boost/simd/detail/dispatch/hierarchy.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

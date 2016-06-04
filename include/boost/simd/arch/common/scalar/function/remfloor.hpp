@@ -20,8 +20,8 @@
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/fnms.hpp>
 #include <boost/simd/function/floor.hpp>
-#include <boost/simd/function/selsub.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/function/if_minus.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 /////////////////////////////////////////////////////////////////////////////
 // The remfloor() function computes the remfloor of dividing x by y.  The
