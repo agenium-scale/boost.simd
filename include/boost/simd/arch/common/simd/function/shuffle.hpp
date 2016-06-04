@@ -14,7 +14,7 @@
 #include <boost/simd/arch/common/simd/function/shuffle/common.hpp>
 #include <boost/simd/arch/common/simd/function/shuffle/deinterleave.hpp>
 #include <boost/simd/arch/common/simd/function/shuffle/identity.hpp>
-#include <boost/simd/arch/common/simd/function/shuffle/reverse.hpp>
+//#include <boost/simd/arch/common/simd/function/shuffle/reverse.hpp>
 #include <boost/simd/arch/common/simd/function/shuffle/repeat.hpp>
 #include <boost/simd/arch/common/simd/function/shuffle/slide.hpp>
 
