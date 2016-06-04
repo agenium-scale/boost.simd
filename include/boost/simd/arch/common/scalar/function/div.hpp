@@ -22,7 +22,7 @@
 #include <boost/simd/arch/common/scalar/function/divtrunc.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/hierarchy.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/hierarchy.hpp>
 #include <boost/config.hpp>
 
