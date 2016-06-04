@@ -66,3 +66,4 @@ STF_CASE_TPL (" toint signed",  STF_SIGNED_INTEGRAL_TYPES)
   STF_EQUAL(toint(bs::Zero<T>()), bs::Zero<r_t>());
 } // end of test for signed_int_
 
+

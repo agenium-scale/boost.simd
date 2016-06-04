@@ -41,6 +41,7 @@ STF_CASE_TPL (" cos",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(cos(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
   STF_ULP_EQUAL(cos(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
 #endif
+  STF_ULP_EQUAL(cos(T(2.0)*bs::Pi<T>()), bs::One<r_t>(), 0.5);
   STF_ULP_EQUAL(cos(-bs::Pi<T>()), bs::Mone<r_t>(), 0.5);
   STF_ULP_EQUAL(cos(-bs::Pio_2<T>()), bs::Zero<r_t>(), 0.5);
   STF_ULP_EQUAL(cos(-bs::Pio_4<T>()), bs::Sqrt_2o_2<r_t>(), 0.5);

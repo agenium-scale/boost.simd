@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_DETAIL_SCALAR_TRIG_BASE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_SCALAR_TRIG_BASE_HPP_INCLUDED
 #include <boost/simd/arch/common/detail/tags.hpp>
-#include <boost/simd/arch/common/detail/generic/trig_reduction.hpp>
+#include <boost/simd/arch/common/detail/scalar/trig_reduction.hpp>
 #include <boost/simd/function/scalar/is_invalid.hpp>
 #include <boost/simd/function/scalar/is_nan.hpp>
 #include <boost/simd/function/scalar/is_eqz.hpp>

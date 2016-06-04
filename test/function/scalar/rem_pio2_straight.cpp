@@ -37,8 +37,8 @@ STF_CASE_TPL (" rem_pio2_straight",  STF_IEEE_TYPES)
   }
   {
     r_t res = rem_pio2_straight(bs::Zero<T>());
-    STF_ULP_EQUAL( res.first, bs::One<iT>(), 0.5);
-    STF_ULP_EQUAL( res.second, -bs::Pio_2<T>(), 0.5);
+    STF_ULP_EQUAL( res.first, bs::Zero<iT>(), 0.5);
+    STF_ULP_EQUAL( res.second, bs::Zero<T>(), 0.5);
   }
 
 }

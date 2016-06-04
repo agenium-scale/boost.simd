@@ -16,6 +16,7 @@ namespace ns { namespace bench {
 } }
 #include <boost/core/demangle.hpp>
 #include <type_traits>
+
 namespace ns {
 template<typename T> inline std::string type_id()
 {
@@ -1234,7 +1235,7 @@ struct function_experiment
 template <std::size_t ExpSize, typename F, typename... Args>
 void make_function_experiment_sized(std::string const& name, metrics_t const& ms, F f, Args&&... args) {
   auto b = make_benchmark<function_experiment<ExpSize, F, Args...>>(name);
-  b.really_during(std::chrono::seconds(1));
+  b.really_during(std::chrono::seconds(5));
   for (metric const& m : ms) {
     b.metric(m);
   }
@@ -1331,7 +1332,10 @@ namespace ns { namespace bench { namespace generators {
 #include <cstdlib>
 #include <cmath>
 #include <random>
+#include <ctime>
+
 namespace ns { namespace bench { namespace generators {
+
 template <typename U, typename IS = typename std::is_scalar<U>::type>
 struct rand {};
 template <typename T>
@@ -1350,7 +1354,9 @@ struct rand<T, std::true_type>
     if (min == max) min = T(0);
     min_ = min;
     max_ = max;
+    f = (max_ - min_);
   }
+
   T random() {
     static std::random_device rd;
     static std::mt19937 gen(rd());
@@ -1368,6 +1374,7 @@ struct rand<T, std::true_type>
   }
   private:
   T min_, max_;
+  double f;
 };
 template <typename T>
 struct rand<T, std::false_type>
@@ -1388,8 +1395,31 @@ struct rand<T, std::false_type>
     return r.description();
   }
   private :
-  rand<typename T::value_type> r;
+   rand<typename T::value_type> r;
 };
+
+template <typename T>
+struct randlg
+{
+  using value_type = typename T::value_type;
+  using under_t = typename value_type::value_type;
+  randlg() : r(0.0, 1.0)
+  {
+  }
+  inline T operator()() {
+    std::array<value_type, sizeof(T) / sizeof(value_type)> v;
+    std::transform(v.begin(), v.end(), v.begin(), [this](value_type const&) { return r.random() < 0.5; });
+    return {v.begin(), v.end()};
+  }
+  std::string description() const {
+    std::stringstream ss;
+    ss << ns::type_id<T>();
+    return ss.str();
+  }
+  private :
+  rand<double> r;
+};
+
 } } }
 #include <functional>
 #include <cassert>

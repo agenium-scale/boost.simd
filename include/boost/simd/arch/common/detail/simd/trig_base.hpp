@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_DETAIL_SIMD_TRIG_BASE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_SIMD_TRIG_BASE_HPP_INCLUDED
 
+#include <boost/simd/arch/common/detail/simd/trig_reduction.hpp>
 #include <boost/simd/function/simd/any.hpp>
 #include <boost/simd/function/simd/abs.hpp>
 #include <boost/simd/function/simd/is_invalid.hpp>

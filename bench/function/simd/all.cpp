@@ -30,11 +30,26 @@ struct all_simd
    }
 };
 
+template <typename T>
+struct all_simd_logical
+{
+   void operator()()
+   {
+     using pack_t = bs::pack<bs::logical<T>>;
+     using ret_type = bool;
+     nsb::make_function_experiment_cpe_sized_<pack_t::static_size>
+       ( [](const pack_t & x0) -> ret_type
+         { return bs::all(x0); }
+       , nsb::generators::randlg<pack_t>()
+       );
+   }
+};
 
 int main(int argc, char **argv) {
    nsb::parse_args(argc, argv);
    nsb::make_for_each<all_simd, NS_BENCH_SIGNED_NUMERIC_TYPES>( -10,  10);
    nsb::make_for_each<all_simd, NS_BENCH_UNSIGNED_NUMERIC_TYPES>(0,  10);
+   nsb::make_for_each<all_simd_logical, NS_BENCH_SIGNED_NUMERIC_TYPES>();
    return 0;
 }
 
