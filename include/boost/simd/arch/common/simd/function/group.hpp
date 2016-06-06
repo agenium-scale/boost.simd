@@ -46,5 +46,8 @@ namespace boost { namespace simd { namespace ext
     }
   };
 } } }
+
+#include <boost/simd/arch/common/simd/function/groups.hpp>
+
 #endif
 
