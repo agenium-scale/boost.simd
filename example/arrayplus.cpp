@@ -23,7 +23,6 @@ int main(void) {
 
 //! [sum-scalar]
   // Scalar version
-  ipack_t one28{128};
   for ( size_t i = 0 ; i < size ; ++i )
     out[i] = array[i] - 128;
 //! [sum-scalar]
@@ -32,6 +31,7 @@ int main(void) {
   // Using explicit load/store
   ipack_t p_out;
   ipack_t p_arr;
+  ipack_t one28{128};
   for ( size_t i = 0 ; i < size ; i += ipack_card ) {
     p_out = bs::load<ipack_t>(out   + i);
     p_arr = bs::load<ipack_t>(array + i);

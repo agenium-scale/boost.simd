@@ -31,11 +31,11 @@ int main()
   //! [hello-splat-ctor]
 
   //! [hello-splat-explicit]
-  pack_t eleven(11);
+  pack_t elevens(11);
   //! [hello-splat-explicit]
 
   //! [hello-ops]
-  res = (tens + eleven_splat) * 2.f;
+  res = (tens + elevens) * 2.f;
   //! [hello-ops]
 
   //! [hello-io]
