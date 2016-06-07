@@ -35,7 +35,6 @@ namespace boost { namespace simd
   @endcode
 
   @par Decorators
-
     saturated_ ensures that saturated_(dec)(x) will never be strictly greater than x.
 
   @see minus

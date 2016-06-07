@@ -1,8 +1,8 @@
 //==================================================================================================
 /*!
   @file
-
-  @copyright 2016 NumScale SAS
+y
+  @copyright 2015 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -18,9 +18,36 @@ namespace boost { namespace simd
     @ingroup group-functions
     @defgroup group-hyperbolic  Hyperbolic functions
 
-    These functions provide scalar and SIMD versions of
-    hyperbolic and inverse hyperbolic functions.
-  **/
+    Those functions provides scalar and SIMD version of
+    hyperbolic  and inverse hyperbolic functions.
+
+    - Direct hyperbolic functors
+
+       <center>
+         | name          | name         | name           | name         |
+         |:-------------:|:------------:|:--------------:|:------------:|
+         | @ref cosh     | @ref csch    | @ref sinh      | @ref sinhcosh|
+         | @ref coth     | @ref sech    | @ref sinhc     | @ref tanh    |
+       </center>
+
+          @ref sinc and @ref sinhc the hyperbolic sinus cardinal function
+          (\f$\frac{\sinh x}{x}\f$.
+
+          @ref sincos,  @ref sinhcosh  allows the simultaneous
+          computation of hyperbolic sine and cosine at lower cost.
+
+          @ref sec and @ref csc are the secant (inverse of the cosine) and cosecant
+          (inverse of the sine)
+
+    - Inverse hyperbolic functors
+
+       <center>
+         | name        | name         | name        |
+         |:-----------:|:------------:|:-----------:|
+         | @ref acosh  | @ref acsch   | @ref asinh  |
+         | @ref acoth  | @ref asech   | @ref atanh  |
+       </center>
+    **/
 
   /*!
     @ingroup group-callable

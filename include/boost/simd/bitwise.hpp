@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+  @copyright 2015 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -18,16 +18,56 @@ namespace boost { namespace simd
     @ingroup group-functions
     @defgroup group-bitwise Bitwise functions
 
-      These functions provides scalar and SIMD implementations of bit manipulations and bitwise
-      operators. Bitwise operations are provided alongside more specific ones such as bit-level rotations,
+      Those functions provides scalar and SIMD algorithms for bit manipulations and bitwise
+      operators. Bitwise operations are provided along more specific ones like bit-level rotations,
       bit set, get and toggling and mapping for compiler-specific first bit set or population count
       operations.
 
-      Note that bitwise function operators may accept IEEE types as arguments. The implied semantic
+      Note that bitwise functions operators may accept IEEE types as arguments. The implied semantic
       is then that the operations are applied to the IEEE bit patterns.
 
-      Be also aware that all binary bitwise functions return a result of the type of the first argument
-      and that the second argument must only have the same number of bits of the first.
+      - Bitwise operators
+
+       <center>
+         | name               | name                 | name                 | name                |  name            |
+         |:------------------:|:--------------------:|:--------------------:|:-------------------:|:----------------:|
+         | @ref bitwise_and   | @ref bitwise_cast    | @ref bitwise_notor   | @ref bitwise_ornot  | @ref bitwise_xor |
+         | @ref bitwise_andnot| @ref bitwise_notand  | @ref bitwise_or      | @ref bitwise_select | @ref complement  |
+       </center>
+
+       Be aware that all binary bitwise functions return a result of the type of the first argument
+       and that the second argument is only required to be of the same bit size as the first.
+       This behaviour is intended to help bit masking in SIMD mode
+
+      - Bit manipulation, counts and locations
+
+       <center>
+         | name         | name                 | name              | name             |
+         |:------------:|:--------------------:|:-----------------:|:----------------:|
+         | @ref bits    | @ref ffs             | @ref hi           | @ref swapbytes   |
+         | @ref bitget  | @ref firstbitset     | @ref ilog2        | @ref twopower    |
+         | @ref bitset  | @ref firstbitunset   | @ref lo           |                  |
+         | @ref clz     | @ref genmask         | @ref popcnt       |                  |
+         | @ref ctz     | @ref genmaskc        | @ref reversebits  |                  |
+       </center>
+
+   - Shifts and rotations
+
+       <center>
+         | name     | name      | name       | name             |  name    |
+         |:--------:|:---------:|:----------:|:----------------:|:--------:|
+         | @ref rol | @ref rrol | @ref rshl  | @ref shift_left  | @ref shl |
+         | @ref ror | @ref rror | @ref rshr  | @ref shift_right | @ref shr |
+       </center>
+
+       shift_left and shift_left are logical shift, shl and shr arithmetic ones
+       and rol and ror are rotations respectively to the left and to the right.
+       For these functions negative or excessive values of the shift (greater
+       or equal to the bit size of each shifted element) are errors.
+
+       For the other ones negative values reverse the direction,  but excessive
+       values are still erroneous.
+
   **/
 
   /*!
@@ -70,6 +110,9 @@ namespace boost { namespace simd
 #include <boost/simd/function/rror.hpp>
 #include <boost/simd/function/rshl.hpp>
 #include <boost/simd/function/rshr.hpp>
+#include <boost/simd/function/shift_left.hpp>
+#include <boost/simd/function/shift_right.hpp>
+#include <boost/simd/function/shl.hpp>
 #include <boost/simd/function/shr.hpp>
 #include <boost/simd/function/swapbytes.hpp>
 #include <boost/simd/function/twopower.hpp>

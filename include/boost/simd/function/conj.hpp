@@ -35,7 +35,7 @@ namespace boost { namespace simd
     T r = x
     @endcode
 
-    This function is restricted to real numbers
+    This function is the restriction to real numbers of the complex conj(ugation).
 
   **/
   const boost::dispatch::functor<tag::conj_> conj = {};

@@ -57,10 +57,9 @@ namespace boost { namespace simd
     correct_fma is never used internally in boost.simd.
 
     @par Decorators
+      std_ for floating entries calls std::fma but do not garanty performances...
 
-    std_ for floating entries
-
-    @see  fma
+    @see  fma, fms fnma, fnms
 **/
      const boost::dispatch::functor<tag::correct_fma_> correct_fma = {};
 } }

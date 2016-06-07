@@ -39,8 +39,13 @@ namespace boost { namespace simd
     T r = -x;
     @endcode
 
-    @par Alias:
-    @c neg
+    @par Note:
+
+    - Be aware that for signed integers the unary_minus of @ref Valmin is
+    @ref Valmin. This is a side effect of the 2-complement
+    representation of integers. To avoid this, you may use the
+    saturated_ functor or convert the input parameter to a larger type
+    before taking the unary_minus value.
 
     @see  minus, unary_plus
 
