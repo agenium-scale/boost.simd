@@ -36,6 +36,14 @@ namespace boost { namespace simd
     T r = (x < y) ? x : y;
     @endcode
 
+    @par Note:
+
+    With this definition min(x, @ref Nan) should return x...
+
+    On some systems (namely for example vmx in simd mode) the intrinsic used returns Nan as soon x or y is a nan.
+    So the real definition of our min function must add: but if y is Nan the result is system dependent.
+
+    This can of course be corrected, but the penalty is too big.
     @see minnum, minnummag, minmag
 
   **/

@@ -34,6 +34,9 @@ namespace boost { namespace simd
   T r =  x-T(1);
   @endcode
 
+  @par Decorators
+     saturated_ for integral types
+
   @see  minusone, minus
 
   **/
