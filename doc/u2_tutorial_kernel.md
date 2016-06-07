@@ -1,3 +1,4 @@
+
 Tutorials {#tutorials}
 =========
 
@@ -27,7 +28,7 @@ This small code sample presents the basic building blocks of **Boost.SIMD**, whi
 
 ## The Boost.SIMD namespace
 
-When using a **Boost.SIMD** type or function, it is necessary to use the boost::simd namespace. In order to simplify the code, you may wish to give it an alias: 
+When using a **Boost.SIMD** type or function, it is necessary to use the boost::simd namespace. In order to simplify the code, you may wish to give it an alias:
 
 @snippet helloworld.cpp hello-namespace
 
@@ -84,9 +85,9 @@ The compilation of the code is rather straight-forward: just pass the path to **
 
 For example, on `gcc`:
 
-`g++ my_code.cpp -O3 -o my_code -I/path/to/boost/ -msse2`
+`g++ my_code.cpp -O3 -o my_code -I/path/to/boost.simd/ -msse2`
 
-Some compilers, like Microsoft Visual Studio, don't propagate the fact a given architecture specific option is triggered. In this case, you need to also defines a architecture specific preprocessor symbol.
+Some compilers, like Microsoft Visual Studio, don't propagate the fact a given architecture specific option is triggered. In this case, you need to also defines an architecture specific preprocessor symbol.
 
 ## The result
 
@@ -110,9 +111,9 @@ This shows that we correctly emitted `*ps` instructions. Note how the abstractio
 
 ----------------------------------------------------------------------------------------------------
 
-This tutorial presents the different ways to fill and use a boost::simd::pack in a more realistic use case than above. 
+This tutorial presents the different ways to fill and use a boost::simd::pack in a more realistic use case than above.
 
-The following methods will show different ways to vectorize the following scalar code calculating a the difference between an array and a constant.
+The following methods will show different ways to vectorize the following scalar code computing the difference between an array and a constant.
 
 @snippet arrayplus.cpp sum-scalar
 
@@ -202,13 +203,20 @@ The algorithm is split into two parts:
 
 First, we loop over each element inside both datasets and multiply them.
 Then, we sum the intermediate values into the final result.
-By unrolling this pattern arbitrarily, we expose the fact that the multiplication between the two dataset is purely "vertical" and so, is vectorizable. The sum of the partial result itself is a "horizontal" operation, i.e a vectorizable computation operating across the element of a single vector (see @intra-register operation).
+By unrolling this pattern arbitrarily, we expose the fact that the multiplication between the two dataset is purely "vertical" and so, is vectorizable. The sum of the partial results itself is a "horizontal" operation, i.e a vectorizable computation operating across the element of a single vector (see @intra-register operation).
 
 @subsection simd_loop Building a SIMD loop
 We are now going to use boost::simd::pack to vectorize this loop. The main idea is to compute partial sums inside an instance of boost::simd::pack and then perform a final summation. To do so, we will use boost::simd::load to load data from first1 and first2, process these boost::simd::pack instances using the proper operators and advance the pointers by the size of the boost::simd::pack.
 
 @snippet dotsimd.cpp scalar-dot-simd
-That's it! Look at how similar the computation code is to the scalar version, we simply jump over data using alarger step size.
+That's it! Look at how similar the computation code is to the scalar version, we simply jump over data using a larger step size.
+
+# Note:
+
+the code line `tmp = tmp + x1 * x2;` could have been replaced by
+`tmp += x1 * x2;` or even `tmp = fma(x1, x2,tmp);` (after having included `boost/simd/function/fma.hpp`)
+which will lead to same code if hardware does not support fma, or even better code if it does.
+
 
 @subsection prepare-data Preparing the data
 @section tutorial-shuffle Memory Access
