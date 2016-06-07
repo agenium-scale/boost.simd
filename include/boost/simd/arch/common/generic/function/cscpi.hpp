@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_CSCPI_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_CSCPI_HPP_INCLUDED
 
-#include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/restricted.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/function/if_nan_else.hpp>
@@ -53,13 +53,13 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( cscpi_
                           , (typename A0)
                           , bd::cpu_
-                          , bs::fast_tag
+                          , bs::restricted_tag
                           , bd::generic_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const restricted_tag &,  A0 const& a0) const BOOST_NOEXCEPT
     {
-      return rec(fast_(sinpi)(a0));
+      return rec(restricted_(sinpi)(a0));
     }
   };
 } } }

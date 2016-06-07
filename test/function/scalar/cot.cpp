@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/scalar/cot.hpp>
-#include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/restricted.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -46,7 +46,7 @@ STF_CASE_TPL (" cot",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(cot(bs::Pio_4<T>()), bs::One<r_t>(), 0.5);
 }
 
-STF_CASE_TPL (" cot fast_",  STF_IEEE_TYPES)
+STF_CASE_TPL (" cot restricted_",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -59,14 +59,14 @@ STF_CASE_TPL (" cot fast_",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(bs::fast_(cot)(-bs::Zero<T>()), -bs::Inf<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cot)(bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cot)(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cot)(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cot)(bs::Zero<T>()), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cot)(-bs::Zero<T>()), -bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cot)(bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cot)(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cot)(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cot)(bs::Zero<T>()), bs::Inf<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(bs::fast_(cot)(-bs::Pio_2<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cot)(-bs::Pio_4<T>()), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cot)(bs::Pio_2<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cot)(bs::Pio_4<T>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cot)(-bs::Pio_2<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cot)(-bs::Pio_4<T>()), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cot)(bs::Pio_2<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cot)(bs::Pio_4<T>()), bs::One<r_t>(), 0.5);
 }

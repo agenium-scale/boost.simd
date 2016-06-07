@@ -213,7 +213,7 @@ namespace boost { namespace simd
          return {bitwise_xor(s,sin_sign_bit), bitwise_xor(c,cos_sign_bit)};
        }
 
-       static BOOST_FORCEINLINE A0 cosa(A0 a0, const tag::fast &) BOOST_NOEXCEPT
+       static BOOST_FORCEINLINE A0 cosa(A0 a0, const tag::restricted &) BOOST_NOEXCEPT
        {
          A0 x =  scale(a0);
          if(not_in_range(a0))
@@ -223,7 +223,7 @@ namespace boost { namespace simd
        }
 
 
-       static BOOST_FORCEINLINE A0 sina(A0 a0, const tag::fast&) BOOST_NOEXCEPT
+       static BOOST_FORCEINLINE A0 sina(A0 a0, const tag::restricted&) BOOST_NOEXCEPT
        {
          if (is_eqz(a0)) return a0;
          A0 x =  scale(a0);
@@ -233,7 +233,7 @@ namespace boost { namespace simd
            return eval_t::sin_eval(sqr(x), x);
        }
 
-       static BOOST_FORCEINLINE A0 tana(A0 a0, const tag::fast&) BOOST_NOEXCEPT
+       static BOOST_FORCEINLINE A0 tana(A0 a0, const tag::restricted&) BOOST_NOEXCEPT
        {
          if (is_eqz(a0)) return a0;
          A0 x =  scale(a0);
@@ -243,7 +243,7 @@ namespace boost { namespace simd
            return eval_t::base_tan_eval(x);
        }
 
-       static BOOST_FORCEINLINE A0 cota(A0 a0, const tag::fast&) BOOST_NOEXCEPT
+       static BOOST_FORCEINLINE A0 cota(A0 a0, const tag::restricted&) BOOST_NOEXCEPT
        {
          if (is_eqz(a0)) return rec(a0);
           if(not_in_range(a0))
@@ -256,7 +256,7 @@ namespace boost { namespace simd
           }
        }
 
-       static BOOST_FORCEINLINE std::pair<A0, A0>sincosa(A0 a0, const tag::fast&) BOOST_NOEXCEPT
+       static BOOST_FORCEINLINE std::pair<A0, A0>sincosa(A0 a0, const tag::restricted&) BOOST_NOEXCEPT
        {
          if (is_eqz(a0))       return {a0, One<A0>()} ;
          if(not_in_range(a0))  return {Nan<A0>(), Nan<A0>()};

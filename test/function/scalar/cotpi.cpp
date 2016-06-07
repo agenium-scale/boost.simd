@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/scalar/cotpi.hpp>
-#include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/restricted.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -44,7 +44,7 @@ STF_CASE_TPL (" cotpi",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(cotpi(bs::Mhalf<T>()), bs::Zero<r_t>(), 0.5);
   STF_ULP_EQUAL(cotpi(bs::Quarter<T>()), bs::One<r_t>(), 0.5);
 }
-STF_CASE_TPL (" cotpi fast_",  STF_IEEE_TYPES)
+STF_CASE_TPL (" cotpi restricted_",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -57,15 +57,15 @@ STF_CASE_TPL (" cotpi fast_",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(bs::fast_(cotpi)(-bs::Zero<T>()), -bs::Inf<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cotpi)(bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cotpi)(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cotpi)(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cotpi)(bs::One<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cotpi)(bs::Zero<T>()), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cotpi)(-bs::Zero<T>()), -bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cotpi)(bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cotpi)(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cotpi)(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cotpi)(bs::One<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cotpi)(bs::Zero<T>()), bs::Inf<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(bs::fast_(cotpi)(-bs::Quarter<T>()), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cotpi)(bs::Half<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cotpi)(bs::Mhalf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cotpi)(bs::Quarter<T>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cotpi)(-bs::Quarter<T>()), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cotpi)(bs::Half<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cotpi)(bs::Mhalf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cotpi)(bs::Quarter<T>()), bs::One<r_t>(), 0.5);
 }

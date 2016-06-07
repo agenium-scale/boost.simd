@@ -22,7 +22,7 @@
 #include <boost/simd/function/simd/shift_left.hpp>
 #include <boost/simd/function/simd/shr.hpp>
 #include <boost/simd/function/simd/sqr.hpp>
-#include <boost/simd/function/simd/if_allbits_else.hpp>
+#include <boost/simd/function/simd/if_nan_else.hpp>
 #include <boost/simd/function/simd/bitwise_xor.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
 #include <boost/simd/function/simd/bitofsign.hpp>
@@ -71,7 +71,7 @@ namespace boost { namespace simd
       static inline std::pair<A0,A0> sincosa(const A0 a0){ return sincosa(a0,style()); }
 
     private:
-      static inline A0 cosa(const A0 a0, const tag::fast&)
+      static inline A0 cosa(const A0 a0, const tag::restricted&)
       {
         const A0 x =  scale(a0);
         return  eval_t::cos_eval(sqr(x));
@@ -90,7 +90,7 @@ namespace boost { namespace simd
         return  bitwise_xor(if_else(is_nez(swap_bit), se, ce), sign_bit);
       }
 
-      static inline A0 sina(const A0 a0_n, const tag::fast&)
+      static inline A0 sina(const A0 a0_n, const tag::restricted&)
       {
         const A0 x =   scale(a0_n);
         const A0 se = eval_t::sin_eval(sqr(x), x);
@@ -112,7 +112,7 @@ namespace boost { namespace simd
         return bitwise_xor(if_else(is_eqz(swap_bit),se, ce), sign_bit);
       }
 
-      static inline A0 tana(const A0 a0_n, const tag::fast&)
+      static inline A0 tana(const A0 a0_n, const tag::restricted&)
       {
         const A0 bte = eval_t::base_tancot_eval(scale(a0_n));
         return bte;
@@ -127,10 +127,10 @@ namespace boost { namespace simd
         const A0 y = eval_t::tan_eval(xr, oneminus(shift_left((n&One<int_type>()), 1)));
         // 1 -- n even  -1 -- n odd
         const bA0 testnan = redu_t::tan_invalid(a0);
-        return if_allbits_else(testnan, bitwise_xor(y, bitofsign(a0)));
+        return if_nan_else(testnan, bitwise_xor(y, bitofsign(a0)));
       }
 
-      static inline A0 cota(const A0 a0_n, const tag::fast&)
+      static inline A0 cota(const A0 a0_n, const tag::restricted&)
       {
         const A0 bte = eval_t::base_tancot_eval(scale(a0_n));
         return rec(bte);
@@ -143,14 +143,14 @@ namespace boost { namespace simd
         const A0 y = eval_t::cot_eval(xr, oneminus(shift_left((n&One<int_type>()), 1)));
         // 1 -- n even -1 -- n odd
         const bA0 testnan = redu_t::cot_invalid(a0);
-        // this if_else is normally not needed but with clang the zero value if eroneous
+        // this if_else is normally not needed but with clang the zero value if erroneous
         // if not there !
-        return if_else(is_nez(a0), if_allbits_else(testnan
-                                                  , bitwise_xor(y, bitofsign(a0))), rec(a0));
+        return if_else(is_nez(a0), if_nan_else(testnan
+                                              , bitwise_xor(y, bitofsign(a0))), rec(a0));
       }
 
       // simultaneous cosa and sina function
-      static inline std::pair<A0, A0> sincosa(const A0& a0, const tag::fast&)
+      static inline std::pair<A0, A0> sincosa(const A0& a0, const tag::restricted&)
       {
         A0 x =  scale(a0);
         A0 z =  sqr(x);
@@ -179,7 +179,7 @@ namespace boost { namespace simd
 
       static inline A0 scale(const A0& a0)
       {
-        return if_allbits_else(is_greater(bs::abs(a0),
+        return if_nan_else(is_greater(bs::abs(a0),
                               trig_ranges<A0,unit_tag>::max_range()), a0)
           *trig_ranges<A0,unit_tag>::scale();
       }

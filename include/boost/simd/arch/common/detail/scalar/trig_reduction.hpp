@@ -60,7 +60,7 @@ namespace boost { namespace simd
     //
 
     // trigonometric reduction strategies in the [-pi/4, pi/4] range.
-    // these reductions are used in the accurate and fast
+    // these reductions are used in the regular and restricted
     // trigonometric functions with different policies
 
     template<class A0, class mode>

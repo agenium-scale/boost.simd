@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/scalar/cospi.hpp>
-#include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/restricted.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -48,7 +48,7 @@ STF_CASE_TPL (" cospi",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(cospi(bs::Zero<T>()), bs::One<r_t>(), 0.5);
 }
 
-STF_CASE_TPL (" cospi fast",  STF_IEEE_TYPES)
+STF_CASE_TPL (" cospi restricted",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -61,16 +61,16 @@ STF_CASE_TPL (" cospi fast",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(bs::fast_(cospi)(bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cospi)(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cospi)(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cospi)(bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cospi)(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cospi)(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(bs::fast_(cospi)(-bs::Quarter<T>()), bs::Sqrt_2o_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cospi)(bs::Half<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cospi)(bs::Mhalf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cospi)(bs::One<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cospi)(bs::Quarter<T>()), bs::Sqrt_2o_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cospi)(bs::Zero<T>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cospi)(-bs::Quarter<T>()), bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cospi)(bs::Half<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cospi)(bs::Mhalf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cospi)(bs::One<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cospi)(bs::Quarter<T>()), bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cospi)(bs::Zero<T>()), bs::One<r_t>(), 0.5);
 }
 
 STF_CASE_TPL (" cospi unsigned",  STF_UNSIGNED_INTEGRAL_TYPES)

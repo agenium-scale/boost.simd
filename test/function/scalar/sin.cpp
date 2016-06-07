@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/scalar/sin.hpp>
-#include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/restricted.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -50,7 +50,7 @@ STF_CASE_TPL (" sin",  STF_IEEE_TYPES)
   STF_EXPECT(bs::is_positive(sin(bs::Zero<T>())));
 }
 
-STF_CASE_TPL (" sin fast ",  STF_IEEE_TYPES)
+STF_CASE_TPL (" sin restricted ",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -59,17 +59,17 @@ STF_CASE_TPL (" sin fast ",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(bs::fast_(sin)(bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(sin)(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(sin)(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(sin)(bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(sin)(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(sin)(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(bs::fast_(sin)(-bs::Pio_2<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(sin)(-bs::Pio_4<T>()), -bs::Sqrt_2o_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(sin)(bs::Pio_2<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(sin)(bs::Pio_4<T>()), bs::Sqrt_2o_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(sin)(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
-  STF_EXPECT(bs::is_negative(bs::fast_(sin)(bs::Mzero<T>())));
-  STF_EXPECT(bs::is_positive(bs::fast_(sin)(bs::Zero<T>())));
+  STF_ULP_EQUAL(bs::restricted_(sin)(-bs::Pio_2<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(sin)(-bs::Pio_4<T>()), -bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(sin)(bs::Pio_2<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(sin)(bs::Pio_4<T>()), bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(sin)(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
+  STF_EXPECT(bs::is_negative(bs::restricted_(sin)(bs::Mzero<T>())));
+  STF_EXPECT(bs::is_positive(bs::restricted_(sin)(bs::Zero<T>())));
 }
 
 STF_CASE_TPL (" sin",  STF_IEEE_TYPES)

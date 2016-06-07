@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/scalar/cscd.hpp>
-#include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/restricted.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -47,7 +47,7 @@ STF_CASE_TPL (" cscd",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(cscd(T(90)), bs::One<r_t>(), 0.5);
 }
 
-STF_CASE_TPL (" cscd fast_",  STF_IEEE_TYPES)
+STF_CASE_TPL (" cscd restricted_",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -60,18 +60,18 @@ STF_CASE_TPL (" cscd fast_",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(bs::fast_(cscd)(-bs::Zero<T>()), bs::Minf<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cscd)(-T(180)), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cscd)(bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cscd)(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cscd)(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cscd)(bs::Zero<T>()), bs::Inf<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cscd)(T(180)), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cscd)(-bs::Zero<T>()), bs::Minf<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cscd)(-T(180)), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cscd)(bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cscd)(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cscd)(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cscd)(bs::Zero<T>()), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cscd)(T(180)), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(bs::fast_(cscd)(-T(45)), -bs::Sqrt_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cscd)(-T(90)), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cscd)(T(45)), bs::Sqrt_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cscd)(T(90)), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cscd)(-T(45)), -bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cscd)(-T(90)), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cscd)(T(45)), bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cscd)(T(90)), bs::Nan<r_t>(), 0.5);
 }
 
 STF_CASE_TPL (" cscd clipped_small_",  STF_IEEE_TYPES)
