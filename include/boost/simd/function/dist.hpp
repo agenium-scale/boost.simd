@@ -38,9 +38,13 @@ namespace boost { namespace simd
     @par Note
 
     The result may be negative for signed integers as @ref abs(@ref Valmin) is @ref Valmin.
-    To avoid the problem you can use the saturated version @ref dists.
+    To avoid the problem you can apply to dist the saturated_ @ref decorator.
 
-    @see  dists, ulpdist
+    @par Decorators
+
+     - saturated_ decorator garanties that saturated_(dist)(x, y)) will never be strictly less than 0.
+
+    @see  ulpdist, abs
 
   **/
   const boost::dispatch::functor<tag::dist_> dist = {};

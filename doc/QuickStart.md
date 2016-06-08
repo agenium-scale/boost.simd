@@ -7,7 +7,7 @@ Quick Start {#QuickStart}
 
 This is a quick start for **Boost.SIMD**. The purpose of this is to briefly introduce **Boost.SIMD** so that you can start coding immediately.
 
-@section how-to-install How to Install Boost.SIMD
+@section how-to-install How to Install **Boost.SIMD**
 
 @subsection dependencies Dependencies
 Boost 1.60 or later
@@ -29,7 +29,7 @@ The easiest way to use **Boost.SIMD** is to download the latest release from the
 This small code sample presents the basic building blocks of **Boost.SIMD**, which we explain below.
 @snippet helloworld.cpp hello
 
-@section compiling Compiling and Running a Program using Boost.SIMD
+@section compiling Compiling and Running a Program using **Boost.SIMD**
 In order to use **Boost.SIMD** on Linux, you must pass the **Boost.SIMD** include folder to the compiler and as well as the path of the boost directory. That's it!
 
 For example:

@@ -69,20 +69,20 @@ The structure of this documention (available in the menu to the left) is as
 follows:
 
   - @ref tutorials\n
-    Tutorial for writing Boost.SIMD code.
+    Tutorial for writing **Boost.SIMD** code.
 
   - @ref group-api\n
-    Public functions and type API of Boost.SIMD
+    Public functions and type API of **Boost.SIMD**
 
   - @ref group-concept\n
-    Concepts defined and used throughout Boost.SIMD.
+    Concepts defined and used throughout **Boost.SIMD**.
 
   - @ref group-config\n
-    Macros which are defined to control the configuration of Boost.SIMD code.
+    Macros which are defined to control the configuration of **Boost.SIMD** code.
 
   - @ref group-ext\n
     Documentation for extension points for library's components. This documentation is useful
-    for people wanting to extend Boost.SIMD to work with their own types.
+    for people wanting to extend **Boost.SIMD** to work with their own types.
 
   - @ref group-hierarchy\n
     Documentation for the predefined type hierarchy used by the library.
@@ -90,7 +90,7 @@ follows:
   - @ref group-detail\n
     Documentation of library implementation details. This section is useful
     for those wishing to understand the library internals and those wishing
-    to contribute to the development of Boost.SIMD.
+    to contribute to the development of **Boost.SIMD**.
 
 
 ----------------------------------------------------------------------------------------------------

@@ -43,6 +43,10 @@ namespace boost { namespace simd
        Peculiarly saturated_(@ref abs) and saturated_(@ref dist) ensure that the result will never be stricly
        negative (which is for instance the case of abs(Valmin<T>()) for T any any signed integral type).
 
+       toint is a rather common operation as it converts floating number to signed integers of the same bit size,
+       nevertheless it probably is its saturated version you have to use because it acts properly on large or not finite
+       values, this is why an alias for saturated_(toint) is provided as @ref ifix.
+
      - **Rounding operations**
        <center>
          | name        | name            | name        | name             |
@@ -106,14 +110,17 @@ namespace boost { namespace simd
 
      - **complex operations**
 
-       Boost.simd  does not provides complex number operations yet, but it will soon. So the following functors that
+       **Boost.SIMD**  does not provides complex number operations yet, but it will soon. So the following functors that
        have a meaning as a restriction to real number of complex functions, can be seen as a prequel:
 
       <center>
-        | name        | name            | name        | name             |
-        |:-----------:|:---------------:|:-----------:|:----------------:|
-        | @ref arg    | @ref conj       | @ref imag   | @ref real        |
+        | name        | name            | name        | name             | name             |
+        |:-----------:|:---------------:|:-----------:|:----------------:|:----------------:|
+        | @ref arg    | @ref conj       | @ref imag   | @ref real        | @ref sqr_abs     |
       </center>
+
+        For real entries conj and real are identity,  imag always 0, sqr_abs coincide wirt sqr
+        and arg results are always in the set \f$\{0, \pi,  Nan\}\f$
 
      - **Fused multiply-add operations**
 
@@ -140,7 +147,7 @@ namespace boost { namespace simd
       can be useful in searching extra-accuracy in other circumstances as double-double
       computations.
 
-      @ref correct_fma is never used internally by Boost.simd
+      @ref correct_fma is never used internally by **Boost.SIMD**
 
       - **Standard operations**
 
@@ -155,7 +162,7 @@ namespace boost { namespace simd
          | @ref fma   | @ref rem (%)    | @ref sqrt    |
        </center>
 
-       Boost.simd provides its own scalar and simd versions, but allows
+       **Boost.SIMD** provides its own scalar and simd versions, but allows
        the use of the @ref std "std_" @ref decorator to call the associated system
        library function if the user needs it.
 

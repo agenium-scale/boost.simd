@@ -26,7 +26,7 @@ Here is a simple program demonstrating some basic **Boost.SIMD** functionality.
 
 This small code sample presents the basic building blocks of **Boost.SIMD**, which we explain below.
 
-## The Boost.SIMD namespace
+## The **Boost.SIMD** namespace
 
 When using a **Boost.SIMD** type or function, it is necessary to use the boost::simd namespace. In order to simplify the code, you may wish to give it an alias:
 
@@ -183,7 +183,7 @@ Here is a full code, should you wish to compile it.
 @section tutorial-process Processing data the SIMD way
 
 ----------------------------------------------------------------------------------------------------
-This tutorial will present how data can be processed using Boost.SIMD by writing a naive dot product using Boost.SIMD.
+This tutorial will present how data can be processed using **Boost.SIMD** by writing a naive dot product using **Boost.SIMD**.
 
 A simple sequential, scalar dot product can be simply defined as:
 

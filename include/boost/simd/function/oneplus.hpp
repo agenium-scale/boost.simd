@@ -33,10 +33,15 @@ namespace boost { namespace simd
     The code is similar to:
 
     @code
-    T r =  x+One<T>()
+    T r =  x+One<T>();
     @endcode
 
-    @see inc, inc_s,  saturated_
+    @par Decorators
+
+     - saturated_ decorator that saturated_(oneplus)(x) will never be strictly less than x.
+       This has a visible effect only if T is an integral type and the input is @ref Valmax<T>()
+
+     @see inc
 
     @par Alias
 
