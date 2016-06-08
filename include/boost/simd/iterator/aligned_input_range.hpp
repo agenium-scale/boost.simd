@@ -1,39 +1,45 @@
-//==============================================================================
-//         Copyright 2003 - 2012   LASMEA UMR 6602 CNRS/Univ. Clermont II
-//         Copyright 2009 - 2013   LRI    UMR 8623 CNRS/Univ Paris Sud XI
-//         Copyright 2012 - 2013   MetaScale SAS
-//
-//          Distributed under the Boost Software License, Version 1.0.
-//                 See accompanying file LICENSE.txt or copy at
-//                     http://www.boost.org/LICENSE_1_0.txt
-//==============================================================================
+//==================================================================================================
+/*!
+  @file
+
+  @copyright 2016 NumScale SAS
+
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+
+**/
+//==================================================================================================
 #ifndef BOOST_SIMD_ITERATOR_ALIGNED_INPUT_RANGE_HPP_INCLUDED
 #define BOOST_SIMD_ITERATOR_ALIGNED_INPUT_RANGE_HPP_INCLUDED
 
-#include <boost/simd/iterator/aligned_input_iterator.hpp>
-#include <boost/align/is_aligned.hpp>
+#include <boost/simd/iterator/detail/aligned_input_iterator.hpp>
 #include <boost/range/iterator_range.hpp>
+#include <boost/align/is_aligned.hpp>
 #include <boost/assert.hpp>
 #include <iterator>
 
 namespace boost { namespace simd
 {
   /*!
-    @brief Adapter for aligned SIMD read-only range
+    @ingroup group-api
+    @brief Adapt a range of aligned data to be used as a SIMD input range
 
-    Convert an existing range specified by two aligned iterators into a SIMD aware
-    read-only iterator returning SIMD pack of optimal cardinal @c C.
+    Builds a Input Range that iterates over the original <tt>[begin, end[</tt> Range but
+    returns pack values.
 
-    @usage_output{memory/aligned_input_range.cpp,memory/aligned_input_range.out}
+    @pre @c std::distance(begin,end) is an exact multiple of @c N
+    @pre @c &(*begin) is aligned on @c pack<Iterator::value_type,N>::alignment
 
-    @tparam C Width of the SIMD register to use as iteration value.
-    @param begin A Range addressing a contiguous memory block
-    @param end
+    @tparam N Cardinal of the pack to be iterated. By default, @c N is equal to
+              the native cardinal of current architecture.
 
-    @return An instance of aligned_input_range
+    @param begin Starting iterator of the Range to adapt
+    @param end   End iterator of the Range to adapt
+
+    @return An Input Range returning SIMD pack o cardinal @c N
   **/
   template<std::size_t C, typename Iterator> inline
-  boost::iterator_range<aligned_input_iterator<Iterator, C> >
+  boost::iterator_range<detail::aligned_input_iterator<Iterator, C> >
   aligned_input_range( Iterator begin, Iterator end )
   {
     BOOST_ASSERT_MSG
@@ -41,73 +47,54 @@ namespace boost { namespace simd
     , "Range being adapted holds a non integral number of SIMD pack."
     );
 
-    return boost::make_iterator_range ( aligned_input_begin<C>(begin)
-                                      , aligned_input_end<C>(end)
+    return boost::make_iterator_range ( detail::aligned_input_begin<C>(begin)
+                                      , detail::aligned_input_end<C>(end)
                                       );
   }
 
-  /*!
-    @brief Adapter for aligned SIMD read-only range
-
-    Convert an existing range specified by two aligned iterators into a SIMD aware
-    read-only iterator returning SIMD pack of optimal cardinal for current
-    architecture.
-
-    @usage_output{memory/aligned_input_range.cpp,memory/aligned_input_range.out}
-
-    @param begin
-    @param end
-
-    @return An instance of aligned_input_range
-  **/
+  /// @overload
   template<typename Iterator> inline
-  boost::iterator_range< aligned_input_iterator<Iterator> >
+  boost::iterator_range< detail::aligned_input_iterator<Iterator> >
   aligned_input_range( Iterator begin, Iterator end )
   {
     BOOST_ASSERT_MSG
-    ( boost::alignment::is_aligned(std::distance(begin,end) , aligned_input_iterator<Iterator>::cardinal)
+    ( boost::alignment::is_aligned( std::distance(begin,end)
+                                  , detail::aligned_input_iterator<Iterator>::cardinal
+                                  )
     , "Range being adapted holds a non integral number of SIMD pack."
     );
 
-    return boost::make_iterator_range ( aligned_input_begin(begin)
-                                      , aligned_input_end(end)
+    return boost::make_iterator_range ( detail::aligned_input_begin(begin)
+                                      , detail::aligned_input_end(end)
                                       );
   }
 
   /*!
-    @brief Adapter for aligned SIMD read-only range
+    @ingroup group-api
+    @brief Adapt a range of aligned data to be used as a SIMD input range
 
-    Convert an existing range into a SIMD aware read-only iterator returning
-    SIMD pack of cardinal @c C.
+    Builds an Input Range that iterates over the original Range but returns pack values.
 
-    @usage_output{memory/aligned_input_range.cpp,memory/aligned_input_range.out}
+    @pre @c std::distance(begin,end) is an exact multiple of @c N
+    @pre @c &(*std::begin(r)) is aligned on @c pack<Range::value_type,N>::alignment
 
-    @tparam C Width of the SIMD register to use as iteration value.
-    @param r A Range addressing a contiguous memory block
+    @tparam N Cardinal of the pack to be iterated. By default, @c N is equal to
+              the native cardinal of current architecture.
 
-    @return An instance of aligned_input_range
+    @param r Input Range to adapt
+
+    @return An Input Range returning SIMD pack o cardinal @c N
   **/
   template<std::size_t C, typename Range> inline
-  boost::iterator_range<aligned_input_iterator<typename range_iterator<Range const>::type,C> >
+  boost::iterator_range<detail::aligned_input_iterator<typename range_iterator<Range const>::type,C>>
   aligned_input_range( Range const& r )
   {
     return aligned_input_range<C>( boost::begin(r), boost::end(r) );
   }
 
-  /*!
-    @brief Adapter for aligned SIMD read-only range
-
-    Convert an existing range into a SIMD aware read-only iterator returning
-    SIMD pack of optimal cardinal for current architecture.
-
-    @usage_output{memory/aligned_input_range.cpp,memory/aligned_input_range.out}
-
-    @param r A Range addressing a contiguous memory block
-
-    @return An instance of aligned_input_range
-  **/
+  /// @overload
   template<typename Range> inline
-  boost::iterator_range<aligned_input_iterator<typename range_iterator<Range const>::type> >
+  boost::iterator_range<detail::aligned_input_iterator<typename range_iterator<Range const>::type>>
   aligned_input_range( Range const& r )
   {
     return aligned_input_range( boost::begin(r), boost::end(r) );

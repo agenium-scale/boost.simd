@@ -8,18 +8,12 @@
 ################################################################################
 
 SET( SOURCES
-    aligned_input_iterator.cpp
     aligned_input_range.cpp
-    aligned_output_iterator.cpp
     aligned_output_range.cpp
-    direct_output_iterator.cpp
-    input_iterator.cpp
     input_range.cpp
-    output_iterator.cpp
     output_range.cpp
-    realigned_input_range.cpp
-    realigned_output_range.cpp
-#    shifted_iterator.cpp
-  )
+    segmented_input_range.cpp
+    segmented_output_range.cpp
+   )
 
 make_unit( "api.iterator" ${SOURCES})
