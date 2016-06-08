@@ -40,16 +40,20 @@ namespace boost { namespace simd
     - Be aware that for signed integers the absolute value of @ref Valmin is
     @ref Valmin (thus negative!). This is a side effect of the 2-complement
     representation of integers. To avoid this, you may use the
-    saturated_ functor or convert the input parameter to a larger type
+    saturated_ @ref decorator or convert the input parameter to a larger type
     before taking the absolute value.
 
-    - abs is a also a standard library function name and there possible exists
+    - abs is a also a standard library function name and there possibly exists
     a C macro version which may be called instead of the boost simd version.
     To avoid this you may prefix abs using boost::simd::abs notation.
 
     @par Decorators
 
-    std_ for floating entries result in a call to std::abs
+     - std_ @ref decorator for floating entries results in a call to std::abs
+     - saturated_ @ref decorator garanties that saturated_(abs)(x) will never be strictly less than 0.
+       In fact the only change if that for any signed type T saturated_(abs)(Valmin<T>()) will be
+       Valmax<T>()) which is already true for boost::simd::abs with floating types but not for integral
+       signed types.
 
     @see sqr_abs, sqr
 

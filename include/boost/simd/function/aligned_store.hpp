@@ -70,8 +70,6 @@ namespace boost { namespace simd
       *(ptr+offset) = x;
     @endcode
 
-    @usage{memory/aligned_store.cpp}
-
     @par Precondition
 
     If @c Type is a SIMD register type:

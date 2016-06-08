@@ -60,7 +60,7 @@ namespace boost
 
       Similarly, Boost.SIMD constants are accessible via the header files located in the
       @c boost/simd/constant folder. E.g, boost::simd::True requires the inclusion
-      of boost/simd/constant/true.hpp. All Boost.SIMD functions begin with a lower-case 
+      of boost/simd/constant/true.hpp. All Boost.SIMD functions begin with a lower-case
       letter and all Boost.SIMD constants begin with an upper-case letter.
 
       Function semantics are usually similar to the pre-existing ones, if any, with the
@@ -92,6 +92,7 @@ namespace boost
         @defgroup group-concept Concepts
         Concepts defined by the library
       **/
+
     }
 
     /// Boost.SIMD extension points namespace

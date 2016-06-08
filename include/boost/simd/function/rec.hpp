@@ -33,17 +33,16 @@ namespace boost { namespace simd
     T r = T(1)/x;
     @endcode
 
-    @par Note:
-    Speed can be sometimes gained using rec(x, fast_) but fast means here
-    that the computation is possibly done through some
-    low precision intrinsic. The result can be not fully accurate.
+    @par Decorators
+
+     - fast_ @ref decorator can be applied to rec as many systems provide fast low precision
+       intrinsic for inverse computation
 
   **/
   const boost::dispatch::functor<tag::rec_> rec = {};
 } }
 #endif
 
-#include <boost/simd/function/scalar/rec.hpp>
 #include <boost/simd/function/scalar/rec.hpp>
 #include <boost/simd/function/simd/rec.hpp>
 
