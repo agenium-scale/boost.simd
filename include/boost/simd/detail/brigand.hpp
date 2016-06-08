@@ -3,8 +3,8 @@
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 =================================================================================================**/
-#ifndef BOOST_SIMD_DETAIL_BRIGAND_HPP_INCLUDED
-#define BOOST_SIMD_DETAIL_BRIGAND_HPP_INCLUDED
+#ifndef BRIGAND_HPP_INCLUDED
+#define BRIGAND_HPP_INCLUDED
 #include <type_traits>
 namespace brigand
 {
@@ -1785,14 +1785,14 @@ namespace brigand
     struct pop_front_element<L, list<Ts...>>
     {
       template<class... Us>
-      static L<Us...> impl(Ts..., Us*...);
+      static L<Us...> impl(Ts..., type_<Us>*...);
     };
     template<template<class...> class L, class... Ts, std::size_t N>
     struct pop_front_impl<L<Ts...>, N>
     {
       using type = decltype(pop_front_element<L, filled_list<
         void const *, N
-      >>::impl(static_cast<Ts*>(nullptr)...));
+      >>::impl(static_cast<type_<Ts>*>(nullptr)...));
     };
   }
   template <class L, class N = std::integral_constant<std::size_t, 1>>

@@ -6,6 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
+
 #ifndef BOOST_SIMD_FUNCTION_SIMD_IS_NOT_EQUAL_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_IS_NOT_EQUAL_HPP_INCLUDED
 
@@ -13,17 +14,17 @@
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/simd/function/is_not_equal.hpp>
 
-#if defined(BOOST_HW_SIMD_X86)
-#  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_SSE_VERSION
+#if defined(BOOST_HW_SIMD_X86_OR_AMD_AVAILABLE)
+#  if BOOST_HW_SIMD_X86_OR_AMD >= BOOST_HW_SIMD_X86_SSE_VERSION
 #    include <boost/simd/arch/x86/sse1/simd/function/is_not_equal.hpp>
 #  endif
-#  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_SSE2_VERSION
+#  if BOOST_HW_SIMD_X86_OR_AMD >= BOOST_HW_SIMD_X86_SSE2_VERSION
 #    include <boost/simd/arch/x86/sse2/simd/function/is_not_equal.hpp>
 #  endif
-#  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_AVX_VERSION
+#  if BOOST_HW_SIMD_X86_OR_AMD >= BOOST_HW_SIMD_X86_AVX_VERSION
 #    include <boost/simd/arch/x86/avx/simd/function/is_not_equal.hpp>
 #  endif
-#  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_AMD_XOP_VERSION
+#  if BOOST_HW_SIMD_X86_OR_AMD >= BOOST_HW_SIMD_X86_AMD_XOP_VERSION
 #    include <boost/simd/arch/x86/xop/simd/function/is_not_equal.hpp>
 #  endif
 #endif
