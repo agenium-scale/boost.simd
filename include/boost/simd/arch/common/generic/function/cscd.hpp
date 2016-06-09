@@ -53,13 +53,13 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( cscd_
                           , (typename A0)
                           , bd::cpu_
-                          , bs::fast_tag
+                          , bs::restricted_tag
                           , bd::generic_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const restricted_tag &,  A0 const& a0) const BOOST_NOEXCEPT
     {
-      return rec(fast_(sind)(a0));
+      return rec(restricted_(sind)(a0));
     }
   };
 } } }

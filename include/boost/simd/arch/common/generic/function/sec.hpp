@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_SEC_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_SEC_HPP_INCLUDED
 
-#include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/restricted.hpp>
 #include <boost/simd/function/rec.hpp>
 #include <boost/simd/function/cos.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
@@ -48,13 +48,13 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( sec_
                           , (typename A0)
                           , bd::cpu_
-                          ,  bs::fast_tag
+                          , bs::restricted_tag
                           , bd::generic_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const restricted_tag &,  A0 const& a0) const BOOST_NOEXCEPT
     {
-      return fast_(rec)(fast_(cos)(a0));
+      return rec(restricted_(cos)(a0));
     }
   };
 } } }

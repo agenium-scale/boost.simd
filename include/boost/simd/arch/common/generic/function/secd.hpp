@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_SECD_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_SECD_HPP_INCLUDED
 
-#include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/restricted.hpp>
 #include <boost/simd/constant/ratio.hpp>
 #include <boost/simd/function/cosd.hpp>
 #include <boost/simd/function/if_nan_else.hpp>
@@ -52,13 +52,13 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( secd_
                           , (typename A0)
                           , bd::cpu_
-                          ,  bs::fast_tag
+                          , bs::restricted_tag
                           , bd::generic_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const restricted_tag &,  A0 const& a0) const BOOST_NOEXCEPT
     {
-      return fast_(rec)(fast_(cosd)(a0));
+      return rec(restricted_(cosd)(a0));
     }
   };
 } } }

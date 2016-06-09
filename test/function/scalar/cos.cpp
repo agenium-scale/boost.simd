@@ -10,7 +10,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/cos.hpp>
 #include <boost/simd/function/std.hpp>
-#include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/restricted.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -51,7 +51,7 @@ STF_CASE_TPL (" cos",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(cos(bs::Zero<T>()), bs::One<r_t>(), 0.5);
 }
 
-STF_CASE_TPL (" cos fast_",  STF_IEEE_TYPES)
+STF_CASE_TPL (" cos restricted_",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -64,17 +64,17 @@ STF_CASE_TPL (" cos fast_",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(bs::fast_(cos)(bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cos)(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cos)(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cos)(bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cos)(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cos)(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(bs::fast_(cos)(-bs::Pi<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cos)(-bs::Pio_2<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cos)(-bs::Pio_4<T>()), bs::Sqrt_2o_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cos)(bs::Pi<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cos)(bs::Pio_2<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cos)(bs::Pio_4<T>()), bs::Sqrt_2o_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cos)(bs::Zero<T>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cos)(-bs::Pi<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cos)(-bs::Pio_2<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cos)(-bs::Pio_4<T>()), bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cos)(bs::Pi<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cos)(bs::Pio_2<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cos)(bs::Pio_4<T>()), bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cos)(bs::Zero<T>()), bs::One<r_t>(), 0.5);
 }
 
 STF_CASE_TPL (" cos clipped_small_",  STF_IEEE_TYPES)

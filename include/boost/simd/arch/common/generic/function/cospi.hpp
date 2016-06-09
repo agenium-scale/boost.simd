@@ -13,6 +13,7 @@
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_COSPI_HPP_INCLUDED
 
 #include <boost/simd/arch/common/detail/generic/trigo.hpp>
+#include <boost/simd/function/restricted.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/function/is_odd.hpp>
@@ -39,11 +40,11 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( cospi_
                           , (typename A0)
                           , bd::cpu_
-                          , bs::fast_tag
+                          , bs::restricted_tag
                           , bd::generic_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const restricted_tag &,  A0 const& a0) const BOOST_NOEXCEPT
     {
       return detail::trig_base<A0,tag::pi_tag,is_not_scalar_t<A0>,tag::clipped_pio4_tag>::cosa(a0);
     }
