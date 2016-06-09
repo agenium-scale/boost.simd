@@ -45,6 +45,16 @@ STF_CASE_TPL("Check divides on pack" , STF_NUMERIC_TYPES)
   test<T, N*2>($);
 }
 
+STF_CASE_TPL("Check saturaetd divides on pack", STF_NUMERIC_TYPES)
+{
+  namespace bs = boost::simd;
+  using p_t = bs::pack<T>;
+  static const std::size_t N = bs::cardinal_of<p_t>::value;
+  test<T, N>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
+}
+
 template <typename T, std::size_t N, typename Env>
 void tests(Env& $)
 {
@@ -67,12 +77,12 @@ void tests(Env& $)
   STF_ULP_EQUAL(bs::saturated_(bs::divides)(aa1, aa2), bb, 0.5);
 }
 
-STF_CASE_TPL("Check saturaetd divides on pack" , STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check saturaetd divides on pack", STF_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
-  test<T, N>($);
-  test<T, N/2>($);
-  test<T, N*2>($);
+  tests<T, N>($);
+  tests<T, N/2>($);
+  tests<T, N*2>($);
 }
