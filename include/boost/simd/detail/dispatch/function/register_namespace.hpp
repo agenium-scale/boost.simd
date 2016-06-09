@@ -66,8 +66,6 @@ namespace boost { namespace dispatch
   {
     template<typename Discriminant,typename Tag> struct generic_dispatcher
     {
-      // While ICC supports decltype-SFINAE, it causes infinite compilation times in some cases
-      #if defined(BOOST_NO_SFINAE_EXPR)
       template<typename Sig> struct result;
       template<typename This, typename... Args>
       struct result<This(Args...)>
@@ -93,21 +91,6 @@ namespace boost { namespace dispatch
                           )
                           ( std::forward<Args>(args)... );
       }
-      #else
-      template<typename... Args>
-      BOOST_FORCEINLINE auto operator()(Args&&... args) const
-      BOOST_NOEXCEPT_IF ( BOOST_NOEXCEPT_EXPR(
-                          dispatching ( Discriminant{}, Tag{}, default_site<Tag>{}
-                                      , ::boost::dispatch::hierarchy_of_t<Args&&>()...
-                                      )( std::forward<Args>(args)... )
-                        ) )
-      BOOST_AUTO_DECLTYPE_BODY_SFINAE
-      (
-        dispatching ( Discriminant{}, Tag{}, default_site<Tag>{}
-                    , ::boost::dispatch::hierarchy_of_t<Args&&>()...
-                    )( std::forward<Args>(args)... )
-      )
-      #endif
     };
   }
 

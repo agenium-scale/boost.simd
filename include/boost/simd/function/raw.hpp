@@ -18,9 +18,9 @@
 
 namespace boost { namespace simd
 {
-  struct raw_tag : boost::dispatch::unspecified_<raw_tag>
+  struct raw_tag : decorator_<raw_tag>
   {
-    using parent = boost::dispatch::unspecified_<raw_tag>;
+    using parent = decorator_<raw_tag>;
   };
 
   const detail::decorator<raw_tag> raw_ = {};

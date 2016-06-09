@@ -15,7 +15,6 @@
 #include <boost/simd/arch/common/detail/scalar/logarithm.hpp>
 #include <boost/simd/arch/common/detail/simd/logarithm.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
-#include <boost/simd/function/assert.hpp>
 #include <boost/simd/function/is_not_nan.hpp>
 #include <boost/simd/function/is_positive.hpp>
 #include <boost/simd/meta/is_not_scalar.hpp>
@@ -37,23 +36,6 @@ namespace boost { namespace simd { namespace ext
       return detail::logarithm<A0,is_not_scalar_t<A0>>::log10(a0);
     }
   };
-
-  BOOST_DISPATCH_OVERLOAD ( log10_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bd::generic_< bd::arithmetic_<A0> >
-                          , boost::simd::assert_tag
-                          )
-  {
-    BOOST_FORCEINLINE A0 operator() (A0 const & a0
-                                    , assert_tag const& ) const BOOST_NOEXCEPT
-    {
-      BOOST_ASSERT_MSG(bs::assert_all(is_positive(a0)&&is_not_nan(a0)),
-                       "log10(x, assert_) cannot produce complex result.");
-      return bs::log10(a0);
-    }
-  };
 } } }
-
 
 #endif

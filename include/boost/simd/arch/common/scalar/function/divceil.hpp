@@ -86,7 +86,7 @@ namespace boost { namespace simd { namespace ext
         return q;
       }
       else
-        return (a0) ? Valmax<A0>() : Zero<A0>();
+        return a0 ? Valmax<A0>() : Zero<A0>();
     }
   };
 

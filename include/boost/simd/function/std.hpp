@@ -18,46 +18,35 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-decorator
+    @ingroup group-decorator
 
-    call the corresponding standard libc++ function.
+    Decorate a function to use the standard compliant implementation.
 
     @par Semantic
 
-    For scalar parameters,
+    For a function object @c func,
 
     @code
-    T r = std_(func)(< func parameters >);
+    auto std_func = std_(func);
     @endcode
 
-    is equivalent to:
-
-    @code
-    T r = std::func(< func parameters >);
-    @endcode
-
-    @par Note:
+    generates a function object that behaves strictly as the standard compliant version of @c func.
+    This implies, for example:
 
     - for simd vector parameter a map of the standard function is done
       for each vector element: this is never vectorized.
 
-
-    - std_ is given to be able to shortly compare boost.simd functors
-    and stdlibc++ equivalent behaviours.
-
-    @see  fast_,  raw_
-
+    - for scalar parameters, the std function is directly call.
   **/
-  template<typename T> auto std_(T const& x) {}
-
+  const detail::decorator<std_tag> std_ = {};
 } }
 #endif
 
 namespace boost { namespace simd
 {
-  struct std_tag : boost::dispatch::unspecified_<std_tag>
+  struct std_tag : decorator_<std_tag>
   {
-    using parent = boost::dispatch::unspecified_<std_tag>;
+    using parent = decorator_<std_tag>;
   };
 
   const detail::decorator<std_tag> std_ = {};

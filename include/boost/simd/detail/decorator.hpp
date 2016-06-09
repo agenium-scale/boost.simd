@@ -15,31 +15,40 @@
 #include <boost/simd/detail/dispatch/function/functor.hpp>
 #include <boost/config.hpp>
 
-namespace boost { namespace simd { namespace detail
+namespace boost { namespace simd
 {
-  template<typename Tag, typename Site, typename Decorator>
-  struct decorated_functor : private dispatch::functor<Tag,Site>
+  // decorator function hierarchy - simple specialization point
+  template<typename Decorator> struct decorator_ : boost::dispatch::unspecified_<Decorator>
   {
-    using parent = dispatch::functor<Tag,Site>;
-
-    template<typename... Args> BOOST_FORCEINLINE
-    auto operator()(Args&&... args) const
-        -> decltype(std::declval<parent const>()(Decorator(), std::forward<Args>(args)...) )
-    {
-      return static_cast<parent const&>(*this)( Decorator(), std::forward<Args>(args)... );
-    }
+    using parent = boost::dispatch::unspecified_<Decorator>;
   };
 
-  template<typename Flag>
-  struct decorator
+  namespace detail
   {
-    template<typename Function, typename Site>
-    detail::decorated_functor<Function,Site,Flag>
-    operator()(dispatch::functor<Function,Site> const&) const
+    template<typename Tag, typename Site, typename Decorator>
+    struct decorated_functor : private dispatch::functor<Tag,Site>
     {
-      return {};
-    }
-  };
-} } }
+      using parent = dispatch::functor<Tag,Site>;
+
+      template<typename... Args> BOOST_FORCEINLINE
+      auto operator()(Args&&... args) const
+          -> decltype(std::declval<parent const>()(Decorator(), std::forward<Args>(args)...) )
+      {
+        return static_cast<parent const&>(*this)( Decorator(), std::forward<Args>(args)... );
+      }
+    };
+
+    template<typename Flag>
+    struct decorator
+    {
+      template<typename Function, typename Site>
+      detail::decorated_functor<Function,Site,Flag>
+      operator()(dispatch::functor<Function,Site> const&) const
+      {
+        return {};
+      }
+    };
+  }
+} }
 
 #endif
