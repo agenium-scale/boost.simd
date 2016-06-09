@@ -10,9 +10,8 @@
 #define BOOST_SIMD_ARCH_PPC_VMX_SIMD_FUNCTION_ALL_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/meta/as_logical.hpp>
-#include <boost/simd/constant/true.hpp>
 #include <boost/simd/function/simd/is_nez.hpp>
+#include <boost/simd/constant/true.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -25,8 +24,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_< bd::arithmetic_<A0>, bs::vmx_>
                           )
   {
-    using result =  bs::as_logical_t<typename A0::value_type>;
-    BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE bool operator()( const A0& a0) const BOOST_NOEXCEPT
     {
       return bs::all( is_nez(a0) );
     }
@@ -38,10 +36,9 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_< logical_<A0>, bs::vmx_>
                           )
   {
-    using result = typename A0::value_type;
-    BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE bool operator()( const A0& a0) const BOOST_NOEXCEPT
     {
-      return result( vec_all_eq( a0.storage(), True<A0>().storage() ) );
+      return vec_all_eq( a0.storage(), True<A0>().storage() );
     }
   };
 } } }

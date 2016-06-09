@@ -21,7 +21,7 @@ namespace boost { namespace simd
 {
   namespace tag
   {
-    BOOST_DISPATCH_MAKE_TAG(ext, is_included_, boost::dispatch::elementwise_<is_included_>);
+    BOOST_DISPATCH_MAKE_TAG(ext, is_included_, boost::dispatch::abstract_<is_included_>);
   }
 
   namespace ext

@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +14,7 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-
- /*!
-
+  /*!
     @ingroup group-reduction
     Function object implementing compare_less capabilities
 
@@ -31,24 +28,21 @@ namespace boost { namespace simd
     For every parameters of type T0:
 
     @code
-    as_logical_t<scalar_of_t<T0>> r = compare_less(x,y);
+    bool r = compare_less(x,y);
     @endcode
 
     is similar to:
 
     @code
-     as_logical_t<scalar_of_t<T0>> r = False;
-      for(std::size_t i=0;i<cardinal_of<A0>;++i)
-      {
-        if (x[i] <  y[i])  {r =  True; break;}
-        if (y[i] <  x[i])  {r = False; break;}
-      }
+    bool r = false;
+    for(std::size_t i=0;i<cardinal_of<A0>;++i)
+    {
+      if (x[i] <  y[i])  {r =  true; break;}
+      if (y[i] <  x[i])  {r = false; break;}
+    }
     @endcode
 
     @see is_less
-    @par Alias:
-    @c compare_lt
-
   **/
   const boost::dispatch::functor<tag::compare_less_> compare_less = {};
 } }

@@ -15,9 +15,7 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-
- /*!
-
+  /*!
     @ingroup group-reduction
     Function object implementing compare_greater_equal capabilities
 
@@ -31,20 +29,16 @@ namespace boost { namespace simd
     For every parameters of type T0:
 
     @code
-    as_logical_t<scalar_of_t<T0>> r = compare_greater_equal(x,y);
+    bool r = compare_greater_equal(x,y);
     @endcode
 
     is similar to:
 
     @code
-      as_logical_t<scalar_of_t<T0>> r = !compare_less(y, x)
+    bool r = !compare_less(y, x)
     @endcode
 
-    @par Alias:
-    @c compare_ge
-
     @see is_greater_equal
-
   **/
   const boost::dispatch::functor<tag::compare_greater_equal_> compare_greater_equal = {};
 } }

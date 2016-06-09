@@ -15,9 +15,7 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-
  /*!
-
     @ingroup group-reduction
     Function object implementing none capabilities
 
@@ -28,13 +26,13 @@ namespace boost { namespace simd
     For every parameter of type T
 
     @code
-    as_logical_t<scalar_of_t<T>> r = none(x);
+    bool r = none(x);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<scalar_of_t<T>> r = !any(x);
+    bool r = !any(x);
     @endcode
 
   **/
