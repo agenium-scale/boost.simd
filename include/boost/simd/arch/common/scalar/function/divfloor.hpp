@@ -19,7 +19,7 @@
 #include <boost/simd/function/scalar/divides.hpp>
 #include <boost/simd/function/scalar/floor.hpp>
 #include <boost/simd/function/scalar/iceil.hpp>
-#include <boost/simd/function/scalar/minusone.hpp>
+#include <boost/simd/function/scalar/dec.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
@@ -42,7 +42,7 @@ namespace boost { namespace simd { namespace ext
       {
         A0 q = saturated_(divides)(a0, a1);
         A0 r = a0-q*a1;
-        if ((r != Zero<A0>())&&((a0^a1) <= 0)) return saturated_(minusone)(q);
+        if ((r != Zero<A0>())&&((a0^a1) <= 0)) return saturated_(dec)(q);
         return q;
       }
       else

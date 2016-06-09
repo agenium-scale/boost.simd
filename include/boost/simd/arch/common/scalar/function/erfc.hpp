@@ -21,7 +21,7 @@
 #include <boost/simd/function/scalar/abs.hpp>
 #include <boost/simd/function/scalar/exp.hpp>
 #include <boost/simd/function/scalar/oneminus.hpp>
-#include <boost/simd/function/scalar/oneplus.hpp>
+#include <boost/simd/function/scalar/inc.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
 #include <boost/simd/function/scalar/sqrt.hpp>
 #include <boost/simd/function/scalar/rec.hpp>
@@ -48,7 +48,7 @@ namespace boost { namespace simd { namespace ext
     {
       A0 x =  bs::abs(a0);
       A0 r1 = Zero<A0>();
-      A0 z =  x/oneplus(x);
+      A0 z =  x/inc(x);
       if (x < Ratio<A0, 2, 3>())
       {
         r1 = detail::erf_kernel<A0>::erfc3(z);

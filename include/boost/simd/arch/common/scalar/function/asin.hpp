@@ -14,8 +14,8 @@
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/detail/enforce_precision.hpp>
 #include <boost/simd/function/scalar/log.hpp>
-#include <boost/simd/function/scalar/minusone.hpp>
-#include <boost/simd/function/scalar/oneplus.hpp>
+#include <boost/simd/function/scalar/dec.hpp>
+#include <boost/simd/function/scalar/inc.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>

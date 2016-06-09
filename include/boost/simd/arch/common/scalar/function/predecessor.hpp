@@ -17,7 +17,7 @@
 #include <boost/simd/function/scalar/bitinteger.hpp>
 #include <boost/simd/function/scalar/is_gez.hpp>
 #include <boost/simd/function/scalar/is_nan.hpp>
-#include <boost/simd/function/scalar/minusone.hpp>
+#include <boost/simd/function/scalar/dec.hpp>
 #include <boost/simd/function/scalar/minus.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/assert.hpp>
@@ -49,7 +49,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
-      return saturated_(minusone)(a0);
+      return saturated_(dec)(a0);
     }
   };
 
@@ -78,7 +78,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       if (is_nan(a0)) return a0;
-      return bitfloating(saturated_(minusone)(bitinteger(a0)));
+      return bitfloating(saturated_(dec)(bitinteger(a0)));
     }
   };
 } } }

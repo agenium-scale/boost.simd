@@ -24,7 +24,7 @@
 #include <boost/simd/function/scalar/is_ltz.hpp>
 #include <boost/simd/function/scalar/negif.hpp>
 #include <boost/simd/function/scalar/oneminus.hpp>
-#include <boost/simd/function/scalar/oneplus.hpp>
+#include <boost/simd/function/scalar/inc.hpp>
 #include <boost/simd/function/scalar/sign.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
 #include <boost/simd/function/scalar/sqrt.hpp>
@@ -100,7 +100,7 @@ namespace boost { namespace simd { namespace ext
       }
       else
       {
-        A0 z = x/oneplus(x)-Ratio<A0, 2, 5>();
+        A0 z = x/inc(x)-Ratio<A0, 2, 5>();
         A0 r2 =   oneminus(exp(-sqr(x))*detail::erf_kernel<A0>::erfc2(z));
         if (is_ltz(a0)) r2 = -r2;
         return r2;

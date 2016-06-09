@@ -16,7 +16,7 @@
 #include <boost/simd/function/fma.hpp>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/divides.hpp>
-#include <boost/simd/function/oneplus.hpp>
+#include <boost/simd/function/inc.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd
@@ -49,7 +49,7 @@ namespace boost { namespace simd
       // computes sinhc for abs(a0) < 1 and x2 =  sqr(a0) for doubles
       static  BOOST_FORCEINLINE A0 compute(const A0& x2) BOOST_NOEXCEPT
       {
-        return oneplus( x2*horn<A0,
+        return inc( x2*horn<A0,
                         0xc115782bdbf6ab05ull, //  -3.51754964808151394800E5
                         0xc0c694b8c71d6182ull, //  -1.15614435765005216044E4,
                         0xc064773a398ff4feull, //  -1.63725857525983828727E2,

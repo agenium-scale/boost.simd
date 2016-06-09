@@ -32,7 +32,7 @@
 #include <boost/simd/function/simd/fnms.hpp>
 #include <boost/simd/function/simd/inc.hpp>
 #include <boost/simd/function/simd/oneminus.hpp>
-#include <boost/simd/function/simd/oneplus.hpp>
+#include <boost/simd/function/simd/inc.hpp>
 #include <boost/simd/function/simd/round2even.hpp>
 #include <boost/simd/function/simd/sqr.hpp>
 #include <boost/simd/logical.hpp>
@@ -163,7 +163,7 @@ namespace boost { namespace simd
                                                        0x4093e05eefd67782ull,
                                                        0x40a03f37650df6e2ull)
                                                      )> (xx)-px);
-        return oneplus(x2+x2);
+        return inc(x2+x2);
       }
 
       static BOOST_FORCEINLINE A0 finalize(A0, A0 c, A0,  A0 ) BOOST_NOEXCEPT

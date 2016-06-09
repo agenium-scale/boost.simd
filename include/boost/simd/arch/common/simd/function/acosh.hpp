@@ -17,7 +17,7 @@
 #include <boost/simd/function/simd/if_else.hpp>
 #include <boost/simd/function/simd/is_greater.hpp>
 #include <boost/simd/function/simd/log1p.hpp>
-#include <boost/simd/function/simd/minusone.hpp>
+#include <boost/simd/function/simd/dec.hpp>
 #include <boost/simd/function/simd/plus.hpp>
 #include <boost/simd/function/simd/if_plus.hpp>
 #include <boost/simd/function/simd/sqr.hpp>
@@ -35,7 +35,7 @@ namespace boost { namespace simd { namespace ext
    {
       BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
-        A0 t = minusone(a0);
+        A0 t = dec(a0);
         auto test = is_greater(t,Oneotwoeps<A0>());
         A0 z = if_else(test, a0, t+sqrt(t+t+sqr(t)));
         return if_plus(test, log1p(z), Log_2<A0>());

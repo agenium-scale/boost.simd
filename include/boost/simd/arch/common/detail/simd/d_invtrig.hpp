@@ -32,8 +32,8 @@
 #include <boost/simd/function/simd/if_nan_else.hpp>
 #include <boost/simd/function/simd/is_eqz.hpp>
 #include <boost/simd/function/simd/is_inf.hpp>
-#include <boost/simd/function/simd/minusone.hpp>
-#include <boost/simd/function/simd/oneplus.hpp>
+#include <boost/simd/function/simd/dec.hpp>
+#include <boost/simd/function/simd/inc.hpp>
 #include <boost/simd/function/simd/rec.hpp>
 #include <boost/simd/function/simd/sqr.hpp>
 #include <boost/simd/function/simd/sqrt.hpp>
@@ -125,7 +125,7 @@ namespace boost { namespace simd
         A0 yy = bs::if_zero_else(flag1, bs::Pio_2<A0>());
         yy = bs::if_else(flag2, bs::Pio_4<A0>(), yy);
         A0 xx = bs::if_else(flag1, x, -bs::rec(x));
-        xx = bs::if_else(flag2, bs::minusone(x)/bs::oneplus(x),xx);
+        xx = bs::if_else(flag2, bs::dec(x)/bs::inc(x),xx);
         A0 z = bs::sqr(xx);
         z *= horn<A0,
           0xc0503669fd28ec8ell,

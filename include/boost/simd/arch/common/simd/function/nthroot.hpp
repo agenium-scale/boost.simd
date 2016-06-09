@@ -34,7 +34,7 @@
 #include <boost/simd/function/simd/logical_andnot.hpp>
 #include <boost/simd/function/simd/logical_or.hpp>
 #include <boost/simd/function/simd/minus.hpp>
-#include <boost/simd/function/simd/minusone.hpp>
+#include <boost/simd/function/simd/dec.hpp>
 #include <boost/simd/function/simd/multiplies.hpp>
 #include <boost/simd/function/simd/pow.hpp>
 #include <boost/simd/function/simd/rec.hpp>
@@ -65,7 +65,7 @@ namespace boost { namespace simd { namespace ext
       A0 a11 = bs::tofloat(a1-bs::if_else_zero(nul_a1, Mone<A1>()));
       y = bs::if_plus( bs::logical_or(bs::is_nez(y), nul_a1)
                      , y
-                     , -(bs::pow(y, aa1) - x)/(aa1* bs::pow(y, bs::minusone(a11)))
+                     , -(bs::pow(y, aa1) - x)/(aa1* bs::pow(y, bs::dec(a11)))
                      );
       // Correct numerical errors (since, e.g., 64^(1/3) is not exactly 4)
       // by one iteration of Newton's method

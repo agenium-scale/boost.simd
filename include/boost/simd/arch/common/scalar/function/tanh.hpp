@@ -22,7 +22,7 @@
 #include <boost/simd/function/scalar/bitwise_xor.hpp>
 #include <boost/simd/function/scalar/exp.hpp>
 #include <boost/simd/function/scalar/fma.hpp>
-#include <boost/simd/function/scalar/oneplus.hpp>
+#include <boost/simd/function/scalar/inc.hpp>
 #include <boost/simd/function/scalar/rec.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
@@ -54,7 +54,7 @@ namespace boost { namespace simd { namespace ext
       }
       else
       {
-       A0 r = fma(Mtwo<A0>(), rec(oneplus(exp(x+x))), One<A0>());
+       A0 r = fma(Mtwo<A0>(), rec(inc(exp(x+x))), One<A0>());
        return bitwise_xor(r, bitofsign(a0));
       }
     }

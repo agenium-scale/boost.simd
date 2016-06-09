@@ -203,8 +203,6 @@ set(SOURCES
     minnum.cpp
     minnummag.cpp
     minus.cpp
-    minusone.cpp
-    minusone_s.cpp
     minus_s.cpp
     mod.cpp
     modf.cpp
@@ -221,8 +219,6 @@ set(SOURCES
     nthroot.cpp
     oneminus.cpp
     oneminus_s.cpp
-    oneplus.cpp
-    oneplus_s.cpp
     plus.cpp
     plus_s.cpp
     posmax.cpp

@@ -26,7 +26,7 @@
 #include <boost/simd/function/simd/if_else.hpp>
 #include <boost/simd/function/simd/nbtrue.hpp>
 #include <boost/simd/function/simd/is_less.hpp>
-#include <boost/simd/function/simd/minusone.hpp>
+#include <boost/simd/function/simd/dec.hpp>
 #include <boost/simd/function/simd/plus.hpp>
 #include <boost/simd/function/simd/rec.hpp>
 #include <boost/simd/function/simd/sqr.hpp>
@@ -59,7 +59,7 @@ namespace boost { namespace simd { namespace ext
           z = detail::tanh_kernel<A0>::coth(x, sqr(x));
           if(nb >= A0::static_size) return  bitwise_xor(z, bts);
         }
-        A0 r = fma(Two<A0>(), rec(minusone(exp(x+x))), One<A0>());
+        A0 r = fma(Two<A0>(), rec(dec(exp(x+x))), One<A0>());
         return bitwise_xor(if_else(test0, z, r), bts);
       }
    };

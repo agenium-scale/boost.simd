@@ -30,8 +30,8 @@
 #include <boost/simd/function/scalar/fma.hpp>
 #include <boost/simd/function/scalar/is_eqz.hpp>
 #include <boost/simd/function/scalar/is_inf.hpp>
-#include <boost/simd/function/scalar/minusone.hpp>
-#include <boost/simd/function/scalar/oneplus.hpp>
+#include <boost/simd/function/scalar/dec.hpp>
+#include <boost/simd/function/scalar/inc.hpp>
 #include <boost/simd/function/scalar/rec.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
 #include <boost/simd/function/scalar/sqrt.hpp>
@@ -137,7 +137,7 @@ namespace boost { namespace simd
         {
           y = Pio_4<A0>();
           flag = Half<A0>();
-          x = minusone(x)/oneplus(x);
+          x = dec(x)/inc(x);
         }
         A0 z = sqr(x);
         z = z*horn<A0,

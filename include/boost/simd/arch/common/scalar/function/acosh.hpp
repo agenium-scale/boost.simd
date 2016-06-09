@@ -16,7 +16,7 @@
 #include <boost/simd/constant/oneotwoeps.hpp>
 #include <boost/simd/function/scalar/log.hpp>
 #include <boost/simd/function/scalar/log1p.hpp>
-#include <boost/simd/function/scalar/minusone.hpp>
+#include <boost/simd/function/scalar/dec.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
 #include <boost/simd/function/scalar/sqrt.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
@@ -34,7 +34,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
     {
-      A0 t = minusone(a0);
+      A0 t = dec(a0);
       if(BOOST_LIKELY(t <= Oneotwoeps<A0>()))
         return log1p(t+bs::sqrt(t+t+sqr(t)));
       else

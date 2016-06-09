@@ -18,7 +18,7 @@
 #include <boost/simd/function/simd/is_less.hpp>
 #include <boost/simd/function/simd/tofloat.hpp>
 #include <boost/simd/function/simd/if_plus.hpp>
-#include <boost/simd/function/simd/minusone.hpp>
+#include <boost/simd/function/simd/dec.hpp>
 #include <boost/simd/function/simd/sqr.hpp>
 #include <boost/simd/function/simd/multiplies.hpp>
 
@@ -58,7 +58,7 @@ namespace boost { namespace simd { namespace detail
       std::tie(x, e)= fast_(frexp)(a0);
       auto xltsqrthf = (x < Sqrt_2o_2<A0>());
       fe = if_plus(xltsqrthf, tofloat(e), Mone<A0>());
-      x =  minusone(if_plus(xltsqrthf, x, x));
+      x =  dec(if_plus(xltsqrthf, x, x));
       x2 = sqr(x);
       // performances informations using this kernel for nt2::log
       // exhaustive and bench tests with g++-4.7 sse4.2 or scalar give:

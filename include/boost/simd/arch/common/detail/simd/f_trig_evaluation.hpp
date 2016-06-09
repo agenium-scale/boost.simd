@@ -15,7 +15,7 @@
 #include <boost/simd/function/horn.hpp>
 #include <boost/simd/constant/mhalf.hpp>
 #include <boost/simd/function/simd/fma.hpp>
-#include <boost/simd/function/simd/oneplus.hpp>
+#include <boost/simd/function/simd/inc.hpp>
 #include <boost/simd/function/simd/rec.hpp>
 #include <boost/simd/function/simd/sqr.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
@@ -38,7 +38,7 @@ namespace boost { namespace simd
           , 0x3d2aaaa5
           , 0xbab60619
           , 0x37ccf5ce > (z);
-        return bs::oneplus(bs::fma(z,bs::Mhalf<A0>(), y*bs::sqr(z)));
+        return bs::inc(bs::fma(z,bs::Mhalf<A0>(), y*bs::sqr(z)));
       }
       static inline A0 sin_eval(const A0& z, const A0& x)
       {

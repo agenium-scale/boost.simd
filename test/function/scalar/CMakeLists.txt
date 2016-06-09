@@ -62,15 +62,11 @@ set ( SOURCES
    meanof.cpp
    min.cpp
    minmod.cpp
-   minusone.cpp
-   minusone_s.cpp
    mod.cpp
    multiplies_s.cpp
    neg_s.cpp
    oneminus.cpp
    oneminus_s.cpp
-   oneplus.cpp
-   oneplus_s.cpp
    plus_s.cpp
    rec.cpp
    remainder.cpp

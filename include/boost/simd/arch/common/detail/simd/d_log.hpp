@@ -10,7 +10,7 @@
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_SIMD_D_LOG_HPP_INCLUDED
 
 
-#include <boost/simd/function/simd/minusone.hpp>
+#include <boost/simd/function/simd/dec.hpp>
 #include <boost/simd/function/simd/tofloat.hpp>
 #include <boost/simd/function/simd/sqr.hpp>
 #include <boost/simd/function/simd/unary_minus.hpp>
@@ -74,7 +74,7 @@ namespace boost { namespace simd
       std::tie(x, k) = fast_(frexp)(x);
       const i_t x_lt_sqrthf = if_else_zero(is_greater(Sqrt_2o_2<A0>(), x),Mone<i_t>());
       k = k+x_lt_sqrthf; //+=
-      f = minusone(x+bitwise_and(x, x_lt_sqrthf));
+      f = dec(x+bitwise_and(x, x_lt_sqrthf));
       dk = tofloat(k);
       s = f/(Two<A0>()+f);
       A0 z = sqr(s);
