@@ -61,12 +61,10 @@ namespace boost { namespace simd
 #include <boost/simd/function/meanof.hpp>
 #include <boost/simd/function/min.hpp>
 #include <boost/simd/function/minmod.hpp>
-#include <boost/simd/function/dec.hpp>
 #include <boost/simd/function/mod.hpp>
 #include <boost/simd/function/modulo.hpp>
 #include <boost/simd/function/modulus.hpp>
 #include <boost/simd/function/oneminus.hpp>
-#include <boost/simd/function/inc.hpp>
 #include <boost/simd/function/rec.hpp>
 #include <boost/simd/function/remainder.hpp>
 #include <boost/simd/function/remfix.hpp>
