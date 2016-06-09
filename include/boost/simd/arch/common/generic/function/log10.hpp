@@ -33,8 +33,6 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      BOOST_ASSERT_MSG(bs::assert_all(is_positive(a0)&&is_not_nan(a0)),
-                       "log10(x, assert_) cannot produce complex result.");
       return detail::logarithm<A0,is_not_scalar_t<A0>>::log10(a0);
     }
   };

@@ -135,9 +135,6 @@ namespace boost { namespace simd { namespace ext
 
     A0 operator() ( A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
     {
-      BOOST_ASSERT_MSG(bs::assert_all((is_positive(a0)&&is_not_nan(a0)) || is_flint(a1)),
-                       "pow(a0, a1, assert_) cannot produce complex result." );
-
       using u_t =  bd::as_integer_t<A1, unsigned>;
       auto ltza1 = is_ltz(a1);
       A0 p = pow(a0, bitwise_cast<u_t>(negif(ltza1, a1)));
