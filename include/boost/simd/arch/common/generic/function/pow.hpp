@@ -16,7 +16,6 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
-#include <boost/simd/function/assert.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/is_flint.hpp>
 #include <boost/simd/function/is_ltz.hpp>
@@ -136,30 +135,15 @@ namespace boost { namespace simd { namespace ext
 
     A0 operator() ( A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
     {
+      BOOST_ASSERT_MSG(bs::assert_all((is_positive(a0)&&is_not_nan(a0)) || is_flint(a1)),
+                       "pow(a0, a1, assert_) cannot produce complex result." );
+
       using u_t =  bd::as_integer_t<A1, unsigned>;
       auto ltza1 = is_ltz(a1);
       A0 p = pow(a0, bitwise_cast<u_t>(negif(ltza1, a1)));
       return if_else(ltza1, rec(p), p);
     }
   };
-
-  BOOST_DISPATCH_OVERLOAD ( pow_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bd::scalar_< bd::arithmetic_<A0> >
-                          , bd::scalar_< bd::arithmetic_<A0> >
-                          , boost::simd::assert_tag
-                           )
-  {
-    BOOST_FORCEINLINE A0 operator() ( A0  const& a0, A0 const&  a1
-                                    , assert_tag const& ) const BOOST_NOEXCEPT
-    {
-      BOOST_ASSERT_MSG(bs::assert_all((is_positive(a0)&&is_not_nan(a0)) || is_flint(a1)),
-                       "pow(a0, a1, assert_) cannot produce complex result." );
-      return  pow(a0, a1);
-    }
-  };
-
 } } }
 
 

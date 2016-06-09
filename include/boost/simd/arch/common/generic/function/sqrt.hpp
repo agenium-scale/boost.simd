@@ -14,7 +14,6 @@
 
 #include <boost/simd/function/fast.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
-#include <boost/simd/function/assert.hpp>
 #include <boost/simd/function/if_else_zero.hpp>
 #include <boost/simd/function/is_gez.hpp>
 #include <boost/simd/function/multiplies.hpp>
@@ -49,24 +48,12 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 a0) const BOOST_NOEXCEPT
     {
-      return sqrt(a0);
-    }
-  };
-  BOOST_DISPATCH_OVERLOAD ( sqrt_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bd::generic_< bd::integer_<A0> >
-                          , boost::simd::assert_tag
-                          )
-  {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, assert_tag const& ) const BOOST_NOEXCEPT
-    {
-      BOOST_ASSERT_MSG(bs::assert_all(is_positive(a0)),
-                       "sqrt integer domain is restricted to positive integer.");
+      BOOST_ASSERT_MSG( bs::assert_all(is_positive(a0))
+                      , "sqrt integer domain is restricted to positive integer."
+                      );
       return sqrt(a0);
     }
   };
 } } }
-
 
 #endif
