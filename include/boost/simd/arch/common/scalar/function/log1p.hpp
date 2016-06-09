@@ -15,8 +15,8 @@
 
 #include <boost/simd/detail/enforce_precision.hpp>
 #include <boost/simd/function/scalar/log.hpp>
-#include <boost/simd/function/scalar/minusone.hpp>
-#include <boost/simd/function/scalar/oneplus.hpp>
+#include <boost/simd/function/scalar/dec.hpp>
+#include <boost/simd/function/scalar/inc.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>
@@ -40,8 +40,8 @@ namespace boost { namespace simd { namespace ext
       if (a0 == Inf<A0>())   return Inf<A0>();
       #endif
       if (a0 == Mone<A0>())   return Minf<A0>();
-      A0 u = oneplus(a0);
-      return log(u)+(a0-minusone(u))/u;
+      A0 u = inc(a0);
+      return log(u)+(a0-dec(u))/u;
     }
   };
   BOOST_DISPATCH_OVERLOAD ( log1p_

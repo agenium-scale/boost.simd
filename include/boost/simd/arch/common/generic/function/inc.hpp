@@ -11,7 +11,7 @@
 
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/function/plus.hpp>
-#include <boost/simd/function/oneplus.hpp>
+#include <boost/simd/function/inc.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
@@ -39,7 +39,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE T operator()(const saturated_tag &, const T& a
                                   ) const BOOST_NOEXCEPT
     {
-      return saturated_(oneplus)(a);
+      return saturated_(inc)(a);
     }
   };
 } } }

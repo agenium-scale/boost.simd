@@ -35,7 +35,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T r = minusone(sqrt(Oneplus(x));
+    T r = dec(sqrt(Oneplus(x));
     @endcode
 
   **/

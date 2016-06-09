@@ -34,7 +34,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T r = Half<T>()*log(oneplus(sqr(x))/minusone(sqr(x)));
+    T r = Half<T>()*log(inc(sqr(x))/dec(sqr(x)));
     @endcode
 
     @see log, Half

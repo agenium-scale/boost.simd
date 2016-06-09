@@ -20,7 +20,7 @@
 #include <boost/simd/constant/eps.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/two.hpp>
-#include <boost/simd/function/oneplus.hpp>
+#include <boost/simd/function/inc.hpp>
 #include <cmath>
 
 STF_CASE_TPL (" correct_fma real",  STF_IEEE_TYPES)
@@ -61,7 +61,7 @@ STF_CASE_TPL (" correct_fma signed_int",  STF_SIGNED_INTEGRAL_TYPES)
   STF_EQUAL(correct_fma(bs::Mone<T>(), bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
   STF_EQUAL(correct_fma(bs::One<T>(), bs::One<T>(), bs::One<T>()), bs::Two<T>());
   STF_EQUAL(correct_fma(bs::Zero<T>(), bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
-  STF_EQUAL(correct_fma(bs::Valmax<T>(), bs::Two<T>(), bs::oneplus(bs::Valmin<T>())), bs::Valmax<T>());
+  STF_EQUAL(correct_fma(bs::Valmax<T>(), bs::Two<T>(), bs::inc(bs::Valmin<T>())), bs::Valmax<T>());
 } // end of test for signed_int_
 
 STF_CASE_TPL (" correct_fma unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

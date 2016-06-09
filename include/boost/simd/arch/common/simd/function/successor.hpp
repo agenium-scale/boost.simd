@@ -26,7 +26,7 @@
 #include <boost/simd/function/simd/is_nan.hpp>
 #include <boost/simd/function/simd/is_not_equal.hpp>
 #include <boost/simd/function/simd/minus.hpp>
-#include <boost/simd/function/simd/oneplus.hpp>
+#include <boost/simd/function/simd/inc.hpp>
 #include <boost/simd/function/simd/plus.hpp>
 #include <boost/simd/function/simd/if_plus.hpp>
 #include <boost/assert.hpp>
@@ -55,7 +55,7 @@ namespace boost { namespace simd { namespace ext
    {
       BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
-        return if_allbits_else(is_nan(a0), bitfloating(saturated_(oneplus)(bitinteger(a0))));
+        return if_allbits_else(is_nan(a0), bitfloating(saturated_(inc)(bitinteger(a0))));
       }
    };
 

@@ -30,9 +30,9 @@
 #include <boost/simd/function/simd/is_greater.hpp>
 #include <boost/simd/function/simd/is_less.hpp>
 #include <boost/simd/function/simd/log.hpp>
-#include <boost/simd/function/simd/minusone.hpp>
+#include <boost/simd/function/simd/dec.hpp>
 #include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/oneplus.hpp>
+#include <boost/simd/function/simd/inc.hpp>
 #include <boost/simd/function/simd/plus.hpp>
 #include <boost/simd/function/simd/sqr.hpp>
 
@@ -55,7 +55,7 @@ namespace boost { namespace simd { namespace ext
       {
         A0 x =  bs::abs(a0);
         auto test = is_greater(x,Oneosqrteps<A0>());
-        A0 z = if_else(test,minusone(x), x+sqr(x)/bs::oneplus(hypot(One<A0>(), x)));
+        A0 z = if_else(test,dec(x), x+sqr(x)/bs::inc(hypot(One<A0>(), x)));
         #ifndef BOOST_SIMD_NO_INFINITIES
         z = if_else(is_equal(x, Inf<A0>()),x, z);
         #endif

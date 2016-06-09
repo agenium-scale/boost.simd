@@ -221,8 +221,6 @@ minnum.cpp
 minnummag.cpp
 minus.cpp
 minus_s.cpp
-minusone.cpp
-minusone_s.cpp
 modf.cpp
 multiplies.cpp
 multiplies_s.cpp
@@ -237,8 +235,6 @@ none.cpp
 nthroot.cpp
 oneminus.cpp
 oneminus_s.cpp
-oneplus.cpp
-oneplus_s.cpp
 plus.cpp
 plus_s.cpp
 posmax.cpp

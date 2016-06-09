@@ -38,7 +38,7 @@
 #include <boost/simd/function/simd/minus.hpp>
 #include <boost/simd/function/simd/multiplies.hpp>
 #include <boost/simd/function/simd/oneminus.hpp>
-#include <boost/simd/function/simd/oneplus.hpp>
+#include <boost/simd/function/simd/inc.hpp>
 #include <boost/simd/function/simd/plus.hpp>
 #include <boost/simd/function/simd/pow2.hpp>
 #include <boost/simd/function/simd/if_inc.hpp>

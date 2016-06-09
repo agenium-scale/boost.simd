@@ -22,7 +22,7 @@
 #include <boost/simd/function/scalar/coth.hpp>
 #include <boost/simd/function/scalar/exp.hpp>
 #include <boost/simd/function/scalar/fma.hpp>
-#include <boost/simd/function/scalar/minusone.hpp>
+#include <boost/simd/function/scalar/dec.hpp>
 #include <boost/simd/function/scalar/rec.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
@@ -54,7 +54,7 @@ namespace boost { namespace simd { namespace ext
       }
       else
       {
-        r = fma(Two<A0>(), rec(minusone(exp(x+x))), One<A0>());
+        r = fma(Two<A0>(), rec(dec(exp(x+x))), One<A0>());
       }
       return bitwise_xor(r, bitofsign(a0));
     }

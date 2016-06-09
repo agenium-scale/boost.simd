@@ -25,7 +25,7 @@
 #include <boost/simd/function/scalar/abs.hpp>
 #include <boost/simd/function/scalar/is_ltz.hpp>
 #include <boost/simd/function/scalar/is_odd.hpp>
-#include <boost/simd/function/scalar/minusone.hpp>
+#include <boost/simd/function/scalar/dec.hpp>
 #include <boost/simd/function/scalar/pow.hpp>
 #include <boost/simd/function/scalar/rec.hpp>
 #include <boost/simd/function/scalar/sign.hpp>
@@ -65,7 +65,7 @@ namespace boost { namespace simd { namespace ext
       // by one iteration of Newton's method
       if (y)
       {
-        y -= (bs::pow(y, aa1) - x) / (aa1* bs::pow(y,minusone(aa1)));
+        y -= (bs::pow(y, aa1) - x) / (aa1* bs::pow(y,dec(aa1)));
       }
 
       return (is_ltza0 && is_odda1)? -y : y;

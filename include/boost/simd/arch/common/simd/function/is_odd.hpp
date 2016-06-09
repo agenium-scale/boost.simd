@@ -20,7 +20,7 @@
 #include <boost/simd/function/simd/bitwise_and.hpp>
 #include <boost/simd/function/simd/is_even.hpp>
 #include <boost/simd/function/simd/is_nez.hpp>
-#include <boost/simd/function/simd/minusone.hpp>
+#include <boost/simd/function/simd/dec.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -46,7 +46,7 @@ namespace boost { namespace simd { namespace ext
    {
       BOOST_FORCEINLINE bs::as_logical_t<A0>  operator()( const A0& a0) const BOOST_NOEXCEPT
       {
-        return bs::is_even(minusone(a0));
+        return bs::is_even(dec(a0));
       }
    };
 

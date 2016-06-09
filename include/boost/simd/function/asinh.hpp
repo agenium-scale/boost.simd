@@ -34,10 +34,10 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T r =  log(x+sqrt(oneplus(sqr(x))));
+    T r =  log(x+sqrt(inc(sqr(x))));
     @endcode
 
-    @see log, sqrt, sinh, oneplus
+    @see log, sqrt, sinh, inc
 
   **/
   const boost::dispatch::functor<tag::asinh_> asinh = {};

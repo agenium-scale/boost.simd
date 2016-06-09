@@ -24,7 +24,7 @@
 #include <boost/simd/function/scalar/is_equal.hpp>
 #include <boost/simd/function/scalar/is_eqz.hpp>
 #include <boost/simd/function/scalar/is_ltz.hpp>
-#include <boost/simd/function/scalar/minusone.hpp>
+#include <boost/simd/function/scalar/dec.hpp>
 #include <boost/simd/function/scalar/sqrt.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
@@ -56,7 +56,7 @@ namespace boost { namespace simd { namespace ext
     {
       A0 ax =  bs::abs(a0);
       if (ax <  One<A0>()) return Nan<A0>();
-      A0 ax1 =  minusone(ax);
+      A0 ax1 =  dec(ax);
 
       if (ax1 < 0.001f)
       {
