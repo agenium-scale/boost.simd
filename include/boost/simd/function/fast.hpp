@@ -18,9 +18,9 @@
 
 namespace boost { namespace simd
 {
-  struct fast_tag : boost::dispatch::unspecified_<fast_tag>
+  struct fast_tag : decorator_<fast_tag>
   {
-    using parent = boost::dispatch::unspecified_<fast_tag>;
+    using parent = decorator_<fast_tag>;
   };
 
   const detail::decorator<fast_tag> fast_ = {};

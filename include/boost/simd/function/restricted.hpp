@@ -17,9 +17,9 @@
 
 namespace boost { namespace simd
 {
-  struct restricted_tag : boost::dispatch::unspecified_<restricted_tag>
+  struct restricted_tag : decorator_<restricted_tag>
   {
-    using parent = boost::dispatch::unspecified_<restricted_tag>;
+    using parent = decorator_<restricted_tag>;
   };
 
   const detail::decorator<restricted_tag> restricted_ = {};

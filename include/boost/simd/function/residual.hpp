@@ -18,9 +18,9 @@
 
 namespace boost { namespace simd
 {
-  struct residual_tag : boost::dispatch::unspecified_<residual_tag>
+  struct residual_tag : decorator_<residual_tag>
   {
-    using parent = boost::dispatch::unspecified_<residual_tag>;
+    using parent = decorator_<residual_tag>;
   };
 
   const detail::decorator<residual_tag> residual_ = {};
