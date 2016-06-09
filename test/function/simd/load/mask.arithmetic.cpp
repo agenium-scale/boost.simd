@@ -28,18 +28,18 @@ void test(Env& $)
 
   auto pm = bs::load<pm_t>(&msk[0]);
 
-  STF_ALL_EQUAL( bs::load<p_t>( bs::mask(&data[0]   , pm ) ), ref   );
-  STF_ALL_EQUAL( bs::load<p_t>( bs::mask(&data[0], 7, pm ) ), refv  );
+  STF_ALL_EQUAL( bs::load<p_t>( bs::mask(&data[0], pm    ) ), ref   );
+  STF_ALL_EQUAL( bs::load<p_t>( bs::mask(&data[0], pm, 7 ) ), refv  );
 
-  STF_ALL_EQUAL( bs::load<p_t>( bs::mask(&data[0]   , true ) ), bs::load<p_t>(&data[0]) );
-  STF_ALL_EQUAL( bs::load<p_t>( bs::mask(&data[0], 7, true ) ), bs::load<p_t>(&data[0]) );
+  STF_ALL_EQUAL( bs::load<p_t>( bs::mask(&data[0], true    ) ), bs::load<p_t>(&data[0]) );
+  STF_ALL_EQUAL( bs::load<p_t>( bs::mask(&data[0], true, 7 ) ), bs::load<p_t>(&data[0]) );
 
-  STF_ALL_EQUAL( bs::load<p_t>( bs::mask(&data[0]   , false) ), bs::Zero<p_t>() );
-  STF_ALL_EQUAL( bs::load<p_t>( bs::mask(&data[0], 7, false) ), p_t(7)          );
+  STF_ALL_EQUAL( bs::load<p_t>( bs::mask(&data[0], false   ) ), bs::Zero<p_t>() );
+  STF_ALL_EQUAL( bs::load<p_t>( bs::mask(&data[0], false, 7) ), p_t(7)          );
 
   // This should not segfault as masking prevent memory access
-  STF_ALL_EQUAL( bs::load<p_t>( bs::mask((T*)(0) , 7, false) ), p_t(7)          );
-  STF_ALL_EQUAL( bs::load<p_t>( bs::mask((T*)(0)    , false) ), bs::Zero<p_t>() );
+  STF_ALL_EQUAL( bs::load<p_t>( bs::mask((T*)(0), false   ) ), bs::Zero<p_t>() );
+  STF_ALL_EQUAL( bs::load<p_t>( bs::mask((T*)(0), false, 7) ), p_t(7)          );
 }
 
 STF_CASE_TPL( "Check masked load behavior", STF_NUMERIC_TYPES )
@@ -51,4 +51,3 @@ STF_CASE_TPL( "Check masked load behavior", STF_NUMERIC_TYPES )
   test<T, N/2>($);
   test<T, N*2>($);
 }
-
