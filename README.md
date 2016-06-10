@@ -16,7 +16,7 @@ Portable SIMD computation library - To be proposed as a Boost library
 NOTE:
 > `boost.simd` *MUST* be used with the current develop version of `boost` (aka 1.62)
 
-You must create a build directory where all temporary building stuffs will be located.
+You must create a build directory where all temporary building artifacts will be located.
 
 > We assume that you are doing all the following commands in the Boost.SIMD source tree
 
@@ -35,10 +35,10 @@ make install
 ```
 
 Of course, you can change the value of `CMAKE_INSTALL_PREFIX` to a different location.
-This will install a sufficient version of `boost` header-only (only if you didn't omitted the `update.boost-header-only` part),
+This will install a sufficient header-only version of `boost` (unless you omit the `update.boost-header-only` part),
 as well a `boost.dispatch` and `boost.simd`.
 
-You should now be able to add your install directory as include directory with your favorite compiler!
+You should now be able to add the directory `include/` under your chosen install prefix as an include directory for use with your favorite compiler!
 
 For example (assuming your file is: `/tmp/main.cpp`):
 ```cpp
