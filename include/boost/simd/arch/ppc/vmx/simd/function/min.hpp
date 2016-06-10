@@ -24,8 +24,8 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( min_
                           , (typename A0)
                           , bs::vmx_
-                          , bs::pack_<bd::integer_<A0>, bs::vmx_>
-                          , bs::pack_<bd::integer_<A0>, bs::vmx_>
+                          , bs::pack_<bd::arithmetic_<A0>, bs::vmx_>
+                          , bs::pack_<bd::arithmetic_<A0>, bs::vmx_>
                           )
   {
     BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
@@ -37,16 +37,18 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( min_
                           , (typename A0)
                           , bs::vmx_
+                          , bs::conformant_tag
                           , bs::pack_<bd::floating_<A0>, bs::vmx_>
                           , bs::pack_<bd::floating_<A0>, bs::vmx_>
                           )
   {
-    BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()( conformant_tag const&
+                                   , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
     {
       #if !defined(BOOST_SIMD_NO_NANS)
-      return if_else(is_nan(a0), a1, A0(vec_min(a0.storage(),a1.storage())));
+      return if_else(is_nan(a1), a0, A0(vec_min(a1.storage(),a0.storage())));
       #else
-      return vec_min(a0.storage(),a1.storage());
+      return vec_min(a1.storage(),a0.storage());
       #endif
     }
   };

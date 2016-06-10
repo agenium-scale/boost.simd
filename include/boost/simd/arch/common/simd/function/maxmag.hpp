@@ -15,9 +15,9 @@
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/abs.hpp>
-#include <boost/simd/function/simd/max.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
 #include <boost/simd/function/simd/is_not_greater_equal.hpp>
+#include <boost/simd/function/simd/max.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

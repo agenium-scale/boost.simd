@@ -37,7 +37,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( max_
                           , (typename A0)
                           , bs::vmx_
-                            , bs::conformant_tag
+                          , bs::conformant_tag
                           , bs::pack_<bd::floating_<A0>, bs::vmx_>
                           , bs::pack_<bd::floating_<A0>, bs::vmx_>
                           )
@@ -46,7 +46,7 @@ namespace boost { namespace simd { namespace ext
                                    , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
     {
       #if !defined(BOOST_SIMD_NO_NANS)
-      return if_else(is_nan(a0), a0, A0(vec_max(a1.storage(),a0.storage())));
+      return if_else(is_nan(a1), a0, A0(vec_max(a1.storage(),a0.storage())));
       #else
       return vec_max(a1.storage(),a0.storage());
       #endif

@@ -42,3 +42,4 @@ STF_CASE_TPL("Check minmod on pack" , STF_NUMERIC_TYPES)
   test<T, N/2>($);
   test<T, N*2>($);
 }
+

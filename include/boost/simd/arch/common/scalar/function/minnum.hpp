@@ -44,7 +44,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       if (is_nan(a0)) return a1;
-      else return simd::min(a1, a0);
+      else return simd::min(a0, a1);
     }
   };
   BOOST_DISPATCH_OVERLOAD ( minnum_

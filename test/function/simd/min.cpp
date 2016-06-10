@@ -70,3 +70,17 @@ STF_CASE_TPL("Check min on floating point pack" , STF_IEEE_TYPES)
   test_r<T, N*2>($);
 }
 
+
+STF_CASE_TPL("Check min on nans  pack" , STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  static const std::size_t N = bs::pack<T>::static_size;
+  {
+    using p_t = bs::pack<T, N>;
+    p_t n =  bs::Nan<p_t>();
+    p_t o =  bs::One<p_t>();
+    STF_IEEE_EQUAL(bs::min(n, o), n);
+    STF_IEEE_EQUAL(bs::min(o, n), o);
+  }
+
+}

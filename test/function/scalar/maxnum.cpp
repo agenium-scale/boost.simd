@@ -38,7 +38,7 @@ STF_CASE_TPL (" maxnum real",  STF_IEEE_TYPES)
   STF_EQUAL(maxnum(bs::Minf<T>(), bs::Minf<T>()), bs::Minf<r_t>());
   STF_IEEE_EQUAL(maxnum(bs::Nan<T>(),  bs::Nan<T>()),  bs::Nan<r_t>());
   STF_EQUAL(maxnum(bs::Nan<T>(),  bs::One<T>()),  bs::One<r_t>());
-  STF_IEEE_EQUAL(maxnum(bs::One<T>(),  bs::Nan<T>()),  bs::One<r_t>());
+  STF_EQUAL(maxnum(bs::One<T>(),  bs::Nan<T>()),  bs::One<r_t>());
   STF_EQUAL(maxnum(bs::Nan<T>(),  bs::One <T>()), bs::One<r_t>());
 #endif
   STF_EQUAL(maxnum(bs::Mone<T>(), bs::Mone<T>()), bs::Mone<r_t>());

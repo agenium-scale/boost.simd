@@ -16,11 +16,12 @@
 #include <boost/config.hpp>
 #include <boost/simd/function/conformant.hpp>
 #include <boost/simd/function/std.hpp>
-#include <boost/algorithm.hpp>
+#include <algorithm>
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
   BOOST_DISPATCH_OVERLOAD ( min_
                           , (typename A0)
                           , bd::cpu_
@@ -30,7 +31,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator()( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
-      return (a0 < a1) ? a0 : a1;
+      return (a1 < a0) ? a1 : a0;
     }
   };
 
@@ -44,7 +45,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator()( conformant_tag const&, A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
-      return (a0 <  a1) ? a0 : a1;
+      return  (a1 < a0) ? a1 : a0;
     }
   };
 

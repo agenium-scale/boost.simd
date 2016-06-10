@@ -35,8 +35,8 @@ STF_CASE_TPL (" min real",  STF_IEEE_TYPES)
   STF_EQUAL(min(bs::Mone<T>(), bs::Mone<T>()), bs::Mone<T>());
   STF_EQUAL(min(bs::One<T>(), bs::One<T>()), bs::One<T>());
   STF_EQUAL(min(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
-  STF_EQUAL(min(bs::Nan<T>(), bs::One<T>()), bs::One<T>());
-  STF_IEEE_EQUAL(min(bs::One<T>(), bs::Nan<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(min(bs::Nan<T>(), bs::One<T>()), bs::Nan<T>());
+  STF_EQUAL(min(bs::One<T>(), bs::Nan<T>()), bs::One<T>());
   STF_EQUAL(min(bs::One<T>(), bs::Two<T>()), bs::One<T>());
   STF_EQUAL(min(bs::Two<T>(), bs::One<T>()), bs::One<T>());
 } // end of test for floating_

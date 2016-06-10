@@ -28,12 +28,7 @@ namespace boost { namespace simd { namespace ext
    {
       BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
-  #if !defined(BOOST_SIMD_NO_NANS) && defined(BOOST_COMP_GNUC_AVAILABLE)
-        // workaround for GCC bug #57057
-        return if_else(is_unord(a0, a1), a1, A0(_mm256_min_pd(a0, a1)));
-  #else
-        return _mm256_min_pd(a0,a1);
-  #endif
+        return _mm256_min_pd(a1,a0);
       }
    };
 
@@ -46,12 +41,7 @@ namespace boost { namespace simd { namespace ext
    {
       BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
-  #if !defined(BOOST_SIMD_NO_NANS) && defined(BOOST_COMP_GNUC_AVAILABLE)
-        // workaround for GCC bug #57057
-        return if_else(is_unord(a0, a1), a1, A0(_mm256_min_ps(a0, a1)));
-  #else
-        return _mm256_min_ps(a0,a1);
-  #endif
+        return _mm256_min_ps(a1,a0);
       }
    };
 } } }

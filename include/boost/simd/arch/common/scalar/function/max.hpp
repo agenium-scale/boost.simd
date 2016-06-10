@@ -16,7 +16,7 @@
 #include <boost/simd/function/conformant.hpp>
 #include <boost/simd/function/std.hpp>
 #include <boost/config.hpp>
-#include <boost/algorithm.hpp>
+#include <algorithm>
 
 namespace boost { namespace simd { namespace ext
 {
