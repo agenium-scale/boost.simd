@@ -27,8 +27,8 @@ In order to exploit these powerful instruction sets, developers must use low-lev
 The open-source version of **Boost.SIMD** includes support for x86 processors. Optional modules with support for
 The current set of SIMD extensions supported by **Boost.SIMD** includes:
 
-#TODO: I do not understand the last sentence J.T.
-#TODO: Make sure the free/paid columns are correct, maybe instead of column bold the free extensions?
+# TODO: I do not understand the last sentence J.T.
+# TODO: Make sure the free/paid columns are correct, maybe instead of column bold the free extensions?
 
 
 <center>

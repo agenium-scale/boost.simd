@@ -19,7 +19,8 @@ namespace boost { namespace simd
     @ingroup group-arithmetic
     Function object function implementing correct_fma
 
-    Computes fused multiply/add of its parameter.
+    Computes the "correct" fused multiply/add of its parameter: this is perhaps not that you need
+    if speed is needed more than accuracy (this remark is hardware dependent).
 
     @par semantic:
     For any given value @c x, @c y, @c z of type @c T:
@@ -34,11 +35,11 @@ namespace boost { namespace simd
     T r = x*y+z;
     @endcode
 
-    but is only rounded once
+    but is only rounded once and with no intermediate overflow.
 
     @par Note:
 
-    - For integers x*y+z is performed
+    - For integers x*y+z is always performed in 2-complement wraping.
 
     - For floating points numbers, the correct fused multiply add is computed,
     meaning the computation of x*y+z with only one rounding operation.
@@ -54,10 +55,10 @@ namespace boost { namespace simd
     you may define BOOST_SIMD_DONT_CARE_CORRECT_FMA_OVERFLOW for better
     performance.
 
-    correct_fma is never used internally in boost.simd.
+    - @c correct_fma is never used internally in boost.simd.
 
     @par Decorators
-      std_ for floating entries calls std::fma but do not garanty performances...
+      std_ for floating entries calls std::fma but does not guarantee performances...
 
     @see  fma, fms fnma, fnms
 **/

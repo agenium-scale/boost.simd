@@ -35,7 +35,7 @@ namespace boost { namespace simd
     T r = x < T(0) ? -x : x;
     @endcode
 
-    @par Note:
+    @par Notes:
 
     - Be aware that for signed integers the absolute value of @ref Valmin is
     @ref Valmin (thus negative!). This is a side effect of the 2-complement

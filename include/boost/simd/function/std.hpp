@@ -36,7 +36,11 @@ namespace boost { namespace simd
     - for simd vector parameter a map of the standard function is done
       for each vector element: this is never vectorized.
 
-    - for scalar parameters, the std function is directly call.
+    - std_ is given to be able to shortly compare boost.simd functors
+    and stdlibc++ equivalent behaviours.
+
+    @see @ref Decorators
+
   **/
   const detail::decorator<std_tag> std_ = {};
 } }

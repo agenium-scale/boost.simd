@@ -39,8 +39,7 @@ namespace boost { namespace simd
     by unity from the truncation given by (x1+x2)/T(2).
 
     @par Note:
-
-    This function does not overflow.
+      This function does not overflow.
 
     @see meanof
 
