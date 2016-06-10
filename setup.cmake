@@ -9,12 +9,13 @@
 NS_include(compilers)
 NS_guard(BOOST_SIMD_SETUP)
 
-##================================================================================================== ## Precision and optimization settings
+##==================================================================================================
+## Precision and optimization settings
 ##==================================================================================================
 if(MSVC)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /fp:precise")
   set(SIMD_FLAGS_TEST "${SIMD_FLAGS_TEST} /MDd /Oxt")
-  set(SIMD_FLAGS_BENCH "/DNDEBUG /MD /D_SECURE_SCL=0 /GL /Oxt /wd4530 /EHsc")
+  set(SIMD_FLAGS_BENCH "/DNDEBUG /MD /D_SECURE_SCL=0 /Oxt /GL /wd4530 /EHsc")
 
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "Intel")
   if(UNIX)
@@ -34,14 +35,6 @@ if (${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
   # Gcc is clasing while using `stf::type_id` with SIMD vectors of double cause they have the
   # same signature. This option is required to fix this error.
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fabi-version=6")
-endif()
-
-##==================================================================================================
-## MSVC Linker settings
-##==================================================================================================
-if(MSVC)
-  set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} /LTCG")
-  set(CMAKE_SHARED_LINKER_FLAGS_RELEASE "${CMAKE_SHARED_LINKER_FLAGS_RELEASE} /LTCG")
 endif()
 
 ##==================================================================================================
