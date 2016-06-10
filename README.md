@@ -43,6 +43,7 @@ directory. You can now use it as include directory when compiling.
 For example (assuming your file is: `/tmp/main.cpp`):
 ```cpp
 #include <iostream>
+#include <numeric>
 #include <boost/simd/pack.hpp>
 #include <boost/align/aligned_alloc.hpp>
 
