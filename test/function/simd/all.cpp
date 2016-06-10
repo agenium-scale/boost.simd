@@ -8,18 +8,18 @@
 //==================================================================================================
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/all.hpp>
-#include <boost/simd/function/bits.hpp>
-#include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
+
+namespace bs = boost::simd;
 
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
 {
-  namespace bs = boost::simd;
   using p_t = bs::pack<T, N>;
 
   T a1[N], a2[N];
-  bs::logical<T> b = true,  c = true;
+  bool b = true,  c = true;
+
   for(std::size_t i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? T(i) : T(-i);
@@ -36,7 +36,6 @@ void test(Env& $)
 
 STF_CASE_TPL("Check all on pack" , STF_NUMERIC_TYPES)
 {
-  namespace bs = boost::simd;
   static const std::size_t N = bs::pack<T>::static_size;
 
   test<T, N>($);

@@ -1,6 +1,6 @@
 //==================================================================================================
 /**
-  Copyright 2015 NumScale SAS
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -19,11 +19,11 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( compare_equal_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::fundamental_<A0> >
-                          , bd::scalar_< bd::fundamental_<A0> >
+                          , bd::scalar_< bd::unspecified_<A0> >
+                          , bd::scalar_< bd::unspecified_<A0> >
                           )
   {
-    BOOST_FORCEINLINE bool operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE bool operator()(A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
     {
       return a0 == a1;
     }

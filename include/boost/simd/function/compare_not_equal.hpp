@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,9 +14,7 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-
- /*!
-
+  /*!
     @ingroup group-reduction
     Function object implementing compare_not_equal capabilities
 
@@ -33,20 +30,16 @@ namespace boost { namespace simd
     For every parameters of type T0:
 
     @code
-    logical<scalar_of_t<T0>> r = compare_not_equal(x,y);
+    bool r = compare_not_equal(x,y);
     @endcode
 
     is similar to:
 
     @code
-    logical<scalar_of_t<T0>> r = any(x == y);
+    bol r = any(x != y);
     @endcode
 
-    @par Alias:
-    @c compare_neq
-
     @see is_not_equal
-
   **/
   const boost::dispatch::functor<tag::compare_not_equal_> compare_not_equal = {};
 } }

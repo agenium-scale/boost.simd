@@ -40,7 +40,7 @@ namespace boost { namespace simd { namespace ext
     template<typename K>
     static BOOST_FORCEINLINE result_t do_( T const& a, K const&) BOOST_NOEXCEPT
     {
-      return {{ slice_low(a), slice_high(a) }};
+      return result_t{{ slice_low(a), slice_high(a) }};
     }
 
     BOOST_FORCEINLINE result_t operator()(T const& a) const BOOST_NOEXCEPT

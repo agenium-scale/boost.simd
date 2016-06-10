@@ -15,38 +15,28 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-
- /*!
-
+  /*!
     @ingroup group-reduction
     Function object implementing compare_equal capabilities
 
-    Returns a logical scalar value that is the result of the lexicographic
-    test for equality of all elements of the entries,
-    i.e. return @ref True if and only if all corresponding entries
-    elements are equal.
-
-    It is probably not what you wish. Have a look to @ref is_equal
+    Returns a boolean that is the result of the lexicographic test for equality of all elements of
+    the entries, i.e. return @ref true if and only if all corresponding entries elements are equal.
 
     @par Semantic:
 
     For every parameters of type T0:
 
     @code
-    logical<scalar_of_t<T0>> r = compare_equal(x,y);
+    bool r = compare_equal(x,y);
     @endcode
 
     is similar to:
 
     @code
-    logical<scalar_of_t<T0>> r = all(x == y)
+    bool r = all(x == y);
     @endcode
 
-    @par Alias:
-    @c compare_eq
-
     @see is_equal
-
   **/
   const boost::dispatch::functor<tag::compare_equal_> compare_equal = {};
 } }

@@ -73,10 +73,10 @@ ceil.cpp
 clz.cpp
 complement.cpp
 compare_equal.cpp
-#compare_greater.cpp
-#compare_greater_equal.cpp
-#compare_less.cpp
-#compare_less_equal.cpp
+compare_greater.cpp
+compare_greater_equal.cpp
+compare_less.cpp
+compare_less_equal.cpp
 compare_not_equal.cpp
 conj.cpp
 copysign.cpp
