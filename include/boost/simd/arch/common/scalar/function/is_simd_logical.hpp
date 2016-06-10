@@ -40,8 +40,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE bool operator() ( A0 a0) const BOOST_NOEXCEPT
     {
-      using i_t = bd::as_integer_t<A0>;
-      return is_simd_logical(bitwise_cast<i_t>(a0)).value();
+      return is_simd_logical(bitwise_cast<bd::as_integer_t<A0>>(a0));
     }
   };
 
