@@ -34,8 +34,9 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE
     bool do_( const A0& a0, const A0& a1, aggregate_storage const&) const BOOST_NOEXCEPT
     {
-      return compare_not_equal(slice_low(a0)  , slice_low(a1) )
-          || compare_not_equal(slice_high(a0) , slice_high(a1));
+      auto s0 = slice(a0);
+      auto s1 = slice(a1);
+      return compare_not_equal(s0[0], s1[0]) || compare_not_equal(s0[1], s1[1]);
     }
 
     template<typename K>

@@ -10,6 +10,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_COMPARE_LESS_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
+#include <boost/simd/function/slice.hpp>
 #include <algorithm>
 
 namespace boost { namespace simd { namespace ext
@@ -32,8 +33,9 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE
     bool do_( const A0& a0, const A0& a1, aggregate_storage const&) const BOOST_NOEXCEPT
     {
-      return compare_less(slice_low(a0)  , slice_low(a1) )
-          || compare_less(slice_high(a0) , slice_high(a1));
+      auto s0 = slice(a0);
+      auto s1 = slice(a1);
+      return compare_less(s0[0], s1[0] ) || compare_less(s0[1], s1[1]);
     }
 
     template<typename K>
