@@ -22,7 +22,8 @@ namespace boost { namespace simd { namespace ext
   // -----------------------------------------------------------------------------------------------
   // slide shuffling for cardinal 2
   BOOST_DISPATCH_OVERLOAD ( shuffle_, (typename A0, typename X)
-                          , bs::simd_,bsd::pattern_<-1, 0>
+                          , bs::simd_
+                          , bsd::pattern_<-1, 0>
                           , bs::pack_<bd::unspecified_<A0>, X>
                           )
   BOOST_SIMD_GENERIC_PATTERN(bs::slide<-1>(a0), -1, 0 );
@@ -66,7 +67,8 @@ namespace boost { namespace simd { namespace ext
   BOOST_SIMD_GENERIC_PATTERN(bs::slide<+2>(a0), 2, 3,-1,-1);
 
   BOOST_DISPATCH_OVERLOAD ( shuffle_, (typename A0, typename X)
-                          , bs::simd_,bsd::pattern_<3,-1,-1,-1>
+                          , bs::simd_
+                          , bsd::pattern_<3,-1,-1,-1>
                           , bs::pack_<bd::unspecified_<A0>, X>
                           )
   BOOST_SIMD_GENERIC_PATTERN(bs::slide<+3>(a0), 3,-1,-1,-1);

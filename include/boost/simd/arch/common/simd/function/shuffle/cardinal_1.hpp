@@ -22,47 +22,10 @@ namespace boost { namespace simd { namespace ext
   // -----------------------------------------------------------------------------------------------
 
   // -----------------------------------------------------------------------------------------------
-  // Handle invalid Indexes by a flat static_assert
-  BOOST_DISPATCH_OVERLOAD ( shuffle_
-                          , (int Idx, typename A0, typename X)
-                          , bd::cpu_
-                          , bs::detail::pattern_<Idx>
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          )
-  {
-    BOOST_FORCEINLINE
-    A0 operator()(bs::detail::pattern_<Idx> const&, A0 const& a0) const BOOST_NOEXCEPT
-    {
-      static_assert ( Idx >= -1 && Idx < 1
-                    , "boost::simd::shuffle: Invalid permutation index"
-                    );
-      return a0;
-    }
-  };
-
-  BOOST_DISPATCH_OVERLOAD ( shuffle_
-                          , (int Idx, typename A0, typename X)
-                          , bd::cpu_
-                          , bs::detail::pattern_<Idx>
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          )
-  {
-    BOOST_FORCEINLINE
-    A0 operator()(bs::detail::pattern_<Idx> const&, A0 const& a0, A0 const&) const BOOST_NOEXCEPT
-    {
-      static_assert ( Idx >= -1 && Idx < 2
-                    , "boost::simd::shuffle: Invalid permutation index"
-                    );
-      return a0;
-    }
-  };
-
-  // -----------------------------------------------------------------------------------------------
   // Two cases of unary shuffle for scalar : 0, -1
   BOOST_DISPATCH_OVERLOAD ( shuffle_
                           , (typename A0, typename X)
-                          , bd::cpu_
+                          , bs::simd_
                           , bs::detail::pattern_<0>
                           , bs::pack_< bd::unspecified_<A0>, X >
                           )
@@ -76,7 +39,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( shuffle_
                           , (typename A0, typename X)
-                          , bd::cpu_
+                          , bs::simd_
                           , bs::detail::pattern_<-1>
                           , bs::pack_< bd::unspecified_<A0>, X >
                           )
@@ -92,7 +55,7 @@ namespace boost { namespace simd { namespace ext
   // Three cases of unary shuffle for scalar : 0, 1, -1
   BOOST_DISPATCH_OVERLOAD ( shuffle_
                           , (typename A0, typename X)
-                          , bd::cpu_
+                          , bs::simd_
                           , bs::detail::pattern_<0>
                           , bs::pack_< bd::unspecified_<A0>, X >
                           , bs::pack_< bd::unspecified_<A0>, X >
@@ -107,7 +70,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( shuffle_
                           , (typename A0, typename X)
-                          , bd::cpu_
+                          , bs::simd_
                           , bs::detail::pattern_<1>
                           , bs::pack_< bd::unspecified_<A0>, X >
                           , bs::pack_< bd::unspecified_<A0>, X >
@@ -122,7 +85,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( shuffle_
                           , (typename A0, typename X)
-                          , bd::cpu_
+                          , bs::simd_
                           , bs::detail::pattern_<-1>
                           , bs::pack_< bd::unspecified_<A0>, X >
                           , bs::pack_< bd::unspecified_<A0>, X >
@@ -137,4 +100,3 @@ namespace boost { namespace simd { namespace ext
 } } }
 
 #endif
-

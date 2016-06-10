@@ -27,6 +27,8 @@ namespace boost { namespace simd
                                                     >
                                 >;
     };
+
+    template<int B, int P> struct is_reverse<B,P> : std::false_type {};
   }
 
   // -----------------------------------------------------------------------------------------------

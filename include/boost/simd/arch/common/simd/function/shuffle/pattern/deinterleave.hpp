@@ -62,6 +62,9 @@ namespace boost { namespace simd
 
       using type  = brigand::bool_<fwd::value || bwd::value>;
     };
+
+    template<int B, int P> struct is_deinterleave<B,P> : std::false_type {};
+    template<int B, int P, int Q> struct is_deinterleave<B,P,Q> : std::false_type {};
   }
 
   // -----------------------------------------------------------------------------------------------

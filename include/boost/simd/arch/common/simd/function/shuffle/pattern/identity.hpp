@@ -21,12 +21,16 @@ namespace boost { namespace simd
     // Check if pattern is [B B+1 ... B+C]
     template<int B, int... Ps> struct is_identity
     {
-      using type = brigand::all < brigand::transform< brigand::range<int,B,B+sizeof...(Ps)>
+      using base = brigand::all < brigand::transform< brigand::range<int,B,B+sizeof...(Ps)>
                                                     , brigand::integral_list<int,Ps...>
                                                     , brigand::equal_to<brigand::_1,brigand::_2>
                                                     >
                                 >;
+      using type = brigand::bool_< (sizeof...(Ps)>1) && base::value>;
     };
+
+    // Prevent ambiguity with cardinal-1 shuffles
+    template<int B, int P> struct is_identity<B,P> : std::false_type {};
   }
 
   // -----------------------------------------------------------------------------------------------

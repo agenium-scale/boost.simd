@@ -23,17 +23,14 @@ namespace boost { namespace simd { namespace ext
 
   // -----------------------------------------------------------------------------------------------
   // Unary common cases
-  BOOST_DISPATCH_OVERLOAD ( shuffle_
-                          , (int... Ps, typename A0, typename X)
-                          , bs::simd_
-                          , bsd::any_pattern_<bsd::pattern_<Ps...>>
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          )
+  BOOST_DISPATCH_OVERLOAD_IF( shuffle_
+                            , (int... Ps, typename A0, typename X)
+                            , (brigand::bool_<A0::static_size==sizeof...(Ps)>)
+                            , bs::simd_
+                            , bsd::any_pattern_<bsd::pattern_<Ps...>>
+                            , bs::pack_< bd::unspecified_<A0>, X >
+                            )
   {
-    static_assert ( sizeof...(Ps) == std::size_t(A0::static_size)
-                  , "boost::simd::shuffle - Invalid number of permutation indices"
-                  );
-
     using pattern_t = bsd::any_pattern_<bsd::pattern_<Ps...>>;
 
     BOOST_FORCEINLINE A0 operator()(pattern_t const&, A0 const& a0) const BOOST_NOEXCEPT
@@ -53,18 +50,15 @@ namespace boost { namespace simd { namespace ext
 
   // -----------------------------------------------------------------------------------------------
   // Binary common cases
-  BOOST_DISPATCH_OVERLOAD ( shuffle_
-                          , (int... Ps, typename A0, typename X)
-                          , bs::simd_
-                          , bsd::any_pattern_<bsd::pattern_<Ps...>>
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          )
+  BOOST_DISPATCH_OVERLOAD_IF( shuffle_
+                            , (int... Ps, typename A0, typename X)
+                            , (brigand::bool_<A0::static_size==sizeof...(Ps)>)
+                            , bs::simd_
+                            , bsd::any_pattern_<bsd::pattern_<Ps...>>
+                            , bs::pack_< bd::unspecified_<A0>, X >
+                            , bs::pack_< bd::unspecified_<A0>, X >
+                            )
   {
-    static_assert ( sizeof...(Ps) == std::size_t(A0::static_size)
-                  , "boost::simd::shuffle - Invalid number of permutation indices"
-                  );
-
     using pattern_t = bsd::any_pattern_<bsd::pattern_<Ps...>>;
 
     BOOST_FORCEINLINE A0 operator()(pattern_t const&, A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
@@ -91,12 +85,14 @@ namespace boost { namespace simd { namespace ext
       return do_(a0,a1, typename A0::traits::element_range{});
     }
 
+    template<int I> using idx = std::integral_constant<int,(I<0?0:(I&(A0::static_size-1)))>;
+
     template<typename... N> BOOST_FORCEINLINE
     A0 do_(A0 const& a0, A0 const& a1, brigand::list<N...> const&) const BOOST_NOEXCEPT
     {
       typename A0::value_type z = 0;
-      return A0 { ( Ps == -1  ? z : ( Ps<A0::static_size  ? bs::extract<Ps>(a0)
-                                                          : bs::extract<Ps-A0::static_size>(a1)
+      return A0 { ( Ps == -1  ? z : ( Ps<A0::static_size  ? bs::extract<idx<Ps>::value>(a0)
+                                                          : bs::extract<idx<Ps-A0::static_size>::value>(a1)
                                     )
                   )...
                 };

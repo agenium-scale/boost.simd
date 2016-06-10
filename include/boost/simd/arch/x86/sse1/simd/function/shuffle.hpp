@@ -85,7 +85,7 @@ namespace boost { namespace simd { namespace ext
   // Unary SSE 4xfloat shuffle
   BOOST_DISPATCH_OVERLOAD ( shuffle_
                           , (int... Ps, typename A0)
-                          , bs::sse_
+                          , bs::sse1_
                           , bs::detail::pattern_<Ps...>
                           , bs::pack_<bd::single_<A0>, bs::sse_>
                          )
@@ -118,7 +118,7 @@ namespace boost { namespace simd { namespace ext
   // Binary SSE 4xfloat shuffle
   BOOST_DISPATCH_OVERLOAD ( shuffle_
                           , (int... Ps, typename A0)
-                          , bs::sse_
+                          , bs::sse1_
                           , bs::detail::pattern_<Ps...>
                           , bs::pack_<bd::single_<A0>, bs::sse_>
                           , bs::pack_<bd::single_<A0>, bs::sse_>
@@ -132,7 +132,7 @@ namespace boost { namespace simd { namespace ext
     A0 operator() ( bs::detail::pattern_<Ps...> const&
                   , const A0 & a0, const A0 & a1
                   ) const BOOST_NOEXCEPT
-    {
+    {puts("SSE1 POWWA");
       return do_(a0, a1, typename detail::perform_zeroing<Ps...>::type{});
     }
 
