@@ -9,14 +9,12 @@
 set ( SOURCES
   cardinal_1.cpp
   cardinal_2.cpp
-  cardinal_4.cpp
-  binary.broadcast.cpp
-  full.deinterleave.cpp
-  front.deinterleave.cpp
-  back.deinterleave.cpp
-  unary.broadcast.cpp
+  broadcast.binary.cpp
+  broadcast.unary.cpp
+  deinterleave.full.cpp
+  deinterleave.front.cpp
+  deinterleave.back.cpp
   identity.cpp
-  interleave.cpp
   repeat.cpp
   reverse.cpp
   slide.cpp

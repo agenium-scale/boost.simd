@@ -16,7 +16,6 @@ template<int... I, typename T>
 std::array<typename T::value_type,sizeof...(I)> unary_ref(T const& a)
 {
   using type = typename T::value_type;
-  static const auto s = sizeof...(I);
 
   std::array<type,sizeof...(I)>
   ref = { ((I == -1) ? type(0) : a[static_cast<std::size_t>(I)])... };

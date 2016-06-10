@@ -13,7 +13,7 @@
 
 using namespace boost::simd;
 
-STF_CASE_TPL( "unary shuffle", STF_NUMERIC_TYPES)
+STF_CASE_TPL( "unary shuffle", (double))
 {
   bs::pack<T,2> a{ Valmax<T>(), T(42) };
 
@@ -21,7 +21,7 @@ STF_CASE_TPL( "unary shuffle", STF_NUMERIC_TYPES)
   STF_ALL_EQUAL( (shuffle<-1, 1>(a)), (unary_ref<-1, 1>(a)) );
 }
 
-STF_CASE_TPL( "binary shuffle over a0", STF_NUMERIC_TYPES)
+STF_CASE_TPL( "binary shuffle over a0", (double))
 {
   bs::pack<T,2> a{ Valmax<T>(), T(42) };
   bs::pack<T,2> b{ T(69), Valmin<T>() };
@@ -30,7 +30,7 @@ STF_CASE_TPL( "binary shuffle over a0", STF_NUMERIC_TYPES)
   STF_ALL_EQUAL( (shuffle<-1, 1>(a,b)), (unary_ref<-1, 1>(a)) );
 }
 
-STF_CASE_TPL( "binary shuffle over a1", STF_NUMERIC_TYPES)
+STF_CASE_TPL( "binary shuffle over a1", (double))
 {
   bs::pack<T,2> a{ Valmax<T>(), T(42) };
   bs::pack<T,2> b{ T(69), Valmin<T>() };
@@ -39,7 +39,7 @@ STF_CASE_TPL( "binary shuffle over a1", STF_NUMERIC_TYPES)
   STF_ALL_EQUAL( (shuffle<-1, 3>(a,b)), (unary_ref<-1, 1>(b)) );
 }
 
-STF_CASE_TPL( "mixed binary shuffle", STF_NUMERIC_TYPES)
+STF_CASE_TPL( "mixed binary shuffle", (double))
 {
   bs::pack<T,2> a{ Valmax<T>(), T(42) };
   bs::pack<T,2> b{ T(69), Valmin<T>() };
