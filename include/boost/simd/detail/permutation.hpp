@@ -81,6 +81,68 @@ namespace boost { namespace simd { namespace detail
   struct  zeroing_mask
         : std::integral_constant<T, (P==-1) ? T(0) : ~(T(0))>
   {};
+
+  // -----------------------------------------------------------------------------------------------
+  // Computes a byte pattern from index pattern
+  template<int Bits, int I, typename Ps> struct val
+  {
+    using P    = brigand::at_c<Ps,I/Bits>;
+    using type = std::integral_constant < std::uint8_t
+                                        , P::value==-1 ? P::value : (P::value*Bits + (I%Bits))
+                                        >;
+  };
+
+  template<int SZ, typename... N, typename Ps>
+  BOOST_FORCEINLINE
+  pack<std::uint8_t,sizeof...(N)> mask_all( brigand::list<N...> const&, Ps const& )
+  {
+    return pack<std::uint8_t,sizeof...(N)>( val<SZ,N::value,Ps>::type::value... );
+  }
+
+  // -----------------------------------------------------------------------------------------------
+  // Computes a byte pattern from index pattern for binary shuffle - left side
+  template<int Bits, int I, typename Ps> struct left_val
+  {
+    using sz   = brigand::size<Ps>;
+    using P    = brigand::at_c<Ps,I/Bits>;
+    using type = std::integral_constant < std::int8_t
+                                        , P::value==-1  ? P::value
+                                                        : ( (P::value < sz::value)
+                                                            ? (P::value*Bits + (I%Bits))
+                                                            : -1
+                                                          )
+                                        >;
+    sz x = 3;
+  };
+
+  template<int SZ, typename... N, typename Ps>
+  BOOST_FORCEINLINE
+  pack<std::uint8_t,sizeof...(N)> mask_left( brigand::list<N...> const&, Ps const& )
+  {
+    return pack<std::uint8_t,sizeof...(N)>( left_val<SZ,N::value,Ps>::type::value... );
+  }
+
+  // -----------------------------------------------------------------------------------------------
+  // Computes a byte pattern from index pattern for binary shuffle - right side
+  template<int Bits, int I, typename Ps> struct right_val
+  {
+    using sz    = std::integral_constant<int,brigand::size<Ps>::value>;
+    using P     = brigand::at_c<Ps,I/Bits>;
+    using type  = std::integral_constant < std::int8_t
+                                        , P::value==-1  ? P::value
+                                                        : ( (P::value >= sz::value)
+                                                            ? ((P::value-sz::value)*Bits + (I%Bits))
+                                                            : -1
+                                                          )
+                                        >;
+  };
+
+  template<int SZ, typename... N, typename Ps>
+  BOOST_FORCEINLINE
+  pack<std::uint8_t,sizeof...(N)> mask_right( brigand::list<N...> const&, Ps const& )
+  {
+    return pack<std::uint8_t,sizeof...(N)>( right_val<SZ,N::value,Ps>::type::value... );
+  }
 } } }
 
 #endif
