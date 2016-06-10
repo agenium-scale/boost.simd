@@ -18,9 +18,9 @@
 
 namespace boost { namespace simd
 {
-  struct conformant_tag : boost::dispatch::unspecified_<conformant_tag>
+  struct conformant_tag : decorator_<conformant_tag>
   {
-    using parent = boost::dispatch::unspecified_<conformant_tag>;
+    using parent = decorator_<conformant_tag>;
   };
 
   const detail::decorator<conformant_tag> conformant_ = {};
