@@ -1,34 +1,27 @@
 //==================================================================================================
-/*!
-  @file
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T. Lapreste
+/**
+  Copyright 201 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ERF_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ERF_HPP_INCLUDED
 
 #include <boost/simd/function/std.hpp>
-#include <boost/simd/arch/common/detail/generic/erf_kernel.hpp>
-#include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/pi.hpp>
-#include <boost/simd/constant/six.hpp>
-#include <boost/simd/constant/two.hpp>
 #include <boost/simd/constant/ratio.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/scalar/abs.hpp>
 #include <boost/simd/function/scalar/exp.hpp>
 #include <boost/simd/function/scalar/is_ltz.hpp>
-#include <boost/simd/function/scalar/negif.hpp>
 #include <boost/simd/function/scalar/oneminus.hpp>
 #include <boost/simd/function/scalar/inc.hpp>
 #include <boost/simd/function/scalar/sign.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
-#include <boost/simd/function/scalar/sqrt.hpp>
-#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/arch/common/detail/generic/erf_kernel.hpp>
+
 #ifndef BOOST_SIMD_NO_INVALIDS
 #include <boost/simd/function/scalar/is_nan.hpp>
 #endif
@@ -36,6 +29,7 @@
 #include <boost/simd/function/scalar/is_inf.hpp>
 #include <boost/simd/function/scalar/signnz.hpp>
 #endif
+
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>
@@ -50,7 +44,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::double_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (A0 x) const BOOST_NOEXCEPT
+    inline A0 operator() (A0 x) const
     {
       #ifndef BOOST_SIMD_NO_INVALIDS
       if(is_nan(x)) return x;
@@ -85,14 +79,16 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::single_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
+    inline A0 operator()(A0 a0) const
     {
       #ifndef BOOST_SIMD_NO_INVALIDS
       if(is_nan(a0)) return a0;
       #endif
+
       #ifndef BOOST_SIMD_NO_INFINITIES
       if (bs::is_inf(a0)) return signnz(a0);
       #endif
+
       A0 x =  bs::abs(a0);
       if (x < Ratio<A0, 2, 3>())
       {
@@ -107,6 +103,7 @@ namespace boost { namespace simd { namespace ext
       }
    }
   };
+
   BOOST_DISPATCH_OVERLOAD ( erf_
                           , (typename A0)
                           , bd::cpu_
@@ -120,6 +117,5 @@ namespace boost { namespace simd { namespace ext
     }
   };
 } } }
-
 
 #endif
