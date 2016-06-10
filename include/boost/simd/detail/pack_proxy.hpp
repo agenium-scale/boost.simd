@@ -94,13 +94,13 @@ namespace boost { namespace simd { namespace detail
   BOOST_FORCEINLINE typename Storage::value_type                                                   \
   OP_TOKEN(pack_proxy<Storage> const& lhs, U const& rhs) BOOST_NOEXCEPT                            \
   {                                                                                                \
-    return static_cast<typename Storage::value_type>(lhs.get() OP rhs);                            \
+    return lhs.get() OP static_cast<typename Storage::value_type>(rhs);                            \
   }                                                                                                \
   template <typename T, std::size_t N, typename Storage, typename U>                               \
   BOOST_FORCEINLINE typename Storage::value_type                                                   \
   OP_TOKEN(U const& lhs, pack_proxy<Storage> const& rhs) BOOST_NOEXCEPT                            \
   {                                                                                                \
-    return static_cast<typename Storage::value_type>(lhs OP rhs.get());                            \
+    return static_cast<typename Storage::value_type>(lhs) OP rhs.get();                            \
   }                                                                                                \
   template <typename Storage>                                                                      \
   BOOST_FORCEINLINE typename Storage::value_type                                                   \
