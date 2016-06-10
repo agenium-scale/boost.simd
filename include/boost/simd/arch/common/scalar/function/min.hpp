@@ -14,6 +14,9 @@
 
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
+#include <boost/simd/function/conformant.hpp>
+#include <boost/simd/function/std.hpp>
+#include <boost/algorithm.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -30,6 +33,35 @@ namespace boost { namespace simd { namespace ext
       return (a0 < a1) ? a0 : a1;
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( min_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bs::conformant_tag
+                          , bd::scalar_< bd::arithmetic_<A0> >
+                          , bd::scalar_< bd::arithmetic_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator()( conformant_tag const&, A0 a0, A0 a1) const BOOST_NOEXCEPT
+    {
+      return (a0 <  a1) ? a0 : a1;
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( min_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bs::std_tag
+                          , bd::scalar_< bd::arithmetic_<A0> >
+                          , bd::scalar_< bd::arithmetic_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator()( std_tag const&, A0 a0, A0 a1) const BOOST_NOEXCEPT
+    {
+      return std::min(a0, a1);
+    }
+  };
+
 } } }
 
 

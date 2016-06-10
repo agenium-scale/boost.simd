@@ -10,6 +10,8 @@
 */
 //==================================================================================================
 #include <boost/simd/pack.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
 #include <boost/simd/function/maxmag.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
@@ -41,4 +43,17 @@ STF_CASE_TPL("Check maxmag on pack" , STF_NUMERIC_TYPES)
   test<T, N>($);
   test<T, N/2>($);
   test<T, N*2>($);
+}
+
+STF_CASE_TPL("Check maxmag on nans  pack" , STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  static const std::size_t N = bs::pack<T>::static_size;
+  {
+    using p_t = bs::pack<T, N>;
+    p_t n =  bs::Nan<p_t>();
+    p_t o =  bs::One<p_t>();
+    STF_IEEE_EQUAL(bs::maxmag(n, o), n);
+    STF_IEEE_EQUAL(bs::maxmag(o, n), o);
+  }
 }

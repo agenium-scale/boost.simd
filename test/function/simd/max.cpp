@@ -69,3 +69,17 @@ STF_CASE_TPL("Check max on floating point pack" , STF_IEEE_TYPES)
   test_r<T, N/2>($);
   test_r<T, N*2>($);
 }
+
+
+STF_CASE_TPL("Check max on nans  pack" , STF_IEEE_TYPES)
+{
+  static const std::size_t N = bs::pack<T>::static_size;
+  {
+    using p_t = bs::pack<T, N>;
+    p_t n =  bs::Nan<p_t>();
+    p_t o =  bs::One<p_t>();
+    STF_IEEE_EQUAL(bs::max(n, o), n);
+    STF_IEEE_EQUAL(bs::max(o, n), o);
+  }
+
+}
