@@ -18,7 +18,7 @@ namespace boost { namespace simd
 
  /*!
 
-    @ingroup group-arithmetic
+    @ingroup group-operator
     Function object implementing unary_minus capabilities
 
     return the elementwise unary minus of the parameter

@@ -18,7 +18,7 @@ namespace boost { namespace simd
 
  /*!
 
-    @ingroup group-operator
+    @ingroup group-boolean
     Function object implementing logical_or capabilities
 
     return the logical or of the two parameters

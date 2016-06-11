@@ -33,10 +33,20 @@ namespace boost { namespace simd
     T r = T(1)/x;
     @endcode
 
+    @par Note
+
+    For integral typed entries the result is always in the set \f$\{0,  \pm1, Valmax \}\f$
+
     @par Decorators
 
-     - fast_ @ref decorator can be applied to rec as many systems provide fast low precision
-       intrinsic for inverse computation
+     For floating types
+
+     - raw_ decorator can be applied to rec as many systems provide fast low precision
+       intrinsic for inverse computation. The result can be not fully accurate.
+
+     - fast_ decorator can be applied to rec as using a one step refinement of raw_(rec)
+       instead of division when available.
+
 
   **/
   const boost::dispatch::functor<tag::rec_> rec = {};

@@ -36,28 +36,24 @@ namespace boost { namespace simd
     @endcode
 
     @par Note
-    Correct fused multiply/add implies
+    Conformant fused multiply/add implies
 
     - only one rounding
 
     - no "intermediate" overflow
 
-    fma provides this each time it is reasonable
-    in terms of performance (mainly if the system has the hard
+    fma provides this for all integral types and each time it is reasonable
+    in terms of performance for floating ones (i.e. if the system has the hard
     wired capability).
 
-    If you need "real" fma capabilities in all circumstances in your own
-    code you can use correct_fma (although it can be expansive).
+    If you need conformant fma capabilities in all circumstances in your own
+    code you can use correct_fma or the std_ decorator
+    (although both can can be very expansive).
 
-    Also :
+     @par Decorators
 
-
-    - fma(x, y, z, nooverflow_) provides a "only one rounding" mode but does not care for possible
-    intermediate overflow.
-
-    @par Decorators
-
-    std_ for floating entries
+    std_ for floating entries to call directly std::fma. This implies conformant fma behaviour,
+    but in no way improved performances.
 
     @par Alias
 

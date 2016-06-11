@@ -20,7 +20,7 @@ namespace boost { namespace simd
   /*!
     @ingroup group-decorator
 
-    Decorate a function to use the standard compliant implementation.
+    provides an easy way to use the original  stdlibc++ function that is mimicked by one of our functors.
 
     @par Semantic
 
@@ -30,17 +30,23 @@ namespace boost { namespace simd
     auto std_func = std_(func);
     @endcode
 
-    generates a function object that behaves strictly as the standard compliant version of @c func.
-    This implies, for example:
+    is equivalent to:
 
-    - for simd vector parameter a map of the standard function is done
-      for each vector element: this is never vectorized.
+    @code
+    T r = std::func(< func parameters >);
+    @endcode
+
+    @par Notes:
+
+    - for simd vector parameter a map of the standard function is done automagically
+      for each vector element but of course there is no vectorization gain.
 
     - std_ is given to be able to shortly compare boost.simd functors
     and stdlibc++ equivalent behaviours.
 
-    @see @ref Decorators
-
+    - std_ is only a convenience feature for people which
+      sometimes have to stick to the standard or
+      test the standard behaviour against **Boost.SIMD**.
   **/
   const detail::decorator<std_tag> std_ = {};
 } }

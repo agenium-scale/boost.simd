@@ -37,14 +37,13 @@ namespace boost { namespace simd
 
     but is only rounded once and with no intermediate overflow.
 
-    @par Note:
-
+    @par Notes:
     - For integers x*y+z is always performed in 2-complement wraping.
 
     - For floating points numbers, the correct fused multiply add is computed,
     meaning the computation of x*y+z with only one rounding operation.
     This operation may be very expensive on architectures where this
-    functionality is not provided.
+    functionality is not hardware provided.
 
     - @c correct_fma is in fact a transitory function which ensures
     strict @ref fma capabilities, i.e. only one rounding operation and no undue

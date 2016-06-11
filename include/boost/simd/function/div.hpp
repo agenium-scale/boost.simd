@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
   /*!
-    @ingroup group-operator
+    @ingroup group-arithmetic
 
     Calculate the quotient of the two parameters of the same type with or without options.
 
@@ -38,20 +38,6 @@ namespace boost { namespace simd
   **/
   template<typename T> auto div({Option const & o, T const& a, T const& b);
 
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-operator
-
-      Perform the quotient of two parameters of the same type.
-
-
-      Function object tied to boost::simd::div
-
-      @see boost::simd::div
-    **/
-    const boost::dispatch::functor<tag::div_> div = {};
-  }
 } }
 #endif
 

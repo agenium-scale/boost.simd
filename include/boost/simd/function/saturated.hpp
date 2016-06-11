@@ -23,14 +23,15 @@ namespace boost { namespace simd
 
    provides a saturated version of some functors which produce integral typed values on return.
 
-    @par Semantic
+   This is peculiarly interesting in SIMD mode, as unlike scalars types, SIMD @ref pack of
+   integers are not promoted  during current arithmetic operations and this increases the
+   overflow risks.
+
+   @par Semantic
 
     @code
     T r = saturated_(func)(< func parameters >);
     @endcode
-
-    @see  decorator
-
   **/
   template<typename T> auto saturated_(T const& x) {}
 

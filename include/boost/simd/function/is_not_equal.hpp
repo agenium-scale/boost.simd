@@ -18,7 +18,7 @@ namespace boost { namespace simd
 
  /*!
 
-    @ingroup group-operator
+    @ingroup group-predicates
     Function object implementing is_not_equal capabilities
 
     Returns @ref True if x and y are not equal else @ref False.

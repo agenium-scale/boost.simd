@@ -32,8 +32,6 @@ namespace boost { namespace simd
     T r = fast_(func)(< func parameters >);
     @endcode
 
-    @see  decorator
-
   **/
   template<typename T> auto fast_(T const& x) {}
 

@@ -29,9 +29,6 @@ namespace boost { namespace simd
     @code
     T r = raw_(func)(< func parameters >);
     @endcode
-
-    @see  decorator
-
   **/
   template<typename T> auto raw_(T const& x) {}
 
