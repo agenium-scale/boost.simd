@@ -71,7 +71,7 @@ namespace boost { namespace simd { namespace ext
     // Constructing the output also depends on the storage_kind the output
     using result_storage_kind = typename result_traits::storage_kind;
 
-    // CHecks some basic assertions
+    // Checks some basic assertions
     struct traits_checker
     {
       template <typename S, typename E>
@@ -100,7 +100,7 @@ namespace boost { namespace simd { namespace ext
     template <typename P0, typename SKI, typename SKO, typename... N>
     BOOST_FORCEINLINE static result_type map_ ( SKI const&, SKO const&
                                               , br::list<N...> const&
-                                              , bd::functor<Opt> const& o, P0 const& p0
+                                              , bd::functor<Opt> const& , P0 const& p0
                                               )
     BOOST_NOEXCEPT_IF(is_noexcept)
     {
@@ -113,7 +113,7 @@ namespace boost { namespace simd { namespace ext
     template <typename P0, typename P1, typename SKI, typename SKO, typename... N>
     BOOST_FORCEINLINE static result_type map_ ( SKI const&, SKO const&
                                               , br::list<N...> const&
-                                              , bd::functor<Opt> const& o, P0 const& p0, P1 const& p1
+                                              , bd::functor<Opt> const& , P0 const& p0, P1 const& p1
                                               )
     BOOST_NOEXCEPT_IF(is_noexcept)
     {
@@ -128,7 +128,7 @@ namespace boost { namespace simd { namespace ext
             >
     BOOST_FORCEINLINE static result_type map_ ( SKI const&, SKO const&
                                               , br::list<N...> const&
-                                              , bd::functor<Opt> const& o
+                                              , bd::functor<Opt> const&
                                               , P0 const& p0, P1 const& p1, P2 const& p2
                                               )
     BOOST_NOEXCEPT_IF(is_noexcept)
@@ -144,7 +144,7 @@ namespace boost { namespace simd { namespace ext
             >
     BOOST_FORCEINLINE static result_type map_ ( SKI const&, SKO const&
                                               , br::list<N...> const&
-                                              , bd::functor<Opt> const& o
+                                              , bd::functor<Opt> const&
                                               , P0 const& p0, P1 const& p1
                                               , P2 const& p2, P3 const& p3
                                               )
