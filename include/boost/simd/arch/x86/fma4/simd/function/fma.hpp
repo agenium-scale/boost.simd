@@ -72,5 +72,6 @@ namespace boost { namespace simd { namespace ext
     }
   };
 } } }
+#include <boost/simd/arch/x86/fma4/simd/function/correct_fma.hpp>
 
 #endif
