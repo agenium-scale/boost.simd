@@ -30,5 +30,5 @@ namespace boost { namespace simd { namespace ext
     }
   };
 } } }
-
+#include <boost/simd/arch/ppc/vmx/simd/function/correct_fma.hpp>
 #endif

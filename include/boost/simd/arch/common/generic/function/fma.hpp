@@ -36,5 +36,7 @@ namespace boost { namespace simd { namespace ext
   };
 } } }
 
+#include <boost/simd/arch/common/scalar/function/correct_fma.hpp>
+#include <boost/simd/arch/common/simd/function/correct_fma.hpp>
 
 #endif
