@@ -30,7 +30,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE bd::scalar_of_t<A0> operator()(A0 const & a0, A1 const &) const
     {
       enum { value = A1::value };
-      return _mm_extract_epi8(a0, value);
+      return bd::scalar_of_t<A0>(_mm_extract_epi8(a0, value));
     }
   };
 
@@ -45,7 +45,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE bd::scalar_of_t<A0> operator()(A0 const & a0, A1 const &) const
     {
       enum { value = A1::value };
-      return _mm_extract_epi16(a0, value);
+      return bd::scalar_of_t<A0>(_mm_extract_epi16(a0, value));
     }
   };
 
@@ -89,7 +89,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::constant_<bd::integer_<A1>>
                           )
   {
-    BOOST_FORCEINLINE bd::scalar_of_t<A0> operator()(A0 const & a0, A1 const &) const
+    BOOST_FORCEINLINE float operator()(A0 const & a0, A1 const &) const
     {
       float f;
       enum { value = A1::value };
