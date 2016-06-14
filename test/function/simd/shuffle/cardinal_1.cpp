@@ -1,45 +1,48 @@
 //==================================================================================================
 /**
-  Copyright 201 NumScale SAS
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#include <boost/simd/function/scalar/shuffle.hpp>
+#include <boost/simd/function/shuffle.hpp>
+#include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
 
 using namespace boost::simd;
 
 STF_CASE_TPL("Check unary shuffle behavior with direct permutation", STF_NUMERIC_TYPES)
 {
-  STF_EQUAL( shuffle<-1>(T(4)), T(0) );
-  STF_EQUAL( shuffle<0>(T(4)) , T(4) );
+  using p_t = pack<T,1>;
+  STF_EQUAL( shuffle<-1>(p_t(4)), Zero<p_t>() );
+  STF_EQUAL( shuffle<0>(p_t(4)) , p_t(4) );
 }
 
 STF_CASE_TPL("Check binary shuffle behavior with direct permutation", STF_NUMERIC_TYPES)
 {
-  STF_EQUAL( shuffle<-1>(T(4),T(7)) , T(0) );
-  STF_EQUAL( shuffle< 0>(T(4),T(7)) , T(4) );
-  STF_EQUAL( shuffle< 1>(T(4),T(7)) , T(7) );
+  using p_t = pack<T,1>;
+  STF_EQUAL( shuffle<-1>(p_t(4),p_t(7)) , Zero<p_t>() );
+  STF_EQUAL( shuffle< 0>(p_t(4),p_t(7)) , p_t(4) );
+  STF_EQUAL( shuffle< 1>(p_t(4),p_t(7)) , p_t(7) );
 }
 
 template<int N> struct grab_
 {
-  template<typename I, typename C>
-  struct apply : std::integral_constant<int, N>
-  {};
+  template<typename I, typename C> struct apply : std::integral_constant<int, N> {};
 };
 
 STF_CASE_TPL("Check unary shuffle behavior with direct meta-permutation", STF_NUMERIC_TYPES)
 {
-  STF_EQUAL( shuffle<grab_<0>>(T(4)) , T(4) );
+  using p_t = pack<T,1>;
+  STF_EQUAL( shuffle<grab_<0>>(p_t(4)) , p_t(4) );
 }
 
 STF_CASE_TPL("Check binary shuffle behavior with direct meta-permutation", STF_NUMERIC_TYPES)
 {
-  STF_EQUAL( shuffle<grab_<0>>(T(4),T(7)) , T(4) );
-  STF_EQUAL( shuffle<grab_<1>>(T(4),T(7)) , T(7) );
+  using p_t = pack<T,1>;
+  STF_EQUAL( shuffle<grab_<0>>(p_t(4),p_t(7)) , p_t(4) );
+  STF_EQUAL( shuffle<grab_<1>>(p_t(4),p_t(7)) , p_t(7) );
 }
 
 #if !defined(BOOST_NO_CONSTEXPR)
@@ -51,7 +54,8 @@ constexpr int grab1(int /*i*/, int /*c*/) { return 1; }
 
 STF_CASE_TPL("Check unary shuffle behavior with constexpr-permutation", STF_NUMERIC_TYPES)
 {
-  STF_EQUAL( shuffle<pattern<grab0>>(T(4),T(7)) , T(4) );
-  STF_EQUAL( shuffle<pattern<grab1>>(T(4),T(7)) , T(7) );
+  using p_t = pack<T,1>;
+  STF_EQUAL( shuffle<pattern<grab0>>(p_t(4),p_t(7)) , p_t(4) );
+  STF_EQUAL( shuffle<pattern<grab1>>(p_t(4),p_t(7)) , p_t(7) );
 }
 #endif
