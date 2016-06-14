@@ -7,7 +7,7 @@
 **/
 //==================================================================================================
 #include <boost/simd/function/scalar/shuffle.hpp>
-#include <simd_test>
+#include <simd_test.hpp>
 
 using namespace boost::simd;
 
