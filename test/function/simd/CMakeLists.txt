@@ -291,6 +291,7 @@ sqrt1pm1.cpp
 sqrt.cpp
 store.cpp
 successor.cpp
+sum.cpp
 tan.cpp
 tand.cpp
 tanpi.cpp
@@ -316,8 +317,8 @@ unary_plus.cpp
 #muls.cpp
 #nbtrue.cpp
 #rem.cpp TODO
-####dot.cpp
-####pow2.cpp
+#dot.cpp
+#pow2.cpp
 )
 
 make_unit( "function.simd"  ${SOURCES})
