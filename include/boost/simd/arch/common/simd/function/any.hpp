@@ -13,6 +13,7 @@
 #include <boost/simd/detail/traits.hpp>
 #include <boost/simd/function/simd/genmask.hpp>
 #include <boost/simd/function/simd/hmsb.hpp>
+#include <boost/simd/function/splatted.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -29,6 +30,21 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE bool operator()( const A0& a0) const BOOST_NOEXCEPT
     {
       return hmsb(genmask(a0)) != 0;
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD_IF( any_
+                            , (typename A0, typename X)
+                            , (detail::is_native<X>)
+                            , bd::cpu_
+                            , bs::splatted_tag
+                            , bs::pack_<bd::fundamental_<A0>, X>
+                            )
+  {
+    BOOST_FORCEINLINE as_logical_t<A0>
+    operator()(bs::splatted_tag const&, const A0& a0) const BOOST_NOEXCEPT
+    {
+      return as_logical_t<A0>(any(a0));
     }
   };
 } } }
