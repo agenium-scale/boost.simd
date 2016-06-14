@@ -34,7 +34,7 @@ namespace boost { namespace simd { namespace ext
     using pattern_t = bsd::any_pattern_<bsd::pattern_<Ps...>>;
 
     BOOST_FORCEINLINE A0 operator()(pattern_t const&, A0 const& a0) const BOOST_NOEXCEPT
-    { puts("YO DAWG COMMON UNARY");
+    {
       return do_(a0, typename A0::traits::element_range{});
     }
 
@@ -81,7 +81,7 @@ namespace boost { namespace simd { namespace ext
 
     // This binary shuffle is actually binary
     BOOST_FORCEINLINE A0 side(A0 const& a0, A0 const& a1, detail::mixed_side const&) const BOOST_NOEXCEPT
-    { puts("YO DAWG COMMON BINARY");
+    {
       return do_(a0,a1, typename A0::traits::element_range{});
     }
 
