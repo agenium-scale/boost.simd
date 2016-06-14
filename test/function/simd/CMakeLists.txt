@@ -218,6 +218,7 @@ maxnum.cpp
 maxnummag.cpp
 meanof.cpp
 min.cpp
+minimum.cpp
 minmag.cpp
 minnum.cpp
 minnummag.cpp
@@ -315,8 +316,6 @@ unary_plus.cpp
 #muls.cpp
 #nbtrue.cpp
 #rem.cpp TODO
-#splatted_maximum.cpp//TODO all_reduce
-#splatted_minimum.cpp
 ####dot.cpp
 ####pow2.cpp
 )
