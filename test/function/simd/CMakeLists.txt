@@ -212,6 +212,7 @@ lookup.cpp
 majority.cpp
 mantissa.cpp
 max.cpp
+maximum.cpp
 maxmag.cpp
 maxnum.cpp
 maxnummag.cpp

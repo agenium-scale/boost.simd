@@ -12,6 +12,5 @@
 
 #include <boost/simd/function/scalar/maximum.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/simd/function/maximum.hpp>
 
 #endif
