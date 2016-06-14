@@ -13,7 +13,8 @@
 #include <boost/simd/detail/traits.hpp>
 #include <boost/simd/function/conformant.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_greater.hpp>
+#include <boost/simd/function/simd/is_less.hpp>
+#include <boost/simd/function/simd/is_nan.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -46,7 +47,11 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator()( conformant_tag const&
                                    , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
     {
+    #if BOOST_COMP_CLANG || (BOOST_COMP_GNUC <  BOOST_VERSION_NUMBER(5,0,0))
       return bs::max(a0, a1);
+    #else
+      return if_else(is_nan(a1), a0, bs::max(a0, a1));
+    #endif
     }
   };
 } } }

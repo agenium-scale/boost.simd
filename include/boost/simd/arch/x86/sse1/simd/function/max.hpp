@@ -12,6 +12,8 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_MAX_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_MAX_HPP_INCLUDED
 #include <boost/simd/detail/overload.hpp>
+#include <boost/simd/function/is_nan.hpp>
+#include <boost/simd/function/if_else.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -30,7 +32,6 @@ namespace boost { namespace simd { namespace ext
       return _mm_max_ps(a1, a0);
     }
   };
-
 } } }
 
 #endif

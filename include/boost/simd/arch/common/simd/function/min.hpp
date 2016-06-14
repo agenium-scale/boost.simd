@@ -45,8 +45,13 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator()( conformant_tag const&
                                    , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
     {
+    #if BOOST_COMP_CLANG || (BOOST_COMP_GNUC <  BOOST_VERSION_NUMBER(5,0,0))
       return bs::min(a0, a1);
+    #else
+      return if_else(is_nan(a1), a0, bs::min(a0, a1));
+    #endif
     }
-  };} } }
+  };
+} } }
 
 #endif
