@@ -1,15 +1,14 @@
 //==================================================================================================
-/*!
-  @file
-
+/**
   Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/plus.hpp>
+#include <boost/simd/function/splatted.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/arch/common/generic/function/autofold.hpp>
@@ -52,7 +51,8 @@ template <typename T, std::size_t N, typename Env> void test(Env& $)
 
   for(std::size_t i=0;i<N;i++) p[i] = k++;
 
-  STF_EQUAL( boost::simd::fake_sum(p), T( (N*(N+1))/2 ) );
+  STF_EQUAL( bs::fake_sum(p), T( (N*(N+1))/2 ) );
+  STF_EQUAL( bs::splatted_(bs::fake_sum)(p), p_t(T( (N*(N+1))/2 )) );
 }
 
 STF_CASE_TPL("Check autofold behaviour on pack", STF_NUMERIC_TYPES)
