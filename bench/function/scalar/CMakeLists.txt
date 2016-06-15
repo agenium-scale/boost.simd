@@ -221,8 +221,6 @@ set(SOURCES
     oneminus_s.cpp
     plus.cpp
     plus_s.cpp
-    posmax.cpp
-    posmin.cpp
     pow2.cpp
     pow_abs.cpp
     pow.cpp

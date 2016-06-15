@@ -50,13 +50,10 @@ namespace boost { namespace simd
 #include <boost/simd/function/hmsb.hpp>
 #include <boost/simd/function/is_included_c.hpp>
 #include <boost/simd/function/is_included.hpp>
-#include <boost/simd/function/is_simd_logical.hpp>
 #include <boost/simd/function/maximum.hpp>
 #include <boost/simd/function/minimum.hpp>
 #include <boost/simd/function/nbtrue.hpp>
 #include <boost/simd/function/none.hpp>
-#include <boost/simd/function/posmax.hpp>
-#include <boost/simd/function/posmin.hpp>
 #include <boost/simd/function/prod.hpp>
 #include <boost/simd/function/sum.hpp>
 

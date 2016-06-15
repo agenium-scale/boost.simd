@@ -240,8 +240,6 @@ oneminus.cpp
 oneminus_s.cpp
 plus.cpp
 plus_s.cpp
-posmax.cpp
-posmin.cpp
 pow.cpp
 pow_abs.cpp
 predecessor.cpp
@@ -311,14 +309,10 @@ twopower.cpp
 unary_minus.cpp
 unary_minus_s.cpp
 unary_plus.cpp
-
-#is_included_c.cpp
-#is_included.cpp
 #mod.cpp
 #muls.cpp
 #nbtrue.cpp
 #rem.cpp TODO
-#dot.cpp
 #pow2.cpp
 )
 

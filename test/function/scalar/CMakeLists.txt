@@ -256,12 +256,8 @@ set ( SOURCES
    is_included_c.cpp
    is_included.cpp
    is_simd_logical.cpp
-#   maximum.cpp
-#   minimum.cpp
    nbtrue.cpp
    none.cpp
-   posmax.cpp
-   posmin.cpp
    prod.cpp
    sum.cpp
 #swar
@@ -275,10 +271,6 @@ set ( SOURCES
    lookup.cpp
    reverse.cpp
    sort.cpp
-##   splatted_maximum.cpp
-##   splatted_minimum.cpp
-##   splatted_prod.cpp
-##   splatted_sum.cpp
 #exponential
    cbrt.cpp
    exp.cpp
