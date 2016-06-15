@@ -246,6 +246,7 @@ pow.cpp
 pow_abs.cpp
 predecessor.cpp
 prev.cpp
+prod.cpp
 rec.cpp
 rem_pio2.cpp
 rem_pio2_cephes.cpp
