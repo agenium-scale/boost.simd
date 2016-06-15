@@ -10,7 +10,7 @@
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/as.hpp>
 #include <limits>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 
 STF_CASE_TPL( "Check mone behavior on signed types"
             , (double)(float)

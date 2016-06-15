@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/constant/mask2frexp.hpp>
 #include <boost/simd/as.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 //TODO
 STF_CASE_TPL( "Check mask2frexp behavior for integral types"
             , (std::uint8_t)(std::uint16_t)(std::uint32_t)(std::uint64_t)

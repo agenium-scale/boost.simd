@@ -10,7 +10,7 @@
 #include <boost/simd/constant/true.hpp>
 #include <boost/simd/logical.hpp>
 #include <boost/simd/as.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 
 STF_CASE_TPL( "Check true behavior", STF_NUMERIC_TYPES )
 {

@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/constant/invlog_2.hpp>
 #include <boost/simd/as.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 
 STF_CASE_TPL( "Check invlog_2 behavior for integral types"
             , (std::uint32_t)(std::uint64_t)
