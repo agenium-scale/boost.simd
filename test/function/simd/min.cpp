@@ -32,7 +32,7 @@ void test(Env& $)
   STF_EQUAL(bs::min(aa1, aa2), bb);
 }
 
-STF_CASE_TPL("Check min on integral pack" , STF_INTEGRAL_TYPES)
+STF_CASE_TPL("Check min on integral pack" , STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
   test<T, N>($);
