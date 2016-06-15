@@ -105,7 +105,7 @@ namespace boost { namespace simd
 #include <boost/simd/function/logical_not.hpp>
 #include <boost/simd/function/logical_or.hpp>
 #include <boost/simd/function/minus.hpp>
-#include <boost/simd/function/rem>
+#include <boost/simd/function/rem.hpp>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/plus.hpp>
 #include <boost/simd/function/shift_left.hpp>
