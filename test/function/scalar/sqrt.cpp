@@ -23,7 +23,7 @@
 #include <boost/simd/function/is_positive.hpp>
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/function/fast.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 
 STF_CASE_TPL (" sqrt real",  STF_IEEE_TYPES)
 {

@@ -7,7 +7,7 @@
 **/
 //==================================================================================================
 #include <boost/simd/function/scalar/enumerate.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 
 STF_CASE_TPL( "Check enumerate behavior with all types", STF_NUMERIC_TYPES )
 {

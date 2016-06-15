@@ -62,7 +62,6 @@ set ( SOURCES
    minmod.cpp
    multiplies_s.cpp
    nearbyint.cpp
-   neg_s.cpp
    oneminus.cpp
    oneminus_s.cpp
    plus_s.cpp

@@ -10,7 +10,7 @@
 #include <boost/simd/function/scalar/store.hpp>
 #include <boost/simd/logical.hpp>
 
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 
 STF_CASE_TPL( "Check store behavior with simple pointer with or without offset and mask", STF_NUMERIC_TYPES )
 {
