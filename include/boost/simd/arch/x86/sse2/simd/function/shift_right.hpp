@@ -11,8 +11,9 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_SHIFT_RIGHT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_SHIFT_RIGHT_HPP_INCLUDED
-#include <boost/simd/detail/overload.hpp>
 
+#include <boost/simd/detail/overload.hpp>
+#include <boost/simd/detail/assert_utils.hpp>
 #include <boost/simd/detail/make_dependent.hpp>
 #include <boost/simd/function/simd/bitwise_and.hpp>
 #include <boost/simd/function/simd/bitwise_or.hpp>
@@ -31,26 +32,7 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd =  boost::dispatch;
   namespace bs =  boost::simd;
-  //TODO as split group available
-//   BOOST_DISPATCH_OVERLOAD ( shift_right_
-//                           , (typename A0,typename A1 )
-//                           , bs::sse2_
-//                           , bs::pack_<bd::ints8_<A0>, bs::sse_>
-//                           , bd::scalar_<bd::integer_<A1>>
-//                          )
-//   {
-//     using sub_t = detail::make_dependent_t<int16_t,A0>;
-//     using gen_t = pack<sub_t, 16>;
-//     BOOST_FORCEINLINE A0 operator() ( const A0 & a0
-//                                     , const A1 & a1 ) const BOOST_NOEXCEPT
-//     {
-//       BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "shift_right sse2 int8: a shift is out of range");
-//       gen_t a0h, a0l;
-//       split(a0, a0l, a0h);
-//       return group(shift_right(a0l, a1), shift_right(a0h, a1));
 
-//     }
-//   };
   BOOST_DISPATCH_OVERLOAD ( shift_right_
                           , (typename A0,typename A1 )
                           , bs::sse2_
@@ -133,13 +115,11 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::integer_<A1>>
                          )
   {
-    using  int_t = typename detail::make_dependent_t<int16_t,A0>;
-
     BOOST_FORCEINLINE A0 operator() ( const A0 & a0
                                     , const A1 & a1 ) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "shift_right sse2 uint8: a shift is out of range");
-      using gen_t = pack<int_t, A0::static_size/2>;
+      using gen_t = typename A0::template retype<std::int16_t,A0::static_size/2>;
       A0 const Mask1 = bitwise_cast<A0>(gen_t(0x00ff));
       A0 const Mask2 = bitwise_cast<A0>(gen_t(0xff00));
 

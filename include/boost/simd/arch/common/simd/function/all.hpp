@@ -1,7 +1,6 @@
 //==================================================================================================
 /**
   Copyright 2016 NumScale SAS
-  Copyright 2016 J.T.Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,6 +14,7 @@
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/function/genmask.hpp>
 #include <boost/simd/function/hmsb.hpp>
+#include <boost/simd/function/splatted.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -32,6 +32,21 @@ namespace boost { namespace simd { namespace ext
     {
       using count = std::integral_constant<std::size_t, (1ull << A0::static_size)-1>;
       return hmsb(genmask(a0)) == count::value;
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD_IF( all_
+                            , (typename A0, typename X)
+                            , (detail::is_native<X>)
+                            , bd::cpu_
+                            , bs::splatted_tag
+                            , bs::pack_<bd::fundamental_<A0>, X>
+                            )
+  {
+    BOOST_FORCEINLINE as_logical_t<A0>
+    operator()(bs::splatted_tag const&, const A0& a0) const BOOST_NOEXCEPT
+    {
+      return as_logical_t<A0>(all(a0));
     }
   };
 } } }

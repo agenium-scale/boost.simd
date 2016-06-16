@@ -6,8 +6,9 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#include <boost/simd/pack.hpp>
 #include <boost/simd/function/all.hpp>
+#include <boost/simd/logical.hpp>
+#include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
 
 namespace bs = boost::simd;
@@ -32,9 +33,12 @@ void test(Env& $)
 
   STF_EQUAL(bs::all(aa1), b);
   STF_EQUAL(bs::all(aa2), c);
+
+  STF_EQUAL(bs::splatted_(bs::all)(aa1), (bs::pack<bs::logical<T>,N>(b)) );
+  STF_EQUAL(bs::splatted_(bs::all)(aa2), (bs::pack<bs::logical<T>,N>(c)) );
 }
 
-STF_CASE_TPL("Check all on pack" , STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check all on pack", STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 

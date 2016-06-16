@@ -212,11 +212,13 @@ lookup.cpp
 majority.cpp
 mantissa.cpp
 max.cpp
+maximum.cpp
 maxmag.cpp
 maxnum.cpp
 maxnummag.cpp
 meanof.cpp
 min.cpp
+minimum.cpp
 minmag.cpp
 minnum.cpp
 minnummag.cpp
@@ -238,12 +240,11 @@ oneminus.cpp
 oneminus_s.cpp
 plus.cpp
 plus_s.cpp
-posmax.cpp
-posmin.cpp
 pow.cpp
 pow_abs.cpp
 predecessor.cpp
 prev.cpp
+prod.cpp
 rec.cpp
 rem_pio2.cpp
 rem_pio2_cephes.cpp
@@ -289,6 +290,7 @@ sqrt1pm1.cpp
 sqrt.cpp
 store.cpp
 successor.cpp
+sum.cpp
 tan.cpp
 tand.cpp
 tanpi.cpp
@@ -307,17 +309,11 @@ twopower.cpp
 unary_minus.cpp
 unary_minus_s.cpp
 unary_plus.cpp
-
-#is_included_c.cpp
-#is_included.cpp
 #mod.cpp
 #muls.cpp
 #nbtrue.cpp
 #rem.cpp TODO
-#splatted_maximum.cpp//TODO all_reduce
-#splatted_minimum.cpp
-####dot.cpp
-####pow2.cpp
+#pow2.cpp
 )
 
 make_unit( "function.simd"  ${SOURCES})
