@@ -92,6 +92,7 @@ cosh.cpp
 coth.cpp
 ctz.cpp
 cumsum.cpp
+cumprod.cpp
 dec.cpp
 dec_s.cpp
 deinterleave_first.cpp
