@@ -92,6 +92,7 @@ cosh.cpp
 coth.cpp
 ctz.cpp
 cummin.cpp
+cummax.cpp
 cumprod.cpp
 cumsum.cpp
 dec.cpp
