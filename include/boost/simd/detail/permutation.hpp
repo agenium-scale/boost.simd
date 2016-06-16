@@ -8,7 +8,7 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_DETAIL_PERMUTATION_HPP_INCLUDED
 #define BOOST_SIMD_DETAIL_PERMUTATION_HPP_INCLUDED
-
+s
 #include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/shuffle.hpp>
@@ -112,7 +112,6 @@ namespace boost { namespace simd { namespace detail
                                                             : -1
                                                           )
                                         >;
-    sz x = 3;
   };
 
   template<int SZ, typename... N, typename Ps>
