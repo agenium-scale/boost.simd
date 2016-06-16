@@ -10,7 +10,6 @@
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_AUTOFOLD_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/extract.hpp>
 #include <boost/simd/function/combine.hpp>
 #include <boost/simd/function/splatted.hpp>
 #include <boost/simd/detail/function/all_reduce.hpp>
