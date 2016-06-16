@@ -42,6 +42,14 @@ matrix:
           packages: ['g++-5']
       env: CXX_STD=11 TOOLSET=g++-5 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0
 
+    - os: osx
+      compiler: clang
+      env: CXX_STD=11 TOOLSET=clang++ SIMD_EXT=-msse4.2 OPT=-ftrack-macro-expansion=0
+
+    - os: osx
+      compiler: clang
+      env: CXX_STD=11 TOOLSET=clang++ SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0
+
 # Prepare build
 before_script:
   - export BOOST_ROOT=build/_install/include
