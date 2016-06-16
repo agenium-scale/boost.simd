@@ -91,6 +91,7 @@ cotpi.cpp
 cosh.cpp
 coth.cpp
 ctz.cpp
+cumsum.cpp
 dec.cpp
 dec_s.cpp
 deinterleave_first.cpp
