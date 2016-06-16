@@ -38,10 +38,10 @@ namespace boost { namespace simd { namespace detail
     template<typename Op, typename V>
     BOOST_FORCEINLINE
     auto  operator()(Op const& op, V const& a0) const BOOST_NOEXCEPT
-          -> decltype( next_t{}( op, op(a0, bs::shuffle< butterfly_perm<Step> >(a0)) ) )
+          -> decltype( next_t{}( op, op(a0, boost::simd::shuffle< butterfly_perm<Step> >(a0)) ) )
     {
       next_t next;
-      return next( op, op(a0, bs::shuffle< butterfly_perm<Step> >(a0)) );
+      return next( op, op(a0, boost::simd::shuffle< butterfly_perm<Step> >(a0)) );
     }
   };
 
