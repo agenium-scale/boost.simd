@@ -11,8 +11,10 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/traits.hpp>
+#include <boost/simd/function/conformant.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_greater.hpp>
+#include <boost/simd/function/simd/is_less.hpp>
+#include <boost/simd/function/simd/is_nan.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -29,7 +31,27 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
     {
-      return if_else(is_greater(a0, a1), a0, a1);
+      return if_else(is_less(a0, a1), a1, a0);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD_IF( max_
+                            , (typename A0, typename X)
+                            , (detail::is_native<X>)
+                            , bd::cpu_
+                            , bs::conformant_tag
+                            , bs::pack_<bd::arithmetic_<A0>, X>
+                            , bs::pack_<bd::arithmetic_<A0>, X>
+                            )
+  {
+    BOOST_FORCEINLINE A0 operator()( conformant_tag const&
+                                   , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+    {
+    #if BOOST_COMP_CLANG || (BOOST_COMP_GNUC <  BOOST_VERSION_NUMBER(5,0,0))
+      return bs::max(a0, a1);
+    #else
+      return if_else(is_nan(a1), a0, bs::max(a0, a1));
+    #endif
     }
   };
 } } }

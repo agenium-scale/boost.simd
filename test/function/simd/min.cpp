@@ -8,6 +8,7 @@
 //==================================================================================================
 #include <boost/simd/function/min.hpp>
 #include <boost/simd/constant/nan.hpp>
+#include <boost/simd/function/conformant.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
 
@@ -31,7 +32,7 @@ void test(Env& $)
   STF_EQUAL(bs::min(aa1, aa2), bb);
 }
 
-STF_CASE_TPL("Check min on integral pack" , STF_INTEGRAL_TYPES)
+STF_CASE_TPL("Check min on integral pack" , STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
   test<T, N>($);
@@ -39,34 +40,16 @@ STF_CASE_TPL("Check min on integral pack" , STF_INTEGRAL_TYPES)
   test<T, N*2>($);
 }
 
-template <typename T, std::size_t N, typename Env>
-void test_r(Env& $)
+STF_CASE_TPL("Check conformant min on nans  pack" , STF_IEEE_TYPES)
 {
-  using p_t = bs::pack<T, N>;
-
-  T a1[N], a2[N], b[N];
-
-  a1[0]   = bs::Nan<T>();
-  a2[N-1] = bs::Nan<T>();
-  for(std::size_t i = 0; i < N; ++i)
+  namespace bs = boost::simd;
+  static const std::size_t N = bs::pack<T>::static_size;
   {
-     a1[i] = (i%2) ? T(i) : T(-i);
-     a2[i] = (i%2) ? T(i+N) : T(-(i+N));
-     b[i] = bs::min(a1[i], a2[i]);
+    using p_t = bs::pack<T, N>;
+    p_t n =  bs::Nan<p_t>();
+    p_t o =  bs::One<p_t>();
+    STF_IEEE_EQUAL(bs::conformant_(bs::min)(n, o), n);
+    STF_IEEE_EQUAL(bs::conformant_(bs::min)(o, n), o);
   }
 
-  p_t aa1(&a1[0], &a1[0]+N);
-  p_t aa2(&a2[0], &a2[0]+N);
-  p_t bb(&b[0], &b[0]+N);
-
-  STF_IEEE_EQUAL(bs::min(aa1, aa2), bb);
 }
-
-STF_CASE_TPL("Check min on floating point pack" , STF_IEEE_TYPES)
-{
-  static const std::size_t N = bs::pack<T>::static_size;
-  test_r<T, N>($);
-  test_r<T, N/2>($);
-  test_r<T, N*2>($);
-}
-

@@ -38,8 +38,10 @@ STF_CASE_TPL (" minmod real",  STF_IEEE_TYPES)
   STF_EQUAL(minmod(bs::Mone<T>(), bs::Mone<T>()), bs::Mone<T>());
   STF_EQUAL(minmod(bs::One<T>(), bs::One<T>()), bs::One<T>());
   STF_EQUAL(minmod(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
-  STF_EQUAL(minmod(bs::Nan<T>(), bs::One<T>()), bs::One<T>());
-  STF_IEEE_EQUAL(minmod(bs::One<T>(), bs::Nan<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(minmod(bs::Nan<T>(), bs::One<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(minmod(bs::One<T>(), bs::Nan<T>()), bs::One<T>());
+  STF_IEEE_EQUAL(minmod(bs::Nan<T>(), bs::Zero<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(minmod(bs::Zero<T>(), bs::Nan<T>()), bs::Zero<T>());
   STF_EQUAL(minmod(bs::One<T>(), bs::Two<T>()), bs::One<T>());
   STF_EQUAL(minmod(bs::Two<T>(), bs::One<T>()), bs::One<T>());
   STF_EQUAL(minmod(bs::One<T>(), bs::Mtwo<T>()), bs::Zero<T>());
@@ -84,3 +86,18 @@ STF_CASE_TPL (" minmodsigned_int",  STF_SIGNED_INTEGRAL_TYPES)
   STF_EQUAL(minmod(bs::One<T>(), bs::Mtwo<T>()), bs::Zero<T>());
   STF_EQUAL(minmod(bs::Mtwo<T>(), bs::One<T>()), bs::Zero<T>());
 } // end of test for signed_int_
+
+
+STF_CASE_TPL("Check minmod on nans  pack" , STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  static const std::size_t N = bs::pack<T>::static_size;
+  {
+    using p_t = bs::pack<T, N>;
+    p_t n =  bs::Nan<p_t>();
+    p_t o =  bs::One<p_t>();
+    STF_IEEE_EQUAL(bs::minmod(n, o), n);
+    STF_IEEE_EQUAL(bs::minmod(o, n), o);
+  }
+
+}

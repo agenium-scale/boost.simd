@@ -105,7 +105,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_NOEXCEPT_IF(is_noexcept)
     {
       functor f;
-      return result_type{ f(p0[N::value])... };
+      return result_type{ f(o, p0[N::value])... };
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -118,7 +118,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_NOEXCEPT_IF(is_noexcept)
     {
       functor f;
-      return result_type{ f(p0[N::value], p1[N::value])...  };
+      return result_type{ f(o, p0[N::value], p1[N::value])...  };
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -134,7 +134,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_NOEXCEPT_IF(is_noexcept)
     {
       functor f;
-      return result_type{ f(p0[N::value], p1[N::value], p2[N::value])... };
+      return result_type{ f(o, p0[N::value], p1[N::value], p2[N::value])... };
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -151,7 +151,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_NOEXCEPT_IF(is_noexcept)
     {
       functor f;
-      return result_type{ f(p0[N::value], p1[N::value], p2[N::value], p3[N::value])... };
+      return result_type{ f(o, p0[N::value], p1[N::value], p2[N::value], p3[N::value])... };
     }
 
     // ---------------------------------------------------------------------------------------------

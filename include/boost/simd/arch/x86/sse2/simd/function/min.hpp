@@ -32,12 +32,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( const A0 & a0
                                     , const A0 & a1 ) const BOOST_NOEXCEPT
     {
-#if !defined(BOOST_SIMD_NO_NANS) && defined(BOOST_SIMD_COMPILER_GCC)
-      // workaround for GCC bug #57057
-      return if_else(is_unord(a0, a1), a1, A0(_mm_min_pd(a0, a1)));
-#else
-      return _mm_min_pd(a0,a1);
-#endif
+      return _mm_min_pd(a1,a0);
     }
   };
 

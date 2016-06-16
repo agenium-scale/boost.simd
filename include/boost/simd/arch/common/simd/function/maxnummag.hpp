@@ -45,10 +45,7 @@ namespace boost { namespace simd { namespace ext
    {
       BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
-        auto cond = is_nan(a0);
-        const A0 a = if_else(cond,a0,a1);
-        const A0 b = if_else(cond,a1,a0);
-        return maxmag(a, b);
+        return maxmag(if_else(is_nan(a0),a1,a0), a1);
       }
    };
 

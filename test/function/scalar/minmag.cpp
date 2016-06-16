@@ -35,8 +35,8 @@ STF_CASE_TPL (" minmag real",  STF_IEEE_TYPES)
   STF_EQUAL(minmag(bs::Inf<T>(), bs::Inf<T>()),   bs::Inf<r_t>());
   STF_EQUAL(minmag(bs::Minf<T>(), bs::Minf<T>()), bs::Minf<r_t>());
   STF_IEEE_EQUAL(minmag(bs::Nan<T>(), bs::Nan<T>()),   bs::Nan<r_t>());
-  STF_IEEE_EQUAL(minmag(bs::One<T>(), bs::Nan<T>()),   bs::Nan<r_t>());
-  STF_EQUAL(minmag(bs::Nan<T>(), bs::One<T>()),   bs::One<r_t>());
+  STF_EQUAL(minmag(bs::One<T>(), bs::Nan<T>()),   bs::One<r_t>());
+  STF_IEEE_EQUAL(minmag(bs::Nan<T>(), bs::One<T>()),   bs::Nan<r_t>());
 #endif
   STF_EQUAL(minmag(bs::Mone<T>(), bs::Mone<T>()), bs::Mone<r_t>());
   STF_EQUAL(minmag(bs::One<T>(),  bs::One<T>()),  bs::One<r_t>());

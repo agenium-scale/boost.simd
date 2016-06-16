@@ -43,7 +43,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       if (is_nan(a0)) return a1;
-      return minmag(a1, a0);
+      return minmag(a0, a1);
     }
   };
 } } }
