@@ -204,7 +204,6 @@ set(SOURCES
     minnummag.cpp
     minus.cpp
     minus_s.cpp
-    mod.cpp
     modf.cpp
     multiplies.cpp
     multiplies_s.cpp

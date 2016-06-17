@@ -133,6 +133,11 @@ hi.cpp
 hmsb.cpp
 hypot.cpp
 iceil.cpp
+idivfix.cpp
+idivfloor.cpp
+idivceil.cpp
+idivround.cpp
+idivround2even.cpp
 if_allbits_else.cpp
 if_else_allbits.cpp
 if_else.cpp
@@ -250,6 +255,11 @@ predecessor.cpp
 prev.cpp
 prod.cpp
 rec.cpp
+rem.cpp
+remround.cpp
+remround2even.cpp
+remfloor.cpp
+remceil.cpp
 rem_pio2.cpp
 rem_pio2_cephes.cpp
 rem_pio2_medium.cpp
@@ -281,7 +291,6 @@ sincosd.cpp
 sincospi.cpp
 sind.cpp
 sinpi.cpp
-#sort.cpp
 split_multiplies.cpp
 sinhcosh.cpp
 sinh.cpp
@@ -313,11 +322,6 @@ twopower.cpp
 unary_minus.cpp
 unary_minus_s.cpp
 unary_plus.cpp
-#mod.cpp
-#muls.cpp
-#nbtrue.cpp
-#rem.cpp TODO
-#pow2.cpp
 )
 
 make_unit( "function.simd"  ${SOURCES})

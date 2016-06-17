@@ -18,7 +18,7 @@
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/valmin.hpp>
 
-STF_CASE_TPL (" idiv real",  STF_IEEE_TYPES)
+STF_CASE_TPL (" div real",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -33,7 +33,7 @@ STF_CASE_TPL (" idiv real",  STF_IEEE_TYPES)
   STF_EQUAL(div(bs::ifix, bs::Minf<T>(), bs::Minf<T>()), bs::Zero<r_t>());
   STF_EQUAL(div(bs::ifix, bs::Nan<T>(), bs::Nan<T>()), bs::Zero<r_t>());
 #endif
- STF_EQUAL(div(bs::ifix, bs::Mone<T>(), bs::Mone<T>()), bs::One<r_t>());
+  STF_EQUAL(div(bs::ifix, bs::Mone<T>(), bs::Mone<T>()), bs::One<r_t>());
   STF_EQUAL(div(bs::ifix, bs::Mone<T>(),bs::Zero<T>()), bs::Minf<r_t>());
   STF_EQUAL(div(bs::ifix, bs::One<T>(), bs::One<T>()), bs::One<r_t>());
   STF_EQUAL(div(bs::ifix, bs::One<T>(),bs::Zero<T>()), bs::Valmax<r_t>());
@@ -45,7 +45,7 @@ STF_CASE_TPL (" idiv real",  STF_IEEE_TYPES)
   STF_EQUAL(div(bs::ifix, T(4),T(-3)), r_t(-1));
 } // end of test for floating_
 
-STF_CASE_TPL (" idiv unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
+STF_CASE_TPL (" div unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -57,7 +57,7 @@ STF_CASE_TPL (" idiv unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
   STF_EQUAL(div(bs::ifix, bs::One<T>(), bs::Zero<T>()), bs::Valmax<r_t>());
 } // end of test for unsigned_int_
 
-STF_CASE_TPL (" idiv signed_int",  STF_SIGNED_INTEGRAL_TYPES)
+STF_CASE_TPL (" div signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

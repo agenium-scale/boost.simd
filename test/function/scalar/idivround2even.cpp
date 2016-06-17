@@ -20,7 +20,7 @@
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/valmin.hpp>
 
-STF_CASE_TPL (" idivround2even real",  STF_IEEE_TYPES)
+STF_CASE_TPL (" idiviround2even real",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -47,7 +47,7 @@ STF_CASE_TPL (" idivround2even real",  STF_IEEE_TYPES)
   STF_EQUAL(div(bs::iround2even, T(4),T(-3)), r_t(-1));
 } // end of test for floating_
 
-STF_CASE_TPL (" idivround2even unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
+STF_CASE_TPL (" idiviround2even unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -59,7 +59,7 @@ STF_CASE_TPL (" idivround2even unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
   STF_EQUAL(div(bs::iround2even, bs::One<T>(), bs::Zero<T>()), bs::Valmax<r_t>());
 } // end of test for unsigned_int_
 
-STF_CASE_TPL (" idivround2even  signed_int",  STF_SIGNED_INTEGRAL_TYPES)
+STF_CASE_TPL (" idiviround2even  signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

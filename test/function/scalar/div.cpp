@@ -8,6 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/scalar/div.hpp>
+#include <boost/simd/function/fast.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -51,17 +52,3 @@ STF_CASE_TPL( "Check div behavior with options", STF_NUMERIC_TYPES )
 
 }
 
-STF_CASE_TPL( "Check integral div behavior with options", STF_NUMERIC_TYPES )
-{
-  namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
-  using bs::div;
-  using r_t = decltype(div(bs::iceil, T(), T()));
-  STF_TYPE_IS(r_t, bd::as_integer_t<T>);
-
-  STF_EQUAL(div(bs::iceil      , bs::One<T>(), bs::Two<T>()), bs::One<r_t>());
-  STF_EQUAL(div(bs::ifloor     , bs::One<T>(), bs::Two<T>()), bs::Zero<r_t>());
-  STF_EQUAL(div(bs::iround     , bs::One<T>(), bs::Two<T>()), bs::One<r_t>());
-  STF_EQUAL(div(bs::iround2even, bs::One<T>(), bs::Two<T>()), bs::Zero<r_t>());
-  STF_EQUAL(div(bs::ifix       , bs::One<T>(), bs::Two<T>()), bs::Zero<r_t>());
-}

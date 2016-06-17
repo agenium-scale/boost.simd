@@ -13,5 +13,9 @@
 #include <boost/simd/function/scalar/rem.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/simd/function/rem.hpp>
+#include <boost/simd/arch/common/simd/function/remround.hpp>
+#include <boost/simd/arch/common/simd/function/remround2even.hpp>
+#include <boost/simd/arch/common/simd/function/remfloor.hpp>
+#include <boost/simd/arch/common/simd/function/remceil.hpp>
 
 #endif

@@ -22,6 +22,87 @@ namespace boost { namespace simd
     functions provided by the C and C++ standard library. Other functions like, in particular,
     provision for saturated operations are also provided.
 
+    @Notes
+
+     - Saturated operations
+
+     The functors:
+       - abs,
+       - dec,
+       - dist,
+       - divides,
+       - group,
+       - inc,
+       - minus,
+       - minusone,
+       - multiplies,
+       - plus,
+       - oneminus,
+       - oneplus,
+       - sqr
+       - toint
+       - touint
+       - unary_minus,
+       - unary_plus
+
+       can be decorated with the saturated_ decorator. This decorator has no effect on floating
+       calls,  but on integer calls but for integers replace the operation by its saturated equivalent.
+
+       Typically overflows will be replaced by the Valmin/Valmax proper value instead of providing
+       undefined behaviour for signed integral types or wrapping modulo Valmax+1 for unsigned ones.
+
+       Peculiarly saturated_(abs) and saturated_(dist) ensure that the result will never be stricly
+       negative (which is for instance the case of abs(Valmin<T>()) for T any any signed integral type).
+
+     - Division operations
+
+       divides is the function associated to standard division. There is another one,  providing more
+       flexibility,  namely div.
+
+       With two parameters div and divides are equivalent, but div can admit an option first parameter
+       that modify its behaviour.
+
+       The option parameter is described in the following table where a and b are of type T,  fT is a
+       supposed floating (as_floating_t<T> if it exists) and iT is the integer type associated to T
+       (as_integer_t<T>). (fT and iT are here only to support pseudo code description)
+
+
+      |--------------------|--------------------------|-----------------------------------------------|
+      | option             |          call            |      result similar to                        |
+      |--------------------|--------------------------|-----------------------------------------------|
+      | ceil               |   div(ceil, a, b)        |      T(ceil(fT(a)/fT(b)))                     |
+      | floor              |   div(floor, a, b)       |      T(floor(fT(a)/fT(b)))                    |
+      | fix                |   div(fix, a, b)         |      T(fix(fT(a)/fT(b)))                      |
+      | round              |   div(round, a, b)       |      T(round(fT(a)/fT(b)))                    |
+      | round2even         |   div(round2even, a, b)  |      T(round2even(fT(a)/fT(b)))               |
+      | iceil              |   div(iceil, a, b)       |      iT(iceil(fT(a)/fT(b)))                   |
+      | ifloor             |   div(ifloor, a, b)      |      iT(ifloor(fT(a)/fT(b)))                  |
+      | ifix               |   div(ifix, a, b)        |      iT(ifix(fT(a)/fT(b)))                    |
+      | iround             |   div(iround, a, b)      |      iT(iround(fT(a)/fT(b)))                  |
+      | iround2even        |   div(riound2even, a, b) |      iT(iround2even(fT(a)/fT(b)))             |
+      |--------------------|--------------------------|-----------------------------------------------|
+
+     - Remainder operations
+
+       rem is the remander functor providing same lind of facilities as div
+
+       With two parameters rem(a, b) is equivalent to  rem(fix, a, b)are equivalent, but rem can admit
+       an option first parameter that modify its behaviour and moreover use the fast_ decorator if
+       limiting case values are not a problem.
+
+       The option parameter can be chosen between ceil, floor, fix;, round, round2even and if opt is the option
+       the call
+
+         rem(opt, a, b) is equivalent to a-b*div(opt, a, b)
+
+      For floating entries the following corner cases are handled in the following way (unless the fast_
+      decorator is used and the result in these cases become undefined)
+       -  if x is +/-inf , Nan is returned
+       -  if x is +/-0 and y is not 0 x is returned
+       -  If y is +/-0, Nan is returned
+       -  If either argument is NaN, Nan is returned
+
+
   **/
 
   /*!
@@ -66,11 +147,8 @@ namespace boost { namespace simd
 #include <boost/simd/function/modulus.hpp>
 #include <boost/simd/function/oneminus.hpp>
 #include <boost/simd/function/rec.hpp>
-#include <boost/simd/function/remainder.hpp>
-#include <boost/simd/function/remfix.hpp>
 #include <boost/simd/function/rem.hpp>
 #include <boost/simd/function/remquo.hpp>
-#include <boost/simd/function/remround.hpp>
 #include <boost/simd/function/round2even.hpp>
 #include <boost/simd/function/round.hpp>
 #include <boost/simd/function/rsqrt.hpp>
