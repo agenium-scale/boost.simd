@@ -69,12 +69,11 @@ namespace boost { namespace simd { namespace ext
       BOOST_FORCEINLINE A0 operator()(bd::functor<bs::tag::ceil_> const&
                                      , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
-         return fnms(div(ceil, a0,a1), a1, a0);
-//        return if_nan_else(logical_or(is_invalid(a1),is_invalid(a0)) ,
-//                            if_nan_else(is_eqz(a1),
-//                                        if_minus(is_nez(a1), a0, div(ceil, a0,a1)*a1)
-//                                       )
-//                           );
+        return if_nan_else(logical_or(is_invalid(a1),is_invalid(a0)) ,
+                           if_nan_else(is_eqz(a1),
+                                       if_minus(is_nez(a1), a0, div(ceil, a0,a1)*a1)
+                                      )
+                          );
       }
    };
 

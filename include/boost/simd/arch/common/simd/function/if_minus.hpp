@@ -36,8 +36,7 @@ namespace boost { namespace simd { namespace ext
    {
      BOOST_FORCEINLINE A1 operator()(A0 const& a0, A1 const& a1, A1 const& a2) const
       {
-      return a1 - if_else_zero(a0, a2);
-      //     return if_else(a0,  a1-a2, a1);
+        return a1 - if_else_zero(a0, a2);
       }
    };
 
