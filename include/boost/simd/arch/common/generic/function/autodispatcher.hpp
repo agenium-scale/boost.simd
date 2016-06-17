@@ -12,5 +12,6 @@
 #include <boost/simd/arch/common/generic/function/automap.hpp>
 #include <boost/simd/arch/common/generic/function/autosplat.hpp>
 #include <boost/simd/arch/common/generic/function/autofold.hpp>
+#include <boost/simd/arch/common/generic/function/autoscan.hpp>
 
 #endif

@@ -312,6 +312,12 @@ namespace boost { namespace simd
       return const_reverse_iterator(cbegin());
     }
 
+    reference       back()        { return traits::at(*this, static_size-1); }
+    const_reference back() const  { return traits::at(*this, static_size-1); }
+
+    reference       front()        { return traits::at(*this, 0); }
+    const_reference front() const  { return traits::at(*this, 0); }
+
     public:
     BOOST_FORCEINLINE pack& operator++() BOOST_NOEXCEPT_IF_EXPR(inc(std::declval<pack>()))
     {

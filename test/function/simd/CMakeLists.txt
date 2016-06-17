@@ -91,6 +91,10 @@ cotpi.cpp
 cosh.cpp
 coth.cpp
 ctz.cpp
+cummin.cpp
+cummax.cpp
+cumprod.cpp
+cumsum.cpp
 dec.cpp
 dec_s.cpp
 deinterleave_first.cpp
