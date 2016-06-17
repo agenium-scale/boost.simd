@@ -1,7 +1,6 @@
 //==================================================================================================
 /**
   Copyright 2016 NumScale SAS
-  Copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -17,6 +16,23 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = ::boost::dispatch;
   namespace bs = ::boost::simd;
+
+  //------------------------------------------------------------------------------------------------
+  // load from a pointer of integers
+  BOOST_DISPATCH_OVERLOAD_IF( load_
+                            , (typename Target, typename Pointer)
+                            , (bs::is_pointing_to<Pointer,typename Target::type::value_type>)
+                            , bs::avx_
+                            , bd::pointer_<bd::scalar_<bd::integer_<Pointer>>,1u>
+                            , bd::target_<bs::pack_<bd::integer_<Target>,bs::avx_>>
+                            )
+  {
+    using target = typename Target::type;
+    BOOST_FORCEINLINE target operator()(Pointer p, Target const&) const
+    {
+      return _mm256_loadu_si256((__m256i*)(p));
+    }
+  };
 
   //------------------------------------------------------------------------------------------------
   // load from a pointer of double

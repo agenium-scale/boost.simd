@@ -28,7 +28,7 @@ namespace boost { namespace simd { namespace ext
       BOOST_FORCEINLINE A0 operator()( const saturated_tag &
                                      , A0 const& a0, A0 const& a1) const
       {
-        return _mm256_plus_epi16(a0,a1);
+        return _mm256_adds_epi16(a0,a1);
       }
    };
 
@@ -43,7 +43,7 @@ namespace boost { namespace simd { namespace ext
       BOOST_FORCEINLINE A0 operator()( const saturated_tag &
                                      , A0 const& a0, A0 const& a1) const
       {
-        return _mm256_plus_epi8(a0,a1);
+        return _mm256_adds_epi8(a0,a1);
       }
    };
 
@@ -58,7 +58,7 @@ namespace boost { namespace simd { namespace ext
       BOOST_FORCEINLINE A0 operator()( const saturated_tag &
                                      , A0 const& a0, A0 const& a1) const
       {
-        return _mm256_plus_epu16(a0,a1);
+        return _mm256_adds_epu16(a0,a1);
       }
    };
 
@@ -73,7 +73,7 @@ namespace boost { namespace simd { namespace ext
       BOOST_FORCEINLINE A0 operator()( const saturated_tag &
                                      , A0 const& a0, A0 const& a1) const
       {
-        return _mm256_plus_epu8(a0,a1);
+        return _mm256_adds_epu8(a0,a1);
       }
    };
 } } }

@@ -26,6 +26,26 @@ namespace boost { namespace simd { namespace ext
   namespace bs = ::boost::simd;
 
   //------------------------------------------------------------------------------------------------
+  // load from an aligned pointer of integers
+  BOOST_DISPATCH_OVERLOAD ( aligned_load_
+                          , (typename Target, typename Pointer)
+                          , bs::avx_
+                          , bd::pointer_<bd::scalar_<bd::integer_<Pointer>>,1u>
+                          , bd::target_<bs::pack_<bd::integer_<Target>,bs::avx_>>
+                          )
+  {
+    using target = typename Target::type;
+    BOOST_FORCEINLINE target operator()(Pointer p, Target const&) const
+    {
+      BOOST_ASSERT_MSG( boost::alignment::is_aligned(target::alignment, p)
+                      , "boost::simd::aligned_load was performed on an unaligned pointer of integer"
+                      );
+
+      return _mm256_load_si256(reinterpret_cast<__m256i const*>(p));
+    }
+  };
+
+  //------------------------------------------------------------------------------------------------
   // load from an aligned pointer of double
   BOOST_DISPATCH_OVERLOAD ( aligned_load_
                           , (typename Target, typename Pointer)

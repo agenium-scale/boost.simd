@@ -10,54 +10,414 @@
 #define BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_SLIDE_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/combine.hpp>
+#include <boost/simd/detail/dispatch/hierarchy/exactly.hpp>
+#include <boost/simd/detail/dispatch/meta/as_floating.hpp>
+#include <boost/simd/function/genmask.hpp>
+
+#define BOOST_SIMD_UNARY_SLIDE(SZ,IDX)                                                              \
+BOOST_DISPATCH_OVERLOAD ( slide_, (typename T), bs::avx_                                            \
+                        , bs::pack_< bd::type##SZ##_<T>, bs::avx_ >                                 \
+                        , bd::exactly_<std::integral_constant<int,IDX>>                             \
+                        )                                                                           \
+/**/
+
+#define BOOST_SIMD_BINARY_SLIDE(SZ,IDX)                                                             \
+BOOST_DISPATCH_OVERLOAD ( slide_, (typename T), bs::avx_                                            \
+                        , bs::pack_< bd::type##SZ##_<T>, bs::avx_ >                                 \
+                        , bs::pack_< bd::type##SZ##_<T>, bs::avx_ >                                 \
+                        , bd::exactly_<std::integral_constant<int,IDX>>                             \
+                        )                                                                           \
+/**/
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
 
+  // -----------------------------------------------------------------------------------------------
+  // [64 bits] Unary exact matches for all cardinal to minimize latency and # of registers used
+  // Thanks to Sylvain Jubertie for those tips
+  BOOST_SIMD_UNARY_SLIDE(64,1)
+  {
+    BOOST_FORCEINLINE T operator()( T const& a0
+                                  , std::integral_constant<int,1> const&
+                                  ) const BOOST_NOEXCEPT
+    {
+      auto const b0 = bitwise_cast<bd::as_floating_t<T>>(a0);
+      return bitwise_cast<T>(_mm256_shuffle_pd(b0, _mm256_permute2f128_pd(b0, b0, 0x81), 0x5) );
+    }
+  };
+
+  BOOST_SIMD_UNARY_SLIDE(64,2)
+  {
+    BOOST_FORCEINLINE T operator()( T const& a0
+                                  , std::integral_constant<int,2> const&
+                                  ) const BOOST_NOEXCEPT
+    {
+      auto const b0 = bitwise_cast<bd::as_floating_t<T>>(a0);
+      return bitwise_cast<T>( _mm256_permute2f128_pd(b0, b0, 0x81) );
+    }
+  };
+
+  BOOST_SIMD_UNARY_SLIDE(64,3)
+  {
+    BOOST_FORCEINLINE T operator()( T const& a0
+                                  , std::integral_constant<int,3> const&
+                                  ) const BOOST_NOEXCEPT
+    {
+      auto const b0 = bitwise_cast<bd::as_floating_t<T>>(a0);
+      return bitwise_cast<T>(_mm256_shuffle_pd( _mm256_permute2f128_pd(b0, b0, 0x81)
+                                              , bd::as_floating_t<T>(0)
+                                              , 0x1
+                                              )
+                            );
+    }
+  };
+
+  // -----------------------------------------------------------------------------------------------
+  // [64 bits] Binary exact matches for all cardinal to minimize latency and # of registers used
+  // Thanks to Sylvain Jubertie for those tips
+  BOOST_SIMD_BINARY_SLIDE(64,1)
+  {
+    BOOST_FORCEINLINE T operator()( T const& a0, T const& a1
+                                  , std::integral_constant<int,1> const&
+                                  ) const BOOST_NOEXCEPT
+    {
+      using f_t = bd::as_floating_t<T>;
+      return bitwise_cast<T>( _mm256_shuffle_pd ( bitwise_cast<f_t>(a0)
+                                                , _mm256_permute2f128_pd( bitwise_cast<f_t>(a0)
+                                                                        , bitwise_cast<f_t>(a1)
+                                                                        , 0x21
+                                                                        )
+                                                , 0x5
+                                                )
+                            );
+    }
+  };
+
+  BOOST_SIMD_BINARY_SLIDE(64,2)
+  {
+    BOOST_FORCEINLINE T operator()( T const& a0, T const& a1
+                                  , std::integral_constant<int,2> const&
+                                  ) const BOOST_NOEXCEPT
+    {
+      return bitwise_cast<T>( _mm256_permute2f128_pd( bitwise_cast<bd::as_floating_t<T>>(a0)
+                                                    , bitwise_cast<bd::as_floating_t<T>>(a1)
+                                                    , 0x21
+                                                    )
+                            );
+    }
+  };
+
+  BOOST_SIMD_BINARY_SLIDE(64,3)
+  {
+    BOOST_FORCEINLINE T operator()( T const& a0, T const& a1
+                                  , std::integral_constant<int,3> const&
+                                  ) const BOOST_NOEXCEPT
+    {
+      using f_t = bd::as_floating_t<T>;
+      return bitwise_cast<T>( _mm256_shuffle_pd ( _mm256_permute2f128_pd( bitwise_cast<f_t>(a0)
+                                                                        , bitwise_cast<f_t>(a1)
+                                                                        , 0x21
+                                                                        )
+                                                , bitwise_cast<f_t>(a1)
+                                                , 0x5
+                                                )
+                            );
+    }
+  };
+
+  // -----------------------------------------------------------------------------------------------
+  // [32 bits] Unary exact matches for all cardinal to minimize latency and # of registers used
+  BOOST_SIMD_UNARY_SLIDE(32,1)
+  {
+    BOOST_FORCEINLINE T operator()( T const& a0
+                                  , std::integral_constant<int,1> const&
+                                  ) const BOOST_NOEXCEPT
+    {
+      auto const b0 = bitwise_cast<bd::as_floating_t<T>>(a0);
+      return bitwise_cast<T>(_mm256_permute_ps(_mm256_blend_ps( b0
+                                                              , _mm256_permute2f128_ps(b0,b0,0x81)
+                                                              , 0x11
+                                                              )
+                                              , 0x39
+                                              )
+                            );
+    }
+  };
+
+  BOOST_SIMD_UNARY_SLIDE(32,2)
+  {
+    BOOST_FORCEINLINE T operator()( T const& a0
+                                  , std::integral_constant<int,2> const&
+                                  ) const BOOST_NOEXCEPT
+    {
+      auto const b0 = bitwise_cast<bd::as_floating_t<T>>(a0);
+      return bitwise_cast<T>(_mm256_shuffle_ps(b0, _mm256_permute2f128_ps(b0, b0, 0x81), 0x4e) );
+    }
+  };
+
+  BOOST_SIMD_UNARY_SLIDE(32,3)
+  {
+    BOOST_FORCEINLINE T operator()( T const& a0
+                                  , std::integral_constant<int,3> const&
+                                  ) const BOOST_NOEXCEPT
+    {
+      auto const b0 = bitwise_cast<bd::as_floating_t<T>>(a0);
+      return bitwise_cast<T>(_mm256_permute_ps(_mm256_blend_ps( b0
+                                                              , _mm256_permute2f128_ps(b0,b0,0x81)
+                                                              , 0x77
+                                                              )
+                                              , 0x93
+                                              )
+                            );
+    }
+  };
+
+  BOOST_SIMD_UNARY_SLIDE(32,4)
+  {
+    BOOST_FORCEINLINE T operator()( T const& a0
+                                  , std::integral_constant<int,4> const&
+                                  ) const BOOST_NOEXCEPT
+    {
+      auto const b0 = bitwise_cast<bd::as_floating_t<T>>(a0);
+      return bitwise_cast<T>(_mm256_permute2f128_ps(b0,b0,0x81));
+    }
+  };
+
+  BOOST_SIMD_UNARY_SLIDE(32,5)
+  {
+    BOOST_FORCEINLINE T operator()( T const& a0
+                                  , std::integral_constant<int,5> const&
+                                  ) const BOOST_NOEXCEPT
+    {
+      using f_t = bd::as_floating_t<T>;
+      auto const b0 = bitwise_cast<f_t>(a0);
+      return bitwise_cast<T>(_mm256_permute_ps( _mm256_blend_ps ( f_t(0)
+                                                                , _mm256_permute2f128_ps(b0,b0,0x81)
+                                                                , 0xe
+                                                                )
+                                              , 0x39
+                                              )
+                            );
+    }
+  };
+
+  BOOST_SIMD_UNARY_SLIDE(32,6)
+  {
+    BOOST_FORCEINLINE T operator()( T const& a0
+                                  , std::integral_constant<int,6> const&
+                                  ) const BOOST_NOEXCEPT
+    {
+      using f_t = bd::as_floating_t<T>;
+      auto const b0 = bitwise_cast<f_t>(a0);
+      return bitwise_cast<T>(_mm256_shuffle_ps( _mm256_permute2f128_ps(b0,b0,0x81 ), f_t(0), 0xe ));
+    }
+  };
+
+  BOOST_SIMD_UNARY_SLIDE(32,7)
+  {
+    BOOST_FORCEINLINE T operator()( T const& a0
+                                  , std::integral_constant<int,7> const&
+                                  ) const BOOST_NOEXCEPT
+    {
+      using f_t = bd::as_floating_t<T>;
+      auto const b0 = bitwise_cast<f_t>(a0);
+      return bitwise_cast<T>(_mm256_permute_ps( _mm256_blend_ps ( f_t(0)
+                                                                , _mm256_permute2f128_ps(b0,b0,0x81)
+                                                                , 0x8
+                                                                )
+                                              , 0x93
+                                              )
+                            );
+    }
+  };
+
+  // -----------------------------------------------------------------------------------------------
+  // [32 bits] Binary exact matches for all cardinal to minimize latency and # of registers used
+  BOOST_SIMD_BINARY_SLIDE(32,1)
+  {
+    BOOST_FORCEINLINE T operator()( T const& a0, T const& a1
+                                  , std::integral_constant<int,1> const&
+                                  ) const BOOST_NOEXCEPT
+    {
+      using f_t = bd::as_floating_t<T>;
+      auto const b0 = bitwise_cast<f_t>(a0);
+      auto const b1 = bitwise_cast<f_t>(a1);
+
+      return bitwise_cast<T>( _mm256_permute_ps
+                              ( _mm256_blend_ps ( b0
+                                                , _mm256_permute2f128_ps(b0,b1,0x21)
+                                                , 0x11
+                                                )
+                              , 0x39
+                              )
+                            );
+    }
+  };
+
+  BOOST_SIMD_BINARY_SLIDE(32,2)
+  {
+    BOOST_FORCEINLINE T operator()( T const& a0, T const& a1
+                                  , std::integral_constant<int,2> const&
+                                  ) const BOOST_NOEXCEPT
+    {
+      using f_t = bd::as_floating_t<T>;
+      auto const b0 = bitwise_cast<f_t>(a0);
+      auto const b1 = bitwise_cast<f_t>(a1);
+
+      return bitwise_cast<T>( _mm256_shuffle_ps(b0, _mm256_permute2f128_ps(b0,b1,0x21), 0x4e) );
+    }
+  };
+
+  BOOST_SIMD_BINARY_SLIDE(32,3)
+  {
+    BOOST_FORCEINLINE T operator()( T const& a0, T const& a1
+                                  , std::integral_constant<int,3> const&
+                                  ) const BOOST_NOEXCEPT
+    {
+      using f_t = bd::as_floating_t<T>;
+      auto const b0 = bitwise_cast<f_t>(a0);
+      auto const b1 = bitwise_cast<f_t>(a1);
+      return bitwise_cast<T>(_mm256_permute_ps( _mm256_blend_ps ( b0
+                                                                , _mm256_permute2f128_ps(b0,b1,0x21)
+                                                                , 0x77
+                                                                )
+                                              , 0x93
+                                              )
+                            );
+    }
+  };
+
+  BOOST_SIMD_BINARY_SLIDE(32,4)
+  {
+    BOOST_FORCEINLINE T operator()( T const& a0, T const& a1
+                                  , std::integral_constant<int,4> const&
+                                  ) const BOOST_NOEXCEPT
+    {
+      using f_t = bd::as_floating_t<T>;
+      return bitwise_cast<T>(_mm256_permute2f128_ps(bitwise_cast<f_t>(a0),bitwise_cast<f_t>(a1),0x21));
+    }
+  };
+
+  BOOST_SIMD_BINARY_SLIDE(32,5)
+  {
+    BOOST_FORCEINLINE T operator()( T const& a0, T const& a1
+                                  , std::integral_constant<int,5> const&
+                                  ) const BOOST_NOEXCEPT
+    {
+      using f_t = bd::as_floating_t<T>;
+      auto const b0 = bitwise_cast<f_t>(a0);
+      auto const b1 = bitwise_cast<f_t>(a1);
+      return bitwise_cast<T>( _mm256_permute_ps
+                              ( _mm256_blend_ps ( b1
+                                                , _mm256_permute2f128_ps(b0,b1,0x21)
+                                                , 0xee
+                                                )
+                              , 0x39
+                              )
+                            );
+    }
+  };
+
+  BOOST_SIMD_BINARY_SLIDE(32,6)
+  {
+    BOOST_FORCEINLINE T operator()( T const& a0, T const& a1
+                                  , std::integral_constant<int,6> const&
+                                  ) const BOOST_NOEXCEPT
+    {
+      using f_t = bd::as_floating_t<T>;
+      auto const b0 = bitwise_cast<f_t>(a0);
+      auto const b1 = bitwise_cast<f_t>(a1);
+      return bitwise_cast<T>(_mm256_shuffle_ps(_mm256_permute2f128_ps(b0,b1,0x21),b1,0x4e));
+    }
+  };
+
+  BOOST_SIMD_BINARY_SLIDE(32,7)
+  {
+    BOOST_FORCEINLINE T operator()( T const& a0, T const& a1
+                                  , std::integral_constant<int,7> const&
+                                  ) const BOOST_NOEXCEPT
+    {
+      using f_t = bd::as_floating_t<T>;
+      auto const b0 = bitwise_cast<f_t>(a0);
+      auto const b1 = bitwise_cast<f_t>(a1);
+      return bitwise_cast<T>( _mm256_permute_ps
+                              ( _mm256_blend_ps ( b1
+                                                , _mm256_permute2f128_ps(b0,b1,0x21)
+                                                , 0x88
+                                                )
+                              , 0x93
+                              )
+                            );
+    }
+  };
+
+  // -----------------------------------------------------------------------------------------------
+  // Reroute for small integers
   BOOST_DISPATCH_OVERLOAD ( slide_
                           , (typename T, typename Offset)
                           , bs::avx_
-                          , bs::pack_< bd::fundamental_<T>, bs::avx_ >
-                          , bs::pack_< bd::fundamental_<T>, bs::avx_ >
+                          , bs::pack_< bd::integer_<T>, bs::avx_ >
+                          , bs::pack_< bd::integer_<T>, bs::avx_ >
                           , bd::constant_<bd::integer_<Offset>>
                           )
   {
-    using storage_t     = typename T::storage_type;
-    using hcard         = std::integral_constant<std::size_t,T::static_size/2>;
-    using sub_t         = typename T::template resize<hcard::value>;
-    using sub_storage_t = typename sub_t::storage_type;
+    using hcard = std::integral_constant<int,(T::static_size/2)>;
 
-    // slide under half the cardinal
-    static BOOST_FORCEINLINE T do_(__m256i v0, __m256i v1, std::true_type const&) BOOST_NOEXCEPT
+    static BOOST_FORCEINLINE T unroll( T const& a0, T const& a1, std::true_type const& )
     {
-      sub_t s0h((sub_storage_t)(_mm256_extractf128_si256(v0, 0)));
-      sub_t s1h((sub_storage_t)(_mm256_extractf128_si256(v1, 0)));
-      sub_t s1l((sub_storage_t)(_mm256_extractf128_si256(v1, 1)));
-
-      return combine( slide<Offset::value%hcard::value>(s1h, s1l)
-                    , slide<Offset::value%hcard::value>(s1l, s0h)
+      auto s0 = slice(a0);
+      auto l1 = slice_low(a1);
+      return combine( slide<Offset::value%hcard::value>(s0[0], s0[1])
+                    , slide<Offset::value%hcard::value>(s0[1], l1)
                     );
     }
 
-    static BOOST_FORCEINLINE T do_(__m256i v0, __m256i v1, std::false_type const&) BOOST_NOEXCEPT
+    static BOOST_FORCEINLINE T unroll( T const& a0, T const& a1, std::false_type const& )
     {
-      sub_t s1l((sub_storage_t)(_mm256_extractf128_si256(v1, 1)));
-      sub_t s0h((sub_storage_t)(_mm256_extractf128_si256(v0, 0)));
-      sub_t s0l((sub_storage_t)(_mm256_extractf128_si256(v0, 1)));
-
-      return combine( slide<Offset::value%hcard::value>(s1l, s0h)
-                    , slide<Offset::value%hcard::value>(s0h, s0l)
+      auto s1 = slice(a1);
+      auto h0 = slice_high(a0);
+      return combine( slide<Offset::value%hcard::value>(h0   , s1[0])
+                    , slide<Offset::value%hcard::value>(s1[0], s1[1])
                     );
     }
 
+    BOOST_FORCEINLINE T operator()(T const& a0, T const& a1, Offset const&) const
+    {
+      return unroll ( a0, a1
+                    , brigand::bool_<(Offset::value < hcard::value)>{}
+                    );
+    }
+  };
+
+
+  // -----------------------------------------------------------------------------------------------
+  // Reroute for logical
+  BOOST_DISPATCH_OVERLOAD ( slide_
+                          , (typename T, typename Offset)
+                          , bs::avx_
+                          , bs::pack_< bs::logical_<T>, bs::avx_ >
+                          , bd::constant_<bd::integer_<Offset>>
+                          )
+  {
+    BOOST_FORCEINLINE T operator()(T const& a0, Offset const&) const BOOST_NOEXCEPT
+    {
+      return bitwise_cast<T>( slide<Offset::value>( genmask(a0) ) );
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( slide_
+                          , (typename T, typename Offset)
+                          , bs::avx_
+                          , bs::pack_< bs::logical_<T>, bs::avx_ >
+                          , bs::pack_< bs::logical_<T>, bs::avx_ >
+                          , bd::constant_<bd::integer_<Offset>>
+                          )
+  {
     BOOST_FORCEINLINE T operator()(T const& a0, T const& a1, Offset const&) const BOOST_NOEXCEPT
     {
-      return do_( (__m256i)(a1.storage()), (__m256i)(a0.storage())
-                , brigand::bool_<(Offset::value < hcard::value)>{}
-                );
+      return bitwise_cast<T>( slide<Offset::value>( genmask(a0), genmask(a1) ) );
     }
   };
 } } }

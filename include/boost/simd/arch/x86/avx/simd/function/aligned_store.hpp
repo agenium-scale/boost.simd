@@ -50,6 +50,22 @@ namespace boost { namespace simd { namespace ext
       _mm256_store_ps(a1,a0);
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( aligned_store_
+                          , (typename Vec, typename Pointer)
+                          , bs::avx_
+                          , bs::pack_ < bd::integer_ < Vec>, bs::avx_>
+                          , bd::pointer_<bd::scalar_<bd::integer_<Pointer>>,1u>
+                          )
+  {
+    BOOST_FORCEINLINE void operator() (const Vec& a0, Pointer a1) const BOOST_NOEXCEPT
+    {
+      BOOST_ASSERT_MSG( boost::alignment::is_aligned(Vec::alignment, a1)
+                      , "boost::simd::aligned_load was performed on an unaligned pointer of integer"
+                      );
+       _mm256_store_si256(reinterpret_cast<__m256i*>(a1), a0);
+    }
+  };
 } } }
 
 #endif

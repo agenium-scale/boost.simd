@@ -30,7 +30,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE bool operator()(const A0& a0) const BOOST_NOEXCEPT
     {
-      using count = std::integral_constant<std::size_t, (1ull << A0::static_size)-1>;
+      using count = std::integral_constant<std::size_t,(std::size_t(-1) >> (64-A0::static_size))>;
       return hmsb(genmask(a0)) == count::value;
     }
   };

@@ -36,7 +36,7 @@ void test(Env& $)
   p_t aa2(&a2[0], &a2[0]+N);
   p_t aa3(&a3[0], &a3[0]+N);
   p_t bb(&b[0], &b[0]+N);
-  STF_IEEE_EQUAL(bs::if_else(aa1, aa2, aa3), bb);
+  STF_EQUAL(bs::if_else(aa1, aa2, aa3), bb);
 }
 
 STF_CASE_TPL("Check if_else on pack" , STF_NUMERIC_TYPES)
@@ -70,7 +70,7 @@ void testl(Env& $)
   p_t aa2(&a2[0], &a2[0]+N);
   p_t aa3(&a3[0], &a3[0]+N);
   p_t bb(&b[0], &b[0]+N);
-  STF_IEEE_EQUAL(bs::if_else(aa1, aa2, aa3), bb);
+  STF_EQUAL(bs::if_else(aa1, aa2, aa3), bb);
 }
 
 STF_CASE_TPL("Check if_else on pack of logical" , STF_NUMERIC_TYPES)

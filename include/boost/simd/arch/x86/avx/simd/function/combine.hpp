@@ -74,6 +74,24 @@ namespace boost { namespace simd { namespace ext
       return bitwise_cast<result_t>( combine(bitwise_cast<base_t>(a0), bitwise_cast<base_t>(a1)) );
     }
   };
+
+  // -----------------------------------------------------------------------------------------------
+  // combine pack of AVX integer
+  BOOST_DISPATCH_OVERLOAD ( combine_
+                          , (typename T)
+                          , bs::avx_
+                          , bs::pack_< bd::integer_<T>, bs::sse_ >
+                          , bs::pack_< bd::integer_<T>, bs::sse_ >
+                          )
+  {
+    using result_t = typename T::template resize<2 * T::static_size>;
+
+    BOOST_FORCEINLINE result_t operator()(T const& a0, T const& a1) const
+    {
+      result_t  that = _mm256_castsi128_si256(a0);
+      return _mm256_insertf128_si256(that, a1, 1);
+    }
+  };
 } } }
 
 #endif

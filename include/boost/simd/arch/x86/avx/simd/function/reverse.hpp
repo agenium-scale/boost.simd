@@ -10,6 +10,9 @@
 #define BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_REVERSE_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
+#include <boost/simd/function/combine.hpp>
+#include <boost/simd/function/slice.hpp>
+#include <boost/simd/detail/dispatch/meta/as_floating.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -19,25 +22,39 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( reverse_
                           , (typename A0)
                           , bs::avx_
-                          , bs::pack_<bd::double_<A0>, bs::avx_>
+                          , bs::pack_<bd::type64_<A0>, bs::avx_>
                          )
   {
     BOOST_FORCEINLINE A0 operator()( const A0 & a0 ) const BOOST_NOEXCEPT
     {
-      return _mm256_permute_pd( _mm256_permute2f128_pd(a0,a0,1), 5 );
+      auto const b0 = bitwise_cast<bd::as_floating_t<A0>>(a0);
+      return bitwise_cast<A0>(_mm256_permute_pd( _mm256_permute2f128_pd(b0,b0,1), 5 ));
     }
   };
 
   BOOST_DISPATCH_OVERLOAD ( reverse_
                           , (typename A0)
                           , bs::avx_
-                          , bs::pack_<bd::single_<A0>, bs::avx_>
+                          , bs::pack_<bd::type32_<A0>, bs::avx_>
                          )
   {
     BOOST_FORCEINLINE A0 operator()( const A0 & a0 ) const BOOST_NOEXCEPT
     {
-      auto const tmp = _mm256_permute_ps(a0, _MM_SHUFFLE(0,1,2,3) );
-      return _mm256_permute2f128_ps(tmp,tmp,1);
+      auto const b0 = bitwise_cast<bd::as_floating_t<A0>>(a0);
+      auto const tmp = _mm256_permute_ps(b0, _MM_SHUFFLE(0,1,2,3) );
+      return bitwise_cast<A0>(_mm256_permute2f128_ps(tmp,tmp,1));
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( reverse_
+                          , (typename A0)
+                          , bs::avx_
+                          , bs::pack_<bd::fundamental_<A0>, bs::avx_>
+                         )
+  {
+    BOOST_FORCEINLINE A0 operator()( const A0 & a0 ) const BOOST_NOEXCEPT
+    {
+      return combine( reverse(slice_high(a0)), reverse(slice_low(a0)) );
     }
   };
 } } }

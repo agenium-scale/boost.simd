@@ -1,7 +1,6 @@
 //==================================================================================================
 /**
   Copyright 2016 NumScale SAS
-  Copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -26,6 +25,17 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE bd::upgrade_t<A0> operator() ( const A0 & a0) const BOOST_NOEXCEPT
     {
       return _mm256_cvtps_pd(slice_high(a0));
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( split_high_, (typename A0), bs::avx_
+                          , bs::pack_<bd::integer_<A0>, bs::avx_>
+                          )
+  {
+    BOOST_FORCEINLINE bd::upgrade_t<A0> operator()(const A0 & a0) const BOOST_NOEXCEPT
+    {
+      auto half = split(slice_high(a0));
+      return combine(half.first,half.second);
     }
   };
 } } }

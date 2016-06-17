@@ -41,6 +41,22 @@ namespace boost { namespace simd { namespace ext
         return _mm256_or_ps(a0, a1);
       }
    };
+
+  BOOST_DISPATCH_OVERLOAD ( bitwise_or_
+                          , (typename A0)
+                          , bs::avx_
+                          , bs::pack_<bd::integer_<A0>, bs::avx_>
+                          , bs::pack_<bd::integer_<A0>, bs::avx_>
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator()( const A0 & a0, const A0 & a1 ) const BOOST_NOEXCEPT
+    {
+      return _mm256_castps_si256(_mm256_or_ps ( _mm256_castsi256_ps(a0)
+                                              , _mm256_castsi256_ps(a1)
+                                              )
+                                );
+    }
+  };
 } } }
 
 #endif
