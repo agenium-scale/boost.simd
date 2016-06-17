@@ -12,6 +12,7 @@
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_floating.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/permutation.hpp>
 
 namespace boost { namespace simd { namespace detail
 {
