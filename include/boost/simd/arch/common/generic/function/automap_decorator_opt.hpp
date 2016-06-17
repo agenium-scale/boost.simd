@@ -99,7 +99,7 @@ namespace boost { namespace simd { namespace ext
     // (P)
     template <typename P0, typename SKI, typename SKO, typename... N>
     BOOST_FORCEINLINE static result_type map_ ( SKI const&, SKO const&
-                                              , br::list<N...> const&
+                                              , br::list<N...> const& o
                                               , bd::functor<Opt> const& , P0 const& p0
                                               )
     BOOST_NOEXCEPT_IF(is_noexcept)
@@ -112,7 +112,7 @@ namespace boost { namespace simd { namespace ext
     // (P, P)
     template <typename P0, typename P1, typename SKI, typename SKO, typename... N>
     BOOST_FORCEINLINE static result_type map_ ( SKI const&, SKO const&
-                                              , br::list<N...> const&
+                                              , br::list<N...> const& o
                                               , bd::functor<Opt> const& , P0 const& p0, P1 const& p1
                                               )
     BOOST_NOEXCEPT_IF(is_noexcept)
@@ -127,7 +127,7 @@ namespace boost { namespace simd { namespace ext
             , typename SKI, typename SKO, typename... N
             >
     BOOST_FORCEINLINE static result_type map_ ( SKI const&, SKO const&
-                                              , br::list<N...> const&
+                                              , br::list<N...> const& o
                                               , bd::functor<Opt> const&
                                               , P0 const& p0, P1 const& p1, P2 const& p2
                                               )
@@ -144,7 +144,7 @@ namespace boost { namespace simd { namespace ext
             >
     BOOST_FORCEINLINE static result_type map_ ( SKI const&, SKO const&
                                               , br::list<N...> const&
-                                              , bd::functor<Opt> const&
+                                              , bd::functor<Opt> const& o
                                               , P0 const& p0, P1 const& p1
                                               , P2 const& p2, P3 const& p3
                                               )
