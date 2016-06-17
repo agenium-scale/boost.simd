@@ -46,3 +46,5 @@ STF_CASE_TPL("Check round2even on pack" , STF_NUMERIC_TYPES)
   test<T, N/2>($);
   test<T, N*2>($);
 }
+
+

@@ -15,9 +15,11 @@
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/if_else_zero.hpp>
+#include <boost/simd/function/simd/if_else.hpp>
 #include <boost/simd/function/simd/unary_minus.hpp>
 #include <boost/simd/function/simd/minus.hpp>
 #include <boost/simd/function/simd/plus.hpp>
+#include <boost/simd/function/simd/unary_minus.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -34,7 +36,8 @@ namespace boost { namespace simd { namespace ext
    {
      BOOST_FORCEINLINE A1 operator()(A0 const& a0, A1 const& a1, A1 const& a2) const
       {
-       return a1 - if_else_zero(a0, a2);
+      return a1 - if_else_zero(a0, a2);
+      //     return if_else(a0,  a1-a2, a1);
       }
    };
 

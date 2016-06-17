@@ -20,6 +20,8 @@
 #include <boost/simd/function/simd/is_nez.hpp>
 #include <boost/simd/function/simd/multiplies.hpp>
 #include <boost/simd/function/simd/if_minus.hpp>
+#include <boost/simd/function/simd/if_nan_else.hpp>
+#include <boost/simd/function/simd/logical_or.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -52,7 +54,7 @@ namespace boost { namespace simd { namespace ext
                                      , bd::functor<bs::tag::floor_> const&
                                      , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
-        return fnms(div(floor, a0,a1), a1, a0);
+        return fnms(div(floor,a0,a1), a1, a0);
       }
    };
    BOOST_DISPATCH_OVERLOAD(rem_
@@ -66,9 +68,14 @@ namespace boost { namespace simd { namespace ext
       BOOST_FORCEINLINE A0 operator()( bd::functor<bs::tag::floor_> const&
                                      , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
-      auto is_eqza1 = is_eqz(a1);
-      return if_nan_else(logical_or(is_invalid(a1), is_eqza1),
-                         if_minus(logical_notand(is_eqza1, is_nez(a0)), a0, div(floor, a0,a1)*a1));
+        auto z = is_nez(a1);
+        return if_else(logical_and(z, is_eqz(a0)),  a0,
+                       if_nan_else(logical_or(is_invalid(a1),is_invalid(a0)) ,
+                                   if_nan_else(is_eqz(a1),
+                                               if_minus(z, a0, div(floor, a0,a1)*a1)
+                                              )
+                                  )
+                      );
       }
    };
 } } }

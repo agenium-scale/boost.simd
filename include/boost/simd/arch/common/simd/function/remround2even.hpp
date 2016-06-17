@@ -56,26 +56,31 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator()( bd::functor<bs::tag::round2even_> const&
                                    , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
     {
-      auto is_eqza1 = is_eqz(a1);
-      return if_nan_else(logical_or(is_invalid(a1), is_eqza1),
-                         if_minus(logical_notand(is_eqza1, is_nez(a0)), a0, div(round2even, a0,a1)*a1));
-    }
-  };
+      auto z = is_nez(a1);
+      return if_else(logical_and(z, is_eqz(a0)),  a0,
+                     if_nan_else(logical_or(is_invalid(a1),is_invalid(a0)) ,
+                                 if_nan_else(is_eqz(a1),
+                                             if_minus(z, a0, div(round2even, a0,a1)*a1)
+                                            )
+                                )
+                    );
+                     }
+    };
 
-  BOOST_DISPATCH_OVERLOAD(rem_
-                         , (typename A0, typename X)
-                         , bd::cpu_
-                         , bs::fast_tag
-                         , bs::tag::round2even_
-                         , bs::pack_<bd::floating_<A0>, X>
-                         , bs::pack_<bd::floating_<A0>, X>
-                         )
+    BOOST_DISPATCH_OVERLOAD(rem_
+                           , (typename A0, typename X)
+                           , bd::cpu_
+                           , bs::fast_tag
+                           , bs::tag::round2even_
+                           , bs::pack_<bd::floating_<A0>, X>
+                           , bs::pack_<bd::floating_<A0>, X>
+                           )
   {
     BOOST_FORCEINLINE A0 operator()(const fast_tag &
                                    , bd::functor<bs::tag::round2even_> const&
                                    , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
     {
-      return fnms(div(ceil, a0,a1), a1, a0);
+      return fnms(div(round2even, a0,a1), a1, a0);
     }
   };
 } } }
