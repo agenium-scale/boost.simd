@@ -48,6 +48,7 @@ NS_prevent_in_source_build()
 set(STF_STANDALONE_DESTINATION      ${PROJECT_SOURCE_DIR}/test)
 set(BRIGAND_STANDALONE_DESTINATION  ${PROJECT_SOURCE_DIR}/include/boost/simd/detail)
 set(NS_BENCH_STANDALONE_DESTINATION ${PROJECT_SOURCE_DIR}/bench)
+set(NS_EXHAUSTIVE_STANDALONE_DESTINATION ${PROJECT_SOURCE_DIR}/exhaustive)
 
 set(NS_CMAKE_PROJECT_OPTIONS
   CMAKE_ARGS "-DBOOST_ROOT=${BOOST_HEADER_ONLY_DESTINATION}/include"
@@ -88,6 +89,7 @@ include_directories(
   ${PROJECT_SOURCE_DIR}/include
   ${PROJECT_SOURCE_DIR}/test
   ${PROJECT_SOURCE_DIR}/bench
+  ${PROJECT_SOURCE_DIR}/exhaustive
   ${Boost_INCLUDE_DIRS}
 )
 
@@ -102,6 +104,9 @@ add_subdirectory(test)
 
 add_custom_target(bench)
 add_subdirectory(bench)
+
+add_custom_target(exhaustive)
+add_subdirectory(exhaustive)
 
 if (NOT DEFINED IS_TRAVIS_CI)
   NS_include(coverage)
