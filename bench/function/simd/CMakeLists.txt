@@ -219,6 +219,7 @@ set(SOURCES
     oneminus.cpp
     oneminus_s.cpp
     plus.cpp
+    plus2.cpp
     plus_s.cpp
     posmax.cpp
     posmin.cpp
