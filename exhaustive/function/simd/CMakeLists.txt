@@ -7,13 +7,13 @@
 ## -------------------------------------------------------------------------------------------------
 
 set(SOURCES
+  exp.cpp
+  exp10.cpp
+  exp2.cpp
+  expm1.cpp
+#   expx2.cpp
   log.cpp
   log1p.cpp
-  exp.cpp
-#  exp10.cpp
-exp2.cpp
-   expm1.cpp
-#   expx2.cpp
 #   log10.cpp
 #   log2.cpp
 #   nthroot.cpp

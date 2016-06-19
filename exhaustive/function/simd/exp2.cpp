@@ -6,8 +6,8 @@
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
 #include <boost/simd/function/simd/exp2.hpp>
-#include <boost/simd/constant/valmin.hpp>
-#include <boost/simd/constant/valmax.hpp>
+#include <boost/simd/constant/minlog2.hpp>
+#include <boost/simd/constant/maxlog2.hpp>
 #include <boost/simd/pack.hpp>
 #include <exhaustive.hpp>
 
@@ -24,8 +24,8 @@ struct raw_exp2
 
 int main(int argc, char* argv[])
 {
-  float mini = bs::Valmin<float>();
-  float maxi = bs::Valmax<float>();
+  float mini = bs::Minlog2<float>();
+  float maxi = bs::Maxlog2<float>();
   if(argc >= 2) mini = std::atof(argv[1]);
   if(argc >= 3) maxi = std::atof(argv[2]);
   bs::exhaustive_test<bs::pack<float>> ( mini

@@ -6,8 +6,8 @@
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
 #include <boost/simd/function/simd/exp10.hpp>
-#include <boost/simd/constant/zero.hpp>
-#include <boost/simd/constant/valmax.hpp>
+#include <boost/simd/constant/minlog10.hpp>
+#include <boost/simd/constant/maxlog10.hpp>
 #include <boost/simd/pack.hpp>
 #include <exhaustive.hpp>
 
@@ -24,8 +24,8 @@ struct raw_exp10
 
 int main(int argc, char* argv[])
 {
-  float mini = bs::Zero<float>();
-  float maxi = bs::Valmax<float>();
+  float mini = bs::Minlog10<float>(); // exp10 is 0 under
+  float maxi = bs::Maxlog10<float>(); // exp10 is inf above
   if(argc >= 2) mini = std::atof(argv[1]);
   if(argc >= 3) maxi = std::atof(argv[2]);
   bs::exhaustive_test<bs::pack<float>> ( mini
