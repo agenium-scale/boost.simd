@@ -36,7 +36,7 @@ struct scalar_plus_simd : nsb::experiment
    void operator()(U min0, U max0, U min1, U max1)
    {
      run_bench<1>
-       ( "scalar_plus_simd", // We force the name here
+       ( "scalar_plus_simd" // We force the name here
        , [](T x0, T x1) { return x0 + x1; }
        , nsb::generators::rand<T>(min0, max0)
        , nsb::generators::rand<T>(min1, max1)
