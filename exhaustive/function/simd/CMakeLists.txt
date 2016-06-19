@@ -14,8 +14,8 @@ set(SOURCES
 #   expx2.cpp
   log.cpp
   log1p.cpp
-#   log10.cpp
-#   log2.cpp
+  log10.cpp
+  log2.cpp
 #   nthroot.cpp
 #   pow.cpp
 #   sqrt1pm1.cpp
