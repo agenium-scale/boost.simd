@@ -25,7 +25,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( exp10_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::generic_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
                           )
   {
     BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
