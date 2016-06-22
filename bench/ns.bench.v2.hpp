@@ -936,8 +936,8 @@ class setup {
   std::set<::ns::bench::metric> const& metrics() const {
     return metrics_;
   }
-  static const std::size_t default_internal_loop_size = 1024u;
   static std::size_t internal_loop_size() {
+    static const std::size_t default_internal_loop_size = 1024u;
     return args_map().get<std::size_t>("loop", default_internal_loop_size);
   }
   bool has_during() const        { return static_cast<bool>(during_); }
@@ -1072,11 +1072,9 @@ void run(results& r, setup const& s, std::string const& name, Experiment&& e, Gs
     detail::prepare_parameters(ps, gs, sz);
     auto t0 = time_clock::now();
     auto c0 = cycle_clock::now();
-    NS_BENCH_ASM_MARKER();
     for (std::size_t i = 0; i < sz; ++i) {
       dnopt(detail::call(local, ps, i));
     }
-    NS_BENCH_ASM_MARKER();
     auto c1 = cycle_clock::now();
     auto t1 = time_clock::now();
     auto elapsed_time   = to_seconds(t1 - t0) / sz;
