@@ -18,7 +18,7 @@ std::array<typename T::value_type,sizeof...(I)> unary_ref(T const& a)
   using type = typename T::value_type;
 
   std::array<type,sizeof...(I)>
-  ref = { ((I == -1) ? type(0) : a[static_cast<std::size_t>(I)])... };
+  ref = {{ ((I == -1) ? type(0) : a[static_cast<std::size_t>(I)])... }};
 
   return ref;
 }
@@ -30,12 +30,12 @@ std::array<typename T::value_type,sizeof...(I)> binary_ref(T const& a, T const& 
   static const auto s = sizeof...(I);
 
   std::array<type,sizeof...(I)>
-  ref = { ( (I == -1) ? type(0) :
+  ref = {{ ( (I == -1) ? type(0) :
                         ( I<s ? a[static_cast<std::size_t>(I)]
                               : b[static_cast<std::size_t>(I)-s]
                         )
           )...
-        };
+        }};
 
   return ref;
 }
