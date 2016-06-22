@@ -12,6 +12,8 @@
 
 #include <ns.bench.v2.hpp>
 #include <boost/simd/pack.hpp>
+#include <boost/preprocessor/cat.hpp>
+#include <boost/preprocessor/stringize.hpp>
 
 namespace ns { namespace bench {
 
@@ -68,5 +70,78 @@ void run_bench(F f, Args&&... args)
   namespace nsb = ns::bench;
   run_bench<N>(nsb::type_id<F>(), f, std::forward<Args>(args)...);
 }
+
+namespace nsb = ns::bench;
+
+template <typename Experiment, typename Type, std::size_t ElementSize>
+struct bench_experiment : ns::bench::experiment
+{
+  //using type = typename Experiment::type;
+  using type = Type;
+
+  template <typename U>
+  void operator()(U min0, U max0)
+  {
+    run_bench<ElementSize>
+      ( Experiment::name()
+      , Experiment::functor()
+      , nsb::generators::rand<type>(min0, max0)
+      );
+  }
+
+  template <typename U>
+  void operator()(U min0, U max0, U min1, U max1)
+  {
+    run_bench<ElementSize>
+      ( Experiment::name()
+      , Experiment::functor()
+      , nsb::generators::rand<type>(min0, max0)
+      , nsb::generators::rand<type>(min1, max1)
+      );
+  }
+
+  template <typename U>
+  void operator()(U min0, U max0, U min1, U max1, U min2, U max2)
+  {
+    run_bench<ElementSize>
+      ( Experiment::name()
+      , Experiment::functor()
+      , nsb::generators::rand<type>(min0, max0)
+      , nsb::generators::rand<type>(min1, max1)
+      , nsb::generators::rand<type>(min2, max2)
+      );
+  }
+};
+
+template <typename T>                            struct template_of;
+template <template <class> class Tp, typename T> struct template_of<Tp<T>> { using type = T; };
+template <typename T>
+using template_of_t = typename template_of<T>::type;
+
+template <typename Experiment>
+using simd_experiment =
+  bench_experiment< Experiment
+                  , boost::simd::pack<template_of_t<Experiment>>
+                  , boost::simd::pack<template_of_t<Experiment>>::static_size
+                  >;
+
+template <typename Experiment>
+using scalar_experiment =
+  bench_experiment< Experiment
+                  , template_of_t<Experiment>
+                  , 1
+                  >;
+
+#define DEFINE_BENCH(name_, f, experiment)                                                         \
+  template <typename T>                                                                            \
+  struct name_ : experiment<name_<T>>                                                              \
+  {                                                                                                \
+    static const char* name()    { return BOOST_PP_STRINGIZE(name_); }                             \
+    static decltype(f) functor() { return f; }                                                     \
+  }                                                                                                \
+/**/
+
+#define DEFINE_SIMD_BENCH(name, f)   DEFINE_BENCH(name, f, simd_experiment)
+#define DEFINE_SCALAR_BENCH(name, f) DEFINE_BENCH(name, f, scalar_experiment)
 
 #endif
