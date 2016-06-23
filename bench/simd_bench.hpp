@@ -11,6 +11,7 @@
 #define SIMD_BENCH_HPP_INCLUDED
 
 #include <ns.bench.v2.hpp>
+#include <boost/config.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/preprocessor/cat.hpp>
 #include <boost/preprocessor/stringize.hpp>
@@ -79,9 +80,15 @@ struct bench_experiment : ns::bench::experiment
   //using type = typename Experiment::type;
   using type = Type;
 
+  void which_type()
+  {
+    std::cout << ":: [T = " << nsb::type_id<type>() << "]" << std::endl;
+  }
+
   template <typename U>
   void operator()(U min0, U max0)
   {
+    which_type();
     run_bench<ElementSize>
       ( Experiment::name()
       , Experiment::functor()
@@ -92,6 +99,7 @@ struct bench_experiment : ns::bench::experiment
   template <typename U>
   void operator()(U min0, U max0, U min1, U max1)
   {
+    which_type();
     run_bench<ElementSize>
       ( Experiment::name()
       , Experiment::functor()
@@ -103,6 +111,7 @@ struct bench_experiment : ns::bench::experiment
   template <typename U>
   void operator()(U min0, U max0, U min1, U max1, U min2, U max2)
   {
+    which_type();
     run_bench<ElementSize>
       ( Experiment::name()
       , Experiment::functor()
@@ -112,6 +121,16 @@ struct bench_experiment : ns::bench::experiment
       );
   }
 };
+
+void init(int argc, char** argv)
+{
+  nsb::parse_args(argc, argv);
+  std::cout << ":: Compiler: " << BOOST_COMPILER << std::endl;
+  std::cout << ":: Platform: " << BOOST_PLATFORM << std::endl;
+  std::cout << ":: SIMD:     " << nsb::type_id<BOOST_SIMD_DEFAULT_SITE>() << std::endl;
+  std::cout << ":: -------------------------------------------------------------------------------";
+  std::cout << std::endl;
+}
 
 template <typename T>                            struct template_of;
 template <template <class> class Tp, typename T> struct template_of<Tp<T>> { using type = T; };
