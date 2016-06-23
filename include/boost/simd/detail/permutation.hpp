@@ -88,7 +88,7 @@ namespace boost { namespace simd { namespace detail
   {
     using P    = brigand::at_c<Ps,I/Bits>;
     using type = std::integral_constant < std::uint8_t
-                                        , P::value==-1 ? P::value : (P::value*Bits + (I%Bits))
+                                        , P::value == -1 ? 0xFF : (P::value*Bits + (I%Bits))
                                         >;
   };
 
@@ -105,11 +105,11 @@ namespace boost { namespace simd { namespace detail
   {
     using sz   = brigand::size<Ps>;
     using P    = brigand::at_c<Ps,I/Bits>;
-    using type = std::integral_constant < std::int8_t
-                                        , P::value==-1  ? P::value
+    using type = std::integral_constant < std::uint8_t
+                                        , P::value==-1  ? 0xFF
                                                         : ( (P::value < sz::value)
                                                             ? (P::value*Bits + (I%Bits))
-                                                            : -1
+                                                            : 0xFF
                                                           )
                                         >;
   };
@@ -127,11 +127,11 @@ namespace boost { namespace simd { namespace detail
   {
     using sz    = std::integral_constant<int,brigand::size<Ps>::value>;
     using P     = brigand::at_c<Ps,I/Bits>;
-    using type  = std::integral_constant < std::int8_t
-                                        , P::value==-1  ? P::value
+    using type  = std::integral_constant < std::uint8_t
+                                        , P::value==-1  ? 0xFF
                                                         : ( (P::value >= sz::value)
                                                             ? ((P::value-sz::value)*Bits + (I%Bits))
-                                                            : -1
+                                                            : 0xFF
                                                           )
                                         >;
   };
