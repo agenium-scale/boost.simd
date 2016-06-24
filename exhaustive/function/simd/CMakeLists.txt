@@ -7,6 +7,10 @@
 ## -------------------------------------------------------------------------------------------------
 
 set(SOURCES
+  acos.cpp
+  atan.cpp
+  asin.cpp
+  fast_acos.cpp
   exp.cpp
   exp10.cpp
   exp2.cpp
