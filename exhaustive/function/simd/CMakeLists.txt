@@ -8,21 +8,17 @@
 
 set(SOURCES
   acos.cpp
-  atan.cpp
   asin.cpp
-  fast_acos.cpp
+  atan.cpp
   exp.cpp
   exp10.cpp
   exp2.cpp
   expm1.cpp
-#   expx2.cpp
+  fast_acos.cpp
   log.cpp
   log1p.cpp
   log10.cpp
   log2.cpp
-#   nthroot.cpp
-#   pow.cpp
-#   sqrt1pm1.cpp
  )
 
 make_exhaustive("function.simd" ${SOURCES})

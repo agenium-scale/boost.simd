@@ -7,36 +7,7 @@
 ## -------------------------------------------------------------------------------------------------
 
 set(SOURCES
-#   cbrt.cpp
-#   exp10.cpp
-#   exp2.cpp
-#   exp.cpp
-#   expm1.cpp
-#   expx2.cpp
-#   log10.cpp
-#   log1p.cpp
-#   log2.cpp
   log.cpp
-#  nthroot.cpp
-#   pow.cpp
-#   sqrt1pm1.cpp
     )
 
 make_exhaustive("function.scalar" ${SOURCES})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

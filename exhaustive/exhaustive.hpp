@@ -7,8 +7,8 @@
 **/
 // -------------------------------------------------------------------------------------------------
 
-#ifndef NS_BENCH_HPP_INCLUDED
-#define NS_BENCH_HPP_INCLUDED
+#ifndef EXHAUSTIVE_EXHAUSTIVE_HPP_INCLUDED
+#define EXHAUSTIVE_EXHAUSTIVE_HPP_INCLUDED
 
 #include <boost/simd/function/simd/load.hpp>
 #include <boost/simd/function/simd/extract.hpp>
@@ -34,107 +34,98 @@
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/config.hpp>
+#include <boost/core/demangle.hpp>
+#include <type_traits>
+
 
 namespace bd = boost::dispatch;
 namespace bs = boost::simd;
 namespace boost { namespace simd {
-/*!
-  @defgroup group-exhaustive exhaustive tests components
-  Exhaustive components
- **/
+  /*!
+    @defgroup group-exhaustive exhaustive tests components
+    Exhaustive components
+  **/
 
-#include <boost/core/demangle.hpp>
-#include <type_traits>
-
-template<typename T> inline std::string type_id()
-{
-  typedef std::is_const<typename std::remove_reference<T>::type>  const_t;
-  typedef std::is_lvalue_reference<T>                             lref_t;
-  typedef std::is_rvalue_reference<T>                             rref_t;
-  std::string s = boost::core::demangle(typeid(T).name());
-  s += const_t::value ? " const"  : "";
-  s += lref_t::value   ? "&"      : "";
-  s += rref_t::value   ? "&&"     : "";
-  return s;
-}
-template<typename T> inline std::string type_id( const T& )
-{
-  return type_id<T>();
-}
-}
-}
-
-
-namespace boost
-{
-  namespace simd
+  template<typename T> inline std::string type_id()
   {
-    /*!
-      @brief Exhaustive precision test for single precision
+    typedef std::is_const<typename std::remove_reference<T>::type>  const_t;
+    typedef std::is_lvalue_reference<T>                             lref_t;
+    typedef std::is_rvalue_reference<T>                             rref_t;
+    std::string s = boost::core::demangle(typeid(T).name());
+    s += const_t::value ? " const"  : "";
+    s += lref_t::value   ? "&"      : "";
+    s += rref_t::value   ? "&&"     : "";
+    return s;
+  }
+  template<typename T> inline std::string type_id( const T& )
+  {
+    return type_id<T>();
+  }
 
-      Perform a ULP test on every representable single precision value
-      in a given interval. Results are reported using a bucket histogram that
-      gives hint on how many values fall in a given range of ULPs,
-      the smallest and greatest inputs in the chosen range
-      leading to this precision and  the result from this minimum input
-      against the awaited result.
+  /*!
+    @brief Exhaustive precision test for single precision
 
-      @par Note:
-      Currently this function is designed to take care of single precision only as
-      running such a test on double precision values take an absurd amount of time.
+    Perform a ULP test on every representable single precision value
+    in a given interval. Results are reported using a bucket histogram that
+    gives hint on how many values fall in a given range of ULPs,
+    the smallest and greatest inputs in the chosen range
+    leading to this precision and  the result from this minimum input
+    against the awaited result.
 
-      @tparam Type          Data type used for computation
-      @param  mini Lower    bound of the test interval
-      @param  maxi Upper    bound of the test interval
-      @param  test_f        Function to test
-      @param  reference_f   Reference function to compare to
+    @par Note:
+    Currently this function is designed to take care of single precision only as
+    running such a test on double precision values take an absurd amount of time.
 
-      @par Example:
+    @tparam Type          Data type used for computation
+    @param  mini Lower    bound of the test interval
+    @param  maxi Upper    bound of the test interval
+    @param  test_f        Function to test
+    @param  reference_f   Reference function to compare to
 
-      Here is an example to test SIMD single-precision nt2::log against scalar double-precision std::log.
+    @par Example:
 
-      @code
-      #include <boost/simd/sdk/simd/native.hpp>
-      #include <boost/simd/function/log.hpp>
-      #include <boost/simd/constant/zero.hpp>
-      #include <boost/simd/constant/valmax.hpp>
+    Here is an example to test SIMD single-precision nt2::log against scalar double-precision std::log.
 
-      #include <nt2/sdk/exhaustive/exhaustive.hpp>
+    @code
+    #include <boost/simd/function/log.hpp>
+    #include <boost/simd/constant/zero.hpp>
+    #include <boost/simd/constant/valmax.hpp>
+    #include <boost/simd/pack.hpp>
+    #include <exhaustive.hpp>
 
-      // specific to nt2 tests: specify assert handling
-      #define NT2_ASSERTS_AS_TRAP
-      #include <nt2/sdk/error/assert_as_trap.hpp>
+    #include <cmath>
+    #include <cstdlib>
 
-      #include <cmath>
-      #include <cstdlib>
-
-      // function object used for the reference
-      struct std_log
-      {
+    // function object used for the reference
+    struct std_log
+    {
       float operator()(float x) const
       {
-      return float(std::log(double(x)));
+        return float(std::log(double(x)));
       }
-      };
+    };
 
-      int main(int argc, char* argv[])
-      {
+    int main(int argc, char* argv[])
+    {
       // define boundaries from command-line arguments,
       // fallback to default values if not provided
-      float mini = argc >= 2 ? std::atof(argv[1]) : nt2::Zero<float>();
-      float mini = argc >= 3 ? std::atof(argv[2]) : nt2::Valmin<float>();
+      float mini = bs::Zero<float>();
+      float maxi = bs::Valmax<float>();
+      if(argc >= 2) mini = std::atof(argv[1]);
+      if(argc >= 3) maxi = std::atof(argv[2]);
 
-      // type to call the function object to test with
-      typedef boost::simd::native<float, BOOST_SIMD_DEFAULT_EXTENSION> n_t;
+
+      using n_t = bs::pack<float>;
 
       // run the test
-      nt2::exhaustive_test<n_t>( mini
-      , maxi
-      , nt2::functor<nt2::tag::log_>() // function object to test
-      , std_log()
-      );
-      }
-      @endcode
+      bs::exhaustive_test<n_t>( mini
+                              , maxi
+                              , bs::log // function object to test
+                              , std_log()
+                              );
+      return 0;
+    }
+    @endcode
     **/
     template<typename Type, typename TestF, typename RefF> inline
     void exhaustive_test(float mini, float maxi, TestF test_f, RefF reference_f)
