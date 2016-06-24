@@ -60,7 +60,7 @@ namespace boost { namespace simd { namespace detail
       fe = if_plus(xltsqrthf, tofloat(e), Mone<A0>());
       x =  dec(if_plus(xltsqrthf, x, x));
       x2 = sqr(x);
-      // performances informations using this kernel for nt2::log
+      // performances informations using this kernel for boost::simd::log
       // exhaustive and bench tests with g++-4.7 sse4.2 or scalar give:
       // at most 0.5 ulp  for input in [0, 3.40282e+38]
       // 2130706656 values computed.
