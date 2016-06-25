@@ -44,11 +44,11 @@ matrix:
 
     - os: osx
       compiler: clang
-      env: CXX_STD=11 TOOLSET=clang++ SIMD_EXT=-msse4.2 OPT=-ftrack-macro-expansion=0
+      env: CXX_STD=11 TOOLSET=clang++ SIMD_EXT=-msse4.2 OPT=
 
     - os: osx
       compiler: clang
-      env: CXX_STD=11 TOOLSET=clang++ SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0
+      env: CXX_STD=11 TOOLSET=clang++ SIMD_EXT=-mavx OPT=-
 
 # Prepare build
 before_script:
