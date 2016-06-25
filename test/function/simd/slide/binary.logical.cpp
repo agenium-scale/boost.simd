@@ -16,9 +16,9 @@ namespace bs = boost::simd;
 template <typename T, int N, typename Env> void test(Env& $)
 {
   std::array<bs::logical<T>,4*N> data;
-  for(std::size_t i = 0;i < data.size(); ++i) data[i] = T(0);
-  for(int i =   N;i < 2*N; ++i) data[i] = T(i%2);
-  for(int i = 2*N;i < 3*N; ++i) data[i] = T((i+1)%2);
+  for(std::size_t i = 0;i < data.size(); ++i) data[i] = false;
+  for(int i =   N;i < 2*N; ++i) data[i] = (i%2 != 0);
+  for(int i = 2*N;i < 3*N; ++i) data[i] = ((i+1)%2 != 0);
 
   using p_t = bs::pack<bs::logical<T>,N>;
   p_t ref;

@@ -11,6 +11,7 @@
 
 #include <boost/simd/arch/common/generic/function/automap_opt.hpp>
 #include <boost/simd/arch/common/generic/function/automap_value.hpp>
+#include <boost/simd/arch/common/generic/function/automap_slice.hpp>
 #include <boost/simd/arch/common/generic/function/automap_decorator.hpp>
 #include <boost/simd/arch/common/generic/function/automap_decorator_opt.hpp>
 

@@ -16,6 +16,7 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/brigand.hpp>
+#include <boost/core/ignore_unused.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -65,6 +66,8 @@ namespace boost { namespace simd { namespace ext
                                       , brigand::list<L0...> const&, brigand::list<L1...> const&
                                       )
     {
+      // Sometimes, when L0 or L1 is empty, a0 or a1 can be unused and some compilers warns about it
+      boost::ignore_unused(a0,a1);
       return T( extract<L0::value>(a0)..., extract<L1::value>(a1)... );
     }
 

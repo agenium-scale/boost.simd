@@ -24,6 +24,12 @@ template <typename T, int N, typename Env> void test(Env& $)
 
   STF_EQUAL( bs::slide<-N>(p), bs::Zero<p_t>() );
 
+  ref = bs::load<p_t>(&data[N], -N+1);
+  STF_EQUAL( bs::slide<-N+1>(p), ref );
+
+  ref = bs::load<p_t>(&data[N], -N/2);
+  STF_EQUAL( bs::slide<-N/2>(p), ref );
+
   ref = bs::load<p_t>(&data[N], -1);
   STF_EQUAL( bs::slide<-1>(p), ref );
 
@@ -32,6 +38,12 @@ template <typename T, int N, typename Env> void test(Env& $)
 
   ref = bs::load<p_t>(&data[N], +1);
   STF_EQUAL( bs::slide<+1>(p), ref );
+
+  ref = bs::load<p_t>(&data[N], N/2);
+  STF_EQUAL( bs::slide<N/2>(p), ref );
+
+  ref = bs::load<p_t>(&data[N], N-1);
+  STF_EQUAL( bs::slide<N-1>(p), ref );
 
   STF_EQUAL( bs::slide<N>(p), bs::Zero<p_t>() );
 }

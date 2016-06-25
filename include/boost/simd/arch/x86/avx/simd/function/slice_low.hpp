@@ -56,6 +56,23 @@ namespace boost { namespace simd { namespace ext
   };
 
   // -----------------------------------------------------------------------------------------------
+  // slice_low pack of AVX2 integer
+  BOOST_DISPATCH_OVERLOAD ( slice_low_
+                          , (typename T)
+                          , bs::avx_
+                          , bs::pack_< bd::integer_<T>, bs::avx_ >
+                          )
+  {
+    static const std::size_t half = T::static_size/2;
+    using result_t   = typename T::template resize<half>;
+
+    BOOST_FORCEINLINE result_t operator()(T const& a0) const
+    {
+      return _mm256_extractf128_si256(a0, 0);
+    }
+  };
+
+  // -----------------------------------------------------------------------------------------------
   // slice_low pack of AVX logical
   BOOST_DISPATCH_OVERLOAD ( slice_low_
                           , (typename T)

@@ -9,21 +9,19 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/pack.hpp>
 #include <boost/simd/function/tofloat.hpp>
-#include <boost/simd/meta/cardinal_of.hpp>
+#include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
+
+namespace bs = boost::simd;
+namespace bd = boost::dispatch;
 
 template <typename T, int N, typename Env>
 void test(Env& $)
 {
-  namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
-
   using p_t = bs::pack<T, N>;
   using fT = bd::as_floating_t<T>;
   using f_t =bs::pack<fT, N>;
-
 
   T a1[N];
   fT b[N];
@@ -32,16 +30,17 @@ void test(Env& $)
     a1[i] = (i%2) ? T(i) : T(-i);
     b[i] = bs::tofloat(a1[i]) ;
   }
+
   p_t aa1(&a1[0], &a1[0]+N);
   f_t bb (&b[0], &b[0]+N);
+
   STF_IEEE_EQUAL(bs::tofloat(aa1), bb);
 }
 
-STF_CASE_TPL("Check tofloat on pack" , (uint32_t)(uint64_t)(int32_t)(int64_t))//STF_CONVERTIBLE_TYPES) // to define ?
+STF_CASE_TPL("Check tofloat on pack" , (std::uint32_t)(std::uint64_t)(std::int32_t)(std::int64_t))
 {
-  namespace bs = boost::simd;
-  using p_t = bs::pack<T>;
-  static const std::size_t N = bs::cardinal_of<p_t>::value;
+  static const std::size_t N = bs::pack<T>::static_size;
+
   test<T, N>($);
   test<T, N/2>($);
   test<T, N*2>($);

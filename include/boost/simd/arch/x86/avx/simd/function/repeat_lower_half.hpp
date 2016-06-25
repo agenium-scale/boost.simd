@@ -39,6 +39,18 @@ namespace boost { namespace simd { namespace ext
       return _mm256_permute2f128_ps(a0,a0,0x00);
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( repeat_lower_half_
+                          , (typename A0)
+                          , bs::avx_
+                          , bs::pack_<bd::integer_<A0>, bs::avx_>
+                         )
+  {
+    BOOST_FORCEINLINE A0 operator() ( const A0 & a0 ) const BOOST_NOEXCEPT
+    {
+      return _mm256_permute2f128_si256(a0,a0,0x00);
+    }
+  };
 } } }
 
 #endif

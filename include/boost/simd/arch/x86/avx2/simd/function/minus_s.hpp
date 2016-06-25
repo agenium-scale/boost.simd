@@ -1,7 +1,6 @@
 //==================================================================================================
 /**
   Copyright 2016 NumScale SAS
-  Copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -28,7 +27,7 @@ namespace boost { namespace simd { namespace ext
       BOOST_FORCEINLINE A0 operator()( const saturated_tag &
                                      , A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
       {
-        return _mm256_minus_epi16(a0,a1);
+        return _mm256_subs_epi16(a0,a1);
       }
    };
 
@@ -43,7 +42,7 @@ namespace boost { namespace simd { namespace ext
       BOOST_FORCEINLINE A0 operator()( const saturated_tag &
                                      , A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
       {
-        return _mm256_minus_epi8(a0,a1);
+        return _mm256_subs_epi8(a0,a1);
       }
    };
 
@@ -58,7 +57,7 @@ namespace boost { namespace simd { namespace ext
      BOOST_FORCEINLINE A0 operator()( const saturated_tag &
                                      , A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
       {
-        return _mm256_minus_epu16(a0,a1);
+        return _mm256_subs_epu16(a0,a1);
       }
    };
 
@@ -73,7 +72,7 @@ namespace boost { namespace simd { namespace ext
       BOOST_FORCEINLINE A0 operator()( const saturated_tag &
                                      , A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
       {
-        return _mm256_minus_epu8(a0,a1);
+        return _mm256_subs_epu8(a0,a1);
       }
    };
 } } }

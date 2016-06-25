@@ -20,23 +20,6 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( deinterleave_first_
                           , (typename A0)
                           , bs::avx2_
-                          , bs::pack_<bd::integer_<A0>, bs::avx_>
-                          , bs::pack_<bd::integer_<A0>, bs::avx_>
-                         )
-  {
-    BOOST_FORCEINLINE A0 operator()(const A0 & a0, const A0 & a1 ) const BOOST_NOEXCEPT
-    {
-      auto s0 = slice(a0);
-      auto s1 = slice(a1);
-      return combine( deinterleave_first(std::get<0>(s0),std::get<1>(s0))
-                    , deinterleave_first(std::get<0>(s1),std::get<1>(s1))
-                    );
-    }
-  };
-
-  BOOST_DISPATCH_OVERLOAD ( deinterleave_first_
-                          , (typename A0)
-                          , bs::avx2_
                           , bs::pack_<bd::ints16_<A0>, bs::avx_>
                           , bs::pack_<bd::ints16_<A0>, bs::avx_>
                          )

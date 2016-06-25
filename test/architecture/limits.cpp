@@ -44,21 +44,7 @@ STF_CASE_TPL ( "Check existence of limits for SSE2-like extensions"
   STF_EQUAL( limits<T>::bytes, 16 );
 }
 
-STF_CASE_TPL( "Check existence of limits for AVX-like extensions", (avx_)(xop_)(fma4_)(fma3_) )
-{
-  STF_TYPE_IS( typename limits<T>::smallest_real, float);
-  STF_TYPE_IS( typename limits<T>::largest_real, double);
-
-  STF_TYPE_IS( (brigand::apply<typename limits<T>::smallest_integer,signed>)   , brigand::no_such_type_  );
-  STF_TYPE_IS( (brigand::apply<typename limits<T>::smallest_integer,unsigned>) , brigand::no_such_type_  );
-  STF_TYPE_IS( (brigand::apply<typename limits<T>::largest_integer,signed>)    , brigand::no_such_type_  );
-  STF_TYPE_IS( (brigand::apply<typename limits<T>::largest_integer,unsigned>)  , brigand::no_such_type_  );
-
-  STF_EQUAL( limits<T>::bits, 256 );
-  STF_EQUAL( limits<T>::bytes, 32 );
-}
-
-STF_CASE_TPL( "Check existence of limits for AVX2-like extensions", (avx2_) )
+STF_CASE_TPL( "Check existence of limits for AVX-like extensions", (avx_)(avx2_)(xop_)(fma4_)(fma3_) )
 {
   STF_TYPE_IS( typename limits<T>::smallest_real, float);
   STF_TYPE_IS( typename limits<T>::largest_real, double);
