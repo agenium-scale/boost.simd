@@ -32,8 +32,8 @@ function(make_exhaustive root)
   endforeach()
 endfunction()
 
-set(CMAKE_CXX_FLAGS_EXHAUSTIVE
-    " -O3 -fopenmp"
-    CACHE STRING "Flags used by the C++ compiler during exhaustive builds."
-    FORCE)
-
+find_package(OpenMP)
+if (OPENMP_FOUND)
+    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
+    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+endif()
