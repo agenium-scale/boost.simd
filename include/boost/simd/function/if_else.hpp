@@ -36,9 +36,6 @@ namespace boost { namespace simd
     T1 r = cond ? t : f;
     @endcode
 
-    @par Alias:
-    @c where, @c select,  @c sel
-
     @see  if_else_zero, if_else_allbits, if_zero_else,
     if_allbits_else, if_one_else_zero, if_zero_else_one, bitwise_select
   **/

@@ -18,7 +18,7 @@ namespace boost { namespace simd
 
  /*!
 
-    @ingroup group-operator
+    @ingroup group-predicates
     Function object implementing is_equal capabilities
 
     Returns @ref True or @ref False

@@ -71,6 +71,7 @@ namespace boost { namespace simd { namespace ext
       return _mm256_fmadd_pd(a0, a1, a2);
     }
   };
-} } }
 
+} } }
+#include <boost/simd/arch/x86/fma3/simd/function/correct_fma.hpp>
 #endif

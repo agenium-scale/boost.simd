@@ -14,7 +14,32 @@
 #include <boost/simd/config.hpp>
 #include <boost/simd/detail/decorator.hpp>
 #include <boost/simd/detail/dispatch.hpp>
+#if defined(DOXYGEN_ONLY)
+namespace boost { namespace simd
+{
+  /*!
+  @ingroup group-decorator
 
+    restricts the range of validity of some functors
+      (thus avoiding tests and branching), but ensures an as accurate though
+      speedier version on the limited range.
+
+      For example is to are sure your angles are between \f$-\pi/4\f$ and \f$\pi/4\f$
+      can be used with @ref cos : restricted_(cos) (or with the other direct trigonometric functions).
+
+       - the simd gain will be at least 5 for floats on an sse4.2 sytem
+       - the result will be @ref Nan outside the limited interval...
+    @par Semantic
+
+    @code
+    T r = restricted_(func)(< func parameters >);
+    @endcode
+
+  **/
+  template<typename T> auto restricted_(T const& x) {}
+
+} }
+#endif
 namespace boost { namespace simd
 {
   struct restricted_tag : decorator_<restricted_tag>

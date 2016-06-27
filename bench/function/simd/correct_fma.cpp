@@ -5,9 +5,8 @@
 //                        See accompanying file LICENSE.txt or copy at
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
-
 #include <ns.bench.hpp>
-#include <boost/simd/function/simd/correct_fma.hpp>
+#include <boost/simd/function/simd/fma.hpp>
 #include <boost/simd/pack.hpp>
 #include <cmath>
 
@@ -24,7 +23,7 @@ struct correct_fma_simd
      using ret_type = bs::pack<T>;
      nsb::make_function_experiment_cpe_sized_<pack_t::static_size>
        ( [](const pack_t & x0, const pack_t & x1, const pack_t & x2) -> ret_type
-         { return bs::correct_fma(x0, x1, x2); }
+       { return bs::conformant_(bs::fma)(x0, x1, x2); }
        , nsb::generators::rand<pack_t>(min0, max0)
        , nsb::generators::rand<pack_t>(min1, max1)
        , nsb::generators::rand<pack_t>(min2, max2)

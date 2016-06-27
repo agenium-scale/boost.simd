@@ -44,9 +44,9 @@ namespace boost { namespace simd
       d[o] = v;
       @endcode
 
-    @param value   Value to insert
-    @param data    Data to insert into
-    @param offset  Position where to insert
+    @param v   Value to insert
+    @param d   Data to insert into
+    @param o  Position where to insert
 
     @return void
   **/

@@ -40,7 +40,7 @@ namespace boost { namespace simd
 
     saturated_ ensures that saturated_(inc)(x) will never be strictly smaller than x.
 
-    @see plus
+    @see dec, oneminus, plus
 
   **/
   const boost::dispatch::functor<tag::inc_> inc = {};

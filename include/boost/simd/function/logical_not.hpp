@@ -18,7 +18,7 @@ namespace boost { namespace simd
 
  /*!
 
-    @ingroup group-operator
+    @ingroup group-boolean
     Function object implementing logical_not capabilities
 
     return the logical negation of the parameter,
