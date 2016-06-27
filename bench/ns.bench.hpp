@@ -16,8 +16,7 @@ namespace ns { namespace bench {
 } }
 #include <boost/core/demangle.hpp>
 #include <type_traits>
-
-namespace ns {
+namespace ns { namespace bench {
 template<typename T> inline std::string type_id()
 {
   typedef std::is_const<typename std::remove_reference<T>::type>  const_t;
@@ -33,11 +32,11 @@ template<typename T> inline std::string type_id( const T& )
 {
   return type_id<T>();
 }
-}
+} }
 #include <boost/lexical_cast.hpp>
 #include <list>
 #include <unordered_map>
-namespace ns { namespace args {
+namespace ns { namespace bench { namespace args {
 struct parser;
 namespace detail {
   struct option;
@@ -56,7 +55,7 @@ struct options_map {
     return boost::lexical_cast<T>(opts_map_.at(opt_name));
   }
   template <typename T>
-  T get_or(key_type const& opt_name, T const& fallback) const {
+  T get(key_type const& opt_name, T const& fallback) const {
     return has(opt_name) ? get<T>(opt_name) : fallback;
   }
   anonymous_container const& anonymous() const {
@@ -79,18 +78,18 @@ struct options_map {
     options_container opts_map_;
     anonymous_container anon_map_;
 };
-} }
+} } }
 #include <stdexcept>
-namespace ns { namespace args {
+namespace ns { namespace bench { namespace args {
 struct parse_error : std::runtime_error {
   parse_error(std::string const& what)
     : std::runtime_error(what) {
   }
 };
-} }
+} } }
 #include <boost/tokenizer.hpp>
 #include <string>
-namespace ns { namespace args { namespace detail {
+namespace ns { namespace bench { namespace args { namespace detail {
 struct option {
   option(std::string name, std::string opts, bool required)
     : name_(name), opts_(opts), required_(required) {
@@ -165,7 +164,7 @@ struct typed_option : option {
         try {
           (void)boost::lexical_cast<T>(rhs);
         } catch (boost::bad_lexical_cast) {
-          throw parse_error(opts() + " expects a valid value of type: " + ns::type_id<T>());
+          throw parse_error(opts() + " expects a valid value of type: " + ns::bench::type_id<T>());
         }
         m.add_option(name(), rhs);
         return true;
@@ -185,11 +184,11 @@ template <typename T>
 struct auto_option<T, typename std::enable_if<std::is_same<T, void>::value>::type> {
   using type = option;
 };
-} } }
+} } } }
 #include <list>
 #include <unordered_map>
 #include <iostream>
-namespace ns { namespace args {
+namespace ns { namespace bench { namespace args {
 struct parser {
   public:
   parser(std::string const& bin_name = "")
@@ -273,8 +272,8 @@ struct parser {
     const std::string bin_name_;
     std::unordered_map<std::string, detail::option*> opts_;
 };
-} }
-std::ostream& operator<<(std::ostream& os, ns::args::options_map const& m) {
+} } }
+std::ostream& operator<<(std::ostream& os, ns::bench::args::options_map const& m) {
   os << "anonymous( ";
   for (auto a : m.anonymous()) {
     os << a << ", ";
@@ -287,7 +286,7 @@ std::ostream& operator<<(std::ostream& os, ns::args::options_map const& m) {
   os << "}" << std::endl;;
   return os;
 }
-std::ostream& operator<<(std::ostream& os, ns::args::parser const& p) {
+std::ostream& operator<<(std::ostream& os, ns::bench::args::parser const& p) {
   os << p.usage();
   os.flush();
   return os;
@@ -295,65 +294,43 @@ std::ostream& operator<<(std::ostream& os, ns::args::parser const& p) {
 #include <cstdint>
 #include <new>
 namespace ns { namespace bench {
-ns::args::options_map args_map;
+inline ns::bench::args::options_map& args_map() {
+  static ns::bench::args::options_map om;
+  return om;
+}
 inline void parse_args(int argc, char **argv) {
-  ns::args::parser p(argv[0]);
-  p.add_option<uint64_t>("frequency", "-f,--frequency");
-  p.add_option<uint64_t>("duration" , "-d,--duration" );
-  p.add_option<uint64_t>("iteration", "-i,--iteration");
-  p.parse(args_map, argc, argv, std::nothrow);
+  ns::bench::args::parser p(argv[0]);
+  p.add_option<std::size_t>("frequency", "-f,--frequency");
+  p.add_option<std::size_t>("duration" , "-d,--duration" );
+  p.add_option<std::size_t>("iteration", "-i,--iteration");
+  p.add_option<std::size_t>("loop",      "-l,--loop");
+  p.parse(args_map(), argc, argv, std::nothrow);
+}
+} }
+#include <chrono>
+namespace ns { namespace bench {
+using time_clock = std::chrono::high_resolution_clock;
+template <typename Duration>
+double to_seconds(Duration const& d) {
+  return std::chrono::duration_cast<std::chrono::duration<double>>(d).count();
 }
 } }
 #include <boost/config.hpp>
 #include <boost/core/ignore_unused.hpp>
 #include <boost/predef/architecture.h>
 #include <boost/predef/compiler.h>
-#include <cstdint>
-#if BOOST_COMP_MSVC
-  #include <intrin.h>
-#endif
-namespace ns { namespace bench {
-  using cycle_t = std::uint64_t;
-  BOOST_FORCEINLINE cycle_t read_cycles() {
-    cycle_t c = 0;
-#if (BOOST_COMP_GNUC || BOOST_COMP_CLANG || BOOST_COMP_INTEL) && BOOST_ARCH_X86
-    std::uint32_t hi = 0, lo = 0;
-    __asm__ __volatile__ ("rdtsc" : "=a"(lo), "=d"(hi) : : "memory" );
-    c = static_cast<cycle_t>(lo) | (static_cast<cycle_t>(hi) << 32);
-#elif BOOST_COMP_MSVC
-    #if defined(_M_AMD64)
-        __faststorefence();
-    #elif defined(_M_IX86)
-        long cpu_barrier; __asm xchg cpu_barrier, eax;
-    #endif
-    ::_ReadWriteBarrier();
-    c = ( ::__rdtsc() );
-    ::_ReadWriteBarrier();
-#elif  (BOOST_COMP_GNUC        && BOOST_ARCH_PPC) \
-    || (BOOST_COMP_MWERKS      && BOOST_OS_MACOS) \
-    || (defined(__IBM_GCC_ASM) && BOOST_ARCH_PPC)
-    std::uint32_t tbl, tbu0, tbu1;
-    do
-    {
-      __asm__ __volatile__ ("mftbu %0" : "=r"(tbu0));
-      __asm__ __volatile__ ("mftb %0"  : "=r"(tbl));
-      __asm__ __volatile__ ("mftbu %0" : "=r"(tbu1));
-    } while (tbu0 != tbu1);
-    c = (cycle_t)((((std::uint64_t)tbu0) << 32) | tbl);
-#elif BOOST_OS_LINUX && !defined(BOOST_OS_ANDROID_AVAILABLE)
-#else
-    static_assert(false, "read_cycles not available");
-#endif
-    return c;
-  }
-} }
-#include <cstdint>
 #include <ctime>
 #include <unistd.h>
 #include <ratio>
 #include <chrono>
 #include <iostream>
+#include <cstdint>
+#if BOOST_COMP_MSVC
+  #include <intrin.h>
+#endif
 namespace ns { namespace bench {
+using cycle_t = std::uint64_t;
+BOOST_FORCEINLINE cycle_t read_cycles();
 template <std::size_t Freq>
 struct basic_cycle_clock {
   using rep = cycle_t;
@@ -369,6 +346,43 @@ struct basic_cycle_clock {
   #define NS_BENCH_FREQUENCY 1
 #endif
 using cycle_clock = basic_cycle_clock<NS_BENCH_FREQUENCY>;
+template <typename CycleDuration>
+double to_cycles(CycleDuration const& c)
+{
+  return static_cast<double>(c.count());
+}
+BOOST_FORCEINLINE cycle_t read_cycles() {
+  cycle_t c = 0;
+#if (BOOST_COMP_GNUC || BOOST_COMP_CLANG || BOOST_COMP_INTEL) && BOOST_ARCH_X86
+  std::uint32_t hi = 0, lo = 0;
+  __asm__ __volatile__ ("rdtsc" : "=a"(lo), "=d"(hi) : : "memory" );
+  c = static_cast<cycle_t>(lo) | (static_cast<cycle_t>(hi) << 32);
+#elif BOOST_COMP_MSVC
+  #if defined(_M_AMD64)
+      __faststorefence();
+  #elif defined(_M_IX86)
+      long cpu_barrier; __asm xchg cpu_barrier, eax;
+  #endif
+  ::_ReadWriteBarrier();
+  c = ( ::__rdtsc() );
+  ::_ReadWriteBarrier();
+#elif  (BOOST_COMP_GNUC        && BOOST_ARCH_PPC) \
+  || (BOOST_COMP_MWERKS      && BOOST_OS_MACOS) \
+  || (defined(__IBM_GCC_ASM) && BOOST_ARCH_PPC)
+  std::uint32_t tbl, tbu0, tbu1;
+  do
+  {
+    __asm__ __volatile__ ("mftbu %0" : "=r"(tbu0));
+    __asm__ __volatile__ ("mftb %0"  : "=r"(tbl));
+    __asm__ __volatile__ ("mftbu %0" : "=r"(tbu1));
+  } while (tbu0 != tbu1);
+  c = (cycle_t)((((std::uint64_t)tbu0) << 32) | tbl);
+#elif BOOST_OS_LINUX && !defined(BOOST_OS_ANDROID_AVAILABLE)
+#else
+  static_assert(false, "read_cycles not available");
+#endif
+  return c;
+}
 } }
 #include <boost/accumulators/accumulators.hpp>
 #include <boost/accumulators/statistics/stats.hpp>
@@ -394,123 +408,8 @@ struct basic_stat {
   virtual std::string unit() const = 0;
 };
 } } }
-#include <iostream>
-#include <iomanip>
-namespace ns { namespace bench { namespace format {
-static const int unit_maxw = 10;
-static const int stat_maxw = 10;
-static const int size_maxw = 10;
-static const int result_maxw = 15;
-static const int samples_maxw = 15;
-static const int parameters_maxw = 80;
-static std::reference_wrapper<std::ostream> global_ostream = std::ref(std::cout);
-inline std::ostream& get_os() {
-  return global_ostream.get();
-}
-inline void set_os(std::ostream& os) {
-  global_ostream = std::ref(os);
-}
-inline std::string format_line(std::string const& what) {
-  return what.empty() ? what : std::string(":: ") + what + "\n";
-}
-inline void print_line(std::string const& what) {
-  get_os() << format_line(what);
-}
-inline std::size_t print_bar(std::size_t size, char what) {
-  auto& os = get_os();
-  for (std::size_t i = 0; i < size; ++i) {
-    os << what;
-  }
-  os << std::endl;
-  return size;
-}
-inline std::size_t print_header() {
-  std::stringstream ss;
-  ss
-    << std::setw(format::size_maxw)
-    << "Size"
-    << ' '
-    << std::setw(format::result_maxw)
-    << "Result"
-    << ' '
-    << std::setw(format::unit_maxw)
-    << "Unit"
-    << ' '
-    << std::setw(format::stat_maxw)
-    << "Stat"
-    << ' '
-    << std::setw(format::samples_maxw)
-    << "Samples"
-    << ' '
-    << std::setw(format::parameters_maxw)
-    << "Parameters"
-    << ' '
-    << std::endl;
-    ;
-  get_os() << ss.str();
-  return ss.str().size();
-}
-inline std::size_t print_experiment(std::string const& benchmark) {
-  get_os() << format_line(std::string("Benchmarking: \"") + benchmark +"\"");
-  return print_bar(print_header(), '-');
-}
-template <typename Experiment, typename Metric>
-inline void print_results(Experiment const& e, Metric const& m, double res) {
-  std::size_t number_of_samples = boost::accumulators::count(times_set);
-  auto& os = get_os();
-  std::ios::fmtflags saved_fmt(os.flags());
-  os
-    << std::setw(format::size_maxw)
-    << e.size()
-    << ' '
-    << std::setw(format::result_maxw)
-    << res
-    << ' '
-    << std::setw(format::unit_maxw)
-    << m.unit().unit()
-    << ' '
-    << std::setw(format::stat_maxw)
-    << m.stat().unit()
-    << ' '
-    << std::setw(format::samples_maxw)
-    << number_of_samples
-    << ' '
-    << std::setw(format::parameters_maxw)
-    << e.description()
-    << std::endl
-    ;
-  os.flags(saved_fmt);
-}
-struct scoped_printer {
-  scoped_printer(std::string const& name)
-    : bar_size_(0)
-  {
-    bar_size_ = print_experiment(name);
-  }
-  ~scoped_printer()
-  {
-    print_bar(bar_size_, '=');
-  }
-  private:
-  std::size_t bar_size_;
-};
-template <typename T>
-T sanitize(T const& v)              { return v; }
-inline int sanitize(char v)         { return v; }
-inline int sanitize(std::int8_t v)  { return v; }
-inline int sanitize(std::uint8_t v) { return v; }
-} } }
-#include <cstddef>
-#include <cstdlib>
-#include <ctime>
-#include <limits>
-#include <string>
 namespace ns { namespace bench {
 struct basic_experiment {
-  virtual void before_run() {
-  }
-  virtual void after_run() {
-  }
   virtual std::size_t size() const {
     return 1u;
   }
@@ -530,6 +429,13 @@ struct basic_experiment {
     return "no description given";
   }
 };
+template <bool IsMutable>
+struct basic_mutable_experiment : basic_experiment {
+  enum { is_mutable = IsMutable };
+};
+using experiment           = basic_mutable_experiment<true>;
+using mutable_experiment   = experiment;
+using immutable_experiment = basic_mutable_experiment<false>;
 } }
 #include <string>
 namespace ns { namespace bench { namespace units {
@@ -645,7 +551,7 @@ namespace detail {
                        , stats::basic_stat const& s
                        ) const
     {
-      double freq = ns::bench::args_map.get_or<double>("frequency", -1);
+      double freq = ns::bench::args_map().get<double>("frequency", -1);
       return (freq == -1)
         ? (s.eval(cycles_set) / e.size())
         : (s.eval(times_set) * freq) / (e.size() * 1e6);
@@ -720,7 +626,7 @@ namespace detail {
                        , stats::basic_stat const& s
                        ) const
     {
-      double freq = args_map.get<double>("frequency");
+      double freq = args_map().get<double>("frequency");
       return e.flops() * freq / s.eval(cycles_set) * 1000000000.;
     }
     virtual std::string unit() const { return "GFLOPS"; }
@@ -796,531 +702,398 @@ const detail::transfer<decltype(b_), decltype(s_)> b_ns_ = {};
 } } }
 namespace ns { namespace bench { namespace units {
 } } }
+namespace ns { namespace bench { namespace detail {
+template <std::size_t... N> struct range {};
+template <std::size_t N>    struct make_range {};
+template <> struct make_range<1> { using type = range<0>; };
+template <> struct make_range<2> { using type = range<0, 1>; };
+template <> struct make_range<3> { using type = range<0, 1, 2>; };
+template <> struct make_range<4> { using type = range<0, 1, 2, 3>; };
+template <std::size_t N>
+using make_range_t = typename make_range<N>::type;
+#define NS_BENCH_STATIC_UNROLL(f, ...)                                                             \
+  (void)std::initializer_list<int>{((void)f(__VA_ARGS__), 0)...}                                   \
+
+} } }
+#include <iostream>
+#include <iomanip>
+#include <unordered_map>
+namespace ns { namespace bench {
+static const std::size_t unit_maxw = 10;
+static const std::size_t stat_maxw = 10;
+static const std::size_t size_maxw = 10;
+static const std::size_t result_maxw = 15;
+static const std::size_t samples_maxw = 15;
+static const std::size_t description_maxw = 80;
+struct result_info {
+  double result;
+  std::string unit;
+  std::string stat;
+  std::string desc;
+  std::size_t size;
+  std::size_t samples;
+};
+struct results {
+  using container_type = std::vector<std::pair<std::string, std::vector<result_info>>>;
+  using contained_type = typename container_type::value_type;
+  void update(std::string const& name, result_info const& r) {
+    auto found =
+      std::find_if(results_.begin(), results_.end(), [&](contained_type const& v) {
+        return v.first == name;
+      });
+    if (found == results_.end()) {
+      results_.emplace_back(std::make_pair(name, typename contained_type::second_type()));
+      results_.back().second.push_back(r);
+    } else {
+      found->second.push_back(r);
+    }
+  }
+  container_type::const_iterator begin() const  { return results_.begin(); }
+  container_type::const_iterator cbegin() const { return results_.cbegin(); }
+  container_type::const_iterator end() const    { return results_.end(); }
+  container_type::const_iterator cend() const   { return results_.cend(); }
+  private:
+  container_type results_;
+};
+template <std::size_t... N, typename... Gs>
+std::string make_generators_desc(detail::range<N...> const&, std::tuple<Gs...> const& gs) {
+  bool first = true;
+  std::string desc;
+  auto append = [&](std::string const& d) {
+    if (!first) desc += ", ";
+    desc += d;
+    first = false;
+  };
+  NS_BENCH_STATIC_UNROLL(append, std::get<N>(gs).description());
+  return desc;
+}
+template <typename Experiment, typename Metric, typename... Gs>
+result_info make_result_info(Experiment const& e, Metric const& m, std::tuple<Gs...> const& gs) {
+  result_info r;
+  r.size    = e.size();
+  r.unit    = m.unit().unit();
+  r.stat    = m.stat().unit();
+  r.desc    = make_generators_desc(detail::make_range_t<sizeof...(Gs)>(), gs);
+  r.result  = m.eval(e) / e.element_size();
+  r.samples = boost::accumulators::count(times_set);
+  return r;
+}
+std::ostream& operator<<(std::ostream& os, result_info const& r)
+{
+  os
+    << std::setw(size_maxw)
+    << r.size << ' '
+    << std::setw(result_maxw)
+    << r.result << ' '
+    << std::setw(unit_maxw)
+    << r.unit << ' '
+    << std::setw(stat_maxw)
+    << r.stat << ' '
+    << std::setw(samples_maxw)
+    << r.samples << ' '
+    << std::setw(description_maxw)
+    << r.desc
+    ;
+  return os;
+}
+std::ostream& operator<<(std::ostream& os, results const& r)
+{
+  std::size_t bar_size = 0;
+  bar_size += unit_maxw + 1;
+  bar_size += stat_maxw + 1;
+  bar_size += size_maxw + 1;
+  bar_size += result_maxw + 1;
+  bar_size += samples_maxw + 1;
+  bar_size += description_maxw + 1;
+  auto print_bar = [&](std::size_t size, char what) {
+    os << ":: ";
+    for (std::size_t i = 0; i < size; ++i) os << what;
+    os << std::endl;
+  };
+  for (auto const& b : r) {
+    auto const& name  = b.first;
+    auto const& infos = b.second;
+    os << ":: Benchmarking results for: \"" << name  << "\"" << std::endl;
+    os
+      << std::setw(size_maxw)
+      << "Size" << ' '
+      << std::setw(result_maxw)
+      << "Result" << ' '
+      << std::setw(unit_maxw)
+      << "Unit" << ' '
+      << std::setw(stat_maxw)
+      << "Stat" << ' '
+      << std::setw(samples_maxw)
+      << "Samples" << ' '
+      << std::setw(description_maxw)
+      << "Generators" << ' '
+      << std::endl
+      ;
+    for (auto const& info : infos) {
+      os << info << std::endl;
+    }
+    print_bar(bar_size, '-');
+  }
+  return os;
+}
+} }
+#include <iostream>
+#include <iomanip>
+#include <sstream>
+namespace ns { namespace bench {
+template <typename T>
+T sanitize(T const& v)              { return v; }
+inline int sanitize(char v)         { return v; }
+inline int sanitize(std::int8_t v)  { return v; }
+inline int sanitize(std::uint8_t v) { return v; }
+template <typename T>
+inline std::string format(T const& v)
+{
+  std::stringstream ss;
+  ss << sanitize(v);
+  return ss.str();
+}
+template <typename T>
+struct format_type {
+  static std::string to_string() {
+    return type_id<T>();
+  }
+};
+} }
 #include <boost/optional.hpp>
 #include <chrono>
 #include <functional>
 #include <iostream>
 #include <iomanip>
 namespace ns { namespace bench {
-namespace detail {
-  template <typename Experiment, typename Enable = void>
-  struct experiment_copy {
-    using type = Experiment;
-  };
-  template <typename Experiment>
-  struct experiment_copy<Experiment, typename std::enable_if<!Experiment::is_mutable>::type> {
-    using type = Experiment&;
-  };
-  template <typename Experiments>
-  struct run_experiments {
-    template <typename Benchmark, typename... Args>
-    run_experiments(Benchmark&, Args&&...) {
-    }
-  };
-  template <template <class...> class Seq, typename E0>
-  struct run_experiments<Seq<E0>> {
-    template <typename Benchmark, typename... Args>
-    run_experiments(Benchmark& b, Args&&... args) {
-      b.template run_experiment<E0>(std::forward<Args>(args)...);
-    }
-  };
-  template <template <class...> class Seq, typename E0, typename E1>
-  struct run_experiments<Seq<E0, E1>> {
-    template <typename Benchmark, typename... Args>
-    run_experiments(Benchmark& b, Args&&... args) {
-      b.template run_experiment<E0>(std::forward<Args>(args)...);
-      b.template run_experiment<E1>(std::forward<Args>(args)...);
-    }
-  };
-  template <template <class...> class Seq, typename E0, typename E1, typename E2, typename... En>
-  struct run_experiments<Seq<E0, E1, E2, En...>> {
-    template <typename Benchmark, typename... Args>
-    run_experiments(Benchmark& b, Args&&... args) {
-      b.template run_experiment<E0>(std::forward<Args>(args)...);
-      b.template run_experiment<E1>(std::forward<Args>(args)...);
-      b.template run_experiment<E2>(std::forward<Args>(args)...);
-      run_experiments<Seq<En...>>(b, std::forward<Args>(args)...);
-    }
-  };
-  template <typename... L>
-  struct meta_seq;
-  template <typename L>
-  struct make_meta_seq {
-    using type = meta_seq<L>;
-  };
-  template <typename... L>
-  struct make_meta_seq<meta_seq<L...>> {
-    using type = meta_seq<L...>;
-  };
-  template <typename T>
-  using make_meta_seq_t = typename make_meta_seq<T>::type;
-}
 namespace chrono = std::chrono;
-using metrics_t = std::set<::ns::bench::metric>;
-inline const char* no_description();
-template <typename Experiments>
-class benchmark {
+class setup {
   public:
-  using duration_type = chrono::milliseconds;
+  using duration_type = chrono::nanoseconds;
   public:
-  benchmark(std::string const& name = "") : name_(boost::none), during_(), iteration_() {
-    if (name != no_description()) {
-      name_ = name;
+  setup() : during_(), iteration_() {
+    if (args_map().has("duration")) {
+      during(args_map().get<double>("duration"));
     }
-    if (args_map.has("duration")) {
-      during(args_map.get<double>("duration"));
-    }
-    if (args_map.has("iteration")) {
-      iteration(args_map.get<std::size_t>("iteration"));
+    if (args_map().has("iteration")) {
+      iteration(args_map().get<std::size_t>("iteration"));
     }
   }
-  benchmark& during(double d) {
-    during_ =
+  private:
+  duration_type to_duration_type(double d) {
+    return
       chrono::duration_cast<duration_type>(
-          chrono::milliseconds(static_cast<chrono::milliseconds::rep>(d * 1000.))
-          );
+          duration_type(static_cast<duration_type::rep>(d * duration_type::period::den)));
+  }
+  public:
+  setup& during(double d) {
+    during_ = to_duration_type(d);
     return *this;
   }
   template <typename Rep, typename Period>
-  benchmark& during(chrono::duration<Rep, Period> const& d) {
+  setup& during(chrono::duration<Rep, Period> const& d) {
     during_ = chrono::duration_cast<duration_type>(d);
     return *this;
   }
-  benchmark& really_during(double d) {
-    really_during_ =
-      chrono::duration_cast<duration_type>(
-          chrono::milliseconds(static_cast<chrono::milliseconds::rep>(d * 1000.))
-          );
+  setup& really_during(double d) {
+    really_during_ = to_duration_type(d);
     return *this;
   }
   template <typename Rep, typename Period>
-  benchmark& really_during(chrono::duration<Rep, Period> const& d) {
+  setup& really_during(chrono::duration<Rep, Period> const& d) {
     really_during_ = chrono::duration_cast<duration_type>(d);
     return *this;
   }
-  benchmark& iteration(std::size_t n) {
+  setup& iteration(std::size_t n) {
     iteration_ = n;
     return *this;
   }
-  private:
-  template <typename Experiment, typename... Args>
-  benchmark& run_experiment(Args&&... args) {
-    using time_clock = chrono::high_resolution_clock;
-    Experiment e(std::forward<Args>(args)...);
-    double time = 0.;
-    double max_time = time;
-    double max_real_time = time;
-    std::size_t iter = 0;
-    std::size_t max_iter = iter;
-    auto real_starting_time = time_clock::now();
-    if (during_) {
-      max_time = to_seconds(*during_);
-    }
-    if (really_during_) {
-      max_real_time = to_seconds(*really_during_);
-    }
-    if (iteration_) {
-      max_iter = *iteration_;
-    }
-    auto do_continue =
-      [this, &iter, &max_iter, &time, &max_time, &real_starting_time, &max_real_time]()
-      {
-        auto elapsed_real_time = to_seconds(time_clock::now() - real_starting_time);
-        if (this->really_during_ && elapsed_real_time >= max_real_time) {
-          return false;
-        }
-        if (this->iteration_ && iter > max_iter) {
-          return false;
-        }
-        if (this->during_ && time > max_time) {
-          return false;
-        }
-        if (!this->during_ && !this->iteration_ && !this->really_during_) {
-          return false;
-        }
-        return true;
-      }
-    ;
-    auto do_step = [this, &iter, &time](double elapsed_time) {
-      iter += 1;
-      time += elapsed_time;
-    };
-    times_set = stats_set();
-    cycles_set = stats_set();
-    while (do_continue()) {
-      typename detail::experiment_copy<Experiment>::type local(e);
-      local.before_run();
-      auto t0 = time_clock::now();
-      auto c0 = cycle_clock::now();
-      local.run();
-      auto c1 = cycle_clock::now();
-      auto t1 = time_clock::now();
-      local.after_run();
-      auto elapsed_time = to_seconds(t1 - t0);
-      times_set(elapsed_time);
-      cycles_set(static_cast<double>((c1 - c0).count()));
-      do_step(elapsed_time);
-    }
-    for (auto m : metrics_) {
-      format::print_results(e, m, m.eval(e) / static_cast<double>(e.element_size()));
-    }
-    return *this;
-  }
   public:
-  template <typename... Args>
-  benchmark& run(Args&&... args) {
-    using experiments = detail::make_meta_seq_t<Experiments>;
-    if (name_) {
-      format::scoped_printer _(*name_);
-      detail::run_experiments<experiments>(*this, std::forward<Args>(args)...);
-    } else {
-      detail::run_experiments<experiments>(*this, std::forward<Args>(args)...);
-    }
-    return *this;
-  }
-  benchmark& metric(stats::basic_stat const& s, units::basic_unit const& u) {
+  setup& metric(stats::basic_stat const& s, units::basic_unit const& u) {
     metrics_.emplace(s, u);
     return *this;
   }
-  benchmark& metric(::ns::bench::metric const& m) {
+  setup& metric(::ns::bench::metric const& m) {
     metrics_.emplace(m);
     return *this;
   }
-  benchmark& metric(::ns::bench::metric&& m) {
+  setup& metric(::ns::bench::metric&& m) {
     metrics_.emplace(std::move(m));
     return *this;
   }
-  benchmark& min(units::basic_unit const& u) {
+  setup& min(units::basic_unit const& u) {
     return metric(stats::min_, u);
   }
-  benchmark& max(units::basic_unit const& u) {
+  setup& max(units::basic_unit const& u) {
     return metric(stats::max_, u);
   }
-  benchmark& mean(units::basic_unit const& u) {
+  setup& mean(units::basic_unit const& u) {
     return metric(stats::mean_, u);
   }
-  benchmark& median(units::basic_unit const& u) {
+  setup& median(units::basic_unit const& u) {
     return metric(stats::median_, u);
   }
-  private:
-  template <typename Duration>
-  static double to_seconds(Duration const& d) {
-    return chrono::duration_cast<chrono::duration<double>>(d).count();
+  std::set<::ns::bench::metric> const& metrics() const {
+    return metrics_;
   }
-  template <typename> friend struct detail::run_experiments;
+  static std::size_t internal_loop_size() {
+    static const std::size_t default_internal_loop_size = 1024u;
+    return args_map().get<std::size_t>("loop", default_internal_loop_size);
+  }
+  bool has_during() const        { return static_cast<bool>(during_); }
+  bool has_iteration() const     { return static_cast<bool>(iteration_); }
+  bool has_really_during() const { return static_cast<bool>(really_during_); }
+  double during() const          { return to_seconds(*during_); }
+  std::size_t iteration() const  { return *iteration_; }
+  double really_during() const   { return to_seconds(*really_during_); }
   private:
-    boost::optional<std::string> name_;
-    boost::optional<duration_type> during_;
-    boost::optional<duration_type> really_during_;
-    boost::optional<std::size_t> iteration_;
-    metrics_t metrics_;
+  boost::optional<duration_type> during_;
+  boost::optional<duration_type> really_during_;
+  boost::optional<std::size_t> iteration_;
+  std::set<::ns::bench::metric> metrics_;
 };
-template <template <class> class Experiment, typename... Types>
-benchmark<detail::meta_seq<Experiment<Types>...>> make_benchmark(std::string const& name = "") {
-  return benchmark<detail::meta_seq<Experiment<Types>...>>(name);
-}
-template <typename... Experiments>
-benchmark<detail::meta_seq<Experiments...>> make_benchmark(std::string const& name = "") {
-  return benchmark<detail::meta_seq<Experiments...>>(name);
-}
-inline const char* no_description()
-{
-  return "";
-}
 } }
+#define NS_BENCH_AUTO_DECLTYPE(...)                                                                \
+  -> decltype(__VA_ARGS__) { return (__VA_ARGS__); }                                               \
+
+#define NS_BENCH_ASM_MARKER() __asm__ __volatile__ ("cpuid")
 namespace ns { namespace bench {
+#if defined(__GNUC__)
+template <typename T>
+BOOST_FORCEINLINE void dnopt(T const& v)
+{
+  asm volatile("" : "+m" (const_cast<T&>(v)));
+}
+#else
+void dnopt_reinterpreted(char const volatile*)
+{
+}
+template <typename T>
+BOOST_FORCEINLINE void dnopt(T const& v) {
+  dnopt_reinterpreted(&reinterpret_cast<char const volatile&>(v));
+}
+#endif
 } }
+#include <boost/optional.hpp>
+#include <functional>
 namespace ns { namespace bench {
 namespace detail {
-  template <bool IsMutable>
-  struct basic_mutable_experiment : basic_experiment {
-    enum {
-      is_mutable = IsMutable
-    };
-  };
-}
-using experiment           = detail::basic_mutable_experiment<true>;
-using mutable_experiment   = experiment;
-using immutable_experiment = detail::basic_mutable_experiment<false>;
-} }
-#include <memory>
-#include <chrono>
-namespace ns { namespace bench {
-namespace detail {
-  template <std::size_t ExpSize, typename F, typename... Args>
-  struct basic_common_function_experiment : mutable_experiment {
-    enum {
-      result_array_size = 32,
-      experiment_size = 1024
-    };
-    using return_t       = decltype(std::declval<F>()(std::declval<Args>()()...));
-    using return_array_t = std::array<return_t, result_array_size>;
-    static_assert( !std::is_same<void, return_t>::value
-                 , "Functions passed to function_experiment must not return void"
-                 );
-    public:
-    basic_common_function_experiment(F f,  Args&&... args)
-      : f_(f), args_gen_(std::forward<Args>(args)...), results_(std::make_shared<return_array_t>()) {
-    }
-    virtual std::size_t size() const {
-      return experiment_size;
-    }
-    virtual std::size_t element_size() const {
-      return ExpSize;
-    }
-    protected:
-    template <std::size_t N>
-    std::string description_of() const {
-      return std::get<N>(this->args_gen_).description();
-    }
-    public:
-    F f_;
-    std::tuple<decltype(std::declval<Args>()())...> args_;
-    std::tuple<Args...> args_gen_;
-    std::shared_ptr<return_array_t> results_;
-  };
-  template <std::size_t N, std::size_t ExpSize, typename F, typename... Args>
-  struct basic_function_experiment;
-  template <std::size_t ExpSize, typename F, typename... Args>
-  struct basic_function_experiment<0, ExpSize, F, Args...>
-    : basic_common_function_experiment<ExpSize, F, Args...>
-  {
-    using super = basic_common_function_experiment<ExpSize, F, Args...>;
-    using super::super;
-    virtual void before_run() {
-    }
-    void run() {
-      for (std::size_t i = 0; i < super::experiment_size; ++i) {
-        (*this->results_)[i % super::result_array_size] =
-          this->f_();
-      }
-    }
-    virtual std::string description() const {
-      return "()";
-    }
-  };
-  template <std::size_t ExpSize, typename F, typename... Args>
-  struct basic_function_experiment<1, ExpSize, F, Args...>
-    : basic_common_function_experiment<ExpSize, F, Args...>
-  {
-    using super = basic_common_function_experiment<ExpSize, F, Args...>;
-    using super::super;
-    virtual void before_run() {
-      std::get<0>(this->args_) = std::get<0>(this->args_gen_)();
-    }
-    void run() {
-      for (std::size_t i = 0; i < super::experiment_size; ++i) {
-        (*this->results_)[i % super::result_array_size] =
-          this->f_(std::get<0>(this->args_));
-      }
-    }
-    virtual std::string description() const {
-      return "(" + super::template description_of<0>() + ")";
-    }
-  };
-  template <std::size_t ExpSize, typename F, typename... Args>
-  struct basic_function_experiment<2, ExpSize, F, Args...>
-    : basic_common_function_experiment<ExpSize, F, Args...>
-  {
-    using super = basic_common_function_experiment<ExpSize, F, Args...>;
-    using super::super;
-    virtual void before_run() {
-      std::get<0>(this->args_) = std::get<0>(this->args_gen_)();
-      std::get<1>(this->args_) = std::get<1>(this->args_gen_)();
-    }
-    void run() {
-      for (std::size_t i = 0; i < super::experiment_size; ++i) {
-        (*this->results_)[i % super::result_array_size] =
-          this->f_( std::get<0>(this->args_)
-                  , std::get<1>(this->args_)
-                  );
-      }
-    }
-    virtual std::string description() const {
-      return
-          "("  + super::template description_of<0>()
-        + ", " + super::template description_of<1>()
-        + ")"
-        ;
-    }
-  };
-  template <std::size_t ExpSize, typename F, typename... Args>
-  struct basic_function_experiment<3, ExpSize, F, Args...>
-    : basic_common_function_experiment<ExpSize, F, Args...>
-  {
-    using super = basic_common_function_experiment<ExpSize, F, Args...>;
-    using super::super;
-    virtual void before_run() {
-      std::get<0>(this->args_) = std::get<0>(this->args_gen_)();
-      std::get<1>(this->args_) = std::get<1>(this->args_gen_)();
-      std::get<2>(this->args_) = std::get<2>(this->args_gen_)();
-    }
-    void run() {
-      for (std::size_t i = 0; i < super::experiment_size; ++i) {
-        (*this->results_)[i % super::result_array_size] =
-          this->f_( std::get<0>(this->args_)
-                  , std::get<1>(this->args_)
-                  , std::get<2>(this->args_)
-                  );
-      }
-    }
-    virtual std::string description() const {
-      return
-          "("  + super::template description_of<0>()
-        + ", " + super::template description_of<1>()
-        + ", " + super::template description_of<2>()
-        + ")"
-        ;
-    }
-  };
-  template <std::size_t ExpSize, typename F, typename... Args>
-  struct basic_function_experiment<4, ExpSize, F, Args...>
-    : basic_common_function_experiment<ExpSize, F, Args...>
-  {
-    using super = basic_common_function_experiment<ExpSize, F, Args...>;
-    using super::super;
-    virtual void before_run() {
-      std::get<0>(this->args_) = std::get<0>(this->args_gen_)();
-      std::get<1>(this->args_) = std::get<1>(this->args_gen_)();
-      std::get<2>(this->args_) = std::get<2>(this->args_gen_)();
-      std::get<3>(this->args_) = std::get<3>(this->args_gen_)();
-    }
-    void run() {
-      for (std::size_t i = 0; i < super::experiment_size; ++i) {
-        (*this->results_)[i % super::result_array_size] =
-          this->f_( std::get<0>(this->args_)
-                  , std::get<1>(this->args_)
-                  , std::get<2>(this->args_)
-                  , std::get<3>(this->args_)
-                  );
-      }
-    }
-    virtual std::string description() const {
-      return
-          "("  + super::template description_of<0>()
-        + ", " + super::template description_of<1>()
-        + ", " + super::template description_of<2>()
-        + ", " + super::template description_of<3>()
-        + ")"
-        ;
-    }
-  };
-  template <template <typename> class Functor, typename... Types>
-  struct make_for_each;
-  template <template <typename> class Functor>
-  struct make_for_each<Functor> {
-    template <typename ...Args>
-    make_for_each(Args&&...)
-    {
-    }
-  };
-  template <template <typename> class Functor, typename Type, typename... Types>
-  struct make_for_each<Functor, Type, Types...>  {
-    template <typename ...Args>
-    make_for_each(Args&&... args)
-    {
-      Functor<Type> f;
-      f(std::forward<Args>(args)...);
-      make_for_each<Functor, Types...>(std::forward<Args>(args)...);
-    }
-  };
-}
-template <std::size_t ExpSize, typename F, typename... Args>
-struct function_experiment
-  : detail::basic_function_experiment<sizeof...(Args), ExpSize, F, Args...>
+template <typename T, typename G>
+void prepare_parameter(std::vector<T>& val, G& g, std::size_t sz)
 {
-  using super = detail::basic_function_experiment<sizeof...(Args), ExpSize, F, Args...>;
-  using super::super;
+  val.resize(sz);
+  val.clear();
+  for (std::size_t i = 0; i < sz; ++i) {
+    val[i] = g();
+  }
+}
+template <std::size_t... N, typename... Ts, typename... Gs>
+void prepare_parameters( range<N...> const&
+                       , std::tuple<Ts...>& ps
+                       , std::tuple<Gs...>& gs
+                       , std::size_t sz
+                       )
+{
+  NS_BENCH_STATIC_UNROLL(prepare_parameter, std::get<N>(ps), std::get<N>(gs), sz);
+}
+template <typename... Ts, typename... Gs>
+void prepare_parameters( std::tuple<Ts...>& ps
+                       , std::tuple<Gs...>& gs
+                       , std::size_t sz
+                       )
+{
+  prepare_parameters(make_range_t<sizeof...(Ts)>(), ps, gs, sz);
+}
+template <typename F, std::size_t... N, typename... Args>
+BOOST_FORCEINLINE auto call(range<N...> const&, F f, std::tuple<Args...> const& args, std::size_t i)
+NS_BENCH_AUTO_DECLTYPE(f(std::get<N>(args)[i]...))
+template <typename F, typename... Args>
+BOOST_FORCEINLINE auto call(F f, std::tuple<Args...> const& args, std::size_t i)
+NS_BENCH_AUTO_DECLTYPE(call(make_range_t<sizeof...(Args)>(), f, args, i))
+template <typename Experiment, typename Enable = void>
+struct experiment_maybe_copy {
+  using type = Experiment;
 };
-template <std::size_t ExpSize, typename F, typename... Args>
-void make_function_experiment_sized(std::string const& name, metrics_t const& ms, F f, Args&&... args) {
-  auto b = make_benchmark<function_experiment<ExpSize, F, Args...>>(name);
-  b.really_during(std::chrono::seconds(5));
-  for (metric const& m : ms) {
-    b.metric(m);
-  }
-  b.run(f, std::forward<Args>(args)...);
-}
-template <typename F, typename... Args>
-void make_function_experiment(std::string const& name, metrics_t const& ms, F f, Args&&... args) {
-  make_function_experiment_sized<1>(name, ms, f, std::forward<Args>(args)...);
-}
-template <typename F, typename... Args>
-void make_function_experiment(std::string const& name, F f, Args&&... args) {
-  auto ms = metrics_t{
-    stats::median(units::cpe_),
-    stats::median(units::time_ns_)
-  };
-  make_function_experiment(name, ms, f, std::forward<Args>(args)...);
-}
-template <std::size_t ExpSize, typename F, typename... Args>
-void make_function_experiment_sized(std::string const& name, F f, Args&&... args) {
-  auto ms = metrics_t{
-    stats::median(units::cpe_),
-    stats::median(units::time_ns_)
-  };
-  make_function_experiment_sized<ExpSize>(name, ms, f, std::forward<Args>(args)...);
-}
-template <typename F, typename... Args>
-void make_function_experiment_cpe(std::string const& name, F f, Args&&... args) {
-  auto ms = metrics_t{
-    stats::median(units::cpe_),
-  };
-  make_function_experiment(name, ms, f, std::forward<Args>(args)...);
-}
-template <std::size_t ExpSize, typename F, typename... Args>
-void make_function_experiment_cpe_sized(std::string const& name, F f, Args&&... args) {
-  auto ms = metrics_t{
-    stats::median(units::cpe_),
-  };
-  make_function_experiment_sized<ExpSize>(name, ms, f, std::forward<Args>(args)...);
-}
-template <std::size_t ExpSize, typename F, typename... Args>
-void make_function_experiment_sized_(metrics_t const& ms, F f, Args&&... args) {
-  make_function_experiment_sized(no_description(), ms, f, std::forward<Args>(args)...);
-}
-template <typename F, typename... Args>
-void make_function_experiment_(metrics_t const& ms, F f, Args&&... args) {
-  make_function_experiment(no_description(), ms, f, std::forward<Args>(args)...);
-}
-template <typename F, typename... Args>
-void make_function_experiment_(F f, Args&&... args) {
-  make_function_experiment(no_description(), f, std::forward<Args>(args)...);
-}
-template <std::size_t ExpSize, typename F, typename... Args>
-void make_function_experiment_sized_(F f, Args&&... args) {
-  make_function_experiment_sized<ExpSize>(no_description(), f, std::forward<Args>(args)...);
-}
-template <typename F, typename... Args>
-void make_function_experiment_cpe_(F f, Args&&... args) {
-  make_function_experiment_cpe(no_description(), f, std::forward<Args>(args)...);
-}
-template <std::size_t ExpSize, typename F, typename... Args>
-void make_function_experiment_cpe_sized_(F f, Args&&... args) {
-  make_function_experiment_cpe_sized<ExpSize>(no_description(), f, std::forward<Args>(args)...);
-}
-template <template <typename> class Functor, typename... Types>
-struct make_for_each {
-  template <typename ...Args>
-  make_for_each(Args&&... args)
-  {
-    std::string name = "";
-    name = ns::type_id<Functor<void>>();
-    name = name.substr(0, name.find('<'));
-    do_(name, std::forward<Args>(args)...);
-  }
-  template <typename ...Args>
-  make_for_each(std::string const& name, Args&&... args)
-  {
-    do_(name, std::forward<Args>(args)...);
-  }
-  template <typename ...Args>
-  void do_(std::string const& name, Args&&... args)
-  {
-    format::scoped_printer _(name);
-    detail::make_for_each<Functor, Types...>(std::forward<Args>(args)...);
-  }
+template <typename Experiment>
+struct experiment_maybe_copy<Experiment, typename std::enable_if<!Experiment::is_mutable>::type> {
+  using type = Experiment&;
 };
+template <typename Experiment>
+using experiment_maybe_copy_t = typename experiment_maybe_copy<Experiment>::type;
+}
+template <typename Experiment, typename... Gs>
+void run(results& r, setup const& s, std::string const& name, Experiment&& e, Gs&&... g) {
+  static_assert( std::is_base_of<experiment, Experiment>::value
+               , "Experiment must inherits from experiment base class!"
+               );
+  double time = 0.;
+  double max_time = time;
+  double max_real_time = time;
+  std::size_t iter = 0;
+  std::size_t max_iter = iter;
+  auto real_starting_time = time_clock::now();
+  auto dot_time           = time_clock::now();
+  if (s.has_during())        max_time = s.during();
+  if (s.has_iteration())     max_iter = s.iteration();
+  if (s.has_really_during()) max_real_time = s.really_during();
+  auto do_continue = [&]() {
+    auto elapsed_real_time = to_seconds(time_clock::now() - real_starting_time);
+    auto elapsed_dot_time  = to_seconds(time_clock::now() - dot_time);
+    if (elapsed_dot_time >= 1.) {
+      dot_time = time_clock::now();
+      std::cerr << ".";
+    }
+    if (s.has_really_during() && elapsed_real_time >= max_real_time) {
+      return false;
+    }
+    if (s.has_iteration() && iter > max_iter) {
+      return false;
+    }
+    if (s.has_during() && time > max_time) {
+      return false;
+    }
+    if (!s.has_during() && !s.has_iteration() && !s.has_really_during()) {
+      return false;
+    }
+    return true;
+  };
+  auto do_step = [&](double elapsed_time) {
+    iter += 1;
+    time += elapsed_time;
+  };
+  times_set  = stats_set();
+  cycles_set = stats_set();
+  auto ps = std::tuple<std::vector<decltype(g())>...>();
+  auto gs = std::make_tuple(std::forward<Gs>(g)...);
+  auto sz  = ::ns::bench::setup::internal_loop_size();
+  std::cerr << ":: Benchmarking: \"" << name << "\" ";
+  while (do_continue()) {
+    detail::experiment_maybe_copy_t<Experiment> local(e);
+    detail::prepare_parameters(ps, gs, sz);
+    auto t0 = time_clock::now();
+    auto c0 = cycle_clock::now();
+    for (std::size_t i = 0; i < sz; ++i) {
+      dnopt(detail::call(local, ps, i));
+    }
+    auto c1 = cycle_clock::now();
+    auto t1 = time_clock::now();
+    auto elapsed_time   = to_seconds(t1 - t0) / sz;
+    auto elapsed_cycles = to_cycles(c1 - c0)  / sz;
+    times_set(elapsed_time);
+    cycles_set(elapsed_cycles);
+    do_step(elapsed_time);
+  }
+  std::cerr << std::endl;
+  for (auto const& m : s.metrics()) {
+    r.update(name, make_result_info(e, m, gs));
+  }
+}
+template <typename Experiment, typename... Gs>
+results run(setup const& s, std::string const& name, Experiment&& e, Gs&&... g) {
+  results r;
+  run(r, s, name, std::forward<Experiment>(e), std::forward<Gs>(g)...);
+  return r;
+}
 } }
 namespace ns { namespace bench { namespace generators {
 } } }
@@ -1332,18 +1105,15 @@ namespace ns { namespace bench { namespace generators {
 #include <cstdlib>
 #include <cmath>
 #include <random>
-#include <ctime>
-
 namespace ns { namespace bench { namespace generators {
-
 template <typename U, typename IS = typename std::is_scalar<U>::type>
 struct rand {};
 template <typename T>
 struct rand<T, std::true_type>
 {
   template <typename U>
-  rand( U min = std::numeric_limits<T>::min()
-      , U max = std::numeric_limits<T>::max()
+  rand( U min = static_cast<U>(std::numeric_limits<T>::min())
+      , U max = static_cast<U>(std::numeric_limits<T>::max())
       )
   {
     if (std::is_unsigned<T>::value) {
@@ -1354,35 +1124,34 @@ struct rand<T, std::true_type>
     if (min == max) min = T(0);
     min_ = min;
     max_ = max;
-    f = (max_ - min_);
   }
-
   T random() {
     static std::random_device rd;
     static std::mt19937 gen(rd());
     static std::uniform_real_distribution<> dist(0.0, 1.0);
     double f = (max_ - min_);
-    return min_ + f * dist(gen);
+    return std::lround(min_ + f * dist(gen));
   }
   inline T operator()() {
     return random();
   }
   std::string description() const {
     std::stringstream ss;
-    ss << ns::type_id<T>() << " [" << ns::bench::format::sanitize(min_) << ", " << ns::bench::format::sanitize(max_) << "]";
+    ss << "rand<" << format_type<T>::to_string() << ">[" << format(min()) << ", " << format(max()) << "]";
     return ss.str();
   }
+  T const& min() const { return min_; }
+  T const& max() const { return max_; }
   private:
   T min_, max_;
-  double f;
 };
 template <typename T>
 struct rand<T, std::false_type>
 {
   using value_type = typename T::value_type;
   template <typename U>
-  rand( U min = std::numeric_limits<value_type>::min()
-      , U max = std::numeric_limits<value_type>::max()
+  rand( U min = static_cast<U>(std::numeric_limits<value_type>::min())
+      , U max = static_cast<U>(std::numeric_limits<value_type>::max())
       ) : r(min, max)
   {
   }
@@ -1392,34 +1161,13 @@ struct rand<T, std::false_type>
     return {v.begin(), v.end()};
   }
   std::string description() const {
-    return r.description();
-  }
-  private :
-   rand<typename T::value_type> r;
-};
-
-template <typename T>
-struct randlg
-{
-  using value_type = typename T::value_type;
-  using under_t = typename value_type::value_type;
-  randlg() : r(0.0, 1.0)
-  {
-  }
-  inline T operator()() {
-    std::array<value_type, sizeof(T) / sizeof(value_type)> v;
-    std::transform(v.begin(), v.end(), v.begin(), [this](value_type const&) { return r.random() < 0.5; });
-    return {v.begin(), v.end()};
-  }
-  std::string description() const {
     std::stringstream ss;
-    ss << ns::type_id<T>();
+    ss << "rand<" << format_type<T>::to_string() << ">[" << format(r.min()) << ", " << format(r.max()) << "]";
     return ss.str();
   }
   private :
-  rand<double> r;
+  rand<typename T::value_type> r;
 };
-
 } } }
 #include <functional>
 #include <cassert>
@@ -1454,6 +1202,53 @@ struct range {
 template <typename T>
 using exrange = range<T, std::greater_equal>;
 } } }
+namespace ns { namespace bench {
+} }
+namespace ns { namespace bench {
+template <typename F>
+struct function_experiment : experiment {
+  private:
+  F f_;
+  public:
+  function_experiment(F f) : f_(f) {}
+  template <typename... Args>
+  auto operator()(Args&&... args) const
+  NS_BENCH_AUTO_DECLTYPE(this->f_(std::forward<Args>(args)...))
+};
+template <typename F>
+struct sized_function_experiment : function_experiment<F> {
+  sized_function_experiment(std::size_t esz, F f) : function_experiment<F>(f), esz_(esz) {}
+  virtual std::size_t element_size() const {
+    return esz_;
+  }
+  private:
+  std::size_t esz_;
+};
+template <typename F>
+function_experiment<F> make_function(F f) {
+  return function_experiment<F>(f);
+}
+template <typename F>
+sized_function_experiment<F> make_sized_function(std::size_t esz, F f) {
+  return sized_function_experiment<F>(esz, f);
+}
+} }
+namespace ns { namespace bench {
+namespace detail {
+template <typename... Types> struct list {};
+template <typename F, typename... Types, std::size_t... N, typename... Args>
+void for_each(F f, range<N...> const&, std::tuple<Args...> const& args)
+{
+  f(std::get<N>(args)...);
+}
+}
+template <template <class> class F, typename... Types, typename... Args>
+void for_each(Args&&... args)
+{
+  auto targs = std::make_tuple(std::forward<Args>(args)...);
+  NS_BENCH_STATIC_UNROLL(detail::for_each, F<Types>(), detail::make_range_t<sizeof...(Args)>(), targs);
+}
+} }
 #define NS_BENCH_SIGNED_INTEGRAL_TYPES     std::int8_t, std::int16_t, std::int32_t, std::int64_t
 #define NS_BENCH_UNSIGNED_INTEGRAL_TYPES   std::uint8_t, std::uint16_t, std::uint32_t, std::uint64_t
 #define NS_BENCH_INTEGRAL_TYPES            NS_BENCH_SIGNED_INTEGRAL_TYPES, NS_BENCH_UNSIGNED_INTEGRAL_TYPES
