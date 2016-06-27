@@ -15,10 +15,8 @@ namespace nsb = ns::bench;
 
 DEFINE_SIMD_BENCH(simd_plus, boost::simd::plus);
 
-int main(int argc, char** argv) {
-  init(argc, argv);
+DEFINE_BENCH_MAIN()
+{
   nsb::for_each<simd_plus, NS_BENCH_SIGNED_NUMERIC_TYPES>(-10, 10, -10, 10);
   nsb::for_each<simd_plus, NS_BENCH_UNSIGNED_NUMERIC_TYPES>(0, 10,  0,  10);
-  print_results();
-  return 0;
 }

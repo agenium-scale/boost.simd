@@ -163,4 +163,16 @@ using scalar_experiment =
 #define DEFINE_SIMD_BENCH(name, f)   DEFINE_BENCH(name, f, simd_experiment)
 #define DEFINE_SCALAR_BENCH(name, f) DEFINE_BENCH(name, f, scalar_experiment)
 
+#define DEFINE_BENCH_MAIN()                                                                        \
+  void main2();                                                                                    \
+  int main(int argc, char** argv)                                                                  \
+  {                                                                                                \
+    init(argc, argv);                                                                              \
+    main2();                                                                                       \
+    print_results();                                                                               \
+    return 0;                                                                                      \
+  }                                                                                                \
+  void main2()                                                                                     \
+/**/
+
 #endif
