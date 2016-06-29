@@ -19,7 +19,7 @@ namespace boost { namespace simd
     @ingroup group-constant
 
     Generates constant Minlog10 used in logarithm/exponential computations
-    nt2::log10(x) return  0 if x is less than Minlog10 (underflow)
+    boost::simd::log10(x) return  0 if x is less than Minlog10 (underflow)
 
     @par Semantic:
 

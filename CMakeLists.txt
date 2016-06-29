@@ -9,7 +9,7 @@ cmake_minimum_required(VERSION 2.8.7)
 
 ## Setup project
 ## -------------------------------------------------------------------------------------------------
-project(Boost.SIMD CXX)
+project(Boost.SIMD)
 set(PROJECT_DOC_DIR ${PROJECT_SOURCE_DIR}/doc)
 
 ## Requirements for ns.cmake:
@@ -88,6 +88,7 @@ include_directories(
   ${PROJECT_SOURCE_DIR}/include
   ${PROJECT_SOURCE_DIR}/test
   ${PROJECT_SOURCE_DIR}/bench
+  ${PROJECT_SOURCE_DIR}/exhaustive
   ${Boost_INCLUDE_DIRS}
 )
 
@@ -102,6 +103,9 @@ add_subdirectory(test)
 
 add_custom_target(bench)
 add_subdirectory(bench)
+
+add_custom_target(exhaustive)
+add_subdirectory(exhaustive)
 
 if (NOT DEFINED IS_TRAVIS_CI)
   NS_include(coverage)

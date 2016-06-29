@@ -49,7 +49,7 @@ namespace boost { namespace simd
 
 
       Generates constant MaxLog used in logarithm/exponential computations
-      nt2::log(x) return inf if x is greater than Maxlog (overflow)
+      boost::simd::log(x) return inf if x is greater than Maxlog (overflow)
 
       Generate the  constant maxlog.
 
