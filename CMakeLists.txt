@@ -9,7 +9,7 @@ cmake_minimum_required(VERSION 2.8.7)
 
 ## Setup project
 ## -------------------------------------------------------------------------------------------------
-project(Boost.SIMD CXX)
+project(Boost.SIMD)
 set(PROJECT_DOC_DIR ${PROJECT_SOURCE_DIR}/doc)
 
 ## Requirements for ns.cmake:
