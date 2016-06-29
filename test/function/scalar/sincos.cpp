@@ -41,7 +41,10 @@ STF_CASE_TPL (" sincos",  STF_IEEE_TYPES)
       std::pair<T,T> p = sincos(a[i]);
       STF_IEEE_EQUAL(p.first,  bs::sin(a[i]));
       STF_IEEE_EQUAL(p.second, bs::cos(a[i]));
+      std::pair<T,T> q = bs::restricted_(bs::sincos)(a[i]);
+      STF_IEEE_EQUAL(q.first,  bs::restricted_(bs::sin)(a[i]));
+      STF_IEEE_EQUAL(q.second, bs::restricted_(bs::cos)(a[i]));
     }
-  }
+   }
 
 }
