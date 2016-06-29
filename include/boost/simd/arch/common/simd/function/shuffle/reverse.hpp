@@ -10,69 +10,54 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SHUFFLE_REVERSE_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/arch/common/simd/function/shuffle/pattern/reverse.hpp>
 #include <boost/simd/function/reverse.hpp>
+#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/shuffle.hpp>
 
-namespace boost { namespace simd { namespace ext
+namespace boost { namespace simd
 {
+  namespace detail
+  {
+    // ---------------------------------------------------------------------------------------------
+    // Check if pattern is [B B+1 ... B+C]
+    template<int... Ps> struct is_reverse
+    {
+      using type = brigand::all < brigand::transform< brigand::range<int,0,sizeof...(Ps)>
+                                                    , brigand::reverse<brigand::integral_list<int,Ps...>>
+                                                    , brigand::equal_to<brigand::_1,brigand::_2>
+                                                    >
+                                >;
+    };
+
+    template<int P0> struct is_reverse<P0> : std::false_type {};
+  }
+
   // -----------------------------------------------------------------------------------------------
-  // Unary reverse macro
-  BOOST_DISPATCH_OVERLOAD ( shuffle_
-                          , (typename Ps, typename A0, typename X)
-                          , bd::cpu_
-                          , bs::reverse_pattern<0,Ps>
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          )
+  // Identity pattern hierarchy
+  template<typename P> struct reverse_pattern : P
   {
-    static_assert ( Ps::static_size == std::size_t(A0::static_size)
-                  , "boost::simd::shuffle - Invalid number of permutation indices"
-                  );
-
-    BOOST_FORCEINLINE
-    A0 operator()(Ps const&, A0 const& a0) const BOOST_NOEXCEPT
-    {
-      return reverse(a0);
-    }
+    using parent = P;
   };
 
-   // -----------------------------------------------------------------------------------------------
-  // Binary common cases
-  BOOST_DISPATCH_OVERLOAD ( shuffle_
-                          , (typename Ps, typename A0, typename X)
-                          , bd::cpu_
-                          , bs::reverse_pattern<0,Ps>
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          )
+  // -----------------------------------------------------------------------------------------------
+  // Reverse matcher
+  struct reverse_shuffle
   {
-    static_assert ( Ps::static_size == std::size_t(A0::static_size)
-                  , "boost::simd::shuffle - Invalid number of permutation indices"
-                  );
-
-    BOOST_FORCEINLINE
-    A0 operator()(Ps const&, A0 const& a0, A0 const&) const BOOST_NOEXCEPT
-    {
-      return reverse(a0);
-    }
+    template<typename T, typename P> static BOOST_FORCEINLINE
+    T process(T const& a0, reverse_pattern<P> const&) { return reverse(a0); }
   };
+} }
 
-  BOOST_DISPATCH_OVERLOAD ( shuffle_
-                          , (typename Ps, typename A0, typename X)
-                          , bd::cpu_
-                          , bs::reverse_pattern<1,Ps>
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          )
+// -------------------------------------------------------------------------------------------------
+// Hierarchize reverse patterns
+namespace boost { namespace dispatch { namespace ext
+{
+  template<int... Ps,typename Origin>
+  struct pattern_hierarchy< boost::simd::detail::pattern_<Ps...>,Origin
+                          , typename std::enable_if<simd::detail::is_reverse<Ps...>::type::value>::type
+                          >
   {
-    static_assert ( Ps::static_size == std::size_t(A0::static_size)
-                  , "boost::simd::shuffle - Invalid number of permutation indices"
-                  );
-
-    BOOST_FORCEINLINE
-    A0 operator()(Ps const&, A0 const& , A0 const& a1) const BOOST_NOEXCEPT
-    {
-      return reverse(a1);
-    }
+    using type = boost::simd::reverse_pattern<bsd::pattern_<Ps...>>;
   };
 } } }
 

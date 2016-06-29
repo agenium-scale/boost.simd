@@ -10,49 +10,8 @@
 #define BOOST_SIMD_ARCH_X86_SSSE3_SIMD_FUNCTION_SHUFFLE_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/detail/dispatch/meta/as_floating.hpp>
-#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
-#include <boost/simd/detail/permutation.hpp>
-
-namespace boost { namespace simd { namespace detail
-{
-  namespace bsd =  boost::simd::detail;
-
-  template<int... Ps, typename A0>
-  BOOST_FORCEINLINE A0 unary_permute(bsd::pattern_<Ps...> const&, const A0 & a0) BOOST_NOEXCEPT
-  {
-    using bytes_t   = typename A0::template retype<std::uint8_t,16>;
-    using ranges_t  = brigand::range<int,0,16>;
-    using pattern_t = brigand::integral_list<int,Ps...>;
-
-    return  bitwise_cast<A0>
-            ( _mm_shuffle_epi8( bitwise_cast<bytes_t>(a0)
-                              , detail::mask_all<16/A0::static_size>( ranges_t{}, pattern_t{} )
-                              )
-            );
-  }
-
-  template<int... Ps, typename A0> BOOST_FORCEINLINE
-  A0 binary_permute(bsd::pattern_<Ps...> const&, const A0 & a0, const A0 & a1) BOOST_NOEXCEPT
-  {
-    using bytes_t   = typename A0::template retype<std::uint8_t,16>;
-    using ranges_t  = brigand::range<int,0,16>;
-    using pattern_t = brigand::integral_list<int,Ps...>;
-
-    return  bitwise_or
-            ( bitwise_cast<A0>
-              ( _mm_shuffle_epi8( bitwise_cast<bytes_t>(a0)
-                                , detail::mask_left<16/A0::static_size>( ranges_t{}, pattern_t{} )
-                                )
-              )
-            , bitwise_cast<A0>
-              ( _mm_shuffle_epi8( bitwise_cast<bytes_t>(a1)
-                                , detail::mask_right<16/A0::static_size>( ranges_t{}, pattern_t{} )
-                                )
-              )
-            );
-  }
-} } }
+#include <boost/simd/detail/shuffle.hpp>
+#include <boost/simd/arch/x86/ssse3/simd/function/topology.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -73,9 +32,9 @@ namespace boost { namespace simd { namespace ext
                   , "boost::simd::shuffle - Invalid number of permutation indices"
                   );
 
-    BOOST_FORCEINLINE A0 operator()(bsd::pattern_<Ps...> const& p, const A0 & a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()(bsd::pattern_<Ps...> const&, const A0 & a0) const
     {
-      return bsd::unary_permute(p,a0);
+      return detail::shuffler<detail::ssse3_shuffle,detail::pattern_<Ps...>>::process(a0);
     }
   };
 
@@ -90,9 +49,9 @@ namespace boost { namespace simd { namespace ext
                   , "boost::simd::shuffle - Invalid number of permutation indices"
                   );
 
-    BOOST_FORCEINLINE A0 operator()(bsd::pattern_<Ps...> const& p, const A0 & a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()(bsd::pattern_<Ps...> const&, const A0 & a0) const
     {
-      return bsd::unary_permute(p,a0);
+      return detail::shuffler<detail::ssse3_shuffle,detail::pattern_<Ps...>>::process(a0);
     }
   };
 
@@ -107,9 +66,9 @@ namespace boost { namespace simd { namespace ext
                   , "boost::simd::shuffle - Invalid number of permutation indices"
                   );
 
-    BOOST_FORCEINLINE A0 operator()(bsd::pattern_<Ps...> const& p, const A0 & a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()(bsd::pattern_<Ps...> const&, const A0 & a0) const
     {
-      return bsd::unary_permute(p,a0);
+      return detail::shuffler<detail::ssse3_shuffle,detail::pattern_<Ps...>>::process(a0);
     }
   };
 
@@ -124,9 +83,9 @@ namespace boost { namespace simd { namespace ext
                   , "boost::simd::shuffle - Invalid number of permutation indices"
                   );
 
-    BOOST_FORCEINLINE A0 operator()(bsd::pattern_<Ps...> const& p, const A0 & a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()(bsd::pattern_<Ps...> const&, const A0 & a0) const
     {
-      return bsd::unary_permute(p,a0);
+      return detail::shuffler<detail::ssse3_shuffle,detail::pattern_<Ps...>>::process(a0);
     }
   };
 
@@ -145,9 +104,9 @@ namespace boost { namespace simd { namespace ext
                   );
 
     BOOST_FORCEINLINE
-    A0 operator()(bsd::pattern_<Ps...> const& p, const A0 & a0, const A0 & a1) const BOOST_NOEXCEPT
+    A0 operator()(bsd::pattern_<Ps...> const&, const A0 & a0, const A0 & a1) const BOOST_NOEXCEPT
     {
-      return bsd::binary_permute(p,a0,a1);
+      return detail::shuffler<detail::ssse3_shuffle,detail::pattern_<Ps...>>::process(a0,a1);
     }
   };
 
@@ -164,9 +123,9 @@ namespace boost { namespace simd { namespace ext
                   );
 
     BOOST_FORCEINLINE
-    A0 operator()(bsd::pattern_<Ps...> const& p, const A0 & a0, const A0 & a1) const BOOST_NOEXCEPT
+    A0 operator()(bsd::pattern_<Ps...> const&, const A0 & a0, const A0 & a1) const BOOST_NOEXCEPT
     {
-      return bsd::binary_permute(p,a0,a1);
+      return detail::shuffler<detail::ssse3_shuffle,detail::pattern_<Ps...>>::process(a0,a1);
     }
   };
 
@@ -183,9 +142,9 @@ namespace boost { namespace simd { namespace ext
                   );
 
     BOOST_FORCEINLINE
-    A0 operator()(bsd::pattern_<Ps...> const& p, const A0 & a0, const A0 & a1) const BOOST_NOEXCEPT
+    A0 operator()(bsd::pattern_<Ps...> const&, const A0 & a0, const A0 & a1) const BOOST_NOEXCEPT
     {
-      return bsd::binary_permute(p,a0,a1);
+      return detail::shuffler<detail::ssse3_shuffle,detail::pattern_<Ps...>>::process(a0,a1);
     }
   };
 
@@ -202,9 +161,9 @@ namespace boost { namespace simd { namespace ext
                   );
 
     BOOST_FORCEINLINE
-    A0 operator()(bsd::pattern_<Ps...> const& p, const A0 & a0, const A0 & a1) const BOOST_NOEXCEPT
+    A0 operator()(bsd::pattern_<Ps...> const&, const A0 & a0, const A0 & a1) const BOOST_NOEXCEPT
     {
-      return bsd::binary_permute(p,a0,a1);
+      return detail::shuffler<detail::ssse3_shuffle,detail::pattern_<Ps...>>::process(a0,a1);
     }
   };
 } } }

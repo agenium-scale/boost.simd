@@ -10,6 +10,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_SHUFFLE_HPP_INCLUDED
 
 #include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/shuffle/shuffler.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -18,11 +19,7 @@ namespace boost { namespace simd { namespace ext
   namespace bs = boost::simd;
 
   // -----------------------------------------------------------------------------------------------
-  // Yes, yes, we're shuffling scalar values. What do we do for the sake of genericity
-  // -----------------------------------------------------------------------------------------------
-
-  // -----------------------------------------------------------------------------------------------
-  // Handle invalid Indexes by a flat static_assert
+  // Unary singleton shuffle
   BOOST_DISPATCH_OVERLOAD ( shuffle_
                           , (int Idx, typename A0)
                           , bd::cpu_
@@ -30,16 +27,17 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::unspecified_<A0> >
                           )
   {
-    BOOST_FORCEINLINE
-    A0 operator()(bs::detail::pattern_<Idx> const&, A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()(bs::detail::pattern_<Idx> const&, A0 const& a0) const
     {
-      static_assert ( Idx >= -1 && Idx < 1
+      static_assert ( Idx == -1 || Idx == 0
                     , "boost::simd::shuffle: Invalid permutation index"
                     );
-      return a0;
+      return detail::shuffler<void,bs::detail::pattern_<Idx>>::process(a0);
     }
   };
 
+  // -----------------------------------------------------------------------------------------------
+  // Binary singleton shuffle
   BOOST_DISPATCH_OVERLOAD ( shuffle_
                           , (int Idx, typename A0)
                           , bd::cpu_
@@ -49,89 +47,12 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     BOOST_FORCEINLINE
-    A0 operator()(bs::detail::pattern_<Idx> const&, A0 const& a0, A0 const&) const BOOST_NOEXCEPT
+    A0 operator()(bs::detail::pattern_<Idx> const&, A0 const& a0, A0 const& a1) const
     {
-      static_assert ( Idx >= -1 && Idx < 2
+      static_assert ( Idx == -1 || Idx == 0 || Idx == 1
                     , "boost::simd::shuffle: Invalid permutation index"
                     );
-      return a0;
-    }
-  };
-
-  // -----------------------------------------------------------------------------------------------
-  // Two cases of unary shuffle for scalar : 0, -1
-  BOOST_DISPATCH_OVERLOAD ( shuffle_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bs::detail::pattern_<0>
-                          , bd::scalar_< bd::unspecified_<A0> >
-                          )
-  {
-    BOOST_FORCEINLINE
-    A0 operator()(bs::detail::pattern_<0> const&, A0 const& a0) const BOOST_NOEXCEPT
-    {
-      return a0;
-    }
-  };
-
-  BOOST_DISPATCH_OVERLOAD ( shuffle_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bs::detail::pattern_<-1>
-                          , bd::scalar_< bd::unspecified_<A0> >
-                          )
-  {
-    BOOST_FORCEINLINE
-    A0 operator()(bs::detail::pattern_<-1> const&, A0 const&) const BOOST_NOEXCEPT
-    {
-      return A0{0};
-    }
-  };
-
-  // -----------------------------------------------------------------------------------------------
-  // Three cases of unary shuffle for scalar : 0, 1, -1
-  BOOST_DISPATCH_OVERLOAD ( shuffle_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bs::detail::pattern_<0>
-                          , bd::scalar_< bd::unspecified_<A0> >
-                          , bd::scalar_< bd::unspecified_<A0> >
-                          )
-  {
-    BOOST_FORCEINLINE
-    A0 operator()(bs::detail::pattern_<0> const&, A0 const& a0, A0 const&) const BOOST_NOEXCEPT
-    {
-      return a0;
-    }
-  };
-
-  BOOST_DISPATCH_OVERLOAD ( shuffle_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bs::detail::pattern_<1>
-                          , bd::scalar_< bd::unspecified_<A0> >
-                          , bd::scalar_< bd::unspecified_<A0> >
-                          )
-  {
-    BOOST_FORCEINLINE
-    A0 operator()(bs::detail::pattern_<1> const&, A0 const&, A0 const& a1) const BOOST_NOEXCEPT
-    {
-      return a1;
-    }
-  };
-
-  BOOST_DISPATCH_OVERLOAD ( shuffle_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bs::detail::pattern_<-1>
-                          , bd::scalar_< bd::unspecified_<A0> >
-                          , bd::scalar_< bd::unspecified_<A0> >
-                          )
-  {
-    BOOST_FORCEINLINE
-    A0 operator()(bs::detail::pattern_<-1> const&, A0 const&, A0 const&) const BOOST_NOEXCEPT
-    {
-      return A0{0};
+      return detail::shuffler<void,bs::detail::pattern_<Idx>>::process(a0,a1);
     }
   };
 } } }
