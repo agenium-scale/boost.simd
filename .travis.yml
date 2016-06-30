@@ -10,6 +10,14 @@ language: cpp
 
 matrix:
   include:
+    - os: osx
+      compiler: clang
+      env: CXX_STD=11 TOOLSET=clang++ SIMD_EXT=-msse4.2 OPT=
+
+    - os: osx
+      compiler: clang
+      env: CXX_STD=11 TOOLSET=clang++ SIMD_EXT=-mavx OPT=
+      
     - os: linux
       compiler: gcc
       addons:
