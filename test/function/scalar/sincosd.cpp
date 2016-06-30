@@ -41,7 +41,12 @@ STF_CASE_TPL (" sincosd",  STF_IEEE_TYPES)
       std::pair<T,T> p = sincosd(a[i]);
       STF_IEEE_EQUAL(p.first,  bs::sind(a[i]));
       STF_IEEE_EQUAL(p.second, bs::cosd(a[i]));
+      std::pair<T,T> q = bs::restricted_(sincosd)(a[i]);
+      STF_IEEE_EQUAL(q.first,  bs::restricted_(bs::sind)(a[i]));
+      STF_IEEE_EQUAL(q.second, bs::restricted_(bs::cosd)(a[i]));
     }
   }
-
 }
+
+
+

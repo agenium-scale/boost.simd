@@ -14,6 +14,7 @@
 
 
 #include <boost/simd/arch/common/detail/generic/trigo.hpp>
+#include <boost/simd/function/restricted.hpp>
 #include <boost/simd/meta/is_not_scalar.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
@@ -37,6 +38,18 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
+  BOOST_DISPATCH_OVERLOAD ( sincospi_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bs::restricted_tag
+                          , bd::generic_< bd::floating_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE std::pair<A0, A0> operator() (const restricted_tag &,  A0 const& a0) const BOOST_NOEXCEPT
+    {
+      return detail::trig_base<A0, tag::pi_tag,is_not_scalar_t<A0>,tag::clipped_pio4_tag>::sincosa(a0);
+    }
+  };
 } } }
 
 

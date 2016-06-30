@@ -41,6 +41,9 @@ STF_CASE_TPL (" sincospi",  STF_IEEE_TYPES)
       std::pair<T,T> p = sincospi(a[i]);
       STF_IEEE_EQUAL(p.first,  bs::sinpi(a[i]));
       STF_IEEE_EQUAL(p.second, bs::cospi(a[i]));
+      std::pair<T,T> q = bs::restricted_(sincospi)(a[i]);
+      STF_IEEE_EQUAL(q.first,  bs::restricted_(bs::sinpi)(a[i]));
+      STF_IEEE_EQUAL(q.second, bs::restricted_(bs::cospi)(a[i]));
     }
   }
 
