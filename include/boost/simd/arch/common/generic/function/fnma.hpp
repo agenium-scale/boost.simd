@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_FNMA_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_FNMA_HPP_INCLUDED
 
+#include <boost/simd/function/fma.hpp>
 #include <boost/simd/function/minus.hpp>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/unary_minus.hpp>
@@ -35,6 +36,23 @@ namespace boost { namespace simd { namespace ext
      return -multiplies(a0, a1)-a2;
     }
   };
+
+   BOOST_DISPATCH_OVERLOAD ( fnma_
+                           , (typename A0)
+                           , bd::cpu_
+                           , bs::conformant_tag
+                           , bd::generic_< bd::unspecified_<A0> >
+                           , bd::generic_< bd::unspecified_<A0> >
+                           , bd::generic_< bd::unspecified_<A0> >
+                           )
+  {
+    BOOST_FORCEINLINE
+    A0 operator() ( A0 const& a0, A0 const& a1, A0 const& a2) const BOOST_NOEXCEPT
+    {
+      return -conformant_(fma)(a0, a1, a2);
+    }
+  };
+
 } } }
 
 

@@ -38,9 +38,11 @@ namespace boost { namespace simd
 
     @par Note:
 
-    fms can be called with the same syntax as @ref fma
+    fms can be called with the same modalities as @ref fma
+    and can use the decorator conformant_ to ensure the correct
+    one rounding, no intermediate overflow  behaviour
 
-    @see fma, fnma, fnms, correct_fma
+    @see fma, fnma, fnms
 
   **/
   const boost::dispatch::functor<tag::fms_> fms = {};

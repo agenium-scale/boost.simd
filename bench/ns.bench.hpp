@@ -1129,8 +1129,7 @@ struct rand<T, std::true_type>
     static std::random_device rd;
     static std::mt19937 gen(rd());
     static std::uniform_real_distribution<> dist(0.0, 1.0);
-    double f = (max_ - min_);
-    return std::lround(min_ + f * dist(gen));
+    return min_ + f * dist(gen);
   }
   inline T operator()() {
     return random();
