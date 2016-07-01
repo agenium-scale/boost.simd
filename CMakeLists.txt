@@ -24,6 +24,7 @@ include(cmake/ns/ns.cmake)
 
 ## Potential warnings fixup
 ## -------------------------------------------------------------------------------------------------
+NS_ignore(${DEV})
 NS_ignore(${IS_TRAVIS_CI})
 NS_ignore(${USE_SELF_BOOST})
 
@@ -63,14 +64,16 @@ set(NS_CMAKE_PROJECT_OPTIONS
   CMAKE_ARGS "-DBOOST_ROOT=${Boost_INCLUDE_DIRS}"
 )
 
-set(NS_BENCH_GIT_TAG develop)
-NS_project_include(ns.bench.standalone)
-NS_project_include(brigand.standalone)
-NS_project_include(stf.standalone)
+if (DEFINED DEV)
+  set(NS_BENCH_GIT_TAG develop)
+  NS_project_include(ns.bench.standalone)
+  NS_project_include(brigand.standalone)
+  NS_project_include(stf.standalone)
+endif()
 
 ## Compute version string and mode + Documentation
 ## -------------------------------------------------------------------------------------------------
-if (NOT DEFINED IS_TRAVIS_CI)
+if (DEFINED DEV AND NOT DEFINED IS_TRAVIS_CI)
   NS_include(parse_revision)
   NS_include(doc/doxygen)
 endif()
@@ -94,20 +97,24 @@ include_directories(
 
 ## Setup Unit/Bench & Coverage Test
 ## -------------------------------------------------------------------------------------------------
-include(./setup.cmake) # Import compiler specific setup
-include(CTest)
-add_custom_target(tests)
-add_custom_target(unit)
-add_dependencies(tests unit)
-add_subdirectory(test)
+if (DEFINED DEV)
+  include(./setup.cmake) # Import compiler specific setup
 
-add_custom_target(bench)
-add_subdirectory(bench)
+  include(CTest)
+  add_custom_target(tests)
+  add_custom_target(unit)
+  add_dependencies(tests unit)
+  add_subdirectory(test)
 
-add_custom_target(exhaustive)
-add_subdirectory(exhaustive)
+  add_custom_target(bench)
+  add_subdirectory(bench)
 
-if (NOT DEFINED IS_TRAVIS_CI)
-  NS_include(coverage)
-  enable_coverage(boost.simd)
+  add_custom_target(exhaustive)
+  add_subdirectory(exhaustive)
+
+  if (NOT DEFINED IS_TRAVIS_CI)
+    NS_include(coverage)
+    enable_coverage(boost.simd)
+  endif()
 endif()
+
