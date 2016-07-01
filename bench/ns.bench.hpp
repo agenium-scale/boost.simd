@@ -82,8 +82,8 @@ struct options_map {
 #include <stdexcept>
 namespace ns { namespace bench { namespace args {
 struct parse_error : std::runtime_error {
-  parse_error(std::string const& what)
-    : std::runtime_error(what) {
+  parse_error(std::string const& what_)
+    : std::runtime_error(what_) {
   }
 };
 } } }
@@ -91,8 +91,8 @@ struct parse_error : std::runtime_error {
 #include <string>
 namespace ns { namespace bench { namespace args { namespace detail {
 struct option {
-  option(std::string name, std::string opts, bool required)
-    : name_(name), opts_(opts), required_(required) {
+  option(std::string const& n, std::string const&  o, bool req)
+    : name_(n), opts_(o), required_(req) {
   }
   virtual bool validate(options_map& m, std::string const& arg, std::string const& opt) const {
     if (arg.find(opt) == 0 && opt.length() == arg.length()) {
@@ -105,9 +105,9 @@ struct option {
     return false;
   }
   bool parse(options_map& m, std::string arg) const {
-    std::string opts(opts_);
+    std::string l_opts(opts_);
     boost::char_separator<char> sep(",");
-    for (auto opt : boost::tokenizer<decltype(sep)>(opts, sep)) {
+    for (auto opt : boost::tokenizer<decltype(sep)>(l_opts, sep)) {
       if (validate(m, arg, opt)) {
         return true;
       }
@@ -153,8 +153,8 @@ struct option {
 };
 template <typename T>
 struct typed_option : option {
-  typed_option(std::string name, std::string opts, bool required)
-    : option(name, opts, required) {
+  typed_option(std::string n, std::string o, bool r)
+    : option(n, o, r) {
   }
   virtual bool validate(options_map& m, std::string const& arg, std::string const& opt) const {
     auto pos = arg.find(opt);
@@ -974,12 +974,13 @@ BOOST_FORCEINLINE void dnopt(T const& v) {
 }
 #endif
 } }
+#include <boost/align/aligned_allocator.hpp>
 #include <boost/optional.hpp>
 #include <functional>
 namespace ns { namespace bench {
 namespace detail {
-template <typename T, typename G>
-void prepare_parameter(std::vector<T>& val, G& g, std::size_t sz)
+template <typename T, typename A, typename G>
+void prepare_parameter(std::vector<T,A>& val, G& g, std::size_t sz)
 {
   val.resize(sz);
   val.clear();
@@ -1020,6 +1021,15 @@ struct experiment_maybe_copy<Experiment, typename std::enable_if<!Experiment::is
 };
 template <typename Experiment>
 using experiment_maybe_copy_t = typename experiment_maybe_copy<Experiment>::type;
+template<typename T, typename Enable=void>
+struct real_align : boost::alignment::alignment_of<T>
+{};
+template<typename T>
+struct real_align<T, typename std::enable_if<T::alignment==T::alignment>::type>
+      : std::integral_constant<std::size_t, T::alignment>
+{};
+template<typename T>
+using make_vec_t = std::vector<T, boost::alignment::aligned_allocator<T,real_align<T>::value>>;
 }
 template <typename Experiment, typename... Gs>
 void run(results& r, setup const& s, std::string const& name, Experiment&& e, Gs&&... g) {
@@ -1063,7 +1073,7 @@ void run(results& r, setup const& s, std::string const& name, Experiment&& e, Gs
   };
   times_set  = stats_set();
   cycles_set = stats_set();
-  auto ps = std::tuple<std::vector<decltype(g())>...>();
+  auto ps = std::tuple<detail::make_vec_t<decltype(g())>...>();
   auto gs = std::make_tuple(std::forward<Gs>(g)...);
   auto sz  = ::ns::bench::setup::internal_loop_size();
   std::cerr << ":: Benchmarking: \"" << name << "\" ";
@@ -1112,23 +1122,24 @@ template <typename T>
 struct rand<T, std::true_type>
 {
   template <typename U>
-  rand( U min = static_cast<U>(std::numeric_limits<T>::min())
-      , U max = static_cast<U>(std::numeric_limits<T>::max())
+  rand( U pmin = static_cast<U>(std::numeric_limits<T>::min())
+      , U pmax = static_cast<U>(std::numeric_limits<T>::max())
       )
   {
     if (std::is_unsigned<T>::value) {
-      min = std::abs(min);
-      max = std::abs(max);
+      pmin = std::abs(pmin);
+      pmax = std::abs(pmax);
     }
-    if (min > max) std::swap(min, max);
-    if (min == max) min = T(0);
-    min_ = min;
-    max_ = max;
+    if (pmin > pmax) std::swap(pmin, pmax);
+    if (pmin == pmax) pmin = T(0);
+    min_ = pmin;
+    max_ = pmax;
   }
   T random() {
     static std::random_device rd;
     static std::mt19937 gen(rd());
     static std::uniform_real_distribution<> dist(0.0, 1.0);
+    double f = (max_ - min_);
     return min_ + f * dist(gen);
   }
   inline T operator()() {
