@@ -18,7 +18,7 @@
 #include <boost/simd/arch/common/scalar/function/divceil.hpp>
 #include <boost/simd/arch/common/scalar/function/divfloor.hpp>
 #include <boost/simd/arch/common/scalar/function/divround.hpp>
-#include <boost/simd/arch/common/scalar/function/divround2even.hpp>
+#include <boost/simd/arch/common/scalar/function/divnearbyint.hpp>
 #include <boost/simd/arch/common/scalar/function/divtrunc.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/hierarchy.hpp>

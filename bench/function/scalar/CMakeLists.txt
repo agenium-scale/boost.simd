@@ -124,7 +124,7 @@ set(SOURCES
 #    interleave_first.cpp
 #    interleave_odd.cpp
 #    interleave_second.cpp
-#    iround2even.cpp
+#    inearbyint.cpp
 #    iround.cpp
 #    is_denormal.cpp
 #    is_equal.cpp
@@ -238,7 +238,7 @@ set(SOURCES
 #    reverse.cpp
 #    rol.cpp
 #    ror.cpp
-#    round2even.cpp
+#    nearbyint.cpp
 #    round.cpp
 #    rrol.cpp
 #    rror.cpp

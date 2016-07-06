@@ -26,7 +26,7 @@
 #include <boost/simd/function/simd/minus.hpp>
 #include <boost/simd/function/simd/multiplies.hpp>
 #include <boost/simd/function/simd/none.hpp>
-#include <boost/simd/function/simd/round2even.hpp>
+#include <boost/simd/function/simd/nearbyint.hpp>
 #include <boost/simd/function/simd/tenpower.hpp>
 #include <boost/simd/function/simd/trunc.hpp>
 #include <boost/simd/function/simd/unary_minus.hpp>
@@ -58,7 +58,7 @@ namespace boost { namespace simd { namespace ext
       BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
         auto isf = logical_andnot(is_flint(a0+a0), is_flint(a0));
-        auto r1 = round2even(a0);
+        auto r1 = nearbyint(a0);
 //        if (none(isf)) return r1;
         return if_else(isf, -trunc(-a0), r1);
       }

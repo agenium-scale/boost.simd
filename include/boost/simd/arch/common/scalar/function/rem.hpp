@@ -129,7 +129,7 @@ namespace boost { namespace simd { namespace ext
 
 // Other flavors of rem
 #include <boost/simd/arch/common/scalar/function/remround.hpp>
-#include <boost/simd/arch/common/scalar/function/remround2even.hpp>
+#include <boost/simd/arch/common/scalar/function/remnearbyint.hpp>
 #include <boost/simd/arch/common/scalar/function/remfloor.hpp>
 #include <boost/simd/arch/common/scalar/function/remceil.hpp>
 

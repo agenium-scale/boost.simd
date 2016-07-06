@@ -35,7 +35,7 @@
 #include <boost/simd/function/oneminus.hpp>
 #include <boost/simd/function/inc.hpp>
 #include <boost/simd/function/plus.hpp>
-#include <boost/simd/function/round2even.hpp>
+#include <boost/simd/function/nearbyint.hpp>
 #include <boost/simd/function/shift_left.hpp>
 #include <boost/simd/function/sqr.hpp>
 #include <boost/simd/function/toint.hpp>
@@ -62,7 +62,7 @@ namespace boost { namespace simd
       {
         using i_t = bd::as_integer_t<A0>;
         using s_t = bd::scalar_of_t<A0>;
-        A0 k  = round2even(Invlog_2<A0>()*a0);
+        A0 k  = nearbyint(Invlog_2<A0>()*a0);
         A0 x = fnms(k, Log_2hi<A0>(), a0);
         x =  fnms(k, Log_2lo<A0>(), x);
         A0 hx  = x*Half<A0>();
@@ -90,7 +90,7 @@ namespace boost { namespace simd
       {
         using i_t = bd::as_integer_t<A0>;
         using s_t = bd::scalar_of_t<A0>;
-        A0 k  = round2even(Invlog_2<A0>()*a0);
+        A0 k  = nearbyint(Invlog_2<A0>()*a0);
         A0 hi = fnms(k, Log_2hi<A0>(), a0);
         A0 lo = k*Log_2lo<A0>();
         A0 x  = hi-lo;

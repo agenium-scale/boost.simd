@@ -35,7 +35,7 @@ namespace boost { namespace simd
 
     std_ for floating entries
 
-    @see  floor, round, round2even, trunc, iceil
+    @see  floor, round, nearbyint, trunc, iceil
 
   **/
 {
