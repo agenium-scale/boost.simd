@@ -19,6 +19,9 @@
 #include <boost/simd/function/scalar/abs.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
+#include <boost/simd/function/std.hpp>
+#include <boost/simd/function/is_negative.hpp>
+#include <cmath>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -38,7 +41,7 @@ namespace boost { namespace simd { namespace ext
       A0 d0 = (v+t2n);
       A0 d = (d0-t2n);
       d = (v < t2n)?d:v;
-      return a0 < Zero<A0>() ? -d : d;
+      return is_negative(a0) ? -d : d;
     }
   };
 
@@ -53,6 +56,20 @@ namespace boost { namespace simd { namespace ext
       return a0;
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( nearbyint_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bs::std_tag
+                          , bd::scalar_< bd::floating_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() (const std_tag&, A0 a0) const BOOST_NOEXCEPT
+    {
+      return std::nearbyint(a0);
+    }
+  };
+
 } } }
 
 

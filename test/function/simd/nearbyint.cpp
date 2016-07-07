@@ -14,6 +14,10 @@
 #include <boost/simd/function/bits.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
+#include <boost/simd/function/is_negative.hpp>
+#include <boost/simd/function/is_positive.hpp>
+#include <boost/simd/constant/mzero.hpp>
+#include <boost/simd/constant/zero.hpp>
 
 template <typename T, int N, typename Env>
 void test(Env& $)
@@ -59,8 +63,6 @@ STF_CASE_TPL("Check nearbyint on halfs" , STF_IEEE_TYPES)
     STF_IEEE_EQUAL(bs::nearbyint(p_t(i+T(0.5))), p_t(i%2 ? i+1 : i ));
     STF_IEEE_EQUAL(bs::nearbyint(p_t(-i+T(0.5))), p_t(i%2 ? -i+1 : -i ));
   }
-
-//   STF_IEEE_EQUAL(bs::nearbyint(a), p_t(2.0));
-//   STF_IEEE_EQUAL(bs::nearbyint(b), p_t(2.0));
-//   STF_IEEE_EQUAL(bs::nearbyint(p_t(3.5)
+  STF_EXPECT(bs::is_negative(nearbyint(bs::Mzero<T>())));
+  STF_EXPECT(bs::is_positive(nearbyint(bs::Zero<T>())));
 }

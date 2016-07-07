@@ -33,14 +33,17 @@ namespace boost { namespace simd
     Returns the nearest integer to x.
 
     @par Note:
+    - If arg is /f$\infty/f$, it is returned, unmodified
+    - If arg is $\pm0/f$, it is returned, unmodified
+    - If arg is NaN, NaN is returned
 
-    to even means that half integer values are rounded to the nearest
+    - to even means that half integer values are rounded to the nearest
     even value.
 
-    This function is in general speedier than @ref round which to the rouding on
+    This function is in general speedier than @ref round which do the rouding on
     half integer values away from zero.
 
-    @see round
+    @see round, ceil, floor, trunc
   **/
   const boost::dispatch::functor<tag::nearbyint_> nearbyint = {};
 } }
