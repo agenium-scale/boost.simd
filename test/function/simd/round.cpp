@@ -14,6 +14,10 @@
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
+#include <boost/simd/function/is_negative.hpp>
+#include <boost/simd/function/is_positive.hpp>
+#include <boost/simd/constant/mzero.hpp>
+#include <boost/simd/constant/zero.hpp>
 
 template <typename T, int N, typename Env>
 void test(Env& $)
@@ -30,7 +34,8 @@ void test(Env& $)
   }
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
-  STF_IEEE_EQUAL(bs::round(aa1), bb);
+  std::cout << aa1 << std::endl;
+  STF_EQUAL(bs::round(aa1), bb);
   STF_EQUAL(bs::std_(bs::round)(aa1), bb);
 }
 
@@ -42,4 +47,19 @@ STF_CASE_TPL("Check round on pack" , STF_NUMERIC_TYPES)
   test<T, N>($);
   test<T, N/2>($);
   test<T, N*2>($);
+}
+
+STF_CASE_TPL("Check round on halfs" , STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  using p_t = bs::pack<T>;
+  p_t a(1.5);
+  p_t b(2.5);
+  for(int i = 1; i <= 9; i+= 1)
+  {
+    STF_IEEE_EQUAL(bs::round(p_t(i+T(0.5))), p_t(i+1));
+    STF_IEEE_EQUAL(bs::round(p_t(-i-T(0.5))),  p_t(-i-1));
+  }
+  STF_EXPECT(bs::is_negative(round(bs::Mzero<T>())));
+  STF_EXPECT(bs::is_positive(round(bs::Zero<T>())));
 }
