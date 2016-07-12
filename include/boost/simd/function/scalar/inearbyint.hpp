@@ -7,8 +7,8 @@
 **/
 //==================================================================================================
 
-#ifndef BOOST_SIMD_FUNCTION_SCALAR_IROUND2EVEN_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_SCALAR_IROUND2EVEN_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_SCALAR_INEARBYINT_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_SCALAR_INEARBYINT_HPP_INCLUDED
 
 #include <boost/simd/function/definition/inearbyint.hpp>
 #include <boost/simd/arch/common/generic/function/inearbyint.hpp>

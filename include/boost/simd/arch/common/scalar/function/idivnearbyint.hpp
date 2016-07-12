@@ -8,8 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IDIVROUND2EVEN_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IDIVROUND2EVEN_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IDIVNEARBYINT_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IDIVNEARBYINT_HPP_INCLUDED
 
 // workaround for "idivnearbyint(a0/a1) in floating scalar mode when a0 is non zero and a1 is zero
 // with clang 3.7 and 3.8
