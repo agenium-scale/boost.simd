@@ -34,7 +34,6 @@ void test(Env& $)
   }
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
-  std::cout << aa1 << std::endl;
   STF_EQUAL(bs::round(aa1), bb);
   STF_EQUAL(bs::std_(bs::round)(aa1), bb);
 }
