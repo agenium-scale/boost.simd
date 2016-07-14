@@ -12,9 +12,5 @@
 
 #include <boost/simd/function/definition/rem.hpp>
 #include <boost/simd/arch/common/scalar/function/rem.hpp>
-#include <boost/simd/arch/common/scalar/function/remround.hpp>
-#include <boost/simd/arch/common/scalar/function/remround2even.hpp>
-#include <boost/simd/arch/common/scalar/function/remfloor.hpp>
-#include <boost/simd/arch/common/scalar/function/remceil.hpp>
 
 #endif

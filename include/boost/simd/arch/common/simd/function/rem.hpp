@@ -123,7 +123,12 @@ namespace boost { namespace simd { namespace ext
         return  fnms(div(fix, a0,a1), a1, a0);
       }
    };
-
 } } }
+
+// Other flavors of rem
+#include <boost/simd/arch/common/simd/function/remround.hpp>
+#include <boost/simd/arch/common/simd/function/remround2even.hpp>
+#include <boost/simd/arch/common/simd/function/remfloor.hpp>
+#include <boost/simd/arch/common/simd/function/remceil.hpp>
 
 #endif
