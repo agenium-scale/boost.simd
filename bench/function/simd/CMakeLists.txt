@@ -274,7 +274,6 @@ set(SOURCES
 #    rol.cpp
 #    ror.cpp
 #    nearbyint.cpp
-     round.cpp
 #    rrol.cpp
 #    rror.cpp
     rsqrt.cpp
