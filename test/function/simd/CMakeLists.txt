@@ -105,7 +105,7 @@ divceil.cpp
 divfix.cpp
 divfloor.cpp
 divround.cpp
-divround2even.cpp
+divnearbyint.cpp
 divtrunc.cpp
 divides.cpp
 divides_s.cpp
@@ -137,7 +137,7 @@ idivfix.cpp
 idivfloor.cpp
 idivceil.cpp
 idivround.cpp
-idivround2even.cpp
+idivnearbyint.cpp
 if_allbits_else.cpp
 if_else_allbits.cpp
 if_else.cpp
@@ -160,7 +160,7 @@ interleave_first.cpp
 interleave_second.cpp
 interleave_even.cpp
 interleave_odd.cpp
-iround2even.cpp
+inearbyint.cpp
 iround.cpp
 is_denormal.cpp
 is_equal.cpp
@@ -257,7 +257,7 @@ prod.cpp
 rec.cpp
 rem.cpp
 remround.cpp
-remround2even.cpp
+remnearbyint.cpp
 remfloor.cpp
 remceil.cpp
 rem_pio2.cpp
@@ -270,7 +270,7 @@ repeat_upper_half.cpp
 reversebits.cpp
 reverse.cpp
 round.cpp
-round2even.cpp
+nearbyint.cpp
 rsqrt.cpp
 safe_max.cpp
 safe_min.cpp

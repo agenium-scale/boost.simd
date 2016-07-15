@@ -24,7 +24,7 @@
 
 #include <boost/simd/function/all.hpp>
 #include <boost/simd/function/toint.hpp>
-#include <boost/simd/function/round2even.hpp>
+#include <boost/simd/function/nearbyint.hpp>
 #include <boost/simd/function/if_else_nan.hpp>
 #include <boost/simd/function/is_not_greater.hpp>
 #include <boost/simd/function/is_nez.hpp>
@@ -94,7 +94,7 @@ namespace boost { namespace simd
 
       static BOOST_FORCEINLINE i_t reduce(const A0& x, A0& xr) BOOST_NOEXCEPT
       {
-        A0 xi = round2even(x*Ratio<A0,1,90>());
+        A0 xi = nearbyint(x*Ratio<A0,1,90>());
         A0 x2 = x - xi * Ratio<A0,90>();
 
         xr =  inrad(x2);
@@ -121,7 +121,7 @@ namespace boost { namespace simd
 
       static BOOST_FORCEINLINE i_t reduce(const A0& x, A0& xr) BOOST_NOEXCEPT
       {
-        A0 xi = round2even(x*Ratio<A0,1,90>());
+        A0 xi = nearbyint(x*Ratio<A0,1,90>());
         A0 x2 = x - xi * Ratio<A0,90>();
 
         xr =  inrad(x2);
@@ -148,7 +148,7 @@ namespace boost { namespace simd
 
       static BOOST_FORCEINLINE i_t reduce(const A0& x,  A0& xr) BOOST_NOEXCEPT
       {
-        A0 xi = round2even(x*Two<A0>());
+        A0 xi = nearbyint(x*Two<A0>());
         A0 x2 = x - xi * Half<A0>();
         xr = x2*Pi<A0>();
         return toint(xi);

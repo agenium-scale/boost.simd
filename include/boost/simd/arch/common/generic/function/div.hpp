@@ -16,11 +16,11 @@
 #include <boost/simd/function/iceil.hpp>
 #include <boost/simd/function/ifloor.hpp>
 #include <boost/simd/function/iround.hpp>
-#include <boost/simd/function/iround2even.hpp>
+#include <boost/simd/function/inearbyint.hpp>
 #include <boost/simd/function/ceil.hpp>
 #include <boost/simd/function/floor.hpp>
 #include <boost/simd/function/round.hpp>
-#include <boost/simd/function/round2even.hpp>
+#include <boost/simd/function/nearbyint.hpp>
 #include <boost/simd/function/toint.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
@@ -98,15 +98,15 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( div_
                           , (typename T)
                           , bd::cpu_
-                          , bs::tag::iround2even_
+                          , bs::tag::inearbyint_
                           , bd::generic_<bd::floating_<T>>
                           , bd::generic_<bd::floating_<T>>
                           )
   {
-    BOOST_FORCEINLINE bd::as_integer_t<T> operator()( bd::functor<bs::tag::iround2even_> const&
+    BOOST_FORCEINLINE bd::as_integer_t<T> operator()( bd::functor<bs::tag::inearbyint_> const&
                                                     ,T const& a, T const& b) const BOOST_NOEXCEPT
     {
-      return iround2even(a/b);
+      return inearbyint(a/b);
     }
   };
 
@@ -176,15 +176,15 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( div_
                           , (typename T)
                           , bd::cpu_
-                          , bs::tag::iround2even_
+                          , bs::tag::inearbyint_
                           , bd::generic_<bd::integer_<T>>
                           , bd::generic_<bd::integer_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()( bd::functor<bs::tag::iround2even_> const&
+    BOOST_FORCEINLINE T operator()( bd::functor<bs::tag::inearbyint_> const&
                                   ,T const& a, T const& b) const BOOST_NOEXCEPT
     {
-      return  div(round2even, a, b);
+      return  div(nearbyint, a, b);
     }
   };
 

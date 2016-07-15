@@ -31,7 +31,7 @@
 #include <boost/simd/function/plus.hpp>
 #include <boost/simd/function/rem_pio2.hpp>
 #include <boost/simd/function/rem_pio2_medium.hpp>
-#include <boost/simd/function/round2even.hpp>
+#include <boost/simd/function/nearbyint.hpp>
 #include <boost/simd/function/tofloat.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
@@ -98,7 +98,7 @@ namespace boost { namespace simd { namespace ext
     {
       static BOOST_FORCEINLINE A0 rem( A0 const& x) BOOST_NOEXCEPT
       {
-        A0 xi =  round2even(x*Inv2pi<A0>());
+        A0 xi =  nearbyint(x*Inv2pi<A0>());
         A0 xr = x-xi*Pix2_1<A0>();
         xr -= xi*Pix2_2<A0>();
         xr -= xi*Pix2_3<A0>();

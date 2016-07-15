@@ -47,7 +47,7 @@ STF_CASE_TPL( "Check div behavior with options", STF_NUMERIC_TYPES )
   STF_EQUAL(div(bs::ceil      , bs::One<T>(), bs::Two<T>()), bs::One<r_t>());
   STF_EQUAL(div(bs::floor     , bs::One<T>(), bs::Two<T>()), bs::Zero<r_t>());
   STF_EQUAL(div(bs::round     , bs::One<T>(), bs::Two<T>()), bs::One<r_t>());
-  STF_EQUAL(div(bs::round2even, bs::One<T>(), bs::Two<T>()), bs::Zero<r_t>());
+  STF_EQUAL(div(bs::nearbyint, bs::One<T>(), bs::Two<T>()), bs::Zero<r_t>());
   STF_EQUAL(div(bs::fix       , bs::One<T>(), bs::Two<T>()), bs::Zero<r_t>());
 
 }

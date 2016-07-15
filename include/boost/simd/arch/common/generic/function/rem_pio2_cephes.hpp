@@ -15,7 +15,7 @@
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <boost/simd/function/fnms.hpp>
-#include <boost/simd/function/round2even.hpp>
+#include <boost/simd/function/nearbyint.hpp>
 #include <boost/simd/function/toint.hpp>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/minus.hpp>
@@ -44,7 +44,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE result_t operator() ( A0 const& x) const
     {
-      A0 xi =  bs::round2even(x*bs::Twoopi<A0>());
+      A0 xi =  bs::nearbyint(x*bs::Twoopi<A0>());
       A0 xr  = fnms(xi, bs::Pio2_1<A0>(), x);
       xr -= xi*bs::Pio2_2<A0>();
       xr -= xi*bs::Pio2_3<A0>();

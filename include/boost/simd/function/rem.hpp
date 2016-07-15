@@ -37,7 +37,7 @@ namespace boost { namespace simd
     T r = x-div(fix, x, y)*y;
     @endcode
 
-    else option can be ceil, floor, fix, round, round2even (in the namespace booost::simd)
+    else option can be ceil, floor, fix, round, nearbyint (in the namespace booost::simd)
     and the code is similar to :
 
     @code
@@ -65,7 +65,7 @@ namespace boost { namespace simd
     with floating entries decorator std_ calls the stdlibc++ corresponding function (caution : no simd acceleration)
 
       -option fix        calls std::fmod
-      -option round2even calls std::remainder
+      -option nearbyint calls std::remainder
       The other options have no standard correspondant
 
     fast_ for floating entries,  but if x is +/-0 and y is not 0  +/-0 is returned with a non garanteed sign.

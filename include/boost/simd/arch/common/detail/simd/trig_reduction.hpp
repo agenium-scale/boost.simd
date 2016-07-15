@@ -23,7 +23,7 @@
 
 #include <boost/simd/function/all.hpp>
 #include <boost/simd/function/toint.hpp>
-#include <boost/simd/function/round2even.hpp>
+#include <boost/simd/function/nearbyint.hpp>
 #include <boost/simd/function/if_else_nan.hpp>
 #include <boost/simd/function/is_not_greater.hpp>
 #include <boost/simd/function/is_nez.hpp>

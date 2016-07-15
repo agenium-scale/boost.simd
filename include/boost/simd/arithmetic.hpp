@@ -74,12 +74,12 @@ namespace boost { namespace simd
       | floor              |   div(floor, a, b)       |      T(floor(fT(a)/fT(b)))                    |
       | fix                |   div(fix, a, b)         |      T(fix(fT(a)/fT(b)))                      |
       | round              |   div(round, a, b)       |      T(round(fT(a)/fT(b)))                    |
-      | round2even         |   div(round2even, a, b)  |      T(round2even(fT(a)/fT(b)))               |
+      | nearbyint         |   div(nearbyint, a, b)  |      T(nearbyint(fT(a)/fT(b)))               |
       | iceil              |   div(iceil, a, b)       |      iT(iceil(fT(a)/fT(b)))                   |
       | ifloor             |   div(ifloor, a, b)      |      iT(ifloor(fT(a)/fT(b)))                  |
       | ifix               |   div(ifix, a, b)        |      iT(ifix(fT(a)/fT(b)))                    |
       | iround             |   div(iround, a, b)      |      iT(iround(fT(a)/fT(b)))                  |
-      | iround2even        |   div(riound2even, a, b) |      iT(iround2even(fT(a)/fT(b)))             |
+      | inearbyint        |   div(riound2even, a, b) |      iT(inearbyint(fT(a)/fT(b)))             |
       |--------------------|--------------------------|-----------------------------------------------|
 
      - Remainder operations
@@ -90,7 +90,7 @@ namespace boost { namespace simd
        an option first parameter that modify its behaviour and moreover use the fast_ decorator if
        limiting case values are not a problem.
 
-       The option parameter can be chosen between ceil, floor, fix;, round, round2even and if opt is the option
+       The option parameter can be chosen between ceil, floor, fix;, round, nearbyint and if opt is the option
        the call
 
          rem(opt, a, b) is equivalent to a-b*div(opt, a, b)
@@ -136,7 +136,7 @@ namespace boost { namespace simd
 #include <boost/simd/function/ifix.hpp>
 #include <boost/simd/function/ifloor.hpp>
 #include <boost/simd/function/inc.hpp>
-#include <boost/simd/function/iround2even.hpp>
+#include <boost/simd/function/inearbyint.hpp>
 #include <boost/simd/function/iround.hpp>
 #include <boost/simd/function/max.hpp>
 #include <boost/simd/function/meanof.hpp>
@@ -149,7 +149,7 @@ namespace boost { namespace simd
 #include <boost/simd/function/rec.hpp>
 #include <boost/simd/function/rem.hpp>
 #include <boost/simd/function/remquo.hpp>
-#include <boost/simd/function/round2even.hpp>
+#include <boost/simd/function/nearbyint.hpp>
 #include <boost/simd/function/round.hpp>
 #include <boost/simd/function/rsqrt.hpp>
 #include <boost/simd/function/signbit.hpp>

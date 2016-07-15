@@ -35,7 +35,7 @@ set ( SOURCES
    divfix.cpp
    divfloor.cpp
    divround.cpp
-   divround2even.cpp
+   divnearbyint.cpp
    divtrunc.cpp
    divides_s.cpp
    floor.cpp
@@ -49,11 +49,11 @@ set ( SOURCES
    idivfix.cpp
    idivfloor.cpp
    idivround.cpp
-   idivround2even.cpp
+   idivnearbyint.cpp
    ifloor.cpp
    inc.cpp
    inc_s.cpp
-   iround2even.cpp
+   inearbyint.cpp
    iround.cpp
    logical_xor.cpp
    max.cpp
@@ -61,6 +61,7 @@ set ( SOURCES
    min.cpp
    minmod.cpp
    multiplies_s.cpp
+   nearbyint.cpp
    neg_s.cpp
    oneminus.cpp
    oneminus_s.cpp
@@ -70,9 +71,8 @@ set ( SOURCES
    remfloor.cpp
    remceil.cpp
    remround.cpp
-   remround2even.cpp
+   remnearbyint.cpp
    remquo.cpp
-   round2even.cpp
    round.cpp
    rsqrt.cpp
    sqr_abs.cpp

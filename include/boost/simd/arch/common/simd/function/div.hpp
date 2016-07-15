@@ -17,7 +17,7 @@
 #include <boost/simd/arch/common/simd/function/divceil.hpp>
 #include <boost/simd/arch/common/simd/function/divfloor.hpp>
 #include <boost/simd/arch/common/simd/function/divround.hpp>
-#include <boost/simd/arch/common/simd/function/divround2even.hpp>
+#include <boost/simd/arch/common/simd/function/divnearbyint.hpp>
 #include <boost/simd/arch/common/simd/function/divfix.hpp>
 
 namespace boost { namespace simd { namespace ext

@@ -33,7 +33,7 @@
 #include <boost/simd/function/scalar/fma.hpp>
 #include <boost/simd/function/scalar/fnms.hpp>
 #include <boost/simd/function/scalar/inc.hpp>
-#include <boost/simd/function/scalar/round2even.hpp>
+#include <boost/simd/function/scalar/nearbyint.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
 #include <boost/simd/logical.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
@@ -78,7 +78,7 @@ namespace boost { namespace simd
 
       static BOOST_FORCEINLINE A0 reduce(A0 const& a0, A0& x) BOOST_NOEXCEPT
       {
-        A0 k = round2even(Invlog_2<A0>()*a0);
+        A0 k = nearbyint(Invlog_2<A0>()*a0);
         x = fnms(k, Log_2hi<A0>(), a0); //a0-k*L
         x = fnms(k, Log_2lo<A0>(), x);
         return k;
@@ -118,7 +118,7 @@ namespace boost { namespace simd
 
       static BOOST_FORCEINLINE A0 reduce( A0 const& a0, A0& x) BOOST_NOEXCEPT
       {
-        A0 k = round2even(a0);
+        A0 k = nearbyint(a0);
         x = (a0 - k);
         return k;
       }
@@ -140,7 +140,7 @@ namespace boost { namespace simd
 
       static BOOST_FORCEINLINE A0 reduce(A0 const& a0, A0& x) BOOST_NOEXCEPT
       {
-        A0 k = round2even(Invlog10_2<A0>()*a0);
+        A0 k = nearbyint(Invlog10_2<A0>()*a0);
         x = fnms(k, Log10_2hi<A0>(), a0);
         x -= k*Log10_2lo<A0>();
         return k;

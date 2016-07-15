@@ -20,7 +20,7 @@
 #include <boost/simd/function/logical_or.hpp>
 #include <boost/simd/function/minus.hpp>
 #include <boost/simd/function/multiplies.hpp>
-#include <boost/simd/function/round2even.hpp>
+#include <boost/simd/function/nearbyint.hpp>
 #include <boost/simd/function/toint.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
@@ -44,7 +44,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE std::pair<A0, quo_t> operator() ( A0 a0, A0 a1
                                       ) const BOOST_NOEXCEPT
     {
-      A0 const d = round2even(a0/a1);
+      A0 const d = nearbyint(a0/a1);
 
 #if defined(BOOST_SIMD_NO_INVALIDS)
       A0  a2 = if_allbits_else(is_eqz(a1), a0-d*a1);
