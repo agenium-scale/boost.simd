@@ -41,7 +41,7 @@ set(SOURCES
     atanpi.cpp
     average.cpp
     bitfloating.cpp
-#    bitget.cpp
+    bitget.cpp
     bitinteger.cpp
     bitset.cpp
     bitwise_and.cpp
@@ -89,7 +89,8 @@ set(SOURCES
     divides_s.cpp
     dot.cpp
 #    enumerate.cpp
-
+    erf.cpp
+    erfc.cpp
     exp2.cpp
     exp.cpp
     expm1.cpp
@@ -108,11 +109,15 @@ set(SOURCES
     firstbitunset.cpp
     floor.cpp
     fma.cpp
+    fpclassify.cpp
+    correct_fma.cpp
     fms.cpp
     fnma.cpp
     fnms.cpp
     frac.cpp
     frexp.cpp
+    gammaln.cpp
+    genmask.cpp
     genmaskc.cpp
 ##########    group.cpp
 ##########    groups.cpp
@@ -222,6 +227,7 @@ set(SOURCES
     multiplies.cpp
     multiplies_s.cpp
     nbtrue.cpp
+    nearbyint.cpp
     negate.cpp
     negatenz.cpp
     negif.cpp
@@ -273,7 +279,7 @@ set(SOURCES
     reverse.cpp
 #    rol.cpp
 #    ror.cpp
-#    nearbyint.cpp
+    round.cpp
 #    rrol.cpp
 #    rror.cpp
     rsqrt.cpp
@@ -283,8 +289,8 @@ set(SOURCES
     secd.cpp
     sech.cpp
     secpi.cpp
-#    shift_left.cpp
-#    shift_right.cpp
+    shift_left.cpp
+    shift_right.cpp
 #    shr1.cpp
     sign.cpp
     significants.cpp
@@ -331,3 +337,4 @@ set(SOURCES
 )
 
 make_bench("function.simd" ${SOURCES})
+
