@@ -6,33 +6,15 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-#include <ns.bench.hpp>
-#include <boost/simd/function/scalar/rsqrt.hpp>
-#include <cmath>
+#include <simd_bench.hpp>
+#include <boost/simd/function/simd/rsqrt.hpp>
 
-namespace bs = boost::simd;
 namespace nsb = ns::bench;
+namespace bs =  boost::simd;
 
-template <typename T>
-struct rsqrt_scalar
+DEFINE_SCALAR_BENCH(scalar_rsqrt, bs::rsqrt);
+
+DEFINE_BENCH_MAIN()
 {
-   template <typename U>
-   void operator()(U min0, U max0)
-   {
-     using ret_type = T;
-     nsb::make_function_experiment_cpe_sized_<1>
-       ( [](const T & x0) -> ret_type
-         { return bs::rsqrt(x0); }
-       , nsb::generators::rand<T>(min0, max0)
-       );
-   }
-};
-
-
-int main(int argc, char **argv) {
-   nsb::parse_args(argc, argv);
-   nsb::make_for_each<rsqrt_scalar, NS_BENCH_IEEE_TYPES>( -10,  10);
-   nsb::make_for_each<rsqrt_scalar, NS_BENCH_IEEE_TYPES>(0,  10);
-   return 0;
+  nsb::for_each<scalar_rsqrt, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
-

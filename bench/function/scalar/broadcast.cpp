@@ -6,33 +6,22 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-#include <ns.bench.hpp>
-#include <boost/simd/function/scalar/broadcast.hpp>
-#include <cmath>
+#include <simd_bench.hpp>
+#include <boost/simd/function/simd/broadcast.hpp>
 
-namespace bs = boost::simd;
 namespace nsb = ns::bench;
-
-template <typename T>
-struct broadcast_scalar
+namespace bs =  boost::simd;
+struct broad
 {
-   template <typename U>
-   void operator()(U min0, U max0)
-   {
-     using ret_type = T;
-     nsb::make_function_experiment_cpe_sized_<1>
-       ( [](const T & x0) -> ret_type
-         { return bs::broadcast<1>(x0); }
-       , nsb::generators::rand<T>(min0, max0)
-       );
-   }
+  template<class T> T operator()(const T & a) const
+  {
+    return bs::broadcast<1>(a);
+  }
 };
 
+DEFINE_SCALAR_BENCH(scalar_broadcast, broad());
 
-int main(int argc, char **argv) {
-   nsb::parse_args(argc, argv);
-   nsb::make_for_each<broadcast_scalar, NS_BENCH_SIGNED_NUMERIC_TYPES>( -10,  10);
-   nsb::make_for_each<broadcast_scalar, NS_BENCH_UNSIGNED_NUMERIC_TYPES>(0,  10);
-   return 0;
+DEFINE_BENCH_MAIN() {
+  nsb::for_each<scalar_broadcast, NS_BENCH_NUMERIC_TYPES>(-10, 10);
 }
 

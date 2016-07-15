@@ -6,36 +6,31 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-#include <ns.bench.hpp>
-#include <boost/simd/function/scalar/ldexp.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <cmath>
+#include <simd_bench.hpp>
+#include <boost/simd/function/simd/ldexp.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
-namespace bs = boost::simd;
-namespace bd = boost::dispatch;
 namespace nsb = ns::bench;
+namespace bs =  boost::simd;
+namespace bd =  boost::dispatch;
 
-template <typename T>
-struct ldexp_scalar
+DEFINE_SCALAR_BENCH(scalar_ldexp, bs::ldexp);
+
+template < int N >
+struct lde
 {
-   template <typename U>
-   void operator()(U min0, U max0, U min1, U max1)
-   {
-     using iT = bd::as_integer_t<T>;
-     using ret_type = T;
-     nsb::make_function_experiment_cpe_sized_<1>
-       ( [](const T & x0, const iT & x1) -> ret_type
-         { return bs::ldexp(x0, x1); }
-       , nsb::generators::rand<T>(min0, max0)
-       , nsb::generators::rand<iT>(min1, max1)
-       );
-   }
+  template<class T> T operator()(const T & a) const
+  {
+    return bs::ldexp(a, bd::as_integer_t<T>(N));
+  }
 };
 
+  DEFINE_SCALAR_BENCH(scalar_lde10, lde<10>());
+  DEFINE_SCALAR_BENCH(scalar_ldem10, lde<-10>());
 
-int main(int argc, char **argv) {
-   nsb::parse_args(argc, argv);
-   nsb::make_for_each<ldexp_scalar, NS_BENCH_IEEE_TYPES>( -10,  10,  -10,  10);
-   return 0;
+DEFINE_BENCH_MAIN() {
+  nsb::for_each<scalar_lde10, NS_BENCH_NUMERIC_TYPES>(-10, 10);
+  nsb::for_each<scalar_ldem10, NS_BENCH_NUMERIC_TYPES>(-10, 10);
 }
+
 
