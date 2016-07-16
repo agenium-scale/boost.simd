@@ -33,11 +33,10 @@ namespace boost { namespace simd
 
     Returns the arc @c r in the interval
     \f$[-\pi/2, \pi/2[\f$ such that <tt>tan(r) == x</tt>.
-    If @c x is outside \f$[-1, 1[\f$ the result is Nan.
 
     @par Decorators
 
-    std_, fast_ for floating entries
+    std_ for floating entries
 
     @see atan2, atand, atanpi
 

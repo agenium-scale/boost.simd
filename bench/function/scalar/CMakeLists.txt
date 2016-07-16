@@ -85,6 +85,13 @@ set(SOURCES
     exprecnegc.cpp
     exprecneg.cpp
     expx2.cpp
+    fast.frexp.cpp
+    fast.hypot.cpp
+    fast.rec.cpp
+    fast.rem.cpp
+    fast.rsqrt.cpp
+    fast.sqrt.cpp
+    fast.trunc.cpp
     ffs.cpp
     firstbitset.cpp
     firstbitunset.cpp
