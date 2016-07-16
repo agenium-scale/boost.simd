@@ -77,6 +77,8 @@ set(SOURCES
     divides_s.cpp
     dot.cpp
 #    enumerate.cpp
+    erf.cpp
+    erfc.cpp
     exp2.cpp
     exp.cpp
     expm1.cpp
@@ -88,11 +90,13 @@ set(SOURCES
     firstbitunset.cpp
     floor.cpp
     fma.cpp
-     fms.cpp
-     fnma.cpp
-     fnms.cpp
+    fms.cpp
+    fnma.cpp
+    fnms.cpp
+    fpclassify.cpp
     frac.cpp
     frexp.cpp
+    gammaln.cpp
     genmaskc.cpp
 ##########    group.cpp
 ##########    groups.cpp
@@ -265,6 +269,31 @@ set(SOURCES
     sqr_s.cpp
     sqrt1pm1.cpp
     sqrt.cpp
+    std.abs.cpp
+    std.acos.cpp
+    std.asin.cpp
+    std.atan2.cpp
+    std.atan.cpp
+    std.cbrt.cpp
+    std.ceil.cpp
+    std.erfc.cpp
+    std.erf.cpp
+    std.exp2.cpp
+    std.exp.cpp
+    std.expm1.cpp
+    std.fma.cpp
+    std.fpclassify.cpp
+    std.frexp.cpp
+    std.gammaln.cpp
+    std.hypot.cpp
+    std.log10.cpp
+    std.log2.cpp
+    std.log.cpp
+    std.maxnum.cpp
+    std.minnum.cpp
+    std.rem.cpp
+    std.sqrt.cpp
+    std.trunc.cpp
     successor.cpp
     tan.cpp
     tand.cpp
