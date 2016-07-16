@@ -66,6 +66,9 @@ set(SOURCES
     cot.cpp
     cotd.cpp
     cotpi.cpp
+    cscd.cpp
+    cscpi.cpp
+    csc.cpp
     ctz.cpp
     dec.cpp
     dec_s.cpp
@@ -237,6 +240,27 @@ set(SOURCES
     remquo.cpp
     repeat_lower_half.cpp
     repeat_upper_half.cpp
+    restricted.cosd.cpp
+    restricted.cos.cpp
+    restricted.cospi.cpp
+    restricted.cotd.cpp
+    restricted.cot.cpp
+    restricted.cotpi.cpp
+    restricted.cscd.cpp
+    restricted.csc.cpp
+    restricted.cscpi.cpp
+    restricted.secd.cpp
+    restricted.sec.cpp
+    restricted.secpi.cpp
+    restricted.sincosd.cpp
+    restricted.sincos.cpp
+    restricted.sincospi.cpp
+    restricted.sind.cpp
+    restricted.sin.cpp
+    restricted.sinpi.cpp
+    restricted.tand.cpp
+    restricted.tan.cpp
+    restricted.tanpi.cpp
     reversebits.cpp
     reverse.cpp
 #    rol.cpp
@@ -248,6 +272,9 @@ set(SOURCES
     rsqrt.cpp
     safe_max.cpp
     safe_min.cpp
+    sec.cpp
+    secd.cpp
+    secpi.cpp
 #    shift_left.cpp
 #    shift_right.cpp
 #    shr1.cpp
