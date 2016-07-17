@@ -11,27 +11,33 @@ set(SOURCES
     abs_s.cpp
     acos.cpp
     acosd.cpp
+    acosh.cpp
     acospi.cpp
     acot.cpp
     acotd.cpp
+    acoth.cpp
     acotpi.cpp
     acsc.cpp
     acscd.cpp
+    acsch.cpp
     acscpi.cpp
     all.cpp
     any.cpp
     arg.cpp
     asec.cpp
     asecd.cpp
+    asech.cpp
     asecpi.cpp
     asin.cpp
     asind.cpp
+    asinh.cpp
     asinpi.cpp
     atan2.cpp
     atan2d.cpp
     atan2pi.cpp
     atan.cpp
     atand.cpp
+    atanh.cpp
     atanpi.cpp
     average.cpp
     bitfloating.cpp
@@ -61,12 +67,15 @@ set(SOURCES
     conj.cpp
     copysign.cpp
     cos.cpp
+    cosh.cpp
     cosd.cpp
     cospi.cpp
     cot.cpp
     cotd.cpp
+    coth.cpp
     cotpi.cpp
     cscd.cpp
+    csch.cpp
     cscpi.cpp
     csc.cpp
     ctz.cpp
@@ -274,6 +283,7 @@ set(SOURCES
     safe_min.cpp
     sec.cpp
     secd.cpp
+    sech.cpp
     secpi.cpp
 #    shift_left.cpp
 #    shift_right.cpp
@@ -288,6 +298,7 @@ set(SOURCES
     sincpi.cpp
     sin.cpp
     sind.cpp
+    sinh.cpp
     sinhc.cpp
     sinhcosh.cpp
     sinpi.cpp
@@ -302,6 +313,7 @@ set(SOURCES
     successor.cpp
     tan.cpp
     tand.cpp
+    tanh.cpp
     tanpi.cpp
 #    tenpower.cpp
     tofloat.cpp
