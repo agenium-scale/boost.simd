@@ -17,5 +17,5 @@ DEFINE_SIMD_BENCH(simd_acosd, bs::acosd);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_acosd, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<simd_acosd, NS_BENCH_IEEE_TYPES>(-1, 1);
 }
