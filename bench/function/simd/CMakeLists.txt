@@ -144,7 +144,6 @@ set(SOURCES
     interleave_first.cpp
     interleave_odd.cpp
     interleave_second.cpp
-    iround2even.cpp
     iround.cpp
     is_denormal.cpp
     is_equal.cpp
