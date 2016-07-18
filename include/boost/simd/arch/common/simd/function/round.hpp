@@ -20,6 +20,8 @@
 #include <boost/simd/function/simd/logical_andnot.hpp>
 #include <boost/simd/function/simd/copysign.hpp>
 #include <boost/simd/function/simd/divides.hpp>
+#include <boost/simd/function/simd/inc.hpp>
+#include <boost/simd/function/simd/if_else.hpp>
 #include <boost/simd/function/simd/is_flint.hpp>
 #include <boost/simd/function/simd/is_greater.hpp>
 #include <boost/simd/function/simd/is_ltz.hpp>
@@ -57,10 +59,9 @@ namespace boost { namespace simd { namespace ext
    {
       BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
-        auto isf = logical_andnot(is_flint(a0+a0), is_flint(a0));
-        auto r1 = nearbyint(a0);
-//        if (none(isf)) return r1;
-        return if_else(isf, -trunc(-a0), r1);
+        const A0 v = bs::abs(a0);
+        const A0 c = bs::ceil(v);
+        return if_else(v > Maxflint<A0>(), a0, copysign(if_dec(c-Half<A0>() > v, c), a0));
       }
    };
 

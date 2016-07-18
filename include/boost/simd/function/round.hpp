@@ -47,6 +47,10 @@ namespace boost { namespace simd
     aways from 0 means that half integer values are rounded to the nearest
     integer of greatest absolute value
 
+    The current rounding mode has no effect.
+
+    - If x is \f$\pm\infty\f$ or \f$\pm0\f$, it is returned, unmodified
+    - If arg is a NaN, a NaN is returned
   **/
   const boost::dispatch::functor<tag::round_> round = {};
 } }
