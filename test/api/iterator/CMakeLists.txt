@@ -12,8 +12,8 @@ SET( SOURCES
     aligned_output_range.cpp
     input_range.cpp
     output_range.cpp
-    segmented_input_range.cpp
+#    realigned_input_range.cpp
     segmented_output_range.cpp
-   )
+  )
 
 make_unit( "api.iterator" ${SOURCES})
