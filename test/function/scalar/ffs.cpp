@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/ffs.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>
@@ -31,7 +31,7 @@ STF_CASE_TPL (" ffs real",  STF_IEEE_TYPES)
 
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(ffs(bs::Inf<T>()), r_t(bs::Nbmantissabits<T>()+1));
   STF_EQUAL(ffs(bs::Minf<T>()), r_t(bs::Nbmantissabits<T>()+1));
   STF_EQUAL(ffs(bs::Nan<T>()), r_t(bs::One<r_t>()));

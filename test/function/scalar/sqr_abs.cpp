@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/sqr_abs.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>
@@ -29,7 +29,7 @@ STF_CASE_TPL (" sqr_abs real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(sqr_abs(bs::Inf<T>()), bs::Inf<T>());
   STF_EQUAL(sqr_abs(bs::Minf<T>()), bs::Inf<T>());
   STF_IEEE_EQUAL(sqr_abs(bs::Nan<T>()), bs::Nan<T>());
@@ -57,7 +57,7 @@ STF_CASE_TPL (" sqr_absunsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
   STF_EQUAL(sqr_abs(bs::Zero<T>()), bs::Zero<T>());
 } // end of test for unsigned_int_
 
-STF_CASE_TPL (" sqr_abssigned_int",  STF_SIGNED_INTEGRAL_TYPES)
+STF_CASE_TPL (" sqr_abs signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

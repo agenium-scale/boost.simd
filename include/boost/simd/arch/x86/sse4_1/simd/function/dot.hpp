@@ -13,7 +13,7 @@
 #define BOOST_SIMD_ARCH_X86_SSE4_1_SIMD_FUNCTION_DOT_HPP_INCLUDED
 #include <boost/simd/detail/overload.hpp>
 
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

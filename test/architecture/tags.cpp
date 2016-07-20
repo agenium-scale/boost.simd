@@ -6,6 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
+#include <boost/predef/architecture.h>
 #include <boost/simd/arch/tags.hpp>
 #include <simd_test.hpp>
 
@@ -16,10 +17,11 @@ STF_CASE( "Check for basic SIMD tag parent" )
   STF_TYPE_IS( boost::simd::simd_native_::parent   , boost::simd::simd_    );
 }
 
+#ifdef BOOST_ARCH_X86_AVAILABLE
 STF_CASE( "Check for architectural tag parent for X86/AMD" )
 {
-  STF_TYPE_IS( boost::simd::sse_::parent    , boost::simd::simd_native_ );
-  STF_TYPE_IS( boost::simd::sse2_::parent   , boost::simd::sse_         );
+  STF_TYPE_IS( boost::simd::sse1_::parent   , boost::simd::simd_native_ );
+  STF_TYPE_IS( boost::simd::sse2_::parent   , boost::simd::sse1_        );
   STF_TYPE_IS( boost::simd::sse3_::parent   , boost::simd::sse2_        );
   STF_TYPE_IS( boost::simd::ssse3_::parent  , boost::simd::sse3_        );
 
@@ -45,18 +47,12 @@ STF_CASE( "Check for architectural tag parent for X86/AMD" )
 #endif
 
   STF_TYPE_IS( boost::simd::avx2_::parent, boost::simd::fma3_ );
-  STF_TYPE_IS( boost::simd::mic_::parent , boost::simd::sse2_ );
 }
+#endif
 
+#ifdef BOOST_ARCH_PPC_AVAILABLE
 STF_CASE( "Check for architectural tag parent for PowerPC" )
 {
   STF_TYPE_IS( boost::simd::vmx_::parent , boost::simd::simd_  );
-  STF_TYPE_IS( boost::simd::vsx_::parent , boost::simd::vmx_   );
-  STF_TYPE_IS( boost::simd::qpx_::parent , boost::simd::simd_  );
 }
-
-STF_CASE( "Check for architectural tag parent for ARM" )
-{
-  STF_TYPE_IS( boost::simd::neon64_::parent, boost::simd::simd_  );
-  STF_TYPE_IS( boost::simd::neon_::parent  , boost::simd::simd_  );
-}
+#endif

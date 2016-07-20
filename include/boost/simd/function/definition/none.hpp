@@ -13,15 +13,17 @@
 #define BOOST_SIMD_FUNCTION_DEFINITION_NONE_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
-#include <boost/dispatch/function/make_callable.hpp>
-#include <boost/dispatch/hierarchy/functions.hpp>
+#include <boost/simd/detail/dispatch/function/make_callable.hpp>
+#include <boost/simd/function/definition/logical_andnot.hpp>
+#include <boost/simd/constant/definition/true.hpp>
+#include <boost/simd/detail/dispatch/hierarchy/functions.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 
 namespace boost { namespace simd
 {
   namespace tag
   {
-    BOOST_DISPATCH_MAKE_TAG(ext, none_, boost::dispatch::elementwise_<none_>);
+    BOOST_DISPATCH_MAKE_TAG(ext, none_, boost::dispatch::abstract_<none_>);
   }
 
   namespace ext
@@ -30,8 +32,6 @@ namespace boost { namespace simd
   }
 
   BOOST_DISPATCH_CALLABLE_DEFINITION(tag::none_,none);
-
-
 } }
 
 #endif

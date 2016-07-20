@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/sign.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>
@@ -28,7 +28,7 @@ STF_CASE_TPL (" sign real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(sign(bs::Inf<T>()), bs::One<r_t>());
   STF_EQUAL(sign(bs::Minf<T>()), bs::Mone<r_t>());
   STF_IEEE_EQUAL(sign(bs::Nan<T>()), bs::Nan<r_t>());

@@ -10,8 +10,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_SDK_IS_BITWISE_LOGICAL_HPP_INCLUDED
-#define BOOST_SIMD_SDK_IS_BITWISE_LOGICAL_HPP_INCLUDED
+#ifndef BOOST_SIMD_META_IS_BITWISE_LOGICAL_HPP_INCLUDED
+#define BOOST_SIMD_META_IS_BITWISE_LOGICAL_HPP_INCLUDED
 
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/meta/as_arithmetic.hpp>

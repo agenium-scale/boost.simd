@@ -21,6 +21,7 @@ void test(Env& $)
 
 STF_CASE_TPL("Check for default constructed pack behaviours" , STF_NUMERIC_TYPES)
 {
+  test<T,  1>($);
   test<T,  2>($);
   test<T,  4>($);
   test<T,  8>($);

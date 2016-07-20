@@ -18,10 +18,10 @@
 #include <boost/simd/constant/nbmantissabits.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/simd/exponentbits.hpp>
-#include <boost/simd/function/simd/selsub.hpp>
+#include <boost/simd/function/simd/if_minus.hpp>
 #include <boost/simd/function/simd/shr.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 #ifndef BOOST_SIMD_NO_INVALIDS
 #include <boost/simd/function/simd/if_zero_else.hpp>
@@ -66,7 +66,7 @@ namespace boost { namespace simd { namespace ext
         #if defined(__INTEL_COMPILER) && defined(BOOST_SIMD_HAS_AVX_SUPPORT) && !defined(BOOST_SIMD_HAS_AVX2_SUPPORT)
         x = x - if_else(a0, Maxexponent<A0>(), Zero<result>());
         #else
-        x = selsub(a0, x, Maxexponent<A0>());
+        x = if_minus(a0, x, Maxexponent<A0>());
         #endif
         #ifndef BOOST_SIMD_NO_INVALIDS
         return if_zero_else( is_invalid(a0), x );

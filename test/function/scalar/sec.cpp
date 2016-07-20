@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/scalar/sec.hpp>
-#include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/restricted.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -45,7 +45,7 @@ STF_CASE_TPL (" sec",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(sec(bs::Pio_4<T>()), bs::Sqrt_2<r_t>(), 0.5);
   STF_ULP_EQUAL(sec(bs::Zero<T>()), bs::One<r_t>(), 0.5);
 }
-STF_CASE_TPL (" sec fast_",  STF_IEEE_TYPES)
+STF_CASE_TPL (" sec restricted_",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -58,15 +58,15 @@ STF_CASE_TPL (" sec fast_",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(bs::fast_(sec)(bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(sec)(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(sec)(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(sec)(bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(sec)(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(sec)(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(bs::fast_(sec)(-bs::Pi<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(sec)(-bs::Pio_4<T>()), bs::Sqrt_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(sec)(bs::Pi<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(sec)(bs::Pio_4<T>()), bs::Sqrt_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(sec)(bs::Zero<T>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(sec)(-bs::Pi<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(sec)(-bs::Pio_4<T>()), bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(sec)(bs::Pi<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(sec)(bs::Pio_4<T>()), bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(sec)(bs::Zero<T>()), bs::One<r_t>(), 16);
 }
 
 STF_CASE_TPL (" sec clipped_small_",  STF_IEEE_TYPES)

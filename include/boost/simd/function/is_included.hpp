@@ -15,9 +15,7 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-
- /*!
-
+  /*!
     @ingroup group-reduction
     Function object implementing is_included capabilities
 
@@ -28,15 +26,14 @@ namespace boost { namespace simd
     For every parameters of type T0, T1 of same bit size:
 
     @code
-    logical<scalar_of_t<T0>> r = is_included(x,y);
+    bool r = is_included(x,y);
     @endcode
 
     is similar to:
 
     @code
-    logical<scalar_of_t<T0>> r = all((x&y) == y);
+    bool r = all((x|y) == y);
     @endcode
-
   **/
   const boost::dispatch::functor<tag::is_included_> is_included = {};
 } }

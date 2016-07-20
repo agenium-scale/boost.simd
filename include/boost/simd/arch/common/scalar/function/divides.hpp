@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_DIVIDES_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_DIVIDES_HPP_INCLUDED
 
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/hierarchy.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/hierarchy.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -45,5 +45,7 @@ namespace boost { namespace simd { namespace ext
     }
   };
 } } }
+
+#include <boost/simd/arch/common/scalar/function/divides_s.hpp>
 
 #endif

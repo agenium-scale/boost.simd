@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/inc.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>
@@ -60,7 +60,7 @@ STF_CASE_TPL(" inc floating", STF_IEEE_TYPES)
   STF_EXPR_IS(inc(T()), T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(inc(bs::Inf<T>()), bs::Inf<T>());
   STF_IEEE_EQUAL(inc(bs::Nan<T>()), bs::Nan<T>());
   STF_EQUAL(inc(bs::Minf<T>()), bs::Minf<T>());

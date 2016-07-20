@@ -30,12 +30,12 @@
 #include <boost/simd/function/scalar/fma.hpp>
 #include <boost/simd/function/scalar/is_eqz.hpp>
 #include <boost/simd/function/scalar/is_inf.hpp>
-#include <boost/simd/function/scalar/minusone.hpp>
-#include <boost/simd/function/scalar/oneplus.hpp>
+#include <boost/simd/function/scalar/dec.hpp>
+#include <boost/simd/function/scalar/inc.hpp>
 #include <boost/simd/function/scalar/rec.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
 #include <boost/simd/function/scalar/sqrt.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd
 {
@@ -68,7 +68,6 @@ namespace boost { namespace simd
                          0xc077fe08959063eell,
                          0x40626219af6a7f42ll,
                          0xc035f2a2b6bf5d8cll
-            //0x3ff0000000000000ll
                          >(zz);
           zz = sqrt(zz+zz);
           A0 z = Pio_4<A0>()-zz;
@@ -93,7 +92,6 @@ namespace boost { namespace simd
                        0xc06265bb6d3576d7ll,
                        0x40519fc025fe9054ll,
                        0xc02d7b590b5e0eabll
-                      // 0x3ff0000000000000ll
                        >(zz);
           zz = x*z+x;
       }
@@ -139,7 +137,7 @@ namespace boost { namespace simd
         {
           y = Pio_4<A0>();
           flag = Half<A0>();
-          x = minusone(x)/oneplus(x);
+          x = dec(x)/inc(x);
         }
         A0 z = sqr(x);
         z = z*horn<A0,

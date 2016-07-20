@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/next.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>
@@ -33,7 +33,7 @@ STF_CASE_TPL (" next real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(next(bs::Inf<T>()), bs::Inf<r_t>());
   STF_EQUAL(next(bs::Minf<T>()), bs::Valmin<r_t>());
   STF_IEEE_EQUAL(next(bs::Nan<T>()), bs::Nan<r_t>());

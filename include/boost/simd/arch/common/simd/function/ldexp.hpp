@@ -26,17 +26,17 @@
 #include <boost/simd/function/simd/multiplies.hpp>
 #include <boost/simd/function/simd/plus.hpp>
 #include <boost/simd/function/simd/rshl.hpp>
-#include <boost/simd/function/simd/seladd.hpp>
-#include <boost/simd/function/simd/selsub.hpp>
+#include <boost/simd/function/simd/if_plus.hpp>
+#include <boost/simd/function/simd/if_minus.hpp>
 #include <boost/simd/function/simd/shift_left.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 #ifndef BOOST_SIMD_NO_DENORMALS
 #include <boost/simd/constant/minexponent.hpp>
 #include <boost/simd/constant/smallestposval.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
 #include <boost/simd/function/simd/is_less.hpp>
-#include <boost/simd/function/simd/selsub.hpp>
+#include <boost/simd/function/simd/if_minus.hpp>
 #endif
 
 namespace boost { namespace simd { namespace ext
@@ -71,12 +71,12 @@ namespace boost { namespace simd { namespace ext
         A0 f = One<A0>();
   #ifndef BOOST_SIMD_NO_DENORMALS
         auto denormal =  is_less(e, Minexponent<A0>());
-        e = selsub(denormal, e, Minexponent<A0>());
+        e = if_minus(denormal, e, Minexponent<A0>());
         f = if_else(denormal, Smallestposval<A0>(), One<A0>());
   #endif
         auto test = is_equal(e, Limitexponent<A0>());
-        f = seladd(test, f, One<A0>());
-        e = selsub(test, e, One<iA0>());
+        f = if_plus(test, f, One<A0>());
+        e = if_minus(test, e, One<iA0>());
         e = e+Maxexponent<A0>();
         e = shift_left(e, Nbmantissabits<sA0>());
         return a0*bitwise_cast<A0>(e)*f;

@@ -10,7 +10,7 @@
 #include <boost/simd/function/scalar/eps.hpp>
 #include <simd_test.hpp>
 
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/mindenormal.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -27,7 +27,7 @@ STF_CASE_TPL ("eps for IEEE types",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
- #ifndef STF_NO_INVALIDS
+ #ifndef BOOST_SIMD_NO_INVALIDS
   STF_IEEE_EQUAL(eps(bs::Inf<T>()), bs::Nan<r_t>());
   STF_IEEE_EQUAL(eps(bs::Minf<T>()), bs::Nan<r_t>());
   STF_IEEE_EQUAL(eps(bs::Nan<T>()), bs::Nan<r_t>());
@@ -36,7 +36,7 @@ STF_CASE_TPL ("eps for IEEE types",  STF_IEEE_TYPES)
   STF_EQUAL(eps(T{-1}), bs::Eps<r_t>());
   STF_EQUAL(eps(T{1}) , bs::Eps<r_t>());
 
- #if !defined(STF_NO_DENORMALS)
+ #if !defined(BOOST_SIMD_NO_DENORMALS)
   STF_EQUAL(eps(T{0}), bs::Mindenormal<r_t>());
  #endif
 }

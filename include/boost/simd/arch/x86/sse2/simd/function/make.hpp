@@ -12,6 +12,7 @@
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_MAKE_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
+#include <boost/simd/function/insert.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -55,7 +56,10 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE
     target_t operator()(Target const&, V0 const& v0, V1 const& v1) const BOOST_NOEXCEPT
     {
-      return _mm_set_epi64x(v1, v0);
+      target_t t;
+      insert<0>(t,v0);
+      insert<1>(t,v1);
+      return t;
     }
   };
 

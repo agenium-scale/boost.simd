@@ -13,7 +13,7 @@
 #include <boost/simd/function/ffs.hpp>
 #include <boost/simd/function/max.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <simd_test.hpp>
 
 template <typename T, int N, typename Env>
@@ -39,8 +39,8 @@ void test(Env& $)
      b[i] = bs::ffs(a1[i]);
   }
 
-  p_t aa1(&a1[0], &a1[N]);
-  pi_t bb(&b[0], &b[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  pi_t bb(&b[0], &b[0]+N);
 
   STF_EQUAL(bs::ffs(aa1), bb);
 }

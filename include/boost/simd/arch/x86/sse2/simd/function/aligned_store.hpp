@@ -1,20 +1,18 @@
 //==================================================================================================
-/*!
-  @file
-
-  @copyright 2016 NumScale SAS
+/**
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_ALIGNED_STORE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_ALIGNED_STORE_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/dispatch/adapted/common/pointer.hpp>
+#include <boost/simd/detail/dispatch/adapted/common/pointer.hpp>
+#include <boost/simd/meta/is_pointing_to.hpp>
 #include <boost/align/is_aligned.hpp>
-#include <boost/simd/detail/aliasing.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -38,12 +36,13 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( aligned_store_
-                          , (typename Vec, typename Pointer)
-                          , bs::sse2_
-                          , bs::pack_ < bd::integer_ < Vec>, bs::sse_>
-                          , bd::pointer_<bd::scalar_<bd::integer_<Pointer>>,1u>
-                          )
+  BOOST_DISPATCH_OVERLOAD_IF( aligned_store_
+                            , (typename Vec, typename Pointer)
+                            , (bs::is_pointing_to<Pointer,typename Vec::value_type>)
+                            , bs::sse2_
+                            , bs::pack_ < bd::integer_ < Vec>, bs::sse_>
+                            , bd::pointer_<bd::scalar_<bd::integer_<Pointer>>,1u>
+                            )
   {
     BOOST_FORCEINLINE void operator() (const Vec& a0, Pointer a1) const BOOST_NOEXCEPT
     {
@@ -53,7 +52,6 @@ namespace boost { namespace simd { namespace ext
        _mm_store_si128(reinterpret_cast<__m128i*>(a1), a0);
     }
   };
-
 } } }
 
 #endif

@@ -16,7 +16,15 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-4.8']
-      env: CXX_STD=11 TOOLSET=g++-4.8 SIMD_EXT=-msse4.2 OPT=-ftrack-macro-expansion=0
+      env: CXX_STD=11 TOOLSET=g++-4.8 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0
+
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-4.8']
+      env: CXX_STD=11 TOOLSET=g++-4.8 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0
 
     - os: linux
       compiler: gcc
@@ -24,7 +32,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-4.9']
-      env: CXX_STD=11 TOOLSET=g++-4.9 SIMD_EXT=-msse4.2 OPT=-ftrack-macro-expansion=0
+      env: CXX_STD=11 TOOLSET=g++-4.9 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0
 
     - os: linux
       compiler: gcc
@@ -32,23 +40,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-5']
-      env: CXX_STD=11 TOOLSET=g++-5 SIMD_EXT=-msse4.2 OPT=-ftrack-macro-expansion=0
-
-    - os: linux
-      compiler: clang
-      addons:
-        apt:
-          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-precise-3.5']
-          packages: ['clang-3.5']
-      env: CXX_STD=11 TOOLSET=clang++-3.5 SIMD_EXT=-msse4.2
-
-    - os: linux
-      compiler: clang
-      addons:
-        apt:
-          sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-precise-3.6']
-          packages: ['clang-3.6']
-      env: CXX_STD=11 TOOLSET=clang++-3.6 SIMD_EXT=-msse4.2
+      env: CXX_STD=11 TOOLSET=g++-5 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0
 
 # Prepare build
 before_script:
@@ -60,6 +52,17 @@ before_script:
 # Build unit and run test
 script:
   - make update.boost-header-only | grep -v "^-- " # Silent installation
-  - make update.boost.dispatch    | grep -v "^-- " # Silent installation
-  - make -k unit
-  - ctest
+  - make  -j 4 -k  regression.unit
+  - ctest -j 4 -R ^regression.*.unit
+  - make  -j 4 -k  api.unit
+  - ctest -j 4 -R ^api.*.unit
+  - make  -j 4 -k  architecture.unit
+  - ctest -j 4 -R ^architecture.*.unit
+  - make  -j 4 -k  function.simd.unit
+  - ctest -j 4 -R ^function.simd.*.unit
+  - make  -j 4 -k  constant.simd.unit
+  - ctest -j 4 -R ^constant.simd.*.unit
+  - make  -j 4 -k  function.scalar.unit
+  - ctest -j 4 -R ^function.scalar.*.unit
+  - make  -j 4 -k  constant.scalar.unit
+  - ctest -j 4 -R ^constant.scalar.*.unit

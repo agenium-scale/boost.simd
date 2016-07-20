@@ -24,7 +24,7 @@ namespace boost { namespace simd
     Computes a mantissa and an exponent pair for the input
 
     @code
-    m = frexp(x, e);
+    std::tie(m, e)= frexp(x);
     @endcode
 
     is similar to:
@@ -51,6 +51,10 @@ namespace boost { namespace simd
     Take care that these results differ from the returns of the functions @ref mantissa
     and @ref exponent
 
+    The decorators fast_ and std_ can be used.
+
+    fast_ provides a speedier call but limiting values as Nan or Inf are not handled properly.
+    std_ transmit the call to std::frexp. That implies that simd is ever emulated.
     @see exponent,  mantissa
 
   **/

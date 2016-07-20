@@ -13,7 +13,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_DIST_HPP_INCLUDED
 
 #include <boost/simd/function/scalar/abs.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -47,5 +47,6 @@ namespace boost { namespace simd { namespace ext
   };
 } } }
 
+#include <boost/simd/arch/common/scalar/function/dist_s.hpp>
 
 #endif

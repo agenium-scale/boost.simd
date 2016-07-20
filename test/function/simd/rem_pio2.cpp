@@ -12,7 +12,7 @@
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/rem_pio2.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <simd_test.hpp>
 
 template <typename T, std::size_t N, typename Env>
@@ -25,18 +25,24 @@ void test(Env& $)
   using iT = bd::as_integer_t<T>;
   using i_t = bs::pack<iT, N>;
 
-  T a1[N], m[N];
+  T a1[N], m[N], x[N];
   iT e[N];
   for(std::size_t i = 0; i < N; ++i)
   {
      a1[i] = (i%2) ? T(i) : T(-i);
-     e[i] = bs::rem_pio2(a1[i], m[i]);
+     auto z = bs::rem_pio2(a1[i]);
+     e[i] =  z.first;
+     m[i] =  z.second;
+
    }
-  p_t aa1(&a1[0], &a1[N]);
-  p_t mm1;
-  p_t mm(&m[0], &m[N]);
-  i_t ee(&e[0], &e[N]);
-  STF_IEEE_EQUAL(bs::rem_pio2(aa1, mm1), ee);
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t mm(&m[0], &m[0]+N);
+  i_t ee(&e[0], &e[0]+N);
+  p_t xx(&x[0], &x[0]+N);
+  auto zz =  bs::rem_pio2(aa1);
+  i_t ee1 =  zz.first;
+  p_t mm1 =  zz.second;
+  STF_IEEE_EQUAL(ee1, ee);
   STF_IEEE_EQUAL(mm1, mm);
 }
 
@@ -46,6 +52,6 @@ STF_CASE_TPL("Check rem_pio2 on pack" , STF_IEEE_TYPES)
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
-//  test<T, N/2>($);
-//  test<T, Nx2>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }

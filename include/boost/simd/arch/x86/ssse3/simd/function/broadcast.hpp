@@ -6,12 +6,12 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_X86_SSSE3_FUNCTION_BROADCAST_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_X86_SSSE3_FUNCTION_BROADCAST_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_X86_SSSE3_SIMD_FUNCTION_BROADCAST_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_X86_SSSE3_SIMD_FUNCTION_BROADCAST_HPP_INCLUDED
 
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/overload.hpp>
-#include <boost/dispatch/adapted/std/integral_constant.hpp>
+#include <boost/simd/detail/dispatch/adapted/std/integral_constant.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

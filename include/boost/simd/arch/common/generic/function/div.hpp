@@ -13,111 +13,182 @@
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_DIV_HPP_INCLUDED
 
 #include <boost/simd/function/divides.hpp>
-#include <boost/simd/function/definition/ceil.hpp>
-#include <boost/simd/function/divceil.hpp>
-#include <boost/simd/function/definition/floor.hpp>
-#include <boost/simd/function/divfloor.hpp>
-#include <boost/simd/function/definition/round.hpp>
-#include <boost/simd/function/divround.hpp>
-#include <boost/simd/function/definition/round2even.hpp>
-#include <boost/simd/function/divround2even.hpp>
-#include <boost/simd/function/definition/fix.hpp>
-#include <boost/simd/function/divfix.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/hierarchy.hpp>
+#include <boost/simd/function/iceil.hpp>
+#include <boost/simd/function/ifloor.hpp>
+#include <boost/simd/function/iround.hpp>
+#include <boost/simd/function/inearbyint.hpp>
+#include <boost/simd/function/ceil.hpp>
+#include <boost/simd/function/floor.hpp>
+#include <boost/simd/function/round.hpp>
+#include <boost/simd/function/nearbyint.hpp>
+#include <boost/simd/function/toint.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/hierarchy.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
+#ifdef BOOST_MSVC
+  #pragma warning(push)
+  #pragma warning(disable: 4723) // potential divide by 0
+#endif
 
   namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
   BOOST_DISPATCH_OVERLOAD ( div_
                           , (typename T)
                           , bd::cpu_
-                          , bd::generic_<bd::arithmetic_<T>>
-                          , bd::generic_<bd::arithmetic_<T>>
+                          , bs::tag::ifix_
+                          , bd::generic_<bd::floating_<T>>
+                          , bd::generic_<bd::floating_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()(T const& a, T const& b ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE bd::as_integer_t<T> operator()( bd::functor<bs::tag::ifix_> const&
+                                                    , T const& a, T const& b ) const BOOST_NOEXCEPT
     {
-      return divides(a, b);
+      return saturated_(toint)(a/b);
+    }
+  };
+  BOOST_DISPATCH_OVERLOAD ( div_
+                          , (typename T)
+                          , bd::cpu_
+                          , bs::tag::iceil_
+                          , bd::generic_<bd::floating_<T>>
+                          , bd::generic_<bd::floating_<T>>
+                          )
+  {
+    BOOST_FORCEINLINE bd::as_integer_t<T> operator()( bd::functor<bs::tag::iceil_> const&
+                                                    , T const& a, T const& b ) const BOOST_NOEXCEPT
+    {
+      return iceil(a/b);
     }
   };
 
   BOOST_DISPATCH_OVERLOAD ( div_
                           , (typename T)
                           , bd::cpu_
-                          , bd::generic_<bd::arithmetic_<T>>
-                          , bd::generic_<bd::arithmetic_<T>>
-                          , bs::tag::ceil_
+                          , bs::tag::ifloor_
+                          , bd::generic_<bd::floating_<T>>
+                          , bd::generic_<bd::floating_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()(T const& a, T const& b
-                                  , bd::functor<bs::tag::ceil_> const& ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE bd::as_integer_t<T> operator()( bd::functor<bs::tag::ifloor_> const&
+                                                    ,T const& a, T const& b) const BOOST_NOEXCEPT
     {
-      return divceil(a, b);
+      return ifloor(a/b);
     }
   };
 
   BOOST_DISPATCH_OVERLOAD ( div_
                           , (typename T)
                           , bd::cpu_
-                          , bd::generic_<bd::arithmetic_<T>>
-                          , bd::generic_<bd::arithmetic_<T>>
-                          , bs::tag::floor_
+                          , bs::tag::iround_
+                          , bd::generic_<bd::floating_<T>>
+                          , bd::generic_<bd::floating_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()(T const& a, T const& b
-                                  ,  bd::functor<bs::tag::floor_> const& ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE  bd::as_integer_t<T>  operator()( bd::functor<bs::tag::iround_> const&
+                                                      ,T const& a, T const& b) const BOOST_NOEXCEPT
     {
-      return divfloor(a, b);
+      return iround(a/b);
     }
   };
 
   BOOST_DISPATCH_OVERLOAD ( div_
                           , (typename T)
                           , bd::cpu_
-                          , bd::generic_<bd::arithmetic_<T>>
-                          , bd::generic_<bd::arithmetic_<T>>
-                          , bs::tag::fix_
+                          , bs::tag::inearbyint_
+                          , bd::generic_<bd::floating_<T>>
+                          , bd::generic_<bd::floating_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()(T const& a, T const& b
-                                  ,  bd::functor<bs::tag::fix_> const& ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE bd::as_integer_t<T> operator()( bd::functor<bs::tag::inearbyint_> const&
+                                                    ,T const& a, T const& b) const BOOST_NOEXCEPT
     {
-      return divfix(a, b);
+      return inearbyint(a/b);
+    }
+  };
+
+#ifdef BOOST_MSVC
+#pragma warning(pop)
+#endif
+
+  BOOST_DISPATCH_OVERLOAD ( div_
+                          , (typename T)
+                          , bd::cpu_
+                          , bs::tag::ifix_
+                          , bd::generic_<bd::integer_<T>>
+                          , bd::generic_<bd::integer_<T>>
+                          )
+  {
+    BOOST_FORCEINLINE T operator()( bd::functor<bs::tag::ifix_> const&
+                                                    , T const& a, T const& b ) const BOOST_NOEXCEPT
+    {
+      return  div(fix, a, b);
+    }
+  };
+  BOOST_DISPATCH_OVERLOAD ( div_
+                          , (typename T)
+                          , bd::cpu_
+                          , bs::tag::iceil_
+                          , bd::generic_<bd::integer_<T>>
+                          , bd::generic_<bd::integer_<T>>
+                          )
+  {
+    BOOST_FORCEINLINE T operator()( bd::functor<bs::tag::iceil_> const&
+                                                    , T const& a, T const& b ) const BOOST_NOEXCEPT
+    {
+      return div(ceil, a, b);
     }
   };
 
   BOOST_DISPATCH_OVERLOAD ( div_
                           , (typename T)
                           , bd::cpu_
-                          , bd::generic_<bd::arithmetic_<T>>
-                          , bd::generic_<bd::arithmetic_<T>>
-                          , bs::tag::round_
+                          , bs::tag::ifloor_
+                          , bd::generic_<bd::integer_<T>>
+                          , bd::generic_<bd::integer_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()(T const& a, T const& b
-                                  ,  bd::functor<bs::tag::round_> const& ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE T operator()( bd::functor<bs::tag::ifloor_> const&
+                                                    ,T const& a, T const& b) const BOOST_NOEXCEPT
     {
-      return divround(a, b);
+      return  div(floor, a, b);
     }
   };
 
   BOOST_DISPATCH_OVERLOAD ( div_
                           , (typename T)
                           , bd::cpu_
-                          , bd::generic_<bd::arithmetic_<T>>
-                          , bd::generic_<bd::arithmetic_<T>>
-                          , bs::tag::round2even_
+                          , bs::tag::iround_
+                          , bd::generic_<bd::integer_<T>>
+                          , bd::generic_<bd::integer_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()(T const& a, T const& b
-                                  ,  bd::functor<bs::tag::round2even_> const& ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE T operator()( bd::functor<bs::tag::iround_> const&
+                                                    ,T const& a, T const& b) const BOOST_NOEXCEPT
     {
-      return divround2even(a, b);
+      return div(round, a, b);
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( div_
+                          , (typename T)
+                          , bd::cpu_
+                          , bs::tag::inearbyint_
+                          , bd::generic_<bd::integer_<T>>
+                          , bd::generic_<bd::integer_<T>>
+                          )
+  {
+    BOOST_FORCEINLINE T operator()( bd::functor<bs::tag::inearbyint_> const&
+                                  ,T const& a, T const& b) const BOOST_NOEXCEPT
+    {
+      return  div(nearbyint, a, b);
+    }
+  };
+
+
 } } }
 
 #endif

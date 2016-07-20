@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_ACOTD_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_ACOTD_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ACOTD_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ACOTD_HPP_INCLUDED
 
 #ifndef BOOST_SIMD_NO_INFINITIES
 #include <boost/simd/function/simd/is_inf.hpp>
@@ -24,7 +24,7 @@
 #include <boost/simd/function/if_zero_else.hpp>
 #include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/function/minus.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

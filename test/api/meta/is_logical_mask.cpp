@@ -7,7 +7,7 @@
 */
 //==================================================================================================
 #include <boost/simd/meta/is_logical_mask.hpp>
-#include <boost/dispatch/adapted/std/array.hpp>
+#include <boost/simd/detail/dispatch/adapted/std/array.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/simd/meta/as_logical.hpp>
 #include <array>

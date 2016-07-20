@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_POW_ABS_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_POW_ABS_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_POW_ABS_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_POW_ABS_HPP_INCLUDED
 
 #ifndef BOOST_SIMD_NO_INVALIDS
 #include <boost/simd/constant/nan.hpp>
@@ -36,9 +36,10 @@
 #include <boost/simd/function/ldexp.hpp>
 #include <boost/simd/function/pow2.hpp>
 #include <boost/simd/function/sqr.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
+#include <tuple>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -72,7 +73,7 @@ namespace boost { namespace simd { namespace ext
       if(is_nan(a1)) return Nan<A0>();
     #endif
       i_t e;
-      x = frexp(x, e);
+      std::tie(x, e) = bs::frexp(x);
       i_t i  = detail::pow_kernel<A0>::select(x);
       A0 z = sqr(x);
       A0 w = detail::pow_kernel<A0>::pow1(x, z);
@@ -104,7 +105,7 @@ namespace boost { namespace simd { namespace ext
         Wb -= Oneo_16; //
       }
       z = detail::pow_kernel<A0>::pow2(Wb)*Wb; //
-      i = (e >> 4) + (e>=0);
+      i = (e/Sixteen) + (e>=0);
       e = fms(i, Sixteen, e);
       w =  detail::pow_kernel<A0>::twomio16(e);
       z = fma(w, z, w);

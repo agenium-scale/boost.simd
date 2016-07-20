@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_SINHCOSH_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_SINHCOSH_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_SINHCOSH_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_SINHCOSH_HPP_INCLUDED
 
 #include <boost/simd/arch/common/detail/generic/sinh_kernel.hpp>
 #include <boost/simd/constant/half.hpp>
@@ -25,7 +25,7 @@
 #include <boost/simd/function/scalar/if_else.hpp>
 #include <boost/simd/function/scalar/rec.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -35,8 +35,6 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( sinhcosh_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_<bd::floating_<A0> >
-                          , bd::scalar_<bd::floating_<A0> >
                           , bd::scalar_<bd::floating_<A0> >
                           )
   {
@@ -49,7 +47,8 @@ namespace boost { namespace simd { namespace ext
     // * in the second     sinh and cosh are (e/2)*e (avoiding undue overflow)
     // Threshold is Maxlog - Log_2
     //////////////////////////////////////////////////////////////////////////////
-    BOOST_FORCEINLINE void operator() ( A0 a0,A0 & a1,A0 & a2) const BOOST_NOEXCEPT
+    using result_t = std::pair<A0, A0>;
+    BOOST_FORCEINLINE result_t operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       A0 x = bs::abs(a0);
       auto test1 = (x >  Maxlog<A0>()-Log_2<A0>());
@@ -58,11 +57,11 @@ namespace boost { namespace simd { namespace ext
       A0 tmp1 = Half<A0>()*tmp;
       A0 rtmp = rec(tmp);
       A0 r =  test1 ? tmp1*tmp : tmp1-Half<A0>()*rtmp;
-      a1 = bitwise_xor(((x < One<A0>())
-                  ? detail::sinh_kernel<A0>::compute(x, sqr(x))
-                  : r),
-                 bitofsign(a0));
-      a2 = test1 ? r : bs::average(tmp, rtmp);
+      return {bitwise_xor(((x < One<A0>())
+                           ? detail::sinh_kernel<A0>::compute(x, sqr(x))
+                           : r),
+                          bitofsign(a0)),
+          test1 ? r : bs::average(tmp, rtmp)};
     }
   };
 } } }

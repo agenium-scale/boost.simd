@@ -29,8 +29,8 @@
 #include <boost/simd/function/scalar/min.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
 #include <boost/simd/function/scalar/sqrt.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/function/std.hpp>
 #include <boost/config.hpp>
 #include <cmath>
@@ -61,18 +61,17 @@ namespace boost { namespace simd { namespace ext
       return bs::ldexp(sqrt(sqr(bs::ldexp(r, -e))+sqr(bs::ldexp(i, -e))), e);
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( hypot_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_<bd::floating_<A0> >
-                          , bd::scalar_<bd::floating_<A0> >
                           , boost::simd::std_tag
+                          , bd::scalar_<bd::floating_<A0> >
+                          , bd::scalar_<bd::floating_<A0> >
                           )
   {
 
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1
-                                    , std_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const std_tag &,  A0 a0, A0 a1
+                                    ) const BOOST_NOEXCEPT
     {
       return std::hypot(a0, a1);
     }

@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/lo.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/function/splat.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 

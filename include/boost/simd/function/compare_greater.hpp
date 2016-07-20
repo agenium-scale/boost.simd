@@ -15,9 +15,7 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-
- /*!
-
+  /*!
     @ingroup group-reduction
     Function object implementing compare_greater capabilities
 
@@ -28,28 +26,24 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of type T0:
+    For every parameters @c x and @c y :
 
     @code
-    as_logical_t<scalar_of_t<T0>> r = compare_greater(x,y);
+    bool r = compare_greater(x,y);
     @endcode
 
     is similar to:
 
     @code
-      as_logical_t<scalar_of_t<T0>> r = False;
-      for(std::size_t i=0;i<cardinal_of<A0>;++i)
+      bool r = false;
+      for(std::size_t i=0;i<cardinal_of<A0>::value;++i)
       {
-        if (x[i] > y[i])  {r =  True; break;}
-        if (y[i] > x[i])  {r = False; break;}
+        if (x[i] > y[i])  {r =  true; break;}
+        if (y[i] > x[i])  {r = false; break;}
       }
     @endcode
 
-    @par Alias:
-    @c compare_gt
-
     @see is_greater
-
   **/
   const boost::dispatch::functor<tag::compare_greater_> compare_greater = {};
 } }

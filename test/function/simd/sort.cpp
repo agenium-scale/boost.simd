@@ -30,8 +30,8 @@ void test(Env& $)
     a1[i] = T(N-i-1);
     b[i] =  T(i);
   }
-  p_t aa1(&a1[0], &a1[N]);
-  p_t bb (&b[0], &b[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t bb (&b[0], &b[0]+N);
   std::cout << aa1 << std::endl;
   std::cout << bb  << std::endl;
   std::cout << bs::sort(aa1) << std::endl;

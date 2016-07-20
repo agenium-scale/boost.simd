@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/bitfloating.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
@@ -26,7 +26,7 @@ STF_CASE_TPL (" bitfloating int_convert",  (int32_t)(int64_t))
   STF_TYPE_IS(r_t, wished_r_t);
 
   // specific values tests
-#if !defined(STF_NO_DENORMALS)
+#if !defined(BOOST_SIMD_NO_DENORMALS)
   STF_EQUAL(bitfloating(bs::One<T>()), bs::Bitincrement<r_t>());
   STF_EQUAL(bitfloating(bs::Mone<T>()), -bs::Bitincrement<r_t>());
 #endif

@@ -14,7 +14,7 @@
 
 #include <boost/simd/function/scalar/is_nan.hpp>
 #include <boost/simd/logical.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -28,7 +28,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE bool operator() ( A0 const&) const BOOST_NOEXCEPT
     {
-      return {false};
+      return false;
     }
   };
   BOOST_DISPATCH_OVERLOAD ( is_invalid_

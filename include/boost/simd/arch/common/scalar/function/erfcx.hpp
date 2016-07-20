@@ -8,8 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_ERFCX_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_ERFCX_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ERFCX_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ERFCX_HPP_INCLUDED
 
 #include <boost/simd/arch/common/detail/generic/erf_kernel.hpp>
 #include <boost/simd/constant/one.hpp>
@@ -24,10 +24,10 @@
 #include <boost/simd/function/scalar/is_ltz.hpp>
 #include <boost/simd/function/scalar/negif.hpp>
 #include <boost/simd/function/scalar/oneminus.hpp>
-#include <boost/simd/function/scalar/oneplus.hpp>
+#include <boost/simd/function/scalar/inc.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
 #include <boost/simd/function/scalar/sqrt.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #ifndef BOOST_SIMD_NO_INVALIDS
 #include <boost/simd/function/scalar/is_nan.hpp>
 #endif
@@ -35,7 +35,7 @@
 #include <boost/simd/function/scalar/is_inf.hpp>
 #include <boost/simd/function/scalar/signnz.hpp>
 #endif
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -99,7 +99,7 @@ namespace boost { namespace simd { namespace ext
       }
       else
       {
-        A0 z =  a0/oneplus(a0) - Ratio<A0, 2, 5>();
+        A0 z =  a0/inc(a0) - Ratio<A0, 2, 5>();
         return detail::erf_kernel<A0>::erfc2(z);
       }
     }

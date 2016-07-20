@@ -15,9 +15,9 @@
 #include <boost/simd/as.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/detail/constant_traits.hpp>
-#include <boost/dispatch/function/make_callable.hpp>
-#include <boost/dispatch/hierarchy/functions.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/function/make_callable.hpp>
+#include <boost/simd/detail/dispatch/hierarchy/functions.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <cstdint>
 #include <iostream>
 namespace boost { namespace simd

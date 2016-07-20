@@ -9,15 +9,15 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_DETAIL_SCALAR_D_EXPO_SCALE_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_DETAIL_SCALAR_D_EXPO_SCALE_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_DETAIL_SCALAR_EXPO_SCALE_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_DETAIL_SCALAR_EXPO_SCALE_HPP_INCLUDED
 
 #include <boost/simd/constant/maxexponent.hpp>
 #include <boost/simd/constant/nbmantissabits.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 #include <boost/simd/function/simd/shift_left.hpp>
 #include <boost/simd/function/simd/toint.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 namespace boost { namespace simd
 {

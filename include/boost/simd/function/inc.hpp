@@ -21,7 +21,7 @@ namespace boost { namespace simd
     @ingroup group-arithmetic
     Function object implementing inc capabilities
 
-    Increments a value by 1. This operation is not saturated.
+    Increments a value by 1.
 
     @par semantic:
     For any given value @c x of type @c T:
@@ -36,7 +36,11 @@ namespace boost { namespace simd
     T r =  x+T(1);
     @endcode
 
-    @see  oneplus, plus
+    @par Decorators
+
+    saturated_ ensures that saturated_(inc)(x) will never be strictly smaller than x.
+
+    @see plus
 
   **/
   const boost::dispatch::functor<tag::inc_> inc = {};

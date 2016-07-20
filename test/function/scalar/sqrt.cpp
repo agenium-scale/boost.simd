@@ -8,7 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/scalar/sqrt.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>
@@ -36,7 +36,7 @@ STF_CASE_TPL (" sqrt real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_ULP_EQUAL(sqrt(bs::Inf<T>()), bs::Inf<r_t>(), 0);
   STF_ULP_EQUAL(sqrt(bs::Minf<T>()), bs::Nan<r_t>(), 0);
   STF_ULP_EQUAL(sqrt(bs::Nan<T>()), bs::Nan<r_t>(), 0);
@@ -99,7 +99,7 @@ STF_CASE_TPL (" sqrt real fast",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_ULP_EQUAL(bs::fast_(sqrt)(bs::Minf<T>()), bs::Nan<r_t>(), 0);
   STF_ULP_EQUAL(bs::fast_(sqrt)(bs::Nan<T>()), bs::Nan<r_t>(), 0);
 #endif
@@ -121,7 +121,7 @@ STF_CASE_TPL (" sqrt std",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_ULP_EQUAL(bs::std_(sqrt)(bs::Inf<T>()), bs::Inf<r_t>(), 0);
   STF_ULP_EQUAL(bs::std_(sqrt)(bs::Minf<T>()), bs::Nan<r_t>(), 0);
   STF_ULP_EQUAL(bs::std_(sqrt)(bs::Nan<T>()), bs::Nan<r_t>(), 0);

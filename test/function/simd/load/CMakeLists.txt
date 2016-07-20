@@ -11,8 +11,9 @@ set ( SOURCES
   pointer.logical.cpp
   range.arithmetic.cpp
   range.logical.cpp
-  # gather.arithmetic.cpp
-  # gather.logical.cpp
+  gather.arithmetic.cpp
+  gather.logical.cpp
+  mask.arithmetic.cpp
 )
 
 make_unit( "function.simd.load"   ${SOURCES})

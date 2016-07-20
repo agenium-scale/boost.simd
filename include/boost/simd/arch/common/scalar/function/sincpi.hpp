@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_SINCPI_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_SINCPI_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_SINCPI_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_SINCPI_HPP_INCLUDED
 
 #if !defined(BOOST_SIMD_NO_DENORMALS)
 #include <boost/simd/constant/eps.hpp>
@@ -23,7 +23,7 @@
 #include <boost/simd/constant/invpi.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/function/scalar/sinpi.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

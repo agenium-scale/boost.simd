@@ -13,7 +13,7 @@
 #include <boost/simd/constant/constant.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/function/fma.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>
 

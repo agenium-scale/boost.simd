@@ -31,8 +31,8 @@ void test(Env& $)
     a1[i] = i == 0 ? T(1) : T(bs::max(T(a1[i-1]*3), T(1)));
     b[i] = bs::clz(a1[i]);
    }
-  p_t aa1(&a1[0], &a1[N]);
-  i_t bb(&b[0], &b[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  i_t bb(&b[0], &b[0]+N);
   STF_EQUAL(bs::clz(aa1), bb);
 }
 

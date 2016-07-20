@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_ASEC_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_ASEC_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ASEC_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ASEC_HPP_INCLUDED
 
 #include <boost/simd/constant/constant.hpp>
 #include <boost/simd/constant/ratio.hpp>
@@ -24,9 +24,9 @@
 #include <boost/simd/function/scalar/is_equal.hpp>
 #include <boost/simd/function/scalar/is_eqz.hpp>
 #include <boost/simd/function/scalar/is_ltz.hpp>
-#include <boost/simd/function/scalar/minusone.hpp>
+#include <boost/simd/function/scalar/dec.hpp>
 #include <boost/simd/function/scalar/sqrt.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -42,8 +42,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
     {
       if (is_equal(a0, One<A0>())) return Zero<A0>();
-      A0 tmp =  (Pio_2<A0>()-acsc(a0)) +  Constant<A0, 0x3c91a62633145c07ll>();
-      return tmp;
+      return (Pio_2<A0>()-acsc(a0)) +  Constant<A0, 0x3c91a62633145c07ll>();
     }
   };
 
@@ -57,7 +56,7 @@ namespace boost { namespace simd { namespace ext
     {
       A0 ax =  bs::abs(a0);
       if (ax <  One<A0>()) return Nan<A0>();
-      A0 ax1 =  minusone(ax);
+      A0 ax1 =  dec(ax);
 
       if (ax1 < 0.001f)
       {

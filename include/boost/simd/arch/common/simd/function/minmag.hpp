@@ -16,7 +16,7 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/abs.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_less.hpp>
+#include <boost/simd/function/simd/is_not_greater_equal.hpp>
 #include <boost/simd/function/simd/min.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -34,7 +34,9 @@ namespace boost { namespace simd { namespace ext
       {
         A0 aa0 = abs(a0);
         A0 aa1 = abs(a1);
-        return if_else( is_less(aa0, aa1), a0, if_else( is_less(aa1, aa0), a1, bs::min(a0, a1) ) );
+        return if_else( is_not_greater_equal(aa0, aa1), a0
+                      , if_else( is_not_greater_equal(aa1, aa0), a1
+                               , bs::min(a0, a1) ) );
       }
    };
 

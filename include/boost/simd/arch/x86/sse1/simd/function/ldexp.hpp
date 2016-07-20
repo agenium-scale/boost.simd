@@ -13,7 +13,7 @@
 #define BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_LDEXP_HPP_INCLUDED
 #include <boost/simd/detail/overload.hpp>
 
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -21,7 +21,7 @@ namespace boost { namespace simd { namespace ext
   namespace bs =  boost::simd;
   BOOST_DISPATCH_OVERLOAD ( ldexp_
                           , (typename A0, typename A1)
-                          , bs::sse_
+                          , bs::sse1_
                           , bs::pack_<bd::single_<A0>, bs::sse_>
                           , bd::scalar_<bd::integer_<A1>>
                          )

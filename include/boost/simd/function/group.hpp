@@ -1,23 +1,19 @@
 //==================================================================================================
-/*!
-  @file
-
-  @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
+/**
+  Copyright 2016 NumScale SAS
+  Copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_FUNCTION_GROUP_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_GROUP_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-
- /*!
-
+#if defined(DOXYGEN_ONLY)
+  /*!
     @ingroup group-swar
     Function object implementing group capabilities
 
@@ -44,16 +40,11 @@ namespace boost { namespace simd
       r[i] = x[i];
       r[i+T0::static_size] = y[i];
     @endcode
-
-    @par Alias:
-    @c demote, @c narrow
-
   **/
   const boost::dispatch::functor<tag::group_> group = {};
-} }
 #endif
+} }
 
-#include <boost/simd/function/scalar/group.hpp>
 #include <boost/simd/function/simd/group.hpp>
 
 #endif

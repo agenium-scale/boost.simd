@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/tofloat.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>
@@ -36,7 +36,7 @@ STF_CASE_TPL (" tofloat real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(tofloat(bs::Inf<T>()), bs::Inf<r_t>());
   STF_EQUAL(tofloat(bs::Minf<T>()), bs::Minf<r_t>());
   STF_IEEE_EQUAL(tofloat(bs::Nan<T>()), bs::Nan<r_t>());

@@ -29,10 +29,10 @@ STF_CASE_TPL (" pow_abs",  STF_IEEE_TYPES)
   namespace bd = boost::dispatch;
   using bs::pow_abs;
 
-  using r_t = decltype(pow_abs(T(), T()));
+ using r_t = decltype(pow_abs(T(), T()));
 
   // return type conformity test
-  STF_TYPE_IS(r_t, T);
+ STF_TYPE_IS(r_t, T);
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
@@ -50,6 +50,8 @@ STF_CASE_TPL (" pow_abs",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(pow_abs(bs::Zero<T>(), bs::Zero<T>()), bs::One<r_t>(), 0);
   STF_ULP_EQUAL(pow_abs(T(-1),T(5)), T(1), 0);
   STF_ULP_EQUAL(pow_abs(T(-1),T(6)), T(1), 0);
+  STF_ULP_EQUAL(pow_abs(T(0.5), T(0.25)), T(0.840896415253715), 2);
+  STF_ULP_EQUAL(pow_abs(T(0.5), T(0.25)), std::pow(T(0.5), T(0.25)), 2);
 }
 
 

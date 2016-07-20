@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/bitwise_andnot.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>
@@ -30,7 +30,7 @@ STF_CASE_TPL (" bitwise_andnot real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, wished_r_t);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(bitwise_andnot(bs::Inf<T>(), bs::Inf<T>()), bs::Zero<r_t>());
   STF_EQUAL(bitwise_andnot(bs::Minf<T>(), bs::Minf<T>()), bs::Zero<r_t>());
   STF_EQUAL(bitwise_andnot(bs::Nan<T>(), bs::Nan<T>()), bs::Zero<r_t>());

@@ -24,7 +24,7 @@ STF_CASE_TPL( "Check modulus behavior with floating", STF_IEEE_TYPES )
   using r_t = decltype(modulus(T()));
   STF_TYPE_IS(r_t, T);
 
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(modulus(bs::Inf<T>()),  bs::Inf<r_t>());
   STF_EQUAL(modulus(bs::Minf<T>()), bs::Inf<r_t>());
   STF_IEEE_EQUAL(modulus(bs::Nan<T>()),  bs::Nan<r_t>());

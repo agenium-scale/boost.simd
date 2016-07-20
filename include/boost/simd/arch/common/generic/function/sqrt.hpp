@@ -14,13 +14,12 @@
 
 #include <boost/simd/function/fast.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
-#include <boost/simd/function/assert.hpp>
 #include <boost/simd/function/if_else_zero.hpp>
 #include <boost/simd/function/is_gez.hpp>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/rsqrt.hpp>
 #include <boost/simd/detail/math.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/assert.hpp>
 #include <boost/config.hpp>
 
@@ -31,44 +30,30 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( sqrt_
                           , (typename A0)
                           , bd::cpu_
+                          , boost::simd::fast_tag
                           , bd::generic_< bd::floating_<A0> >
-                          , boost::simd::fast_tag
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0  a0, fast_tag const& f) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0  a0) const BOOST_NOEXCEPT
     {
-          return if_else_zero(a0, a0 * rsqrt(a0, f));
+      return if_else_zero(a0, a0 * fast_(rsqrt)(a0));
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( sqrt_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::generic_< bd::integer_<A0> >
                           , boost::simd::fast_tag
-                          )
-  {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, fast_tag const& ) const BOOST_NOEXCEPT
-    {
-      return sqrt(a0);
-    }
-  };
-
-  BOOST_DISPATCH_OVERLOAD ( sqrt_
-                          , (typename A0)
-                          , bd::cpu_
                           , bd::generic_< bd::integer_<A0> >
-                          , boost::simd::assert_tag
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, assert_tag const& ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 a0) const BOOST_NOEXCEPT
     {
-      BOOST_ASSERT_MSG(bs::assert_all(is_positive(a0)),
-                       "sqrt integer domain is restricted to positive integer.");
+      BOOST_ASSERT_MSG( bs::assert_all(is_positive(a0))
+                      , "sqrt integer domain is restricted to positive integer."
+                      );
       return sqrt(a0);
     }
   };
 } } }
-
 
 #endif

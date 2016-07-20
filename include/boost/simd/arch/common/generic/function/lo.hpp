@@ -15,9 +15,9 @@
 #include <boost/simd/function/bitwise_and.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/constant/ratio.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

@@ -12,13 +12,13 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_DETAIL_GENERIC_F_LOG_KERNEL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_GENERIC_F_LOG_KERNEL_HPP_INCLUDED
 
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/simd/function/fast.hpp>
 #include <boost/simd/function/simd/frexp.hpp>
 #include <boost/simd/function/simd/is_less.hpp>
 #include <boost/simd/function/simd/tofloat.hpp>
-#include <boost/simd/function/simd/seladd.hpp>
-#include <boost/simd/function/simd/minusone.hpp>
+#include <boost/simd/function/simd/if_plus.hpp>
+#include <boost/simd/function/simd/dec.hpp>
 #include <boost/simd/function/simd/sqr.hpp>
 #include <boost/simd/function/simd/multiplies.hpp>
 
@@ -28,7 +28,8 @@
 
 #include <boost/simd/function/horn.hpp>
 #include <boost/simd/logical.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <tuple>
 
 namespace boost { namespace simd { namespace detail
 {
@@ -54,12 +55,12 @@ namespace boost { namespace simd { namespace detail
                            A0& y) BOOST_NOEXCEPT
     {
       i_t e;
-      x = fast_(frexp)(a0, e);
+      std::tie(x, e)= fast_(frexp)(a0);
       auto xltsqrthf = (x < Sqrt_2o_2<A0>());
-      fe = seladd(xltsqrthf, tofloat(e), Mone<A0>());
-      x =  minusone(seladd(xltsqrthf, x, x));
+      fe = if_plus(xltsqrthf, tofloat(e), Mone<A0>());
+      x =  dec(if_plus(xltsqrthf, x, x));
       x2 = sqr(x);
-      // performances informations using this kernel for nt2::log
+      // performances informations using this kernel for boost::simd::log
       // exhaustive and bench tests with g++-4.7 sse4.2 or scalar give:
       // at most 0.5 ulp  for input in [0, 3.40282e+38]
       // 2130706656 values computed.

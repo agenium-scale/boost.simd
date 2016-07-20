@@ -12,7 +12,7 @@
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/bitinteger.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <simd_test.hpp>
 
 template <typename T, int N, typename Env>
@@ -32,8 +32,8 @@ void test(Env& $)
     a1[i] = (i%2) ? T(i) : T(-i);
     b[i] = bs::bitinteger(a1[i]) ;
   }
-  p_t aa1(&a1[0], &a1[N]);
-  i_t bb (&b[0], &b[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  i_t bb (&b[0], &b[0]+N);
   STF_EQUAL(bs::bitinteger(aa1), bb);
 }
 

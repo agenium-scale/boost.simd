@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_CSCD_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_CSCD_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_CSCD_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_CSCD_HPP_INCLUDED
 
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/constant/nan.hpp>
@@ -19,7 +19,7 @@
 #include <boost/simd/function/is_flint.hpp>
 #include <boost/simd/function/rec.hpp>
 #include <boost/simd/function/sind.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -37,7 +37,6 @@ namespace boost { namespace simd { namespace ext
       return cscd(a0, tag::big_);
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( cscd_
                           , (typename A0, typename A1)
                           , bd::cpu_
@@ -51,17 +50,16 @@ namespace boost { namespace simd { namespace ext
                         , rec(sind(a0, tag::big_)));
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( cscd_
                           , (typename A0)
                           , bd::cpu_
+                          , bs::restricted_tag
                           , bd::generic_< bd::floating_<A0> >
-                          , bs::fast_tag
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, fast_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const restricted_tag &,  A0 const& a0) const BOOST_NOEXCEPT
     {
-      return rec(fast_(sind)(a0));
+      return rec(restricted_(sind)(a0));
     }
   };
 } } }

@@ -9,18 +9,18 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_SQRT1PM1_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_SQRT1PM1_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_SQRT1PM1_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_SQRT1PM1_HPP_INCLUDED
 
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/function/abs.hpp>
 #include <boost/simd/function/divides.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/is_less.hpp>
-#include <boost/simd/function/minusone.hpp>
-#include <boost/simd/function/oneplus.hpp>
+#include <boost/simd/function/dec.hpp>
+#include <boost/simd/function/inc.hpp>
 #include <boost/simd/function/sqrt.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -35,10 +35,10 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      A0 tmp =  bs::sqrt(oneplus(a0));
+      A0 tmp =  bs::sqrt(inc(a0));
       return  bs::if_else((bs::abs(a0) < bs::Half<A0>()),
-                          a0/bs::oneplus(tmp),
-                          bs::minusone(tmp));
+                          a0/bs::inc(tmp),
+                          bs::dec(tmp));
     }
   };
 } } }

@@ -35,13 +35,13 @@
 #include <boost/simd/function/scalar/fma.hpp>
 #include <boost/simd/function/scalar/is_eqz.hpp>
 #include <boost/simd/function/scalar/is_inf.hpp>
-#include <boost/simd/function/scalar/minusone.hpp>
+#include <boost/simd/function/scalar/dec.hpp>
 #include <boost/simd/function/scalar/oneminus.hpp>
-#include <boost/simd/function/scalar/oneplus.hpp>
+#include <boost/simd/function/scalar/inc.hpp>
 #include <boost/simd/function/scalar/rec.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
 #include <boost/simd/function/scalar/sqrt.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd
 {
@@ -96,7 +96,7 @@ namespace boost { namespace simd
     static BOOST_FORCEINLINE A0 acos(const  A0& a0) BOOST_NOEXCEPT
     {
       if (a0 < Mhalf<A0>())
-        return Pi<A0>()-asin( sqrt(oneplus(a0)*Half<A0>()))*Two<A0>();
+        return Pi<A0>()-asin( sqrt(inc(a0)*Half<A0>()))*Two<A0>();
       else if (a0 > Half<A0>())
         return asin( sqrt(oneminus(a0)*Half<A0>()))*Two<A0>();
       return (Pio_2<A0>()-asin(a0));
@@ -125,7 +125,7 @@ namespace boost { namespace simd
       {
         y = Pio_4<A0>();
         more =  Pio_4lo<A0>();
-        x = minusone(x)/oneplus(x);
+        x = dec(x)/inc(x);
       }
       A0 z = sqr(x);
       A0 z1 = horn<A0

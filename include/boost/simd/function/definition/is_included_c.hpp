@@ -13,15 +13,15 @@
 #define BOOST_SIMD_FUNCTION_DEFINITION_IS_INCLUDED_C_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
-#include <boost/dispatch/function/make_callable.hpp>
-#include <boost/dispatch/hierarchy/functions.hpp>
+#include <boost/simd/detail/dispatch/function/make_callable.hpp>
+#include <boost/simd/detail/dispatch/hierarchy/functions.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 
 namespace boost { namespace simd
 {
   namespace tag
   {
-    BOOST_DISPATCH_MAKE_TAG(ext, is_included_c_, boost::dispatch::elementwise_<is_included_c_>);
+    BOOST_DISPATCH_MAKE_TAG(ext, is_included_c_, boost::dispatch::abstract_<is_included_c_>);
   }
 
   namespace ext

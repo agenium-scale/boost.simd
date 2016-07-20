@@ -17,7 +17,8 @@
 #include <boost/simd/function/simd/genmask.hpp>
 #include <boost/simd/function/simd/popcnt.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/make_dependent.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -29,12 +30,11 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::integer_<A0>, bs::sse_>
                          )
   {
-    using result = bd::scalar_of_t<A0>;
-    BOOST_FORCEINLINE result operator() ( const A0 & a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE std::size_t operator() ( const A0 & a0) const BOOST_NOEXCEPT
     {
-      using i8type = pack<int8_t, 16>;
+      using i8type = typename detail::make_dependent<pack<int8_t,16>, A0>::type;
       i8type tmp = bitwise_cast<i8type>(genmask(a0));
-      return  bs::popcnt(_mm_movemask_epi8(tmp)) * bs::cardinal_of<A0>::value >> 4;
+      return bs::popcnt(_mm_movemask_epi8(tmp)) * bs::cardinal_of<A0>::value >> 4;
     }
   };
   BOOST_DISPATCH_OVERLOAD ( nbtrue_
@@ -43,11 +43,11 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bs::logical_<A0>, bs::sse_>
                          )
   {
-    BOOST_FORCEINLINE std::size_t operator() ( const A0 & a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE std::size_t operator() ( const A0 & a0 ) const BOOST_NOEXCEPT
     {
-      using i8type = pack<int8_t, 16>;
+      using i8type = typename detail::make_dependent<pack<int8_t,16>, A0>::type;
       i8type tmp = bitwise_cast<i8type>(genmask(a0));
-      return  bs::popcnt(_mm_movemask_epi8(tmp)) * bs::cardinal_of<A0>::value >> 4;
+      return bs::popcnt(_mm_movemask_epi8(tmp)) * bs::cardinal_of<A0>::value >> 4;
     }
   };
   BOOST_DISPATCH_OVERLOAD ( nbtrue_
@@ -56,13 +56,13 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::double_<A0>, bs::sse_>
                          )
   {
-    BOOST_FORCEINLINE double operator() ( const A0 & a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE std::size_t operator() ( const A0 & a0) const BOOST_NOEXCEPT
     {
-      int32_t  r = _mm_movemask_pd(genmask(a0));
-      return   (r&1)+(r>>1);
+      return bs::popcnt(_mm_movemask_pd(genmask(a0)));
     }
   };
 
 } } }
 
 #endif
+

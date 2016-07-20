@@ -9,8 +9,9 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/frexp.hpp>
 #include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/std.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>
@@ -23,6 +24,8 @@
 #include <boost/simd/constant/smallestposval.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/halfeps.hpp>
+#include <utility>
+#include <tuple>
 
 STF_CASE_TPL(" frexp0", STF_IEEE_TYPES)
 {
@@ -36,19 +39,19 @@ STF_CASE_TPL(" frexp0", STF_IEEE_TYPES)
     iT e;
     T  m;
     T  a = bs::Valmax<T>();
-    frexp(a, m, e);
+    std::tie(m, e) = frexp(a);
     STF_ULP_EQUAL(m, bs::One<T>()-bs::Halfeps<T>(), 1);
     STF_EQUAL(e, bs::Limitexponent<T>());
     STF_EQUAL(ldexp(m,e),a);
   }
 
-#ifndef STF_NO_DENORMALS
+#ifndef BOOST_SIMD_NO_DENORMALS
   {
     namespace bs = boost::simd;
     iT e;
     T  m;
     T a = bs::Mindenormal<T>();
-    frexp(a, m, e);
+    std::tie(m, e) = frexp(a);
     STF_ULP_EQUAL(m, bs::Half<T>(), 1);
     STF_EQUAL(e, bs::Minexponent<T>()-bs::Nbmantissabits<T>()+bs::One<T>());
     STF_EQUAL(ldexp(m,e),a);
@@ -59,7 +62,7 @@ STF_CASE_TPL(" frexp0", STF_IEEE_TYPES)
     iT e;
     T  m;
     T a = bs::Smallestposval<T>()/2;
-    frexp(a, m, e);
+    std::tie(m, e) = frexp(a);
     STF_ULP_EQUAL(m, bs::Half<T>(), 1);
     STF_EQUAL(e, bs::Minexponent<T>());
     STF_EQUAL(ldexp(m,e),a);
@@ -70,7 +73,7 @@ STF_CASE_TPL(" frexp0", STF_IEEE_TYPES)
     iT e;
     T  m;
     T a = bs::Smallestposval<T>()/4;
-    frexp(a, m, e);
+    std::tie(m, e) = frexp(a);
     STF_ULP_EQUAL(m, bs::Half<T>(), 1);
     STF_EQUAL(e, bs::Minexponent<T>()-bs::One<T>());
     STF_EQUAL(ldexp(m,e),a);
@@ -95,17 +98,7 @@ STF_CASE_TPL(" frexp", STF_IEEE_TYPES)
     iT e;
     T  m;
 
-    frexp(bs::One<T>(), m, e);
-    STF_EQUAL(m, bs::Half<T>());
-    STF_EQUAL(e, bs::One<iT>());
-  }
-
-  {
-    namespace bs = boost::simd;
-    iT e;
-    T  m;
-
-    m = frexp(bs::One<T>(), e);
+    std::tie(m, e) = frexp(bs::One<T>());
     STF_EQUAL(m, bs::Half<T>());
     STF_EQUAL(e, bs::One<iT>());
   }
@@ -132,19 +125,19 @@ STF_CASE_TPL(" frexp0", STF_IEEE_TYPES)
     iT e;
     T  m;
     T  a = bs::Valmax<T>();
-    frexp(a, m, e);
+    std::tie(m, e) = frexp(a);
     STF_ULP_EQUAL(m, bs::One<T>()-bs::Halfeps<T>(), 1);
     STF_EQUAL(e, bs::Limitexponent<T>());
     STF_EQUAL(ldexp(m,e),a);
   }
 
-#ifndef STF_NO_DENORMALS
+#ifndef BOOST_SIMD_NO_DENORMALS
   {
     namespace bs = boost::simd;
     iT e;
     T  m;
     T a = bs::Mindenormal<T>();
-    frexp(a, m, e);
+    std::tie(m, e) = frexp(a);
     STF_ULP_EQUAL(m, bs::Half<T>(), 1);
     STF_EQUAL(e, bs::Minexponent<T>()-bs::Nbmantissabits<T>()+bs::One<T>());
     STF_EQUAL(ldexp(m,e),a);
@@ -155,7 +148,7 @@ STF_CASE_TPL(" frexp0", STF_IEEE_TYPES)
     iT e;
     T  m;
     T a = bs::Smallestposval<T>()/2;
-    frexp(a, m, e);
+    std::tie(m, e) = frexp(a);
     STF_ULP_EQUAL(m, bs::Half<T>(), 1);
     STF_EQUAL(e, bs::Minexponent<T>());
     STF_EQUAL(ldexp(m,e),a);
@@ -166,7 +159,7 @@ STF_CASE_TPL(" frexp0", STF_IEEE_TYPES)
     iT e;
     T  m;
     T a = bs::Smallestposval<T>()/4;
-    frexp(a, m, e);
+    std::tie(m, e) = frexp(a);
     STF_ULP_EQUAL(m, bs::Half<T>(), 1);
     STF_EQUAL(e, bs::Minexponent<T>()-bs::One<T>());
     STF_EQUAL(ldexp(m,e),a);
@@ -192,17 +185,7 @@ STF_CASE_TPL(" frexp fast", STF_IEEE_TYPES)
     iT e;
     T  m;
 
-    bs::fast_(frexp)(bs::One<T>(), m, e);
-    STF_EQUAL(m, bs::Half<T>());
-    STF_EQUAL(e, bs::One<iT>());
-  }
-
-  {
-    namespace bs = boost::simd;
-    iT e;
-    T  m;
-
-    m = bs::fast_(frexp)(bs::One<T>(), e);
+    std::tie(m, e) = bs::fast_(frexp)(bs::One<T>());
     STF_EQUAL(m, bs::Half<T>());
     STF_EQUAL(e, bs::One<iT>());
   }

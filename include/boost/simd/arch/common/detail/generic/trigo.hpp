@@ -13,5 +13,6 @@
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_GENERIC_TRIGO_HPP_INCLUDED
 
 #include <boost/simd/arch/common/detail/scalar/trigo.hpp>
+#include <boost/simd/arch/common/detail/simd/trigo.hpp>
 
 #endif

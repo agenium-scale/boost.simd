@@ -14,7 +14,6 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/function/simd/bitwise_ornot.hpp>
 #include <boost/simd/function/simd/genmask.hpp>
 #include <boost/simd/function/simd/if_else.hpp>

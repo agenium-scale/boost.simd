@@ -21,7 +21,7 @@ namespace boost { namespace simd
     @ingroup group-ieee
     Function object implementing nextpow2 capabilities
 
-    Returns the greatest integer n such that abss(x) is greater or equal to \f$2^n\f$
+    Returns the greatest integer n such that abs_s(x) is greater or equal to \f$2^n\f$
 
     @par Semantic:
 
@@ -32,7 +32,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T n = floor(log2(abss(x)));
+    T n = floor(log2(abs_s(x)));
     @endcode
 
   **/

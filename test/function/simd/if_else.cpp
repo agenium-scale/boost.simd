@@ -32,11 +32,11 @@ void test(Env& $)
      a3[i] = (i%2) ? T(i+2*N) : T(-(i+2*N));
      b[i] = a1[i] ? a2[i] : a3[i];
    }
-  p_t aa1(&a1[0], &a1[N]);
-  p_t aa2(&a2[0], &a2[N]);
-  p_t aa3(&a3[0], &a3[N]);
-  p_t bb(&b[0], &b[N]);
-  STF_IEEE_EQUAL(bs::if_else(aa1, aa2, aa3), bb);
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t aa2(&a2[0], &a2[0]+N);
+  p_t aa3(&a3[0], &a3[0]+N);
+  p_t bb(&b[0], &b[0]+N);
+  STF_EQUAL(bs::if_else(aa1, aa2, aa3), bb);
 }
 
 STF_CASE_TPL("Check if_else on pack" , STF_NUMERIC_TYPES)
@@ -66,11 +66,11 @@ void testl(Env& $)
      a3[i] = (i%2) ? T(i+2*N) : T(-(i+2*N));
      b[i] = a1[i] ? a2[i] : a3[i];
    }
-  pl_t aa1(&a1[0], &a1[N]);
-  p_t aa2(&a2[0], &a2[N]);
-  p_t aa3(&a3[0], &a3[N]);
-  p_t bb(&b[0], &b[N]);
-  STF_IEEE_EQUAL(bs::if_else(aa1, aa2, aa3), bb);
+  pl_t aa1(&a1[0], &a1[0]+N);
+  p_t aa2(&a2[0], &a2[0]+N);
+  p_t aa3(&a3[0], &a3[0]+N);
+  p_t bb(&b[0], &b[0]+N);
+  STF_EQUAL(bs::if_else(aa1, aa2, aa3), bb);
 }
 
 STF_CASE_TPL("Check if_else on pack of logical" , STF_NUMERIC_TYPES)

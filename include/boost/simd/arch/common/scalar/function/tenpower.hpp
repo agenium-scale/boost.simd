@@ -19,8 +19,8 @@
 #include <boost/simd/function/scalar/is_odd.hpp>
 #include <boost/simd/function/scalar/rec.hpp>
 #include <boost/simd/function/sqr.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_floating.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_floating.hpp>
 #include <boost/config.hpp>
 #include <boost/mpl/if.hpp>
 

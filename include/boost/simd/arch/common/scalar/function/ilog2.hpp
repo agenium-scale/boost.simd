@@ -15,8 +15,8 @@
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/function/scalar/clz.hpp>
 #include <boost/simd/function/scalar/exponent.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

@@ -16,8 +16,9 @@
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/rec.hpp>
 #include <boost/simd/function/fast.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/hierarchy.hpp>
+#include <boost/simd/function/divides.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/hierarchy.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -26,34 +27,44 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( divides_
                           , (typename T)
                           , bd::cpu_
-                          , bd::generic_<bd::unspecified_<T>>
-                          , bd::generic_<bd::unspecified_<T>>
                           , boost::simd::fast_tag
+                          , bd::generic_<bd::unspecified_<T>>
+                          , bd::generic_<bd::unspecified_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()(T const& a, T const& b
-                                  , fast_tag const& ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE T operator()(const fast_tag &, T const& a, T const& b
+                                  ) const BOOST_NOEXCEPT
     {
       return divides(a, b);
     }
   };
-
-  namespace bd = boost::dispatch;
   BOOST_DISPATCH_OVERLOAD ( divides_
                           , (typename T)
                           , bd::cpu_
-                          , bd::generic_<bd::floating_<T>>
-                          , bd::generic_<bd::floating_<T>>
                           , boost::simd::fast_tag
+                          , bd::generic_<bd::floating_<T>>
+                          , bd::generic_<bd::floating_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()(T const& a, T const& b
-                                  , fast_tag const& ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE T operator()(const fast_tag &, T const& a, T const& b
+                                  ) const BOOST_NOEXCEPT
     {
       return a*fast_(rec)(b);
     }
   };
-
+   BOOST_DISPATCH_OVERLOAD ( divides_
+                          , (typename T)
+                          ,  bd::cpu_
+                          ,  bs::saturated_tag
+                          ,  bd::generic_<bd::fundamental_<T>>
+                          ,  bd::generic_<bd::fundamental_<T>>
+                          )
+  {
+    BOOST_FORCEINLINE T operator()(const saturated_tag &, const T& a, const T& b) const BOOST_NOEXCEPT
+    {
+      return saturated_(divides)(a, b);
+    }
+  };
 } } }
 
 #endif

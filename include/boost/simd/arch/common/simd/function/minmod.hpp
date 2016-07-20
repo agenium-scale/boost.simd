@@ -14,6 +14,7 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
+#include <boost/simd/function/simd/bitwise_xor.hpp>
 #include <boost/simd/function/simd/if_else_zero.hpp>
 #include <boost/simd/function/simd/is_gez.hpp>
 #include <boost/simd/function/simd/is_nltz.hpp>
@@ -33,7 +34,7 @@ namespace boost { namespace simd { namespace ext
    {
       BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
-        return if_else_zero(is_gez(b_xor(a0, a1)),bs::min(a0, a1));
+        return if_else_zero(is_gez(bitwise_xor(a0, a1)),bs::min(a0, a1));
       }
    };
 

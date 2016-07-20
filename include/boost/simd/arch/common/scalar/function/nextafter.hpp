@@ -16,12 +16,12 @@
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/one.hpp>
-#include <boost/simd/function/scalar/minusone.hpp>
+#include <boost/simd/function/scalar/dec.hpp>
 #include <boost/simd/function/scalar/next.hpp>
-#include <boost/simd/function/scalar/oneplus.hpp>
+#include <boost/simd/function/scalar/inc.hpp>
 #include <boost/simd/function/scalar/prev.hpp>
 #include <boost/simd/function/scalar/sign.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>
 
@@ -41,7 +41,6 @@ namespace boost { namespace simd {
         return  (y >  x)  ? next(x) : ((y <  x) ?  prev(x) : x);
       }
     };
-
     BOOST_DISPATCH_OVERLOAD ( nextafter_
                             , (typename A0)
                             , bd::cpu_
@@ -54,7 +53,6 @@ namespace boost { namespace simd {
         return a0+sign(a1-a0);
       }
     };
-
     BOOST_DISPATCH_OVERLOAD ( nextafter_
                             , (typename A0)
                             , bd::cpu_
@@ -64,22 +62,35 @@ namespace boost { namespace simd {
     {
       BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
       {
-        return (a1 == a0) ? a0 : (a1 > a0) ? oneplus(a0) : minusone(a0);
+        return (a1 == a0) ? a0 : (a1 > a0) ? saturated_(inc)(a0) : saturated_(dec)(a0);
       }
     };
-
     BOOST_DISPATCH_OVERLOAD ( nextafter_
                             , (typename A0)
                             , bd::cpu_
-                            , bd::scalar_< bd::floating_<A0> >
-                            , bd::scalar_< bd::floating_<A0> >
                             , boost::simd::std_tag
+                            , bd::scalar_< bd::floating_<A0> >
+                            , bd::scalar_< bd::floating_<A0> >
                             )
     {
-      BOOST_FORCEINLINE A0 operator() (A0  a0, A0 a1
-                                      , std_tag const& ) const BOOST_NOEXCEPT
+      BOOST_FORCEINLINE A0 operator() (const std_tag &, A0  a0, A0 a1
+                                      ) const BOOST_NOEXCEPT
       {
         return std::nextafter(a0, a1);
+      }
+    };
+    BOOST_DISPATCH_OVERLOAD ( nextafter_
+                            , (typename A0)
+                            , bd::cpu_
+                            , boost::simd::std_tag
+                            , bd::scalar_< bd::integer_<A0> >
+                            , bd::scalar_< bd::integer_<A0> >
+                            )
+    {
+      BOOST_FORCEINLINE A0 operator() (const std_tag &, A0  a0, A0 a1
+                                      ) const BOOST_NOEXCEPT
+      {
+        return bs::nextafter(a0, a1);
       }
     };
   }

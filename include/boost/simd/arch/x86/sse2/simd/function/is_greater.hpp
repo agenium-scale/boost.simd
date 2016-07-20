@@ -21,7 +21,7 @@
 #include <boost/simd/function/simd/minus.hpp>
 #include <boost/simd/function/simd/shuffle.hpp>
 #include <boost/simd/constant/signmask.hpp>
-#include <boost/dispatch/meta/downgrade.hpp>
+#include <boost/simd/detail/dispatch/meta/downgrade.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

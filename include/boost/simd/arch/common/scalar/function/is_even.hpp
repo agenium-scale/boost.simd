@@ -16,7 +16,7 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/function/scalar/is_flint.hpp>
 #include <boost/simd/logical.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

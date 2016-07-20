@@ -21,15 +21,31 @@ namespace boost { namespace simd
     @ingroup group-boolean
     Function object implementing if_inc capabilities
 
-    Increments a value by @ref One if a predicate is true.
+    Increments a value by @ref One if a predicate is @ref True.
 
-    This is a convenient alias of @ref selinc
+    @par Semantic:
+
+    For every parameters of types respectively C, T:
+
+    @code
+    T1 r = if_inc(cond,y);
+    @endcode
+
+    is similar to:
+
+    @code
+    T1 r = cond ? t+One<T>() : t  ;
+    @endcode
+
+    @par Alias:
+    @c if_inc
+
   **/
   const boost::dispatch::functor<tag::if_inc_> if_inc = {};
 } }
 #endif
 
-#include <boost/simd/function/scalar/selinc.hpp>
+#include <boost/simd/function/scalar/if_inc.hpp>
 #include <boost/simd/function/simd/if_inc.hpp>
 
 #endif

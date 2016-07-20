@@ -16,7 +16,7 @@
 #include <boost/simd/function/scalar/logical_and.hpp>
 #include <boost/simd/function/scalar/logical_or.hpp>
 #include <boost/simd/logical.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

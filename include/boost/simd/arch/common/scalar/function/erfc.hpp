@@ -8,11 +8,11 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_ERFC_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_ERFC_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ERFC_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ERFC_HPP_INCLUDED
 
 #include <boost/simd/function/std.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/arch/common/detail/generic/erf_kernel.hpp>
 #include <boost/simd/constant/pi.hpp>
 #include <boost/simd/constant/two.hpp>
@@ -21,7 +21,7 @@
 #include <boost/simd/function/scalar/abs.hpp>
 #include <boost/simd/function/scalar/exp.hpp>
 #include <boost/simd/function/scalar/oneminus.hpp>
-#include <boost/simd/function/scalar/oneplus.hpp>
+#include <boost/simd/function/scalar/inc.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
 #include <boost/simd/function/scalar/sqrt.hpp>
 #include <boost/simd/function/scalar/rec.hpp>
@@ -48,7 +48,7 @@ namespace boost { namespace simd { namespace ext
     {
       A0 x =  bs::abs(a0);
       A0 r1 = Zero<A0>();
-      A0 z =  x/oneplus(x);
+      A0 z =  x/inc(x);
       if (x < Ratio<A0, 2, 3>())
       {
         r1 = detail::erf_kernel<A0>::erfc3(z);
@@ -67,7 +67,6 @@ namespace boost { namespace simd { namespace ext
       return (a0 < 0.0f) ? 2.0f-r1 : r1;
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( erfc_
                           , (typename A0)
                           , bd::cpu_
@@ -103,15 +102,14 @@ namespace boost { namespace simd { namespace ext
       else return Zero<A0>();
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( erfc_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::floating_<A0> >
                           , bs::std_tag
+                          , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (A0 a0, std_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const std_tag &, A0 a0) const BOOST_NOEXCEPT
     {
       return std::erfc(a0);
     }

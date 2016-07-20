@@ -14,7 +14,7 @@
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/logical.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
@@ -32,8 +32,8 @@ void test(Env& $)
      a1[i] = (i%2) ? T(i) : T(-i);
      b[i] = bs::pow2(a1[i], a2);
    }
-  p_t aa1(&a1[0], &a1[N]);
-  p_t bb(&b[0], &b[N]);//logical
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t bb(&b[0], &b[0]+N);//logical
   STF_IEEE_EQUAL(bs::pow2(aa1, a2), bb);
 }
 

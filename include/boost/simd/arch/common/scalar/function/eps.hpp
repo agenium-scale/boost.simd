@@ -19,9 +19,9 @@
 #include <boost/simd/function/scalar/abs.hpp>
 #include <boost/simd/function/scalar/bitwise_cast.hpp>
 #include <boost/simd/function/scalar/exponent.hpp>
-#include <boost/simd/function/scalar/is_not_finite.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/function/scalar/is_invalid.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -51,7 +51,7 @@ namespace boost { namespace simd { namespace ext
     {
       typedef std::numeric_limits<A0> lim;
       const A0 a = bs::abs(a0);
-      if (is_not_finite(a))
+      if (is_invalid(a))
       {
         return Nan<A0>();
       }

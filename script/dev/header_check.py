@@ -56,9 +56,6 @@ else:
 
 modules = [join(root, 'include')]
 
-print(modules)
-print(list_files(modules[0]))
-
 module_includes = dict(
     (m, list_files(m)) for m in modules)
 

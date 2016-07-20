@@ -21,15 +21,31 @@ namespace boost { namespace simd
     @ingroup group-boolean
     Function object implementing if_dec capabilities
 
-    Decrements a value by @ref One if a predicate is true.
+    Decrements a value by @ref One if a predicate is @ref True.
 
-    This is a convenient alias of @ref seldec
+    @par Semantic:
+
+    For every parameters of types respectively C, T:
+
+    @code
+    T r = if_dec(cond,t);
+    @endcode
+
+    is similar to:
+
+    @code
+    T r = cond : t-One<T>() : t;
+    @endcode
+
+    @par Alias:
+    @c if_dec
+
   **/
   const boost::dispatch::functor<tag::if_dec_> if_dec = {};
 } }
 #endif
 
-#include <boost/simd/function/scalar/seldec.hpp>
+#include <boost/simd/function/scalar/if_dec.hpp>
 #include <boost/simd/function/simd/if_dec.hpp>
 
 #endif

@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/nbtrue.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>
@@ -25,12 +25,12 @@ STF_CASE_TPL (" nbtrue real",  STF_IEEE_TYPES)
   using bs::nbtrue;
 
   // specific values tests
-  STF_EQUAL(nbtrue(bs::Inf<T>()) ,T(1));
-  STF_EQUAL(nbtrue(bs::Minf<T>()),T(1));
-  STF_EQUAL(nbtrue(bs::Mone<T>()),T(1));
-  STF_EQUAL(nbtrue(bs::Nan<T>()) ,T(1));
-  STF_EQUAL(nbtrue(bs::One<T>()) ,T(1));
-  STF_EQUAL(nbtrue(bs::Zero<T>()), T(0));
+  STF_EQUAL(nbtrue(bs::Inf<T>()) ,1u);
+  STF_EQUAL(nbtrue(bs::Minf<T>()),1u);
+  STF_EQUAL(nbtrue(bs::Mone<T>()),1u);
+  STF_EQUAL(nbtrue(bs::Nan<T>()) ,1u);
+  STF_EQUAL(nbtrue(bs::One<T>()) ,1u);
+  STF_EQUAL(nbtrue(bs::Zero<T>()), 0u);
 } // end of test for floating_
 
 STF_CASE_TPL (" nbtrue integer",  STF_INTEGRAL_TYPES)
@@ -40,7 +40,7 @@ STF_CASE_TPL (" nbtrue integer",  STF_INTEGRAL_TYPES)
   using bs::nbtrue;
 
   // specific values tests
-  STF_EQUAL(nbtrue(bs::Mone<T>()), T(1));
-  STF_EQUAL(nbtrue(bs::One<T>()) , T(1));
-  STF_EQUAL(nbtrue(bs::Zero<T>()), T(0));
+  STF_EQUAL(nbtrue(bs::Mone<T>()), 1u);
+  STF_EQUAL(nbtrue(bs::One<T>()) , 1u);
+  STF_EQUAL(nbtrue(bs::Zero<T>()), 0u);
 }

@@ -9,17 +9,17 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_ACOSH_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_ACOSH_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ACOSH_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ACOSH_HPP_INCLUDED
 
 #include <boost/simd/constant/log_2.hpp>
 #include <boost/simd/constant/oneotwoeps.hpp>
 #include <boost/simd/function/scalar/log.hpp>
 #include <boost/simd/function/scalar/log1p.hpp>
-#include <boost/simd/function/scalar/minusone.hpp>
+#include <boost/simd/function/scalar/dec.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
 #include <boost/simd/function/scalar/sqrt.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -34,7 +34,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
     {
-      A0 t = minusone(a0);
+      A0 t = dec(a0);
       if(BOOST_LIKELY(t <= Oneotwoeps<A0>()))
         return log1p(t+bs::sqrt(t+t+sqr(t)));
       else

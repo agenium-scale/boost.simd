@@ -13,7 +13,7 @@
 #define BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_HMSB_HPP_INCLUDED
 #include <boost/simd/detail/overload.hpp>
 
-#include <boost/dispatch/meta/as_floating.hpp>
+#include <boost/simd/detail/dispatch/meta/as_floating.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -22,7 +22,7 @@ namespace boost { namespace simd { namespace ext
   namespace bs =  boost::simd;
   BOOST_DISPATCH_OVERLOAD ( hmsb_
                           , (typename A0)
-                          , bs::sse_
+                          , bs::sse1_
                           , bs::pack_<bd::single_<A0>, bs::sse_>
                          )
   {

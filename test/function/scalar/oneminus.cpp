@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/oneminus.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>
@@ -49,7 +49,7 @@ STF_CASE_TPL (" oneminus unsigned_uint",  STF_UNSIGNED_INTEGRAL_TYPES)
 
   // specific values tests
   STF_EQUAL(oneminus(bs::One<T>()), bs::Zero<T>());
-  STF_EQUAL(oneminus(bs::Two<T>()), bs::Zero<T>());
+  STF_EQUAL(oneminus(bs::Two<T>()), bs::Valmax<T>());
   STF_EQUAL(oneminus(bs::Zero<T>()), bs::One<T>());
 }
 
@@ -63,7 +63,7 @@ STF_CASE_TPL(" oneminus floating", STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(oneminus(bs::Inf<T>()), bs::Minf<T>());
   STF_IEEE_EQUAL(oneminus(bs::Nan<T>()), bs::Nan<T>());
   STF_EQUAL(oneminus(bs::Minf<T>()), bs::Inf<T>());

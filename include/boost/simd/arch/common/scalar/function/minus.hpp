@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_MINUS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_MINUS_HPP_INCLUDED
 
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -43,6 +43,8 @@ namespace boost { namespace simd { namespace ext
       return a-b;
     }
   };
-} }  }
+} } }
+
+#include <boost/simd/arch/common/scalar/function/minus_s.hpp>
 
 #endif

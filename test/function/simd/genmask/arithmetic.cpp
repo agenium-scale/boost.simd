@@ -67,7 +67,7 @@ STF_CASE_TPL ("Check genmask behavior when re-targeted",  STF_NUMERIC_TYPES)
 }
 #endif
 
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/nan.hpp>

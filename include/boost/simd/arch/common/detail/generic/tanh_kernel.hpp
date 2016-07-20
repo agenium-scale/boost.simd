@@ -18,7 +18,7 @@
 #include <boost/simd/function/divides.hpp>
 #include <boost/simd/function/rec.hpp>
 #include <boost/simd/function/fma.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/array.hpp>
 
 namespace boost { namespace simd
@@ -33,11 +33,10 @@ namespace boost { namespace simd
     template < typename A0 >
     struct tanh_kernel < A0, float >
     {
-      using s_t = bd::scalar_of_t<A0>;
       // computes tanh for abs(a0) < 0.625 and x2 =  sqr(a0) for float
       static BOOST_FORCEINLINE A0 tanh(const A0& a0, const A0& x2) BOOST_NOEXCEPT
       {
-        return fma(horn<s_t,
+        return fma(horn<A0,
                    0XBEAAAA99, //    -3.33332819422E-1F
                    0X3E088393, //    +1.33314422036E-1F
                    0XBD5C1E2D, //    -5.37397155531E-2F
@@ -54,8 +53,6 @@ namespace boost { namespace simd
     template < typename A0 >
     struct tanh_kernel < A0, double >
     {
-      using s_t = bd::scalar_of_t<A0>;
-
       static  BOOST_FORCEINLINE A0 tanh(const A0& a0, const A0& x2) BOOST_NOEXCEPT
       {
         return fma(x2*p(x2)/q(x2), a0, a0);
@@ -69,7 +66,7 @@ namespace boost { namespace simd
       // computes tanh for abs(a0) < 0.625 and x2 =  sqr(a0) for doubles
       static  BOOST_FORCEINLINE A0 p(const A0& x2) BOOST_NOEXCEPT
       {
-        return horn<s_t,
+        return horn<A0,
           0XC0993AC030580563ULL,// -1.61468768441708447952E3
           0XC058D26A0E26682DULL,// -9.92877231001918586564E1,
           0XBFEEDC5BAAFD6F4BULL // -9.64399179425052238628E-1
@@ -77,7 +74,7 @@ namespace boost { namespace simd
       }
       static  BOOST_FORCEINLINE A0 q(const A0& x2)
       {
-        return horn1<s_t,
+        return horn1<A0,
           0X40B2EC102442040CULL,   //  4.84406305325125486048E3
           0X40A176FA0E5535FAULL,   //  2.23548839060100448583E3,
           0X405C33F28A581B86ULL   //  1.12811678491632931402E2,

@@ -30,7 +30,7 @@ STF_CASE_TPL (" cbrt",  STF_IEEE_TYPES)
   STF_EXPR_IS(cbrt(T()), T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_ULP_EQUAL(cbrt(bs::Inf<T>()), bs::Inf<r_t>(), 0.5);
   STF_ULP_EQUAL(cbrt(bs::Minf<T>()), bs::Minf<r_t>(), 0.5);
   STF_ULP_EQUAL(cbrt(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);

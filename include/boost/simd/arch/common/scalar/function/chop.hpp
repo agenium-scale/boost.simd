@@ -18,10 +18,10 @@
 // #include <boost/simd/function/scalar/inc.hpp>
 // #include <boost/simd/function/scalar/is_eqz.hpp>
 // #include <boost/simd/function/scalar/rec.hpp>
-// #include <boost/simd/function/scalar/selinc.hpp>
+// #include <boost/simd/function/scalar/if_inc.hpp>
 // #include <boost/simd/function/scalar/tofloat.hpp>
 // #include <boost/simd/function/scalar/toint.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -81,7 +81,7 @@ namespace boost { namespace simd { namespace ext
 //     using result_t = A0;
 //     BOOST_FORCEINLINE result_t operator() ( A0 const& a0) const BOOST_NOEXCEPT
 //     {
-//       A0 tmp = selinc(is_eqz(tmp), nt2::abs(x));
+//       A0 tmp = if_inc(is_eqz(tmp), nt2::abs(x));
 //       tmp = floor(inc(log10(tmp)));
 //       inflate = exp10(- tmp);
 //       A0 deflate = rec(inflate);
@@ -101,7 +101,7 @@ namespace boost { namespace simd { namespace ext
 
 //     BOOST_FORCEINLINE result_t operator() ( A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
 //     {
-//       A0 tmp = selinc(is_eqz(tmp), nt2::abs(x));
+//       A0 tmp = if_inc(is_eqz(tmp), nt2::abs(x));
 //       tmp = floor(inc(log10(tmp)));
 //       inflate = exp10(tofloat(a1) - tmp);
 //       return rec(inflate)*chop(x*inflate);
@@ -120,7 +120,7 @@ namespace boost { namespace simd { namespace ext
 
 //     BOOST_FORCEINLINE result_t operator() ( A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
 //     {
-//       A0 tmp = selinc(is_eqz(tmp), nt2::abs(x));
+//       A0 tmp = if_inc(is_eqz(tmp), nt2::abs(x));
 //       tmp = floor(inc(log10(tmp)));
 //       inflate = exp10(tofloat(a1) - tmp);
 //       return a2*rec(inflate)*chop(chop(x*inflate)/a2);

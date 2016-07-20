@@ -36,12 +36,12 @@
 #include <boost/simd/function/simd/fma.hpp>
 #include <boost/simd/function/simd/fnms.hpp>
 #include <boost/simd/function/simd/inc.hpp>
-#include <boost/simd/function/simd/oneplus.hpp>
+#include <boost/simd/function/simd/inc.hpp>
 #include <boost/simd/function/simd/oneminus.hpp>
-#include <boost/simd/function/simd/round2even.hpp>
+#include <boost/simd/function/simd/nearbyint.hpp>
 #include <boost/simd/function/simd/sqr.hpp>
 #include <boost/simd/logical.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd
 {
@@ -67,7 +67,7 @@ namespace boost { namespace simd
       static BOOST_FORCEINLINE A0 reduce( A0 const& a0
                                         , A0& hi, A0& lo, A0& x) BOOST_NOEXCEPT
       {
-        A0 k = round2even(Invlog_2<A0>()*a0);
+        A0 k = nearbyint(Invlog_2<A0>()*a0);
         hi = fnms(k, Log_2hi<A0>(), a0); //a0-k*L
         lo = k*Log_2lo<A0>();
         x  = hi-lo;
@@ -110,7 +110,7 @@ namespace boost { namespace simd
 
       static BOOST_FORCEINLINE A0 reduce(A0 const& a0, A0, A0, A0& x) BOOST_NOEXCEPT
       {
-        A0 k = round2even(a0);
+        A0 k = nearbyint(a0);
         x = (a0 - k)*Log_2<A0>();
         return k;
       }
@@ -150,7 +150,7 @@ namespace boost { namespace simd
 
       static BOOST_FORCEINLINE A0 reduce(A0 const& a0, A0&, A0&, A0& x) BOOST_NOEXCEPT
       {
-        A0 k  = round2even(Invlog10_2<A0>()*a0);
+        A0 k  = nearbyint(Invlog10_2<A0>()*a0);
         x = fnms(k, Log10_2hi<A0>(), a0);
         x = fnms(k, Log10_2lo<A0>(), x);
         return k;
@@ -171,7 +171,7 @@ namespace boost { namespace simd
                           0x405545fdce51ca08ull
                      //   0x3ff0000000000000ull
                           > (xx)-px);
-        return oneplus(x2+x2);
+        return inc(x2+x2);
       }
 
       static BOOST_FORCEINLINE A0 finalize(A0, A0 c, A0,  A0 ) BOOST_NOEXCEPT

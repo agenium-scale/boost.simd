@@ -13,15 +13,15 @@
 #define BOOST_SIMD_FUNCTION_DEFINITION_COMPARE_LESS_EQUAL_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
-#include <boost/dispatch/function/make_callable.hpp>
-#include <boost/dispatch/hierarchy/functions.hpp>
+#include <boost/simd/detail/dispatch/function/make_callable.hpp>
+#include <boost/simd/detail/dispatch/hierarchy/functions.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 
 namespace boost { namespace simd
 {
   namespace tag
   {
-    BOOST_DISPATCH_MAKE_TAG(ext, compare_less_equal_, boost::dispatch::elementwise_<compare_less_equal_>);
+    BOOST_DISPATCH_MAKE_TAG(ext, compare_less_equal_, boost::dispatch::abstract_<compare_less_equal_>);
   }
 
   namespace ext

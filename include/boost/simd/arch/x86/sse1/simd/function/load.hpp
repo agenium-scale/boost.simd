@@ -12,7 +12,7 @@
 #define BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_LOAD_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/dispatch/adapted/common/pointer.hpp>
+#include <boost/simd/detail/dispatch/adapted/common/pointer.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -23,7 +23,7 @@ namespace boost { namespace simd { namespace ext
   // load from a pointer of single
   BOOST_DISPATCH_OVERLOAD ( load_
                           , (typename Target, typename Pointer)
-                          , bs::sse_
+                          , bs::sse1_
                           , bd::pointer_<bd::scalar_<bd::single_<Pointer>>,1u>
                           , bd::target_<bs::pack_<bd::single_<Target>,bs::sse_>>
                           )

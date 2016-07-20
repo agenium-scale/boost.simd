@@ -19,7 +19,7 @@
 #include <boost/simd/function/oneminus.hpp>
 #include <boost/simd/function/rec.hpp>
 #include <boost/simd/function/fma.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/array.hpp>
 
 #include <boost/simd/function/exp.hpp>
@@ -192,7 +192,7 @@ namespace boost { namespace simd
         // approximation of erfc(z1./(1-z1))).*exp((z1./(1-z1)).^2) (z1 =  z+0.4) on [0 0.5]
         // with a polynomial of degree 11 gives 16 ulp on [2/3 inf] for erfc
         // (exhaustive test against float(erfc(double(x))))
-        // z is A0 z = x/oneplus(x)-A0(0.4);
+        // z is A0 z = x/inc(x)-A0(0.4);
         return horn<s_t,
                     0x3f0a0e8b, //   5.392844046572836e-01
                     0xbf918a62, //  -1.137035586823118e+00
@@ -215,7 +215,7 @@ namespace boost { namespace simd
         // approximation of erfc(z./(1-z))./(1-z) on [0 0.4]
         // with a polynomial of degree 8 gives 2 ulp on [0 2/3] for erfc
         // (exhaustive test against float(erfc(double(x))))
-        // z is A0 z = x/oneplus(x);
+        // z is A0 z = x/inc(x);
         return  oneminus(z)* horn<s_t,
                                   0x3f7ffffe, //   9.9999988e-01
                                   0xbe036d7e, //  -1.2834737e-01

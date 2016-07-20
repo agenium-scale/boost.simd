@@ -32,7 +32,7 @@ namespace boost { namespace simd
 
     is the greatest integral value of type @c T less or equal to @c x.
 
-    @see  ceil, round, round2even, trunc, ifloor
+    @see  ceil, round, nearbyint, trunc, ifloor
 
   **/
   const boost::dispatch::functor<tag::floor_> floor = {};

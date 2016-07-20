@@ -7,7 +7,7 @@
 */
 //==================================================================================================
 #include <boost/simd/meta/is_scalar.hpp>
-#include <boost/dispatch/adapted/std/array.hpp>
+#include <boost/simd/detail/dispatch/adapted/std/array.hpp>
 #include <array>
 #include <simd_test.hpp>
 

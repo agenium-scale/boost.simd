@@ -6,8 +6,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_X86_SSE1_FUNCTION_BROADCAST_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_X86_SSE1_FUNCTION_BROADCAST_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_BROADCAST_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_BROADCAST_HPP_INCLUDED
 
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/overload.hpp>
@@ -19,7 +19,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( broadcast_
                           , (typename A0, typename A1)
-                          , bs::sse_
+                          , bs::sse1_
                           , bs::pack_<bd::single_<A0>,bs::sse_>
                           , bd::constant_<bd::integer_<A1>>
                           )

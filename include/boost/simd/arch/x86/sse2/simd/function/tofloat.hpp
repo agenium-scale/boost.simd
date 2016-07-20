@@ -15,12 +15,12 @@
 
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 #include <boost/simd/function/simd/bitwise_notand.hpp>
-#include <boost/simd/function/simd/seladd.hpp>
+#include <boost/simd/function/simd/if_plus.hpp>
 #include <boost/simd/constant/signmask.hpp>
 #include <boost/simd/constant/twoto31.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
-#include <boost/dispatch/meta/as_floating.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/as_floating.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -79,7 +79,7 @@ namespace boost { namespace simd { namespace ext
       using si_type = bd::as_integer_t<A0, signed>;
       si_type a00 = bitwise_cast<si_type>(a0);
       si_type a01 = bitwise_notand(Signmask<si_type>(), a0);
-      return seladd(is_ltz(a00), tofloat(a01), Twoto31<result>());
+      return if_plus(is_ltz(a00), tofloat(a01), Twoto31<result>());
     }
   };
 

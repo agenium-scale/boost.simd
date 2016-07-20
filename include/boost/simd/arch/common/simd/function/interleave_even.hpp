@@ -1,71 +1,74 @@
 //==================================================================================================
-/*!
-  @file
-
-  @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
+/**
+  Copyright 2016 NumScale SAS
+  Copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_INTERLEAVE_EVEN_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_INTERLEAVE_EVEN_HPP_INCLUDED
-#include <boost/simd/detail/overload.hpp>
 
-#include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/meta/cardinal_of.hpp>
-#include <boost/simd/meta/is_bitwise_logical.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
+#include <boost/simd/detail/overload.hpp>
+#include <boost/simd/function/extract.hpp>
+#include <boost/simd/function/combine.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
-   namespace bd = boost::dispatch;
-   namespace bs = boost::simd;
-   BOOST_DISPATCH_OVERLOAD(interleave_even_
-                          , (typename A0, typename A1, typename X)
+  namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
+  namespace br = brigand;
+
+  BOOST_DISPATCH_OVERLOAD ( interleave_even_
+                          , (typename T, typename X)
                           , bd::cpu_
-                          , bs::pack_<bd::unspecified_<A0>, X>
-                          , bs::pack_<bd::unspecified_<A1>, X>
+                          , bs::pack_< bd::unspecified_<T>, X >
+                          , bs::pack_< bd::unspecified_<T>, X >
                           )
-   {
-     A0 operator()(A0 const& a0, A1 const& a1) const
-      {
-        A0 that;
-        const std::size_t n = bs::cardinal_of<A0>::value;
-        for(std::size_t i=0;i<n;i+= 2)
-        {
-          that[i]   = a0[i];
-          that[i+1] = a1[i];
-        }
-        return that;
-      }
-   };
+  {
+    static_assert ( T::static_size >= 2
+                  , "interleave_even requires at least two elements"
+                  );
 
-   BOOST_DISPATCH_OVERLOAD(interleave_even_
-                             , (typename A0, typename X)
-                             , bd::cpu_
-                             , bs::pack_<bs::logical_<A0>, X>
-                             , bs::pack_<bs::logical_<A0>, X>
-                             )
-   {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
-      {
-        using type = A0; //meta::as_arithmetic<A0>;
-        return bitwise_cast<A0>(
-          interleave_even( bitwise_cast<type>(a0), bitwise_cast<type>(a1) )
-        );
-      }
-   };
+    template<typename N, typename V>
+    static BOOST_FORCEINLINE
+    typename V::value_type value(V const& x, V const&, std::true_type const&)
+    {
+      return bs::extract<2*(N::value/2)>(x);
+    }
 
+    template<typename N, typename V>
+    static BOOST_FORCEINLINE
+    typename V::value_type value(V const&, V const& y, std::false_type const&)
+    {
+      return bs::extract<2*(N::value/2)>(y);
+    }
 
-//   #define M_IEVEN(z,n,t) (n%2 ? (t+n-1) : n)
-//   BOOST_SIMD_DEFINE_SHUFFLE2(  interleave_even_, M_IEVEN, type32_ )
-//   BOOST_SIMD_DEFINE_SHUFFLE2(  interleave_even_, M_IEVEN, type16_ )
-//   BOOST_SIMD_DEFINE_SHUFFLE2(  interleave_even_, M_IEVEN, type8_  )
-//   #undef M_IEVEN
+    template<typename K, typename... N> static BOOST_FORCEINLINE
+    T do_( T const& x, T const& y, K const&, br::list<N...> const&) BOOST_NOEXCEPT
+    {
+      return T( value<N>(x,y, brigand::bool_<N::value%2==0>{})... );
+    }
 
+    template<typename... N> static BOOST_FORCEINLINE
+    T do_( T const& x, T const& y, aggregate_storage const&, br::list<N...> const&) BOOST_NOEXCEPT
+    {
+       auto const& x0 = x.storage()[0];
+       auto const& x1 = x.storage()[1];
+       auto const& y0 = y.storage()[0];
+       auto const& y1 = y.storage()[1];
+
+       return  combine(interleave_even(x0,y0), interleave_even(x1,y1));
+    }
+
+    BOOST_FORCEINLINE T operator()(T const& x, T const& y) const BOOST_NOEXCEPT
+    {
+      return do_(x,y, typename T::traits::storage_kind{}
+                    , br::range<std::size_t, 0, T::static_size>{}
+                );
+    }
+  };
 } } }
 
 #endif
-

@@ -14,9 +14,13 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SPEC_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SPEC_HPP_INCLUDED
 
-#if !defined(BOOST_HW_SIMD_AVAILABLE)
-  #define BOOST_SIMD_DEFAULT_FAMILY ::boost::simd::simd_emulation_
-  #define BOOST_SIMD_DEFAULT_SITE   ::boost::dispatch::cpu_
+#include <boost/simd/detail/predef.hpp>
+
+#if !defined(BOOST_SIMD_DEFAULT_FAMILY)
+  #if !defined(BOOST_HW_SIMD_AVAILABLE)
+    #define BOOST_SIMD_DEFAULT_FAMILY ::boost::simd::simd_emulation_
+    #define BOOST_SIMD_DEFAULT_SITE   ::boost::dispatch::cpu_
+  #endif
 #endif
 
 // Used as fallbacks for generic cases

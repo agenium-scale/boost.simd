@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/safe_max.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>
@@ -30,7 +30,7 @@ STF_CASE_TPL (" safe_max real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(safe_max(bs::Zero<T>()), bs::Inf<r_t>());
   STF_EQUAL(safe_max(bs::Inf<T>()), bs::Zero<r_t>());
   STF_EQUAL(safe_max(bs::Minf<T>()), bs::Zero<r_t>());

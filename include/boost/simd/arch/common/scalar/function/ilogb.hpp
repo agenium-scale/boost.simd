@@ -17,9 +17,9 @@
 #include <boost/simd/function/scalar/exponent.hpp>
 #include <boost/simd/function/scalar/is_gtz.hpp>
 #include <boost/simd/detail/math.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_floating.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_floating.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

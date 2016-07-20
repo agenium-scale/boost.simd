@@ -13,6 +13,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_ABI_OF_HPP_INCLUDED
 
 #include <boost/simd/arch/common/tags.hpp>
+#include <cstdint>
 
 namespace boost { namespace simd { namespace ext
 {

@@ -9,8 +9,8 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_OPERATOR_HPP_INCLUDED
-#define BOOST_SIMD_OPERATOR_HPP_INCLUDED
+#ifndef BOOST_SIMD_TRIGONOMETRIC_HPP_INCLUDED
+#define BOOST_SIMD_TRIGONOMETRIC_HPP_INCLUDED
 
 namespace boost { namespace simd
 {

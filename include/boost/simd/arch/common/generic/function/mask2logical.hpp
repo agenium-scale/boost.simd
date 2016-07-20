@@ -14,7 +14,7 @@
 
 #include <boost/simd/detail/assert_utils.hpp>
 #include <boost/simd/function/simd/is_nez.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/assert.hpp>
 #include <boost/config.hpp>
 

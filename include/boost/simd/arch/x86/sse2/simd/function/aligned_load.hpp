@@ -12,7 +12,8 @@
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_ALIGNED_LOAD_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/dispatch/adapted/common/pointer.hpp>
+#include <boost/simd/detail/dispatch/adapted/common/pointer.hpp>
+#include <boost/simd/meta/is_pointing_to.hpp>
 #include <boost/align/is_aligned.hpp>
 #include <boost/assert.hpp>
 
@@ -43,12 +44,13 @@ namespace boost { namespace simd { namespace ext
 
   //------------------------------------------------------------------------------------------------
   // load from an aligned pointer of integer
-  BOOST_DISPATCH_OVERLOAD ( aligned_load_
-                          , (typename Target, typename Pointer)
-                          , bs::sse2_
-                          , bd::pointer_<bd::scalar_<bd::integer_<Pointer>>,1u>
-                          , bd::target_<bs::pack_<bd::integer_<Target>,bs::sse_>>
-                          )
+  BOOST_DISPATCH_OVERLOAD_IF( aligned_load_
+                            , (typename Target, typename Pointer)
+                            , (bs::is_pointing_to<Pointer,typename Target::type::value_type>)
+                            , bs::sse2_
+                            , bd::pointer_<bd::scalar_<bd::integer_<Pointer>>,1u>
+                            , bd::target_<bs::pack_<bd::integer_<Target>,bs::sse_>>
+                            )
   {
     using target  = typename Target::type;
 
@@ -61,7 +63,6 @@ namespace boost { namespace simd { namespace ext
       return _mm_load_si128( (__m128i*)(p) );
     }
   };
-
 } } }
 
 #endif

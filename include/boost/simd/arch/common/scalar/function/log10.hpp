@@ -9,15 +9,15 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_LOG10_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_LOG10_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_LOG10_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_LOG10_HPP_INCLUDED
 #include <boost/simd/function/std.hpp>
 
 
 #include <boost/simd/arch/common/detail/scalar/logarithm.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
 #include <cmath>
 
@@ -39,7 +39,6 @@ namespace boost { namespace simd { namespace ext
       return static_cast<A0>(log10(static_cast<ui_t>(a0)));
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( log10_
                           , (typename A0)
                           , bd::cpu_
@@ -52,7 +51,6 @@ namespace boost { namespace simd { namespace ext
              (a0 >= 10u)  ? 1 : 0;
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( log10_
                           , (typename A0)
                           , bd::cpu_
@@ -68,7 +66,6 @@ namespace boost { namespace simd { namespace ext
     }
 
   };
-
   BOOST_DISPATCH_OVERLOAD ( log10_
                           , (typename A0)
                           , bd::cpu_
@@ -88,7 +85,6 @@ namespace boost { namespace simd { namespace ext
              (a0 >= 10u) ?         1 : 0;
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( log10_
                           , (typename A0)
                           , bd::cpu_
@@ -118,15 +114,14 @@ namespace boost { namespace simd { namespace ext
             (a0 >= 10ull) ?                    1 : 0;
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( log10_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::floating_<A0> >
                           , bs::std_tag
+                          , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (A0 a0, std_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const std_tag &, A0 a0) const BOOST_NOEXCEPT
     {
       return std::log10(a0);
     }

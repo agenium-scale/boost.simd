@@ -13,7 +13,7 @@
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_SQR_HPP_INCLUDED
 
 #include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -27,7 +27,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      return multiplies(a0, a0);
+      return bs::multiplies(a0, a0);
     }
   };
 } } }

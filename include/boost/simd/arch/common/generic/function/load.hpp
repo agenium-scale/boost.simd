@@ -13,9 +13,9 @@
 
 #include <boost/config.hpp>
 #include <boost/simd/mask.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/adapted/common/pointer.hpp>
-#include <boost/dispatch/adapted/std/iterator.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/adapted/common/pointer.hpp>
+#include <boost/simd/detail/dispatch/adapted/std/iterator.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -38,7 +38,6 @@ namespace boost { namespace simd { namespace ext
       return boost::simd::load<target>(p+o);
     }
   };
-
 } } }
 
 #endif

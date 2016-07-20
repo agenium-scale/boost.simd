@@ -14,7 +14,7 @@
 
 #include <boost/simd/function/scalar/is_nan.hpp>
 #include <boost/simd/function/scalar/maxmag.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -43,7 +43,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       if (is_nan(a0)) return a1;
-      return maxmag(a1, a0);
+      return maxmag(a0, a1);
     }
   };
 } } }

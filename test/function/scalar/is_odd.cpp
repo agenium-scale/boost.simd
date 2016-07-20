@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/is_odd.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>
@@ -31,7 +31,7 @@ STF_CASE_TPL (" is_odd real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, bs::logical<T>);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(is_odd(bs::Inf<T>()), r_t(false));
   STF_EQUAL(is_odd(bs::Minf<T>()), r_t(false));
   STF_EQUAL(is_odd(bs::Nan<T>()), r_t(false));

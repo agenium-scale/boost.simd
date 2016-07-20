@@ -12,8 +12,8 @@
 **/
 //==================================================================================================
 
-#ifndef BOOST_SIMD_SDK_IS_POWER_OF_2_HPP_INCLUDED
-#define BOOST_SIMD_SDK_IS_POWER_OF_2_HPP_INCLUDED
+#ifndef BOOST_SIMD_META_IS_POWER_OF_2_HPP_INCLUDED
+#define BOOST_SIMD_META_IS_POWER_OF_2_HPP_INCLUDED
 
 #include <cstddef>
 

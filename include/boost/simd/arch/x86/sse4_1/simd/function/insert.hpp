@@ -1,18 +1,15 @@
 //==================================================================================================
-/*!
-  @file
-
-  @copyright 2016 NumScale SAS
+/**
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_X86_SSE4_1_SIMD_FUNCTION_INSERT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE4_1_SIMD_FUNCTION_INSERT_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/detail/aliasing.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -51,6 +48,7 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
+#if !defined(BOOST_MSVC)
   BOOST_DISPATCH_OVERLOAD ( insert_
                           , (typename A0, typename A1, typename A2)
                           , bs::sse4_1_
@@ -66,6 +64,7 @@ namespace boost { namespace simd { namespace ext
       a0 = _mm_insert_epi64(a0, a2, value);
     }
   };
+#endif
 
 } } }
 

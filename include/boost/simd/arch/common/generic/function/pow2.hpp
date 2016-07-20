@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_POW2_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_POW2_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_POW2_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_POW2_HPP_INCLUDED
 
 #ifndef BOOST_SIMD_NO_INVALIDS
 #include <boost/simd/detail/assert_utils.hpp>
@@ -20,7 +20,7 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/function/ldexp.hpp>
 #include <boost/simd/function/toint.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/assert.hpp>
 #include <boost/config.hpp>
 

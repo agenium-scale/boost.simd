@@ -14,11 +14,10 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/function/simd/genmask.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <climits>
 #include <cstddef>
 
@@ -37,7 +36,7 @@ namespace boost { namespace simd { namespace ext
         using stype = bd::scalar_of_t<A0>;
         using itype = bd::as_integer_t<stype, unsigned>;
         std::size_t z = 0;
-        const std::size_t N = bs::cardinal_of<A0>::value;
+        const std::size_t N = A0::static_size;
         for(std::size_t i = 0; i != N; ++i)
         {
           stype t = a0[i]; // TO DO why must I use t or else bitwise_cast does not compile (clang 3.6)?

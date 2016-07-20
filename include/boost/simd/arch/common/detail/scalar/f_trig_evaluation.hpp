@@ -15,10 +15,10 @@
 #include <boost/simd/function/horn.hpp>
 #include <boost/simd/constant/mhalf.hpp>
 #include <boost/simd/function/scalar/fma.hpp>
-#include <boost/simd/function/scalar/oneplus.hpp>
+#include <boost/simd/function/scalar/inc.hpp>
 #include <boost/simd/function/scalar/rec.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd
 {
@@ -50,7 +50,7 @@ namespace boost { namespace simd
           , 0xbab60619
           , 0x37ccf5ce
           > (z);
-        return oneplus( fma(z,Mhalf<A0>(), y* sqr(z)));
+        return inc( fma(z,Mhalf<A0>(), y* sqr(z)));
       }
 
       static BOOST_FORCEINLINE A0 sin_eval(A0 z, A0 x) BOOST_NOEXCEPT

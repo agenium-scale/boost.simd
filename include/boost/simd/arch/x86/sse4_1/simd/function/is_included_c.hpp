@@ -15,7 +15,7 @@
 
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 
 namespace boost { namespace simd { namespace ext
@@ -29,10 +29,10 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::integer_<A0>, bs::sse_>
                          )
   {
-    BOOST_FORCEINLINE logical<sA0> operator() ( const A0 & a0
+    BOOST_FORCEINLINE bool operator() ( const A0 & a0
                                       , const A0 & a1 ) const BOOST_NOEXCEPT
     {
-      return logical<sA0>(_mm_testz_si128(a1, a0));
+      return _mm_testz_si128(a1, a0);
     }
   };
   BOOST_DISPATCH_OVERLOAD ( is_included_c_
@@ -42,12 +42,11 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::floating_<A0>, bs::sse_>
                          )
   {
-    using sA0 = bd::scalar_of<A0>;
-    BOOST_FORCEINLINE logical<sA0> operator() ( const A0 & a0
+    BOOST_FORCEINLINE bool operator() ( const A0 & a0
                                       , const A0 & a1 ) const BOOST_NOEXCEPT
     {
       using i_t = bd::as_integer_t<A0>;
-      return logical<sA0>(is_included_c(bitwise_cast<i_t>(a0), bitwise_cast<i_t>(a1)));
+      return is_included_c(bitwise_cast<i_t>(a0), bitwise_cast<i_t>(a1));
     }
   };
 

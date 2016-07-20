@@ -8,8 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_ERF_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_ERF_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ERF_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ERF_HPP_INCLUDED
 
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/arch/common/detail/generic/erf_kernel.hpp>
@@ -24,11 +24,11 @@
 #include <boost/simd/function/scalar/is_ltz.hpp>
 #include <boost/simd/function/scalar/negif.hpp>
 #include <boost/simd/function/scalar/oneminus.hpp>
-#include <boost/simd/function/scalar/oneplus.hpp>
+#include <boost/simd/function/scalar/inc.hpp>
 #include <boost/simd/function/scalar/sign.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
 #include <boost/simd/function/scalar/sqrt.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #ifndef BOOST_SIMD_NO_INVALIDS
 #include <boost/simd/function/scalar/is_nan.hpp>
 #endif
@@ -36,7 +36,7 @@
 #include <boost/simd/function/scalar/is_inf.hpp>
 #include <boost/simd/function/scalar/signnz.hpp>
 #endif
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>
 
@@ -79,7 +79,6 @@ namespace boost { namespace simd { namespace ext
       else return sign(x);
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( erf_
                           , (typename A0)
                           , bd::cpu_
@@ -101,22 +100,21 @@ namespace boost { namespace simd { namespace ext
       }
       else
       {
-        A0 z = x/oneplus(x)-Ratio<A0, 2, 5>();
+        A0 z = x/inc(x)-Ratio<A0, 2, 5>();
         A0 r2 =   oneminus(exp(-sqr(x))*detail::erf_kernel<A0>::erfc2(z));
         if (is_ltz(a0)) r2 = -r2;
         return r2;
       }
    }
   };
-
   BOOST_DISPATCH_OVERLOAD ( erf_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::floating_<A0> >
                           , bs::std_tag
+                          , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (A0 a0, std_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const std_tag &, A0 a0) const BOOST_NOEXCEPT
     {
       return std::erf(a0);
     }

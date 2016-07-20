@@ -20,7 +20,7 @@
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd
@@ -60,7 +60,7 @@ namespace boost { namespace simd
   {
     typedef exp_reduction<A0,Tag>                        reduc_t;
     // compute exp(ax) where a is 1, 2 or ten depending on Tag
-    static BOOST_FORCEINLINE float expa(A0 a0) BOOST_NOEXCEPT
+    static BOOST_FORCEINLINE A0 expa(A0 a0) BOOST_NOEXCEPT
     {
 
       if (reduc_t::isgemaxlog(a0)) return Inf<A0>();

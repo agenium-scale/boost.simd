@@ -12,26 +12,29 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_IDIVFIX_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_IDIVFIX_HPP_INCLUDED
 
-#include <boost/simd/function/divfix.hpp>
+#include <boost/simd/function/fix.hpp>
+#include <boost/simd/function/ifix.hpp>
 #include <boost/simd/function/divides.hpp>
-#include <boost/simd/function/toints.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/function/toint.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
-  BOOST_DISPATCH_OVERLOAD ( idivfix_
+  BOOST_DISPATCH_OVERLOAD ( div_
                           , (typename A0)
                           , bd::cpu_
+                          , bs::tag::ifix_
                           , bd::generic_< bd::arithmetic_<A0> >
                           , bd::generic_< bd::arithmetic_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( bd::functor<bs::tag::ifix_> const&
+                                    ,  A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
     {
-      return divfix(a0, a1);
+      return div(fix, a0, a1);
     }
   };
 
@@ -40,17 +43,19 @@ namespace boost { namespace simd { namespace ext
   #pragma warning(disable: 4723) // potential divide by 0
 #endif
 
-  BOOST_DISPATCH_OVERLOAD ( idivfix_
+  BOOST_DISPATCH_OVERLOAD ( div_
                           , (typename A0)
                           , bd::cpu_
+                          , bs::tag::ifix_
                           , bd::generic_< bd::floating_<A0> >
                           , bd::generic_< bd::floating_<A0> >
                           )
 
   {
-    BOOST_FORCEINLINE bd::as_integer_t<A0> operator() ( A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE bd::as_integer_t<A0> operator() ( bd::functor<bs::tag::ifix_> const&
+                                    ,  A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
     {
-      return toints(a0/a1);
+      return saturated_(toint)(a0/a1);
     }
   };
 } } }

@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/ulpdist.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>
@@ -26,7 +26,7 @@ STF_CASE_TPL (" ulpdist real",  STF_IEEE_TYPES)
 
   STF_EXPR_IS( ulpdist(T(), T()), T);
 
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(ulpdist(bs::Inf<T>(), bs::Inf<T>()), bs::Zero<T>());
   STF_EQUAL(ulpdist(bs::Minf<T>(), bs::Minf<T>()), bs::Zero<T>());
   STF_EQUAL(ulpdist(bs::Nan<T>(), bs::Nan<T>()), bs::Zero<T>());

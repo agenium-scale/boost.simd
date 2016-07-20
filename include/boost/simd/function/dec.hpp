@@ -35,7 +35,11 @@ namespace boost { namespace simd
   T r =  x-T(1);
   @endcode
 
-  @see  minusone, minus
+  @par Decorators
+
+    saturated_ ensures that saturated_(dec)(x) will never be strictly greater than x.
+
+  @see minus
 
   **/
   const boost::dispatch::functor<tag::dec_> dec = {};

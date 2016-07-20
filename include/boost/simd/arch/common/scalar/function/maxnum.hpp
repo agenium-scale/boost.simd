@@ -15,7 +15,7 @@
 
 #include <boost/simd/function/scalar/is_nan.hpp>
 #include <boost/simd/function/scalar/max.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>
 
@@ -34,7 +34,6 @@ namespace boost { namespace simd { namespace ext
      return boost::simd::max(a0, a1);
    }
  };
-
   BOOST_DISPATCH_OVERLOAD ( maxnum_
                           , (typename A0)
                           , bd::cpu_
@@ -45,19 +44,18 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       if (is_nan(a0)) return a1;
-      else return simd::max(a1, a0);
+      else return simd::max(a0, a1);
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( maxnum_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::floating_<A0> >
-                          , bd::scalar_< bd::floating_<A0> >
                           , boost::simd::std_tag
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1, std_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const std_tag &,  A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       return std::fmax(a0, a1);
     }

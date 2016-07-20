@@ -1,47 +1,49 @@
 //==================================================================================================
-/*!
-  @file
-
-  @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
+/**
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_COMPARE_LESS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_COMPARE_LESS_HPP_INCLUDED
-#include <boost/simd/detail/overload.hpp>
 
-#include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/meta/as_logical.hpp>
-#include <boost/simd/meta/cardinal_of.hpp>
-#include <boost/simd/meta/as_logical.hpp>
+#include <boost/simd/detail/overload.hpp>
+#include <boost/simd/function/slice.hpp>
+#include <algorithm>
 
 namespace boost { namespace simd { namespace ext
 {
-   namespace bd = boost::dispatch;
-   namespace bs = boost::simd;
-   BOOST_DISPATCH_OVERLOAD(compare_less_
+  namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
+
+  BOOST_DISPATCH_OVERLOAD ( compare_less_
                           , (typename A0, typename X)
                           , bd::cpu_
-                          , bs::pack_<bd::arithmetic_<A0>, X>
-                          , bs::pack_<bd::arithmetic_<A0>, X>
+                          , bs::pack_<bd::fundamental_<A0>, X>
+                          , bs::pack_<bd::fundamental_<A0>, X>
                           )
-   {
-     using sA0 =  bd::scalar_of_t<A0>;
-     BOOST_FORCEINLINE logical<sA0> operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
-     {
-        for(std::size_t i=0;i<bs::cardinal_of<A0>::value;++i)
-        {
-          if (a0[i] < a1[i])  return {true};
-          if (a1[i] < a0[i])  return {false};
-        }
-          return {false};
-      }
-   };
+  {
+    BOOST_FORCEINLINE bool operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+    {
+      return do_(a0,a1, typename A0::storage_kind{});
+    }
 
+    BOOST_FORCEINLINE
+    bool do_( const A0& a0, const A0& a1, aggregate_storage const&) const BOOST_NOEXCEPT
+    {
+      auto s0 = slice(a0);
+      auto s1 = slice(a1);
+      return compare_less(s0[0], s1[0] ) || compare_less(s0[1], s1[1]);
+    }
+
+    template<typename K>
+    BOOST_FORCEINLINE bool do_(const A0& a0, const A0& a1, K const&) const BOOST_NOEXCEPT
+    {
+      return std::lexicographical_compare(a0.begin(),a0.end(),a1.begin(),a1.end());
+    }
+  };
 } } }
 
 #endif
-

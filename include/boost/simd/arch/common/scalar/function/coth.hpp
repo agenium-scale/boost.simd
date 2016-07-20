@@ -9,8 +9,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_COTH_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_FUNCTION_SCALAR_COTH_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_COTH_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_COTH_HPP_INCLUDED
 
 #include <boost/simd/arch/common/detail/generic/tanh_kernel.hpp>
 #include <boost/simd/constant/one.hpp>
@@ -22,10 +22,10 @@
 #include <boost/simd/function/scalar/coth.hpp>
 #include <boost/simd/function/scalar/exp.hpp>
 #include <boost/simd/function/scalar/fma.hpp>
-#include <boost/simd/function/scalar/minusone.hpp>
+#include <boost/simd/function/scalar/dec.hpp>
 #include <boost/simd/function/scalar/rec.hpp>
 #include <boost/simd/function/scalar/sqr.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -54,7 +54,7 @@ namespace boost { namespace simd { namespace ext
       }
       else
       {
-        r = fma(Two<A0>(), rec(minusone(exp(x+x))), One<A0>());
+        r = fma(Two<A0>(), rec(dec(exp(x+x))), One<A0>());
       }
       return bitwise_xor(r, bitofsign(a0));
     }

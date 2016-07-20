@@ -15,29 +15,29 @@ set ( SOURCES
 #memory
    extract.cpp
    load.cpp
+   slide.cpp
    splat.cpp
    make.cpp
-#alias
-   modulus.cpp
 #arithmetic
    abs.cpp
-   abss.cpp
-   adds.cpp
+   abs_s.cpp
    arg.cpp
    average.cpp
    ceil.cpp
    conj.cpp
    correct_fma.cpp
    dec.cpp
+   dec_s.cpp
    dist.cpp
-   dists.cpp
+   dist_s.cpp
    div.cpp
    divceil.cpp
+   divfix.cpp
    divfloor.cpp
    divround.cpp
-   divround2even.cpp
+   divnearbyint.cpp
    divtrunc.cpp
-   divs.cpp
+   divides_s.cpp
    floor.cpp
    fma.cpp
    fms.cpp
@@ -45,46 +45,46 @@ set ( SOURCES
    fnms.cpp
    hypot.cpp
    iceil.cpp
-   idiv.cpp
    idivceil.cpp
    idivfix.cpp
    idivfloor.cpp
    idivround.cpp
-   idivround2even.cpp
+   idivnearbyint.cpp
    ifloor.cpp
    inc.cpp
-   iround2even.cpp
+   inc_s.cpp
+   inearbyint.cpp
    iround.cpp
    logical_xor.cpp
    max.cpp
    meanof.cpp
    min.cpp
    minmod.cpp
-   minusone.cpp
-   mod.cpp
-   muls.cpp
-   negs.cpp
+   multiplies_s.cpp
+   nearbyint.cpp
+   neg_s.cpp
    oneminus.cpp
-   oneplus.cpp
+   oneminus_s.cpp
+   plus_s.cpp
    rec.cpp
-   remainder.cpp
    rem.cpp
-   remquo.cpp
+   remfloor.cpp
+   remceil.cpp
    remround.cpp
-   round2even.cpp
+   remnearbyint.cpp
+   remquo.cpp
    round.cpp
    rsqrt.cpp
    sqr_abs.cpp
    sqr.cpp
-   sqrs.cpp
+   sqr_s.cpp
    sqrt.cpp
-   subs.cpp
    tenpower.cpp
    tofloat.cpp
    toint.cpp
-   toints.cpp
+   toint_s.cpp
    touint.cpp
-   touints.cpp
+   touint_s.cpp
    trunc.cpp
    two_add.cpp
    two_prod.cpp
@@ -124,10 +124,10 @@ set ( SOURCES
    if_allbits_else.cpp
    if_else_allbits.cpp
    if_else_zero.cpp
-   ifnotadd.cpp
-   ifnotdec.cpp
-   ifnotinc.cpp
-   ifnotsub.cpp
+   ifnot_plus.cpp
+   ifnot_dec.cpp
+   ifnot_inc.cpp
+   ifnot_minus.cpp
    if_one_else_zero.cpp
    if_zero_else.cpp
    if_zero_else_one.cpp
@@ -138,10 +138,10 @@ set ( SOURCES
    mask2logical.cpp
    negif.cpp
    negifnot.cpp
-   seladd.cpp
-   seldec.cpp
-   selinc.cpp
-   selsub.cpp
+   if_plus.cpp
+   if_dec.cpp
+   if_inc.cpp
+   if_minus.cpp
 #ieee
    bitfloating.cpp
    bitinteger.cpp
@@ -196,12 +196,12 @@ set ( SOURCES
    logical_not.cpp
    logical_or.cpp
    minus.cpp
-   modulo.cpp
    multiplies.cpp
    plus.cpp
    shift_left.cpp
    shift_right.cpp
    unary_minus.cpp
+   unary_minus_s.cpp
    unary_plus.cpp
 #predicates
    is_denormal.cpp
@@ -251,19 +251,15 @@ set ( SOURCES
    compare_not_equal.cpp
    dot.cpp
    hmsb.cpp
-   inbtrue.cpp
    is_included_c.cpp
    is_included.cpp
    is_simd_logical.cpp
-#   maximum.cpp
-#   minimum.cpp
    nbtrue.cpp
    none.cpp
-   posmax.cpp
-   posmin.cpp
    prod.cpp
    sum.cpp
 #swar
+  shuffle.cpp
    broadcast.cpp
    cummax.cpp
    cummin.cpp
@@ -273,10 +269,6 @@ set ( SOURCES
    lookup.cpp
    reverse.cpp
    sort.cpp
-##   splatted_maximum.cpp
-##   splatted_minimum.cpp
-##   splatted_prod.cpp
-##   splatted_sum.cpp
 #exponential
    cbrt.cpp
    exp.cpp
@@ -290,9 +282,7 @@ set ( SOURCES
    log10.cpp
    log1p.cpp
    log2.cpp
-   logspace_add.cpp
-   logspace_sub.cpp
-#   nthroot.cpp # long compilation time to fix
+   nthroot.cpp
    pow.cpp
    pow2.cpp
    pow_abs.cpp
@@ -361,66 +351,6 @@ set ( SOURCES
    tand.cpp
    tan.cpp
    tanpi.cpp
-#aliases
-   compare_eq.cpp
-   compare_ge.cpp
-   compare_gt.cpp
-   compare_le.cpp
-   compare_lt.cpp
-   compare_neq.cpp
-   bitwise_not.cpp
-   rdivide.cpp
-   if_zero_else_allbits.cpp
-   if_allbits_else_zero.cpp
-   if_nan_else.cpp
-   if_else_nan.cpp
-   where.cpp
-   select.cpp
-   sel.cpp
-   eq.cpp
-   is_eq.cpp
-   ge.cpp
-   is_ge.cpp
-   gt.cpp
-   is_gt.cpp
-   testz.cpp
-   are_disjoint.cpp
-   le.cpp
-   is_le.cpp
-   lt.cpp
-   is_lt.cpp
-   ne.cpp
-   neq.cpp
-   is_neq.cpp
-   is_nge.cpp
-   is_ngt.cpp
-   is_nle.cpp
-   is_nlt.cpp
-   fmax.cpp
-   fmin.cpp
-   drem.cpp
-   fmod.cpp
-   rint.cpp
-   if_add.cpp
-   if_dec.cpp
-   if_inc.cpp
-   if_sub.cpp
-   shl.cpp
-   shli.cpp
-   shra.cpp
-   shar.cpp
-   shrai.cpp
-   shri.cpp
-   ifix.cpp
-   fix.cpp
-   neg.cpp
-   remfix.cpp
-   itrunc.cpp
-   angle.cpp
-   is_not_finite.cpp
-   is_not_invalid.cpp
-   decs.cpp
-   incs.cpp
 #eulerian
    stirling.cpp
    gamma.cpp
@@ -432,7 +362,6 @@ set ( SOURCES
 #libc
    is_lessgreater.cpp
    is_normal.cpp
-   fabs.cpp
    fpclassify.cpp
    signbit.cpp
 )

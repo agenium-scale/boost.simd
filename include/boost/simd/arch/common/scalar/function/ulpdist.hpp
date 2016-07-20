@@ -20,11 +20,12 @@
 #include <boost/simd/function/scalar/is_nan.hpp>
 #include <boost/simd/function/scalar/ldexp.hpp>
 #include <boost/simd/function/scalar/max.hpp>
-#include <boost/simd/function/scalar/subs.hpp>
+#include <boost/simd/function/scalar/minus.hpp>
 #include <boost/simd/function/scalar/tofloat.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
+#include <tuple>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -38,7 +39,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
-      return (a0>a1) ? subs(a0,a1) : subs(a1,a0);
+      return (a0>a1) ? saturated_(minus)(a0,a1) : saturated_(minus)(a1,a0);
     }
   };
 
@@ -70,9 +71,9 @@ namespace boost { namespace simd { namespace ext
       if (is_nan(a0)&&is_nan(a1)) return Zero<A0>();
 
       i_t e1, e2;
-
-      A0 m1 = simd::frexp(a0, e1);
-      A0 m2 = simd::frexp(a1, e2);
+      A0 m1, m2;
+      std::tie(m1, e1) = simd::frexp(a0);
+      std::tie(m2, e2) = simd::frexp(a1);
 
       i_t expo = -simd::max(e1, e2);
 

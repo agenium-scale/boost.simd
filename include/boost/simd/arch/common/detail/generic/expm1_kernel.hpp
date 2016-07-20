@@ -33,16 +33,16 @@
 #include <boost/simd/function/minus.hpp>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/oneminus.hpp>
-#include <boost/simd/function/oneplus.hpp>
+#include <boost/simd/function/inc.hpp>
 #include <boost/simd/function/plus.hpp>
-#include <boost/simd/function/round2even.hpp>
+#include <boost/simd/function/nearbyint.hpp>
 #include <boost/simd/function/shift_left.hpp>
 #include <boost/simd/function/sqr.hpp>
 #include <boost/simd/function/toint.hpp>
 #include <boost/simd/function/unary_minus.hpp>
 #include <boost/simd/function/horn.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd
 {
@@ -62,7 +62,7 @@ namespace boost { namespace simd
       {
         using i_t = bd::as_integer_t<A0>;
         using s_t = bd::scalar_of_t<A0>;
-        A0 k  = round2even(Invlog_2<A0>()*a0);
+        A0 k  = nearbyint(Invlog_2<A0>()*a0);
         A0 x = fnms(k, Log_2hi<A0>(), a0);
         x =  fnms(k, Log_2lo<A0>(), x);
         A0 hx  = x*Half<A0>();
@@ -90,7 +90,7 @@ namespace boost { namespace simd
       {
         using i_t = bd::as_integer_t<A0>;
         using s_t = bd::scalar_of_t<A0>;
-        A0 k  = round2even(Invlog_2<A0>()*a0);
+        A0 k  = nearbyint(Invlog_2<A0>()*a0);
         A0 hi = fnms(k, Log_2hi<A0>(), a0);
         A0 lo = k*Log_2lo<A0>();
         A0 x  = hi-lo;
@@ -110,7 +110,7 @@ namespace boost { namespace simd
         i_t ik =  toint(k);
         A0 two2mk = bitwise_cast<A0>(shift_left(Maxexponent<A0>()-ik,Nbmantissabits<s_t>()));
         A0 ct1= oneminus(two2mk)-(e-x);
-        A0 ct2= oneplus((x-(e+two2mk)));
+        A0 ct2= inc((x-(e+two2mk)));
         A0 y = if_else((k < Ratio<A0, 20>()),ct1,ct2);
         return fast_(ldexp)(y, ik);
       }

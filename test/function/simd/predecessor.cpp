@@ -14,7 +14,7 @@
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/logical.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
@@ -34,9 +34,9 @@ void test(Env& $)
      a2[i] = i;
      b[i] = bs::predecessor(a1[i], a2[i]);
    }
-  p_t aa1(&a1[0], &a1[N]);
-  i_t aa2(&a2[0], &a2[N]);
-  p_t bb(&b[0], &b[N]);//logical
+  p_t aa1(&a1[0], &a1[0]+N);
+  i_t aa2(&a2[0], &a2[0]+N);
+  p_t bb(&b[0], &b[0]+N);//logical
   STF_IEEE_EQUAL(bs::predecessor(aa1, aa2), bb);
 }
 

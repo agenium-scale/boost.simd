@@ -12,7 +12,7 @@
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_EXTRACT_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/dispatch/adapted/std/integral_constant.hpp>
+#include <boost/simd/detail/dispatch/adapted/std/integral_constant.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

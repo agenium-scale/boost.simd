@@ -26,7 +26,7 @@ namespace boost { namespace simd { namespace tag
   using not_simd_type = std::integral_constant<bool, false>;
   using simd_type = std::integral_constant<bool, true>;
 
-  struct fast {};
+  struct restricted {};
   struct regular {};
 
   // tags allowing to choose angle unit in trigonometric functions
@@ -122,7 +122,7 @@ namespace boost { namespace simd { namespace tag
   {
     using parent = clipped_pio4_tag;
     using hierarchy_tag = void;
-    using type = tag::fast;
+    using type = tag::restricted;
     static const bool clipped =  true;
     static const reduction start = r_0_pio4;
     static const reduction range = r_0_pio4;

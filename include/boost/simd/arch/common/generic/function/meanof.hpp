@@ -24,7 +24,7 @@
 #include <boost/simd/function/minus.hpp>
 #include <boost/simd/function/plus.hpp>
 #include <boost/simd/function/shift_right.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 //no overflow average for floating numbers
 

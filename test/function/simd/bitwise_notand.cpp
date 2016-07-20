@@ -14,7 +14,7 @@
 #include <boost/simd/function/unary_minus.hpp>
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <simd_test.hpp>
 
 template <typename T, std::size_t N, typename Env>
@@ -31,9 +31,9 @@ void test(Env& $)
      a2[i] = (i%2) ? T(i+N) : T(1);
      b[i] = bs::bitwise_notand(a1[i], a2[i]);
    }
-  p_t aa1(&a1[0], &a1[N]);
-  p_t aa2(&a2[0], &a2[N]);
-  p_t bb(&b[0], &b[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t aa2(&a2[0], &a2[0]+N);
+  p_t bb(&b[0], &b[0]+N);
   STF_IEEE_EQUAL(bs::bitwise_notand(aa1, aa2), bb);
 }
 

@@ -13,8 +13,8 @@
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/as.hpp>
-#include <boost/dispatch/function/make_callable.hpp>
-#include <boost/dispatch/hierarchy/functions.hpp>
+#include <boost/simd/detail/dispatch/function/make_callable.hpp>
+#include <boost/simd/detail/dispatch/hierarchy/functions.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 
 namespace boost { namespace simd
@@ -35,9 +35,18 @@ namespace boost { namespace simd
   }
 
   template<typename T, typename Pointer, typename... Opts>
-  BOOST_FORCEINLINE T aligned_load(Pointer p, Opts&&... o)
+  BOOST_FORCEINLINE T aligned_load(Pointer const& p, Opts&&... o)
   {
     return detail::aligned_load( p, std::forward<Opts>(o)..., boost::simd::as_<T>() );
+  }
+
+  template<typename T, std::ptrdiff_t Misalignment, typename Pointer, typename... Opts>
+  BOOST_FORCEINLINE T aligned_load(Pointer const& p, Opts&&... o)
+  {
+    return detail::aligned_load ( p, std::forward<Opts>(o)...
+                                , std::integral_constant<std::ptrdiff_t,Misalignment>()
+                                , boost::simd::as_<T>()
+                                );
   }
 } }
 

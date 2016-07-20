@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/bitwise_and.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>
@@ -28,7 +28,7 @@ STF_CASE_TPL( "Check bitwise_and behavior with floating", STF_IEEE_TYPES )
   using r_t = decltype(bitwise_and(T(), T()));
   STF_TYPE_IS(r_t, T);
 
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(bitwise_and(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>());
   STF_EQUAL(bitwise_and(bs::Minf<T>(), bs::Minf<T>()), bs::Minf<r_t>());
   STF_IEEE_EQUAL(bitwise_and(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>());

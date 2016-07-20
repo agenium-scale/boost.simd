@@ -11,11 +11,11 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_SDK_REAL_OF_HPP_INCLUDED
-#define BOOST_SIMD_SDK_REAL_OF_HPP_INCLUDED
+#ifndef BOOST_SIMD_META_REAL_OF_HPP_INCLUDED
+#define BOOST_SIMD_META_REAL_OF_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd
 {

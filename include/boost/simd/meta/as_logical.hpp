@@ -11,15 +11,15 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_SDK_AS_LOGICAL_HPP_INCLUDED
-#define BOOST_SIMD_SDK_AS_LOGICAL_HPP_INCLUDED
+#ifndef BOOST_SIMD_META_AS_LOGICAL_HPP_INCLUDED
+#define BOOST_SIMD_META_AS_LOGICAL_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/logical.hpp>
 #include <boost/simd/meta/real_of.hpp>
 #include <boost/simd/detail/brigand.hpp>
-#include <boost/dispatch/meta/factory_of.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/factory_of.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd
 {

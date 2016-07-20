@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/firstbitset.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>
@@ -32,7 +32,7 @@ STF_CASE_TPL (" firstbitset real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t,(bd::as_integer_t<T, unsigned>));
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(firstbitset(bs::Inf<T>()), r_t(1ull<<bs::Nbmantissabits<T>()));
   STF_EQUAL(firstbitset(bs::Minf<T>()), r_t(1ull<<bs::Nbmantissabits<T>()));
   STF_EQUAL(firstbitset(bs::Nan<T>()), bs::One<r_t>());

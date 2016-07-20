@@ -12,7 +12,7 @@
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/iround.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <simd_test.hpp>
 
 template <typename T, std::size_t N, typename Env>
@@ -31,8 +31,8 @@ void test(Env& $)
      a1[i] = T(i+1);
      b[i] = bs::iround(a1[i]);
    }
-  p_t aa1(&a1[0], &a1[N]);
-  pi_t bb(&b[0], &b[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  pi_t bb(&b[0], &b[0]+N);
   STF_EQUAL(bs::iround(aa1), bb);
 }
 

@@ -45,9 +45,9 @@ namespace boost { namespace simd
     Peculiarly,  that implies that the behaviour of this function on invalid or negative
     entries is not defined and possibly unpredictable.
 
-    If you intend to use @ref Nan, @ref Inf or negative entries, consider using @ref touints instead.
+    If you intend to use @ref Nan, @ref Inf or negative entries, consider using @ref touint_s instead.
 
-    @see toint, toints,  touints
+    @see toint, toint_s,  touint_s
 
   **/
   const boost::dispatch::functor<tag::touint_> touint = {};

@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/scalar/cosd.hpp>
-#include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/restricted.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -46,7 +46,7 @@ STF_CASE_TPL (" cosd",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(cosd(bs::Zero<T>()), bs::One<r_t>(), 0.5);
 }
 
-STF_CASE_TPL (" cosd bs::fast_",  STF_IEEE_TYPES)
+STF_CASE_TPL (" cosd bs::restricted_",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -59,17 +59,17 @@ STF_CASE_TPL (" cosd bs::fast_",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(bs::fast_(cosd)(bs::Inf<T>()),  bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cosd)(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cosd)(bs::Nan<T>()),  bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cosd)(bs::Inf<T>()),  bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cosd)(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cosd)(bs::Nan<T>()),  bs::Nan<r_t>(), 0.5);
 #endif
-  STF_ULP_EQUAL(bs::fast_(cosd)(T(-180)),       bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cosd)(T(-45)),        bs::Sqrt_2o_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cosd)(T(-90)),        bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cosd)(T(180)),        bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cosd)(T(45)),         bs::Sqrt_2o_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cosd)(T(90)),         bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(cosd)(bs::Zero<T>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cosd)(T(-180)),       bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cosd)(T(-45)),        bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cosd)(T(-90)),        bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cosd)(T(180)),        bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cosd)(T(45)),         bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cosd)(T(90)),         bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::restricted_(cosd)(bs::Zero<T>()), bs::One<r_t>(), 0.5);
 }
 STF_CASE_TPL (" cosd clipped_small",  STF_IEEE_TYPES)
 {

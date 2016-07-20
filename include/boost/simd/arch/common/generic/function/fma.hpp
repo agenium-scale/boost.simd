@@ -14,7 +14,7 @@
 
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/plus.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -36,5 +36,7 @@ namespace boost { namespace simd { namespace ext
   };
 } } }
 
+#include <boost/simd/arch/common/scalar/function/correct_fma.hpp>
+#include <boost/simd/arch/common/simd/function/correct_fma.hpp>
 
 #endif

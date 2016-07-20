@@ -11,7 +11,7 @@
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/function/fast.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>
@@ -31,7 +31,7 @@ STF_CASE_TPL (" hypot real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_ULP_EQUAL(hypot(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>(), 0);
   STF_ULP_EQUAL(hypot(bs::Minf<T>(), bs::Minf<T>()), bs::Inf<r_t>(), 0);
   STF_ULP_EQUAL(hypot(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>(), 0);
@@ -56,7 +56,7 @@ STF_CASE_TPL (" hypot real fast",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
- #ifndef STF_NO_INVALIDS
+ #ifndef BOOST_SIMD_NO_INVALIDS
   STF_ULP_EQUAL(bs::fast_(hypot)(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>(), 0);
   STF_ULP_EQUAL(bs::fast_(hypot)(bs::Minf<T>(), bs::Minf<T>()), bs::Inf<r_t>(), 0);
   STF_ULP_EQUAL(bs::fast_(hypot)(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>(), 0);
@@ -81,7 +81,7 @@ STF_CASE_TPL (" hypot real std",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_ULP_EQUAL(bs::std_(hypot)(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>(), 0);
   STF_ULP_EQUAL(bs::std_(hypot)(bs::Minf<T>(), bs::Minf<T>()), bs::Inf<r_t>(), 0);
   STF_ULP_EQUAL(bs::std_(hypot)(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>(), 0);

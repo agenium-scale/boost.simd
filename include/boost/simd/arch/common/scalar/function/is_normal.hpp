@@ -15,7 +15,7 @@
 #include <boost/simd/function/scalar/is_not_denormal.hpp>
 #include <boost/simd/function/scalar/is_finite.hpp>
 #include <boost/simd/function/std.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>
 
@@ -34,7 +34,6 @@ namespace boost { namespace simd { namespace ext
       return a0;
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( is_normal_
                           , (typename A0)
                           , bd::cpu_
@@ -46,7 +45,6 @@ namespace boost { namespace simd { namespace ext
       return is_nez(a0);
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( is_normal_
                           , (typename A0)
                           , bd::cpu_
@@ -58,17 +56,28 @@ namespace boost { namespace simd { namespace ext
       return   is_finite(a0)&&is_nez(a0)&&is_not_denormal(a0);
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( is_normal_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::scalar_< bd::floating_<A0> >
                           , bs::std_tag
+                          , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE logical<A0> operator() (A0 a0,  bs::std_tag const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE logical<A0> operator() (const std_tag &, A0 a0) const BOOST_NOEXCEPT
     {
       return std::isnormal(a0);
+    }
+  };
+  BOOST_DISPATCH_OVERLOAD ( is_normal_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bs::std_tag
+                          , bd::scalar_< bd::integer_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE logical<A0> operator() (const std_tag &, A0 a0) const BOOST_NOEXCEPT
+    {
+      return {a0 != 0};
     }
   };
 } } }

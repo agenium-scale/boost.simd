@@ -8,8 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_DIV_INCLUDED
-#define BOOST_SIMD_FUNCTION_DIV_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_DIV_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_DIV_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
@@ -24,23 +24,19 @@ namespace boost { namespace simd
     For any value @c a and @c b of type @c T,
 
     @code
-    T r = div(a, b{, option});
+    T r = div({option, }a, b);
     @endcode
 
     returns the quotient of @c a by @c b according to the option
 
     if there is no option the call is equivalent to divides(a, b),  else
-    option can be ceil, floor, fix, round, round2even (in the namespace booost::simd)
+    option can be ceil, floor, fix, round, nearbyint (in the namespace booost::simd)
     and provide the same result as the calls divceil(a, b), divfloor(a, b),
     divfix(a, b), divround(a, b).
 
-    @param a First  parameter of the quotient
-    @param b Second parameter of the quotient
-    @param option is the option
-
     @return The quotient of the two parameters.
   **/
-  template<typename T> auto div(T const& a, T const& b);
+  template<typename T> auto div({Option const & o, T const& a, T const& b);
 
   namespace functional
   {
@@ -60,6 +56,7 @@ namespace boost { namespace simd
 #endif
 
 #include <boost/simd/function/scalar/div.hpp>
+#include <boost/simd/function/simd/div.hpp>
 
 
 #endif

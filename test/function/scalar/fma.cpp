@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/fma.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>
@@ -28,7 +28,7 @@ STF_CASE_TPL (" fma real",  STF_IEEE_TYPES)
   STF_EXPR_IS(fma(T(),T(),T()), T);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(fma(bs::Inf<T>(), bs::Inf<T>(), bs::Inf<T>()), bs::Inf<T>());
   STF_IEEE_EQUAL(fma(bs::Minf<T>(), bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
   STF_IEEE_EQUAL(fma(bs::Nan<T>(), bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());

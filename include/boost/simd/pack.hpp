@@ -18,20 +18,18 @@
 #include <boost/simd/detail/pack_traits.hpp>
 #include <boost/simd/detail/storage_of.hpp>
 #include <boost/simd/meta/is_power_of_2.hpp>
-#include <boost/simd/meta/is_not_scalar.hpp>
+#include <boost/simd/meta/is_iterator.hpp>
 #include <boost/simd/function/aligned_load.hpp>
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/function/insert.hpp>
 #include <boost/simd/function/splat.hpp>
 #include <boost/simd/function/load.hpp>
-#include <boost/simd/function/complement.hpp>
-#include <boost/simd/function/unary_minus.hpp>
-#include <boost/simd/function/unary_plus.hpp>
 #include <boost/simd/function/inc.hpp>
 #include <boost/simd/function/dec.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/align/is_aligned.hpp>
 #include <boost/config.hpp>
+#include <array>
 #include <iterator>
 #include <iostream>
 #include <cstddef>
@@ -81,8 +79,11 @@ namespace boost { namespace simd
     /// @brief pack type rebinding alias
     template<typename U> using rebind = pack<U,N>;
 
-    /// @brief pack type rebinding alias
+    /// @brief pack type resizing alias
     template<std::size_t M> using resize = pack<T,M>;
+
+    /// @brief pack type retyping alias
+    template<typename U,std::size_t M> using retype = pack<U,M>;
 
     public:
 
@@ -111,6 +112,24 @@ namespace boost { namespace simd
     {}
 
     /*!
+      @brief Construct a pack from a standard array of element
+
+      Construct a pack by loading, every element contained inside the standard array
+      @c a .
+
+      @param a Array to load from
+    **/
+    template<typename U
+            , typename = typename std::enable_if< !std::is_same < storage_type
+                                                                , std::array<U,N>
+                                                                >::value
+                                                >::type
+            >
+    BOOST_FORCEINLINE pack( std::array<U,N> const& a )
+                    : data_( boost::simd::load<pack>(&a[0]).storage() )
+    {}
+
+    /*!
       @brief Construct a pack from a range of element
 
       Construct a pack by loading, in a piecewise way, every element contained inside the range
@@ -123,7 +142,7 @@ namespace boost { namespace simd
       @param e End of the range to load from
     **/
     template < typename Iterator
-             , typename = typename std::enable_if<is_not_scalar<Iterator>::value>::type
+             , typename = typename std::enable_if<is_iterator<Iterator>::value>::type
              >
     BOOST_FORCEINLINE pack(Iterator b, Iterator e)
                     : data_( boost::simd::load<pack>(b,e).storage() )
@@ -141,7 +160,7 @@ namespace boost { namespace simd
       @param v1 Second scalar value to insert
       @param vn Remaining scalar values to insert
     **/
-    template <typename T0, typename T1, typename... Ts>
+    template<typename T0, typename T1, typename... Ts>
     BOOST_FORCEINLINE pack(T0 const& v0, T1 const& v1, Ts const&... vn)
     {
       static_assert( 2 + sizeof...(vn) == static_size
@@ -156,7 +175,10 @@ namespace boost { namespace simd
 
       @param value The value to replicate
     **/
-    BOOST_FORCEINLINE explicit pack(T const& value) BOOST_NOEXCEPT
+    template<typename U
+            , typename = typename std::enable_if< !std::is_pointer<U>::value >::type
+            >
+    BOOST_FORCEINLINE explicit pack(U const& value) BOOST_NOEXCEPT
                       : data_( boost::simd::splat<pack>(value).storage() )
     {}
 
@@ -290,18 +312,36 @@ namespace boost { namespace simd
       return const_reverse_iterator(cbegin());
     }
 
+    reference       back()        { return traits::at(*this, static_size-1); }
+    const_reference back() const  { return traits::at(*this, static_size-1); }
+
+    reference       front()        { return traits::at(*this, 0); }
+    const_reference front() const  { return traits::at(*this, 0); }
+
     public:
-    BOOST_FORCEINLINE pack operator+() const BOOST_NOEXCEPT { return unary_plus(*this); }
-    BOOST_FORCEINLINE pack operator-() const BOOST_NOEXCEPT { return unary_minus(*this); }
-    BOOST_FORCEINLINE pack operator~() const BOOST_NOEXCEPT { return complement(*this); }
+    BOOST_FORCEINLINE pack& operator++() BOOST_NOEXCEPT_IF_EXPR(inc(std::declval<pack>()))
+    {
+      return (*this = inc(*this));
+    }
 
-    BOOST_FORCEINLINE pack& operator++() BOOST_NOEXCEPT { return (*this = inc(*this)); }
-    BOOST_FORCEINLINE pack& operator--() BOOST_NOEXCEPT { return (*this = dec(*this)); }
+    BOOST_FORCEINLINE pack& operator--() BOOST_NOEXCEPT_IF_EXPR(dec(std::declval<pack>()))
+    {
+      return (*this = dec(*this));
+    }
 
-    BOOST_FORCEINLINE
-    pack operator++(int) BOOST_NOEXCEPT { pack that = *this; ++(*this); return that; }
-    BOOST_FORCEINLINE
-    pack operator--(int) BOOST_NOEXCEPT { pack that = *this; --(*this); return that; }
+    BOOST_FORCEINLINE pack operator++(int) BOOST_NOEXCEPT_IF_EXPR(++std::declval<pack>())
+    {
+      pack that = *this;
+      ++(*this);
+      return that;
+    }
+
+    BOOST_FORCEINLINE pack operator--(int)  BOOST_NOEXCEPT_IF_EXPR(--std::declval<pack>())
+    {
+      pack that = *this;
+      --(*this);
+      return that;
+    }
 
     template <typename Other>
     BOOST_FORCEINLINE
@@ -362,7 +402,6 @@ namespace boost { namespace simd
 
     return os << ')';
   }
-
 } }
 
 #include <boost/simd/detail/pack_info.hpp>

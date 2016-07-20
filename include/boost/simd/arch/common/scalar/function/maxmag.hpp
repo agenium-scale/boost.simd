@@ -14,7 +14,7 @@
 
 #include <boost/simd/function/scalar/abs.hpp>
 #include <boost/simd/function/scalar/max.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -31,7 +31,7 @@ namespace boost { namespace simd { namespace ext
     {
       A0 aa0 = simd::abs(a0);
       A0 aa1 = simd::abs(a1);
-      return aa0 > aa1 ? a0 : aa1 > aa0 ? a1 : simd::max(a0, a1);
+      return aa0 < aa1 ? a1 : aa1 <  aa0 ? a0 : simd::max(a0, a1);
     }
   };
 } } }

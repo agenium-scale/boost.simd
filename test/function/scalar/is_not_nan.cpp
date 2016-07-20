@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/is_not_nan.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>
@@ -33,7 +33,7 @@ STF_CASE_TPL (" is_not_nan  _real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, bs::logical<T>);
 
   // specific values tests
-#ifndef STF_NO_INVALIDS
+#ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(is_not_nan(bs::Inf<T>()), r_t(true));
   STF_EQUAL(is_not_nan(bs::Minf<T>()), r_t(true));
   STF_EQUAL(is_not_nan(bs::Nan<T>()), r_t(false));

@@ -11,7 +11,7 @@
 #include <boost/simd/constant/allbits.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/pack.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <algorithm>
 
 #include <simd_test.hpp>

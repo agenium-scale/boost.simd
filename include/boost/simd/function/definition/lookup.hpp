@@ -13,15 +13,15 @@
 #define BOOST_SIMD_FUNCTION_DEFINITION_LOOKUP_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
-#include <boost/dispatch/function/make_callable.hpp>
-#include <boost/dispatch/hierarchy/functions.hpp>
+#include <boost/simd/detail/dispatch/function/make_callable.hpp>
+#include <boost/simd/detail/dispatch/hierarchy/functions.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 
 namespace boost { namespace simd
 {
   namespace tag
   {
-    BOOST_DISPATCH_MAKE_TAG(ext, lookup_, boost::dispatch::elementwise_<lookup_>);
+    BOOST_DISPATCH_MAKE_TAG(ext, lookup_, boost::dispatch::abstract_<lookup_>);
   }
 
   namespace ext

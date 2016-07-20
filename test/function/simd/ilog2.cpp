@@ -37,8 +37,8 @@ void test(Env& $)
     b[i]  = bs::ilog2(a1[i]);
   }
 
-  p_t aa1(&a1[0], &a1[N]);
-  i_t bb(&b[0], &b[N]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  i_t bb(&b[0], &b[0]+N);
 
   STF_EQUAL(bs::ilog2(aa1), bb);
 }

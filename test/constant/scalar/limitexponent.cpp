@@ -8,7 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/constant/limitexponent.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/as.hpp>
 #include <simd_test.hpp>
 

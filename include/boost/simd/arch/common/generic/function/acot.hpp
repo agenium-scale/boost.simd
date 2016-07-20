@@ -9,12 +9,12 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_ACOT_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_ACOT_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ACOT_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ACOT_HPP_INCLUDED
 
 #include <boost/simd/function/simd/atan.hpp>
 #include <boost/simd/function/simd/rec.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

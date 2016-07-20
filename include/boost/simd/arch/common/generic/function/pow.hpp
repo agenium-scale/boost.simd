@@ -9,14 +9,13 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_POW_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_FUNCTION_GENERIC_POW_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_POW_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_POW_HPP_INCLUDED
 
 #include <boost/simd/arch/common/detail/generic/pow_expander.hpp>
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
-#include <boost/simd/function/assert.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/is_flint.hpp>
 #include <boost/simd/function/is_ltz.hpp>
@@ -30,7 +29,7 @@
 #include <boost/simd/function/pow_abs.hpp>
 #include <boost/simd/function/rec.hpp>
 #include <boost/simd/function/sqr.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/assert.hpp>
 #include <boost/config.hpp>
 
@@ -43,7 +42,7 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename A1)
                           , bd::cpu_
                           , bd::generic_< bd::arithmetic_<A0> >
-                          , bd::constant_< bd::scalar_< bd::uint_<A1> > >
+                          , bd::constant_< bd::uint_<A1> >
                           )
   {
     using result_type = A0;
@@ -58,7 +57,7 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename A1)
                           , bd::cpu_
                           , bd::generic_< bd::floating_<A0> >
-                          , bd::constant_< bd::scalar_< bd::int_<A1> > >
+                          , bd::constant_< bd::int_<A1> >
                           )
   {
     using result_type = A0;
@@ -142,24 +141,6 @@ namespace boost { namespace simd { namespace ext
       return if_else(ltza1, rec(p), p);
     }
   };
-
-  BOOST_DISPATCH_OVERLOAD ( pow_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bd::scalar_< bd::arithmetic_<A0> >
-                          , bd::scalar_< bd::arithmetic_<A0> >
-                          , boost::simd::assert_tag
-                           )
-  {
-    BOOST_FORCEINLINE A0 operator() ( A0  const& a0, A0 const&  a1
-                                    , assert_tag const& ) const BOOST_NOEXCEPT
-    {
-      BOOST_ASSERT_MSG(bs::assert_all((is_positive(a0)&&is_not_nan(a0)) || is_flint(a1)),
-                       "pow(a0, a1, assert_) cannot produce complex result." );
-      return  pow(a0, a1);
-    }
-  };
-
 } } }
 
 

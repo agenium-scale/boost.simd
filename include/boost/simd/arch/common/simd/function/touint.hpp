@@ -11,9 +11,8 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_TOUINT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_TOUINT_HPP_INCLUDED
-#include <boost/simd/detail/overload.hpp>
 
-#include <boost/simd/meta/hierarchy/simd.hpp>
+#include <boost/simd/detail/overload.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
@@ -23,8 +22,8 @@
 #include <boost/simd/function/simd/plus.hpp>
 #include <boost/simd/function/simd/splat.hpp>
 #include <boost/simd/function/simd/toint.hpp>
-#include <boost/dispatch/meta/scalar_of.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -55,11 +54,15 @@ namespace boost { namespace simd { namespace ext
        using signed_integer = bd::as_integer_t<typename bd::scalar_of_t<A0>, signed>;
        A0 sign_f = inc(splat<A0>(Valmax<signed_integer>()));
        result sign_i = inc(splat<result>(Valmax<signed_integer>()));
-       return if_else(is_less(a0, sign_f), bitwise_cast<result>(toint(a0)), bitwise_cast<result>(toint(a0 - sign_f)) + sign_i);
+       return if_else(is_less(a0, sign_f)
+                     , bitwise_cast<result>(toint(a0))
+                     , bitwise_cast<result>(toint(a0 - sign_f)) + sign_i
+                     );
      }
    };
 
 } } }
 
-#endif
+#include <boost/simd/arch/common/simd/function/touint_s.hpp>
 
+#endif

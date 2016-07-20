@@ -17,9 +17,10 @@
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/simd/is_ltz.hpp>
 #include <boost/simd/function/simd/plus.hpp>
-#include <boost/simd/function/simd/toints.hpp>
-#include <boost/dispatch/function/overload.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/function/simd/toint.hpp>
+#include <boost/simd/function/simd/round.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -45,10 +46,11 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE bd::as_integer_t<A0> operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      A0 inc = if_else(is_ltz(a0), Mhalf<A0>(), Half<A0>());
-      return toints(a0+inc);
+      return saturated_(toint)(round(a0));
     }
   };
+
+
 } } }
 
 

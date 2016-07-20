@@ -14,9 +14,9 @@
 
 #include <boost/simd/function/scalar/bitwise_and.hpp>
 #include <boost/simd/function/scalar/is_even.hpp>
-#include <boost/simd/function/scalar/minusone.hpp>
+#include <boost/simd/function/scalar/dec.hpp>
 #include <boost/simd/logical.hpp>
-#include <boost/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -54,7 +54,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE logical<A0> operator() ( A0 a0) const BOOST_NOEXCEPT
     {
-      return is_even(minusone(a0));
+      return is_even(dec(a0));
     }
   };
 } } }

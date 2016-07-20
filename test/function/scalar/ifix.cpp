@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/ifix.hpp>
 #include <simd_test.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>
@@ -26,7 +26,7 @@ STF_CASE_TPL (" ifix real",  STF_IEEE_TYPES)
   using r_t = decltype(ifix(T()));
 
   // return type conformity test
-  STF_TYPE_IS(r_t, (bd::as_integer_t<T, signed>));
+  STF_TYPE_IS(r_t, (bd::as_integer_t<T>));
 
   // specific values tests
   STF_EQUAL(ifix(T(2)*bs::Valmax<r_t>()),  bs::Valmax<r_t>());
@@ -67,7 +67,7 @@ STF_CASE_TPL (" ifix unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
   using r_t = decltype(ifix(T()));
 
   // return type conformity test
-  STF_TYPE_IS(r_t, (bd::as_integer_t<T, signed>));
+  STF_TYPE_IS(r_t, (bd::as_integer_t<T>));
 
   // specific values tests
   STF_EQUAL(ifix(bs::One<T>()),  bs::One<r_t>());
@@ -82,7 +82,7 @@ STF_CASE_TPL (" ifix signed",  STF_SIGNED_INTEGRAL_TYPES)
   using bs::ifix;
   using r_t = decltype(ifix(T()));
   // return type conformity test
-  STF_TYPE_IS(r_t, (bd::as_integer_t<T, signed>));
+  STF_TYPE_IS(r_t, (bd::as_integer_t<T>));
 
 
   // specific values tests

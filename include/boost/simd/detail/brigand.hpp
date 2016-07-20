@@ -147,12 +147,12 @@ namespace brigand
     template<class... Ts>
     struct element_at<list<Ts...>>
     {
-      template<class T> type_<T> static at(Ts..., T*, ...);
+      template<class T> type_<T> static at(Ts..., type_<T>*, ...);
     };
     template<std::size_t N, typename Seq> struct at_impl;
     template<std::size_t N, template<typename...> class L, class... Ts>
     struct at_impl<N,L<Ts...>>
-    : decltype(element_at<brigand::filled_list<void const *, N>>::at(static_cast<Ts*>(nullptr)...))
+    : decltype(element_at<brigand::filled_list<void const *, N>>::at(static_cast<type_<Ts>*>(nullptr)...))
     {
     };
   }
@@ -927,6 +927,54 @@ namespace brigand
   {
     return detail::for_each_impl( List{}, f );
   }
+}
+#include <type_traits>
+#include <cstdint>
+#include <cstddef>
+namespace brigand
+{
+  template <std::int8_t V>
+  using int8_t = std::integral_constant<std::int8_t, V>;
+  template <std::uint8_t V>
+  using uint8_t = std::integral_constant<std::uint8_t, V>;
+  template <std::int16_t V>
+  using int16_t = std::integral_constant<std::int16_t, V>;
+  template <std::uint16_t V>
+  using uint16_t = std::integral_constant<std::uint16_t, V>;
+  template <std::int32_t V>
+  using int32_t = std::integral_constant<std::int32_t, V>;
+  template <std::uint32_t V>
+  using uint32_t = std::integral_constant<std::uint32_t, V>;
+  template <std::int64_t V>
+  using int64_t = std::integral_constant<std::int64_t, V>;
+  template <std::uint64_t V>
+  using uint64_t = std::integral_constant<std::uint64_t, V>;
+  template<std::size_t V>
+  using size_t    = std::integral_constant<std::size_t, V>;
+  template<std::ptrdiff_t V>
+  using ptrdiff_t = std::integral_constant<std::ptrdiff_t, V>;
+}
+namespace brigand
+{
+namespace detail
+{
+    template <bool Found, class Sequence, typename Predicate>
+    struct index_if_impl
+    {
+        using type = ::brigand::size_t<size<Sequence>::value -
+                                       size<::brigand::find<Sequence, Predicate>>::value>;
+    };
+    template <class Sequence, typename Predicate>
+    struct index_if_impl<false, Sequence, Predicate>
+    {
+        using type = no_such_type_;
+    };
+}
+template <class Sequence, class Predicate>
+using index_if = typename detail::index_if_impl<::brigand::found<Sequence, Predicate>::value,
+                                                Sequence, Predicate>::type;
+template <class Sequence, typename T>
+using index_of = index_if<Sequence, std::is_same<T, ::brigand::_1>>;
 }
 #include <type_traits>
 namespace brigand
@@ -1737,14 +1785,14 @@ namespace brigand
     struct pop_front_element<L, list<Ts...>>
     {
       template<class... Us>
-      static L<Us...> impl(Ts..., Us*...);
+      static L<Us...> impl(Ts..., type_<Us>*...);
     };
     template<template<class...> class L, class... Ts, std::size_t N>
     struct pop_front_impl<L<Ts...>, N>
     {
       using type = decltype(pop_front_element<L, filled_list<
         void const *, N
-      >>::impl(static_cast<Ts*>(nullptr)...));
+      >>::impl(static_cast<type_<Ts>*>(nullptr)...));
     };
   }
   template <class L, class N = std::integral_constant<std::size_t, 1>>
@@ -1835,32 +1883,6 @@ namespace detail
     using make_sequence = typename detail::make_sequence_impl<List, Start, N, Next, (N<=8)>::type;
 }
 #include <type_traits>
-#include <type_traits>
-#include <cstdint>
-#include <cstddef>
-namespace brigand
-{
-  template <std::int8_t V>
-  using int8_t = std::integral_constant<std::int8_t, V>;
-  template <std::uint8_t V>
-  using uint8_t = std::integral_constant<std::uint8_t, V>;
-  template <std::int16_t V>
-  using int16_t = std::integral_constant<std::int16_t, V>;
-  template <std::uint16_t V>
-  using uint16_t = std::integral_constant<std::uint16_t, V>;
-  template <std::int32_t V>
-  using int32_t = std::integral_constant<std::int32_t, V>;
-  template <std::uint32_t V>
-  using uint32_t = std::integral_constant<std::uint32_t, V>;
-  template <std::int64_t V>
-  using int64_t = std::integral_constant<std::int64_t, V>;
-  template <std::uint64_t V>
-  using uint64_t = std::integral_constant<std::uint64_t, V>;
-  template<std::size_t V>
-  using size_t    = std::integral_constant<std::size_t, V>;
-  template<std::ptrdiff_t V>
-  using ptrdiff_t = std::integral_constant<std::ptrdiff_t, V>;
-}
 namespace brigand
 {
     template<class L, std::size_t Index>
