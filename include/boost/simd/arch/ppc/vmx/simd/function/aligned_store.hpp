@@ -28,7 +28,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE void operator()(const Src& s, Pointer p) const BOOST_NOEXCEPT
     {
-      BOOST_ASSERT_MSG( boost::alignment::is_aligned(Src::alignment, p)
+      BOOST_ASSERT_MSG( boost::alignment::is_aligned(p, Src::alignment)
                       , "boost::simd::aligned_store was performed on an unaligned pointer"
                       );
 

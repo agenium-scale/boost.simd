@@ -44,7 +44,7 @@ namespace boost { namespace simd { namespace ext
       static const std::size_t                        card = target_t::static_size;
       static const typename Misalignment::value_type  unalignment = Misalignment::value % card;
 
-      BOOST_ASSERT_MSG( boost::alignment::is_aligned(target_t::alignment, p-Misalignment::value)
+      BOOST_ASSERT_MSG( boost::alignment::is_aligned(p-Misalignment::value,target_t::alignment)
                       , "boost::simd::aligned_load was performed on an unaligned pointer"
                       );
 

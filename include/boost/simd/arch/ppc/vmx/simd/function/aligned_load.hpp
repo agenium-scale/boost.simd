@@ -28,7 +28,7 @@ namespace boost { namespace simd { namespace ext
     using target = typename Target::type;
     BOOST_FORCEINLINE target operator()(Pointer p, Target const&) const
     {
-      BOOST_ASSERT_MSG( boost::alignment::is_aligned(target::alignment, p)
+      BOOST_ASSERT_MSG( boost::alignment::is_aligned(p,target::alignment)
                       , "boost::simd::aligned_load was performed on an unaligned pointer of double"
                       );
 
