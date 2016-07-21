@@ -32,8 +32,8 @@
 #include <boost/simd/constant/invlog_2.hpp>
 #include <boost/simd/constant/invlog_10.hpp>
 #include <boost/simd/constant/log_2olog_10.hpp>
-#include <boost/simd/constant/log_2hi.hpp>
-#include <boost/simd/constant/log_2lo.hpp>
+#include <boost/simd/detail/constant/log_2hi.hpp>
+#include <boost/simd/detail/constant/log_2lo.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/sqrt_2o_2.hpp>
 #include <boost/simd/constant/mone.hpp>

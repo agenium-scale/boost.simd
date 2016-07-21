@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_EXPONENTBITS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_EXPONENTBITS_HPP_INCLUDED
 
-#include <boost/simd/constant/maxexponent.hpp>
+#include <boost/simd/detail/constant/maxexponent.hpp>
 #include <boost/simd/constant/nbmantissabits.hpp>
 #include <boost/simd/function/scalar/bitwise_and.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>

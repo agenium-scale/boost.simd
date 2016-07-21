@@ -14,10 +14,10 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/constant/limitexponent.hpp>
-#include <boost/simd/constant/mask1frexp.hpp>
-#include <boost/simd/constant/mask2frexp.hpp>
-#include <boost/simd/constant/maxexponentm1.hpp>
+#include <boost/simd/detail/constant/limitexponent.hpp>
+#include <boost/simd/detail/constant/mask1frexp.hpp>
+#include <boost/simd/detail/constant/mask2frexp.hpp>
+#include <boost/simd/detail/constant/maxexponentm1.hpp>
 #include <boost/simd/constant/nbmantissabits.hpp>
 #include <boost/simd/function/simd/bitwise_and.hpp>
 #include <boost/simd/function/simd/bitwise_andnot.hpp>

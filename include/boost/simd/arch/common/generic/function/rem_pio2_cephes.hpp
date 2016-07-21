@@ -22,8 +22,8 @@
 #include <boost/simd/function/bitwise_and.hpp>
 #include <boost/simd/constant/three.hpp>
 #include <boost/simd/constant/twoopi.hpp>
-#include <boost/simd/constant/pio2_1.hpp>
-#include <boost/simd/constant/pio2_2.hpp>
+#include <boost/simd/detail/constant/pio2_1.hpp>
+#include <boost/simd/detail/constant/pio2_2.hpp>
 #include <boost/simd/constant/pio2_3.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <utility>

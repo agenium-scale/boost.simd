@@ -15,8 +15,8 @@
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <boost/simd/constant/one.hpp>
-#include <boost/simd/constant/pio2_1.hpp>
-#include <boost/simd/constant/pio2_2.hpp>
+#include <boost/simd/detail/constant/pio2_1.hpp>
+#include <boost/simd/detail/constant/pio2_2.hpp>
 #include <boost/simd/constant/pio2_3.hpp>
 #include <boost/simd/constant/pio_4.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>

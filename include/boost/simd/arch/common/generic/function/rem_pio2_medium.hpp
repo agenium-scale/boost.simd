@@ -18,12 +18,12 @@
 #include <boost/simd/function/simd/toint.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/three.hpp>
-#include <boost/simd/constant/pio2_1.hpp>
-#include <boost/simd/constant/pio2_1t.hpp>
-#include <boost/simd/constant/pio2_2.hpp>
-#include <boost/simd/constant/pio2_2t.hpp>
+#include <boost/simd/detail/constant/pio2_1.hpp>
+#include <boost/simd/detail/constant/pio2_1t.hpp>
+#include <boost/simd/detail/constant/pio2_2.hpp>
+#include <boost/simd/detail/constant/pio2_2t.hpp>
 #include <boost/simd/constant/pio2_3.hpp>
-#include <boost/simd/constant/pio2_3t.hpp>
+#include <boost/simd/detail/constant/pio2_3t.hpp>
 #include <boost/simd/constant/twoopi.hpp>
 #include <boost/simd/function/simd/minus.hpp>
 #include <boost/simd/function/simd/multiplies.hpp>

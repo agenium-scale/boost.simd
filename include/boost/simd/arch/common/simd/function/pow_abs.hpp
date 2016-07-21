@@ -17,8 +17,8 @@
 #include <boost/simd/constant/log2_em1.hpp>
 #include <boost/simd/constant/mhalf.hpp>
 #include <boost/simd/constant/one.hpp>
-#include <boost/simd/constant/powlargelim.hpp>
-#include <boost/simd/constant/powlowlim.hpp>
+#include <boost/simd/detail/constant/powlargelim.hpp>
+#include <boost/simd/detail/constant/powlowlim.hpp>
 #include <boost/simd/constant/sixteen.hpp>
 #include <boost/simd/function/simd/abs.hpp>
 #include <boost/simd/function/simd/divides.hpp>

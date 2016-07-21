@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_TWO_SPLIT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_TWO_SPLIT_HPP_INCLUDED
 
-#include <boost/simd/constant/splitfactor.hpp>
+#include <boost/simd/detail/constant/splitfactor.hpp>
 #include <boost/simd/detail/enforce_precision.hpp>
 #include <boost/simd/function/minus.hpp>
 #include <boost/simd/function/multiplies.hpp>

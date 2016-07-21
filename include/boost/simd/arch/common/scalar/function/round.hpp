@@ -14,7 +14,7 @@
 #include <boost/simd/function/std.hpp>
 
 #include <boost/simd/constant/half.hpp>
-#include <boost/simd/constant/maxflint.hpp>
+#include <boost/simd/detail/constant/maxflint.hpp>
 #include <boost/simd/function/scalar/abs.hpp>
 #include <boost/simd/function/scalar/ceil.hpp>
 #include <boost/simd/function/scalar/copysign.hpp>

@@ -11,7 +11,7 @@
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/function/max.hpp>
-#include <boost/simd/constant/maxinit.hpp>
+#include <boost/simd/detail/constant/maxinit.hpp>
 #include <boost/simd/detail/dispatch/function/make_callable.hpp>
 #include <boost/simd/detail/dispatch/hierarchy/functions.hpp>
 #include <boost/simd/detail/dispatch.hpp>
