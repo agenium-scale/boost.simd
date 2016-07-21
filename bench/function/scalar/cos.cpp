@@ -6,52 +6,15 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-#include <ns.bench.hpp>
-#include <boost/simd/function/scalar/cos.hpp>
-#include <cmath>
+#include <simd_bench.hpp>
+#include <boost/simd/function/simd/cos.hpp>
 
-namespace bs = boost::simd;
 namespace nsb = ns::bench;
+namespace bs =  boost::simd;
 
-template <typename T>
-struct cos_scalar
+DEFINE_SCALAR_BENCH(scalar_cos, bs::cos);
+
+DEFINE_BENCH_MAIN()
 {
-   template <typename U>
-   void operator()(U min0, U max0)
-   {
-     using ret_type = T;
-     nsb::make_function_experiment_cpe_sized_<1>
-       ( [](const T & x0) -> ret_type
-         { return bs::cos(x0); }
-       , nsb::generators::rand<T>(min0, max0)
-       );
-   }
-};
-
-template <typename T>
-struct fast_cos_scalar
-{
-   template <typename U>
-   void operator()(U min1, U max1)
-   {
-     nsb::make_function_experiment_cpe_sized_<1>
-       ( [](const T& x ) -> T
-       { return bs::fast_(bs::cos)(x); }
-       , nsb::generators::rand<T>(min1, max1)
-       );
-   }
-};
-
-int main(int argc, char **argv) {
-  nsb::parse_args(argc, argv);
-  nsb::make_for_each<fast_cos_scalar, NS_BENCH_IEEE_TYPES>(-0.5, 0.5);
-  nsb::make_for_each<cos_scalar, NS_BENCH_IEEE_TYPES>(-0.5, 0.5);
-  nsb::make_for_each<cos_scalar, NS_BENCH_IEEE_TYPES>(-0.7, 0.7);
-  nsb::make_for_each<cos_scalar, NS_BENCH_IEEE_TYPES>(-20, 20);
-  nsb::make_for_each<cos_scalar, NS_BENCH_IEEE_TYPES>(-60, 60);
-  nsb::make_for_each<cos_scalar, NS_BENCH_IEEE_TYPES>(-1000, 1000);
-  return 0;
+  nsb::for_each<scalar_cos, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
-
-
-

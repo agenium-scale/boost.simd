@@ -6,35 +6,40 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-#include <ns.bench.hpp>
-#include <boost/simd/function/scalar/nthroot.hpp>
+#include <simd_bench.hpp>
+#include <boost/simd/function/simd/nthroot.hpp>
+#include <boost/simd/function/simd/enumerate.hpp>
 #include <cmath>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
-namespace bs = boost::simd;
-namespace bd = boost::dispatch;
 namespace nsb = ns::bench;
+namespace bs =  boost::simd;
+namespace bd =  boost::dispatch;
 
-template <typename T>
-struct nthroot_scalar
+struct nthr
 {
-   template <typename U>
-   void operator()(U min0, U max0, U min1, U max1)
-   {
-     using iT = bd::as_integer_t<T>;
-     using ret_type = T;
-     nsb::make_function_experiment_cpe_sized_<1>
-       ( [](const T & x0, const iT & x1) -> ret_type
-         { return bs::nthroot(x0, x1); }
-       , nsb::generators::rand<T>(min0, max0)
-       , nsb::generators::rand<iT>(min1, max1)
-       );
-   }
+  template<class T> T operator()(const T & a) const
+  {
+    using i_t = bd::as_integer_t<T>;
+    return bs::nthroot(a, bs::enumerate<i_t>(2));
+  }
 };
 
+struct nthrf
+{
+  template<class T> T operator()(const T & a) const
+  {
+    using i_t = bd::as_integer_t<T>;
+    return bs::fast_(bs::nthroot)(a, bs::enumerate<i_t>(2));
+  }
+};
 
-int main(int argc, char **argv) {
-   nsb::parse_args(argc, argv);
-   nsb::make_for_each<nthroot_scalar, NS_BENCH_IEEE_TYPES>( -10,  10,  -10,  10);
-   return 0;
+DEFINE_SCALAR_BENCH(scalar_nthroot, nthr());
+DEFINE_SCALAR_BENCH(fast_scalar_nthroot, nthrf());
+
+DEFINE_BENCH_MAIN() {
+  nsb::for_each<scalar_nthroot, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<fast_scalar_nthroot, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
+
 

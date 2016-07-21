@@ -14,29 +14,9 @@
 namespace bs = boost::simd;
 namespace nsb = ns::bench;
 
-template <typename T>
-struct exp_packed
-{
-   template <typename U>
-   void operator()(U min1, U max1)
-   {
-     using  pack_t = bs::pack<T>;
-     nsb::make_function_experiment_cpe_sized_<pack_t::static_size>
-       ( [](const pack_t& x ) -> pack_t
-       { return bs::exp(x); }
-       , nsb::generators::rand<pack_t>(min1, max1)
-       );
-   }
-};
+DEFINE_SIMD_BENCH(simd_exp, bs::exp);
 
-
-int main(int argc, char **argv) {
-   nsb::parse_args(argc, argv);
-   nsb::make_for_each<exp_packed, NS_BENCH_IEEE_TYPES>(-0.5, 0.5);
-   nsb::make_for_each<exp_packed, NS_BENCH_IEEE_TYPES>(-10, 20);
-   nsb::make_for_each<exp_packed, NS_BENCH_IEEE_TYPES>(-20, 20);
-   nsb::make_for_each<exp_packed, NS_BENCH_IEEE_TYPES>(-60, 60);
-   nsb::make_for_each<exp_packed, NS_BENCH_IEEE_TYPES>(-1000, 1000);
-   return 0;
+DEFINE_BENCH_MAIN() {
+  nsb::for_each<simd_exp, NS_BENCH_NUMERIC_TYPES>(-10, 10);
 }
 

@@ -6,35 +6,16 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-#include <ns.bench.hpp>
+#include <simd_bench.hpp>
 #include <boost/simd/function/simd/if_one_else_zero.hpp>
 #include <boost/simd/pack.hpp>
-#include <cmath>
 
-namespace bs = boost::simd;
 namespace nsb = ns::bench;
+namespace bs =  boost::simd;
 
-template <typename T>
-struct if_one_else_zero_simd
+DEFINE_SIMD_BENCH(simd_if_one_else_zero, bs::if_one_else_zero);
+
+DEFINE_BENCH_MAIN()
 {
-   template <typename U>
-   void operator()(U min0, U max0)
-   {
-     using pack_t = bs::pack<T>;
-     using ret_type = bs::pack<T>;
-     nsb::make_function_experiment_cpe_sized_<pack_t::static_size>
-       ( [](const pack_t & x0) -> ret_type
-         { return bs::if_one_else_zero(x0); }
-       , nsb::generators::rand<pack_t>(min0, max0)
-       );
-   }
-};
-
-
-int main(int argc, char **argv) {
-   nsb::parse_args(argc, argv);
-   nsb::make_for_each<if_one_else_zero_simd, NS_BENCH_SIGNED_NUMERIC_TYPES>( -10,  10);
-   nsb::make_for_each<if_one_else_zero_simd, NS_BENCH_UNSIGNED_NUMERIC_TYPES>(0,  10);
-   return 0;
+  nsb::for_each<simd_if_one_else_zero, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
-

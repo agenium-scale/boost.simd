@@ -6,33 +6,15 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-#include <ns.bench.hpp>
-#include <boost/simd/function/scalar/repeat_upper_half.hpp>
-#include <cmath>
+#include <simd_bench.hpp>
+#include <boost/simd/function/simd/repeat_upper_half.hpp>
 
-namespace bs = boost::simd;
 namespace nsb = ns::bench;
+namespace bs =  boost::simd;
 
-template <typename T>
-struct repeat_upper_half_scalar
+DEFINE_SCALAR_BENCH(scalar_repeat_upper_half, bs::repeat_upper_half);
+
+DEFINE_BENCH_MAIN()
 {
-   template <typename U>
-   void operator()(U min0, U max0)
-   {
-     using ret_type = T;
-     nsb::make_function_experiment_cpe_sized_<1>
-       ( [](const T & x0) -> ret_type
-       { return bs::repeat_upper_half(x0); }
-       , nsb::generators::rand<T>(min0, max0)
-       );
-   }
-};
-
-
-int main(int argc, char **argv) {
-   nsb::parse_args(argc, argv);
-   nsb::make_for_each<repeat_upper_half_scalar, NS_BENCH_SIGNED_NUMERIC_TYPES>( -10,  10);
-   nsb::make_for_each<repeat_upper_half_scalar, NS_BENCH_UNSIGNED_NUMERIC_TYPES>(0,  10);
-   return 0;
+  nsb::for_each<scalar_repeat_upper_half, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
-

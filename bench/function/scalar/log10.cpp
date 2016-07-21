@@ -6,32 +6,15 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-#include <ns.bench.hpp>
-#include <boost/simd/function/scalar/log10.hpp>
-#include <cmath>
+#include <simd_bench.hpp>
+#include <boost/simd/function/simd/log10.hpp>
 
-namespace bs = boost::simd;
 namespace nsb = ns::bench;
+namespace bs =  boost::simd;
 
-template <typename T>
-struct log10_scalar
+DEFINE_SCALAR_BENCH(scalar_log10, bs::log10);
+
+DEFINE_BENCH_MAIN()
 {
-   template <typename U>
-   void operator()(U min0, U max0)
-   {
-     using ret_type = T;
-     nsb::make_function_experiment_cpe_sized_<1>
-       ( [](const T & x0) -> ret_type
-         { return bs::log10(x0); }
-       , nsb::generators::rand<T>(min0, max0)
-       );
-   }
-};
-
-
-int main(int argc, char **argv) {
-   nsb::parse_args(argc, argv);
-   nsb::make_for_each<log10_scalar, NS_BENCH_IEEE_TYPES>( -10,  10);
-   return 0;
+  nsb::for_each<scalar_log10, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
-

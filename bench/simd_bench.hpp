@@ -36,7 +36,7 @@ ns::bench::setup setup()
 {
   namespace nsb = ns::bench;
   return nsb::setup()
-    .median(nsb::units::cpe_)
+    .min(nsb::units::cpe_)
     .really_during(2.)
     ;
 }
@@ -124,12 +124,12 @@ struct bench_experiment : ns::bench::experiment
 
 void describe()
 {
-  std::cout << ":: --------------------------------------------------------------------------------------------------------------------------------------------------";
+  std::cout << "::- --------------------------------------------------------------------------------------------------------------------------------------------------";
   std::cout << std::endl;
-  std::cout << ":: Compiler: " << BOOST_COMPILER << std::endl;
-  std::cout << ":: Platform: " << BOOST_PLATFORM << std::endl;
-  std::cout << ":: SIMD:     " << nsb::type_id<BOOST_SIMD_DEFAULT_SITE>() << std::endl;
-  std::cout << ":: --------------------------------------------------------------------------------------------------------------------------------------------------";
+  std::cout << "::- Compiler: " << BOOST_COMPILER << std::endl;
+  std::cout << "::- Platform: " << BOOST_PLATFORM << std::endl;
+  std::cout << "::- SIMD:     " << nsb::type_id<BOOST_SIMD_DEFAULT_SITE>() << std::endl;
+  std::cout << "::- --------------------------------------------------------------------------------------------------------------------------------------------------";
   std::cout << std::endl;
 }
 

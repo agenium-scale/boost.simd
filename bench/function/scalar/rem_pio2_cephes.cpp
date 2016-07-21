@@ -6,36 +6,15 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-#include <ns.bench.hpp>
-#include <boost/simd/function/scalar/rem_pio2_cephes.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <cmath>
-#include <tuple>
+#include <simd_bench.hpp>
+#include <boost/simd/function/simd/rem_pio2_cephes.hpp>
 
-namespace bs = boost::simd;
-namespace bd = boost::dispatch;
 namespace nsb = ns::bench;
+namespace bs =  boost::simd;
 
-template <typename T>
-struct rem_pio2_cephes_scalar
+DEFINE_SCALAR_BENCH(scalar_rem_pio2_cephes, bs::rem_pio2_cephes);
+
+DEFINE_BENCH_MAIN()
 {
-   template <typename U>
-   void operator()(U min0, U max0)
-   {
-     using iT = bd::as_integer_t<T>;
-     using ret_type = std::pair<iT, T>;
-     nsb::make_function_experiment_cpe_sized_<1>
-       ( [](const T & x0) -> ret_type
-         { return bs::rem_pio2_cephes(x0); }
-       , nsb::generators::rand<T>(min0, max0)
-       );
-   }
-};
-
-
-int main(int argc, char **argv) {
-   nsb::parse_args(argc, argv);
-   nsb::make_for_each<rem_pio2_cephes_scalar, NS_BENCH_IEEE_TYPES>( -10,  10);
-   return 0;
+  nsb::for_each<scalar_rem_pio2_cephes, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
-
