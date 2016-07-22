@@ -12,9 +12,12 @@
 #include <type_traits>
 #include <boost/simd/arch/x86/sse1/simd/function/topology.hpp>
 #include <boost/simd/detail/dispatch/meta/as_floating.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 namespace boost { namespace simd { namespace detail
 {
+  namespace bd = boost::dispatch;
+
   // -----------------------------------------------------------------------------------------------
   // Local masking utility
   template<int P0,int P1>

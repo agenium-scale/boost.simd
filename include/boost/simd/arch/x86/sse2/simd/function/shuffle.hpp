@@ -10,12 +10,9 @@
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_SHUFFLE_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/detail/shuffle.hpp>
 #include <boost/simd/detail/shuffle/shuffler.hpp>
 #include <boost/simd/arch/x86/sse2/simd/function/topology.hpp>
-#include <boost/simd/detail/dispatch/meta/as_floating.hpp>
-#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
