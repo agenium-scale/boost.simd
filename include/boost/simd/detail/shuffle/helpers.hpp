@@ -60,12 +60,12 @@ namespace boost { namespace simd { namespace detail
   {};
 
   // -----------------------------------------------------------------------------------------------
-  // Computes a byte pattern from index pattern
-  template<int Bits, int I, typename Ps> struct val
+  // Computes a byte pattern from index pattern (optional fix value for zero-ing)
+  template<int Bits, int I, typename Ps, std::uint8_t Fix = 0xFF> struct val
   {
     using P    = brigand::at_c<Ps,I/Bits>;
     using type = std::integral_constant < std::uint8_t
-                                        , P::value == -1 ? 0xFF : (P::value*Bits + (I%Bits))
+                                        , P::value == -1 ? Fix : (P::value*Bits + (I%Bits))
                                         >;
   };
 
@@ -75,6 +75,14 @@ namespace boost { namespace simd { namespace detail
   mask_all(brigand::list<N...> const&, Ps const&)
   {
     return pack<std::uint8_t,sizeof...(N)>( val<SZ,N::value,Ps>::type::value... );
+  }
+
+  template<std::uint8_t Fix, int SZ, typename... N, typename Ps>
+  BOOST_FORCEINLINE
+  pack<std::uint8_t,sizeof...(N)>
+  mask_all(brigand::list<N...> const&, Ps const&)
+  {
+    return pack<std::uint8_t,sizeof...(N)>( val<SZ,N::value,Ps,Fix>::type::value... );
   }
 
   // -----------------------------------------------------------------------------------------------
