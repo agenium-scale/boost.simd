@@ -11,7 +11,7 @@
 
 #include <boost/simd/detail/shuffle.hpp>
 #include <boost/simd/arch/common/simd/function/shuffle/interleave.hpp>
-// #include <boost/simd/arch/common/simd/function/shuffle/slide.hpp>
+#include <boost/simd/arch/common/simd/function/shuffle/slide.hpp>
 #include <type_traits>
 
 namespace boost { namespace simd { namespace detail
@@ -20,11 +20,11 @@ namespace boost { namespace simd { namespace detail
   // VMX shuffling patterns
   struct  vmx_shuffle
         : default_matcher
-        //, slide_shuffle
+        , slide_shuffle
         , interleave_shuffle
   {
     using default_matcher::process;
-    // using slide_shuffle::process;
+    using slide_shuffle::process;
     using interleave_shuffle::process;
 
     // Unary permutation handler

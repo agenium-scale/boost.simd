@@ -33,14 +33,19 @@ namespace boost { namespace simd { namespace detail
   };
 
   // Backward slide slides the swapped inputs by the complement of the offset except for
-  // unary case which may be optimized by the architecture
+  // unary case which may be optimized by the architecture except for slide<-Card>
   template<typename T,int N, int Card> struct slider<T,N,Card,false>
   {
     static BOOST_FORCEINLINE auto call(T const& a0, T const& a1)
     BOOST_NOEXCEPT_DECLTYPE_BODY(detail::slide(a1,a0,std::integral_constant<int, Card+N>{}));
 
-    static BOOST_FORCEINLINE auto call(T const& a0)
+    static BOOST_FORCEINLINE auto call(T const& a0, std::false_type const&)
     BOOST_NOEXCEPT_DECLTYPE_BODY(detail::slide(a0,std::integral_constant<int, N>{}));
+
+    static BOOST_FORCEINLINE T call(T const&, std::true_type const&) { return Zero<T>(); }
+
+    static BOOST_FORCEINLINE auto call(T const& a0)
+    BOOST_NOEXCEPT_DECLTYPE_BODY( call(a0, brigand::bool_<(N==-Card)>{}) );
   };
 
   // Scalar-like value returns a0 in backward mode
