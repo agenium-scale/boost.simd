@@ -54,7 +54,7 @@ namespace boost { namespace simd { namespace detail
     template<typename T,int P0,int P1,int P2,int P3> static BOOST_FORCEINLINE
     T do_(const T& a0, pattern_<P0,P1,P2,P3> const&, std::false_type const&)
     {
-      return _mm_shuffle_epi32(a0, mask_ps<P0,P1,P2,P3>::value);
+      return _mm_shuffle_epi32(a0, (mask_ps<P0,P1,P2,P3>::value));
     }
 
     // Regular unary shuffling -  type64
@@ -62,7 +62,7 @@ namespace boost { namespace simd { namespace detail
     T do_(const T& a0, pattern_<P0,P1> const&, std::false_type const&)
     {
       auto const v = bitwise_cast<bd::as_floating_t<T>>(a0);
-      return bitwise_cast<T>( _mm_shuffle_pd(v, v, detail::mask_pd<P0,P1>::value) );
+      return bitwise_cast<T>( _mm_shuffle_pd(v, v, (detail::mask_pd<P0,P1>::value)) );
     }
 
     // Masked unary shuffling
@@ -123,7 +123,7 @@ namespace boost { namespace simd { namespace detail
     {
       auto const v0 = bitwise_cast<bd::as_floating_t<T>>(a0);
       auto const v1 = bitwise_cast<bd::as_floating_t<T>>(a1);
-      return bitwise_cast<T>(_mm_shuffle_pd(v0, v1, detail::mask_pd<P0,P1>::value));
+      return bitwise_cast<T>(_mm_shuffle_pd(v0, v1, (detail::mask_pd<P0,P1>::value)));
     }
 
     // Indirect shuffling is direct shuffling with a0/a1 permuted
