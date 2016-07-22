@@ -7,6 +7,9 @@
 **/
 //==================================================================================================
 #include <boost/simd/function/shuffle.hpp>
+#include <boost/simd/function/repeat_lower_half.hpp>
+#include <boost/simd/function/repeat_upper_half.hpp>
+#include <boost/simd/function/shuffle.hpp>
 #include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/pack.hpp>
