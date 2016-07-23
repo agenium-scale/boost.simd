@@ -15,7 +15,7 @@
 #include <boost/simd/constant/ten.hpp>
 #include <boost/simd/function/horn.hpp>
 
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 
 using boost::simd::horner;
 namespace bs =  boost::simd;

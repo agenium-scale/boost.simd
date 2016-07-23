@@ -8,7 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/scalar/fms.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 
 
 STF_CASE_TPL(" fms",  STF_IEEE_TYPES)

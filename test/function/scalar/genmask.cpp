@@ -10,7 +10,7 @@
 #include <boost/simd/function/genmask.hpp>
 #include <boost/simd/constant/allbits.hpp>
 #include <boost/simd/logical.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 
 STF_CASE_TPL ("Check genmask generic behavior",  STF_NUMERIC_TYPES)
 {

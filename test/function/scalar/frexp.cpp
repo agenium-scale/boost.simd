@@ -10,7 +10,7 @@
 #include <boost/simd/function/scalar/frexp.hpp>
 #include <boost/simd/function/fast.hpp>
 #include <boost/simd/function/std.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>

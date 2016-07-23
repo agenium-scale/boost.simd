@@ -8,7 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/scalar/none.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 STF_CASE_TPL ( "none", STF_ALL_TYPES)

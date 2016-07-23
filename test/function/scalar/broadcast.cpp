@@ -7,7 +7,7 @@
 **/
 //==================================================================================================
 #include <boost/simd/function/scalar/broadcast.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 
 STF_CASE_TPL( "Check broadcast behavior", STF_NUMERIC_TYPES )
 {

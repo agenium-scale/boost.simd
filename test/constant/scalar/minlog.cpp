@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/constant/minlog.hpp>
 #include <boost/simd/as.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 
 STF_CASE_TPL( "Check minlog behavior for integral types"
             , (std::uint32_t)(std::uint64_t)

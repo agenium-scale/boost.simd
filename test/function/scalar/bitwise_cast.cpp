@@ -8,7 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/scalar/bitwise_cast.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 
 STF_CASE( "Check bitwise_cast return type" )
 {

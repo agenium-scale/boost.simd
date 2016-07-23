@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/scalar/rem_pio2_straight.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/mzero.hpp>
 #include <boost/simd/constant/pio_4.hpp>

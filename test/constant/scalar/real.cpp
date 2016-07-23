@@ -8,7 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/constant/real.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 
 STF_CASE( "Check real constant behavior for IEEE types")
 {

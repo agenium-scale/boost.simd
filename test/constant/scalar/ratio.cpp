@@ -8,7 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/constant/ratio.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 
 STF_CASE_TPL( "Check constant behavior for ratio", STF_NUMERIC_TYPES)
 {

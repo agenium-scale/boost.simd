@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/constant/fact_10.hpp>
 #include <boost/simd/as.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 
 
 

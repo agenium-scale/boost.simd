@@ -43,3 +43,15 @@ STF_CASE_TPL("Check minmod on pack" , STF_NUMERIC_TYPES)
   test<T, N*2>($);
 }
 
+STF_CASE_TPL("Check minmod on nans  pack" , STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  static const std::size_t N = bs::pack<T>::static_size;
+  {
+    using p_t = bs::pack<T, N>;
+    p_t n =  bs::Nan<p_t>();
+    p_t o =  bs::One<p_t>();
+    STF_IEEE_EQUAL(bs::minmod(n, o), n);
+    STF_IEEE_EQUAL(bs::minmod(o, n), o);
+  }
+}

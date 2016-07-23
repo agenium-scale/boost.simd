@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/constant/log2_e.hpp>
 #include <boost/simd/as.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 
 STF_CASE_TPL( "Check log2_e behavior for integral types"
             , (std::uint32_t)(std::uint64_t)

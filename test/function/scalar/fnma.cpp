@@ -8,7 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/scalar/fnma.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 STF_CASE_TPL(" fnma",  STF_IEEE_TYPES)

@@ -10,7 +10,7 @@
 #include <boost/simd/constant/mlog2two2nmb.hpp>
 #include <boost/simd/constant/nbmantissabits.hpp>
 #include <boost/simd/as.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 
 STF_CASE_TPL( "Check mlog2two2nmb behavior for integral types"
             , (std::uint32_t)(std::uint64_t)
