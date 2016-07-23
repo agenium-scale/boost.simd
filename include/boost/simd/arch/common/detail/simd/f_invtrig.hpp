@@ -54,7 +54,7 @@ namespace boost { namespace simd
   template < class A0 >
   struct invtrig_base<A0,tag::radian_tag,tag::simd_type, float>
   {
-    static inline A0 asin(const A0 a0)
+    static BOOST_FORCEINLINE A0 asin(A0 const& a0)
     {
       A0 sign, x;
       x = bs::abs(a0);
@@ -78,7 +78,7 @@ namespace boost { namespace simd
       return bs::bitwise_xor(z, sign);
     }
 
-    static inline A0 acos(const A0 a0)
+    static BOOST_FORCEINLINE A0 acos(const A0& a0)
     {
       // 2130706432 values computed.
       // 1968272987 values (92.38%) within 0.0 ULPs
@@ -93,14 +93,14 @@ namespace boost { namespace simd
       return bs::if_else(x_larger_05, x, bs::Pio_2<A0>()-x);
     }
 
-    static inline A0 atan(const A0 a0)
+    static BOOST_FORCEINLINE A0 atan(const A0& a0)
     {
       // 4.5 cycles/element SSE4.2 g++-4.8
       A0 x  = kernel_atan(a0);
       return bs::bitwise_xor(x, bs::bitofsign(a0));
     }
 
-    static inline A0 kernel_atan(const A0 a0)
+    static BOOST_FORCEINLINE A0 kernel_atan(const A0& a0)
     {
       //4278190076 values computed  in range: [-3.40282e+38, 3.40282e+38]
       //4257598358 values (99.52%)  within 0.0 ULPs

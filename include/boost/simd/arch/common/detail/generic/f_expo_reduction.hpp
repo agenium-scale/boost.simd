@@ -59,7 +59,7 @@ namespace boost { namespace simd
         return is_less_equal(a0, Minlog<A0>());
       }
 
-      static BOOST_FORCEINLINE A0 approx(A0 x) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE A0 approx(A0 const& x) BOOST_NOEXCEPT
       {
         // remez polynomial of degree 4 on [-0.5 0.5] for (exp(x)-1-x)/sqr(x)
         // tested in range: [-88.3763, 88.3763]

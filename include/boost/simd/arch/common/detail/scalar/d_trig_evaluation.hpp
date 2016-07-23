@@ -33,7 +33,7 @@ namespace boost { namespace simd
     struct trig_evaluation < A0, tag::not_simd_type, double >
     {
 
-      static inline A0 cos_eval(A0 z) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE A0 cos_eval(A0 z) BOOST_NOEXCEPT
       {
         const A0 y = horn<A0,
           0x3fe0000000000000ll,
@@ -47,7 +47,7 @@ namespace boost { namespace simd
         return oneminus(y*z);
       }
 
-      static inline A0 sin_eval(A0 z, A0 x) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE A0 sin_eval(A0 z, A0 x) BOOST_NOEXCEPT
       {
         const A0 y1 = horn<A0,
           0xbfc5555555555548ll,
@@ -60,7 +60,7 @@ namespace boost { namespace simd
         return fma(y1*z,x,x);
       }
 
-      static inline A0 base_tan_eval( A0 x) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE A0 base_tan_eval( A0 x) BOOST_NOEXCEPT
       {
         const A0 zz = sqr(x);
         const A0 num = horn<A0,
@@ -78,12 +78,12 @@ namespace boost { namespace simd
         return fma(x, (zz*(num/den)), x);
       }
 
-      static inline A0 tan_eval(A0 x, const int n ) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE A0 tan_eval(A0 x, const int n ) BOOST_NOEXCEPT
       {
         A0 y =  base_tan_eval(x);
         if (n == 1) return y;  else return -rec(y);
       }
-      static inline A0 cot_eval(A0 x, const int n ) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE A0 cot_eval(A0 x, const int n ) BOOST_NOEXCEPT
       {
         A0 y =  base_tan_eval(x);
         if (n == 1) return rec(y);  else return -y;
