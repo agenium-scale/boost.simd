@@ -91,7 +91,7 @@ namespace boost { namespace simd { namespace ext
   {
     using i_t = bd::as_integer_t<A0, signed>;
     BOOST_FORCEINLINE std::pair<A0,i_t> operator() (const fast_tag &
-                                                   , A0 a0 ) const BOOST_NOEXCEPT
+                                                   , A0 const& a0 ) const BOOST_NOEXCEPT
     {
       i_t r1  = bitwise_cast<i_t>(bitwise_and(Mask1frexp<A0>(), a0));
       A0  x = bitwise_andnot(a0, Mask1frexp<A0>());
