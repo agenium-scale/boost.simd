@@ -12,11 +12,11 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_EXPX2_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_EXPX2_HPP_INCLUDED
 
-// #include <boost/simd/constant/expx2c1.hpp>
-// #include <boost/simd/constant/expx2c2.hpp>
+// #include <boost/simd/detail/constant/expx2c1.hpp>
+// #include <boost/simd/detail/constant/expx2c2.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/inf.hpp>
-#include <boost/simd/constant/maxlog.hpp>
+#include <boost/simd/detail/constant/maxlog.hpp>
 #include <boost/simd/constant/real.hpp>
 #include <boost/simd/constant/two.hpp>
 #include <boost/simd/function/scalar/abs.hpp>

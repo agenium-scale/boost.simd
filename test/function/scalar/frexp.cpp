@@ -20,7 +20,7 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/nbmantissabits.hpp>
 #include <boost/simd/constant/mindenormal.hpp>
-#include <boost/simd/constant/minexponent.hpp>
+#include <boost/simd/detail/constant/minexponent.hpp>
 #include <boost/simd/constant/smallestposval.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/halfeps.hpp>

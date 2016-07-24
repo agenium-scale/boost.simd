@@ -20,8 +20,8 @@
 #include <boost/simd/function/scalar/is_inf.hpp>
 #include <boost/simd/function/scalar/is_nan.hpp>
 #endif
-#include <boost/simd/constant/maxexponentm1.hpp>
-#include <boost/simd/constant/minexponent.hpp>
+#include <boost/simd/detail/constant/maxexponentm1.hpp>
+#include <boost/simd/detail/constant/minexponent.hpp>
 #include <boost/simd/function/scalar/abs.hpp>
 #include <boost/simd/function/scalar/exponent.hpp>
 #include <boost/simd/function/scalar/ldexp.hpp>

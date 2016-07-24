@@ -18,10 +18,10 @@
 #include <boost/simd/constant/twotonmb.hpp>
 #include <boost/simd/function/scalar/is_eqz.hpp>
 #endif
-#include <boost/simd/constant/limitexponent.hpp>
-#include <boost/simd/constant/mask1frexp.hpp>
-#include <boost/simd/constant/mask2frexp.hpp>
-#include <boost/simd/constant/maxexponentm1.hpp>
+#include <boost/simd/detail/constant/limitexponent.hpp>
+#include <boost/simd/detail/constant/mask1frexp.hpp>
+#include <boost/simd/detail/constant/mask2frexp.hpp>
+#include <boost/simd/detail/constant/maxexponentm1.hpp>
 #include <boost/simd/constant/nbmantissabits.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/scalar/bitwise_and.hpp>

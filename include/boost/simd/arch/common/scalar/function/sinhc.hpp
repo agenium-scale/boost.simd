@@ -18,7 +18,7 @@
 #include <boost/simd/arch/common/detail/generic/sinhc_kernel.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/log_2.hpp>
-#include <boost/simd/constant/maxlog.hpp>
+#include <boost/simd/detail/constant/maxlog.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/function/scalar/abs.hpp>
 #include <boost/simd/function/scalar/average.hpp>

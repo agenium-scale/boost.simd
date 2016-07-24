@@ -16,8 +16,8 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/config.hpp>
-#include <boost/simd/constant/limitexponent.hpp>
-#include <boost/simd/constant/maxexponent.hpp>
+#include <boost/simd/detail/constant/limitexponent.hpp>
+#include <boost/simd/detail/constant/maxexponent.hpp>
 #include <boost/simd/constant/nbmantissabits.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
@@ -32,7 +32,7 @@
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 #ifndef BOOST_SIMD_NO_DENORMALS
-#include <boost/simd/constant/minexponent.hpp>
+#include <boost/simd/detail/constant/minexponent.hpp>
 #include <boost/simd/constant/smallestposval.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
 #include <boost/simd/function/simd/is_less.hpp>

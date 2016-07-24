@@ -18,7 +18,7 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/mhalf.hpp>
-#include <boost/simd/constant/maxflint.hpp>
+#include <boost/simd/detail/constant/maxflint.hpp>
 #include <boost/simd/function/next.hpp>
 #include <boost/simd/function/prev.hpp>
 

@@ -17,7 +17,7 @@
 #include <boost/simd/function/simd/bitwise_xor.hpp>
 #include <boost/simd/function/simd/shift_right.hpp>
 #include <boost/simd/function/simd/plus.hpp>
-#include <boost/simd/constant/maxleftshift.hpp>
+#include <boost/simd/detail/constant/maxleftshift.hpp>
 #include <boost/simd/constant/mzero.hpp>
 
 namespace boost { namespace simd { namespace ext

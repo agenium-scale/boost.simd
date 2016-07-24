@@ -30,7 +30,7 @@
 #include <boost/simd/function/simd/is_greater.hpp>
 #include <boost/simd/function/simd/rec.hpp>
 #include <boost/simd/function/simd/oneminus.hpp>
-#include <boost/simd/constant/maxleftshift.hpp>
+#include <boost/simd/detail/constant/maxleftshift.hpp>
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/two.hpp>

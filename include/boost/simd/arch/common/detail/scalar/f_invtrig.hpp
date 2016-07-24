@@ -20,10 +20,10 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/pi.hpp>
 #include <boost/simd/constant/pio_2.hpp>
-#include <boost/simd/constant/pio_2lo.hpp>
+#include <boost/simd/detail/constant/pio_2lo.hpp>
 #include <boost/simd/constant/pio_3.hpp>
 #include <boost/simd/constant/pio_4.hpp>
-#include <boost/simd/constant/pio_4lo.hpp>
+#include <boost/simd/detail/constant/pio_4lo.hpp>
 #include <boost/simd/constant/tan_3pio_8.hpp>
 #include <boost/simd/constant/tanpio_8.hpp>
 #include <boost/simd/constant/two.hpp>

@@ -15,7 +15,7 @@
 #ifndef BOOST_SIMD_NO_INVALIDS
 #include <boost/simd/function/simd/is_invalid.hpp>
 #endif
-#include <boost/simd/constant/mantissamask.hpp>
+#include <boost/simd/detail/constant/mantissamask.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/function/scalar/bitwise_and.hpp>
 #include <boost/simd/function/scalar/bitwise_or.hpp>

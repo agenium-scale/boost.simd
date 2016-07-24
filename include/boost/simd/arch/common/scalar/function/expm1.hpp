@@ -20,7 +20,7 @@
 #include <boost/simd/arch/common/detail/generic/expm1_kernel.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/logeps.hpp>
-#include <boost/simd/constant/maxlog.hpp>
+#include <boost/simd/detail/constant/maxlog.hpp>
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/function/scalar/is_greater.hpp>
