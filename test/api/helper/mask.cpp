@@ -19,8 +19,8 @@ STF_CASE( "Check masked pointer interface" )
   double       x{};
   std::uint64_t const const_x{};
 
-  auto ax = mask(&x, 69., true);
-  auto acx = mask(&const_x, 42ul, false);
+  auto ax = mask(&x, true, 69.);
+  auto acx = mask(&const_x, false, 42ul);
 
   STF_EQUAL( ax.get()   , &x        );
   STF_EQUAL( acx.get()  , &const_x  );
@@ -37,10 +37,15 @@ STF_CASE( "hierarchy_of of masked pointer")
   float f{};
   char const c{};
 
-  using masked_ptr_t   = decltype(mask(&f, f+1, true));
-  using zero_masked_ptr_t   = decltype(mask(&f, true));
-  using c_masked_ptr_t = decltype(mask(&c, c+1, false));
-  using zero_c_masked_ptr_t = decltype(mask(&c, false));
+  auto m1 = mask(&f, true, f+1);
+  auto m2 = mask(&f, true);
+  auto m3 = mask(&c, false, c+1);
+  auto m4 = mask(&c, false);
+
+  using masked_ptr_t        = decltype(m1);
+  using zero_masked_ptr_t   = decltype(m2);
+  using c_masked_ptr_t      = decltype(m3);
+  using zero_c_masked_ptr_t = decltype(m4);
 
   STF_TYPE_IS ( hierarchy_of_t<masked_ptr_t>
               , (masked_pointer_<hierarchy_of_t<float,masked_ptr_t>, std::false_type>)

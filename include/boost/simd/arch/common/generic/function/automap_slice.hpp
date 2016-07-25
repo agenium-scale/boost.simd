@@ -16,6 +16,7 @@
 #include <boost/simd/function/combine.hpp>
 #include <boost/simd/function/slice.hpp>
 #include <boost/simd/detail/diagnostic.hpp>
+#include <boost/core/ignore_unused.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -77,6 +78,7 @@ namespace boost { namespace simd { namespace ext
           -> decltype( combine( func_t{}(slice_low (a)...), func_t{}(slice_high(a)...) ) )
     {
       BOOST_SIMD_DIAG("Sliceable automap with decorator" << d << " for: " << *this);
+      boost::ignore_unused(d);
       return combine( func_t{}( slice_low (a) ... ), func_t{}( slice_high(a) ... ) );
     }
   };
@@ -101,6 +103,7 @@ namespace boost { namespace simd { namespace ext
                                                             << " for: " << *this << " options: "
                                                             << o
                       );
+      boost::ignore_unused(d);
       return combine( func_t{}(o, (a) ... ), func_t{}(o,slice_high(a) ... ) );
     }
   };

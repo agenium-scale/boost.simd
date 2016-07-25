@@ -32,7 +32,7 @@ namespace boost { namespace simd
       typedef typename bd::as_integer<A0, signed>::type          iA0;
       typedef typename bd::scalar_of<A0>::type                 stype;
 
-      static inline A0 cos_eval(const A0& z)
+      static BOOST_FORCEINLINE A0 cos_eval(const A0& z)
       {
         const A0 y = bs::horn<A0
           , 0x3d2aaaa5
@@ -40,7 +40,7 @@ namespace boost { namespace simd
           , 0x37ccf5ce > (z);
         return bs::inc(bs::fma(z,bs::Mhalf<A0>(), y*bs::sqr(z)));
       }
-      static inline A0 sin_eval(const A0& z, const A0& x)
+      static BOOST_FORCEINLINE A0 sin_eval(const A0& z, const A0& x)
       {
         const A0 y1 =  bs::horn< A0
           , 0xbe2aaaa2
@@ -48,7 +48,7 @@ namespace boost { namespace simd
           , 0xb94ca1f9 > (z);
         return bs::fma(bs::multiplies(y1,z),x,x);
       }
-      static inline A0 base_tancot_eval(const A0& z)
+      static BOOST_FORCEINLINE A0 base_tancot_eval(const A0& z)
       {
         const A0 zz = bs::sqr(z);
         return fma(bs::horn<A0
@@ -59,13 +59,13 @@ namespace boost { namespace simd
                   , 0x3b4c779c
                   , 0x3c19c53b>(zz), zz*z, z);
       }
-      static inline A0 tan_eval(const A0& z,  const iA0& n)
+      static BOOST_FORCEINLINE A0 tan_eval(const A0& z,  const iA0& n)
       {
         A0 y = base_tancot_eval(z);
         return bs::if_else(bs::is_equal(n, bs::One<iA0>()),y,-bs::rec(y));
       }
 
-      static inline A0 cot_eval(const A0& z,  const iA0& n)
+      static BOOST_FORCEINLINE A0 cot_eval(const A0& z,  const iA0& n)
       {
         A0 y = base_tancot_eval(z);
         return bs::if_else(bs::is_equal(n, One<iA0>()),bs::rec(y),-y);

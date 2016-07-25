@@ -49,7 +49,7 @@ namespace boost { namespace simd
     template < class A0 >
     struct invtrig_base<A0,tag::radian_tag,tag::simd_type, double>
     {
-      static inline A0 asin(const A0& a0)
+      static BOOST_FORCEINLINE A0 asin(const A0& a0)
       {
         A0 x = bs::abs(a0);
         auto small_=  bs::is_less(x, bs::Sqrteps<A0>());
@@ -100,7 +100,7 @@ namespace boost { namespace simd
                               );
       }
 
-      static inline A0 acos(const A0& a0)
+      static BOOST_FORCEINLINE A0 acos(const A0& a0)
       {
         A0 x = bs::abs(a0);
         auto x_larger_05 = x > bs::Half<A0>();
@@ -111,13 +111,13 @@ namespace boost { namespace simd
         return bs::if_else(x_larger_05, x, bs::Pio_2<A0>()-x);
       }
 
-      static inline A0 atan(const A0& a0)
+      static BOOST_FORCEINLINE A0 atan(const A0& a0)
       {
         const A0 x  = kernel_atan(a0);
         return bs::bitwise_xor(x, bs::bitofsign(a0));
       }
 
-      static inline A0 kernel_atan(const A0& a0)
+      static BOOST_FORCEINLINE A0 kernel_atan(const A0& a0)
       {
         const A0 x =  bs::abs(a0);
         auto flag1 = bs::is_less(x,  Tan_3pio_8<A0>());

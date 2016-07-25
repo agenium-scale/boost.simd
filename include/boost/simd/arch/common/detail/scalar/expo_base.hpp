@@ -1,13 +1,10 @@
 //==================================================================================================
-/*!
-  @file
-
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+/**
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_DETAIL_SCALAR_EXPO_BASE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_SCALAR_EXPO_BASE_HPP_INCLUDED
@@ -23,19 +20,17 @@
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/config.hpp>
 
-namespace boost { namespace simd
+namespace boost { namespace simd { namespace detail
 {
-  namespace detail
-  {
-    template < typename A0,
-               typename Tag,
-               typename Style ,
-               typename base_A0 = bd::scalar_of_t<A0>
-             >
-    struct exponential{};
+  template< typename A0
+          , typename Tag
+          , typename Style
+          , typename base_A0 = bd::scalar_of_t<A0>
+          >
+  struct exponential
+  {};
 
-
-  template < typename A0, typename Tag>
+  template<typename A0, typename Tag>
   struct exponential< A0, Tag, tag::not_simd_type, double>
   {
     typedef exp_reduction<A0,Tag>                        reduc_t;
@@ -55,7 +50,7 @@ namespace boost { namespace simd
     }
   };
 
-  template < typename A0, typename Tag>
+  template<typename A0, typename Tag>
   struct exponential< A0, Tag, tag::not_simd_type, float>
   {
     typedef exp_reduction<A0,Tag>                        reduc_t;
@@ -74,6 +69,5 @@ namespace boost { namespace simd
       return scale(x, k);
     }
   };
-}
-} }
+} } }
 #endif
