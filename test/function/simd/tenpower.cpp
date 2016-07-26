@@ -33,7 +33,7 @@ void test(Env& $)
   }
   p_t aa1(&a1[0], &a1[0]+N);
   f_t bb (&b[0], &b[0]+N);
-  STF_IEEE_EQUAL(bs::tenpower(aa1), bb);
+  STF_ULP_EQUAL(bs::tenpower(aa1), bb, 0.5);
 }
 
 STF_CASE_TPL("Check tenpower on pack" , (int32_t)(int64_t)(uint32_t)(uint64_t))//STF_NUMERIC_TYPES)

@@ -15,9 +15,11 @@
 #include <boost/simd/function/divides.hpp>
 #include <boost/simd/function/iceil.hpp>
 #include <boost/simd/function/ifloor.hpp>
+#include <boost/simd/function/ifix.hpp>
 #include <boost/simd/function/iround.hpp>
 #include <boost/simd/function/inearbyint.hpp>
 #include <boost/simd/function/ceil.hpp>
+#include <boost/simd/function/fix.hpp>
 #include <boost/simd/function/floor.hpp>
 #include <boost/simd/function/round.hpp>
 #include <boost/simd/function/nearbyint.hpp>
