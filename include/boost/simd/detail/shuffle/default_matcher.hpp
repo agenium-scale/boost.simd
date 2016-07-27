@@ -12,11 +12,23 @@
 #include <boost/simd/config.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/function/extract.hpp>
+#include <boost/simd/function/combine.hpp>
+#include <boost/simd/function/slice.hpp>
 #include <boost/simd/arch/common/simd/function/shuffle/identity.hpp>
 #include <boost/simd/arch/common/simd/function/shuffle/broadcast.hpp>
 
 namespace boost { namespace simd { namespace detail
 {
+  // -----------------------------------------------------------------------------------------------
+  // Half-permutation snatcher
+  template<bool isUpper, int... Ps> struct half_
+  {
+    using perm = brigand::integral_list<int,Ps...>;
+    template<typename I, typename C>
+    struct apply : brigand::at_c < perm, isUpper ? I::value+C::value : I::value>
+    {};
+  };
+
   // -----------------------------------------------------------------------------------------------
   // Default matcher - don't do anything special but shuffle manually
   struct  default_matcher
@@ -42,9 +54,24 @@ namespace boost { namespace simd { namespace detail
 
     // Unary permutation handler
     template<typename T, int... P>
-    static BOOST_FORCEINLINE T process(T const& a0, pattern_<P...> const&)
+    static BOOST_FORCEINLINE T process(T const& a0, pattern_<P...> const& p)
     {
-      return T( fill_ (a0 , std::integral_constant<int,P>{} )... );
+      return process(a0, p, typename T::storage_kind{});
+    }
+
+    template<typename T, int... P>
+    static BOOST_FORCEINLINE T process(T const& a0, pattern_<P...> const&, aggregate_storage const&)
+    {
+      // Aggregate storage has a chance to be the combination of two regular shuffles
+      auto s = slice(a0);
+      return combine( shuffle<half_<false,P...>>(s[0],s[1])
+                    , shuffle<half_<true ,P...>>(s[0],s[1])
+                    );
+    }
+
+    template<typename K, typename T, int... P>
+    static BOOST_FORCEINLINE T process(T const& a0, pattern_<P...> const&, K const&)
+    { return T( fill_ (a0 , std::integral_constant<int,P>{} )... );
     }
 
     // Binary permutation handler

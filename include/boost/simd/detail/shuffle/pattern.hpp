@@ -28,6 +28,7 @@ namespace boost { namespace simd
     template<int... Ps> struct pattern_ : boost::dispatch::unspecified_<pattern_<Ps...>>
     {
       static const std::size_t static_size = sizeof...(Ps);
+      using size_type = std::integral_constant<std::size_t,static_size>;
       using parent = boost::dispatch::unspecified_<pattern_<Ps...>>;
     };
 
@@ -35,12 +36,13 @@ namespace boost { namespace simd
     // take a meta-function class and build a pattern
     template<typename M, typename C, typename L> struct make_meta_pattern;
 
+    template<typename M, typename C, typename P>
+    struct idx : brigand::apply<M, P, C>::type {};
+
     template<typename M, typename C, typename... Ps>
     struct make_meta_pattern<M, C, brigand::list<Ps...> >
     {
-      template<typename P> using idx = typename brigand::apply<M, P, C>::type;
-
-      using type = pattern_< idx<Ps>::value... >;
+      using type = pattern_< idx<M,C,Ps>::value... >;
     };
 
     template<typename M, typename T>

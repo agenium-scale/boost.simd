@@ -10,9 +10,11 @@ set ( SOURCES
   cardinal.1.cpp
   cardinal.2.unary.cpp
   cardinal.2.binary.cpp
-
-  cardinal_4.cpp
-
+  cardinal.4.avx.shuffle.cpp
+  cardinal.8.avx.shuffle.cpp
+  cardinal.4.avx.blend.cpp
+  cardinal.8.avx.blend.unary.cpp
+  cardinal.4.avx.perm2.cpp
   broadcast.binary.cpp
   broadcast.unary.cpp
   deinterleave.full.cpp
