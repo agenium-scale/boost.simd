@@ -34,6 +34,7 @@ if (DEFINED IS_TRAVIS_CI)
   # We do not want to find boost here, as we're gonna use the one on NumScale/boost-header-only
   set(GIT_EXECUTABLE git)
   set(USE_SELF_BOOST TRUE)
+  set(DEV TRUE)
 else()
   NS_find_package(Git QUIET)
   if (NOT DEFINED USE_SELF_BOOST)
