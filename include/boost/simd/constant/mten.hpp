@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Mten constant for the proper type
     **/
-    const boost::dispatch::functor<tag::mten_> mten = {};
+    Value mten();
   }
 } }
 #endif

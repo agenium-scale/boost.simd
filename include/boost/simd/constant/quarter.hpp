@@ -43,7 +43,7 @@ namespace boost { namespace simd
 
       @return The Quarter constant for the proper type
     **/
-    const boost::dispatch::functor<tag::quarter_> quarter = {};
+    Value quarter();
   }
 } }
 #endif

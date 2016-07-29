@@ -48,7 +48,7 @@ namespace boost { namespace simd
     @see is_odd, is_flint
 
   **/
-  const boost::dispatch::functor<tag::is_even_> is_even = {};
+  as_logical_t<Value> is_even(Value const& x);
 } }
 #endif
 

@@ -36,7 +36,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::is_gtz_> is_gtz = {};
+  as_logical_t<Value> is_gtz(Value const& x);
 } }
 #endif
 

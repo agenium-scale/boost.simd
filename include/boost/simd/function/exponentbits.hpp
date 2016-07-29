@@ -35,11 +35,10 @@ namespace boost { namespace simd
     is similar to
 
     @code
-    as_integer_t<T> r = x&Exponentmask<T>();
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::exponentbits_> exponentbits = {};
+  as_integer_t<Value> exponentbits(Value const & v0);
 } }
 #endif
 

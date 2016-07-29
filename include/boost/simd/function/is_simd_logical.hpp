@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @see mask2logical
 
   **/
-  const boost::dispatch::functor<tag::is_simd_logical_> is_simd_logical = {};
+  lgoical<as_scalar_t<Value>> is_simd_logical(Value const& x);
 } }
 #endif
 

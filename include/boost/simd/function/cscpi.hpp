@@ -43,7 +43,7 @@ namespace boost { namespace simd
     @see cscd, csc,
 
   **/
-  const boost::dispatch::functor<tag::cscpi_> cscpi = {};
+  Value cscpi(Value const & v0);
 } }
 #endif
 

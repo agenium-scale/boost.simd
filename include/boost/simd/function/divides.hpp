@@ -33,7 +33,7 @@ namespace boost { namespace simd
     returns the quotient of @c a by @c b
 
   **/
-  const boost::dispatch::functor<tag::divides_> divides = {};
+  Value divides(Value const & v0, Value const &v1);
 } }
 #endif
 

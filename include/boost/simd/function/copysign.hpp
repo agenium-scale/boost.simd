@@ -36,7 +36,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::copysign_> copysign = {};
+  Value copysign(Value const & v0, Value const& v1);
 } }
 #endif
 

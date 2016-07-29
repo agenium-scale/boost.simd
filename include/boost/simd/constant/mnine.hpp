@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Mnine constant for the proper type
     **/
-    const boost::dispatch::functor<tag::mnine_> mnine = {};
+    Value mnine();
   }
 } }
 #endif

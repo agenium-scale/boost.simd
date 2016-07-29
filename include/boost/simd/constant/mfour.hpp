@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Mfour constant for the proper type
     **/
-    const boost::dispatch::functor<tag::mfour_> mfour = {};
+    Value mfour();
   }
 } }
 #endif

@@ -43,7 +43,7 @@ namespace boost { namespace simd
     which is a tag on speed and accuracy (see @ref cos for further details)
 
   **/
-  const boost::dispatch::functor<tag::sind_> sind = {};
+  Value sind(Value const & v0);
 } }
 #endif
 

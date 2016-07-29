@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Mseven constant for the proper type
     **/
-    const boost::dispatch::functor<tag::mseven_> mseven = {};
+    Value mseven();
   }
 } }
 #endif

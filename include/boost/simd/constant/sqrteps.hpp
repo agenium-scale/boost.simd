@@ -48,7 +48,7 @@ namespace boost { namespace simd
 
       @return The Sqrteps constant for the proper type
     **/
-    const boost::dispatch::functor<tag::sqrteps_> sqrteps = {};
+    Value sqrteps();
   }
 } }
 #endif

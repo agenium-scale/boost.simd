@@ -32,7 +32,7 @@ namespace boost { namespace simd
     For every parameters of types respectively T, N:
 
     @code
-    T0r = shift_left(x,n);
+    T r = shift_left(x,n);
     @endcode
 
     is similar to:
@@ -47,7 +47,7 @@ namespace boost { namespace simd
     @see  shift_right, shr, rshl, rshr, rol, ror
 
   **/
-  const boost::dispatch::functor<tag::shift_left_> shift_left = {};
+  Value shift_left(Value const & v0, IntegerValue const& n);
 } }
 #endif
 

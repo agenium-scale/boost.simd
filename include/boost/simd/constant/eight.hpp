@@ -60,7 +60,7 @@ namespace boost { namespace simd
 
       @see Eight
     **/
-    const boost::dispatch::functor<tag::eight_> eight = {};
+    Value eight();
   }
 } }
 #endif

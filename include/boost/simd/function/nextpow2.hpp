@@ -36,7 +36,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::nextpow2_> nextpow2 = {};
+  Value nextpow2(Value const & x);
 } }
 #endif
 

@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Mone constant (-1) for the proper type
     **/
-    const boost::dispatch::functor<tag::mone_> mone = {};
+    Value mone();
   }
 } }
 #endif

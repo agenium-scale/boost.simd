@@ -43,7 +43,7 @@ namespace boost { namespace simd
     @see tan, tand
 
   **/
-  const boost::dispatch::functor<tag::tanpi_> tanpi = {};
+  Value tanpi(Value const & v0);
 } }
 #endif
 

@@ -21,22 +21,22 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of types respectively T0:
+    For every parameters of types respectively T
 
     @code
-    T0 r = interleave_odd(a,b);
+    T r = interleave_odd(x, y);
     @endcode
 
     is equivalent to :
 
     @code
-    r = [ a[1] b[1] a[3] b[3] ... a[n/2+1] b[n/2+1] ]
+    r = [ x[1] y[1] x[3] y[3] ... x[n/2+1] y[n/2+1] ]
     @endcode
 
     with <tt> n = cardinal_of<T>::value </tt>
 
   **/
-  const boost::dispatch::functor<tag::interleave_odd_> interleave_odd = {};
+  Value interleave_odd(Value const& v0, Value const& v1);
 #endif
 } }
 

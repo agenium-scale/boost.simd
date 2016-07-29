@@ -43,7 +43,7 @@ namespace boost { namespace simd
 
       @return The Fact_12 constant for the proper type
     **/
-    const boost::dispatch::functor<tag::fact_12_> fact_12 = {};
+    Value Fact_12<Value>();
   }
 } }
 #endif

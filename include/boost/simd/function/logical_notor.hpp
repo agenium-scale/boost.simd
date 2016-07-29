@@ -41,14 +41,11 @@ namespace boost { namespace simd
     as_logical_t<T1> r = !x || y;
     @endcode
 
-    @par Alias:
-    @c l_notor
-
     @see  logical_or, logical_xor, logical_notand,
     logical_andnot, logical_and, logical_ornot, logical_not
 
   **/
-  const boost::dispatch::functor<tag::logical_notor_> logical_notor = {};
+  as_logical_t<Value0> logical_notor(Value0 const& x, Value1 const& y);
 } }
 #endif
 

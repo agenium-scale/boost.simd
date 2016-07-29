@@ -43,7 +43,7 @@ namespace boost { namespace simd
     @see if_else_allbits
 
   **/
-  const boost::dispatch::functor<tag::genmaskc_> genmaskc = {};
+  Value genmaskc(Value const & v0);
 } }
 #endif
 

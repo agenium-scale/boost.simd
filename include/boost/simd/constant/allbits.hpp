@@ -66,7 +66,7 @@ namespace boost { namespace simd
 
       @see Allbits
     **/
-    const boost::dispatch::functor<tag::allbits_> allbits = {};
+    Value allbits();
   }
 } }
 #endif

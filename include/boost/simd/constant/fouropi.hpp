@@ -52,7 +52,7 @@ namespace boost { namespace simd
 
       @return The Fouropi constant for the proper type
     **/
-    const boost::dispatch::functor<tag::fouropi_> fouropi = {};
+    Value fouropi();
   }
 } }
 #endif

@@ -28,7 +28,7 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    as_floating<T> r = bitfloating(x);
+    as_floating_t<T> r = bitfloating(x);
     @endcode
 
     is similar to:
@@ -44,7 +44,7 @@ namespace boost { namespace simd
     @see next, prev, successor,  predecessor,  nextafter
 
   **/
-  const boost::dispatch::functor<tag::bitfloating_> bitfloating = {};
+  as_floating_t<T> bitfloating(Value const & v0);
 } }
 #endif
 

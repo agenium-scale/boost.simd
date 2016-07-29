@@ -22,7 +22,7 @@ namespace boost { namespace simd
     Function object implementing rol capabilities
 
     Returns the first entry rotated left
-    by the absolute value of the second entry.
+    by the value of the second entry.
 
     @par semantic:
     For any given value @c x of type @c T, n  of type @c I:
@@ -37,7 +37,7 @@ namespace boost { namespace simd
     @see  ror, rrol, rror
 
   **/
-  const boost::dispatch::functor<tag::rol_> rol = {};
+  Value rol(Value const & v0, IntegerValue const& n);
 } }
 #endif
 

@@ -42,7 +42,7 @@ namespace boost { namespace simd
     @see exponent
 
   **/
-  const boost::dispatch::functor<tag::ilogb_> ilogb = {};
+  Value ilogb(Value const& x);
 } }
 #endif
 

@@ -36,7 +36,7 @@ namespace boost { namespace simd
     @see round,  iceil, log10
 
   **/
-  const boost::dispatch::functor<tag::significants_> significants = {};
+  Value significants(Value const & v0, IntegerValue const& n);
 } }
 #endif
 

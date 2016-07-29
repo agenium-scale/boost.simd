@@ -39,7 +39,7 @@ namespace boost { namespace simd
     @see Nan
 
   **/
-  const boost::dispatch::functor<tag::is_equal_with_equal_nans_> is_equal_with_equal_nans = {};
+  as_logical_t<Value> is_equal_with_equal_nans(Value const& x, Value const &y);
 } }
 #endif
 

@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Mhalf constant for the proper type
     **/
-    const boost::dispatch::functor<tag::mhalf_> mhalf = {};
+    Value mhalf();
   }
 } }
 #endif

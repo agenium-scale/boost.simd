@@ -36,12 +36,11 @@ namespace boost { namespace simd
     @code
     T r = cond : t-One<T>() : t;
     @endcode
-
-    @par Alias:
-    @c if_dec
-
   **/
-  const boost::dispatch::functor<tag::if_dec_> if_dec = {};
+  Value if_dec(Value const& c, Value const& v0);
+
+  //@overload
+  Value if_dec(LogicalValue const& c, Value const& v0);
 } }
 #endif
 

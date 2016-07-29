@@ -36,12 +36,11 @@ namespace boost { namespace simd
     @code
     T1 r = cond ? t+One<T>() : t  ;
     @endcode
-
-    @par Alias:
-    @c if_inc
-
   **/
-  const boost::dispatch::functor<tag::if_inc_> if_inc = {};
+  Value if_inc(Value const& c, Value const& v0);
+
+  //@overload
+  Value if_inc(LogicalValue const& c, Value const& v0);
 } }
 #endif
 

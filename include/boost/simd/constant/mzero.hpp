@@ -56,7 +56,7 @@ namespace boost { namespace simd
 
       @return The Mzero constant for the proper type
     **/
-    const boost::dispatch::functor<tag::mzero_> mzero = {};
+    Value mzero();
   }
 } }
 #endif

@@ -36,10 +36,11 @@ namespace boost { namespace simd
 
     @par Decorators
 
-    std_, fast_ for floating entries
+    std_ calls std::sqrt
+    fast_ for floating entries can gain some speed with less accuracy on some architectures.
 
   **/
-  const boost::dispatch::functor<tag::sqrt_> sqrt = {};
+  Value sqrt(Value const & v0);
 } }
 #endif
 

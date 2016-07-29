@@ -19,14 +19,15 @@ namespace boost { namespace simd
     @ingroup group-swar
     Type-preserving pack slicing
 
-    This function object slices a simd::pack into two simd::pack of same type but twice as small.
+    This function object slices a simd::pack into two simd::packs of same type of half the size.
 
     @par Semantic:
 
-    For any value @c a of type @c T , the following code:
+    For any value @c a of type @c T, the following code:
 
     @code
-    auto c = slice(a);
+    pack<T, N> x;
+    std::array<pack<T, N/2>, 2> res = slice(x);
     @endcode
 
     returns an array type which behaves so that:
@@ -41,7 +42,7 @@ namespace boost { namespace simd
     @see slice_low
     @see slice_high
   **/
-  const boost::dispatch::functor<tag::slice_> slice = {};
+  std::array<ValueO2, 2> slice(Value const & x);
 #endif
 } }
 

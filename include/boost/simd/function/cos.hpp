@@ -132,7 +132,7 @@ namespace boost { namespace simd
     @see  sincos, cosd, cospi
 
   **/
-  const boost::dispatch::functor<tag::cos_> cos = {};
+  Value cos(Value const & v0);
 } }
 #endif
 

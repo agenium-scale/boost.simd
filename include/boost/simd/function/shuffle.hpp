@@ -25,7 +25,7 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    Let's @c T be a SIMD register type of cardinal @c N, @c Perm be a
+    Let @c T be a SIMD register type of cardinal @c N, @c Perm be a
     binary @metafunction. For any SIMD register @c x and  @c y of type @c T,
     the following code:
 
@@ -52,8 +52,8 @@ namespace boost { namespace simd
 
   template<typename Permutation, typename T>  T shuffle(T const& a);
   template<typename Permutation, typename T>  T shuffle(T const& a,T const& b);
-#endif
 } }
+#endif
 
 #include <boost/simd/function/scalar/shuffle.hpp>
 #include <boost/simd/function/simd/shuffle.hpp>

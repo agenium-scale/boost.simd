@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Expnibig constant for the proper type
     **/
-    const boost::dispatch::functor<tag::expnibig_> expnibig = {};
+    Value expnibig();
   }
 } }
 #endif

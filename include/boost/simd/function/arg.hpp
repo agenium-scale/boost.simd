@@ -35,27 +35,22 @@ namespace boost { namespace simd
     T r = (is_nan(x)) ? x : (is_negative(x)) ? Pi<T>() : Zero<T>();
     @endcode
 
-    @par Note:
+    @par Notes:
 
     - Returns \f$+0\f$ or \f$\pi\f$  (or @ref Nan if and only if the input is @ref Nan)
     according to the input @ref sign bit,
 
     - arg(x, use_signbit_) always returns \f$+0\f$ or \f$\pi\f$ taking into account the bit of sign
-    even in the Nan case and is a bit speedier.
+    even in the Nan case and is quicker.
 
-    - This function is the restriction to real numbers of the complex
-    arg(ument) function.
+    - This function implement the restriction to real numbers of the complex arg(ument) function.
 
     - This function is not defined for integral types.
-
-    @par Alias:
-
-    angle
 
     @see is_negative,  is_ltz,  Pi
 
   **/
-  const boost::dispatch::functor<tag::arg_> arg = {};
+  Value arg(Value const & v0);
 } }
 #endif
 

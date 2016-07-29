@@ -41,7 +41,7 @@ namespace boost { namespace simd
     @see sign, signnz, is_negative, is_positive, Mzero, SignMask;
 
   **/
-  const boost::dispatch::functor<tag::bitofsign_> bitofsign = {};
+  Value bitofsign(Value const & v0);
 } }
 #endif
 

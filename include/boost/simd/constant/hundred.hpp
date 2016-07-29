@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Hundred constant for the proper type
     **/
-    const boost::dispatch::functor<tag::hundred_> hundred = {};
+    Value hundred();
   }
 } }
 #endif

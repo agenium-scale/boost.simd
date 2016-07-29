@@ -39,7 +39,7 @@ namespace boost { namespace simd
     @see exp, exprecneg
 
   **/
-  const boost::dispatch::functor<tag::exprecnegc_> exprecnegc = {};
+  Value exprecnegc(Value const & v0);
 } }
 #endif
 

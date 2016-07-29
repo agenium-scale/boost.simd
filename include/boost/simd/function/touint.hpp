@@ -38,19 +38,19 @@ namespace boost { namespace simd
 
     @par Notes:
 
-    @c toint cast a floating value to the signed integer value of the same bit size.
+    @c toint cast a floating value to the unsigned signed integer value of the same bit size.
 
     This is done by C casting for scalars and corresponding intrinsic in simd (if available).
 
     Peculiarly,  that implies that the behaviour of this function on invalid or negative
     entries is not defined and possibly unpredictable.
 
-    If you intend to use @ref Nan, @ref Inf or negative entries, consider using @ref touint_s instead.
+    If you intend to use @ref Nan, @ref Inf or negative entries, consider using @ref saturated_(touint) instead.
 
-    @see toint, toint_s,  touint_s
+    @see toint
 
   **/
-  const boost::dispatch::functor<tag::touint_> touint = {};
+  UIntegerValue toint(Value const & x);
 } }
 #endif
 

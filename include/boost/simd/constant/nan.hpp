@@ -53,7 +53,7 @@ namespace boost { namespace simd
 
       @return The Nan constant for the proper type
     **/
-    const boost::dispatch::functor<tag::nan_> nan = {};
+    Value nan();
   }
 } }
 #endif

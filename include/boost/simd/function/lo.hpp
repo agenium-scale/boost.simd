@@ -33,10 +33,8 @@ namespace boost { namespace simd
     @endcode
 
     @see  hi
-
-    type associated to the input.
   **/
-  const boost::dispatch::functor<tag::lo_> lo = {};
+  Value lo(Value const & v0);
 } }
 #endif
 

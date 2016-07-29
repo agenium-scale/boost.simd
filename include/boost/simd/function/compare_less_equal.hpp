@@ -40,7 +40,7 @@ namespace boost { namespace simd
 
     @see is_less_equal
   **/
-  const boost::dispatch::functor<tag::compare_less_equal_> compare_less_equal = {};
+  bool compare_less_equal(Value const& v0, Value const& v1);
 } }
 #endif
 

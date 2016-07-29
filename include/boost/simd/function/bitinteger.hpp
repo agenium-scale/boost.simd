@@ -47,7 +47,7 @@ namespace boost { namespace simd
     @see next, prev, successor,  predecessor,  nextafter
 
   **/
-  const boost::dispatch::functor<tag::bitinteger_> bitinteger = {};
+  as_integer_t<T> bitinteger(Value const & v0);
 } }
 #endif
 

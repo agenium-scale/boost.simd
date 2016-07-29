@@ -43,7 +43,7 @@ namespace boost { namespace simd
 
       @return The Logpi constant for the proper type
     **/
-    const boost::dispatch::functor<tag::logpi_> logpi = {};
+    Value logpi();
   }
 } }
 #endif

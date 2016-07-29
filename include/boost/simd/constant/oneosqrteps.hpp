@@ -49,7 +49,7 @@ namespace boost { namespace simd
 
       @return The Oneosqrteps constant for the proper type
     **/
-    const boost::dispatch::functor<tag::oneosqrteps_> oneosqrteps = {};
+    Value oneosqrteps();
   }
 } }
 #endif

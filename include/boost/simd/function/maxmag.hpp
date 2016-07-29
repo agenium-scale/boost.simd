@@ -38,7 +38,7 @@ namespace boost { namespace simd
     @see max, maxnum, maxnummag
 
   **/
-  const boost::dispatch::functor<tag::maxmag_> maxmag = {};
+  Value maxmag(Value const & x, Value const& y);
 } }
 #endif
 

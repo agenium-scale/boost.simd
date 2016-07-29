@@ -45,7 +45,7 @@ namespace boost { namespace simd
     @see mantissa,  frexp, ldexp
 
   **/
-  const boost::dispatch::functor<tag::exponent_> exponent = {};
+  as_integer_t<Value> exponent(Value const & v0);
 } }
 #endif
 

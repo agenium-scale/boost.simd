@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::any_> any = {};
+  logical<scalar_of_t<value>> any(Value const & v0);
 } }
 #endif
 

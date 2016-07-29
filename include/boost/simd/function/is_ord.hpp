@@ -36,7 +36,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::is_ord_> is_ord = {};
+  as_logical_t<Value> is_ord(Value const& x, Value const& y);
 } }
 #endif
 

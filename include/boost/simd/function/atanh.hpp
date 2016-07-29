@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @see log, Half, dec, inc
 
   **/
-  const boost::dispatch::functor<tag::atanh_> atanh = {};
+  Value atanh(Value const & v0);
 } }
 #endif
 

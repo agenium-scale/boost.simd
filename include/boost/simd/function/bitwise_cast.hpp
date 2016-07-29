@@ -25,7 +25,7 @@ namespace boost { namespace simd
 
       @par Semantic
 
-      For any value @c x of type @c T and for  type @c Target,
+      For any value @c x of type @c T and for type @c Target,
       of same bit size as T
 
 
@@ -43,7 +43,7 @@ namespace boost { namespace simd
 
       @return A value of type @c Target which is bit-equivalent to @c x.
     **/
-    const boost::dispatch::functor<tag::bitwise_cast_> bitwise_cast = {};
+    Target bitwise_cast(Value const& x);
   }
 } }
 #endif

@@ -36,7 +36,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::is_nez_> is_nez = {};
+  as_logical_t<Value> is_nez(Value const& x);
 } }
 #endif
 

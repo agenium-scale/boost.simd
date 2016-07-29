@@ -69,7 +69,7 @@ namespace boost { namespace simd
 
       @see Eps
     **/
-    const boost::dispatch::functor<tag::eps_> eps = {};
+    Value eps();
   }
 } }
 #endif

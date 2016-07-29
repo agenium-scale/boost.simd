@@ -48,7 +48,7 @@ namespace boost { namespace simd
 
       @return The Smallestposval constant for the proper type
     **/
-    const boost::dispatch::functor<tag::smallestposval_> smallestposval = {};
+    Value smallestposval();
   }
 } }
 #endif

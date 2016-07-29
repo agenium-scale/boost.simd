@@ -49,7 +49,7 @@ namespace boost { namespace simd
 
       @return The Sqrtsmallestposval constant for the proper type
     **/
-    const boost::dispatch::functor<tag::sqrtsmallestposval_> sqrtsmallestposval = {};
+    Value sqrtsmallestposval();
   }
 } }
 #endif

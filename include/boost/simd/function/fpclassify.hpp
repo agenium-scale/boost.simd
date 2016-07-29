@@ -52,7 +52,7 @@ namespace boost { namespace simd
     @see is_eqz, is_denormal, is_normal, is_inf, is_nan
 
   **/
-  const boost::dispatch::functor<tag::fpclassify_> fpclassify = {};
+  as_integer_t<Value> fpclassify(Value const & v0);
 } }
 #endif
 

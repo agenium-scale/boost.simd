@@ -61,7 +61,7 @@ namespace boost { namespace simd
     @see rem_pio2, rem_pio2_medium,rem_2pi, rem_pio2_cephes,
 
   **/
-  const boost::dispatch::functor<tag::rem_pio2_straight_> rem_pio2_straight = {};
+  std::pair<IntegerValue, Value> rem_2pio_straight(Value const & v0);
 } }
 #endif
 

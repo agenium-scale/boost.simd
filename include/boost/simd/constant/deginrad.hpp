@@ -53,7 +53,7 @@ namespace boost { namespace simd
 
       @return The Deginrad constant for the proper type
     **/
-    const boost::dispatch::functor<tag::deginrad_> deginrad = {};
+    Value deginrad();
   }
 } }
 #endif

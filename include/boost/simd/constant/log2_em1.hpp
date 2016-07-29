@@ -42,7 +42,7 @@ namespace boost { namespace simd
 
       @return The Log2_em1 constant for the proper type
     **/
-    const boost::dispatch::functor<tag::log2_em1_> log2_em1 = {};
+    Value log2_em1<Value>();
   }
 } }
 #endif

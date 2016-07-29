@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Msix constant for the proper type
     **/
-    const boost::dispatch::functor<tag::msix_> msix = {};
+    Value msix();
   }
 } }
 #endif

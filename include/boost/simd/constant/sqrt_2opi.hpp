@@ -52,7 +52,7 @@ namespace boost { namespace simd
 
       @return The Sqrt_2opi constant for the proper type
     **/
-    const boost::dispatch::functor<tag::sqrt_2opi_> sqrt_2opi = {};
+    Value Sqrt_2opi<Value>();
   }
 } }
 #endif

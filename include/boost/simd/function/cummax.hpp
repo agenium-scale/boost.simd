@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::cummax_> cummax = {};
+  Value cummax(Value const & v0);
 } }
 #endif
 

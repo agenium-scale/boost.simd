@@ -38,7 +38,7 @@ namespace boost { namespace simd
     @see Smallestposval
 
   **/
-  const boost::dispatch::functor<tag::is_not_denormal_> is_not_denormal = {};
+  as_logical_t<Value> is_not_denormal(Value const& x);
 } }
 #endif
 

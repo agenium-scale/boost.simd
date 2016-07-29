@@ -38,7 +38,7 @@ namespace boost { namespace simd
     @see acos, acospi
 
   **/
-  const boost::dispatch::functor<tag::acosd_> acosd = {};
+  Value acosd(Value const & v0);
 } }
 #endif
 

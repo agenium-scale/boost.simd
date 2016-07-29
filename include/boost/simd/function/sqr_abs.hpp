@@ -21,7 +21,7 @@ namespace boost { namespace simd
     @ingroup group-arithmetic
     Function object implementing sqr_abs capabilities
 
-    Computes the square of the absolute value of its parameter.
+    Computes the square of the absolute value of its parameter. For real entries it is the same as @ref sqr.
 
     @par semantic:
     For any given value @c x of type @c T:
@@ -36,12 +36,8 @@ namespace boost { namespace simd
     T r = sqr(abs(x));
     @endcode
 
-    @par Alias
-
-    @c sqr_modulus
-
   **/
-  const boost::dispatch::functor<tag::sqr_abs_> sqr_abs = {};
+  Value sqr_abs(Value const& x);
 } }
 #endif
 

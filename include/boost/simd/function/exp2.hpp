@@ -48,7 +48,7 @@ namespace boost { namespace simd
     @see exp, exp10, pow, pow2
 
   **/
-  const boost::dispatch::functor<tag::exp2_> exp2 = {};
+  Value exp2(Value const & v0);
 } }
 #endif
 

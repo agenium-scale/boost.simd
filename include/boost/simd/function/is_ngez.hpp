@@ -37,11 +37,11 @@ namespace boost { namespace simd
 
     @par Note:
 
-    Due to existence of @ref Nan, this is not equivalent to a call to @ref is_lt
-z    for floating types
+    Due to existence of @ref Nan, this is not equivalent to a call to
+    @ref is_ltz for floating types
 
   **/
-  const boost::dispatch::functor<tag::is_ngez_> is_ngez = {};
+  as_logical_t<Value> is_ngez(Value const& x);
 } }
 #endif
 

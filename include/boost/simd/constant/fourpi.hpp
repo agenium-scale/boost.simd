@@ -46,7 +46,7 @@ namespace boost { namespace simd
 
       @return The Fourpi constant for the proper type
     **/
-    const boost::dispatch::functor<tag::fourpi_> fourpi = {};
+    Value fourpi();
   }
 } }
 #endif

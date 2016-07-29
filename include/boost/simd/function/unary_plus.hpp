@@ -18,7 +18,7 @@ namespace boost { namespace simd
 
  /*!
 
-    @ingroup group-arithmetic
+    @ingroup group-operator
     Function object implementing unary_plus capabilities
 
     return the elementwise unary plus of the parameter
@@ -36,13 +36,18 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T r = +x;
+    T r = x;
     @endcode
+
+    @par Note:
+
+    It's the identity operator. take care that the infix notation in scalar integral mode encurs
+    a possible promotion of the type as C++ rules state.
 
     @see  plus, unary_minus
 
   **/
-  const boost::dispatch::functor<tag::unary_plus_> unary_plus = {};
+  Value unary_plus(Value const& x);
 } }
 #endif
 

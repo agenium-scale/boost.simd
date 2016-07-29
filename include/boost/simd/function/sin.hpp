@@ -37,7 +37,7 @@ namespace boost { namespace simd
     @see sincos, sind, sinpi
 
   **/
-  const boost::dispatch::functor<tag::sin_> sin = {};
+  Value sin(Value const & v0);
 } }
 #endif
 

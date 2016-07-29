@@ -19,11 +19,11 @@ namespace boost { namespace simd
 
     SIMD register type-based split
 
-    @c split splits a SIMD register @c x in two SIMD register of half the
+    @c split splits a SIMD register @c x in two SIMD registers of half the
     cardinal of @c x containing the same value than @c x but transtyped to
     their associated scalar type.
   **/
-  const boost::dispatch::functor<tag::split_> split = {};
+  Value split(Value const & v0);
 #endif
 } }
 

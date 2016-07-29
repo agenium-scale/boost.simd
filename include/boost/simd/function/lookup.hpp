@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::lookup_> lookup = {};
+  Value lookup(Value const & v0, IntegerValue const& n);
 } }
 #endif
 

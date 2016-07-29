@@ -33,7 +33,7 @@ namespace boost { namespace simd
     returns the difference of @c a and @c b
 
   **/
-  const boost::dispatch::functor<tag::minus_> minus = {};
+  Value minus(Value const & x, Value const& y);
 } }
 #endif
 

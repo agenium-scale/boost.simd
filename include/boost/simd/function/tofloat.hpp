@@ -37,7 +37,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::tofloat_> tofloat = {};
+  as_floating_t<Value> tofloat(Value const& v);
 } }
 #endif
 

@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -18,16 +18,7 @@ namespace boost { namespace simd
     @ingroup group-functions
     @defgroup group-exponential Exponential Functions
 
-    Those functions provides algorithms for computing exponentials and logarithms.
-  **/
-
-  /*!
-    @ingroup group-callable
-    @defgroup group-callable-exponential Exponential Callable Objects
-    Callable objects version of @ref group-exponential
-
-    Their specific semantic limitations are similar to those of their function
-    equivalents as described in the @ref group-exponential section.
+    These functions provide algorithms for computing exponentials and logarithms.
   **/
 
 } }

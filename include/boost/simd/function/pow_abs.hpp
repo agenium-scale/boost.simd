@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @see pow, abs
 
   **/
-  const boost::dispatch::functor<tag::pow_abs_> pow_abs = {};
+  Value powabs(Value const & v0, Value const& y);
 } }
 #endif
 

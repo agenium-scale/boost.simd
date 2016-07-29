@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Meight constant for the proper type
     **/
-    const boost::dispatch::functor<tag::meight_> meight = {};
+    Value meight();
   }
 } }
 #endif

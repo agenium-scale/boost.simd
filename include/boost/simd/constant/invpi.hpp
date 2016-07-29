@@ -52,7 +52,7 @@ namespace boost { namespace simd
 
       @return The Invpi constant for the proper type
     **/
-    const boost::dispatch::functor<tag::invpi_> invpi = {};
+    Value invpi();
   }
 } }
 #endif

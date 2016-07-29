@@ -21,7 +21,7 @@ namespace boost { namespace simd
     @ingroup group-reduction
     Function object implementing hmsb capabilities
 
-    Returns a size_t value composed by the highiest bits.
+    Returns a std::size_t value composed by the highiest bits.
     of each vector element
 
     @par Semantic:
@@ -29,13 +29,13 @@ namespace boost { namespace simd
     For every parameter of type T
 
     @code
-    size_t r = hmsb(x);
+    std::size_t r = hmsb(x);
     @endcode
 
     is similar to:
 
     @code
-      size_t r = 0;
+      std::size_t r = 0;
       for(result_type i = 0; i != cardinal_of<T>; ++i)
       {
         r |= (bits(x[i]) >> (sizeof(stype)*8 - 1)) << i;
@@ -43,7 +43,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::hmsb_> hmsb = {};
+  std::size_t hmsb(Value const & v0);
 } }
 #endif
 

@@ -48,7 +48,7 @@ namespace boost { namespace simd
 
       @return The Halfeps constant for the proper type
     **/
-    const boost::dispatch::functor<tag::halfeps_> halfeps = {};
+    Value halfeps();
   }
 } }
 #endif

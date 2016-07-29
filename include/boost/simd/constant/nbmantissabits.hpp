@@ -48,7 +48,7 @@ namespace boost { namespace simd
 
       @return The Nbmantissabits constant for the proper type
     **/
-    const boost::dispatch::functor<tag::nbmantissabits_> nbmantissabits = {};
+    Value nbmantissabits();
   }
 } }
 #endif

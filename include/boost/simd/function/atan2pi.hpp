@@ -50,7 +50,7 @@ namespace boost { namespace simd
     @see atand, atan2, atan2d, atan
 
   **/
-  const boost::dispatch::functor<tag::atan2pi_> atan2pi = {};
+  Value atan2pi(Value const& x, const Value &y);
 } }
 #endif
 

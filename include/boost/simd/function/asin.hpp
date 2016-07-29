@@ -42,7 +42,7 @@ namespace boost { namespace simd
     @see asind, asinpi
 
   **/
-  const boost::dispatch::functor<tag::asin_> asin = {};
+  Value asin(Value const & v0);
 } }
 #endif
 

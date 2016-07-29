@@ -43,7 +43,7 @@ namespace boost { namespace simd
     @see cos, sin, tan, cot, cotpi
 
   **/
-  const boost::dispatch::functor<tag::cotpi_> cotpi = {};
+  Value cotpi(Value const & v0);
 } }
 #endif
 

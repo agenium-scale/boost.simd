@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Nine constant for the proper type
     **/
-    const boost::dispatch::functor<tag::nine_> nine = {};
+    Value nine();
   }
 } }
 #endif

@@ -37,7 +37,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::is_imag_> is_imag = {};
+  as_logical_t<Value> is_imag(Value const& x);
 } }
 #endif
 

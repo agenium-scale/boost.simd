@@ -41,7 +41,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::splatted_maximum_> splatted_maximum = {};
+  Value splatted_maximum(Value const& x);
 } }
 #endif
 

@@ -36,7 +36,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::is_not_nan_> is_not_nan = {};
+  as_logical_t<Value> is_not_nan(Value const& x);
 } }
 #endif
 

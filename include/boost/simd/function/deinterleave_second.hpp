@@ -24,7 +24,7 @@ namespace boost { namespace simd
     For every parameters of type T:
 
     @code
-    T0 r = deinterleave_second(x,y);
+    T r = deinterleave_second(x,y);
     @endcode
 
     is equivalent to :
@@ -36,7 +36,7 @@ namespace boost { namespace simd
     with <tt> n = cardinal_of<T>::value </tt>
 
   **/
-  const boost::dispatch::functor<tag::deinterleave_second_> deinterleave_second = {};
+  Value deinterleave_second(Value const& v0, Value const& v1);
 #endif
 } }
 

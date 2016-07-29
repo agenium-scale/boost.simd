@@ -43,7 +43,10 @@ namespace boost { namespace simd
     the return type is T.
 
   **/
-  const boost::dispatch::functor<tag::if_zero_else_one_> if_zero_else_one = {};
+  Value if_zero_else_one(Value const& c);
+
+  //@overload
+  Value if_zero_else_one(LogicalValue const& c);
 } }
 #endif
 

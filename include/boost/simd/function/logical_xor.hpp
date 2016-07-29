@@ -44,7 +44,7 @@ namespace boost { namespace simd
     logical_andnot, logical_notor, logical_and, logical_not
 
   **/
-  const boost::dispatch::functor<tag::logical_xor_> logical_xor = {};
+  as_logical_t<Value0> logical_xor(Value0 const& x, Value1 const& y);
 } }
 #endif
 

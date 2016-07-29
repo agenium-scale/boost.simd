@@ -42,7 +42,7 @@ namespace boost { namespace simd
     @see sign, negatenz, copysign,  Mzero,  is_positive, is_negative
 
   **/
-  const boost::dispatch::functor<tag::negate_> negate = {};
+  Value negate(Value const & x, Value const& y);
 } }
 #endif
 

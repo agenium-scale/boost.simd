@@ -39,7 +39,7 @@ namespace boost { namespace simd
     @see Sqrtvalmax
 
   **/
-  const boost::dispatch::functor<tag::safe_max_> safe_max = {};
+  Value safe_max(Value const & v0);
 } }
 #endif
 

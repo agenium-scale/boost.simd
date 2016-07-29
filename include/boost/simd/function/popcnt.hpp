@@ -31,10 +31,8 @@ namespace boost { namespace simd
     @endcode
 
     @see  clz, ct
-
-                 type associated to the input.
   **/
-  const boost::dispatch::functor<tag::popcnt_> popcnt = {};
+  IntegerValue popcnt(Value const & v0);
 } }
 #endif
 
