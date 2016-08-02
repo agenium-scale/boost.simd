@@ -43,7 +43,7 @@ namespace boost { namespace simd
 
       @return The Zero constant for the proper type
     **/
-    Value zero();
+    Value Zero();
   }
 } }
 #endif

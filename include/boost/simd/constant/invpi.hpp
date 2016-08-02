@@ -52,7 +52,7 @@ namespace boost { namespace simd
 
       @return The Invpi constant for the proper type
     **/
-    Value invpi();
+    Value Invpi();
   }
 } }
 #endif

@@ -44,7 +44,7 @@ namespace boost { namespace simd
 
       @return The Pi constant for the proper type
     **/
-    Value pi();
+    Value Pi();
   }
 } }
 #endif

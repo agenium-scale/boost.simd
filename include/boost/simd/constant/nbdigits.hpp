@@ -49,7 +49,7 @@ namespace boost { namespace simd
 
       @return The Nbdigits constant for the proper type
     **/
-    Value nbdigits();
+    Value Nbdigits();
   }
 } }
 #endif

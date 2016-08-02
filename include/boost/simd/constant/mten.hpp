@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Mten constant for the proper type
     **/
-    Value mten();
+    Value Mten();
   }
 } }
 #endif

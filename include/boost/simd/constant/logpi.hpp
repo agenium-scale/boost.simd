@@ -43,7 +43,7 @@ namespace boost { namespace simd
 
       @return The Logpi constant for the proper type
     **/
-    Value logpi();
+    Value Logpi();
   }
 } }
 #endif

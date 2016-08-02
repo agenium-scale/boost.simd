@@ -63,7 +63,7 @@ namespace boost { namespace simd
 
       @see Cgold
     **/
-    Value cgold();
+    Value Cgold();
   }
 } }
 #endif

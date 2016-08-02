@@ -52,7 +52,7 @@ namespace boost { namespace simd
 
       @return The Twopi constant for the proper type
     **/
-    Value twopi();
+    Value Twopi();
   }
 } }
 #endif

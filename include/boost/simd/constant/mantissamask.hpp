@@ -44,7 +44,7 @@ namespace boost { namespace simd
 
       @return The Mantissamask constant for the proper type
     **/
-    Value mantissamask();
+    Value Mantissamask();
   }
 } }
 #endif

@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Twenty constant for the proper type
     **/
-    Value twenty();
+    Value Twenty();
   }
 } }
 #endif

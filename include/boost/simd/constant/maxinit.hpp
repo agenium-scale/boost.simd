@@ -35,7 +35,7 @@ namespace boost { namespace simd
 
       @return The Maxinit constant for the proper type
     **/
-    Value maxinit();
+    Value Maxinit();
   }
 } }
 #endif

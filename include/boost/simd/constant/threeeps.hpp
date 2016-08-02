@@ -46,7 +46,7 @@ namespace boost { namespace simd
 
       @return The Threeeps constant for the proper type
     **/
-    Value threeeps();
+    Value Threeeps();
   }
 } }
 #endif

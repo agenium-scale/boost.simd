@@ -66,7 +66,7 @@ namespace boost { namespace simd
 
       @see Allbits
     **/
-    Value allbits();
+    Value Allbits();
   }
 } }
 #endif

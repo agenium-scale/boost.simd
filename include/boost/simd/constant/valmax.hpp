@@ -52,7 +52,7 @@ namespace boost { namespace simd
 
       @return The maximum finite representable value of the input type
     **/
-    Value valmax();
+    Value Valmax();
   }
 } }
 #endif

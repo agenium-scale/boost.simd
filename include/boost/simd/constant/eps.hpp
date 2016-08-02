@@ -69,7 +69,7 @@ namespace boost { namespace simd
 
       @see Eps
     **/
-    Value eps();
+    Value Eps();
   }
 } }
 #endif

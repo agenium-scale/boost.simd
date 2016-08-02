@@ -48,7 +48,7 @@ namespace boost { namespace simd
 
       @return The Nbmantissabits constant for the proper type
     **/
-    Value nbmantissabits();
+    Value Nbmantissabits();
   }
 } }
 #endif

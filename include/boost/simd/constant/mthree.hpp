@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Mthree constant for the proper type
     **/
-    Value mthree();
+    Value Mthree();
   }
 } }
 #endif

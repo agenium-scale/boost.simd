@@ -48,7 +48,7 @@ namespace boost { namespace simd
 
       @return The Sqrteps constant for the proper type
     **/
-    Value sqrteps();
+    Value Sqrteps();
   }
 } }
 #endif

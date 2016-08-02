@@ -48,7 +48,7 @@ namespace boost { namespace simd
 
       @return The Oneotwoeps constant for the proper type
     **/
-    Value oneotwoeps();
+    Value Oneotwoeps();
   }
 } }
 #endif

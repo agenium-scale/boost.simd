@@ -43,7 +43,7 @@ namespace boost { namespace simd
 
       @return The Logeps constant for the proper type
     **/
-    Value logeps();
+    Value Logeps();
   }
 } }
 #endif

@@ -55,7 +55,7 @@ namespace boost { namespace simd
 
       @return The Maxlog constant for the proper type
     **/
-    Value maxlog();
+    Value Maxlog();
   }
 } }
 #endif

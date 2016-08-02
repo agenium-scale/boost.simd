@@ -48,7 +48,7 @@ namespace boost { namespace simd
 
       @return The Thirdrooteps constant for the proper type
     **/
-    Value thirdrooteps();
+    Value Thirdrooteps();
   }
 } }
 #endif

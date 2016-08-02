@@ -48,7 +48,7 @@ namespace boost { namespace simd
 
       @return The Smallestposval constant for the proper type
     **/
-    Value smallestposval();
+    Value Smallestposval();
   }
 } }
 #endif

@@ -43,7 +43,7 @@ namespace boost { namespace simd
 
       @return The Third constant for the proper type
     **/
-    Value third();
+    Value Third();
   }
 } }
 #endif

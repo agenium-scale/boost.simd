@@ -52,7 +52,7 @@ namespace boost { namespace simd
 
       @return The minimum representable value of the input type
     **/
-    Value valmin();
+    Value Valmin();
   }
 } }
 #endif

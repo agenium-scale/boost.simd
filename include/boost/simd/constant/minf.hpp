@@ -53,7 +53,7 @@ namespace boost { namespace simd
 
       @return The minimum representable value of the input type
     **/
-    Value minf();
+    Value Minf();
   }
 } }
 #endif

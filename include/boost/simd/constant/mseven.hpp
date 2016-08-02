@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Mseven constant for the proper type
     **/
-    Value mseven();
+    Value Mseven();
   }
 } }
 #endif

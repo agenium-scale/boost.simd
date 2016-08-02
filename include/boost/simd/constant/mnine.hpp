@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Mnine constant for the proper type
     **/
-    Value mnine();
+    Value Mnine();
   }
 } }
 #endif

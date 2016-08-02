@@ -51,7 +51,7 @@ namespace boost { namespace simd
 
       @return The Twoopi constant for the proper type
     **/
-    Value twoopi();
+    Value Twoopi();
   }
 } }
 #endif

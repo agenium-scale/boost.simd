@@ -53,7 +53,7 @@ namespace boost { namespace simd
 
       @return The Deginrad constant for the proper type
     **/
-    Value deginrad();
+    Value Deginrad();
   }
 } }
 #endif

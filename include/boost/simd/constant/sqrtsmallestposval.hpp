@@ -49,7 +49,7 @@ namespace boost { namespace simd
 
       @return The Sqrtsmallestposval constant for the proper type
     **/
-    Value sqrtsmallestposval();
+    Value Sqrtsmallestposval();
   }
 } }
 #endif

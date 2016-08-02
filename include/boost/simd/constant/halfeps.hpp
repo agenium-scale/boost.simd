@@ -48,7 +48,7 @@ namespace boost { namespace simd
 
       @return The Halfeps constant for the proper type
     **/
-    Value halfeps();
+    Value Halfeps();
   }
 } }
 #endif

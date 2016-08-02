@@ -50,7 +50,7 @@ namespace boost { namespace simd
 
       @return The Splitfactor constant for the proper type
     **/
-    Value splitfactor();
+    Value Splitfactor();
   }
 } }
 #endif

@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Mfive constant for the proper type
     **/
-    Value mfive();
+    Value Mfive();
   }
 } }
 #endif

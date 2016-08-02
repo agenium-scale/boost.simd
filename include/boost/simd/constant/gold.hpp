@@ -43,7 +43,7 @@ namespace boost { namespace simd
 
       @return The Gold constant for the proper type
     **/
-    Value gold();
+    Value Gold();
   }
 } }
 #endif

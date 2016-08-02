@@ -60,7 +60,7 @@ namespace boost { namespace simd
 
       @see Eight
     **/
-    Value eight();
+    Value Eight();
   }
 } }
 #endif

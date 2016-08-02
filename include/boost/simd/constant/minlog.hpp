@@ -55,7 +55,7 @@ namespace boost { namespace simd
 
       @return The Minlog constant for the proper type
     **/
-    Value minlog();
+    Value Minlog();
   }
 } }
 #endif

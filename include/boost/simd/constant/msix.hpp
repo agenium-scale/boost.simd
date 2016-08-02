@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Msix constant for the proper type
     **/
-    Value msix();
+    Value Msix();
   }
 } }
 #endif

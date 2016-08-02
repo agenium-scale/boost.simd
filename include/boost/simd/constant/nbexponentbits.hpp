@@ -48,7 +48,7 @@ namespace boost { namespace simd
 
       @return The Nbexponentbits constant for the proper type
     **/
-    Value nbexponentbits();
+    Value Nbexponentbits();
   }
 } }
 #endif

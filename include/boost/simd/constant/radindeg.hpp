@@ -53,7 +53,7 @@ namespace boost { namespace simd
 
       @return The Radindeg constant for the proper type
     **/
-    Value radindeg();
+    Value Radindeg();
   }
 } }
 #endif

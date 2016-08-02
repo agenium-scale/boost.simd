@@ -49,7 +49,7 @@ namespace boost { namespace simd
 
       @return The Euler constant for the proper type
     **/
-    Value euler();
+    Value Euler();
   }
 } }
 #endif

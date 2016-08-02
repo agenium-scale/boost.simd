@@ -45,7 +45,7 @@ namespace boost { namespace simd
 
       @return The Half constant for the proper type
     **/
-    Value half();
+    Value Half();
   }
 } }
 #endif

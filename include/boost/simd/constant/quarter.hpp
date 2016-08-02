@@ -43,7 +43,7 @@ namespace boost { namespace simd
 
       @return The Quarter constant for the proper type
     **/
-    Value quarter();
+    Value Quarter();
   }
 } }
 #endif

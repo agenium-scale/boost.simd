@@ -43,7 +43,7 @@ namespace boost { namespace simd
 
       @return The Sqrtvalmax constant for the proper type
     **/
-    Value sqrtvalmax();
+    Value Sqrtvalmax();
   }
 } }
 #endif

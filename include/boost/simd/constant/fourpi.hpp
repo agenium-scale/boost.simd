@@ -46,7 +46,7 @@ namespace boost { namespace simd
 
       @return The Fourpi constant for the proper type
     **/
-    Value fourpi();
+    Value Fourpi();
   }
 } }
 #endif

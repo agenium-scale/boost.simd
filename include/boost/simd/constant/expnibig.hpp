@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Expnibig constant for the proper type
     **/
-    Value expnibig();
+    Value Expnibig();
   }
 } }
 #endif

@@ -64,7 +64,7 @@ namespace boost { namespace simd
 
       @see Bitincrement
     **/
-    Value bitincrement();
+    Value Bitincrement();
   }
 } }
 #endif

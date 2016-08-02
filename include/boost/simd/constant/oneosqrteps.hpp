@@ -49,7 +49,7 @@ namespace boost { namespace simd
 
       @return The Oneosqrteps constant for the proper type
     **/
-    Value oneosqrteps();
+    Value Oneosqrteps();
   }
 } }
 #endif

@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Thousand constant for the proper type
     **/
-    Value thousand();
+    Value Thousand();
   }
 } }
 #endif

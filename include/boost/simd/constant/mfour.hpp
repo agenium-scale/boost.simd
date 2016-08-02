@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Mfour constant for the proper type
     **/
-    Value mfour();
+    Value Mfour();
   }
 } }
 #endif

@@ -44,7 +44,7 @@ namespace boost { namespace simd
 
       @return The Signmask constant for the proper type
     **/
-    Value signmask();
+    Value Signmask();
   }
 } }
 #endif

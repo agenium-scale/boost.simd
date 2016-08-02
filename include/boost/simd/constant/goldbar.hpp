@@ -43,7 +43,7 @@ namespace boost { namespace simd
 
       @return The Goldbar constant for the proper type
     **/
-    Value goldbar();
+    Value Goldbar();
   }
 } }
 #endif

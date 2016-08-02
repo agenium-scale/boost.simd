@@ -41,7 +41,7 @@ namespace boost { namespace simd
 
       @return The largest representable value of the input type
     **/
-    Value inf();
+    Value Inf();
   }
 } }
 #endif

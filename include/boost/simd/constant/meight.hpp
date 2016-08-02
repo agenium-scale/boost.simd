@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Meight constant for the proper type
     **/
-    Value meight();
+    Value Meight();
   }
 } }
 #endif

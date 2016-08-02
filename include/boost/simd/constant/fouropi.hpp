@@ -52,7 +52,7 @@ namespace boost { namespace simd
 
       @return The Fouropi constant for the proper type
     **/
-    Value fouropi();
+    Value Fouropi();
   }
 } }
 #endif

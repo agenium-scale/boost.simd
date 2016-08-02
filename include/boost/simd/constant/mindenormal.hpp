@@ -48,7 +48,7 @@ namespace boost { namespace simd
 
       @return The Mindenormal constant for the proper type
     **/
-    Value mindenormal();
+    Value Mindenormal();
   }
 } }
 #endif

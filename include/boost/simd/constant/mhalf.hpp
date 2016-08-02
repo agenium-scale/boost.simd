@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Mhalf constant for the proper type
     **/
-    Value mhalf();
+    Value Mhalf();
   }
 } }
 #endif

@@ -48,7 +48,7 @@ namespace boost { namespace simd
 
       @return The Fourthrooteps constant for the proper type
     **/
-    Value fourthrooteps();
+    Value Fourthrooteps();
   }
 } }
 #endif

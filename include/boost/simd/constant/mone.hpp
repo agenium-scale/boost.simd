@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Mone constant (-1) for the proper type
     **/
-    Value mone();
+    Value Mone();
   }
 } }
 #endif

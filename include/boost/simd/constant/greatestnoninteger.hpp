@@ -52,7 +52,7 @@ namespace boost { namespace simd
 
       @return The Greatestnoninteger constant for the proper type
     **/
-    Value greatestnoninteger();
+    Value Greatestnoninteger();
   }
 } }
 #endif

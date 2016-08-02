@@ -56,7 +56,7 @@ namespace boost { namespace simd
 
       @return The Mzero constant for the proper type
     **/
-    Value mzero();
+    Value Mzero();
   }
 } }
 #endif

@@ -53,7 +53,7 @@ namespace boost { namespace simd
 
       @return The Nan constant for the proper type
     **/
-    Value nan();
+    Value Nan();
   }
 } }
 #endif

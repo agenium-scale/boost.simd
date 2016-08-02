@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Mtwo constant for the proper type
     **/
-    Value mtwo();
+    Value Mtwo();
   }
 } }
 #endif
