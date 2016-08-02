@@ -220,7 +220,7 @@ INHERIT_DOCS           = NO
 # of the file/class/namespace that contains it.
 # The default value is: NO.
 
-SEPARATE_MEMBER_PAGES  = NO
+SEPARATE_MEMBER_PAGES  = YES
 
 # The TAB_SIZE tag can be used to set the number of spaces in a tab. Doxygen
 # uses this value to replace tabs by spaces in code fragments.
@@ -773,10 +773,10 @@ WARN_LOGFILE           =
 # Note: If this tag is empty the current directory is searched.
 
 INPUT                    = @Boost.SIMD_SOURCE_DIR@/include/boost/
-#INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/
-#INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/meta
-#INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/meta/hierarchy
-#INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/constant
+INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/
+INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/meta
+INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/meta/hierarchy
+INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/constant
 INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/function/
 INPUT                   += @Boost.SIMD_SOURCE_DIR@/doc
 FILE_PATTERNS           = *.md *.hpp
@@ -856,8 +856,8 @@ RECURSIVE              = YES
 # Note that relative paths are relative to the directory from which doxygen is
 # run.
 
-EXCLUDE                =
-
+EXCLUDE                = @Boost.SIMD_SOURCE_DIR@/include/boost/simd/detail
+EXCLUDE               += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/arch
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded
 # from the input.

@@ -5,7 +5,7 @@
     <tab type="mainpage" visible="yes" title="Home"/>
     <tab type="user" url="@ref QuickStart" visible="yes" title="Quick Start"/>
     <tab type="user" url="@ref tutorials" visible="yes" title="Tutorial"/>
-    <tab type="user" url="@ref motivation" visible="yes" title="Motivation"/>
+    <tab type="user" url="@ref motivation" visible="no" title="Motivation"/>
     <tab type="modules" visible="yes"
                         title="Reference documentation"
                         intro="The reference documentation is split into logical modules, as documented in the user manual."/>
