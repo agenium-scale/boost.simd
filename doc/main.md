@@ -2,8 +2,8 @@ Introduction {#mainpage}
 =========
 @tableofcontents
 
-Welcome to the world of portable, hassle free SIMD programming! **bSIMD** was developed to simplify the difficult, tedious
-and error-prone process of developing SIMD programs. **bSIMD** is designed to seamlessly integrate into existing projects
+Welcome to the world of portable, hassle free SIMD programming! **Boost.SIMD** was developed to simplify the difficult, tedious
+and error-prone process of developing SIMD programs. **Boost.SIMD** is designed to seamlessly integrate into existing projects
 so that you can quickly and easily start developing high performance, portable and future proof software.
 
 @section main-what What is SIMD?
@@ -18,11 +18,11 @@ executing a given instruction simultaneously on multiple data stored in dedicate
 computation unit in the processor, it comes in addition to the regular computation unit complete with a special register file,
 dispatching and pipelining unit.
 
-@section main-why Why use bSIMD?
+@section main-why Why use Boost.SIMD?
 
 -------------------------------------
 
-Whether you are a first time SIMD programmer or an experienced team leader, **bSIMD** can make your life and
+Whether you are a first time SIMD programmer or an experienced team leader, **Boost.SIMD** can make your life and
 that of your team easier as the use of SIMD instructions requires developers to program into a very verbose manner due to the low-level nature of SIMD instruction
 sets. Furthermore, it is necessary to re-write code for each revision of each target architecture, accounting for each architecture's
 vendor provided API as well as architecture dependent implementation details. This greatly complicates the design and maintenance of
@@ -38,15 +38,15 @@ It is clear that the development of applications which exploit SIMD instructions
 any tool which reduces this complexity can significantly reduce the time required to develop and maintain software whilst minimising
 the potential for the introduction of bugs.
 
-**bSIMD** is a Boost candidate library which aims to abstract the use of _SIMD_ extensions in an architecture, compiler and vendor
+**Boost.SIMD** is a Boost candidate library which aims to abstract the use of _SIMD_ extensions in an architecture, compiler and vendor
 neutral manner. This abstraction provides more than simple portable wrappers above hardware-specific registers, it also standardizes
 the use of common _SIMD_ programming idioms.
 
-**bSIMD** allows you to focus on the important part of your work: the development of new features and functionality. We take care of all
+**Boost.SIMD** allows you to focus on the important part of your work: the development of new features and functionality. We take care of all
 of the architecture and compiler specific details and we provide updates when new architectures are released by manufacturers.
-**bSIMD** allows one to write _SIMD_ vectorized code that is portable across all (supported) compilers, architectures and operating systems.
+**Boost.SIMD** allows one to write _SIMD_ vectorized code that is portable across all (supported) compilers, architectures and operating systems.
 
-**bSIMD** achieves this by providing:
+**Boost.SIMD** achieves this by providing:
 
   + a proper value semantic wrapper for _SIMD_ registers;
   + an automatic system to detect and exploit architecture specific optimization opportunities;
@@ -79,10 +79,10 @@ API.
 
 Another disadvantage of using raw intrinsics is the fact that compiler support varies greatly between vendor, operating system and architecture. For example,
 an SSE code which performs as expected on Linux may suffer from performance degradation, bugs or compiler warnings when compiled on Windows and vice-versa.
-The goal of **bSIMD** is to abstract all of these disadvantages, leaving the user with one API, regardless of architecture, compiler or operating system.
-All known compiler bugs are also managed by **bSIMD** to ensure the quick and efficient development of high performance portable software.
+The goal of **Boost.SIMD** is to abstract all of these disadvantages, leaving the user with one API, regardless of architecture, compiler or operating system.
+All known compiler bugs are also managed by **Boost.SIMD** to ensure the quick and efficient development of high performance portable software.
 
-For example, take the function to add two vectors. It may be written using **bSIMD** as follows:
+For example, take the function to add two vectors. It may be written using **Boost.SIMD** as follows:
 
 @snippet addvector.cpp bs-simd-loop
 
@@ -90,9 +90,9 @@ In order to obtain maximum performance on any architecture, the user must only r
 @section main-support Supported Compilers and Hardware
 
 ----------------------------------------------------------------------------------------------------
-The open-source version of **bSIMD** includes support for some x86 and VMX processors. Optional modules with support for
+The open-source version of **Boost.SIMD** includes support for some x86 and VMX processors. Optional modules with support for
 additional architectures are also available.
-The following SIMD extensions are supported by **bSIMD**:
+The following SIMD extensions are supported by **Boost.SIMD**:
 
 <center>
 Architecture | Extensions                                          | Accessibility
@@ -105,7 +105,7 @@ PowerPC      | VMX, VSX, QPX                                       | Premium
 ARM          | Neon                                                | Premium
 </center>
 
-**bSIMD** requires a C++11 compliant compiler and is thoroughly tested on the following compilers:
+**Boost.SIMD** requires a C++11 compliant compiler and is thoroughly tested on the following compilers:
 
 <center>
 Compiler                | Version
@@ -117,7 +117,7 @@ Microsoft Visual Studio | 13.0 and above
 
 ## Standalone X86
 
-**bSIMD** requires **Boost** version 1.60 or newer.
+**Boost.SIMD** requires **Boost** version 1.60 or newer.
 
 
 ## Adding Paid Architectures
@@ -132,20 +132,20 @@ The structure of this documention (available in the menu to the left) is as
 follows:
 
   - @ref tutorials\n
-    Tutorial for writing **bSIMD** code.
+    Tutorial for writing **Boost.SIMD** code.
 
   - @ref group-api\n
-    Public functions and type API of **bSIMD**
+    Public functions and type API of **Boost.SIMD**
 
   - @ref group-concept\n
-    Concepts defined and used throughout **bSIMD**.
+    Concepts defined and used throughout **Boost.SIMD**.
 
   - @ref group-config\n
-    Macros which are defined to control the configuration of **bSIMD** code.
+    Macros which are defined to control the configuration of **Boost.SIMD** code.
 
   - @ref group-ext\n
     Documentation for extension points for library's components. This documentation is useful
-    for people wanting to extend **bSIMD** to work with their own types.
+    for people wanting to extend **Boost.SIMD** to work with their own types.
 
   - @ref group-hierarchy\n
     Documentation for the predefined type hierarchy used by the library.
@@ -153,7 +153,7 @@ follows:
   - @ref group-detail\n
     Documentation of library implementation details. This section is useful
     for those wishing to understand the library internals and those wishing
-    to contribute to the development of **bSIMD**.
+    to contribute to the development of **Boost.SIMD**.
 
 
 ----------------------------------------------------------------------------------------------------
