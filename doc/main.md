@@ -3,7 +3,7 @@ Introduction {#mainpage}
 @tableofcontents
 
 Welcome to the world of portable, hassle free SIMD programming! **Boost.SIMD** was developed to simplify the difficult, tedious
-and error-prone process of developing SIMD programs. **Boost.SIMD** is designed to seamlessly integrate into existing projects
+and often error-prone process of developing SIMD programs. **Boost.SIMD** is designed to seamlessly integrate into existing projects
 so that you can quickly and easily start developing high performance, portable and future proof software.
 
 @section main-what What is SIMD?
@@ -11,8 +11,8 @@ so that you can quickly and easily start developing high performance, portable a
 -------------------------------------
 
 Single instruction, multiple data (__SIMD__) instructions or **multimedia extensions** have been available
-for many years. They are designed to significantly accelerate code execution, however they require expertise to be correctly
-used and they depend on potentially fragile compiler support and the use of low-level intrinsics, or vendor-specific libraries.
+for many years. They are designed to significantly accelerate code execution, however they require expertise to be used correctly
+and they depend on potentially fragile compiler support and the use of low-level intrinsics, or vendor-specific libraries.
 The introduction of these instruction sets has allowed developers to exploit the latent data parallelism available in applications by
 executing a given instruction simultaneously on multiple data stored in dedicated cpu registers. The SIMD unit is built as an independent
 computation unit in the processor, it comes in addition to the regular computation unit complete with a special register file,
@@ -29,64 +29,51 @@ vendor provided API as well as architecture dependent implementation details. Th
 SIMD code, significantly increasing the time required to develop, test and deploy software as well as increasing the scope for introducing
 bugs.
 
-Many of the advancements in processor technology in recent years are SIMD related,
-so in order to maximise the return on your hardware investment as well as extending its life, you must
-exploit all of the silicon. This can also help reduce the energy consumption of your software, which is crucial
-for mobile applications, allowing you to deliver more efficient and better software.
+For example, take this simple case where we calculate the sum of two vectors of `32-bit float` vectors:
 
-It is clear that the development of applications which exploit SIMD instructions is a complex and error-prone process and that
-any tool which reduces this complexity can significantly reduce the time required to develop and maintain software whilst minimising
-the potential for the introduction of bugs.
+@snippet addvector.cpp scalar-loop
 
-**Boost.SIMD** is a Boost candidate library which aims to abstract the use of _SIMD_ extensions in an architecture, compiler and vendor
-neutral manner. This abstraction provides more than simple portable wrappers above hardware-specific registers, it also standardizes
-the use of common _SIMD_ programming idioms.
+Each element of the results vector is independent of every other element - therefore this function may easily be vectorized as there is latent data parallelism which may be exploited.
+This simple loop may be vectorized for an x86 processor using Intel intrinsic functions. For example, the following code vectorizes this loop for an `SSE` enabled processor:
+
+@snippet addvector.cpp sse2-simd-loop
+
+Looks difficult? How abut we vectorize it for the following generation of Intel processor equipped with `AVX` instructions:
+
+@snippet addvector.cpp avx-simd-loop
+
+Both of these processor are manufactured by Intel yet two different versions of the code are required to get the best performance possible from the processors.
+Imagine the complication of moving to another manufacturer's processor!
+Take for example ARM processors, which are found in most smartphones. Development for a smart phone is much more difficult than for a desktop PC as you have significantly
+less processing power to play with as well as limited battery life to consider. Software performance is even more important in such a difficult environment!
+Thankfully the **Boost.SIMD** development team has been thinking about you so **Boost.SIMD** is designed to seamlessly integrate into any mobile development environment.
+
+Let's try re-write this same simple loop for a smartphone with a `NEON` equipped processorprocessor:
+
+@snippet addvector.cpp arm-simd-loop
+
+This is quicky getting complicated and annoying. Wouldn't life be much easier if someone else took care of this mess? Imagine being able to write one version of your code,
+which has optimal performance across all architectures, compilers and operating systems? Imagine not having to worry about re-writing your code for each new processor released?
+Well, imagine no more and behold the beauty and simplicity of **Boost.SIMD**!
+
+@snippet addvector.cpp bs-simd-loop
+
+**Boost.SIMD** is designed to be user-friendly, easy to integrate into existing projects. To achieve this, **Boost.SIMD** harnesses the latest innovations in the
+C++ language, but is still easy to use with an intuitive interface. To make life even easier for you, we have included lots of commonly used functions and constants
+directly in **Boost.SIMD**, standardizing the use of common _SIMD_ programming idioms. And because we are nice people, we have thoroughly tested **Boost.SIMD**
+across different architectures, compilers and operating systems, so we have even included work-arounds for all known compiler bugs!
 
 **Boost.SIMD** allows you to focus on the important part of your work: the development of new features and functionality. We take care of all
-of the architecture and compiler specific details and we provide updates when new architectures are released by manufacturers.
-**Boost.SIMD** allows one to write _SIMD_ vectorized code that is portable across all (supported) compilers, architectures and operating systems.
+of the architecture and compiler specific details and we provide updates when new architectures are released by manufacturers. All you have to
+do is re-compile your code every time you target a new architecture!
 
-**Boost.SIMD** achieves this by providing:
+**Boost.SIMD** provides the following:
 
   + a proper value semantic wrapper for _SIMD_ registers;
   + an automatic system to detect and exploit architecture specific optimization opportunities;
   + standard compliant iterators to iterate over contiguous range of data in a _SIMD_ compatible way;
   + standard compliant iterators encapsulating complex _SIMD_ idioms like sliding window or de-interleaving of data on the fly.
 
-The following function calculates the sum of two vectors of (`size=16`) `float` elements:
-
-@snippet addvector.cpp scalar-loop
-
-Each element of the results vector is independent of every other element - therefore this function may easily be vectorized.
-To vectorize this for a processor which has sse instructions, one could write the following code:
-
-@snippet addvector.cpp sse2-simd-loop
-
-To vectorize this for a processor which has avx instructions, one could write the following code:
-
-@snippet addvector.cpp avx-simd-loop
-
-To vectorize this for an ARM processor which has neon instructions, one could write the following code:
-
-@snippet addvector.cpp arm-simd-loop
-
-In each of these examples, we have written code for two different generations of intel processors and an ARM processors. Each of these functions
-are non-portable to other architectures, for example, the intel code will not run on intel processors which do not support these instruction sets or
-ARM or IBM processors. This means that a different version of this function must be written for each target architecture. Note also the fact that writing
-code using intrinsics functions requires hard coding variables such as the number of elements in a SIMD register. Clearly, coding in such a manner is
-time-consuming, error-prone and difficult to maintain and debug. It also requires being intimately familiar with the details of each processor manufacturer's
-API.
-
-Another disadvantage of using raw intrinsics is the fact that compiler support varies greatly between vendor, operating system and architecture. For example,
-an SSE code which performs as expected on Linux may suffer from performance degradation, bugs or compiler warnings when compiled on Windows and vice-versa.
-The goal of **Boost.SIMD** is to abstract all of these disadvantages, leaving the user with one API, regardless of architecture, compiler or operating system.
-All known compiler bugs are also managed by **Boost.SIMD** to ensure the quick and efficient development of high performance portable software.
-
-For example, take the function to add two vectors. It may be written using **Boost.SIMD** as follows:
-
-@snippet addvector.cpp bs-simd-loop
-
-In order to obtain maximum performance on any architecture, the user must only re-compile the code specifying the correct architecture flag to the compiler.
 @section main-support Supported Compilers and Hardware
 
 ----------------------------------------------------------------------------------------------------
@@ -95,10 +82,10 @@ additional architectures are also available.
 The following SIMD extensions are supported by **Boost.SIMD**:
 
 <center>
-Architecture | Extensions                                          
+Architecture | Extensions
 -------------|-----------------------------------------------------
-x86          | SSE2, SSE3, SSSE3, SSE4.1, SSE4.2, AVX, FMA3, AVX2  
-PowerPC      | VMX                                                 
+x86          | SSE2, SSE3, SSSE3, SSE4.1, SSE4.2, AVX, FMA3, AVX2
+PowerPC      | VMX
 </center>
 
 **Boost.SIMD** requires a C++11 compliant compiler and is thoroughly tested on the following compilers:
