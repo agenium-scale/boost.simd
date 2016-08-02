@@ -95,14 +95,10 @@ additional architectures are also available.
 The following SIMD extensions are supported by **Boost.SIMD**:
 
 <center>
-Architecture | Extensions                                          | Accessibility
--------------|-----------------------------------------------------|-----------------
-x86          | SSE2, SSE3, SSSE3, SSE4.1, SSE4.2, AVX, FMA3, AVX2  | **Free**
-x86          | KNC, KNL                                            | Premium
-AMD          | SSE4a, XOP, FMA4                                    | Premium
-PowerPC      | VMX                                                 | **Free**
-PowerPC      | VMX, VSX, QPX                                       | Premium
-ARM          | Neon                                                | Premium
+Architecture | Extensions                                          
+-------------|-----------------------------------------------------
+x86          | SSE2, SSE3, SSSE3, SSE4.1, SSE4.2, AVX, FMA3, AVX2  
+PowerPC      | VMX                                                 
 </center>
 
 **Boost.SIMD** requires a C++11 compliant compiler and is thoroughly tested on the following compilers:
