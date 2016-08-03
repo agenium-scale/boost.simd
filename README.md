@@ -11,6 +11,22 @@ Portable SIMD computation library - To be proposed as a Boost library
 | Linux clang & g++   | [![Build Status](https://travis-ci.org/NumScale/boost.simd.png?branch=master)](https://travis-ci.org/NumScale/boost.simd) | [![Build Status](https://travis-ci.org/NumScale/boost.simd.png?branch=develop)](https://travis-ci.org/NumScale/boost.simd) |
 | OS X   clang    | [![Build Status](https://travis-ci.org/NumScale/boost.simd.png?branch=master)](https://travis-ci.org/NumScale/boost.simd) | [![Build Status](https://travis-ci.org/NumScale/boost.simd.png?branch=develop)](https://travis-ci.org/NumScale/boost.simd) |
 
+## Getting started with developer mode
+
+The project requires external dependencies to compile its benchmarks as well as its unit tests. To
+do so, you have to explicitly enable a cmake options to enable automatic retrieving of those
+dependencies:
+```
+cmake -DDEV= <location-of-CMakeLists.txt>
+```
+
+The developer mode includes the following features:
+- Documentation
+- Automatic generation of project version
+- Benchmarks
+- Unit tests (including exhaustive tests)
+- Automatic update of brigand (dependency)
+
 ## Getting started with the build process (on linux)
 
 NOTE:
