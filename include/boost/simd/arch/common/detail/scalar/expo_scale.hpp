@@ -22,7 +22,7 @@ namespace boost { namespace simd { namespace detail
   {
     auto ik = toint(k) + Maxexponent<A0>();
     ik = shift_left(ik, Nbmantissabits<A0>());
-    return y*bitwise_cast<A0>(ik);;
+    return y*bitwise_cast<A0>(ik);
   }
 } } }
 
