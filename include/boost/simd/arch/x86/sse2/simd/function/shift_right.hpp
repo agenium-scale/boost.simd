@@ -40,8 +40,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::integer_<A1>>
                          )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0
-                                    , const A1 & a1 ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()( const A0 & a0, const A1 & a1 ) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "shift_right sse2: a shift is out of range");
       return _mm_srai_epi16(a0, a1);
@@ -55,8 +54,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::integer_<A1>>
                          )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0
-                                    , const A1 & a1 ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()( const A0 & a0, const A1 & a1 ) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "shift_right sse2: a shift is out of range");
       return _mm_srli_epi16(a0, a1);
@@ -91,6 +89,7 @@ namespace boost { namespace simd { namespace ext
       return _mm_srai_epi32(a0, int(a1));
     }
   };
+
   BOOST_DISPATCH_OVERLOAD ( shift_right_
                           , (typename A0,typename A1 )
                           , bs::sse2_
@@ -98,8 +97,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::integer_<A1>>
                          )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0
-                                    , const A1 & a1 ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()( const A0 & a0, const A1 & a1 ) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "shift_right sse2 int64: a shift is out of range");
       A0 that = _mm_srli_epi64(a0, int(a1));
@@ -111,12 +109,40 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( shift_right_
                           , (typename A0,typename A1 )
                           , bs::sse2_
+                          , bs::pack_<bd::uint64_<A0>, bs::sse_>
+                          , bd::scalar_<bd::integer_<A1>>
+                         )
+  {
+    BOOST_FORCEINLINE A0 operator()( const A0 & a0, const A1 & a1 ) const BOOST_NOEXCEPT
+    {
+      BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "shift_right sse2 uint64: a shift is out of range");
+      return _mm_srli_epi64(a0, int(a1));
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( shift_right_
+                          , (typename A0,typename A1 )
+                          , bs::sse2_
+                          , bs::pack_<bd::int8_<A0>, bs::sse_>
+                          , bd::scalar_<bd::integer_<A1>>
+                         )
+  {
+    BOOST_FORCEINLINE A0 operator()( const A0 & a0, const A1 & a1 ) const BOOST_NOEXCEPT
+    {
+      BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "shift_right sse2 int8: a shift is out of range");
+      auto s = split(a0);
+      return bitwise_cast<A0>(group(shift_right(s.first, a1), shift_right(s.second, a1)));
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( shift_right_
+                          , (typename A0,typename A1 )
+                          , bs::sse2_
                           , bs::pack_<bd::uint8_<A0>, bs::sse_>
                           , bd::scalar_<bd::integer_<A1>>
                          )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0
-                                    , const A1 & a1 ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()( const A0 & a0, const A1 & a1 ) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "shift_right sse2 uint8: a shift is out of range");
       using gen_t = typename A0::template retype<std::int16_t,A0::static_size/2>;
