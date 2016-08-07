@@ -30,8 +30,8 @@ struct lde
   DEFINE_SIMD_BENCH(simd_ldem10, lde<-10>());
 
 DEFINE_BENCH_MAIN() {
-  nsb::for_each<simd_lde10, NS_BENCH_NUMERIC_TYPES>(-10, 10);
-  nsb::for_each<simd_ldem10, NS_BENCH_NUMERIC_TYPES>(-10, 10);
+  nsb::for_each<simd_lde10, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<simd_ldem10, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
 
 

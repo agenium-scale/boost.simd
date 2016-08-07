@@ -16,5 +16,5 @@ DEFINE_SCALAR_BENCH(scalar_bitfloating, bs::bitfloating);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_bitfloating, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<scalar_bitfloating, int32_t, int64_t>(-10, 10);
 }

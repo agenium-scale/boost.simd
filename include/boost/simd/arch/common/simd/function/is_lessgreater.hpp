@@ -59,9 +59,9 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     BOOST_FORCEINLINE auto operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
-   -> decltype(is_not_equal(a0, a1))
+      -> decltype(logical_and(is_ord(a0,a1), is_not_equal(a0, a1)))
     {
-      return bitwise_and(is_ord(a0,a1), is_not_equal(a0, a1));
+      return logical_and(is_ord(a0,a1), is_not_equal(a0, a1));
     }
   };
 

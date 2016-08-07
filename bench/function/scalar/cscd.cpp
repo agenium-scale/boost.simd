@@ -16,5 +16,5 @@ DEFINE_SCALAR_BENCH(scalar_csc, bs::csc);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_csc, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<scalar_cscd, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
