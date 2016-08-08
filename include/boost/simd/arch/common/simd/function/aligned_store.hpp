@@ -31,7 +31,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE void operator()(const A0& a0, A1  a1) const BOOST_NOEXCEPT
     {
-      BOOST_ASSERT_MSG( boost::alignment::is_aligned(A0::alignment, a1)
+      BOOST_ASSERT_MSG( boost::alignment::is_aligned(a1,A0::alignment)
                       , "boost::simd::aligned_store was performed on an unaligned pointer of integer"
                       );
       bs::store(a0, a1);

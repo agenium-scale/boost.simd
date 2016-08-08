@@ -30,7 +30,7 @@ The developer mode includes the following features:
 ## Getting started with the build process (on linux)
 
 NOTE:
-> `boost.simd` *MUST* be used with the current develop version of `boost` (aka 1.62)
+> `boost.simd` *MUST* be used with the current version of `boost` (aka 1.61)
 
 You must create a build directory where all temporary building files will be located.
 
