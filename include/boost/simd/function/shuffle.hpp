@@ -11,9 +11,9 @@
 #ifndef BOOST_SIMD_FUNCTION_SHUFFLE_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_SHUFFLE_HPP_INCLUDED
 
+#if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-  #if defined(DOXYGEN_ONLY)
   /*!
     @ingroup group-swar
     Function object implementing shuffle capabilities
