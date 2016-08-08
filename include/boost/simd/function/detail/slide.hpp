@@ -15,6 +15,13 @@
 
 namespace boost { namespace simd { namespace detail
 {
+  template<typename T,int N, int Card, bool isFwd> struct slider;
+
+  // We add a small trampoline so MSVC is happy with the cardinal_of call
+  template<typename T,int N, typename Card, bool isFwd>
+  struct slider_ : slider<T,N,Card::value,isFwd>
+  {};
+
   // General case dispatch to arch-specific implementation
   template<typename T,int N, int Card, bool isFwd> struct slider
   {
