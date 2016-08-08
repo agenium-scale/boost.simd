@@ -34,6 +34,12 @@
 #include <iostream>
 #include <cstddef>
 
+// Remove noise due to line 205 return value
+#if defined(__GNUC__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wuninitialized"
+#endif
+
 namespace boost { namespace simd
 {
   /*!
@@ -200,7 +206,10 @@ namespace boost { namespace simd
     }
 
     /// @brief Conversion to underlying storage data
-    BOOST_FORCEINLINE operator storage_type() const BOOST_NOEXCEPT { return data_; }
+    BOOST_FORCEINLINE operator storage_type() const BOOST_NOEXCEPT
+    {
+      return data_;
+    }
 
     /// @brief Get reference to internal storage
     BOOST_FORCEINLINE storage_type& storage() BOOST_NOEXCEPT { return data_; }
@@ -403,6 +412,10 @@ namespace boost { namespace simd
     return os << ')';
   }
 } }
+
+#if defined(__GNUC__)
+#pragma GCC diagnostic pop
+#endif
 
 #include <boost/simd/detail/pack_info.hpp>
 #include <boost/simd/detail/pack_operators.hpp>
