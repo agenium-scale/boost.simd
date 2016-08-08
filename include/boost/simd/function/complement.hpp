@@ -26,16 +26,16 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of type T0
+    For every parameter of type T
 
     @code
-    T0 r = complement(x);
+    T r = complement(x);
     @endcode
 
     is similar to:
 
     @code
-    T0 r = ~x;
+    T r = ~x;
     @endcode
 
     @par Alias:
@@ -45,7 +45,7 @@ namespace boost { namespace simd
     bitwise_andnot, bitwise_notor, bitwise_ornot
 
   **/
-  const boost::dispatch::functor<tag::complement_> complement = {};
+  Value complement(Value const & v0);
 } }
 #endif
 

@@ -47,7 +47,7 @@ namespace boost { namespace simd
     fast_ for floating entries
 
   **/
-  const boost::dispatch::functor<tag::rsqrt_> rsqrt = {};
+  Value rsqrt(Value const & v0);
 } }
 #endif
 

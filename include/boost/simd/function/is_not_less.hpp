@@ -45,7 +45,7 @@ namespace boost { namespace simd
     @c is_nlt
 
   **/
-  const boost::dispatch::functor<tag::is_not_less_> is_not_less = {};
+  as_logical_t<Value> is_not_less(Value const& x, Value const& y);
 } }
 #endif
 

@@ -26,19 +26,19 @@ namespace boost { namespace simd
     For every parameters of types respectively T0:
 
     @code
-    T0 r = interleave_even(a,b);
+    T0 r = interleave_even(x,y);
     @endcode
 
     is equivalent to :
 
     @code
-    r = [ a[0] b[0] a[2] b[2] ... a[n/2] b[n/2] ]
+    r = [ x[0] y[0] x[2] y[2] ... x[n/2] y[n/2] ]
     @endcode
 
     with <tt> n = cardinal_of<T>::value </tt>
 
   **/
-  const boost::dispatch::functor<tag::interleave_even_> interleave_even = {};
+  Value interleave_even(Value const& x, Value const& y);
 #endif
 } }
 

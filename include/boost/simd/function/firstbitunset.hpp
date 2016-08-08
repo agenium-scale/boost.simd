@@ -34,7 +34,7 @@ namespace boost { namespace simd
     @see  ffs,  firstbitset
 
   **/
-  const boost::dispatch::functor<tag::firstbitunset_> firstbitunset = {};
+  as_integer_t<Value> firstbitunset(Value const & v0);
 } }
 #endif
 

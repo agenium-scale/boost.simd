@@ -43,7 +43,7 @@ namespace boost { namespace simd
 
       @return The Goldbar constant for the proper type
     **/
-    const boost::dispatch::functor<tag::goldbar_> goldbar = {};
+    Value Goldbar();
   }
 } }
 #endif

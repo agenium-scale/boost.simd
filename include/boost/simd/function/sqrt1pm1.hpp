@@ -38,8 +38,10 @@ namespace boost { namespace simd
     T r = dec(sqrt(Oneplus(x));
     @endcode
 
+    @see lol1p, expm1.
+
   **/
-  const boost::dispatch::functor<tag::sqrt1pm1_> sqrt1pm1 = {};
+  Value sqrt1pm1(Value const& x);
 } }
 #endif
 

@@ -28,7 +28,7 @@ namespace boost { namespace simd
 
     This is a convenient alias of @ref shift_left
   **/
-  const boost::dispatch::functor<tag::shl_> shl = {};
+  Value shl(Value const & v0, IntegerValue const& n);
 } }
 #endif
 

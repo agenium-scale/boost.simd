@@ -47,7 +47,7 @@ namespace boost { namespace simd
     @see pow, sqrt
 
   **/
-  const boost::dispatch::functor<tag::cbrt_> cbrt = {};
+  Value cbrt(Value const & v0);
 } }
 #endif
 

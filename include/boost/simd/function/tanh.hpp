@@ -38,7 +38,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::tanh_> tanh = {};
+  Value tanh(Value const & v0);
 } }
 #endif
 

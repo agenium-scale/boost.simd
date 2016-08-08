@@ -52,7 +52,7 @@ namespace boost { namespace simd
 
       @return The maximum finite representable value of the input type
     **/
-    const boost::dispatch::functor<tag::valmax_> valmax = {};
+    Value Valmax();
   }
 } }
 #endif

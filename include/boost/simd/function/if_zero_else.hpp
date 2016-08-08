@@ -28,17 +28,20 @@ namespace boost { namespace simd
     For every parameters of types respectively C, T:
 
     @code
-    T r = if_zero_else(cond,f);
+    T r = if_zero_else(cond, x);
     @endcode
 
     is similar to:
 
     @code
-    T r = cond ? Zero<T>() : f;
+    T r = cond ? Zero<T>() : x;
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::if_zero_else_> if_zero_else = {};
+  Value if_zero_else(Value const& c, Value const& x)
+
+  //@overload
+  Value if_zero_else(LogicalValue const& c, Value const& x);
 } }
 #endif
 

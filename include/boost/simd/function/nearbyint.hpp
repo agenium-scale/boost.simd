@@ -40,12 +40,12 @@ namespace boost { namespace simd
     - to even means that half integer values are rounded to the nearest
     even value.
 
-    This function is in general speedier than @ref round which do the rouding on
+    This function is in general quicker than @ref round which do the rouding on
     half integer values away from zero.
 
     @see round, ceil, floor, trunc
   **/
-  const boost::dispatch::functor<tag::nearbyint_> nearbyint = {};
+  Value nearbyint(Value const & x);
 } }
 #endif
 

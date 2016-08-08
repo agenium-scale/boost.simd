@@ -24,7 +24,7 @@ namespace boost { namespace simd
     Returns the value of the ith bit in x as an unsigned integer
 
     @par semantic:
-    For any given value @c x of type @c T, i  of type @c I:
+    For any given value @c x of type @c T, i of type @c I:
 
     @code
     as_integer_t<T> r = bitget(x, i);
@@ -35,7 +35,7 @@ namespace boost { namespace simd
     @see  bitset
 
   **/
-  const boost::dispatch::functor<tag::bitget_> bitget = {};
+  as_integer_t<T> bitget(Value const & v0, integer_type i);
 } }
 #endif
 

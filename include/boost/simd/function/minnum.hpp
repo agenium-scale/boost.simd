@@ -45,7 +45,7 @@ namespace boost { namespace simd
     std_ for floating entries
 
   **/
-  const boost::dispatch::functor<tag::minnum_> minnum = {};
+  Value minnum(Value const & x, Value const& y);
 } }
 #endif
 

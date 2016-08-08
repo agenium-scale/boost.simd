@@ -38,7 +38,10 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::if_else_zero_> if_else_zero = {};
+  Value if_else_zero(Value const& cond, Value const& t);
+
+  //@overload
+  Value if_else_zero(LogicalValue const& cond, Value const& t);
 } }
 #endif
 

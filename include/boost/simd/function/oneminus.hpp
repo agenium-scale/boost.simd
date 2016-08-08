@@ -36,9 +36,13 @@ namespace boost { namespace simd
     T r = 1-x
     @endcode
 
+    @par Decorator
+
+    saturated_ decorator is available,  but for unsigned integral types the saturated_
+    function is equivalent to `x == 0 ? 1 : 0`
 
   **/
-  const boost::dispatch::functor<tag::oneminus_> oneminus = {};
+  Value oneminus(Value const & v0);
 } }
 #endif
 

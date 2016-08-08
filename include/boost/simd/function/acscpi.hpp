@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @see asec, asecd
 
   **/
-  const boost::dispatch::functor<tag::acscpi_> acscpi = {};
+  Value acscpi(Value const & v0);
 } }
 #endif
 

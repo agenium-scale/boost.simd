@@ -28,17 +28,17 @@ namespace boost { namespace simd
     For every parameter of type T
 
     @code
-    size_t r = nbtrue(x);
+    std::size_t r = nbtrue(x);
     @endcode
 
     is similar to:
 
     @code
-    sizet r = size_t(sum(if_one_else_zero(x)));
+    std::size_t r =std::size_t(sum(if_one_else_zero(x)));
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::nbtrue_> nbtrue = {};
+  std::size_t nbtrue(Value const & x);
 } }
 #endif
 

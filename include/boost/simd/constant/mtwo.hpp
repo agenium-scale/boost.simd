@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Mtwo constant for the proper type
     **/
-    const boost::dispatch::functor<tag::mtwo_> mtwo = {};
+    Value Mtwo();
   }
 } }
 #endif

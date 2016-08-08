@@ -44,7 +44,7 @@ namespace boost { namespace simd
     @see average
 
   **/
-  const boost::dispatch::functor<tag::meanof_> meanof = {};
+  Value meanof(Value const& x, Value const& y);
 } }
 #endif
 

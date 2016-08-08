@@ -36,7 +36,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::majority_> majority = {};
+  as_logical_t<Value> Value majority(Value const& x, Value const& y, Value const& z);
 } }
 #endif
 

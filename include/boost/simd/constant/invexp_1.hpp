@@ -49,7 +49,7 @@ namespace boost { namespace simd
 
       @return The Invexp_1 constant for the proper type
     **/
-    const boost::dispatch::functor<tag::invexp_1_> invexp_1 = {};
+    Value Invexp_1<Value>();
   }
 } }
 #endif

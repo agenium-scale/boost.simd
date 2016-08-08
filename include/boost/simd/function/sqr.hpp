@@ -37,7 +37,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::sqr_> sqr = {};
+  Value sqr(Value const & v0);
 } }
 #endif
 

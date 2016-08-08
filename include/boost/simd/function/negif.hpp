@@ -38,7 +38,10 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::negif_> negif = {};
+  Value negif(LogicalValue const& cond, Value const & x);
+
+  //@overload
+  Value negif(Value const& cond, Value const & x);
 } }
 #endif
 

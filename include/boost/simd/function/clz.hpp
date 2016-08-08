@@ -33,7 +33,7 @@ namespace boost { namespace simd
     @see  ctz, popcnt
 
   **/
-  const boost::dispatch::functor<tag::clz_> clz = {};
+  as_integer_t<Value> clz(Value const & v0);
 } }
 #endif
 

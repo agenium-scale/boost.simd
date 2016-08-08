@@ -92,7 +92,7 @@ namespace boost { namespace simd
     @see ulp, Eps, eps
 
   **/
-  const boost::dispatch::functor<tag::ulpdist_> ulpdist = {};
+  Value ulpdist(Value const& x, Value const& y);
 } }
 #endif
 

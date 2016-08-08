@@ -33,7 +33,7 @@ namespace boost { namespace simd
     returns the product of @c a and @c b
 
   **/
-  const boost::dispatch::functor<tag::multiplies_> multiplies = {};
+  Value multiplies(Value const & x, Value const& y);
 } }
 #endif
 

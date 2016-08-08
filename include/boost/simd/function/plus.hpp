@@ -33,7 +33,7 @@ namespace boost { namespace simd
     returns the sum of @c a and @c b
 
   **/
-  const boost::dispatch::functor<tag::plus_> plus = {};
+  Value plus(Value const & x, Value const& y);
 } }
 #endif
 

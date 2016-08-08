@@ -20,6 +20,26 @@ namespace boost { namespace simd
 
     Build a value of type @c T from a list of scalar values of types @c Args
 
+    Splatted product
+
+    Computes the splatted product of the of its argument.
+
+    @par Semantic
+
+    For any type @c T and value @c x of type @c T:
+
+    @code
+    T r = splatted_prod(x);
+    @endcode
+
+    is similar to:
+
+    @code
+    T product = 1;
+    for(int i=0;i<T::static_size;++i) product *= x[i];
+    for(int i=0;i<T::static_size;++i) r[i] = product;
+    @endcode
+
   **/
   template<typename T, typename.. Args> auto make(Args&&... args) {}
 } }

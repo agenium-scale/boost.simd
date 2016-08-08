@@ -24,10 +24,10 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of type T0:
+    For every parameters of type T:
 
     @code
-    bool r = compare_equal(x,y);
+    as_logical_t<T> r = compare_equal(x,y);
     @endcode
 
     is similar to:
@@ -38,7 +38,7 @@ namespace boost { namespace simd
 
     @see is_equal
   **/
-  const boost::dispatch::functor<tag::compare_equal_> compare_equal = {};
+  bool compare_equal(Value const& v0, Value const& v1);
 } }
 #endif
 

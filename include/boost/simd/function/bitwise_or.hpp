@@ -48,7 +48,7 @@ namespace boost { namespace simd
     bitwise_notor, bitwise_ornot, complement
 
   **/
-  const boost::dispatch::functor<tag::bitwise_or_> bitwise_or = {};
+  T0 bitwise_or(T0 const &x, T1 const& y);
 } }
 #endif
 

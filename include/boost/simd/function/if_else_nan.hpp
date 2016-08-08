@@ -25,7 +25,10 @@ namespace boost { namespace simd
 
     This is a convenient alias of @ref if_else_allbits
   **/
-  const boost::dispatch::functor<tag::if_else_nan_> if_else_nan = {};
+  Value if_else_nan(Value const& c, Value const& v0);
+
+  //@overload
+  Value if_else_nan(LogicalValue const& c, Value const& v0);
 } }
 #endif
 

@@ -43,7 +43,7 @@ namespace boost { namespace simd
 
       @return The Zero constant for the proper type
     **/
-    const boost::dispatch::functor<tag::zero_> zero = {};
+    Value Zero();
   }
 } }
 #endif

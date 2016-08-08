@@ -32,7 +32,7 @@ namespace boost { namespace simd
     @code
     T r;
     as_integer<T> n;
-    rem_pio2_cephes_(x, n, r);
+    std::tie(n, r) = rem_pio2_cephes(x);
     @endcode
 
     is similar to:
@@ -45,7 +45,7 @@ namespace boost { namespace simd
     @see rem_pio2, rem_pio2_straight,rem_2pi, rem_pio2_medium,
 
   **/
-  const boost::dispatch::functor<tag::rem_pio2_cephes_> rem_pio2_cephes = {};
+  std::pair<IntegerValue, Value> rem_2pio_cephes(Value const & v0);
 } }
 #endif
 

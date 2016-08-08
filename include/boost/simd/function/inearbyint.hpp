@@ -42,7 +42,8 @@ namespace boost { namespace simd
     and that invalid entries lead to undefined results
 
   **/
-  const boost::dispatch::functor<tag::inearbyint_> inearbyint = {};
+
+  as_integer_t<Value> iround2even(Value const& x);
 } }
 #endif
 

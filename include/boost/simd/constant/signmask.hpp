@@ -44,7 +44,7 @@ namespace boost { namespace simd
 
       @return The Signmask constant for the proper type
     **/
-    const boost::dispatch::functor<tag::signmask_> signmask = {};
+    Value Signmask();
   }
 } }
 #endif

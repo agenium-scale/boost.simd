@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::cumsum_> cumsum = {};
+  Value cumsum(Value const & v0);
 } }
 #endif
 

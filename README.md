@@ -34,7 +34,7 @@ NOTE:
 
 You must create a build directory where all temporary building files will be located.
 
-> We assume that you are doing all the following commands in the Boost.SIMD source tree
+> We assume that you are doing all the following commands in the **Boost.SIMD** source tree
 
 Let say:
 ```bash

@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Mfive constant for the proper type
     **/
-    const boost::dispatch::functor<tag::mfive_> mfive = {};
+    Value Mfive();
   }
 } }
 #endif

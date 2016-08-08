@@ -49,7 +49,7 @@ namespace boost { namespace simd
 
       @return The Nbdigits constant for the proper type
     **/
-    const boost::dispatch::functor<tag::nbdigits_> nbdigits = {};
+    Value Nbdigits();
   }
 } }
 #endif

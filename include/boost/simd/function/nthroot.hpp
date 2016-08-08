@@ -50,7 +50,7 @@ namespace boost { namespace simd
     @see pow, rec, sqrt, cbrt
 
   **/
-  const boost::dispatch::functor<tag::nthroot_> nthroot = {};
+  Value nthroot(Value const & x, IntegerValue const &n);
 } }
 #endif
 

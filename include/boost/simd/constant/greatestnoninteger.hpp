@@ -52,7 +52,7 @@ namespace boost { namespace simd
 
       @return The Greatestnoninteger constant for the proper type
     **/
-    const boost::dispatch::functor<tag::greatestnoninteger_> greatestnoninteger = {};
+    Value Greatestnoninteger();
   }
 } }
 #endif

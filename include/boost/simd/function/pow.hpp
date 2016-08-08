@@ -65,7 +65,7 @@ namespace boost { namespace simd
          But return a value of the same type as the first parameter, which is necessary for good SIMD behaviour.
 
   **/
-  const boost::dispatch::functor<tag::pow_> pow = {};
+  Value pow(Value const & v0, Value const& y);
 } }
 #endif
 

@@ -41,7 +41,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::splatted_minimum_> splatted_minimum = {};
+  Value splatted_minimum(Value const& x);
 } }
 #endif
 

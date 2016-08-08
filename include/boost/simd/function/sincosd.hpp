@@ -38,7 +38,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::sincosd_> sincosd = {};
+  std::pair<Value, Value> sincosd(Value const & v0);
 } }
 #endif
 

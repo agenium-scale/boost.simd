@@ -49,17 +49,17 @@ namespace boost { namespace simd
     @par Note
 
       - This function mimics a standard C library one that was mainly written in its time to
-      help computation of periodic functions : three bits of quo allowing to know the
+      help computation of periodic functions: three bits of quo allowing to know the
       'octant'
 
-      - Your implementation differs from std::remquo as the quotient is not returned as a pointer,  and
-      his type is not int the the signed integer type associated to the floating one,  to allow
+      - This implementation differs from std::remquo as the quotient is not returned as a pointer, and
+      his type is not int the the signed integer type associated to the floating one, to allow
       proper SIMD implementation.
 
       - also note that the double implementation of std::remquo is flawed in GNU C
-      Library until version 2.21 (2.22 has a corrective).
+      Library until version 2.21 (2.22 been corrected).
   **/
-  const boost::dispatch::functor<tag::remquo_> remquo = {};
+  IntegerValue remquo(Value const & v0, Value const& y, IntegerValue const& quo);
 } }
 #endif
 

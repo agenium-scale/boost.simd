@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @see exp, sinh, Half
 
   **/
-  const boost::dispatch::functor<tag::cosh_> cosh = {};
+  Value cosh(Value const & v0);
 } }
 #endif
 

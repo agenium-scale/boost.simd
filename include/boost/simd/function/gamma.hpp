@@ -33,7 +33,7 @@ namespace boost { namespace simd
     @see gammaln
 
   **/
-  const boost::dispatch::functor<tag::gamma_> gamma = {};
+  Value gamma(Value const & v0);
 } }
 #endif
 

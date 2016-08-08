@@ -30,6 +30,7 @@
 #include <boost/simd/function/logical_and.hpp>
 #include <boost/simd/function/logical_or.hpp>
 #include <boost/simd/function/logical_not.hpp>
+#include <boost/simd/function/rem.hpp>
 #include <boost/simd/function/unary_plus.hpp>
 #include <boost/simd/function/unary_minus.hpp>
 #include <boost/simd/detail/brigand.hpp>

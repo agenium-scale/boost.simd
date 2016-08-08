@@ -48,7 +48,7 @@ namespace boost { namespace simd
 
       @return The Fourthrooteps constant for the proper type
     **/
-    const boost::dispatch::functor<tag::fourthrooteps_> fourthrooteps = {};
+    Value Fourthrooteps();
   }
 } }
 #endif

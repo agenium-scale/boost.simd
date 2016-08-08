@@ -35,7 +35,7 @@ namespace boost { namespace simd
     If @c x is outside \f$[-1, 1[\f$ the result is Nan.
 
   **/
-  const boost::dispatch::functor<tag::asinpi_> asinpi = {};
+  Value asinpi(Value const & v0);
 } }
 #endif
 

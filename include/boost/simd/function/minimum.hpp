@@ -42,7 +42,7 @@ namespace boost { namespace simd
     @see min, minnummag, minmag
 
   **/
-  const boost::dispatch::functor<tag::minimum_> minimum = {};
+  scalar_of_t<Value> minimum(Value const & x);
 } }
 #endif
 

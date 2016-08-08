@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::bitwise_select_> bitwise_select = {};
+  T0 bitwise_select(SEL const& sel, T0 const &x, T1 const& y);
 } }
 #endif
 

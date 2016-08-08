@@ -42,7 +42,10 @@ namespace boost { namespace simd
     @see if_plus
 
   **/
-  const boost::dispatch::functor<tag::ifnot_plus_> ifnot_plus = {};
+  Value ifnot_plus(Value const& c, Value const& x, Value const& y)
+
+  //@overload
+  Value ifnot_plus(LogicalValue const& c, Value const& x, Value const& y);
 } }
 #endif
 

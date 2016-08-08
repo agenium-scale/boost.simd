@@ -36,7 +36,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::is_eqz_> is_eqz = {};
+  as_logical_t<Value> is_eqz(Value const& x);
 } }
 #endif
 

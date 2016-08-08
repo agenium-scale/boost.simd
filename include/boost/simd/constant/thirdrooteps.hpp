@@ -48,7 +48,7 @@ namespace boost { namespace simd
 
       @return The Thirdrooteps constant for the proper type
     **/
-    const boost::dispatch::functor<tag::thirdrooteps_> thirdrooteps = {};
+    Value Thirdrooteps();
   }
 } }
 #endif

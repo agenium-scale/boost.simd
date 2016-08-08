@@ -4,7 +4,7 @@
 
   Defines the abstraction for SIMD registers
 
-  @copyright 2015 NumScale SAS
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @ingroup  group-api
     @brief    High-level interface for manipulating SIMD data
 
-    For a given couple @c T and @c N, provides an interface to manipulate SIMD
+    For a given pair @c T and @c N, provides an interface to manipulate SIMD
     data with the best storage possible depending on your hardware.
 
     @pre @c N must be a power of two.

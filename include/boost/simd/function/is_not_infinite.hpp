@@ -39,7 +39,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::is_not_infinite_> is_not_infinite = {};
+  as_logical_t<Value> is_not_infinite(Value const& x);
 } }
 #endif
 

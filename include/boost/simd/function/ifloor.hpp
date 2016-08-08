@@ -33,14 +33,14 @@ namespace boost { namespace simd
     is equivalent to:
 
     @code
-    as_integer_t<T> r = toint_s(floor(x));
+    as_integer_t<T> r = saturated_(toint)(floor(x));
     @endcode
 
     @par Note:
     This operation is properly saturated
 
   **/
-  const boost::dispatch::functor<tag::ifloor_> ifloor = {};
+  as_integer_T<Value> ifloor(Value const & v0);
 } }
 #endif
 

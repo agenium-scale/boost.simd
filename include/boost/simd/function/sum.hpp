@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::sum_> sum = {};
+  scalar_of_t<Value> sum(Value const & v0);
 } }
 #endif
 

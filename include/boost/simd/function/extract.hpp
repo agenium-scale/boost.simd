@@ -50,8 +50,7 @@ namespace boost { namespace simd
     @return The extracted value
   **/
   template<typename Value, typename Offset>
-  auto extract( Value const& v, Offset const& o)
-  {}
+  scalar_of_t<Value> extract( Value const& v, Offset const& o);
 } }
 #endif
 

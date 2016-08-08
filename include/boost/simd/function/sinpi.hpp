@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @see sine, sincospi, sin, sind
 
   **/
-  const boost::dispatch::functor<tag::sinpi_> sinpi = {};
+  Value sinpi(Value const & v0);
 } }
 #endif
 

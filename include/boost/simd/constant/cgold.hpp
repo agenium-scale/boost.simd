@@ -63,7 +63,7 @@ namespace boost { namespace simd
 
       @see Cgold
     **/
-    const boost::dispatch::functor<tag::cgold_> cgold = {};
+    Value Cgold();
   }
 } }
 #endif

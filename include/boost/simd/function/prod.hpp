@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::prod_> prod = {};
+  scalar_of_t<Value> prod(Value const & v0);
 } }
 #endif
 

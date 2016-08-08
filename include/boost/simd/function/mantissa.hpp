@@ -42,7 +42,7 @@ namespace boost { namespace simd
     @see frexp
 
   **/
-  const boost::dispatch::functor<tag::mantissa_> mantissa = {};
+  Value mantissa(Value const & v0);
 } }
 #endif
 

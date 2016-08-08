@@ -35,7 +35,7 @@ namespace boost { namespace simd
     @see  rshr, shr, shl
 
   **/
-  const boost::dispatch::functor<tag::rshl_> rshl = {};
+  Value rshl(Value const & x, IntegerValue const &n);
 } }
 #endif
 

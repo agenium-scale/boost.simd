@@ -64,7 +64,7 @@ namespace boost { namespace simd
 
       @see Bitincrement
     **/
-    const boost::dispatch::functor<tag::bitincrement_> bitincrement = {};
+    Value Bitincrement();
   }
 } }
 #endif

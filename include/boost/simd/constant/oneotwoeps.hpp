@@ -48,7 +48,7 @@ namespace boost { namespace simd
 
       @return The Oneotwoeps constant for the proper type
     **/
-    const boost::dispatch::functor<tag::oneotwoeps_> oneotwoeps = {};
+    Value Oneotwoeps();
   }
 } }
 #endif

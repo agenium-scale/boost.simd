@@ -26,7 +26,10 @@ namespace boost { namespace simd
 
     This is a convenient alias of @ref genmaskc
   **/
-  const boost::dispatch::functor<tag::if_zero_else_allbits_> if_zero_else_allbits = {};
+  Value if_zero_else_allbits(Value const& c);
+
+  //@overload
+  Value if_zero_else_allbits(LogicalValue const& c);
 } }
 #endif
 

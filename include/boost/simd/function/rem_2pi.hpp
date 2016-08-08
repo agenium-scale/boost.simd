@@ -39,13 +39,13 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T r = remainder(x, Twopi<T>();
+    T r = remainder(x, Twopi<T>());
     @endcode
 
     @see rem_pio2, rem_pio2_straight, rem_pio2_cephes,  rem_pio2_medium,
 
   **/
-  const boost::dispatch::functor<tag::rem_2pi_> rem_2pi = {};
+  Value rem_2pi(Value const & v0);
 } }
 #endif
 

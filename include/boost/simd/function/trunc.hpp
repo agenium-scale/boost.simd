@@ -60,7 +60,7 @@ namespace boost { namespace simd
     @see abs, frac, floor, sign, modf
 
   **/
-  const boost::dispatch::functor<tag::trunc_> trunc = {};
+  Value trunc(Value const & v0);
 } }
 #endif
 

@@ -44,7 +44,7 @@ namespace boost { namespace simd
     @see negatenz, Mzero, is_positive, is_negative
 
   **/
-  const boost::dispatch::functor<tag::negatenz_> negatenz = {};
+  Value negatenz(Value const & x, value const& y);
 } }
 #endif
 

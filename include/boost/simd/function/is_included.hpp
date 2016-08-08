@@ -35,7 +35,8 @@ namespace boost { namespace simd
     bool r = all((x|y) == y);
     @endcode
   **/
-  const boost::dispatch::functor<tag::is_included_> is_included = {};
+  template<typename T0, typename T1>
+  bool is_included(T0 const& x, T1 const& y);
 } }
 #endif
 

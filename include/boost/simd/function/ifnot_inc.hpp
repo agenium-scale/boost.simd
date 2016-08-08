@@ -28,17 +28,20 @@ namespace boost { namespace simd
     For every parameters of types respectively C, T:
 
     @code
-    T r = ifnot_dec(cond,t);
+    T r = ifnot_inc(cond,x);
     @endcode
 
     is similar to:
 
     @code
-    T r = cond : t : t+one;
+    T r = cond : x : x+One<T>();
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::ifnot_inc_> ifnot_inc = {};
+  Value ifnot_inc(Value const& c, Value const& x);
+
+  //@overload
+  Value ifnot_inc(LogicalValue const& c, Value const& x);
 } }
 #endif
 

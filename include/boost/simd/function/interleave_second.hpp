@@ -24,22 +24,22 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of type T0:
+    For every parameters of type T:
 
     @code
-    T0 r = interleave_second(a,b);
+    T r = interleave_second(x, y);
     @endcode
 
     is equivalent to :
 
     @code
-    r = [ a[n/2-1] b[n/2-1] a[n/2] b[n/2] ... a[n-1] b[n-1] ]
+    r = [ x[n/2-1] y[n/2-1] x[n/2] y[n/2] ... x[n-1] y[n-1] ]
     @endcode
 
     with <tt> n = cardinal_of<T>::value </tt>
 
   **/
-  const boost::dispatch::functor<tag::interleave_second_> interleave_second = {};
+  Value interleave_second(Value const& v0, Value const& v1);
 #endif
 } }
 

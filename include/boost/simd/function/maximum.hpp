@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::maximum_> maximum = {};
+  scalar_of_t<Value> maximum(Value const & v0);
 } }
 #endif
 

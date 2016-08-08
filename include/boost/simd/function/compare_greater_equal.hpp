@@ -40,7 +40,7 @@ namespace boost { namespace simd
 
     @see is_greater_equal
   **/
-  const boost::dispatch::functor<tag::compare_greater_equal_> compare_greater_equal = {};
+  bool compare_greater_equal(Value const& , Value const& y);
 } }
 #endif
 

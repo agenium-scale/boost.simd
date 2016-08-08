@@ -37,7 +37,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::iround_> iround = {};
+  as_integer_t<Value> iround(Value const & x);
 } }
 #endif
 

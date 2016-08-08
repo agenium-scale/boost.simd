@@ -8,7 +8,6 @@
 
 #include <simd_bench.hpp>
 #include <boost/simd/function/simd/inearbyint.hpp>
->>>>>>> first_benches:bench/function/scalar/inearbyint.cpp
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;

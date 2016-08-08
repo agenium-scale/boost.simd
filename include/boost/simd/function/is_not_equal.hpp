@@ -18,7 +18,7 @@ namespace boost { namespace simd
 
  /*!
 
-    @ingroup group-operator
+    @ingroup group-predicates
     Function object implementing is_not_equal capabilities
 
     Returns @ref True if x and y are not equal else @ref False.
@@ -44,7 +44,7 @@ namespace boost { namespace simd
     @see  is_equal, is_nez, is_not_equal_with_equal_nans
 
   **/
-  const boost::dispatch::functor<tag::is_not_equal_> is_not_equal = {};
+  as_logical_t<Value> is_not_equal(Value const& x);
 
 } }
 #endif

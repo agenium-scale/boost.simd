@@ -18,8 +18,8 @@ namespace boost { namespace simd
     @defgroup group-swar Intra register Functions
     @ingroup  group-functions
 
-    Those functions provides algorithms for interleaving, aggregation, splitting and, more
-    generally, wide registers sub-element manipulation. Those functions are usually only
+    These functions provide algorithms for interleaving, aggregation, splitting and, more
+    generally, wide register sub-element manipulation. These functions are usually only
     defined for SIMD types but may, in some cases, have a valid scalar semantic.
   **/
 } }

@@ -18,7 +18,7 @@ namespace boost { namespace simd
 
  /*!
 
-    @ingroup group-arithmetic
+    @ingroup group-operator
     Function object implementing unary_minus capabilities
 
     return the elementwise unary minus of the parameter
@@ -39,13 +39,18 @@ namespace boost { namespace simd
     T r = -x;
     @endcode
 
-    @par Alias:
-    @c neg
+    @par Note:
+
+    - Be aware that for signed integers the unary_minus of @ref Valmin is
+    @ref Valmin. This is a side effect of the 2-complement
+    representation of integers. To avoid this, you may use the
+    saturated_ functor or convert the input parameter to a larger type
+    before taking the unary_minus value.
 
     @see  minus, unary_plus
 
   **/
-  const boost::dispatch::functor<tag::unary_minus_> unary_minus = {};
+  Value unary_minus(Value const& x);
 } }
 #endif
 

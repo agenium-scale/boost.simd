@@ -41,7 +41,7 @@ namespace boost { namespace simd
       r[i+T0::static_size] = y[i];
     @endcode
   **/
-  const boost::dispatch::functor<tag::group_> group = {};
+  downgrade<Value> group(Value const& x, Value const& y);
 #endif
 } }
 

@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::cummin_> cummin = {};
+  Value cummin(Value const & v0);
 } }
 #endif
 

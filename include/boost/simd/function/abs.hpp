@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -18,7 +17,7 @@ namespace boost { namespace simd
 
  /*!
   @ingroup group-arithmetic
-    Function object implementing abs capabilities
+    Function object implementing abs
 
     Computes the absolute value of its parameter.
 
@@ -30,36 +29,36 @@ namespace boost { namespace simd
     T r = abs(x);
     @endcode
 
-    is equivalent to:
+    is similar to:
 
     @code
     T r = x < T(0) ? -x : x;
     @endcode
 
-    @par Note:
+    @par Notes:
 
-    - Take care that for signed integers the absolute value of @ref Valmin is
+    - Be aware that for signed integers the absolute value of @ref Valmin is
     @ref Valmin (thus negative!). This is a side effect of the 2-complement
-    representation of integers. To avoid this, you can use the abs_s
-    saturated functor or convert the input parameter to a larger type
+    representation of integers. To avoid this, you may use the
+    saturated_ @ref decorator or convert the input parameter to a larger type
     before taking the absolute value.
 
-    - Also abs is a very current function name and sometimes a C macro version can be
-    an unwanted concurrent of simd::abs, you can just prefix abs or
-    use the alias modulus or fabs instead to circumvent this problem.
-
-    @par Alias
-
-    modulus, fabs
+    - abs is a also a standard library function name and there possibly exists
+    a C macro version which may be called instead of the boost simd version.
+    To avoid this you may prefix abs using boost::simd::abs notation.
 
     @par Decorators
 
-    std_ for floating entries
+     - std_ @ref decorator for floating entries results in a call to std::abs
+     - saturated_ @ref decorator garanties that saturated_(abs)(x) will never be strictly less than 0.
+       In fact the only change if that for any signed type T saturated_(abs)(Valmin<T>()) will be
+       Valmax<T>()) which is already true for boost::simd::abs with floating types but not for integral
+       signed types.
 
-    @see  abs_s, sqr_abs, sqr_ss
+    @see sqr_abs, sqr
 
   **/
-  const boost::dispatch::functor<tag::abs_> abs = {};
+  Value abs(Value const& a0);
 } }
 #endif
 

@@ -39,7 +39,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::repeat_lower_half_> repeat_lower_half = {};
+  Value repeat_lower_half(Value const & v0);
 #endif
 } }
 

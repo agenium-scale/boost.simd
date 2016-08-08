@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Mthree constant for the proper type
     **/
-    const boost::dispatch::functor<tag::mthree_> mthree = {};
+    Value Mthree();
   }
 } }
 #endif

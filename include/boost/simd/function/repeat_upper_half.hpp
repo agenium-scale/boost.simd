@@ -42,7 +42,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::repeat_upper_half_> repeat_upper_half = {};
+  Value repeat_upper_half(Value const & v0);
 #endif
 } }
 

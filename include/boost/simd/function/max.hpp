@@ -36,10 +36,19 @@ namespace boost { namespace simd
     T r =  (x > y) ? x : y;
     @endcode
 
+    @par Note:
+
+    With this definition max(x, @ref Nan) should return x...
+
+    On some systems (namely for example vmx in simd mode) the intrinsic used returns Nan as soon x or y is a nan.
+    So the real definition of our max function must add: but if y is Nan the result is system dependent.
+
+    This can be corrected using the conformant_ decorator that ensures the standard behaviour at a cost.
+
     @see maxnum, maxnummag,  maxmag
 
   **/
-  const boost::dispatch::functor<tag::max_> max = {};
+  Value max(Value const& x, Value const& y);
 } }
 #endif
 

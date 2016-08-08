@@ -45,7 +45,7 @@ namespace boost { namespace simd
     @see  fms, fma, fnma
 
   **/
-  const boost::dispatch::functor<tag::fnms_> fnms = {};
+  Value fnms(Value const& v0, Value const& v1, Value const& v2);
 } }
 #endif
 

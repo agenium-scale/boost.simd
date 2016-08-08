@@ -46,7 +46,7 @@ namespace boost { namespace simd
 
       @return The Threeeps constant for the proper type
     **/
-    const boost::dispatch::functor<tag::threeeps_> threeeps = {};
+    Value Threeeps();
   }
 } }
 #endif

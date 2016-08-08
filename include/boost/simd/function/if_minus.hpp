@@ -38,12 +38,11 @@ namespace boost { namespace simd
     @code
     T1 r = x ? y-a2 : y;
     @endcode
-
-    @par Alias:
-    @c if_minus
-
   **/
-  const boost::dispatch::functor<tag::if_minus_> if_minus = {};
+  Value if_minus(Value const& x, Value const& y, Value a2);
+
+  //@overload
+  Value if_minus(LogicalValue const& x, Value const& y, Value const& a2);
 } }
 #endif
 

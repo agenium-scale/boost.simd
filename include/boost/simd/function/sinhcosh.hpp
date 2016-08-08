@@ -27,7 +27,7 @@ namespace boost { namespace simd
 
     @code
     T ch, sh
-    sinhcosh(x, sh, ch);
+    std::tie(sh, ch) = rem_pio2_cephes(x);
     @endcode
 
     is similar to:
@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @see  sinh, cosh
 
   **/
-  const boost::dispatch::functor<tag::sinhcosh_> sinhcosh = {};
+  std::pair<Value, Value> sinhcosh(Value const & v0);
 } }
 #endif
 

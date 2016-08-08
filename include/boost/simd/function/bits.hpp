@@ -33,11 +33,11 @@ namespace boost { namespace simd
     is equivalent to:
 
     @code
-    as_integer_t<T,unsigned> r = bitwase_cast< as_integer_t<T,unsigned>>(x);
+    as_integer_t<T,unsigned> r = bitwise_cast< as_integer_t<T,unsigned>>(x);
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::bits_> bits = {};
+  as_integer_t<T, unsigned> bits(Value const & v0);
 } }
 #endif
 

@@ -38,7 +38,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::dot_> dot = {};
+  scalar_of_t<Value> dot(Value const & v0, Value const& v1);
 } }
 #endif
 

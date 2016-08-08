@@ -41,7 +41,7 @@ namespace boost { namespace simd
     @see exp2, trunc, ldexp
 
   **/
-  const boost::dispatch::functor<tag::pow2_> pow2 = {};
+  Value posmin(Value const & v0, Value const& y);
 } }
 #endif
 
