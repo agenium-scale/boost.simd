@@ -14,15 +14,16 @@
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 #include <boost/simd/function/simd/shift_left.hpp>
 #include <boost/simd/function/simd/toint.hpp>
-#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/function/simd/toint.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd { namespace detail
 {
   template<typename A0> BOOST_FORCEINLINE A0 scale(A0 const & y, const A0& k)
-  {
+  {//puts("scaaaaaale!");
     auto ik = toint(k) + Maxexponent<A0>();
-    ik = shift_left(ik, Nbmantissabits<A0>());
-    return y*bitwise_cast<A0>(ik);;
+    ik = shift_left(ik, Nbmantissabits<dispatch::scalar_of_t<A0>>());
+    return y*bitwise_cast<A0>(ik);
   }
 } } }
 

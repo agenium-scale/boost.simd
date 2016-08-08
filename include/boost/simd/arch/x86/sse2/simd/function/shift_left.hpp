@@ -54,6 +54,7 @@ namespace boost { namespace simd { namespace ext
       return bitwise_or(tmp1, bitwise_and(tmp3, Mask2));
     }
   };
+
   BOOST_DISPATCH_OVERLOAD ( shift_left_
                           , (typename A0,typename A1 )
                           , bs::sse2_
@@ -72,6 +73,21 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( shift_left_
                           , (typename A0,typename A1 )
                           , bs::sse2_
+                          , bs::pack_<bd::ints32_<A0>, bs::sse_>
+                          , bd::scalar_<bd::integer_<A1>>
+                         )
+  {
+    BOOST_FORCEINLINE A0 operator() ( const A0 & a0
+                                    , const A1 & a1 ) const BOOST_NOEXCEPT
+    {
+      BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "shift_left ints32 sse2: a shift is out of range");
+      return _mm_slli_epi32(a0, a1);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( shift_left_
+                          , (typename A0,typename A1 )
+                          , bs::sse2_
                           , bs::pack_<bd::ints64_<A0>, bs::sse_>
                           , bd::scalar_<bd::integer_<A1>>
                          )
@@ -83,8 +99,6 @@ namespace boost { namespace simd { namespace ext
       return _mm_slli_epi64(a0, int(a1));
     }
   };
-
 } } }
 
 #endif
-
