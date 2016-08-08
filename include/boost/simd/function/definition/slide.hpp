@@ -37,11 +37,15 @@ namespace boost { namespace simd
 
 namespace boost { namespace simd
 {
-  template<int N, typename T> BOOST_FORCEINLINE auto slide(T const& a0, T const& a1)
-  BOOST_NOEXCEPT_DECLTYPE_BODY((detail::slider<T,N,cardinal_of<T>::value,(N>=0)>::call(a0,a1)));
+  template<int N, typename T> BOOST_FORCEINLINE T slide(T const& a0, T const& a1)
+  {
+    return detail::slider<T,N,cardinal_of<T>::value,(N>=0)>::call(a0,a1);
+  }
 
-  template<int N, typename T> BOOST_FORCEINLINE auto slide(T const& a0)
-  BOOST_NOEXCEPT_DECLTYPE_BODY((detail::slider<T,N,cardinal_of<T>::value,(N>=0)>::call(a0)));
+  template<int N, typename T> BOOST_FORCEINLINE T slide(T const& a0)
+{
+    return detail::slider<T,N,cardinal_of<T>::value,(N>=0)>::call(a0);
+  }
 } }
 
 #endif
