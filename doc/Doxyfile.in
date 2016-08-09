@@ -772,12 +772,12 @@ WARN_LOGFILE           =
 # spaces.
 # Note: If this tag is empty the current directory is searched.
 
-#INPUT                    = @Boost.SIMD_SOURCE_DIR@/include/boost/
-#INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/
-#INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/meta
-#INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/meta/hierarchy
-#INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/constant
-#INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/function/
+INPUT                    = @Boost.SIMD_SOURCE_DIR@/include/boost/
+INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/
+INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/meta
+INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/meta/hierarchy
+INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/constant
+INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/function/
 INPUT                   += @Boost.SIMD_SOURCE_DIR@/doc
 FILE_PATTERNS           = *.md *.hpp
 RECURSIVE               = NO
