@@ -107,7 +107,7 @@ $( document ).ready(function() {
     $('#navrow' + i).remove();
   }
   var right_nav = $('<div class="col-md-3"></div>').append('\
-    <div id="search-box position: absolute" class="input-group">\
+    <div id="search-box" class="input-group">\
       <div class="input-group-btn">\
         <button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">\
           <span class="glyphicon glyphicon-search"></span> <span class="caret"></span>\
@@ -267,7 +267,6 @@ $( document ).ready(function() {
 			$(this).siblings('.memTemplItemRight').remove();
 		}
 	});
-    searchBox.CloseResultsWindow();
 
     var page = window.location.pathname.split('/').slice(-1).pop();
     var pages = {
@@ -283,4 +282,22 @@ $( document ).ready(function() {
 	e.parent().addClass('current active');
       }
     }
+    if(page.indexOf('group') != -1){ 
+      for(var i=0;i<elts.length;++i){ 
+        var e = $(elts[i]);console.log(e.attr('href')); 
+        if(e.attr('href').indexOf('modules') != -1){ 
+          e.parent().addClass('current active') 
+        } 
+      } 
+    }
+    if(page.indexOf('tutorial') != -1){ 
+      for(var i=0;i<elts.length;++i){ 
+        var e = $(elts[i]);console.log(e.attr('href')); 
+        if(e.attr('href').indexOf('tutorial') != -1){ 
+          e.parent().addClass('current active') 
+        } 
+      } 
+    }
+    $('#search-close.close').click(function() { searchBox.CloseResultsWindow(); })
+    searchBox.CloseResultsWindow();
 });

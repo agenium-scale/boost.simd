@@ -4,7 +4,7 @@
   <navindex>
     <tab type="mainpage" visible="yes" title="Home"/>
     <tab type="user" url="@ref QuickStart" visible="yes" title="Quick Start"/>
-    <tab type="user" url="@ref tutorials" visible="yes" title="Tutorial"/>
+    <tab type="user" url="@ref tutorials" visible="yes" title="Tutorials"/>
     <tab type="user" url="@ref motivation" visible="no" title="Motivation"/>
     <tab type="modules" visible="yes"
                         title="Reference documentation"
@@ -22,7 +22,6 @@
       <tab type="filelist" visible="yes"
                            title="Files"
                            intro=""/>
-      <tab type="user" url="@ref motivation" visible="yes" title="WTF"/> 
     </tab>
 
     <tab type="pages" visible="no" title=""/> 
