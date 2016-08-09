@@ -993,6 +993,7 @@ div.summary
 	padding-right: 5px;
 	width: 50%;
 	text-align: right;
+	display: none;
 }       
 
 div.summary a
