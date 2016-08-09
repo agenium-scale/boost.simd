@@ -7,18 +7,15 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/correct_fma.hpp>
-#include <boost/simd/pack.hpp>
+#include <boost/simd/function/simd/fma.hpp>
 #include <cmath>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_correct_fma, bs::correct_fma);
+DEFINE_SIMD_BENCH(simd_correct_fma,bs::conformant_(bs::fma));
 
-int main(int argc, char** argv) {
-  nsb::parse_args(argc, argv);
+DEFINE_BENCH_MAIN()
+{
   nsb::for_each<simd_correct_fma, NS_BENCH_IEEE_TYPES>(-10, 10, -10, 10, -10, 10);
-  print_results();
-  return 0;
 }

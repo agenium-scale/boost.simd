@@ -30,10 +30,10 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_< bs::logical_<A0>, X >
                           )
   {
-    BOOST_FORCEINLINE auto operator() ( A0 a0 , A0 a1 ) const BOOST_NOEXCEPT
-      -> decltype(is_not_equal(a0, a1))
+    using result = bs::as_logical_t<A0>;
+    BOOST_FORCEINLINE result operator() ( A0 a0 , A0 a1 ) const BOOST_NOEXCEPT
     {
-      return  is_not_equal(a0, a1);
+      return is_not_equal(a0, a1);
     }
   };
 
@@ -44,8 +44,8 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_< bd::arithmetic_<A0>, X >
                           )
   {
-    BOOST_FORCEINLINE auto operator() ( A0 a0 , A0 a1 ) const BOOST_NOEXCEPT
-      -> decltype(is_not_equal(a0, a1))
+    using result = bs::as_logical_t<A0>;
+    BOOST_FORCEINLINE result operator() ( A0 a0 , A0 a1 ) const BOOST_NOEXCEPT
     {
       return  is_not_equal(a0, a1);
     }
@@ -58,8 +58,8 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_< bd::floating_<A0>, X >
                           )
   {
-    BOOST_FORCEINLINE auto operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
-      -> decltype(logical_and(is_ord(a0,a1), is_not_equal(a0, a1)))
+    using result = bs::as_logical_t<A0>;
+    BOOST_FORCEINLINE result operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       return logical_and(is_ord(a0,a1), is_not_equal(a0, a1));
     }

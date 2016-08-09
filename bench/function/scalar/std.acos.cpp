@@ -12,9 +12,9 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_acos, bs::std_(bs::acos));
+DEFINE_SCALAR_BENCH(scalar_std_acos, bs::std_(bs::acos));
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_acos, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<scalar_std_acos, NS_BENCH_IEEE_TYPES>(-1, 1);
 }

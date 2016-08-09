@@ -16,5 +16,5 @@ DEFINE_SCALAR_BENCH(scalar_atanh, bs::atanh);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_atanh, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<scalar_atanh, NS_BENCH_IEEE_TYPES>(-1, 1);
 }
