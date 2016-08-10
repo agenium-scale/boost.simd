@@ -12,9 +12,9 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_expm1, bs::std_(bs::expm1));
+DEFINE_SCALAR_BENCH(scalar_std_expm1, bs::std_(bs::expm1));
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_expm1, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<scalar_std_expm1, NS_BENCH_IEEE_TYPES>(-10, 10);
 }

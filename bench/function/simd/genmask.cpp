@@ -7,14 +7,15 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/nearbyint.hpp>
-#include <cmath>
+#include <boost/simd/function/simd/genmask.hpp>
+#include <boost/simd/pack.hpp>
 
 namespace nsb = ns::bench;
+namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_nearbyint, boost::simd::nearbyint);
+DEFINE_SIMD_BENCH(simd_genmask, bs::genmask);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_nearbyint, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<simd_genmask, NS_BENCH_IEEE_TYPES>(-10, 10);
 }

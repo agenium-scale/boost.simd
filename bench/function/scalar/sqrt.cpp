@@ -16,5 +16,5 @@ DEFINE_SCALAR_BENCH(scalar_sqrt, bs::sqrt);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_sqrt, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<scalar_sqrt, NS_BENCH_IEEE_TYPES>(0, 10);
 }

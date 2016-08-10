@@ -48,7 +48,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE  bs::as_logical_t<A0> operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      return bitwise_and(is_nez(a0), is_less(bs::abs(a0), Smallestposval<A0>()));
+      return logical_and(is_nez(a0), is_less(bs::abs(a0), Smallestposval<A0>()));
     }
   };
 } } }

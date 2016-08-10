@@ -7,15 +7,15 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/round2even.hpp>
+#include <boost/simd/function/simd/nearbyint.hpp>
 #include <boost/simd/pack.hpp>
 #include <cmath>
 
 namespace nsb = ns::bench;
 
-DEFINE_SIMD_BENCH(simd_round2even, boost::simd::round2even);
+DEFINE_SIMD_BENCH(simd_nearbyint, boost::simd::nearbyint);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_round2even, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<simd_nearbyint, NS_BENCH_IEEE_TYPES>(-10, 10);
 }

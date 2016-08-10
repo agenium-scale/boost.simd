@@ -9,16 +9,13 @@
 #include <simd_bench.hpp>
 #include <boost/simd/function/simd/dist.hpp>
 #include <boost/simd/pack.hpp>
-#include <cmath>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
 DEFINE_SIMD_BENCH(simd_dist_s, bs::saturated_(bs::dist));
 
-int main(int argc, char** argv) {
-  nsb::parse_args(argc, argv);
-  nsb::for_each<simd_dist_s, NS_BENCH_NUMERIC_TYPES>(-10, 10, -10, 10);
-  print_results();
-  return 0;
+DEFINE_BENCH_MAIN()
+{
+  nsb::for_each<simd_dist_s, NS_BENCH_IEEE_TYPES>(-10, 10,-10, 10);
 }

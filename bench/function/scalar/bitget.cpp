@@ -20,7 +20,7 @@ struct bitg
   template<class T> T operator()(const T & a) const
   {
     using i_t = bd::as_integer_t<T>;
-    return bs::bitset(a, bs::enumerate<i_t>());
+    return bs::bitget(a, bs::enumerate<i_t>());
   }
 };
 

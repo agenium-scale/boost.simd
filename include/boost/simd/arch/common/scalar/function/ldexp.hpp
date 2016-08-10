@@ -133,6 +133,7 @@ namespace boost { namespace simd { namespace ext
       return bs::ldexp(a0, a1);
     }
   };
+
 } } }
 
 

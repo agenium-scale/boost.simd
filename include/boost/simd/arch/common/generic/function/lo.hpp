@@ -34,9 +34,8 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE result operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      static const s_t pattern = (s_t(1) << sizeof(s_t)*(CHAR_BIT/2)) - 1;
-      return bitwise_and( Ratio<result, pattern>() ,  a0 );
-//      return bitwise_and( integral_constant<result, pattern>(), a0 );
+      result pattern((s_t(1) << sizeof(s_t)*(CHAR_BIT/2)) - 1);
+      return bitwise_and(pattern, a0);
     }
   };
 } } }

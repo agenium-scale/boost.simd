@@ -17,5 +17,5 @@ DEFINE_SIMD_BENCH(simd_sqrt, bs::sqrt);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_sqrt, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<simd_sqrt, NS_BENCH_IEEE_TYPES>(0, 10);
 }

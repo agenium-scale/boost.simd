@@ -12,6 +12,7 @@ set(SOURCES
     acos.cpp
     acosd.cpp
     acospi.cpp
+    acosh.cpp
     acot.cpp
     acotd.cpp
     acoth.cpp
@@ -40,7 +41,7 @@ set(SOURCES
     atanpi.cpp
     average.cpp
     bitfloating.cpp
-#    bitget.cpp
+    bitget.cpp
     bitinteger.cpp
     bitset.cpp
     bitwise_and.cpp
@@ -108,6 +109,7 @@ set(SOURCES
     firstbitunset.cpp
     floor.cpp
     fma.cpp
+    correct_fma.cpp
     fms.cpp
     fnma.cpp
     fnms.cpp
@@ -115,6 +117,7 @@ set(SOURCES
     frac.cpp
     frexp.cpp
     gammaln.cpp
+    genmask.cpp
     genmaskc.cpp
 ##########    group.cpp
 ##########    groups.cpp
@@ -275,7 +278,7 @@ set(SOURCES
     reverse.cpp
 #    rol.cpp
 #    ror.cpp
-#    nearbyint.cpp
+    nearbyint.cpp
     round.cpp
 #    rrol.cpp
 #    rror.cpp
@@ -286,8 +289,8 @@ set(SOURCES
     sech.cpp
     secpi.cpp
     sec.cpp
-#    shift_left.cpp
-#    shift_right.cpp
+    shift_left.cpp
+    shift_right.cpp
 #    shr1.cpp
     sign.cpp
     significants.cpp
@@ -299,6 +302,7 @@ set(SOURCES
     sincpi.cpp
     sin.cpp
     sind.cpp
+    sinh.cpp
     sinhc.cpp
     sinhcosh.cpp
     sinpi.cpp

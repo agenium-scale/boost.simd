@@ -10,6 +10,7 @@
 #include <boost/simd/function/simd/ldexp.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
@@ -22,16 +23,24 @@ struct lde
 {
   template<class T> T operator()(const T & a) const
   {
-    return bs::ldexp(a, bd::as_integer_t<T>(N));
+    return bs::ldexp(a, N);
+  }
+};
+template < int N >
+struct ldef
+{
+  template<class T> T operator()(const T & a) const
+  {
+    return bs::fast_(bs::ldexp)(a, N);
   }
 };
 
   DEFINE_SIMD_BENCH(simd_lde10, lde<10>());
-  DEFINE_SIMD_BENCH(simd_ldem10, lde<-10>());
+  DEFINE_SIMD_BENCH(fast_simd_lde10, ldef<10>());
 
 DEFINE_BENCH_MAIN() {
-  nsb::for_each<simd_lde10, NS_BENCH_NUMERIC_TYPES>(-10, 10);
-  nsb::for_each<simd_ldem10, NS_BENCH_NUMERIC_TYPES>(-10, 10);
+  nsb::for_each<simd_lde10, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<fast_simd_lde10, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
 
 

@@ -22,10 +22,14 @@
 #include <boost/simd/function/simd/fma.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
 #include <boost/simd/function/simd/is_less.hpp>
+#include <boost/simd/function/simd/log.hpp>
 #include <boost/simd/function/simd/log1p.hpp>
 #include <boost/simd/function/simd/multiplies.hpp>
 #include <boost/simd/function/simd/oneminus.hpp>
 #include <boost/simd/function/simd/plus.hpp>
+#include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/simd/inc.hpp>
+#include <boost/simd/function/simd/oneminus.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -45,6 +49,20 @@ namespace boost { namespace simd { namespace ext
         auto test =  is_less(absa0, Half<A0>());
         A0 tmp = if_else(test, absa0, t)/z1;
         return bitwise_xor(bitofsign(a0), Half<A0>()*log1p(if_else(test, fma(t,tmp,t), tmp)));
+      }
+   };
+
+   BOOST_DISPATCH_OVERLOAD( atanh_
+                          , (typename A0, typename X)
+                          , bd::cpu_
+                          , boost::simd::fast_tag
+                          , bs::pack_<bd::floating_<A0>, X>
+                          )
+   {
+      BOOST_FORCEINLINE A0 operator()(const fast_tag &,
+                                      const A0& a0) const BOOST_NOEXCEPT
+      {
+        return  Half<A0>()*log(inc(a0)/oneminus(a0));
       }
    };
 

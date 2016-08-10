@@ -17,7 +17,7 @@ DEFINE_SIMD_BENCH(simd_abs_s, bs::saturated_(bs::abs));
 
 int main(int argc, char** argv) {
   nsb::parse_args(argc, argv);
-  nsb::for_each<simd_abs_s, NS_BENCH_NUMERIC_TYPES>(-10, 10);
+  nsb::for_each<simd_abs_s, NS_BENCH_IEEE_TYPES>(-10, 10);
   print_results();
   return 0;
 }

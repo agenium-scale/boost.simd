@@ -17,5 +17,5 @@ DEFINE_SIMD_BENCH(simd_bitfloating, bs::bitfloating);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_bitfloating, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<simd_bitfloating, int32_t, int64_t>(-10, 10);
 }

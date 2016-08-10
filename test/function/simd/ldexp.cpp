@@ -55,3 +55,35 @@ STF_CASE_TPL("Check ldexp on pack" , STF_NUMERIC_TYPES)
   test<T, N/2>($);
   test<T, N*2>($);
 }
+template <typename T, std::size_t N, typename Env>
+void tests(Env& $)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using p_t = bs::pack<T, N>;
+
+  T a1[N],  b[N], c[N], d[N];
+  for(std::size_t i = 0; i < N; ++i)
+  {
+     a1[i] = (i%2) ? T(i) : T(-i);
+     b[i] = bs::ldexp(a1[i], 2);
+     c[i] = bs::std_(bs::ldexp)(a1[i], 2);
+     d[i] = bs::fast_(bs::ldexp)(a1[i], 2);
+   }
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t bb(&b[0], &b[0]+N);
+  p_t cc(&c[0], &c[0]+N);
+  p_t dd(&d[0], &d[0]+N);
+  STF_IEEE_EQUAL(bs::ldexp(aa1, 2), bb);
+  STF_IEEE_EQUAL(bs::fast_(bs::ldexp)(aa1, 2), dd);
+}
+
+STF_CASE_TPL("Check ldexp on pack and scal" , STF_NUMERIC_TYPES)
+{
+  namespace bs = boost::simd;
+  using p_t = bs::pack<T>;
+  static const std::size_t N = bs::cardinal_of<p_t>::value;
+  tests<T, N>($);
+  tests<T, N/2>($);
+  tests<T, N*2>($);
+}

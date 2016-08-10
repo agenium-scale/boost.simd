@@ -7,7 +7,7 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/fpclassify.hpp>
+#include <boost/simd/function/simd/gammaln.hpp>
 #include <boost/simd/pack.hpp>
 
 namespace nsb = ns::bench;

@@ -16,5 +16,5 @@ DEFINE_SCALAR_BENCH(scalar_asech, bs::asech);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_asech, NS_BENCH_IEEE_TYPES>(-10, -1);
+  nsb::for_each<scalar_asech, NS_BENCH_IEEE_TYPES>(0, 1);
 }
