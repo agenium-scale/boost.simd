@@ -161,8 +161,8 @@ namespace boost { namespace simd { namespace ext
       using iA0 = bd::as_integer_t<A0>;
       using sA0 =  bd::scalar_of_t<A0>;
       using siA0 = bd::scalar_of_t<iA0>;
-      siA0 ik =  a1+Maxexponent<double>();
-      ik = shift_left(ik, Nbmantissabits<double>());
+      siA0 ik =  a1+Maxexponent<sA0>();
+      ik = shift_left(ik, Nbmantissabits<sA0>());
       return a0*A0(bitwise_cast<sA0>(ik));
     }
   };
