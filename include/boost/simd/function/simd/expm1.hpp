@@ -14,5 +14,6 @@
 
 #include <boost/simd/function/scalar/expm1.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
+#include <boost/simd/arch/common/simd/function/expm1.hpp>
 
 #endif

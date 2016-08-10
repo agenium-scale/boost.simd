@@ -67,7 +67,7 @@ namespace boost { namespace simd
         x =  fnms(k, Log_2lo<A0>(), x);
         A0 hx  = x*Half<A0>();
         A0 hxs = x*hx;
-        A0 r1 = horn<s_t,
+        A0 r1 = horn<A0,
                      0X3F800000UL,// 1
                      0XBD08887FUL, // -3.3333298E-02
                      0X3ACF6DB4UL  // 1.5825541E-03
@@ -95,7 +95,7 @@ namespace boost { namespace simd
         A0 lo = k*Log_2lo<A0>();
         A0 x  = hi-lo;
         A0 hxs = sqr(x)*Half<A0>();
-        A0 r1 = horn<s_t,
+        A0 r1 = horn<A0,
                      0X3FF0000000000000ULL,
                      0XBFA11111111110F4ULL,
                      0X3F5A01A019FE5585ULL,
