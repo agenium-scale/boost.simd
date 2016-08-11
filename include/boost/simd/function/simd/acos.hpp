@@ -16,4 +16,10 @@
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/generic/function/acos.hpp>
 
+#if defined(BOOST_HW_SIMD_X86_OR_AMD_AVAILABLE)
+#  if BOOST_HW_SIMD_X86_OR_AMD >= BOOST_HW_SIMD_X86_SSE_VERSION
+#    include <boost/simd/arch/x86/sse1/simd/function/acos.hpp>
+#  endif
+#endif
+
 #endif

@@ -51,7 +51,9 @@ namespace boost { namespace simd
     {
       static BOOST_FORCEINLINE A0 asin(const A0& a0)
       {
-        A0 x = bs::abs(a0);
+        A0 bsa0 = bs::bitofsign(a0);
+        A0 x = bs::bitwise_xor(a0, bsa0);
+//        A0 x = bs::abs(a0);
         auto small_=  bs::is_less(x, bs::Sqrteps<A0>());
         const A0 ct1 = Constant<A0, 0x3fe4000000000000ll>();
         A0 zz1 = bs::oneminus(x);
@@ -95,7 +97,7 @@ namespace boost { namespace simd
                                                             x,
                                                             bs::if_else(x > ct1, zz1, zz2)
                                                           )
-                                              , bs::bitofsign(a0)
+                                              , bsa0//bs::bitofsign(a0)
                                               )
                               );
       }

@@ -10,6 +10,7 @@ set(SOURCES
     abs.cpp
     abs_s.cpp
     acos.cpp
+    acos.accurate.cpp
     acosd.cpp
     acosh.cpp
     acospi.cpp

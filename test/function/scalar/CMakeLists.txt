@@ -305,6 +305,7 @@ set ( SOURCES
 #trigonometric
    acosd.cpp
    acos.cpp
+   acos.accurate.cpp
    acospi.cpp
    acotd.cpp
    acot.cpp
