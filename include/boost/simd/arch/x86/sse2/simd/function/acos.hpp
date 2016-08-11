@@ -8,8 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_ACOS_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_ACOS_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_ACOS_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_ACOS_HPP_INCLUDED
 
 #include <boost/simd/function/accurate.hpp>
 #include <boost/simd/function/std.hpp>
@@ -23,7 +23,7 @@ namespace boost { namespace simd { namespace ext
 
    BOOST_DISPATCH_OVERLOAD ( acos_
                           , (typename A0)
-                          , bs::sse1_
+                          , bs::sse2_
                           , bs::accurate_tag
                           , bs::pack_< bd::double_<A0>, bs::sse_>
                           )
