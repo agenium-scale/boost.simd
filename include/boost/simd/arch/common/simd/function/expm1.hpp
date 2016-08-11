@@ -21,6 +21,14 @@
 #include <boost/config.hpp>
 #include <cmath>
 
+namespace boost { namespace simd { namespace detail
+//why do I need that ?!
+{
+  template < class A0, class sA0>
+  struct expm1_kernel;
+} } }
+
+
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
@@ -35,11 +43,12 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator()(A0 const& a0) const BOOST_NOEXCEPT
     {
+      using sA0 = bd::scalar_of_t<A0>;
       return if_else(is_less(a0, Logeps<A0>()),
                      Mone<A0>(),
                      if_else(is_greater(a0, Maxlog<A0>()),
                              Inf<A0>(),
-                              detail::expm1_kernel<A0>::expm1(a0)
+                              detail::expm1_kernel<A0, sA0>::expm1(a0)
                             )
                     );
     }
