@@ -23,16 +23,19 @@
 #include <boost/array.hpp>
 
 #include <boost/simd/function/exp.hpp>
+#include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/if_else_zero.hpp>
 #include <boost/simd/function/if_zero_else.hpp>
 #include <boost/simd/function/is_greater.hpp>
 #include <boost/simd/function/is_ltz.hpp>
+#include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/function/oneminus.hpp>
 #include <boost/simd/function/rec.hpp>
 #include <boost/simd/function/sqr.hpp>
 #include <boost/simd/function/trunc.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/halfeps.hpp>
+#include <boost/simd/constant/invsqrt_2pi.hpp>
 #include <boost/simd/constant/two.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/constant.hpp>
@@ -169,20 +172,18 @@ namespace boost { namespace simd
 
     template < typename A0 >
     struct erf_kernel < A0, float >
-    {
-      using s_t = bd::scalar_of_t<A0>;
-      // computes erf(a0)/a0 for float or float vectors
+    {      // computes erf(a0)/a0 for float or float vectors
       // xx is sqr(a0) and 0 <= abs(x) <= 2/3
       static BOOST_FORCEINLINE A0 erf1(const A0& xx)
       {
-        return horn<s_t,
-                    0x3f906eba, //   1.128379154774254e+00
-                    0xbec0937e, //  -3.761252839094832e-01
-                    0x3de70f22, //   1.128218315189123e-01
-                    0xbcdb61f4, //  -2.678010670585737e-02
-                    0x3ba4468d, //   5.013293006147870e-03
-                    0xba1fc83b  //  -6.095205117313012e-04
-                    > (xx);
+        return horn<A0,
+          0x3f906eba, //   1.128379154774254e+00
+          0xbec0937e, //  -3.761252839094832e-01
+          0x3de70f22, //   1.128218315189123e-01
+          0xbcdb61f4, //  -2.678010670585737e-02
+          0x3ba4468d, //   5.013293006147870e-03
+          0xba1fc83b  //  -6.095205117313012e-04
+          > (xx);
       }
 
       // computes erfc(x)*exp(sqr(x)) for float or float vectors
@@ -193,7 +194,7 @@ namespace boost { namespace simd
         // with a polynomial of degree 11 gives 16 ulp on [2/3 inf] for erfc
         // (exhaustive test against float(erfc(double(x))))
         // z is A0 z = x/inc(x)-A0(0.4);
-        return horn<s_t,
+        return horn<A0,
                     0x3f0a0e8b, //   5.392844046572836e-01
                     0xbf918a62, //  -1.137035586823118e+00
                     0x3e243828, //   1.603704761054187e-01
@@ -216,7 +217,7 @@ namespace boost { namespace simd
         // with a polynomial of degree 8 gives 2 ulp on [0 2/3] for erfc
         // (exhaustive test against float(erfc(double(x))))
         // z is A0 z = x/inc(x);
-        return  oneminus(z)* horn<s_t,
+        return  oneminus(z)* horn<A0,
                                   0x3f7ffffe, //   9.9999988e-01
                                   0xbe036d7e, //  -1.2834737e-01
                                   0xbfa11698, //  -1.2585020e+00
@@ -233,19 +234,18 @@ namespace boost { namespace simd
     template < typename A0 >
     struct erf_kernel < A0, double >
     {
-      using s_t = bd::scalar_of_t<A0>;
       // computes erf(a0)/a0 for double or double vectors
       // xx is sqr(a0) and 0 <= abs(a0) <= 0.65
       static BOOST_FORCEINLINE A0 erf1(const A0& xx)
       {
-        return horn<s_t,
+        return horn<A0,
                     0x3ff20dd750429b61ull, // 1.12837916709551
                     0x3fc16500f106c0a5ull, // 0.135894887627278
                     0x3fa4a59a4f02579cull, // 4.03259488531795E-02
                     0x3f53b7664358865aull, // 1.20339380863079E-03
                     0x3f110512d5b20332ull  // 6.49254556481904E-05
                     > (xx)/
-          horn<s_t,
+          horn<A0,
                0x3ff0000000000000ull, // 1
                0x3fdd0a84eb1ca867ull, // 0.453767041780003
                0x3fb64536ca92ea2full, // 8.69936222615386E-02
@@ -258,7 +258,7 @@ namespace boost { namespace simd
       // 0.65 <= abs(x) <= 2.2
       static BOOST_FORCEINLINE A0 erfc2(const A0& x)
       {
-        return  horn<s_t,
+        return  horn<A0,
                      0x3feffffffbbb552bull, // 0.999999992049799
                      0x3ff54dfe9b258a60ull, // 1.33154163936765
                      0x3fec1986509e687bull, // 0.878115804155882
@@ -267,7 +267,7 @@ namespace boost { namespace simd
                      0x3f7cf4cfe0aacbb4ull, // 7.06940843763253E-03
                      0x0ull                 // 0
                      > (x)/
-                horn<s_t,
+                horn<A0,
                      0x3ff0000000000000ull, // 1
                      0x4003adeae79b9708ull, // 2.45992070144246
                      0x40053b1052dca8bdull, // 2.65383972869776
@@ -281,7 +281,7 @@ namespace boost { namespace simd
       // 2.2 <= abs(x) <= 6
       static BOOST_FORCEINLINE A0 erfc3(const A0& x)
       {
-        return   horn<s_t,
+        return   horn<A0,
                       0x3fefff5a9e697ae2ull, //0.99992114009714
                       0x3ff9fa202deb88e5ull, //1.62356584489367
                       0x3ff44744306832aeull, //1.26739901455873
@@ -290,7 +290,7 @@ namespace boost { namespace simd
                       0x3f971d0907ea7a92ull, //2.25716982919218E-02
                       0x0ll                  //0
                       > (x)/
-          horn<s_t,
+          horn<A0,
                0x3ff0000000000000ull, //1
                0x400602f24bf3fdb6ull, //2.75143870676376
                0x400afd487397568full, //3.37367334657285
@@ -304,7 +304,7 @@ namespace boost { namespace simd
       // x >=  6 rx = 1/x
       static BOOST_FORCEINLINE A0 erfc4(const A0& rx)
       {
-        return  horn<s_t,
+        return  horn<A0,
                      0xbc7e4ad1ec7d0000ll,// -2.627435221016534e-17
                      0x3fe20dd750429a16ll,// 5.641895835477182e-01
                      0x3db60000e984b501ll,// 2.000889609806154e-11
