@@ -21,12 +21,12 @@
 #include <boost/config.hpp>
 #include <cmath>
 
-namespace boost { namespace simd { namespace detail
-//why do I need that ?!
-{
-  template < class A0, class sA0>
-  struct expm1_kernel;
-} } }
+// namespace boost { namespace simd { namespace detail
+// //why do I need that ?!
+// {
+//   template < class A0, class sA0>
+//   struct expm1_kernel;
+// } } }
 
 
 namespace boost { namespace simd { namespace ext

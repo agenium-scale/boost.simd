@@ -51,7 +51,7 @@ namespace boost { namespace simd
     namespace bd =  boost::dispatch;
     namespace bs =  boost::simd;
 
-    template < typename A0, typename sA0 = bd::scalar_of_t<A0> >
+    template < typename A0, typename sA0>
     struct expm1_kernel;
 
     template < typename A0 >
