@@ -46,16 +46,16 @@ int main() {
   }
   //! [avx-simd-loop]
 
-  //! [arm-simd-loop]
-  float32x4_t v0_arm, v1_arm, r_arm;
-  std::size_t f_card_arm = 4;
-  for( int i = 0; i < size; i += f_card_arm){
-    v0_arm = vld1q_f32(&data0[i]);
-    v1_arm = vld1q_f32(&data1[i]);
-    r_arm  = vaddq_f32(v0_arm, v1_arm);
-    vst1q_f32(&res[i], r_arm);
+  //! [vmx-simd-loop]
+  float32x4_t v0_ibm, v1_ibm, r_ibm;
+  std::size_t f_card_ibm = 4;
+  for( int i = 0; i < size; i += f_card_ibm){
+    v0_ibm = vec_ld(i, &data0[0]);
+    v1_ibm = vec_ld(i, &data1[0]);
+    r_ibm  = vec_add(v0_ibm, v1_ibm);
+    vec_st(r_ibm, i, &res[0]);
   }
-  //! [arm-simd-loop]
+  //! [vmx-simd-loop]
 
   //! [bs-simd-loop]
   namespace bs = boost::simd;

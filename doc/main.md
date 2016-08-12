@@ -43,14 +43,9 @@ Looks difficult? How abut we vectorize it for the following generation of Intel 
 @snippet addvector.cpp avx-simd-loop
 
 Both of these processor are manufactured by Intel yet two different versions of the code are required to get the best performance possible from the processors.
-Imagine the complication of moving to another manufacturer's processor!
-Take for example ARM processors, which are found in most smartphones. Development for a smart phone is much more difficult than for a desktop PC as you have significantly
-less processing power to play with as well as limited battery life to consider. Software performance is even more important in such a difficult environment!
-Thankfully the **Boost.SIMD** development team has been thinking about you so **Boost.SIMD** is designed to seamlessly integrate into any mobile development environment.
+Imagine the complication of moving to another manufacturer's processor, for example IBM. Let's try re-write this same simple loop for a `VMX` equipped processor:
 
-Let's try re-write this same simple loop for a smartphone with a `NEON` equipped processorprocessor:
-
-@snippet addvector.cpp arm-simd-loop
+@snippet addvector.cpp vmx-simd-loop
 
 This is quicky getting complicated and annoying. Wouldn't life be much easier if someone else took care of this mess? Imagine being able to write one version of your code,
 which has optimal performance across all architectures, compilers and operating systems? Imagine not having to worry about re-writing your code for each new processor released?
@@ -95,49 +90,10 @@ Compiler                | Version
 ------------------------|-------------------
 g++                     | 4.8 and above
 clang++                 | 3.5 and above
-Microsoft Visual Studio | 13.0 and above
+Microsoft Visual Studio | 15.0 and above
 </center>
 
-## Standalone X86
-
 **Boost.SIMD** requires **Boost** version 1.60 or newer.
-
-
-## Adding Paid Architectures
-
-To be completed...
-
-
-@section main-howto How to use this documentation
-
-----------------------------------------------------------------------------------------------------
-The structure of this documention (available in the menu to the left) is as
-follows:
-
-  - @ref tutorials\n
-    Tutorial for writing **Boost.SIMD** code.
-
-  - @ref group-api\n
-    Public functions and type API of **Boost.SIMD**
-
-  - @ref group-concept\n
-    Concepts defined and used throughout **Boost.SIMD**.
-
-  - @ref group-config\n
-    Macros which are defined to control the configuration of **Boost.SIMD** code.
-
-  - @ref group-ext\n
-    Documentation for extension points for library's components. This documentation is useful
-    for people wanting to extend **Boost.SIMD** to work with their own types.
-
-  - @ref group-hierarchy\n
-    Documentation for the predefined type hierarchy used by the library.
-
-  - @ref group-detail\n
-    Documentation of library implementation details. This section is useful
-    for those wishing to understand the library internals and those wishing
-    to contribute to the development of **Boost.SIMD**.
-
 
 ----------------------------------------------------------------------------------------------------
 
