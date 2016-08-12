@@ -20,26 +20,19 @@
 #include <boost/simd/detail/constant/log_2lo.hpp>
 #include <boost/simd/detail/constant/maxexponent.hpp>
 #include <boost/simd/constant/nbmantissabits.hpp>
-#include <boost/simd/constant/six.hpp>
-#include <boost/simd/constant/three.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/divides.hpp>
-#include <boost/simd/function/expm1.hpp>
 #include <boost/simd/function/ldexp.hpp>
 #include <boost/simd/function/fms.hpp>
 #include <boost/simd/function/fnms.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/is_less.hpp>
-#include <boost/simd/function/minus.hpp>
-#include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/oneminus.hpp>
 #include <boost/simd/function/inc.hpp>
-#include <boost/simd/function/plus.hpp>
 #include <boost/simd/function/nearbyint.hpp>
 #include <boost/simd/function/shift_left.hpp>
 #include <boost/simd/function/sqr.hpp>
 #include <boost/simd/function/toint.hpp>
-#include <boost/simd/function/unary_minus.hpp>
 #include <boost/simd/function/horn.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
@@ -51,7 +44,7 @@ namespace boost { namespace simd
     namespace bd =  boost::dispatch;
     namespace bs =  boost::simd;
 
-    template < typename A0, typename sA0 = bd::scalar_of_t<A0> >
+    template < typename A0, typename sA0>
     struct expm1_kernel;
 
     template < typename A0 >
@@ -67,13 +60,13 @@ namespace boost { namespace simd
         x =  fnms(k, Log_2lo<A0>(), x);
         A0 hx  = x*Half<A0>();
         A0 hxs = x*hx;
-        A0 r1 = horn<s_t,
+        A0 r1 = horn<A0,
                      0X3F800000UL,// 1
                      0XBD08887FUL, // -3.3333298E-02
                      0X3ACF6DB4UL  // 1.5825541E-03
                      > (hxs);
-        A0 t  = fnms(r1, hx, Three<A0>());
-        A0 e  = hxs*((r1-t)/(Six<A0>() - x*t));
+        A0 t  = fnms(r1, hx, A0(3));
+        A0 e  = hxs*((r1-t)/(A0(6) - x*t));
         e  = fms(x, e, hxs);
         i_t ik =  toint(k);
         A0 two2mk = bitwise_cast<A0>(shift_left(Maxexponent<A0>()-ik,Nbmantissabits<s_t>()));
@@ -95,7 +88,7 @@ namespace boost { namespace simd
         A0 lo = k*Log_2lo<A0>();
         A0 x  = hi-lo;
         A0 hxs = sqr(x)*Half<A0>();
-        A0 r1 = horn<s_t,
+        A0 r1 = horn<A0,
                      0X3FF0000000000000ULL,
                      0XBFA11111111110F4ULL,
                      0X3F5A01A019FE5585ULL,
@@ -103,15 +96,15 @@ namespace boost { namespace simd
                      0X3ED0CFCA86E65239ULL,
                      0XBE8AFDB76E09C32DULL
                      > (hxs);
-        A0 t  = Three<A0>()-r1*Half<A0>()*x;
-        A0 e  = hxs*((r1-t)/(Six<A0>() - x*t));
+        A0 t  = A0(3)-r1*Half<A0>()*x;
+        A0 e  = hxs*((r1-t)/(A0(6) - x*t));
         A0 c = (hi-x)-lo;
         e  = (x*(e-c)-c)-hxs;
         i_t ik =  toint(k);
         A0 two2mk = bitwise_cast<A0>(shift_left(Maxexponent<A0>()-ik,Nbmantissabits<s_t>()));
         A0 ct1= oneminus(two2mk)-(e-x);
         A0 ct2= inc((x-(e+two2mk)));
-        A0 y = if_else((k < Ratio<A0, 20>()),ct1,ct2);
+        A0 y = if_else((k < A0(20)),ct1,ct2);
         return fast_(ldexp)(y, ik);
       }
     };
