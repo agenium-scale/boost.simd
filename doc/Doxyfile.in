@@ -654,14 +654,14 @@ MAX_INITIALIZER_LINES  = 30
 # list will mention the files that were used to generate the documentation.
 # The default value is: YES.
 
-SHOW_USED_FILES        = YES
+SHOW_USED_FILES        = NO
 
 # Set the SHOW_FILES tag to NO to disable the generation of the Files page. This
 # will remove the Files entry from the Quick Index and from the Folder Tree View
 # (if specified).
 # The default value is: YES.
 
-SHOW_FILES             = YES
+SHOW_FILES             = NO
 
 # Set the SHOW_NAMESPACES tag to NO to disable the generation of the Namespaces
 # page. This will remove the Namespaces entry from the Quick Index and from the
@@ -858,6 +858,8 @@ RECURSIVE              = YES
 
 EXCLUDE                = @Boost.SIMD_SOURCE_DIR@/include/boost/simd/detail
 EXCLUDE               += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/arch
+EXCLUDE               += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/constant/definition
+EXCLUDE               += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/function/definition
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded
 # from the input.

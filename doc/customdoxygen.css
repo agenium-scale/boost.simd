@@ -993,6 +993,7 @@ div.summary
 	padding-right: 5px;
 	width: 50%;
 	text-align: right;
+	display: none;
 }       
 
 div.summary a
@@ -1455,4 +1456,34 @@ tr.heading h2 {
   font-size: 200%;
   text-justify: left;
   vertical-align: bottom;
+}
+
+tbody{
+  text-align: left;
+}
+
+.qindex{
+  margin-left: 10px; 
+}
+
+.qindexHL{
+  margin-left: 10px; 
+  margin-right: 10px; 
+}
+
+#MSearchResults {
+  width: 100% !important;
+}
+
+#search-close {
+  position: absolute;
+  z-index: 999;
+  right: 0;
+  height: 100%;
+  margin-right: 10px;
+}
+
+#search-box {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }

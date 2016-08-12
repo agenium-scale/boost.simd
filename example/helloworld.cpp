@@ -34,6 +34,16 @@ int main()
   pack_t elevens(11);
   //! [hello-splat-explicit]
 
+  //! [hello-ptr-con]
+  std::vector<float> values {10, 11, 12, 13, 14, 15, 16, 17};
+  pack_t ptr_pack(values.data());
+  //! [hello-ptr-con]
+
+  //! [hello-iter-con]
+  std::list<float> values {10, 11, 12, 13, 14, 15, 16, 17};
+  pack_t ptr_pack(values.begin(), values.end());
+  //! [hello-iter-con]
+
   //! [hello-ops]
   res = (tens + elevens) * 2.f;
   //! [hello-ops]
