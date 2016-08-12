@@ -32,6 +32,19 @@ namespace boost { namespace simd { namespace ext
       return indeg(acos(a0));
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( acosd_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bs::accurate_tag
+                          , bd::generic_< bd::floating_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() (const accurate_tag &,  A0 const& a0) const BOOST_NOEXCEPT
+    {
+      return indeg(bs::accurate_(acos)(a0));
+    }
+  };
 } } }
 
 

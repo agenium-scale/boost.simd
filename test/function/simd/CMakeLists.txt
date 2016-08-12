@@ -26,7 +26,9 @@ abs_s.cpp
 acos.cpp
 acos.accurate.cpp
 acosd.cpp
+acosd.accurate.cpp
 acospi.cpp
+acospi.accurate.cpp
 acot.cpp
 acotd.cpp
 acotpi.cpp

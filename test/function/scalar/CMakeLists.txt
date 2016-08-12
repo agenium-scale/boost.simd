@@ -304,9 +304,11 @@ set ( SOURCES
    tanh.cpp
 #trigonometric
    acosd.cpp
+   acosd.accurate.cpp
    acos.cpp
    acos.accurate.cpp
    acospi.cpp
+   acospi.accurate.cpp
    acotd.cpp
    acot.cpp
    acscd.cpp
