@@ -92,8 +92,8 @@ $( document ).ready(function() {
 		if(getOriginalWidthOfImg($(this)[0]) > $('#content>div.container').width())
 			$(this).css('width', '100%');
 	});
-	
-  
+
+
   /* responsive search box */
   $('#MSearchBox').parent().remove();
 
@@ -282,21 +282,37 @@ $( document ).ready(function() {
 	e.parent().addClass('current active');
       }
     }
-    if(page.indexOf('group') != -1){ 
-      for(var i=0;i<elts.length;++i){ 
-        var e = $(elts[i]);console.log(e.attr('href')); 
-        if(e.attr('href').indexOf('modules') != -1){ 
-          e.parent().addClass('current active') 
-        } 
-      } 
+    if(page.indexOf('group') != -1){
+      for(var i=0;i<elts.length;++i){
+        var e = $(elts[i]);console.log(e.attr('href'));
+        if(e.attr('href').indexOf('modules') != -1){
+          e.parent().addClass('current active')
+        }
+      }
     }
-    if(page.indexOf('tutorial') != -1){ 
-      for(var i=0;i<elts.length;++i){ 
-        var e = $(elts[i]);console.log(e.attr('href')); 
-        if(e.attr('href').indexOf('tutorial') != -1){ 
-          e.parent().addClass('current active') 
-        } 
-      } 
+    if(page.indexOf('class') != -1){
+      for(var i=0;i<elts.length;++i){
+        var e = $(elts[i]);console.log(e.attr('href'));
+        if(e.attr('href').indexOf('modules') != -1){
+          e.parent().addClass('current active')
+        }
+      }
+    }
+    if(page.indexOf('namespace') != -1){
+      for(var i=0;i<elts.length;++i){
+        var e = $(elts[i]);console.log(e.attr('href'));
+        if(e.attr('href').indexOf('modules') != -1){
+          e.parent().addClass('current active')
+        }
+      }
+    }
+    if(page.indexOf('tutorial') != -1){
+      for(var i=0;i<elts.length;++i){
+        var e = $(elts[i]);console.log(e.attr('href'));
+        if(e.attr('href').indexOf('tutorial') != -1){
+          e.parent().addClass('current active')
+        }
+      }
     }
     $('#search-close.close').click(function() { searchBox.CloseResultsWindow(); })
     searchBox.CloseResultsWindow();
