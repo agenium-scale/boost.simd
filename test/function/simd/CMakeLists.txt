@@ -112,6 +112,8 @@ divnearbyint.cpp
 divtrunc.cpp
 divides.cpp
 divides_s.cpp
+erf.cpp
+erfc.cpp
 exp.cpp
 exp2.cpp
 expm1.cpp
