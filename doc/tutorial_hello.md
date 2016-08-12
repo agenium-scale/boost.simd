@@ -1,3 +1,4 @@
+@anchor topofpage_hello
 # A Simple SIMD Kernel {#tutorial-hello}
 
 - [SIMD HelloWorld](@ref tutorial-hello)
@@ -14,7 +15,7 @@ This small code sample presents the basic building blocks of **Boost.SIMD**, whi
 
 ### The Boost.SIMD namespace ###
 
-When using a **Boost.SIMD** type or function, it is necessary to use the boost::simd namespace. In order to simplify the code, you can assign it an alias:
+When using a **Boost.SIMD** type or function, it is necessary to use the boost::simd namespace. In order to simplify the code, you may assign an alias to it:
 
 @snippet helloworld.cpp hello-namespace
 
@@ -44,7 +45,15 @@ You may also perform the splat explicitly if you wish
 
 You may also construct a pack by passing a pointer to a block of contiguous, aligned memory.
 
-@snippet helloworld.cpp hello-ptr-con
+@snippet helloworld.cpp hello-ptr-iota
+
+When constructing a pack in this manner, you must ensure that there is sufficient data in the block
+of memory to fill the pack. For example, on an AVX enabled machine, a __SIMD__ vector of `float32`
+contains `8` elements, or has a __cardinal__ of `8`. Therefore, there must be at least `8` elements
+in the block of memory pointed to by this pointer. This same code compiled for the Intel KNL, would
+require that the block of memory contain `16` elements, otherwise there would be undefined behaviour
+at runtime. When writing vectorized code, care should be taken to write the code in as generic a manner
+as possible to ensure portability across architectures.
 
 You may also construct a pack by passing a range of elements, however the length of this 
 range must be equal to the cardinal of the pack.
@@ -53,54 +62,66 @@ range must be equal to the cardinal of the pack.
 
 Finally, you can also initializes every element of the boost::simd::pack itself by enumerating them.
 
-@snippet helloworld.cpp hello-enum-ctor
+@snippet helloworld.cpp hello-enum-con
 
-Note that this constructor makes the strong assumption that the size of your boost::simd::pack is correct. Unless required, it's generally a good idea to try to avoid depending on a fixed size for boost::simd::pack unless
-the algorithm requires it. The splat function is recommended over this usage wherenever possible.
+Note that this constructor makes the strong assumption that the size of your boost::simd::pack is correct. 
+Unless required, it is generally good practive to avoid depending on a fixed size for boost::simd::pack
+unless the algorithm specifically requires it. The use of another constructor is strongly recommended
+over this one.
 
-**Operations on boost::simd::pack**
+###Operations on boost::simd::pack
 
-----------------------------------------------------------------------------------------------------
-
-Once initialized, operations on boost::simd::pack instances are similar to operations on scalar as all operators and standard library math functions are provided. A simple pattern make those functions and operators available: if you need to use an arbitrary function or operator like boost::simd::plus, you need to include the boost/simd/function/plus.hpp file. We do the same for boost::simd::splat and boost::simd::multiplies.
+Once initialized, operations on boost::simd::pack instances are similar to scalar operations as all 
+operators and standard library math functions are provided. In order to access all of these functions
+and operators, such as boost::simd::plus, you must include the boost/simd/function/plus.hpp header file.
 
 @snippet helloworld.cpp hello-ops
 
-Note that type checking is stricter than one may expect when scalar and _SIMD_ values are mixed. **Boost.SIMD** only allows mixing types of the same scalar kind, i.e reals with reals or integers with integers. Here, we have to multiply by `2.f` and not simply `2`.
-
-Finally, we display the boost::simd::pack content by using the `operator<<` overload provided by the boost/simd/io.hpp header file.
+Finally, we display the contents of a boost::simd::pack by using the `operator<<` overload provided.
 
 @snippet helloworld.cpp hello-io
 
 
-</br>
-**Compiling the code**
+###Compiling the code
 
-The compilation of the code is rather straight-forward: just pass the path to **Boost.SIMD** and use your compiler options to activate the desired _SIMD_ extension support - in this case the sse2 extension triggered by `-msse2`. Due to the way **Boost.SIMD** is structured, it is highly recommended to use the `-O3` flag to take full advantage of compiler optimizations.
+The compilation of using **Boost.SIMD** is rather straight-forward: you must pass the path of of the
+**Boost.SIMD** include folder to your compiler as well as the path of your installation of **Boost**.
+It is strongly recommended that you enable all of your compiler optimizations, for example, `-O3` for
+g++, to enable the full performance of **Boost.SIMD**. You should also pass the required compiler flag
+for your target architecture to enable the __SIMD__ extensions, especially if you are cross-compiling.
+The exhaustive list of all compiler flags for all supported compilers is provided in the the @ref QuickStart
+guide.
 
 For example, on `gcc`:
 
-`g++ my_code.cpp -O3 -o my_code -I/path/to/boost.simd/ -msse2`
+`g++ my_code.cpp -O3 -o my_code -I/path/to/boost.simd/ -mavx`
 
-Some compilers, like Microsoft Visual Studio, don't propagate the fact a given architecture specific option is triggered. In this case, you need to also defines an architecture specific preprocessor symbol.
+Some compilers, such as Microsoft Visual Studio, do not propagate the fact a given architecture specific
+option is triggered. In this case, you must also define an architecture specific preprocessor symbol.
 
-## The result
+The following command is used to compile a **Boost.SIMD** program with Visual Studio:
 
-We can then have a look at the program's output which should look like:
+`g++ my_code.cpp -O3 -o my_code -I/path/to/boost.simd/ -mavx`
+
+You may also define the above flags in the Visual Studio GUI.
+
+###The result
+
+When the above program is compiled, this output should be seen:
 
 `{42,42,42,42}`
 
-Now, let's have a look at the generated assembly code (using `objdump` for example) :
+Let's take a look at the generated assembly code (using `objdump` for example) :
 
 @code{.objdump}
-movaps 0x300(%rip),%xmm0
 addps  0x2e6(%rip),%xmm0
 mulps  0x2ff(%rip),%xmm0
 movaps %xmm0,(%rsp)
 @endcode
 
-This shows that we correctly emitted `*ps` instructions. Note how the abstractions introduced by boost::simd::pack don't incur any penalty.
+This shows that *Boost.SIMD** performed as expected: the code has been vectorised!
+This may be seen by the emitted `*ps` instructions. Note how the abstractions introduced 
+by boost::simd::pack are completely free, they do not incur ant runtime penalty. The generated
+assembly is identical to that generated by handwritten __SIMD__ instructions!
 
-[Top of Page](#topofpage)
-
-
+[Top of Page](#topofpage_hello)

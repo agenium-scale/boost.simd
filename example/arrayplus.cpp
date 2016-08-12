@@ -1,66 +1,89 @@
 #include <iostream>
+#include <cstdlib>
+#include <vector>
+#include <numeric>
 
 //! [sum]
 #include <boost/simd/pack.hpp>
+#include <boost/simd/meta/cardinal_of.hpp>
+
 //! [sum-include]
 #include <boost/simd/function/load.hpp>
 #include <boost/simd/function/store.hpp>
+#include <boost/simd/function/minus.hpp>
 //! [sum-include]
 
-#define size 256
-
-int main(void) {
+int main(int argc, char **argv) {
+  if(argc < 2){
+    std::cerr << " incorrect number of arguments: " << argv[0] << " <scalar> " << std::endl;
+  }
   namespace bs = boost::simd;
+  int size = 128;
   using ipack_t = bs::pack<int>;
+  //! [sum-cardinal]
   size_t ipack_card = bs::cardinal_of<ipack_t>();
+  //! [sum-cardinal]
 
-  int *array = new int[size];
-  int *out   = new int[size];
+  int scalar = std::atoi(argv[1]);
+  std::vector<int> array(size);
+  std::vector<int> out(size);
 
   // Initialize input array
-  for ( size_t i = 0 ; i < size ; ++i )
-    array[i] = i;
+  std::iota(array.begin(), array.end(), 0);
 
-//! [sum-scalar]
+  //! [sum-scalar]
   // Scalar version
-  for ( size_t i = 0 ; i < size ; ++i )
-    out[i] = array[i] - 128;
-//! [sum-scalar]
+  for ( size_t i = 0 ; i < size ; ++i ){
+    out[i] = array[i] - scalar;
+  }
+  //! [sum-scalar]
 
-//! [sum-load]
+  {
+  //! [sum-pointer]
+  // Using pointer construction
+  ipack_t one28{scalar};
+  for ( size_t i = 0 ; i < size ; i += ipack_card ) {
+    ipack_t p_arr(array.data() + i);
+    p_out = p_arr - one28;
+    bs::store(p_out , out.data() + i);
+  }
+  //! [sum-pointer]
+  }
+  
+  {
+  //! [sum-load]
   // Using explicit load/store
   ipack_t p_out;
   ipack_t p_arr;
-  ipack_t one28{128};
+  ipack_t one28{scalar};
   for ( size_t i = 0 ; i < size ; i += ipack_card ) {
-    p_out = bs::load<ipack_t>(out   + i);
-    p_arr = bs::load<ipack_t>(array + i);
+    p_arr = bs::load<ipack_t>(array.data() + i);
     p_out = p_arr - one28;
-    bs::store(p_out , out + i);
+    bs::store(p_out , out.data() + i);
   }
-//! [sum-load]
+  //! [sum-load]
+  }
 
-//! [sum-pointer]
-  // Using pointer construction
-  for ( size_t i = 0 ; i < size ; i += ipack_card ) {
-    ipack_t p_out(out   + i);
-    ipack_t p_arr(array + i);
+  {
+  //! [sum-remainder]
+  // Using explicit load/store
+  //set size to an arbitrary value
+  size = 133;
+  ipack_t p_out;
+  ipack_t p_arr;
+  ipack_t one28{scalar};
+  size_t i = 0;
+  for (; i + ipack_card <= size ; i += ipack_card ) {
+    p_arr = bs::load<ipack_t>(array.data() + i);
     p_out = p_arr - one28;
-    bs::store(p_out , out + i);
+    bs::store(p_out , out.data() + i);
   }
-//! [sum-pointer]
 
-//! [sum-packs]
-  // Using large packs
-  bs::pack<int,size> full_arr;
-  bs::pack<int,size> full_out;
-  bs::pack<int,size> full_128{128};
-
-  full_arr = bs::load<bs::pack<int,size>>(array);
-  full_out = full_arr - full_128;
-  bs::store(full_out , out);
-//! [sum-packs]
-
+  for (; i < size ; ++i){
+    out[i] = array[i] - scalar;
+  }
+  //! [sum-remainder]
+  }
   return 0;
 }
 //! [sum]
