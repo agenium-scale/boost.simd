@@ -9,131 +9,72 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SHUFFLE_REPEAT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SHUFFLE_REPEAT_HPP_INCLUDED
 
-#include <boost/simd/detail/overload.hpp>
-#include <boost/simd/arch/common/simd/function/shuffle/pattern/repeat.hpp>
 #include <boost/simd/function/repeat_lower_half.hpp>
 #include <boost/simd/function/repeat_upper_half.hpp>
+#include <boost/simd/detail/overload.hpp>
+#include <boost/simd/detail/shuffle.hpp>
+#include <boost/simd/detail/brigand.hpp>
 
-namespace boost { namespace simd { namespace ext
+namespace boost { namespace simd
 {
-  // -----------------------------------------------------------------------------------------------
-  // Unary repeat_lower cases
-  BOOST_DISPATCH_OVERLOAD ( shuffle_
-                          , (typename Ps, typename A0, typename X)
-                          , bd::cpu_
-                          , repeat_pattern<0,0,Ps>
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          )
+  namespace detail
   {
-    static_assert ( Ps::static_size == std::size_t(A0::static_size)
-                  , "boost::simd::shuffle - Invalid number of permutation indices"
-                  );
+    // ---------------------------------------------------------------------------------------------
+    // Is this a half-repeat pattern ?
+    template<int P0, int... Ps>
+    struct  is_repeat
+          : std::is_same< brigand::integral_list<int,P0,Ps...>
+                        , brigand::append < brigand::range<int,P0,P0+(sizeof...(Ps)+1)/2>
+                                          , brigand::range<int,P0,P0+(sizeof...(Ps)+1)/2>
+                                          >
+                        >
+    {};
 
-    BOOST_FORCEINLINE
-    A0 operator()(Ps const&, A0 const& a0) const BOOST_NOEXCEPT
-    {
-      return repeat_lower_half(a0);
-    }
+    // -1 disqualifies already
+    template<int P1, int... Ps> struct  is_repeat<-1,P1,Ps...> : std::false_type {};
+
+    // Don' overlap with other hierarchies
+    template<int P0>          struct is_repeat<P0>    : std::false_type {};
+    template<int P0, int P1>  struct is_repeat<P0,P1> : std::false_type {};
+    template<int P1>          struct is_repeat<-1,P1> : std::false_type {};
+  }
+
+  // -----------------------------------------------------------------------------------------------
+  // Repeat patterns hierarchy
+  template<bool Upper, typename P> struct repeat_ : P
+  {
+    using parent = P;
   };
 
   // -----------------------------------------------------------------------------------------------
-  // Unary repeat_upper macro
-  BOOST_DISPATCH_OVERLOAD ( shuffle_
-                          , (typename Ps, typename A0, typename X)
-                          , bd::cpu_
-                          , repeat_pattern<0,1,Ps>
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          )
+  // Repeat matcher
+  struct repeat_shuffle
   {
-    static_assert ( Ps::static_size == std::size_t(A0::static_size)
-                  , "boost::simd::shuffle - Invalid number of permutation indices"
-                  );
+    template<typename T, typename P>
+    static BOOST_FORCEINLINE T process(T const& a0, repeat_<false,P> const&)
+    {
+      return repeat_lower_half(a0);
+    }
 
-    BOOST_FORCEINLINE
-    A0 operator()(Ps const&, A0 const& a0) const BOOST_NOEXCEPT
+    template<typename T, typename P>
+    static BOOST_FORCEINLINE T process(T const& a0, repeat_<true,P> const&)
     {
       return repeat_upper_half(a0);
     }
   };
+} }
 
-  // -----------------------------------------------------------------------------------------------
-  // Binary repeat_lower cases
-  BOOST_DISPATCH_OVERLOAD ( shuffle_
-                          , (typename Ps, typename A0, typename X)
-                          , bd::cpu_
-                          , repeat_pattern<0,0,Ps>
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          )
+// -------------------------------------------------------------------------------------------------
+// Hierarchize repeat patterns
+namespace boost { namespace dispatch { namespace ext
+{
+  // repeat half patterns
+  template<int P0, int... Ps,typename Origin>
+  struct pattern_hierarchy< boost::simd::detail::pattern_<P0,Ps...>,Origin
+                          , typename std::enable_if<simd::detail::is_repeat<P0,Ps...>::value>::type
+                          >
   {
-    static_assert ( Ps::static_size == std::size_t(A0::static_size)
-                  , "boost::simd::shuffle - Invalid number of permutation indices"
-                  );
-
-    BOOST_FORCEINLINE
-    A0 operator()(Ps const&, A0 const& a0, A0 const&) const BOOST_NOEXCEPT
-    {
-      return repeat_lower_half(a0);
-    }
-  };
-
-  BOOST_DISPATCH_OVERLOAD ( shuffle_
-                          , (typename Ps, typename A0, typename X)
-                          , bd::cpu_
-                          , repeat_pattern<1,0,Ps>
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          )
-  {
-    static_assert ( Ps::static_size == std::size_t(A0::static_size)
-                  , "boost::simd::shuffle - Invalid number of permutation indices"
-                  );
-
-    BOOST_FORCEINLINE
-    A0 operator()(Ps const&, A0 const&, A0 const& a1) const BOOST_NOEXCEPT
-    {
-      return repeat_lower_half(a1);
-    }
-  };
-
-  // -----------------------------------------------------------------------------------------------
-  // Binary repeat_upper cases
-  BOOST_DISPATCH_OVERLOAD ( shuffle_
-                          , (typename Ps, typename A0, typename X)
-                          , bd::cpu_
-                          , repeat_pattern<0,1,Ps>
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          )
-  {
-    static_assert ( Ps::static_size == std::size_t(A0::static_size)
-                  , "boost::simd::shuffle - Invalid number of permutation indices"
-                  );
-
-    BOOST_FORCEINLINE
-    A0 operator()(Ps const&, A0 const& a0, A0 const&) const BOOST_NOEXCEPT
-    {
-      return repeat_upper_half(a0);
-    }
-  };
-
-  BOOST_DISPATCH_OVERLOAD ( shuffle_
-                          , (typename Ps, typename A0, typename X)
-                          , bd::cpu_
-                          , repeat_pattern<1,1,Ps>
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          )
-  {
-    static_assert ( Ps::static_size == std::size_t(A0::static_size)
-                  , "boost::simd::shuffle - Invalid number of permutation indices"
-                  );
-
-    BOOST_FORCEINLINE
-    A0 operator()(Ps const&, A0 const&, A0 const& a1) const BOOST_NOEXCEPT
-    {
-      return repeat_upper_half(a1);
-    }
+    using type = boost::simd::repeat_<P0 != 0, boost::simd::detail::pattern_<P0,Ps...> >;
   };
 } } }
 

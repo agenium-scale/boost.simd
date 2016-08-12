@@ -7,13 +7,23 @@
 ##===================================================================================================
 
 set ( SOURCES
-  cardinal_1.cpp
-  cardinal_2.cpp
+  cardinal.1.cpp
+  cardinal.2.unary.cpp
+  cardinal.2.binary.cpp
+  cardinal.4.avx.shuffle.cpp
+  cardinal.8.avx.shuffle.cpp
+  cardinal.4.avx.blend.cpp
+  cardinal.8.avx.blend.unary.cpp
+  cardinal.4.avx.perm2.cpp
   broadcast.binary.cpp
   broadcast.unary.cpp
   deinterleave.full.cpp
   deinterleave.front.cpp
   deinterleave.back.cpp
+  interleave.even.cpp
+  interleave.first.cpp
+  interleave.odd.cpp
+  interleave.second.cpp
   identity.cpp
   repeat.cpp
   reverse.cpp

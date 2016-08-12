@@ -6,6 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
+#include <boost/simd/function/slide.hpp>
 #include <boost/simd/function/shuffle.hpp>
 #include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/constant/valmax.hpp>

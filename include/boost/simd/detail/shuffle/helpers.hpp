@@ -6,35 +6,12 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_DETAIL_PERMUTATION_HPP_INCLUDED
-#define BOOST_SIMD_DETAIL_PERMUTATION_HPP_INCLUDED
+#ifndef BOOST_SIMD_DETAIL_SHUFFLE_HELPERS__HPP_INCLUDED
+#define BOOST_SIMD_DETAIL_SHUFFLE_HELPERS__HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
+#include <boost/simd/forward.hpp>
 #include <boost/simd/detail/brigand.hpp>
-#include <boost/simd/detail/shuffle.hpp>
-
-// This macro helps making specific cases of shuffle
-// CODE is the actual code
-// ... contains the pattern descriptor
-#define BOOST_SIMD_GENERIC_PATTERN(CODE,...)                                                        \
-{                                                                                                   \
-  BOOST_FORCEINLINE A0                                                                              \
-  operator()(bsd::pattern_<__VA_ARGS__> const&, const A0 & a0) const BOOST_NOEXCEPT                 \
-  {                                                                                                 \
-    return CODE;                                                                                    \
-  }                                                                                                 \
-}                                                                                                   \
-/**/
-
-#define BOOST_SIMD_GENERIC_BINARY_PATTERN(CODE,...)                                                 \
-{                                                                                                   \
-  BOOST_FORCEINLINE A0                                                                              \
-  operator()(bsd::pattern_<__VA_ARGS__> const&, const A0 & a0, const A0 & a1) const BOOST_NOEXCEPT  \
-  {                                                                                                 \
-    return CODE;                                                                                    \
-  }                                                                                                 \
-}                                                                                                   \
-/**/
 
 namespace boost { namespace simd { namespace detail
 {
@@ -49,54 +26,63 @@ namespace boost { namespace simd { namespace detail
   {};
 
   // -----------------------------------------------------------------------------------------------
-  // Checks if a binary shuffle is actually unary
-  template<int... Ps> struct which_side
-  {
-    using card = std::integral_constant<int,sizeof...(Ps)>;
-
-    using all_a0 = brigand::all < brigand::integral_list<int,Ps...>
-                                , brigand::less<brigand::_1,card>
-                                >;
-
-    using all_a1 = brigand::all < brigand::integral_list<int,Ps...>
-                                , brigand::or_<brigand::greater_equal<brigand::_1,card>
-                                              ,brigand::equal_to< brigand::_1
-                                                                , std::integral_constant<int,-1>
-                                                                >
-                                              >
-                                >;
-
-    using type = std::integral_constant<int, all_a0::value * 0x01 + all_a1::value * 0x02>;
-  };
-
-  // -----------------------------------------------------------------------------------------------
-  // Side markups
-  using a0_side     = std::integral_constant<int, 1>;
-  using a1_side     = std::integral_constant<int, 2>;
-  using mixed_side  = std::integral_constant<int, 0>;
-
-  // -----------------------------------------------------------------------------------------------
   // Return a mask depending on a given pattern
-  template<typename T, int P>
-  struct  zeroing_mask
-        : std::integral_constant<T, (P==-1) ? T(0) : ~(T(0))>
+  template<typename T, int P> struct zeroing_mask: std::integral_constant<T,P==-1 ? T(0) : ~(T(0))>
   {};
 
   // -----------------------------------------------------------------------------------------------
-  // Computes a byte pattern from index pattern
-  template<int Bits, int I, typename Ps> struct val
+  // Find if a permutation is all on a0 or a1
+  template<typename Perm> struct side;
+
+  template<int... Is>
+  struct side<pattern_<Is...>>
+  {
+    using idx_a0 = brigand::integral_list<bool,  (Is <  int(sizeof...(Is)))...              >;
+    using idx_a1 = brigand::integral_list<bool, ((Is >= int(sizeof...(Is))) || (Is==-1))... >;
+
+    using type = std::integral_constant < int
+                                        , 0x01*brigand::all<idx_a0>::value
+                                        + 0x02*brigand::all<idx_a1>::value
+                                        >;
+  };
+
+  template<typename Perm> using side_t = typename side<Perm>::type;
+
+  using a0_side   = std::integral_constant<int, 0x01>;
+  using a1_side   = std::integral_constant<int, 0x02>;
+  using zero_side = std::integral_constant<int, 0x03>;
+  using both_side = std::integral_constant<int, 0x00>;
+
+  // -----------------------------------------------------------------------------------------------
+  // Slide a permutation by an offset
+  template<int I, int Offset>
+  struct remap : std::integral_constant<int,I==-1 ? -1 : I+Offset>
+  {};
+
+  // -----------------------------------------------------------------------------------------------
+  // Computes a byte pattern from index pattern (optional fix value for zero-ing)
+  template<int Bits, int I, typename Ps, std::uint8_t Fix = 0xFF> struct val
   {
     using P    = brigand::at_c<Ps,I/Bits>;
     using type = std::integral_constant < std::uint8_t
-                                        , P::value == -1 ? 0xFF : (P::value*Bits + (I%Bits))
+                                        , P::value == -1 ? Fix : (P::value*Bits + (I%Bits))
                                         >;
   };
 
   template<int SZ, typename... N, typename Ps>
   BOOST_FORCEINLINE
-  pack<std::uint8_t,sizeof...(N)> mask_all( brigand::list<N...> const&, Ps const& )
+  pack<std::uint8_t,sizeof...(N)>
+  mask_all(brigand::list<N...> const&, Ps const&)
   {
     return pack<std::uint8_t,sizeof...(N)>( val<SZ,N::value,Ps>::type::value... );
+  }
+
+  template<std::uint8_t Fix, int SZ, typename... N, typename Ps>
+  BOOST_FORCEINLINE
+  pack<std::uint8_t,sizeof...(N)>
+  mask_all(brigand::list<N...> const&, Ps const&)
+  {
+    return pack<std::uint8_t,sizeof...(N)>( val<SZ,N::value,Ps,Fix>::type::value... );
   }
 
   // -----------------------------------------------------------------------------------------------

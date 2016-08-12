@@ -6,7 +6,6 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-
 #ifndef BOOST_SIMD_FUNCTION_SIMD_SHUFFLE_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_SIMD_SHUFFLE_HPP_INCLUDED
 
@@ -24,7 +23,7 @@
 #    include <boost/simd/arch/x86/ssse3/simd/function/shuffle.hpp>
 #  endif
 #  if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_AVX_VERSION
-// #    include <boost/simd/arch/x86/avx/simd/function/shuffle.hpp>
+#    include <boost/simd/arch/x86/avx/simd/function/shuffle.hpp>
 #  endif
 #endif
 

@@ -10,69 +10,55 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SHUFFLE_IDENTITY_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/arch/common/simd/function/shuffle/pattern/identity.hpp>
-#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/shuffle.hpp>
 
-namespace boost { namespace simd { namespace ext
+namespace boost { namespace simd
+{
+  namespace detail
+  {
+    // ---------------------------------------------------------------------------------------------
+    // Check if pattern is [0 1 ... C-1]
+    template<int... Ps>
+    struct  is_identity
+          : brigand::all< brigand::transform< brigand::range<int,0,sizeof...(Ps)>
+                                            , brigand::integral_list<int,Ps...>
+                                            , brigand::equal_to<brigand::_1,brigand::_2>
+                                            >
+                      >
+    {};
+  }
+
+  // -----------------------------------------------------------------------------------------------
+  // Identity pattern hierarchies
+  template<typename P> struct identity_ : P
+  {
+    using parent = P;
+  };
+
+  // -----------------------------------------------------------------------------------------------
+  // Identity matcher - do nothing but return its argument
+  struct identity_shuffle
+  {
+    template<typename T, typename P>
+    static BOOST_FORCEINLINE T process(T const& a0, boost::simd::identity_<P> const&)
+    {
+      return a0;
+    }
+  };
+} }
+
+namespace boost { namespace dispatch { namespace ext
 {
   // -----------------------------------------------------------------------------------------------
-  // Unary identity macro
-  BOOST_DISPATCH_OVERLOAD ( shuffle_
-                          , (typename Ps, typename A0, typename X)
-                          , bd::cpu_
-                          , bs::identity_pattern<0,Ps>
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          )
+  // Hierarchize identity patterns
+  template<int... Ps,typename Origin>
+  struct pattern_hierarchy< boost::simd::detail::pattern_<Ps...>,Origin
+                          , typename std::enable_if < simd::detail::is_identity<Ps...>::type::value
+                                                    >::type
+                          >
   {
-    static_assert ( Ps::static_size == std::size_t(A0::static_size)
-                  , "boost::simd::shuffle - Invalid number of permutation indices"
-                  );
-
-    BOOST_FORCEINLINE
-    A0 operator()(Ps const&, A0 const& a0) const BOOST_NOEXCEPT
-    {
-      return a0;
-    }
-  };
-
-   // -----------------------------------------------------------------------------------------------
-  // Binary common cases
-  BOOST_DISPATCH_OVERLOAD ( shuffle_
-                          , (typename Ps, typename A0, typename X)
-                          , bd::cpu_
-                          , bs::identity_pattern<0,Ps>
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          )
-  {
-    static_assert ( Ps::static_size == std::size_t(A0::static_size)
-                  , "boost::simd::shuffle - Invalid number of permutation indices"
-                  );
-
-    BOOST_FORCEINLINE
-    A0 operator()(Ps const&, A0 const& a0, A0 const&) const BOOST_NOEXCEPT
-    {
-      return a0;
-    }
-  };
-
-  BOOST_DISPATCH_OVERLOAD ( shuffle_
-                          , (typename Ps, typename A0, typename X)
-                          , bd::cpu_
-                          , bs::identity_pattern<1,Ps>
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          )
-  {
-    static_assert ( Ps::static_size == std::size_t(A0::static_size)
-                  , "boost::simd::shuffle - Invalid number of permutation indices"
-                  );
-
-    BOOST_FORCEINLINE
-    A0 operator()(Ps const&, A0 const& , A0 const& a1) const BOOST_NOEXCEPT
-    {
-      return a1;
-    }
+    using type = boost::simd::identity_<boost::simd::detail::pattern_<Ps...>>;
   };
 } } }
 

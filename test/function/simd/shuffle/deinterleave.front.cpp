@@ -7,6 +7,8 @@
 **/
 //==================================================================================================
 #include <boost/simd/function/shuffle.hpp>
+#include <boost/simd/function/deinterleave_first.hpp>
+#include <boost/simd/function/deinterleave_second.hpp>
 #include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/pack.hpp>
