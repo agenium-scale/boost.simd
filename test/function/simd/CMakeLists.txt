@@ -114,6 +114,7 @@ divides.cpp
 divides_s.cpp
 erf.cpp
 erfc.cpp
+erfcx.cpp
 exp.cpp
 exp2.cpp
 expm1.cpp

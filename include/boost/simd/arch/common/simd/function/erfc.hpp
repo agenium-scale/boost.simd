@@ -30,7 +30,7 @@
 #include <boost/simd/function/simd/sqr.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #ifndef BOOST_SIMD_NO_INFINITIES
-#include <boost/simd/function/constant/Inf.hpp>
+#include <boost/simd/constant/inf.hpp>
 #endif
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
@@ -76,11 +76,10 @@ namespace boost { namespace simd { namespace ext
       }
       A0 z =  ex*detail::erf_kernel<A0>::erfc3(x);
       r1 = bs::if_else(test2, r1, z);
-      #ifndef BOOST_SIMD_NO_INFINITIES
+#ifndef BOOST_SIMD_NO_INFINITIES
       r1 = if_zero_else( is_equal(x, Inf<A0>()), r1);
-      #endif
+#endif
       return  bs::if_else(test0, bs::Two<A0>()-r1, r1);
-      }
     }
   };
 
