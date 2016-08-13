@@ -38,6 +38,6 @@ STF_CASE_TPL (" acosd ",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(acosd(bs::Half<T>()), 60, 0.5);
   STF_ULP_EQUAL(acosd(bs::Mhalf<T>()), 120, 0.5);
   STF_ULP_EQUAL(acosd(bs::Mone<T>()), 180, 0);
-  STF_ULP_EQUAL(acosd(bs::One<T>()), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(acosd(bs::One<T>()), bs::Zero<r_t>(), 32);
   STF_ULP_EQUAL(acosd(bs::Zero<T>()), 90, 0);
 }

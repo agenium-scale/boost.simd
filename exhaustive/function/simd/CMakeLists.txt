@@ -8,6 +8,7 @@
 
 set(SOURCES
   acos.cpp
+  acos.accurate.cpp
   asin.cpp
   atan.cpp
   exp.cpp

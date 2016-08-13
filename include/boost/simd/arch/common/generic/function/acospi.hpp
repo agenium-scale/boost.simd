@@ -33,6 +33,18 @@ namespace boost { namespace simd { namespace ext
       return Invpi<A0>()*acos(a0);
     }
   };
+  BOOST_DISPATCH_OVERLOAD ( acospi_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bs::accurate_tag
+                          , bd::generic_< bd::floating_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() (const accurate_tag &,  A0 const& a0) const BOOST_NOEXCEPT
+    {
+      return Invpi<A0>()*bs::accurate_(acos)(a0);
+    }
+  };
 } } }
 
 

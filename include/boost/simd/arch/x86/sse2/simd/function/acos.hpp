@@ -1,7 +1,6 @@
 //==================================================================================================
 /*!
   @file
-
   @copyright 2015 NumScale SAS
   @copyright 2015 J.T. Lapreste
 
@@ -9,11 +8,11 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ACOSD_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ACOSD_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_ACOS_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_ACOS_HPP_INCLUDED
 
-#include <boost/simd/function/simd/acos.hpp>
-#include <boost/simd/function/simd/indeg.hpp>
+#include <boost/simd/function/accurate.hpp>
+#include <boost/simd/function/std.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
@@ -21,28 +20,18 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
-  BOOST_DISPATCH_OVERLOAD ( acosd_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bd::generic_< bd::floating_<A0> >
-                          )
-  {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
-    {
-      return indeg(acos(a0));
-    }
-  };
 
-  BOOST_DISPATCH_OVERLOAD ( acosd_
+   BOOST_DISPATCH_OVERLOAD ( acos_
                           , (typename A0)
-                          , bd::cpu_
+                          , bs::sse2_
                           , bs::accurate_tag
-                          , bd::generic_< bd::floating_<A0> >
+                          , bs::pack_< bd::double_<A0>, bs::sse_>
                           )
   {
+
     BOOST_FORCEINLINE A0 operator() (const accurate_tag &,  A0 const& a0) const BOOST_NOEXCEPT
     {
-      return indeg(bs::accurate_(acos)(a0));
+      return A0(bs::acos(a0[0]), bs::acos(a0[1]));
     }
   };
 } } }
