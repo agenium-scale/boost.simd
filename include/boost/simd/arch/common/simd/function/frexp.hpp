@@ -90,12 +90,13 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using i_t = bd::as_integer_t<A0, signed>;
+    using sA0 = bd::scalar_of_t<A0>;
     BOOST_FORCEINLINE std::pair<A0,i_t> operator() (const fast_tag &
                                                    , A0 const& a0 ) const BOOST_NOEXCEPT
     {
       i_t r1  = bitwise_cast<i_t>(bitwise_and(Mask1frexp<A0>(), a0));
       A0  x = bitwise_andnot(a0, Mask1frexp<A0>());
-      return {bitwise_or(x,Mask2frexp<A0>()), shr(r1,Nbmantissabits<A0>()) - Maxexponentm1<A0>()};
+      return {bitwise_or(x,Mask2frexp<A0>()), shr(r1,Nbmantissabits<sA0>()) - Maxexponentm1<A0>()};
     }
   };
 
