@@ -27,6 +27,7 @@
 #include <boost/simd/function/scalar/is_negative.hpp>
 #include <boost/simd/function/scalar/is_positive.hpp>
 #include <boost/simd/function/scalar/is_nan.hpp>
+#include <boost/simd/function/scalar/rec.hpp>
 #include <boost/simd/function/scalar/signnz.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
@@ -55,7 +56,8 @@ namespace boost { namespace simd { namespace ext
         a1 = copysign(One<A0>(), a1);
       }
       #endif
-      A0 z = detail::invtrig_base<A0,tag::radian_tag, tag::not_simd_type>::kernel_atan(a0/a1);
+      A0 q = bs::abs(a0/a1);
+      A0 z = detail::invtrig_base<A0,tag::radian_tag, tag::not_simd_type>::kernel_atan(q, rec(q));
       A0 sgn = signnz(a0);
       z = if_else(is_positive(a1), z, Pi<A0>()-z)*sgn;
       return if_else(is_eqz(a0), if_else_zero(is_negative(a1), Pi<A0>()*sgn), z);
@@ -84,7 +86,8 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
-      A0 z = detail::invtrig_base<A0,tag::radian_tag, tag::not_simd_type>::kernel_atan(a0/a1);
+      A0 q = bs::abs(a0/a1);
+      A0 z = detail::invtrig_base<A0,tag::radian_tag, tag::not_simd_type>::kernel_atan(q, bs::rec(q));
       return if_else(is_positive(a1), z, Pi<A0>()-z)*signnz(a0);
     }
   };

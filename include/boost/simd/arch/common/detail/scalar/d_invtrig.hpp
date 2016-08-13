@@ -16,6 +16,7 @@
 #include <boost/simd/function/horn1.hpp>
 #include <boost/simd/constant/constant.hpp>
 #include <boost/simd/constant/half.hpp>
+#include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/mhalf.hpp>
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
@@ -29,7 +30,6 @@
 #include <boost/simd/function/scalar/bitwise_xor.hpp>
 #include <boost/simd/function/scalar/fma.hpp>
 #include <boost/simd/function/scalar/is_eqz.hpp>
-#include <boost/simd/function/scalar/is_inf.hpp>
 #include <boost/simd/function/scalar/dec.hpp>
 #include <boost/simd/function/scalar/inc.hpp>
 #include <boost/simd/function/scalar/rec.hpp>
@@ -113,21 +113,26 @@ namespace boost { namespace simd
 
       static BOOST_FORCEINLINE A0 atan(A0 a0) BOOST_NOEXCEPT
       {
-        A0 x  = kernel_atan(a0);
-        return bitwise_xor(x, bitofsign(a0));
+        A0 x  = abs(a0);
+        return bitwise_xor(kernel_atan(x, rec(x)), bitofsign(a0));
       }
 
-      static BOOST_FORCEINLINE A0 kernel_atan(A0 a0) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE A0 acot(A0 a0) BOOST_NOEXCEPT
       {
-        if (is_eqz(a0)) return Zero<A0>();
-        if (is_inf(a0)) return Pio_2<A0>();
-        A0 x =  bs::abs(a0);
+        A0 x  = abs(a0);
+        return bitwise_xor(kernel_atan(rec(x), x), bitofsign(a0));
+      }
+
+      static BOOST_FORCEINLINE A0 kernel_atan(A0 x, A0 recx) BOOST_NOEXCEPT
+      {
+        if (is_eqz(x)) return Zero<A0>();
+        if (x == Inf<A0>()) return Pio_2<A0>();
         A0 y;
         A0 flag = (x > Tan_3pio_8<A0>());
         if (flag)
         {
           y =  Pio_2<A0>();
-          x =  -rec(x);
+          x =  -recx;
         }
         else if ((x <=  Constant<double,0x3fe51eb851eb851full>())) //0.66
         {
@@ -159,6 +164,8 @@ namespace boost { namespace simd
         z += flag * Pio_2lo<A0>();
         return y + z;
       }
+
+
     };
   }
 } }

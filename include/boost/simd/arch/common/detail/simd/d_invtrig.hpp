@@ -51,9 +51,7 @@ namespace boost { namespace simd
     {
       static BOOST_FORCEINLINE A0 asin(const A0& a0)
       {
-        A0 bsa0 = bs::bitofsign(a0);
-        A0 x = bs::bitwise_xor(a0, bsa0);
-//        A0 x = bs::abs(a0);
+        A0 x = bs::abs(a0);
         auto small_=  bs::is_less(x, bs::Sqrteps<A0>());
         const A0 ct1 = Constant<A0, 0x3fe4000000000000ll>();
         A0 zz1 = bs::oneminus(x);
@@ -97,7 +95,7 @@ namespace boost { namespace simd
                                                             x,
                                                             bs::if_else(x > ct1, zz1, zz2)
                                                           )
-                                              , bsa0//bs::bitofsign(a0)
+                                              , bs::bitofsign(a0)
                                               )
                               );
       }
@@ -115,18 +113,25 @@ namespace boost { namespace simd
 
       static BOOST_FORCEINLINE A0 atan(const A0& a0)
       {
-        const A0 x  = kernel_atan(a0);
+        A0 absa0 =  bs::abs(a0);
+        const A0 x  = kernel_atan(absa0, bs::rec(absa0));
         return bs::bitwise_xor(x, bs::bitofsign(a0));
       }
 
-      static BOOST_FORCEINLINE A0 kernel_atan(const A0& a0)
+      static BOOST_FORCEINLINE A0 acot(const A0& a0)
       {
-        const A0 x =  bs::abs(a0);
+        A0 absa0 =  bs::abs(a0);
+        const A0 x  = kernel_atan(bs::rec(absa0), absa0);
+        return bs::bitwise_xor(x, bs::bitofsign(a0));
+      }
+
+      static BOOST_FORCEINLINE A0 kernel_atan(const A0& x, const A0& recx)
+      {
         auto flag1 = bs::is_less(x,  Tan_3pio_8<A0>());
         auto flag2 = bs::logical_and(x >= Tanpio_8<A0>(), flag1);
         A0 yy = bs::if_zero_else(flag1, bs::Pio_2<A0>());
         yy = bs::if_else(flag2, bs::Pio_4<A0>(), yy);
-        A0 xx = bs::if_else(flag1, x, -bs::rec(x));
+        A0 xx = bs::if_else(flag1, x, -recx);
         xx = bs::if_else(flag2, bs::dec(x)/bs::inc(x),xx);
         A0 z = bs::sqr(xx);
         z *= horn<A0,

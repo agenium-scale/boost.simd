@@ -23,6 +23,7 @@
 #include <boost/simd/function/simd/is_ltz.hpp>
 #include <boost/simd/function/simd/minus.hpp>
 #include <boost/simd/function/simd/negatenz.hpp>
+#include <boost/simd/function/simd/rec.hpp>
 
 #ifndef BOOST_SIMD_NO_INFINITIES
 #include <boost/simd/constant/one.hpp>
@@ -56,7 +57,8 @@ namespace boost { namespace simd { namespace ext
         a00 =  bs::if_else(test, bs::copysign(One<A0>(), a0), a0);
         a10 =  bs::if_else(test, bs::copysign(One<A0>(), a1), a1);
   #endif
-        A0 z = detail::invtrig_base<A0,tag::radian_tag, tag::simd_type>::kernel_atan(a00/a10);
+        A0 q = bs::abs(a00/a10);
+        A0 z = detail::invtrig_base<A0,tag::radian_tag, tag::simd_type>::kernel_atan(q, rec(q));
         //A0 z = atan(abs(a0/a1));  // case a1 > 0,  a0 > 0
         z = bs::negatenz(bs::if_else(bs::is_gtz(a10), z, bs::Pi<A0>()-z), a00);
         z =  bs::if_else( bs::is_eqz(a00),
