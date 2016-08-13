@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
     Operators are provided in infix and prefix notations,  with exceptions for scalar floating types
     for which C++ does not allow overloading nor implement &, |, ~,  % and the ternary operator ?:.
-    In These seldom used cases prefix  bitwise_and, bitwise_or, complement (or its alias bitwise_not)
+    In These seldom used cases prefix  bitwise_and, bitwise_or, complement
     and if_else are mandatory.
 
     Here is the list of of operators and their infix associated notation.
@@ -64,12 +64,12 @@ namespace boost { namespace simd
            the element of the other (which is a pack).
 
      - (2)  arithmetic types are std::int8_t, std::int16_t, std::int32_t, std::int64_t,
-           std::uint8_t, std::uint16_t, std::uint32_t, std::uint64_t, float double and their pack.
+           std::uint8_t, std::uint16_t, std::uint32_t, std::uint64_t, float, double and their pack.
 
            The use of implementation dependent types as char, int, long, long long and their unsigned conterpart
            is discouraged and even can lead to inconsistencies.
 
-           Also it must be noted that "arithmetic" operators can not mix types. This is to ensure good SIMD
+           Also it must be noted that "arithmetic" operators cannot mix types. This is to ensure good SIMD
            performances if the types are hardware supported.
 
      - (3)  This  precisely means T2 is scalar and integral or T2 is as_integer_t<T1>. Note that if T2 scalar

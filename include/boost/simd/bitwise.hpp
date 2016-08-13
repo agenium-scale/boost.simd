@@ -18,7 +18,7 @@ namespace boost { namespace simd
     @ingroup group-functions
     @defgroup group-bitwise Bitwise functions
 
-      Those functions provides scalar and SIMD algorithms for bit manipulations and bitwise
+      Those functions provide scalar and SIMD algorithms for bit manipulations and bitwise
       operators. Bitwise operations are provided along more specific ones like bit-level rotations,
       bit set, get and toggling and mapping for compiler-specific first bit set or population count
       operations.
@@ -51,7 +51,7 @@ namespace boost { namespace simd
          | @ref ctz     | @ref genmaskc        | @ref reversebits  |                  |
        </center>
 
-   - Shifts and rotations
+      - Shifts and rotations
 
        <center>
          | name     | name      | name       | name             |  name    |
@@ -60,7 +60,7 @@ namespace boost { namespace simd
          | @ref ror | @ref rror | @ref rshr  | @ref shift_right | @ref shr |
        </center>
 
-       shift_left and shift_left are logical shift, shl and shr arithmetic ones
+       shift_left and shift_right are logical shift, shl and shr arithmetic ones
        and rol and ror are rotations respectively to the left and to the right.
        For these functions negative or excessive values of the shift (greater
        or equal to the bit size of each shifted element) are errors.

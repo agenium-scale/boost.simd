@@ -21,10 +21,10 @@ namespace boost { namespace simd
 
 
     @par Rationale
-       Up to now we have six different decorators that can be used to
+       Up to now we have seven different decorators that can be used to
        modify the behaviour of some functors.
 
-       These are conformant_, fast_,  raw_, restricted_,  saturated_, std_
+       These are accurate_, conformant_, fast_,  raw_, restricted_,  saturated_, std_
 
        if a decorator `foo_` has to be called to modify the functor `bar` the call
 

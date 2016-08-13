@@ -20,7 +20,7 @@ namespace boost { namespace simd
     @ingroup group-hyperbolic
     Function object implementing atanh capabilities
 
-    Returns the hyperbolic tangent argument \f$\frac12\log\frac{x^2-1}{x^2+1}\f$
+    Returns the hyperbolic tangent argument \f$\frac12\log\frac{1+x}{1-x}\f$
 
     @par Semantic:
 
@@ -33,10 +33,10 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T r = Half<T>()*log(dec(sqr(x))/inc(sqr(x)));
+    T r = Half<T>()*log(inc(x)/oneminus(x));
     @endcode
 
-    @see log, Half, dec, inc
+    @see log, Half, oneminus, inc
 
   **/
   Value atanh(Value const & v0);

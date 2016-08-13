@@ -29,7 +29,7 @@ namespace boost { namespace simd
 
     - if T is floating point:
       @code
-      T r =  @ref Nan<T>();
+      T r = Nan<T>();
       @endcode
 
     - otherwise:

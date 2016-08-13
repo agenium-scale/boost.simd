@@ -45,32 +45,32 @@ namespace boost { namespace simd
 
         Be aware that using SIMD and branching are quite antagonist.
 
-        For instance if an SIMD vector contain more tha ne element (!) a test on the
+        For instance if an SIMD vector contain more than one element (!) a test on the
         elements will simultaneouly provide true results for some and false results
-        for other: so branching in simd resume in compute all branches and select the
-        pertinent results...
+        for others: so branching in simd resumes in 'compute all branches and select the
+        pertinent results...'
 
         The functors listed above are mostly interesting when one of the branch is very cheap
-        compared to the others.
+        compared to the other.
 
         All branching utilities begin by if_ or ifnot_ the first parameter is a SIMD test
         pack that can be of any of any available type and for which the decision is taken
         for each element as not zero being true and zero being false and have two branches
         (implicit or explicity) to define which result will be chosen for each scalar test.
 
-        However the functor will generally computes all the possible outcomes and select
-        at last the propers ones. If each branch as the same cost (notwithstanding the cost of the test
+        However the functor will generally compute all the possible outcomes and select
+        at last the proper ones. If each branch as the same cost (notwithstanding the cost of the test
         and the inner pipelining of the processor) a branch can cost twice the one branch...
         This become interesting only if the simd vector has a cardinal greater than 2.
 
        <center>
-         | name                            | name                 | name                         |  name               |
-         |:-------------------------------:|:--------------------:|:----------------------------:| :------------------:|
-         | @ref if_allbits_else.hpp        | @ref if_else_nan.hpp | @ref if_one_else_zero.hpp    | @ref ifnot_dec.hpp  |
-         | @ref if_allbits_else_zero.hpp   | @ref if_else_zero.hpp| @ref if_plus.hpp             | @ref ifnot_inc.hpp  |
-         | @ref if_dec.hpp                 | @ref if_inc.hpp      | @ref if_zero_else_allbits.hpp| @ref ifnot_minus.hpp|
-         | @ref if_else_allbits.hpp        | @ref if_minus.hpp    | @ref if_zero_else.hpp        | @ref ifnot_plus.hpp |
-         | @ref if_else.hpp                | @ref if_nan_else.hpp | @ref if_zero_else_one.hpp    |                     |
+         | name                        | name             | name                     |  name           |
+         |:---------------------------:|:----------------:|:------------------------:| :--------------:|
+         | @ref if_allbits_else        | @ref if_else_nan | @ref if_one_else_zero    | @ref ifnot_dec  |
+         | @ref if_allbits_else_zero   | @ref if_else_zero| @ref if_plus             | @ref ifnot_inc  |
+         | @ref if_dec                 | @ref if_inc      | @ref if_zero_else_allbits| @ref ifnot_minus|
+         | @ref if_else_allbits        | @ref if_minus    | @ref if_zero_else        | @ref ifnot_plus |
+         | @ref if_else                | @ref if_nan_else | @ref if_zero_else_one    |                 |
        </center>
 
   **/

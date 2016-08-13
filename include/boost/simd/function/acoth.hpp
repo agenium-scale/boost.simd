@@ -20,7 +20,7 @@ namespace boost { namespace simd
     @ingroup group-hyperbolic
     Function object implementing acoth capabilities
 
-    Returns the hyperbolic cotangent argument \f$\frac12\log\frac{x^2+1}{x^2-1}\f$
+    Returns the hyperbolic cotangent argument \f$\frac12\log\frac{x+1}{x-1}\f$
 
     @par Semantic:
 
@@ -33,7 +33,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T r = Half<T>()*log(inc(sqr(x))/dec(sqr(x)));
+    T r = Half<T>()*log(inc(x)/dec(x));
     @endcode
 
     @see log, Half
