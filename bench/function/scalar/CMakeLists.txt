@@ -98,6 +98,7 @@ set(SOURCES
     exprecnegc.cpp
     exprecneg.cpp
     expx2.cpp
+    exp10.cpp
     fast.frexp.cpp
     fast.hypot.cpp
     fast.rec.cpp
