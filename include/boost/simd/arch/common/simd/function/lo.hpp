@@ -20,31 +20,34 @@
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/simd/detail/dispatch/meta/downgrade.hpp>
+#include <boost/simd/detail/traits.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
-  BOOST_DISPATCH_OVERLOAD ( lo_
-                          , (typename A0, typename X)
-                          , bd::cpu_
-                          , bs::pack_< bd::arithmetic_<A0>, X>
-                          )
+  BOOST_DISPATCH_OVERLOAD_IF ( lo_
+                             , (typename A0, typename X)
+                             , (detail::is_native<X>)
+                             , bd::cpu_
+                             , bs::pack_< bd::arithmetic_<A0>, X>
+                             )
   {
     using result = bd::as_integer_t<A0,unsigned>;
     using s_t = bd::scalar_of_t<result>;
 
     BOOST_FORCEINLINE result operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      result pattern((s_t(1) << sizeof(s_t)*(CHAR_BIT/2)) - 1);
+      static const result pattern((s_t(1) << sizeof(s_t)*(CHAR_BIT/2)) - 1);
       return bitwise_and(pattern, a0);
     }
   };
-  BOOST_DISPATCH_OVERLOAD ( lo_
-                          , (typename A0, typename X)
-                          , bd::cpu_
-                          , bs::pack_< bd::type64_<A0>, X>
-                          )
+  BOOST_DISPATCH_OVERLOAD_IF ( lo_
+                             , (typename A0, typename X)
+                             , (detail::is_native<X>)
+                             , bd::cpu_
+                             , bs::pack_< bd::type64_<A0>, X>
+                             )
   {
     using result_t = bd::as_integer_t<A0,unsigned>;
     using down_t = bd::downgrade_t<result_t>;

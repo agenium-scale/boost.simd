@@ -19,15 +19,18 @@
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/simd/detail/dispatch/meta/downgrade.hpp>
+#include <boost/simd/detail/traits.hpp>
 #include <boost/config.hpp>
+
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
-  BOOST_DISPATCH_OVERLOAD ( hi_
-                          , (typename A0, typename X)
-                          , bd::cpu_
-                          , bs::pack_< bd::type8_<A0>, X>
-                          )
+  BOOST_DISPATCH_OVERLOAD_IF ( hi_
+                             , (typename A0, typename X)
+                             , (detail::is_native<X>)
+                             , bd::cpu_
+                             , bs::pack_< bd::type8_<A0>, X>
+                             )
   {
     using result_t = bd::as_integer_t<A0,unsigned>;
     using s_t = bd::scalar_of_t<result_t>;
@@ -39,11 +42,12 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( hi_
-                          , (typename A0, typename X)
-                          , bd::cpu_
-                          , bs::pack_< bd::arithmetic_<A0>, X>
-                          )
+  BOOST_DISPATCH_OVERLOAD_IF ( hi_
+                             , (typename A0, typename X)
+                             , (detail::is_native<X>)
+                             , bd::cpu_
+                             , bs::pack_< bd::arithmetic_<A0>, X>
+                             )
   {
     using result_t = bd::as_integer_t<A0,unsigned>;
     using down_t = bd::downgrade_t<result_t>;
