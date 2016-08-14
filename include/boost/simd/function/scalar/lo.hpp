@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_LO_HPP_INCLUDED
 
 #include <boost/simd/function/definition/lo.hpp>
-#include <boost/simd/arch/common/generic/function/lo.hpp>
+#include <boost/simd/arch/common/scalar/function/lo.hpp>
 
 #endif

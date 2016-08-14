@@ -14,6 +14,6 @@
 
 #include <boost/simd/function/scalar/hi.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/hi.hpp>
+#include <boost/simd/arch/common/simd/function/hi.hpp>
 
 #endif
