@@ -79,39 +79,8 @@ namespace boost { namespace simd { namespace ext
       res3 =  if_else (is_ltz(x), detail::erf_kernel1<A0>::finalize3(res, x), res3);
       return if_nan_else(is_nan(a0), if_else(test4, res3, res2));
     }
-
-
-//       #ifndef BOOST_SIMD_NO_INVALIDS
-//       if(is_nan(x)) return x;
-//       #endif
-//       A0 y =  bs::abs(x);
-//       if (y <= Ratio<A0, 15, 32>()) // 0.46875
-//       {
-//         A0 ysq;
-//         A0 res = detail::erf_kernel1<A0>::erf1(x, y, ysq);
-
-//         return oneminus(res)*exp(ysq);
-//       }
-//       else if (y <= 4)
-//       {
-//         A0 res = detail::erf_kernel1<A0>::erf2(x, y);
-//         if (is_ltz(x))
-//         {
-//           detail::erf_kernel1<A0>::finalize3(res, x);
-//         }
-//          return res;
-//       }
-//       else
-//       {
-//         A0 res = detail::erf_kernel1<A0>::erf3(x, y);
-//         if (is_ltz(x))
-//         {
-//           detail::erf_kernel1<A0>::finalize3(res, x);
-//         }
-//         return res;
-//       }
-
   };
+
   BOOST_DISPATCH_OVERLOAD ( erfcx_
                           , (typename A0, typename X)
                           , bd::cpu_
