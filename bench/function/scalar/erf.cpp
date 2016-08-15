@@ -16,5 +16,6 @@ DEFINE_SCALAR_BENCH(scalar_erf, bs::erf);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_erf, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<scalar_erf, NS_BENCH_IEEE_TYPES>(-6, 6);
 }
+

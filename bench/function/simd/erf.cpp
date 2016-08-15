@@ -17,5 +17,6 @@ DEFINE_SIMD_BENCH(simd_erf, bs::erf);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_erf, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<simd_erf, NS_BENCH_IEEE_TYPES>(-6, 6);
 }
+

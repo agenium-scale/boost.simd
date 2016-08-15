@@ -14,5 +14,6 @@
 
 #include <boost/simd/function/scalar/erfc.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
+#include <boost/simd/arch/common/simd/function/erfc.hpp>
 
 #endif
