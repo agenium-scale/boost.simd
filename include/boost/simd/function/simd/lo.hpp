@@ -13,7 +13,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_LO_HPP_INCLUDED
 
 #include <boost/simd/function/scalar/lo.hpp>
-#include <boost/simd/arch/common/generic/function/lo.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
+#include <boost/simd/arch/common/simd/function/lo.hpp>
 
 #endif

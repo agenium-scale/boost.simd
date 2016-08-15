@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_HI_HPP_INCLUDED
 
 #include <boost/simd/function/definition/hi.hpp>
-#include <boost/simd/arch/common/generic/function/hi.hpp>
+#include <boost/simd/arch/common/scalar/function/hi.hpp>
 
 #endif
