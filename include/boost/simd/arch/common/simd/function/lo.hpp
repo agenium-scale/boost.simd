@@ -38,8 +38,8 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE result operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      static const result pattern((s_t(1) << sizeof(s_t)*(CHAR_BIT/2)) - 1);
-      return bitwise_and(pattern, a0);
+      static const s_t sh((s_t(1) << sizeof(s_t)*(CHAR_BIT/2)) - 1);
+      return bitwise_and(result(sh), a0);
     }
   };
   BOOST_DISPATCH_OVERLOAD_IF ( lo_
