@@ -26,7 +26,7 @@
 #include <boost/simd/function/scalar/is_ltz.hpp>
 #include <boost/simd/function/scalar/is_odd.hpp>
 #include <boost/simd/function/scalar/dec.hpp>
-#include <boost/simd/function/scalar/pow.hpp>
+#include <boost/simd/function/scalar/pow_abs.hpp>
 #include <boost/simd/function/scalar/rec.hpp>
 #include <boost/simd/function/scalar/sign.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
@@ -60,12 +60,13 @@ namespace boost { namespace simd { namespace ext
       if (is_inf(a0)) return (a1) ? a0 : One<A0>();
 #endif
       A0 aa1 = static_cast<A0>(a1);
-      A0 y = bs::pow(x,rec(aa1));
+      A0 y = bs::fast_(bs::pow_abs)(x,rec(aa1));
       // Correct numerical errors (since, e.g., 64^(1/3) is not exactly 4)
       // by one iteration of Newton's method
       if (y)
       {
-        y -= (bs::pow(y, aa1) - x) / (aa1* bs::pow(y,dec(aa1)));
+       A0 p = fast_(bs::pow_abs)(y, aa1);
+       y -= (p - x) / (aa1*p/y);
       }
 
       return (is_ltza0 && is_odda1)? -y : y;
@@ -90,7 +91,7 @@ namespace boost { namespace simd { namespace ext
       if (!a1) return (x < One<A0>()) ? Zero<A0>() : sign(a0)*Inf<A0>();
       if (!a0) return Zero<A0>();
       A0 aa1 = static_cast<A0>(a1);
-      A0 y = bs::pow(x,rec(aa1));
+      A0 y = fast_(bs::pow_abs)(x,rec(aa1));
       return (is_ltza0 && is_odda1)? -y : y;
     }
   };
