@@ -17,5 +17,5 @@ DEFINE_SIMD_BENCH(simd_gammaln, bs::gammaln);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_gammaln, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<simd_gammaln, NS_BENCH_IEEE_TYPES>(0, 13);
 }

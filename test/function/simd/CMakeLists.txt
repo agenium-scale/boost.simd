@@ -132,6 +132,8 @@ fnma.cpp
 fnms.cpp
 frac.cpp
 frexp.cpp
+gamma.cpp
+gammaln.cpp
 genmaskc.cpp
 group.cpp
 groups.cpp

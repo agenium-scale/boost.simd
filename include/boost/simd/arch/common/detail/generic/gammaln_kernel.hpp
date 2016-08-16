@@ -22,11 +22,10 @@ namespace boost { namespace simd
     template < class A0 >
     struct gammaln_kernel < A0, float >
     {
-      using s_t = bd::scalar_of_t<A0>;
       static BOOST_FORCEINLINE A0 gammalnB( const A0& x) BOOST_NOEXCEPT
       {
         // log gamma(x+2), -.5 < x < .5
-        return horn<s_t,
+        return horn<A0,
                     0x3ed87730, //    4.227843421859038E-001
                     0x3ea51a64, //    3.224669577325661E-001,
                     0xbd89f07e, //   -6.735323259371034E-002,
@@ -41,7 +40,7 @@ namespace boost { namespace simd
       static BOOST_FORCEINLINE A0 gammalnC(const A0& x) BOOST_NOEXCEPT
       {
         // log gamma(x+1), -.25 < x < .25
-        return horn<s_t,
+        return horn<A0,
                     0xbf13c468,  //   -5.772156501719101E-001
                     0x3f528d34,  //    8.224670749082976E-001,
                     0xbecd27a8,  //   -4.006931650563372E-001,
@@ -55,7 +54,7 @@ namespace boost { namespace simd
 
       static BOOST_FORCEINLINE A0 gammaln2(const A0& p) BOOST_NOEXCEPT
       {
-        return horn<s_t,
+        return horn<A0,
                     0x3daaaa94, //   8.333316229807355E-002f
                     0xbb358701, //  -2.769887652139868E-003f,
                     0x3a31fd69  //   6.789774945028216E-004f
@@ -66,10 +65,9 @@ namespace boost { namespace simd
     template < class A0 >
     struct gammaln_kernel < A0, double >
     {
-      using s_t = bd::scalar_of_t<A0>;
       static BOOST_FORCEINLINE A0 gammaln1(const A0& x) BOOST_NOEXCEPT
       {
-        return horn<s_t,
+        return horn<A0,
                     0xc12a0c675418055ell, //  -8.53555664245765465627E5
                     0xc13a45890219f20bll, //  -1.72173700820839662146E6,
                     0xc131bc82f994db51ll, //  -1.16237097492762307383E6,
@@ -77,7 +75,7 @@ namespace boost { namespace simd
                     0xc0e2f234355bb93ell, //  -3.88016315134637840924E4,
                     0xc09589018ff36761ll  //  -1.37825152569120859100E3
                     > (x)/
-          horn<s_t,
+          horn<A0,
                0xc13ece4b6a11e14all, //  -2.01889141433532773231E6
                0xc1435255892ff34cll, //  -2.53252307177582951285E6,
                0xc131628671950043ll, //  -1.13933444367982507207E6,
@@ -91,7 +89,7 @@ namespace boost { namespace simd
 
       static BOOST_FORCEINLINE A0 gammalnA(const A0& p) BOOST_NOEXCEPT
       {
-        return horn<s_t,
+        return horn<A0,
                     0x3fb555555555554bll,//    8.33333333333331927722E-2
                     0xbf66c16c16b0a5a1ll,//   -2.77777777730099687205E-3,
                     0x3f4a019f20dc5ebbll,//    7.93650340457716943945E-4,

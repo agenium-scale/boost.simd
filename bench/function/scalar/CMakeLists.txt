@@ -118,7 +118,10 @@ set(SOURCES
     fpclassify.cpp
     frac.cpp
     frexp.cpp
+    gamma.cpp
+    gamma.std.cpp
     gammaln.cpp
+    gammaln.std.cpp
     genmask.cpp
     genmaskc.cpp
 ##########    group.cpp

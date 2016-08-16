@@ -118,6 +118,7 @@ set(SOURCES
     fnms.cpp
     frac.cpp
     frexp.cpp
+    gamma.cpp
     gammaln.cpp
     genmask.cpp
     genmaskc.cpp
