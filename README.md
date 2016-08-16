@@ -1,5 +1,4 @@
-**Boost.SIMD** is a portable SIMD programming library to be proposed as a Boost library
-.
+**Boost.SIMD** is a portable SIMD programming library to be proposed as a Boost library.
 
 [![Build Status](https://travis-ci.org/NumScale/boost.simd.png?branch=develop)](https://travis-ci.org/NumScale/boost.simd)
 
@@ -8,7 +7,6 @@ programs. **Boost.SIMD** is designed to seamlessly integrate into existing proje
 easily start developing high performance, portable and future proof software.
 
 # What is SIMD?
----------------
 
 Single instruction, multiple data (__SIMD__) instructions or **multimedia extensions** have been available
 for many years. They are designed to significantly accelerate code execution, however they require expertise to be used correctly
@@ -19,7 +17,6 @@ computation unit in the processor, it comes in addition to the regular computati
 dispatching and pipelining unit.
 
 # Why use Boost.SIMD?
----------------------
 
 The use of SIMD instructions requires developers to program into a very verbose manner due to the low-level nature of SIMD instruction
 sets or to rely on fragile, black-box auto-vectorizating compilers. Furthermore, it can be necessary to re-write code for each revision 
@@ -39,7 +36,6 @@ you to focus on the important part of your work: the development of new features
   + standard compliant iterators encapsulating complex _SIMD_ idioms like sliding window or de-interleaving of data on the fly.
 
 # Supported Compilers and Hardware
-----------------------------------
 
 Architecture | Extensions
 -------------|-----------------------------------------------------
@@ -54,8 +50,7 @@ g++                     | 4.8 and above
 clang++                 | 3.5 and above
 Microsoft Visual Studio | 15.0 and above
 
-# Get Started
--------------
+# Getting Started
 
 We start out on the premise you already have a proper installation of Boost 1.61 or superior setup on your machine.
 
