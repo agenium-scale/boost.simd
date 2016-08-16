@@ -1,147 +1,99 @@
-# boost.simd
+**Boost.SIMD** is a portable SIMD programming library to be proposed as a Boost library
+.
 
-[![Build Status](https://travis-ci.org/NumScale/boost.simd.svg)](https://travis-ci.org/NumScale/boost.simd)
+[![Build Status](https://travis-ci.org/NumScale/boost.simd.png?branch=develop)](https://travis-ci.org/NumScale/boost.simd)
 
-Portable SIMD computation library - To be proposed as a Boost library
+**Boost.SIMD** was developed to simplify the difficult, tedious and often error-prone process of developing SIMD 
+programs. **Boost.SIMD** is designed to seamlessly integrate into existing projects so that you can quickly and 
+easily start developing high performance, portable and future proof software.
 
-## Continuous Integration
+# What is SIMD?
+---------------
 
-| Platform & Compiler | `master`| `develop`|
-|---------------------|---------|----------|
-| Linux clang & g++   | [![Build Status](https://travis-ci.org/NumScale/boost.simd.png?branch=master)](https://travis-ci.org/NumScale/boost.simd) | [![Build Status](https://travis-ci.org/NumScale/boost.simd.png?branch=develop)](https://travis-ci.org/NumScale/boost.simd) |
-| OS X   clang    | [![Build Status](https://travis-ci.org/NumScale/boost.simd.png?branch=master)](https://travis-ci.org/NumScale/boost.simd) | [![Build Status](https://travis-ci.org/NumScale/boost.simd.png?branch=develop)](https://travis-ci.org/NumScale/boost.simd) |
+Single instruction, multiple data (__SIMD__) instructions or **multimedia extensions** have been available
+for many years. They are designed to significantly accelerate code execution, however they require expertise to be used correctly
+and they depend on potentially fragile compiler support and the use of low-level intrinsics, or vendor-specific libraries.
+The introduction of these instruction sets has allowed developers to exploit the latent data parallelism available in applications by
+executing a given instruction simultaneously on multiple data stored in dedicated cpu registers. The SIMD unit is built as an independent
+computation unit in the processor, it comes in addition to the regular computation unit complete with a special register file,
+dispatching and pipelining unit.
 
-## Getting started with developer mode
+# Why use Boost.SIMD?
+---------------------
 
-The project requires external dependencies to compile its benchmarks as well as its unit tests. To
-do so, you have to explicitly enable a cmake options to enable automatic retrieving of those
-dependencies:
-```
-cmake -DDEV= <location-of-CMakeLists.txt>
-```
+The use of SIMD instructions requires developers to program into a very verbose manner due to the low-level nature of SIMD instruction
+sets or to rely on fragile, black-box auto-vectorizating compilers. Furthermore, it can be necessary to re-write code for each revision 
+of each target architecture, accounting for each architecture's vendor provided API as well as architecture dependent implementation details. 
+This greatly complicates the design and maintenance of SIMD code, significantly increasing the time required to develop, test and deploy 
+software as well as increasing the scope for introducing bugs.
 
-The developer mode includes the following features:
-- Documentation
-- Automatic generation of project version
-- Benchmarks
-- Unit tests (including exhaustive tests)
-- Automatic update of brigand (dependency)
+**Boost.SIMD** is designed to be user-friendly, easy to integrate into existing projects. To make life even easier, **Boost.SIMD** includes
+a large number of commonly used functions and constants, standardizing the use of common _SIMD_ programming idioms. **Boost.SIMD** allows 
+you to focus on the important part of your work: the development of new features and functionality.
 
-## Getting started with the build process (on linux)
+**Boost.SIMD** provides the following:
 
-NOTE:
-> `boost.simd` *MUST* be used with the current version of `boost` (aka 1.61)
+  + a proper value semantic wrapper for _SIMD_ registers;
+  + an automatic system to detect and exploit architecture specific optimization opportunities;
+  + standard compliant iterators to iterate over contiguous range of data in a _SIMD_ compatible way;
+  + standard compliant iterators encapsulating complex _SIMD_ idioms like sliding window or de-interleaving of data on the fly.
 
-You must create a build directory where all temporary building files will be located.
+# Supported Compilers and Hardware
+----------------------------------
 
-> We assume that you are doing all the following commands in the **Boost.SIMD** source tree
+Architecture | Extensions
+-------------|-----------------------------------------------------
+x86          | SSE2, SSE3, SSSE3, SSE4.1, SSE4.2, AVX, FMA3, AVX2
+PowerPC      | VMX
 
-Let say:
-```bash
-mkdir -p build
-cd build
-```
+**Boost.SIMD** requires a C++11 compliant compiler and Boost 1.61 and is thoroughly tested on the following compilers:
 
-Now, if you want a all-in-one solution, you can do the following:
-```bash
-cmake .. -DUSE_SELF_BOOST= -DCMAKE_INSTALL_PREFIX=/tmp/boost.simd.install
-make update.boost-header-only # This is one is optional
-make install
-```
+Compiler                | Version
+------------------------|-------------------
+g++                     | 4.8 and above
+clang++                 | 3.5 and above
+Microsoft Visual Studio | 15.0 and above
 
-Of course, you can change the value of `CMAKE_INSTALL_PREFIX` to a different location.
-This will install a sufficient version of `boost` (if you used `make update.boost-header-only`
-command) and `boost.simd`.
+# Get Started
+-------------
 
-Every files are going to be installed under the `include` directory of your `CMAKE_INSTALL_PREFIX`
-directory. You can now use it as include directory when compiling.
+We start out on the premise you already have a proper installation of Boost 1.61 or superior setup on your machine.
 
-For example (assuming your file is: `/tmp/main.cpp`):
+First, you must retrieve the current status of the library by cloning the repository: 
+
+    git clone https://github.com/NumScale/boost.simd.git
+
+By default, the develop branch is fetched. You can change that to `master` if you want to use the stable
+version instead of the development version. 
+
+Second step is to setup the repository to grab a local copy of the documentation:
+
+    git submodule init && git submodule update
+
+The library headers are located in the `include\' folder and are ready to be used. A very simple
+example like:
+
 ```cpp
-#include <iostream>
-#include <numeric>
 #include <boost/simd/pack.hpp>
-#include <boost/align/aligned_alloc.hpp>
+#include <iostream>
 
 namespace bs = boost::simd;
-namespace ba = boost::alignment;
 
-template <typename T>
-void iota_and_print()
+int main() 
 {
-  // The number of element will be deduced automatically according to the most recent SIMD extension
-  using pack_t = bs::pack<T>;
+   bs::pack<float,4> p{1.f,2.f,3.f,4.f};
+   std::cout << p + 10*p << "\n";
 
-  // Allocates aligned memory using expected alignment
-  T* data =
-    static_cast<T*>(ba::aligned_alloc(pack_t::alignment, pack_t::static_size * sizeof(T)));
-  std::iota(data, data + pack_t::static_size, T(1));
-
-  // Constructs a pack (which will call `boost::simd::aligned_load<pack_t>` to fill up its data)
-  pack_t p{data};
-
-  // Now just print the loaded data
-  std::cout << p << std::endl;
-}
-
-int main() {
-  iota_and_print<std::int8_t>();
-  iota_and_print<std::uint8_t>();
-  // --
-  iota_and_print<std::int16_t>();
-  iota_and_print<std::uint16_t>();
-  // --
-  iota_and_print<std::int32_t>();
-  iota_and_print<std::uint32_t>();
-  // --
-  iota_and_print<std::int64_t>();
-  iota_and_print<std::uint64_t>();
-  // --
-  iota_and_print<float>();
-  // --
-  iota_and_print<double>();
-  return 0;
+   return 0;
 }
 ```
 
-- - -
+can then be compiled via:
 
-Now compile it (using SSE2):
-```
-clang++ -Wall -Wextra -std=c++11 -I/tmp/boost.simd.install/include -msse2 /tmp/main.cpp
-```
+    g++ main.cpp -std=c++11 -O3 -msse4.2 -I<path/to/boost/1.61/include> -I<path/to/boost/simd/include> -o main
 
-This gives the following output:
-```
-(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)
-(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)
-(1, 2, 3, 4, 5, 6, 7, 8)
-(1, 2, 3, 4, 5, 6, 7, 8)
-(1, 2, 3, 4)
-(1, 2, 3, 4)
-(1, 2)
-(1, 2)
-(1, 2, 3, 4)
-(1, 2)
-```
+and display:
 
-- - -
+    (11, 22, 33, 44)
 
-Now compile it (using AVX):
-```
-clang++ -Wall -Wextra -std=c++11 -I/tmp/boost.simd.install/include -mavx  /tmp/main.cpp
-```
-
-This gives the following output:
-```
-(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32)
-(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32)
-(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)
-(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)
-(1, 2, 3, 4, 5, 6, 7, 8)
-(1, 2, 3, 4, 5, 6, 7, 8)
-(1, 2, 3, 4)
-(1, 2, 3, 4)
-(1, 2, 3, 4, 5, 6, 7, 8)
-(1, 2, 3, 4)
-```
+Now, you can [have a look at our documentation](http://numscale.github.io/boost.simd/) to follow one of our tutorials on how to use **Boost.SIMD**.
