@@ -46,7 +46,6 @@ namespace boost { namespace simd { namespace detail
   struct kernel< A0, style, float>
   {
     using i_t = bd::as_integer_t<A0, signed>;
-    using s_t = bd::scalar_of_t<A0>;
 
     static BOOST_FORCEINLINE void log(const A0& a0,
                            A0& fe,
