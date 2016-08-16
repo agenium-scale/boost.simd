@@ -13,9 +13,6 @@
 #include <boost/simd/constant/constant.hpp>
 #include <boost/simd/detail/dispatch/meta/upgrade.hpp>
 
-/* No native groups for 64-bit SSE;
- * we use bit tricks instead of calling saturate. */
-
 namespace boost { namespace simd { namespace ext
 {
   namespace bd =  boost::dispatch;

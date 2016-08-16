@@ -6,34 +6,15 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-#include <ns.bench.hpp>
-#include <boost/simd/function/scalar/two_prod.hpp>
-#include <cmath>
-#include <tuple>
+#include <simd_bench.hpp>
+#include <boost/simd/function/simd/two_prod.hpp>
 
-namespace bs = boost::simd;
 namespace nsb = ns::bench;
+namespace bs =  boost::simd;
 
-template <typename T>
-struct two_prod_scalar
+DEFINE_SCALAR_BENCH(scalar_two_prod, bs::two_prod);
+
+DEFINE_BENCH_MAIN()
 {
-   template <typename U>
-   void operator()(U min0, U max0, U min1, U max1)
-   {
-     using ret_type = std::pair<T, T>;
-     nsb::make_function_experiment_cpe_sized_<1>
-       ( [](const T & x0, const T & x1) -> ret_type
-         { return bs::two_prod(x0, x1); }
-       , nsb::generators::rand<T>(min0, max0)
-       , nsb::generators::rand<T>(min1, max1)
-       );
-   }
-};
-
-
-int main(int argc, char **argv) {
-   nsb::parse_args(argc, argv);
-   nsb::make_for_each<two_prod_scalar, NS_BENCH_IEEE_TYPES>( -10,  10,  -10,  10);
-   return 0;
+  nsb::for_each<scalar_two_prod, NS_BENCH_IEEE_TYPES>(-10, 10,-10, 10);
 }
-

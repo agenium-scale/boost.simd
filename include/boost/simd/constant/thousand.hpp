@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The Thousand constant for the proper type
     **/
-    const boost::dispatch::functor<tag::thousand_> thousand = {};
+    Value Thousand();
   }
 } }
 #endif

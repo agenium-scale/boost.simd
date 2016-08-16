@@ -6,35 +6,17 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-#include <ns.bench.hpp>
-#include <boost/simd/function/scalar/touint.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
+#include <simd_bench.hpp>
+#include <boost/simd/function/simd/touint.hpp>
 #include <cmath>
 
-namespace bs = boost::simd;
-namespace bd = boost::dispatch;
 namespace nsb = ns::bench;
+namespace bs =  boost::simd;
+DEFINE_SCALAR_BENCH(scalar_touint_s, bs::saturated_(boost::simd::touint));
 
-template <typename T>
-struct touint_s_scalar
-{
-   template <typename U>
-   void operator()(U min0, U max0)
-   {
-     using ret_type = bd::as_integer_t<T, unsigned>;
-     nsb::make_function_experiment_cpe_sized_<1>
-       ( [](const T & x0) -> ret_type
-       { return bs::saturated_(bs::touint)(x0); }
-       , nsb::generators::rand<T>(min0, max0)
-       );
-   }
-};
-
-
-int main(int argc, char **argv) {
-   nsb::parse_args(argc, argv);
-   nsb::make_for_each<touint_s_scalar, NS_BENCH_SIGNED_NUMERIC_TYPES>( -10,  10);
-   nsb::make_for_each<touint_s_scalar, NS_BENCH_UNSIGNED_NUMERIC_TYPES>(0,  10);
-   return 0;
+int main(int argc, char** argv) {
+  nsb::parse_args(argc, argv);
+  nsb::for_each<scalar_touint_s, NS_BENCH_NUMERIC_TYPES>(-10, 10);
+  print_results();
+  return 0;
 }
-

@@ -37,7 +37,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::is_not_equal_with_equal_nans_> is_not_equal_with_equal_nans = {};
+  as_logical_t<Value> is_not_equal_with_equal_nans(Value const& x, Value const& y);
 } }
 #endif
 

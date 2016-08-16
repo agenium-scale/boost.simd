@@ -43,7 +43,7 @@ namespace boost { namespace simd
 
       @return The Twotonmb constant for the proper type
     **/
-    const boost::dispatch::functor<tag::twotonmb_> twotonmb = {};
+    Value Twotonmb();
   }
 } }
 #endif

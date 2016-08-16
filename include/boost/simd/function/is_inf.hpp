@@ -36,7 +36,8 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::is_inf_> is_inf = {};
+  as_logical_t<Value> is_inf(Value const& x);
+  as_logical_t<Value> is_inf(Value const& x);
 } }
 #endif
 

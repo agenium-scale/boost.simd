@@ -17,7 +17,7 @@ namespace boost { namespace simd
   /*!
     @ingroup group-constant
 
-    Generates the -inf IEEE value (\f$\-infty\f$) for floating types and minimum value
+    Generates the -inf IEEE value (\f$-\infty\f$) for floating types and minimum value
     for integer types
 
     @par Semantic
@@ -38,7 +38,7 @@ namespace boost { namespace simd
     /*!
       @ingroup group-callable-constant
 
-      Generates the -inf IEEE value (\f$\-infty\f$) for floating types and minimum value
+      Generates the -inf IEEE value (\f$-\infty\f$) for floating types and minimum value
       for integer types
 
       @par Semantic
@@ -53,7 +53,7 @@ namespace boost { namespace simd
 
       @return The minimum representable value of the input type
     **/
-    const boost::dispatch::functor<tag::minf_> minf = {};
+    Value Minf();
   }
 } }
 #endif

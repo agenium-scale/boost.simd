@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_MEANOF_HPP_INCLUDED
 
 #include <boost/simd/function/definition/meanof.hpp>
-#include <boost/simd/arch/common/generic/function/meanof.hpp>
+#include <boost/simd/arch/common/scalar/function/meanof.hpp>
 
 #endif

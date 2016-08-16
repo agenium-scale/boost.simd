@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/constant/real_splat.hpp>
 #include <boost/simd/as.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 
 STF_CASE_TPL( "Check real_splat behavior for integral types"
             , (std::uint8_t)(std::uint16_t)(std::uint32_t)(std::uint64_t)

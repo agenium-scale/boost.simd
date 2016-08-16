@@ -37,7 +37,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::all_> all = {};
+  Value all(Value const & v0);
 } }
 #endif
 

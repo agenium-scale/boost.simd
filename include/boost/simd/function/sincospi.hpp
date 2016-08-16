@@ -41,7 +41,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::sincospi_> sincospi = {};
+  std::pair<Value, Value> sincospi(Value const & v0);
 } }
 #endif
 

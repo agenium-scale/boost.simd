@@ -38,7 +38,7 @@ namespace boost { namespace simd
     @see trunc,  modf
 
   **/
-  const boost::dispatch::functor<tag::frac_> frac = {};
+  Value frac(Value const & v0);
 } }
 #endif
 

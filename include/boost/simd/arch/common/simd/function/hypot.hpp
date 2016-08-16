@@ -14,8 +14,8 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/constant/maxexponentm1.hpp>
-#include <boost/simd/constant/minexponent.hpp>
+#include <boost/simd/detail/constant/maxexponentm1.hpp>
+#include <boost/simd/detail/constant/minexponent.hpp>
 #include <boost/simd/function/simd/abs.hpp>
 #include <boost/simd/function/simd/exponent.hpp>
 #include <boost/simd/function/simd/ldexp.hpp>

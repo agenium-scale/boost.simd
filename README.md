@@ -11,14 +11,30 @@ Portable SIMD computation library - To be proposed as a Boost library
 | Linux clang & g++   | [![Build Status](https://travis-ci.org/NumScale/boost.simd.png?branch=master)](https://travis-ci.org/NumScale/boost.simd) | [![Build Status](https://travis-ci.org/NumScale/boost.simd.png?branch=develop)](https://travis-ci.org/NumScale/boost.simd) |
 | OS X   clang    | [![Build Status](https://travis-ci.org/NumScale/boost.simd.png?branch=master)](https://travis-ci.org/NumScale/boost.simd) | [![Build Status](https://travis-ci.org/NumScale/boost.simd.png?branch=develop)](https://travis-ci.org/NumScale/boost.simd) |
 
+## Getting started with developer mode
+
+The project requires external dependencies to compile its benchmarks as well as its unit tests. To
+do so, you have to explicitly enable a cmake options to enable automatic retrieving of those
+dependencies:
+```
+cmake -DDEV= <location-of-CMakeLists.txt>
+```
+
+The developer mode includes the following features:
+- Documentation
+- Automatic generation of project version
+- Benchmarks
+- Unit tests (including exhaustive tests)
+- Automatic update of brigand (dependency)
+
 ## Getting started with the build process (on linux)
 
 NOTE:
-> `boost.simd` *MUST* be used with the current develop version of `boost` (aka 1.62)
+> `boost.simd` *MUST* be used with the current version of `boost` (aka 1.61)
 
 You must create a build directory where all temporary building files will be located.
 
-> We assume that you are doing all the following commands in the Boost.SIMD source tree
+> We assume that you are doing all the following commands in the **Boost.SIMD** source tree
 
 Let say:
 ```bash

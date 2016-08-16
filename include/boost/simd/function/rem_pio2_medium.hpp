@@ -29,9 +29,9 @@ namespace boost { namespace simd
     For every parameter of floating type T
 
     @code
-    T r, rc;
+    T r;
     as_integer<T> n;
-    rem_pio2_cephes(x, n, r);
+    std::tie(n, r) = rem_pio2_medium(x);
     @endcode
 
     is similar to:
@@ -59,7 +59,7 @@ namespace boost { namespace simd
     @see rem_pio2, rem_pio2_straight,rem_2pi,  rem_pio2_cephes,
 
   **/
-  const boost::dispatch::functor<tag::rem_pio2_medium_> rem_pio2_medium = {};
+  std::pair<IntegerValue, Value> rem_2pio_medium(Value const & v0);
 } }
 #endif
 

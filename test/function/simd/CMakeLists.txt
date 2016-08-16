@@ -24,8 +24,11 @@ set ( SOURCES
 abs.cpp
 abs_s.cpp
 acos.cpp
+acos.accurate.cpp
 acosd.cpp
+acosd.accurate.cpp
 acospi.cpp
+acospi.accurate.cpp
 acot.cpp
 acotd.cpp
 acotpi.cpp
@@ -109,6 +112,9 @@ divnearbyint.cpp
 divtrunc.cpp
 divides.cpp
 divides_s.cpp
+erf.cpp
+erfc.cpp
+erfcx.cpp
 exp.cpp
 exp2.cpp
 expm1.cpp

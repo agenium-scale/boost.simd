@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @see  inrad, Radindeg, Radindegr, Deginrad
 
   **/
-  const boost::dispatch::functor<tag::indeg_> indeg = {};
+  Value indeg(Value const & v0);
 } }
 #endif
 

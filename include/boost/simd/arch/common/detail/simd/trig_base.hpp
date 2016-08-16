@@ -30,7 +30,7 @@
 #include <boost/simd/function/simd/is_greater.hpp>
 #include <boost/simd/function/simd/rec.hpp>
 #include <boost/simd/function/simd/oneminus.hpp>
-#include <boost/simd/constant/maxleftshift.hpp>
+#include <boost/simd/detail/constant/maxleftshift.hpp>
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/two.hpp>
@@ -64,20 +64,20 @@ namespace boost { namespace simd
       // * evaluations of the two branches and selection using flags
       // * return with flag based corrections and inf and nan or specific invalid cases inputs considerations
 
-      static inline A0 cosa(const A0 a0){ return cosa(a0, style()); }
-      static inline A0 sina(const A0 a0){ return sina(a0, style()); }
-      static inline A0 tana(const A0 a0){ return tana(a0, style()); }
-      static inline A0 cota(const A0 a0){ return cota(a0, style()); }
-      static inline std::pair<A0,A0> sincosa(const A0 a0){ return sincosa(a0,style()); }
+      static BOOST_FORCEINLINE A0 cosa(const A0& a0){ return cosa(a0, style()); }
+      static BOOST_FORCEINLINE A0 sina(const A0& a0){ return sina(a0, style()); }
+      static BOOST_FORCEINLINE A0 tana(const A0& a0){ return tana(a0, style()); }
+      static BOOST_FORCEINLINE A0 cota(const A0& a0){ return cota(a0, style()); }
+      static BOOST_FORCEINLINE std::pair<A0,A0> sincosa(const A0& a0){ return sincosa(a0,style()); }
 
     private:
-      static inline A0 cosa(const A0 a0, const tag::restricted&)
+      static BOOST_FORCEINLINE A0 cosa(const A0& a0, const tag::restricted&)
       {
         const A0 x =  scale(a0);
         return  eval_t::cos_eval(sqr(x));
       }
 
-      static inline A0 cosa(const A0 a0, const tag::regular&)
+      static BOOST_FORCEINLINE A0 cosa(const A0& a0, const tag::regular&)
       {
         const A0 x = bs::abs(a0);
         A0 xr = Nan<A0>();
@@ -90,14 +90,14 @@ namespace boost { namespace simd
         return  bitwise_xor(if_else(is_nez(swap_bit), se, ce), sign_bit);
       }
 
-      static inline A0 sina(const A0 a0_n, const tag::restricted&)
+      static BOOST_FORCEINLINE A0 sina(const A0& a0_n, const tag::restricted&)
       {
         const A0 x =   scale(a0_n);
         const A0 se = eval_t::sin_eval(sqr(x), x);
         return se;
       }
 
-      static inline A0 sina(const A0 a0_n, const tag::regular&)
+      static BOOST_FORCEINLINE A0 sina(const A0& a0_n, const tag::regular&)
       {
         const A0 a0 = a0_n;
         const A0 x = bs::abs(a0);
@@ -112,13 +112,13 @@ namespace boost { namespace simd
         return bitwise_xor(if_else(is_eqz(swap_bit),se, ce), sign_bit);
       }
 
-      static inline A0 tana(const A0 a0_n, const tag::restricted&)
+      static BOOST_FORCEINLINE A0 tana(const A0& a0_n, const tag::restricted&)
       {
         const A0 bte = eval_t::base_tancot_eval(scale(a0_n));
         return bte;
       }
 
-      static inline A0 tana(const A0 a0_n, const tag::regular&)
+      static BOOST_FORCEINLINE A0 tana(const A0& a0_n, const tag::regular&)
       {
         const A0 a0 = a0_n;
         const A0 x =  bs::abs(a0);
@@ -130,12 +130,12 @@ namespace boost { namespace simd
         return if_nan_else(testnan, bitwise_xor(y, bitofsign(a0)));
       }
 
-      static inline A0 cota(const A0 a0_n, const tag::restricted&)
+      static BOOST_FORCEINLINE A0 cota(const A0& a0_n, const tag::restricted&)
       {
         const A0 bte = eval_t::base_tancot_eval(scale(a0_n));
         return rec(bte);
       }
-      static inline A0 cota(const A0& a0, const tag::regular&)
+      static BOOST_FORCEINLINE A0 cota(const A0& a0, const tag::regular&)
       {
         const A0 x = bs::abs(a0);
         A0 xr = Nan<A0>();
@@ -150,14 +150,14 @@ namespace boost { namespace simd
       }
 
       // simultaneous cosa and sina function
-      static inline std::pair<A0, A0> sincosa(const A0& a0, const tag::restricted&)
+      static BOOST_FORCEINLINE std::pair<A0, A0> sincosa(const A0& a0, const tag::restricted&)
       {
         A0 x =  scale(a0);
         A0 z =  sqr(x);
         return {eval_t::sin_eval(z, x), eval_t::cos_eval(z)};
       }
 
-      static inline  std::pair<A0, A0> sincosa(const A0& a0, const tag::regular&)
+      static BOOST_FORCEINLINE  std::pair<A0, A0> sincosa(const A0& a0, const tag::regular&)
       {
         const A0 x =  bs::abs(a0);
         A0 xr = Nan<A0>();
@@ -177,7 +177,7 @@ namespace boost { namespace simd
                , bitwise_xor(if_else(test, t1, t2),cos_sign_bit) };
       }
 
-      static inline A0 scale(const A0& a0)
+      static BOOST_FORCEINLINE A0 scale(const A0& a0)
       {
         return if_nan_else(is_greater(bs::abs(a0),
                               trig_ranges<A0,unit_tag>::max_range()), a0)

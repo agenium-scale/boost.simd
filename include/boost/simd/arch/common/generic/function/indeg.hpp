@@ -13,7 +13,7 @@
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_INDEG_HPP_INCLUDED
 
 #include <boost/simd/constant/radindeg.hpp>
-#include <boost/simd/constant/radindegr.hpp>
+#include <boost/simd/detail/constant/radindegr.hpp>
 #include <boost/simd/function/minus.hpp>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/indeg.hpp>

@@ -30,17 +30,20 @@ namespace boost { namespace simd
      For every parameters of types respectively C, T, T:
 
     @code
-    T1 r = ifnot_plus(cond,t1,t2);
+    T1 r = ifnot_minus(cond, x, y);
     @endcode
 
     is similar to:
 
     @code
-    T1 r = cond ? t1 :  t1-t2;
+    T1 r = cond ? x :  x - y
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::ifnot_minus_> ifnot_minus = {};
+  Value ifnot_minus(Value const& c, Value const& x, Value const& y)
+
+  //@overload
+  Value ifnot_minus(LogicalValue const& c, Value const& x, Value const& y);
 } }
 #endif
 

@@ -35,8 +35,10 @@ namespace boost { namespace simd
     @par Note
     This function asserts if the integral parameter is out of range
 
+    @see  ror, rol, rror
+
   **/
-  const boost::dispatch::functor<tag::rrol_> rrol = {};
+  Value rrol(Value const & x, IntegerValue const &n);
 } }
 #endif
 

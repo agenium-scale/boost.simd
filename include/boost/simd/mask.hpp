@@ -44,20 +44,26 @@ namespace boost { namespace simd
     @ingroup group-api
     @brief Marks a pointer as being masked
 
-    @param ptr Type to mask
-    @return ...
+    Wraps a pointer, a condition and an optional base value to be passed to masked memory
+    aware operation.
+
+    @param ptr    Value to mask
+    @param status Condition associated to the pointer
+    @param def    Optional value to use when trying to acces ptr when status is false
+
+    @return A wrapped pointer and condition
   **/
   template<typename T, typename U, typename Mask> BOOST_FORCEINLINE
-  detail::masked_pointer<T,Mask> mask(T* ptr, U const& v, Mask const& status)
+  detail::masked_pointer<T,Mask> mask(T* ptr, Mask const& status, U const& def)
   {
-    return {ptr,T(v),status};
+    return detail::masked_pointer<T,Mask>{ptr,T(def),status};
   }
 
   /// @overload
   template<typename T, typename Mask>
   BOOST_FORCEINLINE detail::masked_pointer<T,Mask, true> mask(T* ptr, Mask const& status)
   {
-    return {ptr,T{0},status};
+    return detail::masked_pointer<T,Mask, true>{ptr,T{0},status};
   }
 } }
 
@@ -83,7 +89,9 @@ namespace boost { namespace dispatch
     struct hierarchy_of< boost::simd::detail::masked_pointer<T,Mask,Zero>, Origin >
     {
       using base = typename boost::simd::detail::masked_pointer<T,Mask,Zero>::element_type;
-      using type = masked_pointer_< boost::dispatch::hierarchy_of_t<base,Origin>, brigand::bool_<Zero> >;
+      using type = masked_pointer_< boost::dispatch::hierarchy_of_t<base,Origin>
+                                  , brigand::bool_<Zero>
+                                  >;
     };
   }
 } }

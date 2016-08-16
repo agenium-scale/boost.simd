@@ -9,108 +9,153 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SHUFFLE_DEINTERLEAVE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SHUFFLE_DEINTERLEAVE_HPP_INCLUDED
 
-#include <boost/simd/detail/overload.hpp>
-#include <boost/simd/arch/common/simd/function/shuffle/pattern/deinterleave.hpp>
 #include <boost/simd/function/deinterleave_first.hpp>
 #include <boost/simd/function/deinterleave_second.hpp>
+#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/shuffle.hpp>
 
-namespace boost { namespace simd { namespace ext
+namespace boost { namespace simd
 {
   // -----------------------------------------------------------------------------------------------
-  // deinterleave_*
-  BOOST_DISPATCH_OVERLOAD ( shuffle_
-                          , (typename Ps, int Base, int Fwd, int Bwd, typename A0, typename X)
-                          , bd::cpu_
-                          , bs::deinterleave_pattern<Base,Fwd,Bwd,Ps>
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          )
+  // Deinterleaving pattern hierarchy
+  template<int FirstSecond, bool HasZero, bool Forward, typename P>
+  struct deinterleave_pattern : P
   {
-    static_assert ( Ps::static_size == std::size_t(A0::static_size)
-                  , "boost::simd::shuffle - Invalid number of permutation indices"
-                  );
+    using parent = P;
+  };
 
-    BOOST_FORCEINLINE A0 operator()(Ps const&, A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
+  namespace detail
+  {
+    // ---------------------------------------------------------------------------------------------
+    // generate pattern for deinterleaving shuffle
+    template<int I, bool SZ, typename Range> struct deinter_;
+
+    template<int I, bool SZ, typename... Ps>
+    struct deinter_<I,SZ, brigand::list<Ps...>>
     {
-      return side(a0,a1,std::integral_constant<int,Base>{});
+      using sz    = std::integral_constant<int,sizeof...(Ps)/2>;
+      using type  = detail::pattern_< ((SZ && Ps::value>=sz::value) ? -1 :  2*Ps::value+I)...>;
+    };
+
+    template<int I, bool SZ, typename Range>
+    using deinter_t = typename deinter_<I,SZ,Range>::type;
+
+    // ---------------------------------------------------------------------------------------------
+    // Generate proper deinterleave_pattern hierarchy from a pattern
+    template<int... Ps> struct find_deinterleave
+    {
+      using ref = boost::simd::detail::pattern_<Ps...>;
+      using sz  = std::integral_constant<int,sizeof...(Ps)/2>;
+      using lo  = brigand::range<int,0,sz::value>;
+      using hi  = brigand::range<int,sz::value,2*sz::value>;
+      using fwd = brigand::append<lo,hi>;
+      using bwd = brigand::append<hi,lo>;
+
+      template<int FS, bool SZ, typename Rng>
+      using case_ = brigand::pair < deinter_t<FS,SZ,Rng>
+                                  , deinterleave_pattern<FS,SZ,std::is_same<Rng,fwd>::value,ref>
+                                  >;
+
+      using dmap  = brigand::map
+                  < case_<0,false,fwd>, case_<0,true ,fwd>, case_<0,false,bwd>, case_<0,true ,bwd>
+                  , case_<1,false,fwd>, case_<1,true ,fwd>, case_<1,false,bwd>, case_<1,true ,bwd>
+                  >;
+
+      using type = brigand::at<dmap,ref>;
+    };
+
+    // MSVC provision - MSVC seems to eagerly instantiate find_deinterleave even for cardinal-1
+    template<int P0> struct find_deinterleave<P0>
+    {
+      using type = brigand::no_such_type_;
+    };
+
+    // ---------------------------------------------------------------------------------------------
+    // Check if pattern performs some deinterleaving operations (0=first,1=second)
+    template<int... Ps>
+    struct  is_deinterleave
+          : brigand::bool_<   !std::is_same < brigand::no_such_type_
+                                            , typename find_deinterleave<Ps...>::type
+                                            >::value
+                          >
+    {
+      using mode = typename find_deinterleave<Ps...>::type;
+    };
+
+    template<int P0>         struct is_deinterleave<P0>    : std::false_type {};
+    template<int P0, int P1> struct is_deinterleave<P0,P1> : std::false_type {};
+  }
+
+  // -----------------------------------------------------------------------------------------------
+  // Deinterleave matcher
+  struct deinterleave_shuffle
+  {
+    // All deinterleave_first
+    template<typename T, typename P> static BOOST_FORCEINLINE
+    T process(T const& a0, T const& a1, deinterleave_pattern<0,false,true,P> const&)
+    {
+      return deinterleave_first(a0,a1);
     }
 
-    // Select deinterleave_first as operation
-    BOOST_FORCEINLINE static
-    A0 side(A0 const& a0, A0 const& a1, std::integral_constant<int,1> const&) BOOST_NOEXCEPT
+    template<typename T, typename P> static BOOST_FORCEINLINE
+    T process(T const& a0, T const& a1, deinterleave_pattern<0,false,false,P> const&)
     {
-      return do_( deinterleave_first, a0, a1
-                , std::integral_constant<int,Fwd>{},std::integral_constant<int,Bwd>{}
-                );
+      return deinterleave_first(a1,a0);
     }
 
-    // Select deinterleave_second as operation
-    BOOST_FORCEINLINE static
-    A0 side(A0 const& a0, A0 const& a1, std::integral_constant<int,2> const&) BOOST_NOEXCEPT
+    template<typename T, typename P> static BOOST_FORCEINLINE
+    T process(T const& a0, deinterleave_pattern<0,true,false,P> const&)
     {
-      return do_( deinterleave_second, a0, a1
-                , std::integral_constant<int,Fwd>{},std::integral_constant<int,Bwd>{}
-                );
+      return deinterleave_first(Zero<T>(),a0);
     }
 
-    using nope = std::integral_constant<int,0x00>;
-    using regular = std::integral_constant<int,0x01>;
-    using forward = std::integral_constant<int,0x02>;
-    using backward = std::integral_constant<int,0x04>;
-
-    // forward, no zero
-    template<typename F>
-    static BOOST_FORCEINLINE A0 do_ ( F const& f, A0 const& a0, A0 const& a1
-                                    , regular const&, nope const&
-                                    ) BOOST_NOEXCEPT
+    template<typename T, typename P> static BOOST_FORCEINLINE
+    T process(T const& a0, deinterleave_pattern<0,true,true,P> const&)
     {
-      return f(a0,a1);
+      return deinterleave_first(a0,Zero<T>());
     }
 
-    // forward, zero first
-    template<typename F>
-    static BOOST_FORCEINLINE A0 do_ ( F const& f, A0 const&, A0 const& a1
-                                    , forward const&, nope const&
-                                    ) BOOST_NOEXCEPT
+    // All deinterleave_second
+    template<typename T, typename P>
+    static BOOST_FORCEINLINE
+    T process(T const& a0, T const& a1, deinterleave_pattern<1,false,true,P> const&)
     {
-      return f(Zero<A0>(),a1);
+      return deinterleave_second(a0,a1);
     }
 
-    // forward, zero last
-    template<typename F>
-    static BOOST_FORCEINLINE A0 do_ ( F const& f, A0 const& a0, A0 const&
-                                    , backward const&, nope const&
-                                    ) BOOST_NOEXCEPT
+    template<typename T, typename P>
+    static BOOST_FORCEINLINE
+    T process(T const& a0, T const& a1, deinterleave_pattern<1,false,false,P> const&)
     {
-      return f(a0,Zero<A0>());
+      return deinterleave_second(a1,a0);
     }
 
-    // backward, no zero
-    template<typename F>
-    static BOOST_FORCEINLINE A0 do_ ( F const& f, A0 const& a0, A0 const& a1
-                                    , nope const&, regular const&
-                                    ) BOOST_NOEXCEPT
+    template<typename T, typename P> static BOOST_FORCEINLINE
+    T process(T const& a0, deinterleave_pattern<1,true,true,P> const&)
     {
-      return f(a1,a0);
+      return deinterleave_second(a0,Zero<T>());
     }
 
-    // backward, zero first
-    template<typename F>
-    static BOOST_FORCEINLINE A0 do_ ( F const& f, A0 const& a0, A0 const&
-                                    , nope const&, backward const&
-                                    ) BOOST_NOEXCEPT
+    template<typename T, typename P> static BOOST_FORCEINLINE
+    T process(T const& a0, deinterleave_pattern<1,true,false,P> const&)
     {
-      return f(Zero<A0>(),a0);
+      return deinterleave_second(Zero<T>(),a0);
     }
+  };
+} }
 
-    // backward, zero last
-    template<typename F>
-    static BOOST_FORCEINLINE A0 do_ ( F const& f, A0 const&, A0 const& a1
-                                    , nope const&, forward const&
-                                    ) BOOST_NOEXCEPT
-    {
-      return f(a1,Zero<A0>());
-    }
+namespace boost { namespace dispatch { namespace ext
+{
+  // -----------------------------------------------------------------------------------------------
+  // Hierarchize deinterleaving patterns
+  template<int... Ps,typename Origin>
+  struct pattern_hierarchy< boost::simd::detail::pattern_<Ps...>,Origin
+                          , typename std::enable_if < simd::detail
+                                                          ::is_deinterleave<Ps...>::type::value
+                                                    >::type
+                          >
+  {
+    using type = typename simd::detail::is_deinterleave<Ps...>::mode;
   };
 } } }
 

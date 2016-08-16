@@ -35,7 +35,7 @@ namespace boost { namespace simd
     @see  ceil, round, nearbyint, trunc, ifloor
 
   **/
-  const boost::dispatch::functor<tag::floor_> floor = {};
+  Value floor(Value const & v0);
 } }
 #endif
 

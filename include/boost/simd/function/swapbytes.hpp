@@ -31,7 +31,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::swapbytes_> swapbytes = {};
+  Value swapbytes(Value const & v0);
 } }
 #endif
 

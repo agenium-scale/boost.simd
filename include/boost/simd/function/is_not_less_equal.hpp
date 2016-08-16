@@ -45,7 +45,7 @@ namespace boost { namespace simd
     @c is_nle
 
   **/
-  const boost::dispatch::functor<tag::is_not_less_equal_> is_not_less_equal = {};
+  as_logical_t<Value> is_not_less_equal(Value const& x, Value const &y);
 } }
 #endif
 

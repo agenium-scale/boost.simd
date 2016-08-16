@@ -43,7 +43,7 @@ namespace boost { namespace simd
     @see  twopower, exponent
 
   **/
-  const boost::dispatch::functor<tag::ilog2_> ilog2 = {};
+  as_integer_t<Value> ilog2(Value const& x);
 } }
 #endif
 

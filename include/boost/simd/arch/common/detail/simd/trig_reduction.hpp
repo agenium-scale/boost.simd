@@ -39,7 +39,7 @@
 #include <boost/simd/constant/pio_4.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/two.hpp>
-#include <boost/simd/constant/medium_pi.hpp>
+#include <boost/simd/detail/constant/medium_pi.hpp>
 #include <boost/simd/constant/false.hpp>
 #include <boost/simd/constant/ratio.hpp>
 #include <boost/simd/constant/constant.hpp>

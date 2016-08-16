@@ -36,7 +36,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::none_> none = {};
+  bool none(Value const & v0);
 } }
 #endif
 

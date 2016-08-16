@@ -28,9 +28,9 @@ namespace boost { namespace simd
     For every parameter of floating type T
 
     @code
-    T r, rc;
+    T r;
     as_integer<T> n;
-    n = rem_pio2<Range>(x, r);
+    std::tie(n, r) = rem_pio2(x);
     @endcode
 
     is similar to:
@@ -46,7 +46,7 @@ namespace boost { namespace simd
     that allow to statically choose the computation process.
 
   **/
-  const boost::dispatch::functor<tag::rem_pio2_> rem_pio2 = {};
+  std::pair<IntegerValue, Value> rem_2pio(Value const & v0);
 } }
 #endif
 

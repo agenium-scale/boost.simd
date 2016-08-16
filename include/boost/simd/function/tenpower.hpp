@@ -45,7 +45,7 @@ namespace boost { namespace simd
     @see exp10
 
   **/
-  const boost::dispatch::functor<tag::tenpower_> tenpower = {};
+  Value tenpower(IntegerValue const& n);
 } }
 #endif
 

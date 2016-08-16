@@ -43,7 +43,7 @@ namespace boost { namespace simd
 
       @return The Logeps constant for the proper type
     **/
-    const boost::dispatch::functor<tag::logeps_> logeps = {};
+    Value Logeps();
   }
 } }
 #endif

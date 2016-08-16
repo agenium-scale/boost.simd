@@ -14,7 +14,7 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/constant/mantissamask.hpp>
+#include <boost/simd/detail/constant/mantissamask.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/function/simd/bitwise_and.hpp>
 #include <boost/simd/function/simd/bitwise_or.hpp>

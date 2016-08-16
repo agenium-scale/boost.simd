@@ -6,36 +6,28 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-#include <ns.bench.hpp>
-#include <boost/simd/function/scalar/significants.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <cmath>
+#include <simd_bench.hpp>
+#include <boost/simd/function/simd/significants.hpp>
+#include <boost/simd/function/simd/enumerate.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
-namespace bs = boost::simd;
-namespace bd = boost::dispatch;
 namespace nsb = ns::bench;
-
-template <typename T>
-struct significants_scalar
+namespace bs =  boost::simd;
+namespace bd =  boost::dispatch;
+template < int N >
+struct signif
 {
-   template <typename U>
-   void operator()(U min0, U max0, U min1, U max1)
-   {
-     using iT = bd::as_integer_t<T>;
-     using ret_type = T;
-     nsb::make_function_experiment_cpe_sized_<1>
-       ( [](const T & x0, const iT & x1) -> ret_type
-         { return bs::significants(x0, x1); }
-       , nsb::generators::rand<T>(min0, max0)
-       , nsb::generators::rand<iT>(min1, max1)
-       );
-   }
+  template<class T> T operator()(const T & a) const
+  {
+    using i_t = bd::as_integer_t<T>;
+    return bs::significants(a, bs::enumerate<i_t>(0, N));
+  }
 };
 
+DEFINE_SCALAR_BENCH(scalar_significantsp, signif< 1>());
+DEFINE_SCALAR_BENCH(scalar_significantsn, signif<-1>());
 
-int main(int argc, char **argv) {
-   nsb::parse_args(argc, argv);
-   nsb::make_for_each<significants_scalar, NS_BENCH_IEEE_TYPES>( -10,  10, 1, 5);
-   return 0;
+DEFINE_BENCH_MAIN() {
+  nsb::for_each<scalar_significantsn, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<scalar_significantsp, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
-

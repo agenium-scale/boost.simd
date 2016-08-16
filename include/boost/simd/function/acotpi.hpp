@@ -37,7 +37,7 @@ namespace boost { namespace simd
     @see acot
 
   **/
-  const boost::dispatch::functor<tag::acotpi_> acotpi = {};
+  Value acotpi(Value const & v0);
 } }
 #endif
 

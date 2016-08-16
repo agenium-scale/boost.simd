@@ -41,7 +41,7 @@ namespace boost { namespace simd
 z    for floating types
 
   **/
-  const boost::dispatch::functor<tag::is_nlez_> is_nlez = {};
+  as_logical_t<Value> is_nlez(Value const& x);
 } }
 #endif
 

@@ -14,7 +14,7 @@
 #include <boost/simd/constant/ten.hpp>
 #include <boost/simd/function/horn.hpp>
 
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 
 namespace bs =  boost::simd;
 

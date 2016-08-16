@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::sincos_> sincos = {};
+  std::pair<Value, Value> sincos(Value const & v0);
 } }
 #endif
 

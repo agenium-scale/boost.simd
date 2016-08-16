@@ -44,7 +44,7 @@ namespace boost { namespace simd
 
       @return The Mantissamask constant for the proper type
     **/
-    const boost::dispatch::functor<tag::mantissamask_> mantissamask = {};
+    Value Mantissamask();
   }
 } }
 #endif

@@ -45,7 +45,7 @@ namespace boost { namespace simd
 
       @return The Half constant for the proper type
     **/
-    const boost::dispatch::functor<tag::half_> half = {};
+    Value Half();
   }
 } }
 #endif

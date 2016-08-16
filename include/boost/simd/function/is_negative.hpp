@@ -58,7 +58,7 @@ namespace boost { namespace simd
     @see is_positive,  Mzero, bitofsign
 
   **/
-  const boost::dispatch::functor<tag::is_negative_> is_negative = {};
+  as_logical_t<Value> is_negative(Value const& x);
 } }
 #endif
 

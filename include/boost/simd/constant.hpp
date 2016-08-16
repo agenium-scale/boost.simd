@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -18,20 +18,11 @@ namespace boost { namespace simd
       @ingroup group-functions
       @defgroup group-constant Constant Functions
 
-      Those functions provides scalar and SIMD constant generators for the most usual
-      constant values like zero, numeric limits, IEEE special values.
+      These functions provides scalar and SIMD constant generators for the most usual
+      constant values such as zero, numeric limits, IEEE special values.
 
-      Constant generator functions takes no argument but requires a template type parameters
-      to choose which type the constant should be stored into.
-    **/
-
-    /*!
-      @ingroup group-callable
-      @defgroup group-callable-constant Constant Callable Objects
-      Callable objects version of @ref group-constant
-
-      Their specific semantic limitations are similar to those of their function
-      equivalents as described in the @ref group-constant section.
+      Constant generator functions take no arguments but require a template type parameter
+      so that the correct type of the required constant is returned.
     **/
 
 } }
@@ -74,45 +65,43 @@ namespace boost { namespace simd
 #include <boost/simd/constant/invlog_2.hpp>
 #include <boost/simd/constant/invpi.hpp>
 #include <boost/simd/constant/invsqrt_2pi.hpp>
-#include <boost/simd/constant/ldexpmask.hpp>
-#include <boost/simd/constant/limitexponent.hpp>
-#include <boost/simd/constant/log10_2hi.hpp>
-#include <boost/simd/constant/log10_2lo.hpp>
-#include <boost/simd/constant/log10_ehi.hpp>
-#include <boost/simd/constant/log10_elo.hpp>
+#include <boost/simd/detail/constant/ldexpmask.hpp>
+#include <boost/simd/detail/constant/limitexponent.hpp>
+#include <boost/simd/detail/constant/log10_2hi.hpp>
+#include <boost/simd/detail/constant/log10_2lo.hpp>
+#include <boost/simd/detail/constant/log10_ehi.hpp>
+#include <boost/simd/detail/constant/log10_elo.hpp>
 #include <boost/simd/constant/log_10.hpp>
 #include <boost/simd/constant/log10_pi.hpp>
 #include <boost/simd/constant/log2_e.hpp>
 #include <boost/simd/constant/log2_em1.hpp>
-#include <boost/simd/constant/log_2hi.hpp>
 #include <boost/simd/constant/log_2.hpp>
-#include <boost/simd/constant/log_2lo.hpp>
 #include <boost/simd/constant/log_2olog_10.hpp>
 #include <boost/simd/constant/logeps.hpp>
 #include <boost/simd/constant/logpi.hpp>
 #include <boost/simd/constant/logsqrt2pi.hpp>
-#include <boost/simd/constant/mantissamask.hpp>
-#include <boost/simd/constant/mask1frexp.hpp>
-#include <boost/simd/constant/mask2frexp.hpp>
-#include <boost/simd/constant/maxexponent.hpp>
-#include <boost/simd/constant/maxexponentm1.hpp>
-#include <boost/simd/constant/maxflint.hpp>
-#include <boost/simd/constant/maxinit.hpp>
-#include <boost/simd/constant/maxleftshift.hpp>
-#include <boost/simd/constant/maxlog10.hpp>
-#include <boost/simd/constant/maxlog2.hpp>
-#include <boost/simd/constant/maxlog.hpp>
-#include <boost/simd/constant/medium_pi.hpp>
+#include <boost/simd/detail/constant/mantissamask.hpp>
+#include <boost/simd/detail/constant/mask1frexp.hpp>
+#include <boost/simd/detail/constant/mask2frexp.hpp>
+#include <boost/simd/detail/constant/maxexponent.hpp>
+#include <boost/simd/detail/constant/maxexponentm1.hpp>
+#include <boost/simd/detail/constant/maxflint.hpp>
+#include <boost/simd/detail/constant/maxinit.hpp>
+#include <boost/simd/detail/constant/maxleftshift.hpp>
+#include <boost/simd/detail/constant/maxlog10.hpp>
+#include <boost/simd/detail/constant/maxlog2.hpp>
+#include <boost/simd/detail/constant/maxlog.hpp>
+#include <boost/simd/detail/constant/medium_pi.hpp>
 #include <boost/simd/constant/meight.hpp>
 #include <boost/simd/constant/mfive.hpp>
 #include <boost/simd/constant/mfour.hpp>
 #include <boost/simd/constant/mhalf.hpp>
 #include <boost/simd/constant/mindenormal.hpp>
-#include <boost/simd/constant/minexponent.hpp>
+#include <boost/simd/detail/constant/minexponent.hpp>
 #include <boost/simd/constant/minf.hpp>
-#include <boost/simd/constant/minlog10.hpp>
-#include <boost/simd/constant/minlog2.hpp>
-#include <boost/simd/constant/minlog.hpp>
+#include <boost/simd/detail/constant/minlog10.hpp>
+#include <boost/simd/detail/constant/minlog2.hpp>
+#include <boost/simd/detail/constant/minlog.hpp>
 #include <boost/simd/constant/mlog10two2nmb.hpp>
 #include <boost/simd/constant/mlog2two2nmb.hpp>
 #include <boost/simd/constant/mlogeps2.hpp>
@@ -135,33 +124,33 @@ namespace boost { namespace simd
 #include <boost/simd/constant/oneosqrteps.hpp>
 #include <boost/simd/constant/oneotwoeps.hpp>
 #include <boost/simd/constant/pi.hpp>
-#include <boost/simd/constant/pio2_1.hpp>
-#include <boost/simd/constant/pio2_1t.hpp>
-#include <boost/simd/constant/pio2_2.hpp>
-#include <boost/simd/constant/pio2_2t.hpp>
+#include <boost/simd/detail/constant/pio2_1.hpp>
+#include <boost/simd/detail/constant/pio2_1t.hpp>
+#include <boost/simd/detail/constant/pio2_2.hpp>
+#include <boost/simd/detail/constant/pio2_2t.hpp>
 #include <boost/simd/constant/pio2_3.hpp>
-#include <boost/simd/constant/pio2_3t.hpp>
+#include <boost/simd/detail/constant/pio2_3t.hpp>
 #include <boost/simd/constant/pio_2.hpp>
-#include <boost/simd/constant/pio_2lo.hpp>
+#include <boost/simd/detail/constant/pio_2lo.hpp>
 #include <boost/simd/constant/pio_3.hpp>
 #include <boost/simd/constant/pio_4.hpp>
-#include <boost/simd/constant/pio_4lo.hpp>
+#include <boost/simd/detail/constant/pio_4lo.hpp>
 #include <boost/simd/constant/pio_6.hpp>
-#include <boost/simd/constant/pix2_1.hpp>
-#include <boost/simd/constant/pix2_2.hpp>
-#include <boost/simd/constant/pix2_3.hpp>
-#include <boost/simd/constant/powlargelim.hpp>
-#include <boost/simd/constant/powlowlim.hpp>
+#include <boost/simd/detail/constant/pix2_1.hpp>
+#include <boost/simd/detail/constant/pix2_2.hpp>
+#include <boost/simd/detail/constant/pix2_3.hpp>
+#include <boost/simd/detail/constant/powlargelim.hpp>
+#include <boost/simd/detail/constant/powlowlim.hpp>
 #include <boost/simd/constant/quarter.hpp>
 #include <boost/simd/constant/radindeg.hpp>
-#include <boost/simd/constant/radindegr.hpp>
+#include <boost/simd/detail/constant/radindegr.hpp>
 #include <boost/simd/constant/ratio.hpp>
 #include <boost/simd/constant/real.hpp>
 #include <boost/simd/constant/seven.hpp>
 #include <boost/simd/constant/signmask.hpp>
 #include <boost/simd/constant/six.hpp>
 #include <boost/simd/constant/smallestposval.hpp>
-#include <boost/simd/constant/splitfactor.hpp>
+#include <boost/simd/detail/constant/splitfactor.hpp>
 #include <boost/simd/constant/sqrt_1o_5.hpp>
 #include <boost/simd/constant/sqrt_2.hpp>
 #include <boost/simd/constant/sqrt_2o_2.hpp>

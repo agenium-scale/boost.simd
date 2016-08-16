@@ -21,7 +21,7 @@ namespace boost { namespace simd
     @ingroup group-bitwise
     Function object implementing reversebits capabilities
 
-    Returns the bits of the entry in reverse order.
+    Returns the bits in reverse order for each scalar entry.
 
     @par semantic:
     For any given value @c x of type @c T:
@@ -31,7 +31,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::reversebits_> reversebits = {};
+  Value reversebits(Value const & v0);
 } }
 #endif
 

@@ -39,7 +39,7 @@ namespace boost { namespace simd
     @see gamma
 
   **/
-  const boost::dispatch::functor<tag::stirling_> stirling = {};
+  Value stirling(Value const & v0);
 } }
 #endif
 

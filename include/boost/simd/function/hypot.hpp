@@ -48,7 +48,10 @@ namespace boost { namespace simd
     std_,  fast_ for floating entries
 
   **/
-  const boost::dispatch::functor<tag::hypot_> hypot = {};
+  Value hypot(Option const& o, Value const& x, Value const& y);
+
+  //@overload
+  Value hypot(Value const& x, Value const& y);
 } }
 #endif
 

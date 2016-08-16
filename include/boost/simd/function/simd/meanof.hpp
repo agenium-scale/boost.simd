@@ -14,6 +14,6 @@
 
 #include <boost/simd/function/scalar/meanof.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/meanof.hpp>
+#include <boost/simd/arch/common/simd/function/meanof.hpp>
 
 #endif

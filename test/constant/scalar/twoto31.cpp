@@ -9,7 +9,7 @@
 //==================================================================================================
 #include <boost/simd/constant/twoto31.hpp>
 #include <boost/simd/as.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 
 STF_CASE_TPL( "Check twoto31 behavior for integral types"
             , (std::uint32_t)(std::uint64_t)(std::int32_t)(std::int64_t)

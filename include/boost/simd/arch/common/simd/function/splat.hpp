@@ -39,16 +39,16 @@ namespace boost { namespace simd { namespace ext
     using storage_t = typename target_t::storage_type;
     using value_t   = typename storage_t::value_type;
 
-    BOOST_FORCEINLINE target_t operator()(V const& v, Target const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE target_t operator()(V const& v, Target const&) const
     {
       return do_(v, typename target_t::traits::static_range{} );
     }
 
     template<typename N, typename T>
-    static BOOST_FORCEINLINE T&& make(T&& t) BOOST_NOEXCEPT { return std::forward<T>(t); }
+    static BOOST_FORCEINLINE T&& make(T&& t) { return std::forward<T>(t); }
 
     template<typename... N>
-    static inline storage_t do_(V const& v, brigand::list<N...> const&) BOOST_NOEXCEPT
+    static BOOST_FORCEINLINE storage_t do_(V const& v, brigand::list<N...> const&)
     {
       value_t s(v);
       return {{ make<N>(s)... }};
@@ -67,23 +67,23 @@ namespace boost { namespace simd { namespace ext
     using target_t  = typename Target::type;
     using storage_t = typename target_t::storage_type;
 
-    BOOST_FORCEINLINE target_t operator()(V const& v, Target const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE target_t operator()(V const& v, Target const&) const
     {
       return do_(v, typename target_t::storage_kind{}, typename target_t::traits::static_range{} );
     }
 
     template<typename N, typename T>
-    static BOOST_FORCEINLINE T&& value(T&& t) BOOST_NOEXCEPT { return std::forward<T>(t); }
+    static BOOST_FORCEINLINE T&& value(T&& t) { return std::forward<T>(t); }
 
-    template<typename K, typename... N> static inline
-    target_t do_(V const& v, K const&, brigand::list<N...> const&) BOOST_NOEXCEPT
+    template<typename K, typename... N> static BOOST_FORCEINLINE
+    target_t do_(V const& v, K const&, brigand::list<N...> const&)
     {
       using base_t  = as_arithmetic_t<target_t>;
       return bitwise_cast<target_t>( genmask<base_t>(v) );
     }
 
-    template<typename... N> static inline
-    storage_t do_(V const& v, aggregate_storage const&, brigand::list<N...> const&) BOOST_NOEXCEPT
+    template<typename... N> static BOOST_FORCEINLINE
+    storage_t do_(V const& v, aggregate_storage const&, brigand::list<N...> const&)
     {
       typename storage_t::value_type s(!!v);
       return {{ s, s }};

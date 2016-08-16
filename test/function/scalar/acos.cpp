@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/scalar/acos.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/nan.hpp>
@@ -38,6 +38,6 @@ STF_CASE_TPL (" acos",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(acos(bs::Half<T>()), bs::Pio_3<r_t>(), 0.5);
   STF_ULP_EQUAL(acos(bs::Mhalf<T>()), bs::Twopio_3<r_t>(), 0.5);
   STF_ULP_EQUAL(acos(bs::Mone<T>()), bs::Pi<r_t>(), 0);
-  STF_ULP_EQUAL(acos(bs::One<T>()), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(acos(bs::One<T>()), bs::Zero<r_t>(), 0.5);
   STF_ULP_EQUAL(acos(bs::Zero<T>()), bs::Pio_2<r_t>(), 0);
 }

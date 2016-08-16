@@ -43,7 +43,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::cumprod_> cumprod = {};
+  Value cumprod(Value const & v0);
 } }
 #endif
 

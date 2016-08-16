@@ -1,6 +1,6 @@
 //==================================================================================================
 /*
-  Copyright 2012 - 2015 NumScale SAS
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -17,7 +17,7 @@
 //! [scalar-dot]
 template<typename Value> Value dot(Value* first1, Value* last1, Value* first2)
 {
-  Value v{};
+  Value v(0);
 
   while(first1 != last1)
   {

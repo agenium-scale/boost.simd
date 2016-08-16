@@ -51,7 +51,7 @@ namespace boost { namespace simd
 
       @return The Twoopi constant for the proper type
     **/
-    const boost::dispatch::functor<tag::twoopi_> twoopi = {};
+    Value Twoopi();
   }
 } }
 #endif

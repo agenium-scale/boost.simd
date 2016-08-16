@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @see is_invalid, is_denormal, is_eq
 
   **/
-  const boost::dispatch::functor<tag::is_normal_> is_normal = {};
+  as_logical_t<Value> is_normal(Value const& x);
 } }
 #endif
 

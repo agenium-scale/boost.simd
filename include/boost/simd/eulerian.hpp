@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -18,20 +18,12 @@ namespace boost { namespace simd
     @ingroup group-functions
     @defgroup group-euler Eulerian functions
 
-    Algorithms for computing scalar and SIMD version of
-    some eulerian functions. Mainly those that are present in
+    Algorithms for computing scalar and SIMD versions of
+    some Eulerian functions. Mainly those that are present in
     stdlibc++ 11.
 
   **/
 
-  /*!
-    @ingroup group-callable
-    @defgroup group-callable-euler Eulerian Callable Objects
-    Callable objects version of @ref group-euler
-
-    Their specific semantic limitations are similar to those of their function
-    equivalents as described in the @ref group-euler section.
-  **/
 } }
 
 #include <boost/simd/function/erfc.hpp>

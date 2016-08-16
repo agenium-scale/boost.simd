@@ -35,7 +35,7 @@ namespace boost { namespace simd
 
       @return The Maxinit constant for the proper type
     **/
-    const boost::dispatch::functor<tag::maxinit_> maxinit = {};
+    Value Maxinit();
   }
 } }
 #endif

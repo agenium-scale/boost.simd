@@ -16,12 +16,6 @@ using namespace boost::simd;
 
 STF_CASE_TPL( "Unary identity shuffle", STF_NUMERIC_TYPES)
 {
-  // cardinal 2
-  {
-    bs::pack<T,2> a{ Valmax<T>(), T(42) };
-    STF_ALL_EQUAL( (shuffle<0,1>(a)), a );
-  }
-
   // cardinal 4
   {
     bs::pack<T,4> a{ Valmax<T>(), T(42), T(69), Valmin<T>() };
@@ -40,15 +34,6 @@ STF_CASE_TPL( "Unary identity shuffle", STF_NUMERIC_TYPES)
 
 STF_CASE_TPL( "Binary identity shuffle", STF_NUMERIC_TYPES)
 {
-  // cardinal 2
-  {
-    bs::pack<T,2> a{ Valmax<T>(), T(42)       };
-    bs::pack<T,2> b{ T(69)      , Valmin<T>() };
-
-    STF_ALL_EQUAL( (shuffle<0,1>(a,b)), a );
-    STF_ALL_EQUAL( (shuffle<2,3>(a,b)), b );
-  }
-
   // cardinal 4
   {
     bs::pack<T,4> a{ Valmax<T>(), T(42), T(69), Valmin<T>() };

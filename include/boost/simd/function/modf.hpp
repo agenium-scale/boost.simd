@@ -36,7 +36,7 @@ namespace boost { namespace simd
     T f = frac(x);
     @endcode
 
-    The following call can also be used
+    The following call may also be used
 
     @code
     std::pair<T,T> p = modf(x);
@@ -45,7 +45,10 @@ namespace boost { namespace simd
     @see frac,  trunc
 
   **/
-  const boost::dispatch::functor<tag::modf_> modf = {};
+  Value modf(Value const & x, Value & y);
+
+  //@overload
+  std::pair<Value, Value> modf(Value const & x);
 } }
 #endif
 

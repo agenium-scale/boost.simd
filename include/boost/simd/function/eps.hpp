@@ -20,10 +20,9 @@ namespace boost { namespace simd
     @ingroup group-ieee
     Function object implementing eps capabilities
 
-    This is the distance between x and the next representable value of the type.
+    This is the distance between x and the next representable value of x's type.
 
     For floating types (except denormal numbers)  @c eps(x) returns 2^(exponent(x))*Eps
-
 
     @par Semantic:
 
@@ -46,8 +45,7 @@ namespace boost { namespace simd
     @return a value of same type as the input
 
 **/
-  const boost::dispatch::functor<tag::abs_> eps = {};
-
+  Value eps(Value const & v0);
 
 } }
 #endif

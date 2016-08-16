@@ -6,8 +6,8 @@
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
 #include <boost/simd/function/simd/exp2.hpp>
-#include <boost/simd/constant/minlog2.hpp>
-#include <boost/simd/constant/maxlog2.hpp>
+#include <boost/simd/detail/constant/minlog2.hpp>
+#include <boost/simd/detail/constant/maxlog2.hpp>
 #include <boost/simd/pack.hpp>
 #include <exhaustive.hpp>
 

@@ -26,17 +26,17 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    T r = sbits(x);
+    I r = sbits(x);
     @endcode
 
     is similar to:
 
     @code
-    T r = bitwise_cast<as_integer_t<T,signed>>(x);
+    I r = bitwise_cast<as_integer_t<T,signed>>(x);
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::sbits_> sbits = {};
+  IntegerValue sbits(Value const & v0);
 } }
 #endif
 

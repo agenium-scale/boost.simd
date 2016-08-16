@@ -6,35 +6,26 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-#include <ns.bench.hpp>
+#include <simd_bench.hpp>
 #include <boost/simd/function/simd/bitset.hpp>
+#include <boost/simd/function/simd/enumerate.hpp>
 #include <boost/simd/pack.hpp>
-#include <cmath>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
-namespace bs = boost::simd;
 namespace nsb = ns::bench;
+namespace bs =  boost::simd;
+namespace bd =  boost::dispatch;
 
-template <typename T>
-struct bitset_simd
+struct bitg
 {
-   template <typename U>
-   void operator()(U min0, U max0)
-   {
-     using pack_t = bs::pack<T>;
-     using ret_type = bs::pack<T>;
-     nsb::make_function_experiment_cpe_sized_<pack_t::static_size>
-       ( [](const pack_t & x0) -> ret_type
-         { return bs::bitset(x0); }
-       , nsb::generators::rand<pack_t>(min0, max0)
-       );
-   }
+  template<class T> T operator()(const T & a) const
+  {
+    using i_t = bd::as_integer_t<T>;
+    return bs::bitset(a, bs::enumerate<i_t>());
+  }
 };
 
-
-int main(int argc, char **argv) {
-   nsb::parse_args(argc, argv);
-   nsb::make_for_each<bitset_simd, NS_BENCH_SIGNED_NUMERIC_TYPES>( -10,  10);
-   nsb::make_for_each<bitset_simd, NS_BENCH_UNSIGNED_NUMERIC_TYPES>(0,  10);
-   return 0;
+DEFINE_SIMD_BENCH(simd_bitset, bitg());
+DEFINE_BENCH_MAIN() {
+  nsb::for_each<simd_bitset, NS_BENCH_NUMERIC_TYPES>(-10, 10);
 }
-

@@ -17,11 +17,11 @@
 #include <boost/simd/function/fast.hpp>
 
 #ifndef BOOST_SIMD_NO_DENORMALS
-#include <boost/simd/constant/minexponent.hpp>
+#include <boost/simd/detail/constant/minexponent.hpp>
 #include <boost/simd/constant/smallestposval.hpp>
 #endif
-#include <boost/simd/constant/limitexponent.hpp>
-#include <boost/simd/constant/maxexponent.hpp>
+#include <boost/simd/detail/constant/limitexponent.hpp>
+#include <boost/simd/detail/constant/maxexponent.hpp>
 #include <boost/simd/constant/nbmantissabits.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/function/scalar/bitwise_cast.hpp>
@@ -133,6 +133,7 @@ namespace boost { namespace simd { namespace ext
       return bs::ldexp(a0, a1);
     }
   };
+
 } } }
 
 

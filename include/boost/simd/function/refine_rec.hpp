@@ -22,14 +22,27 @@ namespace boost { namespace simd
     Function object implementing refine_rec capabilities
 
     Performs a Newton-Raphson step to improve precision of reciprocate estimate.
-    This function can be used in conjunction with raw_rec or
-    fast_rec to add more precision to the estimate if their default
+    This function can be used in conjunction with raw_(rec) or
+    fast_(rec) to add more precision to the estimate if their default
     precision is not enough.
+
+    @par semantic:
+    For any given value @c x, @c est  of floating type T:
+
+    @code
+    T r =refine_rec(x, est);
+    @endcode
+
+    is similar to
+
+    @code
+    T r = fma(fnms(est, a0, One<T>()), est, est);
+    @endcode
 
     @see rec
 
   **/
-  const boost::dispatch::functor<tag::refine_rec_> refine_rec = {};
+  Value refine_rec(Value const & v0, Value const& est);
 } }
 #endif
 

@@ -6,37 +6,41 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-#include <ns.bench.hpp>
+#include <simd_bench.hpp>
 #include <boost/simd/function/simd/nthroot.hpp>
+#include <boost/simd/function/simd/enumerate.hpp>
 #include <boost/simd/pack.hpp>
 #include <cmath>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
-namespace bs = boost::simd;
-namespace bd = boost::dispatch;
 namespace nsb = ns::bench;
+namespace bs =  boost::simd;
+namespace bd =  boost::dispatch;
 
-template <typename T>
-struct nthroot_simd
+struct nthr
 {
-   template <typename U>
-   void operator()(U min0, U max0, U min1, U max1)
-   {
-     using pack_t = bs::pack<T>;
-     using ipack_t = bs::pack<bd::as_integer_t<T>>;
-     using ret_type = bs::pack<T>;
-     nsb::make_function_experiment_cpe_sized_<pack_t::static_size>
-       ( [](const pack_t & x0, const ipack_t & x1) -> ret_type
-         { return bs::nthroot(x0, x1); }
-       , nsb::generators::rand<pack_t>(min0, max0)
-       , nsb::generators::rand<ipack_t>(min1, max1)
-       );
-   }
+  template<class T> T operator()(const T & a) const
+  {
+    using i_t = bd::as_integer_t<T>;
+    return bs::nthroot(a, bs::enumerate<i_t>(2));
+  }
 };
 
+struct nthrf
+{
+  template<class T> T operator()(const T & a) const
+  {
+    using i_t = bd::as_integer_t<T>;
+    return bs::fast_(bs::nthroot)(a, bs::enumerate<i_t>(2));
+  }
+};
 
-int main(int argc, char **argv) {
-   nsb::parse_args(argc, argv);
-   nsb::make_for_each<nthroot_simd, NS_BENCH_IEEE_TYPES>( -10,  10,  -10,  10);
-   return 0;
+DEFINE_SIMD_BENCH(simd_nthroot, nthr());
+DEFINE_SIMD_BENCH(fast_simd_nthroot, nthrf());
+
+DEFINE_BENCH_MAIN() {
+  nsb::for_each<simd_nthroot, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<fast_simd_nthroot, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
+
 

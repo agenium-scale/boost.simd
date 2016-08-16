@@ -39,7 +39,7 @@ namespace boost { namespace simd
     @see Sqrtsmallestposval
 
   **/
-  const boost::dispatch::functor<tag::safe_min_> safe_min = {};
+  Value safe_min(Value const & v0);
 } }
 #endif
 

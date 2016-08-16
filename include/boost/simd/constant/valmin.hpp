@@ -52,7 +52,7 @@ namespace boost { namespace simd
 
       @return The minimum representable value of the input type
     **/
-    const boost::dispatch::functor<tag::valmin_> valmin = {};
+    Value Valmin();
   }
 } }
 #endif

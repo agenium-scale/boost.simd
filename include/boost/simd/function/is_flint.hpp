@@ -38,7 +38,7 @@ namespace boost { namespace simd
     are flint and even are even...
 
   **/
-  const boost::dispatch::functor<tag::is_flint_> is_flint = {};
+  as_logical_t<Value> is_flint(Value const& x);
 } }
 #endif
 

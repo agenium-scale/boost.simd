@@ -8,7 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/scalar/round.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -18,7 +18,7 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/mhalf.hpp>
-#include <boost/simd/constant/maxflint.hpp>
+#include <boost/simd/detail/constant/maxflint.hpp>
 #include <boost/simd/function/next.hpp>
 #include <boost/simd/function/prev.hpp>
 

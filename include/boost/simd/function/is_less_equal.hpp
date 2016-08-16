@@ -46,7 +46,7 @@ namespace boost { namespace simd
     @see  is_equal, is_eqz, is_ne
 
   **/
-  const boost::dispatch::functor<tag::is_less_equal_> is_less_equal = {};
+  as_logical_t<Value> is_less_equal(Value const& x, Value const& y);
 } }
 #endif
 

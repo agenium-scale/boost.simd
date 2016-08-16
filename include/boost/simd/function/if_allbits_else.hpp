@@ -43,7 +43,10 @@ namespace boost { namespace simd
     @see genmask, Allbits, Nan
 
   **/
-  const boost::dispatch::functor<tag::if_allbits_else_> if_allbits_else = {};
+  Value if_allbits_else(Value const& c, Value const& v0);
+
+  //@overload
+  Value if_allbits_else(LogicalValue const& c, Value const& v0);
 } }
 #endif
 

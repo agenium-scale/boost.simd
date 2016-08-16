@@ -52,7 +52,7 @@ namespace boost { namespace simd
 
       @return The Twopi constant for the proper type
     **/
-    const boost::dispatch::functor<tag::twopi_> twopi = {};
+    Value Twopi();
   }
 } }
 #endif

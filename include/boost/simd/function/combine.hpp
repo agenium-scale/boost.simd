@@ -50,7 +50,7 @@ namespace boost { namespace simd
     @see group
     @see groups
   **/
-  const boost::dispatch::functor<tag::combine_> combine = {};
+  Value combine(Value const & v0, Value const& v1);
 #endif
 } }
 

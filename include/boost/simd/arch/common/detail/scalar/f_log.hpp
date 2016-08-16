@@ -28,13 +28,13 @@
 #endif
 #include <boost/simd/arch/common/detail/generic/f_log_kernel.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
-#include <boost/simd/constant/log10_2hi.hpp>
-#include <boost/simd/constant/log10_2lo.hpp>
-#include <boost/simd/constant/log10_ehi.hpp>
-#include <boost/simd/constant/log10_elo.hpp>
+#include <boost/simd/detail/constant/log10_2hi.hpp>
+#include <boost/simd/detail/constant/log10_2lo.hpp>
+#include <boost/simd/detail/constant/log10_ehi.hpp>
+#include <boost/simd/detail/constant/log10_elo.hpp>
 #include <boost/simd/constant/log2_em1.hpp>
-#include <boost/simd/constant/log_2hi.hpp>
-#include <boost/simd/constant/log_2lo.hpp>
+#include <boost/simd/detail/constant/log_2hi.hpp>
+#include <boost/simd/detail/constant/log_2lo.hpp>
 #include <boost/simd/constant/mhalf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/nan.hpp>

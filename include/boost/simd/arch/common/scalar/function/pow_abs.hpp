@@ -21,8 +21,8 @@
 #include <boost/simd/constant/log2_em1.hpp>
 #include <boost/simd/constant/mhalf.hpp>
 #include <boost/simd/constant/minf.hpp>
-#include <boost/simd/constant/powlargelim.hpp>
-#include <boost/simd/constant/powlowlim.hpp>
+#include <boost/simd/detail/constant/powlargelim.hpp>
+#include <boost/simd/detail/constant/powlowlim.hpp>
 #include <boost/simd/constant/ratio.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/abs.hpp>

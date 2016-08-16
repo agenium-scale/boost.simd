@@ -58,7 +58,7 @@ namespace boost { namespace simd
     @see exponent,  mantissa
 
   **/
-  const boost::dispatch::functor<tag::frexp_> frexp = {};
+  std::pair<T, as_integer_t<Value>> frexp(Value const & v0);
 } }
 #endif
 

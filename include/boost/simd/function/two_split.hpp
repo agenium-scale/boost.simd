@@ -31,7 +31,7 @@ namespace boost { namespace simd
     and where @c r0 and @c r1 bit pattern don't overlap.
 
   **/
-  const boost::dispatch::functor<tag::two_split_> two_split = {};
+  std::pair<Value, Value> two_split(Value const& x);
 } }
 #endif
 

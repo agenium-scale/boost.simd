@@ -16,18 +16,18 @@
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/constant/invlog10_2.hpp>
 #include <boost/simd/constant/invlog_2.hpp>
-#include <boost/simd/constant/log10_2hi.hpp>
-#include <boost/simd/constant/log10_2lo.hpp>
+#include <boost/simd/detail/constant/log10_2hi.hpp>
+#include <boost/simd/detail/constant/log10_2lo.hpp>
 #include <boost/simd/constant/log_10.hpp>
 #include <boost/simd/constant/log_2.hpp>
-#include <boost/simd/constant/log_2hi.hpp>
-#include <boost/simd/constant/log_2lo.hpp>
-#include <boost/simd/constant/maxlog.hpp>
-#include <boost/simd/constant/maxlog10.hpp>
-#include <boost/simd/constant/maxlog2.hpp>
-#include <boost/simd/constant/minlog.hpp>
-#include <boost/simd/constant/minlog10.hpp>
-#include <boost/simd/constant/minlog2.hpp>
+#include <boost/simd/detail/constant/log_2hi.hpp>
+#include <boost/simd/detail/constant/log_2lo.hpp>
+#include <boost/simd/detail/constant/maxlog.hpp>
+#include <boost/simd/detail/constant/maxlog10.hpp>
+#include <boost/simd/detail/constant/maxlog2.hpp>
+#include <boost/simd/detail/constant/minlog.hpp>
+#include <boost/simd/detail/constant/minlog10.hpp>
+#include <boost/simd/detail/constant/minlog2.hpp>
 #include <boost/simd/function/simd/is_greater_equal.hpp>
 #include <boost/simd/function/simd/is_less_equal.hpp>
 #include <boost/simd/function/scalar/fma.hpp>
@@ -59,7 +59,7 @@ namespace boost { namespace simd
         return is_less_equal(a0, Minlog<A0>());
       }
 
-      static BOOST_FORCEINLINE A0 approx(A0 x) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE A0 approx(A0 const& x) BOOST_NOEXCEPT
       {
         // remez polynomial of degree 4 on [-0.5 0.5] for (exp(x)-1-x)/sqr(x)
         // tested in range: [-88.3763, 88.3763]
@@ -99,7 +99,7 @@ namespace boost { namespace simd
         return is_less_equal(a0, Minlog2<A0>());
       }
 
-      static BOOST_FORCEINLINE A0 approx(A0 x) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE A0 approx(A0 const& x) BOOST_NOEXCEPT
       {
         // remez polynom of degree 4 on [-0.5, 0.5] for (exp2(x)-1-x*log(2))/sqr(x)  tested in range: [-127 127]
         // 2247884800 values computed.
@@ -146,7 +146,7 @@ namespace boost { namespace simd
         return k;
       }
 
-      static BOOST_FORCEINLINE A0 approx(A0 x) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE A0 approx(A0 const& x) BOOST_NOEXCEPT
       {
         // remez polynom of degree 5 on [-0.5, 0.5]*log10(2) for (exp10(x)-1)/x   tested in range: [-37.9, 38.2308]
         //  2217772528 values computed.

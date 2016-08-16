@@ -6,38 +6,41 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-#include <ns.bench.hpp>
+#include <simd_bench.hpp>
 #include <boost/simd/function/simd/ldexp.hpp>
 #include <boost/simd/pack.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <cmath>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
-namespace bs = boost::simd;
-namespace bd = boost::dispatch;
 namespace nsb = ns::bench;
+namespace bs =  boost::simd;
+namespace bd =  boost::dispatch;
 
-template <typename T>
-struct ldexp_simd
+DEFINE_SIMD_BENCH(simd_ldexp, bs::ldexp);
+
+template < int N >
+struct lde
 {
-   template <typename U>
-   void operator()(U min0, U max0, U min1, U max1)
-   {
-     using pack_t = bs::pack<T>;
-     using ipack_t = bs::pack<bd::as_integer_t<T>>;
-     using ret_type = bs::pack<T>;
-     nsb::make_function_experiment_cpe_sized_<pack_t::static_size>
-       ( [](const pack_t & x0, const ipack_t & x1) -> ret_type
-         { return bs::ldexp(x0, x1); }
-       , nsb::generators::rand<pack_t>(min0, max0)
-       , nsb::generators::rand<ipack_t>(min1, max1)
-       );
-   }
+  template<class T> T operator()(const T & a) const
+  {
+    return bs::ldexp(a, N);
+  }
+};
+template < int N >
+struct ldef
+{
+  template<class T> T operator()(const T & a) const
+  {
+    return bs::fast_(bs::ldexp)(a, N);
+  }
 };
 
+  DEFINE_SIMD_BENCH(simd_lde10, lde<10>());
+  DEFINE_SIMD_BENCH(fast_simd_lde10, ldef<10>());
 
-int main(int argc, char **argv) {
-   nsb::parse_args(argc, argv);
-   nsb::make_for_each<ldexp_simd, NS_BENCH_IEEE_TYPES>( -10,  10,  -10,  10);
-   return 0;
+DEFINE_BENCH_MAIN() {
+  nsb::for_each<simd_lde10, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<fast_simd_lde10, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
+
 

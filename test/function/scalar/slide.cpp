@@ -7,7 +7,7 @@
 **/
 //==================================================================================================
 #include <boost/simd/function/scalar/slide.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 
 namespace bs = boost::simd;
 

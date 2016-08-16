@@ -43,6 +43,7 @@ namespace boost { namespace simd
   **/
   template<typename A>  A genmask(const A& a) {}
 
+  //@overload
   template<typename T, typename A> T genmask(const A& a) {}
 } }
 #endif

@@ -38,7 +38,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::is_not_imag_> is_not_imag = {};
+  as_logical_t<Value> is_not_imag(Value const& x);
 } }
 #endif
 

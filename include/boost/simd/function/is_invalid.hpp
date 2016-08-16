@@ -39,7 +39,7 @@ namespace boost { namespace simd
     @c is_not_finite
 
   **/
-  const boost::dispatch::functor<tag::is_invalid_> is_invalid = {};
+  as_logical_t<Value> is_invalid(Value const& x);
 } }
 #endif
 

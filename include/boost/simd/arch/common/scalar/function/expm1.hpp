@@ -20,12 +20,13 @@
 #include <boost/simd/arch/common/detail/generic/expm1_kernel.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/logeps.hpp>
-#include <boost/simd/constant/maxlog.hpp>
+#include <boost/simd/detail/constant/maxlog.hpp>
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/function/scalar/is_greater.hpp>
 #include <boost/simd/function/scalar/is_less.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/config.hpp>
 #include <cmath>
 
@@ -41,12 +42,13 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
     {
+      using sA0 = bd::scalar_of_t<A0>;
     #ifndef BOOST_SIMD_NO_INVALIDS
       if(is_nan(a0)) return Nan<A0>();
     #endif
       if((a0 < Logeps<A0>())) return Mone<A0>();
       if((a0 > Maxlog<A0>())) return  Inf<A0>();
-      return detail::expm1_kernel<A0>::expm1(a0);
+      return detail::expm1_kernel<A0, sA0>::expm1(a0);
     }
   };
   BOOST_DISPATCH_OVERLOAD ( expm1_

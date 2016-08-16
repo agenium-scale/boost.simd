@@ -47,7 +47,7 @@ namespace boost { namespace simd
     @see  shift_left, shr, rshl, rshr, rol, ror
 
   **/
-  const boost::dispatch::functor<tag::shift_right_> shift_right = {};
+  Value shift_right(Value const & v0, IntegerValue const& n);
 } }
 #endif
 

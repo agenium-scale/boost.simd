@@ -37,7 +37,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::is_not_real_> is_not_real = {};
+  as_logical_t<Value> is_not_real(Value const& x);
 } }
 #endif
 

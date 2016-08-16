@@ -39,7 +39,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::ldexp_> ldexp = {};
+  Value ldexp(Value const & x, Value const& n);
 } }
 #endif
 

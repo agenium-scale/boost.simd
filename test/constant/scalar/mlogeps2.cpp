@@ -12,7 +12,7 @@
 // #include <boost/simd/function/log.hpp>
 // #include <boost/simd/function/sqr.hpp>
 #include <boost/simd/as.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 //TODO
 STF_CASE_TPL( "Check mlogeps2 behavior for integral types"
             , (std::uint8_t)(std::uint16_t)(std::uint32_t)(std::uint64_t)

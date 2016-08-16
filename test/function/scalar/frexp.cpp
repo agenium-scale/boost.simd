@@ -10,7 +10,7 @@
 #include <boost/simd/function/scalar/frexp.hpp>
 #include <boost/simd/function/fast.hpp>
 #include <boost/simd/function/std.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -20,7 +20,7 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/nbmantissabits.hpp>
 #include <boost/simd/constant/mindenormal.hpp>
-#include <boost/simd/constant/minexponent.hpp>
+#include <boost/simd/detail/constant/minexponent.hpp>
 #include <boost/simd/constant/smallestposval.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/halfeps.hpp>

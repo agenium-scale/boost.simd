@@ -23,7 +23,7 @@
 #include <boost/simd/constant/five.hpp>
 #include <boost/simd/function/rsqrt.hpp>
 #include <boost/simd/function/std.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 
 STF_CASE_TPL (" gamma",  STF_IEEE_TYPES)
 {

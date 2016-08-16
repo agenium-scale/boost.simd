@@ -13,11 +13,11 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_EXPX2_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/constant/expx2c1.hpp>
-#include <boost/simd/constant/expx2c2.hpp>
+#include <boost/simd/detail/constant/expx2c1.hpp>
+#include <boost/simd/detail/constant/expx2c2.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/inf.hpp>
-#include <boost/simd/constant/maxlog.hpp>
+#include <boost/simd/detail/constant/maxlog.hpp>
 #include <boost/simd/function/simd/abs.hpp>
 #include <boost/simd/function/simd/exp.hpp>
 #include <boost/simd/function/simd/floor.hpp>

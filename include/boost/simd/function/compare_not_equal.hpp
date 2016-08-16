@@ -36,12 +36,12 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    bol r = any(x != y);
+    bool r = any(x != y);
     @endcode
 
     @see is_not_equal
   **/
-  const boost::dispatch::functor<tag::compare_not_equal_> compare_not_equal = {};
+  bool compare_not_equal(Value const& v0, Value const& v1);
 } }
 #endif
 

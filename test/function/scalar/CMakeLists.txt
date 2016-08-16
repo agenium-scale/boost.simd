@@ -62,7 +62,6 @@ set ( SOURCES
    minmod.cpp
    multiplies_s.cpp
    nearbyint.cpp
-   neg_s.cpp
    oneminus.cpp
    oneminus_s.cpp
    plus_s.cpp
@@ -305,8 +304,11 @@ set ( SOURCES
    tanh.cpp
 #trigonometric
    acosd.cpp
+   acosd.accurate.cpp
    acos.cpp
+   acos.accurate.cpp
    acospi.cpp
+   acospi.accurate.cpp
    acotd.cpp
    acot.cpp
    acscd.cpp

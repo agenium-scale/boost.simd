@@ -34,7 +34,7 @@ namespace boost { namespace simd
       r[i] = x[cardinal_of<T>-i-1];
     @endcode
   **/
-  const boost::dispatch::functor<tag::reverse_> reverse = {};
+  Value reverse(Value const & v0);
 #endif
 } }
 

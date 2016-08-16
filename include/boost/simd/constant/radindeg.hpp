@@ -53,7 +53,7 @@ namespace boost { namespace simd
 
       @return The Radindeg constant for the proper type
     **/
-    const boost::dispatch::functor<tag::radindeg_> radindeg = {};
+    Value Radindeg();
   }
 } }
 #endif

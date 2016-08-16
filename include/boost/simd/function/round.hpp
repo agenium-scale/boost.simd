@@ -27,16 +27,18 @@ namespace boost { namespace simd
     For any given value @c x of type @c T and integer n :
 
     @code
-    T r = round(x, n);
+    T r = round(x{, n});
     @endcode
 
     is equivalent to
 
     @code
-    T r = round(x*exp10(n)*exp10(-n));
+    T r = round(x*exp10(n))*exp10(-n);
     @endcode
 
     @par Note:
+
+    n default to 0,
 
     - n > 0: round to n digits to the right of the decimal point.
 
@@ -52,7 +54,10 @@ namespace boost { namespace simd
     - If x is \f$\pm\infty\f$ or \f$\pm0\f$, it is returned, unmodified
     - If arg is a NaN, a NaN is returned
   **/
-  const boost::dispatch::functor<tag::round_> round = {};
+  Value round(Value const & v0);
+
+  //@overload
+  Value round(Value const & x, IntegerValue const &n);
 } }
 #endif
 

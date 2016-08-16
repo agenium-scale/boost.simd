@@ -6,39 +6,26 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-#include <ns.bench.hpp>
+#include <simd_bench.hpp>
 #include <boost/simd/function/simd/bitget.hpp>
+#include <boost/simd/function/simd/enumerate.hpp>
 #include <boost/simd/pack.hpp>
-#include <boost/dispatch/meta/as_integer.hpp>
-#include <cmath>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
-namespace bs = boost::simd;
-namespace bd = boost::dispatch;
 namespace nsb = ns::bench;
+namespace bs =  boost::simd;
+namespace bd =  boost::dispatch;
 
-template <typename T>
-struct bitget_simd
+struct bitg
 {
-   template <typename U>
-   void operator()(U min0, U max0, U min1, U max1)
-   {
-     using pack_t = bs::pack<T>;
-     using ipack_t = bs::pack<bd::as_integer_t<T>>;
-     using ret_type = bs::pack<T>;
-     nsb::make_function_experiment_cpe_sized_<pack_t::static_size>
-       ( [](const pack_t & x0, const ipack_t & x1) -> ret_type
-         { return bs::bitget(x0, x1); }
-       , nsb::generators::rand<pack_t>(min0, max0)
-       , nsb::generators::rand<ipack_t>(min1, max1)
-       );
-   }
+  template<class T> T operator()(const T & a) const
+  {
+    using i_t = bd::as_integer_t<T>;
+    return bs::bitget(a, bs::enumerate<i_t>());
+  }
 };
 
-
-int main(int argc, char **argv) {
-   nsb::parse_args(argc, argv);
-   nsb::make_for_each<bitget_simd, NS_BENCH_SIGNED_NUMERIC_TYPES>( -10,  10, 0, 8);
-   nsb::make_for_each<bitget_simd, NS_BENCH_UNSIGNED_NUMERIC_TYPES>(0,  10, 0, 8);
-   return 0;
+DEFINE_SIMD_BENCH(simd_bitget, bitg());
+DEFINE_BENCH_MAIN() {
+  nsb::for_each<simd_bitget, NS_BENCH_NUMERIC_TYPES>(-10, 10);
 }
-

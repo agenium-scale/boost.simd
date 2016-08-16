@@ -34,7 +34,7 @@ namespace boost { namespace simd
     @see nextafter, prev, successor, predecessor
 
   **/
-  const boost::dispatch::functor<tag::next_> next = {};
+  Value next(Value const & x);
 } }
 #endif
 

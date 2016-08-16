@@ -18,7 +18,7 @@ namespace boost { namespace simd
 
  /*!
 
-    @ingroup group-operator
+    @ingroup group-boolean
     Function object implementing logical_not capabilities
 
     return the logical negation of the parameter,
@@ -41,14 +41,11 @@ namespace boost { namespace simd
     as_logical_t<T0> r =!x;
     @endcode
 
-    @par Alias:
-    @c l_not
-
     @see  logical_or, logical_xor, logical_notand,
     logical_andnot, logical_notor, logical_ornot
 
   **/
-  const boost::dispatch::functor<tag::logical_not_> logical_not = {};
+  as_logical_t<Value0> logical_not(Value0 const& x, Value1 const& y);
 } }
 #endif
 

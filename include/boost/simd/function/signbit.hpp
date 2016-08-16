@@ -24,7 +24,7 @@ namespace boost { namespace simd
 
     This is a convenience alias of @ref is_negative used by stdlibc++.
   **/
-  const boost::dispatch::functor<tag::signbit_> signbit = {};
+  as_logical_t<Value> signbit(Value const& x);
 } }
 #endif
 

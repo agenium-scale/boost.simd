@@ -34,7 +34,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE
     target_t operator()(Pointer const& p, Target const&) const
     {
-      BOOST_ASSERT_MSG( boost::alignment::is_aligned(target_t::alignment, p.get())
+      BOOST_ASSERT_MSG( boost::alignment::is_aligned(p.get(),target_t::alignment)
                       , "boost::simd::aligned_load was performed on an unaligned pointer"
                       );
 

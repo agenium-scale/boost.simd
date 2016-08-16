@@ -47,7 +47,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
     {
-      return if_else(a0, if_else_zero(abs(a0) == One<A0>(), a0), Valmax<A0>());
+      return if_else(a0, if_else_zero(bs::abs(a0) == One<A0>(), a0), Valmax<A0>());
     }
   };
 

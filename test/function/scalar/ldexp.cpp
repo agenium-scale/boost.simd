@@ -10,7 +10,7 @@
 #include <boost/simd/function/ldexp.hpp>
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/function/fast.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -22,9 +22,9 @@
 #include <boost/simd/constant/four.hpp>
 #include <boost/simd/constant/halfeps.hpp>
 #include <boost/simd/constant/three.hpp>
-#include <boost/simd/constant/maxexponent.hpp>
-#include <boost/simd/constant/limitexponent.hpp>
-#include <boost/simd/constant/minexponent.hpp>
+#include <boost/simd/detail/constant/maxexponent.hpp>
+#include <boost/simd/detail/constant/limitexponent.hpp>
+#include <boost/simd/detail/constant/minexponent.hpp>
 #include <boost/simd/constant/smallestposval.hpp>
 #include <boost/simd/function/scalar/dec.hpp>
 

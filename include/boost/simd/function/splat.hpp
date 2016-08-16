@@ -17,6 +17,24 @@ namespace boost { namespace simd
 {
   /*!
 
+    Splat
+
+    Fills an entire SIMD vector with its argument.
+
+    @par Semantic
+
+    For any type @c T and value @c x of type @c U:
+
+    @code
+    T r = splat(x);
+    @endcode
+
+    is similar to:
+
+    @code
+    for(int i=0;i<T::static_size;++i) r[i] = x;
+    @endcode
+
   **/
   template<typename T, typename U> T splat(U const& x) {}
 } }

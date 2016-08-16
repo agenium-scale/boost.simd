@@ -37,7 +37,7 @@ namespace boost { namespace simd
     @see erfc,  erfcx
 
   **/
-  const boost::dispatch::functor<tag::erf_> erf = {};
+  Value erf(Value const & v0);
 } }
 #endif
 

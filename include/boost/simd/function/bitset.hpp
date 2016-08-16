@@ -33,7 +33,7 @@ namespace boost { namespace simd
     @see  bitget
 
   **/
-  const boost::dispatch::functor<tag::bitset_> bitset = {};
+  Value bitset(Value const & v0, integer const& i);
 } }
 #endif
 

@@ -38,7 +38,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::minmod_> minmod = {};
+  Value minmod(Value const & x, Value const& y);
 } }
 #endif
 

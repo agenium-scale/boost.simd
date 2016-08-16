@@ -17,15 +17,6 @@ using namespace boost::simd;
 
 STF_CASE_TPL( "Unary broadcast shuffle", STF_NUMERIC_TYPES)
 {
-  // cardinal 2
-  {
-    bs::pack<T,2> a{ Valmax<T>(), T(42) };
-
-    STF_ALL_EQUAL( (shuffle<-1,-1>(a)), (bs::Zero<bs::pack<T,2>>()) );
-    STF_ALL_EQUAL( (shuffle< 0, 0>(a)), (bs::pack<T,2>(a[0])) );
-    STF_ALL_EQUAL( (shuffle< 1, 1>(a)), (bs::pack<T,2>(a[1])) );
-  }
-
   // cardinal 4
   {
     bs::pack<T,4> a{ Valmax<T>(), T(42), T(69), Valmin<T>() };

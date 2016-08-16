@@ -49,7 +49,7 @@ namespace boost { namespace simd
 
       @return The Euler constant for the proper type
     **/
-    const boost::dispatch::functor<tag::euler_> euler = {};
+    Value Euler();
   }
 } }
 #endif

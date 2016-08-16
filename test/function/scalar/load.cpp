@@ -11,7 +11,7 @@
 #include <boost/simd/mask.hpp>
 #include <boost/simd/logical.hpp>
 
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 
 STF_CASE_TPL( "Check load behavior with simple pointer", STF_NUMERIC_TYPES )
 {
@@ -33,8 +33,8 @@ STF_CASE_TPL( "Check load behavior with masked pointer", STF_NUMERIC_TYPES )
 
   STF_EQUAL( bs::load<T>(bs::mask(&src, true)), src );
   STF_EQUAL( bs::load<T>(bs::mask(&src, false)), T{0} );
-  STF_EQUAL( bs::load<T>(bs::mask(&src, T{69}, true)) , src   );
-  STF_EQUAL( bs::load<T>(bs::mask(&src, T{69}, false)), T{69} );
+  STF_EQUAL( bs::load<T>(bs::mask(&src, true, T{69})) , src   );
+  STF_EQUAL( bs::load<T>(bs::mask(&src, false, T{69})), T{69} );
 
   STF_EQUAL( bs::load<bs::logical<T>>(bs::mask(&src,true)) , lsrc );
   STF_EQUAL( bs::load<bs::logical<T>>(bs::mask(&src,false)), false);
@@ -60,8 +60,8 @@ STF_CASE_TPL( "Check load behavior with masked pointer and offset", STF_NUMERIC_
 
   STF_EQUAL( bs::load<T>(bs::mask(&src[0], true),1), src[1] );
   STF_EQUAL( bs::load<T>(bs::mask(&src[0], false),1), T{0} );
-  STF_EQUAL( bs::load<T>(bs::mask(&src[0], T{69}, true),1), src[1] );
-  STF_EQUAL( bs::load<T>(bs::mask(&src[0], T{69}, false),1), T{69} );
+  STF_EQUAL( bs::load<T>(bs::mask(&src[0], true, T{69}),1), src[1] );
+  STF_EQUAL( bs::load<T>(bs::mask(&src[0], false, T{69}),1), T{69} );
 
   STF_EQUAL( bs::load<bs::logical<T>>(bs::mask(&src[0],true),1) , lsrc[1] );
   STF_EQUAL( bs::load<bs::logical<T>>(bs::mask(&src[0],false),1), false);

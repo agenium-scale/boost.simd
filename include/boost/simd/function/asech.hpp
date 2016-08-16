@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @see acosh, cosh, rec
 
   **/
-  const boost::dispatch::functor<tag::asech_> asech = {};
+  Value asech(Value const & v0);
 } }
 #endif
 

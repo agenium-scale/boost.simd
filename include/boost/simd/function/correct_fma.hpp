@@ -3,7 +3,6 @@
   @file
 
   @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -18,9 +17,10 @@ namespace boost { namespace simd
   /*!
 
     @ingroup group-arithmetic
-    Function object function implementing correct_fma capabilities
+    Function object function implementing correct_fma
 
-    Computes fused multiply/add of its parameter.
+    Computes the "correct" fused multiply/add of its parameter: this is perhaps not that you need
+    if speed is needed more than accuracy (this remark is hardware dependent).
 
     @par semantic:
     For any given value @c x, @c y, @c z of type @c T:
@@ -35,35 +35,33 @@ namespace boost { namespace simd
     T r = x*y+z;
     @endcode
 
-    but with only one rounding
+    but is only rounded once and with no intermediate overflow.
 
-    @par Note:
+    @par Notes:
+    - For integers x*y+z is always performed in 2-complement wraping.
 
-    - For integer x*y+z is performed
+    - For floating points numbers, the correct fused multiply add is computed,
+    meaning the computation of x*y+z with only one rounding operation.
+    This operation may be very expensive on architectures where this
+    functionality is not hardware provided.
 
-    - For floating points numbers, always computes the correct fused multiply add,
-    this means the computation of x*y+z with only one rounding operation.
-    On machines not possessing this hard wired capability this can be very
-    expansive.
-
-    - @c correct_fma is in fact a transitory function that allows to ensure
-    strict @ref fma capabilities,  i.e. only one rounding operation and no undue
+    - @c correct_fma is in fact a transitory function which ensures
+    strict @ref fma capabilities, i.e. only one rounding operation and no undue
     overflow in intermediate computations.
 
-    - If you are using this function for a system with no hard wired @ref fma
+    - If you are using this function on an architecture without @ref fma
     and are sure that overflow is not a problem
-    you can define BOOST_SIMD_DONT_CARE_CORRECT_FMA_OVERFLOW to get better
-    performances.
+    you may define BOOST_SIMD_DONT_CARE_CORRECT_FMA_OVERFLOW for better
+    performance.
 
-    correct_fma is never used internally in boost.simd.
+    - @c correct_fma is never used internally in boost.simd.
 
     @par Decorators
+      std_ for floating entries calls std::fma but does not guarantee performances...
 
-    std_ for floating entries
-
-    @see  fma
+    @see  fma, fms fnma, fnms
 **/
-     const boost::dispatch::functor<tag::correct_fma_> correct_fma = {};
+     Value correct_fma(Value const& v0, Value const& v1, Value const& v2);
 } }
 #endif
 

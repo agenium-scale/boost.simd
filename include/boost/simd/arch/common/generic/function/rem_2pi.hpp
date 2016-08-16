@@ -17,9 +17,9 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/pi.hpp>
 #include <boost/simd/constant/pio_2.hpp>
-#include <boost/simd/constant/pix2_1.hpp>
-#include <boost/simd/constant/pix2_2.hpp>
-#include <boost/simd/constant/pix2_3.hpp>
+#include <boost/simd/detail/constant/pix2_1.hpp>
+#include <boost/simd/detail/constant/pix2_2.hpp>
+#include <boost/simd/detail/constant/pix2_3.hpp>
 #include <boost/simd/constant/threeeps.hpp>
 #include <boost/simd/constant/twopi.hpp>
 #include <boost/simd/constant/zero.hpp>

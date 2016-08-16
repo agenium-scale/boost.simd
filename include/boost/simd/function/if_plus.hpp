@@ -30,20 +30,19 @@ namespace boost { namespace simd
     For every parameters of types respectively C, T, T:
 
     @code
-    T r = if_plus(cond,t1,t2);
+    T r = if_plus(cond,x,y);
     @endcode
 
     is similar to:
 
     @code
-    T r = cond ? t1+t2 : t1;
+    T r = cond ? x+y : x;
     @endcode
-
-    @par Alias:
-    @c if_plus
-
   **/
-  const boost::dispatch::functor<tag::if_plus_> if_plus = {};
+  Value if_plus(Value const& c, Value const& x, Value const& y)
+
+  //@overload
+  Value if_plus(LogicalValue const& c, Value const& x, Value const& y);
 } }
 #endif
 

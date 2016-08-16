@@ -41,7 +41,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::mask2logical_> mask2logical = {};
+  as_logical_t<Value> mask2logical(Value const& x);
 } }
 #endif
 

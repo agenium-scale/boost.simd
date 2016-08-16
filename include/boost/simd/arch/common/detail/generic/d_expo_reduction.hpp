@@ -1,13 +1,10 @@
 //==================================================================================================
-/*!
-  @file
-
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+/**
+  Copyright 2015 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_DETAIL_GENERIC_D_EXPO_REDUCTION_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_GENERIC_D_EXPO_REDUCTION_HPP_INCLUDED
@@ -17,18 +14,18 @@
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/constant/invlog10_2.hpp>
 #include <boost/simd/constant/invlog_2.hpp>
-#include <boost/simd/constant/log10_2hi.hpp>
-#include <boost/simd/constant/log10_2lo.hpp>
+#include <boost/simd/detail/constant/log10_2hi.hpp>
+#include <boost/simd/detail/constant/log10_2lo.hpp>
 #include <boost/simd/constant/log_10.hpp>
 #include <boost/simd/constant/log_2.hpp>
-#include <boost/simd/constant/log_2hi.hpp>
-#include <boost/simd/constant/log_2lo.hpp>
-#include <boost/simd/constant/maxlog.hpp>
-#include <boost/simd/constant/maxlog10.hpp>
-#include <boost/simd/constant/maxlog2.hpp>
-#include <boost/simd/constant/minlog.hpp>
-#include <boost/simd/constant/minlog10.hpp>
-#include <boost/simd/constant/minlog2.hpp>
+#include <boost/simd/detail/constant/log_2hi.hpp>
+#include <boost/simd/detail/constant/log_2lo.hpp>
+#include <boost/simd/detail/constant/maxlog.hpp>
+#include <boost/simd/detail/constant/maxlog10.hpp>
+#include <boost/simd/detail/constant/maxlog2.hpp>
+#include <boost/simd/detail/constant/minlog.hpp>
+#include <boost/simd/detail/constant/minlog10.hpp>
+#include <boost/simd/detail/constant/minlog2.hpp>
 #include <boost/simd/constant/two.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/function/simd/is_greater_equal.hpp>
@@ -74,7 +71,7 @@ namespace boost { namespace simd
         return k;
       }
 
-      static BOOST_FORCEINLINE A0 approx(A0 x) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE A0 approx(A0 const& x) BOOST_NOEXCEPT
       {
         A0 const t = sqr(x);
         return fnms(t,
@@ -87,7 +84,7 @@ namespace boost { namespace simd
                     >(t), x); //x-h*t
     }
 
-      static BOOST_FORCEINLINE A0 finalize(A0 x, A0 c, A0 hi, A0 lo) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE A0 finalize(A0 const& x, A0 const& c, A0 const& hi, A0 const& lo) BOOST_NOEXCEPT
       {
         return One<A0>()-(((lo-(x*c)/(Two<A0>()-c))-hi));
       }
@@ -108,14 +105,14 @@ namespace boost { namespace simd
         return is_less_equal(a0, Minlog2<A0>());
       }
 
-      static BOOST_FORCEINLINE A0 reduce(A0 const& a0, A0, A0, A0& x) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE A0 reduce(A0 const& a0, A0 const&, A0 const&, A0& x) BOOST_NOEXCEPT
       {
         A0 k = nearbyint(a0);
         x = (a0 - k)*Log_2<A0>();
         return k;
       }
 
-      static BOOST_FORCEINLINE A0 approx(A0 x) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE A0 approx(A0 const& x) BOOST_NOEXCEPT
       {
         const A0 t =  sqr(x);
         return fnms(t,
@@ -128,7 +125,7 @@ namespace boost { namespace simd
                     > (t), x); //x-h*t
       }
 
-      static BOOST_FORCEINLINE A0 finalize( A0 x, A0 c, A0, A0& ) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE A0 finalize(A0 const& x, A0 const& c, A0 const&, A0& ) BOOST_NOEXCEPT
       {
         return oneminus(((-(x*c)/(Two<A0>()-c))-x));
       }
@@ -174,7 +171,7 @@ namespace boost { namespace simd
         return inc(x2+x2);
       }
 
-      static BOOST_FORCEINLINE A0 finalize(A0, A0 c, A0,  A0 ) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE A0 finalize(A0 const&, A0 const& c, A0 const&, A0& ) BOOST_NOEXCEPT
       {
         return c;
       }

@@ -33,17 +33,26 @@ namespace boost { namespace simd
     T r = T(1)/x;
     @endcode
 
-    @par Note:
-    Speed can be sometimes gained using rec(x, fast_) but fast means here
-    that the computation is possibly done through some
-    low precision intrinsic. The result can be not fully accurate.
+    @par Note
+
+    For integral typed entries the result is always in the set \f$\{0,  \pm1, Valmax \}\f$
+
+    @par Decorators
+
+     For floating types
+
+     - raw_ decorator can be applied to rec as many systems provide fast low precision
+       intrinsic for inverse computation. The result can be not fully accurate.
+
+     - fast_ decorator can be applied to rec as using a one step refinement of raw_(rec)
+       instead of division when available.
+
 
   **/
-  const boost::dispatch::functor<tag::rec_> rec = {};
+  Value rec(Value const & v0);
 } }
 #endif
 
-#include <boost/simd/function/scalar/rec.hpp>
 #include <boost/simd/function/scalar/rec.hpp>
 #include <boost/simd/function/simd/rec.hpp>
 

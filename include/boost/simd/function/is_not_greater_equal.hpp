@@ -45,7 +45,7 @@ namespace boost { namespace simd
     @c is_nge
 
   **/
-  const boost::dispatch::functor<tag::is_not_greater_equal_> is_not_greater_equal = {};
+  as_logical_t<Value> is_not_greater_equal(Value const& x, Value const& y);
 } }
 #endif
 

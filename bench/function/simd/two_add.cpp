@@ -6,36 +6,16 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-#include <ns.bench.hpp>
+#include <simd_bench.hpp>
 #include <boost/simd/function/simd/two_add.hpp>
 #include <boost/simd/pack.hpp>
-#include <cmath>
-#include <tuple>
 
-namespace bs = boost::simd;
 namespace nsb = ns::bench;
+namespace bs =  boost::simd;
 
-template <typename T>
-struct two_add_simd
+DEFINE_SIMD_BENCH(simd_two_add, bs::two_add);
+
+DEFINE_BENCH_MAIN()
 {
-   template <typename U>
-   void operator()(U min0, U max0, U min1, U max1)
-   {
-     using pack_t = bs::pack<T>;
-     using ret_type = std::pair<pack_t, pack_t>;
-     nsb::make_function_experiment_cpe_sized_<pack_t::static_size>
-       ( [](const pack_t & x0, const pack_t & x1) -> ret_type
-         { return bs::two_add(x0, x1); }
-       , nsb::generators::rand<pack_t>(min0, max0)
-       , nsb::generators::rand<pack_t>(min1, max1)
-       );
-   }
-};
-
-
-int main(int argc, char **argv) {
-   nsb::parse_args(argc, argv);
-   nsb::make_for_each<two_add_simd, NS_BENCH_IEEE_TYPES>( -10,  10,  -10,  10);
-   return 0;
+  nsb::for_each<simd_two_add, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
-

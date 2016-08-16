@@ -17,7 +17,7 @@
 
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/function/saturated.hpp>
-#include <simd_test.hpp>
+#include <scalar_test.hpp>
 
 STF_CASE_TPL( "Check abs behavior with floating", STF_IEEE_TYPES )
 {

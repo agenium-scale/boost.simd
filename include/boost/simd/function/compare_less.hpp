@@ -44,7 +44,7 @@ namespace boost { namespace simd
 
     @see is_less
   **/
-  const boost::dispatch::functor<tag::compare_less_> compare_less = {};
+    bool compare_less(Value const& v0, Value const& v1);
 } }
 #endif
 

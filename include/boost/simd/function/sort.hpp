@@ -32,7 +32,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  const boost::dispatch::functor<tag::sort_> sort = {};
+  Value sort(Value const & v0);
 } }
 #endif
 

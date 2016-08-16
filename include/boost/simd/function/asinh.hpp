@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @see log, sqrt, sinh, inc
 
   **/
-  const boost::dispatch::functor<tag::asinh_> asinh = {};
+  Value asinh(Value const & v0);
 } }
 #endif
 

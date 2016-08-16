@@ -10,62 +10,57 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SHUFFLE_BROADCAST_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/arch/common/simd/function/shuffle/pattern/broadcast.hpp>
+#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/shuffle.hpp>
 #include <boost/simd/function/broadcast.hpp>
 
-namespace boost { namespace simd { namespace ext
+namespace boost { namespace simd
 {
-  // -----------------------------------------------------------------------------------------------
-  // Unary identity macro
-  BOOST_DISPATCH_OVERLOAD ( shuffle_
-                          , (int P0, typename P, typename A0, typename X)
-                          , bd::cpu_
-                          , bs::broadcast_pattern<P0, P>
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          )
+  namespace detail
   {
-    static_assert ( P::static_size == std::size_t(A0::static_size)
-                  , "boost::simd::shuffle - Invalid number of permutation indices"
-                  );
+    // ---------------------------------------------------------------------------------------------
+    // Check if pattern is [N ... N]
+    template<int P, int... Ps>
+    struct is_broadcast : brigand::all< brigand::integral_list<int,Ps...>
+                                      , brigand::equal_to<brigand::_1,std::integral_constant<int,P>>
+                                      >
+    {};
 
-    BOOST_FORCEINLINE
-    A0 operator()(P const&, A0 const& a0) const BOOST_NOEXCEPT
-    {
-      return broadcast<P0>(a0);
-    }
+    template<int P0> struct is_broadcast<P0> : std::false_type {};
+  }
+
+  // -----------------------------------------------------------------------------------------------
+  // Broadcast pattern hierarchy
+  template<int P0, typename P>
+  struct  broadcast_pattern : P
+  {
+    using parent = P;
   };
 
-   // -----------------------------------------------------------------------------------------------
-  // Binary common cases
-  BOOST_DISPATCH_OVERLOAD ( shuffle_
-                          , (int P0, typename P, typename A0, typename X)
-                          , bd::cpu_
-                          , bs::broadcast_pattern<P0, P>
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          , bs::pack_< bd::unspecified_<A0>, X >
-                          )
+  // -----------------------------------------------------------------------------------------------
+  // Identity matcher - do nothing but return its argument
+  struct broadcast_shuffle
   {
-    static_assert ( P::static_size == std::size_t(A0::static_size)
-                  , "boost::simd::shuffle - Invalid number of permutation indices"
-                  );
-
-    BOOST_FORCEINLINE
-    A0 operator()(P const&, A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
+    template<typename T, int Idx, typename P>
+    static BOOST_FORCEINLINE T process(T const& a0, broadcast_pattern<Idx,P> const&)
     {
-      return do_(a0,a1, brigand::bool_<(P0 < A0::static_size)>{});
+      return broadcast<Idx>(a0);
     }
+  };
+} }
 
-    BOOST_FORCEINLINE
-    A0 do_(A0 const& a0, A0 const&, std::true_type const&) const BOOST_NOEXCEPT
-    {
-      return broadcast<P0>(a0);
-    }
+namespace boost { namespace dispatch { namespace ext
+{
+  namespace bsd = boost::simd::detail;
 
-    BOOST_FORCEINLINE
-    A0 do_(A0 const&, A0 const& a1, std::false_type const&) const BOOST_NOEXCEPT
-    {
-      return broadcast<P0-A0::static_size>(a1);
-    }
+  // -----------------------------------------------------------------------------------------------
+  // Hierarchize broadcast patterns
+  template<int P0, int... Ps,typename Origin>
+  struct pattern_hierarchy< bsd::pattern_<P0,Ps...>,Origin
+                          , typename std::enable_if<bsd::is_broadcast<P0,Ps...>::type::value>::type
+                          >
+  {
+    using type = boost::simd::broadcast_pattern<P0, bsd::pattern_<P0,Ps...>>;
   };
 } } }
 

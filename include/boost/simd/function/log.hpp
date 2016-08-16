@@ -48,7 +48,7 @@ namespace boost { namespace simd
     @see is_negative,  Mzero
 
   **/
-  const boost::dispatch::functor<tag::log_> log = {};
+  Value log(Value const & v0);
 } }
 #endif
 

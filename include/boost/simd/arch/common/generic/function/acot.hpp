@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ACOT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ACOT_HPP_INCLUDED
 
-#include <boost/simd/function/simd/atan.hpp>
-#include <boost/simd/function/simd/rec.hpp>
+#include <boost/simd/arch/common/detail/generic/invtrig.hpp>
+#include <boost/simd/meta/is_not_scalar.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
@@ -29,7 +29,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      return atan(rec(a0));
+      return detail::invtrig_base<A0,tag::radian_tag,is_not_scalar_t<A0>>::acot(a0);
     }
   };
 } } }

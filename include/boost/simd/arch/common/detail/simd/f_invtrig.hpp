@@ -20,10 +20,10 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/pi.hpp>
 #include <boost/simd/constant/pio_2.hpp>
-#include <boost/simd/constant/pio_2lo.hpp>
+#include <boost/simd/detail/constant/pio_2lo.hpp>
 #include <boost/simd/constant/pio_3.hpp>
 #include <boost/simd/constant/pio_4.hpp>
-#include <boost/simd/constant/pio_4lo.hpp>
+#include <boost/simd/detail/constant/pio_4lo.hpp>
 #include <boost/simd/constant/tan_3pio_8.hpp>
 #include <boost/simd/constant/tanpio_8.hpp>
 #include <boost/simd/constant/two.hpp>
@@ -54,7 +54,7 @@ namespace boost { namespace simd
   template < class A0 >
   struct invtrig_base<A0,tag::radian_tag,tag::simd_type, float>
   {
-    static inline A0 asin(const A0 a0)
+    static BOOST_FORCEINLINE A0 asin(A0 const& a0)
     {
       A0 sign, x;
       x = bs::abs(a0);
@@ -78,7 +78,7 @@ namespace boost { namespace simd
       return bs::bitwise_xor(z, sign);
     }
 
-    static inline A0 acos(const A0 a0)
+    static BOOST_FORCEINLINE A0 acos(const A0& a0)
     {
       // 2130706432 values computed.
       // 1968272987 values (92.38%) within 0.0 ULPs
@@ -93,26 +93,32 @@ namespace boost { namespace simd
       return bs::if_else(x_larger_05, x, bs::Pio_2<A0>()-x);
     }
 
-    static inline A0 atan(const A0 a0)
+    static BOOST_FORCEINLINE A0 atan(const A0& a0)
     {
-      // 4.5 cycles/element SSE4.2 g++-4.8
-      A0 x  = kernel_atan(a0);
+      A0 absa0 =  bs::abs(a0);
+      const A0 x  = kernel_atan(absa0, bs::rec(absa0));
       return bs::bitwise_xor(x, bs::bitofsign(a0));
     }
 
-    static inline A0 kernel_atan(const A0 a0)
+    static BOOST_FORCEINLINE A0 acot(const A0& a0)
+    {
+      A0 absa0 =  bs::abs(a0);
+      const A0 x  = kernel_atan(bs::rec(absa0), absa0);
+      return bs::bitwise_xor(x, bs::bitofsign(a0));
+    }
+
+    static BOOST_FORCEINLINE A0 kernel_atan(const A0&  x, const A0& recx)
     {
       //4278190076 values computed  in range: [-3.40282e+38, 3.40282e+38]
       //4257598358 values (99.52%)  within 0.0 ULPs
       //  20591718 values (0.48%)   within 0.5 ULPs
-      const A0 x = bs::abs(a0);
 
       //here x is positive
       const auto flag1 = x < Tan_3pio_8<A0>();
       const auto flag2 = bs::logical_and(x >= Constant<A0, 0x3ed413cd>(), flag1);
       A0 yy =  bs::if_zero_else(flag1, Pio_2<A0>());
       yy =  bs::if_else(flag2, Pio_4<A0>(), yy);
-      A0 xx =   bs::if_else(flag1, x, -rec(x));
+      A0 xx =   bs::if_else(flag1, x, -recx);
       xx =  bs::if_else(flag2, (bs::dec(x)/bs::inc(x)),xx);
       const A0 z = bs::sqr(xx);
       A0 z1 = horn<A0

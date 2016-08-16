@@ -72,7 +72,7 @@ namespace boost { namespace simd
 
 
   **/
-  const boost::dispatch::functor<tag::rem_> rem = {};
+  Value rem(Value const & v0, value const& y);
 } }
 #endif
 

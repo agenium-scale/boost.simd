@@ -44,7 +44,7 @@ namespace boost { namespace simd
 
       @return The Pi constant for the proper type
     **/
-    const boost::dispatch::functor<tag::pi_> pi = {};
+    Value Pi();
   }
 } }
 #endif

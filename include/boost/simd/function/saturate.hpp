@@ -44,7 +44,7 @@ namespace boost { namespace simd
     are identical if Target is  an integer type.
 
   **/
-  const boost::dispatch::functor<tag::saturate_> saturate = {};
+  Value saturate(Value const & v0);
 } }
 #endif
 

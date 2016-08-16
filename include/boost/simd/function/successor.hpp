@@ -36,7 +36,7 @@ namespace boost { namespace simd
     strict successors are @ref Nan.
 
   **/
-  const boost::dispatch::functor<tag::successor_> successor = {};
+  Value successor(Value const& x, IntegerValue const& n);
 } }
 #endif
 

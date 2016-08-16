@@ -18,7 +18,7 @@ namespace boost { namespace simd
 
  /*!
 
-    @ingroup group-bolean
+    @ingroup group-boolean
     Function object implementing if_allbits_else_zero capabilities
 
     Returns a mask of bits. All ones if the
@@ -26,7 +26,7 @@ namespace boost { namespace simd
 
     This is a convenient alias of @ref genmask
   **/
-  const boost::dispatch::functor<tag::if_allbits_else_zero_> if_allbits_else_zero = {};
+  Value if_allbits_else_zero(Value const & v0);
 } }
 #endif
 

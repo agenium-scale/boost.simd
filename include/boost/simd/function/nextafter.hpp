@@ -45,7 +45,7 @@ namespace boost { namespace simd
     defined in boost.simd.
 
   **/
-  const boost::dispatch::functor<tag::nextafter_> nextafter = {};
+  Value nextafter(Value const & x, Value const& y);
 } }
 #endif
 

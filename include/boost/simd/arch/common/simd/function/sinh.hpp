@@ -17,7 +17,7 @@
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/log_2.hpp>
-#include <boost/simd/constant/maxlog.hpp>
+#include <boost/simd/detail/constant/maxlog.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/simd/abs.hpp>

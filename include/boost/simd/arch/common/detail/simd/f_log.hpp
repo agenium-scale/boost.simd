@@ -22,13 +22,13 @@
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/constant/mhalf.hpp>
 #include <boost/simd/constant/minf.hpp>
-#include <boost/simd/constant/log_2hi.hpp>
-#include <boost/simd/constant/log_2lo.hpp>
+#include <boost/simd/detail/constant/log_2hi.hpp>
+#include <boost/simd/detail/constant/log_2lo.hpp>
 #include <boost/simd/constant/log2_em1.hpp>
-#include <boost/simd/constant/log10_ehi.hpp>
-#include <boost/simd/constant/log10_elo.hpp>
-#include <boost/simd/constant/log10_2hi.hpp>
-#include <boost/simd/constant/log10_2lo.hpp>
+#include <boost/simd/detail/constant/log10_ehi.hpp>
+#include <boost/simd/detail/constant/log10_elo.hpp>
+#include <boost/simd/detail/constant/log10_2hi.hpp>
+#include <boost/simd/detail/constant/log10_2lo.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
@@ -98,7 +98,7 @@ namespace boost { namespace simd
       using sA0 = bd::scalar_of_t<A0>;
       using  kernel_t = kernel<A0, tag::simd_type, float>;
 
-      static inline A0 log(const A0& a0) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE A0 log(const A0& a0) BOOST_NOEXCEPT
       {
         A0 z = a0;
 #ifndef BOOST_SIMD_NO_DENORMALS
@@ -124,7 +124,7 @@ namespace boost { namespace simd
 #endif
       }
 
-      static inline A0 log2(const A0& a0) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE A0 log2(const A0& a0) BOOST_NOEXCEPT
       {
         A0 z =  a0;
 #ifndef BOOST_SIMD_NO_DENORMALS
@@ -146,7 +146,7 @@ namespace boost { namespace simd
 #endif
       }
 
-      static inline A0 log10(const A0& a0) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE A0 log10(const A0& a0) BOOST_NOEXCEPT
       {
         A0 z = a0;
 #ifndef BOOST_SIMD_NO_DENORMALS
@@ -170,7 +170,7 @@ namespace boost { namespace simd
 #endif
       }
     private:
-      static inline A0 finalize(const A0& a0, const A0& y) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE A0 finalize(const A0& a0, const A0& y) BOOST_NOEXCEPT
       {
 #ifdef BOOST_SIMD_NO_NANS
         auto test = bs::is_ltz(a0);

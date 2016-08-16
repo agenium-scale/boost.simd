@@ -30,8 +30,8 @@ void test(Env& $)
   p_t cc (&c[0], &c[0]+N);
   p_t ss1, cc1;
   std::tie(ss1, cc1)= bs::sinhcosh(aa1) ;
-  STF_IEEE_EQUAL(ss1, ss);
-  STF_IEEE_EQUAL(cc1, cc);
+  STF_ULP_EQUAL(ss1, ss, 0.5);
+  STF_ULP_EQUAL(cc1, cc, 0.5);
 }
 
 STF_CASE_TPL("Check sincosh on pack" , STF_IEEE_TYPES)

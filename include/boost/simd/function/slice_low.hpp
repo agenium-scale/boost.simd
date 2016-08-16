@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @see slice_high
     @see combine
   **/
-  const boost::dispatch::functor<tag::slice_low_> slice_low = {};
+  ValueO2 slice_low(Value const & x);
 #endif
 } }
 

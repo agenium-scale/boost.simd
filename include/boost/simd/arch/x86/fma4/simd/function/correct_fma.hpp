@@ -17,7 +17,7 @@ namespace boost { namespace simd { namespace ext
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
 
-  BOOST_DISPATCH_OVERLOAD ( correct_fma_
+  BOOST_DISPATCH_OVERLOAD ( fma_
                           , (typename A0)
                           , bs::fma4_
                           , bs::conformant_tag
@@ -33,7 +33,7 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( correct_fma_
+  BOOST_DISPATCH_OVERLOAD ( fma_
                           , (typename A0)
                           , bs::fma4_
                           , bs::conformant_tag
@@ -49,7 +49,7 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( correct_fma_
+  BOOST_DISPATCH_OVERLOAD ( fma_
                           , (typename A0)
                           , bs::fma4_
                           , bs::conformant_tag
@@ -65,7 +65,7 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( correct_fma_
+  BOOST_DISPATCH_OVERLOAD ( fma_
                           , (typename A0)
                           , bs::fma4_
                           , bs::conformant_tag

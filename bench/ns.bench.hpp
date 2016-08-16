@@ -709,6 +709,8 @@ template <> struct make_range<1> { using type = range<0>; };
 template <> struct make_range<2> { using type = range<0, 1>; };
 template <> struct make_range<3> { using type = range<0, 1, 2>; };
 template <> struct make_range<4> { using type = range<0, 1, 2, 3>; };
+template <> struct make_range<5> { using type = range<0, 1, 2, 3, 4>; };
+template <> struct make_range<6> { using type = range<0, 1, 2, 3, 4, 5>; };
 template <std::size_t N>
 using make_range_t = typename make_range<N>::type;
 #define NS_BENCH_STATIC_UNROLL(f, ...)                                                             \
@@ -813,7 +815,7 @@ std::ostream& operator<<(std::ostream& os, results const& r)
   for (auto const& b : r) {
     auto const& name  = b.first;
     auto const& infos = b.second;
-    os << ":: Benchmarking results for: \"" << name  << "\"" << std::endl;
+    os << "::: Benchmarking results for: \"" << name  << "\"" << std::endl;
     os
       << std::setw(size_maxw)
       << "Size" << ' '
@@ -1127,11 +1129,16 @@ struct rand<T, std::true_type>
       )
   {
     if (std::is_unsigned<T>::value) {
+      if (pmin < 0) pmin = 0;
       pmin = std::abs(pmin);
       pmax = std::abs(pmax);
     }
+
     if (pmin > pmax) std::swap(pmin, pmax);
-    if (pmin == pmax) pmin = T(0);
+    if (pmin == pmax) {
+      if (pmax == 0) pmax = 10;
+      pmin = T(0);
+    }
     min_ = pmin;
     max_ = pmax;
   }

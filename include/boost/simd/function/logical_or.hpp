@@ -18,7 +18,7 @@ namespace boost { namespace simd
 
  /*!
 
-    @ingroup group-operator
+    @ingroup group-boolean
     Function object implementing logical_or capabilities
 
     return the logical or of the two parameters
@@ -41,14 +41,11 @@ namespace boost { namespace simd
     as_logical_t<T1> r = x || y;
     @endcode
 
-    @par Alias:
-    @c l_or
-
     @see  logical_and, logical_xor, logical_notand,
     logical_andnot, logical_notor, logical_ornot, logical_not
 
   **/
-  const boost::dispatch::functor<tag::logical_or_> logical_or = {};
+  as_logical_t<Value0> logical_or(Value0 const& x, Value1 const& y);
 } }
 #endif
 

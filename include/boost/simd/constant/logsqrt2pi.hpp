@@ -43,7 +43,7 @@ namespace boost { namespace simd
 
       @return The Logsqrt2pi constant for the proper type
     **/
-    const boost::dispatch::functor<tag::logsqrt2pi_> logsqrt2pi = {};
+    Value Logsqrt2pi<Value>();
   }
 } }
 #endif

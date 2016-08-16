@@ -6,36 +6,28 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-#include <ns.bench.hpp>
+#include <simd_bench.hpp>
 #include <boost/simd/function/simd/shift_left.hpp>
-#include <boost/simd/pack.hpp>
-#include <cmath>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
-namespace bs = boost::simd;
 namespace nsb = ns::bench;
+namespace bs =  boost::simd;
+namespace bd =  boost::dispatch;
 
-template <typename T>
-struct shift_left_simd
+template < int N >
+struct shlN
 {
-   template <typename U>
-   void operator()(U min0, U max0, U min1, U max1)
-   {
-     using pack_t = bs::pack<T>;
-     using ret_type = bs::pack<T>;
-     nsb::make_function_experiment_cpe_sized_<pack_t::static_size>
-       ( [](const pack_t & x0, const pack_t & x1) -> ret_type
-         { return bs::shift_left(x0, x1); }
-       , nsb::generators::rand<pack_t>(min0, max0)
-       , nsb::generators::rand<pack_t>(min1, max1)
-       );
-   }
+  template<class T> T operator()(const T & a) const
+  {
+    return bs::shift_left(a, bd::as_integer_t<T>(N));
+  }
 };
 
+DEFINE_SIMD_BENCH(scalar_shift_left1, shlN<1>());
+DEFINE_SIMD_BENCH(scalar_shift_left2, shlN<2>());
 
-int main(int argc, char **argv) {
-   nsb::parse_args(argc, argv);
-   nsb::make_for_each<shift_left_simd, NS_BENCH_SIGNED_NUMERIC_TYPES>( -10,  10,  -10,  10);
-   nsb::make_for_each<shift_left_simd, NS_BENCH_UNSIGNED_NUMERIC_TYPES>(0,  10, 0,  10);
-   return 0;
+DEFINE_BENCH_MAIN()
+{
+  nsb::for_each<scalar_shift_left1, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<scalar_shift_left2, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
-

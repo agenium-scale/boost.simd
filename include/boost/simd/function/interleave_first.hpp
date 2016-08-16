@@ -26,19 +26,19 @@ namespace boost { namespace simd
     For every parameters of types respectively T, the following code:
 
     @code
-    T r = interleave_first(a,b);
+    T r = interleave_first(x, y);
     @endcode
 
     is equivalent to :
 
     @code
-    r = [ a[0] b[0] a[1] b[1] ... a[n/2-1] b[n/2-1] ]
+    r = [ x[0] y[0] x[1] y[1] ... x[n/2-1] y[n/2-1] ]
     @endcode
 
     with <tt> n = cardinal_of<T>::value </tt>
 
   **/
-  const boost::dispatch::functor<tag::interleave_first_> interleave_first = {};
+  Value interleave_first(Value const& v0, Value const& v1);
 #endif
 } }
 

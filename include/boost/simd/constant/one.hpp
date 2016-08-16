@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       @return The One constant for the proper type
     **/
-    const boost::dispatch::functor<tag::one_> one = {};
+    Value One();
   }
 } }
 #endif

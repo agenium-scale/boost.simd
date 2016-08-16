@@ -35,7 +35,7 @@ namespace boost { namespace simd
     sum of reals and the residual error using IEEE  754 arithmetic.
 
   **/
-  const boost::dispatch::functor<tag::two_add_> two_add = {};
+  std::pair<Value, Value> two_add(Value const& x, Value const& y);
 } }
 #endif
 

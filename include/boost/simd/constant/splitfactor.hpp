@@ -50,7 +50,7 @@ namespace boost { namespace simd
 
       @return The Splitfactor constant for the proper type
     **/
-    const boost::dispatch::functor<tag::splitfactor_> splitfactor = {};
+    Value Splitfactor();
   }
 } }
 #endif

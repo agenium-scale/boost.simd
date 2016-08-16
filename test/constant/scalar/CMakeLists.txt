@@ -31,26 +31,15 @@ set ( SOURCES
   half.cpp
   halfeps.cpp
   inf.cpp
-  ldexpmask.cpp
-  limitexponent.cpp
   log10_pi.cpp
   logeps.cpp
   logpi.cpp
   logsqrt2pi.cpp
-  mantissamask.cpp
-  mask1frexp.cpp
-  mask2frexp.cpp
-  maxexponent.cpp
-  maxexponentm1.cpp
-  maxflint.cpp
-  maxinit.cpp
-  maxleftshift.cpp
   meight.cpp
   mfive.cpp
   mfour.cpp
   mhalf.cpp
   mindenormal.cpp
-  minexponent.cpp
   minf.cpp
   mlogeps2.cpp
   mnine.cpp
@@ -79,7 +68,6 @@ set ( SOURCES
   signmask.cpp
   six.cpp
   smallestposval.cpp
-  splitfactor.cpp
   sqrt_1o_5.cpp
   sqrt_2.cpp
   sqrt_2o_2.cpp
@@ -106,28 +94,14 @@ set ( SOURCES
   invlog10_2.cpp
   invlog_10.cpp
   invlog_2.cpp
-  log10_2hi.cpp
-  log10_2lo.cpp
-  log10_ehi.cpp
-  log10_elo.cpp
   log_10.cpp
   log2_e.cpp
   log2_em1.cpp
-  log_2hi.cpp
   log_2.cpp
-  log_2lo.cpp
   log_2olog_10.cpp
-  maxlog10.cpp
-  maxlog2.cpp
-  maxlog.cpp
-  minlog10.cpp
-  minlog2.cpp
-  minlog.cpp
   mlog10two2nmb.cpp
   mlog2two2nmb.cpp
   mlogtwo2nmb.cpp
-  powlargelim.cpp
-  powlowlim.cpp
   twotomnmbo_3.cpp
   )
 

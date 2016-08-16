@@ -41,14 +41,11 @@ namespace boost { namespace simd
     as_logical_t<T0> r = x && y ;
     @endcode
 
-    @par Alias:
-    @c l_and
-
     @see  logical_or, logical_xor, logical_notand,
     logical_andnot, logical_notor, logical_ornot, logical_not
 
   **/
-  const boost::dispatch::functor<tag::logical_and_> logical_and = {};
+  as_logical_t<Value> logical_and(Value const& x, Value const& y);
 } }
 #endif
 
