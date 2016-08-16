@@ -95,24 +95,30 @@ namespace boost { namespace simd
 
     static BOOST_FORCEINLINE A0 atan(const A0& a0)
     {
-      // 4.5 cycles/element SSE4.2 g++-4.8
-      A0 x  = kernel_atan(a0);
+      A0 absa0 =  bs::abs(a0);
+      const A0 x  = kernel_atan(absa0, bs::rec(absa0));
       return bs::bitwise_xor(x, bs::bitofsign(a0));
     }
 
-    static BOOST_FORCEINLINE A0 kernel_atan(const A0& a0)
+    static BOOST_FORCEINLINE A0 acot(const A0& a0)
+    {
+      A0 absa0 =  bs::abs(a0);
+      const A0 x  = kernel_atan(bs::rec(absa0), absa0);
+      return bs::bitwise_xor(x, bs::bitofsign(a0));
+    }
+
+    static BOOST_FORCEINLINE A0 kernel_atan(const A0&  x, const A0& recx)
     {
       //4278190076 values computed  in range: [-3.40282e+38, 3.40282e+38]
       //4257598358 values (99.52%)  within 0.0 ULPs
       //  20591718 values (0.48%)   within 0.5 ULPs
-      const A0 x = bs::abs(a0);
 
       //here x is positive
       const auto flag1 = x < Tan_3pio_8<A0>();
       const auto flag2 = bs::logical_and(x >= Constant<A0, 0x3ed413cd>(), flag1);
       A0 yy =  bs::if_zero_else(flag1, Pio_2<A0>());
       yy =  bs::if_else(flag2, Pio_4<A0>(), yy);
-      A0 xx =   bs::if_else(flag1, x, -rec(x));
+      A0 xx =   bs::if_else(flag1, x, -recx);
       xx =  bs::if_else(flag2, (bs::dec(x)/bs::inc(x)),xx);
       const A0 z = bs::sqr(xx);
       A0 z1 = horn<A0
