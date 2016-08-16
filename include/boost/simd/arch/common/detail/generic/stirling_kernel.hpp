@@ -28,10 +28,9 @@ namespace boost { namespace simd
     template < class A0 >
     struct stirling_kernel < A0, float >
     {
-      using s_t = bd::scalar_of_t<A0>;
       static BOOST_FORCEINLINE A0 stirling1(const A0& x)
       {
-        return  horn<s_t,
+        return  horn<A0,
                      0x3daaaaab,
                      0x3b638e39,
                      0xbb2fb930,
@@ -43,10 +42,9 @@ namespace boost { namespace simd
     template < class A0 >
     struct stirling_kernel < A0, double >
     {
-      using s_t = bd::scalar_of_t<A0>;
       static BOOST_FORCEINLINE A0 stirling1(const A0& x)
       {
-        return  horn<s_t,
+        return  horn<A0,
                      0x3fb5555555555986ll, //   8.33333333333482257126E-2
                      0x3f6c71c71b98c5fdll, //   3.47222221605458667310E-3
                      0xbf65f72607d44fd7ll, //  -2.68132617805781232825E-3

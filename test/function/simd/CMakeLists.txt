@@ -309,6 +309,7 @@ sqr.cpp
 sqr_s.cpp
 sqrt1pm1.cpp
 sqrt.cpp
+stirling.cpp
 store.cpp
 successor.cpp
 sum.cpp
