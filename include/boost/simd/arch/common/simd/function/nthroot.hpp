@@ -65,7 +65,6 @@ namespace boost { namespace simd { namespace ext
       bA0 nul_a1 =  bitwise_cast<bA0>(bs::is_eqz(a1));
       bA0 is_ltza0 = is_ltz(a0);
       bA0 is_odda1 = bitwise_cast<bA0>(is_odd(a1));
-//      A0 a11 = bs::tofloat(a1-bs::if_else_zero(nul_a1, Mone<A1>()));
       A0 p = fast_(bs::pow_abs)(y, aa1);
       y = bs::if_plus( bs::logical_or(bs::is_nez(y), nul_a1)
                      , y

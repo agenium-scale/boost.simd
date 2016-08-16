@@ -94,6 +94,7 @@ set(SOURCES
     erfc.cpp
     exp2.cpp
     exp.cpp
+    exp.std.cpp
     expm1.cpp
     exprecnegc.cpp
     exprecneg.cpp
