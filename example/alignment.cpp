@@ -28,7 +28,7 @@ int main(int argc, char **argv){
     using pack_t = bs::pack<int>;
     std::size_t num_elements = 1024;
     std::size_t alignment = pack_t::alignment;
-    std::unique_ptr<char[], boost::alignment::aligned_delete> ptr2((char*)ba::aligned_alloc(alignment, num_elements));
+    std::unique_ptr<char[], ba::aligned_delete> ptr2((char*)ba::aligned_alloc(alignment, num_elements));
     //! [align-allocator]
   }
   {
