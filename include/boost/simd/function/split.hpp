@@ -17,13 +17,14 @@ namespace boost { namespace simd
     @ingroup group-swar
     Function object implementing split capabilities
 
-    SIMD register type-based split
+    Split a SIMD register @c x in two SIMD registers of half the
+    cardinal of @c x containing the same value than @c x but converted to
+    their associated upgraded type.
 
-    @c split splits a SIMD register @c x in two SIMD registers of half the
-    cardinal of @c x containing the same value than @c x but transtyped to
-    their associated scalar type.
+    @param v0 Value to split
+    @return An array containing the two upgraded part of its argument.
   **/
-  Value split(Value const & v0);
+  std::array<upgrade_t<Value>,2> split(Value const & v0);
 #endif
 } }
 

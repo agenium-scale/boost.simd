@@ -12,7 +12,7 @@
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/constant/constant.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/shift_right.hpp>
+#include <boost/simd/function/simd/shr.hpp>
 #include <boost/simd/function/saturated.hpp>
 #include <boost/simd/detail/dispatch/meta/downgrade.hpp>
 
@@ -47,8 +47,8 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE bd::downgrade_t<A0>
     operator()(const saturated_tag &,const A0 & a0, const A0 & a1 ) const BOOST_NOEXCEPT
     {
-      return _mm256_permute4x64_epi64(_mm256_packus_epi16( (a0 & 0x7FFF) | shri(a0 & 0xF000, 1)
-                                                         , (a1 & 0x7FFF) | shri(a1 & 0xF000, 1)
+      return _mm256_permute4x64_epi64(_mm256_packus_epi16( (a0 & 0x7FFF) | shr(a0 & 0xF000, 1)
+                                                         , (a1 & 0x7FFF) | shr(a1 & 0xF000, 1)
                                                          )
                                      , 0xD8
                                      );
@@ -81,8 +81,8 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE bd::downgrade_t<A0>
     operator()(const saturated_tag &,const A0 & a0, const A0 & a1 ) const BOOST_NOEXCEPT
     {
-      return _mm256_permute4x64_epi64(_mm256_packus_epi32( (a0 & 0x7FFFFFFF) | shri(a0 & 0xF0000000, 1)
-                                                         , (a1 & 0x7FFFFFFF) | shri(a1 & 0xF0000000, 1)
+      return _mm256_permute4x64_epi64(_mm256_packus_epi32( (a0 & 0x7FFFFFFF) | shr(a0 & 0xF0000000, 1)
+                                                         , (a1 & 0x7FFFFFFF) | shr(a1 & 0xF0000000, 1)
                                                          )
                                      , 0xD8
                                      );

@@ -94,11 +94,8 @@ namespace boost { namespace simd { namespace ext
     using result = bd::as_integer_t<A0>;
     BOOST_FORCEINLINE result operator() ( const A0 & a0)
     {
-      using up_t = detail::make_dependent_t<uint32_t,A0>;
-      using gen_t = pack<up_t, A0::static_size/2>;
-      gen_t a0h, a0l;
-      std::tie(a0l, a0h) = split(a0);
-      return bitwise_cast<result>(group(ilogb(a0l), ilogb(a0h)));
+      auto s0 = split(a0);
+      return bitwise_cast<result>(group(ilogb(s0[0]), ilogb(s0[1])));
     }
   };
   BOOST_DISPATCH_OVERLOAD ( ilogb_
