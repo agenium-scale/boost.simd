@@ -21,7 +21,7 @@ namespace boost { namespace simd { namespace ext
 {
    namespace bd = boost::dispatch;
    namespace bs = boost::simd;
-   BOOST_DISPATCH_OVERLOAD(is_not_greater_equal_
+   BOOST_DISPATCH_OVERLOAD   (is_not_greater_equal_
                           , (typename A0)
                           , bs::simd_
                           , bs::pack_<bd::floating_<A0>, bs::simd_native_>
