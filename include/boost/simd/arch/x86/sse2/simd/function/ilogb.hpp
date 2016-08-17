@@ -88,17 +88,17 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( ilogb_
                           , (typename A0)
                           , bs::sse2_
-                          , bs::pack_<bd::uint16_<A0>, bs::sse_>
+                          , bs::pack_<bd::ints16_<A0>, bs::sse_>
                           )
   {
     using result = bd::as_integer_t<A0>;
     BOOST_FORCEINLINE result operator() ( const A0 & a0)
     {
-      using up_t = detail::make_dependent_t<int32_t,A0>;
-      using gen_t = pack<up_t, 32>;//this is not correct TODO using new upgrade possibilities
+      using up_t = detail::make_dependent_t<uint32_t,A0>;
+      using gen_t = pack<up_t, A0::static_size/2>;
       gen_t a0h, a0l;
-      split(a0, a0l, a0h);
-      return group(ilogb(a0l), ilogb(a0h));
+      std::tie(a0l, a0h) = split(a0);
+      return bitwise_cast<result>(group(ilogb(a0l), ilogb(a0h)));
     }
   };
   BOOST_DISPATCH_OVERLOAD ( ilogb_
