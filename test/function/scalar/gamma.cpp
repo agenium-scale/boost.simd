@@ -43,4 +43,8 @@ STF_CASE_TPL (" gamma",  STF_IEEE_TYPES)
 #endif
   STF_ULP_EQUAL(gamma(bs::Zero<T>()), bs::Inf<r_t>(), 0);
   STF_ULP_EQUAL(gamma(bs::Mzero<T>()), bs::Minf<r_t>(), 0);
+  STF_ULP_EQUAL(gamma(T(1)), T(1), 0);
+  STF_ULP_EQUAL(gamma(T(2)), T(1), 0);
+  STF_ULP_EQUAL(gamma(T(3)), T(2), 0);
+  STF_ULP_EQUAL(gamma(T(5)), T(24), 0);
  }

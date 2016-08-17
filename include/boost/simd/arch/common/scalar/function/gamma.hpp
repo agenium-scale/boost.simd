@@ -53,10 +53,11 @@ namespace boost { namespace simd { namespace ext
       #endif
 
       A0 x = a0;
+      if (inftest(a0)) return Inf<A0>();
       A0 q = bs::abs(x);
       if(x < A0(-33.0))
       {
-        return std::tgamma(a0);
+//        return std::tgamma(a0);
         A0 st = stirling(q);
         A0 p =  floor(q);
         auto iseven =  is_even((int32_t)p);
@@ -93,6 +94,16 @@ namespace boost { namespace simd { namespace ext
       x -= Two<A0>();
       return z*detail::gamma_kernel<A0>::gamma1(x);
     }
+  private:
+    static BOOST_FORCEINLINE bool inftest(const float a0)
+    {
+      return a0 > 35.4f;
+    }
+    static BOOST_FORCEINLINE bool inftest(const double a0)
+    {
+      return a0 > 171.624;
+    }
+
   };
   BOOST_DISPATCH_OVERLOAD ( gamma_
                           , (typename A0)

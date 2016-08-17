@@ -132,6 +132,8 @@ fnma.cpp
 fnms.cpp
 frac.cpp
 frexp.cpp
+gamma.cpp
+gammaln.cpp
 genmaskc.cpp
 group.cpp
 groups.cpp
@@ -307,6 +309,7 @@ sqr.cpp
 sqr_s.cpp
 sqrt1pm1.cpp
 sqrt.cpp
+stirling.cpp
 store.cpp
 successor.cpp
 sum.cpp

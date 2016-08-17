@@ -7,14 +7,15 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/gammaln.hpp>
+#include <boost/simd/function/simd/gamma.hpp>
+#include <boost/simd/pack.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_gammaln, bs::gammaln);
+DEFINE_SIMD_BENCH(simd_gamma, bs::gamma);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_gammaln, NS_BENCH_IEEE_TYPES>(0.0, 13.0);
+  nsb::for_each<simd_gamma, NS_BENCH_IEEE_TYPES>(0, 35);
 }

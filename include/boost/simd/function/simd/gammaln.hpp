@@ -14,5 +14,11 @@
 
 #include <boost/simd/function/scalar/gammaln.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
+#include <boost/simd/arch/common/simd/function/gammaln.hpp>
+#if defined(BOOST_HW_SIMD_X86_OR_AMD_AVAILABLE)
+#  if BOOST_HW_SIMD_X86_OR_AMD >= BOOST_HW_SIMD_X86_SSE2_VERSION
+#    include <boost/simd/arch/x86/sse2/simd/function/gammaln.hpp>
+#  endif
+#endif
 
 #endif
