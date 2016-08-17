@@ -41,6 +41,9 @@
 #include <boost/simd/function/simd/if_plus.hpp>
 #include <boost/simd/function/simd/tofloat.hpp>
 #include <boost/simd/function/simd/unary_minus.hpp>
+#include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/log.hpp>
+#include <boost/simd/function/exp.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -58,14 +61,14 @@ namespace boost { namespace simd { namespace ext
       using bA0 = bs::as_logical_t<A0>;
       A0 x =  bs::abs(a0);
       A0 aa1 = bs::tofloat(a1);
-      A0 y = bs::pow(x,rec(aa1));
+      A0 y = bs::fast_(bs::pow_abs)(x,rec(aa1));
       bA0 nul_a1 =  bitwise_cast<bA0>(bs::is_eqz(a1));
       bA0 is_ltza0 = is_ltz(a0);
       bA0 is_odda1 = bitwise_cast<bA0>(is_odd(a1));
-      A0 a11 = bs::tofloat(a1-bs::if_else_zero(nul_a1, Mone<A1>()));
+      A0 p = fast_(bs::pow_abs)(y, aa1);
       y = bs::if_plus( bs::logical_or(bs::is_nez(y), nul_a1)
                      , y
-                     , -(bs::pow(y, aa1) - x)/(aa1* bs::pow(y, bs::dec(a11)))
+                     , -(p - x)/(aa1*p/y)
                      );
       // Correct numerical errors (since, e.g., 64^(1/3) is not exactly 4)
       // by one iteration of Newton's method
@@ -97,6 +100,26 @@ namespace boost { namespace simd { namespace ext
       return bs::bitwise_or(y, bs::bitofsign(a0));
       }
    };
+
+   BOOST_DISPATCH_OVERLOAD( nthroot_
+                          , (typename A0, typename A1, typename X)
+                          , bd::cpu_
+                          , bs::fast_tag
+                          , bs::pack_<bd::floating_<A0>, X>
+                          , bs::pack_<bd::integer_<A1>, X>
+                          )
+   {
+     BOOST_FORCEINLINE A0 operator()(const fast_tag &, const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
+     {
+       auto aa1 =  abs(a1);
+       A0 aa0 = abs(a0);
+       A0 y = sign(a0)*bs::exp(bs::log(aa0)/tofloat(aa1));
+       auto l =  is_ltz(aa1);
+       y =  if_nan_else(logical_and(l, is_even(a1)), y);
+       return if_else(is_ltz(a1), rec(y), y);
+     }
+   };
+
 
 } } }
 

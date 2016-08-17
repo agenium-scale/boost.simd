@@ -21,6 +21,7 @@ set(SOURCES
   log1p.cpp
   log10.cpp
   log2.cpp
+  nthroot.cpp
  )
 
 make_exhaustive("function.simd" ${SOURCES})
