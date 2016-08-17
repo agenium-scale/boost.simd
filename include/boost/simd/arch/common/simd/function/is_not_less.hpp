@@ -15,6 +15,7 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/function/simd/is_greater_equal.hpp>
 #include <boost/simd/function/simd/is_less.hpp>
+#include <boost/simd/function/simd/is_ord.hpp>
 #include <boost/simd/function/simd/logical_not.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -24,13 +25,17 @@ namespace boost { namespace simd { namespace ext
    BOOST_DISPATCH_OVERLOAD(is_not_less_
                           , (typename A0, typename X)
                           , bs::simd_
-                          , bs::pack_<bd::arithmetic_<A0>, X>
-                          , bs::pack_<bd::arithmetic_<A0>, X>
+                          , bs::pack_<bd::floating_<A0>, X>
+                          , bs::pack_<bd::floating_<A0>, X>
                           )
    {
       BOOST_FORCEINLINE bs::as_logical_t<A0> operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
-        return logical_not(is_less(a0,a1));
+        auto r = logical_not(is_not_less(a0,a1));
+        #ifndef BOOST_SIMD_NO_NANS
+        r = logical_and(r, is_ord(a0, a1));
+        #endif
+        return r;
       }
    };
 
