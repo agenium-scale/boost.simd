@@ -6,10 +6,8 @@
 ##                            http://www.boost.org/LICENSE_1_0.txt
 ##==================================================================================================
 
-set ( SOURCES
-      logical.cpp
-      mask.cpp
-    )
+SET( SOURCES
+    reduce.cpp
+   )
 
-make_unit( "api.helper" ${SOURCES})
-make_coverage("api.helper" ${SOURCES})
+make_unit( "api.algorithm" ${SOURCES})
