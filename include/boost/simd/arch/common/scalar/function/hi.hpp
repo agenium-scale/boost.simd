@@ -11,14 +11,12 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_HI_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_HI_HPP_INCLUDED
 
-#include <boost/simd/function/simd/lo.hpp>
-#include <boost/simd/function/simd/shr.hpp>
+#include <boost/simd/function/scalar/lo.hpp>
+#include <boost/simd/function/scalar/shr.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/config.hpp>
-#include <boost/simd/detail/dispatch/meta/downgrade.hpp>
-#include <boost/simd/function/simd/interleave_odd.hpp>
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;

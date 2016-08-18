@@ -147,6 +147,6 @@ namespace boost { namespace simd { namespace ext
   };
 } } }
 
-#include <boost/simd/arch/common/generic/function/abs_s.hpp>
+#include <boost/simd/arch/common/scalar/function/abs_s.hpp>
 
 #endif
