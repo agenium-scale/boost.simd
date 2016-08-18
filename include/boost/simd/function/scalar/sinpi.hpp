@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_SINPI_HPP_INCLUDED
 
 #include <boost/simd/function/definition/sinpi.hpp>
-#include <boost/simd/arch/common/generic/function/sinpi.hpp>
+#include <boost/simd/arch/common/scalar/function/sinpi.hpp>
 
 #endif

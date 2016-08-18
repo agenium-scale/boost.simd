@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_REM_PIO2_MEDIUM_HPP_INCLUDED
 
 #include <boost/simd/function/definition/rem_pio2_medium.hpp>
-#include <boost/simd/arch/common/generic/function/rem_pio2_medium.hpp>
+#include <boost/simd/arch/common/scalar/function/rem_pio2_medium.hpp>
 
 #endif

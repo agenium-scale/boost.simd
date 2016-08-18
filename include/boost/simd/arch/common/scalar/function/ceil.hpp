@@ -12,7 +12,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_CEIL_HPP_INCLUDED
 #include <boost/simd/function/std.hpp>
 
-#include <boost/simd/arch/common/generic/function/ceil.hpp>
+#include <boost/simd/arch/common/scalar/function/ceil.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>

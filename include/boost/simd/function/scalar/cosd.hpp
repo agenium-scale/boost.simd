@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_COSD_HPP_INCLUDED
 
 #include <boost/simd/function/definition/cosd.hpp>
-#include <boost/simd/arch/common/generic/function/cosd.hpp>
+#include <boost/simd/arch/common/scalar/function/cosd.hpp>
 
 #endif

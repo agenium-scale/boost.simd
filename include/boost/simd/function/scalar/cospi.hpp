@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_COSPI_HPP_INCLUDED
 
 #include <boost/simd/function/definition/cospi.hpp>
-#include <boost/simd/arch/common/generic/function/cospi.hpp>
+#include <boost/simd/arch/common/scalar/function/cospi.hpp>
 
 #endif

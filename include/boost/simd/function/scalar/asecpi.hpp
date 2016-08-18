@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_ASECPI_HPP_INCLUDED
 
 #include <boost/simd/function/definition/asecpi.hpp>
-#include <boost/simd/arch/common/generic/function/asecpi.hpp>
+#include <boost/simd/arch/common/scalar/function/asecpi.hpp>
 
 #endif

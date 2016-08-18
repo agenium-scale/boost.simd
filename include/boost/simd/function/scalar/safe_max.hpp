@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_SAFE_MAX_HPP_INCLUDED
 
 #include <boost/simd/function/definition/safe_max.hpp>
-#include <boost/simd/arch/common/generic/function/safe_max.hpp>
+#include <boost/simd/arch/common/scalar/function/safe_max.hpp>
 
 #endif

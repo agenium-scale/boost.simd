@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_SECH_HPP_INCLUDED
 
 #include <boost/simd/function/definition/sech.hpp>
-#include <boost/simd/arch/common/generic/function/sech.hpp>
+#include <boost/simd/arch/common/scalar/function/sech.hpp>
 
 #endif

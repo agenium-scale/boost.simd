@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_ATAN2PI_HPP_INCLUDED
 
 #include <boost/simd/function/definition/atan2pi.hpp>
-#include <boost/simd/arch/common/generic/function/atan2pi.hpp>
+#include <boost/simd/arch/common/scalar/function/atan2pi.hpp>
 
 #endif

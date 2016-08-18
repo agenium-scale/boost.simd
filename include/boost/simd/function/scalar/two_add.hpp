@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_TWO_ADD_HPP_INCLUDED
 
 #include <boost/simd/function/definition/two_add.hpp>
-#include <boost/simd/arch/common/generic/function/two_add.hpp>
+#include <boost/simd/arch/common/scalar/function/two_add.hpp>
 
 #endif

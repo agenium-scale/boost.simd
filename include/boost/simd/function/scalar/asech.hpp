@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_ASECH_HPP_INCLUDED
 
 #include <boost/simd/function/definition/asech.hpp>
-#include <boost/simd/arch/common/generic/function/asech.hpp>
+#include <boost/simd/arch/common/scalar/function/asech.hpp>
 
 #endif

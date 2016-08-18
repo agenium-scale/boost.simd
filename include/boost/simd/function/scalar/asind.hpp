@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_ASIND_HPP_INCLUDED
 
 #include <boost/simd/function/definition/asind.hpp>
-#include <boost/simd/arch/common/generic/function/asind.hpp>
+#include <boost/simd/arch/common/scalar/function/asind.hpp>
 
 #endif

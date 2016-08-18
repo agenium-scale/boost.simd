@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_SQR_ABS_HPP_INCLUDED
 
 #include <boost/simd/function/definition/sqr_abs.hpp>
-#include <boost/simd/arch/common/generic/function/sqr_abs.hpp>
+#include <boost/simd/arch/common/scalar/function/sqr_abs.hpp>
 
 #endif

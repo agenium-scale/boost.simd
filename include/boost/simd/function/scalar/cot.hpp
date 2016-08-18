@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_COT_HPP_INCLUDED
 
 #include <boost/simd/function/definition/cot.hpp>
-#include <boost/simd/arch/common/generic/function/cot.hpp>
+#include <boost/simd/arch/common/scalar/function/cot.hpp>
 
 #endif

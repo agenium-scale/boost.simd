@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_CSC_HPP_INCLUDED
 
 #include <boost/simd/function/definition/csc.hpp>
-#include <boost/simd/arch/common/generic/function/csc.hpp>
+#include <boost/simd/arch/common/scalar/function/csc.hpp>
 
 #endif

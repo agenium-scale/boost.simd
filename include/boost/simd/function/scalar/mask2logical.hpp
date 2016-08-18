@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_MASK2LOGICAL_HPP_INCLUDED
 
 #include <boost/simd/function/definition/mask2logical.hpp>
-#include <boost/simd/arch/common/generic/function/mask2logical.hpp>
+#include <boost/simd/arch/common/scalar/function/mask2logical.hpp>
 
 #endif

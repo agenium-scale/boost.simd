@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_ACSCPI_HPP_INCLUDED
 
 #include <boost/simd/function/definition/acscpi.hpp>
-#include <boost/simd/arch/common/generic/function/acscpi.hpp>
+#include <boost/simd/arch/common/scalar/function/acscpi.hpp>
 
 #endif
