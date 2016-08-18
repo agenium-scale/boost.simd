@@ -34,11 +34,12 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
-  BOOST_DISPATCH_OVERLOAD ( stirling_
-                          , (typename A0, typename X)
-                          , bd::cpu_
-                          , bs::pack_< bd::floating_<A0>, X>
-                          )
+  BOOST_DISPATCH_OVERLOAD_IF ( stirling_
+                             , (typename A0, typename X)
+                             , (detail::is_native<X>)
+                             , bd::cpu_
+                             , bs::pack_< bd::floating_<A0>, X>
+                             )
   {
     BOOST_FORCEINLINE A0 operator() (const A0& a00) const BOOST_NOEXCEPT
     {
