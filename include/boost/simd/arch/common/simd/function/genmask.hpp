@@ -29,9 +29,10 @@ namespace boost { namespace simd { namespace ext
 
   // -----------------------------------------------------------------------------------------------
   // genmask from logical
-  BOOST_DISPATCH_OVERLOAD ( genmask_
+  BOOST_DISPATCH_OVERLOAD_IF ( genmask_
                           , (typename A0, typename X)
-                          , bs::simd_
+                          , (detail::is_native<X>)
+                          , bd::cpu_
                           , bs::pack_< bs::logical_<A0>, X >
                           )
   {
@@ -44,8 +45,9 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-   BOOST_DISPATCH_OVERLOAD(genmask_
+   BOOST_DISPATCH_OVERLOAD_IF(genmask_
                           , (typename A0,typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::pack_<bd::arithmetic_<A0>,X>
                           )

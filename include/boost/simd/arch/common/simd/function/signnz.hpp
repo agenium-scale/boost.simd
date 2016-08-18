@@ -28,8 +28,9 @@ namespace boost { namespace simd { namespace ext
 {
    namespace bd = boost::dispatch;
    namespace bs = boost::simd;
-   BOOST_DISPATCH_OVERLOAD(signnz_
+   BOOST_DISPATCH_OVERLOAD_IF(signnz_
                           , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::pack_<bd::integer_<A0>, X>
                           )
@@ -41,8 +42,9 @@ namespace boost { namespace simd { namespace ext
       }
    };
 
-   BOOST_DISPATCH_OVERLOAD(signnz_
+   BOOST_DISPATCH_OVERLOAD_IF(signnz_
                           , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::pack_<bd::unsigned_<A0>, X>
                           )
@@ -53,8 +55,9 @@ namespace boost { namespace simd { namespace ext
       }
    };
 
-   BOOST_DISPATCH_OVERLOAD(signnz_
+   BOOST_DISPATCH_OVERLOAD_IF(signnz_
                           , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::pack_<bd::floating_<A0>, X>
                           )

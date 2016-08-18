@@ -36,8 +36,9 @@ namespace boost { namespace simd { namespace ext
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
 
-  BOOST_DISPATCH_OVERLOAD ( erfcx_
+  BOOST_DISPATCH_OVERLOAD_IF ( erfcx_
                           , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::pack_< bd::double_<A0>, X>
                           )
@@ -80,8 +81,9 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( erfcx_
+  BOOST_DISPATCH_OVERLOAD_IF ( erfcx_
                           , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::pack_< bd::single_<A0>, X>
                           )

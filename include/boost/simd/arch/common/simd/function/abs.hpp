@@ -26,8 +26,9 @@ namespace boost { namespace simd { namespace ext
 
   //------------------------------------------------------------------------------------------------
   // abs on signed values
-  BOOST_DISPATCH_OVERLOAD( abs_
+  BOOST_DISPATCH_OVERLOAD_IF( abs_
                             , (typename A0, typename X)
+                            , (detail::is_native<X>)
                             , bd::cpu_
                             , bs::pack_<bd::signed_<A0>, X>
                             )
@@ -41,8 +42,9 @@ namespace boost { namespace simd { namespace ext
 
   //------------------------------------------------------------------------------------------------
   // abs on unsigned values is identity
-  BOOST_DISPATCH_OVERLOAD ( abs_
+  BOOST_DISPATCH_OVERLOAD_IF ( abs_
                           , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::pack_<bd::unsigned_<A0>, X>
                           )
@@ -55,8 +57,9 @@ namespace boost { namespace simd { namespace ext
 
   //------------------------------------------------------------------------------------------------
   // abs on real values cleans the sign bit
-  BOOST_DISPATCH_OVERLOAD( abs_
+  BOOST_DISPATCH_OVERLOAD_IF( abs_
                             , (typename A0, typename X)
+                            , (detail::is_native<X>)
                             , bd::cpu_
                             , bs::pack_<bd::floating_<A0>, X>
                             )

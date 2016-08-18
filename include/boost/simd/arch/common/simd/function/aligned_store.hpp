@@ -22,9 +22,9 @@ namespace boost { namespace simd { namespace ext
 
   //------------------------------------------------------------------------------------------------
   // aligned_store is generally check + calling store
-  BOOST_DISPATCH_OVERLOAD ( aligned_store_
+  BOOST_DISPATCH_OVERLOAD( aligned_store_
                           , (typename A0, typename A1, typename X)
-                          , bs::simd_
+                          , bd::cpu_
                           , bs::pack_<bd::unspecified_<A0>,X>
                           , bd::pointer_<bd::scalar_<bd::unspecified_<A1>>,1u>
                           )

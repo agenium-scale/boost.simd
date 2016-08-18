@@ -24,9 +24,10 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
-  BOOST_DISPATCH_OVERLOAD ( dist_
+  BOOST_DISPATCH_OVERLOAD_IF ( dist_
                           , (typename A0, typename X)
-                          , bs::simd_
+                          , (detail::is_native<X>)
+                          , bd::cpu_
                           , bs::saturated_tag
                           , bs::pack_< bd::signed_<A0>, X>
                           , bs::pack_< bd::signed_<A0>, X>
@@ -40,9 +41,10 @@ namespace boost { namespace simd { namespace ext
       return if_else(is_ltz(tmp), Valmax<A0>(), tmp);
     }
   };
-  BOOST_DISPATCH_OVERLOAD ( dist_
+  BOOST_DISPATCH_OVERLOAD_IF ( dist_
                           , (typename A0, typename X)
-                          , bs::simd_
+                          , (detail::is_native<X>)
+                          , bd::cpu_
                           , bs::saturated_tag
                           , bs::pack_< bd::unsigned_<A0>, X >
                           , bs::pack_< bd::unsigned_<A0>, X >
@@ -55,9 +57,10 @@ namespace boost { namespace simd { namespace ext
       return dist(a0, a1);
     }
   };
-  BOOST_DISPATCH_OVERLOAD ( dist_
+  BOOST_DISPATCH_OVERLOAD_IF ( dist_
                           , (typename A0, typename X)
-                          , bs::simd_
+                          , (detail::is_native<X>)
+                          , bd::cpu_
                           , bs::saturated_tag
                           , bs::pack_<bd::floating_<A0>, X >
                           , bs::pack_<bd::floating_<A0>, X >

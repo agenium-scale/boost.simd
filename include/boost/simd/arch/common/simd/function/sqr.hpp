@@ -26,8 +26,9 @@ namespace boost { namespace simd { namespace ext
 {
    namespace bd = boost::dispatch;
    namespace bs = boost::simd;
-   BOOST_DISPATCH_OVERLOAD(sqr_
+   BOOST_DISPATCH_OVERLOAD_IF(sqr_
                           , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::saturated_tag
                           , bs::pack_<bd::int_<A0>, X>
@@ -47,8 +48,9 @@ namespace boost { namespace simd { namespace ext
 #endif
      }
    };
-  BOOST_DISPATCH_OVERLOAD(sqr_
+  BOOST_DISPATCH_OVERLOAD_IF(sqr_
                          , (typename A0, typename X)
+                         , (detail::is_native<X>)
                          , bd::cpu_
                          , bs::saturated_tag
                          , bs::pack_<bd::uint_<A0>, X>
@@ -61,8 +63,9 @@ namespace boost { namespace simd { namespace ext
                      bs::Valmax<A0>(), sqr(a0));
     }
   };
-  BOOST_DISPATCH_OVERLOAD(sqr_
+  BOOST_DISPATCH_OVERLOAD_IF(sqr_
                          , (typename A0, typename X)
+                         , (detail::is_native<X>)
                          , bd::cpu_
                          , bs::saturated_tag
                          , bs::pack_<bd::floating_<A0>, X>
