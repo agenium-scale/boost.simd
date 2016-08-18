@@ -48,9 +48,8 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD_IF( toint_
+  BOOST_DISPATCH_OVERLOAD( toint_
                             , (typename A0, typename X)
-                            , (detail::is_native<X>)
                             , bd::cpu_
                             , bs::saturated_tag
                             , bs::pack_<bd::int_<A0>, X>

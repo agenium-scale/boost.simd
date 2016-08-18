@@ -42,9 +42,8 @@ namespace boost { namespace simd { namespace ext
 
   //------------------------------------------------------------------------------------------------
   // abs on unsigned values is identity
-  BOOST_DISPATCH_OVERLOAD_IF ( abs_
+  BOOST_DISPATCH_OVERLOAD( abs_
                           , (typename A0, typename X)
-                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::pack_<bd::unsigned_<A0>, X>
                           )

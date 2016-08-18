@@ -35,9 +35,8 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD_IF(is_nez_
+  BOOST_DISPATCH_OVERLOAD(is_nez_
                          , (typename A0,typename X)
-                         , (detail::is_native<X>)
                          , bd::cpu_
                          , bs::pack_<bs::logical_<A0>,X>
                          )
