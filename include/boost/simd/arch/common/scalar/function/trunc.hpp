@@ -47,9 +47,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    using result_t = A0;
-
-    BOOST_FORCEINLINE result_t operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return bitwise_or(floor(bs::abs(a0)), bitofsign(a0));
     }
