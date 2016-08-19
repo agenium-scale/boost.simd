@@ -33,18 +33,17 @@ namespace boost { namespace simd { namespace ext
                             , bs::pack_<bd::int_<A0>, X>
                             , bs::pack_<bd::int_<A0>, X>
                             )
-   {
-     BOOST_FORCEINLINE A0 operator()( bd::functor<bs::tag::floor_> const&
-                                    ,  const A0& a0, const A0& a1) const BOOST_NOEXCEPT
-     {
-       auto s0 = bs::split(a0);
-       auto s1 = bs::split(a1);
-       auto d0 = saturated_(toint)(div(floor,tofloat(s0[0]), tofloat(s1[0])));
-       auto d1 = saturated_(toint)(div(floor,tofloat(s0[1]), tofloat(s1[1])));
-       return saturated_(group)(d0, d1);
-     }
-   };
-
+  {
+    BOOST_FORCEINLINE A0 operator()( bd::functor<bs::tag::floor_> const&
+                                   ,  const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+    {
+      auto s0 = bs::split(a0);
+      auto s1 = bs::split(a1);
+      auto d0 = saturated_(toint)(div(floor,tofloat(s0[0]), tofloat(s1[0])));
+      auto d1 = saturated_(toint)(div(floor,tofloat(s0[1]), tofloat(s1[1])));
+      return saturated_(group)(d0, d1);
+    }
+  };
 
   BOOST_DISPATCH_OVERLOAD_IF(div_
                             , (typename A0, typename X)
