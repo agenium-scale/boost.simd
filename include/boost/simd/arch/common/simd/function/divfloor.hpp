@@ -26,14 +26,14 @@ namespace boost { namespace simd { namespace ext
    namespace bs = boost::simd;
 
   BOOST_DISPATCH_OVERLOAD_IF(div_
-<<<<<<< 26212dc651283b244064a39b6dd4e58b1e7e76df
-                             , (typename A0, typename X)
-                             , (bd::is_upgradable<A0>)
-                             , bd::cpu_
-                             , bs::tag::floor_
-                             , bs::pack_<bd::int_<A0>, X>
-                             , bs::pack_<bd::int_<A0>, X>
-                             )
+                            , (typename A0, typename X)
+                            , (brigand::and_<bd::is_upgradable<A0>, detail::is_native<X>>)
+                            , bd::cpu_
+                            , bd::cpu_
+                            , bs::tag::floor_
+                            , bs::pack_<bd::int_<A0>, X>
+                            , bs::pack_<bd::int_<A0>, X>
+                            )
    {
      BOOST_FORCEINLINE A0 operator()( bd::functor<bs::tag::floor_> const&
                                     ,  const A0& a0, const A0& a1) const BOOST_NOEXCEPT
