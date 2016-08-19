@@ -29,7 +29,6 @@ namespace boost { namespace simd { namespace ext
                             , (typename A0, typename X)
                             , (brigand::and_<bd::is_upgradable<A0>, detail::is_native<X>>)
                             , bd::cpu_
-                            , bd::cpu_
                             , bs::tag::floor_
                             , bs::pack_<bd::int_<A0>, X>
                             , bs::pack_<bd::int_<A0>, X>
