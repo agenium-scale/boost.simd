@@ -60,9 +60,9 @@ namespace boost { namespace simd { namespace ext
       A0 const d = nearbyint(a0/a1);
 
 #if defined(BOOST_SIMD_NO_INVALIDS)
-      A0  a2 = is_eqz(a1) ? Nan<A0>() : fms(a0, d, a1);
+      A0  a2 = is_eqz(a1) ? Nan<A0>() : fma(-d, a1, a0);
 #else
-      A0  a2 = (is_invalid(a0) || is_eqz(a1)) ? Nan<A0>() : fms(a0, d, a1);
+      A0  a2 = (is_invalid(a0) || is_eqz(a1)) ? Nan<A0>() : fma(-d, a1, a0);
 #endif
       return {a2, toint(d)};
     }

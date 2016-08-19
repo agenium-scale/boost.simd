@@ -47,9 +47,9 @@ namespace boost { namespace simd { namespace ext
       A0 const d = nearbyint(a0/a1);
 
 #if defined(BOOST_SIMD_NO_INVALIDS)
-      A0  a2 = if_allbits_else(is_eqz(a1),  fms(a0, d, a1));
+      A0  a2 = if_allbits_else(is_eqz(a1),  fma(-d, a1, a0));
 #else
-      A0  a2 = if_allbits_else(logical_or(is_invalid(a0), is_eqz(a1)),  fms(a0, d, a1));
+      A0  a2 = if_allbits_else(logical_or(is_invalid(a0), is_eqz(a1)),  fma(-d, a1, a0));
 #endif
       return {a2, toint(d)};
     }
