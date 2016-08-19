@@ -10,11 +10,13 @@
 //! [hello]
 #include <iostream>
 #include <vector>
+#include <list>
 #include <numeric>
 //! [hello-include-pack]
 #include <boost/simd/pack.hpp>
 //! [hello-include-pack]
 
+#include <boost/simd/function/store.hpp>
 #include <boost/simd/function/plus.hpp>
 #include <boost/simd/function/splat.hpp>
 #include <boost/simd/function/multiplies.hpp>
@@ -36,9 +38,7 @@ int main()
   pack_t tens{10};
   //! [hello-splat-ctor]
 
-  //! [hello-splat-explicit]
-  pack_t elevens(11);
-  //! [hello-splat-explicit]
+  pack_t elevens{11};
 
   //! [hello-ptr-iota]
   std::vector<float> values(1000);
@@ -47,7 +47,7 @@ int main()
   //! [hello-ptr-iota]
 
   //! [hello-iter-con]
-  std::vector<float> data(1000);
+  std::list<float> data(pack_t::static_size);
   std::iota(data.begin(), data.begin() + pack_t::static_size, float(0));
   pack_t iter_pack(data.begin(), data.end());
   //! [hello-iter-con]
@@ -59,6 +59,11 @@ int main()
   //! [hello-ops]
   res = (tens + elevens) * 2;
   //! [hello-ops]
+
+  //! [hello-store]
+  float output[pack_t::static_size];
+  bs::store(res, &output[0]);
+  //! [hello-store]
 
   //! [hello-io]
   std::cout << res << std::endl;

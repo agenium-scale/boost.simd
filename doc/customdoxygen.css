@@ -490,7 +490,7 @@ table.memberdecls {
 .memTemplParams {
 	color: #4665A2;
         white-space: nowrap;
-	font-size: 80%;
+	font-size: 100%;
 }
 
 /* @end */
@@ -1041,6 +1041,7 @@ dl.section
 
 dl.note
 {
+        margin-top:7px;
         margin-left:-7px;
         padding-left: 3px;
         border-left:4px solid;
