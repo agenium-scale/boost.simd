@@ -10,11 +10,11 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ERFCX_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ERFCX_HPP_INCLUDED
-#include <boost/simd/detail/overload.hpp>
+//#include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
-#include <boost/simd/arch/common/detail/generic/erfcx_kernel.hpp>
+#include <boost/simd/arch/common/detail/generic/erf_kernel.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/simd/abs.hpp>
 #include <boost/simd/function/simd/exp.hpp>
@@ -43,7 +43,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_< bd::double_<A0>, X>
                           )
   {
-   A0 operator() (const A0& a0) const BOOST_NOEXCEPT
+   A0 operator() (const A0& x) const BOOST_NOEXCEPT
     {
       A0 y =  bs::abs(x);
       A0 lim1 = Ratio<A0, 15, 32>();
@@ -64,9 +64,9 @@ namespace boost { namespace simd { namespace ext
       if(nb1 > 0)
       {
         res2 = detail::erf_kernel1<A0>::erf2(x, y);
-        res2 = if_else (is_ltz(x), res1, detail::erf_kernel1<A0>::finalize3(res, x));
+        res2 = if_else (is_ltz(x), res1, detail::erf_kernel1<A0>::finalize3(res2, x));
         nb += nb1;
-        res2 = bs::if_else(test1, res1, res2)
+        res2 = bs::if_else(test1, res1, res2);
         if (nb >= A0::static_size)
           return res2;
       }
@@ -74,10 +74,10 @@ namespace boost { namespace simd { namespace ext
       {
         res2 =  res1;
       }
-      test4 = logical_not(logical_or(test1, test2));
+      auto test4 = logical_not(logical_or(test1, test2));
       A0 res3 = detail::erf_kernel1<A0>::erf3(x, y);
-      res3 =  if_else (is_ltz(x), detail::erf_kernel1<A0>::finalize3(res, x), res3);
-      return if_nan_else(is_nan(a0), if_else(test4, res3, res2));
+      res3 =  if_else (is_ltz(x), detail::erf_kernel1<A0>::finalize3(res2, x), res3);
+      return if_nan_else(is_nan(x), if_else(test4, res3, res2));
     }
   };
 
@@ -93,7 +93,7 @@ namespace boost { namespace simd { namespace ext
 
       auto test1 = bs::is_less(a0,  Ratio<A0, 2, 3>());
       std::size_t nb = bs::nbtrue(test1);
-      A0 r2 = Zero<A0>, r1 = Zero<A0>;
+      A0 r2 = Zero<A0>(), r1 = Zero<A0>();
       if(nb > 0)
       {
         r1 = expx2(a0)*erfc(a0);
@@ -101,16 +101,15 @@ namespace boost { namespace simd { namespace ext
       if(nb < A0::static_size)
       {
         A0 z =  a0/inc(a0) - Ratio<A0, 2, 5>();
-        A0 r2 = detail::erf_kernel<A0>::erfc2(z);
-        r2 = if_else(is_ltz(r2), bs::rsqrt(bs::Pi<A0>())/a0, r2),;
+        r2 = detail::erf_kernel<A0>::erfc2(z);
+        r2 = if_else(is_ltz(r2), bs::rsqrt(bs::Pi<A0>())/a0, r2);
 #ifndef BOOST_SIMD_NO_INFINITIES
-        r2 = if_else(is_nan(a0), a0, if_zero_else(a0 == Inf<A0>(), r2);
+        r2 = if_else(is_nan(a0), a0, if_zero_else(a0 == Inf<A0>(), r2));
 #endif
       }
       return if_else(test1, r1, r2);
+    }
 
-      #ifndef BOOST_SIMD_NO_INFINITIES
-     }
   };
 
 } } }
