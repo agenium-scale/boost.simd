@@ -54,7 +54,7 @@ namespace boost { namespace simd { namespace ext
       i_t n;
       std::tie(n, xr) = rem_pio2(a0);
       xr += tofloat(n)*Pio_2<A0>();
-      return if_else((xr > Pi<A0>()), xr-Twopi<A0>(), xr);
+      return ((xr > Pi<A0>())? xr-Twopi<A0>(): xr);
     }
 
   };
@@ -90,8 +90,7 @@ namespace boost { namespace simd { namespace ext
     {
       static BOOST_FORCEINLINE A0 rem( A0 x) BOOST_NOEXCEPT
       {
-        return if_else(gt(x, Pi<A0>()), x-Twopi<A0>(),
-                       if_else(lt(x, -Pi<A0>()), x+Twopi<A0>(), x));
+        return (is_greater(x, Pi<A0>())? x-Twopi<A0>(): (is_less(x, -Pi<A0>())? x+Twopi<A0>(): x));
       }
     };
     template < class dummy> struct rem2pi < tag::small_tag, dummy >// |a0| <= 20*pi
@@ -114,7 +113,7 @@ namespace boost { namespace simd { namespace ext
         A0 xr;
         i_t n = rem_pio2_medium(x, xr);
         xr += tofloat(n)*Pio_2<A0>();
-        xr = if_else(gt(xr, Pi<A0>()), xr-Twopi<A0>(), xr);
+        xr = (is_greater(xr, Pi<A0>())? xr-Twopi<A0>(): xr);
         return xr;
       }
     };

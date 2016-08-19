@@ -32,8 +32,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
-      return if_else(is_nez(a0), Sqrtvalmax<A0>()/bs::abs(a0),
-                     Inf<A0>());
+      return (is_nez(a0)? Sqrtvalmax<A0>()/bs::abs(a0): Inf<A0>());
     }
   };
 } } }

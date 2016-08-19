@@ -36,9 +36,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       A0 tmp =  bs::sqrt(inc(a0));
-      return  bs::if_else((bs::abs(a0) < bs::Half<A0>()),
-                          a0/bs::inc(tmp),
-                          bs::dec(tmp));
+      return  ((bs::abs(a0) < bs::Half<A0>())? a0/bs::inc(tmp) : bs::dec(tmp));
     }
   };
 } } }

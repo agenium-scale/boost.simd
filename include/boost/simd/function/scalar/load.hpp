@@ -11,7 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_LOAD_HPP_INCLUDED
 
 #include <boost/simd/function/definition/load.hpp>
-#include <boost/simd/arch/common/generic/function/load.hpp>
 #include <boost/simd/arch/common/scalar/function/load.hpp>
 
 #endif

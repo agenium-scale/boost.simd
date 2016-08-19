@@ -41,7 +41,7 @@ namespace boost { namespace simd { namespace ext
       // respectively computed
       // *  in the first case cosh (e+rec(e))/2
       // *  in the second     cosh is (e/2)*e (avoiding undue overflow)
-      // Threshold is Maxlog - Log_2 defined in Maxshlog
+      // Threshold is Maxlog - Log_2
       //////////////////////////////////////////////////////////////////////////////
       A0 x = bs::abs(a0);
       auto test1 = (x > Maxlog<A0>()-Log_2<A0>());

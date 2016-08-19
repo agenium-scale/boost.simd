@@ -12,7 +12,6 @@
 
 #include <boost/simd/function/definition/pow_abs.hpp>
 #include <boost/simd/arch/common/scalar/function/pow_abs.hpp>
-#include <boost/simd/arch/common/generic/function/pow_abs.hpp>
 
 
 #endif

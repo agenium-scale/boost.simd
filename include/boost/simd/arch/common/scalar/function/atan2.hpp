@@ -16,7 +16,10 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/pi.hpp>
-#include <boost/simd/arch/common/detail/generic/invtrig.hpp>
+#include <boost/simd/arch/common/detail/tags.hpp>
+#include <boost/simd/arch/common/detail/scalar/f_invtrig.hpp>
+#include <boost/simd/arch/common/detail/scalar/d_invtrig.hpp>
+#include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/function/scalar/copysign.hpp>
 #include <boost/simd/function/scalar/if_else.hpp>
 #include <boost/simd/function/scalar/if_else_zero.hpp>
@@ -58,8 +61,8 @@ namespace boost { namespace simd { namespace ext
       A0 q = bs::abs(a0/a1);
       A0 z = detail::invtrig_base<A0,tag::radian_tag, tag::not_simd_type>::kernel_atan(q, rec(q));
       A0 sgn = signnz(a0);
-      z = if_else(is_positive(a1), z, Pi<A0>()-z)*sgn;
-      return if_else(is_eqz(a0), if_else_zero(is_negative(a1), Pi<A0>()*sgn), z);
+      z = (is_positive(a1)? z: Pi<A0>()-z)*sgn;
+    return is_eqz(a0) ? if_else_zero(is_negative(a1), Pi<A0>()*sgn) : z;
     }
   };
   BOOST_DISPATCH_OVERLOAD ( atan2_
@@ -87,7 +90,7 @@ namespace boost { namespace simd { namespace ext
     {
       A0 q = bs::abs(a0/a1);
       A0 z = detail::invtrig_base<A0,tag::radian_tag, tag::not_simd_type>::kernel_atan(q, bs::rec(q));
-      return if_else(is_positive(a1), z, Pi<A0>()-z)*signnz(a0);
+      return (is_positive(a1)? z: Pi<A0>()-z)*signnz(a0);
     }
   };
 } } }

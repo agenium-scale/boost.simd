@@ -11,6 +11,8 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_GENMASK_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_GENMASK_HPP_INCLUDED
 
+#include <boost/simd/constant/allbits.hpp>
+#include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/scalar/unary_minus.hpp>
 #include <boost/simd/function/scalar/bitwise_cast.hpp>
 #include <boost/simd/meta/hierarchy/logical.hpp>
@@ -69,6 +71,40 @@ namespace boost { namespace simd { namespace ext
       return bitwise_cast<A0>(unary_minus(itype(a0 != 0)));
     }
   };
+
+  // -----------------------------------------------------------------------------------------------
+  // re-targeted genmask for logical
+  BOOST_DISPATCH_OVERLOAD ( genmask_
+                          , (typename A0, typename Target)
+                          , bd::cpu_
+                          , bd::scalar_< bs::logical_<A0> >
+                          , bd::target_< bd::scalar_<bd::unspecified_<Target> > >
+                          )
+  {
+    using result_t = typename Target::type;
+
+    BOOST_FORCEINLINE result_t operator()( A0 const& a0, Target const& ) const BOOST_NOEXCEPT
+    {
+      return a0 ? Allbits<result_t>() : Zero<result_t>();
+    }
+  };
+
+  // -----------------------------------------------------------------------------------------------
+  // re-targeted genmask for other types
+  BOOST_DISPATCH_OVERLOAD ( genmask_
+                          , (typename A0, typename Target)
+                          , bd::cpu_
+                          , bd::scalar_< bd::unspecified_<A0> >
+                          , bd::target_< bd::scalar_<bd::unspecified_<Target> > >
+                          )
+  {
+    using result_t = typename Target::type;
+    BOOST_FORCEINLINE result_t operator()( A0 const& a0, Target const& ) const BOOST_NOEXCEPT
+    {
+      return (a0!=0) ? Allbits<result_t>() : Zero<result_t>();
+    }
+  };
+
 } } }
 
 #endif

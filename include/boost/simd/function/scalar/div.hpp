@@ -12,6 +12,5 @@
 
 #include <boost/simd/function/definition/div.hpp>
 #include <boost/simd/arch/common/scalar/function/div.hpp>
-#include <boost/simd/arch/common/generic/function/div.hpp>
 
 #endif

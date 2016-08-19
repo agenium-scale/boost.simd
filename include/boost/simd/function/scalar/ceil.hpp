@@ -11,7 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_CEIL_HPP_INCLUDED
 
 #include <boost/simd/function/definition/ceil.hpp>
-#include <boost/simd/arch/common/generic/function/ceil.hpp>
 #include <boost/simd/arch/common/scalar/function/ceil.hpp>
 
 #endif

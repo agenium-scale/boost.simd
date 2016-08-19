@@ -11,7 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_GENMASK_HPP_INCLUDED
 
 #include <boost/simd/function/definition/genmask.hpp>
-#include <boost/simd/arch/common/generic/function/genmask.hpp>
 #include <boost/simd/arch/common/scalar/function/genmask.hpp>
 
 #endif

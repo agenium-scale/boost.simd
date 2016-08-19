@@ -11,7 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_IS_IMAG_HPP_INCLUDED
 
 #include <boost/simd/function/definition/is_imag.hpp>
-#include <boost/simd/arch/common/generic/function/is_imag.hpp>
 #include <boost/simd/arch/common/scalar/function/is_imag.hpp>
 
 #endif

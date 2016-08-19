@@ -50,7 +50,7 @@ namespace boost { namespace simd { namespace ext
       using starget_t = bd::scalar_of_t<typename T::type>;
       const A0 vma = splat<A0>(Valmax<starget_t>());
       const A0 vmi = splat<A0>(Valmin<starget_t>());
-      return if_else(is_inf(a0), a0, min(vma, max(vmi, a0)));
+      return (is_inf(a0)? a0: min(vma, max(vmi, a0)));
     }
     BOOST_FORCEINLINE A0 impl( A0 a0
                                              , const std::false_type &) const BOOST_NOEXCEPT

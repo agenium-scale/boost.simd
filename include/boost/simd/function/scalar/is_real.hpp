@@ -11,7 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_IS_REAL_HPP_INCLUDED
 
 #include <boost/simd/function/definition/is_real.hpp>
-#include <boost/simd/arch/common/generic/function/is_real.hpp>
 #include <boost/simd/arch/common/scalar/function/is_real.hpp>
 
 #endif

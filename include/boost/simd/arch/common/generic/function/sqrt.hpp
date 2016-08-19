@@ -33,7 +33,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::generic_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0  a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 const& a0) const BOOST_NOEXCEPT
     {
       return if_else_zero(a0, a0 * fast_(rsqrt)(a0));
     }
@@ -45,7 +45,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::generic_< bd::integer_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 const& a0) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG( bs::assert_all(is_positive(a0))
                       , "sqrt integer domain is restricted to positive integer."

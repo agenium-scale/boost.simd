@@ -11,7 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_IS_DENORMAL_HPP_INCLUDED
 
 #include <boost/simd/function/definition/is_denormal.hpp>
-#include <boost/simd/arch/common/generic/function/is_denormal.hpp>
 #include <boost/simd/arch/common/scalar/function/is_denormal.hpp>
 
 #endif

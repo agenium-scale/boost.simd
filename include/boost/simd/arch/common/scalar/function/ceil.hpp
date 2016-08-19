@@ -47,6 +47,18 @@ namespace boost { namespace simd { namespace ext
       return std::ceil(a0);
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( ceil_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::integer_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    {
+      return a0;
+    }
+  };
   BOOST_DISPATCH_OVERLOAD ( ceil_
                           , (typename A0)
                           , bd::cpu_
