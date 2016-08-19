@@ -47,7 +47,8 @@ namespace boost { namespace simd
       using type = brigand::bool_<!std::is_same<mode, brigand::no_such_type_>::value>;
     };
 
-    template<int P0> struct is_permute<P0> : std::false_type {};
+    template<int P0>         struct is_permute<P0>    : std::false_type {};
+    template<int P0, int P1> struct is_permute<P0,P1> : std::false_type {};
 
     // ---------------------------------------------------------------------------------------------
     // AVX permute patterns
