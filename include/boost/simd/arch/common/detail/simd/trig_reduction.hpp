@@ -279,18 +279,19 @@ namespace boost { namespace simd
         // all of x are in [0, 2^18*pi],  conversion to double is used to reduce
         using uA0 = bd::upgrade_t<A0>;
         using aux_reduc_t = trig_reduction< uA0, tag::radian_tag,  tag::simd_type, mode, double>;
-        uA0 ux1, ux2, uxr1, uxr2;
-        std::tie(ux1, ux2) = split(x);
-        auto n1 = aux_reduc_t::reduce(ux1, uxr1);
-        auto n2 = aux_reduc_t::reduce(ux2, uxr2);
-        xr = group(uxr1, uxr2);
-        std::tie(ux1, ux2) = split(xr);
+
+        auto uxs = split(x);
+        uA0  uxr1, uxr2;
+
+        auto n1 = aux_reduc_t::reduce(uxs[0], uxr1);
+        auto n2 = aux_reduc_t::reduce(uxs[1], uxr2);
+
+          xr = group(uxr1, uxr2);
         return group(n1, n2);
       }
     };
 
   }
 } }
-
 
 #endif

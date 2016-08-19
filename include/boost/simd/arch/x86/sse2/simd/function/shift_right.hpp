@@ -131,7 +131,7 @@ namespace boost { namespace simd { namespace ext
     {
       BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "shift_right sse2 int8: a shift is out of range");
       auto s = split(a0);
-      return bitwise_cast<A0>(group(shift_right(s.first, a1), shift_right(s.second, a1)));
+      return bitwise_cast<A0>(group(shift_right(s[0], a1), shift_right(s[1], a1)));
     }
   };
 
