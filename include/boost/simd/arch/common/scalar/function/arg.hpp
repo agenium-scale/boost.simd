@@ -33,7 +33,6 @@ namespace boost { namespace simd
 
    const use_signbit_tag use_signbit_ = {};
 
-
    namespace ext
    {
      namespace bd = boost::dispatch;

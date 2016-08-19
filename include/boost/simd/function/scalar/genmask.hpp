@@ -12,5 +12,6 @@
 
 #include <boost/simd/function/definition/genmask.hpp>
 #include <boost/simd/arch/common/scalar/function/genmask.hpp>
+#include <boost/simd/arch/common/generic/function/genmask.hpp>
 
 #endif
