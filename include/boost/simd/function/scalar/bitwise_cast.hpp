@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_BITWISE_CAST_HPP_INCLUDED
 
 #include <boost/simd/function/definition/bitwise_cast.hpp>
-#include <boost/simd/arch/common/scalar/function/bitwise_cast.hpp>
+#include <boost/simd/arch/common/generic/function/bitwise_cast.hpp>
 
 #endif
