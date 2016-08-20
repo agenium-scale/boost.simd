@@ -13,6 +13,6 @@
 
 #include <boost/simd/function/scalar/iceil.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/iceil.hpp>
+#include <boost/simd/arch/common/simd/function/iceil.hpp>
 
 #endif

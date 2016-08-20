@@ -6,22 +6,23 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_INC_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_INC_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_INC_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_INC_HPP_INCLUDED
 
 #include <boost/simd/constant/one.hpp>
-#include <boost/simd/function/plus.hpp>
-#include <boost/simd/function/inc.hpp>
+#include <boost/simd/function/simd/plus.hpp>
+#include <boost/simd/function/simd/inc.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
-  BOOST_DISPATCH_OVERLOAD ( inc_
-                          , (typename A0)
+  BOOST_DISPATCH_OVERLOAD_IF ( inc_
+                          , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
-                          , bd::generic_< bd::arithmetic_<A0> >
+                          , bs::pack_< bd::arithmetic_<A0>, X>
                           )
   {
     BOOST_FORCEINLINE A0 operator()(A0 const& a0) const BOOST_NOEXCEPT_IF_EXPR(a0+A0(1))
@@ -29,11 +30,12 @@ namespace boost { namespace simd { namespace ext
       return a0+A0(1);
     }
   };
-  BOOST_DISPATCH_OVERLOAD ( inc_
-                          , (typename T)
+  BOOST_DISPATCH_OVERLOAD_IF ( inc_
+                          , (typename T, typename X)
+                          , (detail::is_native<X>)
                           ,  bd::cpu_
                           ,  bs::saturated_tag
-                          ,  bd::generic_<bd::fundamental_<T>>
+                          ,  bs::pack_<bd::fundamental_<T>, X>
                           )
   {
     BOOST_FORCEINLINE T operator()(const saturated_tag &, const T& a
@@ -44,6 +46,6 @@ namespace boost { namespace simd { namespace ext
   };
 } } }
 
-#include <boost/simd/arch/common/generic/function/inc_s.hpp>
+#include <boost/simd/arch/common/simd/function/inc_s.hpp>
 
 #endif

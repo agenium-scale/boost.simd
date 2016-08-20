@@ -13,6 +13,6 @@
 
 #include <boost/simd/function/scalar/inrad.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/inrad.hpp>
+#include <boost/simd/arch/common/simd/function/inrad.hpp>
 
 #endif
