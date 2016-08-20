@@ -8,11 +8,11 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ACOTH_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ACOTH_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ACSCD_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ACSCD_HPP_INCLUDED
 
-#include <boost/simd/function/atanh.hpp>
-#include <boost/simd/function/rec.hpp>
+#include <boost/simd/function/simd/acsc.hpp>
+#include <boost/simd/function/simd/indeg.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
@@ -20,15 +20,17 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
-  BOOST_DISPATCH_OVERLOAD ( acoth_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bd::generic_< bd::unspecified_<A0> >
-                          )
+  BOOST_DISPATCH_OVERLOAD_IF ( acscd_
+                          , (typename A0, typename X)
+                             , (detail::is_native<X>)
+                             , bd::cpu_
+                            , bs::pack_< bd::floating_<A0>, X>
+                            )
   {
-     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    using result_t = A0;
+    A0 operator() ( A0 const& a0) const
     {
-      return bs::atanh(rec(a0));
+      return bs::indeg(bs::acsc(a0));
     }
   };
 } } }

@@ -8,11 +8,11 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ACSCH_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ACSCH_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ACSCPI_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ACSCPI_HPP_INCLUDED
 
-#include <boost/simd/function/asinh.hpp>
-#include <boost/simd/function/rec.hpp>
+#include <boost/simd/function/simd/acsc.hpp>
+#include <boost/simd/constant/invpi.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
@@ -20,15 +20,17 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
-  BOOST_DISPATCH_OVERLOAD ( acsch_
-                          , (typename A0)
+  BOOST_DISPATCH_OVERLOAD_IF ( acscpi_
+                             , (typename A0, typename X)
+                             , (detail::is_native<X>)
                              , bd::cpu_
-                            , bd::generic_< bd::unspecified_<A0> >
-                            )
+                             , bs::pack_< bd::floating_<A0>, X>
+                             )
   {
-    BOOST_FORCEINLINE A0 operator() (A0 const& a0) const BOOST_NOEXCEPT
+    using result_t = A0;
+    A0 operator() ( A0 const& a0) const
     {
-      return bs::asinh(bs::rec(a0));
+      return bs::Invpi<A0>()*bs::acsc(a0);
     }
   };
 } } }

@@ -8,8 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ACOS_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ACOS_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ACOS_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ACOS_HPP_INCLUDED
 
 #include <boost/simd/function/accurate.hpp>
 #include <boost/simd/arch/common/detail/generic/invtrig.hpp>
@@ -22,11 +22,12 @@ namespace boost { namespace simd { namespace ext
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
 
-  BOOST_DISPATCH_OVERLOAD ( acos_
-                          , (typename A0)
+  BOOST_DISPATCH_OVERLOAD_IF ( acos_
+                          , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::accurate_tag
-                          , bd::generic_< bd::floating_<A0> >
+                          , bs::pack_< bd::floating_<A0>, X>
                           )
   {
 
@@ -45,10 +46,11 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( acos_
-                          , (typename A0)
+  BOOST_DISPATCH_OVERLOAD_IF ( acos_
+                          , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
-                          , bd::generic_< bd::floating_<A0> >
+                          , bs::pack_< bd::floating_<A0>, X>
                           )
   {
 
