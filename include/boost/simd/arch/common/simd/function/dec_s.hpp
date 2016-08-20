@@ -8,14 +8,14 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_DEC_S_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_DEC_S_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_DEC_S_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_DEC_S_HPP_INCLUDED
 
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/valmin.hpp>
-#include <boost/simd/function/is_not_equal.hpp>
-#include <boost/simd/function/minus.hpp>
-#include <boost/simd/function/if_minus.hpp>
+#include <boost/simd/function/simd/is_not_equal.hpp>
+#include <boost/simd/function/simd/minus.hpp>
+#include <boost/simd/function/simd/if_minus.hpp>
 #include <boost/simd/function/saturated.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
@@ -23,11 +23,12 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
-  BOOST_DISPATCH_OVERLOAD ( dec_
-                          , (typename A0)
+  BOOST_DISPATCH_OVERLOAD_IF ( dec_
+                          , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::saturated_tag
-                          , bd::generic_<bd::arithmetic_<A0> >
+                          , bs::pack_<bd::arithmetic_<A0>, X>
                           )
   {
     BOOST_FORCEINLINE A0 operator() (const saturated_tag &,  A0 a0
@@ -36,11 +37,12 @@ namespace boost { namespace simd { namespace ext
       return if_minus(is_not_equal(a0, Valmin<A0>()), a0, One<A0>());
     }
   };
-  BOOST_DISPATCH_OVERLOAD ( dec_
-                          , (typename A0)
+  BOOST_DISPATCH_OVERLOAD_IF ( dec_
+                          , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::saturated_tag
-                          , bd::generic_<bd::floating_<A0> >
+                          , bs::pack_<bd::floating_<A0>, X>
                           )
   {
     BOOST_FORCEINLINE A0 operator() (const saturated_tag &,  A0 a0

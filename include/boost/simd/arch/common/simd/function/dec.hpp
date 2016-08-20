@@ -6,20 +6,21 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_DEC_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_DEC_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_DEC_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_DEC_HPP_INCLUDED
 
 #include <boost/simd/detail/dispatch/function/overload.hpp>
-#include <boost/simd/function/minus.hpp>
+#include <boost/simd/function/simd/minus.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
-  BOOST_DISPATCH_OVERLOAD ( dec_
-                          , (typename A0)
+  BOOST_DISPATCH_OVERLOAD_IF ( dec_
+                          , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
-                          , bd::generic_< bd::arithmetic_<A0> >
+                          , bs::pack_< bd::arithmetic_<A0>, X>
                           )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT_IF_EXPR(a0-A0(1))
@@ -29,6 +30,6 @@ namespace boost { namespace simd { namespace ext
   };
 } } }
 
-#include <boost/simd/arch/common/generic/function/dec_s.hpp>
+#include <boost/simd/arch/common/simd/function/dec_s.hpp>
 
 #endif
