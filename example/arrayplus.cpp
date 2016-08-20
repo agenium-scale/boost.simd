@@ -10,8 +10,8 @@
 //! [sum-include]
 #include <boost/simd/function/load.hpp>
 #include <boost/simd/function/store.hpp>
-#include <boost/simd/function/minus.hpp>
 //! [sum-include]
+#include <boost/simd/function/minus.hpp>
 
 int main(int argc, char **argv) {
   if(argc < 2){
@@ -19,9 +19,9 @@ int main(int argc, char **argv) {
   }
   namespace bs = boost::simd;
   int size = 128;
-  using ipack_t = bs::pack<int>;
+  using pack_t = bs::pack<int>;
   //! [sum-cardinal]
-  size_t ipack_card = bs::cardinal_of<ipack_t>();
+  size_t pack_card = bs::cardinal_of<pack_t>();
   //! [sum-cardinal]
 
   int scalar = std::atoi(argv[1]);
@@ -39,11 +39,19 @@ int main(int argc, char **argv) {
   //! [sum-scalar]
 
   {
+  //! [sum-loop-con]
+  for ( size_t i = 0 ; i < size ; i += cardinal ) {
+
+  }
+  //! [sum-loop-con]
+
+  //! [sum-one28]
+  pack_t one28(128);
+  //! [sum-one28]
+  
   //! [sum-pointer]
-  // Using pointer construction
-  ipack_t one28{scalar};
-  for ( size_t i = 0 ; i < size ; i += ipack_card ) {
-    ipack_t p_arr(array.data() + i);
+  for ( size_t i = 0 ; i < size ; i += cardinal ) {
+    pack_t p_arr(array.data() + i);
     p_out = p_arr - one28;
     bs::store(p_out , out.data() + i);
   }
@@ -53,11 +61,11 @@ int main(int argc, char **argv) {
   {
   //! [sum-load]
   // Using explicit load/store
-  ipack_t p_out;
-  ipack_t p_arr;
-  ipack_t one28{scalar};
-  for ( size_t i = 0 ; i < size ; i += ipack_card ) {
-    p_arr = bs::load<ipack_t>(array.data() + i);
+  pack_t p_out;
+  pack_t p_arr;
+  pack_t one28{scalar};
+  for ( size_t i = 0 ; i < size ; i += cardinal ) {
+    p_arr = bs::load<pack_t>(array.data() + i);
     p_out = p_arr - one28;
     bs::store(p_out , out.data() + i);
   }
@@ -69,12 +77,12 @@ int main(int argc, char **argv) {
   // Using explicit load/store
   //set size to an arbitrary value
   size = 133;
-  ipack_t p_out;
-  ipack_t p_arr;
-  ipack_t one28{scalar};
+  pack_t p_out;
+  pack_t p_arr;
+  pack_t one28{scalar};
   size_t i = 0;
-  for (; i + ipack_card <= size ; i += ipack_card ) {
-    p_arr = bs::load<ipack_t>(array.data() + i);
+  for (; i + cardinal <= size ; i += cardinal ) {
+    p_arr = bs::load<pack_t>(array.data() + i);
     p_out = p_arr - one28;
     bs::store(p_out , out.data() + i);
   }
