@@ -117,6 +117,7 @@ div.qindex, div.navpath {
 
 div.navtab {
 	margin-right: 15px;
+	display : none;
 }
 
 /* @group Link Styling */
