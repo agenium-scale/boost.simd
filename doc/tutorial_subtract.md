@@ -1,8 +1,9 @@
-Sum of Arrays {#tutorial-sum}
+A SIMD Loop {#tutorial-simd-loop}
 =========
 
 @tableofcontents
-In this tutorial we will write a __SIMD__ code to calculate the sum of two arrays.
+In this tutorial we will demonstrate how to construct a __SIMD__ loop by subtracting a constant
+from a vector of input data.
 
 @section sum-objectives Objectives
 
@@ -11,19 +12,19 @@ In this tutorial we will write a __SIMD__ code to calculate the sum of two array
 In this tutorial we will:
 - [Transform a scalar loop into a __SIMD__ loop](#sum-scalar-simd)
 - [Loop over the input data and perform the calculation on several elements at once](#sum-construct-loop)
-- [Show how handle cases where the number of input data is not an exact multiple of the size of the __SIMD__ register](#sum-hanging-data)
+- [Show how handle cases where the number of input data is not an exact multiple of the size of a pack](#sum-hanging-data)
 
 @section sum-scalar-simd Transforming a scalar loop into a __SIMD__ loop
 In this tutorial we will demonstrate how to transform the following scalar loop into a __SIMD__ loop:
 
-@snippet arrayplus.cpp sum-scalar
+@snippet arraysubtract.cpp sum-scalar
 
 The first step is to determine the number of elements in a pack of the choosen primitive type, in this
 case an `int`.  It is generally easiest and safest to use the default pack size, corresponding to the
 size of the available physical _SIMD_ registers. This size may be obtained using the 
 boost::simd::cardinal\_of function.
 
-@snippet arrayplus.cpp sum-cardinal
+@snippet arraysubtract.cpp sum-cardinal
 
 This size may also be accessed through the member variable pack_t::static_size.
 
@@ -36,26 +37,26 @@ where this is no longer true is demonstrated afterwards.
 We wish to subtract `128` from each element in the input data. We therefore fill a vector will this
 value in the exact same way as in the previous tutorial.
 
-@snippet arrayplus.cpp sum-one28
+@snippet arraysubtract.cpp sum-one28
 
 @subsection sum-construct-loop Constructing the loop
 
 We now construct our loop. Note how `i` is incremented by the cardinal of the pack as we process `cardinal`
 elements of the input data for each iteration of the loop.
 
-@snippet arrayplus.cpp sum-loop-con
+@snippet arraysubtract.cpp sum-loop-con
 
 @subsection sum-load-simd Filling the loop
 In order to process the input data, we must 
 load load the data from memory using boost::simd::load and then store it afterwards back in memory
 using boost::simd::store These functions are accessed by including the following headers:
 
-@snippet arrayplus.cpp sum-include
+@snippet arraysubtract.cpp sum-include
 
 We shall construct our pack with a pointer to the data we wish to load. We then perform the subtraction
 using the operator `-` and then store the data using boost::simd::store
 
-@snippet arrayplus.cpp sum-pointer
+@snippet arraysubtract.cpp sum-pointer
 
 Note that `one28`, the pack of constants to be subtracted from the input data, is declared outside
 of the loop so that it is not loaded at each iteration.
@@ -65,13 +66,14 @@ although it is better to be safe!
 If we wish to declare our pack outside of the loop, for example, if we wish to re-use it later,
 we can load the data using boost::simd::load:
 
-@snippet arrayplus.cpp sum-load
+@snippet arraysubtract.cpp sum-load
 
 @section sum-hanging-data What happens when the input data is not a multiple of the cardinal?
+
 So, how do we handle the case where the input data is not a multiple of the cardinal? We simply
 write a scalar loop to handle this extra data. 
 
-@snippet arrayplus.cpp sum-remainder
+@snippet arraysubtract.cpp sum-remainder
 
 There are three main differences between this loop and the previous one. Firstly, the loop counter `i`
 is declared outside of the first loop. This is so that its value is retained for use in the second loop.

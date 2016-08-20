@@ -14,7 +14,7 @@ all of the examples will work on any supported architecture. Depending on your a
 following tutorials applications may vary.
 
 - [SIMD HelloWorld](@ref tutorial-hello)
-- [Sum of Arrays](@ref tutorial-sum)
+- [A Basic SIMD Loop](@ref tutorial-simd-loop)
 - [Reductions](@ref tutorial-reduction)
 - [Processing Data the SIMD Way](@ref tutorial-data)
 - [Runtime Extension Selection](@ref tutorial-runtime)
