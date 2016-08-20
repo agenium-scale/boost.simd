@@ -8,25 +8,26 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_FNMA_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_FNMA_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_FNMA_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_FNMA_HPP_INCLUDED
 
-#include <boost/simd/function/fma.hpp>
-#include <boost/simd/function/minus.hpp>
-#include <boost/simd/function/multiplies.hpp>
-#include <boost/simd/function/unary_minus.hpp>
+#include <boost/simd/function/simd/fma.hpp>
+#include <boost/simd/function/simd/minus.hpp>
+#include <boost/simd/function/simd/multiplies.hpp>
+#include <boost/simd/function/simd/unary_minus.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
-  BOOST_DISPATCH_OVERLOAD ( fnma_
-                          , (typename A0)
+  BOOST_DISPATCH_OVERLOAD_IF ( fnma_
+                          , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
-                          , bd::generic_< bd::unspecified_<A0> >
-                          , bd::generic_< bd::unspecified_<A0> >
-                          , bd::generic_< bd::unspecified_<A0> >
+                          , bs::pack_< bd::unspecified_<A0>, X>
+                          , bs::pack_< bd::unspecified_<A0>, X>
+                          , bs::pack_< bd::unspecified_<A0>, X>
                                     )
   {
     BOOST_FORCEINLINE
@@ -36,13 +37,14 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-   BOOST_DISPATCH_OVERLOAD ( fnma_
-                           , (typename A0)
+   BOOST_DISPATCH_OVERLOAD_IF ( fnma_
+                           , (typename A0, typename X)
+                           , (detail::is_native<X>)
                            , bd::cpu_
                            , bs::conformant_tag
-                           , bd::generic_< bd::unspecified_<A0> >
-                           , bd::generic_< bd::unspecified_<A0> >
-                           , bd::generic_< bd::unspecified_<A0> >
+                           , bs::pack_< bd::unspecified_<A0>, X>
+                           , bs::pack_< bd::unspecified_<A0>, X>
+                           , bs::pack_< bd::unspecified_<A0>, X>
                            )
   {
     BOOST_FORCEINLINE

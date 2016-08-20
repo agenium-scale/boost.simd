@@ -13,6 +13,6 @@
 
 #include <boost/simd/function/scalar/exprecneg.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/exprecneg.hpp>
+#include <boost/simd/arch/common/simd/function/exprecneg.hpp>
 
 #endif

@@ -8,24 +8,29 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_FLOOR_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_FLOOR_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_EXPRECNEGC_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_EXPRECNEGC_HPP_INCLUDED
 
+#include <boost/simd/function/simd/expm1.hpp>
+#include <boost/simd/function/simd/rec.hpp>
+#include <boost/simd/function/simd/unary_minus.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
-  BOOST_DISPATCH_OVERLOAD ( floor_
-                          , (typename A0)
+
+  BOOST_DISPATCH_OVERLOAD_IF ( exprecnegc_
+                          , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
-                          , bd::generic_< bd::integer_<A0> >
+                          , bs::pack_< bd::floating_<A0>, X>
                           )
   {
-    BOOST_FORCEINLINE A0 operator()(A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      return a0;
+      return -expm1(-rec(a0));
     }
   };
 } } }
