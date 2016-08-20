@@ -8,23 +8,24 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ONEMINUS_S_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ONEMINUS_S_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ONEMINUS_S_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ONEMINUS_S_HPP_INCLUDED
 
 #include <boost/simd/constant/one.hpp>
-#include <boost/simd/function/min.hpp>
-#include <boost/simd/function/minus.hpp>
+#include <boost/simd/function/simd/min.hpp>
+#include <boost/simd/function/simd/minus.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
-  BOOST_DISPATCH_OVERLOAD ( oneminus_
-                          , (typename A0)
+  BOOST_DISPATCH_OVERLOAD_IF ( oneminus_
+                          , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::saturated_tag
-                          , bd::generic_<bd::signed_<A0> >
+                          , bs::pack_<bd::signed_<A0>, X>
                           )
   {
     BOOST_FORCEINLINE A0 operator() (const saturated_tag &,  A0 const& a0
@@ -33,11 +34,12 @@ namespace boost { namespace simd { namespace ext
       return /*saturated_TODO*/(minus)(One<A0>(), a0);
     }
   };
-  BOOST_DISPATCH_OVERLOAD ( oneminus_
-                          , (typename A0)
+  BOOST_DISPATCH_OVERLOAD_IF ( oneminus_
+                          , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::saturated_tag
-                          , bd::generic_<bd::unsigned_<A0> >
+                          , bs::pack_<bd::unsigned_<A0>, X>
                          )
   {
     BOOST_FORCEINLINE A0 operator() (const saturated_tag &,  A0 const& a0

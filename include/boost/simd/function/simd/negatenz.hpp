@@ -13,6 +13,6 @@
 
 #include <boost/simd/function/scalar/negatenz.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/negatenz.hpp>
+#include <boost/simd/arch/common/simd/function/negatenz.hpp>
 
 #endif
