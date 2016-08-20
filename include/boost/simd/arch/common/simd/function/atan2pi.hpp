@@ -8,8 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ATAN2PI_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ATAN2PI_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ATAN2PI_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ATAN2PI_HPP_INCLUDED
 
 #include <boost/simd/function/simd/atan2.hpp>
 #include <boost/simd/constant/invpi.hpp>
@@ -20,11 +20,12 @@ namespace boost { namespace simd { namespace ext
                                    {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
-  BOOST_DISPATCH_OVERLOAD ( atan2pi_
-                          , (typename A0, typename A1)
+  BOOST_DISPATCH_OVERLOAD_IF ( atan2pi_
+                          , (typename A0, typename A1, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
-                          , bd::generic_< bd::floating_<A0> >
-                          , bd::generic_< bd::floating_<A1> >
+                          , bs::pack_< bd::floating_<A0>, X>
+                          , bs::pack_< bd::floating_<A1>, X >
                           )
   {
      BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT

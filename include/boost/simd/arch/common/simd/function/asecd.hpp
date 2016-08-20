@@ -8,8 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ASECD_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ASECD_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ASECD_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ASECD_HPP_INCLUDED
 
 #include <boost/simd/function/simd/asec.hpp>
 #include <boost/simd/function/simd/indeg.hpp>
@@ -20,10 +20,11 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
-  BOOST_DISPATCH_OVERLOAD ( asecd_
-                          , (typename A0)
+  BOOST_DISPATCH_OVERLOAD_IF ( asecd_
+                          , (typename A0, typename X)
+                             , (detail::is_native<X>)
                              , bd::cpu_
-                            , bd::generic_< bd::floating_<A0> >
+                            , bs::pack_< bd::floating_<A0>, X>
                             )
   {
     using result_t = A0;

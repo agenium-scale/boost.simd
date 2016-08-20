@@ -13,6 +13,6 @@
 
 #include <boost/simd/function/scalar/atan.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/atan.hpp>
+#include <boost/simd/arch/common/simd/function/atan.hpp>
 
 #endif

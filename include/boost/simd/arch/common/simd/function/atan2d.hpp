@@ -8,27 +8,29 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ASIN_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ASIN_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ATAN2D_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ATAN2D_HPP_INCLUDED
 
-#include <boost/simd/arch/common/detail/generic/invtrig.hpp>
-#include <boost/simd/meta/is_not_scalar.hpp>
+#include <boost/simd/function/simd/atan2.hpp>
+#include <boost/simd/function/simd/indeg.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
-{
+                                   {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
-  BOOST_DISPATCH_OVERLOAD ( asin_
-                          , (typename A0)
+  BOOST_DISPATCH_OVERLOAD_IF ( atan2d_
+                          , (typename A0, typename A1, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
-                          , bd::generic_< bd::floating_<A0> >
+                          , bs::pack_< bd::floating_<A0>, X>
+                          , bs::pack_< bd::floating_<A1>, X >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
     {
-      return detail::invtrig_base<A0,tag::radian_tag,is_not_scalar_t<A0>>::asin(a0);
+      return indeg(atan2(a0, a1));
     }
   };
 } } }

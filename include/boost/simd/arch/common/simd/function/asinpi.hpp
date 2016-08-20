@@ -8,27 +8,29 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ASECH_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ASECH_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ASINPI_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ASINPI_HPP_INCLUDED
 
-#include <boost/simd/function/acosh.hpp>
-#include <boost/simd/function/rec.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
+#include <boost/simd/function/simd/asin.hpp>
+#include <boost/simd/function/simd/multiplies.hpp>
+#include <boost/simd/constant/invpi.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
-  BOOST_DISPATCH_OVERLOAD ( asech_
-                          , (typename A0)
+  BOOST_DISPATCH_OVERLOAD_IF ( asinpi_
+                          , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
-                          , bd::generic_< bd::unspecified_<A0> >
+                          , bs::pack_< bd::floating_<A0>, X>
                           )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      return bs::acosh(bs::rec(a0));
+      return Invpi<A0>()*asin(a0);
     }
   };
 } } }
