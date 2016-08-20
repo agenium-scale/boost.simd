@@ -13,6 +13,6 @@
 
 #include <boost/simd/function/scalar/bits.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/bits.hpp>
+#include <boost/simd/arch/common/simd/function/bits.hpp>
 
 #endif
