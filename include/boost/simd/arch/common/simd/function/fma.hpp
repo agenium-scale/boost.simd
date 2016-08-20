@@ -19,8 +19,9 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
-  BOOST_DISPATCH_OVERLOAD ( fma_
+  BOOST_DISPATCH_OVERLOAD_IF ( fma_
                           , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::pack_< bd::unspecified_<A0>, X>
                           , bs::pack_< bd::unspecified_<A0>, X>

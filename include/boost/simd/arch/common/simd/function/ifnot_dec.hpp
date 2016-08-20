@@ -22,8 +22,9 @@ namespace boost { namespace simd { namespace ext
 {
    namespace bd = boost::dispatch;
    namespace bs = boost::simd;
-   BOOST_DISPATCH_OVERLOAD(ifnot_dec_
+   BOOST_DISPATCH_OVERLOAD_IF(ifnot_dec_
                           , (typename A0, typename A1, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::pack_<bs::logical_<A0>, X>
                           , bs::pack_<bd::integer_<A1>, X>
@@ -35,8 +36,9 @@ namespace boost { namespace simd { namespace ext
       }
    };
 
-   BOOST_DISPATCH_OVERLOAD(ifnot_dec_
+   BOOST_DISPATCH_OVERLOAD_IF(ifnot_dec_
                           , (typename A0, typename A1, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::pack_<bd::arithmetic_<A0>, X>
                           , bs::pack_<bd::arithmetic_<A1>, X>

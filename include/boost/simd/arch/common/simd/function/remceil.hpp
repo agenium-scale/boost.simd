@@ -27,8 +27,9 @@ namespace boost { namespace simd { namespace ext
 {
    namespace bd = boost::dispatch;
    namespace bs = boost::simd;
-   BOOST_DISPATCH_OVERLOAD(rem_
+   BOOST_DISPATCH_OVERLOAD_IF(rem_
                           , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::tag::ceil_
                           , bs::pack_<bd::int_<A0>, X>
@@ -41,8 +42,9 @@ namespace boost { namespace simd { namespace ext
         return if_minus(is_nez(a1), a0, div(ceil,a0,a1)*a1);
       }
    };
-   BOOST_DISPATCH_OVERLOAD(rem_
+   BOOST_DISPATCH_OVERLOAD_IF(rem_
                           , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::fast_tag
                           , bs::tag::ceil_
@@ -57,8 +59,9 @@ namespace boost { namespace simd { namespace ext
         return fnms(div(ceil, a0,a1), a1, a0);
       }
    };
-  BOOST_DISPATCH_OVERLOAD(rem_
+  BOOST_DISPATCH_OVERLOAD_IF(rem_
                           , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::tag::ceil_
                           , bs::pack_<bd::floating_<A0>, X>

@@ -17,6 +17,9 @@
 #include <boost/simd/function/simd/tofloat.hpp>
 #include <boost/simd/function/simd/toint.hpp>
 #include <boost/simd/function/simd/touint.hpp>
+#include <boost/simd/detail/dispatch/meta/upgrade.hpp>
+#include <boost/simd/detail/brigand.hpp>
+#include <utility>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -25,7 +28,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD_IF(div_
                             , (typename A0, typename X)
-                            , (bd::is_upgradable<A0>)
+                            , (brigand::and_<bd::is_upgradable<A0>, detail::is_native<X>>)
                             , bd::cpu_
                             , bs::tag::ceil_
                             , bs::pack_<bd::int_<A0>, X>
@@ -45,7 +48,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD_IF(div_
                             , (typename A0, typename X)
-                            , (bd::is_upgradable<A0>)
+                            , (brigand::and_<bd::is_upgradable<A0>, detail::is_native<X>>)
                             , bd::cpu_
                             , bs::tag::ceil_
                             , bs::pack_<bd::uint_<A0>, X>
@@ -63,8 +66,9 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD(div_
+  BOOST_DISPATCH_OVERLOAD_IF(div_
                          , (typename A0, typename X)
+                         , (detail::is_native<X>)
                          , bd::cpu_
                          , bs::tag::ceil_
                          , bs::pack_<bd::ints8_<A0>, X>
@@ -82,8 +86,9 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD(div_
+  BOOST_DISPATCH_OVERLOAD_IF(div_
                          , (typename A0, typename X)
+                         , (detail::is_native<X>)
                          , bd::cpu_
                          , bs::tag::ceil_
                          , bs::pack_<bd::floating_<A0>, X>

@@ -31,7 +31,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::generic_<bd::unspecified_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()(const fast_tag &, T const& a, T const& b
+     BOOST_FORCEINLINE T operator()(const fast_tag &, T const& a, T const& b
                                   ) const BOOST_NOEXCEPT
     {
       return divides(a, b);

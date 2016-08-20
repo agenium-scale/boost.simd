@@ -19,7 +19,7 @@ namespace boost { namespace simd { namespace ext
 {
   // -----------------------------------------------------------------------------------------------
   // enumerate<T>()
-  BOOST_DISPATCH_OVERLOAD ( enumerate_
+  BOOST_DISPATCH_OVERLOAD( enumerate_
                           , (typename T, typename X)
                           , bd::cpu_
                           , bd::target_< bs::pack_< bd::fundamental_<T>, X > >
@@ -54,7 +54,7 @@ namespace boost { namespace simd { namespace ext
 
   // -----------------------------------------------------------------------------------------------
   // enumerate<T>(a,n)
-  BOOST_DISPATCH_OVERLOAD ( enumerate_
+  BOOST_DISPATCH_OVERLOAD( enumerate_
                           , (typename A0, typename A1,typename T,typename X)
                           , bd::cpu_
                           , bd::scalar_< bd::fundamental_<A0> >

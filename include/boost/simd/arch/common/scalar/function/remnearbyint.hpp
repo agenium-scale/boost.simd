@@ -33,8 +33,8 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0)
                           , bd::cpu_
                           , bs::tag::nearbyint_
-                          , bd::generic_< bd::int_<A0> >
-                          , bd::generic_< bd::int_<A0> >
+                          , bd::scalar_< bd::int_<A0> >
+                          , bd::scalar_< bd::int_<A0> >
                           )
   {
     BOOST_FORCEINLINE A0 operator() (bd::functor<bs::tag::nearbyint_> const&
@@ -51,8 +51,8 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0)
                           , bd::cpu_
                           , bs::tag::nearbyint_
-                          , bd::generic_< bd::floating_<A0> >
-                          , bd::generic_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
                           )
   {
     BOOST_FORCEINLINE A0 operator() (bd::functor<bs::tag::nearbyint_> const&
@@ -68,8 +68,8 @@ namespace boost { namespace simd { namespace ext
                           , bd::cpu_
                           , bs::fast_tag
                           , bs::tag::nearbyint_
-                          , bd::generic_< bd::int_<A0> >
-                          , bd::generic_< bd::int_<A0> >
+                          , bd::scalar_< bd::int_<A0> >
+                          , bd::scalar_< bd::int_<A0> >
                           )
   {
     BOOST_FORCEINLINE A0 operator() (const fast_tag &
@@ -85,8 +85,8 @@ namespace boost { namespace simd { namespace ext
                           , bd::cpu_
                           , bs::fast_tag
                           , bs::tag::nearbyint_
-                          , bd::generic_< bd::floating_<A0> >
-                          , bd::generic_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
                           )
   {
     BOOST_FORCEINLINE A0 operator() (const fast_tag &
@@ -102,8 +102,8 @@ namespace boost { namespace simd { namespace ext
                           , bd::cpu_
                           , bs::std_tag
                           , bs::tag::nearbyint_
-                          , bd::generic_< bd::signed_<A0> >
-                          , bd::generic_< bd::signed_<A0> >
+                          , bd::scalar_< bd::signed_<A0> >
+                          , bd::scalar_< bd::signed_<A0> >
                           )
   {
     BOOST_FORCEINLINE A0 operator() (const std_tag &

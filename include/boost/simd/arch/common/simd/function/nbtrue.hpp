@@ -22,7 +22,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( nbtrue_
                           , (typename A0, typename X)
-                          , bs::simd_
+                          , bd::cpu_
                           , bs::pack_<bd::fundamental_<A0>,X>
                           )
   {
@@ -34,7 +34,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( nbtrue_
                           , (typename A0, typename X)
-                          , bs::simd_
+                          , bd::cpu_
                           , bs::pack_<bs::logical_<A0>,X>
                           )
   {

@@ -41,8 +41,9 @@ namespace boost { namespace simd { namespace ext
       }
    };
 
-   BOOST_DISPATCH_OVERLOAD(mantissa_
+   BOOST_DISPATCH_OVERLOAD_IF(mantissa_
                           , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::pack_<bd::floating_<A0>, X>
                           )

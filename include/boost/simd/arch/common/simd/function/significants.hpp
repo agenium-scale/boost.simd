@@ -40,8 +40,9 @@ namespace boost { namespace simd { namespace ext
 
 //   WARNING AN "IMPLEMENT_IF" WAS PRESENT IN THE ORIGINAL FILE
 
-   BOOST_DISPATCH_OVERLOAD( significants_
+   BOOST_DISPATCH_OVERLOAD_IF( significants_
                           , (typename A0, typename A1, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::pack_< bd::floating_<A0>, X>
                           , bs::pack_< bd::integer_<A1>, X>
