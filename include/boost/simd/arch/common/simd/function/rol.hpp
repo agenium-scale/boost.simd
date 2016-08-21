@@ -8,18 +8,18 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ROL_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ROL_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ROL_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ROL_HPP_INCLUDED
 
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
-#include <boost/simd/function/bitwise_cast.hpp>
-#include <boost/simd/function/bitwise_or.hpp>
-#include <boost/simd/function/dec.hpp>
-#include <boost/simd/function/minus.hpp>
-#include <boost/simd/function/shift_left.hpp>
-#include <boost/simd/function/shift_right.hpp>
-#include <boost/simd/function/splat.hpp>
+#include <boost/simd/function/simd/bitwise_cast.hpp>
+#include <boost/simd/function/simd/bitwise_or.hpp>
+#include <boost/simd/function/simd/dec.hpp>
+#include <boost/simd/function/simd/minus.hpp>
+#include <boost/simd/function/simd/shift_left.hpp>
+#include <boost/simd/function/simd/shift_right.hpp>
+#include <boost/simd/function/simd/splat.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
@@ -30,11 +30,12 @@ namespace boost { namespace simd { namespace ext
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
 
-  BOOST_DISPATCH_OVERLOAD ( rol_
-                          , (typename A0, typename A1)
+  BOOST_DISPATCH_OVERLOAD_IF ( rol_
+                          , (typename A0, typename A1, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
-                          , bd::generic_< bd::integer_<A0> >
-                          , bd::generic_< bd::integer_<A1> >
+                          , bs::pack_< bd::integer_<A0>, X>
+                          , bs::pack_< bd::integer_<A1>, X>
                           )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1 const& a1
@@ -50,11 +51,12 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( rol_
-                          , (typename A0, typename A1)
+  BOOST_DISPATCH_OVERLOAD_IF ( rol_
+                          , (typename A0, typename A1, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
-                          , bd::generic_< bd::floating_<A0> >
-                          , bd::generic_< bd::integer_<A1> >
+                          , bs::pack_< bd::floating_<A0>, X>
+                          , bs::pack_< bd::integer_<A1>, X>
   )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1 const& a1

@@ -72,6 +72,115 @@ namespace boost { namespace simd { namespace ext
        }
    };
 
+  BOOST_DISPATCH_OVERLOAD_IF ( pow_
+                          , (typename A0, typename A1, typename X)
+                          , (detail::is_native<X>)
+                          , bd::cpu_
+                          , bs::pack_< bd::arithmetic_<A0>, X>
+                          , bd::constant_< bd::uint_<A1>>
+                          )
+  {
+    using result_type = A0;
+
+    BOOST_FORCEINLINE result_type operator() ( A0 const& a0, A1) const BOOST_NOEXCEPT
+    {
+      return pow_expander<A1::value>::call(a0);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD_IF ( pow_
+                          , (typename A0, typename A1, typename X)
+                          , (detail::is_native<X>)
+                          , bd::cpu_
+                          , bs::pack_< bd::floating_<A0>, X>
+                          , bd::constant_< bd::int_<A1>>
+                          )
+  {
+    using result_type = A0;
+
+    BOOST_FORCEINLINE result_type operator() ( A0 const& a0, A1) const BOOST_NOEXCEPT
+    {
+      return eval(a0, boost::mpl::bool_<(A1::value >= 0)>());
+    }
+
+    BOOST_FORCEINLINE result_type eval( A0 const& a0, boost::mpl::true_) const BOOST_NOEXCEPT
+    {
+      return pow_expander<A1::value>::call(a0);
+    }
+
+    BOOST_FORCEINLINE result_type eval( A0 const& a0, boost::mpl::false_) const BOOST_NOEXCEPT
+    {
+      return pow_expander<-A1::value>::call(rec(a0));
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD_IF ( pow_
+                          , (typename A0, typename A1, typename X)
+                          , (detail::is_native<X>)
+                          , bd::cpu_
+                          , bs::pack_< bd::arithmetic_<A0>, X>
+                          , bd::scalar_< bd::uint_<A1>>
+                          )
+  {
+    using result_type = A0;
+
+    A0 operator() ( A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
+    {
+      A0 base = a0;
+      A1 exp = a1;
+
+      result_type result = One<result_type>();
+      while(exp)
+      {
+        if(is_odd(exp))
+          result *= base;
+        exp >>= 1;
+        base = sqr(base);
+      }
+
+      return result;
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD_IF ( pow_
+                          , (typename A0, typename A1, typename X)
+                          , (detail::is_native<X>)
+                          , bd::cpu_
+                          , bs::pack_< bd::integer_<A0>, X>
+                          , bs::pack_< bd::int_<A1>, X>
+                          )
+  {
+    using result_type = A0;
+
+    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
+    {
+      BOOST_ASSERT_MSG( boost::simd::assert_all(a1 >= 0), "integral pow with signed exponent" );
+
+      using u_t =  bd::as_integer_t<A1, unsigned>;
+      return pow(a0, bitwise_cast<u_t>(a1));
+    }
+  };
+
+
+  BOOST_DISPATCH_OVERLOAD_IF ( pow_
+                          , (typename A0, typename A1, typename X)
+                          , (detail::is_native<X>)
+                          , bd::cpu_
+                          , bs::pack_< bd::floating_<A0>, X>
+                          , bs::pack_< bd::int_<A1>, X>
+                          )
+  {
+    using result_type = A0;
+
+    A0 operator() ( A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
+    {
+      using u_t =  bd::as_integer_t<A1, unsigned>;
+      auto ltza1 = is_ltz(a1);
+      A0 p = pow(a0, bitwise_cast<u_t>(negif(ltza1, a1)));
+      return if_else(ltza1, rec(p), p);
+    }
+  };
+
 } } }
 
 #endif

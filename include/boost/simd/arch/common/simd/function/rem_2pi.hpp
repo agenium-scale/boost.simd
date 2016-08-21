@@ -8,8 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_REM_2PI_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_REM_2PI_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_REM_2PI_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_REM_2PI_HPP_INCLUDED
 
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/inv2pi.hpp>
@@ -22,16 +22,16 @@
 #include <boost/simd/constant/threeeps.hpp>
 #include <boost/simd/constant/twopi.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/if_else.hpp>
-#include <boost/simd/function/is_greater.hpp>
-#include <boost/simd/function/is_less.hpp>
-#include <boost/simd/function/minus.hpp>
-#include <boost/simd/function/multiplies.hpp>
-#include <boost/simd/function/plus.hpp>
-#include <boost/simd/function/rem_pio2.hpp>
-#include <boost/simd/function/rem_pio2_medium.hpp>
-#include <boost/simd/function/nearbyint.hpp>
-#include <boost/simd/function/tofloat.hpp>
+#include <boost/simd/function/simd/if_else.hpp>
+#include <boost/simd/function/simd/is_greater.hpp>
+#include <boost/simd/function/simd/is_less.hpp>
+#include <boost/simd/function/simd/minus.hpp>
+#include <boost/simd/function/simd/multiplies.hpp>
+#include <boost/simd/function/simd/plus.hpp>
+#include <boost/simd/function/simd/rem_pio2.hpp>
+#include <boost/simd/function/simd/rem_pio2_medium.hpp>
+#include <boost/simd/function/simd/nearbyint.hpp>
+#include <boost/simd/function/simd/tofloat.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
@@ -40,10 +40,11 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
-  BOOST_DISPATCH_OVERLOAD (rem_2pi_
-                          , (typename A0)
+  BOOST_DISPATCH_OVERLOAD_IF (rem_2pi_
+                          , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
-                          , bd::generic_ < bd::floating_<A0> >
+                          , bs::pack_ < bd::floating_<A0>, X>
                           )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
@@ -58,11 +59,12 @@ namespace boost { namespace simd { namespace ext
 
   };
 
-  BOOST_DISPATCH_OVERLOAD (rem_2pi_
-                          , (typename A0, typename A1)
+  BOOST_DISPATCH_OVERLOAD_IF (rem_2pi_
+                          , (typename A0, typename A1, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
-                          , bd::generic_ <bd::floating_<A0> >
-                          , bd::target_ <bd::unspecified_<A1> >
+                          , bs::pack_ <bd::floating_<A0>, X>
+                          , bd::target_ <bd::unspecified_<A1>, X>
                           )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1 const&) const BOOST_NOEXCEPT
