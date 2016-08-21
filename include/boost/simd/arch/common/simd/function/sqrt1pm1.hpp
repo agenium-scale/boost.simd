@@ -8,17 +8,17 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_SQRT1PM1_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_SQRT1PM1_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SQRT1PM1_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SQRT1PM1_HPP_INCLUDED
 
 #include <boost/simd/constant/half.hpp>
-#include <boost/simd/function/abs.hpp>
-#include <boost/simd/function/divides.hpp>
-#include <boost/simd/function/if_else.hpp>
-#include <boost/simd/function/is_less.hpp>
-#include <boost/simd/function/dec.hpp>
-#include <boost/simd/function/inc.hpp>
-#include <boost/simd/function/sqrt.hpp>
+#include <boost/simd/function/simd/abs.hpp>
+#include <boost/simd/function/simd/divides.hpp>
+#include <boost/simd/function/simd/if_else.hpp>
+#include <boost/simd/function/simd/is_less.hpp>
+#include <boost/simd/function/simd/dec.hpp>
+#include <boost/simd/function/simd/inc.hpp>
+#include <boost/simd/function/simd/sqrt.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
@@ -26,10 +26,11 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
-  BOOST_DISPATCH_OVERLOAD ( sqrt1pm1_
-                          , (typename A0)
+  BOOST_DISPATCH_OVERLOAD_IF ( sqrt1pm1_
+                          , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
-                          , bd::generic_< bd::floating_<A0> >
+                          , bs::pack_< bd::floating_<A0>, X>
                           )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT

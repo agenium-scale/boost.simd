@@ -13,6 +13,6 @@
 
 #include <boost/simd/function/scalar/sqr_abs.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/sqr_abs.hpp>
+#include <boost/simd/arch/common/simd/function/sqr_abs.hpp>
 
 #endif

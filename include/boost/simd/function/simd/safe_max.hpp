@@ -13,6 +13,6 @@
 
 #include <boost/simd/function/scalar/safe_max.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/safe_max.hpp>
+#include <boost/simd/arch/common/simd/function/safe_max.hpp>
 
 #endif

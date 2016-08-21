@@ -12,6 +12,7 @@
 
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/arch/common/detail/scalar/trigo.hpp>
+#include <boost/simd/function/restricted.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>
