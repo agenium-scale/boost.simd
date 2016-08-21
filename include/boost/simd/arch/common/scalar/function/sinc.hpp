@@ -41,9 +41,9 @@ namespace boost { namespace simd { namespace ext
       #endif
 
       #if !defined(BOOST_SIMD_NO_DENORMALS)
-      return (abs(a0) < Eps<A0>()) ? One<A0>() : sin(a0)/a0;
+      return bs::abs(a0) < Eps<A0>() ? One<A0>() : bs::sin(a0)/a0;
       #else
-      return a0 ? sin(a0)/a0 : One<A0>();
+      return a0 ? bs::sin(a0)/a0 : One<A0>();
       #endif
     }
   };

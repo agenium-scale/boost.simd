@@ -23,12 +23,11 @@ namespace boost { namespace simd { namespace ext
   namespace bs = boost::simd;
   BOOST_DISPATCH_OVERLOAD ( asecd_
                           , (typename A0)
-                             , bd::cpu_
-                            , bd::scalar_< bd::floating_<A0> >
-                            )
+                          , bd::cpu_
+                          , bd::scalar_< bd::floating_<A0> >
+                          )
   {
-    using result_t = A0;
-    A0 operator() ( A0 a0) const
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return bs::indeg(bs::asec(a0));
     }

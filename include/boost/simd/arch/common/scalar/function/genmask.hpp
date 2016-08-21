@@ -72,39 +72,6 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-//   // -----------------------------------------------------------------------------------------------
-//   // re-targeted genmask for logical
-//   BOOST_DISPATCH_OVERLOAD ( genmask_
-//                           , (typename A0, typename Target)
-//                           , bd::cpu_
-//                           , bd::scalar_< bs::logical_<A0> >
-//                           , bd::target_< bd::scalar_<bd::unspecified_<Target> > >
-//                           )
-//   {
-//     using result_t = typename Target::type;
-
-//     BOOST_FORCEINLINE result_t operator()( A0 const& a0, Target const& ) const BOOST_NOEXCEPT
-//     {
-//       return a0 ? Allbits<result_t>() : Zero<result_t>();
-//     }
-//   };
-
-//   // -----------------------------------------------------------------------------------------------
-//   // re-targeted genmask for other types
-//   BOOST_DISPATCH_OVERLOAD ( genmask_
-//                           , (typename A0, typename Target)
-//                           , bd::cpu_
-//                           , bd::scalar_< bd::unspecified_<A0> >
-//                           , bd::target_< bd::scalar_<bd::unspecified_<Target> > >
-//                           )
-//   {
-//     using result_t = typename Target::type;
-//     BOOST_FORCEINLINE result_t operator()( A0 const& a0, Target const& ) const BOOST_NOEXCEPT
-//     {
-//       return (a0!=0) ? Allbits<result_t>() : Zero<result_t>();
-//     }
-//   };
-
 } } }
 
 #endif

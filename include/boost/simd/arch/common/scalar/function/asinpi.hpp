@@ -30,7 +30,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
-      return Invpi<A0>()*asin(a0);
+      return Invpi<A0>()*bs::asin(a0);
     }
   };
 } } }

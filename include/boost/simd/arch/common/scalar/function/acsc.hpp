@@ -29,7 +29,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
-      return asin(rec(a0));
+      return bs::asin(rec(a0));
     }
   };
 } } }

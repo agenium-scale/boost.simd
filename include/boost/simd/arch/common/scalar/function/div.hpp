@@ -66,8 +66,6 @@ namespace boost { namespace simd { namespace ext
   #pragma warning(disable: 4723) // potential divide by 0
 #endif
 
-  namespace bd = boost::dispatch;
-  namespace bs = boost::simd;
   BOOST_DISPATCH_OVERLOAD ( div_
                           , (typename T)
                           , bd::cpu_
