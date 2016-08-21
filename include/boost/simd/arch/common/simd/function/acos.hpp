@@ -12,8 +12,9 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ACOS_HPP_INCLUDED
 
 #include <boost/simd/function/accurate.hpp>
-#include <boost/simd/arch/common/detail/generic/invtrig.hpp>
-#include <boost/simd/meta/is_not_scalar.hpp>
+#include <boost/simd/arch/common/detail/simd/f_invtrig.hpp>
+#include <boost/simd/arch/common/detail/simd/d_invtrig.hpp>
+#include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
@@ -42,7 +43,7 @@ namespace boost { namespace simd { namespace ext
       //2130706432/2130706432 values computed.
       //1968259973 values (92.38%)  within 0.0 ULPs
       // 162446459 values (7.62%) within 0.5 ULPs in range [-9.999999404e-01, 9.999996424e-01]. Example: -9.999999404e-01 returns 3.141247511e+00 instead of 1.570796251e+00
-      return detail::invtrig_base<A0,tag::radian_tag,is_not_scalar_t<A0>>::acos(a0);
+      return detail::invtrig_base<A0,tag::radian_tag,tag::simd_type>::acos(a0);
     }
   };
 
@@ -75,7 +76,7 @@ namespace boost { namespace simd { namespace ext
       //         6 values (0.00%) within 128.0 ULPs in range [9.999984503e-01, 9.999998808e-01]. Example: 9.999984503e-01 returns 1.760439132e-03 instead of 1.760523301e-03
       //         2 values (0.00%) within 256.0 ULPs in range [9.999996424e-01, 9.999997020e-01]. Example: 9.999996424e-01 returns 8.456269861e-04 instead of 8.457279764e-04
       //         1 values (0.00%) within 512.0 ULPs in range [9.999999404e-01, 9.999999404e-01]. Example: 9.999999404e-01 returns 3.451863886e-04 instead of 3.452669771e-04
-      A0 z = Pio_2<A0>()-detail::invtrig_base<A0,tag::radian_tag,is_not_scalar_t<A0>>::asin(a0);
+      A0 z = Pio_2<A0>()-detail::invtrig_base<A0,tag::radian_tag,tag::simd_type>::asin(a0);
       return z+Pio_2lo<A0>();
     }
   };

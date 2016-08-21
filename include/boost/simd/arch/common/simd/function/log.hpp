@@ -12,7 +12,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LOG_HPP_INCLUDED
 
 #include <boost/simd/arch/common/detail/scalar/logarithm.hpp>
-#include <boost/simd/meta/is_not_scalar.hpp>
+#include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/arch/common/detail/simd/logarithm.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
@@ -31,7 +31,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() (A0 const & a0) const BOOST_NOEXCEPT
     {
-      return detail::logarithm<A0,is_not_scalar_t<A0>>::log(a0);
+      return detail::logarithm<A0,tag::simd_type>::log(a0);
     }
   };
 } } }

@@ -42,9 +42,9 @@ set(SOURCES
     atanpi.cpp
     average.cpp
     bitfloating.cpp
-    bitget.cpp
+##    bitget.cpp
     bitinteger.cpp
-    bitset.cpp
+##    bitset.cpp
     bitwise_and.cpp
     bitwise_andnot.cpp
 #######    bitwise_cast.cpp

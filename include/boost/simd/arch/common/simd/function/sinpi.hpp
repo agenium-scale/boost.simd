@@ -11,9 +11,9 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SINPI_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SINPI_HPP_INCLUDED
 
-#include <boost/simd/arch/common/detail/generic/trigo.hpp>
+#include <boost/simd/arch/common/detail/simd/trigo.hpp>
 #include <boost/simd/function/restricted.hpp>
-#include <boost/simd/meta/is_not_scalar.hpp>
+#include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
@@ -30,7 +30,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      return detail::trig_base<A0,tag::pi_tag,is_not_scalar_t<A0>,tag::big_tag>::sina(a0);
+      return detail::trig_base<A0,tag::pi_tag,tag::simd_type,tag::big_tag>::sina(a0);
     }
   };
   BOOST_DISPATCH_OVERLOAD_IF ( sinpi_
@@ -43,7 +43,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() (const restricted_tag &,  A0 const& a0) const BOOST_NOEXCEPT
     {
-      return detail::trig_base<A0,tag::pi_tag,is_not_scalar_t<A0>,tag::clipped_pio4_tag>::sina(a0);
+      return detail::trig_base<A0,tag::pi_tag,tag::simd_type,tag::clipped_pio4_tag>::sina(a0);
     }
   };
   BOOST_DISPATCH_OVERLOAD_IF ( sinpi_
@@ -56,7 +56,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0,  A1 const &) const BOOST_NOEXCEPT
     {
-      return detail::trig_base<A0,tag::pi_tag,is_not_scalar_t<A0>,tag::big_tag>::sina(a0);
+      return detail::trig_base<A0,tag::pi_tag,tag::simd_type,tag::big_tag>::sina(a0);
     }
   };
 
