@@ -28,18 +28,6 @@ STF_CASE_TPL("distance", STF_NUMERIC_TYPES)
   STF_EQUAL( std::distance(std::begin(rf), std::end(rf)), 3);
 }
 
-template<class T> struct generate
-{
-  generate(T v) : value(v) {}
-  boost::simd::pack<T> operator()() const
-  {
-    return boost::simd::pack<T>(value++);
-  }
-
-  private:
-  mutable T value;
-};
-
 STF_CASE_TPL("iteration", STF_NUMERIC_TYPES)
 {
   using boost::simd::output_range;
@@ -48,15 +36,16 @@ STF_CASE_TPL("iteration", STF_NUMERIC_TYPES)
   std::vector<T>  ref (4*pack<T>::static_size);
   std::vector<T>  data(4*pack<T>::static_size);
 
-  auto r = output_range(data);
-
   for(std::size_t i=0;i<data.size();i++)
     data[i] = T(0);
+
+  auto simd_range = output_range(data);
 
   for(std::size_t i=0;i<ref.size();i++)
     ref[i] = T(i/pack<T>::static_size+1);
 
-  boost::generate( r, generate<T>(1));
+  T k = 0;
+  for(auto& e : simd_range) e = pack<T>(++k);
 
   STF_ALL_EQUAL( ref, data );
 }

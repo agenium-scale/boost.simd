@@ -46,24 +46,25 @@ namespace boost { namespace simd
             >
   inline segmented_output_range( Iterator b, Iterator e )
   {
+    // Expected alignment
+    auto alg = pack<typename std::iterator_traits<Iterator>::value_type,C>::alignment;
+
     // Compute the pointer to the beginning of the aligned zone inside r
     auto const* ptr     = &(*b);
     auto const* new_ptr = reinterpret_cast<decltype(ptr)>
                           ( alignment::align_up ( reinterpret_cast<std::size_t>(ptr)
-                                                , C*sizeof(*ptr)
+                                                , alg
                                                 )
                           );
 
-    // Deduces the offset to there
+    std::size_t dz = std::distance(b,e);
     std::size_t db = std::distance(ptr,new_ptr);
-
-    // Find how many elements are in the SIMD zone
-    std::size_t sz = C*((std::distance(b,e)-db)/C);
+    std::size_t sz = (dz>=db) ? C*((dz-db)/C) : 0u;
 
     // Build the segmented stuff
-    return std::make_tuple( make_iterator_range (b      , b+db    )
-                          , aligned_output_range(b+db   , b+db+sz )
-                          , make_iterator_range (b+db+sz, e       )
+    return std::make_tuple( make_iterator_range (b                    , b+std::min(dz,db) )
+                          , aligned_output_range(b+db                 , b+db+sz           )
+                          , make_iterator_range (std::min(b+db+sz, e) , e                 )
                           );
   }
 

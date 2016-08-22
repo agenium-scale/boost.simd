@@ -12,7 +12,8 @@
 #include <simd_test.hpp>
 #include <vector>
 
-template <typename T> using simd_alloc = boost::alignment::aligned_allocator<T>;
+template <typename T>
+using simd_alloc = boost::alignment::aligned_allocator<T, boost::simd::pack<T>::alignment>;
 
 STF_CASE_TPL("perfect iteration", STF_NUMERIC_TYPES)
 {
@@ -30,6 +31,8 @@ STF_CASE_TPL("perfect iteration", STF_NUMERIC_TYPES)
   for( auto& me : std::get<1>(pr) ) me = pack<T>(++k);
   for( auto& ee : std::get<2>(pr) ) ee = ++k;
 
+  STF_EQUAL( std::distance(std::begin(std::get<0>(pr)),std::end(std::get<0>(pr))), 0u);
+  STF_EQUAL( std::distance(std::begin(std::get<2>(pr)),std::end(std::get<2>(pr))), 0u);
   STF_ALL_EQUAL(ref, data);
 }
 
@@ -60,6 +63,7 @@ STF_CASE_TPL("iteration with prologue", STF_NUMERIC_TYPES)
   for( auto& me : std::get<1>(pr) ) me = pack<T>(++k);
   for( auto& ee : std::get<2>(pr) ) ee = ++k;
 
+  STF_EQUAL( std::distance(std::begin(std::get<2>(pr)),std::end(std::get<2>(pr))), 0u);
   STF_ALL_EQUAL(ref, data);
 }
 
@@ -89,6 +93,7 @@ STF_CASE_TPL("iteration with epilogue", STF_NUMERIC_TYPES)
   for( auto& me : std::get<1>(pr) ) me = pack<T>(++k);
   for( auto& ee : std::get<2>(pr) ) ee = ++k;
 
+  STF_EQUAL( std::distance(std::begin(std::get<0>(pr)),std::end(std::get<0>(pr))), 0u);
   STF_ALL_EQUAL(ref, data);
 }
 
@@ -118,5 +123,7 @@ STF_CASE_TPL("iteration with epilogue & prologue", STF_NUMERIC_TYPES)
   for( auto& me : std::get<1>(pr) ) me = pack<T>(++k);
   for( auto& ee : std::get<2>(pr) ) ee = ++k;
 
+  STF_EXPECT( std::distance(std::begin(std::get<0>(pr)),std::end(std::get<0>(pr))) != 0u);
+  STF_EXPECT( std::distance(std::begin(std::get<2>(pr)),std::end(std::get<2>(pr))) != 0u);
   STF_ALL_EQUAL(ref, data);
 }

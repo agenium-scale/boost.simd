@@ -16,6 +16,7 @@
 
 template <typename T, int N = boost::simd::pack<T>::alignment>
 using simd_alloc = boost::alignment::aligned_allocator<T,N>;
+
 STF_CASE_TPL("distance", STF_NUMERIC_TYPES)
 {
   using boost::simd::aligned_output_range;
@@ -51,7 +52,9 @@ STF_CASE_TPL("iteration", STF_NUMERIC_TYPES)
   for(std::size_t i=0;i<ref.size();i++)   ref[i]  = T(i/pack<T>::static_size+1);
 
   auto simd_range = aligned_output_range(data);
-  boost::generate( simd_range, generate<T>(1));
+
+  T k = 0;
+  for(auto& e : simd_range) e = pack<T>(++k);
 
   STF_EQUAL( ref, data );
 }
