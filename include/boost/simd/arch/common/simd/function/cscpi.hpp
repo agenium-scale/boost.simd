@@ -40,7 +40,6 @@ namespace boost { namespace simd { namespace ext
   };
   BOOST_DISPATCH_OVERLOAD_IF ( cscpi_
                           , (typename A0, typename A1, typename X)
-                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::pack_< bd::floating_<A0>, X>
                           , bd::scalar_ < bd::unspecified_<A1>>

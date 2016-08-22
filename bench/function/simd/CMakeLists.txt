@@ -68,6 +68,8 @@ set(SOURCES
     conj.cpp
     copysign.cpp
     cos.cpp
+    cos.clipped_small.cpp
+    cos.restricted.cpp
     cosh.cpp
     cosd.cpp
     cospi.cpp
@@ -258,7 +260,6 @@ set(SOURCES
     repeat_lower_half.cpp
     repeat_upper_half.cpp
     restricted.cosd.cpp
-    restricted.cos.cpp
     restricted.cospi.cpp
     restricted.cotd.cpp
     restricted.cot.cpp

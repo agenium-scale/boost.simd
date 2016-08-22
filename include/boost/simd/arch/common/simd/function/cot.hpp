@@ -46,9 +46,8 @@ namespace boost { namespace simd { namespace ext
       return detail::trig_base<A0,tag::radian_tag,tag::simd_type,tag::clipped_pio4_tag>::cota(a0);
     }
   };
-  BOOST_DISPATCH_OVERLOAD_IF ( cot_
+  BOOST_DISPATCH_OVERLOAD ( cot_
                           , (typename A0, typename A1, typename X)
-                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::pack_< bd::floating_<A0>, X>
                           , bd::scalar_ < bd::unspecified_<A1>>

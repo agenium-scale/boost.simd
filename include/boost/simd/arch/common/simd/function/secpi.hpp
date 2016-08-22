@@ -36,9 +36,8 @@ namespace boost { namespace simd { namespace ext
       return secpi(a0, tag::big_);
     }
   };
-  BOOST_DISPATCH_OVERLOAD_IF ( secpi_
+  BOOST_DISPATCH_OVERLOAD( secpi_
                           , (typename A0, typename A1, typename X)
-                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::pack_< bd::floating_<A0>, X>
                           , bd::scalar_ < bd::unspecified_<A1>>

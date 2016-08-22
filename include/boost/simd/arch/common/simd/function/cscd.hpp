@@ -37,9 +37,8 @@ namespace boost { namespace simd { namespace ext
       return cscd(a0, tag::big_);
     }
   };
-  BOOST_DISPATCH_OVERLOAD_IF ( cscd_
+  BOOST_DISPATCH_OVERLOAD( cscd_
                           , (typename A0, typename A1, typename X)
-                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::pack_< bd::floating_<A0>, X>
                           , bd::scalar_ < bd::unspecified_<A1>>
@@ -48,7 +47,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1 const&) const BOOST_NOEXCEPT
     {
       return if_nan_else( is_nez(a0)&&is_flint(a0*Ratio<A0,1,180>())
-                        , rec(sind(a0, tag::big_)));
+                        , rec(sind(a0, A1())));
     }
   };
   BOOST_DISPATCH_OVERLOAD_IF ( cscd_

@@ -33,9 +33,8 @@ namespace boost { namespace simd { namespace ext
       return detail::trig_base<A0,tag::radian_tag,tag::simd_type,tag::big_tag>::tana(a0);
     }
   };
-  BOOST_DISPATCH_OVERLOAD_IF ( tan_
+  BOOST_DISPATCH_OVERLOAD_( tan_
                           , (typename A0, typename A1, typename X)
-                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::pack_< bd::floating_<A0>, X>
                           , bd::scalar_ < bd::unspecified_<A1>>
