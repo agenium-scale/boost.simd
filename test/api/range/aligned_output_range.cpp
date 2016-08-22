@@ -22,7 +22,8 @@ STF_CASE_TPL("distance", STF_NUMERIC_TYPES)
   using boost::simd::aligned_output_range;
   using boost::simd::pack;
 
-  std::vector<T,simd_alloc<T,pack<T,8>::alignment>> data(pack<T>::static_size*3), data2(24);
+  std::vector<T,simd_alloc<T>> data(pack<T>::static_size*3);
+  std::vector<T,simd_alloc<T, pack<T,8>::alignment>> data2(24);
 
   auto rng  = aligned_output_range(data);
   auto rng8 = aligned_output_range<8>(data2);
