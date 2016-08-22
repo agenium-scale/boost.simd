@@ -6,7 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#include <boost/simd/iterator/output_range.hpp>
+#include <boost/simd/range/output_range.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/splat.hpp>
 #include <boost/range/algorithm/generate.hpp>

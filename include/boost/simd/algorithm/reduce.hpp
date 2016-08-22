@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_ALGORITHM_REDUCE_HPP_INCLUDED
 #define BOOST_SIMD_ALGORITHM_REDUCE_HPP_INCLUDED
 
-#include <boost/simd/iterator/segmented_input_range.hpp>
+#include <boost/simd/range/segmented_input_range.hpp>
 #include <boost/simd/function/sum.hpp>
 #include <boost/simd/pack.hpp>
 

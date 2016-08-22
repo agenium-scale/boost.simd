@@ -16,4 +16,4 @@ SET( SOURCES
     segmented_output_range.cpp
   )
 
-make_unit( "api.iterator" ${SOURCES})
+make_unit( "api.range" ${SOURCES})

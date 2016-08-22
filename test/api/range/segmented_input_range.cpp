@@ -6,7 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#include <boost/simd/iterator/segmented_input_range.hpp>
+#include <boost/simd/range/segmented_input_range.hpp>
 #include <boost/align/aligned_allocator.hpp>
 #include <boost/simd/function/sum.hpp>
 #include <boost/simd/pack.hpp>

@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_ALGORITHM_TRANSFORM_HPP_INCLUDED
 #define BOOST_SIMD_ALGORITHM_TRANSFORM_HPP_INCLUDED
 
-#include <boost/simd/iterator/segmented_input_range.hpp>
+#include <boost/simd/range/segmented_input_range.hpp>
 #include <boost/simd/function/aligned_store.hpp>
 #include <boost/simd/function/store.hpp>
 #include <boost/simd/pack.hpp>

@@ -9,10 +9,10 @@
 
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ITERATOR_SEGMENTED_INPUT_RANGE_HPP_INCLUDED
-#define BOOST_SIMD_ITERATOR_SEGMENTED_INPUT_RANGE_HPP_INCLUDED
+#ifndef BOOST_SIMD_RANGE_SEGMENTED_INPUT_RANGE_HPP_INCLUDED
+#define BOOST_SIMD_RANGE_SEGMENTED_INPUT_RANGE_HPP_INCLUDED
 
-#include <boost/simd/iterator/aligned_input_range.hpp>
+#include <boost/simd/range/aligned_input_range.hpp>
 #include <boost/align/align_up.hpp>
 #include <boost/range/iterator_range.hpp>
 

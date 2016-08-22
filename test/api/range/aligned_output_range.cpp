@@ -6,7 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#include <boost/simd/iterator/aligned_output_range.hpp>
+#include <boost/simd/range/aligned_output_range.hpp>
 #include <boost/align/aligned_allocator.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/splat.hpp>

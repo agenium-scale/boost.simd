@@ -6,11 +6,11 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ITERATOR_DETAIL_NONTEMPORAL_ITERATOR_HPP_INCLUDED
-#define BOOST_SIMD_ITERATOR_DETAIL_NONTEMPORAL_ITERATOR_HPP_INCLUDED
+#ifndef BOOST_SIMD_RANGE_DETAIL_NONTEMPORAL_ITERATOR_HPP_INCLUDED
+#define BOOST_SIMD_RANGE_DETAIL_NONTEMPORAL_ITERATOR_HPP_INCLUDED
 
 #include <boost/simd/function/stream.hpp>
-#include <boost/simd/iterator/detail/output_iterator_base.hpp>
+#include <boost/simd/range/detail/output_iterator_base.hpp>
 #include <boost/iterator/iterator_adaptor.hpp>
 #include <iterator>
 
