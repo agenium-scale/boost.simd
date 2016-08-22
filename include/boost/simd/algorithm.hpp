@@ -19,6 +19,8 @@ namespace boost { namespace simd
     SIMD-aware Range adaptors and implementation of standard algorithms;
   **/
 } }
+
 #include <boost/simd/algorithm/reduce.hpp>
+#include <boost/simd/algorithm/transform.hpp>
 
 #endif

@@ -8,6 +8,7 @@
 
 SET( SOURCES
     reduce.cpp
+    transform.cpp
    )
 
 make_unit( "api.algorithm" ${SOURCES})
