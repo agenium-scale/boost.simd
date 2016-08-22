@@ -7,23 +7,20 @@
 **/
 //==================================================================================================
 #include <boost/simd/range/aligned_output_range.hpp>
-#include <boost/align/aligned_allocator.hpp>
+#include <boost/simd/memory/allocator.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/splat.hpp>
 #include <boost/range/algorithm/generate.hpp>
 #include <simd_test.hpp>
 #include <vector>
 
-template <typename T, int N = boost::simd::pack<T>::alignment>
-using simd_alloc = boost::alignment::aligned_allocator<T,N>;
-
 STF_CASE_TPL("distance", STF_NUMERIC_TYPES)
 {
   using boost::simd::aligned_output_range;
   using boost::simd::pack;
 
-  std::vector<T,simd_alloc<T>> data(pack<T>::static_size*3);
-  std::vector<T,simd_alloc<T, pack<T,8>::alignment>> data2(24);
+  std::vector<T,boost::simd::allocator<T>> data(pack<T>::static_size*3);
+  std::vector<T,boost::simd::allocator<T,8>> data2(24);
 
   auto rng  = aligned_output_range(data);
   auto rng8 = aligned_output_range<8>(data2);
@@ -47,7 +44,7 @@ STF_CASE_TPL("iteration", STF_NUMERIC_TYPES)
   using boost::simd::pack;
 
   std::size_t ps = pack<T>::static_size;
-  std::vector<T, simd_alloc<T> >  ref (4*ps), data(4*ps);
+  std::vector<T, boost::simd::allocator<T> >  ref (4*ps), data(4*ps);
 
   for(std::size_t i=0;i<data.size();i++)  data[i] = T(0);
   for(std::size_t i=0;i<ref.size();i++)   ref[i]  = T(i/pack<T>::static_size+1);

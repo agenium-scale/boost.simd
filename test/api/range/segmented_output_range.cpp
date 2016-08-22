@@ -7,21 +7,18 @@
 **/
 //==================================================================================================
 #include <boost/simd/range/segmented_output_range.hpp>
-#include <boost/align/aligned_allocator.hpp>
+#include <boost/simd/memory/allocator.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
 #include <vector>
-
-template <typename T>
-using simd_alloc = boost::alignment::aligned_allocator<T, boost::simd::pack<T>::alignment>;
 
 STF_CASE_TPL("perfect iteration", STF_NUMERIC_TYPES)
 {
   using boost::simd::pack;
   using boost::simd::segmented_output_range;
 
-  std::vector<T,simd_alloc<T>>  data(pack<T>::static_size*5);
-  std::vector<T,simd_alloc<T>>  ref (pack<T>::static_size*5);
+  std::vector<T,boost::simd::allocator<T>>  data(pack<T>::static_size*5);
+  std::vector<T,boost::simd::allocator<T>>  ref (pack<T>::static_size*5);
 
   for(std::size_t i=0;i<data.size();i++) ref[i] = i/pack<T>::static_size+1;
   auto pr = segmented_output_range(data);
@@ -41,8 +38,8 @@ STF_CASE_TPL("iteration with prologue", STF_NUMERIC_TYPES)
   using boost::simd::pack;
   using boost::simd::segmented_output_range;
 
-  std::vector<T,simd_alloc<T>>  base(pack<T>::static_size*5);
-  std::vector<T,simd_alloc<T>>  ref(pack<T>::static_size*5-1);
+  std::vector<T,boost::simd::allocator<T>>  base(pack<T>::static_size*5);
+  std::vector<T,boost::simd::allocator<T>>  ref(pack<T>::static_size*5-1);
 
   T v = 0;
   std::size_t l0 = pack<T>::static_size-1;
@@ -72,8 +69,8 @@ STF_CASE_TPL("iteration with epilogue", STF_NUMERIC_TYPES)
   using boost::simd::pack;
   using boost::simd::segmented_output_range;
 
-  std::vector<T,simd_alloc<T>>  base(pack<T>::static_size*5);
-  std::vector<T,simd_alloc<T>>  ref(pack<T>::static_size*5-1);
+  std::vector<T,boost::simd::allocator<T>>  base(pack<T>::static_size*5);
+  std::vector<T,boost::simd::allocator<T>>  ref(pack<T>::static_size*5-1);
 
   T v = 0;
   std::size_t l0 = pack<T>::static_size-1;
@@ -102,8 +99,8 @@ STF_CASE_TPL("iteration with epilogue & prologue", STF_NUMERIC_TYPES)
   using boost::simd::pack;
   using boost::simd::segmented_output_range;
 
-  std::vector<T,simd_alloc<T>>  base(pack<T>::static_size*5);
-  std::vector<T,simd_alloc<T>>  ref(pack<T>::static_size*5-2);
+  std::vector<T,boost::simd::allocator<T>>  base(pack<T>::static_size*5);
+  std::vector<T,boost::simd::allocator<T>>  ref(pack<T>::static_size*5-2);
 
   T v = 0;
   std::size_t l0 = pack<T>::static_size-1;

@@ -7,14 +7,11 @@
 **/
 //==================================================================================================
 #include <boost/simd/range/aligned_input_range.hpp>
-#include <boost/align/aligned_allocator.hpp>
+#include <boost/simd/memory/allocator.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/range.hpp>
 #include <simd_test.hpp>
 #include <vector>
-
-template <typename T, int N = boost::simd::pack<T>::alignment>
-using simd_alloc = boost::alignment::aligned_allocator<T,N>;
 
 template<typename Range, typename Out> inline void mycopy(Range const& r, Out dst)
 {
@@ -26,8 +23,8 @@ STF_CASE_TPL("distance", STF_NUMERIC_TYPES)
   using boost::simd::aligned_input_range;
   using boost::simd::pack;
 
-  std::vector<T,simd_alloc<T>> data(pack<T>::static_size*3);
-  std::vector<T,simd_alloc<T, pack<T,8>::alignment>> data2(24);
+  std::vector<T,boost::simd::allocator<T>>   data(pack<T>::static_size*3);
+  std::vector<T,boost::simd::allocator<T,8>> data2(24);
 
   auto rng  = aligned_input_range(data);
   auto rng8 = aligned_input_range<8>(data2);
@@ -41,8 +38,8 @@ STF_CASE_TPL("iteration", STF_NUMERIC_TYPES)
   using boost::simd::aligned_input_range;
   using boost::simd::pack;
 
-  std::vector<pack<T>,simd_alloc<T>>  dst(3), ref(3);
-  std::vector<T,simd_alloc<T>>        data(pack<T>::static_size*3);
+  std::vector<pack<T>,boost::simd::allocator<T>>  dst(3), ref(3);
+  std::vector<T,boost::simd::allocator<T>>        data(pack<T>::static_size*3);
 
   for(std::size_t i=0;i<data.size();i++)  data[i] = i/pack<T>::static_size+1;
   for(std::size_t i=0;i<ref.size();i++)   ref[i] = pack<T>(i+1);

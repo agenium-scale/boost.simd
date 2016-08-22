@@ -8,7 +8,7 @@
 //==================================================================================================
 #include <boost/simd/range/output_range.hpp>
 #include <boost/simd/pack.hpp>
-#include <boost/simd/function/splat.hpp>
+#include <boost/simd/memory/allocator.hpp>
 #include <boost/range/algorithm/generate.hpp>
 #include <simd_test.hpp>
 #include <vector>

@@ -8,13 +8,10 @@
 //==================================================================================================
 #include <boost/simd/range/input_range.hpp>
 #include <boost/simd/pack.hpp>
-#include <boost/align/aligned_allocator.hpp>
+#include <boost/simd/memory/allocator.hpp>
 #include <boost/range.hpp>
 #include <simd_test.hpp>
 #include <vector>
-
-template <typename T>
-using simd_alloc = boost::alignment::aligned_allocator<T, boost::simd::pack<T>::alignment>;
 
 template<typename Range, typename Out> inline void mycopy(Range const& r, Out dst)
 {
@@ -40,7 +37,7 @@ STF_CASE_TPL("iteration", STF_NUMERIC_TYPES)
   using boost::simd::input_range;
   using boost::simd::pack;
 
-  std::vector<pack<T>,simd_alloc<T>>  dst(3), ref(3);
+  std::vector<pack<T>,boost::simd::allocator<T>>  dst(3), ref(3);
   std::vector<T>          data(pack<T>::static_size*3);
 
   for(std::size_t i=0;i<data.size();i++)
