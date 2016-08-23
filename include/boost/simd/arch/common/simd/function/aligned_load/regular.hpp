@@ -25,7 +25,7 @@ namespace boost { namespace simd { namespace ext
   // aligned_load from a pointer of whatever
   BOOST_DISPATCH_OVERLOAD ( aligned_load_
                           , (typename Target, typename Pointer, typename Ext)
-                          , bs::simd_
+                          , bd::cpu_
                           , bd::pointer_<bd::scalar_<bd::unspecified_<Pointer>>,1u>
                           , bd::target_<bs::pack_<bd::unspecified_<Target>,Ext>>
                           )
@@ -62,7 +62,7 @@ namespace boost { namespace simd { namespace ext
   // aligned_load from a pointer of logical to whatever
   BOOST_DISPATCH_OVERLOAD ( aligned_load_
                           , (typename Target, typename Pointer, typename Ext)
-                          , bs::simd_
+                          , bd::cpu_
                           , bd::pointer_<bd::scalar_<bs::logical_<Pointer>>,1u>
                           , bd::target_<bs::pack_<bd::unspecified_<Target>,Ext>>
                           )
