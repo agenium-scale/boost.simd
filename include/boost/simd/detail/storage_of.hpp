@@ -34,7 +34,7 @@ namespace boost { namespace simd { namespace detail
   using aggregated_status = brigand::int32_t<+1>;
 
   // Status for SIMD storage to be determined
-  using unknown_status = brigand::int32_t<42>;
+  using unknown_status    = brigand::int32_t<42>;
 
   /*!
     @ingroup group-detail
@@ -44,9 +44,9 @@ namespace boost { namespace simd { namespace detail
     hardware registers proposed by extension @c X.
   **/
   template< typename T, std::size_t C, typename X>
-  struct storage_status : brigand::int32_t<   (expected_cardinal<T,X>::value!=C)
-                                        * ( (expected_cardinal<T,X>::value<C) ? +1 : -1)
-                                      >
+  struct storage_status : brigand::int32_t<   (expected_cardinal<T,X>::value != C)
+                                          * ( (expected_cardinal<T,X>::value < C) ? +1 : -1)
+                                          >
   {};
 
   // If ABI is not supported by current hardware, search for proper emulated storage later
@@ -74,7 +74,11 @@ namespace boost { namespace simd { namespace detail
   // Unknown ABI requires checks on aggregation/emulation
   template< typename Type, std::size_t Cardinal>
   struct  storage_of<Type,Cardinal,simd_emulation_,unknown_status>
+  #if !defined(BOOST_SIMD_STRICT_EMULATION)
         : storage_of<Type,Cardinal,BOOST_SIMD_DEFAULT_FAMILY>
+  #else
+        : storage_of<Type,Cardinal,boost::simd::simd_,emulated_status>
+  #endif
   {};
 
   // If the cardinal requested is lower than the expected one,
