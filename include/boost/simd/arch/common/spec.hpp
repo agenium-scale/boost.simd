@@ -20,6 +20,7 @@
   #if !defined(BOOST_HW_SIMD_AVAILABLE)
     #define BOOST_SIMD_DEFAULT_FAMILY ::boost::simd::simd_emulation_
     #define BOOST_SIMD_DEFAULT_SITE   ::boost::dispatch::cpu_
+    #define BOOST_SIMD_STRICT_EMULATION
   #endif
 #endif
 
