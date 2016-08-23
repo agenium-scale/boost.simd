@@ -2,8 +2,6 @@
 /*!
   @file
 
-  Aggregates SIMD extension tags for Intel X86 and AMD
-
   @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
@@ -24,7 +22,33 @@ namespace boost { namespace simd
 
     This tag represent architectures implementing the Intel AVX SIMD instructions set.
   **/
-  struct avx_     : sse4_2_ { using parent = sse4_2_; };
+  struct avx_     : sse4_2_
+  {
+    using parent = sse4_2_;
+
+    avx_() : support(detect()) {}
+
+    bool is_supported() const { return support; }
+
+    static bool detect()
+    {
+      #if BOOST_ARCH_X86
+      return      detect_feature(28, 0x00000001, detail::ecx)
+              &&  detect_feature(27, 0x00000001, detail::ecx);
+      #else
+      return false;
+      #endif
+    }
+
+    private:
+    bool support;
+  };
+
+  /*!
+    @ingroup  group-api
+    Global object for accessing AVX support informations
+  **/
+  static avx_ const avx = {};
 
 } }
 

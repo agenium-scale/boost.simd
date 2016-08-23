@@ -24,7 +24,33 @@ namespace boost { namespace simd
 
     This tag represent architectures implementing the Intel AVX2 SIMD instructions set.
   **/
-  struct avx2_  : fma3_ { using parent = fma3_; };
+  struct avx2_  : fma3_
+  {
+    using parent = fma3_;
+
+    avx2_() : support(detect()) {}
+
+    bool is_supported() const { return support; }
+
+    static bool detect()
+    {
+      #if BOOST_ARCH_X86
+      return      detect_features( (1<< 5)|(1<< 3)|(1<< 8), 0x00000007, detail::ebx)
+              &&  detect_features( (1<<27)|(1<<22)|(1<<12), 0x00000001, detail::ecx);
+      #else
+      return false;
+      #endif
+    }
+
+    private:
+    bool support;
+  };
+
+  /*!
+    @ingroup  group-api
+    Global object for accessing AVX2 support informations
+  **/
+  static avx2_ const avx2 = {};
 
 } }
 

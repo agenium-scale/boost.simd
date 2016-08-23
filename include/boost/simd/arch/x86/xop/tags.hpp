@@ -24,8 +24,33 @@ namespace boost { namespace simd
 
     This tag represent architectures implementing the AMD XOP SIMD instructions set.
   **/
-  struct xop_     : fma4_   { using parent = fma4_;   };
+  struct xop_ : fma4_
+  {
+    using parent = fma4_;
 
+    xop_() : support(detect()) {}
+
+    bool is_supported() const { return support; }
+
+    static bool detect()
+    {
+      #if BOOST_ARCH_X86
+      return      detect_feature(11, 0x80000001, detail::ebx)
+              &&  detect_feature(27, 0x80000001, detail::ecx);
+      #else
+      return false;
+      #endif
+    }
+
+    private:
+    bool support;
+  };
+
+  /*!
+    @ingroup  group-api
+    Global object for accessing XOP support informations
+  **/
+  static xop_ const xop = {};
 } }
 
 #endif

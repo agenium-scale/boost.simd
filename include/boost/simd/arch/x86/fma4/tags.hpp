@@ -24,7 +24,33 @@ namespace boost { namespace simd
 
     This tag represent architectures implementing the Intel FMA4 SIMD instructions set.
   **/
-  struct fma4_    : avx_    { using parent = avx_ ;   };
+  struct fma4_    : avx_
+  {
+    using parent = avx_ ;
+
+    fma4_() : support(detect()) {}
+
+    bool is_supported() const { return support; }
+
+    static bool detect()
+    {
+      #if BOOST_ARCH_X86
+      return      detect_feature(16, 0x80000001, detail::ecx)
+              &&  detect_feature(27, 0x80000001, detail::ecx);
+      #else
+      return false;
+      #endif
+    }
+
+    private:
+    bool support;
+  };
+
+  /*!
+    @ingroup  group-api
+    Global object for accessing FMA4 support informations
+  **/
+  static fma4_ const fma4 = {};
 
 } }
 
