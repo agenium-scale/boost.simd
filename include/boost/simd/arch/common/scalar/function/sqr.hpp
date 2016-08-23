@@ -59,6 +59,18 @@ namespace boost { namespace simd { namespace ext
       return sqr(a0);
     }
   };
+
+   BOOST_DISPATCH_OVERLOAD ( sqr_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::arithmetic_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0  a0) const BOOST_NOEXCEPT
+    {
+      return a0*a0;
+    }
+  };
 } } }
 
 #endif

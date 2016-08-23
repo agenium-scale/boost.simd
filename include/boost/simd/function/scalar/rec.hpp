@@ -11,7 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_REC_HPP_INCLUDED
 
 #include <boost/simd/function/definition/rec.hpp>
-#include <boost/simd/arch/common/generic/function/rec.hpp>
 #include <boost/simd/arch/common/scalar/function/rec.hpp>
 
 #if defined(BOOST_HW_SIMD_X86_OR_AMD_AVAILABLE)

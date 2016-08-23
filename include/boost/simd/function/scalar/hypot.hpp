@@ -11,7 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_HYPOT_HPP_INCLUDED
 
 #include <boost/simd/function/definition/hypot.hpp>
-#include <boost/simd/arch/common/generic/function/hypot.hpp>
 #include <boost/simd/arch/common/scalar/function/hypot.hpp>
 
 #endif

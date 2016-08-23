@@ -126,6 +126,17 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
+  BOOST_DISPATCH_OVERLOAD ( log10_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::floating_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    {
+      return detail::logarithm<A0,tag::not_simd_type>::log10(a0);
+    }
+  };
 } } }
 
 

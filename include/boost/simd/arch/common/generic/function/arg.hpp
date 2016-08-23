@@ -24,14 +24,6 @@
 
 namespace boost { namespace simd
  {
-   struct use_signbit_tag
-   {
-     using parent = use_signbit_tag;
-     using hierarchy_tag = void; //dispatch::detail::hierarchy_tag;
-   };
-
-   const use_signbit_tag use_signbit_ = {};
-
 
    namespace ext
    {

@@ -11,7 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_FLOOR_HPP_INCLUDED
 
 #include <boost/simd/function/definition/floor.hpp>
-#include <boost/simd/arch/common/generic/function/floor.hpp>
 #include <boost/simd/arch/common/scalar/function/floor.hpp>
 
 #endif

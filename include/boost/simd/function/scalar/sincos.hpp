@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_SINCOS_HPP_INCLUDED
 
 #include <boost/simd/function/definition/sincos.hpp>
-#include <boost/simd/arch/common/generic/function/sincos.hpp>
+#include <boost/simd/arch/common/scalar/function/sincos.hpp>
 
 #endif

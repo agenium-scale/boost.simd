@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_ASECD_HPP_INCLUDED
 
 #include <boost/simd/function/definition/asecd.hpp>
-#include <boost/simd/arch/common/generic/function/asecd.hpp>
+#include <boost/simd/arch/common/scalar/function/asecd.hpp>
 
 #endif

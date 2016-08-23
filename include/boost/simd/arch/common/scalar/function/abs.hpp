@@ -14,7 +14,6 @@
 #include <boost/simd/detail/math.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/valmin.hpp>
-#include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/is_equal.hpp>
 #include <boost/simd/detail/dispatch/meta/as_unsigned.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
@@ -142,11 +141,11 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE T operator()(const saturated_tag &, T const& a0) const BOOST_NOEXCEPT
     {
-      return if_else(a0==Valmin<T>(),Valmax<T>(),bs::abs(a0));
+      return (a0==Valmin<T>())?Valmax<T>():bs::abs(a0);
     }
   };
 } } }
 
-#include <boost/simd/arch/common/generic/function/abs_s.hpp>
+#include <boost/simd/arch/common/scalar/function/abs_s.hpp>
 
 #endif

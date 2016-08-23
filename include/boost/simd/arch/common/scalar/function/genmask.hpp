@@ -11,6 +11,8 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_GENMASK_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_GENMASK_HPP_INCLUDED
 
+#include <boost/simd/constant/allbits.hpp>
+#include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/scalar/unary_minus.hpp>
 #include <boost/simd/function/scalar/bitwise_cast.hpp>
 #include <boost/simd/meta/hierarchy/logical.hpp>
@@ -69,6 +71,7 @@ namespace boost { namespace simd { namespace ext
       return bitwise_cast<A0>(unary_minus(itype(a0 != 0)));
     }
   };
+
 } } }
 
 #endif

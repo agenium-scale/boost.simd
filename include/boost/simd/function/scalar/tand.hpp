@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_TAND_HPP_INCLUDED
 
 #include <boost/simd/function/definition/tand.hpp>
-#include <boost/simd/arch/common/generic/function/tand.hpp>
+#include <boost/simd/arch/common/scalar/function/tand.hpp>
 
 #endif

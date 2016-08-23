@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_SECD_HPP_INCLUDED
 
 #include <boost/simd/function/definition/secd.hpp>
-#include <boost/simd/arch/common/generic/function/secd.hpp>
+#include <boost/simd/arch/common/scalar/function/secd.hpp>
 
 #endif

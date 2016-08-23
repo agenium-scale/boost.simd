@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_BITSET_HPP_INCLUDED
 
 #include <boost/simd/function/definition/bitset.hpp>
-#include <boost/simd/arch/common/generic/function/bitset.hpp>
+#include <boost/simd/arch/common/scalar/function/bitset.hpp>
 
 #endif

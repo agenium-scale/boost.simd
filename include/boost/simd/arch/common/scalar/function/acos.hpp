@@ -7,12 +7,13 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ACOS_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_ACOS_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ACOS_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ACOS_HPP_INCLUDED
 
 #include <boost/simd/function/accurate.hpp>
-#include <boost/simd/arch/common/detail/generic/invtrig.hpp>
-#include <boost/simd/meta/is_not_scalar.hpp>
+#include <boost/simd/arch/common/detail/tags.hpp>
+#include <boost/simd/arch/common/detail/scalar/f_invtrig.hpp>
+#include <boost/simd/arch/common/detail/scalar/d_invtrig.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
@@ -25,33 +26,24 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0)
                           , bd::cpu_
                           , bs::accurate_tag
-                          , bd::generic_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
                           )
   {
 
-    BOOST_FORCEINLINE A0 operator() (const accurate_tag &,  A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const accurate_tag &,  A0 a0) const BOOST_NOEXCEPT
     {
-      //Exhaustive test for: boost::simd::detail::decorated_functor<boost::simd::tag::acos_, boost::simd::sse4_2_, boost::simd::accurate_tag>
-      //             versus: raw_acos
-      //             With T: boost::simd::pack<float, 4ul, boost::simd::sse_>
-      //           in range: [-1, 1]
-      //         # of tests: 2130706432
-
-      //2130706432/2130706432 values computed.
-      //1968259973 values (92.38%)  within 0.0 ULPs
-      // 162446459 values (7.62%) within 0.5 ULPs in range [-9.999999404e-01, 9.999996424e-01]. Example: -9.999999404e-01 returns 3.141247511e+00 instead of 1.570796251e+00
-      return detail::invtrig_base<A0,tag::radian_tag,is_not_scalar_t<A0>>::acos(a0);
+      return detail::invtrig_base<A0,tag::radian_tag,tag::not_simd_type>::acos(a0);
     }
   };
 
   BOOST_DISPATCH_OVERLOAD ( acos_
                           , (typename A0)
                           , bd::cpu_
-                          , bd::generic_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
                           )
   {
 
-    BOOST_FORCEINLINE A0 operator() (A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
     {
       //Exhaustive test for: boost::dispatch::functor<boost::simd::tag::acos_, boost::simd::sse4_2_>
       //             versus: raw_acos
@@ -72,11 +64,23 @@ namespace boost { namespace simd { namespace ext
       //         6 values (0.00%) within 128.0 ULPs in range [9.999984503e-01, 9.999998808e-01]. Example: 9.999984503e-01 returns 1.760439132e-03 instead of 1.760523301e-03
       //         2 values (0.00%) within 256.0 ULPs in range [9.999996424e-01, 9.999997020e-01]. Example: 9.999996424e-01 returns 8.456269861e-04 instead of 8.457279764e-04
       //         1 values (0.00%) within 512.0 ULPs in range [9.999999404e-01, 9.999999404e-01]. Example: 9.999999404e-01 returns 3.451863886e-04 instead of 3.452669771e-04
-      A0 z = Pio_2<A0>()-detail::invtrig_base<A0,tag::radian_tag,is_not_scalar_t<A0>>::asin(a0);
+      A0 z = Pio_2<A0>()-detail::invtrig_base<A0,tag::radian_tag,tag::not_simd_type>::asin(a0);
       return z+Pio_2lo<A0>();
     }
   };
 
+  BOOST_DISPATCH_OVERLOAD ( acos_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bs::std_tag
+                          , bd::scalar_< bd::floating_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() (const std_tag &, A0 a0) const BOOST_NOEXCEPT
+    {
+      return std::acos(a0);
+    }
+  };
 } } }
 
 #endif

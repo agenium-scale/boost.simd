@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_INC_HPP_INCLUDED
 
 #include <boost/simd/function/definition/inc.hpp>
-#include <boost/simd/arch/common/generic/function/inc.hpp>
+#include <boost/simd/arch/common/scalar/function/inc.hpp>
 
 #endif

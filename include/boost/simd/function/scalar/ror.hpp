@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_ROR_HPP_INCLUDED
 
 #include <boost/simd/function/definition/ror.hpp>
-#include <boost/simd/arch/common/generic/function/ror.hpp>
+#include <boost/simd/arch/common/scalar/function/ror.hpp>
 
 #endif

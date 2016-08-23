@@ -18,7 +18,19 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
-
+  BOOST_DISPATCH_OVERLOAD ( reallog_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::floating_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    {
+      BOOST_ASSERT_MSG(boost::simd::assert_all(is_nltz(a0)),
+                       "reallog cannot produce complex result.");
+      return log(a0);
+    }
+  };
 } } }
 
 

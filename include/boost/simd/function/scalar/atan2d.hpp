@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_ATAN2D_HPP_INCLUDED
 
 #include <boost/simd/function/definition/atan2d.hpp>
-#include <boost/simd/arch/common/generic/function/atan2d.hpp>
+#include <boost/simd/arch/common/scalar/function/atan2d.hpp>
 
 #endif

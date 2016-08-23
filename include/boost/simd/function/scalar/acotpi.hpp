@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_ACOTPI_HPP_INCLUDED
 
 #include <boost/simd/function/definition/acotpi.hpp>
-#include <boost/simd/arch/common/generic/function/acotpi.hpp>
+#include <boost/simd/arch/common/scalar/function/acotpi.hpp>
 
 #endif

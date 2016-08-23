@@ -12,6 +12,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_REALSQRT_HPP_INCLUDED
 
 #include <boost/simd/function/definition/realsqrt.hpp>
-#include <boost/simd/arch/common/generic/function/realsqrt.hpp>
+#include <boost/simd/arch/common/scalar/function/realsqrt.hpp>
 
 #endif

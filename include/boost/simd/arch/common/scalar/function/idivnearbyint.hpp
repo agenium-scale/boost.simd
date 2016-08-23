@@ -46,6 +46,46 @@ namespace boost { namespace simd { namespace ext
       return is_negative(bitwise_or(a0, a1)) ? Valmin<result_t>() : Valmax<result_t>();
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( div_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bs::tag::inearbyint_
+                          , bd::scalar_< bd::arithmetic_<A0> >
+                          , bd::scalar_< bd::arithmetic_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( bd::functor<bs::tag::inearbyint_> const&,
+                                      A0  a0, A0  a1) const BOOST_NOEXCEPT
+    {
+      return div(nearbyint, a0, a1);
+    }
+  };
+
+#ifdef BOOST_MSVC
+  #pragma warning(push)
+  #pragma warning(disable: 4723) // potential divide by 0
+#endif
+
+  BOOST_DISPATCH_OVERLOAD ( div_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bs::tag::inearbyint_
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE bd::as_integer_t<A0> operator() ( bd::functor<bs::tag::inearbyint_> const&
+                                                      , A0  a0
+                                                      , A0  a1) const BOOST_NOEXCEPT
+    {
+      return inearbyint(a0/a1);
+    }
+  };
+
+#ifdef BOOST_MSVC
+  #pragma warning(pop)
+#endif
 } } }
 
 #endif

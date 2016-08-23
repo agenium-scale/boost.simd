@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_FMA_HPP_INCLUDED
 
 #include <boost/simd/function/definition/fma.hpp>
-#include <boost/simd/arch/common/generic/function/fma.hpp>
+#include <boost/simd/arch/common/scalar/function/fma.hpp>
 
 #endif

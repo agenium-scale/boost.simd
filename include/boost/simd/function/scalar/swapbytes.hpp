@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_SWAPBYTES_HPP_INCLUDED
 
 #include <boost/simd/function/definition/swapbytes.hpp>
-#include <boost/simd/arch/common/generic/function/swapbytes.hpp>
+#include <boost/simd/arch/common/scalar/function/swapbytes.hpp>
 
 #endif

@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_ICEIL_HPP_INCLUDED
 
 #include <boost/simd/function/definition/iceil.hpp>
-#include <boost/simd/arch/common/generic/function/iceil.hpp>
+#include <boost/simd/arch/common/scalar/function/iceil.hpp>
 
 #endif

@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_REM_2PI_HPP_INCLUDED
 
 #include <boost/simd/function/definition/rem_2pi.hpp>
-#include <boost/simd/arch/common/generic/function/rem_2pi.hpp>
+#include <boost/simd/arch/common/scalar/function/rem_2pi.hpp>
 
 #endif

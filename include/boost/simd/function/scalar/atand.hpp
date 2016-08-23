@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_ATAND_HPP_INCLUDED
 
 #include <boost/simd/function/definition/atand.hpp>
-#include <boost/simd/arch/common/generic/function/atand.hpp>
+#include <boost/simd/arch/common/scalar/function/atand.hpp>
 
 #endif

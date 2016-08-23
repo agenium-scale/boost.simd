@@ -16,7 +16,12 @@
   #pragma warning(push)
 #endif
 #include <boost/config.hpp>
-
+#include <boost/simd/meta/as_logical.hpp>
+#include <boost/simd/constant/valmax.hpp>
+#include <boost/simd/constant/valmin.hpp>
+#include <boost/simd/function/unary_minus.hpp>
+#include <boost/simd/function/saturated.hpp>
+#
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
@@ -28,6 +33,33 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0) const { return -a0; }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( unary_minus_
+                          , (typename T)
+                          , bd::cpu_
+                          , bs::saturated_tag
+                          , bd::scalar_<bd::signed_<T>>
+                           )
+  {
+    BOOST_FORCEINLINE T operator()(const saturated_tag &, T a0) const BOOST_NOEXCEPT
+    {
+      return a0 == Valmin<T>() ? Valmax<T>() : bs::unary_minus(a0);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( unary_minus_
+                          , (typename T)
+                          , bd::cpu_
+                          , bs::saturated_tag
+                          , bd::scalar_<bd::unspecified_<T>>
+                          )
+  {
+    BOOST_FORCEINLINE T operator()(const saturated_tag &, T a) const BOOST_NOEXCEPT
+    {
+      return unary_minus(a);
+    }
+  };
+
 } } }
 
 #ifdef BOOST_MSVC

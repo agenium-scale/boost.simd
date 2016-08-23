@@ -12,7 +12,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_MANTISSA_HPP_INCLUDED
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-#include <boost/simd/function/simd/is_invalid.hpp>
+#include <boost/simd/function/scalar/is_invalid.hpp>
 #endif
 #include <boost/simd/detail/constant/mantissamask.hpp>
 #include <boost/simd/constant/one.hpp>

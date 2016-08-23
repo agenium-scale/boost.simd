@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_ACOTD_HPP_INCLUDED
 
 #include <boost/simd/function/definition/acotd.hpp>
-#include <boost/simd/arch/common/generic/function/acotd.hpp>
+#include <boost/simd/arch/common/scalar/function/acotd.hpp>
 
 #endif
