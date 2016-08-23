@@ -40,7 +40,7 @@ int main(int argc, char **argv) {
 
   {
   //! [sum-loop-con]
-  for ( size_t i = 0 ; i < size ; i += cardinal ) {
+  for ( size_t i = 0 ; i < size ; i += pack_card ) {
 
   }
   //! [sum-loop-con]
@@ -48,23 +48,23 @@ int main(int argc, char **argv) {
   //! [sum-one28]
   pack_t one28(128);
   //! [sum-one28]
-  
+
   //! [sum-pointer]
-  for ( size_t i = 0 ; i < size ; i += cardinal ) {
+  for ( size_t i = 0 ; i < size ; i += pack_card ) {
     pack_t p_arr(array.data() + i);
     p_out = p_arr - one28;
     bs::store(p_out , out.data() + i);
   }
   //! [sum-pointer]
   }
-  
+
   {
   //! [sum-load]
   // Using explicit load/store
   pack_t p_out;
   pack_t p_arr;
   pack_t one28{scalar};
-  for ( size_t i = 0 ; i < size ; i += cardinal ) {
+  for ( size_t i = 0 ; i < size ; i += pack_card ) {
     p_arr = bs::load<pack_t>(array.data() + i);
     p_out = p_arr - one28;
     bs::store(p_out , out.data() + i);
@@ -81,7 +81,7 @@ int main(int argc, char **argv) {
   pack_t p_arr;
   pack_t one28{scalar};
   size_t i = 0;
-  for (; i + cardinal <= size ; i += cardinal ) {
+  for (; i + pack_card <= size ; i += pack_card ) {
     p_arr = bs::load<pack_t>(array.data() + i);
     p_out = p_arr - one28;
     bs::store(p_out , out.data() + i);
