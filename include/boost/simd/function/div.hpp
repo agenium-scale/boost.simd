@@ -30,9 +30,9 @@ namespace boost { namespace simd
     returns the quotient of @c a by @c b respecting to the options specified.
 
     By default, this functions is equivalent to divides(a, b).
-    Options may be ceil, floor, fix, round, round2even (in the namespace booost::simd)
+    Options may be ceil, floor, fix, round, nearbyint (in the namespace booost::simd)
     and provide the same result as the calls divceil(a, b), divfloor(a, b),
-    divfix(a, b), divround(a, b).
+    divfix(a, b), divround(a, b), divnearbyint(a, b).
 
     @return The quotient of the two parameters.
   **/
