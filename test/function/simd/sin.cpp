@@ -32,7 +32,7 @@ void test(Env& $)
   p_t cc (&c[0], &c[0]+N);
 
   STF_ULP_EQUAL(bs::sin(aa1), bb, 0.5);
-  STF_EQUAL(bs::std_(bs::sin)(aa1), cc);
+  STF_ULP_EQUAL(bs::std_(bs::sin)(aa1), cc, 0.5);
 }
 
 STF_CASE_TPL("Check sin on pack" , STF_IEEE_TYPES)
@@ -62,8 +62,8 @@ void testcs(Env& $)
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
   p_t cc (&c[0], &c[0]+N);
-  STF_EQUAL(bs::sin(aa1, bst::clipped_small_), bb);
-  STF_EQUAL(bs::std_(bs::sin)(aa1), cc);
+  STF_ULP_EQUAL(bs::sin(aa1, bst::clipped_small_), bb, 0.5);
+  STF_ULP_EQUAL(bs::std_(bs::sin)(aa1), cc, 0.5);
 }
 
 STF_CASE_TPL("Check sin sin clipped_small_ on pack" , STF_IEEE_TYPES)
@@ -93,8 +93,8 @@ void testcm(Env& $)
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
   p_t cc (&c[0], &c[0]+N);
-  STF_EQUAL(bs::sin(aa1, bst::clipped_medium_), bb);
-  STF_EQUAL(bs::std_(bs::sin)(aa1), cc);
+  STF_ULP_EQUAL(bs::sin(aa1, bst::clipped_medium_), bb, 0.5);
+  STF_ULP_EQUAL(bs::std_(bs::sin)(aa1), cc, 0.5);
 }
 
 STF_CASE_TPL("Check sin sin clipped_medium_ on pack" , STF_IEEE_TYPES)
