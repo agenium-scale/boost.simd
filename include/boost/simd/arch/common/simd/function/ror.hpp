@@ -36,7 +36,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::unsigned_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A0 a1) const
+    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1 a1) const
     {
       BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "rol : rotation is out of range");
       using s_t = bd::scalar_of_t<A0>;
@@ -66,30 +66,38 @@ namespace boost { namespace simd { namespace ext
   };
 
   BOOST_DISPATCH_OVERLOAD_IF ( ror_
-                          , (typename A0, typename A1, typename X)
-                          , (detail::is_native<X>)
-                          , bd::cpu_
-                          , bs::pack_< bd::unsigned_<A0>, X>
-                          , bs::pack_< bd::unsigned_<A1>, X>
-                          )
+                             , (typename A0, typename A1, typename X)
+                             , ( brigand::and_<
+                                 detail::is_native<X>,
+                                 brigand::bool_<bs::cardinal_of<A0>::value == bs::cardinal_of<A1>::value>
+                                 >
+                               )
+                             , bd::cpu_
+                             , bs::pack_< bd::unsigned_<A0>, X>
+                             , bs::pack_< bd::unsigned_<A1>, X>
+                             )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A0 const& a1) const
     {
       using s_t = bd::scalar_of_t<A0>;
       BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "ror : rotation is out of range");
 
-      s_t const width = sizeof(s_t)*CHAR_BIT;
+      s_t static const width = sizeof(s_t)*CHAR_BIT;
       return shr(a0, a1) | shift_left(a0, (width-a1) & (width-1));
     }
   };
 
   BOOST_DISPATCH_OVERLOAD_IF ( ror_
-                          , (typename A0, typename A1, typename X)
-                          , (detail::is_native<X>)
-                          , bd::cpu_
-                          , bs::pack_< bd::arithmetic_<A0>, X>
-                          , bs::pack_< bd::integer_<A1>, X>
-                          )
+                             , (typename A0, typename A1, typename X)
+                             , ( brigand::and_<
+                                 detail::is_native<X>,
+                                 brigand::bool_<bs::cardinal_of<A0>::value == bs::cardinal_of<A1>::value>
+                                 >
+                               )
+                               , bd::cpu_
+                               , bs::pack_< bd::arithmetic_<A0>, X>
+                               , bs::pack_< bd::integer_<A1>, X>
+                               )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1 const& a1) const
     {
