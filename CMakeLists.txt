@@ -67,6 +67,7 @@ set(NS_CMAKE_PROJECT_OPTIONS
 
 if (DEFINED DEV)
   set(NS_BENCH_GIT_TAG develop)
+  set(BRIGAND_GIT_TAG 1.2.0)
   NS_project_include(ns.bench.standalone)
   NS_project_include(brigand.standalone)
   NS_project_include(stf.standalone)
