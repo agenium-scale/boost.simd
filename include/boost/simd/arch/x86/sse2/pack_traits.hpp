@@ -19,6 +19,11 @@
 #include <boost/simd/detail/pack_traits.hpp>
 #include <type_traits>
 
+#if defined __GNUC__ && __GNUC__>=6
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wignored-attributes"
+#endif
+
 namespace boost { namespace simd
 {
   namespace detail
@@ -53,5 +58,9 @@ namespace boost { namespace simd
     };
   }
 } }
+
+#if defined __GNUC__ && __GNUC__>=6
+#pragma GCC diagnostic pop
+#endif
 
 #endif
