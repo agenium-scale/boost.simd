@@ -122,8 +122,8 @@ namespace boost { namespace simd
       // 4 < abs(x)
       static BOOST_FORCEINLINE A0 erf3(const A0& , const A0& y) BOOST_NOEXCEPT
       {
-        A0 Invsqrtpi = Constant<double, 0x3fe20dd750429b6dll>(); //0.564189583547756286948079451561
-        A0 Xhuge     = Constant<double, 0x418ffeeb00000000ll>(); // 6.71e+7
+        A0 Invsqrtpi = Constant<A0, 0x3fe20dd750429b6dll>(); //0.564189583547756286948079451561
+        A0 Xhuge     = Constant<A0, 0x418ffeeb00000000ll>(); // 6.71e+7
         A0 ysq = rec(sqr(y));
         A0 res = ysq*
           horn<A0,
@@ -153,7 +153,7 @@ namespace boost { namespace simd
         A0 ysq = reduc(x);
         A0 del = (x-ysq)*(x+ysq);
         A0 y = exp(ysq*ysq) * exp(del);
-        res = if_else(x < Constant<double, 0XC03AA0C49BA5E354ULL>(), Inf<A0>(), (y+y)-res); //-26.628
+        res = if_else(x < Constant<A0, 0XC03AA0C49BA5E354ULL>(), Inf<A0>(), (y+y)-res); //-26.628
       }
 
       static BOOST_FORCEINLINE A0 reduc(const A0& x) BOOST_NOEXCEPT

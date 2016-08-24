@@ -17,6 +17,7 @@
 #include <boost/simd/arch/common/detail/generic/erf_kernel.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/simd/abs.hpp>
+#include <boost/simd/function/simd/erfc.hpp>
 #include <boost/simd/function/simd/exp.hpp>
 #include <boost/simd/function/simd/is_inf.hpp>
 #include <boost/simd/function/simd/is_less.hpp>
@@ -54,7 +55,8 @@ namespace boost { namespace simd { namespace ext
       if(nb > 0)
       {
         A0 ysq;
-        res1 = oneminus(detail::erf_kernel1<A0>::erf1(x, y, ysq))*exp(ysq);
+        A0 tmp = detail::erf_kernel1<A0>::erf1(x, y, ysq);
+        res1 = oneminus(tmp)*exp(ysq);
         if (nb >= A0::static_size)
           return res1;
       }
@@ -63,8 +65,10 @@ namespace boost { namespace simd { namespace ext
       std::size_t nb1 = bs::nbtrue(test3);
       if(nb1 > 0)
       {
-        res2 = detail::erf_kernel1<A0>::erf2(x, y);
-        res2 = if_else (is_ltz(x), res1, detail::erf_kernel1<A0>::finalize3(res2, x));
+        res2  = detail::erf_kernel1<A0>::erf2(x, y);
+        A0 resb = res2;
+        detail::erf_kernel1<A0>::finalize3(resb, x);
+        res2 = if_else(is_ltz(x), resb, res2);
         nb += nb1;
         res2 = bs::if_else(test1, res1, res2);
         if (nb >= A0::static_size)
@@ -76,7 +80,9 @@ namespace boost { namespace simd { namespace ext
       }
       auto test4 = logical_not(logical_or(test1, test2));
       A0 res3 = detail::erf_kernel1<A0>::erf3(x, y);
-      res3 =  if_else (is_ltz(x), detail::erf_kernel1<A0>::finalize3(res2, x), res3);
+      A0 res3b = res3;
+      detail::erf_kernel1<A0>::finalize3(res3b, x);
+      res3 =  if_else (is_ltz(x), res3b, res3);
       return if_nan_else(is_nan(x), if_else(test4, res3, res2));
     }
   };
