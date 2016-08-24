@@ -26,11 +26,9 @@ void test(Env& $)
   for(std::size_t i = 0; i < N; ++i)
   {
     a1[i] = -7.0*T(i)/N;
-    //   std::cout << a1[i] << std::endl;
     b[i] = bs::erfcx(a1[i]);
    }
   p_t aa1(&a1[0], &a1[0]+N);
-  std::cout << aa1 << std::endl;
   p_t bb(&b[0], &b[0]+N);
   STF_ULP_EQUAL(bs::erfcx(aa1), bb, 6);
 
