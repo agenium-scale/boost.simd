@@ -18,7 +18,7 @@ namespace boost { namespace simd { namespace ext
 
    BOOST_DISPATCH_OVERLOAD( hmsb_
                           , (typename A0)
-                          , bs::avx_
+                          , bs::avx2_
                           , bs::pack_<bd::ints8_<A0>, bs::avx_>
                           )
    {
