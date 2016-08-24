@@ -19,7 +19,7 @@
 #include <boost/simd/detail/dispatch/hierarchy/functions.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <cstdint>
-#include <iostream>
+
 namespace boost { namespace simd
 {
   namespace tag
