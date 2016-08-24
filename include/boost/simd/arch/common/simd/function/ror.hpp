@@ -29,6 +29,42 @@ namespace boost { namespace simd { namespace ext
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
 
+  BOOST_DISPATCH_OVERLOAD ( ror_
+                          , (typename A0, typename A1, typename X)
+                          , bd::cpu_
+                          , bs::pack_< bd::unsigned_<A0>, X>
+                          , bd::scalar_< bd::unsigned_<A1> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A0 a1) const
+    {
+      BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "rol : rotation is out of range");
+      using s_t = bd::scalar_of_t<A0>;
+
+      static const A0 width = sizeof(s_t)*CHAR_BIT-1;
+      A0 n = A0(a1);
+      return (a0 >> n) | (a0 << (-n&width));
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( ror_
+                          , (typename A0, typename A1, typename X)
+                          , bd::cpu_
+                          , bs::pack_< bd::arithmetic_<A0>, X>
+                          , bd::scalar_< bd::arithmetic_<A1> >
+  )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0 const&  a0, A1 a1 ) const
+    {
+      using i_t = bd::as_integer_t<A0, unsigned>;
+      using is_t = bd::scalar_of_t<s_t>;
+      return bitwise_cast<A0>( ror ( bitwise_cast<i_t>(a0)
+                                   , is_t(a1)
+                                   )
+                             );
+    }
+  };
+
   BOOST_DISPATCH_OVERLOAD_IF ( ror_
                           , (typename A0, typename A1, typename X)
                           , (detail::is_native<X>)
@@ -37,16 +73,13 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_< bd::integer_<A1>, X>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A0 const& a1
-//  TODO                                   , typename std::enable_if<bs::cardinal_of<A1>::value
-//                                      == bs::cardinal_of<A0>::value>::type* = 0
-                                    ) const
+    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A0 const& a1) const
     {
       using s_t = bd::scalar_of_t<A0>;
       BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "ror : rotation is out of range");
 
       s_t const width = sizeof(s_t)*CHAR_BIT;
-      return shr(a0, a1) | shift_left(a0, (width-splat<A0>(a1)) & (width-1));
+      return shr(a0, a1) | shift_left(a0, (width-bitwise_cast<A0>(a1)) & (width-1));
     }
   };
 
@@ -58,16 +91,13 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_< bd::integer_<A1>, X>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1 const& a1
-//   TODO                                  , typename std::enable_if<bs::cardinal_of<A1>::value
-//                                      == bs::cardinal_of<A0>::value>::type* = 0
-                                    ) const
+    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1 const& a1) const
     {
       using i_t = bd::as_integer_t<A0, unsigned>;
       return bitwise_cast<A0>( ror ( bitwise_cast<i_t>(a0)
-                                            , splat<i_t>(a1)
-                                            )
-                                      );
+                                   , bitwise_cast<i_t>(a1)
+                                   )
+                             );
     }
   };
 } } }
