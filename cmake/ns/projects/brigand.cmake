@@ -27,7 +27,7 @@ NS_project_add(BRIGAND
   STEP_TARGETS   install
   EXCLUDE_FROM_ALL
 
-  ${BRIGAND_OPTIONS}
+  ${NS_CMAKE_PROJECT_OPTIONS} ${BRIGAND_OPTIONS}
 )
 
 add_custom_target(update.brigand

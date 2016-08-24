@@ -29,7 +29,7 @@ NS_project_add(STF
   STEP_TARGETS   install
   EXCLUDE_FROM_ALL
 
-  ${STF_OPTIONS}
+  ${NS_CMAKE_PROJECT_OPTIONS} ${STF_OPTIONS}
 )
 
 add_custom_target(update.stf

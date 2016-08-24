@@ -26,7 +26,7 @@ function(make_unit root)
                   PROPERTY RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/test"
                 )
 
-    if(CMAKE_CROSSCOMPILING_CMD)
+    if (CMAKE_CROSSCOMPILING_CMD)
       add_test( NAME ${test}
                 WORKING_DIRECTORY "${PROJECT_BINARY_DIR}/test"
                 COMMAND ${CMAKE_CROSSCOMPILING_CMD} $<TARGET_FILE:${test}>
@@ -41,6 +41,7 @@ function(make_unit root)
     set_target_properties ( ${test} PROPERTIES
                             EXCLUDE_FROM_DEFAULT_BUILD TRUE
                             EXCLUDE_FROM_ALL TRUE
+                            ${MAKE_UNIT_TARGET_PROPERTIES}
                           )
 
     add_target_parent(${test})

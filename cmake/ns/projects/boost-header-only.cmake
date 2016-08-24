@@ -27,7 +27,7 @@ NS_project_add(BOOST_HEADER_ONLY
   STEP_TARGETS   install
   EXCLUDE_FROM_ALL
 
-  ${BOOST_HEADER_ONLY_OPTIONS}
+  ${NS_CMAKE_PROJECT_OPTIONS} ${BOOST_HEADER_ONLY_OPTIONS}
 )
 
 add_custom_target(update.boost-header-only

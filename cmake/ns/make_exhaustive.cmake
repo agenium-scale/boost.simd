@@ -25,6 +25,7 @@ function(make_exhaustive root)
     set_target_properties ( ${exhaustive} PROPERTIES
                             EXCLUDE_FROM_DEFAULT_BUILD TRUE
                             EXCLUDE_FROM_ALL TRUE
+                            ${MAKE_EXHAUSTIVE_TARGET_PROPERTIES}
                           )
 
     add_target_parent(${exhaustive})

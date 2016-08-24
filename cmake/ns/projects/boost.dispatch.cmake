@@ -27,7 +27,7 @@ NS_project_add(BOOST_DISPATCH
   STEP_TARGETS   install
   EXCLUDE_FROM_ALL
 
-  ${BOOST_DISPATCH_OPTIONS}
+  ${NS_CMAKE_PROJECT_OPTIONS} ${BOOST_DISPATCH_OPTIONS}
 )
 
 add_custom_target(update.boost.dispatch

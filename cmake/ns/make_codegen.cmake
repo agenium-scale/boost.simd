@@ -67,6 +67,7 @@ macro(make_codegen root)
       PROPERTIES
       EXCLUDE_FROM_DEFAULT_BUILD TRUE
       EXCLUDE_FROM_ALL TRUE
+      ${MAKE_CODEGEN_TARGET_PROPERTIES}
     )
 
     add_dependencies(codegen ${codegen})

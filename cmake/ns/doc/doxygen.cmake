@@ -44,15 +44,15 @@ endif()
 add_custom_target(web.clean
   COMMAND ${CMAKE_COMMAND} -E remove *.png *.css *.js *.html
   COMMAND ${CMAKE_COMMAND} -E remove_directory search
-  WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/doc/html
+  WORKING_DIRECTORY ${PROJECT_DOC_DIR}/html
   COMMENT "Cleaning up doc/html"
   VERBATIM
 )
 
 add_custom_target(web.copy
-  COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_BINARY_DIR}/html ${PROJECT_SOURCE_DIR}/doc/html
-  WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/doc/html
-  COMMENT "Copying the documentation from ${CMAKE_CURRENT_BINARY_DIR}/html to ${PROJECT_SOURCE_DIR}/doc/html"
+  COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_BINARY_DIR}/html ${PROJECT_DOC_DIR}/html
+  WORKING_DIRECTORY ${PROJECT_DOC_DIR}/html
+  COMMENT "Copying the documentation from ${CMAKE_CURRENT_BINARY_DIR}/html to ${PROJECT_DOC_DIR}/html"
   DEPENDS doc web.clean
   VERBATIM
 )
@@ -67,7 +67,7 @@ execute_process(
 add_custom_target(web.update
   COMMAND ${GIT_EXECUTABLE} add .
   COMMAND ${GIT_EXECUTABLE} commit -m "Update to ${${PROJECT_NAME}_GIT_SHORT_SHA}"
-  WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/doc/html
+  WORKING_DIRECTORY ${PROJECT_DOC_DIR}/html
   COMMENT "Updating the html branch with freshly built documentation"
   DEPENDS web.copy
   VERBATIM
