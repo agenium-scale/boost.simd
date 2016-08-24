@@ -44,6 +44,10 @@ function(make_unit root)
                             ${MAKE_UNIT_TARGET_PROPERTIES}
                           )
 
+    if (MAKE_UNIT_TARGET_LINK_LIBRARIES)
+        target_link_libraries(${test} ${MAKE_UNIT_TARGET_LINK_LIBRARIES})
+    endif()
+
     add_target_parent(${test})
 
     add_dependencies(unit ${test})

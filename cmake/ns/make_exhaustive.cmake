@@ -27,6 +27,9 @@ function(make_exhaustive root)
                             EXCLUDE_FROM_ALL TRUE
                             ${MAKE_EXHAUSTIVE_TARGET_PROPERTIES}
                           )
+    if (MAKE_EXHAUSTIVE_TARGET_LINK_LIBRARIES)
+        target_link_libraries(${exhaustive} ${MAKE_EXHAUSTIVE_TARGET_LINK_LIBRARIES})
+    endif()
 
     add_target_parent(${exhaustive})
     add_dependencies(exhaustive ${exhaustive})

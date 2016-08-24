@@ -69,6 +69,9 @@ macro(make_codegen root)
       EXCLUDE_FROM_ALL TRUE
       ${MAKE_CODEGEN_TARGET_PROPERTIES}
     )
+    if (MAKE_CODEGEN_TARGET_LINK_LIBRARIES)
+        target_link_libraries(${codegen} ${MAKE_CODEGEN_TARGET_LINK_LIBRARIES})
+    endif()
 
     add_dependencies(codegen ${codegen})
   endforeach()
