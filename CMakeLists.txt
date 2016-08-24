@@ -96,6 +96,10 @@ include_directories(
   ${Boost_INCLUDE_DIRS}
 )
 
+## Extension point for CMake
+## -------------------------------------------------------------------------------------------------
+include(./cmake/extend.cmake)
+
 ## Setup Unit/Bench & Coverage Test
 ## -------------------------------------------------------------------------------------------------
 if (DEFINED DEV)
