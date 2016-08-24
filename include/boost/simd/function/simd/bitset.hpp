@@ -13,6 +13,6 @@
 
 #include <boost/simd/function/scalar/bitset.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/bitset.hpp>
+#include <boost/simd/arch/common/simd/function/bitset.hpp>
 
 #endif

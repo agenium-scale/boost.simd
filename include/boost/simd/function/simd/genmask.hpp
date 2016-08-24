@@ -12,6 +12,7 @@
 
 #include <boost/simd/function/scalar/genmask.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
+#include <boost/simd/arch/common/generic/function/genmask.hpp>
 #include <boost/simd/arch/common/simd/function/genmask.hpp>
 
 #endif

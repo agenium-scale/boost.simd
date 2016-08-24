@@ -15,6 +15,7 @@
 #include <boost/simd/function/std.hpp>
 
 #include <boost/simd/function/scalar/is_gez.hpp>
+#include <boost/simd/function/scalar/rsqrt.hpp>
 #include <boost/simd/detail/math.hpp>
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>

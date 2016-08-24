@@ -13,6 +13,6 @@
 
 #include <boost/simd/function/scalar/cscpi.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/cscpi.hpp>
+#include <boost/simd/arch/common/simd/function/cscpi.hpp>
 
 #endif

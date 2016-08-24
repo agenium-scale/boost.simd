@@ -13,6 +13,6 @@
 
 #include <boost/simd/function/scalar/secpi.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/secpi.hpp>
+#include <boost/simd/arch/common/simd/function/secpi.hpp>
 
 #endif

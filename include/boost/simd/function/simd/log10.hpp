@@ -13,6 +13,6 @@
 
 #include <boost/simd/function/scalar/log10.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/log10.hpp>
+#include <boost/simd/arch/common/simd/function/log10.hpp>
 
 #endif

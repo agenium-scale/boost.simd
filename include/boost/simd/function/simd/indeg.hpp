@@ -13,6 +13,6 @@
 
 #include <boost/simd/function/scalar/indeg.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/indeg.hpp>
+#include <boost/simd/arch/common/simd/function/indeg.hpp>
 
 #endif

@@ -66,6 +66,22 @@ namespace boost { namespace simd { namespace ext
       }
    };
 
+  BOOST_DISPATCH_OVERLOAD_IF ( hypot_
+                          , (typename A0, typename X)
+                          , (detail::is_native<X>)
+                          , bd::cpu_
+                          , bs::fast_tag
+                          , bs::pack_<bd::floating_<A0>, X>
+                          , bs::pack_<bd::floating_<A0>, X>
+                          )
+  {
+
+    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 const& a0, A0 const& a1
+                                    ) const BOOST_NOEXCEPT
+    {
+      return boost::simd::sqrt(bs::fma(a0, a0, sqr(a1)));
+    }
+  };
 } } }
 
 #endif

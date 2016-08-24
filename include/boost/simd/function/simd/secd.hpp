@@ -13,6 +13,6 @@
 
 #include <boost/simd/function/scalar/secd.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/secd.hpp>
+#include <boost/simd/arch/common/simd/function/secd.hpp>
 
 #endif

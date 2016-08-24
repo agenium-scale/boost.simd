@@ -13,6 +13,6 @@
 
 #include <boost/simd/function/scalar/sqrt1pm1.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/sqrt1pm1.hpp>
+#include <boost/simd/arch/common/simd/function/sqrt1pm1.hpp>
 
 #endif

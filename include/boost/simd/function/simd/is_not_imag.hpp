@@ -13,6 +13,6 @@
 
 #include <boost/simd/function/scalar/is_not_imag.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/is_not_imag.hpp>
+#include <boost/simd/arch/common/simd/function/is_not_imag.hpp>
 
 #endif

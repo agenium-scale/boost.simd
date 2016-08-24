@@ -13,6 +13,6 @@
 
 #include <boost/simd/function/scalar/is_real.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/is_real.hpp>
+#include <boost/simd/arch/common/simd/function/is_real.hpp>
 
 #endif

@@ -13,6 +13,6 @@
 
 #include <boost/simd/function/scalar/cot.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/cot.hpp>
+#include <boost/simd/arch/common/simd/function/cot.hpp>
 
 #endif

@@ -13,6 +13,6 @@
 
 #include <boost/simd/function/scalar/atanpi.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/atanpi.hpp>
+#include <boost/simd/arch/common/simd/function/atanpi.hpp>
 
 #endif

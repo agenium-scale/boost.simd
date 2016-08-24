@@ -12,7 +12,7 @@
 #define BOOST_SIMD_FUNCTION_SIMD_LOG_HPP_INCLUDED
 
 #include <boost/simd/function/scalar/log.hpp>
-#include <boost/simd/arch/common/generic/function/log.hpp>
+#include <boost/simd/arch/common/simd/function/log.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 
 #endif

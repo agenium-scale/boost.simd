@@ -13,6 +13,6 @@
 
 #include <boost/simd/function/scalar/sin.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/sin.hpp>
+#include <boost/simd/arch/common/simd/function/sin.hpp>
 
 #endif

@@ -13,6 +13,6 @@
 
 #include <boost/simd/function/scalar/asin.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/asin.hpp>
+#include <boost/simd/arch/common/simd/function/asin.hpp>
 
 #endif

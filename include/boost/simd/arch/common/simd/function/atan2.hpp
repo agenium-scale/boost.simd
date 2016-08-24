@@ -13,7 +13,9 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/as_logical.hpp>
-#include <boost/simd/arch/common/detail/generic/invtrig.hpp>
+#include <boost/simd/arch/common/detail/simd/f_invtrig.hpp>
+#include <boost/simd/arch/common/detail/simd/d_invtrig.hpp>
+#include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/constant/pi.hpp>
 #include <boost/simd/function/simd/divides.hpp>
 #include <boost/simd/function/simd/if_else.hpp>

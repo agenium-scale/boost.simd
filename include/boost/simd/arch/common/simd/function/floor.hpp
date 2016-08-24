@@ -36,7 +36,17 @@ namespace boost { namespace simd { namespace ext
         return if_minus(is_greater(d0,a0),d0,One<A0>());
       }
    };
-
+  BOOST_DISPATCH_OVERLOAD   ( floor_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::generic_< bd::integer_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator()(A0 const& a0) const BOOST_NOEXCEPT
+    {
+      return a0;
+    }
+  };
 } } }
 
 #endif

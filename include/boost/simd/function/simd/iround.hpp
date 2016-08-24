@@ -13,6 +13,6 @@
 
 #include <boost/simd/function/scalar/iround.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/iround.hpp>
+#include <boost/simd/arch/common/simd/function/iround.hpp>
 
 #endif

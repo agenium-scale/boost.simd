@@ -13,6 +13,6 @@
 
 #include <boost/simd/function/scalar/ifloor.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/ifloor.hpp>
+#include <boost/simd/arch/common/simd/function/ifloor.hpp>
 
 #endif

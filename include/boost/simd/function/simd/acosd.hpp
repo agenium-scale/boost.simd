@@ -13,6 +13,6 @@
 
 #include <boost/simd/function/scalar/acosd.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/acosd.hpp>
+#include <boost/simd/arch/common/simd/function/acosd.hpp>
 
 #endif

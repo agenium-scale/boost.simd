@@ -13,6 +13,6 @@
 
 #include <boost/simd/function/scalar/asinpi.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/asinpi.hpp>
+#include <boost/simd/arch/common/simd/function/asinpi.hpp>
 
 #endif
