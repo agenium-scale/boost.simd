@@ -40,7 +40,6 @@ void test(Env& $)
   STF_IEEE_EQUAL(bs::ror(aa1, M-1), dd);
 }
 
-
 STF_CASE_TPL("Check ror on pack and scalar" , STF_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;

@@ -45,16 +45,13 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename A1)
                           , bd::cpu_
                           , bd::scalar_< bd::arithmetic_<A0> >
-                          , bd::scalar_< bd::arithmetic_<A1> >
+                          , bd::scalar_< bd::integer_<A1> >
   )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A1 a1 ) const
     {
       using i_t = bd::as_integer_t<A0, unsigned>;
-      return bitwise_cast<A0>( rol ( bitwise_cast<i_t>(a0)
-                                   , i_t(a1)
-                                   )
-                             );
+      return bitwise_cast<A0>( rol ( bitwise_cast<i_t>(a0), i_t(a1)));
     }
   };
 

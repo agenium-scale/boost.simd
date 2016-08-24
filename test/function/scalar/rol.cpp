@@ -23,7 +23,6 @@ STF_CASE_TPL (" rol integer", STF_INTEGRAL_TYPES)
 
   for(T i=0;i<w;++i)
   {
-    std::cout << int(i) << " -> ";
     STF_EQUAL(rol(T(1),T(i)), T(T(1)<<i) );
   }
 

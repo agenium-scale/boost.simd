@@ -40,11 +40,11 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A0 a1) const
     {
       BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "rol : rotation is out of range");
-      using s_t = bd::scalar_of_t<A0>;
 
-      static const A0 width = sizeof(s_t)*CHAR_BIT-1;
-      A0 n = A0(a1);
-      return (a0 << n) | (a0 >> (-n&width));
+      using s_t = bd::scalar_of_t<A0>;
+      static const A1 width = sizeof(s_t)*CHAR_BIT-1;
+      A1 n(a1);
+      return (shift_left(a0, n)) | (shift_right(a0, (-n&width)));
     }
   };
 
@@ -52,13 +52,13 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename A1, typename X)
                           , bd::cpu_
                           , bs::pack_< bd::arithmetic_<A0>, X>
-                          , bd::scalar_< bd::arithmetic_<A1> >
+                          , bd::scalar_< bd::integer_<A1> >
   )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const&  a0, A1 a1 ) const
     {
-      using i_t = bd::as_integer_t<A0, unsigned>;
-      using is_t = bd::scalar_of_t<s_t>;
+      using i_t  = bd::as_integer_t<A0, unsigned>;
+      using is_t = bd::as_integer_t<i_t, unsigned>;
       return bitwise_cast<A0>( rol ( bitwise_cast<i_t>(a0)
                                    , is_t(a1)
                                    )
@@ -66,12 +66,13 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
+
   BOOST_DISPATCH_OVERLOAD_IF ( rol_
                           , (typename A0, typename A1, typename X)
                           , (detail::is_native<X>)
                           , bd::cpu_
-                          , bs::pack_< bd::integer_<A0>, X>
-                          , bs::pack_< bd::integer_<A1>, X>
+                          , bs::pack_< bd::unsigned_<A0>, X>
+                          , bs::pack_< bd::unsigned_<A1>, X>
                           )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1 const& a1 ) const
@@ -88,7 +89,7 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename A1, typename X)
                           , (detail::is_native<X>)
                           , bd::cpu_
-                          , bs::pack_< bd::floating_<A0>, X>
+                          , bs::pack_< bd::arithmetic_<A0>, X>
                           , bs::pack_< bd::integer_<A1>, X>
   )
   {
