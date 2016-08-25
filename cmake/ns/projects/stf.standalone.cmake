@@ -30,7 +30,7 @@ NS_project_add(STF_STANDALONE
   STEP_TARGETS   configure
   EXCLUDE_FROM_ALL
 
-  ${STF_OPTIONS}
+  ${NS_CMAKE_PROJECT_OPTIONS} ${STF_OPTIONS}
 )
 
 add_custom_target(update.stf.standalone

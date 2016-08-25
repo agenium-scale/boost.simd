@@ -30,7 +30,7 @@ NS_project_add(NS_BENCH_STANDALONE
   STEP_TARGETS   configure
   EXCLUDE_FROM_ALL
 
-  ${NS_BENCH_OPTIONS}
+  ${NS_CMAKE_PROJECT_OPTIONS} ${NS_BENCH_OPTIONS}
 )
 
 add_custom_target(update.ns.bench.standalone

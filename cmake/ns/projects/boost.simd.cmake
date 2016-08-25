@@ -27,7 +27,7 @@ NS_project_add(BOOST_SIMD
   STEP_TARGETS   install
   EXCLUDE_FROM_ALL
 
-  ${BOOST_SIMD_OPTIONS}
+  ${NS_CMAKE_PROJECT_OPTIONS} ${BOOST_SIMD_OPTIONS}
 )
 
 add_custom_target(update.boost.simd

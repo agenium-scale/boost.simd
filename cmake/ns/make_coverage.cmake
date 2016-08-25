@@ -47,7 +47,11 @@ function(make_coverage root)
       set_target_properties ( ${test} PROPERTIES
                               EXCLUDE_FROM_DEFAULT_BUILD TRUE
                               EXCLUDE_FROM_ALL TRUE
+                              ${MAKE_COVERAGE_TARGET_PROPERTIES}
                             )
+      if (MAKE_COVERAGE_TARGET_LINK_LIBRARIES)
+          target_link_libraries(${test} ${MAKE_COVERAGE_TARGET_LINK_LIBRARIES})
+      endif()
 
       add_dependencies(coverage ${test})
 
