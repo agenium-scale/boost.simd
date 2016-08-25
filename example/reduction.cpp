@@ -29,7 +29,7 @@ int main() {
   }
   //! [reduc-scalar]
   std::cout << "Scalar sum = " << sum << std::endl;
-  
+
   //! [reduc-simd-l]
   sum = 0
   bs::pack<int, size> array_pack(array);
@@ -38,7 +38,6 @@ int main() {
   std::cout << "SIMD 1 = " << sum << std::endl;
 
   //! [reduc-simd-o]
-  // Size agnostic SIMD
   sum = 0;
   pack_t sum_p{0};
   for ( size_t i = 0 ; i < size ; i += card_int ){

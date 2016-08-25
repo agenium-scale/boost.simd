@@ -13,15 +13,17 @@ In the following tutorials, we will assume the use of a 128 bit wide _SIMD_ exte
 all of the examples will work on any supported architecture. Depending on your actual architecture, the output of the
 following tutorials applications may vary.
 
-- [SIMD HelloWorld](@ref tutorial-hello)
-- [A Basic SIMD Loop](@ref tutorial-simd-loop)
-- [Reductions](@ref tutorial-reduction)
-- [Processing Data the SIMD Way](@ref tutorial-data)
-- [Runtime Extension Selection](@ref tutorial-runtime)
-
-#TODO: General reduction operations, transforms
-
-#TODO: Aligned memory
+<table align=center width=100%>
+<tr class="empty_row"><th>
+<tr><th> [SIMD HelloWorld](@ref tutorial-hello) <th> [A Basic SIMD Loop](@ref tutorial-simd-loop)
+<tr class="empty_row"><th>
+<tr><th> [Reductions](@ref tutorial-reduction) <th> [Processing Data the SIMD Way](@ref tutorial-data)
+<tr class="empty_row"><th>
+<tr><th> [Runtime Extension Selection](@ref tutorial-runtime) <th> [Transcedental Functions](@ref tutorial-transcendental)
+<tr class="empty_row"><th>
+<tr><th> [Memory Alignment](@ref tutorial-memory) <th> [Distance](@ref tutorial-distance)
+<tr class="empty_row"><th>
+</table>
 
 ### Is it better practice to use a pack as an array?
 

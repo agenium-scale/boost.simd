@@ -1489,3 +1489,7 @@ tbody{
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
+.empty_row{
+  height :10px !important;
+  background-color: #FFFFFF;
+}
