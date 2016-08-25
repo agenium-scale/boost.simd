@@ -20,7 +20,7 @@ namespace boost { namespace simd
   /*!
   @ingroup group-decorator
 
-     grant access to low-evel, low-accuracy intrinsics
+     grant access to low-level, low-accuracy intrinsics
      provided by some SIMD architectures.
 
     @par Semantic
