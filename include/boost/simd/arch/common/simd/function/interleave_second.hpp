@@ -55,11 +55,16 @@ namespace boost { namespace simd { namespace ext
     template<typename... N> static BOOST_FORCEINLINE
     T do_( T const& x, T const& y, aggregate_storage const&, br::list<N...> const&) BOOST_NOEXCEPT
     {
-      auto const& x0 = x.storage()[1];
-      auto const& y0 = y.storage()[1];
+      // This code smells a bit a need to explicitly calls binary slide because of:
+      // https://gcc.gnu.org/bugzilla/show_bug.cgi?id=70887
+      static const int shift = int(sizeof...(N))/4;
+
+      auto x0 = x.storage()[1];
+      auto y0 = y.storage()[1];
+      auto z = Zero<decltype(x0)>();
 
       return  combine ( interleave_first(x0,y0)
-                      , interleave_first(slide<sizeof...(N)/4>(x0), slide<sizeof...(N)/4>(y0))
+                      , interleave_first(slide<shift>(x0,z), slide<shift>(y0,z))
                       );
     }
 

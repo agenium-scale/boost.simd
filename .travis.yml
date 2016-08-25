@@ -10,59 +10,214 @@ language: cpp
 
 matrix:
   include:
+##===================================================================================================
+## Regression
+##==================================================================================================
+## g++ 4.8 AVX
     - os: linux
       compiler: gcc
       addons:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-4.8']
-      env: CXX_STD=11 TOOLSET=g++-4.8 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0
+      env: TOOLSET=g++-4.8 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=regression
 
+## g++ 4.8 SSE4
     - os: linux
       compiler: gcc
       addons:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-4.8']
-      env: CXX_STD=11 TOOLSET=g++-4.8 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0
+      env: TOOLSET=g++-4.8 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=regression
 
-    - os: linux
-      compiler: gcc
-      addons:
-        apt:
-          sources: ['ubuntu-toolchain-r-test']
-          packages: ['g++-4.9']
-      env: CXX_STD=11 TOOLSET=g++-4.9 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0
-
+## g++ 5 AVX
     - os: linux
       compiler: gcc
       addons:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-5']
-      env: CXX_STD=11 TOOLSET=g++-5 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0
+      env: TOOLSET=g++-5 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=regression
 
+## g++ 5 SSE4
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-5']
+      env: TOOLSET=g++-5 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=regression
+
+##===================================================================================================
+## Architecture
+##==================================================================================================
+## g++ 4.8 AVX
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-4.8']
+      env: TOOLSET=g++-4.8 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=architecture
+
+## g++ 4.8 SSE4
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-4.8']
+      env: TOOLSET=g++-4.8 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=architecture
+
+## g++ 5 AVX
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-5']
+      env: TOOLSET=g++-5 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=architecture
+
+## g++ 5 SSE4
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-5']
+      env: TOOLSET=g++-5 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=architecture
+
+##===================================================================================================
+## API
+##==================================================================================================
+## g++ 4.8 AVX
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-4.8']
+      env: TOOLSET=g++-4.8 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=api
+
+## g++ 4.8 SSE4
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-4.8']
+      env: TOOLSET=g++-4.8 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=api
+
+## g++ 5 AVX
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-5']
+      env: TOOLSET=g++-5 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=api
+
+## g++ 5 SSE4
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-5']
+      env: TOOLSET=g++-5 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=api
+
+##===================================================================================================
+## Functions
+##==================================================================================================
+## g++ 4.8 AVX
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-4.8']
+      env: TOOLSET=g++-4.8 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=function
+
+## g++ 4.8 SSE4
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-4.8']
+      env: TOOLSET=g++-4.8 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=function
+
+## g++ 5 AVX
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-5']
+      env: TOOLSET=g++-5 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=function
+
+## g++ 5 SSE4
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-5']
+      env: TOOLSET=g++-5 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=function
+
+##===================================================================================================
+## Constants
+##==================================================================================================
+## g++ 4.8 AVX
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-4.8']
+      env: TOOLSET=g++-4.8 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=constant
+
+## g++ 4.8 SSE4
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-4.8']
+      env: TOOLSET=g++-4.8 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=constant
+
+## g++ 5 AVX
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-5']
+      env: TOOLSET=g++-5 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=constant
+
+## g++ 5 SSE4
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-5']
+      env: TOOLSET=g++-5 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=constant
+
+##===================================================================================================
 # Prepare build
+##===================================================================================================
 before_script:
   - export BOOST_ROOT=build/_install/include
   - mkdir build
   - cd build
-  - cmake .. -DIS_TRAVIS_CI= -DCMAKE_CXX_COMPILER=$TOOLSET -DCMAKE_CXX_FLAGS="$SIMD_EXT $OPT -I$HOME/dispatch/include" -DSIMD_EXT=$SIMD_EXT -DCXX_STD=$CXX_STD -DTOOLSET=$TOOLSET
+  - cmake .. -DIS_TRAVIS_CI= -DCMAKE_CXX_COMPILER=$TOOLSET -DCMAKE_CXX_FLAGS="$SIMD_EXT $OPT -I$HOME/dispatch/include" -DSIMD_EXT=$SIMD_EXT -DTOOLSET=$TOOLSET
 
+##===================================================================================================
 # Build unit and run test
+##===================================================================================================
 script:
   - make update.boost-header-only | grep -v "^-- " # Silent installation
-  - make  -j 4 -k  regression.unit
-  - ctest -j 4 -R ^regression.*.unit
-  - make  -j 4 -k  api.unit
-  - ctest -j 4 -R ^api.*.unit
-  - make  -j 4 -k  architecture.unit
-  - ctest -j 4 -R ^architecture.*.unit
-  - make  -j 4 -k  function.simd.unit
-  - ctest -j 4 -R ^function.simd.*.unit
-  - make  -j 4 -k  constant.simd.unit
-  - ctest -j 4 -R ^constant.simd.*.unit
-  - make  -j 4 -k  function.scalar.unit
-  - ctest -j 4 -R ^function.scalar.*.unit
-  - make  -j 4 -k  constant.scalar.unit
-  - ctest -j 4 -R ^constant.scalar.*.unit
+  - make  -j 4 -k  $TARGETS.unit
+  - ctest -j 4 -R ^$TARGETS.*.unit
