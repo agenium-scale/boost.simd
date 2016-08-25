@@ -27,13 +27,11 @@ void test(Env& $)
   iT b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
-    a1[i] = T(N+i+1);
+    a1[i] = T(i + 1);
      b[i] = bs::lo(a1[i]);
    }
   p_t aa1(&a1[0], &a1[0]+N);
   i_t bb(&b[0], &b[0]+N);
-  std::cout << aa1 << std::endl;
-  std::cout << bb << std::endl;
   STF_EQUAL(bs::lo(aa1), bb);
 }
 
