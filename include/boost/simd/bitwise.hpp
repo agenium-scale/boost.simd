@@ -18,7 +18,7 @@ namespace boost { namespace simd
     @ingroup group-functions
     @defgroup group-bitwise Bitwise functions
 
-      Those functions provide scalar and SIMD algorithms for bit manipulations and bitwise
+      These functions provide scalar and SIMD algorithms for bit manipulations and bitwise
       operators. Bitwise operations are provided along more specific ones like bit-level rotations,
       bit set, get and toggling and mapping for compiler-specific first bit set or population count
       operations.
