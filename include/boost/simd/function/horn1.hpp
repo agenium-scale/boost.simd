@@ -46,7 +46,7 @@ namespace boost { namespace simd
     This function evaluates the polynomial of degree n, whose increasing degrees
     coefficients are given by  C(0), C(1), ..., C(n-1), 1:
 
-      \$f x^n+\sum_0^{n-1} C(i)x^i \f$
+      \f$ x^n+\sum_0^{n-1} C(i)x^i \f$
 
     This differs from @ref horn only by the fact that the leading polynomial
     coefficient is one, saving one multiplication.

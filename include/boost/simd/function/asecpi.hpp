@@ -20,7 +20,7 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing asecpi capabilities
 
-     inverse secant in degree.
+     inverse secant in \$f\pi\$f multiples.
 
     @par Semantic:
 

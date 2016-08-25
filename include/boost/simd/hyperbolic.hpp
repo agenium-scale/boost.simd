@@ -31,7 +31,7 @@ namespace boost { namespace simd
        </center>
 
           @ref sinhc is the hyperbolic sinus cardinal function
-          (\f$\frac{\sinh x}{x}\f$).
+          (\f$\sinh x/x\f$).
 
           @ref sinhcosh  allows the simultaneous
           computation of hyperbolic sine and cosine at lower cost.

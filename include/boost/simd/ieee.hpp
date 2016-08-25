@@ -19,7 +19,7 @@ namespace boost { namespace simd
     @defgroup group-ieee Ieee functions
 
       These functions provide scalar and SIMD algorithms for inspecting, generating or
-      decomposing IEEE 754 floating point numbers. Operationssuch as exponent and mantissa
+      decomposing IEEE 754 floating point numbers. Operations such as exponent and mantissa
       extraction, floating point modulo, IEEE bit patterns manipulation and magnitude comparison
       are provided.
 

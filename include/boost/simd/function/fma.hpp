@@ -46,14 +46,14 @@ namespace boost { namespace simd
     wired capability).
 
     If you need conformant fma capabilities in all circumstances in your own
-    code you can use correct_fma or the std_ decorator
+    code you can use the conformant_ or  std_ decorator
     (although both can can be very expansive).
 
      @par Decorators
 
     - std_ for floating entries to call directly std::fma. This implies conformant fma behaviour,
     but in no way improved performances.
-    - conformant_ ensures the fma properties and SIMD acceleration if available.
+    - conformant_ ensures the fma properties and allows SIMD acceleration if available.
 
     @see fms, fnma, fnms
   **/

@@ -42,7 +42,7 @@ namespace boost { namespace simd
 
   **/
 
-  as_integer_t<Value> iround2even(Value const& x);
+  as_integer_t<Value> inearbyint(Value const& x);
 } }
 #endif
 

@@ -46,7 +46,7 @@ namespace boost { namespace simd
     This function evaluates the polynomial of degree n, whose increasing degrees
     coefficients are given by  C(0), C(1), ..., C(n) :
 
-      \$f\sum_0^n C(i)x^i\f$
+      \f$\sum_0^n C(i)x^i\f$
 
   **/
   template<typename T> auto horn(T const& x) {}
