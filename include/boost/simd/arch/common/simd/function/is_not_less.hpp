@@ -32,7 +32,7 @@ namespace boost { namespace simd { namespace ext
    {
       BOOST_FORCEINLINE bs::as_logical_t<A0> operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
-        auto r = logical_not(is_not_less(a0,a1));
+        auto r = logical_not(is_less(a0,a1));
         #ifndef BOOST_SIMD_NO_NANS
         r = logical_and(r, is_ord(a0, a1));
         #endif
