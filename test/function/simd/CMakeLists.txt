@@ -277,6 +277,8 @@ repeat_lower_half.cpp
 repeat_upper_half.cpp
 reversebits.cpp
 reverse.cpp
+rol.cpp
+ror.cpp
 round.cpp
 nearbyint.cpp
 rsqrt.cpp
