@@ -62,9 +62,9 @@ namespace boost { namespace simd
      -  If x is \f$+\infty\f$ and y is finite and negative, -0 is returned
      -  If either x is Nan or y is Nan, Nan is returned
 
-    - If you want to gain some cycles the fast_ decorator can be used. If you use it,
-      pairs (x, y)  where both are null or both are infinite will produce a Nan result which in fact
-      is not more absurd than the IEEE choices and will be conforming in all other cases.
+    - The fast_ decorator may be used when speed is of essence. In this case, if
+      x and y are both either null or infinite, this function will return a Nan result which in fact
+      is not more absurd than the IEEE choices. It will be conforming in all other cases.
 
     @par Decorators
 
