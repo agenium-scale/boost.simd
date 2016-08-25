@@ -20,14 +20,15 @@ namespace boost { namespace simd
 
     These functions provides scalar and SIMD version of the native C and C++ operators.
 
-    Operators are provided in infix and prefix notations,  with exceptions for scalar floating types
-    for which C++ does not allow overloading nor implement &, |, ~,  % and the ternary operator ?:.
-    In These seldom used cases prefix  bitwise_and, bitwise_or, complement
-    and if_else are mandatory.
+    Operators are provided in infix and prefix notations, except for scalar floating types
+    as C++ does not allow overloading of operators for these types. Operators &, |, ~,  % and
+    the ternary operator ?: are also not defined for floating types in C++.
+    In these seldomly used cases, prefix bitwise_and, bitwise_or, complement
+    and if_else are required.
 
     Here is the list of of operators and their infix associated notation.
-    The remarks only applies if the prefix notation is used and at least one parameter is a pack:
-    of course infix operators on scalars are regulated by usual C++ langage rules.
+    These remarks are only valid if the prefix notation is used and at least one parameter is a pack:
+    otherwise infix operators on scalars are regulated by usual C++ langage rules.
 
     <center>
     | Name                    | op  | arity |   types      |  precondition/result                          |
@@ -63,16 +64,16 @@ namespace boost { namespace simd
      - (1)  This precisely means sizeof(T1) == sizeof(T2) or one is scalar and its size in bits is the same as
            the element of the other (which is a pack).
 
-     - (2)  arithmetic types are std::int8_t, std::int16_t, std::int32_t, std::int64_t,
-           std::uint8_t, std::uint16_t, std::uint32_t, std::uint64_t, float, double and their pack.
+     - (2)  arithmetic types are defined as std::int8_t, std::int16_t, std::int32_t, std::int64_t,
+           std::uint8_t, std::uint16_t, std::uint32_t, std::uint64_t, float, double and packs of these.
 
            The use of implementation dependent types as char, int, long, long long and their unsigned conterpart
-           is discouraged and even can lead to inconsistencies.
+           is discouraged and even may lead to inconsistent behaviour.
 
-           Also it must be noted that "arithmetic" operators cannot mix types. This is to ensure good SIMD
-           performances if the types are hardware supported.
+           Also it must be noted that "arithmetic" operators cannot mix types. This is to ensure correct SIMD
+           performance if the operation is supported by hardware.
 
-     - (3)  This  precisely means T2 is scalar and integral or T2 is as_integer_t<T1>. Note that if T2 scalar
+     - (3)  This precisely means T2 is both scalar and of integral type or T2 is as_integer_t<T1>. Note that if T2 scalar
            is always simd hardware supported, the other case is often emulated.
 
    Extensions:
