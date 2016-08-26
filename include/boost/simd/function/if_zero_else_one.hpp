@@ -24,7 +24,7 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of type C:
+    For every parameters of type @c C:
 
     @code
     T r = if_zero_else_one(cond);
@@ -33,7 +33,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T r =  cond ? Zero :  One;
+    T r =  cond ? Zero : One;
     @endcode
 
     @par Note:

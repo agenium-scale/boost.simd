@@ -23,7 +23,7 @@ namespace boost { namespace simd
     Returns a mask of bits. All ones if the
     input element is non @ref Zero else all zeros.
 
-    This is a convenient alias of @ref genmask
+    This is a convenience alias of @ref genmask
   **/
   Value if_allbits_else_zero(Value const & v0);
 } }

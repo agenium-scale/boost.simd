@@ -55,7 +55,7 @@ namespace boost { namespace simd
 
         All branching utilities begin by if_ or ifnot_. The first parameter is a SIMD test
         pack which may be of any available type. This test pack is used to determine which branch
-        will be selected for each element of the result vector. Non-zero elements are consdiered as true
+        will be selected for each element of the result vector. Non-zero elements are considered as true
         and zero elements as false. The result of each branch is given in the following parameters
         either implicitly or explicitly.
 

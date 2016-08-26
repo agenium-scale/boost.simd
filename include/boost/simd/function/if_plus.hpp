@@ -26,7 +26,7 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of types respectively C, T, T:
+    For every parameters @c c of type @c C and @c, @c y of type @c T:
 
     @code
     T r = if_plus(cond,x,y);
@@ -38,7 +38,7 @@ namespace boost { namespace simd
     T r = cond ? x+y : x;
     @endcode
   **/
-  Value if_plus(Value const& c, Value const& x, Value const& y)
+  Value if_plus(Value const& c, Value const& x, Value const& y);
 
   //@overload
   Value if_plus(LogicalValue const& c, Value const& x, Value const& y);

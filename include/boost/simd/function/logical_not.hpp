@@ -28,10 +28,10 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of type T0
+    For every parameter of type @c T
 
     @code
-    as_logical_t<T0> r = logical_not(x);
+    as_logical_t<T> r = logical_not(x);
     @endcode
 
     is similar to:

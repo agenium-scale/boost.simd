@@ -26,18 +26,20 @@ namespace boost { namespace simd
 
     Infix notation can be used with operator '||'
 
+    @warningbox{Take care that using && in scalar mode does short-circuit and does not in simd mode.}
+
     @par Semantic:
 
-    For every parameters of types respectively T1, T2:
+    For every parameters of types respectively @c T0, @c T1:
 
     @code
-    as_logical_t<T1> r = logical_or(x,y);
+    as_logical_t<T0> r = logical_or(x,y);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<T1> r = x || y;
+    as_logical_t<T0> r = x || y;
     @endcode
 
     @see  logical_and, logical_xor, logical_notand,

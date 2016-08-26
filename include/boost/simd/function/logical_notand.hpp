@@ -28,7 +28,7 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of types respectively T0, T1:
+    For every parameters of types respectively @c T0, @c T1:
 
     @code
     as_logical_t<T0> r = logical_notand(x,y);

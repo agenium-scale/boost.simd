@@ -25,7 +25,7 @@ namespace boost { namespace simd
     of elements as the first parameter
     Infix notation can be used with operator '<<'
 
-    This is a convenient alias of @ref shift_left
+    This is a convenience alias of @ref shift_left
   **/
   Value shl(Value const & v0, IntegerValue const& n);
 } }
