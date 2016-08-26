@@ -11,6 +11,7 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_REM_PIO2_CEPHES_HPP_INCLUDED
 
 #include <boost/simd/function/definition/rem_pio2_cephes.hpp>
+#include <boost/simd/arch/common/generic/function/rem_pio2_cephes.hpp>
 #include <boost/simd/arch/common/scalar/function/rem_pio2_cephes.hpp>
 
 #endif
