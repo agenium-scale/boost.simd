@@ -14,7 +14,8 @@ In this tutorial we will:
 - [Introduce the Boost.SIMD vectorized versions of standard library functions](#distance-intro)
 - [Demonstrate how to achieve significant speed up of expensive calculations using Boost.SIMD](#distance-simd)
 - [Show you how to use data which is not in the required order](#distance-interleave)
-- [Demonstrate the speed up achieved using Boost.SIMD](#distance-speed-up)
+- [Show how to measure the speed up achieved using Boost.SIMD](#distance-speed-up)
+- [Introduce detailed performance analysis](#distance-performance-analysis)
 
 @section distance-intro Distance between two points
 
@@ -76,3 +77,74 @@ This is done as follows:
 
 @snippet distance.cpp distance-interleave
 
+@section distance-speed-up Measuring the speed up
+If you decide to develop software using **Boost.SIMD**, performance is clearly
+very important to you. Therefore, it is necessary to be able to accurately measure
+the speed-up achieved. In thsi example, we measure the time taken for the main
+calculation loop using the timing utilities provided by `std::chrono`. Where available,
+these functions use hardware timers.
+
+@snippet distance.cpp distance-time
+
+The speed-up can be then calculated by dividing the time taken for the scalar loop
+by the time taken by the __SIMD__ loop. There are several factors to consider
+when measuring the performance of code. Firstly, you should ensure that the size of
+the input data is sufficient to fill the CPU cache. Otherwise, the cache will be "hot"
+one entering the second loop. This means that all of the data required to complete
+the calculation will already be loaded into the cache, significantly accelerating the
+execution of the loop. You shoudl also run the code several times and take the average
+of the execution times, as this may vary significantly between runs for many reasons.
+In general, we are interested in the typical runtime of a section of code.
+
+@section distance-performance-analysis Performance analysis
+
+This code was run on an x86 machine with an Intel Xeon CPU E3-1240 v3 @ 3.40GHz. It was
+compiled using g++-4.9 with all optimizations enabled and with the flag -msse4.2. A sample
+size of 1024000 was used.
+
+<table align=center width=25% class="table-striped table-bordered">
+<tr><th>Loop                <th>Time (\f$\mu s\f$)
+<tr><td>Scalar              <td>3894
+<tr><td>SIMD                <td>846
+<tr><td>SIMD Interleaved    <td>859 
+</table>
+
+An SSE vector contains four floats. Therefore, we should expect the speed-up to
+a maximum of four. However, it is quicker then that. A possible explanation for
+this is given in the next paragraph. The code was then re-compiled for AVX2 
+using -mavx2 flag with the following results:
+
+<table align=center width=25% class="table-striped table-bordered">
+<tr><th>Loop                <th>Time (\f$\mu s\f$)
+<tr><td>Scalar              <td>3868
+<tr><td>SIMD                <td>856
+<tr><td>SIMD Interleaved    <td>1407
+</table>
+
+Firstly, we note that as expected the scalar loop took approximately the same time
+as for sse4.2. However, we would expect that both __SIMD__ loops would execute in
+half of the time as on SSE4.2 as the register size is twice as large in AVX equipped
+machines. In this case, the time taken is constant. There are several explanations
+for this. Firstly, the SSE4.2 code was executed on an AVX equipped processor. Modern
+processors are very sophisticated, and often they can "upgrade" SSE instruction to
+its equivalent AVX instruction, if available. Therefore, the code may run twice
+as fast as predicted. The conclusion of this is that it is not possible to accurately
+measure the performance of SSE code on an AVX machine. So this begs the questions,
+why was the SSE code not 8 times faster than the scalar code. Take for example the
+SSE add intrinsic, which adds two SSE vectors, thus 4 floats in one instruction. Every
+processor instruction has a latency and a throughput, which for Intel processor are
+given in the Intel Intrinsics Guide. The latency and throughput for add for example
+is not necessarily equal to that for the scalar add instruction. Therefore, the use
+of the __SIMD__ intrinsics does not necessarily result in a 4 times speed-up.
+
+We also can see that the __SIMD__ interleave loop took signicantly longer on AVX then on SSE. The reason
+for this lies in the functions supported by AVX processors. Not all SSE functions
+are supported by AVX processors, in this case, there is no corresponding deinterleave
+first and second intrinsic on AVX/. Therefore, **Boost.SIMD** splits the avx vector
+into two SSE vectors before performing the deinterleave operation. It is for this reason
+that the code takes longer to execute on AVX than on SSE.
+
+@section distance-full-code Full code
+Here is the full code, should you wish to compile it:
+
+@snippet distance.cpp distance-all
