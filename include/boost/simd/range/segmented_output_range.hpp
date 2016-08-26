@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_RANGE_SEGMENTED_OUTPUT_RANGE_HPP_INCLUDED
 #define BOOST_SIMD_RANGE_SEGMENTED_OUTPUT_RANGE_HPP_INCLUDED
 
+#include <boost/simd/range/detail/segmented_range.hpp>
 #include <boost/simd/range/aligned_output_range.hpp>
 #include <boost/align/align_up.hpp>
 #include <boost/range/iterator_range.hpp>
@@ -46,26 +47,11 @@ namespace boost { namespace simd
             >
   inline segmented_output_range( Iterator b, Iterator e )
   {
-    // Expected alignment
-    auto alg = pack<typename std::iterator_traits<Iterator>::value_type,C>::alignment;
-
-    // Compute the pointer to the beginning of the aligned zone inside r
-    auto const* ptr     = &(*b);
-    auto const* new_ptr = reinterpret_cast<decltype(ptr)>
-                          ( alignment::align_up ( reinterpret_cast<std::size_t>(ptr)
-                                                , alg
-                                                )
-                          );
-
-    std::size_t dz = std::distance(b,e);
-    std::size_t db = std::distance(ptr,new_ptr);
-    std::size_t sz = (dz>=db) ? C*((dz-db)/C) : 0u;
-
-    // Build the segmented stuff
-    return std::make_tuple( make_iterator_range (b                    , b+std::min(dz,db) )
-                          , aligned_output_range(b+db                 , b+db+sz           )
-                          , make_iterator_range (std::min(b+db+sz, e) , e                 )
-                          );
+    return detail::segmented_range<C, detail::aligned_output_iterator<Iterator>>
+      ( b
+      , e
+      , [](Iterator bb, Iterator ee) { return aligned_output_range(bb, ee); }
+      );
   }
 
   /// @overload
