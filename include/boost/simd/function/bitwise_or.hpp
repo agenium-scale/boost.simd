@@ -30,7 +30,7 @@ namespace boost { namespace simd
     operand is floating point because of C++ limitations.
 
     @par semantic:
-    For any given value @c x, of type @c T0 @c y of type @c T1
+    For any given value @c x, of type @c T0, @c y of type @c T1
     of same memory size:
 
     @code

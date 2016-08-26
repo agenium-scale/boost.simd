@@ -37,8 +37,8 @@ namespace boost { namespace simd
       sizeof(T) == sizeof(Target)
       @endcode
 
-      @tparam Target Target type to cast toward
-      @param  x Value to cast
+      @tparam Target @c Target type to cast toward
+      @param  @c x Value to cast
 
       @return A value of type @c Target which is bit-equivalent to @c x.
     **/

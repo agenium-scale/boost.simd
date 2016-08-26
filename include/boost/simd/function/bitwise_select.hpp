@@ -24,6 +24,8 @@ namespace boost { namespace simd
     or third operand according to the setting of the bits
     of the first operand
 
+    The operands must share the same bit size and number of elements.
+
     @par semantic:
     For any given value @c sel of type @c SEL, @c x of type @c T0 and @c y of type @c T1
     of same memory size:

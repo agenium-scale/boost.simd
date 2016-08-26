@@ -24,7 +24,7 @@ namespace boost { namespace simd
     by the value of the second entry.
 
     @par semantic:
-    For any given value @c x of type @c T, n  of type @c I:
+    For any given value @c x of type @c T, @c n  of type @c I:
 
     @code
     T r = rol(x, n);
@@ -36,7 +36,7 @@ namespace boost { namespace simd
     @see  ror, rrol, rror
 
   **/
-  Value rol(Value const & v0, IntegerValue const& n);
+  Value rol(Value const & x, IntegerValue const& n);
 } }
 #endif
 

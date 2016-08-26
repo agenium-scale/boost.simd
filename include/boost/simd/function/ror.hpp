@@ -24,7 +24,7 @@ namespace boost { namespace simd
     by the value of the second entry.
 
     @par semantic:
-    For any given value @c x of type @c T, n  of type @c I:
+    For any given value @c x of type @c T, @c n  of type @c I:
 
     @code
     T r = ror(x, n);

@@ -32,7 +32,7 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of types respectively T0, T1:
+    For every parameters of  @c x of type @c T0,  @c y of type @c T1:
 
     @code
     T0 r = bitwise_and(x,y);

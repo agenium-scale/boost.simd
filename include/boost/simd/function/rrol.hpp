@@ -25,7 +25,7 @@ namespace boost { namespace simd
     according to its sign.
 
     @par semantic:
-    For any given value @c x of type @c T, n  of type @c I:
+    For any given value @c x of type @c T, @c n  of type @c I:
 
     @code
     T r = rrol(x, n);

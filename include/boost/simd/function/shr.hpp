@@ -25,15 +25,11 @@ namespace boost { namespace simd
     the result is not defined.
 
     @par semantic:
-    For any given value @c x of type @c T, n  of type @c I:
+    For any given value @c x of type @c T,  @c n  of type @c I:
 
     @code
     T r = shr(x, n);
     @endcode
-
-    @par Alias:
-
-    @c shri
 
     @see  shift_right, shift_left, rshl, rshr, rol, ror
 
