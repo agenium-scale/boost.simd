@@ -25,13 +25,13 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    T r = successor(x,n);
+    auto r = successor(x,n);
     @endcode
 
-    computes the @c n-th least representable value strictly greater than x in its type.
+    If n is null returns x else computes the @c n-th least representable value strictly greater than x in its type.
     n must be positive or null.
 
-    For integer it saturate at @ref Valmax, for floating point numbers, all @ref Inf
+    For integer it saturate at @ref Valmax. For floating point numbers, all @ref Inf
     strict successors are @ref Nan.
 
   **/

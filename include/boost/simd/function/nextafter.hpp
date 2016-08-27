@@ -25,7 +25,7 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    T r = nextafter(x, y);
+    auto r = nextafter(x, y);
     @endcode
 
     is similar to:

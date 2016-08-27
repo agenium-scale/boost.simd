@@ -25,15 +25,16 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    T r = maxnummag(x,y);
+    auto r = maxnummag(x,y);
     @endcode
 
     is similar to:
 
     @code
-    T r = isnan(x) ? y : (isnan(y) ? x : maxmag(x, y));
+    auto r = is_nan(x) ? y : (is_nan(y) ? x : maxmag(x, y));
     @endcode
 
+    @see maxmag, is_nan
   **/
   Value maxnummag(Value const & x, Value const& y);
 } }

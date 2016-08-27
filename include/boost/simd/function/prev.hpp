@@ -20,17 +20,31 @@ namespace boost { namespace simd
     @ingroup group-ieee
     Function object implementing prev capabilities
 
-    Returns the greatest representable value  strictly less than the parameter
+    Returns if it exists the greatest representable value  strictly less than the parameter
 
     @par Semantic:
 
     @code
-    T r = prev(x);
+    auto r = prev(x);
     @endcode
 
-    computes the greatest value strictly less than x in type T
+   @par Note
 
-    @see next, nextafter, successor, predecessor
+    - for entries of floating types
+
+       - prev(Valmin) is Minf
+
+       - prev(Inf) is Valmax
+
+       - prev(Minf) is Minf
+
+       - prev(Nan) is Nan
+
+    - for entries of integral type
+
+      - prev(Valmin) is Valmax
+
+    @see prev, nextafter, successor, predecessor
 
   **/
   Value prev(Value const & v0);

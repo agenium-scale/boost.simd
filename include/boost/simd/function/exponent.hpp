@@ -24,6 +24,8 @@ namespace boost { namespace simd
 
     @par Semantic:
 
+    for any parameter @c x of floating type @c T
+
     @code
     as_integer_t<T> r = exponent(x);
     @endcode
@@ -37,7 +39,7 @@ namespace boost { namespace simd
     @par Note:
 
      The sign \f$ \pm \f$ , exponent e and mantissa m of a floating point entry x are related by
-    x = \f$\pm m\times 2^e\f$, with m between one (included) and two (excluded).
+    x = \f$\pm m\times 2^e\f$, with m \f$\in[1, 2[\f$.
 
     For integral type inputs exponent is always 0 and mantissa reduces to identity.
 

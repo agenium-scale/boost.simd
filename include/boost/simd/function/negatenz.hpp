@@ -27,13 +27,13 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    T r = negatenz(x,y);
+    auto r = negatenz(x,y);
     @endcode
 
     is similar to:
 
     @code
-    T r = x*signnz(y);
+    auto r = x*signnz(y);
     @endcode
 
     @par Note

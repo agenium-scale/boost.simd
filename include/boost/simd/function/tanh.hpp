@@ -20,22 +20,17 @@ namespace boost { namespace simd
     @ingroup group-hyperbolic
     Function object implementing tanh capabilities
 
-    Returns the hyperbolic tangent: \f$\frac{\sinh(x)}{\cosh(x)}\f$.
+    Returns the hyperbolic tangent: \f$\sinh(x)/\cosh(x)\f$.
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type @c T
 
     @code
     T r = tanh(x);
     @endcode
 
-    is similar to:
-
-    @code
-    T r = sinh(x)/cosh(x);
-    @endcode
-
+    @see sinh,  cosh
   **/
   Value tanh(Value const & v0);
 } }

@@ -24,14 +24,16 @@ namespace boost { namespace simd
 
     @par Semantic:
 
+    For every parameter @c x of type @c T
+
     @code
-    I r = sbits(x);
+    auto r = sbits(x);
     @endcode
 
     is similar to:
 
     @code
-    I r = bitwise_cast<as_integer_t<T,signed>>(x);
+    auto r = bitwise_cast<as_integer_t<T,signed>>(x);
     @endcode
 
   **/

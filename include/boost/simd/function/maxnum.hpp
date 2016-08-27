@@ -25,17 +25,17 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    T r = maxnum(x,y);
+    auto r = maxnum(x,y);
     @endcode
 
     is similar to:
 
     @code
-    T r = (is_nan(x) ? y : (isnan(y) ? x : max(x, y));
+    auto r = (is_nan(x) ? y : (isnan(y) ? x : max(x, y));
     @endcode
 
     @par Alias:
-    @c fmax
+     fmax
 
     With the std_ decorator std_(maxnum)(x, y) calls the stdlibc++ function std::fmax.
 

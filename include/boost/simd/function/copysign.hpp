@@ -25,17 +25,19 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    T r = copysign(x,y);
+    auto r = copysign(x,y);
     @endcode
 
     is similar to:
 
     @code
-    T r = (y >= 0) ? abs(x) : -(abs(x));
+    auto r = is_positive(y) ? abs(x) : -(abs(x));
     @endcode
 
+    @see abs, is_positive;
+
   **/
-  Value copysign(Value const & v0, Value const& v1);
+  Value copysign(Value const & x, Value const& y);
 } }
 #endif
 

@@ -24,16 +24,10 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type @c T
 
     @code
     T r = asinh(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r =  log(x+sqrt(inc(sqr(x))));
     @endcode
 
     @see log, sqrt, sinh, inc

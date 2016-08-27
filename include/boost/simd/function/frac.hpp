@@ -25,16 +25,16 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    T r = frac(x);
+    auto r = frac(x);
     @endcode
 
     is similar to:
 
     @code
-    T r =  x-trunc(x);
+    auto r =  x-trunc(x);
     @endcode
 
-    @see trunc,  modf
+    @see trunc, modf
 
   **/
   Value frac(Value const & v0);

@@ -20,15 +20,29 @@ namespace boost { namespace simd
     @ingroup group-ieee
     Function object implementing next capabilities
 
-    Returns the smallest representable value  strictly greater than the parameter
+    Returns if it exists the smallest representable value  strictly greater than the parameter
 
     @par Semantic:
 
     @code
-    T r = next(x);
+    auto r = next(x);
     @endcode
 
-    computes the smallest value strictly greater than x in type T
+    @par Note
+
+    - for entries of floating types
+
+       - next(Valmax) is Inf
+
+       - next(-Inf) is Valmin
+
+       - next(Inf) is Inf
+
+       - next(Nan) is Nan
+
+    - for entries of integral type
+
+      - next(Valmax) is Valmin
 
     @see nextafter, prev, successor, predecessor
 

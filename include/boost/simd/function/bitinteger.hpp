@@ -22,28 +22,23 @@ namespace boost { namespace simd
 
     Transforms a floating point value in a pattern of bits
     stored in an integer with different formulas according to
-    the floating point @ref bitofsign (the converse of @ref bitfloating)
+    the floating point @ref bitofsign.
+
+    This function is the converse of @ref bitfloating.
 
     @par Semantic:
+
+    for any parameter @c x of floating type @c T
 
     @code
      as_integer_t<T> r = bitinteger(x);
     @endcode
 
-    is similar to:
-
-    @code
-      as_integer_t<T> r =
-         (is_positive(x) ?
-           bitwise_cast<as_integer_t<T>>(x) :
-           Signmask<as_integer_t<T>>()-bitwise_cast<as_integer_t<T>>(x);
-    @endcode
-
     @par Note:
-    This is an utility function related to the computation of floating
+    This is an internally used utility function related to the computation of floating
     successors or predecessors
 
-    @see next, prev, successor,  predecessor,  nextafter
+    @see next, prev, successor,  predecessor,  nextafter, bitfloating
 
   **/
   as_integer_t<T> bitinteger(Value const & v0);

@@ -40,9 +40,6 @@ namespace boost { namespace simd
     - log10(x) return Nan for negative enties (peculiarly Mzero
     for floating numbers).
 
-    - The call log10(x, assert_) asserts is x is negative (peculiarly
-    take care that it asserts for Mzero but not Zero in case of floating numbers)
-
     @par Decorators
 
     std_ for floating entries

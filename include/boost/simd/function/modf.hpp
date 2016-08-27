@@ -25,20 +25,14 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    T t = modf(x, f);
+    std::pair<T,T> p = modf(x);
     @endcode
 
-    is similar to:
+     is similar to:
 
     @code
     T t = trunc(x);
     T f = frac(x);
-    @endcode
-
-    The following call may also be used
-
-    @code
-    std::pair<T,T> p = modf(x);
     @endcode
 
     @see frac,  trunc

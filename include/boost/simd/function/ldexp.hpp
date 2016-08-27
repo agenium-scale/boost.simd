@@ -23,19 +23,20 @@ namespace boost { namespace simd
     The function multiply a floating entry \f$x\f$
     by \f$2^{n}\f$
 
-    @ref cardinal_of the types of x and n must be identical
 
     @par Semantic:
 
     @code
-    T r = ldexp(x,n);
+    auto r = ldexp(x,n);
     @endcode
 
     is similar to:
 
     @code
-    T r = x*pow(2, n);
+    auto r = x*pow(2, n);
     @endcode
+
+    The @ref cardinal_of value of the types of @c x and @c n must be identical
 
   **/
   Value ldexp(Value const & x, Value const& n);

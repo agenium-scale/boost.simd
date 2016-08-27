@@ -22,6 +22,10 @@ namespace boost { namespace simd
     Categorizes floating point value arg into the following categories:
     zero, subnormal, normal, infinite, NAN, or implementation-defined category.
 
+    @code
+    auto r = fpclassify(x);
+    @endcode
+
     This function is similar to std::fpclassify,  but the return type
     is the integral signed type associated to the floating input type.
 

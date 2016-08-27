@@ -23,18 +23,13 @@ namespace boost { namespace simd
     Returns the sign of x. i.e. -1, 0 or 1, according
     x is less than @ref Zero, @ref Zero or greater than @ref Zero.
 
-    For floating,  the sign of @ref Nan is @ref Nan
+    For floating,  the sign of @ref Nan is @ref Nan,
+    the sign of @ref Mzero is also @ref Zero.
 
     @par Semantic:
 
     @code
-    T r = sign(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = (x > 0) ? T(1) : ((x < 0) ? T(-1) : ((x == 0) ? 0 : Nan<T>()));
+    auto r = sign(x);
     @endcode
 
     @see signnz, is_negative, is_positive,  bitofsign

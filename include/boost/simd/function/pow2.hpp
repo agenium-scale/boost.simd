@@ -40,7 +40,7 @@ namespace boost { namespace simd
     @see exp2, trunc, ldexp
 
   **/
-  Value posmin(Value const & v0, Value const& y);
+  Value pow2(Value const & v0, Value const& y);
 } }
 #endif
 
