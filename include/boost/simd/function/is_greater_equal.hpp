@@ -26,22 +26,17 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of types respectively T0, T1:
-
     @code
-    as_logical_t<T0> r = is_greater_equal(x,y);
+    auto r = is_greater_equal(x,y);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<T0> r = x >= y;
+    auto r = x >= y;
     @endcode
 
-    @par Alias:
-    @c ge, @c is_ge
-
-    @see  is_greater, is_gez, is_nge, is_nge
+    @see  is_greater, is_gez
 
   **/
   as_logical_t<Value> is_greater_equal(Value const& x, Value const& y);

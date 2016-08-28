@@ -31,13 +31,13 @@ namespace boost { namespace simd
     For every parameter of type @c T
 
     @code
-    as_logical_t<T> r = logical_not(x);
+    auto r = logical_not(x);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<T0> r =!x;
+    auto r =!x;
     @endcode
 
     @see  logical_or, logical_xor, logical_notand,

@@ -27,16 +27,14 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of types respectively T:
-
     @code
-    as_logical_t<T> r = mask2logical(x);
+    auto r = mask2logical(x);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<T> r = (x == Allbits) ? True : (x == Zero) ? False : assert;
+    auto r = (x == Allbits) ? True : (x == Zero) ? False : assert;
     @endcode
 
   **/

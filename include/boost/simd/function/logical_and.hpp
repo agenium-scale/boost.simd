@@ -30,16 +30,14 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of types respectively @c T0, @c T1:
-
     @code
-    as_logical_t<T0> r = logical_and(x,y);
+    auto r = logical_and(x,y);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<T0> r = x && y ;
+    auto r = x && y ;
     @endcode
 
 

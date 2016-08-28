@@ -25,24 +25,19 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    as_logical_t<T> r = is_not_greater_equal(x,y);
+    auto r = is_not_greater_equal(x,y);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<T> r = !(x >= y);
+    auto r = !(x >= y);
     @endcode
 
     @par Note:
 
-    Due to existence of nan, this is not equivalent to @c is_less(x)
+    Due to existence of nan, this is not equivalent to is_less(x)
     for floating types
-
-    @par Alias:
-
-    @c is_nge
-
   **/
   as_logical_t<Value> is_not_greater_equal(Value const& x, Value const& y);
 } }

@@ -30,16 +30,16 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    as_logical_t<T> r = is_positive(x);
+    auto r = is_positive(x);
     @endcode
 
     is similar to:
 
     @code
-    if T is signed
-      as_logical_t<T> r = bitofsign(x) == 0;
+    if x is of signed type
+      auto r = bitofsign(x) == 0;
     else
-      as_logical_t<T> r = True ;
+      auto r = True ;
     @endcode
 
     @par Note:

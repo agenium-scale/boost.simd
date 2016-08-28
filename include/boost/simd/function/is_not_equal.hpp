@@ -25,20 +25,15 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of types respectively T0, T1:
-
     @code
-    as_logical_t<T0> r = is_not_equal(x,y);
+    auto r = is_not_equal(x,y);
     @endcode
 
-    is similar to:
+    or
 
     @code
-    as_logical_t<T0> r = x != y;
+    auto r = x != y;
     @endcode
-
-    @par Alias:
-    @c ne, @c neq, @c is_neq
 
     @see  is_equal, is_nez, is_not_equal_with_equal_nans
 
