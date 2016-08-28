@@ -15,7 +15,8 @@
 namespace boost { namespace simd
 {
   /*!
-    @ingroup group-arithmetic
+    @ingroup group-oerator
+    Function object extending divides
 
     Calculate the quotient of the two parameters of the same type with or without options.
 
@@ -36,10 +37,10 @@ namespace boost { namespace simd
 
     @return The quotient of the two parameters.
   **/
-  template<typename T> auto div(Option const& o, T const& a, T const& b);
+  T div(T const& a, T const& b);
 
   //@overload
-  template<typename T> auto div(T const& a, T const& b);
+  T div(Option const& o, T const& a, T const& b);
 
 } }
 #endif

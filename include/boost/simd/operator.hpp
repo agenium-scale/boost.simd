@@ -26,6 +26,8 @@ namespace boost { namespace simd
     In these seldomly used cases, prefix bitwise_and, bitwise_or, complement
     and if_else are required.
 
+    @warningbox{Note that && and || overloaded on simd packs do not make short circuitry}
+
     Here is the list of of operators and their infix associated notation.
     These remarks are only valid if the prefix notation is used and at least one parameter is a pack:
     otherwise infix operators on scalars are regulated by usual C++ langage rules.
@@ -37,7 +39,8 @@ namespace boost { namespace simd
     | @ref bitwise_or         | \|  |  2    |  T1, T2      |  same bit size for T1 and T2    (1)           |
     | @ref bitwise_xor        | ^   |  2    |  T1, T2      |  same bit size for T1 and T2    (1)           |
     | @ref complement         | ~   |  1    |  T1          |                                               |
-    | @ref divides,  div      | /   |  2    |  T1, T1      |  arithmetic types               (2)           |
+    | @ref divides            | /   |  2    |  T1, T1      |  arithmetic types               (2)           |
+    | @ref div                | /   |  2    |  T1, T1      |  arithmetic types               (2)           |
     | @ref if_else            | NA  |  3    |  T1, T2, T2  |                                               |
     | @ref is_equal           | ==  |  2    |  T1, T1      |                                               |
     | @ref is_greater         | >   |  2    |  T1, T1      |                                               |
@@ -47,12 +50,12 @@ namespace boost { namespace simd
     | @ref is_not_equal       | !=  |  2    |  T1, T1      |                                               |
     | @ref logical_and        | &&  |  2    |  T1, T1      |  returns a @ref logical                       |
     | @ref logical_not        | !   |  1    |  T1, T1      |  returns a @ref logical                       |
-    | @ref logical_or         | \|\||  2    |  T1, T1      |  returns a @ref logical                       |
+    | @ref logical_or         | \|\||  2    |  T1, T1      |  returns a @ref logical                      |
     | @ref minus              | -   |  2    |  T1, T1      |  arithmetic types                (2)          |
     | @ref rem                | %   |  2    |  T1, T2      |  T2 is integral scalar or associated to T1 (3)|
     | @ref multiplies         | *   |  2    |  T1, T1      |  arithmetic types                (2)          |
     | @ref plus               | +   |  2    |  T1, T1      |  arithmetic types                (2)          |
-    | @ref shift_left, shl    | <<  |  2    |  T1, T2      |  T2 is integral scalar or associated to T1 (3)|
+    | @ref shift_left         | <<  |  2    |  T1, T2      |  T2 is integral scalar or associated to T1 (3)|
     | @ref shift_right        | >>  |  2    |  T1, T2      |  T2 is integral scalar or associated to T1 (3)|
     | @ref shr (logical shift)|     |  2    |  T1, T2      |  T2 is integral scalar or associated to T1 (3)|
     | @ref unary_minus        | -   |  1    |  T1          |  signed arithmetic types         (2)          |
@@ -87,9 +90,9 @@ namespace boost { namespace simd
 #include <boost/simd/function/bitwise_or.hpp>
 #include <boost/simd/function/bitwise_xor.hpp>
 #include <boost/simd/function/complement.hpp>
+#include <boost/simd/function/div.hpp>
 #include <boost/simd/function/divides.hpp>
 #include <boost/simd/function/minus.hpp>
-#include <boost/simd/function/rem>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/plus.hpp>
 #include <boost/simd/function/shift_left.hpp>

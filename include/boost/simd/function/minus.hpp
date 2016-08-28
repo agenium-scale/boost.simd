@@ -21,12 +21,20 @@ namespace boost { namespace simd
 
     Perform the difference of two parameters of the same type.
 
+    Infix notation can be used with operator '-',
+
     @par Semantic
 
     For any value @c a and @c b of type @c T,
 
     @code
-    T x = minus(a,b);
+    auto x = minus(a,b);
+    @endcode
+
+    or
+
+    @code
+    auto r = a-b;
     @endcode
 
     returns the difference of @c a and @c b

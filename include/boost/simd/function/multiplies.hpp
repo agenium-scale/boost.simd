@@ -21,15 +21,25 @@ namespace boost { namespace simd
 
     Perform the product of two parameters of the same type.
 
+    Infix notation can be used with operator '*',
+
     @par Semantic
 
     For any value @c a and @c b of type @c T,
 
     @code
-    T x = multiplies(a,b);
+    auto x = multiplies(a,b);
+    @endcode
+
+    or
+
+    @code
+    auto r = a*b;
     @endcode
 
     returns the product of @c a and @c b
+
+    @see fma, fms, fnma, fnms
 
   **/
   Value multiplies(Value const & x, Value const& y);

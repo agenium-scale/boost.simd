@@ -28,25 +28,22 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of types respectively T, N:
+    For every parameters of types respectively @c T, @c N:
 
     @code
-    T r = shift_right(x,y);
+    auto r = shift_right(x,y);
     @endcode
 
-    is similar to:
+    or
 
     @code
-    T r = x >> y;
+    auto r = x >> y;
     @endcode
-
-    @par Alias:
-    @c shra, @c shar, @c shrai
 
     @see  shift_left, shr, rshl, rshr, rol, ror
 
   **/
-  Value shift_right(Value const & v0, IntegerValue const& n);
+  Value shift_right(Value const & x, IntegerValue const& n);
 } }
 #endif
 

@@ -28,17 +28,17 @@ namespace boost { namespace simd
     For every parameter of type T
 
     @code
-    T r = complement(x);
+    auto r = complement(x);
     @endcode
 
-    is similar to:
+    or
 
     @code
-    T r = ~x;
+    auto r = ~x;
     @endcode
 
-    @par Alias:
-    @c @c bitwise_not
+    @par Alias
+    bitwise_not
 
     @see  bitwise_and, bitwise_or, bitwise_xor, bitwise_notand,
     bitwise_andnot, bitwise_notor, bitwise_ornot
