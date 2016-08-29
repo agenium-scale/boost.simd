@@ -23,6 +23,8 @@ following tutorials applications may vary.
 <tr class="empty_row"><th>
 <tr><th> [Memory Alignment](@ref tutorial-memory) <th> [Distance](@ref tutorial-distance)
 <tr class="empty_row"><th>
+<tr><th> [SIMD Branching](@ref tutorial-branching)
+<tr class="empty_row"><th>
 </table>
 
 ### Is it better practice to use a pack as an array?

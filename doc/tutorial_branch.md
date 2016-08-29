@@ -1,4 +1,19 @@
-# Simd Branching {#tutorial-branching}
+SIMD Branching {#tutorial-branching}
+=========
+
+@tableofcontents
+In this tutorial we will examine how to handle branches in SIMD programs.
+
+@section branching-objectives Objectives
+
+-------------------------------------
+
+In this tutorial we will:
+- [Show how to efficiently handle branches in SIMD programs](#branching-intro)
+- [Demonstrate a useful technique for reducing data transfer](#branching-transfer)
+- [Discuss possible reasons for lower speed-up than expected](#branching-speed)
+
+@section branching-intro Branching
 
 One of the fundamental principles of __SIMD__ programming is that the same operation must be performed
 on each element of the __SIMD__ vector. At first glance, this means that vectorized programs do not
@@ -24,7 +39,7 @@ The return type of a comparison operation in C++ is a bool, therefore the return
 or ones using the function `bs::if_zero_else_one`. All that's left to do now is to store this vector
 in its correct location in memory.
 
-###Minimizing the transfer of data between the processor and memory
+@section branching-transfer Minimizing the transfer of data between the processor and memory
 
 Many algorithms are memory bound, meaning that the time required to complete the function is mostly
 determined by the time taken to transfer the data from memory to the processor and back again. Therefore,
