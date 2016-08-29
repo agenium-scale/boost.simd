@@ -33,9 +33,12 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    std::size_t r =std::size_t(sum(if_one_else_zero(x)));
+    std::size_t r = sum(if_one_else_zero(x));
     @endcode
 
+    @par Note
+
+    This function is peculiarly useful in horizontal branching idioms.
   **/
   std::size_t nbtrue(Value const & x);
 } }

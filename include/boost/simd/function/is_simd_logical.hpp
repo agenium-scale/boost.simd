@@ -27,13 +27,13 @@ namespace boost { namespace simd
     For every parameter of type T
 
     @code
-    logical<scalar_of_t<T>> r = is_simd_logical(x);
+    auto r = is_simd_logical(x);
     @endcode
 
     is similar to:
 
     @code
-    T r = all(x == Allbits || x == Zero);
+    auto r = all(x == Allbits || x == Zero);
     @endcode
 
     @see mask2logical

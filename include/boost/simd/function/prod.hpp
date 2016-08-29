@@ -24,17 +24,17 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of type T
+    For every parameter of pack type T
 
     @code
-    scalar<T> r = prod(x);
+    scalar_of_t<T> r = prod(x);
     @endcode
 
     is similar to:
 
     @code
-    scalar<T> r = One;
-    for(result_type i = 0; i != cardinal_of<T>; ++i)
+    scalar_of_t<T> r = One;
+    for(result_type i = 0; i != T::static_size; ++i)
       r *= x[i];
     @endcode
 

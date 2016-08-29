@@ -22,16 +22,14 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of type T
-
     @code
-    bool r = none(x);
+    auto r = none(x);
     @endcode
 
     is similar to:
 
     @code
-    bool r = !any(x);
+    auto r = !any(x);
     @endcode
 
   **/

@@ -25,8 +25,6 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of type T
-
     @code
     std::size_t r = hmsb(x);
     @endcode
