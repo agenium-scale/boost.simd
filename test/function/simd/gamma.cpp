@@ -10,28 +10,29 @@
 #include <boost/simd/function/gamma.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/nan.hpp>
 #include <simd_test.hpp>
 
 namespace bs = boost::simd;
 
-// template <typename T, std::size_t N, typename Env>
-// void limit_test(Env& $)
-// {
-//   using p_t = bs::pack<T, N>;
+template <typename T, std::size_t N, typename Env>
+void limit_test(Env& $)
+{
+  using p_t = bs::pack<T, N>;
 
-//   STF_ULP_EQUAL (bs::gamma(p_t(1))            , p_t(2.718281828459045), 0.5);
-//   STF_IEEE_EQUAL(bs::gamma(p_t(0))            , p_t(1)        );
-//   STF_IEEE_EQUAL(bs::gamma(p_t(bs::Inf<T>())) , bs::Inf<p_t>());
-//   STF_IEEE_EQUAL(bs::gamma(p_t(bs::Minf<T>())), p_t(0)        );
-// }
+  STF_ULP_EQUAL (bs::gamma(p_t(1))            , p_t(1), 0.5);
+  STF_IEEE_EQUAL(bs::gamma(p_t(0))            , p_t(bs::Inf<T>())        );
+  STF_IEEE_EQUAL(bs::gamma(p_t(bs::Inf<T>())) , bs::Inf<p_t>());
+  STF_IEEE_EQUAL(bs::gamma(p_t(bs::Minf<T>())), p_t(bs::Nan<T>())        );
+}
 
-// STF_CASE_TPL("Check gamma limit cases" , STF_IEEE_TYPES)
-// {
-//   static const std::size_t N = bs::pack<T>::static_size;
-//   limit_test<T, N>($);
-//   limit_test<T, N/2>($);
-//   limit_test<T, N*2>($);
-// }
+STF_CASE_TPL("Check gamma limit cases" , STF_IEEE_TYPES)
+{
+  static const std::size_t N = bs::pack<T>::static_size;
+  limit_test<T, N>($);
+  limit_test<T, N/2>($);
+  limit_test<T, N*2>($);
+}
 
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
@@ -46,7 +47,7 @@ void test(Env& $)
   }
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
-
+  std::cout << "aa1 " << aa1 << std::endl;
   STF_ULP_EQUAL(bs::gamma(aa1), bb, 0.5);
 }
 
