@@ -20,32 +20,16 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing cospi capabilities
 
-    cosine of angle in \f$\pi\f$ multiples.
+    cosine of angle in \f$\pi\f$ multiples: \f$\cos(\pi x)\f$.
 
     @par Semantic:
 
-    For every parameter of floating or integral type T
-
-    @code
-    T r = cospi(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = cos(Pi<T>()*x);
-    @endcode
+   The semantics of the function are similar to @ref cos ones.
+    see @ref cos for further details
 
     @par Note
 
-    As other cosine functions cospi can be used with two parameters as
-    @code
-    T r = cos(x, range_);
-    @endcode
-
-    see @ref cos for further details
-
-    As it conveys a peculiar meaning,  unlike the orher cosine, cospi is defined
+    However as it conveys a peculiar meaning,  unlike the orher cosine, cospi is defined
     for integral types and the result of cospi(n) coincides with \f$(-1)^n\f$.
 
     Take care that large floating entries are always integral and even !
