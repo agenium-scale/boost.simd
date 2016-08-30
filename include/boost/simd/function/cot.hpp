@@ -20,21 +20,16 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing cot capabilities
 
-    cotangent of the input in radian.
+    cotangent of the input in radian: \f$\cos(x)/\sin(x)\f$ .
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
-    T r = cot(x);
+    auto r = cot(x);
     @endcode
 
-    is similar to:
-
-    @code
-    T r = cos(x)/sin(x);
-    @endcode
 
     As most other trigonometric function cot can be called with a second optional parameter
     which is a tag on speed and accuracy (see @ref cos for further details)

@@ -20,20 +20,15 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing cotd capabilities
 
-    cotangent of input in degree.
+    cotangent of input in degree: \f$\cos(\pi x/180)/\sin(\pi x/180) \f$ .
+
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
-    T r = cotd(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = cot(inrad(x));
+    auto r = cotd(x);
     @endcode
 
     As most other trigonometric function cotd can be called with a second optional parameter

@@ -20,7 +20,7 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing cscpi capabilities
 
-    cosecant of angle in \f$\pi\f$ multiples.
+    cosecant of angle in \f$\pi\f$ multiples: \f$\sin(1/(\pi x))\f$.
 
     @par Semantic:
 
@@ -28,12 +28,6 @@ namespace boost { namespace simd
 
     @code
     T r = cscpi(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = rec(sinpi(x));
     @endcode
 
     As most other trigonometric function cscpi can be called with a second optional parameter

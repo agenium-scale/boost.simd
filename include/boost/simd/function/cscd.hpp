@@ -20,20 +20,14 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing cscd capabilities
 
-    cosecante in degree.
+    cosecante in degree: \f$\sin(180/(\pi x))\f$.
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
-    T r = cscd(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = rec(sind(x));
+    auto r = cscd(x);
     @endcode
 
     As most other trigonometric function cscd can be called with a second optional parameter
