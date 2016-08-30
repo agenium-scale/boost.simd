@@ -1,10 +1,6 @@
 //==================================================================================================
-/*!
-  @file
-
-  Defines the SIMD storage meta-generator
-
-  @copyright 2016 NumScale SAS
+/**
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -21,6 +17,11 @@
 #include <boost/simd/detail/brigand.hpp>
 #include <type_traits>
 #include <array>
+
+#if defined __GNUC__ && __GNUC__>=6
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wignored-attributes"
+#endif
 
 namespace boost { namespace simd { namespace detail
 {
@@ -121,5 +122,9 @@ namespace boost { namespace simd { namespace detail
     using type = std::array<base,2>;
   };
 } } }
+
+#if defined __GNUC__ && __GNUC__>=6
+#pragma GCC diagnostic pop
+#endif
 
 #endif
