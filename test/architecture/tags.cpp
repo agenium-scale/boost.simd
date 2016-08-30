@@ -10,6 +10,31 @@
 #include <boost/simd/arch/tags.hpp>
 #include <simd_test.hpp>
 
+STF_CASE( "Check for SIMD tag support facility" )
+{
+  std::cout << "---------------------\n";
+  std::cout << "X86 Extensions\n";
+  std::cout << "---------------------\n";
+  std::cout << "SSE1   support: " << std::boolalpha << boost::simd::sse1.is_supported()   << "\n";
+  std::cout << "SSE2   support: " << std::boolalpha << boost::simd::sse2.is_supported()   << "\n";
+  std::cout << "SSE3   support: " << std::boolalpha << boost::simd::sse3.is_supported()   << "\n";
+  std::cout << "SSSE3  support: " << std::boolalpha << boost::simd::ssse3.is_supported()  << "\n";
+  std::cout << "SSE4a  support: " << std::boolalpha << boost::simd::sse4a.is_supported()  << "\n";
+  std::cout << "SSE4.1 support: " << std::boolalpha << boost::simd::sse4_1.is_supported() << "\n";
+  std::cout << "SSE4.2 support: " << std::boolalpha << boost::simd::sse4_2.is_supported() << "\n";
+  std::cout << "AVX    support: " << std::boolalpha << boost::simd::avx.is_supported()    << "\n";
+  std::cout << "AVX2   support: " << std::boolalpha << boost::simd::avx2.is_supported()   << "\n";
+  std::cout << "FMA3   support: " << std::boolalpha << boost::simd::fma3.is_supported()   << "\n";
+  std::cout << "FMA4   support: " << std::boolalpha << boost::simd::fma4.is_supported()   << "\n";
+  std::cout << "XOP    support: " << std::boolalpha << boost::simd::xop.is_supported()    << "\n";
+  std::cout << "---------------------\n";
+  std::cout << "PPC Extensions\n";
+  std::cout << "---------------------\n";
+  std::cout << "VMX    support: " << std::boolalpha << boost::simd::vmx.is_supported()    << "\n";
+
+  STF_PASS("Support detection from architecture object.");
+}
+
 STF_CASE( "Check for basic SIMD tag parent" )
 {
   STF_TYPE_IS( boost::simd::simd_::parent          , boost::dispatch::cpu_ );
@@ -17,7 +42,6 @@ STF_CASE( "Check for basic SIMD tag parent" )
   STF_TYPE_IS( boost::simd::simd_native_::parent   , boost::simd::simd_    );
 }
 
-#ifdef BOOST_ARCH_X86_AVAILABLE
 STF_CASE( "Check for architectural tag parent for X86/AMD" )
 {
   STF_TYPE_IS( boost::simd::sse1_::parent   , boost::simd::simd_native_ );
@@ -48,11 +72,8 @@ STF_CASE( "Check for architectural tag parent for X86/AMD" )
 
   STF_TYPE_IS( boost::simd::avx2_::parent, boost::simd::fma3_ );
 }
-#endif
 
-#ifdef BOOST_ARCH_PPC_AVAILABLE
 STF_CASE( "Check for architectural tag parent for PowerPC" )
 {
   STF_TYPE_IS( boost::simd::vmx_::parent , boost::simd::simd_  );
 }
-#endif

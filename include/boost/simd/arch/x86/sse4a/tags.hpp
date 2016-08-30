@@ -2,8 +2,6 @@
 /*!
   @file
 
-  Aggregates SIMD extension tags for Intel X86 and AMD
-
   @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
@@ -15,6 +13,7 @@
 #define BOOST_SIMD_ARCH_X86_SSE4A_TAGS_HPP_INCLUDED
 
 #include <boost/simd/arch/x86/ssse3/tags.hpp>
+#include <boost/simd/detail/cpuid.hpp>
 
 namespace boost { namespace simd
 {
@@ -24,7 +23,30 @@ namespace boost { namespace simd
 
     This tag represent architectures implementing the AMD SSE 4A SIMD instructions set.
   **/
-  struct sse4a_ : ssse3_ { using parent = ssse3_; };
+  struct sse4a_ : ssse3_
+  {
+    using parent = ssse3_;
+
+    sse4a_()
+    {
+      #if BOOST_ARCH_X86
+      support =  detect_feature(6, 0x80000001, detail::ecx);
+      #else
+      support =  false;
+      #endif
+    }
+
+    bool is_supported() const { return support; }
+
+    private:
+    bool support;
+  };
+
+  /*!
+    @ingroup  group-api
+    Global object for accessing SSE4a support informations
+  **/
+  static sse4a_ const sse4a = {};
 
 } }
 
