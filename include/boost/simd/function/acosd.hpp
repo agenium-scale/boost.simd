@@ -24,17 +24,17 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
-    T r = acosd(x);
+    auto r = acosd(x);
     @endcode
 
     Returns the arc @c r in the interval
     \f$[0, 180[\f$ such that <tt>cosd(r) == x</tt>.
-    If @c x is outside \f$[-1, 1[\f$ the result is Nan.
+    If @c x is outside \f$[-1, 1[\f$ the result is @ref Nan.
 
-    @see acos, acospi
+    @see acos, acospi, cosd
 
   **/
   Value acosd(Value const & v0);

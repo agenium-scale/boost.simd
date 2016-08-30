@@ -20,23 +20,17 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing acsc capabilities
 
-    inverse cosecant in radian.
+    inverse cosecant in radian: \f$\arcsin(1/x)\f$.
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
-    T r = acsc(x);
+    auto r = acsc(x);
     @endcode
 
-    is similar to:
-
-    @code
-    T r = asin(rec(x));
-    @endcode
-
-    @see acscd
+    @see acscd, acscpi, asin, asin, sin, rec
 
   **/
   Value acsc(Value const & v0);

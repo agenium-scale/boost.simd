@@ -24,10 +24,10 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
-    T r = asind(x);
+    auto r = asind(x);
     @endcode
 
     Returns the arc @c r in the interval

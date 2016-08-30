@@ -20,23 +20,17 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing asecd capabilities
 
-     inverse secant in degree.
+     inverse secant in degree: \f$(180/\pi) \arccos(1/x)\f$.
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
-    T r = asecd(x);
+    auto r = asecd(x);
     @endcode
 
-    is similar to:
-
-    @code
-    T r =  acosd(rec(x));;
-    @endcode
-
-    @see asec
+    @see asec, ascpi, secd, acosd
 
   **/
   Value asecd(Value const & v0);
