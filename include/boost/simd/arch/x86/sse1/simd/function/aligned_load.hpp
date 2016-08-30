@@ -14,7 +14,7 @@
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/slide.hpp>
 #include <boost/simd/detail/dispatch/adapted/common/pointer.hpp>
-#include <boost/align/is_aligned.hpp>
+#include <boost/simd/detail/is_aligned.hpp>
 #include <boost/assert.hpp>
 
 #ifdef BOOST_MSVC
@@ -40,7 +40,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE target operator()(Pointer p, Target const&) const
     {
-      BOOST_ASSERT_MSG( boost::alignment::is_aligned(p, target::alignment)
+      BOOST_ASSERT_MSG( boost::simd::detail::is_aligned(p, target::alignment)
                       , "boost::simd::aligned_load was performed on an unaligned pointer of float"
                       );
 

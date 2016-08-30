@@ -14,7 +14,7 @@
 
 #include <boost/simd/range/detail/input_iterator.hpp>
 #include <boost/range/iterator_range.hpp>
-#include <boost/align/is_aligned.hpp>
+#include <boost/simd/detail/is_aligned.hpp>
 #include <boost/assert.hpp>
 #include <iterator>
 
@@ -42,7 +42,7 @@ namespace boost { namespace simd
   input_range( Iterator begin, Iterator end )
   {
     BOOST_ASSERT_MSG
-    ( boost::alignment::is_aligned(std::distance(begin,end), N)
+    ( boost::simd::detail::is_aligned(std::distance(begin,end), N)
     , "Range being adapted holds a non integral number of SIMD pack."
     );
 
@@ -55,7 +55,7 @@ namespace boost { namespace simd
   input_range( Iterator begin, Iterator end )
   {
     BOOST_ASSERT_MSG
-    ( boost::alignment::is_aligned(std::distance(begin,end) , detail::input_iterator<Iterator>::cardinal)
+    ( boost::simd::detail::is_aligned(std::distance(begin,end) , detail::input_iterator<Iterator>::cardinal)
     , "Range being adapted holds a non integral number of SIMD pack."
     );
 

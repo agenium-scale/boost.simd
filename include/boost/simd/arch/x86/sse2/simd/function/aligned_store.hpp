@@ -12,7 +12,7 @@
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/dispatch/adapted/common/pointer.hpp>
 #include <boost/simd/meta/is_pointing_to.hpp>
-#include <boost/align/is_aligned.hpp>
+#include <boost/simd/detail/is_aligned.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -29,7 +29,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE void operator() (const Vec& a0, Pointer a1) const BOOST_NOEXCEPT
     {
-      BOOST_ASSERT_MSG( boost::alignment::is_aligned(a1, Vec::alignment)
+      BOOST_ASSERT_MSG( boost::simd::detail::is_aligned(a1, Vec::alignment)
                       , "boost::simd::aligned_load was performed on an unaligned pointer of integer"
                       );
       _mm_store_pd(reinterpret_cast<double*>(a1),a0);
@@ -46,7 +46,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE void operator() (const Vec& a0, Pointer a1) const BOOST_NOEXCEPT
     {
-      BOOST_ASSERT_MSG( boost::alignment::is_aligned(a1, Vec::alignment)
+      BOOST_ASSERT_MSG( boost::simd::detail::is_aligned(a1, Vec::alignment)
                       , "boost::simd::aligned_load was performed on an unaligned pointer of integer"
                       );
        _mm_store_si128(reinterpret_cast<__m128i*>(a1), a0);
