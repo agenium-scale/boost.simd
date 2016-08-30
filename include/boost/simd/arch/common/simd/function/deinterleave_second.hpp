@@ -36,9 +36,9 @@ namespace boost { namespace simd { namespace ext
       return make<T>( bs::extract<N::value*2+1>(x)..., bs::extract<N::value*2+1>(y)... );
     }
 
-    template<typename... N> static BOOST_FORCEINLINE
+    template<typename N0, typename N1, typename... Ns> static BOOST_FORCEINLINE
     typename T::storage_type
-    do_( T const& x, T const& y, aggregate_storage const&, br::list<N...> const&) BOOST_NOEXCEPT
+    do_( T const& x, T const& y, aggregate_storage const&, br::list<N0,N1,Ns...> const&) BOOST_NOEXCEPT
     {
       return  { { deinterleave_second(x.storage()[0],x.storage()[1])
                 , deinterleave_second(y.storage()[0],y.storage()[1])
