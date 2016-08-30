@@ -36,11 +36,7 @@ namespace boost { namespace simd
   {
     using parent = simd_;
 
-    vmx_() : support(detect()) {}
-
-    bool is_supported() const { return support; }
-
-    static bool detect()
+    vmx_()
     {
       #if BOOST_ARCH_PPC
         #if BOOST_OS_MACOS
@@ -51,14 +47,16 @@ namespace boost { namespace simd
           {
             hasAltiVec = ( 1 << gestaltPowerPCHasVectorInstructions) & cpuAttributes;
           }
-          return hasAltiVec;
+          support = hasAltiVec;
         #else
-          return detail::hwcap() & PPC_FEATURE_HAS_ALTIVEC;
+          support = detail::hwcap() & PPC_FEATURE_HAS_ALTIVEC;
         #endif
       #else
-        return false;
+        support = false;
       #endif
     }
+
+    bool is_supported() const { return support; }
 
     private:
     bool support;

@@ -28,19 +28,17 @@ namespace boost { namespace simd
   {
     using parent = avx_ ;
 
-    fma4_() : support(detect()) {}
-
-    bool is_supported() const { return support; }
-
-    static bool detect()
+    fma4_()
     {
       #if BOOST_ARCH_X86
-      return      detect_feature(16, 0x80000001, detail::ecx)
+      support =   detect_feature(16, 0x80000001, detail::ecx)
               &&  detect_feature(27, 0x80000001, detail::ecx);
       #else
-      return false;
+      support = false;
       #endif
     }
+
+    bool is_supported() const { return support; }
 
     private:
     bool support;

@@ -27,18 +27,16 @@ namespace boost { namespace simd
   {
     using parent = sse3_;
 
-    ssse3_() : support(detect()) {}
-
-    bool is_supported() const { return support; }
-
-    static bool detect()
+    ssse3_()
     {
       #if BOOST_ARCH_X86
-      return detect_feature(9, 0x00000001, detail::ecx);
+      support =  detect_feature(9, 0x00000001, detail::ecx);
       #else
-      return false;
+      support =  false;
       #endif
     }
+
+    bool is_supported() const { return support; }
 
     private:
     bool support;
