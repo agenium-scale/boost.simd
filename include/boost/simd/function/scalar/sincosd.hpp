@@ -11,6 +11,7 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_SINCOSD_HPP_INCLUDED
 
 #include <boost/simd/function/definition/sincosd.hpp>
+#include <boost/simd/arch/common/generic/function/sincosd.hpp>
 #include <boost/simd/arch/common/scalar/function/sincosd.hpp>
 
 #endif

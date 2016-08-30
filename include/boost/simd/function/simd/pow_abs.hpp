@@ -13,4 +13,5 @@
 #include <boost/simd/function/scalar/pow_abs.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/simd/function/pow_abs.hpp>
+
 #endif

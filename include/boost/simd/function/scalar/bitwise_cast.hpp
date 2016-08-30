@@ -12,5 +12,6 @@
 
 #include <boost/simd/function/definition/bitwise_cast.hpp>
 #include <boost/simd/arch/common/generic/function/bitwise_cast.hpp>
+#include <boost/simd/arch/common/scalar/function/bitwise_cast.hpp>
 
 #endif
