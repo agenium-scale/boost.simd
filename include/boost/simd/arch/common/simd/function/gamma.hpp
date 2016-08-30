@@ -32,6 +32,7 @@
 
 #include <boost/simd/function/simd/abs.hpp>
 #include <boost/simd/function/simd/any.hpp>
+#include <boost/simd/function/simd/bitwise_or.hpp>
 #include <boost/simd/function/simd/floor.hpp>
 #include <boost/simd/function/simd/is_even.hpp>
 
@@ -43,6 +44,7 @@
 #include <boost/simd/function/simd/if_nan_else.hpp>
 #include <boost/simd/function/simd/if_plus.hpp>
 #include <boost/simd/function/simd/is_equal.hpp>
+#include <boost/simd/function/simd/is_eqz.hpp>
 #include <boost/simd/function/simd/is_flint.hpp>
 #include <boost/simd/function/simd/is_less.hpp>
 #include <boost/simd/function/simd/is_lez.hpp>
@@ -92,7 +94,7 @@ namespace boost { namespace simd { namespace ext
       }
       A0 r1 = other(a0, test);
       A0 r2 = if_else(test, r, r1);
-      return bs::if_nan_else(nan_result, r2);
+      return bs::if_else(is_eqz(a0), copysign(Inf<A0>(), a0), bs::if_nan_else(nan_result, r2));
     }
   private :
     static  A0 large_negative(const A0& q) BOOST_NOEXCEPT
