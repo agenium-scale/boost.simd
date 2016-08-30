@@ -212,6 +212,7 @@ before_script:
   - export BOOST_ROOT=build/_install/include
   - mkdir build
   - cd build
+  - $TOOLSET --version
   - cmake .. -DIS_TRAVIS_CI= -DCMAKE_CXX_COMPILER=$TOOLSET -DCMAKE_CXX_FLAGS="$SIMD_EXT $OPT -I$HOME/dispatch/include" -DSIMD_EXT=$SIMD_EXT -DTOOLSET=$TOOLSET
 
 ##===================================================================================================
