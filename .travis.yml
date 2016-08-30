@@ -13,14 +13,14 @@ matrix:
 ##===================================================================================================
 ## Regression
 ##==================================================================================================
-## g++ 4.8 AVX
+## g++ 6 AVX
     - os: linux
       compiler: gcc
       addons:
         apt:
           sources: ['ubuntu-toolchain-r-test']
-          packages: ['g++-4.8']
-      env: TOOLSET=g++-4.8 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=regression
+          packages: ['g++-6']
+      env: TOOLSET=g++-6 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=regression
 
 ## g++ 4.8 SSE4
     - os: linux
@@ -52,14 +52,14 @@ matrix:
 ##===================================================================================================
 ## Architecture
 ##==================================================================================================
-## g++ 4.8 AVX
+## g++ 6 AVX
     - os: linux
       compiler: gcc
       addons:
         apt:
           sources: ['ubuntu-toolchain-r-test']
-          packages: ['g++-4.8']
-      env: TOOLSET=g++-4.8 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=architecture
+          packages: ['g++-6']
+      env: TOOLSET=g++-6 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=architecture
 
 ## g++ 4.8 SSE4
     - os: linux
@@ -91,14 +91,14 @@ matrix:
 ##===================================================================================================
 ## API
 ##==================================================================================================
-## g++ 4.8 AVX
+## g++ 6 AVX
     - os: linux
       compiler: gcc
       addons:
         apt:
           sources: ['ubuntu-toolchain-r-test']
-          packages: ['g++-4.8']
-      env: TOOLSET=g++-4.8 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=api
+          packages: ['g++-6']
+      env: TOOLSET=g++-6 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=api
 
 ## g++ 4.8 SSE4
     - os: linux
@@ -130,14 +130,14 @@ matrix:
 ##===================================================================================================
 ## Functions
 ##==================================================================================================
-## g++ 4.8 AVX
+## g++ 6 AVX
     - os: linux
       compiler: gcc
       addons:
         apt:
           sources: ['ubuntu-toolchain-r-test']
-          packages: ['g++-4.8']
-      env: TOOLSET=g++-4.8 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=function
+          packages: ['g++-6']
+      env: TOOLSET=g++-6 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=function
 
 ## g++ 4.8 SSE4
     - os: linux
@@ -169,14 +169,14 @@ matrix:
 ##===================================================================================================
 ## Constants
 ##==================================================================================================
-## g++ 4.8 AVX
+## g++ 6 AVX
     - os: linux
       compiler: gcc
       addons:
         apt:
           sources: ['ubuntu-toolchain-r-test']
-          packages: ['g++-4.8']
-      env: TOOLSET=g++-4.8 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=constant
+          packages: ['g++-6']
+      env: TOOLSET=g++-6 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=constant
 
 ## g++ 4.8 SSE4
     - os: linux
@@ -212,6 +212,7 @@ before_script:
   - export BOOST_ROOT=build/_install/include
   - mkdir build
   - cd build
+  - $TOOLSET --version
   - cmake .. -DIS_TRAVIS_CI= -DCMAKE_CXX_COMPILER=$TOOLSET -DCMAKE_CXX_FLAGS="$SIMD_EXT $OPT -I$HOME/dispatch/include" -DSIMD_EXT=$SIMD_EXT -DTOOLSET=$TOOLSET
 
 ##===================================================================================================

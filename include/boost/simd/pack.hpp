@@ -38,7 +38,14 @@
 #if defined(__GNUC__)
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wuninitialized"
+
+// Remove noise from attribute from as_simd
+#if __GNUC__ >= 6
+#pragma GCC diagnostic ignored "-Wignored-attributes"
 #endif
+
+#endif
+
 
 namespace boost { namespace simd
 {

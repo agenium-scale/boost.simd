@@ -235,7 +235,7 @@ void STF_FUNCTION( ::stf::unit::env& $ )                                        
   $.stream() << std::endl;                                                                          \
   $.stream() <<  "With T = [" << STF_STRING(BOOST_PP_SEQ_ELEM(n,t))                                 \
                         << "] ";                                                                    \
-  if(!$.is_compact()) $.stream() << std::endl;                                                      \
+  if(!$.is_compact()) { $.stream() << std::endl; }                                                  \
   STF_FUNCTION<T>($);                                                                               \
 }                                                                                                   \
 
