@@ -100,6 +100,7 @@ cumprod.cpp
 cumsum.cpp
 dec.cpp
 dec_s.cpp
+deinterleave.cpp
 deinterleave_first.cpp
 deinterleave_second.cpp
 dist.cpp
