@@ -83,12 +83,25 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0)
                           , bd::cpu_
                           , boost::simd::fast_tag
-                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::single_<A0> >
                           )
   {
     BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0  a0) const BOOST_NOEXCEPT
     {
       return if_else_zero(a0, a0 * fast_(rsqrt)(a0));
+    }
+  };
+
+   BOOST_DISPATCH_OVERLOAD ( sqrt_
+                          , (typename A0)
+                          , bd::cpu_
+                          , boost::simd::fast_tag
+                          , bd::scalar_< bd::double_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0  a0) const BOOST_NOEXCEPT
+    {
+      return ::sqrt(a0);
     }
   };
 
