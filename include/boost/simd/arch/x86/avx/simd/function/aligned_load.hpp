@@ -12,7 +12,7 @@
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/detail/dispatch/adapted/common/pointer.hpp>
-#include <boost/align/is_aligned.hpp>
+#include <boost/simd/detail/is_aligned.hpp>
 #include <boost/assert.hpp>
 
 #ifdef BOOST_MSVC
@@ -37,7 +37,7 @@ namespace boost { namespace simd { namespace ext
     using target = typename Target::type;
     BOOST_FORCEINLINE target operator()(Pointer p, Target const&) const
     {
-      BOOST_ASSERT_MSG( boost::alignment::is_aligned(p, target::alignment)
+      BOOST_ASSERT_MSG( boost::simd::detail::is_aligned(p, target::alignment)
                       , "boost::simd::aligned_load was performed on an unaligned pointer of integer"
                       );
 
@@ -57,7 +57,7 @@ namespace boost { namespace simd { namespace ext
     using target = typename Target::type;
     BOOST_FORCEINLINE target operator()(Pointer p, Target const&) const
     {
-      BOOST_ASSERT_MSG( boost::alignment::is_aligned(p, target::alignment)
+      BOOST_ASSERT_MSG( boost::simd::detail::is_aligned(p, target::alignment)
                       , "boost::simd::aligned_load was performed on an unaligned pointer of double"
                       );
 
@@ -78,7 +78,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE target operator() ( Pointer p, Target const& ) const
     {
-      BOOST_ASSERT_MSG( boost::alignment::is_aligned(p, target::alignment)
+      BOOST_ASSERT_MSG( boost::simd::detail::is_aligned(p, target::alignment)
                       , "boost::simd::aligned_load was performed on an unaligned pointer of float"
                       );
 
@@ -130,7 +130,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE target operator()(Pointer const& p, Target const& ) const
     {
-      BOOST_ASSERT_MSG( boost::alignment::is_aligned(p, target::alignment)
+      BOOST_ASSERT_MSG( boost::simd::detail::is_aligned(p, target::alignment)
                       , "boost::simd::aligned_load was performed on an unaligned masked pointer of float"
                       );
       __m256i msk = _mm256_castps_si256(bs::as_logical_t<target>(p.mask()).storage());
@@ -149,7 +149,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE target operator()(Pointer const& p, Target const& ) const
     {
-      BOOST_ASSERT_MSG( boost::alignment::is_aligned(p, target::alignment)
+      BOOST_ASSERT_MSG( boost::simd::detail::is_aligned(p, target::alignment)
                       , "boost::simd::aligned_load was performed on an unaligned masked pointer of float"
                       );
       auto const& msk = p.mask();
@@ -173,7 +173,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE target operator()(Pointer const& p, Target const& ) const
     {
-      BOOST_ASSERT_MSG( boost::alignment::is_aligned(p, target::alignment)
+      BOOST_ASSERT_MSG( boost::simd::detail::is_aligned(p, target::alignment)
                       , "boost::simd::aligned_load was performed on an unaligned masked pointer of double"
                       );
       __m256i msk = _mm256_castpd_si256(bs::as_logical_t<target>(p.mask()).storage());
@@ -192,7 +192,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE target operator()(Pointer const& p, Target const& ) const
     {
-      BOOST_ASSERT_MSG( boost::alignment::is_aligned(p, target::alignment)
+      BOOST_ASSERT_MSG( boost::simd::detail::is_aligned(p, target::alignment)
                       , "boost::simd::aligned_load was performed on an unaligned masked pointer of float"
                       );
       auto const& msk = p.mask();

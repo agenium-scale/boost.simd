@@ -13,7 +13,7 @@
 #include <boost/simd/function/combine.hpp>
 #include <boost/simd/function/load.hpp>
 #include <boost/simd/detail/dispatch/adapted/common/pointer.hpp>
-#include <boost/align/is_aligned.hpp>
+#include <boost/simd/detail/is_aligned.hpp>
 #include <boost/assert.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -35,7 +35,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE target_t operator()(Pointer p, Target const&) const
     {
-      BOOST_ASSERT_MSG( boost::alignment::is_aligned(p,target_t::alignment)
+      BOOST_ASSERT_MSG( boost::simd::detail::is_aligned(p,target_t::alignment)
                       , "boost::simd::aligned_load was performed on an unaligned pointer"
                       );
 

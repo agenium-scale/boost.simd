@@ -13,7 +13,7 @@
 #include <boost/simd/function/aligned_store.hpp>
 #include <boost/simd/function/store.hpp>
 #include <boost/simd/pack.hpp>
-#include <boost/align/is_aligned.hpp>
+#include <boost/simd/detail/is_aligned.hpp>
 
 namespace boost { namespace simd
 {
@@ -72,7 +72,7 @@ namespace boost { namespace simd
     for( auto const & e : std::get<0>(pr) ) *out++ = f(e);
 
     // main SIMD part - checks if we can store efficiently or not
-    if(boost::alignment::is_aligned(out, vU::alignment))
+    if(boost::simd::detail::is_aligned(out, vU::alignment))
     {
       for( auto const& e : std::get<1>(pr) )
       {
@@ -119,8 +119,8 @@ namespace boost { namespace simd
     for( auto const & e : std::get<0>(pr) ) *out++ = f(e, *first2++);
 
     // main SIMD part - Everybody is aligned
-    if(   boost::alignment::is_aligned(out    , vU::alignment )
-      &&  boost::alignment::is_aligned(first2 , vT2::alignment)
+    if(   boost::simd::detail::is_aligned(out    , vU::alignment )
+      &&  boost::simd::detail::is_aligned(first2 , vT2::alignment)
       )
     {
       for( auto const& e : std::get<1>(pr) )
@@ -131,7 +131,7 @@ namespace boost { namespace simd
       }
     }
     // main SIMD part - input1 and output is aligned
-    else if( boost::alignment::is_aligned(out, vU::alignment ) )
+    else if( boost::simd::detail::is_aligned(out, vU::alignment ) )
     {
       for( auto const& e : std::get<1>(pr) )
       {
@@ -141,7 +141,7 @@ namespace boost { namespace simd
       }
     }
     // main SIMD part - Both inputs is aligned
-    else if( boost::alignment::is_aligned(first2, vT2::alignment ) )
+    else if( boost::simd::detail::is_aligned(first2, vT2::alignment ) )
     {
       for( auto const& e : std::get<1>(pr) )
       {

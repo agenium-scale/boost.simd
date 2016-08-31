@@ -14,7 +14,7 @@
 #include <boost/simd/function/load.hpp>
 #include <boost/simd/detail/dispatch/adapted/common/pointer.hpp>
 #include <boost/simd/detail/dispatch/adapted/std/integral_constant.hpp>
-#include <boost/align/is_aligned.hpp>
+#include <boost/simd/detail/is_aligned.hpp>
 #include <boost/assert.hpp>
 
 #ifdef BOOST_MSVC
@@ -44,7 +44,7 @@ namespace boost { namespace simd { namespace ext
       static const std::size_t                        card = target_t::static_size;
       static const typename Misalignment::value_type  unalignment = Misalignment::value % card;
 
-      BOOST_ASSERT_MSG( boost::alignment::is_aligned(p-Misalignment::value,target_t::alignment)
+      BOOST_ASSERT_MSG( boost::simd::detail::is_aligned(p-Misalignment::value,target_t::alignment)
                       , "boost::simd::aligned_load was performed on an unaligned pointer"
                       );
 

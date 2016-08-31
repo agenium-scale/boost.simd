@@ -16,7 +16,7 @@
 #include <boost/simd/range/detail/output_iterator_base.hpp>
 #include <boost/iterator/iterator_adaptor.hpp>
 #include <boost/core/ignore_unused.hpp>
-#include <boost/align/is_aligned.hpp>
+#include <boost/simd/detail/is_aligned.hpp>
 #include <boost/assert.hpp>
 
 namespace boost { namespace simd { namespace detail
@@ -55,7 +55,7 @@ namespace boost { namespace simd { namespace detail
 
       using target_pack = pack<typename std::iterator_traits<Iterator>::value_type, C>;
       BOOST_ASSERT_MSG
-      ( boost::alignment::is_aligned(&(*lp) , target_pack::alignment )
+      ( boost::simd::detail::is_aligned(&(*lp) , target_pack::alignment )
       , "The constructor of iterator<T,C> has been called on a pointer "
         "which alignment is not compatible with the current SIMD extension."
       );
