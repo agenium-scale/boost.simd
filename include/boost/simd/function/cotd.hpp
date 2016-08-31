@@ -20,7 +20,7 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing cotd capabilities
 
-    cotangent of input in degree: \f$\cos(\pi x/180)/\sin(\pi x/180) \f$ .
+    cotangent of input in degree: \f$\cos(\pi x/180)/\sin(\pi x/180) \f$.
 
 
     @par Semantic:

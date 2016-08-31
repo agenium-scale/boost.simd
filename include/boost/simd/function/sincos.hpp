@@ -20,9 +20,9 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing sincos capabilities
 
-    Computes the sine and cosine of the input
+    Computes simultaneouly and at lower cost the sine and cosine of the input
 
-    For every parameters of floating type T:
+    For every parameter of floating type T:
 
     @par Semantic:
 

@@ -20,20 +20,14 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing secpi capabilities
 
-    secant of the angle in pi multiples.
+    secant of the angle in pi multiples: \f$1/\cos(\pi x)\f$.
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
-    T r = secpi(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = rec(cospi(x));
+    auto r = secpi(x);
     @endcode
 
     @see secd, sec, cospi, cos

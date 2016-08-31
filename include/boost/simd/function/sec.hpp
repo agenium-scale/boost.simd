@@ -20,20 +20,14 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing sec capabilities
 
-    secant.
+    secant of the angle in radian: \f$1/\cos(x)\f$.
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
-    T r = sec(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = rec(cos(x));
+    auto r = sec(x);
     @endcode
 
     @see cos, secd, secpi, rec

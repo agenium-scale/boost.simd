@@ -19,20 +19,14 @@ namespace boost { namespace simd
   @ingroup group-trigonometric
     Function object implementing sinc capabilities
 
-    Computes the sinus cardinal  value of its parameter that is sin(x)/x.
+    Computes the sinus cardinal  value of its parameter that is  \f$sin(x)/x\f$.
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
-    T r = sinc(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = x ? sin(x)/x : One;
+    auto r = sinc(x);
     @endcode
 
     @see sin, sincpi, sinhc

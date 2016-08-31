@@ -20,9 +20,11 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing sincosd capabilities
 
-    Computes simultaneously the sind and cosd of the input
+    Computes simultaneously and  at lower costthe sind and cosd of the input
 
     @par Semantic:
+
+    For every parameter of floating type T:
 
     @code
     T s, c;

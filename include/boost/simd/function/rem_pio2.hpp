@@ -39,13 +39,8 @@ namespace boost { namespace simd
     T r =  remainder(x, Pio_2<T>());
     @endcode
 
-    @par Note:
-
-    The Range parameter is a type among big_,  medium_,  small_,  very_small_
-    that allow to statically choose the computation process.
-
   **/
-  std::pair<IntegerValue, Value> rem_2pio(Value const & v0);
+  std::pair<IntegerValue, Value> rem_pio2(Value const & v0);
 } }
 #endif
 

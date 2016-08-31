@@ -20,20 +20,14 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing tan capabilities
 
-    tangent of the input in radians.
+    tangent of the input in radians: \f$\sin(x)/\cos(x)\f$.
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
-    T r = tan(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = sin(x)/cos(x);
+    auto r = tan(x);
     @endcode
 
     As most other trigonometric function tan can be called with a second optional parameter

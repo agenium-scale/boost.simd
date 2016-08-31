@@ -20,7 +20,7 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing cot capabilities
 
-    cotangent of the input in radian: \f$\cos(x)/\sin(x)\f$ .
+    cotangent of the input in radian: \f$\cos(x)/\sin(x)\f$.
 
     @par Semantic:
 

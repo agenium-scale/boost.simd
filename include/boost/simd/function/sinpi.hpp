@@ -20,7 +20,7 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing sinpi capabilities
 
-    sine of angle in \f$\pi\f$ multiples.
+    sine of angle in \f$\pi\f$ multiples: \f$\sin(\pi x)\f$.
 
     @par Semantic:
 
@@ -28,12 +28,6 @@ namespace boost { namespace simd
 
     @code
     T r = sinpi(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = sin(Pi<T>()*x);
     @endcode
 
     @see sine, sincospi, sin, sind

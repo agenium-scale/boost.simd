@@ -51,14 +51,14 @@ namespace boost { namespace simd
     The reduction of the argument modulo \f$\pi/2\f$ is generally
     the most difficult part of trigonometric evaluations.
     The accurate algorithm is over costly and implies the knowledge
-    of a few hundred \f$pi\f$ decimals
+    of a few hundred \f$\pi\f$ decimals
     some simpler algorithms as this one
     can be used, but the precision is only insured on smaller intervals.
 
     @see rem_pio2, rem_pio2_straight,rem_2pi,  rem_pio2_cephes,
 
   **/
-  std::pair<IntegerValue, Value> rem_2pio_medium(Value const & v0);
+  std::pair<IntegerValue, Value> rem_pio2_medium(Value const & v0);
 } }
 #endif
 

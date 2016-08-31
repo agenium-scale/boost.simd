@@ -20,7 +20,7 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing cscd capabilities
 
-    cosecante in degree: \f$\sin(180/(\pi x))\f$.
+    cosecant in degree: \f$\sin(180/(\pi x))\f$.
 
     @par Semantic:
 
