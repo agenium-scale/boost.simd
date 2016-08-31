@@ -13,6 +13,7 @@
 #define BOOST_SIMD_ARCH_X86_SSE4_2_TAGS_HPP_INCLUDED
 
 #include <boost/simd/arch/x86/sse4_1/tags.hpp>
+#include <boost/simd/detail/support.hpp>
 #include <boost/simd/detail/cpuid.hpp>
 
 namespace boost { namespace simd
@@ -26,28 +27,33 @@ namespace boost { namespace simd
   struct sse4_2_  : sse4_1_
   {
     using parent = sse4_1_;
-
-    sse4_2_()
-    {
-      #if BOOST_ARCH_X86
-      support =  detect_feature(20, 0x00000001, detail::ecx);
-      #else
-      support =  false;
-      #endif
-    }
-
-    bool is_supported() const { return support; }
-
-    private:
-    bool support;
   };
+
+  namespace detail
+  {
+    template<> struct support<::boost::simd::sse4_2_>
+    {
+      support()
+      {
+        #if BOOST_ARCH_X86
+        support_ =  detect_feature(20, 0x00000001, detail::ecx);
+        #else
+        support_ =  false;
+        #endif
+      }
+
+      inline bool is_supported() const { return support_; }
+
+      private:
+      bool support_;
+    };
+  }
 
   /*!
     @ingroup  group-api
     Global object for accessing SSE4.2 support informations
   **/
-  static sse4_2_ const sse4_2 = {};
-
+  static detail::support<sse4_2_> const sse4_2 = {};
 } }
 
 #endif

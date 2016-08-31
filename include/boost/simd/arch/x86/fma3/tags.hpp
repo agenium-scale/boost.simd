@@ -17,6 +17,8 @@
 #include <boost/simd/detail/predef.hpp>
 #include <boost/simd/arch/x86/xop/tags.hpp>
 #include <boost/simd/arch/x86/avx/tags.hpp>
+#include <boost/simd/detail/support.hpp>
+#include <boost/simd/detail/cpuid.hpp>
 
 namespace boost { namespace simd
 {
@@ -24,6 +26,7 @@ namespace boost { namespace simd
   struct fma3_ : xop_
   {
     using parent = xop_;
+  };
 #else
   /*!
     @ingroup group-hierarchy
@@ -34,29 +37,35 @@ namespace boost { namespace simd
   struct fma3_ : avx_
   {
     using parent = avx_;
+  };
 #endif
 
-    fma3_()
+  namespace detail
+  {
+    template<> struct support<::boost::simd::fma3_>
     {
-      #if BOOST_ARCH_X86
-      support =   detect_feature(12, 0x00000001, detail::ecx)
-              &&  detect_feature(27, 0x00000001, detail::ecx);
-      #else
-      support = false;
-      #endif
-    }
+      support()
+      {
+        #if BOOST_ARCH_X86
+        support_ =   detect_feature(12, 0x00000001, detail::ecx)
+                 &&  detect_feature(27, 0x00000001, detail::ecx);
+        #else
+        support_ = false;
+        #endif
+      }
 
-    bool is_supported() const { return support; }
+      inline bool is_supported() const { return support_; }
 
-    private:
-    bool support;
-  };
+      private:
+      bool support_;
+    };
+  }
 
   /*!
     @ingroup  group-api
     Global object for accessing FMA3 support informations
   **/
-  static fma3_ const fma3 = {};
+  static detail::support<fma3_> const fma3 = {};
 } }
 
 #endif

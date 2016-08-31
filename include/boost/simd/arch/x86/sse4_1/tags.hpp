@@ -15,6 +15,8 @@
 #include <boost/simd/detail/predef.hpp>
 #include <boost/simd/arch/x86/ssse3/tags.hpp>
 #include <boost/simd/arch/x86/sse4a/tags.hpp>
+#include <boost/simd/detail/support.hpp>
+#include <boost/simd/detail/cpuid.hpp>
 
 namespace boost { namespace simd
 {
@@ -28,33 +30,39 @@ namespace boost { namespace simd
     struct  sse4_1_ : sse4a_
     {
       using parent = sse4a_;
+    };
 #else
     struct  sse4_1_ : ssse3_
     {
       using parent = ssse3_;
+    };
 #endif
 
-    sse4_1_()
+  namespace detail
+  {
+    template<> struct support<::boost::simd::sse4_1_>
     {
-      #if BOOST_ARCH_X86
-      support =  detect_feature(19, 0x00000001, detail::ecx);
-      #else
-      support =  false;
-      #endif
-    }
+      support()
+      {
+        #if BOOST_ARCH_X86
+        support_ =  detect_feature(19, 0x00000001, detail::ecx);
+        #else
+        support_ =  false;
+        #endif
+      }
 
-    bool is_supported() const { return support; }
+      inline bool is_supported() const { return support_; }
 
-    private:
-    bool support;
-  };
+      private:
+      bool support_;
+    };
+  }
 
   /*!
     @ingroup  group-api
     Global object for accessing SSE4.1 support informations
   **/
-  static sse4_1_ const sse4_1 = {};
-
+  static detail::support<sse4_1_> const sse4_1 = {};
 } }
 
 #endif

@@ -13,6 +13,7 @@
 #define BOOST_SIMD_ARCH_X86_SSE3_TAGS_HPP_INCLUDED
 
 #include <boost/simd/arch/x86/sse2/tags.hpp>
+#include <boost/simd/detail/support.hpp>
 #include <boost/simd/detail/cpuid.hpp>
 
 namespace boost { namespace simd
@@ -26,28 +27,33 @@ namespace boost { namespace simd
   struct sse3_  : sse2_
   {
     using parent = sse2_;
-
-    sse3_()
-    {
-      #if BOOST_ARCH_X86
-      support =  detect_feature(0, 0x00000001, detail::ecx);
-      #else
-      support =  false;
-      #endif
-    }
-
-    bool is_supported() const { return support; }
-
-    private:
-    bool support;
   };
+
+  namespace detail
+  {
+    template<> struct support<::boost::simd::sse3_>
+    {
+      support()
+      {
+        #if BOOST_ARCH_X86
+        support_ =  detect_feature(0, 0x00000001, detail::ecx);
+        #else
+        support_ =  false;
+        #endif
+      }
+
+      inline bool is_supported() const { return support_; }
+
+      private:
+      bool support_;
+    };
+  }
 
   /*!
     @ingroup  group-api
     Global object for accessing SSE3 support informations
   **/
-  static sse3_ const sse3 = {};
-
+  static detail::support<sse3_> const sse3 = {};
 } }
 
 #endif

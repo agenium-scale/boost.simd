@@ -12,6 +12,7 @@
 #define BOOST_SIMD_ARCH_PPC_VMX_TAGS_HPP_INCLUDED
 
 #include <boost/simd/arch/common/tags.hpp>
+#include <boost/simd/detail/support.hpp>
 #include <boost/predef/architecture.h>
 #include <boost/predef/os.h>
 
@@ -35,38 +36,43 @@ namespace boost { namespace simd
   struct vmx_ : simd_
   {
     using parent = simd_;
-
-    vmx_()
-    {
-      #if BOOST_ARCH_PPC
-        #if BOOST_OS_MACOS
-          long cpuAttributes;
-          bool hasAltiVec = false;
-          OSErr err = Gestalt( gestaltPowerPCProcessorFeatures, &cpuAttributes );
-          if( noErr == err )
-          {
-            hasAltiVec = ( 1 << gestaltPowerPCHasVectorInstructions) & cpuAttributes;
-          }
-          support = hasAltiVec;
-        #else
-          support = detail::hwcap() & PPC_FEATURE_HAS_ALTIVEC;
-        #endif
-      #else
-        support = false;
-      #endif
-    }
-
-    bool is_supported() const { return support; }
-
-    private:
-    bool support;
   };
+
+  namespace detail
+  {
+    template<> struct support<::boost::simd::vmx_>
+    {
+      support()
+      {
+        #if BOOST_ARCH_PPC
+          #if BOOST_OS_MACOS
+            long cpuAttributes;
+            support_ = false;
+            OSErr err = Gestalt( gestaltPowerPCProcessorFeatures, &cpuAttributes );
+            if( noErr == err )
+            {
+              support_ = ( 1 << gestaltPowerPCHasVectorInstructions) & cpuAttributes;
+            }
+          #else
+            support_ = detail::hwcap() & PPC_FEATURE_HAS_ALTIVEC;
+          #endif
+        #else
+          support_ = false;
+        #endif
+      }
+
+      inline bool is_supported() const { return support_; }
+
+      private:
+      bool support_;
+    };
+  }
 
   /*!
     @ingroup  group-api
     Global object for accessing VMX support informations
   **/
-  static vmx_ const vmx = {};
+  static detail::support<vmx_> const vmx = {};
 } }
 
 #endif
