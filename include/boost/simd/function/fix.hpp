@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
     Computes the truncation toward @ref Zero of its parameter.
 
-    This is a convenient alias of @ref trunc
+    This is a convenience alias of @ref trunc
   **/
   Value fix(Value const & v0);
 } }

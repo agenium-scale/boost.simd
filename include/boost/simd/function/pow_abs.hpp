@@ -39,7 +39,7 @@ namespace boost { namespace simd
     @see pow, abs
 
   **/
-  Value powabs(Value const & v0, Value const& y);
+  Value pow_abs(Value const & x, Value const& y);
 } }
 #endif
 

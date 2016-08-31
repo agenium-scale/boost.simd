@@ -25,6 +25,9 @@ namespace boost { namespace simd
 
     @par Semantic:
 
+
+    For every parameter of type @c T and type @c Target
+
     @code
     T r = saturate<Target>(x)
     @endcode
@@ -39,7 +42,9 @@ namespace boost { namespace simd
 
     @see Minf, Inf, Valmax, Valmin
 
-    Note let us recall that @ref Valmin and @ref Minf (resp. @ref Valmax and @ref Inf)
+    @par Note
+
+    Let us recall that @ref Valmin and @ref Minf (resp. @ref Valmax and @ref Inf)
     are identical if Target is  an integer type.
 
   **/

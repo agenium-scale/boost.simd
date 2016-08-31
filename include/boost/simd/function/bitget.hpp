@@ -23,13 +23,13 @@ namespace boost { namespace simd
     Returns the value of the ith bit in x as an unsigned integer
 
     @par semantic:
-    For any given value @c x of type @c T, i of type @c I:
+    For any given value @c x of type @c T, @c i of type @c I:
 
     @code
     as_integer_t<T> r = bitget(x, i);
     @endcode
 
-    r contains is 0 or \f$2^i\f$ according to the fact the ith bit of x is 0 or 1
+    r contains is 0 or \f$2^i\f$ according to the fact the of rank @c i of @c x is 0 or 1
 
     @see  bitset
 

@@ -20,20 +20,14 @@ namespace boost { namespace simd
     @ingroup group-hyperbolic
     Function object implementing sech capabilities
 
-    Returns the hyperbolic secant: \f$\frac1{\cosh(x)}\f$.
+    Returns the hyperbolic secant: \f$1/\cosh(x)\f$.
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type @c T
 
     @code
     T r = sech(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = rec(cosh(x));
     @endcode
 
     @see rec, cosh

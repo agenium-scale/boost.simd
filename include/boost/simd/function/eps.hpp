@@ -21,9 +21,9 @@ namespace boost { namespace simd
 
     This is the distance between x and the next representable value of x's type.
 
-    For floating types (except denormal numbers)  @c eps(x) returns 2^(exponent(x))*Eps
-
     @par Semantic:
+
+    For every parameter of type @c T
 
     @code
     T r = eps(x);
@@ -34,15 +34,12 @@ namespace boost { namespace simd
     @code
 
     if T is floating
-      r = 2^(exponent(x))*Eps<T>()
+      T  r = 2^(exponent(x))*Eps<T>()
     else if T is integral
-      r = 1;
+      T r = 1;
     @endcode
 
-    @see ulp,  ulpdist,  Eps
-
-    @return a value of same type as the input
-
+    @see ulp, ulpdist, Eps
 **/
   Value eps(Value const & v0);
 

@@ -24,7 +24,7 @@ namespace boost { namespace simd
 
     Finds the first bit set in x, and returns the index of that bit, 0 being
     the least significant bit index.
-    @ ctz assert is the entry is 0
+    @c ctz asserts is the entry is 0
 
     @par semantic:
     For any given value @c x of type @c T:

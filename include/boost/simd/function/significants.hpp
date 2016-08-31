@@ -30,7 +30,7 @@ namespace boost { namespace simd
     T r = significants(x, n);
     @endcode
 
-    is equivalent to round(x, m) where m is n-iceil(log10(abs(x)))
+    is similar to round(x, m) where m is n-iceil(log10(abs(x)))
 
     @see round,  iceil, log10
 

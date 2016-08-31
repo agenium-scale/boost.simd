@@ -31,11 +31,6 @@ namespace boost { namespace simd
     as_integer_t<T> r = exponentbits(x);
     @endcode
 
-    is similar to
-
-    @code
-    @endcode
-
   **/
   as_integer_t<Value> exponentbits(Value const & v0);
 } }

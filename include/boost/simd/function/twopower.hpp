@@ -23,7 +23,7 @@ namespace boost { namespace simd
     Returns \f$2^n\f$ (or 0 if n is less than zero)
 
     @par semantic:
-    For any given value n  of integral type @c N:
+    For any given value @c n  of integral type @c N:
 
     @code
     N r = twopower(n);

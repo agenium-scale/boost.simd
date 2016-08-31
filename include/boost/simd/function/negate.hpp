@@ -25,17 +25,17 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    T r = negate(x,y);
+    auto r = negate(x,y);
     @endcode
 
     is similar to:
 
     @code
-    T r =  x*sign(y);
+    auto r =  x*sign(y);
     @endcode
 
     @par Note
-    If y is @ref Zero the result is zero. If you want to avoid that use
+    If y is @ref Zero the result is zero. This can be avoided using
     @ref negatenz or @ref copysign.
 
     @see sign, negatenz, copysign,  Mzero,  is_positive, is_negative

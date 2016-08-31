@@ -24,16 +24,16 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of types respectively C, T:
+    For every parameters @c c of type @c C and @c t of type @c T:
 
     @code
-    T1 r = if_inc(cond,y);
+    T r = if_inc(cond,y);
     @endcode
 
     is similar to:
 
     @code
-    T1 r = cond ? t+One<T>() : t  ;
+    T r = cond ? t+One<T>() : t;
     @endcode
   **/
   Value if_inc(Value const& c, Value const& v0);

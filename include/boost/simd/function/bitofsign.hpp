@@ -28,16 +28,16 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    T r = bitofsign(x);
+    auto r = bitofsign(x);
     @endcode
 
     for signed types is similar to:
 
     @code
-    T r = x&SignMask;
+    auto r = x&Signmask<T>();
     @endcode
 
-    @see sign, signnz, is_negative, is_positive, Mzero, SignMask;
+    @see sign, signnz, is_negative, is_positive, Mzero, Signmask;
 
   **/
   Value bitofsign(Value const & v0);

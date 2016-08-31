@@ -29,6 +29,10 @@ namespace boost { namespace simd
     T r = gamma(x);
     @endcode
 
+    @par Decorators
+
+    std_ for floating entries provides access to @c std::tgamma
+
     @see gammaln
 
   **/
@@ -37,6 +41,6 @@ namespace boost { namespace simd
 #endif
 
 #include <boost/simd/function/scalar/gamma.hpp>
-//#include <boost/simd/function/simd/gamma.hpp>
+#include <boost/simd/function/simd/gamma.hpp>
 
 #endif

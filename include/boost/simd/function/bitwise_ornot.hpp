@@ -27,7 +27,7 @@ namespace boost { namespace simd
     The result type is the one of the first operand.
 
     @par semantic:
-    For any given value @c x, of type @c T0 @c y of type @c T1
+    For any given value @c x, of type @c T0, @c y of type @c T1
     of same memory size:
 
     @code

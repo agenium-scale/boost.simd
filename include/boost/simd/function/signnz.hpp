@@ -28,21 +28,15 @@ namespace boost { namespace simd
     For floating point numbers the bit of sign is taken into account and so
     we always have signnz(-z) == -signnz(z)).
 
-    The result for @ref Nan entry is undefined
+    The result for @ref Nan entry is undefined.
 
     @par Semantic:
 
     @code
-    T r = signnz(x);
+    auto r = signnz(x);
     @endcode
 
-    is similar to:
-
-    @code
-    T r = is_nan(x) ? Nan<T>() : (is_negative(x) ? T(-1) : T(1));
-    @endcode
-
-    @see Mzero,  sign, is_negative, is_positive
+    @see Mzero, sign, is_negative, is_positive
 
   **/
   Value signnz(Value const & v0);

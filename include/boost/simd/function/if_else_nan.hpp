@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
     If cond is @ref True returns t else returns allbits
 
-    This is a convenient alias of @ref if_else_allbits
+    This is a convenience alias of @ref if_else_allbits
   **/
   Value if_else_nan(Value const& c, Value const& v0);
 

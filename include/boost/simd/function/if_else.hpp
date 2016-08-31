@@ -21,18 +21,20 @@ namespace boost { namespace simd
 
     If cond is @ref True returns t else returns f
 
+    If vectors, the types involved in the call must share the same number of elements.
+
     @par Semantic:
 
-    For every parameters of types respectively C, T1, T2:
+    For every parameters @c c of type @c C, @c t and @c f of type @c T:
 
     @code
-    T1 r = if_else(cond,t,f);
+    T r = if_else(cond,t,f);
     @endcode
 
     is similar to:
 
     @code
-    T1 r = cond ? t : f;
+    T r = cond ? t : f;
     @endcode
 
     @see  if_else_zero, if_else_allbits, if_zero_else,

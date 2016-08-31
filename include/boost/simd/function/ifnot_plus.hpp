@@ -26,22 +26,22 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of types respectively C, T, T:
+    For every parameters @c c of type @c C and @c x, @c y of type @c T:
 
     @code
-    T r = ifnot_plus(cond,t1,t2);
+    T r = ifnot_plus(cond,x,y);
     @endcode
 
     is similar to:
 
     @code
-    T r = cond ? t1 :  t1+t2;
+    T r = cond ? x :  x+y;
     @endcode
 
     @see if_plus
 
   **/
-  Value ifnot_plus(Value const& c, Value const& x, Value const& y)
+  Value ifnot_plus(Value const& c, Value const& x, Value const& y);
 
   //@overload
   Value ifnot_plus(LogicalValue const& c, Value const& x, Value const& y);

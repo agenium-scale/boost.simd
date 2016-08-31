@@ -19,6 +19,7 @@ namespace boost { namespace simd
     Function object implementing erfc capabilities
 
   Computes the complementary error function
+   \f$\displaystyle \frac{2}{\sqrt\pi}\int_{x}^{\infty} e^{-t^2}\mbox{d}t\f$
 
   @par Semantic:
 
@@ -36,7 +37,7 @@ namespace boost { namespace simd
 
   @par Decorators
 
-  std_ for floating entries
+  std_ for floating entries provides access to @c std::erfc
 
   @see erf, erfcx, oneminus
 

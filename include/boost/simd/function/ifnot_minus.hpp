@@ -26,7 +26,7 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-     For every parameters of types respectively C, T, T:
+     For every parameters @c c of type @c C and @c x, @c y of type @c T:
 
     @code
     T1 r = ifnot_minus(cond, x, y);
@@ -39,7 +39,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  Value ifnot_minus(Value const& c, Value const& x, Value const& y)
+  Value ifnot_minus(Value const& c, Value const& x, Value const& y);
 
   //@overload
   Value ifnot_minus(LogicalValue const& c, Value const& x, Value const& y);

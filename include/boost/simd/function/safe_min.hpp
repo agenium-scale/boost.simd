@@ -25,17 +25,19 @@ namespace boost { namespace simd
 
     @par Semantic:
 
+    For every parameter of type @c T
+
     @code
-    T r = safe_min(x);
+    auto r = safe_min(x);
     @endcode
 
     is similar to:
 
     @code
-    T r =  x ? Sqrtsmallestposval<T>()*abs(x);
+    auto r =  Sqrtsmallestposval<T>()*abs(x);
     @endcode
 
-    @see Sqrtsmallestposval
+    @see Sqrtsmallestposval, safe_max
 
   **/
   Value safe_min(Value const & v0);

@@ -25,20 +25,20 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    T r = mantissa(x);
+    auto r = mantissa(x);
     @endcode
 
     is similar to:
 
     @code
-    T r = x*pow(2, -exponent(x));
+    auto r = x*pow(2, -exponent(x));
     @endcode
 
     @par Note
     The @ref exponent e and signed @ref mantissa m of a floating point entry a are related by
-    \f$a = m\times 2^e\f$, with the absolute value of m between one (included) ans two (excluded).
+    \f$a = m\times 2^e\f$, with |m| \f$\in[1, 2[\f$.
 
-    @see frexp
+    @see frexp, pow, exponent
 
   **/
   Value mantissa(Value const & v0);

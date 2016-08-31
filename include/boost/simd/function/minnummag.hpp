@@ -25,16 +25,16 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    T r = minnummag(x,y);
+    auto r = minnummag(x,y);
     @endcode
 
     is similar to:
 
     @code
-    T r =  isnan(x) ? y : (isnan(y) ? x : minmag(x, y));;
+    auto r =  is_nan(x) ? y : (is_nan(y) ? x : minmag(x, y));;
     @endcode
 
-    @see min, minnum, minmag
+    @see min, minnum, minmag, is_nan
 
   **/
   Value minnummag(Value const & x, Value const& y);

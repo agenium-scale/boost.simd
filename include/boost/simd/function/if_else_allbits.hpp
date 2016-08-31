@@ -24,7 +24,7 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of types respectively C, T:
+    For every parameters @c c of type @c C and @c t of type @c T:
 
     @code
     T r = if_else_allbits(cond,t);
@@ -37,7 +37,7 @@ namespace boost { namespace simd
     @endcode
 
     @par Alias:
-    @c  if_else_nan,
+     if_else_nan
 
   **/
   Value if_else_allbits(Value const& c, Value const& v0);

@@ -29,7 +29,7 @@ namespace boost { namespace simd
     as_integer_t<T, unsigned> r = popcnt(x);
     @endcode
 
-    @see  clz, ct
+    @see  clz, ctz
   **/
   IntegerValue popcnt(Value const & v0);
 } }

@@ -36,7 +36,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    as_logical_t<T> r = logical(x);
+    as_logical_t<T> r = (x == Allbits) ? True : (x == Zero) ? False : assert;
     @endcode
 
   **/

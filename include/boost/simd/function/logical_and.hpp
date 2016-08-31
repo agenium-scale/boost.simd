@@ -26,9 +26,11 @@ namespace boost { namespace simd
 
     Infix notation can be used with operator '&&'.
 
+    @warningbox{Take care that using && in scalar mode does short-circuit and does not in simd mode.}
+
     @par Semantic:
 
-    For every parameters of types respectively T0, T1:
+    For every parameters of types respectively @c T0, @c T1:
 
     @code
     as_logical_t<T0> r = logical_and(x,y);
@@ -40,11 +42,12 @@ namespace boost { namespace simd
     as_logical_t<T0> r = x && y ;
     @endcode
 
+
     @see  logical_or, logical_xor, logical_notand,
     logical_andnot, logical_notor, logical_ornot, logical_not
 
   **/
-  as_logical_t<Value> logical_and(Value const& x, Value const& y);
+  as_logical_t<Value> logical_and(Value1 const& x, Value2 const& y);
 } }
 #endif
 

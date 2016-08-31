@@ -24,16 +24,10 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type @c T
 
     @code
     T r = asech(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = acosh(rec(x));
     @endcode
 
     @see acosh, cosh, rec
