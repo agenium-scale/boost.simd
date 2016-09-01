@@ -10,7 +10,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #define BOOST_PREDEF_HARDWARE_SIMD_X86_AMD_H
 
 #include <boost/predef/version_number.h>
-#include <boost/predef/hardware/simd/x86_amd/versions.h>
+#include <boost/simd/detail/predef/hardware/simd/x86_amd/versions.h>
 
 /*`
  [heading `BOOST_HW_SIMD_X86_AMD`]
@@ -71,7 +71,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #else
     // At this point, we know that we have an AMD CPU, we do need to check for
     // other x86 extensions to determine the final version number.
-#   include <boost/predef/hardware/simd/x86.h>
+#   include <boost/simd/detail/predef/hardware/simd/x86.h>
 #   if BOOST_HW_SIMD_X86 > BOOST_HW_SIMD_X86_AMD
 #      undef BOOST_HW_SIMD_X86_AMD
 #      define BOOST_HW_SIMD_X86_AMD BOOST_HW_SIMD_X86

@@ -6,10 +6,10 @@ Distributed under the Boost Software License, Version 1.0.
 http://www.boost.org/LICENSE_1_0.txt)
 */
 
-#include <boost/predef/hardware/simd/x86.h>
-#include <boost/predef/hardware/simd/x86_amd.h>
-#include <boost/predef/hardware/simd/arm.h>
-#include <boost/predef/hardware/simd/ppc.h>
+#include <boost/simd/detail/predef/hardware/simd/x86.h>
+#include <boost/simd/detail/predef/hardware/simd/x86_amd.h>
+#include <boost/simd/detail/predef/hardware/simd/arm.h>
+#include <boost/simd/detail/predef/hardware/simd/ppc.h>
 
 #ifndef BOOST_PREDEF_HARDWARE_SIMD_H
 #define BOOST_PREDEF_HARDWARE_SIMD_H

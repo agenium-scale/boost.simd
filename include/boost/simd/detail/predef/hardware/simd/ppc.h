@@ -10,7 +10,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #define BOOST_PREDEF_HARDWARE_SIMD_PPC_H
 
 #include <boost/predef/version_number.h>
-#include <boost/predef/hardware/simd/ppc/versions.h>
+#include <boost/simd/detail/predef/hardware/simd/ppc/versions.h>
 
 /*`
  [heading `BOOST_HW_SIMD_PPC`]
