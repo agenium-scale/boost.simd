@@ -11,6 +11,9 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #include <boost/predef/version_number.h>
 #include <boost/simd/detail/predef/hardware/simd/x86_amd/versions.h>
+#include <boost/simd/detail/predef/hardware/simd/x86_amd/sse4a.h>
+#include <boost/simd/detail/predef/hardware/simd/x86_amd/fma4.h>
+#include <boost/simd/detail/predef/hardware/simd/x86_amd/xop.h>
 
 /*`
  [heading `BOOST_HW_SIMD_X86_AMD`]
@@ -21,50 +24,20 @@ http://www.boost.org/LICENSE_1_0.txt)
  [table
      [[__predef_symbol__] [__predef_version__]]
 
-     [[`__SSE4A__`] [__predef_detection__]]
-
-     [[`__FMA4__`] [__predef_detection__]]
-
-     [[`__XOP__`] [__predef_detection__]]
-
      [[`BOOST_HW_SIMD_X86`] [__predef_detection__]]
      ]
 
  [table
      [[__predef_symbol__] [__predef_version__]]
 
-     [[`__SSE4A__`] [BOOST_HW_SIMD_X86_SSE4A_VERSION]]
-
-     [[`__FMA4__`] [BOOST_HW_SIMD_X86_FMA4_VERSION]]
-
-     [[`__XOP__`] [BOOST_HW_SIMD_X86_XOP_VERSION]]
-
      [[`BOOST_HW_SIMD_X86`] [BOOST_HW_SIMD_X86]]
      ]
-
- [note This predef includes every other x86 SIMD extensions and also has other
- more specific extensions (FMA4, XOP, SSE4a). You should use this predef
- instead of `BOOST_HW_SIMD_X86` to test if those specific extensions have
- been detected.]
 
  */
 
 #define BOOST_HW_SIMD_X86_AMD BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
-// AMD CPUs also use x86 architecture. We first try to detect if any AMD
-// specific extension are detected, if yes, then try to detect more recent x86
-// common extensions.
-
 #undef BOOST_HW_SIMD_X86_AMD
-#if !defined(BOOST_HW_SIMD_X86_AMD) && defined(__XOP__)
-#   define BOOST_HW_SIMD_X86_AMD BOOST_HW_SIMD_X86_AMD_XOP_VERSION
-#endif
-#if !defined(BOOST_HW_SIMD_X86_AMD) && defined(__FMA4__)
-#   define BOOST_HW_SIMD_X86_AMD BOOST_HW_SIMD_X86_AMD_FMA4_VERSION
-#endif
-#if !defined(BOOST_HW_SIMD_X86_AMD) && defined(__SSE4A__)
-#   define BOOST_HW_SIMD_X86_AMD BOOST_HW_SIMD_X86_AMD_SSE4A_VERSION
-#endif
 
 #if !defined(BOOST_HW_SIMD_X86_AMD)
 #   define BOOST_HW_SIMD_X86_AMD BOOST_VERSION_NUMBER_NOT_AVAILABLE

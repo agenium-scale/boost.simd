@@ -11,6 +11,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 
 #include <boost/predef/version_number.h>
 #include <boost/simd/detail/predef/hardware/simd/x86/versions.h>
+#include <boost/simd/detail/predef/hardware/simd/x86/fma3.h>
 
 /*`
  [heading `BOOST_HW_SIMD_X86`]
@@ -39,8 +40,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 
      [[`__AVX__`] [__predef_detection__]]
 
-     [[`__FMA__`] [__predef_detection__]]
-
      [[`__AVX2__`] [__predef_detection__]]
      ]
 
@@ -65,8 +64,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 
      [[`__AVX__`] [BOOST_HW_SIMD_X86_AVX_VERSION]]
 
-     [[`__FMA__`] [BOOST_HW_SIMD_X86_FMA3_VERSION]]
-
      [[`__AVX2__`] [BOOST_HW_SIMD_X86_AVX2_VERSION]]
      ]
 
@@ -83,9 +80,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 #endif
 #if !defined(BOOST_HW_SIMD_X86) && defined(__AVX__)
 #   define BOOST_HW_SIMD_X86 BOOST_HW_SIMD_X86_AVX_VERSION
-#endif
-#if !defined(BOOST_HW_SIMD_X86) && defined(__FMA__)
-#   define BOOST_HW_SIMD_X86 BOOST_HW_SIMD_X86_FMA_VERSION
 #endif
 #if !defined(BOOST_HW_SIMD_X86) && defined(__SSE4_2__)
 #   define BOOST_HW_SIMD_X86 BOOST_HW_SIMD_X86_SSE4_2_VERSION

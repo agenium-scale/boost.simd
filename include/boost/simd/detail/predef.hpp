@@ -64,7 +64,6 @@
 
 // We assume that everything is gonna be fixed in boost 1.62
 #if BOOST_VERSION <= 107200
-  #warning Using predef fallback
   #include <boost/simd/detail/predef/hardware/simd.h>
 #else
   #include <boost/predef/hardware/simd.h>
