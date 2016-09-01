@@ -30,6 +30,18 @@ namespace boost { namespace simd { namespace ext
    {
      BOOST_FORCEINLINE A0 operator()(A0 const& a0, const bs::fast_tag &) const
       {
+        return _mm256_rsqrt_ps( a0 );
+      }
+   };
+
+  BOOST_DISPATCH_OVERLOAD( rsqrt_
+                         , (typename A0)
+                         , bs::avx_
+                         , bs::pack_< bd::single_<A0>, bs::avx_>
+                         )
+   {
+     BOOST_FORCEINLINE A0 operator()(A0 const& a0, const bs::fast_tag &) const
+      {
         A0 const nr  = _mm256_rsqrt_ps( a0 );
         return nr * Half<A0>() * fnms(a0, sqr(nr), Three<A0>());
       }

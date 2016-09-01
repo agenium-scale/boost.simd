@@ -33,8 +33,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() (fast_tag const&
                                     , const A0 & a0) const BOOST_NOEXCEPT
     {
-      A0 nr  = _mm_rsqrt_ps(a0);
-      return nr*Half<A0>() * fnma(a0, sqr(nr), Mthree<A0>());
+      return  _mm_rsqrt_ps(a0);
     }
   };
 } } }

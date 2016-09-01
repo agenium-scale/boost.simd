@@ -52,7 +52,7 @@ namespace boost { namespace simd { namespace ext
   };
   BOOST_DISPATCH_OVERLOAD ( sqrt_
                           , (typename A0)
-                          , bs::sse1_
+                          , bs::sse2_
                           , boost::simd::fast_tag
                           , bs::pack_<bd::double_<A0>, bs::sse_>
                          )
@@ -62,18 +62,7 @@ namespace boost { namespace simd { namespace ext
       return _mm_sqrt_pd(a0);
     }
   };
-  BOOST_DISPATCH_OVERLOAD ( sqrt_
-                          , (typename A0)
-                          , bs::sse2_
-                          , boost::simd::fast_tag
-                          , bs::pack_<bd::double_<A0>, bs::sse_>
-                         )
-  {
-    BOOST_FORCEINLINE A0 operator() (const fast_tag &,   const A0 & a0) const BOOST_NOEXCEPT
-    {
-       return _mm_sqrt_pd(a0);
-    }
-  };
+
   BOOST_DISPATCH_OVERLOAD ( sqrt_
                           , (typename A0)
                           , bs::sse2_
