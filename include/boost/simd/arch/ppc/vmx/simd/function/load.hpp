@@ -28,7 +28,10 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE typename Target::type operator()(Pointer a0, Target const&) const
     {
-      return vec_perm(vec_ld(0, a0), vec_ld(15, a0), vec_lvsl(0, a0));
+      #pragma GCC diagnostic push
+      #pragma GCC diagnostic ignored "-Wdeprecated"
+      return vec_perm(vec_ld(0, a0), vec_ld(16, a0), vec_lvsl(0, a0));
+      #pragma GCC diagnostic pop
     }
   };
 } } }
