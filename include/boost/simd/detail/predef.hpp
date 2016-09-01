@@ -69,6 +69,14 @@
   #include <boost/predef/hardware/simd.h>
 #endif
 
+// This one is missing from current predef
+#if defined(__BYTE_ORDER__)
+  #if !defined(__BYTE_ORDER)
+    #define __BYTE_ORDER __BYTE_ORDER__
+  #endif
+#endif
+#include <boost/predef/other/endian.h>
+
 // Ensure a cross X86/AMD selection
 #if BOOST_HW_SIMD_X86 > BOOST_HW_SIMD_X86_AMD
   #define BOOST_HW_SIMD_X86_OR_AMD BOOST_HW_SIMD_X86

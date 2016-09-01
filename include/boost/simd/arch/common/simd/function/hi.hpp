@@ -19,7 +19,7 @@
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/simd/detail/dispatch/meta/downgrade.hpp>
 #include <boost/simd/detail/traits.hpp>
-#include <boost/predef/other/endian.h>
+#include <boost/simd/detail/predef.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
