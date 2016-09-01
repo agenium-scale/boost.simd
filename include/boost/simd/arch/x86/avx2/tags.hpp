@@ -14,7 +14,7 @@
 #ifndef BOOST_SIMD_ARCH_X86_AVX2_TAGS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_AVX2_TAGS_HPP_INCLUDED
 
-#include <boost/simd/arch/x86/fma3/tags.hpp>
+#include <boost/simd/arch/x86/avx/tags.hpp>
 #include <boost/simd/detail/support.hpp>
 #include <boost/simd/detail/cpuid.hpp>
 
@@ -26,9 +26,9 @@ namespace boost { namespace simd
 
     This tag represent architectures implementing the Intel AVX2 SIMD instructions set.
   **/
-  struct avx2_  : fma3_
+  struct avx2_ : avx_
   {
-    using parent = fma3_;
+    using parent = avx_;
   };
 
   namespace detail

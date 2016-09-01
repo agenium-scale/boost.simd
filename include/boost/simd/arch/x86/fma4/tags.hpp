@@ -26,9 +26,8 @@ namespace boost { namespace simd
 
     This tag represent architectures implementing the Intel FMA4 SIMD instructions set.
   **/
-  struct fma4_    : avx_
+  struct fma4_
   {
-    using parent = avx_ ;
   };
 
   namespace detail

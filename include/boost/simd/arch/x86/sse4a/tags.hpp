@@ -24,9 +24,8 @@ namespace boost { namespace simd
 
     This tag represent architectures implementing the AMD SSE 4A SIMD instructions set.
   **/
-  struct sse4a_ : ssse3_
+  struct sse4a_
   {
-    using parent = ssse3_;
   };
 
   namespace detail

@@ -14,6 +14,7 @@
 #include <boost/simd/detail/assert_utils.hpp>
 #include <boost/simd/function/simd/rshl.hpp>
 
+#if BOOST_HW_SIMD_X86_AMD_XOP
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
@@ -22,7 +23,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD_IF( shift_left_
                             , (typename A0, typename A1)
                             , (brigand::bool_<bs::cardinal_of<A0>::value == bs::cardinal_of<A1>::value>)
-                            , bs::xop_
+                            , bs::avx_
                             , bs::pack_< bd::integer_<A0>, bs::sse_>
                             , bs::pack_< bd::integer_<A1>, bs::sse_>
                             )
@@ -37,5 +38,6 @@ namespace boost { namespace simd { namespace ext
     }
   };
 } } }
+#endif
 
 #endif

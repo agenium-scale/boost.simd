@@ -13,6 +13,7 @@
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/function/simd/rror.hpp>
 
+#if BOOST_HW_SIMD_X86_AMD_XOP
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
@@ -21,7 +22,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD_IF( ror_
                             , (typename A0, typename A1)
                             , (brigand::bool_<bs::cardinal_of<A0>::value == bs::cardinal_of<A1>::value>)
-                            , bs::xop_
+                            , bs::avx_
                             , bs::pack_< bd::integer_<A0>, bs::sse_>
                             , bs::pack_< bd::integer_<A1>, bs::sse_>
                             )
@@ -32,5 +33,6 @@ namespace boost { namespace simd { namespace ext
     }
   };
 } } }
+#endif
 
 #endif

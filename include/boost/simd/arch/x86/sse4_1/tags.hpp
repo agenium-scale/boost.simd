@@ -26,17 +26,10 @@ namespace boost { namespace simd
 
     This tag represent architectures implementing the Intel SSE 4.1 SIMD instructions set.
   **/
-#ifdef BOOST_HW_SIMD_X86_AMD_AVAILABLE
-    struct  sse4_1_ : sse4a_
-    {
-      using parent = sse4a_;
-    };
-#else
-    struct  sse4_1_ : ssse3_
-    {
-      using parent = ssse3_;
-    };
-#endif
+  struct  sse4_1_ : ssse3_
+  {
+    using parent = ssse3_;
+  };
 
   namespace detail
   {

@@ -18,10 +18,4 @@
 #include <boost/simd/arch/common/limits.hpp>
 #include <boost/simd/arch/x86/sse2/limits.hpp>
 
-namespace boost { namespace simd
-{
-  template<> struct limits<boost::simd::sse4a_> : limits<boost::simd::sse2_> {};
-} }
-
 #endif
-

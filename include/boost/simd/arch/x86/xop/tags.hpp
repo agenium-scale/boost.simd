@@ -26,9 +26,8 @@ namespace boost { namespace simd
 
     This tag represent architectures implementing the AMD XOP SIMD instructions set.
   **/
-  struct xop_ : fma4_
+  struct xop_
   {
-    using parent = fma4_;
   };
 
   namespace detail
