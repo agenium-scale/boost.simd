@@ -8,6 +8,11 @@
 programs. **Boost.SIMD** is designed to seamlessly integrate into existing projects so that you can quickly and 
 easily start developing high performance, portable and future proof software.
 
+## Important Links :
+ - [The current Issues List](https://github.com/NumScale/boost.simd/issues)
+ - [The documentation](http://numscale.github.io/boost.simd/)
+ - [the Q&A Google group](https://groups.google.com/forum/#!forum/boost-simd)
+ 
 # What is SIMD?
 
 Single instruction, multiple data (__SIMD__) instructions or **multimedia extensions** have been available
