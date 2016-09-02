@@ -20,28 +20,27 @@ namespace boost { namespace simd
     @ingroup group-predicates
     Function object implementing is_not_denormal capabilities
 
-    Returns @ref True or @ref False according x is not denormal or is.
+    Returns @ref True or @ref False according x is not denormal.
 
     @par Semantic:
 
     @code
-    as_logical_t<T> r = is_not_denormal(x);
+    auto r = is_not_denormal(x);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<T> r = (abs(x) >=  Smallestposval<T>());
+    auto r = !(abs(x) <   Smallestposval<T>()) || (x == 0);
     @endcode
 
     @see Smallestposval
 
   **/
-  as_logical_t<Value> is_not_denormal(Value const& x);
+  as_logical_t<Value> is_not_denormal(Value const& x)
 } }
 #endif
 
-#include <boost/simd/function/scalar/is_not_denormal.hpp>
 #include <boost/simd/function/scalar/is_not_denormal.hpp>
 #include <boost/simd/function/simd/is_not_denormal.hpp>
 

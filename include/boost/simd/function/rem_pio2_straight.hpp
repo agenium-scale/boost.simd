@@ -53,14 +53,14 @@ namespace boost { namespace simd
     the most difficult part of trigonometric evaluations.
     The accurate algorithm over the whole floating point range
     is over costly and implies the knowledge
-    of a few hundred \f$pi\f$ decimals
+    of a few hundred \f$\pi\f$ decimals
     some simpler algorithms as this one
     can be used, but the precision is only insured on specific intervals.
 
     @see rem_pio2, rem_pio2_medium,rem_2pi, rem_pio2_cephes,
 
   **/
-  std::pair<IntegerValue, Value> rem_2pio_straight(Value const & v0);
+  std::pair<IntegerValue, Value> rem_pio2_straight(Value const & v0);
 } }
 #endif
 

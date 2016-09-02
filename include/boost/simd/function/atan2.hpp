@@ -20,23 +20,15 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing atan2 capabilities
 
-    atan2 function.
+    quadrant aware atan2 function.
 
     @par Semantic:
 
-    For every parameters of floating type T:
+    For every parameters @c x and @c y of same floating type
 
     @code
-    T r = atan2(y, x);
+    auto r = atan2(y, x);
     @endcode
-
-    is similar but not fully equivalent to:
-
-    @code
-    T r =  atan(y/x);;
-    @endcode
-
-    as it is quadrant aware.
 
     @par Notes
 
@@ -68,7 +60,9 @@ namespace boost { namespace simd
 
     @par Decorators
 
-    std_ and fast_
+    std_ for floating entries provides access to std::atan2
+
+    fast_ is speedier but as indicated is not fully conformant to the standard
 
   @see atan, atand, atanpi
 

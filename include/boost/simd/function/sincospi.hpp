@@ -20,7 +20,7 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing sincospi capabilities
 
-    Computes simultaneously the sine and cosine
+    Computes simultaneously and at lower cost the sine and cosine
     of the input in \f$\pi\f$ multiples.
 
     @par Semantic:

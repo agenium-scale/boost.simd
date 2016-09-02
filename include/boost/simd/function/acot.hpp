@@ -24,7 +24,7 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
     T r = acot(x);
@@ -33,7 +33,7 @@ namespace boost { namespace simd
     Returns the arc @c r in the interval
     \f$[0, \pi[\f$ such that <tt>cot(r) == x</tt>.
 
-    @see acotd
+    @see acotd, acotpi, cot
 
   **/
   Value acot(Value const & v0);

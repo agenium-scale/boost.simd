@@ -25,13 +25,13 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    as_logical_t<T> r = is_ord(x,y);
+    auto r = is_ord(x,y);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<T> r = (x == x) && (y == y);
+    auto r = (x == x) && (y == y);
     @endcode
 
   **/

@@ -26,7 +26,7 @@ namespace boost { namespace simd
     For every parameters of type T:
 
     @code
-    as_logical_t<T> r = compare_equal(x,y);
+    auto r = compare_equal(x,y);
     @endcode
 
     is similar to:

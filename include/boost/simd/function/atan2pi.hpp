@@ -24,23 +24,23 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of floating type T:
+    For every parameters of same floating type
 
     @code
-    T r = atan2pi(x, y);
+    auto r = atan2pi(y, x);
     @endcode
 
-    is similar but not fully equivalent to:
+    is similar  to:
 
     @code
-    T r =  atanpi(y/x);;
+    auto r =  atan2(y, x)/Pi;
     @endcode
 
     as it is quadrant aware.
 
-    For any real arguments @c x and @c y not both equal to zero, <tt>atan2pi(x, y)</tt>
+    For any real arguments @c x and @c y not both equal to zero, <tt>atan2pi(y, x)</tt>
     is the angle in degrees between the positive x-axis of a plane and the point
-    given by the coordinates  <tt>(y, x)</tt>.
+    given by the coordinates  <tt>(x, y)</tt>.
 
     It is also the angle in \f$[-1, 1[\f$ for which
     \f$x/\sqrt{x^2+y^2}\f$ and \f$y/\sqrt{x^2+y^2}\f$

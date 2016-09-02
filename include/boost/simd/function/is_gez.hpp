@@ -25,13 +25,13 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    as_logical_t<T> r = is_gez(x);
+    auto r = is_gez(x);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<T> r = x >= 0;
+    auto r = x >= Zero;
     @endcode
 
   **/

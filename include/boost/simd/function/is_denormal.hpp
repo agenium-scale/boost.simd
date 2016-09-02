@@ -25,13 +25,13 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    as_logical_t<T> r = is_denormal(x);
+    auto r = is_denormal(x);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<T> r = (x != 0) && (abs(x) < Smallestposval<T>());
+    auto r = (x != 0) && (abs(x) < Smallestposval<T>());
     @endcode
 
     @see Smallestposval

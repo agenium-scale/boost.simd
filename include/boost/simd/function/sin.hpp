@@ -24,10 +24,10 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
-    T r = sin(x);
+    auto r = sin(x);
     @endcode
 
     As most other trigonometric function sin can be called with a second optional parameter

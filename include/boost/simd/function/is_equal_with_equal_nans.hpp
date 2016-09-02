@@ -26,13 +26,13 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    as_logical_t<T> r = is_equal_with_equal_nans(x,y);
+    auto r = is_equal_with_equal_nans(x,y);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<T> r = (x == y) || ((x!= x) && (y!= y));
+    auto r = (x == y) || ((x!= x) && (y!= y));
     @endcode
 
     @see Nan

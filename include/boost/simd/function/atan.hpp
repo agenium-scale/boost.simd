@@ -24,10 +24,10 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
-    T r = atan(x);
+    auto r = atan(x);
     @endcode
 
     Returns the arc @c r in the interval
@@ -35,9 +35,9 @@ namespace boost { namespace simd
 
     @par Decorators
 
-    std_ for floating entries
+    std_ for floating entries  provides access to std::atan
 
-    @see atan2, atand, atanpi
+    @see atan2, atand, atanpi, tan
 
   **/
   Value atan(Value const & v0);

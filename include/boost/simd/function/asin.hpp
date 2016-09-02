@@ -24,10 +24,10 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
-    T r = asin(x);
+    auto r = asin(x);
     @endcode
 
     Returns the arc @c r in the interval
@@ -36,9 +36,9 @@ namespace boost { namespace simd
 
     @par Decorators
 
-    std_ for floating entries
+    std_ for floating entries provides access to std::asin
 
-    @see asind, asinpi
+    @see asind, asinpi, sin
 
   **/
   Value asin(Value const & v0);

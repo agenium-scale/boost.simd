@@ -19,19 +19,13 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing sincpi capabilities
 
-    Computes the sinpi cardinal  value of its parameter that is sin(Pi*x)/(Pi*x).
+    Computes the sinpi cardinal  value of its parameter that is \f$sin(\pi x)/(\pix) \f$.
     @par Semantic:
 
     For every parameter of floating type T
 
     @code
     T r = sincpi(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = x ? sinpi(x)/(Pi<T>()*x) : One;
     @endcode
 
     @see sin, sinc, sinhc

@@ -51,8 +51,8 @@ namespace boost { namespace simd
        <center>
          | name        | name            | name        | name             |
          |:-----------:|:---------------:|:-----------:|:----------------:|
-         | @ref ceil   | @ref round      | @ref ifloor | @ref inearbyint |
-         | @ref floor  | @ref nearbyint | @ref ifix   |                  |
+         | @ref ceil   | @ref round      | @ref ifloor |  @ref inearbyint |
+         | @ref floor  | @ref nearbyint  | @ref ifix   |                  |
          | @ref fix    | @ref iceil      | @ref iround |                  |
         </center>
 
@@ -74,18 +74,18 @@ namespace boost { namespace simd
        (@ref as_integer_t<T>). (fT and iT are here only to support pseudo code description)
 
        <center>
-         | option             |          call            |      result similar to                        |
-         |--------------------|--------------------------|-----------------------------------------------|
-         | @ref ceil          |   div(ceil, a, b)        |      T(ceil(fT(a)/fT(b)))                     |
-         | @ref floor         |   div(floor, a, b)       |      T(floor(fT(a)/fT(b)))                    |
-         | @ref fix           |   div(fix, a, b)         |      T(fix(fT(a)/fT(b)))                      |
-         | @ref round         |   div(round, a, b)       |      T(round(fT(a)/fT(b)))                    |
-         | @ref nearbyint     |   div(nearbyint, a, b)   |      T(nearbyint(fT(a)/fT(b)))                |
-         | @ref iceil         |   div(iceil, a, b)       |      iT(iceil(fT(a)/fT(b)))                   |
-         | @ref ifloor        |   div(ifloor, a, b)      |      iT(ifloor(fT(a)/fT(b)))                  |
-         | @ref ifix          |   div(ifix, a, b)        |      iT(ifix(fT(a)/fT(b)))                    |
-         | @ref iround        |   div(iround, a, b)      |      iT(iround(fT(a)/fT(b)))                  |
-         | @ref inearbyint    |   div(inearbyint, a, b)  |      iT(inearbyint(fT(a)/fT(b)))              |
+         | option             |          call            |      result similar to               |
+         |--------------------|--------------------------|--------------------------------------|
+         | @ref ceil          |   div(ceil, a, b)        |      T(ceil(fT(a)/fT(b)))            |
+         | @ref floor         |   div(floor, a, b)       |      T(floor(fT(a)/fT(b)))           |
+         | @ref fix           |   div(fix, a, b)         |      T(fix(fT(a)/fT(b)))             |
+         | @ref round         |   div(round, a, b)       |      T(round(fT(a)/fT(b)))           |
+         | @ref nearbyint     |   div(nearbyint, a, b)   |      T(nearbyint(fT(a)/fT(b)))       |
+         | @ref iceil         |   div(iceil, a, b)       |      iT(iceil(fT(a)/fT(b)))          |
+         | @ref ifloor        |   div(ifloor, a, b)      |      iT(ifloor(fT(a)/fT(b)))         |
+         | @ref ifix          |   div(ifix, a, b)        |      iT(ifix(fT(a)/fT(b)))           |
+         | @ref iround        |   div(iround, a, b)      |      iT(iround(fT(a)/fT(b)))         |
+         | @ref inearbyint    |   div(inearbyint, a, b)  |      iT(inearbyint(fT(a)/fT(b)))     |
         </center>
 
      - **Remainder operations**

@@ -17,33 +17,30 @@ namespace boost { namespace simd
 
  /*!
 
-    @ingroup group-predicates
+    @ingroup group-operator
     Function object implementing is_equal capabilities
 
     Returns @ref True or @ref False
-    according x and y are equal or not. Infix notation can be used with operator '=='
+    according x and y are equal or not.
+
+    Infix notation can be used with operator '=='
 
     @par Semantic:
 
-    For every parameters of types respectively T0, T1:
-
     @code
-    as_logical_t<T0> r = is_equal(x,y);
+    auto r = is_equal(x,y);
     @endcode
 
-    is similar to:
+    or
 
     @code
-    as_logical_t<T0> r = x == y;
+    auto r = x == y;
     @endcode
-
-    @par Alias:
-    @c eq, @c is_eq
 
     @see  is_not_equal, is_eqz, is_equal_with_equal_nans
 
   **/
-  as_logical_t is_equal(T0 const& x, T1 const& y);
+  as_logical_t<T0> is_equal(T0 const& x, T1 const& y);
 } }
 #endif
 

@@ -17,7 +17,7 @@ namespace boost { namespace simd
 
  /*!
 
-    @ingroup group-arithmetic
+    @ingroup group-oerator
     Function object implementing rem capabilities
 
     Computes the remainder of division.

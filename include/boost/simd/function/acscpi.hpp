@@ -20,23 +20,18 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing acscpi capabilities
 
-     inverse secant in degree.
+     inverse secant in degree: \f$(1/\pi) \arcsin(1/x)\f$.
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
-    T r = acscpi(x);
+    auto r = acscpi(x);
     @endcode
 
-    is similar to:
 
-    @code
-    T r =  asinpi(rec(x));;
-    @endcode
-
-    @see asec, asecd
+    @see acsc, acscd, asinpi, sinpi
 
   **/
   Value acscpi(Value const & v0);

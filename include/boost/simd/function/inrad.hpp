@@ -24,19 +24,19 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
-    T r = inrad(x);
+    auto r = inrad(x);
     @endcode
 
     is similar to:
 
     @code
-    T r = Deginrad<T>()*x;
+    auto r = Deginrad*x;
     @endcode
 
-    @see  indeg, Radindeg, Radindegr, Deginrad
+    @see  indeg, Radindeg, Deginrad
 
   **/
   Value inrad(Value const & v0);

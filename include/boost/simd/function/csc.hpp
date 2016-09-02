@@ -20,20 +20,14 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing csc capabilities
 
-    cosecante of the input in radian.
+    cosecante of the input in radian : \f$\sin(1/x)\f$.
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
-    T r = csc(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = rec(sin(x));
+    auto r = csc(x);
     @endcode
 
     As most other trigonometric function csc can be called with a second optional parameter

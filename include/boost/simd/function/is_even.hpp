@@ -25,13 +25,13 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    as_logical_t<T> r = is_even(x);
+    auto r = is_even(x);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<T> r = int(x/2)*2 == x;
+    auto r = to_int(x/2)*2 == x;
     @endcode
 
     @par Note:

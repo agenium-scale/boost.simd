@@ -20,23 +20,17 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing acscd capabilities
 
-    inverse cosecant in degree.
+    inverse cosecant in degree: \f$(180/\pi) \arcsin(1/x)\f$.
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
-    T r = acscd(x);
+    auto r = acscd(x);
     @endcode
 
-    is similar to:
-
-    @code
-    T r =  asind(rec(x));;
-    @endcode
-
-    @see acsc
+    @see acsc, acscpi, asind, sind
 
   **/
   Value acscd(Value const & v0);

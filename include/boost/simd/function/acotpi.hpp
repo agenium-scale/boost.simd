@@ -24,16 +24,16 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
-    T r = acotpi(x);
+    auto r = acotpi(x);
     @endcode
 
     Returns the arc @c r in the interval
     \f$[0, 1[\f$ such that <tt>cotpi(r) == x</tt>.
 
-    @see acot
+    @see acot, acotd, cotpi
 
   **/
   Value acotpi(Value const & v0);

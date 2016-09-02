@@ -25,7 +25,7 @@ namespace boost { namespace simd
 
     This is a convenience alias of @ref complement
   **/
-  const boost::dispatch::functor<tag::bitwise_not_> bitwise_not = {};
+  Value bitwise_not(Value const & x);
 } }
 #endif
 

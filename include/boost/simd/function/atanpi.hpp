@@ -24,16 +24,16 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
-    T r = atanpi(x);
+    auto r = atanpi(x);
     @endcode
 
     Returns the arc @c r in the interval
     \f$[-0.5, 0.5[\f$ such that <tt>tanpi(r) == x</tt>.
 
-    @see atan2, atan2d, atand, atan
+    @see atan2, atan2d, atand, atan, tanpi
 
   **/
   Value atanpi(Value const & v0);

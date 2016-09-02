@@ -25,7 +25,7 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    as_logical_t<T> r = is_flint(x);
+    auto r = is_flint(x);
     @endcode
 
     @par Note:

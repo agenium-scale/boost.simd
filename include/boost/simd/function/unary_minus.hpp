@@ -29,13 +29,13 @@ namespace boost { namespace simd
     For every parameter of type T
 
     @code
-    T r = unary_minus(x);
+    auto r = unary_minus(x);
     @endcode
 
-    is similar to:
+    or
 
     @code
-    T r = -x;
+    auto r = -x;
     @endcode
 
     @par Note:
@@ -43,7 +43,8 @@ namespace boost { namespace simd
     - Be aware that for signed integers the unary_minus of @ref Valmin is
     @ref Valmin. This is a side effect of the 2-complement
     representation of integers. To avoid this, you may use the
-    saturated_ functor or convert the input parameter to a larger type
+    saturated_ functor (calling saturated_(unary_minus)(x))
+    or convert the input parameter to a larger type
     before taking the unary_minus value.
 
     @see  minus, unary_plus
