@@ -22,8 +22,8 @@
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/predef.hpp>
 #include <boost/config.hpp>
-#include <boost/detail/endian.hpp>
 #include <utility>
 
 
@@ -437,7 +437,7 @@ do {                                                                           \
      * is preserved.
      * ====================================================
      */
-#ifdef BOOST_LITTLE_ENDIAN
+#if BOOST_ENDIAN_LITTLE_BYTE
 #define LOW_WORD_IDX 0
 #define HIGH_WORD_IDX sizeof(std::uint32_t)
 #else
