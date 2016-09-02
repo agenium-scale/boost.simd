@@ -12,6 +12,7 @@
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/constant/zero.hpp>
 
+#if BOOST_HW_SIMD_X86_AMD_XOP
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
@@ -19,7 +20,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( muls_
                           , (typename A0)
-                          , bs::xop_
+                          , bs::avx_
                           , bs::pack_<bd::int16_<A0>, bs::sse_>
                           , bs::pack_<bd::int16_<A0>, bs::sse_>
                           )
@@ -32,7 +33,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( muls_
                           , (typename A0)
-                          , bs::xop_
+                          , bs::avx_
                           , bs::pack_<bd::int32_<A0>, bs::sse_>
                           , bs::pack_<bd::int32_<A0>, bs::sse_>
                           )
@@ -43,5 +44,6 @@ namespace boost { namespace simd { namespace ext
     }
   };
 } } }
+#endif
 
 #endif

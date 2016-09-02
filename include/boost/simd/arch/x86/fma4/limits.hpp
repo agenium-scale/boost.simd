@@ -18,10 +18,4 @@
 #include <boost/simd/arch/common/limits.hpp>
 #include <boost/simd/arch/x86/avx/limits.hpp>
 
-namespace boost { namespace simd
-{
-  template<> struct limits<boost::simd::fma4_> : limits<boost::simd::avx_> {};
-} }
-
 #endif
-

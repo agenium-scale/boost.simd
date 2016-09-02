@@ -14,6 +14,8 @@
 #ifndef BOOST_SIMD_DETAIL_PREDEF_HPP_INCLUDED
 #define BOOST_SIMD_DETAIL_PREDEF_HPP_INCLUDED
 
+#include <boost/version.hpp>
+
 /*
   Force the setup of specific SIMD x86 extension on MSVC.
 
@@ -60,7 +62,12 @@
   #endif
 #endif
 
-#include <boost/predef/hardware/simd.h>
+// We assume that everything is gonna be fixed in boost 1.62
+#if BOOST_VERSION <= 107200
+  #include <boost/simd/detail/predef/hardware/simd.h>
+#else
+  #include <boost/predef/hardware/simd.h>
+#endif
 
 // Ensure a cross X86/AMD selection
 #if BOOST_HW_SIMD_X86 > BOOST_HW_SIMD_X86_AMD

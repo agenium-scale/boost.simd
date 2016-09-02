@@ -11,6 +11,7 @@
 
 #include <boost/simd/detail/overload.hpp>
 
+#if BOOST_HW_SIMD_X86_FMA3
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
@@ -18,7 +19,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( fma_
                           , (typename A0)
-                          , bs::fma3_
+                          , bs::avx_
                           , bs::pack_<bd::single_<A0>, bs::sse_>
                           , bs::pack_<bd::single_<A0>, bs::sse_>
                           , bs::pack_<bd::single_<A0>, bs::sse_>
@@ -32,7 +33,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( fma_
                           , (typename A0)
-                          , bs::fma3_
+                          , bs::avx_
                           , bs::pack_<bd::double_<A0>, bs::sse_>
                           , bs::pack_<bd::double_<A0>, bs::sse_>
                           , bs::pack_<bd::double_<A0>, bs::sse_>
@@ -46,7 +47,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( fma_
                           , (typename A0)
-                          , bs::fma3_
+                          , bs::avx_
                           , bs::pack_<bd::single_<A0>, bs::avx_>
                           , bs::pack_<bd::single_<A0>, bs::avx_>
                           , bs::pack_<bd::single_<A0>, bs::avx_>
@@ -60,7 +61,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( fma_
                           , (typename A0)
-                          , bs::fma3_
+                          , bs::avx_
                           , bs::pack_<bd::double_<A0>, bs::avx_>
                           , bs::pack_<bd::double_<A0>, bs::avx_>
                           , bs::pack_<bd::double_<A0>, bs::avx_>
@@ -73,5 +74,6 @@ namespace boost { namespace simd { namespace ext
   };
 
 } } }
+#endif
 #include <boost/simd/arch/x86/fma3/simd/function/correct_fma.hpp>
 #endif

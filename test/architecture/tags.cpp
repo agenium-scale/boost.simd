@@ -48,29 +48,11 @@ STF_CASE( "Check for architectural tag parent for X86/AMD" )
   STF_TYPE_IS( boost::simd::sse2_::parent   , boost::simd::sse1_        );
   STF_TYPE_IS( boost::simd::sse3_::parent   , boost::simd::sse2_        );
   STF_TYPE_IS( boost::simd::ssse3_::parent  , boost::simd::sse3_        );
-
-  #ifdef BOOST_HW_SIMD_X86_AMD_AVAILABLE
-  STF_TYPE_IS( boost::simd::sse4a_::parent , boost::simd::ssse3_  );
-  STF_TYPE_IS( boost::simd::sse4_1_::parent , boost::simd::sse4a_ );
-  #else
   STF_TYPE_IS( boost::simd::sse4_1_::parent , boost::simd::ssse3_  );
-  #endif
+  STF_TYPE_IS( boost::simd::sse4_2_::parent , boost::simd::sse4_1_ );
 
-  STF_TYPE_IS( boost::simd::sse4_2_::parent  , boost::simd::sse4_1_ );
-  STF_TYPE_IS( boost::simd::avx_::parent     , boost::simd::sse4_2_ );
-
-#ifdef BOOST_HW_SIMD_X86_AMD_AVAILABLE
-  STF_TYPE_IS( boost::simd::fma4_::parent  , boost::simd::avx_ );
-  STF_TYPE_IS( boost::simd::xop_::parent   , boost::simd::fma4_ );
-#endif
-
-#ifdef BOOST_HW_SIMD_X86_AMD_AVAILABLE
-  STF_TYPE_IS( boost::simd::fma3_::parent  , boost::simd::xop_ );
-#else
-  STF_TYPE_IS( boost::simd::fma3_::parent  , boost::simd::avx_ );
-#endif
-
-  STF_TYPE_IS( boost::simd::avx2_::parent, boost::simd::fma3_ );
+  STF_TYPE_IS( boost::simd::avx_::parent    , boost::simd::sse4_2_ );
+  STF_TYPE_IS( boost::simd::avx2_::parent   , boost::simd::avx_ );
 }
 
 STF_CASE( "Check for architectural tag parent for PowerPC" )

@@ -13,6 +13,7 @@
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
+#if BOOST_HW_SIMD_X86_AMD_XOP
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
@@ -21,7 +22,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD_IF( bitwise_select_
                             , (typename A0, typename A1)
                             , (brigand::bool_<A0::static_size == A1::static_size>)
-                            , bs::xop_
+                            , bs::avx_
                             , bs::pack_<bd::fundamental_<A0>, bs::sse_>
                             , bs::pack_<bd::fundamental_<A1>, bs::sse_>
                             , bs::pack_<bd::fundamental_<A1>, bs::sse_>
@@ -41,7 +42,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD_IF( bitwise_select_
                             , (typename A0, typename A1)
                             , (brigand::bool_<A0::static_size == A1::static_size>)
-                            , bs::xop_
+                            , bs::avx_
                             , bs::pack_<bd::fundamental_<A0>, bs::avx_>
                             , bs::pack_<bd::fundamental_<A1>, bs::avx_>
                             , bs::pack_<bd::fundamental_<A1>, bs::avx_>
@@ -58,5 +59,6 @@ namespace boost { namespace simd { namespace ext
     }
   };
 } } }
+#endif
 
 #endif
