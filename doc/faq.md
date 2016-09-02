@@ -1,20 +1,18 @@
 Frequently Asked Questions {#faq}
 =========
 
+@section faq-questions Frequently Asked Questions
+
 - [Why is the speed-up of my code not as expected?](#faq-speed)
+- [My code seg-faulted or crashed](#faq-memory-alignment)
+- [I tried to use a comparison operator and my code failed to compile](#faq-comparison)
+- [How do I measure the speed-up of my code](#faq-speed-up)
+- [My AVX code is not twice as fast as SSE](#faq-sse-avx)
+- [I disassembled my code, and the generated code is less than optimal.](#faq-code-gen)
+- [How can I use a certain intrinsic?](#faq-intrisic)
+- [compile](#faq-)
 
-  how can i use intrinsic XXX? We map the itnrinsic wherer is makes sense semaentaically
-  and if it does not, you may call it your self, however this willll not be portable
- 
-  i try to use comaprison operator and failed to compile - check types - types
-  should be equal, use auto or as_logical_t 
-  vectorized comaprison and reduction comarpsion
-
-   
-  My code seg faulted? - memory aligned?
-  my code is much faster than expected - cache hot
-
-\anchor faq-speed Speed
+@subsection faq-speed Why is the speed-up of my code not as expected?
 
   There are several factors which can reduce the speed-up obtained using **Boost.SIMD**.
   - Have you enabled compiler optimizations? 
@@ -51,19 +49,92 @@ Frequently Asked Questions {#faq}
 
     @snippet memorybound.cpp memory-memory
     
-    The following loop is compute-bound. The cost of ca
+    The following loop is compute-bound. As most of the time is spent calculating
+    exp, significant speed-up is observed when this code is vectorized.
+
     @snippet memorybound.cpp memory-compute
 
+  - Is your code trivially vetcorizable?
+    Modern compilers can vectorize trivial code segments automatically. If you
+    benchmark a trivial scalar code versus a vectorized code, the compiler may
+    vectorize the scalar code, thereby giving similar performance to the vectorized
+    version.
 
-aligned memory
-- memory bound
-  64 bit mode
-  bad algorithm - is it vectorizable enough? 
-  cache issues
-  input size big enough
-  how to measure performance
-  auto vetcorizer
-  sometimes choice between accuracy and speed, see decorators for more
+  - Is your algorithm vectorizable?
+  - Have you used the fastest version of your function?
+    Several **Boost.SIMD** functions, particularly more complex ones, come in several
+    versions, where the user has a choice between accuracy and speed. This is achieved using
+    decorators. Please refer to @ref decorators for more information.
+
+@subsection faq-memory-alignment Why did my code seg-faulted or crashed?
+
+The most common cause of seg-faults in SIMD codes is accessing non-aligned memory. For best
+performance, all memory should be aligned on pack_t::alignment bytes. Boost.SIMD includes an
+aligned memory allocator to help you with this. Please refer to @ref tutorial-memory for details
+on how to ensure that you memory is correctly aligned.
+
+@subsection faq-comparison I tried to use a comparison operator and my code failed to compile
+
+The most common reason for this is that the two packs being compared are not of the same type. 
+Another common reason is that the return type is incorrect. Using auto is one way of preventing
+this error, however, it is best to be aware of the types you are using. Comparison operators in
+**Boost.SIMD** are of two types, either vectorized comparison, where the results is a vector
+of logical with the same cardinal as the input vectors, or a reduction comparison, where the
+result is a bool.
+
+@subsection faq-speed-up How to measure the speed-up of SIMD code?
+
+There are several ways to measure the speed-up of your code. You may use the **Boost.SIMD** bench
+system to benchmark your code segment. This allows you to measure the execution time of your code
+in cycles per element or in units of time.
+
+Otherwise, you may use standard timing routines such as those available in `std::chrono`.
+In order to accurately becnhmark your code, there are several points to consider.
+
+- Your input should be sufficiently large. This is to eliminate cache effects.
+- Your code is compiled in release mode, with all optimizations enabled and debug information
+  not included.
+- You should measure several times and use the average.
+
+A typical case where a benchmark could give inaaccurate results is where the input is not
+large enough to fill the cache and a scalar and SIMD code segment are individually benchmarked, one
+after the other. In this case, all of the data will be loaded into the cache during the first bench,
+and will be available for the second bench, therefore decreasing the execution time of the second bench.
+Also, if you measure the code segment multiple times, the data from the first execution will already be
+in the cache.
+
+@subsection faq-sse-avx My code compiled for AVX is not twice as fast as for SSE
+
+Not all SSE instructions have an equivalent AVX instruction. Also, the cycles required for
+certain instructions are not equal on both architectures, for example, sqrt on SSE requires
+10-14 cycles whereas sqrt on AVX requires 21-28 cycles. Please refer
+<a href="http://www.agner.org/optimize/instruction_tables.pdf">here</a> for more information.
+
+Very few integer operations are supported on AVX, AVX2 is required for most integer operations. If
+a **Boost.SIMD** function is called on an integer AVX register, this register will be split into
+two SSE registers and the equivalent instruction called on both register. In the case, no speed-up
+will be observed compared with SSE code. This is true also on Altivec, where double is not
+supported.
+
+@subsection faq-code-gen I disassembled my code, and the generated code is less than optimal.
+
+- Have you compiled in release mode, with full optimizations with DNDEBUG defined?
+- Have you used a 64 bit compiler?
+- There are many SIMD related bugs across all compilers, and some compilers generate less than
+  optimal code in some cases. Is it possible to update your compiler to a more modern compiler?
+- We provide work arounds for all known compiler bugs, however, we may have missed some. You may
+  also have found a bug in **Boost.SIMD**. Please report this through issues on our 
+  <a href="https://github.com/numscale/boost.simd/issues">github</a>
+  with a minimal code example. We responds quickly to bug reports and do our best to patch them as
+  quickly as possible.
+  
+@subsection faq-intrisic How can I use a certain intrinsic?
+
+If you require a certain intrinsic, you may search inside of **Boost.SIMD** for it and then call
+the relevant function.
+
+In rare cases, the intrinsic may not be included in *Boost.SIMD** as we map the intrinsic wherever
+it makes sense semantically. If a certain intrinsic does not fit inside of this model, if may be
+excluded. In this case, you may call it yourself, however, this will not be portable.
+
   complex functions
-  architecture issues - double on altivec, integers on AVX
-  compilers being crap
