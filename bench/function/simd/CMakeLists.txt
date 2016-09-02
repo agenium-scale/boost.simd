@@ -120,7 +120,7 @@ set(SOURCES
     frexp.cpp
     gamma.cpp
     gammaln.cpp
-    genmask.cpp
+##    genmask.cpp
     genmaskc.cpp
 ##########    group.cpp
 ##########    groups.cpp

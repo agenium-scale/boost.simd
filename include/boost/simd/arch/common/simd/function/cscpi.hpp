@@ -38,7 +38,7 @@ namespace boost { namespace simd { namespace ext
       return cscpi(a0, tag::big_);
     }
   };
-  BOOST_DISPATCH_OVERLOAD_IF ( cscpi_
+  BOOST_DISPATCH_OVERLOAD ( cscpi_
                           , (typename A0, typename A1, typename X)
                           , bd::cpu_
                           , bs::pack_< bd::floating_<A0>, X>
