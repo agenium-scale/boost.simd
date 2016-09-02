@@ -27,6 +27,8 @@ namespace boost { namespace simd { namespace ext
       return _mm_sqrt_ps(a0);
     }
   };
+
+
 } } }
 
 #endif

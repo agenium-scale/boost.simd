@@ -104,7 +104,6 @@ set(SOURCES
     fast.hypot.cpp
     fast.rec.cpp
     fast.rem.cpp
-    fast.rsqrt.cpp
     fast.sqrt.cpp
     fast.trunc.cpp
     ffs.cpp
@@ -289,6 +288,7 @@ set(SOURCES
 #    rrol.cpp
 #    rror.cpp
     rsqrt.cpp
+    rsqrt.fast.cpp
     safe_max.cpp
     safe_min.cpp
     secd.cpp
@@ -320,6 +320,7 @@ set(SOURCES
     sqr_s.cpp
     sqrt1pm1.cpp
     sqrt.cpp
+    sqrt.fast.cpp
     std.abs.cpp
     std.acos.cpp
     std.asin.cpp

@@ -53,12 +53,24 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( sqrt_
                           , (typename A0)
                           , bs::sse2_
+                          , boost::simd::fast_tag
+                          , bs::pack_<bd::double_<A0>, bs::sse_>
+                         )
+  {
+    BOOST_FORCEINLINE A0 operator() (const fast_tag &, const A0 & a0 ) const BOOST_NOEXCEPT
+    {
+      return _mm_sqrt_pd(a0);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( sqrt_
+                          , (typename A0)
+                          , bs::sse2_
                           , bs::pack_<bd::int_<A0>, bs::sse_>
                          )
   {
     BOOST_FORCEINLINE A0 operator() ( const A0 & a0) const BOOST_NOEXCEPT
     {
-// TODO     BOOST_ASSERT_MSG(assert_all(is_gez(a0)), "sqrt input is negative");
       using uint_type = bd::as_integer_t<A0,unsigned>;
       return simd::bitwise_cast<A0>(sqrt( simd::bitwise_cast<uint_type>(a0)));
     }
@@ -72,7 +84,6 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( const A0 & a0) const BOOST_NOEXCEPT
     {
-//  TODO     BOOST_ASSERT_MSG(assert_all(is_gez(a0)), "sqrt input is negative");
       return bs::toint(bs::sqrt(bs::tofloat(a0)));
     }
   };
