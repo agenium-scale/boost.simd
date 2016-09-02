@@ -20,7 +20,6 @@
 #include <boost/simd/function/if_else.hpp>
 #endif
 
-
 namespace boost { namespace simd { namespace ext
 {
    namespace bd = boost::dispatch;
@@ -40,6 +39,19 @@ namespace boost { namespace simd { namespace ext
         #else
         return that;
         #endif
+      }
+   };
+
+   BOOST_DISPATCH_OVERLOAD( sqrt_
+                          , (typename A0)
+                          , bs::vmx_
+                          , bs::fast_tag
+                          , bs::pack_< bd::single_<A0>, bs::vmx_>
+                          )
+   {
+      BOOST_FORCEINLINE A0 operator()(bs::fast_tag const&, const A0& a0) const BOOST_NOEXCEPT
+      {
+        return if_else_zero(a0, a0 * fast_(rsqrt)(a0));
       }
    };
 } } }
