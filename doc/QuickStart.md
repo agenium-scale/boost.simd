@@ -16,12 +16,13 @@ Boost 1.60 or later
 
 **Boost.SIMD** requires a C++11 compliant compiler and is thoroughly tested with the following compilers:
 
-<table align=center width=25% class="table-striped table-bordered">
-<tr><th>Compiler                <th>Version        
-<tr><td>g++                     <td>4.8 and above
-<tr><td>clang                   <td>3.5 and above
-<tr><td>Microsoft Visual Studio <td>13.0 and above
-</table>
+<center>
+Compiler                | Version
+------------------------|-------------------
+g++                     | 4.8 and above
+clang++                 | 3.5 and above
+Microsoft Visual Studio | 15.0 and above
+</center>
 
 @section installing Installing
 
