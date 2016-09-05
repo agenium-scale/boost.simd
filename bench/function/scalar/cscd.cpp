@@ -7,12 +7,12 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/csc.hpp>
+#include <boost/simd/function/simd/cscd.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_cscd, bs::csc);
+DEFINE_SCALAR_BENCH(scalar_cscd, bs::cscd);
 
 DEFINE_BENCH_MAIN()
 {
