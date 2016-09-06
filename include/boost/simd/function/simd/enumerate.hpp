@@ -14,10 +14,4 @@
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/simd/function/enumerate.hpp>
 
-#if defined(BOOST_HW_SIMD_PPC_AVAILABLE)
-#  if BOOST_HW_SIMD_PPC >= BOOST_HW_SIMD_PPC_VMX_VERSION
-#    include <boost/simd/arch/ppc/vmx/simd/function/enumerate.hpp>
-#  endif
-#endif
-
 #endif

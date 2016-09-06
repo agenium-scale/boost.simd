@@ -30,7 +30,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE bs::as_logical_t<A0>
     operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
-
+    {
       return !((a0 > a1) || (a1 > a0));
     }
   };

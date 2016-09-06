@@ -13,6 +13,19 @@
 #include <simd_test.hpp>
 #include <vector>
 
+template <typename T, typename Env>
+bool is_not_unalignable(Env& $)
+{
+  // If alignment == sizeof(T) then moving data() by 1 won't change memory alignment, then if the
+  // memory passed to segmented_*_range is already aligned to pack<T>::alignment, prologue will
+  // be skiped.
+  if (boost::simd::pack<T>::alignment == sizeof(T)) {
+    STF_PASS("Data is not unalignable");
+    return true;
+  }
+  return false;
+}
+
 STF_CASE_TPL("perfect iteration", STF_NUMERIC_TYPES)
 {
   using boost::simd::pack;
@@ -40,6 +53,8 @@ STF_CASE_TPL("iteration with prologue", STF_NUMERIC_TYPES)
   using boost::simd::segmented_input_range;
 
   std::vector<T,boost::simd::allocator<T>>  ref(pack<T>::static_size*3);
+
+  if (is_not_unalignable<T>($)) return;
 
   for(std::size_t i=0;i<ref.size();i++) ref[i] = T(1);
 
