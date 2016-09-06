@@ -55,10 +55,8 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE result_t operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
       #if BOOST_ENDIAN_BIG_BYTE
-#warning BIG_ENDIAN
       return bitwise_cast<result_t>(interleave_even(Zero<down_t>(), bitwise_cast<down_t>(a0)));
       #else
-#warning LITTLE_ENDIAN
       return bitwise_cast<result_t>(interleave_odd(bitwise_cast<down_t>(a0), Zero<down_t>()));
       #endif
     }
