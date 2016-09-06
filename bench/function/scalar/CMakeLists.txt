@@ -122,7 +122,7 @@ set(SOURCES
     gamma.std.cpp
     gammaln.cpp
     gammaln.std.cpp
-    genmask.cpp
+##    genmask.cpp
     genmaskc.cpp
 ##########    group.cpp
 ##########    groups.cpp
