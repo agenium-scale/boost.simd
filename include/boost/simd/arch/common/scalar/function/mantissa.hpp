@@ -2,8 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T. Lapreste
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -13,7 +12,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_MANTISSA_HPP_INCLUDED
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-#include <boost/simd/function/simd/is_invalid.hpp>
+#include <boost/simd/function/scalar/is_invalid.hpp>
 #endif
 #include <boost/simd/detail/constant/mantissamask.hpp>
 #include <boost/simd/constant/one.hpp>

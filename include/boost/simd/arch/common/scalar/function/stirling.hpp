@@ -1,8 +1,7 @@
 //==================================================================================================
 /*!
   @file
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T. Lapreste
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -40,6 +39,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
     {
+      if (is_ltz(a0)) return Nan<A0>();
       const A0 Stirlinglargelim = Real<A0, 0x4065800000000000ULL, 0X420C28F3UL>();// 172, 35.0399895f
       const A0 Stirlingsplitlim = Real<A0, 0X4061E083BA3443D4ULL, 0X41D628F6UL>();// 143.01608, 26.77f
       #ifndef BOOST_SIMD_NO_INVALIDS
@@ -53,13 +53,13 @@ namespace boost { namespace simd { namespace ext
       A0 z =  a0 - Half<A0>();
       if( a0 >= Stirlingsplitlim )
       { /* Avoid overflow in pow() */
-        const A0 v = pow(a0,z*Half<A0>());
+        const A0 v = pow_abs(a0,z*Half<A0>());
         y *= v;
         y *= v;
       }
       else
       {
-        y *= pow( a0, z );
+        y *= pow_abs( a0, z );
       }
       y *= Sqrt_2pi<A0>()*w;
       return y;

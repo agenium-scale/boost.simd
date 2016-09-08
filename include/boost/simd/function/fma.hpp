@@ -2,8 +2,7 @@
 /*!
   @file
 
-  @copyright 2012-2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -47,14 +46,14 @@ namespace boost { namespace simd
     wired capability).
 
     If you need conformant fma capabilities in all circumstances in your own
-    code you can use correct_fma or the std_ decorator
+    code you can use the conformant_ or  std_ decorator
     (although both can can be very expansive).
 
      @par Decorators
 
     - std_ for floating entries to call directly std::fma. This implies conformant fma behaviour,
     but in no way improved performances.
-    - conformant_ ensures the fma properties and SIMD acceleration if available.
+    - conformant_ ensures the fma properties and allows SIMD acceleration if available.
 
     @see fms, fnma, fnms
   **/

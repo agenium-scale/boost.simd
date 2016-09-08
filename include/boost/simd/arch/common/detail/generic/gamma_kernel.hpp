@@ -1,4 +1,5 @@
 //==============================================================================
+//          Copyright 2016   NumScale SAS
 //
 //          Distributed under the Boost Software License, Version 1.0.
 //                 See accompanying file LICENSE.txt or copy at
@@ -22,10 +23,9 @@ namespace boost { namespace simd
     template < class A0 >
     struct gamma_kernel < A0, float >
     {
-      using s_t = bd::scalar_of_t<A0>;
       static BOOST_FORCEINLINE A0 gamma1(const A0& x)
       {
-        return horn<s_t,
+        return horn<A0,
                     0X3F800000UL, //  9.999999757445841E-01
                     0X3ED87799UL, //  4.227874605370421E-01
                     0X3ED2D411UL, //  4.117741948434743E-01
@@ -42,11 +42,10 @@ namespace boost { namespace simd
     template < class A0 >
     struct gamma_kernel < A0, double >
     {
-      using s_t = bd::scalar_of_t<A0>;
       static BOOST_FORCEINLINE A0 gamma1(const A0& x)
       {
         return
-    horn<s_t,
+    horn<A0,
          0X3FF0000000000000ULL, // 9.99999999999999996796E-1
          0X3FDFA1373993E312ULL, // 4.94214826801497100753E-1
          0X3FCA8DA9DCAE7D31ULL, // 2.07448227648435975150E-1
@@ -55,7 +54,7 @@ namespace boost { namespace simd
          0X3F5384E3E686BFABULL, // 1.19135147006586384913E-3
          0X3F24FCB839982153ULL  // 1.60119522476751861407E-4
          > (x)/
-      horn<s_t,
+      horn<A0,
            0X3FF0000000000000ULL, //  1.00000000000000000320E00
            0X3FB24944C9CD3C51ULL, //  7.14304917030273074085E-2
            0XBFCE071A9D4287C2ULL, // -2.34591795718243348568E-1

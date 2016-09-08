@@ -2,8 +2,7 @@
 /*!
   @file
 
-  Copyright 2015 NumScale SAS
-  Copyright 2015 J.T.Lapreste
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -38,8 +37,8 @@ namespace boost { namespace simd
       sizeof(T) == sizeof(Target)
       @endcode
 
-      @tparam Target Target type to cast toward
-      @param  x Value to cast
+      @tparam Target @c Target type to cast toward
+      @param  @c x Value to cast
 
       @return A value of type @c Target which is bit-equivalent to @c x.
     **/

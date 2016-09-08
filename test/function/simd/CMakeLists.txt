@@ -100,6 +100,7 @@ cumprod.cpp
 cumsum.cpp
 dec.cpp
 dec_s.cpp
+deinterleave.cpp
 deinterleave_first.cpp
 deinterleave_second.cpp
 dist.cpp
@@ -132,6 +133,8 @@ fnma.cpp
 fnms.cpp
 frac.cpp
 frexp.cpp
+gamma.cpp
+gammaln.cpp
 genmaskc.cpp
 group.cpp
 groups.cpp
@@ -162,6 +165,7 @@ inc.cpp
 inc_s.cpp
 indeg.cpp
 inrad.cpp
+interleave.cpp
 interleave_first.cpp
 interleave_second.cpp
 interleave_even.cpp
@@ -275,6 +279,8 @@ repeat_lower_half.cpp
 repeat_upper_half.cpp
 reversebits.cpp
 reverse.cpp
+rol.cpp
+ror.cpp
 round.cpp
 nearbyint.cpp
 rsqrt.cpp
@@ -307,6 +313,7 @@ sqr.cpp
 sqr_s.cpp
 sqrt1pm1.cpp
 sqrt.cpp
+stirling.cpp
 store.cpp
 successor.cpp
 sum.cpp

@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -25,17 +24,30 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
-    T r = cos(x);
+    auto r = cos(x);
     @endcode
 
-    @par Notes:
-    cos can be called with two parameters as :
+    @par Notes
+    @c cos can be called with two parameters as :
     @code
     T r = cos(x, range_);
     @endcode
+
+    or with a decorator as:
+
+    @code
+    T r = std_(cos)(x);
+    @endcode
+
+    or
+
+    @code
+    T r = restricted_(cos)(x);
+    @endcode
+
 
     range is a tag that allows some control on the computation
     accuracy and speed.
@@ -61,13 +73,13 @@ namespace boost { namespace simd
     @endcode
 
     In fact for each scalar singleton or simd vector of angles
-    There are two possibilities :
+    there are two possibilities :
     \arg one is to test if all vector element(s) are in the proper range
     for the consecutive increasing values of A until we reach a good
     one or the last :
     the corresponding template tags are small_, medium_ and big_
-    \arg the second is to force directly a reduction method
-    The corresponding template tags are direct_small_, direct_medium_
+    \arg the second is to force directly a reduction method:
+    the corresponding template tags are direct_small_, direct_medium_
     and direct_big_
     @par
     direct_small_ is NOT equivalent to small_ because there are also
@@ -128,6 +140,12 @@ namespace boost { namespace simd
 
     @par
     they use the chosen reduction, but return Nan for any outsider.
+
+    @par Decorators
+
+    - std_ provides access to std::cos
+
+    - restricted_ is equivalent to the clipped_very_small_ tag
 
     @see  sincos, cosd, cospi
 

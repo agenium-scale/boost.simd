@@ -26,6 +26,9 @@ function(make_bench root)
                             EXCLUDE_FROM_DEFAULT_BUILD TRUE
                             EXCLUDE_FROM_ALL TRUE
                           )
+    if (MAKE_BENCH_TARGET_LINK_LIBRARIES)
+        target_link_libraries(${bench} ${MAKE_BENCH_TARGET_LINK_LIBRARIES})
+    endif()
 
     add_target_parent(${bench})
     add_dependencies(bench ${bench})

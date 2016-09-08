@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -23,7 +22,7 @@ namespace boost { namespace simd
 
     If cond is @ref True returns @ref Allbits else returns f
 
-    This is a convenient alias of @ref if_allbits_else
+    This is a convenience alias of @ref if_allbits_else
   **/
   Value if_nan_else(Value const& r, Value const& v0);
 

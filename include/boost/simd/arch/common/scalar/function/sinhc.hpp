@@ -2,8 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T. Lapreste
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -62,10 +61,10 @@ namespace boost { namespace simd { namespace ext
       else
       {
         auto test1 = (x >  Maxlog<A0>()-Log_2<A0>());
-        A0 fac = if_else(test1, Half<A0>(), One<A0>());
+        A0 fac = (test1 ? Half<A0>() : One<A0>());
         A0 tmp = exp(x*fac);
         A0 tmp1 = (Half<A0>()*tmp)/x;
-        return if_else(test1, tmp1*tmp, average(tmp, -rec(tmp))/x);
+        return (test1 ? tmp1*tmp: average(tmp, -rec(tmp))/x);
       }
      }
   };

@@ -29,7 +29,7 @@ vendor provided API as well as architecture dependent implementation details. Th
 SIMD code, significantly increasing the time required to develop, test and deploy software as well as increasing the scope for introducing
 bugs.
 
-For example, take this simple case where we calculate the sum of two vectors of `32-bit float` vectors:
+For example, take this simple case where we calculate the sum of two vectors of `32-bit float`:
 
 @snippet addvector.cpp scalar-loop
 
@@ -38,7 +38,7 @@ This simple loop may be vectorized for an x86 processor using Intel intrinsic fu
 
 @snippet addvector.cpp sse2-simd-loop
 
-Looks difficult? How abut we vectorize it for the following generation of Intel processor equipped with `AVX` instructions:
+Looks difficult? How about we vectorize it for the following generation of Intel processor equipped with `AVX` instructions:
 
 @snippet addvector.cpp avx-simd-loop
 

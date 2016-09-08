@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -26,13 +25,13 @@ namespace boost { namespace simd
     For every parameters of types respectively T0, T1 of same bit size:
 
     @code
-    bool r = is_included_c(x,y);
+    auto r = is_included_c(x,y);
     @endcode
 
     is similar to:
 
     @code
-    bool r = all(x&y == zero);
+    auto r = all(x&y == zero);
     @endcode
   **/
   template<typename T0, typename T1>

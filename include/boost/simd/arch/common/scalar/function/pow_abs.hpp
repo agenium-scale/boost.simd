@@ -2,8 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T. Lapreste
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -26,6 +25,7 @@
 #include <boost/simd/constant/ratio.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/exp.hpp>
 #include <boost/simd/function/floor.hpp>
 #include <boost/simd/function/fma.hpp>
 #include <boost/simd/function/fms.hpp>
@@ -34,6 +34,7 @@
 #include <boost/simd/function/is_eqz.hpp>
 #include <boost/simd/function/is_ltz.hpp>
 #include <boost/simd/function/ldexp.hpp>
+#include <boost/simd/function/log.hpp>
 #include <boost/simd/function/pow2.hpp>
 #include <boost/simd/function/sqr.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
@@ -119,6 +120,23 @@ namespace boost { namespace simd { namespace ext
       return Ratio<A0, 1, 16>()*floor(Ratio<A0, 16>()*x);
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( pow_abs_
+                          , (typename A0, typename A1)
+                          , bd::cpu_
+                          , bs::fast_tag
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A1> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator()(const fast_tag &, A0 a0, A1 a1) const BOOST_NOEXCEPT
+    {
+      return bs::exp(a1*bs::log(bs::abs(a0)));
+    }
+  };
+
+
+
 } } }
 
 

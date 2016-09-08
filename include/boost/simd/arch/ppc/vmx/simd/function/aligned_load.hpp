@@ -1,6 +1,6 @@
 //==================================================================================================
 /**
-  Copyright 2015 NumScale SAS
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -28,7 +28,7 @@ namespace boost { namespace simd { namespace ext
     using target = typename Target::type;
     BOOST_FORCEINLINE target operator()(Pointer p, Target const&) const
     {
-      BOOST_ASSERT_MSG( boost::alignment::is_aligned(p,target::alignment)
+      BOOST_ASSERT_MSG( boost::simd::detail::is_aligned(p,target::alignment)
                       , "boost::simd::aligned_load was performed on an unaligned pointer of double"
                       );
 

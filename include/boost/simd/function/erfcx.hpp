@@ -2,7 +2,6 @@
 /*!
   @file
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -19,8 +18,8 @@ namespace boost { namespace simd
   @ingroup group-euler
     Function object implementing erfcx capabilities
 
-   Computes the  underflow-compensating (scaled) error function:
-   \f$\displaystyle e^{x^2}\frac{2}{\sqrt\pi}\int_0^{x} e^{-t^2}\mbox{d}t\f$
+   Computes the  underflow-compensating (scaled) complementary  error function:
+   \f$\displaystyle e^{x^2}\frac{2}{\sqrt\pi}\int_{x}^{\infty} e^{-t^2}\mbox{d}t\f$
 
     @par Semantic:
 

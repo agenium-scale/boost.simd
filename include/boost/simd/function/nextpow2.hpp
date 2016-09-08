@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -26,15 +25,16 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    T n = nextpow2(x);
+    auto n = nextpow2(x);
     @endcode
 
     is similar to:
 
     @code
-    T n = floor(log2(abs_s(x)));
+    auto n = floor(log2(saturated_(abs)(x)));
     @endcode
 
+    @see floor, log2, abs, saturated
   **/
   Value nextpow2(Value const & x);
 } }

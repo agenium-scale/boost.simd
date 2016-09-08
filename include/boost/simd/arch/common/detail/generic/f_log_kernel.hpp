@@ -2,8 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -46,7 +45,6 @@ namespace boost { namespace simd { namespace detail
   struct kernel< A0, style, float>
   {
     using i_t = bd::as_integer_t<A0, signed>;
-    using s_t = bd::scalar_of_t<A0>;
 
     static BOOST_FORCEINLINE void log(const A0& a0,
                            A0& fe,

@@ -12,5 +12,6 @@
 
 #include <boost/simd/function/definition/two_add.hpp>
 #include <boost/simd/arch/common/generic/function/two_add.hpp>
+#include <boost/simd/arch/common/scalar/function/two_add.hpp>
 
 #endif

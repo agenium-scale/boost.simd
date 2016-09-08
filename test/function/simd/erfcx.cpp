@@ -3,7 +3,6 @@
   @file
 
   Copyright 2016 NumScale SAS
-  Copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -26,8 +25,8 @@ void test(Env& $)
   T a1[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
-     a1[i] = T(i)/N;
-     b[i] = bs::erfcx(a1[i]);
+    a1[i] = -7.0*T(i)/N;
+    b[i] = bs::erfcx(a1[i]);
    }
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb(&b[0], &b[0]+N);

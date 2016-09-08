@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -31,16 +30,16 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    as_logical_t<T> r = is_negative(x);
+    auto r = is_negative(x);
     @endcode
 
     is similar to:
 
     @code
-    if T is signed
-      as_logical_t<T> r = bitofsign(x) == 1;
+    if x is of signed type
+      auto r = bitofsign(x) == 1;
     else
-      as_logical_t<T> r = @ref False;
+      auto r = False;
     @endcode
 
     @par Note:

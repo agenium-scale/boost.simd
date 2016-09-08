@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -21,7 +20,7 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing sind capabilities
 
-    sine of the angle in degree.
+    sine of the angle in degree: \f$\sin(\pi x/180)\f$.
 
     @par Semantic:
 
@@ -29,12 +28,6 @@ namespace boost { namespace simd
 
     @code
     T r = sind(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = sin(Deginrad<T>()*x);
     @endcode
 
     @see sincosd, sin, sinpi

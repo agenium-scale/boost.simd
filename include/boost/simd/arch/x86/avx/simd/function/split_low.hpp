@@ -37,7 +37,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE bd::upgrade_t<A0> operator()(const A0 & a0) const BOOST_NOEXCEPT
     {
       auto half = split(slice_low(a0));
-      return combine(half.first,half.second);
+      return combine(half[0],half[1]);
     }
   };
 } } }

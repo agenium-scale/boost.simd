@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -24,7 +23,7 @@ namespace boost { namespace simd
     Computes the cumulated product of the vector elements
 
     Take care that overflow is very easy to get here especially for integral types.
-    cimprod of char and unsigned char almost always overflow in SIMD !
+    cumprod of char and unsigned char almost always overflow in SIMD !
 
     @par semantic:
     For any given vector @c x of type @c T:
@@ -33,13 +32,12 @@ namespace boost { namespace simd
     T r = cumprod(x);
     @endcode
 
-    The function coincide with plus for floating point parameters.
-    For integers is similar to:
+    is similar to:
 
     @code
-    T r =x;
-    for(int i=0;i < T::static_size; ++i)
-      r[i]*= r[i-1];
+    auto r = x;
+    for(int i=1;i < T::static_size; ++i)
+      r[i] *= r[i-1];
     @endcode
 
   **/

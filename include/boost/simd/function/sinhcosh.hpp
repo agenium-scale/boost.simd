@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -21,13 +20,13 @@ namespace boost { namespace simd
     @ingroup group-hyperbolic
     Function object implementing sinhcosh capabilities
 
-    Computes simultaneously (and more rapidly) the sinh and cosh of the input
+    Computes simultaneously the sinh and cosh of the input
 
     @par Semantic:
 
     @code
     T ch, sh
-    std::tie(sh, ch) = rem_pio2_cephes(x);
+    std::tie(sh, ch) = sinhcoshs(x);
     @endcode
 
     is similar to:
@@ -36,6 +35,8 @@ namespace boost { namespace simd
     T sh = sinh(x);
     T ch = cosh(x);
     @endcode
+
+    but speedier
 
     @see  sinh, cosh
 

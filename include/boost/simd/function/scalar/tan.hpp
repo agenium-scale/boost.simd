@@ -11,7 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_TAN_HPP_INCLUDED
 
 #include <boost/simd/function/definition/tan.hpp>
-#include <boost/simd/arch/common/generic/function/tan.hpp>
 #include <boost/simd/arch/common/scalar/function/tan.hpp>
 
 #endif

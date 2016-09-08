@@ -12,5 +12,6 @@
 
 #include <boost/simd/function/definition/two_split.hpp>
 #include <boost/simd/arch/common/generic/function/two_split.hpp>
+#include <boost/simd/arch/common/scalar/function/two_split.hpp>
 
 #endif

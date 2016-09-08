@@ -2,7 +2,6 @@
 /**
 
   Copyright 2016 NumScale SAS
-  Copyright 2016 J.T.Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -13,8 +12,13 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/traits.hpp>
+#include <boost/simd/constant/valmax.hpp>
+#include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/function/simd/bitwise_xor.hpp>
+#include <boost/simd/function/simd/if_else.hpp>
+#include <boost/simd/function/simd/is_equal.hpp>
 #include <boost/simd/function/simd/minus.hpp>
+#include <boost/simd/function/saturated.hpp>
 #include <boost/simd/constant/mzero.hpp>
 #include <boost/simd/constant/zero.hpp>
 
@@ -48,6 +52,34 @@ namespace boost { namespace simd { namespace ext
       return bitwise_xor(bs::Mzero<A0>(),a0);
     }
   };
+  BOOST_DISPATCH_OVERLOAD_IF ( unary_minus_
+                          , (typename T, typename X)
+                          , (detail::is_native<X>)
+                          , bd::cpu_
+                          , bs::saturated_tag
+                          , bs::pack_<bd::signed_<T>, X>
+                           )
+  {
+    BOOST_FORCEINLINE T operator()(const saturated_tag &, T const& a0) const BOOST_NOEXCEPT
+    {
+      return if_else(a0 == Valmin<T>(),Valmax<T>(),bs::unary_minus(a0));
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD_IF ( unary_minus_
+                          , (typename T, typename X)
+                          , (detail::is_native<X>)
+                          , bd::cpu_
+                          , bs::saturated_tag
+                          , bs::pack_<bd::unspecified_<T>, X>
+                          )
+  {
+    BOOST_FORCEINLINE T operator()(const saturated_tag &, T const& a) const BOOST_NOEXCEPT
+    {
+      return unary_minus(a);
+    }
+  };
+
 } } }
 
 #endif

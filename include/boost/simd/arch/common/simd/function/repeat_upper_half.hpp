@@ -18,7 +18,7 @@ namespace boost { namespace simd { namespace ext
   namespace bs = boost::simd;
   namespace br = brigand;
 
-  BOOST_DISPATCH_OVERLOAD ( repeat_upper_half_
+  BOOST_DISPATCH_OVERLOAD( repeat_upper_half_
                           , (typename T, typename X)
                           , bd::cpu_
                           , bs::pack_< bd::unspecified_<T>, X >

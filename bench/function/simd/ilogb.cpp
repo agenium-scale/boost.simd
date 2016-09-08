@@ -17,5 +17,5 @@ DEFINE_SIMD_BENCH(simd_ilogb, bs::ilogb);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_ilogb, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<simd_ilogb, NS_BENCH_NUMERIC_TYPES>(0, 10);
 }

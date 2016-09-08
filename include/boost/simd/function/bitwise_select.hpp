@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -24,6 +23,8 @@ namespace boost { namespace simd
     Returns the bitwise selection of bits from the second
     or third operand according to the setting of the bits
     of the first operand
+
+    The operands must share the same bit size and number of elements.
 
     @par semantic:
     For any given value @c sel of type @c SEL, @c x of type @c T0 and @c y of type @c T1

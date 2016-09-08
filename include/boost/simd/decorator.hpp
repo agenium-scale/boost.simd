@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -21,10 +21,10 @@ namespace boost { namespace simd
 
 
     @par Rationale
-       Up to now we have six different decorators that can be used to
+       Up to now we have seven different decorators that can be used to
        modify the behaviour of some functors.
 
-       These are conformant_, fast_,  raw_, restricted_,  saturated_, std_
+       These are accurate_, conformant_, fast_,  raw_, restricted_,  saturated_, std_
 
        if a decorator `foo_` has to be called to modify the functor `bar` the call
 

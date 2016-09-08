@@ -12,6 +12,5 @@
 
 #include <boost/simd/function/definition/atan.hpp>
 #include <boost/simd/arch/common/scalar/function/atan.hpp>
-#include <boost/simd/arch/common/generic/function/atan.hpp>
 
 #endif

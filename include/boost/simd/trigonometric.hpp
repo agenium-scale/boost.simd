@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -16,10 +16,14 @@ namespace boost { namespace simd
 {
   /*!
     @ingroup group-functions
-    @defgroup group-trigonometric Trigonometric functions
+    @defgroup group-trigonometric Trigonometric functions.
+
 
     Algorithms for computing scalar and SIMD version of
     trigonometric and inverse trigonometric functions and some utilities.
+
+    Except a meaningfull case (namely  cospi,  as \f$\cos(\pi n) = (-1)^n\f$ for integral n)
+    these functions are only provided for floating inputs.
 
     - Direct trigonometric functors
 
@@ -34,7 +38,7 @@ namespace boost { namespace simd
          | @ref cotpi    | @ref secpi   | @ref sincpi    | @ref tanpi   |
        </center>
 
-          @ref sinc and @ref sincpi are 2 version of the sinus cardinal function
+          @ref sinc and @ref sincpi are 2 versions of the sinus cardinal function
           (resp. \f$\frac{\sin x}{x}\f$ and \f$\frac{\sin \pi x}{\pi x}\f$).
 
           @ref sincos,  @ref sincosd and  @ref sincospi allow the simultaneous
@@ -57,8 +61,9 @@ namespace boost { namespace simd
 
     - Conversion utilities
 
-       @ref indeg
-       @ref inrad
+       @ref indeg converts radian in degree
+
+       @ref inrad converts degree in radian
 
 
     - Reduction utilities
@@ -90,12 +95,13 @@ namespace boost { namespace simd
        There also exists @ref rem_2pi that only computes the reduction of the radian angle
        between \f$[-\pi, \pi]\f$
 
-    @Notes:
+    @par Notes:
 
       - Angle units
 
-        All direct function are provided in three flavours using respectively
-          radian, degrees and \f$\pi\f$ multiples.
+        All direct and inverse functions (except cardinal ones) are provided in
+        three flavours using respectively
+        radian, degrees and \f$\pi\f$ multiples.
 
         Be aware that their uses are not equivalent. Peculiarly sinpi(1.0) is not equal to sin(Pi<double>()).
 
@@ -108,9 +114,6 @@ namespace boost { namespace simd
           will lead to an exact 0.0 the sinus of which is exactly 0.0.
 
           - However the two results are correct to 0.5 ulp
-
-        All inverse functions are also provided in three flavours returning
-        angles mesured in respectively radian, degrees and \f$\pi\f$ multiples.
 
   **/
 

@@ -13,7 +13,7 @@
 #include <boost/simd/function/combine.hpp>
 #include <boost/simd/function/load.hpp>
 #include <boost/simd/detail/dispatch/adapted/common/pointer.hpp>
-#include <boost/align/is_aligned.hpp>
+#include <boost/simd/detail/is_aligned.hpp>
 #include <boost/assert.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -25,7 +25,7 @@ namespace boost { namespace simd { namespace ext
   // aligned_load from a pointer of whatever
   BOOST_DISPATCH_OVERLOAD ( aligned_load_
                           , (typename Target, typename Pointer, typename Ext)
-                          , bs::simd_
+                          , bd::cpu_
                           , bd::pointer_<bd::scalar_<bd::unspecified_<Pointer>>,1u>
                           , bd::target_<bs::pack_<bd::unspecified_<Target>,Ext>>
                           )
@@ -35,7 +35,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE target_t operator()(Pointer p, Target const&) const
     {
-      BOOST_ASSERT_MSG( boost::alignment::is_aligned(p,target_t::alignment)
+      BOOST_ASSERT_MSG( boost::simd::detail::is_aligned(p,target_t::alignment)
                       , "boost::simd::aligned_load was performed on an unaligned pointer"
                       );
 
@@ -62,7 +62,7 @@ namespace boost { namespace simd { namespace ext
   // aligned_load from a pointer of logical to whatever
   BOOST_DISPATCH_OVERLOAD ( aligned_load_
                           , (typename Target, typename Pointer, typename Ext)
-                          , bs::simd_
+                          , bd::cpu_
                           , bd::pointer_<bd::scalar_<bs::logical_<Pointer>>,1u>
                           , bd::target_<bs::pack_<bd::unspecified_<Target>,Ext>>
                           )

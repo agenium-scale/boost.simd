@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_AVERAGE_HPP_INCLUDED
 
 #include <boost/simd/function/definition/average.hpp>
-#include <boost/simd/arch/common/generic/function/average.hpp>
+#include <boost/simd/arch/common/scalar/function/average.hpp>
 
 #endif

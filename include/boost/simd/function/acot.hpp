@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -25,7 +24,7 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
     T r = acot(x);
@@ -34,7 +33,7 @@ namespace boost { namespace simd
     Returns the arc @c r in the interval
     \f$[0, \pi[\f$ such that <tt>cot(r) == x</tt>.
 
-    @see acotd
+    @see acotd, acotpi, cot
 
   **/
   Value acot(Value const & v0);

@@ -34,10 +34,10 @@ void test( Env& $, std::true_type const& )
   bd::upgrade_t<bs::pack<bs::logical<T>,N>>  refl  (&dref[0]     , &dref[0]+N/2  );
   bd::upgrade_t<bs::pack<bs::logical<T>,N>>  refh  (&dref[0]+N/2 , &dref[0]+N    );
 
-  std::tie(valuel,valueh) = bs::split(value);
+  auto values = bs::split(value);
 
-  STF_EQUAL( valuel , refl);
-  STF_EQUAL( valueh , refh);
+  STF_EQUAL( values[0] , refl);
+  STF_EQUAL( values[1] , refh);
 }
 
 STF_CASE_TPL("split pack<T,N> into a pair of pack<T*2,N/2>", STF_NUMERIC_TYPES)

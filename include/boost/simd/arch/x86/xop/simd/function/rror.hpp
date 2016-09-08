@@ -11,6 +11,7 @@
 
 #include <boost/simd/detail/overload.hpp>
 
+#if BOOST_HW_SIMD_X86_AMD_XOP
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
@@ -18,7 +19,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( rror_
                           , (typename A0, typename A1)
-                          , bs::xop_
+                          , bs::avx_
                           , bs::pack_< bd::ints64_<A0>, bs::sse_>
                           , bs::pack_< bd::ints64_<A1>, bs::sse_>
                           )
@@ -31,7 +32,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( rror_
                           , (typename A0, typename A1)
-                          , bs::xop_
+                          , bs::avx_
                           , bs::pack_< bd::ints32_<A0>, bs::sse_>
                           , bs::pack_< bd::ints32_<A1>, bs::sse_>
                           )
@@ -44,7 +45,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( rror_
                           , (typename A0, typename A1)
-                          , bs::xop_
+                          , bs::avx_
                           , bs::pack_< bd::ints16_<A0>, bs::sse_>
                           , bs::pack_< bd::ints16_<A1>, bs::sse_>
                           )
@@ -57,7 +58,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( rror_
                           , (typename A0, typename A1)
-                          , bs::xop_
+                          , bs::avx_
                           , bs::pack_< bd::ints8_<A0>, bs::sse_>
                           , bs::pack_< bd::ints8_<A1>, bs::sse_>
                           )
@@ -68,5 +69,6 @@ namespace boost { namespace simd { namespace ext
     }
   };
 } } }
+#endif
 
 #endif

@@ -1,5 +1,5 @@
 ##===================================================================================================
-##                               Copyright 2015   NumScale SAS
+##                               Copyright 2016   NumScale SAS
 ##
 ##                   Distributed under the Boost Software License, Version 1.0.
 ##                        See accompanying file LICENSE.txt or copy at
@@ -27,7 +27,7 @@ NS_project_add(BOOST_DISPATCH
   STEP_TARGETS   install
   EXCLUDE_FROM_ALL
 
-  ${BOOST_DISPATCH_OPTIONS}
+  ${NS_CMAKE_PROJECT_OPTIONS} ${BOOST_DISPATCH_OPTIONS}
 )
 
 add_custom_target(update.boost.dispatch

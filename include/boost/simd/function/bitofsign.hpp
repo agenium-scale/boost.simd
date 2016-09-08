@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -29,16 +28,16 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    T r = bitofsign(x);
+    auto r = bitofsign(x);
     @endcode
 
     for signed types is similar to:
 
     @code
-    T r = x&SignMask;
+    auto r = x&Signmask<T>();
     @endcode
 
-    @see sign, signnz, is_negative, is_positive, Mzero, SignMask;
+    @see sign, signnz, is_negative, is_positive, Mzero, Signmask;
 
   **/
   Value bitofsign(Value const & v0);

@@ -42,9 +42,9 @@ set(SOURCES
     atanpi.cpp
     average.cpp
     bitfloating.cpp
-    bitget.cpp
+##    bitget.cpp
     bitinteger.cpp
-    bitset.cpp
+##    bitset.cpp
     bitwise_and.cpp
     bitwise_andnot.cpp
 #######    bitwise_cast.cpp
@@ -68,6 +68,8 @@ set(SOURCES
     conj.cpp
     copysign.cpp
     cos.cpp
+    cos.clipped_small.cpp
+    cos.restricted.cpp
     cosh.cpp
     cosd.cpp
     cospi.cpp
@@ -103,8 +105,6 @@ set(SOURCES
     fast.hypot.cpp
     fast.rec.cpp
     fast.rem.cpp
-    fast.rsqrt.cpp
-    fast.sqrt.cpp
     fast.trunc.cpp
     ffs.cpp
     firstbitset.cpp
@@ -118,8 +118,9 @@ set(SOURCES
     fnms.cpp
     frac.cpp
     frexp.cpp
+    gamma.cpp
     gammaln.cpp
-    genmask.cpp
+##    genmask.cpp
     genmaskc.cpp
 ##########    group.cpp
 ##########    groups.cpp
@@ -257,7 +258,6 @@ set(SOURCES
     repeat_lower_half.cpp
     repeat_upper_half.cpp
     restricted.cosd.cpp
-    restricted.cos.cpp
     restricted.cospi.cpp
     restricted.cotd.cpp
     restricted.cot.cpp
@@ -285,6 +285,7 @@ set(SOURCES
 #    rrol.cpp
 #    rror.cpp
     rsqrt.cpp
+    rsqrt.fast.cpp
     safe_max.cpp
     safe_min.cpp
     sec.cpp
@@ -316,6 +317,7 @@ set(SOURCES
     sqr_s.cpp
     sqrt1pm1.cpp
     sqrt.cpp
+    sqrt.fast.cpp
     successor.cpp
     tan.cpp
     tand.cpp

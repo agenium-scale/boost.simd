@@ -1,5 +1,5 @@
 ##==================================================================================================
-##                             Copyright 2015   NumScale SAS
+##                             Copyright 2016   NumScale SAS
 ##
 ##                   Distributed under the Boost Software License, Version 1.0.
 ##                        See accompanying file LICENSE.txt or copy at
@@ -47,7 +47,11 @@ function(make_coverage root)
       set_target_properties ( ${test} PROPERTIES
                               EXCLUDE_FROM_DEFAULT_BUILD TRUE
                               EXCLUDE_FROM_ALL TRUE
+                              ${MAKE_COVERAGE_TARGET_PROPERTIES}
                             )
+      if (MAKE_COVERAGE_TARGET_LINK_LIBRARIES)
+          target_link_libraries(${test} ${MAKE_COVERAGE_TARGET_LINK_LIBRARIES})
+      endif()
 
       add_dependencies(coverage ${test})
 

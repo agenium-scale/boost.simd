@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -22,6 +21,7 @@ namespace boost { namespace simd
     Function object implementing gammaln capabilities
 
     Natural logarithm of the absolute value of the Gamma function
+     \f$\displaystyle \log |\Gamma(x)|\f$
 
     @par Semantic:
 
@@ -34,7 +34,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T r = log(gamma(abs(x)));
+    T r = log(abs(gamma(x))));
     @endcode
 
     @par Notes
@@ -44,7 +44,7 @@ namespace boost { namespace simd
       For better accuracy in the negative entry case one can use the extern
       boost_math gammaln functor but at a loss of speed.
 
-      However,  as stated in boost math:
+      However, as stated in boost math:
 
       "While the relative errors near the positive roots of lgamma are very low,
        the  function has an infinite number of irrational roots for negative arguments:
@@ -53,12 +53,13 @@ namespace boost { namespace simd
     - The call gammaln(x, sgn) also returns the sign of gamma in the output parameter sgn.
 
        Be aware that POSIX version of lgamma is not thread-safe: each execution of the function
-       stores the sign of the gamma function of x in the static external variable signgam. boost.simd
-       also provides @ref signgam which independantly computes the sign.
+       stores the sign of the gamma function of x in the static external variable signgam.
+
+       boost.simd also provides @ref signgam which independantly computes the sign.
 
     @par Decorators
 
-    std_ for floating entries
+    std_ for floating entries  provides access to @c std::lgamma
 
     @see gamma, signgam
 

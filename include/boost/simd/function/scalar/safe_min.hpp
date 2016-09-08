@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_SAFE_MIN_HPP_INCLUDED
 
 #include <boost/simd/function/definition/safe_min.hpp>
-#include <boost/simd/arch/common/generic/function/safe_min.hpp>
+#include <boost/simd/arch/common/scalar/function/safe_min.hpp>
 
 #endif

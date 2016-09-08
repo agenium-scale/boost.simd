@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -21,23 +20,17 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing asecpi capabilities
 
-     inverse secant in degree.
+     inverse secant in \$f\pi\$f multiples: \f$(1/\pi) \arccos(1/x)\f$.
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
-    T r = asecpi(x);
+    auto r = asecpi(x);
     @endcode
 
-    is similar to:
-
-    @code
-    T r =  acospi(rec(x));;
-    @endcode
-
-    @see asec, asecd
+    @see asec, asecd, cospi, acospi
 
   **/
   Value asecpi(Value const & v0);

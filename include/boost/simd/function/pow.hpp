@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -62,7 +61,13 @@ namespace boost { namespace simd
          - pow(+Inf, y) returns +0 for any negative y
          - pow(+Inf, y) returns +Inf for any positive y
 
-         But return a value of the same type as the first parameter, which is necessary for good SIMD behaviour.
+      But return a value of the same type as the first parameter, which is necessary for good SIMD behaviour.
+
+      @par Decorators
+
+        -std_ decorator provides access to std:pow
+
+        -fast_ decorator almost nearly uses the naive formula and so doesnot really care for limits and leads to lower
 
   **/
   Value pow(Value const & v0, Value const& y);

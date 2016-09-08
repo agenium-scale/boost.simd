@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -25,7 +24,7 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of types respectively C, T:
+    For every parameters @c c of type @c C and @c x of type @c T:
 
     @code
     T r = if_zero_else(cond, x);
@@ -38,7 +37,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  Value if_zero_else(Value const& c, Value const& x)
+  Value if_zero_else(Value const& c, Value const& x);
 
   //@overload
   Value if_zero_else(LogicalValue const& c, Value const& x);

@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -20,20 +19,14 @@ namespace boost { namespace simd
   @ingroup group-trigonometric
     Function object implementing sinc capabilities
 
-    Computes the sinus cardinal  value of its parameter that is sin(x)/x.
+    Computes the sinus cardinal  value of its parameter that is  \f$sin(x)/x\f$.
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
-    T r = sinc(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = x ? sin(x)/x : One;
+    auto r = sinc(x);
     @endcode
 
     @see sin, sincpi, sinhc

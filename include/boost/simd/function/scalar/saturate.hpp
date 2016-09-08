@@ -12,5 +12,6 @@
 
 #include <boost/simd/function/definition/saturate.hpp>
 #include <boost/simd/arch/common/generic/function/saturate.hpp>
+#include <boost/simd/arch/common/scalar/function/saturate.hpp>
 
 #endif

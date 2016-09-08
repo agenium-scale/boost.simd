@@ -94,6 +94,7 @@ set(SOURCES
     erfc.cpp
     exp2.cpp
     exp.cpp
+    exp.std.cpp
     expm1.cpp
     exprecnegc.cpp
     exprecneg.cpp
@@ -103,7 +104,6 @@ set(SOURCES
     fast.hypot.cpp
     fast.rec.cpp
     fast.rem.cpp
-    fast.rsqrt.cpp
     fast.sqrt.cpp
     fast.trunc.cpp
     ffs.cpp
@@ -118,8 +118,11 @@ set(SOURCES
     fpclassify.cpp
     frac.cpp
     frexp.cpp
+    gamma.cpp
+    gamma.std.cpp
     gammaln.cpp
-    genmask.cpp
+    gammaln.std.cpp
+##    genmask.cpp
     genmaskc.cpp
 ##########    group.cpp
 ##########    groups.cpp
@@ -285,6 +288,7 @@ set(SOURCES
 #    rrol.cpp
 #    rror.cpp
     rsqrt.cpp
+    rsqrt.fast.cpp
     safe_max.cpp
     safe_min.cpp
     secd.cpp
@@ -316,6 +320,7 @@ set(SOURCES
     sqr_s.cpp
     sqrt1pm1.cpp
     sqrt.cpp
+    sqrt.fast.cpp
     std.abs.cpp
     std.acos.cpp
     std.asin.cpp

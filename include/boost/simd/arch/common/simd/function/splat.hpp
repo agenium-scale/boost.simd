@@ -1,7 +1,6 @@
 //==================================================================================================
 /**
   Copyright 2016 NumScale SAS
-  Copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -30,7 +29,7 @@ namespace boost { namespace simd { namespace ext
   // splat from a scalar to a pack
   BOOST_DISPATCH_OVERLOAD ( splat_
                           , (typename Target, typename V)
-                          , bs::simd_
+                          , bd::cpu_
                           , bd::scalar_<bd::unspecified_<V>>
                           , bd::target_<bs::pack_<bd::unspecified_<Target>,bs::simd_emulation_>>
                           )
@@ -59,7 +58,7 @@ namespace boost { namespace simd { namespace ext
   // splat from a scalar to a pack of logical
   BOOST_DISPATCH_OVERLOAD ( splat_
                           , (typename Target, typename V, typename Ext)
-                          , bs::simd_
+                          , bd::cpu_
                           , bd::scalar_<bd::unspecified_<V>>
                           , bd::target_<bs::pack_<bs::logical_<Target>,Ext>>
                           )

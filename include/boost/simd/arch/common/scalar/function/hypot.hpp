@@ -2,8 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T. Lapreste
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -74,6 +73,22 @@ namespace boost { namespace simd { namespace ext
                                     ) const BOOST_NOEXCEPT
     {
       return std::hypot(a0, a1);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( hypot_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bs::fast_tag
+                          , bd::scalar_<bd::floating_<A0> >
+                          , bd::scalar_<bd::floating_<A0> >
+                          )
+  {
+
+    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0  a0, A0  a1
+                                    ) const BOOST_NOEXCEPT
+    {
+      return boost::simd::sqrt(bs::fma(a0, a0, sqr(a1)));
     }
   };
 } } }

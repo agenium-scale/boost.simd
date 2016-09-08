@@ -4,7 +4,7 @@
 
   Defines SSE1 functions for SIMD storage used by pack
 
-  @copyright 2015 NumScale SAS
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -18,6 +18,11 @@
 #include <boost/simd/detail/brigand.hpp>
 #include <boost/simd/detail/pack_traits.hpp>
 #include <boost/simd/arch/common/simd/abi_of.hpp>
+
+#if defined __GNUC__ && __GNUC__>=6
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wignored-attributes"
+#endif
 
 namespace boost { namespace simd
 {
@@ -34,5 +39,9 @@ namespace boost { namespace simd
     };
   }
 } }
+
+#if defined __GNUC__ && __GNUC__>=6
+#pragma GCC diagnostic pop
+#endif
 
 #endif

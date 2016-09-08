@@ -4,7 +4,7 @@
 
   Defines the XOP specifications
 
-  @copyright 2012 - 2015 NumScale SAS
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -17,13 +17,13 @@
 #include <boost/simd/detail/predef.hpp>
 
 #if !defined(BOOST_SIMD_DEFAULT_FAMILY)
-  #if BOOST_HW_SIMD_X86_AMD == BOOST_HW_SIMD_X86_AMD_XOP_VERSION
+  #if BOOST_HW_SIMD_X86_AMD_XOP
     #define BOOST_SIMD_DEFAULT_FAMILY ::boost::simd::avx_
-    #define BOOST_SIMD_DEFAULT_SITE   ::boost::simd::xop_
+    #define BOOST_SIMD_DEFAULT_SITE   ::boost::simd::avx_
   #endif
 #endif
 
-#if BOOST_HW_SIMD_X86_AMD >= BOOST_HW_SIMD_X86_AMD_XOP_VERSION
+#if BOOST_HW_SIMD_X86_AMD_XOP
   // XOP header not standardized
   #ifdef _MSC_VER
     #include <intrin.h>

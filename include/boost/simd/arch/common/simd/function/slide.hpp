@@ -25,7 +25,7 @@ namespace boost { namespace simd { namespace ext
 
   //------------------------------------------------------------------------------------------------
   // unary slide uses binary slide with Zero
-  BOOST_DISPATCH_OVERLOAD ( slide_
+  BOOST_DISPATCH_OVERLOAD( slide_
                           , (typename T, typename X, typename Offset)
                           , bd::cpu_
                           , bs::pack_< bd::unspecified_<T>, X >
@@ -50,7 +50,7 @@ namespace boost { namespace simd { namespace ext
 
   //------------------------------------------------------------------------------------------------
   // Binary slide reconstructs and optimizes
-  BOOST_DISPATCH_OVERLOAD ( slide_
+  BOOST_DISPATCH_OVERLOAD( slide_
                           , (typename T, typename X, typename Offset)
                           , bd::cpu_
                           , bs::pack_< bd::unspecified_<T>, X >

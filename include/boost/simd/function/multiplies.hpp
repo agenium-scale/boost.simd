@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -22,15 +21,25 @@ namespace boost { namespace simd
 
     Perform the product of two parameters of the same type.
 
+    Infix notation can be used with operator '*',
+
     @par Semantic
 
     For any value @c a and @c b of type @c T,
 
     @code
-    T x = multiplies(a,b);
+    auto x = multiplies(a,b);
+    @endcode
+
+    or
+
+    @code
+    auto r = a*b;
     @endcode
 
     returns the product of @c a and @c b
+
+    @see fma, fms, fnma, fnms
 
   **/
   Value multiplies(Value const & x, Value const& y);

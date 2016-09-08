@@ -15,23 +15,41 @@
 #define BOOST_SIMD_ARCH_X86_FMA3_TAGS_HPP_INCLUDED
 
 #include <boost/simd/detail/predef.hpp>
-#include <boost/simd/arch/x86/xop/tags.hpp>
-#include <boost/simd/arch/x86/avx/tags.hpp>
+#include <boost/simd/detail/support.hpp>
+#include <boost/simd/detail/cpuid.hpp>
 
 namespace boost { namespace simd
 {
-#ifdef BOOST_HW_SIMD_X86_AMD_AVAILABLE
-  struct fma3_ : xop_ { using parent = xop_; };
-#else
+  struct fma3_
+  {
+  };
+
+  namespace detail
+  {
+    template<> struct support<::boost::simd::fma3_>
+    {
+      support()
+      {
+        #if BOOST_ARCH_X86
+        support_ =   detect_feature(12, 0x00000001, detail::ecx)
+                 &&  detect_feature(27, 0x00000001, detail::ecx);
+        #else
+        support_ = false;
+        #endif
+      }
+
+      inline bool is_supported() const { return support_; }
+
+      private:
+      bool support_;
+    };
+  }
+
   /*!
-    @ingroup group-hierarchy
-    @brief AMD FMA3 SIMD architecture hierarchy tag
-
-    This tag represent architectures implementing the AMD FMA3 SIMD instructions set.
+    @ingroup  group-api
+    Global object for accessing FMA3 support informations
   **/
-  struct fma3_ : avx_ { using parent = avx_; };
-#endif
-
+  static detail::support<fma3_> const fma3 = {};
 } }
 
 #endif

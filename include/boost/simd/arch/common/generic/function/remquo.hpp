@@ -2,8 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T. Lapreste
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -16,6 +15,7 @@
 #include <boost/simd/function/divides.hpp>
 #include <boost/simd/function/if_allbits_else.hpp>
 #include <boost/simd/function/is_eqz.hpp>
+#include <boost/simd/function/fms.hpp>
 #include <boost/simd/function/is_invalid.hpp>
 #include <boost/simd/function/logical_or.hpp>
 #include <boost/simd/function/minus.hpp>
@@ -41,15 +41,15 @@ namespace boost { namespace simd { namespace ext
     using quo_t = bd::as_integer_t<A0, signed>;
     using result_type = std::pair<A0,quo_t>;
 
-    BOOST_FORCEINLINE std::pair<A0, quo_t> operator() ( A0 a0, A0 a1
+    BOOST_FORCEINLINE std::pair<A0, quo_t> operator() ( A0 const& a0, A0 const& a1
                                       ) const BOOST_NOEXCEPT
     {
       A0 const d = nearbyint(a0/a1);
 
 #if defined(BOOST_SIMD_NO_INVALIDS)
-      A0  a2 = if_allbits_else(is_eqz(a1), a0-d*a1);
+      A0  a2 = if_allbits_else(is_eqz(a1),  fma(-d, a1, a0));
 #else
-      A0  a2 = if_allbits_else(logical_or(is_invalid(a0), is_eqz(a1)), a0-d*a1);
+      A0  a2 = if_allbits_else(logical_or(is_invalid(a0), is_eqz(a1)),  fma(-d, a1, a0));
 #endif
       return {a2, toint(d)};
     }

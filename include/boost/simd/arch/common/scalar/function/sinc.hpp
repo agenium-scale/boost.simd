@@ -2,8 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T. Lapreste
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -42,9 +41,9 @@ namespace boost { namespace simd { namespace ext
       #endif
 
       #if !defined(BOOST_SIMD_NO_DENORMALS)
-      return (abs(a0) < Eps<A0>()) ? One<A0>() : sin(a0)/a0;
+      return bs::abs(a0) < Eps<A0>() ? One<A0>() : bs::sin(a0)/a0;
       #else
-      return a0 ? sin(a0)/a0 : One<A0>();
+      return a0 ? bs::sin(a0)/a0 : One<A0>();
       #endif
     }
   };

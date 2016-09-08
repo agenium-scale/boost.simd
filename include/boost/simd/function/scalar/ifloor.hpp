@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_IFLOOR_HPP_INCLUDED
 
 #include <boost/simd/function/definition/ifloor.hpp>
-#include <boost/simd/arch/common/generic/function/ifloor.hpp>
+#include <boost/simd/arch/common/scalar/function/ifloor.hpp>
 
 #endif

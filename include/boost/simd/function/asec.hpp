@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -21,26 +20,20 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing asec capabilities
 
-    inverse secant.
+    inverse secant in radian: \f$\arccos(1/x)\f$.
 
     @par Semantic:
 
     For every parameter of floating type T
 
     @code
-    T r = asec(x);
+    auto r = asec(x);
     @endcode
 
-    is similar to:
-
-    @code
-    T r =  acos(rec(x));
-    @endcode
-
-    @see asecd
+    @see asecd, asecpi, sec, cos
 
   **/
-  Value asec(Value const & v0);
+  Value asec(Value const & x);
 } }
 #endif
 

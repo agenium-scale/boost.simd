@@ -2,8 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T. Lapreste
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -20,6 +19,7 @@
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/simd/detail/dispatch/meta/downgrade.hpp>
 #include <boost/simd/detail/traits.hpp>
+#include <boost/simd/detail/predef.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -54,7 +54,11 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE result_t operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
+      #if BOOST_ENDIAN_BIG_BYTE
+      return bitwise_cast<result_t>(interleave_even(Zero<down_t>(), bitwise_cast<down_t>(a0)));
+      #else
       return bitwise_cast<result_t>(interleave_odd(bitwise_cast<down_t>(a0), Zero<down_t>()));
+      #endif
     }
   };
 } } }

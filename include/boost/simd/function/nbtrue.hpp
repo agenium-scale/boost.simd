@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -34,9 +33,12 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    std::size_t r =std::size_t(sum(if_one_else_zero(x)));
+    std::size_t r = sum(if_one_else_zero(x));
     @endcode
 
+    @par Note
+
+    This function is peculiarly useful in horizontal branching idioms.
   **/
   std::size_t nbtrue(Value const & x);
 } }

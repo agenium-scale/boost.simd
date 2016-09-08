@@ -2,8 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T.Lapreste
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -53,20 +52,19 @@ namespace boost { namespace simd
     template < typename A0 >
     struct erf_kernel1 < A0, double >
     {
-      using s_t = bd::scalar_of_t<A0>;
       // computes erf(a0) for double or double vectors
       // x is a0, y is abs(a0) and 0 <= abs(a0) <= 0.46875
       static BOOST_FORCEINLINE A0 erf1(const A0& x, const A0& y, A0& ysq) BOOST_NOEXCEPT
       {
         ysq = if_else_zero (y > Halfeps<A0>(), sqr(y));
-        return x *  horn<s_t,
+        return x *  horn<A0,
                          0x40a912c1535d121all,
                          0x407797c38897528bll,
                          0x405c774e4d365da3ll,
                          0x400949fb3ed443e9ll,
                           0x3fc7c7905a31c322ll
                          > (ysq)/
-          horn1<s_t,
+          horn1<A0,
                0x40a63879423b87adll,
                0x40940a77529cadc8ll,
                0x406e80c9d57e55b8ll,
@@ -86,7 +84,7 @@ namespace boost { namespace simd
       //  0.46875 <= abs(a0) <= 4.0
       static BOOST_FORCEINLINE A0 erf2(const A0&, const A0& y) BOOST_NOEXCEPT
       {
-        return horn<s_t,
+        return horn<A0,
                     0X4093395B7FD2FC8EULL,
                     0X40A0062821236F6BULL,
                     0X409AC030C15DC8D7ULL,
@@ -97,7 +95,7 @@ namespace boost { namespace simd
                     0X3FE20DD508EB103EULL,
                      0X3E571E703C5F5815ULL
                     > (y)/
-                  horn1<s_t,
+                  horn1<A0,
                        0X4093395B7FD35F61ULL,
                        0X40AADEBC3FC90DBDULL,
                        0X40B10A9E7CB10E86ULL,
@@ -124,11 +122,11 @@ namespace boost { namespace simd
       // 4 < abs(x)
       static BOOST_FORCEINLINE A0 erf3(const A0& , const A0& y) BOOST_NOEXCEPT
       {
-        A0 Invsqrtpi = Constant<double, 0x3fe20dd750429b6dll>(); //0.564189583547756286948079451561
-        A0 Xhuge     = Constant<double, 0x418ffeeb00000000ll>(); // 6.71e+7
+        A0 Invsqrtpi = Constant<A0, 0x3fe20dd750429b6dll>(); //0.564189583547756286948079451561
+        A0 Xhuge     = Constant<A0, 0x418ffeeb00000000ll>(); // 6.71e+7
         A0 ysq = rec(sqr(y));
         A0 res = ysq*
-          horn<s_t,
+          horn<A0,
                0X3F4595FD0D71E33CULL,
                0X3F9078448CD6C5B5ULL,
                0X3FC0199D980A842FULL,
@@ -136,7 +134,7 @@ namespace boost { namespace simd
                0X3FD38A78B9F065F6ULL,
                 0X3F90B4FB18B485C7ULL
                 > (ysq)/
-           horn1<s_t,
+           horn1<A0,
                 0X3F632147A014BAD1ULL,
                 0X3FAEFC42917D7DE7ULL,
                 0X3FE0E4993E122C39ULL,
@@ -155,7 +153,7 @@ namespace boost { namespace simd
         A0 ysq = reduc(x);
         A0 del = (x-ysq)*(x+ysq);
         A0 y = exp(ysq*ysq) * exp(del);
-        res = if_else(x < Constant<double, 0XC03AA0C49BA5E354ULL>(), Inf<A0>(), (y+y)-res); //-26.628
+        res = if_else(x < Constant<A0, 0XC03AA0C49BA5E354ULL>(), Inf<A0>(), (y+y)-res); //-26.628
       }
 
       static BOOST_FORCEINLINE A0 reduc(const A0& x) BOOST_NOEXCEPT

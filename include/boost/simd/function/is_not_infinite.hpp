@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -26,16 +25,16 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    as_logical_t<T> r = is_not_infinite(x);
+    auto r = is_not_infinite(x);
     @endcode
 
     is similar to:
 
     @code
-    if T is floating
-      as_logical_t<T> r = (x !=  Inf) && (x != -Inf);
+    if x is of floating type
+      auto r = (x !=  Inf) && (x != -Inf);
     else
-      as_logical_t<T> r = True ;
+      auto r = True ;
     @endcode
 
   **/

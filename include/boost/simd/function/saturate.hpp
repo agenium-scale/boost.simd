@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -26,6 +25,9 @@ namespace boost { namespace simd
 
     @par Semantic:
 
+
+    For every parameter of type @c T and type @c Target
+
     @code
     T r = saturate<Target>(x)
     @endcode
@@ -40,7 +42,9 @@ namespace boost { namespace simd
 
     @see Minf, Inf, Valmax, Valmin
 
-    Note let us recall that @ref Valmin and @ref Minf (resp. @ref Valmax and @ref Inf)
+    @par Note
+
+    Let us recall that @ref Valmin and @ref Minf (resp. @ref Valmax and @ref Inf)
     are identical if Target is  an integer type.
 
   **/

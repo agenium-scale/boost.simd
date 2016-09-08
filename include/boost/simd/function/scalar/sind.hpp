@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_SIND_HPP_INCLUDED
 
 #include <boost/simd/function/definition/sind.hpp>
-#include <boost/simd/arch/common/generic/function/sind.hpp>
+#include <boost/simd/arch/common/scalar/function/sind.hpp>
 
 #endif

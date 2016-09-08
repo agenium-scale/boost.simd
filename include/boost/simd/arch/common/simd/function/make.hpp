@@ -80,7 +80,7 @@ namespace boost { namespace simd { namespace ext
   // make from unspecified value
   BOOST_DISPATCH_OVERLOAD ( make_
                           , (typename Target, typename... Values)
-                          , bs::simd_
+                          , bd::cpu_
                           , bd::target_<bs::pack_<bd::unspecified_<Target>,bs::simd_emulation_>>
                           , bd::scalar_<bd::unspecified_<Values>>...
                           )
@@ -102,7 +102,7 @@ namespace boost { namespace simd { namespace ext
   // make from logical value in emulation mode - This is not duplicated code
   BOOST_DISPATCH_OVERLOAD ( make_
                           , (typename Target, typename... Values, typename Ext)
-                          , bs::simd_
+                          , bd::cpu_
                           , bd::target_<bs::pack_<bs::logical_<Target>,Ext>>
                           , bd::scalar_<bd::unspecified_<Values>>...
                           )

@@ -1,7 +1,6 @@
 //==================================================================================================
 /**
   Copyright 2016 NumScale SAS
-  Copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -28,7 +27,7 @@ void test_fast(Env& $)
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
 
-  STF_ULP_EQUAL(bs::fast_(bs::rsqrt)(aa1), bb, 100);
+  STF_ULP_EQUAL(bs::fast_(bs::rsqrt)(aa1), bb, 2048);
 }
 
 STF_CASE_TPL("Check fast rsqrt on pack" , STF_IEEE_TYPES)
@@ -55,7 +54,7 @@ void test(Env& $)
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
 
-  STF_ULP_EQUAL(bs::rsqrt(aa1), bb, 0.5);
+  STF_ULP_EQUAL(bs::rsqrt(aa1), bb, 1);
 }
 
 STF_CASE_TPL("Check rsqrt on pack" , STF_IEEE_TYPES)

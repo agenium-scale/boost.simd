@@ -11,7 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_SQRT_HPP_INCLUDED
 
 #include <boost/simd/function/definition/sqrt.hpp>
-#include <boost/simd/arch/common/generic/function/sqrt.hpp>
 #include <boost/simd/arch/common/scalar/function/sqrt.hpp>
 
 #endif

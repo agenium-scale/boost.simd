@@ -12,5 +12,6 @@
 
 #include <boost/simd/function/definition/mask2logical.hpp>
 #include <boost/simd/arch/common/generic/function/mask2logical.hpp>
+#include <boost/simd/arch/common/scalar/function/mask2logical.hpp>
 
 #endif

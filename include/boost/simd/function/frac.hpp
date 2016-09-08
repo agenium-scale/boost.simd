@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -26,16 +25,16 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    T r = frac(x);
+    auto r = frac(x);
     @endcode
 
     is similar to:
 
     @code
-    T r =  x-trunc(x);
+    auto r =  x-trunc(x);
     @endcode
 
-    @see trunc,  modf
+    @see trunc, modf
 
   **/
   Value frac(Value const & v0);

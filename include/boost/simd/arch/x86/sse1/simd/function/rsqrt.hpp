@@ -3,7 +3,6 @@
     @file
 
     @Copyright 2016 Numscale SAS
-    @copyright 2016 J.T.Lapreste
 
     Distributed under the Boost Software License, Version 1.0.
     (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -34,8 +33,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() (fast_tag const&
                                     , const A0 & a0) const BOOST_NOEXCEPT
     {
-      A0 nr  = _mm_rsqrt_ps(a0);
-      return nr*Half<A0>() * fnma(a0, sqr(nr), Mthree<A0>());
+      return  _mm_rsqrt_ps(a0);
     }
   };
 } } }

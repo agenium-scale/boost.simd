@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -25,7 +24,7 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters of types respectively C, T:
+    For every parameters @c cond of type @c C, @c f of type @c T:
 
     @code
     T r = if_allbits_else(cond,f);
@@ -43,10 +42,10 @@ namespace boost { namespace simd
     @see genmask, Allbits, Nan
 
   **/
-  Value if_allbits_else(Value const& c, Value const& v0);
+  Value if_allbits_else(Value const& c, Value const& f);
 
   //@overload
-  Value if_allbits_else(LogicalValue const& c, Value const& v0);
+  Value if_allbits_else(LogicalValue const& c, Value const& f);
 } }
 #endif
 

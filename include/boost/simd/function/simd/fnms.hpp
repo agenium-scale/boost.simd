@@ -12,13 +12,13 @@
 
 #include <boost/simd/function/scalar/fnms.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/generic/function/fnms.hpp>
+#include <boost/simd/arch/common/simd/function/fnms.hpp>
 
 #if defined(BOOST_HW_SIMD_X86_OR_AMD_AVAILABLE)
-#  if BOOST_HW_SIMD_X86_OR_AMD >= BOOST_HW_SIMD_X86_AMD_FMA4_VERSION
+#  if BOOST_HW_SIMD_X86_AMD_FMA4
 #    include <boost/simd/arch/x86/fma4/simd/function/fnms.hpp>
 #  endif
-#  if BOOST_HW_SIMD_X86_OR_AMD >= BOOST_HW_SIMD_X86_FMA3_VERSION
+#  if BOOST_HW_SIMD_X86_FMA3
 #    include <boost/simd/arch/x86/fma3/simd/function/fnms.hpp>
 #  endif
 #endif

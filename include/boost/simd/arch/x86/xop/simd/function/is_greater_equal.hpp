@@ -17,6 +17,7 @@
 #define BOOST_SIMD_MISSING_MM_PCOMCTRL_GE
 #endif
 
+#if BOOST_HW_SIMD_X86_AMD_XOP
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
@@ -24,7 +25,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( is_greater_equal_
                           , (typename A0)
-                          , bs::xop_
+                          , bs::avx_
                           , bs::pack_<bd::int8_<A0>, bs::sse_>
                           , bs::pack_<bd::int8_<A0>, bs::sse_>
                           )
@@ -42,7 +43,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( is_greater_equal_
                           , (typename A0)
-                          , bs::xop_
+                          , bs::avx_
                           , bs::pack_<bd::int16_<A0>, bs::sse_>
                           , bs::pack_<bd::int16_<A0>, bs::sse_>
                           )
@@ -60,7 +61,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( is_greater_equal_
                           , (typename A0)
-                          , bs::xop_
+                          , bs::avx_
                           , bs::pack_<bd::int32_<A0>, bs::sse_>
                           , bs::pack_<bd::int32_<A0>, bs::sse_>
                           )
@@ -78,7 +79,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( is_greater_equal_
                           , (typename A0)
-                          , bs::xop_
+                          , bs::avx_
                           , bs::pack_<bd::int64_<A0>, bs::sse_>
                           , bs::pack_<bd::int64_<A0>, bs::sse_>
                           )
@@ -96,7 +97,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( is_greater_equal_
                           , (typename A0)
-                          , bs::xop_
+                          , bs::avx_
                           , bs::pack_<bd::uint8_<A0>, bs::sse_>
                           , bs::pack_<bd::uint8_<A0>, bs::sse_>
                           )
@@ -114,7 +115,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( is_greater_equal_
                           , (typename A0)
-                          , bs::xop_
+                          , bs::avx_
                           , bs::pack_<bd::uint16_<A0>, bs::sse_>
                           , bs::pack_<bd::uint16_<A0>, bs::sse_>
                           )
@@ -132,7 +133,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( is_greater_equal_
                           , (typename A0)
-                          , bs::xop_
+                          , bs::avx_
                           , bs::pack_<bd::uint32_<A0>, bs::sse_>
                           , bs::pack_<bd::uint32_<A0>, bs::sse_>
                           )
@@ -150,7 +151,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( is_greater_equal_
                           , (typename A0)
-                          , bs::xop_
+                          , bs::avx_
                           , bs::pack_<bd::uint64_<A0>, bs::sse_>
                           , bs::pack_<bd::uint64_<A0>, bs::sse_>
                           )
@@ -166,6 +167,7 @@ namespace boost { namespace simd { namespace ext
     }
   };
 } } }
+#endif
 
 #if defined(BOOST_SIMD_MISSING_MM_PCOMCTRL_GE)
 #undef _MM_PCOMCTRL_GE

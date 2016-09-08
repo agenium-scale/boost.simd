@@ -11,6 +11,8 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/constant/one.hpp>
+#include <boost/simd/function/raw.hpp>
+#include <boost/simd/function/fast.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -29,6 +31,32 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return One<A0>()/a0;
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( rec_
+                          , (typename T)
+                          , bd::cpu_
+                          , bs::fast_tag
+                          , bd::scalar_<bd::unspecified_<T>>
+                          )
+  {
+    BOOST_FORCEINLINE T operator()(const fast_tag &, T a) const BOOST_NOEXCEPT
+    {
+      return rec(a);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( rec_
+                          , (typename T)
+                          , bd::cpu_
+                          , bs::raw_tag
+                          , bd::scalar_<bd::unspecified_<T>>
+                          )
+  {
+    BOOST_FORCEINLINE T operator()(const raw_tag &, T a) const BOOST_NOEXCEPT
+    {
+      return rec(a);
     }
   };
 } } }

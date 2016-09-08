@@ -3,7 +3,6 @@
   @file
 
   Copyright 2016 NumScale SAS
-  Copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -28,7 +27,7 @@ void test(Env& $)
   iT b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
-    a1[i] = T(4); //N+i+1);
+    a1[i] = T(N+i+1);
      b[i] = bs::ilogb(a1[i]);
    }
   p_t aa1(&a1[0], &a1[0]+N);
@@ -36,7 +35,8 @@ void test(Env& $)
   STF_EQUAL(bs::ilogb(aa1), bb);
 }
 
-STF_CASE_TPL("Check ilogb on pack" ,  (float)(double)(int8_t)(int32_t)(uint64_t)(uint8_t)(uint32_t)(uint64_t))//STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check ilogb on pack" , // (float)(double)(int8_t)(int32_t)(uint64_t)(uint8_t)(uint32_t)(uint64_t))//
+                                     STF_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;

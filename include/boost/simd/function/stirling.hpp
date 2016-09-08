@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -31,12 +30,13 @@ namespace boost { namespace simd
     T r = stirling(x);
     @endcode
 
-    Computes \f$\Gamma(x) \approx \sqrt{2 \pi} x^{x-\frac12} e^{-x} ( 1 + \frac1{x} P(\frac1{x}))\f$,
+    Computes  \sqrt{2 \pi} x^{x-\frac12} e^{-x} ( 1 + \frac1{x} P(\frac1{x}))\f$,
     where \f$P\f$ is a polynomial.
 
-    The formula implementation is usable for x between 33 and 172, according cephes
+    The formula implementation is usable for x between 33 and 172,
+    according cephes to approximate \f$\Gamma(x).
 
-    @see gamma
+    @see gamma, gammaln
 
   **/
   Value stirling(Value const & v0);

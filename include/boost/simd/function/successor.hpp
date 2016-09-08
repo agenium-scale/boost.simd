@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -26,13 +25,13 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    T r = successor(x,n);
+    auto r = successor(x,n);
     @endcode
 
-    computes the @c n-th least representable value strictly greater than x in its type.
+    If n is null returns x else computes the @c n-th least representable value strictly greater than x in its type.
     n must be positive or null.
 
-    For integer it saturate at @ref Valmax, for floating point numbers, all @ref Inf
+    For integer it saturate at @ref Valmax. For floating point numbers, all @ref Inf
     strict successors are @ref Nan.
 
   **/

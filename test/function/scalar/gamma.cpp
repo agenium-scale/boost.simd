@@ -1,8 +1,7 @@
 //==================================================================================================
 /*!
 
-  Copyright 2015 NumScale SAS
-  Copyright 2015 J.T. Lapreste
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -43,4 +42,8 @@ STF_CASE_TPL (" gamma",  STF_IEEE_TYPES)
 #endif
   STF_ULP_EQUAL(gamma(bs::Zero<T>()), bs::Inf<r_t>(), 0);
   STF_ULP_EQUAL(gamma(bs::Mzero<T>()), bs::Minf<r_t>(), 0);
+  STF_ULP_EQUAL(gamma(T(1)), T(1), 0);
+  STF_ULP_EQUAL(gamma(T(2)), T(1), 0);
+  STF_ULP_EQUAL(gamma(T(3)), T(2), 0);
+  STF_ULP_EQUAL(gamma(T(5)), T(24), 0);
  }

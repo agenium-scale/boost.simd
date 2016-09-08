@@ -13,6 +13,7 @@
 #include <boost/simd/constant/sqrtvalmax.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/function/simd/abs.hpp>
+#include <boost/simd/function/simd/multiplies.hpp>
 #include <boost/simd/function/simd/if_else.hpp>
 #include <boost/simd/function/simd/is_greater.hpp>
 #include <boost/simd/function/simd/sqr.hpp>
@@ -26,33 +27,49 @@ namespace boost { namespace simd { namespace ext
 {
    namespace bd = boost::dispatch;
    namespace bs = boost::simd;
-   BOOST_DISPATCH_OVERLOAD(sqr_
+
+  BOOST_DISPATCH_OVERLOAD_IF ( sqr_
                           , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
-                          , bs::saturated_tag
-                          , bs::pack_<bd::int_<A0>, X>
+                          , bs::pack_< bd::arithmetic_<A0>, X>
                           )
-   {
-     BOOST_FORCEINLINE A0 operator()(const saturated_tag &,  const A0& a0
-                                    ) const BOOST_NOEXCEPT
-     {
-       // workaround for UBSan
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    {
+      return bs::multiplies(a0, a0);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD_IF(sqr_
+                            , (typename A0, typename X)
+                            , (detail::is_native<X>)
+                            , bd::cpu_
+                            , bs::saturated_tag
+                            , bs::pack_<bd::int_<A0>, X>
+                            )
+  {
+    BOOST_FORCEINLINE A0 operator()(const saturated_tag &,  const A0& a0
+                                   ) const BOOST_NOEXCEPT
+    {
+      // workaround for UBSan
 #ifdef USE_UBSAN
-       using utype = bs::as_unsigned_t<A0>;
-       return if_else(is_greater(saturated_(abs)(a0), bs::Sqrtvalmax<A0>()),
-                      bs::Valmax<A0>(), bitwise_cast<A0>(sqr(bitwise_cast<utype>(a0))));
+      using utype = bs::as_unsigned_t<A0>;
+      return if_else(is_greater(saturated_(abs)(a0), bs::Sqrtvalmax<A0>()),
+                     bs::Valmax<A0>(), bitwise_cast<A0>(sqr(bitwise_cast<utype>(a0))));
 #else
-       return if_else(is_greater(saturated_(abs)(a0), bs::Sqrtvalmax<A0>()),
-                      bs::Valmax<A0>(), sqr(a0));
+      return if_else(is_greater(saturated_(abs)(a0), bs::Sqrtvalmax<A0>()),
+                     bs::Valmax<A0>(), sqr(a0));
 #endif
-     }
-   };
-  BOOST_DISPATCH_OVERLOAD(sqr_
-                         , (typename A0, typename X)
-                         , bd::cpu_
-                         , bs::saturated_tag
-                         , bs::pack_<bd::uint_<A0>, X>
-                         )
+    }
+  };
+  BOOST_DISPATCH_OVERLOAD_IF(sqr_
+                            , (typename A0, typename X)
+                            , (detail::is_native<X>)
+                            , bd::cpu_
+                            , bs::saturated_tag
+                            , bs::pack_<bd::uint_<A0>, X>
+                            )
   {
     BOOST_FORCEINLINE A0 operator()(const saturated_tag &,  const A0& a0
                                    ) const BOOST_NOEXCEPT
@@ -61,12 +78,13 @@ namespace boost { namespace simd { namespace ext
                      bs::Valmax<A0>(), sqr(a0));
     }
   };
-  BOOST_DISPATCH_OVERLOAD(sqr_
-                         , (typename A0, typename X)
-                         , bd::cpu_
-                         , bs::saturated_tag
-                         , bs::pack_<bd::floating_<A0>, X>
-                         )
+  BOOST_DISPATCH_OVERLOAD_IF(sqr_
+                            , (typename A0, typename X)
+                            , (detail::is_native<X>)
+                            , bd::cpu_
+                            , bs::saturated_tag
+                            , bs::pack_<bd::floating_<A0>, X>
+                            )
   {
     BOOST_FORCEINLINE A0 operator()(const saturated_tag &,  const A0& a0
                                    ) const BOOST_NOEXCEPT

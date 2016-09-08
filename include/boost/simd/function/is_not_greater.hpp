@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -26,24 +25,19 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    as_logical_t<T> r = is_not_greater(x,y);
+    auto r = is_not_greater(x,y);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<T> r = ;
+    auto r = ;
     @endcode
 
     @par Note:
 
-    Due to existence of nan, this is not equivalent to @c is_less_equal(x, y)
+    Due to existence of nan, this is not equivalent to is_less_equal(x, y)
     for floating types
-
-    @par Alias:
-
-    @c is_ngt
-
   **/
   as_logical_t<Value> is_not_greater(Value const& x, Value const& y);
 } }

@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_INRAD_HPP_INCLUDED
 
 #include <boost/simd/function/definition/inrad.hpp>
-#include <boost/simd/arch/common/generic/function/inrad.hpp>
+#include <boost/simd/arch/common/scalar/function/inrad.hpp>
 
 #endif

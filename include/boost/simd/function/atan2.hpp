@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -21,29 +20,21 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing atan2 capabilities
 
-    atan2 function.
+    quadrant aware atan2 function.
 
     @par Semantic:
 
-    For every parameters of floating type T:
+    For every parameters @c x and @c y of same floating type
 
     @code
-    T r = atan2(y, x);
+    auto r = atan2(y, x);
     @endcode
-
-    is similar but not fully equivalent to:
-
-    @code
-    T r =  atan(y/x);;
-    @endcode
-
-    as it is quadrant aware.
 
     @par Notes
 
-    - For any real arguments @c x and @c y not both equal to zero, <tt>atan2(y, xy)</tt>
+    - For any real arguments @c x and @c y not both equal to zero, <tt>atan2(y, x)</tt>
     is the angle in radians between the positive x-axis of a plane and the point
-    given by the coordinates  <tt>(y,x)</tt>.
+    given by the coordinates  <tt>(x, y)</tt>.
 
     - It is also the angle in \f$[-\pi,\pi[\f$ for which
     \f$x/\sqrt{x^2+y^2}\f$ and \f$y/\sqrt{x^2+y^2}\f$
@@ -63,13 +54,15 @@ namespace boost { namespace simd
      -  If x is \f$+\infty\f$ and y is finite and negative, -0 is returned
      -  If either x is Nan or y is Nan, Nan is returned
 
-    - If you want to gain some cycles a fast_ tag is provided. If you use it pairs (x, y)
-     where both are null or both are infinite will produce a Nan result which in fact
-     is not more absurd than the IEEE choices and will be conforming in all other cases.
+    - The fast_ decorator may be used when speed is of essence. In this case, if
+      x and y are both either null or infinite, this function will return a Nan result which in fact
+      is not more absurd than the IEEE choices. It will be conforming in all other cases.
 
     @par Decorators
 
-    std_ for floating entries
+    std_ for floating entries provides access to std::atan2
+
+    fast_ is speedier but as indicated is not fully conformant to the standard
 
   @see atan, atand, atanpi
 

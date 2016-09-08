@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_IFIX_HPP_INCLUDED
 
 #include <boost/simd/function/definition/ifix.hpp>
-#include <boost/simd/arch/common/generic/function/ifix.hpp>
+#include <boost/simd/arch/common/scalar/function/ifix.hpp>
 
 #endif

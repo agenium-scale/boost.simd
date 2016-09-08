@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -27,25 +26,26 @@ namespace boost { namespace simd
 
     Infix notation can be used with operator '&&'.
 
+    @warningbox{Take care that using && in scalar mode does short-circuit and does not in simd mode.}
+
     @par Semantic:
 
-    For every parameters of types respectively T0, T1:
-
     @code
-    as_logical_t<T0> r = logical_and(x,y);
+    auto r = logical_and(x,y);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<T0> r = x && y ;
+    auto r = x && y ;
     @endcode
+
 
     @see  logical_or, logical_xor, logical_notand,
     logical_andnot, logical_notor, logical_ornot, logical_not
 
   **/
-  as_logical_t<Value> logical_and(Value const& x, Value const& y);
+  as_logical_t<Value> logical_and(Value1 const& x, Value2 const& y);
 } }
 #endif
 

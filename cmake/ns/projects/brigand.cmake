@@ -1,5 +1,5 @@
 ##===================================================================================================
-##                               Copyright 2015   NumScale SAS
+##                               Copyright 2016   NumScale SAS
 ##
 ##                   Distributed under the Boost Software License, Version 1.0.
 ##                        See accompanying file LICENSE.txt or copy at
@@ -27,7 +27,7 @@ NS_project_add(BRIGAND
   STEP_TARGETS   install
   EXCLUDE_FROM_ALL
 
-  ${BRIGAND_OPTIONS}
+  ${NS_CMAKE_PROJECT_OPTIONS} ${BRIGAND_OPTIONS}
 )
 
 add_custom_target(update.brigand

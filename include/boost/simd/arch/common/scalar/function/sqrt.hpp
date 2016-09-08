@@ -2,8 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T. Lapreste
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -16,6 +15,7 @@
 #include <boost/simd/function/std.hpp>
 
 #include <boost/simd/function/scalar/is_gez.hpp>
+#include <boost/simd/function/scalar/rsqrt.hpp>
 #include <boost/simd/detail/math.hpp>
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
@@ -78,6 +78,49 @@ namespace boost { namespace simd { namespace ext
       return std::sqrt(a0);
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( sqrt_
+                          , (typename A0)
+                          , bd::cpu_
+                          , boost::simd::fast_tag
+                          , bd::scalar_< bd::single_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0  a0) const BOOST_NOEXCEPT
+    {
+      return if_else_zero(a0, a0 * fast_(rsqrt)(a0));
+    }
+  };
+
+   BOOST_DISPATCH_OVERLOAD ( sqrt_
+                          , (typename A0)
+                          , bd::cpu_
+                          , boost::simd::fast_tag
+                          , bd::scalar_< bd::double_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0  a0) const BOOST_NOEXCEPT
+    {
+      return ::sqrt(a0);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( sqrt_
+                          , (typename A0)
+                          , bd::cpu_
+                          , boost::simd::fast_tag
+                          , bd::scalar_< bd::integer_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 a0) const BOOST_NOEXCEPT
+    {
+      BOOST_ASSERT_MSG( is_positive(a0)
+                      , "sqrt integer domain is restricted to positive integer."
+                      );
+      return sqrt(a0);
+    }
+  };
+
 } } }
 
 

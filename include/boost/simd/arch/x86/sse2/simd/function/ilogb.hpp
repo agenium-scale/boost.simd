@@ -3,7 +3,6 @@
     @file
 
     @Copyright 2016 Numscale SAS
-    @copyright 2016 J.T.Lapreste
 
     Distributed under the Boost Software License, Version 1.0.
     (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -88,17 +87,14 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( ilogb_
                           , (typename A0)
                           , bs::sse2_
-                          , bs::pack_<bd::uint16_<A0>, bs::sse_>
+                          , bs::pack_<bd::ints16_<A0>, bs::sse_>
                           )
   {
     using result = bd::as_integer_t<A0>;
     BOOST_FORCEINLINE result operator() ( const A0 & a0)
     {
-      using up_t = detail::make_dependent_t<int32_t,A0>;
-      using gen_t = pack<up_t, 32>;//this is not correct TODO using new upgrade possibilities
-      gen_t a0h, a0l;
-      split(a0, a0l, a0h);
-      return group(ilogb(a0l), ilogb(a0h));
+      auto s0 = split(a0);
+      return bitwise_cast<result>(group(ilogb(s0[0]), ilogb(s0[1])));
     }
   };
   BOOST_DISPATCH_OVERLOAD ( ilogb_

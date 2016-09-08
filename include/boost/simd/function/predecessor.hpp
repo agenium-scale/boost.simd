@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -26,13 +25,13 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    T r = predecessor(x,n);
+    auto r = predecessor(x,n);
     @endcode
 
-    computes the n-th greatest representable value strictly less than x in its type.
+    If n is null returns x else computes the n-th greatest representable value strictly less than x in its type.
     n must be positive or null.
 
-    For integer it saturate at @ref Valmin, for floating point numbers, all @ref Minf
+    For integer it saturate at @ref Valmin. For floating point numbers, all @ref Minf
     strict predecessors are @ref Nan.
 
     @see next, prev, successor, nextafter, Minf, Valmin, Nan

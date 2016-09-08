@@ -2,8 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T. Lapreste
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -12,14 +11,12 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_HI_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_HI_HPP_INCLUDED
 
-#include <boost/simd/function/simd/lo.hpp>
-#include <boost/simd/function/simd/shr.hpp>
+#include <boost/simd/function/scalar/lo.hpp>
+#include <boost/simd/function/scalar/shr.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/config.hpp>
-#include <boost/simd/detail/dispatch/meta/downgrade.hpp>
-#include <boost/simd/function/simd/interleave_odd.hpp>
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;

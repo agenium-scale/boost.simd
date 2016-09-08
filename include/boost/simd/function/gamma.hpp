@@ -2,7 +2,6 @@
 /*!
   @file
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -30,6 +29,10 @@ namespace boost { namespace simd
     T r = gamma(x);
     @endcode
 
+    @par Decorators
+
+    std_ for floating entries provides access to @c std::tgamma
+
     @see gammaln
 
   **/
@@ -38,6 +41,6 @@ namespace boost { namespace simd
 #endif
 
 #include <boost/simd/function/scalar/gamma.hpp>
-//#include <boost/simd/function/simd/gamma.hpp>
+#include <boost/simd/function/simd/gamma.hpp>
 
 #endif

@@ -1,39 +1,28 @@
 //==================================================================================================
-/*!
-  @file
-
-  @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
+/**
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_CORRECT_FMA_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_CORRECT_FMA_HPP_INCLUDED
-#include <boost/simd/detail/overload.hpp>
 
-#include <boost/simd/meta/hierarchy/simd.hpp>
+#include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
 #include <boost/simd/function/simd/group.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/plus.hpp>
 #include <boost/simd/function/simd/split.hpp>
 #include <boost/simd/function/simd/two_add.hpp>
 #include <boost/simd/function/simd/two_prod.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
-#include <boost/simd/detail/dispatch/meta/upgrade.hpp>
 #include <boost/simd/function/conformant.hpp>
-#include <tuple>
-#include <utility>
 
 #ifndef BOOST_SIMD_DONT_CARE_FMA_OVERFLOW
 #include <boost/simd/function/simd/exponent.hpp>
 #include <boost/simd/function/simd/ldexp.hpp>
 #include <boost/simd/function/simd/maxmag.hpp>
 #include <boost/simd/function/simd/minmag.hpp>
-#include <boost/simd/function/simd/shift_right.hpp>
-#include <boost/simd/function/simd/unary_minus.hpp>
 #endif
 
 namespace boost { namespace simd { namespace ext
@@ -41,8 +30,9 @@ namespace boost { namespace simd { namespace ext
    namespace bd = boost::dispatch;
    namespace bs = boost::simd;
 
-   BOOST_DISPATCH_OVERLOAD(fma_
+   BOOST_DISPATCH_OVERLOAD_IF(fma_
                              , (typename A0, typename X)
+                             , (detail::is_native<X>)
                              , bd::cpu_
                              , bs::conformant_tag
                              , bs::pack_<bd::single_<A0>, X>
@@ -53,17 +43,16 @@ namespace boost { namespace simd { namespace ext
       BOOST_FORCEINLINE A0 operator()( const conformant_tag &
                                      , const A0& a0, const A0& a1, const A0& a2) const BOOST_NOEXCEPT
       {
-        using ivtype = bd::upgrade_t<A0>;
-        ivtype a0l, a0h, a1l, a1h, a2l, a2h;
-        std::tie(a0l, a0h) = split(a0);
-        std::tie(a1l, a1h) = split(a1);
-        std::tie(a2l, a2h) = split(a2);
-        return group(a0l*a1l+a2l, a0h*a1h+a2h);
+        auto s0 = split(a0);
+        auto s1 = split(a1);
+        auto s2 = split(a2);
+        return group(s0[0]*s1[0]+s2[0], s0[1]*s1[1]+s2[1]);
       }
    };
 
-   BOOST_DISPATCH_OVERLOAD(fma_
+   BOOST_DISPATCH_OVERLOAD_IF(fma_
                           , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::conformant_tag
                           , bs::pack_<bd::floating_<A0>, X>
@@ -93,8 +82,9 @@ namespace boost { namespace simd { namespace ext
       }
    };
 
-   BOOST_DISPATCH_OVERLOAD(fma_
+   BOOST_DISPATCH_OVERLOAD_IF(fma_
                           , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::conformant_tag
                           , bs::pack_<bd::int_<A0>, X>
@@ -114,8 +104,9 @@ namespace boost { namespace simd { namespace ext
       }
    };
 
-   BOOST_DISPATCH_OVERLOAD(fma_
+   BOOST_DISPATCH_OVERLOAD_IF(fma_
                           , (typename A0, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::conformant_tag
                           , bs::pack_<bd::uint_<A0>, X>
@@ -129,9 +120,6 @@ namespace boost { namespace simd { namespace ext
         return a0*a1+a2;
       }
    };
-
 } } }
 
-
 #endif
-

@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -27,7 +26,7 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-     For every parameters of types respectively C, T, T:
+     For every parameters @c c of type @c C and @c x, @c y of type @c T:
 
     @code
     T1 r = ifnot_minus(cond, x, y);
@@ -40,7 +39,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  Value ifnot_minus(Value const& c, Value const& x, Value const& y)
+  Value ifnot_minus(Value const& c, Value const& x, Value const& y);
 
   //@overload
   Value ifnot_minus(LogicalValue const& c, Value const& x, Value const& y);

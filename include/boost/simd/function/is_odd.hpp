@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -26,20 +25,16 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    as_logical_t<T> r = is_odd(x);
+    auto r = is_odd(x);
     @endcode
 
     is similar to:
 
     @code
-    as_logical_t<T> r = (abs(x)/2)*2 == abs(x)-1;
+    auto r = is_even(x-One);
     @endcode
 
-    @par Note:
-
-    A floating number x is odd if x-1 is even
-
-    @see is_even,  is_flint
+     @see is_even, is_flint
 
   **/
   as_logical_t<Value> is_odd(Value const& x);

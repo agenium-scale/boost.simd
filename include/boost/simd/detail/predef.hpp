@@ -4,7 +4,7 @@
 
   Convenience header for SIMD detection
 
-  @copyright 2012 - 2015 NumScale SAS
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -13,6 +13,8 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_DETAIL_PREDEF_HPP_INCLUDED
 #define BOOST_SIMD_DETAIL_PREDEF_HPP_INCLUDED
+
+#include <boost/version.hpp>
 
 /*
   Force the setup of specific SIMD x86 extension on MSVC.
@@ -60,7 +62,20 @@
   #endif
 #endif
 
-#include <boost/predef/hardware/simd.h>
+// We assume that everything is gonna be fixed in boost 1.62
+#if BOOST_VERSION <= 107200
+  #include <boost/simd/detail/predef/hardware/simd.h>
+#else
+  #include <boost/predef/hardware/simd.h>
+#endif
+
+// This one is missing from current predef
+#if defined(__BYTE_ORDER__)
+  #if !defined(__BYTE_ORDER)
+    #define __BYTE_ORDER __BYTE_ORDER__
+  #endif
+#endif
+#include <boost/predef/other/endian.h>
 
 // Ensure a cross X86/AMD selection
 #if BOOST_HW_SIMD_X86 > BOOST_HW_SIMD_X86_AMD

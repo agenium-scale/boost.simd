@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -25,16 +24,16 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameter of floating type T
+    For every parameter of floating type
 
     @code
-    T r = acotd(x);
+    auto r = acotd(x);
     @endcode
 
     Returns the arc @c r in the interval
     \f$[0, 180[\f$ such that <tt>cotd(r) == x</tt>.
 
-    @see acot
+    @see acot, acotpi, cotd
 
   **/
   Value acotd(Value const & v0);

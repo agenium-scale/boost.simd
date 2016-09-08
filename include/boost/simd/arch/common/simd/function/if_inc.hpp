@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -23,8 +22,9 @@ namespace boost { namespace simd { namespace ext
 {
    namespace bd = boost::dispatch;
    namespace bs = boost::simd;
-   BOOST_DISPATCH_OVERLOAD(if_inc_
+   BOOST_DISPATCH_OVERLOAD_IF(if_inc_
                           , (typename A0, typename A1, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::pack_<bs::logical_<A0>, X>
                           , bs::pack_<bd::integer_<A1>, X>
@@ -36,8 +36,9 @@ namespace boost { namespace simd { namespace ext
       }
    };
 
-   BOOST_DISPATCH_OVERLOAD(if_inc_
+   BOOST_DISPATCH_OVERLOAD_IF(if_inc_
                           , (typename A0, typename A1, typename X)
+                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::pack_<bd::arithmetic_<A0>, X>
                           , bs::pack_<bd::arithmetic_<A1>, X>

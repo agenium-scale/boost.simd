@@ -7,6 +7,7 @@
 ##===================================================================================================
 
 set ( SOURCES
+   basic.cpp
    insert.cpp
    store.cpp
    horner.cpp
@@ -181,7 +182,6 @@ set ( SOURCES
    bitwise_and.cpp
    bitwise_or.cpp
    bitwise_xor.cpp
-   comma.cpp
    complement.cpp
    divides.cpp
    if_else.cpp

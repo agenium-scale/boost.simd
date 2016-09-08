@@ -1,6 +1,6 @@
 //==================================================================================================
 /*
-  Copyright 2012 - 2015 NumScale SAS
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -29,7 +29,7 @@ STF_CASE_TPL( "Check existence of limits for SSE1 extension", (sse1_) )
 
 STF_CASE_TPL ( "Check existence of limits for SSE2-like extensions"
                 , (sse2_)(sse3_)(ssse3_)
-                  (sse4_1_)(sse4_2_)(sse4a_)
+                  (sse4_1_)(sse4_2_)
                 )
 {
   STF_TYPE_IS( typename limits<T>::smallest_real, float);
@@ -44,7 +44,7 @@ STF_CASE_TPL ( "Check existence of limits for SSE2-like extensions"
   STF_EQUAL( limits<T>::bytes, 16 );
 }
 
-STF_CASE_TPL( "Check existence of limits for AVX-like extensions", (avx_)(avx2_)(xop_)(fma4_)(fma3_) )
+STF_CASE_TPL( "Check existence of limits for AVX-like extensions", (avx_)(avx2_) )
 {
   STF_TYPE_IS( typename limits<T>::smallest_real, float);
   STF_TYPE_IS( typename limits<T>::largest_real, double);

@@ -1,7 +1,6 @@
 //==================================================================================================
 /**
   Copyright 2016 NumScale SAS
-  Copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -33,8 +32,8 @@ void test(Env& $)
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
   p_t cc (&c[0], &c[0]+N);
-  STF_EQUAL(bs::cos(aa1), bb);
-  STF_EQUAL(bs::std_(bs::cos)(aa1), cc);
+  STF_ULP_EQUAL(bs::cos(aa1), bb, 0.5);
+  STF_ULP_EQUAL(bs::std_(bs::cos)(aa1), cc, 0.5);
 }
 
 STF_CASE_TPL("Check cos on pack" , STF_IEEE_TYPES)
@@ -64,8 +63,8 @@ void testcs(Env& $)
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
   p_t cc (&c[0], &c[0]+N);
-  STF_EQUAL(bs::cos(aa1, bst::clipped_small_), bb);
-  STF_EQUAL(bs::std_(bs::cos)(aa1), cc);
+  STF_ULP_EQUAL(bs::cos(aa1, bst::clipped_small_), bb, 0.5);
+  STF_ULP_EQUAL(bs::std_(bs::cos)(aa1), cc, 0.5);
 }
 
 STF_CASE_TPL("Check cos cos clipped_small_ on pack" , STF_IEEE_TYPES)
@@ -95,8 +94,8 @@ void testcm(Env& $)
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
   p_t cc (&c[0], &c[0]+N);
-  STF_EQUAL(bs::cos(aa1, bst::clipped_medium_), bb);
-  STF_EQUAL(bs::std_(bs::cos)(aa1), cc);
+  STF_ULP_EQUAL(bs::cos(aa1, bst::clipped_medium_), bb, 0.5);
+  STF_ULP_EQUAL(bs::std_(bs::cos)(aa1), cc, 0.5);
 }
 
 STF_CASE_TPL("Check cos cos clipped_medium_ on pack" , STF_IEEE_TYPES)

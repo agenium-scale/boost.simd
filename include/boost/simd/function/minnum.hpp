@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -26,17 +25,17 @@ namespace boost { namespace simd
     @par Semantic:
 
     @code
-    T r = minnum(x,y);
+    auto r = minnum(x,y);
     @endcode
 
     is similar to:
 
     @code
-    T r =     T r = (is_nan(x) ? y : (isnan(y) ? x : min(x, y));;
+    auto r = (is_nan(x) ? y : (isnan(y) ? x : min(x, y));;
     @endcode
 
     @par Alias:
-    @c fmin
+    fmin
 
     With the std_ decorator std_(minnum)(x, y) calls the stdlibc++ function std::fmin.
 

@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -21,9 +20,9 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     Function object implementing sincos capabilities
 
-    Computes the sine and cosine of the input
+    Computes simultaneouly and at lower cost the sine and cosine of the input
 
-    For every parameters of floating type T:
+    For every parameter of floating type T:
 
     @par Semantic:
 

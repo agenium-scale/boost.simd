@@ -19,12 +19,12 @@ namespace boost { namespace simd
     @defgroup group-boolean Boolean functions
 
       These functions provides SIMD algorithms for logical operations and branching
-      in SIMD mode,  their use is possible but not encouraged on scalars entries.
+      in SIMD mode, their use is possible but not encouraged on scalars entries.
 
       - **Logical operators**
 
-        They provide results of @ref logical types,  can not have shortcuts and acts
-        in an elementwise way on SIMD vectors.
+        These functions return boost::simd::logical values, do not support short-circuiting
+        and act in an elementwise way on SIMD vectors.
 
        <center>
          | name               | name                | name              |
@@ -45,32 +45,35 @@ namespace boost { namespace simd
 
         Be aware that using SIMD and branching are quite antagonist.
 
-        For instance if an SIMD vector contain more tha ne element (!) a test on the
-        elements will simultaneouly provide true results for some and false results
-        for other: so branching in simd resume in compute all branches and select the
-        pertinent results...
+        For instance if a SIMD vector contains more than one element (!) a test on the
+        elements will simultaneouly return true for some and false
+        for others: so branching in simd may be described as 'compute all branches and select the
+        pertinent results...'
 
-        The functors listed above are mostly interesting when one of the branch is very cheap
-        compared to the others.
+        The functors listed above are of interest when one of the branches is much cheaper
+        than the other.
 
-        All branching utilities begin by if_ or ifnot_ the first parameter is a SIMD test
-        pack that can be of any of any available type and for which the decision is taken
-        for each element as not zero being true and zero being false and have two branches
-        (implicit or explicity) to define which result will be chosen for each scalar test.
+        All branching utilities begin by if_ or ifnot_. The first parameter is a SIMD test
+        pack which may be of any available type. This test pack is used to determine which branch
+        will be selected for each element of the result vector. Non-zero elements are considered as true
+        and zero elements as false. The result of each branch is given in the following parameters
+        either implicitly or explicitly.
 
-        However the functor will generally computes all the possible outcomes and select
-        at last the propers ones. If each branch as the same cost (notwithstanding the cost of the test
-        and the inner pipelining of the processor) a branch can cost twice the one branch...
-        This become interesting only if the simd vector has a cardinal greater than 2.
+        These functors will generally compute all possible outcomes and then select the
+        correct one. If each branch has the same cost (notwithstanding the cost of the test
+        and the inner pipelining of the processor) the cost of the branching operation may
+        be twice as expensive as the cost of evaluating one of the branches.
+        It is for this reason that these functions are of greatest interest when the cardinal of
+        the simd vector is greater than 2.
 
        <center>
-         | name                            | name                 | name                         |  name               |
-         |:-------------------------------:|:--------------------:|:----------------------------:| :------------------:|
-         | @ref if_allbits_else.hpp        | @ref if_else_nan.hpp | @ref if_one_else_zero.hpp    | @ref ifnot_dec.hpp  |
-         | @ref if_allbits_else_zero.hpp   | @ref if_else_zero.hpp| @ref if_plus.hpp             | @ref ifnot_inc.hpp  |
-         | @ref if_dec.hpp                 | @ref if_inc.hpp      | @ref if_zero_else_allbits.hpp| @ref ifnot_minus.hpp|
-         | @ref if_else_allbits.hpp        | @ref if_minus.hpp    | @ref if_zero_else.hpp        | @ref ifnot_plus.hpp |
-         | @ref if_else.hpp                | @ref if_nan_else.hpp | @ref if_zero_else_one.hpp    |                     |
+         | name                        | name             | name                     |  name           |
+         |:---------------------------:|:----------------:|:------------------------:| :--------------:|
+         | @ref if_allbits_else        | @ref if_else_nan | @ref if_one_else_zero    | @ref ifnot_dec  |
+         | @ref if_allbits_else_zero   | @ref if_else_zero| @ref if_plus             | @ref ifnot_inc  |
+         | @ref if_dec                 | @ref if_inc      | @ref if_zero_else_allbits| @ref ifnot_minus|
+         | @ref if_else_allbits        | @ref if_minus    | @ref if_zero_else        | @ref ifnot_plus |
+         | @ref if_else                | @ref if_nan_else | @ref if_zero_else_one    |                 |
        </center>
 
   **/

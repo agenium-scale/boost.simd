@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_INDEG_HPP_INCLUDED
 
 #include <boost/simd/function/definition/indeg.hpp>
-#include <boost/simd/arch/common/generic/function/indeg.hpp>
+#include <boost/simd/arch/common/scalar/function/indeg.hpp>
 
 #endif

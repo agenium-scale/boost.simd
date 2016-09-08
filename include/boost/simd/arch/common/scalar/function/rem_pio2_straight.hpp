@@ -2,8 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
-  @copyright 2015 J.T. Lapreste
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -21,11 +20,11 @@
 #include <boost/simd/constant/pio2_3.hpp>
 #include <boost/simd/constant/pio_4.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_greater.hpp>
-#include <boost/simd/function/simd/genmask.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/minus.hpp>
+#include <boost/simd/function/scalar/if_else.hpp>
+#include <boost/simd/function/scalar/is_greater.hpp>
+#include <boost/simd/function/scalar/genmask.hpp>
+#include <boost/simd/function/scalar/multiplies.hpp>
+#include <boost/simd/function/scalar/minus.hpp>
 #include <utility>
 
 namespace boost { namespace simd { namespace ext

@@ -1,10 +1,6 @@
 //==================================================================================================
-/*!
-  @file
-
-  Defines the SIMD storage meta-generator
-
-  @copyright 2012 - 2015 NumScale SAS
+/**
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -22,6 +18,11 @@
 #include <type_traits>
 #include <array>
 
+#if defined __GNUC__ && __GNUC__>=6
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wignored-attributes"
+#endif
+
 namespace boost { namespace simd { namespace detail
 {
   // Status for emulated SIMD storage via array of scalar
@@ -34,7 +35,7 @@ namespace boost { namespace simd { namespace detail
   using aggregated_status = brigand::int32_t<+1>;
 
   // Status for SIMD storage to be determined
-  using unknown_status = brigand::int32_t<42>;
+  using unknown_status    = brigand::int32_t<42>;
 
   /*!
     @ingroup group-detail
@@ -44,9 +45,9 @@ namespace boost { namespace simd { namespace detail
     hardware registers proposed by extension @c X.
   **/
   template< typename T, std::size_t C, typename X>
-  struct storage_status : brigand::int32_t<   (expected_cardinal<T,X>::value!=C)
-                                        * ( (expected_cardinal<T,X>::value<C) ? +1 : -1)
-                                      >
+  struct storage_status : brigand::int32_t<   (expected_cardinal<T,X>::value != C)
+                                          * ( (expected_cardinal<T,X>::value < C) ? +1 : -1)
+                                          >
   {};
 
   // If ABI is not supported by current hardware, search for proper emulated storage later
@@ -74,7 +75,11 @@ namespace boost { namespace simd { namespace detail
   // Unknown ABI requires checks on aggregation/emulation
   template< typename Type, std::size_t Cardinal>
   struct  storage_of<Type,Cardinal,simd_emulation_,unknown_status>
+  #if !defined(BOOST_SIMD_STRICT_EMULATION)
         : storage_of<Type,Cardinal,BOOST_SIMD_DEFAULT_FAMILY>
+  #else
+        : storage_of<Type,Cardinal,boost::simd::simd_,emulated_status>
+  #endif
   {};
 
   // If the cardinal requested is lower than the expected one,
@@ -121,5 +126,9 @@ namespace boost { namespace simd { namespace detail
     using type = std::array<base,2>;
   };
 } } }
+
+#if defined __GNUC__ && __GNUC__>=6
+#pragma GCC diagnostic pop
+#endif
 
 #endif

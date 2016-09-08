@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -22,26 +21,21 @@ namespace boost { namespace simd
     Function object implementing is_less capabilities
 
     Returns  @ref True or @ref False according x is less than y or not.
-   Infix notation can be used with operator '<'.
+    Infix notation can be used with operator '<'.
 
     @par Semantic:
 
-    For every parameters of types respectively T0, T1:
-
     @code
-    as_logical_t<T0> r = is_less(x,y);
+    auto r = is_less(x,y);
     @endcode
 
-    is similar to:
+    or
 
     @code
-    as_logical_t<T0> r = x < y;
+    auto r = x < y;
     @endcode
 
-    @par Alias:
-    @c lt, @c is_lt
-
-    @see  is_less_equal, is_ltz, is_nge, is_nge
+    @see  is_less_equal, is_ltz
 
   **/
   as_logical_t<Value> is_less(Value const& x, Value const& y);

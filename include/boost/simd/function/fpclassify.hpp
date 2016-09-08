@@ -3,7 +3,6 @@
   @file
 
   @copyright 2016 NumScale SAS
-  @copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -22,6 +21,10 @@ namespace boost { namespace simd
 
     Categorizes floating point value arg into the following categories:
     zero, subnormal, normal, infinite, NAN, or implementation-defined category.
+
+    @code
+    auto r = fpclassify(x);
+    @endcode
 
     This function is similar to std::fpclassify,  but the return type
     is the integral signed type associated to the floating input type.

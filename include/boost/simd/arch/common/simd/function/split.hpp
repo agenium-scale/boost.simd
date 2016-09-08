@@ -1,7 +1,6 @@
 //==================================================================================================
 /**
   Copyright 2016 NumScale SAS
-  Copyright 2016 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -13,7 +12,7 @@
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/simd/split_high.hpp>
 #include <boost/simd/function/simd/split_low.hpp>
-#include <utility>
+#include <array>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -27,7 +26,7 @@ namespace boost { namespace simd { namespace ext
                             , bs::pack_<bd::unspecified_<A0>, X>
                             )
   {
-    using result_t = std::pair<bd::upgrade_t<A0>,bd::upgrade_t<A0>>;
+    using result_t = std::array<bd::upgrade_t<A0>,2>;
 
     BOOST_FORCEINLINE result_t operator()(A0 const& a) const BOOST_NOEXCEPT
     {

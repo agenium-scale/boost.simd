@@ -22,9 +22,9 @@ namespace boost { namespace simd { namespace ext
 
   //------------------------------------------------------------------------------------------------
   // Whenever we have no clue how to store
-  BOOST_DISPATCH_OVERLOAD ( store_
+  BOOST_DISPATCH_OVERLOAD( store_
                           , (typename Src, typename Pointer, typename X)
-                          , bs::simd_
+                          , bd::cpu_
                           , bs::pack_<bd::unspecified_<Src>, X>
                           , bd::pointer_<bd::scalar_<bd::unspecified_<Pointer>>,1u>
                           )

@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2015 NumScale SAS
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -41,7 +41,7 @@ namespace boost { namespace simd
        undefined behaviour for signed integral types or wrapping modulo Valmax+1 for unsigned ones.
 
        Peculiarly saturated_(@ref abs) and saturated_(@ref dist) ensure that the result will never be stricly
-       negative (which is for instance the case of abs(Valmin<T>()) for T any any signed integral type).
+       negative (which is for instance the case of abs(Valmin<T>()) for T being any signed integral type).
 
        toint is a rather common operation as it converts floating number to signed integers of the same bit size,
        nevertheless it probably is its saturated version you have to use because it acts properly on large or not finite
@@ -51,8 +51,8 @@ namespace boost { namespace simd
        <center>
          | name        | name            | name        | name             |
          |:-----------:|:---------------:|:-----------:|:----------------:|
-         | @ref ceil   | @ref round      | @ref ifloor | @ref iround2even |
-         | @ref floor  | @ref round2even | @ref ifix   |                  |
+         | @ref ceil   | @ref round      | @ref ifloor |  @ref inearbyint |
+         | @ref floor  | @ref nearbyint  | @ref ifix   |                  |
          | @ref fix    | @ref iceil      | @ref iround |                  |
         </center>
 
@@ -74,18 +74,18 @@ namespace boost { namespace simd
        (@ref as_integer_t<T>). (fT and iT are here only to support pseudo code description)
 
        <center>
-         | option             |          call            |      result similar to                        |
-         |--------------------|--------------------------|-----------------------------------------------|
-         | @ref ceil          |   div(ceil, a, b)        |      T(ceil(fT(a)/fT(b)))                     |
-         | @ref floor         |   div(floor, a, b)       |      T(floor(fT(a)/fT(b)))                    |
-         | @ref fix           |   div(fix, a, b)         |      T(fix(fT(a)/fT(b)))                      |
-         | @ref round         |   div(round, a, b)       |      T(round(fT(a)/fT(b)))                    |
-         | @ref round2even    |   div(round2even, a, b)  |      T(round2even(fT(a)/fT(b)))               |
-         | @ref iceil         |   div(iceil, a, b)       |      iT(iceil(fT(a)/fT(b)))                   |
-         | @ref ifloor        |   div(ifloor, a, b)      |      iT(ifloor(fT(a)/fT(b)))                  |
-         | @ref ifix          |   div(ifix, a, b)        |      iT(ifix(fT(a)/fT(b)))                    |
-         | @ref iround        |   div(iround, a, b)      |      iT(iround(fT(a)/fT(b)))                  |
-         | @ref iround2even   |   div(iround2even, a, b) |      iT(iround2even(fT(a)/fT(b)))             |
+         | option             |          call            |      result similar to               |
+         |--------------------|--------------------------|--------------------------------------|
+         | @ref ceil          |   div(ceil, a, b)        |      T(ceil(fT(a)/fT(b)))            |
+         | @ref floor         |   div(floor, a, b)       |      T(floor(fT(a)/fT(b)))           |
+         | @ref fix           |   div(fix, a, b)         |      T(fix(fT(a)/fT(b)))             |
+         | @ref round         |   div(round, a, b)       |      T(round(fT(a)/fT(b)))           |
+         | @ref nearbyint     |   div(nearbyint, a, b)   |      T(nearbyint(fT(a)/fT(b)))       |
+         | @ref iceil         |   div(iceil, a, b)       |      iT(iceil(fT(a)/fT(b)))          |
+         | @ref ifloor        |   div(ifloor, a, b)      |      iT(ifloor(fT(a)/fT(b)))         |
+         | @ref ifix          |   div(ifix, a, b)        |      iT(ifix(fT(a)/fT(b)))           |
+         | @ref iround        |   div(iround, a, b)      |      iT(iround(fT(a)/fT(b)))         |
+         | @ref inearbyint    |   div(inearbyint, a, b)  |      iT(inearbyint(fT(a)/fT(b)))     |
         </center>
 
      - **Remainder operations**
@@ -96,7 +96,7 @@ namespace boost { namespace simd
        a first optional parameter that modifies its behaviour and moreover can use the fast_ decorator if
        limiting case values are not a problem.
 
-       The option parameter can be chosen between @ref ceil, @ref floor, @ref fix, @ref round, @ref round2even and if opt is the option,
+       The option parameter can be chosen between @ref ceil, @ref floor, @ref fix, @ref round, @ref nearbyint and if opt is the option,
        the call:
 
          rem(opt, a, b) is equivalent to a-b*div(opt, a, b)
@@ -110,7 +110,7 @@ namespace boost { namespace simd
 
      - **complex operations**
 
-       **Boost.SIMD**  does not provides complex number operations yet, but it will soon. So the following functors that
+       Boost.SIMD  does not provides complex number operations yet, but it will soon. So the following functors that
        have a meaning as a restriction to real number of complex functions, can be seen as a prequel:
 
       <center>
@@ -119,7 +119,7 @@ namespace boost { namespace simd
         | @ref arg    | @ref conj       | @ref imag   | @ref real        | @ref sqr_abs     |
       </center>
 
-        For real entries conj and real are identity,  imag always 0, sqr_abs coincide wirt sqr
+        For real entries conj and real are identity,  imag always 0, sqr_abs coincide with sqr
         and arg results are always in the set \f$\{0, \pi,  Nan\}\f$
 
      - **Fused multiply-add operations**
@@ -136,18 +136,19 @@ namespace boost { namespace simd
       - only one rounding
       - no "intermediate" overflow
 
-      fma??? family provides this each time it is reasonable
+      f?m? and fm? family provides this each time it is reasonable
       in terms of performance (mainly if the system has the hard
       wired capability).
 
       If you need "real" fma capabilities in all circumstances in your own
-      code you can use @ref correct_fma (although it can be expansive).
+      code you can use @ref correct_fma (although it can be expansive) or
+      (generally still more expansive) std_(fma) by using the decorator.
 
       @ref two_add, @ref two_prod and @ref two_split are used internally in @ref correct_fma and
       can be useful in searching extra-accuracy in other circumstances as double-double
       computations.
 
-      @ref correct_fma is never used internally by **Boost.SIMD**
+      @ref correct_fma is never used internally by Boost.SIMD
 
       - **Standard operations**
 
@@ -162,19 +163,18 @@ namespace boost { namespace simd
          | @ref fma   | @ref rem (%)    | @ref sqrt    |
        </center>
 
-       **Boost.SIMD** provides its own scalar and simd versions, but allows
+       Boost.SIMD provides its own scalar and simd versions, but allows
        the use of the @ref std "std_" @ref decorator to call the associated system
        library function if the user needs it.
 
       - **Other operations**
 
        <center>
-         | name         | name            | name         |
-         |:------------:|:---------------:|:------------:|
-         | @ref average | @ref sqr        | @ref tofloat |
-         | @ref meanof  | @ref sqr_abs    |              |
-         | @ref minmod  | @ref sqrt1pm1   |              |
-         | @ref rsqrt   | @ref tenpower   |              |
+         | name         | name            | name          |
+         |:------------:|:---------------:|:-------------:|
+         | @ref average | @ref sqrt       | @ref tenpower |
+         | @ref meanof  | @ref sqr        | @ref tofloat  |
+         | @ref minmod  | @ref sqrt1pm1   |               |
        </center>
   **/
 } }

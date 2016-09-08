@@ -18,7 +18,7 @@
 namespace boost { namespace simd
 {
   // -----------------------------------------------------------------------------------------------
-  // normalized const-expr pattern holder - prevent MSVC 2015 shenanigans with 0
+  // normalized const-expr pattern holder - prevent MSVC 2016 shenanigans with 0
   template<int (*M)(int,int)> struct pattern {};
 
   namespace detail

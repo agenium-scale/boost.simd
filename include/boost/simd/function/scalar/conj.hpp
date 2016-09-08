@@ -11,6 +11,6 @@
 #define BOOST_SIMD_FUNCTION_SCALAR_CONJ_HPP_INCLUDED
 
 #include <boost/simd/function/definition/conj.hpp>
-#include <boost/simd/arch/common/generic/function/conj.hpp>
+#include <boost/simd/arch/common/scalar/function/conj.hpp>
 
 #endif

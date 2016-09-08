@@ -31,6 +31,20 @@ namespace boost { namespace simd { namespace ext
       return bs::rec(bs::sqrt(a0));
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD_IF( rsqrt_
+                            , (typename A0, typename X)
+                            , (detail::is_native<X>)
+                            , bd::cpu_
+                            , boost::simd::fast_tag
+                            , bs::pack_< bd::floating_<A0>, X >
+                            )
+  {
+    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 const& a0) const BOOST_NOEXCEPT
+    {
+      return bs::fast_(bs::rec)(bs::fast_(bs::sqrt)(a0));
+    }
+  };
 } } }
 
 #endif

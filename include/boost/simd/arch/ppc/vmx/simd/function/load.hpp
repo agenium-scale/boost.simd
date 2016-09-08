@@ -1,6 +1,6 @@
 //==================================================================================================
 /**
-  Copyright 2015 NumScale SAS
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -28,7 +28,10 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE typename Target::type operator()(Pointer a0, Target const&) const
     {
-      return vec_perm(vec_ld(0, a0), vec_ld(15, a0), vec_lvsl(0, a0));
+      #pragma GCC diagnostic push
+      #pragma GCC diagnostic ignored "-Wdeprecated"
+      return vec_perm(vec_ld(0, a0), vec_ld(16, a0), vec_lvsl(0, a0));
+      #pragma GCC diagnostic pop
     }
   };
 } } }

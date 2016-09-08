@@ -12,5 +12,6 @@
 
 #include <boost/simd/function/definition/sincospi.hpp>
 #include <boost/simd/arch/common/generic/function/sincospi.hpp>
+#include <boost/simd/arch/common/scalar/function/sincospi.hpp>
 
 #endif
