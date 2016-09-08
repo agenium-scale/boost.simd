@@ -14,6 +14,9 @@
 #ifndef BOOST_SIMD_CONFIG_HPP_INCLUDED
 #define BOOST_SIMD_CONFIG_HPP_INCLUDED
 
+// Get version number
+#include <boost/simd/version.hpp>
+
 // Setup the dispatch default architecture
 #if !defined(BOOST_DISPATCH_DEFAULT_SITE)
 #  include <boost/simd/arch/spec.hpp>
