@@ -31,6 +31,7 @@ STF_CASE( "Check for SIMD tag support facility" )
   std::cout << "PPC Extensions\n";
   std::cout << "---------------------\n";
   std::cout << "VMX    support: " << std::boolalpha << boost::simd::vmx.is_supported()    << "\n";
+  std::cout << "---------------------\n";
 
   STF_PASS("Support detection from architecture object.");
 }

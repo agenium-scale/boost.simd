@@ -43,6 +43,13 @@ namespace boost { namespace simd { namespace ext
       return  {{ x.storage()[1], x.storage()[1] }};
     }
 
+    template<typename N> static BOOST_FORCEINLINE
+    typename T::storage_type
+    do_( T const& x, aggregate_storage const&, br::list<N> const&) BOOST_NOEXCEPT
+    {
+      return  {{ x.storage()[1], x.storage()[1] }};
+    }
+
     BOOST_FORCEINLINE T operator()(T const& x) const BOOST_NOEXCEPT
     {
       return do_(x, typename T::traits::storage_kind{}
