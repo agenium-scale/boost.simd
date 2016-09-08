@@ -30,7 +30,7 @@ namespace boost { namespace simd { namespace detail
 
   enum registerID { eax=0, ebx=1, ecx=2, edx=3 };
 
-  void cpuid(register_type pRegisters[4], int function) {
+  inline void cpuid(register_type pRegisters[4], int function) {
 #if BOOST_COMP_GNUC || BOOST_COMP_CLANG
     __cpuid (function, pRegisters[eax], pRegisters[ebx], pRegisters[ecx], pRegisters[edx]);
 #else
@@ -38,7 +38,7 @@ namespace boost { namespace simd { namespace detail
 #endif
   }
 
-  void cpuidex(register_type pRegisters[4], int function, int subfunction) {
+  inline void cpuidex(register_type pRegisters[4], int function, int subfunction) {
 #if BOOST_COMP_GNUC || BOOST_COMP_CLANG
     __cpuid_count ( function, subfunction
                   , pRegisters[eax], pRegisters[ebx], pRegisters[ecx], pRegisters[edx]
@@ -48,14 +48,14 @@ namespace boost { namespace simd { namespace detail
 #endif
   }
 
-  bool detect_feature(int bit, int function, int register_id)
+  static bool detect_feature(int bit, int function, int register_id)
   {
     register_type regs_x86[4] = {0x00000000, 0x00000000, 0x00000000, 0x00000000};
     cpuidex(regs_x86, function, 0);
     return (regs_x86[register_id] & (1 << bit)) != 0;
   }
 
-  bool detect_features(int bits, int function, int register_id)
+  static bool detect_features(int bits, int function, int register_id)
   {
     register_type regs_x86[4] = {0x00000000, 0x00000000, 0x00000000, 0x00000000};
     cpuidex(regs_x86, function, 0);
