@@ -20,40 +20,40 @@ int main(int argc, char **argv){
 
   std::size_t num_elements = 1024;
   std::size_t alignment = pack_t::alignment;
-  //! [hyperbolic-declare]
+  //! [transcendental-declare]
   std::vector<float, ba::aligned_allocator<float, pack_t::alignment>> X(num_elements);
   std::vector<float, ba::aligned_allocator<float, pack_t::alignment>> sinX(num_elements);
   std::vector<float, ba::aligned_allocator<float, pack_t::alignment>> cosX(num_elements);
-  //! [hyperbolic-declare]
+  //! [transcendental-declare]
 
-  //! [hyperbolic-scalar]
+  //! [transcendental-scalar]
   for(int i = 0; i < num_elements; ++i){
     sinX[i] = std::sin(X[i]);
     cosX[i] = std::cos(X[i]);
   }
-  //! [hyperbolic-scalar]
+  //! [transcendental-scalar]
 
-  //! [hyperbolic-calc-individ]
+  //! [transcendental-calc-individ]
   for(int i = 0; i < num_elements; i += pack_t::static_size){
     pack_t v0 = bs::load<pack_t>(&X[i]);
     bs::store(bs::sin(v0), &sinX[i]);
     bs::store(bs::cos(v0), &sinX[i]);
   }
-  //! [hyperbolic-calc-individ]
+  //! [transcendental-calc-individ]
 
-  //! [hyperbolic-calc-combine]
+  //! [transcendental-calc-combine]
   for(int i = 0; i < num_elements; i += pack_t::static_size){
     pack_t v0 = bs::load<pack_t>(&X[i]);
     auto res = bs::sincos(v0);
     bs::store(res.first, &sinX[i]);
     bs::store(res.second, &cosX[i]);
   }
-  //! [hyperbolic-calc-combine]
+  //! [transcendental-calc-combine]
 
-  //! [hyperbolic-calc-small]
+  //! [transcendental-calc-small]
   for(int i = 0; i < num_elements; i += pack_t::static_size){
     pack_t v0 = bs::load<pack_t>(&X[i]);
     bs::store(bs::sin(v0, bs::tag::small_), &sinX[i]);
   }
-  //! [hyperbolic-calc-small]
+  //! [transcendental-calc-small]
 }

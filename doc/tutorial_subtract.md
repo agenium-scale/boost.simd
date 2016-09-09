@@ -2,7 +2,7 @@ A SIMD Loop {#tutorial-simd-loop}
 =========
 
 @tableofcontents
-In this tutorial we will demonstrate how to construct a __SIMD__ loop by subtracting a constant
+In this tutorial we will demonstrate how to construct a SIMD loop by subtracting a constant
 from a vector of input data.
 
 @section sum-objectives Objectives
@@ -14,7 +14,7 @@ In this tutorial we will:
 - [Loop over the input data and perform the calculation on several elements at once](#sum-construct-loop)
 - [Show how handle cases where the number of input data is not an exact multiple of the size of a pack](#sum-hanging-data)
 
-@section sum-scalar-simd Transforming a scalar loop into a __SIMD__ loop
+@section sum-scalar-simd Transforming a scalar loop into a SIMD loop
 In this tutorial we will demonstrate how to transform the following scalar loop into a __SIMD__ loop:
 
 @snippet arraysubtract.cpp sum-scalar

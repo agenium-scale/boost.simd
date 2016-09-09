@@ -167,6 +167,10 @@ For example, if you want to use SSE4.2 on Visual Studio, set the /ARCH:SSE2 flag
 define `BOOST_SIMD_ASSUME_SSE4_2` as a preprocessor definition.
 }
 
+@warningbox{
+We recommend using a 64bit compiler as this results in significantly better
+performance.
+}
 @section hello-results Results
 
 -------------------------------------
@@ -177,11 +181,7 @@ When the above program is compiled, this output should be seen:
 
 Let's take a look at the generated assembly code (using `objdump` for example) :
 
-@code{.objdump}
-addps  0x2e6(%rip),%xmm0
-mulps  0x2ff(%rip),%xmm0
-movaps %xmm0,(%rsp)
-@endcode
+@snippet objdump.txt hello-objdump 
 
 This shows that *Boost.SIMD** performed as expected: the code has been vectorised!
 This may be seen by the emitted `*ps` instructions. Note how the abstractions introduced
