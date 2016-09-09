@@ -21,6 +21,22 @@ namespace boost { namespace simd { namespace ext
   namespace bs = ::boost::simd;
 
   //------------------------------------------------------------------------------------------------
+  // Whenever we store with an offset
+  BOOST_DISPATCH_OVERLOAD ( aligned_store_
+                          , (typename Src, typename Pointer, typename X, typename A2)
+                          , bd::cpu_
+                          , bs::pack_<bd::unspecified_<Src>, X>
+                          , bd::pointer_<bd::scalar_<bd::unspecified_<Pointer>>,1u>
+                          , bd::scalar_<bd::integer_<A2>>
+                          )
+  {
+    BOOST_FORCEINLINE void operator()(Src const& a0, Pointer a1, A2 const & a2) const BOOST_NOEXCEPT
+    {
+      bs::aligned_store(a0,a1+a2);
+    }
+  };
+
+  //------------------------------------------------------------------------------------------------
   // aligned_store is generally check + calling store
   BOOST_DISPATCH_OVERLOAD( aligned_store_
                           , (typename A0, typename A1, typename X)
