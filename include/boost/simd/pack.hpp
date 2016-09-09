@@ -38,6 +38,7 @@
 #if defined(__GNUC__)
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wuninitialized"
+#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
 
 // Remove noise from attribute from as_simd
 #if __GNUC__ >= 6
@@ -360,24 +361,60 @@ namespace boost { namespace simd
     }
 
     template <typename Other>
-    BOOST_FORCEINLINE
-    void operator+=(Other const& other) BOOST_NOEXCEPT { *this = *this + other; }
+    BOOST_FORCEINLINE pack& operator+=(Other const& other) BOOST_NOEXCEPT
+    {
+      *this = *this + other;
+      return *this;
+    }
 
     template <typename Other>
-    BOOST_FORCEINLINE
-    void operator-=(Other const& other) BOOST_NOEXCEPT { *this = *this - other; }
+    BOOST_FORCEINLINE pack& operator-=(Other const& other) BOOST_NOEXCEPT
+    {
+      *this = *this - other;
+      return *this;
+    }
 
     template <typename Other>
-    BOOST_FORCEINLINE
-    void operator*=(Other const& other) BOOST_NOEXCEPT { *this = *this * other; }
+    BOOST_FORCEINLINE pack& operator*=(Other const& other) BOOST_NOEXCEPT
+    {
+      *this = *this * other;
+      return *this;
+    }
 
     template <typename Other>
-    BOOST_FORCEINLINE
-    void operator/=(Other const& other) BOOST_NOEXCEPT { *this = *this / other; }
+    BOOST_FORCEINLINE pack& operator/=(Other const& other) BOOST_NOEXCEPT
+    {
+      *this = *this / other;
+      return *this;
+    }
 
     template <typename Other>
-    BOOST_FORCEINLINE
-    void operator%=(Other const& other) BOOST_NOEXCEPT { *this = *this % other; }
+    BOOST_FORCEINLINE pack& operator%=(Other const& other) BOOST_NOEXCEPT
+    {
+      *this = *this % other;
+      return *this;
+    }
+
+    template <typename Other>
+    BOOST_FORCEINLINE pack& operator&=(Other const& other) BOOST_NOEXCEPT
+    {
+      *this = *this & other;
+      return *this;
+    }
+
+    template <typename Other>
+    BOOST_FORCEINLINE pack& operator|=(Other const& other) BOOST_NOEXCEPT
+    {
+      *this = *this | other;
+      return *this;
+    }
+
+    template <typename Other>
+    BOOST_FORCEINLINE pack& operator^=(Other const& other) BOOST_NOEXCEPT
+    {
+      *this = *this ^ other;
+      return *this;
+    }
 
     public:
     /// @brief Retrieve the pack's cardinal, i.e the number of element in the pack.

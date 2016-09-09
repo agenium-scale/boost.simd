@@ -42,7 +42,7 @@ namespace boost { namespace dispatch
   template<typename Tag, typename Site> struct error_
   {
     /// Error inducing information carrier
-    template<typename... Call> struct no_such_overload;
+    template<typename... Call> struct no_such_overload {};
 
     template<typename... Ts>
     BOOST_FORCEINLINE no_such_overload<Tag(Site,Ts...)>
