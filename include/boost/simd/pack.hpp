@@ -360,24 +360,39 @@ namespace boost { namespace simd
     }
 
     template <typename Other>
-    BOOST_FORCEINLINE
-    void operator+=(Other const& other) BOOST_NOEXCEPT { *this = *this + other; }
+    BOOST_FORCEINLINE pack& operator+=(Other const& other) BOOST_NOEXCEPT
+    {
+      *this = *this + other;
+      return *this;
+    }
 
     template <typename Other>
-    BOOST_FORCEINLINE
-    void operator-=(Other const& other) BOOST_NOEXCEPT { *this = *this - other; }
+    BOOST_FORCEINLINE pack& operator-=(Other const& other) BOOST_NOEXCEPT
+    {
+      *this = *this - other;
+      return *this;
+    }
 
     template <typename Other>
-    BOOST_FORCEINLINE
-    void operator*=(Other const& other) BOOST_NOEXCEPT { *this = *this * other; }
+    BOOST_FORCEINLINE pack& operator*=(Other const& other) BOOST_NOEXCEPT
+    {
+      *this = *this * other;
+      return *this;
+    }
 
     template <typename Other>
-    BOOST_FORCEINLINE
-    void operator/=(Other const& other) BOOST_NOEXCEPT { *this = *this / other; }
+    BOOST_FORCEINLINE pack& operator/=(Other const& other) BOOST_NOEXCEPT
+    {
+      *this = *this / other;
+      return *this;
+    }
 
     template <typename Other>
-    BOOST_FORCEINLINE
-    void operator%=(Other const& other) BOOST_NOEXCEPT { *this = *this % other; }
+    BOOST_FORCEINLINE pack& operator%=(Other const& other) BOOST_NOEXCEPT
+    {
+      *this = *this % other;
+      return *this;
+    }
 
     public:
     /// @brief Retrieve the pack's cardinal, i.e the number of element in the pack.
