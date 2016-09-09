@@ -1,4 +1,4 @@
-Quick Start {#QuickStart}
+Quick Start {#quickstart}
 =========
 
 This is a quick start for **Boost.SIMD**. The purpose of this is to briefly introduce 
