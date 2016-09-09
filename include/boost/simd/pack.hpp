@@ -394,6 +394,27 @@ namespace boost { namespace simd
       return *this;
     }
 
+    template <typename Other>
+    BOOST_FORCEINLINE pack& operator&=(Other const& other) BOOST_NOEXCEPT
+    {
+      *this = *this & other;
+      return *this;
+    }
+
+    template <typename Other>
+    BOOST_FORCEINLINE pack& operator|=(Other const& other) BOOST_NOEXCEPT
+    {
+      *this = *this | other;
+      return *this;
+    }
+
+    template <typename Other>
+    BOOST_FORCEINLINE pack& operator^=(Other const& other) BOOST_NOEXCEPT
+    {
+      *this = *this ^ other;
+      return *this;
+    }
+
     public:
     /// @brief Retrieve the pack's cardinal, i.e the number of element in the pack.
     static BOOST_FORCEINLINE size_type size()     BOOST_NOEXCEPT { return static_size; }
