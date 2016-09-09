@@ -9,6 +9,7 @@
 set ( SOURCES
       issue_18.cpp
       issue_21.cpp
+      pythran.cpp
     )
 
 make_unit( "regression" ${SOURCES})
