@@ -78,6 +78,9 @@ namespace boost
      /*!
       @defgroup group-config Configuration
       Configuration options
+
+      Behavior of Boost.SIMD functions behavior can be globally modified by this set of preprocessor
+      definitions.
     **/
 
     /*!
@@ -91,24 +94,6 @@ namespace boost
       /*!
         @defgroup group-concept Concepts
         Concepts defined by the library
-      **/
-
-    }
-
-    /// Boost.SIMD extension points namespace
-    namespace ext
-    {
-      /*!
-        @defgroup group-ext Library extension points
-        User customizable elements of the library
-      **/
-    }
-
-    namespace detail
-    {
-      /*!
-        @defgroup group-detail Implementation details
-        Implementation details
       **/
     }
 } }
