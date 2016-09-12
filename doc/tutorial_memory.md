@@ -20,7 +20,7 @@ In this tutorial we will:
 @section memory-what-is What is Memory Alignment
 
 In order to fully understand memory alignment and how to maximise performance of your software by
-ensuring mempry alignment, please read this excellent article by [IBM](http://www.ibm.com/developerworks/library/pa-dalign/).
+ensuring memory alignment, please read this excellent article by [IBM](http://www.ibm.com/developerworks/library/pa-dalign/).
 Although this article focuses on PowerPC processors, its conclusions are valid on many other architectures.
 **Boost.SIMD** gives you portabililty accross many architectures, in order to have the best
 performance possible across a range of architectures, it is worth considering the alignment requirements
@@ -36,15 +36,15 @@ This means that the allocated buffer must be larger than the size required, at l
 @snippet alignment.cpp align-manual
 
 As you can see, this is errorprone, difficult and quite annoying to do. Also, `std::align`
-is not unviersally supported even amoong modern compilers! Therefore, the easiest
-way to align memory is to use an aligned memory allocator such as that provided by Boost.Align. 
+is not unviersally supported even among modern compilers! Therefore, the easiest
+way to align memory is to use an aligned memory allocator such as that provided by Boost.Align.
 
 @section memory-boost-align How to Align Memory using Boost.Align
 
 The allocator provided by Boost.Align guarantees to return a pointer which is
 aligned on the required boundary and you don't need to worry about
 allocating extra space in the buffer to account for the required alignement as in
-the previous section. 
+the previous section.
 
 @notebox{The additional template parameter passed to the `std::unique_ptr`,
 this is the associated delete function corresponding to
