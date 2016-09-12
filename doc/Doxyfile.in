@@ -238,12 +238,13 @@ TAB_SIZE               = 4
 # newlines.
 
 # Concepts and links to boost documentation
-ALIASES = 
+ALIASES =
 ALIASES += notebox{1}="<table align=center width=90% class=\"table-striped \"> <tr><th><dl class=\"section note\"><dt>Note</dt><dd>\1</dd></dl> </table>"
 ALIASES += warningbox{1}="<table align=center width=90% class=\"table-striped \"> <tr><th><dl class=\"section warning\"><dt>Warning</dt><dd>\1</dd></dl> </table>"
 ALIASES += anchor{1}="<a name=\"\1\"></a>[[\1](#back\1)]:"
 ALIASES += refanchor{1}="<a name=\"back\1\"></a>[<sup>\1</sup>](#\1)"
 ALIASES += intconst="<a href=\"http://www.boost.org/doc/libs/release/libs/mpl/doc/refmanual/integral-constant.html\">Integral Constant</a>"
+ALIASES += range{2}="<tt>[\1, \2[</tt>"
 
 # This tag can be used to specify a number of word-keyword mappings (TCL only).
 # A mapping has the form "name=value". For example adding "class=itcl::class"
@@ -775,10 +776,10 @@ WARN_LOGFILE           =
 
 INPUT                    = @Boost.SIMD_SOURCE_DIR@/include/boost/
 INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/
-INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/meta
-INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/meta/hierarchy
-INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/constant
-INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/function/
+#INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/meta
+#INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/meta/hierarchy
+#INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/constant
+#INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/function/
 INPUT                   += @Boost.SIMD_SOURCE_DIR@/doc
 FILE_PATTERNS           = *.md *.hpp
 RECURSIVE               = NO
@@ -893,7 +894,7 @@ EXCLUDE_SYMBOLS        =
 # command).
 
 EXAMPLE_PATH            = @Boost.SIMD_SOURCE_DIR@/example
-#EXAMPLE_PATH           += @Boost.SIMD_SOURCE_DIR@/test/unit
+EXAMPLE_PATH           += @Boost.SIMD_SOURCE_DIR@/test/doc
 EXAMPLE_PATH           += @Boost.SIMD_SOURCE_DIR@/doc/
 EXAMPLE_RECURSIVE       = YES
 

@@ -5,16 +5,12 @@
 ##                        See accompanying file LICENSE.txt or copy at
 ##                            http://www.boost.org/LICENSE_1_0.txt
 ##===================================================================================================
+SET( SOURCES
+    reduce.simple.cpp
+    reduce.phases.cpp
+    reduce.phase.cpp
+    transform.unary.cpp
+    transform.binary.cpp
+  )
 
-NS_include(make_unit)
-NS_include(make_coverage)
-
-set(CMAKE_BUILD_TYPE "Debug")
-
-## Add all test folders
-add_subdirectory(api)
-add_subdirectory(doc)
-add_subdirectory(architecture)
-add_subdirectory(constant)
-add_subdirectory(function)
-add_subdirectory(regression)
+make_unit( "doc" ${SOURCES})
