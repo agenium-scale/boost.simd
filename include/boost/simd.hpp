@@ -35,6 +35,15 @@ namespace boost
       and callable objects allowing the design and implementation of SIMD code.
     **/
 
+     /*!
+      @ingroup group-api
+      @defgroup group-config Configuration
+      Configuration options
+
+      Behavior of Boost.SIMD functions behavior can be globally modified by this set of preprocessor
+      definitions.
+    **/
+
     /*!
       @ingroup group-api
       @defgroup group-types Types and helpers
@@ -51,8 +60,13 @@ namespace boost
       @defgroup group-functions Functions and Constants
 
       Boost.SIMD functions and constants are designed to work seamlessly on both scalar
-      and SIMD parameters. Their compile-time polymorphic behavior ensures that the best available
-      implementation will be selected for any given combination of types.
+      and SIMD parameters. Their compile-time polymorphic behavior ensures that the best
+      available implementation will be selected for any given combination of types, architecture
+      and options (if any).
+
+      While being documented as functions, most Boost.SIMD functions are actually Function Objects.
+      This implementation allow Boost.SIMD to use its functions directly in standard algorithms
+      and to support functions decorators to handle variations in functions' behavior.
 
       Boost.SIMD functions are accessible via the header files located in the
       @c boost/simd/function folder. E.g, boost::simd::abs requires the inclusion
@@ -73,14 +87,6 @@ namespace boost
         returns @c char
 
       These limitations are due to the hardware implementation of these functions.
-    **/
-
-     /*!
-      @defgroup group-config Configuration
-      Configuration options
-
-      Behavior of Boost.SIMD functions behavior can be globally modified by this set of preprocessor
-      definitions.
     **/
 
     /*!
