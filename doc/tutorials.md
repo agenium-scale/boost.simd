@@ -17,9 +17,9 @@ following tutorials applications may vary.
 <tr class="empty_row"><th>
 <tr><th> [SIMD HelloWorld](@ref tutorial-hello) <th> [A Basic SIMD Loop](@ref tutorial-simd-loop)
 <tr class="empty_row"><th>
-<tr><th> [Reductions](@ref tutorial-reduction) <th> [Processing Data the SIMD Way](@ref tutorial-data)
+<tr><th> [Reductions](@ref tutorial-dot) <th> [Writing a dot product the SIMD Way](@ref tutorial-dot)
 <tr class="empty_row"><th>
-<tr><th> [Runtime Extension Selection](@ref tutorial-runtime) <th> [Transcedental Functions](@ref tutorial-transcendental)
+<tr><th> [Runtime Extension Selection](@ref tutorial-runtime) <th> [Mathematical Functions](@ref tutorial-mathematical)
 <tr class="empty_row"><th>
 <tr><th> [Memory Alignment](@ref tutorial-memory) <th> [Distance](@ref tutorial-distance)
 <tr class="empty_row"><th>

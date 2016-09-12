@@ -34,9 +34,13 @@ in a significant performance increase.
 
 @subsection reduction-simultaneous Reducing into a pack
 
+Let us assume we have defined:
+
+@snippet reduction.cpp reduc-simd-types
+
 Here we combine the approaches by summing into a boost::simd::pack, allowing us to perform as many
 simultaneous additions as there are elements in a pack. It is only at the end that we accumulate
-these sub-sums into the full scalar sum using the boost::simd::sum function provided by 
+these sub-sums into the full scalar sum using the boost::simd::sum function provided by
 `boost/simd/function/sum.hpp.`
 
 @snippet reduction.cpp reduc-simd-o
@@ -60,5 +64,4 @@ This is exactly the same as in the previous tutorial!
 Here is a full code, should you wish to try it:
 
 @snippet reduction.cpp reduc
-
 
