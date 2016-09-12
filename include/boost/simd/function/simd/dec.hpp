@@ -12,6 +12,6 @@
 
 #include <boost/simd/function/scalar/dec.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/simd/function/dec.hpp>
+#include <boost/simd/arch/common/generic/function/dec.hpp>
 
 #endif
