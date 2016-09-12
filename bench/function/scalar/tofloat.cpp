@@ -16,5 +16,5 @@ DEFINE_SCALAR_BENCH(scalar_tofloat, bs::tofloat);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_tofloat, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<scalar_tofloat, int32_t, int64_t,uint32_t, uint64_t, float, double>(-10, 10);
 }

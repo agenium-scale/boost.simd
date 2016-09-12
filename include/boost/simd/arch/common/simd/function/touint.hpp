@@ -32,7 +32,7 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename X)
                           , (detail::is_native<X>)
                           , bd::cpu_
-                          , bs::pack_<bd::integer_<A0>, X>
+                          , bs::pack_<bd::int_<A0>, X>
                           )
    {
      using result = bd::as_integer_t<A0, unsigned> ;
@@ -42,7 +42,19 @@ namespace boost { namespace simd { namespace ext
      }
    };
 
-   BOOST_DISPATCH_OVERLOAD_IF(touint_
+   BOOST_DISPATCH_OVERLOAD(touint_
+                          , (typename A0, typename X)
+                          , bd::cpu_
+                          , bs::pack_<bd::uint_<A0>, X>
+                          )
+   {
+     BOOST_FORCEINLINE A0 operator()(A0 const& a0) const BOOST_NOEXCEPT
+     {
+       return a0;
+     }
+   };
+
+  BOOST_DISPATCH_OVERLOAD_IF(touint_
                           , (typename A0, typename X)
                           , (detail::is_native<X>)
                           , bd::cpu_
