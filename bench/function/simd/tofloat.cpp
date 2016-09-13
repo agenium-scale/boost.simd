@@ -5,7 +5,6 @@
 //                        See accompanying file LICENSE.txt or copy at
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
-
 #include <simd_bench.hpp>
 #include <boost/simd/function/simd/tofloat.hpp>
 #include <boost/simd/pack.hpp>
@@ -17,5 +16,6 @@ DEFINE_SIMD_BENCH(simd_tofloat, bs::tofloat);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_tofloat, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<simd_tofloat, int32_t, int64_t,uint32_t, uint64_t, float, double>(-10, 10);
 }
+
