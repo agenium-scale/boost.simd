@@ -11,7 +11,6 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSSE3_SIMD_FUNCTION_HMSB_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSSE3_SIMD_FUNCTION_HMSB_HPP_INCLUDED
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/pack.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 
 namespace boost { namespace simd { namespace ext

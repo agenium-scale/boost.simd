@@ -21,10 +21,9 @@
 #include <boost/simd/function/if_dec.hpp>
 #include <boost/simd/function/tenpower.hpp>
 #include <boost/simd/detail/math.hpp>
-#include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/detail/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>
-#include <type_traits>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -106,11 +105,12 @@ namespace boost { namespace simd { namespace ext
       return a0;
     }
   };
+
   BOOST_DISPATCH_OVERLOAD ( round_
                           , (typename A0, typename A1)
                           , bd::cpu_
                           , bd::scalar_< bd::floating_<A0> >
-                          , bd::scalar_< bd::integer_<A1> >
+                          , bd::scalar_< bd::int_<A1> >
                           )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
@@ -118,8 +118,8 @@ namespace boost { namespace simd { namespace ext
        using i_t = bd::as_integer_t<A0>;
        A0 fac = tenpower(i_t(a1));
        A0 x = a0*fac;
-       A0 z = bs::round(x)/fac;
-       return is_ltz(a1) ? bs::round(z) : z;
+       A0 z = std::round(x)/fac;
+       return is_ltz(a1) ? std::round(z) : z;
     }
   };
 
@@ -127,7 +127,7 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename A1)
                           , bd::cpu_
                           , bd::scalar_< bd::floating_<A0> >
-                          , bd::scalar_< bd::unsigned_<A1> >
+                          , bd::scalar_< bd::uint_<A1> >
                           )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
@@ -135,11 +135,7 @@ namespace boost { namespace simd { namespace ext
        using i_t = bd::as_integer_t<A0>;
        A0 fac = tenpower(i_t(a1));
        A0 x = a0*fac;
-       A0 z = bs::round(x)/fac;
-       std::cout << boost::typeindex::type_id_runtime(x) << std::endl;
-       std::cout << boost::typeindex::type_id_runtime(z) << std::endl;
-       std::cout << boost::typeindex::type_id<A0>() << std::endl;
-       return  z;
+       return  bs::round(x)/fac;
     }
   };
 

@@ -18,7 +18,7 @@
 #include <boost/simd/function/is_ltz.hpp>
 #include <boost/simd/function/plus.hpp>
 #include <boost/simd/function/toint.hpp>
-#include <boost/simd/function/round.hpp>
+#include <boost/simd/function/scalar/round.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
@@ -46,7 +46,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE bd::as_integer_t<A0> operator() ( A0 a0) const BOOST_NOEXCEPT
     {
-      return saturated_(toint)(round(a0));
+      return saturated_(toint)(bs::round(a0));
     }
   };
 

@@ -12,7 +12,6 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_NTHROOT_HPP_INCLUDED
 #include <boost/simd/detail/overload.hpp>
 
-#include <boost/simd/pack.hpp>
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/function/abs.hpp>
