@@ -118,7 +118,7 @@ namespace boost { namespace simd { namespace ext
        using i_t = bd::as_integer_t<A0>;
        A0 fac = tenpower(i_t(a1));
        A0 x = a0*fac;
-       A0 z = std::round(x)/fac;
+       A0 z = bs::round(x)/fac;
        return is_ltz(a1) ? std::round(z) : z;
     }
   };
