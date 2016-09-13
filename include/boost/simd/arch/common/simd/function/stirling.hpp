@@ -19,15 +19,15 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/real.hpp>
 #include <boost/simd/constant/sqrt_2pi.hpp>
-#include <boost/simd/function/simd/exp.hpp>
-#include <boost/simd/function/simd/if_else_nan.hpp>
-#include <boost/simd/function/simd/fma.hpp>
-#include <boost/simd/function/simd/is_eqz.hpp>
-#include <boost/simd/function/simd/is_gez.hpp>
-#include <boost/simd/function/simd/pow_abs.hpp>
-#include <boost/simd/function/simd/rec.hpp>
+#include <boost/simd/function/exp.hpp>
+#include <boost/simd/function/if_else_nan.hpp>
+#include <boost/simd/function/fma.hpp>
+#include <boost/simd/function/is_eqz.hpp>
+#include <boost/simd/function/is_gez.hpp>
+#include <boost/simd/function/pow_abs.hpp>
+#include <boost/simd/function/rec.hpp>
 #ifndef BOOST_SIMD_NO_INVALIDS
-#include <boost/simd/function/simd/is_nan.hpp>
+#include <boost/simd/function/is_nan.hpp>
 #endif
 
 namespace boost { namespace simd { namespace ext

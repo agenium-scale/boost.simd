@@ -14,10 +14,10 @@
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/constant/one.hpp>
-#include <boost/simd/function/simd/bitwise_and.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/complement.hpp>
-#include <boost/simd/function/simd/inc.hpp>
+#include <boost/simd/function/bitwise_and.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/complement.hpp>
+#include <boost/simd/function/inc.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 namespace boost { namespace simd { namespace ext

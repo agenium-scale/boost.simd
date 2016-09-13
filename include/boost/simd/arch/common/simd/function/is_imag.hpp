@@ -11,7 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IS_IMAG_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IS_IMAG_HPP_INCLUDED
 
-#include <boost/simd/function/simd/is_eqz.hpp>
+#include <boost/simd/function/is_eqz.hpp>
 #include <boost/simd/meta/as_logical.hpp>
 
 namespace boost { namespace simd { namespace ext

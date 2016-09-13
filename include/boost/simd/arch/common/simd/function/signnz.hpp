@@ -15,13 +15,13 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/signmask.hpp>
-#include <boost/simd/function/simd/bitwise_and.hpp>
-#include <boost/simd/function/simd/bitwise_or.hpp>
-#include <boost/simd/function/simd/shift_right.hpp>
+#include <boost/simd/function/bitwise_and.hpp>
+#include <boost/simd/function/bitwise_or.hpp>
+#include <boost/simd/function/shift_right.hpp>
 
 #ifndef BOOST_SIMD_NO_NANS
-#include <boost/simd/function/simd/if_allbits_else.hpp>
-#include <boost/simd/function/simd/is_nan.hpp>
+#include <boost/simd/function/if_allbits_else.hpp>
+#include <boost/simd/function/is_nan.hpp>
 #endif
 
 namespace boost { namespace simd { namespace ext

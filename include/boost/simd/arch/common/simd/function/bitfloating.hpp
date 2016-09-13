@@ -14,10 +14,10 @@
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/constant/signmask.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_gez.hpp>
-#include <boost/simd/function/simd/minus.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_gez.hpp>
+#include <boost/simd/function/minus.hpp>
 #include <boost/simd/detail/dispatch/meta/as_floating.hpp>
 
 namespace boost { namespace simd { namespace ext

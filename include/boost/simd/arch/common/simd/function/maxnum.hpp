@@ -13,9 +13,9 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_nan.hpp>
-#include <boost/simd/function/simd/max.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_nan.hpp>
+#include <boost/simd/function/max.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

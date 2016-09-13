@@ -10,7 +10,7 @@
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_GAMMALN_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/scalar/gammaln.hpp>
+#include <boost/simd/function/gammaln.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

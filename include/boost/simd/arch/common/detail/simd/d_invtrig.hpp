@@ -23,19 +23,19 @@
 #include <boost/simd/constant/sqrteps.hpp>
 #include <boost/simd/constant/two.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/simd/abs.hpp>
-#include <boost/simd/function/simd/bitofsign.hpp>
-#include <boost/simd/function/simd/bitwise_xor.hpp>
-#include <boost/simd/function/simd/fma.hpp>
-#include <boost/simd/function/simd/fms.hpp>
-#include <boost/simd/function/simd/if_nan_else.hpp>
-#include <boost/simd/function/simd/is_eqz.hpp>
-#include <boost/simd/function/simd/is_inf.hpp>
-#include <boost/simd/function/simd/dec.hpp>
-#include <boost/simd/function/simd/inc.hpp>
-#include <boost/simd/function/simd/rec.hpp>
-#include <boost/simd/function/simd/sqr.hpp>
-#include <boost/simd/function/simd/sqrt.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/bitofsign.hpp>
+#include <boost/simd/function/bitwise_xor.hpp>
+#include <boost/simd/function/fma.hpp>
+#include <boost/simd/function/fms.hpp>
+#include <boost/simd/function/if_nan_else.hpp>
+#include <boost/simd/function/is_eqz.hpp>
+#include <boost/simd/function/is_inf.hpp>
+#include <boost/simd/function/dec.hpp>
+#include <boost/simd/function/inc.hpp>
+#include <boost/simd/function/rec.hpp>
+#include <boost/simd/function/sqr.hpp>
+#include <boost/simd/function/sqrt.hpp>
 //#include <boost/simd/detail/dispatch/meta/simd_of.hpp>
 
 namespace boost { namespace simd

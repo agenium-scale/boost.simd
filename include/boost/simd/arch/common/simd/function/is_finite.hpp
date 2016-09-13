@@ -15,8 +15,8 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/constant/true.hpp>
 #include <boost/simd/constant/mone.hpp>
-#include <boost/simd/function/simd/is_eqz.hpp>
-#include <boost/simd/function/simd/minus.hpp>
+#include <boost/simd/function/is_eqz.hpp>
+#include <boost/simd/function/minus.hpp>
 #include <boost/simd/meta/as_logical.hpp>
 
 namespace boost { namespace simd { namespace ext

@@ -15,8 +15,8 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/constant/true.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/simd/is_nan.hpp>
-#include <boost/simd/function/simd/minus.hpp>
+#include <boost/simd/function/is_nan.hpp>
+#include <boost/simd/function/minus.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

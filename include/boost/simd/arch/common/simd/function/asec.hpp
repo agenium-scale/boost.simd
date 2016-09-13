@@ -13,8 +13,8 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/constant/pio_2.hpp>
-#include <boost/simd/function/simd/acsc.hpp>
-#include <boost/simd/function/simd/minus.hpp>
+#include <boost/simd/function/acsc.hpp>
+#include <boost/simd/function/minus.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

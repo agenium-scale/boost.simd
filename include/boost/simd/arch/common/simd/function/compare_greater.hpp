@@ -10,7 +10,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_COMPARE_GREATER_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/simd/compare_less.hpp>
+#include <boost/simd/function/compare_less.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

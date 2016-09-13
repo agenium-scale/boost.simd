@@ -12,7 +12,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ACSCPI_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ACSCPI_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/acsc.hpp>
+#include <boost/simd/function/acsc.hpp>
 #include <boost/simd/constant/invpi.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>

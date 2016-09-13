@@ -13,14 +13,14 @@
 
 #if !defined(BOOST_SIMD_NO_INFINITIES)
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/scalar/is_inf.hpp>
+#include <boost/simd/function/is_inf.hpp>
 #endif
 #if !defined(BOOST_SIMD_NO_DENORMALS)
 #include <boost/simd/constant/eps.hpp>
-#include <boost/simd/function/scalar/abs.hpp>
+#include <boost/simd/function/abs.hpp>
 #endif
 #include <boost/simd/constant/one.hpp>
-#include <boost/simd/function/scalar/sin.hpp>
+#include <boost/simd/function/sin.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

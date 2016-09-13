@@ -13,9 +13,9 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/is_nez.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/sign.hpp>
+#include <boost/simd/function/is_nez.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/sign.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

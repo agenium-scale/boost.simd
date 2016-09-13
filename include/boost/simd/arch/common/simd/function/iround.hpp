@@ -13,11 +13,11 @@
 
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/mhalf.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_ltz.hpp>
-#include <boost/simd/function/simd/plus.hpp>
-#include <boost/simd/function/simd/toint.hpp>
-#include <boost/simd/function/simd/round.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_ltz.hpp>
+#include <boost/simd/function/plus.hpp>
+#include <boost/simd/function/toint.hpp>
+#include <boost/simd/function/round.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>

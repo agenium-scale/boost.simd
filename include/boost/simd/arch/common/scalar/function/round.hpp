@@ -14,12 +14,12 @@
 
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/detail/constant/maxflint.hpp>
-#include <boost/simd/function/scalar/abs.hpp>
-#include <boost/simd/function/scalar/ceil.hpp>
-#include <boost/simd/function/scalar/copysign.hpp>
-#include <boost/simd/function/scalar/is_ltz.hpp>
-#include <boost/simd/function/scalar/if_dec.hpp>
-#include <boost/simd/function/scalar/tenpower.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/ceil.hpp>
+#include <boost/simd/function/copysign.hpp>
+#include <boost/simd/function/is_ltz.hpp>
+#include <boost/simd/function/if_dec.hpp>
+#include <boost/simd/function/tenpower.hpp>
 #include <boost/simd/detail/math.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>

@@ -14,8 +14,8 @@
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/meta/as_logical.hpp>
-#include <boost/simd/function/simd/bitwise_and.hpp>
-#include <boost/simd/function/simd/none.hpp>
+#include <boost/simd/function/bitwise_and.hpp>
+#include <boost/simd/function/none.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

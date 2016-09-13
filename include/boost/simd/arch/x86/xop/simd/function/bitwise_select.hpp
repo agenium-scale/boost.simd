@@ -10,7 +10,7 @@
 #define BOOST_SIMD_ARCH_X86_XOP_SIMD_FUNCTION_BITWISE_SELECT_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 #if BOOST_HW_SIMD_X86_AMD_XOP

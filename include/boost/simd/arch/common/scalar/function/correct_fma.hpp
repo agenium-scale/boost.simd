@@ -12,14 +12,14 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_CORRECT_FMA_HPP_INCLUDED
 #include <boost/simd/function/std.hpp>
 
-#include <boost/simd/function/scalar/bitwise_cast.hpp>
-#include <boost/simd/function/scalar/exponent.hpp>
-#include <boost/simd/function/scalar/ldexp.hpp>
-#include <boost/simd/function/scalar/max.hpp>
-#include <boost/simd/function/scalar/multiplies.hpp>
-#include <boost/simd/function/scalar/sign.hpp>
-#include <boost/simd/function/scalar/two_add.hpp>
-#include <boost/simd/function/scalar/two_prod.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/exponent.hpp>
+#include <boost/simd/function/ldexp.hpp>
+#include <boost/simd/function/max.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/sign.hpp>
+#include <boost/simd/function/two_add.hpp>
+#include <boost/simd/function/two_prod.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/function/conformant.hpp>

@@ -12,8 +12,8 @@
 #define BOOST_SIMD_ARCH_DETAIL_SCALAR_HORNER_HPP_INCLUDED
 
 #include <boost/simd/constant/constant.hpp>
-#include <boost/simd/function/scalar/divides.hpp>
-#include <boost/simd/function/scalar/fma.hpp>
+#include <boost/simd/function/divides.hpp>
+#include <boost/simd/function/fma.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/preprocessor/punctuation/remove_parens.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>

@@ -13,10 +13,10 @@
 
 #include <boost/simd/function/horn.hpp>
 #include <boost/simd/constant/mhalf.hpp>
-#include <boost/simd/function/scalar/fma.hpp>
-#include <boost/simd/function/scalar/inc.hpp>
-#include <boost/simd/function/scalar/rec.hpp>
-#include <boost/simd/function/scalar/sqr.hpp>
+#include <boost/simd/function/fma.hpp>
+#include <boost/simd/function/inc.hpp>
+#include <boost/simd/function/rec.hpp>
+#include <boost/simd/function/sqr.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd

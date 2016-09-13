@@ -12,12 +12,12 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_AVERAGE_HPP_INCLUDED
 
 #include <boost/simd/constant/half.hpp>
-#include <boost/simd/function/simd/bitwise_and.hpp>
-#include <boost/simd/function/simd/bitwise_xor.hpp>
-#include <boost/simd/function/simd/fma.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/plus.hpp>
-#include <boost/simd/function/simd/shift_right.hpp>
+#include <boost/simd/function/bitwise_and.hpp>
+#include <boost/simd/function/bitwise_xor.hpp>
+#include <boost/simd/function/fma.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/plus.hpp>
+#include <boost/simd/function/shift_right.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

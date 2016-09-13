@@ -13,8 +13,8 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/sum.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/sum.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

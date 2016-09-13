@@ -15,10 +15,10 @@
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/scalar/divides.hpp>
-#include <boost/simd/function/scalar/floor.hpp>
-#include <boost/simd/function/scalar/iceil.hpp>
-#include <boost/simd/function/scalar/dec.hpp>
+#include <boost/simd/function/divides.hpp>
+#include <boost/simd/function/floor.hpp>
+#include <boost/simd/function/iceil.hpp>
+#include <boost/simd/function/dec.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

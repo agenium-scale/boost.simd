@@ -13,14 +13,14 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/div.hpp>
-#include <boost/simd/function/simd/fnms.hpp>
-#include <boost/simd/function/simd/floor.hpp>
-#include <boost/simd/function/simd/is_nez.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/if_minus.hpp>
-#include <boost/simd/function/simd/if_nan_else.hpp>
-#include <boost/simd/function/simd/logical_or.hpp>
+#include <boost/simd/function/div.hpp>
+#include <boost/simd/function/fnms.hpp>
+#include <boost/simd/function/floor.hpp>
+#include <boost/simd/function/is_nez.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/if_minus.hpp>
+#include <boost/simd/function/if_nan_else.hpp>
+#include <boost/simd/function/logical_or.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

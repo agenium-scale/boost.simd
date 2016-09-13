@@ -13,10 +13,10 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/abs.hpp>
-#include <boost/simd/function/simd/bitofsign.hpp>
-#include <boost/simd/function/simd/bitwise_or.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/bitofsign.hpp>
+#include <boost/simd/function/bitwise_or.hpp>
+#include <boost/simd/function/multiplies.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

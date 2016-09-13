@@ -11,10 +11,10 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/traits.hpp>
-#include <boost/simd/function/simd/if_one_else_zero.hpp>
-#include <boost/simd/function/simd/divides.hpp>
+#include <boost/simd/function/if_one_else_zero.hpp>
+#include <boost/simd/function/divides.hpp>
 #include <boost/simd/function/refine_rec.hpp>
-#include <boost/simd/function/simd/abs.hpp>
+#include <boost/simd/function/abs.hpp>
 #include <boost/simd/function/fast.hpp>
 #include <boost/simd/function/raw.hpp>
 #include <boost/simd/constant/valmax.hpp>

@@ -13,9 +13,9 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/genmaskc.hpp>
-#include <boost/simd/function/simd/ifnot_minus.hpp>
-#include <boost/simd/function/simd/plus.hpp>
+#include <boost/simd/function/genmaskc.hpp>
+#include <boost/simd/function/ifnot_minus.hpp>
+#include <boost/simd/function/plus.hpp>
 #include <boost/simd/constant/one.hpp>
 
 namespace boost { namespace simd { namespace ext

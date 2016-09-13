@@ -13,12 +13,12 @@
 
 #ifndef BOOST_SIMD_NO_INVALIDS
 #include <boost/simd/detail/assert_utils.hpp>
-#include <boost/simd/function/simd/is_finite.hpp>
+#include <boost/simd/function/is_finite.hpp>
 #endif
 #include <boost/simd/function/fast.hpp>
 #include <boost/simd/constant/one.hpp>
-#include <boost/simd/function/simd/ldexp.hpp>
-#include <boost/simd/function/simd/toint.hpp>
+#include <boost/simd/function/ldexp.hpp>
+#include <boost/simd/function/toint.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/assert.hpp>
 #include <boost/config.hpp>

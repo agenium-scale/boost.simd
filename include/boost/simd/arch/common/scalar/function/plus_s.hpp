@@ -14,8 +14,8 @@
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/detail/brigand.hpp>
-#include <boost/simd/function/scalar/min.hpp>
-#include <boost/simd/function/scalar/saturate.hpp>
+#include <boost/simd/function/min.hpp>
+#include <boost/simd/function/saturate.hpp>
 #include <boost/simd/function/saturated.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/hierarchy.hpp>

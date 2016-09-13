@@ -10,8 +10,8 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IS_NGEZ_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/simd/is_not_greater_equal.hpp>
-#include <boost/simd/function/simd/is_ltz.hpp>
+#include <boost/simd/function/is_not_greater_equal.hpp>
+#include <boost/simd/function/is_ltz.hpp>
 #include <boost/simd/constant/zero.hpp>
 
 namespace boost { namespace simd { namespace ext

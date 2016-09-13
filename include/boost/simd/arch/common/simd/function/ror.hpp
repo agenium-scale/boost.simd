@@ -13,12 +13,12 @@
 
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/bitwise_or.hpp>
-#include <boost/simd/function/simd/minus.hpp>
-#include <boost/simd/function/simd/shift_left.hpp>
-#include <boost/simd/function/simd/shr.hpp>
-#include <boost/simd/function/simd/splat.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/bitwise_or.hpp>
+#include <boost/simd/function/minus.hpp>
+#include <boost/simd/function/shift_left.hpp>
+#include <boost/simd/function/shr.hpp>
+#include <boost/simd/function/splat.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>

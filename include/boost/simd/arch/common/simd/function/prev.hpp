@@ -13,10 +13,10 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/dec.hpp>
-#include <boost/simd/function/simd/if_allbits_else.hpp>
-#include <boost/simd/function/simd/is_nan.hpp>
-#include <boost/simd/function/simd/next.hpp>
+#include <boost/simd/function/dec.hpp>
+#include <boost/simd/function/if_allbits_else.hpp>
+#include <boost/simd/function/is_nan.hpp>
+#include <boost/simd/function/next.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

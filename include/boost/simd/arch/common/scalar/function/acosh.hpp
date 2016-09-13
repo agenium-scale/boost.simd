@@ -13,11 +13,11 @@
 
 #include <boost/simd/constant/log_2.hpp>
 #include <boost/simd/constant/oneotwoeps.hpp>
-#include <boost/simd/function/scalar/log.hpp>
-#include <boost/simd/function/scalar/log1p.hpp>
-#include <boost/simd/function/scalar/dec.hpp>
-#include <boost/simd/function/scalar/sqr.hpp>
-#include <boost/simd/function/scalar/sqrt.hpp>
+#include <boost/simd/function/log.hpp>
+#include <boost/simd/function/log1p.hpp>
+#include <boost/simd/function/dec.hpp>
+#include <boost/simd/function/sqr.hpp>
+#include <boost/simd/function/sqrt.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

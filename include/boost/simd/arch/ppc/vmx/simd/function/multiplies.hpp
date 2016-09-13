@@ -10,7 +10,7 @@
 #define BOOST_SIMD_ARCH_PPC_VMX_SIMD_FUNCTION_MULTIPLIES_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/constant/mzero.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/detail/dispatch/meta/as_unsigned.hpp>

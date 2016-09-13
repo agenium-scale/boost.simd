@@ -10,19 +10,19 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_CORRECT_FMA_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/group.hpp>
-#include <boost/simd/function/simd/split.hpp>
-#include <boost/simd/function/simd/two_add.hpp>
-#include <boost/simd/function/simd/two_prod.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/group.hpp>
+#include <boost/simd/function/split.hpp>
+#include <boost/simd/function/two_add.hpp>
+#include <boost/simd/function/two_prod.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/function/conformant.hpp>
 
 #ifndef BOOST_SIMD_DONT_CARE_FMA_OVERFLOW
-#include <boost/simd/function/simd/exponent.hpp>
-#include <boost/simd/function/simd/ldexp.hpp>
-#include <boost/simd/function/simd/maxmag.hpp>
-#include <boost/simd/function/simd/minmag.hpp>
+#include <boost/simd/function/exponent.hpp>
+#include <boost/simd/function/ldexp.hpp>
+#include <boost/simd/function/maxmag.hpp>
+#include <boost/simd/function/minmag.hpp>
 #endif
 
 namespace boost { namespace simd { namespace ext

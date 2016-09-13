@@ -10,8 +10,8 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SPLIT_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/simd/split_high.hpp>
-#include <boost/simd/function/simd/split_low.hpp>
+#include <boost/simd/function/split_high.hpp>
+#include <boost/simd/function/split_low.hpp>
 #include <array>
 
 namespace boost { namespace simd { namespace ext

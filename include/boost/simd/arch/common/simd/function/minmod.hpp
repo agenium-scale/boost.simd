@@ -13,12 +13,12 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/bitwise_xor.hpp>
-#include <boost/simd/function/simd/if_else_zero.hpp>
-#include <boost/simd/function/simd/is_gez.hpp>
-#include <boost/simd/function/simd/is_nltz.hpp>
-#include <boost/simd/function/simd/min.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
+#include <boost/simd/function/bitwise_xor.hpp>
+#include <boost/simd/function/if_else_zero.hpp>
+#include <boost/simd/function/is_gez.hpp>
+#include <boost/simd/function/is_nltz.hpp>
+#include <boost/simd/function/min.hpp>
+#include <boost/simd/function/multiplies.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

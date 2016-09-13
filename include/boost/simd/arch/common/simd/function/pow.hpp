@@ -14,18 +14,18 @@
 
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
-#include <boost/simd/function/simd/any.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_flint.hpp>
-#include <boost/simd/function/simd/is_ltz.hpp>
-#include <boost/simd/function/simd/is_odd.hpp>
-#include <boost/simd/function/simd/logical_and.hpp>
-#include <boost/simd/function/simd/logical_andnot.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/negif.hpp>
-#include <boost/simd/function/simd/pow_abs.hpp>
-#include <boost/simd/function/simd/shift_right.hpp>
-#include <boost/simd/function/simd/sqr.hpp>
+#include <boost/simd/function/any.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_flint.hpp>
+#include <boost/simd/function/is_ltz.hpp>
+#include <boost/simd/function/is_odd.hpp>
+#include <boost/simd/function/logical_and.hpp>
+#include <boost/simd/function/logical_andnot.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/negif.hpp>
+#include <boost/simd/function/pow_abs.hpp>
+#include <boost/simd/function/shift_right.hpp>
+#include <boost/simd/function/sqr.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

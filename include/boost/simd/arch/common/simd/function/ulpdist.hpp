@@ -13,18 +13,18 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/abs.hpp>
-#include <boost/simd/function/simd/divides.hpp>
-#include <boost/simd/function/simd/frexp.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/if_zero_else.hpp>
-#include <boost/simd/function/simd/is_equal.hpp>
-#include <boost/simd/function/simd/is_nan.hpp>
-#include <boost/simd/function/simd/ldexp.hpp>
-#include <boost/simd/function/simd/logical_and.hpp>
-#include <boost/simd/function/simd/logical_or.hpp>
-#include <boost/simd/function/simd/max.hpp>
-#include <boost/simd/function/simd/minus.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/divides.hpp>
+#include <boost/simd/function/frexp.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/if_zero_else.hpp>
+#include <boost/simd/function/is_equal.hpp>
+#include <boost/simd/function/is_nan.hpp>
+#include <boost/simd/function/ldexp.hpp>
+#include <boost/simd/function/logical_and.hpp>
+#include <boost/simd/function/logical_or.hpp>
+#include <boost/simd/function/max.hpp>
+#include <boost/simd/function/minus.hpp>
 #include <boost/simd/constant/eps.hpp>
 
 namespace boost { namespace simd { namespace ext

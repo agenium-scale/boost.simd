@@ -13,7 +13,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ACOTPI_HPP_INCLUDED
 
 #ifndef BOOST_SIMD_NO_INFINITIES
-#include <boost/simd/function/scalar/is_inf.hpp>
+#include <boost/simd/function/is_inf.hpp>
 #endif
 #include <boost/simd/constant/pio_2.hpp>
 #include <boost/simd/function/abs.hpp>

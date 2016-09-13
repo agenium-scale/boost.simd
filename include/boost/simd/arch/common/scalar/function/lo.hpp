@@ -11,7 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_LO_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_LO_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/bitwise_and.hpp>
+#include <boost/simd/function/bitwise_and.hpp>
 #include <boost/simd/constant/ratio.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>

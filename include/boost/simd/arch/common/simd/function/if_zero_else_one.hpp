@@ -13,7 +13,7 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/if_zero_else.hpp>
+#include <boost/simd/function/if_zero_else.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/meta/as_arithmetic.hpp>
 

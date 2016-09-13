@@ -11,10 +11,10 @@
 
 #include <boost/simd/detail/constant/maxexponent.hpp>
 #include <boost/simd/constant/nbmantissabits.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/shift_left.hpp>
-#include <boost/simd/function/simd/toint.hpp>
-#include <boost/simd/function/simd/toint.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/shift_left.hpp>
+#include <boost/simd/function/toint.hpp>
+#include <boost/simd/function/toint.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd { namespace detail

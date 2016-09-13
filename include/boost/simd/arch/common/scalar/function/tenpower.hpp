@@ -14,9 +14,9 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/ten.hpp>
 #include <boost/simd/function/abs.hpp>
-#include <boost/simd/function/scalar/is_ltz.hpp>
-#include <boost/simd/function/scalar/is_odd.hpp>
-#include <boost/simd/function/scalar/rec.hpp>
+#include <boost/simd/function/is_ltz.hpp>
+#include <boost/simd/function/is_odd.hpp>
+#include <boost/simd/function/rec.hpp>
 #include <boost/simd/function/sqr.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_floating.hpp>

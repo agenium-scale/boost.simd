@@ -15,8 +15,8 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/simd/dist.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
+#include <boost/simd/function/dist.hpp>
+#include <boost/simd/function/if_else.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

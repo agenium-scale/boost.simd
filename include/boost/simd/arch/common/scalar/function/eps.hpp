@@ -15,10 +15,10 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/nbmantissabits.hpp>
 #include <boost/simd/constant/one.hpp>
-#include <boost/simd/function/scalar/abs.hpp>
-#include <boost/simd/function/scalar/bitwise_cast.hpp>
-#include <boost/simd/function/scalar/exponent.hpp>
-#include <boost/simd/function/scalar/is_invalid.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/exponent.hpp>
+#include <boost/simd/function/is_invalid.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>

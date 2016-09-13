@@ -12,13 +12,13 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_SUCCESSOR_HPP_INCLUDED
 
 #include <boost/simd/constant/valmax.hpp>
-#include <boost/simd/function/scalar/abs.hpp>
-#include <boost/simd/function/scalar/plus.hpp>
-#include <boost/simd/function/scalar/bitfloating.hpp>
-#include <boost/simd/function/scalar/bitinteger.hpp>
-#include <boost/simd/function/scalar/is_gez.hpp>
-#include <boost/simd/function/scalar/is_nan.hpp>
-#include <boost/simd/function/scalar/inc.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/plus.hpp>
+#include <boost/simd/function/bitfloating.hpp>
+#include <boost/simd/function/bitinteger.hpp>
+#include <boost/simd/function/is_gez.hpp>
+#include <boost/simd/function/is_nan.hpp>
+#include <boost/simd/function/inc.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/assert.hpp>
 #include <boost/config.hpp>

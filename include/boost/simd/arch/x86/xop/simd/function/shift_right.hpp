@@ -11,7 +11,7 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
-#include <boost/simd/function/simd/rshr.hpp>
+#include <boost/simd/function/rshr.hpp>
 
 #if BOOST_HW_SIMD_X86_AMD_XOP
 namespace boost { namespace simd { namespace ext

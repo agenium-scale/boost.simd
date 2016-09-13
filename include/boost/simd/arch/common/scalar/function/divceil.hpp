@@ -15,10 +15,10 @@
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/scalar/ceil.hpp>
-#include <boost/simd/function/scalar/iceil.hpp>
-#include <boost/simd/function/scalar/inc.hpp>
-#include <boost/simd/function/scalar/inc.hpp>
+#include <boost/simd/function/ceil.hpp>
+#include <boost/simd/function/iceil.hpp>
+#include <boost/simd/function/inc.hpp>
+#include <boost/simd/function/inc.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

@@ -11,9 +11,9 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_EQUAL_WITH_EQUAL_NANS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_EQUAL_WITH_EQUAL_NANS_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/is_nan.hpp>
-#include <boost/simd/function/scalar/logical_and.hpp>
-#include <boost/simd/function/scalar/logical_or.hpp>
+#include <boost/simd/function/is_nan.hpp>
+#include <boost/simd/function/logical_and.hpp>
+#include <boost/simd/function/logical_or.hpp>
 #include <boost/simd/logical.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>

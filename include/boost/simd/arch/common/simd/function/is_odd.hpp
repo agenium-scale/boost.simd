@@ -16,10 +16,10 @@
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/constant/one.hpp>
-#include <boost/simd/function/simd/bitwise_and.hpp>
-#include <boost/simd/function/simd/is_even.hpp>
-#include <boost/simd/function/simd/is_nez.hpp>
-#include <boost/simd/function/simd/dec.hpp>
+#include <boost/simd/function/bitwise_and.hpp>
+#include <boost/simd/function/is_even.hpp>
+#include <boost/simd/function/is_nez.hpp>
+#include <boost/simd/function/dec.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

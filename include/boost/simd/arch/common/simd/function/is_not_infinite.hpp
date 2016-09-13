@@ -17,8 +17,8 @@
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/true.hpp>
-#include <boost/simd/function/simd/abs.hpp>
-#include <boost/simd/function/simd/is_not_equal.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/is_not_equal.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

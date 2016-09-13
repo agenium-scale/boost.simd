@@ -13,8 +13,8 @@
 
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/valmax.hpp>
-#include <boost/simd/function/scalar/inc.hpp>
-#include <boost/simd/function/scalar/successor.hpp>
+#include <boost/simd/function/inc.hpp>
+#include <boost/simd/function/successor.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

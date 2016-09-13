@@ -10,8 +10,8 @@
 #define BOOST_SIMD_ARCH_X86_AVX2_SIMD_FUNCTION_IF_ELSE_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/genmask.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/genmask.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

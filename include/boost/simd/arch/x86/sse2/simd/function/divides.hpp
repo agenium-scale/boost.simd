@@ -13,9 +13,9 @@
 #include <boost/simd/detail/overload.hpp>
 
 #if defined(BOOST_SIMD_COMPILER_GCC) && BOOST_SIMD_GCC_VERSION < 40603
-#include <boost/simd/function/simd/if_nan_else.hpp>
-#include <boost/simd/function/simd/is_eqz_else.hpp>
-#include <boost/simd/function/simd/logical_and.hpp>
+#include <boost/simd/function/if_nan_else.hpp>
+#include <boost/simd/function/is_eqz_else.hpp>
+#include <boost/simd/function/logical_and.hpp>
 #endif
 
 

@@ -16,18 +16,18 @@
 #include <boost/simd/detail/assert_utils.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/valmax.hpp>
-#include <boost/simd/function/simd/bitfloating.hpp>
-#include <boost/simd/function/simd/bitinteger.hpp>
-#include <boost/simd/function/simd/if_allbits_else.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_gez.hpp>
-#include <boost/simd/function/simd/is_greater.hpp>
-#include <boost/simd/function/simd/is_nan.hpp>
-#include <boost/simd/function/simd/is_not_equal.hpp>
-#include <boost/simd/function/simd/minus.hpp>
-#include <boost/simd/function/simd/inc.hpp>
-#include <boost/simd/function/simd/plus.hpp>
-#include <boost/simd/function/simd/if_plus.hpp>
+#include <boost/simd/function/bitfloating.hpp>
+#include <boost/simd/function/bitinteger.hpp>
+#include <boost/simd/function/if_allbits_else.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_gez.hpp>
+#include <boost/simd/function/is_greater.hpp>
+#include <boost/simd/function/is_nan.hpp>
+#include <boost/simd/function/is_not_equal.hpp>
+#include <boost/simd/function/minus.hpp>
+#include <boost/simd/function/inc.hpp>
+#include <boost/simd/function/plus.hpp>
+#include <boost/simd/function/if_plus.hpp>
 #include <boost/assert.hpp>
 
 namespace boost { namespace simd { namespace ext

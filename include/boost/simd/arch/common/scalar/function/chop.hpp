@@ -11,15 +11,15 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_CHOP_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_CHOP_HPP_INCLUDED
 
-// #include <boost/simd/function/scalar/abs.hpp>
-// #include <boost/simd/function/scalar/exp10.hpp>
-// #include <boost/simd/function/scalar/floor.hpp>
-// #include <boost/simd/function/scalar/inc.hpp>
-// #include <boost/simd/function/scalar/is_eqz.hpp>
-// #include <boost/simd/function/scalar/rec.hpp>
-// #include <boost/simd/function/scalar/if_inc.hpp>
-// #include <boost/simd/function/scalar/tofloat.hpp>
-// #include <boost/simd/function/scalar/toint.hpp>
+// #include <boost/simd/function/abs.hpp>
+// #include <boost/simd/function/exp10.hpp>
+// #include <boost/simd/function/floor.hpp>
+// #include <boost/simd/function/inc.hpp>
+// #include <boost/simd/function/is_eqz.hpp>
+// #include <boost/simd/function/rec.hpp>
+// #include <boost/simd/function/if_inc.hpp>
+// #include <boost/simd/function/tofloat.hpp>
+// #include <boost/simd/function/toint.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

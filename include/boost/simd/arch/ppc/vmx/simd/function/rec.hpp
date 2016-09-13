@@ -10,15 +10,15 @@
 #define BOOST_SIMD_ARCH_PPC_VMX_SIMD_FUNCTION_REC_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/simd/copysign.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_eqz.hpp>
+#include <boost/simd/function/copysign.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_eqz.hpp>
 #include <boost/simd/function/fast.hpp>
 #include <boost/simd/constant/inf.hpp>
 
 #if !defined( BOOST_SIMD_NO_INFINITIES )
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/simd/is_inf.hpp>
+#include <boost/simd/function/is_inf.hpp>
 #endif
 
 namespace boost { namespace simd { namespace ext

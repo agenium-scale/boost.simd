@@ -11,8 +11,8 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/traits.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_less.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_less.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

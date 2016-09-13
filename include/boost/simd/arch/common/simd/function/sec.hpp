@@ -12,8 +12,8 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SEC_HPP_INCLUDED
 
 #include <boost/simd/function/restricted.hpp>
-#include <boost/simd/function/simd/rec.hpp>
-#include <boost/simd/function/simd/cos.hpp>
+#include <boost/simd/function/rec.hpp>
+#include <boost/simd/function/cos.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

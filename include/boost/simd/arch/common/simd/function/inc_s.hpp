@@ -13,9 +13,9 @@
 
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/valmax.hpp>
-#include <boost/simd/function/simd/is_not_equal.hpp>
-#include <boost/simd/function/simd/plus.hpp>
-#include <boost/simd/function/simd/if_plus.hpp>
+#include <boost/simd/function/is_not_equal.hpp>
+#include <boost/simd/function/plus.hpp>
+#include <boost/simd/function/if_plus.hpp>
 #include <boost/simd/function/saturated.hpp>
 #include <boost/config.hpp>
 

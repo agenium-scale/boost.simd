@@ -11,9 +11,9 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_FMS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_FMS_HPP_INCLUDED
 
-#include <boost/simd/function/simd/fma.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/minus.hpp>
+#include <boost/simd/function/fma.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/minus.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

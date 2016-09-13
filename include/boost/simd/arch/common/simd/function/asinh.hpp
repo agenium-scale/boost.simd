@@ -18,26 +18,26 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/oneosqrteps.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/simd/abs.hpp>
-#include <boost/simd/function/simd/average.hpp>
-#include <boost/simd/function/simd/bitofsign.hpp>
-#include <boost/simd/function/simd/bitwise_xor.hpp>
-#include <boost/simd/function/simd/divides.hpp>
-#include <boost/simd/function/simd/hypot.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/nbtrue.hpp>
-#include <boost/simd/function/simd/is_greater.hpp>
-#include <boost/simd/function/simd/is_less.hpp>
-#include <boost/simd/function/simd/log.hpp>
-#include <boost/simd/function/simd/dec.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/inc.hpp>
-#include <boost/simd/function/simd/plus.hpp>
-#include <boost/simd/function/simd/sqr.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/average.hpp>
+#include <boost/simd/function/bitofsign.hpp>
+#include <boost/simd/function/bitwise_xor.hpp>
+#include <boost/simd/function/divides.hpp>
+#include <boost/simd/function/hypot.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/nbtrue.hpp>
+#include <boost/simd/function/is_greater.hpp>
+#include <boost/simd/function/is_less.hpp>
+#include <boost/simd/function/log.hpp>
+#include <boost/simd/function/dec.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/inc.hpp>
+#include <boost/simd/function/plus.hpp>
+#include <boost/simd/function/sqr.hpp>
 
 #ifndef BOOST_SIMD_NO_INFINITIES
 #include <boost/simd/constant/inf.hpp>
-#include <boost/simd/function/simd/is_equal.hpp>
+#include <boost/simd/function/is_equal.hpp>
 #endif
 
 namespace boost { namespace simd { namespace ext

@@ -15,18 +15,18 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/valmin.hpp>
-#include <boost/simd/function/simd/bitwise_or.hpp>
-#include <boost/simd/function/simd/bitwise_xor.hpp>
-#include <boost/simd/function/simd/divides.hpp>
-#include <boost/simd/function/simd/genmask.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/if_zero_else_one.hpp>
-#include <boost/simd/function/simd/inc.hpp>
-#include <boost/simd/function/simd/is_eqz.hpp>
-#include <boost/simd/function/simd/is_nez.hpp>
-#include <boost/simd/function/simd/logical_and.hpp>
-#include <boost/simd/function/simd/plus.hpp>
-#include <boost/simd/function/simd/shift_right.hpp>
+#include <boost/simd/function/bitwise_or.hpp>
+#include <boost/simd/function/bitwise_xor.hpp>
+#include <boost/simd/function/divides.hpp>
+#include <boost/simd/function/genmask.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/if_zero_else_one.hpp>
+#include <boost/simd/function/inc.hpp>
+#include <boost/simd/function/is_eqz.hpp>
+#include <boost/simd/function/is_nez.hpp>
+#include <boost/simd/function/logical_and.hpp>
+#include <boost/simd/function/plus.hpp>
+#include <boost/simd/function/shift_right.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd { namespace ext

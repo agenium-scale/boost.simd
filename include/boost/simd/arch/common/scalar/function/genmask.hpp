@@ -13,8 +13,8 @@
 
 #include <boost/simd/constant/allbits.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/scalar/unary_minus.hpp>
-#include <boost/simd/function/scalar/bitwise_cast.hpp>
+#include <boost/simd/function/unary_minus.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/meta/hierarchy/logical.hpp>
 #include <boost/simd/meta/as_arithmetic.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>

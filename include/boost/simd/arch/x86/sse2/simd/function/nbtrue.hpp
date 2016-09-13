@@ -13,8 +13,8 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/as_logical.hpp>
-#include <boost/simd/function/simd/genmask.hpp>
-#include <boost/simd/function/simd/popcnt.hpp>
+#include <boost/simd/function/genmask.hpp>
+#include <boost/simd/function/popcnt.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/simd/detail/make_dependent.hpp>

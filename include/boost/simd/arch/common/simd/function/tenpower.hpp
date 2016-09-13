@@ -15,16 +15,16 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/ten.hpp>
-#include <boost/simd/function/simd/abs.hpp>
-#include <boost/simd/function/simd/abs.hpp>
-#include <boost/simd/function/simd/any.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_ltz.hpp>
-#include <boost/simd/function/simd/is_odd.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/rec.hpp>
-#include <boost/simd/function/simd/shift_right.hpp>
-#include <boost/simd/function/simd/sqr.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/any.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_ltz.hpp>
+#include <boost/simd/function/is_odd.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/rec.hpp>
+#include <boost/simd/function/shift_right.hpp>
+#include <boost/simd/function/sqr.hpp>
 #include <boost/simd/detail/dispatch/meta/as_floating.hpp>
 #include <boost/mpl/equal_to.hpp>
 

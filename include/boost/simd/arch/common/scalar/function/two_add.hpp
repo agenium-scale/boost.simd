@@ -13,10 +13,10 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_TWO_ADD_HPP_INCLUDED
 
 #include <boost/simd/detail/enforce_precision.hpp>
-#include <boost/simd/function/scalar/if_zero_else.hpp>
-#include <boost/simd/function/scalar/is_inf.hpp>
-#include <boost/simd/function/scalar/minus.hpp>
-#include <boost/simd/function/scalar/plus.hpp>
+#include <boost/simd/function/if_zero_else.hpp>
+#include <boost/simd/function/is_inf.hpp>
+#include <boost/simd/function/minus.hpp>
+#include <boost/simd/function/plus.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <utility>

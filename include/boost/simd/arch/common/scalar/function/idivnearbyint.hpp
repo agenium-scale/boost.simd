@@ -20,9 +20,9 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/constant/valmax.hpp>
-#include <boost/simd/function/scalar/bitwise_or.hpp>
-#include <boost/simd/function/scalar/inearbyint.hpp>
-#include <boost/simd/function/scalar/is_negative.hpp>
+#include <boost/simd/function/bitwise_or.hpp>
+#include <boost/simd/function/inearbyint.hpp>
+#include <boost/simd/function/is_negative.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>

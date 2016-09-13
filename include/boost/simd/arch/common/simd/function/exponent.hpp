@@ -16,19 +16,19 @@
 #include <boost/simd/detail/constant/maxexponent.hpp>
 #include <boost/simd/constant/nbmantissabits.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/simd/exponentbits.hpp>
-#include <boost/simd/function/simd/if_minus.hpp>
-#include <boost/simd/function/simd/shr.hpp>
+#include <boost/simd/function/exponentbits.hpp>
+#include <boost/simd/function/if_minus.hpp>
+#include <boost/simd/function/shr.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-#include <boost/simd/function/simd/if_zero_else.hpp>
-#include <boost/simd/function/simd/is_invalid.hpp>
+#include <boost/simd/function/if_zero_else.hpp>
+#include <boost/simd/function/is_invalid.hpp>
 #endif
 #if defined(__INTEL_COMPILER) && defined(BOOST_SIMD_HAS_AVX_SUPPORT) && !defined(BOOST_SIMD_HAS_AVX2_SUPPORT)
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/minus.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/minus.hpp>
 #endif
 
 

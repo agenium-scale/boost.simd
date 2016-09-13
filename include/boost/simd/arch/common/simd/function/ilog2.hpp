@@ -13,12 +13,12 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/clz.hpp>
-#include <boost/simd/function/simd/exponent.hpp>
-#include <boost/simd/function/simd/minus.hpp>
-#include <boost/simd/function/simd/dec.hpp>
-#include <boost/simd/function/simd/splat.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/clz.hpp>
+#include <boost/simd/function/exponent.hpp>
+#include <boost/simd/function/minus.hpp>
+#include <boost/simd/function/dec.hpp>
+#include <boost/simd/function/splat.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 namespace boost { namespace simd { namespace ext

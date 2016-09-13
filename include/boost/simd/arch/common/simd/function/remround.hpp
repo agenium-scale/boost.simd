@@ -13,12 +13,12 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/div.hpp>
-#include <boost/simd/function/simd/round.hpp>
-#include <boost/simd/function/simd/fnms.hpp>
-#include <boost/simd/function/simd/is_nez.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/if_minus.hpp>
+#include <boost/simd/function/div.hpp>
+#include <boost/simd/function/round.hpp>
+#include <boost/simd/function/fnms.hpp>
+#include <boost/simd/function/is_nez.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/if_minus.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

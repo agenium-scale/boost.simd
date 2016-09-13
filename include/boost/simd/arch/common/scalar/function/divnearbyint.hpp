@@ -16,12 +16,12 @@
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/scalar/abs.hpp>
-#include <boost/simd/function/scalar/copysign.hpp>
-#include <boost/simd/function/scalar/is_even.hpp>
-#include <boost/simd/function/scalar/is_odd.hpp>
-#include <boost/simd/function/scalar/nearbyint.hpp>
-#include <boost/simd/function/scalar/tofloat.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/copysign.hpp>
+#include <boost/simd/function/is_even.hpp>
+#include <boost/simd/function/is_odd.hpp>
+#include <boost/simd/function/nearbyint.hpp>
+#include <boost/simd/function/tofloat.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

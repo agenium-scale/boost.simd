@@ -10,8 +10,8 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_GROUPS_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/simd/saturate.hpp>
-#include <boost/simd/function/simd/group.hpp>
+#include <boost/simd/function/saturate.hpp>
+#include <boost/simd/function/group.hpp>
 #include <boost/simd/function/saturated.hpp>
 #include <boost/simd/detail/dispatch/meta/downgrade.hpp>
 

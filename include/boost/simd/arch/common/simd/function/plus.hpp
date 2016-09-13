@@ -11,12 +11,12 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/traits.hpp>
-#include <boost/simd/function/simd/bitwise_ornot.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/genmask.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_gez.hpp>
-#include <boost/simd/function/simd/shr.hpp>
+#include <boost/simd/function/bitwise_ornot.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/genmask.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_gez.hpp>
+#include <boost/simd/function/shr.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/zero.hpp>
 

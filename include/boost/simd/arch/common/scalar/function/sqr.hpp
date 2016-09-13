@@ -11,8 +11,8 @@
 
 #include <boost/simd/constant/sqrtvalmax.hpp>
 #include <boost/simd/constant/valmax.hpp>
-#include <boost/simd/function/scalar/abs.hpp>
-#include <boost/simd/function/scalar/sqr.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/sqr.hpp>
 #include <boost/simd/function/saturated.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>

@@ -11,9 +11,9 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_REALPOW_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_REALPOW_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/is_flint.hpp>
-#include <boost/simd/function/scalar/is_nltz.hpp>
-#include <boost/simd/function/scalar/pow.hpp>
+#include <boost/simd/function/is_flint.hpp>
+#include <boost/simd/function/is_nltz.hpp>
+#include <boost/simd/function/pow.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/assert.hpp>
 #include <boost/config.hpp>

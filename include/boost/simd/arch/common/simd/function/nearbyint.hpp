@@ -11,12 +11,12 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/traits.hpp>
-#include <boost/simd/function/simd/bitofsign.hpp>
-#include <boost/simd/function/simd/bitwise_xor.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_less.hpp>
-#include <boost/simd/function/simd/minus.hpp>
-#include <boost/simd/function/simd/plus.hpp>
+#include <boost/simd/function/bitofsign.hpp>
+#include <boost/simd/function/bitwise_xor.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_less.hpp>
+#include <boost/simd/function/minus.hpp>
+#include <boost/simd/function/plus.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

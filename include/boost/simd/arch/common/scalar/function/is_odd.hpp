@@ -11,9 +11,9 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_ODD_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_ODD_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/bitwise_and.hpp>
-#include <boost/simd/function/scalar/is_even.hpp>
-#include <boost/simd/function/scalar/dec.hpp>
+#include <boost/simd/function/bitwise_and.hpp>
+#include <boost/simd/function/is_even.hpp>
+#include <boost/simd/function/dec.hpp>
 #include <boost/simd/logical.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>

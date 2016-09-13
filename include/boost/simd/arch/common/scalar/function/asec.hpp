@@ -18,13 +18,13 @@
 #include <boost/simd/constant/pio_2.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/ratio.hpp>
-#include <boost/simd/function/scalar/abs.hpp>
-#include <boost/simd/function/scalar/acsc.hpp>
-#include <boost/simd/function/scalar/is_equal.hpp>
-#include <boost/simd/function/scalar/is_eqz.hpp>
-#include <boost/simd/function/scalar/is_ltz.hpp>
-#include <boost/simd/function/scalar/dec.hpp>
-#include <boost/simd/function/scalar/sqrt.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/acsc.hpp>
+#include <boost/simd/function/is_equal.hpp>
+#include <boost/simd/function/is_eqz.hpp>
+#include <boost/simd/function/is_ltz.hpp>
+#include <boost/simd/function/dec.hpp>
+#include <boost/simd/function/sqrt.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

@@ -19,11 +19,11 @@
 #include <boost/simd/constant/pio2_3.hpp>
 #include <boost/simd/constant/pio_4.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_greater.hpp>
-#include <boost/simd/function/simd/genmask.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/minus.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_greater.hpp>
+#include <boost/simd/function/genmask.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/minus.hpp>
 #include <utility>
 
 namespace boost { namespace simd { namespace ext

@@ -13,14 +13,14 @@
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/constant/log_2.hpp>
 #include <boost/simd/constant/oneotwoeps.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_greater.hpp>
-#include <boost/simd/function/simd/log1p.hpp>
-#include <boost/simd/function/simd/dec.hpp>
-#include <boost/simd/function/simd/plus.hpp>
-#include <boost/simd/function/simd/if_plus.hpp>
-#include <boost/simd/function/simd/sqr.hpp>
-#include <boost/simd/function/simd/sqrt.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_greater.hpp>
+#include <boost/simd/function/log1p.hpp>
+#include <boost/simd/function/dec.hpp>
+#include <boost/simd/function/plus.hpp>
+#include <boost/simd/function/if_plus.hpp>
+#include <boost/simd/function/sqr.hpp>
+#include <boost/simd/function/sqrt.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

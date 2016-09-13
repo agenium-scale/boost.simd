@@ -11,9 +11,9 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/saturated.hpp>
-#include <boost/simd/function/simd/group.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/split_multiplies.hpp>
+#include <boost/simd/function/group.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/split_multiplies.hpp>
 #include <boost/simd/detail/dispatch/meta/upgrade.hpp>
 
 namespace boost { namespace simd { namespace ext

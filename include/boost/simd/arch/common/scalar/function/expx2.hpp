@@ -18,12 +18,12 @@
 #include <boost/simd/detail/constant/maxlog.hpp>
 #include <boost/simd/constant/real.hpp>
 #include <boost/simd/constant/two.hpp>
-#include <boost/simd/function/scalar/abs.hpp>
-#include <boost/simd/function/scalar/exp.hpp>
-#include <boost/simd/function/scalar/floor.hpp>
-#include <boost/simd/function/scalar/fma.hpp>
-#include <boost/simd/function/scalar/signnz.hpp>
-#include <boost/simd/function/scalar/sqr.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/exp.hpp>
+#include <boost/simd/function/floor.hpp>
+#include <boost/simd/function/fma.hpp>
+#include <boost/simd/function/signnz.hpp>
+#include <boost/simd/function/sqr.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

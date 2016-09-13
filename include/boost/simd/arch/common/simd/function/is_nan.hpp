@@ -15,7 +15,7 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/constant/false.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/simd/is_unord.hpp>
+#include <boost/simd/function/is_unord.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

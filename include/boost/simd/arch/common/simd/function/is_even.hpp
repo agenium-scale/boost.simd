@@ -17,10 +17,10 @@
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/one.hpp>
-#include <boost/simd/function/simd/bitwise_and.hpp>
-#include <boost/simd/function/simd/is_eqz.hpp>
-#include <boost/simd/function/simd/is_flint.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
+#include <boost/simd/function/bitwise_and.hpp>
+#include <boost/simd/function/is_eqz.hpp>
+#include <boost/simd/function/is_flint.hpp>
+#include <boost/simd/function/multiplies.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

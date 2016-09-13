@@ -18,22 +18,22 @@
 #include <boost/simd/constant/three.hpp>
 #include <boost/simd/constant/two.hpp>
 #include <boost/simd/constant/constant.hpp>
-#include <boost/simd/function/simd/abs.hpp>
-#include <boost/simd/function/simd/bitofsign.hpp>
-#include <boost/simd/function/simd/bitwise_or.hpp>
-#include <boost/simd/function/simd/divides.hpp>
-#include <boost/simd/function/simd/frexp.hpp>
-#include <boost/simd/function/simd/ldexp.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/bitofsign.hpp>
+#include <boost/simd/function/bitwise_or.hpp>
+#include <boost/simd/function/divides.hpp>
+#include <boost/simd/function/frexp.hpp>
+#include <boost/simd/function/ldexp.hpp>
 #include <boost/simd/function/horn.hpp>
 #include <boost/simd/function/fast.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_equal.hpp>
-#include <boost/simd/function/simd/is_eqz.hpp>
-#include <boost/simd/function/simd/is_gez.hpp>
-#include <boost/simd/function/simd/minus.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/negate.hpp>
-#include <boost/simd/function/simd/sqr.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_equal.hpp>
+#include <boost/simd/function/is_eqz.hpp>
+#include <boost/simd/function/is_gez.hpp>
+#include <boost/simd/function/minus.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/negate.hpp>
+#include <boost/simd/function/sqr.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
@@ -41,12 +41,12 @@
 #include <boost/simd/constant/smallestposval.hpp>
 #include <boost/simd/constant/twotomnmbo_3.hpp>
 #include <boost/simd/constant/twotonmb.hpp>
-#include <boost/simd/function/simd/is_less.hpp>
+#include <boost/simd/function/is_less.hpp>
 #endif
 
 #ifndef BOOST_SIMD_NO_INFINITIES
-#include <boost/simd/function/simd/is_inf.hpp>
-#include <boost/simd/function/simd/logical_or.hpp>
+#include <boost/simd/function/is_inf.hpp>
+#include <boost/simd/function/logical_or.hpp>
 #endif
 
 namespace boost { namespace simd { namespace ext

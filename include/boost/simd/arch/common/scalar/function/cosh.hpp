@@ -16,10 +16,10 @@
 #include <boost/simd/constant/log_2.hpp>
 #include <boost/simd/detail/constant/maxlog.hpp>
 #include <boost/simd/constant/one.hpp>
-#include <boost/simd/function/scalar/abs.hpp>
-#include <boost/simd/function/scalar/average.hpp>
-#include <boost/simd/function/scalar/exp.hpp>
-#include <boost/simd/function/scalar/rec.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/average.hpp>
+#include <boost/simd/function/exp.hpp>
+#include <boost/simd/function/rec.hpp>
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>

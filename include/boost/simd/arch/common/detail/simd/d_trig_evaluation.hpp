@@ -12,10 +12,10 @@
 #include <boost/simd/function/horn.hpp>
 #include <boost/simd/function/horn1.hpp>
 #include <boost/simd/constant/mhalf.hpp>
-#include <boost/simd/function/simd/fma.hpp>
-#include <boost/simd/function/simd/oneminus.hpp>
-#include <boost/simd/function/simd/rec.hpp>
-#include <boost/simd/function/simd/sqr.hpp>
+#include <boost/simd/function/fma.hpp>
+#include <boost/simd/function/oneminus.hpp>
+#include <boost/simd/function/rec.hpp>
+#include <boost/simd/function/sqr.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 //TODO some factoring with scalar

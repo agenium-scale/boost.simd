@@ -11,7 +11,7 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/assert.hpp>
 

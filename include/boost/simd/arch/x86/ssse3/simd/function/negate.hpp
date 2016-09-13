@@ -14,7 +14,7 @@
 #define BOOST_SIMD_ARCH_X86_SSSE3_SIMD_FUNCTION_NEGATE_HPP_INCLUDED
 
 #include <boost/simd/meta/as_logical.hpp>
-#include <boost/simd/function/simd/genmask.hpp>
+#include <boost/simd/function/genmask.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

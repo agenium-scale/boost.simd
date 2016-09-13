@@ -13,8 +13,8 @@
 
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/detail/brigand.hpp>
-#include <boost/simd/function/scalar/exponent.hpp>
-#include <boost/simd/function/scalar/is_gtz.hpp>
+#include <boost/simd/function/exponent.hpp>
+#include <boost/simd/function/is_gtz.hpp>
 #include <boost/simd/detail/math.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_floating.hpp>
