@@ -21,7 +21,7 @@
 #include <boost/simd/function/is_gtz.hpp>
 #include <boost/simd/function/log10.hpp>
 #include <boost/simd/function/minus.hpp>
-#include <boost/simd/function/round.hpp>
+#include <boost/simd/function/nearbyint.hpp>
 #include <boost/simd/function/tenpower.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
@@ -50,7 +50,7 @@ namespace boost { namespace simd { namespace ext
       if (is_eqz(a0)) return a0;
       i_t exp = a1 - iceil(log10(abs(a0)));
       A0 fac = tenpower(exp);
-      A0 scaled = round(a0*fac);
+      A0 scaled = bs::nearbyint(a0*fac);
     #ifndef BOOST_SIMD_NO_INVALIDS
       return is_invalid(a0) ? a0 : scaled/fac;
     #else
