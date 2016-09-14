@@ -71,7 +71,7 @@ assertions disabled.
 
 ========================
 
-**Boost.SIMD** can be compiled on Linux using `g++`, `clang` or ìcpc`.
+**Boost.SIMD** can be compiled on Linux using `g++`, `clang` or `icpc`.
 To compile a program using **Boost.SIMD**, use your compiler as usual and
 adds the `BOOST_ROOT` and `BOOST_SIMD_ROOT` path along with the SIMD extensions
 flags of your choices.
