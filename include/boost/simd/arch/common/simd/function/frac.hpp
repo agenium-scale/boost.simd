@@ -13,9 +13,9 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/if_allbits_else.hpp>
-#include <boost/simd/function/simd/is_invalid.hpp>
-#include <boost/simd/function/simd/trunc.hpp>
+#include <boost/simd/function/if_allbits_else.hpp>
+#include <boost/simd/function/is_invalid.hpp>
+#include <boost/simd/function/trunc.hpp>
 #include <boost/simd/constant/zero.hpp>
 
 namespace boost { namespace simd { namespace ext

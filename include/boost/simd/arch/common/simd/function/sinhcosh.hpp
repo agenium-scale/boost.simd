@@ -17,20 +17,20 @@
 #include <boost/simd/constant/log_2.hpp>
 #include <boost/simd/detail/constant/maxlog.hpp>
 #include <boost/simd/constant/one.hpp>
-#include <boost/simd/function/simd/abs.hpp>
-#include <boost/simd/function/simd/any.hpp>
-#include <boost/simd/function/simd/average.hpp>
-#include <boost/simd/function/simd/bitofsign.hpp>
-#include <boost/simd/function/simd/bitwise_xor.hpp>
-#include <boost/simd/function/simd/exp.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_greater.hpp>
-#include <boost/simd/function/simd/is_less.hpp>
-#include <boost/simd/function/simd/minus.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/rec.hpp>
-#include <boost/simd/function/simd/sqr.hpp>
-#include <boost/simd/function/simd/unary_minus.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/any.hpp>
+#include <boost/simd/function/average.hpp>
+#include <boost/simd/function/bitofsign.hpp>
+#include <boost/simd/function/bitwise_xor.hpp>
+#include <boost/simd/function/exp.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_greater.hpp>
+#include <boost/simd/function/is_less.hpp>
+#include <boost/simd/function/minus.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/rec.hpp>
+#include <boost/simd/function/sqr.hpp>
+#include <boost/simd/function/unary_minus.hpp>
 #include <utility>
 
 

@@ -13,8 +13,8 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/shift_right.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/shift_right.hpp>
 #include <boost/assert.hpp>
 #include <boost/simd/detail/dispatch/meta/as_unsigned.hpp>
 

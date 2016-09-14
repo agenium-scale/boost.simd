@@ -11,21 +11,21 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/traits.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_greater_equal.hpp>
-#include <boost/simd/function/simd/is_less_equal.hpp>
-#include <boost/simd/function/simd/saturate.hpp>
-#include <boost/simd/function/simd/splat.hpp>
-#include <boost/simd/function/simd/toint.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_greater_equal.hpp>
+#include <boost/simd/function/is_less_equal.hpp>
+#include <boost/simd/function/saturate.hpp>
+#include <boost/simd/function/splat.hpp>
+#include <boost/simd/function/toint.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 #ifndef BOOST_SIMD_NO_NANS
-#include <boost/simd/function/simd/if_zero_else.hpp>
-#include <boost/simd/function/simd/is_nan.hpp>
+#include <boost/simd/function/if_zero_else.hpp>
+#include <boost/simd/function/is_nan.hpp>
 #endif
 
 namespace boost { namespace simd { namespace ext

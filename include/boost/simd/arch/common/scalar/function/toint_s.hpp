@@ -12,12 +12,12 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_TOINT_S_HPP_INCLUDED
 
 #ifndef BOOST_SIMD_NO_NANS
-#include <boost/simd/function/scalar/is_nan.hpp>
+#include <boost/simd/function/is_nan.hpp>
 #endif
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/scalar/saturate.hpp>
+#include <boost/simd/function/saturate.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

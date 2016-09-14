@@ -10,11 +10,11 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IS_SIMD_LOGICAL_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/is_equal.hpp>
-#include <boost/simd/function/simd/all.hpp>
-#include <boost/simd/function/simd/is_eqz.hpp>
-#include <boost/simd/function/simd/logical_or.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/is_equal.hpp>
+#include <boost/simd/function/all.hpp>
+#include <boost/simd/function/is_eqz.hpp>
+#include <boost/simd/function/logical_or.hpp>
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>

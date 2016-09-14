@@ -12,8 +12,8 @@
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/constant/signmask.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/minus.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/minus.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 namespace boost { namespace simd { namespace ext

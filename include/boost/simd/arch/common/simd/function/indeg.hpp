@@ -13,9 +13,9 @@
 
 #include <boost/simd/constant/radindeg.hpp>
 #include <boost/simd/detail/constant/radindegr.hpp>
-#include <boost/simd/function/simd/minus.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/indeg.hpp>
+#include <boost/simd/function/minus.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/indeg.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

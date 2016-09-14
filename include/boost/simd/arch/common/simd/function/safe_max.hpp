@@ -13,10 +13,10 @@
 
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/sqrtvalmax.hpp>
-#include <boost/simd/function/simd/abs.hpp>
-#include <boost/simd/function/simd/divides.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_nez.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/divides.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

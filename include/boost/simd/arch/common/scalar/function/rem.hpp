@@ -14,11 +14,11 @@
 #include <boost/simd/function/fast.hpp>
 
 #include <boost/simd/constant/nan.hpp>
-#include <boost/simd/function/scalar/div.hpp>
-#include <boost/simd/function/scalar/fnms.hpp>
-#include <boost/simd/function/scalar/is_eqz.hpp>
-#include <boost/simd/function/scalar/is_finite.hpp>
-#include <boost/simd/function/scalar/is_inf.hpp>
+#include <boost/simd/function/div.hpp>
+#include <boost/simd/function/fnms.hpp>
+#include <boost/simd/function/is_eqz.hpp>
+#include <boost/simd/function/is_finite.hpp>
+#include <boost/simd/function/is_inf.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>

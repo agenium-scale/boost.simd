@@ -27,13 +27,13 @@
 #include <boost/simd/detail/constant/minlog10.hpp>
 #include <boost/simd/detail/constant/minlog2.hpp>
 #include <boost/simd/constant/two.hpp>
-#include <boost/simd/function/simd/fma.hpp>
-#include <boost/simd/function/simd/fnms.hpp>
-#include <boost/simd/function/simd/inc.hpp>
-#include <boost/simd/function/simd/oneminus.hpp>
-#include <boost/simd/function/simd/inc.hpp>
-#include <boost/simd/function/simd/nearbyint.hpp>
-#include <boost/simd/function/simd/sqr.hpp>
+#include <boost/simd/function/fma.hpp>
+#include <boost/simd/function/fnms.hpp>
+#include <boost/simd/function/inc.hpp>
+#include <boost/simd/function/oneminus.hpp>
+#include <boost/simd/function/inc.hpp>
+#include <boost/simd/function/nearbyint.hpp>
+#include <boost/simd/function/sqr.hpp>
 #include <boost/simd/logical.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 

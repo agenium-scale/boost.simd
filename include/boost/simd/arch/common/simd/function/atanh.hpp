@@ -14,21 +14,21 @@
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/constant/half.hpp>
-#include <boost/simd/function/simd/abs.hpp>
-#include <boost/simd/function/simd/bitofsign.hpp>
-#include <boost/simd/function/simd/bitwise_xor.hpp>
-#include <boost/simd/function/simd/divides.hpp>
-#include <boost/simd/function/simd/fma.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_less.hpp>
-#include <boost/simd/function/simd/log.hpp>
-#include <boost/simd/function/simd/log1p.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/oneminus.hpp>
-#include <boost/simd/function/simd/plus.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/bitofsign.hpp>
+#include <boost/simd/function/bitwise_xor.hpp>
+#include <boost/simd/function/divides.hpp>
+#include <boost/simd/function/fma.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_less.hpp>
+#include <boost/simd/function/log.hpp>
+#include <boost/simd/function/log1p.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/oneminus.hpp>
+#include <boost/simd/function/plus.hpp>
 #include <boost/simd/function/fast.hpp>
-#include <boost/simd/function/simd/inc.hpp>
-#include <boost/simd/function/simd/oneminus.hpp>
+#include <boost/simd/function/inc.hpp>
+#include <boost/simd/function/oneminus.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

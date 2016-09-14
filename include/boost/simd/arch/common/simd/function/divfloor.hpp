@@ -10,12 +10,12 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_DIVFLOOR_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/simd/floor.hpp>
-#include <boost/simd/function/simd/group.hpp>
-#include <boost/simd/function/simd/split.hpp>
-#include <boost/simd/function/simd/tofloat.hpp>
-#include <boost/simd/function/simd/toint.hpp>
-#include <boost/simd/function/simd/touint.hpp>
+#include <boost/simd/function/floor.hpp>
+#include <boost/simd/function/group.hpp>
+#include <boost/simd/function/split.hpp>
+#include <boost/simd/function/tofloat.hpp>
+#include <boost/simd/function/toint.hpp>
+#include <boost/simd/function/touint.hpp>
 #include <boost/simd/detail/dispatch/meta/upgrade.hpp>
 #include <boost/simd/detail/brigand.hpp>
 #include <utility>

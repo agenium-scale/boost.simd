@@ -13,8 +13,8 @@
 
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/scalar/is_ngez.hpp>
-#include <boost/simd/function/scalar/saturate.hpp>
+#include <boost/simd/function/is_ngez.hpp>
+#include <boost/simd/function/saturate.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>

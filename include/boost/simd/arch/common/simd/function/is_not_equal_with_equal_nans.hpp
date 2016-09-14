@@ -14,10 +14,10 @@
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/meta/as_logical.hpp>
-#include <boost/simd/function/simd/is_greater_equal.hpp>
-#include <boost/simd/function/simd/is_not_equal.hpp>
-#include <boost/simd/function/simd/logical_not.hpp>
-#include <boost/simd/function/simd/logical_xor.hpp>
+#include <boost/simd/function/is_greater_equal.hpp>
+#include <boost/simd/function/is_not_equal.hpp>
+#include <boost/simd/function/logical_not.hpp>
+#include <boost/simd/function/logical_xor.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

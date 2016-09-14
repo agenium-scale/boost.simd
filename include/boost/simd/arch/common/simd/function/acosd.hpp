@@ -12,8 +12,8 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ACOSD_HPP_INCLUDED
 
 #include <boost/simd/function/accurate.hpp>
-#include <boost/simd/function/simd/acos.hpp>
-#include <boost/simd/function/simd/indeg.hpp>
+#include <boost/simd/function/acos.hpp>
+#include <boost/simd/function/indeg.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

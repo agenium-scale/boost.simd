@@ -11,7 +11,7 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
-#include <boost/simd/function/simd/rror.hpp>
+#include <boost/simd/function/rror.hpp>
 
 #if BOOST_HW_SIMD_X86_AMD_XOP
 namespace boost { namespace simd { namespace ext

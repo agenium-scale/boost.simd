@@ -16,19 +16,19 @@
 #include <boost/simd/constant/ratio.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/two.hpp>
-#include <boost/simd/function/simd/abs.hpp>
-#include <boost/simd/function/simd/bitofsign.hpp>
-#include <boost/simd/function/simd/bitwise_xor.hpp>
-#include <boost/simd/function/simd/coth.hpp>
-#include <boost/simd/function/simd/exp.hpp>
-#include <boost/simd/function/simd/fma.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/nbtrue.hpp>
-#include <boost/simd/function/simd/is_less.hpp>
-#include <boost/simd/function/simd/dec.hpp>
-#include <boost/simd/function/simd/plus.hpp>
-#include <boost/simd/function/simd/rec.hpp>
-#include <boost/simd/function/simd/sqr.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/bitofsign.hpp>
+#include <boost/simd/function/bitwise_xor.hpp>
+#include <boost/simd/function/coth.hpp>
+#include <boost/simd/function/exp.hpp>
+#include <boost/simd/function/fma.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/nbtrue.hpp>
+#include <boost/simd/function/is_less.hpp>
+#include <boost/simd/function/dec.hpp>
+#include <boost/simd/function/plus.hpp>
+#include <boost/simd/function/rec.hpp>
+#include <boost/simd/function/sqr.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

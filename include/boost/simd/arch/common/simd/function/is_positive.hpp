@@ -14,10 +14,10 @@
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/constant/one.hpp>
-#include <boost/simd/function/simd/bitofsign.hpp>
-#include <boost/simd/function/simd/bitwise_or.hpp>
-#include <boost/simd/function/simd/is_equal.hpp>
-#include <boost/simd/function/simd/is_gez.hpp>
+#include <boost/simd/function/bitofsign.hpp>
+#include <boost/simd/function/bitwise_or.hpp>
+#include <boost/simd/function/is_equal.hpp>
+#include <boost/simd/function/is_gez.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

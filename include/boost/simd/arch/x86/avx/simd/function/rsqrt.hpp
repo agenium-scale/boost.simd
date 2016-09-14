@@ -10,8 +10,8 @@
 #define BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_RSQRT_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/simd/sqr.hpp>
-#include <boost/simd/function/simd/fnms.hpp>
+#include <boost/simd/function/sqr.hpp>
+#include <boost/simd/function/fnms.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/three.hpp>
 #include <boost/simd/function/fast.hpp>

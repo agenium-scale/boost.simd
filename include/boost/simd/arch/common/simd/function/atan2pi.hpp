@@ -11,7 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ATAN2PI_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ATAN2PI_HPP_INCLUDED
 
-#include <boost/simd/function/simd/atan2.hpp>
+#include <boost/simd/function/atan2.hpp>
 #include <boost/simd/constant/invpi.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>

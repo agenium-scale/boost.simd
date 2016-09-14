@@ -13,21 +13,21 @@
 #include <boost/simd/constant/pi.hpp>
 #include <boost/simd/constant/ratio.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/scalar/abs.hpp>
-#include <boost/simd/function/scalar/exp.hpp>
-#include <boost/simd/function/scalar/is_ltz.hpp>
-#include <boost/simd/function/scalar/oneminus.hpp>
-#include <boost/simd/function/scalar/inc.hpp>
-#include <boost/simd/function/scalar/sign.hpp>
-#include <boost/simd/function/scalar/sqr.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/exp.hpp>
+#include <boost/simd/function/is_ltz.hpp>
+#include <boost/simd/function/oneminus.hpp>
+#include <boost/simd/function/inc.hpp>
+#include <boost/simd/function/sign.hpp>
+#include <boost/simd/function/sqr.hpp>
 #include <boost/simd/arch/common/detail/generic/erf_kernel.hpp>
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-#include <boost/simd/function/scalar/is_nan.hpp>
+#include <boost/simd/function/is_nan.hpp>
 #endif
 #ifndef BOOST_SIMD_NO_INFINITIES
-#include <boost/simd/function/scalar/is_inf.hpp>
-#include <boost/simd/function/scalar/signnz.hpp>
+#include <boost/simd/function/is_inf.hpp>
+#include <boost/simd/function/signnz.hpp>
 #endif
 
 #include <boost/simd/detail/dispatch/function/overload.hpp>

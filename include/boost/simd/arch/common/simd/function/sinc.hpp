@@ -13,20 +13,20 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/constant/one.hpp>
-#include <boost/simd/function/simd/divides.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_eqz.hpp>
-#include <boost/simd/function/simd/sin.hpp>
+#include <boost/simd/function/divides.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_eqz.hpp>
+#include <boost/simd/function/sin.hpp>
 
 #if !defined(BOOST_SIMD_NO_DENORMALS)
 #include <boost/simd/constant/eps.hpp>
-#include <boost/simd/function/simd/abs.hpp>
-#include <boost/simd/function/simd/is_less.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/is_less.hpp>
 #endif
 
 #if !defined(BOOST_SIMD_NO_INFINITIES)
-#include <boost/simd/function/simd/if_zero_else.hpp>
-#include <boost/simd/function/simd/is_inf.hpp>
+#include <boost/simd/function/if_zero_else.hpp>
+#include <boost/simd/function/is_inf.hpp>
 #endif
 
 namespace boost { namespace simd { namespace ext

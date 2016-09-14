@@ -19,24 +19,24 @@
 #include <boost/simd/detail/constant/maxexponent.hpp>
 #include <boost/simd/constant/nbmantissabits.hpp>
 #include <boost/simd/constant/one.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/is_equal.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/plus.hpp>
-#include <boost/simd/function/simd/rshl.hpp>
-#include <boost/simd/function/simd/if_plus.hpp>
-#include <boost/simd/function/simd/if_minus.hpp>
-#include <boost/simd/function/simd/shift_left.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/is_equal.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/plus.hpp>
+#include <boost/simd/function/rshl.hpp>
+#include <boost/simd/function/if_plus.hpp>
+#include <boost/simd/function/if_minus.hpp>
+#include <boost/simd/function/shift_left.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/function/fast.hpp>
 
 #ifndef BOOST_SIMD_NO_DENORMALS
 #include <boost/simd/detail/constant/minexponent.hpp>
 #include <boost/simd/constant/smallestposval.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_less.hpp>
-#include <boost/simd/function/simd/if_minus.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_less.hpp>
+#include <boost/simd/function/if_minus.hpp>
 #endif
 
 namespace boost { namespace simd { namespace ext

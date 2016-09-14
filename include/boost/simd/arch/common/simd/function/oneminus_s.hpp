@@ -12,8 +12,8 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ONEMINUS_S_HPP_INCLUDED
 
 #include <boost/simd/constant/one.hpp>
-#include <boost/simd/function/simd/min.hpp>
-#include <boost/simd/function/simd/minus.hpp>
+#include <boost/simd/function/min.hpp>
+#include <boost/simd/function/minus.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

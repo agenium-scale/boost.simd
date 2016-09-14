@@ -14,8 +14,8 @@
 #include <boost/simd/arch/common/detail/scalar/logarithm.hpp>
 #include <boost/simd/arch/common/detail/simd/logarithm.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
-#include <boost/simd/function/simd/is_not_nan.hpp>
-#include <boost/simd/function/simd/is_positive.hpp>
+#include <boost/simd/function/is_not_nan.hpp>
+#include <boost/simd/function/is_positive.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>

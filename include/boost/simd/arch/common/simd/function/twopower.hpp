@@ -15,10 +15,10 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/simd/if_zero_else.hpp>
-#include <boost/simd/function/simd/is_ltz.hpp>
-#include <boost/simd/function/simd/max.hpp>
-#include <boost/simd/function/simd/shift_left.hpp>
+#include <boost/simd/function/if_zero_else.hpp>
+#include <boost/simd/function/is_ltz.hpp>
+#include <boost/simd/function/max.hpp>
+#include <boost/simd/function/shift_left.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

@@ -15,23 +15,23 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/detail/constant/maxexponentm1.hpp>
 #include <boost/simd/detail/constant/minexponent.hpp>
-#include <boost/simd/function/simd/abs.hpp>
-#include <boost/simd/function/simd/exponent.hpp>
-#include <boost/simd/function/simd/ldexp.hpp>
-#include <boost/simd/function/simd/max.hpp>
-#include <boost/simd/function/simd/min.hpp>
-#include <boost/simd/function/simd/plus.hpp>
-#include <boost/simd/function/simd/sqr.hpp>
-#include <boost/simd/function/simd/sqrt.hpp>
-#include <boost/simd/function/simd/unary_minus.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/exponent.hpp>
+#include <boost/simd/function/ldexp.hpp>
+#include <boost/simd/function/max.hpp>
+#include <boost/simd/function/min.hpp>
+#include <boost/simd/function/plus.hpp>
+#include <boost/simd/function/sqr.hpp>
+#include <boost/simd/function/sqrt.hpp>
+#include <boost/simd/function/unary_minus.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/logical_and.hpp>
-#include <boost/simd/function/simd/logical_or.hpp>
-#include <boost/simd/function/simd/is_inf.hpp>
-#include <boost/simd/function/simd/is_nan.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/logical_and.hpp>
+#include <boost/simd/function/logical_or.hpp>
+#include <boost/simd/function/is_inf.hpp>
+#include <boost/simd/function/is_nan.hpp>
 #include <boost/simd/constant/inf.hpp>
 #endif
 

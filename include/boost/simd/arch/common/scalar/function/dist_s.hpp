@@ -13,7 +13,7 @@
 
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/scalar/dist.hpp>
+#include <boost/simd/function/dist.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

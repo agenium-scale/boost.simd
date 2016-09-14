@@ -12,7 +12,7 @@
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_SCALAR_F_LOG_HPP_INCLUDED
 
 #ifndef BOOST_SIMD_NO_NANS
-#include <boost/simd/function/scalar/is_nan.hpp>
+#include <boost/simd/function/is_nan.hpp>
 #endif
 #ifndef BOOST_SIMD_NO_INFINITIES
 #include <boost/simd/constant/inf.hpp>
@@ -23,7 +23,7 @@
 #include <boost/simd/constant/mlogtwo2nmb.hpp>
 #include <boost/simd/constant/smallestposval.hpp>
 #include <boost/simd/constant/twotonmb.hpp>
-#include <boost/simd/function/scalar/abs.hpp>
+#include <boost/simd/function/abs.hpp>
 #endif
 #include <boost/simd/arch/common/detail/generic/f_log_kernel.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
@@ -38,9 +38,9 @@
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/scalar/fma.hpp>
-#include <boost/simd/function/scalar/is_eqz.hpp>
-#include <boost/simd/function/scalar/is_ltz.hpp>
+#include <boost/simd/function/fma.hpp>
+#include <boost/simd/function/is_eqz.hpp>
+#include <boost/simd/function/is_ltz.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 

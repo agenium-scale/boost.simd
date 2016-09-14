@@ -14,11 +14,11 @@
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/constant/allbits.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/complement.hpp>
-#include <boost/simd/function/simd/genmask.hpp>
-#include <boost/simd/function/simd/if_zero_else.hpp>
-#include <boost/simd/function/simd/is_eqz.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/complement.hpp>
+#include <boost/simd/function/genmask.hpp>
+#include <boost/simd/function/if_zero_else.hpp>
+#include <boost/simd/function/is_eqz.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

@@ -12,9 +12,9 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/logical_and.hpp>
-#include <boost/simd/function/simd/is_ord.hpp>
-#include <boost/simd/function/simd/is_not_equal.hpp>
+#include <boost/simd/function/logical_and.hpp>
+#include <boost/simd/function/is_ord.hpp>
+#include <boost/simd/function/is_not_equal.hpp>
 #include <boost/simd/logical.hpp>
 #include <boost/simd/meta/as_logical.hpp>
 

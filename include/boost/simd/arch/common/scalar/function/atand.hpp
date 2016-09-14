@@ -12,8 +12,8 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ATAND_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ATAND_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/atan.hpp>
-#include <boost/simd/function/scalar/indeg.hpp>
+#include <boost/simd/function/atan.hpp>
+#include <boost/simd/function/indeg.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

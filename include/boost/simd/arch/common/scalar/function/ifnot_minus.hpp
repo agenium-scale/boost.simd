@@ -11,7 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IFNOT_MINUS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IFNOT_MINUS_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/is_nez.hpp>
+#include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

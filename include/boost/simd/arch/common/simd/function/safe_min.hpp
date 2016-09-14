@@ -12,7 +12,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SAFE_MIN_HPP_INCLUDED
 
 #include <boost/simd/constant/sqrtsmallestposval.hpp>
-#include <boost/simd/function/simd/abs.hpp>
+#include <boost/simd/function/abs.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

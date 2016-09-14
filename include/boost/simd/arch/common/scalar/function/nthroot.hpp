@@ -13,21 +13,21 @@
 #include <boost/simd/function/fast.hpp>
 
 #ifndef BOOST_SIMD_NO_INFINITIES
-#include <boost/simd/function/scalar/is_inf.hpp>
+#include <boost/simd/function/is_inf.hpp>
 #endif
 #ifndef BOOST_SIMD_NO_INVALID
-#include <boost/simd/function/scalar/is_nan.hpp>
+#include <boost/simd/function/is_nan.hpp>
 #endif
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/scalar/abs.hpp>
-#include <boost/simd/function/scalar/is_ltz.hpp>
-#include <boost/simd/function/scalar/is_odd.hpp>
-#include <boost/simd/function/scalar/dec.hpp>
-#include <boost/simd/function/scalar/pow_abs.hpp>
-#include <boost/simd/function/scalar/rec.hpp>
-#include <boost/simd/function/scalar/sign.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/is_ltz.hpp>
+#include <boost/simd/function/is_odd.hpp>
+#include <boost/simd/function/dec.hpp>
+#include <boost/simd/function/pow_abs.hpp>
+#include <boost/simd/function/rec.hpp>
+#include <boost/simd/function/sign.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

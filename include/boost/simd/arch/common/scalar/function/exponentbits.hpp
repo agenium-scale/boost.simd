@@ -13,7 +13,7 @@
 
 #include <boost/simd/detail/constant/maxexponent.hpp>
 #include <boost/simd/constant/nbmantissabits.hpp>
-#include <boost/simd/function/scalar/bitwise_and.hpp>
+#include <boost/simd/function/bitwise_and.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>

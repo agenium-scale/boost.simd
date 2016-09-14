@@ -16,8 +16,8 @@
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/simd/is_greater.hpp>
-#include <boost/simd/function/simd/is_nez.hpp>
+#include <boost/simd/function/is_greater.hpp>
+#include <boost/simd/function/is_nez.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

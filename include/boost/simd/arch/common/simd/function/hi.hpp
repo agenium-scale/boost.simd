@@ -11,9 +11,9 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_HI_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_HI_HPP_INCLUDED
 
-#include <boost/simd/function/simd/interleave_odd.hpp>
-#include <boost/simd/function/simd/lo.hpp>
-#include <boost/simd/function/simd/shr.hpp>
+#include <boost/simd/function/interleave_odd.hpp>
+#include <boost/simd/function/lo.hpp>
+#include <boost/simd/function/shr.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>

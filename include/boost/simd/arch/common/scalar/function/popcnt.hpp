@@ -14,9 +14,9 @@
 #ifdef BOOST_MSVC
 #include <intrin.h>
 #endif
-#include <boost/simd/function/scalar/hi.hpp>
-#include <boost/simd/function/scalar/lo.hpp>
-#include <boost/simd/function/scalar/sbits.hpp>
+#include <boost/simd/function/hi.hpp>
+#include <boost/simd/function/lo.hpp>
+#include <boost/simd/function/sbits.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

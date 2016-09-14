@@ -17,20 +17,20 @@
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/detail/constant/maxlog.hpp>
-#include <boost/simd/function/simd/abs.hpp>
-#include <boost/simd/function/simd/exp.hpp>
-#include <boost/simd/function/simd/floor.hpp>
-#include <boost/simd/function/simd/fma.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_greater.hpp>
-#include <boost/simd/function/simd/minus.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/plus.hpp>
-#include <boost/simd/function/simd/signnz.hpp>
-#include <boost/simd/function/simd/sqr.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/exp.hpp>
+#include <boost/simd/function/floor.hpp>
+#include <boost/simd/function/fma.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_greater.hpp>
+#include <boost/simd/function/minus.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/plus.hpp>
+#include <boost/simd/function/signnz.hpp>
+#include <boost/simd/function/sqr.hpp>
 
 #ifndef BOOST_SIMD_NO_INFINITIES
-#include <boost/simd/function/simd/is_equal.hpp>
+#include <boost/simd/function/is_equal.hpp>
 #endif
 
 namespace boost { namespace simd { namespace ext

@@ -15,14 +15,14 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/detail/constant/mantissamask.hpp>
 #include <boost/simd/constant/one.hpp>
-#include <boost/simd/function/simd/bitwise_and.hpp>
-#include <boost/simd/function/simd/bitwise_or.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_eqz.hpp>
+#include <boost/simd/function/bitwise_and.hpp>
+#include <boost/simd/function/bitwise_or.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_eqz.hpp>
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-#include <boost/simd/function/simd/is_invalid.hpp>
-#include <boost/simd/function/simd/logical_or.hpp>
+#include <boost/simd/function/is_invalid.hpp>
+#include <boost/simd/function/logical_or.hpp>
 #endif
 
 namespace boost { namespace simd { namespace ext

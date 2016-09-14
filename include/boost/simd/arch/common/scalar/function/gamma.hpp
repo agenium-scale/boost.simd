@@ -20,14 +20,14 @@
 #include <boost/simd/constant/pi.hpp>
 #include <boost/simd/constant/three.hpp>
 #include <boost/simd/constant/two.hpp>
-#include <boost/simd/function/scalar/abs.hpp>
-#include <boost/simd/function/scalar/copysign.hpp>
-#include <boost/simd/function/scalar/floor.hpp>
-#include <boost/simd/function/scalar/is_eqz.hpp>
-#include <boost/simd/function/scalar/is_even.hpp>
-#include <boost/simd/function/scalar/is_ltz.hpp>
-#include <boost/simd/function/scalar/sinpi.hpp>
-#include <boost/simd/function/scalar/stirling.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/copysign.hpp>
+#include <boost/simd/function/floor.hpp>
+#include <boost/simd/function/is_eqz.hpp>
+#include <boost/simd/function/is_even.hpp>
+#include <boost/simd/function/is_ltz.hpp>
+#include <boost/simd/function/sinpi.hpp>
+#include <boost/simd/function/stirling.hpp>
 
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <cmath>

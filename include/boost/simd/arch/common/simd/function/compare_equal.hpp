@@ -10,8 +10,8 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_COMPARE_EQUAL_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/simd/slice.hpp>
-#include <boost/simd/function/simd/all.hpp>
+#include <boost/simd/function/slice.hpp>
+#include <boost/simd/function/all.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

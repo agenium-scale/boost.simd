@@ -13,11 +13,11 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/bitfloating.hpp>
-#include <boost/simd/function/simd/bitinteger.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/inc.hpp>
-#include <boost/simd/function/simd/is_equal.hpp>
+#include <boost/simd/function/bitfloating.hpp>
+#include <boost/simd/function/bitinteger.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/inc.hpp>
+#include <boost/simd/function/is_equal.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

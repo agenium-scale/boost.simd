@@ -12,7 +12,7 @@
 
 #include <boost/simd/function/std.hpp>
 #include <boost/config.hpp>
-#include <boost/simd/function/scalar/is_ord.hpp>
+#include <boost/simd/function/is_ord.hpp>
 #include <boost/simd/logical.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <cmath>

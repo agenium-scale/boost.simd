@@ -10,7 +10,7 @@
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_SCALAR_EXPO_BASE_HPP_INCLUDED
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-#include <boost/simd/function/scalar/is_nan.hpp>
+#include <boost/simd/function/is_nan.hpp>
 #endif
 #include <boost/simd/arch/common/detail/scalar/expo_reduction.hpp>
 #include <boost/simd/arch/common/detail/scalar/expo_scale.hpp>

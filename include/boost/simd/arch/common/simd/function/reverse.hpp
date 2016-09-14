@@ -12,7 +12,7 @@
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/is_bitwise_logical.hpp>
 #include <boost/simd/meta/as_arithmetic.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/extract.hpp>
 
 namespace boost { namespace simd { namespace ext

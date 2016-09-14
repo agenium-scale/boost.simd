@@ -13,14 +13,14 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/constant/valmax.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/inc.hpp>
-#include <boost/simd/function/simd/is_less.hpp>
-#include <boost/simd/function/simd/minus.hpp>
-#include <boost/simd/function/simd/plus.hpp>
-#include <boost/simd/function/simd/splat.hpp>
-#include <boost/simd/function/simd/toint.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/inc.hpp>
+#include <boost/simd/function/is_less.hpp>
+#include <boost/simd/function/minus.hpp>
+#include <boost/simd/function/plus.hpp>
+#include <boost/simd/function/splat.hpp>
+#include <boost/simd/function/toint.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 

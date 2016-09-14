@@ -12,7 +12,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_HMSB_HPP_INCLUDED
 
 #include <boost/simd/constant/signmask.hpp>
-#include <boost/simd/function/scalar/bitwise_and.hpp>
+#include <boost/simd/function/bitwise_and.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>

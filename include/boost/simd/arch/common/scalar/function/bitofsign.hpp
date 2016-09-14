@@ -13,7 +13,7 @@
 
 #include <boost/simd/constant/mzero.hpp>
 #include <boost/simd/constant/signmask.hpp>
-#include <boost/simd/function/scalar/bitwise_and.hpp>
+#include <boost/simd/function/bitwise_and.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

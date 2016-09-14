@@ -11,24 +11,24 @@
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_SIMD_D_LOG_HPP_INCLUDED
 
 
-#include <boost/simd/function/simd/dec.hpp>
-#include <boost/simd/function/simd/tofloat.hpp>
-#include <boost/simd/function/simd/sqr.hpp>
-#include <boost/simd/function/simd/unary_minus.hpp>
-#include <boost/simd/function/simd/is_greater.hpp>
-#include <boost/simd/function/simd/is_ltz.hpp>
-#include <boost/simd/function/simd/is_equal.hpp>
-#include <boost/simd/function/simd/frexp.hpp>
-#include <boost/simd/function/simd/if_plus.hpp>
-#include <boost/simd/function/simd/plus.hpp>
-#include <boost/simd/function/simd/minus.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/divides.hpp>
-#include <boost/simd/function/simd/bitwise_and.hpp>
-#include <boost/simd/function/simd/logical_or.hpp>
-#include <boost/simd/function/simd/if_allbits_else.hpp>
-#include <boost/simd/function/simd/if_else_zero.hpp>
-#include <boost/simd/function/simd/is_eqz.hpp>
+#include <boost/simd/function/dec.hpp>
+#include <boost/simd/function/tofloat.hpp>
+#include <boost/simd/function/sqr.hpp>
+#include <boost/simd/function/unary_minus.hpp>
+#include <boost/simd/function/is_greater.hpp>
+#include <boost/simd/function/is_ltz.hpp>
+#include <boost/simd/function/is_equal.hpp>
+#include <boost/simd/function/frexp.hpp>
+#include <boost/simd/function/if_plus.hpp>
+#include <boost/simd/function/plus.hpp>
+#include <boost/simd/function/minus.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/divides.hpp>
+#include <boost/simd/function/bitwise_and.hpp>
+#include <boost/simd/function/logical_or.hpp>
+#include <boost/simd/function/if_allbits_else.hpp>
+#include <boost/simd/function/if_else_zero.hpp>
+#include <boost/simd/function/is_eqz.hpp>
 #include <boost/simd/function/horn.hpp>
 #include <boost/simd/constant/invlog_2.hpp>
 #include <boost/simd/constant/invlog_10.hpp>
@@ -46,7 +46,7 @@
 #include <tuple>
 
 #ifndef BOOST_SIMD_NO_NANS
-#include <boost/simd/function/simd/is_nan.hpp>
+#include <boost/simd/function/is_nan.hpp>
 #endif
 #ifndef BOOST_SIMD_NO_INFINITIES
 #include <boost/simd/constant/inf.hpp>

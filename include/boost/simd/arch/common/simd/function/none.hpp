@@ -10,7 +10,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_NONE_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/simd/any.hpp>
+#include <boost/simd/function/any.hpp>
 #include <boost/simd/function/splatted.hpp>
 
 namespace boost { namespace simd { namespace ext

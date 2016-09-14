@@ -12,8 +12,8 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_PREV_HPP_INCLUDED
 
 #include <boost/simd/constant/minf.hpp>
-#include <boost/simd/function/scalar/dec.hpp>
-#include <boost/simd/function/scalar/predecessor.hpp>
+#include <boost/simd/function/dec.hpp>
+#include <boost/simd/function/predecessor.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

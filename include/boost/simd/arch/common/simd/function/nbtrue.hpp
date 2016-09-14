@@ -13,7 +13,7 @@
 #include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/function/slice.hpp>
-#include <boost/simd/function/scalar/if_one_else_zero.hpp>
+#include <boost/simd/function/if_one_else_zero.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

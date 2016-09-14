@@ -12,8 +12,8 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ILOG2_HPP_INCLUDED
 
 #include <boost/simd/detail/brigand.hpp>
-#include <boost/simd/function/scalar/clz.hpp>
-#include <boost/simd/function/scalar/exponent.hpp>
+#include <boost/simd/function/clz.hpp>
+#include <boost/simd/function/exponent.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>

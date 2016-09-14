@@ -14,7 +14,7 @@
 
 #ifndef BOOST_SIMD_NO_INVALIDS
 #include <boost/simd/constant/nan.hpp>
-#include <boost/simd/function/scalar/is_nan.hpp>
+#include <boost/simd/function/is_nan.hpp>
 #endif
 #include <boost/simd/arch/common/detail/generic/expm1_kernel.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -22,8 +22,8 @@
 #include <boost/simd/detail/constant/maxlog.hpp>
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/function/std.hpp>
-#include <boost/simd/function/scalar/is_greater.hpp>
-#include <boost/simd/function/scalar/is_less.hpp>
+#include <boost/simd/function/is_greater.hpp>
+#include <boost/simd/function/is_less.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/config.hpp>

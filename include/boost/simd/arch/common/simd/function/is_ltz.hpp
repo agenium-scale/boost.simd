@@ -10,7 +10,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IS_LTZ_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/simd/is_less.hpp>
+#include <boost/simd/function/is_less.hpp>
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/constant/false.hpp>
 #include <boost/simd/constant/zero.hpp>

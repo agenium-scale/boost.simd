@@ -15,7 +15,7 @@
 #include <boost/simd/function/restricted.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/mone.hpp>
-#include <boost/simd/function/simd/is_odd.hpp>
+#include <boost/simd/function/is_odd.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_floating.hpp>

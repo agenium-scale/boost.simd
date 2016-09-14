@@ -12,7 +12,7 @@
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
-#include <boost/simd/function/simd/rshl.hpp>
+#include <boost/simd/function/rshl.hpp>
 
 #if BOOST_HW_SIMD_X86_AMD_XOP
 namespace boost { namespace simd { namespace ext

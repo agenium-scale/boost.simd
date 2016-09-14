@@ -16,9 +16,9 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/scalar/bitwise_cast.hpp>
-#include <boost/simd/function/scalar/floor.hpp>
-#include <boost/simd/function/scalar/ldexp.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/floor.hpp>
+#include <boost/simd/function/ldexp.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>

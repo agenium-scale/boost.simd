@@ -9,8 +9,8 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IS_EQZ_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IS_EQZ_HPP_INCLUDED
 
-#include <boost/simd/function/simd/is_equal.hpp>
-#include <boost/simd/function/simd/logical_not.hpp>
+#include <boost/simd/function/is_equal.hpp>
+#include <boost/simd/function/logical_not.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/traits.hpp>

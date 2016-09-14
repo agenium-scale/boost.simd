@@ -13,10 +13,10 @@
 
 #include <boost/simd/function/fast.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
-#include <boost/simd/function/simd/if_else_zero.hpp>
-#include <boost/simd/function/simd/is_gez.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/rsqrt.hpp>
+#include <boost/simd/function/if_else_zero.hpp>
+#include <boost/simd/function/is_gez.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/rsqrt.hpp>
 #include <boost/simd/detail/math.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/assert.hpp>

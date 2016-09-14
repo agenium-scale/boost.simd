@@ -15,17 +15,17 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/valmin.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_greater.hpp>
-#include <boost/simd/function/simd/is_less.hpp>
-#include <boost/simd/function/simd/splat.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_greater.hpp>
+#include <boost/simd/function/is_less.hpp>
+#include <boost/simd/function/splat.hpp>
 #include <boost/simd/function/fast.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 #ifndef BOOST_SIMD_NO_NANS
-#include <boost/simd/function/simd/is_nan.hpp>
-#include <boost/simd/function/simd/if_zero_else.hpp>
+#include <boost/simd/function/is_nan.hpp>
+#include <boost/simd/function/if_zero_else.hpp>
 #endif
 
 namespace boost { namespace simd { namespace ext

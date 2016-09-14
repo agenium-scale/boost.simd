@@ -11,14 +11,14 @@
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_SIMD_F_LOG_HPP_INCLUDED
 
 
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/plus.hpp>
-#include <boost/simd/function/simd/fma.hpp>
-#include <boost/simd/function/simd/is_eqz.hpp>
-#include <boost/simd/function/simd/if_nan_else.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/if_else_zero.hpp>
-#include <boost/simd/function/simd/is_ltz.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/plus.hpp>
+#include <boost/simd/function/fma.hpp>
+#include <boost/simd/function/is_eqz.hpp>
+#include <boost/simd/function/if_nan_else.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/if_else_zero.hpp>
+#include <boost/simd/function/is_ltz.hpp>
 #include <boost/simd/arch/common/detail/generic/f_log_kernel.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/constant/mhalf.hpp>
@@ -34,16 +34,16 @@
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 #ifndef BOOST_SIMD_NO_NANS
-#include <boost/simd/function/simd/is_nan.hpp>
-#include <boost/simd/function/simd/logical_or.hpp>
+#include <boost/simd/function/is_nan.hpp>
+#include <boost/simd/function/logical_or.hpp>
 #endif
 #ifndef BOOST_SIMD_NO_INFINITIES
 #include <boost/simd/constant/inf.hpp>
-#include <boost/simd/function/simd/is_equal.hpp>
+#include <boost/simd/function/is_equal.hpp>
 #endif
 #ifndef BOOST_SIMD_NO_DENORMALS
-#include <boost/simd/function/simd/abs.hpp>
-#include <boost/simd/function/simd/is_less.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/is_less.hpp>
 #include <boost/simd/constant/smallestposval.hpp>
 #include <boost/simd/constant/twotonmb.hpp>
 #include <boost/simd/constant/mlogtwo2nmb.hpp>

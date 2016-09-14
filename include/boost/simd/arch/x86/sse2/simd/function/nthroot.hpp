@@ -10,7 +10,7 @@
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_NTHROOT_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/scalar/nthroot.hpp>
+#include <boost/simd/function/nthroot.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

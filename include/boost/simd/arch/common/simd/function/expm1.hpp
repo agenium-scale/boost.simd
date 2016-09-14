@@ -14,9 +14,9 @@
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/arch/common/detail/generic/expm1_kernel.hpp>
-#include <boost/simd/function/scalar/if_else.hpp>
-#include <boost/simd/function/scalar/is_greater.hpp>
-#include <boost/simd/function/scalar/is_less.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_greater.hpp>
+#include <boost/simd/function/is_less.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>

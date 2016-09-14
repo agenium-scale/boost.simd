@@ -16,18 +16,18 @@
 
 #ifndef BOOST_SIMD_NO_INVALIDS
 #include <boost/simd/constant/inf.hpp>
-#include <boost/simd/function/scalar/is_inf.hpp>
-#include <boost/simd/function/scalar/is_nan.hpp>
+#include <boost/simd/function/is_inf.hpp>
+#include <boost/simd/function/is_nan.hpp>
 #endif
 #include <boost/simd/detail/constant/maxexponentm1.hpp>
 #include <boost/simd/detail/constant/minexponent.hpp>
-#include <boost/simd/function/scalar/abs.hpp>
-#include <boost/simd/function/scalar/exponent.hpp>
-#include <boost/simd/function/scalar/ldexp.hpp>
-#include <boost/simd/function/scalar/max.hpp>
-#include <boost/simd/function/scalar/min.hpp>
-#include <boost/simd/function/scalar/sqr.hpp>
-#include <boost/simd/function/scalar/sqrt.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/exponent.hpp>
+#include <boost/simd/function/ldexp.hpp>
+#include <boost/simd/function/max.hpp>
+#include <boost/simd/function/min.hpp>
+#include <boost/simd/function/sqr.hpp>
+#include <boost/simd/function/sqrt.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/function/std.hpp>

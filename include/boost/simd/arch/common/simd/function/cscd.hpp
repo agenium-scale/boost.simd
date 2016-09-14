@@ -13,11 +13,11 @@
 
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/constant/nan.hpp>
-#include <boost/simd/function/simd/if_nan_else.hpp>
-#include <boost/simd/function/simd/is_nez.hpp>
-#include <boost/simd/function/simd/is_flint.hpp>
-#include <boost/simd/function/simd/rec.hpp>
-#include <boost/simd/function/simd/sind.hpp>
+#include <boost/simd/function/if_nan_else.hpp>
+#include <boost/simd/function/is_nez.hpp>
+#include <boost/simd/function/is_flint.hpp>
+#include <boost/simd/function/rec.hpp>
+#include <boost/simd/function/sind.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

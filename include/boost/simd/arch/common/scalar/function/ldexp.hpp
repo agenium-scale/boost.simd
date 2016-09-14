@@ -23,8 +23,8 @@
 #include <boost/simd/detail/constant/maxexponent.hpp>
 #include <boost/simd/constant/nbmantissabits.hpp>
 #include <boost/simd/constant/one.hpp>
-#include <boost/simd/function/scalar/bitwise_cast.hpp>
-#include <boost/simd/function/scalar/shift_left.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/shift_left.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>

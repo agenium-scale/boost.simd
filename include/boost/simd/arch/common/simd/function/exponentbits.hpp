@@ -15,7 +15,7 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/detail/constant/maxexponent.hpp>
 #include <boost/simd/constant/nbmantissabits.hpp>
-#include <boost/simd/function/simd/bitwise_and.hpp>
+#include <boost/simd/function/bitwise_and.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 namespace boost { namespace simd { namespace ext

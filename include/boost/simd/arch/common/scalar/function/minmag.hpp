@@ -11,8 +11,8 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_MINMAG_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_MINMAG_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/abs.hpp>
-#include <boost/simd/function/scalar/min.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/min.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

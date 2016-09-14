@@ -12,7 +12,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_NOT_INFINITE_HPP_INCLUDED
 
 #include <boost/simd/constant/inf.hpp>
-#include <boost/simd/function/scalar/abs.hpp>
+#include <boost/simd/function/abs.hpp>
 #include <boost/simd/logical.hpp>
 //#include <boost/simd/constant/true.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>

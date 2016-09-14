@@ -11,7 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LO_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LO_HPP_INCLUDED
 
-#include <boost/simd/function/simd/interleave_even.hpp>
+#include <boost/simd/function/interleave_even.hpp>
 #include <boost/simd/function/bitwise_and.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/constant/ratio.hpp>

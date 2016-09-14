@@ -16,7 +16,7 @@
 #include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/fast.hpp>
-#include <boost/simd/function/scalar/trunc.hpp>
+#include <boost/simd/function/trunc.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

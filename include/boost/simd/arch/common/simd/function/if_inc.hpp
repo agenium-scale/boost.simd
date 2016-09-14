@@ -13,10 +13,10 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/genmask.hpp>
-#include <boost/simd/function/simd/plus.hpp>
-#include <boost/simd/function/simd/if_plus.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/genmask.hpp>
+#include <boost/simd/function/plus.hpp>
+#include <boost/simd/function/if_plus.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

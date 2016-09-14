@@ -13,9 +13,9 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/is_greater_equal.hpp>
-#include <boost/simd/function/simd/is_less.hpp>
-#include <boost/simd/function/simd/logical_not.hpp>
+#include <boost/simd/function/is_greater_equal.hpp>
+#include <boost/simd/function/is_less.hpp>
+#include <boost/simd/function/logical_not.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

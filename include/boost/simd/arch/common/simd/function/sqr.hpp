@@ -12,14 +12,14 @@
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/constant/sqrtvalmax.hpp>
 #include <boost/simd/constant/valmax.hpp>
-#include <boost/simd/function/simd/abs.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_greater.hpp>
-#include <boost/simd/function/simd/sqr.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_greater.hpp>
+#include <boost/simd/function/sqr.hpp>
 
 #ifdef USE_UBSAN
-#include <boost/simd/function/simd/bitwise_cast.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/detail/dispatch/meta/as_unsigned.hpp>
 #endif
 

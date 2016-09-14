@@ -13,7 +13,7 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/is_not_greater.hpp>
+#include <boost/simd/function/is_not_greater.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

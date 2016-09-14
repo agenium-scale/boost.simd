@@ -11,9 +11,9 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IDIVROUND_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IDIVROUND_HPP_INCLUDED
 
-#include <boost/simd/function/simd/divides.hpp>
-#include <boost/simd/function/simd/round.hpp>
-#include <boost/simd/function/simd/iround.hpp>
+#include <boost/simd/function/divides.hpp>
+#include <boost/simd/function/round.hpp>
+#include <boost/simd/function/iround.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>

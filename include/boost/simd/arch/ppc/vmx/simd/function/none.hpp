@@ -10,7 +10,7 @@
 #define BOOST_SIMD_ARCH_PPC_VMX_SIMD_FUNCTION_NONE_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/simd/is_nez.hpp>
+#include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/constant/false.hpp>
 
 namespace boost { namespace simd { namespace ext

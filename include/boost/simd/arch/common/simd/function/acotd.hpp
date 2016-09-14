@@ -12,17 +12,17 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ACOTD_HPP_INCLUDED
 
 #ifndef BOOST_SIMD_NO_INFINITIES
-#include <boost/simd/function/simd/is_inf.hpp>
+#include <boost/simd/function/is_inf.hpp>
 #endif
 #include <boost/simd/constant/ratio.hpp>
-#include <boost/simd/function/simd/abs.hpp>
-#include <boost/simd/function/simd/atand.hpp>
-#include <boost/simd/function/simd/bitofsign.hpp>
-#include <boost/simd/function/simd/bitwise_or.hpp>
-#include <boost/simd/function/simd/if_else_zero.hpp>
-#include <boost/simd/function/simd/if_zero_else.hpp>
-#include <boost/simd/function/simd/is_nez.hpp>
-#include <boost/simd/function/simd/minus.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/atand.hpp>
+#include <boost/simd/function/bitofsign.hpp>
+#include <boost/simd/function/bitwise_or.hpp>
+#include <boost/simd/function/if_else_zero.hpp>
+#include <boost/simd/function/if_zero_else.hpp>
+#include <boost/simd/function/is_nez.hpp>
+#include <boost/simd/function/minus.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

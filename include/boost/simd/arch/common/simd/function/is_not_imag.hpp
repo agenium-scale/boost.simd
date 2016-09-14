@@ -11,7 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IS_NOT_IMAG_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IS_NOT_IMAG_HPP_INCLUDED
 
-#include <boost/simd/function/simd/scalar/is_nez.hpp>
+#include <boost/simd/function/scalar/is_nez.hpp>
 #include <boost/simd/logical.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>

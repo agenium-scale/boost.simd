@@ -10,7 +10,7 @@
 #define BOOST_SIMD_ARCH_X86_XOP_SIMD_FUNCTION_RSHR_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/simd/rshl.hpp>
+#include <boost/simd/function/rshl.hpp>
 
 #if BOOST_HW_SIMD_X86_AMD_XOP
 namespace boost { namespace simd { namespace ext
