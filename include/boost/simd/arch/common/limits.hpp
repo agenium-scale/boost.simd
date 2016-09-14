@@ -20,7 +20,7 @@
 namespace boost { namespace simd
 {
   /*!
-    @ingroup group-config
+    @ingroup group-api
     @brief Type informations for SIMD extensions
 
     This aggregate traits gathers informations about available types and cardinals for any given

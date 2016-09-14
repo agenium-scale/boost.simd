@@ -3,6 +3,9 @@ Frequently Asked Questions {#faq}
 
 @section faq-questions Frequently Asked Questions
 
+-------------------------------------------------
+
+- [Is it good practice to use a pack as an array?](#faq-pack-array)
 - [Why is the speed-up of my code not as expected?](#faq-speed)
 - [My code seg-faulted or crashed](#faq-memory-alignment)
 - [I tried to use a comparison operator and my code failed to compile](#faq-comparison)
@@ -10,9 +13,23 @@ Frequently Asked Questions {#faq}
 - [My AVX code is not twice as fast as SSE](#faq-sse-avx)
 - [I disassembled my code, and the generated code is less than optimal.](#faq-code-gen)
 - [How can I use a certain intrinsic?](#faq-intrisic)
-- [compile](#faq-)
+
+@subsection faq-pack-array Is it good practice to use a pack as an array?
+
+-------------------------------------------------
+
+The main element of Boost.SIMD is the boost::simd::pack class. pack is an abstraction over a block
+of `N` elements of type `T`, quite similar to `std::array`. The main semantic difference is that
+boost::simd::pack is implemented as the best hardware specific type able to store this amount of
+data which may be a simple scalar array, a single SIMD register or a tuple of SIMD registers
+depending on `N` and `T`.
+
+In general, the good practice is to store data in regular, dynamic allocated data block and apply
+your algorithms over those data using pack and related functions.
 
 @subsection faq-speed Why is the speed-up of my code not as expected?
+
+-------------------------------------------------
 
   There are several factors which can reduce the speed-up obtained using **Boost.SIMD**.
   - Have you enabled compiler optimizations?
@@ -68,12 +85,16 @@ Frequently Asked Questions {#faq}
 
 @subsection faq-memory-alignment Why did my code seg-faulted or crashed?
 
+-------------------------------------------------
+
 The most common cause of seg-faults in SIMD codes is accessing non-aligned memory. For best
 performance, all memory should be aligned on pack_t::alignment bytes. Boost.SIMD includes an
 aligned memory allocator to help you with this. Please refer to @ref tutorial-memory for details
 on how to ensure that you memory is correctly aligned.
 
 @subsection faq-comparison I tried to use a comparison operator and my code failed to compile
+
+-------------------------------------------------
 
 The most common reason for this is that the two packs being compared are not of the same type.
 Another common reason is that the return type is incorrect. Using auto is one way of preventing
@@ -83,6 +104,8 @@ of logical with the same cardinal as the input vectors, or a reduction compariso
 result is a bool.
 
 @subsection faq-speed-up How to measure the speed-up of SIMD code?
+
+-------------------------------------------------
 
 There are several ways to measure the speed-up of your code. You may use the **Boost.SIMD** bench
 system to benchmark your code segment. This allows you to measure the execution time of your code
@@ -105,6 +128,8 @@ in the cache.
 
 @subsection faq-sse-avx My code compiled for AVX is not twice as fast as for SSE
 
+-------------------------------------------------
+
 Not all SSE instructions have an equivalent AVX instruction. Also, the cycles required for
 certain instructions are not equal on both architectures, for example, sqrt on SSE requires
 10-14 cycles whereas sqrt on AVX requires 21-28 cycles. Please refer
@@ -118,6 +143,8 @@ supported.
 
 @subsection faq-code-gen I disassembled my code, and the generated code is less than optimal.
 
+-------------------------------------------------
+
 - Have you compiled in release mode, with full optimizations with DNDEBUG defined?
 - Have you used a 64 bit compiler?
 - There are many SIMD related bugs across all compilers, and some compilers generate less than
@@ -130,11 +157,11 @@ supported.
 
 @subsection faq-intrisic How can I use a certain intrinsic?
 
+-------------------------------------------------
+
 If you require a certain intrinsic, you may search inside of **Boost.SIMD** for it and then call
 the relevant function.
 
 In rare cases, the intrinsic may not be included in *Boost.SIMD** as we map the intrinsic wherever
 it makes sense semantically. If a certain intrinsic does not fit inside of this model, if may be
 excluded. In this case, you may call it yourself, however, this will not be portable.
-
-  complex functions

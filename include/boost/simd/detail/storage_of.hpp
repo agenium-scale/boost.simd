@@ -37,13 +37,11 @@ namespace boost { namespace simd { namespace detail
   // Status for SIMD storage to be determined
   using unknown_status    = brigand::int32_t<42>;
 
-  /*!
-    @ingroup group-detail
-    @brief SIMD storage status
-
-    Determines how a given block of @c C elements of type @c T should fit in the
-    hardware registers proposed by extension @c X.
+  //================================================================================================
+  /*
+    Determines how a given block of C elements of type T fit in hardware registers of extension X.
   **/
+  //================================================================================================
   template< typename T, std::size_t C, typename X>
   struct storage_status : brigand::int32_t<   (expected_cardinal<T,X>::value != C)
                                           * ( (expected_cardinal<T,X>::value < C) ? +1 : -1)
@@ -55,16 +53,12 @@ namespace boost { namespace simd { namespace detail
   struct  storage_status<T,C,simd_emulation_> : unknown_status
   {};
 
-  /*!
-    @ingroup  group-detail
-    @brief    Storage type for SIMD data
-
-    For a given couple @c Type x @c Cardinal, provides the type usbale for storing a block
-    containing @c Cardinal elements of type @c Type in an optimized way.
-
-    @tparam Type      Type of the stored elements
-    @tparam Cardinal  Number of element stored
-  **/
+  //================================================================================================
+  /*
+    For a given couple Type x @c Cardinal, provides the type usable for storing a block
+    containing Cardinal elements of type Type in an optimized way.
+  */
+  //================================================================================================
   template< typename Type, std::size_t Cardinal, typename ABI
           , typename Status = typename storage_status<Type,Cardinal,ABI>::type
           , typename Enable = void
@@ -118,7 +112,7 @@ namespace boost { namespace simd { namespace detail
                                             >::type::type;
   };
 
-  // IF we request more than needed, we aggregate exactly 2 smaller SIMD registers
+  // If we request more than needed, we aggregate exactly 2 smaller SIMD registers
   template< typename Type, std::size_t Cardinal, typename ABI>
   struct storage_of<Type,Cardinal,ABI,aggregated_status>
   {
