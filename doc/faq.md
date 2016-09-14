@@ -15,7 +15,7 @@ Frequently Asked Questions {#faq}
 @subsection faq-speed Why is the speed-up of my code not as expected?
 
   There are several factors which can reduce the speed-up obtained using **Boost.SIMD**.
-  - Have you enabled compiler optimizations? 
+  - Have you enabled compiler optimizations?
     You must enable all compiler optimizations as well as defining the `NDEBUG` flag
 
     <table align=center width=25% class="table-striped table-bordered">
@@ -28,10 +28,10 @@ Frequently Asked Questions {#faq}
   - Have you compiled in 64bit mode?
     There is significant performance increase on architectures supporting
     64 bit binaries.
-   
+
   - Is you algorithm memory bound?
     Computational problems can often be classed as either compute-bound or
-    memory-bound. Memory bound problems reachthe limits of the system
+    memory-bound. Memory bound problems reach the limits of the system
     bandwidth transfering data between the memory and the processor, while
     compute-bound problems are limited by the processor's calculation ability.
 
@@ -39,7 +39,7 @@ Frequently Asked Questions {#faq}
     transfer data from the cache to a register varies depending on the cache.
     When the required data is not in the cache, it is referred to as a cache
     miss. Cache-misses are very expensive. Data is transfered from memory
-    to the cache in cache-lines sized chunks. On modern x86 machines, a cache-line is 
+    to the cache in cache-lines sized chunks. On modern x86 machines, a cache-line is
     64 bytes or twice the size of an AVX register. It is therefore highly
     advantageous to use all data loaded into cache.
 
@@ -48,13 +48,13 @@ Frequently Asked Questions {#faq}
     compared to that of the memory accesses.
 
     @snippet memorybound.cpp memory-memory
-    
+
     The following loop is compute-bound. As most of the time is spent calculating
     exp, significant speed-up is observed when this code is vectorized.
 
     @snippet memorybound.cpp memory-compute
 
-  - Is your code trivially vetcorizable?
+  - Is your code trivially vectorizable?
     Modern compilers can vectorize trivial code segments automatically. If you
     benchmark a trivial scalar code versus a vectorized code, the compiler may
     vectorize the scalar code, thereby giving similar performance to the vectorized
@@ -75,7 +75,7 @@ on how to ensure that you memory is correctly aligned.
 
 @subsection faq-comparison I tried to use a comparison operator and my code failed to compile
 
-The most common reason for this is that the two packs being compared are not of the same type. 
+The most common reason for this is that the two packs being compared are not of the same type.
 Another common reason is that the return type is incorrect. Using auto is one way of preventing
 this error, however, it is best to be aware of the types you are using. Comparison operators in
 **Boost.SIMD** are of two types, either vectorized comparison, where the results is a vector
@@ -94,7 +94,7 @@ In order to accurately becnhmark your code, there are several points to consider
 - Your input should be sufficiently large. This is to eliminate cache effects.
 - Your code is compiled in release mode, with all optimizations enabled and debug information
   not included.
-- You should measure several times and use the average.
+- You should measure several times and use the average (or better the median).
 
 A typical case where a benchmark could give inaaccurate results is where the input is not
 large enough to fill the cache and a scalar and SIMD code segment are individually benchmarked, one
@@ -122,12 +122,12 @@ supported.
 - Have you used a 64 bit compiler?
 - There are many SIMD related bugs across all compilers, and some compilers generate less than
   optimal code in some cases. Is it possible to update your compiler to a more modern compiler?
-- We provide work arounds for all known compiler bugs, however, we may have missed some. You may
-  also have found a bug in **Boost.SIMD**. Please report this through issues on our 
+- We provide workarounds for all known compiler bugs, however, we may have missed some. You may
+  also have found a bug in **Boost.SIMD**. Please report this through issues on our
   <a href="https://github.com/numscale/boost.simd/issues">github</a>
   with a minimal code example. We responds quickly to bug reports and do our best to patch them as
   quickly as possible.
-  
+
 @subsection faq-intrisic How can I use a certain intrinsic?
 
 If you require a certain intrinsic, you may search inside of **Boost.SIMD** for it and then call

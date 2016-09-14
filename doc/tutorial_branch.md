@@ -32,9 +32,10 @@ Here we have a very clear branch in the code. How can we vectorize this loop?
 In this example, we introduce a new type, `bs::logical`, which is an abstraction for the equivalent of
 a `bool` on a particular architecture. Therefore, a pack of `bs::logical` or a `logical_t` is the equivalent of a pack
 of `bool`. This abstraction is necessary to ensure that any code written using **Boost.SIMD** is portable
-due to the differences between how various processors handle operations requiring logical values.
+due to the differences between how various processors handle operations requiring logical values.(Note that most of the time
+you do not need to define yourself the logical type as `auto` can do the job).
 
-The return type of a comparison operation in C++ is a bool, therefore the return type of the function
+The return type of a comparison operation in C++ is a `bool`, therefore the return type of the function
 `bs::is_less` is a `logical_t`. This `logical_t` is then used to generate a __SIMD__ vector of zeros
 or ones using the function `bs::if_zero_else_one`. All that's left to do now is to store this vector
 in its correct location in memory.
@@ -53,5 +54,9 @@ to upgrade and downgrade or `split` and `group` data:
 @snippet thresholding.cpp simd-threshold-downgrade
 
 This extract of code assumes that the input image is a multiple of the output vector size for clarity.
-This assumption is often false, the previous example, @ref tutorial-data shows how to handle this
+This assumption is often false, the previous example, @ref tutorial-dot shows how to handle this
 by adding a scalar loop at the end to process all remaining pixels.
+
+Here is a full code, should you wish to try it:
+
+@snippet thresholding.cpp threshold

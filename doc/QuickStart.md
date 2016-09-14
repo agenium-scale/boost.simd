@@ -1,7 +1,7 @@
 Quick Start {#quickstart}
 =========
 
-This is a quick start for **Boost.SIMD**. The purpose of this is to briefly introduce 
+This is a quick start for **Boost.SIMD**. The purpose of this is to briefly introduce
 **Boost.SIMD** so that you can start coding immediately.
 
 @section dependencies Dependencies
@@ -37,16 +37,16 @@ header files are used on all platforms.
 
 -------------------------------------
 
-In order to use **Boost.SIMD** on Linux, you must pass the **Boost.SIMD** include 
+In order to use **Boost.SIMD** on Linux, you must pass the **Boost.SIMD** include
 folder to the compiler and as well as the path of the boost directory. You must
 also indicate what architecture
 
 For example:
 
-`g++ my_code.cpp -O3 -DNDEBUG -o my_code -I/path/to/boost.simd/ -mavx`
+`g++ my_code.cpp -O3 -DNDEBUG -o my_code -I/path/to/boost.simd/ -I/path/to/boost/ -mavx`
 
-If use an IDE such as Visual Studio or XCode, set these flags and paths in
-your project settings. 
+If you use an IDE such as Visual Studio or XCode, set these flags and paths in
+your project settings.
 @warningbox{
 Some compilers, such as Microsoft Visual Studio, do not propagate the fact a given architecture specific
 option is triggered. In this case, you must also define an architecture specific preprocessor symbol.
