@@ -13,7 +13,7 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/detail/dispatch/meta/as_unsigned.hpp>
 
 namespace boost { namespace simd { namespace ext

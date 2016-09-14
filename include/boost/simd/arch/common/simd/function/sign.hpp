@@ -14,13 +14,13 @@
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/constant/valmin.hpp>
-#include <boost/simd/function/simd/if_allbits_else.hpp>
-#include <boost/simd/function/simd/if_one_else_zero.hpp>
-// #include <boost/simd/function/simd/is_equal.hpp>
-#include <boost/simd/function/simd/is_gtz.hpp>
-#include <boost/simd/function/simd/is_ltz.hpp>
-#include <boost/simd/function/simd/is_nan.hpp>
-#include <boost/simd/function/simd/minus.hpp>
+#include <boost/simd/function/if_allbits_else.hpp>
+#include <boost/simd/function/if_one_else_zero.hpp>
+// #include <boost/simd/function/is_equal.hpp>
+#include <boost/simd/function/is_gtz.hpp>
+#include <boost/simd/function/is_ltz.hpp>
+#include <boost/simd/function/is_nan.hpp>
+#include <boost/simd/function/minus.hpp>
 
 
 namespace boost { namespace simd { namespace ext

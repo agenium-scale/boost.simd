@@ -17,15 +17,15 @@
 #include <boost/simd/constant/two.hpp>
 #include <boost/simd/constant/ratio.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/scalar/abs.hpp>
-#include <boost/simd/function/scalar/exp.hpp>
-#include <boost/simd/function/scalar/oneminus.hpp>
-#include <boost/simd/function/scalar/inc.hpp>
-#include <boost/simd/function/scalar/sqr.hpp>
-#include <boost/simd/function/scalar/sqrt.hpp>
-#include <boost/simd/function/scalar/rec.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/exp.hpp>
+#include <boost/simd/function/oneminus.hpp>
+#include <boost/simd/function/inc.hpp>
+#include <boost/simd/function/sqr.hpp>
+#include <boost/simd/function/sqrt.hpp>
+#include <boost/simd/function/rec.hpp>
 #ifndef BOOST_SIMD_NO_INVALIDS
-#include <boost/simd/function/scalar/is_nan.hpp>
+#include <boost/simd/function/is_nan.hpp>
 #endif
 #ifndef BOOST_SIMD_NO_INFINITIES
 #include <boost/simd/constant/inf.hpp>

@@ -12,7 +12,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IS_FINITE_HPP_INCLUDED
 #include <boost/simd/function/std.hpp>
 
-#include <boost/simd/function/scalar/is_eqz.hpp>
+#include <boost/simd/function/is_eqz.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>

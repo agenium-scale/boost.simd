@@ -12,9 +12,9 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_EXPRECNEGC_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_EXPRECNEGC_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/expm1.hpp>
-#include <boost/simd/function/scalar/rec.hpp>
-#include <boost/simd/function/scalar/unary_minus.hpp>
+#include <boost/simd/function/expm1.hpp>
+#include <boost/simd/function/rec.hpp>
+#include <boost/simd/function/unary_minus.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

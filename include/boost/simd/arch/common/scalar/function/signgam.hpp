@@ -10,12 +10,12 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_SIGNGAM_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_SIGNGAM_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/is_nan.hpp>
-#include <boost/simd/function/scalar/is_lez.hpp>
-#include <boost/simd/function/scalar/is_flint.hpp>
-#include <boost/simd/function/scalar/is_odd.hpp>
-#include <boost/simd/function/scalar/floor.hpp>
-#include <boost/simd/function/scalar/is_inf.hpp>
+#include <boost/simd/function/is_nan.hpp>
+#include <boost/simd/function/is_lez.hpp>
+#include <boost/simd/function/is_flint.hpp>
+#include <boost/simd/function/is_odd.hpp>
+#include <boost/simd/function/floor.hpp>
+#include <boost/simd/function/is_inf.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/two.hpp>
 #include <boost/simd/constant/nan.hpp>

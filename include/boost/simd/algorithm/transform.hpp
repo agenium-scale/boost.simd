@@ -1,6 +1,8 @@
 //==================================================================================================
-/**
-  Copyright 2016 NumScale SAS
+/*!
+  @file
+
+  @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -20,40 +22,30 @@ namespace boost { namespace simd
   /*!
     @ingroup group-std
 
-    Applies the given function @c f to the Contiguous Range  @c[first, last[ and stores the result
-    in another Contiguous Range, beginning at @c out.
+    Applies the given function @c f to the Contiguous Range  @range{first, last} and stores the
+    result in another Contiguous Range, beginning at @c out.
 
     @param first  Beginning of the range of elements to transform
     @param last   End of the range of elements to transform
-    @param out    Beginning of the range of the destination range
+    @param out    Beginning of the destination range
     @param f      unary operation function object that will be applied.
 
     @par Requirement
 
       - @c first , @c last and @c out must be pointer to type which can be used within
         boost::simd::pack.
-      - f must be a polymorphic function object, i.e callable on generic types.
+      - @c f must be a polymorphic unary function object, i.e callable on generic types.
       - @c boost::simd::pack<T>::static_size @c == @c boost::simd::pack<U>::static_size
 
     @par Example
 
-      The following code uses simd::transform to compute the square of the values stored in a
-      std::vector. Note the generic lambda function used to fulfill requirements on the
-      user-defined function object.
-
-      @code
-      #include <boost/simd/algorithm.hpp>
-      #include <vector>
-
-      int main()
-      {
-        std::vector<float> d{1.f, 2.f, 3.f, 4.f, 5.f, 6.f, 7.f};
-
-        boost::simd::transform( s.data(), s.data()+7, s.data()
-                              , [](auto const& e) { return e*e; }
-                              );
-      }
-      @endcode
+    The following code uses simd::transform to compute the square of the values stored in a
+    @c std::vector.
+    @snippet transform.unary.cpp transform-unary
+    Expected output:
+    @code
+    1 4 9 16 25 36 49
+    @endcode
 
     @return Pointer to the element past the last element transformed.
   **/
@@ -95,6 +87,36 @@ namespace boost { namespace simd
     return out;
   }
 
+  /*!
+    @ingroup group-std
+
+    Applies the given function @c f to pairs of elements from two ranges: one defined by
+    @range{first1, last1} and the other beginning at @c first2, and stores the result in another
+    Contiguous Range, beginning at @c out.
+
+    @param first1  Beginning of the first range of elements to transform
+    @param last1   End of the range of elements to transform
+    @param first2  Beginning of the second range of elements to transform
+    @param out     Beginning of the destination range
+    @param f       unary operation function object that will be applied.
+
+    @par Requirement
+
+      - @c first , @c last and @c out must be pointer to type which can be used within
+        boost::simd::pack.
+      - @c f must be a polymorphic binary function object, i.e callable on generic types.
+      - @c boost::simd::pack<T1>::static_size @c == @c boost::simd::pack<U>::static_size
+      - @c boost::simd::pack<T2>::static_size @c == @c boost::simd::pack<U>::static_size
+
+    @par Example
+    @snippet transform.binary.cpp transform-binary
+    Possible output:
+    @code
+    0 0.5 0.666667 0.75 0.8 0.833333 0.857143
+    @endcode
+
+    @return Pointer to the element past the last element transformed.
+  **/
   template<typename T1, typename T2, typename U, typename BinOp>
   U* transform(T1 const* first1, T1 const* last1, T2 const* first2, U* out, BinOp f)
   {

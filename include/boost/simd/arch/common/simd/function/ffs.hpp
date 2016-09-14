@@ -13,16 +13,16 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/bitwise_and.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/firstbitset.hpp>
-#include <boost/simd/function/simd/genmask.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/inc.hpp>
-#include <boost/simd/function/simd/if_plus.hpp>
-#include <boost/simd/function/simd/shift_left.hpp>
-#include <boost/simd/function/simd/shr.hpp>
-#include <boost/simd/function/simd/unary_minus.hpp>
+#include <boost/simd/function/bitwise_and.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/firstbitset.hpp>
+#include <boost/simd/function/genmask.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/inc.hpp>
+#include <boost/simd/function/if_plus.hpp>
+#include <boost/simd/function/shift_left.hpp>
+#include <boost/simd/function/shr.hpp>
+#include <boost/simd/function/unary_minus.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/simd/constant/ratio.hpp>

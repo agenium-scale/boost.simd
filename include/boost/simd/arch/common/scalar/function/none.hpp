@@ -10,7 +10,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_NONE_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/scalar/is_eqz.hpp>
+#include <boost/simd/function/is_eqz.hpp>
 #include <boost/simd/logical.hpp>
 #include <boost/config.hpp>
 

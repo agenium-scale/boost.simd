@@ -13,11 +13,11 @@
 
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/function/saturated.hpp>
-#include <boost/simd/function/scalar/abs.hpp>
-#include <boost/simd/function/scalar/ffs.hpp>
-#include <boost/simd/function/scalar/frexp.hpp>
-#include <boost/simd/function/scalar/dec.hpp>
-#include <boost/simd/function/scalar/reversebits.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/ffs.hpp>
+#include <boost/simd/function/frexp.hpp>
+#include <boost/simd/function/dec.hpp>
+#include <boost/simd/function/reversebits.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>

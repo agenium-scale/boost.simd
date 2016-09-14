@@ -13,8 +13,8 @@
 
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
-#include <boost/simd/function/simd/nearbyint.hpp>
-#include <boost/simd/function/simd/toint.hpp>
+#include <boost/simd/function/nearbyint.hpp>
+#include <boost/simd/function/toint.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/three.hpp>
 #include <boost/simd/detail/constant/pio2_1.hpp>
@@ -24,10 +24,10 @@
 #include <boost/simd/constant/pio2_3.hpp>
 #include <boost/simd/detail/constant/pio2_3t.hpp>
 #include <boost/simd/constant/twoopi.hpp>
-#include <boost/simd/function/simd/minus.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/bitwise_and.hpp>
-#include <boost/simd/function/simd/minus.hpp>
+#include <boost/simd/function/minus.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/bitwise_and.hpp>
+#include <boost/simd/function/minus.hpp>
 #include <utility>
 
 namespace boost { namespace simd { namespace ext

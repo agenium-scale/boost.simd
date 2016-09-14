@@ -17,26 +17,26 @@
 #include <boost/simd/arch/common/detail/simd/d_invtrig.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/constant/pi.hpp>
-#include <boost/simd/function/simd/divides.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_eqz.hpp>
-#include <boost/simd/function/simd/is_gtz.hpp>
-#include <boost/simd/function/simd/is_ltz.hpp>
-#include <boost/simd/function/simd/minus.hpp>
-#include <boost/simd/function/simd/negatenz.hpp>
-#include <boost/simd/function/simd/rec.hpp>
+#include <boost/simd/function/divides.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_eqz.hpp>
+#include <boost/simd/function/is_gtz.hpp>
+#include <boost/simd/function/is_ltz.hpp>
+#include <boost/simd/function/minus.hpp>
+#include <boost/simd/function/negatenz.hpp>
+#include <boost/simd/function/rec.hpp>
 
 #ifndef BOOST_SIMD_NO_INFINITIES
 #include <boost/simd/constant/one.hpp>
-#include <boost/simd/function/simd/copysign.hpp>
-#include <boost/simd/function/simd/is_inf.hpp>
-#include <boost/simd/function/simd/logical_and.hpp>
+#include <boost/simd/function/copysign.hpp>
+#include <boost/simd/function/is_inf.hpp>
+#include <boost/simd/function/logical_and.hpp>
 #endif
 
 #ifndef BOOST_SIMD_NO_NANS
-#include <boost/simd/function/simd/if_allbits_else.hpp>
-#include <boost/simd/function/simd/is_nan.hpp>
-#include <boost/simd/function/simd/logical_or.hpp>
+#include <boost/simd/function/if_allbits_else.hpp>
+#include <boost/simd/function/is_nan.hpp>
+#include <boost/simd/function/logical_or.hpp>
 #endif
 
 namespace boost { namespace simd { namespace ext

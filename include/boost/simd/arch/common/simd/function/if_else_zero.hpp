@@ -13,9 +13,9 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/bitwise_and.hpp>
-#include <boost/simd/function/simd/genmask.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
+#include <boost/simd/function/bitwise_and.hpp>
+#include <boost/simd/function/genmask.hpp>
+#include <boost/simd/function/if_else.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/meta/is_bitwise_logical.hpp>
 

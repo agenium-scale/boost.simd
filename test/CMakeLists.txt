@@ -13,6 +13,7 @@ set(CMAKE_BUILD_TYPE "Debug")
 
 ## Add all test folders
 add_subdirectory(api)
+add_subdirectory(doc)
 add_subdirectory(architecture)
 add_subdirectory(constant)
 add_subdirectory(function)

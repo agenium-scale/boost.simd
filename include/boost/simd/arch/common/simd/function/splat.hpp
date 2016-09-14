@@ -40,17 +40,24 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE target_t operator()(V const& v, Target const&) const
     {
-      return do_(v, typename target_t::traits::static_range{} );
+      return do_(v, typename target_t::storage_kind{}, typename target_t::traits::static_range{} );
     }
 
     template<typename N, typename T>
-    static BOOST_FORCEINLINE T&& make(T&& t) { return std::forward<T>(t); }
+    BOOST_FORCEINLINE T const& value_(T const& t) const { return t; }
 
-    template<typename... N>
-    static BOOST_FORCEINLINE storage_t do_(V const& v, brigand::list<N...> const&)
+    template<typename K, typename... N>
+    BOOST_FORCEINLINE target_t do_(V const& v, K const&, brigand::list<N...> const&) const
     {
       value_t s(v);
-      return {{ make<N>(s)... }};
+      return {{ value_<N>(s)... }};
+    }
+
+    template<typename... N> BOOST_FORCEINLINE
+    target_t do_(V const& v, aggregate_storage const&, brigand::list<N...> const&) const
+    {
+      typename storage_t::value_type s(v);
+      return {{ s, s }};
     }
   };
 
@@ -71,18 +78,16 @@ namespace boost { namespace simd { namespace ext
       return do_(v, typename target_t::storage_kind{}, typename target_t::traits::static_range{} );
     }
 
-    template<typename N, typename T>
-    static BOOST_FORCEINLINE T&& value(T&& t) { return std::forward<T>(t); }
-
-    template<typename K, typename... N> static BOOST_FORCEINLINE
-    target_t do_(V const& v, K const&, brigand::list<N...> const&)
+    template<typename K, typename... N>
+    BOOST_FORCEINLINE target_t do_(V const& v, K const&, brigand::list<N...> const&) const
     {
       using base_t  = as_arithmetic_t<target_t>;
       return bitwise_cast<target_t>( genmask<base_t>(v) );
     }
 
-    template<typename... N> static BOOST_FORCEINLINE
-    storage_t do_(V const& v, aggregate_storage const&, brigand::list<N...> const&)
+    template<typename... N>
+    BOOST_FORCEINLINE
+    target_t do_(V const& v, aggregate_storage const&, brigand::list<N...> const&) const
     {
       typename storage_t::value_type s(!!v);
       return {{ s, s }};

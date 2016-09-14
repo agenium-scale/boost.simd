@@ -2,13 +2,10 @@
 /*!
   @file
 
-  Defines various macro for controlling **Boost.SIMD** behavior
-
   @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
 **/
 //==================================================================================================
 #ifndef BOOST_SIMD_CONFIG_HPP_INCLUDED
@@ -37,8 +34,8 @@
     @ingroup group-config
     @brief Fast math behavior option
 
-    By defining this symbol or passing -ffast-math option to the compiler, the behaviour of
-    Boost.SIMD mathematical functions will be in accorandance with standard definition of
+    By defining this symbol or passing @-ffast-math option to the compiler, the behavior of
+    Boost.SIMD mathematical functions will be in accordance with standard definition of
     fast IEEE math which includes:
 
     - No handling of NaN values

@@ -11,10 +11,10 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_COPYSIGN_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_COPYSIGN_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/abs.hpp>
-#include <boost/simd/function/scalar/bitwise_notand.hpp>
-#include <boost/simd/function/scalar/bitofsign.hpp>
-#include <boost/simd/function/scalar/signnz.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/bitwise_notand.hpp>
+#include <boost/simd/function/bitofsign.hpp>
+#include <boost/simd/function/signnz.hpp>
 #include <boost/simd/constant/signmask.hpp>
 #include <boost/simd/detail/math.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>

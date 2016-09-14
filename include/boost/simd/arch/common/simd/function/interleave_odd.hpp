@@ -61,6 +61,12 @@ namespace boost { namespace simd { namespace ext
        return  combine(interleave_odd(x0,y0), interleave_odd(x1,y1));
     }
 
+    template<typename N0, typename N1> static BOOST_FORCEINLINE
+    T do_( T const& x, T const& y, aggregate_storage const&, br::list<N0,N1> const&) BOOST_NOEXCEPT
+    {
+      return  T(x[1],y[1]);
+    }
+
     BOOST_FORCEINLINE T operator()(T const& x, T const& y) const BOOST_NOEXCEPT
     {
       return do_(x,y, typename T::traits::storage_kind{}

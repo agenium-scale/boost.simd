@@ -16,7 +16,7 @@
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/constant/true.hpp>
 #include <boost/simd/constant/one.hpp>
-#include <boost/simd/function/simd/is_ord.hpp>
+#include <boost/simd/function/is_ord.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

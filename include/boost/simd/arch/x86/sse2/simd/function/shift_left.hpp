@@ -12,15 +12,15 @@
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_SHIFT_LEFT_HPP_INCLUDED
 #include <boost/simd/detail/overload.hpp>
 
-#include <boost/simd/function/simd/bitwise_and.hpp>
-#include <boost/simd/function/simd/bitwise_or.hpp>
-#include <boost/simd/function/simd/bitwise_ornot.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/if_else_allbits.hpp>
-#include <boost/simd/function/simd/is_ltz.hpp>
-#include <boost/simd/function/simd/group.hpp>
-#include <boost/simd/function/simd/split.hpp>
-#include <boost/simd/function/simd/splat.hpp>
+#include <boost/simd/function/bitwise_and.hpp>
+#include <boost/simd/function/bitwise_or.hpp>
+#include <boost/simd/function/bitwise_ornot.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/if_else_allbits.hpp>
+#include <boost/simd/function/is_ltz.hpp>
+#include <boost/simd/function/group.hpp>
+#include <boost/simd/function/split.hpp>
+#include <boost/simd/function/splat.hpp>
 #include <boost/simd/constant/signmask.hpp>
 #include <boost/simd/constant/allbits.hpp>
 #include <boost/simd/constant/constant.hpp>

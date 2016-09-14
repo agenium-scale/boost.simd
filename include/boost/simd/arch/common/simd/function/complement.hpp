@@ -11,8 +11,8 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/traits.hpp>
-#include <boost/simd/function/simd/bitwise_xor.hpp>
-#include <boost/simd/function/simd/logical_xor.hpp>
+#include <boost/simd/function/bitwise_xor.hpp>
+#include <boost/simd/function/logical_xor.hpp>
 #include <boost/simd/constant/allbits.hpp>
 #include <boost/simd/constant/true.hpp>
 

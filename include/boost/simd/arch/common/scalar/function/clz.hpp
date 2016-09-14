@@ -12,13 +12,13 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_CLZ_HPP_INCLUDED
 
 #ifndef __GNUC__
-#include <boost/simd/function/scalar/ffs.hpp>
-#include <boost/simd/function/scalar/reversebits.hpp>
+#include <boost/simd/function/ffs.hpp>
+#include <boost/simd/function/reversebits.hpp>
 #endif
 #ifdef BOOST_MSVC
 #include <intrin.h>
 #endif
-#include <boost/simd/function/scalar/bitwise_cast.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>

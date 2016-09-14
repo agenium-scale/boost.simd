@@ -12,8 +12,8 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ACOSPI_HPP_INCLUDED
 
 #include <boost/simd/constant/invpi.hpp>
-#include <boost/simd/function/simd/acos.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
+#include <boost/simd/function/acos.hpp>
+#include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

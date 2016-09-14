@@ -13,7 +13,7 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/trunc.hpp>
+#include <boost/simd/function/trunc.hpp>
 #include <boost/fusion/include/std_pair.hpp>
 
 namespace boost { namespace simd { namespace ext

@@ -15,8 +15,8 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/simd/is_gtz.hpp>
-#include <boost/simd/function/simd/is_not_less_equal.hpp>
+#include <boost/simd/function/is_gtz.hpp>
+#include <boost/simd/function/is_not_less_equal.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

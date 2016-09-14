@@ -11,7 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_DIV_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_DIV_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/divides.hpp>
+#include <boost/simd/function/divides.hpp>
 #include <boost/simd/function/definition/fix.hpp>
 #include <boost/simd/function/ifloor.hpp>
 #include <boost/simd/function/ifix.hpp>

@@ -24,16 +24,16 @@
 #include <boost/simd/constant/sqrteps.hpp>
 #include <boost/simd/constant/two.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/scalar/abs.hpp>
-#include <boost/simd/function/scalar/bitofsign.hpp>
-#include <boost/simd/function/scalar/bitwise_xor.hpp>
-#include <boost/simd/function/scalar/fma.hpp>
-#include <boost/simd/function/scalar/is_eqz.hpp>
-#include <boost/simd/function/scalar/dec.hpp>
-#include <boost/simd/function/scalar/inc.hpp>
-#include <boost/simd/function/scalar/rec.hpp>
-#include <boost/simd/function/scalar/sqr.hpp>
-#include <boost/simd/function/scalar/sqrt.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/bitofsign.hpp>
+#include <boost/simd/function/bitwise_xor.hpp>
+#include <boost/simd/function/fma.hpp>
+#include <boost/simd/function/is_eqz.hpp>
+#include <boost/simd/function/dec.hpp>
+#include <boost/simd/function/inc.hpp>
+#include <boost/simd/function/rec.hpp>
+#include <boost/simd/function/sqr.hpp>
+#include <boost/simd/function/sqrt.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd

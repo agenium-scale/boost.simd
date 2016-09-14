@@ -13,13 +13,13 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ARG_HPP_INCLUDED
 
 #ifndef BOOST_SIMD_NO_NANS
-#include <boost/simd/function/scalar/if_allbits_else.hpp>
-#include <boost/simd/function/scalar/is_nan.hpp>
+#include <boost/simd/function/if_allbits_else.hpp>
+#include <boost/simd/function/is_nan.hpp>
 #endif
 #include <boost/simd/constant/pi.hpp>
-#include <boost/simd/function/scalar/if_else_zero.hpp>
-#include <boost/simd/function/scalar/is_ltz.hpp>
-#include <boost/simd/function/scalar/is_negative.hpp>
+#include <boost/simd/function/if_else_zero.hpp>
+#include <boost/simd/function/is_ltz.hpp>
+#include <boost/simd/function/is_negative.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

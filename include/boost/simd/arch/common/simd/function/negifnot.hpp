@@ -13,8 +13,8 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/unary_minus.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/unary_minus.hpp>
 #include <boost/mpl/equal_to.hpp>
 
 namespace boost { namespace simd { namespace ext

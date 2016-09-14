@@ -12,12 +12,12 @@
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_MULTIPLIES_S_HPP_INCLUDED
 #include <boost/simd/detail/overload.hpp>
 
-#include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/genmask.hpp>
-#include <boost/simd/function/simd/group.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/shift_right.hpp>
-#include <boost/simd/function/simd/split_multiplies.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/genmask.hpp>
+#include <boost/simd/function/group.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/shift_right.hpp>
+#include <boost/simd/function/split_multiplies.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/detail/dispatch/meta/as_unsigned.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>

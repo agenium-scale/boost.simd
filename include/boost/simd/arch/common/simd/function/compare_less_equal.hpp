@@ -11,7 +11,7 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/compare_less.hpp>
+#include <boost/simd/function/compare_less.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

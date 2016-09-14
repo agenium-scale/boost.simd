@@ -15,8 +15,8 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/meta/is_bitwise_logical.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/simd/bitwise_andnot.hpp>
-#include <boost/simd/function/simd/genmask.hpp>
+#include <boost/simd/function/bitwise_andnot.hpp>
+#include <boost/simd/function/genmask.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

@@ -14,23 +14,23 @@
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
-#include <boost/simd/function/simd/abs.hpp>
-#include <boost/simd/function/simd/divides.hpp>
-#include <boost/simd/function/simd/iceil.hpp>
-#include <boost/simd/function/simd/if_zero_else.hpp>
-#include <boost/simd/function/simd/is_eqz.hpp>
-#include <boost/simd/function/simd/is_gtz.hpp>
-#include <boost/simd/function/simd/log10.hpp>
-#include <boost/simd/function/simd/minus.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/round.hpp>
-#include <boost/simd/function/simd/tenpower.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/divides.hpp>
+#include <boost/simd/function/iceil.hpp>
+#include <boost/simd/function/if_zero_else.hpp>
+#include <boost/simd/function/is_eqz.hpp>
+#include <boost/simd/function/is_gtz.hpp>
+#include <boost/simd/function/log10.hpp>
+#include <boost/simd/function/minus.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/round.hpp>
+#include <boost/simd/function/tenpower.hpp>
 #include <boost/assert.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_invalid.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_invalid.hpp>
 #endif
 
 namespace boost { namespace simd { namespace ext

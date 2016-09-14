@@ -13,9 +13,9 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/is_greater.hpp>
-#include <boost/simd/function/simd/nearbyint.hpp>
-#include <boost/simd/function/simd/if_minus.hpp>
+#include <boost/simd/function/is_greater.hpp>
+#include <boost/simd/function/nearbyint.hpp>
+#include <boost/simd/function/if_minus.hpp>
  #include <boost/simd/constant/one.hpp>
 
 

@@ -15,7 +15,7 @@
 #include <boost/simd/constant/twotonmb.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/detail/enforce_precision.hpp>
-#include <boost/simd/function/scalar/abs.hpp>
+#include <boost/simd/function/abs.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <boost/simd/function/std.hpp>

@@ -12,8 +12,8 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IF_ELSE_HPP_INCLUDED
 
 #ifdef BOOST_SIMD_BRANCH_FREE_IF_ELSE
-#include <boost/simd/function/scalar/bitwise_select.hpp>
-#include <boost/simd/function/scalar/genmask.hpp>
+#include <boost/simd/function/bitwise_select.hpp>
+#include <boost/simd/function/genmask.hpp>
 #endif
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/hierarchy.hpp>

@@ -9,9 +9,9 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LOGICAL_NOT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LOGICAL_NOT_HPP_INCLUDED
 
-#include <boost/simd/function/simd/is_eqz.hpp>
-#include <boost/simd/function/simd/complement.hpp>
-#include <boost/simd/function/simd/mask2logical.hpp>
+#include <boost/simd/function/is_eqz.hpp>
+#include <boost/simd/function/complement.hpp>
+#include <boost/simd/function/mask2logical.hpp>
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/traits.hpp>

@@ -15,10 +15,10 @@
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/function/fast.hpp>
 
-#include <boost/simd/function/scalar/abs.hpp>
-#include <boost/simd/function/scalar/bitofsign.hpp>
-#include <boost/simd/function/scalar/bitwise_or.hpp>
-#include <boost/simd/function/scalar/floor.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/bitofsign.hpp>
+#include <boost/simd/function/bitwise_or.hpp>
+#include <boost/simd/function/floor.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>

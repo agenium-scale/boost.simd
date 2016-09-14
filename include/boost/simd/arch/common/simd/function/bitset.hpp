@@ -12,7 +12,7 @@
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
-#include <boost/simd/function/simd/shift_left.hpp>
+#include <boost/simd/function/shift_left.hpp>
 #include <boost/simd/function/dec.hpp>
 #include <boost/simd/constant/one.hpp>
 

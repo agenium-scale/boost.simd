@@ -12,11 +12,11 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_SIGN_HPP_INCLUDED
 
 #ifndef BOOST_SIMD_NO_NANS
-#include <boost/simd/function/scalar/is_nan.hpp>
+#include <boost/simd/function/is_nan.hpp>
 #endif
-#include <boost/simd/function/scalar/is_gtz.hpp>
-#include <boost/simd/function/scalar/is_ltz.hpp>
-#include <boost/simd/function/scalar/shift_right.hpp>
+#include <boost/simd/function/is_gtz.hpp>
+#include <boost/simd/function/is_ltz.hpp>
+#include <boost/simd/function/shift_right.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

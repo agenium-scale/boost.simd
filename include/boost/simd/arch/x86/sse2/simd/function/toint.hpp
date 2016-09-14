@@ -13,7 +13,7 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
-#include <boost/simd/function/simd/split_low.hpp>
+#include <boost/simd/function/split_low.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/detail/dispatch/meta/downgrade.hpp>
 

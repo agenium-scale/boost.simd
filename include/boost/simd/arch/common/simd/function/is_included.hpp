@@ -14,9 +14,9 @@
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/meta/as_logical.hpp>
-#include <boost/simd/function/simd/all.hpp>
-#include <boost/simd/function/simd/bitwise_or.hpp>
-#include <boost/simd/function/simd/is_equal.hpp>
+#include <boost/simd/function/all.hpp>
+#include <boost/simd/function/bitwise_or.hpp>
+#include <boost/simd/function/is_equal.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

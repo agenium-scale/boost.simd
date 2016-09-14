@@ -27,10 +27,6 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_< bd::unspecified_<T>, X >
                           )
   {
-    static_assert ( T::static_size >= 2
-                  , "interleave_first requires at least two elements"
-                  );
-
     template<typename N, typename V>
     static BOOST_FORCEINLINE
     typename V::value_type value(V const& x, V const&, std::true_type const&)
@@ -51,13 +47,19 @@ namespace boost { namespace simd { namespace ext
       return T( value<N>(x,y, brigand::bool_<N::value%2==0>{})... );
     }
 
+    template<typename K, typename N> static BOOST_FORCEINLINE
+    T do_( T const& x, T const&, K const&, br::list<N> const&) BOOST_NOEXCEPT
+    {
+      return x;
+    }
+
     template<typename... N> static BOOST_FORCEINLINE
     T do_( T const& x, T const& y, aggregate_storage const&, br::list<N...> const&) BOOST_NOEXCEPT
     {
       auto const& x0 = x.storage()[0];
       auto const& y0 = y.storage()[0];
 
-      return  combine ( interleave_first( x0, y0)
+      return  combine ( interleave_first(x0, y0)
                       , interleave_second(x0, y0)
                       );
     }

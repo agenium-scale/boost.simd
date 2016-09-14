@@ -13,9 +13,9 @@
 #include <boost/simd/detail/overload.hpp>
 
 #if !defined(BOOST_SIMD_NO_NANS) && defined(BOOST_SIMD_COMPILER_GCC)
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_unord.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_unord.hpp>
 #endif
 
 namespace boost { namespace simd { namespace ext

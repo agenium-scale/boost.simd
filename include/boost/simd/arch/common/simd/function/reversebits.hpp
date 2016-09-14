@@ -13,11 +13,11 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/bitwise_and.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/bitwise_or.hpp>
-#include <boost/simd/function/simd/shift_left.hpp>
-#include <boost/simd/function/simd/shr.hpp>
+#include <boost/simd/function/bitwise_and.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/bitwise_or.hpp>
+#include <boost/simd/function/shift_left.hpp>
+#include <boost/simd/function/shr.hpp>
 #include <boost/simd/constant/ratio.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 

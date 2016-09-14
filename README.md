@@ -40,7 +40,7 @@ you to focus on the important part of your work: the development of new features
   + a proper value semantic wrapper for _SIMD_ registers;
   + an automatic system to detect and exploit architecture specific optimization opportunities;
   + standard compliant iterators to iterate over contiguous range of data in a _SIMD_ compatible way;
-  + standard compliant iterators encapsulating complex _SIMD_ idioms like sliding window or de-interleaving of data on the fly.
+  + over 300 operators and mathematical functions pre-vectorized
 
 # Supported Compilers and Hardware
 

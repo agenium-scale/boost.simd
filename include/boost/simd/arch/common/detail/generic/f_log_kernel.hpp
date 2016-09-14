@@ -13,13 +13,13 @@
 
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/simd/function/fast.hpp>
-#include <boost/simd/function/simd/frexp.hpp>
-#include <boost/simd/function/simd/is_less.hpp>
-#include <boost/simd/function/simd/tofloat.hpp>
-#include <boost/simd/function/simd/if_plus.hpp>
-#include <boost/simd/function/simd/dec.hpp>
-#include <boost/simd/function/simd/sqr.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
+#include <boost/simd/function/frexp.hpp>
+#include <boost/simd/function/is_less.hpp>
+#include <boost/simd/function/tofloat.hpp>
+#include <boost/simd/function/if_plus.hpp>
+#include <boost/simd/function/dec.hpp>
+#include <boost/simd/function/sqr.hpp>
+#include <boost/simd/function/multiplies.hpp>
 
 #include <boost/simd/constant/sqrt_2o_2.hpp>
 #include <boost/simd/constant/mone.hpp>

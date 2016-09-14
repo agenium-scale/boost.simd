@@ -13,14 +13,14 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/constant/valmax.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/inc.hpp>
-#include <boost/simd/function/simd/is_less.hpp>
-#include <boost/simd/function/simd/minus.hpp>
-#include <boost/simd/function/simd/plus.hpp>
-#include <boost/simd/function/simd/splat.hpp>
-#include <boost/simd/function/simd/toint.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/inc.hpp>
+#include <boost/simd/function/is_less.hpp>
+#include <boost/simd/function/minus.hpp>
+#include <boost/simd/function/plus.hpp>
+#include <boost/simd/function/splat.hpp>
+#include <boost/simd/function/toint.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
@@ -32,7 +32,7 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename X)
                           , (detail::is_native<X>)
                           , bd::cpu_
-                          , bs::pack_<bd::integer_<A0>, X>
+                          , bs::pack_<bd::int_<A0>, X>
                           )
    {
      using result = bd::as_integer_t<A0, unsigned> ;
@@ -42,7 +42,19 @@ namespace boost { namespace simd { namespace ext
      }
    };
 
-   BOOST_DISPATCH_OVERLOAD_IF(touint_
+   BOOST_DISPATCH_OVERLOAD(touint_
+                          , (typename A0, typename X)
+                          , bd::cpu_
+                          , bs::pack_<bd::uint_<A0>, X>
+                          )
+   {
+     BOOST_FORCEINLINE A0 operator()(A0 const& a0) const BOOST_NOEXCEPT
+     {
+       return a0;
+     }
+   };
+
+  BOOST_DISPATCH_OVERLOAD_IF(touint_
                           , (typename A0, typename X)
                           , (detail::is_native<X>)
                           , bd::cpu_

@@ -13,10 +13,10 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/abs.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_not_greater_equal.hpp>
-#include <boost/simd/function/simd/min.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_not_greater_equal.hpp>
+#include <boost/simd/function/min.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

@@ -13,15 +13,15 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/is_gtz.hpp>
-#include <boost/simd/function/simd/rol.hpp>
-#include <boost/simd/function/simd/ror.hpp>
-#include <boost/simd/function/simd/unary_minus.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/is_gtz.hpp>
+#include <boost/simd/function/rol.hpp>
+#include <boost/simd/function/ror.hpp>
+#include <boost/simd/function/unary_minus.hpp>
 
 #ifndef NDEBUG
-#include <boost/simd/function/simd/max.hpp>
+#include <boost/simd/function/max.hpp>
 #include <boost/simd/constant/zero.hpp>
 #endif
 

@@ -30,32 +30,32 @@
 #include <boost/simd/constant/pi.hpp>
 #include <boost/simd/constant/two.hpp>
 
-#include <boost/simd/function/simd/abs.hpp>
-#include <boost/simd/function/simd/any.hpp>
-#include <boost/simd/function/simd/bitwise_or.hpp>
-#include <boost/simd/function/simd/floor.hpp>
-#include <boost/simd/function/simd/is_even.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/any.hpp>
+#include <boost/simd/function/bitwise_or.hpp>
+#include <boost/simd/function/floor.hpp>
+#include <boost/simd/function/is_even.hpp>
 
-#include <boost/simd/function/simd/fma.hpp>
-#include <boost/simd/function/simd/if_dec.hpp>
-#include <boost/simd/function/simd/if_else.hpp>
-#include <boost/simd/function/simd/if_inc.hpp>
-#include <boost/simd/function/simd/if_minus.hpp>
-#include <boost/simd/function/simd/if_nan_else.hpp>
-#include <boost/simd/function/simd/if_plus.hpp>
-#include <boost/simd/function/simd/is_equal.hpp>
-#include <boost/simd/function/simd/is_eqz.hpp>
-#include <boost/simd/function/simd/is_flint.hpp>
-#include <boost/simd/function/simd/is_less.hpp>
-#include <boost/simd/function/simd/is_lez.hpp>
-#include <boost/simd/function/simd/log.hpp>
-#include <boost/simd/function/simd/logical_and.hpp>
-#include <boost/simd/function/simd/logical_andnot.hpp>
-#include <boost/simd/function/simd/logical_or.hpp>
-#include <boost/simd/function/simd/nbtrue.hpp>
-#include <boost/simd/function/simd/negif.hpp>
-#include <boost/simd/function/simd/sinpi.hpp>
-#include <boost/simd/function/simd/sqr.hpp>
+#include <boost/simd/function/fma.hpp>
+#include <boost/simd/function/if_dec.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/if_inc.hpp>
+#include <boost/simd/function/if_minus.hpp>
+#include <boost/simd/function/if_nan_else.hpp>
+#include <boost/simd/function/if_plus.hpp>
+#include <boost/simd/function/is_equal.hpp>
+#include <boost/simd/function/is_eqz.hpp>
+#include <boost/simd/function/is_flint.hpp>
+#include <boost/simd/function/is_less.hpp>
+#include <boost/simd/function/is_lez.hpp>
+#include <boost/simd/function/log.hpp>
+#include <boost/simd/function/logical_and.hpp>
+#include <boost/simd/function/logical_andnot.hpp>
+#include <boost/simd/function/logical_or.hpp>
+#include <boost/simd/function/nbtrue.hpp>
+#include <boost/simd/function/negif.hpp>
+#include <boost/simd/function/sinpi.hpp>
+#include <boost/simd/function/sqr.hpp>
 
 
 #include <boost/simd/meta/as_logical.hpp>

@@ -15,8 +15,8 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/meta/as_logical.hpp>
-#include <boost/simd/function/simd/frac.hpp>
-#include <boost/simd/function/simd/is_eqz.hpp>
+#include <boost/simd/function/frac.hpp>
+#include <boost/simd/function/is_eqz.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

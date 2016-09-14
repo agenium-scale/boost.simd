@@ -13,10 +13,10 @@
 
 #include <boost/simd/constant/smallestposval.hpp>
 #include <boost/simd/constant/true.hpp>
-#include <boost/simd/function/simd/abs.hpp>
-#include <boost/simd/function/simd/is_eqz.hpp>
-#include <boost/simd/function/simd/is_not_less.hpp>
-#include <boost/simd/function/simd/logical_or.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/is_eqz.hpp>
+#include <boost/simd/function/is_not_less.hpp>
+#include <boost/simd/function/logical_or.hpp>
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>

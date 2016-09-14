@@ -11,10 +11,10 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_FNMS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_FNMS_HPP_INCLUDED
 
-#include <boost/simd/function/simd/fms.hpp>
-#include <boost/simd/function/simd/minus.hpp>
-#include <boost/simd/function/simd/multiplies.hpp>
-#include <boost/simd/function/simd/unary_minus.hpp>
+#include <boost/simd/function/fms.hpp>
+#include <boost/simd/function/minus.hpp>
+#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/unary_minus.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

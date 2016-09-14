@@ -12,12 +12,12 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_PREDECESSOR_HPP_INCLUDED
 
 #include <boost/simd/constant/valmin.hpp>
-#include <boost/simd/function/scalar/bitfloating.hpp>
-#include <boost/simd/function/scalar/bitinteger.hpp>
-#include <boost/simd/function/scalar/is_gez.hpp>
-#include <boost/simd/function/scalar/is_nan.hpp>
-#include <boost/simd/function/scalar/dec.hpp>
-#include <boost/simd/function/scalar/minus.hpp>
+#include <boost/simd/function/bitfloating.hpp>
+#include <boost/simd/function/bitinteger.hpp>
+#include <boost/simd/function/is_gez.hpp>
+#include <boost/simd/function/is_nan.hpp>
+#include <boost/simd/function/dec.hpp>
+#include <boost/simd/function/minus.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/assert.hpp>
 #include <boost/config.hpp>

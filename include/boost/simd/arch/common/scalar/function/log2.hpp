@@ -13,7 +13,7 @@
 #include <boost/simd/function/std.hpp>
 
 #include <boost/simd/arch/common/detail/scalar/logarithm.hpp>
-#include <boost/simd/function/scalar/ilog2.hpp>
+#include <boost/simd/function/ilog2.hpp>
 #include <boost/simd/meta/is_not_scalar.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>

@@ -12,8 +12,8 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_BITINTEGER_HPP_INCLUDED
 
 #include <boost/simd/constant/signmask.hpp>
-#include <boost/simd/function/scalar/bitwise_cast.hpp>
-#include <boost/simd/function/scalar/is_positive.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/is_positive.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>

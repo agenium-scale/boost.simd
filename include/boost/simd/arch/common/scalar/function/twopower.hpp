@@ -13,7 +13,7 @@
 
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/scalar/is_ltz.hpp>
+#include <boost/simd/function/is_ltz.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

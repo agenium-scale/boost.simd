@@ -5,27 +5,23 @@
 #include <boost/simd/function/multiplies.hpp>
 
 // [scalar-dot-simd]
-template<typename Value>
-Value dot(Value* first1, Value* last1, Value* first2)
+Value simddot(Value* first1, Value* last1, Value* first2)
 {
-  using boost::simd::sum;
-  using boost::simd::pack;
-  using boost::simd::load;
+  namespace bs = boost::simd;
+  using pack_t = bs::pack<Value>;
 
-  typedef pack<Value> type;
-  type tmp{0};
-  int card = type::static_size;
+  pack_t tmp{0};
+  int card = pack_t::static_size;
 
   for(; first1 + card <= last1; first1 += card, first2 += card) {
     // Load current values from the datasets
-    pack<Value> x1 = load< type >(first1);
-    pack<Value> x2 = load< type >(first2);
-
+    pack_t x1 = bs::load< pack_t >(first1);
+    pack_t x2 = bs::load< pack_t >(first2);
     // Computation
     tmp = tmp + x1 * x2;
   }
 
-  Value dot_product = sum(tmp);
+  Value dot_product = bs::sum(tmp); //horizontal SIMD vector summation
   for(; first1 < last1; ++first1, ++first2){
     dot_product += (*first1) * (*first2);
   }

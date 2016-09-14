@@ -11,8 +11,8 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/traits.hpp>
-#include <boost/simd/function/simd/genmask.hpp>
-#include <boost/simd/function/simd/hmsb.hpp>
+#include <boost/simd/function/genmask.hpp>
+#include <boost/simd/function/hmsb.hpp>
 #include <boost/simd/function/splatted.hpp>
 
 namespace boost { namespace simd { namespace ext

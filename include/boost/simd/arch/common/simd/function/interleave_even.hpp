@@ -50,6 +50,12 @@ namespace boost { namespace simd { namespace ext
       return T( value<N>(x,y, brigand::bool_<N::value%2==0>{})... );
     }
 
+    template<typename N0, typename N1> static BOOST_FORCEINLINE
+    T do_( T const& x, T const& y, aggregate_storage const&, br::list<N0,N1> const&) BOOST_NOEXCEPT
+    {
+      return  T(x[0],y[0]);
+    }
+
     template<typename... N> static BOOST_FORCEINLINE
     T do_( T const& x, T const& y, aggregate_storage const&, br::list<N...> const&) BOOST_NOEXCEPT
     {

@@ -12,9 +12,9 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IDIVNEARBYINT_HPP_INCLUDED
 
 #include <boost/simd/arch/common/scalar/function/idivnearbyint.hpp>
-#include <boost/simd/function/simd/divides.hpp>
-#include <boost/simd/function/simd/nearbyint.hpp>
-#include <boost/simd/function/simd/inearbyint.hpp>
+#include <boost/simd/function/divides.hpp>
+#include <boost/simd/function/nearbyint.hpp>
+#include <boost/simd/function/inearbyint.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>

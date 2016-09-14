@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ALL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ALL_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/is_nez.hpp>
+#include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/logical.hpp>
 

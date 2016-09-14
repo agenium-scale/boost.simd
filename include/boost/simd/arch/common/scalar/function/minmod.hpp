@@ -12,10 +12,10 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_MINMOD_HPP_INCLUDED
 
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/scalar/bitwise_xor.hpp>
-#include <boost/simd/function/scalar/is_gez.hpp>
-#include <boost/simd/function/scalar/is_nltz.hpp>
-#include <boost/simd/function/scalar/min.hpp>
+#include <boost/simd/function/bitwise_xor.hpp>
+#include <boost/simd/function/is_gez.hpp>
+#include <boost/simd/function/is_nltz.hpp>
+#include <boost/simd/function/min.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

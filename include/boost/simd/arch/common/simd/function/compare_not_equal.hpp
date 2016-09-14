@@ -10,9 +10,9 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_COMPARE_NOT_EQUAL_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/simd/is_not_equal.hpp>
-#include <boost/simd/function/simd/slice.hpp>
-#include <boost/simd/function/simd/any.hpp>
+#include <boost/simd/function/is_not_equal.hpp>
+#include <boost/simd/function/slice.hpp>
+#include <boost/simd/function/any.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

@@ -15,11 +15,11 @@
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/one.hpp>
-#include <boost/simd/function/scalar/dec.hpp>
-#include <boost/simd/function/scalar/next.hpp>
-#include <boost/simd/function/scalar/inc.hpp>
-#include <boost/simd/function/scalar/prev.hpp>
-#include <boost/simd/function/scalar/sign.hpp>
+#include <boost/simd/function/dec.hpp>
+#include <boost/simd/function/next.hpp>
+#include <boost/simd/function/inc.hpp>
+#include <boost/simd/function/prev.hpp>
+#include <boost/simd/function/sign.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>

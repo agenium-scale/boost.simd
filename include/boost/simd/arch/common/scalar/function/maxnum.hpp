@@ -12,8 +12,8 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_MAXNUM_HPP_INCLUDED
 #include <boost/simd/function/std.hpp>
 
-#include <boost/simd/function/scalar/is_nan.hpp>
-#include <boost/simd/function/scalar/max.hpp>
+#include <boost/simd/function/is_nan.hpp>
+#include <boost/simd/function/max.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>

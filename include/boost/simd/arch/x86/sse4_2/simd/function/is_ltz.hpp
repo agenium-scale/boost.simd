@@ -12,7 +12,7 @@
 #define BOOST_SIMD_ARCH_X86_SSE4_2_SIMD_FUNCTION_IS_LTZ_HPP_INCLUDED
 #include <boost/simd/detail/overload.hpp>
 
-#include <boost/simd/function/simd/is_greater.hpp>
+#include <boost/simd/function/is_greater.hpp>
 #include <boost/simd/constant/zero.hpp>
 
 namespace boost { namespace simd { namespace ext

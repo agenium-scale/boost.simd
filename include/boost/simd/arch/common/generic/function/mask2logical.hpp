@@ -12,7 +12,7 @@
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_MASK2LOGICAL_HPP_INCLUDED
 
 #include <boost/simd/detail/assert_utils.hpp>
-#include <boost/simd/function/simd/is_nez.hpp>
+#include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/assert.hpp>
 #include <boost/config.hpp>

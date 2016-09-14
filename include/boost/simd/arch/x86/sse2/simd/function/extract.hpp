@@ -12,6 +12,7 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/dispatch/adapted/std/integral_constant.hpp>
+#include <boost/predef/architecture.h>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -61,7 +62,7 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-#if !defined(BOOST_MSVC)
+#if BOOST_ARCH_X86_64
   //------------------------------------------------------------------------------------------------
   BOOST_DISPATCH_OVERLOAD ( extract_
                           , (typename A0, typename A1)

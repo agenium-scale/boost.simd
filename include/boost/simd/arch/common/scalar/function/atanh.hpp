@@ -13,12 +13,12 @@
 #include <boost/simd/function/std.hpp>
 
 #include <boost/simd/constant/half.hpp>
-#include <boost/simd/function/scalar/abs.hpp>
-#include <boost/simd/function/scalar/bitofsign.hpp>
-#include <boost/simd/function/scalar/bitwise_xor.hpp>
-#include <boost/simd/function/scalar/fma.hpp>
-#include <boost/simd/function/scalar/log1p.hpp>
-#include <boost/simd/function/scalar/oneminus.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/bitofsign.hpp>
+#include <boost/simd/function/bitwise_xor.hpp>
+#include <boost/simd/function/fma.hpp>
+#include <boost/simd/function/log1p.hpp>
+#include <boost/simd/function/oneminus.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>

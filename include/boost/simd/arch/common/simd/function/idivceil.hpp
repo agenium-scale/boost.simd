@@ -11,9 +11,9 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IDIVCEIL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IDIVCEIL_HPP_INCLUDED
 
-#include <boost/simd/function/simd/divides.hpp>
-#include <boost/simd/function/simd/iceil.hpp>
-#include <boost/simd/function/simd/ceil.hpp>
+#include <boost/simd/function/divides.hpp>
+#include <boost/simd/function/iceil.hpp>
+#include <boost/simd/function/ceil.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>

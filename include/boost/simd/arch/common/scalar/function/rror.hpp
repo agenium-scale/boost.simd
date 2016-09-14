@@ -11,8 +11,8 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_RROR_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_RROR_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/rol.hpp>
-#include <boost/simd/function/scalar/ror.hpp>
+#include <boost/simd/function/rol.hpp>
+#include <boost/simd/function/ror.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

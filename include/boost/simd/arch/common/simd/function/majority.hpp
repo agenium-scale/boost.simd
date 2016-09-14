@@ -14,9 +14,9 @@
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/meta/as_logical.hpp>
-#include <boost/simd/function/simd/is_nez.hpp>
-#include <boost/simd/function/simd/logical_and.hpp>
-#include <boost/simd/function/simd/logical_or.hpp>
+#include <boost/simd/function/is_nez.hpp>
+#include <boost/simd/function/logical_and.hpp>
+#include <boost/simd/function/logical_or.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

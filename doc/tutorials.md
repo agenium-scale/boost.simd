@@ -13,17 +13,25 @@ In the following tutorials, we will assume the use of a 128 bit wide _SIMD_ exte
 all of the examples will work on any supported architecture. Depending on your actual architecture, the output of the
 following tutorials applications may vary.
 
-- [SIMD HelloWorld](@ref tutorial-hello)
-- [A Basic SIMD Loop](@ref tutorial-simd-loop)
-- [Reductions](@ref tutorial-reduction)
-- [Processing Data the SIMD Way](@ref tutorial-data)
-- [Runtime Extension Selection](@ref tutorial-runtime)
+@section basic-tut Basic Tutorials
 
-#TODO: General reduction operations, transforms
+------------------------------
 
-#TODO: Aligned memory
+  1. [The SIMD Hello World](@ref tutorial-hello)
+  2. [A Basic SIMD Loop](@ref tutorial-simd-loop)
+  3. [Memory Alignment](@ref tutorial-memory)
+  4. [Using Mathematical Functions](@ref tutorial-mathematical)
 
-### Is it better practice to use a pack as an array?
+@section inter-tut Intermediate Tutorials
 
-The main element of **Boost.SIMD** is the boost::simd::pack class, accessible through the boost/simd/pack.hpp header file. `pack<T,N>` is an abstraction over a block of `N` elements of type `T`, quite similar to `std::array`. The main semantic difference is that boost::simd::pack is implemented as the best hardware specific type able to store this amount of data which may be a simple scalar array, a single _SIMD_ register or a tuple of _SIMD_ registers depending on `N` and `T`.
+------------------------------
 
+  1. [Writing a dot product the SIMD Way](@ref tutorial-dot)
+  2. [SIMD Branching](@ref tutorial-branching)
+
+@section adv-tut Advanced Tutorials
+
+------------------------------
+
+  1. [Runtime Extension Selection](@ref tutorial-runtime)
+  2. [Computations with different types](@ref tutorial-distance)

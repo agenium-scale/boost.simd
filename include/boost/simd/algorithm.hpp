@@ -2,8 +2,6 @@
 /*!
   @file
 
-  Convenience header for Boost.SIMD standard algorithms
-
   @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
@@ -19,7 +17,8 @@ namespace boost { namespace simd
     @ingroup group-api
     @defgroup group-std Algorithms and Ranges
 
-    SIMD-aware Range adaptors and implementation of standard algorithms;
+    Boost.SIMD provides SIMD-aware Range adaptors and implementation of standard algorithms to
+    simplify interactions with code written using the Standard Template Library.
   **/
 } }
 

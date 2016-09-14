@@ -10,7 +10,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_DEC_HPP_INCLUDED
 
 #include <boost/simd/detail/dispatch/function/overload.hpp>
-#include <boost/simd/function/simd/minus.hpp>
+#include <boost/simd/function/minus.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

@@ -10,8 +10,8 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_INC_HPP_INCLUDED
 
 #include <boost/simd/constant/one.hpp>
-#include <boost/simd/function/simd/plus.hpp>
-#include <boost/simd/function/simd/inc.hpp>
+#include <boost/simd/function/plus.hpp>
+#include <boost/simd/function/inc.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 

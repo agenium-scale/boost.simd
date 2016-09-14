@@ -16,5 +16,5 @@ DEFINE_SCALAR_BENCH(scalar_touint, bs::touint);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_touint, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<scalar_touint, NS_BENCH_NUMERIC_TYPES>(-10, 10);
 }

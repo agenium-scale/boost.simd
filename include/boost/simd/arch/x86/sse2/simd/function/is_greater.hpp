@@ -13,12 +13,12 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/as_logical.hpp>
-#include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/is_equal.hpp>
-#include <boost/simd/function/simd/logical_and.hpp>
-#include <boost/simd/function/simd/logical_or.hpp>
-#include <boost/simd/function/simd/minus.hpp>
-#include <boost/simd/function/simd/shuffle.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/is_equal.hpp>
+#include <boost/simd/function/logical_and.hpp>
+#include <boost/simd/function/logical_or.hpp>
+#include <boost/simd/function/minus.hpp>
+#include <boost/simd/function/shuffle.hpp>
 #include <boost/simd/constant/signmask.hpp>
 #include <boost/simd/detail/dispatch/meta/downgrade.hpp>
 

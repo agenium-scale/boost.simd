@@ -11,8 +11,8 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IFLOOR_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IFLOOR_HPP_INCLUDED
 
-#include <boost/simd/function/simd/floor.hpp>
-#include <boost/simd/function/simd/toint.hpp>
+#include <boost/simd/function/floor.hpp>
+#include <boost/simd/function/toint.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>

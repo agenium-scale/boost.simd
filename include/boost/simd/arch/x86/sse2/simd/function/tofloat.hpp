@@ -12,9 +12,9 @@
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_TOFLOAT_HPP_INCLUDED
 #include <boost/simd/detail/overload.hpp>
 
-#include <boost/simd/function/simd/bitwise_cast.hpp>
-#include <boost/simd/function/simd/bitwise_notand.hpp>
-#include <boost/simd/function/simd/if_plus.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/bitwise_notand.hpp>
+#include <boost/simd/function/if_plus.hpp>
 #include <boost/simd/constant/signmask.hpp>
 #include <boost/simd/constant/twoto31.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>

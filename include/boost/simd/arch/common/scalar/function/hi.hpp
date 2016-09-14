@@ -11,8 +11,8 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_HI_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_HI_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/lo.hpp>
-#include <boost/simd/function/scalar/shr.hpp>
+#include <boost/simd/function/lo.hpp>
+#include <boost/simd/function/shr.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>

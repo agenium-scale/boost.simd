@@ -13,9 +13,9 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/traits.hpp>
-#include <boost/simd/function/simd/mask2logical.hpp>
-#include <boost/simd/function/simd/bitwise_notand.hpp>
-#include <boost/simd/function/simd/genmask.hpp>
+#include <boost/simd/function/mask2logical.hpp>
+#include <boost/simd/function/bitwise_notand.hpp>
+#include <boost/simd/function/genmask.hpp>
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/meta/as_logical.hpp>
 

@@ -11,7 +11,7 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/as_logical.hpp>
-#include <boost/simd/function/simd/logical_not.hpp>
+#include <boost/simd/function/logical_not.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
