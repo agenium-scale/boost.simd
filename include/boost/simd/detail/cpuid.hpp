@@ -14,7 +14,11 @@
 
 #if BOOST_ARCH_X86
 
-#if BOOST_COMP_GNUC || BOOST_COMP_CLANG
+#if BOOST_COMP_INTEL || BOOST_COMP_INTEL_EMULATED || BOOST_COMP_GNUC || BOOST_COMP_CLANG
+#define BOOST_SIMD_CPUID_HEADER
+#endif
+
+#if defined(BOOST_SIMD_CPUID_HEADER)
 #include <cpuid.h>
 #else
 #include <intrin.h>
@@ -22,7 +26,7 @@
 
 namespace boost { namespace simd { namespace detail
 {
-#if BOOST_COMP_GNUC || BOOST_COMP_CLANG
+#if defined(BOOST_SIMD_CPUID_HEADER)
   using register_type = unsigned int;
 #else
   using register_type = int;
@@ -31,7 +35,7 @@ namespace boost { namespace simd { namespace detail
   enum registerID { eax=0, ebx=1, ecx=2, edx=3 };
 
   inline void cpuid(register_type pRegisters[4], int function) {
-#if BOOST_COMP_GNUC || BOOST_COMP_CLANG
+#if defined(BOOST_SIMD_CPUID_HEADER)
     __cpuid (function, pRegisters[eax], pRegisters[ebx], pRegisters[ecx], pRegisters[edx]);
 #else
   __cpuid(pRegisters, function);
@@ -39,7 +43,7 @@ namespace boost { namespace simd { namespace detail
   }
 
   inline void cpuidex(register_type pRegisters[4], int function, int subfunction) {
-#if BOOST_COMP_GNUC || BOOST_COMP_CLANG
+#if defined(BOOST_SIMD_CPUID_HEADER)
     __cpuid_count ( function, subfunction
                   , pRegisters[eax], pRegisters[ebx], pRegisters[ecx], pRegisters[edx]
                   );
