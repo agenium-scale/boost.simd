@@ -11,6 +11,10 @@ SET( SOURCES
     reduce.phase.cpp
     transform.unary.cpp
     transform.binary.cpp
+    shuffle.unary.cpp
+    shuffle.binary.cpp
+    shuffle.perm.cpp
+    shuffle.perm2.cpp
   )
 
 make_unit( "doc" ${SOURCES})
