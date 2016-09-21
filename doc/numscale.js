@@ -27,7 +27,7 @@ $( document ).ready(function() {
     var right_nav = $('<div class="col-md-3"></div>').append('\
 	<div id="search-box" class="input-group">\
 	<div class="input-group-btn">\
-	<button aria-expanded="false" type="button" class="btn btn-default" data-toggle="dropdown">\
+	<button type="button" class="btn" data-toggle="dropdown">\
 	<span class="glyphicon glyphicon-search"></span> <span class="caret"></span>\
 	</button>\
 	<ul class="dropdown-menu">\
