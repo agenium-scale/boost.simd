@@ -2,8 +2,8 @@ Writing a dot product the __SIMD__ way {#tutorial-dot}
 =========
 
 @tableofcontents
-In this tutorial we will show how data can be processed using **Boost.SIMD**
-by writing a naive dot product using **Boost.SIMD**.
+In this tutorial we will show how data can be processed using **@projectname**
+by writing a naive dot product using **@projectname**.
 
 @section data-objectives Objectives
 
@@ -18,8 +18,8 @@ In this tutorial we will:
 
 -------------------------------------
 
-This tutorial will present how data can be processed using **Boost.SIMD** by writing a naive dot
-product using **Boost.SIMD**.
+This tutorial will present how data can be processed using **@projectname** by writing a naive dot
+product using **@projectname**.
 
 A simple sequential, scalar dot product could be coded like this:
 

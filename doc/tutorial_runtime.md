@@ -7,7 +7,7 @@
 - [Runtime Extension Selection](@ref tutorial-runtime)
 
 
-Using **Boost.SIMD** requires compiling for a particular target machine with specific _SIMD_
+Using **@projectname** requires compiling for a particular target machine with specific _SIMD_
 instructions available. For many architectures (x86 in particular), _SIMD_ instructions may be conditionally supported depending on the exact hardware being used, with more recent hardware
 typically supporting more _SIMD_ instructions than older ones.
 

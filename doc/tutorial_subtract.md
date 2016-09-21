@@ -37,7 +37,7 @@ This size may also be accessed through the member variable pack_t::static_size.
 
 We shall first assume that the size of our array is a multiple of the cardinal of the pack.
 Please note that this assumption is very unsafe as code written
-using **Boost.SIMD** is designed to be portable across multiple architectures! The more realistic case
+using **@projectname** is designed to be portable across multiple architectures! The more realistic case
 where this is no longer true is demonstrated afterwards.
 
 @subsection substract-constant Filling the subtraction pack
@@ -67,7 +67,7 @@ using the operator `-` and then store the data using boost::simd::store
 
 Note that `fortytwo`, the pack of constants to be subtracted from the input data, is declared outside
 of the loop so that it is not loaded at each iteration.
-Generally speaking, any compiler which supports **Boost.SIMD** would automatically optimize this,
+Generally speaking, any compiler which supports **@projectname** would automatically optimize this,
 although it is better to be safe!
 
 If we wish to declare our pack outside of the loop, for example, if we wish to re-use it later,

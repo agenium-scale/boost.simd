@@ -11,10 +11,10 @@ for example in a clustering algorithm such as dbscan.
 -------------------------------------
 
 In this tutorial we will:
-- [Introduce the Boost.SIMD vectorized versions of standard library functions](#distance-intro)
-- [Demonstrate how to achieve significant speed up of expensive calculations using Boost.SIMD](#distance-simd)
+- [Introduce the @projectname vectorized versions of standard library functions](#distance-intro)
+- [Demonstrate how to achieve significant speed up of expensive calculations using @projectname](#distance-simd)
 - [Show you how to use data which is not in the required order](#distance-interleave)
-- [Show how to measure the speed up achieved using Boost.SIMD](#distance-speed-up)
+- [Show how to measure the speed up achieved using @projectname](#distance-speed-up)
 - [Introduce detailed performance analysis](#distance-performance-analysis)
 
 @section distance-intro Distance between two points
@@ -38,7 +38,7 @@ vectors are assumed to be filled with the correct input data.
 
 \notebox{We use aligned memory to ensure correct behaviour and highest performance}
 
-**Boost.SIMD** comes with many useful functions for performing vectorized computations. In this example
+**@projectname** comes with many useful functions for performing vectorized computations. In this example
 we use the `+`, `-`, `sqr` and `sqrt` functions. The `sqr` functions calculates the square of each element
 of a __SIMD__ vector. The first step is to fill a `pack_t` with the X and Y coordinates of the reference
 point. We then apply the formula shown above for calculating the distance between two points.
@@ -78,7 +78,7 @@ This is done as follows:
 @snippet distance.cpp distance-interleave
 
 @section distance-speed-up Measuring the speed up
-If you decide to develop software using **Boost.SIMD**, performance is clearly
+If you decide to develop software using **@projectname**, performance is clearly
 very important to you. Therefore, it is necessary to be able to accurately measure
 the speed-up achieved. In thsi example, we measure the time taken for the main
 calculation loop using the timing utilities provided by `std::chrono`. Where available,
@@ -140,7 +140,7 @@ of the __SIMD__ intrinsics does not necessarily result in a 4 times speed-up.
 We also can see that the __SIMD__ interleave loop took signicantly longer on AVX then on SSE. The reason
 for this lies in the functions supported by AVX processors. Not all SSE functions
 are supported by AVX processors, in this case, there is no corresponding deinterleave
-first and second intrinsic on AVX/. Therefore, **Boost.SIMD** splits the avx vector
+first and second intrinsic on AVX/. Therefore, **@projectname** splits the avx vector
 into two SSE vectors before performing the deinterleave operation. It is for this reason
 that the code takes longer to execute on AVX than on SSE.
 

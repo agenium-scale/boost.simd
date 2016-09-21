@@ -18,7 +18,7 @@ Frequently Asked Questions {#faq}
 
 -------------------------------------------------
 
-The main element of Boost.SIMD is the boost::simd::pack class. pack is an abstraction over a block
+The main element of @projectname is the boost::simd::pack class. pack is an abstraction over a block
 of `N` elements of type `T`, quite similar to `std::array`. The main semantic difference is that
 boost::simd::pack is implemented as the best hardware specific type able to store this amount of
 data which may be a simple scalar array, a single SIMD register or a tuple of SIMD registers
@@ -31,7 +31,7 @@ your algorithms over those data using pack and related functions.
 
 -------------------------------------------------
 
-  There are several factors which can reduce the speed-up obtained using **Boost.SIMD**.
+  There are several factors which can reduce the speed-up obtained using **@projectname**.
   - Have you enabled compiler optimizations?
     You must enable all compiler optimizations as well as defining the `NDEBUG` flag
 
@@ -79,7 +79,7 @@ your algorithms over those data using pack and related functions.
 
   - Is your algorithm vectorizable?
   - Have you used the fastest version of your function?
-    Several **Boost.SIMD** functions, particularly more complex ones, come in several
+    Several **@projectname** functions, particularly more complex ones, come in several
     versions, where the user has a choice between accuracy and speed. This is achieved using
     decorators. Please refer to @ref decorators for more information.
 
@@ -88,7 +88,7 @@ your algorithms over those data using pack and related functions.
 -------------------------------------------------
 
 The most common cause of seg-faults in SIMD codes is accessing non-aligned memory. For best
-performance, all memory should be aligned on pack_t::alignment bytes. Boost.SIMD includes an
+performance, all memory should be aligned on pack_t::alignment bytes. @projectname includes an
 aligned memory allocator to help you with this. Please refer to @ref tutorial-memory for details
 on how to ensure that you memory is correctly aligned.
 
@@ -99,7 +99,7 @@ on how to ensure that you memory is correctly aligned.
 The most common reason for this is that the two packs being compared are not of the same type.
 Another common reason is that the return type is incorrect. Using auto is one way of preventing
 this error, however, it is best to be aware of the types you are using. Comparison operators in
-**Boost.SIMD** are of two types, either vectorized comparison, where the results is a vector
+**@projectname** are of two types, either vectorized comparison, where the results is a vector
 of logical with the same cardinal as the input vectors, or a reduction comparison, where the
 result is a bool.
 
@@ -107,7 +107,7 @@ result is a bool.
 
 -------------------------------------------------
 
-There are several ways to measure the speed-up of your code. You may use the **Boost.SIMD** bench
+There are several ways to measure the speed-up of your code. You may use the **@projectname** bench
 system to benchmark your code segment. This allows you to measure the execution time of your code
 in cycles per element or in units of time.
 
@@ -136,7 +136,7 @@ certain instructions are not equal on both architectures, for example, sqrt on S
 <a href="http://www.agner.org/optimize/instruction_tables.pdf">here</a> for more information.
 
 Very few integer operations are supported on AVX, AVX2 is required for most integer operations. If
-a **Boost.SIMD** function is called on an integer AVX register, this register will be split into
+a **@projectname** function is called on an integer AVX register, this register will be split into
 two SSE registers and the equivalent instruction called on both register. In the case, no speed-up
 will be observed compared with SSE code. This is true also on Altivec, where double is not
 supported.
@@ -150,7 +150,7 @@ supported.
 - There are many SIMD related bugs across all compilers, and some compilers generate less than
   optimal code in some cases. Is it possible to update your compiler to a more modern compiler?
 - We provide workarounds for all known compiler bugs, however, we may have missed some. You may
-  also have found a bug in **Boost.SIMD**. Please report this through issues on our
+  also have found a bug in **@projectname**. Please report this through issues on our
   <a href="https://github.com/numscale/boost.simd/issues">github</a>
   with a minimal code example. We responds quickly to bug reports and do our best to patch them as
   quickly as possible.
@@ -159,9 +159,9 @@ supported.
 
 -------------------------------------------------
 
-If you require a certain intrinsic, you may search inside of **Boost.SIMD** for it and then call
+If you require a certain intrinsic, you may search inside of **@projectname** for it and then call
 the relevant function.
 
-In rare cases, the intrinsic may not be included in *Boost.SIMD** as we map the intrinsic wherever
+In rare cases, the intrinsic may not be included in *@projectname** as we map the intrinsic wherever
 it makes sense semantically. If a certain intrinsic does not fit inside of this model, if may be
 excluded. In this case, you may call it yourself, however, this will not be portable.

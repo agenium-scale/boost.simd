@@ -3,7 +3,7 @@ SIMD Reductions {#tutorial-reduction}
 
 @tableofcontents
 In this tutorial, we will explore how to reduce an array of data to a scalar
-using **Boost.SIMD**. Such a reduction may involve calculating the sum or
+using **@projectname**. Such a reduction may involve calculating the sum or
 product of the elements of the array, for example.
 
 @section reduction-objectives Objectives
@@ -11,7 +11,7 @@ product of the elements of the array, for example.
 -------------------------------------
 
 In this tutorial we will:
-- [Show how an array of data can be reduced to a scalar using **Boost.SIMD**](#tutorial-reduction-simd )
+- [Show how an array of data can be reduced to a scalar using **@projectname**](#tutorial-reduction-simd )
 
 @section tutorial-reduction-simd Transforming a scalar reduction into a SIMD reduction
 

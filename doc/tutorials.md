@@ -1,10 +1,10 @@
 Tutorials {#tutorials}
 =========
 
-The general principles of **Boost.SIMD** are introduced in the following tutorials.
+The general principles of **@projectname** are introduced in the following tutorials.
 
   + using the pack abstraction of a native _SIMD_ vector.
-  + compiling a program written using **Boost.SIMD**.
+  + compiling a program written using **@projectname**.
   + using _SIMD_ specific idioms such as reduction, branching and shuffling
   + vectorizing code using the Standard Template Library(transform and accumulate)
   + _SIMD_ runtime dispatching

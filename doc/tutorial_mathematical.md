@@ -19,8 +19,8 @@ In this tutorial we will:
 
 Mathematical functions can be very expensive, so using a vectorized version of
 these functions is of great benefit, especially if you have a large input array.
-**Boost.SIMD**  includes vectorized versions of all common mathematical functions
-The developers of **Boost.SIMD** take numerical precisions very seriously, so all of these
+**@projectname**  includes vectorized versions of all common mathematical functions
+The developers of **@projectname** take numerical precisions very seriously, so all of these
 functions are extremely accurate despite being highly optimized. Please refer to the section
 @ref numerical-precision and @ref performance for further details.
 
@@ -39,9 +39,9 @@ and thus save precious cpu cycles!
 
 @snippet mathematical.cpp mathematical-calc-combine
 
-@section tutorial-math-decorators Boost.SIMD functions decorators
+@section tutorial-math-decorators @projectname functions decorators
 
-There are several different versions of many **Boost.SIMD** functions. For
+There are several different versions of many **@projectname** functions. For
 example, if the input angle is guaranteed to be within the range
 \f$ [-\pi/4, \pi/4]\f$ (Oh! its just the case in the initialization we choose, what a coincidence!)
 you may use the `restricted_` function decorator on the mathematical functions

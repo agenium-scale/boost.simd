@@ -31,7 +31,7 @@ Here we have a very clear branch in the code. How can we vectorize this loop?
 
 In this example, we introduce a new type, `bs::logical`, which is an abstraction for the equivalent of
 a `bool` on a particular architecture. Therefore, a pack of `bs::logical` or a `logical_t` is the equivalent of a pack
-of `bool`. This abstraction is necessary to ensure that any code written using **Boost.SIMD** is portable
+of `bool`. This abstraction is necessary to ensure that any code written using **@projectname** is portable
 due to the differences between how various processors handle operations requiring logical values.(Note that most of the time
 you do not need to define yourself the logical type as `auto` can do the job).
 
@@ -45,10 +45,10 @@ in its correct location in memory.
 Many algorithms are memory bound, meaning that the time required to complete the function is mostly
 determined by the time taken to transfer the data from memory to the processor and back again. Therefore,
 any operation which reduces the quantity of data to be transferred could significantly accelerate the
-execution of the code. As you are using **Boost.SIMD** you are clearly concerned about performance!
+execution of the code. As you are using **@projectname** you are clearly concerned about performance!
 In this example, the input image is a 16 bit image. However, the output of the thresholding operation
 is a binary image. Therefore, the output image can safely be stored as an 8 bit image, halfing the
-quantity of data to be transferred from the processor to memory! **Boost.SIMD** includes many functions
+quantity of data to be transferred from the processor to memory! **@projectname** includes many functions
 to upgrade and downgrade or `split` and `group` data:
 
 @snippet thresholding.cpp simd-threshold-downgrade

@@ -22,7 +22,7 @@ In this tutorial we will:
 In order to fully understand memory alignment and how to maximise performance of your software by
 ensuring memory alignment, please read this excellent article by [IBM](http://www.ibm.com/developerworks/library/pa-dalign/).
 Although this article focuses on PowerPC processors, its conclusions are valid on many other architectures.
-**Boost.SIMD** gives you portabililty accross many architectures, in order to have the best
+**@projectname** gives you portabililty accross many architectures, in order to have the best
 performance possible across a range of architectures, it is worth considering the alignment requirements
 of all target architectures.
 
@@ -62,5 +62,5 @@ use Boost.Align with an `std::vector` as follows:
 
 @snippet alignment.cpp align-vector
 
-The data stored in this vetcor may be used by Boost.SIMD as an input or
+The data stored in this vetcor may be used by @projectname as an input or
 output buffer.
