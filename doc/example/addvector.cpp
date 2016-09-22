@@ -68,10 +68,11 @@ int main()
   boost::simd::transform(&data[0], &data[0] + size, &data1[0], &res[0], boost::simd::plus);
 //! [bs-simd-transform]
 
-#if 0
+#if __cplusplus >= 201402L
   //! [bs-simd-transform-14]
-  boost::simd::transform( &data[0],&data[0]+size, &data1[0], &res[0], [](auto const& a, auto const& b) { return a+b; });
-  //! [bs-simd-transform-14]
+  boost::simd::transform(&data[0], &data[0] + size, &data1[0], &res[0],
+                         [](auto const& a, auto const& b) { return a + b; });
+//! [bs-simd-transform-14]
 #endif
 
   return 0;
