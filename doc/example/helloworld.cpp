@@ -9,17 +9,17 @@
 
 //! [hello]
 #include <iostream>
-#include <vector>
 #include <list>
 #include <numeric>
+#include <vector>
 //! [hello-include-pack]
 #include <boost/simd/pack.hpp>
 //! [hello-include-pack]
 
-#include <boost/simd/function/store.hpp>
+#include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/plus.hpp>
 #include <boost/simd/function/splat.hpp>
-#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/store.hpp>
 
 int main()
 {
