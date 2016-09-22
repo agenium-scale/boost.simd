@@ -193,8 +193,8 @@ div.fragment {
 }
 
 div.line {
-	font-family: monospace, fixed;
-        font-size: 13px;
+    font-family: "Courrier", Courrier, monospace;
+    font-size: 16px;
 	min-height: 13px;
 	line-height: 1.0;
 	text-wrap: unrestricted;
