@@ -62,5 +62,5 @@ use Boost.Align with an `std::vector` as follows:
 
 @snippet alignment.cpp align-vector
 
-The data stored in this vetcor may be used by @projectname as an input or
+The data stored in this vector may be used by @projectname as an input or
 output buffer.
