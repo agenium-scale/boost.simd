@@ -13,6 +13,7 @@ set ( SOURCES
       concepts.cpp
       hierarchy.cpp
       iterators.cpp
+      assignment.cpp
     )
 
 make_unit( "api.pack" ${SOURCES})
