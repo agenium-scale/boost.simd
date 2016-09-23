@@ -35,3 +35,8 @@ following tutorials applications may vary.
 
   1. [Runtime Extension Selection](@ref tutorial-runtime)
   2. [Computations with different types](@ref tutorial-distance)
+
+<!-- FIXME: current page isn't big enough and moving from nav tabs makes all content to be
+dancing/moving wierdly. Adding this blank block fixes this. This workaround won't be useful
+anymore when this page will have more content. -->
+<div style="height: 100px"></div>
