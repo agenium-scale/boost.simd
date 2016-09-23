@@ -1047,9 +1047,7 @@ dl.section
 {
     background-color: #F9F9F9;
 	margin-left: 0px;
-	//padding-left: 0px;
-	padding-left: 15px;
-	padding-right: 15px;
+	padding: 15px;
 }
 
 dl.warning, dl.attention, dl.note, dl.pre, dl.post,
