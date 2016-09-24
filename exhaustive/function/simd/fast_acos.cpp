@@ -5,7 +5,7 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#include <boost/simd/function/simd/acos.hpp>
+#include <boost/simd/function/acos.hpp>
 #include <boost/simd/constant/mone.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/pack.hpp>
@@ -30,7 +30,7 @@ int main(int argc, char* argv[])
   if(argc >= 3) maxi = std::atof(argv[2]);
   bs::exhaustive_test<bs::pack<float>> ( mini
                                        , maxi
-                                       , bs::fast_(bs::acos)
+                                       , bs::acos
                                        , raw_acos()
                                        );
 

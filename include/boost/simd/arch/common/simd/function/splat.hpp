@@ -19,7 +19,10 @@
 #pragma warning(push)
 #pragma warning(disable: 4244) // conversion and loss of data
 #endif
-
+#if defined(__GNUC__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-braces"
+#endif
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = ::boost::dispatch;
@@ -50,7 +53,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE target_t do_(V const& v, K const&, brigand::list<N...> const&) const
     {
       value_t s(v);
-      return {{ {value_<N>(s)}... }};
+      return {{ value_<N>(s)... }};
     }
 
     template<typename... N> BOOST_FORCEINLINE
@@ -98,5 +101,7 @@ namespace boost { namespace simd { namespace ext
 #ifdef BOOST_MSVC
 #pragma warning(pop)
 #endif
-
+#if defined(__GNUC__)
+#pragma GCC diagnostic pop
+#endif
 #endif

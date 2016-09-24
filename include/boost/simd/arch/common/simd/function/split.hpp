@@ -14,6 +14,11 @@
 #include <boost/simd/function/split_low.hpp>
 #include <array>
 
+#if defined(__GNUC__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-braces"
+#endif
+
 namespace boost { namespace simd { namespace ext
 {
    namespace bd = boost::dispatch;
@@ -35,4 +40,7 @@ namespace boost { namespace simd { namespace ext
   };
 } } }
 
+#if defined(__GNUC__)
+#pragma GCC diagnostic pop
+#endif
 #endif
