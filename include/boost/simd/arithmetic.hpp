@@ -90,7 +90,7 @@ namespace boost { namespace simd
 
      - **Remainder operations**
 
-       @ref rem is the remander functor providing same kind of facilities as @ref div
+       @ref rem is the remainder functor providing same kind of facilities as @ref div
 
        With two parameters rem(a, b) is equivalent to  rem(fix, a, b), but rem can admit
        a first optional parameter that modifies its behaviour and moreover can use the fast_ decorator if
@@ -125,10 +125,10 @@ namespace boost { namespace simd
      - **Fused multiply-add operations**
 
       <center>
-        | name            | name            | name         | name             |
-        |:---------------:|:---------------:|:------------:|:----------------:|
-        | @ref fma        | @ref fms        | @ref fnma    | @ref fnms        |
-        | @ref correct_fma| @ref two_add,   | @ref two_prod| @ref two_split   |
+        | name            | name         | name          | name             |
+        |:---------------:|:------------:|:-------------:|:----------------:|
+        | @ref fma        | @ref fnma    |  @ref two_add | @ref two_split   |
+        | @ref fms        | @ref fnms    |  @ref two_prod|                  |
       </center>
 
       Correct fused multiply/add implies
@@ -136,19 +136,19 @@ namespace boost { namespace simd
       - only one rounding
       - no "intermediate" overflow
 
-      f?m? and fm? family provides this each time it is reasonable
+      fnm? and fm? family provides this each time it is reasonable
       in terms of performance (mainly if the system has the hard
       wired capability).
 
       If you need "real" fma capabilities in all circumstances in your own
-      code you can use @ref correct_fma (although it can be expansive) or
-      (generally still more expansive) std_(fma) by using the decorator.
+      code you can use conformant_(fma) (although it can be expansive) or
+      (generally still more expansive) std_(fma) by using the decorators.
 
-      @ref two_add, @ref two_prod and @ref two_split are used internally in @ref correct_fma and
+      @ref two_add, @ref two_prod and @ref two_split are used internally in @ref conformant_(fma) and
       can be useful in searching extra-accuracy in other circumstances as double-double
       computations.
 
-      @ref correct_fma is never used internally by Boost.SIMD
+      @ref conformant_(fma) decis never used internally by Boost.SIMD
 
       - **Standard operations**
 
