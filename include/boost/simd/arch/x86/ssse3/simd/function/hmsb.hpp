@@ -11,7 +11,9 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSSE3_SIMD_FUNCTION_HMSB_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSSE3_SIMD_FUNCTION_HMSB_HPP_INCLUDED
 #include <boost/simd/detail/overload.hpp>
+#include <boost/config.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/detail/dispatch/meta/downgrade.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -25,7 +27,8 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE std::size_t operator() ( const A0 & a0) const BOOST_NOEXCEPT
     {
-      using s8type = bs::pack<int8_t, 16>;
+      using dg =  bd::downgrade_t<A0>;
+      using s8type = bs::pack<dg, 16>;
       s8type mask = {0x01,0x03,0x05,0x07,0x09,0x0B,0x0D,0x0F
                                        ,-128,-128,-128,-128,-128,-128,-128,-128
                                        };
