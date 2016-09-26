@@ -25,10 +25,6 @@ if (NOT PROJECT_DOC_DIR)
   return()
 endif()
 
-if (NOT BOOST_SIMD_PROJECT_NAME)
-  set(BOOST_SIMD_PROJECT_NAME "Boost.SIMD")
-endif()
-
 configure_file(${PROJECT_DOC_DIR}/Doxyfile.in ${PROJECT_DOC_DIR}/Doxyfile @ONLY)
 
 add_custom_target(doc
