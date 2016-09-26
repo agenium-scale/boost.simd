@@ -73,6 +73,10 @@ if (DEFINED DEV)
   NS_project_include(stf.standalone)
 endif()
 
+## Extension point for CMake
+## -------------------------------------------------------------------------------------------------
+include(./cmake/extend.cmake)
+
 ## Compute version string and mode + Documentation
 ## -------------------------------------------------------------------------------------------------
 if (DEFINED DEV AND NOT DEFINED IS_TRAVIS_CI)
@@ -96,10 +100,6 @@ include_directories(
   ${PROJECT_SOURCE_DIR}/exhaustive
   ${Boost_INCLUDE_DIRS}
 )
-
-## Extension point for CMake
-## -------------------------------------------------------------------------------------------------
-include(./cmake/extend.cmake)
 
 ## Setup Unit/Bench & Coverage Test
 ## -------------------------------------------------------------------------------------------------
