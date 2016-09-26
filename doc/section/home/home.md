@@ -25,7 +25,7 @@ the time required to develop, test and deploy software as well as decreasing the
 **@projectname** allows you to focus on the important part of your work: the development of new features
 and functionality. We take care of all of the architecture and compiler specific details and we provide
 updates when new architectures are released by manufacturers. All you have to do is re-compile your code
-every time you target a new architecture. **projectname** does this by providing the following components:
+every time you target a new architecture. **@projectname** does this by providing the following components:
 
   + a proper value semantic wrapper for _SIMD_ registers
   + more than 300 mathematical functions ready to use and already vectorized

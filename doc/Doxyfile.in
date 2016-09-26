@@ -59,7 +59,7 @@ ALIASES += anchor{1}="<a name=\"\1\"></a>[[\1](#back\1)]:"
 ALIASES += refanchor{1}="<a name=\"back\1\"></a>[<sup>\1</sup>](#\1)"
 ALIASES += intconst="<a href=\"http://www.boost.org/doc/libs/release/libs/mpl/doc/refmanual/integral-constant.html\">Integral Constant</a>"
 ALIASES += range{2}="<tt>[\1, \2[</tt>"
-ALIASES += projectname=@BOOST_SIMD_PROJECT_NAME@
+ALIASES += projectname=@PROJECT_NAME@
 
 # --------------------------------------------------------------------------------------------------
 
@@ -98,7 +98,7 @@ ALIASES += projectname=@BOOST_SIMD_PROJECT_NAME@
 # title of most generated pages and in a few other places.
 # The default value is: My Project.
 
-#PROJECT_NAME           = @BOOST_SIMD_PROJECT_NAME@
+#PROJECT_NAME           = @PROJECT_NAME@
 
 # The PROJECT_NUMBER tag can be used to enter a project or revision number. This
 # could be handy for archiving the generated documentation or if some version
@@ -311,7 +311,7 @@ TAB_SIZE               = 4
 #ALIASES += refanchor{1}="<a name=\"back\1\"></a>[<sup>\1</sup>](#\1)"
 #ALIASES += intconst="<a href=\"http://www.boost.org/doc/libs/release/libs/mpl/doc/refmanual/integral-constant.html\">Integral Constant</a>"
 #ALIASES += range{2}="<tt>[\1, \2[</tt>"
-#ALIASES += projectname=@BOOST_SIMD_PROJECT_NAME@
+#ALIASES += projectname=@PROJECT_NAME@
 
 # This tag can be used to specify a number of word-keyword mappings (TCL only).
 # A mapping has the form "name=value". For example adding "class=itcl::class"
