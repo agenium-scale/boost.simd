@@ -13,7 +13,8 @@ namespace ba = boost::alignment;
 template <typename T>
 void iota_and_print()
 {
-  // The number of elements will be deduced automatically according to the target architecture selected
+  // The number of elements will be deduced automatically according to the
+  // target architecture selected
   using pack_t = bs::pack<T>;
 
   // Allocates aligned memory using expected alignment
@@ -21,14 +22,16 @@ void iota_and_print()
     (T*)(ba::aligned_alloc(pack_t::alignment, pack_t::static_size * sizeof(T))));
   std::iota(data.get(), data.get() + pack_t::static_size, T(1));
 
-  // Constructs a pack (which will call `boost::simd::aligned_load<pack_t>` to fill up its data)
+  // Constructs a pack (which will call `boost::simd::aligned_load<pack_t>` to
+  // fill up its data)
   pack_t p{data.get()};
 
   // Now just print the loaded data
   std::cout << p << std::endl;
 }
 
-int main() {
+int main()
+{
   iota_and_print<std::int8_t>();
   iota_and_print<std::uint8_t>();
   // --

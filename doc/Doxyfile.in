@@ -1,3 +1,69 @@
+PROJECT_NAME           = @PROJECT_NAME@
+PROJECT_BRIEF          = "Flexible SIMD Programming"
+PROJECT_LOGO           = @PROJECT_DOC_DIR@/template/assets/numscale.png
+PROJECT_NUMBER         = 4.16.9.0
+
+DOXYFILE_ENCODING      = UTF-8
+
+OUTPUT_DIRECTORY       =
+
+INPUT                  = @PROJECT_SOURCE_DIR@/include/boost/
+INPUT                 += @PROJECT_SOURCE_DIR@/include/boost/simd/
+INPUT                 += @PROJECT_SOURCE_DIR@/include/boost/simd/meta
+INPUT                 += @PROJECT_SOURCE_DIR@/include/boost/simd/meta/hierarchy
+INPUT                 += @PROJECT_SOURCE_DIR@/include/boost/simd/constant
+INPUT                 += @PROJECT_SOURCE_DIR@/include/boost/simd/function/
+INPUT                 += @PROJECT_DOC_DIR@/section
+INPUT                 += @PROJECT_DOC_DIR@/section/home
+INPUT                 += @PROJECT_DOC_DIR@/section/quickstart
+INPUT                 += @PROJECT_DOC_DIR@/section/faq
+INPUT                 += @PROJECT_DOC_DIR@/section/tutorials
+FILE_PATTERNS          = *.md *.hpp
+RECURSIVE              = NO
+
+INPUT_ENCODING         = UTF-8
+FILE_PATTERNS          = *.c *.h *.cpp *.hpp *.md
+
+EXCLUDE                = @PROJECT_SOURCE_DIR@/include/boost/simd/detail
+EXCLUDE               += @PROJECT_SOURCE_DIR@/include/boost/simd/arch
+EXCLUDE               += @PROJECT_SOURCE_DIR@/include/boost/simd/constant/definition
+EXCLUDE               += @PROJECT_SOURCE_DIR@/include/boost/simd/function/definition
+EXCLUDE_SYMLINKS       = NO
+
+EXCLUDE_PATTERNS       =
+EXCLUDE_SYMBOLS        =
+
+EXAMPLE_PATH           = @PROJECT_SOURCE_DIR@/doc/example
+EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc
+EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/doc/
+EXAMPLE_RECURSIVE      = YES
+EXAMPLE_PATTERNS       = *
+EXAMPLE_RECURSIVE      = NO
+
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+HTML_FILE_EXTENSION    = .html
+HTML_HEADER            = @PROJECT_DOC_DIR@/template/html/header.html
+HTML_FOOTER            = @PROJECT_DOC_DIR@/template/html/footer.html
+HTML_STYLESHEET        =
+HTML_EXTRA_STYLESHEET  = @PROJECT_DOC_DIR@/template/css/numscale.css
+HTML_EXTRA_FILES       = @PROJECT_DOC_DIR@/template/js/numscale.js
+HTML_EXTRA_FILES      += @PROJECT_DOC_DIR@/template/assets/numscale_icon.png
+
+LAYOUT_FILE            = @PROJECT_DOC_DIR@/template/layout.xml
+
+ALIASES =
+ALIASES += notebox{1}="<dl class=\"section note\"><dt>Note</dt><dd>\1</dd></dl>"
+ALIASES += warningbox{1}="<dl class=\"section warning\"><dt>Warning</dt><dd>\1</dd></dl>"
+ALIASES += anchor{1}="<a name=\"\1\"></a>[[\1](#back\1)]:"
+ALIASES += refanchor{1}="<a name=\"back\1\"></a>[<sup>\1</sup>](#\1)"
+ALIASES += intconst="<a href=\"http://www.boost.org/doc/libs/release/libs/mpl/doc/refmanual/integral-constant.html\">Integral Constant</a>"
+ALIASES += range{2}="<tt>[\1, \2[</tt>"
+ALIASES += projectname=@BOOST_SIMD_PROJECT_NAME@
+
+# --------------------------------------------------------------------------------------------------
+
+
 # Doxyfile 1.8.9.1
 
 # This file describes the settings to be used by the documentation system
@@ -24,7 +90,7 @@
 # for the list of possible encodings.
 # The default value is: UTF-8.
 
-DOXYFILE_ENCODING      = UTF-8
+#DOXYFILE_ENCODING      = UTF-8
 
 # The PROJECT_NAME tag is a single word (or a sequence of words surrounded by
 # double-quotes, unless you are using Doxywizard) that should identify the
@@ -32,32 +98,32 @@ DOXYFILE_ENCODING      = UTF-8
 # title of most generated pages and in a few other places.
 # The default value is: My Project.
 
-PROJECT_NAME           = @BOOST_SIMD_PROJECT_NAME@
+#PROJECT_NAME           = @BOOST_SIMD_PROJECT_NAME@
 
 # The PROJECT_NUMBER tag can be used to enter a project or revision number. This
 # could be handy for archiving the generated documentation or if some version
 # control system is used.
 
-PROJECT_NUMBER         = " "
+#PROJECT_NUMBER         = " "
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description
 # for a project that appears at the top of each page and should give viewer a
 # quick idea about the purpose of the project. Keep the description short.
 
-PROJECT_BRIEF          = "Flexible SIMD Programming"
+#PROJECT_BRIEF          = "Flexible SIMD Programming"
 
 # With the PROJECT_LOGO tag one can specify a logo or an icon that is included
 # in the documentation. The maximum height of the logo should not exceed 55
 # pixels and the maximum width should not exceed 200 pixels. Doxygen will copy
 # the logo to the output directory.
 
-PROJECT_LOGO           =  "@Boost.SIMD_SOURCE_DIR@/doc/numscale.png"
+#PROJECT_LOGO           =  "@Boost.SIMD_SOURCE_DIR@/doc/numscale.png"
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) path
 # into which the generated documentation will be written. If a relative path is
 # entered, it will be relative to the location where doxygen was started. If
 # left blank the current directory will be used.
 
-OUTPUT_DIRECTORY       =
+#OUTPUT_DIRECTORY       =
 
 # If the CREATE_SUBDIRS tag is set to YES then doxygen will create 4096 sub-
 # directories (in 2 levels) under the output directory of each output format and
@@ -238,14 +304,14 @@ TAB_SIZE               = 4
 # newlines.
 
 # Concepts and links to boost documentation
-ALIASES =
-ALIASES += notebox{1}="<table align=center width=90% class=\"table-striped \"> <tr><th><dl class=\"section note\"><dt>Note</dt><dd>\1</dd></dl> </table>"
-ALIASES += warningbox{1}="<table align=center width=90% class=\"table-striped \"> <tr><th><dl class=\"section warning\"><dt>Warning</dt><dd>\1</dd></dl> </table>"
-ALIASES += anchor{1}="<a name=\"\1\"></a>[[\1](#back\1)]:"
-ALIASES += refanchor{1}="<a name=\"back\1\"></a>[<sup>\1</sup>](#\1)"
-ALIASES += intconst="<a href=\"http://www.boost.org/doc/libs/release/libs/mpl/doc/refmanual/integral-constant.html\">Integral Constant</a>"
-ALIASES += range{2}="<tt>[\1, \2[</tt>"
-ALIASES += projectname=@BOOST_SIMD_PROJECT_NAME@
+#ALIASES =
+#ALIASES += notebox{1}="<dl class=\"section note\"><dt>Note</dt><dd>\1</dd></dl>"
+#ALIASES += warningbox{1}="<dl class=\"section warning\"><dt>Warning</dt><dd>\1</dd></dl>"
+#ALIASES += anchor{1}="<a name=\"\1\"></a>[[\1](#back\1)]:"
+#ALIASES += refanchor{1}="<a name=\"back\1\"></a>[<sup>\1</sup>](#\1)"
+#ALIASES += intconst="<a href=\"http://www.boost.org/doc/libs/release/libs/mpl/doc/refmanual/integral-constant.html\">Integral Constant</a>"
+#ALIASES += range{2}="<tt>[\1, \2[</tt>"
+#ALIASES += projectname=@BOOST_SIMD_PROJECT_NAME@
 
 # This tag can be used to specify a number of word-keyword mappings (TCL only).
 # A mapping has the form "name=value". For example adding "class=itcl::class"
@@ -694,7 +760,7 @@ FILE_VERSION_FILTER    =
 # DoxygenLayout.xml, doxygen will parse it automatically even if the LAYOUT_FILE
 # tag is left empty.
 
-LAYOUT_FILE             = @Boost.SIMD_SOURCE_DIR@/doc/layout.xml
+#LAYOUT_FILE             = @Boost.SIMD_SOURCE_DIR@/doc/layout.xml
 
 # The CITE_BIB_FILES tag can be used to specify one or more bib files containing
 # the reference definitions. This must be a list of .bib files. The .bib
@@ -775,15 +841,15 @@ WARN_LOGFILE           =
 # spaces.
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                    = @Boost.SIMD_SOURCE_DIR@/include/boost/
-INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/
+#INPUT                    = @Boost.SIMD_SOURCE_DIR@/include/boost/
+#INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/
 #INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/meta
 #INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/meta/hierarchy
 #INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/constant
 #INPUT                   += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/function/
-INPUT                   += @Boost.SIMD_SOURCE_DIR@/doc
-FILE_PATTERNS           = *.md *.hpp
-RECURSIVE               = NO
+#INPUT                   += @Boost.SIMD_SOURCE_DIR@/doc
+#FILE_PATTERNS           = *.md *.hpp
+#RECURSIVE               = NO
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
@@ -792,7 +858,7 @@ RECURSIVE               = NO
 # possible encodings.
 # The default value is: UTF-8.
 
-INPUT_ENCODING         = UTF-8
+#INPUT_ENCODING         = UTF-8
 
 # If the value of the INPUT tag contains directories, you can use the
 # FILE_PATTERNS tag to specify one or more wildcard patterns (like *.cpp and
@@ -803,54 +869,54 @@ INPUT_ENCODING         = UTF-8
 # *.md, *.mm, *.dox, *.py, *.f90, *.f, *.for, *.tcl, *.vhd, *.vhdl, *.ucf,
 # *.qsf, *.as and *.js.
 
-FILE_PATTERNS          = *.c \
-                         *.cc \
-                         *.cxx \
-                         *.cpp \
-                         *.c++ \
-                         *.java \
-                         *.ii \
-                         *.ixx \
-                         *.ipp \
-                         *.i++ \
-                         *.inl \
-                         *.idl \
-                         *.ddl \
-                         *.odl \
-                         *.h \
-                         *.hh \
-                         *.hxx \
-                         *.hpp \
-                         *.h++ \
-                         *.cs \
-                         *.d \
-                         *.php \
-                         *.php4 \
-                         *.php5 \
-                         *.phtml \
-                         *.inc \
-                         *.m \
-                         *.markdown \
-                         *.md \
-                         *.mm \
-                         *.dox \
-                         *.py \
-                         *.f90 \
-                         *.f \
-                         *.for \
-                         *.tcl \
-                         *.vhd \
-                         *.vhdl \
-                         *.ucf \
-                         *.qsf \
-                         *.as \
-                         *.js
+#FILE_PATTERNS          = *.c \
+#                         *.cc \
+#                         *.cxx \
+#                         *.cpp \
+#                         *.c++ \
+#                         *.java \
+#                         *.ii \
+#                         *.ixx \
+#                         *.ipp \
+#                         *.i++ \
+#                         *.inl \
+#                         *.idl \
+#                         *.ddl \
+#                         *.odl \
+#                         *.h \
+#                         *.hh \
+#                         *.hxx \
+#                         *.hpp \
+#                         *.h++ \
+#                         *.cs \
+#                         *.d \
+#                         *.php \
+#                         *.php4 \
+#                         *.php5 \
+#                         *.phtml \
+#                         *.inc \
+#                         *.m \
+#                         *.markdown \
+#                         *.md \
+#                         *.mm \
+#                         *.dox \
+#                         *.py \
+#                         *.f90 \
+#                         *.f \
+#                         *.for \
+#                         *.tcl \
+#                         *.vhd \
+#                         *.vhdl \
+#                         *.ucf \
+#                         *.qsf \
+#                         *.as \
+#                         *.js
 
 # The RECURSIVE tag can be used to specify whether or not subdirectories should
 # be searched for input files as well.
 # The default value is: NO.
 
-RECURSIVE              = YES
+#RECURSIVE              = YES
 
 # The EXCLUDE tag can be used to specify files and/or directories that should be
 # excluded from the INPUT source files. This way you can easily exclude a
@@ -859,16 +925,16 @@ RECURSIVE              = YES
 # Note that relative paths are relative to the directory from which doxygen is
 # run.
 
-EXCLUDE                = @Boost.SIMD_SOURCE_DIR@/include/boost/simd/detail
-EXCLUDE               += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/arch
-EXCLUDE               += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/constant/definition
-EXCLUDE               += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/function/definition
+#EXCLUDE                = @Boost.SIMD_SOURCE_DIR@/include/boost/simd/detail
+#EXCLUDE               += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/arch
+#EXCLUDE               += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/constant/definition
+#EXCLUDE               += @Boost.SIMD_SOURCE_DIR@/include/boost/simd/function/definition
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded
 # from the input.
 # The default value is: NO.
 
-EXCLUDE_SYMLINKS       = NO
+#EXCLUDE_SYMLINKS       = NO
 
 # If the value of the INPUT tag contains directories, you can use the
 # EXCLUDE_PATTERNS tag to specify one or more wildcard patterns to exclude
@@ -877,7 +943,7 @@ EXCLUDE_SYMLINKS       = NO
 # Note that the wildcards are matched against the file with absolute path, so to
 # exclude all test directories for example use the pattern */test/*
 
-EXCLUDE_PATTERNS       =
+#EXCLUDE_PATTERNS       =
 
 # The EXCLUDE_SYMBOLS tag can be used to specify one or more symbol names
 # (namespaces, classes, functions, etc.) that should be excluded from the
@@ -888,30 +954,30 @@ EXCLUDE_PATTERNS       =
 # Note that the wildcards are matched against the file with absolute path, so to
 # exclude all test directories use the pattern */test/*
 
-EXCLUDE_SYMBOLS        =
+#EXCLUDE_SYMBOLS        =
 
 # The EXAMPLE_PATH tag can be used to specify one or more files or directories
 # that contain example code fragments that are included (see the \include
 # command).
 
-EXAMPLE_PATH            = @Boost.SIMD_SOURCE_DIR@/doc/example
-EXAMPLE_PATH           += @Boost.SIMD_SOURCE_DIR@/test/doc
-EXAMPLE_PATH           += @Boost.SIMD_SOURCE_DIR@/doc/
-EXAMPLE_RECURSIVE       = YES
+#EXAMPLE_PATH            = @Boost.SIMD_SOURCE_DIR@/doc/example
+#EXAMPLE_PATH           += @Boost.SIMD_SOURCE_DIR@/test/doc
+#EXAMPLE_PATH           += @Boost.SIMD_SOURCE_DIR@/doc/
+#EXAMPLE_RECURSIVE       = YES
 
 # If the value of the EXAMPLE_PATH tag contains directories, you can use the
 # EXAMPLE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp and
 # *.h) to filter out the source-files in the directories. If left blank all
 # files are included.
 
-EXAMPLE_PATTERNS       = *
+#EXAMPLE_PATTERNS       = *
 
 # If the EXAMPLE_RECURSIVE tag is set to YES then subdirectories will be
 # searched for input files to be used with the \include or \dontinclude commands
 # irrespective of the value of the RECURSIVE tag.
 # The default value is: NO.
 
-EXAMPLE_RECURSIVE      = NO
+#EXAMPLE_RECURSIVE      = NO
 
 # The IMAGE_PATH tag can be used to specify one or more files or directories
 # that contain images that are to be included in the documentation (see the
@@ -1105,7 +1171,7 @@ IGNORE_PREFIX          =
 # If the GENERATE_HTML tag is set to YES, doxygen will generate HTML output
 # The default value is: YES.
 
-GENERATE_HTML          = YES
+#GENERATE_HTML          = YES
 
 # The HTML_OUTPUT tag is used to specify where the HTML docs will be put. If a
 # relative path is entered the value of OUTPUT_DIRECTORY will be put in front of
@@ -1113,14 +1179,14 @@ GENERATE_HTML          = YES
 # The default directory is: html.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_OUTPUT            = html
+#HTML_OUTPUT            = html
 
 # The HTML_FILE_EXTENSION tag can be used to specify the file extension for each
 # generated HTML page (for example: .htm, .php, .asp).
 # The default value is: .html.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_FILE_EXTENSION    = .html
+#HTML_FILE_EXTENSION    = .html
 
 # The HTML_HEADER tag can be used to specify a user-defined HTML header file for
 # each generated HTML page. If the tag is left blank doxygen will generate a
@@ -1140,7 +1206,7 @@ HTML_FILE_EXTENSION    = .html
 # of the possible markers and block names see the documentation.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_HEADER            = @Boost.SIMD_SOURCE_DIR@/doc/header.html
+#HTML_HEADER            = @Boost.SIMD_SOURCE_DIR@/doc/header.html
 
 # The HTML_FOOTER tag can be used to specify a user-defined HTML footer for each
 # generated HTML page. If the tag is left blank doxygen will generate a standard
@@ -1150,7 +1216,7 @@ HTML_HEADER            = @Boost.SIMD_SOURCE_DIR@/doc/header.html
 # that doxygen normally uses.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_FOOTER             = @Boost.SIMD_SOURCE_DIR@/doc/footer.html
+#HTML_FOOTER             = @Boost.SIMD_SOURCE_DIR@/doc/footer.html
 
 # The HTML_STYLESHEET tag can be used to specify a user-defined cascading style
 # sheet that is used by each HTML page. It can be used to fine-tune the look of
@@ -1162,7 +1228,7 @@ HTML_FOOTER             = @Boost.SIMD_SOURCE_DIR@/doc/footer.html
 # obsolete.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_STYLESHEET        =
+#HTML_STYLESHEET        =
 
 # The HTML_EXTRA_STYLESHEET tag can be used to specify additional user-defined
 # cascading style sheets that are included after the standard style sheets
@@ -1175,7 +1241,7 @@ HTML_STYLESHEET        =
 # list). For an example see the documentation.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_EXTRA_STYLESHEET  = @Boost.SIMD_SOURCE_DIR@/doc/numscale.css
+#HTML_EXTRA_STYLESHEET  = @Boost.SIMD_SOURCE_DIR@/doc/numscale.css
 
 # The HTML_EXTRA_FILES tag can be used to specify one or more extra images or
 # other source files which should be copied to the HTML output directory. Note
@@ -1185,8 +1251,8 @@ HTML_EXTRA_STYLESHEET  = @Boost.SIMD_SOURCE_DIR@/doc/numscale.css
 # files will be copied as-is; there are no commands or markers available.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_EXTRA_FILES       = @Boost.SIMD_SOURCE_DIR@/doc/numscale.js
-HTML_EXTRA_FILES      += @Boost.SIMD_SOURCE_DIR@/doc/numscale_icon.png
+#HTML_EXTRA_FILES       = @Boost.SIMD_SOURCE_DIR@/doc/numscale.js
+#HTML_EXTRA_FILES      += @Boost.SIMD_SOURCE_DIR@/doc/numscale_icon.png
 
 # The HTML_COLORSTYLE_HUE tag controls the color of the HTML output. Doxygen
 # will adjust the colors in the style sheet and background images according to

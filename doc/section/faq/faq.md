@@ -35,12 +35,15 @@ your algorithms over those data using pack and related functions.
   - Have you enabled compiler optimizations?
     You must enable all compiler optimizations as well as defining the `NDEBUG` flag
 
-    <table align=center width=25% class="table-striped table-bordered">
-    <tr><th>Compiler                <th>Flag
-    <tr><td>g++                     <td>-O3
-    <tr><td>clang++                 <td>-O3
-    <tr><td>Visual Studio           <td>Enable Release mode
-    </table>
+    <center>
+    Compiler                | Flag
+    ------------------------|-------------------
+    g++                     | -O3
+    clang++                 | -O3
+    Intel C++ Compiler      | -O3
+    Microsoft Visual Studio | Enable Release mode
+    </center>
+
 
   - Have you compiled in 64bit mode?
     There is significant performance increase on architectures supporting

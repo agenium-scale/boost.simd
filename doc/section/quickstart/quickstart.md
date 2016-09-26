@@ -126,5 +126,5 @@ You can now :
 
 If you encounter any problems or think you found bug, you can:
   - [Consult the FAQ](@ref faq)
-  - [consult our Issues Tracker on GitHub](https://github.com/NumScale/boost.simd/issues)
-  - [ask a question on our Q&A Forum](https://groups.google.com/forum/#!forum/boost-simd).
+  - [Consult our Issues Tracker on GitHub](https://github.com/NumScale/boost.simd/issues)
+  - [Ask a question on our Q&A Forum](https://groups.google.com/forum/#!forum/boost-simd).
