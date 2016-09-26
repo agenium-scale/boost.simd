@@ -16,7 +16,6 @@ set(SOURCES
   exp10.cpp
   exp2.cpp
   expm1.cpp
-  fast_acos.cpp
   log.cpp
   log1p.cpp
   log10.cpp

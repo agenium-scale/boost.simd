@@ -26,7 +26,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE std::size_t operator() ( const A0 & a0) const BOOST_NOEXCEPT
     {
-      using s8type = typename detail::make_dependent< bs::pack<int8_t, 16>, A0>::type;
+      using s8type = typename A0::template retype<int8_t, 16>;
       s8type mask = {0x01,0x03,0x05,0x07,0x09,0x0B,0x0D,0x0F
                                        ,-128,-128,-128,-128,-128,-128,-128,-128
                                        };

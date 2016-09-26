@@ -14,10 +14,6 @@
 #include <boost/simd/function/split_low.hpp>
 #include <array>
 
-#if defined(__GNUC__)
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wmissing-braces"
-#endif
 
 namespace boost { namespace simd { namespace ext
 {
@@ -35,12 +31,9 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE result_t operator()(A0 const& a) const BOOST_NOEXCEPT
     {
-      return { split_low(a), split_high(a) };
+      return {{ split_low(a), split_high(a)}};
     }
   };
 } } }
 
-#if defined(__GNUC__)
-#pragma GCC diagnostic pop
-#endif
 #endif
