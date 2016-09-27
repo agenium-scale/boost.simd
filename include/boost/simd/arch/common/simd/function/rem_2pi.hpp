@@ -64,7 +64,7 @@ namespace boost { namespace simd { namespace ext
                           , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::pack_ <bd::floating_<A0>, X>
-                          , bd::target_ <bd::unspecified_<A1>, X>
+                          , bd::target_ <bd::unspecified_<A1>>, X>
                           )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1 const&) const BOOST_NOEXCEPT
