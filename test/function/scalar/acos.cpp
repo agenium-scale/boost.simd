@@ -40,3 +40,28 @@ STF_CASE_TPL (" acos",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(acos(bs::One<T>()), bs::Zero<r_t>(), 0.5);
   STF_ULP_EQUAL(acos(bs::Zero<T>()), bs::Pio_2<r_t>(), 0);
 }
+
+
+STF_CASE_TPL ("accurate  acos",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::acos;
+
+  using r_t = decltype(bs::accurate_(acos)(T()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, T);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_ULP_EQUAL(bs::accurate_(bs::acos)(bs::Inf<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::accurate_(bs::acos)(bs::Minf<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::accurate_(bs::acos)(bs::Nan<T>()), bs::Nan<r_t>(), 0);
+#endif
+  STF_ULP_EQUAL(bs::accurate_(bs::acos)(bs::Half<T>()), bs::Pio_3<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::accurate_(bs::acos)(bs::Mhalf<T>()), bs::Twopio_3<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::accurate_(bs::acos)(bs::Mone<T>()), bs::Pi<r_t>(), 0);
+  STF_ULP_EQUAL(bs::accurate_(bs::acos)(bs::One<T>()), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(bs::accurate_(bs::acos)(bs::Zero<T>()), bs::Pio_2<r_t>(), 0);
+}
