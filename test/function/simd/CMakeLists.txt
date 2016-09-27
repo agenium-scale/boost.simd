@@ -36,6 +36,7 @@ set ( SOURCES
       acotpi.cpp
       acsc.cpp
       acscd.cpp
+      acsch.cpp
       acscpi.cpp
       aligned_store.cpp
       all.cpp
@@ -43,6 +44,7 @@ set ( SOURCES
       arg.cpp
       asec.cpp
       asecd.cpp
+      asech.cpp
       asecpi.cpp
       asin.cpp
       asind.cpp
@@ -61,6 +63,8 @@ set ( SOURCES
       bitfloating.cpp
       bitget.cpp
       bitinteger.cpp
+      bitofsign.cpp
+      bits.cpp
       bitset.cpp
       bitwise_and.cpp
       bitwise_andnot.cpp
@@ -94,6 +98,10 @@ set ( SOURCES
       cotd.cpp
       coth.cpp
       cotpi.cpp
+      csc.cpp
+      cscd.cpp
+      csch.cpp
+      cscpi.cpp
       ctz.cpp
       cummax.cpp
       cummin.cpp
@@ -106,22 +114,26 @@ set ( SOURCES
       deinterleave_second.cpp
       dist.cpp
       dist.saturated.cpp
-      divceil.cpp
-      divfix.cpp
-      divfloor.cpp
+      div.cpp
+      div.ceil.cpp
+      div.fix.cpp
+      div.floor.cpp
       divides.cpp
       divides.saturated.cpp
-      divnearbyint.cpp
-      divround.cpp
-      divtrunc.cpp
+      div.nearbyint.cpp
+      div.round.cpp
+      div.trunc.cpp
       dot.cpp
       enumerate.cpp
       erfc.cpp
       erf.cpp
       erfcx.cpp
+      exp10.cpp
       exp2.cpp
       exp.cpp
       expm1.cpp
+      exponent.cpp
+      exponentbits.cpp
       exprecnegc.cpp
       exprecneg.cpp
       expx2.cpp
@@ -177,7 +189,7 @@ set ( SOURCES
       interleave_first.cpp
       interleave_odd.cpp
       interleave_second.cpp
-      iround.cpp
+      ifix.cpp
       is_denormal.cpp
       is_equal.cpp
       is_equal_with_equal_nans.cpp
@@ -212,6 +224,7 @@ set ( SOURCES
       is_not_equal_with_equal_nans.cpp
       is_not_greater.cpp
       is_not_greater_equal.cpp
+      is_not_imag.cpp
       is_not_infinite.cpp
       is_not_less.cpp
       is_not_less_equal.cpp
@@ -221,6 +234,7 @@ set ( SOURCES
       is_ord.cpp
       is_positive.cpp
       is_real.cpp
+      is_simd_logical.cpp
       is_unord.cpp
       ldexp.cpp
       lo.cpp
@@ -286,6 +300,7 @@ set ( SOURCES
       rem_pio2.cpp
       rem_pio2_medium.cpp
       rem_pio2_straight.cpp
+      rem_2pi.cpp
       remquo.cpp
       remround.cpp
       repeat_lower_half.cpp
@@ -297,11 +312,18 @@ set ( SOURCES
       round.cpp
       rrol.cpp
       rror.cpp
+      rshl.cpp
+      rshr.cpp
       rsqrt.cpp
       safe_max.cpp
       safe_min.cpp
+      sec.cpp
+      secd.cpp
+      sech.cpp
+      secpi.cpp
       shift_left.cpp
       shift_right.cpp
+      shr.cpp
       sign.cpp
       significants.cpp
       signnz.cpp
@@ -329,6 +351,7 @@ set ( SOURCES
 ##      stream.cpp
       successor.cpp
       sum.cpp
+      swapbytes.cpp
       tan.cpp
       tand.cpp
       tanh.cpp

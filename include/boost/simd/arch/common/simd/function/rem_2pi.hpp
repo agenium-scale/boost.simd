@@ -41,11 +41,11 @@ namespace boost { namespace simd { namespace ext
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
   BOOST_DISPATCH_OVERLOAD_IF (rem_2pi_
-                          , (typename A0, typename X)
-                          , (detail::is_native<X>)
-                          , bd::cpu_
-                          , bs::pack_ < bd::floating_<A0>, X>
-                          )
+                             , (typename A0, typename X)
+                             , (detail::is_native<X>)
+                             , bd::cpu_
+                             , bs::pack_ < bd::floating_<A0>, X>
+                             )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
@@ -60,12 +60,12 @@ namespace boost { namespace simd { namespace ext
   };
 
   BOOST_DISPATCH_OVERLOAD_IF (rem_2pi_
-                          , (typename A0, typename A1, typename X)
-                          , (detail::is_native<X>)
-                          , bd::cpu_
-                          , bs::pack_ <bd::floating_<A0>, X>
-                          , bd::target_ <bd::unspecified_<A1>>, X>
-                          )
+                             , (typename A0, typename A1, typename X)
+                             , (detail::is_native<X>)
+                             , bd::cpu_
+                             , bs::pack_ <bd::floating_<A0>, X>
+                             , bd::target_ <bd::unspecified_<A1>>
+                             )
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1 const&) const BOOST_NOEXCEPT
     {

@@ -6,11 +6,9 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#include <boost/simd/function/sinh.hpp>
-#include <boost/simd/function/saturated.hpp>
+#include <boost/simd/function/swapbytes.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
-
 
 namespace bs = boost::simd;
 
@@ -22,20 +20,21 @@ void test(Env& $)
   T a1[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
-    a1[i] = (i%2) ? T(i) : -T(i);
-    b[i] = bs::sinh(a1[i]) ;
+    a1[i] = (i%2) ? T(i+1) : T(-i+1);
+    b[i] = bs::swapbytes(a1[i]);
   }
-
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
-  STF_ULP_EQUAL(bs::sinh(aa1), bb, 0.5);
+  STF_ULP_EQUAL(bs::swapbytes(aa1), bb, 0);
 }
 
-STF_CASE_TPL("Check sinh on pack" , STF_IEEE_TYPES)
+STF_CASE_TPL("Check swapbytes on pack", STF_INTEGRAL_TYPES)
 {
-  static const std::size_t N = bs::pack<T>::static_size;
-
+  namespace bs = boost::simd;
+  using p_t = bs::pack<T>;
+  static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
   test<T, N/2>($);
   test<T, N*2>($);
 }
+

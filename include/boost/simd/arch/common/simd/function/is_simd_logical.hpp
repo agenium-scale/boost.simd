@@ -44,7 +44,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE bool operator()(const A0& a0) const BOOST_NOEXCEPT
     {
-      using iA0 = bd::as_integer_t<A0>;
+      using iA0 = bd::as_integer_t<A0, unsigned>;
       return is_simd_logical(bitwise_cast<iA0>(a0));
     }
   };

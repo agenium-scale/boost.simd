@@ -6,7 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#include <boost/simd/function/sinh.hpp>
+#include <boost/simd/function/acsch.hpp>
 #include <boost/simd/function/saturated.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
@@ -23,15 +23,15 @@ void test(Env& $)
   for(std::size_t i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? T(i) : -T(i);
-    b[i] = bs::sinh(a1[i]) ;
+    b[i] = bs::acsch(a1[i]) ;
   }
 
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
-  STF_ULP_EQUAL(bs::sinh(aa1), bb, 0.5);
+  STF_ULP_EQUAL(bs::acsch(aa1), bb, 0.5);
 }
 
-STF_CASE_TPL("Check sinh on pack" , STF_IEEE_TYPES)
+STF_CASE_TPL("Check acsch pack" , STF_IEEE_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 

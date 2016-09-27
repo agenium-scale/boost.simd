@@ -9,13 +9,13 @@
 */
 //==================================================================================================
 #include <boost/simd/pack.hpp>
-#include <boost/simd/function/mask2logical.hpp>
-#include <boost/simd/constant/allbits.hpp>
+#include <boost/simd/function/is_not_imag.hpp>
+#include <boost/simd/constant/smallestposval.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/logical.hpp>
 #include <simd_test.hpp>
 
-template <typename T, std::size_t N, typename Env>
+template <typename T, int N, typename Env>
 void test(Env& $)
 {
   namespace bs = boost::simd;
@@ -24,17 +24,17 @@ void test(Env& $)
 
   T a1[N];
   bs::logical<T> b[N];
-  for(std::size_t i = 0; i < N; ++i)
+  for(int i = 0; i < N; ++i)
   {
-    a1[i] = (i%2) ? T(0) : bs::Allbits<T>();
-     b[i] = bs::mask2logical(a1[i]);
+    a1[i] = (i%2) ? T(i) : T(-i);
+    b[i] = bs::is_not_imag(a1[i]);
    }
   p_t aa1(&a1[0], &a1[0]+N);
   pl_t bb(&b[0], &b[0]+N);
-  STF_EQUAL(bs::mask2logical(aa1), bb);
+  STF_IEEE_EQUAL(bs::is_not_imag(aa1), bb);
 }
 
-STF_CASE_TPL("Check mask2logical on pack", STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check is_not_imag on pack" , STF_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;

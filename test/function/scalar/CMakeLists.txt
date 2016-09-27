@@ -95,15 +95,15 @@ set ( SOURCES
    dec.saturated.cpp
    dist.cpp
    dist.saturated.cpp
-   divceil.cpp
    div.cpp
-   divfix.cpp
-   divfloor.cpp
+   div.ceil.cpp
+   div.fix.cpp
+   div.floor.cpp
    divides.cpp
    divides.saturated.cpp
-   divnearbyint.cpp
-   divround.cpp
-   divtrunc.cpp
+   div.nearbyint.cpp
+   div.round.cpp
+   div.trunc.cpp
    dot.cpp
    enumerate.cpp
 #   eps.cpp
@@ -114,8 +114,8 @@ set ( SOURCES
    exp2.cpp
    exp.cpp
    expm1.cpp
-   exponentbits.cpp
    exponent.cpp
+   exponentbits.cpp
    exprecnegc.cpp
    exprecneg.cpp
    expx2.cpp
