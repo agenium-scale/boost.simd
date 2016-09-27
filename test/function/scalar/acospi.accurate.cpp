@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/scalar/acosd.hpp>
+#include <boost/simd/function/scalar/acospi.hpp>
 #include <scalar_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -17,27 +17,26 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/mzero.hpp>
 
-STF_CASE_TPL (" acosd ",  STF_IEEE_TYPES)
+STF_CASE_TPL (" acospi",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
-  using bs::acosd;
+  using bs::acospi;
 
-  using r_t = decltype(acosd(T()));
+  using r_t = decltype(acospi(T()));
 
   // return type conformity test
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(acosd(bs::Inf<T>()), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(acosd(bs::Minf<T>()), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(acosd(bs::Nan<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::accurate_(bs::acospi)(bs::Inf<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::accurate_(bs::acospi)(bs::Minf<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::accurate_(bs::acospi)(bs::Nan<T>()), bs::Nan<r_t>(), 0);
 #endif
-  STF_ULP_EQUAL(acosd(bs::Half<T>()), 60, 0.5);
-  STF_ULP_EQUAL(acosd(bs::Mhalf<T>()), 120, 0.5);
-  STF_ULP_EQUAL(acosd(bs::Mone<T>()), 180, 0);
-  STF_ULP_EQUAL(acosd(bs::One<T>()), bs::Zero<r_t>(), 32);
-  STF_ULP_EQUAL(acosd(bs::Zero<T>()), 90, 0);
+  STF_ULP_EQUAL(bs::accurate_(bs::acospi)(bs::Half<T>()), r_t(1.0/3.0), 0.5);
+  STF_ULP_EQUAL(bs::accurate_(bs::acospi)(bs::Mhalf<T>()), r_t(2.0/3.0), 0.5);
+  STF_ULP_EQUAL(bs::accurate_(bs::acospi)(bs::Mone<T>()), r_t(1), 0);
+  STF_ULP_EQUAL(bs::accurate_(bs::acospi)(bs::One<T>()), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(bs::accurate_(bs::acospi)(bs::Zero<T>()), r_t(1.0/2.0), 0);
 }
-

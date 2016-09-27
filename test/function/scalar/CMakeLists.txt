@@ -10,27 +10,34 @@ set ( SOURCES
    abs.cpp
    abs.saturated.cpp
    acos.cpp
+   acos.accurate.cpp
    acosd.cpp
+   acosd.accurate.cpp
    acosh.cpp
    acospi.cpp
+   acospi.accurate.cpp
    acot.cpp
    acotd.cpp
+   acotpi.cpp
    acoth.cpp
    acsc.cpp
    acscd.cpp
    acsch.cpp
+   acscpi.cpp
    all.cpp
    any.cpp
    arg.cpp
    asec.cpp
    asecd.cpp
    asech.cpp
+   asecpi.cpp
    asin.cpp
    asind.cpp
    asinh.cpp
    asinpi.cpp
    atan2.cpp
    atan2d.cpp
+   atan2pi.cpp
    atan.cpp
    atand.cpp
    atanh.cpp
