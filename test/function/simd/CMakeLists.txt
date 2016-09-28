@@ -137,6 +137,7 @@ set ( SOURCES
       firstbitunset.cpp
       floor.cpp
       fma.cpp
+      fma.conformant.cpp
       fms.cpp
       fnma.cpp
       fnms.cpp

@@ -76,7 +76,6 @@ set ( SOURCES
    complement.cpp
    conj.cpp
    copysign.cpp
-   correct_fma.cpp
    cos.cpp
    cosd.cpp
    cosh.cpp
@@ -121,6 +120,7 @@ set ( SOURCES
    firstbitunset.cpp
    floor.cpp
    fma.cpp
+   fma.conformant.cpp
    fms.cpp
    fnma.cpp
    fnms.cpp
