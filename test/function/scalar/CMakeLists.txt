@@ -7,7 +7,7 @@
 ##===================================================================================================
 ## Larger test suites go there
 add_subdirectory(div)
-#add_subdirectory(rem)
+add_subdirectory(rem)
 
 set ( SOURCES
    abs.cpp
@@ -98,6 +98,8 @@ set ( SOURCES
    dec.saturated.cpp
    dist.cpp
    dist.saturated.cpp
+   divides.cpp
+   divides.saturated.cpp
    dot.cpp
    enumerate.cpp
 #   eps.cpp
@@ -274,16 +276,11 @@ set ( SOURCES
    prod.cpp
    rec.cpp
    rem_2pi.cpp
-   remceil.cpp
-   rem.cpp
-   remfloor.cpp
-   remnearbyint.cpp
    rem_pio2_cephes.cpp
    rem_pio2.cpp
    rem_pio2_medium.cpp
    rem_pio2_straight.cpp
    remquo.cpp
-   remround.cpp
    reversebits.cpp
    reverse.cpp
    rol.cpp
@@ -325,8 +322,6 @@ set ( SOURCES
    slide.cpp
    sort.cpp
    splat.cpp
-   splatted_maximum.cpp
-   splatted_minimum.cpp
    sqr_abs.cpp
    sqr.cpp
    sqr.saturated.cpp
