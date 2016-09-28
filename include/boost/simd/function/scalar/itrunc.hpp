@@ -7,11 +7,10 @@
 **/
 //==================================================================================================
 
-#ifndef BOOST_SIMD_FUNCTION_SIMD_ITRUNC_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_SIMD_ITRUNC_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_SCALAR_ITRUNC_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_SCALAR_ITRUNC_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/itrunc.hpp>
-#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/simd/function/ifix.hpp>
+#include <boost/simd/function/definition/itrunc.hpp>
+#include <boost/simd/arch/common/scalar/function/ifix.hpp>
 
 #endif

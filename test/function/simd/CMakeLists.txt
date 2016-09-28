@@ -8,12 +8,14 @@
 
 ## Larger test suites go there
 add_subdirectory(combine)
+add_subdirectory(div)
 add_subdirectory(extract)
 add_subdirectory(genmask)
 add_subdirectory(insert)
 add_subdirectory(load)
 add_subdirectory(aligned_load)
 add_subdirectory(make)
+add_subdirectory(rem)
 add_subdirectory(shuffle)
 add_subdirectory(slice)
 add_subdirectory(slide)
@@ -114,15 +116,8 @@ set ( SOURCES
       deinterleave_second.cpp
       dist.cpp
       dist.saturated.cpp
-      div.cpp
-      div.ceil.cpp
-      div.fix.cpp
-      div.floor.cpp
       divides.cpp
       divides.saturated.cpp
-      div.nearbyint.cpp
-      div.round.cpp
-      div.trunc.cpp
       dot.cpp
       enumerate.cpp
       erfc.cpp
@@ -156,11 +151,6 @@ set ( SOURCES
       hmsb.cpp
       hypot.cpp
       iceil.cpp
-      idivceil.cpp
-      idivfix.cpp
-      idivfloor.cpp
-      idivnearbyint.cpp
-      idivround.cpp
       if_allbits_else.cpp
       if_dec.cpp
       if_else_allbits.cpp
@@ -235,6 +225,7 @@ set ( SOURCES
       is_positive.cpp
       is_real.cpp
       is_simd_logical.cpp
+      itrunc.cpp
       is_unord.cpp
       ldexp.cpp
       lo.cpp
@@ -292,17 +283,12 @@ set ( SOURCES
       prev.cpp
       prod.cpp
       rec.cpp
-      remceil.cpp
-      rem.cpp
-      remfloor.cpp
-      remnearbyint.cpp
       rem_pio2_cephes.cpp
       rem_pio2.cpp
       rem_pio2_medium.cpp
       rem_pio2_straight.cpp
       rem_2pi.cpp
       remquo.cpp
-      remround.cpp
       repeat_lower_half.cpp
       repeat_upper_half.cpp
       reversebits.cpp

@@ -76,7 +76,7 @@ void testcm(Env& $)
   namespace bst = bs::tag;
   using p_t = bs::pack<T, N>;
 
-  T a1[N], b[N], c[N];
+  T a1[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? T(i) : -T(i);

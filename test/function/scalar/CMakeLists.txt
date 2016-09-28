@@ -142,11 +142,6 @@ set ( SOURCES
    horner.cpp
    hypot.cpp
    iceil.cpp
-   idivceil.cpp
-   idivfix.cpp
-   idivfloor.cpp
-   idivnearbyint.cpp
-   idivround.cpp
    if_allbits_else.cpp
    if_allbits_else_zero.cpp
    if_dec.cpp
@@ -245,12 +240,14 @@ set ( SOURCES
    mask2logical.cpp
    max.cpp
    maximum.cpp
+   maximum.splatted.cpp
    maxmag.cpp
    maxnum.cpp
    maxnummag.cpp
    meanof.cpp
    min.cpp
    minimum.cpp
+   minimum.splatted.cpp
    minmag.cpp
    minmod.cpp
    minnum.cpp
