@@ -180,6 +180,7 @@ set ( SOURCES
       interleave_odd.cpp
       interleave_second.cpp
       ifix.cpp
+      iround.cpp
       is_denormal.cpp
       is_equal.cpp
       is_equal_with_equal_nans.cpp
@@ -334,7 +335,7 @@ set ( SOURCES
       sqrt.cpp
       stirling.cpp
       store.cpp
-##      stream.cpp
+      stream.cpp
       successor.cpp
       sum.cpp
       swapbytes.cpp
