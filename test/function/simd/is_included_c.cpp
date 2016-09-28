@@ -33,7 +33,7 @@ void test(Env& $)
    }
   p_t aa1(&a1[0], &a1[0]+N);
   p_t aa2(&a2[0], &a2[0]+N);
-  STF_IEEE_EQUAL(bs::is_included_c(aa1, aa2), b);
+  STF_EQUAL(bs::is_included_c(aa1, aa2), b);
 }
 
 STF_CASE_TPL("Check is_included_c on pack" , STF_NUMERIC_TYPES)
@@ -42,6 +42,6 @@ STF_CASE_TPL("Check is_included_c on pack" , STF_NUMERIC_TYPES)
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
-//  test<T, N/2>($);
-//  test<T, Nx2>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }
