@@ -32,6 +32,7 @@ namespace boost { namespace simd
 
 namespace boost { namespace simd { namespace ext
 {
+
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
   BOOST_DISPATCH_OVERLOAD_IF(swapbytes_
@@ -44,12 +45,24 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
     {
       using s0        = bd::scalar_of_t<A0>;
-      using i8        = pack<uint8_t>;
+      static const size_t N = A0::static_size*sizeof(s0);
+      using i8        = pack<uint8_t, N>;
       using pattern_t = detail::swap_bytes_helper<sizeof(s0)>;
       return bitwise_cast<A0>(shuffle<pattern_t>(bitwise_cast<i8>(a0)));
     }
   };
 
+  BOOST_DISPATCH_OVERLOAD(swapbytes_
+                         , (typename A0, typename X)
+                         , bd::cpu_
+                         , bs::pack_<bd::ints8_<A0>, X>
+                         )
+  {
+    BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
+    {
+      return a0;
+    }
+  };
 
 } } }
 
