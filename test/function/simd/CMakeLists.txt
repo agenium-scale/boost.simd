@@ -91,7 +91,6 @@ set ( SOURCES
       complement.cpp
       conj.cpp
       copysign.cpp
-      correct_fma.cpp
       cos.cpp
       cosd.cpp
       cosh.cpp
