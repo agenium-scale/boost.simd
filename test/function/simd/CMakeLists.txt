@@ -247,6 +247,7 @@ set ( SOURCES
       mask2logical.cpp
       max.cpp
       maximum.cpp
+      maximum.splatted.cpp
       maxmag.cpp
       maxnum.cpp
       maxnummag.cpp
@@ -254,6 +255,7 @@ set ( SOURCES
       min.cpp
       minmod.cpp
       minimum.cpp
+      minimum.splatted.cpp
       minmag.cpp
       minnum.cpp
       minnummag.cpp
@@ -324,8 +326,6 @@ set ( SOURCES
       sinhcosh.cpp
       sinh.cpp
       sinpi.cpp
-##      splatted_maximum.cpp
-##      splatted_minimum.cpp
       split_multiplies.cpp
       sqr_abs.cpp
       sqr.cpp

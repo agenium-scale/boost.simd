@@ -20,5 +20,5 @@ set ( SOURCES
    div.iround.cpp
 )
 
-make_unit( "function.simd.div"   ${SOURCES})
-make_coverage("function.simd.div"  ${SOURCES})
+make_unit( "function.scalar.div"   ${SOURCES})
+make_coverage("function.scalar.div"  ${SOURCES})

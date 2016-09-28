@@ -5,6 +5,9 @@
 ##                        See accompanying file LICENSE.txt or copy at
 ##                            http://www.boost.org/LICENSE_1_0.txt
 ##===================================================================================================
+## Larger test suites go there
+add_subdirectory(div)
+#add_subdirectory(rem)
 
 set ( SOURCES
    abs.cpp
@@ -95,15 +98,6 @@ set ( SOURCES
    dec.saturated.cpp
    dist.cpp
    dist.saturated.cpp
-   div.cpp
-   div.ceil.cpp
-   div.fix.cpp
-   div.floor.cpp
-   divides.cpp
-   divides.saturated.cpp
-   div.nearbyint.cpp
-   div.round.cpp
-   div.trunc.cpp
    dot.cpp
    enumerate.cpp
 #   eps.cpp

@@ -14,5 +14,5 @@ set ( SOURCES
    rem.round.cpp
 )
 
-make_unit( "function.simd.div"   ${SOURCES})
-make_coverage("function.simd.div"  ${SOURCES})
+make_unit( "function.simd.rem"   ${SOURCES})
+make_coverage("function.simd.rem"  ${SOURCES})
