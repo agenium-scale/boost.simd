@@ -19,7 +19,10 @@
 #pragma warning(push)
 #pragma warning(disable: 4244) // conversion and loss of data
 #endif
-
+#if defined(__GNUC__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-braces"
+#endif
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = ::boost::dispatch;
@@ -98,5 +101,7 @@ namespace boost { namespace simd { namespace ext
 #ifdef BOOST_MSVC
 #pragma warning(pop)
 #endif
-
+#if defined(__GNUC__)
+#pragma GCC diagnostic pop
+#endif
 #endif

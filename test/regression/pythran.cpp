@@ -26,7 +26,7 @@ auto foo(T &t) -> typename std::enable_if<!std::is_scalar<T>::value, T &>::type
 
 int main()
 {
-  std::array<int, 3> data = {1,2,3};
+  std::array<int, 3> data = {{1,2,3}};
   foo(data);
 
   return 0;
