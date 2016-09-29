@@ -7,15 +7,27 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/sqrt.hpp>
-#include <boost/simd/pack.hpp>
+#include <boost/simd/function/simd/shr.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
+namespace bd =  boost::dispatch;
 
-DEFINE_SIMD_BENCH(simd_sqrt, bs::restricted_(bs::sqrt));
+template < int N >
+struct shlN
+{
+  template<class T> T operator()(const T & a) const
+  {
+    return bs::shr(a, bd::as_integer_t<T>(N));
+  }
+};
+
+DEFINE_SIMD_BENCH(scalar_shr1, shlN<1>());
+DEFINE_SIMD_BENCH(scalar_shr2, shlN<2>());
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_sqrt, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<scalar_shr1, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<scalar_shr2, NS_BENCH_IEEE_TYPES>(-10, 10);
 }

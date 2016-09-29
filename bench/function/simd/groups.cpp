@@ -7,18 +7,16 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/group.hpp>
+#include <boost/simd/function/simd/groups.hpp>
 #include <boost/simd/pack.hpp>
 #include <cmath>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_groups, bs::saturated_(bs::group));
+DEFINE_SIMD_BENCH(simd_groups, bs::groups);
 
-int main(int argc, char** argv) {
-  nsb::parse_args(argc, argv);
+DEFINE_BENCH_MAIN()
+{
   nsb::for_each<simd_groups, NS_BENCH_IEEE_TYPES>(-10, 10, -10, 10);
-  print_results();
-  return 0;
 }

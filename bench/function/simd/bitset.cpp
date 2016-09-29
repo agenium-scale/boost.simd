@@ -16,7 +16,7 @@ namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 namespace bd =  boost::dispatch;
 
-struct bitg
+struct bits
 {
   template<class T> T operator()(const T & a) const
   {
@@ -25,7 +25,8 @@ struct bitg
   }
 };
 
-DEFINE_SIMD_BENCH(simd_bitset, bitg());
+DEFINE_SIMD_BENCH(simd_bitset, bits());
+
 DEFINE_BENCH_MAIN() {
-  nsb::for_each<simd_bitset, NS_BENCH_NUMERIC_TYPES>(-10, 10);
+  nsb::for_each<simd_bitset, NS_BENCH_INTEGRAL_TYPES>(-10, 10);
 }

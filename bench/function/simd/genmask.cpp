@@ -13,7 +13,14 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_genmask, bs::genmask);
+struct gen
+{
+  template<class T> T operator()(const T & a) const
+  {
+    return bs::genmask(a);
+  }
+};
+DEFINE_SIMD_BENCH(simd_genmask, gen());
 
 DEFINE_BENCH_MAIN()
 {

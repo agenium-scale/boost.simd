@@ -42,17 +42,18 @@ set(SOURCES
     atanpi.cpp
     average.cpp
     bitfloating.cpp
-##    bitget.cpp
+    bitget.cpp
     bitinteger.cpp
-##    bitset.cpp
+    bitset.cpp
     bitwise_and.cpp
     bitwise_andnot.cpp
-#######    bitwise_cast.cpp
+    bitwise_cast.cpp
     bitwise_notand.cpp
     bitwise_notor.cpp
     bitwise_or.cpp
     bitwise_ornot.cpp
-#######      bitwise_select.cpp
+    bitwise_not.cpp
+    bitwise_select.cpp
     bitwise_xor.cpp
     broadcast.cpp
     cbrt.cpp
@@ -126,8 +127,8 @@ set(SOURCES
     gammaln.cpp
     genmaskc.cpp
     genmask.cpp
-##########    group.cpp
-##########    groups.cpp
+    group.cpp
+    groups.cpp
     hi.cpp
     hmsb.cpp
     hypot.cpp
@@ -152,6 +153,7 @@ set(SOURCES
     inc.cpp
     inc.saturated.cpp
     indeg.cpp
+    inearbyint.cpp
     inrad.cpp
     interleave_even.cpp
     interleave_first.cpp
@@ -216,7 +218,7 @@ set(SOURCES
     logical_or.cpp
     logical_ornot.cpp
     logical_xor.cpp
-#    lookup.cpp
+    lookup.cpp
     majority.cpp
     mantissa.cpp
     max.cpp
@@ -268,11 +270,11 @@ set(SOURCES
     repeat_upper_half.cpp
     reversebits.cpp
     reverse.cpp
-#    rol.cpp
-#    ror.cpp
+    rol.cpp
+    ror.cpp
     round.cpp
-#    rrol.cpp
-#    rror.cpp
+    rrol.cpp
+    rror.cpp
     rsqrt.cpp
     rsqrt.fast.cpp
     safe_max.cpp
@@ -286,7 +288,7 @@ set(SOURCES
     secpi.restricted.cpp
     shift_left.cpp
     shift_right.cpp
-#    shr1.cpp
+    shr.cpp
     sign.cpp
     significants.cpp
     signnz.cpp
@@ -307,7 +309,6 @@ set(SOURCES
     sinh.cpp
     sinpi.cpp
     sinpi.restricted.cpp
-#    split_multiplies.cpp
     sqr_abs.cpp
     sqr.cpp
     sqr.saturated.cpp
@@ -322,7 +323,7 @@ set(SOURCES
     tanh.cpp
     tanpi.cpp
     tanpi.restricted.cpp
-#    tenpower.cpp
+    tenpower.cpp
     tofloat.cpp
     toint.cpp
     toint.saturated.cpp
@@ -330,10 +331,10 @@ set(SOURCES
     touint.saturated.cpp
     trunc.cpp
     trunc.fast.cpp
-########    two_add.cpp
-#    twopower.cpp
-########    two_prod.cpp
-########    two_split.cpp
+    two_add.cpp
+    twopower.cpp
+    two_prod.cpp
+    two_split.cpp
     ulpdist.cpp
     unary_minus.cpp
     unary_minus.saturated.cpp

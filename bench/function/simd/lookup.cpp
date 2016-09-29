@@ -13,9 +13,18 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_lookup, bs::lookup);
+struct look
+{
+  template<class T> T operator()(const T & a) const
+  {
+    using iT =  bd::as_integer_t<T>;
+    return bs::lookup(a, iT(1));
+  }
+};
+
+DEFINE_SIMD_BENCH(simd_lookup, look);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_lookup, NS_BENCH_IEEE_TYPES>(-10, 10,-10, 10);
+  nsb::for_each<simd_lookup, NS_BENCH_IEEE_TYPES>(-10, 10);
 }

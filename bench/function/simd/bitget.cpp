@@ -18,7 +18,7 @@ namespace bd =  boost::dispatch;
 
 struct bitg
 {
-  template<class T> T operator()(const T & a) const
+  template<class T>  bd::as_integer_t<T, unsigned> operator()(const T & a) const
   {
     using i_t = bd::as_integer_t<T>;
     return bs::bitget(a, bs::enumerate<i_t>());
@@ -27,5 +27,5 @@ struct bitg
 
 DEFINE_SIMD_BENCH(simd_bitget, bitg());
 DEFINE_BENCH_MAIN() {
-  nsb::for_each<simd_bitget, NS_BENCH_NUMERIC_TYPES>(-10, 10);
+  nsb::for_each<simd_bitget, NS_BENCH_INTEGRAL_TYPES>(-10, 10);
 }

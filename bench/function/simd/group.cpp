@@ -16,9 +16,7 @@ namespace bs =  boost::simd;
 
 DEFINE_SIMD_BENCH(simd_group, bs::group);
 
-int main(int argc, char** argv) {
-  nsb::parse_args(argc, argv);
-  nsb::for_each<simd_group,float>(-10, 10, -10, 10); //Upgradable
-  print_results();
-  return 0;
+DEFINE_BENCH_MAIN()
+{
+  nsb::for_each<simd_group, NS_BENCH_IEEE_TYPES>(-10, 10, -10, 10);
 }
