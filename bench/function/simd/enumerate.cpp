@@ -13,7 +13,16 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_enumerate, bs::enumerate);
+struct enumer
+{
+  template<class T> bs::pack<T> operator()(const T & a) const
+  {
+    return bs::enumerate<bs::pack<T>>(a);
+  }
+};
+
+DEFINE_SCALAR_BENCH(simd_enumerate,enumer());
+
 
 DEFINE_BENCH_MAIN()
 {

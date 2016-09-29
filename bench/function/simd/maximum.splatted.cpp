@@ -7,15 +7,15 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/fma.hpp>
-#include <cmath>
+#include <boost/simd/function/simd/maximum.hpp>
+#include <boost/simd/pack.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_correct_fma,bs::conformant_(bs::fma));
+DEFINE_SIMD_BENCH(simd_splatted_maximum, bs::splatted_(bs::maximum));
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_correct_fma, NS_BENCH_IEEE_TYPES>(-10, 10, -10, 10, -10, 10);
+  nsb::for_each<simd_splatted_maximum, NS_BENCH_IEEE_TYPES>(-10, 10);
 }

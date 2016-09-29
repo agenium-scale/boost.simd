@@ -7,7 +7,7 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/genmask.hpp>
+#include <boost/simd/function/genmask.hpp>
 #include <boost/simd/pack.hpp>
 
 namespace nsb = ns::bench;
@@ -17,5 +17,5 @@ DEFINE_SIMD_BENCH(simd_genmask, bs::genmask);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_genmask, NS_BENCH_INTEGRAL_TYPES>(-10, 10);
+  nsb::for_each<simd_genmask, NS_BENCH_IEEE_TYPES>(-10, 10);
 }

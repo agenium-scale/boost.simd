@@ -7,14 +7,15 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/splatted_minimum.hpp>
+#include <boost/simd/function/simd/minimum.hpp>
+#include <boost/simd/pack.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_splatted_minimum, bs::splatted_minimum);
+DEFINE_SIMD_BENCH(simd_splatted_minimum, bs::splatted_(bs::minimum));
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_splatted_minimum, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<simd_splatted_minimum, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
