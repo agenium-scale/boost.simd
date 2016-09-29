@@ -128,7 +128,7 @@ set(SOURCES
     genmaskc.cpp
     genmask.cpp
     group.cpp
-    groups.cpp
+    group.saturated.cpp
     hi.cpp
     hmsb.cpp
     hypot.cpp

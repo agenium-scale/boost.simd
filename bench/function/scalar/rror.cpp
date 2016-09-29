@@ -11,10 +11,21 @@
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
+namespace bd =  boost::dispatch;
 
-DEFINE_SCALAR_BENCH(scalar_rror, bs::rror);
+struct myrror
+{
+  template<class T> T operator()(const T & a) const
+  {
+    using iT =  bd::as_integer_t<T>;
+    return bs::rror(a, iT(1));
+  }
+};
+
+DEFINE_SCALAR_BENCH(scalar_rror, myrror());
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_rror, NS_BENCH_IEEE_TYPES>(-10, 10,-10, 10);
+  nsb::for_each<scalar_rror, NS_BENCH_INTEGRAL_TYPES>(-10, 10);
 }
+

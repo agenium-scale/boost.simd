@@ -7,14 +7,16 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/interleave_odd.hpp>
+#include <boost/simd/function/simd/group.hpp>
+#include <boost/simd/pack.hpp>
+#include <cmath>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_interleave_odd, bs::interleave_odd);
+DEFINE_SIMD_BENCH(simd_group, bs::saturated_(bs::group));
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_interleave_odd, NS_BENCH_IEEE_TYPES>(-10, 10,-10, 10);
+  nsb::for_each<simd_group, NS_BENCH_IEEE_TYPES>(-10, 10, -10, 10);
 }

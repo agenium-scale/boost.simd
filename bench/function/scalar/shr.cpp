@@ -7,14 +7,27 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/deinterleave_second.hpp>
+#include <boost/simd/function/simd/shr.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
+namespace bd =  boost::dispatch;
 
-DEFINE_SCALAR_BENCH(scalar_deinterleave_second, bs::deinterleave_second);
+template < int N >
+struct shrN
+{
+  template<class T> T operator()(const T & a) const
+  {
+    return bs::shr(a, bd::as_integer_t<T>(N));
+  }
+};
+
+DEFINE_SCALAR_BENCH(scalar_shr1, shrN<1>());
+DEFINE_SCALAR_BENCH(scalar_shr2, shrN<2>());
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_deinterleave_second, NS_BENCH_IEEE_TYPES>(-10, 10,-10, 10);
+  nsb::for_each<scalar_shr1, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<scalar_shr2, NS_BENCH_IEEE_TYPES>(-10, 10);
 }

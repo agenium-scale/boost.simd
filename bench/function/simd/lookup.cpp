@@ -7,11 +7,13 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/lookup.hpp>
+#include <boost/simd/function/lookup.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/pack.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
+namespace bd =  boost::dispatch;
 
 struct look
 {
@@ -22,7 +24,7 @@ struct look
   }
 };
 
-DEFINE_SIMD_BENCH(simd_lookup, look);
+DEFINE_SIMD_BENCH(simd_lookup, look());
 
 DEFINE_BENCH_MAIN()
 {

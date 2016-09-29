@@ -11,8 +11,14 @@
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
-
-DEFINE_SCALAR_BENCH(scalar_genmask, bs::genmask);
+struct gen
+{
+  template<class T> T operator()(const T & a) const
+  {
+    return bs::genmask(a);
+  }
+};
+DEFINE_SCALAR_BENCH(scalar_genmask, gen());
 
 DEFINE_BENCH_MAIN()
 {

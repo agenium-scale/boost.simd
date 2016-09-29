@@ -8,12 +8,14 @@
 
 set(SOURCES
     abs.cpp
-    abs_s.cpp
+    abs.saturated.cpp
+    abs.std.cpp
     acos.cpp
     acos.accurate.cpp
     acosd.cpp
-    acospi.cpp
     acosh.cpp
+    acospi.cpp
+    acos.std.cpp
     acot.cpp
     acotd.cpp
     acoth.cpp
@@ -33,13 +35,16 @@ set(SOURCES
     asind.cpp
     asinh.cpp
     asinpi.cpp
+    asin.std.cpp
     atan2.cpp
     atan2d.cpp
     atan2pi.cpp
+    atan2.std.cpp
     atan.cpp
     atand.cpp
     atanh.cpp
     atanpi.cpp
+    atan.std.cpp
     average.cpp
     bitfloating.cpp
     bitget.cpp
@@ -47,16 +52,18 @@ set(SOURCES
     bitset.cpp
     bitwise_and.cpp
     bitwise_andnot.cpp
-#######    bitwise_cast.cpp
+    bitwise_cast.cpp
     bitwise_notand.cpp
     bitwise_notor.cpp
     bitwise_or.cpp
     bitwise_ornot.cpp
-#######      bitwise_select.cpp
+    bitwise_select.cpp
     bitwise_xor.cpp
     broadcast.cpp
     cbrt.cpp
+    cbrt.std.cpp
     ceil.cpp
+    ceil.std.cpp
     clz.cpp
     compare_equal.cpp
     compare_greater.cpp
@@ -67,93 +74,97 @@ set(SOURCES
     complement.cpp
     conj.cpp
     copysign.cpp
+    correct_fma.cpp
     cos.cpp
     cosd.cpp
+    cosd.restricted.cpp
     cosh.cpp
     cospi.cpp
+    cospi.restricted.cpp
+    cos.restricted.cpp
     cot.cpp
     cotd.cpp
+    cotd.restricted.cpp
     coth.cpp
     cotpi.cpp
+    cotpi.restricted.cpp
+    cot.restricted.cpp
+    csc.cpp
     cscd.cpp
+    cscd.restricted.cpp
     csch.cpp
     cscpi.cpp
-    csc.cpp
+    cscpi.restricted.cpp
+    csc.restricted.cpp
     ctz.cpp
     dec.cpp
-    dec_s.cpp
-#    deinterleave_first.cpp
-#    deinterleave_second.cpp
+    dec.saturated.cpp
     dist.cpp
-    dist_s.cpp
+    dist.saturated.cpp
     divides.cpp
-    divides_s.cpp
+    divides.saturated.cpp
     dot.cpp
-#    enumerate.cpp
-    erf.cpp
     erfc.cpp
+    erf.cpp
+    erfc.std.cpp
+    erf.std.cpp
+    exp10.cpp
     exp2.cpp
+    exp2.std.cpp
     exp.cpp
-    exp.std.cpp
     expm1.cpp
+    expm1.std.cpp
     exprecnegc.cpp
     exprecneg.cpp
+    exp.std.cpp
     expx2.cpp
-    exp10.cpp
-    fast.frexp.cpp
-    fast.hypot.cpp
-    fast.rec.cpp
-    fast.rem.cpp
-    fast.sqrt.cpp
-    fast.trunc.cpp
     ffs.cpp
     firstbitset.cpp
     firstbitunset.cpp
     floor.cpp
     fma.cpp
-    correct_fma.cpp
+    fma.std.cpp
     fms.cpp
     fnma.cpp
     fnms.cpp
     fpclassify.cpp
+    fpclassify.std.cpp
     frac.cpp
     frexp.cpp
+    frexp.fast.cpp
+    frexp.std.cpp
     gamma.cpp
-    gamma.std.cpp
     gammaln.cpp
     gammaln.std.cpp
-##    genmask.cpp
+    gamma.std.cpp
     genmaskc.cpp
-##########    group.cpp
-##########    groups.cpp
+    genmask.cpp
     hi.cpp
     hmsb.cpp
     hypot.cpp
+    hypot.fast.cpp
+    hypot.std.cpp
     iceil.cpp
     if_allbits_else.cpp
+    if_dec.cpp
     if_else_allbits.cpp
     if_else.cpp
-    if_dec.cpp
-    if_inc.cpp
     if_else_zero.cpp
+    if_inc.cpp
     ifloor.cpp
-     ifnot_plus.cpp
     ifnot_dec.cpp
     ifnot_inc.cpp
-     ifnot_minus.cpp
+    ifnot_minus.cpp
+    ifnot_plus.cpp
     if_one_else_zero.cpp
     if_zero_else.cpp
     if_zero_else_one.cpp
     ilog2.cpp
     ilogb.cpp
     inc.cpp
-    inc_s.cpp
+    inc.saturated.cpp
     indeg.cpp
     inrad.cpp
-#   interleave_even.cpp
-#    interleave_first.cpp
-#    interleave_odd.cpp
-#    interleave_second.cpp
     iround.cpp
     is_denormal.cpp
     is_equal.cpp
@@ -202,8 +213,10 @@ set(SOURCES
     ldexp.cpp
     lo.cpp
     log10.cpp
+    log10.std.cpp
     log1p.cpp
     log2.cpp
+    log2.std.cpp
     log.cpp
     logical_and.cpp
     logical_andnot.cpp
@@ -213,25 +226,28 @@ set(SOURCES
     logical_or.cpp
     logical_ornot.cpp
     logical_xor.cpp
-#    lookup.cpp
+    log.std.cpp
     majority.cpp
     mantissa.cpp
     max.cpp
     maxmag.cpp
     maxnum.cpp
     maxnummag.cpp
+    maxnum.std.cpp
     meanof.cpp
     min.cpp
     minmag.cpp
     minmod.cpp
     minnum.cpp
     minnummag.cpp
+    minnum.std.cpp
     minus.cpp
-    minus_s.cpp
+    minus.saturated.cpp
     modf.cpp
     multiplies.cpp
-    multiplies_s.cpp
+    multiplies.saturated.cpp
     nbtrue.cpp
+    nearbyint.cpp
     negate.cpp
     negatenz.cpp
     negif.cpp
@@ -241,131 +257,98 @@ set(SOURCES
     none.cpp
     nthroot.cpp
     oneminus.cpp
-    oneminus_s.cpp
+    oneminus.saturated.cpp
     plus.cpp
-    plus_s.cpp
+    plus.saturated.cpp
     pow2.cpp
     pow_abs.cpp
     pow.cpp
     predecessor.cpp
     prev.cpp
     rec.cpp
+    rec.fast.cpp
     rem.cpp
+    rem.fast.cpp
     rem_pio2_cephes.cpp
     rem_pio2.cpp
     rem_pio2_medium.cpp
     rem_pio2_straight.cpp
     remquo.cpp
-#    repeat_lower_half.cpp
-#    repeat_upper_half.cpp
-    restricted.cosd.cpp
-    restricted.cos.cpp
-    restricted.cospi.cpp
-    restricted.cotd.cpp
-    restricted.cot.cpp
-    restricted.cotpi.cpp
-    restricted.cscd.cpp
-    restricted.csc.cpp
-    restricted.cscpi.cpp
-    restricted.secd.cpp
-    restricted.sec.cpp
-    restricted.secpi.cpp
-    restricted.sincosd.cpp
-    restricted.sincos.cpp
-    restricted.sincospi.cpp
-    restricted.sind.cpp
-    restricted.sin.cpp
-    restricted.sinpi.cpp
-    restricted.tand.cpp
-    restricted.tan.cpp
-    restricted.tanpi.cpp
+    rem.std.cpp
     reversebits.cpp
     reverse.cpp
-#    rol.cpp
-#    ror.cpp
-    nearbyint.cpp
+    rol.cpp
+    ror.cpp
     round.cpp
-#    rrol.cpp
-#    rror.cpp
+    rrol.cpp
+    rror.cpp
     rsqrt.cpp
     rsqrt.fast.cpp
     safe_max.cpp
     safe_min.cpp
+    sec.cpp
     secd.cpp
+    secd.restricted.cpp
     sech.cpp
     secpi.cpp
-    sec.cpp
+    secpi.restricted.cpp
+    sec.restricted.cpp
     shift_left.cpp
     shift_right.cpp
-#    shr1.cpp
+    shr.cpp
     sign.cpp
     significants.cpp
     signnz.cpp
     sinc.cpp
     sincos.cpp
     sincosd.cpp
+    sincosd.restricted.cpp
     sincospi.cpp
+    sincospi.restricted.cpp
+    sincos.restricted.cpp
     sincpi.cpp
     sin.cpp
     sind.cpp
-    sinh.cpp
+    sind.restricted.cpp
     sinhc.cpp
     sinhcosh.cpp
+    sinh.cpp
     sinpi.cpp
-#    splatted_maximum.cpp
-#    splatted_minimum.cpp
-#    split_multiplies.cpp
+    sinpi.restricted.cpp
+    sin.restricted.cpp
     sqr_abs.cpp
     sqr.cpp
-    sqr_s.cpp
+    sqr.saturated.cpp
     sqrt1pm1.cpp
     sqrt.cpp
     sqrt.fast.cpp
-    std.abs.cpp
-    std.acos.cpp
-    std.asin.cpp
-    std.atan2.cpp
-    std.atan.cpp
-    std.cbrt.cpp
-    std.ceil.cpp
-    std.erfc.cpp
-    std.erf.cpp
-    std.exp2.cpp
-    std.exp.cpp
-    std.expm1.cpp
-    std.fma.cpp
-    std.fpclassify.cpp
-    std.frexp.cpp
-    std.gammaln.cpp
-    std.hypot.cpp
-    std.log10.cpp
-    std.log2.cpp
-    std.log.cpp
-    std.maxnum.cpp
-    std.minnum.cpp
-    std.rem.cpp
-    std.sqrt.cpp
-    std.trunc.cpp
+    sqrt.std.cpp
     successor.cpp
     tan.cpp
     tand.cpp
+    tand.restricted.cpp
     tanh.cpp
     tanpi.cpp
-#    tenpower.cpp
+    tanpi.restricted.cpp
+    tan.restricted.cpp
+    tenpower.cpp
     tofloat.cpp
     toint.cpp
-    toint_s.cpp
+    toint.saturated.cpp
     touint.cpp
-    touint_s.cpp
+    touint.saturated.cpp
     trunc.cpp
-########    two_add.cpp
-#    twopower.cpp
-########    two_prod.cpp
-########    two_split.cpp
+    trunc.fast.cpp
+    trunc.std.cpp
+    two_add.cpp
+    twopower.cpp
+    two_prod.cpp
+    two_split.cpp
     ulpdist.cpp
     unary_minus.cpp
-    unary_minus_s.cpp
+    unary_minus.saturated.cpp
     unary_plus.cpp
+
 )
 
 make_bench("function.scalar" ${SOURCES})
