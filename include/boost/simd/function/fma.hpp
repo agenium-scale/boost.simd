@@ -51,8 +51,8 @@ namespace boost { namespace simd
 
      @par Decorators
 
-    - std_ for floating entries to call directly std::fma. This implies conformant fma behaviour,
-    but in no way improved performances.
+    - std_ for floating entries to call directly std::fma. This implies conformant
+      fma behaviour, but in no way improved performances.
     - conformant_ ensures the fma properties and allows SIMD acceleration if available.
 
     @see fms, fnma, fnms
