@@ -14,6 +14,7 @@
 #include <boost/simd/detail/dispatch/as.hpp>
 #include <boost/simd/detail/dispatch/hierarchy.hpp>
 #include <cstring>
+#include <type_traits>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -35,9 +36,19 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE result_t operator()(A0 const& a0, A1 const& ) const BOOST_NOEXCEPT
     {
+      return do_(a0, typename std::is_same<A0, result_t>::type());
+    }
+
+    BOOST_FORCEINLINE result_t do_(A0 const& a0, std::false_type const& ) const BOOST_NOEXCEPT
+    {
       result_t that;
       std::memcpy(&that, &a0, sizeof(a0));
       return that;
+    }
+
+    BOOST_FORCEINLINE result_t do_(A0 const& a0, std::true_type const& ) const BOOST_NOEXCEPT
+    {
+      return a0;
     }
   };
 } } }
