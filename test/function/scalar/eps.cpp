@@ -20,7 +20,7 @@
 STF_CASE_TPL ("eps for IEEE types",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
-  using bs::functional::eps;
+  using bs::eps;
   using r_t = decltype(eps(T()));
 
   // return type conformity test
@@ -44,7 +44,7 @@ STF_CASE_TPL ("eps for IEEE types",  STF_IEEE_TYPES)
 STF_CASE_TPL ("eps on integers",  STF_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
-  using bs::functional::eps;
+  using bs::eps;
   using r_t = decltype(eps(T()));
 
   // return type conformity test

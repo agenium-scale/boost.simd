@@ -119,6 +119,7 @@ set ( SOURCES
       divides.saturated.cpp
       dot.cpp
       enumerate.cpp
+      eps.cpp
       erfc.cpp
       erf.cpp
       erfcx.cpp

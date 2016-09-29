@@ -15,11 +15,8 @@
 namespace boost { namespace simd
 {
   /*!
-
     @ingroup group-ieee
-    Function object implementing eps capabilities
-
-    This is the distance between x and the next representable value of x's type.
+    Computes the distance between its argument and the next representable value of its argument type.
 
     @par Semantic:
 
@@ -32,16 +29,23 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-
-    if T is floating
-      T  r = 2^(exponent(x))*Eps<T>()
-    else if T is integral
-      T r = 1;
+    T  r = pow(2,exponent(x))*Eps<T>();
     @endcode
+
+    if @c T is a floating-point type and to :
+
+    @code
+    T r = 1;
+    @endcode
+
+    if @c T is an integral type.
+
+    @param  x Base value for epsilon computation.
+    @return The distance between @c x and its next representable value.
 
     @see ulp, ulpdist, Eps
 **/
-  Value eps(Value const & v0);
+  Value eps(Value const & x);
 
 } }
 #endif
