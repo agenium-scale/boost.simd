@@ -29,22 +29,21 @@
 #include <boost/utility/enable_if.hpp>
 #include <boost/simd/detail/is_aligned.hpp>
 #include <boost/config.hpp>
+#include <boost/predef/compiler.h>
 #include <array>
 #include <iterator>
 #include <iostream>
 #include <cstddef>
 
-// Remove noise due to line 205 return value
-#if defined(__GNUC__)
+#if BOOST_COMP_GNUC
 #pragma GCC diagnostic push
+// Remove noise due to line 205 return value
 #pragma GCC diagnostic ignored "-Wuninitialized"
 #pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
-
 // Remove noise from attribute from as_simd
-#if __GNUC__ >= 6
+#if BOOST_COMP_GNUC >= BOOST_VERSION_NUMBER(6,0,0)
 #pragma GCC diagnostic ignored "-Wignored-attributes"
 #endif
-
 #endif
 
 
@@ -467,7 +466,7 @@ namespace boost { namespace simd
   }
 } }
 
-#if defined(__GNUC__)
+#if BOOST_COMP_GNUC
 #pragma GCC diagnostic pop
 #endif
 
