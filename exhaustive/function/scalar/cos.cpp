@@ -5,7 +5,7 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#include <boost/simd/function/log.hpp>
+#include <boost/simd/function/cos.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/valmax.hpp>
 
@@ -14,11 +14,19 @@
 #include <cmath>
 #include <cstdlib>
 
-struct raw_log
+struct raw_cos
 {
   float operator()(float x) const
   {
-    return bs::log(double(x));
+    return std::cos(double(x));
+  }
+};
+
+struct my_cos
+{
+  float operator()(float x) const
+  {
+    return bs::cos(x, bs::tag::big_tag());
   }
 };
 
@@ -30,8 +38,8 @@ int main(int argc, char* argv[])
   if(argc >= 3) maxi = std::atof(argv[2]);
   bs::exhaustive_test<float> ( mini
                               , maxi
-                              , bs::log
-                              , raw_log()
+                             , my_cos()
+                              , raw_cos()
                               );
 
   return 0;

@@ -5,7 +5,7 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#include <boost/simd/function/log.hpp>
+#include <boost/simd/function/exprecneg.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/valmax.hpp>
 
@@ -14,11 +14,11 @@
 #include <cmath>
 #include <cstdlib>
 
-struct raw_log
+struct raw_exprecneg
 {
   float operator()(float x) const
   {
-    return bs::log(double(x));
+    return bs::exprecneg(double(x));
   }
 };
 
@@ -30,8 +30,8 @@ int main(int argc, char* argv[])
   if(argc >= 3) maxi = std::atof(argv[2]);
   bs::exhaustive_test<float> ( mini
                               , maxi
-                              , bs::log
-                              , raw_log()
+                              , bs::exprecneg
+                              , raw_exprecneg()
                               );
 
   return 0;

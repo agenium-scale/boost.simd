@@ -11,6 +11,7 @@ set(SOURCES
   acos.accurate.cpp
   asin.cpp
   atan.cpp
+  cos.cpp
   erf.cpp
   exp.cpp
   exp10.cpp

@@ -5,7 +5,7 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#include <boost/simd/function/log.hpp>
+#include <boost/simd/function/acosd.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/valmax.hpp>
 
@@ -14,11 +14,11 @@
 #include <cmath>
 #include <cstdlib>
 
-struct raw_log
+struct raw_acosd
 {
   float operator()(float x) const
   {
-    return bs::log(double(x));
+    return bs::acosd(double(x));
   }
 };
 
@@ -30,8 +30,8 @@ int main(int argc, char* argv[])
   if(argc >= 3) maxi = std::atof(argv[2]);
   bs::exhaustive_test<float> ( mini
                               , maxi
-                              , bs::log
-                              , raw_log()
+                              , bs::acosd
+                              , raw_acosd()
                               );
 
   return 0;
