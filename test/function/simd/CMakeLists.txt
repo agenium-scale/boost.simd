@@ -193,8 +193,8 @@ set ( SOURCES
       is_greater_equal.cpp
       is_gtz.cpp
       is_imag.cpp
-      is_included.cpp
-      is_included_c.cpp
+      isincluded.cpp
+      isincluded_c.cpp
       is_inf.cpp
       is_invalid.cpp
       is_less.cpp

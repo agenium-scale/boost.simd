@@ -7,14 +7,15 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/is_included.hpp>
+#include <boost/simd/function/simd/isincluded.hpp>
+#include <boost/simd/pack.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_is_included, bs::is_included);
+DEFINE_SIMD_BENCH(simd_isincluded, bs::isincluded);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_is_included, NS_BENCH_IEEE_TYPES>(-10, 10,-10, 10);
+  nsb::for_each<simd_isincluded, NS_BENCH_IEEE_TYPES>(-10, 10,-10, 10);
 }

@@ -7,10 +7,10 @@
 **/
 //==================================================================================================
 
-#ifndef BOOST_SIMD_FUNCTION_SCALAR_IS_INCLUDED_C_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_SCALAR_IS_INCLUDED_C_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_SCALAR_ISINCLUDED_C_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_SCALAR_ISINCLUDED_C_HPP_INCLUDED
 
-#include <boost/simd/function/definition/is_included_c.hpp>
-#include <boost/simd/arch/common/scalar/function/is_included_c.hpp>
+#include <boost/simd/function/definition/isincluded_c.hpp>
+#include <boost/simd/arch/common/scalar/function/isincluded_c.hpp>
 
 #endif

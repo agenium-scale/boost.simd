@@ -8,8 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_DEFINITION_IS_INCLUDED_C_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_DEFINITION_IS_INCLUDED_C_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_DEFINITION_ISINCLUDED_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_DEFINITION_ISINCLUDED_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/detail/dispatch/function/make_callable.hpp>
@@ -20,15 +20,15 @@ namespace boost { namespace simd
 {
   namespace tag
   {
-    BOOST_DISPATCH_MAKE_TAG(ext, is_included_c_, boost::dispatch::abstract_<is_included_c_>);
+    BOOST_DISPATCH_MAKE_TAG(ext, isincluded_, boost::dispatch::abstract_<isincluded_>);
   }
 
   namespace ext
   {
-    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, is_included_c_);
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, isincluded_);
   }
 
-  BOOST_DISPATCH_CALLABLE_DEFINITION(tag::is_included_c_,is_included_c);
+  BOOST_DISPATCH_CALLABLE_DEFINITION(tag::isincluded_,isincluded);
 
 
 } }

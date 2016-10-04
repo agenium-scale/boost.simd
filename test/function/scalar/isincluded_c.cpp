@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/scalar/is_included.hpp>
+#include <boost/simd/function/scalar/isincluded_c.hpp>
 #include <scalar_test.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/mone.hpp>
@@ -16,20 +16,20 @@
 #include <boost/simd/constant/three.hpp>
 #include <boost/simd/constant/two.hpp>
 
-STF_CASE_TPL (" is_included integer",  STF_INTEGRAL_TYPES)
+STF_CASE_TPL (" isincluded_c integer",  STF_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
-  using bs::is_included;
+  using bs::isincluded_c;
 
-  using r_t = decltype(is_included(T(),T()));
+  using r_t = decltype(isincluded_c(T(),T()));
 
   // specific values tests
-  STF_EQUAL(is_included(bs::Mone<T>(),bs::Zero<T>()), r_t(false));
-  STF_EQUAL(is_included(bs::One<T>(), bs::One<T>()), r_t(true));
-  STF_EQUAL(is_included(bs::One<T>(),bs::Mone<T>()), r_t(true));
-  STF_EQUAL(is_included(bs::One<T>(),bs::Three<T>()), r_t(true));
-  STF_EQUAL(is_included(bs::One<T>(),bs::Two<T>()), r_t(false));
-  STF_EQUAL(is_included(bs::One<T>(),bs::Zero<T>()), r_t(false));
-  STF_EQUAL(is_included(bs::Zero<T>(), bs::Zero<T>()), r_t(true));
+  STF_EQUAL(isincluded_c(bs::Mone<T>(),bs::Zero<T>()), r_t(true));
+  STF_EQUAL(isincluded_c(bs::One<T>(), bs::One<T>()), r_t(false));
+  STF_EQUAL(isincluded_c(bs::One<T>(),bs::Mone<T>()), r_t(false));
+  STF_EQUAL(isincluded_c(bs::One<T>(),bs::Three<T>()), r_t(false));
+  STF_EQUAL(isincluded_c(bs::One<T>(),bs::Two<T>()), r_t(true));
+  STF_EQUAL(isincluded_c(bs::One<T>(),bs::Zero<T>()), r_t(true));
+  STF_EQUAL(isincluded_c(bs::Zero<T>(), bs::Zero<T>()), r_t(true));
 } // end of test for integer_

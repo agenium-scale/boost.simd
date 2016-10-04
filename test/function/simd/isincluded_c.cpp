@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/pack.hpp>
-#include <boost/simd/function/is_included.hpp>
+#include <boost/simd/function/isincluded_c.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/logical.hpp>
 #include <simd_test.hpp>
@@ -24,19 +24,19 @@ void test(Env& $)
   namespace bd = boost::dispatch;
 
   T a1[N], a2[N];
-  bool b = true;
+  bool b = true; ;
   for(std::size_t i = 0; i < N; ++i)
   {
      a1[i] = (i%2) ? T(i) : T(-i);
      a2[i] = (i%2) ? T(i+N) : T(-(i+N));
-     b =  b && bs::is_included(a1[i], a2[i]);
+     b = b && bs::isincluded_c(a1[i], a2[i]);
    }
   p_t aa1(&a1[0], &a1[0]+N);
   p_t aa2(&a2[0], &a2[0]+N);
-  STF_EQUAL(bs::is_included(aa1, aa2), b);
+  STF_EQUAL(bs::isincluded_c(aa1, aa2), b);
 }
 
-STF_CASE_TPL("Check is_included on pack" , STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check isincluded_c on pack" , STF_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
