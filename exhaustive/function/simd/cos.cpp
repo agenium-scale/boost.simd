@@ -19,7 +19,7 @@ struct raw_cos
 {
   float operator()(float x) const
   {
-    return std::cos(x);
+    return std::cos(double(x));
   }
 };
 

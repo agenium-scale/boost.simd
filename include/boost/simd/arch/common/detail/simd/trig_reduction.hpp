@@ -79,9 +79,9 @@ namespace boost { namespace simd
         return is_not_greater(a0, Medium_pi<A0>()); //2^6 pi
       }
       static BOOST_FORCEINLINE auto is_0_dmpi_reduced(const A0&a0) BOOST_NOEXCEPT
-      ->  decltype(is_not_greater(a0,Constant<A0,262144>()))
+      ->  decltype(is_not_greater(a0,A0(823549.664582643)))
       {
-        return is_not_greater(a0, Ratio<A0,262144>()); //2^18 pi
+        return is_not_greater(a0, A0(823549.664582643)); //2^18 pi
       }
 
       static BOOST_FORCEINLINE l_t cot_invalid(const A0& )  BOOST_NOEXCEPT
@@ -255,38 +255,9 @@ namespace boost { namespace simd
       select_mode(const A0& xx, A0& xr
                  , boost::mpl::int_< tag::r_0_dmpi> const&) BOOST_NOEXCEPT
       {
-        if(all(is_0_dmpi_reduced(xx)))
-           return use_conversion(xx, xr, conversion_allowed_t());
         i_t n;
         std::tie(n, xr) = rem_pio2(xx);
         return n;
-      }
-
-      static BOOST_FORCEINLINE i_t
-      use_conversion(const A0 & xx,  A0& xr
-                    , std::false_type) BOOST_NOEXCEPT
-      {
-        i_t n;
-        std::tie(n, xr) = rem_pio2(xx);
-        return n;
-      }
-
-      static BOOST_FORCEINLINE i_t
-      use_conversion(const A0 & x,  A0& xr
-                    ,std::true_type) BOOST_NOEXCEPT
-      {
-        // all of x are in [0, 2^18*pi],  conversion to double is used to reduce
-        using uA0 = bd::upgrade_t<A0>;
-        using aux_reduc_t = trig_reduction< uA0, tag::radian_tag,  tag::simd_type, mode, double>;
-
-        auto uxs = split(x);
-        uA0  uxr1, uxr2;
-
-        auto n1 = aux_reduc_t::reduce(uxs[0], uxr1);
-        auto n2 = aux_reduc_t::reduce(uxs[1], uxr2);
-
-          xr = group(uxr1, uxr2);
-        return group(n1, n2);
       }
     };
 
