@@ -75,8 +75,8 @@ namespace boost { namespace simd
     // trigonometric functions with different policies
 
 
-    template<class A0, class style>
-    struct trig_reduction<A0,tag::degree_tag, style, tag::big_tag>
+    template<class A0, class style, class mode>
+    struct trig_reduction<A0,tag::degree_tag, style, mode>//always equivalent to  tag::big_tag>
     {
       using i_t = bd::as_integer_t<A0, signed>;
 
@@ -102,8 +102,8 @@ namespace boost { namespace simd
     };
 
 #ifdef BOOST_SIMD_HAS_X87
-    template<class A0>
-    struct trig_reduction<A0,degree_tag, tag::not_simd_type, tag::big_tag>
+    template<class A0, class mode>
+    struct trig_reduction<A0,degree_tag, tag::not_simd_type, mode> //always equivalent to  tag::big_tag>
     {
       using i_t = bd::as_integer_t<A0, signed>;
 
@@ -129,8 +129,8 @@ namespace boost { namespace simd
     };
 #endif
 
-    template < class A0, class style>
-    struct trig_reduction < A0, tag::pi_tag,  style, tag::big_tag>
+    template < class A0, class style, class mode>
+    struct trig_reduction < A0, tag::pi_tag,  style, mode> //always equivalent to tag::big_tag>
     {
       using i_t = bd::as_integer_t<A0, signed>;
 

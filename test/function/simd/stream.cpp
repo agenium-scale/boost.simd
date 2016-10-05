@@ -1,68 +1,45 @@
-//==============================================================================
-//         Copyright 2003 - 2011 LASMEA UMR 6602 CNRS/Univ. Clermont II
-//         Copyright 2009 - 2011 LRI    UMR 8623 CNRS/Univ Paris Sud XI
-//
-//          Distributed under the Boost Software License, Version 1.0.
-//                 See accompanying file LICENSE.txt or copy at
-//                     http://www.boost.org/LICENSE_1_0.txt
-//==============================================================================
-#include <boost/simd/include/functions/stream.hpp>
-#include <boost/simd/include/functions/aligned_load.hpp>
-#include <boost/simd/sdk/simd/native.hpp>
-#include <boost/simd/sdk/simd/io.hpp>
-#include <boost/simd/preprocessor/stack_buffer.hpp>
+//==================================================================================================
+/**
+  Copyright 2016 NumScale SAS
 
-#include <nt2/sdk/unit/module.hpp>
-#include <nt2/sdk/unit/tests/relation.hpp>
-#include <nt2/sdk/unit/tests/basic.hpp>
-#include <nt2/sdk/unit/tests/exceptions.hpp>
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+**/
+//==================================================================================================
+#include <boost/simd/function/stream.hpp>
+#include <boost/simd/pack.hpp>
+#include <boost/align/aligned_allocator.hpp>
+#include <vector>
+#include <simd_test.hpp>
 
-NT2_TEST_CASE_TPL(stream, BOOST_SIMD_SIMD_TYPES )
+namespace ba = boost::alignment;
+namespace bs = boost::simd;
+
+template <typename T, std::size_t N, typename Env>
+void test(Env& $)
 {
-  using boost::simd::stream;
-  using boost::simd::aligned_load;
-  using boost::simd::native;
-  using boost::simd::meta::cardinal_of;
+  using p_t = bs::pack<T, N>;
 
-  typedef BOOST_SIMD_DEFAULT_EXTENSION  ext_t;
-  typedef native<T,ext_t>             n_t;
-  static const std::size_t card = cardinal_of<n_t>::value;
+  std::vector<T,ba::aligned_allocator<T,p_t::alignment>> a1(N);
+  std::vector<T,ba::aligned_allocator<T,p_t::alignment>> a2(N);
 
-  BOOST_SIMD_ALIGNED_STACK_BUFFER(data, T, 3*card);
-  for(std::size_t i=0;i<card;++i) data[i] = T(1+i);
+  for(std::size_t i = 0; i < N; ++i)
+  {
+    a1[i] = T(27);
+    a2[i] = T(i+1);
+  }
 
-  n_t v = aligned_load<n_t>(&data[0]);
+  p_t aa1(&a1[0], &a1[0]+N);
+  bs::stream(aa1, &a2[0]);
 
-  stream(v,&data[card]);
-  n_t ref = aligned_load<n_t>(&data[card]);
-
-  NT2_TEST_EQUAL( v,ref );
-
-  NT2_TEST_NO_THROW( stream<n_t>(v,&data[0]) );
-  NT2_TEST_THROW( stream<n_t>(v,&data[0]+1), nt2::assert_exception);
+  STF_EQUAL(a1, a2);
 }
 
-NT2_TEST_CASE_TPL(stream_offset, BOOST_SIMD_SIMD_TYPES )
+STF_CASE_TPL( "Check stream behavior with all types", STF_NUMERIC_TYPES )
 {
-  using boost::simd::stream;
-  using boost::simd::aligned_load;
-  using boost::simd::native;
-  using boost::simd::meta::cardinal_of;
+  static const std::size_t N = bs::pack<T>::static_size;
 
-  typedef BOOST_SIMD_DEFAULT_EXTENSION  ext_t;
-  typedef native<T,ext_t>             n_t;
-  static const std::size_t card = cardinal_of<n_t>::value;
-
-  BOOST_SIMD_ALIGNED_STACK_BUFFER(data, T, 3*card);
-  for(std::size_t i=0;i<card;++i) data[i] = T(1+i);
-
-  n_t v = aligned_load<n_t>(&data[0],0);
-
-  stream(v,&data[0],card);
-  n_t ref = aligned_load<n_t>(&data[0],card);
-
-  NT2_TEST_EQUAL( v,ref );
-
-  NT2_TEST_NO_THROW( stream<n_t>(v,&data[0],card) );
-  NT2_TEST_THROW( stream<n_t>(v,&data[0]+1,card), nt2::assert_exception);
+  test<T, N>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }

@@ -13,5 +13,6 @@
 
 #include <boost/simd/function/scalar/signbit.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
+#include <boost/simd/function/simd/is_negative.hpp>
 
 #endif

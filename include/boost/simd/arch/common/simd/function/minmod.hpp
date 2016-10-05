@@ -62,7 +62,7 @@ namespace boost { namespace simd { namespace ext
    {
       BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
-        return if_else_zero(is_nltz((a0*a1)),bs::min(a0, a1));
+        return if_else_zero(is_nltz((a0*a1)),bs::conformant_(bs::min)(a0, a1));
       }
    };
 

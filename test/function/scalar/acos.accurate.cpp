@@ -17,13 +17,14 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/mzero.hpp>
 
-STF_CASE_TPL (" acos",  STF_IEEE_TYPES)
+
+STF_CASE_TPL ("accurate  acos",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
   using bs::acos;
 
-  using r_t = decltype(acos(T()));
+  using r_t = decltype(bs::accurate_(acos)(T()));
 
   // return type conformity test
   STF_TYPE_IS(r_t, T);

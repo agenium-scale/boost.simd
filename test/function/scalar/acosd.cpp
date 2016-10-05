@@ -40,3 +40,4 @@ STF_CASE_TPL (" acosd ",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(acosd(bs::One<T>()), bs::Zero<r_t>(), 32);
   STF_ULP_EQUAL(acosd(bs::Zero<T>()), 90, 0);
 }
+

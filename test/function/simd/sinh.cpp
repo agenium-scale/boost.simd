@@ -31,7 +31,7 @@ void test(Env& $)
   STF_ULP_EQUAL(bs::sinh(aa1), bb, 0.5);
 }
 
-STF_CASE_TPL("Check sinh saturated on pack" , STF_IEEE_TYPES)
+STF_CASE_TPL("Check sinh on pack" , STF_IEEE_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
