@@ -5,20 +5,21 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#include <boost/simd/function/enumerate.hpp>
+#include <boost/simd/function/asec.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/valmax.hpp>
 
+#include <boost/simd/pack.hpp>
 #include <exhaustive.hpp>
 
 #include <cmath>
 #include <cstdlib>
 
-struct raw_enumerate
+struct raw_asec
 {
   float operator()(float x) const
   {
-    return bs::enumerate(double(x));
+    return bs::asec(double(x));
   }
 };
 
@@ -28,10 +29,10 @@ int main(int argc, char* argv[])
   float maxi = bs::Valmax<float>();
   if(argc >= 2) mini = std::atof(argv[1]);
   if(argc >= 3) maxi = std::atof(argv[2]);
-  bs::exhaustive_test<float> ( mini
+  bs::exhaustive_test<bs::pack<float>> ( mini
                               , maxi
-                              , bs::enumerate
-                              , raw_enumerate()
+                              , bs::asec
+                              , raw_asec()
                               );
 
   return 0;

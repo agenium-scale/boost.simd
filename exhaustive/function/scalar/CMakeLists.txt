@@ -49,7 +49,6 @@ if_zero_else_one.cpp
 inc.cpp
 indeg.cpp
 inrad.cpp
-iround.cpp
 log10.cpp
 log1p.cpp
 log.cpp
