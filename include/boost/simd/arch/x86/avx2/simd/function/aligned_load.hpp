@@ -87,7 +87,7 @@ namespace boost { namespace simd { namespace ext
                         "unaligned masked pointer of 64 bits integers"
                       );
 
-      return _mm256_maskload_epi64( (std::int64_t const*)(p.get())
+      return _mm256_maskload_epi64( (long long int const*)(p.get())
                                   , bs::as_logical_t<target>(p.mask())
                                   );
     }
