@@ -63,8 +63,7 @@ int main(int argc, char** argv)
   //! [distance-time]
 
   //! [distance-interleave]
-  // The input vector contains interleaved X and Y data, i.e. x0, y0, x1, y1,
-  // ..., xn, yn
+  // The input vector contains interleaved X and Y data, i.e. x0, y0, x1, y1, ..., xn, yn
   std::vector<T, bs::allocator<T>> interleaved_data(num_points * 2);
   for (int i = 0; i < num_points * 2; i += 2) {
     interleaved_data[i] = X[i / 2];
@@ -79,8 +78,8 @@ int main(int argc, char** argv)
     pack_t res = bs::sqrt(bs::sqr(vrefX - V[0]) + bs::sqr(vrefY - V[1]));
     bs::aligned_store(res, &distance2[i / 2]);
   }
-  //! [distance-interleave]
   t1 = high_resolution_clock::now();
+  //! [distance-interleave]
   std::cout << " time SIMD de-interleave " << duration_cast<microseconds>(t1 - t0).count() << std::endl;
 }
 //! [distance-all]
