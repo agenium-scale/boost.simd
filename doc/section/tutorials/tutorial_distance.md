@@ -1,4 +1,4 @@
-Distance between Points {#tutorial-distance}
+Distance between Points Part 1{#tutorial-distance}
 =========
 
 @tableofcontents
