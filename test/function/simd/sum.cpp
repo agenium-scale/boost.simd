@@ -30,8 +30,8 @@ void test(Env& $)
   }
   p_t aa1(&a1[0], &a1[0]+N);
 
-  STF_EQUAL(bs::sum(aa1), b);
-  STF_EQUAL(bs::splatted_(bs::sum)(aa1), p_t(b) );
+  STF_ULP_EQUAL(bs::sum(aa1), b, 0.5);
+  STF_ULP_EQUAL(bs::splatted_(bs::sum)(aa1), p_t(b) , 0.5);
 }
 
 STF_CASE_TPL("Check sum on pack", STF_NUMERIC_TYPES)

@@ -30,8 +30,8 @@ void pre_test(Env& $)
   p_t bb(&b[0], &b[0]+N);
 
   aa2 = ++aa1;
-  STF_EQUAL(aa2, bb);
-  STF_EQUAL(aa1, bb);
+  STF_ULP_EQUAL(aa2, bb, 0.5);
+  STF_ULP_EQUAL(aa1, bb, 0.5);
 }
 
 STF_CASE_TPL("Check pre-increment on pack" , STF_NUMERIC_TYPES)
@@ -59,8 +59,8 @@ void post_test(Env& $)
   p_t bb(&b[0], &b[0]+N);
 
   aa2 = aa1++;
-  STF_EQUAL(aa2, prev);
-  STF_EQUAL(aa1, bb);
+  STF_ULP_EQUAL(aa2, prev, 0.5);
+  STF_ULP_EQUAL(aa1, bb, 0.5);
 }
 
 STF_CASE_TPL("Check post-increment on pack" , STF_NUMERIC_TYPES)
@@ -87,7 +87,7 @@ void tests(Env& $)
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
 
-  STF_EQUAL(bs::saturated_(bs::inc)(aa1), bb);
+  STF_ULP_EQUAL(bs::saturated_(bs::inc)(aa1), bb, 0.5);
 }
 
 STF_CASE_TPL("Check inc on pack" , STF_NUMERIC_TYPES)

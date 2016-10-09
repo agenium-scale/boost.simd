@@ -27,8 +27,8 @@ void test(Env& $)
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
 
-  STF_EQUAL(bs::unary_plus(aa1), bb);
-  STF_EQUAL(+aa1, bb);
+  STF_ULP_EQUAL(bs::unary_plus(aa1), bb, 0.5);
+  STF_ULP_EQUAL(+aa1, bb, 0.5);
 }
 
 STF_CASE_TPL("Check unary_plus on pack" , STF_NUMERIC_TYPES)

@@ -29,7 +29,7 @@ void test(Env& $)
     ref[i] = i%2 ? true : false;
   }
 
-  for(std::size_t i = 0;i < N; ++i) STF_EQUAL( p[i], ref[i] );
+  for(std::size_t i = 0;i < N; ++i) STF_EQUAL( p[i], ref[i]);
 }
 
 STF_CASE_TPL("Check dynamic insert on pack" , STF_NUMERIC_TYPES)

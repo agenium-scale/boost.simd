@@ -31,7 +31,7 @@ void test( Env& $, std::true_type const& )
   bs::pack<T,N>                 value (&data[0], &data[0]+data.size() );
   bd::upgrade_t<bs::pack<T,N>>  ref   (&dref[0], &dref[0]+dref.size() );
 
-  STF_EQUAL( bs::split_low(value), ref);
+  STF_ULP_EQUAL( bs::split_low(value), ref, 0.5);
 }
 
 STF_CASE_TPL("split_low pack<T,N> into a pack<T*2,N/2>", STF_NUMERIC_TYPES)

@@ -22,24 +22,24 @@ STF_CASE( "Check bitwise_cast between integer types" )
     using ps_t = bs::pack<std::uint16_t,N>;
     using pc_t = bs::pack<std::uint8_t,2*N>;
 
-    STF_EQUAL ( bs::bitwise_cast<ps_t>( pc_t(0x01) )  , ps_t(0x0101)  );
-    STF_EQUAL ( bs::bitwise_cast<pc_t>( ps_t(0x0101) ), pc_t(0x01)     );
+    STF_ULP_EQUAL ( bs::bitwise_cast<ps_t>( pc_t(0x01) )  , ps_t(0x0101)  , 0.5);
+    STF_ULP_EQUAL ( bs::bitwise_cast<pc_t>( ps_t(0x0101) ), pc_t(0x01)     , 0.5);
   }
 
   {
     using ps_t = bs::pack<std::uint16_t,N/2>;
     using pc_t = bs::pack<std::uint8_t,N>;
 
-    STF_EQUAL ( bs::bitwise_cast<ps_t>( pc_t(0x01) )  , ps_t(0x0101)  );
-    STF_EQUAL ( bs::bitwise_cast<pc_t>( ps_t(0x0101) ), pc_t(0x01)     );
+    STF_ULP_EQUAL ( bs::bitwise_cast<ps_t>( pc_t(0x01) )  , ps_t(0x0101)  , 0.5);
+    STF_ULP_EQUAL ( bs::bitwise_cast<pc_t>( ps_t(0x0101) ), pc_t(0x01)     , 0.5);
   }
 
   {
     using ps_t = bs::pack<std::uint16_t,2*N>;
     using pc_t = bs::pack<std::uint8_t,4*N>;
 
-    STF_EQUAL ( bs::bitwise_cast<ps_t>( pc_t(0x01) )  , ps_t(0x0101)  );
-    STF_EQUAL ( bs::bitwise_cast<pc_t>( ps_t(0x0101) ), pc_t(0x01)     );
+    STF_ULP_EQUAL ( bs::bitwise_cast<ps_t>( pc_t(0x01) )  , ps_t(0x0101)  , 0.5);
+    STF_ULP_EQUAL ( bs::bitwise_cast<pc_t>( ps_t(0x0101) ), pc_t(0x01)     , 0.5);
   }
 }
 
@@ -51,22 +51,22 @@ STF_CASE( "Check bitwise_cast between integer & real types" )
   {
     using pf_t = bs::pack<float,N>;
     using pi_t = bs::pack<std::uint32_t,N>;
-    STF_EQUAL ( bs::bitwise_cast<pi_t>( pf_t(1.f) )         , pi_t(0x3F800000UL)  );
-    STF_EQUAL ( bs::bitwise_cast<pf_t>( pi_t(0x3F800000UL) ), pf_t(1.f)           );
+    STF_ULP_EQUAL ( bs::bitwise_cast<pi_t>( pf_t(1.f) )         , pi_t(0x3F800000UL)  , 0.5);
+    STF_ULP_EQUAL ( bs::bitwise_cast<pf_t>( pi_t(0x3F800000UL) ), pf_t(1.f)           , 0.5);
   }
 
   {
     using pf_t = bs::pack<float,N/2>;
     using pi_t = bs::pack<std::uint32_t,N/2>;
-    STF_EQUAL ( bs::bitwise_cast<pi_t>( pf_t(1.f) )         , pi_t(0x3F800000UL)  );
-    STF_EQUAL ( bs::bitwise_cast<pf_t>( pi_t(0x3F800000UL) ), pf_t(1.f)           );
+    STF_ULP_EQUAL ( bs::bitwise_cast<pi_t>( pf_t(1.f) )         , pi_t(0x3F800000UL)  , 0.5);
+    STF_ULP_EQUAL ( bs::bitwise_cast<pf_t>( pi_t(0x3F800000UL) ), pf_t(1.f)           , 0.5);
   }
 
   {
     using pf_t = bs::pack<float,N*2>;
     using pi_t = bs::pack<std::uint32_t,N*2>;
-    STF_EQUAL ( bs::bitwise_cast<pi_t>( pf_t(1.f) )         , pi_t(0x3F800000UL)  );
-    STF_EQUAL ( bs::bitwise_cast<pf_t>( pi_t(0x3F800000UL) ), pf_t(1.f)           );
+    STF_ULP_EQUAL ( bs::bitwise_cast<pi_t>( pf_t(1.f) )         , pi_t(0x3F800000UL)  , 0.5);
+    STF_ULP_EQUAL ( bs::bitwise_cast<pf_t>( pi_t(0x3F800000UL) ), pf_t(1.f)           , 0.5);
   }
 }
 
@@ -78,21 +78,21 @@ STF_CASE_TPL( "Check bitwise_cast between arithmetic & logical types", STF_NUMER
   {
     using pa_t = bs::pack<T,N>;
     using pl_t = bs::pack<bs::logical<T>,N>;
-    STF_IEEE_EQUAL ( bs::bitwise_cast<pa_t>( pl_t(true) )         , bs::Allbits<pa_t>() );
-    STF_IEEE_EQUAL ( bs::bitwise_cast<pl_t>( bs::Allbits<pa_t>() ), pl_t(true)          );
+    STF_ULP_EQUAL ( bs::bitwise_cast<pa_t>( pl_t(true) )         , bs::Allbits<pa_t>() , 0.5);
+    STF_ULP_EQUAL ( bs::bitwise_cast<pl_t>( bs::Allbits<pa_t>() ), pl_t(true)          , 0.5);
   }
 
   {
     using pa_t = bs::pack<T,N/2>;
     using pl_t = bs::pack<bs::logical<T>,N/2>;
-    STF_IEEE_EQUAL ( bs::bitwise_cast<pa_t>( pl_t(true) )         , bs::Allbits<pa_t>() );
-    STF_IEEE_EQUAL ( bs::bitwise_cast<pl_t>( bs::Allbits<pa_t>() ), pl_t(true)          );
+    STF_ULP_EQUAL ( bs::bitwise_cast<pa_t>( pl_t(true) )         , bs::Allbits<pa_t>() , 0.5);
+    STF_ULP_EQUAL ( bs::bitwise_cast<pl_t>( bs::Allbits<pa_t>() ), pl_t(true)          , 0.5);
   }
 
   {
     using pa_t = bs::pack<T,N*2>;
     using pl_t = bs::pack<bs::logical<T>,N*2>;
-    STF_IEEE_EQUAL ( bs::bitwise_cast<pa_t>( pl_t(true) )         , bs::Allbits<pa_t>() );
-    STF_IEEE_EQUAL ( bs::bitwise_cast<pl_t>( bs::Allbits<pa_t>() ), pl_t(true)          );
+    STF_ULP_EQUAL ( bs::bitwise_cast<pa_t>( pl_t(true) )         , bs::Allbits<pa_t>() , 0.5);
+    STF_ULP_EQUAL ( bs::bitwise_cast<pl_t>( bs::Allbits<pa_t>() ), pl_t(true)          , 0.5);
   }
 }

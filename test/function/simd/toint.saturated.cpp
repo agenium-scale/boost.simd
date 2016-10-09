@@ -30,7 +30,7 @@ void test(Env& $)
   }
   p_t aa1(&a1[0], &a1[0]+N);
   i_t bb (&b[0], &b[0]+N);
-  STF_EQUAL(bs::saturated_(bs::toint)(aa1), bb);
+  STF_ULP_EQUAL(bs::saturated_(bs::toint)(aa1), bb, 0.5);
 }
 
 STF_CASE_TPL("Check toint_s on pack" , STF_IEEE_TYPES)

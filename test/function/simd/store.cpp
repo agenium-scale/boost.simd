@@ -58,7 +58,7 @@ void test_o(Env& $)
   bs::store(aa1, &a2[0], 3);
   p_t aa2(&a2[3], &a2[3]+N);
 
-  STF_EQUAL(aa1, aa2);
+  STF_ULP_EQUAL(aa1, aa2, 0.5);
 }
 
 STF_CASE_TPL( "Check offset store behavior with all types", STF_NUMERIC_TYPES )

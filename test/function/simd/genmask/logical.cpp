@@ -29,7 +29,7 @@ void testl(Env& $)
   }
   pl_t aa1(&a1[0], &a1[0]+N);
   p_t bb(&b[0], &b[0]+N);
-  STF_IEEE_EQUAL(bs::genmask(aa1), bb);
+  STF_ULP_EQUAL(bs::genmask(aa1), bb, 0.5);
 }
 
 STF_CASE_TPL("Check genmask on pack of logical", STF_NUMERIC_TYPES)
@@ -53,7 +53,7 @@ STF_CASE_TPL("Check genmask on pack of logical", STF_NUMERIC_TYPES)
 
 //   STF_TYPE_IS(decltype(bs::genmask<char>(bs::logical<T>())),char);
 
-//   STF_IEEE_EQUAL(genmask<char>(bs::logical<T>(true)), bs::Allbits<char>());
-//   STF_EQUAL(genmask<char>(bs::logical<T>(false)) , char(0));
+//   STF_ULP_EQUAL(genmask<char>(bs::logical<T>(true)), bs::Allbits<char>(), 0.5);
+//   STF_ULP_EQUAL(genmask<char>(bs::logical<T>(false)) , char(0), 0.5);
 // }
 #endif

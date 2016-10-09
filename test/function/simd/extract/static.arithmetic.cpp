@@ -20,7 +20,7 @@ namespace bd = boost::dispatch;
 template <typename T, std::size_t N, typename Env, typename Idx>
 void unroll_step ( bs::pack<T,N> const& p, std::array<T,N> const& ref, Idx const&, Env& $)
 {
-  STF_EQUAL(bs::extract<Idx::value>(p), ref[Idx::value]);
+  STF_ULP_EQUAL(bs::extract<Idx::value>(p), ref[Idx::value], 0.5);
 }
 
 template <typename T, std::size_t N, typename Env, typename... Idx>

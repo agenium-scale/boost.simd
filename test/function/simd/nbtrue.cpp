@@ -26,7 +26,7 @@ void test(Env& $)
    }
   p_t aa1(&a1[0], &a1[0]+N);
 
-  STF_EQUAL(bs::nbtrue(aa1), r);
+  STF_ULP_EQUAL(bs::nbtrue(aa1), r, 0.5);
 }
 
 STF_CASE_TPL("Check nbtrue on pack" , STF_NUMERIC_TYPES)
