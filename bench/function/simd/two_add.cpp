@@ -13,9 +13,10 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
+
 DEFINE_SIMD_BENCH(simd_two_add, bs::two_add);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_two_add, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<simd_two_add, NS_BENCH_IEEE_TYPES>(-10, 10, -10, 10);
 }

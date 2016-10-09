@@ -7,14 +7,15 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/interleave_odd.hpp>
+#include <boost/simd/function/simd/fma.hpp>
+#include <cmath>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_interleave_odd, bs::interleave_odd);
+DEFINE_SIMD_BENCH(simd_conformant_fma,bs::conformant_(bs::fma));
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_interleave_odd, NS_BENCH_IEEE_TYPES>(-10, 10,-10, 10);
+  nsb::for_each<simd_conformant_fma, NS_BENCH_IEEE_TYPES>(-10, 10, -10, 10, -10, 10);
 }

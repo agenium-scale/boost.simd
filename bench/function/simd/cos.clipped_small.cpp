@@ -22,7 +22,7 @@ struct gen
   }
 };
 
-DEFINE_SIMD_BENCH(simd_cos_clipped_small, bs::cos);
+DEFINE_SIMD_BENCH(simd_cos_clipped_small, gen());
 
 DEFINE_BENCH_MAIN()
 {

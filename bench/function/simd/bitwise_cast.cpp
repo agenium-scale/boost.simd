@@ -8,14 +8,34 @@
 
 #include <simd_bench.hpp>
 #include <boost/simd/function/simd/bitwise_cast.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/pack.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
+namespace bd =  boost::dispatch;
 
-DEFINE_SIMD_BENCH(simd_bitwise_cast, bs::bitwise_cast);
+struct bcasti
+{
+  template<class T> bd::as_integer_t<T, unsigned> operator()(const T & a) const
+  {
+    return bs::bitwise_cast<bd::as_integer_t<T, unsigned>>(a);
+  }
+};
+
+struct bcastf
+{
+  template<class T> bd::as_floating_t<T> operator()(const T & a) const
+  {
+    return bs::bitwise_cast<bd::as_floating_t<T>>(a);
+  }
+};
+
+DEFINE_SIMD_BENCH(simd_bitwise_casti, bcasti());
+DEFINE_SIMD_BENCH(simd_bitwise_castf, bcastf());
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_bitwise_cast, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<simd_bitwise_castf, int32_t, int64_t, uint32_t, uint64_t>(-10, 10);
+  nsb::for_each<simd_bitwise_casti, NS_BENCH_IEEE_TYPES>(-10, 10);
 }

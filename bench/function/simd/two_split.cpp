@@ -17,5 +17,5 @@ DEFINE_SIMD_BENCH(simd_two_split, bs::two_split);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_two_split, NS_BENCH_IEEE_TYPES>(-10, 10,-10, 10);
+  nsb::for_each<simd_two_split, NS_BENCH_IEEE_TYPES>(-10, 10);
 }

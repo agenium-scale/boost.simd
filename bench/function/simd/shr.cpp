@@ -7,15 +7,27 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/fma.hpp>
-#include <cmath>
+#include <boost/simd/function/simd/shr.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
+namespace bd =  boost::dispatch;
 
-DEFINE_SIMD_BENCH(simd_correct_fma,bs::conformant_(bs::fma));
+template < int N >
+struct shlN
+{
+  template<class T> T operator()(const T & a) const
+  {
+    return bs::shr(a, bd::as_integer_t<T>(N));
+  }
+};
+
+DEFINE_SIMD_BENCH(scalar_shr1, shlN<1>());
+DEFINE_SIMD_BENCH(scalar_shr2, shlN<2>());
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_correct_fma, NS_BENCH_IEEE_TYPES>(-10, 10, -10, 10, -10, 10);
+  nsb::for_each<scalar_shr1, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<scalar_shr2, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
