@@ -31,16 +31,16 @@ STF_CASE_TPL (" pow2",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-  STF_EQUAL(pow2(bs::Inf<T>(),  2), bs::Inf<r_t>());
-  STF_EQUAL(pow2(bs::Minf<T>(), 2), bs::Minf<r_t>());
-  STF_IEEE_EQUAL(pow2(bs::Nan<T>(),  2), bs::Nan<r_t>());
-  STF_EQUAL(pow2(bs::Inf<T>(),  T(2.5)), bs::Inf<r_t>());
-  STF_EQUAL(pow2(bs::Minf<T>(), T(2.5)), bs::Minf<r_t>());
-  STF_IEEE_EQUAL(pow2(bs::Nan<T>(),  T(2.5)), bs::Nan<r_t>());
-  STF_EQUAL(pow2(bs::Mone<T>(), 2), -bs::Four<r_t>());
-  STF_EQUAL(pow2(bs::One<T>(),  2), bs::Four<r_t>());
-  STF_EQUAL(pow2(bs::Zero<T>(), 2), bs::Zero<r_t>());
-  STF_EQUAL(pow2(bs::Mone<T>(), T(2.5)), -bs::Four<r_t>());
-  STF_EQUAL(pow2(bs::One<T>(),  T(2.5)), bs::Four<r_t>());
-  STF_EQUAL(pow2(bs::Zero<T>(), T(2.5)), bs::Zero<r_t>());
+  STF_ULP_EQUAL(pow2(bs::Inf<T>(),  2), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(pow2(bs::Minf<T>(), 2), bs::Minf<r_t>(), 0.5);
+  STF_ULP_EQUAL(pow2(bs::Nan<T>(),  2), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(pow2(bs::Inf<T>(),  T(2.5)), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(pow2(bs::Minf<T>(), T(2.5)), bs::Minf<r_t>(), 0.5);
+  STF_ULP_EQUAL(pow2(bs::Nan<T>(),  T(2.5)), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(pow2(bs::Mone<T>(), 2), -bs::Four<r_t>(), 0.5);
+  STF_ULP_EQUAL(pow2(bs::One<T>(),  2), bs::Four<r_t>(), 0.5);
+  STF_ULP_EQUAL(pow2(bs::Zero<T>(), 2), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(pow2(bs::Mone<T>(), T(2.5)), -bs::Four<r_t>(), 0.5);
+  STF_ULP_EQUAL(pow2(bs::One<T>(),  T(2.5)), bs::Four<r_t>(), 0.5);
+  STF_ULP_EQUAL(pow2(bs::Zero<T>(), T(2.5)), bs::Zero<r_t>(), 0.5);
 }

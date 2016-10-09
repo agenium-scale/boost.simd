@@ -28,16 +28,16 @@ STF_CASE_TPL ("eps for IEEE types",  STF_IEEE_TYPES)
 
   // specific values tests
  #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_IEEE_EQUAL(eps(bs::Inf<T>()), bs::Nan<r_t>());
-  STF_IEEE_EQUAL(eps(bs::Minf<T>()), bs::Nan<r_t>());
-  STF_IEEE_EQUAL(eps(bs::Nan<T>()), bs::Nan<r_t>());
+  STF_ULP_EQUAL(eps(bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(eps(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(eps(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
  #endif
 
-  STF_EQUAL(eps(T{-1}), bs::Eps<r_t>());
-  STF_EQUAL(eps(T{1}) , bs::Eps<r_t>());
+  STF_ULP_EQUAL(eps(T{-1}), bs::Eps<r_t>(), 0.5);
+  STF_ULP_EQUAL(eps(T{1}) , bs::Eps<r_t>(), 0.5);
 
  #if !defined(BOOST_SIMD_NO_DENORMALS)
-  STF_EQUAL(eps(T{0}), bs::Mindenormal<r_t>());
+  STF_ULP_EQUAL(eps(T{0}), bs::Mindenormal<r_t>(), 0.5);
  #endif
 }
 

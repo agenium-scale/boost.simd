@@ -60,8 +60,8 @@ STF_CASE_TPL(" if_inc floating", STF_IEEE_TYPES)
   STF_EXPR_IS( if_inc(T(), T()), T );
 
   // specific values tests
-  STF_EQUAL(if_inc(bs::One<T>(), bs::Mone<T>()), bs::Zero<T>());
-  STF_EQUAL(if_inc(bs::One<T>(), bs::One<T>()), bs::Two<T>());
-  STF_EQUAL(if_inc(bs::One<T>(), bs::Valmax<T>()), bs::Valmax<T>());
-  STF_EQUAL(if_inc(bs::One<T>(), bs::Zero<T>()), bs::One<T>());
+  STF_ULP_EQUAL(if_inc(bs::One<T>(), bs::Mone<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(if_inc(bs::One<T>(), bs::One<T>()), bs::Two<T>(), 0.5);
+  STF_ULP_EQUAL(if_inc(bs::One<T>(), bs::Valmax<T>()), bs::Valmax<T>(), 0.5);
+  STF_ULP_EQUAL(if_inc(bs::One<T>(), bs::Zero<T>()), bs::One<T>(), 0.5);
 }

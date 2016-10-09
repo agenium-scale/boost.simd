@@ -31,21 +31,21 @@ STF_CASE_TPL (" minmod real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(minmod(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<T>());
-  STF_EQUAL(minmod(bs::Minf<T>(), bs::Minf<T>()), bs::Minf<T>());
-  STF_IEEE_EQUAL(minmod(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());
+  STF_ULP_EQUAL(minmod(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<T>(), 0.5);
+  STF_ULP_EQUAL(minmod(bs::Minf<T>(), bs::Minf<T>()), bs::Minf<T>(), 0.5);
+  STF_ULP_EQUAL(minmod(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>(), 0.5);
 #endif
-  STF_EQUAL(minmod(bs::Mone<T>(), bs::Mone<T>()), bs::Mone<T>());
-  STF_EQUAL(minmod(bs::One<T>(), bs::One<T>()), bs::One<T>());
-  STF_EQUAL(minmod(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
-  STF_IEEE_EQUAL(minmod(bs::Nan<T>(), bs::One<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(minmod(bs::One<T>(), bs::Nan<T>()), bs::One<T>());
-  STF_IEEE_EQUAL(minmod(bs::Nan<T>(), bs::Zero<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(minmod(bs::Zero<T>(), bs::Nan<T>()), bs::Zero<T>());
-  STF_EQUAL(minmod(bs::One<T>(), bs::Two<T>()), bs::One<T>());
-  STF_EQUAL(minmod(bs::Two<T>(), bs::One<T>()), bs::One<T>());
-  STF_EQUAL(minmod(bs::One<T>(), bs::Mtwo<T>()), bs::Zero<T>());
-  STF_EQUAL(minmod(bs::Mtwo<T>(), bs::One<T>()), bs::Zero<T>());
+  STF_ULP_EQUAL(minmod(bs::Mone<T>(), bs::Mone<T>()), bs::Mone<T>(), 0.5);
+  STF_ULP_EQUAL(minmod(bs::One<T>(), bs::One<T>()), bs::One<T>(), 0.5);
+  STF_ULP_EQUAL(minmod(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(minmod(bs::Nan<T>(), bs::One<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(minmod(bs::One<T>(), bs::Nan<T>()), bs::One<T>(), 0.5);
+  STF_ULP_EQUAL(minmod(bs::Nan<T>(), bs::Zero<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(minmod(bs::Zero<T>(), bs::Nan<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(minmod(bs::One<T>(), bs::Two<T>()), bs::One<T>(), 0.5);
+  STF_ULP_EQUAL(minmod(bs::Two<T>(), bs::One<T>()), bs::One<T>(), 0.5);
+  STF_ULP_EQUAL(minmod(bs::One<T>(), bs::Mtwo<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(minmod(bs::Mtwo<T>(), bs::One<T>()), bs::Zero<T>(), 0.5);
 } // end of test for floating_
 
 STF_CASE_TPL (" minmodunsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

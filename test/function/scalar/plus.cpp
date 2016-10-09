@@ -24,12 +24,12 @@ STF_CASE_TPL( "Check plus behavior with floating", STF_IEEE_TYPES )
   using r_t = decltype(plus(T(), T()));
   STF_TYPE_IS(r_t, T);
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(plus(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>());
-  STF_EQUAL(plus(bs::Minf<T>(), bs::Minf<T>()), bs::Minf<r_t>());
-  STF_IEEE_EQUAL(plus(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>());
+  STF_ULP_EQUAL(plus(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(plus(bs::Minf<T>(), bs::Minf<T>()), bs::Minf<r_t>(), 0.5);
+  STF_ULP_EQUAL(plus(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_EQUAL(plus(bs::One<T>(),bs::Zero<T>()), bs::One<r_t>());
-  STF_EQUAL(plus(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
+  STF_ULP_EQUAL(plus(bs::One<T>(),bs::Zero<T>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(plus(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
 }
 
 STF_CASE_TPL( "Check plus saturated behavior", STF_NUMERIC_TYPES )

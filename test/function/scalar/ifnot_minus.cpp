@@ -29,12 +29,12 @@ STF_CASE_TPL (" ifnot_minus real",  STF_IEEE_TYPES)
   STF_TYPE_IS( r_t, T );
 
   // specific values tests
-  STF_EQUAL(ifnot_minus(T(0),T(1),T(2)), T(-1));
-  STF_EQUAL(ifnot_minus(T(1),T(1),T(2)), T(1));
-  STF_EQUAL(ifnot_minus(T(1),bs::Inf<T>(),bs::Inf<T>()), bs::Inf<r_t>());
-  STF_IEEE_EQUAL(ifnot_minus(T(0),bs::Minf<T>(),bs::Minf<T>()), bs::Nan<r_t>());
-  STF_IEEE_EQUAL(ifnot_minus(T(0),bs::Nan<T>(),bs::Nan<T>()), bs::Nan<r_t>());
-  STF_EQUAL(ifnot_minus(T(0),bs::Zero<T>(),bs::One<T>()), bs::Mone<r_t>());
+  STF_ULP_EQUAL(ifnot_minus(T(0),T(1),T(2)), T(-1), 0.5);
+  STF_ULP_EQUAL(ifnot_minus(T(1),T(1),T(2)), T(1), 0.5);
+  STF_ULP_EQUAL(ifnot_minus(T(1),bs::Inf<T>(),bs::Inf<T>()), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(ifnot_minus(T(0),bs::Minf<T>(),bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(ifnot_minus(T(0),bs::Nan<T>(),bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(ifnot_minus(T(0),bs::Zero<T>(),bs::One<T>()), bs::Mone<r_t>(), 0.5);
 } // end of test for floating_
 
 STF_CASE_TPL (" ifnot_minus integer",  STF_INTEGRAL_TYPES)

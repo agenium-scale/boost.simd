@@ -19,10 +19,10 @@ STF_CASE_TPL(" fnma",  STF_IEEE_TYPES)
 
   STF_EXPR_IS(fnma(T(),T(),T()), T);
 
-  STF_EQUAL(fnma(T(4),T(2),T(2)) , T(-10));
-  STF_EQUAL(fnma(T(4),T(-2),T(2)), T(6));
-  STF_EQUAL(fnma(T(4),T(2),T(-2)), T(-6));
-  STF_EQUAL(fnma(T(4),T(-2),T(-2)), T(10));
+  STF_ULP_EQUAL(fnma(T(4),T(2),T(2)) , T(-10), 0.5);
+  STF_ULP_EQUAL(fnma(T(4),T(-2),T(2)), T(6), 0.5);
+  STF_ULP_EQUAL(fnma(T(4),T(2),T(-2)), T(-6), 0.5);
+  STF_ULP_EQUAL(fnma(T(4),T(-2),T(-2)), T(10), 0.5);
 }
 
 

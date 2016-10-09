@@ -35,16 +35,16 @@ STF_CASE_TPL (" fpclassify",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(fpclassify(bs::Inf<T>()), FP_INFINITE);
-  STF_EQUAL(fpclassify(bs::Minf<T>()), FP_INFINITE);
-  STF_EQUAL(fpclassify(bs::Nan<T>()), FP_NAN);
+  STF_ULP_EQUAL(fpclassify(bs::Inf<T>()), FP_INFINITE, 0.5);
+  STF_ULP_EQUAL(fpclassify(bs::Minf<T>()), FP_INFINITE, 0.5);
+  STF_ULP_EQUAL(fpclassify(bs::Nan<T>()), FP_NAN, 0.5);
 #endif
-  STF_EQUAL(fpclassify(bs::Half<T>()), FP_NORMAL);
-  STF_EQUAL(fpclassify(bs::Mhalf<T>()), FP_NORMAL);
-  STF_EQUAL(fpclassify(bs::Mone<T>()), FP_NORMAL);
-  STF_EQUAL(fpclassify(bs::Mindenormal<T>()), FP_SUBNORMAL);
-  STF_EQUAL(fpclassify(bs::Zero<T>()), FP_ZERO);
-  STF_EQUAL(fpclassify(bs::Mzero<T>()), FP_ZERO);
+  STF_ULP_EQUAL(fpclassify(bs::Half<T>()), FP_NORMAL, 0.5);
+  STF_ULP_EQUAL(fpclassify(bs::Mhalf<T>()), FP_NORMAL, 0.5);
+  STF_ULP_EQUAL(fpclassify(bs::Mone<T>()), FP_NORMAL, 0.5);
+  STF_ULP_EQUAL(fpclassify(bs::Mindenormal<T>()), FP_SUBNORMAL, 0.5);
+  STF_ULP_EQUAL(fpclassify(bs::Zero<T>()), FP_ZERO, 0.5);
+  STF_ULP_EQUAL(fpclassify(bs::Mzero<T>()), FP_ZERO, 0.5);
 }
 
 STF_CASE_TPL (" fpclassify std",  STF_IEEE_TYPES)
@@ -60,14 +60,14 @@ STF_CASE_TPL (" fpclassify std",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(bs::std_(fpclassify)(bs::Inf<T>()), FP_INFINITE);
-  STF_EQUAL(bs::std_(fpclassify)(bs::Minf<T>()), FP_INFINITE);
-  STF_EQUAL(bs::std_(fpclassify)(bs::Nan<T>()), FP_NAN);
+  STF_ULP_EQUAL(bs::std_(fpclassify)(bs::Inf<T>()), FP_INFINITE, 0.5);
+  STF_ULP_EQUAL(bs::std_(fpclassify)(bs::Minf<T>()), FP_INFINITE, 0.5);
+  STF_ULP_EQUAL(bs::std_(fpclassify)(bs::Nan<T>()), FP_NAN, 0.5);
 #endif
-  STF_EQUAL(bs::std_(fpclassify)(bs::Half<T>()), FP_NORMAL);
-  STF_EQUAL(bs::std_(fpclassify)(bs::Mhalf<T>()), FP_NORMAL);
-  STF_EQUAL(bs::std_(fpclassify)(bs::Mone<T>()), FP_NORMAL);
-  STF_EQUAL(bs::std_(fpclassify)(bs::Mindenormal<T>()), FP_SUBNORMAL);
-  STF_EQUAL(bs::std_(fpclassify)(bs::Zero<T>()), FP_ZERO);
-  STF_EQUAL(bs::std_(fpclassify)(bs::Mzero<T>()), FP_ZERO);
+  STF_ULP_EQUAL(bs::std_(fpclassify)(bs::Half<T>()), FP_NORMAL, 0.5);
+  STF_ULP_EQUAL(bs::std_(fpclassify)(bs::Mhalf<T>()), FP_NORMAL, 0.5);
+  STF_ULP_EQUAL(bs::std_(fpclassify)(bs::Mone<T>()), FP_NORMAL, 0.5);
+  STF_ULP_EQUAL(bs::std_(fpclassify)(bs::Mindenormal<T>()), FP_SUBNORMAL, 0.5);
+  STF_ULP_EQUAL(bs::std_(fpclassify)(bs::Zero<T>()), FP_ZERO, 0.5);
+  STF_ULP_EQUAL(bs::std_(fpclassify)(bs::Mzero<T>()), FP_ZERO, 0.5);
 }

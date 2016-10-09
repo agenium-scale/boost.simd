@@ -30,16 +30,16 @@ STF_CASE_TPL (" sqr_abs real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(sqr_abs(bs::Inf<T>()), bs::Inf<T>());
-  STF_EQUAL(sqr_abs(bs::Minf<T>()), bs::Inf<T>());
-  STF_IEEE_EQUAL(sqr_abs(bs::Nan<T>()), bs::Nan<T>());
+  STF_ULP_EQUAL(sqr_abs(bs::Inf<T>()), bs::Inf<T>(), 0.5);
+  STF_ULP_EQUAL(sqr_abs(bs::Minf<T>()), bs::Inf<T>(), 0.5);
+  STF_ULP_EQUAL(sqr_abs(bs::Nan<T>()), bs::Nan<T>(), 0.5);
 #endif
-  STF_EQUAL(sqr_abs(bs::One<T>()), bs::One<T>());
-  STF_EQUAL(sqr_abs(bs::Mone<T>()), bs::One<T>());
-  STF_EQUAL(sqr_abs(bs::Valmax<T>()), bs::Inf<T>());
-  STF_EQUAL(sqr_abs(bs::Valmin<T>()), bs::Inf<T>());
-  STF_EQUAL(sqr_abs(bs::Zero<T>()), bs::Zero<T>());
-  STF_EQUAL(sqr_abs(T(1)), T(1));
+  STF_ULP_EQUAL(sqr_abs(bs::One<T>()), bs::One<T>(), 0.5);
+  STF_ULP_EQUAL(sqr_abs(bs::Mone<T>()), bs::One<T>(), 0.5);
+  STF_ULP_EQUAL(sqr_abs(bs::Valmax<T>()), bs::Inf<T>(), 0.5);
+  STF_ULP_EQUAL(sqr_abs(bs::Valmin<T>()), bs::Inf<T>(), 0.5);
+  STF_ULP_EQUAL(sqr_abs(bs::Zero<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(sqr_abs(T(1)), T(1), 0.5);
 } // end of test for floating_
 
 STF_CASE_TPL (" sqr_absunsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

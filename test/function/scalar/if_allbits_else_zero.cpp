@@ -30,11 +30,11 @@ STF_CASE_TPL (" if_allbits_else_zero real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_IEEE_EQUAL(if_allbits_else_zero(bs::Inf<T>()), bs::Allbits<r_t>());
-  STF_IEEE_EQUAL(if_allbits_else_zero(bs::Minf<T>()), bs::Allbits<r_t>());
-  STF_IEEE_EQUAL(if_allbits_else_zero(bs::Nan<T>()), bs::Allbits<r_t>());
+  STF_ULP_EQUAL(if_allbits_else_zero(bs::Inf<T>()), bs::Allbits<r_t>(), 0.5);
+  STF_ULP_EQUAL(if_allbits_else_zero(bs::Minf<T>()), bs::Allbits<r_t>(), 0.5);
+  STF_ULP_EQUAL(if_allbits_else_zero(bs::Nan<T>()), bs::Allbits<r_t>(), 0.5);
 #endif
-  STF_EQUAL(if_allbits_else_zero(bs::Zero<T>()), bs::Zero<r_t>());
+  STF_ULP_EQUAL(if_allbits_else_zero(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
 } // end of test for floating_
 
 STF_CASE_TPL (" if_allbits_else_zero integer",  STF_INTEGRAL_TYPES)

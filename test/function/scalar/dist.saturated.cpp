@@ -30,14 +30,14 @@ STF_CASE_TPL (" bs::saturated_(bs::dist)_s real",  STF_IEEE_TYPES)
   STF_EXPR_IS( bs::saturated_(bs::dist)(T(), T()), T );
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_IEEE_EQUAL(bs::saturated_(bs::dist)(bs::Inf<T>() , bs::Inf<T>()) , bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::saturated_(bs::dist)(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::saturated_(bs::dist)(bs::Nan<T>() , bs::Nan<T>()) , bs::Nan<T>());
+  STF_ULP_EQUAL(bs::saturated_(bs::dist)(bs::Inf<T>() , bs::Inf<T>()) , bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(bs::saturated_(bs::dist)(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(bs::saturated_(bs::dist)(bs::Nan<T>() , bs::Nan<T>()) , bs::Nan<T>(), 0.5);
 #endif
 
-  STF_EQUAL(bs::saturated_(bs::dist)(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
-  STF_EQUAL(bs::saturated_(bs::dist)(bs::Mone<T>(), bs::One<T>()), bs::Two<T>());
-  STF_EQUAL(bs::saturated_(bs::dist)(bs::One<T>(), bs::Three<T>()), bs::Two<T>());
+  STF_ULP_EQUAL(bs::saturated_(bs::dist)(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(bs::saturated_(bs::dist)(bs::Mone<T>(), bs::One<T>()), bs::Two<T>(), 0.5);
+  STF_ULP_EQUAL(bs::saturated_(bs::dist)(bs::One<T>(), bs::Three<T>()), bs::Two<T>(), 0.5);
 }
 
 STF_CASE_TPL (" bs::saturated_(bs::dist) integer_ui",  STF_UNSIGNED_INTEGRAL_TYPES)

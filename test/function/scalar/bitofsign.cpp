@@ -29,13 +29,13 @@ STF_CASE_TPL (" bitofsign real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(bitofsign(bs::Inf<T>()), bs::Zero<r_t>());
-  STF_EQUAL(bitofsign(bs::Minf<T>()), bs::Mzero<r_t>());
-  STF_IEEE_EQUAL(bitofsign(bs::Nan<T>()), bs::Mzero<r_t>());
+  STF_ULP_EQUAL(bitofsign(bs::Inf<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(bitofsign(bs::Minf<T>()), bs::Mzero<r_t>(), 0.5);
+  STF_ULP_EQUAL(bitofsign(bs::Nan<T>()), bs::Mzero<r_t>(), 0.5);
 #endif
-  STF_EQUAL(bitofsign(bs::Mzero<T>()), bs::Mzero<r_t>());
-  STF_EQUAL(bitofsign(bs::One<T>()), bs::Zero<r_t>());
-  STF_EQUAL(bitofsign(bs::Zero<T>()), bs::Zero<r_t>());
+  STF_ULP_EQUAL(bitofsign(bs::Mzero<T>()), bs::Mzero<r_t>(), 0.5);
+  STF_ULP_EQUAL(bitofsign(bs::One<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(bitofsign(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
 }
 
 STF_CASE_TPL (" bitofsign unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

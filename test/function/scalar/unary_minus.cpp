@@ -32,11 +32,11 @@ STF_CASE_TPL (" unary_minus real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-  STF_EQUAL(unary_minus(bs::Inf<T>()), bs::Minf<r_t>());
-  STF_EQUAL(unary_minus(bs::Minf<T>()), bs::Inf<r_t>());
-  STF_IEEE_EQUAL(unary_minus(bs::Nan<T>()), bs::Nan<r_t>());
-  STF_EQUAL(unary_minus(bs::One<T>()), bs::Mone<r_t>());
-  STF_EQUAL(unary_minus(bs::Zero<T>()), bs::Mzero<r_t>());
+  STF_ULP_EQUAL(unary_minus(bs::Inf<T>()), bs::Minf<r_t>(), 0.5);
+  STF_ULP_EQUAL(unary_minus(bs::Minf<T>()), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(unary_minus(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(unary_minus(bs::One<T>()), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(unary_minus(bs::Zero<T>()), bs::Mzero<r_t>(), 0.5);
 } // end of test for floating_
 
 STF_CASE_TPL (" unary_minus signed_int",  STF_SIGNED_INTEGRAL_TYPES)

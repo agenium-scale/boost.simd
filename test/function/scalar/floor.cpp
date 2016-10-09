@@ -31,16 +31,16 @@ STF_CASE_TPL (" floor real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(floor(bs::Inf<T>()), bs::Inf<T>());
-  STF_EQUAL(floor(bs::Minf<T>()), bs::Minf<T>());
-  STF_IEEE_EQUAL(floor(bs::Nan<T>()), bs::Nan<T>());
+  STF_ULP_EQUAL(floor(bs::Inf<T>()), bs::Inf<T>(), 0.5);
+  STF_ULP_EQUAL(floor(bs::Minf<T>()), bs::Minf<T>(), 0.5);
+  STF_ULP_EQUAL(floor(bs::Nan<T>()), bs::Nan<T>(), 0.5);
 #endif
-  STF_EQUAL(floor(bs::One<T>()), bs::One<T>());
-  STF_EQUAL(floor(bs::Mone<T>()), bs::Mone<T>());
-  STF_EQUAL(floor(bs::Zero<T>()), bs::Zero<T>());
-  STF_EQUAL(floor(bs::Pi<T>()), bs::Three<T>());
-  STF_EQUAL(floor(T(-1.1)), r_t(-2));
-  STF_EQUAL(floor(T(1.1)), r_t(1));
+  STF_ULP_EQUAL(floor(bs::One<T>()), bs::One<T>(), 0.5);
+  STF_ULP_EQUAL(floor(bs::Mone<T>()), bs::Mone<T>(), 0.5);
+  STF_ULP_EQUAL(floor(bs::Zero<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(floor(bs::Pi<T>()), bs::Three<T>(), 0.5);
+  STF_ULP_EQUAL(floor(T(-1.1)), r_t(-2), 0.5);
+  STF_ULP_EQUAL(floor(T(1.1)), r_t(1), 0.5);
 } // end of test for floating_
 
 STF_CASE_TPL (" floor unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

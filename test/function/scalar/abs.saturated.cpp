@@ -27,15 +27,15 @@ STF_CASE_TPL( "Check bs::saturated_(abs) behavior with floating", STF_IEEE_TYPES
   STF_TYPE_IS(r_t, T);
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(bs::saturated_(abs)(bs::Inf<T>()),  bs::Inf<r_t>());
-  STF_EQUAL(bs::saturated_(abs)(bs::Minf<T>()), bs::Inf<r_t>());
-  STF_IEEE_EQUAL(bs::saturated_(abs)(bs::Nan<T>()),  bs::Nan<r_t>());
+  STF_ULP_EQUAL(bs::saturated_(abs)(bs::Inf<T>()),  bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::saturated_(abs)(bs::Minf<T>()), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::saturated_(abs)(bs::Nan<T>()),  bs::Nan<r_t>(), 0.5);
 #endif
-  STF_EQUAL(bs::saturated_(abs)(bs::Mone<T>()), bs::One<T>());
-  STF_EQUAL(bs::saturated_(abs)(bs::One<T>()), bs::One<T>());
-  STF_EQUAL(bs::saturated_(abs)(bs::Valmax<T>()), bs::Valmax<T>());
-  STF_EQUAL(bs::saturated_(abs)(bs::Valmin<T>()), bs::Valmax<T>());
-  STF_EQUAL(bs::saturated_(abs)(bs::Zero<T>()), bs::Zero<T>());
+  STF_ULP_EQUAL(bs::saturated_(abs)(bs::Mone<T>()), bs::One<T>(), 0.5);
+  STF_ULP_EQUAL(bs::saturated_(abs)(bs::One<T>()), bs::One<T>(), 0.5);
+  STF_ULP_EQUAL(bs::saturated_(abs)(bs::Valmax<T>()), bs::Valmax<T>(), 0.5);
+  STF_ULP_EQUAL(bs::saturated_(abs)(bs::Valmin<T>()), bs::Valmax<T>(), 0.5);
+  STF_ULP_EQUAL(bs::saturated_(abs)(bs::Zero<T>()), bs::Zero<T>(), 0.5);
 }
 
 

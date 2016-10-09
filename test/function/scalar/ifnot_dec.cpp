@@ -63,9 +63,9 @@ STF_CASE_TPL(" ifnot_dec floating", STF_IEEE_TYPES)
   STF_EXPR_IS( ifnot_dec(T(), T()), T);
 
   // specific values tests
-  STF_EQUAL(ifnot_dec(bs::Zero<T>(), bs::One<T>()), bs::Zero<T>());
-  STF_EQUAL(ifnot_dec(bs::Zero<T>(), bs::Two<T>()), bs::One<T>());
-  STF_EQUAL(ifnot_dec(bs::Zero<T>(), bs::Zero<T>()), bs::Mone<T>());
-  STF_EQUAL(ifnot_dec(bs::One<T>(), bs::One<T>()), bs::One<T>());
-  STF_EQUAL(ifnot_dec(bs::One<T>(), bs::Zero<T>()), bs::Zero<T>());
+  STF_ULP_EQUAL(ifnot_dec(bs::Zero<T>(), bs::One<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(ifnot_dec(bs::Zero<T>(), bs::Two<T>()), bs::One<T>(), 0.5);
+  STF_ULP_EQUAL(ifnot_dec(bs::Zero<T>(), bs::Zero<T>()), bs::Mone<T>(), 0.5);
+  STF_ULP_EQUAL(ifnot_dec(bs::One<T>(), bs::One<T>()), bs::One<T>(), 0.5);
+  STF_ULP_EQUAL(ifnot_dec(bs::One<T>(), bs::Zero<T>()), bs::Zero<T>(), 0.5);
 }

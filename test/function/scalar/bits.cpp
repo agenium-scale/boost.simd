@@ -30,9 +30,9 @@ STF_CASE_TPL (" bits real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_IEEE_EQUAL(bits(bs::Nan<T>()), bs::Mone<r_t>());
+  STF_ULP_EQUAL(bits(bs::Nan<T>()), bs::Mone<r_t>(), 0.5);
 #endif
-  STF_EQUAL(bits(bs::Zero<T>()), bs::Zero<r_t>());
+  STF_ULP_EQUAL(bits(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
 } // end of test for floating_
 
 STF_CASE_TPL (" bits signed_int",  STF_SIGNED_INTEGRAL_TYPES)

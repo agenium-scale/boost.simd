@@ -29,13 +29,13 @@ STF_CASE_TPL (" sign real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(sign(bs::Inf<T>()), bs::One<r_t>());
-  STF_EQUAL(sign(bs::Minf<T>()), bs::Mone<r_t>());
-  STF_IEEE_EQUAL(sign(bs::Nan<T>()), bs::Nan<r_t>());
+  STF_ULP_EQUAL(sign(bs::Inf<T>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(sign(bs::Minf<T>()), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(sign(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_EQUAL(sign(bs::Mone<T>()), bs::Mone<r_t>());
-  STF_EQUAL(sign(bs::One<T>()), bs::One<r_t>());
-  STF_EQUAL(sign(bs::Zero<T>()), bs::Zero<r_t>());
+  STF_ULP_EQUAL(sign(bs::Mone<T>()), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(sign(bs::One<T>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(sign(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
 }
 
 STF_CASE_TPL (" sign unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

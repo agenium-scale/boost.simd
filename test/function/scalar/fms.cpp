@@ -18,10 +18,10 @@ STF_CASE_TPL(" fms",  STF_IEEE_TYPES)
 
   STF_EXPR_IS(fms(T(),T(),T()), T);
 
-  STF_EQUAL(fms(T(2),T(2),T(4)) , T(0));
-  STF_EQUAL(fms(T(2),T(2),T(-4)), T(8));
-  STF_EQUAL(fms(T(2),T(-2),T(4)), T(-8));
-  STF_EQUAL(fms(T(-2),T(2),T(4)), T(-8));
+  STF_ULP_EQUAL(fms(T(2),T(2),T(4)) , T(0), 0.5);
+  STF_ULP_EQUAL(fms(T(2),T(2),T(-4)), T(8), 0.5);
+  STF_ULP_EQUAL(fms(T(2),T(-2),T(4)), T(-8), 0.5);
+  STF_ULP_EQUAL(fms(T(-2),T(2),T(4)), T(-8), 0.5);
 }
 
 

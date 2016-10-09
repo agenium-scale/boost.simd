@@ -36,15 +36,15 @@ STF_CASE_TPL (" predecessor real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(predecessor(bs::Inf<T>()), bs::Valmax<r_t>());
-  STF_IEEE_EQUAL(predecessor(bs::Minf<T>()), bs::Nan<r_t>());
-  STF_IEEE_EQUAL(predecessor(bs::Nan<T>()), bs::Nan<r_t>());
+  STF_ULP_EQUAL(predecessor(bs::Inf<T>()), bs::Valmax<r_t>(), 0.5);
+  STF_ULP_EQUAL(predecessor(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(predecessor(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_EQUAL(predecessor(bs::Mone<T>()), bs::Mone<r_t>()-bs::Eps<r_t>());
-  STF_EQUAL(predecessor(bs::One<T>()), bs::One<r_t>()-bs::Halfeps<r_t>());
-  STF_EQUAL(predecessor(bs::Valmin<T>()), bs::Minf<r_t>());
+  STF_ULP_EQUAL(predecessor(bs::Mone<T>()), bs::Mone<r_t>()-bs::Eps<r_t>(), 0.5);
+  STF_ULP_EQUAL(predecessor(bs::One<T>()), bs::One<r_t>()-bs::Halfeps<r_t>(), 0.5);
+  STF_ULP_EQUAL(predecessor(bs::Valmin<T>()), bs::Minf<r_t>(), 0.5);
 #if !defined(BOOST_SIMD_NO_DENORMALS)
-  STF_EQUAL(predecessor(bs::Zero<T>()), -bs::Bitincrement<T>());
+  STF_ULP_EQUAL(predecessor(bs::Zero<T>()), -bs::Bitincrement<T>(), 0.5);
 #endif
 } // end of test for floating_
 
@@ -96,15 +96,15 @@ STF_CASE_TPL (" predecessor real 2",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_IEEE_EQUAL(predecessor(bs::Minf<T>(), bs::Two<iT>()), bs::Nan<r_t>());
-  STF_IEEE_EQUAL(predecessor(bs::Nan<T>(), bs::Two<iT>()), bs::Nan<r_t>());
+  STF_ULP_EQUAL(predecessor(bs::Minf<T>(), bs::Two<iT>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(predecessor(bs::Nan<T>(), bs::Two<iT>()), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_EQUAL(predecessor(bs::Mone<T>(), bs::Two<iT>()), bs::Mone<r_t>()-bs::Eps<r_t>()-bs::Eps<r_t>());
-  STF_EQUAL(predecessor(bs::One<T>(), bs::Two<iT>()), bs::One<r_t>()-bs::Eps<r_t>());
-  STF_IEEE_EQUAL(predecessor(bs::Valmin<T>(), bs::Two<iT>()), bs::Nan<r_t>());
-  STF_IEEE_EQUAL(predecessor(bs::Valmin<T>(), bs::Four<iT>()), bs::Nan<r_t>());
+  STF_ULP_EQUAL(predecessor(bs::Mone<T>(), bs::Two<iT>()), bs::Mone<r_t>()-bs::Eps<r_t>()-bs::Eps<r_t>(), 0.5);
+  STF_ULP_EQUAL(predecessor(bs::One<T>(), bs::Two<iT>()), bs::One<r_t>()-bs::Eps<r_t>(), 0.5);
+  STF_ULP_EQUAL(predecessor(bs::Valmin<T>(), bs::Two<iT>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(predecessor(bs::Valmin<T>(), bs::Four<iT>()), bs::Nan<r_t>(), 0.5);
 #if !defined(BOOST_SIMD_NO_DENORMALS)
-  STF_EQUAL(predecessor(bs::Zero<T>(), bs::Two<iT>()), -bs::Bitincrement<r_t>()-bs::Bitincrement<r_t>());
+  STF_ULP_EQUAL(predecessor(bs::Zero<T>(), bs::Two<iT>()), -bs::Bitincrement<r_t>()-bs::Bitincrement<r_t>(), 0.5);
 #endif
 }
 

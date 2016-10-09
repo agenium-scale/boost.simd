@@ -30,13 +30,13 @@ STF_CASE_TPL (" sqr real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(sqr(bs::Inf<T>()), bs::Inf<T>());
-  STF_EQUAL(sqr(bs::Minf<T>()), bs::Inf<T>());
-  STF_IEEE_EQUAL(sqr(bs::Nan<T>()), bs::Nan<T>());
+  STF_ULP_EQUAL(sqr(bs::Inf<T>()), bs::Inf<T>(), 0.5);
+  STF_ULP_EQUAL(sqr(bs::Minf<T>()), bs::Inf<T>(), 0.5);
+  STF_ULP_EQUAL(sqr(bs::Nan<T>()), bs::Nan<T>(), 0.5);
 #endif
-  STF_EQUAL(sqr(bs::Mone<T>()), bs::One<T>());
-  STF_EQUAL(sqr(bs::One<T>()), bs::One<T>());
-  STF_EQUAL(sqr(bs::Zero<T>()), bs::Zero<T>());
+  STF_ULP_EQUAL(sqr(bs::Mone<T>()), bs::One<T>(), 0.5);
+  STF_ULP_EQUAL(sqr(bs::One<T>()), bs::One<T>(), 0.5);
+  STF_ULP_EQUAL(sqr(bs::Zero<T>()), bs::Zero<T>(), 0.5);
 } // end of test for floating_
 
 STF_CASE_TPL (" sqr unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

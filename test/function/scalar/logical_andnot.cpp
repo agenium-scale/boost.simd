@@ -32,14 +32,14 @@ STF_CASE_TPL (" logical_andnot real",  STF_IEEE_TYPES)
   STF_TYPE_IS( r_t, logical<T>);
 
   // specific values tests
-  STF_EQUAL(logical_andnot(T(0), T(1)), r_t(false));
-  STF_EQUAL(logical_andnot(T(1), T(0)), r_t(true));
-  STF_EQUAL(logical_andnot(bs::Inf<T>(),  T(0)), r_t(true));
-  STF_EQUAL(logical_andnot(bs::Minf<T>(), T(0)), r_t(true));
-  STF_EQUAL(logical_andnot(bs::Nan<T>(),  T(0)), r_t(true));
-  STF_EQUAL(logical_andnot(bs::Zero<T>(), T(1)), r_t(false));
-  STF_EQUAL(logical_andnot(r_t(false), T(1)), r_t(false));
-  STF_EQUAL(logical_andnot(r_t(true), T(1)), r_t(false));
+  STF_ULP_EQUAL(logical_andnot(T(0), T(1)), r_t(false), 0.5);
+  STF_ULP_EQUAL(logical_andnot(T(1), T(0)), r_t(true), 0.5);
+  STF_ULP_EQUAL(logical_andnot(bs::Inf<T>(),  T(0)), r_t(true), 0.5);
+  STF_ULP_EQUAL(logical_andnot(bs::Minf<T>(), T(0)), r_t(true), 0.5);
+  STF_ULP_EQUAL(logical_andnot(bs::Nan<T>(),  T(0)), r_t(true), 0.5);
+  STF_ULP_EQUAL(logical_andnot(bs::Zero<T>(), T(1)), r_t(false), 0.5);
+  STF_ULP_EQUAL(logical_andnot(r_t(false), T(1)), r_t(false), 0.5);
+  STF_ULP_EQUAL(logical_andnot(r_t(true), T(1)), r_t(false), 0.5);
 
 
 } // end of test for floating_
@@ -77,14 +77,14 @@ STF_CASE_TPL (" logical_andnot mix",  STF_IEEE_TYPES)
   STF_TYPE_IS( r_t, logical<T> );
 
   // specific values tests
-  STF_EQUAL(logical_andnot(T(0), iT(1)), r_t(false));
-  STF_EQUAL(logical_andnot(T(1), iT(0)), r_t(true));
-  STF_EQUAL(logical_andnot(bs::Inf<T>(),  iT(0)), r_t(true));
-  STF_EQUAL(logical_andnot(bs::Minf<T>(), iT(0)), r_t(true));
-  STF_EQUAL(logical_andnot(bs::Nan<T>(),  iT(0)), r_t(true));
-  STF_EQUAL(logical_andnot(bs::Zero<T>(), iT(1)), r_t(false));
-  STF_EQUAL(logical_andnot(r_t(false), iT(1)), r_t(false));
-  STF_EQUAL(logical_andnot(r_t(true), iT(1)), r_t(false));
+  STF_ULP_EQUAL(logical_andnot(T(0), iT(1)), r_t(false), 0.5);
+  STF_ULP_EQUAL(logical_andnot(T(1), iT(0)), r_t(true), 0.5);
+  STF_ULP_EQUAL(logical_andnot(bs::Inf<T>(),  iT(0)), r_t(true), 0.5);
+  STF_ULP_EQUAL(logical_andnot(bs::Minf<T>(), iT(0)), r_t(true), 0.5);
+  STF_ULP_EQUAL(logical_andnot(bs::Nan<T>(),  iT(0)), r_t(true), 0.5);
+  STF_ULP_EQUAL(logical_andnot(bs::Zero<T>(), iT(1)), r_t(false), 0.5);
+  STF_ULP_EQUAL(logical_andnot(r_t(false), iT(1)), r_t(false), 0.5);
+  STF_ULP_EQUAL(logical_andnot(r_t(true), iT(1)), r_t(false), 0.5);
 
 
 } // end of test for floating_STF_CASE

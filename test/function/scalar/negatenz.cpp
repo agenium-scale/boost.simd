@@ -34,19 +34,19 @@ STF_CASE_TPL (" negatenz real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(negatenz(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>());
-  STF_EQUAL(negatenz(bs::Minf<T>(), bs::Minf<T>()), bs::Inf<r_t>());
-  STF_IEEE_EQUAL(negatenz(bs::Nan<T>(), bs::Zero<T>()), bs::Nan<r_t>());
-  STF_IEEE_EQUAL(negatenz(bs::Nan<T>(), bs::Zero<T>()), bs::Nan<r_t>());
-  STF_IEEE_EQUAL(negatenz(bs::Nan<T>(), bs::One<T>()), bs::Nan<r_t>());
+  STF_ULP_EQUAL(negatenz(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(negatenz(bs::Minf<T>(), bs::Minf<T>()), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(negatenz(bs::Nan<T>(), bs::Zero<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(negatenz(bs::Nan<T>(), bs::Zero<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(negatenz(bs::Nan<T>(), bs::One<T>()), bs::Nan<r_t>(), 0.5);
 #endif
   STF_TYPE_IS(r_t, T);
-  STF_EQUAL(negatenz(bs::Mone<T>(), bs::Mone<T>()), bs::One<r_t>());
-  STF_EQUAL(negatenz(bs::One<T>(), bs::One<T>()), bs::One<r_t>());
-  STF_EQUAL(negatenz(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
-  STF_EQUAL(negatenz(bs::One<T>(), bs::Zero<T>()), bs::One<r_t>());
-  STF_EQUAL(negatenz(bs::Two<T>(), bs::Mthree<T>()), bs::Mtwo<r_t>());
-  STF_EQUAL(negatenz(bs::Two<T>(), bs::Three<T>()), bs::Two<r_t>());
+  STF_ULP_EQUAL(negatenz(bs::Mone<T>(), bs::Mone<T>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(negatenz(bs::One<T>(), bs::One<T>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(negatenz(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(negatenz(bs::One<T>(), bs::Zero<T>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(negatenz(bs::Two<T>(), bs::Mthree<T>()), bs::Mtwo<r_t>(), 0.5);
+  STF_ULP_EQUAL(negatenz(bs::Two<T>(), bs::Three<T>()), bs::Two<r_t>(), 0.5);
 }
 
 STF_CASE_TPL (" negatenz unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

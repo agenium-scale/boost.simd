@@ -31,17 +31,17 @@ STF_CASE_TPL (" rem real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_IEEE_EQUAL(rem(bs::Inf<T>(), bs::Inf<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(rem(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(rem(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(rem(bs::Inf<T>(), bs::One<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(rem(bs::One<T>(), bs::Zero<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(rem(bs::Zero<T>(), bs::Zero<T>()), bs::Nan<T>());
+  STF_ULP_EQUAL(rem(bs::Inf<T>(), bs::Inf<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(rem(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(rem(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(rem(bs::Inf<T>(), bs::One<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(rem(bs::One<T>(), bs::Zero<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(rem(bs::Zero<T>(), bs::Zero<T>()), bs::Nan<T>(), 0.5);
 #endif
-  STF_EQUAL(rem(bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
-  STF_EQUAL(rem(bs::One<T>(), bs::One<T>()), bs::Zero<T>());
-  STF_IEEE_EQUAL(rem(bs::One<T>(),bs::Zero<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(rem(bs::Zero<T>(), bs::Zero<T>()), bs::Nan<T>());
+  STF_ULP_EQUAL(rem(bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(rem(bs::One<T>(), bs::One<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(rem(bs::One<T>(),bs::Zero<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(rem(bs::Zero<T>(), bs::Zero<T>()), bs::Nan<T>(), 0.5);
   STF_EXPECT(bs::is_negative(rem(-T(0), T(1))));
   STF_EXPECT(bs::is_positive(rem(T(0), T(1))));
 } // end of test for floating_
@@ -104,9 +104,9 @@ STF_CASE_TPL (" rem std",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-  STF_EQUAL(bs::std_(rem)(bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
-  STF_EQUAL(bs::std_(rem)(bs::One<T>(), bs::One<T>()), bs::Zero<T>());
-  STF_EQUAL(bs::std_(rem)(T(3), T(2)), bs::One<T>());
+  STF_ULP_EQUAL(bs::std_(rem)(bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(bs::std_(rem)(bs::One<T>(), bs::One<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(bs::std_(rem)(T(3), T(2)), bs::One<T>(), 0.5);
 } // end of test for signed_int_
 
 STF_CASE_TPL (" rem option fix",  STF_IEEE_TYPES)
@@ -120,9 +120,9 @@ STF_CASE_TPL (" rem option fix",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-  STF_EQUAL(rem(bs::fix, bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
-  STF_EQUAL(rem(bs::fix, bs::One<T>(), bs::One<T>()), bs::Zero<T>());
-  STF_EQUAL(rem(bs::fix, T(3), T(2)), bs::One<T>());
+  STF_ULP_EQUAL(rem(bs::fix, bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(rem(bs::fix, bs::One<T>(), bs::One<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(rem(bs::fix, T(3), T(2)), bs::One<T>(), 0.5);
 } // end of test for signed_int_
 
   STF_CASE_TPL (" fast_ rem option fix",  STF_IEEE_TYPES)
@@ -137,18 +137,18 @@ STF_CASE_TPL (" rem option fix",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::fix, bs::Inf<T>(), bs::Inf<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::fix, bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::fix, bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::fix, bs::Inf<T>(), bs::One<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::fix, bs::Minf<T>(), bs::One<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::fix, bs::One<T>(), bs::Zero<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::fix, bs::Zero<T>(), bs::Zero<T>()), bs::Nan<T>());
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::fix, bs::Inf<T>(), bs::Inf<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::fix, bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::fix, bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::fix, bs::Inf<T>(), bs::One<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::fix, bs::Minf<T>(), bs::One<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::fix, bs::One<T>(), bs::Zero<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::fix, bs::Zero<T>(), bs::Zero<T>()), bs::Nan<T>(), 0.5);
 #endif
-  STF_EQUAL(bs::fast_(rem)(bs::fix, bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
-  STF_EQUAL(bs::fast_(rem)(bs::fix, bs::One<T>(), bs::One<T>()), bs::Zero<T>());
-  STF_EQUAL(bs::fast_(rem)(bs::fix, T(3), T(2)), bs::One<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::fix, bs::Two<T>(), bs::Zero<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::fix, bs::Two<T>(), bs::Mzero<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::fix, bs::Zero<T>(), bs::One<T>()), bs::Zero<T>());
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::fix, bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::fix, bs::One<T>(), bs::One<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::fix, T(3), T(2)), bs::One<T>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::fix, bs::Two<T>(), bs::Zero<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::fix, bs::Two<T>(), bs::Mzero<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::fix, bs::Zero<T>(), bs::One<T>()), bs::Zero<T>(), 0.5);
 } // end of test for signed_int_

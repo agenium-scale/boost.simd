@@ -30,15 +30,15 @@ STF_CASE_TPL (" frac real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_IEEE_EQUAL(frac(bs::Inf<T>()), bs::Nan<r_t>());
-  STF_IEEE_EQUAL(frac(bs::Minf<T>()), bs::Nan<r_t>());
-  STF_IEEE_EQUAL(frac(bs::Nan<T>()), bs::Nan<r_t>());
+  STF_ULP_EQUAL(frac(bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(frac(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(frac(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_EQUAL(frac(bs::Mone<T>()), bs::Zero<r_t>());
-  STF_EQUAL(frac(bs::One<T>()), bs::Zero<r_t>());
-  STF_EQUAL(frac(bs::Zero<T>()), bs::Zero<r_t>());
-  STF_EQUAL(frac(T(1.5)),  bs::Half<r_t>());
-  STF_EQUAL(frac(T(-1.5)),  bs::Mhalf<r_t>());
+  STF_ULP_EQUAL(frac(bs::Mone<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(frac(bs::One<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(frac(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(frac(T(1.5)),  bs::Half<r_t>(), 0.5);
+  STF_ULP_EQUAL(frac(T(-1.5)),  bs::Mhalf<r_t>(), 0.5);
 }
 
 STF_CASE_TPL (" frac unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

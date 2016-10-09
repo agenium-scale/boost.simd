@@ -39,21 +39,21 @@ STF_CASE_TPL (" is_normal",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(is_normal(bs::Inf<T>()), r_t(false));
-  STF_EQUAL(is_normal(bs::Minf<T>()), r_t(false));
-  STF_EQUAL(is_normal(bs::Nan<T>()), r_t(false));
+  STF_ULP_EQUAL(is_normal(bs::Inf<T>()), r_t(false), 0.5);
+  STF_ULP_EQUAL(is_normal(bs::Minf<T>()), r_t(false), 0.5);
+  STF_ULP_EQUAL(is_normal(bs::Nan<T>()), r_t(false), 0.5);
 #endif
-  STF_EQUAL(is_normal(-bs::Zero<T>()), r_t(false));
-  STF_EQUAL(is_normal(bs::Half<T>()), r_t(true));
-  STF_EQUAL(is_normal(bs::Mone<T>()), r_t(true));
-  STF_EQUAL(is_normal(bs::One<T>()), r_t(true));
-  STF_EQUAL(is_normal(bs::Quarter<T>()), r_t(true));
-  STF_EQUAL(is_normal(bs::Two<T>()), r_t(true));
-  STF_EQUAL(is_normal(bs::Zero<T>()), r_t(false));
-  STF_EQUAL(is_normal(bs::Smallestposval<T>()),  r_t(true));
+  STF_ULP_EQUAL(is_normal(-bs::Zero<T>()), r_t(false), 0.5);
+  STF_ULP_EQUAL(is_normal(bs::Half<T>()), r_t(true), 0.5);
+  STF_ULP_EQUAL(is_normal(bs::Mone<T>()), r_t(true), 0.5);
+  STF_ULP_EQUAL(is_normal(bs::One<T>()), r_t(true), 0.5);
+  STF_ULP_EQUAL(is_normal(bs::Quarter<T>()), r_t(true), 0.5);
+  STF_ULP_EQUAL(is_normal(bs::Two<T>()), r_t(true), 0.5);
+  STF_ULP_EQUAL(is_normal(bs::Zero<T>()), r_t(false), 0.5);
+  STF_ULP_EQUAL(is_normal(bs::Smallestposval<T>()),  r_t(true), 0.5);
 #ifndef STF_NO_NORMAL
-  STF_EQUAL(is_normal(bs::Mindenormal<T>()), r_t(false));
-  STF_EQUAL(is_normal(bs::Smallestposval<T>()/bs::Two<T>()), r_t(false));
+  STF_ULP_EQUAL(is_normal(bs::Mindenormal<T>()), r_t(false), 0.5);
+  STF_ULP_EQUAL(is_normal(bs::Smallestposval<T>()/bs::Two<T>()), r_t(false), 0.5);
 #endif
 }
 
@@ -137,20 +137,20 @@ STF_CASE_TPL (" is_normal std",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(bs::std_(is_normal)(bs::Inf<T>()), r_t(false));
-  STF_EQUAL(bs::std_(is_normal)(bs::Minf<T>()), r_t(false));
-  STF_EQUAL(bs::std_(is_normal)(bs::Nan<T>()), r_t(false));
+  STF_ULP_EQUAL(bs::std_(is_normal)(bs::Inf<T>()), r_t(false), 0.5);
+  STF_ULP_EQUAL(bs::std_(is_normal)(bs::Minf<T>()), r_t(false), 0.5);
+  STF_ULP_EQUAL(bs::std_(is_normal)(bs::Nan<T>()), r_t(false), 0.5);
 #endif
-  STF_EQUAL(bs::std_(is_normal)(-bs::Zero<T>()), r_t(false));
-  STF_EQUAL(bs::std_(is_normal)(bs::Half<T>()), r_t(true));
-  STF_EQUAL(bs::std_(is_normal)(bs::Mone<T>()), r_t(true));
-  STF_EQUAL(bs::std_(is_normal)(bs::One<T>()), r_t(true));
-  STF_EQUAL(bs::std_(is_normal)(bs::Quarter<T>()), r_t(true));
-  STF_EQUAL(bs::std_(is_normal)(bs::Two<T>()), r_t(true));
-  STF_EQUAL(bs::std_(is_normal)(bs::Zero<T>()), r_t(false));
-  STF_EQUAL(bs::std_(is_normal)(bs::Smallestposval<T>()),  r_t(true));
+  STF_ULP_EQUAL(bs::std_(is_normal)(-bs::Zero<T>()), r_t(false), 0.5);
+  STF_ULP_EQUAL(bs::std_(is_normal)(bs::Half<T>()), r_t(true), 0.5);
+  STF_ULP_EQUAL(bs::std_(is_normal)(bs::Mone<T>()), r_t(true), 0.5);
+  STF_ULP_EQUAL(bs::std_(is_normal)(bs::One<T>()), r_t(true), 0.5);
+  STF_ULP_EQUAL(bs::std_(is_normal)(bs::Quarter<T>()), r_t(true), 0.5);
+  STF_ULP_EQUAL(bs::std_(is_normal)(bs::Two<T>()), r_t(true), 0.5);
+  STF_ULP_EQUAL(bs::std_(is_normal)(bs::Zero<T>()), r_t(false), 0.5);
+  STF_ULP_EQUAL(bs::std_(is_normal)(bs::Smallestposval<T>()),  r_t(true), 0.5);
 #ifndef STF_NO_NORMAL
-  STF_EQUAL(bs::std_(is_normal)(bs::Mindenormal<T>()), r_t(false));
-  STF_EQUAL(bs::std_(is_normal)(bs::Smallestposval<T>()/bs::Two<T>()), r_t(false));
+  STF_ULP_EQUAL(bs::std_(is_normal)(bs::Mindenormal<T>()), r_t(false), 0.5);
+  STF_ULP_EQUAL(bs::std_(is_normal)(bs::Smallestposval<T>()/bs::Two<T>()), r_t(false), 0.5);
 #endif
 }

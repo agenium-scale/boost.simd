@@ -50,6 +50,6 @@ STF_CASE_TPL (" shift_left_real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, wished_r_t);
 
   // specific values tests
-  STF_EQUAL(shift_left(bs::One<T>(),bs::Zero<iT>()), bs::One<r_t>());
-  STF_EQUAL(shift_left(bs::Zero<T>(),bs::One<iT>()), bs::Zero<r_t>());
+  STF_ULP_EQUAL(shift_left(bs::One<T>(),bs::Zero<iT>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(shift_left(bs::Zero<T>(),bs::One<iT>()), bs::Zero<r_t>(), 0.5);
 } // end of test for floating_

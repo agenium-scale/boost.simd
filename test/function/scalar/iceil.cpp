@@ -31,13 +31,13 @@ STF_CASE_TPL (" iceil real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(iceil(bs::Inf<T>()), bs::Inf<r_t>());
-  STF_EQUAL(iceil(bs::Minf<T>()), bs::Minf<r_t>());
-  STF_EQUAL(iceil(bs::Nan<T>()), bs::Zero<r_t>());
+  STF_ULP_EQUAL(iceil(bs::Inf<T>()), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(iceil(bs::Minf<T>()), bs::Minf<r_t>(), 0.5);
+  STF_ULP_EQUAL(iceil(bs::Nan<T>()), bs::Zero<r_t>(), 0.5);
 #endif
-  STF_EQUAL(iceil(bs::Mone<T>()), bs::Mone<r_t>());
-  STF_EQUAL(iceil(bs::One<T>()), bs::One<r_t>());
-  STF_EQUAL(iceil(bs::Zero<T>()), bs::Zero<r_t>());
+  STF_ULP_EQUAL(iceil(bs::Mone<T>()), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(iceil(bs::One<T>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(iceil(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
 } // end of test for floating_
 
 STF_CASE_TPL (" iceil unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

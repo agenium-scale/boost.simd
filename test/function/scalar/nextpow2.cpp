@@ -36,12 +36,12 @@ STF_CASE_TPL (" nextpow2 real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(nextpow2(bs::Inf<T>()), bs::Zero<r_t>());
-  STF_EQUAL(nextpow2(bs::Minf<T>()), bs::Zero<r_t>());
+  STF_ULP_EQUAL(nextpow2(bs::Inf<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(nextpow2(bs::Minf<T>()), bs::Zero<r_t>(), 0.5);
 #endif
-  STF_EQUAL(nextpow2(bs::Mone<T>()), bs::Zero<r_t>());
-  STF_EQUAL(nextpow2(bs::One<T>()), bs::Zero<r_t>());
-  STF_EQUAL(nextpow2(bs::Zero<T>()), bs::Zero<r_t>());
+  STF_ULP_EQUAL(nextpow2(bs::Mone<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(nextpow2(bs::One<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(nextpow2(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
 }
 
 STF_CASE_TPL (" nextpow2 unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

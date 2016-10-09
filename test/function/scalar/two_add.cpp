@@ -41,18 +41,18 @@ STF_CASE_TPL(" two_add", STF_IEEE_TYPES)
   std::pair<T,T> p;
 
   p = two_add(inf_,zero_);
-  STF_EQUAL(p.first, inf_);
-  STF_EQUAL(p.second, zero_);
+  STF_ULP_EQUAL(p.first, inf_, 0.5);
+  STF_ULP_EQUAL(p.second, zero_, 0.5);
 
   p = two_add(zero_, inf_);
-  STF_EQUAL(p.first, inf_);
-  STF_EQUAL(p.second, zero_);
+  STF_ULP_EQUAL(p.first, inf_, 0.5);
+  STF_ULP_EQUAL(p.second, zero_, 0.5);
 
   p = two_add(half_+ eps_2_, half_);
-  STF_EQUAL(p.first, one_);
-  STF_EQUAL(p.second, eps_2_);
+  STF_ULP_EQUAL(p.first, one_, 0.5);
+  STF_ULP_EQUAL(p.second, eps_2_, 0.5);
 
   p = two_add(half_, half_+ eps_2_);
-  STF_EQUAL(p.first, one_);
-  STF_EQUAL(p.second, eps_2_);
+  STF_ULP_EQUAL(p.first, one_, 0.5);
+  STF_ULP_EQUAL(p.second, eps_2_, 0.5);
 }

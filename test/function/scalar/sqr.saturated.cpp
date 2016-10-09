@@ -31,16 +31,16 @@ STF_CASE_TPL (" bs::saturated_(sqr_s) real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(bs::saturated_(sqr)(bs::Inf<T>()), bs::Inf<T>());
-  STF_EQUAL(bs::saturated_(sqr)(bs::Minf<T>()), bs::Inf<T>());
-  STF_IEEE_EQUAL(bs::saturated_(sqr)(bs::Nan<T>()), bs::Nan<T>());
+  STF_ULP_EQUAL(bs::saturated_(sqr)(bs::Inf<T>()), bs::Inf<T>(), 0.5);
+  STF_ULP_EQUAL(bs::saturated_(sqr)(bs::Minf<T>()), bs::Inf<T>(), 0.5);
+  STF_ULP_EQUAL(bs::saturated_(sqr)(bs::Nan<T>()), bs::Nan<T>(), 0.5);
 #endif
-  STF_EQUAL(bs::saturated_(sqr)(bs::One<T>()), bs::One<T>());
-  STF_EQUAL(bs::saturated_(sqr)(bs::Mone<T>()), bs::One<T>());
-  STF_EQUAL(bs::saturated_(sqr)(bs::Valmax<T>()), bs::Inf<T>());
-  STF_EQUAL(bs::saturated_(sqr)(bs::Valmin<T>()), bs::Inf<T>());
-  STF_EQUAL(bs::saturated_(sqr)(bs::Zero<T>()), bs::Zero<T>());
-  STF_EQUAL(bs::saturated_(sqr)(T(1)), T(1));
+  STF_ULP_EQUAL(bs::saturated_(sqr)(bs::One<T>()), bs::One<T>(), 0.5);
+  STF_ULP_EQUAL(bs::saturated_(sqr)(bs::Mone<T>()), bs::One<T>(), 0.5);
+  STF_ULP_EQUAL(bs::saturated_(sqr)(bs::Valmax<T>()), bs::Inf<T>(), 0.5);
+  STF_ULP_EQUAL(bs::saturated_(sqr)(bs::Valmin<T>()), bs::Inf<T>(), 0.5);
+  STF_ULP_EQUAL(bs::saturated_(sqr)(bs::Zero<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(bs::saturated_(sqr)(T(1)), T(1), 0.5);
 } // end of test for floating_
 
 STF_CASE_TPL (" bs::saturated_(sqr) unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

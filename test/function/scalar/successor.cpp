@@ -28,13 +28,13 @@ STF_CASE_TPL (" successor real",  STF_IEEE_TYPES)
   using r_t = decltype(successor(T()));
 
   // specific values tests
-  STF_IEEE_EQUAL(successor(bs::Inf<T>()), bs::Nan<r_t>());
-  STF_EQUAL(successor(bs::Minf<T>()), bs::Valmin<r_t>());
-  STF_EQUAL(successor(bs::Mone<T>()), bs::Mone<r_t>()+bs::Eps<r_t>()/2);
-  STF_IEEE_EQUAL(successor(bs::Nan<T>()), bs::Nan<r_t>());
-  STF_EQUAL(successor(bs::One<T>()), bs::One<r_t>()+bs::Eps<r_t>());
-  STF_EQUAL(successor(bs::Valmax<T>()), bs::Inf<r_t>());
-  STF_EQUAL(successor(bs::Zero<T>()), bs::Bitincrement<T>());
+  STF_ULP_EQUAL(successor(bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(successor(bs::Minf<T>()), bs::Valmin<r_t>(), 0.5);
+  STF_ULP_EQUAL(successor(bs::Mone<T>()), bs::Mone<r_t>()+bs::Eps<r_t>()/2, 0.5);
+  STF_ULP_EQUAL(successor(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(successor(bs::One<T>()), bs::One<r_t>()+bs::Eps<r_t>(), 0.5);
+  STF_ULP_EQUAL(successor(bs::Valmax<T>()), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(successor(bs::Zero<T>()), bs::Bitincrement<T>(), 0.5);
 } // end of test for floating_
 
 STF_CASE_TPL (" successor unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
