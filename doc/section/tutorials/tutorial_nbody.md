@@ -10,7 +10,8 @@ simulation using **@projectname**,
 -------------------------------------
 
 In this tutorial we will:
-- [](#tutorial-)
+- [Introduce the N-body Problem](#tutorial-nbody-intro)
+- [Demonstrate how to perform an N-body simulation ysing @projectname](#tutorial-nbody-calc)
 
 @section tutorial-nbody-intro N-Body Problem
 
@@ -61,4 +62,5 @@ The following results were obtained:
 <tr><td>SIMD AVX2           <td>2321               <td> x5.68
 </table>
 
-The performance obtained is broadly in line with the theorethical maximum possible speed-ups of x4 for SSE4.2 and x8 for AVX2. There are very few problems where these theorethical speed-ups are obtainable.
+The performance obtained is broadly in line with the theorethical maximum possible speed-ups of x4 for SSE4.2 and x8 for AVX2.
+There are very few problems where these theorethical speed-ups are obtainable.

@@ -57,7 +57,7 @@ The scalar computation may also be performed using bs::exp as follows:
 @section neural-bench Performance
 
 Each code was run using a sample size of 16000000. The code was compiled using g++-6.0 using the compiler flag
--msse2 and executed on using an Intel Xeon CPU E3-1240 v3 @ 3.40GHz.
+-msse2 and executed on an Intel Xeon CPU E3-1240 v3 @ 3.40GHz.
 
 <table align=center width=100% class="table-striped table-bordered">
 <tr><th>Calculation         <th>Time (\f$\mu s\f$)
