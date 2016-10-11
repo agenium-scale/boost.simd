@@ -30,15 +30,15 @@ STF_CASE_TPL (" exponent real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(exponent(bs::Minf<T>()), bs::Zero<r_t>());
-  STF_EQUAL(exponent(bs::Inf <T>()), bs::Zero<r_t>());
-  STF_EQUAL(exponent(bs::Nan <T>()), bs::Zero<r_t>());
+  STF_ULP_EQUAL(exponent(bs::Minf<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(exponent(bs::Inf <T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(exponent(bs::Nan <T>()), bs::Zero<r_t>(), 0.5);
 #endif
-  STF_EQUAL(exponent(bs::Mone<T>()), bs::Zero<r_t>());
-  STF_EQUAL(exponent(bs::One<T>()),  bs::Zero<r_t>());
-  STF_EQUAL(exponent(bs::Zero<T>()), bs::Zero<r_t>());
-  STF_EQUAL(exponent(bs::Two<T>()),  bs::One<r_t>() );
-  STF_EQUAL(exponent(T(1.5)),        bs::Zero<r_t>() );
+  STF_ULP_EQUAL(exponent(bs::Mone<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(exponent(bs::One<T>()),  bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(exponent(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(exponent(bs::Two<T>()),  bs::One<r_t>() , 0.5);
+  STF_ULP_EQUAL(exponent(T(1.5)),        bs::Zero<r_t>() , 0.5);
 }
 STF_CASE_TPL (" exponent i",  STF_INTEGRAL_TYPES)
 {

@@ -41,28 +41,28 @@ STF_CASE_TPL(" remquo invalid", STF_IEEE_TYPES)
   std::pair<T,iT> p;
 
   p =  remquo(one_,nan_);
-  STF_IEEE_EQUAL(p.first, nan_);
+  STF_ULP_EQUAL(p.first, nan_, 0.5);
 
   p =  remquo(one_,inf_);
-  STF_IEEE_EQUAL(p.first, nan_);
+  STF_ULP_EQUAL(p.first, nan_, 0.5);
 
   p =  remquo(one_,zero_);
-  STF_IEEE_EQUAL(p.first, nan_);
+  STF_ULP_EQUAL(p.first, nan_, 0.5);
 
   p =  remquo(inf_,zero_);
-  STF_IEEE_EQUAL(p.first, nan_);
+  STF_ULP_EQUAL(p.first, nan_, 0.5);
 
   p =  remquo(nan_,zero_);
-  STF_IEEE_EQUAL(p.first, nan_);
+  STF_ULP_EQUAL(p.first, nan_, 0.5);
 
   p =  remquo(nan_,one_);
-  STF_IEEE_EQUAL(p.first, nan_);
+  STF_ULP_EQUAL(p.first, nan_, 0.5);
 
   p =  remquo(nan_,nan_);
-  STF_IEEE_EQUAL(p.first, nan_);
+  STF_ULP_EQUAL(p.first, nan_, 0.5);
 
   p =  remquo(nan_,inf_);
-  STF_IEEE_EQUAL(p.first, nan_);
+  STF_ULP_EQUAL(p.first, nan_, 0.5);
 }
 #endif
 
@@ -88,7 +88,7 @@ STF_CASE_TPL(" remquo valid", STF_IEEE_TYPES)
   for(std::size_t i=0;i<nb;++i)
   {
     p = remquo(a0[i],a1[i]);
-    STF_EQUAL(p.second, iT(a0[i] / a1[i]));
-    STF_EQUAL(p.first, a0[i] - p.second*a1[i]);
+    STF_ULP_EQUAL(p.second, iT(a0[i] / a1[i]), 0.5);
+    STF_ULP_EQUAL(p.first, a0[i] - p.second*a1[i], 0.5);
   }
 }

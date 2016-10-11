@@ -22,10 +22,10 @@ void test(Env& $, brigand::list<N...> const&)
 
   p_t p( (T(1+N::value))... );
 
-  STF_EQUAL( bs::broadcast< -1>(p), bs::Zero<p_t>() );
-  STF_EQUAL( bs::broadcast<  0>(p), p_t(T(1))       );
-  STF_EQUAL( bs::broadcast<C-1>(p), p_t(T(C))       );
-  STF_EQUAL( bs::broadcast<C*2>(p), bs::Zero<p_t>() );
+  STF_ULP_EQUAL( bs::broadcast< -1>(p), bs::Zero<p_t>() , 0.5);
+  STF_ULP_EQUAL( bs::broadcast<  0>(p), p_t(T(1))       , 0.5);
+  STF_ULP_EQUAL( bs::broadcast<C-1>(p), p_t(T(C))       , 0.5);
+  STF_ULP_EQUAL( bs::broadcast<C*2>(p), bs::Zero<p_t>() , 0.5);
 }
 
 STF_CASE_TPL( "Check broadcast<N>() behavior", STF_NUMERIC_TYPES )

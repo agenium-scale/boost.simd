@@ -28,13 +28,13 @@ STF_CASE_TPL (" arg real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(arg(bs::Inf<T>()), bs::Zero<r_t>());
-  STF_EQUAL(arg(bs::Minf<T>()), bs::Pi<r_t>());
-  STF_IEEE_EQUAL(arg(bs::Nan<T>()), bs::Nan<r_t>());
+  STF_ULP_EQUAL(arg(bs::Inf<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(arg(bs::Minf<T>()), bs::Pi<r_t>(), 0.5);
+  STF_ULP_EQUAL(arg(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_EQUAL(arg(bs::Mone<T>()), bs::Pi<r_t>());
-  STF_EQUAL(arg(bs::One<T>()), bs::Zero<r_t>());
-  STF_EQUAL(arg(bs::Zero<T>()), bs::Zero<r_t>());
+  STF_ULP_EQUAL(arg(bs::Mone<T>()), bs::Pi<r_t>(), 0.5);
+  STF_ULP_EQUAL(arg(bs::One<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(arg(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
 } // end of test for floating_
 
 

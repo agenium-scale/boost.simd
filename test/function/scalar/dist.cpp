@@ -31,14 +31,14 @@ STF_CASE_TPL (" dist real",  STF_IEEE_TYPES)
   STF_EXPR_IS( dist(T(), T()), T );
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_IEEE_EQUAL(dist(bs::Inf<T>() , bs::Inf<T>()) , bs::Nan<T>());
-  STF_IEEE_EQUAL(dist(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(dist(bs::Nan<T>() , bs::Nan<T>()) , bs::Nan<T>());
+  STF_ULP_EQUAL(dist(bs::Inf<T>() , bs::Inf<T>()) , bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(dist(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(dist(bs::Nan<T>() , bs::Nan<T>()) , bs::Nan<T>(), 0.5);
 #endif
 
-  STF_EQUAL(dist(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
-  STF_EQUAL(dist(bs::Mone<T>(), bs::One<T>()), bs::Two<T>());
-  STF_EQUAL(dist(bs::One<T>(), bs::Three<T>()), bs::Two<T>());
+  STF_ULP_EQUAL(dist(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(dist(bs::Mone<T>(), bs::One<T>()), bs::Two<T>(), 0.5);
+  STF_ULP_EQUAL(dist(bs::One<T>(), bs::Three<T>()), bs::Two<T>(), 0.5);
 }
 
 STF_CASE_TPL (" dist integer_ui",  STF_UNSIGNED_INTEGRAL_TYPES)

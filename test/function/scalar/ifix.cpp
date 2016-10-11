@@ -29,18 +29,18 @@ STF_CASE_TPL (" ifix real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, (bd::as_integer_t<T>));
 
   // specific values tests
-  STF_EQUAL(ifix(T(2)*bs::Valmax<r_t>()),  bs::Valmax<r_t>());
-  STF_EQUAL(ifix(T(2)*bs::Valmin<r_t>()),  bs::Valmin<r_t>());
-  STF_EQUAL(ifix(T(1.5)*bs::Valmax<r_t>()),  bs::Valmax<r_t>());
-  STF_EQUAL(ifix(T(1.5)*bs::Valmin<r_t>()),  bs::Valmin<r_t>());
+  STF_ULP_EQUAL(ifix(T(2)*bs::Valmax<r_t>()),  bs::Valmax<r_t>(), 0.5);
+  STF_ULP_EQUAL(ifix(T(2)*bs::Valmin<r_t>()),  bs::Valmin<r_t>(), 0.5);
+  STF_ULP_EQUAL(ifix(T(1.5)*bs::Valmax<r_t>()),  bs::Valmax<r_t>(), 0.5);
+  STF_ULP_EQUAL(ifix(T(1.5)*bs::Valmin<r_t>()),  bs::Valmin<r_t>(), 0.5);
 
 
-  STF_EQUAL(ifix(bs::Inf<T>()),  bs::Inf<r_t>());
-  STF_EQUAL(ifix(bs::Minf<T>()), bs::Minf<r_t>());
-  STF_EQUAL(ifix(bs::Mone<T>()), bs::Mone<r_t>());
-  STF_EQUAL(ifix(bs::Nan<T>()),  bs::Zero<r_t>());
-  STF_EQUAL(ifix(bs::One<T>()),  bs::One<r_t>());
-  STF_EQUAL(ifix(bs::Zero<T>()), bs::Zero<r_t>());
+  STF_ULP_EQUAL(ifix(bs::Inf<T>()),  bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(ifix(bs::Minf<T>()), bs::Minf<r_t>(), 0.5);
+  STF_ULP_EQUAL(ifix(bs::Mone<T>()), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(ifix(bs::Nan<T>()),  bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(ifix(bs::One<T>()),  bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(ifix(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
 
   T v = T(1);
   r_t iv = 1;
@@ -49,13 +49,13 @@ STF_CASE_TPL (" ifix real",  STF_IEEE_TYPES)
   {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
-    STF_EQUAL(ifix(v), iv);
-    STF_EQUAL(ifix(-v), -iv);
+    STF_ULP_EQUAL(ifix(v), iv, 0.5);
+    STF_ULP_EQUAL(ifix(-v), -iv, 0.5);
   }
-  STF_EQUAL(ifix(bs::ldexp(bs::One<T>(), N)), bs::Valmax<r_t>());
-  STF_EQUAL(ifix(bs::ldexp(bs::One<T>(), N+1)), bs::Valmax<r_t>());
-  STF_EQUAL(ifix(-bs::ldexp(bs::One<T>(), N+1)), bs::Valmin<r_t>());
-  STF_EQUAL(ifix(-bs::ldexp(bs::One<T>(), N+1)), bs::Valmin<r_t>());
+  STF_ULP_EQUAL(ifix(bs::ldexp(bs::One<T>(), N)), bs::Valmax<r_t>(), 0.5);
+  STF_ULP_EQUAL(ifix(bs::ldexp(bs::One<T>(), N+1)), bs::Valmax<r_t>(), 0.5);
+  STF_ULP_EQUAL(ifix(-bs::ldexp(bs::One<T>(), N+1)), bs::Valmin<r_t>(), 0.5);
+  STF_ULP_EQUAL(ifix(-bs::ldexp(bs::One<T>(), N+1)), bs::Valmin<r_t>(), 0.5);
 
 } // end of test for floating_
 

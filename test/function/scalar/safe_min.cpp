@@ -31,12 +31,12 @@ STF_CASE_TPL (" safe_minreal",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(safe_min(bs::Inf<T>()), bs::Inf<r_t>());
-  STF_EQUAL(safe_min(bs::Minf<T>()), bs::Inf<r_t>());
-  STF_IEEE_EQUAL(safe_min(bs::Nan<T>()), bs::Nan<r_t>());
+  STF_ULP_EQUAL(safe_min(bs::Inf<T>()), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(safe_min(bs::Minf<T>()), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(safe_min(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_EQUAL(safe_min(bs::Mone<T>()), bs::Sqrtsmallestposval<r_t>());
-  STF_EQUAL(safe_min(bs::One<T>()), bs::Sqrtsmallestposval<r_t>());
-  STF_EQUAL(safe_min(bs::Zero<T>()), bs::Zero<r_t>());
+  STF_ULP_EQUAL(safe_min(bs::Mone<T>()), bs::Sqrtsmallestposval<r_t>(), 0.5);
+  STF_ULP_EQUAL(safe_min(bs::One<T>()), bs::Sqrtsmallestposval<r_t>(), 0.5);
+  STF_ULP_EQUAL(safe_min(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
 }
 

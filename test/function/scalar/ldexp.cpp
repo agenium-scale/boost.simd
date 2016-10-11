@@ -41,24 +41,24 @@ STF_CASE_TPL("ldexp", STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(ldexp(bs::Inf<T>(),  2), bs::Inf<r_t>());
-  STF_EQUAL(ldexp(bs::Minf<T>(), 2), bs::Minf<r_t>());
-  STF_IEEE_EQUAL(ldexp(bs::Nan<T>(),  2), bs::Nan<r_t>());
+  STF_ULP_EQUAL(ldexp(bs::Inf<T>(),  2), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(ldexp(bs::Minf<T>(), 2), bs::Minf<r_t>(), 0.5);
+  STF_ULP_EQUAL(ldexp(bs::Nan<T>(),  2), bs::Nan<r_t>(), 0.5);
 #endif
 
-  STF_EQUAL(ldexp(bs::Mone<T>(), 2), -bs::Four<r_t>());
-  STF_EQUAL(ldexp(bs::One<T>(),  2), bs::Four<r_t>());
-  STF_EQUAL(ldexp(bs::Zero<T>(), 2), bs::Zero<r_t>());
-  STF_EQUAL(ldexp(bs::One <T>(), bs::Minexponent<T>()), bs::Smallestposval<r_t>());
-  STF_EQUAL(ldexp(bs::One<T>()-bs::Halfeps<T>(),  bs::Maxexponent<T>()), bs::Valmax<T>()/2);
-  STF_EQUAL(ldexp(bs::One<T>()-bs::Halfeps<T>(),  bs::Limitexponent<T>()), bs::Valmax<T>());
+  STF_ULP_EQUAL(ldexp(bs::Mone<T>(), 2), -bs::Four<r_t>(), 0.5);
+  STF_ULP_EQUAL(ldexp(bs::One<T>(),  2), bs::Four<r_t>(), 0.5);
+  STF_ULP_EQUAL(ldexp(bs::Zero<T>(), 2), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(ldexp(bs::One <T>(), bs::Minexponent<T>()), bs::Smallestposval<r_t>(), 0.5);
+  STF_ULP_EQUAL(ldexp(bs::One<T>()-bs::Halfeps<T>(),  bs::Maxexponent<T>()), bs::Valmax<T>()/2, 0.5);
+  STF_ULP_EQUAL(ldexp(bs::One<T>()-bs::Halfeps<T>(),  bs::Limitexponent<T>()), bs::Valmax<T>(), 0.5);
 
 #ifndef BOOST_SIMD_NO_DENORMALS
   using bs::dec;
-  STF_EQUAL(ldexp(bs::One <T>(), dec(bs::Minexponent<T>())), bs::Smallestposval<T>()/2);
-  STF_EQUAL(ldexp(bs::Two <T>(), dec(bs::Minexponent<T>())), bs::Smallestposval<T>());
-  STF_EQUAL(ldexp(bs::Two <T>(), dec(bs::Minexponent<T>()-1)), bs::Smallestposval<T>()/2);
-  STF_EQUAL(ldexp(bs::One <T>(), bs::Minexponent<T>()-5), bs::Smallestposval<T>()/32);
+  STF_ULP_EQUAL(ldexp(bs::One <T>(), dec(bs::Minexponent<T>())), bs::Smallestposval<T>()/2, 0.5);
+  STF_ULP_EQUAL(ldexp(bs::Two <T>(), dec(bs::Minexponent<T>())), bs::Smallestposval<T>(), 0.5);
+  STF_ULP_EQUAL(ldexp(bs::Two <T>(), dec(bs::Minexponent<T>()-1)), bs::Smallestposval<T>()/2, 0.5);
+  STF_ULP_EQUAL(ldexp(bs::One <T>(), bs::Minexponent<T>()-5), bs::Smallestposval<T>()/32, 0.5);
 #endif
 }
 
@@ -92,15 +92,15 @@ STF_CASE_TPL("ldexp fast", STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(bs::fast_(ldexp)(bs::Inf<T>(),  2), bs::Inf<r_t>());
-  STF_EQUAL(bs::fast_(ldexp)(bs::Minf<T>(), 2), bs::Minf<r_t>());
-  STF_IEEE_EQUAL(bs::fast_(ldexp)(bs::Nan<T>(),  2), bs::Nan<r_t>());
+  STF_ULP_EQUAL(bs::fast_(ldexp)(bs::Inf<T>(),  2), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(ldexp)(bs::Minf<T>(), 2), bs::Minf<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(ldexp)(bs::Nan<T>(),  2), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_EQUAL(bs::fast_(ldexp)(bs::Mone<T>(), 2), -bs::Four<r_t>());
-  STF_EQUAL(bs::fast_(ldexp)(bs::One<T>(),  2), bs::Four<r_t>());
-  STF_EQUAL(bs::fast_(ldexp)(bs::Zero<T>(), 2), bs::Zero<r_t>());
-  STF_EQUAL(bs::fast_(ldexp)(bs::One <T>(), bs::Minexponent<T>()), bs::Smallestposval<r_t>());
-  STF_EQUAL(bs::fast_(ldexp)(bs::One<T>()-bs::Halfeps<T>(),  bs::Maxexponent<T>()), bs::Valmax<T>()/2);
+  STF_ULP_EQUAL(bs::fast_(ldexp)(bs::Mone<T>(), 2), -bs::Four<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(ldexp)(bs::One<T>(),  2), bs::Four<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(ldexp)(bs::Zero<T>(), 2), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(ldexp)(bs::One <T>(), bs::Minexponent<T>()), bs::Smallestposval<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(ldexp)(bs::One<T>()-bs::Halfeps<T>(),  bs::Maxexponent<T>()), bs::Valmax<T>()/2, 0.5);
 }
 
 STF_CASE_TPL("ldexp std", STF_IEEE_TYPES)
@@ -116,21 +116,21 @@ STF_CASE_TPL("ldexp std", STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(bs::std_(ldexp)(bs::Inf<T>(),  2), bs::Inf<r_t>());
-  STF_EQUAL(bs::std_(ldexp)(bs::Minf<T>(), 2), bs::Minf<r_t>());
-  STF_IEEE_EQUAL(bs::std_(ldexp)(bs::Nan<T>(),  2), bs::Nan<r_t>());
+  STF_ULP_EQUAL(bs::std_(ldexp)(bs::Inf<T>(),  2), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::std_(ldexp)(bs::Minf<T>(), 2), bs::Minf<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::std_(ldexp)(bs::Nan<T>(),  2), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_EQUAL(bs::std_(ldexp)(bs::Mone<T>(), 2), -bs::Four<r_t>());
-  STF_EQUAL(bs::std_(ldexp)(bs::One<T>(),  2), bs::Four<r_t>());
-  STF_EQUAL(bs::std_(ldexp)(bs::Zero<T>(), 2), bs::Zero<r_t>());
-  STF_EQUAL(bs::std_(ldexp)(bs::One <T>(), bs::Minexponent<T>()), bs::Smallestposval<r_t>());
-  STF_EQUAL(bs::std_(ldexp)(bs::One<T>()-bs::Halfeps<T>(),  bs::Maxexponent<T>()), bs::Valmax<T>()/2);
-  STF_EQUAL(bs::std_(ldexp)(bs::One<T>()-bs::Halfeps<T>(),  bs::Limitexponent<T>()), bs::Valmax<T>());
+  STF_ULP_EQUAL(bs::std_(ldexp)(bs::Mone<T>(), 2), -bs::Four<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::std_(ldexp)(bs::One<T>(),  2), bs::Four<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::std_(ldexp)(bs::Zero<T>(), 2), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::std_(ldexp)(bs::One <T>(), bs::Minexponent<T>()), bs::Smallestposval<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::std_(ldexp)(bs::One<T>()-bs::Halfeps<T>(),  bs::Maxexponent<T>()), bs::Valmax<T>()/2, 0.5);
+  STF_ULP_EQUAL(bs::std_(ldexp)(bs::One<T>()-bs::Halfeps<T>(),  bs::Limitexponent<T>()), bs::Valmax<T>(), 0.5);
 #ifndef BOOST_SIMD_NO_DENORMALS
   using bs::dec;
-  STF_EQUAL(bs::std_(ldexp)(bs::One <T>(), dec(bs::Minexponent<T>())), bs::Smallestposval<T>()/2);
-  STF_EQUAL(bs::std_(ldexp)(bs::Two <T>(), dec(bs::Minexponent<T>())), bs::Smallestposval<T>());
-  STF_EQUAL(bs::std_(ldexp)(bs::Two <T>(), dec(bs::Minexponent<T>()-1)), bs::Smallestposval<T>()/2);
-  STF_EQUAL(bs::std_(ldexp)(bs::One <T>(), bs::Minexponent<T>()-5), bs::Smallestposval<T>()/32);
+  STF_ULP_EQUAL(bs::std_(ldexp)(bs::One <T>(), dec(bs::Minexponent<T>())), bs::Smallestposval<T>()/2, 0.5);
+  STF_ULP_EQUAL(bs::std_(ldexp)(bs::Two <T>(), dec(bs::Minexponent<T>())), bs::Smallestposval<T>(), 0.5);
+  STF_ULP_EQUAL(bs::std_(ldexp)(bs::Two <T>(), dec(bs::Minexponent<T>()-1)), bs::Smallestposval<T>()/2, 0.5);
+  STF_ULP_EQUAL(bs::std_(ldexp)(bs::One <T>(), bs::Minexponent<T>()-5), bs::Smallestposval<T>()/32, 0.5);
 #endif
 }

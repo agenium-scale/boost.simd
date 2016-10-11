@@ -26,6 +26,6 @@ STF_CASE_TPL (" touint real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, (bd::as_integer_t<T, unsigned>));
 
   // specific values tests
-  STF_EQUAL(touint(bs::One<T>()) , bs::One<r_t>());
-  STF_EQUAL(touint(bs::Zero<T>()), bs::Zero<r_t>());
+  STF_ULP_EQUAL(touint(bs::One<T>()) , bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(touint(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
  } // end of test for floating_

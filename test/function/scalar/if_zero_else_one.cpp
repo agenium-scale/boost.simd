@@ -28,12 +28,12 @@ STF_CASE_TPL (" if_zero_else_one real",  STF_IEEE_TYPES)
   STF_EXPR_IS( if_zero_else_one(T()), T);
 
   // specific values tests
-  STF_EQUAL(if_zero_else_one(T(0)), 1);
-  STF_EQUAL(if_zero_else_one(T(1)), 0);
-  STF_EQUAL(if_zero_else_one(bs::Inf<T>()) , 0);
-  STF_EQUAL(if_zero_else_one(bs::Minf<T>()), 0);
-  STF_EQUAL(if_zero_else_one(bs::Nan<T>()) , 0);
-  STF_EQUAL(if_zero_else_one(bs::Zero<T>()), 1);
+  STF_ULP_EQUAL(if_zero_else_one(T(0)), 1, 0.5);
+  STF_ULP_EQUAL(if_zero_else_one(T(1)), 0, 0.5);
+  STF_ULP_EQUAL(if_zero_else_one(bs::Inf<T>()) , 0, 0.5);
+  STF_ULP_EQUAL(if_zero_else_one(bs::Minf<T>()), 0, 0.5);
+  STF_ULP_EQUAL(if_zero_else_one(bs::Nan<T>()) , 0, 0.5);
+  STF_ULP_EQUAL(if_zero_else_one(bs::Zero<T>()), 1, 0.5);
 
 
 } // end of test for floating_

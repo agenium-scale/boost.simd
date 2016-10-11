@@ -30,11 +30,11 @@ STF_CASE_TPL (" ctz real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(ctz(bs::Inf<T>()), r_t(bs::Nbmantissabits<T>()));
-  STF_EQUAL(ctz(bs::Minf<T>()), r_t(bs::Nbmantissabits<T>()));
+  STF_ULP_EQUAL(ctz(bs::Inf<T>()), r_t(bs::Nbmantissabits<T>()), 0.5);
+  STF_ULP_EQUAL(ctz(bs::Minf<T>()), r_t(bs::Nbmantissabits<T>()), 0.5);
 #endif
-  STF_EQUAL(ctz(bs::Zero<T>()), r_t(sizeof(T)*8));
-  STF_EQUAL(ctz(bs::Signmask<T>()), r_t(sizeof(T)*8-1));
+  STF_ULP_EQUAL(ctz(bs::Zero<T>()), r_t(sizeof(T)*8), 0.5);
+  STF_ULP_EQUAL(ctz(bs::Signmask<T>()), r_t(sizeof(T)*8-1), 0.5);
 } // end of test for real_
 
 STF_CASE_TPL (" ctz signed_int",  STF_SIGNED_INTEGRAL_TYPES)

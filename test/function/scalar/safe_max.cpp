@@ -31,13 +31,13 @@ STF_CASE_TPL (" safe_max real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(safe_max(bs::Zero<T>()), bs::Inf<r_t>());
-  STF_EQUAL(safe_max(bs::Inf<T>()), bs::Zero<r_t>());
-  STF_EQUAL(safe_max(bs::Minf<T>()), bs::Zero<r_t>());
-  STF_IEEE_EQUAL(safe_max(bs::Nan<T>()), bs::Nan<r_t>());
+  STF_ULP_EQUAL(safe_max(bs::Zero<T>()), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(safe_max(bs::Inf<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(safe_max(bs::Minf<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(safe_max(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_EQUAL(safe_max(bs::Mone<T>()), bs::Sqrtvalmax<r_t>());
-  STF_EQUAL(safe_max(bs::One<T>()), bs::Sqrtvalmax<r_t>());
+  STF_ULP_EQUAL(safe_max(bs::Mone<T>()), bs::Sqrtvalmax<r_t>(), 0.5);
+  STF_ULP_EQUAL(safe_max(bs::One<T>()), bs::Sqrtvalmax<r_t>(), 0.5);
 }
 
 

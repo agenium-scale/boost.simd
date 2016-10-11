@@ -28,13 +28,13 @@ STF_CASE_TPL( "Check div behavior with floating", STF_IEEE_TYPES )
   STF_TYPE_IS(r_t, T);
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_IEEE_EQUAL(div(bs::Inf<T>(),  bs::Inf<T>()), bs::Nan<r_t>());
-  STF_IEEE_EQUAL(div(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<r_t>());
-  STF_IEEE_EQUAL(div(bs::Nan<T>(),  bs::Nan<T>()), bs::Nan<r_t>());
+  STF_ULP_EQUAL(div(bs::Inf<T>(),  bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(div(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(div(bs::Nan<T>(),  bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_EQUAL(div(bs::One<T>(),bs::Zero<T>()), bs::Inf<r_t>());
-  STF_IEEE_EQUAL(div(bs::Zero<T>(), bs::Zero<T>()), bs::Nan<r_t>());
-  STF_EQUAL(div(bs::One<T>(), bs::One<T>()), bs::One<r_t>());
+  STF_ULP_EQUAL(div(bs::One<T>(),bs::Zero<T>()), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(div(bs::Zero<T>(), bs::Zero<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(div(bs::One<T>(), bs::One<T>()), bs::One<r_t>(), 0.5);
 }
 
 

@@ -30,21 +30,21 @@ STF_CASE_TPL (" inearbyint real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(inearbyint(bs::Inf<T>()), bs::Inf<r_t>());
-  STF_EQUAL(inearbyint(bs::Minf<T>()), bs::Minf<r_t>());
-  STF_EQUAL(inearbyint(bs::Nan<T>()), bs::Zero<r_t>());
+  STF_ULP_EQUAL(inearbyint(bs::Inf<T>()), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(inearbyint(bs::Minf<T>()), bs::Minf<r_t>(), 0.5);
+  STF_ULP_EQUAL(inearbyint(bs::Nan<T>()), bs::Zero<r_t>(), 0.5);
 #endif
-  STF_EQUAL(inearbyint(bs::Mone<T>()), bs::Mone<r_t>());
-  STF_EQUAL(inearbyint(bs::One<T>()), bs::One<r_t>());
-  STF_EQUAL(inearbyint(bs::Zero<T>()), bs::Zero<r_t>());
-  STF_EQUAL(inearbyint(T(1.4)), T(1));
-  STF_EQUAL(inearbyint(T(1.5)), T(2));
-  STF_EQUAL(inearbyint(T(1.6)), T(2));
-  STF_EQUAL(inearbyint(T(2.5)), T(2));
-  STF_EQUAL(inearbyint(T(-1.4)), T(-1));
-  STF_EQUAL(inearbyint(T(-1.5)), T(-2));
-  STF_EQUAL(inearbyint(T(-1.6)), T(-2));
-  STF_EQUAL(inearbyint(T(-2.5)), T(-2));
+  STF_ULP_EQUAL(inearbyint(bs::Mone<T>()), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(inearbyint(bs::One<T>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(inearbyint(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(inearbyint(T(1.4)), T(1), 0.5);
+  STF_ULP_EQUAL(inearbyint(T(1.5)), T(2), 0.5);
+  STF_ULP_EQUAL(inearbyint(T(1.6)), T(2), 0.5);
+  STF_ULP_EQUAL(inearbyint(T(2.5)), T(2), 0.5);
+  STF_ULP_EQUAL(inearbyint(T(-1.4)), T(-1), 0.5);
+  STF_ULP_EQUAL(inearbyint(T(-1.5)), T(-2), 0.5);
+  STF_ULP_EQUAL(inearbyint(T(-1.6)), T(-2), 0.5);
+  STF_ULP_EQUAL(inearbyint(T(-2.5)), T(-2), 0.5);
 } // end of test for floating_
 
 STF_CASE_TPL (" inearbyint unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
@@ -91,16 +91,16 @@ STF_CASE_TPL (" inearbyint real fast",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(bs::fast_(inearbyint)(bs::Minf<T>()), bs::Minf<r_t>());
+  STF_ULP_EQUAL(bs::fast_(inearbyint)(bs::Minf<T>()), bs::Minf<r_t>(), 0.5);
 #endif
-  STF_EQUAL(bs::fast_(inearbyint)(bs::Mone<T>()), bs::Mone<r_t>());
-  STF_EQUAL(bs::fast_(inearbyint)(bs::One<T>()), bs::One<r_t>());
-  STF_EQUAL(bs::fast_(inearbyint)(bs::Zero<T>()), bs::Zero<r_t>());
-  STF_EQUAL(bs::fast_(inearbyint)(T(1.4)), T(1));
-  STF_EQUAL(bs::fast_(inearbyint)(T(1.5)), T(2));
-  STF_EQUAL(bs::fast_(inearbyint)(T(1.6)), T(2));
-  STF_EQUAL(bs::fast_(inearbyint)(T(2.5)), T(2));
-  STF_EQUAL(bs::fast_(inearbyint)(T(-1.4)), T(-1));
-  STF_EQUAL(bs::fast_(inearbyint)(T(-1.5)), T(-2));
-  STF_EQUAL(bs::fast_(inearbyint)(T(-1.6)), T(-2));
-  STF_EQUAL(bs::fast_(inearbyint)(T(-2.5)), T(-2));} // end of test for floating_
+  STF_ULP_EQUAL(bs::fast_(inearbyint)(bs::Mone<T>()), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(inearbyint)(bs::One<T>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(inearbyint)(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(inearbyint)(T(1.4)), T(1), 0.5);
+  STF_ULP_EQUAL(bs::fast_(inearbyint)(T(1.5)), T(2), 0.5);
+  STF_ULP_EQUAL(bs::fast_(inearbyint)(T(1.6)), T(2), 0.5);
+  STF_ULP_EQUAL(bs::fast_(inearbyint)(T(2.5)), T(2), 0.5);
+  STF_ULP_EQUAL(bs::fast_(inearbyint)(T(-1.4)), T(-1), 0.5);
+  STF_ULP_EQUAL(bs::fast_(inearbyint)(T(-1.5)), T(-2), 0.5);
+  STF_ULP_EQUAL(bs::fast_(inearbyint)(T(-1.6)), T(-2), 0.5);
+  STF_ULP_EQUAL(bs::fast_(inearbyint)(T(-2.5)), T(-2), 0.5);} // end of test for floating_

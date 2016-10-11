@@ -32,9 +32,9 @@ STF_CASE_TPL ("check bitwise_not for floating",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(bitwise_not(bs::Nan<T>()), bs::Zero<r_t>());
+  STF_ULP_EQUAL(bitwise_not(bs::Nan<T>()), bs::Zero<r_t>(), 0.5);
 #endif
-  STF_IEEE_EQUAL(bitwise_not(bs::Zero<T>()), bs::Nan<r_t>());
+  STF_ULP_EQUAL(bitwise_not(bs::Zero<T>()), bs::Nan<r_t>(), 0.5);
 } // end of test for floating_
 
 STF_CASE_TPL ("check bitwise_not for integral",  STF_INTEGRAL_TYPES)

@@ -28,13 +28,13 @@ STF_CASE_TPL("regular rec",  STF_IEEE_TYPES)
   STF_EXPR_IS( rec(T()) , T );
 
   // specific values tests
-  STF_EQUAL(rec(bs::Inf<T>()), bs::Zero<T>());
-  STF_EQUAL(rec(bs::Minf<T>()), bs::Zero<T>());
-  STF_EQUAL(rec(bs::Mone<T>()), bs::Mone<T>());
-  STF_EQUAL(rec(bs::Mzero<T>()), bs::Minf<T>());
-  STF_IEEE_EQUAL(rec(bs::Nan<T>()), bs::Nan<T>());
-  STF_EQUAL(rec(bs::One<T>()), bs::One<T>());
-  STF_EQUAL(rec(bs::Zero<T>()), bs::Inf<T>());
+  STF_ULP_EQUAL(rec(bs::Inf<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(rec(bs::Minf<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(rec(bs::Mone<T>()), bs::Mone<T>(), 0.5);
+  STF_ULP_EQUAL(rec(bs::Mzero<T>()), bs::Minf<T>(), 0.5);
+  STF_ULP_EQUAL(rec(bs::Nan<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(rec(bs::One<T>()), bs::One<T>(), 0.5);
+  STF_ULP_EQUAL(rec(bs::Zero<T>()), bs::Inf<T>(), 0.5);
 } // end of test for floating_
 
 STF_CASE_TPL("fast rec",  STF_IEEE_TYPES)

@@ -45,11 +45,11 @@ STF_CASE_TPL (" is_not_greater real",  STF_IEEE_TYPES)
  STF_TYPE_IS(r_t, bs::logical<T>);
 
   // specific values tests
-  STF_EQUAL(is_not_greater(bs::Inf<T>(), bs::Inf<T>()), r_t(true));
-  STF_EQUAL(is_not_greater(bs::Minf<T>(), bs::Minf<T>()), r_t(true));
-  STF_EQUAL(is_not_greater(bs::Nan<T>(), bs::Nan<T>()), r_t(true));
-  STF_EQUAL(is_not_greater(bs::One<T>(),bs::Zero<T>()), r_t(false));
-  STF_EQUAL(is_not_greater(bs::Zero<T>(), bs::Zero<T>()), r_t(true));
+  STF_ULP_EQUAL(is_not_greater(bs::Inf<T>(), bs::Inf<T>()), r_t(true), 0.5);
+  STF_ULP_EQUAL(is_not_greater(bs::Minf<T>(), bs::Minf<T>()), r_t(true), 0.5);
+  STF_ULP_EQUAL(is_not_greater(bs::Nan<T>(), bs::Nan<T>()), r_t(true), 0.5);
+  STF_ULP_EQUAL(is_not_greater(bs::One<T>(),bs::Zero<T>()), r_t(false), 0.5);
+  STF_ULP_EQUAL(is_not_greater(bs::Zero<T>(), bs::Zero<T>()), r_t(true), 0.5);
 } // end of test for floating_
 
 STF_CASE ( "is_not_greater bool")
@@ -65,8 +65,8 @@ STF_CASE ( "is_not_greater bool")
 
 
   // specific values tests
-  STF_EQUAL(is_not_greater(true, false), false);
-  STF_EQUAL(is_not_greater(false, true), true);
-  STF_EQUAL(is_not_greater(true, true), true);
-  STF_EQUAL(is_not_greater(false, false), true);
+  STF_ULP_EQUAL(is_not_greater(true, false), false, 0.5);
+  STF_ULP_EQUAL(is_not_greater(false, true), true, 0.5);
+  STF_ULP_EQUAL(is_not_greater(true, true), true, 0.5);
+  STF_ULP_EQUAL(is_not_greater(false, false), true, 0.5);
 }

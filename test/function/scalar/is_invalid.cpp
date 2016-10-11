@@ -33,17 +33,17 @@ STF_CASE_TPL (" is_invalid real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(is_invalid(bs::Inf<T>()), r_t(true));
-  STF_EQUAL(is_invalid(bs::Minf<T>()), r_t(true));
-  STF_EQUAL(is_invalid(bs::Nan<T>()), r_t(true));
+  STF_ULP_EQUAL(is_invalid(bs::Inf<T>()), r_t(true), 0.5);
+  STF_ULP_EQUAL(is_invalid(bs::Minf<T>()), r_t(true), 0.5);
+  STF_ULP_EQUAL(is_invalid(bs::Nan<T>()), r_t(true), 0.5);
 #endif
-  STF_EQUAL(is_invalid(-bs::Zero<T>()), r_t(false));
-  STF_EQUAL(is_invalid(bs::Half<T>()), r_t(false));
-  STF_EQUAL(is_invalid(bs::Mone<T>()), r_t(false));
-  STF_EQUAL(is_invalid(bs::One<T>()), r_t(false));
-  STF_EQUAL(is_invalid(bs::Quarter<T>()), r_t(false));
-  STF_EQUAL(is_invalid(bs::Two<T>()), r_t(false));
-  STF_EQUAL(is_invalid(bs::Zero<T>()), r_t(false));
+  STF_ULP_EQUAL(is_invalid(-bs::Zero<T>()), r_t(false), 0.5);
+  STF_ULP_EQUAL(is_invalid(bs::Half<T>()), r_t(false), 0.5);
+  STF_ULP_EQUAL(is_invalid(bs::Mone<T>()), r_t(false), 0.5);
+  STF_ULP_EQUAL(is_invalid(bs::One<T>()), r_t(false), 0.5);
+  STF_ULP_EQUAL(is_invalid(bs::Quarter<T>()), r_t(false), 0.5);
+  STF_ULP_EQUAL(is_invalid(bs::Two<T>()), r_t(false), 0.5);
+  STF_ULP_EQUAL(is_invalid(bs::Zero<T>()), r_t(false), 0.5);
 }
 
 STF_CASE_TPL (" is_invalid signed_int",  STF_SIGNED_INTEGRAL_TYPES)

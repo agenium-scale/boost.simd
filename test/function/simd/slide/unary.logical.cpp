@@ -22,18 +22,18 @@ template <typename T, int N, typename Env> void test(Env& $)
   using p_t = bs::pack<bs::logical<T>,N>;
   p_t ref, p = bs::load<p_t>(&data[N], 0);
 
-  STF_EQUAL( bs::slide<-N>(p), bs::Zero<p_t>() );
+  STF_ULP_EQUAL( bs::slide<-N>(p), bs::Zero<p_t>() , 0.5);
 
   ref = bs::load<p_t>(&data[N], -1);
-  STF_EQUAL( bs::slide<-1>(p), ref );
+  STF_ULP_EQUAL( bs::slide<-1>(p), ref , 0.5);
 
   ref = bs::load<p_t>(&data[N]);
-  STF_EQUAL( bs::slide<0>(p), ref );
+  STF_ULP_EQUAL( bs::slide<0>(p), ref , 0.5);
 
   ref = bs::load<p_t>(&data[N], +1);
-  STF_EQUAL( bs::slide<+1>(p), ref );
+  STF_ULP_EQUAL( bs::slide<+1>(p), ref , 0.5);
 
-  STF_EQUAL( bs::slide<N>(p), bs::Zero<p_t>() );
+  STF_ULP_EQUAL( bs::slide<N>(p), bs::Zero<p_t>() , 0.5);
 }
 
 STF_CASE_TPL( "Check unary slide behavior", STF_NUMERIC_TYPES )

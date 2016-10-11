@@ -32,17 +32,17 @@ STF_CASE_TPL (" remfloor real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_IEEE_EQUAL(rem(bs::floor, bs::Inf<T>(), bs::Inf<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(rem(bs::floor, bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(rem(bs::floor, bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(rem(bs::floor, bs::Inf<T>(), bs::One<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(rem(bs::floor, bs::One<T>(), bs::Zero<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(rem(bs::floor, bs::Zero<T>(), bs::Zero<T>()), bs::Nan<T>());
+  STF_ULP_EQUAL(rem(bs::floor, bs::Inf<T>(), bs::Inf<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(rem(bs::floor, bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(rem(bs::floor, bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(rem(bs::floor, bs::Inf<T>(), bs::One<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(rem(bs::floor, bs::One<T>(), bs::Zero<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(rem(bs::floor, bs::Zero<T>(), bs::Zero<T>()), bs::Nan<T>(), 0.5);
 #endif
-  STF_EQUAL(rem(bs::floor, bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
-  STF_EQUAL(rem(bs::floor, bs::One<T>(), bs::One<T>()), bs::Zero<T>());
-  STF_IEEE_EQUAL(rem(bs::floor, bs::One<T>(),bs::Zero<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(rem(bs::floor, bs::Zero<T>(),bs::Zero<T>()), bs::Nan<T>());
+  STF_ULP_EQUAL(rem(bs::floor, bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(rem(bs::floor, bs::One<T>(), bs::One<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(rem(bs::floor, bs::One<T>(),bs::Zero<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(rem(bs::floor, bs::Zero<T>(),bs::Zero<T>()), bs::Nan<T>(), 0.5);
   STF_EXPECT(bs::is_negative(rem(bs::floor,-T(0), T(1))));
   STF_EXPECT(bs::is_positive(rem(bs::floor,T(0), T(1))));
 } // end of test for floating_
@@ -76,18 +76,18 @@ STF_CASE_TPL (" rem floor fast",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::floor, bs::Inf<T>(), bs::Inf<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::floor, bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::floor, bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::floor, bs::Inf<T>(), bs::One<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::floor, bs::Minf<T>(), bs::One<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::floor, bs::One<T>(), bs::Zero<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::floor, bs::Zero<T>(), bs::Zero<T>()), bs::Nan<T>());
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::floor, bs::Inf<T>(), bs::Inf<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::floor, bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::floor, bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::floor, bs::Inf<T>(), bs::One<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::floor, bs::Minf<T>(), bs::One<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::floor, bs::One<T>(), bs::Zero<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::floor, bs::Zero<T>(), bs::Zero<T>()), bs::Nan<T>(), 0.5);
 #endif
-  STF_EQUAL(bs::fast_(rem)(bs::floor, bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
-  STF_EQUAL(bs::fast_(rem)(bs::floor, bs::One<T>(), bs::One<T>()), bs::Zero<T>());
-  STF_EQUAL(bs::fast_(rem)(bs::floor, bs::Two<T>(), bs::Three<T>()), bs::Two<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::floor, bs::Two<T>(), bs::Zero<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::floor, bs::Two<T>(), bs::Mzero<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::floor, bs::Zero<T>(), bs::One<T>()), bs::Zero<T>());
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::floor, bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::floor, bs::One<T>(), bs::One<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::floor, bs::Two<T>(), bs::Three<T>()), bs::Two<T>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::floor, bs::Two<T>(), bs::Zero<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::floor, bs::Two<T>(), bs::Mzero<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(bs::fast_(rem)(bs::floor, bs::Zero<T>(), bs::One<T>()), bs::Zero<T>(), 0.5);
 } // end of test for signed_int_

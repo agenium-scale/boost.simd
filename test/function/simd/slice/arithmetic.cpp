@@ -30,8 +30,8 @@ void test( Env& $, brigand::bool_<true> const& = {} )
 
   auto sliced = bs::slice(value);
 
-  STF_EQUAL( sliced[0], first);
-  STF_EQUAL( sliced[1], second);
+  STF_ULP_EQUAL( sliced[0], first, 0.5);
+  STF_ULP_EQUAL( sliced[1], second, 0.5);
 }
 
 STF_CASE_TPL("slice pack<T,N> into 2 pack<T,N/2>", STF_NUMERIC_TYPES)

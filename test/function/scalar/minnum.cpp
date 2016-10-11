@@ -33,23 +33,23 @@ STF_CASE_TPL (" minnum real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(minnum(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>());
-  STF_EQUAL(minnum(bs::Minf<T>(), bs::Minf<T>()), bs::Minf<r_t>());
-  STF_IEEE_EQUAL(minnum(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>());
-  STF_EQUAL(minnum(bs::Nan<T>(),bs::One<T>()), bs::One<r_t>());
-  STF_EQUAL(minnum(bs::One<T>(),bs::Nan<T>()), bs::One<r_t>());
+  STF_ULP_EQUAL(minnum(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(minnum(bs::Minf<T>(), bs::Minf<T>()), bs::Minf<r_t>(), 0.5);
+  STF_ULP_EQUAL(minnum(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(minnum(bs::Nan<T>(),bs::One<T>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(minnum(bs::One<T>(),bs::Nan<T>()), bs::One<r_t>(), 0.5);
 #endif
-  STF_EQUAL(minnum(bs::Mone<T>(), bs::Mone<T>()), bs::Mone<r_t>());
-  STF_EQUAL(minnum(bs::One<T>(),  bs::One<T>()),  bs::One<r_t>());
-  STF_EQUAL(minnum(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
-  STF_EQUAL(minnum(bs::Mone<T>(), bs::One <T>()), bs::Mone<r_t>());
-  STF_EQUAL(minnum(bs::One <T>(), bs::Mone<T>()), bs::Mone<r_t>());
-  STF_EQUAL(minnum(bs::One <T>(), bs::Two <T>()), bs::One<r_t>());
-  STF_EQUAL(minnum(bs::Two <T>(), bs::One <T>()), bs::One<r_t>());
-  STF_EQUAL(minnum(bs::Mtwo<T>(), bs::One <T>()), bs::Mtwo<r_t>());
-  STF_EQUAL(minnum(bs::One <T>(), bs::Mtwo<T>()), bs::Mtwo<r_t>());
-  STF_EQUAL(minnum(bs::Two <T>(), bs::Mone<T>()), bs::Mone<r_t>());
-  STF_EQUAL(minnum(bs::Mone<T>(), bs::Two <T>()), bs::Mone<r_t>());
+  STF_ULP_EQUAL(minnum(bs::Mone<T>(), bs::Mone<T>()), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(minnum(bs::One<T>(),  bs::One<T>()),  bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(minnum(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(minnum(bs::Mone<T>(), bs::One <T>()), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(minnum(bs::One <T>(), bs::Mone<T>()), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(minnum(bs::One <T>(), bs::Two <T>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(minnum(bs::Two <T>(), bs::One <T>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(minnum(bs::Mtwo<T>(), bs::One <T>()), bs::Mtwo<r_t>(), 0.5);
+  STF_ULP_EQUAL(minnum(bs::One <T>(), bs::Mtwo<T>()), bs::Mtwo<r_t>(), 0.5);
+  STF_ULP_EQUAL(minnum(bs::Two <T>(), bs::Mone<T>()), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(minnum(bs::Mone<T>(), bs::Two <T>()), bs::Mone<r_t>(), 0.5);
 }
 
 STF_CASE_TPL (" minnum unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

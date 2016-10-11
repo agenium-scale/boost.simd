@@ -25,23 +25,23 @@ template <typename T, int N, typename Env> void test(Env& $)
   p_t l = bs::load<p_t>(&data[  N]);
   p_t r = bs::load<p_t>(&data[2*N]);
 
-  STF_EQUAL( bs::slide<-N>(l,r), bs::slide<0>(r,l) );
-  if(N>1) STF_EQUAL( bs::slide<-N/2>(l,r), bs::slide<N/2>(r,l) );
-  STF_EQUAL( bs::slide<-1>(l,r), bs::slide<N-1>(r,l) );
+  STF_ULP_EQUAL( bs::slide<-N>(l,r), bs::slide<0>(r,l) , 0.5);
+  if(N>1) STF_ULP_EQUAL( bs::slide<-N/2>(l,r), bs::slide<N/2>(r,l) , 0.5);
+  STF_ULP_EQUAL( bs::slide<-1>(l,r), bs::slide<N-1>(r,l) , 0.5);
 
   ref = bs::load<p_t>(&data[N]);
-  STF_EQUAL( bs::slide<0>(l,r), ref );
+  STF_ULP_EQUAL( bs::slide<0>(l,r), ref , 0.5);
 
   ref = bs::load<p_t>(&data[N], +1);
-  STF_EQUAL( bs::slide<+1>(l,r), ref );
+  STF_ULP_EQUAL( bs::slide<+1>(l,r), ref , 0.5);
 
   ref = bs::load<p_t>(&data[N], N/2);
-  STF_EQUAL( bs::slide<N/2>(l,r), ref );
+  STF_ULP_EQUAL( bs::slide<N/2>(l,r), ref , 0.5);
 
   ref = bs::load<p_t>(&data[N], N-1);
-  STF_EQUAL( bs::slide<N-1>(l,r), ref );
+  STF_ULP_EQUAL( bs::slide<N-1>(l,r), ref , 0.5);
 
-  STF_EQUAL( bs::slide<N>(l,r), r );
+  STF_ULP_EQUAL( bs::slide<N>(l,r), r , 0.5);
 }
 
 STF_CASE_TPL( "Check binary slide behavior", STF_NUMERIC_TYPES )

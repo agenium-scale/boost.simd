@@ -29,13 +29,13 @@ STF_CASE_TPL (" fma real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(fma(bs::Inf<T>(), bs::Inf<T>(), bs::Inf<T>()), bs::Inf<T>());
-  STF_IEEE_EQUAL(fma(bs::Minf<T>(), bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(fma(bs::Nan<T>(), bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());
+  STF_ULP_EQUAL(fma(bs::Inf<T>(), bs::Inf<T>(), bs::Inf<T>()), bs::Inf<T>(), 0.5);
+  STF_ULP_EQUAL(fma(bs::Minf<T>(), bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(fma(bs::Nan<T>(), bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>(), 0.5);
 #endif
-  STF_EQUAL(fma(bs::Mone<T>(), bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
-  STF_EQUAL(fma(bs::One<T>(), bs::One<T>(), bs::One<T>()), bs::Two<T>());
-  STF_EQUAL(fma(bs::Zero<T>(), bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
+  STF_ULP_EQUAL(fma(bs::Mone<T>(), bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(fma(bs::One<T>(), bs::One<T>(), bs::One<T>()), bs::Two<T>(), 0.5);
+  STF_ULP_EQUAL(fma(bs::Zero<T>(), bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>(), 0.5);
 } // end of test for floating_
 
 STF_CASE_TPL (" fma unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

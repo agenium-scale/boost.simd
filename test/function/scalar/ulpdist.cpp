@@ -27,26 +27,26 @@ STF_CASE_TPL (" ulpdist real",  STF_IEEE_TYPES)
   STF_EXPR_IS( ulpdist(T(), T()), T);
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(ulpdist(bs::Inf<T>(), bs::Inf<T>()), bs::Zero<T>());
-  STF_EQUAL(ulpdist(bs::Minf<T>(), bs::Minf<T>()), bs::Zero<T>());
-  STF_EQUAL(ulpdist(bs::Nan<T>(), bs::Nan<T>()), bs::Zero<T>());
+  STF_ULP_EQUAL(ulpdist(bs::Inf<T>(), bs::Inf<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(ulpdist(bs::Minf<T>(), bs::Minf<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(ulpdist(bs::Nan<T>(), bs::Nan<T>()), bs::Zero<T>(), 0.5);
 #endif
 
-  STF_EQUAL(ulpdist(bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
-  STF_EQUAL(ulpdist(bs::One<T>(), bs::One<T>()), bs::Zero<T>());
-  STF_EQUAL(ulpdist(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
+  STF_ULP_EQUAL(ulpdist(bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(ulpdist(bs::One<T>(), bs::One<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(ulpdist(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>(), 0.5);
 
-  STF_EQUAL( ulpdist(bs::One<T>(), bs::One<T>()+bs::Eps<T>())
+  STF_ULP_EQUAL( ulpdist(bs::One<T>(), bs::One<T>()+bs::Eps<T>())
                 , T(0.5)
-                );
+               , 0.5);
 
-  STF_EQUAL( ulpdist(bs::One<T>(), bs::One<T>()-bs::Eps<T>())
+  STF_ULP_EQUAL( ulpdist(bs::One<T>(), bs::One<T>()-bs::Eps<T>())
                 , T(0.5)
-                );
+                , 0.5);
 
-  STF_EQUAL( ulpdist(bs::One<T>(), bs::One<T>()-bs::Eps<T>()/2)
+  STF_ULP_EQUAL( ulpdist(bs::One<T>(), bs::One<T>()-bs::Eps<T>()/2)
                 , T(0.25)
-                );
+                , 0.5);
 }
 
 STF_CASE_TPL (" ulpdist signed_integral",  STF_SIGNED_INTEGRAL_TYPES)

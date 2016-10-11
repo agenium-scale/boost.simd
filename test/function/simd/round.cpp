@@ -33,8 +33,8 @@ void test(Env& $)
   }
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
-  STF_EQUAL(bs::round(aa1), bb);
-  STF_EQUAL(bs::std_(bs::round)(aa1), bb);
+  STF_ULP_EQUAL(bs::round(aa1), bb, 0.5);
+  STF_ULP_EQUAL(bs::std_(bs::round)(aa1), bb, 0.5);
 }
 
 STF_CASE_TPL("Check round on pack" , STF_NUMERIC_TYPES)
@@ -55,8 +55,8 @@ STF_CASE_TPL("Check round on halfs" , STF_IEEE_TYPES)
   p_t b(2.5);
   for(int i = 1; i <= 9; i+= 1)
   {
-    STF_IEEE_EQUAL(bs::round(p_t(i+T(0.5))), p_t(i+1));
-    STF_IEEE_EQUAL(bs::round(p_t(-i-T(0.5))),  p_t(-i-1));
+    STF_ULP_EQUAL(bs::round(p_t(i+T(0.5))), p_t(i+1), 0.5);
+    STF_ULP_EQUAL(bs::round(p_t(-i-T(0.5))),  p_t(-i-1), 0.5);
   }
   STF_EXPECT(bs::is_negative(round(bs::Mzero<T>())));
   STF_EXPECT(bs::is_positive(round(bs::Zero<T>())));

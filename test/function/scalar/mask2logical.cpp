@@ -32,8 +32,8 @@ STF_CASE_TPL (" mask2logical real",  STF_IEEE_TYPES)
   STF_EXPR_IS( mask2logical(T()), lT );
 
   // specific values tests
-  STF_EQUAL(mask2logical(T(0)), bs::False<lT>());
-  STF_EQUAL(mask2logical(bs::Nan<T>()) , bs::True<lT>());
+  STF_ULP_EQUAL(mask2logical(T(0)), bs::False<lT>(), 0.5);
+  STF_ULP_EQUAL(mask2logical(bs::Nan<T>()) , bs::True<lT>(), 0.5);
 } // end of test for floating_
 
 STF_CASE_TPL (" mask2logical signed_int",  STF_SIGNED_INTEGRAL_TYPES)

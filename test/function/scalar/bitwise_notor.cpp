@@ -32,11 +32,11 @@ STF_CASE_TPL (" bitwise_notor real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_IEEE_EQUAL(bitwise_notor(bs::Inf<T>(), bs::Inf<T>()), bs::Nan<r_t>());
-  STF_IEEE_EQUAL(bitwise_notor(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<r_t>());
-  STF_IEEE_EQUAL(bitwise_notor(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>());
+  STF_ULP_EQUAL(bitwise_notor(bs::Inf<T>(), bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bitwise_notor(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(bitwise_notor(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
 #endif
-  STF_IEEE_EQUAL(bitwise_notor(bs::Zero<T>(), bs::Zero<T>()), bs::Nan<r_t>());
+  STF_ULP_EQUAL(bitwise_notor(bs::Zero<T>(), bs::Zero<T>()), bs::Nan<r_t>(), 0.5);
 } // end of test for floating_
 
 STF_CASE_TPL (" bitwise_notor signed_int",  STF_SIGNED_INTEGRAL_TYPES)
@@ -89,8 +89,8 @@ STF_CASE_TPL("bitwise_notor mix", STF_IEEE_TYPES)
   STF_EXPR_IS(bitwise_notor(siT(), T()), siT);
 
    // specific values tests
-  STF_EQUAL(bitwise_notor(bs::Nan<T>(),bs::One<uiT>()), bs::Bitincrement<T>());
-  STF_EQUAL(bitwise_notor(bs::Nan<T>(), bs::One<siT>()), bs::Bitincrement<T>());
-  STF_EQUAL(bitwise_notor(bs::Valmin<siT>(),bs::Zero<T>()), bs::Valmax<siT>());
-  STF_EQUAL(bitwise_notor(bs::Zero<uiT>(), bs::Zero<T>()), bs::Valmax<uiT>());
+  STF_ULP_EQUAL(bitwise_notor(bs::Nan<T>(),bs::One<uiT>()), bs::Bitincrement<T>(), 0.5);
+  STF_ULP_EQUAL(bitwise_notor(bs::Nan<T>(), bs::One<siT>()), bs::Bitincrement<T>(), 0.5);
+  STF_ULP_EQUAL(bitwise_notor(bs::Valmin<siT>(),bs::Zero<T>()), bs::Valmax<siT>(), 0.5);
+  STF_ULP_EQUAL(bitwise_notor(bs::Zero<uiT>(), bs::Zero<T>()), bs::Valmax<uiT>(), 0.5);
 }

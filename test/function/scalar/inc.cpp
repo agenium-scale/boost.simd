@@ -61,12 +61,12 @@ STF_CASE_TPL(" inc floating", STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(inc(bs::Inf<T>()), bs::Inf<T>());
-  STF_IEEE_EQUAL(inc(bs::Nan<T>()), bs::Nan<T>());
-  STF_EQUAL(inc(bs::Minf<T>()), bs::Minf<T>());
+  STF_ULP_EQUAL(inc(bs::Inf<T>()), bs::Inf<T>(), 0.5);
+  STF_ULP_EQUAL(inc(bs::Nan<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(inc(bs::Minf<T>()), bs::Minf<T>(), 0.5);
 #endif
-  STF_EQUAL(inc(bs::One<T>()), bs::Two<T>());
-  STF_EQUAL(inc(bs::Two<T>()), bs::Three<T>());
-  STF_EQUAL(inc(bs::Zero<T>()), bs::One<T>());
-  STF_EQUAL(inc(bs::Valmax<T>()), bs::Valmax<T>());
+  STF_ULP_EQUAL(inc(bs::One<T>()), bs::Two<T>(), 0.5);
+  STF_ULP_EQUAL(inc(bs::Two<T>()), bs::Three<T>(), 0.5);
+  STF_ULP_EQUAL(inc(bs::Zero<T>()), bs::One<T>(), 0.5);
+  STF_ULP_EQUAL(inc(bs::Valmax<T>()), bs::Valmax<T>(), 0.5);
 }

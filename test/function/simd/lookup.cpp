@@ -38,7 +38,7 @@ void test(Env& $)
   i_t aa2(&a2[0], &a2[0]+N);
   p_t bb(&b[0], &b[0]+N);
 
-  STF_EQUAL(bs::lookup(aa1, aa2), bb);
+  STF_ULP_EQUAL(bs::lookup(aa1, aa2), bb, 0.5);
 }
 
 STF_CASE_TPL("Check lookup on pack" , STF_NUMERIC_TYPES)

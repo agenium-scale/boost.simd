@@ -33,7 +33,7 @@ void test_st(Env& $)
 
   f( brigand::range<std::size_t, 0, N>(),ref,p);
 
-  for(std::size_t i = 0;i < N; ++i) STF_EQUAL( p[i], ref[i] );
+  for(std::size_t i = 0;i < N; ++i) STF_EQUAL( p[i], ref[i]);
 }
 
 STF_CASE_TPL("Check static insert on pack" , STF_NUMERIC_TYPES)

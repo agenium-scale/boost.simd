@@ -64,12 +64,12 @@ STF_CASE_TPL(" oneminus floating", STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(oneminus(bs::Inf<T>()), bs::Minf<T>());
-  STF_IEEE_EQUAL(oneminus(bs::Nan<T>()), bs::Nan<T>());
-  STF_EQUAL(oneminus(bs::Minf<T>()), bs::Inf<T>());
+  STF_ULP_EQUAL(oneminus(bs::Inf<T>()), bs::Minf<T>(), 0.5);
+  STF_ULP_EQUAL(oneminus(bs::Nan<T>()), bs::Nan<T>(), 0.5);
+  STF_ULP_EQUAL(oneminus(bs::Minf<T>()), bs::Inf<T>(), 0.5);
 #endif
-  STF_EQUAL(oneminus(bs::One<T>()), bs::Zero<T>());
-  STF_EQUAL(oneminus(bs::Two<T>()), bs::Mone<T>());
-  STF_EQUAL(oneminus(bs::Zero<T>()), bs::One<T>());
+  STF_ULP_EQUAL(oneminus(bs::One<T>()), bs::Zero<T>(), 0.5);
+  STF_ULP_EQUAL(oneminus(bs::Two<T>()), bs::Mone<T>(), 0.5);
+  STF_ULP_EQUAL(oneminus(bs::Zero<T>()), bs::One<T>(), 0.5);
 }
 

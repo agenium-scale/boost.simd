@@ -45,11 +45,11 @@ STF_CASE_TPL (" is_not_equal real",  STF_IEEE_TYPES)
  STF_TYPE_IS(r_t, bs::logical<T>);
 
   // specific values tests
-  STF_EQUAL(is_not_equal(bs::Inf<T>(), bs::Inf<T>()), r_t(false));
-  STF_EQUAL(is_not_equal(bs::Minf<T>(), bs::Minf<T>()), r_t(false));
-  STF_EQUAL(is_not_equal(bs::Nan<T>(), bs::Nan<T>()), r_t(true));
-  STF_EQUAL(is_not_equal(bs::One<T>(),bs::Zero<T>()), r_t(true));
-  STF_EQUAL(is_not_equal(bs::Zero<T>(), bs::Zero<T>()), r_t(false));
+  STF_ULP_EQUAL(is_not_equal(bs::Inf<T>(), bs::Inf<T>()), r_t(false), 0.5);
+  STF_ULP_EQUAL(is_not_equal(bs::Minf<T>(), bs::Minf<T>()), r_t(false), 0.5);
+  STF_ULP_EQUAL(is_not_equal(bs::Nan<T>(), bs::Nan<T>()), r_t(true), 0.5);
+  STF_ULP_EQUAL(is_not_equal(bs::One<T>(),bs::Zero<T>()), r_t(true), 0.5);
+  STF_ULP_EQUAL(is_not_equal(bs::Zero<T>(), bs::Zero<T>()), r_t(false), 0.5);
 } // end of test for floating_
 
 STF_CASE ( "is_not_equal bool")
@@ -65,10 +65,10 @@ STF_CASE ( "is_not_equal bool")
 
 
   // specific values tests
-  STF_EQUAL(is_not_equal(true, false), true);
-  STF_EQUAL(is_not_equal(false, true), true);
-  STF_EQUAL(is_not_equal(true, true), false);
-  STF_EQUAL(is_not_equal(false, false), false);
+  STF_ULP_EQUAL(is_not_equal(true, false), true, 0.5);
+  STF_ULP_EQUAL(is_not_equal(false, true), true, 0.5);
+  STF_ULP_EQUAL(is_not_equal(true, true), false, 0.5);
+  STF_ULP_EQUAL(is_not_equal(false, false), false, 0.5);
 }
 
 

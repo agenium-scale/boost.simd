@@ -36,8 +36,8 @@ void test( Env& $, std::true_type const& )
 
   std::tie(valuel,valueh) = bs::split_multiplies(value,value);
 
-  STF_EQUAL( valuel , refl);
-  STF_EQUAL( valueh , refh);
+  STF_ULP_EQUAL( valuel , refl, 0.5);
+  STF_ULP_EQUAL( valueh , refh, 0.5);
 }
 
 STF_CASE_TPL("split_multiplies two pack<T,N> into a pair of pack<T^2,N/2>", STF_NUMERIC_TYPES)

@@ -30,9 +30,9 @@ STF_CASE_TPL (" popcnt real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(popcnt(bs::Nan<T>()), sizeof(T)*8);
+  STF_ULP_EQUAL(popcnt(bs::Nan<T>()), sizeof(T)*8, 0.5);
 #endif
-  STF_EQUAL(popcnt(bs::Zero<T>()), bs::Zero<r_t>());
+  STF_ULP_EQUAL(popcnt(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
 } // end of test for floating_
 
 STF_CASE_TPL (" popcnt integer",  STF_INTEGRAL_TYPES)

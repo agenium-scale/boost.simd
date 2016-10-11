@@ -31,23 +31,23 @@ STF_CASE_TPL (" maxnummag real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(maxnummag(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>());
-  STF_EQUAL(maxnummag(bs::Minf<T>(), bs::Minf<T>()), bs::Minf<r_t>());
-  STF_IEEE_EQUAL(maxnummag(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>());
-  STF_EQUAL(maxnummag(bs::Nan<T>(),bs::One<T>()), bs::One<r_t>());
-  STF_EQUAL(maxnummag(bs::One<T>(),bs::Nan<T>()), bs::One<r_t>());
+  STF_ULP_EQUAL(maxnummag(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(maxnummag(bs::Minf<T>(), bs::Minf<T>()), bs::Minf<r_t>(), 0.5);
+  STF_ULP_EQUAL(maxnummag(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(maxnummag(bs::Nan<T>(),bs::One<T>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(maxnummag(bs::One<T>(),bs::Nan<T>()), bs::One<r_t>(), 0.5);
 #endif
-  STF_EQUAL(maxnummag(bs::Mone<T>(), bs::Mone<T>()), bs::Mone<r_t>());
-  STF_EQUAL(maxnummag(bs::One<T>(),  bs::One<T>()),  bs::One<r_t>());
-  STF_EQUAL(maxnummag(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
-  STF_EQUAL(maxnummag(bs::Mone<T>(), bs::One <T>()), bs::One<r_t>());
-  STF_EQUAL(maxnummag(bs::One <T>(), bs::Mone<T>()), bs::One<r_t>());
-  STF_EQUAL(maxnummag(bs::One <T>(), bs::Two <T>()), bs::Two<r_t>());
-  STF_EQUAL(maxnummag(bs::Two <T>(), bs::One <T>()), bs::Two<r_t>());
-  STF_EQUAL(maxnummag(bs::Mtwo<T>(), bs::One <T>()), bs::Mtwo<r_t>());
-  STF_EQUAL(maxnummag(bs::One <T>(), bs::Mtwo<T>()), bs::Mtwo<r_t>());
-  STF_EQUAL(maxnummag(bs::Two <T>(), bs::Mone<T>()), bs::Two<r_t>());
-  STF_EQUAL(maxnummag(bs::Mone<T>(), bs::Two <T>()), bs::Two<r_t>());
+  STF_ULP_EQUAL(maxnummag(bs::Mone<T>(), bs::Mone<T>()), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(maxnummag(bs::One<T>(),  bs::One<T>()),  bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(maxnummag(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(maxnummag(bs::Mone<T>(), bs::One <T>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(maxnummag(bs::One <T>(), bs::Mone<T>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(maxnummag(bs::One <T>(), bs::Two <T>()), bs::Two<r_t>(), 0.5);
+  STF_ULP_EQUAL(maxnummag(bs::Two <T>(), bs::One <T>()), bs::Two<r_t>(), 0.5);
+  STF_ULP_EQUAL(maxnummag(bs::Mtwo<T>(), bs::One <T>()), bs::Mtwo<r_t>(), 0.5);
+  STF_ULP_EQUAL(maxnummag(bs::One <T>(), bs::Mtwo<T>()), bs::Mtwo<r_t>(), 0.5);
+  STF_ULP_EQUAL(maxnummag(bs::Two <T>(), bs::Mone<T>()), bs::Two<r_t>(), 0.5);
+  STF_ULP_EQUAL(maxnummag(bs::Mone<T>(), bs::Two <T>()), bs::Two<r_t>(), 0.5);
 }
 
 STF_CASE_TPL (" maxnummag unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

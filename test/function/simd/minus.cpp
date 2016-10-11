@@ -34,8 +34,8 @@ void test(Env& $)
   p_t aa1(&a1[0], &a1[0]+N);
   p_t aa2(&a2[0], &a2[0]+N);
   p_t bb(&b[0], &b[0]+N);
-  STF_EQUAL(bs::minus(aa1, aa2), bb);
-  STF_EQUAL(aa1- aa2, bb);
+  STF_ULP_EQUAL(bs::minus(aa1, aa2), bb, 0.5);
+  STF_ULP_EQUAL(aa1- aa2, bb, 0.5);
 }
 
 STF_CASE_TPL("Check minus on pack" , STF_NUMERIC_TYPES)
@@ -67,7 +67,7 @@ void tests(Env& $)
   p_t aa1(&a1[0], &a1[0]+N);
   p_t aa2(&a2[0], &a2[0]+N);
   p_t bb(&b[0], &b[0]+N);
-  STF_IEEE_EQUAL(bs::saturated_(bs::minus)(aa1, aa2), bb);
+  STF_ULP_EQUAL(bs::saturated_(bs::minus)(aa1, aa2), bb, 0.5);
 }
 
 STF_CASE_TPL("Check minus on pack" , STF_NUMERIC_TYPES)

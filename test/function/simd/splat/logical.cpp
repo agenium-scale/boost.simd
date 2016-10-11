@@ -24,12 +24,12 @@ void test(Env& $)
   p_t ref;
   for(std::size_t i = 0; i < N; ++i) ref[i] = true;
 
-  STF_EQUAL(bs::splat<p_t>(T(2)), ref);
-  STF_EQUAL(bs::splat<p_t>(true), ref);
+  STF_ULP_EQUAL(bs::splat<p_t>(T(2)), ref, 0.5);
+  STF_ULP_EQUAL(bs::splat<p_t>(true), ref, 0.5);
 
   for(std::size_t i = 0; i < N; ++i) ref[i] = false;
-  STF_EQUAL(bs::splat<p_t>(T(0)) , ref);
-  STF_EQUAL(bs::splat<p_t>(false), ref);
+  STF_ULP_EQUAL(bs::splat<p_t>(T(0)) , ref, 0.5);
+  STF_ULP_EQUAL(bs::splat<p_t>(false), ref, 0.5);
 }
 
 STF_CASE_TPL( "Check splat behavior with all types", STF_NUMERIC_TYPES )
