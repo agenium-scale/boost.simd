@@ -13,8 +13,14 @@
 
 #include <boost/simd/detail/dispatch/as.hpp>
 #include <boost/simd/detail/dispatch/hierarchy.hpp>
+#include <boost/simd/logical.hpp>
 #include <cstring>
 #include <type_traits>
+
+
+namespace boost { namespace simd { namespace ext
+{
+ namespace bd = boost::dispatch;
 
   template<typename T> inline std::string type_id()
   {
@@ -31,9 +37,6 @@
   {
     return type_id<T>();
   }
-namespace boost { namespace simd { namespace ext
-{
- namespace bd = boost::dispatch;
 
   BOOST_DISPATCH_OVERLOAD ( bitwise_cast_
                           , (typename A0, typename A1)
@@ -57,7 +60,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE result_t do_(A0 const& a0, std::false_type const& ) const BOOST_NOEXCEPT
     {
       result_t that;
-      std::cout << "MEMCOPY " << type_id<A0>() << " --> " << type_id<result_t>() << std::endl;
+      std::cout << "MEMCPY " << type_id<A0>() << " --> " << type_id<result_t>() << std::endl;
       std::memcpy(&that, &a0, sizeof(a0));
       return that;
     }
@@ -89,7 +92,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE result_t do_(A0 const& a0, std::false_type ) const BOOST_NOEXCEPT
     {
-      std::cout << "ARITHMETIC --> UNSPECIFIED" << type_id<A0>() << " --> " << type_id<result_t>() << std::endl;
+      //    std::cout << "ARITHMETIC --> UNSPECIFIED" << type_id<A0>() << " --> " << type_id<result_t>() << std::endl;
       return a0.storage();
     }
 
@@ -153,7 +156,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE result_t do_(A0 const& a0, std::false_type ) const BOOST_NOEXCEPT
     {
-      std::cout << "LOGICAL --> UNSPECIFIED" << type_id<A0>() << " --> " << type_id<result_t>() << std::endl;
+//      std::cout << "LOGICAL --> UNSPECIFIED" << type_id<A0>() << " --> " << type_id<result_t>() << std::endl;
       return a0.storage();
     }
 
