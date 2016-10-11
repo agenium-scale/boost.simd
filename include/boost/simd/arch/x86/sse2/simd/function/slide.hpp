@@ -31,14 +31,16 @@ namespace boost { namespace simd { namespace ext
     static BOOST_FORCEINLINE T side(T const& a0, std::true_type const&) BOOST_NOEXCEPT
     {
       using imm = std::integral_constant<std::size_t,Offset::value*bcnt::value>;
-      return bitwise_cast<T>(_mm_srli_si128(bitwise_cast<bits_t>(a0),imm::value));
+      bits_t tmp = _mm_srli_si128(bitwise_cast<bits_t>(a0),imm::value);
+      return bitwise_cast<T>(tmp);
     }
 
     // slide with negative offset
     static BOOST_FORCEINLINE T side( T const& a0, std::false_type const& ) BOOST_NOEXCEPT
     {
       using imm = std::integral_constant<std::size_t,(-Offset::value)*bcnt::value>;
-      return bitwise_cast<T>(_mm_slli_si128(bitwise_cast<bits_t>(a0),imm::value));
+      bits_t tmp = _mm_slli_si128(bitwise_cast<bits_t>(a0),imm::value);
+      return bitwise_cast<T>(tmp);
     }
 
     BOOST_FORCEINLINE T operator()(T const& a0, Offset const&) const BOOST_NOEXCEPT
