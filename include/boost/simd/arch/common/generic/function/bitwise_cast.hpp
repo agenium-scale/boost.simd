@@ -75,7 +75,7 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename A1)
                           , bd::cpu_
                           , bd::generic_< bd::arithmetic_<A0> >
-                          , bd::target_< bd::generic_< bd::unspecified_<A1> > >
+                          , bd::target_< bd::generic_< bs::logical_<A1> > >
                           )
   {
     using result_t =  typename A1::type;
@@ -92,7 +92,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE result_t do_(A0 const& a0, std::false_type ) const BOOST_NOEXCEPT
     {
-      //    std::cout << "ARITHMETIC --> UNSPECIFIED" << type_id<A0>() << " --> " << type_id<result_t>() << std::endl;
+//      std::cout << "ARITHMETIC --> LOGICAL" << type_id<A0>() << " --> " << type_id<result_t>() << std::endl;
       return a0.storage();
     }
 
