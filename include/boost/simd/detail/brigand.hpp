@@ -697,7 +697,7 @@ namespace lazy
 {
     template <typename Sequence, typename Predicate = detail::non_null>
     using reverse_find =
-        ::brigand::lazy::reverse<::brigand::find<brigand::reverse<Sequence>, Predicate>>;
+        ::brigand::lazy::reverse< ::brigand::find<brigand::reverse<Sequence>, Predicate>>;
 }
 template <typename Sequence, typename Predicate = detail::non_null>
 using reverse_find = typename ::brigand::lazy::reverse_find<Sequence, Predicate>::type;
@@ -962,7 +962,7 @@ namespace detail
     struct index_if_impl
     {
         using type = ::brigand::size_t<size<Sequence>::value -
-                                       size<::brigand::find<Sequence, Predicate>>::value>;
+                                       size< ::brigand::find<Sequence, Predicate>>::value>;
     };
     template <class Sequence, typename Predicate>
     struct index_if_impl<false, Sequence, Predicate>
@@ -971,7 +971,7 @@ namespace detail
     };
 }
 template <class Sequence, class Predicate>
-using index_if = typename detail::index_if_impl<::brigand::found<Sequence, Predicate>::value,
+using index_if = typename detail::index_if_impl< ::brigand::found<Sequence, Predicate>::value,
                                                 Sequence, Predicate>::type;
 template <class Sequence, typename T>
 using index_of = index_if<Sequence, std::is_same<T, ::brigand::_1>>;
