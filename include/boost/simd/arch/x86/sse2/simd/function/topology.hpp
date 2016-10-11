@@ -61,8 +61,9 @@ namespace boost { namespace simd { namespace detail
     template<typename T,int P0,int P1> static BOOST_FORCEINLINE
     T do_(const T& a0, pattern_<P0,P1> const&, std::false_type const&)
     {
-      auto const v = bitwise_cast<bd::as_floating_t<T>>(a0);
-      return bitwise_cast<T>( _mm_shuffle_pd(v, v, (detail::mask_pd<P0,P1>::value)) );
+      using f_t = bd::as_floating_t<T>;
+      auto const v = bitwise_cast<f_t>(a0);
+      return bitwise_cast<T>( f_t(_mm_shuffle_pd(v, v, (detail::mask_pd<P0,P1>::value))) );
     }
 
     // Masked unary shuffling
