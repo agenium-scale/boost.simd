@@ -43,8 +43,9 @@ namespace boost { namespace simd { namespace ext
                                   , std::integral_constant<int,1> const&
                                   ) const BOOST_NOEXCEPT
     {
-      auto const b0 = bitwise_cast<bd::as_floating_t<T>>(a0);
-      return bitwise_cast<T>(_mm256_shuffle_pd(b0, _mm256_permute2f128_pd(b0, b0, 0x81), 0x5) );
+      using f_t = bd::as_floating_t<T>;
+      auto const b0 = bitwise_cast<f_t>(a0);
+      return bitwise_cast<T>(f_t(_mm256_shuffle_pd(b0, _mm256_permute2f128_pd(b0, b0, 0x81), 0x5)));
     }
   };
 
@@ -54,8 +55,9 @@ namespace boost { namespace simd { namespace ext
                                   , std::integral_constant<int,2> const&
                                   ) const BOOST_NOEXCEPT
     {
-      auto const b0 = bitwise_cast<bd::as_floating_t<T>>(a0);
-      return bitwise_cast<T>( _mm256_permute2f128_pd(b0, b0, 0x81) );
+      using f_t = bd::as_floating_t<T>;
+      auto const b0 = bitwise_cast<f_t>(a0);
+      return bitwise_cast<T>(f_t(_mm256_permute2f128_pd(b0, b0, 0x81)));
     }
   };
 
@@ -65,11 +67,13 @@ namespace boost { namespace simd { namespace ext
                                   , std::integral_constant<int,3> const&
                                   ) const BOOST_NOEXCEPT
     {
-      auto const b0 = bitwise_cast<bd::as_floating_t<T>>(a0);
-      return bitwise_cast<T>(_mm256_shuffle_pd( _mm256_permute2f128_pd(b0, b0, 0x81)
-                                              , bd::as_floating_t<T>(0)
-                                              , 0x1
-                                              )
+      using f_t = bd::as_floating_t<T>;
+      auto const b0 = bitwise_cast<f_t>(a0);
+      return bitwise_cast<T>(f_t( _mm256_shuffle_pd ( _mm256_permute2f128_pd(b0, b0, 0x81)
+                                                    , bd::as_floating_t<T>(0)
+                                                    , 0x1
+                                                    )
+                                )
                             );
     }
   };
@@ -84,13 +88,14 @@ namespace boost { namespace simd { namespace ext
                                   ) const BOOST_NOEXCEPT
     {
       using f_t = bd::as_floating_t<T>;
-      return bitwise_cast<T>( _mm256_shuffle_pd ( bitwise_cast<f_t>(a0)
-                                                , _mm256_permute2f128_pd( bitwise_cast<f_t>(a0)
-                                                                        , bitwise_cast<f_t>(a1)
-                                                                        , 0x21
-                                                                        )
-                                                , 0x5
-                                                )
+      return bitwise_cast<T>( f_t ( _mm256_shuffle_pd ( bitwise_cast<f_t>(a0)
+                                                      , _mm256_permute2f128_pd( bitwise_cast<f_t>(a0)
+                                                                              , bitwise_cast<f_t>(a1)
+                                                                              , 0x21
+                                                                              )
+                                                      , 0x5
+                                                      )
+                                  )
                             );
     }
   };
@@ -116,13 +121,14 @@ namespace boost { namespace simd { namespace ext
                                   ) const BOOST_NOEXCEPT
     {
       using f_t = bd::as_floating_t<T>;
-      return bitwise_cast<T>( _mm256_shuffle_pd ( _mm256_permute2f128_pd( bitwise_cast<f_t>(a0)
-                                                                        , bitwise_cast<f_t>(a1)
-                                                                        , 0x21
-                                                                        )
-                                                , bitwise_cast<f_t>(a1)
-                                                , 0x5
-                                                )
+      return bitwise_cast<T>( f_t ( _mm256_shuffle_pd ( _mm256_permute2f128_pd( bitwise_cast<f_t>(a0)
+                                                                              , bitwise_cast<f_t>(a1)
+                                                                              , 0x21
+                                                                              )
+                                                      , bitwise_cast<f_t>(a1)
+                                                      , 0x5
+                                                      )
+                                  )
                             );
     }
   };
