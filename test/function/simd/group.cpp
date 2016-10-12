@@ -46,7 +46,7 @@ void test( Env& $, std::true_type const& )
   p_t aa2(&a2[0], &a2[0]+N);
   g_t bb (&b[0], &b[0]+N);
 
-  STF_ULP_EQUAL(bs::group(aa1,aa2), bb, 0.5);
+  STF_EQUAL(bs::group(aa1,aa2), bb);
 }
 
 STF_CASE_TPL("Check group on pack", STF_NUMERIC_TYPES)

@@ -33,7 +33,7 @@ void test(Env& $)
    }
   p_t aa1(&a1[0], &a1[0]+N);
   p_t aa2(&a2[0], &a2[0]+N);
-  STF_ULP_EQUAL(bs::isincluded_c(aa1, aa2), b, 0.5);
+  STF_EQUAL(bs::isincluded_c(aa1, aa2), b);
 }
 
 STF_CASE_TPL("Check isincluded_c on pack" , STF_NUMERIC_TYPES)

@@ -36,8 +36,8 @@ void test(Env& $)
   pl_t bb(&b[0], &b[0]+N);
   pl_t cc(&c[0], &c[0]+N);
 
-  STF_ULP_EQUAL(bs::is_lessgreater(aa1, aa2), bb, 0.5);
-  STF_ULP_EQUAL(bs::std_(bs::is_lessgreater)(aa1, aa2), cc, 0.5);
+  STF_EQUAL(bs::is_lessgreater(aa1, aa2), bb);
+  STF_EQUAL(bs::std_(bs::is_lessgreater)(aa1, aa2), cc);
 }
 
 STF_CASE_TPL("Check is_lessgreater on pack", STF_NUMERIC_TYPES)

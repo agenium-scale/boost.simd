@@ -45,11 +45,11 @@ STF_CASE_TPL (" is_less real",  STF_IEEE_TYPES)
  STF_TYPE_IS(r_t, bs::logical<T>);
 
   // specific values tests
-  STF_ULP_EQUAL(is_less(bs::Inf<T>(), bs::Inf<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_less(bs::Minf<T>(), bs::Minf<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_less(bs::Nan<T>(), bs::Nan<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_less(bs::One<T>(),bs::Zero<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_less(bs::Zero<T>(), bs::Zero<T>()), r_t(false), 0.5);
+  STF_EQUAL(is_less(bs::Inf<T>(), bs::Inf<T>()), r_t(false));
+  STF_EQUAL(is_less(bs::Minf<T>(), bs::Minf<T>()), r_t(false));
+  STF_EQUAL(is_less(bs::Nan<T>(), bs::Nan<T>()), r_t(false));
+  STF_EQUAL(is_less(bs::One<T>(),bs::Zero<T>()), r_t(false));
+  STF_EQUAL(is_less(bs::Zero<T>(), bs::Zero<T>()), r_t(false));
 } // end of test for floating_
 
 STF_CASE ( "is_less bool")
@@ -65,10 +65,10 @@ STF_CASE ( "is_less bool")
 
 
   // specific values tests
-  STF_ULP_EQUAL(is_less(true, false), false, 0.5);
-  STF_ULP_EQUAL(is_less(false, true), true, 0.5);
-  STF_ULP_EQUAL(is_less(true, true), false, 0.5);
-  STF_ULP_EQUAL(is_less(false, false), false, 0.5);
+  STF_EQUAL(is_less(true, false), false);
+  STF_EQUAL(is_less(false, true), true);
+  STF_EQUAL(is_less(true, true), false);
+  STF_EQUAL(is_less(false, false), false);
 }
 
 

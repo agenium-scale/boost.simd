@@ -31,11 +31,11 @@ STF_CASE_TPL (" genmaskc real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(genmaskc(bs::Inf<T>()), bs::Zero<r_t>(), 0.5);
-  STF_ULP_EQUAL(genmaskc(bs::Minf<T>()), bs::Zero<r_t>(), 0.5);
-  STF_ULP_EQUAL(genmaskc(bs::Nan<T>()), bs::Zero<r_t>(), 0.5);
+  STF_EQUAL(genmaskc(bs::Inf<T>()), bs::Zero<r_t>());
+  STF_EQUAL(genmaskc(bs::Minf<T>()), bs::Zero<r_t>());
+  STF_EQUAL(genmaskc(bs::Nan<T>()), bs::Zero<r_t>());
 #endif
-  STF_ULP_EQUAL(genmaskc(bs::Zero<T>()), bs::Allbits<r_t>(), 0.5);
+  STF_IEEE_EQUAL(genmaskc(bs::Zero<T>()), bs::Allbits<r_t>());
 } // end of test for floating_
 
 STF_CASE_TPL (" genmaskc integer",  (int16_t)(int32_t)(int64_t)(uint32_t)(uint64_t))//STF_INTEGRAL_TYPES)

@@ -31,14 +31,14 @@ STF_CASE_TPL (" logical_notor real",  STF_IEEE_TYPES)
   STF_TYPE_IS( r_t, logical<T>);
 
   // specific values tests
-  STF_ULP_EQUAL(logical_notor(T(0), T(1)), r_t(true), 0.5);
-  STF_ULP_EQUAL(logical_notor(T(1), T(0)), r_t(false), 0.5);
-  STF_ULP_EQUAL(logical_notor(bs::Inf<T>(),  T(0)), r_t(false), 0.5);
-  STF_ULP_EQUAL(logical_notor(bs::Minf<T>(), T(0)), r_t(false), 0.5);
-  STF_ULP_EQUAL(logical_notor(bs::Nan<T>(),  T(0)), r_t(false), 0.5);
-  STF_ULP_EQUAL(logical_notor(bs::Zero<T>(), T(1)), r_t(true), 0.5);
-  STF_ULP_EQUAL(logical_notor(r_t(false), T(1)), r_t(true), 0.5);
-  STF_ULP_EQUAL(logical_notor(r_t(true), T(1)), r_t(true), 0.5);
+  STF_EQUAL(logical_notor(T(0), T(1)), r_t(true));
+  STF_EQUAL(logical_notor(T(1), T(0)), r_t(false));
+  STF_EQUAL(logical_notor(bs::Inf<T>(),  T(0)), r_t(false));
+  STF_EQUAL(logical_notor(bs::Minf<T>(), T(0)), r_t(false));
+  STF_EQUAL(logical_notor(bs::Nan<T>(),  T(0)), r_t(false));
+  STF_EQUAL(logical_notor(bs::Zero<T>(), T(1)), r_t(true));
+  STF_EQUAL(logical_notor(r_t(false), T(1)), r_t(true));
+  STF_EQUAL(logical_notor(r_t(true), T(1)), r_t(true));
 
 
 } // end of test for floating_
@@ -74,14 +74,14 @@ STF_CASE_TPL (" logical_notor mix",  STF_IEEE_TYPES)
   STF_TYPE_IS( r_t, logical<T>);
 
   // specific values tests
-  STF_ULP_EQUAL(logical_notor(T(0), iT(1)), r_t(true), 0.5);
-  STF_ULP_EQUAL(logical_notor(T(1), iT(0)), r_t(false), 0.5);
-  STF_ULP_EQUAL(logical_notor(bs::Inf<T>(),  iT(0)), r_t(false), 0.5);
-  STF_ULP_EQUAL(logical_notor(bs::Minf<T>(), iT(0)), r_t(false), 0.5);
-  STF_ULP_EQUAL(logical_notor(bs::Nan<T>(),  iT(0)), r_t(false), 0.5);
-  STF_ULP_EQUAL(logical_notor(bs::Zero<T>(), iT(1)), r_t(true), 0.5);
-  STF_ULP_EQUAL(logical_notor(r_t(false), iT(1)), r_t(true), 0.5);
-  STF_ULP_EQUAL(logical_notor(r_t(true), iT(1)), r_t(true), 0.5);
+  STF_EQUAL(logical_notor(T(0), iT(1)), r_t(true));
+  STF_EQUAL(logical_notor(T(1), iT(0)), r_t(false));
+  STF_EQUAL(logical_notor(bs::Inf<T>(),  iT(0)), r_t(false));
+  STF_EQUAL(logical_notor(bs::Minf<T>(), iT(0)), r_t(false));
+  STF_EQUAL(logical_notor(bs::Nan<T>(),  iT(0)), r_t(false));
+  STF_EQUAL(logical_notor(bs::Zero<T>(), iT(1)), r_t(true));
+  STF_EQUAL(logical_notor(r_t(false), iT(1)), r_t(true));
+  STF_EQUAL(logical_notor(r_t(true), iT(1)), r_t(true));
 
 
 } // end of test for floating_

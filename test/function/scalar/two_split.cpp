@@ -37,7 +37,7 @@ STF_CASE_TPL(" two_split", STF_IEEE_TYPES)
   std::pair<T,T> p;
 
   p = two_split(one_-eps_);
-  STF_ULP_EQUAL(p.first, one_, 0.5);
-  STF_ULP_EQUAL(p.second, -eps_, 0.5);
+  STF_EQUAL(p.first, one_);
+  STF_EQUAL(p.second, -eps_);
 }
 

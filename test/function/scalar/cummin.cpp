@@ -28,13 +28,13 @@ STF_CASE_TPL (" cummin real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(cummin(bs::Inf<T>()), bs::Inf<T>(), 0.5);
-  STF_ULP_EQUAL(cummin(bs::Minf<T>()), bs::Minf<T>(), 0.5);
-  STF_ULP_EQUAL(cummin(bs::Nan<T>()), bs::Nan<T>(), 0.5);
+  STF_EQUAL(cummin(bs::Inf<T>()), bs::Inf<T>());
+  STF_EQUAL(cummin(bs::Minf<T>()), bs::Minf<T>());
+  STF_IEEE_EQUAL(cummin(bs::Nan<T>()), bs::Nan<T>());
 #endif
-  STF_ULP_EQUAL(cummin(bs::Mone<T>()), bs::Mone<T>(), 0.5);
-  STF_ULP_EQUAL(cummin(bs::One<T>()), bs::One<T>(), 0.5);
-  STF_ULP_EQUAL(cummin(bs::Zero<T>()), bs::Zero<T>(), 0.5);
+  STF_EQUAL(cummin(bs::Mone<T>()), bs::Mone<T>());
+  STF_EQUAL(cummin(bs::One<T>()), bs::One<T>());
+  STF_EQUAL(cummin(bs::Zero<T>()), bs::Zero<T>());
 } // end of test for floating_
 
 STF_CASE_TPL (" cummin unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

@@ -37,7 +37,7 @@ void test(Env& $)
   std::cout << aa1 << std::endl;
   std::cout << bb << std::endl;
   std::cout <<bs::bitget(aa1, aa2)<< std::endl;
-  STF_ULP_EQUAL(bs::bitget(aa1, aa2), bb, 0.5);
+  STF_EQUAL(bs::bitget(aa1, aa2), bb);
 }
 
 STF_CASE_TPL("Check bitget on pack" ,  STF_NUMERIC_TYPES)

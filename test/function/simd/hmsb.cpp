@@ -28,7 +28,7 @@ void test(Env& $)
     r |= (bs::bits(a1[i]) >> (sizeof(T)*8 - 1)) << i;
   }
   p_t aa1(&a1[0], &a1[0]+N);
-  STF_ULP_EQUAL(bs::hmsb(aa1), r, 0.5);
+  STF_EQUAL(bs::hmsb(aa1), r);
 }
 
 STF_CASE_TPL("Check hmsb on pack" , STF_NUMERIC_TYPES)

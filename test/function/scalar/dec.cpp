@@ -57,11 +57,11 @@ STF_CASE_TPL(" dec floating", STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(dec(bs::Inf<T>()), bs::Inf<T>(), 0.5);
-  STF_ULP_EQUAL(dec(bs::Nan<T>()), bs::Nan<T>(), 0.5);
-  STF_ULP_EQUAL(dec(bs::Minf<T>()), bs::Minf<T>(), 0.5);
+  STF_EQUAL(dec(bs::Inf<T>()), bs::Inf<T>());
+  STF_IEEE_EQUAL(dec(bs::Nan<T>()), bs::Nan<T>());
+  STF_EQUAL(dec(bs::Minf<T>()), bs::Minf<T>());
 #endif
-  STF_ULP_EQUAL(dec(bs::One<T>()), bs::Zero<T>(), 0.5);
-  STF_ULP_EQUAL(dec(bs::Two<T>()), bs::One<T>(), 0.5);
-  STF_ULP_EQUAL(dec(bs::Zero<T>()), bs::Mone<T>(), 0.5);
+  STF_EQUAL(dec(bs::One<T>()), bs::Zero<T>());
+  STF_EQUAL(dec(bs::Two<T>()), bs::One<T>());
+  STF_EQUAL(dec(bs::Zero<T>()), bs::Mone<T>());
 }

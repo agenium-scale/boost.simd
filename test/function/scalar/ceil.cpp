@@ -29,16 +29,16 @@ STF_CASE_TPL (" ceil real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(ceil(bs::Inf<T>()), bs::Inf<T>(), 0.5);
-  STF_ULP_EQUAL(ceil(bs::Minf<T>()), bs::Minf<T>(), 0.5);
-  STF_ULP_EQUAL(ceil(bs::Nan<T>()), bs::Nan<T>(), 0.5);
+  STF_EQUAL(ceil(bs::Inf<T>()), bs::Inf<T>());
+  STF_EQUAL(ceil(bs::Minf<T>()), bs::Minf<T>());
+  STF_IEEE_EQUAL(ceil(bs::Nan<T>()), bs::Nan<T>());
 #endif
-  STF_ULP_EQUAL(ceil(bs::Mone<T>()), bs::Mone<T>(), 0.5);
-  STF_ULP_EQUAL(ceil(bs::One<T>()), bs::One<T>(), 0.5);
-  STF_ULP_EQUAL(ceil(bs::Zero<T>()), bs::Zero<T>(), 0.5);
-  STF_ULP_EQUAL(ceil(bs::Pi<T>()), bs::Four<T>(), 0.5);
-  STF_ULP_EQUAL(ceil(T(-1.1)), r_t(-1), 0.5);
-  STF_ULP_EQUAL(ceil(T(1.1)), r_t(2), 0.5);
+  STF_EQUAL(ceil(bs::Mone<T>()), bs::Mone<T>());
+  STF_EQUAL(ceil(bs::One<T>()), bs::One<T>());
+  STF_EQUAL(ceil(bs::Zero<T>()), bs::Zero<T>());
+  STF_EQUAL(ceil(bs::Pi<T>()), bs::Four<T>());
+  STF_EQUAL(ceil(T(-1.1)), r_t(-1));
+  STF_EQUAL(ceil(T(1.1)), r_t(2));
 } // end of test for floating_
 
 STF_CASE_TPL (" ceil signed_int",  STF_SIGNED_INTEGRAL_TYPES)

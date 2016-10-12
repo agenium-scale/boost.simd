@@ -33,12 +33,12 @@ STF_CASE_TPL (" firstbitset real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(firstbitset(bs::Inf<T>()), r_t(1ull<<bs::Nbmantissabits<T>()), 0.5);
-  STF_ULP_EQUAL(firstbitset(bs::Minf<T>()), r_t(1ull<<bs::Nbmantissabits<T>()), 0.5);
-  STF_ULP_EQUAL(firstbitset(bs::Nan<T>()), bs::One<r_t>(), 0.5);
+  STF_EQUAL(firstbitset(bs::Inf<T>()), r_t(1ull<<bs::Nbmantissabits<T>()));
+  STF_EQUAL(firstbitset(bs::Minf<T>()), r_t(1ull<<bs::Nbmantissabits<T>()));
+  STF_EQUAL(firstbitset(bs::Nan<T>()), bs::One<r_t>());
 #endif
-  STF_ULP_EQUAL(firstbitset(bs::Signmask<T>()), bs::One<r_t>()+bs::Valmax<r_t>()/2, 0.5);
-  STF_ULP_EQUAL(firstbitset(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
+  STF_EQUAL(firstbitset(bs::Signmask<T>()), bs::One<r_t>()+bs::Valmax<r_t>()/2);
+  STF_EQUAL(firstbitset(bs::Zero<T>()), bs::Zero<r_t>());
 } // end of test for real_
 
 STF_CASE_TPL (" firstbitset signed_int",  STF_SIGNED_INTEGRAL_TYPES)

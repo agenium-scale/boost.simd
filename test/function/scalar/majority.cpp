@@ -34,17 +34,17 @@ STF_CASE_TPL (" majorityreal",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(majority(bs::Inf<T>(), bs::Inf<T>(), bs::Inf<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(majority(bs::Minf<T>(), bs::Minf<T>(), bs::Minf<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(majority(bs::Nan<T>(), bs::Nan<T>(), bs::Nan<T>()), r_t(true), 0.5);
+  STF_EQUAL(majority(bs::Inf<T>(), bs::Inf<T>(), bs::Inf<T>()), r_t(true));
+  STF_EQUAL(majority(bs::Minf<T>(), bs::Minf<T>(), bs::Minf<T>()), r_t(true));
+  STF_EQUAL(majority(bs::Nan<T>(), bs::Nan<T>(), bs::Nan<T>()), r_t(true));
 #endif
-  STF_ULP_EQUAL(majority(-bs::Zero<T>(), -bs::Zero<T>(), -bs::Zero<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(majority(bs::Half<T>(), bs::Half<T>(), bs::Half<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(majority(bs::Mone<T>(), bs::Mone<T>(), bs::Mone<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(majority(bs::One<T>(), bs::One<T>(), bs::One<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(majority(bs::Quarter<T>(), bs::Quarter<T>(), bs::Quarter<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(majority(bs::Two<T>(), bs::Two<T>(), bs::Two<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(majority(bs::Zero<T>(), bs::Zero<T>(), bs::Zero<T>()), r_t(false), 0.5);
+  STF_EQUAL(majority(-bs::Zero<T>(), -bs::Zero<T>(), -bs::Zero<T>()), r_t(false));
+  STF_EQUAL(majority(bs::Half<T>(), bs::Half<T>(), bs::Half<T>()), r_t(true));
+  STF_EQUAL(majority(bs::Mone<T>(), bs::Mone<T>(), bs::Mone<T>()), r_t(true));
+  STF_EQUAL(majority(bs::One<T>(), bs::One<T>(), bs::One<T>()), r_t(true));
+  STF_EQUAL(majority(bs::Quarter<T>(), bs::Quarter<T>(), bs::Quarter<T>()), r_t(true));
+  STF_EQUAL(majority(bs::Two<T>(), bs::Two<T>(), bs::Two<T>()), r_t(true));
+  STF_EQUAL(majority(bs::Zero<T>(), bs::Zero<T>(), bs::Zero<T>()), r_t(false));
 }
 
 STF_CASE_TPL (" majoritysigned_int",  STF_SIGNED_INTEGRAL_TYPES)

@@ -29,13 +29,13 @@ STF_CASE_TPL( "Check divides behavior with floating", STF_IEEE_TYPES )
   STF_TYPE_IS(r_t, T);
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(divides(bs::Inf<T>(),  bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(divides(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(divides(bs::Nan<T>(),  bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
+  STF_IEEE_EQUAL(divides(bs::Inf<T>(),  bs::Inf<T>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(divides(bs::Minf<T>(), bs::Minf<T>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(divides(bs::Nan<T>(),  bs::Nan<T>()), bs::Nan<r_t>());
 #endif
-  STF_ULP_EQUAL(divides(T(1), T(0)), bs::Inf<r_t>(), 0.5);
-  STF_ULP_EQUAL(divides(T(0), T(0)), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(divides(T(1), T(1)), bs::One<r_t>(), 0.5);
+  STF_EQUAL(divides(T(1), T(0)), bs::Inf<r_t>());
+  STF_IEEE_EQUAL(divides(T(0), T(0)), bs::Nan<r_t>());
+  STF_EQUAL(divides(T(1), T(1)), bs::One<r_t>());
 }
 
 

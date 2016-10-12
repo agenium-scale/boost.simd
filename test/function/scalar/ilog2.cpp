@@ -27,11 +27,11 @@ STF_CASE_TPL (" ilog2real",  STF_IEEE_TYPES)
   STF_EXPR_IS(ilog2(T()),  bd::as_integer_t<T>);
 
   // specific values tests
-  STF_ULP_EQUAL(ilog2(bs::Two<T>()), 1, 0.5);
-  STF_ULP_EQUAL(ilog2(bs::Three<T>()), 1, 0.5);
-  STF_ULP_EQUAL(ilog2(bs::Four<T> ()), 2, 0.5);
-  STF_ULP_EQUAL(ilog2(bs::Pi<T> ()), 1, 0.5);
-  STF_ULP_EQUAL(ilog2(bs::One<T>()), 0, 0.5);
+  STF_EQUAL(ilog2(bs::Two<T>()), 1);
+  STF_EQUAL(ilog2(bs::Three<T>()), 1);
+  STF_EQUAL(ilog2(bs::Four<T> ()), 2);
+  STF_EQUAL(ilog2(bs::Pi<T> ()), 1);
+  STF_EQUAL(ilog2(bs::One<T>()), 0);
 } // end of test for real_
 
 STF_CASE_TPL (" ilog2signed_int",  STF_SIGNED_INTEGRAL_TYPES)

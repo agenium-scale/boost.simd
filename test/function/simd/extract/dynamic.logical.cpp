@@ -26,7 +26,7 @@ void test(Env& $)
   for(std::size_t i = 0; i < N; ++i) ref[i] = T(i*2);
 
   bs::pack<T,N> p(&ref[0], &ref[0]+N);
-  for(std::size_t i = 0; i < N; ++i) STF_ULP_EQUAL(bs::extract(p, i), ref[i], 0.5);
+  for(std::size_t i = 0; i < N; ++i) STF_EQUAL(bs::extract(p, i), ref[i]);
 }
 
 STF_CASE_TPL("Check dynamic extract on logical pack" , STF_NUMERIC_TYPES)

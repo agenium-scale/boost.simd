@@ -37,7 +37,7 @@ void test(Env& $)
   p_t aa2(&a2[0], &a2[0]+N);
   p_t aa3(&a3[0], &a3[0]+N);
   p_t bb(&b[0], &b[0]+N);
-  STF_ULP_EQUAL(bs::bitwise_select(aa1, aa2, aa3), bb, 0.5);
+  STF_EQUAL(bs::bitwise_select(aa1, aa2, aa3), bb);
 }
 
 STF_CASE_TPL("Check bitwise_select on pack" , STF_NUMERIC_TYPES)

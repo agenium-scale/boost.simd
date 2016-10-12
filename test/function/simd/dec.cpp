@@ -30,8 +30,8 @@ void pre_test(Env& $)
   p_t bb(&b[0], &b[0]+N);
 
   aa2 = --aa1;
-  STF_ULP_EQUAL(aa2, bb, 0.5);
-  STF_ULP_EQUAL(aa1, bb, 0.5);
+  STF_EQUAL(aa2, bb);
+  STF_EQUAL(aa1, bb);
 }
 
 STF_CASE_TPL("Check pre-decrement on pack" , STF_NUMERIC_TYPES)
@@ -61,7 +61,7 @@ void post_test(Env& $)
   p_t bb(&b[0], &b[0]+N);
 
   aa2 = aa1--;
-  STF_ULP_EQUAL(aa2, prev, 0.5);
-  STF_ULP_EQUAL(aa1, bb, 0.5);
+  STF_EQUAL(aa2, prev);
+  STF_EQUAL(aa1, bb);
 }
 

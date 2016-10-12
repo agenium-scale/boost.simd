@@ -23,12 +23,12 @@ STF_CASE_TPL (" dot",  STF_IEEE_TYPES)
   using bs::dot;
 
   // specific values tests
-  STF_ULP_EQUAL(dot(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<T>(), 0.5);
-  STF_ULP_EQUAL(dot(bs::Minf<T>(), bs::Minf<T>()), bs::Inf<T>(), 0.5);
-  STF_ULP_EQUAL(dot(bs::Mone<T>(), bs::Mone<T>()), bs::One<T>(), 0.5);
-  STF_ULP_EQUAL(dot(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>(), 0.5);
-  STF_ULP_EQUAL(dot(bs::One<T>(), bs::One<T>()), bs::One<T>(), 0.5);
-  STF_ULP_EQUAL(dot(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>(), 0.5);
+  STF_EQUAL(dot(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<T>());
+  STF_EQUAL(dot(bs::Minf<T>(), bs::Minf<T>()), bs::Inf<T>());
+  STF_EQUAL(dot(bs::Mone<T>(), bs::Mone<T>()), bs::One<T>());
+  STF_IEEE_EQUAL(dot(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());
+  STF_EQUAL(dot(bs::One<T>(), bs::One<T>()), bs::One<T>());
+  STF_EQUAL(dot(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
 } // end of test for floating_
 
 

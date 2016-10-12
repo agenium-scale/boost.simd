@@ -62,11 +62,11 @@ STF_CASE_TPL(" bs::saturated_(bs::inc) floating", STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(bs::saturated_(bs::inc)(bs::Inf<T>()), bs::Inf<T>(), 0.5);
-  STF_ULP_EQUAL(bs::saturated_(bs::inc)(bs::Nan<T>()), bs::Nan<T>(), 0.5);
-  STF_ULP_EQUAL(bs::saturated_(bs::inc)(bs::Minf<T>()), bs::Minf<T>(), 0.5);
+  STF_EQUAL(bs::saturated_(bs::inc)(bs::Inf<T>()), bs::Inf<T>());
+  STF_IEEE_EQUAL(bs::saturated_(bs::inc)(bs::Nan<T>()), bs::Nan<T>());
+  STF_EQUAL(bs::saturated_(bs::inc)(bs::Minf<T>()), bs::Minf<T>());
 #endif
-  STF_ULP_EQUAL(bs::saturated_(bs::inc)(bs::One<T>()), bs::Two<T>(), 0.5);
-  STF_ULP_EQUAL(bs::saturated_(bs::inc)(bs::Two<T>()), bs::Three<T>(), 0.5);
-  STF_ULP_EQUAL(bs::saturated_(bs::inc)(bs::Zero<T>()), bs::One<T>(), 0.5);
+  STF_EQUAL(bs::saturated_(bs::inc)(bs::One<T>()), bs::Two<T>());
+  STF_EQUAL(bs::saturated_(bs::inc)(bs::Two<T>()), bs::Three<T>());
+  STF_EQUAL(bs::saturated_(bs::inc)(bs::Zero<T>()), bs::One<T>());
 }

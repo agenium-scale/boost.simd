@@ -34,8 +34,8 @@ void test(Env& $)
   STF_EQUAL(bs::none(aa1), b);
   STF_EQUAL(bs::none(aa2), c);
 
-  STF_EQUAL(bs::splatted_(bs::none)(aa1), (bs::pack<bs::logical<T>,N>(b)));
-  STF_EQUAL(bs::splatted_(bs::none)(aa2), (bs::pack<bs::logical<T>,N>(c)));
+  STF_EQUAL(bs::splatted_(bs::none)(aa1), (bs::pack<bs::logical<T>,N>(b)) );
+  STF_EQUAL(bs::splatted_(bs::none)(aa2), (bs::pack<bs::logical<T>,N>(c)) );
 }
 
 STF_CASE_TPL("Check none on pack" , STF_NUMERIC_TYPES)

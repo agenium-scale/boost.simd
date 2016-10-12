@@ -25,12 +25,12 @@ STF_CASE_TPL (" nbtrue real",  STF_IEEE_TYPES)
   using bs::nbtrue;
 
   // specific values tests
-  STF_ULP_EQUAL(nbtrue(bs::Inf<T>()) ,1u, 0.5);
-  STF_ULP_EQUAL(nbtrue(bs::Minf<T>()),1u, 0.5);
-  STF_ULP_EQUAL(nbtrue(bs::Mone<T>()),1u, 0.5);
-  STF_ULP_EQUAL(nbtrue(bs::Nan<T>()) ,1u, 0.5);
-  STF_ULP_EQUAL(nbtrue(bs::One<T>()) ,1u, 0.5);
-  STF_ULP_EQUAL(nbtrue(bs::Zero<T>()), 0u, 0.5);
+  STF_EQUAL(nbtrue(bs::Inf<T>()) ,1u);
+  STF_EQUAL(nbtrue(bs::Minf<T>()),1u);
+  STF_EQUAL(nbtrue(bs::Mone<T>()),1u);
+  STF_EQUAL(nbtrue(bs::Nan<T>()) ,1u);
+  STF_EQUAL(nbtrue(bs::One<T>()) ,1u);
+  STF_EQUAL(nbtrue(bs::Zero<T>()), 0u);
 } // end of test for floating_
 
 STF_CASE_TPL (" nbtrue integer",  STF_INTEGRAL_TYPES)

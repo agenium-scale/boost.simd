@@ -33,17 +33,17 @@ STF_CASE_TPL (" is_positive real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(is_positive(bs::Inf<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_positive(bs::Minf<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_positive(bs::Nan<T>()), r_t(false), 0.5);
+  STF_EQUAL(is_positive(bs::Inf<T>()), r_t(true));
+  STF_EQUAL(is_positive(bs::Minf<T>()), r_t(false));
+  STF_EQUAL(is_positive(bs::Nan<T>()), r_t(false));
 #endif
-  STF_ULP_EQUAL(is_positive(-bs::Zero<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_positive(bs::Half<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_positive(bs::Mone<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_positive(bs::One<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_positive(bs::Quarter<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_positive(bs::Two<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_positive(bs::Zero<T>()), r_t(true), 0.5);
+  STF_EQUAL(is_positive(-bs::Zero<T>()), r_t(false));
+  STF_EQUAL(is_positive(bs::Half<T>()), r_t(true));
+  STF_EQUAL(is_positive(bs::Mone<T>()), r_t(false));
+  STF_EQUAL(is_positive(bs::One<T>()), r_t(true));
+  STF_EQUAL(is_positive(bs::Quarter<T>()), r_t(true));
+  STF_EQUAL(is_positive(bs::Two<T>()), r_t(true));
+  STF_EQUAL(is_positive(bs::Zero<T>()), r_t(true));
 }
 
 STF_CASE_TPL (" is_positive signed_int",  STF_SIGNED_INTEGRAL_TYPES)

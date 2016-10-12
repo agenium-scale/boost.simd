@@ -34,17 +34,17 @@ STF_CASE_TPL (" is_nan  _real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(is_nan(bs::Inf<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_nan(bs::Minf<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_nan(bs::Nan<T>()), r_t(true), 0.5);
+  STF_EQUAL(is_nan(bs::Inf<T>()), r_t(false));
+  STF_EQUAL(is_nan(bs::Minf<T>()), r_t(false));
+  STF_EQUAL(is_nan(bs::Nan<T>()), r_t(true));
 #endif
-  STF_ULP_EQUAL(is_nan(bs::Mzero<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_nan(bs::Half<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_nan(bs::Mone<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_nan(bs::One<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_nan(bs::Quarter<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_nan(bs::Two<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_nan(bs::Zero<T>()), r_t(false), 0.5);
+  STF_EQUAL(is_nan(bs::Mzero<T>()), r_t(false));
+  STF_EQUAL(is_nan(bs::Half<T>()), r_t(false));
+  STF_EQUAL(is_nan(bs::Mone<T>()), r_t(false));
+  STF_EQUAL(is_nan(bs::One<T>()), r_t(false));
+  STF_EQUAL(is_nan(bs::Quarter<T>()), r_t(false));
+  STF_EQUAL(is_nan(bs::Two<T>()), r_t(false));
+  STF_EQUAL(is_nan(bs::Zero<T>()), r_t(false));
 }
 
 STF_CASE_TPL (" is_nan _signed_int",  STF_SIGNED_INTEGRAL_TYPES)

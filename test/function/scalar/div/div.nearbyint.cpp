@@ -23,11 +23,11 @@ STF_CASE_TPL (" div real",  STF_IEEE_TYPES)
   using bs::div;
   using r_t = decltype(div(bs::nearbyint, T(), T()));
 
-  STF_ULP_EQUAL(div(bs::nearbyint, bs::Inf<T>(), bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(div(bs::nearbyint, bs::Minf<T>(), bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(div(bs::nearbyint, bs::Mone<T>(), bs::Mone<T>()), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(div(bs::nearbyint, bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(div(bs::nearbyint, bs::One<T>(), bs::One<T>()), bs::One<r_t>(), 0.5);
+  STF_IEEE_EQUAL(div(bs::nearbyint, bs::Inf<T>(), bs::Inf<T>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(div(bs::nearbyint, bs::Minf<T>(), bs::Minf<T>()), bs::Nan<r_t>());
+  STF_EQUAL(div(bs::nearbyint, bs::Mone<T>(), bs::Mone<T>()), bs::One<r_t>());
+  STF_IEEE_EQUAL(div(bs::nearbyint, bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>());
+  STF_EQUAL(div(bs::nearbyint, bs::One<T>(), bs::One<T>()), bs::One<r_t>());
 } // end of test for floating_
 
 STF_CASE_TPL (" div unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

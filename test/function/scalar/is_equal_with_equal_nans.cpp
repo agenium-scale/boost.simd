@@ -43,11 +43,11 @@ STF_CASE_TPL (" is_equal_with_equal_nans real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t,bs::logical<T>);
 
   // specific values tests
-  STF_ULP_EQUAL(is_equal_with_equal_nans(bs::Inf<T>(), bs::Inf<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_equal_with_equal_nans(bs::Minf<T>(), bs::Minf<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_equal_with_equal_nans(bs::Nan<T>(), bs::Nan<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_equal_with_equal_nans(bs::One<T>(),bs::Zero<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_equal_with_equal_nans(bs::Zero<T>(), bs::Zero<T>()), r_t(true), 0.5);
+  STF_EQUAL(is_equal_with_equal_nans(bs::Inf<T>(), bs::Inf<T>()), r_t(true));
+  STF_EQUAL(is_equal_with_equal_nans(bs::Minf<T>(), bs::Minf<T>()), r_t(true));
+  STF_EQUAL(is_equal_with_equal_nans(bs::Nan<T>(), bs::Nan<T>()), r_t(true));
+  STF_EQUAL(is_equal_with_equal_nans(bs::One<T>(),bs::Zero<T>()), r_t(false));
+  STF_EQUAL(is_equal_with_equal_nans(bs::Zero<T>(), bs::Zero<T>()), r_t(true));
 } // end of test for floating_
 
 
@@ -63,10 +63,10 @@ STF_CASE ( "is_equal_with_equal_nans bool")
   STF_EXPR_IS(is_equal_with_equal_nans(bool(), bool()), bool);
 
   // specific values tests
-  STF_ULP_EQUAL(is_equal_with_equal_nans(true, false), false, 0.5);
-  STF_ULP_EQUAL(is_equal_with_equal_nans(false, true), false, 0.5);
-  STF_ULP_EQUAL(is_equal_with_equal_nans(true, true), true, 0.5);
-  STF_ULP_EQUAL(is_equal_with_equal_nans(false, false), true, 0.5);
+  STF_EQUAL(is_equal_with_equal_nans(true, false), false);
+  STF_EQUAL(is_equal_with_equal_nans(false, true), false);
+  STF_EQUAL(is_equal_with_equal_nans(true, true), true);
+  STF_EQUAL(is_equal_with_equal_nans(false, false), true);
 }
 
 

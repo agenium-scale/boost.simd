@@ -52,14 +52,14 @@ STF_CASE_TPL (" saturate floating with floating",  STF_IEEE_TYPES)
   using bs::Inf;
   using bs::Minf;
 
-  STF_ULP_EQUAL( saturate<T>(Valmax<float>()), Valmax<float>(), 0.5);
-  STF_ULP_EQUAL( saturate<T>(Valmax<double>()), double(Valmax<T>()), 0.5);
-  STF_ULP_EQUAL( saturate<T>(Valmin<float>()), Valmin<float>(), 0.5);
-  STF_ULP_EQUAL( saturate<T>(Valmin<double>()), double(Valmin<T>()), 0.5);
-  STF_ULP_EQUAL( saturate<T>(Inf<float>()), Inf<float>(), 0.5);
-  STF_ULP_EQUAL( saturate<T>(Inf<double>()), double(Inf<T>()), 0.5);
-  STF_ULP_EQUAL( saturate<T>(Minf<float>()), Minf<float>(), 0.5);
-  STF_ULP_EQUAL( saturate<T>(Minf<double>()), double(Minf<T>()), 0.5);
+  STF_EQUAL( saturate<T>(Valmax<float>()), Valmax<float>());
+  STF_EQUAL( saturate<T>(Valmax<double>()), double(Valmax<T>()));
+  STF_EQUAL( saturate<T>(Valmin<float>()), Valmin<float>());
+  STF_EQUAL( saturate<T>(Valmin<double>()), double(Valmin<T>()));
+  STF_EQUAL( saturate<T>(Inf<float>()), Inf<float>());
+  STF_EQUAL( saturate<T>(Inf<double>()), double(Inf<T>()));
+  STF_EQUAL( saturate<T>(Minf<float>()), Minf<float>());
+  STF_EQUAL( saturate<T>(Minf<double>()), double(Minf<T>()));
 
 }
 

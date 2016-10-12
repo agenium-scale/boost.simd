@@ -29,12 +29,12 @@ STF_CASE_TPL (" negif real",  STF_IEEE_TYPES)
   STF_TYPE_IS( r_t, T );
 
   // specific values tests
-  STF_ULP_EQUAL(negif(logical<T>(T(0)),T(1)), 1, 0.5);
-  STF_ULP_EQUAL(negif(logical<T>(T(1)),T(1)), -1, 0.5);
-  STF_ULP_EQUAL(negif(logical<T>(bs::Inf<T>()),T(1)), -1, 0.5);
-  STF_ULP_EQUAL(negif(logical<T>(bs::Minf<T>()),T(1)), -1, 0.5);
-  STF_ULP_EQUAL(negif(logical<T>(bs::Nan<T>()),T(1)), -1, 0.5);
-  STF_ULP_EQUAL(negif(logical<T>(bs::Zero<T>()),T(1)), 1, 0.5);
+  STF_EQUAL(negif(logical<T>(T(0)),T(1)), 1);
+  STF_EQUAL(negif(logical<T>(T(1)),T(1)), -1);
+  STF_EQUAL(negif(logical<T>(bs::Inf<T>()),T(1)), -1);
+  STF_EQUAL(negif(logical<T>(bs::Minf<T>()),T(1)), -1);
+  STF_EQUAL(negif(logical<T>(bs::Nan<T>()),T(1)), -1);
+  STF_EQUAL(negif(logical<T>(bs::Zero<T>()),T(1)), 1);
 } // end of test for floating_
 
 STF_CASE_TPL (" negif signed_int",  STF_SIGNED_INTEGRAL_TYPES)

@@ -36,8 +36,8 @@ void test(Env& $)
   STF_EQUAL(bs::any(aa1), b);
   STF_EQUAL(bs::any(aa2), c);
 
-  STF_EQUAL(bs::splatted_(bs::any)(aa1), (bs::pack<bs::logical<T>,N>(b)));
-  STF_EQUAL(bs::splatted_(bs::any)(aa2), (bs::pack<bs::logical<T>,N>(c)));
+  STF_EQUAL(bs::splatted_(bs::any)(aa1), (bs::pack<bs::logical<T>,N>(b)) );
+  STF_EQUAL(bs::splatted_(bs::any)(aa2), (bs::pack<bs::logical<T>,N>(c)) );
 }
 
 STF_CASE_TPL("Check any on pack" , STF_NUMERIC_TYPES)

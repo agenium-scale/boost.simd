@@ -28,13 +28,13 @@ STF_CASE_TPL (" cummax real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(cummax(bs::Inf<T>()), bs::Inf<T>(), 0.5);
-  STF_ULP_EQUAL(cummax(bs::Minf<T>()), bs::Minf<T>(), 0.5);
-  STF_ULP_EQUAL(cummax(bs::Nan<T>()), bs::Nan<T>(), 0.5);
+  STF_EQUAL(cummax(bs::Inf<T>()), bs::Inf<T>());
+  STF_EQUAL(cummax(bs::Minf<T>()), bs::Minf<T>());
+  STF_IEEE_EQUAL(cummax(bs::Nan<T>()), bs::Nan<T>());
 #endif
-  STF_ULP_EQUAL(cummax(bs::Mone<T>()), bs::Mone<T>(), 0.5);
-  STF_ULP_EQUAL(cummax(bs::One<T>()), bs::One<T>(), 0.5);
-  STF_ULP_EQUAL(cummax(bs::Zero<T>()), bs::Zero<T>(), 0.5);
+  STF_EQUAL(cummax(bs::Mone<T>()), bs::Mone<T>());
+  STF_EQUAL(cummax(bs::One<T>()), bs::One<T>());
+  STF_EQUAL(cummax(bs::Zero<T>()), bs::Zero<T>());
 } // end of test for floating_
 
 STF_CASE_TPL (" cummax unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

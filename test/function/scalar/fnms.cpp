@@ -19,8 +19,8 @@ STF_CASE_TPL(" fnms",  STF_IEEE_TYPES)
   STF_EXPR_IS(fnms(T(),T(),T()), T);
 
 
-  STF_ULP_EQUAL(fnms(T(2),T(2),T(4)) , T(0), 0.5);
-  STF_ULP_EQUAL(fnms(T(-2),T(2),T(4)), T(8), 0.5);
-  STF_ULP_EQUAL(fnms(T(2),T(-2),T(4)), T(8), 0.5);
-  STF_ULP_EQUAL(fnms(T(-2),T(-2),T(4)), T(0), 0.5);
+  STF_EQUAL(fnms(T(2),T(2),T(4)) , T(0));
+  STF_EQUAL(fnms(T(-2),T(2),T(4)), T(8));
+  STF_EQUAL(fnms(T(2),T(-2),T(4)), T(8));
+  STF_EQUAL(fnms(T(-2),T(-2),T(4)), T(0));
 }

@@ -33,14 +33,14 @@ STF_CASE_TPL (" rsqrtreal",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(rsqrt(bs::Inf<T>()), bs::Zero<r_t>(), 0.5);
-  STF_ULP_EQUAL(rsqrt(bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(rsqrt(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
+  STF_EQUAL(rsqrt(bs::Inf<T>()), bs::Zero<r_t>());
+  STF_IEEE_EQUAL(rsqrt(bs::Minf<T>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(rsqrt(bs::Nan<T>()), bs::Nan<r_t>());
 #endif
-  STF_ULP_EQUAL(rsqrt(bs::Mone<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(rsqrt(bs::One<T>()), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(rsqrt(bs::Zero<T>()), bs::Inf<r_t>(), 0.5);
-  STF_ULP_EQUAL(rsqrt(bs::Four<T>()), bs::Half<r_t>(), 0.5);
+  STF_IEEE_EQUAL(rsqrt(bs::Mone<T>()), bs::Nan<r_t>());
+  STF_EQUAL(rsqrt(bs::One<T>()), bs::One<r_t>());
+  STF_EQUAL(rsqrt(bs::Zero<T>()), bs::Inf<r_t>());
+  STF_EQUAL(rsqrt(bs::Four<T>()), bs::Half<r_t>());
   STF_ULP_EQUAL(rsqrt(T(0.5)), bs::Sqrt_2<T>(), 0.5);
   STF_ULP_EQUAL(rsqrt(T(0.01)), T(10), 0.5);
   STF_ULP_EQUAL(rsqrt(T(0.0001)), T(100), 0.5);

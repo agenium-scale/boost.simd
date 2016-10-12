@@ -41,8 +41,8 @@ STF_CASE_TPL(" frexp0", STF_IEEE_TYPES)
     T  a = bs::Valmax<T>();
     std::tie(m, e) = frexp(a);
     STF_ULP_EQUAL(m, bs::One<T>()-bs::Halfeps<T>(), 1);
-    STF_ULP_EQUAL(e, bs::Limitexponent<T>(), 0.5);
-    STF_ULP_EQUAL(ldexp(m,e),a, 0.5);
+    STF_EQUAL(e, bs::Limitexponent<T>());
+    STF_EQUAL(ldexp(m,e),a);
   }
 
 #ifndef BOOST_SIMD_NO_DENORMALS
@@ -53,8 +53,8 @@ STF_CASE_TPL(" frexp0", STF_IEEE_TYPES)
     T a = bs::Mindenormal<T>();
     std::tie(m, e) = frexp(a);
     STF_ULP_EQUAL(m, bs::Half<T>(), 1);
-    STF_ULP_EQUAL(e, bs::Minexponent<T>()-bs::Nbmantissabits<T>()+bs::One<T>(), 0.5);
-    STF_ULP_EQUAL(ldexp(m,e),a, 0.5);
+    STF_EQUAL(e, bs::Minexponent<T>()-bs::Nbmantissabits<T>()+bs::One<T>());
+    STF_EQUAL(ldexp(m,e),a);
   }
 
   {
@@ -64,8 +64,8 @@ STF_CASE_TPL(" frexp0", STF_IEEE_TYPES)
     T a = bs::Smallestposval<T>()/2;
     std::tie(m, e) = frexp(a);
     STF_ULP_EQUAL(m, bs::Half<T>(), 1);
-    STF_ULP_EQUAL(e, bs::Minexponent<T>(), 0.5);
-    STF_ULP_EQUAL(ldexp(m,e),a, 0.5);
+    STF_EQUAL(e, bs::Minexponent<T>());
+    STF_EQUAL(ldexp(m,e),a);
   }
 
   {
@@ -75,8 +75,8 @@ STF_CASE_TPL(" frexp0", STF_IEEE_TYPES)
     T a = bs::Smallestposval<T>()/4;
     std::tie(m, e) = frexp(a);
     STF_ULP_EQUAL(m, bs::Half<T>(), 1);
-    STF_ULP_EQUAL(e, bs::Minexponent<T>()-bs::One<T>(), 0.5);
-    STF_ULP_EQUAL(ldexp(m,e),a, 0.5);
+    STF_EQUAL(e, bs::Minexponent<T>()-bs::One<T>());
+    STF_EQUAL(ldexp(m,e),a);
   }
 #endif
 
@@ -99,8 +99,8 @@ STF_CASE_TPL(" frexp", STF_IEEE_TYPES)
     T  m;
 
     std::tie(m, e) = frexp(bs::One<T>());
-    STF_ULP_EQUAL(m, bs::Half<T>(), 0.5);
-    STF_ULP_EQUAL(e, bs::One<iT>(), 0.5);
+    STF_EQUAL(m, bs::Half<T>());
+    STF_EQUAL(e, bs::One<iT>());
   }
 
   {
@@ -108,8 +108,8 @@ STF_CASE_TPL(" frexp", STF_IEEE_TYPES)
     std::pair<T,iT> p;
 
     p = frexp(bs::One<T>());
-    STF_ULP_EQUAL(p.first  , bs::Half<T>(), 0.5);
-    STF_ULP_EQUAL(p.second , bs::One<iT>(), 0.5);
+    STF_EQUAL(p.first  , bs::Half<T>());
+    STF_EQUAL(p.second , bs::One<iT>());
   }
 }
 
@@ -127,8 +127,8 @@ STF_CASE_TPL(" frexp0", STF_IEEE_TYPES)
     T  a = bs::Valmax<T>();
     std::tie(m, e) = frexp(a);
     STF_ULP_EQUAL(m, bs::One<T>()-bs::Halfeps<T>(), 1);
-    STF_ULP_EQUAL(e, bs::Limitexponent<T>(), 0.5);
-    STF_ULP_EQUAL(ldexp(m,e),a, 0.5);
+    STF_EQUAL(e, bs::Limitexponent<T>());
+    STF_EQUAL(ldexp(m,e),a);
   }
 
 #ifndef BOOST_SIMD_NO_DENORMALS
@@ -139,8 +139,8 @@ STF_CASE_TPL(" frexp0", STF_IEEE_TYPES)
     T a = bs::Mindenormal<T>();
     std::tie(m, e) = frexp(a);
     STF_ULP_EQUAL(m, bs::Half<T>(), 1);
-    STF_ULP_EQUAL(e, bs::Minexponent<T>()-bs::Nbmantissabits<T>()+bs::One<T>(), 0.5);
-    STF_ULP_EQUAL(ldexp(m,e),a, 0.5);
+    STF_EQUAL(e, bs::Minexponent<T>()-bs::Nbmantissabits<T>()+bs::One<T>());
+    STF_EQUAL(ldexp(m,e),a);
   }
 
   {
@@ -150,8 +150,8 @@ STF_CASE_TPL(" frexp0", STF_IEEE_TYPES)
     T a = bs::Smallestposval<T>()/2;
     std::tie(m, e) = frexp(a);
     STF_ULP_EQUAL(m, bs::Half<T>(), 1);
-    STF_ULP_EQUAL(e, bs::Minexponent<T>(), 0.5);
-    STF_ULP_EQUAL(ldexp(m,e),a, 0.5);
+    STF_EQUAL(e, bs::Minexponent<T>());
+    STF_EQUAL(ldexp(m,e),a);
   }
 
   {
@@ -161,8 +161,8 @@ STF_CASE_TPL(" frexp0", STF_IEEE_TYPES)
     T a = bs::Smallestposval<T>()/4;
     std::tie(m, e) = frexp(a);
     STF_ULP_EQUAL(m, bs::Half<T>(), 1);
-    STF_ULP_EQUAL(e, bs::Minexponent<T>()-bs::One<T>(), 0.5);
-    STF_ULP_EQUAL(ldexp(m,e),a, 0.5);
+    STF_EQUAL(e, bs::Minexponent<T>()-bs::One<T>());
+    STF_EQUAL(ldexp(m,e),a);
   }
 #endif
 
@@ -186,8 +186,8 @@ STF_CASE_TPL(" frexp fast", STF_IEEE_TYPES)
     T  m;
 
     std::tie(m, e) = bs::fast_(frexp)(bs::One<T>());
-    STF_ULP_EQUAL(m, bs::Half<T>(), 0.5);
-    STF_ULP_EQUAL(e, bs::One<iT>(), 0.5);
+    STF_EQUAL(m, bs::Half<T>());
+    STF_EQUAL(e, bs::One<iT>());
   }
 
   {
@@ -195,7 +195,7 @@ STF_CASE_TPL(" frexp fast", STF_IEEE_TYPES)
     std::pair<T,iT> p;
 
     p = bs::fast_(frexp)(bs::One<T>());
-    STF_ULP_EQUAL(p.first  , bs::Half<T>(), 0.5);
-    STF_ULP_EQUAL(p.second , bs::One<iT>(), 0.5);
+    STF_EQUAL(p.first  , bs::Half<T>());
+    STF_EQUAL(p.second , bs::One<iT>());
   }
 }

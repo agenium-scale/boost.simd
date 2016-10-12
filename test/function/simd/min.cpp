@@ -29,7 +29,7 @@ void test(Env& $)
   p_t aa1(&a1[0], &a1[0]+N);
   p_t aa2(&a2[0], &a2[0]+N);
   p_t bb(&b[0], &b[0]+N);
-  STF_ULP_EQUAL(bs::min(aa1, aa2), bb, 0.5);
+  STF_EQUAL(bs::min(aa1, aa2), bb);
 }
 
 STF_CASE_TPL("Check min on integral pack" , STF_NUMERIC_TYPES)
@@ -48,8 +48,8 @@ STF_CASE_TPL("Check conformant min on nans  pack" , STF_IEEE_TYPES)
     using p_t = bs::pack<T, N>;
     p_t n =  bs::Nan<p_t>();
     p_t o =  bs::One<p_t>();
-    STF_ULP_EQUAL(bs::conformant_(bs::min)(n, o), n, 0.5);
-    STF_ULP_EQUAL(bs::conformant_(bs::min)(o, n), o, 0.5);
+    STF_IEEE_EQUAL(bs::conformant_(bs::min)(n, o), n);
+    STF_IEEE_EQUAL(bs::conformant_(bs::min)(o, n), o);
   }
 
 }

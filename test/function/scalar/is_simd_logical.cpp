@@ -26,13 +26,13 @@ STF_CASE_TPL (" is_simd_logical real",  STF_IEEE_TYPES)
   using r_t = decltype(is_simd_logical(T()));
 
   // specific values tests
-  STF_ULP_EQUAL(is_simd_logical(-bs::Nan<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_simd_logical(bs::Inf<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_simd_logical(bs::Minf<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_simd_logical(bs::Mone<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_simd_logical(bs::Nan<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_simd_logical(bs::One<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_simd_logical(bs::Zero<T>()), r_t(true), 0.5);
+  STF_EQUAL(is_simd_logical(-bs::Nan<T>()), r_t(false));
+  STF_EQUAL(is_simd_logical(bs::Inf<T>()), r_t(false));
+  STF_EQUAL(is_simd_logical(bs::Minf<T>()), r_t(false));
+  STF_EQUAL(is_simd_logical(bs::Mone<T>()), r_t(false));
+  STF_EQUAL(is_simd_logical(bs::Nan<T>()), r_t(true));
+  STF_EQUAL(is_simd_logical(bs::One<T>()), r_t(false));
+  STF_EQUAL(is_simd_logical(bs::Zero<T>()), r_t(true));
 } // end of test for floating_
 
 STF_CASE_TPL (" is_simd_logical integer",   STF_SIGNED_INTEGRAL_TYPES)

@@ -32,7 +32,7 @@ void test(Env& $)
   p_t aa1(&a1[0], &a1[0]+N);
   p_t aa2(&a2[0], &a2[0]+N);
   pl_t bb(&b[0], &b[0]+N);
-  STF_ULP_EQUAL(bs::is_not_less_equal(aa1, aa2), bb, 0.5);
+  STF_EQUAL(bs::is_not_less_equal(aa1, aa2), bb);
 }
 
 STF_CASE_TPL("Check is_not_less_equal on pack", STF_NUMERIC_TYPES)

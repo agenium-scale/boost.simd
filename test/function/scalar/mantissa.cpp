@@ -31,14 +31,14 @@ STF_CASE_TPL (" mantissareal",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(mantissa(bs::Inf<T>()), bs::Inf<r_t>(), 0.5);
-  STF_ULP_EQUAL(mantissa(bs::Minf<T>()), bs::Minf<r_t>(), 0.5);
-  STF_ULP_EQUAL(mantissa(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
+  STF_EQUAL(mantissa(bs::Inf<T>()), bs::Inf<r_t>());
+  STF_EQUAL(mantissa(bs::Minf<T>()), bs::Minf<r_t>());
+  STF_IEEE_EQUAL(mantissa(bs::Nan<T>()), bs::Nan<r_t>());
 #endif
-  STF_ULP_EQUAL(mantissa(bs::Mone<T>()), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(mantissa(bs::One<T>()), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(mantissa(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
-  STF_ULP_EQUAL(mantissa(bs::Two <T>()), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(mantissa(T(1.5)), T(1.5), 0.5);
-  STF_ULP_EQUAL(mantissa(T(2.5)), T(1.25), 0.5);
+  STF_EQUAL(mantissa(bs::Mone<T>()), bs::Mone<r_t>());
+  STF_EQUAL(mantissa(bs::One<T>()), bs::One<r_t>());
+  STF_EQUAL(mantissa(bs::Zero<T>()), bs::Zero<r_t>());
+  STF_EQUAL(mantissa(bs::Two <T>()), bs::One<r_t>());
+  STF_EQUAL(mantissa(T(1.5)), T(1.5));
+  STF_EQUAL(mantissa(T(2.5)), T(1.25));
 }

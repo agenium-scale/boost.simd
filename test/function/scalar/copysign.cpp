@@ -29,19 +29,19 @@ STF_CASE_TPL (" copysign real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(copysign(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>(), 0.5);
-  STF_ULP_EQUAL(copysign(bs::Minf<T>(), bs::Minf<T>()), bs::Minf<r_t>(), 0.5);
-  STF_ULP_EQUAL(copysign(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(copysign(bs::Inf<T>(), bs::Minf<T>()), bs::Minf<r_t>(), 0.5);
-  STF_ULP_EQUAL(copysign(bs::Minf<T>(), bs::Inf<T>()), bs::Inf<r_t>(), 0.5);
-  STF_ULP_EQUAL(copysign(bs::Nan<T>(), bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(copysign(bs::One<T>(), bs::Nan<T>()), bs::Mone<r_t>(), 0.5);
+  STF_EQUAL(copysign(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>());
+  STF_EQUAL(copysign(bs::Minf<T>(), bs::Minf<T>()), bs::Minf<r_t>());
+  STF_IEEE_EQUAL(copysign(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>());
+  STF_EQUAL(copysign(bs::Inf<T>(), bs::Minf<T>()), bs::Minf<r_t>());
+  STF_EQUAL(copysign(bs::Minf<T>(), bs::Inf<T>()), bs::Inf<r_t>());
+  STF_IEEE_EQUAL(copysign(bs::Nan<T>(), bs::Inf<T>()), bs::Nan<r_t>());
+  STF_EQUAL(copysign(bs::One<T>(), bs::Nan<T>()), bs::Mone<r_t>());
 #endif
-  STF_ULP_EQUAL(copysign(bs::Mone<T>(), bs::Mone<T>()), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(copysign(bs::One<T>(), bs::One<T>()), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(copysign(bs::One<T>(), bs::Mzero<T>()), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(copysign(bs::One<T>(), bs::Zero<T>()), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(copysign(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
+  STF_EQUAL(copysign(bs::Mone<T>(), bs::Mone<T>()), bs::Mone<r_t>());
+  STF_EQUAL(copysign(bs::One<T>(), bs::One<T>()), bs::One<r_t>());
+  STF_EQUAL(copysign(bs::One<T>(), bs::Mzero<T>()), bs::Mone<r_t>());
+  STF_EQUAL(copysign(bs::One<T>(), bs::Zero<T>()), bs::One<r_t>());
+  STF_EQUAL(copysign(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
 }
 
 STF_CASE_TPL (" copysign signed_int",  STF_SIGNED_INTEGRAL_TYPES)

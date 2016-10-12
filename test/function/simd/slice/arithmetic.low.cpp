@@ -26,7 +26,7 @@ void test( Env& $, brigand::bool_<true> const& = {} )
   bs::pack<T,N>   value (&ref[0], &ref[0]+N   );
   bs::pack<T,N/2> second(&ref[0], &ref[0]+N/2 );
 
-  STF_ULP_EQUAL( bs::slice_low(value), second, 0.5);
+  STF_EQUAL( bs::slice_low(value), second);
 }
 
 STF_CASE_TPL("slice_low pack<T,N> into a pack<T,N/2>", STF_NUMERIC_TYPES)

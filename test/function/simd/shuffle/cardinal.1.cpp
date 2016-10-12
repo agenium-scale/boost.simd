@@ -15,16 +15,16 @@ using namespace boost::simd;
 STF_CASE_TPL("Check unary shuffle behavior with direct permutation", STF_NUMERIC_TYPES)
 {
   using p_t = pack<T,1>;
-  STF_ULP_EQUAL( shuffle<-1>(p_t(4)), Zero<p_t>() , 0.5);
-  STF_ULP_EQUAL( shuffle<0>(p_t(4)) , p_t(4) , 0.5);
+  STF_EQUAL( shuffle<-1>(p_t(4)), Zero<p_t>() );
+  STF_EQUAL( shuffle<0>(p_t(4)) , p_t(4) );
 }
 
 STF_CASE_TPL("Check binary shuffle behavior with direct permutation", STF_NUMERIC_TYPES)
 {
   using p_t = pack<T,1>;
-  STF_ULP_EQUAL( shuffle<-1>(p_t(4),p_t(7)) , Zero<p_t>() , 0.5);
-  STF_ULP_EQUAL( shuffle< 0>(p_t(4),p_t(7)) , p_t(4) , 0.5);
-  STF_ULP_EQUAL( shuffle< 1>(p_t(4),p_t(7)) , p_t(7) , 0.5);
+  STF_EQUAL( shuffle<-1>(p_t(4),p_t(7)) , Zero<p_t>() );
+  STF_EQUAL( shuffle< 0>(p_t(4),p_t(7)) , p_t(4) );
+  STF_EQUAL( shuffle< 1>(p_t(4),p_t(7)) , p_t(7) );
 }
 
 template<int N> struct grab_
@@ -35,14 +35,14 @@ template<int N> struct grab_
 STF_CASE_TPL("Check unary shuffle behavior with direct meta-permutation", STF_NUMERIC_TYPES)
 {
   using p_t = pack<T,1>;
-  STF_ULP_EQUAL( shuffle<grab_<0>>(p_t(4)) , p_t(4) , 0.5);
+  STF_EQUAL( shuffle<grab_<0>>(p_t(4)) , p_t(4) );
 }
 
 STF_CASE_TPL("Check binary shuffle behavior with direct meta-permutation", STF_NUMERIC_TYPES)
 {
   using p_t = pack<T,1>;
-  STF_ULP_EQUAL( shuffle<grab_<0>>(p_t(4),p_t(7)) , p_t(4) , 0.5);
-  STF_ULP_EQUAL( shuffle<grab_<1>>(p_t(4),p_t(7)) , p_t(7) , 0.5);
+  STF_EQUAL( shuffle<grab_<0>>(p_t(4),p_t(7)) , p_t(4) );
+  STF_EQUAL( shuffle<grab_<1>>(p_t(4),p_t(7)) , p_t(7) );
 }
 
 #if !defined(BOOST_NO_CONSTEXPR)
@@ -55,7 +55,7 @@ constexpr int grab1(int /*i*/, int /*c*/) { return 1; }
 STF_CASE_TPL("Check unary shuffle behavior with constexpr-permutation", STF_NUMERIC_TYPES)
 {
   using p_t = pack<T,1>;
-  STF_ULP_EQUAL( shuffle<pattern<grab0>>(p_t(4),p_t(7)) , p_t(4) , 0.5);
-  STF_ULP_EQUAL( shuffle<pattern<grab1>>(p_t(4),p_t(7)) , p_t(7) , 0.5);
+  STF_EQUAL( shuffle<pattern<grab0>>(p_t(4),p_t(7)) , p_t(4) );
+  STF_EQUAL( shuffle<pattern<grab1>>(p_t(4),p_t(7)) , p_t(7) );
 }
 #endif

@@ -17,8 +17,8 @@ namespace bs = boost::simd;
 STF_CASE_TPL("combine scalar into a pack<T,2>", STF_NUMERIC_TYPES)
 {
   bs::pack<bs::logical<T>,2> res = bs::combine(bs::logical<T>(false), bs::logical<T>(true));
-  STF_ULP_EQUAL(res[0], bs::logical<T>(false), 0.5);
-  STF_ULP_EQUAL(res[1], bs::logical<T>(true), 0.5);
+  STF_EQUAL(res[0], bs::logical<T>(false));
+  STF_EQUAL(res[1], bs::logical<T>(true));
 }
 
 template<typename T, std::size_t N, typename Env>

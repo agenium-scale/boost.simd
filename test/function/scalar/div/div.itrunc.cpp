@@ -26,18 +26,18 @@ STF_CASE_TPL (" divitrunc real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(div(bs::itrunc, bs::Inf<T>(), bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(div(bs::itrunc, bs::Minf<T>(), bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(div(bs::itrunc, bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
+  STF_IEEE_EQUAL(div(bs::itrunc, bs::Inf<T>(), bs::Inf<T>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(div(bs::itrunc, bs::Minf<T>(), bs::Minf<T>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(div(bs::itrunc, bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>());
 #endif
-  STF_ULP_EQUAL(div(bs::itrunc, bs::Mone<T>(), bs::Mone<T>()), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(div(bs::itrunc, bs::One<T>(), bs::One<T>()), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(div(bs::itrunc, bs::Mone<T>(),bs::Zero<T>()), bs::Minf<r_t>(), 0.5);
-  STF_ULP_EQUAL(div(bs::itrunc, bs::One<T>(), bs::One<T>()), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(div(bs::itrunc, bs::One<T>(),bs::Zero<T>()), bs::Inf<r_t>(), 0.5);
-  STF_ULP_EQUAL(div(bs::itrunc, bs::Zero<T>(),bs::Zero<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(div(bs::itrunc, T(4),T(3)), T(1), 0.5);
-  STF_ULP_EQUAL(div(bs::itrunc, T(-4),T(3)), T(-1), 0.5);
+  STF_EQUAL(div(bs::itrunc, bs::Mone<T>(), bs::Mone<T>()), bs::One<r_t>());
+  STF_EQUAL(div(bs::itrunc, bs::One<T>(), bs::One<T>()), bs::One<r_t>());
+  STF_EQUAL(div(bs::itrunc, bs::Mone<T>(),bs::Zero<T>()), bs::Minf<r_t>());
+  STF_EQUAL(div(bs::itrunc, bs::One<T>(), bs::One<T>()), bs::One<r_t>());
+  STF_EQUAL(div(bs::itrunc, bs::One<T>(),bs::Zero<T>()), bs::Inf<r_t>());
+  STF_IEEE_EQUAL(div(bs::itrunc, bs::Zero<T>(),bs::Zero<T>()), bs::Nan<r_t>());
+  STF_EQUAL(div(bs::itrunc, T(4),T(3)), T(1));
+  STF_EQUAL(div(bs::itrunc, T(-4),T(3)), T(-1));
 } // end of test for floating_
 
 STF_CASE_TPL (" divitrunc unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

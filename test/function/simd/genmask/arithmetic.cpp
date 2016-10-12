@@ -28,7 +28,7 @@ void test(Env& $)
   }
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
-  STF_ULP_EQUAL(bs::genmask(aa1), bb, 0.5);
+  STF_IEEE_EQUAL(bs::genmask(aa1), bb);
 }
 
 STF_CASE_TPL("Check genmask on pack" , STF_SIGNED_NUMERIC_TYPES)
@@ -58,11 +58,11 @@ STF_CASE_TPL ("Check genmask behavior when re-targeted",  STF_NUMERIC_TYPES)
               , (bs::pack<char,N*sizeof(T)*2>)
               );
 
-  STF_ULP_EQUAL ( (genmask<bs::pack<char,N*sizeof(T)>>(bs::pack<T,N>(42)))
+  STF_EQUAL ( (genmask<bs::pack<char,N*sizeof(T)>>(bs::pack<T,N>(42)))
             , (bs::Allbits<bs::pack<char,N*sizeof(T)>>())
             );
 
-  // STF_ULP_EQUAL(genmask<bs::pack<char,N*sizeof(T)>>(T(0)) , char(0), 0.5);
+  // STF_EQUAL(genmask<bs::pack<char,N*sizeof(T)>>(T(0)) , char(0));
 }
 #endif
 
@@ -77,17 +77,17 @@ STF_CASE_TPL ("Check genmask behavior on IEEE754 special values",  STF_IEEE_TYPE
   using bs::genmask;
   static const std::size_t N = bs::pack<T>::static_size;
 
-  STF_ULP_EQUAL(genmask(bs::Inf <bs::pack<T,N>>()) , (bs::Allbits<bs::pack<T,N>>()) , 0.5);
-  STF_ULP_EQUAL(genmask(bs::Minf<bs::pack<T,N>>()) , (bs::Allbits<bs::pack<T,N>>()) , 0.5);
-  STF_ULP_EQUAL(genmask(bs::Nan <bs::pack<T,N>>()) , (bs::Allbits<bs::pack<T,N>>()) , 0.5);
+  STF_IEEE_EQUAL(genmask(bs::Inf <bs::pack<T,N>>()) , (bs::Allbits<bs::pack<T,N>>()) );
+  STF_IEEE_EQUAL(genmask(bs::Minf<bs::pack<T,N>>()) , (bs::Allbits<bs::pack<T,N>>()) );
+  STF_IEEE_EQUAL(genmask(bs::Nan <bs::pack<T,N>>()) , (bs::Allbits<bs::pack<T,N>>()) );
 
-  STF_ULP_EQUAL(genmask(bs::Inf <bs::pack<T,N/2>>()) , (bs::Allbits<bs::pack<T,N/2>>()) , 0.5);
-  STF_ULP_EQUAL(genmask(bs::Minf<bs::pack<T,N/2>>()) , (bs::Allbits<bs::pack<T,N/2>>()) , 0.5);
-  STF_ULP_EQUAL(genmask(bs::Nan <bs::pack<T,N/2>>()) , (bs::Allbits<bs::pack<T,N/2>>()) , 0.5);
+  STF_IEEE_EQUAL(genmask(bs::Inf <bs::pack<T,N/2>>()) , (bs::Allbits<bs::pack<T,N/2>>()) );
+  STF_IEEE_EQUAL(genmask(bs::Minf<bs::pack<T,N/2>>()) , (bs::Allbits<bs::pack<T,N/2>>()) );
+  STF_IEEE_EQUAL(genmask(bs::Nan <bs::pack<T,N/2>>()) , (bs::Allbits<bs::pack<T,N/2>>()) );
 
-  STF_ULP_EQUAL(genmask(bs::Inf <bs::pack<T,N*2>>()) , (bs::Allbits<bs::pack<T,N*2>>()) , 0.5);
-  STF_ULP_EQUAL(genmask(bs::Minf<bs::pack<T,N*2>>()) , (bs::Allbits<bs::pack<T,N*2>>()) , 0.5);
-  STF_ULP_EQUAL(genmask(bs::Nan <bs::pack<T,N*2>>()) , (bs::Allbits<bs::pack<T,N*2>>()) , 0.5);
+  STF_IEEE_EQUAL(genmask(bs::Inf <bs::pack<T,N*2>>()) , (bs::Allbits<bs::pack<T,N*2>>()) );
+  STF_IEEE_EQUAL(genmask(bs::Minf<bs::pack<T,N*2>>()) , (bs::Allbits<bs::pack<T,N*2>>()) );
+  STF_IEEE_EQUAL(genmask(bs::Nan <bs::pack<T,N*2>>()) , (bs::Allbits<bs::pack<T,N*2>>()) );
 }
 #endif
 

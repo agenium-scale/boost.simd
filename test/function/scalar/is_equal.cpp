@@ -45,11 +45,11 @@ STF_CASE_TPL (" is_equal real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t,bs::logical<T>);
 
   // specific values tests
-  STF_ULP_EQUAL(is_equal(bs::Inf<T>(), bs::Inf<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_equal(bs::Minf<T>(), bs::Minf<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_equal(bs::Nan<T>(), bs::Nan<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_equal(bs::One<T>(),bs::Zero<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_equal(bs::Zero<T>(), bs::Zero<T>()), r_t(true), 0.5);
+  STF_EQUAL(is_equal(bs::Inf<T>(), bs::Inf<T>()), r_t(true));
+  STF_EQUAL(is_equal(bs::Minf<T>(), bs::Minf<T>()), r_t(true));
+  STF_EQUAL(is_equal(bs::Nan<T>(), bs::Nan<T>()), r_t(false));
+  STF_EQUAL(is_equal(bs::One<T>(),bs::Zero<T>()), r_t(false));
+  STF_EQUAL(is_equal(bs::Zero<T>(), bs::Zero<T>()), r_t(true));
 } // end of test for floating_
 
 STF_CASE_TPL (" is_equal logical",  STF_IEEE_TYPES)
@@ -62,10 +62,10 @@ STF_CASE_TPL (" is_equal logical",  STF_IEEE_TYPES)
   // return type conformity test
   STF_TYPE_IS(r_t, bs::logical<T>);
 
-  STF_ULP_EQUAL(is_equal(bs::True< bs::logical<T> >(), bs::True< bs::logical<T> >()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_equal(bs::False< bs::logical<T> >(), bs::False< bs::logical<T> >()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_equal(bs::True< bs::logical<T> >(), bs::False< bs::logical<T> >()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_equal(bs::False< bs::logical<T> >(), bs::True< bs::logical<T> >()), r_t(false), 0.5);
+  STF_EQUAL(is_equal(bs::True< bs::logical<T> >(), bs::True< bs::logical<T> >()), r_t(true));
+  STF_EQUAL(is_equal(bs::False< bs::logical<T> >(), bs::False< bs::logical<T> >()), r_t(true));
+  STF_EQUAL(is_equal(bs::True< bs::logical<T> >(), bs::False< bs::logical<T> >()), r_t(false));
+  STF_EQUAL(is_equal(bs::False< bs::logical<T> >(), bs::True< bs::logical<T> >()), r_t(false));
 }
 
 STF_CASE ( "is_equal bool")
@@ -77,10 +77,10 @@ STF_CASE ( "is_equal bool")
   STF_EXPR_IS(is_equal(bool(), bool()), bool);
 
   // specific values tests
-  STF_ULP_EQUAL(is_equal(true, false), false, 0.5);
-  STF_ULP_EQUAL(is_equal(false, true), false, 0.5);
-  STF_ULP_EQUAL(is_equal(true, true), true, 0.5);
-  STF_ULP_EQUAL(is_equal(false, false), true, 0.5);
+  STF_EQUAL(is_equal(true, false), false);
+  STF_EQUAL(is_equal(false, true), false);
+  STF_EQUAL(is_equal(true, true), true);
+  STF_EQUAL(is_equal(false, false), true);
 }
 
 

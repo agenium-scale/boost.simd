@@ -47,11 +47,11 @@ STF_CASE_TPL (" logical_or real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, bs::logical<T>);
 
   // specific values tests
-  STF_ULP_EQUAL(logical_or(bs::Inf<T>(), bs::Inf<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(logical_or(bs::Minf<T>(), bs::Minf<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(logical_or(bs::Nan<T>(), bs::Nan<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(logical_or(bs::One<T>(),bs::Zero<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(logical_or(bs::Zero<T>(), bs::Zero<T>()), r_t(false), 0.5);
+  STF_EQUAL(logical_or(bs::Inf<T>(), bs::Inf<T>()), r_t(true));
+  STF_EQUAL(logical_or(bs::Minf<T>(), bs::Minf<T>()), r_t(true));
+  STF_EQUAL(logical_or(bs::Nan<T>(), bs::Nan<T>()), r_t(true));
+  STF_EQUAL(logical_or(bs::One<T>(),bs::Zero<T>()), r_t(true));
+  STF_EQUAL(logical_or(bs::Zero<T>(), bs::Zero<T>()), r_t(false));
 } // end of test for floating_
 
 STF_CASE ( "logical_or bool")
@@ -65,10 +65,10 @@ STF_CASE ( "logical_or bool")
  STF_TYPE_IS(r_t, bool);
 
   // specific values tests
-  STF_ULP_EQUAL(logical_or(true, false), true, 0.5);
-  STF_ULP_EQUAL(logical_or(false, true), true, 0.5);
-  STF_ULP_EQUAL(logical_or(true, true), true, 0.5);
-  STF_ULP_EQUAL(logical_or(false, false), false, 0.5);
+  STF_EQUAL(logical_or(true, false), true);
+  STF_EQUAL(logical_or(false, true), true);
+  STF_EQUAL(logical_or(true, true), true);
+  STF_EQUAL(logical_or(false, false), false);
 }
 
 

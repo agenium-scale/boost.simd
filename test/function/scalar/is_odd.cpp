@@ -32,17 +32,17 @@ STF_CASE_TPL (" is_odd real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(is_odd(bs::Inf<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_odd(bs::Minf<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_odd(bs::Nan<T>()), r_t(false), 0.5);
+  STF_EQUAL(is_odd(bs::Inf<T>()), r_t(false));
+  STF_EQUAL(is_odd(bs::Minf<T>()), r_t(false));
+  STF_EQUAL(is_odd(bs::Nan<T>()), r_t(false));
 #endif
-  STF_ULP_EQUAL(is_odd(-bs::Zero<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_odd(bs::Half<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_odd(bs::Mone<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_odd(bs::One<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_odd(bs::Quarter<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_odd(bs::Two<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_odd(bs::Zero<T>()), r_t(false), 0.5);
+  STF_EQUAL(is_odd(-bs::Zero<T>()), r_t(false));
+  STF_EQUAL(is_odd(bs::Half<T>()), r_t(false));
+  STF_EQUAL(is_odd(bs::Mone<T>()), r_t(true));
+  STF_EQUAL(is_odd(bs::One<T>()), r_t(true));
+  STF_EQUAL(is_odd(bs::Quarter<T>()), r_t(false));
+  STF_EQUAL(is_odd(bs::Two<T>()), r_t(false));
+  STF_EQUAL(is_odd(bs::Zero<T>()), r_t(false));
 }
 
 STF_CASE_TPL (" is_odd signed_int",  STF_SIGNED_INTEGRAL_TYPES)

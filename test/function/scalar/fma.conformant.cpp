@@ -34,16 +34,16 @@ STF_CASE_TPL (" bs::conformant_(fma) real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(bs::conformant_(fma)(bs::Inf<T>(), bs::Inf<T>(), bs::Inf<T>()), bs::Inf<T>(), 0.5);
-  STF_ULP_EQUAL(bs::conformant_(fma)(bs::Minf<T>(), bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>(), 0.5);
-  STF_ULP_EQUAL(bs::conformant_(fma)(bs::Nan<T>(), bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>(), 0.5);
+  STF_EQUAL(bs::conformant_(fma)(bs::Inf<T>(), bs::Inf<T>(), bs::Inf<T>()), bs::Inf<T>());
+  STF_IEEE_EQUAL(bs::conformant_(fma)(bs::Minf<T>(), bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::conformant_(fma)(bs::Nan<T>(), bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());
 #endif
-  STF_ULP_EQUAL(bs::conformant_(fma)(bs::Mone<T>(), bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>(), 0.5);
-  STF_ULP_EQUAL(bs::conformant_(fma)(bs::One<T>(), bs::One<T>(), bs::One<T>()), bs::Two<T>(), 0.5);
-  STF_ULP_EQUAL(bs::conformant_(fma)(bs::One<T>()+bs::Eps<T>(), bs::One<T>()-bs::Eps<T>(),bs::Mone<T>()), -bs::Eps<T>()*bs::Eps<T>(), 0.5);
-  STF_ULP_EQUAL(bs::conformant_(fma)(bs::Zero<T>(), bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>(), 0.5);
+  STF_EQUAL(bs::conformant_(fma)(bs::Mone<T>(), bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
+  STF_EQUAL(bs::conformant_(fma)(bs::One<T>(), bs::One<T>(), bs::One<T>()), bs::Two<T>());
+  STF_EQUAL(bs::conformant_(fma)(bs::One<T>()+bs::Eps<T>(), bs::One<T>()-bs::Eps<T>(),bs::Mone<T>()), -bs::Eps<T>()*bs::Eps<T>());
+  STF_EQUAL(bs::conformant_(fma)(bs::Zero<T>(), bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
 #ifndef  STF_DONT_CARE__FMA_OVERFLOW
-  STF_ULP_EQUAL(bs::conformant_(fma)(bs::Valmax<T>(), bs::Two<T>(), -bs::Valmax<T>()), bs::Valmax<T>(), 0.5);
+  STF_EQUAL(bs::conformant_(fma)(bs::Valmax<T>(), bs::Two<T>(), -bs::Valmax<T>()), bs::Valmax<T>());
 #endif
 } // end of test for floating_
 
@@ -89,13 +89,13 @@ STF_CASE_TPL (" bs::conformant_(fma) std real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL( bs::std_(fma)(bs::Inf<T>(), bs::Inf<T>(), bs::Inf<T>()), bs::Inf<T>(), 0.5);
-  STF_ULP_EQUAL( bs::std_(fma)(bs::Minf<T>(), bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>(), 0.5);
-  STF_ULP_EQUAL( bs::std_(fma)(bs::Nan<T>(), bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>(), 0.5);
+  STF_EQUAL( bs::std_(fma)(bs::Inf<T>(), bs::Inf<T>(), bs::Inf<T>()), bs::Inf<T>());
+  STF_IEEE_EQUAL( bs::std_(fma)(bs::Minf<T>(), bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL( bs::std_(fma)(bs::Nan<T>(), bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());
 #endif
-  STF_ULP_EQUAL( bs::std_(fma)(bs::Mone<T>(), bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>(), 0.5);
-  STF_ULP_EQUAL( bs::std_(fma)(bs::One<T>(), bs::One<T>(), bs::One<T>()), bs::Two<T>(), 0.5);
-  STF_ULP_EQUAL( bs::std_(fma)(bs::One<T>()+bs::Eps<T>(), bs::One<T>()-bs::Eps<T>(),bs::Mone<T>()), -bs::Eps<T>()*bs::Eps<T>(), 0.5);
-  STF_ULP_EQUAL( bs::std_(fma)(bs::Zero<T>(), bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>(), 0.5);
-  STF_ULP_EQUAL( bs::std_(fma)(bs::Valmax<T>(), bs::Two<T>(), -bs::Valmax<T>()), bs::Valmax<T>(), 0.5);
+  STF_EQUAL( bs::std_(fma)(bs::Mone<T>(), bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
+  STF_EQUAL( bs::std_(fma)(bs::One<T>(), bs::One<T>(), bs::One<T>()), bs::Two<T>());
+  STF_EQUAL( bs::std_(fma)(bs::One<T>()+bs::Eps<T>(), bs::One<T>()-bs::Eps<T>(),bs::Mone<T>()), -bs::Eps<T>()*bs::Eps<T>());
+  STF_EQUAL( bs::std_(fma)(bs::Zero<T>(), bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
+  STF_EQUAL( bs::std_(fma)(bs::Valmax<T>(), bs::Two<T>(), -bs::Valmax<T>()), bs::Valmax<T>());
 } // end of test for floating_

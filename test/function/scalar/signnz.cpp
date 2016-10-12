@@ -29,14 +29,14 @@ STF_CASE_TPL (" signnz real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(signnz(bs::Inf<T>()), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(signnz(bs::Minf<T>()), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(signnz(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
+  STF_EQUAL(signnz(bs::Inf<T>()), bs::One<r_t>());
+  STF_EQUAL(signnz(bs::Minf<T>()), bs::Mone<r_t>());
+  STF_IEEE_EQUAL(signnz(bs::Nan<T>()), bs::Nan<r_t>());
 #endif
-  STF_ULP_EQUAL(signnz(bs::Mzero<T>()), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(signnz(bs::Mone<T>()), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(signnz(bs::One<T>()), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(signnz(bs::Zero<T>()), bs::One<r_t>(), 0.5);
+  STF_EQUAL(signnz(bs::Mzero<T>()), bs::Mone<r_t>());
+  STF_EQUAL(signnz(bs::Mone<T>()), bs::Mone<r_t>());
+  STF_EQUAL(signnz(bs::One<T>()), bs::One<r_t>());
+  STF_EQUAL(signnz(bs::Zero<T>()), bs::One<r_t>());
 }
 
 STF_CASE_TPL (" signnz unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

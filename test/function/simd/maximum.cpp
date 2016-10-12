@@ -30,8 +30,8 @@ void test(Env& $)
   }
   p_t aa1(&a1[0], &a1[0]+N);
 
-  STF_ULP_EQUAL(bs::maximum(aa1), b, 0.5);
-  STF_ULP_EQUAL(bs::splatted_(bs::maximum)(aa1), p_t(b) , 0.5);
+  STF_EQUAL(bs::maximum(aa1), b);
+  STF_EQUAL(bs::splatted_(bs::maximum)(aa1), p_t(b) );
 }
 
 STF_CASE_TPL("Check maximum on pack", STF_NUMERIC_TYPES)

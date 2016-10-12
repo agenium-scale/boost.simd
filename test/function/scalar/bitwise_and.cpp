@@ -29,11 +29,11 @@ STF_CASE_TPL( "Check bitwise_and behavior with floating", STF_IEEE_TYPES )
   STF_TYPE_IS(r_t, T);
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(bitwise_and(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>(), 0.5);
-  STF_ULP_EQUAL(bitwise_and(bs::Minf<T>(), bs::Minf<T>()), bs::Minf<r_t>(), 0.5);
-  STF_ULP_EQUAL(bitwise_and(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
+  STF_EQUAL(bitwise_and(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>());
+  STF_EQUAL(bitwise_and(bs::Minf<T>(), bs::Minf<T>()), bs::Minf<r_t>());
+  STF_IEEE_EQUAL(bitwise_and(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>());
 #endif
-  STF_ULP_EQUAL(bitwise_and(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
+  STF_EQUAL(bitwise_and(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
 }
 
 STF_CASE_TPL("bitwise_and_ui", STF_UNSIGNED_INTEGRAL_TYPES)
@@ -77,9 +77,9 @@ STF_CASE_TPL("bitwise_and_mix", STF_IEEE_TYPES)
   STF_EXPR_IS(bitwise_and(siT(), T()), siT);
 
   // specific values tests
-  STF_ULP_EQUAL(bitwise_and(bs::Zero<T>(),bs::Zero<uiT>()), bs::Zero<T>(), 0.5);
-  STF_ULP_EQUAL(bitwise_and(bs::Zero<T>(), bs::Zero<siT>()), bs::Zero<T>(), 0.5);
-  STF_ULP_EQUAL(bitwise_and(bs::Valmin<siT>(),bs::Nan<T>()), bs::Valmin<siT>(), 0.5);
-  STF_ULP_EQUAL(bitwise_and(bs::Zero<uiT>(), bs::Nan<T>()), bs::Zero<uiT>(), 0.5);
+  STF_EQUAL(bitwise_and(bs::Zero<T>(),bs::Zero<uiT>()), bs::Zero<T>());
+  STF_EQUAL(bitwise_and(bs::Zero<T>(), bs::Zero<siT>()), bs::Zero<T>());
+  STF_EQUAL(bitwise_and(bs::Valmin<siT>(),bs::Nan<T>()), bs::Valmin<siT>());
+  STF_EQUAL(bitwise_and(bs::Zero<uiT>(), bs::Nan<T>()), bs::Zero<uiT>());
 }
 

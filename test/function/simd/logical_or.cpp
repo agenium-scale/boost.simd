@@ -34,8 +34,8 @@ void test(Env& $)
   p_t aa2(&a2[0], &a2[0]+N);
   pl_t bb(&b[0], &b[0]+N);
 
-  STF_ULP_EQUAL(bs::logical_or(aa1, aa2), bb, 0.5);
-  STF_ULP_EQUAL(aa1 || aa2, bb, 0.5);
+  STF_EQUAL(bs::logical_or(aa1, aa2), bb);
+  STF_EQUAL(aa1 || aa2, bb);
 }
 
 STF_CASE_TPL("Check logical_or on pack" , STF_NUMERIC_TYPES)
@@ -65,8 +65,8 @@ void testl(Env& $)
   pl_t aa2(&a2[0], &a2[0]+N);
   pl_t bb(&b[0], &b[0]+N);
 
-  STF_ULP_EQUAL(bs::logical_or(aa1, aa2), bb, 0.5);
-  STF_ULP_EQUAL(aa1 || aa2, bb, 0.5);
+  STF_EQUAL(bs::logical_or(aa1, aa2), bb);
+  STF_EQUAL(aa1 || aa2, bb);
 }
 
 STF_CASE_TPL("Check logical_or on pack of logical", STF_NUMERIC_TYPES)

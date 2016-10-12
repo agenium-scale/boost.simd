@@ -50,10 +50,10 @@ STF_CASE_TPL (" if_else real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(if_else( bs::One<T>(), bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
+  STF_IEEE_EQUAL(if_else( bs::One<T>(), bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>());
 #endif
-  STF_ULP_EQUAL(if_else( bs::One<T>(),bs::Zero<T>(),bs::Two<T>()), bs::Zero<r_t>(), 0.5);
-  STF_ULP_EQUAL(if_else( bs::Zero<T>(), bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
+  STF_EQUAL(if_else( bs::One<T>(),bs::Zero<T>(),bs::Two<T>()), bs::Zero<r_t>());
+  STF_EQUAL(if_else( bs::Zero<T>(), bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
 } // end of test for floating_
 
 

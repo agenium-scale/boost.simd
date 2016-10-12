@@ -31,12 +31,12 @@ STF_CASE_TPL (" firstbitunsetreal",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(firstbitunset(bs::Inf<T>()), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(firstbitunset(bs::Minf<T>()), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(firstbitunset(bs::Nan<T>()), bs::Zero<r_t>(), 0.5);
+  STF_EQUAL(firstbitunset(bs::Inf<T>()), bs::One<r_t>());
+  STF_EQUAL(firstbitunset(bs::Minf<T>()), bs::One<r_t>());
+  STF_EQUAL(firstbitunset(bs::Nan<T>()), bs::Zero<r_t>());
 #endif
-  STF_ULP_EQUAL(firstbitunset(bs::Signmask<T>()), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(firstbitunset(bs::Zero<T>()), bs::One<r_t>(), 0.5);
+  STF_EQUAL(firstbitunset(bs::Signmask<T>()), bs::One<r_t>());
+  STF_EQUAL(firstbitunset(bs::Zero<T>()), bs::One<r_t>());
 } // end of test for floating_
 
 

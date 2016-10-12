@@ -31,14 +31,14 @@ STF_CASE_TPL (" ilogb real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(ilogb(bs::Minf<T>()), bs::Zero<r_t>(), 0.5);
-  STF_ULP_EQUAL(ilogb(bs::Nan<T>()), bs::Zero<r_t>(), 0.5);
+  STF_EQUAL(ilogb(bs::Minf<T>()), bs::Zero<r_t>());
+  STF_EQUAL(ilogb(bs::Nan<T>()), bs::Zero<r_t>());
 #endif
-  STF_ULP_EQUAL(ilogb(bs::Mone<T>()), bs::Zero<r_t>(), 0.5);
-  STF_ULP_EQUAL(ilogb(bs::One<T>()), bs::Zero<r_t>(), 0.5);
-  STF_ULP_EQUAL(ilogb(bs::Two<T>()), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(ilogb(bs::Four<T>()), bs::Two<r_t>(), 0.5);
-  STF_ULP_EQUAL(ilogb(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
+  STF_EQUAL(ilogb(bs::Mone<T>()), bs::Zero<r_t>());
+  STF_EQUAL(ilogb(bs::One<T>()), bs::Zero<r_t>());
+  STF_EQUAL(ilogb(bs::Two<T>()), bs::One<r_t>());
+  STF_EQUAL(ilogb(bs::Four<T>()), bs::Two<r_t>());
+  STF_EQUAL(ilogb(bs::Zero<T>()), bs::Zero<r_t>());
 }
 
 STF_CASE_TPL (" ilogb unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

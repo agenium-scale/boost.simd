@@ -29,12 +29,12 @@ STF_CASE_TPL (" if_else allbitsreal",  STF_IEEE_TYPES)
   STF_EXPR_IS( if_else_allbits(T(), T()), T );
 
   // specific values tests
-  STF_ULP_EQUAL(if_else_allbits(T(0), T(1)), Allbits<T>(), 0.5);
-  STF_ULP_EQUAL(if_else_allbits(T(1), T(1)), T(1), 0.5);
-  STF_ULP_EQUAL(if_else_allbits(bs::Inf<T>(),  T(1)), T(1), 0.5);
-  STF_ULP_EQUAL(if_else_allbits(bs::Minf<T>(), T(1)), T(1), 0.5);
-  STF_ULP_EQUAL(if_else_allbits(bs::Nan<T>(),  T(1)), T(1), 0.5);
-  STF_ULP_EQUAL(if_else_allbits(bs::Zero<T>(), T(1)), Allbits<T>(), 0.5);
+  STF_IEEE_EQUAL(if_else_allbits(T(0), T(1)), Allbits<T>());
+  STF_EQUAL(if_else_allbits(T(1), T(1)), T(1));
+  STF_EQUAL(if_else_allbits(bs::Inf<T>(),  T(1)), T(1));
+  STF_EQUAL(if_else_allbits(bs::Minf<T>(), T(1)), T(1));
+  STF_EQUAL(if_else_allbits(bs::Nan<T>(),  T(1)), T(1));
+  STF_IEEE_EQUAL(if_else_allbits(bs::Zero<T>(), T(1)), Allbits<T>());
 
 
 } // end of test for floating_

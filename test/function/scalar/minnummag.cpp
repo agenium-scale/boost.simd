@@ -32,23 +32,23 @@ STF_CASE_TPL (" minnummag real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(minnummag(bs::Inf<T>(),  bs::Inf<T>()), bs::Inf<r_t>(), 0.5);
-  STF_ULP_EQUAL(minnummag(bs::Minf<T>(), bs::Minf<T>()), bs::Minf<r_t>(), 0.5);
-  STF_ULP_EQUAL(minnummag(bs::Nan<T>(),  bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(minnummag(bs::Nan<T>(),  bs::One<T>()), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(minnummag(bs::One<T>(),  bs::Nan<T>()), bs::One<r_t>(), 0.5);
+  STF_EQUAL(minnummag(bs::Inf<T>(),  bs::Inf<T>()), bs::Inf<r_t>());
+  STF_EQUAL(minnummag(bs::Minf<T>(), bs::Minf<T>()), bs::Minf<r_t>());
+  STF_IEEE_EQUAL(minnummag(bs::Nan<T>(),  bs::Nan<T>()), bs::Nan<r_t>());
+  STF_EQUAL(minnummag(bs::Nan<T>(),  bs::One<T>()), bs::One<r_t>());
+  STF_EQUAL(minnummag(bs::One<T>(),  bs::Nan<T>()), bs::One<r_t>());
 #endif
-  STF_ULP_EQUAL(minnummag(bs::Mone<T>(), bs::Mone<T>()), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(minnummag(bs::One<T>(),  bs::One<T>()),  bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(minnummag(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
-  STF_ULP_EQUAL(minnummag(bs::Mone<T>(), bs::One <T>()), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(minnummag(bs::One <T>(), bs::Mone<T>()), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(minnummag(bs::One <T>(), bs::Two <T>()), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(minnummag(bs::Two <T>(), bs::One <T>()), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(minnummag(bs::Mtwo<T>(), bs::One <T>()), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(minnummag(bs::One <T>(), bs::Mtwo<T>()), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(minnummag(bs::Two <T>(), bs::Mone<T>()), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(minnummag(bs::Mone<T>(), bs::Two <T>()), bs::Mone<r_t>(), 0.5);
+  STF_EQUAL(minnummag(bs::Mone<T>(), bs::Mone<T>()), bs::Mone<r_t>());
+  STF_EQUAL(minnummag(bs::One<T>(),  bs::One<T>()),  bs::One<r_t>());
+  STF_EQUAL(minnummag(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
+  STF_EQUAL(minnummag(bs::Mone<T>(), bs::One <T>()), bs::Mone<r_t>());
+  STF_EQUAL(minnummag(bs::One <T>(), bs::Mone<T>()), bs::Mone<r_t>());
+  STF_EQUAL(minnummag(bs::One <T>(), bs::Two <T>()), bs::One<r_t>());
+  STF_EQUAL(minnummag(bs::Two <T>(), bs::One <T>()), bs::One<r_t>());
+  STF_EQUAL(minnummag(bs::Mtwo<T>(), bs::One <T>()), bs::One<r_t>());
+  STF_EQUAL(minnummag(bs::One <T>(), bs::Mtwo<T>()), bs::One<r_t>());
+  STF_EQUAL(minnummag(bs::Two <T>(), bs::Mone<T>()), bs::Mone<r_t>());
+  STF_EQUAL(minnummag(bs::Mone<T>(), bs::Two <T>()), bs::Mone<r_t>());
 }
 
 STF_CASE_TPL (" minnummag unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

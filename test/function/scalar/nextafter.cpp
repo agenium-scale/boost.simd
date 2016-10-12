@@ -31,12 +31,12 @@ STF_CASE_TPL (" nextafter real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-  STF_ULP_EQUAL(nextafter(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>(), 0.5);
-  STF_ULP_EQUAL(nextafter(bs::Minf<T>(), bs::One<T>()), bs::Valmin<r_t>(), 0.5);
-  STF_ULP_EQUAL(nextafter(bs::Nan<T>(), bs::One<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(nextafter(bs::One<T>(), bs::Inf<T>()), bs::One<r_t>()+bs::Eps<r_t>(), 0.5);
-  STF_ULP_EQUAL(nextafter(bs::Valmax<T>(), bs::Inf<T>()), bs::Inf<r_t>(), 0.5);
-  STF_ULP_EQUAL(nextafter(bs::Mone<T>(), bs::One<T>()), bs::Mone<r_t>()+bs::Eps<r_t>()/2, 0.5);
-  STF_ULP_EQUAL(nextafter(bs::Zero<T>(), bs::One<T>()), bs::Bitincrement<T>(), 0.5);
+  STF_EQUAL(nextafter(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>());
+  STF_EQUAL(nextafter(bs::Minf<T>(), bs::One<T>()), bs::Valmin<r_t>());
+  STF_IEEE_EQUAL(nextafter(bs::Nan<T>(), bs::One<T>()), bs::Nan<r_t>());
+  STF_EQUAL(nextafter(bs::One<T>(), bs::Inf<T>()), bs::One<r_t>()+bs::Eps<r_t>());
+  STF_EQUAL(nextafter(bs::Valmax<T>(), bs::Inf<T>()), bs::Inf<r_t>());
+  STF_EQUAL(nextafter(bs::Mone<T>(), bs::One<T>()), bs::Mone<r_t>()+bs::Eps<r_t>()/2);
+  STF_EQUAL(nextafter(bs::Zero<T>(), bs::One<T>()), bs::Bitincrement<T>());
 }
 

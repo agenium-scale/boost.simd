@@ -32,8 +32,8 @@ void test(Env& $, std::true_type const& = {})
   p_t aa2(&a2[0], &a2[0]+N);
 
   std::array<p_t,2> out = bs::deinterleave(aa1, aa2);
-  STF_ULP_EQUAL( out[0], bs::deinterleave_first(aa1,aa2)  , 0.5);
-  STF_ULP_EQUAL( out[1], bs::deinterleave_second(aa1,aa2) , 0.5);
+  STF_EQUAL( out[0], bs::deinterleave_first(aa1,aa2)  );
+  STF_EQUAL( out[1], bs::deinterleave_second(aa1,aa2) );
 }
 
 STF_CASE_TPL("Check deinterleave on pack", STF_NUMERIC_TYPES)

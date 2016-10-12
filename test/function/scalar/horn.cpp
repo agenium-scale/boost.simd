@@ -41,9 +41,9 @@ float g(const double & x)
 
 STF_CASE_TPL( "Check horner behavior with floating", STF_IEEE_TYPES )
 {
-  STF_ULP_EQUAL(g(bs::Mone<T>()), bs::Mtwo<T>(), 0.5);
-  STF_ULP_EQUAL(g(bs::One<T>()),  bs::Ten<T>(), 0.5);
-  STF_ULP_EQUAL(g(bs::Mone<T>()), bs::Mtwo<T>(), 0.5);
+  STF_EQUAL(g(bs::Mone<T>()), bs::Mtwo<T>());
+  STF_EQUAL(g(bs::One<T>()),  bs::Ten<T>());
+  STF_EQUAL(g(bs::Mone<T>()), bs::Mtwo<T>());
 }
 
 

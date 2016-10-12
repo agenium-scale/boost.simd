@@ -75,8 +75,8 @@ STF_CASE_TPL ("Check genmask behavior on IEEE754 special values",  STF_IEEE_TYPE
   namespace bs = boost::simd;
   using bs::genmask;
 
-  STF_ULP_EQUAL(genmask(bs::Inf<T>())  , bs::Allbits<T>(), 0.5);
-  STF_ULP_EQUAL(genmask(bs::Minf<T>()) , bs::Allbits<T>(), 0.5);
-  STF_ULP_EQUAL(genmask(bs::Nan<T>())  , bs::Allbits<T>(), 0.5);
+  STF_IEEE_EQUAL(genmask(bs::Inf<T>())  , bs::Allbits<T>());
+  STF_IEEE_EQUAL(genmask(bs::Minf<T>()) , bs::Allbits<T>());
+  STF_IEEE_EQUAL(genmask(bs::Nan<T>())  , bs::Allbits<T>());
 }
 #endif

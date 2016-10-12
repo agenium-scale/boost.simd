@@ -29,7 +29,7 @@ void test(Env& $)
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
 
-  STF_ULP_EQUAL(bs::oneminus(aa1), bb, 0.5);
+  STF_EQUAL(bs::oneminus(aa1), bb);
 }
 
 STF_CASE_TPL("Check oneminus saturated on pack" , STF_NUMERIC_TYPES)
@@ -56,7 +56,7 @@ void tests(Env& $)
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
 
-  STF_ULP_EQUAL(bs::saturated_(bs::oneminus)(aa1), bb, 0.5);
+  STF_EQUAL(bs::saturated_(bs::oneminus)(aa1), bb);
 }
 
 STF_CASE_TPL("Check oneminus on pack" , STF_NUMERIC_TYPES)

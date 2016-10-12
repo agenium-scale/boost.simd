@@ -36,10 +36,10 @@ void test(Env& $)
   p_t bb(&b[0], &b[0]+N);
   p_t cc(&c[0], &c[0]+N);
 
-  STF_ULP_EQUAL(bs::shift_left(aa1, sh1), bb, 0.5);
-  STF_ULP_EQUAL(bs::shift_left(aa1, sh2), cc, 0.5);
-  STF_ULP_EQUAL((aa1 << sh1), bb, 0.5);
-  STF_ULP_EQUAL((aa1 << sh2), cc, 0.5);
+  STF_EQUAL(bs::shift_left(aa1, sh1), bb);
+  STF_EQUAL(bs::shift_left(aa1, sh2), cc);
+  STF_EQUAL((aa1 << sh1), bb);
+  STF_EQUAL((aa1 << sh2), cc);
 }
 
 STF_CASE_TPL("Check shift_left on pack with integral shift" , STF_INTEGRAL_TYPES)
@@ -71,8 +71,8 @@ void tests(Env& $)
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb(&b[0], &b[0]+N);
   i_t sh1(&sh[0], &sh[0]+N);
-  STF_ULP_EQUAL(bs::shift_left(aa1, sh1), bb, 0.5);
-  STF_ULP_EQUAL((aa1 << sh1), bb, 0.5);
+  STF_EQUAL(bs::shift_left(aa1, sh1), bb);
+  STF_EQUAL((aa1 << sh1), bb);
 }
 
 STF_CASE_TPL("Check shift_left on pack with pack shift" , STF_INTEGRAL_TYPES)

@@ -30,12 +30,12 @@ STF_CASE_TPL (" if_minus real",  STF_IEEE_TYPES)
   STF_TYPE_IS( r_t, T );
 
   // specific values tests
-  STF_ULP_EQUAL(if_minus(logical<T>(T(0)),T(1),T(2)), T(1), 0.5);
-  STF_ULP_EQUAL(if_minus(logical<T>(bs::Nan<T>()),T(1),T(2)), T(-1), 0.5);
-  STF_ULP_EQUAL(if_minus(logical<T>(bs::Nan<T>()),bs::Inf<T>(),bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(if_minus(logical<T>(bs::Nan<T>()),bs::Minf<T>(),bs::Minf<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(if_minus(logical<T>(bs::Nan<T>()),bs::Nan<T>(),bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(if_minus(logical<T>(bs::Nan<T>()),bs::Zero<T>(),bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
+  STF_EQUAL(if_minus(logical<T>(T(0)),T(1),T(2)), T(1));
+  STF_EQUAL(if_minus(logical<T>(bs::Nan<T>()),T(1),T(2)), T(-1));
+  STF_IEEE_EQUAL(if_minus(logical<T>(bs::Nan<T>()),bs::Inf<T>(),bs::Inf<T>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(if_minus(logical<T>(bs::Nan<T>()),bs::Minf<T>(),bs::Minf<T>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(if_minus(logical<T>(bs::Nan<T>()),bs::Nan<T>(),bs::Nan<T>()), bs::Nan<r_t>());
+  STF_EQUAL(if_minus(logical<T>(bs::Nan<T>()),bs::Zero<T>(),bs::Zero<T>()), bs::Zero<r_t>());
 } // end of test for floating_
 
 STF_CASE_TPL (" if_minus signed_int",  STF_SIGNED_INTEGRAL_TYPES)

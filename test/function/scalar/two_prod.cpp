@@ -40,18 +40,18 @@ STF_CASE_TPL(" two_prod", STF_IEEE_TYPES)
   std::pair<T,T> p;
 
   p = two_prod(inf_,one_);
-  STF_ULP_EQUAL(p.first, inf_, 0.5);
-  STF_ULP_EQUAL(p.second, zero_, 0.5);
+  STF_EQUAL(p.first, inf_);
+  STF_EQUAL(p.second, zero_);
 
   p = two_prod(one_, inf_);
-  STF_ULP_EQUAL(p.first, inf_, 0.5);
-  STF_ULP_EQUAL(p.second, zero_, 0.5);
+  STF_EQUAL(p.first, inf_);
+  STF_EQUAL(p.second, zero_);
 
   p = two_prod(one_ + eps_, one_ - eps_);
-  STF_ULP_EQUAL(p.first, one_, 0.5);
-  STF_ULP_EQUAL(p.second, meps2_, 0.5);
+  STF_EQUAL(p.first, one_);
+  STF_EQUAL(p.second, meps2_);
 
   p = two_prod(one_ - eps_,one_ + eps_);
-  STF_ULP_EQUAL(p.first, one_, 0.5);
-  STF_ULP_EQUAL(p.second, meps2_, 0.5);
+  STF_EQUAL(p.first, one_);
+  STF_EQUAL(p.second, meps2_);
 }

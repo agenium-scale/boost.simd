@@ -28,7 +28,7 @@ void test(Env& $)
 
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
-  STF_ULP_EQUAL(bs::tanh(aa1), bb, 0.5);
+  STF_EQUAL(bs::tanh(aa1), bb);
 }
 
 STF_CASE_TPL("Check tanh saturated on pack" , STF_IEEE_TYPES)

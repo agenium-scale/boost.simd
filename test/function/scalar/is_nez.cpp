@@ -34,17 +34,17 @@ STF_CASE_TPL (" is_lez  _real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(is_nez(bs::Inf<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_nez(bs::Minf<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_nez(bs::Nan<T>()), r_t(true), 0.5);
+  STF_EQUAL(is_nez(bs::Inf<T>()), r_t(true));
+  STF_EQUAL(is_nez(bs::Minf<T>()), r_t(true));
+  STF_EQUAL(is_nez(bs::Nan<T>()), r_t(true));
 #endif
-  STF_ULP_EQUAL(is_nez(bs::Half<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_nez(bs::Mone<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_nez(bs::One<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_nez(bs::Quarter<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_nez(bs::Two<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_nez(bs::Zero<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_nez(bs::Mzero<T>()), r_t(false), 0.5);
+  STF_EQUAL(is_nez(bs::Half<T>()), r_t(true));
+  STF_EQUAL(is_nez(bs::Mone<T>()), r_t(true));
+  STF_EQUAL(is_nez(bs::One<T>()), r_t(true));
+  STF_EQUAL(is_nez(bs::Quarter<T>()), r_t(true));
+  STF_EQUAL(is_nez(bs::Two<T>()), r_t(true));
+  STF_EQUAL(is_nez(bs::Zero<T>()), r_t(false));
+  STF_EQUAL(is_nez(bs::Mzero<T>()), r_t(false));
 }
 
 STF_CASE_TPL (" is_nez _signed_int",  STF_SIGNED_INTEGRAL_TYPES)

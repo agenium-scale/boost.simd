@@ -51,8 +51,8 @@ template <typename T, std::size_t N, typename Env> void test(Env& $)
 
   for(std::size_t i=0;i<N;i++) p[i] = k++;
 
-  STF_ULP_EQUAL( bs::fake_sum(p), T( (N*(N+1))/2 ) , 0.5);
-  STF_ULP_EQUAL( bs::splatted_(bs::fake_sum)(p), p_t(T( (N*(N+1))/2 )) , 0.5);
+  STF_EQUAL( bs::fake_sum(p), T( (N*(N+1))/2 ) );
+  STF_EQUAL( bs::splatted_(bs::fake_sum)(p), p_t(T( (N*(N+1))/2 )) );
 }
 
 STF_CASE_TPL("Check autofold behaviour on pack", STF_NUMERIC_TYPES)

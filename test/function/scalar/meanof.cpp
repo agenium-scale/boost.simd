@@ -32,20 +32,20 @@ STF_CASE_TPL (" meanof real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(meanof(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<T>(), 0.5);
-  STF_ULP_EQUAL(meanof(bs::Minf<T>(), bs::Minf<T>()), bs::Minf<T>(), 0.5);
-  STF_ULP_EQUAL(meanof(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>(), 0.5);
+  STF_EQUAL(meanof(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<T>());
+  STF_EQUAL(meanof(bs::Minf<T>(), bs::Minf<T>()), bs::Minf<T>());
+  STF_IEEE_EQUAL(meanof(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());
 #endif
-  STF_ULP_EQUAL(meanof(bs::Mone<T>(), bs::Mone<T>()), bs::Mone<T>(), 0.5);
-  STF_ULP_EQUAL(meanof(bs::One<T>(), bs::One<T>()), bs::One<T>(), 0.5);
-  STF_ULP_EQUAL(meanof(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>(), 0.5);
-  STF_ULP_EQUAL(meanof(bs::Inf<T>(), bs::Minf<T>()), bs::Nan<T>(), 0.5);
-  STF_ULP_EQUAL(meanof(bs::Valmax<T>(), bs::Valmax<T>()), bs::Valmax<T>(), 0.5);
-  STF_ULP_EQUAL(meanof(bs::Valmin<T>(), bs::Valmin<T>()), bs::Valmin<T>(), 0.5);
-  STF_ULP_EQUAL(meanof(bs::Valmax<T>()/2, bs::Valmax<T>()), bs::Valmax<T>()*T(0.75), 0.5);
-  STF_ULP_EQUAL(meanof(bs::Valmin<T>()/2, bs::Valmin<T>()), bs::Valmin<T>()*T(0.75), 0.5);
-  STF_ULP_EQUAL(meanof(bs::Valmax<T>()/2, bs::Valmax<T>()), bs::Valmax<T>()*T(0.75), 0.5);
-  STF_ULP_EQUAL(meanof(bs::Valmin<T>()/2, bs::Valmin<T>()), bs::Valmin<T>()*T(0.75), 0.5);
+  STF_EQUAL(meanof(bs::Mone<T>(), bs::Mone<T>()), bs::Mone<T>());
+  STF_EQUAL(meanof(bs::One<T>(), bs::One<T>()), bs::One<T>());
+  STF_EQUAL(meanof(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
+  STF_IEEE_EQUAL(meanof(bs::Inf<T>(), bs::Minf<T>()), bs::Nan<T>());
+  STF_EQUAL(meanof(bs::Valmax<T>(), bs::Valmax<T>()), bs::Valmax<T>());
+  STF_EQUAL(meanof(bs::Valmin<T>(), bs::Valmin<T>()), bs::Valmin<T>());
+  STF_EQUAL(meanof(bs::Valmax<T>()/2, bs::Valmax<T>()), bs::Valmax<T>()*T(0.75));
+  STF_EQUAL(meanof(bs::Valmin<T>()/2, bs::Valmin<T>()), bs::Valmin<T>()*T(0.75));
+  STF_EQUAL(meanof(bs::Valmax<T>()/2, bs::Valmax<T>()), bs::Valmax<T>()*T(0.75));
+  STF_EQUAL(meanof(bs::Valmin<T>()/2, bs::Valmin<T>()), bs::Valmin<T>()*T(0.75));
 } // end of test for floating_
 
 STF_CASE_TPL (" meanof signed_int",  STF_SIGNED_INTEGRAL_TYPES)

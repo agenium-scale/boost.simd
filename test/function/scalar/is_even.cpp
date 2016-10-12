@@ -32,17 +32,17 @@ STF_CASE_TPL (" is_even real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(is_even(bs::Inf<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_even(bs::Minf<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_even(bs::Nan<T>()), r_t(false), 0.5);
+  STF_EQUAL(is_even(bs::Inf<T>()), r_t(false));
+  STF_EQUAL(is_even(bs::Minf<T>()), r_t(false));
+  STF_EQUAL(is_even(bs::Nan<T>()), r_t(false));
 #endif
-  STF_ULP_EQUAL(is_even(-bs::Zero<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_even(bs::Half<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_even(bs::Mone<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_even(bs::One<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_even(bs::Quarter<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_even(bs::Two<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_even(bs::Zero<T>()), r_t(true), 0.5);
+  STF_EQUAL(is_even(-bs::Zero<T>()), r_t(true));
+  STF_EQUAL(is_even(bs::Half<T>()), r_t(false));
+  STF_EQUAL(is_even(bs::Mone<T>()), r_t(false));
+  STF_EQUAL(is_even(bs::One<T>()), r_t(false));
+  STF_EQUAL(is_even(bs::Quarter<T>()), r_t(false));
+  STF_EQUAL(is_even(bs::Two<T>()), r_t(true));
+  STF_EQUAL(is_even(bs::Zero<T>()), r_t(true));
 }
 
 STF_CASE_TPL (" is_even signed_int",  STF_SIGNED_INTEGRAL_TYPES)

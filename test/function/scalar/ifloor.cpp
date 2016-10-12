@@ -30,13 +30,13 @@ STF_CASE_TPL (" ifloor real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(ifloor(bs::Inf<T>()), bs::Inf<r_t>(), 0.5);
-  STF_ULP_EQUAL(ifloor(bs::Minf<T>()), bs::Minf<r_t>(), 0.5);
-  STF_ULP_EQUAL(ifloor(bs::Nan<T>()), bs::Zero<r_t>(), 0.5);
+  STF_EQUAL(ifloor(bs::Inf<T>()), bs::Inf<r_t>());
+  STF_EQUAL(ifloor(bs::Minf<T>()), bs::Minf<r_t>());
+  STF_EQUAL(ifloor(bs::Nan<T>()), bs::Zero<r_t>());
 #endif
-  STF_ULP_EQUAL(ifloor(bs::Mone<T>()), bs::Mone<r_t>(), 0.5);
-  STF_ULP_EQUAL(ifloor(bs::One<T>()), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(ifloor(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
+  STF_EQUAL(ifloor(bs::Mone<T>()), bs::Mone<r_t>());
+  STF_EQUAL(ifloor(bs::One<T>()), bs::One<r_t>());
+  STF_EQUAL(ifloor(bs::Zero<T>()), bs::Zero<r_t>());
 } // end of test for floating_
 
 STF_CASE_TPL (" ifloor unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

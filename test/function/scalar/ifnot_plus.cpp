@@ -32,8 +32,8 @@ STF_CASE_TPL (" ifnot_plus real",  STF_IEEE_TYPES)
   STF_TYPE_IS( r_t, T );
 
   // specific values tests
-  STF_ULP_EQUAL(ifnot_plus(T(0),T(1),T(2)), T(3), 0.5);
-  STF_ULP_EQUAL(ifnot_plus(T(1),T(1),T(2)), T(1), 0.5);
+  STF_EQUAL(ifnot_plus(T(0),T(1),T(2)), T(3));
+  STF_EQUAL(ifnot_plus(T(1),T(1),T(2)), T(1));
 } // end of test for floating_
 
 STF_CASE_TPL (" ifnot_plus integer",  STF_INTEGRAL_TYPES)

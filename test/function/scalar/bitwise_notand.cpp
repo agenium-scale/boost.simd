@@ -29,12 +29,12 @@ STF_CASE_TPL (" bitwise_notand real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(bitwise_notand(bs::Inf<T>(), bs::Inf<T>()), bs::Zero<r_t>(), 0.5);
-  STF_ULP_EQUAL(bitwise_notand(bs::Minf<T>(), bs::Minf<T>()), bs::Zero<r_t>(), 0.5);
-  STF_ULP_EQUAL(bitwise_notand(bs::Nan<T>(), bs::Nan<T>()), bs::Zero<r_t>(), 0.5);
+  STF_EQUAL(bitwise_notand(bs::Inf<T>(), bs::Inf<T>()), bs::Zero<r_t>());
+  STF_EQUAL(bitwise_notand(bs::Minf<T>(), bs::Minf<T>()), bs::Zero<r_t>());
+  STF_EQUAL(bitwise_notand(bs::Nan<T>(), bs::Nan<T>()), bs::Zero<r_t>());
 #endif
-  STF_ULP_EQUAL(bitwise_notand(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
-  STF_ULP_EQUAL(bitwise_notand(bs::Zero<T>(),bs::One<T>()), bs::One<r_t>(), 0.5);
+  STF_EQUAL(bitwise_notand(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
+  STF_EQUAL(bitwise_notand(bs::Zero<T>(),bs::One<T>()), bs::One<r_t>());
 } // end of test for floating_
 
 STF_CASE_TPL("bitwise_notand mix", STF_IEEE_TYPES)
@@ -52,8 +52,8 @@ STF_CASE_TPL("bitwise_notand mix", STF_IEEE_TYPES)
   STF_EXPR_IS(bitwise_notand(siT(), T()), siT);
 
   // specific values tests
-  STF_ULP_EQUAL(bitwise_notand(bs::Zero<T>(),bs::Valmax<uiT>()), bs::Nan<T>(), 0.5);
-  STF_ULP_EQUAL(bitwise_notand(bs::Zero<T>(), bs::Mone<siT>()), bs::Nan<T>(), 0.5);
-  STF_ULP_EQUAL(bitwise_notand(bs::Zero<siT>(),bs::Nan<T>()), bs::Mone<siT>(), 0.5);
-  STF_ULP_EQUAL(bitwise_notand(bs::Zero<uiT>(), bs::Nan<T>()), bs::Valmax<uiT>(), 0.5);
+  STF_IEEE_EQUAL(bitwise_notand(bs::Zero<T>(),bs::Valmax<uiT>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bitwise_notand(bs::Zero<T>(), bs::Mone<siT>()), bs::Nan<T>());
+  STF_EQUAL(bitwise_notand(bs::Zero<siT>(),bs::Nan<T>()), bs::Mone<siT>());
+  STF_EQUAL(bitwise_notand(bs::Zero<uiT>(), bs::Nan<T>()), bs::Valmax<uiT>());
 }

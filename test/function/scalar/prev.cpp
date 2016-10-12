@@ -37,14 +37,14 @@ STF_CASE_TPL (" prev real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(prev(bs::Inf<T>()), bs::Valmax<r_t>(), 0.5);
-  STF_ULP_EQUAL(prev(bs::Minf<T>()), bs::Minf<r_t>(), 0.5);
-  STF_ULP_EQUAL(prev(bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(prev(bs::Valmin<T>()), bs::Minf<r_t>(), 0.5);
+  STF_EQUAL(prev(bs::Inf<T>()), bs::Valmax<r_t>());
+  STF_EQUAL(prev(bs::Minf<T>()), bs::Minf<r_t>());
+  STF_IEEE_EQUAL(prev(bs::Nan<T>()), bs::Nan<r_t>());
+  STF_EQUAL(prev(bs::Valmin<T>()), bs::Minf<r_t>());
 #endif
-  STF_ULP_EQUAL(prev(bs::Mone<T>()), bs::Mone<r_t>()-bs::Eps<r_t>(), 0.5);
-  STF_ULP_EQUAL(prev(bs::One<T>()), bs::One<r_t>()-bs::Eps<r_t>()/2, 0.5);
-  STF_ULP_EQUAL(prev(bs::Zero<T>()), -bs::Bitincrement<T>(), 0.5);
+  STF_EQUAL(prev(bs::Mone<T>()), bs::Mone<r_t>()-bs::Eps<r_t>());
+  STF_EQUAL(prev(bs::One<T>()), bs::One<r_t>()-bs::Eps<r_t>()/2);
+  STF_EQUAL(prev(bs::Zero<T>()), -bs::Bitincrement<T>());
 }
 
 STF_CASE_TPL (" prev unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

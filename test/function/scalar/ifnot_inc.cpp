@@ -64,11 +64,11 @@ STF_CASE_TPL(" ifnot_inc _floating", STF_IEEE_TYPES)
   STF_EXPR_IS( ifnot_inc(T(), T()), T);
 
   // specific values tests
-  STF_ULP_EQUAL(ifnot_inc(bs::Zero<T>(), bs::Mone<T>()), bs::Zero<T>(), 0.5);
-  STF_ULP_EQUAL(ifnot_inc(bs::Zero<T>(), bs::One<T>()), bs::Two<T>(), 0.5);
-  STF_ULP_EQUAL(ifnot_inc(bs::Zero<T>(), bs::Valmax<T>()), bs::Valmax<T>(), 0.5);
-  STF_ULP_EQUAL(ifnot_inc(bs::Zero<T>(), bs::Zero<T>()), bs::One<T>(), 0.5);
-  STF_ULP_EQUAL(ifnot_inc(bs::One<T>(), bs::Mone<T>()), bs::Mone<T>(), 0.5);
-  STF_ULP_EQUAL(ifnot_inc(bs::One<T>(), bs::One<T>()), bs::One<T>(), 0.5);
-  STF_ULP_EQUAL(ifnot_inc(bs::One<T>(), bs::Zero<T>()), bs::Zero<T>(), 0.5);
+  STF_EQUAL(ifnot_inc(bs::Zero<T>(), bs::Mone<T>()), bs::Zero<T>());
+  STF_EQUAL(ifnot_inc(bs::Zero<T>(), bs::One<T>()), bs::Two<T>());
+  STF_EQUAL(ifnot_inc(bs::Zero<T>(), bs::Valmax<T>()), bs::Valmax<T>());
+  STF_EQUAL(ifnot_inc(bs::Zero<T>(), bs::Zero<T>()), bs::One<T>());
+  STF_EQUAL(ifnot_inc(bs::One<T>(), bs::Mone<T>()), bs::Mone<T>());
+  STF_EQUAL(ifnot_inc(bs::One<T>(), bs::One<T>()), bs::One<T>());
+  STF_EQUAL(ifnot_inc(bs::One<T>(), bs::Zero<T>()), bs::Zero<T>());
 }

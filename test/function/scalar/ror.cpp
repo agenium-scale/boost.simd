@@ -47,9 +47,9 @@ STF_CASE_TPL (" rorreal", STF_IEEE_TYPES)
   iT w = sizeof(T)*CHAR_BIT;
 
   for(iT i=0;i<w;++i)
-    STF_ULP_EQUAL( ror(bitwise_cast<T>(iT(1)),i)
+    STF_EQUAL( ror(bitwise_cast<T>(iT(1)),i)
                   , bitwise_cast<T>(iT(1)<<((w-i) & (w-1)))
-                 , 0.5);
+                  );
 /*
   STF_ASSERT(ror(T(1),iT(-1)));
   STF_ASSERT(ror(T(1),iT(w+1)));

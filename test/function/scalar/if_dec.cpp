@@ -59,9 +59,9 @@ STF_CASE_TPL(" if_dec floating", STF_IEEE_TYPES)
   STF_EXPR_IS( if_dec(T(), T()), T );
 
   // specific values tests
-  STF_ULP_EQUAL(if_dec(bs::One<T>(), bs::One<T>()), bs::Zero<T>(), 0.5);
-  STF_ULP_EQUAL(if_dec(bs::One<T>(), bs::Two<T>()), bs::One<T>(), 0.5);
-  STF_ULP_EQUAL(if_dec(bs::One<T>(), bs::Zero<T>()), bs::Mone<T>(), 0.5);
+  STF_EQUAL(if_dec(bs::One<T>(), bs::One<T>()), bs::Zero<T>());
+  STF_EQUAL(if_dec(bs::One<T>(), bs::Two<T>()), bs::One<T>());
+  STF_EQUAL(if_dec(bs::One<T>(), bs::Zero<T>()), bs::Mone<T>());
 }
 
 

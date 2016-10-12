@@ -36,21 +36,21 @@ STF_CASE_TPL (" is_denormal",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(is_denormal(bs::Inf<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_denormal(bs::Minf<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_denormal(bs::Nan<T>()), r_t(false), 0.5);
+  STF_EQUAL(is_denormal(bs::Inf<T>()), r_t(false));
+  STF_EQUAL(is_denormal(bs::Minf<T>()), r_t(false));
+  STF_EQUAL(is_denormal(bs::Nan<T>()), r_t(false));
 #endif
-  STF_ULP_EQUAL(is_denormal(-bs::Zero<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_denormal(bs::Half<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_denormal(bs::Mone<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_denormal(bs::One<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_denormal(bs::Quarter<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_denormal(bs::Two<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_denormal(bs::Zero<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_denormal(bs::Smallestposval<T>()),  r_t(false), 0.5);
+  STF_EQUAL(is_denormal(-bs::Zero<T>()), r_t(false));
+  STF_EQUAL(is_denormal(bs::Half<T>()), r_t(false));
+  STF_EQUAL(is_denormal(bs::Mone<T>()), r_t(false));
+  STF_EQUAL(is_denormal(bs::One<T>()), r_t(false));
+  STF_EQUAL(is_denormal(bs::Quarter<T>()), r_t(false));
+  STF_EQUAL(is_denormal(bs::Two<T>()), r_t(false));
+  STF_EQUAL(is_denormal(bs::Zero<T>()), r_t(false));
+  STF_EQUAL(is_denormal(bs::Smallestposval<T>()),  r_t(false));
 #ifndef STF_NO_DENORMAL
-  STF_ULP_EQUAL(is_denormal(bs::Mindenormal<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_denormal(bs::Smallestposval<T>()/bs::Two<T>()), r_t(true), 0.5);
+  STF_EQUAL(is_denormal(bs::Mindenormal<T>()), r_t(true));
+  STF_EQUAL(is_denormal(bs::Smallestposval<T>()/bs::Two<T>()), r_t(true));
 #endif
 }
 

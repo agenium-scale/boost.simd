@@ -33,17 +33,17 @@ STF_CASE_TPL (" is_not_infinite real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(is_not_infinite(bs::Inf<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_not_infinite(bs::Minf<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_not_infinite(bs::Nan<T>()), r_t(true), 0.5);
+  STF_EQUAL(is_not_infinite(bs::Inf<T>()), r_t(false));
+  STF_EQUAL(is_not_infinite(bs::Minf<T>()), r_t(false));
+  STF_EQUAL(is_not_infinite(bs::Nan<T>()), r_t(true));
 #endif
-  STF_ULP_EQUAL(is_not_infinite(-bs::Zero<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_not_infinite(bs::Half<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_not_infinite(bs::Mone<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_not_infinite(bs::One<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_not_infinite(bs::Quarter<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_not_infinite(bs::Two<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_not_infinite(bs::Zero<T>()), r_t(true), 0.5);
+  STF_EQUAL(is_not_infinite(-bs::Zero<T>()), r_t(true));
+  STF_EQUAL(is_not_infinite(bs::Half<T>()), r_t(true));
+  STF_EQUAL(is_not_infinite(bs::Mone<T>()), r_t(true));
+  STF_EQUAL(is_not_infinite(bs::One<T>()), r_t(true));
+  STF_EQUAL(is_not_infinite(bs::Quarter<T>()), r_t(true));
+  STF_EQUAL(is_not_infinite(bs::Two<T>()), r_t(true));
+  STF_EQUAL(is_not_infinite(bs::Zero<T>()), r_t(true));
 }
 
 STF_CASE_TPL (" is_not_infinite signed_int",  STF_SIGNED_INTEGRAL_TYPES)

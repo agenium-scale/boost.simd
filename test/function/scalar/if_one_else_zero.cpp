@@ -32,12 +32,12 @@ STF_CASE_TPL (" if_one_else_zero real",  STF_IEEE_TYPES)
   STF_EXPR_IS( if_one_else_zero(T()),  T);
 
   // specific values tests
-  STF_ULP_EQUAL(if_one_else_zero(T(0)), 0, 0.5);
-  STF_ULP_EQUAL(if_one_else_zero(T(1)), 1, 0.5);
-  STF_ULP_EQUAL(if_one_else_zero(bs::Inf<T>()) , 1, 0.5);
-  STF_ULP_EQUAL(if_one_else_zero(bs::Minf<T>()),1, 0.5);
-  STF_ULP_EQUAL(if_one_else_zero(bs::Nan<T>()) , 1, 0.5);
-  STF_ULP_EQUAL(if_one_else_zero(bs::Zero<T>()),0, 0.5);
+  STF_EQUAL(if_one_else_zero(T(0)), 0);
+  STF_EQUAL(if_one_else_zero(T(1)), 1);
+  STF_EQUAL(if_one_else_zero(bs::Inf<T>()) , 1);
+  STF_EQUAL(if_one_else_zero(bs::Minf<T>()),1);
+  STF_EQUAL(if_one_else_zero(bs::Nan<T>()) , 1);
+  STF_EQUAL(if_one_else_zero(bs::Zero<T>()),0);
 } // end of test for floating_
 
 STF_CASE_TPL (" if_one_else_zero signed_int",  STF_SIGNED_INTEGRAL_TYPES)
@@ -67,16 +67,16 @@ STF_CASE_TPL (" if_one_else_zero real",  STF_IEEE_TYPES)
 
 
   // specific values tests
-  STF_ULP_EQUAL(if_one_else_zero(-bs::Zero<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(if_one_else_zero(bs::Half<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(if_one_else_zero(bs::Inf<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(if_one_else_zero(bs::Minf<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(if_one_else_zero(bs::Mone<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(if_one_else_zero(bs::Nan<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(if_one_else_zero(bs::One<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(if_one_else_zero(bs::Quarter<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(if_one_else_zero(bs::Two<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(if_one_else_zero(bs::Zero<T>()), r_t(false), 0.5);
+  STF_EQUAL(if_one_else_zero(-bs::Zero<T>()), r_t(false));
+  STF_EQUAL(if_one_else_zero(bs::Half<T>()), r_t(true));
+  STF_EQUAL(if_one_else_zero(bs::Inf<T>()), r_t(true));
+  STF_EQUAL(if_one_else_zero(bs::Minf<T>()), r_t(true));
+  STF_EQUAL(if_one_else_zero(bs::Mone<T>()), r_t(true));
+  STF_EQUAL(if_one_else_zero(bs::Nan<T>()), r_t(true));
+  STF_EQUAL(if_one_else_zero(bs::One<T>()), r_t(true));
+  STF_EQUAL(if_one_else_zero(bs::Quarter<T>()), r_t(true));
+  STF_EQUAL(if_one_else_zero(bs::Two<T>()), r_t(true));
+  STF_EQUAL(if_one_else_zero(bs::Zero<T>()), r_t(false));
 } // end of test for floating_
 
 STF_CASE_TPL (" if_one_else_zerosigned_int__1_0",  STF_SIGNED_INTEGRAL_TYPES)

@@ -26,14 +26,14 @@ STF_CASE_TPL (" hmsb real",  STF_IEEE_TYPES)
   using bs::hmsb;
 
   // specific values tests
-  STF_ULP_EQUAL(hmsb(bs::Allbits<T>()), 1u, 0.5);
-  STF_ULP_EQUAL(hmsb(bs::Inf<T>()), 0u, 0.5);
-  STF_ULP_EQUAL(hmsb(bs::Minf<T>()), 1u, 0.5);
-  STF_ULP_EQUAL(hmsb(bs::Mone<T>()), 1u, 0.5);
-  STF_ULP_EQUAL(hmsb(bs::Nan<T>()), 1u, 0.5);
-  STF_ULP_EQUAL(hmsb(bs::One<T>()), 0u, 0.5);
-  STF_ULP_EQUAL(hmsb(bs::Signmask<T>()), 1u, 0.5);
-  STF_ULP_EQUAL(hmsb(bs::Zero<T>()), 0u, 0.5);
+  STF_EQUAL(hmsb(bs::Allbits<T>()), 1u);
+  STF_EQUAL(hmsb(bs::Inf<T>()), 0u);
+  STF_EQUAL(hmsb(bs::Minf<T>()), 1u);
+  STF_EQUAL(hmsb(bs::Mone<T>()), 1u);
+  STF_EQUAL(hmsb(bs::Nan<T>()), 1u);
+  STF_EQUAL(hmsb(bs::One<T>()), 0u);
+  STF_EQUAL(hmsb(bs::Signmask<T>()), 1u);
+  STF_EQUAL(hmsb(bs::Zero<T>()), 0u);
 } // end of test for real_
 
 

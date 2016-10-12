@@ -33,10 +33,10 @@ STF_CASE_TPL (" clz real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(clz(bs::Nan<T>()), bs::Zero<r_t>(), 0.5);
+  STF_EQUAL(clz(bs::Nan<T>()), bs::Zero<r_t>());
 #endif
-  STF_ULP_EQUAL(clz(bs::Mone<T>()), bs::Zero<r_t>(), 0.5);
-  STF_ULP_EQUAL(clz(bs::Signmask<T>()),bs::Zero<r_t>(), 0.5);
+  STF_EQUAL(clz(bs::Mone<T>()), bs::Zero<r_t>());
+  STF_EQUAL(clz(bs::Signmask<T>()),bs::Zero<r_t>());
 } // end of test for real_
 
 STF_CASE_TPL (" clz signed_int",  STF_SIGNED_INTEGRAL_TYPES)

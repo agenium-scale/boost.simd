@@ -31,11 +31,11 @@ STF_CASE_TPL (" bit integerreal",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(bitinteger(bs::Nan<T>()), -bs::Valmax<r_t>(), 0.5);
+  STF_EQUAL(bitinteger(bs::Nan<T>()), -bs::Valmax<r_t>());
 #endif
 #if !defined(BOOST_SIMD_NO_DENORMALS)
-  STF_ULP_EQUAL(bitinteger(bs::Bitincrement<T>()), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(bitinteger(-bs::Bitincrement<T>()), bs::Mone<r_t>(), 0.5);
+  STF_EQUAL(bitinteger(bs::Bitincrement<T>()), bs::One<r_t>());
+  STF_EQUAL(bitinteger(-bs::Bitincrement<T>()), bs::Mone<r_t>());
 #endif
-  STF_ULP_EQUAL(bitinteger(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
+  STF_EQUAL(bitinteger(bs::Zero<T>()), bs::Zero<r_t>());
 }

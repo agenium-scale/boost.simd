@@ -34,22 +34,22 @@ STF_CASE_TPL (" negate real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(negate(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>(), 0.5);
-  STF_ULP_EQUAL(negate(bs::Minf<T>(), bs::Minf<T>()), bs::Inf<r_t>(), 0.5);
-  STF_ULP_EQUAL(negate(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(negate(bs::Nan<T>(), bs::Zero<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(negate(bs::Zero<T>(), bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(negate(bs::Nan<T>(), bs::Zero<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(negate(bs::One<T>(), bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
-  STF_ULP_EQUAL(negate(bs::Nan<T>(), bs::One<T>()), bs::Nan<r_t>(), 0.5);
+  STF_EQUAL(negate(bs::Inf<T>(), bs::Inf<T>()), bs::Inf<r_t>());
+  STF_EQUAL(negate(bs::Minf<T>(), bs::Minf<T>()), bs::Inf<r_t>());
+  STF_IEEE_EQUAL(negate(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(negate(bs::Nan<T>(), bs::Zero<T>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(negate(bs::Zero<T>(), bs::Nan<T>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(negate(bs::Nan<T>(), bs::Zero<T>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(negate(bs::One<T>(), bs::Nan<T>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(negate(bs::Nan<T>(), bs::One<T>()), bs::Nan<r_t>());
 #endif
   STF_TYPE_IS(r_t, T);
-  STF_ULP_EQUAL(negate(bs::Mone<T>(), bs::Mone<T>()), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(negate(bs::One<T>(), bs::One<T>()), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(negate(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
-  STF_ULP_EQUAL(negate(bs::One<T>(), bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
-  STF_ULP_EQUAL(negate(bs::Two<T>(), bs::Mthree<T>()), bs::Mtwo<r_t>(), 0.5);
-  STF_ULP_EQUAL(negate(bs::Two<T>(), bs::Three<T>()), bs::Two<r_t>(), 0.5);
+  STF_EQUAL(negate(bs::Mone<T>(), bs::Mone<T>()), bs::One<r_t>());
+  STF_EQUAL(negate(bs::One<T>(), bs::One<T>()), bs::One<r_t>());
+  STF_EQUAL(negate(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>());
+  STF_EQUAL(negate(bs::One<T>(), bs::Zero<T>()), bs::Zero<r_t>());
+  STF_EQUAL(negate(bs::Two<T>(), bs::Mthree<T>()), bs::Mtwo<r_t>());
+  STF_EQUAL(negate(bs::Two<T>(), bs::Three<T>()), bs::Two<r_t>());
 }
 
 STF_CASE_TPL (" negate unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)

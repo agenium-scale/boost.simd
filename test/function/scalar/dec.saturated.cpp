@@ -67,11 +67,11 @@ STF_CASE_TPL(" bs::saturated_(dec) floating", STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(bs::saturated_(dec)(bs::Inf<T>()), bs::Inf<T>(), 0.5);
-  STF_ULP_EQUAL(bs::saturated_(dec)(bs::Nan<T>()), bs::Nan<T>(), 0.5);
-  STF_ULP_EQUAL(bs::saturated_(dec)(bs::Minf<T>()), bs::Minf<T>(), 0.5);
+  STF_EQUAL(bs::saturated_(dec)(bs::Inf<T>()), bs::Inf<T>());
+  STF_IEEE_EQUAL(bs::saturated_(dec)(bs::Nan<T>()), bs::Nan<T>());
+  STF_EQUAL(bs::saturated_(dec)(bs::Minf<T>()), bs::Minf<T>());
 #endif
-  STF_ULP_EQUAL(bs::saturated_(dec)(bs::One<T>()), bs::Zero<T>(), 0.5);
-  STF_ULP_EQUAL(bs::saturated_(dec)(bs::Two<T>()), bs::One<T>(), 0.5);
-  STF_ULP_EQUAL(bs::saturated_(dec)(bs::Zero<T>()), bs::Mone<T>(), 0.5);
+  STF_EQUAL(bs::saturated_(dec)(bs::One<T>()), bs::Zero<T>());
+  STF_EQUAL(bs::saturated_(dec)(bs::Two<T>()), bs::One<T>());
+  STF_EQUAL(bs::saturated_(dec)(bs::Zero<T>()), bs::Mone<T>());
 }

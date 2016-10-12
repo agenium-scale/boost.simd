@@ -33,17 +33,17 @@ STF_CASE_TPL (" is_not_real real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(is_not_real(bs::Inf<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_not_real(bs::Minf<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_not_real(bs::Nan<T>()), r_t(false), 0.5);
+  STF_EQUAL(is_not_real(bs::Inf<T>()), r_t(false));
+  STF_EQUAL(is_not_real(bs::Minf<T>()), r_t(false));
+  STF_EQUAL(is_not_real(bs::Nan<T>()), r_t(false));
 #endif
-  STF_ULP_EQUAL(is_not_real(-bs::Zero<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_not_real(bs::Half<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_not_real(bs::Mone<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_not_real(bs::One<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_not_real(bs::Quarter<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_not_real(bs::Two<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_not_real(bs::Zero<T>()), r_t(false), 0.5);
+  STF_EQUAL(is_not_real(-bs::Zero<T>()), r_t(false));
+  STF_EQUAL(is_not_real(bs::Half<T>()), r_t(false));
+  STF_EQUAL(is_not_real(bs::Mone<T>()), r_t(false));
+  STF_EQUAL(is_not_real(bs::One<T>()), r_t(false));
+  STF_EQUAL(is_not_real(bs::Quarter<T>()), r_t(false));
+  STF_EQUAL(is_not_real(bs::Two<T>()), r_t(false));
+  STF_EQUAL(is_not_real(bs::Zero<T>()), r_t(false));
 }
 
 STF_CASE_TPL (" is_not_real signed_int",  STF_SIGNED_INTEGRAL_TYPES)

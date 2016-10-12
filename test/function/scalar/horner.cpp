@@ -68,12 +68,12 @@ STF_CASE_TPL( "Check horner behavior with floating", STF_IEEE_TYPES )
   using r_t = decltype(f(T()));
   STF_TYPE_IS(r_t, T);
 
-  STF_ULP_EQUAL(f(bs::Zero<T>()), bs::One<r_t>(), 0.5);
-  STF_ULP_EQUAL(f(bs::One<T>()),  bs::Ten<r_t>(), 0.5);
-  STF_ULP_EQUAL(f(bs::Mone<T>()), bs::Mtwo<r_t>(), 0.5);
-  STF_ULP_EQUAL(g(bs::Mone<T>()), bs::Mtwo<r_t>(), 0.5);
-  STF_ULP_EQUAL(g(bs::One<T>()),  bs::Ten<r_t>(), 0.5);
-  STF_ULP_EQUAL(g(bs::Mone<T>()), bs::Mtwo<r_t>(), 0.5);
+  STF_EQUAL(f(bs::Zero<T>()), bs::One<r_t>());
+  STF_EQUAL(f(bs::One<T>()),  bs::Ten<r_t>());
+  STF_EQUAL(f(bs::Mone<T>()), bs::Mtwo<r_t>());
+  STF_EQUAL(g(bs::Mone<T>()), bs::Mtwo<r_t>());
+  STF_EQUAL(g(bs::One<T>()),  bs::Ten<r_t>());
+  STF_EQUAL(g(bs::Mone<T>()), bs::Mtwo<r_t>());
 }
 
 

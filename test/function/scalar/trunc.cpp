@@ -31,22 +31,22 @@ STF_CASE_TPL (" trunc real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(trunc(bs::Inf<T>()), bs::Inf<T>(), 0.5);
-  STF_ULP_EQUAL(trunc(bs::Minf<T>()), bs::Minf<T>(), 0.5);
-  STF_ULP_EQUAL(trunc(bs::Nan<T>()), bs::Nan<T>(), 0.5);
+  STF_EQUAL(trunc(bs::Inf<T>()), bs::Inf<T>());
+  STF_EQUAL(trunc(bs::Minf<T>()), bs::Minf<T>());
+  STF_IEEE_EQUAL(trunc(bs::Nan<T>()), bs::Nan<T>());
 #endif
-  STF_ULP_EQUAL(trunc(bs::One<T>()), bs::One<T>(), 0.5);
-  STF_ULP_EQUAL(trunc(bs::Mone<T>()), bs::Mone<T>(), 0.5);
-  STF_ULP_EQUAL(trunc(bs::Zero<T>()), bs::Zero<T>(), 0.5);
-  STF_ULP_EQUAL(trunc(bs::Pi<T>()), bs::Three<T>(), 0.5);
-  STF_ULP_EQUAL(trunc(T(1.4)), T(1), 0.5);
-  STF_ULP_EQUAL(trunc(T(1.5)), T(1), 0.5);
-  STF_ULP_EQUAL(trunc(T(1.6)), T(1), 0.5);
-  STF_ULP_EQUAL(trunc(T(2.5)), T(2), 0.5);
-  STF_ULP_EQUAL(trunc(T(-1.4)), T(-1), 0.5);
-  STF_ULP_EQUAL(trunc(T(-1.5)), T(-1), 0.5);
-  STF_ULP_EQUAL(trunc(T(-1.6)), T(-1), 0.5);
-  STF_ULP_EQUAL(trunc(T(-2.5)), T(-2), 0.5);
+  STF_EQUAL(trunc(bs::One<T>()), bs::One<T>());
+  STF_EQUAL(trunc(bs::Mone<T>()), bs::Mone<T>());
+  STF_EQUAL(trunc(bs::Zero<T>()), bs::Zero<T>());
+  STF_EQUAL(trunc(bs::Pi<T>()), bs::Three<T>());
+  STF_EQUAL(trunc(T(1.4)), T(1));
+  STF_EQUAL(trunc(T(1.5)), T(1));
+  STF_EQUAL(trunc(T(1.6)), T(1));
+  STF_EQUAL(trunc(T(2.5)), T(2));
+  STF_EQUAL(trunc(T(-1.4)), T(-1));
+  STF_EQUAL(trunc(T(-1.5)), T(-1));
+  STF_EQUAL(trunc(T(-1.6)), T(-1));
+  STF_EQUAL(trunc(T(-2.5)), T(-2));
 } // end of test for floating_
 
 STF_CASE_TPL (" trunc unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
@@ -92,17 +92,17 @@ STF_CASE_TPL ( "fast trunc real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-  STF_ULP_EQUAL(bs::fast_(trunc)(bs::One<T>()), bs::One<T>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(trunc)(bs::Mone<T>()), bs::Mone<T>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(trunc)(bs::Zero<T>()), bs::Zero<T>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(trunc)(bs::Pi<T>()), bs::Three<T>(), 0.5);
-  STF_ULP_EQUAL(bs::fast_(trunc)(T(1.4)), T(1), 0.5);
-  STF_ULP_EQUAL(bs::fast_(trunc)(T(1.5)), T(1), 0.5);
-  STF_ULP_EQUAL(bs::fast_(trunc)(T(1.6)), T(1), 0.5);
-  STF_ULP_EQUAL(bs::fast_(trunc)(T(2.5)), T(2), 0.5);
-  STF_ULP_EQUAL(bs::fast_(trunc)(T(-1.4)), T(-1), 0.5);
-  STF_ULP_EQUAL(bs::fast_(trunc)(T(-1.5)), T(-1), 0.5);
-  STF_ULP_EQUAL(bs::fast_(trunc)(T(-1.6)), T(-1), 0.5);
-  STF_ULP_EQUAL(bs::fast_(trunc)(T(-2.5)), T(-2), 0.5);
+  STF_EQUAL(bs::fast_(trunc)(bs::One<T>()), bs::One<T>());
+  STF_EQUAL(bs::fast_(trunc)(bs::Mone<T>()), bs::Mone<T>());
+  STF_EQUAL(bs::fast_(trunc)(bs::Zero<T>()), bs::Zero<T>());
+  STF_EQUAL(bs::fast_(trunc)(bs::Pi<T>()), bs::Three<T>());
+  STF_EQUAL(bs::fast_(trunc)(T(1.4)), T(1));
+  STF_EQUAL(bs::fast_(trunc)(T(1.5)), T(1));
+  STF_EQUAL(bs::fast_(trunc)(T(1.6)), T(1));
+  STF_EQUAL(bs::fast_(trunc)(T(2.5)), T(2));
+  STF_EQUAL(bs::fast_(trunc)(T(-1.4)), T(-1));
+  STF_EQUAL(bs::fast_(trunc)(T(-1.5)), T(-1));
+  STF_EQUAL(bs::fast_(trunc)(T(-1.6)), T(-1));
+  STF_EQUAL(bs::fast_(trunc)(T(-2.5)), T(-2));
 } // end of test for floating_
 

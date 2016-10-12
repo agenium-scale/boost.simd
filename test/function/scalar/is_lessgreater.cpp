@@ -33,19 +33,19 @@ STF_CASE_TPL (" is_lessgreater real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(is_lessgreater(bs::Inf<T>(), bs::Inf<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_lessgreater(bs::Minf<T>(), bs::Minf<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_lessgreater(bs::Nan<T>(), bs::Nan<T>()), r_t(false), 0.5);
+  STF_EQUAL(is_lessgreater(bs::Inf<T>(), bs::Inf<T>()), r_t(false));
+  STF_EQUAL(is_lessgreater(bs::Minf<T>(), bs::Minf<T>()), r_t(false));
+  STF_EQUAL(is_lessgreater(bs::Nan<T>(), bs::Nan<T>()), r_t(false));
 #endif
-  STF_ULP_EQUAL(is_lessgreater(-bs::Zero<T>(), -bs::Zero<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_lessgreater(bs::Half<T>(), bs::Half<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_lessgreater(bs::Mone<T>(), bs::Mone<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_lessgreater(bs::One<T>(), bs::One<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_lessgreater(bs::Quarter<T>(), bs::Quarter<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_lessgreater(bs::Two<T>(), bs::Two<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_lessgreater(bs::Zero<T>(), bs::Zero<T>()), r_t(false), 0.5);
-  STF_ULP_EQUAL(is_lessgreater(-bs::Zero<T>(), -bs::One<T>()), r_t(true), 0.5);
-  STF_ULP_EQUAL(is_lessgreater(bs::One<T>(), bs::Half<T>()), r_t(true), 0.5);
+  STF_EQUAL(is_lessgreater(-bs::Zero<T>(), -bs::Zero<T>()), r_t(false));
+  STF_EQUAL(is_lessgreater(bs::Half<T>(), bs::Half<T>()), r_t(false));
+  STF_EQUAL(is_lessgreater(bs::Mone<T>(), bs::Mone<T>()), r_t(false));
+  STF_EQUAL(is_lessgreater(bs::One<T>(), bs::One<T>()), r_t(false));
+  STF_EQUAL(is_lessgreater(bs::Quarter<T>(), bs::Quarter<T>()), r_t(false));
+  STF_EQUAL(is_lessgreater(bs::Two<T>(), bs::Two<T>()), r_t(false));
+  STF_EQUAL(is_lessgreater(bs::Zero<T>(), bs::Zero<T>()), r_t(false));
+  STF_EQUAL(is_lessgreater(-bs::Zero<T>(), -bs::One<T>()), r_t(true));
+  STF_EQUAL(is_lessgreater(bs::One<T>(), bs::Half<T>()), r_t(true));
 }
 
 STF_CASE_TPL (" is_lessgreater signed_int",  STF_SIGNED_INTEGRAL_TYPES)
