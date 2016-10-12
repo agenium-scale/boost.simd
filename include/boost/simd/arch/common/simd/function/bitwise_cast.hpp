@@ -1,24 +1,20 @@
 //==================================================================================================
-/*!
-  @file
-
+/**
   Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_BITWISE_CAST_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_BITWISE_CAST_HPP_INCLUDED
 
+#include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/dispatch/as.hpp>
-#include <boost/simd/detail/dispatch/hierarchy.hpp>
-#include <boost/simd/logical.hpp>
-#include <cstring>
-#include <type_traits>
-#include <boost/simd/detail/dispatch/function/overload.hpp>
-#include <boost/config.hpp>
+#include <boost/simd/meta/as_arithmetic.hpp>
 #include <boost/simd/detail/traits.hpp>
+#include <boost/simd/logical.hpp>
+#include <type_traits>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -35,15 +31,14 @@ namespace boost { namespace simd { namespace ext
   {
     using result_t =  typename A1::type;
 
-    static_assert
-    ( (sizeof(A0) == sizeof(typename A1::type))
-    , "boost.simd target is not same size as source in bitwise_cast"
-    );
+    static_assert ( (sizeof(A0) == sizeof(result_t))
+                  , "boost.simd target is not same size as source in bitwise_cast"
+                  );
 
     BOOST_FORCEINLINE result_t operator()(A0 const& a0, A1 const& ) const BOOST_NOEXCEPT
     {
-      //      std::cout << "ARITHMETIC --> LOGICAL" << type_id<A0>() << " --> " << type_id<result_t>() << std::endl;
-      return a0.storage();
+      using a_t = bs::as_arithmetic_t<result_t>;
+      return bitwise_cast<a_t>(a0).storage();
     }
   };
 
@@ -57,27 +52,16 @@ namespace boost { namespace simd { namespace ext
   {
     using result_t =  typename A1::type;
 
-    static_assert
-    ( (sizeof(A0) == sizeof(typename A1::type))
-    , "boost.simd target is not same size as source in bitwise_cast"
-    );
+    static_assert ( (sizeof(A0) == sizeof(result_t))
+                  , "boost.simd target is not same size as source in bitwise_cast"
+                  );
 
     BOOST_FORCEINLINE result_t operator()(A0 const& a0, A1 const& ) const BOOST_NOEXCEPT
     {
-      return do_(a0, typename std::is_same<A0, result_t>::type());
+      using a_t = bs::as_arithmetic_t<A0>;
+      a_t tmp{a0.storage()};
+      return bitwise_cast<result_t>(tmp);
     }
-
-    BOOST_FORCEINLINE result_t do_(A0 const& a0, std::false_type ) const BOOST_NOEXCEPT
-    {
-//      std::cout << "LOGICAL --> UNSPECIFIED" << type_id<A0>() << " --> " << type_id<result_t>() << std::endl;
-      return a0.storage();
-    }
-
-    BOOST_FORCEINLINE result_t do_(A0 const& a0, std::true_type const& ) const BOOST_NOEXCEPT
-    {
-      return a0;
-    }
-
   };
 
   BOOST_DISPATCH_OVERLOAD_IF ( bitwise_cast_
@@ -90,10 +74,9 @@ namespace boost { namespace simd { namespace ext
   {
     using result_t =  typename A1::type;
 
-    static_assert
-    ( (sizeof(A0) == sizeof(typename A1::type))
-    , "boost.simd target is not same size as source in bitwise_cast"
-    );
+    static_assert ( (sizeof(A0) == sizeof(result_t))
+                  , "boost.simd target is not same size as source in bitwise_cast"
+                  );
 
     BOOST_FORCEINLINE result_t operator()(A0 const& a0, A1 const& ) const BOOST_NOEXCEPT
     {
@@ -102,17 +85,16 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE result_t do_(A0 const& a0, std::false_type ) const BOOST_NOEXCEPT
     {
-//     std::cout << "LOGICAL --> UNSPECIFIED" << type_id<A0>() << " --> " << type_id<result_t>() << std::endl;
-      return a0.storage();
+      using a_t = bs::as_arithmetic_t<A0>;
+      using r_t = bs::as_arithmetic_t<result_t>;
+      return bitwise_cast<r_t>(bitwise_cast<a_t>(a0)).storage() ;
     }
 
     BOOST_FORCEINLINE result_t do_(A0 const& a0, std::true_type const& ) const BOOST_NOEXCEPT
     {
       return a0;
     }
-
   };
-
 } } }
 
 #endif
