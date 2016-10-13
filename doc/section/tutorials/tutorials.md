@@ -28,13 +28,18 @@ following tutorials applications may vary.
 
   1. [Writing a dot product the SIMD Way](@ref tutorial-dot)
   2. [SIMD Branching](@ref tutorial-branching)
+  3. [SIMD Branching Part 2 - Computations with different types](@ref tutorial-branching-split)
+  4. [Evaluation of a Neural Network](@ref tutorial-neural)
+  5. [Evaluation of the N-Body problem](@ref tutorial-nbody)
 
 @section adv-tut Advanced Tutorials
 
 ------------------------------
 
   1. [Runtime Extension Selection](@ref tutorial-runtime)
-  2. [Computations with different types](@ref tutorial-distance)
+  2. [Distance between 2D Points](@ref tutorial-distance)
+  3. [Distance between 2D Points Part 2](@ref tutorial-distance-hypot)
+  4. [Vectorizing the Julia Set Calculation](@ref tutorial-julia)
 
 <!-- FIXME: current page isn't big enough and moving from nav tabs makes all content to be
 dancing/moving wierdly. Adding this blank block fixes this. This workaround won't be useful

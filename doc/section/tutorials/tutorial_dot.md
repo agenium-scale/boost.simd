@@ -1,4 +1,4 @@
-Writing a dot product the __SIMD__ way {#tutorial-dot}
+Writing a dot product the SIMD way {#tutorial-dot}
 =========
 
 @tableofcontents
