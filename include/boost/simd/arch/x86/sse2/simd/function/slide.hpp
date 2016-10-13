@@ -67,8 +67,8 @@ namespace boost { namespace simd { namespace ext
       using rs    = std::integral_constant<std::size_t,bcnt::value*(T::static_size-Offset::value)>;
 
       // Shift everything in place
-      return bitwise_cast<T>( _mm_or_si128( _mm_srli_si128(bitwise_cast<bits_t>(a0),ls::value)
-                                          , _mm_slli_si128(bitwise_cast<bits_t>(a1),rs::value)
+      return bitwise_cast<T>(bits_t( _mm_or_si128( _mm_srli_si128(bitwise_cast<bits_t>(a0),ls::value)
+                                                 , _mm_slli_si128(bitwise_cast<bits_t>(a1),rs::value))
                                           )
                             );
     }
