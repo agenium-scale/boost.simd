@@ -9,7 +9,8 @@ cmake_minimum_required(VERSION 2.8.7)
 
 ## Setup project
 ## -------------------------------------------------------------------------------------------------
-project(Boost.SIMD)
+project(Boost.SIMD CXX)
+set(PROJECT_VERSION 4.16.9.0) # TODO: Find a way to update this automatically
 set(PROJECT_DOC_DIR ${PROJECT_SOURCE_DIR}/doc)
 
 ## Requirements for ns.cmake:
@@ -80,8 +81,7 @@ include(./cmake/extend.cmake)
 ## Compute version string and mode + Documentation
 ## -------------------------------------------------------------------------------------------------
 if (DEFINED DEV AND NOT DEFINED IS_TRAVIS_CI)
-  NS_include(parse_revision)
-  NS_include(doc/doxygen)
+  add_subdirectory(./doc)
 endif()
 
 ## Install target

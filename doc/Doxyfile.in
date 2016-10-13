@@ -1,7 +1,7 @@
 PROJECT_NAME           = @PROJECT_NAME@
-PROJECT_BRIEF          = "Flexible SIMD Programming"
+PROJECT_BRIEF          = @PROJECT_BRIEF@
 PROJECT_LOGO           = @PROJECT_DOC_DIR@/template/assets/numscale.png
-PROJECT_NUMBER         = 4.16.9.0
+PROJECT_NUMBER         = @PROJECT_VERSION@
 
 DOXYFILE_ENCODING      = UTF-8
 
@@ -13,11 +13,14 @@ INPUT                 += @PROJECT_SOURCE_DIR@/include/boost/simd/meta
 INPUT                 += @PROJECT_SOURCE_DIR@/include/boost/simd/meta/hierarchy
 INPUT                 += @PROJECT_SOURCE_DIR@/include/boost/simd/constant
 INPUT                 += @PROJECT_SOURCE_DIR@/include/boost/simd/function/
-INPUT                 += @PROJECT_DOC_DIR@/section
-INPUT                 += @PROJECT_DOC_DIR@/section/home
-INPUT                 += @PROJECT_DOC_DIR@/section/quickstart
-INPUT                 += @PROJECT_DOC_DIR@/section/faq
-INPUT                 += @PROJECT_DOC_DIR@/section/tutorials
+INPUT                 += @PROJECT_DOC_DIR@/custom
+INPUT                 += @PROJECT_DOC_DIR@/custom/sections/faq
+INPUT                 += @PROJECT_DOC_DIR@/custom/sections/home
+INPUT                 += @PROJECT_DOC_DIR@/custom/sections/quickstart
+INPUT                 += @PROJECT_DOC_DIR@/custom/sections/tutorials
+## DO NOT REMOVE THE FOLLOWING LINES: {
+INPUT                 += @PROJECT_DOC_DIR@/template/sections/versions
+## }
 FILE_PATTERNS          = *.md *.hpp
 RECURSIVE              = NO
 
@@ -33,7 +36,7 @@ EXCLUDE_SYMLINKS       = NO
 EXCLUDE_PATTERNS       =
 EXCLUDE_SYMBOLS        =
 
-EXAMPLE_PATH           = @PROJECT_SOURCE_DIR@/doc/example
+EXAMPLE_PATH           = @PROJECT_SOURCE_DIR@/doc/examples
 EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc
 EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/doc/
 EXAMPLE_RECURSIVE      = YES
@@ -46,11 +49,17 @@ HTML_FILE_EXTENSION    = .html
 HTML_HEADER            = @PROJECT_DOC_DIR@/template/html/header.html
 HTML_FOOTER            = @PROJECT_DOC_DIR@/template/html/footer.html
 HTML_STYLESHEET        =
-HTML_EXTRA_STYLESHEET  = @PROJECT_DOC_DIR@/template/css/numscale.css
-HTML_EXTRA_FILES       = @PROJECT_DOC_DIR@/template/js/numscale.js
+
+## DO NOT REORDER THE FOLLOWING LINES: {
+HTML_EXTRA_STYLESHEET  = @PROJECT_DOC_DIR@/custom/css/custom.css
+HTML_EXTRA_STYLESHEET += @PROJECT_DOC_DIR@/template/css/ns.css
+HTML_EXTRA_FILES       = @PROJECT_DOC_DIR@/template/js/ns.js
+HTML_EXTRA_FILES      += @PROJECT_DOC_DIR@/custom/js/custom.js
+## }
 HTML_EXTRA_FILES      += @PROJECT_DOC_DIR@/template/assets/numscale_icon.png
 
-LAYOUT_FILE            = @PROJECT_DOC_DIR@/template/layout.xml
+## YES THE CURRENT BINARY DIR, LAYOUT IS FIRST PREPROCESSED BY CMAKE AND WILL BE GENERATED THERE!
+LAYOUT_FILE            = @CMAKE_CURRENT_BINARY_DIR@/layout.xml
 
 ALIASES =
 ALIASES += notebox{1}="<dl class=\"section note\"><dt>Note</dt><dd>\1</dd></dl>"
@@ -60,6 +69,7 @@ ALIASES += refanchor{1}="<a name=\"back\1\"></a>[<sup>\1</sup>](#\1)"
 ALIASES += intconst="<a href=\"http://www.boost.org/doc/libs/release/libs/mpl/doc/refmanual/integral-constant.html\">Integral Constant</a>"
 ALIASES += range{2}="<tt>[\1, \2[</tt>"
 ALIASES += projectname=@PROJECT_NAME@
+ALIASES += projectnumber=@PROJECT_VERSION@
 
 # --------------------------------------------------------------------------------------------------
 
