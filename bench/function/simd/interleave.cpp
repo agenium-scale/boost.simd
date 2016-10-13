@@ -12,9 +12,9 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_interleave, bs::interleave);
+DEFINE_SIMD_BENCH(simd_interleave, bs::interleave);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_interleave, NS_BENCH_IEEE_TYPES>(-10, 10,-10, 10);
+  nsb::for_each<simd_interleave, NS_BENCH_IEEE_TYPES, std::int32_t>(-10, 10,-10, 10);
 }
