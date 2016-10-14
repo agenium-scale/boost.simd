@@ -1,4 +1,4 @@
-Julai Set {#tutorial-julia}
+Julia Set {#tutorial-julia}
 =========
 
 @tableofcontents
