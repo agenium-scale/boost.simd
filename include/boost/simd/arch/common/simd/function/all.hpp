@@ -28,13 +28,9 @@ namespace boost { namespace simd { namespace ext
                             , bs::pack_<bd::fundamental_<A0>, X>
                             )
   {
-    // MSVC has some issue with >> in template declaration
-    static const std::size_t cnt = (std::size_t(-1) >> (64 - A0::static_size));
-    using count = std::integral_constant<std::size_t,cnt>;
-
     BOOST_FORCEINLINE bool operator()(const A0& a0) const BOOST_NOEXCEPT
     {
-      return hmsb(genmask(a0)) == count::value;
+      return hmsb(genmask(a0)).all();
     }
   };
 
