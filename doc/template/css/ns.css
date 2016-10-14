@@ -95,3 +95,7 @@ div.header {
 #right-logo img {
     height: 60px;
 }
+
+a.disabled {
+    pointer-events: none;
+}
