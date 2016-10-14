@@ -13,6 +13,7 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/slide.hpp>
+#include <boost/simd/meta/is_pointing_to.hpp>
 #include <boost/simd/detail/dispatch/adapted/common/pointer.hpp>
 #include <boost/simd/detail/is_aligned.hpp>
 #include <boost/assert.hpp>
