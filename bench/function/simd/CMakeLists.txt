@@ -93,6 +93,7 @@ set(SOURCES
     ctz.cpp
     dec.cpp
     dec.saturated.cpp
+    deinterleave.cpp
     deinterleave_first.cpp
     deinterleave_second.cpp
     dist.cpp
@@ -155,6 +156,7 @@ set(SOURCES
     indeg.cpp
     inearbyint.cpp
     inrad.cpp
+    interleave.cpp
     interleave_even.cpp
     interleave_first.cpp
     interleave_odd.cpp
