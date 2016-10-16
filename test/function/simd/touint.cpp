@@ -25,8 +25,8 @@ void test(Env& $)
   iT b[N];
   for(int i = 0; i < N; ++i)
   {
-    a1[i] =T(i);
-    b[i] = bs::touint(a1[i]) ;
+    a1[i] =  T(i);
+    b[i]  = iT(i);
   }
   p_t aa1(&a1[0], &a1[0]+N);
   i_t bb (&b[0], &b[0]+N);
