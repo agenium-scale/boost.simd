@@ -16,27 +16,34 @@ namespace boost { namespace simd
 {
   /*!
     @ingroup group-swar
-    Return a boost::simd::pack filled with the value of the @c N th value of its argument.
+    Returns a boost::simd::pack filled with the value of the @c N th value of its argument.
 
     @par Scalar Semantic:
     For any value @c v of type @c T and any integral constant @c I, the following code:
+
     @code
     T r = boost::simd::broadcast<I>(v);
     @endcode
+
     is equivalent to:
+
     @code
     T r = I == 0 ? static_cast<T>(v) : T{0};
     @endcode
 
     @par SIMD Semantic:
     For any type @c T and any integral constants @c N and @c I, the following code:
+
     @code
     pack<T,N> r = boost::simd::broadcast<I>(v);
     @endcode
+
     is equivalent to:
+
     @code
     pack<T,N> r{ ((I < N) || (I>=0)) ? v[I] : 0};
     @endcode
+
     The extraction of the value is done using the optimal intrinsics if available or will proceed to
     a memory read-back. See boost::simd::extract for more informations.
 

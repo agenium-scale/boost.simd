@@ -16,7 +16,7 @@ namespace boost { namespace simd
   /*!
     @ingroup group-swar
     This function object concatenates two values of the same type to build a boost::simd::pack of
-    with same base type but with a cardinal twice as large.
+    the same base type but with a cardinal twice as large.
 
     @par Scalar Semantic:
     For any scalar value @c a and @c b of type @c T , the following code:
@@ -39,12 +39,12 @@ namespace boost { namespace simd
     @endcode
     where @c N is equal to the cardinal of both @c a and @c b.
 
-    @param v0 First value to combine
+    @param v0 First  value to combine
     @param v1 Second value to combine
 
-    @return The type-preserved concatenation of both inputs
+    @return The concatenation of both inputs
   **/
-  Value combine(Value const& v0, Value const& v1);
+  auto combine(Value const& v0, Value const& v1);
 } }
 #endif
 
