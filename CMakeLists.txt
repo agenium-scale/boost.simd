@@ -76,12 +76,12 @@ endif()
 
 ## Extension point for CMake
 ## -------------------------------------------------------------------------------------------------
-include(./cmake/extend.cmake)
+include(${PROJECT_SOURCE_DIR}/cmake/extend.cmake)
 
 ## Compute version string and mode + Documentation
 ## -------------------------------------------------------------------------------------------------
 if (DEFINED DEV AND NOT DEFINED IS_TRAVIS_CI)
-  add_subdirectory(./doc)
+  add_subdirectory(${PROJECT_SOURCE_DIR}/doc)
 endif()
 
 ## Install target
@@ -104,7 +104,7 @@ include_directories(
 ## Setup Unit/Bench & Coverage Test
 ## -------------------------------------------------------------------------------------------------
 if (DEFINED DEV)
-  include(./setup.cmake) # Import compiler specific setup
+  include(${PROJECT_SOURCE_DIR}/setup.cmake) # Import compiler specific setup
 
   include(CTest)
   add_custom_target(tests)
