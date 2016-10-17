@@ -24,24 +24,6 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
 
-/*
-  template<typename T> inline std::string type_id()
-  {
-    typedef std::is_const<typename std::remove_reference<T>::type>  const_t;
-    typedef std::is_lvalue_reference<T>                             lref_t;
-    typedef std::is_rvalue_reference<T>                             rref_t;
-    std::string s = boost::core::demangle(typeid(T).name());
-    s += const_t::value ? " const"  : "";
-    s += lref_t::value   ? "&"      : "";
-    s += rref_t::value   ? "&&"     : "";
-    return s;
-  }
-  template<typename T> inline std::string type_id( const T& )
-  {
-    return type_id<T>();
-  }
-*/
-
   BOOST_DISPATCH_OVERLOAD ( bitwise_cast_
                           , (typename A0, typename A1)
                           , bd::cpu_
@@ -75,7 +57,6 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE result_t do_(A0 const& a0, K const& ) const BOOST_NOEXCEPT
     {
       result_t that;
-      //std::cout << "MEMCPY " << type_id<A0>() << " --> " << type_id<result_t>() << std::endl;
       std::memcpy(&that, &a0, sizeof(a0));
       return that;
     }
