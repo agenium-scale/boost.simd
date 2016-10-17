@@ -45,6 +45,14 @@ dl.section dd {
     margin-bottom: 6px;
 }
 
+/* Fix style for non-box sections */
+dl.section.user,
+dl.section.return
+{
+    background-color: transparent;
+    padding: 0px;
+}
+
 tbody {
     text-align: left;
 }
@@ -98,4 +106,54 @@ div.header {
 
 a.disabled {
     pointer-events: none;
+}
+
+td.paramname {
+    padding-right: 20px;
+}
+
+div.navtab {
+    padding: 10px;
+    height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-radius: 4px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+#nav-path {
+    margin-top: 20px;
+}
+
+div.contents {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+td.mempage {
+    min-height: 500px;
+    width: 80%;
+}
+
+.contents table {
+    width: 100%;
+}
+
+.memTemplParams,
+.memtemplate {
+    font-size: 100%;
+}
+
+.memname {
+    margin-left: 9px;
+}
+
+div.textblock h3 {
+    font-size: 16px;
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    background-color: #f5f5f5;
 }
