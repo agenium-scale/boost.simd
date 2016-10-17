@@ -11,6 +11,7 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
+#include <bitset>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -23,14 +24,14 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::ints16_<A0>, bs::sse_>
                          )
   {
-    BOOST_FORCEINLINE std::size_t operator() ( const A0 & a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE std::bitset<8> operator()(const A0 & a0) const BOOST_NOEXCEPT
     {
       using s8type = typename A0::template retype<int8_t, 16>;
       s8type mask = { 0x01,0x03,0x05,0x07,0x09,0x0B,0x0D,0x0F
                     ,-128,-128,-128,-128,-128,-128,-128,-128
                     };
 
-      return _mm_movemask_epi8( _mm_shuffle_epi8(bitwise_cast<s8type>(a0), mask));
+      return _mm_movemask_epi8(_mm_shuffle_epi8(bitwise_cast<s8type>(a0), mask));
     }
   };
 } } }

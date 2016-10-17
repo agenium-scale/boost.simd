@@ -29,7 +29,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE bool operator()( const A0& a0) const BOOST_NOEXCEPT
     {
-      return hmsb(genmask(a0)) != 0;
+      return hmsb(genmask(a0)).any();
     }
   };
 

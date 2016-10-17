@@ -14,33 +14,16 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-
- /*!
-
+  /*!
     @ingroup group-reduction
-    Function object implementing hmsb capabilities
 
-    Returns a std::size_t value composed by the highiest bits.
-    of each vector element
+    Returns a std::bitset build from the most significant bit of each value its argument.
 
-    @par Semantic:
-
-    @code
-    std::size_t r = hmsb(x);
-    @endcode
-
-    is similar to:
-
-    @code
-      std::size_t r = 0;
-      for(result_type i = 0; i != cardinal_of<T>; ++i)
-      {
-        r |= (bits(x[i]) >> (sizeof(stype)*8 - 1)) << i;
-      }
-    @endcode
-
+    @param  v Value to process
+    @return A std::bitset of the size of cardinal(v) containing the most signiicant bits of each
+    elements of v.
   **/
-  std::size_t hmsb(Value const & v0);
+  std::bitset<cardinal_of<Value>::value> hmsb(Value const & v);
 } }
 #endif
 
