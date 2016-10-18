@@ -13,6 +13,7 @@
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/function/combine.hpp>
 #include <boost/simd/function/slide.hpp>
+#include <boost/simd/function/interleave_second.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
