@@ -12,6 +12,7 @@
 #include <simd_test.hpp>
 
 namespace bs = boost::simd;
+namespace bd = boost::dispatch;
 
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
@@ -39,9 +40,10 @@ void test(Env& $)
 
 STF_CASE_TPL("Check is_less on pack", STF_NUMERIC_TYPES)
 {
-  static const std::size_t N = bs::pack<T>::static_size;
+ static const std::size_t N = bs::pack<T>::static_size;
 
-  test<T, N>($);
-  test<T, N/2>($);
-  test<T, N*2>($);
+ test<T, N>($);
+ test<T, N/2>($);
+ test<T, N*2>($);
+
 }

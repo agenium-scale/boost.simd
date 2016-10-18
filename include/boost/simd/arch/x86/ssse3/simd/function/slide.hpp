@@ -39,9 +39,10 @@ namespace boost { namespace simd { namespace ext
                                               >;
 
       // Shift everything in place
-      return bitwise_cast<T>( _mm_alignr_epi8 ( bitwise_cast<byte_t>(a1), bitwise_cast<byte_t>(a0)
+      return bitwise_cast<T>( byte_t(_mm_alignr_epi8 ( bitwise_cast<byte_t>(a1), bitwise_cast<byte_t>(a0)
                                               , bitcount::value
                                               )
+                                    )
                             );
     }
   };

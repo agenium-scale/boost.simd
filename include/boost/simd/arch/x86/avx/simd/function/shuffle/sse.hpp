@@ -46,10 +46,10 @@ namespace boost { namespace simd { namespace detail
                                   , std::true_type const&, std::false_type const&
                                   )
     {
-      return bitwise_cast<T>( _mm_permute_pd( bitwise_cast<bd::as_floating_t<T>>(a0)
-                                            , (P0&1)|((P1&1)<<1)
-                                            )
-                            );
+      bd::as_floating_t<T> tmp =  _mm_permute_pd( bitwise_cast<bd::as_floating_t<T>>(a0)
+                                                , (P0&1)|((P1&1)<<1)
+                                                );
+      return bitwise_cast<T>( tmp );
     }
 
     // -------------------------------------------------------------------------------------------
@@ -68,10 +68,10 @@ namespace boost { namespace simd { namespace detail
                                   , std::true_type const&, std::false_type const&
                                   )
     {
-      return bitwise_cast<T>( _mm_permute_ps( bitwise_cast<bd::as_floating_t<T>>(a0)
-                                            , (P0&3)|((P1&3)<<2)|((P2&3)<<4)|((P3&3)<<6)
-                                            )
-                            );
+      bd::as_floating_t<T> tmp = _mm_permute_ps( bitwise_cast<bd::as_floating_t<T>>(a0)
+                                               , (P0&3)|((P1&3)<<2)|((P2&3)<<4)|((P3&3)<<6)
+                                               );
+      return bitwise_cast<T>( tmp );
     }
 
     // -------------------------------------------------------------------------------------------

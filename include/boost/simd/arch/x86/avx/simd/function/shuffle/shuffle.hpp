@@ -128,25 +128,27 @@ namespace boost { namespace simd
       template<typename T,int P0,int P1,int P2,int P3> static BOOST_FORCEINLINE
       T shuff_(const T& a0, const T& a1, direct_<P0,P1,P2,P3> const&)
       {
-        auto const v0 = bitwise_cast<bd::as_floating_t<T>>(a0);
-        auto const v1 = bitwise_cast<bd::as_floating_t<T>>(a1);
-        return bitwise_cast<T>(_mm256_shuffle_pd(v0, v1, (avx_mask_pd<P0,P1,P2,P3>::value)));
+        using f_t = bd::as_floating_t<T>;
+        auto const v0 = bitwise_cast<f_t>(a0);
+        auto const v1 = bitwise_cast<f_t>(a1);
+        return bitwise_cast<T>(f_t(_mm256_shuffle_pd(v0, v1, (avx_mask_pd<P0,P1,P2,P3>::value))));
       }
 
       template<typename T,int P0,int P1,int P2,int P3,int P4,int P5,int P6,int P7>
       static BOOST_FORCEINLINE
       T shuff_(const T& a0, const T& a1, direct_<P0,P1,P2,P3,P4,P5,P6,P7> const&)
       {
-        auto const v0 = bitwise_cast<bd::as_floating_t<T>>(a0);
-        auto const v1 = bitwise_cast<bd::as_floating_t<T>>(a1);
+        using f_t = bd::as_floating_t<T>;
+        auto const v0 = bitwise_cast<f_t>(a0);
+        auto const v1 = bitwise_cast<f_t>(a1);
 
-        return bitwise_cast<T>(_mm256_shuffle_ps( v0, v1
+        return bitwise_cast<T>(f_t(_mm256_shuffle_ps( v0, v1
                                                 , (avx_mask_ps< P0 != -1 ? P0 : P4
                                                               , P1 != -1 ? P1 : P5
                                                               , P2 != -1 ? P2 : P6
                                                               , P3 != -1 ? P3 : P7
-                                                              >::value))
-                                                );
+                                                   >::value)))
+                              );
       }
 
       // Indirect shuffling is direct shuffling with a0/a1 permuted

@@ -96,3 +96,42 @@ STF_CASE_TPL( "Check bitwise_cast between arithmetic & logical types", STF_NUMER
     STF_IEEE_EQUAL ( bs::bitwise_cast<pl_t>( bs::Allbits<pa_t>() ), pl_t(true)          );
   }
 }
+
+STF_CASE( "Check bitwise_cast between logical types of different base types" )
+{
+  namespace bs = boost::simd;
+  static const std::size_t N = bs::pack<float>::static_size;
+
+  {
+    using pf_t  = bs::pack<float,N>;
+    using plf_t = bs::pack<bs::logical<float>,N>;
+
+    using pli_t = bs::pack<bs::logical<std::uint32_t>,N>;
+
+    STF_EQUAL     ( bs::bitwise_cast<pli_t>( bs::Allbits<pf_t>() ), pli_t(true)         );
+    STF_IEEE_EQUAL( bs::bitwise_cast<pf_t>( pli_t(true) )         , bs::Allbits<pf_t>() );
+    STF_IEEE_EQUAL( bs::bitwise_cast<plf_t>( pli_t(true) )        , plf_t(true)         );
+  }
+
+  {
+    using pf_t  = bs::pack<float,N/2>;
+    using plf_t = bs::pack<bs::logical<float>,N/2>;
+
+    using pli_t = bs::pack<bs::logical<std::uint32_t>,N/2>;
+
+    STF_EQUAL     ( bs::bitwise_cast<pli_t>( bs::Allbits<pf_t>() ), pli_t(true)         );
+    STF_IEEE_EQUAL( bs::bitwise_cast<pf_t>( pli_t(true) )         , bs::Allbits<pf_t>() );
+    STF_IEEE_EQUAL( bs::bitwise_cast<plf_t>( pli_t(true) )        , plf_t(true)         );
+  }
+
+  {
+    using pf_t  = bs::pack<float,N*2>;
+    using plf_t = bs::pack<bs::logical<float>,N*2>;
+
+    using pli_t = bs::pack<bs::logical<std::uint32_t>,N*2>;
+
+    STF_EQUAL     ( bs::bitwise_cast<pli_t>( bs::Allbits<pf_t>() ), pli_t(true)         );
+    STF_IEEE_EQUAL( bs::bitwise_cast<pf_t>( pli_t(true) )         , bs::Allbits<pf_t>() );
+    STF_IEEE_EQUAL( bs::bitwise_cast<plf_t>( pli_t(true) )        , plf_t(true)         );
+  }
+}
