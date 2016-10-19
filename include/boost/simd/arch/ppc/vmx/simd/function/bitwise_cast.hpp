@@ -30,6 +30,51 @@ namespace boost { namespace simd { namespace ext
       return (typename target_t::storage_type)(a0.storage());
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( bitwise_cast_
+                          , (typename A0, typename Target)
+                          , bs::vmx_
+                          , bs::pack_< bs::logical_<A0>, bs::vmx_>
+                          , bd::target_<bs::pack_<bs::logical_<Target>, bs::vmx_>>
+                          )
+  {
+    using target_t = typename Target::type;
+
+    BOOST_FORCEINLINE target_t operator()(A0 const& a0, Target const&) const
+    {
+      return (typename target_t::storage_type)(a0.storage());
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( bitwise_cast_
+                          , (typename A0, typename Target)
+                          , bs::vmx_
+                          , bs::pack_< bs::logical_<A0>, bs::vmx_>
+                          , bd::target_<bs::pack_<bd::arithmetic_<Target>, bs::vmx_>>
+                          )
+  {
+    using target_t = typename Target::type;
+
+    BOOST_FORCEINLINE target_t operator()(A0 const& a0, Target const&) const
+    {
+      return (typename target_t::storage_type)(a0.storage());
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( bitwise_cast_
+                          , (typename A0, typename Target)
+                          , bs::vmx_
+                          , bs::pack_< bd::arithmetic_<A0>, bs::vmx_>
+                          , bd::target_<bs::pack_<bs::logical_<Target>, bs::vmx_>>
+                          )
+  {
+    using target_t = typename Target::type;
+
+    BOOST_FORCEINLINE target_t operator()(A0 const& a0, Target const&) const
+    {
+      return (typename target_t::storage_type)(a0.storage());
+    }
+  };
 } } }
 
 #endif
