@@ -6,8 +6,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_MEMORY_HPP_INCLUDED
-#define BOOST_SIMD_MEMORY_HPP_INCLUDED
+#ifndef BOOST_SIMD_MEMORY_ALLOCATOR_HPP_INCLUDED
+#define BOOST_SIMD_MEMORY_ALLOCATOR_HPP_INCLUDED
 
 #include <boost/align/aligned_allocator.hpp>
 #include <boost/simd/pack.hpp>

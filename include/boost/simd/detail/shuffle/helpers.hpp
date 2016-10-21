@@ -6,8 +6,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_DETAIL_SHUFFLE_HELPERS__HPP_INCLUDED
-#define BOOST_SIMD_DETAIL_SHUFFLE_HELPERS__HPP_INCLUDED
+#ifndef BOOST_SIMD_DETAIL_SHUFFLE_HELPERS_HPP_INCLUDED
+#define BOOST_SIMD_DETAIL_SHUFFLE_HELPERS_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/forward.hpp>
