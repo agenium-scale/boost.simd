@@ -10,7 +10,7 @@ easily start developing high performance, portable and future proof software.
 
 ## Important Links :
  - [The current Issues List](https://github.com/NumScale/boost.simd/issues)
- - [The documentation](http://numscale.github.io/boost.simd/)
+ - [The documentation](http://developer.numscale.com/boost.simd)
  - [the Q&A Google group](https://groups.google.com/forum/#!forum/boost-simd)
  
 # What is SIMD?
@@ -98,4 +98,4 @@ and display:
 
     (11, 22, 33, 44)
 
-Now, you can [have a look at our documentation](http://numscale.github.io/boost.simd/) to follow one of our tutorials on how to use **Boost.SIMD**.
+Now, you can [have a look at our documentation](http://developer.numscale.com/boost.simd) to follow one of our tutorials on how to use **Boost.SIMD**.
