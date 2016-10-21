@@ -8,6 +8,7 @@
 */
 //==================================================================================================
 #include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/meta/is_bitwise_logical.hpp>
 #include <boost/simd/constant/allbits.hpp>
 #include <boost/simd/logical.hpp>
 #include <boost/simd/pack.hpp>
@@ -70,7 +71,7 @@ STF_CASE( "Check bitwise_cast between integer & real types" )
   }
 }
 
-STF_CASE_TPL( "Check bitwise_cast between arithmetic & logical types", STF_NUMERIC_TYPES )
+template<typename T, typename Env> void logical_test(Env& $, std::true_type const&)
 {
   namespace bs = boost::simd;
   static const std::size_t N = bs::pack<T>::static_size;
@@ -97,7 +98,17 @@ STF_CASE_TPL( "Check bitwise_cast between arithmetic & logical types", STF_NUMER
   }
 }
 
-STF_CASE( "Check bitwise_cast between logical types of different base types" )
+template<typename T, typename Env> void logical_test(Env& $, std::false_type const&)
+{
+  STF_PASS("Logical type are not bitwise compatible on this architecture.");
+}
+
+STF_CASE_TPL( "Check bitwise_cast between arithmetic & logical types", STF_NUMERIC_TYPES )
+{
+  logical_test<T>($, typename boost::simd::is_bitwise_logical<T>::type{});
+}
+
+template<typename Env> void logical_diff_test(Env& $, std::true_type const&)
 {
   namespace bs = boost::simd;
   static const std::size_t N = bs::pack<float>::static_size;
@@ -105,7 +116,6 @@ STF_CASE( "Check bitwise_cast between logical types of different base types" )
   {
     using pf_t  = bs::pack<float,N>;
     using plf_t = bs::pack<bs::logical<float>,N>;
-
     using pli_t = bs::pack<bs::logical<std::uint32_t>,N>;
 
     STF_EQUAL     ( bs::bitwise_cast<pli_t>( bs::Allbits<pf_t>() ), pli_t(true)         );
@@ -116,7 +126,6 @@ STF_CASE( "Check bitwise_cast between logical types of different base types" )
   {
     using pf_t  = bs::pack<float,N/2>;
     using plf_t = bs::pack<bs::logical<float>,N/2>;
-
     using pli_t = bs::pack<bs::logical<std::uint32_t>,N/2>;
 
     STF_EQUAL     ( bs::bitwise_cast<pli_t>( bs::Allbits<pf_t>() ), pli_t(true)         );
@@ -127,11 +136,20 @@ STF_CASE( "Check bitwise_cast between logical types of different base types" )
   {
     using pf_t  = bs::pack<float,N*2>;
     using plf_t = bs::pack<bs::logical<float>,N*2>;
-
     using pli_t = bs::pack<bs::logical<std::uint32_t>,N*2>;
 
     STF_EQUAL     ( bs::bitwise_cast<pli_t>( bs::Allbits<pf_t>() ), pli_t(true)         );
     STF_IEEE_EQUAL( bs::bitwise_cast<pf_t>( pli_t(true) )         , bs::Allbits<pf_t>() );
     STF_IEEE_EQUAL( bs::bitwise_cast<plf_t>( pli_t(true) )        , plf_t(true)         );
   }
+}
+
+template<typename Env> void logical_diff_test(Env& $, std::false_type const&)
+{
+  STF_PASS("Logical types are not bitwise compatible on this architecture.");
+}
+
+STF_CASE( "Check bitwise_cast between logical types of different base types" )
+{
+  logical_diff_test($, typename boost::simd::is_bitwise_logical<float>::type{});
 }
