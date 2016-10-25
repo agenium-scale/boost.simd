@@ -46,7 +46,6 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using storage_t = typename Src::storage_type;
-    using value_t   = typename storage_t::value_type;
     using s_t       = typename boost::pointee<Pointer>::type;
 
     BOOST_FORCEINLINE void operator()(const Src& s, Pointer p) const
