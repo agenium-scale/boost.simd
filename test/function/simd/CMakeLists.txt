@@ -23,14 +23,14 @@ add_subdirectory(splat)
 add_subdirectory(split)
 
 set ( SOURCES
-      abs.cpp
+      abs.regular.cpp
       abs.saturated.cpp
-      acos.cpp
+      acos.regular.cpp
       acos.accurate.cpp
-      acosd.cpp
+      acosd.regular.cpp
       acosd.accurate.cpp
       acosh.cpp
-      acospi.cpp
+      acospi.regular.cpp
       acospi.accurate.cpp
       acot.cpp
       acotd.cpp
@@ -108,14 +108,14 @@ set ( SOURCES
       cummin.cpp
       cumprod.cpp
       cumsum.cpp
-      dec.cpp
+      dec.regular.cpp
       dec.saturated.cpp
       deinterleave.cpp
       deinterleave_first.cpp
       deinterleave_second.cpp
-      dist.cpp
+      dist.regular.cpp
       dist.saturated.cpp
-      divides.cpp
+      divides.regular.cpp
       divides.saturated.cpp
       dot.cpp
       enumerate.cpp
@@ -136,7 +136,7 @@ set ( SOURCES
       firstbitset.cpp
       firstbitunset.cpp
       floor.cpp
-      fma.cpp
+      fma.regular.cpp
       fma.conformant.cpp
       fms.cpp
       fnma.cpp
@@ -170,7 +170,7 @@ set ( SOURCES
       if_zero_else_one.cpp
       ilog2.cpp
       ilogb.cpp
-      inc.cpp
+      inc.regular.cpp
       inc.saturated.cpp
       indeg.cpp
       inearbyint.cpp
@@ -261,10 +261,10 @@ set ( SOURCES
       minmag.cpp
       minnum.cpp
       minnummag.cpp
-      minus.cpp
+      minus.regular.cpp
       minus.saturated.cpp
       modf.cpp
-      multiplies.cpp
+      multiplies.regular.cpp
       multiplies.saturated.cpp
       nbtrue.cpp
       nearbyint.cpp
@@ -276,9 +276,9 @@ set ( SOURCES
       next.cpp
       none.cpp
       nthroot.cpp
-      oneminus.cpp
+      oneminus.regular.cpp
       oneminus.saturated.cpp
-      plus.cpp
+      plus.regular.cpp
       plus.saturated.cpp
       pow_abs.cpp
       pow.cpp
@@ -330,7 +330,7 @@ set ( SOURCES
       sinpi.cpp
       split_multiplies.cpp
       sqr_abs.cpp
-      sqr.cpp
+      sqr.regular.cpp
       sqr.saturated.cpp
       sqrt1pm1.cpp
       sqrt.cpp
@@ -346,9 +346,9 @@ set ( SOURCES
       tanpi.cpp
       tenpower.cpp
       tofloat.cpp
-      toint.cpp
+      toint.regular.cpp
       toint.saturated.cpp
-      touint.cpp
+      touint.regular.cpp
       touint.saturated.cpp
       trunc.cpp
       two_add.cpp
@@ -356,7 +356,7 @@ set ( SOURCES
       two_prod.cpp
       two_split.cpp
       ulpdist.cpp
-      unary_minus.cpp
+      unary_minus.regular.cpp
       unary_minus.saturated.cpp
       unary_plus.cpp
     )
