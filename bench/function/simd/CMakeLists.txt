@@ -7,9 +7,9 @@
 ## -------------------------------------------------------------------------------------------------
 
 set(SOURCES
-    abs.cpp
+    abs.regular.cpp
     abs.saturated.cpp
-    acos.cpp
+    acos.regular.cpp
     acos.accurate.cpp
     acosd.cpp
     acosh.cpp
@@ -68,37 +68,37 @@ set(SOURCES
     complement.cpp
     conj.cpp
     copysign.cpp
-    cos.cpp
-    cosd.cpp
+    cos.regular.cpp
+    cosd.regular.cpp
     cos.clipped_small.cpp
     cosd.restricted.cpp
     cosh.cpp
-    cospi.cpp
+    cospi.regular.cpp
     cospi.restricted.cpp
     cos.restricted.cpp
-    cot.cpp
-    cotd.cpp
+    cot.regular.cpp
+    cotd.regular.cpp
     cotd.restricted.cpp
     coth.cpp
-    cotpi.cpp
+    cotpi.regular.cpp
     cotpi.restricted.cpp
     cot.restricted.cpp
-    csc.cpp
-    cscd.cpp
+    csc.regular.cpp
+    cscd.regular.cpp
     cscd.restricted.cpp
     csch.cpp
-    cscpi.cpp
+    cscpi.regular.cpp
     cscpi.restricted.cpp
     csc.restricted.cpp
     ctz.cpp
-    dec.cpp
+    dec.regular.cpp
     dec.saturated.cpp
     deinterleave.cpp
     deinterleave_first.cpp
     deinterleave_second.cpp
-    dist.cpp
+    dist.regular.cpp
     dist.saturated.cpp
-    divides.cpp
+    divides.regular.cpp
     divides.saturated.cpp
     dot.cpp
     enumerate.cpp
@@ -115,24 +115,24 @@ set(SOURCES
     firstbitset.cpp
     firstbitunset.cpp
     floor.cpp
-    fma.cpp
+    fma.regular.cpp
     fma.conformant.cpp
     fms.cpp
     fnma.cpp
     fnms.cpp
     fpclassify.cpp
     frac.cpp
-    frexp.cpp
+    frexp.regular.cpp
     frexp.fast.cpp
     gamma.cpp
     gammaln.cpp
     genmaskc.cpp
     genmask.cpp
-    group.cpp
+    group.regular.cpp
     group.saturated.cpp
     hi.cpp
     hmsb.cpp
-    hypot.cpp
+    hypot.regular.cpp
     hypot.fast.cpp
     iceil.cpp
     if_allbits_else.cpp
@@ -151,7 +151,7 @@ set(SOURCES
     if_zero_else_one.cpp
     ilog2.cpp
     ilogb.cpp
-    inc.cpp
+    inc.regular.cpp
     inc.saturated.cpp
     indeg.cpp
     inearbyint.cpp
@@ -235,10 +235,10 @@ set(SOURCES
     minmod.cpp
     minnum.cpp
     minnummag.cpp
-    minus.cpp
+    minus.regular.cpp
     minus.saturated.cpp
     modf.cpp
-    multiplies.cpp
+    multiplies.regular.cpp
     multiplies.saturated.cpp
     nbtrue.cpp
     nearbyint.cpp
@@ -250,18 +250,18 @@ set(SOURCES
     next.cpp
     none.cpp
     nthroot.cpp
-    oneminus.cpp
+    oneminus.regular.cpp
     oneminus.saturated.cpp
-    plus.cpp
+    plus.regular.cpp
     plus.saturated.cpp
     pow2.cpp
     pow_abs.cpp
     pow.cpp
     predecessor.cpp
     prev.cpp
-    rec.cpp
+    rec.regular.cpp
     rec.fast.cpp
-    rem.cpp
+    rem.regular.cpp
     rem.fast.cpp
     rem_pio2_cephes.cpp
     rem_pio2.cpp
@@ -277,16 +277,16 @@ set(SOURCES
     round.cpp
     rrol.cpp
     rror.cpp
-    rsqrt.cpp
+    rsqrt.regular.cpp
     rsqrt.fast.cpp
     safe_max.cpp
     safe_min.cpp
-    sec.cpp
+    sec.regular.cpp
     sec.restricted.cpp
-    secd.cpp
+    secd.regular.cpp
     secd.restricted.cpp
     sech.cpp
-    secpi.cpp
+    secpi.regular.cpp
     secpi.restricted.cpp
     shift_left.cpp
     shift_right.cpp
@@ -295,50 +295,50 @@ set(SOURCES
     significants.cpp
     signnz.cpp
     sinc.cpp
-    sincos.cpp
+    sincos.regular.cpp
     sincos.restricted.cpp
-    sincosd.cpp
+    sincosd.regular.cpp
     sincosd.restricted.cpp
-    sincospi.cpp
+    sincospi.regular.cpp
     sincospi.restricted.cpp
     sincpi.cpp
-    sin.cpp
+    sin.regular.cpp
     sin.restricted.cpp
-    sind.cpp
+    sind.regular.cpp
     sind.restricted.cpp
     sinhc.cpp
     sinhcosh.cpp
     sinh.cpp
-    sinpi.cpp
+    sinpi.regular.cpp
     sinpi.restricted.cpp
     sqr_abs.cpp
-    sqr.cpp
+    sqr.regular.cpp
     sqr.saturated.cpp
     sqrt1pm1.cpp
-    sqrt.cpp
+    sqrt.regular.cpp
     sqrt.fast.cpp
     successor.cpp
-    tan.cpp
+    tan.regular.cpp
     tan.restricted.cpp
-    tand.cpp
+    tand.regular.cpp
     tand.restricted.cpp
     tanh.cpp
-    tanpi.cpp
+    tanpi.regular.cpp
     tanpi.restricted.cpp
     tenpower.cpp
     tofloat.cpp
-    toint.cpp
+    toint.regular.cpp
     toint.saturated.cpp
-    touint.cpp
+    touint.regular.cpp
     touint.saturated.cpp
-    trunc.cpp
+    trunc.regular.cpp
     trunc.fast.cpp
     two_add.cpp
     twopower.cpp
     two_prod.cpp
     two_split.cpp
     ulpdist.cpp
-    unary_minus.cpp
+    unary_minus.regular.cpp
     unary_minus.saturated.cpp
     unary_plus.cpp
 )
