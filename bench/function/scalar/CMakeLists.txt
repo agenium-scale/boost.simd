@@ -7,10 +7,10 @@
 ## -------------------------------------------------------------------------------------------------
 
 set(SOURCES
-    abs.cpp
+    abs.regular.cpp
     abs.saturated.cpp
     abs.std.cpp
-    acos.cpp
+    acos.regular.cpp
     acos.accurate.cpp
     acosd.cpp
     acosh.cpp
@@ -31,16 +31,16 @@ set(SOURCES
     asecd.cpp
     asech.cpp
     asecpi.cpp
-    asin.cpp
+    asin.regular.cpp
     asind.cpp
     asinh.cpp
     asinpi.cpp
     asin.std.cpp
-    atan2.cpp
+    atan2.regular.cpp
     atan2d.cpp
     atan2pi.cpp
     atan2.std.cpp
-    atan.cpp
+    atan.regular.cpp
     atand.cpp
     atanh.cpp
     atanpi.cpp
@@ -60,9 +60,9 @@ set(SOURCES
     bitwise_select.cpp
     bitwise_xor.cpp
     broadcast.cpp
-    cbrt.cpp
+    cbrt.regular.cpp
     cbrt.std.cpp
-    ceil.cpp
+    ceil.regular.cpp
     ceil.std.cpp
     clz.cpp
     compare_equal.cpp
@@ -75,44 +75,44 @@ set(SOURCES
     conj.cpp
     copysign.cpp
     correct_fma.cpp
-    cos.cpp
-    cosd.cpp
+    cos.regular.cpp
+    cosd.regular.cpp
     cosd.restricted.cpp
     cosh.cpp
-    cospi.cpp
+    cospi.regular.cpp
     cospi.restricted.cpp
     cos.restricted.cpp
-    cot.cpp
-    cotd.cpp
+    cot.regular.cpp
+    cotd.regular.cpp
     cotd.restricted.cpp
     coth.cpp
-    cotpi.cpp
+    cotpi.regular.cpp
     cotpi.restricted.cpp
     cot.restricted.cpp
-    csc.cpp
-    cscd.cpp
+    csc.regular.cpp
+    cscd.regular.cpp
     cscd.restricted.cpp
     csch.cpp
-    cscpi.cpp
+    cscpi.regular.cpp
     cscpi.restricted.cpp
     csc.restricted.cpp
     ctz.cpp
-    dec.cpp
+    dec.regular.cpp
     dec.saturated.cpp
-    dist.cpp
+    dist.regular.cpp
     dist.saturated.cpp
-    divides.cpp
+    divides.regular.cpp
     divides.saturated.cpp
     dot.cpp
-    erfc.cpp
-    erf.cpp
+    erfc.regular.cpp
+    erf.regular.cpp
     erfc.std.cpp
     erf.std.cpp
     exp10.cpp
-    exp2.cpp
+    exp2.regular.cpp
     exp2.std.cpp
-    exp.cpp
-    expm1.cpp
+    exp.regular.cpp
+    expm1.regular.cpp
     expm1.std.cpp
     exprecnegc.cpp
     exprecneg.cpp
@@ -122,26 +122,26 @@ set(SOURCES
     firstbitset.cpp
     firstbitunset.cpp
     floor.cpp
-    fma.cpp
+    fma.regular.cpp
     fma.std.cpp
     fms.cpp
     fnma.cpp
     fnms.cpp
-    fpclassify.cpp
+    fpclassify.regular.cpp
     fpclassify.std.cpp
     frac.cpp
-    frexp.cpp
+    frexp.regular.cpp
     frexp.fast.cpp
     frexp.std.cpp
-    gamma.cpp
-    gammaln.cpp
+    gamma.regular.cpp
+    gammaln.regular.cpp
     gammaln.std.cpp
     gamma.std.cpp
     genmaskc.cpp
     genmask.cpp
     hi.cpp
     hmsb.cpp
-    hypot.cpp
+    hypot.regular.cpp
     hypot.fast.cpp
     hypot.std.cpp
     iceil.cpp
@@ -161,7 +161,7 @@ set(SOURCES
     if_zero_else_one.cpp
     ilog2.cpp
     ilogb.cpp
-    inc.cpp
+    inc.regular.cpp
     inc.saturated.cpp
     indeg.cpp
     inrad.cpp
@@ -212,12 +212,12 @@ set(SOURCES
     is_unord.cpp
     ldexp.cpp
     lo.cpp
-    log10.cpp
+    log10.regular.cpp
     log10.std.cpp
     log1p.cpp
-    log2.cpp
+    log2.regular.cpp
     log2.std.cpp
-    log.cpp
+    log.regular.cpp
     logical_and.cpp
     logical_andnot.cpp
     logical_notand.cpp
@@ -231,20 +231,20 @@ set(SOURCES
     mantissa.cpp
     max.cpp
     maxmag.cpp
-    maxnum.cpp
+    maxnum.regular.cpp
     maxnummag.cpp
     maxnum.std.cpp
     meanof.cpp
     min.cpp
     minmag.cpp
     minmod.cpp
-    minnum.cpp
+    minnum.regular.cpp
     minnummag.cpp
     minnum.std.cpp
-    minus.cpp
+    minus.regular.cpp
     minus.saturated.cpp
     modf.cpp
-    multiplies.cpp
+    multiplies.regular.cpp
     multiplies.saturated.cpp
     nbtrue.cpp
     nearbyint.cpp
@@ -256,18 +256,18 @@ set(SOURCES
     next.cpp
     none.cpp
     nthroot.cpp
-    oneminus.cpp
+    oneminus.regular.cpp
     oneminus.saturated.cpp
-    plus.cpp
+    plus.regular.cpp
     plus.saturated.cpp
     pow2.cpp
     pow_abs.cpp
     pow.cpp
     predecessor.cpp
     prev.cpp
-    rec.cpp
+    rec.regular.cpp
     rec.fast.cpp
-    rem.cpp
+    rem.regular.cpp
     rem.fast.cpp
     rem_pio2_cephes.cpp
     rem_pio2.cpp
@@ -282,15 +282,15 @@ set(SOURCES
     round.cpp
     rrol.cpp
     rror.cpp
-    rsqrt.cpp
+    rsqrt.regular.cpp
     rsqrt.fast.cpp
     safe_max.cpp
     safe_min.cpp
-    sec.cpp
-    secd.cpp
+    sec.regular.cpp
+    secd.regular.cpp
     secd.restricted.cpp
     sech.cpp
-    secpi.cpp
+    secpi.regular.cpp
     secpi.restricted.cpp
     sec.restricted.cpp
     shift_left.cpp
@@ -300,44 +300,43 @@ set(SOURCES
     significants.cpp
     signnz.cpp
     sinc.cpp
-    sincos.cpp
-    sincosd.cpp
+    sincos.regular.cpp
+    sincosd.regular.cpp
     sincosd.restricted.cpp
-    sincospi.cpp
+    sincospi.regular.cpp
     sincospi.restricted.cpp
     sincos.restricted.cpp
     sincpi.cpp
-    sin.cpp
-    sind.cpp
+    sin.regular.cpp
+    sind.regular.cpp
     sind.restricted.cpp
     sinhc.cpp
     sinhcosh.cpp
     sinh.cpp
-    sinpi.cpp
+    sinpi.regular.cpp
     sinpi.restricted.cpp
     sin.restricted.cpp
     sqr_abs.cpp
-    sqr.cpp
+    sqr.regular.cpp
     sqr.saturated.cpp
     sqrt1pm1.cpp
-    sqrt.cpp
     sqrt.fast.cpp
     sqrt.std.cpp
     successor.cpp
-    tan.cpp
-    tand.cpp
+    tan.regular.cpp
+    tand.regular.cpp
     tand.restricted.cpp
     tanh.cpp
-    tanpi.cpp
+    tanpi.regular.cpp
     tanpi.restricted.cpp
     tan.restricted.cpp
     tenpower.cpp
     tofloat.cpp
-    toint.cpp
+    toint.regular.cpp
     toint.saturated.cpp
-    touint.cpp
+    touint.regular.cpp
     touint.saturated.cpp
-    trunc.cpp
+    trunc.regular.cpp
     trunc.fast.cpp
     trunc.std.cpp
     two_add.cpp
@@ -345,7 +344,7 @@ set(SOURCES
     two_prod.cpp
     two_split.cpp
     ulpdist.cpp
-    unary_minus.cpp
+    unary_minus.regular.cpp
     unary_minus.saturated.cpp
     unary_plus.cpp
 
