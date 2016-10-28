@@ -13,6 +13,7 @@
 #include <boost/simd/detail/dispatch/adapted/common/pointer.hpp>
 #include <boost/simd/arch/common/simd/function/store/regular.hpp>
 #include <boost/simd/arch/common/simd/function/store/scatter.hpp>
+#include <boost/simd/arch/common/simd/function/store/mask.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext

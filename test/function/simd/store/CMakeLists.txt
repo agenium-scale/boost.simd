@@ -8,12 +8,13 @@
 
 set ( SOURCES
   pointer.arithmetic.cpp
- ## pointer.logical.cpp
+  pointer.logical.cpp
 ##  range.arithmetic.cpp
  ## range.logical.cpp
   scatter.arithmetic.cpp
- ## gather.logical.cpp
+  scatter.logical.cpp
  ## mask.arithmetic.cpp
+ ## mask.logical.cpp
 )
 
 make_unit( "function.simd.store"   ${SOURCES})

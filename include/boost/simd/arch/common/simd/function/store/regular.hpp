@@ -11,9 +11,12 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/dispatch/adapted/common/pointer.hpp>
+#include <boost/simd/detail/dispatch/meta/is_natural.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/if_one_else_zero.hpp>
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/function/slice.hpp>
+#include <boost/simd/function/shuffle.hpp>
 #include <boost/simd/meta/as_arithmetic.hpp>
 #include <boost/simd/meta/is_bitwise_logical.hpp>
 #include <boost/config.hpp>
@@ -32,9 +35,6 @@ namespace boost { namespace simd { namespace ext
                           , bd::pointer_<bd::scalar_<bd::unspecified_<Pointer>>,1u>
                           )
   {
-    using storage_t = typename Src::storage_type;
-    using s_t       = typename boost::pointee<Pointer>::type;
-
     BOOST_FORCEINLINE void operator()(const Src& s, Pointer p) const
     {
       do_(s, p, typename Src::storage_kind{}, typename Src::traits::element_range{} );
@@ -51,6 +51,7 @@ namespace boost { namespace simd { namespace ext
     // other pack are calling store N times
     template<typename I> static BOOST_FORCEINLINE void sto_(const Src& s, Pointer  p)
     {
+      using s_t   = typename boost::pointee<Pointer>::type;
       p[I::value] = static_cast<s_t>(extract<I::value>(s));
     }
 
@@ -58,6 +59,23 @@ namespace boost { namespace simd { namespace ext
     static BOOST_FORCEINLINE void do_(Src const & s, Pointer p, K const&, brigand::list<N...> const&)
     {
       (void)(std::initializer_list<bool>{(sto_<N>(s,p),true)...});
+    }
+  };
+
+  //------------------------------------------------------------------------------------------------
+  // Bitwise_logical logical store
+  BOOST_DISPATCH_OVERLOAD_IF( store_
+                            , (typename Src, typename Pointer, typename X)
+                            , (is_bitwise_logical<Src>)
+                            , bd::cpu_
+                            , bs::pack_<bs::logical_<Src>, X>
+                            , bd::pointer_<bd::scalar_<bd::arithmetic_<Pointer>>,1u>
+                            )
+  {
+    BOOST_FORCEINLINE void operator()(const Src& s, Pointer p) const
+    {
+      using s_t = typename Src::value_type::value_type;
+      store( bitwise_cast<as_arithmetic_t<Src>>(s) , reinterpret_cast<s_t*>(p) );
     }
   };
 } } }
