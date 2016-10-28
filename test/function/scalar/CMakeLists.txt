@@ -12,6 +12,7 @@ add_subdirectory(rem)
 set ( SOURCES
    abs.regular.cpp
    abs.saturated.cpp
+   abs.std.cpp
    acos.regular.cpp
    acos.accurate.cpp
    acosd.regular.cpp
@@ -38,7 +39,9 @@ set ( SOURCES
    asind.cpp
    asinh.cpp
    asinpi.cpp
-   atan2.cpp
+   atan2.regular.cpp
+   atan2.fast.cpp
+   atan2.std.cpp
    atan2d.cpp
    atan2pi.cpp
    atan.cpp
@@ -102,13 +105,16 @@ set ( SOURCES
    dot.cpp
    enumerate.cpp
    eps.cpp
-   erfc.cpp
+   erfc.regular.cpp
+   erfc.std.cpp
    erf.cpp
    erfcx.cpp
    exp10.cpp
-   exp2.cpp
-   exp.cpp
-   expm1.cpp
+   exp2.regular.cpp
+   exp2.std.cpp
+   exp.regular.cpp
+   expm1.regular.cpp
+   expm1.std.cpp
    exponent.cpp
    exponentbits.cpp
    exprecnegc.cpp
@@ -124,7 +130,8 @@ set ( SOURCES
    fms.cpp
    fnma.cpp
    fnms.cpp
-   fpclassify.cpp
+   fpclassify.regular.cpp
+   fpclassify.std.cpp
    frac.cpp
    frexp.cpp
    gamma.cpp
@@ -136,7 +143,9 @@ set ( SOURCES
    horn1.cpp
    horn.cpp
    horner.cpp
-   hypot.cpp
+   hypot.regular.cpp
+   hypot.fast.cpp
+   hypot.std.cpp
    iceil.cpp
    if_allbits_else.cpp
    if_allbits_else_zero.cpp
@@ -196,7 +205,8 @@ set ( SOURCES
    is_ngtz.cpp
    is_nlez.cpp
    is_nltz.cpp
-   is_normal.cpp
+   is_normal.regular.cpp
+   is_normal.std.cpp
    is_not_denormal.cpp
    is_not_equal.cpp
    is_not_equal_with_equal_nans.cpp

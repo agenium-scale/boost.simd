@@ -22,30 +22,6 @@
 #include <boost/simd/constant/mindenormal.hpp>
 #include <cmath>
 
-STF_CASE_TPL (" fpclassify",  STF_IEEE_TYPES)
-{
-  namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
-  using bs::fpclassify;
-
-  using r_t = decltype(fpclassify(T()));
-
-  // return type conformity test
-  STF_TYPE_IS(r_t, bd::as_integer_t<T>);
-
-  // specific values tests
-#ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(fpclassify(bs::Inf<T>()), FP_INFINITE);
-  STF_EQUAL(fpclassify(bs::Minf<T>()), FP_INFINITE);
-  STF_EQUAL(fpclassify(bs::Nan<T>()), FP_NAN);
-#endif
-  STF_EQUAL(fpclassify(bs::Half<T>()), FP_NORMAL);
-  STF_EQUAL(fpclassify(bs::Mhalf<T>()), FP_NORMAL);
-  STF_EQUAL(fpclassify(bs::Mone<T>()), FP_NORMAL);
-  STF_EQUAL(fpclassify(bs::Mindenormal<T>()), FP_SUBNORMAL);
-  STF_EQUAL(fpclassify(bs::Zero<T>()), FP_ZERO);
-  STF_EQUAL(fpclassify(bs::Mzero<T>()), FP_ZERO);
-}
 
 STF_CASE_TPL (" fpclassify std",  STF_IEEE_TYPES)
 {
