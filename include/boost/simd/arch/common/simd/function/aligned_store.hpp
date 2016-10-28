@@ -45,9 +45,6 @@ namespace boost { namespace simd { namespace ext
                           , bd::pointer_<bd::scalar_<bd::unspecified_<Pointer>>,1u>
                           )
   {
-    using storage_t = typename Src::storage_type;
-    using s_t       = typename boost::pointee<Pointer>::type;
-
     BOOST_FORCEINLINE void operator()(const Src& s, Pointer p) const
     {
       BOOST_ASSERT_MSG( boost::simd::detail::is_aligned(p,Src::alignment)
@@ -68,6 +65,7 @@ namespace boost { namespace simd { namespace ext
     // other pack are calling store N times
     template<typename I> static BOOST_FORCEINLINE void sto_(const Src& s, Pointer  p)
     {
+      using s_t = typename boost::pointee<Pointer>::type;
       p[I::value] = static_cast<s_t>(extract<I::value>(s));
     }
 
