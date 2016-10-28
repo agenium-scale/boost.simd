@@ -7,7 +7,7 @@
 ##===================================================================================================
 
 set ( SOURCES
-   div.cpp
+   div.regular.cpp
    div.ceil.cpp
    div.fix.cpp
    div.floor.cpp

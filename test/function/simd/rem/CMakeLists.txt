@@ -7,7 +7,7 @@
 ##===================================================================================================
 
 set ( SOURCES
-   rem.cpp
+   rem.regular.cpp
    rem.ceil.cpp
    rem.floor.cpp
    rem.nearbyint.cpp
