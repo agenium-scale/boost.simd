@@ -81,27 +81,3 @@ STF_CASE_TPL (" nearbyintsigned_ int",  STF_SIGNED_INTEGRAL_TYPES)
   STF_EQUAL(nearbyint(bs::Zero<T>()), bs::Zero<T>());
 } // end of test for signed_int_
 
-STF_CASE_TPL ( "nearbyint std",  STF_IEEE_TYPES)
-{
-  namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
-  using bs::nearbyint;
-  using r_t = decltype(bs::std_(nearbyint)(T()));
-
-  // return type conformity test
-  STF_TYPE_IS( r_t, T );
-
-  // specific values tests
-  STF_IEEE_EQUAL(bs::std_(nearbyint)(T(1.4)), 1);
-  STF_IEEE_EQUAL(bs::std_(nearbyint)(T(1.5)), 2);
-  STF_IEEE_EQUAL(bs::std_(nearbyint)(T(1.6)), 2);
-  STF_IEEE_EQUAL(bs::std_(nearbyint)(T(2.5)), 2);
-  STF_IEEE_EQUAL(bs::std_(nearbyint)(bs::Half<T>()), bs::Zero<r_t>());
-  STF_IEEE_EQUAL(bs::std_(nearbyint)(bs::Inf<T>()), bs::Inf<r_t>());
-  STF_IEEE_EQUAL(bs::std_(nearbyint)(bs::Mhalf<T>()), bs::Zero<r_t>());
-  STF_IEEE_EQUAL(bs::std_(nearbyint)(bs::Minf<T>()), bs::Minf<r_t>());
-  STF_IEEE_EQUAL(bs::std_(nearbyint)(bs::Mone<T>()), bs::Mone<r_t>());
-  STF_IEEE_EQUAL(bs::std_(nearbyint)(bs::Nan<T>()), bs::Nan<r_t>());
-  STF_IEEE_EQUAL(bs::std_(nearbyint)(bs::One<T>()), bs::One<r_t>());
-  STF_IEEE_EQUAL(bs::std_(nearbyint)(bs::Zero<T>()), bs::Zero<r_t>());
-} // end of test for floating_

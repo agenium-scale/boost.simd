@@ -224,7 +224,9 @@ set ( SOURCES
    is_real.cpp
    is_simd_logical.cpp
    is_unord.cpp
-   ldexp.cpp
+   ldexp.regular.cpp
+   ldexp.fast.cpp
+   ldexp.std.cpp
    load.cpp
    lo.cpp
    log10.regular.cpp
@@ -251,7 +253,8 @@ set ( SOURCES
    maximum.regular.cpp
    maximum.splatted.cpp
    maxmag.cpp
-   maxnum.cpp
+   maxnum.regular.cpp
+   maxnum.std.cpp
    maxnummag.cpp
    meanof.cpp
    min.cpp
@@ -266,7 +269,8 @@ set ( SOURCES
    multiplies.regular.cpp
    multiplies.saturated.cpp
    nbtrue.cpp
-   nearbyint.cpp
+   nearbyint.regular.cpp
+   nearbyint.std.cpp
    negate.cpp
    negatenz.cpp
    negif.cpp
@@ -283,7 +287,8 @@ set ( SOURCES
    popcnt.cpp
    pow2.cpp
    pow_abs.cpp
-   pow.cpp
+   pow.regular.cpp
+   pow.std.cpp
    predecessor.cpp
    prev.cpp
    prod.cpp
@@ -298,7 +303,8 @@ set ( SOURCES
    reverse.cpp
    rol.cpp
    ror.cpp
-   round.cpp
+   round.regular.cpp
+   round.std.cpp
    rrol.cpp
    rror.cpp
    rshl.cpp
@@ -339,7 +345,9 @@ set ( SOURCES
    sqr.regular.cpp
    sqr.saturated.cpp
    sqrt1pm1.cpp
-   sqrt.cpp
+   sqrt.regular.cpp
+   sqrt.std.cpp
+   sqrt.fast.cpp
    stirling.cpp
    store.cpp
    stream.cpp
