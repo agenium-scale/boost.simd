@@ -227,10 +227,13 @@ set ( SOURCES
    ldexp.cpp
    load.cpp
    lo.cpp
-   log10.cpp
+   log10.regular.cpp
+   log10.std.cpp
    log1p.cpp
-   log2.cpp
-   log.cpp
+   log2.regular.cpp
+   log2.std.cpp
+   log.regular.cpp
+   log.std.cpp
    logical_and.cpp
    logical_andnot.cpp
    logical_notand.cpp
