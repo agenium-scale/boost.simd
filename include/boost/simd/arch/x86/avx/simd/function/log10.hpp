@@ -25,7 +25,7 @@ namespace boost { namespace simd { namespace ext
    {
       BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
-        return regular_(log10)(a0);
+        return plain_(log10)(a0);
       }
    };
 

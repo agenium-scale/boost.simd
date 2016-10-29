@@ -11,6 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_LOG1P_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_LOG1P_HPP_INCLUDED
 #include <boost/simd/function/std.hpp>
+#include <boost/simd/function/plain.hpp>
 
 #include <boost/simd/detail/enforce_precision.hpp>
 #include <boost/simd/function/scalar/log.hpp>
@@ -186,13 +187,13 @@ namespace boost { namespace simd { namespace ext
     BOOST_DISPATCH_OVERLOAD ( log1p_
                           , (typename A0)
                           , bd::cpu_
-                          , bs::regular_tag
+                          , bs::plain_tag
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const regular_tag &, A0 x) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const plain_tag &, A0 x) const BOOST_NOEXCEPT
     {
-      return musl_(log1p)(x); //the "regular" version of the algorithm is never speedier than the "musl" version.
+      return musl_(log1p)(x); //the "plain" version of the algorithm is never speedier than the "musl" version.
       // the call is here to allow a scalar fallback to simd calls
     }
   };

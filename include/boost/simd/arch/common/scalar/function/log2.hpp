@@ -25,7 +25,7 @@
 #include <boost/simd/function/horn.hpp>
 #include <boost/simd/function/ilog2.hpp>
 #include <boost/simd/function/musl.hpp>
-#include <boost/simd/function/regular.hpp>
+#include <boost/simd/function/plain.hpp>
 #include <boost/simd/function/sqr.hpp>
 #include <boost/simd/function/std.hpp>
 
@@ -88,7 +88,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( log2_
                           , (typename A0)
                           , bd::cpu_
-                          , bs::regular_tag
+                          , bs::plain_tag
                           , bd::scalar_< bd::arithmetic_<A0> >
                           )
   {
@@ -277,13 +277,13 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( log2_
                           , (typename A0)
                           , bd::cpu_
-                          , bs::regular_tag
+                          , bs::plain_tag
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const regular_tag &, A0 x) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const plain_tag &, A0 x) const BOOST_NOEXCEPT
     {
-      return musl_(log2)(x); //the "regular" version of the algorithm is never speedier than the "musl" version.
+      return musl_(log2)(x); //the "plain" version of the algorithm is never speedier than the "musl" version.
       // the call is here to allow a scalar fallback to simd calls
     }
   };

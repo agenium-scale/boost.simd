@@ -218,11 +218,11 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename X)
                           , (detail::is_native<X>)
                           , bd::cpu_
-                          , bs::regular_tag
+                          , bs::plain_tag
                           , bs::pack_< bd::single_<A0>, X>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const regular_tag &, const A0& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const plain_tag &, const A0& a0) const BOOST_NOEXCEPT
     {
       /* origin: FreeBSD /usr/src/lib/msun/src/e_log10f.c */
       /*
@@ -294,11 +294,11 @@ namespace boost { namespace simd { namespace ext
                              , (typename A0, typename X)
                              , (detail::is_native<X>)
                              , bd::cpu_
-                             , bs::regular_tag
+                             , bs::plain_tag
                              , bs::pack_< bd::double_<A0>, X>
                              )
   {
-    BOOST_FORCEINLINE A0 operator() (const regular_tag &, const A0& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const plain_tag &, const A0& a0) const BOOST_NOEXCEPT
     {
       /* origin: FreeBSD /usr/src/lib/msun/src/e_log10f.c */
       /*

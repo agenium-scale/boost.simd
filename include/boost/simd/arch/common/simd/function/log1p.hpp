@@ -29,7 +29,7 @@
 #include <boost/simd/function/is_ltz.hpp>
 #include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/function/musl.hpp>
-#include <boost/simd/function/regular.hpp>
+#include <boost/simd/function/plain.hpp>
 #include <boost/simd/function/sqr.hpp>
 #include <boost/simd/function/tofloat.hpp>
 
@@ -70,7 +70,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator()( const A0& a0) BOOST_NOEXCEPT
     {
-      return regular_(log1p)(a0);
+      return plain_(log1p)(a0);
     }
   };
 
@@ -164,11 +164,11 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename X)
                           , (detail::is_native<X>)
                           , bd::cpu_
-                          , bs::regular_tag
+                          , bs::plain_tag
                           , bs::pack_< bd::single_<A0>, X>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const regular_tag &, const A0& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const plain_tag &, const A0& a0) const BOOST_NOEXCEPT
     {
       using iA0 = bd::as_integer_t<A0,   signed>;
       const A0 uf =  inc(a0);
@@ -206,11 +206,11 @@ namespace boost { namespace simd { namespace ext
                              , (typename A0, typename X)
                              , (detail::is_native<X>)
                              , bd::cpu_
-                             , bs::regular_tag
+                             , bs::plain_tag
                              , bs::pack_< bd::double_<A0>, X>
                              )
   {
-    BOOST_FORCEINLINE A0 operator() (const regular_tag &, const A0& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const plain_tag &, const A0& a0) const BOOST_NOEXCEPT
     {
       using iA0 = bd::as_integer_t<A0,   signed>;
       const A0 uf =  inc(a0);

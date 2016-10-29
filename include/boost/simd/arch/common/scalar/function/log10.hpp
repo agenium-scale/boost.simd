@@ -11,6 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_LOG10_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_LOG10_HPP_INCLUDED
 #include <boost/simd/function/std.hpp>
+#include <boost/simd/function/plain.hpp>
 
 #include <boost/simd/function/log.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
@@ -149,7 +150,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( log10_
                           , (typename A0)
                           , bd::cpu_
-                          , bs::regular_tag
+                          , bs::plain_tag
                           , bd::scalar_< bd::arithmetic_<A0> >
                           )
   {

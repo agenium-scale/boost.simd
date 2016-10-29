@@ -8,8 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_REGULAR_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_REGULAR_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_PLAIN_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_PLAIN_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/detail/decorator.hpp>
@@ -20,30 +20,30 @@ namespace boost { namespace simd
   /*!
   @ingroup group-decorator
 
-    calls the rgular version of the functor
+    calls the plain version of the functor
     This decorator is used internally as a tag to choose the boost simd
     kernel among other
 
     @par Semantic
 
     @code
-    T r = regular_(func)(< func parameters >);
+    T r = plain_(func)(< func parameters >);
     @endcode
 
   **/
-  template<typename T> auto regular_(T const& x) {}
+  template<typename T> auto plain_(T const& x) {}
 
 } }
 #endif
 
 namespace boost { namespace simd
 {
-  struct regular_tag : decorator_<regular_tag>
+  struct plain_tag : decorator_<plain_tag>
   {
-    using parent = decorator_<regular_tag>;
+    using parent = decorator_<plain_tag>;
   };
 
-  const detail::decorator<regular_tag> regular_ = {};
+  const detail::decorator<plain_tag> plain_ = {};
 } }
 
 #endif
