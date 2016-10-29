@@ -137,7 +137,7 @@ namespace boost { namespace simd { namespace ext
       /* correction term ~ log(1+x)-log(u), avoid underflow in c/u */
       A0  c =  if_else( k >= 2, oneminus(uf-a0), a0-dec(uf))/uf;
       hu =  (hu&0x000fffff) + 0x3fe6a09e;
-      A0 f = bitwise_cast<A0>( bitwise_cast<uiA0>(hu<<32) | (bitwise_and(0xffffffffull, bitwise_cast<uiA0>(f))));
+      A0 f = bitwise_cast<A0>( bitwise_cast<uiA0>(hu<<32) | (bitwise_and(0xffffffffull, bitwise_cast<uiA0>(uf))));
       f = dec(f);
 
       A0 hfsq = Half<A0>()*sqr(f);

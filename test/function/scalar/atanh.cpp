@@ -40,6 +40,7 @@ STF_CASE_TPL (" atanh",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(atanh(bs::Zero<T>()), bs::Zero<r_t>(), 0);
   STF_ULP_EQUAL(atanh(bs::Half<T>()), T(0.549306144334054845697622618461), 0.5);
   STF_ULP_EQUAL(atanh(bs::Mhalf<T>()), T(-0.549306144334054845697622618461), 0.5);
+  STF_ULP_EQUAL(atanh(T(0.25)),  T(0.25541281188299536087), 0.5);
 }
 
 

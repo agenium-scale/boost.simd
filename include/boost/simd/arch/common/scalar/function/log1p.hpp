@@ -37,12 +37,12 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
       return musl_(log1p)(a0);
- //      detail::enforce_precision<A0> enforcer;
+//       detail::enforce_precision<A0> enforcer;
 
 //       if (Mone<A0>() > a0)   return Nan<A0>();
-//       #ifndef BOOST_SIMD_NO_INFINITIES
+// #ifndef BOOST_SIMD_NO_INFINITIES
 //       if (a0 == Inf<A0>())   return Inf<A0>();
-//       #endif
+// #endif
 //       if (a0 == Mone<A0>())   return Minf<A0>();
 //       A0 u = inc(a0);
 //       return log(u)+(a0-dec(u))/u;
@@ -167,7 +167,7 @@ namespace boost { namespace simd { namespace ext
           c /= uf;
         }
         hu =  (hu&0x000fffff) + 0x3fe6a09e;
-        f = bitwise_cast<A0>( bitwise_cast<uiA0>(hu<<32) | (bitwise_and(0xffffffffull, bitwise_cast<uiA0>(f))));
+        f = bitwise_cast<A0>( bitwise_cast<uiA0>(hu<<32) | (bitwise_and(0xffffffffull, bitwise_cast<uiA0>(uf))));
         f = dec(f);
       }
 
