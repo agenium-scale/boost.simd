@@ -208,10 +208,18 @@ set(SOURCES
     is_unord.cpp
     ldexp.cpp
     lo.cpp
-    log10.cpp
-    log1p.cpp
-    log2.cpp
-    log.cpp
+    log10.regular.cpp
+    log1p.regular.cpp
+    log2.regular.cpp
+    log.regular.cpp
+    log10.plain.cpp
+    log1p.plain.cpp
+    log2.plain.cpp
+    log.plain.cpp
+    log10.musl.cpp
+    log1p.musl.cpp
+    log2.musl.cpp
+    log.musl.cpp
     logical_and.cpp
     logical_andnot.cpp
     logical_notand.cpp
