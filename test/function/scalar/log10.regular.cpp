@@ -155,26 +155,3 @@ STF_CASE_TPL (" log10 signed_int",  STF_SIGNED_INTEGRAL_TYPES)
   STF_ULP_EQUAL(log10(bs::Ten<T>()), bs::One<r_t>(), 0);
 }
 
-STF_CASE_TPL (" log10 std",  STF_IEEE_TYPES)
-{
-  namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
-  using bs::log10;
-
-  using r_t = decltype(log10(T()));
-
-  // return type conformity test
-  STF_TYPE_IS(r_t, T);
-
-  // specific values tests
-#ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(bs::std_(log10)(bs::Inf<T>()), bs::Inf<r_t>(), 0);
-  STF_ULP_EQUAL(bs::std_(log10)(bs::Minf<T>()), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(bs::std_(log10)(bs::Nan<T>()), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(bs::std_(log10)(bs::Mone<T>()), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(bs::std_(log10)(bs::Zero<T>()), bs::Minf<r_t>(), 0);
-  STF_ULP_EQUAL(bs::std_(log10)(bs::Mzero<T>()), bs::Minf<r_t>(), 0);
-#endif
-  STF_ULP_EQUAL(bs::std_(log10)(bs::One<T>()), bs::Zero<r_t>(), 0);
-  STF_ULP_EQUAL(bs::std_(log10)(bs::Two<T>()), T(0.301029995663981195213738894724), 0);
-}

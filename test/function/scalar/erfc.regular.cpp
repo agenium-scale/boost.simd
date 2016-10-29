@@ -56,30 +56,6 @@ STF_CASE_TPL (" erfc",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(erfc(T(-6)), T(2), 0);
 }
 
-STF_CASE_TPL (" erfc std",  STF_IEEE_TYPES)
-{
-  namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
-  using bs::erfc;
-  using r_t = decltype(erfc(T()));
 
-  // return type conformity test
-  STF_TYPE_IS(r_t, T);
-
-  // specific values tests
-#ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(bs::std_(erfc)(bs::Inf<T>()), bs::Zero<r_t>(), 0);
-  STF_ULP_EQUAL(bs::std_(erfc)(bs::Nan<T>()), bs::Nan<r_t>(), 0);
-#endif
-  STF_ULP_EQUAL(bs::std_(erfc)(bs::Mzero<T>()), bs::One<r_t>(), 0);
-  STF_ULP_EQUAL(bs::std_(erfc)(bs::Half<T>()), T(0.479500122186953462317253346108), 0);
-  STF_ULP_EQUAL(bs::std_(erfc)(bs::One<T>()), T(0.157299207050285130658779364917), 0.5);
-  STF_ULP_EQUAL(bs::std_(erfc)(bs::Two<T>()), T(0.00467773498104726583793074363275), 1.0);
-  STF_ULP_EQUAL(bs::std_(erfc)(bs::Zero<T>()), bs::One<r_t>(), 0);
-  STF_ULP_EQUAL(bs::std_(erfc)(T(6)), T(0.0000000000000000215197367124989131165933503992), 0.5);
-  STF_EXPECT(bs::is_less(bs::std_(erfc)(bs::Ten<T>())- T(2.088487583762545e-45), bs::Eps<T>()));
-  STF_EXPECT(bs::is_less(bs::std_(erfc)(T(15))- T(7.212994172451206e-100), bs::Eps<T>()));
-  STF_ULP_EQUAL(bs::std_(erfc)(T(-6)), T(2), 0);
-}
 
 

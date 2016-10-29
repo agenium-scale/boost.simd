@@ -12,6 +12,7 @@ add_subdirectory(rem)
 set ( SOURCES
    abs.regular.cpp
    abs.saturated.cpp
+   abs.std.cpp
    acos.regular.cpp
    acos.accurate.cpp
    acosd.regular.cpp
@@ -38,7 +39,9 @@ set ( SOURCES
    asind.cpp
    asinh.cpp
    asinpi.cpp
-   atan2.cpp
+   atan2.regular.cpp
+   atan2.fast.cpp
+   atan2.std.cpp
    atan2d.cpp
    atan2pi.cpp
    atan.cpp
@@ -102,13 +105,16 @@ set ( SOURCES
    dot.cpp
    enumerate.cpp
    eps.cpp
-   erfc.cpp
+   erfc.regular.cpp
+   erfc.std.cpp
    erf.cpp
    erfcx.cpp
    exp10.cpp
-   exp2.cpp
-   exp.cpp
-   expm1.cpp
+   exp2.regular.cpp
+   exp2.std.cpp
+   exp.regular.cpp
+   expm1.regular.cpp
+   expm1.std.cpp
    exponent.cpp
    exponentbits.cpp
    exprecnegc.cpp
@@ -124,7 +130,8 @@ set ( SOURCES
    fms.cpp
    fnma.cpp
    fnms.cpp
-   fpclassify.cpp
+   fpclassify.regular.cpp
+   fpclassify.std.cpp
    frac.cpp
    frexp.cpp
    gamma.cpp
@@ -136,7 +143,9 @@ set ( SOURCES
    horn1.cpp
    horn.cpp
    horner.cpp
-   hypot.cpp
+   hypot.regular.cpp
+   hypot.fast.cpp
+   hypot.std.cpp
    iceil.cpp
    if_allbits_else.cpp
    if_allbits_else_zero.cpp
@@ -196,7 +205,8 @@ set ( SOURCES
    is_ngtz.cpp
    is_nlez.cpp
    is_nltz.cpp
-   is_normal.cpp
+   is_normal.regular.cpp
+   is_normal.std.cpp
    is_not_denormal.cpp
    is_not_equal.cpp
    is_not_equal_with_equal_nans.cpp
@@ -214,13 +224,18 @@ set ( SOURCES
    is_real.cpp
    is_simd_logical.cpp
    is_unord.cpp
-   ldexp.cpp
+   ldexp.regular.cpp
+   ldexp.fast.cpp
+   ldexp.std.cpp
    load.cpp
    lo.cpp
-   log10.cpp
+   log10.regular.cpp
+   log10.std.cpp
    log1p.cpp
-   log2.cpp
-   log.cpp
+   log2.regular.cpp
+   log2.std.cpp
+   log.regular.cpp
+   log.std.cpp
    logical_and.cpp
    logical_andnot.cpp
    logical_notand.cpp
@@ -238,7 +253,8 @@ set ( SOURCES
    maximum.regular.cpp
    maximum.splatted.cpp
    maxmag.cpp
-   maxnum.cpp
+   maxnum.regular.cpp
+   maxnum.std.cpp
    maxnummag.cpp
    meanof.cpp
    min.cpp
@@ -253,7 +269,8 @@ set ( SOURCES
    multiplies.regular.cpp
    multiplies.saturated.cpp
    nbtrue.cpp
-   nearbyint.cpp
+   nearbyint.regular.cpp
+   nearbyint.std.cpp
    negate.cpp
    negatenz.cpp
    negif.cpp
@@ -270,7 +287,8 @@ set ( SOURCES
    popcnt.cpp
    pow2.cpp
    pow_abs.cpp
-   pow.cpp
+   pow.regular.cpp
+   pow.std.cpp
    predecessor.cpp
    prev.cpp
    prod.cpp
@@ -285,7 +303,8 @@ set ( SOURCES
    reverse.cpp
    rol.cpp
    ror.cpp
-   round.cpp
+   round.regular.cpp
+   round.std.cpp
    rrol.cpp
    rror.cpp
    rshl.cpp
@@ -326,7 +345,9 @@ set ( SOURCES
    sqr.regular.cpp
    sqr.saturated.cpp
    sqrt1pm1.cpp
-   sqrt.cpp
+   sqrt.regular.cpp
+   sqrt.std.cpp
+   sqrt.fast.cpp
    stirling.cpp
    store.cpp
    stream.cpp
