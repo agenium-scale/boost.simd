@@ -13,16 +13,29 @@
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/function/plain.hpp>
 
-#include <boost/simd/detail/enforce_precision.hpp>
-#include <boost/simd/function/scalar/log.hpp>
-#include <boost/simd/function/scalar/dec.hpp>
 #include <boost/simd/function/scalar/inc.hpp>
 #include <boost/simd/function/musl.hpp>
-#include <boost/simd/function/std.hpp>
 #include <boost/simd/function/scalar/oneminus.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>
+#include <boost/simd/function/bitwise_and.hpp>
+#include <boost/simd/function/dec.hpp>
+#include <boost/simd/function/scalar/inc.hpp>
+#include <boost/simd/function/fma.hpp>
+#include <boost/simd/function/frexp.hpp>
+#include <boost/simd/function/horn.hpp>
+#include <boost/simd/function/musl.hpp>
+#include <boost/simd/function/plain.hpp>
+#include <boost/simd/function/sqr.hpp>
+#include <boost/simd/function/std.hpp>
+#include <boost/simd/detail/constant/log_2hi.hpp>
+#include <boost/simd/detail/constant/log_2lo.hpp>
+
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -37,15 +50,6 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
       return musl_(log1p)(a0);
-//       detail::enforce_precision<A0> enforcer;
-
-//       if (Mone<A0>() > a0)   return Nan<A0>();
-// #ifndef BOOST_SIMD_NO_INFINITIES
-//       if (a0 == Inf<A0>())   return Inf<A0>();
-// #endif
-//       if (a0 == Mone<A0>())   return Minf<A0>();
-//       A0 u = inc(a0);
-//       return log(u)+(a0-dec(u))/u;
     }
   };
   BOOST_DISPATCH_OVERLOAD ( log1p_
