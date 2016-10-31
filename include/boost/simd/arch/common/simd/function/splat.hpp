@@ -53,14 +53,14 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE target_t do_(V const& v, K const&, brigand::list<N...> const&) const
     {
       value_t s(v);
-      return {{ value_<N>(s)... }};
+      return { value_<N>(s)... };
     }
 
     template<typename... N> BOOST_FORCEINLINE
     target_t do_(V const& v, aggregate_storage const&, brigand::list<N...> const&) const
     {
       typename storage_t::value_type s(v);
-      return {{ s, s }};
+      return {{{ s, s }}};
     }
   };
 
