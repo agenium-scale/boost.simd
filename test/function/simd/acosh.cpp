@@ -38,3 +38,26 @@ STF_CASE_TPL("Check acosh on pack" , STF_IEEE_TYPES)
   test<T, N*2>($);
 }
 
+STF_CASE_TPL (" acosh",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::acosh;
+  using p_t = bs::pack<T>;
+  using r_t = decltype(acosh(p_t()));
+
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, p_t);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_ULP_EQUAL(acosh(bs::Inf<p_t>()), bs::Inf<r_t>(), 0);
+  STF_ULP_EQUAL(acosh(bs::Minf<p_t>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(acosh(bs::Nan<p_t>()), bs::Nan<r_t>(), 0);
+#endif
+  STF_ULP_EQUAL(acosh(bs::Zero<p_t>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(acosh(bs::One<p_t>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(acosh(bs::Two<p_t>()), r_t(1.31695789692481670862504634731), 0.5);
+}
+

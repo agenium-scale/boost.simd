@@ -10,6 +10,14 @@
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/pi.hpp>
+#include <boost/simd/constant/four.hpp>
 
 namespace bs = boost::simd;
 
@@ -57,7 +65,7 @@ STF_CASE_TPL( "Check abs behavior with floating", STF_IEEE_TYPES )
   STF_EQUAL(abs(bs::Mone<p_t>()), bs::One<r_t>());
 }
 
-STF_CASE_TPL( "Check std abs behavior with signed integral", STF_SIGNED_INTEGRAL_TYPES )
+STF_CASE_TPL( "Check abs behavior with signed integral", STF_SIGNED_INTEGRAL_TYPES )
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
@@ -67,6 +75,7 @@ STF_CASE_TPL( "Check std abs behavior with signed integral", STF_SIGNED_INTEGRAL
 
 #ifndef BOOSp_t_SIMD_NO_INVALIDS
   STF_EQUAL(abs(bs::Inf<p_t>()),  bs::Inf<r_t>());
+  STF_EQUAL(abs(bs::Minf<p_t>()),  bs::Minf<r_t>());
   STF_EQUAL(abs(bs::Nan<p_t>()),  bs::Nan<r_t>());
 #endif
   STF_EQUAL(abs(bs::Zero<p_t>()), bs::Zero<r_t>());

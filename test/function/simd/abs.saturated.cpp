@@ -10,6 +10,14 @@
 #include <boost/simd/function/saturated.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/pi.hpp>
+#include <boost/simd/constant/four.hpp>
 
 namespace bs = boost::simd;
 
@@ -38,4 +46,22 @@ STF_CASE_TPL("Check saturated abs on pack" , STF_NUMERIC_TYPES)
   test<T, N>($);
   test<T, N/2>($);
   test<T, N*2>($);
+}
+
+STF_CASE_TPL( "Check saturated abs behavior with signed integral", STF_SIGNED_INTEGRAL_TYPES )
+{
+  namespace bs = boost::simd;
+  using p_t = bs::pack<T>;
+  using bs::abs;
+  using r_t = decltype(abs(p_t()));
+  STF_TYPE_IS(r_t, p_t);
+
+#ifndef BOOSp_t_SIMD_NO_INVALIDS
+  STF_EQUAL(bs::saturated_(abs)(bs::Inf<p_t>()),  bs::Inf<r_t>());
+  STF_EQUAL(bs::saturated_(abs)(bs::Minf<p_t>()),  bs::Inf<r_t>());
+  STF_EQUAL(bs::saturated_(abs)(bs::Nan<p_t>()),  bs::Nan<r_t>());
+#endif
+  STF_EQUAL(bs::saturated_(abs)(bs::Zero<p_t>()), bs::Zero<r_t>());
+  STF_EQUAL(bs::saturated_(abs)(bs::One<p_t>()),  bs::One<r_t>());
+  STF_EQUAL(bs::saturated_(abs)(bs::Mone<p_t>()), bs::One<r_t>());
 }

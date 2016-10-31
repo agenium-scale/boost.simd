@@ -18,7 +18,6 @@
 #include <boost/simd/constant/pi.hpp>
 #include <boost/simd/constant/four.hpp>
 
-
 namespace bs = boost::simd;
 
 template <typename T, std::size_t N, typename Env>
