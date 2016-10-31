@@ -64,3 +64,22 @@ STF_CASE_TPL( "Check abs behavior with floating", STF_IEEE_TYPES )
   STF_EQUAL(abs(bs::One<p_t>()),  bs::One<r_t>());
   STF_EQUAL(abs(bs::Mone<p_t>()), bs::One<r_t>());
 }
+
+STF_CASE_TPL( "Check abs behavior with signed integral", STF_SIGNED_INTEGRAL_TYPES )
+{
+  namespace bs = boost::simd;
+  using p_t = bs::pack<T>;
+  using bs::abs;
+  using r_t = decltype(abs(p_t()));
+  STF_TYPE_IS(r_t, p_t);
+
+#ifndef BOOSp_t_SIMD_NO_INVALIDS
+  STF_EQUAL(abs(bs::Inf<p_t>()),  bs::Inf<r_t>());
+  STF_EQUAL(abs(bs::Minf<p_t>()),  bs::Minf<r_t>());
+  STF_EQUAL(abs(bs::Nan<p_t>()),  bs::Nan<r_t>());
+#endif
+  STF_EQUAL(abs(bs::Zero<p_t>()), bs::Zero<r_t>());
+  STF_EQUAL(abs(bs::One<p_t>()),  bs::One<r_t>());
+  STF_EQUAL(abs(bs::Mone<p_t>()), bs::One<r_t>());
+}
+
