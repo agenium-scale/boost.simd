@@ -20,19 +20,16 @@ void test(Env& $)
 {
   using p_t = bs::pack<T, N>;
 
-  T a1[N], b[N], c[N];
+  T a1[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? T(i) : T(-i);
     b[i] = bs::cbrt(a1[i]) ;
-    c[i] = bs::std_(bs::cbrt)(a1[i]);
   }
 
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
-  p_t cc (&c[0], &c[0]+N);
   STF_ULP_EQUAL(bs::cbrt(aa1), bb,0.5);
-  STF_ULP_EQUAL(bs::std_(bs::cbrt)(aa1), cc,0.5);
 }
 
 STF_CASE_TPL("Check cbrt on pack" , STF_IEEE_TYPES)
@@ -43,4 +40,32 @@ STF_CASE_TPL("Check cbrt on pack" , STF_IEEE_TYPES)
   test<T, N/2>($);
   test<T, N*2>($);
 }
+
+STF_CASE_TPL (" cbrt",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::cbrt;
+  using p_t = bs::pack<T>;
+
+  using r_t = decltype(cbrt(p_t()));
+
+  // return type conformity test
+  STF_EXPR_IS(cbrt(p_t()), p_t);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_ULP_EQUAL(cbrt(bs::Inf<p_t>()), bs::Inf<r_t>(), 0.5);
+  STF_ULP_EQUAL(cbrt(bs::Minf<p_t>()), bs::Minf<r_t>(), 0.5);
+  STF_ULP_EQUAL(cbrt(bs::Nan<p_t>()), bs::Nan<r_t>(), 0.5);
+#endif
+  STF_ULP_EQUAL(cbrt(bs::Mone<p_t>()), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(cbrt(bs::One<p_t>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(cbrt(bs::Zero<p_t>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(cbrt(T(8)), T(2), 0.5);
+  STF_ULP_EQUAL(cbrt(T(27)),T(3), 0.5);
+  STF_ULP_EQUAL(cbrt(T(-8)), T(-2), 0.5);
+  STF_ULP_EQUAL(cbrt(T(-27)),T(-3), 0.5);
+}
+
 

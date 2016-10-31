@@ -29,11 +29,10 @@ void test(Env& $)
   {
     a1[i] = (i%2) ? T(i) : bs::Inf<T>();
     b[i] = bs::is_finite(a1[i]);
-    c[i] = bs::std_(bs::is_finite)(a1[i]);
    }
   p_t aa1(&a1[0], &a1[0]+N);
   pl_t bb(&b[0], &b[0]+N);
-  STF_IEEE_EQUAL( bs::std_(bs::is_finite)(aa1), bb);
+  STF_IEEE_EQUAL(bs::is_finite(aa1), bb);
 }
 
 STF_CASE_TPL("Check is_finite on pack" , STF_NUMERIC_TYPES)
