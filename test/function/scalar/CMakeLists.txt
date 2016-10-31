@@ -28,6 +28,7 @@ set ( SOURCES
    acscd.cpp
    acsch.cpp
    acscpi.cpp
+   aligned_store.cpp
    all.cpp
    any.cpp
    arg.cpp

@@ -13,7 +13,7 @@ set ( SOURCES
  ## range.logical.cpp
   scatter.arithmetic.cpp
   scatter.logical.cpp
- ## mask.arithmetic.cpp
+  mask.arithmetic.cpp
  ## mask.logical.cpp
 )
 
