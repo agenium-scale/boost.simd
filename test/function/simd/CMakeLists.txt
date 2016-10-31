@@ -21,6 +21,7 @@ add_subdirectory(slice)
 add_subdirectory(slide)
 add_subdirectory(splat)
 add_subdirectory(split)
+add_subdirectory(store)
 
 set ( SOURCES
       abs.regular.cpp
@@ -335,7 +336,6 @@ set ( SOURCES
       sqrt1pm1.cpp
       sqrt.cpp
       stirling.cpp
-      store.cpp
       stream.cpp
       successor.cpp
       sum.cpp

@@ -6,13 +6,19 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ALIGNED_STORE_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ALIGNED_STORE_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_STORE_REGULAR_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_STORE_REGULAR_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/dispatch/adapted/common/pointer.hpp>
-#include <boost/simd/function/store.hpp>
-#include <boost/simd/detail/is_aligned.hpp>
+#include <boost/simd/detail/dispatch/meta/is_natural.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/if_one_else_zero.hpp>
+#include <boost/simd/function/extract.hpp>
+#include <boost/simd/function/slice.hpp>
+#include <boost/simd/function/shuffle.hpp>
+#include <boost/simd/meta/as_arithmetic.hpp>
+#include <boost/simd/meta/is_bitwise_logical.hpp>
 #include <boost/config.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -21,36 +27,16 @@ namespace boost { namespace simd { namespace ext
   namespace bs = ::boost::simd;
 
   //------------------------------------------------------------------------------------------------
-  // Whenever we store with an offset
-  BOOST_DISPATCH_OVERLOAD ( aligned_store_
-                          , (typename Src, typename Pointer, typename X, typename A2)
-                          , bd::cpu_
-                          , bs::pack_<bd::unspecified_<Src>, X>
-                          , bd::pointer_<bd::scalar_<bd::unspecified_<Pointer>>,1u>
-                          , bd::scalar_<bd::integer_<A2>>
-                          )
-  {
-    BOOST_FORCEINLINE void operator()(Src const& a0, Pointer a1, A2 const & a2) const BOOST_NOEXCEPT
-    {
-      bs::aligned_store(a0,a1+a2);
-    }
-  };
-
-  //------------------------------------------------------------------------------------------------
-  // aligned_store is generally check + calling store
-  BOOST_DISPATCH_OVERLOAD( aligned_store_
+  // Whenever we have no clue how to store
+  BOOST_DISPATCH_OVERLOAD ( store_
                           , (typename Src, typename Pointer, typename X)
                           , bd::cpu_
-                          , bs::pack_<bd::unspecified_<Src>,X>
+                          , bs::pack_<bd::unspecified_<Src>, X>
                           , bd::pointer_<bd::scalar_<bd::unspecified_<Pointer>>,1u>
                           )
   {
     BOOST_FORCEINLINE void operator()(const Src& s, Pointer p) const
     {
-      BOOST_ASSERT_MSG( boost::simd::detail::is_aligned(p,Src::alignment)
-                      , "boost::simd::aligned_store was performed on an unaligned pointer of integer"
-                      );
-
       do_(s, p, typename Src::storage_kind{}, typename Src::traits::element_range{} );
     }
 
@@ -58,14 +44,14 @@ namespace boost { namespace simd { namespace ext
     template<typename... N> static BOOST_FORCEINLINE
     void do_( Src const & s, Pointer p, aggregate_storage const&, brigand::list<N...> const&)
     {
-      aligned_store(slice_low(s) , p);
-      aligned_store(slice_high(s), p+Src::traits::element_size);
+      store(slice_low(s) , p);
+      store(slice_high(s), p+Src::traits::element_size);
     }
 
     // other pack are calling store N times
     template<typename I> static BOOST_FORCEINLINE void sto_(const Src& s, Pointer  p)
     {
-      using s_t = typename boost::pointee<Pointer>::type;
+      using s_t   = typename boost::pointee<Pointer>::type;
       p[I::value] = static_cast<s_t>(extract<I::value>(s));
     }
 
@@ -73,6 +59,23 @@ namespace boost { namespace simd { namespace ext
     static BOOST_FORCEINLINE void do_(Src const & s, Pointer p, K const&, brigand::list<N...> const&)
     {
       (void)(std::initializer_list<bool>{(sto_<N>(s,p),true)...});
+    }
+  };
+
+  //------------------------------------------------------------------------------------------------
+  // Bitwise_logical logical store
+  BOOST_DISPATCH_OVERLOAD_IF( store_
+                            , (typename Src, typename Pointer, typename X)
+                            , (is_bitwise_logical<Src>)
+                            , bd::cpu_
+                            , bs::pack_<bs::logical_<Src>, X>
+                            , bd::pointer_<bd::scalar_<bd::arithmetic_<Pointer>>,1u>
+                            )
+  {
+    BOOST_FORCEINLINE void operator()(const Src& s, Pointer p) const
+    {
+      using s_t = typename Src::value_type::value_type;
+      store( bitwise_cast<as_arithmetic_t<Src>>(s) , reinterpret_cast<s_t*>(p) );
     }
   };
 } } }
