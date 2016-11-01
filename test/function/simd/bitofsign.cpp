@@ -56,7 +56,7 @@ STF_CASE_TPL (" bitofsign real",  STF_IEEE_TYPES)
   using r_t = decltype(bitofsign(p_t()));
 
   // return type conformity test
-  STF_TYPE_IS(r_t, T);
+  STF_TYPE_IS(r_t, p_t);
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
@@ -77,7 +77,7 @@ STF_CASE_TPL (" bitofsign unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
   using r_t = decltype(bitofsign(p_t()));
 
   // return type conformity test
-  STF_TYPE_IS(r_t, T);
+  STF_TYPE_IS(r_t, p_t);
 
   // specific values tests
   STF_EQUAL(bitofsign(bs::One<p_t>()), bs::Zero<r_t>());
@@ -91,7 +91,7 @@ STF_CASE_TPL (" bitofsign signed_int",  STF_SIGNED_INTEGRAL_TYPES)
   using r_t = decltype(bitofsign(p_t()));
 
   // return type conformity test
-  STF_TYPE_IS(r_t, T);
+  STF_TYPE_IS(r_t, p_t);
 
   // specific values tests
   STF_EQUAL(bitofsign(bs::Mone<p_t>()), r_t(1ull << (sizeof(T)*8-1)));
