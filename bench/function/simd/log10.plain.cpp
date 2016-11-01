@@ -7,15 +7,15 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/log.hpp>
+#include <boost/simd/function/simd/log10.hpp>
 #include <boost/simd/pack.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_log, bs::log);
+DEFINE_SIMD_BENCH(simd_log10, bs::plain_(bs::log10));
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_log, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<simd_log10, NS_BENCH_IEEE_TYPES>(-10, 10);
 }

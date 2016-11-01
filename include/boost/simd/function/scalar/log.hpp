@@ -14,3 +14,4 @@
 #include <boost/simd/arch/common/scalar/function/log.hpp>
 
 #endif
+

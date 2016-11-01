@@ -13,7 +13,7 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_log1p, bs::log1p);
+DEFINE_SIMD_BENCH(simd_log1p, bs::musl_(bs::log1p));
 
 DEFINE_BENCH_MAIN()
 {

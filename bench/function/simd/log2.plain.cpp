@@ -13,9 +13,9 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_log2, bs::log2);
+DEFINE_SIMD_BENCH(simd_plain_log2, bs::plain_(bs::log2));
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_log2, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<simd_plain_log2, NS_BENCH_IEEE_TYPES>(0, 1000);
 }
