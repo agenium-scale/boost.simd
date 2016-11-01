@@ -39,6 +39,8 @@ void test(Env& $)
   pi_t aa2(&a2[0], &a2[0]+N);
   p_t bb(&b[0], &b[0]+N);
   p_t dd(&d[0], &d[0]+N);
+  STF_IEEE_EQUAL(bs::ldexp(aa1, aa2), bb);
+  STF_IEEE_EQUAL(bs::fast_(bs::ldexp)(aa1, aa2), dd);
 }
 
 STF_CASE_TPL("Check ldexp on pack" , STF_NUMERIC_TYPES)

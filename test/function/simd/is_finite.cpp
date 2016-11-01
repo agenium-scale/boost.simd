@@ -24,7 +24,7 @@ void test(Env& $)
   using pl_t = bs::pack<bs::logical<T>, N>;
 
   T a1[N];
-  bs::logical<T> b[N], c[N];
+  bs::logical<T> b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? T(i) : bs::Inf<T>();
