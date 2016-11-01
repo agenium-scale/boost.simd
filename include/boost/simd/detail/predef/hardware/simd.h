@@ -10,6 +10,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #include <boost/simd/detail/predef/hardware/simd/x86_amd.h>
 #include <boost/simd/detail/predef/hardware/simd/arm.h>
 #include <boost/simd/detail/predef/hardware/simd/ppc.h>
+#include <boost/simd/detail/predef/hardware/simd/mic.h>
 
 #ifndef BOOST_PREDEF_HARDWARE_SIMD_H
 #define BOOST_PREDEF_HARDWARE_SIMD_H
