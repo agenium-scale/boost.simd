@@ -66,6 +66,7 @@ STF_CASE_TPL (" atan2",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(atan2(bs::Mone<T>(), bs::Mone<T>()), -bs::Threepio_4<r_t>(), 0.5);
   STF_ULP_EQUAL(atan2(bs::One<T>(), bs::One<T>()), bs::Pio_4<r_t>(), 0.5);
   STF_ULP_EQUAL(atan2(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::Mzero<T>(), bs::Zero<T>()), bs::Mzero<r_t>(), 0.5);
   STF_ULP_EQUAL(atan2(bs::Mzero<T>(), bs::Mzero<T>()), -bs::Pi<r_t>(), 0.5);
   STF_ULP_EQUAL(atan2(bs::Mzero<T>(), bs::Mone<T>()), -bs::Pi<r_t>(), 0.5);
   STF_ULP_EQUAL(atan2(bs::Zero<T>(), bs::Mzero<T>()), bs::Pi<r_t>(), 0.5);
