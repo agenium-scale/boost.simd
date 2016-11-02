@@ -30,7 +30,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      return indeg(acos(a0));
+      return indeg(bs::acos(a0));
     }
   };
 
@@ -44,7 +44,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() (const accurate_tag &,  A0 const& a0) const BOOST_NOEXCEPT
     {
-      return indeg(bs::accurate_(acos)(a0));
+      return indeg(bs::accurate_(bs::acos)(a0));
     }
   };
 } } }
