@@ -21,9 +21,6 @@
 #include <boost/simd/constant/pi.hpp>
 #include <boost/simd/constant/four.hpp>
 
-
->>>>>>> acos bug confusing accurate and regular in some cases
-
 namespace bs = boost::simd;
 
 template <typename T, std::size_t N, typename Env>
