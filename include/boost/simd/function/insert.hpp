@@ -26,7 +26,7 @@ namespace boost { namespace simd
     type @c Offset:
 
     @code
-    insert(d, v, o);
+    insert(d, o, v);
     @endcode
 
     is equivalent to:
@@ -44,13 +44,13 @@ namespace boost { namespace simd
       @endcode
 
     @param v   Value to insert
+    @param o   Position where to insert
     @param d   Data to insert into
-    @param o  Position where to insert
 
     @return void
   **/
   template<typename Value, typename Offset>
-  void insert( Data & d, Value const& v, Offset const& o)
+  void insert( Data & d, Offset const& o, Value const& v)
   {}
 } }
 #endif
