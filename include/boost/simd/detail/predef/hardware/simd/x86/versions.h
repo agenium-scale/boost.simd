@@ -114,6 +114,6 @@ http://www.boost.org/LICENSE_1_0.txt)
 
  Version number is: *9.0.0*.
  */
-#define BOOST_HW_SIMD_X86_AVX512_VERSION BOOST_VERSION_NUMBER(9, 0, 0)
+#define BOOST_HW_SIMD_X86_AVX512_VERSION BOOST_VERSION_NUMBER(6, 0, 0)
 
 #endif

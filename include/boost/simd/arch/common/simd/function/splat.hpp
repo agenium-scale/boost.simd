@@ -49,18 +49,26 @@ namespace boost { namespace simd { namespace ext
     template<typename N, typename T>
     BOOST_FORCEINLINE T const& value_(T const& t) const { return t; }
 
-    template<typename K, typename... N>
-    BOOST_FORCEINLINE target_t do_(V const& v, K const&, brigand::list<N...> const&) const
+    template<typename K, typename N>
+    BOOST_FORCEINLINE target_t do_(V const& v, K const&, brigand::list<N> const&) const
     {
-      value_t s(v);
-      return {{ value_<N>(s)... }};
+      target_t that;
+      that[0] = value_t(v);
+      return that;
     }
 
-    template<typename... N> BOOST_FORCEINLINE
-    target_t do_(V const& v, aggregate_storage const&, brigand::list<N...> const&) const
+    template<typename K, typename N0, typename N1, typename... N>
+    BOOST_FORCEINLINE target_t do_(V const& v, K const&, brigand::list<N0,N1,N...> const&) const
+    {
+      value_t s(v);
+      return {value_<N0>(s),value_<N1>(s),value_<N>(s)...};
+    }
+
+    template<typename N0, typename N1, typename... N> BOOST_FORCEINLINE
+    target_t do_(V const& v, aggregate_storage const&, brigand::list<N0,N1,N...> const&) const
     {
       typename storage_t::value_type s(v);
-      return {{ s, s }};
+      return {{{ s, s }}};
     }
   };
 
