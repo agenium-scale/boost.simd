@@ -16,41 +16,212 @@ namespace boost { namespace simd
 {
   /*!
     @ingroup group-swar
-    Function object implementing shuffle capabilities
 
-    SIMD register shuffling
-
-    Shuffle the elements of two SIMD registers following a compile-time
-    permutation pattern passed as a @metafunction.
+    Shuffle the elements of a boost::simd::pack using an index permutation described by compile-time
+    integral constants.
 
     @par Semantic:
 
-    Let @c T be a SIMD register type of cardinal @c N, @c Perm be a
-    binary @metafunction. For any SIMD register @c x and  @c y of type @c T,
+    For any boost::simd::pack @c x of base type @c T and cardinal @c N and @c N compile-time
+    integral constants @c I1...In with value comprised between @c -1 and @c N-1, the following code:
+
+    @code
+    boost::simd::pack<T,N> r = shuffle<I1,...,In>(x);
+    @endcode
+
+    is equivalent to:
+
+    @code
+    boost::simd::pack<T,N> r{ I1 != -1 ? x[I1] : 0, ..., In != -1 ? x[In] : 0 };
+    @endcode
+
+    The actual integral constants is mapped at compile-time to the optimal sequence of
+    intrinsics to apply the desired permutation.
+
+    The special index value @c -1 is used to specify that, instead of fetching a data from inside
+    the shuffled boost::simd::pack, the value @c 0 has to be inserted in the result.
+
+    @par Example:
+
+    @snippet shuffle.unary.cpp shuffle-unary
+
+    Possible output:
+
+    @code
+    Original: (1, 2, 3, 4)
+    Permuted: (4, 0, 3, 1)
+    @endcode
+
+    @param  a  boost::simd::pack to shuffle
+  **/
+  template<int P0, int ... Ps, typename T>  T shuffle(T const& a);
+
+  /*!
+    @ingroup group-swar
+
+    Shuffle the elements of two boost::simd::pack using an index permutation described by compile-time
+    integral constants.
+
+    @par Semantic:
+
+    For any boost::simd::pack @c x and @c y of base type @c T and cardinal @c N and @c N
+    compile-time integral constants @c I1...In with value comprised between @c -1 and @c 2*N-1,
     the following code:
 
     @code
-    T r = shuffle<Perm>(x,y);
+    boost::simd::pack<T,N> r = shuffle<I1,...,In>(x,y);
     @endcode
 
-    is equivalent to
+    is equivalent to:
 
     @code
-    T r = shuffle< mpl::apply<Perm, int_<0>, int_<N> >::type::value
-                 , ...
-                 , mpl::apply<Perm, int_<C-1>, int_<N> >::type::value
-                 >(x,y);
+    boost::simd::pack<T,N> r{ I1 != -1 ? (I1<N ? x[I1] : y[I1-N]) : 0, ..., In != -1 ? (In<N ? x[In] : y[In-N]) : 0 };
     @endcode
 
-    @usage{shuffle_perm1.cpp}
+    The actual integral constants is mapped at compile-time to the optimal sequence of
+    intrinsics to apply the desired permutation.
 
-    @tparam Perm Permutation pattern @metafunction
+    The special index value @c -1 is used to specify that, instead of fetching a data from inside
+    the shuffled boost::simd::pack, the value @c 0 has to be inserted in the result.
 
+    @par Example:
+
+    @snippet shuffle.binary.cpp shuffle-binary
+
+    Possible output:
+
+    @code
+    Original: (1, 2, 3, 4) (10, 20, 30, 40)
+    Permuted: (0, 4, 40, 0)
+    @endcode
+
+    @param  a  boost::simd::pack to shuffle
+    @param  b  boost::simd::pack to shuffle
   **/
-  template<std::ptrdiff_t... Ps, typename T>  T shuffle(T const& a);
-  template<std::ptrdiff_t... Ps, typename T>  T shuffle(T const& a,T const& b);
+  template<int P0, int ... Ps, typename T>  T shuffle(T const& a,T const& b);
 
+  /*!
+    @ingroup group-swar
+
+    Shuffle the elements of a boost::simd::pack using an index permutation described by compile-time
+    meta-function.
+
+    @par Semantic:
+
+    For any boost::simd::pack @c x of base type @c T and cardinal @c N and a meta-function @c Perm,
+    the following code:
+
+    @code
+    boost::simd::pack<T,N> r = shuffle<Perm>(x);
+    @endcode
+
+    is equivalent to:
+
+    @code
+    boost::simd::pack<T,N> r = shuffle<Perm::apply<0,N>::value,...,Perm::apply<N-1,N>::value>(x);
+    @endcode
+
+    The permutation computed by the meta-function @c Perm is mapped at compile-time to the
+    optimal sequence of intrinsics to apply the desired permutation.
+
+    @par Defining a permutation meta-function
+
+    Permutation meta-function can be built in two different ways:
+
+    - Define a Permutation meta-function as a struct with an internal @c apply structure that
+      proceed to compute a given permutation index at compile-time. This @c apply internal
+      structure takes two integral constant types as parameter: @c C the cardinal of the
+      boost::simd::pack to be shuffled and @c I the index of the permutation index computed.
+
+    - Define a @c constexpr function taking two integers: @c c the cardinal of the boost::simd::pack
+      to be shuffled and @c i the index of the permutation index computed. This function returns the
+      computed value of the permutation index computed. Said function is then wrapped inside the
+      boost::simd::pattern template type before being used with boost::simd::shuffle.
+
+    The special index value @c -1 can be returned to specify that, instead of fetching a data from
+    inside the shuffled boost::simd::pack, the value @c 0 has to be inserted in the result.
+
+    @notebox{Using permutation expressed as a metafunction has the advantage to be cardinal agnostic,
+    thus making a given shuffle calls independant of the actual pack cardinal, leading to a more
+    generic code}
+
+    @par Example:
+
+    @snippet shuffle.perm.cpp shuffle-perm
+
+    Possible output:
+
+    @code
+    Original: (1, 2, 3, 4)
+    Permuted: (4, 0, 3, 1)
+    Permuted: (4, 4, 4, 4)
+    @endcode
+
+    @tparam Permutation Permutation meta-function generating the permutation index
+    @param  a           boost::simd::pack to shuffle
+  **/
   template<typename Permutation, typename T>  T shuffle(T const& a);
+
+  /*!
+    @ingroup group-swar
+
+    Shuffle the elements of two boost::simd::pack using an index permutation described by compile-time
+    meta-function.
+
+    @par Semantic:
+
+    For any boost::simd::pack @c x and @c y of base type @c T and cardinal @c N and a meta-function @c Perm,
+    the following code:
+
+    @code
+    boost::simd::pack<T,N> r = shuffle<Perm>(x,y);
+    @endcode
+
+    is equivalent to:
+
+    @code
+    boost::simd::pack<T,N> r = shuffle<Perm::apply<0,N>::value,...,Perm::apply<N-1,N>::value>(x,y);
+    @endcode
+
+    The permutation computed by the meta-function @c Perm is mapped at compile-time to the
+    optimal sequence of intrinsics to apply the desired permutation.
+
+    @par Defining a permutation meta-function
+
+    Permutation meta-function can be built in two different ways:
+
+    - Define a Permutation meta-function as a struct with an internal @c apply structure that
+      proceed to compute a given permutation index at compile-time. This @c apply internal
+      structure takes two integral constant types as parameter: @c C the cardinal of the
+      boost::simd::pack to be shuffled and @c I the index of the permutation index computed.
+
+    - Define a @c constexpr function taking two integers: @c c the cardinal of the boost::simd::pack
+      to be shuffled and @c i the index of the permutation index computed. This function returns the
+      computed value of the permutation index computed. Said function is then wrapped inside the
+      boost::simd::pattern template type before being used with boost::simd::shuffle.
+
+    The special index value @c -1 can be returned to specify that, instead of fetching a data from
+    inside the shuffled boost::simd::pack, the value @c 0 has to be inserted in the result.
+
+    @notebox{Using permutation expressed as a metafunction has the advantage to be cardinal agnostic,
+    thus making a given shuffle calls independant of the actual pack cardinal, leading to a more
+    generic code}
+
+    @par Example:
+
+    @snippet shuffle.perm2.cpp shuffle-perm2
+
+    Possible output:
+
+    @code
+    Original: (1, 2, 3, 4)
+    Permuted: (10, 20, 3, 4)
+    @endcode
+
+    @tparam Permutation Permutation meta-function generating the permutation index
+    @param  a           boost::simd::pack to shuffle
+    @param  b           boost::simd::pack to shuffle
+  **/
   template<typename Permutation, typename T>  T shuffle(T const& a,T const& b);
 } }
 #endif

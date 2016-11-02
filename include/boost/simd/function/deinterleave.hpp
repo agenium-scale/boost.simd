@@ -1,7 +1,6 @@
 //==================================================================================================
 /*!
   @file
-
   @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
@@ -11,33 +10,33 @@
 #ifndef BOOST_SIMD_FUNCTION_DEINTERLEAVE_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_DEINTERLEAVE_HPP_INCLUDED
 
+#if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-
-#if defined(DOXYGEN_ONLY)
   /*!
     @ingroup group-swar
-    Function object implementing deinterleave capabilities
+    This function object performs a complete deinterleaving of its arguments.
 
-    Evaluates the two deinterleaved data extracted from its arguments
-    while minimizing redundant computations.
+    deinterleave is guaranteed to be optimized as much as possible compared to using
+    boost::simd::deinterleave_first and boost::simd::deinterleave_second in succession.
 
     @par Semantic:
-
     For every parameters @c x and @c y of type @c T :
     @code
     std::array<T,2> r = deinterleave(x,y);
     @endcode
-
     is equivalent to :
-
     @code
     std::array<T,2> r = { deinterleave_first(x,y), deinterleave_second(x,y) };
     @endcode
+
+    @param  v0 First argument to deinterleave
+    @param  v1 Second argument to deinterleave
+    @return An array of two boost::simd::pack containing the deinterleaved data from the arguments
   **/
   std::array<Value,2> deinterleave(Value const& v0, Value const& v1);
-#endif
 } }
+#endif
 
 #include <boost/simd/function/simd/deinterleave.hpp>
 

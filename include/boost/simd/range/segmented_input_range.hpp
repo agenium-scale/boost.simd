@@ -20,25 +20,29 @@
 namespace boost { namespace simd
 {
   /*!
-    @brief Clamped adapter for SIMD read-only range
+    @ingroup group-std
+    Splits a ContiguousRange in three Contiguous Input Ranges able to support mixed scalar and SIMD
+    traversal.
 
-    Convert a range represented as a pair of iterators into a read-only SIMD
-    aware range. This range's extrema are modified so that:
+    The three sub-ranges are stored into a std::tuple and covers:
+    - the scalar prologue range, i.e the range defined between the original begin and the first
+      location to be properly aligned to be read as a boost::simd::pack
+    - the main SIMD range, i.e the range defined between the first location to be properly aligned
+      to be read as a boost::simd::pack and the location after the last readable pack.
+    - the scalar epilogue range, i.e the range defined between the location after the last readable
+      pack and the original end.
 
-    * the beginning of the range is referencing the first aligned element of the
-      original range
-    * the end of the range is referencing past the last valid SIMD pack accessible
-      in the original range.
+    @par Example
+    @snippet segmented_input_range.cpp segmented_input_range
+    Possible output:
+    @code
+    Sum of [1 ... 16] is 136
+    @endcode
 
-    Such clamped range is then safe to be iterated using aligned_iterator while
-    the remaining elements of the original range can be processed using regular
-    scalar iterators.
-
-    @tparam C Width of the SIMD register to use as iteration value.
-    @param begin A Range addressing a contiguous memory block
-    @param end
-
-    @return An instance of realigned_input_range
+    @param b  Starting iterator of the ContiguousRange to adapt
+    @param e  End iterator of the ContiguousRange to adapt
+    @return   A triplet of Input Range covering the scalar prologue, the SIMD main range and the scalar
+              epilogue covering the same data than the original Range.
   **/
   template<std::size_t C, typename Iterator>
   std::tuple< iterator_range<Iterator>
@@ -54,7 +58,6 @@ namespace boost { namespace simd
       );
   }
 
-  /// @overload
   template<class Iterator> inline
   auto    segmented_input_range( Iterator begin, Iterator end )
       ->  decltype( segmented_input_range< pack< typename std::iterator_traits<Iterator>

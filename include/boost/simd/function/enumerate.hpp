@@ -16,63 +16,34 @@ namespace boost { namespace simd
 #if defined(DOXYGEN_ONLY)
   /*!
     @ingroup group-swar
+    Generates a value containing sequentially increasing values, starting with @c seed and
+    repetitively evaluating @c seed+=step.
 
-    Linear enumeration of value
-
-    Return a SIMD register containing a linear enumeration of values defined
-    by a @c seed value and a @c step value.
-
-    @par Semantic:
-
-    For any given SIMD type @c T, the following code:
-
+    @par Scalar Semantic:
+    For any type @c T , the following code:
     @code
-    T r = enumerate<T>();
+    auto r = enumerate<T>(seed, step);
+    @endcode
+    is equivalent to:
+    @code
+    T r{seed};
     @endcode
 
-    is equivalent to
-
+    @par SIMD Semantic:
+    For any type @c T and integral constant @c N, the following code:
     @code
-    T r = make<T>(0, 1, ... , N-1);
+    auto r = enumerate<boost::simd::pack<T,N>>(seed, step);
+    @endcode
+    is equivalent to:
+    @code
+    boost::simd::pack<T,N> r{seed, seed+step, ..., seed+(N-1)*step};
     @endcode
 
-    where @c N is the equal to <tt>cardinal_of<T>::value</tt>.
-
-    For any given SIMD type @c T, and any value @c seed of a scalar type @c S, the following code:
-
-    @code
-    T r = enumerate<T>(seed);
-    @endcode
-
-    is equivalent to
-
-    @code
-    T r = make<T>(seed, seed + 1, ... ,  seed + (N-1));
-    @endcode
-
-    where @c N is the equal to <tt>cardinal_of<T>::value</tt>.
-
-    For any given SIMD type @c T, and any value @c seed and @c step of a SIMD type @c S, the
-    following code:
-
-    @code
-    T r = enumerate<T>(seed, step);
-    @endcode
-
-    is equivalent to
-
-    @code
-    T r = seed + step*enumerate<T>();
-    @endcode
-
-    @param seed Initial value of the enumeration. By default, equals to 0.
-    @param step Initial value of the enumeration. By default, equals to 1.
-
-    @return A pack containing the enumeration based on @c seed and @c step
+    @param seed Initial value of store, equals to @c 0 by default.
+    @param step Increment to apply on each subsequent generated value, equals to @c 1 by default.
+    @return A value containing the sequence of value generated from @c seed and @c step
   **/
-  template<class T, class B, class S>
-  T enumerate(const B& seed = 0, const S& step = 1) noexcept;
-
+  template<typename T, typename B, typename S> T enumerate(const B& seed = 0, const S& step = 1);
 #endif
 } }
 
