@@ -35,11 +35,11 @@ namespace boost { namespace simd
     boost::simd::pack<T,N> r{ I1 != -1 ? x[I1] : 0, ..., In != -1 ? x[In] : 0 };
     @endcode
 
-    The actual integral constants is mapped at compile-time to the most optimal sequence of
-    intrinsics to apply the desired permutations.
+    The actual integral constants is mapped at compile-time to the optimal sequence of
+    intrinsics to apply the desired permutation.
 
     The special index value @c -1 is used to specify that, instead of fetching a data from inside
-    the shuffled boost::simd::pack, the value @c 0 as to be inserted in the result.
+    the shuffled boost::simd::pack, the value @c 0 has to be inserted in the result.
 
     @par Example:
 
@@ -78,11 +78,11 @@ namespace boost { namespace simd
     boost::simd::pack<T,N> r{ I1 != -1 ? (I1<N ? x[I1] : y[I1-N]) : 0, ..., In != -1 ? (In<N ? x[In] : y[In-N]) : 0 };
     @endcode
 
-    The actual integral constants is mapped at compile-time to the most optimal sequence of
-    intrinsics to apply the desired permutations.
+    The actual integral constants is mapped at compile-time to the optimal sequence of
+    intrinsics to apply the desired permutation.
 
     The special index value @c -1 is used to specify that, instead of fetching a data from inside
-    the shuffled boost::simd::pack, the value @c 0 as to be inserted in the result.
+    the shuffled boost::simd::pack, the value @c 0 has to be inserted in the result.
 
     @par Example:
 
@@ -121,8 +121,8 @@ namespace boost { namespace simd
     boost::simd::pack<T,N> r = shuffle<Perm::apply<0,N>::value,...,Perm::apply<N-1,N>::value>(x);
     @endcode
 
-    The permutation computed by the meta-function @c Perm is mapped at compile-time to the most
-    optimal sequence of intrinsics to apply the desired permutations.
+    The permutation computed by the meta-function @c Perm is mapped at compile-time to the
+    optimal sequence of intrinsics to apply the desired permutation.
 
     @par Defining a permutation meta-function
 
@@ -139,7 +139,7 @@ namespace boost { namespace simd
       boost::simd::pattern template type before being used with boost::simd::shuffle.
 
     The special index value @c -1 can be returned to specify that, instead of fetching a data from
-    inside the shuffled boost::simd::pack, the value @c 0 as to be inserted in the result.
+    inside the shuffled boost::simd::pack, the value @c 0 has to be inserted in the result.
 
     @notebox{Using permutation expressed as a metafunction has the advantage to be cardinal agnostic,
     thus making a given shuffle calls independant of the actual pack cardinal, leading to a more
@@ -183,8 +183,8 @@ namespace boost { namespace simd
     boost::simd::pack<T,N> r = shuffle<Perm::apply<0,N>::value,...,Perm::apply<N-1,N>::value>(x,y);
     @endcode
 
-    The permutation computed by the meta-function @c Perm is mapped at compile-time to the most
-    optimal sequence of intrinsics to apply the desired permutations.
+    The permutation computed by the meta-function @c Perm is mapped at compile-time to the
+    optimal sequence of intrinsics to apply the desired permutation.
 
     @par Defining a permutation meta-function
 
@@ -201,7 +201,7 @@ namespace boost { namespace simd
       boost::simd::pattern template type before being used with boost::simd::shuffle.
 
     The special index value @c -1 can be returned to specify that, instead of fetching a data from
-    inside the shuffled boost::simd::pack, the value @c 0 as to be inserted in the result.
+    inside the shuffled boost::simd::pack, the value @c 0 has to be inserted in the result.
 
     @notebox{Using permutation expressed as a metafunction has the advantage to be cardinal agnostic,
     thus making a given shuffle calls independant of the actual pack cardinal, leading to a more

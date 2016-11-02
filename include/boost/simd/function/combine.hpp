@@ -15,8 +15,8 @@ namespace boost { namespace simd
 {
   /*!
     @ingroup group-swar
-    This function object concatenates two values of the same type to build a boost::simd::pack of
-    the same base type but with a cardinal twice as large.
+    This function object concatenates two values of the same type to build a boost::simd::pack
+    but with a cardinal twice as large.
 
     @par Scalar Semantic:
     For any scalar value @c a and @c b of type @c T , the following code:
