@@ -96,7 +96,7 @@ struct option {
   }
   virtual bool validate(options_map& m, std::string const& arg, std::string const& opt) const {
     if (arg.find(opt) == 0 && opt.length() == arg.length()) {
-      m.add_option(name(), "");
+      m.add_option(name(), "1");
       return true;
     }
     return false;
@@ -181,7 +181,7 @@ struct auto_option {
   using type = typed_option<T>;
 };
 template <typename T>
-struct auto_option<T, typename std::enable_if<std::is_same<T, void>::value>::type> {
+struct auto_option<T, typename std::enable_if<std::is_same<T, bool>::value>::type> {
   using type = option;
 };
 } } } }
@@ -298,12 +298,36 @@ inline ns::bench::args::options_map& args_map() {
   static ns::bench::args::options_map om;
   return om;
 }
+inline ns::bench::args::parser& parser() {
+  static ns::bench::args::parser p("");
+  return p;
+}
 inline void parse_args(int argc, char **argv) {
-  ns::bench::args::parser p(argv[0]);
+  auto& p = parser();
   p.add_option<std::size_t>("frequency", "-f,--frequency");
-  p.add_option<std::size_t>("duration" , "-d,--duration" );
-  p.add_option<std::size_t>("iteration", "-i,--iteration");
   p.add_option<std::size_t>("loop",      "-l,--loop");
+  p.add_option<double>("during" , "-d,--during" );
+  p.add_option<double>("really-during", "--really-during");
+  p.add_option<bool>("quiet", "-q,--quiet");
+  p.add_option<bool>("time-s",  "--time-s");
+  p.add_option<bool>("time-ms", "--time-ms");
+  p.add_option<bool>("time-ns", "--time-ns");
+  p.add_option<bool>("time-us", "--time-us");
+  p.add_option<bool>("op-s",    "--op-s");
+  p.add_option<bool>("op-ms",   "--op-ms");
+  p.add_option<bool>("op-ns",   "--op-ns");
+  p.add_option<bool>("op-us",   "--op-us");
+  p.add_option<bool>("cpe-s",   "--cpe");
+  p.add_option<bool>("cpe-s",   "--cpe-s");
+  p.add_option<bool>("cpe-ms",  "--cpe-ms");
+  p.add_option<bool>("cpe-ns",  "--cpe-ns");
+  p.add_option<bool>("cpe-us",  "--cpe-us");
+  p.add_option<bool>("stddev",   "--stddev");
+  p.add_option<bool>("median",   "--median");
+  p.add_option<bool>("mean",     "--mean");
+  p.add_option<bool>("min",      "--min");
+  p.add_option<bool>("max",      "--max");
+  p.add_option<bool>("json",     "--json");
   p.parse(args_map(), argc, argv, std::nothrow);
 }
 } }
@@ -391,6 +415,7 @@ BOOST_FORCEINLINE cycle_t read_cycles() {
 #include <boost/accumulators/statistics/mean.hpp>
 #include <boost/accumulators/statistics/median.hpp>
 #include <boost/accumulators/statistics/count.hpp>
+#include <boost/accumulators/statistics/variance.hpp>
 #include <chrono>
 namespace ns { namespace bench {
   using accumulators = boost::accumulators::stats< boost::accumulators::tag::mean
@@ -398,6 +423,7 @@ namespace ns { namespace bench {
                                                  , boost::accumulators::tag::min
                                                  , boost::accumulators::tag::max
                                                  , boost::accumulators::tag::count
+                                                 , boost::accumulators::tag::variance
                                                  >;
   using stats_set  = boost::accumulators::accumulator_set<double, accumulators>;
   thread_local stats_set times_set, cycles_set;
@@ -405,7 +431,7 @@ namespace ns { namespace bench {
 namespace ns { namespace bench { namespace stats {
 struct basic_stat {
   virtual double eval(stats_set const&) const = 0;
-  virtual std::string unit() const = 0;
+  virtual std::string name() const = 0;
 };
 } } }
 namespace ns { namespace bench {
@@ -443,7 +469,7 @@ struct basic_unit {
   virtual double eval( basic_experiment const& e
                      , stats::basic_stat const& s
                      ) const = 0;
-  virtual std::string unit() const = 0;
+  virtual std::string name() const = 0;
 };
 } } }
 #include <set>
@@ -457,6 +483,9 @@ struct metric {
   double eval(basic_experiment const& e) const {
     return unit_->eval(e, *stat_);
   }
+  double result(basic_experiment const& e) const {
+    return eval(e) / e.element_size();
+  }
   stats::basic_stat const& stat() const {
     return *stat_;
   }
@@ -466,7 +495,7 @@ struct metric {
   private:
   friend std::less<metric>;
   bool operator<(metric const& other) const {
-    return (stat().unit() + unit().unit()) < (other.stat().unit() + other.unit().unit());
+    return (stat().name() + unit().name()) < (other.stat().name() + other.unit().name());
   }
   private:
     stats::basic_stat const* stat_;
@@ -481,7 +510,7 @@ namespace detail {
     virtual double eval(stats_set const& s) const {
       return boost::accumulators::min(s);
     }
-    virtual std::string unit() const { return "(min)"; }
+    virtual std::string name() const { return "(min)"; }
   };
 }
 const detail::min min_{};
@@ -497,7 +526,7 @@ namespace detail {
     virtual double eval(stats_set const& s) const {
       return boost::accumulators::max(s);
     }
-    virtual std::string unit() const { return "(max)"; }
+    virtual std::string name() const { return "(max)"; }
   };
 }
 const detail::max max_{};
@@ -513,7 +542,7 @@ namespace detail {
     virtual double eval(stats_set const& s) const {
       return boost::accumulators::mean(s);
     }
-    virtual std::string unit() const { return "(mean)"; }
+    virtual std::string name() const { return "(mean)"; }
   };
 }
 const detail::mean mean_{};
@@ -533,7 +562,7 @@ namespace detail {
         return boost::accumulators::median(s);
       }
     }
-    virtual std::string unit() const { return "(median)"; }
+    virtual std::string name() const { return "(median)"; }
   };
 }
 const detail::median median_{};
@@ -541,25 +570,24 @@ metric median(units::basic_unit const& u) {
   return metric(median_, u);
 }
 } } }
-namespace ns { namespace bench { namespace stats {
-} } }
+#include <boost/accumulators/accumulators.hpp>
 #include <string>
-namespace ns { namespace bench { namespace units {
+#include <cmath>
+namespace ns { namespace bench { namespace stats {
 namespace detail {
-  struct cpe : basic_unit {
-    virtual double eval( basic_experiment const& e
-                       , stats::basic_stat const& s
-                       ) const
-    {
-      double freq = ns::bench::args_map().get<double>("frequency", -1);
-      return (freq == -1)
-        ? (s.eval(cycles_set) / e.size())
-        : (s.eval(times_set) * freq) / (e.size() * 1e6);
+  struct stddev : basic_stat {
+    virtual double eval(stats_set const& s) const {
+      return std::sqrt(boost::accumulators::variance(s));
     }
-    virtual std::string unit() const { return "(cpe)"; }
+    virtual std::string name() const { return "(stddev)"; }
   };
 }
-const detail::cpe cpe_{};
+const detail::stddev stddev_{};
+metric stddev(units::basic_unit const& u) {
+  return metric(stddev_, u);
+}
+} } }
+namespace ns { namespace bench { namespace stats {
 } } }
 #include <string>
 #include <string>
@@ -567,21 +595,52 @@ namespace ns { namespace bench { namespace units {
 namespace detail {
   struct seconds {
     static double value() { return 1.; }
-    static std::string unit() { return "s"; }
+    static std::string name() { return "s"; }
   };
   struct milliseconds {
     static double value() { return 1e-3; }
-    static std::string unit() { return "ms"; }
+    static std::string name() { return "ms"; }
+  };
+  struct microseconds {
+    static double value() { return 1e-6; }
+    static std::string name() { return "us"; }
   };
   struct nanoseconds {
-    static double value() { return 1e-6; }
-    static std::string unit() { return "ns"; }
+    static double value() { return 1e-9; }
+    static std::string name() { return "ns"; }
   };
 }
 const detail::seconds s_{};
 const detail::milliseconds ms_{};
+const detail::microseconds us_{};
 const detail::nanoseconds ns_{};
 } } }
+namespace ns { namespace bench { namespace units {
+namespace detail {
+  template <typename Seconds>
+  struct cpe : basic_unit {
+    virtual double eval( basic_experiment const& e
+                       , stats::basic_stat const& s
+                       ) const
+    {
+      double freq = ns::bench::args_map().get<double>("frequency", -1);
+      return (freq == -1)
+        ? (s.eval(cycles_set) / e.size() / Seconds::value())
+        : (s.eval(times_set)  / e.size() * freq / Seconds::value());
+    }
+    virtual std::string name() const { return "(cpe)"; }
+  };
+}
+template <typename Seconds>
+const detail::cpe<Seconds> cpe_(Seconds) {
+  return {};
+}
+const detail::cpe<decltype(s_)> cpe_s_ = {};
+const detail::cpe<decltype(ms_)> cpe_ms_ = {};
+const detail::cpe<decltype(us_)> cpe_us_ = {};
+const detail::cpe<decltype(ns_)> cpe_ns_ = {};
+} } }
+#include <string>
 namespace ns { namespace bench { namespace units {
 namespace detail {
   template <typename Seconds>
@@ -592,7 +651,7 @@ namespace detail {
     {
       return s.eval(times_set) / e.size() / Seconds::value();
     }
-    virtual std::string unit() const { return std::string(Seconds::unit()) + "."; }
+    virtual std::string name() const { return std::string(Seconds::name()) + "."; }
   };
 }
 template <typename Seconds>
@@ -601,6 +660,7 @@ const detail::time<Seconds> time_(Seconds) {
 }
 const detail::time<decltype(s_)> time_s_ = {};
 const detail::time<decltype(ms_)> time_ms_ = {};
+const detail::time<decltype(us_)> time_us_ = {};
 const detail::time<decltype(ns_)> time_ns_ = {};
 } } }
 #include <string>
@@ -613,7 +673,7 @@ namespace detail {
     {
       return e.frame_count() / s.eval(times_set) * 1e-6;
     }
-    virtual std::string unit() const { return "fps"; }
+    virtual std::string name() const { return "fps"; }
   };
 }
 const detail::fps fps_{};
@@ -629,7 +689,7 @@ namespace detail {
       double freq = args_map().get<double>("frequency");
       return e.flops() * freq / s.eval(cycles_set) * 1000000000.;
     }
-    virtual std::string unit() const { return "GFLOPS"; }
+    virtual std::string name() const { return "GFLOPS"; }
   };
 }
 const detail::gflops gflops_{};
@@ -640,19 +700,19 @@ namespace ns { namespace bench { namespace units {
 namespace detail {
   struct bytes {
     static double value() { return 1.; }
-    static std::string unit() { return "b"; }
+    static std::string name() { return "b"; }
   };
   struct kilobytes {
     static double value() { return 1024. * bytes::value(); }
-    static std::string unit() { return "kb"; }
+    static std::string name() { return "kb"; }
   };
   struct megabytes {
     static double value() { return 1024. * kilobytes::value(); }
-    static std::string unit() { return "mb"; }
+    static std::string name() { return "mb"; }
   };
   struct gigabytes {
     static double value() { return 1024. * megabytes::value(); }
-    static std::string unit() { return "gb"; }
+    static std::string name() { return "gb"; }
   };
 }
 const detail::bytes b_{};
@@ -680,7 +740,7 @@ namespace detail {
       }
       return (e.size() * e.transfer() / Bytes::value()) / (res / Seconds::value());
     }
-    virtual std::string unit() const { return Bytes::unit() + "/" + Seconds::unit(); }
+    virtual std::string name() const { return Bytes::name() + "/" + Seconds::name(); }
   };
 }
 template <typename Bytes, typename Seconds>
@@ -691,32 +751,37 @@ const detail::transfer<decltype(gb_), decltype(s_)> gb_s_ = {};
 const detail::transfer<decltype(gb_), decltype(ms_)> gb_ms_ = {};
 const detail::transfer<decltype(gb_), decltype(ns_)> gb_ns_ = {};
 const detail::transfer<decltype(mb_), decltype(s_)> mb_s_ = {};
-const detail::transfer<decltype(mb_), decltype(s_)> mb_ms_ = {};
-const detail::transfer<decltype(mb_), decltype(s_)> mb_ns_ = {};
+const detail::transfer<decltype(mb_), decltype(ms_)> mb_ms_ = {};
+const detail::transfer<decltype(mb_), decltype(ns_)> mb_ns_ = {};
 const detail::transfer<decltype(kb_), decltype(s_)> kb_s_ = {};
-const detail::transfer<decltype(kb_), decltype(s_)> kb_ms_ = {};
-const detail::transfer<decltype(kb_), decltype(s_)> kb_ns_ = {};
+const detail::transfer<decltype(kb_), decltype(ms_)> kb_ms_ = {};
+const detail::transfer<decltype(kb_), decltype(ns_)> kb_ns_ = {};
 const detail::transfer<decltype(b_), decltype(s_)> b_s_ = {};
-const detail::transfer<decltype(b_), decltype(s_)> b_ms_ = {};
-const detail::transfer<decltype(b_), decltype(s_)> b_ns_ = {};
+const detail::transfer<decltype(b_), decltype(ms_)> b_ms_ = {};
+const detail::transfer<decltype(b_), decltype(ns_)> b_ns_ = {};
 } } }
 namespace ns { namespace bench { namespace units {
 } } }
 namespace ns { namespace bench { namespace detail {
 template <std::size_t... N> struct range {};
 template <std::size_t N>    struct make_range {};
+template <> struct make_range<0> { using type = range<>; };
 template <> struct make_range<1> { using type = range<0>; };
 template <> struct make_range<2> { using type = range<0, 1>; };
 template <> struct make_range<3> { using type = range<0, 1, 2>; };
 template <> struct make_range<4> { using type = range<0, 1, 2, 3>; };
 template <> struct make_range<5> { using type = range<0, 1, 2, 3, 4>; };
 template <> struct make_range<6> { using type = range<0, 1, 2, 3, 4, 5>; };
+template <> struct make_range<7> { using type = range<0, 1, 2, 3, 4, 5, 6>; };
+template <> struct make_range<8> { using type = range<0, 1, 2, 3, 4, 5, 6, 7>; };
+template <> struct make_range<9> { using type = range<0, 1, 2, 3, 4, 5, 6, 7, 8>; };
 template <std::size_t N>
 using make_range_t = typename make_range<N>::type;
 #define NS_BENCH_STATIC_UNROLL(f, ...)                                                             \
   (void)std::initializer_list<int>{((void)f(__VA_ARGS__), 0)...}                                   \
 
 } } }
+#include <boost/predef/architecture.h>
 #include <iostream>
 #include <iomanip>
 #include <unordered_map>
@@ -738,6 +803,35 @@ struct result_info {
 struct results {
   using container_type = std::vector<std::pair<std::string, std::vector<result_info>>>;
   using contained_type = typename container_type::value_type;
+  results() {
+    comp_ = BOOST_COMPILER;
+    plat_ = BOOST_PLATFORM;
+    std::string arch = "(unknown)";
+    #if BOOST_ARCH_X86_64
+      arch = "x86_64";
+    #endif
+    #if BOOST_ARCH_X86_32
+      arch = "x86";
+    #endif
+    #if BOOST_ARCH_PPC
+      arch = "ppc";
+      if (sizeof(void*) == 8) {
+        arch += "64";
+      }
+      #if BOOST_ENDIAN_BIG_BYTE
+        arch += "be";
+      #else
+        arch += "le";
+      #endif
+    #endif
+    #if BOOST_ARCH_ARM
+      arch = "arm";
+    #endif
+    #if defined(__aarch64__)
+      arch = "aarch64";
+    #endif
+    arch_ = arch;
+  }
   void update(std::string const& name, result_info const& r) {
     auto found =
       std::find_if(results_.begin(), results_.end(), [&](contained_type const& v) {
@@ -754,7 +848,13 @@ struct results {
   container_type::const_iterator cbegin() const { return results_.cbegin(); }
   container_type::const_iterator end() const    { return results_.end(); }
   container_type::const_iterator cend() const   { return results_.cend(); }
+  std::string const& compiler() const { return comp_; }
+  std::string const& platform() const { return plat_; }
+  std::string const& architecture() const { return arch_; }
   private:
+  std::string comp_;
+  std::string plat_;
+  std::string arch_;
   container_type results_;
 };
 template <std::size_t... N, typename... Gs>
@@ -773,16 +873,59 @@ template <typename Experiment, typename Metric, typename... Gs>
 result_info make_result_info(Experiment const& e, Metric const& m, std::tuple<Gs...> const& gs) {
   result_info r;
   r.size    = e.size();
-  r.unit    = m.unit().unit();
-  r.stat    = m.stat().unit();
+  r.unit    = m.unit().name();
+  r.stat    = m.stat().name();
   r.desc    = make_generators_desc(detail::make_range_t<sizeof...(Gs)>(), gs);
-  r.result  = m.eval(e) / e.element_size();
+  r.result  = m.result(e);
   r.samples = boost::accumulators::count(times_set);
   return r;
 }
-std::ostream& operator<<(std::ostream& os, result_info const& r)
+std::ostream& operator<<(std::ostream& os, result_info const& r);
+std::ostream& operator<<(std::ostream& os, results const& r);
+std::string as_str(std::string const& what)
 {
-  os
+  return "\"" + what + "\"";
+}
+std::string as_json(result_info const& r)
+{
+  std::stringstream ss;
+  ss << "{";
+  ss << " " << as_str("size") << ": " << r.size << ",";
+  ss << " " << as_str("stat") << ": " << as_str(r.stat) << ",";
+  ss << " " << as_str("unit") << ": " << as_str(r.unit) << ",";
+  ss << " " << as_str("result") << ": " << r.result << ",";
+  ss << " " << as_str("samples") << ": " << r.samples << ",";
+  ss << " " << as_str("description") << ": " << as_str(r.desc);
+  ss << "}";
+  return ss.str();
+}
+std::string as_json(results const& r)
+{
+  std::stringstream ss;
+  ss << "{";
+  ss << " " << as_str("compiler") << ": " << as_str(r.compiler()) << ",";
+  ss << " " << as_str("platform") << ": " << as_str(r.platform()) << ",";
+  ss << " " << as_str("architecture") << ": " << as_str(r.architecture()) << ",";
+  ss << " " << as_str("benchmarks") << ": {";
+  for (auto const& b : r) {
+    auto const& name  = b.first;
+    ss << as_str(name) << ": [";
+    bool first = true;
+    for (auto const& info : b.second) {
+      if (!first) ss << ", ";
+      ss << as_json(info);
+      first = false;
+    }
+    ss << "]";
+  }
+  ss << "}";
+  ss << "}";
+  return ss.str();
+}
+std::string as_table(result_info const& r)
+{
+  std::stringstream ss;
+  ss
     << std::setw(size_maxw)
     << r.size << ' '
     << std::setw(result_maxw)
@@ -796,10 +939,11 @@ std::ostream& operator<<(std::ostream& os, result_info const& r)
     << std::setw(description_maxw)
     << r.desc
     ;
-  return os;
+  return ss.str();
 }
-std::ostream& operator<<(std::ostream& os, results const& r)
+std::string as_table(results const& r)
 {
+  std::stringstream ss;
   std::size_t bar_size = 0;
   bar_size += unit_maxw + 1;
   bar_size += stat_maxw + 1;
@@ -808,15 +952,15 @@ std::ostream& operator<<(std::ostream& os, results const& r)
   bar_size += samples_maxw + 1;
   bar_size += description_maxw + 1;
   auto print_bar = [&](std::size_t size, char what) {
-    os << ":: ";
-    for (std::size_t i = 0; i < size; ++i) os << what;
-    os << std::endl;
+    ss << ":: ";
+    for (std::size_t i = 0; i < size; ++i) ss << what;
+    ss << std::endl;
   };
   for (auto const& b : r) {
     auto const& name  = b.first;
     auto const& infos = b.second;
-    os << "::: Benchmarking results for: \"" << name  << "\"" << std::endl;
-    os
+    ss << ":: Benchmarking results for: \"" << name  << "\"" << std::endl;
+    ss
       << std::setw(size_maxw)
       << "Size" << ' '
       << std::setw(result_maxw)
@@ -832,9 +976,27 @@ std::ostream& operator<<(std::ostream& os, results const& r)
       << std::endl
       ;
     for (auto const& info : infos) {
-      os << info << std::endl;
+      ss << info << std::endl;
     }
     print_bar(bar_size, '-');
+  }
+  return ss.str();
+}
+std::ostream& operator<<(std::ostream& os, result_info const& r)
+{
+  if (args_map().get<bool>("json", false)) {
+    os << as_json(r);
+  } else {
+    os << as_table(r);
+  }
+  return os;
+}
+std::ostream& operator<<(std::ostream& os, results const& r)
+{
+  if (args_map().get<bool>("json", false)) {
+    os << as_json(r);
+  } else {
+    os << as_table(r);
   }
   return os;
 }
@@ -935,12 +1097,15 @@ class setup {
   setup& median(units::basic_unit const& u) {
     return metric(stats::median_, u);
   }
+  setup& stddev(units::basic_unit const& u) {
+    return metric(stats::stddev_, u);
+  }
   std::set<::ns::bench::metric> const& metrics() const {
     return metrics_;
   }
-  static std::size_t internal_loop_size() {
-    static const std::size_t default_internal_loop_size = 1024u;
-    return args_map().get<std::size_t>("loop", default_internal_loop_size);
+  static std::size_t& internal_loop_size() {
+    static std::size_t sz = 1024u;
+    return sz;
   }
   bool has_during() const        { return static_cast<bool>(during_); }
   bool has_iteration() const     { return static_cast<bool>(iteration_); }
@@ -954,6 +1119,32 @@ class setup {
   boost::optional<std::size_t> iteration_;
   std::set<::ns::bench::metric> metrics_;
 };
+setup default_setup()
+{
+  setup s;
+  typedef setup& (ns::bench::setup::*met_t)(ns::bench::units::basic_unit const&);
+  auto update = [](ns::bench::setup& ss, met_t f) {
+    if (args_map().get<bool>("cpe",     false)) ss = (ss.*f)(units::cpe_s_);
+    if (args_map().get<bool>("cpe-s",   false)) ss = (ss.*f)(units::cpe_s_);
+    if (args_map().get<bool>("cpe-ms",  false)) ss = (ss.*f)(units::cpe_ms_);
+    if (args_map().get<bool>("cpe-ns",  false)) ss = (ss.*f)(units::cpe_ns_);
+    if (args_map().get<bool>("cpe-us",  false)) ss = (ss.*f)(units::cpe_us_);
+    if (args_map().get<bool>("time-ms", false)) ss = (ss.*f)(units::time_ms_);
+    if (args_map().get<bool>("time-us", false)) ss = (ss.*f)(units::time_us_);
+    if (args_map().get<bool>("time-ns", false)) ss = (ss.*f)(units::time_ns_);
+    if (args_map().get<bool>("time-s",  false)) ss = (ss.*f)(units::time_s_);
+  };
+  if (args_map().get<bool>("stddev", false)) update(s, &ns::bench::setup::stddev);
+  if (args_map().get<bool>("median", false)) update(s, &ns::bench::setup::median);
+  if (args_map().get<bool>("mean",   false)) update(s, &ns::bench::setup::mean);
+  if (args_map().get<bool>("min",    false)) update(s, &ns::bench::setup::min);
+  if (args_map().get<bool>("max",    false)) update(s, &ns::bench::setup::max);
+  s = s.really_during(args_map().get<double>("really-during", 1.0));
+  if (s.metrics().empty()) {
+    s = s.median(units::cpe_s_);
+  }
+  return s;
+}
 } }
 #define NS_BENCH_AUTO_DECLTYPE(...)                                                                \
   -> decltype(__VA_ARGS__) { return (__VA_ARGS__); }                                               \
@@ -976,19 +1167,49 @@ BOOST_FORCEINLINE void dnopt(T const& v) {
 }
 #endif
 } }
+#include <functional>
+#include <limits>
+#include <cassert>
+#include <sstream>
+#include <algorithm>
+#include <cstdlib>
+#include <cmath>
+#include <random>
+namespace ns { namespace bench { namespace generators {
+template <typename T>
+struct fixed
+{
+  fixed(T const& val) : val_(val)
+  {
+  }
+  inline T const& operator()() {
+    return val_;
+  }
+  std::string description() const {
+    return "";
+  }
+  private:
+  T val_;
+};
+} } }
 #include <boost/align/aligned_allocator.hpp>
 #include <boost/optional.hpp>
 #include <functional>
 namespace ns { namespace bench {
 namespace detail {
 template <typename T, typename A, typename G>
-void prepare_parameter(std::vector<T,A>& val, G& g, std::size_t sz)
+void prepare_parameter(std::vector<T, A>& val, G& g, std::size_t sz)
 {
   val.resize(sz);
   val.clear();
   for (std::size_t i = 0; i < sz; ++i) {
     val[i] = g();
   }
+}
+template <typename T>
+void prepare_parameter(generators::fixed<T>*& val, generators::fixed<T>& g, std::size_t)
+{
+  val = &g;
 }
 template <std::size_t... N, typename... Ts, typename... Gs>
 void prepare_parameters( range<N...> const&
@@ -1007,12 +1228,25 @@ void prepare_parameters( std::tuple<Ts...>& ps
 {
   prepare_parameters(make_range_t<sizeof...(Ts)>(), ps, gs, sz);
 }
+template <typename T, typename A>
+T container_at(std::vector<T, A> const& v, std::size_t i)
+{
+  return v[i];
+}
+template <typename T>
+T const& container_at(generators::fixed<T>* const& g, std::size_t)
+{
+  return (*g)();
+}
 template <typename F, std::size_t... N, typename... Args>
 BOOST_FORCEINLINE auto call(range<N...> const&, F f, std::tuple<Args...> const& args, std::size_t i)
-NS_BENCH_AUTO_DECLTYPE(f(std::get<N>(args)[i]...))
+NS_BENCH_AUTO_DECLTYPE(f(container_at(std::get<N>(args), i)...))
 template <typename F, typename... Args>
 BOOST_FORCEINLINE auto call(F f, std::tuple<Args...> const& args, std::size_t i)
 NS_BENCH_AUTO_DECLTYPE(call(make_range_t<sizeof...(Args)>(), f, args, i))
+template <typename F>
+BOOST_FORCEINLINE auto call(F f, std::tuple<> const&, std::size_t)
+NS_BENCH_AUTO_DECLTYPE(f())
 template <typename Experiment, typename Enable = void>
 struct experiment_maybe_copy {
   using type = Experiment;
@@ -1023,19 +1257,30 @@ struct experiment_maybe_copy<Experiment, typename std::enable_if<!Experiment::is
 };
 template <typename Experiment>
 using experiment_maybe_copy_t = typename experiment_maybe_copy<Experiment>::type;
-template<typename T, typename Enable=void>
-struct real_align : boost::alignment::alignment_of<T>
+template <typename T, typename Enable = void>
+struct parameter_alignment
+: boost::alignment::alignment_of<T>
 {};
-template<typename T>
-struct real_align<T, typename std::enable_if<T::alignment==T::alignment>::type>
-      : std::integral_constant<std::size_t, T::alignment>
+template <typename T>
+struct parameter_alignment<T, typename std::enable_if<T::alignment == T::alignment>::type>
+: std::integral_constant<std::size_t, T::alignment>
 {};
-template<typename T>
-using make_vec_t = std::vector<T, boost::alignment::aligned_allocator<T,real_align<T>::value>>;
+template <typename G, typename T>
+struct make_parameters_container {
+  using type =
+    std::vector<T, boost::alignment::aligned_allocator<T, parameter_alignment<T>::value>>;
+};
+template <typename T>
+struct make_parameters_container<generators::fixed<T>, T const&> {
+  using type = generators::fixed<T>*;
+};
+template <typename G, typename T>
+using make_parameters_container_t =
+  typename make_parameters_container<typename std::decay<G>::type, T>::type;
 }
 template <typename Experiment, typename... Gs>
 void run(results& r, setup const& s, std::string const& name, Experiment&& e, Gs&&... g) {
-  static_assert( std::is_base_of<experiment, Experiment>::value
+  static_assert( std::is_base_of<basic_experiment, typename std::decay<Experiment>::type>::value
                , "Experiment must inherits from experiment base class!"
                );
   double time = 0.;
@@ -1048,20 +1293,21 @@ void run(results& r, setup const& s, std::string const& name, Experiment&& e, Gs
   if (s.has_during())        max_time = s.during();
   if (s.has_iteration())     max_iter = s.iteration();
   if (s.has_really_during()) max_real_time = s.really_during();
+  bool is_quiet = args_map().get<bool>("quiet", false);
   auto do_continue = [&]() {
     auto elapsed_real_time = to_seconds(time_clock::now() - real_starting_time);
     auto elapsed_dot_time  = to_seconds(time_clock::now() - dot_time);
-    if (elapsed_dot_time >= 1.) {
+    if (!is_quiet && elapsed_dot_time >= 1.) {
       dot_time = time_clock::now();
       std::cerr << ".";
     }
     if (s.has_really_during() && elapsed_real_time >= max_real_time) {
       return false;
     }
-    if (s.has_iteration() && iter > max_iter) {
+    if (s.has_iteration() && iter >= max_iter) {
       return false;
     }
-    if (s.has_during() && time > max_time) {
+    if (s.has_during() && time >= max_time) {
       return false;
     }
     if (!s.has_during() && !s.has_iteration() && !s.has_really_during()) {
@@ -1075,10 +1321,10 @@ void run(results& r, setup const& s, std::string const& name, Experiment&& e, Gs
   };
   times_set  = stats_set();
   cycles_set = stats_set();
-  auto ps = std::tuple<detail::make_vec_t<decltype(g())>...>();
+  auto ps = std::tuple<detail::make_parameters_container_t<decltype(g), decltype(g())>...>();
   auto gs = std::make_tuple(std::forward<Gs>(g)...);
-  auto sz  = ::ns::bench::setup::internal_loop_size();
-  std::cerr << ":: Benchmarking: \"" << name << "\" ";
+  auto sz  = args_map().get<std::size_t>("loop", ::ns::bench::setup::internal_loop_size());
+  if (!is_quiet) std::cerr << ":: Benchmarking: \"" << name << "\" ";
   while (do_continue()) {
     detail::experiment_maybe_copy_t<Experiment> local(e);
     detail::prepare_parameters(ps, gs, sz);
@@ -1095,7 +1341,7 @@ void run(results& r, setup const& s, std::string const& name, Experiment&& e, Gs
     cycles_set(elapsed_cycles);
     do_step(elapsed_time);
   }
-  std::cerr << std::endl;
+  if (!is_quiet) std::cerr << std::endl;
   for (auto const& m : s.metrics()) {
     r.update(name, make_result_info(e, m, gs));
   }
@@ -1129,16 +1375,11 @@ struct rand<T, std::true_type>
       )
   {
     if (std::is_unsigned<T>::value) {
-      if (pmin < 0) pmin = 0;
       pmin = std::abs(pmin);
       pmax = std::abs(pmax);
     }
-
     if (pmin > pmax) std::swap(pmin, pmax);
-    if (pmin == pmax) {
-      if (pmax == 0) pmax = 10;
-      pmin = T(0);
-    }
+    if (pmin == pmax) pmin = T(0);
     min_ = pmin;
     max_ = pmax;
   }

@@ -35,16 +35,18 @@ struct format_type<boost::simd::pack<T, N>>
 ns::bench::setup setup()
 {
   namespace nsb = ns::bench;
-  return nsb::setup()
-     .median(nsb::units::cpe_)
-     .really_during(2.)
-   ;
+  return nsb::default_setup();
 }
 
 ns::bench::results& results()
 {
   static ns::bench::results r;
   return r;
+}
+
+inline bool is_quiet()
+{
+  return ns::bench::args_map().get<bool>("quiet", false);
 }
 
 void print_results()
@@ -82,7 +84,9 @@ struct bench_experiment : ns::bench::experiment
 
   void which_type()
   {
-    std::cout << ":: [T = " << nsb::type_id<type>() << "]" << std::endl;
+    if (!is_quiet()) {
+      std::cout << ":: [T = " << nsb::type_id<type>() << "]" << std::endl;
+    }
   }
 
   template <typename U>
@@ -124,13 +128,15 @@ struct bench_experiment : ns::bench::experiment
 
 void describe()
 {
-  std::cout << "::- --------------------------------------------------------------------------------------------------------------------------------------------------";
-  std::cout << std::endl;
-  std::cout << "::- Compiler: " << BOOST_COMPILER << std::endl;
-  std::cout << "::- Platform: " << BOOST_PLATFORM << std::endl;
-  std::cout << "::- SIMD:     " << nsb::type_id<BOOST_SIMD_DEFAULT_SITE>() << std::endl;
-  std::cout << "::- --------------------------------------------------------------------------------------------------------------------------------------------------";
-  std::cout << std::endl;
+  if (!is_quiet()) {
+    std::cout << ":: --------------------------------------------------------------------------------------------------------------------------------------------------";
+    std::cout << std::endl;
+    std::cout << ":: Compiler: " << BOOST_COMPILER << std::endl;
+    std::cout << ":: Platform: " << BOOST_PLATFORM << std::endl;
+    std::cout << ":: SIMD:     " << nsb::type_id<BOOST_SIMD_DEFAULT_SITE>() << std::endl;
+    std::cout << ":: --------------------------------------------------------------------------------------------------------------------------------------------------";
+    std::cout << std::endl;
+  }
 }
 
 template <typename T>                            struct template_of;
