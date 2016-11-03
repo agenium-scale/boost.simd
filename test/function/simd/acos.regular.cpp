@@ -19,7 +19,6 @@
 #include <boost/simd/constant/pi.hpp>
 #include <boost/simd/constant/four.hpp>
 
-
 namespace bs = boost::simd;
 
 template <typename T, std::size_t N, typename Env>
@@ -36,7 +35,7 @@ void test(Env& $)
 
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
-  STF_ULP_EQUAL(bs::acos(aa1), bb, 1.5);
+  STF_ULP_EQUAL(bs::acos(aa1), bb, 3);
 }
 
 STF_CASE_TPL("Check acos on pack" , STF_IEEE_TYPES)
