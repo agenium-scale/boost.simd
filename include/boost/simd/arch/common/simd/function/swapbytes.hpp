@@ -39,15 +39,16 @@ namespace boost { namespace simd { namespace ext
                             , (typename A0, typename X)
                             , (detail::is_native<X>)
                             , bd::cpu_
-                            , bs::pack_<bd::arithmetic_<A0>, X>
+                            , bs::pack_<bd::integer_<A0>, X>
                             )
   {
     BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
     {
-      using s0        = bd::scalar_of_t<A0>;
+      using s0        = typename A0::value_type;
       static const size_t N = A0::static_size*sizeof(s0);
       using i8        = pack<uint8_t, N>;
       using pattern_t = detail::swap_bytes_helper<sizeof(s0)>;
+
       return bitwise_cast<A0>(shuffle<pattern_t>(bitwise_cast<i8>(a0)));
     }
   };
