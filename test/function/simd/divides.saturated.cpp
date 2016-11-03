@@ -12,6 +12,16 @@
 #include <boost/simd/function/divides.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/mtwo.hpp>
+#include <boost/simd/constant/two.hpp>
+#include <boost/simd/constant/valmin.hpp>
+#include <boost/simd/constant/valmax.hpp>
 
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
@@ -41,3 +51,46 @@ STF_CASE_TPL("Check saturated divides on pack" , STF_NUMERIC_TYPES)
   test<T, N/2>($);
   test<T, N*2>($);
 }
+
+STF_CASE_TPL (" bs::saturated_(divides) signed_int",  STF_SIGNED_INTEGRAL_TYPES)
+{
+  namespace bs = boost::simd;
+  using bs::divides;
+  using p_t = bs::pack<T>;
+
+  // return type conformity test
+  STF_EXPR_IS(bs::saturated_(divides)(p_t(), p_t()), p_t);
+
+  // specific values tests
+  STF_EQUAL(bs::saturated_(divides)(bs::Mone<p_t>(), bs::Mone<p_t>()), bs::One<p_t>());
+  STF_EQUAL(bs::saturated_(divides)(bs::One<p_t>(), bs::One<p_t>()), bs::One<p_t>());
+  STF_EQUAL(bs::saturated_(divides)(bs::Valmax<p_t>(),bs::Mone<p_t>()), bs::Valmin<p_t>()+bs::One<p_t>());
+  STF_EQUAL(bs::saturated_(divides)(bs::Valmax<p_t>(),bs::One<p_t>()), bs::Valmax<p_t>());
+  STF_EQUAL(bs::saturated_(divides)(bs::Valmin<p_t>(),bs::Mone<p_t>()), bs::Valmax<p_t>());
+  STF_EQUAL(bs::saturated_(divides)(bs::Zero<p_t>(), bs::Zero<p_t>()), bs::Zero<p_t>());
+  STF_EQUAL(bs::saturated_(divides)(bs::Mone<p_t>(), bs::Zero<p_t>()), bs::Valmin<p_t>());
+  STF_EQUAL(bs::saturated_(divides)(bs::Mtwo<p_t>(), bs::Zero<p_t>()), bs::Valmin<p_t>());
+  STF_EQUAL(bs::saturated_(divides)(bs::Valmin<p_t>(), bs::Zero<p_t>()), bs::Valmin<p_t>());
+  STF_EQUAL(bs::saturated_(divides)(bs::One<p_t>(), bs::Zero<p_t>()), bs::Valmax<p_t>());
+  STF_EQUAL(bs::saturated_(divides)(bs::Two<p_t>(), bs::Zero<p_t>()), bs::Valmax<p_t>());
+  STF_EQUAL(bs::saturated_(divides)(bs::Valmax<p_t>(), bs::Zero<p_t>()), bs::Valmax<p_t>());
+} // end of test for signed_int_
+
+
+STF_CASE_TPL (" bs::saturated_(divides) unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
+{
+  namespace bs = boost::simd;
+  using bs::divides;
+  using p_t = bs::pack<T>;
+
+  // return type conformity test
+  STF_EXPR_IS(bs::saturated_(divides)(p_t(), p_t()), p_t);
+
+  // specific values tests
+  STF_EQUAL(bs::saturated_(divides)(bs::One<p_t>(), bs::One<p_t>()), bs::One<p_t>());
+  STF_EQUAL(bs::saturated_(divides)(bs::Valmax<p_t>(),bs::One<p_t>()), bs::Valmax<p_t>());
+  STF_EQUAL(bs::saturated_(divides)(bs::Zero<p_t>(), bs::Zero<p_t>()), bs::Zero<p_t>());
+  STF_EQUAL(bs::saturated_(divides)(bs::One<p_t>(), bs::Zero<p_t>()), bs::Valmax<p_t>());
+  STF_EQUAL(bs::saturated_(divides)(bs::Two<p_t>(), bs::Zero<p_t>()), bs::Valmax<p_t>());
+  STF_EQUAL(bs::saturated_(divides)(bs::Valmax<p_t>(), bs::Zero<p_t>()), bs::Valmax<p_t>());
+} // end of test for unsigned_int_
