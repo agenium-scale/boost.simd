@@ -47,13 +47,13 @@ int main()
   //! [hello-ptr-iota]
 
   //! [hello-iter-con]
-  std::list<float> data(pack_t::static_size);
+  std::vector<float> data(pack_t::static_size);
   std::iota(data.begin(), data.begin() + pack_t::static_size, float(0));
   pack_t iter_pack(data.begin(), data.end());
   //! [hello-iter-con]
 
   //! [hello-enum-con]
-  pack_t enum_pack({10, 11, 12, 13, 14, 15, 16, 17});
+  pack_t enum_pack{10, 11, 12, 13, 14, 15, 16, 17};
   //! [hello-enum-con]
 
   //! [hello-ops]
