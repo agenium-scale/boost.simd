@@ -24,7 +24,7 @@ STF_CASE_TPL (" firstbitunsetreal",  STF_IEEE_TYPES)
   namespace bd = boost::dispatch;
 
   using bs::firstbitunset;
-  using r_t = decltype(firstbitunset(p_t()));
+  using r_t = decltype(firstbitunset(T()));
 
   // return type conformity test
   STF_TYPE_IS(r_t, (bd::as_integer_t<T, unsigned>));
