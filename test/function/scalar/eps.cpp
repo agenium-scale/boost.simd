@@ -51,8 +51,8 @@ STF_CASE_TPL ("eps on integers",  STF_INTEGRAL_TYPES)
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-  STF_EQUAL(eps(p_t(-1)), T{1});
-  STF_EQUAL(eps(p_t(0)) , T{1});
-  STF_EQUAL(eps(p_t(-1)), T{1});
-  STF_EQUAL(eps(p_t(42)), T{1});
+  STF_EQUAL(eps(T(-1)), T{1});
+  STF_EQUAL(eps(T(0)) , T{1});
+  STF_EQUAL(eps(T(-1)), T{1});
+  STF_EQUAL(eps(T(42)), T{1});
 }
