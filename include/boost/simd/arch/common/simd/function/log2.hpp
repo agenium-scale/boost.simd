@@ -30,6 +30,7 @@
 #include <boost/simd/function/if_nan_else.hpp>
 #include <boost/simd/function/ilog2.hpp>
 #include <boost/simd/function/is_lez.hpp>
+#include <boost/simd/function/is_ngez.hpp>
 #include <boost/simd/function/musl.hpp>
 #include <boost/simd/function/plain.hpp>
 #include <boost/simd/function/sqr.hpp>
@@ -87,7 +88,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() (A0 const& a0) const BOOST_NOEXCEPT
     {
-      return bs::ilog2(a0);
+      return bitwise_cast<A0>(bs::ilog2(a0));
     }
   };
 
@@ -157,7 +158,7 @@ namespace boost { namespace simd { namespace ext
 #else
       A0 zz = if_else(isnez, r, Minf<A0>());
 #endif
-      return if_nan_else(is_ltz(a0), zz);
+      return if_nan_else(is_ngez(a0), zz);
     }
   };
 
@@ -263,7 +264,7 @@ namespace boost { namespace simd { namespace ext
 #else
       A0 zz = if_else(isnez, r, Minf<A0>());
 #endif
-      return if_nan_else(is_ltz(a0), zz);
+      return if_nan_else(is_ngez(a0), zz);
     }
   };
 
@@ -332,7 +333,7 @@ namespace boost { namespace simd { namespace ext
 #else
       A0 zz = if_else(isnez, r, Minf<A0>());
 #endif
-      return if_nan_else(is_ltz(a0), zz);
+      return if_nan_else(is_ngez(a0), zz);
     }
   };
 
@@ -438,7 +439,7 @@ namespace boost { namespace simd { namespace ext
 #else
       A0 zz = if_else(isnez, r, Minf<A0>());
 #endif
-      return if_nan_else(is_ltz(a0), zz);
+      return if_nan_else(is_ngez(a0), zz);
     }
   };
 

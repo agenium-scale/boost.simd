@@ -26,7 +26,7 @@
 #include <boost/simd/function/if_minus.hpp>
 #include <boost/simd/function/if_nan_else.hpp>
 #include <boost/simd/function/inc.hpp>
-#include <boost/simd/function/is_ltz.hpp>
+#include <boost/simd/function/is_ngez.hpp>
 #include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/function/musl.hpp>
 #include <boost/simd/function/plain.hpp>
@@ -111,7 +111,7 @@ namespace boost { namespace simd { namespace ext
 #else
       A0 zz = if_else(isnez, r, Minf<A0>());
 #endif
-      return if_nan_else(is_ltz(uf), zz);
+      return if_nan_else(is_ngez(uf), zz);
     }
   };
 
@@ -156,7 +156,7 @@ namespace boost { namespace simd { namespace ext
 #else
       A0 zz = if_else(isnez, r, Minf<A0>());
 #endif
-      return if_nan_else(is_ltz(uf), zz);
+      return if_nan_else(is_ngez(uf), zz);
     }
   };
 //=================================================================================================================
@@ -198,7 +198,7 @@ namespace boost { namespace simd { namespace ext
 #else
       A0 zz = if_else(isnez, r, Minf<A0>());
 #endif
-      return if_nan_else(is_ltz(uf), zz);
+      return if_nan_else(is_ngez(uf), zz);
     }
   };
 
@@ -242,7 +242,7 @@ namespace boost { namespace simd { namespace ext
 #else
       A0 zz = if_else(isnez, r, Minf<A0>());
 #endif
-      return if_nan_else(is_ltz(uf), zz);
+      return if_nan_else(is_ngez(uf), zz);
     }
   };
 
