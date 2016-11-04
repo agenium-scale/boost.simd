@@ -12,6 +12,8 @@
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <simd_test.hpp>
+#include <boost/simd/constant/exp_1.hpp>
+
 
 namespace bs = boost::simd;
 
@@ -19,11 +21,18 @@ template <typename T, std::size_t N, typename Env>
 void limit_test(Env& $)
 {
   using p_t = bs::pack<T, N>;
+  using bs::exp;
 
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_ULP_EQUAL(exp(bs::Inf<p_t>()), bs::Inf<p_t>(), 0);
+  STF_ULP_EQUAL(exp(bs::Minf<p_t>()), bs::Zero<p_t>(), 0);
+  STF_ULP_EQUAL(exp(bs::Nan<p_t>()), bs::Nan<p_t>(), 0);
+#endif
+  STF_ULP_EQUAL(exp(bs::Mone<p_t>()), bs::One<p_t>()/bs::Exp_1<p_t>(), 0.5);
   STF_ULP_EQUAL (bs::exp(p_t(1))            , p_t(2.718281828459045), 0.5);
   STF_IEEE_EQUAL(bs::exp(p_t(0))            , p_t(1)        );
-  STF_IEEE_EQUAL(bs::exp(p_t(bs::Inf<T>())) , bs::Inf<p_t>());
-  STF_IEEE_EQUAL(bs::exp(p_t(bs::Minf<T>())), p_t(0)        );
+  STF_IEEE_EQUAL(bs::exp(bs::Inf<p_t>())    , bs::Inf<p_t>());
+  STF_IEEE_EQUAL(bs::exp(bs::Minf<p_t>())   , p_t(0)        );
 }
 
 STF_CASE_TPL("Check exp limit cases" , STF_IEEE_TYPES)
