@@ -26,6 +26,7 @@
 #include <boost/simd/function/frexp.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/if_else_zero.hpp>
+#include <boost/simd/function/if_else_nan.hpp>
 #include <boost/simd/function/if_one_else_zero.hpp>
 #include <boost/simd/function/if_zero_else.hpp>
 #include <boost/simd/function/is_eqz.hpp>
@@ -130,7 +131,20 @@ namespace boost { namespace simd { namespace ext
       z = if_zero_else(zer_ret, z);
       z = if_else(inf_ret, Inf<A0>(), z);
       z = if_else(is_equal(ax, One<A0>()), ax, z);
-      return if_else(is_eqz(a0), if_one_else_zero(is_eqz(a1)), z);
+
+      z = if_else(is_eqz(a0),
+                  if_else(is_ltz(a1), bs::Inf<A0>(),
+                          if_one_else_zero(is_eqz(a1))
+                         ),
+                  z
+                 );
+#ifndef BOOST_SIMD_NO_NANS
+      z = if_else(is_nan(a0),
+                  if_else_nan(is_eqz(a1), One<A0>()),
+                  z
+                 );
+#endif
+      return z;
     }
   private :
     static BOOST_FORCEINLINE A0 reduc(const A0& x)
