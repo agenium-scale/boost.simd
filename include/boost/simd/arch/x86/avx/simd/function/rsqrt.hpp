@@ -11,8 +11,12 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/sqr.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/if_zero_else.hpp>
+#include <boost/simd/function/is_eqz.hpp>
 #include <boost/simd/function/fnms.hpp>
 #include <boost/simd/constant/half.hpp>
+#include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/three.hpp>
 #include <boost/simd/function/fast.hpp>
 
@@ -43,7 +47,11 @@ namespace boost { namespace simd { namespace ext
      BOOST_FORCEINLINE A0 operator()(A0 const& a0) const
       {
         A0 const nr  = _mm256_rsqrt_ps( a0 );
-        return nr * Half<A0>() * fnms(a0, sqr(nr), Three<A0>());
+#ifndef BOOST_SIMD_NO_INFINITIES
+        return if_zero_else(a0 == Inf<A0>(), if_else(is_eqz(a0), Inf<A0>(), nr * Half<A0>() * fnms(a0, sqr(nr), Three<A0>())));
+#else
+        return if_else(is_eqz(a0), Inf<A0>(), nr * Half<A0>() * fnms(a0, sqr(nr), Three<A0>()));
+#endif
       }
    };
 } } }

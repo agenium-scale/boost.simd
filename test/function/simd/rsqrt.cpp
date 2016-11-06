@@ -94,31 +94,11 @@ STF_CASE_TPL (" rsqrtreal",  STF_IEEE_TYPES)
   STF_IEEE_EQUAL(rsqrt(bs::Nan<p_t>()), bs::Nan<r_t>());
 #endif
   STF_IEEE_EQUAL(rsqrt(bs::Mone<p_t>()), bs::Nan<r_t>());
-  STF_EQUAL(rsqrt(bs::One<p_t>()), bs::One<r_t>());
+  STF_ULP_EQUAL(rsqrt(bs::One<p_t>()), bs::One<r_t>(), 0.5);
   STF_EQUAL(rsqrt(bs::Zero<p_t>()), bs::Inf<r_t>());
-  STF_EQUAL(rsqrt(bs::Four<p_t>()), bs::Half<r_t>());
+  STF_ULP_EQUAL(rsqrt(bs::Four<p_t>()), bs::Half<r_t>(), 0.5);
   STF_ULP_EQUAL(rsqrt(p_t(0.5)), bs::Sqrt_2<p_t>(), 0.5);
   STF_ULP_EQUAL(rsqrt(p_t(0.01)), p_t(10), 0.5);
   STF_ULP_EQUAL(rsqrt(p_t(0.0001)), p_t(100), 0.5);
 } // end of test for floating_
 
-STF_CASE_TPL( "fast rsqrt", STF_IEEE_TYPES )
-{
-  namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
-  using bs::rsqrt;
-  using p_t = bs::pack<T>;
-  using r_t = decltype(bs::fast_(rsqrt)(p_t()));
-
-  // return type conformity test
-  STF_TYPE_IS(r_t, p_t);
-
-  // specific values tests
-  STF_ULP_EQUAL(rsqrt(bs::Mone<p_t>()), bs::Nan<p_t>(), 75);
-  STF_ULP_EQUAL(rsqrt(bs::Nan<p_t>()), bs::Nan<p_t>(), 0.5);
-  STF_ULP_EQUAL(rsqrt(bs::One<p_t>()), bs::One<p_t>(), 30);
-  STF_ULP_EQUAL(rsqrt(bs::Four<p_t>()), bs::Half<p_t>(), 30);
-  STF_ULP_EQUAL(rsqrt(bs::Half<p_t>()), bs::Sqrt_2<p_t>(), 70);
-  STF_ULP_EQUAL(rsqrt(p_t(0.01)), p_t(10), 30);
-  STF_ULP_EQUAL(rsqrt(p_t(0.0001)), p_t(100), 30);
-}
