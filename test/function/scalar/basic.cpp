@@ -5,7 +5,7 @@
 int main()
 {
   namespace bs = boost::simd;
-  using pack_t = bs::pack<float>;
+  using pack_t = bs::pack<float,8>;
   pack_t res;
   pack_t tens{10};
   pack_t elevens(11);
