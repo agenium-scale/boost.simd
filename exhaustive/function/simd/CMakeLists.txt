@@ -7,21 +7,77 @@
 ## -------------------------------------------------------------------------------------------------
 
 set(SOURCES
-  acos.cpp
-  acos.accurate.cpp
-  asin.cpp
-  atan.cpp
-  erf.cpp
-  exp.cpp
-  exp10.cpp
-  exp2.cpp
-  expm1.cpp
-  fast_acos.cpp
-  log.cpp
-  log1p.cpp
-  log10.cpp
-  log2.cpp
-  nthroot.cpp
+abs.cpp
+acos.cpp
+acos.accurate.cpp
+acosd.cpp
+acospi.cpp
+acot.cpp
+acotd.cpp
+acotpi.cpp
+acsc.cpp
+acscd.cpp
+acscpi.cpp
+arg.cpp
+asec.cpp
+asecd.cpp
+asecpi.cpp
+asin.cpp
+asind.cpp
+asinpi.cpp
+atan.cpp
+atand.cpp
+atanpi.cpp
+cbrt.cpp
+ceil.cpp
+conj.cpp
+cos.cpp
+cosd.cpp
+cospi.cpp
+cot.cpp
+cotd.cpp
+cotpi.cpp
+dec.cpp
+erf.cpp
+exp10.cpp
+exp2.cpp
+exp.cpp
+expm1.cpp
+exprecnegc.cpp
+exprecneg.cpp
+floor.cpp
+frac.cpp
+genmaskc.cpp
+if_one_else_zero.cpp
+if_zero_else_one.cpp
+inc.cpp
+indeg.cpp
+inrad.cpp
+log10.cpp
+log1p.cpp
+log2.cpp
+log.cpp
+nthroot.cpp
+oneminus.cpp
+rec.cpp
+rsqrt.cpp
+sign.cpp
+signnz.cpp
+sinc.cpp
+sincpi.cpp
+sin.cpp
+sind.cpp
+sinhc.cpp
+sinpi.cpp
+sqr_abs.cpp
+sqr.cpp
+sqrt1pm1.cpp
+sqrt.cpp
+tan.cpp
+tand.cpp
+tanpi.cpp
+unary_minus.cpp
+unary_plus.cpp
  )
 
 make_exhaustive("function.simd" ${SOURCES})

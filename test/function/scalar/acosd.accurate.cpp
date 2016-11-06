@@ -17,7 +17,8 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/mzero.hpp>
 
-STF_CASE_TPL (" acosd ",  STF_IEEE_TYPES)
+
+STF_CASE_TPL ("accurate  acosd ",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;

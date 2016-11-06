@@ -40,7 +40,7 @@ namespace boost { namespace simd
 
   namespace detail
   {
-    template<> struct support<::boost::simd::vmx_>
+    template<> struct support< ::boost::simd::vmx_>
     {
       support()
       {

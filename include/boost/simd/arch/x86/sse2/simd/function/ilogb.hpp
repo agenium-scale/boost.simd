@@ -21,15 +21,15 @@
 #include <boost/simd/function/split.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/if_zero_else.hpp>
-#include <boost/simd/function/is_eqz.hpp>
 #include <boost/simd/function/is_lez.hpp>
 #include <boost/simd/function/is_nez.hpp>
-#include <boost/simd/function/minus.hpp>
-#include <boost/simd/function/plus.hpp>
+#include <boost/simd/function/shift_right.hpp>
 #include <boost/simd/function/tofloat.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/constant.hpp>
 #include <boost/simd/constant/zero.hpp>
+#include <boost/simd/detail/dispatch/meta/upgrade.hpp>
+
 
 
 namespace boost { namespace simd { namespace ext
@@ -61,27 +61,26 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE A0 operator() ( const A0 & a0)
     {
-#define MKN8 simd::bitwise_cast<A0>
+      using ui16_t =  bd::upgrade_t<A0>;
       const A0 mask =  Constant<A0, 0x7f>();
       A0 n = a0;
       A0 i = One<A0>();
-      n = bitwise_and(MKN8(_mm_srli_epi16(n, 1)), mask);
+      n = bitwise_and(mask, shift_right(bitwise_cast<ui16_t>(n), 1));
       i = if_plus(is_nez(n), i, One<A0>());
-      n = bitwise_and(MKN8(_mm_srli_epi16(n, 1)), mask);
+      n = bitwise_and(mask, shift_right(bitwise_cast<ui16_t>(n), 1));
       i = if_plus(is_nez(n), i, One<A0>());
-      n = bitwise_and(MKN8(_mm_srli_epi16(n, 1)), mask);
+      n = bitwise_and(mask, shift_right(bitwise_cast<ui16_t>(n), 1));
       i = if_plus(is_nez(n), i, One<A0>());
-      n = bitwise_and(MKN8(_mm_srli_epi16(n, 1)), mask);
+      n = bitwise_and(mask, shift_right(bitwise_cast<ui16_t>(n), 1));
       i = if_plus(is_nez(n), i, One<A0>());
-      n = bitwise_and(MKN8(_mm_srli_epi16(n, 1)), mask);
+      n = bitwise_and(mask, shift_right(bitwise_cast<ui16_t>(n), 1));
       i = if_plus(is_nez(n), i, One<A0>());
-      n = bitwise_and(MKN8(_mm_srli_epi16(n, 1)), mask);
+      n = bitwise_and(mask, shift_right(bitwise_cast<ui16_t>(n), 1));
       i = if_plus(is_nez(n), i, One<A0>());
-      n = bitwise_and(MKN8(_mm_srli_epi16(n, 1)), mask);
+      n = bitwise_and(mask, shift_right(bitwise_cast<ui16_t>(n), 1));
       i = if_plus(is_nez(n), i, One<A0>());
       return dec(i);
     }
-#undef MKN8
   };
 
   BOOST_DISPATCH_OVERLOAD ( ilogb_

@@ -30,9 +30,10 @@ namespace boost { namespace simd { namespace detail
       using pattern_t = brigand::integral_list<int,Ps...>;
 
       return  bitwise_cast<T>
-              ( _mm_shuffle_epi8( bitwise_cast<bytes_t>(a0)
+        ( bytes_t( _mm_shuffle_epi8( bitwise_cast<bytes_t>(a0)
                                 , detail::mask_all<16/T::static_size>( ranges_t{}, pattern_t{} )
                                 )
+                 )
               );
     }
 
@@ -45,16 +46,16 @@ namespace boost { namespace simd { namespace detail
       using pattern_t = brigand::integral_list<int,Ps...>;
 
       return  bitwise_or
-              ( bitwise_cast<T>
+        ( bitwise_cast<T>(bytes_t
                 ( _mm_shuffle_epi8( bitwise_cast<bytes_t>(a0)
                                   , detail::mask_left<16/T::static_size>( ranges_t{}, pattern_t{} )
                                   )
-                )
-              , bitwise_cast<T>
+                ))
+              , bitwise_cast<T>(bytes_t
                 ( _mm_shuffle_epi8( bitwise_cast<bytes_t>(a1)
                                   , detail::mask_right<16/T::static_size>( ranges_t{}, pattern_t{} )
                                   )
-                )
+                ))
               );
     }
   };

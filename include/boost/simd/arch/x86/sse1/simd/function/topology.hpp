@@ -67,28 +67,32 @@ namespace boost { namespace simd { namespace detail
     static BOOST_FORCEINLINE T process(T const& a0, T const& a1, pattern_<0,1,4,5> const&)
     {
       using f_t = boost::dispatch::as_floating_t<T>;
-      return bitwise_cast<T>(_mm_movelh_ps(bitwise_cast<f_t>(a0),bitwise_cast<f_t>(a1)));
+      f_t tmp = _mm_movelh_ps(bitwise_cast<f_t>(a0),bitwise_cast<f_t>(a1));
+      return bitwise_cast<T>(tmp);
     }
 
     template<typename T>
     static BOOST_FORCEINLINE T process(T const& a0, T const& a1, pattern_<4,5,0,1> const&)
     {
       using f_t = boost::dispatch::as_floating_t<T>;
-      return bitwise_cast<T>(_mm_movelh_ps(bitwise_cast<f_t>(a1),bitwise_cast<f_t>(a0)));
+      f_t tmp = _mm_movelh_ps(bitwise_cast<f_t>(a1),bitwise_cast<f_t>(a0));
+      return bitwise_cast<T>(tmp);
     }
 
     template<typename T>
     static BOOST_FORCEINLINE T process(T const& a0, T const& a1, pattern_<2,3,6,7> const&)
     {
       using f_t = boost::dispatch::as_floating_t<T>;
-      return bitwise_cast<T>(_mm_movehl_ps(bitwise_cast<f_t>(a1),bitwise_cast<f_t>(a0)));
+      f_t tmp = _mm_movehl_ps(bitwise_cast<f_t>(a1),bitwise_cast<f_t>(a0));
+      return bitwise_cast<T>(tmp);
     }
 
     template<typename T>
     static BOOST_FORCEINLINE T process(T const& a0, T const& a1, pattern_<6,7,2,3> const&)
     {
       using f_t = boost::dispatch::as_floating_t<T>;
-      return bitwise_cast<T>(_mm_movehl_ps(bitwise_cast<f_t>(a0),bitwise_cast<f_t>(a1)));
+      f_t tmp = _mm_movehl_ps(bitwise_cast<f_t>(a0),bitwise_cast<f_t>(a1));
+      return bitwise_cast<T>(tmp);
     }
 
     // Specialized Unary permutation handler
@@ -96,28 +100,32 @@ namespace boost { namespace simd { namespace detail
     static BOOST_FORCEINLINE T process(T const& a0, pattern_<0,1,-1,-1> const&)
     {
       using f_t = boost::dispatch::as_floating_t<T>;
-      return bitwise_cast<T>(_mm_movelh_ps(bitwise_cast<f_t>(a0),Zero<f_t>()));
+      f_t tmp = _mm_movelh_ps(bitwise_cast<f_t>(a0),Zero<f_t>());
+      return bitwise_cast<T>(tmp);
     }
 
     template<typename T>
     static BOOST_FORCEINLINE T process(T const& a0, pattern_<-1,-1,0,1> const&)
     {
       using f_t = boost::dispatch::as_floating_t<T>;
-      return bitwise_cast<T>(_mm_movelh_ps(Zero<f_t>(),bitwise_cast<f_t>(a0)));
+      f_t tmp = _mm_movelh_ps(Zero<f_t>(),bitwise_cast<f_t>(a0));
+      return bitwise_cast<T>(tmp);
     }
 
     template<typename T>
     static BOOST_FORCEINLINE T process(T const& a0, pattern_<-1,-1,2,3> const&)
     {
       using f_t = boost::dispatch::as_floating_t<T>;
-      return bitwise_cast<T>(_mm_movehl_ps(bitwise_cast<f_t>(a0),Zero<f_t>()));
+      f_t tmp = _mm_movehl_ps(bitwise_cast<f_t>(a0),Zero<f_t>());
+      return bitwise_cast<T>(tmp);
     }
 
     template<typename T>
     static BOOST_FORCEINLINE T process(T const& a0, pattern_<2,3,-1,-1> const&)
     {
       using f_t = boost::dispatch::as_floating_t<T>;
-      return bitwise_cast<T>(_mm_movehl_ps(Zero<f_t>(),bitwise_cast<f_t>(a0)));
+      f_t tmp = _mm_movehl_ps(Zero<f_t>(),bitwise_cast<f_t>(a0));
+      return bitwise_cast<T>(tmp);
     }
   };
 

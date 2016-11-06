@@ -10,6 +10,7 @@ cmake_minimum_required(VERSION 2.8.7)
 ## Setup project
 ## -------------------------------------------------------------------------------------------------
 project(Boost.SIMD)
+set(PROJECT_VERSION 4.16.9.0) # TODO: Find a way to update this automatically
 set(PROJECT_DOC_DIR ${PROJECT_SOURCE_DIR}/doc)
 
 ## Requirements for ns.cmake:
@@ -73,11 +74,14 @@ if (DEFINED DEV)
   NS_project_include(stf.standalone)
 endif()
 
+## Extension point for CMake
+## -------------------------------------------------------------------------------------------------
+include(${PROJECT_SOURCE_DIR}/cmake/extend.cmake)
+
 ## Compute version string and mode + Documentation
 ## -------------------------------------------------------------------------------------------------
 if (DEFINED DEV AND NOT DEFINED IS_TRAVIS_CI)
-  NS_include(parse_revision)
-  NS_include(doc/doxygen)
+  add_subdirectory(${PROJECT_SOURCE_DIR}/doc)
 endif()
 
 ## Install target
@@ -97,14 +101,10 @@ include_directories(
   ${Boost_INCLUDE_DIRS}
 )
 
-## Extension point for CMake
-## -------------------------------------------------------------------------------------------------
-include(./cmake/extend.cmake)
-
 ## Setup Unit/Bench & Coverage Test
 ## -------------------------------------------------------------------------------------------------
 if (DEFINED DEV)
-  include(./setup.cmake) # Import compiler specific setup
+  include(${PROJECT_SOURCE_DIR}/setup.cmake) # Import compiler specific setup
 
   include(CTest)
   add_custom_target(tests)

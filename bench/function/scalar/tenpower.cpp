@@ -16,5 +16,5 @@ DEFINE_SCALAR_BENCH(scalar_tenpower, bs::tenpower);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_tenpower, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<scalar_tenpower, NS_BENCH_INTEGRAL_TYPES>(-10, 10);
 }

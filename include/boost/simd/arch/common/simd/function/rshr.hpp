@@ -15,6 +15,7 @@
 #include <boost/simd/function/is_gtz.hpp>
 #include <boost/simd/function/shift_left.hpp>
 #include <boost/simd/function/shr.hpp>
+#include <boost/simd/function/shl.hpp>
 #include <boost/simd/detail/brigand.hpp>
 
 #ifndef NDEBUG

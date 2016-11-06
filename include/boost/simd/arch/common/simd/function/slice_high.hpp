@@ -47,7 +47,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE result_t operator()(T const& a) const BOOST_NOEXCEPT
     {
-      return do_( a, typename result_t::traits::storage_kind{}
+      return do_( a, typename T::traits::storage_kind{}
                 , brigand::range<std::size_t, half, T::static_size>{}
                 );
     }

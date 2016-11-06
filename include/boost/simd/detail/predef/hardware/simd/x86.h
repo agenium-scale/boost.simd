@@ -72,8 +72,8 @@ http://www.boost.org/LICENSE_1_0.txt)
 #define BOOST_HW_SIMD_X86 BOOST_VERSION_NUMBER_NOT_AVAILABLE
 
 #undef BOOST_HW_SIMD_X86
-#if !defined(BOOST_HW_SIMD_X86) && defined(__MIC__)
-#   define BOOST_HW_SIMD_X86 BOOST_HW_SIMD_X86_MIC_VERSION
+#if !defined(BOOST_HW_SIMD_X86) && defined(__AVX512F__)
+#   define BOOST_HW_SIMD_X86 BOOST_HW_SIMD_X86_AVX512_VERSION
 #endif
 #if !defined(BOOST_HW_SIMD_X86) && defined(__AVX2__)
 #   define BOOST_HW_SIMD_X86 BOOST_HW_SIMD_X86_AVX2_VERSION

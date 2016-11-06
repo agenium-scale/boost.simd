@@ -6,8 +6,12 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-#include <ns.bench.hpp>
+#include <simd_bench.hpp>
 #include <boost/simd/function/simd/inearbyint.hpp>
+#include <boost/simd/pack.hpp>
+
+namespace nsb = ns::bench;
+namespace bs =  boost::simd;
 
 DEFINE_SIMD_BENCH(simd_inearbyint, bs::inearbyint);
 

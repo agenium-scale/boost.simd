@@ -5,7 +5,7 @@
 //                 See accompanying file LICENSE.txt or copy at
 //                     http://www.boost.org/LICENSE_1_0.txt
 //==============================================================================
-#include <boost/simd/function/scalar/log.hpp>
+#include <boost/simd/function/log.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/valmax.hpp>
 
@@ -18,7 +18,7 @@ struct raw_log
 {
   float operator()(float x) const
   {
-    return std::log(double(x));
+    return bs::log(double(x));
   }
 };
 
@@ -30,9 +30,10 @@ int main(int argc, char* argv[])
   if(argc >= 3) maxi = std::atof(argv[2]);
   bs::exhaustive_test<float> ( mini
                               , maxi
-                             , bs::log
+                              , bs::log
                               , raw_log()
                               );
 
   return 0;
 }
+

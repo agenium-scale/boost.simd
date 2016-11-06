@@ -61,9 +61,9 @@ namespace boost { namespace simd { namespace ext
       A0 x =  bs::abs(a0);
       A0 aa1 = bs::tofloat(a1);
       A0 y = bs::fast_(bs::pow_abs)(x,rec(aa1));
-      bA0 nul_a1 =  bitwise_cast<bA0>(bs::is_eqz(a1));
+      bA0 nul_a1 =  bs::is_eqz(bitwise_cast<A0>(a1));
       bA0 is_ltza0 = is_ltz(a0);
-      bA0 is_odda1 = bitwise_cast<bA0>(is_odd(a1));
+      auto is_odda1 = is_odd(a1);
       A0 p = fast_(bs::pow_abs)(y, aa1);
       y = bs::if_plus( bs::logical_or(bs::is_nez(y), nul_a1)
                      , y

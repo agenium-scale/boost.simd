@@ -21,30 +21,30 @@ void test(Env& $)
 
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
-
+  static const std::size_t N1 = sizeof(T)*8-1;
   T a1[N], b[N], c[N], d[N];
   for(std::size_t i = 0; i < N; ++i)
   {
      a1[i] = (i%2) ? T(i) : T(-i);
      b[i] = bs::rrol(a1[i], 1);
-     c[i] = bs::rrol(a1[i], N/2);
-     d[i] = bs::rrol(a1[i], N-1);
+     c[i] = bs::rrol(a1[i], N1/2);
+     d[i] = bs::rrol(a1[i], N1-1);
    }
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb(&b[0], &b[0]+N);
   p_t cc(&c[0], &c[0]+N);
   p_t dd(&d[0], &d[0]+N);
   STF_IEEE_EQUAL(bs::rrol(aa1, 1), bb);
-  STF_IEEE_EQUAL(bs::rrol(aa1, N/2), cc);
-  STF_IEEE_EQUAL(bs::rrol(aa1, N-1), dd);
+  STF_IEEE_EQUAL(bs::rrol(aa1, N1/2), cc);
+  STF_IEEE_EQUAL(bs::rrol(aa1, N1-1), dd);
 }
 
-STF_CASE_TPL("Check rrol on pack" , STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check rrol on pack" , STF_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
-//  test<T, N/2>($);
-//  test<T, Nx2>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }

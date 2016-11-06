@@ -16,5 +16,5 @@ DEFINE_SCALAR_BENCH(scalar_std_gammaln, bs::std_(bs::gammaln));
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_std_gammaln, NS_BENCH_IEEE_TYPES>(0.0, 13.0);
+  nsb::for_each<scalar_std_gammaln, NS_BENCH_IEEE_TYPES>(-10, 10);
 }

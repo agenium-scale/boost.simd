@@ -9,7 +9,7 @@
 NS_include(make_unit)
 NS_include(make_coverage)
 
-set(CMAKE_BUILD_TYPE "Debug")
+set(CMAKE_BUILD_TYPE "Release")
 
 ## Add all test folders
 add_subdirectory(api)

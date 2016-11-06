@@ -14,30 +14,23 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-
  /*!
-
     @ingroup group-euler
-    Function object implementing stirling capabilities
-
-    Computes stirling formula for the gamma function
+    This function object computes stirling formula for the gamma function
 
     @par Semantic:
-
-    For every parameter of floating type T
-
+    For every parameter of floating type @c T , the following code:
     @code
     T r = stirling(x);
     @endcode
-
-    Computes  \sqrt{2 \pi} x^{x-\frac12} e^{-x} ( 1 + \frac1{x} P(\frac1{x}))\f$,
+    computes  \f$\sqrt{2 \pi} x^{x-\frac12} e^{-x} ( 1 + \frac1{x} P(\frac1{x}))\f$,
     where \f$P\f$ is a polynomial.
-
-    The formula implementation is usable for x between 33 and 172,
-    according cephes to approximate \f$\Gamma(x).
+    The formula implementation is usable for x between 33 and 172 to approximate \f$\Gamma(x)\f$.
 
     @see gamma, gammaln
 
+    @param v0 value of a floating-point
+    @return The aproximation of \f$\Gamma(v_0)\f$ using Striling's formula.
   **/
   Value stirling(Value const & v0);
 } }

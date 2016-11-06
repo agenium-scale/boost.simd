@@ -37,6 +37,6 @@ STF_CASE_TPL (" swapbytes uit",   STF_INTEGRAL_TYPES)
     T za =  bs::shift_left(a, 8*i);
     STF_EQUAL(swapbytes(za), T(bs::shift_left(a,(sizeof(T)-i-1)*8)));
   }
-} // end of test for unsigned_int_
+}
 
 

@@ -17,5 +17,5 @@ DEFINE_SIMD_BENCH(simd_tenpower, bs::tenpower);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_tenpower, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<simd_tenpower, NS_BENCH_INTEGRAL_TYPES>(0, 10);
 }

@@ -13,9 +13,9 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_fast_sqrt, bs::fast_(bs::sqrt));
+DEFINE_SIMD_BENCH(simd_sqrt, bs::fast_(bs::sqrt));
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_fast_sqrt, NS_BENCH_IEEE_TYPES>(0, 1000);
+  nsb::for_each<simd_sqrt, NS_BENCH_IEEE_TYPES>(-10, 10);
 }

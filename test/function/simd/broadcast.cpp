@@ -24,6 +24,7 @@ void test(Env& $, brigand::list<N...> const&)
 
   STF_EQUAL( bs::broadcast< -1>(p), bs::Zero<p_t>() );
   STF_EQUAL( bs::broadcast<  0>(p), p_t(T(1))       );
+  STF_EQUAL( bs::broadcast<C/2>(p), p_t(T(C/2+1))   );
   STF_EQUAL( bs::broadcast<C-1>(p), p_t(T(C))       );
   STF_EQUAL( bs::broadcast<C*2>(p), bs::Zero<p_t>() );
 }

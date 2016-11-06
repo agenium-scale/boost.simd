@@ -31,11 +31,11 @@ namespace boost { namespace simd { namespace ext
      BOOST_FORCEINLINE A1 operator()(A0 const& a0, A1 const& a1, A1 const& a2) const
       {
         using itype =  bd::as_integer_t<A0, unsigned>;
-        return bitwise_cast<A1> ( _mm_cmov_si128( bitwise_cast<itype>(a1)
+        itype tmp = _mm_cmov_si128( bitwise_cast<itype>(a1)
                                                 , bitwise_cast<itype>(a2)
                                                 , bitwise_cast<itype>(a0)
-                                                )
-                                );
+                                                );
+        return bitwise_cast<A1> ( tmp );
       }
    };
 
@@ -51,11 +51,11 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A1 operator()(A0 const& a0, A1 const& a1, A1 const& a2) const
     {
       using itype = bd::as_integer_t<A0, unsigned>;
-      return bitwise_cast<A1> ( _mm256_cmov_si256 ( bitwise_cast<itype>(a1)
+      itype tmp = _mm256_cmov_si256 ( bitwise_cast<itype>(a1)
                                                   , bitwise_cast<itype>(a2)
                                                   , bitwise_cast<itype>(a0)
-                                                  )
-                              );
+                                    );
+      return bitwise_cast<A1> (tmp );
     }
   };
 } } }

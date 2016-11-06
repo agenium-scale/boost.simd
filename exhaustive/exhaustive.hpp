@@ -266,31 +266,34 @@ namespace boost { namespace simd {
       std::cout << k << "/" << diff << " values computed.\n";
 
       double d = 1;
+      double total = 0;
       for(std::size_t i = 0; i < M+1; i++, d*= 2.0)
       {
         if(histo[i])
         {
+          total += histo[i];
           printf("%10u values (%.2f%%)\twithin %1.1f ULPs\t"
-                , histo[i], (histo[i]*100.0/k), (d < 2 ? 0 : d/4)
+                , histo[i], (total*100.0/k), (d < 2 ? 0 : d/4)
                 );
           if(i)
             std::cout << std::scientific << std::setprecision(9)
                       << "in range [" << minin[i] << ", "<< maxin[i] << "]" << "."
-                      << " Example: "<< minin[i] << " returns " << minval[i]
-                      << " instead of " << minref[i];
+                      << " Example: "<< minin[i] << " returns " <<  minval[i]
+                      << " instead of " <<  reference_f(minin[i]);
           std::cout << std::endl;
         }
       }
 
       if( histo[M+1])
       {
-        printf("%10u values (%.2f%%)\twith invalid result.\t"
-              , histo[M+1], (histo[M+1]*100.0/k)
+         total += histo[M+1];
+         printf("%10u values (%.2f%%)\twith invalid result.\t"
+              , histo[M+1], (total*100.0/k)
               );
         std::cout << std::scientific << std::setprecision(9)
                   << "in range [" << minin[M+1] << ", "<< maxin[M+1] << "]" << "."
-                  << " Example: "<< minin[M+1] << " returns " << minval[M+1]
-                  << " instead of " << minref[M+1]
+                  << " Example: "<< minin[M+1] << " returns " <<  minval[M+1]
+                  << " instead of " <<  reference_f(minin[M+1])
                   << std::endl;
       }
     }
@@ -299,3 +302,4 @@ namespace boost { namespace simd {
 
 
 #endif
+
