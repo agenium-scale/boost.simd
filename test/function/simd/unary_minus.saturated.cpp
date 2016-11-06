@@ -1,17 +1,13 @@
 //==================================================================================================
-/*!
-  @file
-
+/**
   Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
-#include <boost/simd/pack.hpp>
 #include <boost/simd/function/unary_minus.hpp>
-#include <boost/simd/function/bits.hpp>
-#include <boost/simd/meta/cardinal_of.hpp>
+#include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -22,29 +18,28 @@
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/valmin.hpp>
 
+namespace bs = boost::simd;
+
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
 {
-  namespace bs = boost::simd;
   using p_t = bs::pack<T, N>;
 
   T a1[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
-    a1[i] = (i%2) ? T(i) : T(2*i);
+    a1[i] = (i%2) ? T(i/2) : T(-i/3);
     b[i] = bs::saturated_(bs::unary_minus)(a1[i]) ;
   }
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
-  STF_IEEE_EQUAL(bs::saturated_(bs::unary_minus)(aa1), bb);
-  STF_IEEE_EQUAL(-aa1, bb);
+
+  STF_EQUAL(bs::saturated_(bs::unary_minus)(aa1), bb);
 }
 
-STF_CASE_TPL("Check unary_minus_s on pack" , STF_SIGNED_NUMERIC_TYPES)
+STF_CASE_TPL("Check saturated unary_minus on pack" , STF_SIGNED_NUMERIC_TYPES)
 {
-  namespace bs = boost::simd;
-  using p_t = bs::pack<T>;
-  static const std::size_t N = bs::cardinal_of<p_t>::value;
+  static const std::size_t N = bs::pack<T>::static_size;
   test<T, N>($);
   test<T, N/2>($);
   test<T, N*2>($);
