@@ -18,20 +18,17 @@ void test(Env& $)
 {
   using p_t = bs::pack<T, N>;
 
-  T a1[N];
+  T a1[N], b =  bs::Valmin<T>();
 
-  a1[0] = T(1);
-  T b = a1[0];
-
-  for(std::size_t i = 1; i < N; ++i)
+for(std::size_t i = 0; i < N; ++i)
   {
-    a1[i] = (i%2) ? T(i) : T(i+1);
-    b = std::max(b,a1[i]);
+    a1[i] = (i%2) ? T(i) : T(-i);
+    b = bs::max(b, a1[i]);
   }
+
   p_t aa1(&a1[0], &a1[0]+N);
 
   STF_EQUAL(bs::maximum(aa1), b);
-  STF_EQUAL(bs::splatted_(bs::maximum)(aa1), p_t(b) );
 }
 
 STF_CASE_TPL("Check maximum on pack", STF_NUMERIC_TYPES)
