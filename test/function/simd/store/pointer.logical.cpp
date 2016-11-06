@@ -48,11 +48,13 @@ void test_l2a(Env& $)
 
   std::array<T,N> a1;
   std::array<s_t,N> a2, ref;
+  s_t k = bs::is_bitwise_logical<p_t>::value ? bs::Allbits<s_t>() : 1;
+
   for(std::size_t i = 0; i < N; ++i)
   {
     a1[i] = i%3 ? true : false;
     a2[i] = T(0);
-    ref[i] = a1[i] ? bs::Allbits<s_t>(): s_t(0);
+    ref[i] = a1[i] ? k : s_t(0);
   }
 
   p_t aa1(&a1[0], &a1[0]+N);
