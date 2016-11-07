@@ -40,6 +40,6 @@ STF_CASE_TPL("Check dot on pack" , STF_IEEE_TYPES)//STF_NUMERIC_TYPES)
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
   test<T, N>($);
-//   test<T, N/2>($);
-//   test<T, N*2>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }
