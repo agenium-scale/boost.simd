@@ -10,6 +10,15 @@
 #include <boost/simd/function/sincosd.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/std.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/mzero.hpp>
+#include <boost/simd/function/sind.hpp>
+#include <boost/simd/function/cosd.hpp>
 
 namespace bs = boost::simd;
 
@@ -75,3 +84,31 @@ STF_CASE_TPL("Check restricted sincosd on pack" , STF_IEEE_TYPES)
   testr<T, N*2>($);
 }
 
+
+STF_CASE_TPL (" sincosd",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using p_t = bs::pack<T>;
+
+  using bs::sincosd;
+  p_t a[] = {bs::Zero<p_t>(), bs::One<p_t>(), p_t(120), p_t(180),
+           p_t(90), bs::Inf<p_t>(), bs::Minf<p_t>(), bs::Nan<p_t>()};
+  size_t N =  sizeof(a)/sizeof(p_t);
+
+  STF_EXPR_IS( (sincosd(p_t()))
+             , (std::pair<p_t,p_t>)
+             );
+
+  {
+    for(size_t i=0; i < N; ++i)
+    {
+      std::pair<p_t,p_t> p = sincosd(a[i]);
+      STF_IEEE_EQUAL(p.first,  bs::sind(a[i]));
+      STF_IEEE_EQUAL(p.second, bs::cosd(a[i]));
+      std::pair<p_t,p_t> q = bs::restricted_(sincosd)(a[i]);
+      STF_IEEE_EQUAL(q.first,  bs::restricted_(bs::sind)(a[i]));
+      STF_IEEE_EQUAL(q.second, bs::restricted_(bs::cosd)(a[i]));
+    }
+  }
+}

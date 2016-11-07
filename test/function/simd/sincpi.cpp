@@ -9,6 +9,17 @@
 #include <simd_test.hpp>
 #include <boost/simd/function/sincpi.hpp>
 #include <boost/simd/pack.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/mzero.hpp>
+#include <boost/simd/constant/eps.hpp>
+#include <boost/simd/constant/mindenormal.hpp>
+#include <boost/simd/constant/pi.hpp>
+#include <boost/simd/function/sinpi.hpp>
 
 
 namespace bs = boost::simd;
@@ -40,3 +51,26 @@ STF_CASE_TPL("Check sincpi on pack" , STF_IEEE_TYPES)
   test<T, N*2>($);
 }
 
+
+STF_CASE_TPL(" sinc",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::sincpi;
+  using p_t = bs::pack<T>;
+
+  STF_EXPR_IS(sincpi(p_t()),p_t);
+
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_ULP_EQUAL(sincpi(bs::Inf<p_t>()), bs::Zero<p_t>(), 1.0);
+  STF_ULP_EQUAL(sincpi(bs::Minf<p_t>()), bs::Zero<p_t>(), 1.0);
+  STF_ULP_EQUAL(sincpi(bs::Nan<p_t>()), bs::Nan<p_t>(), 1.0);
+#endif
+  STF_ULP_EQUAL(sincpi(-p_t(1)/p_t(2)), p_t(2)/(bs::Pi<p_t>()), 1.0);
+  STF_ULP_EQUAL(sincpi(-p_t(1)/p_t(4)), bs::sinpi(p_t(1)/p_t(4))*p_t(4)/(bs::Pi<p_t>()), 1.0);
+  STF_ULP_EQUAL(sincpi(p_t(1)/p_t(2)),  p_t(2)/(bs::Pi<p_t>()), 1.0);
+  STF_ULP_EQUAL(sincpi(p_t(1)/p_t(4)), bs::sinpi(p_t(1)/p_t(4))*p_t(4)/(bs::Pi<p_t>()), 1.0);
+  STF_ULP_EQUAL(sincpi(bs::Eps<p_t>()), bs::One<p_t>(), 1.0);
+  STF_ULP_EQUAL(sincpi(bs::Mindenormal<p_t>()), bs::One<p_t>(), 1.0);
+  STF_ULP_EQUAL(sincpi(bs::Zero<p_t>()), bs::One<p_t>(), 1.0);
+}
