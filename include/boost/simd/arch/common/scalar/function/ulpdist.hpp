@@ -15,7 +15,7 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/abs.hpp>
 #include <boost/simd/function/dist.hpp>
-#include <boost/simd/function/frexp.hpp>
+#include <boost/simd/function/ifrexp.hpp>
 #include <boost/simd/function/is_nan.hpp>
 #include <boost/simd/function/ldexp.hpp>
 #include <boost/simd/function/max.hpp>
@@ -71,8 +71,8 @@ namespace boost { namespace simd { namespace ext
 
       i_t e1, e2;
       A0 m1, m2;
-      std::tie(m1, e1) = simd::frexp(a0);
-      std::tie(m2, e2) = simd::frexp(a1);
+      std::tie(m1, e1) = simd::ifrexp(a0);
+      std::tie(m2, e2) = simd::ifrexp(a1);
 
       i_t expo = -simd::max(e1, e2);
 

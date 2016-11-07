@@ -12,11 +12,12 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LOG10_HPP_INCLUDED
 
 #include <boost/simd/detail/assert_utils.hpp>
-#include <boost/simd/function/simd/is_not_nan.hpp>
-#include <boost/simd/function/simd/is_positive.hpp>
-#include <boost/simd/function/simd/is_lez.hpp>
-#include <boost/simd/function/simd/is_ngez.hpp>
-#include <boost/simd/function/simd/any.hpp>
+#include <boost/simd/function/ifrexp.hpp>
+#include <boost/simd/function/is_not_nan.hpp>
+#include <boost/simd/function/is_positive.hpp>
+#include <boost/simd/function/is_lez.hpp>
+#include <boost/simd/function/is_ngez.hpp>
+#include <boost/simd/function/any.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
@@ -256,7 +257,7 @@ namespace boost { namespace simd { namespace ext
 #endif
       /* reduce x into [sqrt(2)/2, sqrt(2)] */
       iA0 kk;
-      std::tie(x, kk) = fast_(frexp)(a0);
+      std::tie(x, kk) = fast_(ifrexp)(a0);
       A0  x_lt_sqrthf = genmask(is_greater(Sqrt_2o_2<A0>(), x));
       k += kk + bitwise_cast<iA0>(x_lt_sqrthf);
       A0 f = dec(x+bitwise_and(x, x_lt_sqrthf));
@@ -334,7 +335,7 @@ namespace boost { namespace simd { namespace ext
 #endif
       /* reduce x into [sqrt(2)/2, sqrt(2)] */
       iA0 kk;
-      std::tie(x, kk) = fast_(frexp)(a0);
+      std::tie(x, kk) = fast_(ifrexp)(a0);
       A0  x_lt_sqrthf = genmask(is_greater(Sqrt_2o_2<A0>(), x));
       k += kk + bitwise_cast<iA0>(x_lt_sqrthf);
       A0 f = dec(x+bitwise_and(x, x_lt_sqrthf));

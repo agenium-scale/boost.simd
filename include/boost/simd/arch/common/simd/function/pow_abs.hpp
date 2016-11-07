@@ -23,7 +23,7 @@
 #include <boost/simd/function/divides.hpp>
 #include <boost/simd/function/exp.hpp>
 #include <boost/simd/function/fma.hpp>
-#include <boost/simd/function/frexp.hpp>
+#include <boost/simd/function/ifrexp.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/if_else_zero.hpp>
 #include <boost/simd/function/if_else_nan.hpp>
@@ -84,7 +84,7 @@ namespace boost { namespace simd { namespace ext
       iA0 e;
       A0 ax = bs::abs(a0);
       A0 x;
-      std::tie(x, e) = frexp(ax);
+      std::tie(x, e) = ifrexp(ax);
       iA0 i  = detail::pow_kernel<A0>::select(x);
       A0 z = sqr(x);
       A0 w = detail::pow_kernel<A0>::pow1(x, z);

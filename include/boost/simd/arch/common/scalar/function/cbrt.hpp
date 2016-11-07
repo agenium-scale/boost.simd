@@ -30,7 +30,7 @@
 #include <boost/simd/function/abs.hpp>
 #include <boost/simd/function/bitofsign.hpp>
 #include <boost/simd/function/bitwise_or.hpp>
-#include <boost/simd/function/frexp.hpp>
+#include <boost/simd/function/ifrexp.hpp>
 #include <boost/simd/function/is_gez.hpp>
 #include <boost/simd/function/ldexp.hpp>
 #include <boost/simd/function/negate.hpp>
@@ -77,7 +77,7 @@ namespace boost { namespace simd { namespace ext
       using i_t = bd::as_integer_t<A0, signed>;
       i_t e;
       A0 x;
-      std::tie(x, e) = fast_(frexp)(z);
+      std::tie(x, e) = fast_(ifrexp)(z);
       x = horn<A0,
                0x3fd9c0c12122a4fell,
                0x3ff23d6ee505873all,
@@ -134,7 +134,7 @@ namespace boost { namespace simd { namespace ext
       using i_t = bd::as_integer_t<A0, signed>;
       i_t e;
       A0 x;
-      std::tie(x, e)= fast_(frexp)(z);
+      std::tie(x, e)= fast_(ifrexp)(z);
       x = horn<A0,
                0x3ece0609,
                0x3f91eb77,

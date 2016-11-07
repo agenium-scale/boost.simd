@@ -15,7 +15,7 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/function/abs.hpp>
 #include <boost/simd/function/divides.hpp>
-#include <boost/simd/function/frexp.hpp>
+#include <boost/simd/function/ifrexp.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/if_zero_else.hpp>
 #include <boost/simd/function/is_equal.hpp>
@@ -45,8 +45,8 @@ namespace boost { namespace simd { namespace ext
         using itype = bd::as_integer_t<A0>;
         itype e1, e2;
         A0 m1, m2;
-        std::tie(m1, e1) = bs::frexp(a0);
-        std::tie(m2, e2) = bs::frexp(a1);
+        std::tie(m1, e1) = bs::ifrexp(a0);
+        std::tie(m2, e2) = bs::ifrexp(a1);
         itype expo = -bs::max(e1, e2);
         A0 e = if_else( bs::is_equal(e1, e2)
                       , bs::abs(m1-m2)

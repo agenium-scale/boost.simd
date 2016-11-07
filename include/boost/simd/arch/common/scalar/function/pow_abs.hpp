@@ -29,7 +29,7 @@
 #include <boost/simd/function/floor.hpp>
 #include <boost/simd/function/fma.hpp>
 #include <boost/simd/function/fms.hpp>
-#include <boost/simd/function/frexp.hpp>
+#include <boost/simd/function/ifrexp.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/is_eqz.hpp>
 #include <boost/simd/function/is_ltz.hpp>
@@ -74,7 +74,7 @@ namespace boost { namespace simd { namespace ext
       if(is_nan(a1)) return Nan<A0>();
     #endif
       i_t e;
-      std::tie(x, e) = bs::frexp(x);
+      std::tie(x, e) = bs::ifrexp(x);
       i_t i  = detail::pow_kernel<A0>::select(x);
       A0 z = sqr(x);
       A0 w = detail::pow_kernel<A0>::pow1(x, z);

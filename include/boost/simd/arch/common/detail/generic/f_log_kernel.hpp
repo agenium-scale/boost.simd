@@ -13,7 +13,7 @@
 
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/simd/function/fast.hpp>
-#include <boost/simd/function/frexp.hpp>
+#include <boost/simd/function/ifrexp.hpp>
 #include <boost/simd/function/is_less.hpp>
 #include <boost/simd/function/tofloat.hpp>
 #include <boost/simd/function/if_plus.hpp>
@@ -53,7 +53,7 @@ namespace boost { namespace simd { namespace detail
                            A0& y) BOOST_NOEXCEPT
     {
       i_t e;
-      std::tie(x, e)= fast_(frexp)(a0);
+      std::tie(x, e)= fast_(ifrexp)(a0);
       auto xltsqrthf = (x < Sqrt_2o_2<A0>());
       fe = if_plus(xltsqrthf, tofloat(e), Mone<A0>());
       x =  dec(if_plus(xltsqrthf, x, x));

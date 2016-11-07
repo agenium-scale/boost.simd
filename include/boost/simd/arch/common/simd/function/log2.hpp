@@ -25,7 +25,7 @@
 #include <boost/simd/function/dec.hpp>
 #include <boost/simd/function/fma.hpp>
 #include <boost/simd/function/fms.hpp>
-#include <boost/simd/function/frexp.hpp>
+#include <boost/simd/function/ifrexp.hpp>
 #include <boost/simd/function/horn.hpp>
 #include <boost/simd/function/if_nan_else.hpp>
 #include <boost/simd/function/ilog2.hpp>
@@ -303,7 +303,7 @@ namespace boost { namespace simd { namespace ext
 #endif
       /* reduce x into [sqrt(2)/2, sqrt(2)] */
       iA0 kk;
-      std::tie(x, kk) = fast_(frexp)(x);
+      std::tie(x, kk) = fast_(ifrexp)(x);
       A0 x_lt_sqrthf = genmask(Sqrt_2o_2<A0>() > x);
       k += kk + bitwise_cast<iA0>(x_lt_sqrthf);
       A0 f = dec(x+bitwise_and(x, x_lt_sqrthf));
@@ -375,7 +375,7 @@ namespace boost { namespace simd { namespace ext
 #endif
       /* reduce x into [sqrt(2)/2, sqrt(2)] */
       iA0 kk;
-      std::tie(x, kk) = fast_(frexp)(x);
+      std::tie(x, kk) = fast_(ifrexp)(x);
       A0 x_lt_sqrthf = genmask(Sqrt_2o_2<A0>() > x);
       k += kk + bitwise_cast<iA0>(x_lt_sqrthf);
       A0 f = dec(x+bitwise_and(x, x_lt_sqrthf));
