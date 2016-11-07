@@ -31,7 +31,8 @@ namespace boost { namespace simd
 
   using aligned_delete = boost::alignment::aligned_delete;
 
-  void *aligned_alloc(std::size_t alignment, std::size_t size){
+  void *aligned_alloc(std::size_t alignment, std::size_t size)
+  {
     return boost::alignment::aligned_alloc(alignment, size);
   }
 } }
