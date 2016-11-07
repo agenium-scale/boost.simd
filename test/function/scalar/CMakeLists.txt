@@ -171,6 +171,7 @@ set ( SOURCES
    if_zero_else.cpp
    if_zero_else_allbits.cpp
    if_zero_else_one.cpp
+   ifrexp.cpp
    ilog2.cpp
    ilogb.cpp
    inc.regular.cpp
