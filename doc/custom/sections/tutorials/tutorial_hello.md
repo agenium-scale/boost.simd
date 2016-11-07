@@ -83,6 +83,11 @@ You may also construct a pack by passing a pointer to a block of contiguous, ali
 
 @snippet helloworld.cpp hello-ptr-iota
 
+@notebox{
+  This vector uses a custom memory allocator to ensure that the memory used for storage of the data is
+  corectly aligned for the target architecture. Please see @ref tutorial-memory
+  for a detailed explanation of this.
+}
 When constructing a pack in this manner, you must ensure that there is sufficient data in the block
 of memory to fill the pack. For example, on an AVX enabled machine, a __SIMD__ vector of `float32`
 contains `8` elements, or has a __cardinal__ of `8`. Therefore, there must be at least `8` elements
