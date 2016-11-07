@@ -33,19 +33,21 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    as_integer_t<T> e = exponent(x)+1;
+    T e = tofloat(exponent(x)+1);
     T m = copysign(mantissa(x)/2, x);
     @endcode
 
     The call
 
     @code
-    std:pair<T,as_integer_t<T>> p = frexp(x);
+    std:pair<T,T> p = frexp(x);
     @endcode
 
     can also be used.
 
     @par Note:
+
+    if you need integral type exponent (as in the standard library)  use @c ifrexp
 
     This function splits a floating point value @c v f in a signed mantissa @c m and
     an exponent @c e so that:  @f$v = m\times 2^e@f$,
