@@ -14,7 +14,7 @@ and demonstrate how to ensure that your memory is always correctly aligned.
 In this tutorial we will:
 - [Explain what memory alignemnt is](#memory-what-is)
 - [Demonstrate how to align memory](#memory-how-to-align)
-- [Demonstrate how to align memory using Boost.Align](#memory-boost-align)
+- [Demonstrate how to align memory using @projectname](#memory-boost-simd-align)
 - [Demonstrate how to use an aligned memory allocator with STL containers](#memory-vector)
 
 @section memory-what-is What is Memory Alignment
@@ -37,13 +37,13 @@ This means that the allocated buffer must be larger than the size required, at l
 
 As you can see, this is errorprone, difficult and quite annoying to do. Also, `std::align`
 is not unviersally supported even among modern compilers! Therefore, the easiest
-way to align memory is to use an aligned memory allocator such as that provided by Boost.Align.
+way to align memory is to use the aligned memory allocator provided by **@projectname**.
 
-@section memory-boost-align How to Align Memory using Boost.Align
+@section memory-boost-simd-align How to Align Memory using @projectname aligned allocator
 
-The allocator provided by Boost.Align guarantees to return a pointer which is
-aligned on the required boundary and you don't need to worry about
-allocating extra space in the buffer to account for the required alignement as in
+The allocator provided by **@projectname** guarantees to return a pointer with the correct
+alignment so that you need not worry about
+allocating extra space in the buffer to account for the required alignment as in
 the previous section.
 
 @notebox{The additional template parameter passed to the `std::unique_ptr`,
@@ -53,7 +53,7 @@ the aligned allocator.
 
 @snippet alignment.cpp align-allocator
 
-@section memory-vector How to use an aligned memory allocator with `std::vector`
+@section memory-vector How to use an aligned memory allocator with std::vector
 
 The C++ STL containers allow you to use a custom memory allocator by passing
 an additional template argument during the declaration, in a similar manner
