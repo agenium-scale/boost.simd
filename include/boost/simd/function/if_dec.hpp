@@ -24,16 +24,16 @@ namespace boost { namespace simd
 
     @par Semantic:
 
-    For every parameters @c c of type @c C and @c t of type @c T:
+    For every parameters @c c of type @c C and @c t of type @c T :
 
     @code
-    T r = if_dec(cond,t);
+    T r = if_dec(c, t);
     @endcode
 
     is similar to:
 
     @code
-    T r = cond ? t-One<T>() : t;
+    T r = c ? t - One<T>() : t;
     @endcode
   **/
   Value if_dec(Value const& c, Value const& v0);

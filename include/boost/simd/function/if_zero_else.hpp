@@ -20,20 +20,20 @@ namespace boost { namespace simd
     @ingroup group-boolean
     Function object implementing if_zero_else capabilities
 
-    If cond is @ref True returns @ref Zero else returns f
+    If @c c is @ref True returns @ref Zero else returns @c x .
 
     @par Semantic:
 
-    For every parameters @c c of type @c C and @c x of type @c T:
+    For every parameters @c c of type @c C and @c x of type @c T :
 
     @code
-    T r = if_zero_else(cond, x);
+    T r = if_zero_else(c, x);
     @endcode
 
     is similar to:
 
     @code
-    T r = cond ? Zero<T>() : x;
+    T r = c ? Zero<T>() : x;
     @endcode
 
   **/
