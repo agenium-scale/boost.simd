@@ -47,10 +47,11 @@ namespace boost { namespace simd { namespace ext
      BOOST_FORCEINLINE A0 operator()(A0 const& a0) const
       {
         A0 const nr  = _mm256_rsqrt_ps( a0 );
+        A0 tmp = if_else(is_eqz(a0), Inf<A0>(), nr * Half<A0>() * fnms(a0, sqr(nr), Three<A0>()));
 #ifndef BOOST_SIMD_NO_INFINITIES
-        return if_zero_else(a0 == Inf<A0>(), if_else(is_eqz(a0), Inf<A0>(), nr * Half<A0>() * fnms(a0, sqr(nr), Three<A0>())));
+        return if_zero_else(a0 == Inf<A0>(), tmp);
 #else
-        return if_else(is_eqz(a0), Inf<A0>(), nr * Half<A0>() * fnms(a0, sqr(nr), Three<A0>()));
+        return tmp;
 #endif
       }
    };
