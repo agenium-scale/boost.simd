@@ -20,20 +20,20 @@ namespace boost { namespace simd
     @ingroup group-boolean
     Function object implementing if_else_allbits capabilities
 
-    If cond is @ref True returns t else returns allbits
+    If @c c is @ref True returns @c t else returns @ref Allbits
 
     @par Semantic:
 
-    For every parameters @c c of type @c C and @c t of type @c T:
+    For every parameters @c c of type @c C and @c t of type @c T :
 
     @code
-    T r = if_else_allbits(cond,t);
+    T r = if_else_allbits(c, t);
     @endcode
 
     is similar to:
 
     @code
-    T r = cond ? t : Allbits<T>();
+    T r = c ? t : Allbits<T>();
     @endcode
 
     @par Alias:

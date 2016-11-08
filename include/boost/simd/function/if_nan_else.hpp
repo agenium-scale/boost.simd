@@ -20,7 +20,7 @@ namespace boost { namespace simd
     @ingroup group-boolean
     Function object implementing if_nan_else capabilities
 
-    If cond is @ref True returns @ref Allbits else returns f
+    If @c r is @ref True returns @ref Allbits else returns @c v0
 
     This is a convenience alias of @ref if_allbits_else
   **/

@@ -20,13 +20,13 @@ namespace boost { namespace simd
     @ingroup group-boolean
     Function object implementing if_minus capabilities
 
-    The function returns the second entry or the difference of the
-    second and third entries, according to the first entry being @ref False
-    or @ref True
+    The function returns either the second parameter or the difference between the
+    second and third parameter, depending on whether the first parameter is
+	@ref False or @ref True .
 
     @par Semantic:
 
-    For every parameters @c c of type @c C and @c x, @c y of type @c T:
+    For every parameters @c c of type @c C and @c x, @c y of type @c T :
 
     @code
     T1 r = if_minus(c, x, y);
@@ -35,7 +35,7 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T1 r = c ? x-y : x;
+    T1 r = c ? x - y : x;
     @endcode
   **/
   Value if_minus(Value const& c, Value const& x, Value const&  y);

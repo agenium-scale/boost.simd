@@ -20,26 +20,26 @@ namespace boost { namespace simd
     @ingroup group-boolean
     Function object implementing if_zero_else_one capabilities
 
-    If cond is @ref True returns @ref Zero else returns one
+    If @c c is @ref True returns @ref Zero else returns @ref One .
 
     @par Semantic:
 
-    For every parameters of type @c C:
+    For every parameter @c c of type @c C :
 
     @code
-    T r = if_zero_else_one(cond);
+    auto r = if_zero_else_one(c);
     @endcode
 
     is similar to:
 
     @code
-    T r =  cond ? Zero : One;
+    auto r = c ? Zero : One;
     @endcode
 
     @par Note:
 
-    The return type is generally C except in the case where C is as_logical_t<T>. in which case
-    the return type is T.
+    The return type is generally @c C except in the case where @c C is <tt>as_logical_t<T></tt>. in which case
+    the return type is @c T .
 
   **/
   Value if_zero_else_one(Value const& c);
