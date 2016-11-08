@@ -97,6 +97,7 @@ STF_CASE_TPL (" bs::saturated_(bs::toint) unsigned_int",  STF_UNSIGNED_INTEGRAL_
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
+
   using p_t = bs::pack<T>;
   using r_t = decltype(bs::saturated_(bs::toint)(p_t()));
 
