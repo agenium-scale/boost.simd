@@ -79,12 +79,13 @@ STF_CASE_TPL (" bs::saturated_(bs::toint) real",  STF_IEEE_TYPES)
 
   p_t v = p_t(1);
   iT iv = 1;
-  int N = sizeof(T)*8-1;
-  for(int i=0; i < N ; i++, v*= p_t(2), iv <<= iT(1))
+  int M =  31;
+  for(int i=0; i < M ; i++, v*= p_t(2), iv <<= iT(1))
   {
     STF_EQUAL(bs::saturated_(bs::toint)(v), r_t(iv));
     STF_EQUAL(bs::saturated_(bs::toint)(-v), -r_t(iv));
   }
+  int N = sizeof(T)*8-1;
   STF_EQUAL(bs::saturated_(bs::toint)(bs::ldexp(bs::One<p_t>(), N)), bs::Valmax<r_t>());
   STF_EQUAL(bs::saturated_(bs::toint)(bs::ldexp(bs::One<p_t>(), N+1)), bs::Valmax<r_t>());
   STF_EQUAL(bs::saturated_(bs::toint)(-bs::ldexp(bs::One<p_t>(), N+1)), bs::Valmin<r_t>());
