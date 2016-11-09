@@ -32,7 +32,7 @@ void test(Env& $)
   iT b[N];
   for(int i = 0; i < N; ++i)
   {
-    a1[i] = (i%2) ? T(i) : T(i+N);
+    a1[i] = T(i)/N;
     b[i] = bs::toint(a1[i]) ;
   }
   p_t aa1(&a1[0], &a1[0]+N);
@@ -64,6 +64,9 @@ STF_CASE_TPL (" toint real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, (bd::as_integer_t<p_t, signed>));
 
   // specific values tests
+  STF_EQUAL(toint(p_t(0.4)), r_t(0));
+  STF_EQUAL(toint(p_t(0.5)), r_t(0));
+  STF_EQUAL(toint(p_t(0.6)), r_t(0));
   STF_EQUAL(toint(bs::Mone<p_t>()), bs::Mone<r_t>());
   STF_EQUAL(toint(bs::One<p_t>()),  bs::One<r_t>());
   STF_EQUAL(toint(bs::Zero<p_t>()), bs::Zero<r_t>());

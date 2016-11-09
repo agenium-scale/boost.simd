@@ -56,39 +56,39 @@ STF_CASE_TPL (" bs::saturated_(bs::toint) real",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
-  using r_t = decltype(bs::saturated_(bs::toint)(T()));
+  using p_t = bs::pack<T>;
+  using iT = bd::as_integer_t<T, signed>;
+  using r_t = decltype(bs::saturated_(bs::toint)(p_t()));
 
   // return type conformity test
-  STF_TYPE_IS(r_t, (bd::as_integer_t<T, signed>));
+  STF_TYPE_IS(r_t, (bd::as_integer_t<p_t, signed>));
 
   // specific values tests
-  STF_EQUAL(bs::saturated_(bs::toint)(T(2)*bs::Valmax<r_t>()),  bs::Valmax<r_t>());
-  STF_EQUAL(bs::saturated_(bs::toint)(T(2)*bs::Valmin<r_t>()),  bs::Valmin<r_t>());
-  STF_EQUAL(bs::saturated_(bs::toint)(T(1.5)*bs::Valmax<r_t>()),  bs::Valmax<r_t>());
-  STF_EQUAL(bs::saturated_(bs::toint)(T(1.5)*bs::Valmin<r_t>()),  bs::Valmin<r_t>());
+  STF_EQUAL(bs::saturated_(bs::toint)(p_t(2)*bs::Valmax<p_t>()),  bs::Valmax<r_t>());
+  STF_EQUAL(bs::saturated_(bs::toint)(p_t(2)*bs::Valmin<p_t>()),  bs::Valmin<r_t>());
+  STF_EQUAL(bs::saturated_(bs::toint)(p_t(1.5)*bs::Valmax<p_t>()),  bs::Valmax<r_t>());
+  STF_EQUAL(bs::saturated_(bs::toint)(p_t(1.5)*bs::Valmin<p_t>()),  bs::Valmin<r_t>());
 
 
-  STF_EQUAL(bs::saturated_(bs::toint)(bs::Inf<T>()),  bs::Inf<r_t>());
-  STF_EQUAL(bs::saturated_(bs::toint)(bs::Minf<T>()), bs::Minf<r_t>());
-  STF_EQUAL(bs::saturated_(bs::toint)(bs::Mone<T>()), bs::Mone<r_t>());
-  STF_EQUAL(bs::saturated_(bs::toint)(bs::Nan<T>()),  bs::Zero<r_t>());
-  STF_EQUAL(bs::saturated_(bs::toint)(bs::One<T>()),  bs::One<r_t>());
-  STF_EQUAL(bs::saturated_(bs::toint)(bs::Zero<T>()), bs::Zero<r_t>());
+  STF_EQUAL(bs::saturated_(bs::toint)(bs::Inf<p_t>()),  bs::Inf<r_t>());
+  STF_EQUAL(bs::saturated_(bs::toint)(bs::Minf<p_t>()), bs::Minf<r_t>());
+  STF_EQUAL(bs::saturated_(bs::toint)(bs::Mone<p_t>()), bs::Mone<r_t>());
+  STF_EQUAL(bs::saturated_(bs::toint)(bs::Nan<p_t>()),  bs::Zero<r_t>());
+  STF_EQUAL(bs::saturated_(bs::toint)(bs::One<p_t>()),  bs::One<r_t>());
+  STF_EQUAL(bs::saturated_(bs::toint)(bs::Zero<p_t>()), bs::Zero<r_t>());
 
-  T v = T(1);
-  r_t iv = 1;
+  p_t v = p_t(1);
+  iT iv = 1;
   int N = sizeof(T)*8-1;
-  for(int i=0; i < N ; i++, v*= 2, iv <<= 1)
+  for(int i=0; i < N ; i++, v*= p_t(2), iv <<= iT(1))
   {
-  namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
-    STF_EQUAL(bs::saturated_(bs::toint)(v), iv);
-    STF_EQUAL(bs::saturated_(bs::toint)(-v), -iv);
+    STF_EQUAL(bs::saturated_(bs::toint)(v), r_t(iv));
+    STF_EQUAL(bs::saturated_(bs::toint)(-v), -r_t(iv));
   }
-  STF_EQUAL(bs::saturated_(bs::toint)(bs::ldexp(bs::One<T>(), N)), bs::Valmax<r_t>());
-  STF_EQUAL(bs::saturated_(bs::toint)(bs::ldexp(bs::One<T>(), N+1)), bs::Valmax<r_t>());
-  STF_EQUAL(bs::saturated_(bs::toint)(-bs::ldexp(bs::One<T>(), N+1)), bs::Valmin<r_t>());
-  STF_EQUAL(bs::saturated_(bs::toint)(-bs::ldexp(bs::One<T>(), N+1)), bs::Valmin<r_t>());
+  STF_EQUAL(bs::saturated_(bs::toint)(bs::ldexp(bs::One<p_t>(), N)), bs::Valmax<r_t>());
+  STF_EQUAL(bs::saturated_(bs::toint)(bs::ldexp(bs::One<p_t>(), N+1)), bs::Valmax<r_t>());
+  STF_EQUAL(bs::saturated_(bs::toint)(-bs::ldexp(bs::One<p_t>(), N+1)), bs::Valmin<r_t>());
+  STF_EQUAL(bs::saturated_(bs::toint)(-bs::ldexp(bs::One<p_t>(), N+1)), bs::Valmin<r_t>());
 
 } // end of test for floating_
 
@@ -96,14 +96,15 @@ STF_CASE_TPL (" bs::saturated_(bs::toint) unsigned_int",  STF_UNSIGNED_INTEGRAL_
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
-  using r_t = decltype(bs::saturated_(bs::toint)(T()));
+  using p_t = bs::pack<T>;
+  using r_t = decltype(bs::saturated_(bs::toint)(p_t()));
 
   // return type conformity test
-  STF_TYPE_IS(r_t, (bd::as_integer_t<T, signed>));
+  STF_TYPE_IS(r_t, (bd::as_integer_t<p_t, signed>));
 
   // specific values tests
-  STF_EQUAL(bs::saturated_(bs::toint)(bs::One<T>()),  bs::One<r_t>());
-  STF_EQUAL(bs::saturated_(bs::toint)(bs::Zero<T>()), bs::Zero<r_t>());
+  STF_EQUAL(bs::saturated_(bs::toint)(bs::One<p_t>()),  bs::One<r_t>());
+  STF_EQUAL(bs::saturated_(bs::toint)(bs::Zero<p_t>()), bs::Zero<r_t>());
 } // end of test for unsigned_int_
 
 STF_CASE_TPL (" bs::saturated_(bs::toint) signed",  STF_SIGNED_INTEGRAL_TYPES)
@@ -111,13 +112,14 @@ STF_CASE_TPL (" bs::saturated_(bs::toint) signed",  STF_SIGNED_INTEGRAL_TYPES)
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
 
-  using r_t = decltype(bs::saturated_(bs::toint)(T()));
+  using p_t = bs::pack<T>;
+  using r_t = decltype(bs::saturated_(bs::toint)(p_t()));
   // return type conformity test
-  STF_TYPE_IS(r_t, (bd::as_integer_t<T, signed>));
+  STF_TYPE_IS(r_t, (bd::as_integer_t<p_t, signed>));
 
 
   // specific values tests
-  STF_EQUAL(bs::saturated_(bs::toint)(bs::Mone<T>()), bs::Mone<r_t>());
-  STF_EQUAL(bs::saturated_(bs::toint)(bs::One<T>()),  bs::One<r_t>());
-  STF_EQUAL(bs::saturated_(bs::toint)(bs::Zero<T>()), bs::Zero<r_t>());
+  STF_EQUAL(bs::saturated_(bs::toint)(bs::Mone<p_t>()), bs::Mone<r_t>());
+  STF_EQUAL(bs::saturated_(bs::toint)(bs::One<p_t>()),  bs::One<r_t>());
+  STF_EQUAL(bs::saturated_(bs::toint)(bs::Zero<p_t>()), bs::Zero<r_t>());
 } // end of test for signed_int_
