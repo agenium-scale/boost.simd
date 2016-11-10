@@ -16,6 +16,9 @@
 #  if BOOST_HW_SIMD_X86_OR_AMD >= BOOST_HW_SIMD_X86_SSE_VERSION
 #    include <boost/simd/arch/x86/sse1/scalar/function/inearbyint.hpp>
 #  endif
+#  if BOOST_HW_SIMD_X86_OR_AMD >= BOOST_HW_SIMD_X86_SSE2_VERSION
+#    include <boost/simd/arch/x86/sse2/scalar/function/inearbyint.hpp>
+#  endif
 #endif
 
 #endif
