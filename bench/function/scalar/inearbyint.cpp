@@ -14,8 +14,10 @@ namespace bs =  boost::simd;
 
 
 DEFINE_SCALAR_BENCH(scalar_inearbyint, bs::inearbyint);
+DEFINE_SCALAR_BENCH(scalar_fast_inearbyint, bs::fast_(bs::inearbyint));
 
 DEFINE_BENCH_MAIN()
 {
   nsb::for_each<scalar_inearbyint, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<scalar_fast_inearbyint, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
