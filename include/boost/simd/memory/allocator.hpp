@@ -30,11 +30,6 @@ namespace boost { namespace simd
   using allocator = boost::alignment::aligned_allocator<T,boost::simd::pack<T,Cardinal>::alignment>;
 
   using aligned_delete = boost::alignment::aligned_delete;
-
-  void *aligned_alloc(std::size_t alignment, std::size_t size)
-  {
-    return boost::alignment::aligned_alloc(alignment, size);
-  }
 } }
 
 #endif
