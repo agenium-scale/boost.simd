@@ -30,9 +30,7 @@
 #include <boost/simd/function/is_flint.hpp>
 #include <boost/simd/function/all.hpp>
 #include <boost/simd/function/inrad.hpp>
-#include <boost/simd/function/multiplies.hpp>
-#include <boost/simd/function/divides.hpp>
-#include <boost/simd/function/minus.hpp>
+#include <boost/simd/function/twobits.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/pi.hpp>
 #include <boost/simd/constant/pio_2.hpp>
@@ -78,7 +76,7 @@ namespace boost { namespace simd
     template<class A0, class style, class mode>
     struct trig_reduction<A0,tag::degree_tag, style, mode>//always equivalent to  tag::big_tag>
     {
-      using i_t = bd::as_integer_t<A0, signed>;
+//      using A0 = bd::as_integer_t<A0, signed>;
 
       static BOOST_FORCEINLINE auto cot_invalid(const A0& x) BOOST_NOEXCEPT
       -> decltype(is_nez(x)&&is_flint(x*Ratio<A0,1,180>()))
@@ -91,13 +89,12 @@ namespace boost { namespace simd
         return is_flint((x- Ratio<A0,90>())*Ratio<A0,1,180>());
       }
 
-      static BOOST_FORCEINLINE i_t reduce(const A0& x, A0& xr) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE A0 reduce(const A0& x, A0& xr) BOOST_NOEXCEPT
       {
         A0 xi = nearbyint(x*Ratio<A0,1,90>());
         A0 x2 = x - xi * Ratio<A0,90>();
-
         xr =  inrad(x2);
-        return toint(xi);
+        return twobits(xi);
       }
     };
 
@@ -105,7 +102,6 @@ namespace boost { namespace simd
     template<class A0, class mode>
     struct trig_reduction<A0,degree_tag, tag::not_simd_type, mode> //always equivalent to  tag::big_tag>
     {
-      using i_t = bd::as_integer_t<A0, signed>;
 
       static BOOST_FORCEINLINE auto cot_invalid(const A0& x) BOOST_NOEXCEPT
       -> decltype(is_nez(x)&&is_flint(x*Ratio<A0,1,180>()))
@@ -118,13 +114,13 @@ namespace boost { namespace simd
         return is_flint((x- Ratio<A0,90>())*Ratio<A0,1,180>());
       }
 
-      static BOOST_FORCEINLINE i_t reduce(const A0& x, A0& xr) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE A0 reduce(const A0& x, A0& xr) BOOST_NOEXCEPT
       {
         A0 xi = nearbyint(x*Ratio<A0,1,90>());
         A0 x2 = x - xi * Ratio<A0,90>();
 
         xr =  inrad(x2);
-        return toint(xi);
+        return twobits(xi);
       }
     };
 #endif
@@ -132,7 +128,6 @@ namespace boost { namespace simd
     template < class A0, class style, class mode>
     struct trig_reduction < A0, tag::pi_tag,  style, mode> //always equivalent to tag::big_tag>
     {
-      using i_t = bd::as_integer_t<A0, signed>;
 
       static BOOST_FORCEINLINE auto cot_invalid(const A0& x) BOOST_NOEXCEPT
       -> decltype(is_nez(x)&&is_flint(x))
@@ -145,12 +140,12 @@ namespace boost { namespace simd
         return is_flint(x-Half<A0>()) ;
       }
 
-      static BOOST_FORCEINLINE i_t reduce(const A0& x,  A0& xr) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE A0 reduce(const A0& x,  A0& xr) BOOST_NOEXCEPT
       {
         A0 xi = nearbyint(x*Two<A0>());
         A0 x2 = x - xi * Half<A0>();
         xr = x2*Pi<A0>();
-        return toint(xi);
+        return twobits(xi);
       }
     };
   }

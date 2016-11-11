@@ -54,14 +54,13 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_ < bd::double_<A0> >
                           )
   {
-    using iA0 =  bd::as_integer_t<A0>;
-    using result_t = std::pair<iA0,A0>;
+    using result_t = std::pair<A0,A0>;
     inline result_t operator()(A0 a0) const
     {
-      if (a0 ==  Inf<A0>()) return result_t(Zero<iA0>(), Nan<A0>());
+      if (a0 ==  Inf<A0>()) return result_t(Zero<A0>(), Nan<A0>());
       A0 y[2];
       std::int32_t n = __ieee754_rem_pio2(a0, y);
-      return result_t(iA0(n&3), y[0]);
+      return result_t(A0(n&3), y[0]);
     }
   private :
     /*
