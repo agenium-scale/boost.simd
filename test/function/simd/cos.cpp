@@ -48,7 +48,7 @@ STF_CASE_TPL("Check cos on pack" , STF_IEEE_TYPES)
   static const std::size_t N = bs::pack<T>::static_size;
 
   test<T, N>($);
-  test<T, N/2>($);
+//   test<T, N/2>($);
   test<T, N*2>($);
 }
 
