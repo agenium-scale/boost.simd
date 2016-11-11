@@ -7,12 +7,12 @@
 **/
 //==================================================================================================
 
-#ifndef BOOST_SIMD_FUNCTION_SIMD_TWOBITS_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_SIMD_TWOBITS_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_SIMD_QUADRANT_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_SIMD_QUADRANT_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/twobits.hpp>
+#include <boost/simd/function/scalar/quadrant.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/simd/function/twobits.hpp>
+#include <boost/simd/arch/common/simd/function/quadrant.hpp>
 
 
 #endif

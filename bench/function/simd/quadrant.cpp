@@ -7,15 +7,15 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/twobits.hpp>
+#include <boost/simd/function/simd/quadrant.hpp>
 #include <boost/simd/pack.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_twobits, bs::twobits);
+DEFINE_SIMD_BENCH(simd_quadrant, bs::quadrant);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_twobits, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<simd_quadrant, NS_BENCH_IEEE_TYPES>(-10, 10);
 }

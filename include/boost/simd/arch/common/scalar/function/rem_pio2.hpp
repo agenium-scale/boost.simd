@@ -20,6 +20,7 @@
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/floor.hpp>
 #include <boost/simd/function/ldexp.hpp>
+#include <boost/simd/function/quadrant.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
@@ -573,7 +574,7 @@ do {                                                                           \
       /* 25+53 bit pi is good enough for medium size */
       if (uix < 0x4dc90fdb) {  /* |x| ~< 2^28*(pi/2), medium size */
         double fn = nearbyint(double(x)*invpio2);
-        return {twobits(fn), x - fn*pio2_1 - fn*pio2_1t};
+        return {quadrant(fn), x - fn*pio2_1 - fn*pio2_1t};
       }
       auto z =  rem_pio2(double(x));
       return {float(z.first), float(z.second)};

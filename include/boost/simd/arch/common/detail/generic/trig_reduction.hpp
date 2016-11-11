@@ -30,7 +30,7 @@
 #include <boost/simd/function/is_flint.hpp>
 #include <boost/simd/function/all.hpp>
 #include <boost/simd/function/inrad.hpp>
-#include <boost/simd/function/twobits.hpp>
+#include <boost/simd/function/quadrant.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/pi.hpp>
 #include <boost/simd/constant/pio_2.hpp>
@@ -94,7 +94,7 @@ namespace boost { namespace simd
         A0 xi = nearbyint(x*Ratio<A0,1,90>());
         A0 x2 = x - xi * Ratio<A0,90>();
         xr =  inrad(x2);
-        return twobits(xi);
+        return quadrant(xi);
       }
     };
 
@@ -120,7 +120,7 @@ namespace boost { namespace simd
         A0 x2 = x - xi * Ratio<A0,90>();
 
         xr =  inrad(x2);
-        return twobits(xi);
+        return quadrant(xi);
       }
     };
 #endif
@@ -145,7 +145,7 @@ namespace boost { namespace simd
         A0 xi = nearbyint(x*Two<A0>());
         A0 x2 = x - xi * Half<A0>();
         xr = x2*Pi<A0>();
-        return twobits(xi);
+        return quadrant(xi);
       }
     };
   }

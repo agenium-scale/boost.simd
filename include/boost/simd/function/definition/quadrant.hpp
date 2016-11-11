@@ -8,8 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_DEFINITION_TWOBITS_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_DEFINITION_TWOBITS_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_DEFINITION_QUADRANT_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_DEFINITION_QUADRANT_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/detail/dispatch/function/make_callable.hpp>
@@ -20,15 +20,15 @@ namespace boost { namespace simd
 {
   namespace tag
   {
-    BOOST_DISPATCH_MAKE_TAG(ext, twobits_, boost::dispatch::elementwise_<twobits_>);
+    BOOST_DISPATCH_MAKE_TAG(ext, quadrant_, boost::dispatch::elementwise_<quadrant_>);
   }
 
   namespace ext
   {
-    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, twobits_);
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, quadrant_);
   }
 
-  BOOST_DISPATCH_CALLABLE_DEFINITION(tag::twobits_,twobits);
+  BOOST_DISPATCH_CALLABLE_DEFINITION(tag::quadrant_,quadrant);
 
 
 } }

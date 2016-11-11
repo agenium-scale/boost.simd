@@ -367,7 +367,7 @@ set ( SOURCES
    touint.saturated.cpp
    trunc.cpp
    two_add.cpp
-   twobits.cpp
+   quadrant.cpp
    twopower.cpp
    two_prod.cpp
    two_split.cpp

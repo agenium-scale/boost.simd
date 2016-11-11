@@ -8,8 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_TWOBITS_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_TWOBITS_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_QUADRANT_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_QUADRANT_HPP_INCLUDED
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/meta/hierarchy/simd.hpp>
@@ -25,7 +25,7 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
-  BOOST_DISPATCH_OVERLOAD_IF(twobits_
+  BOOST_DISPATCH_OVERLOAD_IF(quadrant_
                             , (typename A0, typename X)
                             , (detail::is_native<X>)
                             , bd::cpu_
@@ -38,7 +38,7 @@ namespace boost { namespace simd { namespace ext
       return (a-floor(a))*Four<A0>();
     }
   };
-  BOOST_DISPATCH_OVERLOAD_IF(twobits_
+  BOOST_DISPATCH_OVERLOAD_IF(quadrant_
                             , (typename A0, typename X)
                             , (detail::is_native<X>)
                             , bd::cpu_
@@ -48,10 +48,10 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
     {
 
-      return tofloat(twobits(toint(a0)));
+      return tofloat(quadrant(toint(a0)));
     }
   };
-  BOOST_DISPATCH_OVERLOAD_IF( twobits_
+  BOOST_DISPATCH_OVERLOAD_IF( quadrant_
                             , (typename A0, typename X)
                             , (detail::is_native<X>)
                             , bd::cpu_

@@ -15,7 +15,7 @@
 #include <boost/config.hpp>
 #include <boost/simd/function/fnms.hpp>
 #include <boost/simd/function/nearbyint.hpp>
-#include <boost/simd/function/twobits.hpp>
+#include <boost/simd/function/quadrant.hpp>
 #include <boost/simd/function/bitwise_and.hpp>
 #include <boost/simd/constant/three.hpp>
 #include <boost/simd/constant/twoopi.hpp>
@@ -45,7 +45,7 @@ namespace boost { namespace simd { namespace ext
       A0 xr  = fnms(xi, bs::Pio2_1<A0>(), x);
       xr -= xi*bs::Pio2_2<A0>();
       xr -= xi*bs::Pio2_3<A0>();
-      return {twobits(xi), xr};
+      return {quadrant(xi), xr};
     }
   };
 

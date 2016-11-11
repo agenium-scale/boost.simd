@@ -8,8 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_TWOBITS_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_TWOBITS_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_QUADRANT_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_QUADRANT_HPP_INCLUDED
 #include <boost/simd/function/std.hpp>
 
 #include <boost/simd/function/std.hpp>
@@ -21,7 +21,7 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
-  BOOST_DISPATCH_OVERLOAD ( twobits_
+  BOOST_DISPATCH_OVERLOAD ( quadrant_
                           , (typename A0)
                           , bd::cpu_
                           , bd::scalar_< bd::floating_<A0> >
@@ -30,10 +30,10 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       using i_t =  bd::as_integer_t<A0>;
-      return A0(twobits(i_t(a0)));
+      return A0(quadrant(i_t(a0)));
     }
   };
-  BOOST_DISPATCH_OVERLOAD ( twobits_
+  BOOST_DISPATCH_OVERLOAD ( quadrant_
                           , (typename A0)
                           , bd::cpu_
                           , bd::scalar_< bd::integer_<A0> >

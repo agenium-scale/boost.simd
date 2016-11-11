@@ -24,7 +24,7 @@
 #include <boost/simd/constant/pio2_3.hpp>
 #include <boost/simd/detail/constant/pio2_3t.hpp>
 #include <boost/simd/constant/twoopi.hpp>
-#include <boost/simd/function/twobits.hpp>
+#include <boost/simd/function/quadrant.hpp>
 #include <boost/simd/function/bitwise_and.hpp>
 #include <utility>
 
@@ -53,7 +53,7 @@ namespace boost { namespace simd { namespace ext
       w  = fn*Pio2_3<A0>();
       r  = t2-w;
       w  = fn*Pio2_3t<A0>()-((t2-r)-w);
-      return  {twobits(fn), r-w};
+      return  {quadrant(fn), r-w};
     }
   };
 

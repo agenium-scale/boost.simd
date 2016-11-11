@@ -342,7 +342,7 @@ set(SOURCES
     trunc.regular.cpp
     trunc.fast.cpp
     two_add.cpp
-    twobits.cpp
+    quadrant.cpp
     twopower.cpp
     two_prod.cpp
     two_split.cpp
