@@ -164,6 +164,8 @@ set(SOURCES
     inc.regular.cpp
     inc.saturated.cpp
     indeg.cpp
+    inearbyint.fast.cpp
+    inearbyint.regular.cpp
     inrad.cpp
     iround.cpp
     is_denormal.cpp
