@@ -13,6 +13,14 @@
 #include <boost/simd/function/max.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/nbmantissabits.hpp>
+#include <boost/simd/constant/signmask.hpp>
 
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
@@ -49,3 +57,65 @@ STF_CASE_TPL("Check ctz on pack" , STF_NUMERIC_TYPES)
   test<T, N/2>($);
   test<T, N*2>($);
 }
+
+STF_CASE_TPL (" ctz real",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::ctz;
+  using r_t = decltype(ctz(T()));
+  // return type conformity test
+  STF_EXPR_IS(ctz(T()), bd::as_integer_t<T>);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_EQUAL(ctz(bs::Inf<T>()), r_t(bs::Nbmantissabits<T>()));
+  STF_EQUAL(ctz(bs::Minf<T>()), r_t(bs::Nbmantissabits<T>()));
+#endif
+  STF_EQUAL(ctz(bs::Zero<T>()), r_t(sizeof(T)*8));
+  STF_EQUAL(ctz(bs::Signmask<T>()), r_t(sizeof(T)*8-1));
+} // end of test for real_
+
+STF_CASE_TPL (" ctz signed_int",  STF_SIGNED_INTEGRAL_TYPES)
+{
+  namespace bs = boost::simd;
+  using bs::ctz;
+  using bs::Nbmantissabits;
+  using bs::Signmask;
+  using p_t = bs::pack<T>;
+
+
+  using r_t = decltype(ctz(p_t()));
+
+  for(std::size_t j=0; j< (sizeof(T)*CHAR_BIT-1); j++)
+  {
+  namespace bs = boost::simd;
+    // Test 01111 ... 10000b
+    T value = ~T(0) & ~((T(1)<<j)-1);
+    STF_EQUAL(ctz( p_t(value) ), r_t(j));
+    STF_EQUAL(ctz( p_t(-value) ), r_t(j));
+  }
+
+  STF_EQUAL(ctz(Signmask<p_t>()) , r_t(sizeof(T)*CHAR_BIT-1) );
+}
+
+STF_CASE_TPL(" ctz unsigned_integer", STF_UNSIGNED_INTEGRAL_TYPES )
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::ctz;
+  using p_t = bs::pack<T>;
+
+  using r_t = decltype(ctz(p_t()));
+
+  // return type conformity test
+  STF_EXPR_IS(ctz(p_t()), bd::as_integer_t<p_t>);
+
+  // specific values tests
+  for(std::size_t j=0; j< sizeof(T)*CHAR_BIT; j++)
+  {
+    // Test 1111 ... 10000b
+    T value = ~T(0) & ~((T(1)<<j)-1);
+    STF_EQUAL(ctz( p_t(value) ), r_t(j));
+  }
+ }

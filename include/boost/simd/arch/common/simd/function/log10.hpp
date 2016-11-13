@@ -15,6 +15,7 @@
 #include <boost/simd/function/simd/is_not_nan.hpp>
 #include <boost/simd/function/simd/is_positive.hpp>
 #include <boost/simd/function/simd/is_lez.hpp>
+#include <boost/simd/function/simd/is_ngez.hpp>
 #include <boost/simd/function/simd/any.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
@@ -121,7 +122,7 @@ namespace boost { namespace simd { namespace ext
 #else
       A0 zz = if_else(isnez, r, Minf<A0>());
 #endif
-      return if_nan_else(is_ltz(a0), zz);
+      return if_nan_else(is_ngez(a0), zz);
     }
   };
 
@@ -210,7 +211,7 @@ namespace boost { namespace simd { namespace ext
 #else
       A0 zz = if_else(isnez, r, Minf<A0>());
 #endif
-      return if_nan_else(is_ltz(a0), zz);
+      return if_nan_else(is_ngez(a0), zz);
     }
   };
 
@@ -286,7 +287,7 @@ namespace boost { namespace simd { namespace ext
 #else
       A0 zz = if_else(isnez, r, Minf<A0>());
 #endif
-      return if_nan_else(is_ltz(a0), zz);
+      return if_nan_else(is_ngez(a0), zz);
     }
   };
 
@@ -375,7 +376,7 @@ namespace boost { namespace simd { namespace ext
 #else
       A0 zz = if_else(isnez, r, Minf<A0>());
 #endif
-      return if_nan_else(is_ltz(a0), zz);
+      return if_nan_else(is_ngez(a0), zz);
     }
   };
 

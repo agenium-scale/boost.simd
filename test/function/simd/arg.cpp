@@ -13,6 +13,12 @@
 #include <boost/simd/function/bits.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/zero.hpp>
 
 
 template <typename T, std::size_t N, typename Env>
@@ -41,3 +47,26 @@ STF_CASE_TPL("Check arg on pack" , STF_IEEE_TYPES)
   test<T, N/2>($);
   test<T, N*2>($);
 }
+
+STF_CASE_TPL (" arg real",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  using bs::arg;
+ using p_t = bs::pack<T>;
+ using r_t = decltype(arg(p_t()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, p_t);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_EQUAL(arg(bs::Inf<p_t>()), bs::Zero<r_t>());
+  STF_EQUAL(arg(bs::Minf<p_t>()), bs::Pi<r_t>());
+  STF_IEEE_EQUAL(arg(bs::Nan<p_t>()), bs::Nan<r_t>());
+#endif
+  STF_EQUAL(arg(bs::Mone<p_t>()), bs::Pi<r_t>());
+  STF_EQUAL(arg(bs::One<p_t>()), bs::Zero<r_t>());
+  STF_EQUAL(arg(bs::Zero<p_t>()), bs::Zero<r_t>());
+} // end of test for floating_
+
+

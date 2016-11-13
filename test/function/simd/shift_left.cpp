@@ -10,6 +10,13 @@
 #include <boost/simd/logical.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/two.hpp>
 
 namespace bs = boost::simd;
 namespace bd = boost::dispatch;
@@ -83,3 +90,38 @@ STF_CASE_TPL("Check shift_left on pack with pack shift" , STF_INTEGRAL_TYPES)
   tests<T, N/2>($);
   tests<T, N*2>($);
 }
+
+STF_CASE_TPL (" shift_left_integer",  STF_INTEGRAL_TYPES)
+{
+  namespace bs = boost::simd;
+  using bs::shift_left;
+  using p_t = bs::pack<T>;
+  using ip_t =  boost::dispatch::as_integer_t<p_t>;
+  using r_t = decltype(shift_left(p_t(),ip_t()));
+  typedef p_t wished_r_t;
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, wished_r_t);
+
+  // specific values tests
+  STF_EQUAL(shift_left(bs::One<p_t>(),bs::One<ip_t>()), bs::Two<r_t>());
+  STF_EQUAL(shift_left(bs::One<p_t>(),bs::Zero<ip_t>()), bs::One<r_t>());
+  STF_EQUAL(shift_left(bs::Zero<p_t>(),bs::One<ip_t>()), bs::Zero<r_t>());
+} // end of test for integer_
+
+STF_CASE_TPL (" shift_left_real",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  using bs::shift_left;
+  using p_t = bs::pack<T>;
+  using ip_t =  boost::dispatch::as_integer_t<p_t>;
+  using r_t = decltype(shift_left(p_t(),ip_t()));
+  typedef p_t wished_r_t;
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, wished_r_t);
+
+  // specific values tests
+  STF_EQUAL(shift_left(bs::One<p_t>(),bs::Zero<ip_t>()), bs::One<r_t>());
+  STF_EQUAL(shift_left(bs::Zero<p_t>(),bs::One<ip_t>()), bs::Zero<r_t>());
+} // end of test for floating_

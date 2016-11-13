@@ -22,6 +22,7 @@
 #include <boost/simd/function/is_eqz.hpp>
 #include <boost/simd/function/is_gtz.hpp>
 #include <boost/simd/function/is_ltz.hpp>
+#include <boost/simd/function/is_positive.hpp>
 #include <boost/simd/function/minus.hpp>
 #include <boost/simd/function/negatenz.hpp>
 #include <boost/simd/function/rec.hpp>
@@ -55,17 +56,18 @@ namespace boost { namespace simd { namespace ext
       {
         A0 a00 = a0, a10 = a1;
   #ifndef BOOST_SIMD_NO_INFINITIES
-        auto test =  bs::logical_and(bs::is_inf(a0),  bs::is_inf(a1));
-        a00 =  bs::if_else(test, bs::copysign(One<A0>(), a0), a0);
-        a10 =  bs::if_else(test, bs::copysign(One<A0>(), a1), a1);
+        auto test1 =  bs::logical_and(bs::is_inf(a0),  bs::is_inf(a1));
+        a00 =  bs::if_else(test1, bs::copysign(One<A0>(), a00), a00);
+        a10 =  bs::if_else(test1, bs::copysign(One<A0>(), a10), a10);
   #endif
         A0 q = bs::abs(a00/a10);
         A0 z = detail::invtrig_base<A0,tag::radian_tag, tag::simd_type>::kernel_atan(q, rec(q));
         //A0 z = atan(abs(a0/a1));  // case a1 > 0,  a0 > 0
-        z = bs::negatenz(bs::if_else(bs::is_gtz(a10), z, bs::Pi<A0>()-z), a00);
-        z =  bs::if_else( bs::is_eqz(a00),
-                           bs::if_else_zero( bs::is_ltz(a10),  bs::Pi<A0>()),
-                           z);
+        A0 sgn = signnz(a0);
+        z = bs::if_else(bs::is_positive(a10), z, bs::Pi<A0>()-z)*sgn;
+        z = bs::if_else( bs::is_eqz(a00),
+                         bs::if_else_zero( bs::is_negative(a10),  bs::Pi<A0>()*sgn),
+                         z);
   #ifdef BOOST_SIMD_NO_NANS
         return z;
   #else

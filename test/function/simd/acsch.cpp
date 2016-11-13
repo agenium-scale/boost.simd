@@ -10,6 +10,13 @@
 #include <boost/simd/function/saturated.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/mzero.hpp>
 
 
 namespace bs = boost::simd;
@@ -38,4 +45,27 @@ STF_CASE_TPL("Check acsch pack" , STF_IEEE_TYPES)
   test<T, N>($);
   test<T, N/2>($);
   test<T, N*2>($);
+}
+
+STF_CASE_TPL (" acsch",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using p_t = bs::pack<T>;
+  using bs::acsch;
+  using r_t = decltype(acsch(p_t()));
+
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, p_t);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_ULP_EQUAL(acsch(bs::Inf<p_t>()), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(acsch(bs::Minf<p_t>()), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(acsch(bs::Nan<p_t>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(acsch(-bs::Zero<p_t>()), bs::Minf<r_t>(), 0);
+  STF_ULP_EQUAL(acsch(bs::Zero<p_t>()), bs::Inf<r_t>(), 0);
+#endif
+  STF_ULP_EQUAL(acsch(bs::One<p_t>()), r_t(0.88137358701954302523260932498), 0.5);
 }

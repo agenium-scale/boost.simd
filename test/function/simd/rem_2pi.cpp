@@ -13,6 +13,18 @@
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <simd_test.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/mzero.hpp>
+#include <boost/simd/constant/eps.hpp>
+#include <boost/simd/constant/pi.hpp>
+#include <boost/simd/constant/pio_2.hpp>
+#include <boost/simd/constant/twopi.hpp>
+#include <boost/simd/constant/ten.hpp>
 
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
@@ -42,3 +54,25 @@ STF_CASE_TPL("Check rem_2pi on pack" , STF_IEEE_TYPES)
   test<T, N/2>($);
   test<T, N*2>($);
 }
+
+
+STF_CASE_TPL (" rem_2pi",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::rem_2pi;
+  using p_t = bs::pack<T>;
+
+  {
+    p_t res = rem_2pi(bs::Zero<p_t>());
+    STF_ULP_EQUAL( res, bs::Zero<p_t>(), 1.5);
+    res = rem_2pi(bs::Pi<p_t>()-bs::Ten<p_t>()*bs::Eps<p_t>());
+    STF_ULP_EQUAL( res, bs::Pi<p_t>()-bs::Ten<p_t>()*bs::Eps<p_t>(), 1.5);
+    res = rem_2pi(bs::Pi<p_t>()+bs::Ten<p_t>()*bs::Eps<p_t>());
+    STF_ULP_EQUAL( res, bs::Ten<p_t>()*bs::Eps<p_t>()-bs::Pi<p_t>(), 1.5);
+    res = rem_2pi(bs::Twopi<p_t>());
+    STF_ULP_EQUAL( res, bs::Zero<p_t>(), 1.5);
+    res = rem_2pi(bs::Pio_2<p_t>());
+    STF_ULP_EQUAL( res, bs::Pio_2<p_t>(), 1.5);
+  }
+} // end of test for floating_

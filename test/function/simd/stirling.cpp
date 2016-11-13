@@ -10,6 +10,13 @@
 #include <boost/simd/function/stirling.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/two.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/function/round.hpp>
 
 
 namespace bs = boost::simd;
@@ -38,4 +45,24 @@ STF_CASE_TPL("Check stirling on pack" , STF_IEEE_TYPES)
   test<T, N>($);
   test<T, N/2>($);
   test<T, N*2>($);
+}
+
+STF_CASE_TPL(" stirling",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using p_t = bs::pack<T>;
+
+  using bs::stirling;
+
+  STF_EXPR_IS(stirling(p_t()),p_t);
+
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_ULP_EQUAL(stirling(bs::Inf<p_t>()),  bs::Inf<p_t>(), 0.5);
+  STF_ULP_EQUAL(stirling(bs::Minf<p_t>()), bs::Nan<p_t>(), 0.5);
+  STF_ULP_EQUAL(stirling(bs::Mone<p_t>()), bs::Nan<p_t>(), 0.5);
+  STF_ULP_EQUAL(stirling(bs::Nan<p_t>()),  bs::Nan<p_t>(), 0.5);
+#endif
+  STF_ULP_EQUAL(bs::round(stirling(bs::One<p_t>())),  bs::One<p_t>(), 0.5);
+  STF_ULP_EQUAL(bs::round(stirling(bs::Two<p_t>())),  bs::One<p_t>(), 0.5);
 }

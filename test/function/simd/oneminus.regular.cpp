@@ -10,7 +10,15 @@
 #include <boost/simd/function/saturated.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
-
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/two.hpp>
+#include <boost/simd/constant/valmax.hpp>
+#include <boost/simd/constant/valmin.hpp>
 
 namespace bs = boost::simd;
 
@@ -67,3 +75,62 @@ STF_CASE_TPL("Check oneminus on pack" , STF_NUMERIC_TYPES)
   tests<T, N/2>($);
   tests<T, N*2>($);
 }
+
+
+
+STF_CASE_TPL (" oneminus signed_int",  STF_SIGNED_INTEGRAL_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::oneminus;
+  using p_t = bs::pack<T>;
+  using r_t = decltype(oneminus(p_t()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, p_t);
+
+  // specific values tests
+  STF_EQUAL(oneminus(bs::Mone<p_t>()), bs::Two<p_t>());
+  STF_EQUAL(oneminus(bs::One<p_t>()), bs::Zero<p_t>());
+  STF_EQUAL(oneminus(bs::Valmax<p_t>()), bs::Valmin<p_t>()+bs::Two<p_t>());
+  STF_EQUAL(oneminus(bs::Zero<p_t>()), bs::One<p_t>());
+}
+
+STF_CASE_TPL (" oneminus unsigned_uint",  STF_UNSIGNED_INTEGRAL_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::oneminus;
+  using p_t = bs::pack<T>;
+  using r_t = decltype(oneminus(p_t()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, p_t);
+
+  // specific values tests
+  STF_EQUAL(oneminus(bs::One<p_t>()), bs::Zero<p_t>());
+  STF_EQUAL(oneminus(bs::Two<p_t>()), bs::Valmax<p_t>());
+  STF_EQUAL(oneminus(bs::Zero<p_t>()), bs::One<p_t>());
+}
+
+STF_CASE_TPL(" oneminus floating", STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::oneminus;
+  using p_t = bs::pack<T>;
+  using r_t = decltype(oneminus(p_t()));
+
+  STF_TYPE_IS(r_t, p_t);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_EQUAL(oneminus(bs::Inf<p_t>()), bs::Minf<p_t>());
+  STF_IEEE_EQUAL(oneminus(bs::Nan<p_t>()), bs::Nan<p_t>());
+  STF_EQUAL(oneminus(bs::Minf<p_t>()), bs::Inf<p_t>());
+#endif
+  STF_EQUAL(oneminus(bs::One<p_t>()), bs::Zero<p_t>());
+  STF_EQUAL(oneminus(bs::Two<p_t>()), bs::Mone<p_t>());
+  STF_EQUAL(oneminus(bs::Zero<p_t>()), bs::One<p_t>());
+}
+

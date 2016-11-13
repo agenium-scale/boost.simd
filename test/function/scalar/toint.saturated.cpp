@@ -46,8 +46,6 @@ STF_CASE_TPL (" bs::saturated_(bs::toint) real",  STF_IEEE_TYPES)
   int N = sizeof(T)*8-1;
   for(int i=0; i < N ; i++, v*= 2, iv <<= 1)
   {
-  namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
     STF_EQUAL(bs::saturated_(bs::toint)(v), iv);
     STF_EQUAL(bs::saturated_(bs::toint)(-v), -iv);
   }

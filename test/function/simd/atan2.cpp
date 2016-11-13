@@ -10,6 +10,22 @@
 #include <boost/simd/pack.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/mzero.hpp>
+#include <boost/simd/constant/pi.hpp>
+#include <boost/simd/constant/half.hpp>
+#include <boost/simd/constant/pio_4.hpp>
+#include <boost/simd/constant/pio_2.hpp>
+#include <boost/simd/constant/threepio_4.hpp>
+#include <boost/simd/constant/mhalf.hpp>
+#include <boost/simd/function/is_negative.hpp>
+#include <boost/simd/function/is_positive.hpp>
+#include <boost/simd/function/all.hpp>
 
 namespace bs = boost::simd;
 
@@ -45,3 +61,58 @@ STF_CASE_TPL("Check atan2 on pack" , STF_IEEE_TYPES)
   test<T, N/2>($);
   test<T, N*2>($);
 }
+
+
+STF_CASE_TPL (" atan2",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::atan2;
+  using p_t = bs::pack<T>;
+
+
+  using r_t = decltype(atan2(p_t(), p_t()));
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_ULP_EQUAL(atan2(bs::Inf<p_t>(),bs::One<p_t>()), bs::Pio_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::Inf<p_t>(),bs::Mone<p_t>()), bs::Pio_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::Minf<p_t>(),bs::One<p_t>()), -bs::Pio_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::Minf<p_t>(),bs::Mone<p_t>()), -bs::Pio_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::One<p_t>(), bs::Minf<p_t>()), bs::Pi<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::Mone<p_t>(), bs::Minf<p_t>()), -bs::Pi<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::One<p_t>(), bs::Inf<p_t>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::Mone<p_t>(), bs::Inf<p_t>()), -bs::Zero<r_t>(), 0.5);
+  STF_EQUAL(bs::is_negative(atan2(bs::Mone<p_t>(), bs::Inf<p_t>())), bs::True<p_t>());
+  STF_EQUAL(bs::is_positive(atan2(bs::One<p_t>(), bs::Inf<p_t>())), bs::True<p_t>());
+  STF_ULP_EQUAL(atan2(bs::Minf<p_t>(),bs::Minf<p_t>()), -p_t(3)*bs::Pio_4<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::Inf<p_t>(),bs::Minf<p_t>()), p_t(3)*bs::Pio_4<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::Minf<p_t>(),bs::Inf<p_t>()), -bs::Pio_4<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::Inf<p_t>(),bs::Inf<p_t>()), bs::Pio_4<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::Inf<p_t>(), bs::Inf<p_t>()), bs::Pio_4<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::Inf<p_t>(),bs::One<p_t>()), bs::Pio_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::Minf<p_t>(), bs::Minf<p_t>()), -bs::Threepio_4<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::Minf<p_t>(),bs::One<p_t>()), -bs::Pio_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::Nan<p_t>(), bs::Nan<p_t>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::Nan<p_t>(), bs::Zero<p_t>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::Zero<p_t>(), bs::Nan<p_t>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::One<p_t>(),bs::Inf<p_t>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::One<p_t>(),bs::Minf<p_t>()), bs::Pi<r_t>(), 0.5);
+#endif
+  STF_ULP_EQUAL(atan2(bs::Half<p_t>(), bs::Half<p_t>()), bs::Pio_4<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::Mhalf<p_t>(), bs::Mhalf<p_t>()), -bs::Threepio_4<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::Mone<p_t>(), bs::Mone<p_t>()), -bs::Threepio_4<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::One<p_t>(), bs::One<p_t>()), bs::Pio_4<r_t>(), 0.5);
+ STF_ULP_EQUAL(atan2(bs::Zero<p_t>(), bs::Zero<p_t>()), bs::Zero<r_t>(), 0.5);
+ STF_ULP_EQUAL(atan2(bs::Mzero<p_t>(), bs::Zero<p_t>()), bs::Mzero<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::Mzero<p_t>(), bs::Mzero<p_t>()), -bs::Pi<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::Mzero<p_t>(), bs::Mone<p_t>()), -bs::Pi<r_t>(), 0.5);
+ STF_ULP_EQUAL(atan2(bs::Zero<p_t>(), bs::Mzero<p_t>()), bs::Pi<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::Zero<p_t>(), bs::Mone<p_t>()), bs::Pi<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::Mone<p_t>(), bs::Mzero<p_t>()), -bs::Pio_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::Mone<p_t>(), bs::Zero<p_t>()), -bs::Pio_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::One<p_t>(), bs::Mzero<p_t>()), bs::Pio_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2(bs::One<p_t>(), bs::Zero<p_t>()), bs::Pio_2<r_t>(), 0.5);
+
+}
+

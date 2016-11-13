@@ -11,6 +11,12 @@
 #include <boost/simd/function/saturated.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
+#include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/saturated.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/zero.hpp>
 
 namespace bs = boost::simd;
 
@@ -76,7 +82,7 @@ void tests(Env& $)
   STF_ULP_EQUAL(bs::saturated_(bs::divides)(aa1, aa2), bb, 0.5);
 }
 
-STF_CASE_TPL("Check saturaetd divides on pack", STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check saturated divides on pack", STF_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
@@ -85,3 +91,24 @@ STF_CASE_TPL("Check saturaetd divides on pack", STF_NUMERIC_TYPES)
   tests<T, N/2>($);
   tests<T, N*2>($);
 }
+
+
+STF_CASE_TPL( "Check divides behavior with floating", STF_IEEE_TYPES )
+{
+  namespace bs = boost::simd;
+  using bs::divides;
+  using p_t = bs::pack<T>;
+  using r_t = decltype(divides(p_t(), p_t()));
+
+  STF_TYPE_IS(r_t, p_t);
+
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_IEEE_EQUAL(divides(bs::Inf<p_t>(),  bs::Inf<p_t>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(divides(bs::Minf<p_t>(), bs::Minf<p_t>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(divides(bs::Nan<p_t>(),  bs::Nan<p_t>()), bs::Nan<r_t>());
+#endif
+  STF_EQUAL(divides(p_t(1), p_t(0)), bs::Inf<r_t>());
+  STF_IEEE_EQUAL(divides(p_t(0), p_t(0)), bs::Nan<r_t>());
+  STF_EQUAL(divides(p_t(1), p_t(1)), bs::One<r_t>());
+}
+

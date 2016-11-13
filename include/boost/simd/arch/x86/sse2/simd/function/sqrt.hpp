@@ -96,7 +96,6 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( const A0 & a0) const BOOST_NOEXCEPT
     {
-      auto na  = is_nez(a0);
       A0 n   = plus(shift_right(a0, 4), Four<A0>());
       A0 n1  = shift_right(n+a0/n, 1);
 
@@ -107,7 +106,7 @@ namespace boost { namespace simd { namespace ext
       ok = is_less(n1, n);
       n  = if_else(ok, n1, n);
       n  = if_plus( is_greater(n*n,a0), n, Mone<A0>());
-      return n+if_one_else_zero(na);
+      return n;
     }
   };
 

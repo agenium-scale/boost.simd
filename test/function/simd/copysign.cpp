@@ -12,6 +12,15 @@
 #include <boost/simd/function/copysign.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/mzero.hpp>
+
 
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
@@ -40,4 +49,51 @@ STF_CASE_TPL("Check copysign on pack" , STF_IEEE_TYPES)
   test<T, N>($);
   test<T, N/2>($);
   test<T, N*2>($);
+}
+
+
+STF_CASE_TPL (" copysign real",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  using bs::copysign;
+  using p_t = bs::pack<T>;
+  using r_t = decltype(copysign(p_t(), p_t()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, p_t);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_EQUAL(copysign(bs::Inf<p_t>(), bs::Inf<p_t>()), bs::Inf<r_t>());
+  STF_EQUAL(copysign(bs::Minf<p_t>(), bs::Minf<p_t>()), bs::Minf<r_t>());
+  STF_IEEE_EQUAL(copysign(bs::Nan<p_t>(), bs::Nan<p_t>()), bs::Nan<r_t>());
+  STF_EQUAL(copysign(bs::Inf<p_t>(), bs::Minf<p_t>()), bs::Minf<r_t>());
+  STF_EQUAL(copysign(bs::Minf<p_t>(), bs::Inf<p_t>()), bs::Inf<r_t>());
+  STF_IEEE_EQUAL(copysign(bs::Nan<p_t>(), bs::Inf<p_t>()), bs::Nan<r_t>());
+  STF_EQUAL(copysign(bs::One<p_t>(), bs::Nan<p_t>()), bs::Mone<r_t>());
+#endif
+  STF_EQUAL(copysign(bs::Mone<p_t>(), bs::Mone<p_t>()), bs::Mone<r_t>());
+  STF_EQUAL(copysign(bs::One<p_t>(), bs::One<p_t>()), bs::One<r_t>());
+  STF_EQUAL(copysign(bs::One<p_t>(), bs::Mzero<p_t>()), bs::Mone<r_t>());
+  STF_EQUAL(copysign(bs::One<p_t>(), bs::Zero<p_t>()), bs::One<r_t>());
+  STF_EQUAL(copysign(bs::Zero<p_t>(), bs::Zero<p_t>()), bs::Zero<r_t>());
+}
+
+STF_CASE_TPL (" copysign signed_int",  STF_SIGNED_INTEGRAL_TYPES)
+{
+  namespace bs = boost::simd;
+  using bs::copysign;
+  using p_t = bs::pack<T>;
+  using r_t = decltype(copysign(p_t(), p_t()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, p_t);
+
+  // specific values tests
+  STF_EQUAL(copysign(bs::Mone<p_t>(), bs::Mone<p_t>()), bs::Mone<r_t>());
+  STF_EQUAL(copysign(bs::One<p_t>(), bs::One<p_t>()), bs::One<r_t>());
+  STF_EQUAL(copysign(bs::Zero<p_t>(), bs::Zero<p_t>()), bs::Zero<r_t>());
+  STF_EQUAL(copysign(bs::Mone<p_t>(), bs::One<p_t>()), bs::One<r_t>());
+  STF_EQUAL(copysign(bs::One<p_t>(), bs::Mone<p_t>()), bs::Mone<r_t>());
+  STF_EQUAL(copysign(bs::Mone<p_t>(), bs::Zero<p_t>()), bs::One<r_t>());
 }

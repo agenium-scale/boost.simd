@@ -29,6 +29,9 @@ STF_CASE_TPL (" toint real",  STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, (bd::as_integer_t<T, signed>));
 
   // specific values tests
+  STF_EQUAL(toint(T(0.4)), r_t(0));
+  STF_EQUAL(toint(T(0.5)), r_t(0));
+  STF_EQUAL(toint(T(0.6)), r_t(0));
   STF_EQUAL(toint(bs::Mone<T>()), bs::Mone<r_t>());
   STF_EQUAL(toint(bs::One<T>()),  bs::One<r_t>());
   STF_EQUAL(toint(bs::Zero<T>()), bs::Zero<r_t>());
