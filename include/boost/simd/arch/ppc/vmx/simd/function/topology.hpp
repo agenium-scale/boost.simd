@@ -41,11 +41,9 @@ namespace boost { namespace simd { namespace detail
       using ranges_t  = brigand::range<int,0,16>;
       using pattern_t = brigand::integral_list<int,Ps...>;
 
-      return  bitwise_cast<T>
-              ( vec_perm( a0.storage(), a0.storage()
-                        , detail::mask_all<16/T::static_size>(ranges_t{}, pattern_t{}).storage()
-                        )
-              );
+      return  vec_perm( a0.storage(), a0.storage()
+                      , detail::mask_all<16/T::static_size>(ranges_t{}, pattern_t{}).storage()
+                      );
     }
 
     // Masked unary shuffling - optimized by perming with 0 with minimal register usage
@@ -55,11 +53,9 @@ namespace boost { namespace simd { namespace detail
       using ranges_t  = brigand::range<int,0,16>;
       using pattern_t = brigand::integral_list<int,Ps...>;
 
-      return  bitwise_cast<T>
-              ( vec_perm( a0.storage(), vec_xor(a0.storage(),a0.storage())
-                        , detail::mask_all<16,16/T::static_size>(ranges_t{}, pattern_t{}).storage()
-                        )
-              );
+      return  vec_perm( a0.storage(), vec_xor(a0.storage(),a0.storage())
+                      , detail::mask_all<16,16/T::static_size>(ranges_t{}, pattern_t{}).storage()
+                      );
     }
 
     // Binary permutation handler
@@ -85,11 +81,9 @@ namespace boost { namespace simd { namespace detail
       using ranges_t  = brigand::range<int,0,16>;
       using pattern_t = brigand::integral_list<int,Ps...>;
 
-      return  bitwise_cast<T>
-              ( vec_perm( a0.storage(), a1.storage()
-                        , detail::mask_all<16/T::static_size>(ranges_t{}, pattern_t{}).storage()
-                        )
-              );
+      return  vec_perm( a0.storage(), a1.storage()
+                      , detail::mask_all<16/T::static_size>(ranges_t{}, pattern_t{}).storage()
+                      );
     }
   };
 } } }
