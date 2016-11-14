@@ -80,6 +80,24 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
+
+  BOOST_DISPATCH_OVERLOAD_IF( rec_
+                            , (typename A0, typename X)
+                            , (detail::is_native<X>)
+                            , bd::cpu_
+                            , bs::fast_tag
+                            , bs::pack_<bd::double_<A0>, X>
+                            )
+  {
+    BOOST_FORCEINLINE A0 operator()(bs::fast_tag const&, A0 const& a0) const BOOST_NOEXCEPT
+    {
+      return refine_rec(a0, refine_rec(a0, refine_rec(a0, raw_(rec)(a0) )));
+    }
+  };
+
+
+
+
   BOOST_DISPATCH_OVERLOAD_IF ( rec_
                              , (typename T, typename X)
                              , (detail::is_native<X>)
