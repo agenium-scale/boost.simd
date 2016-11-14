@@ -110,6 +110,7 @@ set(SOURCES
     exp2.cpp
     exp.cpp
     expm1.cpp
+    expocvt.cpp
     exprecnegc.cpp
     exprecneg.cpp
     expx2.cpp

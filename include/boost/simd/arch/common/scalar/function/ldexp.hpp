@@ -24,7 +24,9 @@
 #include <boost/simd/constant/nbmantissabits.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
+#include <boost/simd/function/is_flint.hpp>
 #include <boost/simd/function/shift_left.hpp>
+#include <boost/simd/function/toint.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>
@@ -132,7 +134,21 @@ namespace boost { namespace simd { namespace ext
       return bs::ldexp(a0, a1);
     }
   };
-
+  BOOST_DISPATCH_OVERLOAD ( ldexp_
+                          , (typename A0, typename A1)
+                          , bd::cpu_
+                          , boost::simd::std_tag
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A1> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() (const std_tag &
+                                    ,  A0 a0, A1 a1 ) const BOOST_NOEXCEPT
+    {
+      BOOST_ASSERT_MSG(is_flint(a1), "parameter is not a flint");
+      return std::ldexp(a0, toint(a1));
+    }
+  };
 } } }
 
 

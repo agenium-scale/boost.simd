@@ -118,6 +118,7 @@ set ( SOURCES
    exp.regular.cpp
    expm1.regular.cpp
    expm1.std.cpp
+   expocvt.cpp
    exponent.cpp
    exponentbits.cpp
    exprecnegc.cpp

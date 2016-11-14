@@ -21,13 +21,13 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/is_equal.hpp>
-#include <boost/simd/function/multiplies.hpp>
-#include <boost/simd/function/multiplies.hpp>
-#include <boost/simd/function/plus.hpp>
 #include <boost/simd/function/rshl.hpp>
+#include <boost/simd/function/expocvt.hpp>
 #include <boost/simd/function/if_plus.hpp>
 #include <boost/simd/function/if_minus.hpp>
+#include <boost/simd/function/is_flint.hpp>
 #include <boost/simd/function/shift_left.hpp>
+#include <boost/simd/function/toint.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/function/fast.hpp>
 
@@ -164,6 +164,105 @@ namespace boost { namespace simd { namespace ext
       siA0 ik =  a1+Maxexponent<sA0>();
       ik = shift_left(ik, Nbmantissabits<sA0>());
       return a0*A0(bitwise_cast<sA0>(ik));
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( ldexp_
+                          , (typename A0, typename X)
+                          , bd::cpu_
+                          , bs::pack_<bd::floating_<A0>, X>
+                          , bs::pack_<bd::floating_<A0>, X>
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+    {
+      return ldexp(a0, toint(a1));
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( ldexp_
+                          , (typename A0, typename X)
+                          , bd::cpu_
+                          , boost::simd::fast_tag
+                          , bs::pack_<bd::single_<A0>, X>
+                          , bs::pack_<bd::single_<A0>, X>
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( const fast_tag &
+                                    , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+    {
+      return fast_(ldexp)(a0, toint(a1));
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( ldexp_
+                          , (typename A0, typename X)
+                          , bd::cpu_
+                          , boost::simd::fast_tag
+                          , bs::pack_<bd::double_<A0>, X>
+                          , bs::pack_<bd::double_<A0>, X>
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( const fast_tag &
+                                    , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+    {
+      return a0*expocvt(a1);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( ldexp_
+                          , (typename A0, typename X)
+                          , bd::cpu_
+                          , bs::pack_<bd::single_<A0>, X>
+                          , bd::scalar_<bd::single_<A0>>
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+    {
+      return ldexp(a0, toint(a1));
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( ldexp_
+                          , (typename A0, typename X)
+                          , bd::cpu_
+                          , bs::pack_<bd::double_<A0>, X>
+                          , bd::scalar_<bd::double_<A0>>
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+    {
+      return a0*expocvt(a1);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( ldexp_
+                          , (typename A0, typename X)
+                          , bd::cpu_
+                          , boost::simd::fast_tag
+                          , bs::pack_<bd::single_<A0>, X>
+                          , bd::scalar_<bd::single_<A0>>
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( const fast_tag &
+                                    , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+    {
+      return fast_(ldexp)(a0, toint(a1));
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( ldexp_
+                          , (typename A0, typename X)
+                          , bd::cpu_
+                          , boost::simd::fast_tag
+                          , bs::pack_<bd::double_<A0>, X>
+                          , bd::scalar_<bd::double_<A0>>
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( const fast_tag &
+                                    , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+    {
+      return a0*expocvt(a1);
     }
   };
 

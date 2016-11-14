@@ -11,6 +11,8 @@
 #include <boost/simd/function/ldexp.hpp>
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/is_even.hpp>
+#include <boost/simd/function/shift_left.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
@@ -28,6 +30,7 @@
 #include <boost/simd/detail/constant/minexponent.hpp>
 #include <boost/simd/constant/smallestposval.hpp>
 #include <boost/simd/function/scalar/dec.hpp>
+#include <string>
 
 namespace bs = boost::simd;
 namespace bd = boost::dispatch;
@@ -147,3 +150,28 @@ STF_CASE_TPL("ldexp", STF_INTEGRAL_TYPES)
   STF_EQUAL(ldexp(bs::Mone<p_t>(), 2), r_t(-4));
 }
 
+
+STF_CASE_TPL("ldexp float exponent", STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::ldexp;
+  using p_t = bs::pack<T>;
+
+  using r_t = decltype(bs::fast_(ldexp)(p_t(), p_t()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, p_t);
+
+
+  STF_EQUAL(bs::fast_(ldexp)(bs::Mone<p_t>(), p_t(2)), -bs::Four<r_t>());
+  STF_EQUAL(bs::fast_(ldexp)(bs::One<p_t>(),  p_t(2)), bs::Four<r_t>());
+  STF_EQUAL(bs::fast_(ldexp)(bs::Zero<p_t>(), p_t(2)), bs::Zero<r_t>());
+
+  for(int i=bs::Minexponent<T>(); i < bs::Minexponent<T>(); ++i)
+  {
+    STF_EQUAL(bs::fast_(ldexp)(p_t(1.5), p_t(i)), r_t(std::ldexp(T(1.5), i)));
+    STF_EQUAL(bs::fast_(ldexp)(p_t(-1.5), p_t(i)),r_t(std::ldexp(T(-1.5), i)));
+  }
+
+}
