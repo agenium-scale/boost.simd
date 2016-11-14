@@ -39,7 +39,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator()(raw_tag const&, A0 const& a0) const BOOST_NOEXCEPT
     {
-      return _mm256_cvtps_pd(_mm256_rcp_ps( _mm_cvtpd_ps(a0) );
+      return _mm256_cvtps_pd(_mm_rcp_ps( _mm256_cvtpd_ps(a0) ));
     }
   };
 
