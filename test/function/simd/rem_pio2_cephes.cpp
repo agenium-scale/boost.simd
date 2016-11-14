@@ -21,7 +21,6 @@ void test(Env& $)
   namespace bd = boost::dispatch;
 
   using p_t = bs::pack<T, N>;
-  using iT = bd::as_integer_t<T>;
 
   T a1[N], m[N];
   T e[N];

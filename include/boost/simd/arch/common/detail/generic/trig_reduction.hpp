@@ -76,7 +76,6 @@ namespace boost { namespace simd
     template<class A0, class style, class mode>
     struct trig_reduction<A0,tag::degree_tag, style, mode>//always equivalent to  tag::big_tag>
     {
-//      using A0 = bd::as_integer_t<A0, signed>;
 
       static BOOST_FORCEINLINE auto cot_invalid(const A0& x) BOOST_NOEXCEPT
       -> decltype(is_nez(x)&&is_flint(x*Ratio<A0,1,180>()))

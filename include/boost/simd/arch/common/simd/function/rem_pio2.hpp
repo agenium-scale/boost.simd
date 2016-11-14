@@ -34,7 +34,6 @@ namespace boost { namespace simd { namespace ext
       inline result operator()(A0 const& a0) const
       {
         using stype =  bd::scalar_of_t<A0>;
-//        using sitype =  bd::scalar_of_t<iA0>;
         static const uint32_t size = bs::cardinal_of<A0>::value;
         alignas(iA0) std::array<stype, size> tmp;
         alignas( A0) std::array<stype , size> txr;
