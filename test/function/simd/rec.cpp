@@ -18,6 +18,10 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/mzero.hpp>
+#include <boost/simd/constant/two.hpp>
+#include <boost/simd/constant/mtwo.hpp>
+#include <boost/simd/constant/half.hpp>
+#include <boost/simd/constant/mhalf.hpp>
 
 namespace bs = boost::simd;
 
@@ -122,5 +126,23 @@ STF_CASE_TPL("regular rec",  STF_IEEE_TYPES)
   STF_IEEE_EQUAL(rec(bs::Nan<p_t>()), bs::Nan<p_t>());
   STF_EQUAL(rec(bs::One<p_t>()), bs::One<p_t>());
   STF_EQUAL(rec(bs::Zero<p_t>()), bs::Inf<p_t>());
+} // end of test for floating_
+
+STF_CASE_TPL("fast rec",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::rec;
+  using p_t = bs::pack<T>;
+
+  // return type conformity test
+  STF_EXPR_IS( bs::fast_(rec)(p_t()) , p_t );
+
+  // specific values tests
+  STF_EQUAL(bs::fast_(rec)(bs::Mtwo<p_t>()), bs::Mhalf<p_t>());
+  STF_EQUAL(bs::fast_(rec)(bs::Mone<p_t>()), bs::Mone<p_t>());
+  STF_IEEE_EQUAL(bs::fast_(rec)(bs::Nan<p_t>()), bs::Nan<p_t>());
+  STF_EQUAL(bs::fast_(rec)(bs::One<p_t>()), bs::One<p_t>());
+  STF_EQUAL(bs::fast_(rec)(bs::Two<p_t>()), bs::Half<p_t>());
 } // end of test for floating_
 
