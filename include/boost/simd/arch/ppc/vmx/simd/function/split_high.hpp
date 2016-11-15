@@ -43,8 +43,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE result operator()(const A0& a0) const
     {
       using s_t  =  bd::as_signed_t<A0>;
-      return  bitwise_cast<result>(vec_unpackl(bitwise_cast<s_t>(a0).storage() ))
-            & result(0x00FF);
+      return bitwise_cast<result>(split_high(bitwise_cast<s_t>(a0))) & result(0x00FF);
     }
   };
 
@@ -71,8 +70,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE result operator()(const A0& a0) const
     {
       using s_t = bd::as_signed_t<A0>;
-      return  bitwise_cast<result>(vec_unpackl( bitwise_cast<s_t>(a0).storage() ))
-            & result(0x0000FFFF);
+      return bitwise_cast<result>(split_high(bitwise_cast<s_t>(a0))) & result(0x0000FFFF);
     }
   };
 } } }
