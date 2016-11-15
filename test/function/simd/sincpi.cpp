@@ -71,6 +71,9 @@ STF_CASE_TPL(" sinc",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(sincpi(p_t(1)/p_t(2)),  p_t(2)/(bs::Pi<p_t>()), 1.0);
   STF_ULP_EQUAL(sincpi(p_t(1)/p_t(4)), bs::sinpi(p_t(1)/p_t(4))*p_t(4)/(bs::Pi<p_t>()), 1.0);
   STF_ULP_EQUAL(sincpi(bs::Eps<p_t>()), bs::One<p_t>(), 1.0);
-  STF_ULP_EQUAL(sincpi(bs::Mindenormal<p_t>()), bs::One<p_t>(), 1.0);
   STF_ULP_EQUAL(sincpi(bs::Zero<p_t>()), bs::One<p_t>(), 1.0);
+
+#if !defined(BOOST_SIMD_NO_DENORMALS)
+  STF_ULP_EQUAL(sincpi(bs::Mindenormal<p_t>()), bs::One<p_t>(), 1.0);
+#endif
 }
