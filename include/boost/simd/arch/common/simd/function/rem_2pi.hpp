@@ -49,11 +49,10 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
-      using i_t = bd::as_integer_t<A0>;
       A0 xr;
-      i_t n;
+      A0 n;
       std::tie(n, xr) = rem_pio2(a0);
-      xr += tofloat(n)*Pio_2<A0>();
+      xr += n*Pio_2<A0>();
       return if_else((xr > Pi<A0>()), xr-Twopi<A0>(), xr);
     }
 
@@ -111,10 +110,9 @@ namespace boost { namespace simd { namespace ext
     {
       static BOOST_FORCEINLINE A0 rem( A0 const& x) BOOST_NOEXCEPT
       {
-        using i_t = bd::as_integer_t<A0>;
-        A0 xr;
-        i_t n = rem_pio2_medium(x, xr);
-        xr += tofloat(n)*Pio_2<A0>();
+        A0 xr, n;
+        std::tie(n, xr) = rem_pio2_medium(x);
+        xr += n*Pio_2<A0>();
         xr = if_else(gt(xr, Pi<A0>()), xr-Twopi<A0>(), xr);
         return xr;
       }

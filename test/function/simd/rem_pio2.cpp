@@ -22,10 +22,9 @@ void test(Env& $)
 
   using p_t = bs::pack<T, N>;
   using iT = bd::as_integer_t<T>;
-  using i_t = bs::pack<iT, N>;
 
   T a1[N], m[N], x[N];
-  iT e[N];
+  T e[N];
   for(std::size_t i = 0; i < N; ++i)
   {
      a1[i] = (i%2) ? T(i) : T(-i);
@@ -36,10 +35,10 @@ void test(Env& $)
    }
   p_t aa1(&a1[0], &a1[0]+N);
   p_t mm(&m[0], &m[0]+N);
-  i_t ee(&e[0], &e[0]+N);
+  p_t ee(&e[0], &e[0]+N);
   p_t xx(&x[0], &x[0]+N);
   auto zz =  bs::rem_pio2(aa1);
-  i_t ee1 =  zz.first;
+  p_t ee1 =  zz.first;
   p_t mm1 =  zz.second;
   STF_IEEE_EQUAL(ee1, ee);
   STF_IEEE_EQUAL(mm1, mm);
