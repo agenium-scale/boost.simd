@@ -10,7 +10,6 @@
 #include <boost/simd/function/quadrant.hpp>
 #include <boost/simd/function/toint.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
-#include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/mone.hpp>
@@ -20,7 +19,7 @@
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/bitwise_and.hpp>
 #include <boost/simd/function/is_even.hpp>
-
+#include <simd_test.hpp>
 
 template <typename T, int N, typename Env>
 void test(Env& $)
@@ -42,7 +41,7 @@ void test(Env& $)
   STF_EQUAL(bs::quadrant(aa1), bb);
 }
 
-STF_CASE_TPL("Check toint on pack" , STF_IEEE_TYPES)
+STF_CASE_TPL("Check quadrant on pack" , STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
