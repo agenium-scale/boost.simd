@@ -49,8 +49,10 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE result_t do_(A0 const& a0, aggregate_storage const& ) const BOOST_NOEXCEPT
     {
-      using tgt_t = typename result_t::substorage_type;
-      return combine(bitwise_cast<tgt_t>(slice_low(a0)),bitwise_cast<tgt_t>(slice_high(a0)));
+      using tgt_t = typename result_t::template resize<result_t::static_size/2>;
+      return combine( bitwise_cast<tgt_t>(slice_low(a0))
+                    , bitwise_cast<tgt_t>(slice_high(a0))
+                    );
     }
 
     template<typename K>

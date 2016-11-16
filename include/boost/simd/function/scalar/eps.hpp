@@ -6,6 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
+
 #ifndef BOOST_SIMD_FUNCTION_SCALAR_EPS_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_SCALAR_EPS_HPP_INCLUDED
 
