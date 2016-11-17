@@ -51,29 +51,29 @@ STF_CASE_TPL("iteration with prologue", STF_NUMERIC_TYPES)
   using boost::simd::pack;
   using boost::simd::segmented_output_range;
 
-  std::vector<T,boost::simd::allocator<T>>  base(pack<T>::static_size*5);
-  std::vector<T,boost::simd::allocator<T>>  ref(pack<T>::static_size*5-1);
+  std::vector<T,boost::simd::allocator<T>>  base(pack<T>::static_size*5+pack<T>::alignment/sizeof(T));
+  std::vector<T,boost::simd::allocator<T>>  ref(pack<T>::static_size*5+pack<T>::alignment/sizeof(T)-1);
 
   if (is_not_unalignable<T>($)) return;
 
-  T v = 0;
-  std::size_t l0 = pack<T>::static_size-1;
-
-  for(std::size_t i=0 ;i<l0        ;i++) ref[i] = ++v;
-  for(std::size_t i=l0;i<ref.size();i+=pack<T>::static_size)
-  {
-    ++v;
-    for(std::size_t j=0;j<pack<T>::static_size;j++) ref[i+j] = v;
-  }
-
   auto data = boost::make_iterator_range(base.data()+1, base.data()+base.size());
   auto pr   = segmented_output_range(data);
+
+  T v = 0;
+  std::size_t l0 = std::distance(std::begin(std::get<0>(pr)),std::end(std::get<0>(pr)));
+  std::size_t l1 = std::distance(std::begin(std::get<1>(pr)),std::end(std::get<1>(pr)));
+
+  for(std::size_t i=0 ;i<l0        ;i++) ref[i] = ++v;
+  for(std::size_t i=l0;i<l0+l1*pack<T>::static_size;i+=pack<T>::static_size)
+  {
+     ++v;
+     for(std::size_t j=0;j<pack<T>::static_size;j++) ref[i+j] = v;
+  }
 
   T k = 0;
 
   for( auto& pe : std::get<0>(pr) ) pe = ++k;
   for( auto& me : std::get<1>(pr) ) me = pack<T>(++k);
-  for( auto& ee : std::get<2>(pr) ) ee = ++k;
 
   STF_EQUAL( std::distance(std::begin(std::get<2>(pr)),std::end(std::get<2>(pr))), 0);
   STF_ALL_EQUAL(ref, data);
@@ -114,23 +114,26 @@ STF_CASE_TPL("iteration with epilogue & prologue", STF_NUMERIC_TYPES)
   using boost::simd::pack;
   using boost::simd::segmented_output_range;
 
-  std::vector<T,boost::simd::allocator<T>>  base(pack<T>::static_size*5);
-  std::vector<T,boost::simd::allocator<T>>  ref(pack<T>::static_size*5-2);
+  std::vector<T,boost::simd::allocator<T>>  base(pack<T>::static_size*5+pack<T>::alignment/sizeof(T));
+  std::vector<T,boost::simd::allocator<T>>  ref(pack<T>::static_size*5+pack<T>::alignment/sizeof(T)-2);
 
   if (is_not_unalignable<T>($)) return;
 
+  auto data = boost::make_iterator_range(base.data()+1, base.data()+base.size()-1);
+  auto pr   = segmented_output_range(data);
+
   T v = 0;
-  std::size_t l0 = pack<T>::static_size-1;
-  for(std::size_t i=0;i<l0;i++) ref[i] = ++v;
-  for(std::size_t i=l0;i<ref.size()-l0;i+=pack<T>::static_size)
+  std::size_t l0 = std::distance(std::begin(std::get<0>(pr)),std::end(std::get<0>(pr)));
+  std::size_t l1 = std::distance(std::begin(std::get<1>(pr)),std::end(std::get<1>(pr)));
+  auto ss = l0+l1*pack<T>::static_size;
+
+  for(std::size_t i=0 ;i<l0        ;i++) ref[i] = ++v;
+  for(std::size_t i=l0;i<ss;i+=pack<T>::static_size)
   {
     ++v;
     for(std::size_t j=0;j<pack<T>::static_size;j++) ref[i+j] = v;
   }
-  for(std::size_t i=ref.size()-l0;i<ref.size();i++) ref[i] = ++v;
-
-  auto data = boost::make_iterator_range(base.data()+1, base.data()+base.size()-1);
-  auto pr   = segmented_output_range(data);
+  for(std::size_t i=ss;i<ref.size();i++) ref[i] = ++v;
 
   T k = 0;
   for( auto& pe : std::get<0>(pr) ) pe = ++k;
