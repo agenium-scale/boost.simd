@@ -287,7 +287,9 @@ set ( SOURCES
       predecessor.cpp
       prev.cpp
       prod.cpp
-      rec.cpp
+      rec.regular.cpp
+      rec.fast.cpp
+      rec.raw.cpp
       rem_pio2_cephes.cpp
       rem_pio2.cpp
       rem_pio2_medium.cpp
