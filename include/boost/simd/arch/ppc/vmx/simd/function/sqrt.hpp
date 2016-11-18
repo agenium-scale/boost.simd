@@ -33,7 +33,7 @@ namespace boost { namespace simd { namespace ext
    {
       BOOST_FORCEINLINE A0 operator()(const A0& a0) const BOOST_NOEXCEPT
       {
-        A0 that = if_else_zero(a0, a0 * rsqrt(a0));
+        A0 that = if_else(a0, a0 * rsqrt(a0), a0);
         #if !defined(BOOST_SIMD_NO_INVALIDS)
         return if_else( a0 == Inf<A0>(), a0, that);
         #else
