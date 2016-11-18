@@ -35,19 +35,18 @@ This means that the allocated buffer must be larger than the size required, at l
 
 @snippet alignment.cpp align-manual
 
-As you can see, this is error-prone, difficult and quite annoying to do. An easiest
+As you can see, this is error-prone, difficult and quite annoying to do. The easiest
 way to align memory is to use the aligned memory allocator provided by **@projectname**.
 
 @section memory-boost-simd-align How to Align Memory using @projectname allocation function
 
 The allocation function provided by **@projectname** guarantees to return a pointer with the correct
 alignment so that you need not worry about allocating extra space in the buffer to account for the
-required alignment as in the previous section. It also has the advantage to return a typed pointer
-and automatically picks up the proper alignment depending on the current architecture your code is
-compiled for.
+required alignment as in the previous section. It also has the advantage of returning a typed pointer
+and automatically deduces the correct alignment depending on the target architecture.
 
 @notebox{The additional template parameter passed to the `std::unique_ptr` is the associated delete
-function perormaing proper deallocation of aligned memory.
+function.
 }
 
 @snippet alignment.cpp align-allocate
