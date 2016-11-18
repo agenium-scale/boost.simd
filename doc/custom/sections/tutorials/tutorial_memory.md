@@ -14,7 +14,7 @@ and demonstrate how to ensure that your memory is always correctly aligned.
 In this tutorial we will:
 - [Explain what memory alignemnt is](#memory-what-is)
 - [Demonstrate how to align memory](#memory-how-to-align)
-- [Demonstrate how to align memory using Boost.Align](#memory-boost-align)
+- [Demonstrate how to align memory using @projectname](#memory-boost-simd-align)
 - [Demonstrate how to use an aligned memory allocator with STL containers](#memory-vector)
 
 @section memory-what-is What is Memory Alignment
@@ -22,7 +22,7 @@ In this tutorial we will:
 In order to fully understand memory alignment and how to maximise performance of your software by
 ensuring memory alignment, please read this excellent article by [IBM](http://www.ibm.com/developerworks/library/pa-dalign/).
 Although this article focuses on PowerPC processors, its conclusions are valid on many other architectures.
-**@projectname** gives you portabililty accross many architectures, in order to have the best
+**@projectname** gives you portability across many architectures, in order to have the best
 performance possible across a range of architectures, it is worth considering the alignment requirements
 of all target architectures.
 
@@ -35,30 +35,28 @@ This means that the allocated buffer must be larger than the size required, at l
 
 @snippet alignment.cpp align-manual
 
-As you can see, this is errorprone, difficult and quite annoying to do. Also, `std::align`
-is not unviersally supported even among modern compilers! Therefore, the easiest
-way to align memory is to use an aligned memory allocator such as that provided by Boost.Align.
+As you can see, this is error-prone, difficult and quite annoying to do. The easiest
+way to align memory is to use the aligned memory allocator provided by **@projectname**.
 
-@section memory-boost-align How to Align Memory using Boost.Align
+@section memory-boost-simd-align How to Align Memory using @projectname allocation function
 
-The allocator provided by Boost.Align guarantees to return a pointer which is
-aligned on the required boundary and you don't need to worry about
-allocating extra space in the buffer to account for the required alignement as in
-the previous section.
+The allocation function provided by **@projectname** guarantees to return a pointer with the correct
+alignment so that you need not worry about allocating extra space in the buffer to account for the
+required alignment as in the previous section. It also has the advantage of returning a typed pointer
+and automatically deduces the correct alignment depending on the target architecture.
 
-@notebox{The additional template parameter passed to the `std::unique_ptr`,
-this is the associated delete function corresponding to
-the aligned allocator.
+@notebox{The additional template parameter passed to the `std::unique_ptr` is the associated delete
+function.
 }
 
-@snippet alignment.cpp align-allocator
+@snippet alignment.cpp align-allocate
 
-@section memory-vector How to use an aligned memory allocator with `std::vector`
+@section memory-vector How to use @projectname standard compliant aligned memory allocator
 
 The C++ STL containers allow you to use a custom memory allocator by passing
 an additional template argument during the declaration, in a similar manner
-to the previous example using `std::unique_ptr`. You can
-use Boost.Align with an `std::vector` as follows:
+to the previous example using `std::unique_ptr`. You can use boost::simd::allocator
+with an `std::vector` as follows:
 
 @snippet alignment.cpp align-vector
 
