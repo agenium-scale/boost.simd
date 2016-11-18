@@ -9,12 +9,12 @@
 #ifndef BOOST_SIMD_DETAIL_CPUID_HPP_INCLUDED
 #define BOOST_SIMD_DETAIL_CPUID_HPP_INCLUDED
 
-#include <boost/predef/architecture.h>
 #include <boost/predef/compiler.h>
+#include <boost/predef/os.h>
 
 #if BOOST_ARCH_X86
 
-#if BOOST_COMP_INTEL || BOOST_COMP_INTEL_EMULATED || BOOST_COMP_GNUC || BOOST_COMP_CLANG
+#if BOOST_COMP_GNUC || BOOST_COMP_CLANG || (BOOST_COMP_INTEL && BOOST_OS_LINUX)
 #define BOOST_SIMD_CPUID_HEADER
 #endif
 
