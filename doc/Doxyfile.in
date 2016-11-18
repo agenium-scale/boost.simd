@@ -9,10 +9,13 @@ OUTPUT_DIRECTORY       =
 
 INPUT                  = @PROJECT_SOURCE_DIR@/include/boost/
 INPUT                 += @PROJECT_SOURCE_DIR@/include/boost/simd/
-INPUT                 += @PROJECT_SOURCE_DIR@/include/boost/simd/meta
-INPUT                 += @PROJECT_SOURCE_DIR@/include/boost/simd/meta/hierarchy
+INPUT                 += @PROJECT_SOURCE_DIR@/include/boost/simd/algorithm/
 INPUT                 += @PROJECT_SOURCE_DIR@/include/boost/simd/constant
 INPUT                 += @PROJECT_SOURCE_DIR@/include/boost/simd/function/
+INPUT                 += @PROJECT_SOURCE_DIR@/include/boost/simd/memory/
+INPUT                 += @PROJECT_SOURCE_DIR@/include/boost/simd/meta
+INPUT                 += @PROJECT_SOURCE_DIR@/include/boost/simd/meta/hierarchy
+INPUT                 += @PROJECT_SOURCE_DIR@/include/boost/simd/range/
 INPUT                 += @PROJECT_DOC_DIR@/custom
 INPUT                 += @PROJECT_DOC_DIR@/custom/sections/faq
 INPUT                 += @PROJECT_DOC_DIR@/custom/sections/home
