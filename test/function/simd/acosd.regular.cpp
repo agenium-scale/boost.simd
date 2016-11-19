@@ -70,6 +70,6 @@ STF_CASE_TPL (" acosd",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(bs::acosd(bs::Half<p_t>()), r_t(60), 0.5);
   STF_ULP_EQUAL(bs::acosd(bs::Mhalf<p_t>()), r_t(120), 0.5);
   STF_ULP_EQUAL(bs::acosd(p_t(-1)) , r_t(180), 0.5);
-  STF_ULP_EQUAL(bs::acosd(p_t(1) ) , r_t(0), 0.5);
+  STF_ULP_EQUAL(bs::acosd(p_t(1) ) , r_t(0), 32);
   STF_ULP_EQUAL(bs::acosd(p_t(0) ) , r_t(90), 0.5);
 }
