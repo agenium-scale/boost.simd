@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_DETAIL_CPUID_HPP_INCLUDED
 #define BOOST_SIMD_DETAIL_CPUID_HPP_INCLUDED
 
+#include <boost/predef/architecture.h>
 #include <boost/predef/compiler.h>
 #include <boost/predef/os.h>
 
