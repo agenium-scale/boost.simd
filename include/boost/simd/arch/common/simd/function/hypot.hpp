@@ -25,6 +25,7 @@
 #include <boost/simd/function/sqrt.hpp>
 #include <boost/simd/function/unary_minus.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/predef/architecture.h>
 
 #ifndef BOOST_SIMD_NO_INVALIDS
 #include <boost/simd/function/if_else.hpp>
@@ -32,9 +33,9 @@
 #include <boost/simd/function/logical_or.hpp>
 #include <boost/simd/function/is_inf.hpp>
 #include <boost/simd/function/is_nan.hpp>
+#include <boost/simd/function/abs.hpp>
 #include <boost/simd/constant/inf.hpp>
 #endif
-
 
 namespace boost { namespace simd { namespace ext
 {
@@ -56,10 +57,16 @@ namespace boost { namespace simd { namespace ext
         iA0 e =  exponent(bs::max(i, r));
         e = bs::min(bs::max(e,Minexponent<A0>()),Maxexponentm1<A0>());
         A0 res =  ldexp(sqrt(sqr(ldexp(r, -e))+sqr(ldexp(i, -e))), e);
+
         #ifndef BOOST_SIMD_NO_INVALIDS
         auto test = logical_or(logical_and(is_nan(a0), is_inf(a1)),
                               logical_and(is_nan(a1), is_inf(a0)));
-        return if_else(test, Inf<A0>(), res);
+        #if BOOST_ARCH_PPC
+        auto v = if_else(test, Inf<A0>(), res);
+        return if_else(a0==0, abs(a1), if_else(a1==0,abs(a0),v));
+        #else
+        return res;
+        #endif
         #else
         return res;
         #endif
