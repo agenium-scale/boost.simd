@@ -28,7 +28,7 @@ namespace boost { namespace simd
 {
   namespace detail
   {
-    BOOST_SIMD_DEFINE_PACK_TRAITS(float, 4, __m128)
+    BOOST_SIMD_DEFINE_PACK_TRAITS(float, 4, __m128);
   }
 
   namespace ext
