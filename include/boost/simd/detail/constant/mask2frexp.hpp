@@ -65,7 +65,7 @@ namespace boost { namespace simd
 
   namespace ext
   {
-    BOOST_DISPATCH_FUNCTION_DECLARATION(tag,mask2frexp_);
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, mask2frexp_)
   }
 
   namespace detail

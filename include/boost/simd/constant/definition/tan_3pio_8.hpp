@@ -32,7 +32,7 @@ namespace boost { namespace simd
 
   namespace ext
   {
-    BOOST_DISPATCH_FUNCTION_DECLARATION(tag,tan_3pio_8_);
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, tan_3pio_8_)
   }
 
   namespace detail

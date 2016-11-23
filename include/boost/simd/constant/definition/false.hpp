@@ -27,7 +27,7 @@ namespace boost { namespace simd
 
   namespace ext
   {
-    BOOST_DISPATCH_FUNCTION_DECLARATION(tag,false_);
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, false_)
   }
 
   namespace detail

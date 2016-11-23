@@ -32,7 +32,7 @@ namespace boost { namespace simd
 
   namespace ext
   {
-    BOOST_DISPATCH_FUNCTION_DECLARATION(tag,invlog_10_);
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, invlog_10_)
   }
 
   namespace detail

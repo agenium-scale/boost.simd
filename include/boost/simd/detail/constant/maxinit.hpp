@@ -57,7 +57,7 @@ namespace boost { namespace simd
 
   namespace ext
   {
-    BOOST_DISPATCH_FUNCTION_DECLARATION(tag,maxinit_);
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, maxinit_)
   }
 
   namespace detail

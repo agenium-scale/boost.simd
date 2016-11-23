@@ -50,7 +50,7 @@ namespace boost { namespace simd
 
   namespace ext
   {
-    BOOST_DISPATCH_FUNCTION_DECLARATION(tag,log10_ehi_);
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, log10_ehi_)
   }
 
   namespace detail
