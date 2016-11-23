@@ -19,17 +19,54 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( splat_
                           , (typename A0, typename Target)
                           , bs::vmx_
-                          , bd::scalar_< bd::arithmetic_<A0> >
-                          , bd::target_<bs::pack_<bd::arithmetic_<Target>, bs::vmx_>>
-                          )
+                          , bd::scalar_< bd::unspecified_<A0> >
+                          , bd::target_<bs::pack_<bd::type8_<Target>, bs::vmx_>>
+                           )
   {
     using target_t = typename Target::type;
+    using value_t  = typename target_t::value_type;
 
     BOOST_FORCEINLINE target_t operator()(A0 const& a0, Target const&) const
     {
-      target_t v;
-      v[0] = a0;
-      return vec_splat(v.storage(), 0);
+      return  { value_t(a0), value_t(a0), value_t(a0), value_t(a0)
+              , value_t(a0), value_t(a0), value_t(a0), value_t(a0)
+              , value_t(a0), value_t(a0), value_t(a0), value_t(a0)
+              , value_t(a0), value_t(a0), value_t(a0), value_t(a0)
+              };
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( splat_
+                          , (typename A0, typename Target)
+                          , bs::vmx_
+                          , bd::scalar_< bd::unspecified_<A0> >
+                          , bd::target_<bs::pack_<bd::type16_<Target>, bs::vmx_>>
+                          )
+  {
+    using target_t = typename Target::type;
+    using value_t  = typename target_t::value_type;
+
+    BOOST_FORCEINLINE target_t operator()(A0 const& a0, Target const&) const
+    {
+      return  { value_t(a0), value_t(a0), value_t(a0), value_t(a0)
+              , value_t(a0), value_t(a0), value_t(a0), value_t(a0)
+              };
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( splat_
+                          , (typename A0, typename Target)
+                          , bs::vmx_
+                          , bd::scalar_< bd::unspecified_<A0> >
+                          , bd::target_<bs::pack_<bd::type32_<Target>, bs::vmx_>>
+                          )
+  {
+    using target_t = typename Target::type;
+    using value_t  = typename target_t::value_type;
+
+    BOOST_FORCEINLINE target_t operator()(A0 const& a0, Target const&) const
+    {
+      return { value_t(a0), value_t(a0), value_t(a0), value_t(a0) };
     }
   };
 } } }

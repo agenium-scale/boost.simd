@@ -35,7 +35,7 @@ void test(Env& $)
 
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
-  STF_EQUAL(bs::cosd(aa1), bb);
+  STF_ULP_EQUAL(bs::cosd(aa1), bb, 1);
 }
 
 STF_CASE_TPL("Check cosd on pack" , STF_IEEE_TYPES)

@@ -17,6 +17,8 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/fma.hpp>
 #include <boost/simd/function/sqr.hpp>
+#include <boost/simd/function/is_inf.hpp>
+#include <boost/simd/function/if_zero_else.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -31,12 +33,20 @@ namespace boost { namespace simd { namespace ext
    {
       BOOST_FORCEINLINE A0 operator()(const A0& a0) const BOOST_NOEXCEPT
       {
-        A0 o  = One<A0>();
-        A0 estimate = fast_(rsqrt)(a0);
-        A0 se = sqr(estimate);
-        A0 he = estimate*Half<A0>();
-        A0 st = vec_nmsub(a0.storage(),se.storage(),o.storage());
-        return fma(st, he, estimate);
+        A0 ct = One<A0>();
+        A0 es = fast_(rsqrt)(a0);
+        A0 se = sqr(es);
+        A0 he = es*Half<A0>();
+
+        se = vec_nmsub(a0.storage(),se.storage(),ct.storage());
+        se = fma(se, he, es);
+
+#if !defined(BOOST_SIMD_NO_INFINITES)
+        ct = Zero<A0>();
+        es = Inf<A0>();
+        se = if_else(a0 == ct, es, if_else(a0 == es,ct,se));
+#endif
+        return se;
       }
    };
 

@@ -29,17 +29,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE void operator()(const Src& s, Pointer p) const BOOST_NOEXCEPT
     {
-      #pragma GCC diagnostic push
-      #pragma GCC diagnostic ignored "-Wdeprecated"
-      __vector unsigned char  edgeAlign = vec_lvsl(0 , p);
-      auto                    MSQ       = vec_ld  (0 , p);
-      auto                    LSQ       = vec_ld  (16, p);
-      __vector unsigned char  align     = vec_lvsr(0 , p);
-      auto                    edges     = vec_perm(LSQ , MSQ, edgeAlign);
-
-      vec_st(vec_perm(s.storage(), edges      , align), 16 , p);
-      vec_st(vec_perm(edges      , s.storage(), align), 0  , p);
-      #pragma GCC diagnostic pop
+      *((typename Src::storage_type*)(p)) = s;
     }
   };
 } } }

@@ -52,7 +52,7 @@ STF_CASE_TPL("iteration with prologue", STF_NUMERIC_TYPES)
   using boost::simd::pack;
   using boost::simd::segmented_input_range;
 
-  std::vector<T,boost::simd::allocator<T>>  ref(pack<T>::static_size*3);
+  std::vector<T,boost::simd::allocator<T>> ref(pack<T>::static_size*3+pack<T>::alignment/sizeof(T));
 
   if (is_not_unalignable<T>($)) return;
 

@@ -51,7 +51,6 @@ STF_CASE_TPL("Check hypot on pack" , STF_IEEE_TYPES)
 }
 
 
-
 STF_CASE_TPL (" hypot real",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
