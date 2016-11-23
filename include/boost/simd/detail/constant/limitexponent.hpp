@@ -65,7 +65,7 @@ namespace boost { namespace simd
 
   namespace ext
   {
-    BOOST_DISPATCH_FUNCTION_DECLARATION(tag,limitexponent_);
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, limitexponent_)
   }
 
   namespace detail

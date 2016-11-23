@@ -26,7 +26,7 @@ namespace boost { namespace simd
 
   namespace ext
   {
-    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, genmask_);
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, genmask_)
   }
 
   namespace detail

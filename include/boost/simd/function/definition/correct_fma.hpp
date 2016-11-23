@@ -25,7 +25,7 @@ namespace boost { namespace simd
 
   namespace ext
   {
-    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, correct_fma_);
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, correct_fma_)
   }
 
   BOOST_DISPATCH_CALLABLE_DEFINITION(tag::correct_fma_,correct_fma);
