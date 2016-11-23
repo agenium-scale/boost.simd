@@ -61,11 +61,11 @@ namespace boost { namespace simd { namespace ext
         #ifndef BOOST_SIMD_NO_INVALIDS
         auto test = logical_or(logical_and(is_nan(a0), is_inf(a1)),
                               logical_and(is_nan(a1), is_inf(a0)));
-        #if BOOST_ARCH_PPC
         auto v = if_else(test, Inf<A0>(), res);
+        #if BOOST_ARCH_PPC
         return if_else(a0==0, abs(a1), if_else(a1==0,abs(a0),v));
         #else
-        return res;
+        return v;
         #endif
         #else
         return res;
