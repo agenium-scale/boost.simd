@@ -123,7 +123,7 @@ namespace boost { namespace simd { namespace ext
       if (any(test))
       {
         k = if_minus(test, k, iA0(25));
-        x = if_else(test, x*A0(0x1p25f), x);
+        x = if_else(test, x*A0(33554432ul), x);
       }
 #endif
       uiA0 ix = bitwise_cast<uiA0>(x);
@@ -195,7 +195,7 @@ namespace boost { namespace simd { namespace ext
       if (any(test))
       {
         k = if_minus(test, k, iA0(54));
-        x = if_else(test, x*A0(0x1p54), x);
+        x = if_else(test, x*A0(18014398509481984ull), x);
       }
 #endif
       /* reduce x into [sqrt(2)/2, sqrt(2)] */
@@ -298,7 +298,7 @@ namespace boost { namespace simd { namespace ext
       if (any(test))
       {
         k = if_minus(test, k, iA0(25));
-        x = if_else(test, x*A0(0x1p25f), x);
+        x = if_else(test, x*A0(33554432ul), x);
       }
 #endif
       /* reduce x into [sqrt(2)/2, sqrt(2)] */
@@ -370,7 +370,7 @@ namespace boost { namespace simd { namespace ext
       if (any(test))
       {
         k = if_minus(test, k, iA0(54));
-        x = if_else(test, x*A0(0x1p54), x);
+        x = if_else(test, x*A0(18014398509481984ull), x);
       }
 #endif
       /* reduce x into [sqrt(2)/2, sqrt(2)] */

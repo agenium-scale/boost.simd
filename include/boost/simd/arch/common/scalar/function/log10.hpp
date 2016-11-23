@@ -181,12 +181,7 @@ namespace boost { namespace simd { namespace ext
    */
     BOOST_FORCEINLINE A0 operator() (const musl_tag &, A0 x) const BOOST_NOEXCEPT
     {
-//       const A0
-//         Invlog_10hi<A0>()  =  4.3432617188e-01, /* 0x3ede6000 */
-//         Invlog_10lo<A0>()  = -3.1689971365e-05, /* 0xb804ead9 */
-//         Log10_2hi<A0>() =  3.0102920532e-01, /* 0x3e9a2080 */
-//         Log10_2lo<A0> =  7.9034151668e-07; /* 0x355427db */
-        using uiA0 = bd::as_integer_t<A0, unsigned>;
+      using uiA0 = bd::as_integer_t<A0, unsigned>;
       using iA0 = bd::as_integer_t<A0,   signed>;
       uiA0 ix = bitwise_cast<uiA0>(x);
       iA0 k = 0;
@@ -197,7 +192,7 @@ namespace boost { namespace simd { namespace ext
 #ifndef BOOST_SIMD_NO_DENORMALS
         /* subnormal number, scale up x */
         k -= 25;
-        x *= 0x1p25f;
+        x *= 33554432.0f;
         ix = bitwise_cast<iA0>(x);
 #endif
       }
@@ -277,7 +272,7 @@ namespace boost { namespace simd { namespace ext
           return Nan<A0>(); /* log(-#) = NaN */
         /* subnormal number, scale x up */
         k -= 54;
-        x *= 0x1p54;
+        x *= 18014398509481984.0;
         hx = bitwise_cast<uiA0>(x) >> 32;
       }
       else if (hx >= 0x7ff00000)

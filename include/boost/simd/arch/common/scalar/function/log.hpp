@@ -100,7 +100,7 @@ namespace boost { namespace simd { namespace ext
 #ifndef BOOST_SIMD_NO_DENORMALS
         /* subnormal number, scale up x */
         k -= 25;
-        x *= 0x1p25f;
+        x *= 33554432.0f;
         ix = bitwise_cast<iA0>(x);
 #endif
       }
@@ -149,7 +149,7 @@ namespace boost { namespace simd { namespace ext
 #ifndef BOOST_SIMD_NO_DENORMALS
         /* subnormal number, scale x up */
         k -= 54;
-        x *= 0x1p54;
+        x *= 18014398509481984.0;
         hx = bitwise_cast<uiA0>(x) >> 32;
 #endif
       }
