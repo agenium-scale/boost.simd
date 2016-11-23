@@ -35,7 +35,7 @@ namespace boost { namespace simd
   }
 
   template<typename A>  BOOST_FORCEINLINE
-  auto genmask(const A& a) BOOST_NOEXCEPT_DECLTYPE_BODY(detail::genmask(a));
+  auto genmask(const A& a) BOOST_NOEXCEPT_DECLTYPE_BODY(detail::genmask(a))
 
   template<typename T, typename A> BOOST_FORCEINLINE T genmask(const A& a) BOOST_NOEXCEPT
   {

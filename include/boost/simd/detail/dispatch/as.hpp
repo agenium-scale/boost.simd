@@ -49,7 +49,7 @@ namespace boost { namespace dispatch
   {
     boost::ignore_unused(v);
     return {};
-  };
+  }
 
 #if !defined(DOXYGEN_ONLY)
   namespace detail
