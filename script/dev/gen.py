@@ -183,7 +183,7 @@ def make_function_definition(opts):
     yield ''
     yield t * 1 + 'namespace ext'
     yield t * 1 + '{'
-    yield t * 2 + 'BOOST_DISPATCH_FUNCTION_DECLARATION(tag, {0}_);'.format(opts.name)
+    yield t * 2 + 'BOOST_DISPATCH_FUNCTION_DECLARATION(tag, {0}_)'.format(opts.name)
     yield t * 1 + '}'
     yield ''
     yield t * 1 + 'namespace functional'
