@@ -14,7 +14,7 @@
 #include <boost/simd/constant/inveps.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/inf.hpp>
-#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/mzero.hpp>
 #include <boost/simd/function/any.hpp>
 #include <boost/simd/function/bitwise_or.hpp>
 #include <boost/simd/function/bitwise_and.hpp>
@@ -54,7 +54,7 @@ namespace boost { namespace simd { namespace ext
                    );
       #ifndef BOOST_SIMD_NO_INFINITIES
       a0 = if_else(is_inf(a00),
-                      bitwise_and(a00, Zero<A0>()),
+                      bitwise_and(a00, Mzero<A0>()),
                       a0
                      );
       #endif
