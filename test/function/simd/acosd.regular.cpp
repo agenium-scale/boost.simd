@@ -56,7 +56,7 @@ STF_CASE_TPL (" acosd",  STF_IEEE_TYPES)
   using bs::acosd;
   using p_t = bs::pack<T>;
 
-  using r_t = decltype(bs::accurate_(acosd)(p_t()));
+  using r_t = decltype(acosd(p_t()));
 
   // return type conformity test
   STF_TYPE_IS(r_t, p_t);

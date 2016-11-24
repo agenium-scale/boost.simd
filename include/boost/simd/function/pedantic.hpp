@@ -8,8 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_ACCURATE_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_ACCURATE_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_PEDANTIC_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_PEDANTIC_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/detail/decorator.hpp>
@@ -24,28 +24,28 @@ namespace boost { namespace simd
       that can do some agressive optimization at the cost of certain
       properties or corner cases of the original functor.
 
-      These losses are of the `accurate_math` kind.
+      These losses are of the `pedantic_math` kind.
 
     @par Semantic
 
     @code
-    T r = accurate_(func)(< func parameters >);
+    T r = pedantic_(func)(< func parameters >);
     @endcode
 
   **/
-  template<typename T> auto accurate_(T const& x) {}
+  template<typename T> auto pedantic_(T const& x) {}
 
 } }
 #endif
 
 namespace boost { namespace simd
 {
-  struct accurate_tag : decorator_<accurate_tag>
+  struct pedantic_tag : decorator_<pedantic_tag>
   {
-    using parent = decorator_<accurate_tag>;
+    using parent = decorator_<pedantic_tag>;
   };
 
-  const detail::decorator<accurate_tag> accurate_ = {};
+  const detail::decorator<pedantic_tag> pedantic_ = {};
 } }
 
 #endif

@@ -9,7 +9,7 @@
 set(SOURCES
 abs.cpp
 acos.cpp
-acos.accurate.cpp
+acos.pedantic.cpp
 acosd.cpp
 acospi.cpp
 acot.cpp

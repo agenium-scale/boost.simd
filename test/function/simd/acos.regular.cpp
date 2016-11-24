@@ -47,14 +47,14 @@ STF_CASE_TPL("Check acos on pack" , STF_IEEE_TYPES)
   test<T, N*2>($);
 }
 
-STF_CASE_TPL ("accurate  acos",  STF_IEEE_TYPES)
+STF_CASE_TPL ("regular  acos",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
   using bs::acos;
   using p_t = bs::pack<T>;
 
-  using r_t = decltype(bs::accurate_(acos)(p_t()));
+  using r_t = decltype(acos(p_t()));
 
   // return type conformity test
   STF_TYPE_IS(r_t, p_t);

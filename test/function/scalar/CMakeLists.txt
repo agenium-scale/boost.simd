@@ -14,12 +14,12 @@ set ( SOURCES
    abs.saturated.cpp
    abs.std.cpp
    acos.regular.cpp
-   acos.accurate.cpp
+   acos.pedantic.cpp
    acosd.regular.cpp
-   acosd.accurate.cpp
+   acosd.pedantic.cpp
    acosh.cpp
    acospi.regular.cpp
-   acospi.accurate.cpp
+   acospi.pedantic.cpp
    acot.cpp
    acotd.cpp
    acotpi.cpp

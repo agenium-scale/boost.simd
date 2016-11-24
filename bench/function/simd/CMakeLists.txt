@@ -10,7 +10,7 @@ set(SOURCES
     abs.regular.cpp
     abs.saturated.cpp
     acos.regular.cpp
-    acos.accurate.cpp
+    acos.pedantic.cpp
     acosd.cpp
     acosh.cpp
     acospi.cpp
