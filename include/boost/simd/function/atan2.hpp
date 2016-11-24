@@ -62,7 +62,7 @@ namespace boost { namespace simd
 
     std_ for floating entries provides access to std::atan2
 
-    fast_ is speedier but as indicated is not fully conformant to the standard
+    fast_ is speedier but as indicated is not fully pedantic to the standard
 
   @see atan, atand, atanpi
 

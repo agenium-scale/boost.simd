@@ -10,7 +10,7 @@
 #define BOOST_SIMD_ARCH_PPC_VMX_SIMD_FUNCTION_CORRECT_FMA_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/conformant.hpp>
+#include <boost/simd/function/pedantic.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -19,14 +19,14 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD (fma_
                           , (typename A0)
-                          , bs::conformant_tag
+                          , bs::pedantic_tag
                           , bs::vmx_
                           , bs::pack_<bd::floating_<A0>, bs::vmx_>
                           , bs::pack_<bd::floating_<A0>, bs::vmx_>
                           , bs::pack_<bd::floating_<A0>, bs::vmx_>
                           )
   {
-    BOOST_FORCEINLINE A0 operator()( const conformant_tag &
+    BOOST_FORCEINLINE A0 operator()( const pedantic_tag &
                                    , const A0& a0, const A0& a1, const A0& a2) const BOOST_NOEXCEPT
     {
       return vec_madd(a0.storage(), a1.storage(), a2.storage());

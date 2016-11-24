@@ -16,7 +16,7 @@
 #include <boost/simd/function/two_add.hpp>
 #include <boost/simd/function/two_prod.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
-#include <boost/simd/function/conformant.hpp>
+#include <boost/simd/function/pedantic.hpp>
 
 #ifndef BOOST_SIMD_DONT_CARE_FMA_OVERFLOW
 #include <boost/simd/function/exponent.hpp>
@@ -34,13 +34,13 @@ namespace boost { namespace simd { namespace ext
                              , (typename A0, typename X)
                              , (detail::is_native<X>)
                              , bd::cpu_
-                             , bs::conformant_tag
+                             , bs::pedantic_tag
                              , bs::pack_<bd::single_<A0>, X>
                              , bs::pack_<bd::single_<A0>, X>
                              , bs::pack_<bd::single_<A0>, X>
                              )
    {
-      BOOST_FORCEINLINE A0 operator()( const conformant_tag &
+      BOOST_FORCEINLINE A0 operator()( const pedantic_tag &
                                      , const A0& a0, const A0& a1, const A0& a2) const BOOST_NOEXCEPT
       {
         auto s0 = split(a0);
@@ -54,13 +54,13 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename X)
                           , (detail::is_native<X>)
                           , bd::cpu_
-                          , bs::conformant_tag
+                          , bs::pedantic_tag
                           , bs::pack_<bd::floating_<A0>, X>
                           , bs::pack_<bd::floating_<A0>, X>
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( const conformant_tag &
+      BOOST_FORCEINLINE A0 operator()( const pedantic_tag &
                                      , const A0& a0, const A0& a1, const A0& a2) const BOOST_NOEXCEPT
       {
         A0 p, rp, s, rs;
@@ -86,13 +86,13 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename X)
                           , (detail::is_native<X>)
                           , bd::cpu_
-                          , bs::conformant_tag
+                          , bs::pedantic_tag
                           , bs::pack_<bd::int_<A0>, X>
                           , bs::pack_<bd::int_<A0>, X>
                           , bs::pack_<bd::int_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( const conformant_tag &
+      BOOST_FORCEINLINE A0 operator()( const pedantic_tag &
                                      , const A0& a0, const A0& a1, const A0& a2) const BOOST_NOEXCEPT
       {
         // correct fma has to ensure "no intermediate overflow".
@@ -108,13 +108,13 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename X)
                           , (detail::is_native<X>)
                           , bd::cpu_
-                          , bs::conformant_tag
+                          , bs::pedantic_tag
                           , bs::pack_<bd::uint_<A0>, X>
                           , bs::pack_<bd::uint_<A0>, X>
                           , bs::pack_<bd::uint_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( const conformant_tag &
+      BOOST_FORCEINLINE A0 operator()( const pedantic_tag &
                                      , const A0& a0, const A0& a1, const A0& a2) const BOOST_NOEXCEPT
       {
         return a0*a1+a2;

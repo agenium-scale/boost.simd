@@ -116,7 +116,7 @@ set(SOURCES
     firstbitunset.cpp
     floor.cpp
     fma.regular.cpp
-    fma.conformant.cpp
+    fma.pedantic.cpp
     fms.cpp
     fnma.cpp
     fnms.cpp

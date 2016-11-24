@@ -45,15 +45,15 @@ namespace boost { namespace simd
     in terms of performance for floating ones (i.e. if the system has the hard
     wired capability).
 
-    If you need conformant fma capabilities in all circumstances in your own
-    code you can use the conformant_ or  std_ decorator
+    If you need pedantic fma capabilities in all circumstances in your own
+    code you can use the pedantic_ or  std_ decorator
     (although both can can be very expansive).
 
      @par Decorators
 
-    - std_ for floating entries to call directly std::fma. This implies conformant
+    - std_ for floating entries to call directly std::fma. This implies pedantic
       fma behaviour, but in no way improved performances.
-    - conformant_ ensures the fma properties and allows SIMD acceleration if available.
+    - pedantic_ ensures the fma properties and allows SIMD acceleration if available.
 
     @see fms, fnma, fnms
   **/

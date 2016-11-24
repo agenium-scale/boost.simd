@@ -13,9 +13,9 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_conformant_fma,bs::conformant_(bs::fma));
+DEFINE_SIMD_BENCH(simd_pedantic_fma,bs::pedantic_(bs::fma));
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_conformant_fma, NS_BENCH_IEEE_TYPES>(-10, 10, -10, 10, -10, 10);
+  nsb::for_each<simd_pedantic_fma, NS_BENCH_IEEE_TYPES>(-10, 10, -10, 10, -10, 10);
 }
