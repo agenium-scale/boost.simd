@@ -62,7 +62,8 @@ STF_CASE_TPL (" arg real",  STF_IEEE_TYPES)
 #ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(arg(bs::Inf<p_t>()), bs::Zero<r_t>());
   STF_EQUAL(arg(bs::Minf<p_t>()), bs::Pi<r_t>());
-  STF_IEEE_EQUAL(arg(bs::Nan<p_t>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(bs::pedantic_(arg)(bs::Nan<p_t>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(arg(bs::Nan<p_t>()), bs::Pi<r_t>());
 #endif
   STF_EQUAL(arg(bs::Mone<p_t>()), bs::Pi<r_t>());
   STF_EQUAL(arg(bs::One<p_t>()), bs::Zero<r_t>());
