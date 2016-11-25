@@ -148,7 +148,7 @@ namespace boost { namespace simd
       can be useful in searching extra-accuracy in other circumstances as double-double
       computations.
 
-      @ref pedantic_(fma) decis never used internally by Boost.SIMD
+      @ref pedantic_(fma) is never used internally by Boost.SIMD
 
       - **Standard operations**
 

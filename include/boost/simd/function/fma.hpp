@@ -47,7 +47,7 @@ namespace boost { namespace simd
 
     If you need pedantic fma capabilities in all circumstances in your own
     code you can use the pedantic_ or  std_ decorator
-    (although both can can be very expansive).
+    (although both can can be very expensive).
 
      @par Decorators
 
