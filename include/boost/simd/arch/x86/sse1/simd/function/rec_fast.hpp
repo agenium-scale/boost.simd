@@ -12,7 +12,6 @@
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/fast.hpp>
 #include <boost/simd/constant/mzero.hpp>
-//#include "rec_raw.hpp"
 
 namespace boost { namespace simd { namespace ext
 {
@@ -33,14 +32,14 @@ namespace boost { namespace simd { namespace ext
                    bitwise_or(a0, Inf<A0>()),
                    r
                   );
-      #ifndef BOOST_SIMD_NO_INFINITIES
+#ifndef BOOST_SIMD_NO_INFINITIES
       r = if_else(is_inf(a0),
                   bitwise_and(a0, Mzero<A0>()),
                   r
                  );
-      #endif
+#endif
       return r;
-                        }
+    }
   };
 } } }
 

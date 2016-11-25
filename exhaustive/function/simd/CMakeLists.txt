@@ -60,6 +60,7 @@ log.cpp
 nthroot.cpp
 oneminus.cpp
 rec.cpp
+rec.fast.cpp
 rsqrt.cpp
 sign.cpp
 signnz.cpp

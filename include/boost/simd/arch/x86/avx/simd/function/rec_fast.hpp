@@ -41,6 +41,31 @@ namespace boost { namespace simd { namespace ext
       return r;
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( rec_
+                          , (typename A0)
+                          , bs::avx_
+                          , bs::fast_tag
+                          , bs::pack_<bd::single_<A0>, bs::sse_>
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator()(fast_tag const&, const A0 & a0) const BOOST_NOEXCEPT
+    {
+      A0 r = refine_rec(a0, raw_(rec)(a0)); //The  error for this approximation is circa 1.0e-22
+      r =  if_else(is_eqz(a0),
+                   bitwise_or(a0, Inf<A0>()),
+                   r
+                  );
+#ifndef BOOST_SIMD_NO_INFINITIES
+      r = if_else(is_inf(a0),
+                  bitwise_and(a0, Mzero<A0>()),
+                  r
+                 );
+#endif
+      return r;
+    }
+  };
+
 } } }
 
 #endif
