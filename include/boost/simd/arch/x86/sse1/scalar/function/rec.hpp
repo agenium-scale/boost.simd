@@ -63,6 +63,7 @@ namespace boost { namespace simd { namespace ext
       return refine_rec(a0, e);
     }
   };
+
 } } }
 
 #endif

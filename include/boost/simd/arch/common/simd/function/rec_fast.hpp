@@ -30,13 +30,12 @@ namespace boost { namespace simd { namespace ext
   /// and alwways treat well zeros and infinities
   ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-  BOOST_DISPATCH_OVERLOAD_IF ( rec_
-                             , (typename T, typename X)
-                             , (detail::is_native<X>)
-                             , bd::cpu_
-                             , bs::fast_tag
-                             , bs::pack_<bd::unspecified_<T>, X>
-                             )
+  BOOST_DISPATCH_OVERLOAD ( rec_
+                          , (typename T, typename X)
+                          , bd::cpu_
+                          , bs::fast_tag
+                          , bs::pack_<bd::unspecified_<T>, X>
+                          )
   {
     BOOST_FORCEINLINE T operator()(const fast_tag &, T const& a) const BOOST_NOEXCEPT
     {

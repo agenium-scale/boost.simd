@@ -49,19 +49,18 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
     {
-      return if_else(a0, if_else_zero(bs::abs(a0) == One<A0>(), a0), Valmax<A0>());//bitwise_xor(a0, One<A0>());
+      return if_else(a0, if_else_zero(bs::abs(a0) == One<A0>(), a0), Valmax<A0>());
     }
   };
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////
   /// rec for floating types: take all version when no better exists reverting to division
   ///////////////////////////////////////////////////////////////////////////////////////////////////
-  BOOST_DISPATCH_OVERLOAD_IF( rec_
-                            , (typename A0, typename X)
-                            , (detail::is_native<X>)
-                            , bd::cpu_
-                            , bs::pack_<bd::floating_<A0>, X>
-                            )
+  BOOST_DISPATCH_OVERLOAD( rec_
+                         , (typename A0, typename X)
+                         , bd::cpu_
+                         , bs::pack_<bd::floating_<A0>, X>
+                         )
   {
     BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
     {
@@ -72,7 +71,7 @@ namespace boost { namespace simd { namespace ext
 
 } } }
 
-// #include <boost/simd/arch/common/simd/function/rec_raw.hpp>
-// #include <boost/simd/arch/common/simd/function/rec_fast.hpp>
+//#include <boost/simd/arch/common/simd/function/rec_raw.hpp>
+//#include <boost/simd/arch/common/simd/function/rec_fast.hpp>
 
 #endif
