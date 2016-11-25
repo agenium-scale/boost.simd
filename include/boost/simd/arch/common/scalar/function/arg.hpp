@@ -40,7 +40,6 @@ namespace boost { namespace simd
        BOOST_FORCEINLINE A0 operator() (const pedantic_tag &,
                                         A0 a0) const BOOST_NOEXCEPT
        {
-         std::cout << "a0 " << a0 << std::endl;
          A0 r = if_else_zero(is_negative(a0),Pi<A0>());
        #ifndef BOOST_SIMD_NO_NANS
          return if_allbits_else(is_nan(a0),r);
