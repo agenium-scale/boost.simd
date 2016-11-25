@@ -37,12 +37,12 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( min_
                           , (typename A0)
                           , bs::vmx_
-                          , bs::conformant_tag
+                          , bs::pedantic_tag
                           , bs::pack_<bd::floating_<A0>, bs::vmx_>
                           , bs::pack_<bd::floating_<A0>, bs::vmx_>
                           )
   {
-    BOOST_FORCEINLINE A0 operator()( conformant_tag const&
+    BOOST_FORCEINLINE A0 operator()( pedantic_tag const&
                                    , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
     {
       #if !defined(BOOST_SIMD_NO_NANS)

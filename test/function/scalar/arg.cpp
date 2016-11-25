@@ -16,6 +16,7 @@
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/mzero.hpp>
 
 STF_CASE_TPL (" arg real",  STF_IEEE_TYPES)
 {
@@ -30,11 +31,13 @@ STF_CASE_TPL (" arg real",  STF_IEEE_TYPES)
 #ifndef BOOST_SIMD_NO_INVALIDS
   STF_EQUAL(arg(bs::Inf<T>()), bs::Zero<r_t>());
   STF_EQUAL(arg(bs::Minf<T>()), bs::Pi<r_t>());
-  STF_IEEE_EQUAL(arg(bs::Nan<T>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(bs::pedantic_(arg)(bs::Nan<T>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(arg(bs::Nan<T>()), bs::Pi<r_t>());
 #endif
   STF_EQUAL(arg(bs::Mone<T>()), bs::Pi<r_t>());
   STF_EQUAL(arg(bs::One<T>()), bs::Zero<r_t>());
   STF_EQUAL(arg(bs::Zero<T>()), bs::Zero<r_t>());
+  STF_EQUAL(arg(bs::Mzero<T>()), bs::Pi<r_t>());
 } // end of test for floating_
 
 

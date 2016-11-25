@@ -30,13 +30,13 @@ STF_CASE_TPL (" acospi",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(bs::accurate_(bs::acospi)(bs::Inf<T>()), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(bs::accurate_(bs::acospi)(bs::Minf<T>()), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(bs::accurate_(bs::acospi)(bs::Nan<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::pedantic_(bs::acospi)(bs::Inf<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::pedantic_(bs::acospi)(bs::Minf<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::pedantic_(bs::acospi)(bs::Nan<T>()), bs::Nan<r_t>(), 0);
 #endif
-  STF_ULP_EQUAL(bs::accurate_(bs::acospi)(bs::Half<T>()), r_t(1.0/3.0), 0.5);
-  STF_ULP_EQUAL(bs::accurate_(bs::acospi)(bs::Mhalf<T>()), r_t(2.0/3.0), 0.5);
-  STF_ULP_EQUAL(bs::accurate_(bs::acospi)(bs::Mone<T>()), r_t(1), 0);
-  STF_ULP_EQUAL(bs::accurate_(bs::acospi)(bs::One<T>()), bs::Zero<r_t>(), 0);
-  STF_ULP_EQUAL(bs::accurate_(bs::acospi)(bs::Zero<T>()), r_t(1.0/2.0), 0);
+  STF_ULP_EQUAL(bs::pedantic_(bs::acospi)(bs::Half<T>()), r_t(1.0/3.0), 0.5);
+  STF_ULP_EQUAL(bs::pedantic_(bs::acospi)(bs::Mhalf<T>()), r_t(2.0/3.0), 0.5);
+  STF_ULP_EQUAL(bs::pedantic_(bs::acospi)(bs::Mone<T>()), r_t(1), 0);
+  STF_ULP_EQUAL(bs::pedantic_(bs::acospi)(bs::One<T>()), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(bs::pedantic_(bs::acospi)(bs::Zero<T>()), r_t(1.0/2.0), 0);
 }

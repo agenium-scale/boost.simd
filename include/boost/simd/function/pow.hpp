@@ -36,7 +36,7 @@ namespace boost { namespace simd
     T r = exp(y*log(x));
     @endcode
 
-    The pow function is conformant to std:pow considering the limits behaviours
+    The pow function is pedantic to std:pow considering the limits behaviours
     defined by the standard:
 
          - pow(+0, y), where y is a negative odd integer, returns +Inf

@@ -141,14 +141,14 @@ namespace boost { namespace simd
       wired capability).
 
       If you need "real" fma capabilities in all circumstances in your own
-      code you can use conformant_(fma) (although it can be expansive) or
+      code you can use pedantic_(fma) (although it can be expansive) or
       (generally still more expansive) std_(fma) by using the decorators.
 
-      @ref two_add, @ref two_prod and @ref two_split are used internally in @ref conformant_(fma) and
+      @ref two_add, @ref two_prod and @ref two_split are used internally in @ref pedantic_(fma) and
       can be useful in searching extra-accuracy in other circumstances as double-double
       computations.
 
-      @ref conformant_(fma) decis never used internally by Boost.SIMD
+      @ref pedantic_(fma) is never used internally by Boost.SIMD
 
       - **Standard operations**
 

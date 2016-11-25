@@ -18,27 +18,27 @@
 #include <boost/simd/constant/mzero.hpp>
 
 
-STF_CASE_TPL ("accurate  acosd ",  STF_IEEE_TYPES)
+STF_CASE_TPL ("pedantic  acosd ",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
   using bs::acosd;
-  using bs::accurate_;
+  using bs::pedantic_;
 
-  using r_t = decltype(accurate_(acosd)(T()));
+  using r_t = decltype(pedantic_(acosd)(T()));
 
   // return type conformity test
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(accurate_(acosd)(bs::Inf<T>()), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(accurate_(acosd)(bs::Minf<T>()), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(accurate_(acosd)(bs::Nan<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(pedantic_(acosd)(bs::Inf<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(pedantic_(acosd)(bs::Minf<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(pedantic_(acosd)(bs::Nan<T>()), bs::Nan<r_t>(), 0);
 #endif
-  STF_ULP_EQUAL(accurate_(acosd)(bs::Half<T>()), 60, 0.5);
-  STF_ULP_EQUAL(accurate_(acosd)(bs::Mhalf<T>()), 120, 0.5);
-  STF_ULP_EQUAL(accurate_(acosd)(bs::Mone<T>()), 180, 0.5);
-  STF_ULP_EQUAL(accurate_(acosd)(bs::One<T>()), bs::Zero<r_t>(), 0.5);
-  STF_ULP_EQUAL(accurate_(acosd)(bs::Zero<T>()), 90, 0.5);
+  STF_ULP_EQUAL(pedantic_(acosd)(bs::Half<T>()), 60, 0.5);
+  STF_ULP_EQUAL(pedantic_(acosd)(bs::Mhalf<T>()), 120, 0.5);
+  STF_ULP_EQUAL(pedantic_(acosd)(bs::Mone<T>()), 180, 0.5);
+  STF_ULP_EQUAL(pedantic_(acosd)(bs::One<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(pedantic_(acosd)(bs::Zero<T>()), 90, 0.5);
 }

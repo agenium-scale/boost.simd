@@ -7,15 +7,15 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/acos.hpp>
-#include <boost/simd/pack.hpp>
+#include <boost/simd/function/scalar/acos.hpp>
+#include <boost/simd/function/pedantic.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_accurate_acos, bs::accurate_(bs::acos));
+DEFINE_SCALAR_BENCH(scalar_pedantic_acos, bs::pedantic_(bs::acos));
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_accurate_acos, NS_BENCH_IEEE_TYPES>(-1, 1);
+  nsb::for_each<scalar_pedantic_acos, NS_BENCH_IEEE_TYPES>(-1, 1);
 }

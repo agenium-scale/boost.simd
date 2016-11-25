@@ -8,7 +8,7 @@
 //==================================================================================================
 #include <boost/simd/function/max.hpp>
 #include <boost/simd/constant/nan.hpp>
-#include <boost/simd/function/conformant.hpp>
+#include <boost/simd/function/pedantic.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
 
@@ -41,15 +41,15 @@ STF_CASE_TPL("Check max on integral pack" , STF_NUMERIC_TYPES)
 }
 
 
-STF_CASE_TPL("Check conformant max on nans  pack" , STF_IEEE_TYPES)
+STF_CASE_TPL("Check pedantic max on nans  pack" , STF_IEEE_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
   {
     using p_t = bs::pack<T, N>;
     p_t n =  bs::Nan<p_t>();
     p_t o =  bs::One<p_t>();
-    STF_IEEE_EQUAL(bs::conformant_(bs::max)(n, o), n);
-    STF_IEEE_EQUAL(bs::conformant_(bs::max)(o, n), o);
+    STF_IEEE_EQUAL(bs::pedantic_(bs::max)(n, o), n);
+    STF_IEEE_EQUAL(bs::pedantic_(bs::max)(o, n), o);
   }
 
 }

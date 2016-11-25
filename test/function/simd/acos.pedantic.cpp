@@ -7,7 +7,7 @@
 **/
 //==================================================================================================
 #include <simd_test.hpp>
-#include <boost/simd/function/acospi.hpp>
+#include <boost/simd/function/acos.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -20,6 +20,7 @@
 #include <boost/simd/constant/four.hpp>
 
 
+
 namespace bs = boost::simd;
 
 template <typename T, std::size_t N, typename Env>
@@ -30,16 +31,16 @@ void test(Env& $)
   T a1[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
-    a1[i] = i%2 ?T(i)/N : -T(i)/N;
-    b[i] = bs::accurate_(bs::acospi)(a1[i]);
+    a1[i] = i%2 ?T(i)/N : -T(i)/N ;
+    b[i] = bs::pedantic_(bs::acos)(a1[i]);
   }
 
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
-  STF_ULP_EQUAL(bs::accurate_(bs::acospi)(aa1), bb, 1.5);
+  STF_ULP_EQUAL(bs::pedantic_(bs::acos)(aa1), bb, 1);
 }
 
-STF_CASE_TPL("Check acospi on pack" , STF_IEEE_TYPES)
+STF_CASE_TPL("Check acos on pack" , STF_IEEE_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
@@ -48,27 +49,27 @@ STF_CASE_TPL("Check acospi on pack" , STF_IEEE_TYPES)
   test<T, N*2>($);
 }
 
-STF_CASE_TPL (" acospi",  STF_IEEE_TYPES)
+STF_CASE_TPL ("pedantic  acos",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
+  using bs::acos;
   using p_t = bs::pack<T>;
-  using bs::acospi;
 
-  using r_t = decltype(acospi(p_t()));
+  using r_t = decltype(bs::pedantic_(acos)(p_t()));
 
   // return type conformity test
   STF_TYPE_IS(r_t, p_t);
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(bs::accurate_(bs::acospi)(bs::Inf<p_t>()), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(bs::accurate_(bs::acospi)(bs::Minf<p_t>()), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(bs::accurate_(bs::acospi)(bs::Nan<p_t>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::pedantic_(bs::acos)(bs::Inf<p_t>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::pedantic_(bs::acos)(bs::Minf<p_t>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::pedantic_(bs::acos)(bs::Nan<p_t>()), bs::Nan<r_t>(), 0);
 #endif
-  STF_ULP_EQUAL(bs::accurate_(bs::acospi)(bs::Half<p_t>()), r_t(1.0/3.0), 0.5);
-  STF_ULP_EQUAL(bs::accurate_(bs::acospi)(bs::Mhalf<p_t>()), r_t(2.0/3.0), 0.5);
-  STF_ULP_EQUAL(bs::accurate_(bs::acospi)(bs::Mone<p_t>()), r_t(1), 0.5);
-  STF_ULP_EQUAL(bs::accurate_(bs::acospi)(bs::One<p_t>()), bs::Zero<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::accurate_(bs::acospi)(bs::Zero<p_t>()), r_t(1.0/2.0), 0.5);
+  STF_ULP_EQUAL(bs::pedantic_(bs::acos)(bs::Half<p_t>()), bs::Pio_3<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::pedantic_(bs::acos)(bs::Mhalf<p_t>()), bs::Twopio_3<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::pedantic_(bs::acos)(bs::Mone<p_t>()), bs::Pi<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::pedantic_(bs::acos)(bs::One<p_t>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(bs::pedantic_(bs::acos)(bs::Zero<p_t>()), bs::Pio_2<r_t>(), 0.5);
 }

@@ -27,12 +27,12 @@ set ( SOURCES
       abs.regular.cpp
       abs.saturated.cpp
       acos.regular.cpp
-      acos.accurate.cpp
+      acos.pedantic.cpp
       acosd.regular.cpp
-      acosd.accurate.cpp
+      acosd.pedantic.cpp
       acosh.cpp
       acospi.regular.cpp
-      acospi.accurate.cpp
+      acospi.pedantic.cpp
       acot.cpp
       acotd.cpp
       acoth.cpp
@@ -138,7 +138,7 @@ set ( SOURCES
       firstbitunset.cpp
       floor.cpp
       fma.regular.cpp
-      fma.conformant.cpp
+      fma.pedantic.cpp
       fms.cpp
       fnma.cpp
       fnms.cpp

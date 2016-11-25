@@ -23,31 +23,31 @@
 #include <boost/simd/function/inc.hpp>
 #include <cmath>
 
-STF_CASE_TPL (" bs::conformant_(fma) real",  STF_IEEE_TYPES)
+STF_CASE_TPL (" bs::pedantic_(fma) real",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
 
   using bs::fma;
 
   // return type conformity test
-  STF_EXPR_IS(bs::conformant_(fma)(T(),T(),T()), T);
+  STF_EXPR_IS(bs::pedantic_(fma)(T(),T(),T()), T);
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(bs::conformant_(fma)(bs::Inf<T>(), bs::Inf<T>(), bs::Inf<T>()), bs::Inf<T>());
-  STF_IEEE_EQUAL(bs::conformant_(fma)(bs::Minf<T>(), bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::conformant_(fma)(bs::Nan<T>(), bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());
+  STF_EQUAL(bs::pedantic_(fma)(bs::Inf<T>(), bs::Inf<T>(), bs::Inf<T>()), bs::Inf<T>());
+  STF_IEEE_EQUAL(bs::pedantic_(fma)(bs::Minf<T>(), bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::pedantic_(fma)(bs::Nan<T>(), bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());
 #endif
-  STF_EQUAL(bs::conformant_(fma)(bs::Mone<T>(), bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
-  STF_EQUAL(bs::conformant_(fma)(bs::One<T>(), bs::One<T>(), bs::One<T>()), bs::Two<T>());
-  STF_EQUAL(bs::conformant_(fma)(bs::One<T>()+bs::Eps<T>(), bs::One<T>()-bs::Eps<T>(),bs::Mone<T>()), -bs::Eps<T>()*bs::Eps<T>());
-  STF_EQUAL(bs::conformant_(fma)(bs::Zero<T>(), bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
+  STF_EQUAL(bs::pedantic_(fma)(bs::Mone<T>(), bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
+  STF_EQUAL(bs::pedantic_(fma)(bs::One<T>(), bs::One<T>(), bs::One<T>()), bs::Two<T>());
+  STF_EQUAL(bs::pedantic_(fma)(bs::One<T>()+bs::Eps<T>(), bs::One<T>()-bs::Eps<T>(),bs::Mone<T>()), -bs::Eps<T>()*bs::Eps<T>());
+  STF_EQUAL(bs::pedantic_(fma)(bs::Zero<T>(), bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
 #ifndef  STF_DONT_CARE__FMA_OVERFLOW
-  STF_EQUAL(bs::conformant_(fma)(bs::Valmax<T>(), bs::Two<T>(), -bs::Valmax<T>()), bs::Valmax<T>());
+  STF_EQUAL(bs::pedantic_(fma)(bs::Valmax<T>(), bs::Two<T>(), -bs::Valmax<T>()), bs::Valmax<T>());
 #endif
 } // end of test for floating_
 
-STF_CASE_TPL (" bs::conformant_(fma) signed_int",  STF_SIGNED_INTEGRAL_TYPES)
+STF_CASE_TPL (" bs::pedantic_(fma) signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
 
@@ -55,30 +55,30 @@ STF_CASE_TPL (" bs::conformant_(fma) signed_int",  STF_SIGNED_INTEGRAL_TYPES)
 
   // return type conformity test
 
-  STF_EXPR_IS(bs::conformant_(fma)(T(),T(),T()), T);
+  STF_EXPR_IS(bs::pedantic_(fma)(T(),T(),T()), T);
 
   // specific values tests
-  STF_EQUAL(bs::conformant_(fma)(bs::Mone<T>(), bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
-  STF_EQUAL(bs::conformant_(fma)(bs::One<T>(), bs::One<T>(), bs::One<T>()), bs::Two<T>());
-  STF_EQUAL(bs::conformant_(fma)(bs::Zero<T>(), bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
-  STF_EQUAL(bs::conformant_(fma)(bs::Valmax<T>(), bs::Two<T>(), bs::inc(bs::Valmin<T>())), bs::Valmax<T>());
+  STF_EQUAL(bs::pedantic_(fma)(bs::Mone<T>(), bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
+  STF_EQUAL(bs::pedantic_(fma)(bs::One<T>(), bs::One<T>(), bs::One<T>()), bs::Two<T>());
+  STF_EQUAL(bs::pedantic_(fma)(bs::Zero<T>(), bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
+  STF_EQUAL(bs::pedantic_(fma)(bs::Valmax<T>(), bs::Two<T>(), bs::inc(bs::Valmin<T>())), bs::Valmax<T>());
 } // end of test for signed_int_
 
-STF_CASE_TPL (" bs::conformant_(fma) unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
+STF_CASE_TPL (" bs::pedantic_(fma) unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
 
   using bs::fma;
 
   // return type conformity test
-  STF_EXPR_IS(bs::conformant_(fma)(T(),T(),T()), T);
+  STF_EXPR_IS(bs::pedantic_(fma)(T(),T(),T()), T);
 
   // specific values tests
-  STF_EQUAL(bs::conformant_(fma)(bs::One<T>(), bs::One<T>(), bs::One<T>()), bs::Two<T>());
-  STF_EQUAL(bs::conformant_(fma)(bs::Zero<T>(), bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
+  STF_EQUAL(bs::pedantic_(fma)(bs::One<T>(), bs::One<T>(), bs::One<T>()), bs::Two<T>());
+  STF_EQUAL(bs::pedantic_(fma)(bs::Zero<T>(), bs::Zero<T>(), bs::Zero<T>()), bs::Zero<T>());
 } // end of test for unsigned_int_
 
-STF_CASE_TPL (" bs::conformant_(fma) std real",  STF_IEEE_TYPES)
+STF_CASE_TPL (" bs::pedantic_(fma) std real",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
 

@@ -8,7 +8,7 @@
 //==================================================================================================
 #include <boost/simd/function/min.hpp>
 #include <boost/simd/constant/nan.hpp>
-#include <boost/simd/function/conformant.hpp>
+#include <boost/simd/function/pedantic.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
 
@@ -40,7 +40,7 @@ STF_CASE_TPL("Check min on integral pack" , STF_NUMERIC_TYPES)
   test<T, N*2>($);
 }
 
-STF_CASE_TPL("Check conformant min on nans  pack" , STF_IEEE_TYPES)
+STF_CASE_TPL("Check pedantic min on nans  pack" , STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   static const std::size_t N = bs::pack<T>::static_size;
@@ -48,8 +48,8 @@ STF_CASE_TPL("Check conformant min on nans  pack" , STF_IEEE_TYPES)
     using p_t = bs::pack<T, N>;
     p_t n =  bs::Nan<p_t>();
     p_t o =  bs::One<p_t>();
-    STF_IEEE_EQUAL(bs::conformant_(bs::min)(n, o), n);
-    STF_IEEE_EQUAL(bs::conformant_(bs::min)(o, n), o);
+    STF_IEEE_EQUAL(bs::pedantic_(bs::min)(n, o), n);
+    STF_IEEE_EQUAL(bs::pedantic_(bs::min)(o, n), o);
   }
 
 }

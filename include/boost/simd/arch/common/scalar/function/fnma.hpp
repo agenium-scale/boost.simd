@@ -40,7 +40,7 @@ namespace boost { namespace simd { namespace ext
    BOOST_DISPATCH_OVERLOAD ( fnma_
                            , (typename A0)
                            , bd::cpu_
-                           , bs::conformant_tag
+                           , bs::pedantic_tag
                            , bd::scalar_< bd::unspecified_<A0> >
                            , bd::scalar_< bd::unspecified_<A0> >
                            , bd::scalar_< bd::unspecified_<A0> >
@@ -49,7 +49,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE
     A0 operator() ( A0 a0, A0 a1, A0 a2) const BOOST_NOEXCEPT
     {
-      return -conformant_(fma)(a0, a1, a2);
+      return -pedantic_(fma)(a0, a1, a2);
     }
   };
 

@@ -31,7 +31,7 @@ int main(int argc, char* argv[])
   if(argc >= 3) maxi = std::atof(argv[2]);
   bs::exhaustive_test<bs::pack<float>> ( mini
                                        , maxi
-                                       , bs::accurate_(bs::acos)
+                                       , bs::pedantic_(bs::acos)
                                        , raw_acos()
                                        );
 
