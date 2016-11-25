@@ -7,7 +7,6 @@
 **/
 //==================================================================================================
 #include <boost/simd/function/rec.hpp>
-#include <boost/simd/function/fast.hpp>
 #include <boost/simd/function/raw.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>

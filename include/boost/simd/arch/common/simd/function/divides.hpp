@@ -116,7 +116,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE T operator()(const fast_tag &, T const& a, T const& b
                                   ) const BOOST_NOEXCEPT
     {
-      return a*fast_(rec)(b);
+      return a*rec(b); // this is temporary as fast_ is meant to disappear
     }
   };
    BOOST_DISPATCH_OVERLOAD ( divides_

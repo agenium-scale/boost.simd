@@ -14,14 +14,13 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/mzero.hpp>
-#include <boost/simd/function/any.hpp>
+#include <boost/simd/function/refine_rec.hpp>
 #include <boost/simd/function/bitwise_or.hpp>
 #include <boost/simd/function/bitwise_and.hpp>
 #include <boost/simd/function/bitofsign.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/is_inf.hpp>
 #include <boost/simd/arch/x86/avx/simd/function/rec_raw.hpp>
-#include <boost/simd/arch/x86/avx/simd/function/rec_fast.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -45,10 +44,11 @@ namespace boost { namespace simd { namespace ext
       #endif
       #ifndef BOOST_SIMD_NO_DENORMALS
       auto is_den = is_less(bs::abs(a00), Smallestposval<A0>());
+      return if_else(is_den,  bitwise_or(bitofsign(a00), Inf<A0>()), a0);
       #else
       auto is_den = is_eqz(a00);
+      return if_else(is_den,  bitwise_or(a00, Inf<A0>()), a0);
       #endif
-      return if_else(is_den,  bitwise_or(bitofsign(a00), Inf<A0>()), a0);
     }
   };
 
@@ -69,10 +69,11 @@ namespace boost { namespace simd { namespace ext
       #endif
       #ifndef BOOST_SIMD_NO_DENORMALS
       auto is_den = is_less(bs::abs(a00), Smallestposval<A0>());
+      return if_else(is_den,  bitwise_or(bitofsign(a00), Inf<A0>()), a0);
       #else
       auto is_den = is_eqz(a00);
+      return if_else(is_den,  bitwise_or(a00, Inf<A0>()), a0);
       #endif
-      return if_else(is_den,  bitwise_or(bitofsign(a00), Inf<A0>()), a0);
     }
   };
 

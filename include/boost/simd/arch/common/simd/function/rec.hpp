@@ -13,7 +13,6 @@
 #include <boost/simd/detail/traits.hpp>
 #include <boost/simd/function/if_one_else_zero.hpp>
 #include <boost/simd/function/abs.hpp>
-#include <boost/simd/function/fast.hpp>
 #include <boost/simd/function/raw.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/one.hpp>
@@ -70,8 +69,5 @@ namespace boost { namespace simd { namespace ext
 
 
 } } }
-
-//#include <boost/simd/arch/common/simd/function/rec_raw.hpp>
-//#include <boost/simd/arch/common/simd/function/rec_fast.hpp>
 
 #endif

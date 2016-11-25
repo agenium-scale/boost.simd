@@ -10,14 +10,13 @@
 #define BOOST_SIMD_ARCH_PPC_VMX_SIMD_FUNCTION_REC_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/copysign.hpp>
+#include <boost/simd/function/refine_rec.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/is_eqz.hpp>
-#include <boost/simd/function/fast.hpp>
 #include <boost/simd/constant/inf.hpp>
 
 #if !defined( BOOST_SIMD_NO_INFINITIES )
-#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/mzero.hpp>
 #include <boost/simd/function/is_inf.hpp>
 #endif
 
@@ -34,18 +33,18 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
     {
-      A0 estimate = fast_(rec)(a0);
+      A0 estimate = refine_rec(a0, raw_(rec)(a0);
 
       // fix rec(+/-0)
       estimate = if_else( is_eqz(a0)
-                        , copysign(Inf<A0>(),a0)
+                        , bitwise_or(a0, Inf<A0>())
                         , estimate
                         );
 
       // fix rec(+/-inf)
       #if !defined( BOOST_SIMD_NO_INFINITIES )
       estimate = if_else( is_inf(a0)
-                        , copysign(Zero<A0>(),a0)
+                        , bitwise_and(a0, Mzero<A0>())
                         , estimate
                         );
       #endif

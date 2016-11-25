@@ -42,7 +42,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 const& a0) const BOOST_NOEXCEPT
     {
-      return bs::fast_(bs::rec)(bs::fast_(bs::sqrt)(a0));
+      return bs::rec(bs::fast_(bs::sqrt)(a0));
     }
   };
 } } }

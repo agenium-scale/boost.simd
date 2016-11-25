@@ -268,7 +268,6 @@ set(SOURCES
     predecessor.cpp
     prev.cpp
     rec.regular.cpp
-    rec.fast.cpp
     rec.raw.cpp
     rem.regular.cpp
     rem.fast.cpp

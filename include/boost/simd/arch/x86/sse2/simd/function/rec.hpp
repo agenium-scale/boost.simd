@@ -12,7 +12,6 @@
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/raw.hpp>
 #include <boost/simd/arch/x86/sse2/simd/function/rec_raw.hpp>
-#include <boost/simd/arch/x86/sse2/simd/function/rec_fast.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
