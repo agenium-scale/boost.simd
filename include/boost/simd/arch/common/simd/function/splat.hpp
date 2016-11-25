@@ -12,6 +12,7 @@
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/meta/as_arithmetic.hpp>
 #include <boost/simd/function/genmask.hpp>
+#include <boost/simd/function/combine.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/brigand.hpp>
 
@@ -68,7 +69,7 @@ namespace boost { namespace simd { namespace ext
     target_t do_(V const& v, aggregate_storage const&, brigand::list<N0,N1,N...> const&) const
     {
       typename storage_t::value_type s(v);
-      return {{{ s, s }}};
+      return combine(s,s);
     }
   };
 
@@ -101,7 +102,7 @@ namespace boost { namespace simd { namespace ext
     target_t do_(V const& v, aggregate_storage const&, brigand::list<N...> const&) const
     {
       typename storage_t::value_type s(!!v);
-      return {{ s, s }};
+      return combine(s,s);
     }
   };
 } } }
