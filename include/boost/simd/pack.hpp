@@ -254,6 +254,20 @@ namespace boost { namespace simd
       return traits::at(*this, i);
     }
 
+    /// @overload
+    template<std::uint64_t Index>
+    BOOST_FORCEINLINE value_type operator[](std::integral_constant<std::uint64_t,Index> const&)
+    {
+      return ::boost::simd::extract<Index>(*this);
+    }
+
+    /// @overload
+    template<std::uint64_t Index>
+    BOOST_FORCEINLINE value_type operator[](std::integral_constant<std::uint64_t,Index> const&) const
+    {
+      return ::boost::simd::extract<Index>(*this);
+    }
+
     BOOST_FORCEINLINE value_type get(std::size_t i) const
     {
       return ::boost::simd::extract(*this, i);
