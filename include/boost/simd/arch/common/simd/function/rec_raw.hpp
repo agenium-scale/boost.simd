@@ -19,7 +19,7 @@ namespace boost { namespace simd { namespace ext
   namespace bs = boost::simd;
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////
-  /// raw_(rec) for floating types: take all version when no speedier exists reverting to rec
+  /// raw_(rec) for floating types: 'take all' version when no speedier exists
   /// on some architectures an intrinsic is called providing few bits and/or not getting correct
   /// results for zeros denormals  and infinities (sse1, sse2, avx, vmx)
   /// These version are used as bases for improvement using Newton Raphson and correcting limits
