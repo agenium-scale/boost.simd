@@ -23,7 +23,7 @@
 namespace bs = boost::simd;
 
 template <typename T, std::size_t N, typename Env>
-void test_fast(Env& $)
+void test_raw(Env& $)
 {
   using p_t = bs::pack<T, N>;
 
@@ -31,21 +31,21 @@ void test_fast(Env& $)
   for(std::size_t i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? T(2*i) : T(2*i+1);
-    b[i] = bs::fast_(bs::rsqrt)(a1[i]) ;
+    b[i] = bs::raw_(bs::rsqrt)(a1[i]) ;
   }
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
 
-  STF_ULP_EQUAL(bs::fast_(bs::rsqrt)(aa1), bb, 2048);
+  STF_ULP_EQUAL(bs::raw_(bs::rsqrt)(aa1), bb, 2048);
 }
 
-STF_CASE_TPL("Check fast rsqrt on pack" , STF_IEEE_TYPES)
+STF_CASE_TPL("Check raw rsqrt on pack" , STF_IEEE_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test_fast<T, N>($);
-  test_fast<T, N/2>($);
-  test_fast<T, N*2>($);
+  test_raw<T, N>($);
+  test_raw<T, N/2>($);
+  test_raw<T, N*2>($);
 }
 
 template <typename T, std::size_t N, typename Env>

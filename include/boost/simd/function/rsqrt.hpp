@@ -36,14 +36,12 @@ namespace boost { namespace simd
     T r = T(1)/sqrt(x)
     @endcode
 
-    @par Note
-
-    If full accuracy is not needed a sometimes faster less accurate version of the function
-    can be sppeded by the fast_ decorator : fast_(rsqrt)(x).
-
     @par Decorators
 
-    fast_ for floating entries
+    - raw_ for floating entries: if full accuracy is not needed a sometimes rawer less accurate version of the function
+    can be obtained using the the raw_ decorator : raw_(rsqrt)(x).
+
+    @par Decorators
 
   **/
   Value rsqrt(Value const & v0);

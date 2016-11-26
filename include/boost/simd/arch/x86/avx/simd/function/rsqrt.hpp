@@ -18,7 +18,7 @@
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/three.hpp>
-#include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/raw.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -28,11 +28,11 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD( rsqrt_
                          , (typename A0)
                          , bs::avx_
-                         , bs::fast_tag
+                         , bs::raw_tag
                          , bs::pack_< bd::single_<A0>, bs::avx_>
                          )
    {
-     BOOST_FORCEINLINE A0 operator()( const bs::fast_tag &, A0 const& a0) const
+     BOOST_FORCEINLINE A0 operator()( const bs::raw_tag &, A0 const& a0) const
       {
         return _mm256_rsqrt_ps( a0 );
       }

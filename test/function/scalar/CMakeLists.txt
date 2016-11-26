@@ -348,7 +348,7 @@ set ( SOURCES
    sqrt1pm1.cpp
    sqrt.regular.cpp
    sqrt.std.cpp
-   sqrt.fast.cpp
+   sqrt.raw.cpp
    stirling.cpp
    store.cpp
    stream.cpp

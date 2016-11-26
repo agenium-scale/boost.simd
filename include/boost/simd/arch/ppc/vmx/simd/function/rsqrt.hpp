@@ -15,6 +15,7 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/zero.hpp>
+#include <boost/simd/function/fast.hpp>
 #include <boost/simd/function/fma.hpp>
 #include <boost/simd/function/sqr.hpp>
 #include <boost/simd/function/is_inf.hpp>
@@ -34,7 +35,7 @@ namespace boost { namespace simd { namespace ext
       BOOST_FORCEINLINE A0 operator()(const A0& a0) const BOOST_NOEXCEPT
       {
         A0 ct = One<A0>();
-        A0 es = fast_(rsqrt)(a0);
+        A0 es = raw_(rsqrt)(a0);
         A0 se = sqr(es);
         A0 he = es*Half<A0>();
 
@@ -53,11 +54,11 @@ namespace boost { namespace simd { namespace ext
    BOOST_DISPATCH_OVERLOAD( rsqrt_
                           , (typename A0)
                           , bs::vmx_
-                          , bs::fast_tag
+                          , bs::raw_tag
                           , bs::pack_< bd::single_<A0>, bs::vmx_>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()(bs::fast_tag const&, const A0& a0) const BOOST_NOEXCEPT
+      BOOST_FORCEINLINE A0 operator()(bs::raw_tag const&, const A0& a0) const BOOST_NOEXCEPT
       {
         return vec_rsqrte( a0.storage() );
       }

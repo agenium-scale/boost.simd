@@ -12,6 +12,7 @@
 #define BOOST_SIMD_ARCH_PPC_VMX_SIMD_FUNCTION_SQRT_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
+#include <boost/simd/function/raw.hpp>
 #include <boost/simd/function/if_else_zero.hpp>
 #include <boost/simd/function/rsqrt.hpp>
 
@@ -45,13 +46,13 @@ namespace boost { namespace simd { namespace ext
    BOOST_DISPATCH_OVERLOAD( sqrt_
                           , (typename A0)
                           , bs::vmx_
-                          , bs::fast_tag
+                          , bs::raw_tag
                           , bs::pack_< bd::single_<A0>, bs::vmx_>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()(bs::fast_tag const&, const A0& a0) const BOOST_NOEXCEPT
+      BOOST_FORCEINLINE A0 operator()(bs::raw_tag const&, const A0& a0) const BOOST_NOEXCEPT
       {
-        return if_else_zero(a0, a0 * fast_(rsqrt)(a0));
+        return if_else_zero(a0, a0 * raw_(rsqrt)(a0));
       }
    };
 } } }

@@ -35,8 +35,9 @@ namespace boost { namespace simd
 
     @par Decorators
 
-    std_ calls std::sqrt
-    fast_ for floating entries can gain some speed with less accuracy on some architectures.
+    - std_ calls std::sqrt
+
+    - raw_ for floating entries can gain some speed with less accuracy on some architectures.
 
   **/
   Value sqrt(Value const & v0);
