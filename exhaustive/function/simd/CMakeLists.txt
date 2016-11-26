@@ -60,7 +60,8 @@ log.cpp
 nthroot.cpp
 oneminus.cpp
 rec.cpp
-rsqrt.cpp
+rsqrt.regular.cpp
+rsqrt.raw.cpp
 sign.cpp
 signnz.cpp
 sinc.cpp
