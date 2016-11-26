@@ -37,7 +37,7 @@ void test(Env& $)
 
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
-  STF_EQUAL(bs::coth(aa1), bb);
+  STF_ULP_EQUAL(bs::coth(aa1), bb, 0.5);
 }
 
 STF_CASE_TPL("Check coth saturated on pack" , STF_IEEE_TYPES)
@@ -69,6 +69,6 @@ STF_CASE_TPL (" coth",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(coth(bs::Mzero<p_t>()), bs::Minf<r_t>(), 0);
   STF_ULP_EQUAL(coth(bs::Zero<p_t>()), bs::Inf<r_t>(), 0);
 #endif
-  STF_ULP_EQUAL(coth(bs::Mhalf<p_t>()), p_t(-2.16395341373865284877000401022), 0);
-  STF_ULP_EQUAL(coth(bs::Half<p_t>()), p_t(2.16395341373865284877000401022), 0);
+  STF_ULP_EQUAL(coth(bs::Mhalf<p_t>()), p_t(-2.16395341373865284877000401022), 0.5);
+  STF_ULP_EQUAL(coth(bs::Half<p_t>()), p_t(2.16395341373865284877000401022), 0.5);
 }
