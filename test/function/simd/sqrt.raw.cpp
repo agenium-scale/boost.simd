@@ -67,15 +67,15 @@ STF_CASE_TPL (" sqrt real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(bs::raw_(bs::sqrt)(bs::Inf<p_t>()), bs::Inf<r_t>(), 0);
-  STF_ULP_EQUAL(bs::raw_(bs::sqrt)(bs::Minf<p_t>()), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(bs::raw_(bs::sqrt)(bs::Nan<p_t>()), bs::Nan<r_t>(), 0);
+  STF_RELATIVE_EQUAL(bs::raw_(bs::sqrt)(bs::Inf<p_t>()), bs::Inf<r_t>(), 0.1);
+  STF_RELATIVE_EQUAL(bs::raw_(bs::sqrt)(bs::Minf<p_t>()), bs::Nan<r_t>(), 0.1);
+  STF_RELATIVE_EQUAL(bs::raw_(bs::sqrt)(bs::Nan<p_t>()), bs::Nan<r_t>(), 0.1);
 #endif
-  STF_ULP_EQUAL(bs::raw_(bs::sqrt)(bs::Mone<p_t>()), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(bs::raw_(bs::sqrt)(bs::One<p_t>()), bs::One<r_t>(), 0);
-  STF_ULP_EQUAL(bs::raw_(bs::sqrt)(bs::Two<p_t>()), bs::Sqrt_2<r_t>(), 0.5);
-  STF_ULP_EQUAL(bs::raw_(bs::sqrt)(bs::Zero<p_t>()), bs::Zero<r_t>(), 0);
-  STF_ULP_EQUAL(bs::raw_(bs::sqrt)(bs::Mzero<p_t>()), bs::Mzero<r_t>(), 0);
-  STF_ULP_EQUAL(bs::raw_(bs::sqrt)(bs::Four<p_t>()), bs::Two<r_t>(), 0);
+  STF_RELATIVE_EQUAL(bs::raw_(bs::sqrt)(bs::Mone<p_t>()), bs::Nan<r_t>(), 0.1);
+  STF_RELATIVE_EQUAL(bs::raw_(bs::sqrt)(bs::One<p_t>()), bs::One<r_t>(), 0.1);
+  STF_RELATIVE_EQUAL(bs::raw_(bs::sqrt)(bs::Two<p_t>()), bs::Sqrt_2<r_t>(), 0.1);
+  STF_RELATIVE_EQUAL(bs::raw_(bs::sqrt)(bs::Zero<p_t>()), bs::Zero<r_t>(), 0.1);
+  STF_RELATIVE_EQUAL(bs::raw_(bs::sqrt)(bs::Mzero<p_t>()), bs::Mzero<r_t>(), 0.1);
+  STF_RELATIVE_EQUAL(bs::raw_(bs::sqrt)(bs::Four<p_t>()), bs::Two<r_t>(), 0.1);
 } // end of test for floating_
 

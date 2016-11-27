@@ -48,19 +48,6 @@ namespace boost { namespace simd { namespace ext
        return _mm_sqrt_pd(a0);
     }
   };
-  BOOST_DISPATCH_OVERLOAD ( sqrt_
-                          , (typename A0)
-                          , bs::sse2_
-                          , boost::simd::raw_tag
-                          , bs::pack_<bd::double_<A0>, bs::sse_>
-                         )
-  {
-    BOOST_FORCEINLINE A0 operator() (const raw_tag &, const A0 & a0 ) const BOOST_NOEXCEPT
-    {
-      return  _mm_cvtps_pd(_mm_sqrt_ps(_mm_cvtpd_ps(a0))); //The maximum error for this approximation is 1.5e-12
-//      return _mm_sqrt_pd(a0);
-    }
-  };
 
   BOOST_DISPATCH_OVERLOAD ( sqrt_
                           , (typename A0)
