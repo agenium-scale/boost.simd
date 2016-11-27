@@ -62,6 +62,7 @@ oneminus.cpp
 rec.cpp
 rsqrt.regular.cpp
 rsqrt.raw.cpp
+rsqrt.pedantic.cpp
 sign.cpp
 signnz.cpp
 sinc.cpp

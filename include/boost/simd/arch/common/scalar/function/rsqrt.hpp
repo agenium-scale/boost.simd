@@ -10,6 +10,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_RSQRT_HPP_INCLUDED
 
 #include <boost/simd/function/raw.hpp>
+#include <boost/simd/function/pedantic.hpp>
 #include <boost/simd/function/rec.hpp>
 #include <boost/simd/function/sqrt.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
@@ -72,6 +73,20 @@ namespace boost { namespace simd { namespace ext
       return bs::rsqrt(a0);
     }
   };
+
+   BOOST_DISPATCH_OVERLOAD ( rsqrt_
+                          , (typename A0)
+                          , bd::cpu_
+                          , boost::simd::pedantic_tag
+                          , bd::scalar_< bd::floating_<A0> >
+                         )
+  {
+    BOOST_FORCEINLINE A0 operator() (const pedantic_tag &,  A0 a0) const BOOST_NOEXCEPT
+    {
+      return bs::rec(bs::sqrt(a0));
+    }
+  };
+
 } } }
 
 #endif
