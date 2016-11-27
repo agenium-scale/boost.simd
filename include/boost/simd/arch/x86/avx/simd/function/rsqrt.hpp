@@ -41,12 +41,41 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD( rsqrt_
                          , (typename A0)
                          , bs::avx_
+                         , bs::raw_tag
+                         , bs::pack_< bd::double_<A0>, bs::avx_>
+                         )
+   {
+     BOOST_FORCEINLINE A0 operator()( const bs::raw_tag &, A0 const& a0) const
+      {
+        return _mm256_cvtps_pd(mm_rsqrt_ps( _mm256_cvtpd_ps(a0) ));//The error for this approximation is no more than 1.5.e-12
+      }
+   };
+
+  BOOST_DISPATCH_OVERLOAD( rsqrt_
+                         , (typename A0)
+                         , bs::avx_
                          , bs::pack_< bd::single_<A0>, bs::avx_>
                          )
    {
-     BOOST_FORCEINLINE A0 operator()(A0 const& a0) const
+     BOOST_FORCEINLINE A0 operator()(A0 const& a00) const
       {
         A0 a0 = refine_rsqrt(a00, refine_rsqrt(a00, raw_(rsqrt)(a00)));
+        #ifndef BOOST_SIMD_NO_INFINITIES
+        a0 = if_zero_else(a00 == Inf<A0>(),a0);
+        #endif
+        return if_else(is_eqz(a00), Inf<A0>(), a0);
+      }
+   };
+
+  BOOST_DISPATCH_OVERLOAD( rsqrt_
+                         , (typename A0)
+                         , bs::avx_
+                         , bs::pack_< bd::double_<A0>, bs::avx_>
+                         )
+   {
+     BOOST_FORCEINLINE A0 operator()(A0 const& a00) const
+      {
+        A0 a0 =  refine_rsqrt(a00, refine_rsqrt(a00, refine_rsqrt(a00, raw_(rsqrt)(a00))));
         #ifndef BOOST_SIMD_NO_INFINITIES
         a0 = if_zero_else(a00 == Inf<A0>(),a0);
         #endif
