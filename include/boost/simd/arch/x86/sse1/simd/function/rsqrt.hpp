@@ -15,6 +15,7 @@
 #include <boost/simd/function/raw.hpp>
 #include <boost/simd/function/pedantic.hpp>
 #include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/if_nan_else.hpp>
 #include <boost/simd/function/if_zero_else.hpp>
 #include <boost/simd/function/is_eqz.hpp>

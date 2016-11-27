@@ -12,13 +12,16 @@
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_RSQRT_HPP_INCLUDED
 #include <boost/simd/detail/overload.hpp>
 
+#include <boost/simd/function/abs.hpp>
 #include <boost/simd/function/raw.hpp>
+#include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/if_nan_else.hpp>
 #include <boost/simd/function/if_zero_else.hpp>
 #include <boost/simd/function/is_eqz.hpp>
 #include <boost/simd/function/is_ltz.hpp>
 #include <boost/simd/function/refine_rsqrt.hpp>
 #include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/ratio.hpp>
 
 namespace boost { namespace simd { namespace ext
 {

@@ -32,11 +32,11 @@ STF_CASE_TPL( "raw rsqrt", STF_IEEE_TYPES )
   STF_TYPE_IS(r_t, T);
 
   // specific values tests
-  STF_ULP_EQUAL(bs::raw_(rsqrt)(bs::Mone<T>()), bs::Nan<T>(), 75);
-  STF_ULP_EQUAL(bs::raw_(rsqrt)(bs::Nan<T>()), bs::Nan<T>(), 0.5);
-  STF_ULP_EQUAL(bs::raw_(rsqrt)(bs::One<T>()), bs::One<T>(), 30);
-  STF_ULP_EQUAL(bs::raw_(rsqrt)(bs::Four<T>()), bs::Half<T>(), 30);
-  STF_ULP_EQUAL(bs::raw_(rsqrt)(bs::Half<T>()), bs::Sqrt_2<T>(), 70);
-  STF_ULP_EQUAL(bs::raw_(rsqrt)(T(0.01)), T(10), 30);
-  STF_ULP_EQUAL(bs::raw_(rsqrt)(T(0.0001)), T(100), 30);
+  STF_ULP_EQUAL(bs::raw_(rsqrt)(bs::Mone<T>()), bs::Nan<T>(), 0);
+  STF_ULP_EQUAL(bs::raw_(rsqrt)(bs::Nan<T>()), bs::Nan<T>(), 0);
+  STF_RELATIVE_EQUAL(bs::raw_(rsqrt)(bs::One<T>()), bs::One<T>(), 0.5);
+  STF_RELATIVE_EQUAL(bs::raw_(rsqrt)(bs::Four<T>()), bs::Half<T>(), 0.5);
+  STF_RELATIVE_EQUAL(bs::raw_(rsqrt)(bs::Half<T>()), bs::Sqrt_2<T>(), 0.5);
+  STF_RELATIVE_EQUAL(bs::raw_(rsqrt)(T(0.01)), T(10), 0.5);
+  STF_RELATIVE_EQUAL(bs::raw_(rsqrt)(T(0.0001)), T(100), 0.5);
 }

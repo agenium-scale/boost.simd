@@ -17,6 +17,8 @@
 #include <boost/simd/function/is_gez.hpp>
 #include <boost/simd/function/is_ngez.hpp>
 #include <boost/simd/function/rsqrt.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/zero.hpp>
 #include <boost/simd/detail/math.hpp>
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>

@@ -42,8 +42,8 @@ STF_CASE_TPL (" sqrt real raw",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(bs::raw_(sqrt)(bs::Nan<T>()), bs::Nan<r_t>(), 0);
 #endif
   STF_ULP_EQUAL(bs::raw_(sqrt)(bs::Mone<T>()), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(bs::raw_(sqrt)(bs::One<T>()), bs::One<r_t>(), 20);
-  STF_ULP_EQUAL(bs::raw_(sqrt)(bs::Two<T>()), bs::Sqrt_2<r_t>(), 1);
-  STF_ULP_EQUAL(bs::raw_(sqrt)(bs::Zero<T>()), bs::Zero<r_t>(), 0);
-  STF_ULP_EQUAL(bs::raw_(sqrt)(bs::Four<T>()), bs::Two<r_t>(), 20);
+  STF_RELATIVE_EQUAL(bs::raw_(sqrt)(bs::One<T>()), bs::One<r_t>(), 0.5);
+  STF_RELATIVE_EQUAL(bs::raw_(sqrt)(bs::Two<T>()), bs::Sqrt_2<r_t>(),0.5);
+  STF_RELATIVE_EQUAL(bs::raw_(sqrt)(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
+  STF_RELATIVE_EQUAL(bs::raw_(sqrt)(bs::Four<T>()), bs::Two<r_t>(), 0.5);
 } // end of test for floating_

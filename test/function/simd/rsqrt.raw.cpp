@@ -30,12 +30,11 @@ void test_raw(Env& $)
   T a1[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
-    a1[i] = (i%2) ? T(2*i) : T(2*i+1);
+    a1[i] = (i%2) ? T(2*i+1) : T(1)/(2*i+2);
     b[i] = bs::raw_(bs::rsqrt)(a1[i]) ;
   }
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
-
   STF_RELATIVE_EQUAL(bs::raw_(bs::rsqrt)(aa1), bb, 1);
 }
 
