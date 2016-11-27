@@ -337,7 +337,8 @@ set ( SOURCES
       sqr.regular.cpp
       sqr.saturated.cpp
       sqrt1pm1.cpp
-      sqrt.cpp
+      sqrt.regular.cpp
+      sqrt.raw.cpp
       stirling.cpp
       stream.cpp
       successor.cpp

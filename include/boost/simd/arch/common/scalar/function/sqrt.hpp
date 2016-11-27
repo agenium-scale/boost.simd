@@ -13,7 +13,9 @@
 #include <boost/simd/function/raw.hpp>
 #include <boost/simd/function/std.hpp>
 
+#include <boost/simd/function/is_eqz.hpp>
 #include <boost/simd/function/is_gez.hpp>
+#include <boost/simd/function/is_ngez.hpp>
 #include <boost/simd/function/rsqrt.hpp>
 #include <boost/simd/detail/math.hpp>
 #include <boost/simd/function/std.hpp>
@@ -82,25 +84,14 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0)
                           , bd::cpu_
                           , boost::simd::raw_tag
-                          , bd::scalar_< bd::single_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
                           )
   {
     BOOST_FORCEINLINE A0 operator() (const raw_tag &,  A0  a0) const BOOST_NOEXCEPT
     {
-      return if_else_zero(a0, a0 * raw_(rsqrt)(a0));
-    }
-  };
-
-   BOOST_DISPATCH_OVERLOAD ( sqrt_
-                          , (typename A0)
-                          , bd::cpu_
-                          , boost::simd::raw_tag
-                          , bd::scalar_< bd::double_<A0> >
-                          )
-  {
-    BOOST_FORCEINLINE A0 operator() (const raw_tag &,  A0  a0) const BOOST_NOEXCEPT
-    {
-      return ::sqrt(a0);
+      if (is_ngez(a0)) return Nan<A0>();
+      if (is_eqz(a0)) return Zero<A0>();
+      return a0 * raw_(rsqrt)(a0);
     }
   };
 

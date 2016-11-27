@@ -6,8 +6,6 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#include <boost/simd/constant/inf.hpp>
-#include <boost/simd/function/fast.hpp>
 #include <boost/simd/function/sqrt.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
