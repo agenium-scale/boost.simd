@@ -8,8 +8,8 @@
     (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_RSQRT_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_RSQRT_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_RSQRT_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_RSQRT_HPP_INCLUDED
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/function/raw.hpp>
@@ -26,27 +26,28 @@ namespace boost { namespace simd { namespace ext
   namespace bs =  boost::simd;
   BOOST_DISPATCH_OVERLOAD ( rsqrt_
                           , (typename A0)
-                          , bs::sse1_
+                          , bs::sse2_
                           , bs::raw_tag
-                          , bs::pack_<bd::single_<A0>, bs::sse_>
+                          , bs::pack_<bd::double_<A0>, bs::sse_>
                           )
   {
     BOOST_FORCEINLINE A0 operator() (raw_tag const&
                                     , const A0 & a0) const BOOST_NOEXCEPT
     {
-      return _mm_rsqrt_ps(a0);
+      return _mm_cvtps_pd(_mm_rsqrt_ps(_mm_cvtpd_ps(a0))); //The maximum error for this approximation is 1.5e-12
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( rsqrt_
+   BOOST_DISPATCH_OVERLOAD ( rsqrt_
                           , (typename A0)
-                          , bs::sse1_
-                          , bs::pack_<bd::single_<A0>, bs::sse_>
+                          , bs::sse2_
+                          , bs::pack_<bd::double_<A0>, bs::sse_>
                           )
   {
     BOOST_FORCEINLINE A0 operator() (const A0 & a00) const BOOST_NOEXCEPT
     {
-      A0 a0 = refine_rsqrt(a00, refine_rsqrt(a00, raw_(rsqrt)(a00)));
+
+      A0 a0 = refine_rsqrt(a00, refine_rsqrt(a00, refine_rsqrt(a00, raw_(rsqrt)(a00))));
       #ifndef BOOST_SIMD_NO_INFINITIES
       a0 = if_zero_else(a00 == Inf<A0>(),a0);
       #endif

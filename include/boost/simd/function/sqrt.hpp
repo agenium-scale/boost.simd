@@ -31,7 +31,7 @@ namespace boost { namespace simd
     @endcode
 
     If full accuracy is not needed a sometimes faster less accurate version of the function
-    can be reached using the fast_ decorator.
+    can be reached using the raw_ decorator.
 
     @par Decorators
 

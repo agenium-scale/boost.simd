@@ -12,14 +12,10 @@
 #define BOOST_SIMD_ARCH_PPC_VMX_SIMD_FUNCTION_RSQRT_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/constant/one.hpp>
-#include <boost/simd/constant/half.hpp>
-#include <boost/simd/constant/zero.hpp>
-#include <boost/simd/function/fast.hpp>
-#include <boost/simd/function/fma.hpp>
-#include <boost/simd/function/sqr.hpp>
-#include <boost/simd/function/is_inf.hpp>
+#include <boost/simd/constant/inf.hpp>
 #include <boost/simd/function/if_zero_else.hpp>
+#include <boost/simd/function/is_eqz.hpp>
+#include <boost/simd/function/refine_rsqrt.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -32,22 +28,13 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_< bd::single_<A0>, bs::vmx_>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()(const A0& a0) const BOOST_NOEXCEPT
+      BOOST_FORCEINLINE A0 operator()(const A0& a00) const BOOST_NOEXCEPT
       {
-        A0 ct = One<A0>();
-        A0 es = raw_(rsqrt)(a0);
-        A0 se = sqr(es);
-        A0 he = es*Half<A0>();
-
-        se = vec_nmsub(a0.storage(),se.storage(),ct.storage());
-        se = fma(se, he, es);
-
-#if !defined(BOOST_SIMD_NO_INFINITES)
-        ct = Zero<A0>();
-        es = Inf<A0>();
-        se = if_else(a0 == ct, es, if_else(a0 == es,ct,se));
-#endif
-        return se;
+        A0 a0 = refine_rsqrt(a00, raw_(rsqrt)(a00));
+        #ifndef BOOST_SIMD_NO_INFINITIES
+        a0 = if_zero_else(a00 == Inf<A0>(),a0);
+        #endif
+        return if_else(is_eqz(a00), Inf<A0>(), a0);
       }
    };
 

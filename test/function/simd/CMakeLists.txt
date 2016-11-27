@@ -306,7 +306,8 @@ set ( SOURCES
       rror.cpp
       rshl.cpp
       rshr.cpp
-      rsqrt.cpp
+      rsqrt.regular.cpp
+      rsqrt.raw.cpp
       safe_max.cpp
       safe_min.cpp
       sec.cpp
