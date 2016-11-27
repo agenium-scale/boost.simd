@@ -59,7 +59,9 @@ log2.cpp
 log.cpp
 nthroot.cpp
 oneminus.cpp
-rec.cpp
+rec.regular.cpp
+rec.fast.cpp
+rec.raw.cpp
 rsqrt.cpp
 sign.cpp
 signnz.cpp
