@@ -41,7 +41,7 @@ set ( SOURCES
    asinh.cpp
    asinpi.cpp
    atan2.regular.cpp
-   atan2.fast.cpp
+   atan2.pedantic.cpp
    atan2.std.cpp
    atan2d.cpp
    atan2pi.cpp

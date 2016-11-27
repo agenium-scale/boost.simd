@@ -37,6 +37,7 @@ set(SOURCES
     asinpi.cpp
     asin.std.cpp
     atan2.regular.cpp
+    atan2.pedantic.cpp
     atan2d.cpp
     atan2pi.cpp
     atan2.std.cpp

@@ -33,7 +33,8 @@ set(SOURCES
     asind.cpp
     asinh.cpp
     asinpi.cpp
-    atan2.cpp
+    atan2.regular.cpp
+    atan2.pedantic.cpp
     atan2d.cpp
     atan2pi.cpp
     atan.cpp

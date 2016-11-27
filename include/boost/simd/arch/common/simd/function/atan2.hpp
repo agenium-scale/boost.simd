@@ -48,11 +48,13 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename X)
                           , (detail::is_native<X>)
                           , bd::cpu_
+                          , bs::pedantic_tag
                           , bs::pack_<bd::floating_<A0>, X>
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
-     inline A0 operator()(const A0& a0,const A0& a1) const
+     inline A0 operator()(const pedantic_tag &,
+                          const A0& a0,const A0& a1) const
       {
         A0 a00 = a0, a10 = a1;
   #ifndef BOOST_SIMD_NO_INFINITIES
@@ -76,6 +78,21 @@ namespace boost { namespace simd { namespace ext
       }
    };
 
+   BOOST_DISPATCH_OVERLOAD_IF( atan2_
+                          , (typename A0, typename X)
+                          , (detail::is_native<X>)
+                          , bd::cpu_
+                          , bs::pack_<bd::floating_<A0>, X>
+                          , bs::pack_<bd::floating_<A0>, X>
+                          )
+   {
+     inline A0 operator()(const A0& a0,const A0& a1) const
+      {
+        A0 q = bs::abs(a0/a1);
+        A0 z = detail::invtrig_base<A0,tag::radian_tag, tag::simd_type>::kernel_atan(q, rec(q));
+        return bs::if_else(bs::is_positive(a1), z, bs::Pi<A0>()-z)* signnz(a0);
+      }
+   };
 } } }
 
 #endif
