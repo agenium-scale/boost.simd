@@ -38,7 +38,7 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename A1, typename X)
                           , (detail::is_native<X>)
                           , bd::cpu_
-                          , bs::pedantic_tag                          ,
+                          , bs::pedantic_tag
                           , bs::pack_< bd::floating_<A0>, X>
                           , bs::pack_< bd::floating_<A1>, X >
                           )

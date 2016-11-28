@@ -135,7 +135,7 @@ set(SOURCES
     hi.cpp
     hmsb.cpp
     hypot.regular.cpp
-    hypot.fast.cpp
+    hypot.pedantic.cpp
     iceil.cpp
     if_allbits_else.cpp
     if_dec.cpp

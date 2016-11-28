@@ -55,8 +55,10 @@ set ( SOURCES
       asinpi.cpp
       atan2.regular.cpp
       atan2.pedantic.cpp
-      atan2d.cpp
-      atan2pi.cpp
+      atan2d.regular.cpp
+      atan2d.pedantic.cpp
+      atan2pi.regular.cpp
+      atan2pi.pedantic.cpp
       atan.cpp
       atand.cpp
       atanh.cpp
@@ -152,7 +154,8 @@ set ( SOURCES
       groups.cpp
       hi.cpp
       hmsb.cpp
-      hypot.cpp
+      hypot.pedantic.cpp
+      hypot.regular.cpp
       iceil.cpp
       if_allbits_else.cpp
       if_dec.cpp

@@ -34,7 +34,6 @@ STF_CASE_TPL (" atan2",  STF_IEEE_TYPES)
   using bs::atan2;
 
   using r_t = decltype(atan2(T(), T()));
-  using bs::fast_;
   // return type conformity test
   STF_TYPE_IS(r_t, T);
 

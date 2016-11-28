@@ -37,7 +37,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( atan2pi_
                           , (typename A0, typename A1)
                           , bd::cpu_
-                          , bs::pedantic_tag                          ,
+                          , bs::pedantic_tag
                           , bd::scalar_< bd::floating_<A0> >
                           , bd::scalar_< bd::floating_<A1> >
                           )
