@@ -21,6 +21,7 @@
 #include <boost/simd/function/if_nan_else.hpp>
 #include <boost/simd/function/is_gez.hpp>
 #include <boost/simd/function/is_less.hpp>
+#include <boost/simd/function/is_greater.hpp>
 #include <boost/simd/function/is_nan.hpp>
 #include <boost/simd/function/is_not_equal.hpp>
 #include <boost/simd/function/dec.hpp>
