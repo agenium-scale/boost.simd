@@ -71,8 +71,8 @@ namespace boost { namespace simd { namespace ext
 
       i_t e1, e2;
       A0 m1, m2;
-      std::tie(m1, e1) = simd::ifrexp(a0);
-      std::tie(m2, e2) = simd::ifrexp(a1);
+      std::tie(m1, e1) = pedantic_(ifrexp)(a0);
+      std::tie(m2, e2) = pedantic_(ifrexp)(a1);
 
       i_t expo = -simd::max(e1, e2);
 

@@ -28,6 +28,7 @@
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/bitwise_or.hpp>
 #include <boost/simd/function/is_invalid.hpp>
+#include <boost/simd/function/pedantic.hpp>
 #include <boost/simd/function/shr.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
@@ -40,11 +41,13 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( ifrexp_
                           , (typename A0)
                           , bd::cpu_
+                          , bs::pedantic_tag
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
     using i_t = bd::as_integer_t<A0, signed>;
-    BOOST_FORCEINLINE std::pair<A0,i_t> operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE std::pair<A0,i_t> operator() (const pedantic_tag &
+                                                   ,  A0 a0) const BOOST_NOEXCEPT
     {
       if (a0 == 0 || is_invalid(a0))
       {
@@ -79,13 +82,11 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( ifrexp_
                           , (typename A0)
                           , bd::cpu_
-                          , boost::simd::fast_tag
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
     using i_t = bd::as_integer_t<A0, signed>;
-    BOOST_FORCEINLINE std::pair<A0,i_t> operator() (const fast_tag &
-                                                   , A0 a0 ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE std::pair<A0,i_t> operator() (A0 a0 ) const BOOST_NOEXCEPT
     {
       i_t r1  = bitwise_cast<i_t>(bitwise_and(Mask1frexp<A0>(), a0));
       A0  x = bitwise_andnot(a0, Mask1frexp<A0>());

@@ -303,7 +303,7 @@ namespace boost { namespace simd { namespace ext
 #endif
       /* reduce x into [sqrt(2)/2, sqrt(2)] */
       iA0 kk;
-      std::tie(x, kk) = fast_(ifrexp)(x);
+      std::tie(x, kk) = ifrexp(x);
       A0 x_lt_sqrthf = genmask(Sqrt_2o_2<A0>() > x);
       k += kk + bitwise_cast<iA0>(x_lt_sqrthf);
       A0 f = dec(x+bitwise_and(x, x_lt_sqrthf));
@@ -375,7 +375,7 @@ namespace boost { namespace simd { namespace ext
 #endif
       /* reduce x into [sqrt(2)/2, sqrt(2)] */
       iA0 kk;
-      std::tie(x, kk) = fast_(ifrexp)(x);
+      std::tie(x, kk) = ifrexp(x);
       A0 x_lt_sqrthf = genmask(Sqrt_2o_2<A0>() > x);
       k += kk + bitwise_cast<iA0>(x_lt_sqrthf);
       A0 f = dec(x+bitwise_and(x, x_lt_sqrthf));

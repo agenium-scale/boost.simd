@@ -66,7 +66,7 @@ namespace boost { namespace simd { namespace ext
     {
       A0 m;
       result_t p;
-      std::tie(m, p) = simd::ifrexp(bs::abs(a0));
+      std::tie(m, p) = pedantic_(ifrexp)(bs::abs(a0));
       return (m == Half<A0>()) ? saturated_(dec)(p) :  p;
     }
   };

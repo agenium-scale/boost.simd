@@ -39,7 +39,7 @@ STF_CASE_TPL(" ifrexp0", STF_IEEE_TYPES)
     iT e;
     T  m;
     T  a = bs::Valmax<T>();
-    std::tie(m, e) = ifrexp(a);
+    std::tie(m, e) = bs::pedantic_(ifrexp)(a);
     STF_ULP_EQUAL(m, bs::One<T>()-bs::Halfeps<T>(), 1);
     STF_EQUAL(e, bs::Limitexponent<T>());
     STF_EQUAL(ldexp(m,e),a);
@@ -51,7 +51,7 @@ STF_CASE_TPL(" ifrexp0", STF_IEEE_TYPES)
     iT e;
     T  m;
     T a = bs::Mindenormal<T>();
-    std::tie(m, e) = ifrexp(a);
+    std::tie(m, e) = bs::pedantic_(ifrexp)(a);
     STF_ULP_EQUAL(m, bs::Half<T>(), 1);
     STF_EQUAL(e, bs::Minexponent<T>()-bs::Nbmantissabits<T>()+bs::One<T>());
     STF_EQUAL(ldexp(m,e),a);
@@ -62,7 +62,7 @@ STF_CASE_TPL(" ifrexp0", STF_IEEE_TYPES)
     iT e;
     T  m;
     T a = bs::Smallestposval<T>()/2;
-    std::tie(m, e) = ifrexp(a);
+    std::tie(m, e) = bs::pedantic_(ifrexp)(a);
     STF_ULP_EQUAL(m, bs::Half<T>(), 1);
     STF_EQUAL(e, bs::Minexponent<T>());
     STF_EQUAL(ldexp(m,e),a);
@@ -73,7 +73,7 @@ STF_CASE_TPL(" ifrexp0", STF_IEEE_TYPES)
     iT e;
     T  m;
     T a = bs::Smallestposval<T>()/4;
-    std::tie(m, e) = ifrexp(a);
+    std::tie(m, e) = bs::pedantic_(ifrexp)(a);
     STF_ULP_EQUAL(m, bs::Half<T>(), 1);
     STF_EQUAL(e, bs::Minexponent<T>()-bs::One<T>());
     STF_EQUAL(ldexp(m,e),a);
@@ -82,14 +82,14 @@ STF_CASE_TPL(" ifrexp0", STF_IEEE_TYPES)
 
 }
 
-STF_CASE_TPL(" ifrexp", STF_IEEE_TYPES)
+STF_CASE_TPL(" bs::pedantic_(ifrexp)", STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
   using bs::ifrexp;
   using iT = bd::as_integer_t<T,signed>;
 
-  STF_EXPR_IS( (ifrexp(T()))
+  STF_EXPR_IS( (bs::pedantic_(ifrexp)(T()))
              , (std::pair<T,iT>)
              );
 
@@ -98,7 +98,7 @@ STF_CASE_TPL(" ifrexp", STF_IEEE_TYPES)
     iT e;
     T  m;
 
-    std::tie(m, e) = ifrexp(bs::One<T>());
+    std::tie(m, e) = bs::pedantic_(ifrexp)(bs::One<T>());
     STF_EQUAL(m, bs::Half<T>());
     STF_EQUAL(e, bs::One<iT>());
   }
@@ -107,13 +107,13 @@ STF_CASE_TPL(" ifrexp", STF_IEEE_TYPES)
     namespace bs = boost::simd;
     std::pair<T,iT> p;
 
-    p = ifrexp(bs::One<T>());
+    p = bs::pedantic_(ifrexp)(bs::One<T>());
     STF_EQUAL(p.first  , bs::Half<T>());
     STF_EQUAL(p.second , bs::One<iT>());
   }
 }
 
-STF_CASE_TPL(" ifrexp0", STF_IEEE_TYPES)
+STF_CASE_TPL(" bs::pedantic_(ifrexp)0", STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -125,7 +125,7 @@ STF_CASE_TPL(" ifrexp0", STF_IEEE_TYPES)
     iT e;
     T  m;
     T  a = bs::Valmax<T>();
-    std::tie(m, e) = ifrexp(a);
+    std::tie(m, e) = bs::pedantic_(ifrexp)(a);
     STF_ULP_EQUAL(m, bs::One<T>()-bs::Halfeps<T>(), 1);
     STF_EQUAL(e, bs::Limitexponent<T>());
     STF_EQUAL(ldexp(m,e),a);
@@ -137,7 +137,7 @@ STF_CASE_TPL(" ifrexp0", STF_IEEE_TYPES)
     iT e;
     T  m;
     T a = bs::Mindenormal<T>();
-    std::tie(m, e) = ifrexp(a);
+    std::tie(m, e) = bs::pedantic_(ifrexp)(a);
     STF_ULP_EQUAL(m, bs::Half<T>(), 1);
     STF_EQUAL(e, bs::Minexponent<T>()-bs::Nbmantissabits<T>()+bs::One<T>());
     STF_EQUAL(ldexp(m,e),a);
@@ -148,7 +148,7 @@ STF_CASE_TPL(" ifrexp0", STF_IEEE_TYPES)
     iT e;
     T  m;
     T a = bs::Smallestposval<T>()/2;
-    std::tie(m, e) = ifrexp(a);
+    std::tie(m, e) = bs::pedantic_(ifrexp)(a);
     STF_ULP_EQUAL(m, bs::Half<T>(), 1);
     STF_EQUAL(e, bs::Minexponent<T>());
     STF_EQUAL(ldexp(m,e),a);
@@ -159,7 +159,7 @@ STF_CASE_TPL(" ifrexp0", STF_IEEE_TYPES)
     iT e;
     T  m;
     T a = bs::Smallestposval<T>()/4;
-    std::tie(m, e) = ifrexp(a);
+    std::tie(m, e) = bs::pedantic_(ifrexp)(a);
     STF_ULP_EQUAL(m, bs::Half<T>(), 1);
     STF_EQUAL(e, bs::Minexponent<T>()-bs::One<T>());
     STF_EQUAL(ldexp(m,e),a);
@@ -168,34 +168,4 @@ STF_CASE_TPL(" ifrexp0", STF_IEEE_TYPES)
 
 }
 
-STF_CASE_TPL(" ifrexp fast", STF_IEEE_TYPES)
-{
-  namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
-  using bs::ifrexp;
-  using bs::fast_;
-  using iT = bd::as_integer_t<T,signed>;
 
-  STF_EXPR_IS( (bs::fast_(ifrexp)(T()))
-             , (std::pair<T,iT>)
-             );
-
-  {
-    namespace bs = boost::simd;
-    iT e;
-    T  m;
-
-    std::tie(m, e) = bs::fast_(ifrexp)(bs::One<T>());
-    STF_EQUAL(m, bs::Half<T>());
-    STF_EQUAL(e, bs::One<iT>());
-  }
-
-  {
-    namespace bs = boost::simd;
-    std::pair<T,iT> p;
-
-    p = bs::fast_(ifrexp)(bs::One<T>());
-    STF_EQUAL(p.first  , bs::Half<T>());
-    STF_EQUAL(p.second , bs::One<iT>());
-  }
-}

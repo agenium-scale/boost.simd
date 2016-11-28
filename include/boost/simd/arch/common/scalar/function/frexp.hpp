@@ -10,7 +10,7 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_FREXP_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_FREXP_HPP_INCLUDED
-#include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/pedantic.hpp>
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/function/ifrexp.hpp>
 #include <boost/simd/function/tofloat.hpp>
@@ -42,17 +42,17 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( frexp_
                           , (typename A0)
                           , bd::cpu_
-                          , boost::simd::fast_tag
+                          , boost::simd::pedantic_tag
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE std::pair<A0,A0> operator() (const fast_tag &
+    BOOST_FORCEINLINE std::pair<A0,A0> operator() (const pedantic_tag &
                                                    , A0 a0 ) const BOOST_NOEXCEPT
     {
        A0 r0;
        using i_t = bd::as_integer_t<A0, signed>;
        i_t r1;
-       std::tie(r0, r1) = fast_(ifrexp)(a0);
+       std::tie(r0, r1) = pedantic_(ifrexp)(a0);
        return {r0, tofloat(r1)};
     }
   };

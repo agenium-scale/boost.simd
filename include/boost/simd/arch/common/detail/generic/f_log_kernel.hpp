@@ -53,7 +53,7 @@ namespace boost { namespace simd { namespace detail
                            A0& y) BOOST_NOEXCEPT
     {
       i_t e;
-      std::tie(x, e)= fast_(ifrexp)(a0);
+      std::tie(x, e)= ifrexp(a0);
       auto xltsqrthf = (x < Sqrt_2o_2<A0>());
       fe = if_plus(xltsqrthf, tofloat(e), Mone<A0>());
       x =  dec(if_plus(xltsqrthf, x, x));

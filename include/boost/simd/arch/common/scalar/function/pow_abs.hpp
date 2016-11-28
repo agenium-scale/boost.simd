@@ -74,7 +74,7 @@ namespace boost { namespace simd { namespace ext
       if(is_nan(a1)) return Nan<A0>();
     #endif
       i_t e;
-      std::tie(x, e) = bs::ifrexp(x);
+      std::tie(x, e) = pedantic_(bs::ifrexp)(x);
       i_t i  = detail::pow_kernel<A0>::select(x);
       A0 z = sqr(x);
       A0 w = detail::pow_kernel<A0>::pow1(x, z);

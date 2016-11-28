@@ -84,7 +84,7 @@ namespace boost { namespace simd { namespace ext
       iA0 e;
       A0 ax = bs::abs(a0);
       A0 x;
-      std::tie(x, e) = ifrexp(ax);
+      std::tie(x, e) = pedantic_(ifrexp)(ax);
       iA0 i  = detail::pow_kernel<A0>::select(x);
       A0 z = sqr(x);
       A0 w = detail::pow_kernel<A0>::pow1(x, z);

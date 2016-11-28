@@ -26,8 +26,7 @@
 #include <boost/simd/function/is_greater.hpp>
 #include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/function/logical_notand.hpp>
-#include <boost/simd/function/minus.hpp>
-#include <boost/simd/function/multiplies.hpp>
+#include <boost/simd/function/pedantic.hpp>
 #include <boost/simd/function/if_plus.hpp>
 #include <boost/simd/function/shr.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
@@ -50,11 +49,13 @@ namespace boost { namespace simd { namespace ext
    BOOST_DISPATCH_OVERLOAD(ifrexp_
                           , (typename A0, typename X)
                           , bd::cpu_
+                          , bs::pedantic_tag
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
      using i_t = bd::as_integer_t<A0, signed>;
-     BOOST_FORCEINLINE std::pair<A0,i_t> operator()(A0 const& a0) const
+     BOOST_FORCEINLINE std::pair<A0,i_t> operator()(const pedantic_tag &
+                                                   , A0 const& a0) const
      {
        A0 r0;
        i_t r1;
@@ -84,14 +85,12 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD( ifrexp_
                           , (typename A0, typename X)
                           , bd::cpu_
-                          , boost::simd::fast_tag
                           , bs::pack_< bd::floating_<A0>, X>
                           )
   {
     using i_t = bd::as_integer_t<A0, signed>;
     using sA0 = bd::scalar_of_t<A0>;
-    BOOST_FORCEINLINE std::pair<A0,i_t> operator() (const fast_tag &
-                                                   , A0 const& a0 ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE std::pair<A0,i_t> operator() (A0 const& a0 ) const BOOST_NOEXCEPT
     {
       i_t r1  = bitwise_cast<i_t>(bitwise_and(Mask1frexp<A0>(), a0));
       A0  x = bitwise_andnot(a0, Mask1frexp<A0>());
