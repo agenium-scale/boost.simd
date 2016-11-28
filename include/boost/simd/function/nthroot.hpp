@@ -44,7 +44,7 @@ namespace boost { namespace simd
     nthroot is more expansive than pow(x, rec(tofloat(n))) because
     it takes care of some limits issues that @ref pow does not mind of.
 
-    See if it suits you better.
+    See if it suits you better or use raw_ decorator for intermediate solution.
 
     @see pow, rec, sqrt, cbrt
 
