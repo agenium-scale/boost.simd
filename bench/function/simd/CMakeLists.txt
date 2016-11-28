@@ -39,7 +39,8 @@ set(SOURCES
     atan2pi.cpp
     atan.cpp
     atand.cpp
-    atanh.cpp
+    atanh.regular.cpp
+    atanh.raw.cpp
     atanpi.cpp
     average.cpp
     bitfloating.cpp

@@ -26,6 +26,8 @@ asind.cpp
 asinpi.cpp
 atan.cpp
 atand.cpp
+atanh.regular.cpp
+atanh.raw.cpp
 atanpi.cpp
 cbrt.cpp
 ceil.cpp
