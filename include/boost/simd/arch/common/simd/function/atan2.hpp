@@ -78,7 +78,7 @@ namespace boost { namespace simd { namespace ext
       }
    };
 
-   BOOST_DISPATCH_OVERLOAD_IF( atan2_
+  BOOST_DISPATCH_OVERLOAD_IF( atan2_
                           , (typename A0, typename X)
                           , (detail::is_native<X>)
                           , bd::cpu_

@@ -33,6 +33,21 @@ namespace boost { namespace simd { namespace ext
       return Invpi<A0>()*(atan2(a0, a1));
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( atan2pi_
+                          , (typename A0, typename A1)
+                          , bd::cpu_
+                          , bs::pedantic_tag                          ,
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A1> >
+                          )
+  {
+     BOOST_FORCEINLINE A0 operator() (const pedantic_tag &,
+                                      A0 a0, A1 a1) const BOOST_NOEXCEPT
+    {
+      return Invpi<A0>()*(pedantic_(atan2)(a0, a1));
+    }
+  };
 } } }
 
 
