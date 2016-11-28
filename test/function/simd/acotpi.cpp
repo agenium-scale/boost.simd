@@ -68,8 +68,8 @@ STF_CASE_TPL (" acotpi",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(acotpi(bs::Minf<p_t>()), r_t(0), 0);
   STF_ULP_EQUAL(acotpi(bs::Nan<p_t>()), bs::Nan<r_t>(), 0);
 #endif
-  STF_ULP_EQUAL(acotpi(bs::Half<p_t>()), p_t(0.352416382349567), 2.5);
-  STF_ULP_EQUAL(acotpi(bs::Mhalf<p_t>()), p_t(-0.352416382349567), 2.5);
+  STF_ULP_EQUAL(acotpi(bs::Half<p_t>()), p_t(0.352416382349567), 3);
+  STF_ULP_EQUAL(acotpi(bs::Mhalf<p_t>()), p_t(-0.352416382349567), 3);
   STF_ULP_EQUAL(acotpi(bs::Mone<p_t>()), p_t(-0.25), 0);
   STF_ULP_EQUAL(acotpi(bs::One<p_t>()), p_t(0.25), 0);
   STF_ULP_EQUAL(acotpi(bs::Zero<p_t>()), p_t(0.5), 0);
