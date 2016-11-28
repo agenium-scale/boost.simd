@@ -265,7 +265,8 @@ set(SOURCES
     plus.regular.cpp
     plus.saturated.cpp
     pow2.cpp
-    pow_abs.cpp
+    pow_abs.regular.cpp
+    pow_abs.raw.cpp
     pow.cpp
     predecessor.cpp
     prev.cpp
