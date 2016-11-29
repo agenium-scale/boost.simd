@@ -33,7 +33,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
     {
-      A0 estimate = refine_rec(a0, raw_(rec)(a0);
+      A0 estimate = refine_rec(a0, raw_(rec)(a0));
 
       // fix rec(+/-0)
       estimate = if_else( is_eqz(a0)
@@ -57,7 +57,7 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0)
                           , bs::vmx_
                           , bs::raw_tag
-                          , bs::pack_< bd::single_<A0>, bs::vmx_>
+                          , bs::pack_< bd::floating_<A0>, bs::vmx_>
                           )
   {
     BOOST_FORCEINLINE A0 operator()(bs::raw_tag const&, const A0& a0) const BOOST_NOEXCEPT
