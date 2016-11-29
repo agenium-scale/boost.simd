@@ -76,7 +76,7 @@ STF_CASE_TPL (" erf", STF_IEEE_TYPES)
   STF_ULP_EQUAL(erf(p_t(1)), p_t(0.842700792949714869341220635083), 1);
   STF_ULP_EQUAL(erf(p_t(2)), p_t(0.995322265018952734162069256367), 0);
   STF_ULP_EQUAL(erf(p_t(0)), p_t(0), 0);
-  STF_ULP_EQUAL(erf(bs::Halfeps<p_t>()), bs::Eps<p_t>()*bs::rsqrt(bs::Pi<p_t>()), 6);
+  STF_ULP_EQUAL(erf(bs::Halfeps<p_t>()), bs::Eps<p_t>()*bs::rsqrt(bs::Pi<p_t>()), 6.5);
   STF_ULP_EQUAL(erf(p_t(5)), p_t(0.99999999999846254020557196515), 0);
   STF_ULP_EQUAL(erf(p_t(27)), p_t(1), 0);
 
@@ -84,7 +84,7 @@ STF_CASE_TPL (" erf", STF_IEEE_TYPES)
   STF_ULP_EQUAL(erf(-p_t(0.5)), -p_t(0.520499877813046537682746653892), 5.5);
   STF_ULP_EQUAL(erf(-p_t(1)), -p_t(0.842700792949714869341220635083), 1);
   STF_ULP_EQUAL(erf(-p_t(2)), -p_t(0.995322265018952734162069256367), 0);
-  STF_ULP_EQUAL(erf(-bs::Halfeps<p_t>()), -bs::Eps<p_t>()*bs::rsqrt(bs::Pi<p_t>()), 6);
+  STF_ULP_EQUAL(erf(-bs::Halfeps<p_t>()), -bs::Eps<p_t>()*bs::rsqrt(bs::Pi<p_t>()), 6.5);
   STF_ULP_EQUAL(erf(-p_t(5)), -p_t(0.99999999999846254020557196515), 0);
   STF_ULP_EQUAL(erf(p_t(-27)), -p_t(1), 0);
 }

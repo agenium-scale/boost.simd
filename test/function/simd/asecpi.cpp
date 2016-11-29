@@ -35,7 +35,7 @@ void test(Env& $)
 
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
-  STF_ULP_EQUAL(bs::asecpi(aa1), bb, 3);
+  STF_ULP_EQUAL(bs::asecpi(aa1), bb, 5);
 }
 
 STF_CASE_TPL("Check asecpi on pack" , STF_IEEE_TYPES)

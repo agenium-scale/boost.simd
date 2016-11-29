@@ -43,7 +43,7 @@ void test(Env& $)
   p_t aa2(&a2[0], &a2[0]+N);
   p_t bb (&b[0], &b[0]+N);
   p_t cc (&c[0], &c[0]+N);
-  STF_ULP_EQUAL(bs::asec(aa1), bb, 2);
+  STF_ULP_EQUAL(bs::asec(aa1), bb, 4);
   STF_ULP_EQUAL(bs::asec(aa2), cc, 2);
 }
 

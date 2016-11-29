@@ -268,7 +268,6 @@ set(SOURCES
     predecessor.cpp
     prev.cpp
     rec.regular.cpp
-    rec.fast.cpp
     rem.regular.cpp
     rem.fast.cpp
     rem_pio2_cephes.cpp
