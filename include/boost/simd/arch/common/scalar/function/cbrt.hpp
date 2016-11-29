@@ -11,7 +11,6 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_CBRT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_CBRT_HPP_INCLUDED
 #include <boost/simd/function/std.hpp>
-#include <boost/simd/function/fast.hpp>
 
 #ifndef BOOST_SIMD_NO_INFINITIES
 #include <boost/simd/constant/inf.hpp>
@@ -95,7 +94,7 @@ namespace boost { namespace simd { namespace ext
       const A0 cbrt4 = flag ? CBRT4 : CBRT4I;
       A0 fact = (rem == One<i_t>()) ? cbrt2: One<A0>();
       fact = (rem == Two<i_t>() ? cbrt4 : fact);
-      x = fast_(ldexp)(x*fact, e);
+      x = ldexp(x*fact, e);
       x -= (x-z/sqr(x))*Third<A0>();
       x -= (x-z/sqr(x))*Third<A0>(); //two newton passes
     #ifndef BOOST_SIMD_NO_DENORMALS
@@ -153,7 +152,7 @@ namespace boost { namespace simd { namespace ext
       const A0 cbrt4 = flag ? CBRT4 : CBRT4I;
       A0 fact = (rem ==  One<i_t>()) ? cbrt2 : One<A0>();
       fact = (rem == Two<i_t>()) ? cbrt4 : fact;
-      x = fast_(ldexp)(x*fact, e);
+      x = ldexp(x*fact, e);
       x -= (x-z/sqr(x))*Third<A0>();
     #ifndef BOOST_SIMD_NO_DENORMALS
       return bitwise_or(x, bitofsign(a0))*f;

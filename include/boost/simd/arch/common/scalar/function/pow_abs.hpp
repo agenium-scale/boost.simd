@@ -110,7 +110,7 @@ namespace boost { namespace simd { namespace ext
       e = fms(i, Sixteen, e);
       w =  detail::pow_kernel<A0>::twomio16(e);
       z = fma(w, z, w);
-      z = ldexp( z, i );
+      z = pedantic_(ldexp)( z, i );
       return z;
     }
   private :

@@ -232,7 +232,7 @@ set ( SOURCES
    is_simd_logical.cpp
    is_unord.cpp
    ldexp.regular.cpp
-   ldexp.fast.cpp
+   ldexp.pedantic.cpp
    ldexp.std.cpp
    load.cpp
    lo.cpp

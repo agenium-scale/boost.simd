@@ -112,42 +112,42 @@ STF_CASE_TPL("ldexp", STF_IEEE_TYPES)
   STF_TYPE_IS(r_t, p_t);
 
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(ldexp(bs::Inf<p_t>(),  2), bs::Inf<r_t>());
-  STF_EQUAL(ldexp(bs::Minf<p_t>(), 2), bs::Minf<r_t>());
-  STF_IEEE_EQUAL(ldexp(bs::Nan<p_t>(),  2), bs::Nan<r_t>());
+  STF_EQUAL(bs::pedantic_(ldexp)(bs::Inf<p_t>(),  2), bs::Inf<r_t>());
+  STF_EQUAL(bs::pedantic_(ldexp)(bs::Minf<p_t>(), 2), bs::Minf<r_t>());
+  STF_IEEE_EQUAL(bs::pedantic_(ldexp)(bs::Nan<p_t>(),  2), bs::Nan<r_t>());
 #endif
 
-  STF_EQUAL(ldexp(bs::Mone<p_t>(), 2), -bs::Four<r_t>());
-  STF_EQUAL(ldexp(bs::One<p_t>(),  2), bs::Four<r_t>());
-  STF_EQUAL(ldexp(bs::Zero<p_t>(), 2), bs::Zero<r_t>());
-  STF_EQUAL(ldexp(bs::One <p_t>(), bs::Minexponent<p_t>()), bs::Smallestposval<r_t>());
-  STF_EQUAL(ldexp(bs::One<p_t>()-bs::Halfeps<p_t>(),  bs::Maxexponent<p_t>()), bs::Valmax<p_t>()/2);
-  STF_EQUAL(ldexp(bs::One<p_t>()-bs::Halfeps<p_t>(),  bs::Limitexponent<p_t>()), bs::Valmax<p_t>());
+  STF_EQUAL(bs::pedantic_(ldexp)(bs::Mone<p_t>(), 2), -bs::Four<r_t>());
+  STF_EQUAL(bs::pedantic_(ldexp)(bs::One<p_t>(),  2), bs::Four<r_t>());
+  STF_EQUAL(bs::pedantic_(ldexp)(bs::Zero<p_t>(), 2), bs::Zero<r_t>());
+  STF_EQUAL(bs::pedantic_(ldexp)(bs::One <p_t>(), bs::Minexponent<p_t>()), bs::Smallestposval<r_t>());
+  STF_EQUAL(bs::pedantic_(ldexp)(bs::One<p_t>()-bs::Halfeps<p_t>(),  bs::Maxexponent<p_t>()), bs::Valmax<p_t>()/2);
+  STF_EQUAL(bs::pedantic_(ldexp)(bs::One<p_t>()-bs::Halfeps<p_t>(),  bs::Limitexponent<p_t>()), bs::Valmax<p_t>());
 
 #ifndef BOOST_SIMD_NO_DENORMALS
   using bs::dec;
-  STF_EQUAL(ldexp(bs::One <p_t>(), dec(bs::Minexponent<p_t>())), bs::Smallestposval<p_t>()/2);
-  STF_EQUAL(ldexp(bs::Two <p_t>(), dec(bs::Minexponent<p_t>())), bs::Smallestposval<p_t>());
-  STF_EQUAL(ldexp(bs::Two <p_t>(), dec(bs::Minexponent<p_t>()-1)), bs::Smallestposval<p_t>()/2);
-  STF_EQUAL(ldexp(bs::One <p_t>(), bs::Minexponent<p_t>()-5), bs::Smallestposval<p_t>()/32);
+  STF_EQUAL(bs::pedantic_(ldexp)(bs::One <p_t>(), dec(bs::Minexponent<p_t>())), bs::Smallestposval<p_t>()/2);
+  STF_EQUAL(bs::pedantic_(ldexp)(bs::Two <p_t>(), dec(bs::Minexponent<p_t>())), bs::Smallestposval<p_t>());
+  STF_EQUAL(bs::pedantic_(ldexp)(bs::Two <p_t>(), dec(bs::Minexponent<p_t>()-1)), bs::Smallestposval<p_t>()/2);
+  STF_EQUAL(bs::pedantic_(ldexp)(bs::One <p_t>(), bs::Minexponent<p_t>()-5), bs::Smallestposval<p_t>()/32);
 #endif
 }
 
-STF_CASE_TPL("ldexpi", STF_INTEGRAL_TYPES)
+STF_CASE_TPL("bs::pedantic_(ldexp)i", STF_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
   using bs::ldexp;
  using p_t = bs::pack<T>;
   using pi_t = bd::as_integer_t<p_t>;
-  using r_t = decltype(ldexp(p_t(), pi_t()));
+  using r_t = decltype(bs::pedantic_(ldexp)(p_t(), pi_t()));
 
   // return type conformity test
   STF_TYPE_IS(r_t, p_t);
 
-  STF_EQUAL(ldexp(bs::One <p_t>(), 2), r_t(4));
-  STF_EQUAL(ldexp(bs::Three<p_t>(), 2), r_t(12));
-  STF_EQUAL(ldexp(bs::Mone<p_t>(), 2), r_t(-4));
+  STF_EQUAL(bs::pedantic_(ldexp)(bs::One <p_t>(), 2), r_t(4));
+  STF_EQUAL(bs::pedantic_(ldexp)(bs::Three<p_t>(), 2), r_t(12));
+  STF_EQUAL(bs::pedantic_(ldexp)(bs::Mone<p_t>(), 2), r_t(-4));
 }
 
 
@@ -160,18 +160,18 @@ STF_CASE_TPL("ldexp floating exponent", STF_IEEE_TYPES)
 
   using r_t = decltype(bs::pedantic_(ldexp)(p_t(), p_t()));
 
-//   // return type conformity test
+   // return type conformity test
      STF_TYPE_IS(r_t, p_t);
 
 
-     STF_EQUAL(ldexp(p_t(-1), p_t(2)), p_t(-4));
-//   STF_EQUAL(bs::pedantic_(ldexp)(bs::One<p_t>(),  p_t(2)), bs::Four<r_t>());
-//   STF_EQUAL(bs::pedantic_(ldexp)(bs::Zero<p_t>(), p_t(2)), bs::Zero<r_t>());
+     STF_EQUAL(bs::pedantic_(ldexp)(p_t(-1), p_t(2)), p_t(-4));
+     STF_EQUAL(bs::pedantic_(ldexp)(bs::One<p_t>(),  p_t(2)), bs::Four<r_t>());
+     STF_EQUAL(bs::pedantic_(ldexp)(bs::Zero<p_t>(), p_t(2)), bs::Zero<r_t>());
 
-//   for(int i=bs::Minexponent<T>(); i < bs::Minexponent<T>(); ++i)
-//   {
-//     STF_EQUAL(bs::pedantic_(ldexp)(p_t(1.5), p_t(i)), r_t(std::ldexp(T(1.5), i)));
-//     STF_EQUAL(bs::pedantic_(ldexp)(p_t(-1.5), p_t(i)),r_t(std::ldexp(T(-1.5), i)));
-//   }
+     for(int i=bs::Minexponent<T>(); i < bs::Minexponent<T>(); ++i)
+     {
+       STF_EQUAL(bs::pedantic_(ldexp)(p_t(1.5), p_t(i)), r_t(std::ldexp(T(1.5), i)));
+       STF_EQUAL(bs::pedantic_(ldexp)(p_t(-1.5), p_t(i)),r_t(std::ldexp(T(-1.5), i)));
+     }
 
 }

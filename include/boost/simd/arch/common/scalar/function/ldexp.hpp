@@ -10,10 +10,8 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_LDEXP_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_LDEXP_HPP_INCLUDED
-#include <boost/simd/function/fast.hpp>
-#include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/pedantic.hpp>
 #include <boost/simd/function/std.hpp>
-#include <boost/simd/function/fast.hpp>
 
 #ifndef BOOST_SIMD_NO_DENORMALS
 #include <boost/simd/detail/constant/minexponent.hpp>
@@ -35,6 +33,7 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
+  // a0 a1 integers
   BOOST_DISPATCH_OVERLOAD ( ldexp_
                           , (typename A0, typename A1)
                           , bd::cpu_
@@ -47,14 +46,18 @@ namespace boost { namespace simd { namespace ext
       return (a1>0)?(a0<<a1):(a0>>a1);
     }
   };
+
+  // a0 floating
   BOOST_DISPATCH_OVERLOAD ( ldexp_
                           , (typename A0, typename A1)
                           , bd::cpu_
+                          , bs::pedantic_tag
                           , bd::scalar_< bd::floating_<A0> >
                           , bd::scalar_< bd::integer_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const pedantic_tag &
+                                    ,  A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
       using i_t = bd::as_integer_t<A0>;
       i_t e =  a1;
@@ -77,27 +80,27 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( ldexp_
                           , (typename A0, typename A1)
                           , bd::cpu_
-                          , bs::fast_tag const &
+                          , bs::pedantic_tag
                           , bd::scalar_< bd::integer_<A0> >
                           , bd::scalar_< bd::integer_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const fast_tag &
-                                    ,  A0 a0, A1 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const pedantic_tag &
+                                    , A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
-      return (a1>0)?(a0<<a1):(a0>>a1);
+      return bs::ldexp(a0, a1);
     }
   };
+
+  // a0 floating
   BOOST_DISPATCH_OVERLOAD ( ldexp_
                           , (typename A0, typename A1)
                           , bd::cpu_
-                          , boost::simd::fast_tag
                           , bd::scalar_< bd::floating_<A0> >
                           , bd::scalar_< bd::integer_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const fast_tag &
-                                    ,  A0 a0, A1 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
       using i_t = bd::as_integer_t<A0>;
       i_t ik =  a1+Maxexponent<A0>();

@@ -91,7 +91,7 @@ namespace boost { namespace simd { namespace ext
         const A0 cbrt4 = if_else(flag, CBRT4, CBRT4I);
         A0 fact = if_else(is_equal(rem, One<int_type>()), cbrt2, One<A0>());
         fact = if_else(is_equal(rem, Two<int_type>()), cbrt4, fact);
-        x = fast_(ldexp)(x*fact, e);
+        x = ldexp(x*fact, e);
         x -= (x-z/sqr(x))*Third<A0>();
   #ifndef BOOST_SIMD_NO_DENORMALS
         x = bitwise_or(x, bitofsign(a0))*f;
@@ -146,7 +146,7 @@ namespace boost { namespace simd { namespace ext
         const A0 cbrt4 = if_else(flag, CBRT4, CBRT4I);
         A0 fact = if_else(is_equal(rem, One<int_type>()), cbrt2, One<A0>());
         fact = if_else(is_equal(rem, Two<int_type>()), cbrt4, fact);
-        x = fast_(ldexp)(x*fact, e);
+        x = ldexp(x*fact, e);
         x -= (x-z/sqr(x))*Third<A0>();
         x -= (x-z/sqr(x))*Third<A0>(); //two newton passes
       #ifndef BOOST_SIMD_NO_DENORMALS

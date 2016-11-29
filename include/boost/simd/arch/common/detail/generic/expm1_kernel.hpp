@@ -70,7 +70,7 @@ namespace boost { namespace simd
         i_t ik =  toint(k);
         A0 two2mk = bitwise_cast<A0>(shift_left(Maxexponent<A0>()-ik,Nbmantissabits<s_t>()));
         A0 y = oneminus(two2mk)-(e-x);
-        return fast_(ldexp)(y, ik);
+        return ldexp(y, ik);
       }
     };
 
@@ -104,7 +104,7 @@ namespace boost { namespace simd
         A0 ct1= oneminus(two2mk)-(e-x);
         A0 ct2= inc((x-(e+two2mk)));
         A0 y = if_else((k < A0(20)),ct1,ct2);
-        return fast_(ldexp)(y, ik);
+        return ldexp(y, ik);
       }
     };
   }

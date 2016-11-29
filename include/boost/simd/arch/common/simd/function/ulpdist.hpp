@@ -50,7 +50,8 @@ namespace boost { namespace simd { namespace ext
         itype expo = -bs::max(e1, e2);
         A0 e = if_else( bs::is_equal(e1, e2)
                       , bs::abs(m1-m2)
-                      , bs::abs( bs::ldexp(a0, expo) - bs::ldexp(a1, expo))
+                      , bs::abs( bs::pedantic_(ldexp)(a0, expo)
+                                 - bs::pedantic_(ldexp)(a1, expo))
                       );
         return if_zero_else(logical_or( logical_and(bs::is_nan(a0), bs::is_nan(a1))
                                       , bs::is_equal(a0, a1)

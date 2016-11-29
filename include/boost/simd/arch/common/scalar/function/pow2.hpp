@@ -37,7 +37,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A1 a1) const
     {
-      return fast_(ldexp)(a0, a1);
+      return ldexp(a0, a1);
     }
   };
 
@@ -54,7 +54,7 @@ namespace boost { namespace simd { namespace ext
       BOOST_ASSERT_MSG(boost::simd::assert_all(is_finite(a1)),
                        "pow2 is not defined for an invalid second parameter");
     #endif
-      return fast_(ldexp)(a0, bs::toint(a1));
+      return ldexp(a0, bs::toint(a1));
     }
   };
 
@@ -67,7 +67,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
-      return fast_(ldexp)(a0, a1);
+      return ldexp(a0, a1);
     }
   };
 
@@ -79,7 +79,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
-      return fast_(ldexp)(One<A0>(), a0);
+      return ldexp(One<A0>(), a0);
     }
   };
 
@@ -95,7 +95,7 @@ namespace boost { namespace simd { namespace ext
       BOOST_ASSERT_MSG(boost::simd::assert_all(is_finite(a0)),
                        "pow2 with one parameter is not defined for an invalid entry");
     #endif
-      return fast_(ldexp)(One<A0>(), toint(a0));
+      return ldexp(One<A0>(), toint(a0));
     }
   };
 } } }

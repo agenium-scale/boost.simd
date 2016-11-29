@@ -69,11 +69,11 @@ namespace boost { namespace simd { namespace ext
         A0 amax =  a0; maxmag(a0, a1);
         A0 amin =  a1; minmag(a0, a1);
         iA0 e0 = -shift_right(exponent(amax), 1);
-        amax = ldexp(amax, e0);
-        A0 a02 = ldexp(a2, e0);
+        amax = pedantic_(ldexp)(amax, e0);
+        A0 a02 = pedantic_(ldexp)(a2, e0);
         std::tie(p, rp) = two_prod(amax, amin);
         std::tie(s, rs) = two_add(p, a02);
-        return ldexp(s+(rp+rs), -e0);
+        return pedantic_(ldexp)(s+(rp+rs), -e0);
   #else
         std::tie(p, rp) = two_prod(a0, a1);
         std::tie(s, rs) = two_add(p, a2);

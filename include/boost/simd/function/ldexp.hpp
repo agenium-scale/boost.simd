@@ -33,10 +33,15 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    auto r = x*pow(2, n);
+    auto r = x*pow(2, trunc(n));
     @endcode
 
-    The @ref cardinal_of value of the types of @c x and @c n must be identical
+    @par Decorators
+
+    By default @c ldexp does not take care of denormal or limiting values. Use the @c pedantic_ decorator if these are
+    to be properly computed.
+
+    The @ref cardinal_of and the size of elements value of the types of @c x and @c n must be identical
 
   **/
   Value ldexp(Value const & x, Value const& n);

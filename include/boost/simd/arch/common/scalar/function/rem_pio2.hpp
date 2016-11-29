@@ -422,7 +422,7 @@ do {                                                                           \
     }
 
     /* compute n */
-    z  = bs::ldexp(z,q0);        /* actual value of z */
+    z  = bs::pedantic_(ldexp)(z,q0);        /* actual value of z */
     z -= 8.0*bs::floor(z*0.125);        /* trim off integer >= 8 */
     n  = (std::int32_t) z;
     z -= (A0)n;
@@ -455,7 +455,7 @@ do {                                                                           \
       }
       if(ih==2) {
         z = one - z;
-        if(carry!=0) z -= bs::ldexp(one,q0);
+        if(carry!=0) z -= bs::pedantic_(ldexp)(one,q0);
       }
     }
 
@@ -481,7 +481,7 @@ do {                                                                           \
       jz -= 1; q0 -= 24;
       while(iq[jz]==0) { jz--; q0-=24;}
     } else { /* break z into 24-bit if necessary */
-      z = bs::ldexp(z,-q0);
+      z = bs::pedantic_(ldexp)(z,-q0);
       if(z>=two24) {
         fw = (A0)((std::int32_t)(twon24*z));
         iq[jz] = (std::int32_t)(z-two24*fw);
@@ -491,7 +491,7 @@ do {                                                                           \
     }
 
     /* convert integer "bit" chunk to floating-point value */
-    fw = bs::ldexp(one,q0);
+    fw = bs::pedantic_(ldexp)(one,q0);
     for(i=jz;i>=0;i--) {
       q[i] = fw*(A0)iq[i]; fw*=twon24;
     }

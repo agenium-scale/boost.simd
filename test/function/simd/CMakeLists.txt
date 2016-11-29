@@ -238,7 +238,8 @@ set ( SOURCES
       is_simd_logical.cpp
       itrunc.cpp
       is_unord.cpp
-      ldexp.cpp
+      ldexp.pedantic.cpp
+      ldexp.regular.cpp
       lo.cpp
       log10.cpp
       log1p.cpp

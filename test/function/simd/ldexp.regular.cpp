@@ -122,15 +122,7 @@ STF_CASE_TPL("ldexp", STF_IEEE_TYPES)
   STF_EQUAL(ldexp(bs::Zero<p_t>(), 2), bs::Zero<r_t>());
   STF_EQUAL(ldexp(bs::One <p_t>(), bs::Minexponent<p_t>()), bs::Smallestposval<r_t>());
   STF_EQUAL(ldexp(bs::One<p_t>()-bs::Halfeps<p_t>(),  bs::Maxexponent<p_t>()), bs::Valmax<p_t>()/2);
-  STF_EQUAL(ldexp(bs::One<p_t>()-bs::Halfeps<p_t>(),  bs::Limitexponent<p_t>()), bs::Valmax<p_t>());
 
-#ifndef BOOST_SIMD_NO_DENORMALS
-  using bs::dec;
-  STF_EQUAL(ldexp(bs::One <p_t>(), dec(bs::Minexponent<p_t>())), bs::Smallestposval<p_t>()/2);
-  STF_EQUAL(ldexp(bs::Two <p_t>(), dec(bs::Minexponent<p_t>())), bs::Smallestposval<p_t>());
-  STF_EQUAL(ldexp(bs::Two <p_t>(), dec(bs::Minexponent<p_t>()-1)), bs::Smallestposval<p_t>()/2);
-  STF_EQUAL(ldexp(bs::One <p_t>(), bs::Minexponent<p_t>()-5), bs::Smallestposval<p_t>()/32);
-#endif
 }
 
 STF_CASE_TPL("ldexpi", STF_INTEGRAL_TYPES)
@@ -160,18 +152,18 @@ STF_CASE_TPL("ldexp floating exponent", STF_IEEE_TYPES)
 
   using r_t = decltype(bs::pedantic_(ldexp)(p_t(), p_t()));
 
-//   // return type conformity test
-     STF_TYPE_IS(r_t, p_t);
+  // return type conformity test
+  STF_TYPE_IS(r_t, p_t);
 
 
-     STF_EQUAL(ldexp(p_t(-1), p_t(2)), p_t(-4));
-//   STF_EQUAL(bs::pedantic_(ldexp)(bs::One<p_t>(),  p_t(2)), bs::Four<r_t>());
-//   STF_EQUAL(bs::pedantic_(ldexp)(bs::Zero<p_t>(), p_t(2)), bs::Zero<r_t>());
+  STF_EQUAL(ldexp(p_t(-1), p_t(2)), p_t(-4));
+  STF_EQUAL(bs::ldexp(bs::One<p_t>(),  p_t(2)), p_t(4));
+  STF_EQUAL(bs::ldexp(bs::Zero<p_t>(), p_t(2)), bs::Zero<p_t>());
 
-//   for(int i=bs::Minexponent<T>(); i < bs::Minexponent<T>(); ++i)
-//   {
-//     STF_EQUAL(bs::pedantic_(ldexp)(p_t(1.5), p_t(i)), r_t(std::ldexp(T(1.5), i)));
-//     STF_EQUAL(bs::pedantic_(ldexp)(p_t(-1.5), p_t(i)),r_t(std::ldexp(T(-1.5), i)));
-//   }
+  for(int i=bs::Minexponent<T>(); i < bs::Minexponent<T>(); ++i)
+  {
+    STF_EQUAL(bs::ldexp(p_t(1.5), p_t(i)), p_t(std::ldexp(T(1.5), i)));
+    STF_EQUAL(bs::ldexp(p_t(-1.5), p_t(i)),p_t(std::ldexp(T(-1.5), i)));
+  }
 
 }

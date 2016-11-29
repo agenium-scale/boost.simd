@@ -117,7 +117,7 @@ namespace boost { namespace simd { namespace ext
       e = (i*Sixteen<iA0>()) - e;
       w =  detail::pow_kernel<A0>::twomio16(e);
       z = fma(w, z, w);
-      z = ldexp( z, i );
+      z = pedantic_(ldexp)( z, i );
 #ifndef BOOST_SIMD_NO_INFINITIES
       auto gtax1 = is_greater(ax,One<A0>());
       z =  if_else(is_equal(a1,  Inf<A0>()),if_else_zero(gtax1, Inf<A0>()), z);

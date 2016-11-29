@@ -77,8 +77,8 @@ namespace boost { namespace simd { namespace ext
       i_t expo = -simd::max(e1, e2);
 
       A0 e = (e1 == e2) ? simd::abs(m1-m2)
-        :   simd::abs( simd::ldexp(a0, expo)
-                              - simd::ldexp(a1, expo)
+        :   simd::abs( simd::pedantic_(ldexp)(a0, expo)
+                              - simd::pedantic_(ldexp)(a1, expo)
                             );
       return e/Eps<A0>();
     }
