@@ -14,7 +14,7 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_pedantic_inearbyint, bs::pedantic(bs::inearbyint));
+DEFINE_SIMD_BENCH(simd_pedantic_inearbyint, bs::pedantic_(bs::inearbyint));
 
 DEFINE_BENCH_MAIN()
 {

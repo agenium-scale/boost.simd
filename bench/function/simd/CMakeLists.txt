@@ -263,7 +263,7 @@ set(SOURCES
     next.cpp
     none.cpp
     nthroot.regular.cpp
-    nthroot.pedantic.cpp
+    nthroot.raw.cpp
     oneminus.regular.cpp
     oneminus.saturated.cpp
     plus.regular.cpp

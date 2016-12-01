@@ -22,7 +22,7 @@ struct nthrp
   template<class T> T operator()(const T & a) const
   {
     using i_t = bd::as_integer_t<T>;
-    return bs::pedantic_(bs::nthroot)(a, bs::enumerate<i_t>(2));
+    return bs::raw_(bs::nthroot)(a, bs::enumerate<i_t>(2));
   }
 };
 

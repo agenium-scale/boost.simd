@@ -16,7 +16,6 @@ namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 namespace bd =  boost::dispatch;
 
-DEFINE_SIMD_BENCH(simd_ldexp, bs::ldexp);
 
 
 template < int N >
@@ -31,7 +30,6 @@ struct ldep
   DEFINE_SIMD_BENCH(pedantic_simd_lde10, ldep<10>());
 
 DEFINE_BENCH_MAIN() {
-  nsb::for_each<simd_lde10, NS_BENCH_IEEE_TYPES>(-10, 10);
   nsb::for_each<pedantic_simd_lde10, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
 
