@@ -9,11 +9,11 @@
 #include <simd_bench.hpp>
 #include <boost/simd/function/simd/inearbyint.hpp>
 #include <boost/simd/pack.hpp>
+#include <cmath>
 
 namespace nsb = ns::bench;
-namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_inearbyint, bs::inearbyint);
+DEFINE_SIMD_BENCH(simd_inearbyint, boost::simd::inearbyint);
 
 DEFINE_BENCH_MAIN()
 {

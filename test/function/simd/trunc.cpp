@@ -115,30 +115,3 @@ STF_CASE_TPL (" trunc signed_int",  STF_SIGNED_INTEGRAL_TYPES)
   STF_EQUAL(trunc(bs::Zero<p_t>()), bs::Zero<p_t>());
 } // end of test for signed_int_
 
-STF_CASE_TPL ( "fast trunc real",  STF_IEEE_TYPES)
-{
-
-  namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
-  using bs::trunc;
-  using p_t = bs::pack<T>;
-  using r_t = decltype(trunc(p_t()));
-
-  // return type conformity test
-  STF_TYPE_IS(r_t, p_t);
-
-  // specific values tests
-  STF_EQUAL(bs::fast_(trunc)(bs::One<p_t>()), bs::One<p_t>());
-  STF_EQUAL(bs::fast_(trunc)(bs::Mone<p_t>()), bs::Mone<p_t>());
-  STF_EQUAL(bs::fast_(trunc)(bs::Zero<p_t>()), bs::Zero<p_t>());
-  STF_EQUAL(bs::fast_(trunc)(bs::Pi<p_t>()), bs::Three<p_t>());
-  STF_EQUAL(bs::fast_(trunc)(p_t(1.4)), p_t(1));
-  STF_EQUAL(bs::fast_(trunc)(p_t(1.5)), p_t(1));
-  STF_EQUAL(bs::fast_(trunc)(p_t(1.6)), p_t(1));
-  STF_EQUAL(bs::fast_(trunc)(p_t(2.5)), p_t(2));
-  STF_EQUAL(bs::fast_(trunc)(p_t(-1.4)), p_t(-1));
-  STF_EQUAL(bs::fast_(trunc)(p_t(-1.5)), p_t(-1));
-  STF_EQUAL(bs::fast_(trunc)(p_t(-1.6)), p_t(-1));
-  STF_EQUAL(bs::fast_(trunc)(p_t(-2.5)), p_t(-2));
-} // end of test for floating_
-

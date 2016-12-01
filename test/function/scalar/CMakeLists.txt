@@ -182,7 +182,8 @@ set ( SOURCES
    inc.regular.cpp
    inc.saturated.cpp
    indeg.cpp
-   inearbyint.cpp
+   inearbyint.regular.cpp
+   inearbyint.pedantic.cpp
    inrad.cpp
    insert.cpp
    iround.cpp

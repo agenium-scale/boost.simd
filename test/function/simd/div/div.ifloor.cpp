@@ -22,6 +22,7 @@ void test(Env& $)
   using pi_t =  bs::pack<iT, N>;
   T a1[N], a2[N];
   iT b[N];
+  a1[0] = T(1); //to avoid g++6 warning a1 (and a2 !) is used uninitialized in this function
   for(std::size_t i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? T(1+i) : T(3+i);

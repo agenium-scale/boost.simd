@@ -8,14 +8,15 @@
 
 #include <simd_bench.hpp>
 #include <boost/simd/function/simd/inearbyint.hpp>
+#include <boost/simd/pack.hpp>
+#include <cmath>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-
-DEFINE_SCALAR_BENCH(scalar_fast_inearbyint, bs::fast_(bs::inearbyint));
+DEFINE_SIMD_BENCH(simd_pedantic_inearbyint, bs::pedantic(bs::inearbyint));
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_fast_inearbyint, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<simd_pedantic_inearbyint, NS_BENCH_IEEE_TYPES>(-10, 10);
 }

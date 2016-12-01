@@ -10,10 +10,7 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_TRUNC_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_TRUNC_HPP_INCLUDED
-#include <boost/simd/function/fast.hpp>
-#include <boost/simd/function/fast.hpp>
 #include <boost/simd/function/std.hpp>
-#include <boost/simd/function/fast.hpp>
 
 #include <boost/simd/function/abs.hpp>
 #include <boost/simd/function/bitofsign.hpp>
@@ -52,30 +49,7 @@ namespace boost { namespace simd { namespace ext
       return bitwise_or(floor(bs::abs(a0)), bitofsign(a0));
     }
   };
-  BOOST_DISPATCH_OVERLOAD ( trunc_
-                          , (typename A0)
-                          , bd::cpu_
-                          , boost::simd::fast_tag
-                          , bd::scalar_< bd::integer_<A0> >
-                          )
-  {
-    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 a0) const BOOST_NOEXCEPT
-    {
-      return a0;
-    }
-  };
-  BOOST_DISPATCH_OVERLOAD ( trunc_
-                          , (typename A0)
-                          , bd::cpu_
-                          , boost::simd::fast_tag
-                          , bd::scalar_< bd::floating_<A0> >
-                         )
-  {
-    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 a0) const BOOST_NOEXCEPT
-    {
-      return static_cast<A0>(static_cast<bd::as_integer_t<A0>>(a0));
-    }
-  };
+
   BOOST_DISPATCH_OVERLOAD ( trunc_
                           , (typename A0)
                           , bd::cpu_

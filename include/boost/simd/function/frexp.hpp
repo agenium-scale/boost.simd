@@ -56,7 +56,7 @@ namespace boost { namespace simd
     @warninbox{Take care that these results differ from the returns of the functions @ref mantissa
     and @ref exponent}
 
-    The decorators fast_ and std_ can be used.
+    The decorators pedantic_ and std_ can be used.
 
     without pedantic_ the call is speedier, but special values as Nan or Inf are not handled properly.
     std_ transmit the call to std::ifrexp. That implies that simd is ever emulated.

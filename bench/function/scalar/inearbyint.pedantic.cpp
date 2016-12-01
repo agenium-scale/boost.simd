@@ -7,15 +7,15 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/trunc.hpp>
-#include <boost/simd/pack.hpp>
+#include <boost/simd/function/simd/inearbyint.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_trunc, bs::fast_(bs::trunc));
+
+DEFINE_SCALAR_BENCH(scalar_pedantic_inearbyint, bs::pedantic_(bs::inearbyint));
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_trunc, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<scalar_pedantic_inearbyint, NS_BENCH_IEEE_TYPES>(-10, 10);
 }

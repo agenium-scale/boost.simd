@@ -166,7 +166,7 @@ set(SOURCES
     inc.regular.cpp
     inc.saturated.cpp
     indeg.cpp
-    inearbyint.fast.cpp
+    inearbyint.pedantic.cpp
     inearbyint.regular.cpp
     inrad.cpp
     iround.cpp
@@ -342,7 +342,6 @@ set(SOURCES
     touint.regular.cpp
     touint.saturated.cpp
     trunc.regular.cpp
-    trunc.fast.cpp
     trunc.std.cpp
     two_add.cpp
     twopower.cpp

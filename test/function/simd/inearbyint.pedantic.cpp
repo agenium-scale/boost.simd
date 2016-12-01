@@ -24,18 +24,16 @@ void test(Env& $)
   using pi_t = bs::pack<iT, N>;
 
   T a1[N];
-  iT b[N], c[N];
+  iT c[N];
   for(std::size_t i = 0; i < N; ++i)
   {
      a1[i] = T(i+1);
-     b[i] = bs::fast_(bs::inearbyint)(a1[i]);
-     c[i] = bs::inearbyint(a1[i]);
+     c[i] = bs::pedantic_(bs::inearbyint)(a1[i]);
    }
   p_t aa1(&a1[0], &a1[0]+N);
-  pi_t bb(&b[0], &b[0]+N);
   pi_t cc(&c[0], &c[0]+N);
-  STF_EQUAL(bs::fast_(bs::inearbyint)(aa1), bb);
-  STF_EQUAL(bs::inearbyint(aa1), cc);
+  STF_EQUAL(bs::pedantic_(bs::inearbyint)(aa1), cc);
+
 }
 
 STF_CASE_TPL("Check inearbyint on pack", STF_NUMERIC_TYPES)
