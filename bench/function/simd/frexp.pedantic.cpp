@@ -13,7 +13,7 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_frexp, bs::fast_(bs::frexp));
+DEFINE_SIMD_BENCH(simd_frexp, bs::frexp);
 
 DEFINE_BENCH_MAIN()
 {

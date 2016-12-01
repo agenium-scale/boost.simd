@@ -133,7 +133,7 @@ set(SOURCES
     fpclassify.std.cpp
     frac.cpp
     frexp.regular.cpp
-    frexp.fast.cpp
+#    frexp.fast.cpp
     frexp.std.cpp
     gamma.regular.cpp
     gammaln.regular.cpp

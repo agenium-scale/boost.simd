@@ -126,7 +126,7 @@ set(SOURCES
     fpclassify.cpp
     frac.cpp
     frexp.regular.cpp
-    frexp.fast.cpp
+    frexp.pedantic.cpp
     gamma.cpp
     gammaln.cpp
     genmaskc.cpp
