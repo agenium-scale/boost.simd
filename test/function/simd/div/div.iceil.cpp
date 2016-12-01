@@ -41,6 +41,6 @@ STF_CASE_TPL("Check idiv ceil on pack" , STF_NUMERIC_TYPES)
   static const std::size_t N = bs::pack<T>::static_size;
 
   test<T, N>($);
-//   test<T, N/2>($);
-//   test<T, N*2>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }

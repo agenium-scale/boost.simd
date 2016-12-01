@@ -28,8 +28,6 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE  bd::as_integer_t<A0> operator() ( const A0 & a0) const BOOST_NOEXCEPT
     {
-      if (BOOST_UNLIKELY(is_nan(a0))) return Zero<A0>();
-      if (BOOST_UNLIKELY(a0 == Inf<A0>())) return Valmax<A0>();
       return _mm_cvtss_si32(_mm_set_ss(a0));
     }
   };
@@ -37,13 +35,15 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( inearbyint_
                           , (typename A0)
                           , bs::sse1_
-                          , bs::fast_tag
+                          , bs::pedantic_tag
                           , bd::scalar_<bd::single_<A0>>
                           )
   {
-    BOOST_FORCEINLINE  bd::as_integer_t<A0> operator() (bs::fast_tag const&
+    BOOST_FORCEINLINE  bd::as_integer_t<A0> operator() (bs::pedantic_tag const&
                                                        ,  const A0 & a0) const BOOST_NOEXCEPT
     {
+      if (BOOST_UNLIKELY(is_nan(a0))) return Zero<A0>();
+      if (BOOST_UNLIKELY(a0 == Inf<A0>())) return Valmax<A0>();
       return _mm_cvtss_si32(_mm_set_ss(a0));
     }
   };

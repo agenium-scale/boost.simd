@@ -54,7 +54,6 @@ STF_CASE_TPL (" inearbyint real fast",  STF_IEEE_TYPES)
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
   using bs::inearbyint;
-  using bs::fast_;
   using r_t = decltype(inearbyint(T()));
 
   // return type conformity test
