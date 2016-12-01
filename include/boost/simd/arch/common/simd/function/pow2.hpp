@@ -15,7 +15,6 @@
 #include <boost/simd/detail/assert_utils.hpp>
 #include <boost/simd/function/is_finite.hpp>
 #endif
-#include <boost/simd/function/fast.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/function/ldexp.hpp>
 #include <boost/simd/function/toint.hpp>

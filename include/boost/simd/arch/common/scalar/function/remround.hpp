@@ -76,7 +76,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( bd::functor<bs::tag::round_> const&
                                     , A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
-      return fnms(div(floor, a0,a1), a1, a0);
+      return fnms(div(round, a0,a1), a1, a0);
     }
   };
 
@@ -91,7 +91,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( bd::functor<bs::tag::round_> const&
                                     , A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
-      return fnms(div(floor, a0,a1), a1, a0);
+      return fnms(div(round, a0,a1), a1, a0);
     }
   };
 } } }

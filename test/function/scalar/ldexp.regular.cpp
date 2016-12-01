@@ -35,7 +35,6 @@ STF_CASE_TPL("ldexp fast", STF_IEEE_TYPES)
   namespace bd = boost::dispatch;
   using bs::ldexp;
 
-  using bs::fast_;
   using iT = bd::as_integer_t<T>;
   using r_t = decltype(ldexp(T(), iT()));
 

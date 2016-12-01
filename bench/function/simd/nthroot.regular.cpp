@@ -28,7 +28,6 @@ struct nthr
 
 
 DEFINE_SIMD_BENCH(simd_nthroot, nthr());
-DEFINE_SIMD_BENCH(fast_simd_nthroot, nthrf());
 
 DEFINE_BENCH_MAIN() {
   nsb::for_each<simd_nthroot, NS_BENCH_IEEE_TYPES>(-10, 10);

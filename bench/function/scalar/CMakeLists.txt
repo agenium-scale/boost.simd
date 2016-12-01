@@ -271,7 +271,7 @@ set(SOURCES
     prev.cpp
     rec.regular.cpp
     rem.regular.cpp
-    rem.fast.cpp
+    rem.pedantic.cpp
     rem_pio2_cephes.cpp
     rem_pio2.cpp
     rem_pio2_medium.cpp

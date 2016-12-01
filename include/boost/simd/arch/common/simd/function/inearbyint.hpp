@@ -19,7 +19,6 @@
 #include <boost/simd/function/is_greater.hpp>
 #include <boost/simd/function/is_less.hpp>
 #include <boost/simd/function/splat.hpp>
-#include <boost/simd/function/fast.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 

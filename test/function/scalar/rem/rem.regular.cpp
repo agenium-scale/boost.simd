@@ -42,8 +42,6 @@ STF_CASE_TPL (" rem real",  STF_IEEE_TYPES)
   STF_EQUAL(rem(bs::One<T>(), bs::One<T>()), bs::Zero<T>());
   STF_IEEE_EQUAL(rem(bs::One<T>(),bs::Zero<T>()), bs::Nan<T>());
   STF_IEEE_EQUAL(rem(bs::Zero<T>(), bs::Zero<T>()), bs::Nan<T>());
-  STF_EXPECT(bs::is_negative(rem(-T(0), T(1))));
-  STF_EXPECT(bs::is_positive(rem(T(0), T(1))));
 } // end of test for floating_
 
 STF_CASE_TPL (" rem unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
