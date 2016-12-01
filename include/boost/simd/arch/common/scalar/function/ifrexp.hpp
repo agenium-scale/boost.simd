@@ -10,6 +10,9 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_IFREXP_HPP_INCLUDED
 
 #include <boost/simd/detail/dispatch/function/overload.hpp>
+#include <boost/simd/function/pedantic.hpp>
+#include <boost/simd/function/std.hpp>
+
 
 #ifndef BOOST_SIMD_NO_DENORMALS
 #include <boost/simd/constant/twotonmb.hpp>

@@ -84,8 +84,6 @@ STF_CASE_TPL("Check rem on pack no option" , STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
-  STF_EXPECT(bs::all(bs::is_negative(bs::rem(bs::Mzero<p_t>(), bs::One<p_t>()))));
-  STF_EXPECT(bs::all(bs::is_positive(bs::rem(bs::Zero<p_t>(), bs::One<p_t>()))));
   STF_IEEE_EQUAL(bs::rem(bs::Mzero<p_t>(), bs::One<p_t>()), bs::Zero<p_t>());
   STF_IEEE_EQUAL(bs::rem(bs::Zero<p_t>(), bs::One<p_t>()), bs::Zero<p_t>());
  #ifndef BOOST_SIMD_NO_INVALIDS
