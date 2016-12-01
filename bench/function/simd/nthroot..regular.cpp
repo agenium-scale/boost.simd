@@ -26,21 +26,12 @@ struct nthr
   }
 };
 
-struct nthrf
-{
-  template<class T> T operator()(const T & a) const
-  {
-    using i_t = bd::as_integer_t<T>;
-    return bs::fast_(bs::nthroot)(a, bs::enumerate<i_t>(2));
-  }
-};
 
 DEFINE_SIMD_BENCH(simd_nthroot, nthr());
 DEFINE_SIMD_BENCH(fast_simd_nthroot, nthrf());
 
 DEFINE_BENCH_MAIN() {
   nsb::for_each<simd_nthroot, NS_BENCH_IEEE_TYPES>(-10, 10);
-  nsb::for_each<fast_simd_nthroot, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
 
 
