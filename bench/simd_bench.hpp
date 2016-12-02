@@ -158,6 +158,16 @@ using scalar_experiment =
                   , 1
                   >;
 
+template <typename T, std::size_t N>
+using unrolled_pack = boost::simd::pack<T, boost::simd::pack<T>::static_size * N>;
+
+template <std::size_t N, typename Experiment>
+using unrolled_simd_experiment =
+  bench_experiment< Experiment
+                  , unrolled_pack<template_of_t<Experiment>, N>
+                  , unrolled_pack<template_of_t<Experiment>, N>::static_size
+                  >;
+
 #define DEFINE_BENCH(name_, f, experiment)                                                         \
   template <typename T>                                                                            \
   struct name_ : experiment<name_<T>>                                                              \
@@ -167,8 +177,16 @@ using scalar_experiment =
   }                                                                                                \
 /**/
 
-#define DEFINE_SIMD_BENCH(name, f)   DEFINE_BENCH(name, f, simd_experiment)
-#define DEFINE_SCALAR_BENCH(name, f) DEFINE_BENCH(name, f, scalar_experiment)
+#define DEFINE_SIMD_BENCH(name, f)          DEFINE_BENCH(name, f, simd_experiment)
+#define DEFINE_SCALAR_BENCH(name, f)        DEFINE_BENCH(name, f, scalar_experiment)
+#define DEFINE_UNROLLED_SIMD_BENCH(name_, unroll, f)\
+  template <typename T>                                                                            \
+  struct name_ : unrolled_simd_experiment<unroll, name_<T>>                                        \
+  {                                                                                                \
+    static const char* name()    { return BOOST_PP_STRINGIZE(name_); }                             \
+    static decltype(f) functor() { return f; }                                                     \
+  }                                                                                                \
+/**/
 
 #define DEFINE_BENCH_MAIN()                                                                        \
   void main2();                                                                                    \
