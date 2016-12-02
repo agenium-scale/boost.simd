@@ -117,9 +117,10 @@ struct option {
   std::string usage() const {
     std::string u;
     std::string s;
+    std::string o = opts();
     std::size_t how_many = 0;
     boost::char_separator<char> sep(",");
-    for (auto opt : boost::tokenizer<decltype(sep)>(std::string(opts()), sep)) {
+    for (auto opt : boost::tokenizer<decltype(sep)>(o, sep)) {
       if (how_many) {
         s += " | " + opt;
       } else {
@@ -305,18 +306,14 @@ inline ns::bench::args::parser& parser() {
 inline void parse_args(int argc, char **argv) {
   auto& p = parser();
   p.add_option<std::size_t>("frequency", "-f,--frequency");
-  p.add_option<std::size_t>("loop",      "-l,--loop");
   p.add_option<double>("during" , "-d,--during" );
   p.add_option<double>("really-during", "--really-during");
+  p.add_option<std::size_t>("iteration", "--iteration");
   p.add_option<bool>("quiet", "-q,--quiet");
   p.add_option<bool>("time-s",  "--time-s");
   p.add_option<bool>("time-ms", "--time-ms");
   p.add_option<bool>("time-ns", "--time-ns");
   p.add_option<bool>("time-us", "--time-us");
-  p.add_option<bool>("op-s",    "--op-s");
-  p.add_option<bool>("op-ms",   "--op-ms");
-  p.add_option<bool>("op-ns",   "--op-ns");
-  p.add_option<bool>("op-us",   "--op-us");
   p.add_option<bool>("cpe-s",   "--cpe");
   p.add_option<bool>("cpe-s",   "--cpe-s");
   p.add_option<bool>("cpe-ms",  "--cpe-ms");
@@ -344,7 +341,9 @@ double to_seconds(Duration const& d) {
 #include <boost/predef/architecture.h>
 #include <boost/predef/compiler.h>
 #include <ctime>
-#include <unistd.h>
+#if !defined(BOOST_COMP_MSVC_AVAILABLE)
+  #include <unistd.h>
+#endif
 #include <ratio>
 #include <chrono>
 #include <iostream>
@@ -798,11 +797,16 @@ struct result_info {
   std::string stat;
   std::string desc;
   std::size_t size;
+  std::size_t element_size;
+  std::size_t flops;
+  std::size_t frame_count;
+  std::size_t transfer;
   std::size_t samples;
 };
 struct results {
   using container_type = std::vector<std::pair<std::string, std::vector<result_info>>>;
   using contained_type = typename container_type::value_type;
+  using optional_infos_container_type = std::unordered_map<std::string, std::string>;
   results() {
     comp_ = BOOST_COMPILER;
     plat_ = BOOST_PLATFORM;
@@ -851,11 +855,21 @@ struct results {
   std::string const& compiler() const { return comp_; }
   std::string const& platform() const { return plat_; }
   std::string const& architecture() const { return arch_; }
+  results& add_optional_info(std::string const& key, std::string const& value)
+  {
+    opts_.emplace(key, value);
+    return *this;
+  }
+  optional_infos_container_type const& optional_infos() const
+  {
+    return opts_;
+  }
   private:
   std::string comp_;
   std::string plat_;
   std::string arch_;
   container_type results_;
+  std::unordered_map<std::string, std::string> opts_;
 };
 template <std::size_t... N, typename... Gs>
 std::string make_generators_desc(detail::range<N...> const&, std::tuple<Gs...> const& gs) {
@@ -866,18 +880,23 @@ std::string make_generators_desc(detail::range<N...> const&, std::tuple<Gs...> c
     desc += d;
     first = false;
   };
+  (void)append;
   NS_BENCH_STATIC_UNROLL(append, std::get<N>(gs).description());
   return desc;
 }
 template <typename Experiment, typename Metric, typename... Gs>
 result_info make_result_info(Experiment const& e, Metric const& m, std::tuple<Gs...> const& gs) {
   result_info r;
-  r.size    = e.size();
-  r.unit    = m.unit().name();
-  r.stat    = m.stat().name();
-  r.desc    = make_generators_desc(detail::make_range_t<sizeof...(Gs)>(), gs);
-  r.result  = m.result(e);
-  r.samples = boost::accumulators::count(times_set);
+  r.size         = e.size();
+  r.element_size = e.element_size();
+  r.flops        = e.flops();
+  r.frame_count  = e.frame_count();
+  r.transfer     = e.transfer();
+  r.unit         = m.unit().name();
+  r.stat         = m.stat().name();
+  r.desc         = make_generators_desc(detail::make_range_t<sizeof...(Gs)>(), gs);
+  r.result       = m.result(e);
+  r.samples      = boost::accumulators::count(times_set);
   return r;
 }
 std::ostream& operator<<(std::ostream& os, result_info const& r);
@@ -886,40 +905,60 @@ std::string as_str(std::string const& what)
 {
   return "\"" + what + "\"";
 }
+template <typename Val>
+std::string as_json(std::string const& key, Val const& val)
+{
+  std::stringstream ss;
+  ss << key << ": " << val;
+  return ss.str();
+}
 std::string as_json(result_info const& r)
 {
   std::stringstream ss;
   ss << "{";
-  ss << " " << as_str("size") << ": " << r.size << ",";
-  ss << " " << as_str("stat") << ": " << as_str(r.stat) << ",";
-  ss << " " << as_str("unit") << ": " << as_str(r.unit) << ",";
-  ss << " " << as_str("result") << ": " << r.result << ",";
-  ss << " " << as_str("samples") << ": " << r.samples << ",";
-  ss << " " << as_str("description") << ": " << as_str(r.desc);
+  ss <<  " " << as_json(as_str("size"), r.size);
+  ss << ", " << as_json(as_str("element_size"), r.element_size);
+  ss << ", " << as_json(as_str("flops"), r.flops);
+  ss << ", " << as_json(as_str("frame_count"), r.frame_count);
+  ss << ", " << as_json(as_str("transfer"), r.transfer);
+  ss << ", " << as_json(as_str("stat"), as_str(r.stat));
+  ss << ", " << as_json(as_str("unit"), as_str(r.unit));
+  ss << ", " << as_json(as_str("result"), r.result);
+  ss << ", " << as_json(as_str("samples"), r.samples);
+  ss << ", " << as_json(as_str("description"), as_str(r.desc));
   ss << "}";
   return ss.str();
 }
 std::string as_json(results const& r)
 {
   std::stringstream ss;
-  ss << "{";
-  ss << " " << as_str("compiler") << ": " << as_str(r.compiler()) << ",";
-  ss << " " << as_str("platform") << ": " << as_str(r.platform()) << ",";
-  ss << " " << as_str("architecture") << ": " << as_str(r.architecture()) << ",";
-  ss << " " << as_str("benchmarks") << ": {";
+  ss << "{ ";
+  bool first = true;
   for (auto const& b : r) {
+    if (!first) ss << ", ";
     auto const& name  = b.first;
-    ss << as_str(name) << ": [";
-    bool first = true;
-    for (auto const& info : b.second) {
-      if (!first) ss << ", ";
-      ss << as_json(info);
-      first = false;
+    auto const& infos = b.second;
+    ss << as_str(name) << ": {";
+    ss <<  " " << as_json(as_str("compiler"), as_str(r.compiler()));
+    ss << ", " << as_json(as_str("platform"), as_str(r.platform()));
+    ss << ", " << as_json(as_str("architecture"), as_str(r.architecture()));
+    for (auto const& o : r.optional_infos()) {
+      ss << ", " << as_json(as_str(o.first), as_str(o.second));
     }
-    ss << "]";
+    {
+      ss << ", " << as_str("benchmarks") << ": [ ";
+      bool first2 = true;
+      for (auto const& info : infos) {
+        if (!first2) ss << ", ";
+        ss << as_json(info);
+        first2 = false;
+      }
+      ss << " ]";
+    }
+    ss << " }";
+    first = false;
   }
-  ss << "}";
-  ss << "}";
+  ss << " }";
   return ss.str();
 }
 std::string as_table(result_info const& r)
@@ -1122,26 +1161,32 @@ class setup {
 setup default_setup()
 {
   setup s;
+  auto m = args_map();
+  auto const& default_unit = units::cpe_s_;
   typedef setup& (ns::bench::setup::*met_t)(ns::bench::units::basic_unit const&);
-  auto update = [](ns::bench::setup& ss, met_t f) {
-    if (args_map().get<bool>("cpe",     false)) ss = (ss.*f)(units::cpe_s_);
-    if (args_map().get<bool>("cpe-s",   false)) ss = (ss.*f)(units::cpe_s_);
-    if (args_map().get<bool>("cpe-ms",  false)) ss = (ss.*f)(units::cpe_ms_);
-    if (args_map().get<bool>("cpe-ns",  false)) ss = (ss.*f)(units::cpe_ns_);
-    if (args_map().get<bool>("cpe-us",  false)) ss = (ss.*f)(units::cpe_us_);
-    if (args_map().get<bool>("time-ms", false)) ss = (ss.*f)(units::time_ms_);
-    if (args_map().get<bool>("time-us", false)) ss = (ss.*f)(units::time_us_);
-    if (args_map().get<bool>("time-ns", false)) ss = (ss.*f)(units::time_ns_);
-    if (args_map().get<bool>("time-s",  false)) ss = (ss.*f)(units::time_s_);
+  auto update = [&m, &s, default_unit](met_t f) {
+         if (m.get<bool>("cpe",     false)) s = (s.*f)(units::cpe_s_);
+    else if (m.get<bool>("cpe-s",   false)) s = (s.*f)(units::cpe_s_);
+    else if (m.get<bool>("cpe-ms",  false)) s = (s.*f)(units::cpe_ms_);
+    else if (m.get<bool>("cpe-ns",  false)) s = (s.*f)(units::cpe_ns_);
+    else if (m.get<bool>("cpe-us",  false)) s = (s.*f)(units::cpe_us_);
+    else if (m.get<bool>("time-ms", false)) s = (s.*f)(units::time_ms_);
+    else if (m.get<bool>("time-us", false)) s = (s.*f)(units::time_us_);
+    else if (m.get<bool>("time-ns", false)) s = (s.*f)(units::time_ns_);
+    else if (m.get<bool>("time-s",  false)) s = (s.*f)(units::time_s_);
+    else                                    s = (s.*f)(units::cpe_s_);
   };
-  if (args_map().get<bool>("stddev", false)) update(s, &ns::bench::setup::stddev);
-  if (args_map().get<bool>("median", false)) update(s, &ns::bench::setup::median);
-  if (args_map().get<bool>("mean",   false)) update(s, &ns::bench::setup::mean);
-  if (args_map().get<bool>("min",    false)) update(s, &ns::bench::setup::min);
-  if (args_map().get<bool>("max",    false)) update(s, &ns::bench::setup::max);
-  s = s.really_during(args_map().get<double>("really-during", 1.0));
+  if (m.get<bool>("stddev", false)) update(&ns::bench::setup::stddev);
+  if (m.get<bool>("median", false)) update(&ns::bench::setup::median);
+  if (m.get<bool>("mean",   false)) update(&ns::bench::setup::mean);
+  if (m.get<bool>("min",    false)) update(&ns::bench::setup::min);
+  if (m.get<bool>("max",    false)) update(&ns::bench::setup::max);
+       if (m.has("during"))        s = s.during(m.get<double>("during"));
+  else if (m.has("really-during")) s = s.really_during(m.get<double>("really-during"));
+  else if (m.has("iteration"))     s = s.iteration(m.get<std::size_t>("iteration"));
+  else                             s = s.really_during(1.);
   if (s.metrics().empty()) {
-    s = s.median(units::cpe_s_);
+    s = s.median(default_unit);
   }
   return s;
 }
@@ -1218,6 +1263,7 @@ void prepare_parameters( range<N...> const&
                        , std::size_t sz
                        )
 {
+  (void)sz;
   NS_BENCH_STATIC_UNROLL(prepare_parameter, std::get<N>(ps), std::get<N>(gs), sz);
 }
 template <typename... Ts, typename... Gs>
@@ -1277,6 +1323,12 @@ struct make_parameters_container<generators::fixed<T>, T const&> {
 template <typename G, typename T>
 using make_parameters_container_t =
   typename make_parameters_container<typename std::decay<G>::type, T>::type;
+template <typename G>
+struct generator_value {
+    using type = decltype(std::declval<G>()());
+};
+template <typename G>
+using generator_value_t = typename generator_value<G>::type;
 }
 template <typename Experiment, typename... Gs>
 void run(results& r, setup const& s, std::string const& name, Experiment&& e, Gs&&... g) {
@@ -1321,7 +1373,7 @@ void run(results& r, setup const& s, std::string const& name, Experiment&& e, Gs
   };
   times_set  = stats_set();
   cycles_set = stats_set();
-  auto ps = std::tuple<detail::make_parameters_container_t<decltype(g), decltype(g())>...>();
+  std::tuple<detail::make_parameters_container_t<Gs, detail::generator_value_t<Gs>>...> ps;
   auto gs = std::make_tuple(std::forward<Gs>(g)...);
   auto sz  = args_map().get<std::size_t>("loop", ::ns::bench::setup::internal_loop_size());
   if (!is_quiet) std::cerr << ":: Benchmarking: \"" << name << "\" ";
