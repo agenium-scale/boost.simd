@@ -51,7 +51,7 @@ STF_CASE_TPL (" bs::saturated_(bs::toint) real",  STF_IEEE_TYPES)
   }
   STF_EQUAL(bs::saturated_(bs::toint)(bs::ldexp(bs::One<T>(), N)), bs::Valmax<r_t>());
   STF_EQUAL(bs::saturated_(bs::toint)(bs::ldexp(bs::One<T>(), N+1)), bs::Valmax<r_t>());
-  STF_EQUAL(bs::saturated_(bs::toint)(-bs::ldexp(bs::One<T>(), N+1)), bs::Valmin<r_t>());
+  STF_EQUAL(bs::saturated_(bs::toint)(-bs::ldexp(bs::One<T>(), N)), bs::Valmin<r_t>());
   STF_EQUAL(bs::saturated_(bs::toint)(-bs::ldexp(bs::One<T>(), N+1)), bs::Valmin<r_t>());
 
 } // end of test for floating_

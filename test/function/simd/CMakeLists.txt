@@ -363,6 +363,7 @@ set ( SOURCES
       tofloat.cpp
       toint.regular.cpp
       toint.saturated.cpp
+      toint.more.cpp
       touint.regular.cpp
       touint.saturated.cpp
       trunc.cpp
