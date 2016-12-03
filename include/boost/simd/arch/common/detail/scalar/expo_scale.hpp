@@ -6,7 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_DETAIL_SCALAR_EXPO_SCALE_HPP_INCLUDED
+#ifndef BOOST_SI   MD_ARCH_COMMON_DETAIL_SCALAR_EXPO_SCALE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_SCALAR_EXPO_SCALE_HPP_INCLUDED
 
 #include <boost/simd/detail/constant/maxexponent.hpp>
@@ -14,13 +14,14 @@
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/shift_left.hpp>
 #include <boost/simd/function/toint.hpp>
-#include <boost/simd/function/toint.hpp>
+#include <boost/simd/function/ldexp.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 namespace boost { namespace simd { namespace detail
 {
-  template<typename A0> BOOST_FORCEINLINE A0 scale(A0 const & y, const A0& k)
-  {//puts("scaaaaaale!");
+  template<typename A0> BOOST_FORCEINLINE A0 scale(A0 const & y, const A0& k) BOOST_NOEXCEPT
+  {
+//    return bs::ldexp(y, k);
     auto ik = toint(k) + Maxexponent<A0>();
     ik = shift_left(ik, Nbmantissabits<dispatch::scalar_of_t<A0>>());
     return y*bitwise_cast<A0>(ik);
