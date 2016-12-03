@@ -138,6 +138,19 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( log10_
                           , (typename A0)
                           , bd::cpu_
+                          , bs::plain_tag
+                          , bd::scalar_< bd::floating_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() (const plain_tag &, A0 a0) const BOOST_NOEXCEPT
+    {
+      return musl_(log10)(a0);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( log10_
+                          , (typename A0)
+                          , bd::cpu_
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
@@ -150,7 +163,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( log10_
                           , (typename A0)
                           , bd::cpu_
-                          , bs::plain_tag
+                          , bs::std_tag
                           , bd::scalar_< bd::arithmetic_<A0> >
                           )
   {

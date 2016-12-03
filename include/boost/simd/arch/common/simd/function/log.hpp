@@ -21,10 +21,11 @@
 #include <boost/simd/function/fma.hpp>
 #include <boost/simd/function/ifrexp.hpp>
 #include <boost/simd/function/frexp.hpp>
-#include <boost/simd/function/genmask.hpp>
 #include <boost/simd/function/horn.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/if_minus.hpp>
+#include <boost/simd/function/if_dec.hpp>
+#include <boost/simd/function/if_else_zero.hpp>
 #include <boost/simd/function/if_nan_else.hpp>
 #include <boost/simd/function/is_ngez.hpp>
 #include <boost/simd/function/is_nez.hpp>
@@ -217,7 +218,7 @@ namespace boost { namespace simd { namespace ext
 #endif
       A0 kk;
       std::tie(x, kk) = frexp(x);
-      A0  x_lt_sqrthf = genmask(Sqrt_2o_2<A0>() > x);
+      auto  x_lt_sqrthf = (Sqrt_2o_2<A0>() > x);
       dk += if_dec(x_lt_sqrthf, kk);
       A0 f = dec(x+if_else_zero(x_lt_sqrthf, x));
       A0 s = f/(Two<A0>() + f);
@@ -260,7 +261,7 @@ namespace boost { namespace simd { namespace ext
 #endif
       A0 kk;
       std::tie(x, kk) = frexp(x);
-      A0  x_lt_sqrthf = genmask(Sqrt_2o_2<A0>() > x);
+      auto  x_lt_sqrthf = (Sqrt_2o_2<A0>() > x);
       dk += if_dec(x_lt_sqrthf, kk);
       A0 f = dec(x+if_else_zero(x_lt_sqrthf, x));
 
