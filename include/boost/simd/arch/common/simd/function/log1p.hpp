@@ -19,8 +19,6 @@
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/dec.hpp>
 #include <boost/simd/function/fma.hpp>
-#include <boost/simd/function/ifrexp.hpp>
-#include <boost/simd/function/genmask.hpp>
 #include <boost/simd/function/horn.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/if_minus.hpp>
