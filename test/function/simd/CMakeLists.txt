@@ -247,7 +247,9 @@ set ( SOURCES
       log10.cpp
       log1p.cpp
       log2.cpp
-      log.cpp
+      log.plain.cpp
+      log.regular.cpp
+      log.musl.cpp
       logical_and.cpp
       logical_andnot.cpp
       logical_notand.cpp
