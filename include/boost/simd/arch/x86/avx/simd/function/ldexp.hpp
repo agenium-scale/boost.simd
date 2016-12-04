@@ -20,6 +20,7 @@
 #include <boost/simd/function/shift_left.hpp>
 #include <boost/simd/detail/constant/maxexponent.hpp>
 #include <boost/simd/constant/nbexponentbits.hpp>
+#include <boost/simd/detail/constant/pow2mask.hpp>
 #include <boost/simd/constant/two.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
