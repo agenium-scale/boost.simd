@@ -17,6 +17,7 @@
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/ldexp.hpp>
+#include <boost/simd/function/toint.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/config.hpp>
 
@@ -46,7 +47,7 @@ namespace boost { namespace simd { namespace detail
       A0 k = reduc_t::reduce(a0, hi, lo, x);
       A0 c = reduc_t::approx(x);
       c = reduc_t::finalize(x, c, hi, lo);
-      return  ldexp(c, k);
+      return  ldexp(c, toint(k));
     }
   };
 
@@ -66,7 +67,7 @@ namespace boost { namespace simd { namespace detail
       A0 x;
       A0 k = reduc_t::reduce(a0, x);
       x = reduc_t::approx(x);
-      return  ldexp(x, k);
+      return  ldexp(x, toint(k));
     }
   };
 } } }
