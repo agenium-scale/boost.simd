@@ -49,7 +49,7 @@ int main()
   //! [bs-simd-loop]
   for (int i = 0; i < size; i += boost::simd::pack<float>::static_size) {
     boost::simd::pack<float> v0(&data0[i]), v1(&data1[i]);
-    bs::aligned_store(v0 + v1, &res[i]);
+    boost::simd::aligned_store(v0 + v1, &res[i]);
   }
   //! [bs-simd-loop]
 
