@@ -58,7 +58,7 @@ namespace boost { namespace simd
 
     - pedantic_ implies
 
-        if a standard exists the function is as conformant as possible whatever the
+        if a standard exists the fonction is as conformant as possible whatever the
         loss in performances can be.
 
     - std_
@@ -77,6 +77,7 @@ namespace boost { namespace simd
         direct trigonometic function can use this decorator which restricts their validity range to
         \f$[-\pi/4, \pi/4]\f$ (they return a nan outside),  but with an important speed-up.
 
+
     @par Note:
        Not "normal" values are as defined by the libc++ @c fpclassify by not returning
        @c FP_NORMAL, the categories being :
@@ -90,7 +91,6 @@ namespace boost { namespace simd
        | FP_SUBNORMAL  |  return "subnormal";  |
        | FP_ZERO       |  return "zero";       |
        </center>
->>>>>>> fb6eaaa... small changes to atithmetic and decorator
   **/
 #endif
 
