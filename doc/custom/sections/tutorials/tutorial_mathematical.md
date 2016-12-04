@@ -1,6 +1,8 @@
 Mathematical Functions {#tutorial-mathematical}
 =========
 
+<div style="text-align: right;" markdown="1">Prev: [Memory Alignment](@ref tutorial-memory)</div>
+<div style="text-align: right;" markdown="1">Next: [Writing a dot product the SIMD Way](@ref tutorial-dot)</div>
 @tableofcontents
 In this tutorial we will demonstrate the use of SIMD mathematical functions
 such as boost::simd::sin and boost::simd::cos.
@@ -58,3 +60,5 @@ Here is a full code, should you wish to try it:
 The test done in this file asserts (if it succeeds) that each compared values differs
 at most of 0.5 ulp (unit in the last place). Refer to boost::simd::ulpdist for more informations.
 
+<div style="text-align: right;" markdown="1">Prev: [Memory Alignment](@ref tutorial-memory)</div>
+<div style="text-align: right;" markdown="1">Next: [Writing a dot product the SIMD Way](@ref tutorial-dot)</div>

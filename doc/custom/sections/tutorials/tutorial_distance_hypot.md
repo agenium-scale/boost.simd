@@ -1,6 +1,9 @@
 Distance between Points Part 2{#tutorial-distance-hypot}
 =========
 
+<div style="text-align: right;" markdown="1">Prev:  [Distance between 2D Points](@ref tutorial-distance)</div>
+<div style="text-align: right;" markdown="1">Next:[Vectorizing the Julia Set Calculation](@ref tutorial-julia)</div>
+
 @tableofcontents
 In this tutorial we will extend the previous tutorial which demonstrated how to
 calculate the distance between between a 2D reference point and a vector of 2D points by
@@ -54,7 +57,7 @@ stages of the computation.
 @subsection distance-hypot-fast Fast @projectname functions
 
 In many cases, the detection of under or overflow at intermediate stages of the computation is not
-required, for exmaple, if the input data is know to be in a certain range. Therefore, **@projectname**
+required, for exmaple, if the input data is known to be in a certain range. Therefore, **@projectname**
 provides regular versions of certain functions which omit these checks.
 
 @snippet distance_hypot.cpp distance-hypot-fast-hypot
@@ -70,3 +73,6 @@ Again, using SSE4.2 instructions, the following performance was observed:
 
 We note here that the performance using regular hypot is equal to that obtained
 in the previous tutorial's SIMD calculation.
+
+<div style="text-align: right;" markdown="1">Prev:  [Distance between 2D Points](@ref tutorial-distance)</div>
+<div style="text-align: right;" markdown="1">Next:[Vectorizing the Julia Set Calculation](@ref tutorial-julia)</div>

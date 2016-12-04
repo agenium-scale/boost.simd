@@ -2,6 +2,8 @@ A SIMD Loop {#tutorial-simd-loop}
 =========
 
 @tableofcontents
+<div style="text-align: right;" markdown="1">Prev: [The SIMD Hello World](@ref tutorial-hello)</div>
+<div style="text-align: right;" markdown="1">Next: [Memory Alignment](@ref tutorial-memory)</div>
 In this tutorial we will demonstrate how to construct a SIMD loop to subtract a constant
 from a vector of input data.
 
@@ -94,3 +96,6 @@ are processed individually. A more elegant way of achieving this is demonstrated
 Here is a full code, should you wish to try it:
 
 @snippet substract.cpp substract
+
+<div style="text-align: right;" markdown="1">Prev: [A Basic SIMD Loop](@ref tutorial-simd-loop)</div>
+<div style="text-align: right;" markdown="1">Next: [Memory Alignment](@ref tutorial-memory)</div>
