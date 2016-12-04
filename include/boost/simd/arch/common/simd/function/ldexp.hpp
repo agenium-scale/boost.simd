@@ -22,7 +22,6 @@
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/is_equal.hpp>
 #include <boost/simd/function/rshl.hpp>
-#include <boost/simd/function/expocvt.hpp>
 #include <boost/simd/function/if_plus.hpp>
 #include <boost/simd/function/if_minus.hpp>
 #include <boost/simd/function/is_flint.hpp>
