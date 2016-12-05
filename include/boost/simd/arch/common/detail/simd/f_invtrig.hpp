@@ -12,6 +12,7 @@
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_SIMD_F_INVTRIG_HPP_INCLUDED
 
 #include <boost/simd/function/horn.hpp>
+#include <boost/simd/function/logical_and.hpp>
 #include <boost/simd/constant/constant.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/mhalf.hpp>
