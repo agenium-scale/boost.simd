@@ -68,7 +68,6 @@ STF_CASE_TPL (" sqrt real",  STF_IEEE_TYPES)
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
   STF_ULP_EQUAL(sqrt(bs::Inf<p_t>()), bs::Inf<r_t>(), 0);
-  STF_ULP_EQUAL(sqrt(bs::Minf<p_t>()), bs::Nan<r_t>(), 0);
   STF_ULP_EQUAL(sqrt(bs::Nan<p_t>()), bs::Nan<r_t>(), 0);
 #endif
   STF_ULP_EQUAL(sqrt(bs::Mone<p_t>()), bs::Nan<r_t>(), 0);
