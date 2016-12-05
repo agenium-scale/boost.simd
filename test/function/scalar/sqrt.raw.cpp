@@ -22,11 +22,11 @@
 #include <boost/simd/function/is_negative.hpp>
 #include <boost/simd/function/is_positive.hpp>
 #include <boost/simd/function/std.hpp>
-#include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/raw.hpp>
 #include <scalar_test.hpp>
 
 
-STF_CASE_TPL (" sqrt real fast",  STF_IEEE_TYPES)
+STF_CASE_TPL (" sqrt real raw",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -38,12 +38,12 @@ STF_CASE_TPL (" sqrt real fast",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(bs::fast_(sqrt)(bs::Minf<T>()), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(bs::fast_(sqrt)(bs::Nan<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::raw_(sqrt)(bs::Minf<T>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(bs::raw_(sqrt)(bs::Nan<T>()), bs::Nan<r_t>(), 0);
 #endif
-  STF_ULP_EQUAL(bs::fast_(sqrt)(bs::Mone<T>()), bs::Nan<r_t>(), 0);
-  STF_ULP_EQUAL(bs::fast_(sqrt)(bs::One<T>()), bs::One<r_t>(), 20);
-  STF_ULP_EQUAL(bs::fast_(sqrt)(bs::Two<T>()), bs::Sqrt_2<r_t>(), 1);
-  STF_ULP_EQUAL(bs::fast_(sqrt)(bs::Zero<T>()), bs::Zero<r_t>(), 0);
-  STF_ULP_EQUAL(bs::fast_(sqrt)(bs::Four<T>()), bs::Two<r_t>(), 20);
+  STF_ULP_EQUAL(bs::raw_(sqrt)(bs::Mone<T>()), bs::Nan<r_t>(), 0);
+  STF_RELATIVE_EQUAL(bs::raw_(sqrt)(bs::One<T>()), bs::One<r_t>(), 0.5);
+  STF_RELATIVE_EQUAL(bs::raw_(sqrt)(bs::Two<T>()), bs::Sqrt_2<r_t>(),0.5);
+  STF_RELATIVE_EQUAL(bs::raw_(sqrt)(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
+  STF_RELATIVE_EQUAL(bs::raw_(sqrt)(bs::Four<T>()), bs::Two<r_t>(), 0.5);
 } // end of test for floating_

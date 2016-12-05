@@ -13,8 +13,6 @@
 #include <boost/simd/detail/overload.hpp>
 
 #include <boost/simd/function/bitwise_cast.hpp>
-#include <boost/simd/function/plus.hpp>
-#include <boost/simd/function/divides.hpp>
 #include <boost/simd/function/if_plus.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/if_one_else_zero.hpp>
@@ -24,7 +22,7 @@
 #include <boost/simd/function/is_greater_equal.hpp>
 #include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/function/is_less.hpp>
-#include <boost/simd/function/minus.hpp>
+#include <boost/simd/function/raw.hpp>
 #include <boost/simd/function/shift_right.hpp>
 #include <boost/simd/function/tofloat.hpp>
 #include <boost/simd/function/toint.hpp>
@@ -48,18 +46,6 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( const A0 & a0) const BOOST_NOEXCEPT
     {
        return _mm_sqrt_pd(a0);
-    }
-  };
-  BOOST_DISPATCH_OVERLOAD ( sqrt_
-                          , (typename A0)
-                          , bs::sse2_
-                          , boost::simd::fast_tag
-                          , bs::pack_<bd::double_<A0>, bs::sse_>
-                         )
-  {
-    BOOST_FORCEINLINE A0 operator() (const fast_tag &, const A0 & a0 ) const BOOST_NOEXCEPT
-    {
-      return _mm_sqrt_pd(a0);
     }
   };
 

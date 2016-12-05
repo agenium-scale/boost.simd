@@ -306,7 +306,9 @@ set ( SOURCES
       rror.cpp
       rshl.cpp
       rshr.cpp
-      rsqrt.cpp
+      rsqrt.regular.cpp
+      rsqrt.raw.cpp
+      rsqrt.pedantic.cpp
       safe_max.cpp
       safe_min.cpp
       sec.cpp
@@ -335,7 +337,8 @@ set ( SOURCES
       sqr.regular.cpp
       sqr.saturated.cpp
       sqrt1pm1.cpp
-      sqrt.cpp
+      sqrt.regular.cpp
+      sqrt.raw.cpp
       stirling.cpp
       stream.cpp
       successor.cpp

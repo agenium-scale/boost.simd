@@ -7,15 +7,14 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/rsqrt.hpp>
-#include <boost/simd/pack.hpp>
+#include <boost/simd/function/simd/sqrt.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_rsqrt, bs::fast_(bs::rsqrt));
+DEFINE_SCALAR_BENCH(scalar_raw_sqrt, bs::sqrt);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_rsqrt, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<scalar_raw_sqrt, NS_BENCH_IEEE_TYPES>(0, 10);
 }

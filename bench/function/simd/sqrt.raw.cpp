@@ -8,13 +8,14 @@
 
 #include <simd_bench.hpp>
 #include <boost/simd/function/simd/sqrt.hpp>
+#include <boost/simd/pack.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_sqrt, bs::fast_(bs::sqrt));
+DEFINE_SIMD_BENCH(simd_sqrt, bs::raw_(bs::sqrt));
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_sqrt, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<simd_sqrt, NS_BENCH_IEEE_TYPES>(-10, 10);
 }

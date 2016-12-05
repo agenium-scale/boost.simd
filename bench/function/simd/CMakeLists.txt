@@ -286,7 +286,8 @@ set(SOURCES
     rrol.cpp
     rror.cpp
     rsqrt.regular.cpp
-    rsqrt.fast.cpp
+    rsqrt.raw.cpp
+    rsqrt.pedantic.cpp
     safe_max.cpp
     safe_min.cpp
     sec.regular.cpp
@@ -324,7 +325,7 @@ set(SOURCES
     sqr.saturated.cpp
     sqrt1pm1.cpp
     sqrt.regular.cpp
-    sqrt.fast.cpp
+    sqrt.raw.cpp
     successor.cpp
     tan.regular.cpp
     tan.restricted.cpp

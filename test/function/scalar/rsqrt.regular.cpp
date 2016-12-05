@@ -21,7 +21,7 @@
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/sqrt_2.hpp>
 
-STF_CASE_TPL (" rsqrtreal",  STF_IEEE_TYPES)
+STF_CASE_TPL (" rsqrt regular",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -38,30 +38,10 @@ STF_CASE_TPL (" rsqrtreal",  STF_IEEE_TYPES)
   STF_IEEE_EQUAL(rsqrt(bs::Nan<T>()), bs::Nan<r_t>());
 #endif
   STF_IEEE_EQUAL(rsqrt(bs::Mone<T>()), bs::Nan<r_t>());
-  STF_EQUAL(rsqrt(bs::One<T>()), bs::One<r_t>());
+  STF_ULP_EQUAL(rsqrt(bs::One<T>()), bs::One<r_t>(), 0.5);
   STF_EQUAL(rsqrt(bs::Zero<T>()), bs::Inf<r_t>());
-  STF_EQUAL(rsqrt(bs::Four<T>()), bs::Half<r_t>());
+  STF_ULP_EQUAL(rsqrt(bs::Four<T>()), bs::Half<r_t>(), 0.5);
   STF_ULP_EQUAL(rsqrt(T(0.5)), bs::Sqrt_2<T>(), 0.5);
   STF_ULP_EQUAL(rsqrt(T(0.01)), T(10), 0.5);
   STF_ULP_EQUAL(rsqrt(T(0.0001)), T(100), 0.5);
 } // end of test for floating_
-
-STF_CASE_TPL( "fast rsqrt", STF_IEEE_TYPES )
-{
-  namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
-  using bs::rsqrt;
-  using r_t = decltype(bs::fast_(rsqrt)(T()));
-
-  // return type conformity test
-  STF_TYPE_IS(r_t, T);
-
-  // specific values tests
-  STF_ULP_EQUAL(rsqrt(bs::Mone<T>()), bs::Nan<T>(), 75);
-  STF_ULP_EQUAL(rsqrt(bs::Nan<T>()), bs::Nan<T>(), 0.5);
-  STF_ULP_EQUAL(rsqrt(bs::One<T>()), bs::One<T>(), 30);
-  STF_ULP_EQUAL(rsqrt(bs::Four<T>()), bs::Half<T>(), 30);
-  STF_ULP_EQUAL(rsqrt(bs::Half<T>()), bs::Sqrt_2<T>(), 70);
-  STF_ULP_EQUAL(rsqrt(T(0.01)), T(10), 30);
-  STF_ULP_EQUAL(rsqrt(T(0.0001)), T(100), 30);
-}
