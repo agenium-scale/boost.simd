@@ -11,11 +11,13 @@
 
 #include <boost/simd/detail/dispatch/hierarchy/default_site.hpp>
 #include <boost/simd/detail/dispatch/hierarchy_of.hpp>
+#include <boost/dispatch/detail/declval.hpp>
 #include <boost/config.hpp>
 #include <utility>
 
-#define BOOST_DISPATCH_IMPL_TAG_CALL_TYPE(TAG,SITE,TS,AS)                                                \
-TAG::dispatch_to(std::declval<SITE>(),std::declval<typename boost::dispatch::hierarchy_of<TS>::type>()...)( std::forward<TS>(AS)...)         \
+#define BOOST_DISPATCH_IMPL_TAG_CALL_TYPE(TAG,SITE,TS,AS)                                           \
+TAG::dispatch_to( boost::dispatch::detail::declval<SITE>()                                          \
+                , boost::dispatch::detail::declval<typename boost::dispatch::hierarchy_of<TS>::type>()...)( std::forward<TS>(AS)...) \
 /**/
 
 #define BOOST_DISPATCH_IMPL_TAG_CALL(TAG,SITE,TS,AS)                                                \
