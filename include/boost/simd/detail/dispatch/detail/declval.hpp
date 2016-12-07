@@ -12,7 +12,7 @@
 #ifndef BOOST_DISPATCH_DETAIL_DECLVAL_HPP_INCLUDED
 #define BOOST_DISPATCH_DETAIL_DECLVAL_HPP_INCLUDED
 
-#include <boost/dispatch/config.hpp>
+#include <boost/simd/detail/dispatch/config.hpp>
 
 #ifdef BOOST_DISPATCH_USE_INCOMPLETE_STD
 #  include <boost/utility/declval.hpp>
