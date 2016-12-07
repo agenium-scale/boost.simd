@@ -20,7 +20,7 @@
 #include <boost/simd/detail/dispatch/hierarchy/base.hpp>
 #include <boost/simd/detail/dispatch/hierarchy_of.hpp>
 #include <boost/simd/detail/dispatch/detail/auto_decltype.hpp>
-#include <boost/dispatch/detail/declval.hpp>
+#include <boost/simd/detail/dispatch/detail/declval.hpp>
 #include <boost/utility/result_of.hpp>
 #include <boost/config.hpp>
 #include <utility>
