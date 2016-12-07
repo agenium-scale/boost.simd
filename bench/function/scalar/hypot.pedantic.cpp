@@ -12,7 +12,7 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_hypot, bs::fast_(bs::hypot));
+DEFINE_SCALAR_BENCH(scalar_hypot, bs::pedantic_(bs::hypot));
 
 DEFINE_BENCH_MAIN()
 {

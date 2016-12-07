@@ -29,22 +29,20 @@ namespace boost { namespace simd
     T r = hypot(x, y);
     @endcode
 
-    The code is similar to:
+    The code of the rgular version is very similar to:
 
     @code
     T r = sqrt(sqr(x)+sqr(y));
     @endcode
 
-    @par Note
-
-    - Provision are made to avoid overflow as possible and to compute
-    @c hypot accurately.
-
-    - If these considerations can be put aside, use the decorator fast_.
-
     @par Decorators
 
-    std_,  fast_ for floating entries
+    - pedantic_ with this decorator provisions are made to avoid overflow as
+    possible and to compute  @c hypot accurately in any cases.
+
+    -std_ call std::hypot
+
+
 
   **/
   Value hypot(Option const& o, Value const& x, Value const& y);

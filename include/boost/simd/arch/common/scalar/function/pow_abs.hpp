@@ -124,12 +124,12 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( pow_abs_
                           , (typename A0, typename A1)
                           , bd::cpu_
-                          , bs::fast_tag
+                          , bs::raw_tag
                           , bd::scalar_< bd::floating_<A0> >
                           , bd::scalar_< bd::floating_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator()(const fast_tag &, A0 a0, A1 a1) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()(const raw_tag &, A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
       return bs::exp(a1*bs::log(bs::abs(a0)));
     }

@@ -19,7 +19,7 @@
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/mhalf.hpp>
 
-STF_CASE_TPL (" atan2d",  STF_IEEE_TYPES)
+STF_CASE_TPL (" atan2pi",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -32,9 +32,9 @@ STF_CASE_TPL (" atan2d",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(atan2pi(bs::Inf<T>(), bs::Inf<T>()), T(0.25), 0.5);
+  STF_ULP_EQUAL(atan2pi(bs::Inf<T>(), bs::Inf<T>()), bs::Nan<r_t>(), 0.5);
   STF_ULP_EQUAL(atan2pi(bs::Inf<T>(),bs::One<T>()), T(0.5), 0.5);
-  STF_ULP_EQUAL(atan2pi(bs::Minf<T>(), bs::Minf<T>()), -T(3.0/4.0), 0.5);
+  STF_ULP_EQUAL(atan2pi(bs::Minf<T>(), bs::Minf<T>()),bs::Nan<r_t>(), 0.5);
   STF_ULP_EQUAL(atan2pi(bs::Minf<T>(),bs::One<T>()), -T(0.5), 0.5);
   STF_ULP_EQUAL(atan2pi(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
   STF_ULP_EQUAL(atan2pi(bs::Nan<T>(), bs::Zero<T>()), bs::Nan<r_t>(), 0.5);
@@ -46,5 +46,5 @@ STF_CASE_TPL (" atan2d",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(atan2pi(bs::Mhalf<T>(), bs::Mhalf<T>()), -T(3.0/4.0), 0.5);
   STF_ULP_EQUAL(atan2pi(bs::Mone<T>(), bs::Mone<T>()), -T(3.0/4.0), 0.5);
   STF_ULP_EQUAL(atan2pi(bs::One<T>(), bs::One<T>()), T(0.25), 0.5);
-  STF_ULP_EQUAL(atan2pi(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2pi(bs::Zero<T>(), bs::Zero<T>()), bs::Nan<r_t>(), 0.5);
 }

@@ -7,15 +7,15 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/hypot.hpp>
+#include <boost/simd/function/simd/atanh.hpp>
 #include <boost/simd/pack.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_hypot, bs::fast_(bs::hypot));
+DEFINE_SIMD_BENCH(simd_atanh, bs::raw_(bs::atanh));
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_hypot, NS_BENCH_IEEE_TYPES>(-10, 10,-10, 10);
+  nsb::for_each<simd_atanh, NS_BENCH_IEEE_TYPES>(-1, 1);
 }

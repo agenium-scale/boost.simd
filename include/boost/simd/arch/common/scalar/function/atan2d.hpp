@@ -14,6 +14,7 @@
 
 #include <boost/simd/function/atan2.hpp>
 #include <boost/simd/function/indeg.hpp>
+#include <boost/simd/function/pedantic.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 
@@ -33,6 +34,21 @@ namespace boost { namespace simd { namespace ext
       return indeg(atan2(a0, a1));
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( atan2d_
+                          , (typename A0, typename A1)
+                          , bd::cpu_
+                          , bs::pedantic_tag
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A1> >
+                          )
+  {
+     BOOST_FORCEINLINE A0 operator() (const pedantic_tag &,
+                                      A0 a0, A1 a1) const BOOST_NOEXCEPT
+    {
+      return indeg(pedantic_(atan2)(a0, a1));
+    }
+ };
 } } }
 
 

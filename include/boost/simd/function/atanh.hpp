@@ -30,6 +30,10 @@ namespace boost { namespace simd
     T r = atanh(x);
     @endcode
 
+    @par Decorators
+
+    - raw_  is faster but inaccurate near Zero
+
 
     @see log, Half, oneminus, inc
 
