@@ -30,7 +30,6 @@
 #include <boost/simd/detail/constant/minexponent.hpp>
 #include <boost/simd/constant/smallestposval.hpp>
 #include <boost/simd/function/scalar/dec.hpp>
-#include <string>
 
 namespace bs = boost::simd;
 namespace bd = boost::dispatch;

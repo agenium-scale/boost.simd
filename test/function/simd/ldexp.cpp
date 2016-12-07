@@ -30,7 +30,6 @@
 #include <boost/simd/detail/constant/minexponent.hpp>
 #include <boost/simd/constant/smallestposval.hpp>
 #include <boost/simd/function/scalar/dec.hpp>
-#include <string>
 
 namespace bs = boost::simd;
 namespace bd = boost::dispatch;
@@ -160,18 +159,18 @@ STF_CASE_TPL("ldexp floating exponent", STF_IEEE_TYPES)
 
   using r_t = decltype(bs::pedantic_(ldexp)(p_t(), p_t()));
 
-//   // return type conformity test
-     STF_TYPE_IS(r_t, p_t);
+  /  // return type conformity test
+    STF_TYPE_IS(r_t, p_t);
 
 
-     STF_EQUAL(ldexp(p_t(-1), p_t(2)), p_t(-4));
-//   STF_EQUAL(bs::pedantic_(ldexp)(bs::One<p_t>(),  p_t(2)), bs::Four<r_t>());
-//   STF_EQUAL(bs::pedantic_(ldexp)(bs::Zero<p_t>(), p_t(2)), bs::Zero<r_t>());
+    STF_EQUAL(ldexp(p_t(-1), p_t(2)), p_t(-4));
+    STF_EQUAL(bs::pedantic_(ldexp)(bs::One<p_t>(),  p_t(2)), bs::Four<r_t>());
+    STF_EQUAL(bs::pedantic_(ldexp)(bs::Zero<p_t>(), p_t(2)), bs::Zero<r_t>());
 
-//   for(int i=bs::Minexponent<T>(); i < bs::Minexponent<T>(); ++i)
-//   {
-//     STF_EQUAL(bs::pedantic_(ldexp)(p_t(1.5), p_t(i)), r_t(std::ldexp(T(1.5), i)));
-//     STF_EQUAL(bs::pedantic_(ldexp)(p_t(-1.5), p_t(i)),r_t(std::ldexp(T(-1.5), i)));
-//   }
+    for(int i=bs::Minexponent<T>(); i < bs::Minexponent<T>(); ++i)
+    {
+      STF_EQUAL(bs::pedantic_(ldexp)(p_t(1.5), p_t(i)), r_t(std::ldexp(T(1.5), i)));
+      STF_EQUAL(bs::pedantic_(ldexp)(p_t(-1.5), p_t(i)),r_t(std::ldexp(T(-1.5), i)));
+    }
 
 }

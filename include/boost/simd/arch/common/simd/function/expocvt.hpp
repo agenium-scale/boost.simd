@@ -33,46 +33,6 @@ namespace boost { namespace simd { namespace ext
   namespace bs = boost::simd;
 
 
-//   template < class T>
-//   void writebits(T ia)
-//   {
-//     std::string s = "";
-//     for (uint32_t i =  0;  i < sizeof(T)*8;  ++i)
-//     {
-//       s= ((ia == (ia/2)*2) ? "0" :"1")+s;
-//     ia >>= T(1);
-//     }
-//     std::cout << s;
-//   }
-
-//   template < class T>
-//   void writebits(bs::pack<T> a)
-//   {
-//     using iT =  bd::as_integer_t<T, unsigned>;
-
-//     std::cout << "("; writebits(bs::bitwise_cast<iT>(a[0]));
-//     std::cout << ",  ";
-//     writebits(bs::bitwise_cast<iT>(a[1]));
-//     std::cout << ")" ;
-//   }
-
-
-//   BOOST_DISPATCH_OVERLOAD_IF ( expocvt_
-//                           , (typename A0, typename X)
-//                           , (detail::is_native<X>)
-//                           , bd::cpu_
-//                           , bs::pack_<bd::single_<A0>, X>
-//                           )
-//   {
-//     using result =  bd::as_integer_t<A0, unsigned>;
-//     BOOST_FORCEINLINE result operator() ( A0 a0) const BOOST_NOEXCEPT
-//     {
-//       using sA0 = bd::scalar_of_t<A0>;
-//       BOOST_ASSERT_MSG(is_flint(a0), "parameter is not a flint");
-//       return bitwise_cast<result>(toint(a0)+Maxexponent<sA0>());
-//     }
-//   };
-
   BOOST_DISPATCH_OVERLOAD_IF ( expocvt_
                           , (typename A0, typename X)
                           , (detail::is_native<X>)

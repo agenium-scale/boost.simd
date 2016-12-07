@@ -82,4 +82,3 @@ STF_CASE_TPL( "Check abs behavior with signed integral", STF_SIGNED_INTEGRAL_TYP
   STF_EQUAL(abs(bs::One<p_t>()),  bs::One<r_t>());
   STF_EQUAL(abs(bs::Mone<p_t>()), bs::One<r_t>());
 }
-
