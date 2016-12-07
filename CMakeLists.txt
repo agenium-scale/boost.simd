@@ -120,7 +120,7 @@ if (DEFINED DEV)
     enable_coverage(boost.simd)
   endif()
 else()
-  add_custom_target(tests
+  add_custom_target(tests 
     COMMENT "Target tests requires 'cmake -DDEV=1 ..'")
   add_custom_target(unit
     COMMENT "Target unit requires 'cmake -DDEV=1 ..'")
