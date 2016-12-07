@@ -37,6 +37,7 @@ set(SOURCES
     asinpi.cpp
     asin.std.cpp
     atan2.regular.cpp
+    atan2.pedantic.cpp
     atan2d.cpp
     atan2pi.cpp
     atan2.std.cpp
@@ -142,7 +143,7 @@ set(SOURCES
     hi.cpp
     hmsb.cpp
     hypot.regular.cpp
-    hypot.fast.cpp
+    hypot.pedantic.cpp
     hypot.std.cpp
     iceil.cpp
     if_allbits_else.cpp

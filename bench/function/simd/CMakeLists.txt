@@ -33,12 +33,14 @@ set(SOURCES
     asind.cpp
     asinh.cpp
     asinpi.cpp
-    atan2.cpp
+    atan2.regular.cpp
+    atan2.pedantic.cpp
     atan2d.cpp
     atan2pi.cpp
     atan.cpp
     atand.cpp
-    atanh.cpp
+    atanh.regular.cpp
+    atanh.raw.cpp
     atanpi.cpp
     average.cpp
     bitfloating.cpp
@@ -133,7 +135,7 @@ set(SOURCES
     hi.cpp
     hmsb.cpp
     hypot.regular.cpp
-    hypot.fast.cpp
+    hypot.pedantic.cpp
     iceil.cpp
     if_allbits_else.cpp
     if_dec.cpp
@@ -263,7 +265,8 @@ set(SOURCES
     plus.regular.cpp
     plus.saturated.cpp
     pow2.cpp
-    pow_abs.cpp
+    pow_abs.regular.cpp
+    pow_abs.raw.cpp
     pow.cpp
     predecessor.cpp
     prev.cpp

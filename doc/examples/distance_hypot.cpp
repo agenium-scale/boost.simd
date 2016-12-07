@@ -6,7 +6,7 @@
 
 #include <boost/simd/function/aligned_load.hpp>
 #include <boost/simd/function/aligned_store.hpp>
-#include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/pedantic.hpp>
 #include <boost/simd/function/hypot.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/simd/memory/allocator.hpp>
@@ -51,7 +51,7 @@ int main(int argc, char** argv)
   for (int i = 0; i < num_points; i += pack_t::static_size) {
     pack_t vX  = bs::aligned_load<pack_t>(&X[i]);
     pack_t vY  = bs::aligned_load<pack_t>(&Y[i]);
-    pack_t res = bs::hypot(vrefX - vX, vrefY - vY);
+    pack_t res = bs::pedantic_(bs::hypot)(vrefX - vX, vrefY - vY);
     bs::aligned_store(res, &distance1[i]);
   }
   //! [distance-hypot-calc]
@@ -64,7 +64,7 @@ int main(int argc, char** argv)
   for (int i = 0; i < num_points; i += pack_t::static_size) {
     pack_t vX  = bs::aligned_load<pack_t>(&X[i]);
     pack_t vY  = bs::aligned_load<pack_t>(&Y[i]);
-    pack_t res = bs::fast_(bs::hypot)(vrefX - vX, vrefY - vY);
+    pack_t res = bs::hypot(vrefX - vX, vrefY - vY);
     bs::aligned_store(res, &distance2[i]);
   }
   ////! [distance-hypot-fast-hypot]

@@ -45,11 +45,13 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename X)
                           , (detail::is_native<X>)
                           , bd::cpu_
+                          , bs::pedantic_tag
                           , bs::pack_<bd::floating_<A0>, X>
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+      BOOST_FORCEINLINE A0 operator()(const pedantic_tag &,
+                                      const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
         using iA0 = bd::as_integer_t<A0>;
         A0 r =  bs::abs(a0);
@@ -77,13 +79,12 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename X)
                           , (detail::is_native<X>)
                           , bd::cpu_
-                          , bs::fast_tag
                           , bs::pack_<bd::floating_<A0>, X>
                           , bs::pack_<bd::floating_<A0>, X>
                           )
   {
 
-    BOOST_FORCEINLINE A0 operator() (const fast_tag &,  A0 const& a0, A0 const& a1
+    BOOST_FORCEINLINE A0 operator() (A0 const& a0, A0 const& a1
                                     ) const BOOST_NOEXCEPT
     {
       return boost::simd::sqrt(bs::fma(a0, a0, sqr(a1)));

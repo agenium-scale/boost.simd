@@ -19,6 +19,7 @@
 #include <boost/simd/function/fma.hpp>
 #include <boost/simd/function/log1p.hpp>
 #include <boost/simd/function/oneminus.hpp>
+#include <boost/simd/function/raw.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
 #include <cmath>
@@ -45,6 +46,7 @@ namespace boost { namespace simd { namespace ext
                         );
     }
   };
+
   BOOST_DISPATCH_OVERLOAD ( atanh_
                           , (typename A0)
                           , bd::cpu_
@@ -57,6 +59,20 @@ namespace boost { namespace simd { namespace ext
       return std::atanh(a0);
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( atanh_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bs::raw_tag
+                          , bd::scalar_< bd::floating_<A0> >
+                         )
+  {
+    BOOST_FORCEINLINE A0 operator() (const raw_tag &,  A0  a0) const BOOST_NOEXCEPT
+    {
+       return  Half<A0>()*log(inc(a0)/oneminus(a0));
+    }
+  };
+
 } } }
 
 

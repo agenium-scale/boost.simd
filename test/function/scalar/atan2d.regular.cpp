@@ -32,9 +32,9 @@ STF_CASE_TPL (" atan2d",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_ULP_EQUAL(atan2d(bs::Inf<T>(), bs::Inf<T>()), T(45), 0.5);
+  STF_ULP_EQUAL(atan2d(bs::Inf<T>(), bs::Inf<T>()),  bs::Nan<r_t>(), 0.5);
   STF_ULP_EQUAL(atan2d(bs::Inf<T>(),bs::One<T>()), T(90), 0.5);
-  STF_ULP_EQUAL(atan2d(bs::Minf<T>(), bs::Minf<T>()), -T(135), 0.5);
+  STF_ULP_EQUAL(atan2d(bs::Minf<T>(), bs::Minf<T>()),  bs::Nan<r_t>(), 0.5);
   STF_ULP_EQUAL(atan2d(bs::Minf<T>(),bs::One<T>()), -T(90), 0.5);
   STF_ULP_EQUAL(atan2d(bs::Nan<T>(), bs::Nan<T>()), bs::Nan<r_t>(), 0.5);
   STF_ULP_EQUAL(atan2d(bs::Nan<T>(), bs::Zero<T>()), bs::Nan<r_t>(), 0.5);
@@ -46,5 +46,5 @@ STF_CASE_TPL (" atan2d",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(atan2d(bs::Mhalf<T>(), bs::Mhalf<T>()), -T(135), 0.5);
   STF_ULP_EQUAL(atan2d(bs::Mone<T>(), bs::Mone<T>()), -T(135), 0.5);
   STF_ULP_EQUAL(atan2d(bs::One<T>(), bs::One<T>()), T(45), 0.5);
-  STF_ULP_EQUAL(atan2d(bs::Zero<T>(), bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan2d(bs::Zero<T>(), bs::Zero<T>()),  bs::Nan<r_t>(), 0.5);
 }
