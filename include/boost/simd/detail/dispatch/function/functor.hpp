@@ -11,7 +11,7 @@
 
 #include <boost/simd/detail/dispatch/hierarchy/default_site.hpp>
 #include <boost/simd/detail/dispatch/hierarchy_of.hpp>
-#include <boost/dispatch/detail/declval.hpp>
+#include <boost/simd/detail/dispatch/detail/declval.hpp>
 #include <boost/config.hpp>
 #include <utility>
 
