@@ -137,6 +137,7 @@ set ( SOURCES
    fpclassify.regular.cpp
    fpclassify.std.cpp
    frac.cpp
+   frexp.raw.cpp
    frexp.regular.cpp
    frexp.pedantic.cpp
    gamma.cpp
@@ -173,6 +174,7 @@ set ( SOURCES
    if_zero_else.cpp
    if_zero_else_allbits.cpp
    if_zero_else_one.cpp
+   ifrexp.raw.cpp
    ifrexp.regular.cpp
    ifrexp.pedantic.cpp
    ilog2.cpp

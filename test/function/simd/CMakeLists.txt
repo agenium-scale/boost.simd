@@ -147,6 +147,7 @@ set ( SOURCES
       fnma.cpp
       fnms.cpp
       frac.cpp
+      frexp.raw.cpp
       frexp.regular.cpp
       frexp.pedantic.cpp
       gamma.cpp
@@ -175,6 +176,7 @@ set ( SOURCES
       if_plus.cpp
       if_zero_else.cpp
       if_zero_else_one.cpp
+      ifrexp.raw.cpp
       ifrexp.regular.cpp
       ifrexp.pedantic.cpp
       ilog2.cpp
