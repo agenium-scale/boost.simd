@@ -118,6 +118,7 @@ set ( SOURCES
    exp.regular.cpp
    expm1.regular.cpp
    expm1.std.cpp
+   expocvt.cpp
    exponent.cpp
    exponentbits.cpp
    exprecnegc.cpp
@@ -136,7 +137,9 @@ set ( SOURCES
    fpclassify.regular.cpp
    fpclassify.std.cpp
    frac.cpp
-   frexp.cpp
+   frexp.raw.cpp
+   frexp.regular.cpp
+   frexp.pedantic.cpp
    gamma.cpp
    gammaln.cpp
    genmaskc.cpp
@@ -171,6 +174,9 @@ set ( SOURCES
    if_zero_else.cpp
    if_zero_else_allbits.cpp
    if_zero_else_one.cpp
+   ifrexp.raw.cpp
+   ifrexp.regular.cpp
+   ifrexp.pedantic.cpp
    ilog2.cpp
    ilogb.cpp
    inc.regular.cpp
@@ -228,7 +234,7 @@ set ( SOURCES
    is_simd_logical.cpp
    is_unord.cpp
    ldexp.regular.cpp
-   ldexp.fast.cpp
+   ldexp.pedantic.cpp
    ldexp.std.cpp
    load.cpp
    lo.cpp

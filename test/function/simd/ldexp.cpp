@@ -11,6 +11,8 @@
 #include <boost/simd/function/ldexp.hpp>
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/function/fast.hpp>
+#include <boost/simd/function/is_even.hpp>
+#include <boost/simd/function/shift_left.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
@@ -46,7 +48,7 @@ void test(Env& $)
      a1[i] = (i%2) ? T(i) : T(-i);
      a2[i] = i%(sizeof(T)*8-1);
      b[i] = bs::ldexp(a1[i], a2[i]);
-     d[i] = bs::fast_(bs::ldexp)(a1[i], a2[i]);
+     d[i] = bs::pedantic_(bs::ldexp)(a1[i], a2[i]);
    }
 
   p_t aa1(&a1[0], &a1[0]+N);
@@ -54,7 +56,7 @@ void test(Env& $)
   p_t bb(&b[0], &b[0]+N);
   p_t dd(&d[0], &d[0]+N);
   STF_IEEE_EQUAL(bs::ldexp(aa1, aa2), bb);
-  STF_IEEE_EQUAL(bs::fast_(bs::ldexp)(aa1, aa2), dd);
+  STF_IEEE_EQUAL(bs::pedantic_(bs::ldexp)(aa1, aa2), dd);
 }
 
 STF_CASE_TPL("Check ldexp on pack" , STF_NUMERIC_TYPES)
@@ -75,7 +77,7 @@ void tests(Env& $)
   {
     a1[i] = (i%2) ? T(i) : T(-1.*i);
     b[i] = bs::ldexp(a1[i], 2);
-    c[i] = bs::fast_(bs::ldexp)(a1[i], 2);
+    c[i] = bs::pedantic_(bs::ldexp)(a1[i], 2);
   }
 
   p_t aa1(&a1[0], &a1[0]+N);
@@ -83,7 +85,7 @@ void tests(Env& $)
   p_t cc(&c[0], &c[0]+N);
 
   STF_IEEE_EQUAL(bs::ldexp(aa1, 2)            , bb);
-  STF_IEEE_EQUAL(bs::fast_(bs::ldexp)(aa1, 2) , cc);
+  STF_IEEE_EQUAL(bs::pedantic_(bs::ldexp)(aa1, 2) , cc);
 }
 
 STF_CASE_TPL("Check ldexp on pack/scalar" , STF_NUMERIC_TYPES)
@@ -130,7 +132,7 @@ STF_CASE_TPL("ldexp", STF_IEEE_TYPES)
 #endif
 }
 
-STF_CASE_TPL("ldexp", STF_INTEGRAL_TYPES)
+STF_CASE_TPL("ldexpi", STF_INTEGRAL_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -147,3 +149,28 @@ STF_CASE_TPL("ldexp", STF_INTEGRAL_TYPES)
   STF_EQUAL(ldexp(bs::Mone<p_t>(), 2), r_t(-4));
 }
 
+
+STF_CASE_TPL("ldexp floating exponent", STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::ldexp;
+  using p_t = bs::pack<T>;
+
+  using r_t = decltype(bs::pedantic_(ldexp)(p_t(), p_t()));
+
+  /  // return type conformity test
+    STF_TYPE_IS(r_t, p_t);
+
+
+    STF_EQUAL(ldexp(p_t(-1), p_t(2)), p_t(-4));
+    STF_EQUAL(bs::pedantic_(ldexp)(bs::One<p_t>(),  p_t(2)), bs::Four<r_t>());
+    STF_EQUAL(bs::pedantic_(ldexp)(bs::Zero<p_t>(), p_t(2)), bs::Zero<r_t>());
+
+    for(int i=bs::Minexponent<T>(); i < bs::Minexponent<T>(); ++i)
+    {
+      STF_EQUAL(bs::pedantic_(ldexp)(p_t(1.5), p_t(i)), r_t(std::ldexp(T(1.5), i)));
+      STF_EQUAL(bs::pedantic_(ldexp)(p_t(-1.5), p_t(i)),r_t(std::ldexp(T(-1.5), i)));
+    }
+
+}

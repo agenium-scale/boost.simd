@@ -58,7 +58,8 @@ namespace boost { namespace simd { namespace ext
         A0 i =  bs::abs(a1);
         iA0 e =  exponent(bs::max(i, r));
         e = bs::min(bs::max(e,Minexponent<A0>()),Maxexponentm1<A0>());
-        A0 res =  ldexp(sqrt(sqr(ldexp(r, -e))+sqr(ldexp(i, -e))), e);
+        A0 res =  pedantic_(ldexp)(sqrt(sqr(pedantic_(ldexp)(r, -e))
+                                        +sqr(pedantic_(ldexp)(i, -e))), e);
 
         #ifndef BOOST_SIMD_NO_INVALIDS
         auto test = logical_or(logical_and(is_nan(a0), is_inf(a1)),

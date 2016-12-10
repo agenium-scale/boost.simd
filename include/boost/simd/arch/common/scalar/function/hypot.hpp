@@ -59,7 +59,8 @@ namespace boost { namespace simd { namespace ext
       A0 i =  bs::abs(a1);
       i_t e =  exponent(bs::max(i, r));
       e = bs::min(bs::max(e,Minexponent<A0>()),Maxexponentm1<A0>());
-      return bs::ldexp(sqrt(sqr(bs::ldexp(r, -e))+sqr(bs::ldexp(i, -e))), e);
+      return bs::pedantic_(ldexp)(sqrt(sqr(bs::pedantic_(ldexp)(r, -e))
+                                       +sqr(bs::pedantic_(ldexp)(i, -e))), e);
     }
   };
   BOOST_DISPATCH_OVERLOAD ( hypot_

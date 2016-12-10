@@ -23,7 +23,7 @@ struct lde
 {
   template<class T> T operator()(const T & a) const
   {
-    return bs::ldexp(a, N);
+    return bs::ldexp(a, T(N));
   }
 };
 template < int N >
@@ -31,7 +31,7 @@ struct ldef
 {
   template<class T> T operator()(const T & a) const
   {
-    return bs::fast_(bs::ldexp)(a, N);
+    return bs::fast_(bs::ldexp)(a, T(N));
   }
 };
 
