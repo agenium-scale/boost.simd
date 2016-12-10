@@ -52,11 +52,12 @@ namespace boost { namespace simd { namespace ext
      }
    };
 
-   BOOST_DISPATCH_OVERLOAD(toint_
-                          , (typename A0, typename X)
-                          , bd::cpu_
-                          , bs::pedantic_tag
-                          , bs::pack_<bd::double_<A0>, X>
+  BOOST_DISPATCH_OVERLOAD_IF(toint_
+                            , (typename A0, typename X)
+                            , (detail::is_native<X>)
+                            , bd::cpu_
+                            , bs::pedantic_tag
+                            , bs::pack_<bd::double_<A0>, X>
                           )
    {
      using result = bd::as_integer_t<A0, signed> ;
@@ -85,7 +86,7 @@ namespace boost { namespace simd { namespace ext
    {
      using result = bd::as_integer_t<A0, signed> ;
      BOOST_FORCEINLINE result operator()(pedantic_tag const &
-                                    , A0 const& a0) const
+                                        , A0 const& a0) const
      {
        return toint(a0);
      }
