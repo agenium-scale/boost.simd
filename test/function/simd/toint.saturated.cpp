@@ -52,7 +52,7 @@ STF_CASE_TPL("Check toint_s on pack" , STF_IEEE_TYPES)
 
 
 
-STF_CASE_TPL (" bs::saturated_(bs::toint) real",  STF_IEEE_TYPES)
+STF_CASE_TPL (" bs::saturated_(bs::toint) real", STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -79,17 +79,20 @@ STF_CASE_TPL (" bs::saturated_(bs::toint) real",  STF_IEEE_TYPES)
 
   p_t v = p_t(1);
   iT iv = 1;
-  int M =  31;
+  int M =   sizeof(T)*8-1;
   for(int i=0; i < M ; i++, v*= p_t(2), iv <<= iT(1))
   {
-    STF_EQUAL(bs::saturated_(bs::toint)(v), r_t(iv));
-    STF_EQUAL(bs::saturated_(bs::toint)(-v), -r_t(iv));
+     STF_EQUAL(bs::saturated_(bs::toint)(v), r_t(bs::toint(v[0])));
+     STF_EQUAL(bs::saturated_(bs::toint)(-v), -r_t(bs::toint(v[0])));
   }
+
   int N = sizeof(T)*8-1;
   STF_EQUAL(bs::saturated_(bs::toint)(bs::ldexp(bs::One<p_t>(), N)), bs::Valmax<r_t>());
   STF_EQUAL(bs::saturated_(bs::toint)(bs::ldexp(bs::One<p_t>(), N+1)), bs::Valmax<r_t>());
+  STF_EQUAL(bs::saturated_(bs::toint)(bs::ldexp(bs::One<p_t>(), N+2)), bs::Valmax<r_t>());
+  STF_EQUAL(bs::saturated_(bs::toint)(-bs::ldexp(bs::One<p_t>(), N)), bs::Valmin<r_t>());
   STF_EQUAL(bs::saturated_(bs::toint)(-bs::ldexp(bs::One<p_t>(), N+1)), bs::Valmin<r_t>());
-  STF_EQUAL(bs::saturated_(bs::toint)(-bs::ldexp(bs::One<p_t>(), N+1)), bs::Valmin<r_t>());
+  STF_EQUAL(bs::saturated_(bs::toint)(-bs::ldexp(bs::One<p_t>(), N+2)), bs::Valmin<r_t>());
 
 } // end of test for floating_
 
