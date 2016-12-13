@@ -7,7 +7,6 @@
 **/
 //==================================================================================================
 #include <boost/simd/function/rsqrt.hpp>
-#include <boost/simd/function/fast.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/constant/inf.hpp>

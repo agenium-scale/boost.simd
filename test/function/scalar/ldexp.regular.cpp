@@ -9,7 +9,6 @@
 //==================================================================================================
 #include <boost/simd/function/ldexp.hpp>
 #include <boost/simd/function/std.hpp>
-#include <boost/simd/function/fast.hpp>
 #include <scalar_test.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -29,7 +28,7 @@
 #include <boost/simd/function/scalar/dec.hpp>
 
 
-STF_CASE_TPL("ldexp fast", STF_IEEE_TYPES)
+STF_CASE_TPL("ldexp ", STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
