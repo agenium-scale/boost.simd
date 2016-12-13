@@ -375,7 +375,9 @@ set ( SOURCES
    toint.saturated.cpp
    touint.regular.cpp
    touint.saturated.cpp
-   trunc.cpp
+   trunc.raw.cpp
+   trunc.regular.cpp
+   trunc.std.cpp
    two_add.cpp
    quadrant.cpp
    twopower.cpp
