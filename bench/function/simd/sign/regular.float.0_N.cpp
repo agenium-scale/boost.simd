@@ -17,5 +17,5 @@ DEFINE_SIMD_BENCH(simd_sign, bs::sign);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_sign, float>(0, N));
+  nsb::for_each<simd_sign, float>(-10, 10);
 }

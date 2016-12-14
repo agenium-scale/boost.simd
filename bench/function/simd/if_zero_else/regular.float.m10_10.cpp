@@ -17,5 +17,5 @@ DEFINE_SIMD_BENCH(simd_if_zero_else, bs::if_zero_else);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_if_zero_else, float>(-10, 10);
+  nsb::for_each<simd_if_zero_else, float>(-10, 10, -10, 10);
 }

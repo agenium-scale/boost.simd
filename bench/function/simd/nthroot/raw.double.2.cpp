@@ -9,13 +9,26 @@
 /// bench for functor nthroot in simd mode for double type with raw_.
 #include <simd_bench.hpp>
 #include <boost/simd/function/nthroot.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/function/enumerate.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
+namespace bd =  boost::dispatch;
 
-DEFINE_SIMD_BENCH(simd_nthroot, bs::raw_(bs::nthroot));
+template < int N>
+struct nthr
+{
+  template<class T> T operator()(const T & a) const
+  {
+    using i_t = bd::as_integer_t<T>;
+    return bs::raw_(bs::nthroot)(a, bs::enumerate<i_t>(N));
+  }
+};
+
+DEFINE_SIMD_BENCH(simd_nthroot, nthr<10>());
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_nthroot, double>(2));
+  nsb::for_each<simd_nthroot, double>(0, 10);
 }

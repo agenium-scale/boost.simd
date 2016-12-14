@@ -6,16 +6,16 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-/// bench for functor reversebits in simd mode for float type with no decorator (regular call).
+/// bench for functor bitwise_not in simd mode for float type with no decorator (regular call).
 #include <simd_bench.hpp>
-#include <boost/simd/function/reversebits.hpp>
+#include <boost/simd/function/bitwise_not.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_reversebits, bs::reversebits);
+DEFINE_SIMD_BENCH(simd_bitwise_not, bs::bitwise_not);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_reversebits, float>(-10, 10);
+  nsb::for_each<simd_bitwise_not, float>(-10, 10);
 }

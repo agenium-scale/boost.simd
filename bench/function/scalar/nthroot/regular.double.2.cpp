@@ -9,6 +9,7 @@
 /// bench for functor nthroot in scalar mode for double type with no decorator (regular call).
 #include <simd_bench.hpp>
 #include <boost/simd/function/nthroot.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;

@@ -6,7 +6,7 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-/// bench for functor atan in simd mode for double type with no decorator (regular call).
+/// bench for functor atan in simd mode for float type with no decorator (regular call).
 #include <simd_bench.hpp>
 #include <boost/simd/function/atan.hpp>
 
@@ -17,5 +17,5 @@ DEFINE_SIMD_BENCH(simd_atan, bs::atan);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_atan, double>(-10, 10,-10, 10);
+  nsb::for_each<simd_atan, float>(-10, 10);
 }

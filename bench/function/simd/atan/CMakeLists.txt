@@ -9,8 +9,8 @@
 ## benches for functor atan in simd mode.
 
 set(SOURCES
-  regular.float.m10_10_m10_10.cpp
-  regular.double.m10_10_m10_10.cpp
+  regular.float.m10_10.cpp
+  regular.double.m10_10.cpp
 )
 
 make_bench("function.simd.atan" ${SOURCES})

@@ -9,8 +9,8 @@
 ## benches for functor cast in simd mode.
 
 set(SOURCES
-  regular.float.a.cpp
-  regular.double.a.cpp
+##  regular.float.a.cpp
+##  regular.double.a.cpp
 )
 
 make_bench("function.simd.cast" ${SOURCES})

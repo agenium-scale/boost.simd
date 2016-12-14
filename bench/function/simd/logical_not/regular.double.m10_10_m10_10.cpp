@@ -17,5 +17,5 @@ DEFINE_SIMD_BENCH(simd_logical_not, bs::logical_not);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_logical_not, double>(-10, 10,-10, 10);
+  nsb::for_each<simd_logical_not, double>(-10, 10);
 }

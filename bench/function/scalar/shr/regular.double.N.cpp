@@ -9,13 +9,23 @@
 /// bench for functor shr in scalar mode for double type with no decorator (regular call).
 #include <simd_bench.hpp>
 #include <boost/simd/function/shr.hpp>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
+namespace bd =  boost::dispatch;
 
-DEFINE_SCALAR_BENCH(scalar_shr, bs::shr);
+struct shr
+{
+  template<class T> T operator()(const T & a, const T & N) const
+  {
+    return bs::shift_right(a, bd::as_integer_t<T>(N));
+  }
+};
+
+DEFINE_SCALAR_BENCH(scalar_shr, shr());
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_shr, double>(N));
+  nsb::for_each<scalar_shr, double>(-10, 10, 0, 63);
 }

@@ -9,8 +9,8 @@
 ## benches for functor reversebits in scalar mode.
 
 set(SOURCES
-  regular.float.m10_10.cpp
-  regular.double.m10_10.cpp
+  regular.int8_t.valmin_valmax.cpp
+  regular.int16_t.valmin_valmax.cpp
 )
 
 make_bench("function.scalar.reversebits" ${SOURCES})

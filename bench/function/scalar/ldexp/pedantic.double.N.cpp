@@ -27,6 +27,5 @@ DEFINE_SCALAR_BENCH(scalar_ldexp, lde());
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_ldexp, double>(-10, 10, -10, 10namespace bd =  boost::dispatch;
-);
+  nsb::for_each<scalar_ldexp, double>(-10, 10, -10, 10);
 }

@@ -6,16 +6,18 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-/// bench for functor reversebits in scalar mode for float type with no decorator (regular call).
+/// bench for functor reversebits in simd mode for int8_t type with no decorator (regular call).
 #include <simd_bench.hpp>
+#include <boost/simd/constant/valmin.hpp>
+#include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/function/reversebits.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_reversebits, bs::reversebits);
+DEFINE_SIMD_BENCH(simd_reversebits, bs::reversebits);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_reversebits, float>(-10, 10);
+  nsb::for_each<simd_reversebits, int8_t>(bs::Valmin<int8_t>(), bs::Valmax<int8_t>());
 }

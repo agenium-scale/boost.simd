@@ -17,5 +17,5 @@ DEFINE_SCALAR_BENCH(scalar_sign, bs::sign);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_sign, float>(0, N));
+  nsb::for_each<scalar_sign, float>(-10, 10);
 }

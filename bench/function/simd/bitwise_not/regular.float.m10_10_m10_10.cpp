@@ -17,5 +17,5 @@ DEFINE_SIMD_BENCH(simd_bitwise_not, bs::bitwise_not);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_bitwise_not, float>(-10, 10,-10, 10);
+  nsb::for_each<simd_bitwise_not, float>(-10, 10);
 }

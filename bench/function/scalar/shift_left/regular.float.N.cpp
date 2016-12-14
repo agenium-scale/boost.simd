@@ -12,10 +12,19 @@
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
+namespace bd =  boost::dispatch;
 
-DEFINE_SCALAR_BENCH(scalar_shift_left, bs::shift_left);
+struct shl
+{
+  template<class T> T operator()(const T & a, const T & N) const
+  {
+    return bs::shift_left(a, bd::as_integer_t<T>(N));
+  }
+};
+
+DEFINE_SCALAR_BENCH(scalar_shift_left, shl());
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_shift_left, float>(N));
+  nsb::for_each<scalar_shift_left, float>(-10, 10, 0, 31);
 }
