@@ -131,7 +131,6 @@ set ( SOURCES
       exp2.cpp
       exp.cpp
       expm1.cpp
-      expocvt.cpp
       exponent.cpp
       exponentbits.cpp
       exprecnegc.cpp
