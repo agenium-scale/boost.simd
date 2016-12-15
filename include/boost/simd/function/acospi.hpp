@@ -30,11 +30,23 @@ namespace boost { namespace simd
     auto r = acospi(x);
     @endcode
 
+    is similar to
+
+    @code
+    auto r = Invpi<T>*acos(x);
+    @endcode
+
     Returns the arc @c r in the interval
     \f$[0, 1[\f$ such that <tt>cospi(r) == x</tt>.
     If @c x is outside \f$[-1, 1[\f$ the result is Nan.
 
-    @see acosd, acos, cospi
+    @par Decorators
+
+    - pedantic_     is similar to Invpi<T>*pedantic_(acos)(x);
+
+      @see acos, acospi, cosd,  Invpi
+
+      @see acosd, acos, cospi
 
   **/
   Value acospi(Value const & v0);
