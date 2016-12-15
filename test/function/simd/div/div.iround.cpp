@@ -21,6 +21,7 @@ void test(Env& $)
   using iT =  bd::as_integer_t<T>;
   using pi_t =  bs::pack<iT, N>;
   T a1[N], a2[N];
+  a1[0] = T(0);
   iT b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
@@ -41,6 +42,6 @@ STF_CASE_TPL("Check idiv round on pack" , STF_NUMERIC_TYPES)
   static const std::size_t N = bs::pack<T>::static_size;
 
   test<T, N>($);
-//   test<T, N/2>($);
-//   test<T, N*2>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }

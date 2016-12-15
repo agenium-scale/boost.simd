@@ -22,7 +22,6 @@
 #include <boost/simd/function/is_negative.hpp>
 #include <boost/simd/function/is_positive.hpp>
 #include <boost/simd/function/std.hpp>
-#include <boost/simd/function/fast.hpp>
 #include <scalar_test.hpp>
 
 

@@ -16,7 +16,6 @@ namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 namespace bd =  boost::dispatch;
 
-DEFINE_SIMD_BENCH(simd_ldexp, bs::ldexp);
 
 template < int N >
 struct lde
@@ -26,21 +25,12 @@ struct lde
     return bs::ldexp(a, T(N));
   }
 };
-template < int N >
-struct ldef
-{
-  template<class T> T operator()(const T & a) const
-  {
-    return bs::fast_(bs::ldexp)(a, T(N));
-  }
-};
+
 
   DEFINE_SIMD_BENCH(simd_lde10, lde<10>());
-  DEFINE_SIMD_BENCH(fast_simd_lde10, ldef<10>());
 
 DEFINE_BENCH_MAIN() {
   nsb::for_each<simd_lde10, NS_BENCH_IEEE_TYPES>(-10, 10);
-  nsb::for_each<fast_simd_lde10, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
 
 

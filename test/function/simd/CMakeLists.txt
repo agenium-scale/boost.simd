@@ -184,7 +184,8 @@ set ( SOURCES
       inc.regular.cpp
       inc.saturated.cpp
       indeg.cpp
-      inearbyint.cpp
+      inearbyint.regular.cpp
+      inearbyint.pedantic.cpp
       inrad.cpp
       interleave.cpp
       interleave_even.cpp

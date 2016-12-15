@@ -7,40 +7,30 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/nthroot.hpp>
-#include <boost/simd/function/simd/enumerate.hpp>
+#include <boost/simd/function/simd/ldexp.hpp>
 #include <boost/simd/pack.hpp>
-#include <cmath>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 namespace bd =  boost::dispatch;
 
-struct nthr
+
+
+template < int N >
+struct ldep
 {
   template<class T> T operator()(const T & a) const
   {
-    using i_t = bd::as_integer_t<T>;
-    return bs::nthroot(a, bs::enumerate<i_t>(2));
+    return bs::pedantic_(bs::ldexp)(a, T(N));
   }
 };
 
-struct nthrf
-{
-  template<class T> T operator()(const T & a) const
-  {
-    using i_t = bd::as_integer_t<T>;
-    return bs::fast_(bs::nthroot)(a, bs::enumerate<i_t>(2));
-  }
-};
-
-DEFINE_SIMD_BENCH(simd_nthroot, nthr());
-DEFINE_SIMD_BENCH(fast_simd_nthroot, nthrf());
+  DEFINE_SIMD_BENCH(pedantic_simd_lde10, ldep<10>());
 
 DEFINE_BENCH_MAIN() {
-  nsb::for_each<simd_nthroot, NS_BENCH_IEEE_TYPES>(-10, 10);
-  nsb::for_each<fast_simd_nthroot, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<pedantic_simd_lde10, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
 
 

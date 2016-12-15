@@ -10,7 +10,6 @@
 //==================================================================================================
 #include <boost/simd/function/ldexp.hpp>
 #include <boost/simd/function/std.hpp>
-#include <boost/simd/function/fast.hpp>
 #include <boost/simd/function/is_even.hpp>
 #include <boost/simd/function/shift_left.hpp>
 #include <boost/simd/pack.hpp>

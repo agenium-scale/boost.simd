@@ -7,15 +7,30 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/inearbyint.hpp>
+#include <boost/simd/function/simd/nthroot.hpp>
+#include <boost/simd/function/simd/enumerate.hpp>
 #include <boost/simd/pack.hpp>
+#include <cmath>
+#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
+namespace bd =  boost::dispatch;
 
-DEFINE_SIMD_BENCH(simd_inearbyint, bs::inearbyint);
-
-DEFINE_BENCH_MAIN()
+struct nthr
 {
-  nsb::for_each<simd_inearbyint, NS_BENCH_IEEE_TYPES>(-10, 10);
+  template<class T> T operator()(const T & a) const
+  {
+    using i_t = bd::as_integer_t<T>;
+    return bs::nthroot(a, bs::enumerate<i_t>(2));
+  }
+};
+
+
+DEFINE_SIMD_BENCH(simd_nthroot, nthr());
+
+DEFINE_BENCH_MAIN() {
+  nsb::for_each<simd_nthroot, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
+
+

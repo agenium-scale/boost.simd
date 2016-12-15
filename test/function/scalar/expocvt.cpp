@@ -22,7 +22,6 @@ STF_CASE_TPL (" expocvt real",  STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
-  using uiT = bd::as_integer_t<T, unsigned>;
   using iT = bd::as_integer_t<T>;
   using bs::expocvt;
   using r_t = decltype(expocvt(T()));

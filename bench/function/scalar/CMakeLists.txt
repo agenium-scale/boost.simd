@@ -133,7 +133,7 @@ set(SOURCES
     fpclassify.std.cpp
     frac.cpp
     frexp.regular.cpp
-    frexp.fast.cpp
+#    frexp.fast.cpp
     frexp.std.cpp
     gamma.regular.cpp
     gammaln.regular.cpp
@@ -166,7 +166,7 @@ set(SOURCES
     inc.regular.cpp
     inc.saturated.cpp
     indeg.cpp
-    inearbyint.fast.cpp
+    inearbyint.pedantic.cpp
     inearbyint.regular.cpp
     inrad.cpp
     iround.cpp
@@ -271,7 +271,7 @@ set(SOURCES
     prev.cpp
     rec.regular.cpp
     rem.regular.cpp
-    rem.fast.cpp
+    rem.pedantic.cpp
     rem_pio2_cephes.cpp
     rem_pio2.cpp
     rem_pio2_medium.cpp
@@ -342,7 +342,6 @@ set(SOURCES
     touint.regular.cpp
     touint.saturated.cpp
     trunc.regular.cpp
-    trunc.fast.cpp
     trunc.std.cpp
     two_add.cpp
     twopower.cpp

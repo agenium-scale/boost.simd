@@ -30,7 +30,7 @@ int main(int argc, char* argv[])
   if(argc >= 3) maxi = std::atof(argv[2]);
   bs::exhaustive_test<float> ( mini
                               , maxi
-                             , bs::raw(bs::atanh)
+                             , bs::raw_(bs::atanh)
                               , raw_atanh()
                               );
 

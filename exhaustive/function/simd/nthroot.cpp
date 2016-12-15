@@ -28,7 +28,7 @@ struct nth
   bs::pack<float> operator()(bs::pack<float> x) const
   {
     using pi_t = bd::as_integer_t<bs::pack<float>>;
-    return bs::fast_(bs::nthroot)(x, pi_t(4));
+    return bs::nthroot(x, pi_t(4));
   }
 };
 

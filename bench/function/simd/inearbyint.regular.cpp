@@ -7,15 +7,15 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/rem.hpp>
+#include <boost/simd/function/simd/inearbyint.hpp>
 #include <boost/simd/pack.hpp>
+#include <cmath>
 
 namespace nsb = ns::bench;
-namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_rem, bs::fast_(bs::rem));
+DEFINE_SIMD_BENCH(simd_inearbyint, boost::simd::inearbyint);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_rem, NS_BENCH_IEEE_TYPES>(-10, 10,-10, 10);
+  nsb::for_each<simd_inearbyint, NS_BENCH_IEEE_TYPES>(-10, 10);
 }

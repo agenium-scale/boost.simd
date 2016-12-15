@@ -31,12 +31,12 @@ void test(Env& $)
   {
      a1[i] =  T(i) ;
      a2[i] = T(i+N) ;
-     b[i] = bs::rem(bs::nearbyint, a1[i], a2[i]);
+     b[i] = bs::pedantic_(bs::rem)(bs::nearbyint, a1[i], a2[i]);
    }
   p_t aa1(&a1[0], &a1[0]+N);
   p_t aa2(&a2[0], &a2[0]+N);
   p_t bb(&b[0], &b[0]+N);
-  STF_IEEE_EQUAL(bs::rem(bs::nearbyint, aa1, aa2), bb);
+  STF_IEEE_EQUAL(bs::pedantic_(bs::rem)(bs::nearbyint, aa1, aa2), bb);
 }
 
 STF_CASE_TPL("Check rem on pack" , STF_SIGNED_NUMERIC_TYPES)
@@ -49,7 +49,7 @@ STF_CASE_TPL("Check rem on pack" , STF_SIGNED_NUMERIC_TYPES)
   test<T, N*2>($);
 }
 template <typename T, std::size_t N, typename Env>
-void testnearbyintfast(Env& $)
+void testnearbyintregular(Env& $)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T, N>;
@@ -62,39 +62,39 @@ void testnearbyintfast(Env& $)
   {
      a1[i] =T(i);
      a2[i] =T(i+N);
-     b[i] = bs::fast_(bs::rem)(bs::nearbyint, a1[i], a2[i]);
+     b[i] = bs::rem(bs::nearbyint, a1[i], a2[i]);
    }
   p_t aa1(&a1[0], &a1[0]+N);
   p_t aa2(&a2[0], &a2[0]+N);
   p_t bb(&b[0], &b[0]+N);
-  STF_IEEE_EQUAL(bs::fast_(bs::rem)(bs::nearbyint, aa1, aa2), bb);
+  STF_IEEE_EQUAL(bs::rem(bs::nearbyint, aa1, aa2), bb);
 }
 
-STF_CASE_TPL("Check fast_(rem) on pack option nearbyint" , STF_IEEE_TYPES)
+STF_CASE_TPL("Check regular_(rem) on pack option nearbyint" , STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
-  testnearbyintfast<T, N>($);
-  testnearbyintfast<T, N/2>($);
-  testnearbyintfast<T, N*2>($);
+  testnearbyintregular<T, N>($);
+  testnearbyintregular<T, N/2>($);
+  testnearbyintregular<T, N*2>($);
 }
 
 STF_CASE_TPL("Check rem nearbyint on pack limiting cases" , STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
-  STF_EXPECT(bs::all(bs::is_negative(bs::rem(bs::nearbyint, bs::Mzero<p_t>(), bs::One<p_t>()))));
-  STF_EXPECT(bs::all(bs::is_positive(bs::rem(bs::nearbyint, bs::Zero<p_t>(), bs::One<p_t>()))));
-  STF_IEEE_EQUAL(bs::rem(bs::nearbyint, bs::Mzero<p_t>(), bs::One<p_t>()), bs::Zero<p_t>());
-  STF_IEEE_EQUAL(bs::rem(bs::nearbyint, bs::Zero<p_t>(), bs::One<p_t>()), bs::Zero<p_t>());
+  STF_EXPECT(bs::all(bs::is_negative(bs::pedantic_(bs::rem)(bs::nearbyint, bs::Mzero<p_t>(), bs::One<p_t>()))));
+  STF_EXPECT(bs::all(bs::is_positive(bs::pedantic_(bs::rem)(bs::nearbyint, bs::Zero<p_t>(), bs::One<p_t>()))));
+  STF_IEEE_EQUAL(bs::pedantic_(bs::rem)(bs::nearbyint, bs::Mzero<p_t>(), bs::One<p_t>()), bs::Zero<p_t>());
+  STF_IEEE_EQUAL(bs::pedantic_(bs::rem)(bs::nearbyint, bs::Zero<p_t>(), bs::One<p_t>()), bs::Zero<p_t>());
  #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_IEEE_EQUAL(bs::rem(bs::nearbyint, bs::Inf<p_t>(), bs::Inf<p_t>()), bs::Nan<p_t>());
-  STF_IEEE_EQUAL(bs::rem(bs::nearbyint, bs::Minf<p_t>(), bs::Minf<p_t>()), bs::Nan<p_t>());
-  STF_IEEE_EQUAL(bs::rem(bs::nearbyint, bs::Nan<p_t>(), bs::Nan<p_t>()), bs::Nan<p_t>());
-  STF_IEEE_EQUAL(bs::rem(bs::nearbyint, bs::Inf<p_t>(), bs::One<p_t>()), bs::Nan<p_t>());
-  STF_IEEE_EQUAL(bs::rem(bs::nearbyint, bs::One<p_t>(), bs::Zero<p_t>()), bs::Nan<p_t>());
-  STF_IEEE_EQUAL(bs::rem(bs::nearbyint, bs::Zero<p_t>(), bs::Zero<p_t>()), bs::Nan<p_t>());
+  STF_IEEE_EQUAL(bs::pedantic_(bs::rem)(bs::nearbyint, bs::Inf<p_t>(), bs::Inf<p_t>()), bs::Nan<p_t>());
+  STF_IEEE_EQUAL(bs::pedantic_(bs::rem)(bs::nearbyint, bs::Minf<p_t>(), bs::Minf<p_t>()), bs::Nan<p_t>());
+  STF_IEEE_EQUAL(bs::pedantic_(bs::rem)(bs::nearbyint, bs::Nan<p_t>(), bs::Nan<p_t>()), bs::Nan<p_t>());
+  STF_IEEE_EQUAL(bs::pedantic_(bs::rem)(bs::nearbyint, bs::Inf<p_t>(), bs::One<p_t>()), bs::Nan<p_t>());
+  STF_IEEE_EQUAL(bs::pedantic_(bs::rem)(bs::nearbyint, bs::One<p_t>(), bs::Zero<p_t>()), bs::Nan<p_t>());
+  STF_IEEE_EQUAL(bs::pedantic_(bs::rem)(bs::nearbyint, bs::Zero<p_t>(), bs::Zero<p_t>()), bs::Nan<p_t>());
 #endif
 
 }

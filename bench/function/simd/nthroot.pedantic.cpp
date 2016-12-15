@@ -9,6 +9,7 @@
 #include <simd_bench.hpp>
 #include <boost/simd/function/simd/nthroot.hpp>
 #include <boost/simd/function/simd/enumerate.hpp>
+#include <boost/simd/pack.hpp>
 #include <cmath>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
@@ -16,20 +17,19 @@ namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 namespace bd =  boost::dispatch;
 
-struct nthr
+struct nthrp
 {
   template<class T> T operator()(const T & a) const
   {
     using i_t = bd::as_integer_t<T>;
-    return bs::nthroot(a, bs::enumerate<i_t>(2));
+    return bs::raw_(bs::nthroot)(a, bs::enumerate<i_t>(2));
   }
 };
 
-
-DEFINE_SCALAR_BENCH(scalar_nthroot, nthr());
+DEFINE_SIMD_BENCH(pedantic_simd_nthroot, nthrp());
 
 DEFINE_BENCH_MAIN() {
-  nsb::for_each<scalar_nthroot, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<pedantic_simd_nthroot, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
 
 

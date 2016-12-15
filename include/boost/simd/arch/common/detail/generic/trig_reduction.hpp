@@ -11,7 +11,6 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_DETAIL_GENERIC_TRIG_REDUCTION_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_DETAIL_GENERIC_TRIG_REDUCTION_HPP_INCLUDED
 
-#include <boost/simd/function/fast.hpp>
 #include <boost/simd/function/rem_pio2_medium.hpp>
 #include <boost/simd/function/rem_pio2_cephes.hpp>
 #include <boost/simd/function/rem_pio2_straight.hpp>

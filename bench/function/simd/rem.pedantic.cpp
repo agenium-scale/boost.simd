@@ -7,14 +7,15 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/trunc.hpp>
+#include <boost/simd/function/simd/rem.hpp>
+#include <boost/simd/pack.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_trunc, bs::fast_(bs::trunc));
+DEFINE_SIMD_BENCH(simd_rem, bs::pedantic_(bs::rem));
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_trunc, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<simd_rem, NS_BENCH_IEEE_TYPES>(-10, 10,-10, 10);
 }

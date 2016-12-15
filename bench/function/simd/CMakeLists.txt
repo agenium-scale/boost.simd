@@ -126,7 +126,7 @@ set(SOURCES
     fpclassify.cpp
     frac.cpp
     frexp.regular.cpp
-    frexp.fast.cpp
+    frexp.pedantic.cpp
     gamma.cpp
     gammaln.cpp
     genmaskc.cpp
@@ -157,7 +157,8 @@ set(SOURCES
     inc.regular.cpp
     inc.saturated.cpp
     indeg.cpp
-    inearbyint.cpp
+    inearbyint.regular.cpp
+    inearbyint.pedantic.cpp
     inrad.cpp
     interleave.cpp
     interleave_even.cpp
@@ -209,7 +210,8 @@ set(SOURCES
     is_positive.cpp
     is_real.cpp
     is_unord.cpp
-    ldexp.cpp
+    ldexp.pedantic.cpp
+    ldexp.regular.cpp
     lo.cpp
     log10.regular.cpp
     log1p.regular.cpp
@@ -260,7 +262,8 @@ set(SOURCES
     nextafter.cpp
     next.cpp
     none.cpp
-    nthroot.cpp
+    nthroot.regular.cpp
+    nthroot.raw.cpp
     oneminus.regular.cpp
     oneminus.saturated.cpp
     plus.regular.cpp
@@ -274,7 +277,7 @@ set(SOURCES
     rec.regular.cpp
     rec.raw.cpp
     rem.regular.cpp
-    rem.fast.cpp
+    rem.pedantic.cpp
     rem_pio2_cephes.cpp
     rem_pio2.cpp
     rem_pio2_medium.cpp
@@ -345,7 +348,6 @@ set(SOURCES
     touint.regular.cpp
     touint.saturated.cpp
     trunc.regular.cpp
-    trunc.fast.cpp
     two_add.cpp
     quadrant.cpp
     twopower.cpp

@@ -7,14 +7,14 @@
 // -------------------------------------------------------------------------------------------------
 
 #include <simd_bench.hpp>
-#include <boost/simd/function/simd/rem.hpp>
+#include <boost/simd/function/simd/frexp.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_rem, bs::fast_(bs::rem));
+DEFINE_SCALAR_BENCH(scalar_frexp, bs::pedantic_(bs::frexp));
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_rem, NS_BENCH_IEEE_TYPES>(-10, 10,-10, 10);
+  nsb::for_each<scalar_frexp, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
