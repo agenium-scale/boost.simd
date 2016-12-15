@@ -3,7 +3,6 @@
 
 #include <boost/simd/function/exp.hpp>
 #include <boost/simd/function/rec.hpp>
-#include <boost/simd/function/fast.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/memory/allocator.hpp>
 
