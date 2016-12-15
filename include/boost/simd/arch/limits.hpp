@@ -12,6 +12,5 @@
 
 #include <boost/simd/arch/common/limits.hpp>
 #include <boost/simd/arch/x86/limits.hpp>
-#include <boost/simd/arch/ppc/limits.hpp>
 
 #endif

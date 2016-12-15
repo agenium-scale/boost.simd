@@ -34,10 +34,4 @@
 #  endif
 #endif
 
-#if defined(BOOST_HW_SIMD_PPC_AVAILABLE)
-#  if BOOST_HW_SIMD_PPC >= BOOST_HW_SIMD_PPC_VMX_VERSION
-#    include <boost/simd/arch/ppc/vmx/simd/function/is_less.hpp>
-#  endif
-#endif
-
 #endif
