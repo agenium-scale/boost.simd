@@ -1,74 +1,77 @@
 //==================================================================================================
-/*!
-
+/**
   Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
-#include <boost/simd/function/scalar/floor.hpp>
-#include <scalar_test.hpp>
-#include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/function/floor.hpp>
+#include <boost/simd/constant/valmin.hpp>
+#include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
-#include <boost/simd/constant/mone.hpp>
 #include <boost/simd/constant/nan.hpp>
-#include <boost/simd/constant/one.hpp>
-#include <boost/simd/constant/zero.hpp>
-#include <boost/simd/constant/pi.hpp>
-#include <boost/simd/constant/three.hpp>
+#include <scalar_test.hpp>
 
+namespace bs = boost::simd;
 
-STF_CASE_TPL (" floor real",  STF_IEEE_TYPES)
+STF_CASE_TPL( "Check return type from floor", STF_NUMERIC_TYPES)
 {
-  namespace bs = boost::simd;
-
   using bs::floor;
-  using r_t = decltype(floor(T()));
+  STF_TYPE_IS(decltype(floor(T())), T);
+}
 
-  STF_TYPE_IS(r_t, T);
-
-  // specific values tests
-#ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(floor(bs::Inf<T>()), bs::Inf<T>());
-  STF_EQUAL(floor(bs::Minf<T>()), bs::Minf<T>());
-  STF_IEEE_EQUAL(floor(bs::Nan<T>()), bs::Nan<T>());
-#endif
-  STF_EQUAL(floor(bs::One<T>()), bs::One<T>());
-  STF_EQUAL(floor(bs::Mone<T>()), bs::Mone<T>());
-  STF_EQUAL(floor(bs::Zero<T>()), bs::Zero<T>());
-  STF_EQUAL(floor(bs::Pi<T>()), bs::Three<T>());
-  STF_EQUAL(floor(T(-1.1)), r_t(-2));
-  STF_EQUAL(floor(T(1.1)), r_t(1));
-} // end of test for floating_
-
-STF_CASE_TPL (" floor unsigned_int",  STF_UNSIGNED_INTEGRAL_TYPES)
+STF_CASE_TPL( "Check floor behavior on IEEE types",  STF_IEEE_TYPES)
 {
-  namespace bs = boost::simd;
   using bs::floor;
 
-  // return type conformity test
-  STF_EXPR_IS(floor(T()), T);
+  STF_EQUAL(floor(T(2.5)), T(2));
+  STF_EQUAL(floor(T(1.6)), T(1));
+  STF_EQUAL(floor(T(1.5)), T(1));
+  STF_EQUAL(floor(T(1.4)), T(1));
+  STF_EQUAL(floor(T(0)), T(0));
+  STF_EQUAL(floor(T(-0.4)), T(-1));
+  STF_EQUAL(floor(T(-0.5)), T(-1));
+  STF_EQUAL(floor(T(-0.6)), T(-1));
+  STF_EQUAL(floor(T(-1.5)), T(-2));
+}
 
-  // specific values tests
-  STF_EQUAL(floor(bs::One<T>()), bs::One<T>());
-  STF_EQUAL(floor(bs::Zero<T>()), bs::Zero<T>());
-} // end of test for unsigned_int_
-
-STF_CASE_TPL (" floor signed_int",  STF_SIGNED_INTEGRAL_TYPES)
+STF_CASE_TPL( "Check floor behavior on limit cases", STF_NUMERIC_TYPES)
 {
-  namespace bs = boost::simd;
+  using bs::floor;
+  using bs::Valmin;
+  using bs::Valmax;
 
+  STF_EQUAL(floor(Valmin<T>()), Valmin<T>());
+  STF_EQUAL(floor(Valmax<T>()), Valmax<T>());
+}
+
+STF_CASE_TPL( "Check floor behavior on IEEE limit cases", STF_IEEE_TYPES)
+{
+  using bs::floor;
+  using bs::Valmin;
+  using bs::Valmax;
+  using bs::Inf;
+  using bs::Minf;
+  using bs::Nan;
+  using bs::Maxflint;
+
+  STF_EQUAL(floor(Inf<T>()) , Inf<T>());
+  STF_EQUAL(floor(Minf<T>()), Minf<T>());
+  STF_IEEE_EQUAL(floor(Nan<T>()) , Nan<T>());
+  STF_EQUAL(floor(Maxflint<T>()+1) , Maxflint<T>()+1);
+  STF_EQUAL(floor(Maxflint<T>()  ) , Maxflint<T>()  );
+  STF_EQUAL(floor(Maxflint<T>()-1) , Maxflint<T>()-1);
+}
+
+STF_CASE_TPL( "Check floor behavior on integral types",  STF_INTEGRAL_TYPES)
+{
   using bs::floor;
 
-  // return type conformity test
-   STF_EXPR_IS(floor(T()), T);
-
-  // specific values tests
-  STF_EQUAL(floor(bs::Mone<T>()), bs::Mone<T>());
-  STF_EQUAL(floor(bs::One<T>()), bs::One<T>());
-  STF_EQUAL(floor(bs::Zero<T>()), bs::Zero<T>());
-} // end of test for signed_int_
-
-
+  STF_EQUAL(floor(T(2)), T(2));
+  STF_EQUAL(floor(T(1)), T(1));
+  STF_EQUAL(floor(T(0)), T(0));
+  STF_EQUAL(floor(T(-1)), T(-1));
+  STF_EQUAL(floor(T(-2)), T(-2));
+}
