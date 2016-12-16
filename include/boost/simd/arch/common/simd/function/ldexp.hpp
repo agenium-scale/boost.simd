@@ -225,32 +225,6 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-//   BOOST_DISPATCH_OVERLOAD ( ldexp_
-//                           , (typename A0, typename A1, typename X)
-//                           , bd::cpu_
-//                           , bs::pack_<bd::single_<A0>, X>
-//                           , bd::scalar_<bd::single_<A1>>
-//                           )
-//   {
-//     BOOST_FORCEINLINE A0 operator() (const A0& a0, const A1& a1) const BOOST_NOEXCEPT
-//     {
-//       return a0*expocvt(a1);
-//     }
-//   };
-
-//   BOOST_DISPATCH_OVERLOAD ( ldexp_
-//                           , (typename A0, typename A1, typename X)
-//                           , bd::cpu_
-//                           , bs::pack_<bd::double_<A0>, X>
-//                           , bd::scalar_<bd::double_<A1>>
-//                           )
-//   {
-//     BOOST_FORCEINLINE A0 operator() ( const A0& a0, const A1& a1) const BOOST_NOEXCEPT
-//     {
-//       return a0*expocvt(a1);
-//     }
-//   };
-
 } } }
 
 #endif
