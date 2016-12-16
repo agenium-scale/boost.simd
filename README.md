@@ -47,7 +47,6 @@ you to focus on the important part of your work: the development of new features
 Architecture | Extensions
 -------------|-----------------------------------------------------
 x86          | SSE2, SSE3, SSSE3, SSE4.1, SSE4.2, AVX, FMA3, AVX2
-PowerPC      | VMX
 
 **Boost.SIMD** requires a C++11 compliant compiler and Boost 1.61 and is thoroughly tested on the following compilers:
 
