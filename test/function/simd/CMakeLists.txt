@@ -131,7 +131,6 @@ set ( SOURCES
       exp2.cpp
       exp.cpp
       expm1.cpp
-      expocvt.cpp
       exponent.cpp
       exponentbits.cpp
       exprecnegc.cpp
@@ -244,10 +243,18 @@ set ( SOURCES
       ldexp.pedantic.cpp
       ldexp.regular.cpp
       lo.cpp
-      log10.cpp
-      log1p.cpp
-      log2.cpp
-      log.cpp
+      log1p.regular.cpp
+      log1p.musl.cpp
+      log1p.plain.cpp
+      log10.regular.cpp
+      log10.musl.cpp
+      log10.plain.cpp
+      log2.regular.cpp
+      log2.musl.cpp
+      log2.plain.cpp
+      log.plain.cpp
+      log.regular.cpp
+      log.musl.cpp
       logical_and.cpp
       logical_andnot.cpp
       logical_notand.cpp

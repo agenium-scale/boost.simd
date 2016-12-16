@@ -22,7 +22,6 @@
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/is_equal.hpp>
 #include <boost/simd/function/rshl.hpp>
-#include <boost/simd/function/expocvt.hpp>
 #include <boost/simd/function/if_plus.hpp>
 #include <boost/simd/function/if_minus.hpp>
 #include <boost/simd/function/is_flint.hpp>
@@ -197,19 +196,6 @@ namespace boost { namespace simd { namespace ext
   };
 
   BOOST_DISPATCH_OVERLOAD ( ldexp_
-                          , (typename A0, typename X)
-                          , bd::cpu_
-                          , bs::pack_<bd::double_<A0>, X>
-                          , bs::pack_<bd::double_<A0>, X>
-                          )
-  {
-    BOOST_FORCEINLINE A0 operator() (const A0& a0, const A0& a1) const BOOST_NOEXCEPT
-    {
-      return a0*expocvt(a1);
-    }
-  };
-
-  BOOST_DISPATCH_OVERLOAD ( ldexp_
                           , (typename A0, typename A1, typename X)
                           , bd::cpu_
                           , bs::pedantic_tag
@@ -236,33 +222,6 @@ namespace boost { namespace simd { namespace ext
                                     , const A0& a0, const A1& a1) const BOOST_NOEXCEPT
     {
       return pedantic_(ldexp)(a0, toint(a1));
-//     return a0*expocvt(a1);
-    }
-  };
-
-  BOOST_DISPATCH_OVERLOAD ( ldexp_
-                          , (typename A0, typename A1, typename X)
-                          , bd::cpu_
-                          , bs::pack_<bd::single_<A0>, X>
-                          , bd::scalar_<bd::single_<A1>>
-                          )
-  {
-    BOOST_FORCEINLINE A0 operator() (const A0& a0, const A1& a1) const BOOST_NOEXCEPT
-    {
-      return ldexp(a0, toint(a1));
-    }
-  };
-
-  BOOST_DISPATCH_OVERLOAD ( ldexp_
-                          , (typename A0, typename A1, typename X)
-                          , bd::cpu_
-                          , bs::pack_<bd::double_<A0>, X>
-                          , bd::scalar_<bd::double_<A1>>
-                          )
-  {
-    BOOST_FORCEINLINE A0 operator() ( const A0& a0, const A1& a1) const BOOST_NOEXCEPT
-    {
-      return a0*expocvt(a1);
     }
   };
 

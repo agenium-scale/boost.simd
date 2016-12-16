@@ -137,6 +137,7 @@ namespace boost { namespace simd { namespace ext
       return bs::ldexp(a0, a1);
     }
   };
+
   BOOST_DISPATCH_OVERLOAD ( ldexp_
                           , (typename A0, typename A1)
                           , bd::cpu_
@@ -147,6 +148,20 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() (const std_tag &
                                     ,  A0 a0, A1 a1 ) const BOOST_NOEXCEPT
+    {
+      BOOST_ASSERT_MSG(is_flint(a1), "parameter is not a flint");
+      return std::ldexp(a0, toint(a1));
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( ldexp_
+                          , (typename A0, typename A1)
+                          , bd::cpu_
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A1> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() (A0 a0, A1 a1 ) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG(is_flint(a1), "parameter is not a flint");
       return std::ldexp(a0, toint(a1));
