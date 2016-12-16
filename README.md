@@ -4,15 +4,15 @@
 
 [![Build Status](https://travis-ci.org/NumScale/boost.simd.png?branch=develop)](https://travis-ci.org/NumScale/boost.simd)
 
-**Boost.SIMD** was developed to simplify the difficult, tedious and often error-prone process of developing SIMD 
-programs. **Boost.SIMD** is designed to seamlessly integrate into existing projects so that you can quickly and 
+**Boost.SIMD** was developed to simplify the difficult, tedious and often error-prone process of developing SIMD
+programs. **Boost.SIMD** is designed to seamlessly integrate into existing projects so that you can quickly and
 easily start developing high performance, portable and future proof software.
 
 ## Important Links :
  - [The current Issues List](https://github.com/NumScale/boost.simd/issues)
  - [The documentation](http://developer.numscale.com/boost.simd)
  - [the Q&A Google group](https://groups.google.com/forum/#!forum/boost-simd)
- 
+
 # What is SIMD?
 
 Single instruction, multiple data (__SIMD__) instructions or **multimedia extensions** have been available
@@ -26,13 +26,13 @@ dispatching and pipelining unit.
 # Why use Boost.SIMD?
 
 The use of SIMD instructions requires developers to program into a very verbose manner due to the low-level nature of SIMD instruction
-sets or to rely on fragile, black-box auto-vectorizating compilers. Furthermore, it can be necessary to re-write code for each revision 
-of each target architecture, accounting for each architecture's vendor provided API as well as architecture dependent implementation details. 
-This greatly complicates the design and maintenance of SIMD code, significantly increasing the time required to develop, test and deploy 
+sets or to rely on fragile, black-box auto-vectorizating compilers. Furthermore, it can be necessary to re-write code for each revision
+of each target architecture, accounting for each architecture's vendor provided API as well as architecture dependent implementation details.
+This greatly complicates the design and maintenance of SIMD code, significantly increasing the time required to develop, test and deploy
 software as well as increasing the scope for introducing bugs.
 
 **Boost.SIMD** is designed to be user-friendly, easy to integrate into existing projects. To make life even easier, **Boost.SIMD** includes
-a large number of commonly used functions and constants, standardizing the use of common _SIMD_ programming idioms. **Boost.SIMD** allows 
+a large number of commonly used functions and constants, standardizing the use of common _SIMD_ programming idioms. **Boost.SIMD** allows
 you to focus on the important part of your work: the development of new features and functionality.
 
 **Boost.SIMD** provides the following:
@@ -60,19 +60,13 @@ Microsoft Visual Studio | 15.0 and above
 
 We start out on the premise you already have a proper installation of Boost 1.61 or superior setup on your machine.
 
-First, you must retrieve the current status of the library by cloning the repository: 
+You can retrieve the current status of the library by cloning the repository:
 
     git clone https://github.com/NumScale/boost.simd.git
 
-By default, the develop branch is fetched. You can change that to `master` if you want to use the stable
-version instead of the development version. 
+By default, the develop branch is fetched. You can change that to `master` if you want to use the stable version instead of the development version.
 
-Second step is to setup the repository to grab a local copy of the documentation:
-
-    git submodule init && git submodule update
-
-The library headers are located in the `include\' folder and are ready to be used. A very simple
-example like:
+Once cloned, the library headers are located in the `include\' folder and are ready to be used. A very simple example like:
 
 ```cpp
 #include <boost/simd/pack.hpp>
@@ -80,7 +74,7 @@ example like:
 
 namespace bs = boost::simd;
 
-int main() 
+int main()
 {
    bs::pack<float,4> p{1.f,2.f,3.f,4.f};
    std::cout << p + 10*p << "\n";
