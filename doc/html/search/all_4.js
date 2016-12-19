@@ -19,7 +19,6 @@ var searchData=
   ['expected_5fcardinal_3c_20t_2c_20boost_5fsimd_5fdefault_5fsite_20_3e',['expected_cardinal&lt; T, BOOST_SIMD_DEFAULT_SITE &gt;',['../structboost_1_1simd_1_1expected__cardinal.html',1,'boost::simd']]],
   ['expm1',['expm1',['../group__group-exponential_ga0e90dbb8e0c424d96dfae463def076d7.html#ga0e90dbb8e0c424d96dfae463def076d7',1,'boost::simd']]],
   ['expnibig',['Expnibig',['../group__group-constant_gaadc449910f0909b30b4611cb0fd13e69.html#gaadc449910f0909b30b4611cb0fd13e69',1,'boost::simd::Expnibig()'],['../group__group-constant_ga54b5572b19a7c1558ca5b07edf1d78fc.html#ga54b5572b19a7c1558ca5b07edf1d78fc',1,'boost::simd::functional::Expnibig()']]],
-  ['expocvt',['expocvt',['../group__group-arithmetic_gac46657210811101344bfba920b9f451d.html#gac46657210811101344bfba920b9f451d',1,'boost::simd']]],
   ['exponent',['exponent',['../group__group-ieee_gaa3944614a908cdc7849557280853fcc3.html#gaa3944614a908cdc7849557280853fcc3',1,'boost::simd']]],
   ['exponentbits',['exponentbits',['../group__group-ieee_gaf1d7f78be1be5a535753aa65767827c4.html#gaf1d7f78be1be5a535753aa65767827c4',1,'boost::simd']]],
   ['exprecneg',['exprecneg',['../group__group-exponential_ga26e9e69d36423f41bd9beb369eb3badf.html#ga26e9e69d36423f41bd9beb369eb3badf',1,'boost::simd']]],
