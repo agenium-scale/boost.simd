@@ -10,7 +10,7 @@ cmake_minimum_required(VERSION 2.8.7)
 ## Setup project
 ## -------------------------------------------------------------------------------------------------
 project(Boost.SIMD)
-set(PROJECT_VERSION 4.16.9.0) # TODO: Find a way to update this automatically
+set(PROJECT_VERSION 4.16.12.0) # TODO: Find a way to update this automatically
 set(PROJECT_DOC_DIR ${PROJECT_SOURCE_DIR}/doc)
 
 ## Requirements for ns.cmake:
@@ -123,7 +123,7 @@ if (DEFINED DEV)
     enable_coverage(boost.simd)
   endif()
 else()
-  add_custom_target(tests 
+  add_custom_target(tests
     COMMENT "Target tests requires 'cmake -DDEV=1 ..'")
   add_custom_target(unit
     COMMENT "Target unit requires 'cmake -DDEV=1 ..'")
