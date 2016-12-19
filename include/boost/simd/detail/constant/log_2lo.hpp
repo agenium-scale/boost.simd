@@ -30,7 +30,7 @@ namespace boost { namespace simd
 
   namespace ext
   {
-    BOOST_DISPATCH_FUNCTION_DECLARATION(tag,log_2lo_);
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, log_2lo_)
   }
 
   namespace detail

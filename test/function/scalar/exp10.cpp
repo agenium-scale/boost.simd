@@ -41,7 +41,7 @@ STF_CASE_TPL ("exp10",  STF_IEEE_TYPES)
 
   for(int i=0; i < 30 ; i++)
   {
-    STF_EXPECT(bs::is_flint(exp2(T(i))));
+    STF_EXPECT(bs::is_flint(exp10(T(i))));
   }
 }
 

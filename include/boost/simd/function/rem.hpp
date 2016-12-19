@@ -51,24 +51,21 @@ namespace boost { namespace simd
     -Limiting values for floating entries:
 
        -  if x is +/-inf , Nan is returned
-       -  if x is +/-0 and y is not 0 x is returned
+       -  if x is +/-0 and y is not 0, 0 is returned (if the sign of x matters the pedantic_ decorated version returns x)
        -  If y is +/-0, Nan is returned
        -  If either argument is NaN, Nan is returned
-
-       If insurance of correct 0 sign in the second case does not matter for you, using the fast_ decorator
-    can gain some cycles.
-
 
     @par Decorators
 
     with floating entries decorator std_ calls the stdlibc++ corresponding function (caution : no simd acceleration)
 
-      -option fix        calls std::fmod
-      -option nearbyint calls std::remainder
-      The other options have no standard correspondant
+      - pedantic_ insure better limiting cases (see above note)
 
-    fast_ for floating entries,  but if x is +/-0 and y is not 0  +/-0 is returned with a non garanteed sign.
+      - std_ allow direct calls to some libc++ function:
 
+        -option fix        calls std::fmod
+        -option nearbyint  calls std::remainder
+         The other options have no standard correspondant
 
   **/
   Value rem(Value const & v0, value const& y);

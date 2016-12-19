@@ -20,8 +20,8 @@ namespace boost { namespace simd
     @ingroup group-boolean
     Function object implementing if_zero_else_allbits capabilities
 
-    Returns a mask of bits. All ones if the
-    input element is @ref Zero else all zeros.
+    Returns a mask of bits. Returns @ref Allbits if @c c
+    is @ref Zero and returns @ref Zero if it isn't.
 
     This is a convenience alias of @ref genmaskc
   **/

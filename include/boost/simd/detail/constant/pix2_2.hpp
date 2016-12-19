@@ -51,7 +51,7 @@ namespace boost { namespace simd
 
   namespace ext
   {
-    BOOST_DISPATCH_FUNCTION_DECLARATION(tag,pix2_2_);
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, pix2_2_)
   }
 
   namespace detail

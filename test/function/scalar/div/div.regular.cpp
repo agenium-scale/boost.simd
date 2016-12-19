@@ -8,7 +8,6 @@
 */
 //==================================================================================================
 #include <boost/simd/function/scalar/div.hpp>
-#include <boost/simd/function/fast.hpp>
 #include <scalar_test.hpp>
 
 #include <boost/simd/constant/inf.hpp>

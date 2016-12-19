@@ -8,7 +8,6 @@
 */
 //==================================================================================================
 #include <boost/simd/function/scalar/divides.hpp>
-#include <boost/simd/function/fast.hpp>
 #include <boost/simd/function/saturated.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -36,19 +35,6 @@ STF_CASE_TPL( "Check divides behavior with floating", STF_IEEE_TYPES )
   STF_EQUAL(divides(T(1), T(0)), bs::Inf<r_t>());
   STF_IEEE_EQUAL(divides(T(0), T(0)), bs::Nan<r_t>());
   STF_EQUAL(divides(T(1), T(1)), bs::One<r_t>());
-}
-
-
-STF_CASE_TPL( "Check fast divides behavior with floating", STF_IEEE_TYPES )
-{
-  namespace bs = boost::simd;
-  using bs::divides;
-  using r_t = decltype(bs::fast_(divides)(T(), T()));
-  STF_TYPE_IS(r_t, T);
-
-  STF_ULP_EQUAL(bs::fast_(divides)(T(1),T(1)), T(1), 16);
-  STF_ULP_EQUAL(bs::fast_(divides)(T(1),T(2)), T(0.5), 16);
-  STF_ULP_EQUAL(bs::fast_(divides)(T(5),T(3)), T(5)/T(3), 16);
 }
 
 

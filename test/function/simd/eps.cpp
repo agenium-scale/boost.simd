@@ -9,6 +9,11 @@
 #include <boost/simd/function/eps.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
+#include <boost/simd/constant/mindenormal.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/eps.hpp>
 
 namespace bs = boost::simd;
 
@@ -39,3 +44,45 @@ STF_CASE_TPL("Check eps on pack" , STF_NUMERIC_TYPES)
   test<T, N*2>($);
 }
 
+
+STF_CASE_TPL ("eps for IEEE types",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  using bs::eps;
+  using p_t = bs::pack<T>;
+  using r_t = decltype(eps(p_t()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, p_t);
+
+  // specific values tests
+ #ifndef BOOST_SIMD_NO_INVALIDS
+  STF_IEEE_EQUAL(eps(bs::Inf<p_t>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(eps(bs::Minf<p_t>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(eps(bs::Nan<p_t>()), bs::Nan<r_t>());
+ #endif
+
+  STF_EQUAL(eps(p_t{-1}), bs::Eps<r_t>());
+  STF_EQUAL(eps(p_t{1}) , bs::Eps<r_t>());
+
+ #if !defined(BOOST_SIMD_NO_DENORMALS)
+  STF_EQUAL(eps(p_t{0}), bs::Mindenormal<r_t>());
+ #endif
+}
+
+STF_CASE_TPL ("eps on integers",  STF_INTEGRAL_TYPES)
+{
+  namespace bs = boost::simd;
+  using bs::eps;
+  using p_t = bs::pack<T>;
+  using r_t = decltype(eps(p_t()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, p_t);
+
+  // specific values tests
+  STF_EQUAL(eps(p_t(-1)), p_t{1});
+  STF_EQUAL(eps(p_t(0)) , p_t{1});
+  STF_EQUAL(eps(p_t(-1)), p_t{1});
+  STF_EQUAL(eps(p_t(42)), p_t{1});
+}

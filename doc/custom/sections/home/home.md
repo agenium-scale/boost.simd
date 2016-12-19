@@ -52,12 +52,7 @@ Looks difficult? How about we vectorize it for the following generation of Intel
 @snippet addvector.cpp avx-simd-loop
 
 Both of these processors are manufactured by Intel yet two different versions of the code are required to get the best performance
-possible from each processor. Imagine the complication of moving to another manufacturer's processor, for example IBM. Let's try
-re-write this same simple loop for a `VMX` equipped processor:
-
-@snippet addvector.cpp vmx-simd-loop
-
-This is quicky getting complicated and annoying.
+possible from each processor. This is quicky getting complicated and annoying.
 
 Now, look at how the code can become simpler with **@projectname** :
 
@@ -78,13 +73,12 @@ generic lambda functions:
 
 -------------------------------------------------------------
 
-**@projectname** includes support for some Intel and IBM processors:
+**@projectname** includes support for some Intel processors:
 
 <center>
 Architecture | Extensions
 -------------|-----------------------------------------------------
 x86          | SSE2, SSE3, SSSE3, SSE4.1, SSE4.2, AVX, FMA3, AVX2
-PowerPC      | VMX
 </center>
 
 **@projectname** requires a C++11 compliant compiler and is thoroughly tested on the following compilers:

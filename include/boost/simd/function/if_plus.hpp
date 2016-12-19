@@ -20,22 +20,22 @@ namespace boost { namespace simd
     @ingroup group-boolean
     Function object implementing if_plus capabilities
 
-    The function returns the second entry or the sum of the second
-    and third entries, according to the first entry being @ref False or
-    @ref True
+    The function returns either the second parameter or the sum of the second
+    and third parameters, depending on whether the first parameter is
+	@ref False or @ref True .
 
     @par Semantic:
 
-    For every parameters @c c of type @c C and @c, @c y of type @c T:
+    For every parameter @c c of type @c C and @c x, @c y of type @c T :
 
     @code
-    T r = if_plus(cond,x,y);
+    T r = if_plus(c, x, y);
     @endcode
 
     is similar to:
 
     @code
-    T r = cond ? x+y : x;
+    T r = c ? x + y : x;
     @endcode
   **/
   Value if_plus(Value const& c, Value const& x, Value const& y);

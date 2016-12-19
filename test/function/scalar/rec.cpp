@@ -7,7 +7,6 @@
 **/
 //==================================================================================================
 #include <boost/simd/function/scalar/rec.hpp>
-#include <boost/simd/function/fast.hpp>
 #include <boost/simd/function/raw.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
@@ -37,21 +36,6 @@ STF_CASE_TPL("regular rec",  STF_IEEE_TYPES)
   STF_EQUAL(rec(bs::Zero<T>()), bs::Inf<T>());
 } // end of test for floating_
 
-STF_CASE_TPL("fast rec",  STF_IEEE_TYPES)
-{
-  namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
-  using bs::rec;
-  using bs::fast_;
-
-  // return type conformity test
-  STF_EXPR_IS( bs::fast_(rec)(T()) , T );
-  //For scalar is it a call redirected to bs::fast_(rec)
-  // specific values tests
-  STF_ULP_EQUAL(bs::fast_(rec)(T(7)), T(1)/T(7), 16);
-  STF_ULP_EQUAL(bs::fast_(rec)(bs::Mone<T>()), bs::Mone<T>(), 16);
-  STF_ULP_EQUAL(bs::fast_(rec)(bs::One<T>()), bs::One<T>(), 16);
-} // end of test for floating_
 
 STF_CASE_TPL("raw rec",  STF_IEEE_TYPES)
 {

@@ -32,14 +32,15 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    as_integer_t<T> r = toint_s(nearbyint(x));
+    as_integer_t<T> r = toint(nearbyint(x));
     @endcode
 
-    @par Note:
-    Speed can be gained using inearbyint(x, fast_) that uses @ref
-    toint in place of @ref toint_s,  but be aware that large values can be not correctly converted
-    and that invalid entries lead to undefined results
+    @par Decorators:
 
+   - pedantic_ as toint does not care about large value, if you need a full range correctness
+     use this decorator that computes  saturated_(toint)(nearbyint(x));
+
+    @see nearbyint
   **/
 
   as_integer_t<Value> inearbyint(Value const& x);

@@ -18,17 +18,19 @@ namespace bs = boost::simd;
 template <typename T, std::size_t N, typename Env>
 void test(Env& $, std::size_t offset = 0)
 {
-  using p_t = bs::pack<T,N>;
+  using p_t = bs::pack<bs::logical<T>,N>;
 
-  T* data = static_cast<T*>(ba::aligned_alloc(p_t::alignment, (sizeof(T)) * N * 2));
-  std::array<T,N> ref;
+  bs::logical<T>* data  = static_cast<bs::logical<T>*>
+                          ( ba::aligned_alloc ( p_t::alignment, (sizeof(bs::logical<T>)) * N * 2) );
+
+  std::array<bs::logical<T>,N> ref;
   for(std::size_t i = 0;i < 2*N        ; ++i) data[i] = i%3 ? true : false;
   for(std::size_t i = 0;i < ref.size() ; ++i) ref[i]  = (i+offset)%3 ? true : false;
 
   p_t p;
 
-  if(offset)  p = bs::aligned_load<bs::pack<T,N>>(&data[0], offset);
-  else        p = bs::aligned_load<bs::pack<T,N>>(&data[0]);
+  if(offset)  p = bs::aligned_load<bs::pack<bs::logical<T>,N>>(&data[0], offset);
+  else        p = bs::aligned_load<bs::pack<bs::logical<T>,N>>(&data[0]);
 
   STF_ALL_EQUAL( p, ref );
 }
@@ -37,9 +39,9 @@ STF_CASE_TPL( "Check aligned_load behavior with simple pointer", STF_NUMERIC_TYP
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<bs::logical<T>, N>($);
-  test<bs::logical<T>, N/2>($);
-  test<bs::logical<T>, N*2>($);
+  test<T, N>($);
+  test<T, N/2>($);
+  test<T, N*2>($);
 }
 
 STF_CASE_TPL( "Check aligned_load behavior with offset + pointer", STF_NUMERIC_TYPES )
@@ -47,26 +49,27 @@ STF_CASE_TPL( "Check aligned_load behavior with offset + pointer", STF_NUMERIC_T
   namespace bs = boost::simd;
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<bs::logical<T>, N>($,N);
-  test<bs::logical<T>, N/2>($,N/2);
-  test<bs::logical<T>, N*2>($,N*2);
+  test<T, N>($,N);
+  test<T, N/2>($,N/2);
+  test<T, N*2>($,N*2);
 }
 
 template <typename T, std::size_t N, typename Env>
 void test2(Env& $, std::size_t offset = 0)
 {
-  using ptr_t = typename T::value_type;
-  using p_t = bs::pack<T,N>;
+  using ptr_t = T;
+  using p_t = bs::pack<bs::logical<T>,N>;
 
-  ptr_t* data = static_cast<ptr_t*>(ba::aligned_alloc(p_t::alignment, (sizeof(ptr_t)) * N * 2));
-  std::array<T,N> ref;
+  ptr_t* data = static_cast<ptr_t*>(ba::aligned_alloc(bs::pack<T>::alignment, (sizeof(ptr_t)) * N * 2));
+
+  std::array<bs::logical<T>,N> ref;
   for(std::size_t i = 0;i < 2*N        ; ++i) data[i] = ptr_t( (i+1) % 3 );
   for(std::size_t i = 0;i < ref.size() ; ++i) ref[i]  = (data[i+offset] != 0) ? true : false;
 
   p_t p;
 
-  if(offset)  p = bs::aligned_load<bs::pack<T,N>>(&data[0], offset);
-  else        p = bs::aligned_load<bs::pack<T,N>>(&data[0]);
+  if(offset)  p = bs::aligned_load<bs::pack<bs::logical<T>,N>>(&data[0], offset);
+  else        p = bs::aligned_load<bs::pack<bs::logical<T>,N>>(&data[0]);
 
   STF_ALL_EQUAL( p, ref );
 }
@@ -75,9 +78,9 @@ STF_CASE_TPL( "Check aligned_load behavior with a pointer of arithmetic source",
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test2<bs::logical<T>, N>($);
-  test2<bs::logical<T>, N/2>($);
-  test2<bs::logical<T>, N*2>($);
+  test2<T, N>($);
+  test2<T, N/2>($);
+  test2<T, N*2>($);
 }
 
 STF_CASE_TPL( "Check aligned_load behavior with offset + pointer of arithmetic source", STF_NUMERIC_TYPES )
@@ -85,7 +88,7 @@ STF_CASE_TPL( "Check aligned_load behavior with offset + pointer of arithmetic s
   namespace bs = boost::simd;
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test2<bs::logical<T>, N>($,N);
-  test2<bs::logical<T>, N/2>($,N/2);
-  test2<bs::logical<T>, N*2>($,N*2);
+  test2<T, N>($,N);
+  test2<T, N/2>($,N/2);
+  test2<T, N*2>($,N*2);
 }

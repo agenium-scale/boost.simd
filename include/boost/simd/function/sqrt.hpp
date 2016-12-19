@@ -30,13 +30,11 @@ namespace boost { namespace simd
     T r = sqrt(x);
     @endcode
 
-    If full accuracy is not needed a sometimes faster less accurate version of the function
-    can be reached using the fast_ decorator.
-
     @par Decorators
 
-    std_ calls std::sqrt
-    fast_ for floating entries can gain some speed with less accuracy on some architectures.
+    - std_ calls std::sqrt
+
+    - raw_ for floating entries can gain some speed with less accuracy on some architectures.
 
   **/
   Value sqrt(Value const & v0);

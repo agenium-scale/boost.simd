@@ -19,31 +19,31 @@ namespace boost { namespace simd
     @ingroup group-boolean
     Function object implementing if_else capabilities
 
-    If cond is @ref True returns t else returns f
+    If @c c is @ref True returns @c t else returns @c f
 
     If vectors, the types involved in the call must share the same number of elements.
 
     @par Semantic:
 
-    For every parameters @c c of type @c C, @c t and @c f of type @c T:
+    For every parameters @c c of type @c C, @c t and @c f of type @c T :
 
     @code
-    T r = if_else(cond,t,f);
+    T r = if_else(c, t, f);
     @endcode
 
     is similar to:
 
     @code
-    T r = cond ? t : f;
+    T r = c ? t : f;
     @endcode
 
     @see  if_else_zero, if_else_allbits, if_zero_else,
     if_allbits_else, if_one_else_zero, if_zero_else_one, bitwise_select
   **/
-  Value if_else(Value const& c, Value const& v0);
+  Value if_else(Value const& c, Value const& t, Value const& f);
 
   //@overload
-  Value if_else(LogicalValue const& c, Value const& v0);
+  Value if_else(LogicalValue const& c, Value const& t, Value const& f);
 } }
 #endif
 

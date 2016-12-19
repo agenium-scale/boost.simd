@@ -21,6 +21,7 @@
 #include <boost/simd/function/if_nan_else.hpp>
 #include <boost/simd/function/is_gez.hpp>
 #include <boost/simd/function/is_less.hpp>
+#include <boost/simd/function/is_greater.hpp>
 #include <boost/simd/function/is_nan.hpp>
 #include <boost/simd/function/is_not_equal.hpp>
 #include <boost/simd/function/dec.hpp>
@@ -43,7 +44,7 @@ namespace boost { namespace simd { namespace ext
    {
       BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
-        return if_plus(neq(a0, Valmin<A0>()), a0, Mone<A0>());
+        return if_plus(is_not_equal(a0, Valmin<A0>()), a0, Mone<A0>());
       }
    };
 
@@ -71,7 +72,7 @@ namespace boost { namespace simd { namespace ext
       BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
         BOOST_ASSERT_MSG(assert_all(is_gez(a1)), "predecessor rank must be non negative");
-        return if_minus( is_less_equal(Valmin<A0>()+a1, a0), a0, a1);
+        return if_else(  is_greater(Valmin<A0>()+a1, a0), Valmin<A0>(), a0-a1);
       }
    };
 

@@ -21,22 +21,21 @@ STF_CASE_TPL (" rem_pio2_straight",  STF_IEEE_TYPES)
   namespace bd = boost::dispatch;
 
   using bs::rem_pio2_straight;
-  using iT = bd::as_integer_t<T>;
   using r_t = decltype(rem_pio2_straight(T()));
 
 
   STF_EXPR_IS( (rem_pio2_straight(T()))
-                  , (std::pair<iT,T>)
+                  , (std::pair<T,T>)
                   );
 
   {
     r_t res = rem_pio2_straight(bs::Pio_4<T>());
-    STF_ULP_EQUAL( res.first, bs::One<iT>(), 0.5);
+    STF_ULP_EQUAL( res.first, bs::One<T>(), 0.5);
     STF_ULP_EQUAL( res.second, -bs::Pio_4<T>(), 0.5);
   }
   {
     r_t res = rem_pio2_straight(bs::Zero<T>());
-    STF_ULP_EQUAL( res.first, bs::Zero<iT>(), 0.5);
+    STF_ULP_EQUAL( res.first, bs::Zero<T>(), 0.5);
     STF_ULP_EQUAL( res.second, bs::Zero<T>(), 0.5);
   }
 

@@ -11,7 +11,7 @@ set(SOURCES
     abs.saturated.cpp
     abs.std.cpp
     acos.regular.cpp
-    acos.accurate.cpp
+    acos.pedantic.cpp
     acosd.cpp
     acosh.cpp
     acospi.cpp
@@ -37,6 +37,7 @@ set(SOURCES
     asinpi.cpp
     asin.std.cpp
     atan2.regular.cpp
+    atan2.pedantic.cpp
     atan2d.cpp
     atan2pi.cpp
     atan2.std.cpp
@@ -131,7 +132,7 @@ set(SOURCES
     fpclassify.std.cpp
     frac.cpp
     frexp.regular.cpp
-    frexp.fast.cpp
+#    frexp.fast.cpp
     frexp.std.cpp
     gamma.regular.cpp
     gammaln.regular.cpp
@@ -142,7 +143,7 @@ set(SOURCES
     hi.cpp
     hmsb.cpp
     hypot.regular.cpp
-    hypot.fast.cpp
+    hypot.pedantic.cpp
     hypot.std.cpp
     iceil.cpp
     if_allbits_else.cpp
@@ -164,6 +165,8 @@ set(SOURCES
     inc.regular.cpp
     inc.saturated.cpp
     indeg.cpp
+    inearbyint.pedantic.cpp
+    inearbyint.regular.cpp
     inrad.cpp
     iround.cpp
     is_denormal.cpp
@@ -266,9 +269,8 @@ set(SOURCES
     predecessor.cpp
     prev.cpp
     rec.regular.cpp
-    rec.fast.cpp
     rem.regular.cpp
-    rem.fast.cpp
+    rem.pedantic.cpp
     rem_pio2_cephes.cpp
     rem_pio2.cpp
     rem_pio2_medium.cpp
@@ -283,7 +285,8 @@ set(SOURCES
     rrol.cpp
     rror.cpp
     rsqrt.regular.cpp
-    rsqrt.fast.cpp
+    rsqrt.raw.cpp
+    rsqrt.pedantic.cpp
     safe_max.cpp
     safe_min.cpp
     sec.regular.cpp
@@ -320,7 +323,8 @@ set(SOURCES
     sqr.regular.cpp
     sqr.saturated.cpp
     sqrt1pm1.cpp
-    sqrt.fast.cpp
+    sqrt.regular.cpp
+    sqrt.raw.cpp
     sqrt.std.cpp
     successor.cpp
     tan.regular.cpp
@@ -337,7 +341,6 @@ set(SOURCES
     touint.regular.cpp
     touint.saturated.cpp
     trunc.regular.cpp
-    trunc.fast.cpp
     trunc.std.cpp
     two_add.cpp
     twopower.cpp

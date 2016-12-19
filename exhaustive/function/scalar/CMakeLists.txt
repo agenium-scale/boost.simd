@@ -26,6 +26,8 @@ asind.cpp
 asinpi.cpp
 atan.cpp
 atand.cpp
+atanh.regular.cpp
+atanh.raw.cpp
 atanpi.cpp
 cbrt.cpp
 ceil.cpp
@@ -54,7 +56,9 @@ log1p.cpp
 log.cpp
 oneminus.cpp
 rec.cpp
-rsqrt.cpp
+rsqrt.regular.cpp
+rsqrt.raw.cpp
+rsqrt.pedantic.cpp
 sign.cpp
 signnz.cpp
 sinc.cpp

@@ -36,7 +36,7 @@ namespace boost { namespace simd
     T r = exp(y*log(x));
     @endcode
 
-    The pow function is conformant to std:pow considering the limits behaviours
+    The pow function is pedantic to std:pow considering the limits behaviours
     defined by the standard:
 
          - pow(+0, y), where y is a negative odd integer, returns +Inf
@@ -61,13 +61,14 @@ namespace boost { namespace simd
          - pow(+Inf, y) returns +0 for any negative y
          - pow(+Inf, y) returns +Inf for any positive y
 
-      But return a value of the same type as the first parameter, which is necessary for good SIMD behaviour.
+      But return a value of the same type as the first parameter, which is necessary for consistent SIMD behaviour.
 
       @par Decorators
 
         -std_ decorator provides access to std:pow
 
-        -fast_ decorator almost nearly uses the naive formula and so doesnot really care for limits and leads to lower
+        -raw_ decorator almost nearly uses the naive formula and so doesnot really care
+         for limits and leads to lower accuracy
 
   **/
   Value pow(Value const & v0, Value const& y);

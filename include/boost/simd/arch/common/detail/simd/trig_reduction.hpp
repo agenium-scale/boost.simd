@@ -24,6 +24,7 @@
 #include <boost/simd/function/toint.hpp>
 #include <boost/simd/function/nearbyint.hpp>
 #include <boost/simd/function/if_else_nan.hpp>
+#include <boost/simd/function/if_one_else_zero.hpp>
 #include <boost/simd/function/is_not_greater.hpp>
 #include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/function/is_flint.hpp>
@@ -54,7 +55,7 @@ namespace boost { namespace simd
     template<class A0, class mode>
     struct trig_reduction < A0, tag::radian_tag, tag::simd_type, mode>
     {
-      using i_t = bd::as_integer_t<A0, signed>;
+//      using i_t = bd::as_integer_t<A0, signed>;
       using l_t = bs::as_logical_t<A0>;
       using conversion_allowed_t = bd::is_upgradable<A0>;
 
@@ -93,12 +94,12 @@ namespace boost { namespace simd
         return False<l_t>();
       }
 
-      static BOOST_FORCEINLINE i_t reduce(const A0& x, A0& xr)  BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE A0 reduce(const A0& x, A0& xr)  BOOST_NOEXCEPT
       {
         return inner_reduce(x, xr);
       }
 
-      static BOOST_FORCEINLINE i_t inner_reduce(const A0& x, A0& xr) BOOST_NOEXCEPT
+      static BOOST_FORCEINLINE A0 inner_reduce(const A0& x, A0& xr) BOOST_NOEXCEPT
       {
         A0 xx =  preliminary<mode>::clip(x);
         return select_mode(xx, xr, boost::mpl::int_<mode::start>());
@@ -141,17 +142,17 @@ namespace boost { namespace simd
         }
       };
 
-      static BOOST_FORCEINLINE i_t
+      static BOOST_FORCEINLINE A0
       select_range( const A0& xx, A0& xr
                   , boost::mpl::true_ const&
                   , boost::mpl::int_<tag::r_0_pio4> const&
                   ) BOOST_NOEXCEPT
       {
         xr = xx;
-        return Zero<i_t>();
+        return Zero<A0>();
       }
 
-      static BOOST_FORCEINLINE i_t
+      static BOOST_FORCEINLINE A0
       select_range( const A0& xx, A0& xr
                   , boost::mpl::false_ const&
                   , boost::mpl::int_<tag::r_0_pio4> const& r
@@ -165,14 +166,14 @@ namespace boost { namespace simd
         return select_mode(xx,xr,boost::mpl::int_<tag::r_0_pio2>());
       }
 
-      static BOOST_FORCEINLINE i_t
+      static BOOST_FORCEINLINE A0
       select_mode(const A0& xx, A0& xr
                  , boost::mpl::int_<tag::r_0_pio4> const& r) BOOST_NOEXCEPT
       {
         return select_range(xx,xr,boost::mpl::bool_<mode::range == tag::r_0_pio4>(),r);
       }
 
-      static BOOST_FORCEINLINE i_t
+      static BOOST_FORCEINLINE A0
       select_mode(const A0& xx, A0& xr
                  , boost::mpl::int_<tag::r_0_pio2> const&) BOOST_NOEXCEPT
       {
@@ -183,24 +184,24 @@ namespace boost { namespace simd
           xr -= Pio2_2<A0>();
           xr -= Pio2_3<A0>();
           xr = if_else(test, xr, xx);
-          return -bitwise_cast<i_t>(genmask(test));
+          return if_one_else_zero(test);
         }
 
         return select_mode(xx,xr,boost::mpl::int_<tag::r_0_20pi>());
       }
 
-      static BOOST_FORCEINLINE i_t
+      static BOOST_FORCEINLINE A0
       select_range( const A0& xx, A0& xr
                   , boost::mpl::true_ const&
                   , boost::mpl::int_<tag::r_0_20pi> const&
                   ) BOOST_NOEXCEPT
       {
-        i_t n;
+        A0 n;
         std::tie(n, xr) = rem_pio2_cephes(xx);
         return n;
       }
 
-      static BOOST_FORCEINLINE i_t
+      static BOOST_FORCEINLINE A0
       select_range( const A0& xx, A0& xr
                   , boost::mpl::false_ const&
                   , boost::mpl::int_<tag::r_0_20pi> const& r
@@ -212,7 +213,7 @@ namespace boost { namespace simd
         return select_mode(xx,xr,boost::mpl::int_<tag::r_0_mpi>());
       }
 
-      static BOOST_FORCEINLINE i_t
+      static BOOST_FORCEINLINE A0
       select_mode(const A0& xx, A0& xr
                  , boost::mpl::int_< tag::r_0_20pi> const& r) BOOST_NOEXCEPT
       {
@@ -221,18 +222,18 @@ namespace boost { namespace simd
 
 
 
-      static BOOST_FORCEINLINE i_t
+      static BOOST_FORCEINLINE A0
       select_range( const A0& xx, A0& xr
                   , boost::mpl::true_ const&
                   , boost::mpl::int_<tag::r_0_mpi> const&
                   ) BOOST_NOEXCEPT
       {
-        i_t n;
+        A0 n;
         std::tie(n, xr) = rem_pio2_medium(xx);
         return n;
       }
 
-      static BOOST_FORCEINLINE i_t
+      static BOOST_FORCEINLINE A0
       select_range( const A0& xx, A0& xr
                   , boost::mpl::false_ const&
                   , boost::mpl::int_<tag::r_0_mpi> const& r
@@ -244,18 +245,18 @@ namespace boost { namespace simd
         return select_mode(xx,xr,boost::mpl::int_<tag::r_0_dmpi>());
       }
 
-      static BOOST_FORCEINLINE i_t
+      static BOOST_FORCEINLINE A0
       select_mode(const A0& xx, A0& xr
                  , boost::mpl::int_< tag::r_0_mpi> const& r) BOOST_NOEXCEPT
       {
         return select_range(xx,xr,boost::mpl::bool_<mode::range == tag::r_0_mpi>(),r);
       }
 
-      static BOOST_FORCEINLINE i_t
+      static BOOST_FORCEINLINE A0
       select_mode(const A0& xx, A0& xr
                  , boost::mpl::int_< tag::r_0_dmpi> const&) BOOST_NOEXCEPT
       {
-        i_t n;
+        A0 n;
         std::tie(n, xr) = rem_pio2(xx);
         return n;
       }

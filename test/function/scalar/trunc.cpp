@@ -8,7 +8,6 @@
 */
 //==================================================================================================
 #include <boost/simd/function/scalar/trunc.hpp>
-#include <boost/simd/function/fast.hpp>
 #include <scalar_test.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -79,30 +78,4 @@ STF_CASE_TPL (" trunc signed_int",  STF_SIGNED_INTEGRAL_TYPES)
   STF_EQUAL(trunc(bs::One<T>()), bs::One<T>());
   STF_EQUAL(trunc(bs::Zero<T>()), bs::Zero<T>());
 } // end of test for signed_int_
-
-STF_CASE_TPL ( "fast trunc real",  STF_IEEE_TYPES)
-{
-
-  namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
-  using bs::trunc;
-  using r_t = decltype(trunc(T()));
-
-  // return type conformity test
-  STF_TYPE_IS(r_t, T);
-
-  // specific values tests
-  STF_EQUAL(bs::fast_(trunc)(bs::One<T>()), bs::One<T>());
-  STF_EQUAL(bs::fast_(trunc)(bs::Mone<T>()), bs::Mone<T>());
-  STF_EQUAL(bs::fast_(trunc)(bs::Zero<T>()), bs::Zero<T>());
-  STF_EQUAL(bs::fast_(trunc)(bs::Pi<T>()), bs::Three<T>());
-  STF_EQUAL(bs::fast_(trunc)(T(1.4)), T(1));
-  STF_EQUAL(bs::fast_(trunc)(T(1.5)), T(1));
-  STF_EQUAL(bs::fast_(trunc)(T(1.6)), T(1));
-  STF_EQUAL(bs::fast_(trunc)(T(2.5)), T(2));
-  STF_EQUAL(bs::fast_(trunc)(T(-1.4)), T(-1));
-  STF_EQUAL(bs::fast_(trunc)(T(-1.5)), T(-1));
-  STF_EQUAL(bs::fast_(trunc)(T(-1.6)), T(-1));
-  STF_EQUAL(bs::fast_(trunc)(T(-2.5)), T(-2));
-} // end of test for floating_
 

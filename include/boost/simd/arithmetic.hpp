@@ -93,18 +93,17 @@ namespace boost { namespace simd
        @ref rem is the remainder functor providing same kind of facilities as @ref div
 
        With two parameters rem(a, b) is equivalent to  rem(fix, a, b), but rem can admit
-       a first optional parameter that modifies its behaviour and moreover can use the fast_ decorator if
-       limiting case values are not a problem.
+       a first optional parameter that modifies its behaviour and moreover can use the pedantic_ decorator to assure
+       some limiting case values (see under).
 
        The option parameter can be chosen between @ref ceil, @ref floor, @ref fix, @ref round, @ref nearbyint and if opt is the option,
        the call:
 
          rem(opt, a, b) is equivalent to a-b*div(opt, a, b)
 
-       For floating entries the underlisted corner cases are handled in the following way (unless the @ref fast "fast_"
-       decorator is used, the result in this case being undefined)
+       For floating entries the underlisted corner cases are handled in the following way:
         -  if x is \f$\pm\infty\f$ , @ref Nan is returned
-        -  if x is \f$\pm0\f$ and y is not 0 x is returned
+        -  if x is \f$\pm0\f$ and y is not 0 x is returned if pedantic_ is used (else 0: the sign bit is not preserved)
         -  If y is \f$\pm0\f$, @ref Nan is returned
         -  If either argument is a nan, @ref a nan is returned
 
@@ -141,14 +140,14 @@ namespace boost { namespace simd
       wired capability).
 
       If you need "real" fma capabilities in all circumstances in your own
-      code you can use conformant_(fma) (although it can be expansive) or
+      code you can use pedantic_(fma) (although it can be expansive) or
       (generally still more expansive) std_(fma) by using the decorators.
 
-      @ref two_add, @ref two_prod and @ref two_split are used internally in @ref conformant_(fma) and
+      @ref two_add, @ref two_prod and @ref two_split are used internally in @ref pedantic_(fma) and
       can be useful in searching extra-accuracy in other circumstances as double-double
       computations.
 
-      @ref conformant_(fma) decis never used internally by Boost.SIMD
+      @ref pedantic_(fma) is never used internally by Boost.SIMD
 
       - **Standard operations**
 

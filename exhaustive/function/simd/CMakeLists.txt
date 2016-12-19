@@ -9,7 +9,7 @@
 set(SOURCES
 abs.cpp
 acos.cpp
-acos.accurate.cpp
+acos.pedantic.cpp
 acosd.cpp
 acospi.cpp
 acot.cpp
@@ -26,6 +26,8 @@ asin.cpp
 asind.cpp
 asinpi.cpp
 atan.cpp
+atanh.regular.cpp
+atanh.raw.cpp
 atand.cpp
 atanpi.cpp
 cbrt.cpp
@@ -60,7 +62,9 @@ log.cpp
 nthroot.cpp
 oneminus.cpp
 rec.cpp
-rsqrt.cpp
+rsqrt.regular.cpp
+rsqrt.raw.cpp
+rsqrt.pedantic.cpp
 sign.cpp
 signnz.cpp
 sinc.cpp

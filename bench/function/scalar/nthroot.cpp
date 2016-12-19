@@ -25,21 +25,11 @@ struct nthr
   }
 };
 
-struct nthrf
-{
-  template<class T> T operator()(const T & a) const
-  {
-    using i_t = bd::as_integer_t<T>;
-    return bs::fast_(bs::nthroot)(a, bs::enumerate<i_t>(2));
-  }
-};
 
 DEFINE_SCALAR_BENCH(scalar_nthroot, nthr());
-DEFINE_SCALAR_BENCH(fast_scalar_nthroot, nthrf());
 
 DEFINE_BENCH_MAIN() {
   nsb::for_each<scalar_nthroot, NS_BENCH_IEEE_TYPES>(-10, 10);
-  nsb::for_each<fast_scalar_nthroot, NS_BENCH_IEEE_TYPES>(-10, 10);
 }
 
 

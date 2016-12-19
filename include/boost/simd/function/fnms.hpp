@@ -38,7 +38,7 @@ namespace boost { namespace simd
     @par Note:
 
     fnms can be called with the same modalities as @ref fma
-    and can use the decorator conformant_ to ensure the correct
+    and can use the decorator pedantic_ to ensure the correct
     one rounding, no intermediate overflow  behaviour
 
     @see  fms, fma, fnma

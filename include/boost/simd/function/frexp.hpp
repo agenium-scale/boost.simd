@@ -33,19 +33,21 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    as_integer_t<T> e = exponent(x)+1;
+    T e = tofloat(exponent(x)+1);
     T m = copysign(mantissa(x)/2, x);
     @endcode
 
     The call
 
     @code
-    std:pair<T,as_integer_t<T>> p = frexp(x);
+    std:pair<T,T> p = frexp(x);
     @endcode
 
     can also be used.
 
     @par Note:
+
+    if you need integral type exponent (as in the standard library)  use @c ifrexp
 
     This function splits a floating point value @c v f in a signed mantissa @c m and
     an exponent @c e so that:  @f$v = m\times 2^e@f$,
@@ -54,10 +56,11 @@ namespace boost { namespace simd
     @warninbox{Take care that these results differ from the returns of the functions @ref mantissa
     and @ref exponent}
 
-    The decorators fast_ and std_ can be used.
+    The decorators pedantic_ and std_ can be used.
 
-    fast_ provides a speedier call, but special values as Nan or Inf are not handled properly.
-    std_ transmit the call to std::frexp. That implies that simd is ever emulated.
+    without pedantic_ the call is speedier, but special values as Nan or Inf are not handled properly.
+    std_ transmit the call to std::ifrexp. That implies that simd is ever emulated.
+
     @see exponent, mantissa, copysign
 
   **/

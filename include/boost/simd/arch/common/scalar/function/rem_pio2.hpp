@@ -20,6 +20,7 @@
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/floor.hpp>
 #include <boost/simd/function/ldexp.hpp>
+#include <boost/simd/function/quadrant.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
@@ -54,14 +55,13 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_ < bd::double_<A0> >
                           )
   {
-    using iA0 =  bd::as_integer_t<A0>;
-    using result_t = std::pair<iA0,A0>;
+    using result_t = std::pair<A0,A0>;
     inline result_t operator()(A0 a0) const
     {
-      if (a0 ==  Inf<A0>()) return result_t(Zero<iA0>(), Nan<A0>());
+      if (a0 ==  Inf<A0>()) return result_t(Zero<A0>(), Nan<A0>());
       A0 y[2];
       std::int32_t n = __ieee754_rem_pio2(a0, y);
-      return result_t(iA0(n&3), y[0]);
+      return result_t(A0(n&3), y[0]);
     }
   private :
     /*
@@ -422,7 +422,7 @@ do {                                                                           \
     }
 
     /* compute n */
-    z  = bs::ldexp(z,q0);        /* actual value of z */
+    z  = bs::pedantic_(ldexp)(z,q0);        /* actual value of z */
     z -= 8.0*bs::floor(z*0.125);        /* trim off integer >= 8 */
     n  = (std::int32_t) z;
     z -= (A0)n;
@@ -455,7 +455,7 @@ do {                                                                           \
       }
       if(ih==2) {
         z = one - z;
-        if(carry!=0) z -= bs::ldexp(one,q0);
+        if(carry!=0) z -= bs::pedantic_(ldexp)(one,q0);
       }
     }
 
@@ -481,7 +481,7 @@ do {                                                                           \
       jz -= 1; q0 -= 24;
       while(iq[jz]==0) { jz--; q0-=24;}
     } else { /* break z into 24-bit if necessary */
-      z = bs::ldexp(z,-q0);
+      z = bs::pedantic_(ldexp)(z,-q0);
       if(z>=two24) {
         fw = (A0)((std::int32_t)(twon24*z));
         iq[jz] = (std::int32_t)(z-two24*fw);
@@ -491,7 +491,7 @@ do {                                                                           \
     }
 
     /* convert integer "bit" chunk to floating-point value */
-    fw = bs::ldexp(one,q0);
+    fw = bs::pedantic_(ldexp)(one,q0);
     for(i=jz;i>=0;i--) {
       q[i] = fw*(A0)iq[i]; fw*=twon24;
     }
@@ -555,7 +555,7 @@ do {                                                                           \
   {
     using iA0 =  bd::as_integer_t<A0>;
     using uiA0 =  bd::as_integer_t<A0, unsigned>;
-    using result_t = std::pair<iA0,A0>;
+    using result_t = std::pair<A0,A0>;
     BOOST_FORCEINLINE result_t operator()(A0 x) const
     {
 
@@ -565,7 +565,6 @@ do {                                                                           \
       // pio2_1t:  pi/2 - pio2_1
       //
       static const double
-        toint   = 1.5/Eps<double>(),
         invpio2 = 6.36619772367581382433e-01, /* 0x3FE45F30, 0x6DC9C883 */
         pio2_1  = 1.57079631090164184570e+00, /* 0x3FF921FB, 0x50000000 */
         pio2_1t = 1.58932547735281966916e-08; /* 0x3E5110b4, 0x611A6263 */
@@ -574,12 +573,11 @@ do {                                                                           \
       iA0 sign = ix>>31;
       /* 25+53 bit pi is good enough for medium size */
       if (uix < 0x4dc90fdb) {  /* |x| ~< 2^28*(pi/2), medium size */
-        /* Use a specialized rint() to get fn.  Assume round-to-nearest. */
-        double fn = double(x)*invpio2 + toint - toint;
-        return {iA0(fn), x - fn*pio2_1 - fn*pio2_1t};
+        double fn = nearbyint(double(x)*invpio2);
+        return {quadrant(fn), x - fn*pio2_1 - fn*pio2_1t};
       }
       auto z =  rem_pio2(double(x));
-      return {iA0(z.first), float(z.second)};
+      return {float(z.first), float(z.second)};
     }
   };
 

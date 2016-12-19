@@ -14,12 +14,12 @@ set ( SOURCES
    abs.saturated.cpp
    abs.std.cpp
    acos.regular.cpp
-   acos.accurate.cpp
+   acos.pedantic.cpp
    acosd.regular.cpp
-   acosd.accurate.cpp
+   acosd.pedantic.cpp
    acosh.cpp
    acospi.regular.cpp
-   acospi.accurate.cpp
+   acospi.pedantic.cpp
    acot.cpp
    acotd.cpp
    acotpi.cpp
@@ -41,10 +41,12 @@ set ( SOURCES
    asinh.cpp
    asinpi.cpp
    atan2.regular.cpp
-   atan2.fast.cpp
+   atan2.pedantic.cpp
    atan2.std.cpp
-   atan2d.cpp
-   atan2pi.cpp
+   atan2d.regular.cpp
+   atan2d.pedantic.cpp
+   atan2pi.pedantic.cpp
+   atan2pi.regular.cpp
    atan.cpp
    atand.cpp
    atanh.cpp
@@ -127,14 +129,16 @@ set ( SOURCES
    firstbitunset.cpp
    floor.cpp
    fma.regular.cpp
-   fma.conformant.cpp
+   fma.pedantic.cpp
    fms.cpp
    fnma.cpp
    fnms.cpp
    fpclassify.regular.cpp
    fpclassify.std.cpp
    frac.cpp
-   frexp.cpp
+   frexp.raw.cpp
+   frexp.regular.cpp
+   frexp.pedantic.cpp
    gamma.cpp
    gammaln.cpp
    genmaskc.cpp
@@ -145,7 +149,7 @@ set ( SOURCES
    horn.cpp
    horner.cpp
    hypot.regular.cpp
-   hypot.fast.cpp
+   hypot.pedantic.cpp
    hypot.std.cpp
    iceil.cpp
    if_allbits_else.cpp
@@ -169,12 +173,16 @@ set ( SOURCES
    if_zero_else.cpp
    if_zero_else_allbits.cpp
    if_zero_else_one.cpp
+   ifrexp.raw.cpp
+   ifrexp.regular.cpp
+   ifrexp.pedantic.cpp
    ilog2.cpp
    ilogb.cpp
    inc.regular.cpp
    inc.saturated.cpp
    indeg.cpp
-   inearbyint.cpp
+   inearbyint.regular.cpp
+   inearbyint.pedantic.cpp
    inrad.cpp
    insert.cpp
    iround.cpp
@@ -226,7 +234,7 @@ set ( SOURCES
    is_simd_logical.cpp
    is_unord.cpp
    ldexp.regular.cpp
-   ldexp.fast.cpp
+   ldexp.pedantic.cpp
    ldexp.std.cpp
    load.cpp
    lo.cpp
@@ -310,7 +318,9 @@ set ( SOURCES
    rror.cpp
    rshl.cpp
    rshr.cpp
-   rsqrt.cpp
+   rsqrt.pedantic.cpp
+   rsqrt.raw.cpp
+   rsqrt.regular.cpp
    safe_max.cpp
    safe_min.cpp
    saturate.cpp
@@ -348,7 +358,7 @@ set ( SOURCES
    sqrt1pm1.cpp
    sqrt.regular.cpp
    sqrt.std.cpp
-   sqrt.fast.cpp
+   sqrt.raw.cpp
    stirling.cpp
    store.cpp
    stream.cpp
@@ -367,6 +377,7 @@ set ( SOURCES
    touint.saturated.cpp
    trunc.cpp
    two_add.cpp
+   quadrant.cpp
    twopower.cpp
    two_prod.cpp
    two_split.cpp

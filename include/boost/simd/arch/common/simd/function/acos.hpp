@@ -11,7 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ACOS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_ACOS_HPP_INCLUDED
 
-#include <boost/simd/function/accurate.hpp>
+#include <boost/simd/function/pedantic.hpp>
 #include <boost/simd/arch/common/detail/simd/f_invtrig.hpp>
 #include <boost/simd/arch/common/detail/simd/d_invtrig.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
@@ -27,14 +27,14 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename X)
                           , (detail::is_native<X>)
                           , bd::cpu_
-                          , bs::accurate_tag
+                          , bs::pedantic_tag
                           , bs::pack_< bd::floating_<A0>, X>
                           )
   {
 
-    BOOST_FORCEINLINE A0 operator() (const accurate_tag &,  A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator() (const pedantic_tag &,  A0 const& a0) const BOOST_NOEXCEPT
     {
-      //Exhaustive test for: boost::simd::detail::decorated_functor<boost::simd::tag::acos_, boost::simd::sse4_2_, boost::simd::accurate_tag>
+      //Exhaustive test for: boost::simd::detail::decorated_functor<boost::simd::tag::acos_, boost::simd::sse4_2_, boost::simd::pedantic_tag>
       //             versus: raw_acos
       //             With T: boost::simd::pack<float, 4ul, boost::simd::sse_>
       //           in range: [-1, 1]

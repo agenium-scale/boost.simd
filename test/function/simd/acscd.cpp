@@ -10,6 +10,14 @@
 #include <boost/simd/function/acscd.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/std.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/mzero.hpp>
+#include <boost/simd/constant/two.hpp>
 
 
 namespace bs = boost::simd;
@@ -40,3 +48,27 @@ STF_CASE_TPL("Check acscd on pack" , STF_IEEE_TYPES)
   test<T, N*2>($);
 }
 
+STF_CASE_TPL (" acscd",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using p_t = bs::pack<T>;
+  using bs::acscd;
+
+  using r_t = decltype(acscd(p_t()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, p_t);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_ULP_EQUAL(acscd(bs::Inf<p_t>()), r_t(0), 0.5);
+  STF_ULP_EQUAL(acscd(bs::Minf<p_t>()), r_t(0), 0.5);
+  STF_ULP_EQUAL(acscd(bs::Nan<p_t>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(acscd(bs::Zero<p_t>()), bs::Nan<r_t>(), 0);
+#endif
+  STF_ULP_EQUAL(acscd(-bs::Two<p_t>()), r_t(-30), 0.5);
+  STF_ULP_EQUAL(acscd(bs::Mone<p_t>()), r_t(-90), 0.5);
+  STF_ULP_EQUAL(acscd(bs::One<p_t>()),  r_t(90), 0.5);
+  STF_ULP_EQUAL(acscd(bs::Two<p_t>()),  r_t(30), 0.5);
+}

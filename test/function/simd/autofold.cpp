@@ -28,7 +28,7 @@ namespace boost { namespace simd
 
   namespace ext
   {
-    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, fake_sum_);
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, fake_sum_)
   }
 
   BOOST_DISPATCH_CALLABLE_DEFINITION(tag::fake_sum_, fake_sum);

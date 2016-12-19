@@ -310,18 +310,6 @@ STF_CASE_TPL( "avx blend shuffle", (float)(std::uint32_t)(std::int32_t))
 
 }
 
-STF_CASE_TPL( "vmx shuffle", (float)(std::uint32_t)(std::int32_t))
-{
-  // vec_slo
-  binary_shuffle<T,1,2,3,4>($);
-  binary_shuffle<T,2,3,4,5>($);
-  binary_shuffle<T,3,4,5,6>($);
-
-  // vec_slo + zeroing
-  unary_shuffle<T,1, 2, 3,-1>($);
-  unary_shuffle<T,2, 3,-1,-1>($);
-  unary_shuffle<T,3,-1,-1,-1>($);
-}
 */
 STF_CASE_TPL( "other shuffle", (float)(std::uint32_t)(std::int32_t))
 {

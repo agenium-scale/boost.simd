@@ -10,8 +10,6 @@ set ( SOURCES
       as_arithmetic.cpp
       as_logical.cpp
       cardinal_of.cpp
-      is_bitwise_logical.cpp
-      is_logical_mask.cpp
       is_pointing_to.cpp
       is_scalar.cpp
       real_of.cpp

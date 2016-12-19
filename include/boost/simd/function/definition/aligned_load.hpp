@@ -26,7 +26,7 @@ namespace boost { namespace simd
 
   namespace ext
   {
-    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, aligned_load_);
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, aligned_load_)
   }
 
   namespace detail

@@ -23,25 +23,18 @@ as the `BOOST_ROOT` environment variable.
 
 -----------------------------------------
 
-The installation of **@projectname** is done in two steps:
+The installation of **@projectname** is done by retrieving the current status of the library by cloning the repository. This is done via the following command:
 
-  - retrieve the current status of the library by cloning the repository. THis is done via the
-    following command:
+  `git clone https://github.com/NumScale/boost.simd.git`
 
-    `git clone https://github.com/NumScale/boost.simd.git`
+By default, the `develop` branch is fetched. As this branch contains the latest code,
+you may change this branch to `master` to fetch the latest stable version:
 
-    By default, the `develop` branch is fetched. As this branch contains the latest code,
-    you may change this branch to `master` to fetch the latest stable version:
+  `git clone https://github.com/NumScale/boost.simd.git -b master`
 
-    `git clone https://github.com/NumScale/boost.simd.git -b master`
-
-    In case you need to use an old **@projectname** release, please see the
-    [Release pages](https://github.com/NumScale/boost.simd/releases) to select the one
-    you're interested in.
-
-  - Setup the repository to grab a local copy of the documentation:
-
-    `git submodule init && git submodule update`
+In case you need to use an old **@projectname** release, please see the
+[Release pages](https://github.com/NumScale/boost.simd/releases) to select the one
+you're interested in.
 
 The **@projectname** library is now accessible by including files from the `include` directory
 in this repository. In the rest of this documentation, we will refer to the path where your

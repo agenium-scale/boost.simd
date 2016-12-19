@@ -11,6 +11,14 @@
 #include <boost/simd/function/saturated.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/mtwo.hpp>
+#include <boost/simd/constant/two.hpp>
 
 
 template <typename T, std::size_t N, typename Env>
@@ -65,3 +73,53 @@ void post_test(Env& $)
   STF_EQUAL(aa1, bb);
 }
 
+
+STF_CASE_TPL (" dec signed_int",  STF_SIGNED_INTEGRAL_TYPES)
+{
+  namespace bs = boost::simd;
+  using bs::dec;
+  using p_t = bs::pack<T>;
+
+  // return type conformity test
+  STF_EXPR_IS(dec(p_t()), p_t);
+
+  // specific values tests
+  STF_EQUAL(dec(bs::Mone<p_t>()), bs::Mtwo<p_t>());
+  STF_EQUAL(dec(bs::One<p_t>()), bs::Zero<p_t>());
+  STF_EQUAL(dec(bs::Zero<p_t>()), bs::Mone<p_t>());
+}
+
+STF_CASE_TPL (" decunsigned_uint",  STF_UNSIGNED_INTEGRAL_TYPES)
+{
+  namespace bs = boost::simd;
+  using bs::dec;
+  using p_t = bs::pack<T>;
+
+  // return type conformity test
+  STF_EXPR_IS(dec(p_t()), p_t);
+
+  // specific values tests
+  STF_EQUAL(dec(bs::One<p_t>()), bs::Zero<p_t>());
+  STF_EQUAL(dec(bs::Two<p_t>()), bs::One<p_t>());
+  STF_EQUAL(dec(bs::Zero<p_t>()), bs::Valmax<p_t>());
+}
+
+STF_CASE_TPL(" dec floating", STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  using bs::dec;
+  using p_t = bs::pack<T>;
+
+  // return type conformity test
+  STF_EXPR_IS(dec(p_t()), p_t);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_EQUAL(dec(bs::Inf<p_t>()), bs::Inf<p_t>());
+  STF_IEEE_EQUAL(dec(bs::Nan<p_t>()), bs::Nan<p_t>());
+  STF_EQUAL(dec(bs::Minf<p_t>()), bs::Minf<p_t>());
+#endif
+  STF_EQUAL(dec(bs::One<p_t>()), bs::Zero<p_t>());
+  STF_EQUAL(dec(bs::Two<p_t>()), bs::One<p_t>());
+  STF_EQUAL(dec(bs::Zero<p_t>()), bs::Mone<p_t>());
+}

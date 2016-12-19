@@ -36,6 +36,10 @@ namespace boost { namespace simd
     T r = pow(abs(x), y);
     @endcode
 
+    @par Decorators
+
+    - raw_  is faster but can be inaccurate
+
     @see pow, abs
 
   **/

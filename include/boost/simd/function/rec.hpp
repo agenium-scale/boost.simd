@@ -39,14 +39,14 @@ namespace boost { namespace simd
 
     @par Decorators
 
-     For floating types
+     For floating types @c rec has several decorated variations
 
-     - raw_ decorator can be applied to rec as many systems provide fast low precision
-       intrinsic for inverse computation. The result can be not fully accurate.
 
-     - fast_ decorator can be applied to rec as using a one step refinement of raw_(rec)
-       instead of division when available.
+     - raw_ Many simd architectures provide an intrinsic that computes some bits of the inverse (at least 12)
+            and don't care of denormals or limiting values. If it exists this is obtained by the raw_ decorator.
+            As usual if it doesn't the plain rec is called.
 
+     - with no decorators ensure 1ulp but still doesn't care of limiting value or denormals
 
   **/
   Value rec(Value const & v0);

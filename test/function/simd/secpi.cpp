@@ -10,7 +10,14 @@
 #include <boost/simd/function/saturated.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
-
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/mzero.hpp>
+#include <boost/simd/constant/sqrt_2.hpp>
 
 namespace bs = boost::simd;
 
@@ -38,4 +45,30 @@ STF_CASE_TPL("Check secpi saturated on pack" , STF_IEEE_TYPES)
   test<T, N>($);
   test<T, N/2>($);
   test<T, N*2>($);
+}
+
+STF_CASE_TPL (" secpi",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::secpi;
+  using p_t = bs::pack<T>;
+
+  using r_t = decltype(secpi(p_t()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, p_t);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_ULP_EQUAL(secpi(bs::Half<p_t>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(secpi(bs::Inf<p_t>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(secpi(bs::Mhalf<p_t>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(secpi(bs::Minf<p_t>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(secpi(bs::Nan<p_t>()), bs::Nan<r_t>(), 0.5);
+#endif
+  STF_ULP_EQUAL(secpi(-bs::Quarter<p_t>()), bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(secpi(bs::One<p_t>()), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(secpi(bs::Quarter<p_t>()), bs::Sqrt_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(secpi(bs::Zero<p_t>()), bs::One<r_t>(), 0.5);
 }

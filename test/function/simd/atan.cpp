@@ -10,6 +10,13 @@
 #include <boost/simd/function/atan.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/std.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/mzero.hpp>
 
 
 namespace bs = boost::simd;
@@ -40,3 +47,26 @@ STF_CASE_TPL("Check atan on pack" , STF_IEEE_TYPES)
   test<T, N*2>($);
 }
 
+STF_CASE_TPL (" atanreal",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::atan;
+  using p_t = bs::pack<T>;
+  using r_t = decltype(atan(p_t()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, p_t);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_ULP_EQUAL(atan(bs::Inf<p_t>()), bs::Pio_2<r_t>(), 0);
+  STF_ULP_EQUAL(atan(bs::Minf<p_t>()), -bs::Pio_2<r_t>(), 0);
+  STF_ULP_EQUAL(atan(bs::Nan<p_t>()), bs::Nan<r_t>(), 0);
+#endif
+  STF_ULP_EQUAL(atan(bs::Half<p_t>()), p_t(4.636476090008061e-01), 0.5);
+  STF_ULP_EQUAL(atan(bs::Mhalf<p_t>()), p_t(-4.636476090008061e-01), 0.5);
+  STF_ULP_EQUAL(atan(bs::Mone<p_t>()), -bs::Pio_4<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan(bs::One<p_t>()), bs::Pio_4<r_t>(), 0.5);
+  STF_ULP_EQUAL(atan(bs::Zero<p_t>()), bs::Zero<r_t>(), 0.5);
+}

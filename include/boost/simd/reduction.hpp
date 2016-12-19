@@ -39,8 +39,8 @@ namespace boost { namespace simd
 #include <boost/simd/function/cumsum.hpp>
 #include <boost/simd/function/dot.hpp>
 #include <boost/simd/function/hmsb.hpp>
-#include <boost/simd/function/is_included_c.hpp>
-#include <boost/simd/function/is_included.hpp>
+#include <boost/simd/function/isincluded_c.hpp>
+#include <boost/simd/function/isincluded.hpp>
 #include <boost/simd/function/maximum.hpp>
 #include <boost/simd/function/minimum.hpp>
 #include <boost/simd/function/nbtrue.hpp>

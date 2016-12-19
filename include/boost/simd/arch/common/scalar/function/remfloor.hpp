@@ -33,12 +33,14 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( rem_
                           , (typename A0)
                           , bd::cpu_
+                          , bs::pedantic_tag
                           , bs::tag::floor_
                           , bd::scalar_< bd::int_<A0> >
                           , bd::scalar_< bd::int_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (bd::functor<bs::tag::floor_> const&
+    BOOST_FORCEINLINE A0 operator() (pedantic_tag const &
+                                    ,bd::functor<bs::tag::floor_> const&
                                     , A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       if (is_nez(a1))
@@ -51,34 +53,15 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( rem_
                           , (typename A0)
                           , bd::cpu_
-                          , bs::fast_tag
                           , bs::tag::floor_
                           , bd::scalar_< bd::int_<A0> >
                           , bd::scalar_< bd::int_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const fast_tag &
-                                    , bd::functor<bs::tag::floor_> const&
+    BOOST_FORCEINLINE A0 operator() ( bd::functor<bs::tag::floor_> const&
                                     , A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       return fnms(div(floor, a0, a1), a1, a0);
-    }
-  };
-
-  BOOST_DISPATCH_OVERLOAD ( rem_
-                          , (typename A0)
-                          , bd::cpu_
-                          , bs::fast_tag
-                          , bs::tag::floor_
-                          , bd::scalar_< bd::floating_<A0> >
-                          , bd::scalar_< bd::floating_<A0> >
-                          )
-  {
-    BOOST_FORCEINLINE A0 operator() (const fast_tag &
-                                    , bd::functor<bs::tag::floor_> const&
-                                    , A0 a0, A0 a1) const BOOST_NOEXCEPT
-    {
-      return  fnms(div(floor, a0,a1), a1, a0);
     }
   };
 
@@ -91,6 +74,23 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     BOOST_FORCEINLINE A0 operator() ( bd::functor<bs::tag::floor_> const&
+                                    , A0 a0, A0 a1) const BOOST_NOEXCEPT
+    {
+      return  fnms(div(floor, a0,a1), a1, a0);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( rem_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bs::pedantic_tag
+                          , bs::tag::floor_
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() (pedantic_tag const &
+                                    , bd::functor<bs::tag::floor_> const&
                                     , A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       if (is_nez(a1)&&is_eqz(a0)) return a0;

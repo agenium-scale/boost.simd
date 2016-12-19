@@ -33,7 +33,7 @@ namespace boost { namespace simd
 
   namespace ext
   {
-    BOOST_DISPATCH_FUNCTION_DECLARATION(tag,bitincrement_);
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, bitincrement_)
   }
 
   namespace detail

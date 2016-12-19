@@ -21,6 +21,8 @@
 #include <boost/simd/function/splat.hpp>
 #include <boost/simd/function/store.hpp>
 
+#include <boost/simd/memory/allocator.hpp>
+
 int main()
 {
   //! [hello-namespace]
@@ -41,13 +43,13 @@ int main()
   pack_t elevens{11};
 
   //! [hello-ptr-iota]
-  std::vector<float> values(1000);
+  std::vector<float, bs::allocator<float>> values(1000);
   std::iota(values.begin(), values.end(), float(0));
   pack_t ptr_pack(values.data());
   //! [hello-ptr-iota]
 
   //! [hello-iter-con]
-  std::vector<float> data(pack_t::static_size);
+  std::vector<float, bs::allocator<float>> data(pack_t::static_size);
   std::iota(data.begin(), data.begin() + pack_t::static_size, float(0));
   pack_t iter_pack(data.begin(), data.end());
   //! [hello-iter-con]
@@ -61,7 +63,7 @@ int main()
   //! [hello-ops]
 
   //! [hello-store]
-  float output[pack_t::static_size];
+  std::vector<float, bs::allocator<float>> output(pack_t::static_size);
   bs::store(res, &output[0]);
   //! [hello-store]
 

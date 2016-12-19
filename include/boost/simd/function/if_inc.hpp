@@ -20,20 +20,20 @@ namespace boost { namespace simd
     @ingroup group-boolean
     Function object implementing if_inc capabilities
 
-    Increments a value by @ref One if a predicate is @ref True.
+    Increments a value by @ref One if a predicate is @ref True .
 
     @par Semantic:
 
-    For every parameters @c c of type @c C and @c t of type @c T:
+    For every parameters @c c of type @c C and @c t of type @c T :
 
     @code
-    T r = if_inc(cond,y);
+    T r = if_inc(c, t);
     @endcode
 
     is similar to:
 
     @code
-    T r = cond ? t+One<T>() : t;
+    T r = c ? t + One<T>() : t;
     @endcode
   **/
   Value if_inc(Value const& c, Value const& v0);

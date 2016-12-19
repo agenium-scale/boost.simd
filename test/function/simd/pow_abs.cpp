@@ -10,8 +10,21 @@
 //==================================================================================================
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/pow_abs.hpp>
+#include <boost/simd/function/pow.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/mzero.hpp>
+#include <boost/simd/constant/eight.hpp>
+#include <boost/simd/constant/three.hpp>
+#include <boost/simd/constant/two.hpp>
+#include <boost/simd/constant/mhalf.hpp>
+#include <boost/simd/constant/half.hpp>
 
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
@@ -44,4 +57,65 @@ STF_CASE_TPL("Check pow_abs on pack" , STF_IEEE_TYPES)
   test<T, N>($);
   test<T, N/2>($);
   test<T, N*2>($);
+}
+
+
+STF_CASE_TPL (" pow_abs",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::pow_abs;
+  using p_t = bs::pack<T>;
+
+ using r_t = decltype(pow_abs(p_t(), p_t()));
+
+  // return type conformity test
+ STF_TYPE_IS(r_t, p_t);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_ULP_EQUAL(pow_abs(bs::Inf<p_t>(), bs::Inf<p_t>()), bs::Inf<r_t>(), 0);
+  STF_ULP_EQUAL(pow_abs(bs::Inf<p_t>(), bs::Half<p_t>()), bs::Inf<r_t>(), 0);
+  STF_ULP_EQUAL(pow_abs(bs::Inf<p_t>(), bs::Mhalf<p_t>()), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(pow_abs(bs::Inf<p_t>(), bs::Zero<p_t>()), bs::One<r_t>(), 0);
+  STF_ULP_EQUAL(pow_abs(bs::Minf<p_t>(), bs::Minf<p_t>()), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(pow_abs(bs::Nan<p_t>(), bs::Nan<p_t>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(pow_abs(bs::Two<p_t>(), bs::Inf<p_t>()), bs::Inf<r_t>(), 0);
+  STF_ULP_EQUAL(pow_abs(bs::Half<p_t>(), bs::Inf<p_t>()), bs::Zero<r_t>(), 0);
+#endif
+  STF_ULP_EQUAL(pow_abs(bs::Mone<p_t>(), bs::Mone<p_t>()), bs::One<r_t>(), 0);
+  STF_ULP_EQUAL(pow_abs(bs::One<p_t>(), bs::One<p_t>()), bs::One<r_t>(), 0);
+  STF_ULP_EQUAL(pow_abs(bs::Zero<p_t>(), bs::Zero<p_t>()), bs::One<r_t>(), 0);
+  STF_ULP_EQUAL(pow_abs(p_t(-1),p_t(5)), p_t(1), 0);
+  STF_ULP_EQUAL(pow_abs(p_t(-1),p_t(6)), p_t(1), 0);
+  STF_ULP_EQUAL(pow_abs(p_t(0.5), p_t(0.25)), p_t(0.840896415253715), 2);
+  STF_ULP_EQUAL(pow_abs(p_t(0.5), p_t(0.25)), p_t(std::pow(0.5, 0.25)), 2);
+}
+
+
+STF_CASE_TPL("pow conformity", (double))// STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::pow_abs;
+  using p_t = bs::pack<T>;
+  using r_t =  decltype(pow_abs(p_t(), p_t()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, p_t);
+
+  // specific values tests
+  STF_ULP_EQUAL(pow_abs(p_t(0), p_t(-1)), bs::Inf<r_t>(), 0);
+  STF_ULP_EQUAL(pow_abs(p_t(0), p_t(-2)), bs::Inf<p_t>(), 0);
+  STF_ULP_EQUAL(pow_abs(p_t(1), bs::Nan<p_t>()), bs::One<p_t>(), 0);
+  STF_ULP_EQUAL(pow_abs(p_t(1), bs::Inf<p_t>()), bs::One<p_t>(), 0);
+  STF_ULP_EQUAL(pow_abs(bs::Inf<p_t>(), p_t(-2)),  bs::Zero<p_t>(), 0);
+  STF_ULP_EQUAL(pow_abs(bs::Inf<p_t>(), p_t( 2)),  bs::Inf<p_t>(), 0);
+  STF_ULP_EQUAL(pow_abs(p_t(0.5), bs::Inf<p_t>()),  bs::Zero<p_t>(), 0);
+  STF_ULP_EQUAL(pow_abs(p_t(2), bs::Inf<p_t>()),  bs::Inf<p_t>(), 0);
+  STF_ULP_EQUAL(pow_abs(p_t(0.5), bs::Minf<p_t>()),  bs::Inf<p_t>(), 0);
+  STF_ULP_EQUAL(pow_abs(p_t(2), bs::Minf<p_t>()),  bs::Zero<p_t>(), 0);
+  STF_ULP_EQUAL(pow_abs(bs::Nan<p_t>(), p_t(0)),  bs::One<p_t>(), 0);
+  STF_ULP_EQUAL(pow_abs(bs::Nan<p_t>(), -p_t(0)),  bs::One<p_t>(), 0);
+
 }

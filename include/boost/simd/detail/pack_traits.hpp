@@ -87,7 +87,7 @@ namespace boost { namespace simd { namespace detail
     {                                                                                              \
       return {&d,i};                                                                               \
     }                                                                                              \
-  };                                                                                               \
+  }                                                                                                \
 /**/
 
 #define BOOST_SIMD_DEFINE_PACK_TRAITS(TYPE, N, VTYPE)                                              \
