@@ -127,7 +127,8 @@ set ( SOURCES
    ffs.cpp
    firstbitset.cpp
    firstbitunset.cpp
-   floor.cpp
+   floor.regular.cpp
+   floor.std.cpp
    fma.regular.cpp
    fma.pedantic.cpp
    fms.cpp
