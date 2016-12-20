@@ -71,7 +71,8 @@ set ( SOURCES
    bitwise_xor.cpp
    broadcast.cpp
    cbrt.cpp
-   ceil.cpp
+   ceil.regular.cpp
+   ceil.std.cpp
    clz.cpp
    compare_equal.cpp
    compare_greater.cpp

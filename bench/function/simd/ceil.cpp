@@ -1,21 +1,21 @@
-// -------------------------------------------------------------------------------------------------
-//                              Copyright 2016 - NumScale SAS
-//
-//                   Distributed under the Boost Software License, Version 1.0.
-//                        See accompanying file LICENSE.txt or copy at
-//                            http://www.boost.org/LICENSE_1_0.txt
-// -------------------------------------------------------------------------------------------------
+//==================================================================================================
+/**
+  Copyright 2016 NumScale SAS
 
-#include <simd_bench.hpp>
-#include <boost/simd/function/simd/ceil.hpp>
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+**/
+//==================================================================================================
+#include <boost/simd/function/ceil.hpp>
 #include <boost/simd/pack.hpp>
+#include <simd_bench.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_ceil, bs::ceil);
+DEFINE_SIMD_BENCH(simd_regular_ceil, bs::ceil);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_ceil, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<simd_regular_ceil, NS_BENCH_NUMERIC_TYPES>(-10, 10);
 }
