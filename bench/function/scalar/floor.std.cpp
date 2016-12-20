@@ -6,16 +6,16 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#include <boost/simd/function/ceil.hpp>
+#include <boost/simd/function/floor.hpp>
 #include <boost/simd/function/std.hpp>
 #include <simd_bench.hpp>
 
 namespace nsb = ns::bench;
-namespace bs =  boost::simd;
+namespace bs  = boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_std_ceil, bs::std_(bs::ceil));
+DEFINE_SCALAR_BENCH(scalar_std_floor, bs::std_(bs::floor));
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_std_ceil, NS_BENCH_NUMERIC_TYPES>(-10, 10);
+  nsb::for_each<scalar_std_floor, NS_BENCH_IEEE_TYPES>(-10, 10);
 }

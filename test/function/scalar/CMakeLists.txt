@@ -71,7 +71,8 @@ set ( SOURCES
    bitwise_xor.cpp
    broadcast.cpp
    cbrt.cpp
-   ceil.cpp
+   ceil.regular.cpp
+   ceil.std.cpp
    clz.cpp
    compare_equal.cpp
    compare_greater.cpp
@@ -127,7 +128,8 @@ set ( SOURCES
    ffs.cpp
    firstbitset.cpp
    firstbitunset.cpp
-   floor.cpp
+   floor.regular.cpp
+   floor.std.cpp
    fma.regular.cpp
    fma.pedantic.cpp
    fms.cpp
@@ -375,7 +377,9 @@ set ( SOURCES
    toint.saturated.cpp
    touint.regular.cpp
    touint.saturated.cpp
-   trunc.cpp
+   trunc.raw.cpp
+   trunc.regular.cpp
+   trunc.std.cpp
    two_add.cpp
    quadrant.cpp
    twopower.cpp

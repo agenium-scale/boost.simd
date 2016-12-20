@@ -122,7 +122,8 @@ set(SOURCES
     ffs.cpp
     firstbitset.cpp
     firstbitunset.cpp
-    floor.cpp
+    floor.regular.cpp
+    floor.std.cpp
     fma.regular.cpp
     fma.std.cpp
     fms.cpp
@@ -340,6 +341,7 @@ set(SOURCES
     toint.saturated.cpp
     touint.regular.cpp
     touint.saturated.cpp
+    trunc.raw.cpp
     trunc.regular.cpp
     trunc.std.cpp
     two_add.cpp

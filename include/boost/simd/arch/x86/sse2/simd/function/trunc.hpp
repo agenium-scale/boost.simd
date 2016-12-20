@@ -6,8 +6,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_X86_SSE4_1_SIMD_FUNCTION_TRUNC_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_X86_SSE4_1_SIMD_FUNCTION_TRUNC_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_TRUNC_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_TRUNC_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
 
@@ -18,25 +18,13 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD ( trunc_
                           , (typename A0)
-                          , bs::sse4_1_
-                          , bs::pack_<bd::single_<A0>, bs::sse_>
-                         )
-  {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0) const BOOST_NOEXCEPT
-    {
-      return _mm_round_ps(a0, _MM_FROUND_TO_ZERO);
-    }
-  };
-
-  BOOST_DISPATCH_OVERLOAD ( trunc_
-                          , (typename A0)
-                          , bs::sse4_1_
+                          , bs::sse2_
                           , bs::pack_<bd::double_<A0>, bs::sse_>
                          )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 operator()(const A0 & a0) const BOOST_NOEXCEPT
     {
-      return _mm_round_pd(a0, _MM_FROUND_TO_ZERO);
+      return A0(bs::trunc(a0[0]), bs::trunc(a0[1]));
     }
   };
 } } }
