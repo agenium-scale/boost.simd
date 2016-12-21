@@ -104,7 +104,7 @@ namespace boost { namespace simd { namespace ext
       A0 p = bs::floor(q);
       A0 z = q - p;
       auto test2 = is_less(z, bs::Half<A0>() );
-      z = bs::if_minus(test2, z, bs::One<A0>());
+      z = bs::if_dec(test2, z);
       z = q*bs::sinpi(z);
       z =  bs::abs(z);
       return -log(Invpi<A0>()*bs::abs(z))-w;
@@ -231,7 +231,7 @@ namespace boost { namespace simd { namespace ext
       A0 p = bs::floor(q);
       A0 z = q - p;
       auto test2 = is_less(z, bs::Half<A0>() );
-      z = bs::if_minus(test2, z, bs::One<A0>());
+      z = bs::if_dec(test2, z);
       z = q*bs::sinpi(z);
       z =  bs::abs(z);
       return Logpi<A0>()-log(z)-w;
