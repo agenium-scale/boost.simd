@@ -35,16 +35,18 @@ struct format_type<boost::simd::pack<T, N>>
 ns::bench::setup setup()
 {
   namespace nsb = ns::bench;
-  return nsb::setup()
-     .median(nsb::units::cpe_)
-     .really_during(2.)
-   ;
+  return nsb::default_setup();
 }
 
 ns::bench::results& results()
 {
   static ns::bench::results r;
   return r;
+}
+
+inline bool is_quiet()
+{
+  return ns::bench::args_map().get<bool>("quiet", false);
 }
 
 void print_results()
@@ -82,7 +84,9 @@ struct bench_experiment : ns::bench::experiment
 
   void which_type()
   {
-    std::cout << ":: [T = " << nsb::type_id<type>() << "]" << std::endl;
+    if (!is_quiet()) {
+      std::cout << ":: [T = " << nsb::type_id<type>() << "]" << std::endl;
+    }
   }
 
   template <typename U>
@@ -124,13 +128,15 @@ struct bench_experiment : ns::bench::experiment
 
 void describe()
 {
-  std::cout << "::- --------------------------------------------------------------------------------------------------------------------------------------------------";
-  std::cout << std::endl;
-  std::cout << "::- Compiler: " << BOOST_COMPILER << std::endl;
-  std::cout << "::- Platform: " << BOOST_PLATFORM << std::endl;
-  std::cout << "::- SIMD:     " << nsb::type_id<BOOST_SIMD_DEFAULT_SITE>() << std::endl;
-  std::cout << "::- --------------------------------------------------------------------------------------------------------------------------------------------------";
-  std::cout << std::endl;
+  if (!is_quiet()) {
+    std::cout << ":: --------------------------------------------------------------------------------------------------------------------------------------------------";
+    std::cout << std::endl;
+    std::cout << ":: Compiler: " << BOOST_COMPILER << std::endl;
+    std::cout << ":: Platform: " << BOOST_PLATFORM << std::endl;
+    std::cout << ":: SIMD:     " << nsb::type_id<BOOST_SIMD_DEFAULT_SITE>() << std::endl;
+    std::cout << ":: --------------------------------------------------------------------------------------------------------------------------------------------------";
+    std::cout << std::endl;
+  }
 }
 
 template <typename T>                            struct template_of;
@@ -152,6 +158,29 @@ using scalar_experiment =
                   , 1
                   >;
 
+template <typename T, std::size_t N>
+using unrolled_pack = boost::simd::pack<T, boost::simd::pack<T>::static_size * N>;
+
+template <std::size_t N, typename Experiment>
+using unrolled_simd_experiment =
+  bench_experiment< Experiment
+                  , unrolled_pack<template_of_t<Experiment>, N>
+                  , unrolled_pack<template_of_t<Experiment>, N>::static_size
+                  >;
+
+std::string sanitized_simd()
+{
+  auto s = nsb::type_id<BOOST_SIMD_DEFAULT_SITE>();
+  auto bsns = std::string("boost::simd::");
+  if (s.find(bsns) != std::string::npos) {
+    s = s.substr(bsns.size(), s.size());
+  }
+  if (s[s.size() - 1] == '_') {
+    s.resize(s.size() - 1);
+  }
+  return s;
+}
+
 #define DEFINE_BENCH(name_, f, experiment)                                                         \
   template <typename T>                                                                            \
   struct name_ : experiment<name_<T>>                                                              \
@@ -161,8 +190,16 @@ using scalar_experiment =
   }                                                                                                \
 /**/
 
-#define DEFINE_SIMD_BENCH(name, f)   DEFINE_BENCH(name, f, simd_experiment)
-#define DEFINE_SCALAR_BENCH(name, f) DEFINE_BENCH(name, f, scalar_experiment)
+#define DEFINE_SIMD_BENCH(name, f)          DEFINE_BENCH(name, f, simd_experiment)
+#define DEFINE_SCALAR_BENCH(name, f)        DEFINE_BENCH(name, f, scalar_experiment)
+#define DEFINE_UNROLLED_SIMD_BENCH(name_, unroll, f)\
+  template <typename T>                                                                            \
+  struct name_ : unrolled_simd_experiment<unroll, name_<T>>                                        \
+  {                                                                                                \
+    static const char* name()    { return BOOST_PP_STRINGIZE(name_); }                             \
+    static decltype(f) functor() { return f; }                                                     \
+  }                                                                                                \
+/**/
 
 #define DEFINE_BENCH_MAIN()                                                                        \
   void main2();                                                                                    \
@@ -171,6 +208,7 @@ using scalar_experiment =
     nsb::parse_args(argc, argv);                                                                   \
     main2();                                                                                       \
     describe();                                                                                    \
+    results().add_optional_info("simd", sanitized_simd());                                         \
     print_results();                                                                               \
     return 0;                                                                                      \
   }                                                                                                \

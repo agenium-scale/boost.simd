@@ -23,11 +23,11 @@ struct shlN
   }
 };
 
-DEFINE_SIMD_BENCH(scalar_shift_left1, shlN<1>());
-DEFINE_SIMD_BENCH(scalar_shift_left2, shlN<2>());
+DEFINE_SIMD_BENCH(simd_shift_left1, shlN<1>());
+DEFINE_SIMD_BENCH(simd_shift_left2, shlN<2>());
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_shift_left1, NS_BENCH_IEEE_TYPES>(-10, 10);
-  nsb::for_each<scalar_shift_left2, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<simd_shift_left1, NS_BENCH_IEEE_TYPES>(-10, 10);
+  nsb::for_each<simd_shift_left2, NS_BENCH_IEEE_TYPES>(-10, 10);
 }

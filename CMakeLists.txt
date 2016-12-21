@@ -50,7 +50,6 @@ NS_prevent_in_source_build()
 ## -------------------------------------------------------------------------------------------------
 set(STF_STANDALONE_DESTINATION      ${PROJECT_SOURCE_DIR}/test)
 set(BRIGAND_STANDALONE_DESTINATION  ${PROJECT_SOURCE_DIR}/include/boost/simd/detail)
-set(NS_BENCH_STANDALONE_DESTINATION ${PROJECT_SOURCE_DIR}/bench)
 
 set(NS_CMAKE_PROJECT_OPTIONS
   CMAKE_ARGS "-DBOOST_ROOT=${BOOST_HEADER_ONLY_DESTINATION}/include"
@@ -67,9 +66,7 @@ set(NS_CMAKE_PROJECT_OPTIONS
 )
 
 if (DEFINED DEV)
-  set(NS_BENCH_GIT_TAG develop)
   set(BRIGAND_GIT_TAG 1.2.0)
-  NS_project_include(ns.bench.standalone)
   NS_project_include(brigand.standalone)
   NS_project_include(stf.standalone)
 endif()
