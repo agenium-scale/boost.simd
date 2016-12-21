@@ -168,6 +168,19 @@ using unrolled_simd_experiment =
                   , unrolled_pack<template_of_t<Experiment>, N>::static_size
                   >;
 
+std::string sanitized_simd()
+{
+  auto s = nsb::type_id<BOOST_SIMD_DEFAULT_SITE>();
+  auto bsns = std::string("boost::simd::");
+  if (s.find(bsns) != std::string::npos) {
+    s = s.substr(bsns.size(), s.size());
+  }
+  if (s[s.size() - 1] == '_') {
+    s.resize(s.size() - 1);
+  }
+  return s;
+}
+
 #define DEFINE_BENCH(name_, f, experiment)                                                         \
   template <typename T>                                                                            \
   struct name_ : experiment<name_<T>>                                                              \
@@ -195,6 +208,7 @@ using unrolled_simd_experiment =
     nsb::parse_args(argc, argv);                                                                   \
     main2();                                                                                       \
     describe();                                                                                    \
+    results().add_optional_info("simd", sanitized_simd());                                         \
     print_results();                                                                               \
     return 0;                                                                                      \
   }                                                                                                \
