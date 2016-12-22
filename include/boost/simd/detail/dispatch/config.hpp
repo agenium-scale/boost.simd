@@ -30,4 +30,9 @@
 #define BOOST_NO_RESTRICT_REFERENCES
 #endif
 
+// Detect stupid ICC/G++ combos
+#if defined(BOOST_INTEL_GCC_VERSION) && (BOOST_INTEL_GCC_VERSION < 40600)
+#define BOOST_DISPATCH_USE_INCOMPLETE_STD
+#endif
+
 #endif
