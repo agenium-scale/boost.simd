@@ -43,7 +43,6 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE  iA0 operator() (bs::pedantic_tag const&
                                       , const A0 & a0) const BOOST_NOEXCEPT
     {
-      std::cout << "icitte " << a0 << std::endl;
       if (BOOST_UNLIKELY(is_nan(a0))) return Zero<iA0>();
       if (BOOST_UNLIKELY(a0 == Inf<A0>())) return Valmax<iA0>();
       return _mm_cvtss_si32(_mm_set_ss(a0));
