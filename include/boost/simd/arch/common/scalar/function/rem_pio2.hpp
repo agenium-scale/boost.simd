@@ -570,7 +570,6 @@ do {                                                                           \
         pio2_1t = 1.58932547735281966916e-08; /* 0x3E5110b4, 0x611A6263 */
       iA0 ix =  bitwise_cast<iA0>(x);
       uiA0 uix = bitwise_cast<uiA0>(ix& 0x7fffffff);
-      iA0 sign = ix>>31;
       /* 25+53 bit pi is good enough for medium size */
       if (uix < 0x4dc90fdb) {  /* |x| ~< 2^28*(pi/2), medium size */
         double fn = nearbyint(double(x)*invpio2);
