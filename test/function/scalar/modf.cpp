@@ -27,21 +27,21 @@ STF_CASE_TPL(" modf", STF_NUMERIC_TYPES)
              );
 
   {
-    T frac;
-    T ent;
+    T rest;
+    T ipart;
 
-    modf(T(1.5), frac, ent);
-    STF_EQUAL(ent, bs::trunc(T(1.5)));
-    STF_EQUAL(frac, T(.5));
+    modf(T(1.5), rest, ipart);
+    STF_EQUAL(ipart, bs::trunc(T(1.5)));
+    STF_EQUAL(rest, T(.5));
   }
 
   {
-    T frac;
-    T ent;
+    T rest;
+    T ipart;
 
-    frac = modf(T(1.5), ent);
-    STF_EQUAL(ent, bs::trunc(T(1.5)));
-    STF_EQUAL(frac, T(.5));
+    rest = modf(T(1.5), ipart);
+    STF_EQUAL(ipart, bs::trunc(T(1.5)));
+    STF_EQUAL(rest, T(.5));
   }
 
   {

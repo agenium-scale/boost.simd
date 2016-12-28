@@ -31,9 +31,9 @@ namespace boost { namespace simd { namespace ext
      using result = std::pair < A0, A0>;
      BOOST_FORCEINLINE result operator()(A0 const& a0) const
       {
-        A0 ent = bs::trunc(a0);
-        A0 frac = a0-ent;
-        return result(frac, ent);
+        A0 ipart = bs::trunc(a0);
+        A0 rest  = a0-ipart;
+        return result(rest, ipart);
       }
    };
 
