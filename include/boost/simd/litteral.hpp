@@ -35,7 +35,7 @@ namespace boost { namespace simd
     // Intermediate trampoline so MSVC doesn't cry
     template<std::size_t N,char... c> constexpr std::uint64_t parse(int base)
     {
-      return parse(base, {c...}, brigand::uint64_t<N>{});
+      return parse<N>(base, {c...}, brigand::uint64_t<N>{});
     }
   }
 
