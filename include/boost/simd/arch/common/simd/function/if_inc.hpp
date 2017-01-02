@@ -68,10 +68,10 @@ namespace boost { namespace simd { namespace ext
                             , bs::pack_<bd::arithmetic_<A1>, X>
                             )
   {
-  BOOST_FORCEINLINE A1 operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
-  {
-    return if_plus(a0, a1, One<A1>());
-  }
+    BOOST_FORCEINLINE A1 operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
+    {
+      return if_plus(a0, a1, One<A1>());
+    }
   };
 } } }
 
