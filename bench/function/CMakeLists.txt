@@ -8,3 +8,4 @@
 
 add_subdirectory(simd)
 add_subdirectory(scalar)
+add_subdirectory(extern)
