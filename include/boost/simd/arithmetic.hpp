@@ -54,11 +54,7 @@ namespace boost { namespace simd
 
        @par Possible output:
 
-          @code
-            pf =  (-1, 2, -3, -inf)   -> bs::abs(pf) =                  (1, 2, 3, inf   )
-            pi =  (-1, 2, -3, -32768) -> bs::abs(pi) =                  (1, 2, 3, -32768)
-            pi =  (-1, 2, -3, -32768) -> bs::saturated_(bs::abs(pi)) =  (1, 2, 3, 32767 )
-          @endcode
+          @snippet saturated_abs.txt saturated_abs_results
 
      - **Rounding operations**
 
@@ -81,14 +77,7 @@ namespace boost { namespace simd
 
         @par Possible output:
 
-          @code
-            p =  (-1.1, -1.5, -1.6, -2.1, -2.5, -2.6, 1.1, 1.5)
-            -> bs::ceil(p) =      (-1, -1, -1, -2, -2, -2, 2, 2)
-           -> bs::floor(p) =      (-2, -2, -2, -3, -3, -3, 1, 1)
-           -> bs::fix(p) =        (-1, -1, -1, -2, -2, -2, 1, 1)
-           -> bs::round(p )=      (-1, -2, -2, -2, -3, -3, 1, 2)
-           -> bs::nearbyint(p) =  (-1, -2, -2, -2, -2, -3, 1, 2)
-          @endcode
+          @snippet roundings.txt roundings_results
 
      - **Division operations**
 
@@ -121,17 +110,9 @@ namespace boost { namespace simd
 
               @snippet divisions.cpp divisions
 
-          @par Possible output:
+           @par Possible output:
 
-            @code
-             p =   (-4, -3, -2, -1, 1, 2, 3, 4)
-             pp1 = ( 5,  2,  3,  2, 2, 3, 2, 5)
-             -> bs::div(bs::ceil,  p, pp1) =      (-0, -1, -0, -0, 1, 1, 2, 1)
-             -> bs::div(bs::floor, p, pp1) =      (-1, -2, -1, -1, 0, 0, 1, 0)
-             -> bs::div(bs::fix,   p, pp1) =      ( 0, -1,  0,  0, 0, 0, 1, 0)
-             -> bs::div(bs::round, p, pp1) =      (-1, -2, -1, -1, 1, 1, 2, 1)
-             -> bs::div(bs::nearbyint, p, pp1) =  (-1, -2, -1, -0, 0, 1, 2, 1)
-            @endcode
+              @snippet divisions.txt divisions_results
 
      - **Remainder operations**
 
@@ -158,15 +139,7 @@ namespace boost { namespace simd
 
        @par Possible output:
 
-            @code
-             p =   (-4, -3, -2, -1, 1, 2, 3, 4)
-             pp1 = ( 5,  2,  3,  2, 2, 3, 2, 5)
-             -> bs::rem(bs::ceil,  p, pp1) =      (-4, -1, -2, -1, -1, -1, -1, -1)
-             -> bs::rem(bs::floor, p, pp1) =      ( 1,  1,  1,  1,  1,  2,  1,  4)
-             -> bs::rem(bs::fix,   p, pp1) =      (-4, -1, -2, -1,  1,  2,  1,  4)
-             -> bs::rem(bs::round, p, pp1) =      ( 1,  1,  1,  1, -1, -1, -1, -1)
-             -> bs::rem(bs::nearbyint, p, pp1) =  ( 1,  1,  1, -1,  1, -1, -1, -1)
-            @endcode
+          @snippet remainders.txt remainders_results
 
      - **complex operations**
 
