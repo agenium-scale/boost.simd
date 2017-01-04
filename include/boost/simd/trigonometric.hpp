@@ -22,21 +22,23 @@ namespace boost { namespace simd
     Algorithms for computing scalar and SIMD version of
     trigonometric and inverse trigonometric functions and some utilities.
 
+    All these functions can be included individually or all of them just by including <boost/simd/trigonometric.hpp>
+
     Except a meaningfull case (namely  cospi,  as \f$\cos(\pi n) = (-1)^n\f$ for integral n)
-    these functions are only provided for floating inputs.
+    these functions are only provided for floating (scalar or SIMD) inputs.
 
     - Direct trigonometric functors
 
        <center>
-         | name          | name         | name           | name         |
-         |:-------------:|:------------:|:--------------:|:------------:|
-         | @ref cos      | @ref cscd    | @ref sin       | @ref sind    |
-         | @ref cosd     | @ref csc     | @ref sinc      | @ref sinpi   |
-         | @ref cospi    | @ref cscpi   | @ref sincos    | @ref tan     |
-         | @ref cotd     | @ref secd    | @ref sincosd   | @ref tand    |
-         | @ref cot      | @ref sec     | @ref sincospi  | @ref tan     |
-         | @ref cotpi    | @ref secpi   | @ref sincpi    | @ref tanpi   |
+         | name          | name         | name           | name         | name         | name         |
+         |:-------------:|:------------:|:--------------:|:------------:|:------------:|:------------:|
+         | @ref cos      | @ref cosd    | @ref cospi     | @ref cotd    | @ref cot     | @ref cotpi   |
+         | @ref cscd     | @ref csc     | @ref cscpi     | @ref secd    | @ref sec     | @ref secpi   |
+         | @ref sin      | @ref sinc    | @ref sincos    | @ref sincosd | @ref sincospi| @ref sincpi  |
+         | @ref sind     | @ref sinpi   | @ref tan       | @ref tand    | @ref tan     | @ref tanpi   |
        </center>
+
+          'pi' (resp. 'd') suffix indicates that the input is to be done in \f$\pi\f$ multiples (resp. degrees).
 
           @ref sinc and @ref sincpi are 2 versions of the sinus cardinal function
           (resp. \f$\frac{\sin x}{x}\f$ and \f$\frac{\sin \pi x}{\pi x}\f$).
@@ -50,14 +52,14 @@ namespace boost { namespace simd
     - Inverse trigonometric functors
 
        <center>
-         | name        | name         | name        | name         |
-         |:-----------:|:------------:|:-----------:|:------------:|
-         | @ref acos   | @ref acsc    | @ref asecpi | @ref atan2   |
-         | @ref acosd  | @ref acscd   | @ref asin   | @ref atan2d  |
-         | @ref acospi | @ref acscpi  | @ref asind  | @ref atan2pi |
-         | @ref acot   | @ref asec    | @ref asinpi |              |
-         | @ref acotd  | @ref asecd   | @ref atan2d |              |
+         | name        | name         | name        | name         | name         | name         |
+         |:-----------:|:------------:|:-----------:|:------------:|:------------:|:------------:|
+         | @ref acos   | @ref acosd   | @ref acospi | @ref acot    | @ref acotd   | @ref acsc    |
+         | @ref acscd  | @ref acscpi  | @ref asec   | @ref asecd   | @ref asecpi  | @ref asin    |
+         | @ref asind  | @ref asinpi  | @ref atan2d | @ref atan2   | @ref atan2d  | @ref atan2pi |
        </center>
+
+       'pi' (resp. 'd') suffix indicates that the return value  is in \f$\pi\f$ multiples (resp. degrees).
 
     - Conversion utilities
 
@@ -106,7 +108,7 @@ namespace boost { namespace simd
         Be aware that their uses are not equivalent. Peculiarly sinpi(1.0) is not equal to sin(Pi<double>()).
 
           - Pi<double>()  is only an approximation of \f$\pi\f$ to 0.5 ulp and the reduction of the angle Pi<double>()
-          between  \f$-\pi/4\f$ and  \f$\pi/4\f$  will lead to an
+          between  \f$-\pi/4\f$ and  \f$\pi/4\f$  will lead to a
           non zero value and @ref sin will return this small value  (namely 1.22464679914735e-16)
           as \f$\sin x \sim x\f$ for small values.
 

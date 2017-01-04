@@ -22,16 +22,17 @@ namespace boost { namespace simd
     functions of the C and C++ standard library. Other functions are also provided, in particular,
     provision for saturated operations through the use of a @ref decorator.
 
+    All these functions can be included individually or all of them just by including <boost/simd/arithmetic.hpp>
+
      - **Possibly saturated operations**
 
        The functors:
        <center>
-         | name       | name            | name         | name             |
-         |:----------:|:---------------:|:------------:|:----------------:|
-         | @ref abs   | @ref minus      | @ref oneminus| @ref unary_minus |
-         | @ref dec   | @ref multiplies | @ref sqr     | @ref unary_plus  |
-         | @ref dist  | @ref plus       | @ref toint   | @ref touint      |
-         | @ref inc   |                 |              |                  |
+         |                  |                 |                 |                  |                  |
+         |:----------------:|:---------------:|:---------------:|:----------------:|:----------------:|
+         | @ref abs         | @ref dec        | @ref dist       | @ref inc         | @ref minus       |
+         | @ref multiplies  | @ref plus       | @ref oneminus   | @ref sqr         | @ref toint       |
+         | @ref unary_minus | @ref unary_plus | @ref touint     |                  |                  |
        </center>
 
        can be decorated with the  @ref saturated "saturated_" @ref decorator. This decorator has no effect on floating
@@ -49,15 +50,15 @@ namespace boost { namespace simd
 
      - **Rounding operations**
        <center>
-         | name        | name            | name        | name             |
-         |:-----------:|:---------------:|:-----------:|:----------------:|
-         | @ref ceil   | @ref round      | @ref ifloor |  @ref inearbyint |
-         | @ref floor  | @ref nearbyint  | @ref ifix   |                  |
-         | @ref fix    | @ref iceil      | @ref iround |                  |
+         |                 |                 |              |                  |
+         |:---------------:|:---------------:|:------------:|:----------------:|
+         | @ref ceil       |  @ref fix       | @ref floor   |  @ref iceil      |
+         | @ref ifix       |  @ref ifloor    | @ref iround  |  @ref itrunc     |
+         | @ref inearbyint |  @ref nearbyint | @ref round   |  @ref trunc       |
         </center>
 
-          - The operations prefixed by @c 'i' return a value of the integral type associated to the entry type. (If @c T is
-         the entry type it is @c as_integer_t<T>)
+          -The operations prefixed by 'i' return a value of the integral type iT associated to the entry type. (If T is
+         the entry type iT is @ref as_integer_t<T>)
 
           - The other ones return the same type as the entry.
 
@@ -113,7 +114,7 @@ namespace boost { namespace simd
        have a meaning as a restriction to real number of complex functions, can be seen as a prequel:
 
       <center>
-        | name        | name            | name        | name             | name             |
+        |             |                 |             |                  |                  |
         |:-----------:|:---------------:|:-----------:|:----------------:|:----------------:|
         | @ref arg    | @ref conj       | @ref imag   | @ref real        | @ref sqr_abs     |
       </center>
@@ -124,7 +125,7 @@ namespace boost { namespace simd
      - **Fused multiply-add operations**
 
       <center>
-        | name            | name         | name          | name             |
+        |                 |              |               |                  |
         |:---------------:|:------------:|:-------------:|:----------------:|
         | @ref fma        | @ref fnma    |  @ref two_add | @ref two_split   |
         | @ref fms        | @ref fnms    |  @ref two_prod|                  |
@@ -157,12 +158,12 @@ namespace boost { namespace simd
        The stdlibc++ provides them but only in scalar mode:
 
        <center>
-         | name       | name            | name         |
-         |:----------:|:---------------:|:------------:|
-         | @ref abs   | @ref hypot      | @ref remquo  |
-         | @ref ceil  | @ref max        | @ref round   |
-         | @ref floor | @ref min        | @ref signbit |
-         | @ref fma   | @ref rem (%)    | @ref sqrt    |
+         |               |                 |              |              |
+         |:-------------:|:---------------:|:------------:|:------------:|
+         | @ref abs      | @ref ceil       | @ref floor   |  @ref fma    |
+         | @ref hypot    | @ref max        | @ref maxnum  |  @ref min    |
+         | @ref minnum   | @ref rem (%)    | @ref remquo  | @ref round   |
+         | @ref signbit  | @ref sqrt       |              |              |
        </center>
 
        Boost.SIMD provides its own scalar and simd versions, but allows
@@ -172,11 +173,10 @@ namespace boost { namespace simd
      - **Other operations**
 
        <center>
-         | name         | name            | name          |
-         |:------------:|:---------------:|:-------------:|
-         | @ref average | @ref sqrt       | @ref tenpower |
-         | @ref meanof  | @ref sqr        | @ref tofloat  |
-         | @ref minmod  | @ref sqrt1pm1   |               |
+         |              |                 |               |              |
+         |:------------:|:---------------:|:-------------:|:------------:|
+         | @ref average | @ref meanof     | @ref minmod   | @ref sqr     |
+         | @ref sqrt    | @ref sqrt1pm1   | @ref tenpower | @ref tofloat |
        </center>
   **/
 } }

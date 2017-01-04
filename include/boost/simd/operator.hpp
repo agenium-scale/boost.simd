@@ -32,6 +32,8 @@ namespace boost { namespace simd
     These remarks are only valid if the prefix notation is used and at least one parameter is a pack:
     otherwise infix operators on scalars are regulated by usual C++ langage rules.
 
+    All operators are included as soon as <boost/simd/pack.hpp> is included.
+
     <center>
     | Name                    | op  | arity |   types      |  precondition/result                          |
     |-------------------------|-----|-------|--------------|-----------------------------------------------|

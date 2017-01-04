@@ -21,17 +21,19 @@ namespace boost { namespace simd
       These functions provides SIMD algorithms for logical operations and branching
       in SIMD mode, their use is possible but not encouraged on scalars entries.
 
+      All these functions can be included individually or all of them just by including <boost/simd/boolean.hpp>
+
       - **Logical operators**
 
         These functions return boost::simd::logical values, do not support short-circuiting
         and act in an elementwise way on SIMD vectors.
 
        <center>
-         | name               | name                | name              |
-         |:------------------:|:-------------------:|:-----------------:|
-         | @ref logical_and   | @ref logical_notand | @ref logical_ornot|
-         | @ref logical_andnot| @ref logical_notor  | @ref logical_xor  |
-         | @ref logical_not   | @ref logical_or     | @ref mask2logical |
+         |                     |                     |                   |
+         |:-------------------:|:-------------------:|:-----------------:|
+         | @ref logical_and    | @ref logical_andnot | @ref logical_not  |
+         | @ref logical_notand | @ref logical_notor  | @ref logical_or   |
+         | @ref logical_ornot  | @ref logical_xor    | @ref mask2logical |
         </center>
 
         Masks are pattern of bits all zeros or all ones that can allow masking
@@ -67,13 +69,13 @@ namespace boost { namespace simd
         the simd vector is greater than 2.
 
        <center>
-         | name                        | name             | name                     |  name           |
-         |:---------------------------:|:----------------:|:------------------------:| :--------------:|
-         | @ref if_allbits_else        | @ref if_else_nan | @ref if_one_else_zero    | @ref ifnot_dec  |
-         | @ref if_allbits_else_zero   | @ref if_else_zero| @ref if_plus             | @ref ifnot_inc  |
-         | @ref if_dec                 | @ref if_inc      | @ref if_zero_else_allbits| @ref ifnot_minus|
-         | @ref if_else_allbits        | @ref if_minus    | @ref if_zero_else        | @ref ifnot_plus |
-         | @ref if_else                | @ref if_nan_else | @ref if_zero_else_one    |                 |
+         |                             |                           |                          |                       |
+         |:---------------------------:|:-------------------------:|:------------------------:| :--------------------:|
+         | @ref if_allbits_else        | @ref if_allbits_else_zero | @ref if_dec              | @ref if_else_allbits  |
+         | @ref if_else                | @ref if_else_nan          | @ref if_else_zero        | @ref if_inc           |
+         | @ref if_minus               | @ref if_nan_else          | @ref if_one_else_zero    | @ref if_plus          |
+         | @ref if_zero_else_allbits   | @ref if_zero_else         | @ref if_zero_else_one    | @ref ifnot_dec        |
+         | @ref ifnot_inc              | @ref ifnot_minus          | @ref ifnot_plus          |                       |
        </center>
 
   **/
