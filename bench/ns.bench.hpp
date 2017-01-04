@@ -1290,9 +1290,6 @@ NS_BENCH_AUTO_DECLTYPE(f(container_at(std::get<N>(args), i)...))
 template <typename F, typename... Args>
 BOOST_FORCEINLINE auto call(F f, std::tuple<Args...> const& args, std::size_t i)
 NS_BENCH_AUTO_DECLTYPE(call(make_range_t<sizeof...(Args)>(), f, args, i))
-template <typename F>
-BOOST_FORCEINLINE auto call(F f, std::tuple<> const&, std::size_t)
-NS_BENCH_AUTO_DECLTYPE(f())
 template <typename Experiment, typename Enable = void>
 struct experiment_maybe_copy {
   using type = Experiment;
