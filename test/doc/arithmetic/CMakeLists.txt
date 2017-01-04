@@ -6,21 +6,11 @@
 ##                            http://www.boost.org/LICENSE_1_0.txt
 ##===================================================================================================
 
-add_subdirectory(arithmetic)
-
 SET( SOURCES
-    aligned_input_range.cpp
-    input_range.cpp
-    reduce.simple.cpp
-    reduce.phases.cpp
-    reduce.phase.cpp
-    segmented_input_range.cpp
-    transform.unary.cpp
-    transform.binary.cpp
-    shuffle.unary.cpp
-    shuffle.binary.cpp
-    shuffle.perm.cpp
-    shuffle.perm2.cpp
+    saturated_abs.cpp
+    roundings.cpp
+    divisions.cpp
+    remainders.cpp
   )
 
-make_unit( "doc" ${SOURCES})
+make_unit( "doc.arithmetic" ${SOURCES})

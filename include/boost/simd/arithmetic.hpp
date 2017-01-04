@@ -48,13 +48,26 @@ namespace boost { namespace simd
        nevertheless it probably is its saturated version you have to use because it acts properly on large or not finite
        values, this is why an alias for` saturated_(toint)` is provided as @ref ifix.
 
+       @par Example:
+
+          @snippet saturated_abs.cpp saturated_abs
+
+       @par Possible output:
+
+          @code
+            pf =  (-1, 2, -3, -inf)   -> bs::abs(pf) =                  (1, 2, 3, inf   )
+            pi =  (-1, 2, -3, -32768) -> bs::abs(pi) =                  (1, 2, 3, -32768)
+            pi =  (-1, 2, -3, -32768) -> bs::saturated_(bs::abs(pi)) =  (1, 2, 3, 32767 )
+          @endcode
+
      - **Rounding operations**
-       <center>
+
+        <center>
          |                 |                 |              |                  |
          |:---------------:|:---------------:|:------------:|:----------------:|
          | @ref ceil       |  @ref fix       | @ref floor   |  @ref iceil      |
          | @ref ifix       |  @ref ifloor    | @ref iround  |  @ref itrunc     |
-         | @ref inearbyint |  @ref nearbyint | @ref round   |  @ref trunc       |
+         | @ref inearbyint |  @ref nearbyint | @ref round   |  @ref trunc      |
         </center>
 
           -The operations prefixed by 'i' return a value of the integral type iT associated to the entry type. (If T is
@@ -62,19 +75,30 @@ namespace boost { namespace simd
 
           - The other ones return the same type as the entry.
 
+        @par Example:
+
+          @snippet roundings.cpp roundings
+
+        @par Possible output:
+
+          @code
+            p =  (-1.1, -1.5, -1.6, -2.1, -2.5, -2.6, 1.1, 1.5)
+            -> bs::ceil(p) =      (-1, -1, -1, -2, -2, -2, 2, 2)
+           -> bs::floor(p) =      (-2, -2, -2, -3, -3, -3, 1, 1)
+           -> bs::fix(p) =        (-1, -1, -1, -2, -2, -2, 1, 1)
+           -> bs::round(p )=      (-1, -2, -2, -2, -3, -3, 1, 2)
+           -> bs::nearbyint(p) =  (-1, -2, -2, -2, -2, -3, 1, 2)
+          @endcode
+
      - **Division operations**
 
-       @ref divides is the function associated to standard division. There is another one which provides more
-       flexibility, namely rounded divisions.
+        @ref divides is the function associated to standard division. There is another one which provides more
+        flexibility, namely rounded divisions.
 
-       With two parameters @ref div and @ref divides are equivalent, but @ref div can admit a first option parameter
-       that modifies its behaviour.
+        With two parameters @ref div and @ref divides are equivalent, but @ref div can admit a first option parameter
+        that modifies its behaviour.
 
-       The option parameter is described in the following table where  @c a and  @c b are of type  @c T,   @c fT is a
-       supposed floating type associated to @c T (@ref as_floating_t<T> if it exists) and  @c iT is the integer type associated to  @c T
-       (namely `as_integer_t<T>`, see @ref as_integer). (@c fT and @c iT are here only to support easier pseudo code description)
-
-       <center>
+        <center>
          | option             |          call            |      result similar to               |
          |--------------------|--------------------------|--------------------------------------|
          | @ref ceil          |   div(ceil, a, b)        |      T(ceil(fT(a)/fT(b)))            |
@@ -88,6 +112,26 @@ namespace boost { namespace simd
          | @ref iround        |   div(iround, a, b)      |      iT(iround(fT(a)/fT(b)))         |
          | @ref inearbyint    |   div(inearbyint, a, b)  |      iT(inearbyint(fT(a)/fT(b)))     |
         </center>
+
+           - The option parameter is described in the above table where a and b are of type T,  fT is a
+           supposed floating type associated to T (@ref as_floating_t<T> if it exists) and iT is the integer type associated to T
+           (@ref as_integer_t<T>). (fT and iT are here only to support pseudo code description)
+
+           @par Example:
+
+              @snippet divisions.cpp divisions
+
+          @par Possible output:
+
+            @code
+             p =   (-4, -3, -2, -1, 1, 2, 3, 4)
+             pp1 = ( 5,  2,  3,  2, 2, 3, 2, 5)
+             -> bs::div(bs::ceil,  p, pp1) =      (-0, -1, -0, -0, 1, 1, 2, 1)
+             -> bs::div(bs::floor, p, pp1) =      (-1, -2, -1, -1, 0, 0, 1, 0)
+             -> bs::div(bs::fix,   p, pp1) =      ( 0, -1,  0,  0, 0, 0, 1, 0)
+             -> bs::div(bs::round, p, pp1) =      (-1, -2, -1, -1, 1, 1, 2, 1)
+             -> bs::div(bs::nearbyint, p, pp1) =  (-1, -2, -1, -0, 0, 1, 2, 1)
+            @endcode
 
      - **Remainder operations**
 
@@ -107,6 +151,22 @@ namespace boost { namespace simd
         -  if  @c x is \f$\pm0\f$ and  @c y is not  @c 0  @c x is returned if  @c pedantic_ is used (else  @c 0: the sign bit is not preserved)
         -  If  @c y is \f$\pm0\f$, @ref  @ref Nan is returned
         -  If either argument is a nan,  a nan is returned
+
+       @par Example:
+
+          @snippet remainders.cpp remainders
+
+       @par Possible output:
+
+            @code
+             p =   (-4, -3, -2, -1, 1, 2, 3, 4)
+             pp1 = ( 5,  2,  3,  2, 2, 3, 2, 5)
+             -> bs::rem(bs::ceil,  p, pp1) =      (-4, -1, -2, -1, -1, -1, -1, -1)
+             -> bs::rem(bs::floor, p, pp1) =      ( 1,  1,  1,  1,  1,  2,  1,  4)
+             -> bs::rem(bs::fix,   p, pp1) =      (-4, -1, -2, -1,  1,  2,  1,  4)
+             -> bs::rem(bs::round, p, pp1) =      ( 1,  1,  1,  1, -1, -1, -1, -1)
+             -> bs::rem(bs::nearbyint, p, pp1) =  ( 1,  1,  1, -1,  1, -1, -1, -1)
+            @endcode
 
      - **complex operations**
 
