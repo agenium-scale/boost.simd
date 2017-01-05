@@ -6,24 +6,9 @@
 ##                            http://www.boost.org/LICENSE_1_0.txt
 ##===================================================================================================
 
-add_subdirectory(arithmetic)
-add_subdirectory(hyperbolic)
-add_subdirectory(predicates)
-add_subdirectory(trigonometric)
-
 SET( SOURCES
-    aligned_input_range.cpp
-    input_range.cpp
-    reduce.simple.cpp
-    reduce.phases.cpp
-    reduce.phase.cpp
-    segmented_input_range.cpp
-    transform.unary.cpp
-    transform.binary.cpp
-    shuffle.unary.cpp
-    shuffle.binary.cpp
-    shuffle.perm.cpp
-    shuffle.perm2.cpp
+    direct_trigonometric.cpp
+    inverse_trigonometric.cpp
   )
 
-make_unit( "doc" ${SOURCES})
+make_unit( "doc.trigonometric" ${SOURCES})

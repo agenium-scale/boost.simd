@@ -26,12 +26,22 @@ namespace boost { namespace simd
 
       - These predicates can be used through an operator
       <center>
-        |  name                 |  operator  |  name              |   operator  |
+        |  name              |  operator  |  name        |   operator  |
         |:---------------------:|:----:|:------------------:|:-----:|
         | @ref is_equal         | ==   | @ref is_less_equal |  <=   |
         | @ref is_greater_equal | >=   | @ref is_less       |  <    |
         | @ref is_greater       | >    | @ref is_not_equal  |  !=   |
       </center>
+
+         for floating entries negation as predicates as  @ref is_not_greater(a, b) are not equivalent to !is_greater(a, b) due to possible @ref Nan values;
+
+           @par Example:
+
+              @snippet operators.cpp operators
+
+           @par Possible output:
+
+              @snippet operators.txt operators
 
       - The following ones have to be called directly.
 
@@ -52,6 +62,14 @@ namespace boost { namespace simd
         | @ref is_not_nan         | @ref is_not_real                  | @ref is_odd           | @ref is_ord               |
         | @ref is_positive        | @ref is_real                      | @ref is_simd_logical  | @ref is_unord             |
        </center>
+
+         @par Example:
+
+            @snippet predicates.cpp predicates
+
+         @par Possible output:
+
+            @snippet predicates.txt predicates
   **/
 
 } }

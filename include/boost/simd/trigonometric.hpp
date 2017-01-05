@@ -27,7 +27,7 @@ namespace boost { namespace simd
     Except a meaningfull case (namely  cospi,  as \f$\cos(\pi n) = (-1)^n\f$ for integral n)
     these functions are only provided for floating (scalar or SIMD) inputs.
 
-    - Direct trigonometric functors
+    - **Direct trigonometric functors**
 
        <center>
          | name          | name         | name           | name         | name         | name         |
@@ -49,7 +49,36 @@ namespace boost { namespace simd
           @ref sec and @ref csc are the secant (inverse of the cosine) and cosecant
           (inverse of the sine)
 
-    - Inverse trigonometric functors
+           @par Example:
+
+              @snippet direct_trigonometric.cpp direct_trigonometric
+
+           @par Possible output:
+
+              @snippet direct_trigonometric.txt direct_trigonometric
+
+           All direct and inverse functions (except cardinal ones) are provided in  three flavours using respectively
+           radian, degrees and \f$\pi\f$ multiples.
+
+           Be aware that their uses are not equivalent (see the above results).
+
+           To give another example: sinpi(1.0) is not equal to sin(Pi<double>()).
+
+             - Pi<double>() is only an approximation of \f$\pi\f$ to 0.5 ulp and the reduction of the angle Pi<double>()
+             between  \f$-\pi/4\f$ and  \f$\pi/4\f$  will lead to a
+             non zero value and @ref sin will return this small value  (namely 1.22464679914735e-16)
+             as \f$\sin x \sim x\f$ for small values.
+
+             - 1.0 is an exact double value and the reduction of the angle 1.0 between  \f$-0.25\f$ and  \f$0.25\f$
+             will lead to an exact 0.0 the sinus of which is exactly 0.0.
+
+             - However the two results are correct to 0.5 ulp.
+
+             - All this DOES NOT IMPLY that trigonometric functors taking degrees or \f$\pi\f$ multiples as inputs are more accurate
+             than those taking radians. The value computed by sin(Pi<double>()) is the correct value up to 0.5ulp of the sine of the input
+             (which is not equal to \f$\pi\f$).
+
+    - **Inverse trigonometric functors**
 
        <center>
          | name        | name         | name        | name         | name         | name         |
@@ -59,7 +88,15 @@ namespace boost { namespace simd
          | @ref asind  | @ref asinpi  | @ref atan2d | @ref atan2   | @ref atan2d  | @ref atan2pi |
        </center>
 
-       'pi' (resp. 'd') suffix indicates that the return value  is in \f$\pi\f$ multiples (resp. degrees).
+          'pi' (resp. 'd') suffix indicates that the return value  is in \f$\pi\f$ multiples (resp. degrees).
+
+            @par Example:
+
+              @snippet inverse_trigonometric.cpp inverse_trigonometric
+
+           @par Possible output:
+
+              @snippet inverse_trigonometric.txt inverse_trigonometric
 
     - Conversion utilities
 
@@ -97,25 +134,6 @@ namespace boost { namespace simd
        There also exists @ref rem_2pi that only computes the reduction of the radian angle
        between \f$[-\pi, \pi]\f$
 
-    @par Notes:
-
-      - Angle units
-
-        All direct and inverse functions (except cardinal ones) are provided in
-        three flavours using respectively
-        radian, degrees and \f$\pi\f$ multiples.
-
-        Be aware that their uses are not equivalent. Peculiarly sinpi(1.0) is not equal to sin(Pi<double>()).
-
-          - Pi<double>()  is only an approximation of \f$\pi\f$ to 0.5 ulp and the reduction of the angle Pi<double>()
-          between  \f$-\pi/4\f$ and  \f$\pi/4\f$  will lead to a
-          non zero value and @ref sin will return this small value  (namely 1.22464679914735e-16)
-          as \f$\sin x \sim x\f$ for small values.
-
-          - 1.0 is an exact double value and the reduction of the angle 1.0 between  \f$-0.25\f$ and  \f$0.25\f$
-          will lead to an exact 0.0 the sinus of which is exactly 0.0.
-
-          - However the two results are correct to 0.5 ulp
 
   **/
 
