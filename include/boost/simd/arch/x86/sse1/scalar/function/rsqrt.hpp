@@ -23,6 +23,9 @@
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/detail/constant/denormalfactor.hpp>
 #include <boost/simd/detail/constant/denormalsqrtfactor.hpp>
+#include <boost/simd/constant/smallestposval.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/inf.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
