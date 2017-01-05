@@ -73,8 +73,8 @@ namespace boost { namespace simd { namespace ext
                                     )
   {
     using function_t  = bd::functor<BinOp>;
-    using result_t    = decltype( bd::functor<BinOp>()( std::declval<Arg>()
-                                                      , std::declval<Neutral>()
+    using result_t    = decltype( bd::functor<BinOp>()( detail::declval<Arg>()
+                                                      , detail::declval<Neutral>()
                                                       )
                                 );
 

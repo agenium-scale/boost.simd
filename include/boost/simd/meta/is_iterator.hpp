@@ -31,7 +31,7 @@ namespace boost { namespace simd
                 , typename=typename std::iterator_traits<U>::iterator_category
                 > static std::true_type test(U&&);
 
-      static const bool value = std::is_same< decltype(test(std::declval<T>()))
+      static const bool value = std::is_same< decltype(test(detail::declval<T>()))
                                             , std::true_type
                                             >::value;
     };

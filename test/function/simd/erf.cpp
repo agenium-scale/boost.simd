@@ -20,6 +20,9 @@
 #include <boost/simd/constant/eps.hpp>
 #include <boost/simd/constant/pi.hpp>
 #include <boost/simd/function/rsqrt.hpp>
+#include <boost/simd/detail/dispatch/detail/declval.hpp>
+
+using namespace boost::dispatch;
 
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
@@ -60,7 +63,7 @@ STF_CASE_TPL (" erf", STF_IEEE_TYPES)
  using p_t = bs::pack<T>;
 
   // return type conformity test
-  STF_TYPE_IS(decltype(erf(std::declval<p_t>())), p_t);
+  STF_TYPE_IS(decltype(erf(detail::declval<p_t>())), p_t);
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS

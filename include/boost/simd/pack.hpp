@@ -359,24 +359,24 @@ namespace boost { namespace simd
     const_reference front() const  { return traits::at(*this, 0); }
 
     public:
-    BOOST_FORCEINLINE pack& operator++() BOOST_NOEXCEPT_IF_EXPR(inc(std::declval<pack>()))
+    BOOST_FORCEINLINE pack& operator++() BOOST_NOEXCEPT_IF_EXPR(inc(detail::declval<pack>()))
     {
       return (*this = inc(*this));
     }
 
-    BOOST_FORCEINLINE pack& operator--() BOOST_NOEXCEPT_IF_EXPR(dec(std::declval<pack>()))
+    BOOST_FORCEINLINE pack& operator--() BOOST_NOEXCEPT_IF_EXPR(dec(detail::declval<pack>()))
     {
       return (*this = dec(*this));
     }
 
-    BOOST_FORCEINLINE pack operator++(int) BOOST_NOEXCEPT_IF_EXPR(++std::declval<pack>())
+    BOOST_FORCEINLINE pack operator++(int) BOOST_NOEXCEPT_IF_EXPR(++detail::declval<pack>())
     {
       pack that = *this;
       ++(*this);
       return that;
     }
 
-    BOOST_FORCEINLINE pack operator--(int)  BOOST_NOEXCEPT_IF_EXPR(--std::declval<pack>())
+    BOOST_FORCEINLINE pack operator--(int)  BOOST_NOEXCEPT_IF_EXPR(--detail::declval<pack>())
     {
       pack that = *this;
       --(*this);

@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
       template<typename... Args> BOOST_FORCEINLINE
       auto operator()(Args&&... args) const
-          -> decltype(std::declval<parent const>()(Decorator(), std::forward<Args>(args)...) )
+          -> decltype(detail::declval<parent const>()(Decorator(), std::forward<Args>(args)...) )
       {
         return static_cast<parent const&>(*this)( Decorator(), std::forward<Args>(args)... );
       }
