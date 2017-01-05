@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::sqrteps( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Sqrteps(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Sqrteps<T>())
+  {
+    return Sqrteps<T>();
+  }
 } }
 
 #endif

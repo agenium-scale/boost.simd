@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::thousand( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Thousand(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Thousand<T>())
+  {
+    return Thousand<T>();
+  }
 } }
 
 #endif

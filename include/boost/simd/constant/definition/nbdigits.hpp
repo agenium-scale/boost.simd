@@ -56,6 +56,12 @@ namespace boost { namespace simd
   {
     return detail::nbdigits( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Nbdigits(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Nbdigits<T>())
+  {
+    return Nbdigits<T>();
+  }
 } }
 
 #endif

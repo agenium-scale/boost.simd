@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::mhalf( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Mhalf(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Mhalf<T>())
+  {
+    return Mhalf<T>();
+  }
 } }
 
 #endif

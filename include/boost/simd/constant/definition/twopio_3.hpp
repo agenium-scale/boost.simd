@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::twopio_3( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Twopio_3(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Twopio_3<T>())
+  {
+    return Twopio_3<T>();
+  }
 } }
 
 #endif

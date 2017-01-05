@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::mlogeps2( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Mlogeps2(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Mlogeps2<T>())
+  {
+    return Mlogeps2<T>();
+  }
 } }
 
 #endif

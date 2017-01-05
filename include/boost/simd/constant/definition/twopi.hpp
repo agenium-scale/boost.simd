@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::twopi( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Twopi(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Twopi<T>())
+  {
+    return Twopi<T>();
+  }
 } }
 
 #endif

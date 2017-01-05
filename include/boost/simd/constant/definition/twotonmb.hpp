@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::twotonmb( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Twotonmb(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Twotonmb<T>())
+  {
+    return Twotonmb<T>();
+  }
 } }
 
 #endif

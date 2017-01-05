@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::halfeps( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Halfeps(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Halfeps<T>())
+  {
+    return Halfeps<T>();
+  }
 } }
 
 #endif

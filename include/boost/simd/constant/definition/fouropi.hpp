@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::fouropi( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Fouropi(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Fouropi<T>())
+  {
+    return Fouropi<T>();
+  }
 } }
 
 #endif

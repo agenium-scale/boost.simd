@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::two( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Two(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Two<T>())
+  {
+    return Two<T>();
+  }
 } }
 
 #endif

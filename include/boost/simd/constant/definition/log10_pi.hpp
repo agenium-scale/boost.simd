@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::log10_pi( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Log10_pi(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Log10_pi<T>())
+  {
+    return Log10_pi<T>();
+  }
 } }
 
 #endif

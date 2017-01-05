@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::deginrad( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Deginrad(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Deginrad<T>())
+  {
+    return Deginrad<T>();
+  }
 } }
 
 #endif

@@ -46,6 +46,12 @@ namespace boost { namespace simd
   {
     return detail::bitincrement( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Bitincrement(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Bitincrement<T>())
+  {
+    return Bitincrement<T>();
+  }
 } }
 
 #endif

@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::mten( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Mten(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Mten<T>())
+  {
+    return Mten<T>();
+  }
 } }
 
 #endif
