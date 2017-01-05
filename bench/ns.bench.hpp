@@ -781,6 +781,86 @@ using make_range_t = typename make_range<N>::type;
 
 } } }
 #include <boost/predef/architecture.h>
+#define NS_BENCH_AUTO_DECLTYPE(...)                                                                \
+  -> decltype(__VA_ARGS__) { return (__VA_ARGS__); }                                               \
+
+#if BOOST_ARCH_x86
+  #define NS_BENCH_ASM_MARKER() __asm__ __volatile__ ("cpuid")
+#else
+#endif
+#include <functional>
+#include <limits>
+#include <cassert>
+#include <sstream>
+#include <algorithm>
+#include <cstdlib>
+#include <cmath>
+#include <random>
+namespace ns { namespace bench { namespace generators {
+template <typename T>
+struct fixed
+{
+  fixed(T const& val) : val_(val)
+  {
+  }
+  inline T const& operator()() {
+    return val_;
+  }
+  std::string description() const {
+    return "";
+  }
+  private:
+  T val_;
+};
+} } }
+#include <boost/predef/compiler.h>
+#include <boost/align/aligned_allocator.hpp>
+#include <boost/optional.hpp>
+#include <functional>
+namespace ns { namespace bench { namespace detail {
+#if !BOOST_COMP_CLANG || BOOST_COMP_CLANG >= BOOST_VERSION_NUMBER(3, 9, 1)
+using std::get;
+using std::make_tuple;
+template <typename... Ts>
+using tuple = std::tuple<Ts...>;
+#else
+template <typename... Ts> struct tuple;
+template <> struct tuple<> {};
+template <typename T, typename... Ts>
+struct tuple<T, Ts...> : tuple<Ts...>
+{
+  tuple(T&& t, Ts&&... ts)
+    : tuple<Ts...>(std::forward<Ts>(ts)...), value_(std::forward<T>(t))
+  {
+  }
+  T value_;
+};
+template <std::size_t I, typename T, typename... Ts>
+struct tuple_get {
+  static auto get(tuple<T, Ts...> const& t)
+  NS_BENCH_AUTO_DECLTYPE(tuple_get<I - 1, Ts...>::get(static_cast<tuple<Ts...> const&>(t)))
+  static auto get(tuple<T, Ts...>& t)
+  NS_BENCH_AUTO_DECLTYPE(tuple_get<I - 1, Ts...>::get(static_cast<tuple<Ts...>&>(t)))
+};
+template <typename T, typename... Ts>
+struct tuple_get<0, T, Ts...> {
+  static T const& get(tuple<T, Ts...> const& t) { return t.value_; }
+  static T&       get(tuple<T, Ts...>& t)       { return t.value_; }
+};
+template <std::size_t I, typename... Ts>
+auto get(tuple<Ts...> const& t)
+NS_BENCH_AUTO_DECLTYPE(tuple_get<I, Ts...>::get(t))
+template <std::size_t I, typename... Ts>
+auto get(tuple<Ts...>& t)
+NS_BENCH_AUTO_DECLTYPE(tuple_get<I, Ts...>::get(t))
+template <typename... Ts>
+tuple<Ts...> make_tuple(Ts&&... ts)
+{
+  return tuple<Ts...>(std::forward<Ts>(ts)...);
+}
+#endif
+} } }
+#include <boost/predef/architecture.h>
 #include <iostream>
 #include <iomanip>
 #include <unordered_map>
@@ -872,7 +952,7 @@ struct results {
   std::unordered_map<std::string, std::string> opts_;
 };
 template <std::size_t... N, typename... Gs>
-std::string make_generators_desc(detail::range<N...> const&, std::tuple<Gs...> const& gs) {
+std::string make_generators_desc(detail::range<N...> const&, detail::tuple<Gs...> const& gs) {
   bool first = true;
   std::string desc;
   auto append = [&](std::string const& d) {
@@ -881,11 +961,11 @@ std::string make_generators_desc(detail::range<N...> const&, std::tuple<Gs...> c
     first = false;
   };
   (void)append;
-  NS_BENCH_STATIC_UNROLL(append, std::get<N>(gs).description());
+  NS_BENCH_STATIC_UNROLL(append, detail::get<N>(gs).description());
   return desc;
 }
 template <typename Experiment, typename Metric, typename... Gs>
-result_info make_result_info(Experiment const& e, Metric const& m, std::tuple<Gs...> const& gs) {
+result_info make_result_info(Experiment const& e, Metric const& m, detail::tuple<Gs...> const& gs) {
   result_info r;
   r.size         = e.size();
   r.element_size = e.element_size();
@@ -1191,10 +1271,6 @@ setup default_setup()
   return s;
 }
 } }
-#define NS_BENCH_AUTO_DECLTYPE(...)                                                                \
-  -> decltype(__VA_ARGS__) { return (__VA_ARGS__); }                                               \
-
-#define NS_BENCH_ASM_MARKER() __asm__ __volatile__ ("cpuid")
 namespace ns { namespace bench {
 #if defined(__GNUC__)
 template <typename T>
@@ -1212,31 +1288,6 @@ BOOST_FORCEINLINE void dnopt(T const& v) {
 }
 #endif
 } }
-#include <functional>
-#include <limits>
-#include <cassert>
-#include <sstream>
-#include <algorithm>
-#include <cstdlib>
-#include <cmath>
-#include <random>
-namespace ns { namespace bench { namespace generators {
-template <typename T>
-struct fixed
-{
-  fixed(T const& val) : val_(val)
-  {
-  }
-  inline T const& operator()() {
-    return val_;
-  }
-  std::string description() const {
-    return "";
-  }
-  private:
-  T val_;
-};
-} } }
 #include <boost/align/aligned_allocator.hpp>
 #include <boost/optional.hpp>
 #include <functional>
@@ -1258,17 +1309,17 @@ void prepare_parameter(generators::fixed<T>*& val, generators::fixed<T>& g, std:
 }
 template <std::size_t... N, typename... Ts, typename... Gs>
 void prepare_parameters( range<N...> const&
-                       , std::tuple<Ts...>& ps
-                       , std::tuple<Gs...>& gs
+                       , detail::tuple<Ts...>& ps
+                       , detail::tuple<Gs...>& gs
                        , std::size_t sz
                        )
 {
   (void)sz;
-  NS_BENCH_STATIC_UNROLL(prepare_parameter, std::get<N>(ps), std::get<N>(gs), sz);
+  NS_BENCH_STATIC_UNROLL(prepare_parameter, detail::get<N>(ps), detail::get<N>(gs), sz);
 }
 template <typename... Ts, typename... Gs>
-void prepare_parameters( std::tuple<Ts...>& ps
-                       , std::tuple<Gs...>& gs
+void prepare_parameters( detail::tuple<Ts...>& ps
+                       , detail::tuple<Gs...>& gs
                        , std::size_t sz
                        )
 {
@@ -1285,10 +1336,10 @@ T const& container_at(generators::fixed<T>* const& g, std::size_t)
   return (*g)();
 }
 template <typename F, std::size_t... N, typename... Args>
-BOOST_FORCEINLINE auto call(range<N...> const&, F f, std::tuple<Args...> const& args, std::size_t i)
-NS_BENCH_AUTO_DECLTYPE(f(container_at(std::get<N>(args), i)...))
+BOOST_FORCEINLINE auto call(range<N...> const&, F f, detail::tuple<Args...> const& args, std::size_t i)
+NS_BENCH_AUTO_DECLTYPE(f(container_at(detail::get<N>(args), i)...))
 template <typename F, typename... Args>
-BOOST_FORCEINLINE auto call(F f, std::tuple<Args...> const& args, std::size_t i)
+BOOST_FORCEINLINE auto call(F f, detail::tuple<Args...> const& args, std::size_t i)
 NS_BENCH_AUTO_DECLTYPE(call(make_range_t<sizeof...(Args)>(), f, args, i))
 template <typename Experiment, typename Enable = void>
 struct experiment_maybe_copy {
@@ -1370,8 +1421,8 @@ void run(results& r, setup const& s, std::string const& name, Experiment&& e, Gs
   };
   times_set  = stats_set();
   cycles_set = stats_set();
-  std::tuple<detail::make_parameters_container_t<Gs, detail::generator_value_t<Gs>>...> ps;
-  auto gs = std::make_tuple(std::forward<Gs>(g)...);
+  auto ps = detail::make_tuple(detail::make_parameters_container_t<Gs, detail::generator_value_t<Gs>>{}...);
+  auto gs = detail::make_tuple(std::forward<Gs>(g)...);
   auto sz  = args_map().get<std::size_t>("loop", ::ns::bench::setup::internal_loop_size());
   if (!is_quiet) std::cerr << ":: Benchmarking: \"" << name << "\" ";
   while (do_continue()) {
