@@ -6,22 +6,9 @@
 ##                            http://www.boost.org/LICENSE_1_0.txt
 ##===================================================================================================
 
-add_subdirectory(arithmetic)
-add_subdirectory(hyperbolic)
-
 SET( SOURCES
-    aligned_input_range.cpp
-    input_range.cpp
-    reduce.simple.cpp
-    reduce.phases.cpp
-    reduce.phase.cpp
-    segmented_input_range.cpp
-    transform.unary.cpp
-    transform.binary.cpp
-    shuffle.unary.cpp
-    shuffle.binary.cpp
-    shuffle.perm.cpp
-    shuffle.perm2.cpp
+    direct_hyperbolic.cpp
+    inverse_hyperbolic.cpp
   )
 
-make_unit( "doc" ${SOURCES})
+make_unit( "doc.hyperbolic" ${SOURCES})

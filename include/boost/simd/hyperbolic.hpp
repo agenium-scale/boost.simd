@@ -41,6 +41,14 @@ namespace boost { namespace simd
           @ref sech and @ref csch are the hyperbolic secant (inverse of
           the hyperbolic cosine) and cosecant (inverse of the hyperbolic sine)
 
+           @par Example:
+
+              @snippet direct_hyperbolic.cpp direct_hyperbolic
+
+           @par Possible output:
+
+              @snippet direct_hyperbolic.txt direct_hyperbolic
+
     - Inverse hyperbolic functors
 
        <center>
@@ -49,6 +57,16 @@ namespace boost { namespace simd
          | @ref acosh  | @ref acoth   | @ref acsch  |
          | @ref asech  | @ref asinh   | @ref atanh  |
        </center>
+
+         @par Example:
+
+            @snippet inverse_hyperbolic.cpp inverse_hyperbolic
+
+         @par Possible output:
+
+            @snippet inverse_hyperbolic.txt inverse_hyperbolic
+
+
     **/
 
 } }
