@@ -1,12 +1,11 @@
 # Boost.SIMD
 
-**Boost.SIMD** is a portable SIMD programming library to be proposed as a Boost library.
+**Boost.SIMD** is a portable SIMD programming library to be proposed as a Boost library. 
+It's a sensible subset of the features proposed by [bSIMD](https://www.numscale.com/en/solutions/bsimd/) - NumScale's closed-source library for SIMD programming - that we saw fit for open sourcing.
 
 [![Build Status](https://travis-ci.org/NumScale/boost.simd.png?branch=develop)](https://travis-ci.org/NumScale/boost.simd)
 
-**Boost.SIMD** was developed to simplify the difficult, tedious and often error-prone process of developing SIMD
-programs. **Boost.SIMD** is designed to seamlessly integrate into existing projects so that you can quickly and
-easily start developing high performance, portable and future proof software.
+**Boost.SIMD** was developed to simplify the difficult, tedious and often error-prone process of developing SIMD programs. **Boost.SIMD** is designed to seamlessly integrate into existing projects so that you can quickly and easily start developing high performance, portable and future proof software.
 
 ## Important Links :
  - [The current Issues List](https://github.com/NumScale/boost.simd/issues)
