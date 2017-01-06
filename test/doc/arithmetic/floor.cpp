@@ -6,7 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-//! [ceil]
+//! [floor]
 #include <boost/simd/arithmetic.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/enumerate.hpp>
@@ -20,17 +20,17 @@ int main()
   pack_ft pf = bs::enumerate<pack_ft>(-2.56, 0.51);
   std::cout
     << "---- simd" << '\n'
-    << " <- pf =           " << pf  << '\n'
-    << " -> bs::ceil(pf) = " << bs::ceil(pf) << '\n';
+    << " <- pf =            " << pf  << '\n'
+    << " -> bs::floor(pf) = " << bs::floor(pf) << '\n';
 
   float xf = 3.2f, yf = -3.2f;
 
   std::cout
     << "---- scalar" << '\n'
-    << " <- xf =           " << xf<< '\n'
-    << " -> bs::ceil(xf) = " << bs::ceil(xf) << '\n'
-    << " <- yf =           " << yf << '\n'
-    << " -> bs::ceil(yf) = " << bs::ceil(yf) << '\n';
+    << " <- xf =            " << xf<< '\n'
+    << " -> bs::floor(xf) = " << bs::floor(xf) << '\n'
+    << " <- yf =            " << yf << '\n'
+    << " -> bs::floor(yf) = " << bs::floor(yf) << '\n';
   return 0;
 }
-//! [ceil]
+//! [floor]

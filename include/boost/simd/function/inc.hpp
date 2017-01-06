@@ -16,33 +16,26 @@ namespace boost { namespace simd
 {
 
  /*!
+  @ingroup group-arithmetic
+  This function object increments its parameter by 1.
 
-    @ingroup group-arithmetic
-    Function object implementing inc capabilities
-
-    Increments a value by 1.
-
-    @par semantic:
-    For any given value @c x of type @c T:
-
-    @code
-    T r = inc(x);
-    @endcode
-
-    is equivalent to:
-
-    @code
-    T r =  x+T(1);
-    @endcode
+    @par Header <boost/simd/function/inc.hpp>
 
     @par Decorators
+      saturated_ ensures that saturated_(inc)(x) will never be strictly less than x,
+      avoiding the wrap around from @ref Valmax to @ref Valmin with integer types.
 
-    saturated_ ensures that saturated_(inc)(x) will never be strictly smaller than x.
+  @see inc, minus
 
-    @see dec, oneminus, plus
+    @par Example:
 
+       @snippet inc.cpp inc
+
+    @par Possible output:
+
+       @snippet inc.txt inc
   **/
-  Value inc(Value const & v0);
+  Value inc(Value const & x);
 } }
 #endif
 

@@ -12,32 +12,33 @@
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/nan.hpp>
-#include <boost/simd/constant/one.hpp>
 #include <iostream>
-#include <iomanip>
 
 namespace bs = boost::simd;
 using pack_ft = bs::pack <float, 8>;
 
 int main()
 {
-  using namespace std;
   pack_ft pf = {  -1.0f,             -0.0f,            0.0f,             1.0f
-                , -bs::Nan<float>(), bs::Nan<float>(), bs::Inf<float>(), bs::Minf<float>()};
-  cout <<  "simd" << endl
-       << " pf =  " << pf   << endl
-       << " -> bs::arg(pf) =                  " << bs::arg(pf)                << endl
-       << " pf =  " << pf   << endl
-       << " -> bs::pedantic_(bs::arg)(pf) =   " << bs::pedantic_(bs::arg)(pf) << endl
-       << "scalar"  << endl;
-  for(size_t i=0; i < pack_ft::static_size; i++)
-  {
-    cout
-      << " xf = " << setw(8) << left << pf[i]   << endl
-      << " -> bs::arg(xf) =                  " << setw(8) << bs::arg(pf[i])                << endl
-      << " xf = " << setw(8) << left << pf[i]   << endl
-      << " -> bs::pedantic_(bs::arg)(xf) =   " << setw(8) << bs::pedantic_(bs::arg)(pf[i]) << endl;
-  }
+                , -bs::Nan<float>(), bs::Nan<float>(), bs::Inf<float>(), bs::Minf<float>() };
+
+  std::cout
+    <<  "---- simd" << '\n'
+    << " <- pf =                         " << pf << '\n'
+    << " -> bs::arg(pf) =                " << bs::arg(pf) << '\n'
+    << " <- pf =                         " << pf << '\n'
+    << " -> bs::pedantic_(bs::arg)(pf) = " << bs::pedantic_(bs::arg)(pf) << '\n'
+    << "scalar"  << '\n';
+
+  float xf =  1.0f;
+  float yf = -1.0f;
+
+  std::cout
+    << "---- scalar"  << '\n'
+    << " <- xf =                         "  << xf << '\n'
+    << " -> bs::arg(xf) =                " << bs::arg(xf) << '\n'
+    << " <- yf =                         "  << yf << '\n'
+    << " -> bs::arg(yf) =                " << bs::arg(yf) << '\n';
   return 0;
 }
 //! [arg]

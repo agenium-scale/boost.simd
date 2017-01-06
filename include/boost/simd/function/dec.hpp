@@ -19,7 +19,7 @@ namespace boost { namespace simd
   @ingroup group-arithmetic
   This function object decrements its parameter by 1.
 
-    @par Header <boost/simd/dec.hpp>
+    @par Header <boost/simd/function/dec.hpp>
 
     @par Decorators
       saturated_ ensures that saturated_(dec)(x) will never be strictly greater than x.
@@ -35,7 +35,7 @@ namespace boost { namespace simd
 
        @snippet dec.txt dec
   **/
-  Value dec(Value const & v0);
+  Value dec(Value const & x);
 } }
 #endif
 

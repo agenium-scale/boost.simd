@@ -10,7 +10,6 @@
 #include <boost/simd/arithmetic.hpp>
 #include <boost/simd/pack.hpp>
 #include <iostream>
-#include <iomanip>
 
 namespace bs =  boost::simd;
 using pack_ft = bs::pack <float, 4>;
@@ -18,29 +17,29 @@ using pack_it = bs::pack <std::int16_t,4>;
 
 int main()
 {
-  using namespace std;
   pack_ft pf = {-1.0f, 2.0f, -3.0f, -32768.0f};
   pack_it pi = {-1,    2,    -3,    -32768   };
-  cout << "simd" << endl
-       << "pf =  " << pf   << endl
-       << "-> bs::abs(pf) =                  " << bs::abs(pf)                 << endl
-       << "pi =  " << pi   << endl
-       << "-> bs::abs(pi) =                  " << bs::abs(pi)                 << endl
-       << "pi =  " << pi   << endl
-       << "-> bs::saturated_(bs::abs(pi)) =  " << bs::saturated_(bs::abs)(pi) << endl
-       << "pi =  " << pi   << endl
-       << "-> bs::std_(bs::abs)(pi) =        " << bs::std_(bs::abs)(pi)       << endl
-       << "scalar"  << endl;
-  for(size_t i=0; i < pack_ft::static_size; i++)
-  {
-    cout
-      << "xf = " << setw(8) << left << pf[i]  << endl
-      << "-> bs::abs(xf) =                  " << setw(8) << bs::abs(pf[i])                 << endl
-      << "xi = " << setw(8) << left << pi[i]  << endl
-      << "-> bs::abs(xi) =                  " << setw(8) << bs::abs(pi[i])                 << endl
-      << "-> bs::saturated_(bs::abs(xi)) =  " << setw(8) << bs::saturated_(bs::abs)(pi[i]) << endl
-      << "-> bs::std_(bs::abs)(xi) =        " << setw(8) << bs::std_(bs::abs)(pi[i])       << endl;
-  }
+
+  std::cout
+    << "---- simd" << '\n'
+    << "<- pf =                           " << pf << '\n'
+    << "-> bs::abs(pf) =                  " << bs::abs(pf) << '\n'
+    << "<- pi =                           " << pi << '\n'
+    << "-> bs::abs(pi) =                  " << bs::abs(pi) << '\n'
+    << "-> bs::saturated_(bs::abs(pi)) =  " << bs::saturated_(bs::abs)(pi) << '\n'
+    << "-> bs::std_(bs::abs)(pi) =        " << bs::std_(bs::abs)(pi) << '\n';
+
+  float xf = -32768.0f;
+  std::int16_t xi =  -32768;
+
+  std::cout
+    << "---- scalar"  << '\n'
+    << "<- xf =                           " << xf << '\n'
+    << "-> bs::abs(xf) =                  " << bs::abs(xf) << '\n'
+    << "<- xi =                           " << xi << '\n'
+    << "-> bs::abs(xi) =                  " << bs::abs(xi) << '\n'
+    << "-> bs::saturated_(bs::abs(xi)) =  " << bs::saturated_(bs::abs)(xi) << '\n'
+    << "-> bs::std_(bs::abs)(xi) =        " << bs::std_(bs::abs)(xi) << '\n';
   return 0;
 }
 //! [abs]

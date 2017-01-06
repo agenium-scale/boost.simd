@@ -18,11 +18,23 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-arithmetic
-    Function object implementing fix capabilities
+    This function object computes the truncation toward @ref Zero
+    of its parameter.
 
-    Computes the truncation toward @ref Zero of its parameter.
+    @par Header <boost/simd/function/fix.hpp>
 
-    This is a convenience alias of @ref trunc
+    It is an alias of @ref trunc
+
+    @see ceil, floor, round,  nearbyint, trunc, ifix, itrunc
+
+    @par Example:
+
+       @snippet fix.cpp fix
+
+    @par Possible output:
+
+       @snippet fix.txt fix
+
   **/
   Value fix(Value const & v0);
 } }

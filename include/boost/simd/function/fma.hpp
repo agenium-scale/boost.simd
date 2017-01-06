@@ -17,31 +17,18 @@ namespace boost { namespace simd
   /*!
 
     @ingroup group-arithmetic
-    Function object function implementing fma capabilities
+    This function object computes the (fused) multiply add of these three parameters.
 
-    Computes the (fused) multiply add of the three parameters.
+    @Notes:
+    The call `fma(a, b, c)` is similar to `a*b+c
 
-    @par semantic:
-    For any given value @c x,  @c y,  @c z of type @c T:
-
-    @code
-    T r = fma(x, y, z);
-    @endcode
-
-    The code is similar to:
-
-    @code
-    T r = x*y+z;
-    @endcode
-
-    @par Note
-    Conformant fused multiply/add implies
+    But really conformant fused multiply/add also implies
 
     - only one rounding
 
     - no "intermediate" overflow
 
-    fma provides this for all integral types and each time it is reasonable
+    fma provides this for all integral types and also each time it is reasonable
     in terms of performance for floating ones (i.e. if the system has the hard
     wired capability).
 
@@ -51,13 +38,21 @@ namespace boost { namespace simd
 
      @par Decorators
 
-    - std_ for floating entries to call directly std::fma. This implies pedantic
+    - std_ for floating entries to call directly std::fma. This generally implies pedantic
       fma behaviour, but in no way improved performances.
     - pedantic_ ensures the fma properties and allows SIMD acceleration if available.
 
     @see fms, fnma, fnms
+
+    @par Example:
+
+       @snippet fma.cpp fma
+
+    @par Possible output:
+
+       @snippet fma.txt fma
   **/
-    Value fma(Value const& v0, Value const& v1, Value const& v2);
+    Value fma(Value const& a, Value const& b, Value const& c);
   }
 } }
 #endif

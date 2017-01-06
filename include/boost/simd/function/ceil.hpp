@@ -20,7 +20,7 @@ namespace boost { namespace simd
     This function object computes the smallest integral representable value of
     its parameter type which is greater or equal to it.
 
-    @par Header <boost/simd/ceil.hpp>
+    @par Header <boost/simd/function/ceil.hpp>
 
     @par Notes
 

@@ -20,21 +20,17 @@ namespace boost { namespace simd
     This function computes the angular orientation of its floating parameter.
 
 
-    @par Header <boost/simd/arg.hpp>
+    @par Header <boost/simd/function/arg.hpp>
 
-    This is equivalent to:
-
-    @code
-    auto r =  (is_negative(x)) ? Pi(bs::as<T>) : Zero(bs::as<T>);
-    @endcode
+    Call to  `arg(x)` is equivalent to  `(is_negative(x)) ? Pi(as(x)) : Zero(as(x))`
 
     @par Notes:
 
     - always returns \f$+0\f$ or \f$\pi\f$ taking into account the bit of sign
        even in the Nan case.
 
-    - With the @c pedantic_ decorator returns \f$+0\f$ or \f$\pi\f$ or @ref Nan
-      if and only if the input is @ref Nan according to the input sign,
+    - With the @c pedantic_ decorator returns `Nan(as(x))`
+      for a  nan input,
 
     - This function implement the restriction to real numbers of the
        complex arg(ument) function.

@@ -17,12 +17,9 @@ SET( SOURCES
     arg.cpp
     average.cpp
     ceil.cpp
-    conj.cpp
-    correct_fma.cpp
     dec.cpp
     dist.cpp
     div.cpp
-    extract.cpp
     fix.cpp
     floor.cpp
     fma.cpp

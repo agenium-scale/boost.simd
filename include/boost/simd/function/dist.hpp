@@ -20,7 +20,7 @@ namespace boost { namespace simd
     @ingroup group-arithmetic
     This function object computes the absolute value of the difference of its parameters.
 
-    @par Header <boost/simd/dist.hpp>
+    @par Header <boost/simd/function/dist.hpp>
 
     @par Notes
 

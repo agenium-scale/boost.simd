@@ -10,36 +10,38 @@
 #include <boost/simd/arithmetic.hpp>
 #include <boost/simd/pack.hpp>
 #include <iostream>
-#include <iomanip>
 
-namespace bs =  boost::simd;
-using pack_ft =  bs::pack <float, 4>;
-using pack_it =  bs::pack <std::int16_t,4>;
+namespace bs = boost::simd;
+using pack_ft = bs::pack <float, 4>;
+using pack_it = bs::pack <std::int16_t,4>;
 
 int main()
 {
-  using namespace std;
   pack_ft pf = { 1.0f, -2.0f, -3.0f, 32700.0f};
   pack_ft qf = { 2.0f, -1.0f, -3.0f, 32721   };
-  pack_it pi = {1,    -2,    -2,    32700   };
-  pack_it qi = {2,    -1,    -3,    32721   };
-  cout <<  "simd" << endl
-       << " pf =  " << pf    << endl
-       << " qf =  " << qf    << endl
-       << " -> bs::average(pf, qf) =  " << bs::average(pf, qf)  << endl
-       << " pi =  " << pi    << endl
-       << " qi =  " << qi    << endl
-       << " -> bs::average(pi, qi) =  " << bs::average(pi, qi)  << endl
-       << "scalar"  << endl;
-  for(size_t i=0; i < pack_ft::static_size; i++)
-  {
-    cout << " xf = " << setw(8) << left << pf[i]  << endl
-         << ",yf = " << setw(8) << left << qf[i]  << endl
-         << " -> bs::average(xf, yf) =  " << setw(8) << bs::average(pf[i], qf[i])  << endl
-         << " xi = " << setw(8) << left << pi[i]  << endl
-         << " yi = " << setw(8) << left << qi[i]  << endl
-         << " -> bs::average(xi, yi) =  " << setw(8) << bs::average(pi[i], qi[i])  << endl;
-  }
+  pack_it pi = { 1,    -2,    -2,    32700   };
+  pack_it qi = { 2,    -1,    -3,    32721   };
+
+  std::cout
+    <<  "---- simd" << '\n'
+    << " <- pf =                   " << pf << '\n'
+    << " <- qf =                   " << qf << '\n'
+    << " -> bs::average(pf, qf) =  " << bs::average(pf, qf) << '\n'
+    << " <- pi =                   " << pi << '\n'
+    << " <- qi =                   " << qi << '\n'
+    << " -> bs::average(pi, qi) =  " << bs::average(pi, qi) << '\n';
+
+  float        xf = 32767.0f, yf = -32000.0f;
+  std::int16_t xi = 32767,    yi = -32000;
+
+  std::cout
+    << "---- scalar"  << '\n'
+    << " <- xf =                   "  << xf << '\n'
+    << "<- ,yf =                   "  << yf << '\n'
+    << " -> bs::average(xf, yf) =  " << bs::average(xf, yf) << '\n'
+    << " <- xi =                   "  << xi << '\n'
+    << " <- yi =                   "  << yi << '\n'
+    << " -> bs::average(xi, yi) =  " << bs::average(xi, yi) << '\n';
   return 0;
 }
 //! [average]

@@ -20,7 +20,7 @@ namespace boost { namespace simd
     @ingroup group-arithmetic
     function object computes the complex conjugate of its parameter
 
-    @par Header <boost/simd/conj.hpp>
+    @par Header <boost/simd/function/conj.hpp>
 
     @Notes
 

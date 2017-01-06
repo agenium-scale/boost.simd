@@ -21,7 +21,7 @@ namespace boost { namespace simd
     If the result cannot be represented by the return type the return is equal to the input.
 
 
-    @par Header <boost/simd/abs.hpp>
+    @par Header <boost/simd/function/abs.hpp>
 
     @par Notes
 

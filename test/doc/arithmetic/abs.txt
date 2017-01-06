@@ -1,36 +1,16 @@
 //! [abs]
-simd
- pf =  (-1, 2, -3, -32768)
- -> bs::abs(pf) =                  (1, 2, 3, 32768)
- pi =  (-1, 2, -3, -32768)
- -> bs::abs(pi) =                  (1, 2, 3, -32768)
- pi =  (-1, 2, -3, -32768)
- -> bs::saturated_(bs::abs(pi)) =  (1, 2, 3, 32767)
- pi =  (-1, 2, -3, -32768)
- -> bs::std_(bs::abs)(pi) =        (1, 2, 3, 32767)
-scalar
- xf = -1
- -> bs::abs(xf) =                  1
- xi = -1
- -> bs::abs(xi) =                  1
- -> bs::saturated_(bs::abs(pi)) =  1
- -> bs::std_(bs::abs)(pi) =        1
- xf = 2
- -> bs::abs(xf) =                  2
- xi = 2
- -> bs::abs(xi) =                  2
- -> bs::saturated_(bs::abs(pi)) =  2
- -> bs::std_(bs::abs)(pi) =        2
- xf = -3
- -> bs::abs(xf) =                  3
- xi = -3
- -> bs::abs(xi) =                  3
- -> bs::saturated_(bs::abs(pi)) =  3
- -> bs::std_(bs::abs)(pi) =        3
- xf = -32768
- -> bs::abs(xf) =                  32768
- xi = -32768
- -> bs::abs(xi) =                  -32768
- -> bs::saturated_(bs::abs(pi)) =  32767
- -> bs::std_(bs::abs)(pi) =        -32768
+---- simd
+<- pf =                           (-1, 2, -3, -32768)
+-> bs::abs(pf) =                  (1, 2, 3, 32768)
+<- pi =                           (-1, 2, -3, -32768)
+-> bs::abs(pi) =                  (1, 2, 3, -32768)
+-> bs::saturated_(bs::abs(pi)) =  (1, 2, 3, 32767)
+-> bs::std_(bs::abs)(pi) =        (1, 2, 3, 32767)
+---- scalar
+<- xf =                           -32768
+-> bs::abs(xf) =                  32768
+<- xi =                           -32768
+-> bs::abs(xi) =                  -32768
+-> bs::saturated_(bs::abs(xi)) =  32767
+-> bs::std_(bs::abs)(xi) =        32767
 //! [abs]
