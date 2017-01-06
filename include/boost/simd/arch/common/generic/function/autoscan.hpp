@@ -12,9 +12,12 @@
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/combine.hpp>
 #include <boost/simd/function/shuffle.hpp>
+#include <boost/simd/detail/dispatch/detail/declval.hpp>
 
 namespace boost { namespace simd { namespace detail
 {
+  namespace bd = boost::dispatch;
+
   //------------------------------------------------------------------------------------------------
   // This meta-permutation implements the scan pattern required for scan-trees.
   template<int Step> struct scan_perm
@@ -87,7 +90,7 @@ namespace boost { namespace simd { namespace ext
                                   , bs::pack_<bd::unspecified_<Arg>, Ext>
                                   )
   {
-    using scalar_t  = decltype( bd::functor<F>()( detail::declval<typename Arg::value_type>() ) );
+    using scalar_t  = decltype( bd::functor<F>()( bd::detail::declval<typename Arg::value_type>() ) );
     using result_t  = typename Arg::template rebind<scalar_t>;
     using function_t = bd::functor<BinOp>;
 

@@ -14,12 +14,14 @@
 #include <ostream>
 #include <iostream>
 #include <type_traits>
+#include <boost/simd/detail/dispatch/detail/declval.hpp>
 
 #if defined(BOOST_SIMD_ENABLE_DIAG)
 
 namespace boost { namespace simd { namespace detail
 {
-
+  namespace bd = boost::dispatch;
+  
 // Use template so that we don't need static instantiation in a .cpp, this prevents
 // linkage from failing..
 template <typename Stream = std::ostream>
@@ -31,7 +33,7 @@ class diagnostic
   struct is_streamable
   {
     template <typename U>
-    static auto test( int ) -> decltype( std::cout << detail::declval<U>()
+    static auto test( int ) -> decltype( std::cout << bd::detail::declval<U>()
                                        , std::true_type()
                                        );
 

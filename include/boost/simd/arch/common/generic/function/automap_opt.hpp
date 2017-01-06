@@ -13,6 +13,7 @@
 #include <boost/simd/detail/dispatch/hierarchy/functions.hpp>
 #include <boost/simd/arch/common/tags.hpp>
 #include <boost/simd/detail/diagnostic.hpp>
+#include <boost/simd/detail/dispatch/detail/declval.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -39,8 +40,8 @@ namespace boost { namespace simd { namespace ext
 
     // We build the return pack as a pack of same cardinal but which type is the scalar return
     // type of functor applied to the input parameter value type.
-    using return_type         = decltype(functor()( detail::declval<bd::functor<Opt>>()
-                                                  , detail::declval<typename Pn::value_type>()...)
+    using return_type         = decltype(functor()( bd::detail::declval<bd::functor<Opt>>()
+                                                  , bd::detail::declval<typename Pn::value_type>()...)
                                                   );
     using result_type         = typename pack::template rebind<return_type>;
     using result_storage_type = typename result_type::storage_type;
@@ -84,7 +85,7 @@ namespace boost { namespace simd { namespace ext
 
     enum {
       same_static_size = traits_info::value,
-      is_noexcept = BOOST_NOEXCEPT_EXPR(detail::declval<functor>()(detail::declval<Pn>()[0]...))
+      is_noexcept = BOOST_NOEXCEPT_EXPR(bd::detail::declval<functor>()(bd::detail::declval<Pn>()[0]...))
     };
 
     static_assert( same_static_size

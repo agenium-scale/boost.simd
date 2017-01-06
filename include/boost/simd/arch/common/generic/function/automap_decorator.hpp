@@ -20,6 +20,8 @@ namespace boost { namespace simd { namespace ext
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
   namespace br = brigand;
+  using bd::detail::declval;
+
   // -----------------------------------------------------------------------------------------------
   // automap for functions with decorators
   BOOST_DISPATCH_OVERLOAD_FALLBACK ( ( typename F
@@ -40,7 +42,7 @@ namespace boost { namespace simd { namespace ext
 
     // We build the return pack as a pack of same cardinal but which type is the scalar return
     // type of functor applied to the input parameter value type.
-    using return_type         = decltype(functor()(detail::declval<typename Pn::value_type>()...));
+    using return_type         = decltype(functor()(bd::detail::declval<typename Pn::value_type>()...));
     using result_type         = typename pack::template rebind<return_type>;
     using result_storage_type = typename result_type::storage_type;
     using result_traits       = typename result_type::traits;
@@ -83,7 +85,7 @@ namespace boost { namespace simd { namespace ext
 
     enum {
       same_static_size = traits_info::value,
-      is_noexcept = BOOST_NOEXCEPT_EXPR(detail::declval<functor>()(detail::declval<Pn>()[0]...))
+      is_noexcept = BOOST_NOEXCEPT_EXPR(bd::detail::declval<functor>()(bd::detail::declval<Pn>()[0]...))
     };
 
     static_assert( same_static_size

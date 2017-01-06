@@ -13,13 +13,13 @@
 
 namespace boost { namespace simd { namespace detail
 {
-  using namespace dispatch::detail;
+  namespace bd = boost::dispatch;
 
   // Some compilers don't provide _mm_set1_epi64x
   template<typename T> struct support_mm_set1_epi64x
   {
     template<typename U>
-    static auto test( int ) -> decltype ( _mm_set1_epi64x(detail::declval<U>())
+    static auto test( int ) -> decltype ( _mm_set1_epi64x(bd::detail::declval<U>())
                                         , std::true_type()
                                         );
 
@@ -33,7 +33,7 @@ namespace boost { namespace simd { namespace detail
   template<typename T> struct support_mm_set_epi64x
   {
     template<typename U>
-    static auto test( int ) -> decltype ( _mm_set_epi64x(detail::declval<U>(),detail::declval<U>())
+    static auto test( int ) -> decltype ( _mm_set_epi64x(bd::detail::declval<U>(),bd::detail::declval<U>())
                                         , std::true_type()
                                         );
 

@@ -12,9 +12,11 @@
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/shuffle.hpp>
 #include <boost/simd/function/combine.hpp>
+#include <boost/simd/detail/dispatch/detail/declval.hpp>
 
 namespace boost { namespace simd { namespace detail
 {
+  using dispatch::detail::declval;
   //------------------------------------------------------------------------------------------------
   // This meta-permutation implements the butterfly pattern required for log-tree based reductions.
   //

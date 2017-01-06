@@ -14,11 +14,13 @@
 #include <boost/simd/function/splatted.hpp>
 #include <boost/simd/detail/function/all_reduce.hpp>
 #include <boost/simd/as.hpp>
+#include <boost/simd/detail/dispatch/detail/declval.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
+  using bd::detail::declval;
 
   BOOST_DISPATCH_OVERLOAD_FALLBACK( ( typename F, typename BinOp, typename NeutralElement
                                     , typename Arg, typename Ext

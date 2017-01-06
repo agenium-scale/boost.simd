@@ -63,7 +63,7 @@ STF_CASE_TPL (" erf", STF_IEEE_TYPES)
  using p_t = bs::pack<T>;
 
   // return type conformity test
-  STF_TYPE_IS(decltype(erf(detail::declval<p_t>())), p_t);
+  STF_TYPE_IS(decltype(erf(bd::detail::declval<p_t>())), p_t);
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
