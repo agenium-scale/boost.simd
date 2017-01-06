@@ -16,7 +16,6 @@
 
 namespace boost { namespace simd { namespace detail
 {
-  using dispatch::detail::declval;
   //------------------------------------------------------------------------------------------------
   // This meta-permutation implements the butterfly pattern required for log-tree based reductions.
   //
@@ -75,8 +74,8 @@ namespace boost { namespace simd { namespace ext
                                     )
   {
     using function_t  = bd::functor<BinOp>;
-    using result_t    = decltype( bd::functor<BinOp>()( detail::declval<Arg>()
-                                                      , detail::declval<Neutral>()
+    using result_t    = decltype( bd::functor<BinOp>()( bd::detail::declval<Arg>()
+                                                      , bd::detail::declval<Neutral>()
                                                       )
                                 );
 

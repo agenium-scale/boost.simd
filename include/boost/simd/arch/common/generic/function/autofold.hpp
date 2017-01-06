@@ -20,7 +20,6 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
-  using bd::detail::declval;
 
   BOOST_DISPATCH_OVERLOAD_FALLBACK( ( typename F, typename BinOp, typename NeutralElement
                                     , typename Arg, typename Ext
@@ -30,7 +29,7 @@ namespace boost { namespace simd { namespace ext
                                   , bs::pack_<bd::unspecified_<Arg>, Ext>
                                   )
   {
-    using result_t  = decltype( bd::functor<F>()( detail::declval<typename Arg::value_type>() ) );
+    using result_t  = decltype( bd::functor<F>()( bd::detail::declval<typename Arg::value_type>() ) );
     using pr_t      = typename Arg::template rebind<result_t>;
 
     BOOST_FORCEINLINE result_t do_(Arg const& a0, aggregate_storage const&) const
@@ -66,7 +65,7 @@ namespace boost { namespace simd { namespace ext
                                   , bs::pack_<bd::unspecified_<Arg>, Ext>
                                   )
   {
-    using result_t  = decltype( bd::functor<F>()( detail::declval<typename Arg::value_type>() ) );
+    using result_t  = decltype( bd::functor<F>()( bd::detail::declval<typename Arg::value_type>() ) );
     using pr_t      = typename Arg::template rebind<result_t>;
 
 
