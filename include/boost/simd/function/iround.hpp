@@ -18,24 +18,22 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-arithmetic
-    Function object implementing iround capabilities
+    This function object computes the integer conversion of the @ref round of its parameter.
 
-    Computes the integer conversion of the round of its parameter.
+    @par Note:
+    This operation is properly saturated
 
-    @par semantic:
-    For any given value @c x of type @c T:
+    @see round, iround, iround, ifix, inearbyint
 
-    @code
-    as_integer_t<T> r = iround(x);
-    @endcode
+    @par Example:
 
-    is similar to:
+       @snippet iround.cpp iround
 
-    @code
-    as_integer_t<T> r = saturated_(toint)(round(x));
-    @endcode
+    @par Possible output:
 
-  **/
+       @snippet iround.txt iround
+
+ **/
   as_integer_t<Value> iround(Value const & x);
 } }
 #endif

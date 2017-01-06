@@ -18,29 +18,26 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-arithmetic
-    Function object implementing inearbyint capabilities
+    This function object computes the integer conversion of the @ref nearbyint of its parameter.
 
-    Computes the integer conversion of the nearbyint of its parameter.
-
-    @par semantic:
-    For any given value @c x of type @c T:
-
-    @code
-    as_integer_t<T> r = inearbyint(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    as_integer_t<T> r = toint(nearbyint(x));
-    @endcode
+    @par Note:
+    This operation is properly saturated
 
     @par Decorators:
 
    - pedantic_ as toint does not care about large value, if you need a full range correctness
      use this decorator that computes  saturated_(toint)(nearbyint(x));
 
-    @see nearbyint
+    @see nearbyint, ifloor, iround, ifix, iceil
+
+    @par Example:
+
+       @snippet inearbyint.cpp inearbyint
+
+    @par Possible output:
+
+       @snippet inearbyint.txt inearbyint
+
   **/
 
   as_integer_t<Value> inearbyint(Value const& x);
