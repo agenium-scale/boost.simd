@@ -46,7 +46,7 @@ namespace boost { namespace simd { namespace ext
                            )
   {
     BOOST_FORCEINLINE
-    A0 operator() ( A0 a0, A0 a1, A0 a2) const BOOST_NOEXCEPT
+    A0 operator() (pedantic_tag const &, A0 a0, A0 a1, A0 a2) const BOOST_NOEXCEPT
     {
       return -pedantic_(fms)(a0, a1, a2);
     }
