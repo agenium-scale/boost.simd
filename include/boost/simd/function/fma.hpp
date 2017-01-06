@@ -20,7 +20,7 @@ namespace boost { namespace simd
     This function object computes the (fused) multiply add of these three parameters.
 
     @Notes:
-    The call `fma(a, b, c)` is similar to `a*b+c
+    The call `fma(a, b, c)` is similar to `a*b+c`
 
     But really conformant fused multiply/add also implies
 
@@ -34,7 +34,7 @@ namespace boost { namespace simd
 
     If you need pedantic fma capabilities in all circumstances in your own
     code you can use the pedantic_ or  std_ decorator
-    (although both can can be very expensive).
+    (although both can be very expensive).
 
      @par Decorators
 
