@@ -17,28 +17,23 @@ namespace boost { namespace simd
 
  /*!
   @ingroup group-arithmetic
-  Function object implementing dec
+  This function object decrements its parameter by 1.
 
-  Decrements a value by 1.
+    @par Header <boost/simd/dec.hpp>
 
-  @par semantic:
-  For any given value @c x of type @c T:
+    @par Decorators
+      saturated_ ensures that saturated_(dec)(x) will never be strictly greater than x.
+      avoiding the wrap around from @ref Valmin to @ref Valmax with integer types
 
-  @code
-  T r = dec(x);
-  @endcode
+  @see inc, minus
 
-  is equivalent to:
+    @par Example:
 
-  @code
-  T r =  x-T(1);
-  @endcode
+       @snippet dec.cpp dec
 
-  @par Decorators
-    saturated_ ensures that saturated_(dec)(x) will never be strictly greater than x.
+    @par Possible output:
 
-  @see minus
-
+       @snippet dec.txt dec
   **/
   Value dec(Value const & v0);
 } }

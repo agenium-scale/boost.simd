@@ -1,0 +1,30 @@
+//! [dec]
+simd
+ pf =  (-1, 2, -3, -32768)
+ -> bs::dec(pf) =                  (-2, 1, -4, -32769)
+ pi =  (-1, 2, -3, -32768)
+ -> bs::dec(pi) =                  (-2, 1, -4, 32767)
+ -> bs::saturated_(bs::dec(pi)) =  (-2, 1, -4, -32768)
+scalar
+ xf = -1
+ -> bs::dec(xf) =                  -2
+ xi = -1
+ -> bs::dec(xi) =                  -2
+ -> bs::saturated_(bs::dec(pi)) =  -2
+ xf = 2
+ -> bs::dec(xf) =                  1
+ xi = 2
+ -> bs::dec(xi) =                  1
+ -> bs::saturated_(bs::dec(pi)) =  1
+ xf = -3
+ -> bs::dec(xf) =                  -4
+ xi = -3
+ -> bs::dec(xi) =                  -4
+ -> bs::saturated_(bs::dec(pi)) =  -4
+ xf = -32768
+ -> bs::dec(xf) =                  -32769
+ xi = -32768
+ -> bs::dec(xi) =                  32767
+ -> bs::saturated_(bs::dec(pi)) =  -32768
+4294967295
+//! [dec]

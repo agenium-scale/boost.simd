@@ -23,7 +23,7 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/abs.hpp>
 
-    @par Notes:
+    @par Notes
 
     - Be aware that for signed integers the absolute value of @ref Valmin is not representable
     in the input type and the result is undefined.

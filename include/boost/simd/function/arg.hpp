@@ -25,7 +25,7 @@ namespace boost { namespace simd
     This is equivalent to:
 
     @code
-    auto r =  (is_negative(x)) ? Pi<T>() : Zero<T>();
+    auto r =  (is_negative(x)) ? Pi(bs::as<T>) : Zero(bs::as<T>);
     @endcode
 
     @par Notes:

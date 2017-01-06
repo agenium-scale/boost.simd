@@ -1,0 +1,21 @@
+//! [ceil]
+simd
+ pf =  (-2.56, -2.05, -1.54, -1.03, -0.52, -0.00999999, 0.5, 1.01) -> bs::ceil(pf) = (-2, -2, -1, -1, -0, -0, 1, 2)
+scalar
+ xf = -2.56
+ -> bs::ceil(xf) = -2
+ xf = -2.05
+ -> bs::ceil(xf) = -2
+ xf = -1.54
+ -> bs::ceil(xf) = -1
+ xf = -1.03
+ -> bs::ceil(xf) = -1
+ xf = -0.52
+ -> bs::ceil(xf) = -0
+ xf = -0.00999999
+ -> bs::ceil(xf) = -0
+ xf = 0.5
+ -> bs::ceil(xf) = 1
+ xf = 1.01
+ -> bs::ceil(xf) = 2
+//! [ceil]
