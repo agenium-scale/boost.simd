@@ -10,7 +10,7 @@
 #define BOOST_SIMD_DETAIL_SHUFFLE_SHUFFLER_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/constant/zero.hpp>
 
 namespace boost { namespace simd { namespace detail

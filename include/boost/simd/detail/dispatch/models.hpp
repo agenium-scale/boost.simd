@@ -15,7 +15,7 @@
 #define BOOST_SIMD_DETAIL_DISPATCH_MODELS_HPP_INCLUDED
 
 #include <boost/simd/detail/dispatch/hierarchy_of.hpp>
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <type_traits>
 
 namespace boost { namespace dispatch
@@ -24,7 +24,7 @@ namespace boost { namespace dispatch
   {
     template<typename T, typename Hierarchy> struct models
     {
-      template<typename U> using hierarchy_t  = brigand::apply<Hierarchy,U>;
+      template<typename U> using hierarchy_t  = nsm::apply<Hierarchy,U>;
 
       template<typename U> static std::true_type  test( hierarchy_t<U> );
       template<typename  > static std::false_type test( ... );

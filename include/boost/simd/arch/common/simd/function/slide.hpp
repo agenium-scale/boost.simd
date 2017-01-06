@@ -15,7 +15,7 @@
 #include <boost/simd/function/slice_high.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/core/ignore_unused.hpp>
 
 namespace boost { namespace simd { namespace ext
@@ -44,7 +44,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE T operator()(T const& a0, Offset const&) const BOOST_NOEXCEPT
     {
-      return do_(a0,brigand::bool_<(Offset::value >= 0)>());
+      return do_(a0,nsm::bool_<(Offset::value >= 0)>());
     }
   };
 
@@ -63,7 +63,7 @@ namespace boost { namespace simd { namespace ext
     // Slide by N gives whatever in non-aggregate storage
     template<typename K, typename H, typename... L0, typename... L1>
     static BOOST_FORCEINLINE T unroll ( T const& a0, T const& a1, K const&, H const&
-                                      , brigand::list<L0...> const&, brigand::list<L1...> const&
+                                      , nsm::list<L0...> const&, nsm::list<L1...> const&
                                       )
     {
       // Sometimes, when L0 or L1 is empty, a0 or a1 can be unused and some compilers warns about it
@@ -75,7 +75,7 @@ namespace boost { namespace simd { namespace ext
     template<typename... L0, typename... L1>
     static BOOST_FORCEINLINE T unroll ( T const& a0, T const& a1, aggregate_storage const&
                                       , std::true_type const&
-                                      , brigand::list<L0...> const&, brigand::list<L1...> const&
+                                      , nsm::list<L0...> const&, nsm::list<L1...> const&
                                       )
     {
       return combine( slide<Offset::value%hcard::value>(a0.storage()[0], a0.storage()[1])
@@ -86,7 +86,7 @@ namespace boost { namespace simd { namespace ext
     template<typename... L0, typename... L1>
     static BOOST_FORCEINLINE T unroll ( T const& a0, T const& a1, aggregate_storage const&
                                       , std::false_type const&
-                                      , brigand::list<L0...> const&, brigand::list<L1...> const&
+                                      , nsm::list<L0...> const&, nsm::list<L1...> const&
                                       )
     {
       return combine( slide<Offset::value%hcard::value>(a0.storage()[1], a1.storage()[0])
@@ -100,9 +100,9 @@ namespace boost { namespace simd { namespace ext
       // unrolling seen above. We statically computes the indexes from a0 and a1 using their
       // relative position with respect to the slide offset.
       return unroll ( a0, a1, typename T::traits::storage_kind{}
-                    , brigand::bool_<(Offset::value < hcard::value)>{}
-                    , brigand::range<int,Offset::value, T::static_size>{}
-                    , brigand::range<int,0, Offset::value>{}
+                    , nsm::bool_<(Offset::value < hcard::value)>{}
+                    , nsm::range<int,Offset::value, T::static_size>{}
+                    , nsm::range<int,0, Offset::value>{}
                     );
     }
   };

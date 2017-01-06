@@ -26,8 +26,8 @@ namespace boost { namespace simd { namespace detail
     static BOOST_FORCEINLINE T process(T const& a0, pattern_<Ps...> const&)
     {
       using bytes_t   = typename T::template retype<std::uint8_t,16>;
-      using ranges_t  = brigand::range<int,0,16>;
-      using pattern_t = brigand::integral_list<int,Ps...>;
+      using ranges_t  = nsm::range<int,0,16>;
+      using pattern_t = nsm::integral_list<int,Ps...>;
 
       return  bitwise_cast<T>
         ( bytes_t( _mm_shuffle_epi8( bitwise_cast<bytes_t>(a0)
@@ -42,8 +42,8 @@ namespace boost { namespace simd { namespace detail
     static BOOST_FORCEINLINE T process(T const& a0, T const& a1, pattern_<Ps...> const&)
     {
       using bytes_t   = typename T::template retype<std::uint8_t,16>;
-      using ranges_t  = brigand::range<int,0,16>;
-      using pattern_t = brigand::integral_list<int,Ps...>;
+      using ranges_t  = nsm::range<int,0,16>;
+      using pattern_t = nsm::integral_list<int,Ps...>;
 
       return  bitwise_or
         ( bitwise_cast<T>(bytes_t

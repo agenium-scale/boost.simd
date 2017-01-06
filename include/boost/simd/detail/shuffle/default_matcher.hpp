@@ -10,7 +10,7 @@
 #define BOOST_SIMD_DETAIL_SHUFFLE_DEFAULT_MATCHER_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/function/combine.hpp>
 #include <boost/simd/function/slice.hpp>
@@ -23,9 +23,9 @@ namespace boost { namespace simd { namespace detail
   // Half-permutation snatcher
   template<bool isUpper, int... Ps> struct half_
   {
-    using perm = brigand::integral_list<int,Ps...>;
+    using perm = nsm::integral_list<int,Ps...>;
     template<typename I, typename C>
-    struct apply : brigand::at_c < perm, isUpper ? I::value+C::value : I::value>
+    struct apply : nsm::at_c < perm, isUpper ? I::value+C::value : I::value>
     {};
   };
 
@@ -79,7 +79,7 @@ namespace boost { namespace simd { namespace detail
     static BOOST_FORCEINLINE T process(T const& a0, T const& a1, pattern_<P...> const&)
     {
       return T( fill_ (a0 ,a1 , std::integral_constant<int,P>{}
-                              , brigand::bool_<(P<T::static_size)>{}
+                              , nsm::bool_<(P<T::static_size)>{}
                       )...
               );
     }

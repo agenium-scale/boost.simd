@@ -13,7 +13,7 @@
 #include <boost/simd/config.hpp>
 #include <boost/simd/logical.hpp>
 #include <boost/simd/meta/real_of.hpp>
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/dispatch/meta/factory_of.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 
@@ -24,19 +24,19 @@ namespace boost { namespace simd
     template<typename T, typename F>
     struct  as_logical
     {
-      using type = brigand::apply<F, logical<T> >;
+      using type = nsm::apply<F, logical<T> >;
     };
 
     template<typename T, typename F>
     struct  as_logical< logical<T>, F >
     {
-      using type = brigand::apply<F, logical<T> >;
+      using type = nsm::apply<F, logical<T> >;
     };
 
     template<typename F>
     struct  as_logical<bool, F>
     {
-      using type = brigand::apply<F, bool >;
+      using type = nsm::apply<F, bool >;
     };
   }
 

@@ -11,7 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ILOG2_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ILOG2_HPP_INCLUDED
 
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/function/clz.hpp>
 #include <boost/simd/function/exponent.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
@@ -45,7 +45,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator()(A0 a0) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG( a0 > 0, "Logarithm is not defined for zero or negative values." );
-      return impl(a0, typename brigand::bool_<sizeof(A0) <= 4>::type());
+      return impl(a0, typename nsm::bool_<sizeof(A0) <= 4>::type());
     }
 
     static BOOST_FORCEINLINE A0 impl( A0  a0,  std::true_type const &) BOOST_NOEXCEPT

@@ -26,7 +26,7 @@ void unroll_step ( bs::pack<T,N> const& p, std::array<T,N> const& ref, Idx const
 
 template <typename T, std::size_t N, typename Env, typename... Idx>
 void unroll ( bs::pack<T,N> const& p, std::array<T,N> const& ref
-            , brigand::list<Idx...> const&, Env& $
+            , nsm::list<Idx...> const&, Env& $
             )
 {
   BOOST_SIMD_LOCAL_UNROLL( unroll_step(p,ref,Idx{},$) );
@@ -42,7 +42,7 @@ void test_st(Env& $)
   for(std::size_t i = 0; i < N; ++i) ref[i] = T(i*2);
 
   bs::pack<T,N> p(&ref[0], &ref[0]+N);
-  unroll(p,ref,brigand::range<std::size_t, 0, N>(),$);
+  unroll(p,ref,nsm::range<std::size_t, 0, N>(),$);
 }
 
 STF_CASE_TPL("Check static extract on pack" , STF_NUMERIC_TYPES)

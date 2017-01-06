@@ -12,7 +12,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SIGNIFICANTS_HPP_INCLUDED
 #include <boost/simd/detail/overload.hpp>
 
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
@@ -42,9 +42,9 @@ namespace boost { namespace simd { namespace ext
 
    BOOST_DISPATCH_OVERLOAD_IF( significants_
                              , (typename A0, typename A1, typename X)
-                             , ( brigand::and_<
+                             , ( nsm::and_<
                                  detail::is_native<X>,
-                                 brigand::bool_<bs::cardinal_of<A0>::value == bs::cardinal_of<A1>::value>
+                                 nsm::bool_<bs::cardinal_of<A0>::value == bs::cardinal_of<A1>::value>
                                  >
                                )
                              , bd::cpu_

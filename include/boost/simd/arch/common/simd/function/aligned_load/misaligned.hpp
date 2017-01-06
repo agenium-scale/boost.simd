@@ -48,7 +48,7 @@ namespace boost { namespace simd { namespace ext
                       , "boost::simd::aligned_load was performed on an unaligned pointer"
                       );
 
-      return do_( p, m, brigand::bool_<unalignment != 0>()
+      return do_( p, m, nsm::bool_<unalignment != 0>()
                 , typename target_t::storage_kind(), typename target_t::traits::static_range{}
                 );
     }
@@ -56,7 +56,7 @@ namespace boost { namespace simd { namespace ext
     // Aggregate case: fill in the storage by calling load twice
     template<typename... N> static BOOST_FORCEINLINE
     target_t do_( Pointer p, Misalignment const&, std::true_type const&
-                , aggregate_storage const&, brigand::list<N...> const&
+                , aggregate_storage const&, nsm::list<N...> const&
                 ) BOOST_NOEXCEPT
     {
       using sv_t = typename storage_t::value_type;
@@ -67,7 +67,7 @@ namespace boost { namespace simd { namespace ext
 
     template<typename... N> static BOOST_FORCEINLINE
     target_t do_( Pointer p, Misalignment const&, std::false_type const&
-                , aggregate_storage const&, brigand::list<N...> const&
+                , aggregate_storage const&, nsm::list<N...> const&
                 ) BOOST_NOEXCEPT
     {
       using sv_t = typename storage_t::value_type;
@@ -79,7 +79,7 @@ namespace boost { namespace simd { namespace ext
     // Other case: Fill a pack piecewise
     template<typename K, typename... N> static BOOST_FORCEINLINE
     target_t do_( Pointer p, Misalignment const&, std::true_type const&
-                , K const&, brigand::list<N...> const&
+                , K const&, nsm::list<N...> const&
                 ) BOOST_NOEXCEPT
     {
       return target_t(static_cast<typename target_t::value_type>(p[N::value])...);
@@ -87,7 +87,7 @@ namespace boost { namespace simd { namespace ext
 
     template<typename K, typename... N> static BOOST_FORCEINLINE
     target_t do_( Pointer p, Misalignment const&, std::false_type const&
-                , K const&, brigand::list<N...> const&
+                , K const&, nsm::list<N...> const&
                 ) BOOST_NOEXCEPT
     {
       return aligned_load<target_t>(p);

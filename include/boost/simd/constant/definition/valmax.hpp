@@ -12,7 +12,7 @@
 #define BOOST_SIMD_CONSTANT_DEFINITION_VALMAX_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/detail/dispatch/meta/as_unsigned.hpp>
@@ -47,10 +47,10 @@ namespace boost { namespace simd
         static std::integral_constant<X,X(0xFFFFFFFFFFFFFFFFULL)> value(boost::dispatch::uint_<X> const&);
 
         template<typename X>
-        static brigand::single_<0x7F7FFFFF> value(boost::dispatch::single_<X> const&);
+        static nsm::single_<0x7F7FFFFF> value(boost::dispatch::single_<X> const&);
 
         template<typename X>
-        static brigand::double_<0x7FEFFFFFFFFFFFFFULL> value(boost::dispatch::double_<X> const&);
+        static nsm::double_<0x7FEFFFFFFFFFFFFFULL> value(boost::dispatch::double_<X> const&);
       };
     };
   }

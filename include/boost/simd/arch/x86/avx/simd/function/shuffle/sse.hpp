@@ -28,10 +28,10 @@ namespace boost { namespace simd { namespace detail
     // -------------------------------------------------------------------------------------------
     // Check if permutaton its into mm_permute_p*
     template<int I0, int I1>
-    struct permute2 : brigand::bool_<(I0!=-1) && (I1!=-1)> {};
+    struct permute2 : nsm::bool_<(I0!=-1) && (I1!=-1)> {};
 
     template<int I0, int I1, int I2, int I3>
-    struct permute4 : brigand::bool_<(I0!=-1) && (I1!=-1) && (I2!=-1) && (I3!=-1)> {};
+    struct permute4 : nsm::bool_<(I0!=-1) && (I1!=-1) && (I2!=-1) && (I3!=-1)> {};
 
     // -------------------------------------------------------------------------------------------
     // Unary process for 2x64 registers
