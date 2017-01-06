@@ -13,7 +13,7 @@ of exiting the calculation loop when all of the pixels currently being worked on
 -------------------------------------
 
 In this tutorial we will:
-- [Demonstrate how to vectorize a calculation where eaach pixel requires a varying amount of calculation](#julia-calculation)
+- [Demonstrate how to vectorize a calculation where each pixel requires a varying amount of calculation](#julia-calculation)
 
 @section julia-intro Julia Set
 
