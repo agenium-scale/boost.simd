@@ -26,7 +26,7 @@ namespace boost { namespace simd
     ContiguousRange by returning boost::simd::pack at every iteration step.
 
     @par Example
-    @snippet intput_range.cpp input_range
+    @snippet input_range.cpp input_range
     Possible output:
     @code
     Sum of [1 ... 16] is 136
