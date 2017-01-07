@@ -18,30 +18,26 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-arithmetic
-    Function object implementing oneminus capabilities
+    This function object returns  one minus the entry.
 
-    Returns the one minus the entry.
-
-    @par semantic:
-    For any given value @c x of type @c T:
-
-    @code
-    T r = oneminus(x);
-    @endcode
-
-    For signed type is similar to:
-
-    @code
-    T r = 1-x
-    @endcode
+    @par Notes
+    Call to `oneminus(x)` is similar to `1-x`
 
     @par Decorator
 
-    saturated_ decorator is available,  but for unsigned integral types the saturated_
-    function is equivalent to `x == 0 ? 1 : 0`
+    _saturated_ is available,  but for unsigned integral types the saturated_
+    function is merely  equivalent to `x == 0 ? 1 : 0`
+
+    @par Example:
+
+       @snippet oneminus.cpp oneminus
+
+    @par Possible output:
+
+       @snippet oneminus.txt oneminus
 
   **/
-  Value oneminus(Value const & v0);
+  Value oneminus(Value const & x);
 } }
 #endif
 

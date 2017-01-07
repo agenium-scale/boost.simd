@@ -11,11 +11,17 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/valmax.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/function/abs.hpp>
 #include <boost/simd/function/raw.hpp>
+#include <boost/simd/function/sign.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
+
 #ifdef BOOST_MSVC
   #pragma warning(push)
   #pragma warning(disable: 4723) // potential divide by 0
@@ -30,6 +36,18 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return One<A0>()/a0;
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( rec_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bd::scalar_< bd::arithmetic_<A0> >
+                          )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    {
+      return (a0 ? ((bs::abs(a0) == One<A0>()) ? sign(a0) : Zero<A0>()) : Valmax<A0>());
     }
   };
 
