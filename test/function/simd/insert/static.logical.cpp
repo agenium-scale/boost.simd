@@ -19,7 +19,7 @@ namespace bs = boost::simd;
 namespace bd = boost::dispatch;
 
 template<typename A, typename P, typename... N>
-void f( brigand::list<N...> const&, A& a, P& p)
+void f( nsm::list<N...> const&, A& a, P& p)
 {
   BOOST_SIMD_LOCAL_UNROLL( a[N::value] = N::value%2 ? true : false );
   BOOST_SIMD_LOCAL_UNROLL( (bs::insert(p, N::value, N::value%2 ? true : false )) );
@@ -31,7 +31,7 @@ void test_st(Env& $)
   bs::pack<T, N>  p;
   std::array<bool,N> ref;
 
-  f( brigand::range<std::size_t, 0, N>(),ref,p);
+  f( nsm::range<std::size_t, 0, N>(),ref,p);
 
   for(std::size_t i = 0;i < N; ++i) STF_EQUAL( p[i], ref[i] );
 }

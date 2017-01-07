@@ -17,7 +17,7 @@
 #include <boost/fusion/include/is_sequence.hpp>
 #include <boost/fusion/include/as_vector.hpp>
 #include <boost/fusion/include/size.hpp>
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <type_traits>
 #include <tuple>
 
@@ -50,8 +50,8 @@ namespace boost { namespace dispatch
         using first = typename boost::fusion::result_of::value_at<fixed, boost::mpl::int_<0>>::type;
 
         // Are all types similar to first ?
-        using same = std::is_same<brigand::_1,first>;
-        using type = brigand::all<brigand::as_list<fixed>,same>;
+        using same = std::is_same<nsm::_1,first>;
+        using type = nsm::all<nsm::as_list<fixed>,same>;
       };
 
       using type = typename impl<fixed,sz::value != 0>::type;
@@ -73,8 +73,8 @@ namespace boost { namespace dispatch
     template<typename T, typename U, typename... Ts> struct is_homogeneous_<std::tuple<T,U,Ts...>>
     {
       // Are all yes similar to first ?
-      using same = std::is_same<T,brigand::_1>;
-      using type = brigand::all<std::tuple<U,Ts...>,same>;
+      using same = std::is_same<T,nsm::_1>;
+      using type = nsm::all<std::tuple<U,Ts...>,same>;
     };
   }
 

@@ -12,7 +12,7 @@
 #define BOOST_SIMD_CONSTANT_DEFINITION_ALLBITS_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/detail/constant_traits.hpp>
 #include <boost/simd/constant/definition/mone.hpp>
@@ -33,10 +33,10 @@ namespace boost { namespace simd
         static auto value(X const& x) -> decltype(mone_::value_map::value(x));
 
         template<typename X>
-        static brigand::single_<0xFFFFFFFFUL> value(boost::dispatch::single_<X> const&);
+        static nsm::single_<0xFFFFFFFFUL> value(boost::dispatch::single_<X> const&);
 
         template<typename X>
-        static brigand::double_<0xFFFFFFFFFFFFFFFFULL> value(boost::dispatch::double_<X> const&);
+        static nsm::double_<0xFFFFFFFFFFFFFFFFULL> value(boost::dispatch::double_<X> const&);
       };
     };
   }

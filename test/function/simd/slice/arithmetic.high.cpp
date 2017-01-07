@@ -14,11 +14,11 @@
 namespace bs = boost::simd;
 
 template<typename T, std::size_t N, typename Env>
-void test( Env&, brigand::bool_<false> const& )
+void test( Env&, nsm::bool_<false> const& )
 {}
 
 template<typename T, std::size_t N, typename Env>
-void test( Env& $, brigand::bool_<true> const& = {} )
+void test( Env& $, nsm::bool_<true> const& = {} )
 {
   std::array<T,N> ref;
   for(std::size_t i=0;i<N;++i) ref[i] = T(1+i);
@@ -34,6 +34,6 @@ STF_CASE_TPL("slice_high pack<T,N> into a pack<T,N/2>", STF_NUMERIC_TYPES)
   static const std::size_t N = bs::pack<T>::static_size;
 
   test<T,N>($);
-  test<T,N/2>($, brigand::bool_<(N/2 > 1)>{});
+  test<T,N/2>($, nsm::bool_<(N/2 > 1)>{});
   test<T,N*2>($);
 }

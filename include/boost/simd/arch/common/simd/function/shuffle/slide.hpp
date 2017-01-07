@@ -11,7 +11,7 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/shuffle.hpp>
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/function/slide.hpp>
 
 namespace boost { namespace simd
@@ -30,17 +30,17 @@ namespace boost { namespace simd
     template<typename L> struct make_zero;
 
     template<typename... T>
-    struct make_zero<brigand::list<T...>>
+    struct make_zero<nsm::list<T...>>
     {
-      using type = brigand::integral_list<int, (sizeof(T)!=0?-1:1)...>;
+      using type = nsm::integral_list<int, (sizeof(T)!=0?-1:1)...>;
     };
 
     // ---------------------------------------------------------------------------------------------
     // Generate a forward slide pattern of index N
     template<int N, int Sz> struct make_forward_slide
     {
-      using type = brigand::append< brigand::range<int,N,Sz>
-                                  , typename make_zero< brigand::range<int,0,N> >::type
+      using type = nsm::append< nsm::range<int,N,Sz>
+                                  , typename make_zero< nsm::range<int,0,N> >::type
                                   >;
     };
 
@@ -49,8 +49,8 @@ namespace boost { namespace simd
     template<int N, int Sz>
     struct make_backward_slide
     {
-      using type = brigand::append< typename make_zero< brigand::range<int,0,N> >::type
-                                  , brigand::range<int,0,(Sz-N)>
+      using type = nsm::append< typename make_zero< nsm::range<int,0,N> >::type
+                                  , nsm::range<int,0,(Sz-N)>
                                   >;
     };
 
@@ -59,12 +59,12 @@ namespace boost { namespace simd
     template<typename S, typename L> struct make_slides;
 
     template<typename S, typename... T>
-    struct make_slides<S,brigand::list<T...>>
+    struct make_slides<S,nsm::list<T...>>
     {
       template<int X, bool Fwd> struct do_          : make_forward_slide<X,S::value>    {};
       template<int X>           struct do_<X,false> : make_backward_slide<-X,S::value>  {};
 
-       using type = brigand::list<typename do_<T::value,(T::value>0)>::type...>;
+       using type = nsm::list<typename do_<T::value,(T::value>0)>::type...>;
     };
 
     // ---------------------------------------------------------------------------------------------
@@ -72,25 +72,25 @@ namespace boost { namespace simd
     template<int N, int... Ps> struct find_slide
     {
       using checks = typename make_slides < std::integral_constant<int,sizeof...(Ps)>
-                                          , brigand::range<int,-(N-1),N>
+                                          , nsm::range<int,-(N-1),N>
                                           >::type;
 
-      using found = brigand::find < checks
-                                  , std::is_same<brigand::_1,brigand::integral_list<int,Ps...>>
+      using found = nsm::find < checks
+                                  , std::is_same<nsm::_1,nsm::integral_list<int,Ps...>>
                                   >;
 
-      using idx   = std::integral_constant<int, N-int(brigand::size<found>::value)>;
+      using idx   = std::integral_constant<int, N-int(nsm::size<found>::value)>;
 
       using type = typename std::conditional< idx::value && (idx::value<N)
                                             , slide_pattern<idx::value,pattern_<Ps...>>
-                                            , brigand::no_such_type_
+                                            , nsm::no_such_type_
                                             >::type;
     };
 
     // ---------------------------------------------------------------------------------------------
     // Is this a slide pattern ?
     template<int... Ps>
-    struct is_slide : brigand::bool_< !std::is_same < brigand::no_such_type_
+    struct is_slide : nsm::bool_< !std::is_same < nsm::no_such_type_
                                                     , typename find_slide<sizeof...(Ps),Ps...>::type
                                                     >::value
                                     >

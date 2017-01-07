@@ -37,7 +37,7 @@ namespace boost { namespace simd { namespace detail
     };
 
     template<typename V, typename... N>
-    static BOOST_FORCEINLINE V mask(V const& z, brigand::list<N...> const&)
+    static BOOST_FORCEINLINE V mask(V const& z, nsm::list<N...> const&)
     {
       using pi_t = boost::dispatch::as_integer_t<V>;
       return z & pi_t( apply<typename pi_t::value_type, N::value>::type::value... );
@@ -95,7 +95,7 @@ namespace boost { namespace simd { namespace ext
     // Aggregate case
     template<typename... N> static BOOST_FORCEINLINE
     result_t do_( function_t const& op, result_t const&, Arg const& a0
-                , aggregate_storage const&, brigand::list<N...> const&
+                , aggregate_storage const&, nsm::list<N...> const&
                 )
     {
       bd::functor<F>      f;
@@ -108,7 +108,7 @@ namespace boost { namespace simd { namespace ext
     // singleton case
     template<typename K, typename N> static BOOST_FORCEINLINE
     result_t do_( function_t const&, result_t const&
-                , Arg const& a0, K const&, brigand::list<N> const&
+                , Arg const& a0, K const&, nsm::list<N> const&
                 )
     {
       return a0;
@@ -118,7 +118,7 @@ namespace boost { namespace simd { namespace ext
     // Native case
     template<typename N0, typename N1, typename... N> static BOOST_FORCEINLINE
     result_t do_( function_t const& op, result_t const& z, Arg const& a0
-                , native_storage const&, brigand::list<N0,N1,N...> const&
+                , native_storage const&, nsm::list<N0,N1,N...> const&
                 )
     {
       return detail::scan<1,Arg::static_size/2>{}(op,a0,z);
@@ -128,7 +128,7 @@ namespace boost { namespace simd { namespace ext
     // Scalar case
     template<typename N0, typename N1, typename... N> static BOOST_FORCEINLINE
     result_t do_( function_t const& op, result_t const&, Arg const& a0
-                , scalar_storage const&, brigand::list<N0,N1,N...> const&
+                , scalar_storage const&, nsm::list<N0,N1,N...> const&
                 )
     {
       result_t that = a0;

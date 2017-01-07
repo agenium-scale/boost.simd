@@ -33,7 +33,7 @@
 #include <boost/simd/function/rem.hpp>
 #include <boost/simd/function/unary_plus.hpp>
 #include <boost/simd/function/unary_minus.hpp>
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/meta/is_pack.hpp>
 #include <boost/simd/logical.hpp>
 

@@ -12,7 +12,7 @@
 #define BOOST_SIMD_META_DOWNGRADE_HPP_INCLUDED
 
 #include <boost/simd/detail/dispatch/detail/downgrade.hpp>
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <cstdint>
 
 namespace boost { namespace simd

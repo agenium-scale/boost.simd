@@ -12,7 +12,7 @@
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/traits.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 

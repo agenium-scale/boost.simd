@@ -66,7 +66,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE target operator() ( Pointer p, Misalignment const&, Target const& ) const
     {
-      return do_(p, brigand::bool_<unalignment != 0>());
+      return do_(p, nsm::bool_<unalignment != 0>());
     }
 
     BOOST_FORCEINLINE target do_( Pointer p, std::true_type const& ) const

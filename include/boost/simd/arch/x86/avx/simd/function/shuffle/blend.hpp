@@ -10,7 +10,7 @@
 #define BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_SHUFFLE_BLEND_HPP_INCLUDED
 
 #include <boost/simd/detail/shuffle.hpp>
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/detail/dispatch/meta/as_floating.hpp>
 #include <type_traits>

@@ -82,7 +82,7 @@ namespace boost { namespace simd { namespace ext
     // singleton case
     template<typename K, typename N> static BOOST_FORCEINLINE
     result_t fold_( function_t const& op, Neutral const& z, Arg const& a0
-                  , K const&, brigand::list<N> const&
+                  , K const&, nsm::list<N> const&
                   )
     {
       return op( z, a0 );
@@ -92,7 +92,7 @@ namespace boost { namespace simd { namespace ext
     // Native case
     template<typename N0, typename N1, typename... N> static BOOST_FORCEINLINE
     result_t fold_( function_t const& op, Neutral const& z, Arg const& a0
-                  , native_storage const&, brigand::list<N0,N1,N...> const&
+                  , native_storage const&, nsm::list<N0,N1,N...> const&
                   )
     {
       return op(detail::butterfly<Arg::static_size/2>{}(op,a0),z);
@@ -102,7 +102,7 @@ namespace boost { namespace simd { namespace ext
     // Aggregate case
     template<typename N0, typename N1, typename... N> static BOOST_FORCEINLINE
     result_t fold_( function_t const& op, Neutral const& z, Arg const& a0
-                  , aggregate_storage const&, brigand::list<N0,N1,N...> const&
+                  , aggregate_storage const&, nsm::list<N0,N1,N...> const&
                   )
     {
       auto  r = detail::all_reduce(op,z.storage()[0],a0.storage()[0]);
@@ -114,7 +114,7 @@ namespace boost { namespace simd { namespace ext
     // Scalar case
     template<typename N0, typename N1, typename... N> static BOOST_FORCEINLINE
     result_t fold_( function_t const& op, Neutral const& z, Arg const& a0
-                  , scalar_storage const&, brigand::list<N0,N1,N...> const&
+                  , scalar_storage const&, nsm::list<N0,N1,N...> const&
                   )
     {
       auto r = op( bs::extract<0>(a0), z );

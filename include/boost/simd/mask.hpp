@@ -90,7 +90,7 @@ namespace boost { namespace dispatch
     {
       using base = typename boost::simd::detail::masked_pointer<T,Mask,Zero>::element_type;
       using type = masked_pointer_< boost::dispatch::hierarchy_of_t<base,Origin>
-                                  , brigand::bool_<Zero>
+                                  , nsm::bool_<Zero>
                                   >;
     };
   }

@@ -50,7 +50,7 @@ namespace boost { namespace simd { namespace ext
 
    BOOST_DISPATCH_OVERLOAD_IF ( if_else_
                               , (typename A0, typename A1)
-                              , (brigand::bool_<bs::cardinal_of<A0>::value <= 8>)
+                              , (nsm::bool_<bs::cardinal_of<A0>::value <= 8>)
                               , bs::avx_
                               , bs::pack_<logical_<A0>, bs::avx_>
                               , bs::pack_<bd::integer_<A1>, bs::avx_>

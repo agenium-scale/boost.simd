@@ -12,7 +12,7 @@
 #define BOOST_SIMD_CONSTANT_DEFINITION_SQRTVALMAX_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/detail/constant_traits.hpp>
 #include <boost/simd/detail/dispatch/function/make_callable.hpp>
@@ -30,9 +30,9 @@ namespace boost { namespace simd
       struct value_map
       {
         template<typename X>
-        static brigand::single_<0x5f7FFFFEU> value(boost::dispatch::single_<X> const&);
+        static nsm::single_<0x5f7FFFFEU> value(boost::dispatch::single_<X> const&);
         template<typename X>
-        static brigand::double_<0x5fEFFFFFFFFFFFFFULL> value(boost::dispatch::double_<X> const&);
+        static nsm::double_<0x5fEFFFFFFFFFFFFFULL> value(boost::dispatch::double_<X> const&);
         template<typename X>
         static std::integral_constant<X,15> value(boost::dispatch::uint8_<X> const&);
 
