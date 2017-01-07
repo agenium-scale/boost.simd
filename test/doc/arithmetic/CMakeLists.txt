@@ -37,7 +37,6 @@ SET( SOURCES
     meanof.cpp
     min.cpp
     minmod.cpp
-    multiplies.cpp
     nearbyint.cpp
     oneminus.cpp
     rec.cpp

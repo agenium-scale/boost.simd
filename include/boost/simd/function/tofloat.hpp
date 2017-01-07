@@ -18,25 +18,19 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-arithmetic
-    Function object implementing tofloat capabilities
+    This function object convert its parameter to floating point value.
 
-    Convert to floating point value.
+    @see toint,  touint, cast
 
-    @par semantic:
-    For any given value @c x of type @c T:
+    @par Example:
 
-    @code
-    as_floating_t<T> r = tofloat(x);
-    @endcode
+       @snippet tofloat.cpp tofloat
 
-    The code is similar to:
+    @par Possible output:
 
-    @code
-    as_floating_t<T> r = static_cast < as_floating_t<T> >(x)
-    @endcode
-
+       @snippet tofloat.txt tofloat
   **/
-  as_floating_t<Value> tofloat(Value const& v);
+  as_floating_t<Value> tofloat(Value const& x);
 } }
 #endif
 

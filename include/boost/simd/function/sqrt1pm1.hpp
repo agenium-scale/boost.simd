@@ -18,28 +18,19 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-arithmetic
-    Function object implementing sqrt1pm1 capabilities
-
-    Returns \f$\sqrt{1+x}-1\f$ and the
+    This function object returns \f$\sqrt{1+x}-1\f$ and the
     result is accurate even for x  with small modulus
 
-    @par Semantic:
+    @see log1p, expm1.
 
-    For every parameter of floating type T
+    @par Example:
 
-    @code
-    T r = sqrt1pm1(x);
-    @endcode
+       @snippet sqrt1pm1.cpp sqrt1pm1
 
-    is similar to:
+    @par Possible output:
 
-    @code
-    T r = dec(sqrt(Oneplus(x));
-    @endcode
-
-    @see lol1p, expm1.
-
-  **/
+       @snippet sqrt1pm1.txt sqrt1pm1
+ **/
   Value sqrt1pm1(Value const& x);
 } }
 #endif

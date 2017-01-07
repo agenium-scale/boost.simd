@@ -53,10 +53,7 @@ namespace boost { namespace simd
     - If x is \f$\pm\infty\f$ or \f$\pm0\f$, it is returned, unmodified
     - If arg is a NaN, a NaN is returned
   **/
-  Value round(Value const & v0);
-
-  //@overload
-  Value round(Value const & x, IntegerValue const &n);
+  Value round(Value const & x{, IntegerValue const &n});
 } }
 #endif
 

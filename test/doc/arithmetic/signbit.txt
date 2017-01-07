@@ -1,0 +1,8 @@
+//! [signbit]
+---- simd
+<- pf =                           (0, -0, -3, 3)
+-> bs::signbit(pf) =                  (false, true, true, false)
+---- scalar
+<- xf =                           -1
+-> bs::signbit(xf) =                  true
+//! [signbit]

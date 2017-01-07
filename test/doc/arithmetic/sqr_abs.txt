@@ -1,0 +1,14 @@
+//! [sqr_abs]
+---- simd
+<- pf =                           (-1, 2, -3, -32768)
+-> bs::sqr_abs(pf) =                  (1, 4, 9, 1.07374e+09)
+<- pi =                           (-1, 2, -3, -32768)
+-> bs::sqr_abs(pi) =                  (1, 4, 9, 0)
+-> bs::saturated_(bs::sqr_abs(pi)) =  (1, 4, 9, 32767)
+---- scalar
+<- xf =                           -32768
+-> bs::sqr_abs(xf) =                  1.07374e+09
+<- xi =                           -32768
+-> bs::sqr_abs(xi) =                  0
+-> bs::saturated_(bs::sqr_abs(xi)) =  32767
+//! [sqr_abs]

@@ -46,7 +46,7 @@ namespace boost { namespace simd
       - also note that the double implementation of std::remquo is flawed in GNU C
       Library until version 2.21 (2.22 been corrected).
   **/
-  std::pair<IntegerValue, IntegerValue> remquo(Value const & x, IntegerValue const& y);
+   std::pair<IntegerValue, IntegerValue> remquo(Value const & x, IntegerValue const& y);
 } }
 #endif
 
