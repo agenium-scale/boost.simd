@@ -19,24 +19,15 @@ namespace boost { namespace simd
     @ingroup group-arithmetic
     This function object computes the arithmetic mean of its parameters.
 
-
     @par Header <boost/simd/abs.hpp>
 
     @par Notes:
 
-    @code
-    auto r = average(x, y);
-    @endcode
-
-    For floating point values the code is equivalent to:
-
-    @code
-    auto r = (x+y)/T(2);
-    @endcode
+    Call to `average(x, y)` for floating entries is similar to  `(x+y)/2`
 
     for integer types, it returns a rounded value at a distance guaranteed
     to be less than or equal to 0.5 of the average floating value, but may differ
-    by unity from the truncation given by (x1+x2)/T(2).
+    by unity from the truncation given by `(x+y)/2`.
 
     @par Note:
       This function does not overflow.
