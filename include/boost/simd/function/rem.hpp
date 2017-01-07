@@ -43,7 +43,7 @@ namespace boost { namespace simd
     T r = x-div(option, x, y)*y;
     @endcode
 
-    @Notes
+    @par Notes
 
     -Supported types
      unsigned types are not supported but for the option @c fix, as in other cases result can be negative

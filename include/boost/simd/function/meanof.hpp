@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/abs.hpp>
 
-    @par Notes:
+    @par Notes
 
     Call to `average(x, y)` for floating entries is similar to  `(x+y)/2`
 

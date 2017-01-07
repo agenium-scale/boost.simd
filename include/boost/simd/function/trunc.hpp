@@ -21,7 +21,7 @@ namespace boost { namespace simd
     This function object computes the truncation toward @ref Zero
     of its parameter.
 
-     @par Notes:
+     @par Notes
       - the call to `trunc(x)` is similar to `sign(x)*floor(abs(x))`
 
       - For floating point number it is also one of the two ouputs of

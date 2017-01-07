@@ -37,7 +37,7 @@ namespace boost { namespace simd
 
     but is only rounded once and with no intermediate overflow.
 
-    @par Notes:
+    @par Notes
     - For integers x*y+z is always performed in 2-complement wraping.
 
     - For floating points numbers, the correct fused multiply add is computed,

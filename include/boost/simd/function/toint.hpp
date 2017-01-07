@@ -35,7 +35,7 @@ namespace boost { namespace simd
     as_integer_t<T> r = static_cast<as_integer_t<T> >(x)
     @endcode
 
-    @par Notes:
+    @par Notes
 
     @c toint cast a floating value to the signed integer value of the same bit size.
 

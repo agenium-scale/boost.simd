@@ -42,7 +42,7 @@ namespace boost { namespace simd
     estimations and peculiarly adapted to cope with the limited bits
     accuracy of floating point representations.
 
-    @par Notes:
+    @par Notes
 
     - If the common type is integral  @c ulpdist is the same as @c dist
 

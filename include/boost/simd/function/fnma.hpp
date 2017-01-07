@@ -21,7 +21,7 @@ namespace boost { namespace simd
     This function object computes the negated (fused) multiply add of
     its three parameters.
 
-    @Notes:
+    @par Notes
     The call `fnma(a, b, c)` is similar to `-a*b-c`
 
     But really conformant fused multiply/add also implies

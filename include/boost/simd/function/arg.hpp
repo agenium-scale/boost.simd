@@ -24,7 +24,7 @@ namespace boost { namespace simd
 
     Call to  `arg(x)` is equivalent to  `(is_negative(x)) ? Pi(as(x)) : Zero(as(x))`
 
-    @par Notes:
+    @par Notes
 
     - always returns \f$+0\f$ or \f$\pi\f$ taking into account the bit of sign
        even in the Nan case.

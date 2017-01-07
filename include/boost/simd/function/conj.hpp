@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/conj.hpp>
 
-    @Notes
+    @par Notes
 
     - for real entries it resumes to the identity
 

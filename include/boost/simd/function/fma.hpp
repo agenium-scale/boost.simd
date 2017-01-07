@@ -19,7 +19,7 @@ namespace boost { namespace simd
     @ingroup group-arithmetic
     This function object computes the (fused) multiply add of these three parameters.
 
-    @Notes:
+    @par Notes
     The call `fma(a, b, c)` is similar to `a*b+c`
 
     But really conformant fused multiply/add also implies

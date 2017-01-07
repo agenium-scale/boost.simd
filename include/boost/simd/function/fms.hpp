@@ -20,7 +20,7 @@ namespace boost { namespace simd
     @ingroup group-arithmetic
     This function object computes the (fused) multiply substract of these three parameters.
 
-    @Notes:
+    @par Notes
     The call `fms(a, b, c)` is similar to `a*b-c
 
     But really conformant fused multiply/add also implies

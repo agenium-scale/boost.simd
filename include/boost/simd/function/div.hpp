@@ -21,7 +21,7 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/div.hpp>
 
-    @par Notes:
+    @par Notes
 
     For any value @c a and @c b of same type `div({option, }a, b)`
     returns the quotient of @c a by @c b respecting to the option specified.
