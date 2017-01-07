@@ -45,7 +45,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE T operator()(T const& a0, Offset const&) const BOOST_NOEXCEPT
     {
-      return side(a0, brigand::bool_<(Offset::value >= 0)>{});
+      return side(a0, nsm::bool_<(Offset::value >= 0)>{});
     }
   };
 

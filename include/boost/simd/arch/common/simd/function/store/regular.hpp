@@ -42,7 +42,7 @@ namespace boost { namespace simd { namespace ext
 
     // aggregate pack are calling store twice
     template<typename... N> static BOOST_FORCEINLINE
-    void do_( Src const & s, Pointer p, aggregate_storage const&, brigand::list<N...> const&)
+    void do_( Src const & s, Pointer p, aggregate_storage const&, nsm::list<N...> const&)
     {
       store(slice_low(s) , p);
       store(slice_high(s), p+Src::traits::element_size);
@@ -56,7 +56,7 @@ namespace boost { namespace simd { namespace ext
     }
 
     template<typename K, typename... N>
-    static BOOST_FORCEINLINE void do_(Src const & s, Pointer p, K const&, brigand::list<N...> const&)
+    static BOOST_FORCEINLINE void do_(Src const & s, Pointer p, K const&, nsm::list<N...> const&)
     {
       (void)(std::initializer_list<bool>{(sto_<N>(s,p),true)...});
     }

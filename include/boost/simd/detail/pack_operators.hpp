@@ -33,7 +33,7 @@
 #include <boost/simd/function/rem.hpp>
 #include <boost/simd/function/unary_plus.hpp>
 #include <boost/simd/function/unary_minus.hpp>
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/meta/is_pack.hpp>
 #include <boost/simd/logical.hpp>
 
@@ -41,12 +41,14 @@ namespace boost { namespace simd
 {
 #define BOOST_SIMD_PACK_DEFINE_BINOP(type_, op, f)                                                 \
   template <typename T, std::size_t N, typename U> BOOST_FORCEINLINE                               \
-  typename std::enable_if<is_not_pack_t<U>::value, pack<type_, N>>::type                           \
+  typename std::enable_if<is_not_pack_t<U>::value && std::is_convertible<U, T>::value,             \
+                          pack<type_, N>>::type                                                    \
   op(pack<T, N> const& p0, U const& s1) BOOST_NOEXCEPT_IF_EXPR(f(p0, s1))                          \
   { return f(p0, s1); }                                                                            \
                                                                                                    \
   template <typename T, std::size_t N, typename U> BOOST_FORCEINLINE                               \
-  typename std::enable_if<is_not_pack_t<U>::value, pack<type_, N>>::type                           \
+  typename std::enable_if<is_not_pack_t<U>::value && std::is_convertible<U, T>::value,             \
+                          pack<type_, N>>::type                                                    \
   op(U const& s0, pack<T, N> const& p1) BOOST_NOEXCEPT_IF_EXPR(f(s0, p1))                          \
   { return f(s0, p1); }                                                                            \
                                                                                                    \

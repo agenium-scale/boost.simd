@@ -19,7 +19,7 @@ namespace bd = boost::dispatch;
 using namespace bs::literal;
 
 template<typename A, typename P, typename... N>
-void f( brigand::list<N...> const&, A& a, P& p)
+void f( nsm::list<N...> const&, A& a, P& p)
 {
   using T = typename P::value_type;
   BOOST_SIMD_LOCAL_UNROLL( a[N::value] = T(N::value+1) );
@@ -32,7 +32,7 @@ void test_st(Env& $)
   bs::pack<T, N>  p;
   std::array<T,N> a;
 
-  f( brigand::range<std::size_t, 0, N>(),a,p);
+  f( nsm::range<std::size_t, 0, N>(),a,p);
 
   bs::pack<T, N> ref(&a[0], &a[0] + N);
   STF_EQUAL(ref, p);

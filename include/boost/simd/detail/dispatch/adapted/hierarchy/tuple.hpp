@@ -16,7 +16,7 @@
 
 #include <boost/simd/detail/dispatch/hierarchy/unspecified.hpp>
 #include <boost/fusion/include/as_vector.hpp>
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <type_traits>
 
 namespace boost { namespace dispatch

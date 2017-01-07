@@ -12,7 +12,7 @@
 #include <simd_test.hpp>
 
 template <typename T, typename... N>
-boost::simd::pack<T, sizeof...(N)> make( brigand::list<N...> const& )
+boost::simd::pack<T, sizeof...(N)> make( nsm::list<N...> const& )
 {
   return {N::value...};
 }
@@ -20,7 +20,7 @@ boost::simd::pack<T, sizeof...(N)> make( brigand::list<N...> const& )
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
 {
-  boost::simd::pack<T, N> p = make<T>(brigand::range<std::size_t,0,N>{});
+  boost::simd::pack<T, N> p = make<T>(nsm::range<std::size_t,0,N>{});
 
   std::array<T,N> ref;
   std::iota(ref.begin(), ref.end(), T{0});

@@ -40,7 +40,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD_IF( is_not_equal_
                             , (typename A0,typename X)
-                            , ( brigand::and_ < bs::is_bitwise_logical_t<A0>
+                            , ( nsm::and_ < bs::is_bitwise_logical_t<A0>
                                               , detail::is_native<X>
                                               >
                               )

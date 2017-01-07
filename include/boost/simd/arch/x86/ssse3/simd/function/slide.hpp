@@ -11,7 +11,7 @@
 
 #include <boost/simd/meta/as_arithmetic.hpp>
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 
 namespace boost { namespace simd { namespace ext

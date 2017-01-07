@@ -406,7 +406,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE T operator()(T const& a0, T const& a1, Offset const&) const
     {
       return unroll ( a0, a1
-                    , brigand::bool_<(Offset::value < hcard::value)>{}
+                    , nsm::bool_<(Offset::value < hcard::value)>{}
                     );
     }
   };

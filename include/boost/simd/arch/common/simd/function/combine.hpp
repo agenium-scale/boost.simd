@@ -20,7 +20,7 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
-  namespace br = brigand;
+
 
   // -----------------------------------------------------------------------------------------------
   // combine(scalar,scalar)
@@ -50,7 +50,7 @@ namespace boost { namespace simd { namespace ext
 
     template<typename... N>
     static BOOST_FORCEINLINE result_t do_ ( T const& a, T const& b, aggregate_storage const&
-                                          , br::list<N...> const&
+                                          , nsm::list<N...> const&
                                           ) BOOST_NOEXCEPT
     {
       return typename result_t::storage_type{{a,b}};
@@ -58,7 +58,7 @@ namespace boost { namespace simd { namespace ext
 
     template<typename K, typename... N>
     static BOOST_FORCEINLINE result_t do_ ( T const& a, T const& b, K const&
-                                          , br::list<N...> const&
+                                          , nsm::list<N...> const&
                                           ) BOOST_NOEXCEPT
     {
       return make<result_t> ( bs::extract<N::value>(a)...
@@ -70,7 +70,7 @@ namespace boost { namespace simd { namespace ext
     {
       return do_( a, b
                 , typename result_t::traits::storage_kind{}
-                , brigand::range<std::size_t, 0, T::static_size>{}
+                , nsm::range<std::size_t, 0, T::static_size>{}
                 );
     }
   };

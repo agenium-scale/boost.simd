@@ -1,0 +1,82 @@
+
+mkdir abs
+mkdir acos
+mkdir acosh
+mkdir asin
+mkdir asind
+mkdir asinh
+mkdir atan
+mkdir atan2
+mkdir atanh
+mkdir cbrt
+mkdir ceil
+mkdir copysign
+mkdir cos
+mkdir cosh
+mkdir erf
+mkdir erfc
+mkdir exp
+mkdir exp10
+mkdir exp2
+mkdir expm1
+mkdir floor
+mkdir fma
+mkdir frexp
+mkdir gamma
+mkdir gammaln
+mkdir hypot
+mkdir is_finite
+mkdir is_inf
+mkdir is_lessgreater
+mkdir is_nan
+mkdir is_negative
+mkdir is_normal
+mkdir is_unord
+mkdir ldexp
+mkdir log10
+mkdir log1p
+mkdir log2
+mkdir max
+mkdir maxnum
+mkdir min
+mkdir minnum
+mkdir nearbyint
+mkdir negate
+mkdir nextafter
+mkdir pow
+mkdir remquo
+mkdir round
+mkdir sin
+mkdir sincos
+mkdir sinh
+mkdir sqrt
+mkdir tan
+mkdir trunc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

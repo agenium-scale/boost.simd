@@ -23,7 +23,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD_IF( bitset_
                             , (typename A0, typename A1)
-                            , (brigand::bool_<bs::cardinal_of<A0>::value == bs::cardinal_of<A1>::value>)
+                            , (nsm::bool_<bs::cardinal_of<A0>::value == bs::cardinal_of<A1>::value>)
                             , bd::cpu_
                             , bd::generic_< bd::arithmetic_<A0> >
                             , bd::generic_< bd::integer_<A1> >
@@ -40,7 +40,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD_IF( bitset_
                             , (typename A0, typename A1)
-                            , (brigand::bool_<bs::cardinal_of<A0>::value == bs::cardinal_of<A1>::value>)
+                            , (nsm::bool_<bs::cardinal_of<A0>::value == bs::cardinal_of<A1>::value>)
                             , bd::cpu_
                             , bd::generic_< bd::arithmetic_<A0> >
                             , bd::scalar_< bd::integer_<A1> >

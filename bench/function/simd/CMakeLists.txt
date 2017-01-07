@@ -6,358 +6,294 @@
 ##                            http://www.boost.org/LICENSE_1_0.txt
 ## -------------------------------------------------------------------------------------------------
 
-set(SOURCES
-    abs.regular.cpp
-    abs.saturated.cpp
-    acos.regular.cpp
-    acos.pedantic.cpp
-    acosd.cpp
-    acosh.cpp
-    acospi.cpp
-    acot.cpp
-    acotd.cpp
-    acoth.cpp
-    acotpi.cpp
-    acsc.cpp
-    acscd.cpp
-    acsch.cpp
-    acscpi.cpp
-    all.cpp
-    any.cpp
-    arg.cpp
-    asec.cpp
-    asecd.cpp
-    asech.cpp
-    asecpi.cpp
-    asin.cpp
-    asind.cpp
-    asinh.cpp
-    asinpi.cpp
-    atan2.regular.cpp
-    atan2.pedantic.cpp
-    atan2d.cpp
-    atan2pi.cpp
-    atan.cpp
-    atand.cpp
-    atanh.regular.cpp
-    atanh.raw.cpp
-    atanpi.cpp
-    average.cpp
-    bitfloating.cpp
-    bitget.cpp
-    bitinteger.cpp
-    bitset.cpp
-    bitwise_and.cpp
-    bitwise_andnot.cpp
-    bitwise_cast.cpp
-    bitwise_notand.cpp
-    bitwise_notor.cpp
-    bitwise_or.cpp
-    bitwise_ornot.cpp
-    bitwise_not.cpp
-    bitwise_select.cpp
-    bitwise_xor.cpp
-    broadcast.cpp
-    cbrt.cpp
-    ceil.cpp
-    clz.cpp
-    compare_equal.cpp
-    compare_greater.cpp
-    compare_greater_equal.cpp
-    compare_less.cpp
-    compare_less_equal.cpp
-    compare_not_equal.cpp
-    complement.cpp
-    conj.cpp
-    copysign.cpp
-    cos.regular.cpp
-    cosd.regular.cpp
-    cos.clipped_small.cpp
-    cosd.restricted.cpp
-    cosh.cpp
-    cospi.regular.cpp
-    cospi.restricted.cpp
-    cos.restricted.cpp
-    cot.regular.cpp
-    cotd.regular.cpp
-    cotd.restricted.cpp
-    coth.cpp
-    cotpi.regular.cpp
-    cotpi.restricted.cpp
-    cot.restricted.cpp
-    csc.regular.cpp
-    cscd.regular.cpp
-    cscd.restricted.cpp
-    csch.cpp
-    cscpi.regular.cpp
-    cscpi.restricted.cpp
-    csc.restricted.cpp
-    ctz.cpp
-    dec.regular.cpp
-    dec.saturated.cpp
-    deinterleave.cpp
-    deinterleave_first.cpp
-    deinterleave_second.cpp
-    dist.regular.cpp
-    dist.saturated.cpp
-    divides.regular.cpp
-    divides.saturated.cpp
-    dot.cpp
-    enumerate.cpp
-    erfc.cpp
-    erf.cpp
-    exp10.cpp
-    exp2.cpp
-    exp.cpp
-    expm1.cpp
-    exprecnegc.cpp
-    exprecneg.cpp
-    expx2.cpp
-    ffs.cpp
-    firstbitset.cpp
-    firstbitunset.cpp
-    floor.cpp
-    fma.regular.cpp
-    fma.pedantic.cpp
-    fms.cpp
-    fnma.cpp
-    fnms.cpp
-    fpclassify.cpp
-    frac.cpp
-    frexp.regular.cpp
-    frexp.pedantic.cpp
-    gamma.cpp
-    gammaln.cpp
-    genmaskc.cpp
-    genmask.cpp
-    group.regular.cpp
-    group.saturated.cpp
-    hi.cpp
-    hmsb.cpp
-    hypot.regular.cpp
-    hypot.pedantic.cpp
-    iceil.cpp
-    if_allbits_else.cpp
-    if_dec.cpp
-    if_else_allbits.cpp
-    if_else.cpp
-    if_else_zero.cpp
-    if_inc.cpp
-    ifloor.cpp
-    ifnot_dec.cpp
-    ifnot_inc.cpp
-     ifnot_minus.cpp
-     ifnot_plus.cpp
-    if_one_else_zero.cpp
-    if_zero_else.cpp
-    if_zero_else_one.cpp
-    ilog2.cpp
-    ilogb.cpp
-    inc.regular.cpp
-    inc.saturated.cpp
-    indeg.cpp
-    inearbyint.regular.cpp
-    inearbyint.pedantic.cpp
-    inrad.cpp
-    interleave.cpp
-    interleave_even.cpp
-    interleave_first.cpp
-    interleave_odd.cpp
-    interleave_second.cpp
-    iround.cpp
-    is_denormal.cpp
-    is_equal.cpp
-    is_equal_with_equal_nans.cpp
-    is_eqz.cpp
-    is_even.cpp
-    is_finite.cpp
-    is_flint.cpp
-    is_gez.cpp
-    is_greater.cpp
-    is_greater_equal.cpp
-    is_gtz.cpp
-    is_imag.cpp
-    isincluded_c.cpp
-    isincluded.cpp
-    is_inf.cpp
-    is_invalid.cpp
-    is_less.cpp
-    is_less_equal.cpp
-    is_lessgreater.cpp
-    is_lez.cpp
-    is_ltz.cpp
-    is_nan.cpp
-    is_negative.cpp
-    is_nez.cpp
-    is_ngez.cpp
-    is_ngtz.cpp
-    is_nlez.cpp
-    is_nltz.cpp
-    is_normal.cpp
-    is_not_denormal.cpp
-    is_not_equal.cpp
-    is_not_equal_with_equal_nans.cpp
-    is_not_greater.cpp
-    is_not_greater_equal.cpp
-    is_not_infinite.cpp
-    is_not_less.cpp
-    is_not_less_equal.cpp
-    is_not_nan.cpp
-    is_not_real.cpp
-    is_odd.cpp
-    is_ord.cpp
-    is_positive.cpp
-    is_real.cpp
-    is_unord.cpp
-    ldexp.pedantic.cpp
-    ldexp.regular.cpp
-    lo.cpp
-    log10.regular.cpp
-    log1p.regular.cpp
-    log2.regular.cpp
-    log.regular.cpp
-    log10.plain.cpp
-    log1p.plain.cpp
-    log2.plain.cpp
-    log.plain.cpp
-    log10.musl.cpp
-    log1p.musl.cpp
-    log2.musl.cpp
-    log.musl.cpp
-    logical_and.cpp
-    logical_andnot.cpp
-    logical_notand.cpp
-    logical_not.cpp
-    logical_notor.cpp
-    logical_or.cpp
-    logical_ornot.cpp
-    logical_xor.cpp
-    lookup.cpp
-    majority.cpp
-    mantissa.cpp
-    max.cpp
-    maximum.splatted.cpp
-    minimum.splatted.cpp
-    maxmag.cpp
-    maxnum.cpp
-    maxnummag.cpp
-    meanof.cpp
-    min.cpp
-    minmag.cpp
-    minmod.cpp
-    minnum.cpp
-    minnummag.cpp
-    minus.regular.cpp
-    minus.saturated.cpp
-    modf.cpp
-    multiplies.regular.cpp
-    multiplies.saturated.cpp
-    nbtrue.cpp
-    nearbyint.cpp
-    negate.cpp
-    negatenz.cpp
-    negif.cpp
-    negifnot.cpp
-    nextafter.cpp
-    next.cpp
-    none.cpp
-    nthroot.regular.cpp
-    nthroot.raw.cpp
-    oneminus.regular.cpp
-    oneminus.saturated.cpp
-    plus.regular.cpp
-    plus.saturated.cpp
-    pow2.cpp
-    pow_abs.regular.cpp
-    pow_abs.raw.cpp
-    pow.cpp
-    predecessor.cpp
-    prev.cpp
-    rec.regular.cpp
-    rec.raw.cpp
-    rem.regular.cpp
-    rem.pedantic.cpp
-    rem_pio2_cephes.cpp
-    rem_pio2.cpp
-    rem_pio2_medium.cpp
-    rem_pio2_straight.cpp
-    remquo.cpp
-    repeat_lower_half.cpp
-    repeat_upper_half.cpp
-    reversebits.cpp
-    reverse.cpp
-    rol.cpp
-    ror.cpp
-    round.cpp
-    rrol.cpp
-    rror.cpp
-    rsqrt.regular.cpp
-    rsqrt.raw.cpp
-    rsqrt.pedantic.cpp
-    safe_max.cpp
-    safe_min.cpp
-    sec.regular.cpp
-    sec.restricted.cpp
-    secd.regular.cpp
-    secd.restricted.cpp
-    sech.cpp
-    secpi.regular.cpp
-    secpi.restricted.cpp
-    shift_left.cpp
-    shift_right.cpp
-    shr.cpp
-    sign.cpp
-    significants.cpp
-    signnz.cpp
-    sinc.cpp
-    sincos.regular.cpp
-    sincos.restricted.cpp
-    sincosd.regular.cpp
-    sincosd.restricted.cpp
-    sincospi.regular.cpp
-    sincospi.restricted.cpp
-    sincpi.cpp
-    sin.regular.cpp
-    sin.restricted.cpp
-    sind.regular.cpp
-    sind.restricted.cpp
-    sinhc.cpp
-    sinhcosh.cpp
-    sinh.cpp
-    sinpi.regular.cpp
-    sinpi.restricted.cpp
-    sqr_abs.cpp
-    sqr.regular.cpp
-    sqr.saturated.cpp
-    sqrt1pm1.cpp
-    sqrt.regular.cpp
-    sqrt.raw.cpp
-    successor.cpp
-    tan.regular.cpp
-    tan.restricted.cpp
-    tand.regular.cpp
-    tand.restricted.cpp
-    tanh.cpp
-    tanpi.regular.cpp
-    tanpi.restricted.cpp
-    tenpower.cpp
-    tofloat.cpp
-    toint.regular.cpp
-    toint.saturated.cpp
-    touint.regular.cpp
-    touint.saturated.cpp
-    trunc.regular.cpp
-    trunc.raw.cpp
-    two_add.cpp
-    quadrant.cpp
-    twopower.cpp
-    two_prod.cpp
-    two_split.cpp
-    ulpdist.cpp
-    unary_minus.regular.cpp
-    unary_minus.saturated.cpp
-    unary_plus.cpp
-)
-
-make_bench("function.simd" ${SOURCES})
-
+add_subdirectory(abs)
+add_subdirectory(acos)
+add_subdirectory(acosd)
+add_subdirectory(acosh)
+add_subdirectory(acospi)
+add_subdirectory(acot)
+add_subdirectory(acotd)
+add_subdirectory(acoth)
+add_subdirectory(acotpi)
+add_subdirectory(acsc)
+add_subdirectory(acscd)
+add_subdirectory(acsch)
+add_subdirectory(acscpi)
+add_subdirectory(all)
+add_subdirectory(any)
+add_subdirectory(arg)
+add_subdirectory(asec)
+add_subdirectory(asecd)
+add_subdirectory(asech)
+add_subdirectory(asecpi)
+add_subdirectory(asin)
+add_subdirectory(asind)
+add_subdirectory(asinh)
+add_subdirectory(asinpi)
+add_subdirectory(atan)
+add_subdirectory(atan2)
+add_subdirectory(atan2d)
+add_subdirectory(atan2pi)
+add_subdirectory(atand)
+add_subdirectory(atanh)
+add_subdirectory(atanpi)
+add_subdirectory(average)
+add_subdirectory(bitfloating)
+####add_subdirectory(bitget)
+add_subdirectory(bitinteger)
+####add_subdirectory(bitset)
+add_subdirectory(bitwise_and)
+add_subdirectory(bitwise_andnot)
+####add_subdirectory(bitwise_cast)
+add_subdirectory(bitwise_not)
+add_subdirectory(bitwise_notand)
+add_subdirectory(bitwise_notor)
+add_subdirectory(bitwise_or)
+add_subdirectory(bitwise_ornot)
+add_subdirectory(bitwise_select)
+add_subdirectory(bitwise_xor)
+####add_subdirectory(broadcast)
+add_subdirectory(cast)
+add_subdirectory(cbrt)
+add_subdirectory(ceil)
+add_subdirectory(clz)
+add_subdirectory(compare_equal)
+add_subdirectory(compare_greater)
+add_subdirectory(compare_greater_equal)
+add_subdirectory(compare_less)
+add_subdirectory(compare_less_equal)
+add_subdirectory(compare_not_equal)
+add_subdirectory(complement)
+add_subdirectory(conj)
+add_subdirectory(copysign)
+add_subdirectory(cos)
+add_subdirectory(cosd)
+add_subdirectory(cosh)
+add_subdirectory(cospi)
+add_subdirectory(cot)
+add_subdirectory(cotd)
+add_subdirectory(coth)
+add_subdirectory(cotpi)
+add_subdirectory(csc)
+add_subdirectory(cscd)
+add_subdirectory(csch)
+add_subdirectory(cscpi)
+add_subdirectory(ctz)
+add_subdirectory(dec)
+add_subdirectory(deinterleave)
+add_subdirectory(deinterleave_first)
+add_subdirectory(deinterleave_second)
+add_subdirectory(dist)
+add_subdirectory(divides)
+add_subdirectory(dot)
+####add_subdirectory(enumerate)
+add_subdirectory(erf)
+add_subdirectory(erfc)
+add_subdirectory(exp)
+add_subdirectory(exp10)
+add_subdirectory(exp2)
+add_subdirectory(expm1)
+add_subdirectory(exprecneg)
+add_subdirectory(exprecnegc)
+add_subdirectory(expx2)
+add_subdirectory(ffs)
+add_subdirectory(firstbitset)
+add_subdirectory(firstbitunset)
+add_subdirectory(floor)
+add_subdirectory(fma)
+add_subdirectory(fms)
+add_subdirectory(fnma)
+add_subdirectory(fnms)
+add_subdirectory(fpclassify)
+add_subdirectory(frac)
+add_subdirectory(frexp)
+add_subdirectory(gamma)
+add_subdirectory(gammaln)
+####add_subdirectory(genmask)
+####add_subdirectory(genmaskc)
+add_subdirectory(group)
+add_subdirectory(hi)
+add_subdirectory(hmsb)
+add_subdirectory(hypot)
+add_subdirectory(iceil)
+add_subdirectory(if_allbits_else)
+add_subdirectory(if_dec)
+add_subdirectory(if_else)
+add_subdirectory(if_else_allbits)
+add_subdirectory(if_else_zero)
+add_subdirectory(if_inc)
+add_subdirectory(if_one_else_zero)
+add_subdirectory(if_zero_else)
+add_subdirectory(if_zero_else_one)
+add_subdirectory(ifloor)
+add_subdirectory(ifnot_dec)
+add_subdirectory(ifnot_inc)
+add_subdirectory(ifnot_minus)
+add_subdirectory(ifnot_plus)
+add_subdirectory(ilog2)
+add_subdirectory(ilogb)
+add_subdirectory(inc)
+add_subdirectory(indeg)
+add_subdirectory(inearbyint)
+add_subdirectory(inrad)
+add_subdirectory(interleave)
+add_subdirectory(interleave_even)
+add_subdirectory(interleave_first)
+add_subdirectory(interleave_odd)
+add_subdirectory(interleave_second)
+add_subdirectory(iround)
+add_subdirectory(is_denormal)
+add_subdirectory(is_equal)
+add_subdirectory(is_equal_with_equal_nans)
+add_subdirectory(is_eqz)
+add_subdirectory(is_even)
+add_subdirectory(is_finite)
+add_subdirectory(is_flint)
+add_subdirectory(is_gez)
+add_subdirectory(is_greater)
+add_subdirectory(is_greater_equal)
+add_subdirectory(is_gtz)
+add_subdirectory(is_imag)
+add_subdirectory(is_inf)
+add_subdirectory(is_invalid)
+add_subdirectory(is_less)
+add_subdirectory(is_less_equal)
+add_subdirectory(is_lessgreater)
+add_subdirectory(is_lez)
+add_subdirectory(is_ltz)
+add_subdirectory(is_nan)
+add_subdirectory(is_negative)
+add_subdirectory(is_nez)
+add_subdirectory(is_ngez)
+add_subdirectory(is_ngtz)
+add_subdirectory(is_nlez)
+add_subdirectory(is_nltz)
+add_subdirectory(is_normal)
+add_subdirectory(is_not_denormal)
+add_subdirectory(is_not_equal)
+add_subdirectory(is_not_equal_with_equal_nans)
+add_subdirectory(is_not_greater)
+add_subdirectory(is_not_greater_equal)
+add_subdirectory(is_not_infinite)
+add_subdirectory(is_not_less)
+add_subdirectory(is_not_less_equal)
+add_subdirectory(is_not_nan)
+add_subdirectory(is_not_real)
+add_subdirectory(is_odd)
+add_subdirectory(is_ord)
+add_subdirectory(is_positive)
+add_subdirectory(is_real)
+add_subdirectory(is_unord)
+add_subdirectory(isincluded)
+add_subdirectory(isincluded_c)
+####add_subdirectory(ldexp)
+add_subdirectory(lo)
+add_subdirectory(log)
+add_subdirectory(log10)
+add_subdirectory(log1p)
+add_subdirectory(log2)
+add_subdirectory(logical_and)
+add_subdirectory(logical_andnot)
+add_subdirectory(logical_not)
+add_subdirectory(logical_notand)
+add_subdirectory(logical_notor)
+add_subdirectory(logical_or)
+add_subdirectory(logical_ornot)
+add_subdirectory(logical_xor)
+add_subdirectory(lookup)
+add_subdirectory(majority)
+add_subdirectory(mantissa)
+add_subdirectory(max)
+add_subdirectory(maximum)
+add_subdirectory(maxmag)
+add_subdirectory(maxnum)
+add_subdirectory(maxnummag)
+add_subdirectory(meanof)
+add_subdirectory(min)
+add_subdirectory(minimum)
+add_subdirectory(minmag)
+add_subdirectory(minmod)
+add_subdirectory(minnum)
+add_subdirectory(minnummag)
+add_subdirectory(minus)
+add_subdirectory(modf)
+add_subdirectory(multiplies)
+add_subdirectory(nbtrue)
+add_subdirectory(nearbyint)
+add_subdirectory(negate)
+add_subdirectory(negatenz)
+add_subdirectory(negif)
+add_subdirectory(negifnot)
+add_subdirectory(next)
+add_subdirectory(nextafter)
+add_subdirectory(none)
+add_subdirectory(nthroot)
+add_subdirectory(oneminus)
+add_subdirectory(plus)
+add_subdirectory(pow)
+add_subdirectory(pow2)
+add_subdirectory(pow_abs)
+add_subdirectory(predecessor)
+add_subdirectory(prev)
+add_subdirectory(quadrant)
+add_subdirectory(rec)
+add_subdirectory(rem)
+add_subdirectory(rem_pio2)
+add_subdirectory(rem_pio2_cephes)
+add_subdirectory(rem_pio2_medium)
+add_subdirectory(rem_pio2_straight)
+add_subdirectory(remquo)
+add_subdirectory(repeat_lower_half)
+add_subdirectory(repeat_upper_half)
+add_subdirectory(reverse)
+add_subdirectory(reversebits)
+####add_subdirectory(rol)
+####add_subdirectory(ror)
+add_subdirectory(round)
+####add_subdirectory(rrol)
+####add_subdirectory(rror)
+add_subdirectory(rsqrt)
+add_subdirectory(safe_max)
+add_subdirectory(safe_min)
+add_subdirectory(sec)
+add_subdirectory(secd)
+add_subdirectory(sech)
+add_subdirectory(secpi)
+####add_subdirectory(shift_left)
+####add_subdirectory(shift_right)
+####add_subdirectory(shr)
+add_subdirectory(sign)
+####add_subdirectory(significants)
+add_subdirectory(signnz)
+add_subdirectory(sin)
+add_subdirectory(sinc)
+add_subdirectory(sincos)
+add_subdirectory(sincosd)
+add_subdirectory(sincospi)
+add_subdirectory(sincpi)
+add_subdirectory(sind)
+add_subdirectory(sinh)
+add_subdirectory(sinhc)
+add_subdirectory(sinhcosh)
+add_subdirectory(sinpi)
+add_subdirectory(sqr)
+add_subdirectory(sqr_abs)
+add_subdirectory(sqrt)
+add_subdirectory(sqrt1pm1)
+add_subdirectory(successor)
+add_subdirectory(tan)
+add_subdirectory(tand)
+add_subdirectory(tanh)
+add_subdirectory(tanpi)
+####add_subdirectory(tenpower)
+add_subdirectory(tofloat)
+add_subdirectory(toint)
+add_subdirectory(touint)
+add_subdirectory(trunc)
+add_subdirectory(two_add)
+add_subdirectory(two_prod)
+add_subdirectory(two_split)
+####add_subdirectory(twopower)
+add_subdirectory(ulpdist)
+add_subdirectory(unary_minus)
+add_subdirectory(unary_plus)

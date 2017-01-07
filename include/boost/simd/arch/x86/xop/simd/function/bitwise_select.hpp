@@ -21,7 +21,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD_IF( bitwise_select_
                             , (typename A0, typename A1)
-                            , (brigand::bool_<A0::static_size == A1::static_size>)
+                            , (nsm::bool_<A0::static_size == A1::static_size>)
                             , bs::avx_
                             , bs::pack_<bd::fundamental_<A0>, bs::sse_>
                             , bs::pack_<bd::fundamental_<A1>, bs::sse_>
@@ -41,7 +41,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD_IF( bitwise_select_
                             , (typename A0, typename A1)
-                            , (brigand::bool_<A0::static_size == A1::static_size>)
+                            , (nsm::bool_<A0::static_size == A1::static_size>)
                             , bs::avx_
                             , bs::pack_<bd::fundamental_<A0>, bs::avx_>
                             , bs::pack_<bd::fundamental_<A1>, bs::avx_>

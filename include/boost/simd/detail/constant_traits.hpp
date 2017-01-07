@@ -33,9 +33,9 @@ struct value_map                                                                
   template<typename X>                                                                              \
   static std::integral_constant<X,X(INT)> value(boost::dispatch::integer_<X> const&);               \
   template<typename X>                                                                              \
-  static brigand::single_<FLOAT> value(boost::dispatch::single_<X> const&);                         \
+  static nsm::single_<FLOAT> value(boost::dispatch::single_<X> const&);                         \
   template<typename X>                                                                              \
-  static brigand::double_<DOUBLE> value(boost::dispatch::double_<X> const&);                        \
+  static nsm::double_<DOUBLE> value(boost::dispatch::double_<X> const&);                        \
 }                                                                                                   \
 /**/
 
@@ -66,22 +66,22 @@ namespace boost { namespace simd { namespace detail
 
   template<bits_t<double> V> struct constantify<double,V>
   {
-    using type = brigand::double_<V>;
+    using type = nsm::double_<V>;
   };
 
   template<bits_t<double> V, bits_t<float> W> struct constantify<double,V,W>
   {
-    using type = brigand::double_<V>;
+    using type = nsm::double_<V>;
   };
 
   template<bits_t<double> V> struct constantify<float,V>
   {
-    using type = brigand::single_<V>;
+    using type = nsm::single_<V>;
   };
 
   template<bits_t<double> V, bits_t<float> W> struct constantify<float,V,W>
   {
-    using type = brigand::single_<W>;
+    using type = nsm::single_<W>;
   };
 } } }
 

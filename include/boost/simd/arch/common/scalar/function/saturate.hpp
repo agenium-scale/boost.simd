@@ -15,7 +15,7 @@
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/is_inf.hpp>
 #include <boost/simd/function/max.hpp>
@@ -38,7 +38,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0, T ) const BOOST_NOEXCEPT
     {
       return impl( a0
-                   , brigand::bool_< (sizeof(bd::scalar_of_t<typename T::type>)
+                   , nsm::bool_< (sizeof(bd::scalar_of_t<typename T::type>)
                                              <sizeof(bd::scalar_of_t<A0>))>()
                    );
     }
@@ -82,10 +82,10 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0, T ) const BOOST_NOEXCEPT
     {
       return impl( a0
-                   , typename brigand::or_< typename std::is_same< bd::scalar_of_t<typename T::type>
+                   , typename nsm::or_< typename std::is_same< bd::scalar_of_t<typename T::type>
                                                          , bd::scalar_of_t<A0>
                                                         >::type
-                                           , brigand::bool_< (sizeof(bd::scalar_of_t<typename T::type>)
+                                           , nsm::bool_< (sizeof(bd::scalar_of_t<typename T::type>)
                                                              > sizeof(bd::scalar_of_t<A0>))
                                                            >
                                           >::type()
@@ -117,7 +117,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0, T ) const BOOST_NOEXCEPT
     {
       return impl( a0
-                   , brigand::bool_< (sizeof(bd::scalar_of_t<typename T::type>)
+                   , nsm::bool_< (sizeof(bd::scalar_of_t<typename T::type>)
                                       >= sizeof(bd::scalar_of_t<A0>))
                                    >()
                    );
@@ -163,7 +163,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 a0, T ) const BOOST_NOEXCEPT
     {
       return impl( a0
-                   , brigand::bool_< (sizeof(bd::scalar_of_t<typename T::type>)
+                   , nsm::bool_< (sizeof(bd::scalar_of_t<typename T::type>)
                                       >= sizeof(bd::scalar_of_t<A0>))
                                    >()
                    );
