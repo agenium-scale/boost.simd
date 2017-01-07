@@ -7,6 +7,7 @@
 ##===================================================================================================
 
 ## Larger test suites go there
+add_subdirectory(cast)
 add_subdirectory(combine)
 add_subdirectory(div)
 add_subdirectory(extract)

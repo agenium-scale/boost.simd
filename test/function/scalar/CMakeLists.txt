@@ -70,6 +70,7 @@ set ( SOURCES
    bitwise_select.cpp
    bitwise_xor.cpp
    broadcast.cpp
+   cast.cpp
    cbrt.cpp
    ceil.regular.cpp
    ceil.std.cpp
