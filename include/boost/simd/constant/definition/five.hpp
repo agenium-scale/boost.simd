@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::five( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Five(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Five<T>())
+  {
+    return Five<T>();
+  }
 } }
 
 #endif

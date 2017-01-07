@@ -57,6 +57,12 @@ namespace boost { namespace simd
   {
     return detail::minf( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Minf(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Minf<T>())
+  {
+    return Minf<T>();
+  }
 } }
 
 #endif

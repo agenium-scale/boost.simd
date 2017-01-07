@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::fourthrooteps( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Fourthrooteps(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Fourthrooteps<T>())
+  {
+    return Fourthrooteps<T>();
+  }
 } }
 
 #endif

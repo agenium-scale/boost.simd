@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::tan_3pio_8( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Tan_3pio_8(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Tan_3pio_8<T>())
+  {
+    return Tan_3pio_8<T>();
+  }
 } }
 
 #endif

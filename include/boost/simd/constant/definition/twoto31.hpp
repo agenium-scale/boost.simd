@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::twoto31( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Twoto31(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Twoto31<T>())
+  {
+    return Twoto31<T>();
+  }
 } }
 
 #endif

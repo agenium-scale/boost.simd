@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::mone( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Mone(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Mone<T>())
+  {
+    return Mone<T>();
+  }
 } }
 
 #endif

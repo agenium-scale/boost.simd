@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::twotom10( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Twotom10(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Twotom10<T>())
+  {
+    return Twotom10<T>();
+  }
 } }
 
 #endif

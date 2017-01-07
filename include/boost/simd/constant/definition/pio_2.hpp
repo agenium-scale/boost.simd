@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::pio_2( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Pio_2(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Pio_2<T>())
+  {
+    return Pio_2<T>();
+  }
 } }
 
 #endif

@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::goldbar( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Goldbar(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Goldbar<T>())
+  {
+    return Goldbar<T>();
+  }
 } }
 
 #endif

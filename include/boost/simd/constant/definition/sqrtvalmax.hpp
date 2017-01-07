@@ -74,6 +74,12 @@ namespace boost { namespace simd
   {
     return detail::sqrtvalmax( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Sqrtvalmax(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Sqrtvalmax<T>())
+  {
+    return Sqrtvalmax<T>();
+  }
 } }
 
 #endif

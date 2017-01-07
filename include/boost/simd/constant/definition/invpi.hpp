@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::invpi( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Invpi(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Invpi<T>())
+  {
+    return Invpi<T>();
+  }
 } }
 
 #endif

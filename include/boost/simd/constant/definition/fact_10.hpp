@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::fact_10( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Fact_10(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Fact_10<T>())
+  {
+    return Fact_10<T>();
+  }
 } }
 
 #endif

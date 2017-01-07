@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::greatestnoninteger( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Greatestnoninteger(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Greatestnoninteger<T>())
+  {
+    return Greatestnoninteger<T>();
+  }
 } }
 
 #endif

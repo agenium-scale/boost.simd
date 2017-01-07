@@ -69,6 +69,12 @@ namespace boost { namespace simd
   {
     return detail::valmin( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Valmin(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Valmin<T>())
+  {
+    return Valmin<T>();
+  }
 } }
 
 #endif

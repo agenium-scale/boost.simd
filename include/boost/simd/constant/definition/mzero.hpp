@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::mzero( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Mzero(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Mzero<T>())
+  {
+    return Mzero<T>();
+  }
 } }
 
 #endif

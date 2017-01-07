@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::invsqrt_2pi( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Invsqrt_2pi(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Invsqrt_2pi<T>())
+  {
+    return Invsqrt_2pi<T>();
+  }
 } }
 
 #endif

@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::mfour( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Mfour(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Mfour<T>())
+  {
+    return Mfour<T>();
+  }
 } }
 
 #endif

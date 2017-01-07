@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::smallestposval( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Smallestposval(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Smallestposval<T>())
+  {
+    return Smallestposval<T>();
+  }
 } }
 
 #endif

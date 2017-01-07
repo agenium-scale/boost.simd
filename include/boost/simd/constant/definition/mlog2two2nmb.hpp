@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::mlog2two2nmb( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Mlog2two2nmb(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Mlog2two2nmb<T>())
+  {
+    return Mlog2two2nmb<T>();
+  }
 } }
 
 #endif

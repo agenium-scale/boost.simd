@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::threepio_4( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Threepio_4(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Threepio_4<T>())
+  {
+    return Threepio_4<T>();
+  }
 } }
 
 #endif

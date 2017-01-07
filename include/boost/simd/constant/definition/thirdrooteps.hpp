@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::thirdrooteps( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Thirdrooteps(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Thirdrooteps<T>())
+  {
+    return Thirdrooteps<T>();
+  }
 } }
 
 #endif

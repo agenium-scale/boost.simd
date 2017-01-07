@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::twoopi( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Twoopi(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Twoopi<T>())
+  {
+    return Twoopi<T>();
+  }
 } }
 
 #endif

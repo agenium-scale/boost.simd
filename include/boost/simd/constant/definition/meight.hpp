@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::meight( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Meight(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Meight<T>())
+  {
+    return Meight<T>();
+  }
 } }
 
 #endif

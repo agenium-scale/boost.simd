@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::third( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Third(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Third<T>())
+  {
+    return Third<T>();
+  }
 } }
 
 #endif

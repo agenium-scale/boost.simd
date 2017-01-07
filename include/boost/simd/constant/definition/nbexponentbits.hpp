@@ -55,6 +55,12 @@ namespace boost { namespace simd
   {
     return detail::nbexponentbits( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Nbexponentbits(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Nbexponentbits<T>())
+  {
+    return Nbexponentbits<T>();
+  }
 } }
 
 #endif

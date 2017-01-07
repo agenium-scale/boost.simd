@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::seven( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Seven(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Seven<T>())
+  {
+    return Seven<T>();
+  }
 } }
 
 #endif

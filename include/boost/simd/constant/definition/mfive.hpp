@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::mfive( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Mfive(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Mfive<T>())
+  {
+    return Mfive<T>();
+  }
 } }
 
 #endif

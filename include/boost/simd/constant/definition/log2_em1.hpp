@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::log2_em1( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Log2_em1(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Log2_em1<T>())
+  {
+    return Log2_em1<T>();
+  }
 } }
 
 #endif

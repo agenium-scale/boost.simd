@@ -56,6 +56,12 @@ namespace boost { namespace simd
   {
     return detail::allbits( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Allbits(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Allbits<T>())
+  {
+    return Allbits<T>();
+  }
 } }
 
 #endif

@@ -70,6 +70,12 @@ namespace boost { namespace simd
   {
     return detail::valmax( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Valmax(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Valmax<T>())
+  {
+    return Valmax<T>();
+  }
 } }
 
 #endif

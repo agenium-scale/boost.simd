@@ -45,6 +45,12 @@ namespace boost { namespace simd
   {
     return detail::fourpi( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Fourpi(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Fourpi<T>())
+  {
+    return Fourpi<T>();
+  }
 } }
 
 #endif

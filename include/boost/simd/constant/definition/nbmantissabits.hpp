@@ -55,6 +55,12 @@ namespace boost { namespace simd
   {
     return detail::nbmantissabits( boost::dispatch::as_<T>{} );
   }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Nbmantissabits(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Nbmantissabits<T>())
+  {
+    return Nbmantissabits<T>();
+  }
 } }
 
 #endif
