@@ -21,11 +21,12 @@ namespace boost { namespace simd
     This function object computes the integer conversion of the @ref nearbyint of its parameter.
 
     @par Note:
-    This operation is properly saturated
+    This operation is NOT properly saturated.
+    To ensure proper saturation use the decorartor pedantic_/
 
     @par Decorators:
 
-   - pedantic_ as toint does not care about large value, if you need a full range correctness
+   - pedantic_ if you need a full range correctness
      use this decorator that computes  saturated_(toint)(nearbyint(x));
 
     @see nearbyint, ifloor, iround, ifix, iceil

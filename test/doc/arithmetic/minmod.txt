@@ -1,0 +1,11 @@
+//! [minmod]
+---- simd
+ <- pf =                                (3, -2, -5, 0)
+ <- qf =                                (4, 3, -2, 4)
+ -> bs::minmod(pf, qf) =                (3, 0, -5, 0)
+---- scalar
+ xf =                                   3
+ yf =                                   4
+ -> bs::minmod(xf, yf) =                3
+ -> bs::minmod(xf,-yf) =                0
+//! [minmod]

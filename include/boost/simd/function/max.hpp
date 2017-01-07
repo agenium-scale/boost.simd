@@ -18,24 +18,12 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-arithmetic
-    Function object implementing max capabilities
+    This function object computes the largest of its parameter.
 
-    Computes the largest of its parameter.
-
-    @par semantic:
+    @par Notes
     For any given value @c x and @c y of type @c T:
 
-    @code
-    T r = max(x, y);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r =  (x > y) ? x : y;
-    @endcode
-
-    @par Note:
+    Call to `max(x, y)` is similar to `(x > y) ? x : y` which is the standard behaviour.
 
     With this definition max(x, @ref Nan) should return x...
 
@@ -44,7 +32,20 @@ namespace boost { namespace simd
 
     This can be corrected using the pedantic_ decorator that ensures the standard behaviour at a cost.
 
-    @see maxnum, maxnummag,  maxmag
+    @par Decorators
+
+     - pedantic_ ensures the standard behaviour.
+     - std_ call std::max.
+
+    @see min,  maxnum, maxnummag, maxmag
+
+    @par Example:
+
+       @snippet max.cpp max
+
+    @par Possible output:
+
+       @snippet max.txt max
 
   **/
   Value max(Value const& x, Value const& y);
