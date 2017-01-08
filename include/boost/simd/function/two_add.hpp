@@ -18,10 +18,8 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-arithmetic
-    Function object implementing two_add capabilities
-
-    For any two reals @c x and @c y two_add computes two reals (in an std::pair)
-    @c r0 and @c r1 such that:
+    This function object computes two reals of the type of the inputs
+    (in an std::pair) @c r0 and @c r1 such that:
 
     @code
     r0 = x + y
@@ -31,7 +29,16 @@ namespace boost { namespace simd
     using perfect arithmetic.
 
     Its main usage is to be able to compute
-    sum of reals and the residual error using IEEE  754 arithmetic.
+    sum of reals and the residual error using IEEE 754 arithmetic.
+
+    @par Example:
+
+       @snippet two_add.cpp two_add
+
+    @par Possible output:
+
+       @snippet two_add.txt two_add
+
 
   **/
   std::pair<Value, Value> two_add(Value const& x, Value const& y);

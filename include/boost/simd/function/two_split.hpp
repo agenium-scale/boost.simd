@@ -18,9 +18,7 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-arithmetic
-    Function object implementing two_split capabilities
-
-    For any real @c x, two_split computes two reals @c r0 and @c r1 (in an std::pair)
+    This function object computes two reals @c r0 and @c r1 (in an std::pair)
     such that:
 
     @code
@@ -28,6 +26,14 @@ namespace boost { namespace simd
     @endcode
 
     and where @c r0 and @c r1 bit pattern don't overlap.
+
+    @par Example:
+
+       @snippet two_split.cpp two_split
+
+    @par Possible output:
+
+       @snippet two_split.txt two_split
 
   **/
   std::pair<Value, Value> two_split(Value const& x);

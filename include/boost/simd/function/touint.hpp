@@ -18,38 +18,38 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-arithmetic
-    Function object implementing touint capabilities
-
-    Convert to unsigned integer by truncation.
-
-    @par semantic:
-    For any given value @c x of type @c T:
-
-    @code
-    as_integer_t<T, unsigned> r = touint(x);
-    @endcode
-
-    The code is similar to:
-
-    @code
-    as_integer_t<T, unsigned> r = static_cast<as_integer_t<T, unsigned> >(x)
-    @endcode
+    This function object converts its parameter to unsigned integer by truncation.
 
     @par Notes
 
-    @c toint cast a floating value to the unsigned signed integer value of the same bit size.
+    @c touint cast a floating value to the unsigned signed integer value of the same bit size.
 
     This is done by C casting for scalars and corresponding intrinsic in simd (if available).
 
     Peculiarly,  that implies that the behaviour of this function on invalid or negative
     entries is not defined and possibly unpredictable.
 
-    If you intend to use @ref Nan, @ref Inf or negative entries, consider using @ref saturated_(touint) instead.
+    If you intend to use @ref Nan, @ref Inf or negative entries, consider using
+    @ref saturated_(touint) instead.
 
-    @see toint
+
+   @par Decorators
+
+   - saturated_ as stated above ensures ggood brhaviour on limiting values.
+
+   @see toint, tofloat
+
+   @par Example:
+
+       @snippet touint.cpp touint
+
+    @par Possible output:
+
+       @snippet touint.txt touint
+
 
   **/
-  UIntegerValue toint(Value const & x);
+  UIntegerValue touint(Value const & x);
 } }
 #endif
 

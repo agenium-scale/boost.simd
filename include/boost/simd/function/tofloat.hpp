@@ -18,7 +18,7 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-arithmetic
-    This function object convert its parameter to floating point value occupying the same bit size.
+    This function object converts its parameter to floating point value occupying the same bit size.
     This implies that this functor is only defined for (smd vectors of) 32 or 64 bit integer
     entries to provide (smd vectors of) float and or double.
 

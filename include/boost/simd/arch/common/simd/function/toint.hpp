@@ -27,9 +27,8 @@ namespace boost { namespace simd { namespace ext
 {
    namespace bd = boost::dispatch;
    namespace bs = boost::simd;
-   BOOST_DISPATCH_OVERLOAD_IF(toint_
+   BOOST_DISPATCH_OVERLOAD(toint_
                           , (typename A0, typename X)
-                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::pack_<bd::uint_<A0>, X>
                           )
@@ -49,7 +48,7 @@ namespace boost { namespace simd { namespace ext
    {
      BOOST_FORCEINLINE A0 operator()(A0 const& a0) const
      {
-       return a0;
+        return a0;
      }
    };
 
