@@ -12,6 +12,7 @@
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/dispatch/as.hpp>
 #include <boost/simd/detail/traits.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/function/combine.hpp>
 #include <boost/simd/function/slice.hpp>
 #include <type_traits>
@@ -36,9 +37,8 @@ namespace boost { namespace simd { namespace ext
     }
 
     template<typename... N>
-    BOOST_FORCEINLINE result manual(A0 const& a0, brigand::list<N...> const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE result manual(A0 const& a0, nsm::list<N...> const&) const BOOST_NOEXCEPT
     {
-      std::cout << "Manual: " <<  std::endl;
       return result{static_cast<typename A1::type>(a0[N::value])...};
     }
 
