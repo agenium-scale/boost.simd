@@ -15,6 +15,7 @@
 #define BOOST_SIMD_PACK_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
+#include <boost/simd/detail/dispatch/detail/declval.hpp>
 #include <boost/simd/detail/pack_traits.hpp>
 #include <boost/simd/detail/storage_of.hpp>
 #include <boost/simd/meta/is_power_of_2.hpp>
@@ -49,6 +50,8 @@
 
 namespace boost { namespace simd
 {
+  namespace bd = boost::dispatch;
+
   /*!
     @ingroup  group-api
     @brief    High-level interface for manipulating SIMD data
@@ -359,24 +362,24 @@ namespace boost { namespace simd
     const_reference front() const  { return traits::at(*this, 0); }
 
     public:
-    BOOST_FORCEINLINE pack& operator++() BOOST_NOEXCEPT_IF_EXPR(inc(std::declval<pack>()))
+    BOOST_FORCEINLINE pack& operator++() BOOST_NOEXCEPT_IF_EXPR(inc(bd::detail::declval<pack>()))
     {
       return (*this = inc(*this));
     }
 
-    BOOST_FORCEINLINE pack& operator--() BOOST_NOEXCEPT_IF_EXPR(dec(std::declval<pack>()))
+    BOOST_FORCEINLINE pack& operator--() BOOST_NOEXCEPT_IF_EXPR(dec(bd::detail::declval<pack>()))
     {
       return (*this = dec(*this));
     }
 
-    BOOST_FORCEINLINE pack operator++(int) BOOST_NOEXCEPT_IF_EXPR(++std::declval<pack>())
+    BOOST_FORCEINLINE pack operator++(int) BOOST_NOEXCEPT_IF_EXPR(++bd::detail::declval<pack>())
     {
       pack that = *this;
       ++(*this);
       return that;
     }
 
-    BOOST_FORCEINLINE pack operator--(int)  BOOST_NOEXCEPT_IF_EXPR(--std::declval<pack>())
+    BOOST_FORCEINLINE pack operator--(int)  BOOST_NOEXCEPT_IF_EXPR(--bd::detail::declval<pack>())
     {
       pack that = *this;
       --(*this);

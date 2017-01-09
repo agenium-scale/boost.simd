@@ -12,11 +12,13 @@
 #ifndef BOOST_SIMD_META_IS_ITERATOR_HPP_INCLUDED
 #define BOOST_SIMD_META_IS_ITERATOR_HPP_INCLUDED
 
+#include <boost/simd/detail/dispatch/detail/declval.hpp>
 #include <boost/simd/config.hpp>
 #include <type_traits>
 
 namespace boost { namespace simd
 {
+  namespace bd = boost::dispatch;
   namespace detail
   {
     template <typename T> struct is_iterator_impl
@@ -31,7 +33,7 @@ namespace boost { namespace simd
                 , typename=typename std::iterator_traits<U>::iterator_category
                 > static std::true_type test(U&&);
 
-      static const bool value = std::is_same< decltype(test(std::declval<T>()))
+      static const bool value = std::is_same< decltype(test(bd::detail::declval<T>()))
                                             , std::true_type
                                             >::value;
     };

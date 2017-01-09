@@ -12,6 +12,7 @@
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/shuffle.hpp>
 #include <boost/simd/function/combine.hpp>
+#include <boost/simd/detail/dispatch/detail/declval.hpp>
 
 namespace boost { namespace simd { namespace detail
 {
@@ -73,8 +74,8 @@ namespace boost { namespace simd { namespace ext
                                     )
   {
     using function_t  = bd::functor<BinOp>;
-    using result_t    = decltype( bd::functor<BinOp>()( std::declval<Arg>()
-                                                      , std::declval<Neutral>()
+    using result_t    = decltype( bd::functor<BinOp>()( bd::detail::declval<Arg>()
+                                                      , bd::detail::declval<Neutral>()
                                                       )
                                 );
 

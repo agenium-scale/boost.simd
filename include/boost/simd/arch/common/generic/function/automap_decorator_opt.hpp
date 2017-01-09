@@ -42,8 +42,8 @@ namespace boost { namespace simd { namespace ext
 
     // We build the return pack as a pack of same cardinal but which type is the scalar return
     // type of functor applied to the input parameter value type.
-    using return_type         = decltype(functor()( std::declval<bd::functor<Opt>>()
-                                                  , std::declval<typename Pn::value_type>()...)
+    using return_type         = decltype(functor()( bd::detail::declval<bd::functor<Opt>>()
+                                                  , bd::detail::declval<typename Pn::value_type>()...)
                                                   );
 
     using result_type         = typename pack::template rebind<return_type>;
@@ -88,7 +88,7 @@ namespace boost { namespace simd { namespace ext
 
     enum {
       same_static_size = traits_info::value,
-      is_noexcept = BOOST_NOEXCEPT_EXPR(std::declval<functor>()(std::declval<Pn>()[0]...))
+      is_noexcept = BOOST_NOEXCEPT_EXPR(bd::detail::declval<functor>()(bd::detail::declval<Pn>()[0]...))
     };
 
     static_assert( same_static_size
