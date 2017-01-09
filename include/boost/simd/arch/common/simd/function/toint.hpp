@@ -18,6 +18,7 @@
 #include <boost/simd/function/floor.hpp>
 #include <boost/simd/function/negif.hpp>
 #include <boost/simd/function/is_gtz.hpp>
+#include <boost/simd/function/logical_and.hpp>
 #include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
