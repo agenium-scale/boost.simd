@@ -18,22 +18,19 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-hyperbolic
-    Function object implementing sinh capabilities
+    This function object returns the hyperbolic sine: \f$(e^{x}-e^{-x})/2\f$.
 
-    Returns the hyperbolic sine: \f$(e^{x}-e^{-x})/2\f$.
+    @see tanh, cosh, sech, csch, sinhcosh
 
-    @par Semantic:
+    @par Example:
 
-    For every parameter of floating type @c T
+       @snippet sinh.cpp sinh
 
-    @code
-    T r = sinh(x);
-    @endcode
+    @par Possible output:
 
-    @see exp, cosh, sinhcosh
-
+       @snippet sinh.txt sinh
   **/
-  Value sinh(Value const & v0);
+  Value sinh(Value const & x);
 } }
 #endif
 

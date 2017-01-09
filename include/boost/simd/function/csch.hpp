@@ -18,22 +18,20 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-hyperbolic
-    Function object implementing csch capabilities
+    This function object returns the hyperbolic cosecant: \f$1/\sinh(1/x)\f$.
 
-    hyperbolic cosecant: \f$1/\sinh(x)\f$.
 
-    @par Semantic:
+    @see sinh, tanh, sech, csch, sinhcosh
 
-    For every parameter of floating type @c T
+    @par Example:
 
-    @code
-    T r = csch(x);
-    @endcode
+       @snippet csch.cpp csch
 
-    @see rec, sinh
+    @par Possible output:
 
+       @snippet csch.txt csch
   **/
-  Value csch(Value const & v0);
+  Value csch(Value const & x);
 } }
 #endif
 
