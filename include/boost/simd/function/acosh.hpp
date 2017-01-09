@@ -18,22 +18,21 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-hyperbolic
-    Function object implementing acosh capabilities
+    This function objectr eturns the hyperbolic cosine argument: \f$\log(x+\sqrt{x^2-1})\f$.
 
-    Returns the hyperbolic cosine argument: \f$\log(x+\sqrt{x^2-1})\f$.
+    @see cosh, sinh,  acsch, asinh, atanh, asech, acoth, acsch
 
-    @par Call:
 
-    For every parameter of floating type @c T
+    @par Example:
 
-    @code
-    T r = acosh(x);
-    @endcode
+       @snippet acosh.cpp acosh
 
-    @see log, sqrt, cosh, dec
+    @par Possible output:
+
+       @snippet acosh.txt acosh
 
   **/
-  Value acosh(Value const & v0);
+  Value acosh(Value const & x);
 } }
 #endif
 

@@ -18,22 +18,21 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-hyperbolic
-    Function object implementing acsch capabilities
+    Ths function object returns the hyperbolic cosecant argument \f$\mathop{\textrm{asinh}}(1/x)\f$
 
-    Returns the hyperbolic cosecant argument \f$\mathop{\textrm{asinh}}(1/x)\f$
+     @see cosh, sinh,  acosh, asinh, atanh, asech, acoth, atanh
 
-    @par Semantic:
+    @par Example:
 
-    For every parameter of floating type @c T
+       @snippet atanh.cpp atanh
 
-    @code
-    T r = acsch(x);
-    @endcode
+    @par Possible output:
 
-    @see asinh, sinh, rec
+       @snippet atanh.txt atanh
+
 
   **/
-  Value acsch(Value const & v0);
+  Value acsch(Value const & x);
 } }
 #endif
 
