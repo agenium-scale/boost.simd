@@ -6,8 +6,11 @@
 ##                            http://www.boost.org/LICENSE_1_0.txt
 ##===================================================================================================
 
-add_subdirectory(arithmetic)
-add_subdirectory(hyperbolic)
-add_subdirectory(predicates)
-add_subdirectory(trigonometric)
-add_subdirectory(swar)
+SET( SOURCES
+    shuffle.unary.cpp
+    shuffle.binary.cpp
+    shuffle.perm.cpp
+    shuffle.perm2.cpp
+  )
+
+make_unit( "doc.swar" ${SOURCES})

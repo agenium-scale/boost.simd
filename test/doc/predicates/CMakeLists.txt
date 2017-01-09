@@ -6,8 +6,9 @@
 ##                            http://www.boost.org/LICENSE_1_0.txt
 ##===================================================================================================
 
-add_subdirectory(arithmetic)
-add_subdirectory(hyperbolic)
-add_subdirectory(predicates)
-add_subdirectory(trigonometric)
-add_subdirectory(swar)
+SET( SOURCES
+    operators.cpp
+    predicates.cpp
+  )
+
+make_unit( "doc.predicates" ${SOURCES})

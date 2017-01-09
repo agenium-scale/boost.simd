@@ -41,6 +41,12 @@ EXCLUDE_SYMBOLS        =
 
 EXAMPLE_PATH           = @PROJECT_SOURCE_DIR@/doc/examples
 EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc
+EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/arithmetic
+EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/hyperbolic
+EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/predicates
+EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/trigonometric
+EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/swar
+EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/range
 EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/doc/
 EXAMPLE_RECURSIVE      = YES
 EXAMPLE_PATTERNS       = *

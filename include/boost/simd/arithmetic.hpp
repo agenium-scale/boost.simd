@@ -22,16 +22,17 @@ namespace boost { namespace simd
     functions of the C and C++ standard library. Other functions are also provided, in particular,
     provision for saturated operations through the use of a @ref decorator.
 
+    All these functions can be included individually or all of them just by including <boost/simd/arithmetic.hpp>
+
      - **Possibly saturated operations**
 
        The functors:
        <center>
-         | name       | name            | name         | name             |
-         |:----------:|:---------------:|:------------:|:----------------:|
-         | @ref abs   | @ref minus      | @ref oneminus| @ref unary_minus |
-         | @ref dec   | @ref multiplies | @ref sqr     | @ref unary_plus  |
-         | @ref dist  | @ref plus       | @ref toint   | @ref touint      |
-         | @ref inc   |                 |              |                  |
+         |                  |                 |                 |                  |                  |
+         |:----------------:|:---------------:|:---------------:|:----------------:|:----------------:|
+         | @ref abs         | @ref dec        | @ref dist       | @ref inc         | @ref minus       |
+         | @ref multiplies  | @ref plus       | @ref oneminus   | @ref sqr         | @ref toint       |
+         | @ref unary_minus | @ref unary_plus | @ref touint     |                  |                  |
        </center>
 
        can be decorated with the  @ref saturated "saturated_" @ref decorator. This decorator has no effect on floating
@@ -47,33 +48,46 @@ namespace boost { namespace simd
        nevertheless it probably is its saturated version you have to use because it acts properly on large or not finite
        values, this is why an alias for` saturated_(toint)` is provided as @ref ifix.
 
+       @par Example:
+
+          @snippet saturated_abs.cpp saturated_abs
+
+       @par Possible output:
+
+          @snippet saturated_abs.txt saturated_abs_results
+
      - **Rounding operations**
-       <center>
-         | name        | name            | name        | name             |
-         |:-----------:|:---------------:|:-----------:|:----------------:|
-         | @ref ceil   | @ref round      | @ref ifloor |  @ref inearbyint |
-         | @ref floor  | @ref nearbyint  | @ref ifix   |                  |
-         | @ref fix    | @ref iceil      | @ref iround |                  |
+
+        <center>
+         |                 |                 |              |                  |
+         |:---------------:|:---------------:|:------------:|:----------------:|
+         | @ref ceil       |  @ref fix       | @ref floor   |  @ref iceil      |
+         | @ref ifix       |  @ref ifloor    | @ref iround  |  @ref itrunc     |
+         | @ref inearbyint |  @ref nearbyint | @ref round   |  @ref trunc      |
         </center>
 
-          - The operations prefixed by @c 'i' return a value of the integral type associated to the entry type. (If @c T is
-         the entry type it is @c as_integer_t<T>)
+          -The operations prefixed by 'i' return a value of the integral type iT associated to the entry type. (If T is
+         the entry type iT is @ref as_integer_t<T>)
 
           - The other ones return the same type as the entry.
 
+        @par Example:
+
+          @snippet roundings.cpp roundings
+
+        @par Possible output:
+
+          @snippet roundings.txt roundings_results
+
      - **Division operations**
 
-       @ref divides is the function associated to standard division. There is another one which provides more
-       flexibility, namely rounded divisions.
+        @ref divides is the function associated to standard division. There is another one which provides more
+        flexibility, namely rounded divisions.
 
-       With two parameters @ref div and @ref divides are equivalent, but @ref div can admit a first option parameter
-       that modifies its behaviour.
+        With two parameters @ref div and @ref divides are equivalent, but @ref div can admit a first option parameter
+        that modifies its behaviour.
 
-       The option parameter is described in the following table where  @c a and  @c b are of type  @c T,   @c fT is a
-       supposed floating type associated to @c T (@ref as_floating_t<T> if it exists) and  @c iT is the integer type associated to  @c T
-       (namely `as_integer_t<T>`, see @ref as_integer). (@c fT and @c iT are here only to support easier pseudo code description)
-
-       <center>
+        <center>
          | option             |          call            |      result similar to               |
          |--------------------|--------------------------|--------------------------------------|
          | @ref ceil          |   div(ceil, a, b)        |      T(ceil(fT(a)/fT(b)))            |
@@ -87,6 +101,18 @@ namespace boost { namespace simd
          | @ref iround        |   div(iround, a, b)      |      iT(iround(fT(a)/fT(b)))         |
          | @ref inearbyint    |   div(inearbyint, a, b)  |      iT(inearbyint(fT(a)/fT(b)))     |
         </center>
+
+           - The option parameter is described in the above table where a and b are of type T,  fT is a
+           supposed floating type associated to T (@ref as_floating_t<T> if it exists) and iT is the integer type associated to T
+           (@ref as_integer_t<T>). (fT and iT are here only to support pseudo code description)
+
+           @par Example:
+
+              @snippet divisions.cpp divisions
+
+           @par Possible output:
+
+              @snippet divisions.txt divisions_results
 
      - **Remainder operations**
 
@@ -107,13 +133,21 @@ namespace boost { namespace simd
         -  If  @c y is \f$\pm0\f$, @ref  @ref Nan is returned
         -  If either argument is a nan,  a nan is returned
 
+       @par Example:
+
+          @snippet remainders.cpp remainders
+
+       @par Possible output:
+
+          @snippet remainders.txt remainders_results
+
      - **complex operations**
 
        Boost.SIMD  does not provides complex number operations yet, but it will soon. So the following functors that
        have a meaning as a restriction to real number of complex functions, can be seen as a prequel:
 
       <center>
-        | name        | name            | name        | name             | name             |
+        |             |                 |             |                  |                  |
         |:-----------:|:---------------:|:-----------:|:----------------:|:----------------:|
         | @ref arg    | @ref conj       | @ref imag   | @ref real        | @ref sqr_abs     |
       </center>
@@ -124,7 +158,7 @@ namespace boost { namespace simd
      - **Fused multiply-add operations**
 
       <center>
-        | name            | name         | name          | name             |
+        |                 |              |               |                  |
         |:---------------:|:------------:|:-------------:|:----------------:|
         | @ref fma        | @ref fnma    |  @ref two_add | @ref two_split   |
         | @ref fms        | @ref fnms    |  @ref two_prod|                  |
@@ -157,12 +191,12 @@ namespace boost { namespace simd
        The stdlibc++ provides them but only in scalar mode:
 
        <center>
-         | name       | name            | name         |
-         |:----------:|:---------------:|:------------:|
-         | @ref abs   | @ref hypot      | @ref remquo  |
-         | @ref ceil  | @ref max        | @ref round   |
-         | @ref floor | @ref min        | @ref signbit |
-         | @ref fma   | @ref rem (%)    | @ref sqrt    |
+         |               |                 |              |              |
+         |:-------------:|:---------------:|:------------:|:------------:|
+         | @ref abs      | @ref ceil       | @ref floor   |  @ref fma    |
+         | @ref hypot    | @ref max        | @ref maxnum  |  @ref min    |
+         | @ref minnum   | @ref rem (%)    | @ref remquo  | @ref round   |
+         | @ref signbit  | @ref sqrt       |              |              |
        </center>
 
        Boost.SIMD provides its own scalar and simd versions, but allows
@@ -172,11 +206,10 @@ namespace boost { namespace simd
      - **Other operations**
 
        <center>
-         | name         | name            | name          |
-         |:------------:|:---------------:|:-------------:|
-         | @ref average | @ref sqrt       | @ref tenpower |
-         | @ref meanof  | @ref sqr        | @ref tofloat  |
-         | @ref minmod  | @ref sqrt1pm1   |               |
+         |              |                 |               |              |
+         |:------------:|:---------------:|:-------------:|:------------:|
+         | @ref average | @ref meanof     | @ref minmod   | @ref sqr     |
+         | @ref sqrt    | @ref sqrt1pm1   | @ref tenpower | @ref tofloat |
        </center>
   **/
 } }

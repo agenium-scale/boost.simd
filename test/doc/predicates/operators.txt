@@ -1,0 +1,11 @@
+//! [operators]
+ p =  (0, 1, -1, 2.5, -2.5, -nan, -inf, inf)
+ q =  (0, 1, -1, 5, -5, -nan, -inf, inf)
+ -> (p == q) =  (true, true, true, false, false, false, true, true)
+ -> (p <= q) =  (true, true, true, true, false, false, true, true)
+ -> (p >= q) =  (true, true, true, false, true, false, true, true)
+ -> (p <  q) =  (false, false, false, true, false, false, false, false)
+ -> (p >  q) =  (false, false, false, false, true, false, false, false)
+ -> (p != q) =  (false, false, false, true, true, true, false, false)
+ -> !(p >= q) = (false, false, false, true, false, true, false, false)
+//! [operators]
