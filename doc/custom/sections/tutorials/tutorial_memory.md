@@ -1,6 +1,9 @@
 Memory Alignment {#tutorial-memory}
 =========
 
+<div style="text-align: right;" markdown="1">Prev: [A Basic SIMD Loop](@ref tutorial-simd-loop)</div>
+<div style="text-align: right;" markdown="1">Next: [Using Mathematical Functions](@ref tutorial-mathematical)</div>
+
 @tableofcontents
 All of the previous tutorials assumed that the memory allocated for the input and output
 buffers was correctly aligned. Depending on your memory allocator and architecture,
@@ -62,3 +65,6 @@ with an `std::vector` as follows:
 
 The data stored in this vector may be used by @projectname as an input or
 output buffer.
+
+<div style="text-align: right;" markdown="1">Prev: [A Basic SIMD Loop](@ref tutorial-simd-loop)</div>
+<div style="text-align: right;" markdown="1">Next: [Using Mathematical Functions](@ref tutorial-mathematical)</div>

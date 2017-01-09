@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
     Returns the hyperbolic cosine argument: \f$\log(x+\sqrt{x^2-1})\f$.
 
-    @par Semantic:
+    @par Call:
 
     For every parameter of floating type @c T
 

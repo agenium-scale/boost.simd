@@ -19,7 +19,7 @@ namespace boost { namespace simd
     @defgroup group-arithmetic Arithmetic functions
 
     Those functions provides scalar and SIMD algorithms for classical arithmetic operators and
-    functions provided by the C and C++ standard library. Other functions are also provided, in particular,
+    functions of the C and C++ standard library. Other functions are also provided, in particular,
     provision for saturated operations through the use of a @ref decorator.
 
      - **Possibly saturated operations**
@@ -37,15 +37,15 @@ namespace boost { namespace simd
        can be decorated with the  @ref saturated "saturated_" @ref decorator. This decorator has no effect on floating
        calls,  but on integer calls replaces the operation by its saturated equivalent.
 
-       Typically overflows will be replaced by the @ref Valmin/@ref Valmax proper value instead of providing
-       undefined behaviour for signed integral types or wrapping modulo Valmax+1 for unsigned ones.
+       Typically: overflows will be replaced by the @ref Valmin/@ref Valmax proper value instead of providing
+       undefined behaviour (for signed integral types) or wrapping modulo @ref Valmax + 1 (for unsigned ones).
 
        Peculiarly saturated_(@ref abs) and saturated_(@ref dist) ensure that the result will never be stricly
-       negative (which is for instance the case of abs(Valmin<T>()) for T being any signed integral type).
+       negative (which is for instance the case of `abs(Valmin<T>())` for @c T being any signed integral type).
 
-       toint is a rather common operation as it converts floating number to signed integers of the same bit size,
+       @ref toint is a rather common operation as it converts floating number to signed integers of the same bit size,
        nevertheless it probably is its saturated version you have to use because it acts properly on large or not finite
-       values, this is why an alias for saturated_(toint) is provided as @ref ifix.
+       values, this is why an alias for` saturated_(toint)` is provided as @ref ifix.
 
      - **Rounding operations**
        <center>
@@ -56,10 +56,10 @@ namespace boost { namespace simd
          | @ref fix    | @ref iceil      | @ref iround |                  |
         </center>
 
-          -The operations prefixed by 'i' return a value of the integral type associated to the entry type. (If T is
-         the entry type it is @ref as_integer_t<T>)
+          - The operations prefixed by @c 'i' return a value of the integral type associated to the entry type. (If @c T is
+         the entry type it is @c as_integer_t<T>)
 
-          -The other ones return the same type as the entry.
+          - The other ones return the same type as the entry.
 
      - **Division operations**
 
@@ -69,9 +69,9 @@ namespace boost { namespace simd
        With two parameters @ref div and @ref divides are equivalent, but @ref div can admit a first option parameter
        that modifies its behaviour.
 
-       The option parameter is described in the following table where a and b are of type T,  fT is a
-       supposed floating type associated to T (@ref as_floating_t<T> if it exists) and iT is the integer type associated to T
-       (@ref as_integer_t<T>). (fT and iT are here only to support pseudo code description)
+       The option parameter is described in the following table where  @c a and  @c b are of type  @c T,   @c fT is a
+       supposed floating type associated to @c T (@ref as_floating_t<T> if it exists) and  @c iT is the integer type associated to  @c T
+       (namely `as_integer_t<T>`, see @ref as_integer). (@c fT and @c iT are here only to support easier pseudo code description)
 
        <center>
          | option             |          call            |      result similar to               |
@@ -92,20 +92,20 @@ namespace boost { namespace simd
 
        @ref rem is the remainder functor providing same kind of facilities as @ref div
 
-       With two parameters rem(a, b) is equivalent to  rem(fix, a, b), but rem can admit
+       With two parameters rem(a, b) is equivalent to  @c rem(fix, a, b), but @c rem can admit
        a first optional parameter that modifies its behaviour and moreover can use the pedantic_ decorator to assure
-       some limiting case values (see under).
+       some limiting case values (see below).
 
-       The option parameter can be chosen between @ref ceil, @ref floor, @ref fix, @ref round, @ref nearbyint and if opt is the option,
+       The option parameter can be chosen between @ref ceil, @ref floor, @ref fix, @ref round, @ref nearbyint and if @c opt is the option,
        the call:
 
-         rem(opt, a, b) is equivalent to a-b*div(opt, a, b)
+          @c rem(opt, a, b) is equivalent to  @c a-b*div(opt, a, b)
 
        For floating entries the underlisted corner cases are handled in the following way:
-        -  if x is \f$\pm\infty\f$ , @ref Nan is returned
-        -  if x is \f$\pm0\f$ and y is not 0 x is returned if pedantic_ is used (else 0: the sign bit is not preserved)
-        -  If y is \f$\pm0\f$, @ref Nan is returned
-        -  If either argument is a nan, @ref a nan is returned
+        -  if  @c x is \f$\pm\infty\f$ , @ref Nan is returned
+        -  if  @c x is \f$\pm0\f$ and  @c y is not  @c 0  @c x is returned if  @c pedantic_ is used (else  @c 0: the sign bit is not preserved)
+        -  If  @c y is \f$\pm0\f$, @ref  @ref Nan is returned
+        -  If either argument is a nan,  a nan is returned
 
      - **complex operations**
 
@@ -118,8 +118,8 @@ namespace boost { namespace simd
         | @ref arg    | @ref conj       | @ref imag   | @ref real        | @ref sqr_abs     |
       </center>
 
-        For real entries conj and real are identity,  imag always 0, sqr_abs coincide with sqr
-        and arg results are always in the set \f$\{0, \pi,  Nan\}\f$
+        For real entries @ref conj and @ref  real are identity,  @ref imag always 0, @ref sqr_abs coincide with @ref sqr
+        and @ref arg results are always in the set \f$\{0, \pi,  Nan\}\f$
 
      - **Fused multiply-add operations**
 
@@ -130,26 +130,29 @@ namespace boost { namespace simd
         | @ref fms        | @ref fnms    |  @ref two_prod|                  |
       </center>
 
+      These operations take three parmeters and compute \f$\pm a * b \pm c \f$,
+      "n" standing for negate the result, "a" for add, "s" for substract and "m" for multiply.
+
       Correct fused multiply/add implies
 
       - only one rounding
       - no "intermediate" overflow
 
-      fnm? and fm? family provides this each time it is reasonable
+      The functions of this family provide this each time it is reasonable
       in terms of performance (mainly if the system has the hard
       wired capability).
 
-      If you need "real" fma capabilities in all circumstances in your own
-      code you can use pedantic_(fma) (although it can be expansive) or
-      (generally still more expansive) std_(fma) by using the decorators.
+      If you need "real" fused multiply-add capabilities in all circumstances in your own
+      code you can use @c pedantic_(fma) (although it can be expansive) or
+      @c std_(fma) (generally still more expansive) by using the decorators.
 
-      @ref two_add, @ref two_prod and @ref two_split are used internally in @ref pedantic_(fma) and
+      @ref two_add, @ref two_prod and @ref two_split are used internally in @c pedantic_(fma) and
       can be useful in searching extra-accuracy in other circumstances as double-double
       computations.
 
-      @ref pedantic_(fma) is never used internally by Boost.SIMD
+      @c pedantic_(fma) is never used internally by Boost.SIMD
 
-      - **Standard operations**
+     - **Standard operations**
 
        The stdlibc++ provides them but only in scalar mode:
 
@@ -163,10 +166,10 @@ namespace boost { namespace simd
        </center>
 
        Boost.SIMD provides its own scalar and simd versions, but allows
-       the use of the @ref std "std_" @ref decorator to call the associated system
+       the use of the @c std_ @ref decorator to call the associated system
        library function if the user needs it.
 
-      - **Other operations**
+     - **Other operations**
 
        <center>
          | name         | name            | name          |

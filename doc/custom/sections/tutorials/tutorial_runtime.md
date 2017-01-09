@@ -1,6 +1,9 @@
 Runtime Extension Selection {#tutorial-runtime}
 =========
 
+<div style="text-align: right;" markdown="1">Prev: [Evaluation of the N-Body problem](@ref tutorial-nbody)</div>
+<div style="text-align: right;" markdown="1">Next:  [Distance between 2D Points](@ref tutorial-distance)</div>
+
 @tableofcontents
 In this tutorial we will demonstrate the use of SIMD extension
 selection at runtime.
@@ -56,3 +59,6 @@ with each version of your code. On Linux, using cmake, this is done as follows:
 
 Using Microsoft Visual Studio, this can be done be setting the correct properties for your
 project. See @ref win-compilation for more details.
+
+<div style="text-align: right;" markdown="1">Prev: [Evaluation of the N-Body problem](@ref tutorial-nbody)</div>
+<div style="text-align: right;" markdown="1">Next:  [Distance between 2D Points](@ref tutorial-distance)</div>

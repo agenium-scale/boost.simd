@@ -1,12 +1,15 @@
 SIMD Branching {#tutorial-branching-split}
 =========
 
+<div style="text-align: right;" markdown="1">Prev: [SIMD Branching](@ref tutorial-branching)</div>
+<div style="text-align: right;" markdown="1">Next: [Evaluation of a Neural Network](@ref tutorial-neural)</div>
+
 @tableofcontents
 In this tutorial we will extend the previous tutorial which dealt with branching to
 show how to reduce the quantity of data transferred between the processor and memory.
 This technique can result in a significant performance increase as memory bandwidth
 is often the bottleneck in many applications. This effect is further multiplied in
-multithreaded applications where the memory bandwidth is under greater stress. 
+multithreaded applications where the memory bandwidth is under greater stress.
 The following steps in such an application may also be accelerated as less data must be
 transferred from memory.
 
@@ -37,4 +40,7 @@ by adding a scalar loop at the end to process all remaining pixels.
 Here is a full code, should you wish to try it:
 
 @snippet thresholding_downgrade.cpp threshold
+
+<div style="text-align: right;" markdown="1">Prev: [SIMD Branching](@ref tutorial-branching)</div>
+<div style="text-align: right;" markdown="1">Next: [Evaluation of a Neural Network](@ref tutorial-neural)</div>
 

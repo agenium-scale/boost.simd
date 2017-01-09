@@ -30,11 +30,21 @@ namespace boost { namespace simd
     auto r = acosd(x);
     @endcode
 
+    is similar to
+
+    @code
+    auto r = indeg(acos(x));
+    @endcode
+
     Returns the arc @c r in the interval
     \f$[0, 180[\f$ such that <tt>cosd(r) == x</tt>.
     If @c x is outside \f$[-1, 1[\f$ the result is @ref Nan.
 
-    @see acos, acospi, cosd
+    @par Decorators
+
+    - pedantic_     is similar to indeg(pedantic_)(acos(x));
+
+      @see acos, acospi, cosd, indeg
 
   **/
   Value acosd(Value const & v0);

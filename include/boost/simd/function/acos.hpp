@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
     inverse cosine in radian.
 
-    @par Semantic:
+    @par Call:
 
     For every parameter of floating type
 
@@ -36,7 +36,12 @@ namespace boost { namespace simd
 
     @par Decorators
 
-    std_ for floating entries provides access to std::acos
+    - std_           entries provides access to std::acos
+
+    - pedantic_      is accurate on the full \f$[-1, 1[\f$ range
+
+    - the regular version (no decorator) is less accurate around for x < 0.9
+      (up to circa 256 ulp), but is faster by a factor 2 than the pedantic version.
 
     @see acosd, acospi, cos
 
