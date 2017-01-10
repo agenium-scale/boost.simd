@@ -1,11 +1,28 @@
 ## Copyright 2017 - NumScale SAS
 ## -------------------------------------------------------------------------------------------------
+##
+##
+## Export Boost.SIMD includes directories and versions.
+##
+## You must invoke the `find_package` function to be able to reach this module.
+## Here is the list of exported variable:
+##
+##  Boost.SIMD_FOUND               - 1 if found, 0 otherwise
+##  Boost.SIMD_VERSION             - Boost.SIMD full version
+##  Boost.SIMD_MAJOR_VERSION       - Boost.SIMD major version (M in M.m.S.s)
+##  Boost.SIMD_MINOR_VERSION       - Boost.SIMD minor version (m in M.m.S.s)
+##  Boost.SIMD_SUBMINOR_VERSION    - Boost.SIMD subminor version (S in M.m.S.s)
+##  Boost.SIMD_SUBSUBMINOR_VERSION - Boost.SIMD sub-subminor version (s in M.m.S.s)
+##
+##  Boost.SIMD_INCLUDE_DIRS        - Boost.SIMD include directories
+##
+## -------------------------------------------------------------------------------------------------
 
-## At this point, it has been found
+##
 set(@PROJECT_NAME@_FOUND true)
 
-## NOTE:
-## We do follow the same convention as FindBoost.cmake (unless for the `SUBSUBMINOR_VERSION`.
+## We do follow the same convention as FindBoost.cmake (unless for the `SUBSUBMINOR_VERSION` which
+## is not in the version scheme of traditionnal Boost)
 ## -------------------------------------------------------------------------------------------------
 set(@PROJECT_NAME@_VERSION             @PROJECT_VERSION@)
 set(@PROJECT_NAME@_MAJOR_VERSION       @PROJECT_MAJOR_VERSION@)
