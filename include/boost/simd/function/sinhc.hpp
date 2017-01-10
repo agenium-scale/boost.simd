@@ -18,19 +18,18 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-hyperbolic
-    Function object implementing sinhc capabilities
+    This function object returns the hyperbolic cardinal sine: \f$\sinh(x)/x\f$.
 
-    Returns hyperbolic cardinal sine: \f$\sinh(x)/x\f$.
+    @see cosh, sinh
 
-    @par Semantic:
+    @par Example:
 
-    For every parameter of floating type @c T
+       @snippet sinhc.cpp sinhc
 
-    @code
-    T r = sinhc(x);
-    @endcode
+    @par Possible output:
 
-    @see sinh
+       @snippet sinhc.txt sinhc
+
 
   **/
   Value sinhc(Value const & v0);

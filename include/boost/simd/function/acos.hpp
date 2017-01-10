@@ -46,7 +46,7 @@ namespace boost { namespace simd
     @see acosd, acospi, cos
 
   **/
-  Value acos(Value const & v0);
+  Value acos(Value const & x);
 } }
 #endif
 

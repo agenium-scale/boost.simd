@@ -1,0 +1,12 @@
+//! [sinhcosh]
+---- simd
+ <- pf =                                  (1, -2, 3, -4)
+  std::tie(s, e) = bs::sinhcosh(pf, qf)
+ ->  s =                                  (1.1752, -3.62686, 10.0179, -27.2899)
+ ->  e =                                  (1.54308, 3.7622, 10.0677, 27.3082)
+---- scalar
+ xf =                                     3
+  std::tie(ss, se) = bs::sinhcosh(xf, yf)
+ ->  ss =                                 10.0179
+ ->  se =                                 10.0677
+//! [sinhcosh]

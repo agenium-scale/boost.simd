@@ -14,26 +14,23 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-
  /*!
 
     @ingroup group-hyperbolic
-    Function object implementing acosh capabilities
+    This function object returns the hyperbolic cosine argument: \f$\log(x+\sqrt{x^2-1})\f$.
 
-    Returns the hyperbolic cosine argument: \f$\log(x+\sqrt{x^2-1})\f$.
+    @see cosh, sinh,  acsch, asinh, atanh, asech, acoth, acsch
 
-    @par Call:
+    @par Example:
 
-    For every parameter of floating type @c T
+       @snippet acosh.cpp acosh
 
-    @code
-    T r = acosh(x);
-    @endcode
+    @par Possible output:
 
-    @see log, sqrt, cosh, dec
+       @snippet acosh.txt acosh
 
   **/
-  Value acosh(Value const & v0);
+  Value acosh(Value const & x);
 } }
 #endif
 

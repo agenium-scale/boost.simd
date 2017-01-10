@@ -1,0 +1,8 @@
+//! [atanh]
+---- simd
+<- pf =           (-0.5, 2, 1, 0.5)
+-> bs::atanh(pf) = (-0.549306, -nan, inf, 0.549306)
+---- scalar
+<- xf =           0.5
+-> bs::atanh(xf) = 0.549306
+//! [atanh]

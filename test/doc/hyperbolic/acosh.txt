@@ -1,0 +1,9 @@
+
+//! [acosh]
+---- simd
+<- pf =            (1, 2, 3, 0.5)
+-> bs::acosh(pf) = (0, 1.31696, 1.76275, -nan)
+---- scalar
+<- xf =            2
+-> bs::acosh(xf) = 1.31696
+//! [acosh]

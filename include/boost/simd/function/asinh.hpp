@@ -18,22 +18,20 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-hyperbolic
-    Function object implementing asinh capabilities
-
-    Returns the hyperbolic sine argument: \f$\log(x+\sqrt{x^2+1})\f$.
-
-    @par Semantic:
-
-    For every parameter of floating type @c T
-
-    @code
-    T r = asinh(x);
-    @endcode
+    This function object returns the hyperbolic sine argument: \f$\log(x+\sqrt{x^2+1})\f$.
 
     @see log, sqrt, sinh, inc
 
+    @par Example:
+
+       @snippet asinh.cpp asinh
+
+    @par Possible output:
+
+       @snippet asinh.txt asinh
+
   **/
-  Value asinh(Value const & v0);
+  Value asinh(Value const & x);
 } }
 #endif
 
