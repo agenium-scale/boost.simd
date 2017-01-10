@@ -25,8 +25,8 @@ STF_CASE_TPL("distance", STF_NUMERIC_TYPES)
   auto rng  = aligned_output_range(data);
   auto rng8 = aligned_output_range<8>(data2);
 
-  STF_EQUAL( std::distance(std::begin(rng) , std::end(rng) ), 3 );
-  STF_EQUAL( std::distance(std::begin(rng8), std::end(rng8)), 3 );
+  STF_EQUAL( std::distance(boost::begin(rng) , std::end(rng) ), 3 );
+  STF_EQUAL( std::distance(boost::begin(rng8), std::end(rng8)), 3 );
 }
 
 template<class T> struct generate
