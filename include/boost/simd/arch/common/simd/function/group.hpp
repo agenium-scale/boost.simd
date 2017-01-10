@@ -9,14 +9,16 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_GROUP_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_GROUP_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/detail/dispatch/meta/downgrade.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
-   namespace bd = boost::dispatch;
-   namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
+  namespace bs = boost::simd;
 
   BOOST_DISPATCH_OVERLOAD_IF( group_
                             , (typename A0, typename X)
@@ -30,7 +32,7 @@ namespace boost { namespace simd { namespace ext
 
     template<typename... N>
     BOOST_FORCEINLINE result do_( const A0& a0, const A0& a1
-                                , nsm::list<N...> const&
+                                , bm::list<N...> const&
                                 ) const BOOST_NOEXCEPT
     {
       using type = typename result::value_type;

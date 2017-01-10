@@ -23,16 +23,18 @@ namespace boost { namespace simd
 
   namespace detail
   {
+    namespace bm = boost::nsm;
+
     template<typename T, typename F>
     struct as_arithmetic_impl
     {
-      using type = nsm::apply<F, T>;
+      using type = bm::apply<F, T>;
     };
 
     template<typename T, typename F>
     struct as_arithmetic_impl< logical<T>, F >
     {
-      using type = nsm::apply<F, T>;
+      using type = bm::apply<F, T>;
     };
   }
 

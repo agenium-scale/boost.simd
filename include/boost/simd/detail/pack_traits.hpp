@@ -72,8 +72,8 @@ namespace boost { namespace simd { namespace detail
       alignment = sizeof(VTYPE)                                                                    \
     };                                                                                             \
                                                                                                    \
-    using static_range            = nsm::range<std::size_t, 0, N>;                             \
-    using element_range           = nsm::range<std::size_t, 0, N>;                             \
+    using static_range            = boost::nsm::range<std::size_t, 0, N>; \
+    using element_range           = boost::nsm::range<std::size_t, 0, N>; \
                                                                                                    \
     using storage_kind            = ::boost::simd::native_storage;                                 \
                                                                                                    \

@@ -18,13 +18,14 @@ namespace boost { namespace simd
 {
   namespace detail
   {
+    namespace bm  = boost::nsm;
     // ---------------------------------------------------------------------------------------------
     // Check if pattern is [B B+1 ... B+C]
     template<int... Ps> struct is_reverse
     {
-      using type = nsm::all < nsm::transform< nsm::range<int,0,sizeof...(Ps)>
-                                                    , nsm::reverse<nsm::integral_list<int,Ps...>>
-                                                    , nsm::equal_to<nsm::_1,nsm::_2>
+      using type = bm::all < bm::transform< bm::range<int,0,sizeof...(Ps)>
+                                                    , bm::reverse<bm::integral_list<int,Ps...>>
+                                                    , bm::equal_to<bm::_1,bm::_2>
                                                     >
                                 >;
     };

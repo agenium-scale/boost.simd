@@ -6,6 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/function/insert.hpp>
 #include <boost/simd/detail/unroll.hpp>
 #include <boost/simd/litteral.hpp>
@@ -15,11 +16,13 @@
 
 namespace bs = boost::simd;
 namespace bd = boost::dispatch;
+namespace bm = boost::nsm;
+
 
 using namespace bs::literal;
 
 template<typename A, typename P, typename... N>
-void f( nsm::list<N...> const&, A& a, P& p)
+void f( bm::list<N...> const&, A& a, P& p)
 {
   using T = typename P::value_type;
   BOOST_SIMD_LOCAL_UNROLL( a[N::value] = T(N::value+1) );
@@ -32,7 +35,7 @@ void test_st(Env& $)
   bs::pack<T, N>  p;
   std::array<T,N> a;
 
-  f( nsm::range<std::size_t, 0, N>(),a,p);
+  f( bm::range<std::size_t, 0, N>(),a,p);
 
   bs::pack<T, N> ref(&a[0], &a[0] + N);
   STF_EQUAL(ref, p);

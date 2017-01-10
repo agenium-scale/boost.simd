@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SHUFFLE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SHUFFLE_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/shuffle.hpp>
 #include <boost/simd/detail/shuffle/default_matcher.hpp>
@@ -17,22 +18,22 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd  = boost::dispatch;
+  namespace bm  = boost::nsm;
   namespace bs  = boost::simd;
-  namespace bsd = boost::simd::detail;
 
   // -----------------------------------------------------------------------------------------------
   // Unary common cases
   BOOST_DISPATCH_OVERLOAD_IF( shuffle_
                             , (int... Ps, typename A0, typename X)
-                            , (nsm::bool_<A0::static_size==sizeof...(Ps)>)
+                            , (bm::bool_<A0::static_size==sizeof...(Ps)>)
                             , bs::simd_
-                            , bsd::pattern_<Ps...>
+                            , bs::detail::pattern_<Ps...>
                             , bs::pack_< bd::unspecified_<A0>, X >
                             )
   {
-    BOOST_FORCEINLINE A0 operator()(bsd::pattern_<Ps...> const&, A0 const& a0) const
+    BOOST_FORCEINLINE A0 operator()(bs::detail::pattern_<Ps...> const&, A0 const& a0) const
     {
-      return detail::shuffler<detail::default_matcher, bsd::pattern_<Ps...>>::process(a0);
+      return detail::shuffler<detail::default_matcher, bs::detail::pattern_<Ps...>>::process(a0);
     }
   };
 
@@ -40,16 +41,16 @@ namespace boost { namespace simd { namespace ext
   // Binary common cases
   BOOST_DISPATCH_OVERLOAD_IF( shuffle_
                             , (int... Ps, typename A0, typename X)
-                            , (nsm::bool_<A0::static_size==sizeof...(Ps)>)
+                            , (bm::bool_<A0::static_size==sizeof...(Ps)>)
                             , bs::simd_
-                            , bsd::pattern_<Ps...>
+                            , bs::detail::pattern_<Ps...>
                             , bs::pack_< bd::unspecified_<A0>, X >
                             , bs::pack_< bd::unspecified_<A0>, X >
                             )
   {
-    BOOST_FORCEINLINE A0 operator()(bsd::pattern_<Ps...> const&, A0 const& a0, A0 const& a1) const
+    BOOST_FORCEINLINE A0 operator()(bs::detail::pattern_<Ps...> const&, A0 const& a0, A0 const& a1) const
     {
-      return detail::shuffler<detail::default_matcher, bsd::pattern_<Ps...>>::process(a0,a1);
+      return detail::shuffler<detail::default_matcher, bs::detail::pattern_<Ps...>>::process(a0,a1);
     }
   };
 } } }

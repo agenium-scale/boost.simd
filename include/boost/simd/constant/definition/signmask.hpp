@@ -23,6 +23,8 @@ namespace boost { namespace simd
 {
   namespace tag
   {
+    namespace bm = boost::nsm;
+
     struct signmask_ : boost::dispatch::constant_value_<signmask_>
     {
       BOOST_DISPATCH_MAKE_CALLABLE(ext,signmask_,boost::dispatch::constant_value_<signmask_>);
@@ -54,10 +56,10 @@ namespace boost { namespace simd
         static std::integral_constant<X,0x8000000000000000ULL> value(boost::dispatch::uint64_<X> const&);
 
         template<typename X>
-        static nsm::single_<0x80000000UL> value(boost::dispatch::single_<X> const&);
+        static bm::single_<0x80000000UL> value(boost::dispatch::single_<X> const&);
 
         template<typename X>
-        static nsm::double_<0x8000000000000000ULL> value(boost::dispatch::double_<X> const&);
+        static bm::double_<0x8000000000000000ULL> value(boost::dispatch::double_<X> const&);
       };
 
     };

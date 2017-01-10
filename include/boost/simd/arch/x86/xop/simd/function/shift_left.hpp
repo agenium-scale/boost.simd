@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_X86_XOP_SIMD_FUNCTION_SHIFT_LEFT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_XOP_SIMD_FUNCTION_SHIFT_LEFT_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/detail/assert_utils.hpp>
@@ -18,11 +19,13 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
+
   namespace bs = boost::simd;
 
   BOOST_DISPATCH_OVERLOAD_IF( shift_left_
                             , (typename A0, typename A1)
-                            , (nsm::bool_<bs::cardinal_of<A0>::value == bs::cardinal_of<A1>::value>)
+                            , (bm::bool_<bs::cardinal_of<A0>::value == bs::cardinal_of<A1>::value>)
                             , bs::avx_
                             , bs::pack_< bd::integer_<A0>, bs::sse_>
                             , bs::pack_< bd::integer_<A1>, bs::sse_>

@@ -23,6 +23,8 @@ namespace boost { namespace simd
 {
   namespace tag
   {
+    namespace bm = boost::nsm;
+
     struct sqrtvalmax_ : boost::dispatch::constant_value_<sqrtvalmax_>
     {
       BOOST_DISPATCH_MAKE_CALLABLE(ext,sqrtvalmax_,boost::dispatch::constant_value_<sqrtvalmax_>);
@@ -30,9 +32,9 @@ namespace boost { namespace simd
       struct value_map
       {
         template<typename X>
-        static nsm::single_<0x5f7FFFFEU> value(boost::dispatch::single_<X> const&);
+        static bm::single_<0x5f7FFFFEU> value(boost::dispatch::single_<X> const&);
         template<typename X>
-        static nsm::double_<0x5fEFFFFFFFFFFFFFULL> value(boost::dispatch::double_<X> const&);
+        static bm::double_<0x5fEFFFFFFFFFFFFFULL> value(boost::dispatch::double_<X> const&);
         template<typename X>
         static std::integral_constant<X,15> value(boost::dispatch::uint8_<X> const&);
 

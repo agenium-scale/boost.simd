@@ -11,6 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_MINUS_S_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_MINUS_S_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/function/min.hpp>
@@ -23,6 +24,8 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
+
   BOOST_DISPATCH_OVERLOAD ( minus_
                           , (typename A0)
                           , bd::cpu_
@@ -48,7 +51,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() (const saturated_tag &,  A0 a0, A0 a1
                                     ) const BOOST_NOEXCEPT
     {
-      using sz_t = typename nsm::bool_<sizeof(A0) == 4 || sizeof(A0) == 8>::type;
+      using sz_t = typename bm::bool_<sizeof(A0) == 4 || sizeof(A0) == 8>::type;
       return impl(a0, a1, sz_t());
     }
 

@@ -17,7 +17,7 @@ namespace boost { namespace dispatch { namespace detail
 {
   template<typename T>
   struct  is_pointer
-        : nsm::bool_<   std::is_pointer<T>::value
+    : boost::nsm::bool_<   std::is_pointer<T>::value
                         && !std::is_function<typename std::remove_pointer<T>::type>::value
                         >
   {};

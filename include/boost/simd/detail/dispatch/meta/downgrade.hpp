@@ -20,16 +20,18 @@
 
 namespace boost { namespace dispatch
 {
+  namespace bm = boost::nsm;
+
   namespace detail
   {
     // Use this map to transform to downgraded type
-    using downgrade_map = nsm::map< nsm::pair<bool          , bool          >
-                                      , nsm::pair<std::uint8_t  , std::uint8_t  >
-                                      , nsm::pair<std::uint16_t , std::uint8_t  >
-                                      , nsm::pair<std::uint32_t , std::uint16_t >
-                                      , nsm::pair<std::uint64_t , std::uint32_t >
-                                      , nsm::pair<float         , float         >
-                                      , nsm::pair<double        , float         >
+    using downgrade_map = bm::map< bm::pair<bool          , bool          >
+                                      , bm::pair<std::uint8_t  , std::uint8_t  >
+                                      , bm::pair<std::uint16_t , std::uint8_t  >
+                                      , bm::pair<std::uint32_t , std::uint16_t >
+                                      , bm::pair<std::uint64_t , std::uint32_t >
+                                      , bm::pair<float         , float         >
+                                      , bm::pair<double        , float         >
                                       >;
 
     template<typename T,typename Sign>
@@ -54,7 +56,7 @@ namespace boost { namespace dispatch
   using downgrade_t = typename downgrade<T,Sign>::type;
 
   template<typename T>
-  struct is_downgradable : nsm::bool_<!std::is_same<T, typename downgrade<T>::type>::value>
+  struct is_downgradable : bm::bool_<!std::is_same<T, typename downgrade<T>::type>::value>
   {};
 } }
 

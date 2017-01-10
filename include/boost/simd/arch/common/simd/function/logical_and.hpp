@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LOGICAL_AND_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LOGICAL_AND_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/traits.hpp>
 #include <boost/simd/function/mask2logical.hpp>
@@ -19,12 +20,13 @@
 
 namespace boost { namespace simd { namespace ext
 {
-   namespace bd = boost::dispatch;
-   namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
+  namespace bs = boost::simd;
 
   BOOST_DISPATCH_OVERLOAD_IF( logical_and_
                             , (typename A0,typename A1,typename X)
-                            , (nsm::and_<detail::same_size<A0,A1>, detail::is_native<X>>)
+                            , (bm::and_<detail::same_size<A0,A1>, detail::is_native<X>>)
                             , bd::cpu_
                             , bs::pack_<bd::fundamental_<A0>,X>
                             , bs::pack_<bd::fundamental_<A1>,X>

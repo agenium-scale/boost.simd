@@ -6,13 +6,14 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/pack.hpp>
 #include <numeric>
 #include <array>
 #include <simd_test.hpp>
 
 template <typename T, typename... N>
-boost::simd::pack<T, sizeof...(N)> make( nsm::list<N...> const& )
+boost::simd::pack<T, sizeof...(N)> make( boost::nsm::list<N...> const& )
 {
   return {N::value...};
 }
@@ -20,7 +21,7 @@ boost::simd::pack<T, sizeof...(N)> make( nsm::list<N...> const& )
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
 {
-  boost::simd::pack<T, N> p = make<T>(nsm::range<std::size_t,0,N>{});
+  boost::simd::pack<T, N> p = make<T>(boost::nsm::range<std::size_t,0,N>{});
 
   std::array<T,N> ref;
   std::iota(ref.begin(), ref.end(), T{0});

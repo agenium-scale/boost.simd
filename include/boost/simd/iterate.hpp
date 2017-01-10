@@ -22,7 +22,7 @@
 
 namespace boost { namespace simd {
 template<typename F, typename... V>
-inline void unroll_impl(F&& f, nsm::list<V...> const&)
+inline void unroll_impl(F&& f, boost::nsm::list<V...> const&)
 {
   (void)std::initializer_list<bool>{ (std::forward<F>(f)( V()) ,true)... };
 }
@@ -30,7 +30,7 @@ inline void unroll_impl(F&& f, nsm::list<V...> const&)
 template<int N, typename F>
 void iterate(F &&f)
 {
-  unroll_impl( std::forward<F>(f), nsm::range<int, 0, N>{});
+  unroll_impl( std::forward<F>(f), boost::nsm::range<int, 0, N>{});
 }
 
 } }

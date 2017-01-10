@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SPLAT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SPLAT_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/meta/as_arithmetic.hpp>
 #include <boost/simd/function/genmask.hpp>
@@ -27,6 +28,8 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = ::boost::dispatch;
+  namespace bm = boost::nsm;
+
   namespace bs = ::boost::simd;
 
   //------------------------------------------------------------------------------------------------
@@ -51,7 +54,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE T const& value_(T const& t) const { return t; }
 
     template<typename K, typename N>
-    BOOST_FORCEINLINE target_t do_(V const& v, K const&, nsm::list<N> const&) const
+    BOOST_FORCEINLINE target_t do_(V const& v, K const&, bm::list<N> const&) const
     {
       target_t that;
       that[0] = value_t(v);
@@ -59,14 +62,14 @@ namespace boost { namespace simd { namespace ext
     }
 
     template<typename K, typename N0, typename N1, typename... N>
-    BOOST_FORCEINLINE target_t do_(V const& v, K const&, nsm::list<N0,N1,N...> const&) const
+    BOOST_FORCEINLINE target_t do_(V const& v, K const&, bm::list<N0,N1,N...> const&) const
     {
       value_t s(v);
       return {value_<N0>(s),value_<N1>(s),value_<N>(s)...};
     }
 
     template<typename N0, typename N1, typename... N> BOOST_FORCEINLINE
-    target_t do_(V const& v, aggregate_storage const&, nsm::list<N0,N1,N...> const&) const
+    target_t do_(V const& v, aggregate_storage const&, bm::list<N0,N1,N...> const&) const
     {
       typename storage_t::value_type s(v);
       return combine(s,s);
@@ -91,7 +94,7 @@ namespace boost { namespace simd { namespace ext
     }
 
     template<typename K, typename... N>
-    BOOST_FORCEINLINE target_t do_(V const& v, K const&, nsm::list<N...> const&) const
+    BOOST_FORCEINLINE target_t do_(V const& v, K const&, bm::list<N...> const&) const
     {
       using base_t  = as_arithmetic_t<target_t>;
       return bitwise_cast<target_t>( genmask<base_t>(v) );
@@ -99,7 +102,7 @@ namespace boost { namespace simd { namespace ext
 
     template<typename... N>
     BOOST_FORCEINLINE
-    target_t do_(V const& v, aggregate_storage const&, nsm::list<N...> const&) const
+    target_t do_(V const& v, aggregate_storage const&, bm::list<N...> const&) const
     {
       typename storage_t::value_type s(!!v);
       return combine(s,s);

@@ -24,6 +24,8 @@ namespace boost { namespace simd
 {
   namespace tag
   {
+    namespace bm = boost::nsm;
+
     struct minf_ : boost::dispatch::constant_value_<minf_>
     {
       BOOST_DISPATCH_MAKE_CALLABLE(ext,minf_,boost::dispatch::constant_value_<minf_>);
@@ -34,10 +36,10 @@ namespace boost { namespace simd
         static auto value(X const& x) -> decltype(valmin_::value_map::value(x));
 
         template<typename X>
-        static nsm::single_<0xFF800000U> value(boost::dispatch::single_<X> const&);
+        static bm::single_<0xFF800000U> value(boost::dispatch::single_<X> const&);
 
         template<typename X>
-        static nsm::double_<0xFFF0000000000000ULL> value(boost::dispatch::double_<X> const&);
+        static bm::double_<0xFFF0000000000000ULL> value(boost::dispatch::double_<X> const&);
       };
     };
   }

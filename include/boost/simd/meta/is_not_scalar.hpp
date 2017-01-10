@@ -21,6 +21,7 @@
 namespace boost { namespace simd
 {
   namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
 
   /*!
     @ingroup  group-api
@@ -32,7 +33,7 @@ namespace boost { namespace simd
     @tparam Type      Type to check
   **/
   template<typename T>
-  struct is_not_scalar : nsm::not_ < is_scalar < T>>
+  struct is_not_scalar : bm::not_ < is_scalar < T>>
   {};
   template<typename T>
   using is_not_scalar_t = typename is_not_scalar<T>::type;

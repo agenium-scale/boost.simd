@@ -6,8 +6,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef NSM_HPP_INCLUDED
-#define NSM_HPP_INCLUDED
+#ifndef BOOST_NSM_HPP_INCLUDED
+#define BOOST_NSM_HPP_INCLUDED
 
 #include <boost/config.hpp>
 #include <type_traits>
@@ -15,7 +15,7 @@
 #include <cstring>
 #include <utility>
 
-namespace nsm
+namespace boost { namespace nsm
 {
   template <class... T> struct list {};
   template<typename T, T... Values>
@@ -26,7 +26,7 @@ namespace nsm
   {
     using type = R;
   };
-
+  
   template <bool B>
   using bool_ = std::integral_constant<bool, B>;
 
@@ -617,8 +617,9 @@ namespace nsm
 }
 template <typename... Ts>
 using append = typename detail::append_impl<Ts...>::type;
-}
-namespace nsm
+}}
+
+namespace boost { namespace nsm
 {
 namespace detail
 {
@@ -654,10 +655,10 @@ namespace lazy
 }
     template <typename L>
     using reverse = typename detail::reverse_impl<L>::type;
-}
+}}
 
 
-namespace nsm
+namespace boost { namespace nsm
 {
 namespace detail
 {
@@ -689,8 +690,10 @@ namespace lazy
 }
 template <typename Sequence>
 using flatten = typename lazy::flatten<Sequence>::type;
-}
-namespace nsm { namespace detail
+}}
+
+namespace boost { namespace nsm {
+namespace detail
 {
   template<class Functor, class State, class Sequence>
   struct fold_impl
@@ -835,21 +838,21 @@ namespace nsm { namespace detail
       Sequence<T...>
   >
   {};
-} }
-namespace nsm
-{
-namespace lazy
-{
-    template <class Sequence, class State, class Functor>
-    using fold = typename detail::fold_impl<Functor, State, Sequence>;
-}
+}}}
+
+namespace boost { namespace nsm {
+namespace lazy {
   template <class Sequence, class State, class Functor>
-  using fold = typename ::nsm::lazy::fold<Sequence, State, Functor>::type;
+  using fold = typename boost::nsm::detail::fold_impl<Functor, State, Sequence>;
 }
+template <class Sequence, class State, class Functor>
+using fold = typename lazy::fold<Sequence, State, Functor>::type;
+}}
+
 #include <initializer_list>
 #include <functional>
-namespace nsm
-{
+
+namespace boost { namespace nsm {
   template<class F, class...Ts> F for_each_args(F f, Ts&&...a)
   {
     return (void)std::initializer_list<int>{((void)std::ref(f)(static_cast<Ts&&>(a)),0)...}, f;
@@ -888,8 +891,9 @@ namespace nsm
   using size_t    = std::integral_constant<std::size_t, V>;
   template<std::ptrdiff_t V>
   using ptrdiff_t = std::integral_constant<std::ptrdiff_t, V>;
-}
-namespace nsm
+}}
+
+namespace boost { namespace nsm
 {
   namespace detail
   {
@@ -1072,7 +1076,7 @@ namespace nsm
     template<typename X, template<class...> class L, typename... Us>
     struct bind_impl<X,L<Us...>, typename std::enable_if<has_placeholders<X>::value>::type>
     {
-      using type = nsm::apply<X,Us...>;
+      using type = boost::nsm::apply<X,Us...>;
     };
     template<typename X, typename L> using bind_impl_t = typename bind_impl<X,L>::type;
   }
@@ -1080,8 +1084,8 @@ namespace nsm
   {
     template<typename... Us> struct apply
     {
-      using type = nsm::apply < detail::bind_impl_t<MetafunctionClass,list<Us...>>
-                                  , detail::bind_impl_t<Args,list<Us...>>...
+      using type = boost::nsm::apply < detail::bind_impl_t<MetafunctionClass,list<Us...>>
+                                     , detail::bind_impl_t<Args,list<Us...>>...
                                   >;
     };
   };
@@ -1091,7 +1095,7 @@ namespace nsm
   {
     template<typename X> struct apply;
     template<template<class...> class List, typename... Types>
-    struct apply<List<Types...>> : nsm::apply<F,Types...>
+    struct apply<List<Types...>> : boost::nsm::apply<F,Types...>
     {};
   };
 
@@ -1120,7 +1124,7 @@ namespace nsm
   {
     template<class Start, unsigned N, class Next, class... E>
     struct mksq8
-    : mksq8<nsm::apply<Next, Start>, N-1, Next, E..., Start>
+    : mksq8<boost::nsm::apply<Next, Start>, N-1, Next, E..., Start>
     {};
 
     template<class Start, class Next, class... E>
@@ -1138,21 +1142,20 @@ namespace nsm
     template<class Start, class Next>
     struct mksq8<Start, 8, Next>
     {
-      using t1 = nsm::apply<Next, Start>;
-      using t2 = nsm::apply<Next, t1>;
-      using t3 = nsm::apply<Next, t2>;
-      using t4 = nsm::apply<Next, t3>;
-      using t5 = nsm::apply<Next, t4>;
-      using t6 = nsm::apply<Next, t5>;
-      using t7 = nsm::apply<Next, t6>;
+      using t1 = boost::nsm::apply<Next, Start>;
+      using t2 = boost::nsm::apply<Next, t1>;
+      using t3 = boost::nsm::apply<Next, t2>;
+      using t4 = boost::nsm::apply<Next, t3>;
+      using t5 = boost::nsm::apply<Next, t4>;
+      using t6 = boost::nsm::apply<Next, t5>;
+      using t7 = boost::nsm::apply<Next, t6>;
       using type = list<Start, t1, t2, t3, t4, t5, t6, t7>;
     };
 
     template<template<class...> class List, class Start, unsigned N, class Next, bool, class... L>
     struct make_sequence_impl
-    : make_sequence_impl<
-        List,
-        nsm::apply<Next, typename mksq8<Start, 8, Next>::t7>,
+      : make_sequence_impl<List,
+      boost::nsm::apply<Next, typename mksq8<Start, 8, Next>::t7>,
         N-8,
         Next,
         (N-8<=8),
@@ -1188,6 +1191,6 @@ namespace nsm
   struct single_ : real_<float, std::uint32_t, Value> {};
   template<std::uint64_t Value>
   struct double_ : real_<double, std::uint64_t,Value> {};
-}
+}}
 
 #endif

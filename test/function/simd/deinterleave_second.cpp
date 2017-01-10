@@ -11,6 +11,7 @@
 #include <simd_test.hpp>
 
 namespace bs = boost::simd;
+namespace bm = boost::nsm;
 
 template <typename T, int N, typename Env>
 void test(Env&, std::false_type const&)
@@ -43,7 +44,7 @@ void test(Env& $, std::true_type const& = {})
 STF_CASE_TPL("Check deinterleave_second on pack" , STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
-  test<T, N  >($, nsm::bool_<(N>1)>());
-  test<T, N/2>($, nsm::bool_<(N>2)>());
+  test<T, N  >($, bm::bool_<(N>1)>());
+  test<T, N/2>($, bm::bool_<(N>2)>());
   test<T, N*2>($);
 }

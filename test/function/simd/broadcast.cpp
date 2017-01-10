@@ -6,6 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/function/broadcast.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/logical.hpp>
@@ -13,9 +14,10 @@
 #include <simd_test.hpp>
 
 namespace bs = boost::simd;
+namespace bm = boost::nsm;
 
 template <typename T, typename... N, typename Env>
-void test(Env& $, nsm::list<N...> const&)
+void test(Env& $, bm::list<N...> const&)
 {
   static const std::size_t C = sizeof...(N);
   using p_t = bs::pack<T,C>;
@@ -33,8 +35,8 @@ STF_CASE_TPL( "Check broadcast<N>() behavior", STF_NUMERIC_TYPES )
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<T>($, nsm::range<std::size_t, 0, N  >{});
-  test<T>($, nsm::range<std::size_t, 0, N/2>{});
-  test<T>($, nsm::range<std::size_t, 0, N*2>{});
+  test<T>($, bm::range<std::size_t, 0, N  >{});
+  test<T>($, bm::range<std::size_t, 0, N/2>{});
+  test<T>($, bm::range<std::size_t, 0, N*2>{});
 }
 

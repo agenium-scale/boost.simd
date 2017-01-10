@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_SLIDE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_SLIDE_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/dispatch/hierarchy/exactly.hpp>
 #include <boost/simd/detail/dispatch/meta/as_floating.hpp>
@@ -32,6 +33,8 @@ BOOST_DISPATCH_OVERLOAD ( slide_, (typename T), bs::avx_                        
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
+
   namespace bs = boost::simd;
 
   // -----------------------------------------------------------------------------------------------
@@ -406,7 +409,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE T operator()(T const& a0, T const& a1, Offset const&) const
     {
       return unroll ( a0, a1
-                    , nsm::bool_<(Offset::value < hcard::value)>{}
+                    , bm::bool_<(Offset::value < hcard::value)>{}
                     );
     }
   };

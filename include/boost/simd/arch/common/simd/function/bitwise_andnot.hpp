@@ -10,8 +10,9 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_BITWISE_ANDNOT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_BITWISE_ANDNOT_HPP_INCLUDED
-#include <boost/simd/detail/overload.hpp>
 
+
+#include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/function/bitwise_and.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
@@ -23,10 +24,12 @@
 namespace boost { namespace simd { namespace ext
 {
    namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
+
    namespace bs = boost::simd;
   BOOST_DISPATCH_OVERLOAD_IF(bitwise_andnot_
                             , (typename A0,typename A1, typename X, typename Y)
-                            , (nsm::not_<std::is_same<A0,A1>>)
+                            , (bm::not_<std::is_same<A0,A1>>)
                             , bs::simd_
                             , bs::pack_<bd::arithmetic_<A0>,X>
                             , bs::pack_<bd::arithmetic_<A1>,Y>

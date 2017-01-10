@@ -19,13 +19,15 @@
 
 namespace boost { namespace simd { namespace detail
 {
+  namespace bm = boost::nsm;
+
   // -----------------------------------------------------------------------------------------------
   // Half-permutation snatcher
   template<bool isUpper, int... Ps> struct half_
   {
-    using perm = nsm::integral_list<int,Ps...>;
+    using perm = bm::integral_list<int,Ps...>;
     template<typename I, typename C>
-    struct apply : nsm::at_c < perm, isUpper ? I::value+C::value : I::value>
+    struct apply : bm::at_c < perm, isUpper ? I::value+C::value : I::value>
     {};
   };
 
@@ -79,7 +81,7 @@ namespace boost { namespace simd { namespace detail
     static BOOST_FORCEINLINE T process(T const& a0, T const& a1, pattern_<P...> const&)
     {
       return T( fill_ (a0 ,a1 , std::integral_constant<int,P>{}
-                              , nsm::bool_<(P<T::static_size)>{}
+                              , bm::bool_<(P<T::static_size)>{}
                       )...
               );
     }

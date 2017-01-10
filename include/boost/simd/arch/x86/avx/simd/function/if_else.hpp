@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_IF_ELSE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_IF_ELSE_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_floating.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
@@ -18,6 +19,8 @@
 namespace boost { namespace simd { namespace ext
 {
    namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
+
    namespace bs = boost::simd;
 
    BOOST_DISPATCH_OVERLOAD( if_else_
@@ -50,7 +53,7 @@ namespace boost { namespace simd { namespace ext
 
    BOOST_DISPATCH_OVERLOAD_IF ( if_else_
                               , (typename A0, typename A1)
-                              , (nsm::bool_<bs::cardinal_of<A0>::value <= 8>)
+                              , (bm::bool_<bs::cardinal_of<A0>::value <= 8>)
                               , bs::avx_
                               , bs::pack_<logical_<A0>, bs::avx_>
                               , bs::pack_<bd::integer_<A1>, bs::avx_>

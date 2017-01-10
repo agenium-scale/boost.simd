@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_STORE_MASK_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_STORE_MASK_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/mask.hpp>
@@ -16,6 +17,8 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = ::boost::dispatch;
+  namespace bm = boost::nsm;
+
   namespace bs = ::boost::simd;
 
   //------------------------------------------------------------------------------------------------
@@ -33,7 +36,7 @@ namespace boost { namespace simd { namespace ext
     }
 
     template<typename... N>
-    static BOOST_FORCEINLINE void do_(const Src& s, Pointer const& p, nsm::list<N...> const&)
+    static BOOST_FORCEINLINE void do_(const Src& s, Pointer const& p, bm::list<N...> const&)
     {
       auto const& m = p.mask();
       auto const& q = p.get();

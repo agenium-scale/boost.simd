@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SLICE_LOW_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SLICE_LOW_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/function/make.hpp>
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/meta/hierarchy/simd.hpp>
@@ -19,6 +20,8 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
+
   namespace bs = boost::simd;
 
 
@@ -33,14 +36,14 @@ namespace boost { namespace simd { namespace ext
 
     template<typename... N>
     static BOOST_FORCEINLINE
-    result_t do_ ( T const& a, aggregate_storage const&, nsm::list<N...> const&) BOOST_NOEXCEPT
+    result_t do_ ( T const& a, aggregate_storage const&, bm::list<N...> const&) BOOST_NOEXCEPT
     {
       return a.storage()[0];
     }
 
     template<typename K, typename... N>
     static BOOST_FORCEINLINE
-    result_t do_( T const& a, K const&, nsm::list<N...> const&) BOOST_NOEXCEPT
+    result_t do_( T const& a, K const&, bm::list<N...> const&) BOOST_NOEXCEPT
     {
       return  make<result_t>( bs::extract<N::value>(a)... );
     }
@@ -48,7 +51,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE result_t operator()(T const& a) const BOOST_NOEXCEPT
     {
       return do_( a, typename T::traits::storage_kind{}
-                , nsm::range<std::size_t, 0, half>{}
+                , bm::range<std::size_t, 0, half>{}
                 );
     }
   };

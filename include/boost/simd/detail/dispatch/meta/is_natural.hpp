@@ -29,8 +29,8 @@ namespace boost { namespace dispatch
     @tparam T Type to check
   **/
   template<typename T>
-  using is_natural = nsm::and_< std::is_integral<T>
-                                  , nsm::not_<std::is_same<T,bool>>
+  using is_natural = boost::nsm::and_< std::is_integral<T>
+                                       , boost::nsm::not_<std::is_same<T,bool>>
                                   >;
 
   /// Eager short-cut for is_native

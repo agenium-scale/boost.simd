@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_STORE_REGULAR_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_STORE_REGULAR_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/dispatch/adapted/common/pointer.hpp>
 #include <boost/simd/detail/dispatch/meta/is_natural.hpp>
@@ -24,6 +25,8 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = ::boost::dispatch;
+  namespace bm = boost::nsm;
+
   namespace bs = ::boost::simd;
 
   //------------------------------------------------------------------------------------------------
@@ -42,7 +45,7 @@ namespace boost { namespace simd { namespace ext
 
     // aggregate pack are calling store twice
     template<typename... N> static BOOST_FORCEINLINE
-    void do_( Src const & s, Pointer p, aggregate_storage const&, nsm::list<N...> const&)
+    void do_( Src const & s, Pointer p, aggregate_storage const&, bm::list<N...> const&)
     {
       store(slice_low(s) , p);
       store(slice_high(s), p+Src::traits::element_size);
@@ -56,7 +59,7 @@ namespace boost { namespace simd { namespace ext
     }
 
     template<typename K, typename... N>
-    static BOOST_FORCEINLINE void do_(Src const & s, Pointer p, K const&, nsm::list<N...> const&)
+    static BOOST_FORCEINLINE void do_(Src const & s, Pointer p, K const&, bm::list<N...> const&)
     {
       (void)(std::initializer_list<bool>{(sto_<N>(s,p),true)...});
     }

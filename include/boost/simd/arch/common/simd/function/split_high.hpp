@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SPLIT_HIGH_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SPLIT_HIGH_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/function/genmask.hpp>
@@ -18,6 +19,8 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
+
   namespace bs = boost::simd;
 
   BOOST_DISPATCH_OVERLOAD_IF( split_high_
@@ -30,7 +33,7 @@ namespace boost { namespace simd { namespace ext
     using result_t = bd::upgrade_t<A0>;
 
     template<typename... N>
-    static BOOST_FORCEINLINE result_t do_(A0 const& a, nsm::list<N...> const&) BOOST_NOEXCEPT
+    static BOOST_FORCEINLINE result_t do_(A0 const& a, bm::list<N...> const&) BOOST_NOEXCEPT
     {
       using type = typename result_t::value_type;
       return result_t( static_cast<type>(bs::extract<sizeof...(N)+N::value>(a))... );

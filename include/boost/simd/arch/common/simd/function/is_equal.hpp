@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IS_EQUAL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_IS_EQUAL_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/traits.hpp>
 #include <boost/simd/meta/hierarchy/simd.hpp>
@@ -24,11 +25,13 @@
 namespace boost { namespace simd { namespace ext
 {
    namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
+
    namespace bs = boost::simd;
 
   BOOST_DISPATCH_OVERLOAD_IF( is_equal_
                             , (typename A0,typename X)
-                            , ( nsm::and_ < bs::is_bitwise_logical_t<A0>
+                            , ( bm::and_ < bs::is_bitwise_logical_t<A0>
                                               , detail::is_native<X>
                                               >
                               )

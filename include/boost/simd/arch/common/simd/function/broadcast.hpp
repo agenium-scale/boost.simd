@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_BROADCAST_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_BROADCAST_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/detail/overload.hpp>
@@ -19,6 +20,8 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = ::boost::dispatch;
+  namespace bm = boost::nsm;
+
   namespace bs = ::boost::simd;
 
   BOOST_DISPATCH_OVERLOAD ( broadcast_
@@ -30,15 +33,15 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator()(A0 const& a0, A1 const&) const BOOST_NOEXCEPT
     {
-      return do_(a0,nsm::bool_< A1::value >= 0 && A1::value < A0::static_size>{});
+      return do_(a0,bm::bool_< A1::value >= 0 && A1::value < A0::static_size>{});
     }
 
-    static BOOST_FORCEINLINE A0 do_(A0 const& a0, nsm::bool_<true> const&) BOOST_NOEXCEPT
+    static BOOST_FORCEINLINE A0 do_(A0 const& a0, bm::bool_<true> const&) BOOST_NOEXCEPT
     {
       return A0(extract<A1::value>(a0));
     }
 
-    static BOOST_FORCEINLINE A0 do_(A0 const&, nsm::bool_<false> const&) BOOST_NOEXCEPT
+    static BOOST_FORCEINLINE A0 do_(A0 const&, bm::bool_<false> const&) BOOST_NOEXCEPT
     {
       return Zero<A0>();
     }

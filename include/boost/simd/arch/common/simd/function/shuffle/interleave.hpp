@@ -29,6 +29,7 @@ namespace boost { namespace simd
 
   namespace detail
   {
+    namespace bm  = boost::nsm;
     // ---------------------------------------------------------------------------------------------
     // Generate various interleave_* based pattern for later comparison
     template<int C, int Base, bool Direct, bool HasZero, typename R>
@@ -38,7 +39,7 @@ namespace boost { namespace simd
     struct make_fspattern;
 
     template<int C, int Base, bool Direct, bool HasZero, typename... N>
-    struct make_oepattern<C, Base, Direct, HasZero, nsm::list<N...>>
+    struct make_oepattern<C, Base, Direct, HasZero, bm::list<N...>>
     {
       template<int I>
       using a_value = std::integral_constant<int, Direct ? Base+I : (HasZero ? -1 : Base+I+C)>;
@@ -53,7 +54,7 @@ namespace boost { namespace simd
     };
 
     template<int C, int Base, bool Direct, bool HasZero, typename... N>
-    struct make_fspattern<C, Base, Direct, HasZero, nsm::list<N...>>
+    struct make_fspattern<C, Base, Direct, HasZero, bm::list<N...>>
     {
       template<int I>
       using f_value = std::integral_constant
@@ -89,20 +90,20 @@ namespace boost { namespace simd
     struct which_interleave
     {
       template<int OE, bool D, bool HZ>
-      using p_ = nsm::pair< typename make_oepattern<C,OE,D,HZ,nsm::range<int,0,C>>::type
+      using p_ = bm::pair< typename make_oepattern<C,OE,D,HZ,bm::range<int,0,C>>::type
                               , interleave_pattern<OE,D,HZ,EntryPattern>
                               >;
       template<int OE, bool D, bool HZ>
-      using r_ = nsm::pair< typename make_oepattern<0,OE,D,HZ,nsm::range<int,0,C>>::type
+      using r_ = bm::pair< typename make_oepattern<0,OE,D,HZ,bm::range<int,0,C>>::type
                               , interleave_pattern<OE,D,HZ,EntryPattern>
                               >;
 
       template<int OE, bool D, bool HZ>
-      using q_ = nsm::pair< typename make_fspattern<C,OE,D,HZ,nsm::range<int,0,C>>::type
+      using q_ = bm::pair< typename make_fspattern<C,OE,D,HZ,bm::range<int,0,C>>::type
                               , interleave_pattern<2+OE,D,HZ,EntryPattern>
                               >;
 
-      using omap = nsm::map < // Odd/Even patterns
+      using omap = bm::map < // Odd/Even patterns
                                   p_<0,true ,false>, p_<0,true ,true >
                                 , p_<0,false,false>, p_<0,false,true >
                                 , p_<1,true ,false>, p_<1,true ,true >
@@ -110,16 +111,16 @@ namespace boost { namespace simd
                                 , r_<0,true ,false>, r_<1,true ,false>
                                 >;
 
-      using fmap = nsm::map < // First/Second patterns
+      using fmap = bm::map < // First/Second patterns
                                   q_<0,true ,false>, q_<0,true ,true >
                                 , q_<0,false,false>, q_<0,false,true >
                                 , q_<1,true ,false>, q_<1,true ,true >
                                 , q_<1,false,false>, q_<1,false,true >
                                 >;
 
-      using otype = nsm::at<omap,EntryPattern>;
-      using ftype = nsm::at<fmap,EntryPattern>;
-      using type  = typename std::conditional < std::is_same<nsm::no_such_type_,otype>::value
+      using otype = bm::at<omap,EntryPattern>;
+      using ftype = bm::at<fmap,EntryPattern>;
+      using type  = typename std::conditional < std::is_same<bm::no_such_type_,otype>::value
                                               , ftype
                                               , otype
                                               >::type;
@@ -129,8 +130,8 @@ namespace boost { namespace simd
     // Check if pattern performs some interleaving operations
     template<int... Ps>
     struct  is_interleave
-          : nsm::bool_< !std::is_same
-                                  < nsm::no_such_type_
+          : bm::bool_< !std::is_same
+                                  < bm::no_such_type_
                                   , typename which_interleave < sizeof...(Ps)
                                                               , boost::simd::detail::pattern_<Ps...>
                                                               >::type

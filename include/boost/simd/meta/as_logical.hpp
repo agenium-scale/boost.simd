@@ -21,22 +21,24 @@ namespace boost { namespace simd
 {
   namespace detail
   {
+    namespace bm = boost::nsm;
+
     template<typename T, typename F>
     struct  as_logical
     {
-      using type = nsm::apply<F, logical<T> >;
+      using type = bm::apply<F, logical<T> >;
     };
 
     template<typename T, typename F>
     struct  as_logical< logical<T>, F >
     {
-      using type = nsm::apply<F, logical<T> >;
+      using type = bm::apply<F, logical<T> >;
     };
 
     template<typename F>
     struct  as_logical<bool, F>
     {
-      using type = nsm::apply<F, bool >;
+      using type = bm::apply<F, bool >;
     };
   }
 

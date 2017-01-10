@@ -13,9 +13,12 @@
 #define BOOST_SIMD_DETAIL_LOGICAL_HPP_INCLUDED
 
 #include <boost/config.hpp>
+#include <boost/simd/detail/nsm.hpp>
 
 namespace boost { namespace simd { namespace detail
 {
+  namespace bm = boost::nsm;
+
   // traits of pack<logical<T>,N> is the one of its underlying type
   template<typename T, std::size_t N, typename Storage>
   class pack_traits<boost::simd::logical<T>, N, Storage>
@@ -36,8 +39,8 @@ namespace boost { namespace simd { namespace detail
     using storage_kind      = ::boost::simd::scalar_storage;
     using substorage_type   = T;
 
-    using static_range      = nsm::range<std::size_t, 0, N>;
-    using element_range     = nsm::range<std::size_t, 0, N>;
+    using static_range      = bm::range<std::size_t, 0, N>;
+    using element_range     = bm::range<std::size_t, 0, N>;
 
     enum { static_size = N, element_size = 1, number_of_vectors = 0 };
     enum { alignment = sizeof(T) };
@@ -68,8 +71,8 @@ namespace boost { namespace simd { namespace detail
     using storage_kind    = ::boost::simd::aggregate_storage;
     using substorage_type = SIMD;
 
-    using static_range    = nsm::range<std::size_t, 0, NumberOfVectors>;
-    using element_range   = nsm::range<std::size_t, 0, N>;
+    using static_range    = bm::range<std::size_t, 0, NumberOfVectors>;
+    using element_range   = bm::range<std::size_t, 0, N>;
 
     enum  { static_size = N
           , element_size = N / NumberOfVectors

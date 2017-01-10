@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LOOKUP_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LOOKUP_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
@@ -17,11 +18,12 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
   namespace bs = boost::simd;
 
   BOOST_DISPATCH_OVERLOAD_IF( lookup_
                             , (typename A0, typename A1, typename X, typename Y)
-                            , (nsm::equal_to<cardinal_of<A0>,cardinal_of<A1>>)
+                            , (bm::equal_to<cardinal_of<A0>,cardinal_of<A1>>)
                             , bd::cpu_
                             , bs::pack_<bd::unspecified_<A0>, X>
                             , bs::pack_<bd::integer_<A1>, Y>
@@ -33,7 +35,7 @@ namespace boost { namespace simd { namespace ext
     }
 
     template<typename... N> BOOST_FORCEINLINE
-    A0 do_(const A0& a0, const A1& a1, nsm::list<N...> const&) const BOOST_NOEXCEPT
+    A0 do_(const A0& a0, const A1& a1, bm::list<N...> const&) const BOOST_NOEXCEPT
     {
       return A0( a0[extract<N::value>(a1)]... );
     }
