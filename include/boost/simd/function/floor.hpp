@@ -18,23 +18,31 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-arithmetic
-    Function object implementing floor capabilities
+    This function object computes the greatest integral representable value of
+    its parameter type which is lesser or equal to it.
 
-    Computes the floor of its parameter.
+    @par Header <boost/simd/function/floor.hpp>
 
-    @par semantic:
-    For any given value @c x of type @c T:
+    @par Notes
 
-    @code
-    T r = floor(x);
-    @endcode
+     - @c floor is also used as parameter to pass to @ref div or @ref rem
 
-    is the greatest integral value of type @c T less or equal to @c x.
+    @par Decorators
+
+    - std_ for floating entries call std::floor
 
     @see  ceil, round, nearbyint, trunc, ifloor
 
+    @par Example:
+
+       @snippet floor.cpp floor
+
+    @par Possible output:
+
+       @snippet floor.txt floor
+
   **/
-  Value floor(Value const & v0);
+  Value floor(Value const & x);
 } }
 #endif
 

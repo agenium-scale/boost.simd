@@ -16,26 +16,13 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-arithmetic
-    Function object implementing min capabilities
+    This function object computes the smallest of its parameter.
 
-    Computes the smallest of its parameter.
-
-    @par semantic:
+    @par Notes
     For any given value @c x and @c y of type @c T:
 
-    @code
-    T r = min(x, y);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = (x < y) ? x : y;
-    @endcode
-
-    @par Note:
+    Call to `min(x, y)` is similar to `(x <  y) ? x : y` which is the standard behaviour.
 
     With this definition min(x, @ref Nan) should return x...
 
@@ -44,7 +31,20 @@ namespace boost { namespace simd
 
     This can be corrected using the pedantic_ decorator that ensures the standard behaviour at a cost.
 
-    @see minnum, minnummag, minmag
+    @par Decorators
+
+     - pedantic_ ensures the standard behaviour.
+     - std_ call std::min.
+
+    @see min,  minnum, minnummag, minmag, minmod
+
+    @par Example:
+
+       @snippet min.cpp min
+
+    @par Possible output:
+
+       @snippet min.txt min
 
   **/
   Value min(Value const & v0, Value const& y);

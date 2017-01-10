@@ -1,0 +1,12 @@
+//! [remquo]
+---- simd:  std::tie(xf, yf) = bs::remquo(xf, yf)
+ <- xf = (3, -2, -3, 1)
+ <- yf = (4, -1, -3, 2)
+ -> rf = (-1, 0, 0, 1)
+ -> qi = (1, 2, 1, 0)
+---- scalar: std::tie(srf, sqi) = bs::remquo(sxf, syf)
+ <- sxf =  3
+ <- syf =  4
+ -> srf = -1
+ -> sqi = 1
+//! [remquo]

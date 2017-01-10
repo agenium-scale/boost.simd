@@ -43,6 +43,13 @@ namespace boost { namespace simd
 
     @see exp10
 
+    @par Example:
+
+       @snippet tenpower.cpp tenpower
+
+    @par Possible output:
+
+       @snippet tenpower.txt tenpower
   **/
   Value tenpower(IntegerValue const& n);
 } }

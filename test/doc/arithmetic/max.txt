@@ -1,0 +1,13 @@
+//! [max]
+---- simd
+ <- pf =                             (3, -2, -0, 0)
+ <- qf =                             (4, -1, 0, -nan)
+ -> bs::max(pf, qf) =                (4, -1, -0, 0)
+ -> bs::pedantic_(bs::max)(pf, qf) = (4, -1, -0, 0)
+ -> bs::std_(bs::max)(pf, qf) =      (4, -1, -0, 0)
+---- scalar
+ xf =                                3
+ yf =                                4
+ -> bs::max(xf, yf) =                4
+ -> bs::pedantic_(bs::max)(xf, yf) = 4
+//! [max]

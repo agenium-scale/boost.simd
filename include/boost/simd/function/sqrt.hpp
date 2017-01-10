@@ -18,26 +18,30 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-arithmetic
-    Function object implementing sqrt capabilities
+    This function object computes the square root of its parameter.
+    For integers it is the truncation of the real square root.
 
-    Computes the square root of its parameter. For integers it is the
-    truncation of the real square root.
-
-    @par semantic:
-    For any given value @c x of type @c T:
-
-    @code
-    T r = sqrt(x);
-    @endcode
+    @par Header <boost/simd/function/sqrt.hpp>
 
     @par Decorators
 
     - std_ calls std::sqrt
 
-    - raw_ for floating entries can gain some speed with less accuracy on some architectures.
+    - raw_ for floating entries can gain some speed with less accuracy
+    on some architectures.
+
+    @see rsqrt, sqr_abs, sqr
+
+    @par Example:
+
+       @snippet sqrt.cpp sqrt
+
+    @par Possible output:
+
+       @snippet sqrt.txt sqrt
 
   **/
-  Value sqrt(Value const & v0);
+  Value sqrt(Value const & x);
 } }
 #endif
 

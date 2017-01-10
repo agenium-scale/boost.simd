@@ -36,7 +36,7 @@ namespace boost { namespace simd
     T r = dec(exp(x));
     @endcode
 
-    @par Notes:
+    @par Notes
 
     - result is accurate even for x of small modulus
 
