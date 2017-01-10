@@ -14,14 +14,12 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-
  /*!
 
     @ingroup group-hyperbolic
-    This function objectr eturns the hyperbolic cosine argument: \f$\log(x+\sqrt{x^2-1})\f$.
+    This function object returns the hyperbolic cosine argument: \f$\log(x+\sqrt{x^2-1})\f$.
 
     @see cosh, sinh,  acsch, asinh, atanh, asech, acoth, acsch
-
 
     @par Example:
 
