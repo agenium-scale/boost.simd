@@ -56,8 +56,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/constant/definition/inv2pi.hpp>
-#include <boost/simd/arch/common/scalar/constant/constant_value.hpp>
-#include <boost/simd/arch/common/simd/constant/constant_value.hpp>
+#include <boost/simd/constant/scalar/inv2pi.hpp>
+#include <boost/simd/constant/simd/inv2pi.hpp>
 
 #endif

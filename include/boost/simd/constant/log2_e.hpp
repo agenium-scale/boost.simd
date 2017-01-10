@@ -51,8 +51,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/constant/definition/log2_e.hpp>
-#include <boost/simd/arch/common/scalar/constant/constant_value.hpp>
-#include <boost/simd/arch/common/simd/constant/constant_value.hpp>
+#include <boost/simd/constant/scalar/log2_e.hpp>
+#include <boost/simd/constant/simd/log2_e.hpp>
 
 #endif

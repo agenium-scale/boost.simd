@@ -55,8 +55,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/constant/definition/splitfactor.hpp>
-#include <boost/simd/arch/common/scalar/constant/constant_value.hpp>
-#include <boost/simd/arch/common/simd/constant/constant_value.hpp>
+#include <boost/simd/constant/scalar/splitfactor.hpp>
+#include <boost/simd/constant/simd/splitfactor.hpp>
 
 #endif

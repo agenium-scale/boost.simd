@@ -54,8 +54,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/constant/definition/exp_1.hpp>
-#include <boost/simd/arch/common/scalar/constant/constant_value.hpp>
-#include <boost/simd/arch/common/simd/constant/constant_value.hpp>
+#include <boost/simd/constant/scalar/exp_1.hpp>
+#include <boost/simd/constant/simd/exp_1.hpp>
 
 #endif
