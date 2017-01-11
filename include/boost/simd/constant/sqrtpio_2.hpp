@@ -56,8 +56,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/constant/definition/sqrtpio_2.hpp>
-#include <boost/simd/arch/common/scalar/constant/constant_value.hpp>
-#include <boost/simd/arch/common/simd/constant/constant_value.hpp>
+#include <boost/simd/constant/scalar/sqrtpio_2.hpp>
+#include <boost/simd/constant/simd/sqrtpio_2.hpp>
 
 #endif

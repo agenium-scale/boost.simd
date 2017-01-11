@@ -47,8 +47,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/constant/definition/fact_11.hpp>
-#include <boost/simd/arch/common/scalar/constant/constant_value.hpp>
-#include <boost/simd/arch/common/simd/constant/constant_value.hpp>
+#include <boost/simd/constant/scalar/fact_11.hpp>
+#include <boost/simd/constant/simd/fact_11.hpp>
 
 #endif

@@ -40,7 +40,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/constant/definition/false.hpp>
-#include <boost/simd/arch/common/generic/constant/false.hpp>
+#include <boost/simd/constant/scalar/false.hpp>
+#include <boost/simd/constant/simd/false.hpp>
 
 #endif
