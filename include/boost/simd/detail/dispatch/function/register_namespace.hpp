@@ -93,7 +93,7 @@ namespace boost { namespace dispatch
                         ) )
       {
         return dispatching( Discriminant{}, Tag{}, default_site<Tag>{}
-                          , ::boost::dispatch::hierarchy_of_t<Args&&>()...
+                          , ::boost::dispatch::hierarchy_of<Args&&>::value()...
                           )
                           ( std::forward<Args>(args)... );
       }

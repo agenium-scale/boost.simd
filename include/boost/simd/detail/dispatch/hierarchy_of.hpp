@@ -38,7 +38,12 @@ namespace boost { namespace dispatch
 #if !defined(DOXYGEN_ONLY)
         : detail::hierarchy_of<T, typename std::remove_reference<Origin>::type>
 #endif
-  {};
+  {
+    typedef detail::hierarchy_of<T, typename std::remove_reference<Origin>::type> parent;
+
+    BOOST_FORCEINLINE
+    static typename parent::type value() { return typename parent::type(); }
+  };
 
   /*!
     @ingroup group-hierarchy
