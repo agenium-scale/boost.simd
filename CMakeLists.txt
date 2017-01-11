@@ -89,6 +89,7 @@ endif()
 ## -------------------------------------------------------------------------------------------------
 set(PROJECT_CMAKE_CONFIG         ${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake)
 set(PROJECT_CMAKE_CONFIG_VERSION ${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake)
+set(PROJECT_CMAKE_FIND           ${PROJECT_BINARY_DIR}/Find${PROJECT_NAME}.cmake)
 
 ## Extract each version components
 string(REPLACE "." ";" PROJECT_VERSION_COMPONENTS ${PROJECT_VERSION})
@@ -98,8 +99,9 @@ list(GET PROJECT_VERSION_COMPONENTS 2 PROJECT_SUBMINOR_VERSION)
 list(GET PROJECT_VERSION_COMPONENTS 3 PROJECT_SUBSUBMINOR_VERSION)
 
 ## Generate final files
-configure_file(cmake/Config.cmake.in        ${PROJECT_CMAKE_CONFIG} @ONLY)
-configure_file(cmake/ConfigVersion.cmake.in ${PROJECT_CMAKE_CONFIG_VERSION} @ONLY)
+configure_file(cmake/Boost.SIMDConfig.cmake.in        ${PROJECT_CMAKE_CONFIG} @ONLY)
+configure_file(cmake/Boost.SIMDConfigVersion.cmake.in ${PROJECT_CMAKE_CONFIG_VERSION} @ONLY)
+configure_file(cmake/FindBoost.SIMD.cmake.in          ${PROJECT_CMAKE_FIND} @ONLY)
 
 ## Install generated files
 ## See: http://stackoverflow.com/questions/10765885/how-to-install-your-custom-cmake-find-module
