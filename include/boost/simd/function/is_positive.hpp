@@ -18,9 +18,8 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-predicates
-    Function object implementing is_positive capabilities
 
-    Returns @ref True if x is positive else @ref False.
+    This function object returns @ref True if x is positive else @ref False.
 
     This function differs from @ref is_gtz for floating point arguments,
     because @ref Zero is positive but not greater than 0, and @ref Mzero is
@@ -51,6 +50,15 @@ namespace boost { namespace simd
     behaviour of is_positive on @ref Nan is undefined.
 
     @see is_negative,  Mzero, bitofsign
+
+
+   @par Example:
+
+     @snippet is_positive.cpp is_positive
+
+   @par Possible output:
+
+     @snippet is_positive.txt is_positive
 
   **/
   as_logical_t<Value> is_positive(Value const& x);

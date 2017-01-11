@@ -18,9 +18,8 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-predicates
-    Function object implementing is_odd capabilities
 
-    Returns @ref True or @ref False according x is odd or not.
+    This function object returns @ref True or @ref False according x is odd or not.
 
     @par Semantic:
 
@@ -35,6 +34,15 @@ namespace boost { namespace simd
     @endcode
 
      @see is_even, is_flint
+
+
+   @par Example:
+
+     @snippet is_odd.cpp is_odd
+
+   @par Possible output:
+
+     @snippet is_odd.txt is_odd
 
   **/
   as_logical_t<Value> is_odd(Value const& x);

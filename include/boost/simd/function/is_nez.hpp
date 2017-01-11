@@ -18,9 +18,8 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-predicates
-    Function object implementing is_nez capabilities
 
-    Returns @ref True if x is not equal to @ref Zero else returns @ref False.
+    This function object returns @ref True if x is not equal to @ref Zero else returns @ref False.
 
     @par Semantic:
 
@@ -33,6 +32,15 @@ namespace boost { namespace simd
     @code
     auto r = x != 0;
     @endcode
+
+
+   @par Example:
+
+     @snippet is_nez.cpp is_nez
+
+   @par Possible output:
+
+     @snippet is_nez.txt is_nez
 
   **/
   as_logical_t<Value> is_nez(Value const& x);

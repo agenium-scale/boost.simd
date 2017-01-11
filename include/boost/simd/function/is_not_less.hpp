@@ -18,7 +18,6 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-predicates
-    Function object implementing is_not_less capabilities
 
     TODO Put description here
 
@@ -38,6 +37,15 @@ namespace boost { namespace simd
 
     Due to existence of nan, this is not equivalent to a call to @ref is_greater_equal
     for floating types
+
+   @par Example:
+
+     @snippet is_not_less.cpp is_not_less
+
+   @par Possible output:
+
+     @snippet is_not_less.txt is_not_less
+
   **/
   as_logical_t<Value> is_not_less(Value const& x, Value const& y);
 } }

@@ -18,24 +18,22 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-predicates
-    Function object implementing is_equal_with_equal_nans capabilities
-
-    Returns @ref True or @ref False according x and y are equal or not.
+    This unction object returns @ref True or @ref False according x and y are equal or not.
     Nans are considered equal
 
-    @par Semantic:
+    @par Note
 
-    @code
-    auto r = is_equal_with_equal_nans(x,y);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = (x == y) || ((x!= x) && (y!= y));
-    @endcode
+    Call to `is_equal_with_equal_nans(x,y)` is similar to `(x == y) || ((x!= x) && (y!= y))`
 
     @see Nan
+
+    @par Example:
+
+       @snippet is_equal_with_equal_nans.cpp is_equal_with_equal_nans
+
+    @par Possible output:
+
+       @snippet is_equal_with_equal_nans.txt is_equal_with_equal_nans
 
   **/
   as_logical_t<Value> is_equal_with_equal_nans(Value const& x, Value const &y);

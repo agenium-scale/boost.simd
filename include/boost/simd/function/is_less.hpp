@@ -18,9 +18,8 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-predicates
-    Function object implementing is_less capabilities
 
-    Returns  @ref True or @ref False according x is less than y or not.
+    This function object returns  @ref True or @ref False according x is less than y or not.
     Infix notation can be used with operator '<'.
 
     @par Semantic:
@@ -36,6 +35,15 @@ namespace boost { namespace simd
     @endcode
 
     @see  is_less_equal, is_ltz
+
+
+   @par Example:
+
+     @snippet is_less.cpp is_less
+
+   @par Possible output:
+
+     @snippet is_less.txt is_less
 
   **/
   as_logical_t<Value> is_less(Value const& x, Value const& y);

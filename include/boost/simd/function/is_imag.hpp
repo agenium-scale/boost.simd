@@ -18,9 +18,8 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-predicates
-    Function object implementing is_imag capabilities
 
-    Returns @ref True or @ref False according x is pure imaginary or not.
+    This function object returns @ref True or @ref False according x is pure imaginary or not.
     For non complex numbers it is same as to be zero
 
     @par Semantic:
@@ -34,6 +33,15 @@ namespace boost { namespace simd
     @code
     auto r = x == 0;
     @endcode
+
+
+   @par Example:
+
+     @snippet is_imag.cpp is_imag
+
+   @par Possible output:
+
+     @snippet is_imag.txt is_imag
 
   **/
   as_logical_t<Value> is_imag(Value const& x);

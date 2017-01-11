@@ -18,9 +18,8 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-predicates
-    Function object implementing is_not_infinite capabilities
 
-    Returns @ref True if x is finite or @ref Nan
+    This function object returns @ref True if x is finite or @ref Nan
 
     @par Semantic:
 
@@ -36,6 +35,15 @@ namespace boost { namespace simd
     else
       auto r = True ;
     @endcode
+
+
+   @par Example:
+
+     @snippet is_not_infinite.cpp is_not_infinite
+
+   @par Possible output:
+
+     @snippet is_not_infinite.txt is_not_infinite
 
   **/
   as_logical_t<Value> is_not_infinite(Value const& x);

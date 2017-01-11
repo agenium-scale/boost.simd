@@ -18,9 +18,8 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-predicates
-    Function object implementing is_ngez capabilities
 
-    Returns @ref True if x is not greater or equal to @ref Zero else returns @ref False.
+    This function object returns @ref True if x is not greater or equal to @ref Zero else returns @ref False.
 
     @par Semantic:
 
@@ -38,6 +37,15 @@ namespace boost { namespace simd
 
     Due to existence of @ref Nan, this is not equivalent to a call to
     @ref is_ltz for floating types
+
+
+   @par Example:
+
+     @snippet is_ngez.cpp is_ngez
+
+   @par Possible output:
+
+     @snippet is_ngez.txt is_ngez
 
   **/
   as_logical_t<Value> is_ngez(Value const& x);

@@ -18,26 +18,20 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-operator
-    Function object implementing is_equal capabilities
-
-    Returns @ref True or @ref False
+    This function object returns @ref True or @ref False
     according x and y are equal or not.
 
     Infix notation can be used with operator '=='
 
-    @par Semantic:
-
-    @code
-    auto r = is_equal(x,y);
-    @endcode
-
-    or
-
-    @code
-    auto r = x == y;
-    @endcode
-
     @see  is_not_equal, is_eqz, is_equal_with_equal_nans
+
+    @par Example:
+
+       @snippet is_equal.cpp is_equal
+
+    @par Possible output:
+
+       @snippet is_equal.txt is_equal
 
   **/
   as_logical_t<T0> is_equal(T0 const& x, T1 const& y);

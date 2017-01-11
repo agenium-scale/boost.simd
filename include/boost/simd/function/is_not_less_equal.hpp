@@ -17,9 +17,8 @@ namespace boost { namespace simd
 
  /*!
     @ingroup group-predicates
-    Function object implementing is_not_less_equal capabilities
 
-    Returns @ref True  or @ref False depending on whether x is
+    This function object returns @ref True  or @ref False depending on whether x is
     not less or equal to y or is.
 
     @par Semantic:
@@ -38,6 +37,15 @@ namespace boost { namespace simd
 
     Due to existence of nan, this is not equivalent to a call to @ref is_greater
     for floating types
+
+   @par Example:
+
+     @snippet is_not_less_equal.cpp is_not_less_equal
+
+   @par Possible output:
+
+     @snippet is_not_less_equal.txt is_not_less_equal
+
   **/
   as_logical_t<Value> is_not_less_equal(Value const& x, Value const &y);
 } }

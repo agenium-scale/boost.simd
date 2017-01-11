@@ -18,9 +18,8 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-predicates
-    Function object implementing majority capabilities
-
-    Returns @ref True if at least two inputs are not @ref Zero else @ref False.
+    This function object returns @ref True if at least two inputs
+    are not @ref Zero else @ref False.
 
     @par Semantic:
 
@@ -33,6 +32,14 @@ namespace boost { namespace simd
     @code
     auto r = (x!= 0)+(y!= 0)+(z!= 0) >= 2;
     @endcode
+
+    @par Example:
+
+       @snippet majority.cpp majority
+
+    @par Possible output:
+
+       @snippet majority.txt majority
 
   **/
   as_logical_t<Value> Value majority(Value const& x, Value const& y, Value const& z);

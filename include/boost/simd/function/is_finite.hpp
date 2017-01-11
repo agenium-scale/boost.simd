@@ -18,24 +18,22 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-predicates
-    Function object implementing is_finite capabilities
+    This function object returns @ref True if x is not inf, -inf or nan, else returns @ref False.
 
-    Returns @ref True if x is not inf, -inf or nan, else returns @ref False.
+    @par Note
 
-    @par Semantic:
-
-    @code
-    auto r = is_finite(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = x-x == Zero;
-    @endcode
+    Call to `is_finite(x)` is similar to `x-x == Zero`
 
     @par Alias:
     is_not_invalid
+
+    @par Example:
+
+       @snippet is_finite.cpp is_finite
+
+    @par Possible output:
+
+       @snippet is_finite.txt is_finite
 
   **/
   as_logical_t<Value> is_finite(Value const& x);

@@ -18,9 +18,8 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-predicates
-    Function object implementing is_lessgreater capabilities
 
-    Returns @ref True if neither x nor y is @ref Nan and x is not equal to y.
+    This function object returns @ref True if neither x nor y is @ref Nan and x is not equal to y.
 
     @par Semantic:
 
@@ -33,6 +32,15 @@ namespace boost { namespace simd
     @code
     auto r = (x == x) && (y == y) && (x!= y);
     @endcode
+
+
+   @par Example:
+
+     @snippet is_lessgreater.cpp is_lessgreater
+
+   @par Possible output:
+
+     @snippet is_lessgreater.txt is_lessgreater
 
   **/
   as_logical_t<Value> is_lessgreater(Value const& x, Value const& y);

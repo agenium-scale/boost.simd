@@ -17,7 +17,7 @@ namespace boost { namespace simd
   /*!
 
     @ingroup group-arithmetic
-    Function object function implementing correct_fma
+    This function object function implementing correct_fma
 
     Computes the "correct" fused multiply/add of its parameter: this is perhaps not that you need
     if speed is needed more than accuracy (this remark is hardware dependent).

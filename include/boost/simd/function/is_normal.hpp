@@ -18,9 +18,8 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-predicates
-    Function object implementing is_normal capabilities
 
-    Returns @ref True or @ref False according x is normal or not.
+    This function object returns @ref True or @ref False according x is normal or not.
 
     @par Semantic:
 
@@ -37,6 +36,15 @@ namespace boost { namespace simd
     @endcode
 
     @see is_invalid, is_denormal, is_eq
+
+
+   @par Example:
+
+     @snippet is_normal.cpp is_normal
+
+   @par Possible output:
+
+     @snippet is_normal.txt is_normal
 
   **/
   as_logical_t<Value> is_normal(Value const& x);

@@ -18,7 +18,6 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-reduction
-    Function object implementing is_simd_logical capabilities
 
     returns @ref True if each vector elements have all bits or no bit set.
 
@@ -37,6 +36,15 @@ namespace boost { namespace simd
     @endcode
 
     @see mask2logical
+
+
+   @par Example:
+
+     @snippet is_simd_logical.cpp is_simd_logical
+
+   @par Possible output:
+
+     @snippet is_simd_logical.txt is_simd_logical
 
   **/
   lgoical<as_scalar_t<Value>> is_simd_logical(Value const& x);

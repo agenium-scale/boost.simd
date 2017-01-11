@@ -18,9 +18,8 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-predicates
-    Function object implementing is_lez capabilities
 
-    Returns @ref True or @ref False according x is less or equal to @ref Zero or not.
+    This function object returns @ref True or @ref False according x is less or equal to @ref Zero or not.
 
     @par Semantic:
 
@@ -33,6 +32,15 @@ namespace boost { namespace simd
     @code
     auto r = x <= 0;
     @endcode
+
+
+   @par Example:
+
+     @snippet is_lez.cpp is_lez
+
+   @par Possible output:
+
+     @snippet is_lez.txt is_lez
 
   **/
   as_logical_t<Value> is_lez(Value const& x);

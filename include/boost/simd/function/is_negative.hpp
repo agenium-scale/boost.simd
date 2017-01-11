@@ -18,9 +18,8 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-predicates
-    Function object implementing is_negative capabilities
 
-    Returns @ref True if x is negative else @ref False.
+    This function object returns @ref True if x is negative else @ref False.
 
     This function differs from @ref is_ltz for floating point arguments,
     because @ref Mzero is negative but not less than zero, and @ref Mzero is
@@ -55,6 +54,15 @@ namespace boost { namespace simd
     signbit
 
     @see is_positive,  Mzero, bitofsign
+
+
+   @par Example:
+
+     @snippet is_negative.cpp is_negative
+
+   @par Possible output:
+
+     @snippet is_negative.txt is_negative
 
   **/
   as_logical_t<Value> is_negative(Value const& x);
