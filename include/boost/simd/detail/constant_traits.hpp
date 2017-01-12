@@ -16,7 +16,7 @@
 #include <boost/simd/detail/dispatch/property_of.hpp>
 #include <boost/simd/detail/dispatch/hierarchy.hpp>
 #include <boost/config.hpp>
-#include <type_traits>
+#include <boost/simd/detail/nsm.hpp>
 
 #ifdef BOOST_MSVC
 #pragma warning(push)
@@ -31,7 +31,7 @@
 struct value_map                                                                                    \
 {                                                                                                   \
   template<typename X>                                                                              \
-  static std::integral_constant<X,X(INT)> value(boost::dispatch::integer_<X> const&);               \
+  static nsm::type_traits::integral_constant<X,X(INT)> value(boost::dispatch::integer_<X> const&); \
   template<typename X>                                                                              \
   static nsm::single_<FLOAT> value(boost::dispatch::single_<X> const&);                         \
   template<typename X>                                                                              \
@@ -41,6 +41,8 @@ struct value_map                                                                
 
 namespace boost { namespace simd { namespace detail
 {
+  namespace tt = nsm::type_traits;
+
   template<typename Tag, typename T>
   struct constant_traits
   {
@@ -61,7 +63,7 @@ namespace boost { namespace simd { namespace detail
   template<typename T, bits_t<T> N, bits_t<T> M = 0>
   struct  constantify
   {
-    using type = std::integral_constant<T,T(N)>;
+    using type = tt::integral_constant<T,T(N)>;
   };
 
   template<bits_t<double> V> struct constantify<double,V>

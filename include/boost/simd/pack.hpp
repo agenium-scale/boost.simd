@@ -15,6 +15,7 @@
 #define BOOST_SIMD_PACK_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/dispatch/detail/declval.hpp>
 #include <boost/simd/detail/pack_traits.hpp>
 #include <boost/simd/detail/storage_of.hpp>
@@ -51,6 +52,7 @@
 namespace boost { namespace simd
 {
   namespace bd = boost::dispatch;
+  namespace tt = nsm::type_traits;
 
   /*!
     @ingroup  group-api
@@ -259,14 +261,14 @@ namespace boost { namespace simd
 
     /// @overload
     template<std::uint64_t Index>
-    BOOST_FORCEINLINE value_type operator[](std::integral_constant<std::uint64_t,Index> const&)
+    BOOST_FORCEINLINE value_type operator[](tt::integral_constant<std::uint64_t,Index> const&)
     {
       return ::boost::simd::extract<Index>(*this);
     }
 
     /// @overload
     template<std::uint64_t Index>
-    BOOST_FORCEINLINE value_type operator[](std::integral_constant<std::uint64_t,Index> const&) const
+    BOOST_FORCEINLINE value_type operator[](tt::integral_constant<std::uint64_t,Index> const&) const
     {
       return ::boost::simd::extract<Index>(*this);
     }

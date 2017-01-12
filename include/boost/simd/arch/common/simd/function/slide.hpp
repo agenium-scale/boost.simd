@@ -22,6 +22,7 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
+  namespace tt = nsm::type_traits;
 
   //------------------------------------------------------------------------------------------------
   // unary slide uses binary slide with Zero
@@ -58,7 +59,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::constant_<bd::integer_<Offset>>
                           )
   {
-    using hcard = std::integral_constant<std::size_t,T::static_size/2>;
+    using hcard = tt::integral_constant<std::size_t,T::static_size/2>;
 
     // Slide by N gives whatever in non-aggregate storage
     template<typename K, typename H, typename... L0, typename... L1>

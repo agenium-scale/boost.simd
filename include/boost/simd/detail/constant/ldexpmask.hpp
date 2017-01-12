@@ -39,6 +39,8 @@ namespace boost { namespace simd
 {
   namespace tag
   {
+    namespace tt = nsm::type_traits;
+    
     struct ldexpmask_ : boost::dispatch::constant_value_<ldexpmask_>
     {
       BOOST_DISPATCH_MAKE_CALLABLE(ext,ldexpmask_,boost::dispatch::constant_value_<ldexpmask_>);
@@ -46,13 +48,13 @@ namespace boost { namespace simd
       struct value_map
       {
         template<typename X>
-        static std::integral_constant<X,0> value(boost::dispatch::integer_<X> const&);
+        static tt::integral_constant<X,0> value(boost::dispatch::integer_<X> const&);
 
         template<typename X>
-        static std::integral_constant<std::int32_t,0x7F800000L> value(boost::dispatch::single_<X> const&);
+        static tt::integral_constant<std::int32_t,0x7F800000L> value(boost::dispatch::single_<X> const&);
 
         template<typename X>
-        static std::integral_constant<std::int64_t,0x7FF0000000000000LL> value(boost::dispatch::double_<X> const&);
+        static tt::integral_constant<std::int64_t,0x7FF0000000000000LL> value(boost::dispatch::double_<X> const&);
       };
     };
   }

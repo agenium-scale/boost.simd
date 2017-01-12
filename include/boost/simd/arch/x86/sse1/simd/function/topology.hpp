@@ -15,14 +15,15 @@
 #include <boost/simd/arch/common/simd/function/shuffle/repeat.hpp>
 #include <boost/simd/arch/common/simd/function/shuffle/slide.hpp>
 #include <boost/simd/detail/dispatch/meta/as_floating.hpp>
-#include <type_traits>
+#include <boost/simd/detail/nsm.hpp>
 
 namespace boost { namespace simd { namespace detail
 {
+  namespace tt = nsm::type_traits;
   // -----------------------------------------------------------------------------------------------
   // Local masking utility
   template<int P0,int P1, int P2, int P3>
-  struct mask_ps : std::integral_constant<int, _MM_SHUFFLE(P3&3,P2&3,P1&3,P0&3)>
+  struct mask_ps : tt::integral_constant<int, _MM_SHUFFLE(P3&3,P2&3,P1&3,P0&3)>
   {};
 
   // -----------------------------------------------------------------------------------------------

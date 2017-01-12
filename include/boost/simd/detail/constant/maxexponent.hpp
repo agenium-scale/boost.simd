@@ -44,16 +44,18 @@
 namespace boost { namespace simd
 {
   namespace tag
-  {      struct value_map
+  { 
+    namespace tt = nsm::type_traits;
+     struct value_map
       {
         template<typename X>
-        static std::integral_constant<X,0> value(boost::dispatch::integer_<X> const&);
+        static tt::integral_constant<X,0> value(boost::dispatch::integer_<X> const&);
 
         template<typename X>
-        static std::integral_constant<std::int32_t,128> value(boost::dispatch::single_<X> const&);
+        static tt::integral_constant<std::int32_t,128> value(boost::dispatch::single_<X> const&);
 
         template<typename X>
-        static std::integral_constant<std::int64_t,1024> value(boost::dispatch::double_<X> const&);
+        static tt::integral_constant<std::int64_t,1024> value(boost::dispatch::double_<X> const&);
       };
     struct maxexponent_ : boost::dispatch::constant_value_<maxexponent_>
     {
@@ -61,13 +63,13 @@ namespace boost { namespace simd
       struct value_map
       {
         template<typename X>
-        static std::integral_constant<X,0> value(boost::dispatch::integer_<X> const&);
+        static tt::integral_constant<X,0> value(boost::dispatch::integer_<X> const&);
 
         template<typename X>
-        static std::integral_constant<std::int32_t,127> value(boost::dispatch::single_<X> const&);
+        static tt::integral_constant<std::int32_t,127> value(boost::dispatch::single_<X> const&);
 
         template<typename X>
-        static std::integral_constant<std::int64_t,1023> value(boost::dispatch::double_<X> const&);
+        static tt::integral_constant<std::int64_t,1023> value(boost::dispatch::double_<X> const&);
       };
     };
   }

@@ -13,10 +13,12 @@
 #include <boost/simd/function/combine.hpp>
 #include <boost/simd/function/shuffle.hpp>
 #include <boost/simd/detail/dispatch/detail/declval.hpp>
+#include <boost/simd/detail/nsm.hpp>
 
 namespace boost { namespace simd { namespace detail
 {
   namespace bd = boost::dispatch;
+  namespace tt = nsm::type_traits;
 
   //------------------------------------------------------------------------------------------------
   // This meta-permutation implements the scan pattern required for scan-trees.
@@ -26,7 +28,7 @@ namespace boost { namespace simd { namespace detail
     {
       static const int relative_index = I::value / Step;
       static const int index = relative_index % 2 ? (relative_index*Step - 1) : -1;
-      using type = std::integral_constant<int,index>;
+      using type = tt::integral_constant<int,index>;
     };
   };
   //------------------------------------------------------------------------------------------------
@@ -36,7 +38,7 @@ namespace boost { namespace simd { namespace detail
     template<typename T, int I> struct apply
     {
       static const int relative_index = I / Step;
-      using type = std::integral_constant<T,relative_index % 2 ? T(0) : T(~0)>;
+      using type = tt::integral_constant<T,relative_index % 2 ? T(0) : T(~0)>;
     };
 
     template<typename V, typename... N>

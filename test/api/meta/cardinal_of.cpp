@@ -6,6 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
@@ -42,7 +43,7 @@ STF_CASE_TPL( "Check cardinal_of for scalar types", STF_ALL_TYPES )
   STF_EQUAL( cardinal(T{}), 1ULL );
 }
 
-template<std::size_t N> using card_ = std::integral_constant<std::size_t,N>;
+template<std::size_t N> using card_ = nsm::type_traits::integral_constant<std::size_t,N>;
 
 STF_CASE_TPL( "Check cardinal_of for pack types"
             , (card_<1>)(card_<2>)(card_<4>)

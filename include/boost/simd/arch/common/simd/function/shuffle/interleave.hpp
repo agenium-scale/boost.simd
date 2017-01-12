@@ -29,6 +29,8 @@ namespace boost { namespace simd
 
   namespace detail
   {
+    namespace tt = nsm::type_traits;
+
     // ---------------------------------------------------------------------------------------------
     // Generate various interleave_* based pattern for later comparison
     template<int C, int Base, bool Direct, bool HasZero, typename R>
@@ -41,10 +43,10 @@ namespace boost { namespace simd
     struct make_oepattern<C, Base, Direct, HasZero, nsm::list<N...>>
     {
       template<int I>
-      using a_value = std::integral_constant<int, Direct ? Base+I : (HasZero ? -1 : Base+I+C)>;
+      using a_value = tt::integral_constant<int, Direct ? Base+I : (HasZero ? -1 : Base+I+C)>;
 
       template<int I>
-      using b_value = std::integral_constant<int, Direct ? (HasZero ? -1 : Base+I+C-1) : Base+I-1>;
+      using b_value = tt::integral_constant<int, Direct ? (HasZero ? -1 : Base+I+C-1) : Base+I-1>;
 
       using type = boost::simd::detail::pattern_< ( N::value%2  ? b_value<N::value>::value
                                                                 : a_value<N::value>::value
@@ -56,7 +58,7 @@ namespace boost { namespace simd
     struct make_fspattern<C, Base, Direct, HasZero, nsm::list<N...>>
     {
       template<int I>
-      using f_value = std::integral_constant
+      using f_value = tt::integral_constant
                                           < int
                                           , Direct  ? ( (I%2) ? (HasZero ? -1 : (I%2)*C+I/2)
                                                               : (I%2)*C+I/2
@@ -67,7 +69,7 @@ namespace boost { namespace simd
                                           >;
 
       template<int I>
-      using s_value = std::integral_constant
+      using s_value = tt::integral_constant
                                       < int
                                       , Direct  ? ( (I%2) ? (HasZero ? -1 : ((I%2)*C+I/2)+C/2)
                                                           : ((I%2)*C+I/2)+C/2
