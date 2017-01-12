@@ -16,27 +16,13 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
 
     TODO Put description here
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_not_less(x,y);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = !(x < y);
-    @endcode
-
-    @par Note:
-
-    Due to existence of nan, this is not equivalent to a call to @ref is_greater_equal
-    for floating types
+     Call to `is_not_less(x,y)` is similar to: `!(x < y)`
 
    @par Example:
 

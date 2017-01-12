@@ -16,27 +16,13 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
 
     This function object returns @ref True if x is not greater or equal to y else returns @ref False.
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_not_greater_equal(x,y);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = !(x >= y);
-    @endcode
-
-    @par Note:
-
-    Due to existence of nan, this is not equivalent to is_less(x)
-    for floating types
+     Call to `is_not_greater_equal(x,y)` is similar to: `!(x >= y)`
 
    @par Example:
 

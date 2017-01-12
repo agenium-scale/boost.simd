@@ -16,7 +16,6 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
 
     This function object returns @ref True  or @ref False depending on whether x is
@@ -24,20 +23,9 @@ namespace boost { namespace simd
 
     Infix notation can be used with operator '<='.
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_less_equal(x,y);
-    @endcode
-
-    or
-
-    @code
-    auto r = x <= y;
-    @endcode
-
-    @see  is_equal, is_eqz
-
+     Call to `is_less_equal(x,y)` or `x <= y`
 
    @par Example:
 

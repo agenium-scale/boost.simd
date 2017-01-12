@@ -16,26 +16,14 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
 
     This function object returns  @ref True or @ref False according x is less than y or not.
     Infix notation can be used with operator '<'.
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_less(x,y);
-    @endcode
-
-    or
-
-    @code
-    auto r = x < y;
-    @endcode
-
-    @see  is_less_equal, is_ltz
-
+     Call to `is_less(x,y)` or `x < y`
 
    @par Example:
 

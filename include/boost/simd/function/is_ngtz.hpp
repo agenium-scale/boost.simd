@@ -16,28 +16,13 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
 
     This function object returns @ref True if x is not greater than @ref Zero else returns @ref False.
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_ngtz(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = !(x > 0);
-    @endcode
-
-    @par Note:
-
-    Due to existence of @ref Nan, this is not equivalent to a call to
-    @ref is_lez for floating types
-
+     Call to `is_ngtz(x)` is similar to: `!(x > 0)`
 
    @par Example:
 

@@ -16,24 +16,14 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
 
     This function object returns @ref True or @ref False according x is real or not.
     For non complex numbers it is always false
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_not_real(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = False;
-    @endcode
-
+     Call to `is_not_real(x)` is similar to: `False`
 
    @par Example:
 

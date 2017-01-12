@@ -16,25 +16,13 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
 
     This function object returns @ref True or @ref False according x is odd or not.
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_odd(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = is_even(x-One);
-    @endcode
-
-     @see is_even, is_flint
-
+     Call to `is_odd(x)` is similar to: `is_even(x-One)`
 
    @par Example:
 

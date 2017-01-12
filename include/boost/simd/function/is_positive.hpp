@@ -16,7 +16,6 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
 
     This function object returns @ref True if x is positive else @ref False.
@@ -26,31 +25,9 @@ namespace boost { namespace simd
     not positive and not greater than 0, It's probably @ref is_gtz that
     you want.
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_positive(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    if x is of signed type
-      auto r = bitofsign(x) == 0;
-    else
-      auto r = True ;
-    @endcode
-
-    @par Note:
-
-    Mzero is the floating point 'minus zero',
-    i.e. all bits are @ref Zero but the sign bit.
-    Such a value is treated as @ref Zero by ieee standards.
-
-    behaviour of is_positive on @ref Nan is undefined.
-
-    @see is_negative,  Mzero, bitofsign
-
+     Call to `is_positive(x)` is similar to: `if x is of signed type` auto r = bitofsign(x) == 0;  else  auto r = True ;
 
    @par Example:
 

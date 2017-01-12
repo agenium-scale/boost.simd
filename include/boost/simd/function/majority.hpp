@@ -16,22 +16,13 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
     This function object returns @ref True if at least two inputs
     are not @ref Zero else @ref False.
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = majority(x,y,z);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = (x!= 0)+(y!= 0)+(z!= 0) >= 2;
-    @endcode
+     Call to `majority(x,y,z)` is similar to: `(x!= 0)+(y!= 0)+(z!= 0) >= 2`
 
     @par Example:
 

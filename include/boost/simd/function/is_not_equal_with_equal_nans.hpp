@@ -16,24 +16,14 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
 
     This function object returns @ref True if x and y are not equal else @ref False,
     nans being considered equal
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_not_equal_with_equal_nans(x,y);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = (x != y) || ((x!= x) && (y!= y));
-    @endcode
-
+     Call to `is_not_equal_with_equal_nans(x,y)` is similar to: `(x != y) || ((x!= x) && (y!= y))`
 
    @par Example:
 

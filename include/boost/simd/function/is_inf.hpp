@@ -16,23 +16,13 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
 
     This function object returns @ref True if x is inf or -inf else returns @ref False.
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_inf(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = (x == Inf) || (x == -Inf);
-    @endcode
-
+     Call to `is_inf(x)` is similar to: `(x == Inf) || (x == -Inf)`
 
    @par Example:
 

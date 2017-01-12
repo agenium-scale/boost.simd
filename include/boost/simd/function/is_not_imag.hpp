@@ -16,25 +16,15 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
 
     This function object returns @ref True or @ref False according x is not pure imaginary or is.
 
     For non complex numbers it is @ref True except if x is @ref Zero.
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_not_imag(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = x != 0;
-    @endcode
-
+     Call to `is_not_imag(x)` is similar to: `x != 0`
 
    @par Example:
 

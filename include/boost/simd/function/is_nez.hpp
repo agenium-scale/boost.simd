@@ -16,23 +16,13 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
 
     This function object returns @ref True if x is not equal to @ref Zero else returns @ref False.
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_nez(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = x != 0;
-    @endcode
-
+     Call to `is_nez(x)` is similar to: `x != 0`
 
    @par Example:
 

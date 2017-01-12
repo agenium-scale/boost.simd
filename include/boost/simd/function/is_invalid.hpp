@@ -16,26 +16,13 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicatesq
 
     This function object returns @ref True if x is inf, -inf or nan else returns @ref False
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_invalid(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = x-x != 0;
-    @endcode
-
-    @par Alias:
-    @c is_not_finite
-
+     Call to `is_invalid(x)` is similar to: `x-x != 0`
 
    @par Example:
 

@@ -16,23 +16,13 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
 
     This function object returns @ref True or @ref False according x is nan or not.
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_nan(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = x != x;
-    @endcode
-
+     Call to `is_nan(x)` is similar to: `x != x`
 
    @par Example:
 

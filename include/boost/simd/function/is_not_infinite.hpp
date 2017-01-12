@@ -16,26 +16,13 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
 
     This function object returns @ref True if x is finite or @ref Nan
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_not_infinite(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    if x is of floating type
-      auto r = (x !=  Inf) && (x != -Inf);
-    else
-      auto r = True ;
-    @endcode
-
+     Call to `is_not_infinite(x)` is similar to: `if x is of floating type` auto r = (x !=  Inf) && (x != -Inf);  else  auto r = True ;
 
    @par Example:
 

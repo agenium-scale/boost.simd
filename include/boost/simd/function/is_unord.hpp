@@ -16,23 +16,13 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
 
     This function object returns @ref True if x or y is nan.
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_unord(x,y);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = (x != x) || (y != y);
-    @endcode
-
+     Call to `is_unord(x,y)` is similar to: `(x != x) || (y != y)`
 
    @par Example:
 

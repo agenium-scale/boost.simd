@@ -16,27 +16,13 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
 
     This function object returns @ref True or @ref False according x is normal or not.
 
-    @par Semantic:
+   @par Note
 
-    For x of type T
-
-    @code
-    auto r = is_normal(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = !(is_denormal(x) || is_invalid(x) || is_eqz(a0));
-    @endcode
-
-    @see is_invalid, is_denormal, is_eq
-
+     Call to  For x of type T `is_normal(x)` is similar to: `!(is_denormal(x) || is_invalid(x) || is_eqz(a0))`
 
    @par Example:
 

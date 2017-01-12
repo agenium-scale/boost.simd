@@ -21,22 +21,9 @@ namespace boost { namespace simd
     This function object returns @ref True  or @ref False depending on whether x is
     not less or equal to y or is.
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_not_less_equal(x,y);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = !(x <= y);
-    @endcode
-
-    @par Note:
-
-    Due to existence of nan, this is not equivalent to a call to @ref is_greater
-    for floating types
+     Call to `is_not_less_equal(x,y)` is similar to: `!(x <= y)`
 
    @par Example:
 

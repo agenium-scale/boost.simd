@@ -16,23 +16,13 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
 
     This function object returns @ref True if neither x nor y is @ref Nan.
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_ord(x,y);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = (x == x) && (y == y);
-    @endcode
-
+     Call to `is_ord(x,y)` is similar to: `(x == x) && (y == y)`
 
    @par Example:
 

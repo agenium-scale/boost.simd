@@ -16,27 +16,13 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-reduction
 
     returns @ref True if each vector elements have all bits or no bit set.
 
-    @par Semantic:
+   @par Note
 
-    For every parameter of type T
-
-    @code
-    auto r = is_simd_logical(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = all(x == Allbits || x == Zero);
-    @endcode
-
-    @see mask2logical
-
+     Call to  For every parameter of type T `is_simd_logical(x)` is similar to: `all(x == Allbits || x == Zero)`
 
    @par Example:
 
