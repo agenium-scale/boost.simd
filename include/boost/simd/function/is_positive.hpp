@@ -27,7 +27,8 @@ namespace boost { namespace simd
 
    @par Note
 
-     Call to `is_positive(x)` is similar to: `if x is of signed type` auto r = bitofsign(x) == 0;  else  auto r = True ;
+     Using `is_positive(x)` is similar to `bitofsign(x) == 0`
+     for signed types and is always true for unsigned ones.
 
    @par Example:
 

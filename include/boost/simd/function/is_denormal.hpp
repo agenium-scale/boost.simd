@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
     @par Note
 
-    Call to `is_denormal(x)` is similar to `(x != 0) && (abs(x) < Smallestposval<T>())`
+    Using `is_denormal(x)` is similar to `(x != 0) && (abs(x) < Smallestposval<T>())`
 
     @see Smallestposval
 

@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
    @par Note
 
-     Call to `majority(x,y,z)` is similar to: `(x!= 0)+(y!= 0)+(z!= 0) >= 2`
+     Using `majority(x,y,z)` is similar to: `(x!= 0)+(y!= 0)+(z!= 0) >= 2`
 
     @par Example:
 

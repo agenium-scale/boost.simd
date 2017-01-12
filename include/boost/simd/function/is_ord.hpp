@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
    @par Note
 
-     Call to `is_ord(x,y)` is similar to: `(x == x) && (y == y)`
+     Using `is_ord(x,y)` is similar to: `(x == x) && (y == y)`
 
    @par Example:
 

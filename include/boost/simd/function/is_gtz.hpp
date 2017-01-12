@@ -21,7 +21,7 @@ namespace boost { namespace simd
 
    @par Note
 
-     Call to `is_gtz(x)` is similar to: `x > 0`
+     Using `is_gtz(x)` is similar to: `x > 0`
 
    @par Example:
 

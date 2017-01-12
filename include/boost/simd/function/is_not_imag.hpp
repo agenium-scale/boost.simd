@@ -24,7 +24,7 @@ namespace boost { namespace simd
 
    @par Note
 
-     Call to `is_not_imag(x)` is similar to: `x != 0`
+     Using `is_not_imag(x)` is similar to: `x != 0` for real entries.
 
    @par Example:
 

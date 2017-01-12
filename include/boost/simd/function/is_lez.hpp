@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
    @par Note
 
-     Call to `is_lez(x)` is similar to: `x <= 0`
+     Using `is_lez(x)` is similar to: `x <= 0`
 
    @par Example:
 

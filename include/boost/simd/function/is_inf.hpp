@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
    @par Note
 
-     Call to `is_inf(x)` is similar to: `(x == Inf) || (x == -Inf)`
+     Using `is_inf(x)` is similar to `(x == Inf) || (x == -Inf)`
 
    @par Example:
 

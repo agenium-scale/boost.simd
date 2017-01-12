@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
     @par Note
 
-    Call to `is_finite(x)` is similar to `x-x == Zero`
+    Using `is_finite(x)` is similar to `x-x == Zero`
 
     @par Alias:
     is_not_invalid

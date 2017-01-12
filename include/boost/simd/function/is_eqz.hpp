@@ -20,7 +20,11 @@ namespace boost { namespace simd
     @ingroup group-predicates
     This function object returns @ref True or @ref False according x is @ref Zero or not.
 
-    @see cosh, sinh
+    @par Note
+
+      Using `is_eqz(x = y)` is equivalent to `x == 0`
+
+    @see is_nez, is_lez, is_ltz
 
     @par Example:
 

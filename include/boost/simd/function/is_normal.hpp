@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
    @par Note
 
-     Call to  For x of type T `is_normal(x)` is similar to: `!(is_denormal(x) || is_invalid(x) || is_eqz(a0))`
+     Using  `is_normal(x)` is similar to `!(is_denormal(x) || is_invalid(x) || !(x == 0)`
 
    @par Example:
 

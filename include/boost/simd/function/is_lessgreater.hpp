@@ -22,7 +22,11 @@ namespace boost { namespace simd
 
    @par Note
 
-     Call to `is_lessgreater(x,y)` is similar to: `(x == x) && (y == y) && (x!= y)`
+     Using `is_lessgreater(x,y)` is similar to: `(x == x) && (y == y) && (x!= y)`
+
+   @par Decorators
+
+     - std_ can be used to call std::islessgreater
 
    @par Example:
 

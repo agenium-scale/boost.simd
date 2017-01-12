@@ -23,7 +23,7 @@ namespace boost { namespace simd
 
    @par Note
 
-     Call to `is_not_less_equal(x,y)` is similar to: `!(x <= y)`
+     Using `is_not_less_equal(x,y)` is similar to: `!(x <= y)`
 
    @par Example:
 

@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
    @par Note
 
-     Call to `is_not_greater(x,y)` is similar to: ``
+     Using `is_not_greater(x,y)` is similar to: `!(x > y)`
 
    @par Example:
 

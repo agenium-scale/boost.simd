@@ -23,6 +23,10 @@ namespace boost { namespace simd
 
     Infix notation can be used with operator '>='.
 
+    @par Note
+
+      Using `is_greater_equal(x,y)` is equivalent to `x >= y`
+
     @see  is_greater, is_gtz
 
     @par Example:

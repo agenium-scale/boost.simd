@@ -23,7 +23,7 @@ namespace boost { namespace simd
 
    @par Note
 
-     Call to `is_not_real(x)` is similar to: `False`
+     Using `is_not_real(x)` is similar to: `False` for real inputs.
 
    @par Example:
 

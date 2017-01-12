@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/rsqrt.hpp>
 
-    Call to `rsqrt(x)` is similar to `One(as(x))/sqrt(x)`
+    Using `rsqrt(x)` is similar to `One(as(x))/sqrt(x)`
 
     @par Decorators
 

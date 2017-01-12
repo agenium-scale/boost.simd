@@ -23,7 +23,7 @@ namespace boost { namespace simd
 
     @par Note
 
-    Call to `is_equal_with_equal_nans(x,y)` is similar to `(x == y) || ((x!= x) && (y!= y))`
+    Using `is_equal_with_equal_nans(x,y)` is similar to `(x == y) || ((x!= x) && (y!= y))`
 
     @see Nan
 

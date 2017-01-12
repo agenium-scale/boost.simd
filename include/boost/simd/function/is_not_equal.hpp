@@ -23,7 +23,7 @@ namespace boost { namespace simd
 
    @par Note
 
-     Call to `is_not_equal(x,y)` or `x != y`
+     Using `is_not_equal(x,y)` is equivalent to `x != y`
 
    @par Example:
 

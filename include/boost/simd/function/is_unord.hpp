@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
    @par Note
 
-     Call to `is_unord(x,y)` is similar to: `(x != x) || (y != y)`
+     Using `is_unord(x,y)` is similar to: `(x != x) || (y != y)`
 
    @par Example:
 

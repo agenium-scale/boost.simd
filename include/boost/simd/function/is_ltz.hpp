@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
    @par Note
 
-     Call to `is_ltz(x)` is similar to: `x < 0`
+     Using `is_ltz(x)` is similar to: `x < 0`
 
    @par Example:
 

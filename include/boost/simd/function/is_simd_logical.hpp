@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
    @par Note
 
-     Call to  For every parameter of type T `is_simd_logical(x)` is similar to: `all(x == Allbits || x == Zero)`
+     Using `is_simd_logical(x)` is similar to `all(logical_or(x == Allbits(as(x)), x == Zero(as(x))))`
 
    @par Example:
 

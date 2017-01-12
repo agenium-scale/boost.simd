@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
    @par Note
 
-     Call to `is_not_nan(x)` is similar to: `x == x`
+     Using `is_not_nan(x)` is similar to: `x == x`
 
    @par Example:
 

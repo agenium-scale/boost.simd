@@ -22,7 +22,8 @@ namespace boost { namespace simd
 
    @par Note
 
-     Call to `is_not_infinite(x)` is similar to: `if x is of floating type` auto r = (x !=  Inf) && (x != -Inf);  else  auto r = True ;
+     Using `is_not_infinite(x)` is similar to `(x !=  Inf) && (x != -Inf)` for floating types
+     and is always True for integral types
 
    @par Example:
 

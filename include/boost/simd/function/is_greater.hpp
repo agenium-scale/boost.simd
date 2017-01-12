@@ -21,9 +21,12 @@ namespace boost { namespace simd
     This function object returns @ref True or @ref False according
     x is greater than y or not.
 
+    Infix notation can be used with operator '>'.
+
+
     @par Note
 
-    Infix notation can be used with operator '>'.
+    Using `is_greater(x,y)` is equivalent to `x > y`
 
     @see  is_greater_equal, is_gtz, is_not_less_equal, is_not_less
 

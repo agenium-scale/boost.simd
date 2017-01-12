@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
    @par Note
 
-     Call to `is_odd(x)` is similar to: `is_even(x-One)`
+     Using `is_odd(x)` is similar to: `is_even(x-One(as(x))`
 
    @par Example:
 

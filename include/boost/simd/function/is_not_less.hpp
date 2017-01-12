@@ -18,11 +18,11 @@ namespace boost { namespace simd
  /*!
     @ingroup group-predicates
 
-    TODO Put description here
+    This function object returns  @ref True or @ref False according x is not less than y or not.
 
    @par Note
 
-     Call to `is_not_less(x,y)` is similar to: `!(x < y)`
+     Using `is_not_less(x,y)` is similar to: `!(x < y)`
 
    @par Example:
 
