@@ -12,8 +12,17 @@
 
 #define STF_CUSTOM_DRIVER_FUNCTION simd_test
 #include <stf.hpp>
-
+#include <boost/config.hpp>
 #include <boost/simd/pack.hpp>
+
+// Detect stupid ICC/G++ combos
+#if defined(BOOST_INTEL_GCC_VERSION) && (BOOST_INTEL_GCC_VERSION < 40600)
+#include <boost/range.hpp>
+namespace rg = boost;
+#else
+#include <iterator>
+namespace rg = std;
+#endif
 
 // -------------------------------------------------------------------------------------------------
 // adapt pack for STF testing
