@@ -29,8 +29,8 @@ STF_CASE_TPL("distance", STF_NUMERIC_TYPES)
   auto rng  = aligned_input_range(data);
   auto rng8 = aligned_input_range<8>(data2);
 
-  STF_EQUAL( std::distance(std::begin(rng) , std::end(rng) ), 3 );
-  STF_EQUAL( std::distance(std::begin(rng8), std::end(rng8)), 3 );
+  STF_EQUAL( std::distance(rg::begin(rng) , rg::end(rng) ), 3 );
+  STF_EQUAL( std::distance(rg::begin(rng8), rg::end(rng8)), 3 );
 }
 
 STF_CASE_TPL("iteration", STF_NUMERIC_TYPES)
