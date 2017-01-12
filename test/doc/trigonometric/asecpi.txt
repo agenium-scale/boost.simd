@@ -1,0 +1,8 @@
+//! [asecpi]
+---- simd
+<- pf =           (1, 2, -1, 0.5)
+-> bs::asecpi(pf) = (0, 0.333333, 1, -nan)
+---- scalar
+<- xf =           2
+-> bs::asecpi(xf) = 0.333333
+//! [asecpi]

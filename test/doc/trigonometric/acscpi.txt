@@ -1,0 +1,8 @@
+//! [acscpi]
+---- simd
+<- pf =           (1, 2, -1, 0.5)
+-> bs::acscpi(pf) = (0.5, 0.166667, -0.5, -nan)
+---- scalar
+<- xf =           2
+-> bs::acscpi(xf) = 0.166667
+//! [acscpi]
