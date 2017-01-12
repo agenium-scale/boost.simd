@@ -22,7 +22,7 @@ namespace boost { namespace simd
     @par Notes
     For any given value @c x and @c y of type @c T:
 
-    Call to `min(x, y)` is similar to `(x <  y) ? x : y` which is the standard behaviour.
+    Using `min(x, y)` is similar to `(x <  y) ? x : y` which is the standard behaviour.
 
     With this definition min(x, @ref Nan) should return x...
 

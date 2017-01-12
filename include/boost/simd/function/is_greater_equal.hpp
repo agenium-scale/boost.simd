@@ -18,25 +18,24 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-predicates
-    Function object implementing is_greater_equal capabilities
-
-    Returns @ref True or @ref False according x is greater or equal to y or not.
+    This function object returns @ref True or @ref False
+    according x is greater or equal to y or not.
 
     Infix notation can be used with operator '>='.
 
-    @par Semantic:
+    @par Note
 
-    @code
-    auto r = is_greater_equal(x,y);
-    @endcode
+      Using `is_greater_equal(x,y)` is equivalent to `x >= y`
 
-    is similar to:
+    @see  is_greater, is_gtz
 
-    @code
-    auto r = x >= y;
-    @endcode
+    @par Example:
 
-    @see  is_greater, is_gez
+       @snippet is_greater_equal.cpp is_greater_equal
+
+    @par Possible output:
+
+       @snippet is_greater_equal.txt is_greater_equal
 
   **/
   as_logical_t<Value> is_greater_equal(Value const& x, Value const& y);

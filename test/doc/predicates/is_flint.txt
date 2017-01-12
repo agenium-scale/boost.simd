@@ -1,0 +1,10 @@
+//! [is_flint]
+---- simd
+<- pf =                  (0, 1, -1, -2, 1.4013e-45, inf, -inf, -nan)
+-> bs::is_flint(pf) = (true, true, true, true, false, false, false, false)
+---- scalar
+<- xf =                  1
+-> bs::is_flint(xf) = true
+<- yf =                  1.4013e-45
+-> bs::is_flint(yf) = false
+//! [is_flint]

@@ -16,28 +16,24 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
-    Function object implementing is_less_equal capabilities
 
-    Returns @ref True  or @ref False depending on whether x is
+    This function object returns @ref True  or @ref False depending on whether x is
     less than or equal to y or not.
 
     Infix notation can be used with operator '<='.
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_less_equal(x,y);
-    @endcode
+     Using `is_less_equal(x,y)` is equivalent to `x <= y`
 
-    or
+   @par Example:
 
-    @code
-    auto r = x <= y;
-    @endcode
+     @snippet is_less_equal.cpp is_less_equal
 
-    @see  is_equal, is_eqz
+   @par Possible output:
+
+     @snippet is_less_equal.txt is_less_equal
 
   **/
   as_logical_t<Value> is_less_equal(Value const& x, Value const& y);

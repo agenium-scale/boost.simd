@@ -16,28 +16,22 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
-    Function object implementing is_not_greater capabilities
 
-    Returns @ref True if x is not greater than y else returns @ref False.
+    This function object returns @ref True if x is not greater than y else returns @ref False.
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_not_greater(x,y);
-    @endcode
+     Using `is_not_greater(x,y)` is similar to: `!(x > y)`
 
-    is similar to:
+   @par Example:
 
-    @code
-    auto r = ;
-    @endcode
+     @snippet is_not_greater.cpp is_not_greater
 
-    @par Note:
+   @par Possible output:
 
-    Due to existence of nan, this is not equivalent to is_less_equal(x, y)
-    for floating types
+     @snippet is_not_greater.txt is_not_greater
+
   **/
   as_logical_t<Value> is_not_greater(Value const& x, Value const& y);
 } }

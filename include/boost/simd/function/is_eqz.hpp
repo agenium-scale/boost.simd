@@ -18,21 +18,21 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-predicates
-    Function object implementing is_eqz capabilities
+    This function object returns @ref True or @ref False according x is @ref Zero or not.
 
-    Returns @ref True or @ref False according x is @ref Zero or not.
+    @par Note
 
-    @par Semantic:
+      Using `is_eqz(x = y)` is equivalent to `x == 0`
 
-    @code
-    auto r = is_eqz(x);
-    @endcode
+    @see is_nez, is_lez, is_ltz
 
-    is similar to:
+    @par Example:
 
-    @code
-    auto r = x == 0;
-    @endcode
+       @snippet is_eqz.cpp is_eqz
+
+    @par Possible output:
+
+       @snippet is_eqz.txt is_eqz
 
   **/
   as_logical_t<Value> is_eqz(Value const& x);

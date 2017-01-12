@@ -16,26 +16,22 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
-    Function object implementing is_not_infinite capabilities
 
-    Returns @ref True if x is finite or @ref Nan
+    This function object returns @ref True if x is finite or @ref Nan
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_not_infinite(x);
-    @endcode
+     Using `is_not_infinite(x)` is similar to `(x !=  Inf) && (x != -Inf)` for floating types
+     and is always True for integral types
 
-    is similar to:
+   @par Example:
 
-    @code
-    if x is of floating type
-      auto r = (x !=  Inf) && (x != -Inf);
-    else
-      auto r = True ;
-    @endcode
+     @snippet is_not_infinite.cpp is_not_infinite
+
+   @par Possible output:
+
+     @snippet is_not_infinite.txt is_not_infinite
 
   **/
   as_logical_t<Value> is_not_infinite(Value const& x);

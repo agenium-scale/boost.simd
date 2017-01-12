@@ -18,23 +18,22 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-predicates
-    Function object implementing is_denormal capabilities
+    This function object returns @ref True or @ref False according x is denormal or not.
 
-    Returns @ref True or @ref False according x is denormal or not.
+    @par Note
 
-    @par Semantic:
-
-    @code
-    auto r = is_denormal(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = (x != 0) && (abs(x) < Smallestposval<T>());
-    @endcode
+    Using `is_denormal(x)` is similar to `(x != 0) && (abs(x) < Smallestposval<T>())`
 
     @see Smallestposval
+
+    @par Example:
+
+       @snippet is_denormal.cpp is_denormal
+
+    @par Possible output:
+
+       @snippet is_denormal.txt is_denormal
+
 
   **/
   as_logical_t<Value> is_denormal(Value const& x);

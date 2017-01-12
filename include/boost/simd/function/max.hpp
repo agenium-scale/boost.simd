@@ -23,7 +23,7 @@ namespace boost { namespace simd
     @par Notes
     For any given value @c x and @c y of type @c T:
 
-    Call to `max(x, y)` is similar to `(x > y) ? x : y` which is the standard behaviour.
+    Using `max(x, y)` is similar to `(x > y) ? x : y` which is the standard behaviour.
 
     With this definition max(x, @ref Nan) should return x...
 

@@ -21,7 +21,7 @@ namespace boost { namespace simd
     This function object returns  one minus the entry.
 
     @par Notes
-    Call to `oneminus(x)` is similar to `1-x`
+    Using `oneminus(x)` is similar to `1-x`
 
     @par Decorator
 

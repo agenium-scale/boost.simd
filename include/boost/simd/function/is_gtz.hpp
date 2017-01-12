@@ -16,23 +16,20 @@ namespace boost { namespace simd
 {
 
  /*!
+   @ingroup group-predicates
+   This function object returns @ref True or @ref False according x is greater than @ref Zero or not.
 
-    @ingroup group-predicates
-    Function object implementing is_gtz capabilities
+   @par Note
 
-    Returns @ref True or @ref False according x is greater than @ref Zero or not.
+     Using `is_gtz(x)` is similar to: `x > 0`
 
-    @par Semantic:
+   @par Example:
 
-    @code
-    auto r = is_gtz(x);
-    @endcode
+     @snippet is_gtz.cpp is_gtz
 
-    is similar to:
+   @par Possible output:
 
-    @code
-    auto r = x > 0;
-    @endcode
+     @snippet is_gtz.txt is_gtz
 
   **/
   as_logical_t<Value> is_gtz(Value const& x);

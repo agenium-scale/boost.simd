@@ -16,7 +16,7 @@ namespace boost { namespace simd
 {
 /*!
       @ingroup group-bitwise
-      Function object function implementing bitwise_cast capabilities
+      This function object function implementing bitwise_cast capabilities
 
       Performs a bit-preserving cast of its parameters into an arbitrary
       type @c Target.
