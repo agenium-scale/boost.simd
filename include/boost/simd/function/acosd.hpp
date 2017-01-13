@@ -16,38 +16,26 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing acosd capabilities
+    This function object returns the inverse cosine in degree.
 
-    inverse cosine in degree.
+      @par Decorators
 
-    @par Semantic:
-
-    For every parameter of floating type
-
-    @code
-    auto r = acosd(x);
-    @endcode
-
-    is similar to
-
-    @code
-    auto r = indeg(acos(x));
-    @endcode
-
-    Returns the arc @c r in the interval
-    \f$[0, 180[\f$ such that <tt>cosd(r) == x</tt>.
-    If @c x is outside \f$[-1, 1[\f$ the result is @ref Nan.
-
-    @par Decorators
-
-    - pedantic_     is similar to indeg(pedantic_)(acos(x));
+       - pedantic_     is similar to indeg(pedantic_)(acos(x));
 
       @see acos, acospi, cosd, indeg
 
+
+      @par Example:
+
+        @snippet acosd.cpp acosd
+
+      @par Possible output:
+
+        @snippet acosd.txt acosd
+
   **/
-  Value acosd(Value const & v0);
+  Value acosd(Value const & x);
 } }
 #endif
 

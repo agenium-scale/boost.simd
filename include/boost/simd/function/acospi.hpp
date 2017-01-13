@@ -16,40 +16,26 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing acospi capabilities
+    This function object returns the inverse cosine in \f$\pi\f$ multiples.
 
-    inverse cosine in \f$\pi\f$ multiples.
+      @par Decorators
 
-    @par Semantic:
+       - pedantic_     is similar to Invpi<T>*pedantic_(acos)(x);
 
-    For every parameter of floating type
+      @see acos, acospi, cosd
 
-    @code
-    auto r = acospi(x);
-    @endcode
 
-    is similar to
+      @par Example:
 
-    @code
-    auto r = Invpi<T>*acos(x);
-    @endcode
+        @snippet acospi.cpp acospi
 
-    Returns the arc @c r in the interval
-    \f$[0, 1[\f$ such that <tt>cospi(r) == x</tt>.
-    If @c x is outside \f$[-1, 1[\f$ the result is Nan.
+      @par Possible output:
 
-    @par Decorators
-
-    - pedantic_     is similar to Invpi<T>*pedantic_(acos)(x);
-
-      @see acos, acospi, cosd,  Invpi
-
-      @see acosd, acos, cospi
+        @snippet acospi.txt acospi
 
   **/
-  Value acospi(Value const & v0);
+  Value acospi(Value const & x);
 } }
 #endif
 

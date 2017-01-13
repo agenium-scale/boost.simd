@@ -16,21 +16,29 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing cosd capabilities
+    This function object returns the cosine of the input in degree:
+    \f$\cos(\pi x/180)\f$.
 
-    cosine of the input in degree: \f$\cos(\pi x/180)\f$.
+   @par Note
 
-    @par Semantic:
+     - The semantics of the function are similar to cos ones.
+     See cos for further details
 
-    The semantics of the function are similar to @ref cos ones.
-    see @ref cos for further details
 
-    @see sincosd, cos, cospi
+   @see sincosd, cos, cospi
+
+
+   @par Example:
+
+     @snippet cosd.cpp cosd
+
+   @par Possible output:
+
+     @snippet cosd.txt cosd
 
   **/
-  Value cosd(Value const & v0);
+  Value cosd(Value const & x);
 } }
 #endif
 

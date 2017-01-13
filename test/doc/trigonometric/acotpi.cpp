@@ -6,7 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-//! [sincosd]
+//! [acotpi]
 #include <boost/simd/trigonometric.hpp>
 #include <boost/simd/pack.hpp>
 #include <iostream>
@@ -18,25 +18,18 @@ using pack_ft = bs::pack <float, 4>;
 int main()
 {
   pack_ft pf = {1.0f, 2.0f, -1.0f, 0.5f};
-  pack_ft ps, pc;
-  std::tie(ps, pc) =  bs::sincosd(pf);
+
   std::cout
     << "---- simd" << '\n'
     << "<- pf =           " << pf << '\n'
-    << "-> std::tie(ps, pc) =  bs::sincosd(pf) " << '\n'
-    << "-> ps =  " << ps <<  '\n'
-    << "-> pc =  " << pc << '\n';
+    << "-> bs::acotpi(pf) = " << bs::acotpi(pf) << '\n';
 
   float xf = 2.0f;
-  float s, c;
-  std::tie(s, c) = bs::sincosd(xf);
 
   std::cout
     << "---- scalar"  << '\n'
     << "<- xf =           " << xf << '\n'
-    << "-> std::tie(s, c) = bs::sincosd(xf) = " << '\n'
-    << "-> s =  " << s <<  '\n'
-    << "-> c =  " << c << '\n';
+    << "-> bs::acotpi(xf) = " << bs::acotpi(xf) << '\n';
   return 0;
 }
-//! [sincosd]
+//! [acotpi]

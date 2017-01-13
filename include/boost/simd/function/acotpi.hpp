@@ -16,27 +16,28 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing acotpi capabilities
+    This function object returns the inverse cotangent in pi multiples.
 
-    inverse cotangent in pi multiples.
+   @par Note
 
-    @par Semantic:
+      For every parameter of floating type `acotpi(x)`
+      returns the arc @c r in the interval  \f$[0, 1[\f$ such
+      that <tt>cotpi(r) == x</tt>.
 
-    For every parameter of floating type
+   @see acot, acotd, cotpi
 
-    @code
-    auto r = acotpi(x);
-    @endcode
 
-    Returns the arc @c r in the interval
-    \f$[0, 1[\f$ such that <tt>cotpi(r) == x</tt>.
+   @par Example:
 
-    @see acot, acotd, cotpi
+     @snippet acotpi.cpp acotpi
+
+   @par Possible output:
+
+     @snippet acotpi.txt acotpi
 
   **/
-  Value acotpi(Value const & v0);
+  Value acotpi(Value const & x);
 } }
 #endif
 

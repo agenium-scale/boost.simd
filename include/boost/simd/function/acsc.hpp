@@ -16,24 +16,22 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing acsc capabilities
+    This function object returns the inverse cosecant in radian: \f$\arcsin(1/x)\f$.
 
-    inverse cosecant in radian: \f$\arcsin(1/x)\f$.
+   @see acscd, acscpi, asin, asin, sin, rec
 
-    @par Semantic:
 
-    For every parameter of floating type
+   @par Example:
 
-    @code
-    auto r = acsc(x);
-    @endcode
+     @snippet acsc.cpp acsc
 
-    @see acscd, acscpi, asin, asin, sin, rec
+   @par Possible output:
+
+     @snippet acsc.txt acsc
 
   **/
-  Value acsc(Value const & v0);
+  Value acsc(Value const & x);
 } }
 #endif
 

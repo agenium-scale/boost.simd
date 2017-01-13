@@ -16,27 +16,28 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing csc capabilities
+    This function object returns the cosecante of the input in radian : \f$1/\sin(x)\f$.
 
-    cosecante of the input in radian : \f$\sin(1/x)\f$.
+   @par Note
 
-    @par Semantic:
+      As most other trigonometric function csc can be called
+      with a second optional parameter  which is a tag on
+      speed and accuracy (see @ref cos for further details)
 
-    For every parameter of floating type
+      @see cscd, cscpi,
 
-    @code
-    auto r = csc(x);
-    @endcode
 
-    As most other trigonometric function csc can be called with a second optional parameter
-    which is a tag on speed and accuracy (see @ref cos for further details)
+   @par Example:
 
-    @see cscd, cscpi,
+     @snippet csc.cpp csc
+
+   @par Possible output:
+
+     @snippet csc.txt csc
 
   **/
-  Value csc(Value const & v0);
+  Value csc(Value const & x);
 } }
 #endif
 

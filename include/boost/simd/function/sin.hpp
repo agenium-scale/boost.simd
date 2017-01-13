@@ -16,27 +16,28 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing sin capabilities
+    This function object returns the sine of the input in radians.
 
-    sine of the input in radians.
+   @par Note
 
-    @par Semantic:
+      As most other trigonometric function sin can be called with a second
+      optional parameter  which is a tag on speed and accuracy
+      (see @ref cos for further details)
 
-    For every parameter of floating type
+   @see sincos, sind, sinpi
 
-    @code
-    auto r = sin(x);
-    @endcode
 
-    As most other trigonometric function sin can be called with a second optional parameter
-    which is a tag on speed and accuracy (see @ref cos for further details)
+   @par Example:
 
-    @see sincos, sind, sinpi
+     @snippet sin.cpp sin
+
+   @par Possible output:
+
+     @snippet sin.txt sin
 
   **/
-  Value sin(Value const & v0);
+  Value sin(Value const & x);
 } }
 #endif
 

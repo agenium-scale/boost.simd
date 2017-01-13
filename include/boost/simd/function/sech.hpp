@@ -18,7 +18,7 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-hyperbolic
-    This function object returns the hyperbolic secant: \f$1/\cosh(1/x)\f$.
+    This function object returns the hyperbolic secant: \f$1/\cosh(x)\f$.
 
 
     @see cosh, sinh, tanh, csch, sinhcosh

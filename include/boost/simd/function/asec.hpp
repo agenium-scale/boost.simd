@@ -16,21 +16,18 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing asec capabilities
+    This function object returns the inverse secant in radian: \f$\arccos(1/x)\f$.
 
-    inverse secant in radian: \f$\arccos(1/x)\f$.
+   @see asecd, asecpi
 
-    @par Semantic:
+   @par Example:
 
-    For every parameter of floating type T
+     @snippet asec.cpp asec
 
-    @code
-    auto r = asec(x);
-    @endcode
+   @par Possible output:
 
-    @see asecd, asecpi, sec, cos
+     @snippet asec.txt asec
 
   **/
   Value asec(Value const & x);

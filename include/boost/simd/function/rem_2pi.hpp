@@ -16,35 +16,27 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing rem_2pi capabilities
+    This function object returns the compute the remainder modulo \f$2\pi\f$.
 
-    compute the remainder modulo \f$2\pi\f$.
 
-    the result is in \f$[-\pi, \pi]\f$. If the input
-    is near \f$\pi\f$ the output can be \f$\pi\f$ or \f$-\pi\f$
-    depending
-    on register disponibility if extended arithmetic is used.
+    @par Note
 
-    @par Semantic:
+     - The result is in \f$[-\pi, \pi]\f$.
 
-    For every parameter of floating type T
+     - If the input is near \f$\pi\f$ the output can be \f$\pi\f$ or \f$-\pi\f$
+      depending  on register disponibility if extended arithmetic is used.
 
-    @code
-    T r = rem_2pi(x);
-    @endcode
+   @par Example:
 
-    is similar to:
+     @snippet rem_2pi.cpp rem_2pi
 
-    @code
-    T r = remainder(x, Twopi<T>());
-    @endcode
+   @par Possible output:
 
-    @see rem_pio2, rem_pio2_straight, rem_pio2_cephes,  rem_pio2_medium,
+     @snippet rem_2pi.txt rem_2pi
 
   **/
-  Value rem_2pi(Value const & v0);
+  Value rem_2pi(Value const & x);
 } }
 #endif
 

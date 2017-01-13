@@ -16,27 +16,28 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing sind capabilities
+    This function object returns the sine of the angle in degree:
+    \f$\sin(\pi x/180)\f$.
 
-    sine of the angle in degree: \f$\sin(\pi x/180)\f$.
+   @par Note
 
-    @par Semantic:
+     As most other trigonometric function sind can be called
+     with a second optional parameter  which is a tag on speed and accuracy
+     (see @ref cos for further details)
 
-    For every parameter of floating type T
+   see sincosd, sin, sinpi
 
-    @code
-    T r = sind(x);
-    @endcode
+   @par Example:
 
-    @see sincosd, sin, sinpi
+     @snippet sind.cpp sind
 
-    As most other trigonometric function sind can be called with a second optional parameter
-    which is a tag on speed and accuracy (see @ref cos for further details)
+   @par Possible output:
+
+     @snippet sind.txt sind
 
   **/
-  Value sind(Value const & v0);
+  Value sind(Value const & x);
 } }
 #endif
 

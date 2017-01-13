@@ -16,24 +16,22 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing sec capabilities
+    This function object returns the secant of the angle in radian: \f$1/\cos(x)\f$.
 
-    secant of the angle in radian: \f$1/\cos(x)\f$.
+    @see cos, secd, secpi
 
-    @par Semantic:
 
-    For every parameter of floating type
+   @par Example:
 
-    @code
-    auto r = sec(x);
-    @endcode
+     @snippet sec.cpp sec
 
-    @see cos, secd, secpi, rec
+   @par Possible output:
+
+     @snippet sec.txt sec
 
   **/
-  Value sec(Value const & v0);
+  Value sec(Value const & x);
 } }
 #endif
 

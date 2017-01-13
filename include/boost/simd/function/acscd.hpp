@@ -16,24 +16,24 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing acscd capabilities
+    This function object returns the inverse cosecant in degree:
+    \f$(180/\pi) \arcsin(1/x)\f$.
 
-    inverse cosecant in degree: \f$(180/\pi) \arcsin(1/x)\f$.
+    @see acsc, accscpi
 
-    @par Semantic:
 
-    For every parameter of floating type
 
-    @code
-    auto r = acscd(x);
-    @endcode
+   @par Example:
 
-    @see acsc, acscpi, asind, sind
+     @snippet acscd.cpp acscd
+
+   @par Possible output:
+
+     @snippet acscd.txt acscd
 
   **/
-  Value acscd(Value const & v0);
+  Value acscd(Value const & x);
 } }
 #endif
 

@@ -16,26 +16,27 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing asind capabilities
+    This function object returns the inverse sine in degree.
 
-    inverse sine in degree.
+   @par Note
 
-    @par Semantic:
+      For every parameter of floating type `asind(x)`
+      returns the arc @c r in the interval  \f$[-90, 90[\f$ such that
+      <tt>sin(r) == x</tt>.  If @c x is outside \f$[-1, 1[\f$ the result is Nan.
 
-    For every parameter of floating type
+   @see asin,  asinpi
 
-    @code
-    auto r = asind(x);
-    @endcode
+   @par Example:
 
-    Returns the arc @c r in the interval
-    \f$[-90, 90[\f$ such that <tt>sin(r) == x</tt>.
-    If @c x is outside \f$[-1, 1[\f$ the result is Nan.
+     @snippet asind.cpp asind
+
+   @par Possible output:
+
+     @snippet asind.txt asind
 
   **/
-  Value asind(Value const & v0);
+  Value asind(Value const & x);
 } }
 #endif
 

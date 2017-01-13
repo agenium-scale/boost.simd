@@ -7,6 +7,6 @@
 ---- scalar
 <- xf =           2
 -> std::tie(s, c) = bs::sincosd(xf) =
--> s =  0
--> c =  0
+-> s =  0.0348995
+-> c =  0.999391
 //! [sincosd]

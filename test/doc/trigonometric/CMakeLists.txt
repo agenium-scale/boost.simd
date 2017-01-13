@@ -14,6 +14,7 @@ SET( SOURCES
     acospi.cpp
     acot.cpp
     acotd.cpp
+    acotpi.cpp
     acscd.cpp
     acscpi.cpp
     acsc.cpp
