@@ -22,10 +22,7 @@
 # include <boost/range.hpp>
 
 namespace stf {
-  namespace rg {
-    using boost::begin;
-    using boost::end;
-  }
+ namespace type_traits = boot;
  namespace detail {
   using boost::declval;
   using nullptr_t = decltype(nullptr);
@@ -45,17 +42,14 @@ namespace stf {
 #else
 # include <utility>
 # include <iterator>
-namespace stf { 
-  namespace rg {
-    using std::begin;
-    using std::end;
-  }
-  namespace detail {
+namespace stf {
+ namespace type_traits = std;
+ namespace detail {
   using std::declval;
   using nullptr_t = std::nullptr_t;
   using std::shuffle;
 #endif
-  }
+ }
 }
 
 namespace stf
@@ -376,11 +370,11 @@ namespace stf { namespace detail
     static auto test( int ) -> decltype ( declval<U>().begin()
                                         , declval<U>().end()
                                         , declval<U>().size()
-                                        , std::true_type()
+                                        , type_traits::true_type()
                                         );
     template<typename>
-    static auto test( ... ) -> std::false_type;
-    typedef std::is_same<decltype(test<T>(0)),std::true_type> type;
+    static auto test( ... ) -> type_traits::false_type;
+    typedef std::is_same<decltype(test<T>(0)),type_traits::true_type> type;
   };
   template <typename T, typename R>
   using if_container = typename std::enable_if<is_container<T>::type::value,R>::type;
@@ -426,11 +420,11 @@ namespace stf { namespace detail
   {
     template<typename U>
     static auto test( int ) -> decltype ( std::cout << declval<U>()
-                                        , std::true_type()
+                                        , type_traits::true_type()
                                         );
     template<typename>
-    static auto test( ... ) -> std::false_type;
-    typedef std::is_same<decltype(test<T>(0)),std::true_type> type;
+    static auto test( ... ) -> type_traits::false_type;
+    typedef std::is_same<decltype(test<T>(0)),type_traits::true_type> type;
   };
   template <typename T, typename R>
   using if_streamable = typename std::enable_if<is_streamable<T>::type::value,R>::type;
