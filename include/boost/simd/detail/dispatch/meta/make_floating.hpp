@@ -19,6 +19,8 @@
 
 namespace boost { namespace dispatch
 {
+  namespace bm = boost::nsm;
+
   namespace detail
   {
     template< std::size_t Size, typename Transform>
@@ -27,13 +29,13 @@ namespace boost { namespace dispatch
       static_assert ( Size <= sizeof(double)
                     , "boost::dispatch::make_floating: can't generate type of given Size"
                     );
-      using type = nsm::apply<Transform,float>;
+      using type = bm::apply<Transform,float>;
     };
 
     template<typename Transform>
     struct make_floating<sizeof(double),Transform>
     {
-      using type = nsm::apply<Transform,double>;
+      using type = bm::apply<Transform,double>;
     };
   }
 
@@ -47,11 +49,11 @@ namespace boost { namespace dispatch
     @tparam Size      Size in bytes of the requested type
     @tparam Transform Optional unary meta-function to apply to the generated type
   **/
-  template<std::size_t Size, typename Transform = nsm::identity<nsm::_1>>
+  template<std::size_t Size, typename Transform = bm::identity<bm::_1>>
   struct make_floating : detail::make_floating<Size,Transform>
   {};
 
-  template<std::size_t Size, typename Transform = nsm::identity<nsm::_1>>
+  template<std::size_t Size, typename Transform = bm::identity<bm::_1>>
   using make_floating_t = typename make_floating<Size,Transform>::type;
 } }
 

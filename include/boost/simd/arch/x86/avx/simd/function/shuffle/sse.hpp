@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_SHUFFLE_SSE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_SHUFFLE_SSE_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/shuffle.hpp>
 #include <boost/simd/detail/dispatch/meta/as_floating.hpp>
 #include <type_traits>
@@ -16,6 +17,8 @@
 namespace boost { namespace simd { namespace detail
 {
  namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
+
 
  // ---------------------------------------------------------------------------------------------
   // AVX shuffling for SSE register
@@ -28,10 +31,10 @@ namespace boost { namespace simd { namespace detail
     // -------------------------------------------------------------------------------------------
     // Check if permutaton its into mm_permute_p*
     template<int I0, int I1>
-    struct permute2 : nsm::bool_<(I0!=-1) && (I1!=-1)> {};
+    struct permute2 : bm::bool_<(I0!=-1) && (I1!=-1)> {};
 
     template<int I0, int I1, int I2, int I3>
-    struct permute4 : nsm::bool_<(I0!=-1) && (I1!=-1) && (I2!=-1) && (I3!=-1)> {};
+    struct permute4 : bm::bool_<(I0!=-1) && (I1!=-1) && (I2!=-1) && (I3!=-1)> {};
 
     // -------------------------------------------------------------------------------------------
     // Unary process for 2x64 registers

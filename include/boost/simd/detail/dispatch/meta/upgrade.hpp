@@ -20,16 +20,18 @@
 
 namespace boost { namespace dispatch
 {
+  namespace bm = boost::nsm;
+
   namespace detail
   {
     // Use this map to transform to upgraded type
-    using upgrade_map = nsm::map< nsm::pair<std::uint8_t  , std::uint16_t >
-                                    , nsm::pair<std::uint16_t , std::uint32_t >
-                                    , nsm::pair<std::uint32_t , std::uint64_t >
-                                    , nsm::pair<std::uint64_t , std::uint64_t >
-                                    , nsm::pair<float         , double        >
-                                    , nsm::pair<double        , double        >
-                                    >;
+    using upgrade_map = bm::map< bm::pair<std::uint8_t  , std::uint16_t >
+                                 , bm::pair<std::uint16_t , std::uint32_t >
+                                 , bm::pair<std::uint32_t , std::uint64_t >
+                                 , bm::pair<std::uint64_t , std::uint64_t >
+                                 , bm::pair<float         , double        >
+                                 , bm::pair<double        , double        >
+                                 >;
 
     template<typename T,typename Sign>
     struct upgrade : boost::dispatch::detail::updowngrade<T, Sign,upgrade_map,true>
@@ -53,7 +55,7 @@ namespace boost { namespace dispatch
   using upgrade_t = typename upgrade<T,Sign>::type;
 
   template<typename T>
-  struct is_upgradable : nsm::bool_<!std::is_same<T, typename upgrade<T>::type>::value>
+  struct is_upgradable : bm::bool_<!std::is_same<T, typename upgrade<T>::type>::value>
   {};
 } }
 

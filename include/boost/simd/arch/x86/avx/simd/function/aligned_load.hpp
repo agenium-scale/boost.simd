@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_ALIGNED_LOAD_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_ALIGNED_LOAD_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/detail/dispatch/adapted/common/pointer.hpp>
@@ -23,6 +24,8 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = ::boost::dispatch;
+  namespace bm = boost::nsm;
+
   namespace bs = ::boost::simd;
 
   //------------------------------------------------------------------------------------------------
@@ -103,7 +106,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE target operator() ( Pointer p, Misalignment const&, Target const& ) const
     {
-      return do_(p, nsm::bool_<unalignment != 0>());
+      return do_(p, bm::bool_<unalignment != 0>());
     }
 
     BOOST_FORCEINLINE target do_( Pointer p, std::true_type const& ) const

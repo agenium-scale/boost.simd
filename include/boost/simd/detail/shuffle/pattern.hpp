@@ -17,6 +17,7 @@
 
 namespace boost { namespace simd
 {
+  namespace bm = boost::nsm;
   // -----------------------------------------------------------------------------------------------
   // normalized const-expr pattern holder - prevent MSVC 2016 shenanigans with 0
   template<int (*M)(int,int)> struct pattern {};
@@ -37,10 +38,10 @@ namespace boost { namespace simd
     template<typename M, typename C, typename L> struct make_meta_pattern;
 
     template<typename M, typename C, typename P>
-    struct idx : nsm::apply<M, P, C>::type {};
+    struct idx : bm::apply<M, P, C>::type {};
 
     template<typename M, typename C, typename... Ps>
-    struct make_meta_pattern<M, C, nsm::list<Ps...> >
+    struct make_meta_pattern<M, C, bm::list<Ps...> >
     {
       using type = pattern_< idx<M,C,Ps>::value... >;
     };
@@ -49,7 +50,7 @@ namespace boost { namespace simd
     struct meta_pattern
     {
       using card = cardinal_of<T>;
-      using type = typename make_meta_pattern<M, card, nsm::range<int,0,card::value>>::type;
+      using type = typename make_meta_pattern<M, card, bm::range<int,0,card::value>>::type;
     };
 
     // -----------------------------------------------------------------------------------------------
@@ -57,7 +58,7 @@ namespace boost { namespace simd
     template<int (*M)(int,int), typename C, typename L> struct make_const_pattern;
 
     template<int (*M)(int,int), typename C, typename... Ps>
-    struct make_const_pattern<M, C, nsm::list<Ps...> >
+    struct make_const_pattern<M, C, bm::list<Ps...> >
     {
       using type = pattern_< M(Ps::value,C::value)... >;
     };
@@ -66,7 +67,7 @@ namespace boost { namespace simd
     struct meta_pattern<pattern<M>,T>
     {
       using card = cardinal_of<T>;
-      using type = typename make_const_pattern<M, card, nsm::range<int,0,card::value>>::type;
+      using type = typename make_const_pattern<M, card, bm::range<int,0,card::value>>::type;
     };
   } }
 }

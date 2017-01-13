@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_INTERLEAVE_FIRST_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_INTERLEAVE_FIRST_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/function/combine.hpp>
@@ -18,6 +19,8 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
+
   namespace bs = boost::simd;
 
 
@@ -43,19 +46,19 @@ namespace boost { namespace simd { namespace ext
     }
 
     template<typename K, typename... N> static BOOST_FORCEINLINE
-    T do_( T const& x, T const& y, K const&, nsm::list<N...> const&) BOOST_NOEXCEPT
+    T do_( T const& x, T const& y, K const&, bm::list<N...> const&) BOOST_NOEXCEPT
     {
-      return T( value<N>(x,y, nsm::bool_<N::value%2==0>{})... );
+      return T( value<N>(x,y, bm::bool_<N::value%2==0>{})... );
     }
 
     template<typename K, typename N> static BOOST_FORCEINLINE
-    T do_( T const& x, T const&, K const&, nsm::list<N> const&) BOOST_NOEXCEPT
+    T do_( T const& x, T const&, K const&, bm::list<N> const&) BOOST_NOEXCEPT
     {
       return x;
     }
 
     template<typename... N> static BOOST_FORCEINLINE
-    T do_( T const& x, T const& y, aggregate_storage const&, nsm::list<N...> const&) BOOST_NOEXCEPT
+    T do_( T const& x, T const& y, aggregate_storage const&, bm::list<N...> const&) BOOST_NOEXCEPT
     {
       auto const& x0 = x.storage()[0];
       auto const& y0 = y.storage()[0];
@@ -68,7 +71,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE T operator()(T const& x, T const& y) const BOOST_NOEXCEPT
     {
       return do_(x,y, typename T::traits::storage_kind{}
-                    , nsm::range<std::size_t, 0, T::static_size>{}
+                    , bm::range<std::size_t, 0, T::static_size>{}
                 );
     }
   };

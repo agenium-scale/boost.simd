@@ -11,6 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_SATURATE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_SATURATE_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/as.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/constant/valmin.hpp>
@@ -28,6 +29,8 @@ namespace boost { namespace simd { namespace ext
 {
   // floating -> floating
   namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
+
   BOOST_DISPATCH_OVERLOAD ( saturate_
                           , (typename A0, typename T)
                           , bd::cpu_
@@ -38,7 +41,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, T const& ) const BOOST_NOEXCEPT
     {
       return impl( a0
-                   , nsm::bool_< (sizeof(bd::scalar_of_t<typename T::type>)
+                   , bm::bool_< (sizeof(bd::scalar_of_t<typename T::type>)
                                              <sizeof(bd::scalar_of_t<A0>))>()
                    );
     }
@@ -82,10 +85,10 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, T const& ) const BOOST_NOEXCEPT
     {
       return impl( a0
-                   , typename nsm::or_< typename std::is_same< bd::scalar_of_t<typename T::type>
+                   , typename bm::or_< typename std::is_same< bd::scalar_of_t<typename T::type>
                                                          , bd::scalar_of_t<A0>
                                                         >::type
-                                           , nsm::bool_< (sizeof(bd::scalar_of_t<typename T::type>)
+                                           , bm::bool_< (sizeof(bd::scalar_of_t<typename T::type>)
                                                              > sizeof(bd::scalar_of_t<A0>))
                                                            >
                                           >::type()
@@ -117,7 +120,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, T const& ) const BOOST_NOEXCEPT
     {
       return impl( a0
-                   , nsm::bool_< (sizeof(bd::scalar_of_t<typename T::type>)
+                   , bm::bool_< (sizeof(bd::scalar_of_t<typename T::type>)
                                       >= sizeof(bd::scalar_of_t<A0>))
                                    >()
                    );
@@ -163,7 +166,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, T const& ) const BOOST_NOEXCEPT
     {
       return impl( a0
-                   , nsm::bool_< (sizeof(bd::scalar_of_t<typename T::type>)
+                   , bm::bool_< (sizeof(bd::scalar_of_t<typename T::type>)
                                       >= sizeof(bd::scalar_of_t<A0>))
                                    >()
                    );

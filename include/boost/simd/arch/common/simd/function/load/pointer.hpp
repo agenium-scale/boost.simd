@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LOAD_POINTER_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LOAD_POINTER_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/combine.hpp>
 #include <boost/simd/detail/dispatch/adapted/common/pointer.hpp>
@@ -16,6 +17,8 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = ::boost::dispatch;
+  namespace bm = boost::nsm;
+
   namespace bs = ::boost::simd;
 
   //------------------------------------------------------------------------------------------------
@@ -38,7 +41,7 @@ namespace boost { namespace simd { namespace ext
 
     // Aggregate case: fill in the storage by calling load twice
     template<typename... N> static BOOST_FORCEINLINE
-    target_t do_(Pointer p, aggregate_storage const&, nsm::list<N...> const&) BOOST_NOEXCEPT
+    target_t do_(Pointer p, aggregate_storage const&, bm::list<N...> const&) BOOST_NOEXCEPT
     {
       return combine( load<typename storage_t::value_type>(p)
                     , load<typename storage_t::value_type>(p+target_t::traits::element_size)
@@ -47,7 +50,7 @@ namespace boost { namespace simd { namespace ext
 
     // Other case: Fill a pack piecewise
     template<typename K, typename... N> static BOOST_FORCEINLINE
-    target_t do_(Pointer p, K const&, nsm::list<N...> const&) BOOST_NOEXCEPT
+    target_t do_(Pointer p, K const&, bm::list<N...> const&) BOOST_NOEXCEPT
     {
       return target_t(static_cast<typename target_t::value_type>(p[N::value])...);
     }

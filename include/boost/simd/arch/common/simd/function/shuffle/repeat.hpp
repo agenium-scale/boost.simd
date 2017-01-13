@@ -17,15 +17,16 @@
 
 namespace boost { namespace simd
 {
+  namespace bm  = boost::nsm;
   namespace detail
   {
     // ---------------------------------------------------------------------------------------------
     // Is this a half-repeat pattern ?
     template<int P0, int... Ps>
     struct  is_repeat
-          : std::is_same< nsm::integral_list<int,P0,Ps...>
-                        , nsm::append < nsm::range<int,P0,P0+(sizeof...(Ps)+1)/2>
-                                          , nsm::range<int,P0,P0+(sizeof...(Ps)+1)/2>
+          : std::is_same< bm::integral_list<int,P0,Ps...>
+                        , bm::append < bm::range<int,P0,P0+(sizeof...(Ps)+1)/2>
+                                          , bm::range<int,P0,P0+(sizeof...(Ps)+1)/2>
                                           >
                         >
     {};

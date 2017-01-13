@@ -19,12 +19,13 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
   namespace bs = boost::simd;
 
   BOOST_DISPATCH_OVERLOAD_IF( bitwise_or_
                             , (typename A0,typename A1,typename X, typename Y)
-                            , (nsm::and_< nsm::not_ < std::is_same<A0,A1> >
-                                            , nsm::and_ < detail::is_native<X>
+                            , (bm::and_< bm::not_ < std::is_same<A0,A1> >
+                                            , bm::and_ < detail::is_native<X>
                                                             , detail::is_native<Y>
                                                             >
                                             >

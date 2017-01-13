@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SHUFFLE_DEINTERLEAVE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_SHUFFLE_DEINTERLEAVE_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/function/deinterleave_first.hpp>
 #include <boost/simd/function/deinterleave_second.hpp>
 #include <boost/simd/detail/nsm.hpp>
@@ -16,6 +17,7 @@
 
 namespace boost { namespace simd
 {
+  namespace bm  = boost::nsm;
   // -----------------------------------------------------------------------------------------------
   // Deinterleaving pattern hierarchy
   template<int FirstSecond, bool HasZero, bool Forward, typename P>
@@ -31,7 +33,7 @@ namespace boost { namespace simd
     template<int I, bool SZ, typename Range> struct deinter_;
 
     template<int I, bool SZ, typename... Ps>
-    struct deinter_<I,SZ, nsm::list<Ps...>>
+    struct deinter_<I,SZ, bm::list<Ps...>>
     {
       using sz    = std::integral_constant<int,sizeof...(Ps)/2>;
       using type  = detail::pattern_< ((SZ && Ps::value>=sz::value) ? -1 :  2*Ps::value+I)...>;
@@ -46,35 +48,35 @@ namespace boost { namespace simd
     {
       using ref = boost::simd::detail::pattern_<Ps...>;
       using sz  = std::integral_constant<int,sizeof...(Ps)/2>;
-      using lo  = nsm::range<int,0,sz::value>;
-      using hi  = nsm::range<int,sz::value,2*sz::value>;
-      using fwd = nsm::append<lo,hi>;
-      using bwd = nsm::append<hi,lo>;
+      using lo  = bm::range<int,0,sz::value>;
+      using hi  = bm::range<int,sz::value,2*sz::value>;
+      using fwd = bm::append<lo,hi>;
+      using bwd = bm::append<hi,lo>;
 
       template<int FS, bool SZ, typename Rng>
-      using case_ = nsm::pair < deinter_t<FS,SZ,Rng>
+      using case_ = bm::pair < deinter_t<FS,SZ,Rng>
                                   , deinterleave_pattern<FS,SZ,std::is_same<Rng,fwd>::value,ref>
                                   >;
 
-      using dmap  = nsm::map
+      using dmap  = bm::map
                   < case_<0,false,fwd>, case_<0,true ,fwd>, case_<0,false,bwd>, case_<0,true ,bwd>
                   , case_<1,false,fwd>, case_<1,true ,fwd>, case_<1,false,bwd>, case_<1,true ,bwd>
                   >;
 
-      using type = nsm::at<dmap,ref>;
+      using type = bm::at<dmap,ref>;
     };
 
     // MSVC provision - MSVC seems to eagerly instantiate find_deinterleave even for cardinal-1
     template<int P0> struct find_deinterleave<P0>
     {
-      using type = nsm::no_such_type_;
+      using type = bm::no_such_type_;
     };
 
     // ---------------------------------------------------------------------------------------------
     // Check if pattern performs some deinterleaving operations (0=first,1=second)
     template<int... Ps>
     struct  is_deinterleave
-          : nsm::bool_<   !std::is_same < nsm::no_such_type_
+          : bm::bool_<   !std::is_same < bm::no_such_type_
                                             , typename find_deinterleave<Ps...>::type
                                             >::value
                           >

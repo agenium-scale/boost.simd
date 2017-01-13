@@ -25,22 +25,23 @@ namespace boost { namespace simd
 
   namespace detail
   {
+    namespace bm  = boost::nsm;
     // ---------------------------------------------------------------------------------------------
     // Generate a bunch of -1
     template<typename L> struct make_zero;
 
     template<typename... T>
-    struct make_zero<nsm::list<T...>>
+    struct make_zero<bm::list<T...>>
     {
-      using type = nsm::integral_list<int, (sizeof(T)!=0?-1:1)...>;
+      using type = bm::integral_list<int, (sizeof(T)!=0?-1:1)...>;
     };
 
     // ---------------------------------------------------------------------------------------------
     // Generate a forward slide pattern of index N
     template<int N, int Sz> struct make_forward_slide
     {
-      using type = nsm::append< nsm::range<int,N,Sz>
-                                  , typename make_zero< nsm::range<int,0,N> >::type
+      using type = bm::append< bm::range<int,N,Sz>
+                                  , typename make_zero< bm::range<int,0,N> >::type
                                   >;
     };
 
@@ -49,8 +50,8 @@ namespace boost { namespace simd
     template<int N, int Sz>
     struct make_backward_slide
     {
-      using type = nsm::append< typename make_zero< nsm::range<int,0,N> >::type
-                                  , nsm::range<int,0,(Sz-N)>
+      using type = bm::append< typename make_zero< bm::range<int,0,N> >::type
+                                  , bm::range<int,0,(Sz-N)>
                                   >;
     };
 
@@ -59,12 +60,12 @@ namespace boost { namespace simd
     template<typename S, typename L> struct make_slides;
 
     template<typename S, typename... T>
-    struct make_slides<S,nsm::list<T...>>
+    struct make_slides<S,bm::list<T...>>
     {
       template<int X, bool Fwd> struct do_          : make_forward_slide<X,S::value>    {};
       template<int X>           struct do_<X,false> : make_backward_slide<-X,S::value>  {};
 
-       using type = nsm::list<typename do_<T::value,(T::value>0)>::type...>;
+       using type = bm::list<typename do_<T::value,(T::value>0)>::type...>;
     };
 
     // ---------------------------------------------------------------------------------------------
@@ -72,25 +73,25 @@ namespace boost { namespace simd
     template<int N, int... Ps> struct find_slide
     {
       using checks = typename make_slides < std::integral_constant<int,sizeof...(Ps)>
-                                          , nsm::range<int,-(N-1),N>
+                                          , bm::range<int,-(N-1),N>
                                           >::type;
 
-      using found = nsm::find < checks
-                                  , std::is_same<nsm::_1,nsm::integral_list<int,Ps...>>
+      using found = bm::find < checks
+                                  , std::is_same<bm::_1,bm::integral_list<int,Ps...>>
                                   >;
 
-      using idx   = std::integral_constant<int, N-int(nsm::size<found>::value)>;
+      using idx   = std::integral_constant<int, N-int(bm::size<found>::value)>;
 
       using type = typename std::conditional< idx::value && (idx::value<N)
                                             , slide_pattern<idx::value,pattern_<Ps...>>
-                                            , nsm::no_such_type_
+                                            , bm::no_such_type_
                                             >::type;
     };
 
     // ---------------------------------------------------------------------------------------------
     // Is this a slide pattern ?
     template<int... Ps>
-    struct is_slide : nsm::bool_< !std::is_same < nsm::no_such_type_
+    struct is_slide : bm::bool_< !std::is_same < bm::no_such_type_
                                                     , typename find_slide<sizeof...(Ps),Ps...>::type
                                                     >::value
                                     >

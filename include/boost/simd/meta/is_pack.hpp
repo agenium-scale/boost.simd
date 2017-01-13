@@ -18,6 +18,8 @@
 namespace boost { namespace simd
 {
   namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
+
 
   /*!
     @ingroup  group-api
@@ -28,10 +30,10 @@ namespace boost { namespace simd
     @tparam Type      Type to check
   **/
   template <typename T>
-  struct is_pack : nsm::bool_<false> {};
+  struct is_pack : bm::bool_<false> {};
 
   template <typename T, std::size_t N, typename ABI>
-  struct is_pack<pack<T, N, ABI>> : nsm::bool_<true> {};
+  struct is_pack<pack<T, N, ABI>> : bm::bool_<true> {};
 
   /*!
     @ingroup group-api
@@ -49,7 +51,7 @@ namespace boost { namespace simd
     @tparam Type      Type to check
   **/
   template <typename T>
-  struct is_not_pack : nsm::not_<is_pack<T>> {};
+  struct is_not_pack : bm::not_<is_pack<T>> {};
 
   /*!
     @ingroup group-api

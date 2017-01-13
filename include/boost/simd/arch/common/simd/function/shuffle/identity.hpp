@@ -17,13 +17,14 @@ namespace boost { namespace simd
 {
   namespace detail
   {
+    namespace bm  = boost::nsm;
     // ---------------------------------------------------------------------------------------------
     // Check if pattern is [0 1 ... C-1]
     template<int... Ps>
     struct  is_identity
-          : nsm::all< nsm::transform< nsm::range<int,0,sizeof...(Ps)>
-                                            , nsm::integral_list<int,Ps...>
-                                            , nsm::equal_to<nsm::_1,nsm::_2>
+          : bm::all< bm::transform< bm::range<int,0,sizeof...(Ps)>
+                                            , bm::integral_list<int,Ps...>
+                                            , bm::equal_to<bm::_1,bm::_2>
                                             >
                       >
     {};

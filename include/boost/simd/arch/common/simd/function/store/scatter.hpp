@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_STORE_SCATTER_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_STORE_SCATTER_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/dispatch/adapted/common/pointer.hpp>
 #include <boost/simd/function/extract.hpp>
@@ -18,6 +19,8 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = ::boost::dispatch;
+  namespace bm = boost::nsm;
+
   namespace bs = ::boost::simd;
 
   //------------------------------------------------------------------------------------------------
@@ -45,7 +48,7 @@ namespace boost { namespace simd { namespace ext
     // aggregate pack are calling store twice
     template<typename... N> static BOOST_FORCEINLINE
     void do_( Src const & s, Pointer p, Offset const o
-            , aggregate_storage const&, nsm::list<N...> const&
+            , aggregate_storage const&, bm::list<N...> const&
             )
     {
       store(slice_low(s) , p, slice_low(o) );
@@ -61,7 +64,7 @@ namespace boost { namespace simd { namespace ext
 
     template<typename K, typename... N>
     static BOOST_FORCEINLINE void do_ ( Src const & s, Pointer p, Offset const o
-                                      , K const&, nsm::list<N...> const&
+                                      , K const&, bm::list<N...> const&
                                       )
     {
       (void)(std::initializer_list<bool>{(sto_<N>(s,p,o),true)...});

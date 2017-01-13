@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_BITWISE_SELECT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_BITWISE_SELECT_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/bitwise_and.hpp>
 #include <boost/simd/function/bitwise_andnot.hpp>
@@ -18,11 +19,12 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
   namespace bs = boost::simd;
 
   BOOST_DISPATCH_OVERLOAD_IF( bitwise_select_
                             , (typename A0, typename A1, typename X, typename Y)
-                            , (nsm::bool_<A0::static_size==A1::static_size>)
+                            , (bm::bool_<A0::static_size==A1::static_size>)
                             , bd::cpu_
                             , bs::pack_<bd::arithmetic_<A0>, X >
                             , bs::pack_<bd::arithmetic_<A1>, Y >

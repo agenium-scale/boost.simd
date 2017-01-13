@@ -11,6 +11,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_CONSTANT_CONSTANT_GENERATOR_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_CONSTANT_CONSTANT_GENERATOR_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/constant_traits.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/as.hpp>
@@ -26,6 +27,7 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
 
   BOOST_DISPATCH_OVERLOAD_FALLBACK( (typename X, typename V)
                                   , boost::dispatch::constant_value_<tag::constant_>
@@ -41,9 +43,9 @@ namespace boost { namespace simd { namespace ext
     }
 
     template<typename R, typename T, T N>
-    static BOOST_FORCEINLINE R impl(nsm::real_<R,T,N> const& ) BOOST_NOEXCEPT
+    static BOOST_FORCEINLINE R impl(bm::real_<R,T,N> const& ) BOOST_NOEXCEPT
     {
-      return static_cast<R>(nsm::real_<R,T,N>{});
+      return static_cast<R>(bm::real_<R,T,N>{});
     }
 
     template<typename T, std::intmax_t N, std::intmax_t D>

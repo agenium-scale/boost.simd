@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_RSHL_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_RSHL_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/function/if_else.hpp>
@@ -25,11 +26,13 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
+
   namespace bs = boost::simd;
 
   BOOST_DISPATCH_OVERLOAD_IF( rshl_
                             , (typename A0, typename A1, typename X)
-                            , (nsm::bool_<bs::cardinal_of<A0>::value == bs::cardinal_of<A1>::value>)
+                            , (bm::bool_<bs::cardinal_of<A0>::value == bs::cardinal_of<A1>::value>)
                             , bd::cpu_
                             , bs::pack_<bd::arithmetic_<A0>, X>
                             , bd::generic_<bd::integer_<A1>>
@@ -47,7 +50,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD_IF( rshl_
                             , (typename A0, typename A1, typename X)
-                            , (nsm::bool_<bs::cardinal_of<A0>::value == bs::cardinal_of<A1>::value>)
+                            , (bm::bool_<bs::cardinal_of<A0>::value == bs::cardinal_of<A1>::value>)
                             , bd::cpu_
                             , bs::pack_<bd::arithmetic_<A0>, X>
                             , bd::generic_<bd::unsigned_<A1>>

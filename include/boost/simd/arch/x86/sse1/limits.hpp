@@ -9,24 +9,27 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSE1_LIMITS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE1_LIMITS_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/arch/x86/tags.hpp>
 #include <boost/simd/arch/common/limits.hpp>
 #include <boost/simd/detail/nsm.hpp>
 
 namespace boost { namespace simd
 {
+  namespace bm = boost::nsm;
+
   template<> struct limits<boost::simd::sse1_>
   {
     using parent = boost::simd::simd_;
 
     struct largest_integer
     {
-      template<typename Sign> struct apply { using type = nsm::no_such_type_; };
+      template<typename Sign> struct apply { using type = bm::no_such_type_; };
     };
 
     struct smallest_integer
     {
-      template<typename Sign> struct apply { using type = nsm::no_such_type_; };
+      template<typename Sign> struct apply { using type = bm::no_such_type_; };
     };
 
     using largest_real   = float;

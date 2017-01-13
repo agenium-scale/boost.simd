@@ -7,18 +7,20 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/function/slice_high.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
 
 namespace bs = boost::simd;
+namespace bm = boost::nsm;
 
 template<typename T, std::size_t N, typename Env>
-void test( Env&, nsm::bool_<false> const& )
+void test( Env&, bm::bool_<false> const& )
 {}
 
 template<typename T, std::size_t N, typename Env>
-void test( Env& $, nsm::bool_<true> const& = {} )
+void test( Env& $, bm::bool_<true> const& = {} )
 {
   std::array<T,N> ref;
   for(std::size_t i=0;i<N;++i) ref[i] = T(1+i);
@@ -34,6 +36,6 @@ STF_CASE_TPL("slice_high pack<T,N> into a pack<T,N/2>", STF_NUMERIC_TYPES)
   static const std::size_t N = bs::pack<T>::static_size;
 
   test<T,N>($);
-  test<T,N/2>($, nsm::bool_<(N/2 > 1)>{});
+  test<T,N/2>($, bm::bool_<(N/2 > 1)>{});
   test<T,N*2>($);
 }

@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_COMBINE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_COMBINE_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/function/make.hpp>
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/meta/hierarchy/simd.hpp>
@@ -19,6 +20,8 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
+
   namespace bs = boost::simd;
 
 
@@ -50,7 +53,7 @@ namespace boost { namespace simd { namespace ext
 
     template<typename... N>
     static BOOST_FORCEINLINE result_t do_ ( T const& a, T const& b, aggregate_storage const&
-                                          , nsm::list<N...> const&
+                                          , bm::list<N...> const&
                                           ) BOOST_NOEXCEPT
     {
       return typename result_t::storage_type{{a,b}};
@@ -58,7 +61,7 @@ namespace boost { namespace simd { namespace ext
 
     template<typename K, typename... N>
     static BOOST_FORCEINLINE result_t do_ ( T const& a, T const& b, K const&
-                                          , nsm::list<N...> const&
+                                          , bm::list<N...> const&
                                           ) BOOST_NOEXCEPT
     {
       return make<result_t> ( bs::extract<N::value>(a)...
@@ -70,7 +73,7 @@ namespace boost { namespace simd { namespace ext
     {
       return do_( a, b
                 , typename result_t::traits::storage_kind{}
-                , nsm::range<std::size_t, 0, T::static_size>{}
+                , bm::range<std::size_t, 0, T::static_size>{}
                 );
     }
   };

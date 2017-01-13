@@ -23,6 +23,8 @@ namespace boost { namespace simd
 {
   namespace tag
   {
+    namespace bm = boost::nsm;
+
     struct valmin_ : boost::dispatch::constant_value_<valmin_>
     {
       BOOST_DISPATCH_MAKE_CALLABLE(ext,valmin_,boost::dispatch::constant_value_<valmin_>);
@@ -45,10 +47,10 @@ namespace boost { namespace simd
         static std::integral_constant<X,X(0)> value(boost::dispatch::uint_<X> const&);
 
         template<typename X>
-        static nsm::single_<0xFF7FFFFF> value(boost::dispatch::single_<X> const&);
+        static bm::single_<0xFF7FFFFF> value(boost::dispatch::single_<X> const&);
 
         template<typename X>
-        static nsm::double_<0xFFEFFFFFFFFFFFFFULL> value(boost::dispatch::double_<X> const&);
+        static bm::double_<0xFFEFFFFFFFFFFFFFULL> value(boost::dispatch::double_<X> const&);
       };
     };
   }

@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LOAD_RANDOM_ACCESS_ITERATOR_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LOAD_RANDOM_ACCESS_ITERATOR_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/combine.hpp>
 #include <boost/simd/detail/dispatch/adapted/std/iterator.hpp>
@@ -16,6 +17,8 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = ::boost::dispatch;
+  namespace bm = boost::nsm;
+
   namespace bs = ::boost::simd;
 
   //------------------------------------------------------------------------------------------------
@@ -33,7 +36,7 @@ namespace boost { namespace simd { namespace ext
 
     // Aggregate case: fill in the storage by calling load twice
     template<typename... N> static BOOST_FORCEINLINE
-    target_t do_(Begin const& b, aggregate_storage const&, nsm::list<N...> const&)
+    target_t do_(Begin const& b, aggregate_storage const&, bm::list<N...> const&)
     {
       Begin   b1 = b  + target_t::traits::element_size
             , b2 = b1 + target_t::traits::element_size;
@@ -45,7 +48,7 @@ namespace boost { namespace simd { namespace ext
 
     // Other case: Fill a pack piecewise
     template<typename K, typename... N> static BOOST_FORCEINLINE
-    target_t do_(Begin const& b, K const&, nsm::list<N...> const&) BOOST_NOEXCEPT
+    target_t do_(Begin const& b, K const&, bm::list<N...> const&) BOOST_NOEXCEPT
     {
       return target_t(b[N::value]...);
     }

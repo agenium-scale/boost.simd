@@ -30,7 +30,7 @@ namespace boost { namespace dispatch
   **/
   template<typename T, typename Function>
   struct  behave_as
-        : nsm::apply<Function,boost::dispatch::primitive_of_t<T>>
+    : boost::nsm::apply<Function,boost::dispatch::primitive_of_t<T>>
   {};
 
   template<typename T, typename Function>

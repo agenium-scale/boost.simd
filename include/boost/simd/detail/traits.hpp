@@ -12,24 +12,27 @@
 #define BOOST_SIMD_DETAIL_TRAITS_HPP_INCLUDED
 
 #include <boost/simd/arch/common/tags.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/config.hpp>
 #include <type_traits>
 
 namespace boost { namespace simd { namespace detail
 {
+  namespace bm = boost::nsm;
+
   template<typename A0, typename A1>
   struct same_size
-        : nsm::bool_<std::decay<A1>::type::static_size == std::decay<A0>::type::static_size>
+        : bm::bool_<std::decay<A1>::type::static_size == std::decay<A0>::type::static_size>
   {};
 
   template<typename A0, typename A1>
   struct same_sizeof
-        : nsm::bool_<sizeof(A0) == sizeof(A1)>
+        : bm::bool_<sizeof(A0) == sizeof(A1)>
   {};
 
   template<typename X>
   struct is_native
-        : nsm::bool_<!std::is_same<X,boost::simd::simd_emulation_>::value>
+        : bm::bool_<!std::is_same<X,boost::simd::simd_emulation_>::value>
   {};
 } } }
 

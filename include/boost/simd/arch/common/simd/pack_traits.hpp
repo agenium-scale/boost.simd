@@ -14,6 +14,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_PACK_TRAITS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_PACK_TRAITS_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/config.hpp>
 #include <boost/simd/detail/pack_traits.hpp>
 #include <boost/simd/arch/common/tags.hpp>
@@ -23,6 +24,8 @@
 
 namespace boost { namespace simd { namespace detail
 {
+  namespace bm = boost::nsm;
+ 
   // emulated_storage: *
   //-----------------------------------------------------------------------------------------------
   template <typename T, std::size_t N>
@@ -37,8 +40,8 @@ namespace boost { namespace simd { namespace detail
     using reference                 = value_type&;
     using const_reference           = value_type const&;
 
-    using static_range              = nsm::range<std::size_t, 0, N>;
-    using element_range             = nsm::range<std::size_t, 0, N>;
+    using static_range              = bm::range<std::size_t, 0, N>;
+    using element_range             = bm::range<std::size_t, 0, N>;
 
     using storage_kind              = ::boost::simd::scalar_storage;
 
@@ -85,8 +88,8 @@ namespace boost { namespace simd { namespace detail
     using reference                 = typename SIMD::reference;
     using const_reference           = typename SIMD::const_reference;
 
-    using static_range              = nsm::range<std::size_t, 0, NumberOfVectors>;
-    using element_range             = nsm::range<std::size_t, 0, N>;
+    using static_range              = bm::range<std::size_t, 0, NumberOfVectors>;
+    using element_range             = bm::range<std::size_t, 0, N>;
 
     using storage_kind              = ::boost::simd::aggregate_storage;
 

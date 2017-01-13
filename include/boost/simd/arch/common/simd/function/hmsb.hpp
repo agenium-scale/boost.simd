@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_HMSB_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_HMSB_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/bitwise_and.hpp>
 #include <boost/simd/function/genmask.hpp>
@@ -20,6 +21,8 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
+
   namespace bs = boost::simd;
 
   BOOST_DISPATCH_OVERLOAD(hmsb_
@@ -40,7 +43,7 @@ namespace boost { namespace simd { namespace ext
     }
 
     template<typename... N>
-    BOOST_FORCEINLINE void do_(const A0& a0, result_t& r, nsm::list<N...> const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE void do_(const A0& a0, result_t& r, bm::list<N...> const&) const BOOST_NOEXCEPT
     {
       (void)(std::initializer_list<bool>{(piece<N>(a0,r),true)...});
     }

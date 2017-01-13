@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_REVERSE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_REVERSE_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/is_bitwise_logical.hpp>
 #include <boost/simd/meta/as_arithmetic.hpp>
@@ -18,6 +19,8 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
+
   namespace bs = boost::simd;
 
   BOOST_DISPATCH_OVERLOAD_IF( reverse_
@@ -45,13 +48,13 @@ namespace boost { namespace simd { namespace ext
     }
 
     template<typename K, typename... N>
-    BOOST_FORCEINLINE A0 do_(const A0& a0, K const&, nsm::list<N...> const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A0 do_(const A0& a0, K const&, bm::list<N...> const&) const BOOST_NOEXCEPT
     {
       return A0( extract<A0::static_size-N::value-1>(a0)... );
     }
 
     template<typename... N> BOOST_FORCEINLINE
-    A0 do_(const A0& a0, aggregate_storage const&, nsm::list<N...> const&) const BOOST_NOEXCEPT
+    A0 do_(const A0& a0, aggregate_storage const&, bm::list<N...> const&) const BOOST_NOEXCEPT
     {
       // reverse each half and permute them
       return {{ {reverse(a0.storage()[1]), reverse(a0.storage()[0])} }};

@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_AUTOMAP_DECORATOR_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_GENERIC_FUNCTION_AUTOMAP_DECORATOR_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/decorator.hpp>
 #include <boost/simd/detail/dispatch/hierarchy/functions.hpp>
@@ -19,6 +20,7 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
   using bd::detail::declval;
 
   // -----------------------------------------------------------------------------------------------
@@ -36,7 +38,7 @@ namespace boost { namespace simd { namespace ext
     using functor             = decltype(detail::decorator<Decorator>()(bd::functor<F>()));
 
     // Use the very first pack as reference
-    using pack                = nsm::front<nsm::list<Pn...>>;
+    using pack                = bm::front<bm::list<Pn...>>;
     using traits              = typename pack::traits;
 
     // We build the return pack as a pack of same cardinal but which type is the scalar return
@@ -47,20 +49,20 @@ namespace boost { namespace simd { namespace ext
     using result_traits       = typename result_type::traits;
 
     // We need to iterate over output type cardinal to fill it
-    using element_range       = nsm::range<std::size_t, 0, pack::static_size>;
+    using element_range       = bm::range<std::size_t, 0, pack::static_size>;
 
     // Constructing the output depends on the storage_kind of all the inputs
     struct storage_checker
     {
       template <typename S, typename E>
-      struct apply : nsm::bool_<  S::value
+      struct apply : bm::bool_<  S::value
                             && std::is_same<typename E::storage_kind, aggregate_storage>::value
                             >
       {};
     };
 
-    using storage_kind  = nsm::fold< nsm::list<typename Pn::traits...>
-                                  , nsm::bool_<true>
+    using storage_kind  = bm::fold< bm::list<typename Pn::traits...>
+                                  , bm::bool_<true>
                                   , storage_checker
                                   >;
 
@@ -71,14 +73,14 @@ namespace boost { namespace simd { namespace ext
     struct traits_checker
     {
       template <typename S, typename E>
-      struct apply : nsm::bool_<  S::value
+      struct apply : bm::bool_<  S::value
                             && std::size_t(E::static_size) == std::size_t(traits::static_size)
                             >
       {};
     };
 
-    using traits_info = nsm::fold< nsm::list<typename Pn::traits...>
-                                , nsm::bool_<true>
+    using traits_info = bm::fold< bm::list<typename Pn::traits...>
+                                , bm::bool_<true>
                                 , traits_checker
                                 >;
 
@@ -95,7 +97,7 @@ namespace boost { namespace simd { namespace ext
     // (P)
     template <typename P0, typename SKI, typename SKO, typename... N>
     BOOST_FORCEINLINE static result_type map_ ( SKI const&, SKO const&
-                                              , nsm::list<N...> const&
+                                              , bm::list<N...> const&
                                               , P0 const& p0
                                               )
     BOOST_NOEXCEPT_IF(is_noexcept)
@@ -108,7 +110,7 @@ namespace boost { namespace simd { namespace ext
     // (P, P)
     template <typename P0, typename P1, typename SKI, typename SKO, typename... N>
     BOOST_FORCEINLINE static result_type map_ ( SKI const&, SKO const&
-                                              , nsm::list<N...> const&
+                                              , bm::list<N...> const&
                                               , P0 const& p0, P1 const& p1
                                               )
     BOOST_NOEXCEPT_IF(is_noexcept)
@@ -123,7 +125,7 @@ namespace boost { namespace simd { namespace ext
             , typename SKI, typename SKO, typename... N
             >
     BOOST_FORCEINLINE static result_type map_ ( SKI const&, SKO const&
-                                              , nsm::list<N...> const&
+                                              , bm::list<N...> const&
                                               , P0 const& p0, P1 const& p1, P2 const& p2
                                               )
     BOOST_NOEXCEPT_IF(is_noexcept)
@@ -138,7 +140,7 @@ namespace boost { namespace simd { namespace ext
             , typename SKI, typename SKO, typename... N
             >
     BOOST_FORCEINLINE static result_type map_ ( SKI const&, SKO const&
-                                              , nsm::list<N...> const&
+                                              , bm::list<N...> const&
                                               , P0 const& p0, P1 const& p1
                                               , P2 const& p2, P3 const& p3
                                               )
@@ -157,9 +159,9 @@ namespace boost { namespace simd { namespace ext
     }
 
     template <typename... N>
-    BOOST_FORCEINLINE static result_type map_ ( nsm::bool_<true> const&
+    BOOST_FORCEINLINE static result_type map_ ( bm::bool_<true> const&
                                               , ::boost::simd::aggregate_storage const&
-                                              , nsm::list<N...> const&
+                                              , bm::list<N...> const&
                                               , Pn const&... pn
                                               )
     BOOST_NOEXCEPT_IF(is_noexcept)

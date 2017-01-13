@@ -22,9 +22,11 @@ namespace boost { namespace dispatch
 {
   namespace detail
   {
+    namespace bm = boost::nsm;
+
     template<typename T, typename Hierarchy> struct models
     {
-      template<typename U> using hierarchy_t  = nsm::apply<Hierarchy,U>;
+      template<typename U> using hierarchy_t  = bm::apply<Hierarchy,U>;
 
       template<typename U> static std::true_type  test( hierarchy_t<U> );
       template<typename  > static std::false_type test( ... );

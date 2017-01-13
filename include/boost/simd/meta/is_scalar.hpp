@@ -12,6 +12,7 @@
 #ifndef BOOST_SIMD_META_IS_SCALAR_HPP_INCLUDED
 #define BOOST_SIMD_META_IS_SCALAR_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/config.hpp>
 #include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/dispatch/hierarchy/unspecified.hpp>
@@ -21,6 +22,7 @@
 namespace boost { namespace simd
 {
   namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
 
   /*!
     @ingroup  group-api
@@ -32,7 +34,7 @@ namespace boost { namespace simd
     @tparam Type      Type to check
   **/
   template<typename T>
-  struct is_scalar : bd::models_t<T, bd::scalar_<bd::unspecified_<nsm::_1>> >
+  struct is_scalar : bd::models_t<T, bd::scalar_<bd::unspecified_<bm::_1>> >
   {};
   template<typename T>
   using is_scalar_t = typename is_scalar<T>::type;

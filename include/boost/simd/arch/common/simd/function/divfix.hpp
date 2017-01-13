@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_DIVFIX_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_DIVFIX_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/function/group.hpp>
@@ -24,11 +25,13 @@
 namespace boost { namespace simd { namespace ext
 {
    namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
+
    namespace bs = boost::simd;
 
   BOOST_DISPATCH_OVERLOAD_IF(div_
                             , (typename A0, typename X)
-                            , (nsm::and_<bd::is_upgradable<A0>, detail::is_native<X>>)
+                            , (bm::and_<bd::is_upgradable<A0>, detail::is_native<X>>)
                             , bd::cpu_
                             , bs::pack_<bd::int_<A0>, X>
                             , bs::pack_<bd::int_<A0>, X>
@@ -46,7 +49,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD_IF(div_
                             , (typename A0, typename X)
-                            , (nsm::and_<bd::is_upgradable<A0>, detail::is_native<X>>)
+                            , (bm::and_<bd::is_upgradable<A0>, detail::is_native<X>>)
                             , bd::cpu_
                             , bs::pack_<bd::uint_<A0>, X>
                             , bs::pack_<bd::uint_<A0>, X>

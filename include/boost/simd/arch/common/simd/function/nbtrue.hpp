@@ -9,6 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_NBTRUE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_NBTRUE_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/function/extract.hpp>
@@ -18,6 +19,8 @@
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = ::boost::dispatch;
+  namespace bm = boost::nsm;
+
   namespace bs = ::boost::simd;
 
   BOOST_DISPATCH_OVERLOAD ( nbtrue_
@@ -45,14 +48,14 @@ namespace boost { namespace simd { namespace ext
 
     // Aggregate case: add the nbtrue of both sides
     template<typename... N> static BOOST_FORCEINLINE
-    std::size_t do_(A0 const& a0, aggregate_storage const&, nsm::list<N...> const&) BOOST_NOEXCEPT
+    std::size_t do_(A0 const& a0, aggregate_storage const&, bm::list<N...> const&) BOOST_NOEXCEPT
     {
       return nbtrue(slice_low(a0)) + nbtrue(slice_high(a0));
     }
 
     // Other case: Compute nbtrue piecewise
     template<typename K, typename... N> static BOOST_FORCEINLINE
-    std::size_t do_(A0 const& a0, K const&, nsm::list<N...> const&) BOOST_NOEXCEPT
+    std::size_t do_(A0 const& a0, K const&, bm::list<N...> const&) BOOST_NOEXCEPT
     {
       std::size_t that = 0;
 

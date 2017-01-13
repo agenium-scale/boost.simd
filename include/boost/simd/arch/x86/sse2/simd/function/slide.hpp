@@ -9,12 +9,15 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_SLIDE_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_SLIDE_HPP_INCLUDED
 
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/detail/overload.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
+  namespace bm = boost::nsm;
+
   namespace bs = boost::simd;
 
   BOOST_DISPATCH_OVERLOAD ( slide_
@@ -45,7 +48,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE T operator()(T const& a0, Offset const&) const BOOST_NOEXCEPT
     {
-      return side(a0, nsm::bool_<(Offset::value >= 0)>{});
+      return side(a0, bm::bool_<(Offset::value >= 0)>{});
     }
   };
 
