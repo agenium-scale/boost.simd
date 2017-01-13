@@ -18,6 +18,7 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
+  namespace tt = nsm::type_traits;
 
   BOOST_DISPATCH_OVERLOAD ( slide_
                           , (typename T, typename Offset)
@@ -33,7 +34,7 @@ namespace boost { namespace simd { namespace ext
       using byte_t = typename T::template retype<std::uint8_t,16>;
 
       // Compute relative offsets
-      using bitcount = std::integral_constant < std::size_t
+      using bitcount = tt::integral_constant < std::size_t
                                               , sizeof(as_arithmetic_t<typename T::value_type>)
                                               * Offset::value
                                               >;

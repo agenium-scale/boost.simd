@@ -15,7 +15,8 @@ namespace ns { namespace bench {
  **/
 } }
 #include <boost/core/demangle.hpp>
-#include <type_traits>
+#include <boost/simd/detail/nsm.hpp>
+
 namespace ns { namespace bench {
 template<typename T> inline std::string type_id()
 {
@@ -1357,7 +1358,7 @@ struct parameter_alignment
 {};
 template <typename T>
 struct parameter_alignment<T, typename std::enable_if<T::alignment == T::alignment>::type>
-: std::integral_constant<std::size_t, T::alignment>
+  : nsm::type_traits::integral_constant<std::size_t, T::alignment>
 {};
 template <typename G, typename T>
 struct make_parameters_container {

@@ -23,12 +23,14 @@ namespace boost { namespace simd
 
   namespace detail
   {
+    namespace tt = nsm::type_traits;
+
     // -----------------------------------------------------------------------------------------------
     // normalized permutation pattern holder - also acts as its own hierarchy
     template<int... Ps> struct pattern_ : boost::dispatch::unspecified_<pattern_<Ps...>>
     {
       static const std::size_t static_size = sizeof...(Ps);
-      using size_type = std::integral_constant<std::size_t,static_size>;
+      using size_type = tt::integral_constant<std::size_t,static_size>;
       using parent = boost::dispatch::unspecified_<pattern_<Ps...>>;
     };
 

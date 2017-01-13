@@ -10,16 +10,32 @@
 #define NSM_HPP_INCLUDED
 
 #include <boost/config.hpp>
-#include <type_traits>
 #include <cstdint>
 #include <cstring>
 #include <utility>
+
+// Detect stupid ICC/G++ combos
+#if defined(BOOST_INTEL_GCC_VERSION) && (BOOST_INTEL_GCC_VERSION < 40600)
+#define NSM_ASSUME_INCOMPLETE_STD
+#endif
+
+#if defined(NSM_ASSUME_INCOMPLETE_STD)
+#include <boost/type_traits.hpp>
+namespace nsm { 
+  namespace type_traits = boost;
+}
+#else
+#include <type_traits>
+namespace nsm { 
+  namespace type_traits = std;
+}
+#endif
 
 namespace nsm
 {
   template <class... T> struct list {};
   template<typename T, T... Values>
-  using integral_list = nsm::list< std::integral_constant<T,Values>...>;
+  using integral_list = nsm::list< type_traits::integral_constant<T,Values>...>;
   using empty_sequence = nsm::list<>;
 
   template<typename T, typename R = void > struct has_type
@@ -28,7 +44,7 @@ namespace nsm
   };
 
   template <bool B>
-  using bool_ = std::integral_constant<bool, B>;
+  using bool_ = type_traits::integral_constant<bool, B>;
 
   template<typename T> struct type_ { using type = T; };
   template<typename T> using type_from = typename T::type;
@@ -401,7 +417,7 @@ namespace nsm
   using transform = typename detail::transform_selector<sizeof...(OpSeq2), Sequence1, OpSeq1, OpSeq2...>::type;
 
   template <typename T>
-  struct make_integral : std::integral_constant <typename T::value_type, T::value> {};
+  struct make_integral : type_traits::integral_constant <typename T::value_type, T::value> {};
 
   template <typename L>
   using as_integral_list = transform<L, make_integral<nsm::_1>>;
@@ -420,7 +436,7 @@ namespace nsm
   using wrap = typename detail::wrap_impl<A, B>::type;
 
   template<class... T>
-  using count = std::integral_constant<std::size_t, sizeof...(T)>;
+  using count = type_traits::integral_constant<std::size_t, sizeof...(T)>;
 
   template<class L> using size = wrap<L, count>;
 
@@ -869,25 +885,25 @@ namespace nsm
   }
 
   template <std::int8_t V>
-  using int8_t = std::integral_constant<std::int8_t, V>;
+  using int8_t = type_traits::integral_constant<std::int8_t, V>;
   template <std::uint8_t V>
-  using uint8_t = std::integral_constant<std::uint8_t, V>;
+  using uint8_t = type_traits::integral_constant<std::uint8_t, V>;
   template <std::int16_t V>
-  using int16_t = std::integral_constant<std::int16_t, V>;
+  using int16_t = type_traits::integral_constant<std::int16_t, V>;
   template <std::uint16_t V>
-  using uint16_t = std::integral_constant<std::uint16_t, V>;
+  using uint16_t = type_traits::integral_constant<std::uint16_t, V>;
   template <std::int32_t V>
-  using int32_t = std::integral_constant<std::int32_t, V>;
+  using int32_t = type_traits::integral_constant<std::int32_t, V>;
   template <std::uint32_t V>
-  using uint32_t = std::integral_constant<std::uint32_t, V>;
+  using uint32_t = type_traits::integral_constant<std::uint32_t, V>;
   template <std::int64_t V>
-  using int64_t = std::integral_constant<std::int64_t, V>;
+  using int64_t = type_traits::integral_constant<std::int64_t, V>;
   template <std::uint64_t V>
-  using uint64_t = std::integral_constant<std::uint64_t, V>;
+  using uint64_t = type_traits::integral_constant<std::uint64_t, V>;
   template<std::size_t V>
-  using size_t    = std::integral_constant<std::size_t, V>;
+  using size_t    = type_traits::integral_constant<std::size_t, V>;
   template<std::ptrdiff_t V>
-  using ptrdiff_t = std::integral_constant<std::ptrdiff_t, V>;
+  using ptrdiff_t = type_traits::integral_constant<std::ptrdiff_t, V>;
 }
 namespace nsm
 {
@@ -898,10 +914,10 @@ namespace nsm
     template<class T, T Start, T Int>
     struct int_plus
     {
-      using type = std::integral_constant<T, Start + Int>;
+      using type = type_traits::integral_constant<T, Start + Int>;
     };
     template<class T, class... Ts, T... Ints, T Start>
-    struct range_cat<T, list<Ts...>, list<std::integral_constant<T, Ints>...>, Start>
+    struct range_cat<T, list<Ts...>, list<type_traits::integral_constant<T, Ints>...>, Start>
     {
       using type = list<Ts..., typename int_plus<T, Start, Ints>::type...>;
     };
@@ -917,7 +933,7 @@ namespace nsm
     template<class T, T Start>
     struct range_impl<T, Start, 1>
     {
-      using type = list<std::integral_constant<T, Start>>;
+      using type = list<type_traits::integral_constant<T, Start>>;
     };
     template<class T, T Start>
     struct range_impl<T, Start, 0>
@@ -929,10 +945,10 @@ namespace nsm
     template<class T, T Start, T Int>
     struct int_minus
     {
-      using type = std::integral_constant<T, Int - Start>;
+      using type = type_traits::integral_constant<T, Int - Start>;
     };
     template<class T, class... Ts, T... Ints, T Start>
-    struct reverse_range_cat<T, list<Ts...>, list<std::integral_constant<T, Ints>...>, Start>
+    struct reverse_range_cat<T, list<Ts...>, list<type_traits::integral_constant<T, Ints>...>, Start>
     {
       using type = list<Ts..., typename int_minus<T, Start, Ints>::type...>;
     };
@@ -948,7 +964,7 @@ namespace nsm
     template<class T, T Start>
     struct reverse_range_impl<T, Start, 1>
     {
-      using type = list<std::integral_constant<T, Start>>;
+      using type = list<type_traits::integral_constant<T, Start>>;
     };
     template<class T, T Start>
     struct reverse_range_impl<T, Start, 0>
@@ -1014,19 +1030,19 @@ namespace nsm
   };
 
   template <typename A>
-  struct next : std::integral_constant < typename A::value_type, A::value + 1 > {};
+  struct next : type_traits::integral_constant < typename A::value_type, A::value + 1 > {};
 
   template <typename A>
-  struct prev : std::integral_constant < typename A::value_type, A::value - 1 > {};
+  struct prev : type_traits::integral_constant < typename A::value_type, A::value - 1 > {};
 
   template <typename A, typename B>
-  struct max : std::integral_constant < typename A::value_type
+  struct max : type_traits::integral_constant < typename A::value_type
                                       , (A::value < B::value) ? B::value : A::value
                                       >
   {};
 
   template <typename A, typename B>
-  struct min : std::integral_constant < typename A::value_type
+  struct min : type_traits::integral_constant < typename A::value_type
                                       , (A::value < B::value) ? A::value : B::value
                                       >
   {};
@@ -1096,16 +1112,16 @@ namespace nsm
   };
 
   template <typename A, typename B>
-  struct and_ : std::integral_constant <typename A::value_type, A::value && B::value > {};
+  struct and_ : type_traits::integral_constant <typename A::value_type, A::value && B::value > {};
 
   template <typename T>
-  struct not_ : std::integral_constant<typename T::value_type, !T::value> {};
+  struct not_ : type_traits::integral_constant<typename T::value_type, !T::value> {};
 
   template <typename A, typename B>
-  struct or_ : std::integral_constant < typename A::value_type, A::value || B::value > {};
+  struct or_ : type_traits::integral_constant < typename A::value_type, A::value || B::value > {};
 
   template <typename A, typename B>
-  struct xor_ : std::integral_constant<typename A::value_type, A::value != B::value> {};
+  struct xor_ : type_traits::integral_constant<typename A::value_type, A::value != B::value> {};
 
   template<class T>
   struct always
@@ -1114,7 +1130,7 @@ namespace nsm
   };
 
   template<typename T>
-  struct sizeof_ : std::integral_constant <std::size_t, sizeof(T)> {};
+  struct sizeof_ : type_traits::integral_constant <std::size_t, sizeof(T)> {};
 
   namespace detail
   {
@@ -1171,10 +1187,10 @@ namespace nsm
   using make_sequence = typename detail::make_sequence_impl<List, Start, N, Next, (N<=8)>::type;
 
   template<typename RealType, typename Type, Type Value>
-  struct real_ : std::integral_constant<Type,Value>
+  struct real_ : type_traits::integral_constant<Type,Value>
   {
     using value_type  = RealType;
-    using parent      = std::integral_constant<Type,Value>;
+    using parent      = type_traits::integral_constant<Type,Value>;
 
     BOOST_FORCEINLINE operator value_type() const
     {

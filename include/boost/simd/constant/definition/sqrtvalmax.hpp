@@ -23,6 +23,8 @@ namespace boost { namespace simd
 {
   namespace tag
   {
+    namespace tt = nsm::type_traits;
+
     struct sqrtvalmax_ : boost::dispatch::constant_value_<sqrtvalmax_>
     {
       BOOST_DISPATCH_MAKE_CALLABLE(ext,sqrtvalmax_,boost::dispatch::constant_value_<sqrtvalmax_>);
@@ -34,27 +36,27 @@ namespace boost { namespace simd
         template<typename X>
         static nsm::double_<0x5fEFFFFFFFFFFFFFULL> value(boost::dispatch::double_<X> const&);
         template<typename X>
-        static std::integral_constant<X,15> value(boost::dispatch::uint8_<X> const&);
+        static tt::integral_constant<X,15> value(boost::dispatch::uint8_<X> const&);
 
         template<typename X>
-        static std::integral_constant<X,255> value(boost::dispatch::uint16_<X> const&);
+        static tt::integral_constant<X,255> value(boost::dispatch::uint16_<X> const&);
 
         template<typename X>
-        static std::integral_constant<X,65535> value(boost::dispatch::uint32_<X> const&);
+        static tt::integral_constant<X,65535> value(boost::dispatch::uint32_<X> const&);
 
         template<typename X>
-        static std::integral_constant<X,4294967296ULL> value(boost::dispatch::uint64_<X> const&);
+        static tt::integral_constant<X,4294967296ULL> value(boost::dispatch::uint64_<X> const&);
         template<typename X>
-        static std::integral_constant<X,11> value(boost::dispatch::int8_<X> const&);
+        static tt::integral_constant<X,11> value(boost::dispatch::int8_<X> const&);
 
         template<typename X>
-        static std::integral_constant<X,181> value(boost::dispatch::int16_<X> const&);
+        static tt::integral_constant<X,181> value(boost::dispatch::int16_<X> const&);
 
         template<typename X>
-        static std::integral_constant<X,46340> value(boost::dispatch::int32_<X> const&);
+        static tt::integral_constant<X,46340> value(boost::dispatch::int32_<X> const&);
 
         template<typename X>
-        static std::integral_constant<X,3037000499LL> value(boost::dispatch::int64_<X> const&);
+        static tt::integral_constant<X,3037000499LL> value(boost::dispatch::int64_<X> const&);
       };
     };
   }

@@ -26,6 +26,8 @@ namespace boost { namespace simd
 
   namespace detail
   {
+    namespace tt = nsm::type_traits;
+
     // ---------------------------------------------------------------------------------------------
     // generate pattern for deinterleaving shuffle
     template<int I, bool SZ, typename Range> struct deinter_;
@@ -33,7 +35,7 @@ namespace boost { namespace simd
     template<int I, bool SZ, typename... Ps>
     struct deinter_<I,SZ, nsm::list<Ps...>>
     {
-      using sz    = std::integral_constant<int,sizeof...(Ps)/2>;
+      using sz    = tt::integral_constant<int,sizeof...(Ps)/2>;
       using type  = detail::pattern_< ((SZ && Ps::value>=sz::value) ? -1 :  2*Ps::value+I)...>;
     };
 
@@ -45,7 +47,7 @@ namespace boost { namespace simd
     template<int... Ps> struct find_deinterleave
     {
       using ref = boost::simd::detail::pattern_<Ps...>;
-      using sz  = std::integral_constant<int,sizeof...(Ps)/2>;
+      using sz  = tt::integral_constant<int,sizeof...(Ps)/2>;
       using lo  = nsm::range<int,0,sz::value>;
       using hi  = nsm::range<int,sz::value,2*sz::value>;
       using fwd = nsm::append<lo,hi>;

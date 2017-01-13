@@ -13,9 +13,12 @@
 #include <boost/simd/function/shuffle.hpp>
 #include <boost/simd/function/combine.hpp>
 #include <boost/simd/detail/dispatch/detail/declval.hpp>
+#include <boost/simd/detail/nsm.hpp>
 
 namespace boost { namespace simd { namespace detail
 {
+  namespace tt = nsm::type_traits;
+
   //------------------------------------------------------------------------------------------------
   // This meta-permutation implements the butterfly pattern required for log-tree based reductions.
   //
@@ -29,7 +32,7 @@ namespace boost { namespace simd { namespace detail
   template<int Step> struct butterfly_perm
   {
     template<typename I, typename>
-    struct  apply : std::integral_constant<int,(I::value >= Step) ? I::value-Step : I::value+Step>
+    struct  apply : tt::integral_constant<int,(I::value >= Step) ? I::value-Step : I::value+Step>
     {};
   };
 

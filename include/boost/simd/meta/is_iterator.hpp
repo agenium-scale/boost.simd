@@ -13,12 +13,13 @@
 #define BOOST_SIMD_META_IS_ITERATOR_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/dispatch/detail/declval.hpp>
-#include <type_traits>
 
 namespace boost { namespace simd
 {
   namespace bd = boost::dispatch;
+  namespace tt = nsm::type_traits;
   namespace detail
   {
 #if defined(BOOST_DISPATCH_USE_INCOMPLETE_STD)
@@ -64,7 +65,7 @@ namespace boost { namespace simd
     @tparam Type      Type to check
   **/
   template<typename T>
-  struct is_iterator : std::integral_constant<bool, detail::is_iterator_impl<T>::value>
+  struct is_iterator : tt::integral_constant<bool, detail::is_iterator_impl<T>::value>
   {};
 
   template<typename T>

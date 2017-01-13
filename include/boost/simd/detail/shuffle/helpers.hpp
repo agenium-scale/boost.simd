@@ -15,6 +15,8 @@
 
 namespace boost { namespace simd { namespace detail
 {
+  namespace tt = nsm::type_traits;
+
   // -----------------------------------------------------------------------------------------------
   // Check if any -1 is in a pattern pack
   template<int... Ps>
@@ -27,7 +29,7 @@ namespace boost { namespace simd { namespace detail
 
   // -----------------------------------------------------------------------------------------------
   // Return a mask depending on a given pattern
-  template<typename T, int P> struct zeroing_mask: std::integral_constant<T,P==-1 ? T(0) : ~(T(0))>
+  template<typename T, int P> struct zeroing_mask: tt::integral_constant<T,P==-1 ? T(0) : ~(T(0))>
   {};
 
   // -----------------------------------------------------------------------------------------------
@@ -40,7 +42,7 @@ namespace boost { namespace simd { namespace detail
     using idx_a0 = nsm::integral_list<bool,  (Is <  int(sizeof...(Is)))...              >;
     using idx_a1 = nsm::integral_list<bool, ((Is >= int(sizeof...(Is))) || (Is==-1))... >;
 
-    using type = std::integral_constant < int
+    using type = tt::integral_constant < int
                                         , 0x01*nsm::all<idx_a0>::value
                                         + 0x02*nsm::all<idx_a1>::value
                                         >;
@@ -48,15 +50,15 @@ namespace boost { namespace simd { namespace detail
 
   template<typename Perm> using side_t = typename side<Perm>::type;
 
-  using a0_side   = std::integral_constant<int, 0x01>;
-  using a1_side   = std::integral_constant<int, 0x02>;
-  using zero_side = std::integral_constant<int, 0x03>;
-  using both_side = std::integral_constant<int, 0x00>;
+  using a0_side   = tt::integral_constant<int, 0x01>;
+  using a1_side   = tt::integral_constant<int, 0x02>;
+  using zero_side = tt::integral_constant<int, 0x03>;
+  using both_side = tt::integral_constant<int, 0x00>;
 
   // -----------------------------------------------------------------------------------------------
   // Slide a permutation by an offset
   template<int I, int Offset>
-  struct remap : std::integral_constant<int,I==-1 ? -1 : I+Offset>
+  struct remap : tt::integral_constant<int,I==-1 ? -1 : I+Offset>
   {};
 
   // -----------------------------------------------------------------------------------------------
@@ -64,7 +66,7 @@ namespace boost { namespace simd { namespace detail
   template<int Bits, int I, typename Ps, std::uint8_t Fix = 0xFF> struct val
   {
     using P    = nsm::at_c<Ps,I/Bits>;
-    using type = std::integral_constant < std::uint8_t
+    using type = tt::integral_constant < std::uint8_t
                                         , P::value == -1 ? Fix : (P::value*Bits + (I%Bits))
                                         >;
   };
@@ -91,7 +93,7 @@ namespace boost { namespace simd { namespace detail
   {
     using sz   = nsm::size<Ps>;
     using P    = nsm::at_c<Ps,I/Bits>;
-    using type = std::integral_constant < std::uint8_t
+    using type = tt::integral_constant < std::uint8_t
                                         , P::value==-1  ? 0xFF
                                                         : ( (P::value < sz::value)
                                                             ? (P::value*Bits + (I%Bits))
@@ -111,9 +113,9 @@ namespace boost { namespace simd { namespace detail
   // Computes a byte pattern from index pattern for binary shuffle - right side
   template<int Bits, int I, typename Ps> struct right_val
   {
-    using sz    = std::integral_constant<int,nsm::size<Ps>::value>;
+    using sz    = tt::integral_constant<int,nsm::size<Ps>::value>;
     using P     = nsm::at_c<Ps,I/Bits>;
-    using type  = std::integral_constant < std::uint8_t
+    using type  = tt::integral_constant < std::uint8_t
                                         , P::value==-1  ? 0xFF
                                                         : ( (P::value >= sz::value)
                                                             ? ((P::value-sz::value)*Bits + (I%Bits))

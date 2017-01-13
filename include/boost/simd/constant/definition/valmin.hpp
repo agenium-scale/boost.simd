@@ -23,6 +23,8 @@ namespace boost { namespace simd
 {
   namespace tag
   {
+    namespace tt = nsm::type_traits;
+    
     struct valmin_ : boost::dispatch::constant_value_<valmin_>
     {
       BOOST_DISPATCH_MAKE_CALLABLE(ext,valmin_,boost::dispatch::constant_value_<valmin_>);
@@ -30,19 +32,19 @@ namespace boost { namespace simd
       struct value_map
       {
         template<typename X>
-        static std::integral_constant<X,-128> value(boost::dispatch::int8_<X> const&);
+        static tt::integral_constant<X,-128> value(boost::dispatch::int8_<X> const&);
 
         template<typename X>
-        static std::integral_constant<X,-32768> value(boost::dispatch::int16_<X> const&);
+        static tt::integral_constant<X,-32768> value(boost::dispatch::int16_<X> const&);
 
         template<typename X>
-        static std::integral_constant<X,-2147483647-1> value(boost::dispatch::int32_<X> const&);
+        static tt::integral_constant<X,-2147483647-1> value(boost::dispatch::int32_<X> const&);
 
         template<typename X>
-        static std::integral_constant<X,-9223372036854775807LL -1LL> value(boost::dispatch::int64_<X> const&);
+        static tt::integral_constant<X,-9223372036854775807LL -1LL> value(boost::dispatch::int64_<X> const&);
 
         template<typename X>
-        static std::integral_constant<X,X(0)> value(boost::dispatch::uint_<X> const&);
+        static tt::integral_constant<X,X(0)> value(boost::dispatch::uint_<X> const&);
 
         template<typename X>
         static nsm::single_<0xFF7FFFFF> value(boost::dispatch::single_<X> const&);

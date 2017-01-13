@@ -18,13 +18,14 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = ::boost::dispatch;
   namespace bs = ::boost::simd;
+  namespace tt = nsm::type_traits;
 
   template<typename A0, typename A1>
   struct bc_helper
   {
     using select_t  = nsm::bool_<(A1::value >= 0 && A1::value < A0::static_size)>;
-    using sel_t     = std::integral_constant<int, (A1::value >= A0::static_size/2) ? 1 : 0>;
-    using idx_t     = std::integral_constant<int, A1::value - sel_t::value*(A0::static_size/2)>;
+    using sel_t     = tt::integral_constant<int, (A1::value >= A0::static_size/2) ? 1 : 0>;
+    using idx_t     = tt::integral_constant<int, A1::value - sel_t::value*(A0::static_size/2)>;
     using type      = typename A0::template resize<A0::static_size/2>;
   };
 
