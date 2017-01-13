@@ -106,7 +106,7 @@ configure_file(cmake/FindBoost.SIMD.cmake.in          ${PROJECT_CMAKE_FIND} @ONL
 ## Install generated files
 ## See: http://stackoverflow.com/questions/10765885/how-to-install-your-custom-cmake-find-module
 if (WIN32)
-  set(CMAKE_CONFIG_INSTALL_DIR CMake)
+  set(CMAKE_CONFIG_INSTALL_DIR ${PROJECT_NAME}/CMake)
 else ()
   set(CMAKE_CONFIG_INSTALL_DIR share/cmake/${PROJECT_NAME})
 endif()
