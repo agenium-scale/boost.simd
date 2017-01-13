@@ -16,23 +16,21 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
-    Function object implementing is_unord capabilities
 
-    Returns @ref True if x or y is nan.
+    This function object returns @ref True if x or y is nan.
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_unord(x,y);
-    @endcode
+     Using `is_unord(x,y)` is similar to: `(x != x) || (y != y)`
 
-    is similar to:
+   @par Example:
 
-    @code
-    auto r = (x != x) || (y != y);
-    @endcode
+     @snippet is_unord.cpp is_unord
+
+   @par Possible output:
+
+     @snippet is_unord.txt is_unord
 
   **/
   as_logical_t<Value> is_unord(Value const& x, Value const& y);

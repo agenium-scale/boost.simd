@@ -7,13 +7,14 @@
 */
 //==================================================================================================
 //! [shuffle-perm]
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/shuffle.hpp>
 #include <iostream>
 
 struct last_
 {
-  template<typename I, typename C> struct apply : std::integral_constant<int, C::value-1> {};
+  template<typename I, typename C> struct apply : nsm::type_traits::integral_constant<int, C::value-1> {};
 };
 
 constexpr int reverse(int i, int c)

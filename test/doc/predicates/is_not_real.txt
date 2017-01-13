@@ -1,0 +1,10 @@
+//! [is_not_real]
+---- simd
+<- pf =                  (0, 1, -1, -2, 1.4013e-45, inf, -inf, -nan)
+-> bs::is_not_real(pf) = (false, false, false, false, false, false, false, false)
+---- scalar
+<- xf =                  1
+-> bs::is_not_real(xf) = false
+<- yf =                  1.4013e-45
+-> bs::is_not_real(yf) = false
+//! [is_not_real]

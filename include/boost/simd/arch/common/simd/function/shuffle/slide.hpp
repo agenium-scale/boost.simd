@@ -16,6 +16,8 @@
 
 namespace boost { namespace simd
 {
+  namespace tt = nsm::type_traits;
+
   // -----------------------------------------------------------------------------------------------
   // Repeat patterns hierarchy
   template<int Offset, typename P> struct slide_pattern : P
@@ -71,7 +73,7 @@ namespace boost { namespace simd
     // Locate proper sliding index
     template<int N, int... Ps> struct find_slide
     {
-      using checks = typename make_slides < std::integral_constant<int,sizeof...(Ps)>
+      using checks = typename make_slides < tt::integral_constant<int,sizeof...(Ps)>
                                           , nsm::range<int,-(N-1),N>
                                           >::type;
 
@@ -79,7 +81,7 @@ namespace boost { namespace simd
                                   , std::is_same<nsm::_1,nsm::integral_list<int,Ps...>>
                                   >;
 
-      using idx   = std::integral_constant<int, N-int(nsm::size<found>::value)>;
+      using idx   = tt::integral_constant<int, N-int(nsm::size<found>::value)>;
 
       using type = typename std::conditional< idx::value && (idx::value<N)
                                             , slide_pattern<idx::value,pattern_<Ps...>>

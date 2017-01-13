@@ -16,26 +16,21 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicatesq
-    Function object implementing is_invalid capabilities
 
-    Returns @ref True if x is inf, -inf or nan else returns @ref False
+    This function object returns @ref True if x is inf, -inf or nan, else returns @ref False
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_invalid(x);
-    @endcode
+     Using `is_invalid(x)` is similar to: `x-x != 0`
 
-    is similar to:
+   @par Example:
 
-    @code
-    auto r = x-x != 0;
-    @endcode
+     @snippet is_invalid.cpp is_invalid
 
-    @par Alias:
-    @c is_not_finite
+   @par Possible output:
+
+     @snippet is_invalid.txt is_invalid
 
   **/
   as_logical_t<Value> is_invalid(Value const& x);

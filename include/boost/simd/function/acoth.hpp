@@ -18,7 +18,7 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-hyperbolic
-    This fFunction object returns the hyperbolic cotangent argument \f$\frac12\log\frac{x+1}{x-1}\f$
+    This function object returns the hyperbolic cotangent argument \f$\frac12\log\frac{x+1}{x-1}\f$
 
 
     @see cosh, sinh, acosh, asinh, atanh, asech, acosh, acsch

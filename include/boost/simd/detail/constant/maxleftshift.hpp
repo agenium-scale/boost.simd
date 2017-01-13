@@ -45,13 +45,15 @@ namespace boost { namespace simd
 {
   namespace tag
   {
+    namespace tt = nsm::type_traits;
+
     struct maxleftshift_ : boost::dispatch::constant_value_<maxleftshift_>
     {
       BOOST_DISPATCH_MAKE_CALLABLE(ext,maxleftshift_,boost::dispatch::constant_value_<maxleftshift_>);
       struct value_map
       {
         template<typename X>
-        static std::integral_constant<typename boost::dispatch::as_integer_t<X>,sizeof(X)*CHAR_BIT-1> value(boost::dispatch::arithmetic_<X> const&);
+        static tt::integral_constant<typename boost::dispatch::as_integer_t<X>,sizeof(X)*CHAR_BIT-1> value(boost::dispatch::arithmetic_<X> const&);
       };
     };
   }

@@ -13,11 +13,11 @@
 #include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/detail/dispatch/meta/as_floating.hpp>
-#include <type_traits>
 
 namespace boost { namespace simd
 {
   namespace bd = boost::dispatch;
+  namespace tt = nsm::type_traits;
 
   namespace detail
   {
@@ -79,11 +79,11 @@ namespace boost { namespace simd
     // ---------------------------------------------------------------------------------------------
     // AVX shuffling mask computation
     template<int P0,int P1, int P2, int P3>
-    struct avx_mask_pd : std::integral_constant<int, ((P3&1)<<3 | (P2&1)<<2 | (P1&1)<<1 | (P0&1))>
+    struct avx_mask_pd : tt::integral_constant<int, ((P3&1)<<3 | (P2&1)<<2 | (P1&1)<<1 | (P0&1))>
     {};
 
     template<int P0,int P1,int P2,int P3>
-    struct avx_mask_ps : std::integral_constant < int
+    struct avx_mask_ps : tt::integral_constant < int
                                                 , ((P3&3)<<6 | (P2&3)<<4 | (P1&3)<<2 | (P0&3))
                                                 >
     {};

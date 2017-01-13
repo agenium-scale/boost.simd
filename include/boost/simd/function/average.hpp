@@ -23,7 +23,7 @@ namespace boost { namespace simd
 
     @par Notes
 
-    Call to `average(x, y)` for floating entries is similar to  `(x+y)/2`
+    Using `average(x, y)` for floating entries is similar to  `(x+y)/2`
 
     for integer types, it returns a rounded value at a distance guaranteed
     to be less than or equal to 0.5 of the average floating value, but may differ

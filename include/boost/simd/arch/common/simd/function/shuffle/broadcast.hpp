@@ -18,11 +18,13 @@ namespace boost { namespace simd
 {
   namespace detail
   {
+    namespace tt = nsm::type_traits;
+
     // ---------------------------------------------------------------------------------------------
     // Check if pattern is [N ... N]
     template<int P, int... Ps>
     struct is_broadcast : nsm::all< nsm::integral_list<int,Ps...>
-                                      , nsm::equal_to<nsm::_1,std::integral_constant<int,P>>
+                                      , nsm::equal_to<nsm::_1,tt::integral_constant<int,P>>
                                       >
     {};
 

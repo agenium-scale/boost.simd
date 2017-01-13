@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/arg.hpp>
 
-    Call to  `arg(x)` is equivalent to  `(is_negative(x)) ? Pi(as(x)) : Zero(as(x))`
+    Using  `arg(x)` is equivalent to  `(is_negative(x)) ? Pi(as(x)) : Zero(as(x))`
 
     @par Notes
 

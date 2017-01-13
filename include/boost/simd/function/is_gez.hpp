@@ -18,21 +18,20 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-predicates
-    Function object implementing is_gez capabilities
+    This function object returns @ref True or @ref False according x
+    is greater or equal to @ref Zero or not.
 
-    Returns @ref True or @ref False according x is greater or equal to @ref Zero or not.
+    @par Note
 
-    @par Semantic:
+      Using `is_gez(x)` is equivalent to `x >= 0`
 
-    @code
-    auto r = is_gez(x);
-    @endcode
+    @par Example:
 
-    is similar to:
+       @snippet is_gez.cpp is_gez
 
-    @code
-    auto r = x >= Zero;
-    @endcode
+    @par Possible output:
+
+       @snippet is_gez.txt is_gez
 
   **/
   as_logical_t<Value> is_gez(Value const& x);

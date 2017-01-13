@@ -16,23 +16,21 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
-    Function object implementing is_ord capabilities
 
-    Returns @ref True if neither x nor y is @ref Nan.
+    This function object returns @ref True if neither x nor y is @ref Nan.
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_ord(x,y);
-    @endcode
+     Using `is_ord(x,y)` is similar to: `(x == x) && (y == y)`
 
-    is similar to:
+   @par Example:
 
-    @code
-    auto r = (x == x) && (y == y);
-    @endcode
+     @snippet is_ord.cpp is_ord
+
+   @par Possible output:
+
+     @snippet is_ord.txt is_ord
 
   **/
   as_logical_t<Value> is_ord(Value const& x, Value const& y);

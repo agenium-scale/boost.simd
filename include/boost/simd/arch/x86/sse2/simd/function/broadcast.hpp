@@ -16,6 +16,7 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = ::boost::dispatch;
   namespace bs = ::boost::simd;
+  namespace tt = nsm::type_traits;
 
   BOOST_DISPATCH_OVERLOAD ( broadcast_
                           , (typename A0, typename A1)
@@ -84,7 +85,7 @@ namespace boost { namespace simd { namespace ext
     {
       // This shuffle the 32 bits packet of the broadcast so
       // we end up with [ In In+1 In In+1 In In+1 In In+1 ]
-      using partial_t = std::integral_constant< int
+      using partial_t = tt::integral_constant< int
                                               ,_MM_SHUFFLE( A1::value / 2,A1::value / 2
                                                           , A1::value / 2,A1::value / 2
                                                           )
@@ -92,7 +93,7 @@ namespace boost { namespace simd { namespace ext
 
       // This select either In or In+1 as 16 bits value and give us
       // [In In In In In In In In] or [In+1 In+1 In+1 In+1 In+1 In+1 In+1 In+1]
-      using fix_t = std::integral_constant< int
+      using fix_t = tt::integral_constant< int
                                           , _MM_SHUFFLE ( A1::value % 2,A1::value % 2
                                                         , A1::value % 2,A1::value % 2
                                                         )

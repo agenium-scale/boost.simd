@@ -22,7 +22,7 @@ namespace boost { namespace simd
     zero instead..
 
     @par Notes
-    Call to `minmod(x, y)` is similar to ` x*y > 0 ? min(x, y) : 0`
+    Using `minmod(x, y)` is similar to ` x*y > 0 ? min(x, y) : 0`
 
     @see min, minnum, minnummag, minmag
 

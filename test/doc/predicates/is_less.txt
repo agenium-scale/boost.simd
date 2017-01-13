@@ -1,0 +1,10 @@
+//! [is_less]
+---- simd
+<- pf =                  (0, 1, -1, -2, 1.4013e-45, inf, -inf, -nan)
+<- qf =                  (0, 1, -1, -2, 1.4013e-45, inf, -inf, -nan)
+-> bs::is_less(pf, qf) = (true, true, false, false, false, false, true, false)
+---- scalar
+<- xf =                  1
+<- yf =                  -nan
+-> bs::is_less(xf, yf) = false
+//! [is_less]

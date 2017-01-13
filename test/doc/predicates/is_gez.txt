@@ -1,0 +1,10 @@
+//! [is_gez]
+---- simd
+<- pf =                  (0, 1, -1, -2, 1.4013e-45, inf, -inf, -nan)
+-> bs::is_gez(pf) = (true, true, false, false, true, true, false, false)
+---- scalar
+<- xf =                  1
+-> bs::is_gez(xf) = true
+<- yf =                  1.4013e-45
+-> bs::is_gez(yf) = true
+//! [is_gez]

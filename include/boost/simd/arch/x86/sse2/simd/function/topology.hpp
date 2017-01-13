@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_TOPOLOGY_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_TOPOLOGY_HPP_INCLUDED
 
-#include <type_traits>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/arch/x86/sse1/simd/function/topology.hpp>
 #include <boost/simd/detail/dispatch/meta/as_floating.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
@@ -17,11 +17,12 @@
 namespace boost { namespace simd { namespace detail
 {
   namespace bd = boost::dispatch;
+  namespace tt = nsm::type_traits;
 
   // -----------------------------------------------------------------------------------------------
   // Local masking utility
   template<int P0,int P1>
-  struct mask_pd : std::integral_constant<int, _MM_SHUFFLE2(P1&1,P0&1)>
+  struct mask_pd : tt::integral_constant<int, _MM_SHUFFLE2(P1&1,P0&1)>
   {};
 
   // -----------------------------------------------------------------------------------------------

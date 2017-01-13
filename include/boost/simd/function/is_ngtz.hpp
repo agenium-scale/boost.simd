@@ -16,28 +16,21 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
-    Function object implementing is_ngtz capabilities
 
-    Returns @ref True if x is not greater than @ref Zero else returns @ref False.
+    This function object returns @ref True if x is not greater than @ref Zero else returns @ref False.
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_ngtz(x);
-    @endcode
+     Using `is_ngtz(x)` is similar to: `!(x > 0)`
 
-    is similar to:
+   @par Example:
 
-    @code
-    auto r = !(x > 0);
-    @endcode
+     @snippet is_ngtz.cpp is_ngtz
 
-    @par Note:
+   @par Possible output:
 
-    Due to existence of @ref Nan, this is not equivalent to a call to
-    @ref is_lez for floating types
+     @snippet is_ngtz.txt is_ngtz
 
   **/
   as_logical_t<Value> is_ngtz(Value const& x);

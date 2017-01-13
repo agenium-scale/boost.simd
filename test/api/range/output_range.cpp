@@ -24,8 +24,8 @@ STF_CASE_TPL("distance", STF_NUMERIC_TYPES)
   auto r  = output_range(data);
   auto rf = output_range<8>(fixed_data);
 
-  STF_EQUAL( std::distance(std::begin(r), std::end(r))  , 3);
-  STF_EQUAL( std::distance(std::begin(rf), std::end(rf)), 3);
+  STF_EQUAL( std::distance(boost::begin(r), boost::end(r))  , 3);
+  STF_EQUAL( std::distance(boost::begin(rf), boost::end(rf)), 3);
 }
 
 STF_CASE_TPL("iteration", STF_NUMERIC_TYPES)

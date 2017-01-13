@@ -16,23 +16,21 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
-    Function object implementing is_inf capabilities
 
-    Returns @ref True if x is inf or -inf else returns @ref False.
+    This function object returns @ref True if x is inf or -inf else returns @ref False.
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_inf(x);
-    @endcode
+     Using `is_inf(x)` is similar to `(x == Inf) || (x == -Inf)`
 
-    is similar to:
+   @par Example:
 
-    @code
-    auto r = (x == Inf) || (x == -Inf);
-    @endcode
+     @snippet is_inf.cpp is_inf
+
+   @par Possible output:
+
+     @snippet is_inf.txt is_inf
 
   **/
   as_logical_t<Value> is_inf(Value const& x);

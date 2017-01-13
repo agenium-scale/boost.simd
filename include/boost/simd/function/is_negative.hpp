@@ -16,45 +16,26 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
-    Function object implementing is_negative capabilities
 
-    Returns @ref True if x is negative else @ref False.
+    This function object returns @ref True if x is negative else @ref False.
 
     This function differs from @ref is_ltz for floating point arguments,
     because @ref Mzero is negative but not less than zero, and @ref Mzero is
     not positive and not greater than zero, It's probably @ref is_ltz that
     you want.
 
-    @par Semantic:
+   @par Note
 
-    @code
-    auto r = is_negative(x);
-    @endcode
+     Using `is_negative(x)` is similar to `bitofsign(x) == 1`
 
-    is similar to:
+   @par Example:
 
-    @code
-    if x is of signed type
-      auto r = bitofsign(x) == 1;
-    else
-      auto r = False;
-    @endcode
+     @snippet is_negative.cpp is_negative
 
-    @par Note:
+   @par Possible output:
 
-    @ref Mzero is the floating point 'minus zero',
-    i.e. all bits are @ref Zero but the sign bit.
-    Such a value is treated as @ref Zero by IEEE standards.
-
-    behaviour of is_negative on @ref Nan entry is undefined.
-
-    @par Alias
-
-    signbit
-
-    @see is_positive,  Mzero, bitofsign
+     @snippet is_negative.txt is_negative
 
   **/
   as_logical_t<Value> is_negative(Value const& x);

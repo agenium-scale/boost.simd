@@ -6,6 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/function/scalar/shuffle.hpp>
 #include <scalar_test.hpp>
 
@@ -27,7 +28,7 @@ STF_CASE_TPL("Check binary shuffle behavior with direct permutation", STF_NUMERI
 template<int N> struct grab_
 {
   template<typename I, typename C>
-  struct apply : std::integral_constant<int, N>
+  struct apply : nsm::type_traits::integral_constant<int, N>
   {};
 };
 
