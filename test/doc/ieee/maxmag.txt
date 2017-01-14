@@ -1,0 +1,10 @@
+//! [maxmag]
+---- simd
+ <- pf =                 (3, -2, -0, 0)
+ <- qf =                 (4, -1, 0, -nan)
+ -> bs::maxmag(pf, qf) = (4, -2, -0, 0)
+---- scalar
+ xf =                    3
+ yf =                    4
+ -> bs::maxmag(xf, yf) = 4
+//! [maxmag]

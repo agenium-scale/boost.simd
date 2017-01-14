@@ -8,6 +8,7 @@
 
 add_subdirectory(arithmetic)
 add_subdirectory(hyperbolic)
+add_subdirectory(ieee)
 add_subdirectory(predicates)
 add_subdirectory(trigonometric)
 add_subdirectory(swar)
