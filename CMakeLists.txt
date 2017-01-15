@@ -85,6 +85,36 @@ if (DEFINED USE_SELF_BOOST)
   install(DIRECTORY ${NS_CMAKE_EXTERNAL_PROJECTS_DESTINATION}/include DESTINATION .)
 endif()
 
+## Generate Boost.SIMDConfig.cmake that will be installed to make find_package useable
+## -------------------------------------------------------------------------------------------------
+set(PROJECT_CMAKE_CONFIG         ${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake)
+set(PROJECT_CMAKE_CONFIG_VERSION ${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake)
+set(PROJECT_CMAKE_FIND           ${PROJECT_BINARY_DIR}/Find${PROJECT_NAME}.cmake)
+
+## Extract each version components
+string(REPLACE "." ";" PROJECT_VERSION_COMPONENTS ${PROJECT_VERSION})
+list(GET PROJECT_VERSION_COMPONENTS 0 PROJECT_MAJOR_VERSION)
+list(GET PROJECT_VERSION_COMPONENTS 1 PROJECT_MINOR_VERSION)
+list(GET PROJECT_VERSION_COMPONENTS 2 PROJECT_SUBMINOR_VERSION)
+list(GET PROJECT_VERSION_COMPONENTS 3 PROJECT_SUBSUBMINOR_VERSION)
+
+## Generate final files
+configure_file(cmake/Boost.SIMDConfig.cmake.in        ${PROJECT_CMAKE_CONFIG} @ONLY)
+configure_file(cmake/Boost.SIMDConfigVersion.cmake.in ${PROJECT_CMAKE_CONFIG_VERSION} @ONLY)
+configure_file(cmake/FindBoost.SIMD.cmake.in          ${PROJECT_CMAKE_FIND} @ONLY)
+
+## Install generated files
+## See: http://stackoverflow.com/questions/10765885/how-to-install-your-custom-cmake-find-module
+if (WIN32)
+  set(CMAKE_CONFIG_INSTALL_DIR ${PROJECT_NAME}/CMake)
+else ()
+  set(CMAKE_CONFIG_INSTALL_DIR share/cmake/${PROJECT_NAME})
+endif()
+install(
+    FILES ${PROJECT_CMAKE_CONFIG} ${PROJECT_CMAKE_CONFIG_VERSION} ${PROJECT_CMAKE_FIND}
+    DESTINATION ${CMAKE_CONFIG_INSTALL_DIR}
+)
+
 ## Add include directories
 ## -------------------------------------------------------------------------------------------------
 include_directories(
