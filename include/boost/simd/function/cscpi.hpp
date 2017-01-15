@@ -16,27 +16,29 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing cscpi capabilities
+    This function object returns the cosecant of angle in
+    \f$\pi\f$ multiples: \f$1/(\sin(\pi x)\f$.
 
-    cosecant of angle in \f$\pi\f$ multiples: \f$\sin(1/(\pi x))\f$.
+   @par Note
 
-    @par Semantic:
+      As most other trigonometric function cscpi can be called with
+      a second optional parameter  which is a tag on speed and accuracy
+      (see @ref cos for further details)
 
-    For every parameter of floating type T
+   @see cscd, csc,
 
-    @code
-    T r = cscpi(x);
-    @endcode
 
-    As most other trigonometric function cscpi can be called with a second optional parameter
-    which is a tag on speed and accuracy (see @ref cos for further details)
+   @par Example:
 
-    @see cscd, csc,
+     @snippet cscpi.cpp cscpi
+
+   @par Possible output:
+
+     @snippet cscpi.txt cscpi
 
   **/
-  Value cscpi(Value const & v0);
+  Value cscpi(Value const & x);
 } }
 #endif
 

@@ -16,27 +16,28 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing acot capabilities
+    This function object returns the inverse cotangent.
 
-    inverse cotangent.
+   @par Note
 
-    @par Semantic:
+      For every parameter of floating type `r = acot(x)`
+      returns the arc @c r in the interval  \f$[0, \pi[\f$ such that
+      <tt>cot(r) == x</tt>.
 
-    For every parameter of floating type
+      @see acotd, acotpi, cot
 
-    @code
-    T r = acot(x);
-    @endcode
 
-    Returns the arc @c r in the interval
-    \f$[0, \pi[\f$ such that <tt>cot(r) == x</tt>.
+   @par Example:
 
-    @see acotd, acotpi, cot
+     @snippet acot.cpp acot
+
+   @par Possible output:
+
+     @snippet acot.txt acot
 
   **/
-  Value acot(Value const & v0);
+  Value acot(Value const & x);
 } }
 #endif
 

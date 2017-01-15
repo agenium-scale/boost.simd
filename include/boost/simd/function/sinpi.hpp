@@ -16,24 +16,23 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing sinpi capabilities
+    This function object returns the sine of angle in \f$\pi\f$ multiples:
+    \f$\sin(\pi x)\f$.
 
-    sine of angle in \f$\pi\f$ multiples: \f$\sin(\pi x)\f$.
+   @see sine, sincospi, sin, sind
 
-    @par Semantic:
 
-    For every parameter of floating type T
+   @par Example:
 
-    @code
-    T r = sinpi(x);
-    @endcode
+     @snippet sinpi.cpp sinpi
 
-    @see sine, sincospi, sin, sind
+   @par Possible output:
+
+     @snippet sinpi.txt sinpi
 
   **/
-  Value sinpi(Value const & v0);
+  Value sinpi(Value const & x);
 } }
 #endif
 

@@ -16,28 +16,28 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing cot capabilities
+    This function object returns the cotangent of the input in radian: \f$\cos(x)/\sin(x)\f$.
 
-    cotangent of the input in radian: \f$\cos(x)/\sin(x)\f$.
+   @par Note
 
-    @par Semantic:
+      As most other trigonometric function cot can be called
+      with a second optional parameter  which is a tag on speed and accuracy
+      (see @ref cos for further details)
 
-    For every parameter of floating type
-
-    @code
-    auto r = cot(x);
-    @endcode
+      @see cos, sin, tan, cotd, cotpi
 
 
-    As most other trigonometric function cot can be called with a second optional parameter
-    which is a tag on speed and accuracy (see @ref cos for further details)
+   @par Example:
 
-    @see cos, sin, tan, cotd, cotpi
+     @snippet cot.cpp cot
+
+   @par Possible output:
+
+     @snippet cot.txt cot
 
   **/
-  Value cot(Value const & v0);
+  Value cot(Value const & x);
 } }
 #endif
 

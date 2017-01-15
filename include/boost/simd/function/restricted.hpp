@@ -24,16 +24,24 @@ namespace boost { namespace simd
       (thus avoiding tests and branching), but ensures an as accurate though
       speedier version on the limited range.
 
-      For example if you are sure that all input angles are between \f$-\pi/4\f$ and \f$\pi/4\f$, then
-      this may be used be used with @ref cos : restricted_(cos) (or with the other direct trigonometric functions).
+   @par Notes
+
+      For example if you are sure that all input angles are between
+      \f$-\pi/4\f$ and \f$\pi/4\f$, then
+      this may be used be used with @ref cos : restricted_(cos)
+      (or with the other direct trigonometric functions).
 
        - the simd gain will be at least 5 for floats on an sse4.2 sytem
        - the result will be @ref Nan outside the limited interval...
-    @par Semantic
 
-    @code
-    T r = restricted_(func)(< func parameters >);
-    @endcode
+
+   @par Example:
+
+     @snippet restricted.cpp restricted
+
+   @par Possible output:
+
+     @snippet restricted.txt restricted
 
   **/
   template<typename T> auto restricted_(T const& x) {}

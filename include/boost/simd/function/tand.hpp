@@ -16,27 +16,29 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing tand capabilities
+    This function object returns the tangent of the input in degrees:
+    \f$\sin(\pi x/180)/\cos(\pi x/180) \f$.
 
-    tangent of the input in degrees: \f$\sin(\pi x/180)/\cos(\pi x/180) \f$.
+   @par Note
 
-    @par Semantic:
+      As most other trigonometric function tand can be called with a
+      second optional parameter  which is a tag on speed and accuracy
+      (see @ref cos for further details)
 
-    For every parameter of floating type
+   @see tan, tanpi
 
-    @code
-    auto r = tand(x);
-    @endcode
 
-    As most other trigonometric function tand can be called with a second optional parameter
-    which is a tag on speed and accuracy (see @ref cos for further details)
+   @par Example:
 
-    @see tan, tanpi
+     @snippet tand.cpp tand
+
+   @par Possible output:
+
+     @snippet tand.txt tand
 
   **/
-  Value tand(Value const & v0);
+  Value tand(Value const & x);
 } }
 #endif
 

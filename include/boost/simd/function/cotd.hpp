@@ -16,28 +16,29 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing cotd capabilities
+    This function object returns the cotangent of input in degree:
+    \f$\cos(\pi x/180)/\sin(\pi x/180)\f$.
 
-    cotangent of input in degree: \f$\cos(\pi x/180)/\sin(\pi x/180) \f$.
+   @par Note
+
+      s most other trigonometric function cotd can be called
+      with a second optional parameter  which is a tag on speed
+      and accuracy (see @ref cos for further details)
+
+   @see cos, sin, tan, cot, cotpi
 
 
-    @par Semantic:
+   @par Example:
 
-    For every parameter of floating type
+     @snippet cotd.cpp cotd
 
-    @code
-    auto r = cotd(x);
-    @endcode
+   @par Possible output:
 
-    As most other trigonometric function cotd can be called with a second optional parameter
-    which is a tag on speed and accuracy (see @ref cos for further details)
-
-    @see cos, sin, tan, cot, cotpi
+     @snippet cotd.txt cotd
 
   **/
-  Value cotd(Value const & v0);
+  Value cotd(Value const & x);
 } }
 #endif
 

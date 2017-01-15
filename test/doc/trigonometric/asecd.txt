@@ -1,0 +1,8 @@
+//! [asecd]
+---- simd
+<- pf =           (1, 2, -1, 0.5)
+-> bs::asecd(pf) = (0, 60, 180, -nan)
+---- scalar
+<- xf =           2
+-> bs::asecd(xf) = 60
+//! [asecd]

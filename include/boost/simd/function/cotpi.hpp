@@ -16,27 +16,29 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing cotpi capabilities
+    This function object returns the cotangent of input in
+    \f$\pi\f$ multiples: \f$\cos(\pi x)/sin(\pi x)\f$.
 
-    cotangent of input in \f$\pi\f$ multiples: \f$\cos(\pi x)/sin(\pi x)\f$.
+   @par Note
 
-    @par Semantic:
+      As most other trigonometric function cotd can be called
+      with a second optional parameter  which is a tag on speed
+      and accuracy (see @ref cos for further details)
 
-    For every parameter of floating type
+   @see cos, sin, tan, cot, cotpi
 
-    @code
-    auto r = cotpi(x);
-    @endcode
 
-    As most other trigonometric function cotd can be called with a second optional parameter
-    which is a tag on speed and accuracy (see @ref cos for further details)
+   @par Example:
 
-    @see cos, sin, tan, cot, cotpi
+     @snippet cotpi.cpp cotpi
+
+   @par Possible output:
+
+     @snippet cotpi.txt cotpi
 
   **/
-  Value cotpi(Value const & v0);
+  Value cotpi(Value const & x);
 } }
 #endif
 

@@ -1,0 +1,8 @@
+//! [asind]
+---- simd
+<- pf =           (1, 2, -1, 0.5)
+-> bs::asind(pf) = (90, -nan, -90, 30)
+---- scalar
+<- xf =           2
+-> bs::asind(xf) = -nan
+//! [asind]

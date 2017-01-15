@@ -146,6 +146,7 @@ namespace boost { namespace simd
 #include <boost/simd/function/acotd.hpp>
 #include <boost/simd/function/acscd.hpp>
 #include <boost/simd/function/acscpi.hpp>
+#include <boost/simd/function/acotpi.hpp>
 #include <boost/simd/function/acsc.hpp>
 #include <boost/simd/function/asecd.hpp>
 #include <boost/simd/function/asecpi.hpp>

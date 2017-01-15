@@ -16,40 +16,27 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing atan2pi capabilities
+    This function object returns the atan2pi function : atan2 in pi multiples.
 
-    atan2pi function : atan2 in pi multiples.
+   @par Note
 
-    @par Semantic:
+      For every parameters of same floating type `atan2pi(y, x)`
+      is similar  to: `atan2(y, x)/Pi`
 
-    For every parameters of same floating type
 
-    @code
-    auto r = atan2pi(y, x);
-    @endcode
+    @see atan2,  atan2pi
 
-    is similar  to:
+   @par Example:
 
-    @code
-    auto r =  atan2(y, x)/Pi;
-    @endcode
+     @snippet atan2pi.cpp atan2pi
 
-    as it is quadrant aware.
+   @par Possible output:
 
-    For any real arguments @c x and @c y not both equal to zero, <tt>atan2pi(y, x)</tt>
-    is the angle in degrees between the positive x-axis of a plane and the point
-    given by the coordinates  <tt>(x, y)</tt>.
-
-    It is also the angle in \f$[-1, 1[\f$ for which
-    \f$x/\sqrt{x^2+y^2}\f$ and \f$y/\sqrt{x^2+y^2}\f$
-    are respectively the sine and the cosine.
-
-    @see atand, atan2, atan2d, atan
+     @snippet atan2pi.txt atan2pi
 
   **/
-  Value atan2pi(Value const& x, const Value &y);
+  Value atan2pi(Value const& y, const Value &x);
 } }
 #endif
 

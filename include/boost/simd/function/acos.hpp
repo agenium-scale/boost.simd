@@ -16,13 +16,10 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing acos capabilities
+    This function object returns the inverse cosine in radian.
 
-    inverse cosine in radian.
-
-    @par Call:
+    @par Call
 
     For every parameter of floating type
 
@@ -44,6 +41,15 @@ namespace boost { namespace simd
       (up to circa 256 ulp), but is faster by a factor 2 than the pedantic version.
 
     @see acosd, acospi, cos
+
+
+   @par Example:
+
+     @snippet acos.cpp acos
+
+   @par Possible output:
+
+     @snippet acos.txt acos
 
   **/
   Value acos(Value const & x);
