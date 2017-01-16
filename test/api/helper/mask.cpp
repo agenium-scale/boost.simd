@@ -8,11 +8,13 @@
 //==================================================================================================
 #include <boost/simd/mask.hpp>
 #include <boost/simd/detail/dispatch/hierarchy_of.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/pointee.hpp>
 #include <simd_test.hpp>
 
 using namespace boost::simd;
 using namespace boost::dispatch;
+using namespace nsm;
 
 STF_CASE( "Check masked pointer interface" )
 {
@@ -48,18 +50,18 @@ STF_CASE( "hierarchy_of of masked pointer")
   using zero_c_masked_ptr_t = decltype(m4);
 
   STF_TYPE_IS ( hierarchy_of_t<masked_ptr_t>
-              , (masked_pointer_<hierarchy_of_t<float,masked_ptr_t>, std::false_type>)
+              , (masked_pointer_<hierarchy_of_t<float,masked_ptr_t>, type_traits::false_type>)
               );
 
   STF_TYPE_IS ( hierarchy_of_t<zero_masked_ptr_t>
-              , (masked_pointer_<hierarchy_of_t<float,zero_masked_ptr_t>, std::true_type>)
+              , (masked_pointer_<hierarchy_of_t<float,zero_masked_ptr_t>, type_traits::true_type>)
               );
 
   STF_TYPE_IS ( hierarchy_of_t<c_masked_ptr_t>
-              , (masked_pointer_<hierarchy_of_t<char const,c_masked_ptr_t>, std::false_type>)
+              , (masked_pointer_<hierarchy_of_t<char const,c_masked_ptr_t>, type_traits::false_type>)
               );
 
   STF_TYPE_IS ( hierarchy_of_t<zero_c_masked_ptr_t>
-              , (masked_pointer_<hierarchy_of_t<char const,zero_c_masked_ptr_t>, std::true_type>)
+              , (masked_pointer_<hierarchy_of_t<char const,zero_c_masked_ptr_t>, type_traits::true_type>)
               );
 }
