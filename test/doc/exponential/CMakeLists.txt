@@ -6,11 +6,8 @@
 ##                            http://www.boost.org/LICENSE_1_0.txt
 ##===================================================================================================
 
-add_subdirectory(arithmetic)
-add_subdirectory(bitwise)
-add_subdirectory(exponential)
-add_subdirectory(hyperbolic)
-add_subdirectory(ieee)
-add_subdirectory(predicates)
-add_subdirectory(trigonometric)
-add_subdirectory(swar)
+SET( SOURCES
+
+  )
+
+make_unit( "doc.exponential" ${SOURCES})
