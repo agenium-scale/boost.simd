@@ -17,18 +17,18 @@ using pack_ft = bs::pack <float, 4>;
 
 int main()
 {
-  pack_ft pf = {1.0f, 2.0f, -1.0f, 0.5f};
+  pack_ft pf = {1.0f, 3.0f, -1.0f, 0.5f};
 
   std::cout
     << "---- simd" << '\n'
-    << "<- pf =           " << pf << '\n'
+    << "<- pf =               " << pf << '\n'
     << "-> bs::nextpow2(pf) = " << bs::nextpow2(pf) << '\n';
 
-  float xf = 2.0f;
+  float xf = 7.0f;
 
   std::cout
     << "---- scalar"  << '\n'
-    << "<- xf =           " << xf << '\n'
+    << "<- xf =               " << xf << '\n'
     << "-> bs::nextpow2(xf) = " << bs::nextpow2(xf) << '\n';
   return 0;
 }

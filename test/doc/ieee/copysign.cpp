@@ -17,21 +17,21 @@ using pack_ft = bs::pack <float, 4>;
 
 int main()
 {
-  pack_ft pf = {1.0f, 2.0f, -1.0f, 0.5f};
-  pack_ft qf = {2.0f, -1.0f, 0.5f, 1.0f};
+  pack_ft pf = {1.0f, 2.0f,  0.5f,  0.5f};
+  pack_ft qf = {2.0f, -1.0f, 0.0f, -0.0f};
 
   std::cout
     << "---- simd" << '\n'
-    << "<- pf =           " << pf << '\n'
-    << "<- qf =           " << qf << '\n'
+    << "<- pf =                    " << pf << '\n'
+    << "<- qf =                    " << qf << '\n'
      << "-> bs::copysign(pf, qf) = " << bs::copysign(pf, qf) << '\n';
 
   float xf = 2.0f, yf = -1.0f;
 
   std::cout
     << "---- scalar"  << '\n'
-    << "<- xf =           " << xf << '\n'
-    << "<- yf =           " << yf << '\n'
+    << "<- xf =                   " << xf << '\n'
+    << "<- yf =                   " << yf << '\n'
     << "-> bs::copysign(xf, yf) = " << bs::copysign(xf, yf) << '\n';
   return 0;
 }

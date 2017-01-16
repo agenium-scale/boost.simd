@@ -16,32 +16,23 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing minnum capabilities
-
-     Returns the minimum value, ignoring nans.
-
-    @par Semantic:
-
-    @code
-    auto r = minnum(x,y);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = (is_nan(x) ? y : (isnan(y) ? x : min(x, y));;
-    @endcode
-
-    @par Alias:
-    fmin
-
-    With the std_ decorator std_(minnum)(x, y) calls the stdlibc++ function std::fmin.
+    This function object returns the minimum value, ignoring nans.
 
     @par Decorators
 
-    std_ for floating entries
+    std_ for floating entries calls the stdlibc++ function std::fmin.
+
+    @see min, minmag, minnummag
+
+    @par Example:
+
+      @snippet minnum.cpp minnum
+
+    @par Possible output:
+
+       @snippet minnum.txt minnum
+
 
   **/
   Value minnum(Value const & x, Value const& y);

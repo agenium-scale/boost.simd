@@ -16,25 +16,22 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing copysign capabilities
+    This function object returns @c x with the sign of @c y.
 
-    Returns x with the sign of y
+   @par Note
 
-    @par Semantic:
+     `copysign(x,y)` is similar to: `is_positive(y) ? abs(x) : -(abs(x))`
 
-    @code
-    auto r = copysign(x,y);
-    @endcode
+   @see sign, signnz, is_positive
 
-    is similar to:
+   @par Example:
 
-    @code
-    auto r = is_positive(y) ? abs(x) : -(abs(x));
-    @endcode
+     @snippet copysign.cpp copysign
 
-    @see abs, is_positive;
+   @par Possible output:
+
+     @snippet copysign.txt copysign
 
   **/
   Value copysign(Value const & x, Value const& y);

@@ -21,18 +21,18 @@ int main()
   pack_ft qf = { 4.0f, -1.0f,  0.0f, bs::Nan<float>() };
   std::cout
     <<  "---- simd" << '\n'
-    << " <- pf =                             " << pf << '\n'
-    << " <- qf =                             " << qf << '\n'
-    << " -> bs::maxnum(pf, qf) =                " << bs::maxnum(pf, qf) << '\n'
-    << " -> bs::std_(bs::maxnum)(pf, qf) =      " << bs::std_(bs::maxnum)(pf, qf) << '\n';
+    << " <- pf =                           " << pf << '\n'
+    << " <- qf =                           " << qf << '\n'
+    << " -> bs::maxnum(pf, qf) =           " << bs::maxnum(pf, qf) << '\n'
+    << " -> bs::std_(bs::maxnum)(pf, qf) = " << bs::std_(bs::maxnum)(pf, qf) << '\n';
 
   float xf = 3.0f, yf = 4.0f;
 
   std::cout
     << "---- scalar"  << '\n'
-    << " xf =                                " << xf << '\n'
-    << " yf =                                " << yf << '\n'
-    << " -> bs::maxnum(xf, yf) =                " << bs::maxnum(xf, yf) << '\n';
+    << " xf =                              " << xf << '\n'
+    << " yf =                              " << yf << '\n'
+    << " -> bs::maxnum(xf, yf) =           " << bs::maxnum(xf, yf) << '\n';
   return 0;
 }
 //! [maxnum]

@@ -21,14 +21,14 @@ int main()
 
   std::cout
     << "---- simd" << '\n'
-    << "<- pf =           " << pf << '\n'
+    << "<- pf =               " << pf << '\n'
     << "-> bs::mantissa(pf) = " << bs::mantissa(pf) << '\n';
 
   float xf = 2.0f;
 
   std::cout
     << "---- scalar"  << '\n'
-    << "<- xf =           " << xf << '\n'
+    << "<- xf =               " << xf << '\n'
     << "-> bs::mantissa(xf) = " << bs::mantissa(xf) << '\n';
   return 0;
 }

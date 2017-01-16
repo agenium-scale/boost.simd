@@ -21,14 +21,14 @@ int main()
 
   std::cout
     << "---- simd" << '\n'
-    << "<- pf =           " << pf << '\n'
+    << "<- pf =                  " << pf << '\n'
     << "-> bs::predecessor(pf) = " << bs::predecessor(pf) << '\n';
 
   float xf = 2.0f;
 
   std::cout
     << "---- scalar"  << '\n'
-    << "<- xf =           " << xf << '\n'
+    << "<- xf =                  " << xf << '\n'
     << "-> bs::predecessor(xf) = " << bs::predecessor(xf) << '\n';
   return 0;
 }

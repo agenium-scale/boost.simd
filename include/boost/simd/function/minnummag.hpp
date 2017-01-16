@@ -16,25 +16,16 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing minnummag capabilities
+    This function object returns the input value which have the least absolute value, ignoring nan.
 
-    Returns the input value which have the least absolute value, ignoring nan.
+   @par Example:
 
-    @par Semantic:
+     @snippet minnummag.cpp minnummag
 
-    @code
-    auto r = minnummag(x,y);
-    @endcode
+   @par Possible output:
 
-    is similar to:
-
-    @code
-    auto r =  is_nan(x) ? y : (is_nan(y) ? x : minmag(x, y));;
-    @endcode
-
-    @see min, minnum, minmag, is_nan
+     @snippet minnummag.txt minnummag
 
   **/
   Value minnummag(Value const & x, Value const& y);

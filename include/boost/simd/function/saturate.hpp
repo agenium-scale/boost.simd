@@ -16,11 +16,8 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing saturate capabilities
-
-    Returns the saturated value of the first input in the template parameter type,
+    This function object returns the saturated value of the first input in the template parameter type,
     but in the same type as the input.
 
     @par Semantic:
@@ -47,8 +44,17 @@ namespace boost { namespace simd
     Let us recall that @ref Valmin and @ref Minf (resp. @ref Valmax and @ref Inf)
     are identical if Target is  an integer type.
 
+
+   @par Example:
+
+     @snippet saturate.cpp saturate
+
+   @par Possible output:
+
+     @snippet saturate.txt saturate
+
   **/
-  Value saturate(Value const & v0);
+  Value saturate(Value const & x);
 } }
 #endif
 

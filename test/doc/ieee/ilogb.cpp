@@ -21,14 +21,14 @@ int main()
 
   std::cout
     << "---- simd" << '\n'
-    << "<- pf =           " << pf << '\n'
+    << "<- pf =            " << pf << '\n'
     << "-> bs::ilogb(pf) = " << bs::ilogb(pf) << '\n';
 
   float xf = 2.0f;
 
   std::cout
     << "---- scalar"  << '\n'
-    << "<- xf =           " << xf << '\n'
+    << "<- xf =            " << xf << '\n'
     << "-> bs::ilogb(xf) = " << bs::ilogb(xf) << '\n';
   return 0;
 }

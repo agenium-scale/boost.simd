@@ -16,31 +16,25 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing safe_min capabilities
-
-    Returns a safe mininimal value relative to the input, i.e. a
+    This function object returns a safe mininimal value relative to the input, i.e. a
     value which will not underflow when divided by the input.
 
-    @par Semantic:
+   @par Note
 
-    For every parameter of type @c T
+      For every parameter of type @c T `safe_min(x)` is similar to: `Sqrtsmallestposval<T>()*abs(x)`
 
-    @code
-    auto r = safe_min(x);
-    @endcode
 
-    is similar to:
+   @par Example:
 
-    @code
-    auto r =  Sqrtsmallestposval<T>()*abs(x);
-    @endcode
+     @snippet safe_min.cpp safe_min
 
-    @see Sqrtsmallestposval, safe_max
+   @par Possible output:
+
+     @snippet safe_min.txt safe_min
 
   **/
-  Value safe_min(Value const & v0);
+  Value safe_min(Value const & x);
 } }
 #endif
 

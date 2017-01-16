@@ -16,30 +16,27 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing signnz capabilities
-
-    Returns the sign of x. I.e. -1 or 1, according
+    This function object returns the sign of x. I.e. -1 or 1, according
     x is negative or positive.
-
     This function never returns @ref Zero (zero is considered positive for integers).
-
     For floating point numbers the bit of sign is taken into account and so
     we always have signnz(-z) == -signnz(z)).
-
     The result for @ref Nan entry is undefined.
-
-    @par Semantic:
-
-    @code
-    auto r = signnz(x);
-    @endcode
 
     @see Mzero, sign, is_negative, is_positive
 
+
+   @par Example:
+
+     @snippet signnz.cpp signnz
+
+   @par Possible output:
+
+     @snippet signnz.txt signnz
+
   **/
-  Value signnz(Value const & v0);
+  Value signnz(Value const & x);
 } }
 #endif
 

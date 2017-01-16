@@ -21,14 +21,14 @@ int main()
 
   std::cout
     << "---- simd" << '\n'
-    << "<- pf =           " << pf << '\n'
+    << "<- pf =                 " << pf << '\n'
     << "-> bs::fpclassify(pf) = " << bs::fpclassify(pf) << '\n';
 
   float xf = 2.0f;
 
   std::cout
     << "---- scalar"  << '\n'
-    << "<- xf =           " << xf << '\n'
+    << "<- xf =                 " << xf << '\n'
     << "-> bs::fpclassify(xf) = " << bs::fpclassify(xf) << '\n';
   return 0;
 }

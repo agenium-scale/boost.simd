@@ -16,28 +16,21 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing frac capabilities
-
-    This function returns the fractional part of the input
-
-    @par Semantic:
-
-    @code
-    auto r = frac(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r =  x-trunc(x);
-    @endcode
+    This function object returns the fractional part of the input i.e. @c x-trunc(x).
 
     @see trunc, modf
 
+   @par Example:
+
+     @snippet frac.cpp frac
+
+   @par Possible output:
+
+     @snippet frac.txt frac
+
   **/
-  Value frac(Value const & v0);
+  Value frac(Value const & x);
 } }
 #endif
 

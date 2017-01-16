@@ -22,10 +22,10 @@ int main()
   std::tie(pe, pf) = bs::modf(pf);
   std::cout
     << "---- simd" << '\n'
-    << "<- px =           " << px << '\n'
+    << "<- px =                              " << px << '\n'
     << "-> std::tie(pe, pf) = bs::modf(px) = " << '\n'
-    << "-> pe = " << pe << '\n'
-    << "-> pf = " << pf << '\n';
+    << "-> pe =                              " << pe << '\n'
+    << "-> pf =                              " << pf << '\n';
 
   float x = 2.0f;
   float e, f;
@@ -33,10 +33,10 @@ int main()
 
   std::cout
     << "---- scalar"  << '\n'
-    << "<- xf =           " << x << '\n'
-    << "-> std::tie(e, f) = bs::modf(x) = " << '\n'
-    << "-> e = " << e << '\n'
-    << "-> f = " << f << '\n';
+    << "<- xf =                              " << x << '\n'
+    << "-> std::tie(e, f) = bs::modf(x) =    " << '\n'
+    << "-> e =                               " << e << '\n'
+    << "-> f =                               " << f << '\n';
   return 0;
 }
 //! [modf]

@@ -21,14 +21,14 @@ int main()
 
   std::cout
     << "---- simd" << '\n'
-    << "<- pf =           " << pf << '\n'
+    << "<- pf =        v      " << pf << '\n'
     << "-> bs::safe_min(pf) = " << bs::safe_min(pf) << '\n';
 
   float xf = 2.0f;
 
   std::cout
     << "---- scalar"  << '\n'
-    << "<- xf =           " << xf << '\n'
+    << "<- xf =               " << xf << '\n'
     << "-> bs::safe_min(xf) = " << bs::safe_min(xf) << '\n';
   return 0;
 }

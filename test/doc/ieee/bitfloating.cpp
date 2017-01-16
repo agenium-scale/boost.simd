@@ -21,14 +21,14 @@ int main()
 
   std::cout
     << "---- simd" << '\n'
-    << "<- pf =           " << pf << '\n'
+    << "<- pf =                  " << pf << '\n'
     << "-> bs::bitfloating(pf) = " << bs::bitfloating(pf) << '\n';
 
   std::int32_t xf = 2;
 
   std::cout
     << "---- scalar"  << '\n'
-    << "<- xf =           " << xf << '\n'
+    << "<- xf =                  " << xf << '\n'
     << "-> bs::bitfloating(xf) = " << bs::bitfloating(xf) << '\n';
   return 0;
 }

@@ -16,25 +16,17 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing maxnummag capabilities
+    This function object returns the input value which have the greatest absolute value, ignoring nan.
 
-    Returns the input value which have the greatest absolute value, ignoring nan.
+   @par Example:
 
-    @par Semantic:
+     @snippet maxnummag.cpp maxnummag
 
-    @code
-    auto r = maxnummag(x,y);
-    @endcode
+   @par Possible output:
 
-    is similar to:
+     @snippet maxnummag.txt maxnummag
 
-    @code
-    auto r = is_nan(x) ? y : (is_nan(y) ? x : maxmag(x, y));
-    @endcode
-
-    @see maxmag, is_nan
   **/
   Value maxnummag(Value const & x, Value const& y);
 } }

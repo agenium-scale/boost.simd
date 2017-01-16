@@ -33,10 +33,10 @@ int main()
   std::tie(m, e) = bs::frexp(xf);
   std::cout
     << "---- scalar"  << '\n'
-    << " xf =                               " << xf << '\n'
-    << "-> std::tie(m, e) = bs::frexp(xf) = " << '\n'
-    << "-> m  =                             " << m << '\n'
-    << "-> e =                              " << e << '\n'   ;
+    << " xf =                                  " << xf << '\n'
+    << "-> std::tie(m, e) = bs::frexp(xf) =    " << '\n'
+    << "-> m  =                                " << m << '\n'
+    << "-> e =                                 " << e << '\n'   ;
 
   return 0;
 }

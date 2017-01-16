@@ -22,17 +22,17 @@ int main()
 
   std::cout
     << "---- simd" << '\n'
-    << "<- pf =           " << pf << '\n'
-    << "<- qf =           " << qf << '\n'
+    << "<- pf =                    " << pf << '\n'
+    << "<- qf =                    " << qf << '\n'
      << "-> bs::negatenz(pf, qf) = " << bs::negatenz(pf, qf) << '\n';
 
   float xf = 2.0f, yf = -1.0f;
 
   std::cout
     << "---- scalar"  << '\n'
-    << "<- xf =           " << xf << '\n'
-    << "<- yf =           " << yf << '\n'
-    << "-> bs::negatenz(xf, yf) = " << bs::negatenz(xf, yf) << '\n';
+    << "<- xf =                    " << xf << '\n'
+    << "<- yf =                    " << yf << '\n'
+    << "-> bs::negatenz(xf, yf) =  " << bs::negatenz(xf, yf) << '\n';
   return 0;
 }
 //! [negatenz]

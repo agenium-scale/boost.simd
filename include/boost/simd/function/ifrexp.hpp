@@ -16,11 +16,8 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing ifrexp capabilities
-
-    Computes a mantissa and an exponent pair for the input
+    This function object returns the Computes a mantissa and an exponent pair for the input
 
     @par Semantic:
 
@@ -34,35 +31,41 @@ namespace boost { namespace simd
 
     @code
     as_integer_t<T> e = exponent(x)+1;
-    T m = copysign(mantissa(x)/2, x);
+    T m = mantissa(x)/2;
     @endcode
-
-    The call
-
-    @code
-    std:pair<T,as_integer_t<T>> p = ifrexp(x);
-    @endcode
-
-    can also be used.
 
     @par Note:
 
-    This function splits a floating point value @c v f in a signed mantissa @c m and
-    an exponent @c e so that:  @f$v = m\times 2^e@f$,
-    with absolute value of @c m \f$\in [1/2, 1[\f$
+    if you need floating type exponent (unlike the standard)  use @ref frexp
+
+    This function splits a floating point value \f$x\f$ in a signed mantissa \f$m\f$ and
+    an exponent \f$e\f$ so that:  \f$x = m\times 2^e\f$,
+    with absolute value of \f$m \in [0.5, 1[\f$ (except for \f$x = 0\f$)
+
+    Without the pedantic_ decorator  @ref Nan or @ref Inf are not handled properly.
 
     @warninbox{Take care that these results differ from the returns of the functions @ref mantissa
     and @ref exponent}
 
-    The decorators pedantic_ and std_ can be used.
+    @par Decorators
 
-    without pedantic_ the call is speedier, but special values as Nan or Inf are not handled properly.
-    std_ transmit the call to std::ifrexp. That implies that simd is ever emulated.
+     - pedantic_ slower, but special values as @ref Nan or @ref Inf are handled properly.
 
-    @see exponent, mantissa, copysign
+     - std_ transmits the call to @c std::frexp.
+
+    @see exponent, mantissa, frexp
+
+
+   @par Example:
+
+     @snippet ifrexp.cpp ifrexp
+
+   @par Possible output:
+
+     @snippet ifrexp.txt ifrexp
 
   **/
-  std::pair<T, as_integer_t<Value>> ifrexp(Value const & v0);
+  std::pair<Value, as_integer_t<Value>> ifrexp(Value const & x);
 } }
 #endif
 

@@ -24,16 +24,16 @@ int main()
 
   std::cout
     << "---- simd" << std::setprecision(10) << '\n'
-    << "<- pf =           " << pf << '\n'
-    << "<- qf =           " << qf << '\n'
+    << "<- pf =                    " << pf << '\n'
+    << "<- qf =                    " << qf << '\n'
     << "-> bs::nextafter(pf, qf) = " << bs::nextafter(pf, qf) << '\n';
 
   float xf = 2.0f, yf = -1.0f;
 
   std::cout
     << "---- scalar"  << '\n'
-    << "<- xf =           " << xf << '\n'
-    << "<- yf =           " << yf << '\n'
+    << "<- xf =                    " << xf << '\n'
+    << "<- yf =                    " << yf << '\n'
     << "-> bs::nextafter(xf, yf) = " << bs::nextafter(xf, yf) << '\n';
   return 0;
 }

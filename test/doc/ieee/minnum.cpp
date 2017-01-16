@@ -21,18 +21,18 @@ int main()
   pack_ft qf = { 4.0f, -1.0f,  0.0f, bs::Nan<float>() };
   std::cout
     <<  "---- simd" << '\n'
-    << " <- pf =                             " << pf << '\n'
-    << " <- qf =                             " << qf << '\n'
-    << " -> bs::minnum(pf, qf) =                " << bs::minnum(pf, qf) << '\n'
-    << " -> bs::std_(bs::minnum)(pf, qf) =      " << bs::std_(bs::minnum)(pf, qf) << '\n';
+    << " <- pf =                           " << pf << '\n'
+    << " <- qf =                           " << qf << '\n'
+    << " -> bs::minnum(pf, qf) =           " << bs::minnum(pf, qf) << '\n'
+    << " -> bs::std_(bs::minnum)(pf, qf) = " << bs::std_(bs::minnum)(pf, qf) << '\n';
 
   float xf = 3.0f, yf = 4.0f;
 
   std::cout
     << "---- scalar"  << '\n'
-    << " xf =                                " << xf << '\n'
-    << " yf =                                " << yf << '\n'
-    << " -> bs::minnum(xf, yf) =                " << bs::minnum(xf, yf) << '\n';
+    << " xf =                              " << xf << '\n'
+    << " yf =                              " << yf << '\n'
+    << " -> bs::minnum(xf, yf) =           " << bs::minnum(xf, yf) << '\n';
   return 0;
 }
 //! [minnum]

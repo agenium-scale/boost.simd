@@ -21,14 +21,14 @@ int main()
 
   std::cout
     << "---- simd" << '\n'
-    << "<- pf =           " << pf << '\n'
+    << "<- pf =                            " << pf << '\n'
     << "-> bs::saturate<std::int8_t>(pf) = " << bs::saturate<std::int8_t>(pf) << '\n';
 
   float xf = 2.0f;
 
   std::cout
     << "---- scalar"  << '\n'
-    << "<- xf =           " << xf << '\n'
+    << "<- xf =                            " << xf << '\n'
     << "-> bs::saturate<std::int8_t>(xf) = " << bs::saturate<std::int8_t>(xf) << '\n';
   return 0;
 }

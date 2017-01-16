@@ -16,15 +16,12 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing frexp capabilities
-
-    Computes a mantissa and an exponent pair for the input
+    This function object returns a mantissa and an exponent pair for the input
 
     @par Semantic:
 
-    For every parameter of floating type @c T
+    For every parameter of floating type
 
     @code
     std::tie(m, e)= frexp(x);
@@ -33,38 +30,42 @@ namespace boost { namespace simd
     is similar to:
 
     @code
-    T e = tofloat(exponent(x)+1);
-    T m = copysign(mantissa(x)/2, x);
+    auto e = tofloat(exponent(x)+1);
+    auto m = mantissa(x)/2;
     @endcode
-
-    The call
-
-    @code
-    std:pair<T,T> p = frexp(x);
-    @endcode
-
-    can also be used.
 
     @par Note:
 
-    if you need integral type exponent (as in the standard library)  use @c ifrexp
+    Without the pedantic_ decorator  @ref Nan or @ref Inf are not handled properly.
 
-    This function splits a floating point value @c v f in a signed mantissa @c m and
-    an exponent @c e so that:  @f$v = m\times 2^e@f$,
-    with absolute value of @c m \f$\in [1/2, 1[\f$
+    if you need integral type exponent (as in the standard library)  use @ref ifrexp
+
+    This function splits a floating point value \f$x\f$ in a signed mantissa \f$m\f$ and
+    an exponent \f$e\f$ so that:  \f$x = m\times 2^e\f$,
+    with absolute value of \f$m \in [0.5, 1[\f$ (except for \f$x = 0\f$)
 
     @warninbox{Take care that these results differ from the returns of the functions @ref mantissa
     and @ref exponent}
 
-    The decorators pedantic_ and std_ can be used.
+    @par Decorators
 
-    without pedantic_ the call is speedier, but special values as Nan or Inf are not handled properly.
-    std_ transmit the call to std::ifrexp. That implies that simd is ever emulated.
+     - pedantic_ slower, but special values as @ref Nan or @ref Inf are handled properly.
 
-    @see exponent, mantissa, copysign
+     - std_ transmits the call to @c std::frexp and converts the exponent.
+
+    @see exponent, mantissa, ifrexp
+
+
+   @par Example:
+
+     @snippet frexp.cpp frexp
+
+   @par Possible output:
+
+     @snippet frexp.txt frexp
 
   **/
-  std::pair<T, as_integer_t<Value>> frexp(Value const & v0);
+  std::pair<Value, Value> frexp(Value const & x);
 } }
 #endif
 

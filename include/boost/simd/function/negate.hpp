@@ -16,29 +16,23 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing negate capabilities
-
-    Retuns the first element multiplied by the @ref sign of the second.
-
-    @par Semantic:
-
-    @code
-    auto r = negate(x,y);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r =  x*sign(y);
-    @endcode
+    This function object returns  the first element multiplied by the @ref sign of the second.
 
     @par Note
     If y is @ref Zero the result is zero. This can be avoided using
     @ref negatenz or @ref copysign.
 
     @see sign, negatenz, copysign,  Mzero,  is_positive, is_negative
+
+
+   @par Example:
+
+     @snippet negate.cpp negate
+
+   @par Possible output:
+
+     @snippet negate.txt negate
 
   **/
   Value negate(Value const & x, Value const& y);

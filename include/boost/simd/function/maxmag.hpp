@@ -16,25 +16,16 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing maxmag capabilities
+    This function object returns the input value which have the greatest absolute value.
 
-    Returns the input value which have the greatest absolute value.
+   @par Example:
 
-    @par Semantic:
+     @snippet maxmag.cpp maxmag
 
-    @code
-    auto r = maxmag(x,y);
-    @endcode
+   @par Possible output:
 
-    is similar to:
-
-    @code
-    auto r = abs(x) > abs(y) ? x : abs(y) > abs(x) ? y : max(x, y);
-    @endcode
-
-    @see max, maxnum, maxnummag
+     @snippet maxmag.txt maxmag
 
   **/
   Value maxmag(Value const & x, Value const& y);

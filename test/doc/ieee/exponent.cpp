@@ -21,14 +21,14 @@ int main()
 
   std::cout
     << "---- simd" << '\n'
-    << "<- pf =           " << pf << '\n'
+    << "<- pf =               " << pf << '\n'
     << "-> bs::exponent(pf) = " << bs::exponent(pf) << '\n';
 
   float xf = 2.0f;
 
   std::cout
     << "---- scalar"  << '\n'
-    << "<- xf =           " << xf << '\n'
+    << "<- xf =               " << xf << '\n'
     << "-> bs::exponent(xf) = " << bs::exponent(xf) << '\n';
   return 0;
 }

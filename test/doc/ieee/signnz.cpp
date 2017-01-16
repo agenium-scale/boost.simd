@@ -21,14 +21,14 @@ int main()
 
   std::cout
     << "---- simd" << '\n'
-    << "<- pf =           " << pf << '\n'
+    << "<- pf =             " << pf << '\n'
     << "-> bs::signnz(pf) = " << bs::signnz(pf) << '\n';
 
   float xf = 2.0f;
 
   std::cout
     << "---- scalar"  << '\n'
-    << "<- xf =           " << xf << '\n'
+    << "<- xf =             " << xf << '\n'
     << "-> bs::signnz(xf) = " << bs::signnz(xf) << '\n';
   return 0;
 }
