@@ -18,9 +18,9 @@
 #include <boost/simd/pack.hpp>
 
 #include <boost/simd/function/aligned_store.hpp>
+#include <boost/simd/function/deinterleave_first.hpp>
 #include <boost/simd/function/group.hpp>
 #include <boost/simd/function/if_zero_else_one.hpp>
-#include <boost/simd/function/deinterleave_first.hpp>
 #include <boost/simd/function/is_less.hpp>
 #include <boost/simd/memory/allocator.hpp>
 
@@ -49,7 +49,7 @@ int main()
   //! [scalar-threshold]
 
   //! [simd-threshold]
-  using pack_t    = bs::pack<std::int16_t>;
+  using pack_t = bs::pack<std::int16_t>;
 
   static const std::size_t cardinal = pack_t::static_size;
 
@@ -75,4 +75,3 @@ int main()
 // -I/path_to/boost_simd/ -I/path_to/boost/
 
 //! [threshold]
-
