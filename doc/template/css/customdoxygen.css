@@ -1,5 +1,6 @@
 /* The standard CSS for doxygen */
 
+/*
 pre.fragment {
 padding: 4px 6px;
 margin: 4px 8px 4px 2px;
@@ -22,11 +23,11 @@ div.line {
   min-height: 13px;
   line-height: 1.0;
   text-wrap: unrestricted;
-  white-space: -moz-pre-wrap; /* Moz */
-  white-space: -pre-wrap;     /* Opera 4-6 */
-  white-space: -o-pre-wrap;   /* Opera 7 */
-  white-space: pre-wrap;      /* CSS3  */
-  word-wrap: break-word;      /* IE 5.5+ */
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  white-space: pre-wrap;
+  word-wrap: break-word;
   text-indent: -53px;
   padding-left: 53px;
   padding-bottom: 0px;
@@ -42,6 +43,7 @@ margin: 0px;
 	transition-property: background-color, box-shadow;
 	transition-duration: 0.5s;
 }
+*/
 
 div.line.glow {
   background-color: cyan;
@@ -168,6 +170,19 @@ span.vhdllogic {
 color: #ff0000 
 }
 
+div.fragment {
+    line-height: 18px;
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+}
 
+div.fragment .line {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    line-height: inherit;
+    text-indent: 0px;
+    padding-left: 0px;
+}
 /* @end */
 
