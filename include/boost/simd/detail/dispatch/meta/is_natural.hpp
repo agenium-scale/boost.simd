@@ -15,7 +15,6 @@
 #define BOOST_SIMD_DETAIL_DISPATCH_META_IS_NATURAL_HPP_INCLUDED
 
 #include <boost/simd/detail/nsm.hpp>
-#include <type_traits>
 
 namespace boost { namespace dispatch
 {

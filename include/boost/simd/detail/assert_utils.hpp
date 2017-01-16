@@ -42,7 +42,7 @@ namespace boost { namespace simd
   }
 
   template<typename A0, typename A1>
-  BOOST_FORCEINLINE bool assert_good_shift( A1 const& t, std::true_type const&)
+  BOOST_FORCEINLINE bool assert_good_shift( A1 const& t, tt::true_type const&)
   {
     for(std::size_t i = 0; i != cardinal_of<A0>::value; ++i)
     {
@@ -58,7 +58,7 @@ namespace boost { namespace simd
   }
 
   template<typename A0, typename A1>
-  BOOST_FORCEINLINE bool assert_good_shift( A1 const& t, std::false_type const&)
+  BOOST_FORCEINLINE bool assert_good_shift( A1 const& t, tt::false_type const&)
   {
     for(std::size_t i = 0; i != cardinal_of<A0>::value; ++i)
     {

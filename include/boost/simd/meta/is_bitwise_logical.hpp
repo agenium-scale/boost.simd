@@ -16,7 +16,6 @@
 #include <boost/simd/meta/as_logical.hpp>
 #include <boost/simd/meta/as_arithmetic.hpp>
 #include <boost/simd/config.hpp>
-#include <type_traits>
 
 namespace boost { namespace simd
 {

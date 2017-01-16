@@ -13,7 +13,7 @@
 
 #include <ostream>
 #include <iostream>
-#include <type_traits>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/dispatch/detail/declval.hpp>
 
 #if defined(BOOST_SIMD_ENABLE_DIAG)
@@ -34,13 +34,13 @@ class diagnostic
   {
     template <typename U>
     static auto test( int ) -> decltype( std::cout << bd::detail::declval<U>()
-                                       , std::true_type()
+                                       , tt::true_type()
                                        );
 
     template<typename>
-    static auto test( ... ) -> std::false_type;
+    static auto test( ... ) -> tt::false_type;
 
-    using type = typename std::is_same<decltype(test<T>(0)), std::true_type>::type;
+    using type = typename std::is_same<decltype(test<T>(0)), tt::true_type>::type;
   };
 
   template <typename T, typename R>

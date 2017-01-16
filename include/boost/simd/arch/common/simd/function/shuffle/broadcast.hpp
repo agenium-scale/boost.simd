@@ -28,7 +28,7 @@ namespace boost { namespace simd
                                       >
     {};
 
-    template<int P0> struct is_broadcast<P0> : std::false_type {};
+    template<int P0> struct is_broadcast<P0> : tt::false_type {};
   }
 
   // -----------------------------------------------------------------------------------------------

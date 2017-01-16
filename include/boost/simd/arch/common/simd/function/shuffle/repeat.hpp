@@ -31,12 +31,12 @@ namespace boost { namespace simd
     {};
 
     // -1 disqualifies already
-    template<int P1, int... Ps> struct  is_repeat<-1,P1,Ps...> : std::false_type {};
+    template<int P1, int... Ps> struct  is_repeat<-1,P1,Ps...> : tt::false_type {};
 
     // Don' overlap with other hierarchies
-    template<int P0>          struct is_repeat<P0>    : std::false_type {};
-    template<int P0, int P1>  struct is_repeat<P0,P1> : std::false_type {};
-    template<int P1>          struct is_repeat<-1,P1> : std::false_type {};
+    template<int P0>          struct is_repeat<P0>    : tt::false_type {};
+    template<int P0, int P1>  struct is_repeat<P0,P1> : tt::false_type {};
+    template<int P1>          struct is_repeat<-1,P1> : tt::false_type {};
   }
 
   // -----------------------------------------------------------------------------------------------

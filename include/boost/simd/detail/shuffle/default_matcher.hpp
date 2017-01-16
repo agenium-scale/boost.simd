@@ -90,7 +90,7 @@ namespace boost { namespace simd { namespace detail
     template<typename T, int N>
     BOOST_FORCEINLINE static typename T::value_type
     fill_ ( const T& a0, const T&
-          , tt::integral_constant<int,N> const&, std::true_type const&
+          , tt::integral_constant<int,N> const&, tt::true_type const&
           )
     {
       return  boost::simd::extract<N>(a0);
@@ -99,7 +99,7 @@ namespace boost { namespace simd { namespace detail
     template<typename T>
     BOOST_FORCEINLINE static typename T::value_type
     fill_ ( const T&, const T&
-          , tt::integral_constant<int,-1> const&, std::true_type const&
+          , tt::integral_constant<int,-1> const&, tt::true_type const&
           )
     {
       return 0;
@@ -108,7 +108,7 @@ namespace boost { namespace simd { namespace detail
     template<typename T, int N>
     BOOST_FORCEINLINE static typename T::value_type
     fill_ (const T&, const T & a1
-          , tt::integral_constant<int,N> const&, std::false_type const&
+          , tt::integral_constant<int,N> const&, tt::false_type const&
           )
     {
       return  boost::simd::extract<N-T::static_size>(a1);

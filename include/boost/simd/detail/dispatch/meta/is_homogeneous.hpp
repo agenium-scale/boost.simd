@@ -18,7 +18,6 @@
 #include <boost/fusion/include/as_vector.hpp>
 #include <boost/fusion/include/size.hpp>
 #include <boost/simd/detail/nsm.hpp>
-#include <type_traits>
 #include <tuple>
 
 namespace boost { namespace dispatch
@@ -40,7 +39,7 @@ namespace boost { namespace dispatch
       template<typename T, bool Status> struct impl
       {
         // Empty sequence are not homogeneous
-        using type = std::false_type;
+        using type = tt::false_type;
       };
 
       template<typename T>
@@ -60,13 +59,13 @@ namespace boost { namespace dispatch
     // Special case for std::tuple<>
     template<> struct is_homogeneous_<std::tuple<>>
     {
-      using type = std::false_type;
+      using type = tt::false_type;
     };
 
     // Special case for std::tuple<T>
     template<typename T> struct is_homogeneous_<std::tuple<T>>
     {
-      using type = std::true_type;
+      using type = tt::true_type;
     };
 
     // Special case for std::tuple

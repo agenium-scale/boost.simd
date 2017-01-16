@@ -26,7 +26,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( aligned_load_
                           , (typename Target, typename Pointer)
                           , bs::avx2_
-                          , bd::masked_pointer_<bd::scalar_<bd::ints32_<Pointer>>,std::true_type>
+                          , bd::masked_pointer_<bd::scalar_<bd::ints32_<Pointer>>,tt::true_type>
                           , bd::target_<bs::pack_<bd::ints32_<Target>,bs::avx_>>
                           )
   {
@@ -48,7 +48,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( aligned_load_
                           , (typename Target, typename Pointer)
                           , bs::avx2_
-                          , bd::masked_pointer_<bd::scalar_<bd::ints32_<Pointer>>,std::false_type>
+                          , bd::masked_pointer_<bd::scalar_<bd::ints32_<Pointer>>,tt::false_type>
                           , bd::target_<bs::pack_<bd::ints32_<Target>,bs::avx_>>
                           )
   {
@@ -74,7 +74,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( aligned_load_
                           , (typename Target, typename Pointer)
                           , bs::avx2_
-                          , bd::masked_pointer_<bd::scalar_<bd::ints64_<Pointer>>,std::true_type>
+                          , bd::masked_pointer_<bd::scalar_<bd::ints64_<Pointer>>,tt::true_type>
                           , bd::target_<bs::pack_<bd::ints64_<Target>,bs::avx_>>
                           )
   {
@@ -96,7 +96,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( aligned_load_
                           , (typename Target, typename Pointer)
                           , bs::avx2_
-                          , bd::masked_pointer_<bd::scalar_<bd::ints64_<Pointer>>,std::false_type>
+                          , bd::masked_pointer_<bd::scalar_<bd::ints64_<Pointer>>,tt::false_type>
                           , bd::target_<bs::pack_<bd::ints64_<Target>,bs::avx_>>
                           )
   {

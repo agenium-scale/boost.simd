@@ -16,7 +16,6 @@
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/as.hpp>
 #include <boost/config.hpp>
-#include <type_traits>
 
 #ifdef BOOST_MSVC
 #pragma warning(push)

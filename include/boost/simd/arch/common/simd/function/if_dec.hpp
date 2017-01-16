@@ -35,12 +35,12 @@ namespace boost { namespace simd { namespace ext
       return do_(a0,a1,is_bitwise_logical_t<A0>{});
     }
 
-    BOOST_FORCEINLINE A1 do_(const A0& a0, const A1& a1, std::true_type const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A1 do_(const A0& a0, const A1& a1, tt::true_type const&) const BOOST_NOEXCEPT
     {
       return a1 + bitwise_cast<A1>(genmask(a0));
     }
 
-    BOOST_FORCEINLINE A1 do_(const A0& a0, const A1& a1, std::false_type const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE A1 do_(const A0& a0, const A1& a1, tt::false_type const&) const BOOST_NOEXCEPT
     {
       return if_minus(a0, a1, One<A1>());
     }

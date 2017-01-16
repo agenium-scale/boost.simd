@@ -13,7 +13,7 @@
 
 #include <boost/simd/arch/common/tags.hpp>
 #include <boost/config.hpp>
-#include <type_traits>
+#include <boost/simd/detail/nsm.hpp>
 
 namespace boost { namespace simd { namespace detail
 {

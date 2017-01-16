@@ -72,17 +72,17 @@ namespace boost { namespace simd
 
     // ---------------------------------------------------------------------------------------------
     // Prevent ambiguity with other hierarchy
-    template<> struct is_blend<-1,-1,-1,-1> : std::false_type {};
-    template<> struct is_blend< 0, 1, 2, 3> : std::false_type {};
-    template<> struct is_blend< 4, 5, 6, 7> : std::false_type {};
-    template<> struct is_blend< 0,-1, 2,-1> : std::false_type {};
-    template<> struct is_blend<-1, 1,-1, 3> : std::false_type {};
+    template<> struct is_blend<-1,-1,-1,-1> : tt::false_type {};
+    template<> struct is_blend< 0, 1, 2, 3> : tt::false_type {};
+    template<> struct is_blend< 4, 5, 6, 7> : tt::false_type {};
+    template<> struct is_blend< 0,-1, 2,-1> : tt::false_type {};
+    template<> struct is_blend<-1, 1,-1, 3> : tt::false_type {};
 
-    template<> struct is_blend<-1,-1,-1,-1,-1,-1,-1,-1> : std::false_type {};
-    template<> struct is_blend< 0, 1, 2, 3, 4, 5, 6, 7> : std::false_type {};
-    template<> struct is_blend< 8, 9,10,11,12,13,14,15> : std::false_type {};
-    template<> struct is_blend< 0,-1, 2,-1, 4,-1, 6,-1> : std::false_type {};
-    template<> struct is_blend<-1, 1,-1, 3,-1, 5,-1, 7> : std::false_type {};
+    template<> struct is_blend<-1,-1,-1,-1,-1,-1,-1,-1> : tt::false_type {};
+    template<> struct is_blend< 0, 1, 2, 3, 4, 5, 6, 7> : tt::false_type {};
+    template<> struct is_blend< 8, 9,10,11,12,13,14,15> : tt::false_type {};
+    template<> struct is_blend< 0,-1, 2,-1, 4,-1, 6,-1> : tt::false_type {};
+    template<> struct is_blend<-1, 1,-1, 3,-1, 5,-1, 7> : tt::false_type {};
 
     // ---------------------------------------------------------------------------------------------
     // Compute the blend mask to use

@@ -69,14 +69,14 @@ namespace boost { namespace simd { namespace ext
       return do_(p, nsm::bool_<unalignment != 0>());
     }
 
-    BOOST_FORCEINLINE target do_( Pointer p, std::true_type const& ) const
+    BOOST_FORCEINLINE target do_( Pointer p, tt::true_type const& ) const
     {
       return slide<unalignment> ( aligned_load<target>( p-unalignment )
                                 , aligned_load<target>( p-unalignment+card )
                                 );
     }
 
-    BOOST_FORCEINLINE target do_( Pointer p, std::false_type const& ) const
+    BOOST_FORCEINLINE target do_( Pointer p, tt::false_type const& ) const
     {
       return aligned_load<target>(p);
     }

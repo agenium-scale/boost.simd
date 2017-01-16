@@ -16,11 +16,11 @@
 
 namespace boost { namespace dispatch { namespace detail
 {
-  template<typename T, typename EnableIf = void > struct is_iterator : std::false_type {};
+  template<typename T, typename EnableIf = void > struct is_iterator : tt::false_type {};
 
   template<typename T>
   struct is_iterator<T, typename boost::enable_if_has_type<typename T::iterator_category>::type>
-       : std::true_type
+       : tt::true_type
   {};
 } } }
 

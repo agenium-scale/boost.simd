@@ -84,8 +84,8 @@ namespace boost { namespace simd
       using mode = typename find_deinterleave<Ps...>::type;
     };
 
-    template<int P0>         struct is_deinterleave<P0>    : std::false_type {};
-    template<int P0, int P1> struct is_deinterleave<P0,P1> : std::false_type {};
+    template<int P0>         struct is_deinterleave<P0>    : tt::false_type {};
+    template<int P0, int P1> struct is_deinterleave<P0,P1> : tt::false_type {};
   }
 
   // -----------------------------------------------------------------------------------------------

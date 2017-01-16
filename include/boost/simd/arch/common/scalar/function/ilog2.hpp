@@ -48,7 +48,7 @@ namespace boost { namespace simd { namespace ext
       return impl(a0, typename nsm::bool_<sizeof(A0) <= 4>::type());
     }
 
-    static BOOST_FORCEINLINE A0 impl( A0  a0,  std::true_type const &) BOOST_NOEXCEPT
+    static BOOST_FORCEINLINE A0 impl( A0  a0,  tt::true_type const &) BOOST_NOEXCEPT
     {
       unsigned long index;
       BOOST_VERIFY(::_BitScanReverse(&index, a0));
@@ -56,14 +56,14 @@ namespace boost { namespace simd { namespace ext
     }
 
     #if defined(_WIN64)
-    static BOOST_FORCEINLINE A0 impl(A0 a0, std::false_type const &) BOOST_NOEXCEPT
+    static BOOST_FORCEINLINE A0 impl(A0 a0, tt::false_type const &) BOOST_NOEXCEPT
     {
       unsigned long index;
       BOOST_VERIFY(::_BitScanReverse64(&index, a0));
       return static_cast<A0>(index);
     }
     #else
-    static BOOST_FORCEINLINE A0 impl(A0 a0, std::false_type const &) BOOST_NOEXCEPT
+    static BOOST_FORCEINLINE A0 impl(A0 a0, tt::false_type const &) BOOST_NOEXCEPT
     {
       return static_cast<A0>(sizeof(A0)*8-boost::simd::clz(a0)-1);
     }

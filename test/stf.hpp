@@ -22,7 +22,7 @@
 # include <boost/range.hpp>
 
 namespace stf {
- namespace type_traits = boot;
+ namespace type_traits = boost;
  namespace detail {
   using boost::declval;
   using nullptr_t = decltype(nullptr);

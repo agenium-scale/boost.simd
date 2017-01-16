@@ -18,7 +18,6 @@
 #include <boost/simd/detail/dispatch/hierarchy.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
-#include <type_traits>
 
 namespace boost { namespace simd { namespace ext
 {

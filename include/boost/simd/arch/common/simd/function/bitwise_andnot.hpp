@@ -18,7 +18,6 @@
 #include <boost/simd/function/complement.hpp>
 #include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
-#include <type_traits>
 
 namespace boost { namespace simd { namespace ext
 {

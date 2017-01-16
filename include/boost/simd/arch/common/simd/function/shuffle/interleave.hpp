@@ -145,8 +145,8 @@ namespace boost { namespace simd
     };
 
     // Do not step on other hierarchies
-    template<int P0>          struct is_interleave<P0>    : std::false_type {};
-    template<int P0, int P1>  struct is_interleave<P0,P1> : std::false_type {};
+    template<int P0>          struct is_interleave<P0>    : tt::false_type {};
+    template<int P0, int P1>  struct is_interleave<P0,P1> : tt::false_type {};
   }
 
   // -----------------------------------------------------------------------------------------------

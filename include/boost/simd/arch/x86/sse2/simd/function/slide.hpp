@@ -30,7 +30,7 @@ namespace boost { namespace simd { namespace ext
     using bcnt    = tt::integral_constant<std::size_t,16u/T::static_size>;
 
     // slide with positive offset
-    static BOOST_FORCEINLINE T side(T const& a0, std::true_type const&) BOOST_NOEXCEPT
+    static BOOST_FORCEINLINE T side(T const& a0, tt::true_type const&) BOOST_NOEXCEPT
     {
       using imm = tt::integral_constant<std::size_t,Offset::value*bcnt::value>;
       bits_t tmp = _mm_srli_si128(bitwise_cast<bits_t>(a0),imm::value);
@@ -38,7 +38,7 @@ namespace boost { namespace simd { namespace ext
     }
 
     // slide with negative offset
-    static BOOST_FORCEINLINE T side( T const& a0, std::false_type const& ) BOOST_NOEXCEPT
+    static BOOST_FORCEINLINE T side( T const& a0, tt::false_type const& ) BOOST_NOEXCEPT
     {
       using imm = tt::integral_constant<std::size_t,(-Offset::value)*bcnt::value>;
       bits_t tmp = _mm_slli_si128(bitwise_cast<bits_t>(a0),imm::value);
