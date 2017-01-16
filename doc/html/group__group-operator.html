@@ -21,14 +21,14 @@
     extensions: ["tex2jax.js"],
     jax: ["input/TeX","output/SVG"],
 });
-</script><script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
         <link rel="icon" href="numscale_icon.png">
         <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         <link href="doxygen.css" rel="stylesheet" type="text/css" />
-        <link href="doxygen.css" rel="stylesheet" type="text/css" />
         <link href="custom.css" rel="stylesheet" type="text/css"/>
 <link href="ns.css" rel="stylesheet" type="text/css"/>
+<link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="ns.js"></script>
         <script type="text/javascript" src="custom.js"></script>
@@ -123,6 +123,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <dd>Note that &amp;&amp; and || overloaded on simd packs do not make short circuitry</dd>
 </dl>
 <p>Here is the list of of operators and their infix associated notation. These remarks are only valid if the prefix notation is used and at least one parameter is a pack: otherwise infix operators on scalars are regulated by usual C++ langage rules.</p>
+<p>All operators are included as soon as &lt;boost/simd/pack.hpp&gt; is included.</p>
 <center> <table class="doxtable">
 <tr>
 <th>Name </th><th>op </th><th>arity </th><th>types </th><th>precondition/result  </th></tr>
@@ -137,7 +138,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr>
 <td><a class="el" href="group__group-operator_gaffcdabc266680683bf5d0b879908d1f1.html#gaffcdabc266680683bf5d0b879908d1f1">divides</a> </td><td>/ </td><td>2 </td><td>T1, T1 </td><td>arithmetic types (2) </td></tr>
 <tr>
-<td><a class="el" href="namespaceboost_1_1simd_a60305a9b3734d8d6a8609bf5ac65d00c.html#a60305a9b3734d8d6a8609bf5ac65d00c">div</a> </td><td>/ </td><td>2 </td><td>T1, T1 </td><td>arithmetic types (2) </td></tr>
+<td><a class="el" href="namespaceboost_1_1simd_afd241bb4c2e4c2ff27346c4f3bfb86d9.html#afd241bb4c2e4c2ff27346c4f3bfb86d9">div</a> </td><td>/ </td><td>2 </td><td>T1, T1 </td><td>arithmetic types (2) </td></tr>
 <tr>
 <td><a class="el" href="group__group-boolean_gaa341d5e7b166c68056a68fe57d537e1c.html#gaa341d5e7b166c68056a68fe57d537e1c">if_else</a> </td><td>NA </td><td>3 </td><td>T1, T2, T2 </td><td></td></tr>
 <tr>
@@ -186,7 +187,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>(3) This precisely means T2 is both scalar and of integral type or T2 is as_integer_t&lt;T1&gt;. Note that if T2 scalar is always simd hardware supported, the other case is often emulated.</li>
 </ul>
 <p>Extensions:</p>
-<p><a class="el" href="namespaceboost_1_1simd_a60305a9b3734d8d6a8609bf5ac65d00c.html#a60305a9b3734d8d6a8609bf5ac65d00c">division</a> and <a class="el" href="namespaceboost_1_1simd_a77a6f4066a63c0eb1a0058c8c53dc761.html#a77a6f4066a63c0eb1a0058c8c53dc761">remainder</a> operators have extensions to be seen following the links. </p>
+<p><a class="el" href="namespaceboost_1_1simd_afd241bb4c2e4c2ff27346c4f3bfb86d9.html#afd241bb4c2e4c2ff27346c4f3bfb86d9">division</a> and <a class="el" href="namespaceboost_1_1simd_a77a6f4066a63c0eb1a0058c8c53dc761.html#a77a6f4066a63c0eb1a0058c8c53dc761">remainder</a> operators have extensions to be seen following the links. </p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -200,7 +201,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:gaffcdabc266680683bf5d0b879908d1f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object implementing divides capabilities.  <a href="group__group-operator_gaffcdabc266680683bf5d0b879908d1f1.html#gaffcdabc266680683bf5d0b879908d1f1">More...</a><br /></td></tr>
 <tr class="separator:gaffcdabc266680683bf5d0b879908d1f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2cb74619be58c84d5051482af10c0983"><td class="memItemLeft" align="right" valign="top">as_logical_t&lt; T0 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group-operator_ga2cb74619be58c84d5051482af10c0983.html#ga2cb74619be58c84d5051482af10c0983">boost::simd::is_equal</a> (T0 const &amp;x, T1 const &amp;y)</td></tr>
-<tr class="memdesc:ga2cb74619be58c84d5051482af10c0983"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object implementing is_equal capabilities.  <a href="group__group-operator_ga2cb74619be58c84d5051482af10c0983.html#ga2cb74619be58c84d5051482af10c0983">More...</a><br /></td></tr>
+<tr class="memdesc:ga2cb74619be58c84d5051482af10c0983"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function object returns <a class="el" href="group__group-constant_ga990a7661b7bc05c1da57603955d355f2.html#ga990a7661b7bc05c1da57603955d355f2">True</a> or <a class="el" href="group__group-constant_ga42d43c849a0e594a45f8315331755d51.html#ga42d43c849a0e594a45f8315331755d51">False</a> according x and y are equal or not.  <a href="group__group-operator_ga2cb74619be58c84d5051482af10c0983.html#ga2cb74619be58c84d5051482af10c0983">More...</a><br /></td></tr>
 <tr class="separator:ga2cb74619be58c84d5051482af10c0983"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8e6fc913926204112090899ededb7127"><td class="memItemLeft" align="right" valign="top">Value&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group-operator_ga8e6fc913926204112090899ededb7127.html#ga8e6fc913926204112090899ededb7127">boost::simd::minus</a> (Value const &amp;x, Value const &amp;y)</td></tr>
 <tr class="memdesc:ga8e6fc913926204112090899ededb7127"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object implementing minus capabilities.  <a href="group__group-operator_ga8e6fc913926204112090899ededb7127.html#ga8e6fc913926204112090899ededb7127">More...</a><br /></td></tr>
@@ -241,7 +242,7 @@ Functions</h2></td></tr>
         <hr class="footer"/>
         <address class="footer">
             <small>
-                Generated on Wed Jan 4 2017 16:43:18 for Boost.SIMD by &#160;
+                Generated on Mon Jan 16 2017 12:04:58 for Boost.SIMD by &#160;
                 <a href="http://www.doxygen.org/index.html">
                     <img class="footer" src="doxygen.png" alt="doxygen"/>
                 </a>

@@ -21,14 +21,14 @@
     extensions: ["tex2jax.js"],
     jax: ["input/TeX","output/SVG"],
 });
-</script><script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
         <link rel="icon" href="numscale_icon.png">
         <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         <link href="doxygen.css" rel="stylesheet" type="text/css" />
-        <link href="doxygen.css" rel="stylesheet" type="text/css" />
         <link href="custom.css" rel="stylesheet" type="text/css"/>
 <link href="ns.css" rel="stylesheet" type="text/css"/>
+<link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="ns.js"></script>
         <script type="text/javascript" src="custom.js"></script>
@@ -121,7 +121,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li class="level1"><a href="#neural-conc">Conclusions</a></li>
 </ul>
 </div>
-<div class="textblock"><p>In this tutorial we will demonstrate how the evaluation of neural network can be significantly acccelerated using <b>Boost.SIMD</b>.</p>
+<div class="textblock"><div style="text-align: right;" markdown="1">Prev: <a class="el" href="tutorial-branching-split.html">SIMD Branching Part 2 - Computations with different types</a></div> <div style="text-align: right;" markdown="1">Next: [Evaluation of the N-Body problem](<a class="el" href="tutorial-nbody.html">N-Body Problem</a></div><p>In this tutorial we will demonstrate how the evaluation of neural network can be significantly acccelerated using <b>Boost.SIMD</b>.</p>
 <h1><a class="anchor" id="neural-objectives"></a>
 Objectives</h1>
 <hr/>
@@ -193,8 +193,8 @@ Performance</h1>
 <p>We observe a speed-up of 1.5 between AVX and AVX2 in this calculation. Although the theorethical maximum speed-up is 2, it is often difficult to achieve this in practice.</p>
 <h1><a class="anchor" id="neural-conc"></a>
 Conclusions</h1>
-<p>We observed significant speed-ups by vectorizing this code using <b>Boost.SIMD</b>. Using SSE4.2, a speed-up of 3.76 was observed and using AVX2, a speed-up of 6.81 was observed. If we compare the results obtained using std::exp in AVX2 with that obtained using <b>Boost.SIMD</b>, the speed-up is 50.6!. It is clear that the use of <b>Boost.SIMD</b> in any project involving vectorization is very beneficial, not just for the ease of vectorization and portability betweem architectures, compilers and operating systems, but also because of the performance of its standard library replacement functions. </p>
-</div></div><!-- contents -->
+<p>We observed significant speed-ups by vectorizing this code using <b>Boost.SIMD</b>. Using SSE4.2, a speed-up of 3.76 was observed and using AVX2, a speed-up of 6.81 was observed. If we compare the results obtained using std::exp in AVX2 with that obtained using <b>Boost.SIMD</b>, the speed-up is 50.6!. It is clear that the use of <b>Boost.SIMD</b> in any project involving vectorization is very beneficial, not just for the ease of vectorization and portability betweem architectures, compilers and operating systems, but also because of the performance of its standard library replacement functions.</p>
+<div style="text-align: right;" markdown="1">Prev: <a class="el" href="tutorial-branching-split.html">SIMD Branching Part 2 - Computations with different types</a></div> <div style="text-align: right;" markdown="1">Next: [Evaluation of the N-Body problem](<a class="el" href="tutorial-nbody.html">N-Body Problem</a></div> </div></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
                         </div>
@@ -205,7 +205,7 @@ Conclusions</h1>
         <hr class="footer"/>
         <address class="footer">
             <small>
-                Generated on Wed Jan 4 2017 16:43:17 for Boost.SIMD by &#160;
+                Generated on Mon Jan 16 2017 12:04:58 for Boost.SIMD by &#160;
                 <a href="http://www.doxygen.org/index.html">
                     <img class="footer" src="doxygen.png" alt="doxygen"/>
                 </a>

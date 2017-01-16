@@ -21,14 +21,14 @@
     extensions: ["tex2jax.js"],
     jax: ["input/TeX","output/SVG"],
 });
-</script><script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
         <link rel="icon" href="numscale_icon.png">
         <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         <link href="doxygen.css" rel="stylesheet" type="text/css" />
-        <link href="doxygen.css" rel="stylesheet" type="text/css" />
         <link href="custom.css" rel="stylesheet" type="text/css"/>
 <link href="ns.css" rel="stylesheet" type="text/css"/>
+<link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="ns.js"></script>
         <script type="text/javascript" src="custom.js"></script>
@@ -119,7 +119,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>Boost.SIMD functions and constants are designed to work seamlessly on both scalar and SIMD parameters. </p>
 <p>Their compile-time polymorphic behavior ensures that the best available implementation will be selected for any given combination of types, architecture and options (if any).</p>
 <p>While being documented as functions, most Boost.SIMD functions are actually Function Objects. This implementation allow Boost.SIMD to use its functions directly in standard algorithms and to support functions decorators to handle variations in functions' behavior.</p>
-<p>Boost.SIMD functions are accessible via the header files located in the <code>boost/simd/function</code> folder. E.g, <a class="el" href="group__group-arithmetic_gace7767846a83c2253c4e2084e27f8a6f.html#gace7767846a83c2253c4e2084e27f8a6f" title="Function object implementing abs. ">boost::simd::abs</a> requires the inclusion of boost/simd/function/abs.hpp.</p>
+<p>Boost.SIMD functions are accessible via the header files located in the <code>boost/simd/function</code> folder. E.g, <a class="el" href="group__group-arithmetic_ga3fef4bb4e0285b7caa720073d0b190c6.html#ga3fef4bb4e0285b7caa720073d0b190c6" title="The function object abs computes the absolute value of its parameter. ">boost::simd::abs</a> requires the inclusion of boost/simd/function/abs.hpp.</p>
 <p>Similarly, Boost.SIMD constants are accessible via the header files located in the <code>boost/simd/constant</code> folder. E.g, <a class="el" href="group__group-constant_ga990a7661b7bc05c1da57603955d355f2.html#ga990a7661b7bc05c1da57603955d355f2" title="Generate the constant true. ">boost::simd::True</a> requires the inclusion of boost/simd/constant/true.hpp. All Boost.SIMD functions begin with a lower-case letter and all Boost.SIMD constants begin with an upper-case letter.</p>
 <p>Function semantics are usually similar to the pre-existing ones, if any, with the following caveats:</p>
 <ul>
@@ -132,7 +132,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
 Modules</h2></td></tr>
 <tr class="memitem:group__group-arithmetic"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group-arithmetic.html">Arithmetic functions</a></td></tr>
-<tr class="memdesc:group__group-arithmetic"><td class="mdescLeft">&#160;</td><td class="mdescRight">Those functions provides scalar and SIMD algorithms for classical arithmetic operators and functions provided by the C and C++ standard library. <br /></td></tr>
+<tr class="memdesc:group__group-arithmetic"><td class="mdescLeft">&#160;</td><td class="mdescRight">Those functions provides scalar and SIMD algorithms for classical arithmetic operators and functions of the C and C++ standard library. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__group-bitwise"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group-bitwise.html">Bitwise functions</a></td></tr>
 <tr class="memdesc:group__group-bitwise"><td class="mdescLeft">&#160;</td><td class="mdescRight">These functions provide scalar and SIMD algorithms for bit manipulations and bitwise operators. <br /></td></tr>
@@ -184,7 +184,7 @@ Modules</h2></td></tr>
         <hr class="footer"/>
         <address class="footer">
             <small>
-                Generated on Wed Jan 4 2017 16:43:17 for Boost.SIMD by &#160;
+                Generated on Mon Jan 16 2017 12:04:58 for Boost.SIMD by &#160;
                 <a href="http://www.doxygen.org/index.html">
                     <img class="footer" src="doxygen.png" alt="doxygen"/>
                 </a>

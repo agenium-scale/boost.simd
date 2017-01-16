@@ -21,14 +21,14 @@
     extensions: ["tex2jax.js"],
     jax: ["input/TeX","output/SVG"],
 });
-</script><script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
         <link rel="icon" href="numscale_icon.png">
         <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         <link href="doxygen.css" rel="stylesheet" type="text/css" />
-        <link href="doxygen.css" rel="stylesheet" type="text/css" />
         <link href="custom.css" rel="stylesheet" type="text/css"/>
 <link href="ns.css" rel="stylesheet" type="text/css"/>
+<link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="ns.js"></script>
         <script type="text/javascript" src="custom.js"></script>
@@ -117,18 +117,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
 <p>These functions provides SIMD algorithms for logical operations and branching in SIMD mode, their use is possible but not encouraged on scalars entries. </p>
+<p>All these functions can be included individually or all of them just by including &lt;boost/simd/boolean.hpp&gt;</p>
 <ul>
 <li><p class="startli"><b>Logical operators</b></p>
 <p class="startli">These functions return <a class="el" href="structboost_1_1simd_1_1logical.html" title="Typed boolean value. ">boost::simd::logical</a> values, do not support short-circuiting and act in an elementwise way on SIMD vectors.</p>
 <center> <table class="doxtable">
 <tr>
-<th align="center">name </th><th align="center">name </th><th align="center">name  </th></tr>
+<th align="center"></th><th align="center"></th><th align="center"></th></tr>
 <tr>
-<td align="center"><a class="el" href="group__group-boolean_ga25c5318bdebe6a489ca877f8b6b93b51.html#ga25c5318bdebe6a489ca877f8b6b93b51">logical_and</a> </td><td align="center"><a class="el" href="group__group-boolean_ga63f5bedc6a1f7f6511cbdceb211afd89.html#ga63f5bedc6a1f7f6511cbdceb211afd89">logical_notand</a> </td><td align="center"><a class="el" href="group__group-boolean_gad437a64d08fac39667e38825003807a5.html#gad437a64d08fac39667e38825003807a5">logical_ornot</a> </td></tr>
+<td align="center"><a class="el" href="group__group-boolean_ga25c5318bdebe6a489ca877f8b6b93b51.html#ga25c5318bdebe6a489ca877f8b6b93b51">logical_and</a> </td><td align="center"><a class="el" href="group__group-boolean_gabaea01a2c3ab5cddc1495e6c459d9a64.html#gabaea01a2c3ab5cddc1495e6c459d9a64">logical_andnot</a> </td><td align="center"><a class="el" href="group__group-boolean_ga0180004205eb6f398e022d136ef89ebf.html#ga0180004205eb6f398e022d136ef89ebf">logical_not</a> </td></tr>
 <tr>
-<td align="center"><a class="el" href="group__group-boolean_gabaea01a2c3ab5cddc1495e6c459d9a64.html#gabaea01a2c3ab5cddc1495e6c459d9a64">logical_andnot</a></td><td align="center"><a class="el" href="group__group-boolean_ga904db7debd89b63e01e7ee10794ed6c0.html#ga904db7debd89b63e01e7ee10794ed6c0">logical_notor</a> </td><td align="center"><a class="el" href="group__group-boolean_ga91568b9fc5e5047c39c8aa7238621f14.html#ga91568b9fc5e5047c39c8aa7238621f14">logical_xor</a> </td></tr>
+<td align="center"><a class="el" href="group__group-boolean_ga63f5bedc6a1f7f6511cbdceb211afd89.html#ga63f5bedc6a1f7f6511cbdceb211afd89">logical_notand</a> </td><td align="center"><a class="el" href="group__group-boolean_ga904db7debd89b63e01e7ee10794ed6c0.html#ga904db7debd89b63e01e7ee10794ed6c0">logical_notor</a> </td><td align="center"><a class="el" href="group__group-boolean_ga77ff768ab162c5316862de92e817f17f.html#ga77ff768ab162c5316862de92e817f17f">logical_or</a> </td></tr>
 <tr>
-<td align="center"><a class="el" href="group__group-boolean_ga0180004205eb6f398e022d136ef89ebf.html#ga0180004205eb6f398e022d136ef89ebf">logical_not</a> </td><td align="center"><a class="el" href="group__group-boolean_ga77ff768ab162c5316862de92e817f17f.html#ga77ff768ab162c5316862de92e817f17f">logical_or</a> </td><td align="center"><a class="el" href="group__group-boolean_ga9d2d8e5e8703ef4c9da1db8948bf2ee0.html#ga9d2d8e5e8703ef4c9da1db8948bf2ee0">mask2logical</a> </td></tr>
+<td align="center"><a class="el" href="group__group-boolean_gad437a64d08fac39667e38825003807a5.html#gad437a64d08fac39667e38825003807a5">logical_ornot</a> </td><td align="center"><a class="el" href="group__group-boolean_ga91568b9fc5e5047c39c8aa7238621f14.html#ga91568b9fc5e5047c39c8aa7238621f14">logical_xor</a> </td><td align="center"><a class="el" href="group__group-boolean_ga9d2d8e5e8703ef4c9da1db8948bf2ee0.html#ga9d2d8e5e8703ef4c9da1db8948bf2ee0">mask2logical</a> </td></tr>
 </table>
 </center><p class="startli">Masks are pattern of bits all zeros or all ones that can allow masking using bitwise operations. <a class="el" href="group__group-boolean_ga9d2d8e5e8703ef4c9da1db8948bf2ee0.html#ga9d2d8e5e8703ef4c9da1db8948bf2ee0">mask2logical</a> provides a way to transform a mask vector into a logical vector.</p>
 <p class="startli">Logical types are architecture dependant, for instance on intel sse or avx logical types are mask valued simd vectors.</p>
@@ -141,17 +142,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p class="startli">These functors will generally compute all possible outcomes and then select the correct one. If each branch has the same cost (notwithstanding the cost of the test and the inner pipelining of the processor) the cost of the branching operation may be twice as expensive as the cost of evaluating one of the branches. It is for this reason that these functions are of greatest interest when the cardinal of the simd vector is greater than 2.</p>
 <center> <table class="doxtable">
 <tr>
-<th align="center">name </th><th align="center">name </th><th align="center">name </th><th align="center">name  </th></tr>
+<th align="center"></th><th align="center"></th><th align="center"></th><th align="center"></th></tr>
 <tr>
-<td align="center"><a class="el" href="group__group-boolean_ga60b344b42abc10a18b502e0e146047ea.html#ga60b344b42abc10a18b502e0e146047ea">if_allbits_else</a> </td><td align="center"><a class="el" href="group__group-boolean_ga0e391df029ba1de82c3c4ef24e35c576.html#ga0e391df029ba1de82c3c4ef24e35c576">if_else_nan</a> </td><td align="center"><a class="el" href="group__group-boolean_ga6394a74c7aa789c32d79b0d95c4499c6.html#ga6394a74c7aa789c32d79b0d95c4499c6">if_one_else_zero</a> </td><td align="center"><a class="el" href="group__group-boolean_gaa56b250ab17a1308191ab6c260dfe625.html#gaa56b250ab17a1308191ab6c260dfe625">ifnot_dec</a> </td></tr>
+<td align="center"><a class="el" href="group__group-boolean_ga60b344b42abc10a18b502e0e146047ea.html#ga60b344b42abc10a18b502e0e146047ea">if_allbits_else</a> </td><td align="center"><a class="el" href="group__group-boolean_ga440d2b8e67be00de9f28ac2f2d94aa6f.html#ga440d2b8e67be00de9f28ac2f2d94aa6f">if_allbits_else_zero</a> </td><td align="center"><a class="el" href="group__group-boolean_ga6dec22afc6659e9f7f9541fe832ae3e3.html#ga6dec22afc6659e9f7f9541fe832ae3e3">if_dec</a> </td><td align="center"><a class="el" href="group__group-boolean_ga6a92a0ff41c407d4a4ef264aae9a3984.html#ga6a92a0ff41c407d4a4ef264aae9a3984">if_else_allbits</a> </td></tr>
 <tr>
-<td align="center"><a class="el" href="group__group-boolean_ga440d2b8e67be00de9f28ac2f2d94aa6f.html#ga440d2b8e67be00de9f28ac2f2d94aa6f">if_allbits_else_zero</a> </td><td align="center"><a class="el" href="group__group-boolean_gaced6c1ea823b229e64295a96cb439cf3.html#gaced6c1ea823b229e64295a96cb439cf3">if_else_zero</a></td><td align="center"><a class="el" href="group__group-boolean_ga9517d74fc818c57bd816c72d06f62462.html#ga9517d74fc818c57bd816c72d06f62462">if_plus</a> </td><td align="center"><a class="el" href="group__group-boolean_ga109d1b389170cfc1f15ced9854bbcd89.html#ga109d1b389170cfc1f15ced9854bbcd89">ifnot_inc</a> </td></tr>
+<td align="center"><a class="el" href="group__group-boolean_gaa341d5e7b166c68056a68fe57d537e1c.html#gaa341d5e7b166c68056a68fe57d537e1c">if_else</a> </td><td align="center"><a class="el" href="group__group-boolean_ga0e391df029ba1de82c3c4ef24e35c576.html#ga0e391df029ba1de82c3c4ef24e35c576">if_else_nan</a> </td><td align="center"><a class="el" href="group__group-boolean_gaced6c1ea823b229e64295a96cb439cf3.html#gaced6c1ea823b229e64295a96cb439cf3">if_else_zero</a> </td><td align="center"><a class="el" href="group__group-boolean_gadf9a61fa57013e658ad4125ca4559f8d.html#gadf9a61fa57013e658ad4125ca4559f8d">if_inc</a> </td></tr>
 <tr>
-<td align="center"><a class="el" href="group__group-boolean_ga6dec22afc6659e9f7f9541fe832ae3e3.html#ga6dec22afc6659e9f7f9541fe832ae3e3">if_dec</a> </td><td align="center"><a class="el" href="group__group-boolean_gadf9a61fa57013e658ad4125ca4559f8d.html#gadf9a61fa57013e658ad4125ca4559f8d">if_inc</a> </td><td align="center"><a class="el" href="group__group-boolean_ga39f7f1aaa9231ccc792bf62f5c5bb1f4.html#ga39f7f1aaa9231ccc792bf62f5c5bb1f4">if_zero_else_allbits</a></td><td align="center"><a class="el" href="group__group-boolean_ga72b7f9393e772c23de7feaeb8f31367d.html#ga72b7f9393e772c23de7feaeb8f31367d">ifnot_minus</a> </td></tr>
+<td align="center"><a class="el" href="group__group-boolean_ga160b15c75715bb45df50fbb58b67a4d2.html#ga160b15c75715bb45df50fbb58b67a4d2">if_minus</a> </td><td align="center"><a class="el" href="group__group-boolean_ga2e42d2cbac382969d11676e435d2e65d.html#ga2e42d2cbac382969d11676e435d2e65d">if_nan_else</a> </td><td align="center"><a class="el" href="group__group-boolean_ga6394a74c7aa789c32d79b0d95c4499c6.html#ga6394a74c7aa789c32d79b0d95c4499c6">if_one_else_zero</a> </td><td align="center"><a class="el" href="group__group-boolean_ga9517d74fc818c57bd816c72d06f62462.html#ga9517d74fc818c57bd816c72d06f62462">if_plus</a> </td></tr>
 <tr>
-<td align="center"><a class="el" href="group__group-boolean_ga6a92a0ff41c407d4a4ef264aae9a3984.html#ga6a92a0ff41c407d4a4ef264aae9a3984">if_else_allbits</a> </td><td align="center"><a class="el" href="group__group-boolean_ga160b15c75715bb45df50fbb58b67a4d2.html#ga160b15c75715bb45df50fbb58b67a4d2">if_minus</a> </td><td align="center"><a class="el" href="group__group-boolean_ga2d29a63b387c410746152ef862e33b8f.html#ga2d29a63b387c410746152ef862e33b8f">if_zero_else</a> </td><td align="center"><a class="el" href="group__group-boolean_gae26c0cc623fbb785abda81ff057c39f3.html#gae26c0cc623fbb785abda81ff057c39f3">ifnot_plus</a> </td></tr>
+<td align="center"><a class="el" href="group__group-boolean_ga39f7f1aaa9231ccc792bf62f5c5bb1f4.html#ga39f7f1aaa9231ccc792bf62f5c5bb1f4">if_zero_else_allbits</a> </td><td align="center"><a class="el" href="group__group-boolean_ga2d29a63b387c410746152ef862e33b8f.html#ga2d29a63b387c410746152ef862e33b8f">if_zero_else</a> </td><td align="center"><a class="el" href="group__group-boolean_ga685ba8459ff04501929692d3202406a5.html#ga685ba8459ff04501929692d3202406a5">if_zero_else_one</a> </td><td align="center"><a class="el" href="group__group-boolean_gaa56b250ab17a1308191ab6c260dfe625.html#gaa56b250ab17a1308191ab6c260dfe625">ifnot_dec</a> </td></tr>
 <tr>
-<td align="center"><a class="el" href="group__group-boolean_gaa341d5e7b166c68056a68fe57d537e1c.html#gaa341d5e7b166c68056a68fe57d537e1c">if_else</a> </td><td align="center"><a class="el" href="group__group-boolean_ga2e42d2cbac382969d11676e435d2e65d.html#ga2e42d2cbac382969d11676e435d2e65d">if_nan_else</a> </td><td align="center"><a class="el" href="group__group-boolean_ga685ba8459ff04501929692d3202406a5.html#ga685ba8459ff04501929692d3202406a5">if_zero_else_one</a> </td><td align="center"></td></tr>
+<td align="center"><a class="el" href="group__group-boolean_ga109d1b389170cfc1f15ced9854bbcd89.html#ga109d1b389170cfc1f15ced9854bbcd89">ifnot_inc</a> </td><td align="center"><a class="el" href="group__group-boolean_ga72b7f9393e772c23de7feaeb8f31367d.html#ga72b7f9393e772c23de7feaeb8f31367d">ifnot_minus</a> </td><td align="center"><a class="el" href="group__group-boolean_gae26c0cc623fbb785abda81ff057c39f3.html#gae26c0cc623fbb785abda81ff057c39f3">ifnot_plus</a> </td><td align="center"></td></tr>
 </table>
 </center> </li>
 </ul>
@@ -260,7 +261,7 @@ Functions</h2></td></tr>
         <hr class="footer"/>
         <address class="footer">
             <small>
-                Generated on Wed Jan 4 2017 16:43:18 for Boost.SIMD by &#160;
+                Generated on Mon Jan 16 2017 12:04:58 for Boost.SIMD by &#160;
                 <a href="http://www.doxygen.org/index.html">
                     <img class="footer" src="doxygen.png" alt="doxygen"/>
                 </a>
