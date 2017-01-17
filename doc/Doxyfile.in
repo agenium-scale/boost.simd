@@ -62,6 +62,7 @@ HTML_STYLESHEET        =
 ## DO NOT REORDER THE FOLLOWING LINES: {
 HTML_EXTRA_STYLESHEET  = @PROJECT_DOC_DIR@/custom/css/custom.css
 HTML_EXTRA_STYLESHEET += @PROJECT_DOC_DIR@/template/css/ns.css
+HTML_EXTRA_STYLESHEET += @PROJECT_DOC_DIR@/template/css/customdoxygen.css
 HTML_EXTRA_FILES       = @PROJECT_DOC_DIR@/template/js/ns.js
 HTML_EXTRA_FILES      += @PROJECT_DOC_DIR@/custom/js/custom.js
 ## }

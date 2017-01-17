@@ -1,9 +1,9 @@
 #include <memory>
 #include <vector>
 
-#include <boost/simd/pack.hpp>
 #include <boost/simd/memory/allocate.hpp>
 #include <boost/simd/memory/allocator.hpp>
+#include <boost/simd/pack.hpp>
 
 int main(int argc, char** argv)
 {
@@ -26,7 +26,7 @@ int main(int argc, char** argv)
   {
     //! [align-allocate]
     std::size_t num_elements = 1024;
-    using aligned_ptr = std::unique_ptr<int[], boost::simd::aligned_delete>;
+    using aligned_ptr        = std::unique_ptr<int[], boost::simd::aligned_delete>;
 
     aligned_ptr ptr2(boost::simd::allocate<int>(num_elements));
     //! [align-allocate]

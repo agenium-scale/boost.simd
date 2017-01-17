@@ -21,14 +21,14 @@
     extensions: ["tex2jax.js"],
     jax: ["input/TeX","output/SVG"],
 });
-</script><script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
         <link rel="icon" href="numscale_icon.png">
         <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         <link href="doxygen.css" rel="stylesheet" type="text/css" />
-        <link href="doxygen.css" rel="stylesheet" type="text/css" />
         <link href="custom.css" rel="stylesheet" type="text/css"/>
 <link href="ns.css" rel="stylesheet" type="text/css"/>
+<link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="ns.js"></script>
         <script type="text/javascript" src="custom.js"></script>
@@ -134,8 +134,8 @@ A Short Example</h2>
 <div class="fragment"><div class="line">  std::size_t card_sse = 4;</div><div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; i += card_sse) {</div><div class="line">    __m128 v0_sse = _mm_load_ps(&amp;data0[i]);</div><div class="line">    __m128 v1_sse = _mm_load_ps(&amp;data1[i]);</div><div class="line">    __m128 r_sse  = _mm_add_ps(v0_sse, v1_sse);</div><div class="line"></div><div class="line">    _mm_store_ps(&amp;res[i], r_sse);</div><div class="line">  }</div></div><!-- fragment --><p> Looks difficult? How about we vectorize it for the following generation of Intel processor equipped with <code>AVX</code> instructions:</p>
 <div class="fragment"><div class="line">  std::size_t card_avx = 8;</div><div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; i += card_avx) {</div><div class="line">    __m256 v0_avx = _mm256_load_ps(&amp;data0[i]);</div><div class="line">    __m256 v1_avx = _mm256_load_ps(&amp;data1[i]);</div><div class="line">    __m256 r_avx  = _mm256_add_ps(v0_avx, v1_avx);</div><div class="line"></div><div class="line">    _mm256_store_ps(&amp;res[i], r_avx);</div><div class="line">  }</div></div><!-- fragment --><p> Both of these processors are manufactured by Intel yet two different versions of the code are required to get the best performance possible from each processor. This is quicky getting complicated and annoying.</p>
 <p>Now, look at how the code can become simpler with <b>Boost.SIMD</b> :</p>
-<div class="fragment"><div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; i += boost::simd::pack&lt;float&gt;::static_size) {</div><div class="line">    <a class="code" href="classboost_1_1simd_1_1pack.html">boost::simd::pack&lt;float&gt;</a> v0(&amp;data0[i]), v1(&amp;data1[i]);</div><div class="line">    <a class="code" href="namespaceboost_1_1simd_a4ef87e54c642027f74fbf73e6d75191b.html#a4ef87e54c642027f74fbf73e6d75191b">bs::aligned_store</a>(v0 + v1, &amp;res[i]);</div><div class="line">  }</div></div><!-- fragment --><p> And of course, if your C++ sense is tingling, you may have noticed that this piece of code can actually be written using a standard algorithm such as <code>std::transform</code>. The good news is that <b>Boost.SIMD</b> also provides a vectorized version of these algorithms:</p>
-<div class="fragment"><div class="line">  <a class="code" href="group__group-std_ga4b861300a4f001eb64023e4e98a169b7.html#ga4b861300a4f001eb64023e4e98a169b7">boost::simd::transform</a>(&amp;data[0], &amp;data[0] + size, &amp;data1[0], &amp;res[0], <a class="code" href="group__group-operator_gab7d2f36a67787bac4c1b2cfd05ba2b47.html#gab7d2f36a67787bac4c1b2cfd05ba2b47">boost::simd::plus</a>);</div></div><!-- fragment --><p> Happy user of C++14 ? <b>Boost.SIMD</b> also supports the latest additions to the language such as generic lambda functions:</p>
+<div class="fragment"><div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; i += boost::simd::pack&lt;float&gt;::static_size) {</div><div class="line">    <a class="code" href="classboost_1_1simd_1_1pack.html">boost::simd::pack&lt;float&gt;</a> v0(&amp;data0[i]), v1(&amp;data1[i]);</div><div class="line">    <a class="code" href="namespaceboost_1_1simd_aaa551993873d3636d339e3ef32ffb56b.html#aaa551993873d3636d339e3ef32ffb56b">boost::simd::aligned_store</a>(v0 + v1, &amp;res[i]);</div><div class="line">  }</div></div><!-- fragment --><p> And of course, if your C++ sense is tingling, you may have noticed that this piece of code can actually be written using a standard algorithm such as <code>std::transform</code>. The good news is that <b>Boost.SIMD</b> also provides a vectorized version of these algorithms:</p>
+<div class="fragment"><div class="line">  <a class="code" href="group__group-std_ga4b861300a4f001eb64023e4e98a169b7.html#ga4b861300a4f001eb64023e4e98a169b7">boost::simd::transform</a>(&amp;data0[0], &amp;data0[0] + size, &amp;data1[0], &amp;res[0], <a class="code" href="group__group-operator_gab7d2f36a67787bac4c1b2cfd05ba2b47.html#gab7d2f36a67787bac4c1b2cfd05ba2b47">boost::simd::plus</a>);</div></div><!-- fragment --><p> Happy user of C++14 ? <b>Boost.SIMD</b> also supports the latest additions to the language such as generic lambda functions:</p>
 <div class="fragment"><div class="line">  <a class="code" href="group__group-std_ga4b861300a4f001eb64023e4e98a169b7.html#ga4b861300a4f001eb64023e4e98a169b7">boost::simd::transform</a>(&amp;data[0], &amp;data[0] + size, &amp;data1[0], &amp;res[0],</div><div class="line">                         [](<span class="keyword">auto</span> <span class="keyword">const</span>&amp; a, <span class="keyword">auto</span> <span class="keyword">const</span>&amp; b) { <span class="keywordflow">return</span> a + b; });</div></div><!-- fragment --> <h2><a class="anchor" id="main-support"></a>
 Supported Compilers and Hardware</h2>
 <hr/>
@@ -171,7 +171,7 @@ Supported Compilers and Hardware</h2>
         <hr class="footer"/>
         <address class="footer">
             <small>
-                Generated on Wed Jan 4 2017 16:43:19 for Boost.SIMD by &#160;
+                Generated on Mon Jan 16 2017 12:05:00 for Boost.SIMD by &#160;
                 <a href="http://www.doxygen.org/index.html">
                     <img class="footer" src="doxygen.png" alt="doxygen"/>
                 </a>
