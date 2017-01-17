@@ -1,0 +1,10 @@
+//! [bitwise_or]
+---- simd
+ <- pf =                     (3, 4294967294, 0, 0)
+ <- qf =                     (4, 4294967295, 0, 4294967295)
+ -> bs::bitwise_or(pf, qf) = (7, 4294967295, 0, 4294967295)
+---- scalar
+ xf =                        3
+ yf =                        4
+ -> bs::bitwise_or(xf, yf) = 7
+//! [bitwise_or]

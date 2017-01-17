@@ -1,0 +1,10 @@
+//! [bitwise_notand]
+---- simd
+ <- pf =                         (3, 4294967294, 0, 0)
+ <- qf =                         (4, 4294967295, 0, 1)
+ -> bs::bitwise_notand(pf, qf) = (4, 1, 0, 1)
+---- scalar
+ xf =                            3
+ yf =                            4
+ -> bs::bitwise_notand(xf, yf) = 4
+//! [bitwise_notand]
