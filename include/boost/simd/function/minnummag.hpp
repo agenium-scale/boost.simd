@@ -17,7 +17,9 @@ namespace boost { namespace simd
 
  /*!
     @ingroup group-ieee
-    This function object returns the input value which have the least absolute value, ignoring nan.
+    This function object returns between two floating point arguments,
+    the one  having smaller absolute value, treating NaNs
+    as missing data (between a NaN and a numeric value, the numeric value is chosen).
 
    @par Example:
 

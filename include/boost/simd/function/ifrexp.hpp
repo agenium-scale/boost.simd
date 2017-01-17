@@ -17,7 +17,7 @@ namespace boost { namespace simd
 
  /*!
     @ingroup group-ieee
-    This function object returns the Computes a mantissa and an exponent pair for the input
+    This function object computes a mantissa and an exponent pair for the input
 
     @par Semantic:
 
@@ -65,7 +65,7 @@ namespace boost { namespace simd
      @snippet ifrexp.txt ifrexp
 
   **/
-  std::pair<Value, as_integer_t<Value>> ifrexp(Value const & x);
+  std::pair<RealValue, as_integer_t<RealValue>> ifrexp(RealValue const & x);
 } }
 #endif
 

@@ -19,7 +19,7 @@ namespace boost { namespace simd
     @ingroup group-ieee
     This function object returns a value of the same type as
     the input with all bits set to zero
-    except the bit of sign which is preserved.
+    except the sign bit which is preserved.
     This function object returns always @ref Zero for unsigned types
 
     @par Example:

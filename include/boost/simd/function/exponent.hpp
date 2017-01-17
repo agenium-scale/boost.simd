@@ -17,7 +17,7 @@ namespace boost { namespace simd
 
  /*!
     @ingroup group-ieee
-    This function object returns the base (2) exponent of the floating input.
+    This function object returns the exponent of the floating input.
 
 
     @par Note:
@@ -40,7 +40,7 @@ namespace boost { namespace simd
      @snippet exponent.txt exponent
 
   **/
-  as_integer_t<Value> exponent(Value const & x);
+  as_integer_t<RealValue> exponent(RealValue const & x);
 } }
 #endif
 

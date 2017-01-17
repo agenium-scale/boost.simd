@@ -17,10 +17,10 @@ namespace boost { namespace simd
 
  /*!
     @ingroup group-ieee
-    This function object returns the signed mantissa of the floating input.
+    This function object returns the signed mantissa of the input argument.
 
     @par Note
-    The @ref exponent e and signed @ref mantissa m of a floating
+    The @ref exponent @c e and signed @ref mantissa @c m of a floating
     point entry @c x are related by
     \f$x = m\times 2^e\f$, with |m| \f$\in[1, 2[\f$. (Except for zero,
     for which \f$m = 0\f$).

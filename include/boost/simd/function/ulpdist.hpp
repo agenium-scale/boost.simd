@@ -17,7 +17,7 @@ namespace boost { namespace simd
 
  /*!
     @ingroup group-ieee
-    This function object returns ulp distance of the two values.
+    This function object returns ulp distance between its arguments.
 
     It is often difficult to answer to the following question: "are
     these two floating computations results similar enough?". The

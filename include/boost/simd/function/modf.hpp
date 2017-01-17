@@ -17,11 +17,7 @@ namespace boost { namespace simd
 
  /*!
     @ingroup group-ieee
-    This function object returns the Computes the integer and  fractional parts of the input
-
-   @par Note
-
-     `std::tie(t, f)= modf(x)` is similar to: ` t = trunc(x)` and `f = frac(x)`
+    This function object returns the Computes the integer and  fractional parts of the input.
 
    @par Decorators
 

@@ -18,12 +18,7 @@ namespace boost { namespace simd
  /*!
     @ingroup group-ieee
     This function object returns a safe maximal value relative to the input,  i.e. a
-    value which will not overflow when multiplied by the input.
-
-   @par Note
-
-      For every parameter of type @c T `safe_max(x)` is similar to: `x ? Sqrtvalmax<T>()/abs(x) : Inf<T>()`
-
+    value which will not overflow when multiplied by the input argument.
 
    @par Example:
 

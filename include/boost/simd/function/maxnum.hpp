@@ -17,7 +17,8 @@ namespace boost { namespace simd
 
  /*!
     @ingroup group-ieee
-    This function object returns the maximum value, ignoring nans.
+    This function object returns  the larger of two floating point arguments, treating NaNs
+    as missing data (between a NaN and a numeric value, the numeric value is chosen).
 
     @par Decorators
 

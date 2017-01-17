@@ -17,12 +17,12 @@ namespace boost { namespace simd
 
  /*!
     @ingroup group-ieee
-    This function object returns the The function multiply a floating entry \f$x\f$
+    This function object returns  \f$x\f$ multiplied by
     by \f$2^{n}\f$
 
    @par Note
 
-     If n is not of integral type is is truncated:
+     If @c n is not of integral type is is truncated:
      `ldexp(x,n)` is similar to: `x*pow(2, trunc(n))`
 
      The @ref cardinal_of and the size of elements value of the types
@@ -46,7 +46,7 @@ namespace boost { namespace simd
      @snippet ldexp.txt ldexp
 
   **/
-  Value ldexp(Value const & x, Value1 const& n);
+  Value ldexp(RealValue const & x, Value const& n);
 } }
 #endif
 

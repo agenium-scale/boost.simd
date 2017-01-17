@@ -28,7 +28,7 @@ namespace boost { namespace simd
 <center>
  |                      |                  |                  |                 |                 |
  |:--------------------:|:----------------:|:----------------:|:---------------:|:---------------:|
- | @ref bitfloating     | @ref bitinteger  | @ref bitofsign   | @ref copysign   | @ref eps        |
+ | @ref bitofsign       | @ref copysign    | @ref eps         |                 |                 |
  | @ref exponentbits    | @ref exponent    | @ref fpclassify  | @ref frac       | @ref frexp      |
  | @ref ifrexp          | @ref ilogb       | @ref ldexp       | @ref mantissa   | @ref maxmag     |
  | @ref maxnum          | @ref maxnummag   | @ref minmag      | @ref minnum     | @ref minnummag  |

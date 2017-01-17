@@ -19,8 +19,6 @@ namespace boost { namespace simd
     @ingroup group-ieee
     This function object returns the exponent bits of the floating input as an integer value,
     the other bits (sign and mantissa) being just masked.
-    This function is not defined for integral types.
-
 
    @par Example:
 
@@ -31,7 +29,7 @@ namespace boost { namespace simd
      @snippet exponentbits.txt exponentbits
 
   **/
-  as_integer_t<Value> exponentbits(Value const & x);
+  as_integer_t<RealValue> exponentbits(RealValue const & x);
 } }
 #endif
 

@@ -18,7 +18,7 @@ namespace boost { namespace simd
  /*!
     @ingroup group-ieee
     This function object returns the saturated value of the first input in the template parameter type,
-    but in the same type as the input.
+    but in the same type as the input argument.
 
     @par Semantic:
 
@@ -54,6 +54,7 @@ namespace boost { namespace simd
      @snippet saturate.txt saturate
 
   **/
+  template < typename Target>
   Value saturate(Value const & x);
 } }
 #endif

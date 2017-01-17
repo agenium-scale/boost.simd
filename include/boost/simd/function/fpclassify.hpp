@@ -17,16 +17,13 @@ namespace boost { namespace simd
 
  /*!
     @ingroup group-ieee
-    This function objectc categorizes floating point value into the following categories:
+    This function object categorizes floating point value into the following categories:
     zero, subnormal, normal, infinite, nan, or implementation-defined.
 
     @par Notes
 
-    This function is similar to std::fpclassify,  but the return type
-    is the integral signed type associated to the floating input type.
-
     fpclassify returns a value of integral type that matches one of the classification
-    macro constants, depending on the value of x:
+    macro constants, depending on the value of @c x:
     value description:
     - @c FP_INFINITE Positive or negative infinity
     - @c FP_NAN  Not-A-Number
@@ -55,7 +52,7 @@ namespace boost { namespace simd
      @snippet fpclassify.txt fpclassify
 
   **/
-  as_integer_t<Value> fpclassify(Value const & x);
+  as_integer_t<RealValue> fpclassify(RealValue const & x);
 } }
 #endif
 

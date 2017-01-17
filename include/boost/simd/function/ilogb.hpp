@@ -22,10 +22,6 @@ namespace boost { namespace simd
     It coincides with the @ref exponent function
     on all platforms supported.
 
-   @par Note
-
-     `ilogb(x)` is similar to: `saturated_(toint)(log2(x))`
-
 
    @par Example:
 

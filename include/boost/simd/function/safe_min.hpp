@@ -18,12 +18,7 @@ namespace boost { namespace simd
  /*!
     @ingroup group-ieee
     This function object returns a safe mininimal value relative to the input, i.e. a
-    value which will not underflow when divided by the input.
-
-   @par Note
-
-      For every parameter of type @c T `safe_min(x)` is similar to: `Sqrtsmallestposval<T>()*abs(x)`
-
+    value which will not underflow when divided by the input argument.
 
    @par Example:
 
