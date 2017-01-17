@@ -101,7 +101,7 @@ namespace boost { namespace simd
     };
 
     // Don' overlap with other hierarchies
-    template<int N, int P0> struct is_slide<N,P0>     : std::false_type {};
+    template<int N, int P0> struct is_slide<N,P0>     : tt::false_type {};
   }
 
   // -----------------------------------------------------------------------------------------------

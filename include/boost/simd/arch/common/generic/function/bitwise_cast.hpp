@@ -17,7 +17,7 @@
 #include <boost/simd/function/slice.hpp>
 #include <boost/simd/logical.hpp>
 #include <cstring>
-#include <type_traits>
+#include <boost/simd/detail/nsm.hpp>
 
 
 namespace boost { namespace simd { namespace ext
@@ -42,7 +42,7 @@ namespace boost { namespace simd { namespace ext
       return do_(a0, typename std::is_same<A0, result_t>::type());
     }
 
-    BOOST_FORCEINLINE result_t do_(A0 const& a0, std::false_type const& ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE result_t do_(A0 const& a0, tt::false_type const& ) const BOOST_NOEXCEPT
     {
       return do_(a0, typename A0::storage_kind{});
     }
@@ -63,7 +63,7 @@ namespace boost { namespace simd { namespace ext
       return that;
     }
 
-    BOOST_FORCEINLINE result_t do_(A0 const& a0, std::true_type const& ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE result_t do_(A0 const& a0, tt::true_type const& ) const BOOST_NOEXCEPT
     {
       return a0;
     }

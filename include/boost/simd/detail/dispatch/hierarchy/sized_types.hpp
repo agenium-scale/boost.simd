@@ -19,7 +19,7 @@
 #include <boost/simd/detail/dispatch/hierarchy/signed_types.hpp>
 #include <boost/simd/detail/dispatch/meta/sign_of.hpp>
 #include <boost/simd/detail/dispatch/meta/behave_as.hpp>
-#include <type_traits>
+#include <boost/simd/detail/nsm.hpp>
 #include <climits>
 #include <cstddef>
 

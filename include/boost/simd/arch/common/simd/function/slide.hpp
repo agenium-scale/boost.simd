@@ -33,12 +33,12 @@ namespace boost { namespace simd { namespace ext
                           , bd::constant_<bd::integer_<Offset>>
                           )
   {
-    static BOOST_FORCEINLINE T do_(T const& a0, std::true_type const&) BOOST_NOEXCEPT
+    static BOOST_FORCEINLINE T do_(T const& a0, tt::true_type const&) BOOST_NOEXCEPT
     {
       return slide<Offset::value>(a0,Zero<T>());
     }
 
-    static BOOST_FORCEINLINE T do_(T const& a0, std::false_type const&) BOOST_NOEXCEPT
+    static BOOST_FORCEINLINE T do_(T const& a0, tt::false_type const&) BOOST_NOEXCEPT
     {
       return slide<Offset::value+T::static_size>(Zero<T>(),a0);
     }
@@ -75,7 +75,7 @@ namespace boost { namespace simd { namespace ext
     // Slide by N is optimized for aggregate storage
     template<typename... L0, typename... L1>
     static BOOST_FORCEINLINE T unroll ( T const& a0, T const& a1, aggregate_storage const&
-                                      , std::true_type const&
+                                      , tt::true_type const&
                                       , nsm::list<L0...> const&, nsm::list<L1...> const&
                                       )
     {
@@ -86,7 +86,7 @@ namespace boost { namespace simd { namespace ext
 
     template<typename... L0, typename... L1>
     static BOOST_FORCEINLINE T unroll ( T const& a0, T const& a1, aggregate_storage const&
-                                      , std::false_type const&
+                                      , tt::false_type const&
                                       , nsm::list<L0...> const&, nsm::list<L1...> const&
                                       )
     {

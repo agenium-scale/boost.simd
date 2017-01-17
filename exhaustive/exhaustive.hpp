@@ -35,7 +35,7 @@
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
 #include <boost/config.hpp>
 #include <boost/core/demangle.hpp>
-#include <type_traits>
+#include <boost/simd/detail/nsm.hpp>
 
 
 namespace bd = boost::dispatch;

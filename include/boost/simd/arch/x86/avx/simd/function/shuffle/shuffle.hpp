@@ -109,17 +109,17 @@ namespace boost { namespace simd
 
       // Masked binary shuffling
       template<typename T,int... Ps> static BOOST_FORCEINLINE
-      T shuff_(const T& a0, const T & a1, pattern_<Ps...> const& p, std::true_type const&)
+      T shuff_(const T& a0, const T & a1, pattern_<Ps...> const& p, tt::true_type const&)
       {
         using s_t  = typename T::value_type;
         using ui_t = boost::dispatch::as_integer_t<s_t,unsigned>;
-        return  shuff_(a0,a1,p,std::false_type{})
+        return  shuff_(a0,a1,p,tt::false_type{})
               & T ( bitwise_cast<s_t>(zeroing_mask<ui_t,Ps>::value)... );
       }
 
       // Regular binary shuffling
       template<typename T,int... Ps> static BOOST_FORCEINLINE
-      T shuff_(const T& a0, const T & a1, pattern_<Ps...> const&, std::false_type const&)
+      T shuff_(const T& a0, const T & a1, pattern_<Ps...> const&, tt::false_type const&)
       {
         return shuff_(a0, a1, typename avx_topology<Ps...>::type{});
       }

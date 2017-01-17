@@ -17,7 +17,6 @@
 #include <boost/simd/detail/dispatch/hierarchy/integer.hpp>
 #include <boost/simd/detail/dispatch/meta/behave_as.hpp>
 #include <boost/simd/detail/nsm.hpp>
-#include <type_traits>
 
 namespace boost { namespace dispatch
 {

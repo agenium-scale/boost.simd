@@ -182,10 +182,10 @@ namespace nsm
     {
       struct dummy {};
       template <typename C, typename P>
-      static auto test(P * p) -> decltype(C::at(*p), std::true_type());
+      static auto test(P * p) -> decltype(C::at(*p), type_traits::true_type());
       template <typename, typename>
-      static std::false_type test(...);
-      static const bool value = std::is_same<std::true_type, decltype(test<T, dummy>(nullptr))>::value;
+      static type_traits::false_type test(...);
+      static const bool value = std::is_same<type_traits::true_type, decltype(test<T, dummy>(nullptr))>::value;
     };
 
     template <class L, typename Index, bool>
@@ -236,11 +236,11 @@ namespace nsm
   using _state    = _1;
   using _element = _2;
 
-  template<typename T> struct is_placeholder : std::false_type {};
+  template<typename T> struct is_placeholder : type_traits::false_type {};
   template<std::size_t I>
-  struct is_placeholder< nsm::args<I>> : std::true_type {};
+  struct is_placeholder< nsm::args<I>> : type_traits::true_type {};
 
-  template<typename... T> struct has_placeholders : std::false_type {};
+  template<typename... T> struct has_placeholders : type_traits::false_type {};
   template<typename T> struct has_placeholders<T> : is_placeholder<T> {};
 
   template<template<class...>class T,typename... Ts>
@@ -248,7 +248,7 @@ namespace nsm
 
   template<typename F, typename... T> struct bind;
   template<typename F, typename... T>
-  struct has_placeholders<bind<F,T...>> : std::false_type {};
+  struct has_placeholders<bind<F,T...>> : type_traits::false_type {};
 
   template <bool...> struct checks_ {};
   template<typename T, typename U, typename... Ts>
@@ -987,7 +987,7 @@ namespace nsm
   };
   template<class T>
   struct has_placeholders<protect<T>>
-  : std::false_type
+  : type_traits::false_type
   {};
 
   template<typename C, typename T, typename F>

@@ -14,9 +14,11 @@
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
 
+namespace bs = boost::simd;
+namespace tt = nsm::type_traits;
+
 STF_CASE( "Check bitwise_cast between integer types" )
 {
-  namespace bs = boost::simd;
   static const std::size_t N = bs::pack<uint16_t>::static_size;
 
   {
@@ -71,7 +73,7 @@ STF_CASE( "Check bitwise_cast between integer & real types" )
   }
 }
 
-template<typename T, typename Env> void logical_test(Env& $, std::true_type const&)
+template<typename T, typename Env> void logical_test(Env& $, tt::true_type const&)
 {
   namespace bs = boost::simd;
   static const std::size_t N = bs::pack<T>::static_size;
@@ -98,7 +100,7 @@ template<typename T, typename Env> void logical_test(Env& $, std::true_type cons
   }
 }
 
-template<typename T, typename Env> void logical_test(Env& $, std::false_type const&)
+template<typename T, typename Env> void logical_test(Env& $, tt::false_type const&)
 {
   STF_PASS("Logical type are not bitwise compatible on this architecture.");
 }
@@ -108,7 +110,7 @@ STF_CASE_TPL( "Check bitwise_cast between arithmetic & logical types", STF_NUMER
   logical_test<T>($, typename boost::simd::is_bitwise_logical<T>::type{});
 }
 
-template<typename Env> void logical_diff_test(Env& $, std::true_type const&)
+template<typename Env> void logical_diff_test(Env& $, tt::true_type const&)
 {
   namespace bs = boost::simd;
   static const std::size_t N = bs::pack<float>::static_size;
@@ -144,7 +146,7 @@ template<typename Env> void logical_diff_test(Env& $, std::true_type const&)
   }
 }
 
-template<typename Env> void logical_diff_test(Env& $, std::false_type const&)
+template<typename Env> void logical_diff_test(Env& $, tt::false_type const&)
 {
   STF_PASS("Logical types are not bitwise compatible on this architecture.");
 }

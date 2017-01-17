@@ -41,19 +41,19 @@ namespace boost { namespace simd { namespace detail
     //static BOOST_FORCEINLINE auto call(T const& a0, T const& a1)
     //BOOST_NOEXCEPT_DECLTYPE_BODY(detail::slide(a1,a0,tt::integral_constant<int, Card+N>{}));
 
-    static BOOST_FORCEINLINE auto call(T const& a0, std::false_type const&)
+    static BOOST_FORCEINLINE auto call(T const& a0, tt::false_type const&)
     BOOST_NOEXCEPT_DECLTYPE_BODY(detail::slide(a0,tt::integral_constant<int, N>{}));
 
-    static BOOST_FORCEINLINE T call(T const&, std::true_type const&)
+    static BOOST_FORCEINLINE T call(T const&, tt::true_type const&)
     { return Zero<T>(); }
 
     static BOOST_FORCEINLINE auto call(T const& a0)
     BOOST_NOEXCEPT_DECLTYPE_BODY( call(a0, nsm::bool_<(N==-Card)>{}) );
 
-    static BOOST_FORCEINLINE auto call(T const& a0, T const& a1, std::false_type const&)
+    static BOOST_FORCEINLINE auto call(T const& a0, T const& a1, tt::false_type const&)
     BOOST_NOEXCEPT_DECLTYPE_BODY(detail::slide(a1, a0, tt::integral_constant<int, Card+N>{}));
 
-    static BOOST_FORCEINLINE T call(T const&, T const& a1, std::true_type const&)
+    static BOOST_FORCEINLINE T call(T const&, T const& a1, tt::true_type const&)
     { return a1; }
 
     static BOOST_FORCEINLINE auto call(T const& a0, T const& a1)

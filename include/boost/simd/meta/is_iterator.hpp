@@ -39,7 +39,7 @@ namespace boost { namespace simd
 #else
     template <typename T> struct is_iterator_impl
     {
-      static std::false_type test(...);
+      static tt::false_type test(...);
 
       template <  typename U
                 , typename=typename std::iterator_traits<U>::difference_type
@@ -47,10 +47,10 @@ namespace boost { namespace simd
                 , typename=typename std::iterator_traits<U>::reference
                 , typename=typename std::iterator_traits<U>::value_type
                 , typename=typename std::iterator_traits<U>::iterator_category
-                > static std::true_type test(U&&);
+                > static tt::true_type test(U&&);
 
       static const bool value = std::is_same< decltype(test(bd::detail::declval<T>()))
-                                            , std::true_type
+                                            , tt::true_type
                                             >::value;
     };
 #endif

@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSSE3_SIMD_FUNCTION_TOPOLOGY_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSSE3_SIMD_FUNCTION_TOPOLOGY_HPP_INCLUDED
 
-#include <type_traits>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/shuffle.hpp>
 #include <boost/simd/arch/x86/sse1/simd/function/topology.hpp>
 

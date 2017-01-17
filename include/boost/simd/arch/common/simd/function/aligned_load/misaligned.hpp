@@ -55,7 +55,7 @@ namespace boost { namespace simd { namespace ext
 
     // Aggregate case: fill in the storage by calling load twice
     template<typename... N> static BOOST_FORCEINLINE
-    target_t do_( Pointer p, Misalignment const&, std::true_type const&
+    target_t do_( Pointer p, Misalignment const&, tt::true_type const&
                 , aggregate_storage const&, nsm::list<N...> const&
                 ) BOOST_NOEXCEPT
     {
@@ -66,7 +66,7 @@ namespace boost { namespace simd { namespace ext
     }
 
     template<typename... N> static BOOST_FORCEINLINE
-    target_t do_( Pointer p, Misalignment const&, std::false_type const&
+    target_t do_( Pointer p, Misalignment const&, tt::false_type const&
                 , aggregate_storage const&, nsm::list<N...> const&
                 ) BOOST_NOEXCEPT
     {
@@ -78,7 +78,7 @@ namespace boost { namespace simd { namespace ext
 
     // Other case: Fill a pack piecewise
     template<typename K, typename... N> static BOOST_FORCEINLINE
-    target_t do_( Pointer p, Misalignment const&, std::true_type const&
+    target_t do_( Pointer p, Misalignment const&, tt::true_type const&
                 , K const&, nsm::list<N...> const&
                 ) BOOST_NOEXCEPT
     {
@@ -86,7 +86,7 @@ namespace boost { namespace simd { namespace ext
     }
 
     template<typename K, typename... N> static BOOST_FORCEINLINE
-    target_t do_( Pointer p, Misalignment const&, std::false_type const&
+    target_t do_( Pointer p, Misalignment const&, tt::false_type const&
                 , K const&, nsm::list<N...> const&
                 ) BOOST_NOEXCEPT
     {

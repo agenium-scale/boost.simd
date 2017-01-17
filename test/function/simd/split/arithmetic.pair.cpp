@@ -12,13 +12,14 @@
 
 namespace bs = boost::simd;
 namespace bd = boost::dispatch;
+namespace tt = nsm::type_traits;
 
 template<typename T, std::size_t N, typename Env>
-void test( Env&, std::false_type const& )
+void test( Env&, tt::false_type const& )
 {}
 
 template<typename T, std::size_t N, typename Env>
-void test( Env& $, std::true_type const& )
+void test( Env& $, tt::true_type const& )
 {
   using type = bd::upgrade_t<T>;
 

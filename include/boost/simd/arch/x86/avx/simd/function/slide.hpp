@@ -387,7 +387,7 @@ namespace boost { namespace simd { namespace ext
   {
     using hcard = tt::integral_constant<int,(T::static_size/2)>;
 
-    static BOOST_FORCEINLINE T unroll( T const& a0, T const& a1, std::true_type const& )
+    static BOOST_FORCEINLINE T unroll( T const& a0, T const& a1, tt::true_type const& )
     {
       auto s0 = slice(a0);
       auto l1 = slice_low(a1);
@@ -396,7 +396,7 @@ namespace boost { namespace simd { namespace ext
                     );
     }
 
-    static BOOST_FORCEINLINE T unroll( T const& a0, T const& a1, std::false_type const& )
+    static BOOST_FORCEINLINE T unroll( T const& a0, T const& a1, tt::false_type const& )
     {
       auto s1 = slice(a1);
       auto h0 = slice_high(a0);

@@ -14,19 +14,20 @@
 namespace boost { namespace simd { namespace detail
 {
   namespace bd = boost::dispatch;
+  namespace tt = nsm::type_traits;
 
   // Some compilers don't provide _mm_set1_epi64x
   template<typename T> struct support_mm_set1_epi64x
   {
     template<typename U>
     static auto test( int ) -> decltype ( _mm_set1_epi64x(bd::detail::declval<U>())
-                                        , std::true_type()
+                                        , tt::true_type()
                                         );
 
     template<typename>
-    static auto test( ... ) -> std::false_type;
+    static auto test( ... ) -> tt::false_type;
 
-    typedef std::is_same<decltype(test<T>(0)),std::true_type> type;
+    typedef std::is_same<decltype(test<T>(0)),tt::true_type> type;
   };
 
   // Some compilers don't provide _mm_set_epi64x
@@ -34,13 +35,13 @@ namespace boost { namespace simd { namespace detail
   {
     template<typename U>
     static auto test( int ) -> decltype ( _mm_set_epi64x(bd::detail::declval<U>(),bd::detail::declval<U>())
-                                        , std::true_type()
+                                        , tt::true_type()
                                         );
 
     template<typename>
-    static auto test( ... ) -> std::false_type;
+    static auto test( ... ) -> tt::false_type;
 
-    typedef std::is_same<decltype(test<T>(0)),std::true_type> type;
+    typedef std::is_same<decltype(test<T>(0)),tt::true_type> type;
   };
 } } }
 

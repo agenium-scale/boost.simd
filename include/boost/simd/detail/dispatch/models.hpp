@@ -16,21 +16,22 @@
 
 #include <boost/simd/detail/dispatch/hierarchy_of.hpp>
 #include <boost/simd/detail/nsm.hpp>
-#include <type_traits>
 
 namespace boost { namespace dispatch
 {
   namespace detail
   {
+    namespace tt = nsm::type_traits;
+
     template<typename T, typename Hierarchy> struct models
     {
       template<typename U> using hierarchy_t  = nsm::apply<Hierarchy,U>;
 
-      template<typename U> static std::true_type  test( hierarchy_t<U> );
-      template<typename  > static std::false_type test( ... );
+      template<typename U> static tt::true_type  test( hierarchy_t<U> );
+      template<typename  > static tt::false_type test( ... );
 
       using type = typename std::is_same< decltype(test<T>(boost::dispatch::hierarchy_of_t<T>{}))
-                                        , std::true_type
+                                        , tt::true_type
                                         >::type;
     };
   }

@@ -15,7 +15,6 @@
 #include <boost/simd/detail/as_simd.hpp>
 #include <boost/simd/meta/expected_cardinal.hpp>
 #include <boost/simd/detail/nsm.hpp>
-#include <type_traits>
 #include <array>
 
 #if defined __GNUC__ && __GNUC__>=6

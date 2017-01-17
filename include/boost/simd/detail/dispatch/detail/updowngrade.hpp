@@ -20,7 +20,6 @@
 #include <boost/simd/detail/dispatch/meta/make_integer.hpp>
 #include <boost/simd/detail/dispatch/meta/apply_sign.hpp>
 #include <boost/simd/detail/nsm.hpp>
-#include <type_traits>
 
 namespace boost { namespace dispatch { namespace detail
 {

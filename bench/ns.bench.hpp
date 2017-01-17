@@ -1468,7 +1468,7 @@ namespace ns { namespace bench { namespace generators {
 template <typename U, typename IS = typename std::is_scalar<U>::type>
 struct rand {};
 template <typename T>
-struct rand<T, std::true_type>
+struct rand<T, nsm::type_traits::true_type>
 {
   template <typename U>
   rand( U pmin = static_cast<U>(std::numeric_limits<T>::min())
@@ -1505,7 +1505,7 @@ struct rand<T, std::true_type>
   T min_, max_;
 };
 template <typename T>
-struct rand<T, std::false_type>
+struct rand<T, nsm::type_traits::false_type>
 {
   using value_type = typename T::value_type;
   template <typename U>

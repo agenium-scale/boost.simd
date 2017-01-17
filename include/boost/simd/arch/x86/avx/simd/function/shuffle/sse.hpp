@@ -11,7 +11,7 @@
 
 #include <boost/simd/detail/shuffle.hpp>
 #include <boost/simd/detail/dispatch/meta/as_floating.hpp>
-#include <type_traits>
+#include <boost/simd/detail/nsm.hpp>
 
 namespace boost { namespace simd { namespace detail
 {
@@ -43,7 +43,7 @@ namespace boost { namespace simd { namespace detail
 
     template<typename T,int P0, int P1>
     static BOOST_FORCEINLINE T do_( T const& a0, pattern_<P0,P1> const&
-                                  , std::true_type const&, std::false_type const&
+                                  , tt::true_type const&, tt::false_type const&
                                   )
     {
       bd::as_floating_t<T> tmp =  _mm_permute_pd( bitwise_cast<bd::as_floating_t<T>>(a0)
@@ -65,7 +65,7 @@ namespace boost { namespace simd { namespace detail
 
     template<typename T, int P0, int P1, int P2, int P3>
     static BOOST_FORCEINLINE T do_( T const& a0, pattern_<P0,P1,P2,P3> const&
-                                  , std::true_type const&, std::false_type const&
+                                  , tt::true_type const&, tt::false_type const&
                                   )
     {
       bd::as_floating_t<T> tmp = _mm_permute_ps( bitwise_cast<bd::as_floating_t<T>>(a0)
