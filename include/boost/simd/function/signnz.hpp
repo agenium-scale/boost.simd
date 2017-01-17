@@ -17,11 +17,14 @@ namespace boost { namespace simd
 
  /*!
     @ingroup group-ieee
-    This function object returns the sign of x. I.e. -1 or 1, according
-    x is negative or positive.
+    This function object returns the sign of x. I.e. -1 or 1,
+    depending on the fact  @c x is negative or positive.
+
     This function never returns @ref Zero (zero is considered positive for integers).
+
     For floating point numbers the bit of sign is taken into account and so
     we always have signnz(-z) == -signnz(z)).
+
     The result for @ref Nan entry is undefined.
 
     @see Mzero, sign, is_negative, is_positive
