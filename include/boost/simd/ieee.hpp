@@ -51,6 +51,7 @@ namespace boost { namespace simd
 #include <boost/simd/function/fpclassify.hpp>
 #include <boost/simd/function/frac.hpp>
 #include <boost/simd/function/frexp.hpp>
+#include <boost/simd/function/ifrexp.hpp>
 #include <boost/simd/function/ilogb.hpp>
 #include <boost/simd/function/ldexp.hpp>
 #include <boost/simd/function/mantissa.hpp>

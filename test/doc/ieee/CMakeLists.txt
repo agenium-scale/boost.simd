@@ -17,6 +17,7 @@ SET( SOURCES
     fpclassify.cpp
     frac.cpp
     frexp.cpp
+    ifrexp.cpp
     ilogb.cpp
     ldexp.cpp
     mantissa.cpp

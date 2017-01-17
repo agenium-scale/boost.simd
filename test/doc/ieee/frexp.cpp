@@ -14,7 +14,6 @@
 
 namespace bs =  boost::simd;
 using pack_ft = bs::pack <float, 4>;
-using pack_it = bs::pack <int32_t, 4>;
 
 int main()
 {
@@ -23,20 +22,20 @@ int main()
   std::tie(pm, pe) = bs::frexp(pf);
   std::cout
     << "---- simd" << '\n'
-    << "<- pf =                                " << pf << '\n'
-    << "-> std::tie(pm, pie) = bs::frexp(pf) = " << '\n'
-    << "-> pm  =                               " << pm << '\n'
-    << "-> pie =                               " << pe<< '\n'   ;
+    << "<- pf =                               " << pf << '\n'
+    << "-> std::tie(pm, pe) = bs::frexp(pf) = " << '\n'
+    << "-> pm  =                              " << pm << '\n'
+    << "-> pie =                              " << pe<< '\n'   ;
 
   float xf = 2.0f;
   float m, e;
   std::tie(m, e) = bs::frexp(xf);
   std::cout
     << "---- scalar"  << '\n'
-    << " xf =                                  " << xf << '\n'
-    << "-> std::tie(m, e) = bs::frexp(xf) =    " << '\n'
-    << "-> m  =                                " << m << '\n'
-    << "-> e =                                 " << e << '\n'   ;
+    << " xf =                                 " << xf << '\n'
+    << "-> std::tie(m, e) = bs::frexp(xf) =   " << '\n'
+    << "-> m  =                               " << m << '\n'
+    << "-> e =                                " << e << '\n'   ;
 
   return 0;
 }
