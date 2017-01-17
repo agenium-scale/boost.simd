@@ -40,9 +40,6 @@ namespace boost { namespace dispatch
 #endif
   {
     typedef detail::hierarchy_of<T, typename std::remove_reference<Origin>::type> parent;
-
-    BOOST_FORCEINLINE
-    static typename parent::type value() { return typename parent::type(); }
   };
 
   /*!
