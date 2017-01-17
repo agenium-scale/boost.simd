@@ -16,36 +16,22 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-bitwise
-    Function object implementing bitwise_xor capabilities
-
-    return the bitwise xor of the two parameters
-
+    This function object returns the return the bitwise xor of the two parameters
     The operands must share the same bit size.
-
     The result type is the one of the first operand.
-
     Infix notation can be used with operator '^',
     but this will not work in scalar mode if any
     operand is floating point because of C++ limitations.
 
-    @par Semantic:
 
-    For every parameters @c x of type @c T0 @c y of type @c T1:
+   @par Example:
 
-    @code
-    T0 r = bitwise_xor(x,y);
-    @endcode
+     @snippet bitwise_xor.cpp bitwise_xor
 
-    is similar to:
+   @par Possible output:
 
-    @code
-    T0 r = x^y;
-    @endcode
-
-    @see  bitwise_or, bitwise_and, bitwise_notand,
-    bitwise_andnot, bitwise_notor, bitwise_ornot, complement
+     @snippet bitwise_xor.txt bitwise_xor
 
   **/
   T0 bitwise_xor(T0 const &x, T1 const& y);

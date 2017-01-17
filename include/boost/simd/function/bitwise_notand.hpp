@@ -16,32 +16,18 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-bitwise
-    Function object implementing bitwise_notand capabilities
-
-    Computes the bitwise not and of its parameters.
-
+    This function object computes the bitwise not and of its parameters.
     The operands must share the same bit size.
-
     The result type is the one of the first operand.
 
-    @par semantic:
-    For any given value @c x, of type @c T1, @c y of type @c T2
-    of same memory size:
+   @par Example:
 
-    @code
-    T1 r = bitwise_notand(x, y);
-    @endcode
+     @snippet bitwise_notand.cpp bitwise_notand
 
-    The code is equivalent to:
+   @par Possible output:
 
-    @code
-    T1 r = ~x & y;
-    @endcode
-
-    @see  bitwise_or, bitwise_xor, bitwise_and,
-    bitwise_andnot, bitwise_notor, bitwise_ornot, complement
+     @snippet bitwise_notand.txt bitwise_notand
 
   **/
   T0 bitwise_notand(T0 const& x, T1 const& y);

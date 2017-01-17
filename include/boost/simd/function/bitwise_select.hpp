@@ -16,29 +16,19 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-bitwise
-    Function object implementing bitwise_select capabilities
-
-    Returns the bitwise selection of bits from the second
+    This function object returns the bitwise selection of bits from the second
     or third operand according to the setting of the bits
     of the first operand
-
     The operands must share the same bit size and number of elements.
 
-    @par semantic:
-    For any given value @c sel of type @c SEL, @c x of type @c T0 and @c y of type @c T1
-    of same memory size:
+    @par Example:
 
-    @code
-    T0 r = bitwise_select(sel, x, y);
-    @endcode
+     @snippet bitwise_select.cpp bitwise_select
 
-    The code is equivalent to:
+   @par Possible output:
 
-    @code
-    T1 r = (x&sel)|(y&~sel);
-    @endcode
+     @snippet bitwise_select.txt bitwise_select
 
   **/
   T0 bitwise_select(SEL const& sel, T0 const &x, T1 const& y);

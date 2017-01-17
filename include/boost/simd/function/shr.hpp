@@ -18,21 +18,23 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-operator
-    Function object implementing shr capabilities
+    This function object returns the first entry *logically* shifted right
+    by value of the second entry which must be of integer type and of the same number
+    of elements as the first parameter or scalar.
 
-    Returns the first entry logically shifted right
-    by value of the second entry which must be of integtral type.
     If the second entry is negative
     the result is not defined.
 
-    @par semantic:
-    For any given value @c x of type @c T,  @c n  of type @c I:
-
-    @code
-    auto r = shr(x, n);
-    @endcode
-
     @see  shift_right, shift_left, rshl, rshr, rol, ror
+
+
+   @par Example:
+
+     @snippet shr.cpp shr
+
+   @par Possible output:
+
+     @snippet shr.txt shr
 
   **/
   Value shr(Value const & x, IntegerValue const& n);

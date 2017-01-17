@@ -13,23 +13,24 @@
 
 
 namespace bs =  boost::simd;
-using pack_ft = bs::pack <float, 4>;
+using iT =  std::int32_t;
+using pack_it = bs::pack <iT, 4>;
 
 int main()
 {
-  pack_ft pf = {1.0f, 2.0f, -1.0f, 0.5f};
+  pack_it pi = {1, 2, -1, 32769};
 
   std::cout
     << "---- simd" << '\n'
-    << "<- pf =           " << pf << '\n'
-    << "-> bs::lo(pf) =   " << bs::lo(pf) << '\n';
+    << "<- pi =           " << pi << '\n'
+    << "-> bs::lo(pi) =   " << bs::lo(pi) << '\n';
 
-  float xf = 2.0f;
+  iT xi = 2;
 
   std::cout
     << "---- scalar"  << '\n'
-    << "<- xf =           " << xf << '\n'
-    << "-> bs::lo(xf) =   " << bs::lo(xf) << '\n';
+    << "<- xi =           " << xi << '\n'
+    << "-> bs::lo(xi) =   " << bs::lo(xi) << '\n';
   return 0;
 }
 //! [lo]

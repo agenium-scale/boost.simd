@@ -16,25 +16,24 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-bitwise
-    Function object implementing bitget capabilities
+    This function object returns the value of the ith bit in x as an unsigned integer
 
-    Returns the value of the ith bit in x as an unsigned integer
+   @par Note
 
-    @par semantic:
-    For any given value @c x of type @c T, @c i of type @c I:
+      For any given value @c x of type @c T, @c i of type @c I: `as_integer_t<T> r = bitget(x, i)` r contains is 0 or \f$2^i\f$ according to the fact the of rank @c i of @c x is 0 or 1  @see  bitset
 
-    @code
-    as_integer_t<T> r = bitget(x, i);
-    @endcode
 
-    r contains is 0 or \f$2^i\f$ according to the fact the of rank @c i of @c x is 0 or 1
+   @par Example:
 
-    @see  bitset
+     @snippet bitget.cpp bitget
+
+   @par Possible output:
+
+     @snippet bitget.txt bitget
 
   **/
-  as_integer_t<T> bitget(Value const & v0, integer_type i);
+  as_integer_t<T> bitget(Value const & x, integer_type i);
 } }
 #endif
 

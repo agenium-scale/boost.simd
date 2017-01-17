@@ -21,27 +21,22 @@ namespace boost { namespace simd
       Performs a bit-preserving cast of its parameters into an arbitrary
       type @c Target.
 
-
-      @par Semantic
-
-      For any value @c x of type @c T and for type @c Target,
-      of same bit size as T
+      @pre `sizeof(Value) == sizeof(Target)`
 
 
-      @code
-      Target r = bitwise_cast<Target>(x);
-      @endcode
+   @par Example:
 
-      @pre
-      @code
-      sizeof(T) == sizeof(Target)
-      @endcode
+     @snippet bitwise_cast.cpp bitwise_cast
 
-      @tparam Target @c Target type to cast toward
+   @par Possible output:
+
+     @snippet bitwise_cast.txt bitwise_cast
+
       @param  @c x Value to cast
 
       @return A value of type @c Target which is bit-equivalent to @c x.
     **/
+  template < typename Target>
     Target bitwise_cast(Value const& x);
   }
 } }

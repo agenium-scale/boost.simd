@@ -17,21 +17,21 @@ using pack_it =  bs::pack <std::uint32_t, 4>;
 
 int main()
 {
-  pack_it pf = { 3, -2, -0, 0  };
-  pack_it qf = { 4, -1,  0, ~0 };
+  pack_it pi = { 3,  6,  5,  27 };
+  pack_it qi = { 4, -1,  2, ~0  };
   std::cout
     <<  "---- simd" << '\n'
-    << " <- pf =                     " << pf << '\n'
-    << " <- qf =                     " << qf << '\n'
-    << " -> bs::bitwise_or(pf, qf) = " << bs::bitwise_or(pf, qf) << '\n';
+    << " <- pi =                     " << pi << '\n'
+    << " <- qi =                     " << qi << '\n'
+    << " -> bs::bitwise_or(pi, qi) = " << bs::bitwise_or(pi, qi) << '\n';
 
-  std::uint32_t xf = 3, yf = 4;
+  std::uint32_t xi = 3, yi = 4;
 
   std::cout
     << "---- scalar"  << '\n'
-    << " xf =                        " << xf << '\n'
-    << " yf =                        " << yf << '\n'
-    << " -> bs::bitwise_or(xf, yf) = " << bs::bitwise_or(xf, yf) << '\n';
+    << " xi =                        " << xi << '\n'
+    << " yi =                        " << yi << '\n'
+    << " -> bs::bitwise_or(xi, yi) = " << bs::bitwise_or(xi, yi) << '\n';
   return 0;
 }
 //! [bitwise_or]

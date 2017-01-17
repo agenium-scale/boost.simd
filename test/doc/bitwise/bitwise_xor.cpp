@@ -17,8 +17,8 @@ using pack_it =  bs::pack <std::uint32_t, 4>;
 
 int main()
 {
-  pack_it pi = { 3, -2, 10, 1 };
-  pack_it qi = { 4, -1,  0, 5 };
+  pack_it pi = { 3, 2, 10, 1 };
+  pack_it qi = { 4, 1,  2, 5 };
   std::cout
     <<  "---- simd" << '\n'
     << " <- pi =                      " << pi << '\n'

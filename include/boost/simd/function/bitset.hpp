@@ -16,23 +16,24 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-bitwise
-    Function object implementing bitset capabilities
+    This function object returns x with the ith bit set
 
-    Returns x with the ith bit set
+   @par Note
 
-    @par semantic:
-    For any given value @c x of type @c T, i  of type @c I:
+      For any given value @c x of type @c T, i  of type @c I: `T r = bitset(x, i)` @see  bitget
 
-    @code
-    T r = bitset(x, i);
-    @endcode
 
-    @see  bitget
+   @par Example:
+
+     @snippet bitset.cpp bitset
+
+   @par Possible output:
+
+     @snippet bitset.txt bitset
 
   **/
-  Value bitset(Value const & v0, integer const& i);
+  Value bitset(Value const & x, integer const& i);
 } }
 #endif
 

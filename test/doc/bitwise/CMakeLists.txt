@@ -37,8 +37,13 @@ SET( SOURCES
     rror.cpp
     rshl.cpp
     rshr.cpp
+    shift_left.cpp
+    shift_right.cpp
+    shl.cpp
+    shr.cpp
     sbits.cpp
     swapbytes.cpp
+    twopower.cpp
   )
 
 make_unit( "doc.bitwise" ${SOURCES})

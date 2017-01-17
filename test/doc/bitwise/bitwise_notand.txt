@@ -1,10 +1,10 @@
 //! [bitwise_notand]
 ---- simd
- <- pf =                         (3, 4294967294, 0, 0)
- <- qf =                         (4, 4294967295, 0, 1)
- -> bs::bitwise_notand(pf, qf) = (4, 1, 0, 1)
+ <- pi =                         (3, 4294967294, 1, 0)
+ <- qi =                         (4, 4294967295, 5, 25)
+ -> bs::bitwise_notand(pi, qi) = (4, 1, 4, 25)
 ---- scalar
- xf =                            3
- yf =                            4
- -> bs::bitwise_notand(xf, yf) = 4
+ xi =                            3
+ yi =                            5
+ -> bs::bitwise_notand(xi, yi) = 4
 //! [bitwise_notand]

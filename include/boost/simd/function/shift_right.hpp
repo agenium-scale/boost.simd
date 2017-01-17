@@ -18,29 +18,21 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-operator
-    Function object implementing shift_right capabilities
-
-    return right shift of the first operand by the second
+    This function object returns the first operand shifted right by the second
     that must be of integer type and of the same number
     of elements as the first parameter
 
     Infix notation can be used with operator '>>'
 
-    @par Semantic:
+      @see  shift_left, shr, rshl, rshr, rol, ror
 
-    For every parameters of types respectively @c T, @c N:
+   @par Example:
 
-    @code
-    auto r = shift_right(x,y);
-    @endcode
+     @snippet shift_right.cpp shift_right
 
-    or
+   @par Possible output:
 
-    @code
-    auto r = x >> y;
-    @endcode
-
-    @see  shift_left, shr, rshl, rshr, rol, ror
+     @snippet shift_right.txt shift_right
 
   **/
   Value shift_right(Value const & x, IntegerValue const& n);

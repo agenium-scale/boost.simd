@@ -1,8 +1,8 @@
 //! [bitwise_xor]
 ---- simd
- <- pi =                      (3, 4294967294, 10, 1)
- <- qi =                      (4, 4294967295, 0, 5)
- -> bs::bitwise_xor(pi, qi) = (7, 1, 10, 4)
+ <- pi =                      (3, 2, 10, 1)
+ <- qi =                      (4, 1, 2, 5)
+ -> bs::bitwise_xor(pi, qi) = (7, 3, 8, 4)
 ---- scalar
  xi =                         3
  yi =                         7

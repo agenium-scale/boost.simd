@@ -16,23 +16,22 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-bitwise
-    Function object implementing clz capabilities
-
-    Returns  the bit count of leading zeros.
-
-    @par semantic:
-    For any given value @c x of type @c T:
-
-    @code
-    as_integer_t<T> r = clz(x);
-    @endcode
+    This function object returns  the bit count of leading zeros.
 
     @see  ctz, popcnt
 
+
+   @par Example:
+
+     @snippet clz.cpp clz
+
+   @par Possible output:
+
+     @snippet clz.txt clz
+
   **/
-  as_integer_t<Value> clz(Value const & v0);
+  as_integer_t<Value> clz(Value const & x);
 } }
 #endif
 

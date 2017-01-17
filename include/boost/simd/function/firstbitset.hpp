@@ -16,24 +16,23 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-bitwise
-    Function object implementing firstbitset capabilities
-
-    Returns the bit pattern in which the only bit set is
+    This function object returns the bit pattern in which the only bit set is
     the first bit set (beginning with the least significant bit) in the parameter.
-
-    @par semantic:
-    For any given value @c x of type @c T:
-
-    @code
-    as_integer_t<T,unsigned> r = firstbitset(x);
-    @endcode
 
     @see  ffs,  firstbitunset
 
+
+   @par Example:
+
+     @snippet firstbitset.cpp firstbitset
+
+   @par Possible output:
+
+     @snippet firstbitset.txt firstbitset
+
   **/
-  as_integer_t<Value> firstbitset(Value const & v0);
+  as_integer_t<Value> firstbitset(Value const & x);
 } }
 #endif
 

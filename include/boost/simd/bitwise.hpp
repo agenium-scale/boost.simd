@@ -46,10 +46,10 @@ namespace boost { namespace simd
 
        <center>
          |                  |                  |                 |                  |                  |                     |
-         |:----------------:|:----------------:|:---------------:|:----------------:|-----------------:|:-------------------:|
+         |:----------------:|:----------------:|:---------------:|:----------------:|:----------------:|:-------------------:|
          | @ref bits        |  @ref clz        |   @ref ctz      |   @ref ffs       | @ref firstbitset |  @ref firstbitunset |
          | @ref genmask     |  @ref genmaskc   |   @ref hi       |   @ref ilog2     | @ref lo          |  @ref popcnt        |
-         | @ref reversebits |  @ref bitget     |   @ref bitset   |   @ref swapbytes | @ref twopower    |                     |
+         | @ref reversebits |  @ref swapbytes  | @ref twopower   |                  |                  |                     |
        </center>
 
       - Shifts and rotations

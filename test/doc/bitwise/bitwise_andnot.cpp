@@ -17,7 +17,7 @@ using pack_it =  bs::pack <std::uint32_t, 4>;
 
 int main()
 {
-  pack_it pf = { 3, -2, -0, 0  };
+  pack_it pf = { 3, -2,  3,  3  };
   pack_it qf = { 4, -1,  0, ~0 };
   std::cout
     <<  "---- simd" << '\n'
@@ -25,7 +25,7 @@ int main()
     << " <- qf =                      " << qf << '\n'
     << " -> bs::bitwise_andnot(pf, qf) = " << bs::bitwise_andnot(pf, qf) << '\n';
 
-  std::uint32_t xf = 3, yf = 4;
+  std::uint32_t xf = 3, yf = 1;
 
   std::cout
     << "---- scalar"  << '\n'
