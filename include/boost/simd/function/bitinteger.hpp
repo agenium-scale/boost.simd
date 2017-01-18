@@ -23,7 +23,7 @@ namespace boost { namespace simd
 
 
     @par Note:
-    This is an internaly used utility function related to the computation of
+    This function is related to the computation of
     floating successors or predecessors as the ordering of the integers obtained
     by @c bifloating is the same as the original order on the floating elements,
     an increment can be used to find the successor.

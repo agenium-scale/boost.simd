@@ -18,7 +18,7 @@ namespace boost { namespace simd
  /*!
     @ingroup group-ieee
     This function object returns the smallest representable value
-    strictly greater than the parameter with a few  exceptions or pecumliarities stated above:
+    strictly greater than the parameter except:
 
     - for entries of floating types
 

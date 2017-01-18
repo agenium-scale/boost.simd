@@ -18,7 +18,7 @@ namespace boost { namespace simd
  /*!
     @ingroup group-ieee
     This function object returns the saturated value of the first input in the template parameter type,
-    but in the same type as the input argument.
+    but in the same type as the  argument.
 
     @par Semantic:
 

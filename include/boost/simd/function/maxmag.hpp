@@ -17,7 +17,7 @@ namespace boost { namespace simd
 
  /*!
     @ingroup group-ieee
-    This function object returns the value with the greatest absolute value ammong
+    This function object returns the value with the greatest absolute value among
     its arguments.
 
    @par Example:
