@@ -27,7 +27,7 @@ namespace boost { namespace simd
 
     @par Decorators
 
-    std_ for floating entries provides access to std::asin
+      - std_ for floating entries provides access to std::asin
 
     @see asind, asinpi, sin
 

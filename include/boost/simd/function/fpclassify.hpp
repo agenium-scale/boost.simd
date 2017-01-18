@@ -38,7 +38,7 @@ namespace boost { namespace simd
 
     @par Decorators
 
-    std_ for floating entries call std::fpclassify and returns @c int
+      - std_ for floating entries call std::fpclassify and returns @c int
 
     @see is_eqz, is_denormal, is_normal, is_inf, is_nan
 

@@ -59,7 +59,7 @@ namespace boost { namespace simd
 
     @par Decorators
 
-    std_ for floating entries  provides access to @c std::lgamma
+      - std_ for floating entries  provides access to @c std::lgamma
 
     @see gamma, signgam
 

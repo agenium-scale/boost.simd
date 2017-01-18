@@ -1,0 +1,10 @@
+//! [significants]
+---- simd
+<- pf =                       (1234.57, 1234.57, 1234.57, 1234.57)
+<- qi =                       (0, 1, 2, 3)
+-> bs::significants(pf, qi) = (0, 1000, 1200, 1230)
+---- scalar
+<- xf =                       2.34568
+<- yi =                       3
+-> bs::significants(xf, yi) = 2.35
+//! [significants]
