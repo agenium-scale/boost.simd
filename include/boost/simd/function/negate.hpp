@@ -17,7 +17,8 @@ namespace boost { namespace simd
 
  /*!
     @ingroup group-ieee
-    This function object returns  the first element multiplied by the @ref sign of the second.
+    This function object returns  the first element multiplied by 1,  0 or -1 depending on the fact its second argument
+    is greater,  equal or lesser than zero.
 
     @par Note
     If y is @ref Zero the result is zero. This can be avoided using

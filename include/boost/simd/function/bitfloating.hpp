@@ -17,7 +17,7 @@ namespace boost { namespace simd
 
  /*!
     @ingroup group-ieee
-    This function object  transforms of an integer value to a floating point one
+    This function object  transforms an integer value to a floating point one
     with a preserving order formula. This function is the converse of @ref bitinteger.
 
 

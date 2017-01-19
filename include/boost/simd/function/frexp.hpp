@@ -53,7 +53,7 @@ namespace boost { namespace simd
 
      - std_ transmits the call to @c std::frexp and converts the exponent.
 
-    @see exponent, mantissa, ifrexp
+    @see ifrexp, exponent, mantissa
 
 
    @par Example:
