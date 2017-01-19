@@ -9,39 +9,34 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSE4_1_SIMD_FUNCTION_ANY_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE4_1_SIMD_FUNCTION_ANY_HPP_INCLUDED
 
-#include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/genmask.hpp>
 #include <boost/simd/constant/allbits.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/overload.hpp>
+#include <boost/simd/function/abs.hpp>
+#include <boost/simd/function/genmask.hpp>
 
-namespace boost { namespace simd { namespace ext
-{
-  namespace bd =  boost::dispatch;
-  namespace bs =  boost::simd;
+namespace boost {
+namespace simd {
+namespace ext {
+namespace bd = boost::dispatch;
+namespace bs = boost::simd;
 
-  BOOST_DISPATCH_OVERLOAD ( any_
-                          , (typename A0)
-                          , bs::sse4_1_
-                          , bs::pack_<bd::integer_<A0>, bs::sse_>
-                         )
-  {
-    BOOST_FORCEINLINE bool operator() ( const A0 & a0) const BOOST_NOEXCEPT
-    {
-      return !_mm_testz_si128(a0, Allbits<A0>());
-    }
-  };
+BOOST_DISPATCH_OVERLOAD(any_, (typename A0), bs::sse4_1_,
+                        bs::pack_<bd::integer_<A0>, bs::sse_>){
+    BOOST_FORCEINLINE bool operator()(const A0 &a0)
+        const BOOST_NOEXCEPT{return !_mm_testz_si128(a0, Allbits<A0>());
+}
+};
 
-  BOOST_DISPATCH_OVERLOAD ( any_
-                          , (typename A0)
-                          , bs::sse4_1_
-                          , bs::pack_<bd::floating_<A0>, bs::sse_>
-                         )
-  {
-    BOOST_FORCEINLINE bool operator() ( const A0 & a0) const BOOST_NOEXCEPT
-    {
-      return !!any(bitwise_cast<bd::as_integer_t<A0>>(a0));
-    }
-  };
-} } }
+BOOST_DISPATCH_OVERLOAD(any_, (typename A0), bs::sse4_1_,
+                        bs::pack_<bd::floating_<A0>, bs::sse_>){
+    BOOST_FORCEINLINE bool operator()(const A0 &a0) const BOOST_NOEXCEPT{
+        return any(bitwise_cast<bd::as_integer_t<A0>>(bs::abs(a0)));
+}
+}
+;
+}
+}
+}
 
 #endif
