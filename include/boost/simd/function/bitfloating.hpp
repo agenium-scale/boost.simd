@@ -27,8 +27,6 @@ namespace boost { namespace simd
     by @c bifloating is the same as the original order on the floating elements,
     an increment can be used to find the successor.
 
-    `next(x)` is simply `bitfloating(inc(bitinteger(x)))`
-
     @see next, prev, successor,  predecessor,  nextafter, bitinteger
 
 
