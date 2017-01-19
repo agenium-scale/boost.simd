@@ -12,35 +12,28 @@
 #define BOOST_SIMD_FUNCTION_ANY_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+namespace boost {
+namespace simd {
 
- /*!
+/*!
+   @ingroup group-reduction
+   This function object returns @ref True if at least one element of the
+ argument is non zero.
 
-    @ingroup group-reduction
-    Function object implementing any capabilities
+   @see all, none, nbtrue
 
-    Returns @ref True if at least one element of the input vector is non zero.
+   @par Example:
 
-    @par Semantic:
+    @snippet any.cpp any
 
-    For every parameter of type T
+  @par Possible output:
 
-    @code
-    logical<scalar_of_t<T>> r = any(x);
-    @endcode
+    @snippet any.txt any
 
-    is similar to:
-
-    @code
-    logical<scalar_of_t<T>> r = False;
-    for(result_type i = 0; i != cardinal_of<T>; ++i)
-      if (x[i]) {r =  True; break; }
-    @endcode
-
-  **/
-  logical<scalar_of_t<value>> any(Value const & v0);
-} }
+ **/
+logical<scalar_of_t<value>> any(Value const &x);
+}
+}
 #endif
 
 #include <boost/simd/function/scalar/any.hpp>
