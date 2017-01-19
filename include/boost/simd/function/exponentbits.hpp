@@ -17,7 +17,7 @@ namespace boost { namespace simd
 
  /*!
     @ingroup group-ieee
-    This function object returns the exponent bits of the floating input as an integer value,
+    This function object returns the exponent bits of its arguments as an integer value,
     the other bits (sign and mantissa) being just masked.
 
    @par Example:

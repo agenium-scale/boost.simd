@@ -39,7 +39,7 @@ namespace boost { namespace simd
        @snippet bitfloating.txt bitfloating
 
   **/
-  as_floating_t<Value> bitfloating(Value const & x);
+  as_floating_t<Value> bitfloating(IntegerValue const & x);
 } }
 #endif
 

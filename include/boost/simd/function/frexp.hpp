@@ -36,7 +36,7 @@ namespace boost { namespace simd
 
     @par Note:
 
-    Without the pedantic_ decorator  @ref Nan or @ref Inf are not handled properly.
+    Without the pedantic_ decorator,  calling @c frexp on @c Nan or @c Inf is undefined behavior.
 
     if you need integral type exponent (as in the standard library)  use @ref ifrexp
 

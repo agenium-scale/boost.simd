@@ -19,10 +19,6 @@ namespace boost { namespace simd
     @ingroup group-ieee
     This function object returns @c x with the sign of @c y.
 
-   @par Note
-
-     `copysign(x,y)` is similar to: `is_positive(y) ? abs(x) : -(abs(x))`
-
    @see sign, signnz, is_positive
 
    @par Example:
