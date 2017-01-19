@@ -42,6 +42,7 @@ namespace boost { namespace simd { namespace ext
       return none(bitwise_cast<bd::as_integer_t<A0>>(bs::abs(a0)));
     }
   };
+
 } } }
 
 #endif
