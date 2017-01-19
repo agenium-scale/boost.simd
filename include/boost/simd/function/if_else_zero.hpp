@@ -16,25 +16,17 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-boolean
-    Function object implementing if_else_zero capabilities
+    This function object returns @c x (respectively @ref Zero)
+    if @c c is @ref True (respectively  @ref False)
 
-    If @c x is @ref True returns @c t else returns @ref Zero
+   @par Example:
 
-    @par Semantic:
+     @snippet if_else_zero.cpp if_else_zero
 
-    For every parameters @c c of type @c C and @c t of type @c T :
+   @par Possible output:
 
-    @code
-    T r = if_else_zero(c, t);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = c ? t : Zero<T>();
-    @endcode
+     @snippet if_else_zero.txt if_else_zero
 
   **/
   Value if_else_zero(Value const& cond, Value const& t);

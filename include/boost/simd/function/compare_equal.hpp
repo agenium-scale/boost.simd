@@ -16,28 +16,24 @@ namespace boost { namespace simd
 {
   /*!
     @ingroup group-reduction
-    Function object implementing compare_equal capabilities
-
-    Returns a boolean that is the result of the lexicographic test for equality of all elements of
+    This function object returns a boolean that is the result of the lexicographic test for equality of all elements of
     the entries, i.e. return @ref true if and only if all corresponding entries elements are equal.
 
-    @par Semantic:
+   @par Note
 
-    For every parameters of type T:
+      For every parameters of type T: `compare_equal(x,y)` is similar to: `bool r = all(x == y)`
 
-    @code
-    auto r = compare_equal(x,y);
-    @endcode
 
-    is similar to:
+   @par Example:
 
-    @code
-    bool r = all(x == y);
-    @endcode
+     @snippet compare_equal.cpp compare_equal
 
-    @see is_equal
+   @par Possible output:
+
+     @snippet compare_equal.txt compare_equal
+
   **/
-  bool compare_equal(Value const& v0, Value const& v1);
+  bool compare_equal(Value const& x, Value const& y);
 } }
 #endif
 

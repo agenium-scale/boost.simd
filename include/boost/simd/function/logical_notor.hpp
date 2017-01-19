@@ -16,30 +16,21 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-boolean
-    Function object implementing logical_notor capabilities
-
-    return the logical or of the negation of the first parameter and the second parameter.
+    This function object returns the logical or of the negation of the
+    first argument with the second argument
 
     The operands must share the same @ref cardinal_of value.
 
-    The result type is logical type associated to the first parameter.
+    The result type is logical type associated to the first argument.
 
-    @par Semantic:
+   @par Example:
 
-    @code
-    auto r = logical_notor(x,y);
-    @endcode
+     @snippet logical_notor.cpp logical_notor
 
-    is similar to:
+   @par Possible output:
 
-    @code
-    auto r = !x || y;
-    @endcode
-
-    @see  logical_or, logical_xor, logical_notand,
-    logical_andnot, logical_and, logical_ornot, logical_not
+     @snippet logical_notor.txt logical_notor
 
   **/
   as_logical_t<Value0> logical_notor(Value0 const& x, Value1 const& y);

@@ -16,25 +16,17 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-boolean
-    Function object implementing ifnot_inc capabilities
+    This function object returns  @c x (respectively @c x+1)
+    if @c c is @ref True (respectively  @ref False)
 
-    Increments a value by @ref One if a predicate is @ref False.
+   @par Example:
 
-    @par Semantic:
+     @snippet ifnot_inc.cpp ifnot_inc
 
-    For every parameters @c c of type @c C and @c x of type @c T:
+   @par Possible output:
 
-    @code
-    T r = ifnot_inc(cond,x);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = cond : x : x+One<T>();
-    @endcode
+     @snippet ifnot_inc.txt ifnot_inc
 
   **/
   Value ifnot_inc(Value const& c, Value const& x);

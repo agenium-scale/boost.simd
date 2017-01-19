@@ -16,30 +16,23 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-boolean
-    Function object implementing if_dec capabilities
+    This function object returns @c x-1 (respectively @c x)
+    if @c c is @ref True (respectively  @ref False)
 
-    Decrements a value by @ref One if a predicate is @ref True.
+   @par Example:
 
-    @par Semantic:
+     @snippet if_dec.cpp if_dec
 
-    For every parameters @c c of type @c C and @c t of type @c T :
+   @par Possible output:
 
-    @code
-    T r = if_dec(c, t);
-    @endcode
+     @snippet if_dec.txt if_dec
 
-    is similar to:
-
-    @code
-    T r = c ? t - One<T>() : t;
-    @endcode
   **/
-  Value if_dec(Value const& c, Value const& v0);
+  Value if_dec(Value const& c, Value const& x);
 
   //@overload
-  Value if_dec(LogicalValue const& c, Value const& v0);
+  Value if_dec(LogicalValue const& c, Value const& x);
 } }
 #endif
 

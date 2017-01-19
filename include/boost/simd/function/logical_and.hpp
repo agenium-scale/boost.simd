@@ -16,33 +16,24 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-boolean
-    Function object implementing logical_and capabilities
-
-    return the logical and of the two parameters.
+    This function object returns the logical and of its two parameters.
 
     The operands must share the same @ref cardinal_of value.
 
     Infix notation can be used with operator '&&'.
 
-    @warningbox{Take care that using && in scalar mode does short-circuit and does not in simd mode.}
-
-    @par Semantic:
-
-    @code
-    auto r = logical_and(x,y);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = x && y ;
-    @endcode
+    @warningbox{Take care that using && in scalar mode does short-circuit
+    and does not in simd mode.}
 
 
-    @see  logical_or, logical_xor, logical_notand,
-    logical_andnot, logical_notor, logical_ornot, logical_not
+   @par Example:
+
+     @snippet logical_and.cpp logical_and
+
+   @par Possible output:
+
+     @snippet logical_and.txt logical_and
 
   **/
   as_logical_t<Value> logical_and(Value1 const& x, Value2 const& y);
