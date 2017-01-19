@@ -108,6 +108,35 @@ from AVX code using SSE intrinsics.
 effect in conjunction with @projectname depends on the code. Feel free to try it and use it if it
 improves your performances.}
 
+@subsection cmake-compilation Compiling using CMake
+
+========================
+
+**@projectname** can be used along with **CMake** using `find_package`:
+
+    ## CMake requirements
+    cmake_minimum_required(VERSION 2.8)
+
+    ## Look for installed @projectname
+    find_package(@projectname)
+
+    ## Add @projectname directories to tell CMake where to find them
+    include_directories(${"@projectname@_INCLUDE_DIRS"})
+
+    ## Create your executable
+    add_executable(foobar foobar.cpp)
+
+**@projectname** MUST BE installed on your system, otherwise `find_package` won't be able to find it.
+Please refer to the
+[**CMake**'s documentation](https://cmake.org/cmake/help/v3.6/command/find_package.html) for more
+details about `find_package`.
+
+@notebox{
+    You can modify the `CMAKE_MODULE_PATH` to help **CMake** find your @projectname if you installed it
+    on a different folder than the default ones.
+}
+
+
 @section next What's Next ?
 
 -------------------------------------
