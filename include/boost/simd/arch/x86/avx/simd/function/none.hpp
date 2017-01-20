@@ -28,7 +28,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE bool operator() ( const A0 & a0) const BOOST_NOEXCEPT
     {
-      return bool(_mm256_testz_si256(a0, Butsign<A0>()));
+      return bool(_mm256_testz_si256(a0, Allbits<A0>()));
     }
   };
 
