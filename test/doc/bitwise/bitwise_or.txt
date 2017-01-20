@@ -1,0 +1,10 @@
+//! [bitwise_or]
+---- simd
+ <- pi =                     (3, 6, 5, 27)
+ <- qi =                     (4, 4294967295, 2, 4294967295)
+ -> bs::bitwise_or(pi, qi) = (7, 4294967295, 7, 4294967295)
+---- scalar
+ xi =                        3
+ yi =                        4
+ -> bs::bitwise_or(xi, yi) = 7
+//! [bitwise_or]

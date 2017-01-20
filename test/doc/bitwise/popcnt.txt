@@ -1,0 +1,8 @@
+//! [popcnt]
+---- simd
+<- pi =           (1, 2, 10, 1023)
+-> bs::popcnt(pi) =  (1, 1, 2, 10)
+---- scalar
+<- xi =           2
+-> bs::popcnt(xi) =  1
+//! [popcnt]

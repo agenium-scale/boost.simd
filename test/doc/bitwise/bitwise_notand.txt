@@ -1,0 +1,10 @@
+//! [bitwise_notand]
+---- simd
+ <- pi =                         (3, 4294967294, 1, 0)
+ <- qi =                         (4, 4294967295, 5, 25)
+ -> bs::bitwise_notand(pi, qi) = (4, 1, 4, 25)
+---- scalar
+ xi =                            3
+ yi =                            5
+ -> bs::bitwise_notand(xi, yi) = 4
+//! [bitwise_notand]

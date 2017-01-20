@@ -16,24 +16,24 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-bitwise
-    Function object implementing hi capabilities
-
-    Returns the high part of the entry
+    This function object returns the high part of the entry
     as an unsigned integer of the size of
     the input.
 
-    @par semantic:
-    For any given value @c x of type @c T:
-
-    @code
-    as_integer_t<T,unsigned> r = hi(x);
-    @endcode
-
     @see  lo
+
+
+   @par Example:
+
+     @snippet hi.cpp hi
+
+   @par Possible output:
+
+     @snippet hi.txt hi
+
   **/
-  as_integer_t<Value, unsigned> hi(Value const & v0);
+  as_integer_t<Value, unsigned> hi(Value const & x);
 } }
 #endif
 

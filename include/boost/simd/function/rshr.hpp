@@ -16,22 +16,21 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-bitwise
-    Function object implementing rshr capabilities
-
-    Returns the first entry shifted right or left
+    This function object returns the first entry shifted right or left
     by the absolute value of the second entry,
     according to its sign.
 
-    @par semantic:
-    For any given value @c x of type @c T,  @c n  of type @c I:
-
-    @code
-    T r = rshr(x, n);
-    @endcode
-
     @see  rshl, shr, shl
+
+
+   @par Example:
+
+     @snippet rshr.cpp rshr
+
+   @par Possible output:
+
+     @snippet rshr.txt rshr
 
   **/
   Value rshr(Value const & x, IntegerValue const &n);

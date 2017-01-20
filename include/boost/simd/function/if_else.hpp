@@ -17,28 +17,22 @@ namespace boost { namespace simd
 
  /*!
     @ingroup group-boolean
-    Function object implementing if_else capabilities
-
-    If @c c is @ref True returns @c t else returns @c f
-
+    This function object returns the If @c c is @ref True returns @c t else returns @c f
     If vectors, the types involved in the call must share the same number of elements.
 
-    @par Semantic:
+   @par Note
 
-    For every parameters @c c of type @c C, @c t and @c f of type @c T :
+      For every parameters @c c of type @c C, @c t and @c f of type @c T : `T r = if_else(c, t, f)` is similar to: `T r = c ? t : f`
 
-    @code
-    T r = if_else(c, t, f);
-    @endcode
 
-    is similar to:
+   @par Example:
 
-    @code
-    T r = c ? t : f;
-    @endcode
+     @snippet if_else.cpp if_else
 
-    @see  if_else_zero, if_else_allbits, if_zero_else,
-    if_allbits_else, if_one_else_zero, if_zero_else_one, bitwise_select
+   @par Possible output:
+
+     @snippet if_else.txt if_else
+
   **/
   Value if_else(Value const& c, Value const& t, Value const& f);
 

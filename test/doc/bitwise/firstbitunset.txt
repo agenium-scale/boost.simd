@@ -1,0 +1,8 @@
+//! [firstbitunset]
+---- simd
+<- pi =                     (1, 2, 10, 1023)
+-> bs::firstbitunset(pi) =  (2, 1, 1, 1024)
+---- scalar
+<- xi =                     2
+-> bs::firstbitunset(xi) =  1
+//! [firstbitunset]

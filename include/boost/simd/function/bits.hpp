@@ -16,12 +16,8 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-bitwise
-    Function object implementing bits capabilities
-
-    Returns an unsigned integer value which has the same bits as the input
-
+    This function object returns an unsigned integer value which has the same bits as the input
 
    @par Example:
 
@@ -32,7 +28,7 @@ namespace boost { namespace simd
      @snippet bits.txt bits
 
   **/
-  as_integer_t<T, unsigned> bits(Value const & v0);
+  as_integer_t<T, unsigned> bits(Value const & x);
 } }
 #endif
 

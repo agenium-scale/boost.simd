@@ -16,36 +16,21 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-bitwise
-    Function object implementing bitwise_and capabilities
-
-    Computes the bitwise and of the two parameters.
-
+    This function object computes the bitwise and of the two parameters.
     The operands must share the same bit size.
-
     The result type is the one of the first operand.
-
     Infix notation can be used with operator '&',
     but this will not work in scalar mode if any
     operand is floating point because of C++ limitations.
 
-    @par Semantic:
+    @par Example:
 
-    For every parameters of  @c x of type @c T0,  @c y of type @c T1:
+     @snippet bitwise_and.cpp bitwise_and
 
-    @code
-    T0 r = bitwise_and(x,y);
-    @endcode
+   @par Possible output:
 
-    is similar to:
-
-    @code
-    T0 r = x & y;
-    @endcode
-
-    @see  bitwise_or, bitwise_xor, bitwise_notand,
-    bitwise_andnot, bitwise_notor, bitwise_ornot, complement
+     @snippet bitwise_and.txt bitwise_and
 
   **/
   T0 bitwise_and(T0 const& x, T1 const& y);

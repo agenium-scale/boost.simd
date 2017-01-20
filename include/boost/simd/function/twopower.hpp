@@ -16,24 +16,8 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-bitwise
-    Function object implementing twopower capabilities
-
-    Returns \f$2^n\f$ (or 0 if n is less than zero)
-
-    @par semantic:
-    For any given value @c n  of integral type @c N:
-
-    @code
-    N r = twopower(n);
-    @endcode
-
-    code is similar to:
-
-    @code
-    N r = 1 << n;
-    @endcode
+    This function object returns \f$2^n\f$ (or 0 if n is less than zero)
 
     @par Note:
 
@@ -41,8 +25,17 @@ namespace boost { namespace simd
 
     @see  ilog2
 
+
+   @par Example:
+
+     @snippet twopower.cpp twopower
+
+   @par Possible output:
+
+     @snippet twopower.txt twopower
+
   **/
-  Value twopower(Value const & v0);
+  Value twopower(Value const & x);
 } }
 #endif
 

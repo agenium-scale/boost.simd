@@ -17,34 +17,20 @@ namespace boost { namespace simd
 
  /*!
     @ingroup group-bitwise
-    Function object implementing bitwise_or capabilities
-
-    return the bitwise or of the two parameters
-
+    This function object returns the return the bitwise or of the two parameters
     The operands must share the same bit size.
-
     The result type is the one of the first operand.
-
     Infix notation can be used with operator '|',
     but this will not work in scalar mode if any
     operand is floating point because of C++ limitations.
 
-    @par semantic:
-    For any given value @c x, of type @c T0, @c y of type @c T1
-    of same memory size:
+   @par Example:
 
-    @code
-    T0 r = bitwise_or(x, y);
-    @endcode
+     @snippet bitwise_or.cpp bitwise_or
 
-    The code is equivalent to:
+   @par Possible output:
 
-    @code
-    T1 r = x | y;
-    @endcode
-
-    @see  bitwise_and, bitwise_or, bitwise_xor, bitwise_notand,
-    bitwise_notor, bitwise_ornot, complement
+     @snippet bitwise_or.txt bitwise_or
 
   **/
   T0 bitwise_or(T0 const &x, T1 const& y);

@@ -67,11 +67,9 @@ set ( SOURCES
       autosplat.cpp
       average.cpp
       bitfloating.cpp
-      bitget.cpp
       bitinteger.cpp
       bitofsign.cpp
       bits.cpp
-      bitset.cpp
       bitwise_and.cpp
       bitwise_andnot.cpp
       bitwise_cast.cpp

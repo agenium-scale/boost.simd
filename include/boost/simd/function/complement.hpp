@@ -16,26 +16,17 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-operator
-    Function object implementing complement capabilities
-
-    return the bitwise complement of the entry
+    This function object returns the return the bitwise complement of the entry
     Infix notation can be used with operator '~'
 
-    @par Semantic:
+   @par Example:
 
-    For every parameter of type T
+     @snippet complement.cpp complement
 
-    @code
-    auto r = complement(x);
-    @endcode
+   @par Possible output:
 
-    or
-
-    @code
-    auto r = ~x;
-    @endcode
+     @snippet complement.txt complement
 
     @par Alias
     bitwise_not
@@ -44,7 +35,7 @@ namespace boost { namespace simd
     bitwise_andnot, bitwise_notor, bitwise_ornot
 
   **/
-  Value complement(Value const & v0);
+  Value complement(Value const & x);
 } }
 #endif
 

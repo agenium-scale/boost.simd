@@ -1,0 +1,8 @@
+//! [complement]
+---- simd
+<- pi =                 (1, 2, 4294967295, 1023)
+-> bs::complement(pi) = (4294967294, 4294967293, 0, 4294966272)
+---- scalar
+<- xi =                 2
+-> bs::complement(xi) = 4294967293
+//! [complement]

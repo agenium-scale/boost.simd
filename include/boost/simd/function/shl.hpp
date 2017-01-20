@@ -18,14 +18,13 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-operator
-    Function object implementing shl capabilities
-
-    return left shift of the first operand by the second
+     This function object returns the first operand shifted left by the second
     that must be of integer type and of the same number
-    of elements as the first parameter
+    of elements as the first parameter or scalar.
+
     Infix notation can be used with operator '<<'
 
-    This is a convenience alias of @ref shift_left
+    This is an alias of @ref shift_left
   **/
   Value shl(Value const & v0, IntegerValue const& n);
 } }
