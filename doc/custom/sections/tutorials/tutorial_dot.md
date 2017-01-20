@@ -7,7 +7,7 @@ Writing a dot product the SIMD way {#tutorial-dot}
 In this tutorial we will show how data can be processed using **@projectname**
 by writing a naive dot product using **@projectname**.
 
-@section data-objectives Objectives
+@section tutorial-dot-objectives Objectives
 
 -------------------------------------
 

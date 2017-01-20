@@ -8,7 +8,7 @@ N-Body Problem {#tutorial-nbody}
 In this tutorial we will show you how to optimize an n-body
 simulation using **@projectname**,
 
-@section data-objectives Objectives
+@section tutorial-nbody-objectives Objectives
 
 -------------------------------------
 
