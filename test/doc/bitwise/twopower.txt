@@ -1,0 +1,8 @@
+//! [twopower]
+---- simd
+<- pi =               (1, 2, -1, 5)
+-> bs::twopower(pi) = (2, 4, 0, 32)
+---- scalar
+<- xi =               4
+-> bs::twopower(xi) = 16
+//! [twopower]
