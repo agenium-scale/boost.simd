@@ -11,26 +11,23 @@
 #include <boost/simd/pack.hpp>
 #include <iostream>
 
-namespace bs =  boost::simd;
-using pack_ft =  bs::pack <float, 4>;
+namespace bs = boost::simd;
+using pack_ft = bs::pack<float, 4>;
 
-int main()
-{
-  pack_ft pf = { 3.0f, -2.0f, -3.0f, 5.0f};
-  pack_ft qf = { 4.0f, -1.0f, -3.0f, 0.0f};
-  std::cout
-    <<  "---- simd" << '\n'
-    << " <- pf =                  " << pf << '\n'
-    << " <- qf =                  " << qf << '\n'
-    << " -> bs::pow_abs(pf, qf) = " << bs::pow_abs(pf, qf) << '\n';
+int main() {
+  pack_ft pf = {3.0f, -2.0f, -3.0f, 5.0f};
+  pack_ft qf = {4.0f, -1.0f, -3.0f, 0.0f};
+  std::cout << "---- simd" << '\n'
+            << " <- pf =                  " << pf << '\n'
+            << " <- qf =                  " << qf << '\n'
+            << " -> bs::pow_abs(pf, qf) = " << bs::pow_abs(pf, qf) << '\n';
 
   float xf = 3.0f, yf = 4.0f;
 
-  std::cout
-    << "---- scalar"  << '\n'
-    << " xf =                     " << xf << '\n'
-    << " yf =                     " << yf << '\n'
-    << " -> bs::pow_abs(xf, yf) = " << bs::pow_abs(xf, yf) << '\n';
+  std::cout << "---- scalar" << '\n'
+            << " xf =                     " << xf << '\n'
+            << " yf =                     " << yf << '\n'
+            << " -> bs::pow_abs(xf, yf) = " << bs::pow_abs(xf, yf) << '\n';
   return 0;
 }
 //! [pow_abs]

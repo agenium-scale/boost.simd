@@ -11,31 +11,27 @@
 #include <boost/simd/pack.hpp>
 #include <iostream>
 
-
-namespace bs =  boost::simd;
-using iT =  std::int32_t;
+namespace bs = boost::simd;
+using iT = std::int32_t;
 using pack_it = bs::pack<iT, 4>;
 using pack_ft = bs::pack<float, 4>;
 
-int main()
-{
+int main() {
   pack_ft pf = {1, 2, -1, 8};
-  pack_it qi = {1, 2,  3, 3};
+  pack_it qi = {1, 2, 3, 3};
 
-  std::cout
-    << "---- simd" << '\n'
-    << "<- pf =                  " << pf << '\n'
-    << "<- qi =                  " << qi << '\n'
-    << "-> bs::nthroot(pf, qi) = " << bs::nthroot(pf, qi) << '\n';
+  std::cout << "---- simd" << '\n'
+            << "<- pf =                  " << pf << '\n'
+            << "<- qi =                  " << qi << '\n'
+            << "-> bs::nthroot(pf, qi) = " << bs::nthroot(pf, qi) << '\n';
 
   float xf = -8;
   iT yi = 3;
 
-  std::cout
-    << "---- scalar"  << '\n'
-    << "<- xf =                  " << xf << '\n'
-    << "<- yi =                  " << yi << '\n'
-    << "-> bs::nthroot(xf, yi) = " << bs::nthroot(xf, yi) << '\n';
+  std::cout << "---- scalar" << '\n'
+            << "<- xf =                  " << xf << '\n'
+            << "<- yi =                  " << yi << '\n'
+            << "-> bs::nthroot(xf, yi) = " << bs::nthroot(xf, yi) << '\n';
   return 0;
 }
 //! [nthroot]
