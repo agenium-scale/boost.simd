@@ -7,7 +7,7 @@ Mathematical Functions {#tutorial-mathematical}
 In this tutorial we will demonstrate the use of SIMD mathematical functions
 such as boost::simd::sin and boost::simd::cos.
 
-@section data-objectives Objectives
+@section tutorial-math-objectives Objectives
 
 -------------------------------------
 
