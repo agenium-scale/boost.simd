@@ -44,7 +44,7 @@ namespace boost { namespace simd
     an exponent \f$e\f$ so that:  \f$x = m\times 2^e\f$,
     with absolute value of \f$m \in [0.5, 1[\f$ (except for \f$x = 0\f$)
 
-    @warninbox{Take care that these results differ from the returns of the functions @ref mantissa
+    @warningbox{Take care that these results differ from the returns of the functions @ref mantissa
     and @ref exponent}
 
     @par Decorators

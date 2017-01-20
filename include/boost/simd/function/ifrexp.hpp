@@ -44,7 +44,7 @@ namespace boost { namespace simd
 
     Without the pedantic_ decorator  @ref Nan or @ref Inf are not handled properly.
 
-    @warninbox{Take care that these results differ from the returns of the functions @ref mantissa
+    @warningbox{Take care that these results differ from the returns of the functions @ref mantissa
     and @ref exponent}
 
     @par Decorators
