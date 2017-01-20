@@ -16,34 +16,23 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing maxnum capabilities
-
-    Returns the maximum value, ignoring nans.
-
-    @par Semantic:
-
-    @code
-    auto r = maxnum(x,y);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = (is_nan(x) ? y : (isnan(y) ? x : max(x, y));
-    @endcode
-
-    @par Alias:
-     fmax
-
-    With the std_ decorator std_(maxnum)(x, y) calls the stdlibc++ function std::fmax.
+    This function object returns  the largest of two floating point arguments, treating NaNs
+    as missing data (between a NaN and a numeric value, the numeric value is chosen).
 
     @par Decorators
 
-    std_ for floating entries
+     - std_ for floating entries calls the stdlibc++ function std::fmax.
 
     @see max, maxnummag,  maxmag
+
+    @par Example:
+
+     @snippet maxnum.cpp maxnum
+
+   @par Possible output:
+
+     @snippet maxnum.txt maxnum
 
   **/
   Value maxnum(Value const & x, Value const& y);

@@ -16,26 +16,27 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing sign capabilities
-
-    Returns the sign of x. i.e. -1, 0 or 1, according
-    x is less than @ref Zero, @ref Zero or greater than @ref Zero.
+    This function object returns the sign of @c x. i.e. -1, 0 or 1,
+    depending on the fact  @c x is less than @ref Zero, @ref Zero or
+    greater than @ref Zero.
 
     For floating,  the sign of @ref Nan is @ref Nan,
     the sign of @ref Mzero is also @ref Zero.
 
-    @par Semantic:
-
-    @code
-    auto r = sign(x);
-    @endcode
-
     @see signnz, is_negative, is_positive,  bitofsign
 
+
+   @par Example:
+
+     @snippet sign.cpp sign
+
+   @par Possible output:
+
+     @snippet sign.txt sign
+
   **/
-  Value sign(Value const & v0);
+  Value sign(Value const & x);
 } }
 #endif
 

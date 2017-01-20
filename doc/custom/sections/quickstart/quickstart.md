@@ -110,8 +110,6 @@ improves your performances.}
 
 @subsection cmake-compilation Compiling using CMake
 
-========================
-
 **@projectname** can be used along with **CMake** using `find_package`:
 
     ## CMake requirements
@@ -136,8 +134,7 @@ details about `find_package`.
     on a different folder than the default ones.
 }
 
-
-@section next What's Next ?
+@section  whatsnext What's Next ?
 
 -------------------------------------
 

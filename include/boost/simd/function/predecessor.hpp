@@ -16,28 +16,31 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing predecessor capabilities
+    This function object returns the `n-`th greatest element strictly less than the parameter
 
-    Returns the n-th greatest element strictly less than the parameter
+   @par Note
 
-    @par Semantic:
+     If @c n is null returns @c x else computes the `n`-th greatest representable value strictly less
+     than @c x in its type.  @c n must be positive or null.
 
-    @code
-    auto r = predecessor(x,n);
-    @endcode
+      - For integer types it saturates at @ref Valmin.
 
-    If n is null returns x else computes the n-th greatest representable value strictly less than x in its type.
-    n must be positive or null.
+      - For floating point numbers, all @ref Minf  strict predecessors are @ref Nan.
 
-    For integer it saturate at @ref Valmin. For floating point numbers, all @ref Minf
-    strict predecessors are @ref Nan.
+   @see next, prev, successor, nextafter, Minf, Valmin, Nan
 
-    @see next, prev, successor, nextafter, Minf, Valmin, Nan
+
+   @par Example:
+
+     @snippet predecessor.cpp predecessor
+
+   @par Possible output:
+
+     @snippet predecessor.txt predecessor
 
   **/
-  Value predecessor(Value const & v0, IntegerValue const& n);
+  Value predecessor(Value const & x, IntegerValue const& n);
 } }
 #endif
 

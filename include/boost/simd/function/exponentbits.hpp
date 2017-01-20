@@ -16,23 +16,20 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing exponentbits capabilities
-
-    Returns the exponent bits of the floating input as an integer value,
+    This function object returns the exponent bits of its arguments as an integer value,
     the other bits (sign and mantissa) being just masked.
 
-    This function is not defined on integral types.
+   @par Example:
 
-    @par Semantic:
+     @snippet exponentbits.cpp exponentbits
 
-    @code
-    as_integer_t<T> r = exponentbits(x);
-    @endcode
+   @par Possible output:
+
+     @snippet exponentbits.txt exponentbits
 
   **/
-  as_integer_t<Value> exponentbits(Value const & v0);
+  as_integer_t<RealValue> exponentbits(RealValue const & x);
 } }
 #endif
 

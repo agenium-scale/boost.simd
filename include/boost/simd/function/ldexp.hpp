@@ -16,35 +16,37 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing ldexp capabilities
-
-    The function multiply a floating entry \f$x\f$
+    This function object returns  \f$x\f$ multiplied by
     by \f$2^{n}\f$
 
+   @par Note
 
-    @par Semantic:
+     If @c n is not of integral type is is truncated:
+     `ldexp(x,n)` is similar to: `x*pow(2, trunc(n))`
 
-    @code
-    auto r = ldexp(x,n);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = x*pow(2, trunc(n));
-    @endcode
+     The @ref cardinal_of and the size of elements value of the types
+     of @c x and @c n must be identical
 
     @par Decorators
 
-    By default @c ldexp does not take care of denormal or limiting values. Use the @c pedantic_ decorator if these are
-    to be properly computed.
+     - pedantic_ By default @c ldexp does not take care of denormal or limiting values.
+       Use the @c pedantic_ decorator if these are to be properly computed.
 
-    The @ref cardinal_of and the size of elements value of the types of @c x and @c n must be identical
+     - std_ give access to std::ldexp
+
+
+
+   @par Example:
+
+     @snippet ldexp.cpp ldexp
+
+   @par Possible output:
+
+     @snippet ldexp.txt ldexp
 
   **/
-  Value ldexp(Value const & x, Value const& n);
+  Value ldexp(RealValue const & x, Value const& n);
 } }
 #endif
 

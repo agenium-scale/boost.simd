@@ -16,31 +16,20 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing safe_max capabilities
+    This function object returns a safe maximal value relative to the input,  i.e. a
+    value which will not overflow when multiplied by the input argument.
 
-    Returns a safe_max relative to the input,  i.e. a
-    value which will not overflow when multiplied by the input.
+   @par Example:
 
-    @par Semantic:
+     @snippet safe_max.cpp safe_max
 
-    For every parameter of type @c T
+   @par Possible output:
 
-    @code
-    auto r = safe_max(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = x ? Sqrtvalmax<T>()/abs(x) : Inf<T>();
-    @endcode
-
-    @see Sqrtvalmax, safe_min
+     @snippet safe_max.txt safe_max
 
   **/
-  Value safe_max(Value const & v0);
+  Value safe_max(Value const & x);
 } }
 #endif
 

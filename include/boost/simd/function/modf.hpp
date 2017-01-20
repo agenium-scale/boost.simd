@@ -16,26 +16,20 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing modf capabilities
+    This function object returns the Computes the integer and  fractional parts of the input.
 
-    Computes the integer and  fractional parts of the input
+   @par Decorators
 
-    @par Semantic:
+     - std_ calls std::modf to compute the pair of outputs.
 
-    @code
-    std::pair<T,T> p = modf(x);
-    @endcode
+   @par Example:
 
-     is similar to:
+     @snippet modf.cpp modf
 
-    @code
-    T t = trunc(x);
-    T f = frac(x);
-    @endcode
+   @par Possible output:
 
-    @see frac,  trunc
+     @snippet modf.txt modf
 
   **/
   Value modf(Value const & x, Value & y);

@@ -43,6 +43,7 @@ EXAMPLE_PATH           = @PROJECT_SOURCE_DIR@/doc/examples
 EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc
 EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/arithmetic
 EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/hyperbolic
+EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/ieee
 EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/predicates
 EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/trigonometric
 EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/swar

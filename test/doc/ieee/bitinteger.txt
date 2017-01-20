@@ -1,0 +1,8 @@
+//! [bitinteger]
+---- simd
+<- pf =                 (1, 2, -1, 0.5)
+-> bs::bitinteger(pf) = (1065353216, 1073741824, -1065353216, 1056964608)
+---- scalar
+<- xf =                 2
+-> bs::bitinteger(xf) = 1073741824
+//! [bitinteger]

@@ -16,31 +16,24 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing negatenz capabilities
-
-    Returns x multiplied by the @ref signnz of y.
-
-    The result is unspecified if y is @ref Nan
-
-    @par Semantic:
-
-    @code
-    auto r = negatenz(x,y);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = x*signnz(y);
-    @endcode
+    This function object returns @c x multiplied by the @ref signnz of @c y.
+    The result is unspecified if @c y is @ref Nan
 
     @par Note
-    If x is  null the result is @ref \f$\pm0\f$. Take care that negatenz distinguish
-    between the signs of T(0) and -T(0) when T is a floating type.
+    If @c x is  null the result is @ref \f$\pm0\f$. Take care that @c negatenz distinguish
+    between the signs of `T(0)` and `-T(0)` when `T` is a floating type.
 
     @see negatenz, Mzero, is_positive, is_negative
+
+
+   @par Example:
+
+     @snippet negatenz.cpp negatenz
+
+   @par Possible output:
+
+     @snippet negatenz.txt negatenz
 
   **/
   Value negatenz(Value const & x, value const& y);

@@ -1,0 +1,12 @@
+//! [modf]
+---- simd
+<- px =                              (1, 2, -1, 0.5)
+-> std::tie(pe, pf) = bs::modf(px) =
+-> pe =                              (5.88308e-39, 0, 5.88243e-39, 0)
+-> pf =                              (0, 0, 0, 0)
+---- scalar
+<- xf =                              2
+-> std::tie(e, f) = bs::modf(x) =
+-> e =                               0
+-> f =                               2
+//! [modf]

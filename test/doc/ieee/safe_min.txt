@@ -1,0 +1,8 @@
+//! [safe_min]
+---- simd
+<- pf =        v      (1, 2, -1, 0.5)
+-> bs::safe_min(pf) = (1.0842e-19, 2.1684e-19, 1.0842e-19, 5.42101e-20)
+---- scalar
+<- xf =               2
+-> bs::safe_min(xf) = 2.1684e-19
+//! [safe_min]

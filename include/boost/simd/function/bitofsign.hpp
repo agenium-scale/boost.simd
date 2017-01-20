@@ -16,31 +16,22 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing bitofsign capabilities
+    This function object returns a value of the same type as
+    the input with all bits set to zero
+    except the sign bit which is preserved.
+    This function object returns always @ref Zero for unsigned types
 
-    Returns a value of the same type as the input with all bits set to zero
-    except the bit of sign which is preserved.
+    @par Example:
 
-    Returns always @ref Zero for unsigned types
+      @snippet bitofsign.cpp bitofsign
 
-    @par Semantic:
+    @par Possible output:
 
-    @code
-    auto r = bitofsign(x);
-    @endcode
-
-    for signed types is similar to:
-
-    @code
-    auto r = x&Signmask<T>();
-    @endcode
-
-    @see sign, signnz, is_negative, is_positive, Mzero, Signmask;
+      @snippet bitofsign.txt bitofsign
 
   **/
-  Value bitofsign(Value const & v0);
+  Value bitofsign(Value const & x);
 } }
 #endif
 

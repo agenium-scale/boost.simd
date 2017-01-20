@@ -19,7 +19,7 @@ namespace boost { namespace simd
 
     @ingroup group-arithmetic
     This function object computes the greatest integral representable value of
-    its parameter type which is lesser or equal to it.
+    its parameter type which is less or equal to it.
 
     @par Header <boost/simd/function/floor.hpp>
 

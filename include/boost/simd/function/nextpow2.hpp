@@ -16,27 +16,21 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing nextpow2 capabilities
+    This function object returns the smallest integer n such that
+    `saturated_(abs)(x)` is less or equal to \f$2^n\f$
 
-    Returns the greatest integer n such that abs_s(x) is greater or equal to \f$2^n\f$
 
-    @par Semantic:
+   @par Example:
 
-    @code
-    auto n = nextpow2(x);
-    @endcode
+     @snippet nextpow2.cpp nextpow2
 
-    is similar to:
+   @par Possible output:
 
-    @code
-    auto n = floor(log2(saturated_(abs)(x)));
-    @endcode
+     @snippet nextpow2.txt nextpow2
 
-    @see floor, log2, abs, saturated
   **/
-  Value nextpow2(Value const & x);
+  IntValue nextpow2(Value const & x);
 } }
 #endif
 

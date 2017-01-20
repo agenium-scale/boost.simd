@@ -1,0 +1,8 @@
+//! [next]
+---- simd
+<- pf =           (1, 2, -1, 0.5)
+-> bs::next(pf) = (1, 2, -1, 0.5)
+---- scalar
+<- xf =           2
+-> bs::next(xf) = 2
+//! [next]

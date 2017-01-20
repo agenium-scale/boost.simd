@@ -16,32 +16,28 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing mantissa capabilities
-
-    Returns the signed mantissa of the floating input.
-
-    @par Semantic:
-
-    @code
-    auto r = mantissa(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = x*pow(2, -exponent(x));
-    @endcode
+    This function object returns the signed mantissa of the input argument.
 
     @par Note
-    The @ref exponent e and signed @ref mantissa m of a floating point entry a are related by
-    \f$a = m\times 2^e\f$, with |m| \f$\in[1, 2[\f$.
+    The @ref exponent @c e and signed @ref mantissa @c m of a floating
+    point entry @c x are related by
+    \f$x = m\times 2^e\f$, with |m| \f$\in[1, 2[\f$. (Except for zero,
+    for which \f$m = 0\f$).
 
     @see frexp, pow, exponent
 
+
+   @par Example:
+
+     @snippet mantissa.cpp mantissa
+
+   @par Possible output:
+
+     @snippet mantissa.txt mantissa
+
   **/
-  Value mantissa(Value const & v0);
+  Value mantissa(Value const & x);
 } }
 #endif
 

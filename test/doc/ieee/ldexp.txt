@@ -1,0 +1,14 @@
+//! [ldexp]
+---- simd
+<- pf =                (1, 2, -1, 0.5)
+<- qf =                (1, 2, -1, 3)
+-> bs::ldexp(pf, qf) = (2, 8, -0.5, 4)
+<- qi =                (1, 2, -1, 3)
+-> bs::ldexp(pf, qi) = (2, 8, -0.5, 4)
+---- scalar
+<- xf =                2
+<- yf =                3
+-> bs::ldexp(xf, yf) = 16
+<- yi =                3
+-> bs::ldexp(xf, yi) = 16
+//! [ldexp]

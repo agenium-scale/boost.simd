@@ -16,29 +16,20 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing ilogb capabilities
-
-    This function returns the integer truncation
+    This function object returns the integer truncation
     of the base 2 logarithm of x.
-
     It coincides with the @ref exponent function
     on all platforms supported.
 
-    @par Semantic:
 
-    @code
-    auto r = ilogb(x);
-    @endcode
+   @par Example:
 
-    is similar to:
+     @snippet ilogb.cpp ilogb
 
-    @code
-    auto r = saturated_(toint)(log2(x));
-    @endcode
+   @par Possible output:
 
-    @see exponent, log2, toint, saturated
+     @snippet ilogb.txt ilogb
 
   **/
   Value ilogb(Value const& x);

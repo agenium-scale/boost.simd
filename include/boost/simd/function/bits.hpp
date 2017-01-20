@@ -22,18 +22,14 @@ namespace boost { namespace simd
 
     Returns an unsigned integer value which has the same bits as the input
 
-    @par semantic:
-    For any given value @c x of type @c T:
 
-    @code
-    T r = bits(x);
-    @endcode
+   @par Example:
 
-    is equivalent to:
+     @snippet bits.cpp bits
 
-    @code
-    as_integer_t<T,unsigned> r = bitwise_cast< as_integer_t<T,unsigned>>(x);
-    @endcode
+   @par Possible output:
+
+     @snippet bits.txt bits
 
   **/
   as_integer_t<T, unsigned> bits(Value const & v0);

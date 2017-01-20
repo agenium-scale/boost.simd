@@ -1,0 +1,8 @@
+//! [bitofsign]
+---- simd
+<- pf =                (1, 2, -1, 0.5)
+-> bs::bitofsign(pf) = (0, 0, -0, 0)
+---- scalar
+<- xf =                2
+-> bs::bitofsign(xf) = 0
+//! [bitofsign]

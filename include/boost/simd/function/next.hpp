@@ -16,19 +16,9 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing next capabilities
-
-    Returns if it exists the smallest representable value  strictly greater than the parameter
-
-    @par Semantic:
-
-    @code
-    auto r = next(x);
-    @endcode
-
-    @par Note
+    This function object returns the smallest representable value
+    strictly greater than the parameter except:
 
     - for entries of floating types
 
@@ -45,6 +35,15 @@ namespace boost { namespace simd
       - next(Valmax) is Valmin
 
     @see nextafter, prev, successor, predecessor
+
+
+   @par Example:
+
+     @snippet next.cpp next
+
+   @par Possible output:
+
+     @snippet next.txt next
 
   **/
   Value next(Value const & x);

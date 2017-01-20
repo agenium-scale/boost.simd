@@ -1,0 +1,8 @@
+//! [saturate]
+---- simd
+<- pf =                            (1, 200, -150, 0.5)
+-> bs::saturate<std::int8_t>(pf) = (1, 127, -128, 0.5)
+---- scalar
+<- xf =                            2
+-> bs::saturate<std::int8_t>(xf) = 2
+//! [saturate]
