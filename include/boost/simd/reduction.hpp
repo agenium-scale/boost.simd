@@ -18,26 +18,20 @@ namespace simd {
   @ingroup group-functions
   @defgroup group-reduction Reduction Functions
 
-  Those functions provide algorithms for in-register reduction and prefix-scan
-operations.
+  Those functions provide algorithms for in-register reduction and prefix-scan operations.
 
   They are usually only defined for **SIMD** types but may, in some
   cases such as @ref sum or  @ref prod, have a valid scalar semantic.
 
     <center>
-|                      |                         |                    | |
+|                      |                         |                    |                            |
 |:--------------------:|:-----------------------:|:------------------:|:--------------------------:|
-| @ref all             | @ref any                | @ref compare_equal | @ref
-compare_greater_equal |
-| @ref compare_greater | @ref compare_less_equal | @ref compare_less  | @ref
-compare_not_equal     |
-| @ref cummax          | @ref cummin             | @ref cumprod       | @ref
-cumsum                |
-| @ref dot             | @ref hmsb               | @ref isincluded    | @ref
-isincluded_c          |
-| @ref maximum         | @ref minimum            | @ref nbtrue        | @ref
-none                  |
-| @ref prod            | @ref sum                |                    | |
+| @ref all             | @ref any                | @ref compare_equal | @ref compare_greater_equal |
+| @ref compare_greater | @ref compare_less_equal | @ref compare_less  | @ref compare_not_equal     |
+| @ref cummax          | @ref cummin             | @ref cumprod       | @ref cumsum                |
+| @ref dot             | @ref hmsb               | @ref isincluded    | @ref isincluded_c          |
+| @ref maximum         | @ref minimum            | @ref nbtrue        | @ref none                  |
+| @ref prod            | @ref sum                |                    |                            |
      </center>
 **/
 }
