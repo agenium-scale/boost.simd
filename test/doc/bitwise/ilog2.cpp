@@ -11,25 +11,21 @@
 #include <boost/simd/pack.hpp>
 #include <iostream>
 
+namespace bs = boost::simd;
+using pack_ft = bs::pack<float, 4>;
 
-namespace bs =  boost::simd;
-using pack_ft = bs::pack <float, 4>;
-
-int main()
-{
+int main() {
   pack_ft pf = {1.0f, 2.0f, -1.0f, 0.5f};
 
-  std::cout
-    << "---- simd" << '\n'
-    << "<- pf =            " << pf << '\n'
-    << "-> bs::ilog2(pf) = " << bs::ilog2(pf) << '\n';
+  std::cout << "---- simd" << '\n'
+            << "<- pf =            " << pf << '\n'
+            << "-> bs::ilog2(pf) = " << bs::ilog2(pf) << '\n';
 
   float xf = 2.0f;
 
-  std::cout
-    << "---- scalar"  << '\n'
-    << "<- xf =            " << xf << '\n'
-    << "-> bs::ilog2(xf) = " << bs::ilog2(xf) << '\n';
+  std::cout << "---- scalar" << '\n'
+            << "<- xf =            " << xf << '\n'
+            << "-> bs::ilog2(xf) = " << bs::ilog2(xf) << '\n';
   return 0;
 }
 //! [ilog2]

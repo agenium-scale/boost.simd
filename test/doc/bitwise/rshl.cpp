@@ -11,29 +11,25 @@
 #include <boost/simd/pack.hpp>
 #include <iostream>
 
-
-namespace bs =  boost::simd;
+namespace bs = boost::simd;
 using iT = std::int32_t;
 using pack_it = bs::pack<iT, 4>;
 
-int main()
-{
+int main() {
   pack_it pi = {1, 2, -1, 3};
-  pack_it qi = {1, -2,  4, -3};
+  pack_it qi = {1, -2, 4, -3};
 
-  std::cout
-    << "---- simd" << '\n'
-    << "<- pi =               " << pi << '\n'
-    << "<- qi =               " << qi << '\n'
-    << "-> bs::rshl(pi, qi) = " << bs::rshl(pi, qi) << '\n';
+  std::cout << "---- simd" << '\n'
+            << "<- pi =               " << pi << '\n'
+            << "<- qi =               " << qi << '\n'
+            << "-> bs::rshl(pi, qi) = " << bs::rshl(pi, qi) << '\n';
 
   iT xi = 2, yi = 3;
 
-  std::cout
-    << "---- scalar"  << '\n'
-    << "<- xi =               " << xi << '\n'
-    << "<- yi =               " << yi << '\n'
-    << "-> bs::rshl(xi, yi) = " << bs::rshl(xi, yi) << '\n';
+  std::cout << "---- scalar" << '\n'
+            << "<- xi =               " << xi << '\n'
+            << "<- yi =               " << yi << '\n'
+            << "-> bs::rshl(xi, yi) = " << bs::rshl(xi, yi) << '\n';
   return 0;
 }
 //! [rshl]

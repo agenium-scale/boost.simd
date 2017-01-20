@@ -11,27 +11,25 @@
 #include <boost/simd/pack.hpp>
 #include <iostream>
 
+namespace bs = boost::simd;
+using pack_ft = bs::pack<float, 4>;
+using iT = std::int32_t;
+using pack_it = bs::pack<iT, 4>;
 
-namespace bs =  boost::simd;
-using pack_ft = bs::pack <float, 4>;
-using iT =  std::int32_t;
-using pack_it = bs::pack <iT, 4>;
-
-int main()
-{
+int main() {
   pack_ft pf = {1.0f, 2.0f, -1.0f, 0.5f};
 
-  std::cout
-    << "---- simd" << '\n'
-    << "<- pf =                            " << pf << '\n'
-    << "-> bs::bitwise_cast<pack_it>(pf) = " << bs::bitwise_cast<pack_it>(pf) << '\n';
+  std::cout << "---- simd" << '\n'
+            << "<- pf =                            " << pf << '\n'
+            << "-> bs::bitwise_cast<pack_it>(pf) = "
+            << bs::bitwise_cast<pack_it>(pf) << '\n';
 
   float xf = 2.0f;
 
-  std::cout
-    << "---- scalar"  << '\n'
-    << "<- xf =                            " << xf << '\n'
-    << "-> bs::bitwise_cast<iT>(xf) =      " << bs::bitwise_cast<iT>(xf) << '\n';
+  std::cout << "---- scalar" << '\n'
+            << "<- xf =                            " << xf << '\n'
+            << "-> bs::bitwise_cast<iT>(xf) =      " << bs::bitwise_cast<iT>(xf)
+            << '\n';
   return 0;
 }
 //! [bitwise_cast]

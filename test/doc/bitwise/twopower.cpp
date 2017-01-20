@@ -11,25 +11,21 @@
 #include <boost/simd/pack.hpp>
 #include <iostream>
 
+namespace bs = boost::simd;
+using pack_it = bs::pack<std::int32_t, 4>;
 
-namespace bs =  boost::simd;
-using pack_it = bs::pack <std::int32_t, 4>;
-
-int main()
-{
+int main() {
   pack_it pi = {1, 2, -1, 5};
 
-  std::cout
-    << "---- simd" << '\n'
-    << "<- pi =               " << pi << '\n'
-    << "-> bs::twopower(pi) = " << bs::twopower(pi) << '\n';
+  std::cout << "---- simd" << '\n'
+            << "<- pi =               " << pi << '\n'
+            << "-> bs::twopower(pi) = " << bs::twopower(pi) << '\n';
 
   std::int32_t xi = 4;
 
-  std::cout
-    << "---- scalar"  << '\n'
-    << "<- xi =               " << xi << '\n'
-    << "-> bs::twopower(xi) = " << bs::twopower(xi) << '\n';
+  std::cout << "---- scalar" << '\n'
+            << "<- xi =               " << xi << '\n'
+            << "-> bs::twopower(xi) = " << bs::twopower(xi) << '\n';
   return 0;
 }
 //! [twopower]

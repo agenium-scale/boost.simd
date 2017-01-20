@@ -11,29 +11,27 @@
 #include <boost/simd/pack.hpp>
 #include <iostream>
 
-
-namespace bs =  boost::simd;
+namespace bs = boost::simd;
 using iT = std::int32_t;
 using pack_it = bs::pack<iT, 4>;
 
-int main()
-{
+int main() {
   pack_it pi = {1, 2, -1, 3};
-  pack_it qi = {1, 2,  4, 3};
+  pack_it qi = {1, 2, 4, 3};
 
-  std::cout
-    << "---- simd" << '\n'
-    << "<- pi =              " << pi << '\n'
-    << "<- qi =              " << qi << '\n'
-    << "-> bs::shift_right(pi, qi) = " << bs::shift_right(pi, qi) << '\n';
+  std::cout << "---- simd" << '\n'
+            << "<- pi =              " << pi << '\n'
+            << "<- qi =              " << qi << '\n'
+            << "-> bs::shift_right(pi, qi) = " << bs::shift_right(pi, qi)
+            << '\n';
 
   iT xi = 2, yi = 3;
 
-  std::cout
-    << "---- scalar"  << '\n'
-    << "<- xi =              " << xi << '\n'
-    << "<- yi =              " << yi << '\n'
-    << "-> bs::shift_right(xi, yi) = " << bs::shift_right(xi, yi) << '\n';
+  std::cout << "---- scalar" << '\n'
+            << "<- xi =              " << xi << '\n'
+            << "<- yi =              " << yi << '\n'
+            << "-> bs::shift_right(xi, yi) = " << bs::shift_right(xi, yi)
+            << '\n';
   return 0;
 }
 //! [shift_right]
