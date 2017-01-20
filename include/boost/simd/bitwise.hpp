@@ -72,8 +72,6 @@ namespace boost { namespace simd
   **/
 } }
 
-#include <boost/simd/function/bitget.hpp>
-#include <boost/simd/function/bitset.hpp>
 #include <boost/simd/function/bits.hpp>
 #include <boost/simd/function/bitwise_and.hpp>
 #include <boost/simd/function/bitwise_andnot.hpp>
