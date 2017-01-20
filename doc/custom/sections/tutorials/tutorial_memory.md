@@ -10,7 +10,7 @@ buffers was correctly aligned. Depending on your memory allocator and architectu
 this may not always be true. In this tutorial we will discuss memory alignment
 and demonstrate how to ensure that your memory is always correctly aligned.
 
-@section hello-objectives Objectives
+@section memory-objectives Objectives
 
 -------------------------------------
 
