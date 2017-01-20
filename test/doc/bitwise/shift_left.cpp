@@ -20,15 +20,15 @@ int main() {
   pack_it qi = {1, 2, 4, 3};
 
   std::cout << "---- simd" << '\n'
-            << "<- pi =              " << pi << '\n'
-            << "<- qi =              " << qi << '\n'
+            << "<- pi =                     " << pi << '\n'
+            << "<- qi =                     " << qi << '\n'
             << "-> bs::shift_left(pi, qi) = " << bs::shift_left(pi, qi) << '\n';
 
   iT xi = 2, yi = 3;
 
   std::cout << "---- scalar" << '\n'
-            << "<- xi =              " << xi << '\n'
-            << "<- yi =              " << yi << '\n'
+            << "<- xi =                     " << xi << '\n'
+            << "<- yi =                     " << yi << '\n'
             << "-> bs::shift_left(xi, yi) = " << bs::shift_left(xi, yi) << '\n';
   return 0;
 }

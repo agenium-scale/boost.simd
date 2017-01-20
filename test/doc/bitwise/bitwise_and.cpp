@@ -16,20 +16,20 @@ namespace bs = boost::simd;
 using pack_it = bs::pack<std::uint32_t, 4>;
 
 int main() {
-  pack_it pf = {3, 2, 3, 3};
-  pack_it qf = {4, 1, 1, ~0};
+  pack_it pi = {3, 2, 3, 3};
+  pack_it qi = {4, 1, 1, ~0};
   std::cout << "---- simd" << '\n'
-            << " <- pf =                      " << pf << '\n'
-            << " <- qf =                      " << qf << '\n'
-            << " -> bs::bitwise_and(pf, qf) = " << bs::bitwise_and(pf, qf)
+            << " <- pi =                      " << pi << '\n'
+            << " <- qi =                      " << qi << '\n'
+            << " -> bs::bitwise_and(pi, qi) = " << bs::bitwise_and(pi, qi)
             << '\n';
 
-  std::uint32_t xf = 3, yf = 5;
+  std::uint32_t xi = 3, yi = 5;
 
   std::cout << "---- scalar" << '\n'
-            << " xf =                         " << xf << '\n'
-            << " yf =                         " << yf << '\n'
-            << " -> bs::bitwise_and(xf, yf) = " << bs::bitwise_and(xf, yf)
+            << " xi =                         " << xi << '\n'
+            << " yi =                         " << yi << '\n'
+            << " -> bs::bitwise_and(xi, yi) = " << bs::bitwise_and(xi, yi)
             << '\n';
   return 0;
 }
