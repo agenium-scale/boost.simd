@@ -1,0 +1,8 @@
+//! [signgam]
+---- simd
+<- pf =            (1, 2, -1, 0.5)
+-> bs::signgam(pf) = (1, 1, -nan, 1)
+---- scalar
+<- xf =            2
+-> bs::signgam(xf) = 1
+//! [signgam]

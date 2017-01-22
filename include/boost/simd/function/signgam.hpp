@@ -16,30 +16,21 @@ namespace boost { namespace simd
 
  /*!
   @ingroup group-euler
-    Function object implementing signgam capabilities
+    This function object computes the sign of gamma function
 
-    sign of gamma function
+    @c signgam does not computes @ref gamma and is fast.
 
-    @par Semantic:
+    @see gamma, gammaln
 
-    For every parameter of floating type T0
+    @par Example:
 
-    @code
-    T0 r = signgam(x);
-    @endcode
+       @snippet stirling.cpp stirling
 
-    is similar to
+    @par Possible output:
 
-    @code
-    T0 r = sign(gamma(x));
-    @endcode
-
-    signgam does not computes @ref gamma and is fast.
-
-    @see gamma,  gammaln
-
+       @snippet stirling.txt stirling
   **/
-  Value signgam(Value const & v0);
+  Value signgam(Value const & x);
 } }
 #endif
 

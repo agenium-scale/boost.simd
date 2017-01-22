@@ -16,27 +16,24 @@ namespace boost { namespace simd
 
  /*!
   @ingroup group-euler
-    Function object implementing erf capabilities
-
-   Computes the error function:
+   This function object computes  the error function:
    \f$\displaystyle \frac{2}{\sqrt\pi}\int_0^{x} e^{-t^2}\mbox{d}t\f$
-
-    @par Semantic:
-
-    For every parameter of floating type T
-
-    @code
-    T r = erf(x);
-    @endcode
 
     @par Decorators
 
-      - std_ for floating entries provides access to @c std::erf
+      - std_ calls @c std::erf
 
     @see erfc,  erfcx
 
+     @par Example:
+
+       @snippet erf.cpp erf
+
+    @par Possible output:
+
+       @snippet erf.txt erf
   **/
-  Value erf(Value const & v0);
+  Value erf(Value const & x);
 } }
 #endif
 
