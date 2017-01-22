@@ -38,7 +38,7 @@ namespace boost { namespace dispatch
 #if !defined(DOXYGEN_ONLY)
         : detail::hierarchy_of<T, typename std::remove_reference<Origin>::type>
 #endif
-  {};
+  { };
 
   /*!
     @ingroup group-hierarchy

@@ -15,7 +15,12 @@
 #include <boost/config.hpp>
 #include <utility>
 
-#define BOOST_DISPATCH_IMPL_TAG_CALL_TYPE(TAG,SITE,TS,AS)                                           \
+#if defined(BOOST_INTEL_CXX_VERSION) && BOOST_INTEL_CXX_VERSION < 1600
+// Bad variadic template support, use an ad hoc hack.
+#include <boost/simd/detail/dispatch/detail/functor_icpc15_kludge.hpp>
+#else
+
+#define BOOST_DISPATCH_IMPL_TAG_CALL_TYPE(TAG,SITE,TS,AS)               \
 TAG::dispatch_to( boost::dispatch::detail::declval<SITE>()                                          \
                 , boost::dispatch::detail::declval<typename boost::dispatch::hierarchy_of<TS>::type>()...)( std::forward<TS>(AS)...) \
 /**/
@@ -71,9 +76,12 @@ namespace boost { namespace dispatch
       return BOOST_DISPATCH_IMPL_TAG_CALL(Tag,Site,Args,args);
     }
   };
+  }
+}
+#endif 
 
-  namespace ext
-  {
+namespace boost {namespace dispatch {
+  namespace ext {
     template<typename F, typename S, typename Origin>
     struct hierarchy_of<boost::dispatch::functor<F,S>,Origin>
     {

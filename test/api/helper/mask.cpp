@@ -8,6 +8,7 @@
 //==================================================================================================
 #include <boost/simd/mask.hpp>
 #include <boost/simd/detail/dispatch/hierarchy_of.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/pointee.hpp>
 #include <boost/simd/detail/nsm.hpp>
 #include <simd_test.hpp>
