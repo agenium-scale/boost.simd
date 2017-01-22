@@ -1,0 +1,5 @@
+//! [minimum]
+---- simd
+<- pf =              (1, 2, -1, 0.5)
+-> bs::minimum(pf) = -1
+//! [minimum]

@@ -1,0 +1,6 @@
+//! [compare_greater]
+---- simd
+<- pi =                                (1, 2, 5, 2)
+<- qi =                                (0, 1, 2, 8)
+-> bs::compare_greater(pi, qi) = 1
+//! [compare_greater]
