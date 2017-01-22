@@ -26,13 +26,13 @@ namespace boost { namespace simd
 
     @par Note:
     nthroot is slower than `pow(x, rec(tofloat(n))`) because
-    it takes care of some limits issues that @ref pow does not mind of.
+    it takes care of some limits issues that @ref pow ignores.
 
     See if it suits you better or use raw_ decorator for intermediate solution.
 
     @par Decorators
 
-      - raw_ provides speed but is undefined for limitings values
+      - raw_ provides increased speed but is undefined for limitings values
 
     @see pow, rec, sqrt, cbrt
 
