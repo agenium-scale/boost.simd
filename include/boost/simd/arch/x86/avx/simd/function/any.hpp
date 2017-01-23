@@ -11,7 +11,7 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/constant/allbits.hpp>
-#include <boost/simd/constant/butsign.hpp>
+#include <boost/simd/detail/constant/butsign.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
@@ -28,7 +28,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE bool operator() ( const A0 & a0) const BOOST_NOEXCEPT
     {
-      return (_mm256_testnzc_si256(a0, Allbits<A0>()));
+      return _mm256_testnzc_si256(a0, Allbits<A0>());
     }
   };
 
@@ -41,7 +41,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE bool operator() ( const A0 & a0) const BOOST_NOEXCEPT
     {
       using iA0 = bd::as_integer_t<A0>;
-      return (_mm256_testnzc_si256(bitwise_cast<iA0>(a0), Butsign<iA0>()));
+      return _mm256_testnzc_si256(bitwise_cast<iA0>(a0), Butsign<iA0>());
     }
   };
 

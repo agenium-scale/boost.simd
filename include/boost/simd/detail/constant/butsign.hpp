@@ -8,8 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_CONSTANT_DEFINITION_BUTSIGN_HPP_INCLUDED
-#define BOOST_SIMD_CONSTANT_DEFINITION_BUTSIGN_HPP_INCLUDED
+#ifndef BOOST_SIMD_DETAIL_CONSTANT_BUTSIGN_HPP_INCLUDED
+#define BOOST_SIMD_DETAIL_CONSTANT_BUTSIGN_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/detail/nsm.hpp>
@@ -18,6 +18,16 @@
 #include <boost/simd/detail/dispatch/function/make_callable.hpp>
 #include <boost/simd/detail/dispatch/hierarchy/functions.hpp>
 #include <boost/simd/detail/dispatch/as.hpp>
+
+  /*
+    @ingroup group-constant
+
+    Generate value with all bits set to one except the most sinificant
+    set to zero (the sign bit)
+
+     @return The Butsign constant for the proper type
+
+  */
 
 namespace boost { namespace simd
 {
@@ -77,12 +87,9 @@ namespace boost { namespace simd
   {
     return detail::butsign( boost::dispatch::as_<T>{} );
   }
-
-  template<typename T> BOOST_FORCEINLINE
-  auto Butsign(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Butsign<T>())
-  {
-    return Butsign<T>();
-  }
 } }
+
+#include <boost/simd/arch/common/scalar/constant/constant_value.hpp>
+#include <boost/simd/arch/common/simd/constant/constant_value.hpp>
 
 #endif

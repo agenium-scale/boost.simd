@@ -10,7 +10,7 @@
 #define BOOST_SIMD_ARCH_X86_SSE4_1_SIMD_FUNCTION_ANY_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/constant/butsign.hpp>
+#include <boost/simd/detail/constant/butsign.hpp>
 #include <boost/simd/constant/allbits.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
