@@ -14,6 +14,7 @@
 #include <cstdlib>
 #include <string>
 #include <algorithm>
+#include <limits>
 #include <boost/config.hpp>
 
 // Detect stupid ICC/G++ combos
