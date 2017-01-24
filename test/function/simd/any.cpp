@@ -22,14 +22,13 @@ template <typename T, std::size_t N, typename Env> void test(Env &$) {
   T a1[N], a2[N];
   bs::logical<T> b = false, c = false;
   for (std::size_t i = 0; i < N; ++i) {
-    a1[i] = -T(0);
+    a1[i] = (i % 2) ? -T(0) :T(0);
     a2[i] = (i % 2) ? T(i + 1) : T(-i);
     b = b || a1[i] != 0;
     c = c || a2[i] != 0;
   }
   p_t aa1(&a1[0], &a1[0] + N);
   p_t aa2(&a2[0], &a2[0] + N);
-
   STF_EQUAL(bs::any(aa1), b);
   STF_EQUAL(bs::any(aa2), c);
 
