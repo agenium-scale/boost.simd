@@ -6,9 +6,13 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
+#include <boost/config.hpp>
+#include <simd_test.hpp>
+
+#ifndef BOOST_NO_CXX11_USER_DEFINED_LITERALS
 #include <boost/simd/function/insert.hpp>
 #include <boost/simd/detail/unroll.hpp>
-#include <boost/simd/litteral.hpp>
+#include <boost/simd/literal.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
 #include <array>
@@ -75,3 +79,13 @@ STF_CASE_TPL("Check static insert on pack using literals" , STF_NUMERIC_TYPES)
   test_lt<T, N/2>($);
   test_lt<T, N*2>($);
 }
+
+#else // BOOST_NO_CXX11_USER_DEFINED_LITERALS
+
+STF_CASE("Cannot check insert on pack using literals")
+{
+  STF_WARNING("User defined literals are not supported on this platform.");
+  STF_PASS("Nothing to run.");
+}
+
+#endif
