@@ -6,7 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-//! [sqr]
+//! [sqr_abs]
 #include <boost/simd/arithmetic.hpp>
 #include <boost/simd/pack.hpp>
 #include <iostream>
