@@ -13,7 +13,7 @@
 
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/detail/unroll.hpp>
-#include <boost/simd/litteral.hpp>
+#include <boost/simd/literal.hpp>
 #include <boost/simd/pack.hpp>
 #include <array>
 
