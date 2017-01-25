@@ -8,12 +8,11 @@
 //==================================================================================================
 #include <boost/config.hpp>
 #include <simd_test.hpp>
-
-#ifndef BOOST_NO_CXX11_USER_DEFINED_LITERALS
-
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/detail/unroll.hpp>
+#ifndef BOOST_NO_CXX11_USER_DEFINED_LITERALS
 #include <boost/simd/literal.hpp>
+#endif
 #include <boost/simd/pack.hpp>
 #include <array>
 
@@ -58,6 +57,8 @@ STF_CASE_TPL("Check static extract on pack" , STF_NUMERIC_TYPES)
   test_st<T, N*2>($);
 }
 
+#ifndef BOOST_NO_CXX11_USER_DEFINED_LITERALS
+
 template <typename T, std::size_t N, typename Env>
 void test_lt(Env& $)
 {
@@ -80,13 +81,4 @@ STF_CASE_TPL("Check extract on pack using literals" , STF_NUMERIC_TYPES)
   test_lt<T, N*2>($);
 }
 
-#else // BOOST_NO_CXX11_USER_DEFINED_LITERALS
-
-STF_CASE("Cannot check extract on pack using literals")
-{
-  STF_WARNING("User defined literals are not supported on this platform.");
-  STF_PASS("Nothing to run.");
-}
-
-#endif
-
+#endif // !BOOST_NO_CXX11_USER_DEFINED_LITERALS
