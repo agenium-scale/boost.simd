@@ -40,7 +40,9 @@ namespace boost { namespace simd
   **/
   Value if_minus(Value const& c, Value const& x, Value const&  y);
 
-  //@overload
+  /*!
+    @overload
+  */
   Value if_minus(LogicalValue const& c, Value const& x, Value const& y);
 } }
 #endif

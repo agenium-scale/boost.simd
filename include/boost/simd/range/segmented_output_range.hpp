@@ -52,7 +52,9 @@ namespace boost { namespace simd
       );
   }
 
-  /// @overload
+  /*!
+     @overload
+  */
   template<class Iterator> inline
   auto    segmented_output_range( Iterator begin, Iterator end )
       ->  decltype( segmented_output_range< pack< typename std::iterator_traits<Iterator>

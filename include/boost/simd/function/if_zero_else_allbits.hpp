@@ -27,7 +27,9 @@ namespace boost { namespace simd
   **/
   Value if_zero_else_allbits(Value const& c);
 
-  //@overload
+  /*!
+    @overload
+  */
   Value if_zero_else_allbits(LogicalValue const& c);
 } }
 #endif

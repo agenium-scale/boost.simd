@@ -38,7 +38,9 @@ namespace boost { namespace simd
   **/
   Value if_inc(Value const& c, Value const& v0);
 
-  //@overload
+  /*!
+    @overload
+  */
   Value if_inc(LogicalValue const& c, Value const& v0);
 } }
 #endif

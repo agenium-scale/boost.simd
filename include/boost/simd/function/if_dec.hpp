@@ -38,7 +38,9 @@ namespace boost { namespace simd
   **/
   Value if_dec(Value const& c, Value const& v0);
 
-  //@overload
+  /*!
+    @overload
+  */
   Value if_dec(LogicalValue const& c, Value const& v0);
 } }
 #endif

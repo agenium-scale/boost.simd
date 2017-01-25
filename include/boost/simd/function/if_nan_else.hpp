@@ -26,7 +26,9 @@ namespace boost { namespace simd
   **/
   Value if_nan_else(Value const& r, Value const& v0);
 
-  //@overload
+  /*!
+    @overload
+  */
   Value if_nan_else(LogicalValue const& r, Value const& v0);
 } }
 #endif

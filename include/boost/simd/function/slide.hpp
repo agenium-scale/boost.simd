@@ -19,7 +19,9 @@ namespace boost { namespace simd
   **/
   template<std::size_t N, typename T> T slide(T const& a0, T const& a1) {}
 
-  /// @overload
+  /*!
+    @overload
+  */
   template<std::size_t N, typename T> T slide(T const& a0) {}
 #endif
 } }
