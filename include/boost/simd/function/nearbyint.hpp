@@ -32,8 +32,8 @@ namespace boost { namespace simd
     Returns the nearest integer to x.
 
     @par Note:
-    - If arg is /f$\infty/f$, it is returned, unmodified
-    - If arg is $\pm0/f$, it is returned, unmodified
+    - If arg is \f$\infty\f$, it is returned, unmodified
+    - If arg is \f$\pm0\f$, it is returned, unmodified
     - If arg is NaN, NaN is returned
 
     - to even means that half integer values are rounded to the nearest
