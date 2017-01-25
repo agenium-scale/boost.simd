@@ -64,7 +64,7 @@ namespace boost { namespace simd { namespace ext
       return detail::make(as_<result_t>{}
                           , bs::extract<N::value>(a)...
                           , bs::extract<N::value>(b)...
-                            );
+                          );
     }
 
     BOOST_FORCEINLINE result_t operator()(T const& a, T const& b) const BOOST_NOEXCEPT
