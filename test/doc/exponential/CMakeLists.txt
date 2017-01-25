@@ -7,7 +7,23 @@
 ##===================================================================================================
 
 SET( SOURCES
-
-  )
+    cbrt.cpp
+    exp.cpp
+    exp10.cpp
+    exp2.cpp
+    expm1.cpp
+    exprecneg.cpp
+    exprecnegc.cpp
+    expx2.cpp
+    log.cpp
+    log10.cpp
+    log1p.cpp
+    log2.cpp
+    nthroot.cpp
+    pow.cpp
+    pow2.cpp
+    pow_abs.cpp
+    significants.cpp
+   )
 
 make_unit( "doc.exponential" ${SOURCES})

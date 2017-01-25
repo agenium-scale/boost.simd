@@ -1,0 +1,10 @@
+//! [nthroot]
+---- simd
+<- pf =                  (1, 2, -1, 8)
+<- qi =                  (1, 2, 3, 3)
+-> bs::nthroot(pf, qi) = (1, 1.41421, -1, 2)
+---- scalar
+<- xf =                  -8
+<- yi =                  3
+-> bs::nthroot(xf, yi) = -2
+//! [nthroot]

@@ -16,31 +16,28 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-exponential
-    Function object implementing expx2 capabilities
+    This function object returns the exponential of the square of its
+    argument or its inverse: \f$e^{x^2}\f$ or \f$e^{-x^2}\f$.
+    The sign choosen is -1 if and only if the sign bit of the second argument is not zero.
 
-    exponential of square function: \f$e^{x^2}\f$ or \f$e^{-x^2}\f$
 
-    @par Semantic:
-
-    For every parameters of floating type T
-
-    @code
-    T r = expx2(x, s);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r =  exp(signnz(s)*x*x);
-    @endcode
+    @par Header <boost/simd/function/expx2.hpp>
 
     @par Note:
-    provisions are made for obtaining more accurate results for large x.
-    s default to 1.
+    provisions are made for obtaining more accurate results for large @c x.
+    The second argument @c s defaults to 1.
 
     @see exp
+
+
+   @par Example:
+
+     @snippet expx2.cpp expx2
+
+   @par Possible output:
+
+     @snippet expx2.txt expx2
 
   **/
   Value expx2(Value const & x, Value const& s);
