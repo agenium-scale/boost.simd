@@ -16,7 +16,6 @@
 #include <boost/simd/function/ldexp.hpp>
 #include <boost/simd/function/modf.hpp>
 #include <boost/simd/function/floor.hpp>
-#include <boost/simd/function/negif.hpp>
 #include <boost/simd/function/is_gtz.hpp>
 #include <boost/simd/function/logical_and.hpp>
 #include <boost/simd/constant/valmin.hpp>

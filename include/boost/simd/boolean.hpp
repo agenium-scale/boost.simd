@@ -105,7 +105,7 @@ namespace boost { namespace simd
 #include <boost/simd/function/logical_ornot.hpp>
 #include <boost/simd/function/logical_xor.hpp>
 #include <boost/simd/function/mask2logical.hpp>
-#include <boost/simd/function/negif.hpp>
+#include <boost/simd/function/if_neg.hpp>
 #include <boost/simd/function/ifnot_neg.hpp>
 #include <boost/simd/function/if_plus.hpp>
 #include <boost/simd/function/if_dec.hpp>

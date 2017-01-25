@@ -7,11 +7,10 @@
 **/
 //==================================================================================================
 
-#ifndef BOOST_SIMD_FUNCTION_SIMD_NEGIF_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_SIMD_NEGIF_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_SCALAR_IF_NEG_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_SCALAR_IF_NEG_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/negif.hpp>
-#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/simd/function/negif.hpp>
+#include <boost/simd/function/definition/if_neg.hpp>
+#include <boost/simd/arch/common/scalar/function/if_neg.hpp>
 
 #endif

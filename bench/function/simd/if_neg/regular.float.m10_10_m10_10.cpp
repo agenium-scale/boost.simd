@@ -6,16 +6,16 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-/// bench for functor negif in scalar mode for float type with no decorator (regular call).
+/// bench for functor if_neg in simd mode for float type with no decorator (regular call).
 #include <simd_bench.hpp>
-#include <boost/simd/function/negif.hpp>
+#include <boost/simd/function/if_neg.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_negif, bs::negif);
+DEFINE_SIMD_BENCH(simd_if_neg, bs::if_neg);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_negif, float>(-10, 10,-10, 10);
+  nsb::for_each<simd_if_neg, float>(-10, 10,-10, 10);
 }

@@ -8,8 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_NEGIF_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_NEGIF_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_IF_NEG_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_IF_NEG_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
@@ -17,7 +17,7 @@ namespace boost { namespace simd
 
  /*!
     @ingroup group-boolean
-    This function object returns  -x if c is @ref True and x otherwise.
+    This function object conditionally returns  -x if c is @ref True and x otherwise.
 
    @par Example:
 
@@ -28,16 +28,15 @@ namespace boost { namespace simd
      @snippet negif.txt negif
 
   **/
-  Value negif(LogicalValue const& cond, Value const & x);
+  Value if_neg(LogicalValue const& cond, Value const & x);
 
-  /*!
-    @overload
-  */
-  Value negif(Value const& c, Value const & x);
+  //@overload
+  Value if_neg(Value const& cond, Value const & x);
+
 } }
 #endif
 
-#include <boost/simd/function/scalar/negif.hpp>
-#include <boost/simd/function/simd/negif.hpp>
+#include <boost/simd/function/scalar/if_neg.hpp>
+#include <boost/simd/function/simd/if_neg.hpp>
 
 #endif

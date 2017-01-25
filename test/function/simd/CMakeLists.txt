@@ -288,7 +288,7 @@ set ( SOURCES
       nearbyint.cpp
       negate.cpp
       negatenz.cpp
-      negif.cpp
+      if_neg.cpp
       ifnot_neg.cpp
       nextafter.cpp
       next.cpp
