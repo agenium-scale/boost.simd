@@ -35,7 +35,7 @@ template <typename T, typename Env> void test_val(Env& $)
 
   std::cout << "Source type: pack<"   << stf::type_id<sT>()
                               << ","  << T::static_size
-                              << ">"  << std::endl << "x: " << x << std::endl;
+                              << ">"  << std::endl;
 
   STF_EQUAL(bs::cast<std::int8_t  >(x), (res<T,std::int8_t  >::comp(x)));
   STF_EQUAL(bs::cast<std::int16_t >(x), (res<T,std::int16_t >::comp(x)));

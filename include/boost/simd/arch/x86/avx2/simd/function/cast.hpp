@@ -10,11 +10,32 @@
 #define BOOST_SIMD_ARCH_X86_AVX2_SIMD_FUNCTION_CAST_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
+#include <boost/simd/function/slice.hpp>
+#include <boost/simd/function/combine.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = ::boost::dispatch;
   namespace bs = ::boost::simd;
+
+  //------------------------------------------------------------------------------------------------
+  //  int16->float
+  BOOST_DISPATCH_OVERLOAD ( cast_
+                          , (typename A0, typename A1)
+                          , bs::avx2_
+                          , bs::pack_<bd::int16_<A0>,bs::avx_>
+                          , bd::target_<bd::scalar_<bd::single_<A1>>>
+                          )
+  {
+    using result = typename A0::template rebind<typename A1::type>;
+    BOOST_FORCEINLINE result operator()(A0 const& a0, A1 const&) const BOOST_NOEXCEPT
+    {
+      auto x = boost::simd::slice(a0);
+      return boost::simd::combine( boost::simd::cast<typename A1::type>(x[0])
+                                 , boost::simd::cast<typename A1::type>(x[1])
+                                 );
+    }
+  };
 
   //------------------------------------------------------------------------------------------------
   //  int16->int32
@@ -73,6 +94,26 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE result operator()(A0 const& a0, A1 const&) const BOOST_NOEXCEPT
     {
       return _mm256_cvtepi32_epi64(a0);
+    }
+  };
+
+
+  //------------------------------------------------------------------------------------------------
+  //  int8->float
+  BOOST_DISPATCH_OVERLOAD ( cast_
+                          , (typename A0, typename A1)
+                          , bs::avx2_
+                          , bs::pack_<bd::int8_<A0>,bs::avx_>
+                          , bd::target_<bd::scalar_<bd::single_<A1>>>
+                          )
+  {
+    using result = typename A0::template rebind<typename A1::type>;
+    BOOST_FORCEINLINE result operator()(A0 const& a0, A1 const&) const BOOST_NOEXCEPT
+    {
+      auto x = boost::simd::slice(a0);
+      return boost::simd::combine( boost::simd::cast<typename A1::type>(x[0])
+                                 , boost::simd::cast<typename A1::type>(x[1])
+                                 );
     }
   };
 

@@ -14,7 +14,6 @@
 #include <boost/simd/detail/traits.hpp>
 #include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/function/if_allbits_else_zero.hpp>
-#include <boost/simd/function/deinterleave.hpp>
 #include <boost/simd/function/interleave.hpp>
 #include <boost/simd/function/combine.hpp>
 #include <boost/simd/function/is_ltz.hpp>
@@ -24,26 +23,6 @@
 
 namespace boost { namespace simd { namespace detail
 {
-  // -----------------------------------------------------------------------------------------------
-  // downward cast with sign
-  template<typename A0, typename A1>
-  struct downward_cast
-  {
-    using result = typename A0::template rebind<typename A1::type>;
-    static BOOST_FORCEINLINE result do_(const A0& a0 ) BOOST_NOEXCEPT
-    {
-      using sub = pack<typename A1::type, A0::static_size*2>;
-
-      #if BOOST_ENDIAN_BIG_BYTE
-      auto x = deinterleave_second(bitwise_cast<sub>(a0), Zero<sub>());
-      #else
-      auto x = deinterleave_first(bitwise_cast<sub>(a0), Zero<sub>());
-      #endif
-
-      return slice_low( x );
-    }
-  };
-
   // -----------------------------------------------------------------------------------------------
   // upward cast with sign
   template<typename A0, typename A1, bool Sign>
@@ -68,9 +47,9 @@ namespace boost { namespace simd { namespace detail
   struct upward_cast<A0, A1, false>
   {
     using result = typename A0::template rebind<typename A1::type>;
-    static BOOST_FORCEINLINE result do_(const A0& a0 ) BOOST_NOEXCEPT
+    static BOOST_FORCEINLINE result do_(const A0& a0) BOOST_NOEXCEPT
     {
-      using upw = pack<typename A1::type, A0::static_size/2>;
+      using upw = bd::upgrade_t<A0, bd::sign_of_t<typename A1::type>>;
 
       #if BOOST_ENDIAN_BIG_BYTE
       auto x = interleave(Zero<A0>(),a0);
@@ -87,6 +66,29 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
+
+  // -----------------------------------------------------------------------------------------------
+  // uint8/16 -> ints32/64
+  BOOST_DISPATCH_OVERLOAD_IF( cast_
+                            , (typename A0, typename A1, typename S, typename X, std::size_t N)
+                            , (detail::is_native<X>)
+                            , bd::cpu_
+                            , bs::pack_<bd::integral_<A0,N,S>, X>
+                            , bd::target_< bd::scalar_< bd::ints_<A1,4*N> > >
+                            )
+  {
+    using result = typename A0::template rebind<typename A1::type>;
+
+    BOOST_FORCEINLINE result operator()(const A0 & a0, A1 const&) const BOOST_NOEXCEPT
+    {
+      using tgt = typename bd::upgrade_t<A0>::value_type;
+      auto x = cast<tgt>(a0);
+
+      return combine( cast<typename A1::type>(slice_low(x))
+                    , cast<typename A1::type>(slice_high(x))
+                    );
+    }
+  };
 
   // -----------------------------------------------------------------------------------------------
   // int8 -> ints16
@@ -136,57 +138,6 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE result operator() ( const A0 & a0, A1 const& ) const BOOST_NOEXCEPT
     {
       return detail::upward_cast<A0, A1, std::is_signed<typename A0::value_type>::value>::do_(a0);
-    }
-  };
-
-  // -----------------------------------------------------------------------------------------------
-  // int64 -> ints32
-  BOOST_DISPATCH_OVERLOAD_IF( cast_
-                            , (typename A0, typename A1, typename X)
-                            , (detail::is_native<X>)
-                            , bd::cpu_
-                            , bs::pack_<bd::ints64_<A0>, X>
-                            , bd::target_< bd::scalar_< bd::ints32_<A1> > >
-                            )
-  {
-    using result = typename A0::template rebind<typename A1::type>;
-    BOOST_FORCEINLINE result operator() ( const A0 & a0, A1 const& ) const BOOST_NOEXCEPT
-    {puts("64->32");
-      return detail::downward_cast<A0,A1>::do_( a0 );
-    }
-  };
-
-  // -----------------------------------------------------------------------------------------------
-  // int32 -> ints16
-  BOOST_DISPATCH_OVERLOAD_IF( cast_
-                            , (typename A0, typename A1, typename X)
-                            , (detail::is_native<X>)
-                            , bd::cpu_
-                            , bs::pack_<bd::ints32_<A0>, X>
-                            , bd::target_< bd::scalar_< bd::ints16_<A1> > >
-                            )
-  {
-    using result = typename A0::template rebind<typename A1::type>;
-    BOOST_FORCEINLINE result operator() ( const A0 & a0, A1 const& ) const BOOST_NOEXCEPT
-    {
-      return detail::downward_cast<A0,A1>::do_( a0 );
-    }
-  };
-
-  // -----------------------------------------------------------------------------------------------
-  // int16 -> ints8
-  BOOST_DISPATCH_OVERLOAD_IF( cast_
-                            , (typename A0, typename A1, typename X)
-                            , (detail::is_native<X>)
-                            , bd::cpu_
-                            , bs::pack_<bd::ints16_<A0>, X>
-                            , bd::target_< bd::scalar_< bd::ints8_<A1> > >
-                            )
-  {
-    using result = typename A0::template rebind<typename A1::type>;
-    BOOST_FORCEINLINE result operator() ( const A0 & a0, A1 const& ) const BOOST_NOEXCEPT
-    {
-      return detail::downward_cast<A0,A1>::do_( a0 );
     }
   };
 } } }
