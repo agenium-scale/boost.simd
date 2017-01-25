@@ -38,9 +38,13 @@ namespace boost { namespace simd
   template<typename Value, typename Pointer, typename Offset> void store( Value const& val, Pointer const& ptr
                                                                         , Offset const& offset, Mask const& mask) {}
 
-  /// @overload
+  /*!
+    @overload
+   **/
   template<typename Value, typename Pointer> void store( Value const& val, Pointer ptr) {}
-  /// @overload
+  /*!
+    @overload
+  **/
   template<typename Value, typename Pointer, typename Offset> void store( Value const& val, Pointer const& ptr, Offset const& offset) {}
 
 } }
