@@ -1,0 +1,10 @@
+//! [if_minus]
+---- simd
+ <- pf =                             (3, -2, -6, 3.40282e+38)
+ <- qf =                             (4, -1, -3, 0)
+ -> bs::if_minus(sf, pf, qf) =        (-1, -2, -3, 3.40282e+38)
+---- scalar
+ xf =                                3
+ yf =                                -4
+ -> bs::if_minus(xf > 0.0f, xf, yf) = 7
+//! [if_minus]

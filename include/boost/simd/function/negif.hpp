@@ -16,31 +16,22 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-boolean
-    Function object implementing negif capabilities
+    This function object returns  -x if c is @ref True and x otherwise.
 
-    The function returns -x if cond is @ref True and x otherwise.
+   @par Example:
 
-    @par Semantic:
+     @snippet negif.cpp negif
 
-    For every parameters @c cond of type @c C and @c x of type @c T:
+   @par Possible output:
 
-    @code
-    T r = negif(cond,x);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = cond ? -x : x;
-    @endcode
+     @snippet negif.txt negif
 
   **/
   Value negif(LogicalValue const& cond, Value const & x);
 
   //@overload
-  Value negif(Value const& cond, Value const & x);
+  Value negif(Value const& c, Value const & x);
 } }
 #endif
 

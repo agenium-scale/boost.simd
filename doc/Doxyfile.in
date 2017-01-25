@@ -43,6 +43,7 @@ EXAMPLE_PATH           = @PROJECT_SOURCE_DIR@/doc/examples
 EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc
 EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/arithmetic
 EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/bitwise
+EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/boolean
 EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/exponential
 EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/hyperbolic
 EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/ieee

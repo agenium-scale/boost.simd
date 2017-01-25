@@ -16,27 +16,17 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-boolean
-    Function object implementing ifnot_minus capabilities
+    This function object conditionally returns  @c x (respectively @c x-y)
+    if @c c is @ref True (respectively  @ref False)
 
-    The function returns the second entry or the difference of the second
-    and third entries, according to the first entry being @ref True or
-    @ref False
+   @par Example:
 
-    @par Semantic:
+     @snippet ifnot_minus.cpp ifnot_minus
 
-     For every parameters @c c of type @c C and @c x, @c y of type @c T:
+   @par Possible output:
 
-    @code
-    T1 r = ifnot_minus(cond, x, y);
-    @endcode
-
-    is similar to:
-
-    @code
-    T1 r = cond ? x :  x - y
-    @endcode
+     @snippet ifnot_minus.txt ifnot_minus
 
   **/
   Value ifnot_minus(Value const& c, Value const& x, Value const& y);

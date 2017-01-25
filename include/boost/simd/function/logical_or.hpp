@@ -16,11 +16,8 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-boolean
-    Function object implementing logical_or capabilities
-
-    return the logical or of the two parameters
+    This function object returns the return the logical or of the two arguments
 
     The operands must share the same @ref cardinal_of value.
 
@@ -28,20 +25,13 @@ namespace boost { namespace simd
 
     @warningbox{Take care that using && in scalar mode does short-circuit and does not in simd mode.}
 
-    @par Semantic:
+   @par Example:
 
-    @code
-    auto r = logical_or(x,y);
-    @endcode
+     @snippet logical_or.cpp logical_or
 
-    is similar to:
+   @par Possible output:
 
-    @code
-    auto r = x || y;
-    @endcode
-
-    @see  logical_and, logical_xor, logical_notand,
-    logical_andnot, logical_notor, logical_ornot, logical_not
+     @snippet logical_or.txt logical_or
 
   **/
   as_logical_t<Value0> logical_or(Value0 const& x, Value1 const& y);

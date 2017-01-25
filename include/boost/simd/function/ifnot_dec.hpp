@@ -16,31 +16,23 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-boolean
-    Function object implementing ifnot_dec capabilities
+    This function object conditionally returns  @c x (respectively @c x-1)
+    if @c c is @ref True (respectively  @ref False)
 
-    Decrements a value by @ref One if a predicate is @ref False.
+   @par Example:
 
-    @par Semantic:
+     @snippet ifnot_dec.cpp ifnot_dec
 
-    For every parameters @c c of type @c C and @c x of type @c T:
+   @par Possible output:
 
-    @code
-    T r = ifnot_dec(cond,x);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = cond : x : x-One<T>();
-    @endcode
+     @snippet ifnot_dec.txt ifnot_dec
 
   **/
-  Value ifnot_dec(Value const& x, Value const& x);
+  Value ifnot_dec(Value const& c, Value const& x);
 
   //@overload
-  Value ifnot_dec(LogicalValue const& x, Value const& y);
+  Value ifnot_dec(LogicalValue const& c, Value const& x);
 } }
 #endif
 

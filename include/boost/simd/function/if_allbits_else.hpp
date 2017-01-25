@@ -16,25 +16,17 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-boolean
-    Function object implementing if_allbits_else capabilities
+    This function object  returns @ref Allbits if  @c c is @ref True else returns @c f
 
-    If @c c is @ref True returns @ref Allbits else returns @c f
 
-    @par Semantic:
+   @par Example:
 
-    For every parameters @c c of type @c C and @c f of type @c T:
+     @snippet if_allbits_else.cpp if_allbits_else
 
-    @code
-    T r = if_allbits_else(c, f);
-    @endcode
+   @par Possible output:
 
-    is similar to:
-
-    @code
-    T r = c ? Allbits<T>() : f;
-    @endcode
+     @snippet if_allbits_else.txt if_allbits_else
 
     @par Alias:
     @c if_nan_else,
