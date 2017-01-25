@@ -22,7 +22,7 @@ namespace boost { namespace simd { namespace ext
  namespace bd = boost::dispatch;
  namespace bs = boost::simd;
 
-  BOOST_DISPATCH_OVERLOAD ( cast_
+  BOOST_DISPATCH_OVERLOAD ( pack_cast_
                           , (typename A0, typename A1, typename X)
                           , bd::cpu_
                           , bs::pack_< bd::unspecified_<A0>, X>
@@ -45,7 +45,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE result combined(A0 const& a0) const BOOST_NOEXCEPT
     {
       using tg_t = typename A1::type;
-      return combine( cast<tg_t>(slice_low(a0)), cast<tg_t>(slice_high(a0)) );
+      return combine( pack_cast<tg_t>(slice_low(a0)), pack_cast<tg_t>(slice_high(a0)) );
     }
 
     template<typename K0, typename K1>

@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/cast.hpp>
+#include <boost/simd/function/pack_cast.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
 #include <boost/simd/function/enumerate.hpp>
@@ -19,16 +19,16 @@ template <typename T, typename Env>
 void test_type(Env& $)
 {
   static const std::size_t N = T::static_size;
-  STF_EXPR_IS(bs::cast<std::int8_t  >(T()), (bs::pack<std::int8_t,   N>));
-  STF_EXPR_IS(bs::cast<std::int16_t >(T()), (bs::pack<std::int16_t,  N>));
-  STF_EXPR_IS(bs::cast<std::int32_t >(T()), (bs::pack<std::int32_t,  N>));
-  STF_EXPR_IS(bs::cast<std::int64_t >(T()), (bs::pack<std::int64_t,  N>));
-  STF_EXPR_IS(bs::cast<std::uint8_t >(T()), (bs::pack<std::uint8_t,  N>));
-  STF_EXPR_IS(bs::cast<std::uint16_t>(T()), (bs::pack<std::uint16_t, N>));
-  STF_EXPR_IS(bs::cast<std::uint32_t>(T()), (bs::pack<std::uint32_t, N>));
-  STF_EXPR_IS(bs::cast<std::uint64_t>(T()), (bs::pack<std::uint64_t, N>));
-  STF_EXPR_IS(bs::cast<float        >(T()), (bs::pack<float        , N>));
-  STF_EXPR_IS(bs::cast<double       >(T()), (bs::pack<double       , N>));
+  STF_EXPR_IS(bs::pack_cast<std::int8_t  >(T()), (bs::pack<std::int8_t,   N>));
+  STF_EXPR_IS(bs::pack_cast<std::int16_t >(T()), (bs::pack<std::int16_t,  N>));
+  STF_EXPR_IS(bs::pack_cast<std::int32_t >(T()), (bs::pack<std::int32_t,  N>));
+  STF_EXPR_IS(bs::pack_cast<std::int64_t >(T()), (bs::pack<std::int64_t,  N>));
+  STF_EXPR_IS(bs::pack_cast<std::uint8_t >(T()), (bs::pack<std::uint8_t,  N>));
+  STF_EXPR_IS(bs::pack_cast<std::uint16_t>(T()), (bs::pack<std::uint16_t, N>));
+  STF_EXPR_IS(bs::pack_cast<std::uint32_t>(T()), (bs::pack<std::uint32_t, N>));
+  STF_EXPR_IS(bs::pack_cast<std::uint64_t>(T()), (bs::pack<std::uint64_t, N>));
+  STF_EXPR_IS(bs::pack_cast<float        >(T()), (bs::pack<float        , N>));
+  STF_EXPR_IS(bs::pack_cast<double       >(T()), (bs::pack<double       , N>));
 }
 
 

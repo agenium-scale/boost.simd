@@ -7,11 +7,10 @@
 **/
 //==================================================================================================
 
-#ifndef BOOST_SIMD_FUNCTION_SCALAR_CAST_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_SCALAR_CAST_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_SCALAR_PACK_CAST_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_SCALAR_PACK_CAST_HPP_INCLUDED
 
-#include <boost/simd/function/definition/cast.hpp>
-#include <boost/simd/arch/common/scalar/function/cast.hpp>
-#include <boost/simd/arch/common/simd/function/cast.hpp>
+#include <boost/simd/function/definition/pack_cast.hpp>
+#include <boost/simd/arch/common/scalar/function/pack_cast.hpp>
 
 #endif

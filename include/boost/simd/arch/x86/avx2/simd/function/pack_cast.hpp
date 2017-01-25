@@ -6,8 +6,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_X86_AVX2_SIMD_FUNCTION_CAST_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_X86_AVX2_SIMD_FUNCTION_CAST_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_X86_AVX2_SIMD_FUNCTION_PACK_CAST_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_X86_AVX2_SIMD_FUNCTION_PACK_CAST_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/slice.hpp>
@@ -20,7 +20,7 @@ namespace boost { namespace simd { namespace ext
 
   //------------------------------------------------------------------------------------------------
   //  int16->float
-  BOOST_DISPATCH_OVERLOAD ( cast_
+  BOOST_DISPATCH_OVERLOAD ( pack_cast_
                           , (typename A0, typename A1)
                           , bs::avx2_
                           , bs::pack_<bd::int16_<A0>,bs::avx_>
@@ -31,15 +31,15 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE result operator()(A0 const& a0, A1 const&) const BOOST_NOEXCEPT
     {
       auto x = boost::simd::slice(a0);
-      return boost::simd::combine( boost::simd::cast<typename A1::type>(x[0])
-                                 , boost::simd::cast<typename A1::type>(x[1])
+      return boost::simd::combine( boost::simd::pack_cast<typename A1::type>(x[0])
+                                 , boost::simd::pack_cast<typename A1::type>(x[1])
                                  );
     }
   };
 
   //------------------------------------------------------------------------------------------------
   //  int16->int32
-  BOOST_DISPATCH_OVERLOAD ( cast_
+  BOOST_DISPATCH_OVERLOAD ( pack_cast_
                           , (typename A0, typename A1)
                           , bs::avx2_
                           , bs::pack_<bd::int16_<A0>,bs::sse_>
@@ -53,7 +53,7 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( cast_
+  BOOST_DISPATCH_OVERLOAD ( pack_cast_
                           , (typename A0, typename A1)
                           , bs::avx2_
                           , bs::pack_<bd::int16_<A0>,bs::sse_>
@@ -69,7 +69,7 @@ namespace boost { namespace simd { namespace ext
 
   //------------------------------------------------------------------------------------------------
   //  int32->int64
-  BOOST_DISPATCH_OVERLOAD ( cast_
+  BOOST_DISPATCH_OVERLOAD ( pack_cast_
                           , (typename A0, typename A1)
                           , bs::avx2_
                           , bs::pack_<bd::int32_<A0>,bs::sse_>
@@ -83,7 +83,7 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( cast_
+  BOOST_DISPATCH_OVERLOAD ( pack_cast_
                           , (typename A0, typename A1)
                           , bs::avx2_
                           , bs::pack_<bd::int32_<A0>,bs::sse_>
@@ -100,7 +100,7 @@ namespace boost { namespace simd { namespace ext
 
   //------------------------------------------------------------------------------------------------
   //  int8->float
-  BOOST_DISPATCH_OVERLOAD ( cast_
+  BOOST_DISPATCH_OVERLOAD ( pack_cast_
                           , (typename A0, typename A1)
                           , bs::avx2_
                           , bs::pack_<bd::int8_<A0>,bs::avx_>
@@ -111,15 +111,15 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE result operator()(A0 const& a0, A1 const&) const BOOST_NOEXCEPT
     {
       auto x = boost::simd::slice(a0);
-      return boost::simd::combine( boost::simd::cast<typename A1::type>(x[0])
-                                 , boost::simd::cast<typename A1::type>(x[1])
+      return boost::simd::combine( boost::simd::pack_cast<typename A1::type>(x[0])
+                                 , boost::simd::pack_cast<typename A1::type>(x[1])
                                  );
     }
   };
 
   //------------------------------------------------------------------------------------------------
   //  int8->int16
-  BOOST_DISPATCH_OVERLOAD ( cast_
+  BOOST_DISPATCH_OVERLOAD ( pack_cast_
                           , (typename A0, typename A1)
                           , bs::avx2_
                           , bs::pack_<bd::int8_<A0>,bs::sse_>
@@ -133,7 +133,7 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( cast_
+  BOOST_DISPATCH_OVERLOAD ( pack_cast_
                           , (typename A0, typename A1)
                           , bs::avx2_
                           , bs::pack_<bd::int8_<A0>,bs::sse_>
@@ -149,7 +149,7 @@ namespace boost { namespace simd { namespace ext
 
   //------------------------------------------------------------------------------------------------
   //  uint16->int32
-  BOOST_DISPATCH_OVERLOAD ( cast_
+  BOOST_DISPATCH_OVERLOAD ( pack_cast_
                           , (typename A0, typename A1)
                           , bs::avx2_
                           , bs::pack_<bd::uint16_<A0>,bs::sse_>
@@ -163,7 +163,7 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( cast_
+  BOOST_DISPATCH_OVERLOAD ( pack_cast_
                           , (typename A0, typename A1)
                           , bs::avx2_
                           , bs::pack_<bd::uint16_<A0>,bs::sse_>
@@ -179,7 +179,7 @@ namespace boost { namespace simd { namespace ext
 
   //------------------------------------------------------------------------------------------------
   //  uint32->int64
-  BOOST_DISPATCH_OVERLOAD ( cast_
+  BOOST_DISPATCH_OVERLOAD ( pack_cast_
                           , (typename A0, typename A1)
                           , bs::avx2_
                           , bs::pack_<bd::uint32_<A0>,bs::sse_>
@@ -193,7 +193,7 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( cast_
+  BOOST_DISPATCH_OVERLOAD ( pack_cast_
                           , (typename A0, typename A1)
                           , bs::avx2_
                           , bs::pack_<bd::uint32_<A0>,bs::sse_>
@@ -209,7 +209,7 @@ namespace boost { namespace simd { namespace ext
 
   //------------------------------------------------------------------------------------------------
   //  uint8->int16
-  BOOST_DISPATCH_OVERLOAD ( cast_
+  BOOST_DISPATCH_OVERLOAD ( pack_cast_
                           , (typename A0, typename A1)
                           , bs::avx2_
                           , bs::pack_<bd::uint8_<A0>,bs::sse_>
@@ -223,7 +223,7 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( cast_
+  BOOST_DISPATCH_OVERLOAD ( pack_cast_
                           , (typename A0, typename A1)
                           , bs::avx2_
                           , bs::pack_<bd::uint8_<A0>,bs::sse_>

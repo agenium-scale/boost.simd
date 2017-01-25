@@ -37,16 +37,16 @@ template <typename T, typename Env> void test_val(Env& $)
                               << ","  << T::static_size
                               << ">"  << std::endl;
 
-  STF_EQUAL(bs::cast<std::int8_t  >(x), (res<T,std::int8_t  >::comp(x)));
-  STF_EQUAL(bs::cast<std::int16_t >(x), (res<T,std::int16_t >::comp(x)));
-  STF_EQUAL(bs::cast<std::int32_t >(x), (res<T,std::int32_t>::comp(x)));
-  STF_EQUAL(bs::cast<std::int64_t >(x), (res<T,std::int64_t >::comp(x)));
-  STF_EQUAL(bs::cast<std::uint8_t >(x), (res<T,std::uint8_t >::comp(x)));
-  STF_EQUAL(bs::cast<std::uint16_t>(x), (res<T,std::uint16_t>::comp(x)));
-  STF_EQUAL(bs::cast<std::uint32_t>(x), (res<T, std::uint32_t>::comp(x)));
-  STF_EQUAL(bs::cast<std::uint64_t>(x), (res<T,std::uint64_t>::comp(x)));
-  STF_EQUAL(bs::cast<float        >(x), (res<T,float        >::comp(x)));
-  STF_EQUAL(bs::cast<double       >(x), (res<T,double       >::comp(x)));
+  STF_EQUAL(bs::pack_cast<std::int8_t  >(x), (res<T,std::int8_t  >::comp(x)));
+  STF_EQUAL(bs::pack_cast<std::int16_t >(x), (res<T,std::int16_t >::comp(x)));
+  STF_EQUAL(bs::pack_cast<std::int32_t >(x), (res<T,std::int32_t>::comp(x)));
+  STF_EQUAL(bs::pack_cast<std::int64_t >(x), (res<T,std::int64_t >::comp(x)));
+  STF_EQUAL(bs::pack_cast<std::uint8_t >(x), (res<T,std::uint8_t >::comp(x)));
+  STF_EQUAL(bs::pack_cast<std::uint16_t>(x), (res<T,std::uint16_t>::comp(x)));
+  STF_EQUAL(bs::pack_cast<std::uint32_t>(x), (res<T, std::uint32_t>::comp(x)));
+  STF_EQUAL(bs::pack_cast<std::uint64_t>(x), (res<T,std::uint64_t>::comp(x)));
+  STF_EQUAL(bs::pack_cast<float        >(x), (res<T,float        >::comp(x)));
+  STF_EQUAL(bs::pack_cast<double       >(x), (res<T,double       >::comp(x)));
   std::cout << "=====================================================================\n" << std::endl;
 }
 

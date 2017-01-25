@@ -8,7 +8,7 @@
 
 /// bench for functor cast in simd mode for double type with no decorator (regular call).
 #include <simd_bench.hpp>
-#include <boost/simd/function/cast.hpp>
+#include <boost/simd/function/pack_cast.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;

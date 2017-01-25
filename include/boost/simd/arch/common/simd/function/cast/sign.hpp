@@ -19,7 +19,7 @@ namespace boost { namespace simd { namespace ext
  namespace bd = boost::dispatch;
  namespace bs = boost::simd;
 
-  BOOST_DISPATCH_OVERLOAD ( cast_
+  BOOST_DISPATCH_OVERLOAD ( pack_cast_
                           , (typename A0, typename A1, typename X, std::size_t Size)
                           , bd::cpu_
                           , bs::pack_< bd::ints_<A0,Size>, X>

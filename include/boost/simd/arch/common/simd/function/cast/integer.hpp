@@ -69,7 +69,7 @@ namespace boost { namespace simd { namespace ext
 
   // -----------------------------------------------------------------------------------------------
   // uint8/16 -> ints32/64
-  BOOST_DISPATCH_OVERLOAD_IF( cast_
+  BOOST_DISPATCH_OVERLOAD_IF( pack_cast_
                             , (typename A0, typename A1, typename S, typename X, std::size_t N)
                             , (detail::is_native<X>)
                             , bd::cpu_
@@ -82,17 +82,17 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE result operator()(const A0 & a0, A1 const&) const BOOST_NOEXCEPT
     {
       using tgt = typename bd::upgrade_t<A0>::value_type;
-      auto x = cast<tgt>(a0);
+      auto x = pack_cast<tgt>(a0);
 
-      return combine( cast<typename A1::type>(slice_low(x))
-                    , cast<typename A1::type>(slice_high(x))
+      return combine( pack_cast<typename A1::type>(slice_low(x))
+                    , pack_cast<typename A1::type>(slice_high(x))
                     );
     }
   };
 
   // -----------------------------------------------------------------------------------------------
   // int8 -> ints16
-  BOOST_DISPATCH_OVERLOAD_IF( cast_
+  BOOST_DISPATCH_OVERLOAD_IF( pack_cast_
                             , (typename A0, typename A1, typename X)
                             , (detail::is_native<X>)
                             , bd::cpu_
@@ -109,7 +109,7 @@ namespace boost { namespace simd { namespace ext
 
   // -----------------------------------------------------------------------------------------------
   // int16 -> ints32
-  BOOST_DISPATCH_OVERLOAD_IF( cast_
+  BOOST_DISPATCH_OVERLOAD_IF( pack_cast_
                             , (typename A0, typename A1, typename X)
                             , (detail::is_native<X>)
                             , bd::cpu_
@@ -126,7 +126,7 @@ namespace boost { namespace simd { namespace ext
 
   // -----------------------------------------------------------------------------------------------
   // int32 -> ints64
-  BOOST_DISPATCH_OVERLOAD_IF( cast_
+  BOOST_DISPATCH_OVERLOAD_IF( pack_cast_
                             , (typename A0, typename A1, typename X)
                             , (detail::is_native<X>)
                             , bd::cpu_

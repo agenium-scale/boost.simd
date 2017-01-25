@@ -6,8 +6,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_CAST_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_CAST_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_PACK_CAST_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_PACK_CAST_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
 
@@ -18,7 +18,7 @@ namespace boost { namespace simd { namespace ext
 
   //------------------------------------------------------------------------------------------------
   //  float --> int32
-  BOOST_DISPATCH_OVERLOAD ( cast_
+  BOOST_DISPATCH_OVERLOAD ( pack_cast_
                           , (typename A0, typename A1)
                           , bs::sse2_
                           , bs::pack_<bd::single_<A0>, bs::sse_>
@@ -34,7 +34,7 @@ namespace boost { namespace simd { namespace ext
 
   //------------------------------------------------------------------------------------------------
   //  int32 --> float
-  BOOST_DISPATCH_OVERLOAD ( cast_
+  BOOST_DISPATCH_OVERLOAD ( pack_cast_
                           , (typename A0, typename A1)
                           , bs::sse2_
                           , bs::pack_<bd::int32_<A0>, bs::sse_>

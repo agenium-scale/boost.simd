@@ -22,7 +22,7 @@ namespace boost { namespace simd { namespace ext
 
   // -----------------------------------------------------------------------------------------------
   // integer -> float
-  BOOST_DISPATCH_OVERLOAD_IF( cast_
+  BOOST_DISPATCH_OVERLOAD_IF( pack_cast_
                             , (typename A0, typename A1, typename X)
                             , (detail::is_native<X>)
                             , bd::cpu_
@@ -35,13 +35,13 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE result operator()(A0 const& a0, A1 const& ) const BOOST_NOEXCEPT
     {
       using tgt_t = bd::as_integer_t<typename A1::type>;
-      return cast<typename A1::type>( cast<tgt_t>(a0) );
+      return pack_cast<typename A1::type>( pack_cast<tgt_t>(a0) );
     }
   };
 
   // -----------------------------------------------------------------------------------------------
   // float -> integer
-  BOOST_DISPATCH_OVERLOAD_IF( cast_
+  BOOST_DISPATCH_OVERLOAD_IF( pack_cast_
                             , (typename A0, typename A1, typename X)
                             , (detail::is_native<X>)
                             , bd::cpu_
@@ -54,13 +54,13 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE result operator()(A0 const& a0, A1 const& ) const BOOST_NOEXCEPT
     {
       using tgt_t = bd::as_integer_t<typename A0::value_type>;
-      return cast<typename A1::type>( cast<tgt_t>(a0) );
+      return pack_cast<typename A1::type>( pack_cast<tgt_t>(a0) );
     }
   };
 
   // -----------------------------------------------------------------------------------------------
   // integer -> double
-  BOOST_DISPATCH_OVERLOAD_IF( cast_
+  BOOST_DISPATCH_OVERLOAD_IF( pack_cast_
                             , (typename A0, typename A1, typename X)
                             , (detail::is_native<X>)
                             , bd::cpu_
@@ -73,13 +73,13 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE result operator()(A0 const& a0, A1 const& ) const BOOST_NOEXCEPT
     {
       using tgt_t = bd::downgrade_t<typename A1::type>;
-      return cast<typename A1::type>( cast<tgt_t>(a0) );
+      return pack_cast<typename A1::type>( pack_cast<tgt_t>(a0) );
     }
   };
 
   // -----------------------------------------------------------------------------------------------
   // double -> integer
-  BOOST_DISPATCH_OVERLOAD_IF( cast_
+  BOOST_DISPATCH_OVERLOAD_IF( pack_cast_
                             , (typename A0, typename A1, typename X)
                             , (detail::is_native<X>)
                             , bd::cpu_
@@ -92,7 +92,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE result operator()(A0 const& a0, A1 const& ) const BOOST_NOEXCEPT
     {
       using tgt_t = bd::downgrade_t<typename A0::value_type>;
-      return cast<typename A1::type>( cast<tgt_t>(a0) );
+      return pack_cast<typename A1::type>( pack_cast<tgt_t>(a0) );
     }
   };
 } } }
