@@ -17,7 +17,7 @@ namespace boost { namespace simd
 
  /*!
     @ingroup group-trigonometric
-    This function object returns the inverse secant in \$f\pi\$f multiples:
+    This function object returns the inverse secant in \f$\pi\f$ multiples:
     \f$(1/\pi) \arccos(1/x)\f$.
 
    @see asec, asecd, cospi, acospi
