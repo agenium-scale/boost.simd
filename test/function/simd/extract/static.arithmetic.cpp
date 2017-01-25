@@ -6,17 +6,18 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
+#include <boost/config.hpp>
+#include <simd_test.hpp>
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/detail/unroll.hpp>
-#include <boost/simd/litteral.hpp>
+#ifndef BOOST_NO_CXX11_USER_DEFINED_LITERALS
+#include <boost/simd/literal.hpp>
+#endif
 #include <boost/simd/pack.hpp>
-#include <simd_test.hpp>
 #include <array>
 
 namespace bs = boost::simd;
 namespace bd = boost::dispatch;
-
-using namespace bs::literal;
 
 template <typename T, std::size_t N, typename Env, typename Idx>
 void unroll_step ( bs::pack<T,N> const& p, std::array<T,N> const& ref, Idx const&, Env& $)
@@ -54,6 +55,10 @@ STF_CASE_TPL("Check static extract on pack" , STF_NUMERIC_TYPES)
   test_st<T, N*2>($);
 }
 
+#ifndef BOOST_NO_CXX11_USER_DEFINED_LITERALS
+
+using namespace bs::literal;
+
 template <typename T, std::size_t N, typename Env>
 void test_lt(Env& $)
 {
@@ -75,3 +80,5 @@ STF_CASE_TPL("Check extract on pack using literals" , STF_NUMERIC_TYPES)
   test_lt<T, N>($);
   test_lt<T, N*2>($);
 }
+
+#endif // !BOOST_NO_CXX11_USER_DEFINED_LITERALS
