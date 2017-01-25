@@ -17,7 +17,7 @@ namespace boost { namespace simd
 
  /*!
     @ingroup group-boolean
-    This function object returns @c x (respectively @ref Nan)
+    This function object conditionally returns @c x (respectively @ref Nan)
     if @c c is @ref True (respectively  @ref False)
 
     This is an alias of @ref if_else_allbits

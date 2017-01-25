@@ -19,12 +19,11 @@ namespace boost { namespace simd
     @ingroup group-boolean
     This function object returns the logical and of its two parameters.
 
-    The operands must share the same @ref cardinal_of value.
-
     Infix notation can be used with operator '&&'.
 
-    @warningbox{Take care that using && in scalar mode does short-circuit
-    and does not in simd mode.}
+    @pre The operands must share the same @ref cardinal_of value.
+
+    @warningbox{Take care that SIMD logical operation do not short-circuit.}
 
 
    @par Example:

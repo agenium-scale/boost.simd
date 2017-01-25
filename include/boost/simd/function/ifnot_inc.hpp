@@ -17,7 +17,7 @@ namespace boost { namespace simd
 
  /*!
     @ingroup group-boolean
-    This function object returns  @c x (respectively @c x+1)
+    This function object conditionally returns  @c x (respectively @c x+1)
     if @c c is @ref True (respectively  @ref False)
 
    @par Example:

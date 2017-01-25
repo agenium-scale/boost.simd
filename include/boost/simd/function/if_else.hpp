@@ -17,10 +17,10 @@ namespace boost { namespace simd
 
  /*!
     @ingroup group-boolean
-    This function object returns @c t (respectively @c f) if @c c
+    This function object conditionally returns @c t (respectively @c f) if @c c
     is @ref True (respectively  @ref False)
 
-    If vectors, the types involved in the call must share the same number of elements.
+    @pre If both parameters are pack, they must have same cardinal.
 
    @par Example:
 

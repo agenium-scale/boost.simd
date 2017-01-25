@@ -16,13 +16,8 @@ namespace boost { namespace simd
 {
   /*!
     @ingroup group-reduction
-    This function object returns a boolean that is the result of the lexicographic test for equality of all elements of
-    the entries, i.e. return @ref true if and only if all corresponding entries elements are equal.
-
-   @par Note
-
-      For every parameters of type T: `compare_equal(x,y)` is similar to: `bool r = all(x == y)`
-
+    This function object returns `all(x == y)`,
+    i.e. return @ref True if and only if all corresponding entries elements are equal.
 
    @par Example:
 
