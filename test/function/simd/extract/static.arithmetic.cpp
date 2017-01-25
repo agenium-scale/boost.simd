@@ -19,8 +19,6 @@
 namespace bs = boost::simd;
 namespace bd = boost::dispatch;
 
-using namespace bs::literal;
-
 template <typename T, std::size_t N, typename Env, typename Idx>
 void unroll_step ( bs::pack<T,N> const& p, std::array<T,N> const& ref, Idx const&, Env& $)
 {
@@ -58,6 +56,8 @@ STF_CASE_TPL("Check static extract on pack" , STF_NUMERIC_TYPES)
 }
 
 #ifndef BOOST_NO_CXX11_USER_DEFINED_LITERALS
+
+using namespace bs::literal;
 
 template <typename T, std::size_t N, typename Env>
 void test_lt(Env& $)

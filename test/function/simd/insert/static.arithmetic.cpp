@@ -20,8 +20,6 @@
 namespace bs = boost::simd;
 namespace bd = boost::dispatch;
 
-using namespace bs::literal;
-
 template<typename A, typename P, typename... N>
 void f( nsm::list<N...> const&, A& a, P& p)
 {
@@ -52,6 +50,8 @@ STF_CASE_TPL("Check static insert on pack" , STF_NUMERIC_TYPES)
 }
 
 #ifndef BOOST_NO_CXX11_USER_DEFINED_LITERALS
+
+using namespace bs::literal;
 
 template <typename T, std::size_t N, typename Env>
 void test_lt(Env& $)
