@@ -9,6 +9,10 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_EPS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_EPS_HPP_INCLUDED
 
+#ifndef BOOST_SIMD_NO_DENORMALS
+#include <limits>
+#endif
+
 #include <boost/simd/constant/mindenormal.hpp>
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/nbmantissabits.hpp>

@@ -23,7 +23,7 @@ namespace boost { namespace simd
 
     @par Decorators
 
-    std_ for floating entries calls the stdlibc++ function std::fmin.
+      - std_ for floating entries calls the stdlibc++ function std::fmin.
 
     @see min, minmag, minnummag
 

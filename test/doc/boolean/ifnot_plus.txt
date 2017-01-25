@@ -1,0 +1,10 @@
+//! [ifnot_plus]
+---- simd
+ <- pf =                             (3, -2, -6, 3.40282e+38)
+ <- qf =                             (4, -1, -3, 0)
+ -> bs::ifnot_plus(sf, pf, qf) =        (3, -3, -6, 3.40282e+38)
+---- scalar
+ xf =                                3
+ yf =                                -4
+ -> bs::ifnot_plus(xf > 0.0f, xf, yf) = 3
+//! [ifnot_plus]

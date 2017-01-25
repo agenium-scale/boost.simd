@@ -17,7 +17,7 @@ namespace boost { namespace simd
 
  /*!
     @ingroup group-bitwise
-    This function object returns the returns the index
+    This function object returns  the index
     of the first bit set (beginning with the least
     significant bit) in the parameter.
 

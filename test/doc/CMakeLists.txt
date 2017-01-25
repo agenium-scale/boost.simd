@@ -8,6 +8,7 @@
 
 add_subdirectory(arithmetic)
 add_subdirectory(bitwise)
+add_subdirectory(boolean)
 add_subdirectory(exponential)
 add_subdirectory(hyperbolic)
 add_subdirectory(ieee)

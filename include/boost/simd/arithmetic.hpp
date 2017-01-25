@@ -219,7 +219,6 @@ namespace boost { namespace simd
 #include <boost/simd/function/average.hpp>
 #include <boost/simd/function/ceil.hpp>
 #include <boost/simd/function/conj.hpp>
-#include <boost/simd/function/correct_fma.hpp>
 #include <boost/simd/function/dec.hpp>
 #include <boost/simd/function/dist.hpp>
 #include <boost/simd/function/div.hpp>

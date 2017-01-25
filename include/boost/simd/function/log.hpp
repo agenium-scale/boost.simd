@@ -16,33 +16,33 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-exponential
-    Function object implementing log capabilities
+    This function object returns the natural logarithm of its argument.
 
-    Natural logarithm function.
-
-    @par Semantic:
-
-    For every parameter of floating type T
-
-    @code
-    T r = log(x);
-    @endcode
+    @par Header <boost/simd/function/log.hpp>
 
     @see log10, log2, log1p
 
     @par Note:
 
-    - log(x) return Nan for negative enties (peculiarly Mzero
+    - log(x) return Nan for negative entries (peculiarly Mzero
     for floating numbers).
 
     @par Decorators
 
-    std_ for floating entries
+      - std_ for floating entries calls @c std::log
+
+
+   @par Example:
+
+     @snippet log.cpp log
+
+   @par Possible output:
+
+     @snippet log.txt log
 
   **/
-  Value log(Value const & v0);
+  Value log(Value const & x);
 } }
 #endif
 

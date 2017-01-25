@@ -3,6 +3,7 @@
 #include <chrono>
 #include <iostream>
 #include <vector>
+#include <limits>
 
 #include <boost/simd/function/aligned_load.hpp>
 #include <boost/simd/function/aligned_store.hpp>

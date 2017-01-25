@@ -16,32 +16,19 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-boolean
-    Function object implementing logical_not capabilities
-
-    return the logical negation of the parameter,
-    i.e. True or False of the logical type associated entry type according that
-    the input is @ref Zero or non @ref Zero (False or True).
+    This function object returns the return the logical negation of the argument.
 
     Infix notation can be used with operator '!'
 
-    @par Semantic:
 
-    For every parameter of type @c T
+   @par Example:
 
-    @code
-    auto r = logical_not(x);
-    @endcode
+     @snippet logical_not.cpp logical_not
 
-    is similar to:
+   @par Possible output:
 
-    @code
-    auto r =!x;
-    @endcode
-
-    @see  logical_or, logical_xor, logical_notand,
-    logical_andnot, logical_notor, logical_ornot
+     @snippet logical_not.txt logical_not
 
   **/
   as_logical_t<Value0> logical_not(Value0 const& x, Value1 const& y);

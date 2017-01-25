@@ -37,7 +37,7 @@ namespace boost { namespace simd
 
   @par Decorators
 
-  std_ for floating entries provides access to @c std::erfc
+   - std_ for floating entries provides access to @c std::erfc
 
   @see erf, erfcx, oneminus
 

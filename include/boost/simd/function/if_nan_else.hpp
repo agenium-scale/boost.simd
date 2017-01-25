@@ -16,20 +16,25 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-boolean
-    Function object implementing if_nan_else capabilities
+    This function object conditionally returns @c Nan (respectively @c x)
+    if @c c is @ref True (respectively  @ref False)
 
-    If @c r is @ref True returns @ref Allbits else returns @c v0
+   @par Example:
 
-    This is a convenience alias of @ref if_allbits_else
+     @snippet if_nan_else.cpp if_nan_else
+
+   @par Possible output:
+
+     @snippet if_nan_else.txt if_nan_else
+
   **/
-  Value if_nan_else(Value const& r, Value const& v0);
+  Value if_nan_else(Value const& c, Value const& x);
 
   /*!
     @overload
   */
-  Value if_nan_else(LogicalValue const& r, Value const& v0);
+  Value if_nan_else(LogicalValue const& c, Value const& x);
 } }
 #endif
 

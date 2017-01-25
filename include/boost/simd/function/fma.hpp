@@ -33,7 +33,7 @@ namespace boost { namespace simd
     wired capability).
 
     If you need pedantic fma capabilities in all circumstances in your own
-    code you can use the pedantic_ or  std_ decorator
+    code you can use the pedantic_ or std_ decorator
     (although both can be very expensive).
 
      @par Decorators

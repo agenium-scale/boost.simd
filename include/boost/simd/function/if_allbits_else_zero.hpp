@@ -16,16 +16,22 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-boolean
-    Function object implementing if_allbits_else_zero capabilities
+    This function object returns a mask of bits. All ones if the
+    argument is non @ref Zero else all zeros.
+    This is an alias of @ref genmask
 
-    Returns a mask of bits. All ones if the
-    input element is non @ref Zero else all zeros.
 
-    This is a convenience alias of @ref genmask
+   @par Example:
+
+     @snippet if_allbits_else_zero.cpp if_allbits_else_zero
+
+   @par Possible output:
+
+     @snippet if_allbits_else_zero.txt if_allbits_else_zero
+
   **/
-  Value if_allbits_else_zero(Value const & v0);
+  Value if_allbits_else_zero(Value const & x);
 } }
 #endif
 

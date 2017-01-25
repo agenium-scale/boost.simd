@@ -16,34 +16,25 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-exponential
-    Function object implementing log2 capabilities
+    This function object returns the base two logarithm of its argument.
 
-    base two logarithm function.
-
-    @par Semantic:
-
-    For every parameter of floating type T
-
-    @code
-    T r = log2(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r =  log(x)/log(2);;
-    @endcode
-
-    - log2(x) return Nan for negative enties (peculiarly Mzero
-    for floating numbers).
+    @par Header <boost/simd/function/log2.hpp>
 
     @par Decorators
 
-    std_ for floating entries
+      - std_ for floating entries calls @c std::log2
 
-    @see log10, log, log1p, is_negative,  Mzero
+    @see log10, log, log1p
+
+   @par Example:
+
+     @snippet log2.cpp log2
+
+   @par Possible output:
+
+     @snippet log2.txt log2
+
   **/
   Value log2(Value const& x);
 } }

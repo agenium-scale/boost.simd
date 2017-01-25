@@ -1,0 +1,12 @@
+//! [if_dec]
+---- simd
+ <- pf =                   (3, 0, -3, -0)
+ <- qf =                   (3, 0.5, -3, 1)
+ -> bs::if_dec(pf, qf) =   (2, 0.5, -4, 1)
+---- scalar
+ xf =                     3
+ yf =                     0
+ zf =                     5
+ -> bs::if_dec(xf, zf) =  4
+ -> bs::if_dec(yf, zf) =  5
+//! [if_dec]

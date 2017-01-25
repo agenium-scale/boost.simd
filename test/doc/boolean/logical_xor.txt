@@ -1,0 +1,10 @@
+//! [logical_xor]
+---- simd
+ <- pf =                      (3, -0, -3, 3.40282e+38)
+ <- qf =                      (4, -1, -3, 0)
+ -> bs::logical_xor(pf, qf) = (false, true, false, true)
+---- scalar
+ xf =                         3
+ yf =                         4
+ -> bs::logical_xor(xf, yf) = false
+//! [logical_xor]

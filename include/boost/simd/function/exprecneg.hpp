@@ -16,29 +16,21 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-exponential
-    Function object implementing exprecneg capabilities
+    This function object computes: \f$e^{-\frac1x}\f$
 
-    Computes the  function: \f$e^{-\frac1x}\f$
+    @par Header <boost/simd/function/exprecneg.hpp>
 
-    @par Semantic:
+   @par Example:
 
-    For every parameter of floating type T0
+     @snippet exprecneg.cpp exprecneg
 
-    @code
-    T r = exprecneg(x);
-    @endcode
+   @par Possible output:
 
-    is equivalent to
-    @code
-    T r = exp(-rec((x)));
-    @endcode
-
-    @see exp, exprecnegc
+     @snippet exprecneg.txt exprecneg
 
   **/
-  Value exprecneg(Value const & v0);
+  Value exprecneg(Value const & x);
 } }
 #endif
 

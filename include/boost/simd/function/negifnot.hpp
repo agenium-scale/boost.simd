@@ -16,25 +16,16 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-boolean
-    Function object implementing negifnot capabilities
+    This function object returns -x if cond is @ref False and x otherwise.
 
-    The function returns -x if cond is @ref False and x otherwise.
+   @par Example:
 
-    @par Semantic:
+     @snippet negifnot.cpp negifnot
 
-    For every parameters @c cond of type @c C and @c x of type @c T:
+   @par Possible output:
 
-    @code
-    T1 r = negifnot(cond,x);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = cond ? x : -x;
-    @endcode
+     @snippet negifnot.txt negifnot
 
   **/
   Value negifnot(LogicalValue const& cond, Value const & x);

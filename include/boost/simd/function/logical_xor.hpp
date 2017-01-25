@@ -16,30 +16,21 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-boolean
-    Function object implementing logical_xor capabilities
-
-    return the logical xor of the first parameter and of the second parameter.
+    This function object returns the logical xor of the first argument
+    and of the second argument.
 
     The operands must share the same @ref cardinal_of value.
 
-    The result type is logical type associated to the first parameter.
+    The result type is logical type associated to the first argument.
 
-    @par semantic:
+   @par Example:
 
-    @code
-    auto r = logical_xor(x,y);
-    @endcode
+     @snippet logical_xor.cpp logical_xor
 
-    is similar to:
+   @par Possible output:
 
-    @code
-    auto r = !x != !y;
-    @endcode
-
-    @see  logical_or, logical_ornot, logical_notand,
-    logical_andnot, logical_notor, logical_and, logical_not
+     @snippet logical_xor.txt logical_xor
 
   **/
   as_logical_t<Value0> logical_xor(Value0 const& x, Value1 const& y);

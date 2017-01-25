@@ -16,27 +16,18 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-boolean
-    Function object implementing if_plus capabilities
+    This function object conditionally returns  @c x+y (respectively @c x)
+    if @c c is @ref True (respectively  @ref False)
 
-    The function returns either the second parameter or the sum of the second
-    and third parameters, depending on whether the first parameter is
-	@ref False or @ref True .
+   @par Example:
 
-    @par Semantic:
+     @snippet if_plus.cpp if_plus
 
-    For every parameter @c c of type @c C and @c x, @c y of type @c T :
+   @par Possible output:
 
-    @code
-    T r = if_plus(c, x, y);
-    @endcode
+     @snippet if_plus.txt if_plus
 
-    is similar to:
-
-    @code
-    T r = c ? x + y : x;
-    @endcode
   **/
   Value if_plus(Value const& c, Value const& x, Value const& y);
 
