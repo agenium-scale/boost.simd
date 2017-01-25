@@ -6,13 +6,13 @@
 ##                            http://www.boost.org/LICENSE_1_0.txt
 ## --------------------------------------------------------------------------------------
 
-## benches for functor negifnot in scalar mode.
+## benches for functor if_notneg in scalar mode.
 
 set(SOURCES
   regular.float.m10_10_m10_10.cpp
   regular.double.m10_10_m10_10.cpp
 )
 
-make_bench("function.scalar.negifnot" ${SOURCES})
+make_bench("function.scalar.if_notneg" ${SOURCES})
 
 ## --------------------------------------------------------------------------------------

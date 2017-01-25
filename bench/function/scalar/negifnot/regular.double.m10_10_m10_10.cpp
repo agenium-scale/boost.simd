@@ -6,16 +6,16 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-/// bench for functor negifnot in scalar mode for double type with no decorator (regular call).
+/// bench for functor if_notneg in scalar mode for double type with no decorator (regular call).
 #include <simd_bench.hpp>
-#include <boost/simd/function/negifnot.hpp>
+#include <boost/simd/function/if_notneg.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_negifnot, bs::negifnot);
+DEFINE_SCALAR_BENCH(scalar_if_notneg, bs::if_notneg);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_negifnot, double>(-10, 10,-10, 10);
+  nsb::for_each<scalar_if_notneg, double>(-10, 10,-10, 10);
 }

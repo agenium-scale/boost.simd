@@ -7,11 +7,10 @@
 **/
 //==================================================================================================
 
-#ifndef BOOST_SIMD_FUNCTION_SIMD_NEGIFNOT_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_SIMD_NEGIFNOT_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_SCALAR_IFNOT_NEG_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_SCALAR_IFNOT_NEG_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/negifnot.hpp>
-#include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/simd/function/negifnot.hpp>
+#include <boost/simd/function/definition/ifnot_neg.hpp>
+#include <boost/simd/arch/common/scalar/function/ifnot_neg.hpp>
 
 #endif

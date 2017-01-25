@@ -9,7 +9,7 @@
 */
 //==================================================================================================
 #include <boost/simd/pack.hpp>
-#include <boost/simd/function/negifnot.hpp>
+#include <boost/simd/function/ifnot_neg.hpp>
 #include <boost/simd/function/plus.hpp>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
@@ -26,15 +26,15 @@ void test(Env& $)
   {
      a1[i] = (i%2) ? T(1) : T(0);
      a2[i] = (i%2) ? T(i+N) : T(-(i+N));
-     b[i] = bs::negifnot(a1[i], a2[i]);
+     b[i] = bs::ifnot_neg(a1[i], a2[i]);
    }
   p_t aa1(&a1[0], &a1[0]+N);
   p_t aa2(&a2[0], &a2[0]+N);
   p_t bb(&b[0], &b[0]+N);
-  STF_IEEE_EQUAL(bs::negifnot(aa1, aa2), bb);
+  STF_IEEE_EQUAL(bs::ifnot_neg(aa1, aa2), bb);
 }
 
-STF_CASE_TPL("Check negifnot on pack" , STF_SIGNED_NUMERIC_TYPES)
+STF_CASE_TPL("Check ifnot_neg on pack" , STF_SIGNED_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
@@ -58,15 +58,15 @@ void testl(Env& $)
   {
     a1[i] = (i%2) ? bs::True<lT>() : bs::False<lT>();
     a2[i] = (i%2) ? T(i+N) : T(-(i+N));
-    b[i] = bs::negifnot(a1[i], a2[i]);
+    b[i] = bs::ifnot_neg(a1[i], a2[i]);
   }
   pl_t aa1(&a1[0], &a1[0]+N);
   p_t aa2(&a2[0], &a2[0]+N);
   p_t bb(&b[0], &b[0]+N);
-  STF_IEEE_EQUAL(bs::negifnot(aa1, aa2), bb);
+  STF_IEEE_EQUAL(bs::ifnot_neg(aa1, aa2), bb);
 }
 
-STF_CASE_TPL("Check negifnot on pack of logical" , STF_SIGNED_NUMERIC_TYPES)
+STF_CASE_TPL("Check ifnot_neg on pack of logical" , STF_SIGNED_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;

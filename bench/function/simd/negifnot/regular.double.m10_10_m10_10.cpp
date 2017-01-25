@@ -6,16 +6,16 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-/// bench for functor negifnot in simd mode for double type with no decorator (regular call).
+/// bench for functor ifnot_neg in simd mode for double type with no decorator (regular call).
 #include <simd_bench.hpp>
-#include <boost/simd/function/negifnot.hpp>
+#include <boost/simd/function/ifnot_neg.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_negifnot, bs::negifnot);
+DEFINE_SIMD_BENCH(simd_ifnot_neg, bs::ifnot_neg);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_negifnot, double>(-10, 10,-10, 10);
+  nsb::for_each<simd_ifnot_neg, double>(-10, 10,-10, 10);
 }

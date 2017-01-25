@@ -6,13 +6,13 @@
 ##                            http://www.boost.org/LICENSE_1_0.txt
 ## --------------------------------------------------------------------------------------
 
-## benches for functor negifnot in simd mode.
+## benches for functor ifnot_neg in simd mode.
 
 set(SOURCES
   regular.float.m10_10_m10_10.cpp
   regular.double.m10_10_m10_10.cpp
 )
 
-make_bench("function.simd.negifnot" ${SOURCES})
+make_bench("function.simd.ifnot_neg" ${SOURCES})
 
 ## --------------------------------------------------------------------------------------

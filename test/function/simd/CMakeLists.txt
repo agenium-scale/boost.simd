@@ -289,7 +289,7 @@ set ( SOURCES
       negate.cpp
       negatenz.cpp
       negif.cpp
-      negifnot.cpp
+      ifnot_neg.cpp
       nextafter.cpp
       next.cpp
       none.cpp
