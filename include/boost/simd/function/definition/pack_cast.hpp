@@ -14,7 +14,6 @@
 #include <boost/simd/detail/dispatch/hierarchy/functions.hpp>
 #include <boost/simd/detail/dispatch/as.hpp>
 #include <boost/simd/detail/dispatch.hpp>
-#include <boost/simd/pack.hpp>
 
 namespace boost { namespace simd
 {
