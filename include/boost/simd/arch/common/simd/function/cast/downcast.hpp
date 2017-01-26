@@ -11,6 +11,7 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/dispatch/as.hpp>
+#include <boost/simd/detail/dispatch/meta/downgrade.hpp>
 #include <boost/simd/detail/traits.hpp>
 #include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/function/deinterleave.hpp>
