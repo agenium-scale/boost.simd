@@ -33,7 +33,7 @@ namespace boost { namespace simd { namespace ext
     template<typename K, typename... N> static BOOST_FORCEINLINE
     T do_( T const& x, T const& y, K const&, nsm::list<N...> const&) BOOST_NOEXCEPT
     {
-      return make<T>( bs::extract<N::value*2+1>(x)..., bs::extract<N::value*2+1>(y)... );
+      return detail::make(as_<T>{}, bs::extract<N::value*2+1>(x)..., bs::extract<N::value*2+1>(y)... );
     }
 
     template<typename N0, typename N1, typename... Ns> static BOOST_FORCEINLINE
