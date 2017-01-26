@@ -1,0 +1,5 @@
+//! [maximum]
+---- simd
+<- pf =              (1, 2, -1, 0.5)
+-> bs::maximum(pf) = 2
+//! [maximum]

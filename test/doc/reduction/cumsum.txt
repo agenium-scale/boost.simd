@@ -1,0 +1,5 @@
+//! [cumsum]
+---- simd
+<- pf =             (1, 2, -1, 0.5)
+-> bs::cumsum(pf) = (1, 3, 2, 2.5)
+//! [cumsum]

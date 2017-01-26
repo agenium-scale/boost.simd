@@ -48,6 +48,7 @@ EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/exponential
 EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/hyperbolic
 EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/ieee
 EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/predicates
+EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/reduction
 EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/trigonometric
 EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/swar
 EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/range

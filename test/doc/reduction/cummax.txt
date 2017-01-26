@@ -1,0 +1,5 @@
+//! [cummax]
+---- simd
+<- pf =             (1, 2, -1, 0.5)
+-> bs::cummax(pf) = (1, 2, 2, 2)
+//! [cummax]

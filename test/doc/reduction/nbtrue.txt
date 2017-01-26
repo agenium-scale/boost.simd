@@ -1,0 +1,5 @@
+//! [nbtrue]
+---- simd
+<- pf =             (1, 0, -1, 0.5)
+-> bs::nbtrue(pf) = 3
+//! [nbtrue]

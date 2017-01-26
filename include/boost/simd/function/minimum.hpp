@@ -12,37 +12,27 @@
 #define BOOST_SIMD_FUNCTION_MINIMUM_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+namespace boost {
+namespace simd {
 
- /*!
+/*!
+   @ingroup group-reduction
+   This function object returns the least element of the argument
 
-    @ingroup group-reduction
-    Function object implementing minimum capabilities
+   @see maximum
 
-    Returns the least element of the SIMD vector
+  @par Example:
 
-    @par Semantic:
+    @snippet minimum.cpp minimum
 
-    For every parameter of type T
+  @par Possible output:
 
-    @code
-    scalar_of_t<T> r = minimum(x);
-    @endcode
+    @snippet minimum.txt minimum
 
-    is similar to:
-
-    @code
-      scalar_of_t<T> r = Inf;
-      for(std::size_t i=0;i<cardinal_of<T>;++i)
-        r =  r > x[i] ? x[i] : r;
-    @endcode
-
-    @see min, minnummag, minmag
-
-  **/
-  scalar_of_t<Value> minimum(Value const & x);
-} }
+ **/
+scalar_of_t<Value> minimum(Value const &x);
+}
+}
 #endif
 
 #include <boost/simd/function/scalar/minimum.hpp>

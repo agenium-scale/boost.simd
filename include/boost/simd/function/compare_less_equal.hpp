@@ -12,36 +12,29 @@
 #define BOOST_SIMD_FUNCTION_COMPARE_LESS_EQUAL_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+namespace boost {
+namespace simd {
 
-  /*!
-    @ingroup group-reduction
-    Function object implementing compare_less_equal capabilities
+/*!
+  @ingroup group-reduction
+  This function object returns a logical scalar that is the result of the
+lexicographic
+  test for <= on all elements of the entries
 
-    Returns a logical scalar that is the result of the lexicographic
-    test for <= on all elements of the entries
+  It is probably not what you wish. Have a look to @ref is_less_equal
 
-    It is probably not what you wish. Have a look to @ref is_less_equal
+ @par Example:
 
-    @par Semantic:
+   @snippet compare_less_equal.cpp compare_less_equal
 
-    For every parameters of type T0:
+ @par Possible output:
 
-    @code
-    bool r = compare_less_equal(x,y);
-    @endcode
+   @snippet compare_less_equal.txt compare_less_equal
 
-    is similar to:
-
-    @code
-    bool r = !compare_greater(y, x)
-    @endcode
-
-    @see is_less_equal
-  **/
-  bool compare_less_equal(Value const& v0, Value const& v1);
-} }
+**/
+bool compare_less_equal(Value const &x, Value const &y);
+}
+}
 #endif
 
 #include <boost/simd/function/scalar/compare_less_equal.hpp>
