@@ -16,6 +16,8 @@
 
 namespace boost { namespace dispatch { namespace detail
 {
+  namespace tt = nsm::type_traits;
+
   template<typename T, typename EnableIf = void > struct is_iterator : tt::false_type {};
 
   template<typename T>
