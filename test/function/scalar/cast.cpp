@@ -7,7 +7,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/function/scalar/pack_pack_cast.hpp>
+#include <boost/simd/function/scalar/pack_cast.hpp>
 #include <scalar_test.hpp>
 
 STF_CASE_TPL( "Check pack_cast return type",  STF_NUMERIC_TYPES )
