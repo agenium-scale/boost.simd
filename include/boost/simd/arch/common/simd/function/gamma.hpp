@@ -46,7 +46,7 @@
 #include <boost/simd/function/logical_andnot.hpp>
 #include <boost/simd/function/logical_or.hpp>
 #include <boost/simd/function/nbtrue.hpp>
-#include <boost/simd/function/negif.hpp>
+#include <boost/simd/function/if_neg.hpp>
 #include <boost/simd/function/sinpi.hpp>
 #include <boost/simd/function/sqr.hpp>
 
@@ -93,7 +93,7 @@ namespace boost { namespace simd { namespace ext
     {
       A0 st =  bs::stirling(q);
       A0 p = bs::floor(q);
-      A0 sgngam = bs::negif(bs::is_even(p), One<A0>());
+      A0 sgngam = bs::if_neg(bs::is_even(p), One<A0>());
       A0 z = q - p;
       auto test2 = is_less(z, bs::Half<A0>() );
       z = bs::if_dec(test2, z);

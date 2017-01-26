@@ -73,9 +73,10 @@ namespace boost { namespace simd
          |:---------------------------:|:-------------------------:|:------------------------:| :--------------------:|
          | @ref if_allbits_else        | @ref if_allbits_else_zero | @ref if_dec              | @ref if_else_allbits  |
          | @ref if_else                | @ref if_else_nan          | @ref if_else_zero        | @ref if_inc           |
-         | @ref if_minus               | @ref if_nan_else          | @ref if_one_else_zero    | @ref if_plus          |
-         | @ref if_zero_else_allbits   | @ref if_zero_else         | @ref if_zero_else_one    | @ref ifnot_dec        |
-         | @ref ifnot_inc              | @ref ifnot_minus          | @ref ifnot_plus          |                       |
+         | @ref if_minus               | @ref if_nan_else          | @ref if_neg              | @ref if_one_else_zero |
+         | @ref if_plus                | @ref if_zero_else_allbits | @ref if_zero_else        | @ref if_zero_else_one |
+         | @ref ifnot_dec              | @ref ifnot_inc            | @ref ifnot_minus         | @ref if_not_neg       |
+         | @ref ifnot_plus             |                           |                          |                       |
        </center>
 
   **/
@@ -104,8 +105,8 @@ namespace boost { namespace simd
 #include <boost/simd/function/logical_ornot.hpp>
 #include <boost/simd/function/logical_xor.hpp>
 #include <boost/simd/function/mask2logical.hpp>
-#include <boost/simd/function/negif.hpp>
-#include <boost/simd/function/negifnot.hpp>
+#include <boost/simd/function/if_neg.hpp>
+#include <boost/simd/function/ifnot_neg.hpp>
 #include <boost/simd/function/if_plus.hpp>
 #include <boost/simd/function/if_dec.hpp>
 #include <boost/simd/function/if_inc.hpp>

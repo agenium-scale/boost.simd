@@ -22,7 +22,7 @@
 #include <boost/simd/function/logical_and.hpp>
 #include <boost/simd/function/logical_andnot.hpp>
 #include <boost/simd/function/multiplies.hpp>
-#include <boost/simd/function/negif.hpp>
+#include <boost/simd/function/if_neg.hpp>
 #include <boost/simd/function/pow_abs.hpp>
 #include <boost/simd/function/shift_right.hpp>
 #include <boost/simd/function/sqr.hpp>
@@ -43,7 +43,7 @@ namespace boost { namespace simd { namespace ext
     {
       auto nega0 = is_negative(a0);
       A0 z = pow_abs(a0, a1);
-      z =  negif(logical_and(is_odd(a1), nega0), z);
+      z =  if_neg(logical_and(is_odd(a1), nega0), z);
       auto invalid =  logical_andnot(nega0, logical_or(is_flint(a1), is_inf(a1)));
       z = if_else(invalid, Nan<A0>(), z);
       return z;
@@ -177,7 +177,7 @@ namespace boost { namespace simd { namespace ext
     {
       using u_t =  bd::as_integer_t<A1, unsigned>;
       auto ltza1 = is_ltz(a1);
-      A0 p = pow(a0, bitwise_cast<u_t>(negif(ltza1, a1)));
+      A0 p = pow(a0, bitwise_cast<u_t>(if_neg(ltza1, a1)));
       return if_else(ltza1, rec(p), p);
     }
   };
@@ -196,7 +196,7 @@ namespace boost { namespace simd { namespace ext
     {
       auto nega0 = is_negative(a0);
       A0 z = raw_(pow_abs(a0, a1));
-      z =  negif(logical_and(is_odd(a1), nega0), z);
+      z =  if_neg(logical_and(is_odd(a1), nega0), z);
       auto invalid =  logical_andnot(nega0, logical_or(is_flint(a1), is_inf(a1)));
       z = if_else(invalid, Nan<A0>(), z);
       return z;
