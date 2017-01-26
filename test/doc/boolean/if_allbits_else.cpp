@@ -21,7 +21,6 @@ int main()
   pack_ft qf = { 3.0f, 0.5f, -3.0f, 1.0f };
   std::cout
     <<  "---- simd" << '\n'
-    << " <- sf =                               " << sf << '\n'
     << " <- pf =                               " << pf << '\n'
     << " <- qf =                               " << qf << '\n'
     << " -> bs::if_allbits_else(pf, qf) =      " << bs::if_allbits_else(pf, qf) << '\n';
