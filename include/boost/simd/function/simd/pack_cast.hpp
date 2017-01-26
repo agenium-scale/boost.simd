@@ -7,19 +7,25 @@
 **/
 //==================================================================================================
 
-#ifndef BOOST_SIMD_FUNCTION_SIMD_INEARBYINT_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_SIMD_INEARBYINT_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_SIMD_PACK_CAST_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_SIMD_PACK_CAST_HPP_INCLUDED
 
-#include <boost/simd/function/scalar/inearbyint.hpp>
+#include <boost/simd/function/scalar/pack_cast.hpp>
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
-#include <boost/simd/arch/common/simd/function/inearbyint.hpp>
+#include <boost/simd/arch/common/simd/function/pack_cast.hpp>
 
 #if defined(BOOST_HW_SIMD_X86_OR_AMD_AVAILABLE)
 #  if BOOST_HW_SIMD_X86_OR_AMD >= BOOST_HW_SIMD_X86_SSE2_VERSION
-#    include <boost/simd/arch/x86/sse2/simd/function/inearbyint.hpp>
+#    include <boost/simd/arch/x86/sse2/simd/function/pack_cast.hpp>
 #  endif
 #  if BOOST_HW_SIMD_X86_OR_AMD >= BOOST_HW_SIMD_X86_AVX_VERSION
-#    include <boost/simd/arch/x86/avx/simd/function/inearbyint.hpp>
+#    include <boost/simd/arch/x86/avx/simd/function/pack_cast.hpp>
+#  endif
+#  if BOOST_HW_SIMD_X86_OR_AMD >= BOOST_HW_SIMD_X86_AVX2_VERSION
+#    include <boost/simd/arch/x86/avx2/simd/function/pack_cast.hpp>
+#  endif
+#  if BOOST_HW_SIMD_X86_OR_AMD >= BOOST_HW_SIMD_X86_AVX512_VERSION
+#    include <boost/simd/arch/x86/avx512/simd/function/pack_cast.hpp>
 #  endif
 #endif
 
