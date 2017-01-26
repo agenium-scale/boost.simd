@@ -18,7 +18,7 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-euler
-    This function object computes thenNatural logarithm of th
+    This function object computes the natural logarithm of th
     e absolute value of the Gamma function:
      \f$\displaystyle \log |\Gamma(x)|\f$
 

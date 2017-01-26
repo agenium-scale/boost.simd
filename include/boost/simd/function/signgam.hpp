@@ -16,9 +16,7 @@ namespace boost { namespace simd
 
  /*!
   @ingroup group-euler
-    This function object computes the sign of gamma function
-
-    @c signgam does not computes @ref gamma and is fast.
+    This function object computes the sign of gamma function without explicitly computing the costly gamma function.
 
     @see gamma, gammaln
 
@@ -35,6 +33,5 @@ namespace boost { namespace simd
 #endif
 
 #include <boost/simd/function/scalar/signgam.hpp>
-//#include <boost/simd/function/simd/signgam.hpp>
 
 #endif

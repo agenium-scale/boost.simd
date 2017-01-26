@@ -16,7 +16,8 @@ namespace boost { namespace simd
 {
  /*!
     @ingroup group-euler
-    This function object computes stirling formula for approximating the gamma function:
+    This function object computes an approwimation of the gamma function
+    using the Stirling formula:
   \f$\sqrt{2 \pi} x^{x-\frac12} e^{-x} ( 1 + \frac1{x} P(\frac1{x}))\f$,
     where \f$P\f$ is a polynomial.
 
