@@ -32,16 +32,14 @@ STF_CASE_TPL( "Check pack_cast behavior",  STF_NUMERIC_TYPES )
   namespace bs = boost::simd;
   using bs::pack_cast;
   T x =  2;
-  STF_EQUAL(pack_cast<std::int8_t  >(x), static_pack_cast<std::int8_t  >(x));
-  STF_EQUAL(pack_cast<std::int16_t >(x), static_pack_cast<std::int16_t >(x));
-  STF_EQUAL(pack_cast<std::int32_t >(x), static_pack_cast<std::int32_t >(x));
-  STF_EQUAL(pack_cast<std::int64_t >(x), static_pack_cast<std::int64_t >(x));
-  STF_EQUAL(pack_cast<std::uint8_t >(x), static_pack_cast<std::uint8_t >(x));
-  STF_EQUAL(pack_cast<std::uint16_t>(x), static_pack_cast<std::uint16_t>(x));
-  STF_EQUAL(pack_cast<std::uint32_t>(x), static_pack_cast<std::uint32_t>(x));
-  STF_EQUAL(pack_cast<std::uint64_t>(x), static_pack_cast<std::uint64_t>(x));
-  STF_EQUAL(pack_cast<float        >(x), static_pack_cast<float        >(x));
-  STF_EQUAL(pack_cast<double       >(x), static_pack_cast<double       >(x));
-
-
+  STF_EQUAL(pack_cast<std::int8_t  >(x), static_cast<std::int8_t  >(x));
+  STF_EQUAL(pack_cast<std::int16_t >(x), static_cast<std::int16_t >(x));
+  STF_EQUAL(pack_cast<std::int32_t >(x), static_cast<std::int32_t >(x));
+  STF_EQUAL(pack_cast<std::int64_t >(x), static_cast<std::int64_t >(x));
+  STF_EQUAL(pack_cast<std::uint8_t >(x), static_cast<std::uint8_t >(x));
+  STF_EQUAL(pack_cast<std::uint16_t>(x), static_cast<std::uint16_t>(x));
+  STF_EQUAL(pack_cast<std::uint32_t>(x), static_cast<std::uint32_t>(x));
+  STF_EQUAL(pack_cast<std::uint64_t>(x), static_cast<std::uint64_t>(x));
+  STF_EQUAL(pack_cast<float        >(x), static_cast<float        >(x));
+  STF_EQUAL(pack_cast<double       >(x), static_cast<double       >(x));
 }
