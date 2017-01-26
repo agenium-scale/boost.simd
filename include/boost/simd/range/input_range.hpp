@@ -51,7 +51,9 @@ namespace boost { namespace simd
     return boost::make_iterator_range(detail::input_begin<N>(begin),detail::input_end<N>(end));
   }
 
-  /// @overload
+  /*!
+    @overload
+  */
   template<class Iterator> inline
   boost::iterator_range< detail::input_iterator<Iterator> >
   input_range( Iterator begin, Iterator end )
@@ -82,7 +84,9 @@ namespace boost { namespace simd
     return input_range<N>( boost::begin(r), boost::end(r) );
   }
 
-  /// @overload
+  /*!
+    @overload
+  */
   template<class Range> inline
   boost::iterator_range<detail::input_iterator<typename range_iterator<Range const>::type> >
   input_range( Range const& r )

@@ -37,10 +37,10 @@ namespace boost { namespace simd
 
     returns the quotient of @c a by @c b
 
-    @Note
+    @note
 
     As usual the simd division is often more expansive that the other
-    arithmetic operators and using the @rec function can be sometimes handy
+    arithmetic operators and using the @ref function can be sometimes handy
     to gain some cycles.
 
     @see div, rem, rec

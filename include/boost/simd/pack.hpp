@@ -236,7 +236,9 @@ namespace boost { namespace simd
     /// @brief Get reference to internal storage
     BOOST_FORCEINLINE storage_type& storage() BOOST_NOEXCEPT { return data_; }
 
-    /// @overload
+    /*!
+      @overload
+    */
     BOOST_FORCEINLINE storage_type const& storage() const BOOST_NOEXCEPT { return data_; }
 
     /*!
@@ -253,20 +255,26 @@ namespace boost { namespace simd
       return traits::at(*this, i);
     }
 
-    /// @overload
+    /*!
+      @overload
+    */
     BOOST_FORCEINLINE const_reference operator[](std::size_t i) const
     {
       return traits::at(*this, i);
     }
 
-    /// @overload
+    /*!
+      @overload
+    */
     template<std::uint64_t Index>
     BOOST_FORCEINLINE value_type operator[](tt::integral_constant<std::uint64_t,Index> const&)
     {
       return ::boost::simd::extract<Index>(*this);
     }
 
-    /// @overload
+    /*!
+      @overload
+    */
     template<std::uint64_t Index>
     BOOST_FORCEINLINE value_type operator[](tt::integral_constant<std::uint64_t,Index> const&) const
     {
@@ -291,7 +299,9 @@ namespace boost { namespace simd
       return iterator(this);
     }
 
-    /// @overload
+    /*!
+      @overload
+    */
     BOOST_FORCEINLINE const_iterator begin() const BOOST_NOEXCEPT
     {
       return const_iterator(this);
@@ -303,7 +313,9 @@ namespace boost { namespace simd
       return iterator(this, size());
     }
 
-    /// @overload
+    /*!
+       @overload
+    */
     BOOST_FORCEINLINE const_iterator end() const BOOST_NOEXCEPT
     {
       return const_iterator(this, size());
@@ -327,7 +339,9 @@ namespace boost { namespace simd
       return reverse_iterator(end());
     }
 
-    /// @overload
+    /*!
+      @overload
+    */
     BOOST_FORCEINLINE const_reverse_iterator rbegin() const BOOST_NOEXCEPT
     {
       return reverse_iterator(end());
@@ -339,7 +353,9 @@ namespace boost { namespace simd
       return reverse_iterator(begin());
     }
 
-    /// @overload
+    /*!
+      @overload
+    */
     BOOST_FORCEINLINE const_reverse_iterator rend() const BOOST_NOEXCEPT
     {
       return reverse_iterator(begin());

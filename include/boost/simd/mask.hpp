@@ -59,7 +59,9 @@ namespace boost { namespace simd
     return detail::masked_pointer<T,Mask>{ptr,T(def),status};
   }
 
-  /// @overload
+  /*!
+    @overload
+  */
   template<typename T, typename Mask>
   BOOST_FORCEINLINE detail::masked_pointer<T,Mask, true> mask(T* ptr, Mask const& status)
   {

@@ -26,7 +26,9 @@ namespace boost { namespace simd
   **/
   template<typename T, typename Pointer, typename Offset> T load(Pointer ptr, Offset o) {}
 
-  /// @overload
+  /*!
+    @overload
+  **/
   template<typename T, typename Pointer> T load(Pointer ptr) {}
 
 } }

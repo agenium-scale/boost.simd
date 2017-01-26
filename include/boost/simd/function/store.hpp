@@ -35,13 +35,17 @@ namespace boost { namespace simd
     @param mask   Optional logical mask. Only stores values for which the mask is true.
 
   **/
-  template<typename Value, typename Pointer, typename Offset> void store( Value const& val, Pointer const& ptr, Offset const& offset) {}
-
-  /// @overload
-  template<typename Value, typename Pointer> void store( Value const& val, Pointer ptr) {}
-  /// @overload
   template<typename Value, typename Pointer, typename Offset> void store( Value const& val, Pointer const& ptr
                                                                         , Offset const& offset, Mask const& mask) {}
+
+  /*!
+    @overload
+   **/
+  template<typename Value, typename Pointer> void store( Value const& val, Pointer ptr) {}
+  /*!
+    @overload
+  **/
+  template<typename Value, typename Pointer, typename Offset> void store( Value const& val, Pointer const& ptr, Offset const& offset) {}
 
 } }
 #endif

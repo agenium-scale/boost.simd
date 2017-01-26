@@ -34,7 +34,9 @@ namespace boost { namespace simd
   **/
   Value modf(Value const & x, Value & y);
 
-  //@overload
+  /*!
+    @overload
+  */
   std::pair<Value, Value> modf(Value const & x);
 } }
 #endif

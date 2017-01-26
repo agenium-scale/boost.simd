@@ -32,7 +32,9 @@ namespace boost { namespace simd
   void stream(Value const& val, Pointer const& ptr, Offset const& offset)
   {}
 
-  /// @overload
+  /*!
+    @overload
+  */
   template<typename Value, typename Pointer>
   void stream(Value const& val, Pointer const& ptr)
   {}

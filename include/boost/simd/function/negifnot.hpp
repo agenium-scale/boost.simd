@@ -30,7 +30,9 @@ namespace boost { namespace simd
   **/
   Value negifnot(LogicalValue const& cond, Value const & x);
 
-  //@overload
+  /*!
+    @overload
+  */
   Value negifnot(Value const& cond, Value const & x);
 } }
 #endif

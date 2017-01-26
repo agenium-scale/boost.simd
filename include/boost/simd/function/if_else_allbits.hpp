@@ -34,7 +34,9 @@ namespace boost { namespace simd
   **/
   Value if_else_allbits(Value const& c, Value const& x);
 
-  //@overload
+  /*!
+    @overload
+  */
   Value if_else_allbits(LogicalValue const& c, Value const& x);
 } }
 #endif
