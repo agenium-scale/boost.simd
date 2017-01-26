@@ -6,8 +6,10 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_CAST_SIGN_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_CAST_SIGN_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_CAST_SIGNED_INT_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_CAST_SIGNED_INT_HPP_INCLUDED
+
+#warning INCLUDED HERE
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/dispatch/as.hpp>

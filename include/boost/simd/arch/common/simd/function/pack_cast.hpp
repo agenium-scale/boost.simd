@@ -10,7 +10,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_PACK_CAST_HPP_INCLUDED
 
 #include <boost/simd/arch/common/simd/function/cast/basic.hpp>
-#include <boost/simd/arch/common/simd/function/cast/sign.hpp>
+#include <boost/simd/arch/common/simd/function/cast/signed_int.hpp>
 #include <boost/simd/arch/common/simd/function/cast/integer.hpp>
 #include <boost/simd/arch/common/simd/function/cast/downcast.hpp>
 #include <boost/simd/arch/common/simd/function/cast/floating.hpp>
