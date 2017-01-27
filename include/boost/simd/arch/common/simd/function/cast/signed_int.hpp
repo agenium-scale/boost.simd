@@ -9,8 +9,6 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_CAST_SIGNED_INT_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_CAST_SIGNED_INT_HPP_INCLUDED
 
-#warning INCLUDED HERE
-
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/dispatch/as.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
