@@ -55,14 +55,15 @@ template <typename T, typename Env> void test_val(Env& $)
       is discarded. The behavior is undefined if the truncated value cannot
       be represented in the destination type."
   */
-  if(!std::is_floating_point<sT>::value)
+  if(std::is_floating_point<sT>::value)
   {
     x = bs::abs(x);
-    STF_EQUAL(bs::pack_cast<std::uint8_t >(x), (res<T,std::uint8_t >::comp(x)));
-    STF_EQUAL(bs::pack_cast<std::uint16_t>(x), (res<T,std::uint16_t>::comp(x)));
-    STF_EQUAL(bs::pack_cast<std::uint32_t>(x), (res<T,std::uint32_t>::comp(x)));
-    STF_EQUAL(bs::pack_cast<std::uint64_t>(x), (res<T,std::uint64_t>::comp(x)));
   }
+
+  STF_EQUAL(bs::pack_cast<std::uint8_t >(x), (res<T,std::uint8_t >::comp(x)));
+  STF_EQUAL(bs::pack_cast<std::uint16_t>(x), (res<T,std::uint16_t>::comp(x)));
+  STF_EQUAL(bs::pack_cast<std::uint32_t>(x), (res<T,std::uint32_t>::comp(x)));
+  STF_EQUAL(bs::pack_cast<std::uint64_t>(x), (res<T,std::uint64_t>::comp(x)));
 
   std::cout << "=====================================================================\n" << std::endl;
 }
