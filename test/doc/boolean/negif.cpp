@@ -23,7 +23,7 @@ int main()
     <<  "---- simd" << '\n'
     << " <- pf =                     " << pf << '\n'
     << " <- qf =                     " << qf << '\n'
-    << " -> bs::negif(pf, qf) =      " << bs::negif(pf, qf) << '\n';
+    << " -> bs::negif(pf, qf) =      " << bs::if_neg(pf, qf) << '\n';
 
   std::int32_t xf = 3, yf = 0,  zf = 5;
 
@@ -32,8 +32,8 @@ int main()
     << " xf =                        " << xf << '\n'
     << " yf =                        " << yf << '\n'
     << " zf =                        " << zf << '\n'
-    << " -> bs::negif(xf, zf) =      " << bs::negif(xf, zf) << '\n'
-    << " -> bs::negif(yf, zf) =      " << bs::negif(yf, zf) << '\n';
+    << " -> bs::negif(xf, zf) =      " << bs::if_neg(xf, zf) << '\n'
+    << " -> bs::negif(yf, zf) =      " << bs::if_neg(yf, zf) << '\n';
   return 0;
 }
 //! [negif]

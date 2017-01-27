@@ -23,7 +23,7 @@ int main()
     <<  "---- simd" << '\n'
     << " <- pf =                               " << pf << '\n'
     << " <- qf =                               " << qf << '\n'
-    << " -> bs::negifnot(pf, qf) =      " << bs::negifnot(pf, qf) << '\n';
+    << " -> bs::negifnot(pf, qf) =      " << bs::ifnot_neg(pf, qf) << '\n';
 
   std::int32_t xf = 3, yf = 0,  zf = 5;
 
@@ -32,8 +32,8 @@ int main()
     << " xf =                                  " << xf << '\n'
     << " yf =                                  " << yf << '\n'
     << " zf =                                  " << zf << '\n'
-    << " -> bs::negifnot(xf, zf) =      " << bs::negifnot(xf, zf) << '\n'
-    << " -> bs::negifnot(yf, zf) =      " << bs::negifnot(yf, zf) << '\n';
+    << " -> bs::negifnot(xf, zf) =      " << bs::ifnot_neg(xf, zf) << '\n'
+    << " -> bs::negifnot(yf, zf) =      " << bs::ifnot_neg(yf, zf) << '\n';
   return 0;
 }
 //! [negifnot]
