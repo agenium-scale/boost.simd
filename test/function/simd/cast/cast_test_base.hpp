@@ -11,6 +11,7 @@
 
 #include <boost/simd/function/enumerate.hpp>
 #include <boost/simd/function/abs.hpp>
+#include <type_traits>
 
 namespace bs = boost::simd;
 
@@ -54,7 +55,7 @@ template <typename T, typename Env> void test_val(Env& $)
       is discarded. The behavior is undefined if the truncated value cannot
       be represented in the destination type."
   */
-  if(std::is_floating<T>::value)
+  if(std::is_floating_point<T>::value)
   {
     x = bs::abs(x);
     STF_EQUAL(bs::pack_cast<std::uint8_t >(x), (res<T,std::uint8_t >::comp(x)));
