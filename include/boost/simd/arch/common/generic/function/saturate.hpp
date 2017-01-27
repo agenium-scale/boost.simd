@@ -28,6 +28,8 @@ namespace boost { namespace simd { namespace ext
 {
   // floating -> floating
   namespace bd = boost::dispatch;
+namespace tt = nsm::type_traits;
+
   BOOST_DISPATCH_OVERLOAD ( saturate_
                           , (typename A0, typename T)
                           , bd::cpu_
@@ -82,14 +84,14 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( A0 const& a0, T const& ) const BOOST_NOEXCEPT
     {
       return impl( a0
-                   , typename nsm::or_< typename std::is_same< bd::scalar_of_t<typename T::type>
-                                                         , bd::scalar_of_t<A0>
-                                                        >::type
-                                           , nsm::bool_< (sizeof(bd::scalar_of_t<typename T::type>)
-                                                             > sizeof(bd::scalar_of_t<A0>))
-                                                           >
-                                          >::type()
-                   );
+                 , typename nsm::or_< typename tt::is_same< bd::scalar_of_t<typename T::type>
+                                                          , bd::scalar_of_t<A0>
+                                                          >::type
+                                     , nsm::bool_< ( sizeof(bd::scalar_of_t<typename T::type>)
+                                                   > sizeof(bd::scalar_of_t<A0>))
+                                                 >
+                                     >::type()
+                 );
     }
     static BOOST_FORCEINLINE A0 impl( A0 const& a0
                                         , const tt::true_type &) BOOST_NOEXCEPT
