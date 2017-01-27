@@ -18,7 +18,7 @@ using pack_ft = bs::pack<float, 4>;
 
 int main() {
   pack_ft pf(1234.567f);
-  pack_it qi = {0, 1, 2, 3};
+  pack_it qi = {1, 2, 3, 4};
 
   std::cout << "---- simd" << '\n'
             << "<- pf =                       " << pf << '\n'

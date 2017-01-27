@@ -17,7 +17,7 @@ using pack_ft =  bs::pack <float, 4>;
 
 int main()
 {
-  pack_ft pf = { bs::Nan<float>(), 0.0f,  bs::Nan<float>(), -0.0 };
+  pack_ft pf = { bs::Nan<float>(), 0.0f,  bs::Nan<float>(), 0.0 };
 
   std::cout
     <<  "---- simd" << '\n'

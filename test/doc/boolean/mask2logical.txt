@@ -1,6 +1,6 @@
 //! [mask2logical]
 ---- simd
- <- pf =                   (-nan, 0, -nan, -0)
+ <- pf =                   (-nan, 0, -nan, 0)
  -> bs::mask2logical(pf) = (true, false, true, false)
 ---- scalar
  xf =                      0
