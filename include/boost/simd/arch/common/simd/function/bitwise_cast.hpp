@@ -18,8 +18,9 @@
 
 namespace boost { namespace simd { namespace ext
 {
- namespace bd = boost::dispatch;
- namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
+  namespace tt = nsm::type_traits;
 
   BOOST_DISPATCH_OVERLOAD_IF ( bitwise_cast_
                              , (typename A0, typename A1, typename X)
@@ -80,7 +81,7 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE result_t operator()(A0 const& a0, A1 const& ) const BOOST_NOEXCEPT
     {
-      return do_(a0, typename std::is_same<A0, result_t>::type());
+      return do_(a0, typename tt::is_same<A0, result_t>::type());
     }
 
     BOOST_FORCEINLINE result_t do_(A0 const& a0, tt::false_type ) const BOOST_NOEXCEPT
