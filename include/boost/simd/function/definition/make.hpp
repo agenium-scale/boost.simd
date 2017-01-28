@@ -44,7 +44,7 @@ namespace boost { namespace simd
   BOOST_NOEXCEPT_DECLTYPE(detail::make(tgt, args... ))
   {
     return detail::make(tgt, args... );
-}
+  }
 } }
 
 #endif
