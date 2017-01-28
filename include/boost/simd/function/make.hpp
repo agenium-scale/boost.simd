@@ -44,6 +44,11 @@ namespace boost { namespace simd
     @return A value of type @c T built from each args.
   **/
   template<typename T, typename.. Args> T make(Args const&... args);
+  
+  /*!
+    @overload
+  **/
+  template<typename Target, typename.. Value> T make(as_<Target> const& t, Value const&... args);
 } }
 #endif
 
