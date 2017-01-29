@@ -74,7 +74,7 @@ function ns_search_box(display) {
     sb_html += '</li>';
 
     // TODO: Should we do something else if .tablist is not found?
-    nav.find('.tablist').append(sb_html);
+    nav.find('.tablist:first').append(sb_html);
     $(nav_container).append(nav);
 
     //
