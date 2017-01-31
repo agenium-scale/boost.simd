@@ -19,6 +19,7 @@
 #include <boost/simd/constant/mzero.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/ten.hpp>
+#include <boost/simd/constant/two.hpp>
 #include <boost/simd/constant/eps.hpp>
 #include <boost/simd/function/is_less.hpp>
 
@@ -35,6 +36,7 @@ STF_CASE_TPL (" erfc",  STF_IEEE_TYPES)
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
   STF_ULP_EQUAL(erfc(bs::Inf<T>()), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(erfc(bs::Minf<T>()), bs::Two<r_t>(), 0);
   STF_ULP_EQUAL(erfc(bs::Nan<T>()), bs::Nan<r_t>(), 0);
 #endif
   STF_ULP_EQUAL(erfc(bs::Mzero<T>()), bs::One<r_t>(), 0.5);
