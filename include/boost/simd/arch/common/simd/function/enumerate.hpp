@@ -33,7 +33,7 @@ namespace boost { namespace simd { namespace ext
     template<typename... N>
     static BOOST_FORCEINLINE typename T::type do_( nsm::list<N...> const& ) BOOST_NOEXCEPT
     {
-      return detail::make(as_<typename T::type>{}, N::value...);
+      return make(as_<typename T::type>{}, N::value...);
     }
   };
 

@@ -33,7 +33,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE pack<T,2> operator()(T const& a, T const& b) const BOOST_NOEXCEPT
     {
-      return detail::make(as_<pack<T,2>>{}, a,b);
+      return make(as_<pack<T,2>>{}, a,b);
     }
   };
 
@@ -61,10 +61,10 @@ namespace boost { namespace simd { namespace ext
                                           , nsm::list<N...> const&
                                           ) BOOST_NOEXCEPT
     {
-      return detail::make(as_<result_t>{}
-                          , bs::extract<N::value>(a)...
-                          , bs::extract<N::value>(b)...
-                          );
+      return make(as_<result_t>{}
+                 , bs::extract<N::value>(a)...
+                 , bs::extract<N::value>(b)...
+                 );
     }
 
     BOOST_FORCEINLINE result_t operator()(T const& a, T const& b) const BOOST_NOEXCEPT

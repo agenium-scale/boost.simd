@@ -42,7 +42,7 @@ namespace boost { namespace simd { namespace ext
     static BOOST_FORCEINLINE
     result_t do_( T const& a, K const&, nsm::list<N...> const&) BOOST_NOEXCEPT
     {
-      return  detail::make(as_<result_t>{}, bs::extract<N::value>(a)... );
+      return  make(as_<result_t>{}, bs::extract<N::value>(a)... );
     }
 
     BOOST_FORCEINLINE result_t operator()(T const& a) const BOOST_NOEXCEPT
