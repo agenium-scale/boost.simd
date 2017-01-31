@@ -115,14 +115,14 @@ namespace boost { namespace simd { namespace ext
     A0 operator() ( A0  a0, A1  a1) const BOOST_NOEXCEPT
     {
       A0 base = a0;
-      A1 exp = a1;
+      A1 exponent = a1;
 
       result_type result = One<result_type>();
-      while(exp)
+      while(exponent)
       {
-        if(is_odd(exp))
+        if(is_odd(exponent))
           result *= base;
-        exp >>= 1;
+        exponent >>= 1;
         base = sqr(base);
       }
 
