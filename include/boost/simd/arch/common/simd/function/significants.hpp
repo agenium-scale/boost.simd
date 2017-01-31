@@ -58,9 +58,9 @@ namespace boost { namespace simd { namespace ext
                        , "Number of significant digits must be positive"
                        );
        using iA0 =  bd::as_integer_t<A0>;
-       iA0 exp = bitwise_cast<iA0>(a1) - iceil(log10(abs(a0)));
-       A0 fac = tenpower(exp);
-       A0 scaled = round(a0*fac);
+       iA0 exponent = bitwise_cast<iA0>(a1) - iceil(log10(abs(a0)));
+       A0 fac       = tenpower(exponent);
+       A0 scaled    = round(a0*fac);
 #ifndef BOOST_SIMD_NO_INVALIDS
        A0 r = if_else(is_invalid(a0), a0, scaled/fac);
 #else
