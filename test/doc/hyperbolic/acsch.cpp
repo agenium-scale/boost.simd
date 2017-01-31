@@ -6,7 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-//! [acschh]
+//! [acsch]
 #include <boost/simd/hyperbolic.hpp>
 #include <boost/simd/pack.hpp>
 #include <iostream>

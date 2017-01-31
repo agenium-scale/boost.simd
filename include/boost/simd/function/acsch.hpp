@@ -27,11 +27,11 @@ namespace boost { namespace simd
 
      @par Example:
 
-        @snippet atanh.cpp atanh
+        @snippet acsch.cpp acsch
 
       @par Possible output:
 
-        @snippet atanh.txt atanh
+        @snippet acsch.txt acsch
 
 
   **/
