@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object conditionally returns  @c x (respectively @c x-1)
     if @c c is @ref True (respectively  @ref False)
 
+
+    @par Header <boost/simd/function/ifnot_dec.hpp>
+
    @par Example:
 
      @snippet ifnot_dec.cpp ifnot_dec

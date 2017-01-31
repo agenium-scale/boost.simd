@@ -23,6 +23,9 @@ namespace boost { namespace simd
 
     @see cosh, sinh, tanh, csch, sinhcosh
 
+
+    @par Header <boost/simd/function/sech.hpp>
+
     @par Example:
 
        @snippet sech.cpp sech

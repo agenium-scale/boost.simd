@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
         Repeat upper half of a vector
 
+
+    @par Header <boost/simd/function/repeat_upper_half.hpp>
+
     @par Semantic:
 
     For every parameter of type T

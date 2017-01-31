@@ -22,6 +22,9 @@ namespace boost { namespace simd
     e absolute value of the Gamma function:
      \f$\displaystyle \log |\Gamma(x)|\f$
 
+
+    @par Header <boost/simd/function/gammaln.hpp>
+
     @par Notes
 
     - The accuracy of the function is not uniformly good for negative entries

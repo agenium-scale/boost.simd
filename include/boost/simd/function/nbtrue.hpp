@@ -20,6 +20,9 @@ namespace simd {
    This function object returns the number of non @ref Zero elements of the
  argument.
 
+
+    @par Header <boost/simd/function/nbtrue.hpp>
+
    @par Note
 
    This function is peculiarly useful in horizontal branching idioms.

@@ -21,6 +21,9 @@ namespace boost { namespace simd
     This function object returns @ref True or @ref False according x is pure imaginary or not.
     For non complex numbers it is same as to be zero
 
+
+    @par Header <boost/simd/function/is_imag.hpp>
+
    @par Note
 
      Using `is_imag(x)` is similar to: `x == 0` for real entries.

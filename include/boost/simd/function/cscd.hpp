@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     This function object returns the cosecant in degree: \f$1/\sin(180/(\pi x))\f$.
 
+
+    @par Header <boost/simd/function/cscd.hpp>
+
    @par Note
 
      As most other trigonometric function cscd can be called with a

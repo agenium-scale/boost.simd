@@ -20,6 +20,9 @@ namespace boost { namespace simd
    \f$\displaystyle \frac{2}{\sqrt\pi}\int_{x}^{\infty} e^{-t^2}\mbox{d}t\f$
 
 
+
+    @par Header <boost/simd/function/erfc.hpp>
+
   @par Decorators
 
    - std_ calls @c std::erfc

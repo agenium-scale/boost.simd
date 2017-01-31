@@ -22,6 +22,9 @@ namespace boost { namespace simd
 
     @see cosh, sinh, acosh, asinh, atanh, asech, acoth, acsch
 
+
+    @par Header <boost/simd/function/atanh.hpp>
+
     @par Example:
 
        @snippet atanh.cpp atanh

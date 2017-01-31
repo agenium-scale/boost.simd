@@ -25,6 +25,9 @@ namespace boost { namespace simd
     to add more precision to the estimate if their default
     precision is not enough.
 
+
+    @par Header <boost/simd/function/refine_rec.hpp>
+
     @par semantic:
     For any given value @c x, @c est  of floating type T:
 

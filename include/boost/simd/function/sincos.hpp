@@ -22,6 +22,9 @@ namespace boost { namespace simd
 
    @see sincosd,  sincospi
 
+
+    @par Header <boost/simd/function/sincos.hpp>
+
    @par Example:
 
      @snippet sincos.cpp sincos

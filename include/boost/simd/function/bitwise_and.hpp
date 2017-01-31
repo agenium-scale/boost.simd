@@ -24,6 +24,9 @@ namespace boost { namespace simd
     but this will not work in scalar mode if any
     operand is floating point because of C++ limitations.
 
+
+    @par Header <boost/simd/function/bitwise_and.hpp>
+
     @par Example:
 
      @snippet bitwise_and.cpp bitwise_and

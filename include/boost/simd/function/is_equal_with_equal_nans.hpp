@@ -21,6 +21,9 @@ namespace boost { namespace simd
     This unction object returns @ref True or @ref False according x and y are equal or not.
     Nans are considered equal
 
+
+    @par Header <boost/simd/function/is_equal_with_equal_nans.hpp>
+
     @par Note
 
     Using `is_equal_with_equal_nans(x,y)` is similar to `(x == y) || ((x!= x) && (y!= y))`

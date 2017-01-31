@@ -20,6 +20,9 @@ namespace boost { namespace simd
     @ingroup group-arithmetic
     This function object computes the integer conversion of the @ref ceil of its parameter.
 
+
+    @par Header <boost/simd/function/iceil.hpp>
+
     @par Note:
     This operation is properly saturated
 

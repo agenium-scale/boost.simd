@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     This function object conditionally returns -x if cond is @ref False and x otherwise.
 
+
+    @par Header <boost/simd/function/ifnot_neg.hpp>
+
    @par Example:
 
      @snippet negifnot.cpp negifnot

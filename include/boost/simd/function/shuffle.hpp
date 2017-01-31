@@ -20,6 +20,9 @@ namespace boost { namespace simd
     Shuffle the elements of a boost::simd::pack using an index permutation described by compile-time
     integral constants.
 
+
+    @par Header <boost/simd/function/shuffle.hpp>
+
     @par Semantic:
 
     For any boost::simd::pack @c x of base type @c T and cardinal @c N and @c N compile-time

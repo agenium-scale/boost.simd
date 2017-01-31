@@ -25,6 +25,9 @@ namespace boost { namespace simd
     operand is floating point because of C++ limitations.
 
 
+
+    @par Header <boost/simd/function/bitwise_xor.hpp>
+
    @par Example:
 
      @snippet bitwise_xor.cpp bitwise_xor

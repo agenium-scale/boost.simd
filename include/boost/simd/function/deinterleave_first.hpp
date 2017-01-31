@@ -18,6 +18,9 @@ namespace boost { namespace simd
     This function object performs the extraction of the first part of a boost::simd::pack
     containing two channels of data.
 
+
+    @par Header <boost/simd/function/deinterleave_first.hpp>
+
     @par Semantic:
     For any type @c T and any integral constant @c N greater than 1, let's consider two values @c x
     and @c y of type @c boost::simd::pack<T,N> , the following code:

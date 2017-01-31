@@ -25,6 +25,9 @@ namespace boost { namespace simd
     not positive and not greater than 0, It's probably @ref is_gtz that
     you want.
 
+
+    @par Header <boost/simd/function/is_positive.hpp>
+
    @par Note
 
      Using `is_positive(x)` is similar to `bitofsign(x) == 0`

@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object returns the tangent of angle in \f$\pi\f$ multiples:
     \f$\cos(\pi x)/sin(\pi x)\f$.
 
+
+    @par Header <boost/simd/function/tanpi.hpp>
+
    @par Note
 
      - As most other trigonometric function tanpi can be called with a second

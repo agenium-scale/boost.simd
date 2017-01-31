@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     This function object returns the inverse cosine in radian.
 
+
+    @par Header <boost/simd/function/acos.hpp>
+
     @par Call
 
     For every parameter of floating type

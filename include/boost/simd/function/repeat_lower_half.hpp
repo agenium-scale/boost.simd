@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Repeat the lower half of a vector
 
+
+    @par Header <boost/simd/function/repeat_lower_half.hpp>
+
     @par Semantic:
 
     For every parameter of type T

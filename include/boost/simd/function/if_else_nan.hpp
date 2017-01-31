@@ -23,6 +23,9 @@ namespace boost { namespace simd
     This is an alias of @ref if_else_allbits
 
 
+
+    @par Header <boost/simd/function/if_else_nan.hpp>
+
    @par Example:
 
      @snippet if_else_nan.cpp if_else_nan

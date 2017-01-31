@@ -21,6 +21,9 @@ namespace boost { namespace simd
     This function object returns @ref True or @ref False according x
     is greater or equal to @ref Zero or not.
 
+
+    @par Header <boost/simd/function/is_gez.hpp>
+
     @par Note
 
       Using `is_gez(x)` is equivalent to `x >= 0`

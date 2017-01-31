@@ -21,6 +21,9 @@ namespace boost { namespace simd
     This function object returns @ref True if x and y are not equal else @ref False,
     nans being considered equal
 
+
+    @par Header <boost/simd/function/is_not_equal_with_equal_nans.hpp>
+
    @par Note
 
      Using `is_not_equal_with_equal_nans(x,y)` is similar to: `(x != y) || ((x!= x) && (y!= y))`

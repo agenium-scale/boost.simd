@@ -24,6 +24,9 @@ namespace boost { namespace simd
 
     The result type is logical type associated to the first argument.
 
+
+    @par Header <boost/simd/function/logical_ornot.hpp>
+
    @par Note
 
      `logical_ornot(x,y)` is similar to: `as_logical_t<T2> r = x || !y`

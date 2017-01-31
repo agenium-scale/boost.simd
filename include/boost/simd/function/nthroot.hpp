@@ -24,6 +24,9 @@ namespace boost { namespace simd
     \arg if x is one  the result is @ref One
 
 
+
+    @par Header <boost/simd/function/nthroot.hpp>
+
     @par Note:
     nthroot is slower than `pow(x, rec(tofloat(n))`) because
     it takes care of some limits issues that @ref pow ignores.

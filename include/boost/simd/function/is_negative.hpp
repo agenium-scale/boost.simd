@@ -25,6 +25,9 @@ namespace boost { namespace simd
     not positive and not greater than zero, It's probably @ref is_ltz that
     you want.
 
+
+    @par Header <boost/simd/function/is_negative.hpp>
+
    @par Note
 
      Using `is_negative(x)` is similar to `bitofsign(x) == 1`

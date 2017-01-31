@@ -20,6 +20,9 @@ namespace boost { namespace simd
     @ingroup group-arithmetic
     This function object computes the (fused) multiply substract of these three parameters.
 
+
+    @par Header <boost/simd/function/fms.hpp>
+
     @par Notes
     The call `fms(a, b, c)` is similar to `a*b-c
 

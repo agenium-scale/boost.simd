@@ -22,6 +22,9 @@ namespace boost { namespace simd
     @see  ctz, popcnt
 
 
+
+    @par Header <boost/simd/function/clz.hpp>
+
    @par Example:
 
      @snippet clz.cpp clz

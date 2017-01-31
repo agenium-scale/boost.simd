@@ -22,6 +22,9 @@ namespace boost { namespace simd
    @see acscd, acscpi, asin, asin, sin, rec
 
 
+
+    @par Header <boost/simd/function/acsc.hpp>
+
    @par Example:
 
      @snippet acsc.cpp acsc

@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     This function object returns the cotangent of the input in radian: \f$\cos(x)/\sin(x)\f$.
 
+
+    @par Header <boost/simd/function/cot.hpp>
+
    @par Note
 
       As most other trigonometric function cot can be called

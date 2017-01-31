@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object returns the tangent of the input in radians:
     \f$\sin(x)/\cos(x)\f$.
 
+
+    @par Header <boost/simd/function/tan.hpp>
+
    @par Note
 
       -  As most other trigonometric function tan can be called with a second

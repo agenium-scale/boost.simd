@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object returns the cosecant of angle in
     \f$\pi\f$ multiples: \f$1/(\sin(\pi x)\f$.
 
+
+    @par Header <boost/simd/function/cscpi.hpp>
+
    @par Note
 
       As most other trigonometric function cscpi can be called with

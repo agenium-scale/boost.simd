@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object returns the exponent bits of its arguments as an integer value,
     the other bits (sign and mantissa) being just masked.
 
+
+    @par Header <boost/simd/function/exponentbits.hpp>
+
    @par Example:
 
      @snippet exponentbits.cpp exponentbits

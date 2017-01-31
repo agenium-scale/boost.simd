@@ -21,6 +21,9 @@ namespace boost { namespace simd
     Conversion of values during this operations are made using the C language conversion rules and
     may induce roll over.
 
+
+    @par Header <boost/simd/function/group.hpp>
+
     @par Semantic:
     For any type @c T and integral constant @c N, consider two value @c x and @c y of type
     @c boost::simd::pack<T,N>. The following code:

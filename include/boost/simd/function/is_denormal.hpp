@@ -20,6 +20,9 @@ namespace boost { namespace simd
     @ingroup group-predicates
     This function object returns @ref True or @ref False according x is denormal or not.
 
+
+    @par Header <boost/simd/function/is_denormal.hpp>
+
     @par Note
 
     Using `is_denormal(x)` is similar to `(x != 0) && (abs(x) < Smallestposval<T>())`

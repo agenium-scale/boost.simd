@@ -22,6 +22,9 @@ namespace boost { namespace simd
 
     round(x,n) rounds aways from 0 to n digits:
 
+
+    @par Header <boost/simd/function/round.hpp>
+
     @par semantic:
     For any given value @c x of type @c T and integer n :
 

@@ -20,6 +20,9 @@ namespace boost { namespace simd
     @ingroup group-arithmetic
     This function object returns  one minus the entry.
 
+
+    @par Header <boost/simd/function/oneminus.hpp>
+
     @par Notes
     Using `oneminus(x)` is similar to `1-x`
 

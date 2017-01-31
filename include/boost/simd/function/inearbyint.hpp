@@ -20,6 +20,9 @@ namespace boost { namespace simd
     @ingroup group-arithmetic
     This function object computes the integer conversion of the @ref nearbyint of its parameter.
 
+
+    @par Header <boost/simd/function/inearbyint.hpp>
+
     @par Note:
     This operation is NOT properly saturated.
     To ensure proper saturation use the decorartor pedantic_/

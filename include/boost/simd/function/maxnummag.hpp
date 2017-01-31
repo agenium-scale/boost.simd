@@ -21,6 +21,9 @@ namespace boost { namespace simd
     the one  having smaller absolute value, treating NaNs
     as missing data (between a NaN and a numeric value, the numeric value is chosen).
 
+
+    @par Header <boost/simd/function/maxnummag.hpp>
+
    @par Example:
 
      @snippet maxnummag.cpp maxnummag

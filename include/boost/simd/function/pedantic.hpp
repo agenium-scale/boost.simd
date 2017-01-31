@@ -26,6 +26,9 @@ namespace boost { namespace simd
 
       These losses are of the `pedantic_math` kind.
 
+
+    @par Header <boost/simd/function/pedantic.hpp>
+
     @par Semantic
 
     @code

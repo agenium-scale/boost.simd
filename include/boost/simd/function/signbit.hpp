@@ -21,6 +21,8 @@ namespace boost { namespace simd
 
     True or false according to the bit of sign set or not set.
 
+    @par Header <boost/simd/function/signbit.hpp>
+
     This is a convenience alias of @ref is_negative used by stdlibc++.
   **/
   as_logical_t<Value> signbit(Value const& x);

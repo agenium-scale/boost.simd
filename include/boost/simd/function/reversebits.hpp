@@ -21,6 +21,9 @@ namespace boost { namespace simd
 
     @see reverse,  swapbytes
 
+
+    @par Header <boost/simd/function/reversebits.hpp>
+
     @par Example:
 
      @snippet reversebits.cpp reversebits

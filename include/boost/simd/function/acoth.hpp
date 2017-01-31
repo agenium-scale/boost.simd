@@ -23,6 +23,9 @@ namespace boost { namespace simd
 
     @see cosh, sinh, acosh, asinh, atanh, asech, acosh, acsch
 
+
+    @par Header <boost/simd/function/acoth.hpp>
+
     @par Example:
 
        @snippet acoth.cpp acoth

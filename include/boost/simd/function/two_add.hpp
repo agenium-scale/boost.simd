@@ -31,6 +31,9 @@ namespace boost { namespace simd
     Its main usage is to be able to compute
     sum of reals and the residual error using IEEE 754 arithmetic.
 
+
+    @par Header <boost/simd/function/two_add.hpp>
+
     @par Example:
 
        @snippet two_add.cpp two_add

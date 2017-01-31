@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object returns the value with the greatest absolute value among
     its arguments.
 
+
+    @par Header <boost/simd/function/maxmag.hpp>
+
    @par Example:
 
      @snippet maxmag.cpp maxmag

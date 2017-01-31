@@ -20,6 +20,9 @@ namespace boost { namespace simd
     @ingroup group-hyperbolic
     This function object computes simultaneously the sinh and cosh of the input
 
+
+    @par Header <boost/simd/function/sinhcosh.hpp>
+
     @par Semantic:
 
     @code

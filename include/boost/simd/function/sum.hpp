@@ -21,6 +21,9 @@ namespace simd {
 
   @see sum
 
+
+    @par Header <boost/simd/function/sum.hpp>
+
   @par Example:
 
     @snippet sum.cpp sum

@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     This function object returns the cosine of the input in radians.
 
+
+    @par Header <boost/simd/function/cos.hpp>
+
     @par Notes
       The regular call to this functor is `cos(x)`,  but
       @c cos can also be called with two parameters as

@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object returns a safe mininimal value relative to the input, i.e. a
     value which will not underflow when divided by the input argument.
 
+
+    @par Header <boost/simd/function/safe_min.hpp>
+
    @par Example:
 
      @snippet safe_min.cpp safe_min

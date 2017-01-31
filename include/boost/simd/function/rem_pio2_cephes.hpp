@@ -22,6 +22,9 @@ namespace boost { namespace simd
 
      This is a quick version accurate if the input is in \f$[-20\pi,20\pi]\f$.
 
+
+    @par Header <boost/simd/function/rem_pio2_cephes.hpp>
+
    @par Note
 
       Using `std::tie(n, r) = rem_pio2_cephes(x)` is similar to

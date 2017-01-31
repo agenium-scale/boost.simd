@@ -24,6 +24,9 @@ namespace boost { namespace simd
       @pre `sizeof(Value) == sizeof(Target)`
 
 
+
+    @par Header <boost/simd/function/bitwise_cast.hpp>
+
    @par Example:
 
      @snippet bitwise_cast.cpp bitwise_cast

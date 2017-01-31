@@ -21,6 +21,9 @@ namespace simd {
 
    The two arguments must share the same bit size.
 
+
+    @par Header <boost/simd/function/isincluded_c.hpp>
+
   @par Example:
 
     @snippet isincluded_c.cpp isincluded_c

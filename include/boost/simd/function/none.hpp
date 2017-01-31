@@ -18,6 +18,9 @@ namespace simd {
    @ingroup group-reduction
    This function object returns True if all elements of the argument are zero.
 
+
+    @par Header <boost/simd/function/none.hpp>
+
   @par Example:
 
     @snippet none.cpp none

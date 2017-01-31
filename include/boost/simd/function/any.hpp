@@ -22,6 +22,9 @@ namespace simd {
 
    @see all, none, nbtrue
 
+
+    @par Header <boost/simd/function/any.hpp>
+
    @par Example:
 
     @snippet any.cpp any

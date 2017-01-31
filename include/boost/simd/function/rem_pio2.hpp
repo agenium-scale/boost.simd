@@ -23,6 +23,9 @@ namespace boost { namespace simd
 
      This is a rather slow version,  but accurate in the full floating range.
 
+
+    @par Header <boost/simd/function/rem_pio2.hpp>
+
    @par Notes
 
      - This algorithm is accurate over  the full floating range,  but also is over

@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     This function object returns @ref False or @ref True according x is @ref Nan or not.
 
+
+    @par Header <boost/simd/function/is_not_nan.hpp>
+
    @par Note
 
      Using `is_not_nan(x)` is similar to: `x == x`

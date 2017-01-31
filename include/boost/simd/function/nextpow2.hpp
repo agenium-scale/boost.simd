@@ -21,6 +21,9 @@ namespace boost { namespace simd
     `saturated_(abs)(x)` is less or equal to \f$2^n\f$
 
 
+
+    @par Header <boost/simd/function/nextpow2.hpp>
+
    @par Example:
 
      @snippet nextpow2.cpp nextpow2

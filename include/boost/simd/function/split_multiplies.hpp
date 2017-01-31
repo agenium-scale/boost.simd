@@ -20,6 +20,8 @@ namespace boost { namespace simd
 
     SIMD register type-based multiplies and split
 
+    @par Header <boost/simd/function/split_multiplies.hpp>
+
     @c split_multiplies multiplies two x-bit SIMD registers and returns two 2x-bit registers
     each having half the cardinal of the original inputs.
   **/

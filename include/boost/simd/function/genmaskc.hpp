@@ -22,6 +22,9 @@ namespace boost { namespace simd
 
     @see genmask
 
+
+    @par Header <boost/simd/function/genmaskc.hpp>
+
    @par Example:
 
      @snippet genmaskc.cpp genmaskc

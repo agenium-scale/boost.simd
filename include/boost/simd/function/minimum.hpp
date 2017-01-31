@@ -21,6 +21,9 @@ namespace simd {
 
    @see maximum
 
+
+    @par Header <boost/simd/function/minimum.hpp>
+
   @par Example:
 
     @snippet minimum.cpp minimum

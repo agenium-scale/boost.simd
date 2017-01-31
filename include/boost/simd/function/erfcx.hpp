@@ -21,6 +21,9 @@ namespace boost { namespace simd
 
      @see erfc, erf
 
+
+    @par Header <boost/simd/function/erfcx.hpp>
+
      @par Example:
 
        @snippet erfcx.cpp erfcx

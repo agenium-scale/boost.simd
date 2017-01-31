@@ -31,6 +31,9 @@ namespace boost { namespace simd
     Its main usage is to be able to compute
     prod of reals and the residual error using IEEE 754 arithmetic.
 
+
+    @par Header <boost/simd/function/two_prod.hpp>
+
     @par Example:
 
        @snippet two_prod.cpp two_prod

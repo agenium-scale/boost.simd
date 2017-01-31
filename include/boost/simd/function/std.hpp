@@ -21,6 +21,9 @@ namespace boost { namespace simd
 
     provides an easy way to use the original  stdlibc++ function that is mimicked by one of our functors.
 
+
+    @par Header <boost/simd/function/std.hpp>
+
     @par Semantic
 
     For a function object @c func,

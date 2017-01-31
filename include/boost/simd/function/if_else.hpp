@@ -22,6 +22,9 @@ namespace boost { namespace simd
 
     @pre If both parameters are pack, they must have same cardinal.
 
+
+    @par Header <boost/simd/function/if_else.hpp>
+
    @par Example:
 
      @snippet if_else.cpp if_else

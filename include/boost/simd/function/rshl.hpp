@@ -24,6 +24,9 @@ namespace boost { namespace simd
     @see  rshr, shr, shl
 
 
+
+    @par Header <boost/simd/function/rshl.hpp>
+
    @par Example:
 
      @snippet rshl.cpp rshl

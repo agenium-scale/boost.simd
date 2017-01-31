@@ -24,6 +24,9 @@ namespace boost { namespace simd
 
     The result type is logical type associated to the first argument.
 
+
+    @par Header <boost/simd/function/logical_andnot.hpp>
+
    @par Example:
 
      @snippet logical_andnot.cpp logical_andnot

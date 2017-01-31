@@ -22,6 +22,9 @@ namespace boost { namespace simd
 
     Returns the hyperbolic cotangent: \f$(e^{x}+e^{-x})/(e^{x}-e^{-x})\f$
 
+
+    @par Header <boost/simd/function/coth.hpp>
+
     @par Semantic:
 
     For every parameter of floating type @c T

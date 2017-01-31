@@ -23,6 +23,9 @@ namespace boost { namespace simd
 
     @see log1p, expm1.
 
+
+    @par Header <boost/simd/function/sqrt1pm1.hpp>
+
     @par Example:
 
        @snippet sqrt1pm1.cpp sqrt1pm1

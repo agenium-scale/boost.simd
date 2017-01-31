@@ -22,6 +22,9 @@ namespace boost { namespace simd
     except the sign bit which is preserved.
     This function object returns always @ref Zero for unsigned types
 
+
+    @par Header <boost/simd/function/bitofsign.hpp>
+
     @par Example:
 
       @snippet bitofsign.cpp bitofsign

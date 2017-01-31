@@ -22,6 +22,9 @@ namespace boost { namespace simd
    @see asin, asind, sinpi
 
 
+
+    @par Header <boost/simd/function/asinpi.hpp>
+
    @par Example:
 
      @snippet asinpi.cpp asinpi

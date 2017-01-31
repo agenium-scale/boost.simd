@@ -22,6 +22,9 @@ namespace boost { namespace simd
     @see cos, secd, secpi
 
 
+
+    @par Header <boost/simd/function/sec.hpp>
+
    @par Example:
 
      @snippet sec.cpp sec

@@ -24,6 +24,9 @@ namespace boost { namespace simd
       (thus avoiding tests and branching), but ensures an as accurate though
       speedier version on the limited range.
 
+
+    @par Header <boost/simd/function/restricted.hpp>
+
    @par Notes
 
       For example if you are sure that all input angles are between

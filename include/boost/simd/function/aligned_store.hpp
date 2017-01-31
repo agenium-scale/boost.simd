@@ -23,6 +23,9 @@ namespace boost { namespace simd
     scattering or non-POD values, both @c Pointer and @c Offset arguments can
     themselves be SIMD register or Fusion Sequences.
 
+
+    @par Header <boost/simd/function/aligned_store.hpp>
+
     @par Semantic:
 
     Depending on the type of its arguments, store exhibits different semantics.
@@ -88,13 +91,13 @@ namespace boost { namespace simd
   void aligned_store( Value const& val, Pointer const& ptr, Offset const& offset, Mask const& mask) {}
 
   /*!
-   * @overload 
+   * @overload
    */
   template<typename Value, typename Pointer>
   void aligned_store( Value const& val, Pointer ptr) {}
 
   /*!
-   * @overload 
+   * @overload
    */
   template<typename Value, typename Pointer, typename Offset>
   void aligned_store( Value const& val, Pointer const& ptr

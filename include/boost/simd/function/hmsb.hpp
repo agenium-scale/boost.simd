@@ -21,6 +21,9 @@ namespace simd {
 argument.
 
 
+
+    @par Header <boost/simd/function/hmsb.hpp>
+
  @par Example:
 
    @snippet hmsb.cpp hmsb

@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     This function object returns the inverse cosine in \f$\pi\f$ multiples.
 
+
+    @par Header <boost/simd/function/acospi.hpp>
+
       @par Decorators
 
        - pedantic_     is similar to Invpi<T>*pedantic_(acos)(x);

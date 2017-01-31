@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object returns @ref True if at least two inputs
     are not @ref Zero else @ref False.
 
+
+    @par Header <boost/simd/function/majority.hpp>
+
    @par Note
 
      Using `majority(x,y,z)` is similar to: `(x!= 0)+(y!= 0)+(z!= 0) >= 2`

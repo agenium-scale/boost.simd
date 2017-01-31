@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object returns the tangent of the input in degrees:
     \f$\sin(\pi x/180)/\cos(\pi x/180) \f$.
 
+
+    @par Header <boost/simd/function/tand.hpp>
+
    @par Note
 
       As most other trigonometric function tand can be called with a

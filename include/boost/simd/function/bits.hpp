@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-bitwise
     This function object returns an unsigned integer value which has the same bits as the input
 
+
+    @par Header <boost/simd/function/bits.hpp>
+
    @par Example:
 
      @snippet bits.cpp bits

@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-ieee
     This function object returns the input value which have the least absolute value.
 
+
+    @par Header <boost/simd/function/minmag.hpp>
+
    @par Example:
 
      @snippet minmag.cpp minmag

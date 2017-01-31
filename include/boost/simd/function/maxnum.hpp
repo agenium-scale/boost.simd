@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object returns  the largest of two floating point arguments, treating NaNs
     as missing data (between a NaN and a numeric value, the numeric value is chosen).
 
+
+    @par Header <boost/simd/function/maxnum.hpp>
+
     @par Decorators
 
      - std_ for floating entries calls the stdlibc++ function std::fmax.

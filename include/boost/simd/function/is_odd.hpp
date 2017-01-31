@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     This function object returns @ref True or @ref False according x is odd or not.
 
+
+    @par Header <boost/simd/function/is_odd.hpp>
+
    @par Note
 
      Using `is_odd(x)` is similar to: `is_even(x-One(as(x))`

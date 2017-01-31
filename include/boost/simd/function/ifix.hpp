@@ -22,6 +22,9 @@ namespace boost { namespace simd
 
     This is an alias of @ref saturated_(toint)
 
+
+    @par Header <boost/simd/function/ifix.hpp>
+
     @par Example:
 
        @snippet ifix.cpp ifix

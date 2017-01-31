@@ -19,6 +19,9 @@ namespace boost { namespace simd
    @ingroup group-predicates
    This function object returns @ref True or @ref False according x is greater than @ref Zero or not.
 
+
+    @par Header <boost/simd/function/is_gtz.hpp>
+
    @par Note
 
      Using `is_gtz(x)` is similar to: `x > 0`

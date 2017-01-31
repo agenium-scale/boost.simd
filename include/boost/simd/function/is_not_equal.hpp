@@ -21,6 +21,9 @@ namespace boost { namespace simd
     This function object returns @ref True if x and y are not equal else @ref False.
     Infix notation can be used with operator '!='.
 
+
+    @par Header <boost/simd/function/is_not_equal.hpp>
+
    @par Note
 
      Using `is_not_equal(x,y)` is equivalent to `x != y`

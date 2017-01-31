@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     This function object returns the inverse tangent.
 
+
+    @par Header <boost/simd/function/atan.hpp>
+
    @par Note
 
       For every parameter of floating type `atan(x)`

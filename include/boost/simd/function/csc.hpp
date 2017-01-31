@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     This function object returns the cosecante of the input in radian : \f$1/\sin(x)\f$.
 
+
+    @par Header <boost/simd/function/csc.hpp>
+
    @par Note
 
       As most other trigonometric function csc can be called

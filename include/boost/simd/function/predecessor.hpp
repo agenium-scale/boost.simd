@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-ieee
     This function object returns the `n-`th greatest element strictly less than the parameter
 
+
+    @par Header <boost/simd/function/predecessor.hpp>
+
    @par Note
 
      If @c n is null returns @c x else computes the `n`-th greatest representable value strictly less

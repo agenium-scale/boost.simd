@@ -23,6 +23,9 @@ namespace boost { namespace simd
 
     Infix notation can be used with operator '=='
 
+
+    @par Header <boost/simd/function/is_equal.hpp>
+
     @par Note
 
       Using `is_equal(x,y)` is equivalent to `x == y`

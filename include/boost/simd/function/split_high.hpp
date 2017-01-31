@@ -18,9 +18,10 @@ namespace boost { namespace simd
 
     SIMD register type-based split_high
 
+    @par Header <boost/simd/function/split_high.hpp>
+
     @c split_high extract the higher half of a SIMD register and convert it
     to the appropriate SIMD register type of corresponding cardinal.
-
     @see split_low, split, slice
   **/
   const boost::dispatch::functor<tag::split_high_> split_high = {};

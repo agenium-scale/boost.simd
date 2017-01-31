@@ -22,6 +22,9 @@ namespace boost { namespace simd
     This is an alias of @ref genmask
 
 
+
+    @par Header <boost/simd/function/if_allbits_else_zero.hpp>
+
    @par Example:
 
      @snippet if_allbits_else_zero.cpp if_allbits_else_zero

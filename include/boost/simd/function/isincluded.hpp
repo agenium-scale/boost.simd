@@ -21,6 +21,9 @@ also set in @c y
 
   The two arguments must share the same bit size.
 
+
+    @par Header <boost/simd/function/isincluded.hpp>
+
  @par Example:
 
    @snippet isincluded.cpp isincluded

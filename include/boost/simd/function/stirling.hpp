@@ -23,6 +23,9 @@ namespace boost { namespace simd
 
     @see gamma, gammaln
 
+
+    @par Header <boost/simd/function/stirling.hpp>
+
     @par Example:
 
        @snippet stirling.cpp stirling

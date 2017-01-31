@@ -37,6 +37,9 @@ namespace boost { namespace simd
     @see prev, nextafter, successor, predecessor
 
 
+
+    @par Header <boost/simd/function/prev.hpp>
+
    @par Example:
 
      @snippet prev.cpp prev

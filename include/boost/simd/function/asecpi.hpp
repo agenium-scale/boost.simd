@@ -23,6 +23,9 @@ namespace boost { namespace simd
    @see asec, asecd, cospi, acospi
 
 
+
+    @par Header <boost/simd/function/asecpi.hpp>
+
    @par Example:
 
      @snippet asecpi.cpp asecpi

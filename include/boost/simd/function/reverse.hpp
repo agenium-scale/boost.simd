@@ -18,6 +18,9 @@ namespace boost { namespace simd
 
     Returns a vector containing the value of its argument in reverse order.
 
+
+    @par Header <boost/simd/function/reverse.hpp>
+
     @par Semantic:
 
     For every parameter of type T

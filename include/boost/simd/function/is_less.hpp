@@ -21,6 +21,9 @@ namespace boost { namespace simd
     This function object returns  @ref True or @ref False according x is less than y or not.
     Infix notation can be used with operator '<'.
 
+
+    @par Header <boost/simd/function/is_less.hpp>
+
    @par Note
 
      Using `is_less(x,y)` is equivalent to `x < y`

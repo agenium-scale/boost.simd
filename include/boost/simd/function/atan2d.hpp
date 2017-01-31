@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     This function object returns the atan2d function : atan2 in degrees.
 
+
+    @par Header <boost/simd/function/atan2d.hpp>
+
    @par Note
 
       For every parameters of same floating type

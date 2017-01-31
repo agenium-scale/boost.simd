@@ -22,6 +22,9 @@ namespace boost { namespace simd
 
     @see cosh, sinh
 
+
+    @par Header <boost/simd/function/sinhc.hpp>
+
     @par Example:
 
        @snippet sinhc.cpp sinhc

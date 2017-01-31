@@ -21,6 +21,9 @@ namespace boost { namespace simd
     This function object computes the smallest of its parameterif they share the same sign,
     zero instead..
 
+
+    @par Header <boost/simd/function/minmod.hpp>
+
     @par Notes
     Using `minmod(x, y)` is similar to ` x*y > 0 ? min(x, y) : 0`
 

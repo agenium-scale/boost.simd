@@ -19,6 +19,9 @@ namespace simd {
    @ingroup group-reduction
    This function object computes the cumulate maximum of the argument elements
 
+
+    @par Header <boost/simd/function/cummax.hpp>
+
   @par Example:
 
     @snippet cummax.cpp cummax

@@ -24,6 +24,9 @@ namespace boost { namespace simd
     @see  hi
 
 
+
+    @par Header <boost/simd/function/lo.hpp>
+
    @par Example:
 
      @snippet lo.cpp lo

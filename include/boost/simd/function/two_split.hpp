@@ -27,6 +27,9 @@ namespace boost { namespace simd
 
     and where @c r0 and @c r1 bit pattern don't overlap.
 
+
+    @par Header <boost/simd/function/two_split.hpp>
+
     @par Example:
 
        @snippet two_split.cpp two_split

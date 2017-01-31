@@ -22,6 +22,9 @@ namespace boost { namespace simd
     of the first operand
     The operands must share the same bit size and number of elements.
 
+
+    @par Header <boost/simd/function/bitwise_select.hpp>
+
     @par Example:
 
      @snippet bitwise_select.cpp bitwise_select
