@@ -44,13 +44,13 @@ namespace boost { namespace simd { namespace ext
       {
         result res = One<result>();
         result base = Ten<result>();
-        A0 exp = bs::abs(a0);
-        while(any(exp))
+        A0 exponent = bs::abs(a0);
+        while(any(exponent))
         {
-          //       res *= if_else(is_odd(exp), base, One<result>()); TO DO
-          res =  res * if_else(is_odd(exp), base, One<result>());
-          //  exp >>= 1; TODO
-          exp =  shift_right(exp, 1);
+          //       res *= if_else(is_odd(exponent), base, One<result>()); TO DO
+          res =  res * if_else(is_odd(exponent), base, One<result>());
+          //  exponent >>= 1; TODO
+          exponent =  shift_right(exponent, 1);
           base = sqr(base);
         }
         return if_else(is_ltz(a0), bs::rec(res), res);
@@ -69,13 +69,13 @@ namespace boost { namespace simd { namespace ext
       {
         result res = One<result>();
         result base = Ten<result>();
-        A0 exp = a0;
-        while(any(exp))
+        A0 exponent = a0;
+        while(any(exponent))
         {
-          res = res*if_else(is_odd(exp), base, One<result>()); // TODO
-//          res *= if_else(is_odd(exp), base, One<result>());
-          //  exp >>= 1; TODO
-          exp =  shift_right(exp, 1);
+          res = res*if_else(is_odd(exponent), base, One<result>()); // TODO
+//          res *= if_else(is_odd(exponent), base, One<result>());
+          //  exponent >>= 1; TODO
+          exponent =  shift_right(exponent, 1);
           base = sqr(base);
         }
         return res;
