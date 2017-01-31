@@ -33,7 +33,8 @@ namespace boost { namespace simd
         | @ref is_greater       | >    | @ref is_not_equal  |  !=   |
       </center>
 
-         for floating entries negation as predicates as  @ref is_not_greater(a, b) are not equivalent to !is_greater(a, b) due to possible @ref Nan values;
+         for floating entries negation as predicates as  is_not_greater(a, b) are not equivalent to
+         !is_greater(a, b) due to possible @ref Nan values;
 
            @par Example:
 
@@ -53,7 +54,7 @@ namespace boost { namespace simd
         |:-----------------------:|:---------------------------------:|:---------------------:|:-------------------------:|
         | @ref is_denormal        | @ref is_equal_with_equal_nans     | @ref is_eqz           | @ref is_even              |
         | @ref is_finite          | @ref is_flint                     | @ref is_gez           | @ref is_gtz               |
-        | @ref is_imag            | @ref is_included_c                | @ref is_included      | @ref is_inf               |
+        | @ref is_imag            | @ref isincluded_c                 | @ref isincluded       | @ref is_inf               |
         | @ref is_invalid         | @ref is_lessgreater               | @ref is_lez           | @ref is_ltz               |
         | @ref is_nan             | @ref is_negative                  | @ref is_nez           | @ref is_ngez              |
         | @ref is_ngtz            | @ref is_nlez                      | @ref is_nltz          | @ref is_normal            |

@@ -6,7 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-//! [if_allbits_else_zero]
+//! [if_else_allbits]
 #include <boost/simd/boolean.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/simd/constant/valmax.hpp>
@@ -22,7 +22,7 @@ int main()
   std::cout
     <<  "---- simd" << '\n'
     << " <- pf =                           " << pf << '\n'
-    << " -> bs::if_allbits_else_zero(pf) = " << bs::if_allbits_else_zero(pf) << '\n';
+    << " -> bs::if_else_allbits(pf) = " << bs::if_else_allbits(pf) << '\n';
 
 
   std::int32_t xf = 3, yf = 0;
@@ -31,8 +31,8 @@ int main()
     << "---- scalar"  << '\n'
     << " xf =                              " << xf << '\n'
     << " yf =                              " << yf << '\n'
-    << " -> bs::if_allbits_else_zero(xf) = " << bs::if_allbits_else_zero(xf) << '\n'
-    << " -> bs::if_allbits_else_zero(yf) = " << bs::if_allbits_else_zero(yf) << '\n';
+    << " -> bs::if_else_allbits(xf) = " << bs::if_else_allbits(xf) << '\n'
+    << " -> bs::if_else_allbits(yf) = " << bs::if_else_allbits(yf) << '\n';
   return 0;
 }
-//! [if_allbits_else_zero]
+//! [if_else_allbits]

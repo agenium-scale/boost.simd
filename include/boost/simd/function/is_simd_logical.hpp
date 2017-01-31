@@ -27,14 +27,6 @@ namespace boost { namespace simd
 
      Using `is_simd_logical(x)` is similar to `all(logical_or(x == Allbits(as(x)), x == Zero(as(x))))`
 
-   @par Example:
-
-     @snippet is_simd_logical.cpp is_simd_logical
-
-   @par Possible output:
-
-     @snippet is_simd_logical.txt is_simd_logical
-
   **/
   lgoical<as_scalar_t<Value>> is_simd_logical(Value const& x);
 } }

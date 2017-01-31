@@ -6,7 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-//! [is_equal_with_equal_nans]
+//! [is_not_equal]
 #include <boost/simd/predicates.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -23,13 +23,13 @@ int main()
   pack_ft pf = { 0.0f, 1.0f, -1.0f, -2.0f
                 , bs::Mindenormal<float>(), bs::Inf<float>(), bs::Minf<float>(), bs::Nan<float>() };
   pack_ft qf = { bs::Mindenormal<float>(), bs::Inf<float>(), bs::Minf<float>(), bs::Nan<float>(),
-                 0.0f, 1.0f, -1.0f, -2.0f };
+                 0.0f, 1.0f, -1.0f, bs::Nan<float>() };
 
   std::cout
     << "---- simd" << '\n'
     << "<- pf =                  " << pf << '\n'
-    << "<- qf =                  " << qf << '\n'
-    << "-> bs::is_equal_with_equal_nans(pf, qf) = " << bs::is_equal_with_equal_nans(pf, qf) << '\n';
+    << "<- qf =                  " << pf << '\n'
+    << "-> bs::is_not_equal(pf, qf) = " << bs::is_not_equal(pf, qf) << '\n';
 
   float xf = 1.0f;
   float yf = bs::Nan<float>();
@@ -38,7 +38,7 @@ int main()
     << "---- scalar"  << '\n'
     << "<- xf =                  " << xf << '\n'
     << "<- yf =                  " << yf << '\n'
-    << "-> bs::is_equal_with_equal_nans(xf, yf) = " << bs::is_equal_with_equal_nans(xf, yf) << '\n';
+    << "-> bs::is_not_equal(xf, yf) = " << bs::is_not_equal(xf, yf) << '\n';
   return 0;
 }
-//! [is_equal_with_equal_nans]
+//! [is_not_equal]

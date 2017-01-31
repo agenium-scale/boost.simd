@@ -24,7 +24,7 @@ namespace boost { namespace simd
 
     Infix notation can be used with operator '<<'
 
-    @alias shl
+    @par alias shl
 
     @see  shift_right, shr, rshl, rshr, rol, ror
 

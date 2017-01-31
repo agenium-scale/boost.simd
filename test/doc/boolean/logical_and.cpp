@@ -6,7 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-//! [logical_andnot]
+//! [logical_and]
 #include <boost/simd/boolean.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/simd/constant/valmax.hpp>
@@ -23,7 +23,7 @@ int main()
     <<  "---- simd" << '\n'
     << " <- pf =                      " << pf << '\n'
     << " <- qf =                      " << qf << '\n'
-    << " -> bs::logical_andnot(pf, qf) = " << bs::logical_andnot(pf, qf) << '\n';
+    << " -> bs::logical_and(pf, qf) = " << bs::logical_and(pf, qf) << '\n';
 
   float xf = 3.0f, yf = 4.0f;
 
@@ -31,7 +31,7 @@ int main()
     << "---- scalar"  << '\n'
     << " xf =                         " << xf << '\n'
     << " yf =                         " << yf << '\n'
-    << " -> bs::logical_andnot(xf, yf) = " << bs::logical_andnot(xf, yf) << '\n';
+    << " -> bs::logical_and(xf, yf) = " << bs::logical_and(xf, yf) << '\n';
   return 0;
 }
-//! [logical_andnot]
+//! [logical_and]

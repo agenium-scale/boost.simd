@@ -37,15 +37,6 @@ namespace boost { namespace simd
        - the simd gain will be at least 5 for floats on an sse4.2 sytem
        - the result will be @ref Nan outside the limited interval...
 
-
-   @par Example:
-
-     @snippet restricted.cpp restricted
-
-   @par Possible output:
-
-     @snippet restricted.txt restricted
-
   **/
   template<typename T> auto restricted_(T const& x) {}
 

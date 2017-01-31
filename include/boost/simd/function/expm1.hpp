@@ -23,7 +23,7 @@ namespace boost { namespace simd
 
     @par Notes
 
-    - result is accurate even for @x x of small modulus
+    - result is accurate even for @c x of small modulus
 
     @par Decorators
 

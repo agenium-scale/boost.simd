@@ -24,11 +24,11 @@ namespace simd {
 
   @par Example:
 
-    @snippet dot.cpp dot
+    @snippet edot.cpp dot
 
   @par Possible output:
 
-    @snippet dot.txt dot
+    @snippet edot.txt dot
 
  **/
 scalar_of_t<Value> dot(Value const &x, Value const &y);
