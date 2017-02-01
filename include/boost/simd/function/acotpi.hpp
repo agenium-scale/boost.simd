@@ -40,7 +40,7 @@ namespace boost { namespace simd
      @snippet acotpi.txt acotpi
 
   **/
-  Value acotpi(Value const & x);
+  IEEEValue acotpi(IEEEValue const & x);
 } }
 #endif
 
