@@ -73,7 +73,7 @@ namespace boost { namespace simd { namespace ext
     {
       using   target_t = as_arithmetic_t<Target>;
       using   value_t  = typename target_t::value_type;
-      return  bitwise_cast<Target>( detail::make( as_<target_t>{}, genmask<value_t>(vs)...));
+      return  bitwise_cast<Target>( make( as_<target_t>{}, genmask<value_t>(vs)...));
     }
   };
 
