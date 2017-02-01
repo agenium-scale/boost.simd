@@ -23,6 +23,9 @@ namespace boost { namespace simd
 
     If it is not the case this function asserts.
 
+
+    @par Header <boost/simd/function/mask2logical.hpp>
+
    @par Example:
 
      @snippet mask2logical.cpp mask2logical

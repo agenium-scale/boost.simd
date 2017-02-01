@@ -21,6 +21,9 @@ namespace boost { namespace simd
     \f$(1/\pi) \arcsin(1/x)\f$.
 
    @see acsc,  acscd
+
+    @par Header <boost/simd/function/acscpi.hpp>
+
    @par Example:
 
      @snippet acscpi.cpp acscpi

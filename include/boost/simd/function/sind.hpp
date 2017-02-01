@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object returns the sine of the angle in degree:
     \f$\sin(\pi x/180)\f$.
 
+
+    @par Header <boost/simd/function/sind.hpp>
+
    @par Note
 
      As most other trigonometric function sind can be called

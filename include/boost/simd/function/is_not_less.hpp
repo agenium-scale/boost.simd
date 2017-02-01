@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     This function object returns  @ref True or @ref False according x is not less than y or not.
 
+
+    @par Header <boost/simd/function/is_not_less.hpp>
+
    @par Note
 
      Using `is_not_less(x,y)` is similar to: `!(x < y)`

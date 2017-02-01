@@ -23,6 +23,9 @@ lexicographic
 
   It is probably not what you wish. Have a look to @ref is_less_equal
 
+
+    @par Header <boost/simd/function/compare_less_equal.hpp>
+
  @par Example:
 
    @snippet compare_less_equal.cpp compare_less_equal

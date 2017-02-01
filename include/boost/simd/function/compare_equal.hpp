@@ -19,6 +19,9 @@ namespace boost { namespace simd
     This function object returns `all(x == y)`,
     i.e. return @ref True if and only if all corresponding entries elements are equal.
 
+
+    @par Header <boost/simd/function/compare_equal.hpp>
+
    @par Example:
 
      @snippet compare_equal.cpp compare_equal

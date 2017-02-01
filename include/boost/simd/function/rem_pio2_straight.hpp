@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object returns the Computes the remainder modulo \f$\pi/2\f$.
 
 
+
+    @par Header <boost/simd/function/rem_pio2_straight.hpp>
+
     @par Notes
 
     - @c rem_pio2_straight computes the remainder modulo \f$\pi/2\f$ with "straight" algorithm,

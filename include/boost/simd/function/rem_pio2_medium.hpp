@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object computes the remainder modulo
     \f$\pi/2\f$ with medium algorithm, and the angle quadrant between 0 and 3.
 
+
+    @par Header <boost/simd/function/rem_pio2_medium.hpp>
+
     @par Note:
 
 

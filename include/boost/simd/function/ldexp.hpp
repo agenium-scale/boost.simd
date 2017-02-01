@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object returns  \f$x\f$ multiplied by
     by \f$2^{n}\f$
 
+
+    @par Header <boost/simd/function/ldexp.hpp>
+
    @par Note
 
      If @c n is not of integral type is is truncated:

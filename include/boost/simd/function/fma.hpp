@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-arithmetic
     This function object computes the (fused) multiply add of these three parameters.
 
+
+    @par Header <boost/simd/function/fma.hpp>
+
     @par Notes
     The call `fma(a, b, c)` is similar to `a*b+c`
 

@@ -21,6 +21,9 @@ namespace boost { namespace simd
 
     Perform the quotient of two parameters of the same type.
 
+
+    @par Header <boost/simd/function/divides.hpp>
+
     @par Semantic
 
     For any value @c a and @c b of type @c T,

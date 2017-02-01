@@ -21,6 +21,9 @@ namespace boost { namespace simd
     with a preserving order formula. This function is the converse of @ref bitinteger.
 
 
+
+    @par Header <boost/simd/function/bitfloating.hpp>
+
     @par Note:
     This  function is  related to the computation of
     floating successors or predecessors as the ordering of the integers obtained

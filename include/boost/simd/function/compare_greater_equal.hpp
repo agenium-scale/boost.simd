@@ -23,6 +23,9 @@ lexicographic
   It is probably not what you wish. Have a look to @ref is_greater_equal.
 
 
+
+    @par Header <boost/simd/function/compare_greater_equal.hpp>
+
  @par Example:
 
    @snippet compare_greater_equal.cpp compare_greater_equal

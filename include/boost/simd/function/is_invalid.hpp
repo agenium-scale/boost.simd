@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     This function object returns @ref True if x is inf, -inf or nan, else returns @ref False
 
+
+    @par Header <boost/simd/function/is_invalid.hpp>
+
    @par Note
 
      Using `is_invalid(x)` is similar to: `x-x != 0`

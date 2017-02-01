@@ -19,6 +19,9 @@ namespace boost { namespace simd
     This function object computes the gamma function:
    \f$\displaystyle \int_0^{\infty} t^{x-1}e^{-t}\mbox{d}t\f$
 
+
+    @par Header <boost/simd/function/gamma.hpp>
+
     @par Decorators
 
      - std_ calls @c std::tgamma

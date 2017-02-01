@@ -24,6 +24,9 @@ namespace boost { namespace simd
       (thus avoiding tests and branching), but ensures an as accurate though
       speedier version on the limited range.
 
+
+    @par Header <boost/simd/function/restricted.hpp>
+
    @par Notes
 
       For example if you are sure that all input angles are between
@@ -33,15 +36,6 @@ namespace boost { namespace simd
 
        - the simd gain will be at least 5 for floats on an sse4.2 sytem
        - the result will be @ref Nan outside the limited interval...
-
-
-   @par Example:
-
-     @snippet restricted.cpp restricted
-
-   @par Possible output:
-
-     @snippet restricted.txt restricted
 
   **/
   template<typename T> auto restricted_(T const& x) {}

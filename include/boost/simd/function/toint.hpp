@@ -20,6 +20,9 @@ namespace boost { namespace simd
     @ingroup group-arithmetic
     This function object converts its parameter to integer by truncation.
 
+
+    @par Header <boost/simd/function/toint.hpp>
+
     @par Notes
 
     @c toint cast a floating value to the signed integer value of the same bit size.

@@ -24,6 +24,8 @@ namespace boost { namespace simd
 
     Infix notation can be used with operator '<<'
 
+    @par Header <boost/simd/function/shl.hpp>
+
     This is an alias of @ref shift_left
   **/
   Value shl(Value const & v0, IntegerValue const& n);

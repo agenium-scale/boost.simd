@@ -19,6 +19,9 @@ namespace simd {
    @ingroup group-reduction
    This function object computes the cumulate minimum of the argument elements
 
+
+    @par Header <boost/simd/function/cummin.hpp>
+
   @par Example:
 
     @snippet cummin.cpp cummin

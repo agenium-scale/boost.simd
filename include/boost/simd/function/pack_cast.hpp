@@ -20,6 +20,9 @@ namespace boost { namespace simd
       @c Target while preserving its argument's cardinal.
 
       @tparam Target @c Target type to cast toward
+
+    @par Header <boost/simd/function/pack_cast.hpp>
+
       @param  @c x Value to cast
 
       @return A value of type @c Target which is cast to @c x.

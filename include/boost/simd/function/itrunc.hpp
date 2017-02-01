@@ -24,6 +24,8 @@ namespace boost { namespace simd
 
     This is an alias of @ref saturated_(toint)
 
+    @par Header <boost/simd/function/itrunc.hpp>
+
     @see ifix
   **/
   Value itrunc(Value const & v0);

@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     This function object returns the inverse cotangent.
 
+
+    @par Header <boost/simd/function/acot.hpp>
+
    @par Note
 
       For every parameter of floating type `r = acot(x)`

@@ -26,6 +26,9 @@ namespace boost { namespace simd
     @warningbox{Take care that SIMD logical operation do not short-circuit.}
 
 
+
+    @par Header <boost/simd/function/logical_and.hpp>
+
    @par Example:
 
      @snippet logical_and.cpp logical_and

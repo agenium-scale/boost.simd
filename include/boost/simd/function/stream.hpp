@@ -18,6 +18,8 @@ namespace boost { namespace simd
     Store a given value into an arbitrary memory location referenced by either
     a pointer or a pointer and an offset without polluting the caches.
 
+    @par Header <boost/simd/function/stream.hpp>
+
     @par Semantic:
 
     stream semantic is similar to store semantic except for the fact that no

@@ -24,6 +24,9 @@ namespace boost { namespace simd
 
 
 
+
+    @par Header <boost/simd/function/acscd.hpp>
+
    @par Example:
 
      @snippet acscd.cpp acscd

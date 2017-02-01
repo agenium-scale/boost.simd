@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     This function object returns @ref True if neither x nor y is @ref Nan and x is not equal to y.
 
+
+    @par Header <boost/simd/function/is_lessgreater.hpp>
+
    @par Note
 
      Using `is_lessgreater(x,y)` is similar to: `(x == x) && (y == y) && (x!= y)`

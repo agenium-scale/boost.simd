@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object returns the return the bitwise complement of the entry
     Infix notation can be used with operator '~'
 
+
+    @par Header <boost/simd/function/complement.hpp>
+
    @par Example:
 
      @snippet complement.cpp complement

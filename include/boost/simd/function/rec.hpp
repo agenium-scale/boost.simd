@@ -18,6 +18,9 @@ namespace boost { namespace simd
     @ingroup group-arithmetic
     This function object returns the inverse (reciprocal) of the entry.
 
+
+    @par Header <boost/simd/function/rec.hpp>
+
     @par Notes
 
     The call to `rec(x)` is similar to  `One(as(x))/x`

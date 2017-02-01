@@ -23,6 +23,9 @@ namespace boost { namespace simd
     the sign of @c x/y and agrees with the actual quotient in at least the low
     order 3 bits.
 
+
+    @par Header <boost/simd/function/remquo.hpp>
+
     @par semantic:
 
      If T is the common type to @c x and @c y

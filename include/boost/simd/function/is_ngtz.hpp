@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     This function object returns @ref True if x is not greater than @ref Zero else returns @ref False.
 
+
+    @par Header <boost/simd/function/is_ngtz.hpp>
+
    @par Note
 
      Using `is_ngtz(x)` is similar to: `!(x > 0)`

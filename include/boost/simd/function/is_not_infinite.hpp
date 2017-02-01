@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     This function object returns @ref True if x is finite or @ref Nan
 
+
+    @par Header <boost/simd/function/is_not_infinite.hpp>
+
    @par Note
 
      Using `is_not_infinite(x)` is similar to `(x !=  Inf) && (x != -Inf)` for floating types

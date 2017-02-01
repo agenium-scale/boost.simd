@@ -21,6 +21,9 @@ namespace boost { namespace simd
     by the absolute value of the second entry,
     according to its sign.
 
+
+    @par Header <boost/simd/function/rrol.hpp>
+
     @par Note
     This function asserts if the integral parameter is out of range
 

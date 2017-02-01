@@ -19,13 +19,16 @@ namespace simd {
    @ingroup group-reduction
    This function object returns the returns the dot product of the two arguments
 
+
+    @par Header <boost/simd/function/dot.hpp>
+
   @par Example:
 
-    @snippet dot.cpp dot
+    @snippet edot.cpp dot
 
   @par Possible output:
 
-    @snippet dot.txt dot
+    @snippet edot.txt dot
 
  **/
 scalar_of_t<Value> dot(Value const &x, Value const &y);

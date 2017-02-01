@@ -20,6 +20,9 @@ namespace boost { namespace simd
     @ingroup group-predicates
     This function object returns @ref True or @ref False according x is @ref Zero or not.
 
+
+    @par Header <boost/simd/function/is_eqz.hpp>
+
     @par Note
 
       Using `is_eqz(x = y)` is equivalent to `x == 0`

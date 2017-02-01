@@ -22,6 +22,9 @@ namespace boost { namespace simd
 
     @see log, sqrt, sinh, inc
 
+
+    @par Header <boost/simd/function/asinh.hpp>
+
     @par Example:
 
        @snippet asinh.cpp asinh

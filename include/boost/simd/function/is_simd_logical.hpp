@@ -20,17 +20,12 @@ namespace boost { namespace simd
 
     returns @ref True if each vector elements have all bits or no bit set.
 
+
+    @par Header <boost/simd/function/is_simd_logical.hpp>
+
    @par Note
 
      Using `is_simd_logical(x)` is similar to `all(logical_or(x == Allbits(as(x)), x == Zero(as(x))))`
-
-   @par Example:
-
-     @snippet is_simd_logical.cpp is_simd_logical
-
-   @par Possible output:
-
-     @snippet is_simd_logical.txt is_simd_logical
 
   **/
   lgoical<as_scalar_t<Value>> is_simd_logical(Value const& x);

@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object categorizes floating point value into the following categories:
     zero, subnormal, normal, infinite, nan, or implementation-defined.
 
+
+    @par Header <boost/simd/function/fpclassify.hpp>
+
     @par Notes
 
     fpclassify returns a value of integral type that matches one of the classification

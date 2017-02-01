@@ -28,7 +28,7 @@ int main()
   std::cout
     << "---- simd" << '\n'
     << "<- pf =                  " << pf << '\n'
-    << "<- qf =                  " << pf << '\n'
+    << "<- qf =                  " << qf << '\n'
     << "-> bs::is_equal_with_equal_nans(pf, qf) = " << bs::is_equal_with_equal_nans(pf, qf) << '\n';
 
   float xf = 1.0f;

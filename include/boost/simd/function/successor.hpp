@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-ieee
     This function object returns the `n`-th least element strictly greater than the parameter
 
+
+    @par Header <boost/simd/function/successor.hpp>
+
    @par Note
 
      If @c n is null returns @c x else computes the `n`-th least representable value strictly greater

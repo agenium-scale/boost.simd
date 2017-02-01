@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-ieee
     This function object returns the Computes the integer and  fractional parts of the input.
 
+
+    @par Header <boost/simd/function/modf.hpp>
+
    @par Decorators
 
      - std_ calls std::modf to compute the pair of outputs.

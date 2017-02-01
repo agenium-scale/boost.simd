@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     This function object returns the sine of the input in radians.
 
+
+    @par Header <boost/simd/function/sin.hpp>
+
    @par Note
 
       As most other trigonometric function sin can be called with a second

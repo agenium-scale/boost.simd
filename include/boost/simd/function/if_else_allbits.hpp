@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object conditionally returns @c x (respectively @ref Allbits) if @c c is @ref True
     (respectively  @ref False)
 
+
+    @par Header <boost/simd/function/if_else_allbits.hpp>
+
    @par Example:
 
      @snippet if_else_allbits.cpp if_else_allbits

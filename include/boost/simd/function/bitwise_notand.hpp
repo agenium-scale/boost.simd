@@ -21,6 +21,9 @@ namespace boost { namespace simd
     The operands must share the same bit size.
     The result type is the one of the first operand.
 
+
+    @par Header <boost/simd/function/bitwise_notand.hpp>
+
    @par Example:
 
      @snippet bitwise_notand.cpp bitwise_notand

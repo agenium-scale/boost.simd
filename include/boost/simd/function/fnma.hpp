@@ -21,6 +21,9 @@ namespace boost { namespace simd
     This function object computes the negated (fused) multiply add of
     its three parameters.
 
+
+    @par Header <boost/simd/function/fnma.hpp>
+
     @par Notes
     The call `fnma(a, b, c)` is similar to `-a*b-c`
 

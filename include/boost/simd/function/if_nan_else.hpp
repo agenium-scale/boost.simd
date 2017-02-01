@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object conditionally returns @c Nan (respectively @c x)
     if @c c is @ref True (respectively  @ref False)
 
+
+    @par Header <boost/simd/function/if_nan_else.hpp>
+
    @par Example:
 
      @snippet if_nan_else.cpp if_nan_else

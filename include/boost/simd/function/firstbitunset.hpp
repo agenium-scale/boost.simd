@@ -23,6 +23,9 @@ namespace boost { namespace simd
     @see  ffs,  firstbitset
 
 
+
+    @par Header <boost/simd/function/firstbitunset.hpp>
+
    @par Example:
 
      @snippet firstbitunset.cpp firstbitunset

@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     This function object returns the inverse sine.
 
+
+    @par Header <boost/simd/function/asin.hpp>
+
    @par Note
 
       For every parameter of floating type `asin(x)`

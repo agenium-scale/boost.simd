@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     This function object returns @ref True if x is not equal to @ref Zero else returns @ref False.
 
+
+    @par Header <boost/simd/function/is_nez.hpp>
+
    @par Note
 
      Using `is_nez(x)` is similar to: `x != 0`

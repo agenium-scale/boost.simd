@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object returns the cosine of angle in
     \f$\pi\f$ multiples: \f$\cos(\pi x)\f$.
 
+
+    @par Header <boost/simd/function/cospi.hpp>
+
     @par Note
 
      -  The semantics of the function are similar to @ref cos ones.

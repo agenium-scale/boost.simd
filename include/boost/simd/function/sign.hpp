@@ -27,6 +27,9 @@ namespace boost { namespace simd
     @see signnz, is_negative, is_positive,  bitofsign
 
 
+
+    @par Header <boost/simd/function/sign.hpp>
+
    @par Example:
 
      @snippet sign.cpp sign

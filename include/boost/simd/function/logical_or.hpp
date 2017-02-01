@@ -25,6 +25,9 @@ namespace boost { namespace simd
 
     @warningbox{Take care that using && in scalar mode does short-circuit and does not in simd mode.}
 
+
+    @par Header <boost/simd/function/logical_or.hpp>
+
    @par Example:
 
      @snippet logical_or.cpp logical_or

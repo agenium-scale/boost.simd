@@ -26,6 +26,9 @@ namespace boost { namespace simd
 
       @see  shift_left, shr, rshl, rshr, rol, ror
 
+
+    @par Header <boost/simd/function/shift_right.hpp>
+
    @par Example:
 
      @snippet shift_right.cpp shift_right

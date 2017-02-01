@@ -75,7 +75,7 @@ namespace boost { namespace simd
          | @ref if_else                | @ref if_else_nan          | @ref if_else_zero        | @ref if_inc           |
          | @ref if_minus               | @ref if_nan_else          | @ref if_neg              | @ref if_one_else_zero |
          | @ref if_plus                | @ref if_zero_else_allbits | @ref if_zero_else        | @ref if_zero_else_one |
-         | @ref ifnot_dec              | @ref ifnot_inc            | @ref ifnot_minus         | @ref if_not_neg       |
+         | @ref ifnot_dec              | @ref ifnot_inc            | @ref ifnot_minus         | @ref ifnot_neg        |
          | @ref ifnot_plus             |                           |                          |                       |
        </center>
 

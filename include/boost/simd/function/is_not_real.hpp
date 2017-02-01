@@ -21,6 +21,9 @@ namespace boost { namespace simd
     This function object returns @ref True or @ref False according x is real or not.
     For non complex numbers it is always false
 
+
+    @par Header <boost/simd/function/is_not_real.hpp>
+
    @par Note
 
      Using `is_not_real(x)` is similar to: `False` for real inputs.

@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     This function object returns @ref True or @ref False according x is normal or not.
 
+
+    @par Header <boost/simd/function/is_normal.hpp>
+
    @par Note
 
      Using  `is_normal(x)` is similar to `!(is_denormal(x) || is_invalid(x) || !(x == 0)`

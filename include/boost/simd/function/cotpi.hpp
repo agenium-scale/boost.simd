@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object returns the cotangent of input in
     \f$\pi\f$ multiples: \f$\cos(\pi x)/sin(\pi x)\f$.
 
+
+    @par Header <boost/simd/function/cotpi.hpp>
+
    @par Note
 
       As most other trigonometric function cotd can be called

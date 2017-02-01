@@ -22,6 +22,9 @@ namespace boost { namespace simd
 
     @see ulp, ulpdist, Eps
 
+
+    @par Header <boost/simd/function/eps.hpp>
+
    @par Example:
 
      @snippet eps.cpp eps

@@ -20,6 +20,9 @@ namespace boost { namespace simd
     @ingroup group-predicates
     This function object returns @ref True or @ref False according x is a flint or not.
 
+
+    @par Header <boost/simd/function/is_flint.hpp>
+
     @par Note
 
     A flint is a 'floating integer' i.e. a floating number

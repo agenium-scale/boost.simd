@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     This function object returns @ref True or @ref False according x is not denormal.
 
+
+    @par Header <boost/simd/function/is_not_denormal.hpp>
+
    @par Note
 
      Using `is_not_denormal(x)` is similar to `!(abs(x) < Smallestposval<T>()) || (x == 0)`

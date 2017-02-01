@@ -21,6 +21,9 @@ namespace boost { namespace simd
     This function object returns @ref True or @ref False according x is even or not.
 
 
+
+    @par Header <boost/simd/function/is_even.hpp>
+
     @par Note:
 
     The call to `is_even(x)` is similar to  `to_int(x/2)*2 == x`

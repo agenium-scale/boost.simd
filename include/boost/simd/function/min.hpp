@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-arithmetic
     This function object computes the smallest of its parameter.
 
+
+    @par Header <boost/simd/function/min.hpp>
+
     @par Notes
     For any given value @c x and @c y of type @c T:
 

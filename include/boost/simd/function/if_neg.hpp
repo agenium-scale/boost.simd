@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-boolean
     This function object conditionally returns  -x if c is @ref True and x otherwise.
 
+
+    @par Header <boost/simd/function/if_neg.hpp>
+
    @par Example:
 
      @snippet negif.cpp negif

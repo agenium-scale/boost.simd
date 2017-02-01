@@ -18,6 +18,9 @@ namespace boost { namespace simd
     This function object concatenates two values of the same type to build a boost::simd::pack
     but with a cardinal twice as large.
 
+
+    @par Header <boost/simd/function/combine.hpp>
+
     @par Scalar Semantic:
     For any scalar value @c a and @c b of type @c T , the following code:
     @code

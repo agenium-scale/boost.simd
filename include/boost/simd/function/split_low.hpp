@@ -18,6 +18,8 @@ namespace boost { namespace simd
 
     SIMD register type-based split_low
 
+    @par Header <boost/simd/function/split_low.hpp>
+
     @c split_low extract the lower half of a SIMD register and convert it
     to the appropriate SIMD register type of corresponding cardinal.
 

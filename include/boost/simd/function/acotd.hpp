@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     This function object returns the inverse cotangent in degree.
 
+
+    @par Header <boost/simd/function/acotd.hpp>
+
    @par Note
 
       For every parameter of floating type `acotd(x)`

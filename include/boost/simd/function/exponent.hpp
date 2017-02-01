@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object returns the exponent of the floating input.
 
 
+
+    @par Header <boost/simd/function/exponent.hpp>
+
     @par Note:
 
      The exponent \f$e\f$ and mantissa \f$m\f$ of a floating point entry \f$x\f$ are related by

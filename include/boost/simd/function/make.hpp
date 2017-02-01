@@ -18,6 +18,9 @@ namespace boost { namespace simd
     @ingroup group-swar
     Build a value of type @c T from a list of scalar values of types @c Args
 
+
+    @par Header <boost/simd/function/make.hpp>
+
     @par Scalar Semantic
     For any type @c T and value @c x of type @c T:
     @code

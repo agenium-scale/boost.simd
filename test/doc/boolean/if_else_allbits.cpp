@@ -6,10 +6,10 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-//! [if_allbits_else_zero]
+//! [if_else_allbits]
 #include <boost/simd/boolean.hpp>
 #include <boost/simd/pack.hpp>
-#include <boost/simd/constant/valmax.hpp>
+#include <boost/simd/constant/nan.hpp>
 #include <iostream>
 
 namespace bs =  boost::simd;
@@ -18,21 +18,22 @@ using pack_ft =  bs::pack <float, 4>;
 int main()
 {
   pack_ft pf = { 3.0f, 0.0f, -3.0f, -0.0 };
-
+  pack_ft qf = { 3.0f, 0.5f, -3.0f, 1.0f };
   std::cout
     <<  "---- simd" << '\n'
-    << " <- pf =                           " << pf << '\n'
-    << " -> bs::if_allbits_else_zero(pf) = " << bs::if_allbits_else_zero(pf) << '\n';
+    << " <- pf =                               " << pf << '\n'
+    << " <- qf =                               " << qf << '\n'
+    << " -> bs::if_else_allbits(pf, qf) =      " << bs::if_else_allbits(pf, qf) << '\n';
 
-
-  std::int32_t xf = 3, yf = 0;
+  std::int32_t xf = 3, yf = 0,  zf = 5;
 
   std::cout
     << "---- scalar"  << '\n'
-    << " xf =                              " << xf << '\n'
-    << " yf =                              " << yf << '\n'
-    << " -> bs::if_allbits_else_zero(xf) = " << bs::if_allbits_else_zero(xf) << '\n'
-    << " -> bs::if_allbits_else_zero(yf) = " << bs::if_allbits_else_zero(yf) << '\n';
+    << " xf =                                  " << xf << '\n'
+    << " yf =                                  " << yf << '\n'
+    << " zf =                                  " << zf << '\n'
+    << " -> bs::if_else_allbits(xf, zf) =      " << bs::if_else_allbits(xf, zf) << '\n'
+    << " -> bs::if_else_allbits(yf, zf) =      " << bs::if_else_allbits(yf, zf) << '\n';
   return 0;
 }
-//! [if_allbits_else_zero]
+//! [if_else_allbits]

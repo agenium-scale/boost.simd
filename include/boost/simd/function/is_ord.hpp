@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     This function object returns @ref True if neither x nor y is @ref Nan.
 
+
+    @par Header <boost/simd/function/is_ord.hpp>
+
    @par Note
 
      Using `is_ord(x,y)` is similar to: `(x == x) && (y == y)`

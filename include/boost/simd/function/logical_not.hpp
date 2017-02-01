@@ -22,6 +22,9 @@ namespace boost { namespace simd
     Infix notation can be used with operator '!'
 
 
+
+    @par Header <boost/simd/function/logical_not.hpp>
+
    @par Example:
 
      @snippet logical_not.cpp logical_not

@@ -22,6 +22,9 @@ namespace boost { namespace simd
     This is a convenience alias of @ref complement
 
 
+
+    @par Header <boost/simd/function/bitwise_not.hpp>
+
    @par Example:
 
      @snippet bitwise_not.cpp bitwise_not

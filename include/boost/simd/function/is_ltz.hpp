@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     This function object returns @ref True or @ref False according x is less than @ref Zero or not.
 
+
+    @par Header <boost/simd/function/is_ltz.hpp>
+
    @par Note
 
      Using `is_ltz(x)` is similar to: `x < 0`

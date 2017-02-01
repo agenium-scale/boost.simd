@@ -21,6 +21,9 @@ namespace boost { namespace simd
     This function object computes the truncation toward @ref Zero
     of its parameter.
 
+
+    @par Header <boost/simd/function/trunc.hpp>
+
      @par Notes
       - the call to `trunc(x)` is similar to `sign(x)*floor(abs(x))`
 

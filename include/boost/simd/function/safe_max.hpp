@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object returns a safe maximal value relative to the input,  i.e. a
     value which will not overflow when multiplied by the input argument.
 
+
+    @par Header <boost/simd/function/safe_max.hpp>
+
    @par Example:
 
      @snippet safe_max.cpp safe_max

@@ -20,6 +20,9 @@ namespace boost { namespace simd
     @ingroup group-predicates
     This function object returns @ref True if x is not inf, -inf or nan, else returns @ref False.
 
+
+    @par Header <boost/simd/function/is_finite.hpp>
+
     @par Note
 
     Using `is_finite(x)` is similar to `x-x == Zero`

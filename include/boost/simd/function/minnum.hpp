@@ -21,6 +21,9 @@ namespace boost { namespace simd
     as missing data (between a NaN and a numeric value, the numeric value is chosen).
 
 
+
+    @par Header <boost/simd/function/minnum.hpp>
+
     @par Decorators
 
       - std_ for floating entries calls the stdlibc++ function std::fmin.

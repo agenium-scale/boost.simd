@@ -21,6 +21,9 @@ namespace boost { namespace simd
 
     Extract a sub-element of a given value @c v
 
+
+    @par Header <boost/simd/function/extract.hpp>
+
     @par Semantic
 
     For any value @c v of type @c Value and @c o of type @c Offset:

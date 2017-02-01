@@ -50,7 +50,7 @@ point. We then apply the formula shown above for calculating the distance betwee
 @subsection distance-interleave How to deal with input data which is not properly ordered
 
 In the above example, we examined the case where the input data was stored in two
-separate buffers, one each for the \f X\f and \f Y\f coordinates.
+separate buffers, one each for the \f$ X\f$ and \f$ Y\f$ coordinates.
 
 However, coordinates are often stored interleaved in memory as follows: \f$x_{0}, y_0, x_1, y_1... , x_n, y_{n-1}\f$
 

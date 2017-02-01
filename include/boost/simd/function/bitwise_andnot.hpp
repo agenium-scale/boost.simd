@@ -22,6 +22,9 @@ namespace boost { namespace simd
     The result type is the one of the first operand.
 
 
+
+    @par Header <boost/simd/function/bitwise_andnot.hpp>
+
    @par Example:
 
      @snippet bitwise_andnot.cpp bitwise_andnot

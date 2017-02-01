@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object returns the compute the remainder modulo \f$2\pi\f$.
 
 
+
+    @par Header <boost/simd/function/rem_2pi.hpp>
+
     @par Note
 
      - The result is in \f$[-\pi, \pi]\f$.

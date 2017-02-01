@@ -22,6 +22,9 @@ namespace boost { namespace simd
 
     shuffles the elements of x using indices in n
 
+
+    @par Header <boost/simd/function/lookup.hpp>
+
     @par Semantic:
 
     For every parameters of types respectively T, N:

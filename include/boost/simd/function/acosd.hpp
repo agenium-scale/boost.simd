@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     This function object returns the inverse cosine in degree.
 
+
+    @par Header <boost/simd/function/acosd.hpp>
+
       @par Decorators
 
        - pedantic_     is similar to indeg(pedantic_)(acos(x));

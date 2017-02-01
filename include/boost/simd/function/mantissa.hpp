@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-ieee
     This function object returns the signed mantissa of the input argument.
 
+
+    @par Header <boost/simd/function/mantissa.hpp>
+
     @par Note
     The @ref exponent @c e and signed @ref mantissa @c m of a floating
     point entry @c x are related by

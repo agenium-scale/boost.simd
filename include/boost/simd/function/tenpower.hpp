@@ -23,6 +23,9 @@ namespace boost { namespace simd
     Returns \f$10^n\f$ in the floating type associated to
     the integral type of parameter n
 
+
+    @par Header <boost/simd/function/tenpower.hpp>
+
     @par semantic:
     For any given value n  of integral type @c I
 

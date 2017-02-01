@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     This function object returns @ref True if x or y is nan.
 
+
+    @par Header <boost/simd/function/is_unord.hpp>
+
    @par Note
 
      Using `is_unord(x,y)` is similar to: `(x != x) || (y != y)`

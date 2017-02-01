@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object returns the cotangent of input in degree:
     \f$\cos(\pi x/180)/\sin(\pi x/180)\f$.
 
+
+    @par Header <boost/simd/function/cotd.hpp>
+
    @par Note
 
       s most other trigonometric function cotd can be called

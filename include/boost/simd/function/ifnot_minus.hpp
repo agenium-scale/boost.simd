@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object conditionally returns  @c x (respectively @c x-y)
     if @c c is @ref True (respectively  @ref False)
 
+
+    @par Header <boost/simd/function/ifnot_minus.hpp>
+
    @par Example:
 
      @snippet ifnot_minus.cpp ifnot_minus

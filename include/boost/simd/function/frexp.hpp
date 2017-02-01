@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-ieee
     This function object returns a mantissa and an exponent pair for the input
 
+
+    @par Header <boost/simd/function/frexp.hpp>
+
     @par Semantic:
 
     For every parameter of floating type

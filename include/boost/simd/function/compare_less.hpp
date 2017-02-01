@@ -22,6 +22,9 @@ lexicographic
 
   It is probably not what you wish. Have a look to @ref is_less
 
+
+    @par Header <boost/simd/function/compare_less.hpp>
+
   @par Example:
 
    @snippet compare_less.cpp compare_less

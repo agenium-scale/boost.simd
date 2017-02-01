@@ -21,6 +21,9 @@ namespace boost { namespace simd
 
    @see sign, signnz, is_positive
 
+
+    @par Header <boost/simd/function/copysign.hpp>
+
    @par Example:
 
      @snippet copysign.cpp copysign

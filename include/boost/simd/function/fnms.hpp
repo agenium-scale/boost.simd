@@ -21,6 +21,9 @@ namespace boost { namespace simd
     This function object computes the negated (fused) multiply substract of
     its three parameters.
 
+
+    @par Header <boost/simd/function/fnms.hpp>
+
     @par Notes
     The call `fnms(a, b, c)` is similar to `-a*b+c`
 

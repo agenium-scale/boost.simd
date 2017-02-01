@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object returns the first entry rotated right
     by the value of the second entry.
 
+
+    @par Header <boost/simd/function/ror.hpp>
+
     @par Note
     This function asserts if the integral parameter is out of range
 

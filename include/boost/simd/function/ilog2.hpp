@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object returns the integer part of the base 2
     logarithm of the input.
 
+
+    @par Header <boost/simd/function/ilog2.hpp>
+
     @par Note
     This function asserts for negative or null values.
 

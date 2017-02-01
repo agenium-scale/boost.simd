@@ -24,6 +24,9 @@ namespace boost { namespace simd
 
     @see toint, touint, cast
 
+
+    @par Header <boost/simd/function/tofloat.hpp>
+
     @par Example:
 
        @snippet tofloat.cpp tofloat

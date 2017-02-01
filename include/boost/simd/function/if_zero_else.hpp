@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object conditionally returns  @c 0 (respectively @c x)
     if @c c is @ref True (respectively  @ref False)
 
+
+    @par Header <boost/simd/function/if_zero_else.hpp>
+
    @par Example:
 
      @snippet if_zero_else.cpp if_zero_else

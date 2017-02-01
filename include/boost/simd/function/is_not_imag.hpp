@@ -22,6 +22,9 @@ namespace boost { namespace simd
 
     For non complex numbers it is @ref True except if x is @ref Zero.
 
+
+    @par Header <boost/simd/function/is_not_imag.hpp>
+
    @par Note
 
      Using `is_not_imag(x)` is similar to: `x != 0` for real entries.

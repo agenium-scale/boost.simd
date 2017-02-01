@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object returns the cosine of the input in degree:
     \f$\cos(\pi x/180)\f$.
 
+
+    @par Header <boost/simd/function/cosd.hpp>
+
    @par Note
 
      - The semantics of the function are similar to cos ones.

@@ -25,6 +25,9 @@ lexicographic
   It is probably not what you wish. Have a look to @ref is_not_equal
 
 
+
+    @par Header <boost/simd/function/compare_not_equal.hpp>
+
  @par Example:
 
    @snippet compare_not_equal.cpp compare_not_equal

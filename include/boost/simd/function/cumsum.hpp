@@ -21,6 +21,9 @@ namespace simd {
 
   @see cumprod
 
+
+    @par Header <boost/simd/function/cumsum.hpp>
+
   @par Example:
 
     @snippet cumsum.cpp cumsum

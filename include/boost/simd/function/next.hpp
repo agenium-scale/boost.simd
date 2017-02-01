@@ -37,6 +37,9 @@ namespace boost { namespace simd
     @see nextafter, prev, successor, predecessor
 
 
+
+    @par Header <boost/simd/function/next.hpp>
+
    @par Example:
 
      @snippet next.cpp next

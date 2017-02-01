@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-bitwise
     This function object returns the signed integer value which has the bit pattern of the input
 
+
+    @par Header <boost/simd/function/sbits.hpp>
+
    @par Example:
 
      @snippet sbits.cpp sbits

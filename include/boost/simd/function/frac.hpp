@@ -21,6 +21,9 @@ namespace boost { namespace simd
 
     @see trunc, modf
 
+
+    @par Header <boost/simd/function/frac.hpp>
+
    @par Example:
 
      @snippet frac.cpp frac

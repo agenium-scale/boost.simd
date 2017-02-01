@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     This function object returns @ref True or @ref False according x is less or equal to @ref Zero or not.
 
+
+    @par Header <boost/simd/function/is_lez.hpp>
+
    @par Note
 
      Using `is_lez(x)` is similar to: `x <= 0`

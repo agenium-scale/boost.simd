@@ -21,6 +21,9 @@ namespace boost { namespace simd
     This function object returns the lower slice of a simd::pack, i.e a simd::pack of same type
     containing the higher half of ts argument.
 
+
+    @par Header <boost/simd/function/slice_high.hpp>
+
     @par Semantic:
 
     For any value @c a of type @c T and cardinal @c N, the following code:

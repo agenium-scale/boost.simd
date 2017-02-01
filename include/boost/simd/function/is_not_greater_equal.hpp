@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     This function object returns @ref True if x is not greater or equal to y else returns @ref False.
 
+
+    @par Header <boost/simd/function/is_not_greater_equal.hpp>
+
    @par Note
 
      Using `is_not_greater_equal(x,y)` is similar to: `!(x >= y)`

@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
    @par Header <boost/simd/function/pow2.hpp>
 
-   @Note
+   @par Note
 
    The first parameter default to @c One.
 

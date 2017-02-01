@@ -22,6 +22,9 @@ namespace boost { namespace simd
 
    @see sin, sinc, sinhc
 
+
+    @par Header <boost/simd/function/sincpi.hpp>
+
    @par Example:
 
      @snippet sincpi.cpp sincpi

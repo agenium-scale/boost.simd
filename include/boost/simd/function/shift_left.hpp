@@ -24,9 +24,12 @@ namespace boost { namespace simd
 
     Infix notation can be used with operator '<<'
 
-    @alias shl
+    @par alias shl
 
     @see  shift_right, shr, rshl, rshr, rol, ror
+
+
+    @par Header <boost/simd/function/shift_left.hpp>
 
    @par Example:
 

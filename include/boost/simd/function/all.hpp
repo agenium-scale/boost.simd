@@ -21,6 +21,9 @@ namespace simd {
 
    @see ant, none, nbtrue
 
+
+    @par Header <boost/simd/function/all.hpp>
+
   @par Example:
 
     @snippet all.cpp all

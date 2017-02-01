@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-ieee
     Returns the next representable value of @c x in the direction of @c y
 
+
+    @par Header <boost/simd/function/nextafter.hpp>
+
     @par Semantic:
 
     @code

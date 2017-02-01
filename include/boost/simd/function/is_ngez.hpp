@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     This function object returns @ref True if x is not greater or equal to @ref Zero else returns @ref False.
 
+
+    @par Header <boost/simd/function/is_ngez.hpp>
+
    @par Note
 
      Using `is_ngez(x)` is similar to: `!(x >= 0)`

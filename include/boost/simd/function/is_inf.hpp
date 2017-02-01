@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     This function object returns @ref True if x is inf or -inf else returns @ref False.
 
+
+    @par Header <boost/simd/function/is_inf.hpp>
+
    @par Note
 
      Using `is_inf(x)` is similar to `(x == Inf) || (x == -Inf)`

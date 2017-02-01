@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object returns the saturated value of the first input in the template parameter type,
     but in the same type as the  argument.
 
+
+    @par Header <boost/simd/function/saturate.hpp>
+
     @par Semantic:
 
 

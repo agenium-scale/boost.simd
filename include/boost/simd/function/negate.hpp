@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object returns  the first element multiplied by 1,  0 or -1 depending on the fact its second argument
     is greater,  equal or lesser than zero.
 
+
+    @par Header <boost/simd/function/negate.hpp>
+
     @par Note
     If y is @ref Zero the result is zero. This can be avoided using
     @ref negatenz or @ref copysign.

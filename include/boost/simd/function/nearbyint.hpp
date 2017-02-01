@@ -22,6 +22,9 @@ namespace boost { namespace simd
 
     Computes the rounded to even value of its parameter.
 
+
+    @par Header <boost/simd/function/nearbyint.hpp>
+
     @par semantic:
     For any given value @c x of type @c T:
 

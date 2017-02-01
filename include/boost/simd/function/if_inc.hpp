@@ -21,6 +21,9 @@ namespace boost { namespace simd
     if @c c is @ref True (respectively  @ref False)
 
 
+
+    @par Header <boost/simd/function/if_inc.hpp>
+
    @par Example:
 
      @snippet if_inc.cpp if_inc

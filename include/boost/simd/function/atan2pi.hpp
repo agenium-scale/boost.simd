@@ -19,6 +19,9 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     This function object returns the atan2pi function : atan2 in pi multiples.
 
+
+    @par Header <boost/simd/function/atan2pi.hpp>
+
    @par Note
 
       For every parameters of same floating type `atan2pi(y, x)`

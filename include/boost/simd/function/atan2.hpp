@@ -20,6 +20,9 @@ namespace boost { namespace simd
     This function object returns the quadrant aware `atan2` function.
 
 
+
+    @par Header <boost/simd/function/atan2.hpp>
+
     @par Notes
 
     - For any real arguments @c x and @c y not both equal to zero, <tt>atan2(y, x)</tt>

@@ -23,6 +23,9 @@ namespace boost { namespace simd
     on all platforms supported.
 
 
+
+    @par Header <boost/simd/function/ilogb.hpp>
+
    @par Example:
 
      @snippet ilogb.cpp ilogb
