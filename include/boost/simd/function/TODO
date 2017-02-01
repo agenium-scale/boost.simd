@@ -8,7 +8,7 @@ OK acoth.hpp
 OK acot.hpp
 OK acotpi.hpp
 OK acscd.hpp
-acsch.hpp
+OK acsch.hpp
 acsc.hpp
 acscpi.hpp
 aligned_load.hpp

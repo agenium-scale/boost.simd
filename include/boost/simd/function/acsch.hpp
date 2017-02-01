@@ -35,7 +35,7 @@ namespace boost { namespace simd
 
 
   **/
-  Value acsch(Value const & x);
+  IEEEValue acsch(IEEEValue const & x);
 } }
 #endif
 
