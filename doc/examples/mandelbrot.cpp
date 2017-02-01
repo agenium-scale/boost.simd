@@ -62,6 +62,8 @@ struct mandelbrot
         T x2          = x * x;
         T y2          = y * y;
         while (x2 + y2 < 4 && iteration < max_iter) {
+          x2 = x * x;
+          y2 = y * y;
           T x_temp = x2 - y2 + x0;
           y        = 2 * x * y + y0;
           x        = x_temp;
