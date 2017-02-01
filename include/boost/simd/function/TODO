@@ -11,9 +11,9 @@ OK acscd.hpp
 OK acsch.hpp
 OK acsc.hpp
 OK acscpi.hpp
-aligned_load.hpp
-aligned_store.hpp
-all.hpp
+NA aligned_load.hpp
+NA aligned_store.hpp
+OK all.hpp
 any.hpp
 arg.hpp
 asecd.hpp
