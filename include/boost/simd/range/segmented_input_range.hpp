@@ -12,16 +12,20 @@
 #ifndef BOOST_SIMD_RANGE_SEGMENTED_INPUT_RANGE_HPP_INCLUDED
 #define BOOST_SIMD_RANGE_SEGMENTED_INPUT_RANGE_HPP_INCLUDED
 
+#include <tuple>
 #include <boost/simd/range/detail/segmented_range.hpp>
 #include <boost/simd/range/aligned_input_range.hpp>
 #include <boost/align/align_up.hpp>
-#include <boost/range/iterator_range.hpp>
+#include <boost/simd/detail/nsm.hpp>
+#include <boost/simd/range/detail/util.hpp>
 
 namespace boost { namespace simd
 {
+  namespace tt = nsm::type_traits;
+
   /*!
     @ingroup group-std
-    Splits a ContiguousRange in three Contiguous Input Ranges able to support mixed scalar and SIMD
+    A three Contiguous Input Ranges tuple able to support mixed scalar and SIMD
     traversal.
 
     The three sub-ranges are stored into a std::tuple and covers:
@@ -31,6 +35,16 @@ namespace boost { namespace simd
       to be read as a boost::simd::pack and the location after the last readable pack.
     - the scalar epilogue range, i.e the range defined between the location after the last readable
       pack and the original end.
+  */
+  template <typename Iterator>
+  using segmented_input_range_type = std::tuple< iterator_range<Iterator>
+                                               , iterator_range<detail::aligned_input_iterator<Iterator>>
+                                               , iterator_range<Iterator>
+                                               >;
+
+  /*!
+    @ingroup group-std
+    Splits a ContiguousRange into a @ref segmented_input_range_type.
 
     @par Example
     @snippet segmented_input_range.cpp segmented_input_range
@@ -43,13 +57,13 @@ namespace boost { namespace simd
     @param e  End iterator of the ContiguousRange to adapt
     @return   A triplet of Input Range covering the scalar prologue, the SIMD main range and the scalar
               epilogue covering the same data than the original Range.
+              
+    @see segmented_input_range_type
   **/
   template<std::size_t C, typename Iterator>
-  std::tuple< iterator_range<Iterator>
-            , iterator_range<detail::aligned_input_iterator<Iterator>>
-            , iterator_range<Iterator>
-            >
-  inline segmented_input_range( Iterator b, Iterator e )
+  inline
+  segmented_input_range_type<Iterator>
+  segmented_input_range( Iterator b, Iterator e )
   {
     return detail::segmented_range<C, detail::aligned_input_iterator<Iterator>>
       ( b
@@ -58,32 +72,35 @@ namespace boost { namespace simd
       );
   }
 
-  template<class Iterator> inline
-  auto    segmented_input_range( Iterator begin, Iterator end )
-      ->  decltype( segmented_input_range< pack< typename std::iterator_traits<Iterator>
-                                                              ::value_type
-                                                  >::static_size
-                                            >( begin, end )
-                  )
+  /*!
+    @overload
+  */
+  template<std::size_t C, class Range>
+  inline
+  segmented_input_range_type<detail::range_iterator<Range const>>
+  segmented_input_range( Range const& r )
   {
-    return  segmented_input_range< pack< typename std::iterator_traits<Iterator>
-                                                    ::value_type
-                                        >::static_size
-                                  >( begin, end );
+    return segmented_input_range<C>( tt::begin(r), tt::end(r) );
   }
 
-  template<std::size_t C, class Range> inline
-  auto    segmented_input_range( Range const& r )
-      ->  decltype( segmented_input_range<C>( boost::begin(r), boost::end(r) ) )
+  template<class Iterator>
+  inline
+  segmented_input_range_type<Iterator>
+  segmented_input_range( Iterator begin, Iterator end )
   {
-    return segmented_input_range<C>( boost::begin(r), boost::end(r) );
+    typedef typename std::iterator_traits<Iterator>::value_type value_type;
+    return  segmented_input_range< pack<value_type>::static_size>( begin, end );
   }
 
-  template<class Range> inline
-  auto    segmented_input_range( Range const& r )
-      ->  decltype( segmented_input_range( boost::begin(r), boost::end(r) ) )
+  /*!
+     @overload
+  */
+  template<class Range> 
+  inline
+  segmented_input_range_type<detail::range_iterator<Range const>>
+  segmented_input_range( Range const& r )
   {
-    return segmented_input_range( boost::begin(r), boost::end(r) );
+    return segmented_input_range( tt::begin(r), tt::end(r) );
   }
 } }
 
