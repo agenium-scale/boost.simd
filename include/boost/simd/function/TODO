@@ -10,7 +10,7 @@ OK acotpi.hpp
 OK acscd.hpp
 OK acsch.hpp
 OK acsc.hpp
-acscpi.hpp
+OK acscpi.hpp
 aligned_load.hpp
 aligned_store.hpp
 all.hpp

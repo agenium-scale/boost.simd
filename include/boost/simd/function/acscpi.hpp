@@ -33,7 +33,7 @@ namespace boost { namespace simd
      @snippet acscpi.txt acscpi
 
   **/
-  Value acscpi(Value const & x);
+  IEEEValue acscpi(IEEEValue const & x);
 } }
 #endif
 
