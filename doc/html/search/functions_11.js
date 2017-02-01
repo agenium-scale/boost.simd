@@ -29,7 +29,7 @@ var searchData=
   ['twoopi',['Twoopi',['../group__group-constant_gabe434e3515c277ad67fcfd57b3cf91c6.html#gabe434e3515c277ad67fcfd57b3cf91c6',1,'boost::simd']]],
   ['twopi',['Twopi',['../group__group-constant_gaa63c63daf596030ec9dacc76d5850d13.html#gaa63c63daf596030ec9dacc76d5850d13',1,'boost::simd']]],
   ['twopio_5f3',['Twopio_3',['../group__group-constant_gaf7e156f606e81d8b00cb565b1a455336.html#gaf7e156f606e81d8b00cb565b1a455336',1,'boost::simd']]],
-  ['twopower',['twopower',['../group__group-bitwise_gafc41523207d49640867787e55c6afdd4.html#gafc41523207d49640867787e55c6afdd4',1,'boost::simd']]],
+  ['twopower',['twopower',['../group__group-bitwise_gaaef3d7d0c9ff58b72ea473ba87de73eb.html#gaaef3d7d0c9ff58b72ea473ba87de73eb',1,'boost::simd']]],
   ['twoto31',['Twoto31',['../group__group-constant_ga24d69f7dba4e3bfd46cdd772fdd10183.html#ga24d69f7dba4e3bfd46cdd772fdd10183',1,'boost::simd']]],
   ['twotom10',['Twotom10',['../group__group-constant_gafff6862bde06912e77c16d607caba2a8.html#gafff6862bde06912e77c16d607caba2a8',1,'boost::simd']]],
   ['twotomnmbo_5f3',['Twotomnmbo_3',['../group__group-constant_ga771c421b833def102a84029757385793.html#ga771c421b833def102a84029757385793',1,'boost::simd']]],

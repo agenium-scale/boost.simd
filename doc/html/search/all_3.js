@@ -9,7 +9,7 @@ var searchData=
   ['dist',['dist',['../group__group-arithmetic_ga2f280297aceeece05e9ef597ce611980.html#ga2f280297aceeece05e9ef597ce611980',1,'boost::simd']]],
   ['div',['div',['../namespaceboost_1_1simd_afd241bb4c2e4c2ff27346c4f3bfb86d9.html#afd241bb4c2e4c2ff27346c4f3bfb86d9',1,'boost::simd']]],
   ['divides',['divides',['../group__group-operator_gaffcdabc266680683bf5d0b879908d1f1.html#gaffcdabc266680683bf5d0b879908d1f1',1,'boost::simd']]],
-  ['dot',['dot',['../group__group-reduction_gaff8d315fafcf6c4112c2f1b2683da193.html#gaff8d315fafcf6c4112c2f1b2683da193',1,'boost::simd']]],
+  ['dot',['dot',['../group__group-reduction_ga93e42b3d9c8a8e6725f03420c2ee5e78.html#ga93e42b3d9c8a8e6725f03420c2ee5e78',1,'boost::simd']]],
   ['downgrade',['downgrade',['../structboost_1_1simd_1_1downgrade.html',1,'boost::simd']]],
   ['downgrade_5ft',['downgrade_t',['../group__group-api_ga53713d7d30947e968e89addf915df117.html#ga53713d7d30947e968e89addf915df117',1,'boost::simd']]],
   ['decorators',['Decorators',['../group__group-decorator.html',1,'']]],
