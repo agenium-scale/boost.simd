@@ -18,23 +18,15 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-predicates
-    Function object implementing is_even capabilities
+    This function object returns @ref True or @ref False according x is even or not.
 
-    Returns @ref True or @ref False according x is even or not.
 
-    @par Semantic:
 
-    @code
-    auto r = is_even(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    auto r = to_int(x/2)*2 == x;
-    @endcode
+    @par Header <boost/simd/function/is_even.hpp>
 
     @par Note:
+
+    The call to `is_even(x)` is similar to  `to_int(x/2)*2 == x`
 
     A floating number is even if it is a  flint
     and divided by two it is still a flint.
@@ -45,6 +37,14 @@ namespace boost { namespace simd
     Be conscious that all sufficiently great floating points values are even...
 
     @see is_odd, is_flint
+
+    @par Example:
+
+       @snippet is_even.cpp is_even
+
+    @par Possible output:
+
+       @snippet is_even.txt is_even
 
   **/
   as_logical_t<Value> is_even(Value const& x);

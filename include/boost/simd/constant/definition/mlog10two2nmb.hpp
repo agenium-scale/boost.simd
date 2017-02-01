@@ -12,7 +12,7 @@
 #define BOOST_SIMD_CONSTANT_DEFINITION_MLOG10TWO2NMB_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/detail/constant_traits.hpp>
 #include <boost/simd/detail/dispatch/function/make_callable.hpp>
@@ -44,6 +44,12 @@ namespace boost { namespace simd
   BOOST_NOEXCEPT_DECLTYPE(detail::mlog10two2nmb( boost::dispatch::as_<T>{}))
   {
     return detail::mlog10two2nmb( boost::dispatch::as_<T>{} );
+  }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Mlog10two2nmb(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Mlog10two2nmb<T>())
+  {
+    return Mlog10two2nmb<T>();
   }
 } }
 

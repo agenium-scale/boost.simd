@@ -1,0 +1,8 @@
+//! [exprecnegc]
+---- simd
+<- pf =           (1, 2, 1e-20, 0.5)
+-> bs::exprecnegc(pf) = (0.632121, 0.393469, 1, 0.864665)
+---- scalar
+<- xf =           2
+-> bs::exprecnegc(xf) = 0.393469
+//! [exprecnegc]

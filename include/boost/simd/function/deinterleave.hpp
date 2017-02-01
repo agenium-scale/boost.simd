@@ -20,6 +20,9 @@ namespace boost { namespace simd
     deinterleave is guaranteed to be optimized as much as possible compared to using
     boost::simd::deinterleave_first and boost::simd::deinterleave_second in succession.
 
+
+    @par Header <boost/simd/function/deinterleave.hpp>
+
     @par Semantic:
     For every parameters @c x and @c y of type @c T :
     @code

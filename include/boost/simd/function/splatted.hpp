@@ -30,6 +30,9 @@ namespace boost { namespace simd
     SIMD pack containing said value in all of its element. The splatted_ decorator
     allow for such optimization.
 
+
+    @par Header <boost/simd/function/splatted.hpp>
+
     @par Semantic:
 
     For any reduction function @c r and any SIMD pack @ p , the following code:

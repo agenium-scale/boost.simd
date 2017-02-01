@@ -16,30 +16,25 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing sincos capabilities
+    This function object returns the Computes simultaneouly
+    and at lower cost the sine and cosine of the input
 
-    Computes simultaneouly and at lower cost the sine and cosine of the input
+   @see sincosd,  sincospi
 
-    For every parameter of floating type T:
 
-    @par Semantic:
+    @par Header <boost/simd/function/sincos.hpp>
 
-    @code
-    T s, c;
-    std::tie(s, c) = sincos(x);
-    @endcode
+   @par Example:
 
-    is similar to:
+     @snippet sincos.cpp sincos
 
-    @code
-    T s =  sin(x);
-    T c =  cos(x);
-    @endcode
+   @par Possible output:
+
+     @snippet sincos.txt sincos
 
   **/
-  std::pair<Value, Value> sincos(Value const & v0);
+  std::pair<Value, Value> sincos(Value const & x);
 } }
 #endif
 

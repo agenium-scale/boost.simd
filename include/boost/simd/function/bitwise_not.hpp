@@ -16,14 +16,23 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-operator
-    Function object implementing bitwise_not capabilities
-
-    return the bitwise bitwise_not of the entry
+    This function object returns the return the bitwise bitwise_not of the entry
     Infix notation can be used with operator '~'
-
     This is a convenience alias of @ref complement
+
+
+
+    @par Header <boost/simd/function/bitwise_not.hpp>
+
+   @par Example:
+
+     @snippet bitwise_not.cpp bitwise_not
+
+   @par Possible output:
+
+     @snippet bitwise_not.txt bitwise_not
+
   **/
   Value bitwise_not(Value const & x);
 } }

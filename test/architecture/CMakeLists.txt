@@ -9,6 +9,7 @@
 set ( SOURCES
       tags.cpp
       limits.cpp
+      is_iterator.cpp
     )
 
 make_unit( "architecture" ${SOURCES})

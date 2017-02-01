@@ -16,24 +16,25 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
-    Function object implementing is_not_real capabilities
 
-    Returns @ref True or @ref False according x is real or not.
+    This function object returns @ref True or @ref False according x is real or not.
     For non complex numbers it is always false
 
-    @par Semantic:
 
-    @code
-    auto r = is_not_real(x);
-    @endcode
+    @par Header <boost/simd/function/is_not_real.hpp>
 
-    is similar to:
+   @par Note
 
-    @code
-    auto r = False;
-    @endcode
+     Using `is_not_real(x)` is similar to: `False` for real inputs.
+
+   @par Example:
+
+     @snippet is_not_real.cpp is_not_real
+
+   @par Possible output:
+
+     @snippet is_not_real.txt is_not_real
 
   **/
   as_logical_t<Value> is_not_real(Value const& x);

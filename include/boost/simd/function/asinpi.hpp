@@ -16,26 +16,25 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing asinpi capabilities
+    This function object returns the inverse sine in \f$\pi\f$ multiples.
 
-    inverse sine in \f$\pi\f$ multiples.
-    @par Semantic:
+   @see asin, asind, sinpi
 
-    For every parameter of floating type
 
-    @code
-    auto r = asinpi(x);
-    @endcode
 
-    Returns the arc @c r in the interval
-    \f$[-0.5, 0.5[\f$ such that <tt>cos(r) == x</tt>.
-    If @c x is outside \f$[-1, 1[\f$ the result is Nan.
+    @par Header <boost/simd/function/asinpi.hpp>
 
-    @see asin, asind, sinpi
+   @par Example:
+
+     @snippet asinpi.cpp asinpi
+
+   @par Possible output:
+
+     @snippet asinpi.txt asinpi
+
   **/
-  Value asinpi(Value const & v0);
+  Value asinpi(Value const & x);
 } }
 #endif
 

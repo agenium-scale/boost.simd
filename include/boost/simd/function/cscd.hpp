@@ -16,27 +16,32 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing cscd capabilities
+    This function object returns the cosecant in degree: \f$1/\sin(180/(\pi x))\f$.
 
-    cosecant in degree: \f$\sin(180/(\pi x))\f$.
 
-    @par Semantic:
+    @par Header <boost/simd/function/cscd.hpp>
 
-    For every parameter of floating type
+   @par Note
 
-    @code
-    auto r = cscd(x);
-    @endcode
+     As most other trigonometric function cscd can be called with a
+     second optional parameter  which is a tag on speed and accuracy
+     (see @ref cos for further details)
 
-    As most other trigonometric function cscd can be called with a second optional parameter
-    which is a tag on speed and accuracy (see @ref cos for further details)
 
-    @see csc, cscpi,
+   @see csc, cscpi,
+
+
+   @par Example:
+
+     @snippet cscd.cpp cscd
+
+   @par Possible output:
+
+     @snippet cscd.txt cscd
 
   **/
-  Value cscd(Value const & v0);
+  Value cscd(Value const & x);
 } }
 #endif
 

@@ -25,6 +25,9 @@ namespace boost { namespace simd
     Computes the horner value of its parameter.
     This is a static polynomial evaluation.
 
+
+    @par Header <boost/simd/function/horn.hpp>
+
     @par Semantic
 
     For any value @c x of floating point type @c T,

@@ -16,21 +16,25 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-bitwise
-    Function object implementing swapbytes capabilities
+    This function object reverses the byte order of each scalar value
 
-    Reverse the byte order of each scalar value
+    @see reverse,  reversebits
 
-    @par semantic:
-    For any given value @c x of type @c T:
 
-    @code
-    T r = swapbytes(x);
-    @endcode
+
+    @par Header <boost/simd/function/swapbytes.hpp>
+
+   @par Example:
+
+     @snippet swapbytes.cpp swapbytes
+
+   @par Possible output:
+
+     @snippet swapbytes.txt swapbytes
 
   **/
-  Value swapbytes(Value const & v0);
+  Value swapbytes(Value const & x);
 } }
 #endif
 

@@ -1,0 +1,5 @@
+//! [saturated_abs_results]
+ pf =  (-1, 2, -3, -inf  ) -> bs::abs(pf) =                 (1, 2, 3,  inf  )
+ pi =  (-1, 2, -3, -32768) -> bs::abs(pi) =                 (1, 2, 3, -32768)
+ pi =  (-1, 2, -3, -32768) -> bs::saturated_(bs::abs(pi)) = (1, 2, 3,  32767)
+//! [saturated_abs_results]

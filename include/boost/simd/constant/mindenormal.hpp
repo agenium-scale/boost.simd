@@ -53,8 +53,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/constant/definition/mindenormal.hpp>
-#include <boost/simd/arch/common/scalar/constant/constant_value.hpp>
-#include <boost/simd/arch/common/simd/constant/constant_value.hpp>
+#include <boost/simd/constant/scalar/mindenormal.hpp>
+#include <boost/simd/constant/simd/mindenormal.hpp>
 
 #endif

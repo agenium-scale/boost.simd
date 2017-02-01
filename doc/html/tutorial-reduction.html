@@ -21,14 +21,14 @@
     extensions: ["tex2jax.js"],
     jax: ["input/TeX","output/SVG"],
 });
-</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</script><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
         <link rel="icon" href="numscale_icon.png">
         <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         <link href="doxygen.css" rel="stylesheet" type="text/css" />
-        <link href="doxygen.css" rel="stylesheet" type="text/css" />
         <link href="custom.css" rel="stylesheet" type="text/css"/>
 <link href="ns.css" rel="stylesheet" type="text/css"/>
+<link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="ns.js"></script>
         <script type="text/javascript" src="custom.js"></script>
@@ -44,7 +44,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li id="version">
-                            <a href="#" class="disabled">4.16.12.0</a>
+                            <a href="#" class="disabled">4.17.1.0</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -135,7 +135,7 @@ Transforming a scalar reduction into a SIMD reduction</h1>
 <hr/>
 <p>We will demonstrate how a scalar reduction loop may be transformed into a SIMD loop. Take the following loop, for example:</p>
 <div class="fragment"><div class="line">  <span class="comment">// Scalar version</span></div>
-<div class="line">  int32_t <a class="code" href="group__group-reduction_ga474846094a2e6c8f59ae86a1fc5cb720.html#ga474846094a2e6c8f59ae86a1fc5cb720">sum</a> = 0;</div>
+<div class="line">  int32_t <a class="code" href="group__group-reduction_ga418c9174d2e31b314f003e047af12ca6.html#ga418c9174d2e31b314f003e047af12ca6">sum</a> = 0;</div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; size; ++i) {</div>
 <div class="line">    sum += array[i];</div>
 <div class="line">  }</div>
@@ -157,19 +157,19 @@ Reducing into a pack</h2>
 <div class="line"></div>
 <div class="line">  std::vector&lt;int32_t&gt; array(size);</div>
 <div class="line">  std::iota(array.begin(), array.end(), 0);</div>
-</div><!-- fragment --><p> Here we combine the approaches by summing into a <a class="el" href="classboost_1_1simd_1_1pack.html" title="High-level interface for manipulating SIMD data. ">boost::simd::pack</a>, allowing us to perform as many simultaneous additions as there are elements in a pack. It is only at the end that we accumulate these sub-sums into the full scalar sum using the <a class="el" href="group__group-reduction_ga474846094a2e6c8f59ae86a1fc5cb720.html#ga474846094a2e6c8f59ae86a1fc5cb720" title="Function object implementing sum capabilities. ">boost::simd::sum</a> function provided by <code>boost/simd/function/sum.hpp.</code></p>
+</div><!-- fragment --><p> Here we combine the approaches by summing into a <a class="el" href="classboost_1_1simd_1_1pack.html" title="High-level interface for manipulating SIMD data. ">boost::simd::pack</a>, allowing us to perform as many simultaneous additions as there are elements in a pack. It is only at the end that we accumulate these sub-sums into the full scalar sum using the <a class="el" href="group__group-reduction_ga418c9174d2e31b314f003e047af12ca6.html#ga418c9174d2e31b314f003e047af12ca6" title="This function object returns the sum of the elements of the SIMD argument. ">boost::simd::sum</a> function provided by <code>boost/simd/function/sum.hpp.</code></p>
 <div class="fragment"><div class="line">  sum = 0;</div>
 <div class="line">  pack_t sum_p{0};</div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; size; i += card_int) {</div>
 <div class="line">    sum_p += pack_t(array.data() + i);</div>
 <div class="line">  }</div>
-<div class="line">  sum = <a class="code" href="group__group-reduction_ga474846094a2e6c8f59ae86a1fc5cb720.html#ga474846094a2e6c8f59ae86a1fc5cb720">bs::sum</a>(sum_p);</div>
+<div class="line">  sum = <a class="code" href="group__group-reduction_ga418c9174d2e31b314f003e047af12ca6.html#ga418c9174d2e31b314f003e047af12ca6">bs::sum</a>(sum_p);</div>
 </div><!-- fragment --> <h2><a class="anchor" id="reduction-compile"></a>
 Exploiting information available at compile time</h2>
-<p>If the size of our array is known at compile time and it's a power of 2, we can let <a class="el" href="classboost_1_1simd_1_1pack.html" title="High-level interface for manipulating SIMD data. ">boost::simd::pack</a> and <a class="el" href="group__group-reduction_ga474846094a2e6c8f59ae86a1fc5cb720.html#ga474846094a2e6c8f59ae86a1fc5cb720" title="Function object implementing sum capabilities. ">boost::simd::sum</a> do the heavy lifting and simply write:</p>
+<p>If the size of our array is known at compile time and it's a power of 2, we can let <a class="el" href="classboost_1_1simd_1_1pack.html" title="High-level interface for manipulating SIMD data. ">boost::simd::pack</a> and <a class="el" href="group__group-reduction_ga418c9174d2e31b314f003e047af12ca6.html#ga418c9174d2e31b314f003e047af12ca6" title="This function object returns the sum of the elements of the SIMD argument. ">boost::simd::sum</a> do the heavy lifting and simply write:</p>
 <div class="fragment"><div class="line">  sum = 0;</div>
 <div class="line">  <a class="code" href="classboost_1_1simd_1_1pack.html">bs::pack&lt;int32_t, size&gt;</a> array_pack(array.data());</div>
-<div class="line">  sum = <a class="code" href="group__group-reduction_ga474846094a2e6c8f59ae86a1fc5cb720.html#ga474846094a2e6c8f59ae86a1fc5cb720">bs::sum</a>(array_pack);</div>
+<div class="line">  sum = <a class="code" href="group__group-reduction_ga418c9174d2e31b314f003e047af12ca6.html#ga418c9174d2e31b314f003e047af12ca6">bs::sum</a>(array_pack);</div>
 </div><!-- fragment --><p> In this case, the size of our input data is an exact multiple of a <b>SIMD</b> vector. What about the case where this is not true?</p>
 <h2><a class="anchor" id="reduction-hanging-data"></a>
 What happens if the number of data is not a multiple of the cardinal?</h2>
@@ -183,7 +183,7 @@ What happens if the number of data is not a multiple of the cardinal?</h2>
 <div class="line">  <span class="keywordflow">for</span> (; i + card_int &lt;= newsize; i += card_int) {</div>
 <div class="line">    sum_p += pack_t(array.data() + i);</div>
 <div class="line">  }</div>
-<div class="line">  sum = <a class="code" href="group__group-reduction_ga474846094a2e6c8f59ae86a1fc5cb720.html#ga474846094a2e6c8f59ae86a1fc5cb720">bs::sum</a>(sum_p);</div>
+<div class="line">  sum = <a class="code" href="group__group-reduction_ga418c9174d2e31b314f003e047af12ca6.html#ga418c9174d2e31b314f003e047af12ca6">bs::sum</a>(sum_p);</div>
 <div class="line">  <span class="keywordflow">for</span> (; i &lt; newsize; ++i) {</div>
 <div class="line">    sum += array[i];</div>
 <div class="line">  }</div>
@@ -220,7 +220,7 @@ Full code</h1>
 <div class="line"></div>
 <div class="line">  sum = 0;</div>
 <div class="line">  <a class="code" href="classboost_1_1simd_1_1pack.html">bs::pack&lt;int32_t, size&gt;</a> array_pack(array.data());</div>
-<div class="line">  sum = <a class="code" href="group__group-reduction_ga474846094a2e6c8f59ae86a1fc5cb720.html#ga474846094a2e6c8f59ae86a1fc5cb720">bs::sum</a>(array_pack);</div>
+<div class="line">  sum = <a class="code" href="group__group-reduction_ga418c9174d2e31b314f003e047af12ca6.html#ga418c9174d2e31b314f003e047af12ca6">bs::sum</a>(array_pack);</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;SIMD sum 1 for size &quot;</span> &lt;&lt; size &lt;&lt; <span class="stringliteral">&quot; is &quot;</span> &lt;&lt; sum &lt;&lt; std::endl;</div>
 <div class="line"></div>
 <div class="line">  sum = 0;</div>
@@ -228,7 +228,7 @@ Full code</h1>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; size; i += card_int) {</div>
 <div class="line">    sum_p += pack_t(array.data() + i);</div>
 <div class="line">  }</div>
-<div class="line">  sum = <a class="code" href="group__group-reduction_ga474846094a2e6c8f59ae86a1fc5cb720.html#ga474846094a2e6c8f59ae86a1fc5cb720">bs::sum</a>(sum_p);</div>
+<div class="line">  sum = <a class="code" href="group__group-reduction_ga418c9174d2e31b314f003e047af12ca6.html#ga418c9174d2e31b314f003e047af12ca6">bs::sum</a>(sum_p);</div>
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;SIMD sum 2 for size &quot;</span> &lt;&lt; size &lt;&lt; <span class="stringliteral">&quot; is &quot;</span> &lt;&lt; sum &lt;&lt; std::endl;</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// The input data is an arbitrary size</span></div>
@@ -241,7 +241,7 @@ Full code</h1>
 <div class="line">  <span class="keywordflow">for</span> (; i + card_int &lt;= newsize; i += card_int) {</div>
 <div class="line">    sum_p += pack_t(array.data() + i);</div>
 <div class="line">  }</div>
-<div class="line">  sum = <a class="code" href="group__group-reduction_ga474846094a2e6c8f59ae86a1fc5cb720.html#ga474846094a2e6c8f59ae86a1fc5cb720">bs::sum</a>(sum_p);</div>
+<div class="line">  sum = <a class="code" href="group__group-reduction_ga418c9174d2e31b314f003e047af12ca6.html#ga418c9174d2e31b314f003e047af12ca6">bs::sum</a>(sum_p);</div>
 <div class="line">  <span class="keywordflow">for</span> (; i &lt; newsize; ++i) {</div>
 <div class="line">    sum += array[i];</div>
 <div class="line">  }</div>
@@ -264,7 +264,7 @@ Full code</h1>
         <hr class="footer"/>
         <address class="footer">
             <small>
-                Generated on Mon Dec 19 2016 10:10:52 for Boost.SIMD by &#160;
+                Generated on Wed Feb 1 2017 15:40:37 for Boost.SIMD by &#160;
                 <a href="http://www.doxygen.org/index.html">
                     <img class="footer" src="doxygen.png" alt="doxygen"/>
                 </a>

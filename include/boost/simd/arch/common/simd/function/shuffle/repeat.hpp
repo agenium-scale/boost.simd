@@ -13,7 +13,7 @@
 #include <boost/simd/function/repeat_upper_half.hpp>
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/shuffle.hpp>
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/nsm.hpp>
 
 namespace boost { namespace simd
 {
@@ -23,20 +23,20 @@ namespace boost { namespace simd
     // Is this a half-repeat pattern ?
     template<int P0, int... Ps>
     struct  is_repeat
-          : std::is_same< brigand::integral_list<int,P0,Ps...>
-                        , brigand::append < brigand::range<int,P0,P0+(sizeof...(Ps)+1)/2>
-                                          , brigand::range<int,P0,P0+(sizeof...(Ps)+1)/2>
+          : std::is_same< nsm::integral_list<int,P0,Ps...>
+                        , nsm::append < nsm::range<int,P0,P0+(sizeof...(Ps)+1)/2>
+                                          , nsm::range<int,P0,P0+(sizeof...(Ps)+1)/2>
                                           >
                         >
     {};
 
     // -1 disqualifies already
-    template<int P1, int... Ps> struct  is_repeat<-1,P1,Ps...> : std::false_type {};
+    template<int P1, int... Ps> struct  is_repeat<-1,P1,Ps...> : tt::false_type {};
 
     // Don' overlap with other hierarchies
-    template<int P0>          struct is_repeat<P0>    : std::false_type {};
-    template<int P0, int P1>  struct is_repeat<P0,P1> : std::false_type {};
-    template<int P1>          struct is_repeat<-1,P1> : std::false_type {};
+    template<int P0>          struct is_repeat<P0>    : tt::false_type {};
+    template<int P0, int P1>  struct is_repeat<P0,P1> : tt::false_type {};
+    template<int P1>          struct is_repeat<-1,P1> : tt::false_type {};
   }
 
   // -----------------------------------------------------------------------------------------------

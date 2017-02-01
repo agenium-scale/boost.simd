@@ -16,31 +16,25 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing sincospi capabilities
+    This function object returns the computes simultaneously and
+    at lower cost the sine and cosine of the input in \f$\pi\f$ multiples.
 
-    Computes simultaneously and at lower cost the sine and cosine
-    of the input in \f$\pi\f$ multiples.
+   @see sincosd, sincos
 
-    @par Semantic:
 
-    For every parameters of floating type T:
+    @par Header <boost/simd/function/sincospi.hpp>
 
-    @code
-    T s, c;
-    std::tie(s, c) = sincospi(x);
-    @endcode
+   @par Example:
 
-    is similar to:
+     @snippet sincospi.cpp sincospi
 
-    @code
-    T s =  sinpi(x);
-    T c =  cospi(x);
-    @endcode
+   @par Possible output:
+
+     @snippet sincospi.txt sincospi
 
   **/
-  std::pair<Value, Value> sincospi(Value const & v0);
+  std::pair<Value, Value> sincospi(Value const & x);
 } }
 #endif
 

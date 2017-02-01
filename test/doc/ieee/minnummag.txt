@@ -1,0 +1,10 @@
+//! [minnummag]
+---- simd
+ <- pf =                    (3, -2, -0, 0)
+ <- qf =                    (4, -1, 0, -nan)
+ -> bs::minnummag(pf, qf) = (3, -1, -0, 0)
+---- scalar
+ xf =                       3
+ yf =                       4
+ -> bs::minnummag(xf, yf) = 3
+//! [minnummag]

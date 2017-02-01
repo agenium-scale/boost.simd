@@ -1,0 +1,8 @@
+//! [mantissa]
+---- simd
+<- pf =               (1, 2, -1, 0.5)
+-> bs::mantissa(pf) = (1, 1, -1, 1)
+---- scalar
+<- xf =               2
+-> bs::mantissa(xf) = 1
+//! [mantissa]

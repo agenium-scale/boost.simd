@@ -40,7 +40,7 @@ namespace boost { namespace simd
   template < size_t N, class P,  class V> BOOST_FORCEINLINE
   void insert(P & a,  V const & v) BOOST_NOEXCEPT
   {
-    detail::insert(a, brigand::size_t<N>(), v);
+    detail::insert(a, nsm::size_t<N>(), v);
   }
 
 } }

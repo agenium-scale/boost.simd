@@ -1,0 +1,8 @@
+//! [tanpi]
+---- simd
+<- pf =           (1, 2, -1, 0.5)
+-> bs::tanpi(pf) = (0, 0, -0, -nan)
+---- scalar
+<- xf =           2
+-> bs::tanpi(xf) = 0
+//! [tanpi]

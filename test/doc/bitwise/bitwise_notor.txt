@@ -1,0 +1,10 @@
+//! [bitwise_notor]
+---- simd
+ <- pi =                        (3, 4294967294, 2, 1023)
+ <- qi =                        (4, 4294967295, 3, 4294967295)
+ -> bs::bitwise_notor(pi, qi) = (4294967292, 4294967295, 4294967295, 4294967295)
+---- scalar
+ xi =                           3
+ yi =                           4
+ -> bs::bitwise_notor(xi, yi) = 4294967292
+//! [bitwise_notor]

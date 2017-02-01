@@ -21,14 +21,14 @@
     extensions: ["tex2jax.js"],
     jax: ["input/TeX","output/SVG"],
 });
-</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</script><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
         <link rel="icon" href="numscale_icon.png">
         <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         <link href="doxygen.css" rel="stylesheet" type="text/css" />
-        <link href="doxygen.css" rel="stylesheet" type="text/css" />
         <link href="custom.css" rel="stylesheet" type="text/css"/>
 <link href="ns.css" rel="stylesheet" type="text/css"/>
+<link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="ns.js"></script>
         <script type="text/javascript" src="custom.js"></script>
@@ -44,7 +44,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li id="version">
-                            <a href="#" class="disabled">4.16.12.0</a>
+                            <a href="#" class="disabled">4.17.1.0</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -118,9 +118,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li class="level1"><a href="#installing">Installing Boost.SIMD</a></li>
 <li class="level1"><a href="#compiling">Compiling and Running a Program using Boost.SIMD</a><ul><li class="level2"><a href="#linux-compilation">Compiling for Linux</a></li>
 <li class="level2"><a href="#win-compilation">Compiling for Windows</a></li>
+<li class="level2"><a href="#cmake-compilation">Compiling using CMake</a></li>
 </ul>
 </li>
-<li class="level1"><a href="#next">What's Next ?</a></li>
+<li class="level1"><a href="#whatsnext">What's Next ?</a></li>
 </ul>
 </div>
 <div class="textblock"><p>This is a quick start guide for <b>Boost.SIMD</b>. Its purpose is to get you ready to go by learning how to install <b>Boost.SIMD</b> and its dependencies, and how to compile a simple <b>Boost.SIMD</b> program.</p>
@@ -196,7 +197,25 @@ Compiling for Windows</h2>
 <dt>Note</dt>
 <dd>Visual Studio provides a <code>\Gv</code> settings that enables a special calling convention called <code>__vectorcall</code> that try to use SIMD registers when passing SIMD values as function parameters. Its effect in conjunction with Boost.SIMD depends on the code. Feel free to try it and use it if it improves your performances.</dd>
 </dl>
-<h1><a class="anchor" id="next"></a>
+<h2><a class="anchor" id="cmake-compilation"></a>
+Compiling using CMake</h2>
+<p><b>Boost.SIMD</b> can be used along with <b>CMake</b> using <code>find_package</code>: </p><pre class="fragment">## CMake requirements
+cmake_minimum_required(VERSION 2.8)
+
+## Look for installed Boost.SIMD
+find_package(Boost.SIMD)
+
+## Add Boost.SIMD directories to tell CMake where to find them
+include_directories(${"Boost.SIMD@_INCLUDE_DIRS"})
+
+## Create your executable
+add_executable(foobar foobar.cpp)
+</pre><p><b>Boost.SIMD</b> MUST BE installed on your system, otherwise <code>find_package</code> won't be able to find it. Please refer to the <a href="https://cmake.org/cmake/help/v3.6/command/find_package.html">**CMake**'s documentation</a> for more details about <code>find_package</code>.</p>
+<dl class="section note">
+<dt>Note</dt>
+<dd>You can modify the <code>CMAKE_MODULE_PATH</code> to help <b>CMake</b> find your Boost.SIMD if you installed it on a different folder than the default ones. </dd>
+</dl>
+<h1><a class="anchor" id="whatsnext"></a>
 What's Next ?</h1>
 <hr/>
 <p>You can now :</p>
@@ -220,7 +239,7 @@ What's Next ?</h1>
         <hr class="footer"/>
         <address class="footer">
             <small>
-                Generated on Mon Dec 19 2016 10:10:51 for Boost.SIMD by &#160;
+                Generated on Wed Feb 1 2017 15:40:37 for Boost.SIMD by &#160;
                 <a href="http://www.doxygen.org/index.html">
                     <img class="footer" src="doxygen.png" alt="doxygen"/>
                 </a>

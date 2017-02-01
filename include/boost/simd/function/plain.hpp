@@ -24,6 +24,9 @@ namespace boost { namespace simd
     This decorator is used internally as a tag to choose the boost simd
     kernel among other
 
+
+    @par Header <boost/simd/function/plain.hpp>
+
     @par Semantic
 
     @code

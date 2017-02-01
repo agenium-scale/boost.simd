@@ -22,6 +22,9 @@ namespace boost { namespace simd
 
     Computes the quadrant of its parameter.
 
+
+    @par Header <boost/simd/function/quadrant.hpp>
+
     @par semantic:
     For any given positive integral value (possibly flint) @c n of type @c T:
 

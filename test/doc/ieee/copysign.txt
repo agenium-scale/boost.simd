@@ -1,0 +1,10 @@
+//! [copysign]
+---- simd
+<- pf =                    (1, 2, 0.5, 0.5)
+<- qf =                    (2, -1, 0, -0)
+-> bs::copysign(pf, qf) = (1, -2, 0.5, -0.5)
+---- scalar
+<- xf =                   2
+<- yf =                   -1
+-> bs::copysign(xf, yf) = -2
+//! [copysign]

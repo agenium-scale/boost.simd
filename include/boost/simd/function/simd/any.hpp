@@ -18,6 +18,9 @@
 #  if BOOST_HW_SIMD_X86_OR_AMD >= BOOST_HW_SIMD_X86_SSE4_1_VERSION
 #    include <boost/simd/arch/x86/sse4_1/simd/function/any.hpp>
 #  endif
+#  if BOOST_HW_SIMD_X86_OR_AMD >= BOOST_HW_SIMD_X86_AVX_VERSION
+#    include <boost/simd/arch/x86/avx/simd/function/any.hpp>
+#  endif
 #endif
 
 #endif

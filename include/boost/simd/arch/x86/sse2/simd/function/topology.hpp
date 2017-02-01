@@ -9,7 +9,7 @@
 #ifndef BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_TOPOLOGY_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_TOPOLOGY_HPP_INCLUDED
 
-#include <type_traits>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/arch/x86/sse1/simd/function/topology.hpp>
 #include <boost/simd/detail/dispatch/meta/as_floating.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
@@ -17,11 +17,12 @@
 namespace boost { namespace simd { namespace detail
 {
   namespace bd = boost::dispatch;
+  namespace tt = nsm::type_traits;
 
   // -----------------------------------------------------------------------------------------------
   // Local masking utility
   template<int P0,int P1>
-  struct mask_pd : std::integral_constant<int, _MM_SHUFFLE2(P1&1,P0&1)>
+  struct mask_pd : tt::integral_constant<int, _MM_SHUFFLE2(P1&1,P0&1)>
   {};
 
   // -----------------------------------------------------------------------------------------------
@@ -52,14 +53,14 @@ namespace boost { namespace simd { namespace detail
 
     // Regular unary shuffling - ints32
     template<typename T,int P0,int P1,int P2,int P3> static BOOST_FORCEINLINE
-    T do_(const T& a0, pattern_<P0,P1,P2,P3> const&, std::false_type const&)
+    T do_(const T& a0, pattern_<P0,P1,P2,P3> const&, tt::false_type const&)
     {
       return _mm_shuffle_epi32(a0, (mask_ps<P0,P1,P2,P3>::value));
     }
 
     // Regular unary shuffling -  type64
     template<typename T,int P0,int P1> static BOOST_FORCEINLINE
-    T do_(const T& a0, pattern_<P0,P1> const&, std::false_type const&)
+    T do_(const T& a0, pattern_<P0,P1> const&, tt::false_type const&)
     {
       using f_t = bd::as_floating_t<T>;
       auto const v = bitwise_cast<f_t>(a0);
@@ -68,11 +69,11 @@ namespace boost { namespace simd { namespace detail
 
     // Masked unary shuffling
     template<typename T,int... Ps> static BOOST_FORCEINLINE
-    T do_(const T & a0, pattern_<Ps...> const& p, std::true_type const&)
+    T do_(const T & a0, pattern_<Ps...> const& p, tt::true_type const&)
     {
       using s_t = typename T::value_type;
       using i_t = bd::as_integer_t<s_t,unsigned>;
-      return  do_(a0,p,std::false_type{})
+      return  do_(a0,p,tt::false_type{})
             & T ( bitwise_cast<s_t>(zeroing_mask<i_t,Ps>::value)... );
     }
 
@@ -95,10 +96,10 @@ namespace boost { namespace simd { namespace detail
 
     // Masked binary shuffling
     template<typename T,int P0,int P1> static BOOST_FORCEINLINE
-    T do_(const T& a0, const T & a1, pattern_<P0,P1> const& p, std::true_type const&)
+    T do_(const T& a0, const T & a1, pattern_<P0,P1> const& p, tt::true_type const&)
     {
       using s_t = typename T::value_type;
-      return  do_(a0,a1,p,std::false_type{})
+      return  do_(a0,a1,p,tt::false_type{})
             & T ( bitwise_cast<s_t>(zeroing_mask<std::uint64_t,P0>::value)
                 , bitwise_cast<s_t>(zeroing_mask<std::uint64_t,P1>::value)
                 );
@@ -106,7 +107,7 @@ namespace boost { namespace simd { namespace detail
 
     // Regular binary shuffling
     template<typename T,int P0,int P1> static BOOST_FORCEINLINE
-    T do_(const T& a0, const T & a1, pattern_<P0,P1> const&, std::false_type const&)
+    T do_(const T& a0, const T & a1, pattern_<P0,P1> const&, tt::false_type const&)
     {
       return do_(a0, a1, typename sse_topology<2,P0,P1>::type{});
     }

@@ -16,23 +16,22 @@ namespace boost { namespace simd
 {
  /*!
     @ingroup group-bitwise
-    Function object implementing genmask capabilities
-
-    Returns a mask of bits. All ones if the
+    This function object returns a mask of bits. All ones if the
     input element is non @ref Zero else all zeros.
 
-    @par semantic:
-    For any given value @c x of type @c T:
+    @see genmaskc
 
-    @code
-    T r = genmask(x);
-    @endcode
 
-    is similar to
 
-    @code
-    T r = x ? Allbits : Zero;
-    @endcode
+    @par Header <boost/simd/function/genmask.hpp>
+
+   @par Example:
+
+     @snippet genmask.cpp genmask
+
+   @par Possible output:
+
+     @snippet genmask.txt genmask
 
     @par Alias:
     @c if_allbits_else_zero
@@ -42,7 +41,9 @@ namespace boost { namespace simd
   **/
   template<typename A>  A genmask(const A& a) {}
 
-  //@overload
+  /*!
+    @overload
+  */
   template<typename T, typename A> T genmask(const A& a) {}
 } }
 #endif

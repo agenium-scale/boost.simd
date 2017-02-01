@@ -1,0 +1,12 @@
+//! [majority]
+---- simd
+<- pf =                  (0, 1, -1, -2)
+<- qf =                  (0, 0, -0, -2)
+<- rf =                  (0, 1, -0, -2)
+-> bs::majority(pf, qf, rf) = (false, true, false, true)
+---- scalar
+<- xf =                  1
+<- yf =                  2
+<- zf =                  0
+-> bs::majority(xf, yf, zf) = true
+//! [majority]

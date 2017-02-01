@@ -18,33 +18,30 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-arithmetic
-    Function object implementing rsqrt capabilities
+    This function object returns the inverse of the square root of the input.
 
-    Returns the inverse of the square root of the input.
+    @par Header <boost/simd/function/rsqrt.hpp>
 
-    @par semantic:
-
-    For any given value @c x of floating type @c T:
-
-    @code
-    T r = rsqrt(x);
-    @endcode
-
-    For signed type is similar to:
-
-    @code
-    T r = T(1)/sqrt(x)
-    @endcode
+    Using `rsqrt(x)` is similar to `One(as(x))/sqrt(x)`
 
     @par Decorators
 
-    - raw_ for floating entries: if full accuracy is not needed a sometimes rawer less accurate version of the function
-    can be obtained using the the raw_ decorator : raw_(rsqrt)(x).
+    - raw_  if full accuracy is not needed a sometimes speedier but  less accurate version of the function
+    can be obtained using raw_(rsqrt)(x).
 
-    @par Decorators
+    @see sqrt
+
+    @par Example:
+
+       @snippet rsqrt.cpp rsqrt
+
+    @par Possible output:
+
+       @snippet rsqrt.txt rsqrt
+
 
   **/
-  Value rsqrt(Value const & v0);
+  Value rsqrt(Value const & x);
 } }
 #endif
 

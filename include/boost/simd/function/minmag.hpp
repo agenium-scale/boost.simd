@@ -16,25 +16,19 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing minmag capabilities
+    This function object returns the input value which have the least absolute value.
 
-    Returns the input value which have the least absolute value.
 
-    @par Semantic:
+    @par Header <boost/simd/function/minmag.hpp>
 
-    @code
-    auto r = minmag(x,y);
-    @endcode
+   @par Example:
 
-    is similar to:
+     @snippet minmag.cpp minmag
 
-    @code
-    auto r = abs(x) < abs(y) ? x : abs(y) < abs(x) ? y : min(x, y);
-    @endcode
+   @par Possible output:
 
-   @see min, minnummag, minnum
+     @snippet minmag.txt minmag
 
   **/
   Value minmag(Value const & x, Value const& y);

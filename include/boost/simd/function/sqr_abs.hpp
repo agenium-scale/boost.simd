@@ -16,24 +16,25 @@ namespace boost { namespace simd
 {
 
  /*!
+   @ingroup group-arithmetic
+    This function computes the square of the absolute value of its parameter.
+    For real entries it coincides with @ref sqr.
 
-    @ingroup group-arithmetic
-    Function object implementing sqr_abs capabilities
+    @par Header <boost/simd/function/sqr.hpp>
 
-    Computes the square of the absolute value of its parameter. For real entries it is the same as @ref sqr.
+    @par Decorators
 
-    @par semantic:
-    For any given value @c x of type @c T:
+    - saturated_ for integer entries ensure that sqr_abs(x) is never strictly less than x
 
-    @code
-    T r = sqr_abs(x);
-    @endcode
+    @see sqrt, sqr
 
-    is equivalent to:
+    @par Example:
 
-    @code
-    T r = sqr(abs(x));
-    @endcode
+       @snippet sqr_abs.cpp sqr_abs
+
+    @par Possible output:
+
+       @snippet sqr_abs.txt sqr_abs
 
   **/
   Value sqr_abs(Value const& x);

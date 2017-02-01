@@ -1,0 +1,8 @@
+//! [genmaskc]
+---- simd
+<- pf =               (1, -0, 0, 0.5)
+-> bs::genmaskc(pf) = (0, -nan, -nan, 0)
+---- scalar
+<- xf =               2
+-> bs::genmaskc(xf) = 0
+//! [genmaskc]

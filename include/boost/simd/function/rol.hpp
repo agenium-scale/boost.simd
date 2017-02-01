@@ -16,24 +16,26 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-bitwise
-    Function object implementing rol capabilities
-
-    Returns the first entry rotated left
+    This function object returns the first entry rotated left
     by the value of the second entry.
 
-    @par semantic:
-    For any given value @c x of type @c T, @c n  of type @c I:
 
-    @code
-    T r = rol(x, n);
-    @endcode
+    @par Header <boost/simd/function/rol.hpp>
 
     @par Note
     This function asserts if the integral parameter is out of range
 
     @see  ror, rrol, rror
+
+
+   @par Example:
+
+     @snippet rol.cpp rol
+
+   @par Possible output:
+
+     @snippet rol.txt rol
 
   **/
   Value rol(Value const & x, IntegerValue const& n);

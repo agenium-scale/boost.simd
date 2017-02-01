@@ -19,6 +19,9 @@ namespace boost { namespace simd
     Generates a value containing sequentially increasing values, starting with @c seed and
     repetitively evaluating @c seed+=step.
 
+
+    @par Header <boost/simd/function/enumerate.hpp>
+
     @par Scalar Semantic:
     For any type @c T , the following code:
     @code

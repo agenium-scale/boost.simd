@@ -21,14 +21,14 @@
     extensions: ["tex2jax.js"],
     jax: ["input/TeX","output/SVG"],
 });
-</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</script><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
         <link rel="icon" href="numscale_icon.png">
         <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         <link href="doxygen.css" rel="stylesheet" type="text/css" />
-        <link href="doxygen.css" rel="stylesheet" type="text/css" />
         <link href="custom.css" rel="stylesheet" type="text/css"/>
 <link href="ns.css" rel="stylesheet" type="text/css"/>
+<link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="ns.js"></script>
         <script type="text/javascript" src="custom.js"></script>
@@ -44,7 +44,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li id="version">
-                            <a href="#" class="disabled">4.16.12.0</a>
+                            <a href="#" class="disabled">4.17.1.0</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -117,13 +117,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
-<dl class="section user"><dt>Rationale</dt><dd>Up to now we have five different decorators that can be used to modify the behaviour of some functors.</dd></dl>
-<p>These are pedantic_, raw_, restricted_, saturated_, std_</p>
+<dl class="section user"><dt>Rationale</dt><dd>Up to now we have five different decorators that can be used to modify the behaviour of some functors. Use of a functor with no decorator is often referred as "regular".</dd></dl>
+<p>These are pedantic_, raw_, restricted_, saturated_, std_. (musl_ and plain_ also exist, but are used in an internal way).</p>
 <p>if a decorator <code>foo_</code> has to be called to modify the functor <code>bar</code> the call</p>
 <div class="fragment"><div class="line">z = bar( &lt; bar parameters &gt; );</div>
 </div><!-- fragment --><p>has to be replaced by</p>
 <div class="fragment"><div class="line">z = foo_(bar)(&lt; bar parameters &gt;);</div>
-</div><!-- fragment --> <table class="memberdecls">
+</div><!-- fragment --><ul>
+<li><p class="startli">raw_ implies</p>
+<p class="startli">possibly big loss of accuracy, loss of correctness for not "normal" values and no support for limiting cases. The purpose of raw_ is to maximize the speed using at hand functions (often intrinsics).</p>
+</li>
+<li><p class="startli">regular (no decorator) implies</p>
+<p class="startli">possibly a loss of correctness for not "normal" values (except zero) and limiting cases that are treated in a way not always conformant to standard (if it exists). The purpose of the regular way is to maximize the speed (but with few ulp losses with "normal" and zero parameters) and treating corner cases only if the performance loss is no more than a few percent.</p>
+</li>
+<li><p class="startli">pedantic_ implies</p>
+<p class="startli">if a standard exists the function is as conformant as possible whatever the loss in performances can be.</p>
+</li>
+<li><p class="startli">std_</p>
+<p class="startli">is reserved to the direct call of a libc++ version of the function: this means that in simd mode emulation is used. In general the performance is worse even in scalar mode.</p>
+</li>
+<li><p class="startli">saturated_</p>
+<p class="startli">is only efficient if the return type is Integral, in which case the result is properly saturated</p>
+</li>
+<li><p class="startli">restricted_</p>
+<p class="startli">is used to indicate a restrained range of validity for a function. Up to now only direct trigonometic function can use this decorator which restricts their validity range to \([-\pi/4, \pi/4]\) (they return a nan outside), but with an important speed-up.</p>
+</li>
+</ul>
+<dl class="section user"><dt>Note:</dt><dd>Not "normal" values are as defined by the libc++ <code>fpclassify</code> by not returning <code>FP_NORMAL</code>, the categories being :</dd></dl>
+<center> <table class="doxtable">
+<tr>
+<th align="center">result </th><th align="center">meaning  </th></tr>
+<tr>
+<td align="center">FP_INFINITE </td><td align="center">return "Inf"; </td></tr>
+<tr>
+<td align="center">FP_NAN </td><td align="center">return "NaN"; </td></tr>
+<tr>
+<td align="center">FP_NORMAL </td><td align="center">return "normal"; </td></tr>
+<tr>
+<td align="center">FP_SUBNORMAL </td><td align="center">return "subnormal"; </td></tr>
+<tr>
+<td align="center">FP_ZERO </td><td align="center">return "zero"; </td></tr>
+</table>
+</center> <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga6b4a3b3c1b64d396ac51348f6f5f3c47"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
@@ -171,7 +206,7 @@ Variables</h2></td></tr>
         <hr class="footer"/>
         <address class="footer">
             <small>
-                Generated on Mon Dec 19 2016 10:11:13 for Boost.SIMD by &#160;
+                Generated on Wed Feb 1 2017 15:40:51 for Boost.SIMD by &#160;
                 <a href="http://www.doxygen.org/index.html">
                     <img class="footer" src="doxygen.png" alt="doxygen"/>
                 </a>

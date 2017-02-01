@@ -1,0 +1,8 @@
+//! [ilogb]
+---- simd
+<- pf =            (1, 2, -1, 0.5)
+-> bs::ilogb(pf) = (0, 1, 0, -1)
+---- scalar
+<- xf =            2
+-> bs::ilogb(xf) = 1
+//! [ilogb]

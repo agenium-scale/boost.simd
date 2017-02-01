@@ -16,25 +16,18 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing atan2 capabilities
+    This function object returns the quadrant aware `atan2` function.
 
-    quadrant aware atan2 function.
 
-    @par Semantic:
 
-    For every parameters @c x and @c y of same floating type
-
-    @code
-    auto r = atan2(y, x);
-    @endcode
+    @par Header <boost/simd/function/atan2.hpp>
 
     @par Notes
 
     - For any real arguments @c x and @c y not both equal to zero, <tt>atan2(y, x)</tt>
-    is the angle in radians between the positive x-axis of a plane and the point
-    given by the coordinates  <tt>(x, y)</tt>.
+    (be aware of the parameter order) is the angle in radians between the positive
+    x-axis of a plane and the point  given by the coordinates  <tt>(x, y)</tt>.
 
     - It is also the angle in \f$[-\pi,\pi[\f$ for which
     \f$x/\sqrt{x^2+y^2}\f$ and \f$y/\sqrt{x^2+y^2}\f$
@@ -54,17 +47,27 @@ namespace boost { namespace simd
      -  If x is \f$+\infty\f$ and y is finite and negative, -0 is returned
      -  If either x is Nan or y is Nan, Nan is returned
 
-     The pedantic_ decorator ensures all these conditions,  but the regular version
-     will return a NaN if x and y are both either null or infinite, result which in fact
-      is not more absurd than the IEEE choices. It will be conforming in all other cases.
+     The pedantic_ decorator ensures all these conditions, but the regular version
+     (no decorator) will return a NaN if x and y are both either null or infinite,
+     result which in fact is not more absurd than the IEEE choices.
+     It will be conforming in all other cases.
 
     @par Decorators
 
     - std_  provides access to std::atan2
 
-   -  pedantic_ ensures the respect of all IEEE limits
+    - pedantic_ ensures the respect of all IEEE limits
 
   @see atan, atand, atanpi
+
+
+   @par Example:
+
+     @snippet atan2.cpp atan2
+
+   @par Possible output:
+
+     @snippet atan2.txt atan2
 
   **/
   Value atan2(Value const &y, Value const &x);

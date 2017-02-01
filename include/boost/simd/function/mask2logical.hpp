@@ -16,26 +16,23 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-boolean
-    Function object implementing mask2logical capabilities
-
-    The function converts an arithmetic mask where each element is
+    This function object returns the The function converts
+    an arithmetic mask where each element is
     Zero or Allbits to a logical value.
 
     If it is not the case this function asserts.
 
-    @par Semantic:
 
-    @code
-    auto r = mask2logical(x);
-    @endcode
+    @par Header <boost/simd/function/mask2logical.hpp>
 
-    is similar to:
+   @par Example:
 
-    @code
-    auto r = (x == Allbits) ? True : (x == Zero) ? False : assert;
-    @endcode
+     @snippet mask2logical.cpp mask2logical
+
+   @par Possible output:
+
+     @snippet mask2logical.txt mask2logical
 
   **/
   as_logical_t<Value> mask2logical(Value const& x);

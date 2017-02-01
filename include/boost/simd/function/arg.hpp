@@ -17,30 +17,20 @@ namespace boost { namespace simd
 
  /*!
   @ingroup group-arithmetic
-    Function object implementing arg capabilities
+    This function computes the angular orientation of its floating parameter.
 
-    Computes the angular orientation of its parameter.
 
-    @par semantic:
-    For any given value @c x of floating type @c T:
+    @par Header <boost/simd/function/arg.hpp>
 
-    @code
-    T r = arg(x);
-    @endcode
+    Using  `arg(x)` is equivalent to  `(is_negative(x)) ? Pi(as(x)) : Zero(as(x))`
 
-    is equivalent to:
-
-    @code
-    T r =  (is_negative(x)) ? Pi<T>() : Zero<T>();
-    @endcode
-
-    @par Notes:
+    @par Notes
 
     - always returns \f$+0\f$ or \f$\pi\f$ taking into account the bit of sign
        even in the Nan case.
 
-    - With the @c pedantic_ decorator returns \f$+0\f$ or \f$\pi\f$ or @ref Nan
-      if and only if the input is @ref Nan according to the input sign,
+    - With the @c pedantic_ decorator returns `Nan(as(x))`
+      for a  nan input,
 
     - This function implement the restriction to real numbers of the
        complex arg(ument) function.
@@ -49,8 +39,16 @@ namespace boost { namespace simd
 
     @see is_negative, Pi, Nan
 
+    @par Example:
+
+       @snippet arg.cpp arg
+
+    @par Possible output:
+
+       @snippet arg.txt arg
+
   **/
-  Value arg(Value const & v0);
+  Value arg(Value const & x);
 } }
 #endif
 

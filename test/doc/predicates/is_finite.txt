@@ -1,0 +1,10 @@
+//! [is_finite]
+---- simd
+<- pf =                  (0, 1, -1, -2, 1.4013e-45, inf, -inf, -nan)
+-> bs::is_finite(pf) = (true, true, true, true, true, false, false, false)
+---- scalar
+<- xf =                  1
+-> bs::is_finite(xf) = true
+<- yf =                  1.4013e-45
+-> bs::is_finite(yf) = true
+//! [is_finite]

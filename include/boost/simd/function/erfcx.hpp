@@ -16,31 +16,23 @@ namespace boost { namespace simd
 
  /*!
   @ingroup group-euler
-    Function object implementing erfcx capabilities
-
-   Computes the  underflow-compensating (scaled) complementary  error function:
+     This function object computes the  underflow-compensating (scaled) complementary  error function:
    \f$\displaystyle e^{x^2}\frac{2}{\sqrt\pi}\int_{x}^{\infty} e^{-t^2}\mbox{d}t\f$
 
-    @par Semantic:
+     @see erfc, erf
 
-    For every parameter of floating type T
 
-    @code
-    T r = erfcx(x);
-    @endcode
+    @par Header <boost/simd/function/erfcx.hpp>
 
-    is similar to:
+     @par Example:
 
-    @code
-    T r = exp(sqr(x))*erfc(x);
-    @endcode
+       @snippet erfcx.cpp erfcx
 
-    But avoid underflow as much as possible.
+    @par Possible output:
 
-    @see erfc, erf
-
+       @snippet erfcx.txt erfcx
   **/
-  Value erfcx(Value const & v0);
+  Value erfcx(Value const & x);
 } }
 #endif
 

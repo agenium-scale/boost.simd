@@ -20,6 +20,9 @@ namespace boost { namespace simd
     cardinal of @c x containing the same value than @c x but converted to
     their associated upgraded type.
 
+
+    @par Header <boost/simd/function/split.hpp>
+
     @param v0 Value to split
     @return An array containing the two upgraded part of its argument.
   **/

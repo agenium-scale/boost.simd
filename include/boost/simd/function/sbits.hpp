@@ -16,28 +16,22 @@ namespace boost { namespace simd
 {
 
  /*!
+    @ingroup group-bitwise
+    This function object returns the signed integer value which has the bit pattern of the input
 
-    @ingroup group-ieee
-    Function object implementing sbits capabilities
 
-    Returns the signed integer value which has the bit pattern of the input
+    @par Header <boost/simd/function/sbits.hpp>
 
-    @par Semantic:
+   @par Example:
 
-    For every parameter @c x of type @c T
+     @snippet sbits.cpp sbits
 
-    @code
-    auto r = sbits(x);
-    @endcode
+   @par Possible output:
 
-    is similar to:
-
-    @code
-    auto r = bitwise_cast<as_integer_t<T,signed>>(x);
-    @endcode
+     @snippet sbits.txt sbits
 
   **/
-  IntegerValue sbits(Value const & v0);
+  IntegerValue sbits(Value const & x);
 } }
 #endif
 

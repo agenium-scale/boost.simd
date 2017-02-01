@@ -1,27 +1,24 @@
 //==================================================================================================
-/*!
-  @file
-
-  @copyright 2016 NumScale SAS
+/**
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_REMFLOOR_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_REMFLOOR_HPP_INCLUDED
 
+#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/function/div.hpp>
 #include <boost/simd/function/is_nez.hpp>
+#include <boost/simd/function/is_eqz.hpp>
 #include <boost/simd/function/fnms.hpp>
-#include <boost/simd/function/minus.hpp>
-#include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/fnms.hpp>
 #include <boost/simd/function/floor.hpp>
-#include <boost/simd/function/if_minus.hpp>
-#include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
+
 /////////////////////////////////////////////////////////////////////////////
 // The remfloor() function computes the remfloor of dividing x by y.  The
 // return value is x-n*y, where n is the value x / y, rounded toward -infinity
@@ -97,8 +94,6 @@ namespace boost { namespace simd { namespace ext
       return fnms(div(floor, a0, a1), a1, a0);
     }
   };
-
 } } }
-
 
 #endif

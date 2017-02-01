@@ -21,14 +21,14 @@
     extensions: ["tex2jax.js"],
     jax: ["input/TeX","output/SVG"],
 });
-</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</script><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
         <link rel="icon" href="numscale_icon.png">
         <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         <link href="doxygen.css" rel="stylesheet" type="text/css" />
-        <link href="doxygen.css" rel="stylesheet" type="text/css" />
         <link href="custom.css" rel="stylesheet" type="text/css"/>
 <link href="ns.css" rel="stylesheet" type="text/css"/>
+<link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="ns.js"></script>
         <script type="text/javascript" src="custom.js"></script>
@@ -44,7 +44,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li id="version">
-                            <a href="#" class="disabled">4.16.12.0</a>
+                            <a href="#" class="disabled">4.17.1.0</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -114,12 +114,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#tutorial-math-intro">SIMD Mathematical Functions</a></li>
+<ul><li class="level1"><a href="#tutorial-math-objectives">Objectives</a></li>
+<li class="level1"><a href="#tutorial-math-intro">SIMD Mathematical Functions</a></li>
 <li class="level1"><a href="#tutorial-math-decorators">Boost.SIMD functions decorators</a></li>
 </ul>
 </div>
-<div class="textblock"><p>In this tutorial we will demonstrate the use of SIMD mathematical functions such as <a class="el" href="group__group-trigonometric_ga5019d4667fed1191aed8f8196d5145c1.html#ga5019d4667fed1191aed8f8196d5145c1" title="Function object implementing sin capabilities. ">boost::simd::sin</a> and <a class="el" href="group__group-trigonometric_gad6ba51f9c876a655ee68bcd761c8c91a.html#gad6ba51f9c876a655ee68bcd761c8c91a" title="Function object implementing cos capabilities. ">boost::simd::cos</a>.</p>
-<h1><a class="anchor" id="data-objectives"></a>
+<div class="textblock"><div style="text-align: right;" markdown="1">Prev: <a class="el" href="tutorial-memory.html">Memory Alignment</a></div> <div style="text-align: right;" markdown="1">Next: <a class="el" href="tutorial-dot.html">Writing a dot product the SIMD Way</a></div><p>In this tutorial we will demonstrate the use of SIMD mathematical functions such as <a class="el" href="group__group-trigonometric_gaaf417721709f6026c3297cad760a5261.html#gaaf417721709f6026c3297cad760a5261" title="This function object returns the sine of the input in radians. ">boost::simd::sin</a> and <a class="el" href="group__group-trigonometric_ga4e2cfc988e8ac2756d3f73a21811b2d8.html#ga4e2cfc988e8ac2756d3f73a21811b2d8" title="This function object returns the cosine of the input in radians. ">boost::simd::cos</a>.</p>
+<h1><a class="anchor" id="tutorial-math-objectives"></a>
 Objectives</h1>
 <hr/>
 <p>In this tutorial we will:</p><ul>
@@ -132,29 +133,29 @@ SIMD Mathematical Functions</h1>
 <p>Mathematical functions can be very expensive, so using a vectorized version of these functions is of great benefit, especially if you have a large input array. <b>Boost.SIMD</b> includes vectorized versions of all common mathematical functions The developers of <b>Boost.SIMD</b> take numerical precisions very seriously, so all of these functions are extremely accurate despite being highly optimized. Please refer to the section numerical-precision and performance for further details.</p>
 <p>The standard way to calculate the sine or cosine of a vector of data is to to loop over the data and calculate the sine and cosine of each element:</p>
 <div class="fragment"><div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; num_elements; ++i) {</div>
-<div class="line">    sc_sinX[i] = <a class="code" href="group__group-trigonometric_ga5019d4667fed1191aed8f8196d5145c1.html#ga5019d4667fed1191aed8f8196d5145c1">std::sin</a>(X[i]);</div>
-<div class="line">    sc_cosX[i] = <a class="code" href="group__group-trigonometric_gad6ba51f9c876a655ee68bcd761c8c91a.html#gad6ba51f9c876a655ee68bcd761c8c91a">std::cos</a>(X[i]);</div>
+<div class="line">    sc_sinX[i] = <a class="code" href="group__group-trigonometric_gaaf417721709f6026c3297cad760a5261.html#gaaf417721709f6026c3297cad760a5261">std::sin</a>(X[i]);</div>
+<div class="line">    sc_cosX[i] = <a class="code" href="group__group-trigonometric_ga4e2cfc988e8ac2756d3f73a21811b2d8.html#ga4e2cfc988e8ac2756d3f73a21811b2d8">std::cos</a>(X[i]);</div>
 <div class="line">  }</div>
 </div><!-- fragment --><p> This type of calculation is the perfect candidate for vectorization!</p>
 <div class="fragment"><div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; num_elements; i += pack_t::static_size) {</div>
 <div class="line">    pack_t v0 = bs::load&lt;pack_t&gt;(&amp;X[i]);</div>
-<div class="line">    <a class="code" href="namespaceboost_1_1simd_af5521b79da254d7133fa74cfaf547e10.html#af5521b79da254d7133fa74cfaf547e10">bs::store</a>(<a class="code" href="group__group-trigonometric_ga5019d4667fed1191aed8f8196d5145c1.html#ga5019d4667fed1191aed8f8196d5145c1">bs::sin</a>(v0), &amp;sinX[i]);</div>
-<div class="line">    <a class="code" href="namespaceboost_1_1simd_af5521b79da254d7133fa74cfaf547e10.html#af5521b79da254d7133fa74cfaf547e10">bs::store</a>(<a class="code" href="group__group-trigonometric_gad6ba51f9c876a655ee68bcd761c8c91a.html#gad6ba51f9c876a655ee68bcd761c8c91a">bs::cos</a>(v0), &amp;cosX[i]);</div>
+<div class="line">    <a class="code" href="namespaceboost_1_1simd.html#af50789733f52bd58296f90d91b5b3b3e">bs::store</a>(<a class="code" href="group__group-trigonometric_gaaf417721709f6026c3297cad760a5261.html#gaaf417721709f6026c3297cad760a5261">bs::sin</a>(v0), &amp;sinX[i]);</div>
+<div class="line">    <a class="code" href="namespaceboost_1_1simd.html#af50789733f52bd58296f90d91b5b3b3e">bs::store</a>(<a class="code" href="group__group-trigonometric_ga4e2cfc988e8ac2756d3f73a21811b2d8.html#ga4e2cfc988e8ac2756d3f73a21811b2d8">bs::cos</a>(v0), &amp;cosX[i]);</div>
 <div class="line">  }</div>
 </div><!-- fragment --><p> In this example we are calculating the sine and the cosine of the same input vector X. The calculations of a sine and cosine contain many common steps, so it is possible to calculate them both simultaneously and thus save precious cpu cycles!</p>
 <div class="fragment"><div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; num_elements; i += pack_t::static_size) {</div>
 <div class="line">    pack_t v0 = bs::load&lt;pack_t&gt;(&amp;X[i]);</div>
-<div class="line">    <span class="keyword">auto</span> res  = <a class="code" href="group__group-trigonometric_ga746657373dd522a05c399a2c9e7936bd.html#ga746657373dd522a05c399a2c9e7936bd">bs::sincos</a>(v0);</div>
-<div class="line">    <a class="code" href="namespaceboost_1_1simd_af5521b79da254d7133fa74cfaf547e10.html#af5521b79da254d7133fa74cfaf547e10">bs::store</a>(res.first, &amp;sinX[i]);</div>
-<div class="line">    <a class="code" href="namespaceboost_1_1simd_af5521b79da254d7133fa74cfaf547e10.html#af5521b79da254d7133fa74cfaf547e10">bs::store</a>(res.second, &amp;cosX[i]);</div>
+<div class="line">    <span class="keyword">auto</span> res  = <a class="code" href="group__group-trigonometric_ga4e27f973f433b62162acb21e7401d365.html#ga4e27f973f433b62162acb21e7401d365">bs::sincos</a>(v0);</div>
+<div class="line">    <a class="code" href="namespaceboost_1_1simd.html#af50789733f52bd58296f90d91b5b3b3e">bs::store</a>(res.first, &amp;sinX[i]);</div>
+<div class="line">    <a class="code" href="namespaceboost_1_1simd.html#af50789733f52bd58296f90d91b5b3b3e">bs::store</a>(res.second, &amp;cosX[i]);</div>
 <div class="line">  }</div>
 </div><!-- fragment --> <h1><a class="anchor" id="tutorial-math-decorators"></a>
 Boost.SIMD functions decorators</h1>
 <p>There are several different versions of many <b>Boost.SIMD</b> functions. For example, if the input angle is guaranteed to be within the range \( [-\pi/4, \pi/4]\) (Oh! its just the case in the initialization we choose, what a coincidence!) you may use the <code>restricted_</code> function decorator on the mathematical functions which returns a result of the same precision, but consumes fewer cpu cycles.</p>
 <div class="fragment"><div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; num_elements; i += pack_t::static_size) {</div>
 <div class="line">    pack_t v0 = bs::load&lt;pack_t&gt;(&amp;X[i]);</div>
-<div class="line">    <a class="code" href="namespaceboost_1_1simd_af5521b79da254d7133fa74cfaf547e10.html#af5521b79da254d7133fa74cfaf547e10">bs::store</a>(<a class="code" href="group__group-decorator_ga196df2a850732ec4d239114941244b30.html#ga196df2a850732ec4d239114941244b30">bs::restricted_</a>(<a class="code" href="group__group-trigonometric_ga5019d4667fed1191aed8f8196d5145c1.html#ga5019d4667fed1191aed8f8196d5145c1">bs::sin</a>)(v0), &amp;sinX[i]);</div>
-<div class="line">    <a class="code" href="namespaceboost_1_1simd_af5521b79da254d7133fa74cfaf547e10.html#af5521b79da254d7133fa74cfaf547e10">bs::store</a>(<a class="code" href="group__group-decorator_ga196df2a850732ec4d239114941244b30.html#ga196df2a850732ec4d239114941244b30">bs::restricted_</a>(<a class="code" href="group__group-trigonometric_gad6ba51f9c876a655ee68bcd761c8c91a.html#gad6ba51f9c876a655ee68bcd761c8c91a">bs::cos</a>)(v0), &amp;cosX[i]);</div>
+<div class="line">    <a class="code" href="namespaceboost_1_1simd.html#af50789733f52bd58296f90d91b5b3b3e">bs::store</a>(<a class="code" href="group__group-decorator_ga196df2a850732ec4d239114941244b30.html#ga196df2a850732ec4d239114941244b30">bs::restricted_</a>(<a class="code" href="group__group-trigonometric_gaaf417721709f6026c3297cad760a5261.html#gaaf417721709f6026c3297cad760a5261">bs::sin</a>)(v0), &amp;sinX[i]);</div>
+<div class="line">    <a class="code" href="namespaceboost_1_1simd.html#af50789733f52bd58296f90d91b5b3b3e">bs::store</a>(<a class="code" href="group__group-decorator_ga196df2a850732ec4d239114941244b30.html#ga196df2a850732ec4d239114941244b30">bs::restricted_</a>(<a class="code" href="group__group-trigonometric_ga4e2cfc988e8ac2756d3f73a21811b2d8.html#ga4e2cfc988e8ac2756d3f73a21811b2d8">bs::cos</a>)(v0), &amp;cosX[i]);</div>
 <div class="line">  }</div>
 </div><!-- fragment --><p> Please refer to boost::simd::decorator for an explanation of available decorators.</p>
 <p>Here is a full code, should you wish to try it:</p>
@@ -209,31 +210,31 @@ Boost.SIMD functions decorators</h1>
 <div class="line">  }</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; num_elements; ++i) {</div>
-<div class="line">    sc_sinX[i] = <a class="code" href="group__group-trigonometric_ga5019d4667fed1191aed8f8196d5145c1.html#ga5019d4667fed1191aed8f8196d5145c1">std::sin</a>(X[i]);</div>
-<div class="line">    sc_cosX[i] = <a class="code" href="group__group-trigonometric_gad6ba51f9c876a655ee68bcd761c8c91a.html#gad6ba51f9c876a655ee68bcd761c8c91a">std::cos</a>(X[i]);</div>
+<div class="line">    sc_sinX[i] = <a class="code" href="group__group-trigonometric_gaaf417721709f6026c3297cad760a5261.html#gaaf417721709f6026c3297cad760a5261">std::sin</a>(X[i]);</div>
+<div class="line">    sc_cosX[i] = <a class="code" href="group__group-trigonometric_ga4e2cfc988e8ac2756d3f73a21811b2d8.html#ga4e2cfc988e8ac2756d3f73a21811b2d8">std::cos</a>(X[i]);</div>
 <div class="line">  }</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; num_elements; i += pack_t::static_size) {</div>
 <div class="line">    pack_t v0 = bs::load&lt;pack_t&gt;(&amp;X[i]);</div>
-<div class="line">    <a class="code" href="namespaceboost_1_1simd_af5521b79da254d7133fa74cfaf547e10.html#af5521b79da254d7133fa74cfaf547e10">bs::store</a>(<a class="code" href="group__group-trigonometric_ga5019d4667fed1191aed8f8196d5145c1.html#ga5019d4667fed1191aed8f8196d5145c1">bs::sin</a>(v0), &amp;sinX[i]);</div>
-<div class="line">    <a class="code" href="namespaceboost_1_1simd_af5521b79da254d7133fa74cfaf547e10.html#af5521b79da254d7133fa74cfaf547e10">bs::store</a>(<a class="code" href="group__group-trigonometric_gad6ba51f9c876a655ee68bcd761c8c91a.html#gad6ba51f9c876a655ee68bcd761c8c91a">bs::cos</a>(v0), &amp;cosX[i]);</div>
+<div class="line">    <a class="code" href="namespaceboost_1_1simd.html#af50789733f52bd58296f90d91b5b3b3e">bs::store</a>(<a class="code" href="group__group-trigonometric_gaaf417721709f6026c3297cad760a5261.html#gaaf417721709f6026c3297cad760a5261">bs::sin</a>(v0), &amp;sinX[i]);</div>
+<div class="line">    <a class="code" href="namespaceboost_1_1simd.html#af50789733f52bd58296f90d91b5b3b3e">bs::store</a>(<a class="code" href="group__group-trigonometric_ga4e2cfc988e8ac2756d3f73a21811b2d8.html#ga4e2cfc988e8ac2756d3f73a21811b2d8">bs::cos</a>(v0), &amp;cosX[i]);</div>
 <div class="line">  }</div>
 <div class="line">  test_results(<span class="stringliteral">&quot;sin test               &quot;</span>, sc_sinX, sinX);</div>
 <div class="line">  test_results(<span class="stringliteral">&quot;cos test               &quot;</span>, sc_cosX, cosX);</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; num_elements; i += pack_t::static_size) {</div>
 <div class="line">    pack_t v0 = bs::load&lt;pack_t&gt;(&amp;X[i]);</div>
-<div class="line">    <span class="keyword">auto</span> res  = <a class="code" href="group__group-trigonometric_ga746657373dd522a05c399a2c9e7936bd.html#ga746657373dd522a05c399a2c9e7936bd">bs::sincos</a>(v0);</div>
-<div class="line">    <a class="code" href="namespaceboost_1_1simd_af5521b79da254d7133fa74cfaf547e10.html#af5521b79da254d7133fa74cfaf547e10">bs::store</a>(res.first, &amp;sinX[i]);</div>
-<div class="line">    <a class="code" href="namespaceboost_1_1simd_af5521b79da254d7133fa74cfaf547e10.html#af5521b79da254d7133fa74cfaf547e10">bs::store</a>(res.second, &amp;cosX[i]);</div>
+<div class="line">    <span class="keyword">auto</span> res  = <a class="code" href="group__group-trigonometric_ga4e27f973f433b62162acb21e7401d365.html#ga4e27f973f433b62162acb21e7401d365">bs::sincos</a>(v0);</div>
+<div class="line">    <a class="code" href="namespaceboost_1_1simd.html#af50789733f52bd58296f90d91b5b3b3e">bs::store</a>(res.first, &amp;sinX[i]);</div>
+<div class="line">    <a class="code" href="namespaceboost_1_1simd.html#af50789733f52bd58296f90d91b5b3b3e">bs::store</a>(res.second, &amp;cosX[i]);</div>
 <div class="line">  }</div>
 <div class="line">  test_results(<span class="stringliteral">&quot;sincos test for sin    &quot;</span>, sc_sinX, sinX);</div>
 <div class="line">  test_results(<span class="stringliteral">&quot;sincos test for cos    &quot;</span>, sc_cosX, cosX);</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; num_elements; i += pack_t::static_size) {</div>
 <div class="line">    pack_t v0 = bs::load&lt;pack_t&gt;(&amp;X[i]);</div>
-<div class="line">    <a class="code" href="namespaceboost_1_1simd_af5521b79da254d7133fa74cfaf547e10.html#af5521b79da254d7133fa74cfaf547e10">bs::store</a>(<a class="code" href="group__group-decorator_ga196df2a850732ec4d239114941244b30.html#ga196df2a850732ec4d239114941244b30">bs::restricted_</a>(<a class="code" href="group__group-trigonometric_ga5019d4667fed1191aed8f8196d5145c1.html#ga5019d4667fed1191aed8f8196d5145c1">bs::sin</a>)(v0), &amp;sinX[i]);</div>
-<div class="line">    <a class="code" href="namespaceboost_1_1simd_af5521b79da254d7133fa74cfaf547e10.html#af5521b79da254d7133fa74cfaf547e10">bs::store</a>(<a class="code" href="group__group-decorator_ga196df2a850732ec4d239114941244b30.html#ga196df2a850732ec4d239114941244b30">bs::restricted_</a>(<a class="code" href="group__group-trigonometric_gad6ba51f9c876a655ee68bcd761c8c91a.html#gad6ba51f9c876a655ee68bcd761c8c91a">bs::cos</a>)(v0), &amp;cosX[i]);</div>
+<div class="line">    <a class="code" href="namespaceboost_1_1simd.html#af50789733f52bd58296f90d91b5b3b3e">bs::store</a>(<a class="code" href="group__group-decorator_ga196df2a850732ec4d239114941244b30.html#ga196df2a850732ec4d239114941244b30">bs::restricted_</a>(<a class="code" href="group__group-trigonometric_gaaf417721709f6026c3297cad760a5261.html#gaaf417721709f6026c3297cad760a5261">bs::sin</a>)(v0), &amp;sinX[i]);</div>
+<div class="line">    <a class="code" href="namespaceboost_1_1simd.html#af50789733f52bd58296f90d91b5b3b3e">bs::store</a>(<a class="code" href="group__group-decorator_ga196df2a850732ec4d239114941244b30.html#ga196df2a850732ec4d239114941244b30">bs::restricted_</a>(<a class="code" href="group__group-trigonometric_ga4e2cfc988e8ac2756d3f73a21811b2d8.html#ga4e2cfc988e8ac2756d3f73a21811b2d8">bs::cos</a>)(v0), &amp;cosX[i]);</div>
 <div class="line">  }</div>
 <div class="line">  test_results(<span class="stringliteral">&quot;restricted_(sin) test  &quot;</span>, sc_sinX, sinX);</div>
 <div class="line">  test_results(<span class="stringliteral">&quot;restricted_(cos) test  &quot;</span>, sc_cosX, cosX);</div>
@@ -244,8 +245,8 @@ Boost.SIMD functions decorators</h1>
 <div class="line"><span class="comment">// g++ mathematical.cpp -msse4.2 -std=c++11 -O3 -DNDEBUG -o mathematical</span></div>
 <div class="line"><span class="comment">// -I/path_to/boost_simd/ -I/path_to/boost/</span></div>
 <div class="line"></div>
-</div><!-- fragment --><p> The test done in this file asserts (if it succeeds) that each compared values differs at most of 0.5 ulp (unit in the last place). Refer to <a class="el" href="group__group-ieee_ga8bfb596d877fba2d6d84f35eee413426.html#ga8bfb596d877fba2d6d84f35eee413426" title="Function object implementing ulpdist capabilities. ">boost::simd::ulpdist</a> for more informations. </p>
-</div></div><!-- contents -->
+</div><!-- fragment --><p> The test done in this file asserts (if it succeeds) that each compared values differs at most of 0.5 ulp (unit in the last place). Refer to <a class="el" href="group__group-ieee_ga8bfb596d877fba2d6d84f35eee413426.html#ga8bfb596d877fba2d6d84f35eee413426" title="This function object returns ulp distance between its arguments. ">boost::simd::ulpdist</a> for more informations.</p>
+<div style="text-align: right;" markdown="1">Prev: <a class="el" href="tutorial-memory.html">Memory Alignment</a></div> <div style="text-align: right;" markdown="1">Next: <a class="el" href="tutorial-dot.html">Writing a dot product the SIMD Way</a></div> </div></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
                         </div>
@@ -256,7 +257,7 @@ Boost.SIMD functions decorators</h1>
         <hr class="footer"/>
         <address class="footer">
             <small>
-                Generated on Mon Dec 19 2016 10:10:52 for Boost.SIMD by &#160;
+                Generated on Wed Feb 1 2017 15:40:37 for Boost.SIMD by &#160;
                 <a href="http://www.doxygen.org/index.html">
                     <img class="footer" src="doxygen.png" alt="doxygen"/>
                 </a>

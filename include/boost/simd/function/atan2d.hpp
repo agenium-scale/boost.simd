@@ -16,38 +16,29 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing atan2d capabilities
+    This function object returns the atan2d function : atan2 in degrees.
 
-    atan2d function : atan2 in degrees.
 
-    @par Semantic:
+    @par Header <boost/simd/function/atan2d.hpp>
 
-    For every parameters of same floating type
+   @par Note
 
-    @code
-    auto r = atan2d(y, x);
-    @endcode
+      For every parameters of same floating type
+      `atan2d(y, x)` is similar  to: `indeg(atan2(y, x))`
 
-    is similar  to:
+    @see atan2,  atan2pi
 
-    @code
-    T r =  indeg(atan2(y, x));
-    @endcode
+   @par Example:
 
-    For any real arguments @c x and @c y not both equal to zero, <tt>atan2d(y, x)</tt>
-    is the angle in degrees between the positive x-axis of a plane and the point
-    given by the coordinates  <tt>(x, yx)</tt>.
+     @snippet atan2d.cpp atan2d
 
-    It is also the angle in \f$[-180,180[\f$ for which
-    \f$x/\sqrt{x^2+y^2}\f$ and \f$y/\sqrt{x^2+y^2}\f$
-    are respectively the sine and the cosine.
+   @par Possible output:
 
-    @see atand, atan2, atan
+     @snippet atan2d.txt atan2d
 
   **/
-  Value atan2d(Value const& x, Value const& y );
+  Value atan2d(Value const& y, Value const& x );
 } }
 #endif
 

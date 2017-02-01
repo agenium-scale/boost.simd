@@ -13,11 +13,12 @@
 #include <boost/simd/detail/dispatch/hierarchy/exactly.hpp>
 #include <boost/simd/detail/dispatch/meta/as_floating.hpp>
 #include <boost/simd/function/genmask.hpp>
+#include <boost/simd/detail/nsm.hpp>
 
 #define BOOST_SIMD_UNARY_SLIDE(SZ,IDX)                                                              \
 BOOST_DISPATCH_OVERLOAD ( slide_, (typename T), bs::avx_                                            \
                         , bs::pack_< bd::type##SZ##_<T>, bs::avx_ >                                 \
-                        , bd::exactly_<std::integral_constant<int,IDX>>                             \
+                          , bd::exactly_<nsm::type_traits::integral_constant<int,IDX>> \
                         )                                                                           \
 /**/
 
@@ -25,7 +26,7 @@ BOOST_DISPATCH_OVERLOAD ( slide_, (typename T), bs::avx_                        
 BOOST_DISPATCH_OVERLOAD ( slide_, (typename T), bs::avx_                                            \
                         , bs::pack_< bd::type##SZ##_<T>, bs::avx_ >                                 \
                         , bs::pack_< bd::type##SZ##_<T>, bs::avx_ >                                 \
-                        , bd::exactly_<std::integral_constant<int,IDX>>                             \
+                          , bd::exactly_<nsm::type_traits::integral_constant<int,IDX>> \
                         )                                                                           \
 /**/
 
@@ -33,6 +34,7 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
+  namespace tt = nsm::type_traits;
 
   // -----------------------------------------------------------------------------------------------
   // [64 bits] Unary exact matches for all cardinal to minimize latency and # of registers used
@@ -40,7 +42,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_SIMD_UNARY_SLIDE(64,1)
   {
     BOOST_FORCEINLINE T operator()( T const& a0
-                                  , std::integral_constant<int,1> const&
+                                  , tt::integral_constant<int,1> const&
                                   ) const BOOST_NOEXCEPT
     {
       using f_t = bd::as_floating_t<T>;
@@ -52,7 +54,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_SIMD_UNARY_SLIDE(64,2)
   {
     BOOST_FORCEINLINE T operator()( T const& a0
-                                  , std::integral_constant<int,2> const&
+                                  , tt::integral_constant<int,2> const&
                                   ) const BOOST_NOEXCEPT
     {
       using f_t = bd::as_floating_t<T>;
@@ -64,7 +66,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_SIMD_UNARY_SLIDE(64,3)
   {
     BOOST_FORCEINLINE T operator()( T const& a0
-                                  , std::integral_constant<int,3> const&
+                                  , tt::integral_constant<int,3> const&
                                   ) const BOOST_NOEXCEPT
     {
       using f_t = bd::as_floating_t<T>;
@@ -84,7 +86,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_SIMD_BINARY_SLIDE(64,1)
   {
     BOOST_FORCEINLINE T operator()( T const& a0, T const& a1
-                                  , std::integral_constant<int,1> const&
+                                  , tt::integral_constant<int,1> const&
                                   ) const BOOST_NOEXCEPT
     {
       using f_t = bd::as_floating_t<T>;
@@ -103,7 +105,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_SIMD_BINARY_SLIDE(64,2)
   {
     BOOST_FORCEINLINE T operator()( T const& a0, T const& a1
-                                  , std::integral_constant<int,2> const&
+                                  , tt::integral_constant<int,2> const&
                                   ) const BOOST_NOEXCEPT
     {
       using f_t = bd::as_floating_t<T>;
@@ -119,7 +121,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_SIMD_BINARY_SLIDE(64,3)
   {
     BOOST_FORCEINLINE T operator()( T const& a0, T const& a1
-                                  , std::integral_constant<int,3> const&
+                                  , tt::integral_constant<int,3> const&
                                   ) const BOOST_NOEXCEPT
     {
       using f_t = bd::as_floating_t<T>;
@@ -140,7 +142,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_SIMD_UNARY_SLIDE(32,1)
   {
     BOOST_FORCEINLINE T operator()( T const& a0
-                                  , std::integral_constant<int,1> const&
+                                  , tt::integral_constant<int,1> const&
                                   ) const BOOST_NOEXCEPT
     {
       using f_t = bd::as_floating_t<T>;
@@ -159,7 +161,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_SIMD_UNARY_SLIDE(32,2)
   {
     BOOST_FORCEINLINE T operator()( T const& a0
-                                  , std::integral_constant<int,2> const&
+                                  , tt::integral_constant<int,2> const&
                                   ) const BOOST_NOEXCEPT
     {
       using f_t = bd::as_floating_t<T>;
@@ -171,7 +173,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_SIMD_UNARY_SLIDE(32,3)
   {
     BOOST_FORCEINLINE T operator()( T const& a0
-                                  , std::integral_constant<int,3> const&
+                                  , tt::integral_constant<int,3> const&
                                   ) const BOOST_NOEXCEPT
     {
       using f_t = bd::as_floating_t<T>;
@@ -190,7 +192,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_SIMD_UNARY_SLIDE(32,4)
   {
     BOOST_FORCEINLINE T operator()( T const& a0
-                                  , std::integral_constant<int,4> const&
+                                  , tt::integral_constant<int,4> const&
                                   ) const BOOST_NOEXCEPT
     {
       using f_t = bd::as_floating_t<T>;
@@ -202,7 +204,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_SIMD_UNARY_SLIDE(32,5)
   {
     BOOST_FORCEINLINE T operator()( T const& a0
-                                  , std::integral_constant<int,5> const&
+                                  , tt::integral_constant<int,5> const&
                                   ) const BOOST_NOEXCEPT
     {
       using f_t = bd::as_floating_t<T>;
@@ -221,7 +223,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_SIMD_UNARY_SLIDE(32,6)
   {
     BOOST_FORCEINLINE T operator()( T const& a0
-                                  , std::integral_constant<int,6> const&
+                                  , tt::integral_constant<int,6> const&
                                   ) const BOOST_NOEXCEPT
     {
       using f_t = bd::as_floating_t<T>;
@@ -233,7 +235,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_SIMD_UNARY_SLIDE(32,7)
   {
     BOOST_FORCEINLINE T operator()( T const& a0
-                                  , std::integral_constant<int,7> const&
+                                  , tt::integral_constant<int,7> const&
                                   ) const BOOST_NOEXCEPT
     {
       using f_t = bd::as_floating_t<T>;
@@ -254,7 +256,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_SIMD_BINARY_SLIDE(32,1)
   {
     BOOST_FORCEINLINE T operator()( T const& a0, T const& a1
-                                  , std::integral_constant<int,1> const&
+                                  , tt::integral_constant<int,1> const&
                                   ) const BOOST_NOEXCEPT
     {
       using f_t = bd::as_floating_t<T>;
@@ -276,7 +278,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_SIMD_BINARY_SLIDE(32,2)
   {
     BOOST_FORCEINLINE T operator()( T const& a0, T const& a1
-                                  , std::integral_constant<int,2> const&
+                                  , tt::integral_constant<int,2> const&
                                   ) const BOOST_NOEXCEPT
     {
       using f_t = bd::as_floating_t<T>;
@@ -290,7 +292,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_SIMD_BINARY_SLIDE(32,3)
   {
     BOOST_FORCEINLINE T operator()( T const& a0, T const& a1
-                                  , std::integral_constant<int,3> const&
+                                  , tt::integral_constant<int,3> const&
                                   ) const BOOST_NOEXCEPT
     {
       using f_t = bd::as_floating_t<T>;
@@ -310,7 +312,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_SIMD_BINARY_SLIDE(32,4)
   {
     BOOST_FORCEINLINE T operator()( T const& a0, T const& a1
-                                  , std::integral_constant<int,4> const&
+                                  , tt::integral_constant<int,4> const&
                                   ) const BOOST_NOEXCEPT
     {
       using f_t = bd::as_floating_t<T>;
@@ -321,7 +323,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_SIMD_BINARY_SLIDE(32,5)
   {
     BOOST_FORCEINLINE T operator()( T const& a0, T const& a1
-                                  , std::integral_constant<int,5> const&
+                                  , tt::integral_constant<int,5> const&
                                   ) const BOOST_NOEXCEPT
     {
       using f_t = bd::as_floating_t<T>;
@@ -342,7 +344,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_SIMD_BINARY_SLIDE(32,6)
   {
     BOOST_FORCEINLINE T operator()( T const& a0, T const& a1
-                                  , std::integral_constant<int,6> const&
+                                  , tt::integral_constant<int,6> const&
                                   ) const BOOST_NOEXCEPT
     {
       using f_t = bd::as_floating_t<T>;
@@ -355,7 +357,7 @@ namespace boost { namespace simd { namespace ext
   BOOST_SIMD_BINARY_SLIDE(32,7)
   {
     BOOST_FORCEINLINE T operator()( T const& a0, T const& a1
-                                  , std::integral_constant<int,7> const&
+                                  , tt::integral_constant<int,7> const&
                                   ) const BOOST_NOEXCEPT
     {
       using f_t = bd::as_floating_t<T>;
@@ -383,9 +385,9 @@ namespace boost { namespace simd { namespace ext
                           , bd::constant_<bd::integer_<Offset>>
                           )
   {
-    using hcard = std::integral_constant<int,(T::static_size/2)>;
+    using hcard = tt::integral_constant<int,(T::static_size/2)>;
 
-    static BOOST_FORCEINLINE T unroll( T const& a0, T const& a1, std::true_type const& )
+    static BOOST_FORCEINLINE T unroll( T const& a0, T const& a1, tt::true_type const& )
     {
       auto s0 = slice(a0);
       auto l1 = slice_low(a1);
@@ -394,7 +396,7 @@ namespace boost { namespace simd { namespace ext
                     );
     }
 
-    static BOOST_FORCEINLINE T unroll( T const& a0, T const& a1, std::false_type const& )
+    static BOOST_FORCEINLINE T unroll( T const& a0, T const& a1, tt::false_type const& )
     {
       auto s1 = slice(a1);
       auto h0 = slice_high(a0);
@@ -406,7 +408,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE T operator()(T const& a0, T const& a1, Offset const&) const
     {
       return unroll ( a0, a1
-                    , brigand::bool_<(Offset::value < hcard::value)>{}
+                    , nsm::bool_<(Offset::value < hcard::value)>{}
                     );
     }
   };

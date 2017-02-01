@@ -1,5 +1,7 @@
 Distance between Points Part 1{#tutorial-distance}
 =========
+<div style="text-align: right;" markdown="1">Prev: [Runtime Extension Selection](@ref tutorial-runtime)</div>
+<div style="text-align: right;" markdown="1">Next: [Distance between 2D Points Part 2](@ref tutorial-distance-hypot)</div>
 
 @tableofcontents
 In this tutorial we will examine how to calculate the cartesian distance
@@ -45,10 +47,10 @@ point. We then apply the formula shown above for calculating the distance betwee
 
 @snippet distance.cpp distance-calc
 
-@subsection distance-interleave How to deal with input data which is not properly ordered 
+@subsection distance-interleave How to deal with input data which is not properly ordered
 
 In the above example, we examined the case where the input data was stored in two
-separate buffers, one each for the \f X\f and \f Y\f coordinates.
+separate buffers, one each for the \f$ X\f$ and \f$ Y\f$ coordinates.
 
 However, coordinates are often stored interleaved in memory as follows: \f$x_{0}, y_0, x_1, y_1... , x_n, y_{n-1}\f$
 
@@ -112,7 +114,7 @@ size of 1600000 was used.
 An SSE vector contains four floats. Therefore, we should expect the speed-up to
 a maximum of four. However, it is less then that. There are several reasons for
 this. The first is that the time taken to load the data from memory accounts for
-a significant amount of the total time. 
+a significant amount of the total time.
 
 The code was then re-compiled for AVX2 using -mavx2 flag with the following results:
 
@@ -147,3 +149,6 @@ that the code takes longer to execute on AVX than on SSE.
 Here is the full code, should you wish to compile it:
 
 @snippet distance.cpp distance-all
+
+<div style="text-align: right;" markdown="1">Prev: [Runtime Extension Selection](@ref tutorial-runtime)</div>
+<div style="text-align: right;" markdown="1">Next: [Distance between 2D Points Part 2](@ref tutorial-distance-hypot)</div>

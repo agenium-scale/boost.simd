@@ -1,0 +1,11 @@
+//! [minnum]
+---- simd
+ <- pf =                           (3, -2, -0, 0)
+ <- qf =                           (4, -1, 0, -nan)
+ -> bs::minnum(pf, qf) =           (3, -2, -0, 0)
+ -> bs::std_(bs::minnum)(pf, qf) = (3, -2, -0, 0)
+---- scalar
+ xf =                              3
+ yf =                              4
+ -> bs::minnum(xf, yf) =           3
+//! [minnum]

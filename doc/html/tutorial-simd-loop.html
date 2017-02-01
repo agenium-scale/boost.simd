@@ -21,14 +21,14 @@
     extensions: ["tex2jax.js"],
     jax: ["input/TeX","output/SVG"],
 });
-</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</script><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
         <link rel="icon" href="numscale_icon.png">
         <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         <link href="doxygen.css" rel="stylesheet" type="text/css" />
-        <link href="doxygen.css" rel="stylesheet" type="text/css" />
         <link href="custom.css" rel="stylesheet" type="text/css"/>
 <link href="ns.css" rel="stylesheet" type="text/css"/>
+<link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="ns.js"></script>
         <script type="text/javascript" src="custom.js"></script>
@@ -44,7 +44,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li id="version">
-                            <a href="#" class="disabled">4.16.12.0</a>
+                            <a href="#" class="disabled">4.17.1.0</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -123,7 +123,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li class="level1"><a href="#substract-hanging-data">What happens when the input data is not a multiple of the cardinal?</a></li>
 </ul>
 </div>
-<div class="textblock"><p>In this tutorial we will demonstrate how to construct a SIMD loop to subtract a constant from a vector of input data.</p>
+<div class="textblock"><div style="text-align: right;" markdown="1">Prev: <a class="el" href="tutorial-hello.html">The SIMD Hello World</a></div> <div style="text-align: right;" markdown="1">Next: <a class="el" href="tutorial-memory.html">Memory Alignment</a></div><p> In this tutorial we will demonstrate how to construct a SIMD loop to subtract a constant from a vector of input data.</p>
 <h1><a class="anchor" id="sum-objectives"></a>
 Objectives</h1>
 <hr/>
@@ -165,14 +165,14 @@ Constructing the loop</h2>
 <div class="line">    }</div>
 </div><!-- fragment --> <h2><a class="anchor" id="substract-load-simd"></a>
 Filling the loop</h2>
-<p>In order to process the input data, we must load load the data from memory using <a class="el" href="namespaceboost_1_1simd_a44f9b5b1a343b238a3a80a52365ec860.html#a44f9b5b1a343b238a3a80a52365ec860" title="Load a value from memory into a generic variable. ">boost::simd::load</a> and then store it afterwards back in memory using <a class="el" href="namespaceboost_1_1simd_af50789733f52bd58296f90d91b5b3b3e.html#af50789733f52bd58296f90d91b5b3b3e" title="Store a value at an arbitrary memory location. ">boost::simd::store</a> These functions are accessed by including the following headers:</p>
+<p>In order to process the input data, we must load load the data from memory using <a class="el" href="namespaceboost_1_1simd_a44f9b5b1a343b238a3a80a52365ec860.html#a44f9b5b1a343b238a3a80a52365ec860" title="Load a value from memory into a generic variable. ">boost::simd::load</a> and then store it afterwards back in memory using <a class="el" href="namespaceboost_1_1simd_af5521b79da254d7133fa74cfaf547e10.html#af5521b79da254d7133fa74cfaf547e10" title="Store a value at an arbitrary memory location. ">boost::simd::store</a> These functions are accessed by including the following headers:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;boost/simd/function/load.hpp&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;boost/simd/function/store.hpp&gt;</span></div>
-</div><!-- fragment --><p> We shall construct our pack with a pointer to the data we wish to load. We then perform the subtraction using the operator <code>-</code> and then store the data using <a class="el" href="namespaceboost_1_1simd_af50789733f52bd58296f90d91b5b3b3e.html#af50789733f52bd58296f90d91b5b3b3e" title="Store a value at an arbitrary memory location. ">boost::simd::store</a></p>
+</div><!-- fragment --><p> We shall construct our pack with a pointer to the data we wish to load. We then perform the subtraction using the operator <code>-</code> and then store the data using <a class="el" href="namespaceboost_1_1simd_af5521b79da254d7133fa74cfaf547e10.html#af5521b79da254d7133fa74cfaf547e10" title="Store a value at an arbitrary memory location. ">boost::simd::store</a></p>
 <div class="fragment"><div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; size; i += pack_card) {</div>
 <div class="line">      pack_t p_arr(array.data() + i);</div>
 <div class="line">      p_out = p_arr - fortytwo;</div>
-<div class="line">      <a class="code" href="namespaceboost_1_1simd_af5521b79da254d7133fa74cfaf547e10.html#af5521b79da254d7133fa74cfaf547e10">bs::store</a>(p_out, out.data() + i);</div>
+<div class="line">      <a class="code" href="namespaceboost_1_1simd.html#af50789733f52bd58296f90d91b5b3b3e">bs::store</a>(p_out, out.data() + i);</div>
 <div class="line">    }</div>
 </div><!-- fragment --><p> Note that <code>fortytwo</code>, the pack of constants to be subtracted from the input data, is declared outside of the loop so that it is not loaded at each iteration. Generally speaking, any compiler which supports <b>Boost.SIMD</b> would automatically optimize this, although it is better to be safe!</p>
 <p>If we wish to declare our pack outside of the loop, for example, if we wish to re-use it later, we can load the data using <a class="el" href="namespaceboost_1_1simd_a44f9b5b1a343b238a3a80a52365ec860.html#a44f9b5b1a343b238a3a80a52365ec860" title="Load a value from memory into a generic variable. ">boost::simd::load</a>:</p>
@@ -181,7 +181,7 @@ Filling the loop</h2>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; size; i += pack_card) {</div>
 <div class="line">      p_arr = bs::load&lt;pack_t&gt;(array.data() + i);</div>
 <div class="line">      p_out = p_arr - fortytwo;</div>
-<div class="line">      <a class="code" href="namespaceboost_1_1simd_af5521b79da254d7133fa74cfaf547e10.html#af5521b79da254d7133fa74cfaf547e10">bs::store</a>(p_out, out.data() + i);</div>
+<div class="line">      <a class="code" href="namespaceboost_1_1simd.html#af50789733f52bd58296f90d91b5b3b3e">bs::store</a>(p_out, out.data() + i);</div>
 <div class="line">    }</div>
 </div><!-- fragment --> <h1><a class="anchor" id="substract-hanging-data"></a>
 What happens when the input data is not a multiple of the cardinal?</h1>
@@ -196,7 +196,7 @@ What happens when the input data is not a multiple of the cardinal?</h1>
 <div class="line">    <span class="keywordflow">for</span> (; i + pack_card &lt;= size; i += pack_card) {</div>
 <div class="line">      p_arr = bs::load&lt;pack_t&gt;(array.data() + i);</div>
 <div class="line">      p_out = p_arr - fortytwo;</div>
-<div class="line">      <a class="code" href="namespaceboost_1_1simd_af5521b79da254d7133fa74cfaf547e10.html#af5521b79da254d7133fa74cfaf547e10">bs::store</a>(p_out, out.data() + i);</div>
+<div class="line">      <a class="code" href="namespaceboost_1_1simd.html#af50789733f52bd58296f90d91b5b3b3e">bs::store</a>(p_out, out.data() + i);</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordflow">for</span> (; i &lt; size; ++i) {</div>
@@ -251,7 +251,7 @@ What happens when the input data is not a multiple of the cardinal?</h1>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; size; i += pack_card) {</div>
 <div class="line">      pack_t p_arr(array.data() + i);</div>
 <div class="line">      p_out = p_arr - pkvalue;</div>
-<div class="line">      <a class="code" href="namespaceboost_1_1simd_af5521b79da254d7133fa74cfaf547e10.html#af5521b79da254d7133fa74cfaf547e10">bs::store</a>(p_out, out.data() + i);</div>
+<div class="line">      <a class="code" href="namespaceboost_1_1simd.html#af50789733f52bd58296f90d91b5b3b3e">bs::store</a>(p_out, out.data() + i);</div>
 <div class="line">    }</div>
 <div class="line">    print(<span class="stringliteral">&quot;SIMD 1 loop output&quot;</span>, out);</div>
 <div class="line">  }</div>
@@ -261,7 +261,7 @@ What happens when the input data is not a multiple of the cardinal?</h1>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; size; i += pack_card) {</div>
 <div class="line">      p_arr = bs::load&lt;pack_t&gt;(array.data() + i);</div>
 <div class="line">      p_out = p_arr - pkvalue;</div>
-<div class="line">      <a class="code" href="namespaceboost_1_1simd_af5521b79da254d7133fa74cfaf547e10.html#af5521b79da254d7133fa74cfaf547e10">bs::store</a>(p_out, out.data() + i);</div>
+<div class="line">      <a class="code" href="namespaceboost_1_1simd.html#af50789733f52bd58296f90d91b5b3b3e">bs::store</a>(p_out, out.data() + i);</div>
 <div class="line">    }</div>
 <div class="line">    print(<span class="stringliteral">&quot;SIMD 2 loop output&quot;</span>, out);</div>
 <div class="line">  }</div>
@@ -277,7 +277,7 @@ What happens when the input data is not a multiple of the cardinal?</h1>
 <div class="line">    <span class="keywordflow">for</span> (; i + pack_card &lt;= size; i += pack_card) {</div>
 <div class="line">      p_arr = bs::load&lt;pack_t&gt;(array.data() + i);</div>
 <div class="line">      p_out = p_arr - pkvalue;</div>
-<div class="line">      <a class="code" href="namespaceboost_1_1simd_af5521b79da254d7133fa74cfaf547e10.html#af5521b79da254d7133fa74cfaf547e10">bs::store</a>(p_out, out.data() + i);</div>
+<div class="line">      <a class="code" href="namespaceboost_1_1simd.html#af50789733f52bd58296f90d91b5b3b3e">bs::store</a>(p_out, out.data() + i);</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordflow">for</span> (; i &lt; size; ++i) {</div>
@@ -290,7 +290,7 @@ What happens when the input data is not a multiple of the cardinal?</h1>
 <div class="line"><span class="comment">// This code can be compiled using (for instance for gcc)</span></div>
 <div class="line"><span class="comment">// g++ substract.cpp -msse4.2 -std=c++11 -O3 -DNDEBUG -o substract</span></div>
 <div class="line"><span class="comment">// -I/path_to/boost_simd/ -I/path_to/boost/</span></div>
-</div><!-- fragment --></div></div><!-- contents -->
+</div><!-- fragment --> <div style="text-align: right;" markdown="1">Prev: <a class="el" href="tutorial-simd-loop.html">A Basic SIMD Loop</a></div> <div style="text-align: right;" markdown="1">Next: <a class="el" href="tutorial-memory.html">Memory Alignment</a></div> </div></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
                         </div>
@@ -301,7 +301,7 @@ What happens when the input data is not a multiple of the cardinal?</h1>
         <hr class="footer"/>
         <address class="footer">
             <small>
-                Generated on Mon Dec 19 2016 10:10:53 for Boost.SIMD by &#160;
+                Generated on Wed Feb 1 2017 15:40:37 for Boost.SIMD by &#160;
                 <a href="http://www.doxygen.org/index.html">
                     <img class="footer" src="doxygen.png" alt="doxygen"/>
                 </a>

@@ -1,0 +1,12 @@
+//! [ifrexp]
+---- simd
+<- pf =                                 (1, 2, -1, 0.5)
+-> std::tie(pm, pie) = bs::ifrexp(pf) =
+-> pm  =                                (0.5, 0.5, -0.5, 0.5)
+-> pie =                                (1, 2, 1, 0)
+---- scalar
+ xf =                                   2
+-> std::tie(m, ie) = bs::ifrexp(xf) =
+-> m  =                                 0.5
+-> ie =                                 2
+//! [ifrexp]

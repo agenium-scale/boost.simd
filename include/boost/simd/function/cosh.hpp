@@ -18,20 +18,20 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-hyperbolic
-    Function object implementing cosh capabilities
+    This function object returns the hyperbolic cosine: \f$(e^{x}+e^{-x})/2\f$.
 
-    Returns the hyperbolic cosine: \f$(e^{x}+e^{-x})/2\f$.
+    @see sinh, tanh, sech, csch, sinhcosh
 
-    @par Semantic:
 
-    For every parameter of floating type @c T
+    @par Header <boost/simd/function/cosh.hpp>
 
-    @code
-    T r = cosh(x);
-    @endcode
+    @par Example:
 
-    @see exp, sinh, Half
+       @snippet cosh.cpp cosh
 
+    @par Possible output:
+
+       @snippet cosh.txt cosh
   **/
   Value cosh(Value const & v0);
 } }

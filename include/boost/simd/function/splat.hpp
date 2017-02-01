@@ -20,6 +20,8 @@ namespace boost { namespace simd
 
     Fills an entire SIMD vector with its argument.
 
+    @par Header <boost/simd/function/splat.hpp>
+
     @par Semantic
 
     For any type @c T and value @c x of type @c U:

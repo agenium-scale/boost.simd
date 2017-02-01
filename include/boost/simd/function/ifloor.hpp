@@ -18,28 +18,26 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-arithmetic
-    Function object implementing ifloor capabilities
+    This function object computes the integer conversion of the @ref floor of its parameter.
 
-    Computes the integer conversion of the floor of its parameter.
 
-    @par semantic:
-    For any given value @c x of type @c T:
-
-    @code
-    as_integer_t<T> r = ifloor(x);
-    @endcode
-
-    is equivalent to:
-
-    @code
-    as_integer_t<T> r = saturated_(toint)(floor(x));
-    @endcode
+    @par Header <boost/simd/function/ifloor.hpp>
 
     @par Note:
     This operation is properly saturated
 
+    @see floor, ifloor, iround, ifix, inearbyint
+
+    @par Example:
+
+       @snippet ifloor.cpp ifloor
+
+    @par Possible output:
+
+       @snippet ifloor.txt ifloor
+
   **/
-  as_integer_T<Value> ifloor(Value const & v0);
+  as_integer_T<Value> ifloor(Value const & x);
 } }
 #endif
 

@@ -1,20 +1,16 @@
 //==================================================================================================
-/*!
-  @file
-
-  @copyright 2016 NumScale SAS
+/**
+  Copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-*/
+**/
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LDEXP_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LDEXP_HPP_INCLUDED
-#include <boost/simd/detail/overload.hpp>
 
-#include <boost/simd/meta/hierarchy/simd.hpp>
+#include <boost/simd/detail/overload.hpp>
 #include <boost/simd/meta/as_logical.hpp>
-#include <boost/simd/config.hpp>
 #include <boost/simd/detail/constant/limitexponent.hpp>
 #include <boost/simd/detail/constant/maxexponent.hpp>
 #include <boost/simd/constant/nbmantissabits.hpp>
@@ -22,8 +18,9 @@
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/is_equal.hpp>
 #include <boost/simd/function/rshl.hpp>
-#include <boost/simd/function/if_plus.hpp>
+#include <boost/simd/function/if_dec.hpp>
 #include <boost/simd/function/if_minus.hpp>
+#include <boost/simd/function/if_inc.hpp>
 #include <boost/simd/function/is_flint.hpp>
 #include <boost/simd/function/shift_left.hpp>
 #include <boost/simd/function/toint.hpp>
@@ -34,7 +31,6 @@
 #include <boost/simd/constant/smallestposval.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/is_less.hpp>
-#include <boost/simd/function/if_minus.hpp>
 #endif
 
 namespace boost { namespace simd { namespace ext
@@ -92,8 +88,8 @@ namespace boost { namespace simd { namespace ext
       f = if_else(denormal, Smallestposval<A0>(), One<A0>());
 #endif
       auto test = is_equal(e, Limitexponent<A0>());
-      f = if_plus(test, f, One<A0>());
-      e = if_minus(test, e, One<iA0>());
+      f = if_inc(test, f);
+      e = if_dec(test, e);
       e += Maxexponent<A0>();
       e = shift_left(e, Nbmantissabits<sA0>());
       return a0*bitwise_cast<A0>(e)*f;
@@ -228,4 +224,3 @@ namespace boost { namespace simd { namespace ext
 } } }
 
 #endif
-

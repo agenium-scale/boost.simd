@@ -7,6 +7,7 @@
 ##===================================================================================================
 
 ## Larger test suites go there
+add_subdirectory(cast)
 add_subdirectory(combine)
 add_subdirectory(div)
 add_subdirectory(extract)
@@ -67,11 +68,9 @@ set ( SOURCES
       autosplat.cpp
       average.cpp
       bitfloating.cpp
-      bitget.cpp
       bitinteger.cpp
       bitofsign.cpp
       bits.cpp
-      bitset.cpp
       bitwise_and.cpp
       bitwise_andnot.cpp
       bitwise_cast.cpp
@@ -290,8 +289,8 @@ set ( SOURCES
       nearbyint.cpp
       negate.cpp
       negatenz.cpp
-      negif.cpp
-      negifnot.cpp
+      if_neg.cpp
+      ifnot_neg.cpp
       nextafter.cpp
       next.cpp
       none.cpp
@@ -373,7 +372,8 @@ set ( SOURCES
       toint.saturated.cpp
       touint.regular.cpp
       touint.saturated.cpp
-      trunc.cpp
+      trunc.raw.cpp
+      trunc.regular.cpp
       quadrant.cpp
       two_add.cpp
       twopower.cpp

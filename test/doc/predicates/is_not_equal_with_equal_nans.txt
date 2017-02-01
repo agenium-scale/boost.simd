@@ -1,0 +1,10 @@
+//! [is_not_equal_with_equal_nans]
+---- simd
+<- pf =                  (0, 1, -1, -2, 1.4013e-45, inf, -inf, -nan)
+<- qf =                  (0, 1, -1, -2, 1.4013e-45, inf, -inf, -nan)
+-> bs::is_not_equal_with_equal_nans(pf, qf) = (true, true, true, false, true, true, true, false)
+---- scalar
+<- xf =                  1
+<- yf =                  -nan
+-> bs::is_not_equal_with_equal_nans(xf, yf) = true
+//! [is_not_equal_with_equal_nans]

@@ -1,0 +1,8 @@
+//! [tofloat]
+---- simd
+<- pi =              (-1, 2, -3, 2147483647)
+-> bs::tofloat(pi) = (-1, 2, -3, 2.14748e+09)
+---- scalar
+<- xi =              -2
+-> bs::tofloat(xi) = -2
+//! [tofloat]

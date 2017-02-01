@@ -12,33 +12,30 @@
 #define BOOST_SIMD_FUNCTION_ALL_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
- /*!
-    @ingroup group-reduction
-    Function object implementing all capabilities
+namespace boost {
+namespace simd {
+/*!
+   @ingroup group-reduction
+   This function object returns @ref True if all elements of the argument are
+ non zero.
 
-    Returns @ref True if all elements of the input vector are non zero.
+   @see ant, none, nbtrue
 
-    @par Semantic:
 
-    For every parameter of type T
+    @par Header <boost/simd/function/all.hpp>
 
-    @code
-    bool r = all(x);
-    @endcode
+  @par Example:
 
-    is similar to:
+    @snippet all.cpp all
 
-    @code
-    bool r = true;
-    for(result_type i = 0; i != meta::cardinal_of<T>; ++i)
-      if (!x[i]) {r =  false; break; }
-    @endcode
+  @par Possible output:
 
-  **/
-  Value all(Value const & v0);
-} }
+    @snippet all.txt all
+
+ **/
+Value all(Value const &x);
+}
+}
 #endif
 
 #include <boost/simd/function/scalar/all.hpp>

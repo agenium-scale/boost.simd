@@ -98,7 +98,7 @@ namespace boost { namespace simd
 
 #ifdef BOOST_SIMD_HAS_X87
     template<class A0, class mode>
-    struct trig_reduction<A0,degree_tag, tag::not_simd_type, mode> //always equivalent to  tag::big_tag>
+    struct trig_reduction<A0, tag::degree_tag, tag::not_simd_type, mode> //always equivalent to  tag::big_tag>
     {
 
       static BOOST_FORCEINLINE auto cot_invalid(const A0& x) BOOST_NOEXCEPT

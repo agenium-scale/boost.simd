@@ -12,31 +12,30 @@
 #define BOOST_SIMD_FUNCTION_ISINCLUDED_C_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
- /*!
-    @ingroup group-reduction
-    Function object implementing isincluded_c capabilities
+namespace boost {
+namespace simd {
+/*!
+   @ingroup group-reduction
+   This function object returns @ref True is only if all bits set in @c x are
+ not set in @c y
 
-    Returns @ref True is only if all bits set in x are not set in y
+   The two arguments must share the same bit size.
 
-    @par Semantic:
 
-    For every parameters of types respectively T0, T1 of same bit size:
+    @par Header <boost/simd/function/isincluded_c.hpp>
 
-    @code
-    auto r = isincluded_c(x,y);
-    @endcode
+  @par Example:
 
-    is similar to:
+    @snippet isincluded_c.cpp isincluded_c
 
-    @code
-    auto r = all(x&y == zero);
-    @endcode
-  **/
-  template<typename T0, typename T1>
-  bool isincluded_c(T0 const& x, T1 const& y);
-} }
+  @par Possible output:
+
+    @snippet isincluded_c.txt isincluded_c
+
+ **/
+template <typename T0, typename T1> bool isincluded_c(T0 const &x, T1 const &y);
+}
+}
 #endif
 
 #include <boost/simd/function/scalar/isincluded_c.hpp>

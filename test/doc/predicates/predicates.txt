@@ -1,0 +1,9 @@
+//! [predicates]
+ p =  (0, 1, -1, 2.5, -2.5, -nan, -inf, 1.4013e-45)
+ -> bs::is_finite(p) =    (true, true, true, true, true, false, false, true)
+ -> bs::is_inf(p) =       (false, false, false, false, false, false, true, false)
+ -> bs::is_denormal(p) =  (false, false, false, false, false, false, false, true)
+ -> bs::is_flint(p) =     (true, true, true, false, false, false, false, false)
+ -> bs::is_odd(p) =       (false, true, true, false, false, false, false, false)
+ -> bs::is_nan(p) =       (false, false, false, false, false, true, false, false)
+//! [predicates]

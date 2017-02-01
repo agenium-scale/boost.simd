@@ -1,0 +1,8 @@
+//! [reversebits]
+---- simd
+<- pi =                   (1, 2, 10, 1023)
+-> bs::reversebits(pi) =  (2147483648, 1073741824, 1342177280, 4290772992)
+---- scalar
+<- xi =                   2
+-> bs::reversebits(xi) =  1073741824
+//! [reversebits]

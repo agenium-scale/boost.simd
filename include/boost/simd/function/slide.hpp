@@ -15,11 +15,14 @@ namespace boost { namespace simd
 {
 #if defined(DOXYGEN_ONLY)
   /*!
+    @par Header <boost/simd/function/slide.hpp>
 
   **/
   template<std::size_t N, typename T> T slide(T const& a0, T const& a1) {}
 
-  /// @overload
+  /*!
+    @overload
+  */
   template<std::size_t N, typename T> T slide(T const& a0) {}
 #endif
 } }

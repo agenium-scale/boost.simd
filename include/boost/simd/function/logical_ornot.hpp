@@ -16,30 +16,29 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-boolean
-    Function object implementing logical_ornot capabilities
-
-    return the logical or of the first parameter and of the negation the second parameter.
+    This function object returns the logical or of the first
+    argument and of the negation the second argument.
 
     The operands must share the same @ref cardinal_of value.
 
-    The result type is logical type associated to the first parameter.
+    The result type is logical type associated to the first argument.
 
-    @par Semantic:
 
-    @code
-    auto r = logical_ornot(x,y);
-    @endcode
+    @par Header <boost/simd/function/logical_ornot.hpp>
 
-    is similar to:
+   @par Note
 
-    @code
-    as_logical_t<T2> r = x || !y;
-    @endcode
+     `logical_ornot(x,y)` is similar to: `as_logical_t<T2> r = x || !y`
 
-    @see  logical_or, logical_xor, logical_notand,
-    logical_andnot, logical_notor, logical_and, logical_not
+
+   @par Example:
+
+     @snippet logical_ornot.cpp logical_ornot
+
+   @par Possible output:
+
+     @snippet logical_ornot.txt logical_ornot
 
   **/
   as_logical_t<Value0> logical_ornot(Value0 const& x, Value1 const& y);

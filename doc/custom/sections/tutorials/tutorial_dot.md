@@ -1,11 +1,13 @@
 Writing a dot product the SIMD way {#tutorial-dot}
 =========
 
+<div style="text-align: right;" markdown="1">Prev: [Using Mathematical Functions](@ref tutorial-mathematical)</div>
+<div style="text-align: right;" markdown="1">Next: [SIMD Branching](@ref tutorial-branching)</div>
 @tableofcontents
 In this tutorial we will show how data can be processed using **@projectname**
 by writing a naive dot product using **@projectname**.
 
-@section data-objectives Objectives
+@section tutorial-dot-objectives Objectives
 
 -------------------------------------
 
@@ -68,3 +70,6 @@ code will nevertheless be generated.
 Here is a full code, should you wish to try it:
 
 @snippet dotmain.cpp dot-main
+
+<div style="text-align: right;" markdown="1">Prev: [Using Mathematical Functions](@ref tutorial-mathematical)</div>
+<div style="text-align: right;" markdown="1">Next: [SIMD Branching](@ref tutorial-branching)</div>

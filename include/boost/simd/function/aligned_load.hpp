@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Load a value from aligned memory into a generic variable
 
+
+    @par Header <boost/simd/function/aligned_load.hpp>
+
     @param ptr Memory to aligned_load from
     @param o   Memory offset
 
@@ -26,7 +29,9 @@ namespace boost { namespace simd
   **/
   template<typename T, typename Pointer, typename Offset> T aligned_load(Pointer ptr, Offset o) {}
 
-  /// @overload
+  /*!
+    @overload
+  */
   template<typename T, typename Pointer> T aligned_load(Pointer ptr) {}
 
 } }

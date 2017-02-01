@@ -18,37 +18,28 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-oerator
-    Function object implementing rem capabilities
+    This function object computes the the quotient of the two parameters of the
+    same type with or without option.
 
-    Computes the remainder of division.
-    The return value is x-n*y, where n is the value x/y,
-    rounded toward zero.
+    @par Header <boost/simd/function/rem.hpp>
 
-    @par semantic:
-    For any given value @c x, @c y of type @c T:
+    @par Notes
 
-    @code
-    T r = rem({option, }x, y);
-    @endcode
+    For any value @c a and @c b of same type `rem({option, }a, b)`
+    returns the quotient of @c a by @c b respecting to the option specified.
 
-    if there is no option the call is similar to:
-    @code
-    T r = x-div(fix, x, y)*y;
-    @endcode
+    - Options
 
-    else option can be ceil, floor, fix, round, nearbyint (in the namespace booost::simd)
-    and the code is similar to :
+       With no option this function is equivalent to `x-div(fix, x, y)*y`
 
-    @code
-    T r = x-div(option, x, y)*y;
-    @endcode
+       `option` may be c@ref ceil, @ref floor, @ref fix, @ref round, @ref nearbyint (in the namespace booost::simd)
+       and provides the same result as `x-div(option, x, y)*y`.
 
-    @Notes
+    - Supported types
 
-    -Supported types
-     unsigned types are not supported but for the option @c fix, as in other cases result can be negative
+       unsigned types are not supported but for the option @c fix, as in other cases result can be negative
 
-    -Limiting values for floating entries:
+    - Limiting values for floating entries:
 
        -  if x is +/-inf , Nan is returned
        -  if x is +/-0 and y is not 0, 0 is returned (if the sign of x matters the pedantic_ decorated version returns x)
@@ -57,15 +48,24 @@ namespace boost { namespace simd
 
     @par Decorators
 
-    with floating entries decorator std_ calls the stdlibc++ corresponding function (caution : no simd acceleration)
-
       - pedantic_ insure better limiting cases (see above note)
 
       - std_ allow direct calls to some libc++ function:
 
-        -option fix        calls std::fmod
-        -option nearbyint  calls std::remainder
-         The other options have no standard correspondant
+        - option fix        calls std::fmod
+        - option nearbyint  calls std::remainder
+        - The other options have no standard equivalent
+
+    @see div
+
+    @par Example:
+
+       @snippet rem.cpp rem
+
+    @par Possible output:
+
+       @snippet rem.txt rem
+
 
   **/
   Value rem(Value const & v0, value const& y);

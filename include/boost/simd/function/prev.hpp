@@ -16,19 +16,9 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing prev capabilities
-
-    Returns if it exists the greatest representable value  strictly less than the parameter
-
-    @par Semantic:
-
-    @code
-    auto r = prev(x);
-    @endcode
-
-   @par Note
+    This function object returns the greatest representable
+    value  strictly less than the parameter except:
 
     - for entries of floating types
 
@@ -46,8 +36,20 @@ namespace boost { namespace simd
 
     @see prev, nextafter, successor, predecessor
 
+
+
+    @par Header <boost/simd/function/prev.hpp>
+
+   @par Example:
+
+     @snippet prev.cpp prev
+
+   @par Possible output:
+
+     @snippet prev.txt prev
+
   **/
-  Value prev(Value const & v0);
+  Value prev(Value const & x);
 } }
 #endif
 

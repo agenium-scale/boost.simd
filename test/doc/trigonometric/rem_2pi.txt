@@ -1,0 +1,8 @@
+//! [rem_2pi]
+---- simd
+<- pf =           (1, 2, -1, 0.5)
+-> bs::rem_2pi(pf) = (1, 2, -1, 0.5)
+---- scalar
+<- xf =           2
+-> bs::rem_2pi(xf) = 2
+//! [rem_2pi]

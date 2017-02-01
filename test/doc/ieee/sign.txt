@@ -1,0 +1,8 @@
+//! [sign]
+---- simd
+<- pf =           (1, 2, -1, 0.5)
+-> bs::sign(pf) = (1, 1, -1, 1)
+---- scalar
+<- xf =           2
+-> bs::sign(xf) = 1
+//! [sign]

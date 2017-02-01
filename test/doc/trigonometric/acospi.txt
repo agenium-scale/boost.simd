@@ -1,0 +1,8 @@
+//! [acospi]
+---- simd
+<- pf =           (1, 2, -1, 0.5)
+-> bs::acospi(pf) = (0, -nan, 1, 0.333333)
+---- scalar
+<- xf =           2
+-> bs::acospi(xf) = -nan
+//! [acospi]

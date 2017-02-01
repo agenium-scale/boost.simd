@@ -16,10 +16,25 @@ namespace boost { namespace simd
 {
 
  /*!
-  @ingroup group-trigonometry
-    Function object implementing log1p capabilities
+  @ingroup group-exponential
+    This function object computes \f$\log(1+x)\f$ with good accuracy even for small
+    \f$x\f$ values.
 
-    Computes log1p value of its parameter.
+  @par Header <boost/simd/function/log1p.hpp>
+
+  @par Decorators
+
+      - std_ for floating entries calls @c std::log1p
+
+  @see log, exp, expm1
+
+    @par Example:
+
+       @snippet log1p.cpp log1p
+
+    @par Possible output:
+
+       @snippet log1p.txt log1p
 
   **/
   Value log1p(Value const& x);

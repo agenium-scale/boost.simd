@@ -22,6 +22,9 @@ namespace boost { namespace simd
 
     returns the sorted x vector in ascending order
 
+
+    @par Header <boost/simd/function/sort.hpp>
+
     @par Semantic:
 
     For every parameter of type T

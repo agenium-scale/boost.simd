@@ -22,6 +22,9 @@ namespace boost { namespace simd
     interleave is guaranteed to be optimized as much as possible compared to using
     boost::simd::interleave_first and boost::simd::interleave_second in succession.
 
+
+    @par Header <boost/simd/function/interleave.hpp>
+
     @par Semantic:
     For every parameters @c x and @c y of type @c T :
     @code

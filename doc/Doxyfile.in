@@ -41,6 +41,18 @@ EXCLUDE_SYMBOLS        =
 
 EXAMPLE_PATH           = @PROJECT_SOURCE_DIR@/doc/examples
 EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc
+EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/arithmetic
+EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/bitwise
+EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/boolean
+EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/exponential
+EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/eulerian
+EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/hyperbolic
+EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/ieee
+EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/predicates
+EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/reduction
+EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/trigonometric
+EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/swar
+EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/test/doc/range
 EXAMPLE_PATH          += @PROJECT_SOURCE_DIR@/doc/
 EXAMPLE_RECURSIVE      = YES
 EXAMPLE_PATTERNS       = *
@@ -56,6 +68,7 @@ HTML_STYLESHEET        =
 ## DO NOT REORDER THE FOLLOWING LINES: {
 HTML_EXTRA_STYLESHEET  = @PROJECT_DOC_DIR@/custom/css/custom.css
 HTML_EXTRA_STYLESHEET += @PROJECT_DOC_DIR@/template/css/ns.css
+HTML_EXTRA_STYLESHEET += @PROJECT_DOC_DIR@/template/css/customdoxygen.css
 HTML_EXTRA_FILES       = @PROJECT_DOC_DIR@/template/js/ns.js
 HTML_EXTRA_FILES      += @PROJECT_DOC_DIR@/custom/js/custom.js
 ## }
@@ -1619,7 +1632,7 @@ MATHJAX_FORMAT         = SVG
 # The default value is: http://cdn.mathjax.org/mathjax/latest.
 # This tag requires that the tag USE_MATHJAX is set to YES.
 
-MATHJAX_RELPATH        = http://cdn.mathjax.org/mathjax/latest
+MATHJAX_RELPATH        = https://cdn.mathjax.org/mathjax/latest
 
 # The MATHJAX_EXTENSIONS tag can be used to specify one or more MathJax
 # extension names that should be enabled during MathJax rendering. For example
@@ -2111,7 +2124,7 @@ ENABLE_PREPROCESSING   = YES
 # The default value is: NO.
 # This tag requires that the tag ENABLE_PREPROCESSING is set to YES.
 
-MACRO_EXPANSION        = NO
+MACRO_EXPANSION        = YES
 
 # If the EXPAND_ONLY_PREDEF and MACRO_EXPANSION tags are both set to YES then
 # the macro expansion is limited to the macros specified with the PREDEFINED and
@@ -2119,7 +2132,7 @@ MACRO_EXPANSION        = NO
 # The default value is: NO.
 # This tag requires that the tag ENABLE_PREPROCESSING is set to YES.
 
-EXPAND_ONLY_PREDEF     = NO
+EXPAND_ONLY_PREDEF     = YES
 
 # If the SEARCH_INCLUDES tag is set to YES, the include files in the
 # INCLUDE_PATH will be searched if a #include is found.

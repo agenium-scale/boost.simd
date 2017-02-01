@@ -1,0 +1,8 @@
+//! [tenpower]
+---- simd
+<- pi =               (-1, 2, -3, 4)
+-> bs::tenpower(pi) = (0.1, 100, 0.001, 10000)
+---- scalar
+<- xi =               4
+-> bs::tenpower(xi) = 10000
+//! [tenpower]

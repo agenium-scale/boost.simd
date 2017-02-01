@@ -1,16 +1,15 @@
 # Boost.SIMD
 
-**Boost.SIMD** is a portable SIMD programming library to be proposed as a Boost library.
+**Boost.SIMD** is a portable SIMD programming library to be proposed as a Boost library. 
+It's a sensible subset of the features proposed by [bSIMD](https://www.numscale.com/en/solutions/bsimd/) - NumScale's closed-source library for SIMD programming - that we saw fit for open sourcing.
 
 [![Build Status](https://travis-ci.org/NumScale/boost.simd.png?branch=develop)](https://travis-ci.org/NumScale/boost.simd)
 
-**Boost.SIMD** was developed to simplify the difficult, tedious and often error-prone process of developing SIMD
-programs. **Boost.SIMD** is designed to seamlessly integrate into existing projects so that you can quickly and
-easily start developing high performance, portable and future proof software.
+**Boost.SIMD** was developed to simplify the difficult, tedious and often error-prone process of developing SIMD programs. **Boost.SIMD** is designed to seamlessly integrate into existing projects so that you can quickly and easily start developing high performance, portable and future proof software.
 
 ## Important Links :
  - [The current Issues List](https://github.com/NumScale/boost.simd/issues)
- - [The documentation](http://developer.numscale.com/boost.simd)
+ - [The documentation](https://developer.numscale.com/boost.simd/documentation/develop)
  - [the Q&A Google group](https://groups.google.com/forum/#!forum/boost-simd)
 
 # What is SIMD?
@@ -91,4 +90,4 @@ and display:
 
     (11, 22, 33, 44)
 
-Now, you can [have a look at our documentation](http://developer.numscale.com/boost.simd) to follow one of our tutorials on how to use **Boost.SIMD**.
+Now, you can [have a look at our documentation](https://developer.numscale.com/boost.simd/documentation/develop/) to follow one of our tutorials on how to use **Boost.SIMD**.

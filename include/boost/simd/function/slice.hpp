@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     This function object slices a simd::pack into two simd::packs of same type of half the size.
 
+
+    @par Header <boost/simd/function/slice.hpp>
+
     @par Semantic:
 
     For any value @c a of type @c T, the following code:

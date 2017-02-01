@@ -16,23 +16,24 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
-    Function object implementing is_nan capabilities
 
-    Returns @ref True or @ref False according x is nan or not.
+    This function object returns @ref True or @ref False according x is nan or not.
 
-    @par Semantic:
 
-    @code
-    auto r = is_nan(x);
-    @endcode
+    @par Header <boost/simd/function/is_nan.hpp>
 
-    is similar to:
+   @par Note
 
-    @code
-    auto r = x != x;
-    @endcode
+     Using `is_nan(x)` is similar to `x != x`
+
+   @par Example:
+
+     @snippet is_nan.cpp is_nan
+
+   @par Possible output:
+
+     @snippet is_nan.txt is_nan
 
   **/
   as_logical_t<Value> is_nan(Value const& x);

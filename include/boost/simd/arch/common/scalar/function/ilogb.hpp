@@ -12,7 +12,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_ILOGB_HPP_INCLUDED
 
 #include <boost/simd/constant/zero.hpp>
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/function/exponent.hpp>
 #include <boost/simd/function/is_gtz.hpp>
 #include <boost/simd/detail/math.hpp>

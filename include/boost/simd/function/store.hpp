@@ -23,6 +23,9 @@ namespace boost { namespace simd
     scattering or non-POD values, both pointer and offset arguments can
     themselves be SIMD register or Fusion Sequences.
 
+
+    @par Header <boost/simd/function/store.hpp>
+
     @par Semantic:
 
     store semantic is similar to aligned_store semantic except for the fact
@@ -35,13 +38,17 @@ namespace boost { namespace simd
     @param mask   Optional logical mask. Only stores values for which the mask is true.
 
   **/
-  template<typename Value, typename Pointer, typename Offset> void store( Value const& val, Pointer const& ptr, Offset const& offset) {}
-
-  /// @overload
-  template<typename Value, typename Pointer> void store( Value const& val, Pointer ptr) {}
-  /// @overload
   template<typename Value, typename Pointer, typename Offset> void store( Value const& val, Pointer const& ptr
                                                                         , Offset const& offset, Mask const& mask) {}
+
+  /*!
+    @overload
+   **/
+  template<typename Value, typename Pointer> void store( Value const& val, Pointer ptr) {}
+  /*!
+    @overload
+  **/
+  template<typename Value, typename Pointer, typename Offset> void store( Value const& val, Pointer const& ptr, Offset const& offset) {}
 
 } }
 #endif

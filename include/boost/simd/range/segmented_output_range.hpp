@@ -15,14 +15,16 @@
 #include <boost/simd/range/detail/segmented_range.hpp>
 #include <boost/simd/range/aligned_output_range.hpp>
 #include <boost/align/align_up.hpp>
-#include <boost/range/iterator_range.hpp>
+#include <boost/simd/detail/nsm.hpp>
+#include <boost/simd/range/detail/util.hpp>
 
 namespace boost { namespace simd
 {
+  namespace tt = nsm::type_traits;
 
   /*!
     @ingroup group-std
-    Splits a ContiguousRange in three Contiguous Output Ranges able to support mixed scalar and SIMD
+    A three Contiguous Output Ranges tuple able to support mixed scalar and SIMD
     traversal.
 
     The three sub-ranges are stored into a std::tuple and covers:
@@ -32,18 +34,27 @@ namespace boost { namespace simd
       to be read as a boost::simd::pack and the location after the last readable pack.
     - the scalar epilogue range, i.e the range defined between the location after the last readable
       pack and the original end.
+  */
+  template <typename Iterator>
+  using segmented_output_range_type = std::tuple< iterator_range<Iterator>
+                                                , iterator_range<detail::aligned_output_iterator<Iterator>>
+                                                , iterator_range<Iterator>
+                                                >;
+
+  /*!
+    @ingroup group-std
+    Splits a ContiguousRange into  a @ref segmented_output_range_type.
 
     @param b  Starting iterator of the ContiguousRange to adapt
     @param e  End iterator of the ContiguousRange to adapt
     @return   A triplet of Output Range covering the scalar prologue, the SIMD main range and the scalar
               epilogue covering the same data than the original Range.
+    @see segmented_output_range_type
   **/
   template<std::size_t C, typename Iterator>
-  std::tuple< iterator_range<Iterator>
-            , iterator_range<detail::aligned_output_iterator<Iterator>>
-            , iterator_range<Iterator>
-            >
-  inline segmented_output_range( Iterator b, Iterator e )
+  inline
+  segmented_output_range_type<Iterator>
+  segmented_output_range( Iterator b, Iterator e )
   {
     return detail::segmented_range<C, detail::aligned_output_iterator<Iterator>>
       ( b
@@ -52,33 +63,38 @@ namespace boost { namespace simd
       );
   }
 
-  /// @overload
-  template<class Iterator> inline
-  auto    segmented_output_range( Iterator begin, Iterator end )
-      ->  decltype( segmented_output_range< pack< typename std::iterator_traits<Iterator>
-                                                              ::value_type
-                                                  >::static_size
-                                            >( begin, end )
-                  )
+  /*!
+     @overload
+  */
+  template<std::size_t C, class Range>
+  inline
+  segmented_output_range_type<detail::range_iterator<Range>>
+  segmented_output_range( Range& r )
   {
-    return  segmented_output_range< pack< typename std::iterator_traits<Iterator>
-                                                    ::value_type
-                                        >::static_size
-                                  >( begin, end );
+    return segmented_output_range<C>( tt::begin(r), tt::end(r) );
   }
 
-  template<std::size_t C, class Range> inline
-  auto    segmented_output_range( Range& r )
-      ->  decltype( segmented_output_range<C>( boost::begin(r), boost::end(r) ) )
+  /*!
+     @overload
+  */
+  template<class Iterator> 
+  inline
+  segmented_output_range_type<Iterator>
+  segmented_output_range( Iterator begin, Iterator end )
   {
-    return segmented_output_range<C>( boost::begin(r), boost::end(r) );
+    typedef typename std::iterator_traits<Iterator>::value_type value_type;
+    return segmented_output_range<pack<value_type>::static_size>( begin, end );
   }
 
-  template<class Range> inline
-  auto    segmented_output_range( Range& r )
-      ->  decltype( segmented_output_range( boost::begin(r), boost::end(r) ) )
+  /*!
+     @overload
+  */
+  template<class Range> 
+  inline
+  segmented_output_range_type<detail::range_iterator<Range>>
+  segmented_output_range( Range& r )
   {
-    return segmented_output_range( boost::begin(r), boost::end(r) );
+    return segmented_output_range( tt::begin(r), tt::end(r) );
   }
 } }
 

@@ -1,0 +1,13 @@
+//! [min]
+---- simd
+ <- pf =                             (3, -2, -0, 0)
+ <- qf =                             (4, -1, 0, -nan)
+ -> bs::min(pf, qf) =                (3, -2, -0, 0)
+ -> bs::pedantic_(bs::min)(pf, qf) = (3, -2, -0, 0)
+ -> bs::std_(bs::min)(pf, qf) =      (3, -2, -0, 0)
+---- scalar
+ xf =                                3
+ yf =                                4
+ -> bs::min(xf, yf) =                3
+ -> bs::pedantic_(bs::min)(xf, yf) = 3
+//! [min]

@@ -47,7 +47,9 @@ namespace boost { namespace simd
                                       );
   }
 
-  /// @overload
+  /*!
+    @overload
+  */
   template<class Iterator> inline
   boost::iterator_range< detail::aligned_output_iterator<Iterator> >
   aligned_output_range( Iterator begin, Iterator end )
@@ -83,7 +85,9 @@ namespace boost { namespace simd
     return aligned_output_range<C>( boost::begin(r), boost::end(r) );
   }
 
-  /// @overload
+  /*!
+    @overload
+  */
   template<class Range> inline
   boost::iterator_range<detail::aligned_output_iterator<typename range_iterator<Range>::type> >
   aligned_output_range( Range& r )

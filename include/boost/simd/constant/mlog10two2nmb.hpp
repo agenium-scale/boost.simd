@@ -53,8 +53,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/constant/definition/mlog10two2nmb.hpp>
-#include <boost/simd/arch/common/scalar/constant/constant_value.hpp>
-#include <boost/simd/arch/common/simd/constant/constant_value.hpp>
+#include <boost/simd/constant/scalar/mlog10two2nmb.hpp>
+#include <boost/simd/constant/simd/mlog10two2nmb.hpp>
 
 #endif

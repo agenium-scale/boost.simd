@@ -1,0 +1,10 @@
+//! [if_nan_else]
+---- simd
+ <- pf =                      (3, -0, -3, 0)
+ <- qf =                      (4, -3, -3, 0)
+ -> bs::if_nan_else(pf, qf) = (-nan, -3, -nan, 0)
+---- scalar
+ xf =                         3
+ yf =                         4
+ -> bs::if_nan_else(xf, yf) = -nan
+//! [if_nan_else]

@@ -15,6 +15,8 @@
 #define BOOST_SIMD_PACK_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
+#include <boost/simd/detail/nsm.hpp>
+#include <boost/simd/detail/dispatch/detail/declval.hpp>
 #include <boost/simd/detail/pack_traits.hpp>
 #include <boost/simd/detail/storage_of.hpp>
 #include <boost/simd/meta/is_power_of_2.hpp>
@@ -49,6 +51,9 @@
 
 namespace boost { namespace simd
 {
+  namespace bd = boost::dispatch;
+  namespace tt = nsm::type_traits;
+
   /*!
     @ingroup  group-api
     @brief    High-level interface for manipulating SIMD data
@@ -180,7 +185,7 @@ namespace boost { namespace simd
                    , "pack<T,N>(T v...) must take exactly N arguments"
                    );
 
-      data_ = boost::simd::make<pack>(v0,v1,vn...).storage();
+      data_ = boost::simd::make(as_<pack>{},v0,v1,vn...).storage();
     }
 
     /*!
@@ -231,7 +236,9 @@ namespace boost { namespace simd
     /// @brief Get reference to internal storage
     BOOST_FORCEINLINE storage_type& storage() BOOST_NOEXCEPT { return data_; }
 
-    /// @overload
+    /*!
+      @overload
+    */
     BOOST_FORCEINLINE storage_type const& storage() const BOOST_NOEXCEPT { return data_; }
 
     /*!
@@ -248,10 +255,30 @@ namespace boost { namespace simd
       return traits::at(*this, i);
     }
 
-    /// @overload
+    /*!
+      @overload
+    */
     BOOST_FORCEINLINE const_reference operator[](std::size_t i) const
     {
       return traits::at(*this, i);
+    }
+
+    /*!
+      @overload
+    */
+    template<std::uint64_t Index>
+    BOOST_FORCEINLINE value_type operator[](tt::integral_constant<std::uint64_t,Index> const&)
+    {
+      return ::boost::simd::extract<Index>(*this);
+    }
+
+    /*!
+      @overload
+    */
+    template<std::uint64_t Index>
+    BOOST_FORCEINLINE value_type operator[](tt::integral_constant<std::uint64_t,Index> const&) const
+    {
+      return ::boost::simd::extract<Index>(*this);
     }
 
     BOOST_FORCEINLINE value_type get(std::size_t i) const
@@ -272,7 +299,9 @@ namespace boost { namespace simd
       return iterator(this);
     }
 
-    /// @overload
+    /*!
+      @overload
+    */
     BOOST_FORCEINLINE const_iterator begin() const BOOST_NOEXCEPT
     {
       return const_iterator(this);
@@ -284,7 +313,9 @@ namespace boost { namespace simd
       return iterator(this, size());
     }
 
-    /// @overload
+    /*!
+       @overload
+    */
     BOOST_FORCEINLINE const_iterator end() const BOOST_NOEXCEPT
     {
       return const_iterator(this, size());
@@ -308,7 +339,9 @@ namespace boost { namespace simd
       return reverse_iterator(end());
     }
 
-    /// @overload
+    /*!
+      @overload
+    */
     BOOST_FORCEINLINE const_reverse_iterator rbegin() const BOOST_NOEXCEPT
     {
       return reverse_iterator(end());
@@ -320,7 +353,9 @@ namespace boost { namespace simd
       return reverse_iterator(begin());
     }
 
-    /// @overload
+    /*!
+      @overload
+    */
     BOOST_FORCEINLINE const_reverse_iterator rend() const BOOST_NOEXCEPT
     {
       return reverse_iterator(begin());
@@ -345,24 +380,24 @@ namespace boost { namespace simd
     const_reference front() const  { return traits::at(*this, 0); }
 
     public:
-    BOOST_FORCEINLINE pack& operator++() BOOST_NOEXCEPT_IF_EXPR(inc(std::declval<pack>()))
+    BOOST_FORCEINLINE pack& operator++() BOOST_NOEXCEPT_IF_EXPR(inc(bd::detail::declval<pack>()))
     {
       return (*this = inc(*this));
     }
 
-    BOOST_FORCEINLINE pack& operator--() BOOST_NOEXCEPT_IF_EXPR(dec(std::declval<pack>()))
+    BOOST_FORCEINLINE pack& operator--() BOOST_NOEXCEPT_IF_EXPR(dec(bd::detail::declval<pack>()))
     {
       return (*this = dec(*this));
     }
 
-    BOOST_FORCEINLINE pack operator++(int) BOOST_NOEXCEPT_IF_EXPR(++std::declval<pack>())
+    BOOST_FORCEINLINE pack operator++(int) BOOST_NOEXCEPT_IF_EXPR(++bd::detail::declval<pack>())
     {
       pack that = *this;
       ++(*this);
       return that;
     }
 
-    BOOST_FORCEINLINE pack operator--(int)  BOOST_NOEXCEPT_IF_EXPR(--std::declval<pack>())
+    BOOST_FORCEINLINE pack operator--(int)  BOOST_NOEXCEPT_IF_EXPR(--bd::detail::declval<pack>())
     {
       pack that = *this;
       --(*this);

@@ -16,25 +16,27 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-bitwise
-    Function object implementing rror capabilities
-
-    Returns the first entry rotated right or left
+    This function object returns the first entry rotated right or left
     by the absolute value of the second entry,
     according to its sign.
 
-    @par semantic:
-    For any given value @c x of type @c T, @c n  of type @c I:
 
-    @code
-    T r = rror(x, n);
-    @endcode
+    @par Header <boost/simd/function/rror.hpp>
 
     @par Note
     This function asserts if the integral parameter is out of range
 
     @see  ror, rrol, ror
+
+
+   @par Example:
+
+     @snippet rror.cpp rror
+
+   @par Possible output:
+
+     @snippet rror.txt rror
 
   **/
   Value rror(Value const & x, IntegerValue const &n);

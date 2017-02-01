@@ -16,8 +16,8 @@
 #include <boost/simd/function/ldexp.hpp>
 #include <boost/simd/function/modf.hpp>
 #include <boost/simd/function/floor.hpp>
-#include <boost/simd/function/negif.hpp>
 #include <boost/simd/function/is_gtz.hpp>
+#include <boost/simd/function/logical_and.hpp>
 #include <boost/simd/constant/valmin.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/detail/dispatch/meta/scalar_of.hpp>
@@ -26,9 +26,8 @@ namespace boost { namespace simd { namespace ext
 {
    namespace bd = boost::dispatch;
    namespace bs = boost::simd;
-   BOOST_DISPATCH_OVERLOAD_IF(toint_
+   BOOST_DISPATCH_OVERLOAD(toint_
                           , (typename A0, typename X)
-                          , (detail::is_native<X>)
                           , bd::cpu_
                           , bs::pack_<bd::uint_<A0>, X>
                           )
@@ -48,7 +47,7 @@ namespace boost { namespace simd { namespace ext
    {
      BOOST_FORCEINLINE A0 operator()(A0 const& a0) const
      {
-       return a0;
+        return a0;
      }
    };
 

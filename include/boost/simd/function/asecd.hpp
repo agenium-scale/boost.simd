@@ -16,24 +16,25 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing asecd capabilities
+    This function object returns the inverse secant
+    in degree: \f$(180/\pi) \arccos(1/x)\f$.
 
-     inverse secant in degree: \f$(180/\pi) \arccos(1/x)\f$.
+   @see asec,  asecpi
 
-    @par Semantic:
 
-    For every parameter of floating type
+    @par Header <boost/simd/function/asecd.hpp>
 
-    @code
-    auto r = asecd(x);
-    @endcode
+   @par Example:
 
-    @see asec, ascpi, secd, acosd
+     @snippet asecd.cpp asecd
+
+   @par Possible output:
+
+     @snippet asecd.txt asecd
 
   **/
-  Value asecd(Value const & v0);
+  Value asecd(Value const & x);
 } }
 #endif
 

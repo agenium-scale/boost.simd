@@ -16,38 +16,32 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-exponential
-    Function object implementing exp2 capabilities
+    This function object returns the base two exponential of its argument: \f$2^{x}\f$
 
-    base two exponential function: \f$2^{x}\f$
-
-    @par Semantic:
-
-    For every parameter of floating type T
-
-    @code
-    T r = exp2(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = pow(T(2), x);
-    @endcode
+    @par Header <boost/simd/function/exp2.hpp>
 
     @par Note:
 
-    - provisions are made to obtain a flint result from a flint input
+    - provisions are made to obtain a flint result from a flint argument
 
     @par Decorators
 
-    std_ for floating entries
+      - std_ for floating entries calls @c std::exp2
 
     @see exp, exp10, pow, pow2
 
+
+   @par Example:
+
+     @snippet exp2.cpp exp2
+
+   @par Possible output:
+
+     @snippet exp2.txt exp2
+
   **/
-  Value exp2(Value const & v0);
+  Value exp2(Value const & x);
 } }
 #endif
 

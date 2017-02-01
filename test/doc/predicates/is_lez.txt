@@ -1,0 +1,10 @@
+//! [is_lez]
+---- simd
+<- pf =                  (0, 1, -1, -2, 1.4013e-45, inf, -inf, -nan)
+-> bs::is_lez(pf) = (true, false, true, true, false, false, true, false)
+---- scalar
+<- xf =                  1
+-> bs::is_lez(xf) = false
+<- yf =                  1.4013e-45
+-> bs::is_lez(yf) = false
+//! [is_lez]

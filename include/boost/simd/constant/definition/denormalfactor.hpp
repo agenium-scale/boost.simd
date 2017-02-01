@@ -12,7 +12,7 @@
 #define BOOST_SIMD_CONSTANT_DEFINITION_DENORMALFACTOR_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
-#include <boost/simd/detail/brigand.hpp>
+#include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/detail/dispatch.hpp>
 #include <boost/simd/detail/constant_traits.hpp>
 #include <boost/simd/detail/dispatch/function/make_callable.hpp>
@@ -44,6 +44,12 @@ namespace boost { namespace simd
   BOOST_NOEXCEPT_DECLTYPE(detail::denormalfactor( boost::dispatch::as_<T>{}))
   {
     return detail::denormalfactor( boost::dispatch::as_<T>{} );
+  }
+
+  template<typename T> BOOST_FORCEINLINE
+  auto Denormalfactor(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Denormalfactor<T>())
+  {
+    return Denormalfactor<T>();
   }
 } }
 

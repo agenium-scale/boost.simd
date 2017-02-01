@@ -16,31 +16,34 @@ namespace boost { namespace simd
 {
   /*!
     @ingroup group-oerator
-    Function object extending divides
+    This function object computes the the quotient of the two parameters of the
+    same type with or without option.
 
-    Calculate the quotient of the two parameters of the same type with or without options.
+    @par Header <boost/simd/function/div.hpp>
 
-    @par Semantic
+    @par Notes
 
-    For any value @c a and @c b of type @c T,
+    For any value @c a and @c b of same type `div({option, }a, b)`
+    returns the quotient of @c a by @c b respecting to the option specified.
 
-    @code
-    T r = div({option, }a, b);
-    @endcode
+   With no option this function is equivalent to @ref divides(a, b).
 
-    returns the quotient of @c a by @c b respecting to the options specified.
+   Options may be c@ref ceil, @ref floor, @ref fix, @ref round, @ref nearbyint (in the namespace booost::simd)
+   and provides the same result as if the function object whose option is the name was applied to the floating
+   division of the parameters.
 
-    By default, this functions is equivalent to divides(a, b).
-    Options may be ceil, floor, fix, round, nearbyint (in the namespace booost::simd)
-    and provide the same result as the calls divceil(a, b), divfloor(a, b),
-    divfix(a, b), divround(a, b), divnearbyint(a, b).
+    @see divides, rec
 
-    @return The quotient of the two parameters.
+    @par Example:
+
+       @snippet div.cpp div
+
+    @par Possible output:
+
+       @snippet div.txt div
+
   **/
-  T div(T const& a, T const& b);
-
-  //@overload
-  T div(Option const& o, T const& a, T const& b);
+  T div(Option const&, T const& a, T const& b);
 
 } }
 #endif

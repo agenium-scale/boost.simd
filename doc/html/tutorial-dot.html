@@ -21,14 +21,14 @@
     extensions: ["tex2jax.js"],
     jax: ["input/TeX","output/SVG"],
 });
-</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</script><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
         <link rel="icon" href="numscale_icon.png">
         <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         <link href="doxygen.css" rel="stylesheet" type="text/css" />
-        <link href="doxygen.css" rel="stylesheet" type="text/css" />
         <link href="custom.css" rel="stylesheet" type="text/css"/>
 <link href="ns.css" rel="stylesheet" type="text/css"/>
+<link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="ns.js"></script>
         <script type="text/javascript" src="custom.js"></script>
@@ -44,7 +44,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li id="version">
-                            <a href="#" class="disabled">4.16.12.0</a>
+                            <a href="#" class="disabled">4.17.1.0</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -114,15 +114,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#data-objectives">Objectives</a></li>
+<ul><li class="level1"><a href="#tutorial-dot-objectives">Objectives</a></li>
 <li class="level1"><a href="#tutorial-dot-intro">Transforming a scalar reduction into a SIMD reduction</a><ul><li class="level2"><a href="#tutorial-dot-transition">Transition from scalar to SIMD code</a></li>
 <li class="level2"><a href="#tutorial-dot-simd">Building a SIMD loop</a></li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="textblock"><p>In this tutorial we will show how data can be processed using <b>Boost.SIMD</b> by writing a naive dot product using <b>Boost.SIMD</b>.</p>
-<h1><a class="anchor" id="data-objectives"></a>
+<div class="textblock"><div style="text-align: right;" markdown="1">Prev: <a class="el" href="tutorial-mathematical.html">Using Mathematical Functions</a></div> <div style="text-align: right;" markdown="1">Next: <a class="el" href="tutorial-branching.html">SIMD Branching</a></div><p>In this tutorial we will show how data can be processed using <b>Boost.SIMD</b> by writing a naive dot product using <b>Boost.SIMD</b>.</p>
+<h1><a class="anchor" id="tutorial-dot-objectives"></a>
 Objectives</h1>
 <hr/>
 <p>In this tutorial we will:</p><ul>
@@ -136,7 +136,7 @@ Transforming a scalar reduction into a SIMD reduction</h1>
 <p>This tutorial will present how data can be processed using <b>Boost.SIMD</b> by writing a naive dot product using <b>Boost.SIMD</b>.</p>
 <p>A simple sequential, scalar dot product could be coded like this:</p>
 <div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Value&gt;</div>
-<div class="line">Value <a class="code" href="group__group-reduction_gaff8d315fafcf6c4112c2f1b2683da193.html#gaff8d315fafcf6c4112c2f1b2683da193">dot</a>(Value* first1, Value* last1, Value* first2)</div>
+<div class="line">Value <a class="code" href="group__group-reduction_ga93e42b3d9c8a8e6725f03420c2ee5e78.html#ga93e42b3d9c8a8e6725f03420c2ee5e78">dot</a>(Value* first1, Value* last1, Value* first2)</div>
 <div class="line">{</div>
 <div class="line">  Value v(0);</div>
 <div class="line"></div>
@@ -151,7 +151,7 @@ Transforming a scalar reduction into a SIMD reduction</h1>
 Transition from scalar to SIMD code</h2>
 <p>In this case the algorithm is clearly vectorizable, let's unroll the loop arbitrarily to show the inherent data parallelism:</p>
 <div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Value&gt;</div>
-<div class="line">Value <a class="code" href="group__group-reduction_gaff8d315fafcf6c4112c2f1b2683da193.html#gaff8d315fafcf6c4112c2f1b2683da193">dot</a>(Value* first1, Value* last1, Value* first2)</div>
+<div class="line">Value <a class="code" href="group__group-reduction_ga93e42b3d9c8a8e6725f03420c2ee5e78.html#ga93e42b3d9c8a8e6725f03420c2ee5e78">dot</a>(Value* first1, Value* last1, Value* first2)</div>
 <div class="line">{</div>
 <div class="line">  Value v1(0), v2(0);</div>
 <div class="line"></div>
@@ -169,7 +169,7 @@ Transition from scalar to SIMD code</h2>
 <div class="line">}</div>
 </div><!-- fragment --><p> The algorithm is split into two parts:</p>
 <p>First, we loop over each element inside both datasets and multiply them and then, we sum the intermediate values into the final result.</p>
-<p>By unrolling this pattern arbitrarily, we expose the fact that the multiplication between the two dataset is purely "vertical" and so, is vectorizable. The <a class="el" href="group__group-reduction_ga474846094a2e6c8f59ae86a1fc5cb720.html#ga474846094a2e6c8f59ae86a1fc5cb720" title="Function object implementing sum capabilities. ">boost::simd::sum</a> of the partial results itself is an "horizontal" operation, i.e a vectorizable computation operating across the elements of a single vector (see swar operations).</p>
+<p>By unrolling this pattern arbitrarily, we expose the fact that the multiplication between the two dataset is purely "vertical" and so, is vectorizable. The <a class="el" href="group__group-reduction_ga418c9174d2e31b314f003e047af12ca6.html#ga418c9174d2e31b314f003e047af12ca6" title="This function object returns the sum of the elements of the SIMD argument. ">boost::simd::sum</a> of the partial results itself is an "horizontal" operation, i.e a vectorizable computation operating across the elements of a single vector (see swar operations).</p>
 <h2><a class="anchor" id="tutorial-dot-simd"></a>
 Building a SIMD loop</h2>
 <p>We are now going to use <code><a class="el" href="classboost_1_1simd_1_1pack.html" title="High-level interface for manipulating SIMD data. ">boost::simd::pack</a></code> to vectorize this loop. The main idea is to compute partial sums inside an instance of <code><a class="el" href="classboost_1_1simd_1_1pack.html" title="High-level interface for manipulating SIMD data. ">boost::simd::pack</a></code> and then perform a final summation. To do so, we will use <code><a class="el" href="namespaceboost_1_1simd_a44f9b5b1a343b238a3a80a52365ec860.html#a44f9b5b1a343b238a3a80a52365ec860" title="Load a value from memory into a generic variable. ">boost::simd::load</a></code> to load data from first1 and first2, process these <code><a class="el" href="classboost_1_1simd_1_1pack.html" title="High-level interface for manipulating SIMD data. ">boost::simd::pack</a></code> instances using the proper operators and then advance the pointers by the cardinal of <code><a class="el" href="classboost_1_1simd_1_1pack.html" title="High-level interface for manipulating SIMD data. ">boost::simd::pack</a></code>.</p>
@@ -189,7 +189,7 @@ Building a SIMD loop</h2>
 <div class="line">    tmp = tmp + x1 * x2;</div>
 <div class="line">  }</div>
 <div class="line"></div>
-<div class="line">  Value dot_product = <a class="code" href="group__group-reduction_ga474846094a2e6c8f59ae86a1fc5cb720.html#ga474846094a2e6c8f59ae86a1fc5cb720">bs::sum</a>(tmp); <span class="comment">// horizontal SIMD vector summation</span></div>
+<div class="line">  Value dot_product = <a class="code" href="group__group-reduction_ga418c9174d2e31b314f003e047af12ca6.html#ga418c9174d2e31b314f003e047af12ca6">bs::sum</a>(tmp); <span class="comment">// horizontal SIMD vector summation</span></div>
 <div class="line">  <span class="keywordflow">for</span> (; first1 &lt; last1; ++first1, ++first2) {</div>
 <div class="line">    dot_product += (*first1) * (*first2);</div>
 <div class="line">  }</div>
@@ -234,7 +234,7 @@ Building a SIMD loop</h2>
 <div class="line">    tmp = tmp + x1 * x2;</div>
 <div class="line">  }</div>
 <div class="line"></div>
-<div class="line">  Value dot_product = <a class="code" href="group__group-reduction_ga474846094a2e6c8f59ae86a1fc5cb720.html#ga474846094a2e6c8f59ae86a1fc5cb720">bs::sum</a>(tmp);</div>
+<div class="line">  Value dot_product = <a class="code" href="group__group-reduction_ga418c9174d2e31b314f003e047af12ca6.html#ga418c9174d2e31b314f003e047af12ca6">bs::sum</a>(tmp);</div>
 <div class="line">  <span class="keywordflow">for</span> (; first1 &lt; last1; ++first1, ++first2) {</div>
 <div class="line">    dot_product += (*first1) * (*first2);</div>
 <div class="line">  }</div>
@@ -261,7 +261,7 @@ Building a SIMD loop</h2>
 <div class="line"><span class="comment">// This code can be compiled using (for instance for gcc)</span></div>
 <div class="line"><span class="comment">// g++ dotmain.cpp -msse4.2 -std=c++11 -O3 -DNDEBUG -o dotmain</span></div>
 <div class="line"><span class="comment">// -I/path_to/boost_simd/ -I/path_to/boost/</span></div>
-</div><!-- fragment --></div></div><!-- contents -->
+</div><!-- fragment --> <div style="text-align: right;" markdown="1">Prev: <a class="el" href="tutorial-mathematical.html">Using Mathematical Functions</a></div> <div style="text-align: right;" markdown="1">Next: <a class="el" href="tutorial-branching.html">SIMD Branching</a></div> </div></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
                         </div>
@@ -272,7 +272,7 @@ Building a SIMD loop</h2>
         <hr class="footer"/>
         <address class="footer">
             <small>
-                Generated on Mon Dec 19 2016 10:10:52 for Boost.SIMD by &#160;
+                Generated on Wed Feb 1 2017 15:40:37 for Boost.SIMD by &#160;
                 <a href="http://www.doxygen.org/index.html">
                     <img class="footer" src="doxygen.png" alt="doxygen"/>
                 </a>

@@ -12,35 +12,30 @@
 #define BOOST_SIMD_FUNCTION_CUMSUM_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+namespace boost {
+namespace simd {
 
- /*!
+/*!
+   @ingroup group-reduction
+   This function object returns the cumulate sum of the argument elements
 
-    @ingroup group-reduction
-    Function object implementing cumsum capabilities
+  @see cumprod
 
-    compute the cumulate sum of the vector elements
 
-    @par Semantic:
+    @par Header <boost/simd/function/cumsum.hpp>
 
-    For every parameter of type T0
+  @par Example:
 
-    @code
-    T0 r = cumsum(x);
-    @endcode
+    @snippet cumsum.cpp cumsum
 
-    is similar to:
+  @par Possible output:
 
-    @code
-    T r =x;
-    for(int i=0;i < T::static_size; ++i)
-      r[i] += r[i-1];
-    @endcode
+    @snippet cumsum.txt cumsum
 
-  **/
-  Value cumsum(Value const & v0);
-} }
+ **/
+Value cumsum(Value const &x);
+}
+}
 #endif
 
 #include <boost/simd/function/scalar/cumsum.hpp>

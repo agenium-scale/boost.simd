@@ -17,21 +17,24 @@ namespace boost { namespace simd
 
  /*!
     @ingroup group-trigonometric
-    Function object implementing sincpi capabilities
+    This function object returns the Computes the sinpi cardinal
+    value of its parameter, i.e. \f$sin(\pi x)/(\pi x) \f$.
 
-    Computes the sinpi cardinal  value of its parameter that is \f$sin(\pi x)/(\pix) \f$.
-    @par Semantic:
+   @see sin, sinc, sinhc
 
-    For every parameter of floating type T
 
-    @code
-    T r = sincpi(x);
-    @endcode
+    @par Header <boost/simd/function/sincpi.hpp>
 
-    @see sin, sinc, sinhc
+   @par Example:
+
+     @snippet sincpi.cpp sincpi
+
+   @par Possible output:
+
+     @snippet sincpi.txt sincpi
 
   **/
-  Value sincpi(Value const & v0);
+  Value sincpi(Value const & x);
 } }
 #endif
 

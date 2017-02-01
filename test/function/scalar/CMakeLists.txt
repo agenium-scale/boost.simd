@@ -54,11 +54,9 @@ set ( SOURCES
    average.cpp
    basic.cpp
    bitfloating.cpp
-   bitget.cpp
    bitinteger.cpp
    bitofsign.cpp
    bits.cpp
-   bitset.cpp
    bitwise_and.cpp
    bitwise_andnot.cpp
    bitwise_cast.cpp
@@ -70,8 +68,10 @@ set ( SOURCES
    bitwise_select.cpp
    bitwise_xor.cpp
    broadcast.cpp
+   cast.cpp
    cbrt.cpp
-   ceil.cpp
+   ceil.regular.cpp
+   ceil.std.cpp
    clz.cpp
    compare_equal.cpp
    compare_greater.cpp
@@ -127,7 +127,8 @@ set ( SOURCES
    ffs.cpp
    firstbitset.cpp
    firstbitunset.cpp
-   floor.cpp
+   floor.regular.cpp
+   floor.std.cpp
    fma.regular.cpp
    fma.pedantic.cpp
    fms.cpp
@@ -282,8 +283,8 @@ set ( SOURCES
    nearbyint.std.cpp
    negate.cpp
    negatenz.cpp
-   negif.cpp
-   negifnot.cpp
+   if_neg.cpp
+   ifnot_neg.cpp
    nextafter.cpp
    next.cpp
    nextpow2.cpp
@@ -375,7 +376,9 @@ set ( SOURCES
    toint.saturated.cpp
    touint.regular.cpp
    touint.saturated.cpp
-   trunc.cpp
+   trunc.raw.cpp
+   trunc.regular.cpp
+   trunc.std.cpp
    two_add.cpp
    quadrant.cpp
    twopower.cpp

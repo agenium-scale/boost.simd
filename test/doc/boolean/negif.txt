@@ -1,0 +1,12 @@
+//! [negif]
+---- simd
+ <- pf =                     (3, 0, -3, -0)
+ <- qf =                     (3, 0.5, -3, 1)
+ -> bs::negif(pf, qf) =      (-3, 0.5, 3, 1)
+---- scalar
+ xf =                        3
+ yf =                        0
+ zf =                        5
+ -> bs::negif(xf, zf) =      -5
+ -> bs::negif(yf, zf) =      5
+//! [negif]

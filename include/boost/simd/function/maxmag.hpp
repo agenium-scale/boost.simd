@@ -16,25 +16,20 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing maxmag capabilities
+    This function object returns the value with the greatest absolute value among
+    its arguments.
 
-    Returns the input value which have the greatest absolute value.
 
-    @par Semantic:
+    @par Header <boost/simd/function/maxmag.hpp>
 
-    @code
-    auto r = maxmag(x,y);
-    @endcode
+   @par Example:
 
-    is similar to:
+     @snippet maxmag.cpp maxmag
 
-    @code
-    auto r = abs(x) > abs(y) ? x : abs(y) > abs(x) ? y : max(x, y);
-    @endcode
+   @par Possible output:
 
-    @see max, maxnum, maxnummag
+     @snippet maxmag.txt maxmag
 
   **/
   Value maxmag(Value const & x, Value const& y);

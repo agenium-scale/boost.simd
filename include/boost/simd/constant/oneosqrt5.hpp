@@ -48,8 +48,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/constant/definition/oneosqrt5.hpp>
-#include <boost/simd/arch/common/scalar/constant/constant_value.hpp>
-#include <boost/simd/arch/common/simd/constant/constant_value.hpp>
+#include <boost/simd/constant/scalar/oneosqrt5.hpp>
+#include <boost/simd/constant/simd/oneosqrt5.hpp>
 
 #endif

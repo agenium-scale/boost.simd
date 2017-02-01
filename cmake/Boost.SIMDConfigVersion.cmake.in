@@ -1,0 +1,73 @@
+## Copyright 2017 - NumScale SAS
+##
+## Distributed under the Boost Software License, Version 1.0.
+## (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+##
+## -------------------------------------------------------------------------------------------------
+##
+## Requirements for cmake's version configuration file:
+##
+##   PACKAGE_VERSION
+##   PACKAGE_VERSION_EXACT
+##   PACKAGE_VERSION_COMPATIBLE
+##
+## -------------------------------------------------------------------------------------------------
+
+##
+set(MAJOR_VERSION @PROJECT_MAJOR_VERSION@)
+set(MINOR_VERSION @PROJECT_MINOR_VERSION@)
+set(PATCH_VERSION @PROJECT_SUBMINOR_VERSION@)
+
+##
+set(PACKAGE_VERSION ${MAJOR_VERSION}.${MINOR_VERSION}.${SUBMINOR_VERSION}.${SUBSUBMINOR_VERSION})
+
+## Check each version components and report if they exists and if they matched
+if (PACKAGE_FIND_VERSION_MAJOR)
+  set(_major true)
+  if (${PACKAGE_FIND_VERSION_MAJOR} EQUAL ${MAJOR_VERSION})
+    set(_major_matched true)
+  endif()
+endif()
+
+if (PACKAGE_FIND_VERSION_MINOR)
+  set(_minor true)
+  if (${PACKAGE_FIND_VERSION_MINOR} EQUAL ${MINOR_VERSION})
+    set(_minor_matched true)
+  endif()
+endif()
+
+if (PACKAGE_FIND_VERSION_PATCH)
+  set(_patch true)
+  if (${PACKAGE_FIND_VERSION_PATCH} EQUAL ${PATCH_VERSION})
+    set(_patch_matched true)
+  endif()
+endif()
+
+## We want to be strict, so we strictly check for each version components, if one fails, then we
+## assume that the current version is incompatible...
+if (NOT PACKAGE_VERSION_UNSUITABLE AND _major AND _minor AND _patch)
+  if (_major_matched AND _minor_matched AND _patch_matched)
+    set(PACKAGE_VERSION_EXACT      true)
+    set(PACKAGE_VERSION_COMPATIBLE true)
+  else()
+    set(PACKAGE_VERSION_UNSUITABLE true)
+  endif()
+endif()
+
+if (NOT PACKAGE_VERSION_UNSUITABLE AND _major AND _minor)
+  if (_major_matched AND _minor_matched)
+    set(PACKAGE_VERSION_EXACT      true)
+    set(PACKAGE_VERSION_COMPATIBLE true)
+  else()
+    set(PACKAGE_VERSION_UNSUITABLE true)
+  endif()
+endif()
+
+if (NOT PACKAGE_VERSION_UNSUITABLE AND _major)
+  if (_major_matched)
+    set(PACKAGE_VERSION_EXACT      true)
+    set(PACKAGE_VERSION_COMPATIBLE true)
+  else()
+    set(PACKAGE_VERSION_UNSUITABLE true)
+  endif()
+endif()

@@ -3,7 +3,6 @@
   @file
 
   @copyright 2015 NumScale SAS
-  @copyright 2015 J.T. Lapreste
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -47,7 +46,7 @@ namespace boost { namespace simd { namespace ext
                            )
   {
     BOOST_FORCEINLINE
-    A0 operator() ( A0 a0, A0 a1, A0 a2) const BOOST_NOEXCEPT
+    A0 operator() (pedantic_tag const &,  A0 a0, A0 a1, A0 a2) const BOOST_NOEXCEPT
     {
       return -pedantic_(fma)(a0, a1, a2);
     }

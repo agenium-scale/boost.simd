@@ -18,22 +18,24 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-hyperbolic
-    Function object implementing acoth capabilities
+    This function object returns the hyperbolic cotangent argument \f$\frac12\log\frac{x+1}{x-1}\f$
 
-    Returns the hyperbolic cotangent argument \f$\frac12\log\frac{x+1}{x-1}\f$
 
-    @par Semantic:
+    @see cosh, sinh, acosh, asinh, atanh, asech, acosh, acsch
 
-    For every parameter of floating type @c T
 
-    @code
-    T r = acoth(x);
-    @endcode
+    @par Header <boost/simd/function/acoth.hpp>
 
-    @see log, Half
+    @par Example:
+
+       @snippet acoth.cpp acoth
+
+    @par Possible output:
+
+       @snippet acoth.txt acoth
 
   **/
-  Value acoth(Value const & v0);
+  Value acoth(Value const & x);
 } }
 #endif
 

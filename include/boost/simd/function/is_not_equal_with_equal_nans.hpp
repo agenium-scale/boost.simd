@@ -16,24 +16,25 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
-    Function object implementing is_not_equal_with_equal_nans capabilities
 
-    Returns @ref True if x and y are not equal else @ref False,
+    This function object returns @ref True if x and y are not equal else @ref False,
     nans being considered equal
 
-    @par Semantic:
 
-    @code
-    auto r = is_not_equal_with_equal_nans(x,y);
-    @endcode
+    @par Header <boost/simd/function/is_not_equal_with_equal_nans.hpp>
 
-    is similar to:
+   @par Note
 
-    @code
-    auto r = (x != y) || ((x!= x) && (y!= y));
-    @endcode
+     Using `is_not_equal_with_equal_nans(x,y)` is similar to: `(x != y) || ((x!= x) && (y!= y))`
+
+   @par Example:
+
+     @snippet is_not_equal_with_equal_nans.cpp is_not_equal_with_equal_nans
+
+   @par Possible output:
+
+     @snippet is_not_equal_with_equal_nans.txt is_not_equal_with_equal_nans
 
   **/
   as_logical_t<Value> is_not_equal_with_equal_nans(Value const& x, Value const& y);

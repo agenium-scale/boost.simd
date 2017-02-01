@@ -40,9 +40,9 @@ namespace boost { namespace simd
   }
 
   template < size_t N, class T> BOOST_FORCEINLINE auto extract(const T & a)
-  BOOST_NOEXCEPT_DECLTYPE(detail::extract(a, brigand::size_t<N>()))
+  BOOST_NOEXCEPT_DECLTYPE(detail::extract(a, nsm::size_t<N>()))
   {
-    return detail::extract(a, brigand::size_t<N>());
+    return detail::extract(a, nsm::size_t<N>());
   }
 
 } }

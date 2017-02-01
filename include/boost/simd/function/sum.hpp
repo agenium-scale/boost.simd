@@ -12,35 +12,30 @@
 #define BOOST_SIMD_FUNCTION_SUM_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+namespace boost {
+namespace simd {
 
- /*!
+/*!
+   @ingroup group-reduction
+   This function object returns the sum of the elements of the SIMD argument
 
-    @ingroup group-reduction
-    Function object implementing sum capabilities
+  @see sum
 
-    Returns the sum of the elements of the SIMD vector
 
-    @par Semantic:
+    @par Header <boost/simd/function/sum.hpp>
 
-    For every parameter of pack type T
+  @par Example:
 
-    @code
-    scalar_of_t<T> r = sum(x);
-    @endcode
+    @snippet sum.cpp sum
 
-    is similar to:
+  @par Possible output:
 
-    @code
-    scalar_of_t<T> r = Zero;
-    for(result_type i = 0; i != T::static_size; ++i)
-      r += x[i];
-    @endcode
+    @snippet sum.txt sum
 
-  **/
-  scalar_of_t<Value> sum(Value const & v0);
-} }
+ **/
+scalar_of_t<Value> sum(Value const &x);
+}
+}
 #endif
 
 #include <boost/simd/function/scalar/sum.hpp>

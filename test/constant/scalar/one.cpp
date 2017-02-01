@@ -23,4 +23,5 @@ STF_CASE_TPL( "Check one behavior"
   using boost::simd::One;
 
   STF_EQUAL(One<T>(), T(1));
+  STF_EQUAL(One(as(T(42))), T(1));
 }

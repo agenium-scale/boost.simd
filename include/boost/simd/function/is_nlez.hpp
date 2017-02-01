@@ -16,28 +16,24 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-predicates
-    Function object implementing is_nlez capabilities
 
-    Returns @ref True if x is not less or equal to @ref Zero else returns @ref False.
+    This function object returns @ref True if x is not less or equal to @ref Zero else returns @ref False.
 
-    @par Semantic:
 
-    @code
-    auto r = is_nlez(x);
-    @endcode
+    @par Header <boost/simd/function/is_nlez.hpp>
 
-    is similar to:
+   @par Note
 
-    @code
-    auto r = !(x <= 0);
-    @endcode
+     Using `is_nlez(x)` is similar to: `!(x <= 0)`
 
-    @par Note:
+   @par Example:
 
-    Due to existence of nan, this is not equivalent to a call to @ref is_gt
-z    for floating types
+     @snippet is_nlez.cpp is_nlez
+
+   @par Possible output:
+
+     @snippet is_nlez.txt is_nlez
 
   **/
   as_logical_t<Value> is_nlez(Value const& x);

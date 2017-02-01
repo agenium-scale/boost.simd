@@ -21,14 +21,14 @@
     extensions: ["tex2jax.js"],
     jax: ["input/TeX","output/SVG"],
 });
-</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</script><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
         <link rel="icon" href="numscale_icon.png">
         <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         <link href="doxygen.css" rel="stylesheet" type="text/css" />
-        <link href="doxygen.css" rel="stylesheet" type="text/css" />
         <link href="custom.css" rel="stylesheet" type="text/css"/>
 <link href="ns.css" rel="stylesheet" type="text/css"/>
+<link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="ns.js"></script>
         <script type="text/javascript" src="custom.js"></script>
@@ -44,7 +44,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li id="version">
-                            <a href="#" class="disabled">4.16.12.0</a>
+                            <a href="#" class="disabled">4.17.1.0</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -156,14 +156,14 @@ Why is the speed-up of my code not as expected?</h2>
 <div class="fragment"><div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; i += pack_t::static_size) {</div>
 <div class="line">    pack_t v0(&amp;data[i]);</div>
 <div class="line">    v0 = v0 * 2;</div>
-<div class="line">    <a class="code" href="namespaceboost_1_1simd_a4ef87e54c642027f74fbf73e6d75191b.html#a4ef87e54c642027f74fbf73e6d75191b">bs::aligned_store</a>(v0, &amp;output[i]);</div>
+<div class="line">    <a class="code" href="namespaceboost_1_1simd.html#aaa551993873d3636d339e3ef32ffb56b">bs::aligned_store</a>(v0, &amp;output[i]);</div>
 <div class="line">  }</div>
 </div><!-- fragment --><p> The following loop is compute-bound. As most of the time is spent calculating exp, significant speed-up is observed when this code is vectorized.</p>
 <div class="fragment"><div class="line">  t0 = high_resolution_clock::now();</div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; i += pack_t::static_size) {</div>
 <div class="line">    pack_t v0(&amp;data[i]);</div>
-<div class="line">    v0 = <a class="code" href="group__group-exponential_ga5f75a1f882a2d5a6083af0d7fb048c9a.html#ga5f75a1f882a2d5a6083af0d7fb048c9a">bs::exp</a>(<a class="code" href="group__group-exponential_ga5f75a1f882a2d5a6083af0d7fb048c9a.html#ga5f75a1f882a2d5a6083af0d7fb048c9a">bs::exp</a>(v0));</div>
-<div class="line">    <a class="code" href="namespaceboost_1_1simd_a4ef87e54c642027f74fbf73e6d75191b.html#a4ef87e54c642027f74fbf73e6d75191b">bs::aligned_store</a>(v0, &amp;output[i]);</div>
+<div class="line">    v0 = <a class="code" href="group__group-exponential_gae7d2d1c6645e8fabf2e013feed4c996f.html#gae7d2d1c6645e8fabf2e013feed4c996f">bs::exp</a>(<a class="code" href="group__group-exponential_gae7d2d1c6645e8fabf2e013feed4c996f.html#gae7d2d1c6645e8fabf2e013feed4c996f">bs::exp</a>(v0));</div>
+<div class="line">    <a class="code" href="namespaceboost_1_1simd.html#aaa551993873d3636d339e3ef32ffb56b">bs::aligned_store</a>(v0, &amp;output[i]);</div>
 <div class="line">  }</div>
 </div><!-- fragment --></li>
 <li>Is your code trivially vectorizable? Modern compilers can vectorize trivial code segments automatically. If you benchmark a trivial scalar code versus a vectorized code, the compiler may vectorize the scalar code, thereby giving similar performance to the vectorized version.</li>
@@ -219,7 +219,7 @@ How can I use a certain intrinsic?</h2>
         <hr class="footer"/>
         <address class="footer">
             <small>
-                Generated on Mon Dec 19 2016 10:10:51 for Boost.SIMD by &#160;
+                Generated on Wed Feb 1 2017 15:40:36 for Boost.SIMD by &#160;
                 <a href="http://www.doxygen.org/index.html">
                     <img class="footer" src="doxygen.png" alt="doxygen"/>
                 </a>

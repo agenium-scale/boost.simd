@@ -10,7 +10,7 @@ cmake_minimum_required(VERSION 2.8.7)
 ## Setup project
 ## -------------------------------------------------------------------------------------------------
 project(Boost.SIMD)
-set(PROJECT_VERSION 4.16.12.0) # TODO: Find a way to update this automatically
+set(PROJECT_VERSION 4.17.1.0) # TODO: Find a way to update this automatically
 set(PROJECT_DOC_DIR ${PROJECT_SOURCE_DIR}/doc)
 
 ## Requirements for ns.cmake:
@@ -49,8 +49,6 @@ NS_prevent_in_source_build()
 ## External projects
 ## -------------------------------------------------------------------------------------------------
 set(STF_STANDALONE_DESTINATION      ${PROJECT_SOURCE_DIR}/test)
-set(BRIGAND_STANDALONE_DESTINATION  ${PROJECT_SOURCE_DIR}/include/boost/simd/detail)
-set(NS_BENCH_STANDALONE_DESTINATION ${PROJECT_SOURCE_DIR}/bench)
 
 set(NS_CMAKE_PROJECT_OPTIONS
   CMAKE_ARGS "-DBOOST_ROOT=${BOOST_HEADER_ONLY_DESTINATION}/include"
@@ -67,10 +65,6 @@ set(NS_CMAKE_PROJECT_OPTIONS
 )
 
 if (DEFINED DEV)
-  set(NS_BENCH_GIT_TAG develop)
-  set(BRIGAND_GIT_TAG 1.2.0)
-  NS_project_include(ns.bench.standalone)
-  NS_project_include(brigand.standalone)
   NS_project_include(stf.standalone)
 endif()
 
@@ -90,6 +84,36 @@ install(DIRECTORY ${PROJECT_SOURCE_DIR}/include DESTINATION .)
 if (DEFINED USE_SELF_BOOST)
   install(DIRECTORY ${NS_CMAKE_EXTERNAL_PROJECTS_DESTINATION}/include DESTINATION .)
 endif()
+
+## Generate Boost.SIMDConfig.cmake that will be installed to make find_package useable
+## -------------------------------------------------------------------------------------------------
+set(PROJECT_CMAKE_CONFIG         ${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake)
+set(PROJECT_CMAKE_CONFIG_VERSION ${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake)
+set(PROJECT_CMAKE_FIND           ${PROJECT_BINARY_DIR}/Find${PROJECT_NAME}.cmake)
+
+## Extract each version components
+string(REPLACE "." ";" PROJECT_VERSION_COMPONENTS ${PROJECT_VERSION})
+list(GET PROJECT_VERSION_COMPONENTS 0 PROJECT_MAJOR_VERSION)
+list(GET PROJECT_VERSION_COMPONENTS 1 PROJECT_MINOR_VERSION)
+list(GET PROJECT_VERSION_COMPONENTS 2 PROJECT_SUBMINOR_VERSION)
+list(GET PROJECT_VERSION_COMPONENTS 3 PROJECT_SUBSUBMINOR_VERSION)
+
+## Generate final files
+configure_file(cmake/Boost.SIMDConfig.cmake.in        ${PROJECT_CMAKE_CONFIG} @ONLY)
+configure_file(cmake/Boost.SIMDConfigVersion.cmake.in ${PROJECT_CMAKE_CONFIG_VERSION} @ONLY)
+configure_file(cmake/FindBoost.SIMD.cmake.in          ${PROJECT_CMAKE_FIND} @ONLY)
+
+## Install generated files
+## See: http://stackoverflow.com/questions/10765885/how-to-install-your-custom-cmake-find-module
+if (WIN32)
+  set(CMAKE_CONFIG_INSTALL_DIR ${PROJECT_NAME}/CMake)
+else ()
+  set(CMAKE_CONFIG_INSTALL_DIR share/cmake/${PROJECT_NAME})
+endif()
+install(
+    FILES ${PROJECT_CMAKE_CONFIG} ${PROJECT_CMAKE_CONFIG_VERSION} ${PROJECT_CMAKE_FIND}
+    DESTINATION ${CMAKE_CONFIG_INSTALL_DIR}
+)
 
 ## Add include directories
 ## -------------------------------------------------------------------------------------------------

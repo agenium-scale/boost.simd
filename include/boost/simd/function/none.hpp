@@ -12,29 +12,27 @@
 #define BOOST_SIMD_FUNCTION_NONE_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
- /*!
-    @ingroup group-reduction
-    Function object implementing none capabilities
+namespace boost {
+namespace simd {
+/*!
+   @ingroup group-reduction
+   This function object returns True if all elements of the argument are zero.
 
-    Returns True if all elements of the input vector are zero.
 
-    @par Semantic:
+    @par Header <boost/simd/function/none.hpp>
 
-    @code
-    auto r = none(x);
-    @endcode
+  @par Example:
 
-    is similar to:
+    @snippet none.cpp none
 
-    @code
-    auto r = !any(x);
-    @endcode
+  @par Possible output:
 
-  **/
-  bool none(Value const & v0);
-} }
+    @snippet none.txt none
+
+ **/
+bool none(Value const &x);
+}
+}
 #endif
 
 #include <boost/simd/function/scalar/none.hpp>

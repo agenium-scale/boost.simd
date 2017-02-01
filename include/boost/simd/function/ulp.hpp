@@ -16,31 +16,25 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing ulp capabilities
+    This function object returns the ulp distance to the nearest (distinct) element of the same type.
 
-    Returns the ulp distance to the nearest (distinct) element of the same type.
+   @see ulpdist, eps, Eps
 
-    @par Semantic:
 
-    @code
-    T r = ulp(x);
-    @endcode
 
-    is similar to:
+    @par Header <boost/simd/function/ulp.hpp>
 
-    @code
-    T r = min(x-prev(x), next(x)-x)/Eps<T>();
-    @endcode
+   @par Example:
 
-    @par Note
-    ulp stands for Unit in the Last Place.
+     @snippet ulp.cpp ulp
 
-    @see ulpdist, eps, Eps
+   @par Possible output:
+
+     @snippet ulp.txt ulp
 
   **/
-  Value ulp(Value const & v0);
+  Value ulp(Value const & x);
 } }
 #endif
 

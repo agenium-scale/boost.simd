@@ -16,15 +16,18 @@
 #include <boost/simd/function/shuffle.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/nsm.hpp>
 
 namespace boost { namespace simd
 {
   namespace detail
   {
+    namespace tt = nsm::type_traits;
+    
     template<std::size_t N> struct swap_bytes_helper
     {
       template<typename I, typename C>
-      struct apply : std::integral_constant < std::size_t, N*(I::value/N)+N-1-I::value%N>
+      struct apply : tt::integral_constant < std::size_t, N*(I::value/N)+N-1-I::value%N>
       {};
     };
   }
@@ -35,6 +38,7 @@ namespace boost { namespace simd { namespace ext
 
   namespace bd = boost::dispatch;
   namespace bs = boost::simd;
+
   BOOST_DISPATCH_OVERLOAD_IF(swapbytes_
                             , (typename A0, typename X)
                             , (detail::is_native<X>)

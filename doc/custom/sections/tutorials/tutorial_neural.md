@@ -1,5 +1,7 @@
 Evaluation of a Neural Network {#tutorial-neural}
 =========
+<div style="text-align: right;" markdown="1">Prev: [SIMD Branching Part 2 - Computations with different types](@ref tutorial-branching-split)</div>
+<div style="text-align: right;" markdown="1">Next: [Evaluation of the N-Body problem](@ref tutorial-nbody</div>
 
 @tableofcontents
 In this tutorial we will demonstrate how the evaluation of neural network
@@ -73,7 +75,7 @@ bs::exp. It is a much more efficient implementation that the standard library ex
 the same or better precision. Therefore, the use of the **@projectname** standard library replacement
 functions in non-vectorized code may be very advantageous. A speed-up of 3.76 is observed between the
 the scalar and SIMD versions of this calculation, which is in line with the theorethical maximum for an SSE
-code. 
+code.
 
 This test was repeated compiling for AVX:
 <table align=center width=100% class="table-striped table-bordered">
@@ -118,3 +120,6 @@ in AVX2 with that obtained using **@projectname**, the speed-up is 50.6!. It is 
 in any project involving vectorization is very beneficial, not just for the ease of vectorization and portability betweem
 architectures, compilers and operating systems, but also because of the performance of its standard library replacement
 functions.
+
+<div style="text-align: right;" markdown="1">Prev: [SIMD Branching Part 2 - Computations with different types](@ref tutorial-branching-split)</div>
+<div style="text-align: right;" markdown="1">Next: [Evaluation of the N-Body problem](@ref tutorial-nbody</div>

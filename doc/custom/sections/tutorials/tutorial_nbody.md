@@ -1,11 +1,14 @@
 N-Body Problem {#tutorial-nbody}
 =========
 
+<div style="text-align: right;" markdown="1">Prev: [Evaluation of a Neural Network](@ref tutorial-neural)</div>
+<div style="text-align: right;" markdown="1">Next:[Evaluation of the N-Body problem](@ref tutorial-nbody)</div>
+
 @tableofcontents
 In this tutorial we will show you how to optimize an n-body
-simulation using **@projectname**, 
+simulation using **@projectname**,
 
-@section data-objectives Objectives
+@section tutorial-nbody-objectives Objectives
 
 -------------------------------------
 
@@ -57,10 +60,13 @@ The following results were obtained:
 
 <table align=center width=25% class="table-striped table-bordered">
 <tr><th>Loop                <th>Time (\f$\mu s\f$) <th> Speed-up
-<tr><td>Scalar              <td>13185              <td> 
+<tr><td>Scalar              <td>13185              <td>
 <tr><td>SIMD SSE4.2         <td>4104               <td> x3.21
 <tr><td>SIMD AVX2           <td>2321               <td> x5.68
 </table>
 
 The performance obtained is broadly in line with the theorethical maximum possible speed-ups of x4 for SSE4.2 and x8 for AVX2.
 There are very few problems where these theorethical speed-ups are obtainable.
+
+<div style="text-align: right;" markdown="1">Prev: [Evaluation of a Neural Network](@ref tutorial-neural)</div>
+<div style="text-align: right;" markdown="1">Next:[Evaluation of the N-Body problem](@ref tutorial-nbody)</div>

@@ -12,35 +12,30 @@
 #define BOOST_SIMD_FUNCTION_PROD_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+namespace boost {
+namespace simd {
 
- /*!
+/*!
+   @ingroup group-reduction
+   This function object returns the product of the elements of the argument
 
-    @ingroup group-reduction
-    Function object implementing prod capabilities
+   @see sum
 
-    Returns the product of the elements of the SIMD vector
 
-    @par Semantic:
+    @par Header <boost/simd/function/prod.hpp>
 
-    For every parameter of pack type T
+  @par Example:
 
-    @code
-    scalar_of_t<T> r = prod(x);
-    @endcode
+    @snippet prod.cpp prod
 
-    is similar to:
+  @par Possible output:
 
-    @code
-    scalar_of_t<T> r = One;
-    for(result_type i = 0; i != T::static_size; ++i)
-      r *= x[i];
-    @endcode
+    @snippet prod.txt prod
 
-  **/
-  scalar_of_t<Value> prod(Value const & v0);
-} }
+ **/
+scalar_of_t<Value> prod(Value const &x);
+}
+}
 #endif
 
 #include <boost/simd/function/scalar/prod.hpp>

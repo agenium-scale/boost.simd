@@ -22,6 +22,9 @@ namespace boost { namespace simd
 
     round(x,n) rounds aways from 0 to n digits:
 
+
+    @par Header <boost/simd/function/round.hpp>
+
     @par semantic:
     For any given value @c x of type @c T and integer n :
 
@@ -53,10 +56,7 @@ namespace boost { namespace simd
     - If x is \f$\pm\infty\f$ or \f$\pm0\f$, it is returned, unmodified
     - If arg is a NaN, a NaN is returned
   **/
-  Value round(Value const & v0);
-
-  //@overload
-  Value round(Value const & x, IntegerValue const &n);
+  Value round(Value const & x{, IntegerValue const &n});
 } }
 #endif
 

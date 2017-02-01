@@ -1,0 +1,8 @@
+//! [swapbytes]
+---- simd
+<- pi =                 (1, 2, 10, 1023)
+-> bs::swapbytes(pi) =  (16777216, 33554432, 167772160, 4278386688)
+---- scalar
+<- xi =                 2
+-> bs::swapbytes(xi) =  33554432
+//! [swapbytes]

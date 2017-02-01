@@ -1,0 +1,12 @@
+//! [ifnot_inc]
+---- simd
+ <- pf =                   (3, 0, -3, -0)
+ <- qf =                   (3, 0.5, -3, 1)
+ -> bs::ifnot_inc(pf, qf) =   (3, 1.5, -3, 2)
+---- scalar
+ xf =                     3
+ yf =                     0
+ zf =                     5
+ -> bs::ifnot_inc(xf, zf) =  5
+ -> bs::ifnot_inc(yf, zf) =  6
+//! [ifnot_inc]

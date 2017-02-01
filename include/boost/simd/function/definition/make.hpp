@@ -39,6 +39,12 @@ namespace boost { namespace simd
   {
     return detail::make(as_<Target>(), args... );
   }
+  
+  template<typename Target, typename... Args> auto make(as_<Target> const& tgt, Args const&... args)
+  BOOST_NOEXCEPT_DECLTYPE(detail::make(tgt, args... ))
+  {
+    return detail::make(tgt, args... );
+  }
 } }
 
 #endif

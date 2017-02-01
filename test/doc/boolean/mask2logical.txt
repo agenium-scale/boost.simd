@@ -1,0 +1,10 @@
+//! [mask2logical]
+---- simd
+ <- pf =                   (-nan, 0, -nan, 0)
+ -> bs::mask2logical(pf) = (true, false, true, false)
+---- scalar
+ xf =                      0
+ yf =                      0
+ -> bs::mask2logical(xf) = false
+ -> bs::mask2logical(yf) = false
+//! [mask2logical]

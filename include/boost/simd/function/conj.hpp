@@ -18,24 +18,13 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-arithmetic
-    Function object implementing conj capabilities
+    function object computes the complex conjugate of its parameter
 
-    Computes the complex conjugate of its parameter
+    @par Header <boost/simd/function/conj.hpp>
 
-    @par semantic:
-    For any given value @c x of type @c T:
+    @par Notes
 
-    @code
-    T r = conj(x);
-    @endcode
-
-    for a real parameter, this is equivalent to:
-
-    @code
-    T r = x
-    @endcode
-
-    This function is the restriction to real numbers of the complex conj(ugation).
+    - for real entries it resumes to the identity
 
   **/
   Value conj(Value const & v0);

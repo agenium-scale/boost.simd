@@ -16,30 +16,22 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing inrad capabilities
+    This function object returns the convert degree to radian.
 
-    convert degree to radian.
 
-    @par Semantic:
+    @par Header <boost/simd/function/inrad.hpp>
 
-    For every parameter of floating type
+   @par Example:
 
-    @code
-    auto r = inrad(x);
-    @endcode
+     @snippet inrad.cpp inrad
 
-    is similar to:
+   @par Possible output:
 
-    @code
-    auto r = Deginrad*x;
-    @endcode
-
-    @see  indeg, Radindeg, Deginrad
+     @snippet inrad.txt inrad
 
   **/
-  Value inrad(Value const & v0);
+  Value inrad(Value const & x);
 } }
 #endif
 

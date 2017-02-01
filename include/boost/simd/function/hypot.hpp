@@ -18,36 +18,30 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-arithmetic
-    Function object implementing hypot capabilities
+    This function object computes the hypthenuse length: \f$(x^2 + y^2)^{1/2}\f$
 
-    Computes \f$(x^2 + y^2)^{1/2}\f$
 
-    @par semantic:
-    For any given value @c x,  @c y of floating type @c T:
+    @par Header <boost/simd/function/hypot.hpp>
 
-    @code
-    T r = hypot(x, y);
-    @endcode
+     @par Decorators
 
-    The code of the rgular version is very similar to:
+     - pedantic_ with this decorator provisions are made to avoid overflow
+       and to compute  @c hypot as accurately as possible in any cases.
 
-    @code
-    T r = sqrt(sqr(x)+sqr(y));
-    @endcode
+     - std_ call std::hypot
 
-    @par Decorators
+    @see sqr, sqrt
 
-    - pedantic_ with this decorator provisions are made to avoid overflow as
-    possible and to compute  @c hypot accurately in any cases.
+    @par Example:
 
-    -std_ call std::hypot
+       @snippet hypot.cpp hypot
 
+    @par Possible output:
+
+       @snippet hypot.txt hypot
 
 
   **/
-  Value hypot(Option const& o, Value const& x, Value const& y);
-
-  //@overload
   Value hypot(Value const& x, Value const& y);
 } }
 #endif
