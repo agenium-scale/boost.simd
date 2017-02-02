@@ -49,7 +49,7 @@ namespace boost { namespace simd
     @see div, rem, rec
 
   **/
-  Value divides(Value const & x, Value const &y);
+  Value divides(Value const& x, Value const& y);
 } }
 #endif
 

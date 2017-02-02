@@ -83,7 +83,7 @@ NA deinterleave.hpp
 NA deinterleave_second.hpp
 OK dist.hpp
 OK div.hpp
-divides.hpp
+OK divides.hpp
 dot.hpp
 enumerate.hpp
 eps.hpp
