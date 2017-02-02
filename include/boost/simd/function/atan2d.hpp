@@ -38,7 +38,7 @@ namespace boost { namespace simd
      @snippet atan2d.txt atan2d
 
   **/
-  Value atan2d(Value const& y, Value const& x );
+  IEEEValue atan2d(IEEEValue const& y, IEEEValue const& x );
 } }
 #endif
 
