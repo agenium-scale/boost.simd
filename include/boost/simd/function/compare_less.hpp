@@ -12,31 +12,29 @@
 #define BOOST_SIMD_FUNCTION_COMPARE_LESS_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
-namespace boost {
-namespace simd {
-/*!
-  @ingroup group-reduction
-  This function object returns a logical scalar that is the result of the
-lexicographic
-  test for < on all elements of the entries
+namespace boost { namespace simd
+{
+  /*!
+    @ingroup group-reduction
+    This function object returns a logical scalar that is the result of the
+    lexicographic test for < on all elements of the entries
 
-  It is probably not what you wish. Have a look to @ref is_less
+    It is probably not what you wish. Have a look to @ref is_less
 
 
     @par Header <boost/simd/function/compare_less.hpp>
 
-  @par Example:
+    @par Example:
 
-   @snippet compare_less.cpp compare_less
+      @snippet compare_less.cpp compare_less
 
- @par Possible output:
+    @par Possible output:
 
-   @snippet compare_less.txt compare_less
+      @snippet compare_less.txt compare_less
 
-**/
-bool compare_less(Value const &x, Value const &y);
-}
-}
+  **/
+  bool compare_less(Value const& x, Value const& y);
+} }
 #endif
 
 #include <boost/simd/function/scalar/compare_less.hpp>

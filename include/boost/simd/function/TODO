@@ -55,7 +55,7 @@ OK compare_equal.hpp
 OK compare_greater_equal.hpp
 OK compare_greater.hpp
 OK compare_less_equal.hpp
-compare_less.hpp
+OK compare_less.hpp
 compare_not_equal.hpp
 complement.hpp
 conj.hpp
