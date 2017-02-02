@@ -61,7 +61,7 @@ OK complement.hpp
 OK conj.hpp
 OK copysign.hpp
 OK cosd.hpp
-cosh.hpp
+OK cosh.hpp
 cos.hpp
 cospi.hpp
 cotd.hpp
