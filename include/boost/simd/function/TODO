@@ -73,10 +73,10 @@ OK csch.hpp
 OK csc.hpp
 OK cscpi.hpp
 OK ctz.hpp
-OK cummax.hpp
-OK cummin.hpp
-OK cumprod.hpp
-OK cumsum.hpp
+OK cummax.hpp  (*)
+OK cummin.hpp  (*)
+OK cumprod.hpp (*)
+OK cumsum.hpp  (*)
 OK dec.hpp
 NA deinterleave_first.hpp
 NA deinterleave.hpp
