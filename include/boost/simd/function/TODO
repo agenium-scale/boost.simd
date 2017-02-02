@@ -43,7 +43,7 @@ OK bitwise_notand.hpp
 OK bitwise_not.hpp
 OK bitwise_notor.hpp
 OK bitwise_or.hpp
-bitwise_ornot.hpp
+OK bitwise_ornot.hpp
 bitwise_select.hpp
 bitwise_xor.hpp
 broadcast.hpp

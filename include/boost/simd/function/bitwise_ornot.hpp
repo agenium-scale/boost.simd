@@ -33,7 +33,7 @@ namespace boost { namespace simd
      @snippet bitwise_ornot.txt bitwise_ornot
 
   **/
-  T0 bitwise_ornot(T0 const &x, T1 const& y);
+  Value0 bitwise_ornot(Value0 const& x, Value1 const& y);
 } }
 #endif
 
