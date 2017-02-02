@@ -34,7 +34,7 @@ namespace boost { namespace simd
       @snippet bitofsign.txt bitofsign
 
   **/
-  Value bitofsign(Value const & x);
+  Value bitofsign(Value const& x);
 } }
 #endif
 

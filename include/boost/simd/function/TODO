@@ -33,8 +33,8 @@ OK atan.hpp
 OK atanpi.hpp
 OK average.hpp
 W  bitfloating.hpp
-bitinteger.hpp
-bitofsign.hpp
+W  bitinteger.hpp
+OK bitofsign.hpp
 bits.hpp
 bitwise_and.hpp
 bitwise_andnot.hpp
