@@ -32,7 +32,7 @@ namespace boost { namespace simd
      @snippet exponentbits.txt exponentbits
 
   **/
-  as_integer_t<RealValue> exponentbits(RealValue const & x);
+  as_integer_t<IEEEValue> exponentbits(IEEEValue const& x);
 } }
 #endif
 
