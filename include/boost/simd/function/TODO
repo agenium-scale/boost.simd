@@ -30,7 +30,7 @@ OK atan2pi.hpp
 OK atand.hpp
 OK atanh.hpp
 OK atan.hpp
-atanpi.hpp
+OK atanpi.hpp
 average.hpp
 bitfloating.hpp
 bitinteger.hpp
