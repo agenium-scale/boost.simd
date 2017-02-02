@@ -73,7 +73,7 @@ OK csch.hpp
 OK csc.hpp
 OK cscpi.hpp
 OK ctz.hpp
-cummax.hpp
+OK cummax.hpp
 cummin.hpp
 cumprod.hpp
 cumsum.hpp
