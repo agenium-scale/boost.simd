@@ -33,7 +33,7 @@ namespace boost { namespace simd
      @snippet bitwise_notor.txt bitwise_notor
 
   **/
-  T0 bitwise_notor(T0 const &x, T1 const& y);
+  Value0 bitwise_notor(Value0 const& x, Value1 const& y);
 } }
 #endif
 
