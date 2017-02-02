@@ -37,7 +37,7 @@ namespace boost { namespace simd
     @param  v1 Second argument to deinterleave
     @return An array of two boost::simd::pack containing the deinterleaved data from the arguments
   **/
-  std::array<Value,2> deinterleave(Value const& v0, Value const& v1);
+  std::array<Value, 2> deinterleave(Value const& x, Value const& y);
 } }
 #endif
 

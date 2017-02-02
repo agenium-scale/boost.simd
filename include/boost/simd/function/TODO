@@ -79,7 +79,7 @@ OK cumprod.hpp
 OK cumsum.hpp
 OK dec.hpp
 NA deinterleave_first.hpp
-deinterleave.hpp
+NA deinterleave.hpp
 deinterleave_second.hpp
 dist.hpp
 div.hpp
