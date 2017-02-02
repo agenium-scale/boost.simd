@@ -77,7 +77,7 @@ OK cummax.hpp
 OK cummin.hpp
 OK cumprod.hpp
 OK cumsum.hpp
-dec.hpp
+OK dec.hpp
 deinterleave_first.hpp
 deinterleave.hpp
 deinterleave_second.hpp

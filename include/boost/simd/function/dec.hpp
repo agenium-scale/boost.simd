@@ -35,7 +35,7 @@ namespace boost { namespace simd
 
        @snippet dec.txt dec
   **/
-  Value dec(Value const & x);
+  Value dec(Value const& x);
 } }
 #endif
 
