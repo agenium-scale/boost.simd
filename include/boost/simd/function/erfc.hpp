@@ -38,7 +38,7 @@ namespace boost { namespace simd
 
        @snippet erfc.txt erfc
   **/
-  Value erfc(Value const & x);
+  IEEEValue erfc(IEEEValue const& x);
 } }
 #endif
 

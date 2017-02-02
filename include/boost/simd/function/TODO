@@ -87,7 +87,7 @@ OK divides.hpp
 NA dot.hpp
 OK enumerate.hpp   (*)
 OK eps.hpp
-erfc.hpp
+OK erfc.hpp
 erfcx.hpp
 erf.hpp
 exp10.hpp
