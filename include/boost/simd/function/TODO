@@ -54,7 +54,7 @@ NA combine.hpp
 OK compare_equal.hpp
 OK compare_greater_equal.hpp
 OK compare_greater.hpp
-compare_less_equal.hpp
+OK compare_less_equal.hpp
 compare_less.hpp
 compare_not_equal.hpp
 complement.hpp
