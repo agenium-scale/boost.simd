@@ -35,7 +35,7 @@ OK average.hpp
 W  bitfloating.hpp
 W  bitinteger.hpp
 OK bitofsign.hpp
-bits.hpp
+OK bits.hpp
 bitwise_and.hpp
 bitwise_andnot.hpp
 bitwise_cast.hpp

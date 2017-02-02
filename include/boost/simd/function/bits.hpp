@@ -31,7 +31,7 @@ namespace boost { namespace simd
      @snippet bits.txt bits
 
   **/
-  as_integer_t<T, unsigned> bits(Value const & x);
+  as_integer_t<Value, unsigned> bits(Value const& x);
 } }
 #endif
 
