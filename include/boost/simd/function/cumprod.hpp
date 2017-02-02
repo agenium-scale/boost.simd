@@ -12,33 +12,32 @@
 #define BOOST_SIMD_FUNCTION_CUMPROD_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
-namespace boost {
-namespace simd {
+namespace boost { namespace simd
+{
 
-/*!
-   @ingroup group-reduction
-   This function object computes the cumulated product of the argument elements.
+  /*!
+    @ingroup group-reduction
+    This function object computes the cumulated product of the argument elements.
 
-   Take care that overflow is very easy to get here especially for integral
- types.
+    Take care that overflow is very easy to get here especially for integral
+    types.
 
-  @see cumsum
+    @see cumsum
 
 
-    @par Header <boost/simd/function/cumprod.hpp>
+      @par Header <boost/simd/function/cumprod.hpp>
 
-  @par Example:
+    @par Example:
 
-    @snippet cumprod.cpp cumprod
+      @snippet cumprod.cpp cumprod
 
-  @par Possible output:
+    @par Possible output:
 
-    @snippet cumprod.txt cumprod
+      @snippet cumprod.txt cumprod
 
- **/
-Value cumprod(Value const &x);
-}
-}
+  **/
+  Value cumprod(Value const& x);
+} }
 #endif
 
 #include <boost/simd/function/scalar/cumprod.hpp>
