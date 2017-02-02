@@ -44,7 +44,7 @@ namespace boost { namespace simd
      @snippet asin.txt asin
 
   **/
-  Value asin(Value const & x);
+  IEEEValue asin(IEEEValue const & x);
 } }
 #endif
 
