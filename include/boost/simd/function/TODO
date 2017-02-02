@@ -85,7 +85,7 @@ OK dist.hpp
 OK div.hpp
 OK divides.hpp
 NA dot.hpp
-enumerate.hpp
+OK enumerate.hpp   (*)
 eps.hpp
 erfc.hpp
 erfcx.hpp

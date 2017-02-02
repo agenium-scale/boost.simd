@@ -46,7 +46,7 @@ namespace boost { namespace simd
     @param step Increment to apply on each subsequent generated value, equals to @c 1 by default.
     @return A value containing the sequence of value generated from @c seed and @c step
   **/
-  template<typename T, typename B, typename S> T enumerate(const B& seed = 0, const S& step = 1);
+  Value enumerate(const ScalarValue& seed = 0, const ScalarValue& step = 1);
 #endif
 } }
 
