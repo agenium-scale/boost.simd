@@ -30,7 +30,7 @@ namespace boost { namespace simd
      @snippet exprecneg.txt exprecneg
 
   **/
-  Value exprecneg(Value const & x);
+  IEEEValue exprecneg(IEEEValue const& x);
 } }
 #endif
 
