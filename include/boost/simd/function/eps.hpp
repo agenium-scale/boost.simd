@@ -33,9 +33,8 @@ namespace boost { namespace simd
 
      @snippet eps.txt eps
 
-**/
-  Value eps(Value const & x);
-
+  **/
+  Value eps(Value const& x);
 } }
 #endif
 
