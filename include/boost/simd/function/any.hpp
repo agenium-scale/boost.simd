@@ -12,31 +12,28 @@
 #define BOOST_SIMD_FUNCTION_ANY_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
-namespace boost {
-namespace simd {
-
-/*!
+namespace boost { namespace simd
+{
+  /*!
    @ingroup group-reduction
    This function object returns @ref True if at least one element of the
- argument is non zero.
+   argument is non zero.
 
    @see all, none, nbtrue
 
-
-    @par Header <boost/simd/function/any.hpp>
+   @par Header <boost/simd/function/any.hpp>
 
    @par Example:
 
-    @snippet any.cpp any
+   @snippet any.cpp any
 
-  @par Possible output:
+   @par Possible output:
 
-    @snippet any.txt any
+   @snippet any.txt any
 
- **/
-logical<scalar_of_t<value>> any(Value const &x);
-}
-}
+  **/
+  bool any(Value const &x);
+} }
 #endif
 
 #include <boost/simd/function/scalar/any.hpp>
