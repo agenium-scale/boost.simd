@@ -43,7 +43,11 @@ namespace boost { namespace simd
        @snippet div.txt div
 
   **/
-  T div(Option const&, T const& a, T const& b);
+
+  //@{
+  Value div(Option const&, Value const& a, Value const& b);
+  Value div(Value const& a, Value const& b);
+  //@}
 
 } }
 #endif
