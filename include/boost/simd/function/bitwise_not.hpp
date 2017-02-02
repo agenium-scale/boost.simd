@@ -34,7 +34,7 @@ namespace boost { namespace simd
      @snippet bitwise_not.txt bitwise_not
 
   **/
-  Value bitwise_not(Value const & x);
+  Value bitwise_not(Value const& x);
 } }
 #endif
 

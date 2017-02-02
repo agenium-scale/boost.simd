@@ -40,7 +40,7 @@ OK bitwise_and.hpp
 OK bitwise_andnot.hpp
 NA bitwise_cast.hpp
 OK bitwise_notand.hpp
-bitwise_not.hpp
+OK bitwise_not.hpp
 bitwise_notor.hpp
 bitwise_or.hpp
 bitwise_ornot.hpp
