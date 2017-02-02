@@ -49,7 +49,7 @@ OK bitwise_xor.hpp
 NA broadcast.hpp
 OK cbrt.hpp
 OK ceil.hpp
-clz.hpp
+OK clz.hpp
 combine.hpp
 compare_equal.hpp
 compare_greater_equal.hpp

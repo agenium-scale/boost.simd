@@ -34,7 +34,7 @@ namespace boost { namespace simd
      @snippet clz.txt clz
 
   **/
-  as_integer_t<Value> clz(Value const & x);
+  as_integer_t<Value> clz(Value const& x);
 } }
 #endif
 
