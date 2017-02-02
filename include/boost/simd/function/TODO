@@ -36,7 +36,7 @@ W  bitfloating.hpp
 W  bitinteger.hpp
 OK bitofsign.hpp
 OK bits.hpp
-bitwise_and.hpp
+OK bitwise_and.hpp
 bitwise_andnot.hpp
 bitwise_cast.hpp
 bitwise_notand.hpp
