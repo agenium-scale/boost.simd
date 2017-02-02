@@ -138,7 +138,7 @@ namespace boost { namespace simd
        @snippet cos.txt cos
 
  **/
-  Value cos(Value const & x);
+  IEEEValue cos(IEEEValue const& x);
 } }
 #endif
 
