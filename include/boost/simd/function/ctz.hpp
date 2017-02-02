@@ -37,7 +37,7 @@ namespace boost { namespace simd
      @snippet ctz.txt ctz
 
   **/
-  as_integer_t<Value> ctz(Value const & x);
+  as_integer_t<Value> ctz(Value const& x);
 } }
 #endif
 
