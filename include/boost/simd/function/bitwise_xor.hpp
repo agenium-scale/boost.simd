@@ -37,7 +37,7 @@ namespace boost { namespace simd
      @snippet bitwise_xor.txt bitwise_xor
 
   **/
-  T0 bitwise_xor(T0 const &x, T1 const& y);
+  Value0 bitwise_xor(Value0 const& x, Value1 const& y);
 } }
 #endif
 

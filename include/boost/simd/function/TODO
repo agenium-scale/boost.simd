@@ -45,7 +45,7 @@ OK bitwise_notor.hpp
 OK bitwise_or.hpp
 OK bitwise_ornot.hpp
 OK bitwise_select.hpp
-bitwise_xor.hpp
+OK bitwise_xor.hpp
 broadcast.hpp
 cbrt.hpp
 ceil.hpp
