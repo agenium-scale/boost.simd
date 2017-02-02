@@ -33,7 +33,7 @@ namespace boost { namespace simd
      @snippet copysign.txt copysign
 
   **/
-  Value copysign(Value const & x, Value const& y);
+  Value copysign(Value const& x, Value const& y);
 } }
 #endif
 

@@ -59,7 +59,7 @@ OK compare_less.hpp
 OK compare_not_equal.hpp
 OK complement.hpp
 OK conj.hpp
-copysign.hpp
+OK copysign.hpp
 cosd.hpp
 cosh.hpp
 cos.hpp
