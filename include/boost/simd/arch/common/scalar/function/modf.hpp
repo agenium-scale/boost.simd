@@ -43,9 +43,9 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0,A0 & ent) const BOOST_NOEXCEPT
     {
-      A0 frac;
-      simd::modf(a0,frac,ent);
-      return frac;
+      A0 floating;
+      simd::modf(a0,floating,ent);
+      return floating;
     }
   };
   BOOST_DISPATCH_OVERLOAD ( modf_
