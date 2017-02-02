@@ -38,7 +38,7 @@ namespace boost { namespace simd
     bitwise_andnot, bitwise_notor, bitwise_ornot
 
   **/
-  Value complement(Value const & x);
+  Value complement(Value const& x);
 } }
 #endif
 

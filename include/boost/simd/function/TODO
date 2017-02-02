@@ -57,7 +57,7 @@ OK compare_greater.hpp
 OK compare_less_equal.hpp
 OK compare_less.hpp
 OK compare_not_equal.hpp
-complement.hpp
+OK complement.hpp
 conj.hpp
 copysign.hpp
 cosd.hpp
