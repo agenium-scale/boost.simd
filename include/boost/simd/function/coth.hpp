@@ -32,7 +32,7 @@ namespace boost { namespace simd
 
        @snippet coth.txt coth
   **/
-  Value coth(Value const & v0);
+  IEEEValue coth(IEEEValue const& x);
 } }
 #endif
 
