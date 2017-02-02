@@ -95,7 +95,7 @@ OK exp2.hpp
 OK exp.hpp
 OK expm1.hpp
 OK exponentbits.hpp
-exponent.hpp
+OK exponent.hpp
 exprecnegc.hpp
 exprecneg.hpp
 expx2.hpp

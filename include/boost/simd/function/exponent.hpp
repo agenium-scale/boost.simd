@@ -43,7 +43,7 @@ namespace boost { namespace simd
      @snippet exponent.txt exponent
 
   **/
-  as_integer_t<RealValue> exponent(RealValue const & x);
+  as_integer_t<IEEEValue> exponent(IEEEValue const& x);
 } }
 #endif
 
