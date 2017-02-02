@@ -23,7 +23,7 @@ OK asecpi.hpp
 OK asind.hpp
 OK asinh.hpp
 OK asin.hpp
-asinpi.hpp
+OK asinpi.hpp
 atan2d.hpp
 atan2.hpp
 atan2pi.hpp
