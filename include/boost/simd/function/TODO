@@ -63,7 +63,7 @@ OK copysign.hpp
 OK cosd.hpp
 OK cosh.hpp
 OK cos.hpp
-cospi.hpp
+OK cospi.hpp
 cotd.hpp
 coth.hpp
 cot.hpp
