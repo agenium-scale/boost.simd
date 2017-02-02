@@ -50,8 +50,8 @@ NA broadcast.hpp
 OK cbrt.hpp
 OK ceil.hpp
 OK clz.hpp
-combine.hpp
-compare_equal.hpp
+NA combine.hpp
+OK compare_equal.hpp
 compare_greater_equal.hpp
 compare_greater.hpp
 compare_less_equal.hpp
