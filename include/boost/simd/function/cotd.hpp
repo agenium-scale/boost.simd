@@ -41,7 +41,7 @@ namespace boost { namespace simd
      @snippet cotd.txt cotd
 
   **/
-  Value cotd(Value const & x);
+  IEEEValue cotd(IEEEValue const& x);
 } }
 #endif
 
