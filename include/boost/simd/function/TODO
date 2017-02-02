@@ -92,7 +92,7 @@ OK erfcx.hpp
 OK erf.hpp
 OK exp10.hpp
 OK exp2.hpp
-exp.hpp
+OK exp.hpp
 expm1.hpp
 exponentbits.hpp
 exponent.hpp
