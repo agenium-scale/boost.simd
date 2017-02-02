@@ -80,7 +80,7 @@ OK cumsum.hpp
 OK dec.hpp
 NA deinterleave_first.hpp
 NA deinterleave.hpp
-deinterleave_second.hpp
+NA deinterleave_second.hpp
 dist.hpp
 div.hpp
 divides.hpp

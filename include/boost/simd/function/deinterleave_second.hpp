@@ -35,7 +35,7 @@ namespace boost { namespace simd
     @param  v1  Second part of the data to deinterleave
     @return A boost::simd::pack containing the deinterleaved value of the second data channel.
   **/
-  Value deinterleave_second(Value const& v0, Value const& v1);
+  Value deinterleave_second(Value const& x, Value const& y);
 } }
 #endif
 
