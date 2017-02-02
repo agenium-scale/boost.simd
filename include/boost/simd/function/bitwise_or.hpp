@@ -36,7 +36,7 @@ namespace boost { namespace simd
      @snippet bitwise_or.txt bitwise_or
 
   **/
-  T0 bitwise_or(T0 const &x, T1 const& y);
+  Value0 bitwise_or(Value0 const& x, Value1 const& y);
 } }
 #endif
 
