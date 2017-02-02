@@ -14,7 +14,7 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-/*!
+  /*!
       @ingroup group-bitwise
       This function object function implementing bitwise_cast capabilities
 
@@ -40,7 +40,7 @@ namespace boost { namespace simd
       @return A value of type @c Target which is bit-equivalent to @c x.
     **/
   template < typename Target>
-    Target bitwise_cast(Value const& x);
+  Target bitwise_cast(Value const& x);
   }
 } }
 #endif
