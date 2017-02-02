@@ -39,8 +39,9 @@ namespace boost { namespace simd { namespace detail
   template<int... Is>
   struct side<pattern_<Is...>>
   {
-    using idx_a0 = nsm::integral_list<bool,  (Is <  int(sizeof...(Is)))...              >;
-    using idx_a1 = nsm::integral_list<bool, ((Is >= int(sizeof...(Is))) || (Is==-1))... >;
+    static int const size = int(sizeof...(Is));
+    using idx_a0 = nsm::integral_list<bool,  (Is <  size)...              >;
+    using idx_a1 = nsm::integral_list<bool, ((Is >= size) || (Is==-1))... >;
 
     using type = tt::integral_constant < int
                                         , 0x01*nsm::all<idx_a0>::value
