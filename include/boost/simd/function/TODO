@@ -48,7 +48,7 @@ OK bitwise_select.hpp
 OK bitwise_xor.hpp
 NA broadcast.hpp
 OK cbrt.hpp
-ceil.hpp
+OK ceil.hpp
 clz.hpp
 combine.hpp
 compare_equal.hpp
