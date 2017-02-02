@@ -88,10 +88,10 @@ NA dot.hpp
 OK enumerate.hpp   (*)
 OK eps.hpp
 OK erfc.hpp
-erfcx.hpp
-erf.hpp
-exp10.hpp
-exp2.hpp
+OK erfcx.hpp
+OK erf.hpp
+OK exp10.hpp
+OK exp2.hpp
 exp.hpp
 expm1.hpp
 exponentbits.hpp

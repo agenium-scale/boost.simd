@@ -36,7 +36,7 @@ namespace boost { namespace simd
 
        @snippet erf.txt erf
   **/
-  Value erf(Value const & x);
+  IEEEValue erf(IEEEValue const& x);
 } }
 #endif
 
