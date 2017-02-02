@@ -48,7 +48,7 @@ namespace boost { namespace simd
        @snippet arg.txt arg
 
   **/
-  Value arg(Value const & x);
+  IEEEValue arg(IEEEValue const & x);
 } }
 #endif
 

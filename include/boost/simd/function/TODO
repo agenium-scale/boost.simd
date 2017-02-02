@@ -15,7 +15,7 @@ NA aligned_load.hpp
 NA aligned_store.hpp
 OK all.hpp
 NO any.hpp
-arg.hpp
+OK arg.hpp
 asecd.hpp
 asech.hpp
 asec.hpp
