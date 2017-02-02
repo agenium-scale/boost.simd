@@ -31,7 +31,7 @@ OK atand.hpp
 OK atanh.hpp
 OK atan.hpp
 OK atanpi.hpp
-average.hpp
+OK average.hpp
 bitfloating.hpp
 bitinteger.hpp
 bitofsign.hpp

@@ -44,7 +44,7 @@ namespace boost { namespace simd
 
 
   **/
-  Value average(Value const & x,  Value const & y);
+  Value average(Value const& x, Value const& y);
 } }
 #endif
 
