@@ -22,11 +22,12 @@ namespace boost { namespace simd
     // Is this a half-repeat pattern ?
     template<int P0, int... Ps>
     struct  is_repeat
-      : tt::is_same< nsm::integral_list<int,P0,Ps...>
-                   , nsm::append < nsm::range<int,P0,P0+(sizeof...(Ps)+1)/2>
-                                 , nsm::range<int,P0,P0+(sizeof...(Ps)+1)/2>
-                                 >
-                   >
+          : tt::is_same< nsm::integral_list<int,P0,Ps...>
+                        , nsm::append < nsm::range<int,P0,P0+int(sizeof...(Ps)+1)/2>
+                                      , nsm::range<int,P0,P0+int(sizeof...(Ps)+1)/2>
+                                      >
+                        >
+
     {};
 
     // -1 disqualifies already
