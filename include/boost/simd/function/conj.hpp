@@ -27,12 +27,11 @@ namespace boost { namespace simd
     - for real entries it resumes to the identity
 
   **/
-  Value conj(Value const & v0);
+  Value conj(Value const& x);
 } }
 #endif
 
 #include <boost/simd/function/scalar/conj.hpp>
-
 #include <boost/simd/function/simd/conj.hpp>
 
 #endif
