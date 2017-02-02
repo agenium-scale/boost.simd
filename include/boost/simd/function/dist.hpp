@@ -42,7 +42,7 @@ namespace boost { namespace simd
        @snippet dist.txt dist
 
   **/
-  Value dist(Value const & x, Value const& y);
+  Value dist(Value const& x, Value const& y);
 } }
 #endif
 

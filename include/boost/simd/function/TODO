@@ -81,7 +81,7 @@ OK dec.hpp
 NA deinterleave_first.hpp
 NA deinterleave.hpp
 NA deinterleave_second.hpp
-dist.hpp
+OK dist.hpp
 div.hpp
 divides.hpp
 dot.hpp
