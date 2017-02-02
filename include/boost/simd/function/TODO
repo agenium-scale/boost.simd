@@ -46,8 +46,8 @@ OK bitwise_or.hpp
 OK bitwise_ornot.hpp
 OK bitwise_select.hpp
 OK bitwise_xor.hpp
-broadcast.hpp
-cbrt.hpp
+NA broadcast.hpp
+OK cbrt.hpp
 ceil.hpp
 clz.hpp
 combine.hpp

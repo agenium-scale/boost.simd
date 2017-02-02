@@ -37,7 +37,7 @@ namespace boost { namespace simd
      @snippet cbrt.txt cbrt
 
   **/
-  Value cbrt(Value const & x);
+  IEEEValue cbrt(IEEEValue const& x);
 } }
 #endif
 
