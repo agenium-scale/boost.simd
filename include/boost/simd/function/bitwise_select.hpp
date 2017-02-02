@@ -34,7 +34,7 @@ namespace boost { namespace simd
      @snippet bitwise_select.txt bitwise_select
 
   **/
-  T0 bitwise_select(SEL const& sel, T0 const &x, T1 const& y);
+  Value1 bitwise_select(Value0 const& sel, Value1 const& x, Value2 const& y);
 } }
 #endif
 
