@@ -33,7 +33,7 @@ namespace boost { namespace simd
      @snippet asec.txt asec
 
   **/
-  Value asec(Value const & x);
+  IEEEValue asec(IEEEValue const & x);
 } }
 #endif
 
