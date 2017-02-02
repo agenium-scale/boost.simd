@@ -60,7 +60,7 @@ OK compare_not_equal.hpp
 OK complement.hpp
 OK conj.hpp
 OK copysign.hpp
-cosd.hpp
+OK cosd.hpp
 cosh.hpp
 cos.hpp
 cospi.hpp

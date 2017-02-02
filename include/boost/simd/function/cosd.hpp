@@ -41,7 +41,7 @@ namespace boost { namespace simd
      @snippet cosd.txt cosd
 
   **/
-  Value cosd(Value const & x);
+  IEEEValue cosd(IEEEValue const& x);
 } }
 #endif
 
