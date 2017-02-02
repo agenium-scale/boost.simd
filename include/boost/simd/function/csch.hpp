@@ -34,7 +34,7 @@ namespace boost { namespace simd
 
        @snippet csch.txt csch
   **/
-  Value csch(Value const & x);
+  IEEEValue csch(IEEEValue const& x);
 } }
 #endif
 
