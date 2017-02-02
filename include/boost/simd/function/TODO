@@ -37,7 +37,7 @@ W  bitinteger.hpp
 OK bitofsign.hpp
 OK bits.hpp
 OK bitwise_and.hpp
-bitwise_andnot.hpp
+OK bitwise_andnot.hpp
 bitwise_cast.hpp
 bitwise_notand.hpp
 bitwise_not.hpp

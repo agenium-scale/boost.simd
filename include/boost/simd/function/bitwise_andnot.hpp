@@ -34,7 +34,7 @@ namespace boost { namespace simd
      @snippet bitwise_andnot.txt bitwise_andnot
 
   **/
-  T0 bitwise_andnot(T0 const& x, T1 const& y);
+  Value0 bitwise_andnot(Value0 const& x, Value1 const& y);
 } }
 #endif
 
