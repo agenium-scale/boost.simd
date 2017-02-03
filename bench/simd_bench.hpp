@@ -10,11 +10,11 @@
 #ifndef SIMD_BENCH_HPP_INCLUDED
 #define SIMD_BENCH_HPP_INCLUDED
 
-#include <ns.bench.hpp>
 #include <boost/config.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/preprocessor/cat.hpp>
 #include <boost/preprocessor/stringize.hpp>
+#include <ns.bench.hpp>
 
 namespace ns { namespace bench {
 
