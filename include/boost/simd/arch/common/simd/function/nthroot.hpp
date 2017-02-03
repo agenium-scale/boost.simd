@@ -55,7 +55,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::integer_<A1>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
+      A0 operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
       {
       using bA0 = bs::as_logical_t<A0>;
       A0 x =  bs::abs(a0);
