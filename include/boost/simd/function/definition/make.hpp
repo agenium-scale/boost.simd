@@ -39,11 +39,15 @@ namespace boost { namespace simd
   {
     return detail::make(as_<Target>(), args... );
   }
-  
-  template<typename Target, typename... Args> auto make(as_<Target> const& tgt, Args const&... args)
-  BOOST_NOEXCEPT_DECLTYPE(detail::make(tgt, args... ))
+
+  template<typename Target, typename... Args> auto make(Target const& tgt, Args const&... args)
+  BOOST_NOEXCEPT_DECLTYPE(detail::make(tgt,args... ))
   {
-    return detail::make(tgt, args... );
+    static_assert ( boost::dispatch::detail::is_target<Target>::value
+                  , "boost::simd::make first parameter must be an instanciation of boost::simd::as_"
+                  );
+
+    return detail::make(tgt,args... );
   }
 } }
 
