@@ -34,6 +34,12 @@ namespace boost { namespace simd
     BOOST_DISPATCH_CALLABLE_DEFINITION(tag::make_,make);
   }
 
+  template<typename Target, typename Args> auto make(Args const& args)
+  BOOST_NOEXCEPT_DECLTYPE(detail::make(as_<Target>(), args ))
+  {
+    return detail::make(as_<Target>(), args );
+  }
+
   template<typename Target, typename... Args> auto make(Args const&... args)
   BOOST_NOEXCEPT_DECLTYPE(detail::make(as_<Target>(), args... ))
   {
