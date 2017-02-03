@@ -45,7 +45,7 @@ namespace boost { namespace simd { namespace detail
     template<typename T>
     static BOOST_FORCEINLINE T switch_(T const&,T const& a1, a1_side const&)
     {
-      int const pattern_size = 2 + int(sizeof...(Ps));
+      static int const pattern_size = 2 + int(sizeof...(Ps));
       return boost::simd::shuffle < remap<P0,-pattern_size>::value
                                   , remap<P1,-pattern_size>::value
                                   , remap<Ps,-pattern_size>::value...
