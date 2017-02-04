@@ -131,7 +131,7 @@ namespace boost { namespace simd
     // Check if pattern performs some interleaving operations
     template<int... Ps>
     struct  is_interleave
-          : nsm::bool_< !std::is_same
+          : nsm::bool_< !tt::is_same
                                   < nsm::no_such_type_
                                   , typename which_interleave < sizeof...(Ps)
                                                               , boost::simd::detail::pattern_<Ps...>
