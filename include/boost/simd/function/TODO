@@ -98,7 +98,7 @@ OK exponentbits.hpp
 OK exponent.hpp
 OK exprecnegc.hpp
 OK exprecneg.hpp
-expx2.hpp
+OK expx2.hpp
 extract.hpp
 ffs.hpp
 firstbitset.hpp

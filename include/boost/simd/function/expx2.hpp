@@ -40,7 +40,10 @@ namespace boost { namespace simd
      @snippet expx2.txt expx2
 
   **/
-  Value expx2(Value const & x, Value const& s);
+  ///@{
+  IEEEValue expx2(IEEEValue const& x);
+  IEEEValue expx2(IEEEValue const& x, IEEEValue const& s);
+  ///@}
 } }
 #endif
 
