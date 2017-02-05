@@ -115,7 +115,7 @@ OK frexp.hpp
 OK gamma.hpp
 OK gammaln.hpp
 OK genmaskc.hpp
-genmask.hpp
+OK genmask.hpp
 group.hpp
 hi.hpp
 hmsb.hpp

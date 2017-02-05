@@ -39,12 +39,11 @@ namespace boost { namespace simd
     @see if_allbits_else
 
   **/
-  template<typename A>  A genmask(const A& a) {}
 
-  /*!
-    @overload
-  */
-  template<typename T, typename A> T genmask(const A& a) {}
+  ///@{
+  Value genmask(const Value& a);
+  as_integer_t<Value> genmask(const Value& a);
+  ///@}
 } }
 #endif
 
