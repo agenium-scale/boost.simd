@@ -36,7 +36,7 @@ namespace boost { namespace simd
        @snippet fix.txt fix
 
   **/
-  Value fix(Value const & v0);
+  Value fix(Value const& x);
 } }
 #endif
 

@@ -103,7 +103,7 @@ NA extract.hpp
 OK ffs.hpp
 OK firstbitset.hpp
 OK firstbitunset.hpp
-fix.hpp
+OK fix.hpp
 floor.hpp
 fma.hpp
 fms.hpp
