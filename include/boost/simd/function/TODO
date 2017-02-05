@@ -122,7 +122,7 @@ OK hmsb.hpp   (*)
 NA horn1.hpp
 NA horn.hpp
 OK hypot.hpp
-iceil.hpp
+OK iceil.hpp
 if_allbits_else.hpp
 if_allbits_else_zero.hpp
 if_dec.hpp
