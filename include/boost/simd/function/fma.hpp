@@ -55,8 +55,7 @@ namespace boost { namespace simd
 
        @snippet fma.txt fma
   **/
-    Value fma(Value const& a, Value const& b, Value const& c);
-  }
+  Value fma(Value const& a, Value const& b, Value const& c);
 } }
 #endif
 

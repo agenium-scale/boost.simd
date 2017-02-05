@@ -105,7 +105,7 @@ OK firstbitset.hpp
 OK firstbitunset.hpp
 OK fix.hpp
 OK floor.hpp
-fma.hpp
+OK fma.hpp
 fms.hpp
 fnma.hpp
 fnms.hpp
