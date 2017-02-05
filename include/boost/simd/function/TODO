@@ -118,8 +118,8 @@ OK genmaskc.hpp
 OK genmask.hpp
 OK group.hpp
 OK hi.hpp
-hmsb.hpp
-horn1.hpp
+OK hmsb.hpp   (*)
+OK horn1.hpp
 horn.hpp
 hypot.hpp
 iceil.hpp

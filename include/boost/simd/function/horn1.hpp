@@ -55,9 +55,8 @@ namespace boost { namespace simd
     coefficient is one, saving one multiplication.
 
   **/
-  template<typename T> auto horn1(T const& x) {}
-
- } }
+  template <typename Value, uintmax_t... Coef> Value horn1(Value const& x) {}
+} }
 #endif
 
 namespace boost { namespace simd
