@@ -52,9 +52,8 @@ namespace boost { namespace simd
       \f$\sum_0^n C(i)x^i\f$
 
   **/
-  template<typename T> auto horn(T const& x) {}
-
- } }
+  template <typename Value, uintmax_t... Coef> Value horn(Value const& x);
+} }
 #endif
 
 namespace boost { namespace simd

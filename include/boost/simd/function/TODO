@@ -119,8 +119,8 @@ OK genmask.hpp
 OK group.hpp
 OK hi.hpp
 OK hmsb.hpp   (*)
-OK horn1.hpp
-horn.hpp
+NA horn1.hpp
+NA horn.hpp
 hypot.hpp
 iceil.hpp
 if_allbits_else.hpp
