@@ -1,0 +1,17 @@
+//! [toint]
+icitte
+---- simd
+<- pf =                        (-1, 2.6, -3.4, inf)
+-> bs::toint(pf) =             (-1, 2, -3, -2147483648)
+-> saturated_(bs::toint)(pf) = (-1, 2, -3, 2147483647)
+<- pi =                        (1, 2, 3, 65535)
+-> bs::toint(pi) =             (1, 2, 3, -1)
+-> saturated_(bs::toint)(pi) = (1, 2, 3, 32767)
+---- scalar
+<- xf =                        -2.5
+-> bs::toint(xf) =             -2
+-> saturated_(bs::toint)(xf) = -2
+<- xi =                        65535
+-> bs::toint(xi) =             -1
+-> saturated_(bs::toint)(xi) = 32767
+//! [toint]

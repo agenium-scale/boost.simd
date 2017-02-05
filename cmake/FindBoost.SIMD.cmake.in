@@ -1,0 +1,23 @@
+## Copyright 2017 - NumScale SAS
+##
+## Distributed under the Boost Software License, Version 1.0.
+## (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+##
+## -------------------------------------------------------------------------------------------------
+##
+## Locate Boost.SIMD library (https://github.com/NumScale/boost.simd)
+##
+## This module uses Boost.SIMDConfig.cmake which is installed whenever you install Boost.SIMD in
+## your system. It also tries to look for Boost.SIMD in /opt
+##
+## -------------------------------------------------------------------------------------------------
+
+## Tries to find the library using the *Config.cmake files.
+find_package(@PROJECT_NAME@ ${@PROJECT_NAME@_FIND_VERSION}
+  QUIET NO_MODULE
+  HINTS /opt/boost.simd
+)
+
+##
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(@PROJECT_NAME@ CONFIG_MODE)

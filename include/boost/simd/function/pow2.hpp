@@ -16,31 +16,26 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-exponential
-    Function object implementing pow2 capabilities
-
-    Returns \f$ x 2^y\f$.  (the result is undefined on overflow and
+    This function object returns \f$ x 2^y\f$.  (the result is undefined on overflow and
     the function asserts for invalid second parameter )
 
-    @par Semantic:
+   @par Header <boost/simd/function/pow2.hpp>
 
-    For every parameters of floating type T
+   @par Note
 
-    @code
-    T r = pow2(x, y);
-    @endcode
+   The first parameter default to @c One.
 
-    is similar to:
+   @par Example:
 
-    @code
-    T r = x*exp2(trunc(y));
-    @endcode
+     @snippet pow2.cpp pow2
 
-    @see exp2, trunc, ldexp
+   @par Possible output:
+
+     @snippet pow2.txt pow2
 
   **/
-  Value pow2(Value const & v0, Value const& y);
+  Value pow2(Value const & x, IntegerValue const& y);
 } }
 #endif
 

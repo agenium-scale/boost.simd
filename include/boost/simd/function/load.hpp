@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Load a value from memory into a generic variable
 
+
+    @par Header <boost/simd/function/load.hpp>
+
     @param ptr Memory to load from
     @param o   Memory offset
 
@@ -26,7 +29,9 @@ namespace boost { namespace simd
   **/
   template<typename T, typename Pointer, typename Offset> T load(Pointer ptr, Offset o) {}
 
-  /// @overload
+  /*!
+    @overload
+  **/
   template<typename T, typename Pointer> T load(Pointer ptr) {}
 
 } }

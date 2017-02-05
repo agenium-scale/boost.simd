@@ -1,0 +1,20 @@
+//! [rem]
+---- simd
+ <- pf =                             (5, -5, 3, 5)
+ <- qf =                             (2, 2, 3, -2)
+ -> bs::rem(pf, qf) =                (1, -1, 0, 1)
+ -> bs::rem(bs::fix, pf, qf) =       (1, -1, 0, 1)
+ -> bs::rem(bs::ceil, pf, qf) =      (-1, -1, 0, 1)
+ -> bs::rem(bs::floor, pf, qf) =     (1, 1, 0, -1)
+ -> bs::rem(bs::round, pf, qf) =     (-1, 1, 0, -1)
+ -> bs::rem(bs::nearbyint, pf, qf) = (1, -1, 0, 1)
+---- scalar
+ <- xf =                             5
+ <- yf =                             2
+ -> bs::rem( xf, yf) =               1
+ -> bs::rem(bs::fix, xf, yf) =       1
+ -> bs::rem(bs::ceil, xf, yf) =      -1
+ -> bs::rem(bs::floor, xf, yf) =     1
+ -> bs::rem(bs::round, xf, yf) =     -1
+ -> bs::rem(bs::nearbyint, xf, yf) = 1
+//! [rem]

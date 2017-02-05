@@ -18,20 +18,19 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-hyperbolic
-    Function object implementing coth capabilities
+    This unction object returns the hyperbolic cotangent:
+    \f$(e^{x}+e^{-x})/(e^{x}-e^{-x})\f$
 
-    Returns the hyperbolic cotangent: \f$(e^{x}+e^{-x})/(e^{x}-e^{-x})\f$
-
-    @par Semantic:
-
-    For every parameter of floating type @c T
-
-    @code
-    T r = coth(x);
-    @endcode
 
     @see sinh, cosh, sinhcosh
 
+    @par Example:
+
+       @snippet coth.cpp coth
+
+    @par Possible output:
+
+       @snippet coth.txt coth
   **/
   Value coth(Value const & v0);
 } }

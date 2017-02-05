@@ -1,0 +1,12 @@
+//! [frexp]
+---- simd
+<- pf =                               (1, 2, -1, 0.5)
+-> std::tie(pm, pe) = bs::frexp(pf) =
+-> pm  =                              (0.5, 0.5, -0.5, 0.5)
+-> pie =                              (1, 2, 1, 0)
+---- scalar
+ xf =                                 2
+-> std::tie(m, e) = bs::frexp(xf) =
+-> m  =                               0.5
+-> e =                                2
+//! [frexp]

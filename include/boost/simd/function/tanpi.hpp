@@ -16,28 +16,32 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing tanpi capabilities
-
-    tangent of angle in \f$\pi\f$ multiples: \f$\cos(\pi x)/sin(\pi x)\f$.
-
-    @par Semantic:
-
-    For every parameter of floating type
-
-    @code
-    auto r = tanpi(x);
-    @endcode
+    This function object returns the tangent of angle in \f$\pi\f$ multiples:
+    \f$\cos(\pi x)/sin(\pi x)\f$.
 
 
-    As most other trigonometric function tanpi can be called with a second optional parameter
-    which is a tag on speed and accuracy (see @ref cos for further details)
+    @par Header <boost/simd/function/tanpi.hpp>
 
-    @see tan, tand
+   @par Note
+
+     - As most other trigonometric function tanpi can be called with a second
+        optional parameter  which is a tag on speed and accuracy
+       (see @ref cos for further details)
+
+   @see tan, tand
+
+
+   @par Example:
+
+     @snippet tanpi.cpp tanpi
+
+   @par Possible output:
+
+     @snippet tanpi.txt tanpi
 
   **/
-  Value tanpi(Value const & v0);
+  Value tanpi(Value const & x);
 } }
 #endif
 

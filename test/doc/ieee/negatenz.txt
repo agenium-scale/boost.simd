@@ -1,0 +1,10 @@
+//! [negatenz]
+---- simd
+<- pf =                    (1, 2, -1, 0.5)
+<- qf =                    (2, -1, 0.5, 1)
+-> bs::negatenz(pf, qf) = (1, -2, -1, 0.5)
+---- scalar
+<- xf =                    2
+<- yf =                    -1
+-> bs::negatenz(xf, yf) =  -2
+//! [negatenz]

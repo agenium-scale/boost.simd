@@ -1,0 +1,7 @@
+//! [compare_not_equal]
+---- simd
+<- pi =                       (1, 2, 5, 2)
+<- qi =                       (0, 1, 2, 8)
+-> bs::compare_not_equal(pi, pi) = 0
+-> bs::compare_not_equal(pi, qi) = 1
+//! [compare_not_equal]

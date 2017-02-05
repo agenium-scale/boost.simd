@@ -1,0 +1,8 @@
+//! [asinpi]
+---- simd
+<- pf =           (1, 2, -1, 0.5)
+-> bs::asinpi(pf) = (0.5, -nan, -0.5, 0.166667)
+---- scalar
+<- xf =           2
+-> bs::asinpi(xf) = -nan
+//! [asinpi]

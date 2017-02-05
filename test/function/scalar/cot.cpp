@@ -43,6 +43,8 @@ STF_CASE_TPL (" cot",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(cot(-bs::Pio_4<T>()), bs::Mone<r_t>(), 0.5);
   STF_ULP_EQUAL(cot(bs::Pio_2<T>()), bs::Zero<r_t>(), 0.5);
   STF_ULP_EQUAL(cot(bs::Pio_4<T>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(cot(bs::Pio_4<T>()*3), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(cot(-bs::Pio_4<T>()*3), bs::One<r_t>(), 0.5);
 }
 
 STF_CASE_TPL (" cot restricted_",  STF_IEEE_TYPES)

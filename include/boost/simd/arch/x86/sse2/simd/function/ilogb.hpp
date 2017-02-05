@@ -10,14 +10,14 @@
 //==================================================================================================
 #ifndef BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_ILOGB_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_ILOGB_HPP_INCLUDED
-#include <boost/simd/detail/overload.hpp>
 
+#include <boost/simd/detail/overload.hpp>
 #include <boost/simd/function/bitwise_and.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/dec.hpp>
 #include <boost/simd/function/exponent.hpp>
 #include <boost/simd/function/group.hpp>
-#include <boost/simd/function/if_plus.hpp>
+#include <boost/simd/function/if_inc.hpp>
 #include <boost/simd/function/split.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/if_zero_else.hpp>
@@ -30,12 +30,11 @@
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/detail/dispatch/meta/upgrade.hpp>
 
-
-
 namespace boost { namespace simd { namespace ext
 {
   namespace bd =  boost::dispatch;
   namespace bs =  boost::simd;
+
   BOOST_DISPATCH_OVERLOAD ( ilogb_
                           , (typename A0)
                           , bs::sse2_
@@ -52,6 +51,7 @@ namespace boost { namespace simd { namespace ext
                                    );
     }
   };
+
   BOOST_DISPATCH_OVERLOAD ( ilogb_
                           , (typename A0)
                           , bs::sse2_
@@ -66,19 +66,19 @@ namespace boost { namespace simd { namespace ext
       A0 n = a0;
       A0 i = One<A0>();
       n = bitwise_and(mask, shift_right(bitwise_cast<ui16_t>(n), 1));
-      i = if_plus(is_nez(n), i, One<A0>());
+      i = if_inc(is_nez(n), i);
       n = bitwise_and(mask, shift_right(bitwise_cast<ui16_t>(n), 1));
-      i = if_plus(is_nez(n), i, One<A0>());
+      i = if_inc(is_nez(n), i);
       n = bitwise_and(mask, shift_right(bitwise_cast<ui16_t>(n), 1));
-      i = if_plus(is_nez(n), i, One<A0>());
+      i = if_inc(is_nez(n), i);
       n = bitwise_and(mask, shift_right(bitwise_cast<ui16_t>(n), 1));
-      i = if_plus(is_nez(n), i, One<A0>());
+      i = if_inc(is_nez(n), i);
       n = bitwise_and(mask, shift_right(bitwise_cast<ui16_t>(n), 1));
-      i = if_plus(is_nez(n), i, One<A0>());
+      i = if_inc(is_nez(n), i);
       n = bitwise_and(mask, shift_right(bitwise_cast<ui16_t>(n), 1));
-      i = if_plus(is_nez(n), i, One<A0>());
+      i = if_inc(is_nez(n), i);
       n = bitwise_and(mask, shift_right(bitwise_cast<ui16_t>(n), 1));
-      i = if_plus(is_nez(n), i, One<A0>());
+      i = if_inc(is_nez(n), i);
       return dec(i);
     }
   };
@@ -96,6 +96,7 @@ namespace boost { namespace simd { namespace ext
       return bitwise_cast<result>(group(ilogb(s0[0]), ilogb(s0[1])));
     }
   };
+
   BOOST_DISPATCH_OVERLOAD ( ilogb_
                           , (typename A0)
                           , bs::sse2_

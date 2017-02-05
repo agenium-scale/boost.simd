@@ -1,0 +1,8 @@
+//! [exponent]
+---- simd
+<- pf =               (1, 2, -1, 0.5)
+-> bs::exponent(pf) = (0, 1, 0, -1)
+---- scalar
+<- xf =               2
+-> bs::exponent(xf) = 1
+//! [exponent]

@@ -1,0 +1,11 @@
+
+//! [divisions_results]
+ p = (-4, -3, -2, -1, 1, 2, 3, 4)
+ q = ( 5,  2,  3,  2, 2, 3, 2, 5)
+ -> bs::div(bs::ceil,      p, q) = (-0, -1, -0, -0, 1, 1, 2, 1)
+ -> bs::div(bs::floor,     p, q) = (-1, -2, -1, -1, 0, 0, 1, 0)
+ -> bs::div(bs::fix,       p, q) = ( 0, -1,  0,  0, 0, 0, 1, 0)
+ -> bs::div(bs::round,     p, q) = (-1, -2, -1, -1, 1, 1, 2, 1)
+ -> bs::div(bs::nearbyint, p, q) = (-1, -2, -1, -0, 0, 1, 2, 1)
+//! [divisions_results]
+

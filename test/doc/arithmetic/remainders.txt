@@ -1,0 +1,11 @@
+
+//! [remainders_results]
+ p = (-4, -3, -2, -1, 1, 2, 3, 4)
+ q = ( 5,  2,  3,  2, 2, 3, 2, 5)
+ -> bs::rem(bs::ceil,      p, q) = (-4, -1, -2, -1, -1, -1, -1, -1)
+ -> bs::rem(bs::floor,     p, q) = ( 1,  1,  1,  1,  1,  2,  1,  4)
+ -> bs::rem(bs::fix,       p, q) = (-4, -1, -2, -1,  1,  2,  1,  4)
+ -> bs::rem(bs::round,     p, q) = ( 1,  1,  1,  1, -1, -1, -1, -1)
+ -> bs::rem(bs::nearbyint, p, q) = ( 1,  1,  1, -1,  1, -1, -1, -1)
+//! [remainders_results]
+

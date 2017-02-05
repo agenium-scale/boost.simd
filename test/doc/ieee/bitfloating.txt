@@ -1,0 +1,8 @@
+//! [bitfloating]
+---- simd
+<- pf =                  (1, 2, -1, 5)
+-> bs::bitfloating(pf) = (1.4013e-45, 2.8026e-45, -1.4013e-45, 7.00649e-45)
+---- scalar
+<- xf =                  2
+-> bs::bitfloating(xf) = 2.8026e-45
+//! [bitfloating]

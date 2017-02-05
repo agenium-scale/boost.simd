@@ -16,21 +16,24 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-bitwise
-    Function object implementing reversebits capabilities
+    This function object returns the bits in reverse order for each scalar entry.
 
-    Returns the bits in reverse order for each scalar entry.
+    @see reverse,  swapbytes
 
-    @par semantic:
-    For any given value @c x of type @c T:
 
-    @code
-    T r = reversebits(x);
-    @endcode
+    @par Header <boost/simd/function/reversebits.hpp>
+
+    @par Example:
+
+     @snippet reversebits.cpp reversebits
+
+   @par Possible output:
+
+     @snippet reversebits.txt reversebits
 
   **/
-  Value reversebits(Value const & v0);
+  Value reversebits(Value const & x);
 } }
 #endif
 

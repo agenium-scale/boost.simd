@@ -75,6 +75,21 @@ namespace boost { namespace simd { namespace ext
     #endif
     }
   };
+
+  BOOST_DISPATCH_OVERLOAD ( copysign_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bs::std_tag
+                          , bd::scalar_< bd::floating_<A0> >
+                          , bd::scalar_< bd::floating_<A0> >
+                                    )
+  {
+    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
+    {
+      return std::copysign(a0, a1);
+    }
+  };
+
 } } }
 
 

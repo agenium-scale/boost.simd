@@ -28,10 +28,6 @@ STF_CASE( "Check for SIMD tag support facility" )
   std::cout << "FMA4   support: " << std::boolalpha << boost::simd::fma4.is_supported()   << "\n";
   std::cout << "XOP    support: " << std::boolalpha << boost::simd::xop.is_supported()    << "\n";
   std::cout << "---------------------\n";
-  std::cout << "PPC Extensions\n";
-  std::cout << "---------------------\n";
-  std::cout << "VMX    support: " << std::boolalpha << boost::simd::vmx.is_supported()    << "\n";
-  std::cout << "---------------------\n";
 
   STF_PASS("Support detection from architecture object.");
 }
@@ -54,9 +50,4 @@ STF_CASE( "Check for architectural tag parent for X86/AMD" )
 
   STF_TYPE_IS( boost::simd::avx_::parent    , boost::simd::sse4_2_ );
   STF_TYPE_IS( boost::simd::avx2_::parent   , boost::simd::avx_ );
-}
-
-STF_CASE( "Check for architectural tag parent for PowerPC" )
-{
-  STF_TYPE_IS( boost::simd::vmx_::parent , boost::simd::simd_  );
 }

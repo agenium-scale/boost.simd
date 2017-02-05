@@ -16,26 +16,28 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-bitwise
-    Function object implementing ctz capabilities
-
-    Returns the bit count of trailing zeroes
-
+    This function object returns the bit count of trailing zeroes
     Finds the first bit set in x, and returns the index of that bit, 0 being
     the least significant bit index.
     @c ctz asserts is the entry is 0
 
-    @par semantic:
-    For any given value @c x of type @c T:
+   @see  clz, popcnt
 
-    @code
-    as_integer_t<T> r = ctz(x);
-    @endcode
 
-    @see  clz, popcnt
+
+    @par Header <boost/simd/function/ctz.hpp>
+
+   @par Example:
+
+     @snippet ctz.cpp ctz
+
+   @par Possible output:
+
+     @snippet ctz.txt ctz
+
   **/
-  as_integer_t<Value> ctz(Value const & v0);
+  as_integer_t<Value> ctz(Value const & x);
 } }
 #endif
 

@@ -16,25 +16,20 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-boolean
-    Function object implementing if_allbits_else capabilities
+    This function object  returns @ref Allbits if  @c c is @ref True else returns @c f
 
-    If cond is @ref True returns allbits else returns f
 
-    @par Semantic:
 
-    For every parameters @c cond of type @c C, @c f of type @c T:
+    @par Header <boost/simd/function/if_allbits_else.hpp>
 
-    @code
-    T r = if_allbits_else(cond,f);
-    @endcode
+   @par Example:
 
-    is similar to:
+     @snippet if_allbits_else.cpp if_allbits_else
 
-    @code
-    T r = cond ? Allbits : f;
-    @endcode
+   @par Possible output:
+
+     @snippet if_allbits_else.txt if_allbits_else
 
     @par Alias:
     @c if_nan_else,
@@ -44,7 +39,9 @@ namespace boost { namespace simd
   **/
   Value if_allbits_else(Value const& c, Value const& f);
 
-  //@overload
+  /*!
+    @overload
+  */
   Value if_allbits_else(LogicalValue const& c, Value const& f);
 } }
 #endif

@@ -24,6 +24,9 @@ namespace boost { namespace simd
 
     Infix notation can be used with operator '-'
 
+
+    @par Header <boost/simd/function/unary_minus.hpp>
+
     @par Semantic:
 
     For every parameter of type T

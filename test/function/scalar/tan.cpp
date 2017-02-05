@@ -42,4 +42,6 @@ STF_CASE_TPL (" tan",  STF_IEEE_TYPES)
   STF_ULP_EQUAL(tan(bs::Pi<T>()), bs::Zero<r_t>(), 0.75);
   STF_ULP_EQUAL(tan(bs::Pio_4<T>()), bs::One<r_t>(), 1.0);
   STF_ULP_EQUAL(tan(bs::Zero<T>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(tan(bs::Pio_4<T>()*3), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(tan(-bs::Pio_4<T>()*3), bs::One<r_t>(), 0.5);
 }

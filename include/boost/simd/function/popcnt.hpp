@@ -16,22 +16,25 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-bitwise
-    Function object implementing popcnt capabilities
-
-    Returns the number of bit sets in the input.
-
-    @par semantic:
-    For any given value @c x of type @c T:
-
-    @code
-    as_integer_t<T, unsigned> r = popcnt(x);
-    @endcode
+    This function object returns the number of set bits in the input.
 
     @see  clz, ctz
+
+
+
+    @par Header <boost/simd/function/popcnt.hpp>
+
+   @par Example:
+
+     @snippet popcnt.cpp popcnt
+
+   @par Possible output:
+
+     @snippet popcnt.txt popcnt
+
   **/
-  IntegerValue popcnt(Value const & v0);
+  IntegerValue popcnt(Value const & x);
 } }
 #endif
 

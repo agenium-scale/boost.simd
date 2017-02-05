@@ -12,33 +12,28 @@
 #define BOOST_SIMD_FUNCTION_DOT_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+namespace boost {
+namespace simd {
 
- /*!
+/*!
+   @ingroup group-reduction
+   This function object returns the returns the dot product of the two arguments
 
-    @ingroup group-reduction
-    Function object implementing dot capabilities
 
-    returns the dot product of the two vector arguments
+    @par Header <boost/simd/function/dot.hpp>
 
-    @par Semantic:
+  @par Example:
 
-    For every parameters of type T:
+    @snippet edot.cpp dot
 
-    @code
-    scalar_of_t<T> r = dot(x,y);
-    @endcode
+  @par Possible output:
 
-    is similar to:
+    @snippet edot.txt dot
 
-    @code
-    scalar_of_t<T> r = sum(x*conj(y));
-    @endcode
-
-  **/
-  scalar_of_t<Value> dot(Value const & v0, Value const& v1);
-} }
+ **/
+scalar_of_t<Value> dot(Value const &x, Value const &y);
+}
+}
 #endif
 
 #include <boost/simd/function/scalar/dot.hpp>

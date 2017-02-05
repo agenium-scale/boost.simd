@@ -9,6 +9,10 @@
 #ifndef BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_EPS_HPP_INCLUDED
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_EPS_HPP_INCLUDED
 
+#ifndef BOOST_SIMD_NO_DENORMALS
+#include <limits>
+#endif
+
 #include <boost/simd/constant/mindenormal.hpp>
 #include <boost/simd/constant/nan.hpp>
 #include <boost/simd/constant/nbmantissabits.hpp>
@@ -45,17 +49,17 @@ namespace boost { namespace simd { namespace ext
   {
     A0 operator()(A0 a0) const BOOST_NOEXCEPT
     {
-      using lim = std::numeric_limits<A0>;
-
       const A0 a = bs::abs(a0);
 
             if (is_invalid(a))  return Nan<A0>();
-      else  if (a < lim::min()) return Mindenormal<A0>();
+#ifndef BOOST_SIMD_NO_DENORMALS
+      else  if (a < std::numeric_limits<A0>::min()) return Mindenormal<A0>();
+#endif
       else
       {
         using i_t = bd::as_integer_t<A0, unsigned>;
 
-        i_t e1 = exponent(a)-lim::digits+1;
+        i_t e1 = exponent(a)-Nbmantissabits<A0>();
         return bitwise_cast<A0>(bitwise_cast<i_t>(A0(1))+(e1 << Nbmantissabits<A0>()));
       }
     }

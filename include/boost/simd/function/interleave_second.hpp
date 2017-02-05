@@ -21,6 +21,9 @@ namespace boost { namespace simd
 
     Computes a vector from a combination of the two inputs.
 
+
+    @par Header <boost/simd/function/interleave_second.hpp>
+
     @par Semantic:
 
     For every parameters of type T:

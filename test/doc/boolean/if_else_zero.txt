@@ -1,0 +1,12 @@
+//! [if_else_zero]
+---- simd
+ <- pf =                       (3, 0, -3, -0)
+ <- qf =                       (3, 0.5, -3, 1)
+ -> bs::if_else_zero(pf, qf) =  (3, 0, -3, 0)
+---- scalar
+ xf =                          3
+ yf =                          0
+ zf =                          5
+ -> bs::if_else_zero(xf, zf) =  5
+ -> bs::if_else_zero(yf, zf) =  0
+//! [if_else_zero]

@@ -16,32 +16,30 @@ namespace boost { namespace simd
 {
 /*!
       @ingroup group-bitwise
-      Function object function implementing bitwise_cast capabilities
+      This function object function implementing bitwise_cast capabilities
 
       Performs a bit-preserving cast of its parameters into an arbitrary
       type @c Target.
 
-
-      @par Semantic
-
-      For any value @c x of type @c T and for type @c Target,
-      of same bit size as T
+      @pre `sizeof(Value) == sizeof(Target)`
 
 
-      @code
-      Target r = bitwise_cast<Target>(x);
-      @endcode
 
-      @pre
-      @code
-      sizeof(T) == sizeof(Target)
-      @endcode
+    @par Header <boost/simd/function/bitwise_cast.hpp>
 
-      @tparam Target @c Target type to cast toward
+   @par Example:
+
+     @snippet bitwise_cast.cpp bitwise_cast
+
+   @par Possible output:
+
+     @snippet bitwise_cast.txt bitwise_cast
+
       @param  @c x Value to cast
 
       @return A value of type @c Target which is bit-equivalent to @c x.
     **/
+  template < typename Target>
     Target bitwise_cast(Value const& x);
   }
 } }

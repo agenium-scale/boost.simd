@@ -16,24 +16,26 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing secd capabilities
+    This function object returns the secant of the angle in degree:
+    \f$1/\cos(\pi x/180)\f$.
 
-    secant of the angle in degree: \f$1/\cos(\pi x/180)\f$.
+   @see cosd, sec, secpi
 
-    @par Semantic:
 
-    For every parameter of floating type
 
-    @code
-    auto r = secd(x);
-    @endcode
+    @par Header <boost/simd/function/secd.hpp>
 
-    @see cosd, sec, secpi, rec
+   @par Example:
+
+     @snippet secd.cpp secd
+
+   @par Possible output:
+
+     @snippet secd.txt secd
 
   **/
-  Value secd(Value const & v0);
+  Value secd(Value const & x);
 } }
 #endif
 

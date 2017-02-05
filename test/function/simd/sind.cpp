@@ -10,6 +10,14 @@
 #include <boost/simd/function/sind.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/std.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/mzero.hpp>
+#include <boost/simd/constant/sqrt_2o_2.hpp>
 
 
 namespace bs = boost::simd;
@@ -40,3 +48,31 @@ STF_CASE_TPL("Check sind on pack" , STF_IEEE_TYPES)
   test<T, N*2>($);
 }
 
+
+STF_CASE_TPL (" sind",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::sind;
+  using p_t = bs::pack<T>;
+
+
+  using r_t = decltype(sind(p_t()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, p_t);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_ULP_EQUAL(sind(bs::Inf<p_t>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(sind(bs::Minf<p_t>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(sind(bs::Nan<p_t>()), bs::Nan<r_t>(), 0.5);
+#endif
+  STF_ULP_EQUAL(sind(-p_t(180)), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(sind(-p_t(45)), -bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(sind(-p_t(90)), -bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(sind(bs::Zero<p_t>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(sind(p_t(180)), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(sind(p_t(45)), bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(sind(p_t(90)), bs::One<r_t>(), 0.5);
+}

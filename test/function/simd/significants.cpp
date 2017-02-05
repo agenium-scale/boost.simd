@@ -14,6 +14,13 @@
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/mzero.hpp>
 
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
@@ -48,4 +55,38 @@ STF_CASE_TPL("Check significants on pack" , STF_IEEE_TYPES)
   test<T, N>($);
   test<T, N/2>($);
   test<T, N*2>($);
+}
+
+
+
+
+STF_CASE_TPL (" significants",  (float))//STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+
+  using bs::significants;
+  using p_t = bs::pack<T>;
+
+  using ip_t =  bd::as_integer_t<p_t>;
+  using r_t = decltype(significants(p_t(), ip_t()));
+
+  // return type conformity test
+  STF_TYPE_IS( r_t, p_t );
+
+#ifndef BOOST_SIMD_NO_INVALIDS
+   STF_ULP_EQUAL(significants(bs::Inf<p_t>(), ip_t(1)), bs::Inf<r_t>(), 0.5);
+   STF_ULP_EQUAL(significants(bs::Minf<p_t>(), ip_t(1)), bs::Minf<r_t>(), 0.5);
+   STF_ULP_EQUAL(significants(bs::Nan<p_t>(),ip_t(1)), bs::Nan<r_t>(), 0.5);
+#endif
+   STF_ULP_EQUAL(significants(p_t(0), ip_t(1)), p_t(0), 0.5);
+   STF_ULP_EQUAL(significants(p_t(25.34), ip_t(1)), p_t(30), 0.5);
+   STF_ULP_EQUAL(significants(p_t(25.34), ip_t(2)), p_t(25), 0.5);
+   STF_ULP_EQUAL(significants(p_t(25.34), ip_t(3)), p_t(25.3), 0.5);
+   STF_ULP_EQUAL(significants(p_t(25.34), ip_t(4)), p_t(25.34), 0.5);
+   STF_ULP_EQUAL(significants(p_t(-25.34), ip_t(1)), p_t(-30), 0.5);
+   STF_ULP_EQUAL(significants(p_t(-25.34),ip_t(2)), p_t(-25), 0.5);
+   STF_ULP_EQUAL(significants(p_t(-25.34), ip_t(3)), p_t(-25.3), 0.5);
+   STF_ULP_EQUAL(significants(p_t(-25.34), ip_t(4)), p_t(-25.34), 0.5);
+   STF_ULP_EQUAL(significants(p_t(-25.34), 4), p_t(-25.34), 0.5);
 }

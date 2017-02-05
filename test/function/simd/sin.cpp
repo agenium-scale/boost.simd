@@ -10,7 +10,18 @@
 #include <boost/simd/function/sin.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/std.hpp>
-
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/mzero.hpp>
+#include <boost/simd/constant/pio_2.hpp>
+#include <boost/simd/constant/pio_4.hpp>
+#include <boost/simd/constant/sqrt_2o_2.hpp>
+#include <boost/simd/function/is_negative.hpp>
+#include <boost/simd/function/is_positive.hpp>
 
 namespace bs = boost::simd;
 
@@ -19,20 +30,17 @@ void test(Env& $)
 {
   using p_t = bs::pack<T, N>;
 
-  T a1[N], b[N], c[N];
+  T a1[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? T(i) : -T(i);
     b[i] = bs::sin(a1[i]) ;
-    c[i] = bs::std_(bs::sin)(a1[i]);
   }
 
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
-  p_t cc (&c[0], &c[0]+N);
 
   STF_ULP_EQUAL(bs::sin(aa1), bb, 0.5);
-  STF_ULP_EQUAL(bs::std_(bs::sin)(aa1), cc, 0.5);
 }
 
 STF_CASE_TPL("Check sin on pack" , STF_IEEE_TYPES)
@@ -50,20 +58,17 @@ void testcs(Env& $)
   namespace bst = bs::tag;
   using p_t = bs::pack<T, N>;
 
-  T a1[N], b[N], c[N];
+  T a1[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? T(i) : -T(i);
 
     b[i] = bs::sin(a1[i], bst::clipped_small_) ;
-    c[i] = bs::std_(bs::sin)(a1[i]);
   }
 
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
-  p_t cc (&c[0], &c[0]+N);
   STF_ULP_EQUAL(bs::sin(aa1, bst::clipped_small_), bb, 0.5);
-  STF_ULP_EQUAL(bs::std_(bs::sin)(aa1), cc, 0.5);
 }
 
 STF_CASE_TPL("Check sin sin clipped_small_ on pack" , STF_IEEE_TYPES)
@@ -81,20 +86,17 @@ void testcm(Env& $)
   namespace bst = bs::tag;
   using p_t = bs::pack<T, N>;
 
-  T a1[N], b[N], c[N];
+  T a1[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? T(i) : -T(i);
 
     b[i] = bs::sin(a1[i], bst::clipped_medium_) ;
-    c[i] = bs::std_(bs::sin)(a1[i]);
   }
 
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
-  p_t cc (&c[0], &c[0]+N);
   STF_ULP_EQUAL(bs::sin(aa1, bst::clipped_medium_), bb, 0.5);
-  STF_ULP_EQUAL(bs::std_(bs::sin)(aa1), cc, 0.5);
 }
 
 STF_CASE_TPL("Check sin sin clipped_medium_ on pack" , STF_IEEE_TYPES)
@@ -108,3 +110,30 @@ STF_CASE_TPL("Check sin sin clipped_medium_ on pack" , STF_IEEE_TYPES)
 
 
 
+
+STF_CASE_TPL (" sin",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::sin;
+  using p_t = bs::pack<T>;
+
+  using r_t = decltype(sin(p_t()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, p_t);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_ULP_EQUAL(sin(bs::Inf<p_t>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(sin(bs::Minf<p_t>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(sin(bs::Nan<p_t>()), bs::Nan<r_t>(), 0.5);
+#endif
+  STF_ULP_EQUAL(sin(-bs::Pio_2<p_t>()), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(sin(-bs::Pio_4<p_t>()), -bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(sin(bs::Pio_2<p_t>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(sin(bs::Pio_4<p_t>()), bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(sin(bs::Zero<p_t>()), bs::Zero<r_t>(), 0.5);
+  STF_EQUAL(bs::is_negative(sin(bs::Mzero<p_t>())), bs::True<p_t>());
+  STF_EQUAL(bs::is_positive(sin(bs::Zero<p_t>())) , bs::True<p_t>());
+}

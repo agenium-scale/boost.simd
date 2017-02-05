@@ -23,6 +23,9 @@ namespace boost { namespace simd
      grant access to low-level, low-accuracy intrinsics
      provided by some SIMD architectures.
 
+
+    @par Header <boost/simd/function/raw.hpp>
+
     @par Semantic
 
     @code

@@ -18,31 +18,26 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-operator
-    Function object implementing shift_left capabilities
-
-    return left shift of the first operand by the second
+    This function object returns the first operand shifted left by the second
     that must be of integer type and of the same number
     of elements as the first parameter
 
     Infix notation can be used with operator '<<'
 
-    @par Semantic:
-
-    For every parameters of types respectively @c T, @c N:
-
-    @code
-    auto r = shift_left(x,n);
-    @endcode
-
-    or
-
-    @code
-    auto r = x << n;
-    @endcode
-
-    @alias shl
+    @par alias shl
 
     @see  shift_right, shr, rshl, rshr, rol, ror
+
+
+    @par Header <boost/simd/function/shift_left.hpp>
+
+   @par Example:
+
+     @snippet shift_left.cpp shift_left
+
+   @par Possible output:
+
+     @snippet shift_left.txt shift_left
 
   **/
   Value shift_left(Value const & x, IntegerValue const& n);

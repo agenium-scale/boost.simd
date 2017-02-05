@@ -1,0 +1,8 @@
+//! [rsqrt]
+---- simd
+<- pf =            (1, 4, -1, 0)
+-> bs::rsqrt(pf) = (1, 0.5, -nan, inf)
+---- scalar
+<- xf =            4
+-> bs::rsqrt(xf) = 0.5
+//! [rsqrt]

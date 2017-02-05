@@ -30,15 +30,15 @@ void test(Env& $)
   {
      a1[i] =  T(i) ;
      a2[i] = T(i+N) ;
-     b[i] = bs::rem(bs::floor, a1[i], a2[i]);
+     b[i] = bs::pedantic_(bs::rem)(bs::floor, a1[i], a2[i]);
    }
   p_t aa1(&a1[0], &a1[0]+N);
   p_t aa2(&a2[0], &a2[0]+N);
   p_t bb(&b[0], &b[0]+N);
-  STF_IEEE_EQUAL(bs::rem(bs::floor, aa1, aa2), bb);
+  STF_IEEE_EQUAL(bs::pedantic_(bs::rem)(bs::floor, aa1, aa2), bb);
 }
 
-STF_CASE_TPL("Check rem on pack" , STF_SIGNED_NUMERIC_TYPES)
+STF_CASE_TPL("Check pedantic rem on pack" , STF_SIGNED_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
@@ -49,7 +49,7 @@ STF_CASE_TPL("Check rem on pack" , STF_SIGNED_NUMERIC_TYPES)
 }
 
 template <typename T, std::size_t N, typename Env>
-void testfloorfast(Env& $)
+void testfloorregular(Env& $)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T, N>;
@@ -67,17 +67,17 @@ void testfloorfast(Env& $)
   p_t aa1(&a1[0], &a1[0]+N);
   p_t aa2(&a2[0], &a2[0]+N);
   p_t bb(&b[0], &b[0]+N);
-  STF_IEEE_EQUAL(bs::fast_(bs::rem)(bs::floor, aa1, aa2), bb);
+  STF_IEEE_EQUAL(bs::rem(bs::floor, aa1, aa2), bb);
 }
 
-STF_CASE_TPL("Check fast_(rem) on pack option floor" , STF_IEEE_TYPES)
+STF_CASE_TPL("Check rem on pack option floor" , STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
-  testfloorfast<T, N>($);
-  testfloorfast<T, N/2>($);
-  testfloorfast<T, N*2>($);
+  testfloorregular<T, N>($);
+  testfloorregular<T, N/2>($);
+  testfloorregular<T, N*2>($);
 }
 
 
@@ -85,17 +85,17 @@ STF_CASE_TPL("Check rem floor on pack limiting cases" , STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
-  STF_EXPECT(bs::all(bs::is_negative(bs::rem(bs::floor, bs::Mzero<p_t>(), bs::One<p_t>()))));
-  STF_EXPECT(bs::all(bs::is_positive(bs::rem(bs::floor, bs::Zero<p_t>(), bs::One<p_t>()))));
-  STF_IEEE_EQUAL(bs::rem(bs::floor, bs::Mzero<p_t>(), bs::One<p_t>()), bs::Zero<p_t>());
-  STF_IEEE_EQUAL(bs::rem(bs::floor, bs::Zero<p_t>(), bs::One<p_t>()), bs::Zero<p_t>());
+  STF_EXPECT(bs::all(bs::is_negative(bs::pedantic_(bs::rem)(bs::floor, bs::Mzero<p_t>(), bs::One<p_t>()))));
+  STF_EXPECT(bs::all(bs::is_positive(bs::pedantic_(bs::rem)(bs::floor, bs::Zero<p_t>(), bs::One<p_t>()))));
+  STF_IEEE_EQUAL(bs::pedantic_(bs::rem)(bs::floor, bs::Mzero<p_t>(), bs::One<p_t>()), bs::Zero<p_t>());
+  STF_IEEE_EQUAL(bs::pedantic_(bs::rem)(bs::floor, bs::Zero<p_t>(), bs::One<p_t>()), bs::Zero<p_t>());
  #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_IEEE_EQUAL(bs::rem(bs::floor, bs::Inf<p_t>(), bs::Inf<p_t>()), bs::Nan<p_t>());
-  STF_IEEE_EQUAL(bs::rem(bs::floor, bs::Minf<p_t>(), bs::Minf<p_t>()), bs::Nan<p_t>());
-  STF_IEEE_EQUAL(bs::rem(bs::floor, bs::Nan<p_t>(), bs::Nan<p_t>()), bs::Nan<p_t>());
-  STF_IEEE_EQUAL(bs::rem(bs::floor, bs::Inf<p_t>(), bs::One<p_t>()), bs::Nan<p_t>());
-  STF_IEEE_EQUAL(bs::rem(bs::floor, bs::One<p_t>(), bs::Zero<p_t>()), bs::Nan<p_t>());
-  STF_IEEE_EQUAL(bs::rem(bs::floor, bs::Zero<p_t>(), bs::Zero<p_t>()), bs::Nan<p_t>());
+  STF_IEEE_EQUAL(bs::pedantic_(bs::rem)(bs::floor, bs::Inf<p_t>(), bs::Inf<p_t>()), bs::Nan<p_t>());
+  STF_IEEE_EQUAL(bs::pedantic_(bs::rem)(bs::floor, bs::Minf<p_t>(), bs::Minf<p_t>()), bs::Nan<p_t>());
+  STF_IEEE_EQUAL(bs::pedantic_(bs::rem)(bs::floor, bs::Nan<p_t>(), bs::Nan<p_t>()), bs::Nan<p_t>());
+  STF_IEEE_EQUAL(bs::pedantic_(bs::rem)(bs::floor, bs::Inf<p_t>(), bs::One<p_t>()), bs::Nan<p_t>());
+  STF_IEEE_EQUAL(bs::pedantic_(bs::rem)(bs::floor, bs::One<p_t>(), bs::Zero<p_t>()), bs::Nan<p_t>());
+  STF_IEEE_EQUAL(bs::pedantic_(bs::rem)(bs::floor, bs::Zero<p_t>(), bs::Zero<p_t>()), bs::Nan<p_t>());
 #endif
 
 }

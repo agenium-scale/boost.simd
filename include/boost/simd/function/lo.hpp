@@ -16,24 +16,27 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-bitwise
-    Function object implementing lo capabilities
-
-    Returns the low part of the entry
+    This function object returns the low part of the entry
     as an unsigned integer of the size of
     the input.
 
-    @par semantic:
-    For any given value @c x of type @c T:
-
-    @code
-    as_integer_t<T,unsigned> r = lo(x);
-    @endcode
-
     @see  hi
+
+
+
+    @par Header <boost/simd/function/lo.hpp>
+
+   @par Example:
+
+     @snippet lo.cpp lo
+
+   @par Possible output:
+
+     @snippet lo.txt lo
+
   **/
-  Value lo(Value const & v0);
+  Value lo(Value const & x);
 } }
 #endif
 

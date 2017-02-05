@@ -1,0 +1,12 @@
+//! [if_else_allbits]
+---- simd
+ <- pf =                               (3, 0, -3, -0)
+ <- qf =                               (3, 0.5, -3, 1)
+ -> bs::if_else_allbits(pf, qf) =      (3, -nan, -3, -nan)
+---- scalar
+ xf =                                  3
+ yf =                                  0
+ zf =                                  5
+ -> bs::if_else_allbits(xf, zf) =      5
+ -> bs::if_else_allbits(yf, zf) =      -1
+//! [if_else_allbits]

@@ -18,22 +18,24 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-arithmetic
-    Function object implementing sqr capabilities
+    This function computes the square of its parameter.
 
-    Computes the square of its parameter.
+    @par Header <boost/simd/function/sqr.hpp>
 
-    @par semantic:
-    For any given value @c x of type @c T:
+    @par Decorators
 
-    @code
-    T r = sqr(x);
-    @endcode
+    - saturated_ for integer entries ensure that sqr(x) is never strictly less than x
 
-    is equivalent to:
+    @see sqrt, sqr_abs
 
-    @code
-    T r = x*x;
-    @endcode
+    @par Example:
+
+       @snippet sqr.cpp sqr
+
+    @par Possible output:
+
+       @snippet sqr.txt sqr
+
 
   **/
   Value sqr(Value const & v0);

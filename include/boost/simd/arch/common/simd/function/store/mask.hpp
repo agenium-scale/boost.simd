@@ -33,7 +33,7 @@ namespace boost { namespace simd { namespace ext
     }
 
     template<typename... N>
-    static BOOST_FORCEINLINE void do_(const Src& s, Pointer const& p, brigand::list<N...> const&)
+    static BOOST_FORCEINLINE void do_(const Src& s, Pointer const& p, nsm::list<N...> const&)
     {
       auto const& m = p.mask();
       auto const& q = p.get();

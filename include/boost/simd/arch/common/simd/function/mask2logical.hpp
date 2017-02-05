@@ -36,12 +36,12 @@ namespace boost { namespace simd { namespace ext
       return do_(a0, typename is_bitwise_logical<A0>::type{});
     }
 
-    BOOST_FORCEINLINE result_t do_(const A0& a0, std::true_type const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE result_t do_(const A0& a0, tt::true_type const&) const BOOST_NOEXCEPT
     {
       return bitwise_cast<result_t>(a0);
     }
 
-    BOOST_FORCEINLINE result_t do_(const A0& a0, std::false_type const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE result_t do_(const A0& a0, tt::false_type const&) const BOOST_NOEXCEPT
     {
       return a0 != 0;
     }

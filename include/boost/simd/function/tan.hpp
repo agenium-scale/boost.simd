@@ -16,27 +16,32 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing tan capabilities
+    This function object returns the tangent of the input in radians:
+    \f$\sin(x)/\cos(x)\f$.
 
-    tangent of the input in radians: \f$\sin(x)/\cos(x)\f$.
 
-    @par Semantic:
+    @par Header <boost/simd/function/tan.hpp>
 
-    For every parameter of floating type
+   @par Note
 
-    @code
-    auto r = tan(x);
-    @endcode
+      -  As most other trigonometric function tan can be called with a second
+       optional parameter  which is a tag on speed and accuracy
+       (see @ref cos for further details)
 
-    As most other trigonometric function tan can be called with a second optional parameter
-    which is a tag on speed and accuracy (see @ref cos for further details)
+   @see tand, tanpi
 
-    @see tand, tanpi
+
+   @par Example:
+
+     @snippet tan.cpp tan
+
+   @par Possible output:
+
+     @snippet tan.txt tan
 
   **/
-  Value tan(Value const & v0);
+  Value tan(Value const & x);
 } }
 #endif
 

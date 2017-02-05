@@ -11,13 +11,14 @@
 #include <simd_test.hpp>
 
 namespace bs = boost::simd;
+namespace tt = nsm::type_traits;
 
 template <typename T, int N, typename Env>
-void test(Env&, std::false_type const&)
+void test(Env&, tt::false_type const&)
 {}
 
 template <typename T, int N, typename Env>
-void test(Env& $, std::true_type const& = {})
+void test(Env& $, tt::true_type const& = {})
 {
   using p_t = bs::pack<T, N>;
 
@@ -45,7 +46,7 @@ STF_CASE_TPL("Check interleave_first on pack", STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<T, N  >($, brigand::bool_<(N>1)>());
+  test<T, N  >($, nsm::bool_<(N>1)>());
   test<T, N/2>($);
   test<T, N*2>($);
 }

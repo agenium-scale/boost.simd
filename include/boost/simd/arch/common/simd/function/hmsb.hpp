@@ -40,7 +40,7 @@ namespace boost { namespace simd { namespace ext
     }
 
     template<typename... N>
-    BOOST_FORCEINLINE void do_(const A0& a0, result_t& r, brigand::list<N...> const&) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE void do_(const A0& a0, result_t& r, nsm::list<N...> const&) const BOOST_NOEXCEPT
     {
       (void)(std::initializer_list<bool>{(piece<N>(a0,r),true)...});
     }

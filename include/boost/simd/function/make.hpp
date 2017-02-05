@@ -18,6 +18,9 @@ namespace boost { namespace simd
     @ingroup group-swar
     Build a value of type @c T from a list of scalar values of types @c Args
 
+
+    @par Header <boost/simd/function/make.hpp>
+
     @par Scalar Semantic
     For any type @c T and value @c x of type @c T:
     @code
@@ -44,6 +47,11 @@ namespace boost { namespace simd
     @return A value of type @c T built from each args.
   **/
   template<typename T, typename.. Args> T make(Args const&... args);
+  
+  /*!
+    @overload
+  **/
+  template<typename Target, typename.. Value> T make(as_<Target> const& t, Value const&... args);
 } }
 #endif
 

@@ -12,35 +12,28 @@
 #define BOOST_SIMD_FUNCTION_CUMMIN_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+namespace boost {
+namespace simd {
 
- /*!
+/*!
+   @ingroup group-reduction
+   This function object computes the cumulate minimum of the argument elements
 
-    @ingroup group-reduction
-    Function object implementing cummin capabilities
 
-    Computes the cumulate minimum of the vector elements
+    @par Header <boost/simd/function/cummin.hpp>
 
-    @par Semantic:
+  @par Example:
 
-    For every pack parameter of type @c T
+    @snippet cummin.cpp cummin
 
-    @code
-    auto r = cummin(x);
-    @endcode
+  @par Possible output:
 
-    is similar to:
+    @snippet cummin.txt cummin
 
-    @code
-    auto  r = x;
-    for(int i=1;i < T::static_size; ++i)
-      r[i] = min(r[i-1], r[i]);
-    @endcode
-
-  **/
-  Value cummin(Value const & v0);
-} }
+ **/
+Value cummin(Value const &x);
+}
+}
 #endif
 
 #include <boost/simd/function/scalar/cummin.hpp>

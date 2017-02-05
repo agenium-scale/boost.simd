@@ -43,8 +43,5 @@ configure_file(layout.xml.in layout.xml @ONLY)
 
 ## Add `doc` target
 ## -------------------------------------------------------------------------------------------------
-add_custom_target(doc
-  COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
-  COMMENT "Generating documentation"
-  VERBATIM
-)
+
+include(../cmake/ns/doc/doxygen.cmake)

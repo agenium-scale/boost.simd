@@ -20,8 +20,8 @@ void test(Env& $)
   T a1[N], a2[N];
   for(std::size_t i = 0; i < N; ++i)
   {
-    a1[i] = (i%2) ? T(i) : T(i+1);
-    a2[i] = (i%2) ? T(i+1) : T(2*(i+1));
+    a1[i] = T(1)+T(i+1)/2;
+    a2[i] = T(1+T(i+1));
   }
   p_t aa1(&a1[0], &a1[0]+N);
   p_t aa2(&a2[0], &a2[0]+N);

@@ -1,0 +1,74 @@
+---
+BasedOnStyle: LLVM
+---
+Language: Cpp
+Standard: Cpp11
+
+UseTab: Never
+TabWidth: 2
+IndentWidth: 2
+ColumnLimit: 100
+
+DerivePointerAlignment: false
+PointerBindsToType: true
+PointerAlignment: Left
+
+AccessModifierOffset: 0 # public:, private:, protected:
+
+AlignAfterOpenBracket: true
+AlignConsecutiveAssignments: true
+AlignTrailingComments: true
+
+AllowShortFunctionsOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+
+AlwaysBreakTemplateDeclarations: true
+
+BinPackParameters: false
+
+BreakBeforeBraces: Custom
+# {
+BraceWrapping:
+    AfterClass: true
+    AfterStruct: true
+    AfterControlStatement: false
+    AfterEnum: true
+    AfterFunction: true
+    AfterNamespace: false
+    #AfterObjCDeclaration: true
+    AfterUnion: true
+    BeforeCatch: false
+    BeforeElse: false
+    #IndentBraces: true
+# }
+BreakBeforeTernaryOperators: true
+
+IncludeCategories:
+ - Regex: '^(<|")boost/simd/'
+   Priority: 1
+ - Regex: '^(<|")boost/'
+   Priority: 2
+ - Regex: '.\*'
+   Priority: 3
+
+BreakConstructorInitializersBeforeComma: true
+#ConstructorInitializerAllOnOneLineOrOnePerLine: true
+ConstructorInitializerIndentWidth: 2
+
+ContinuationIndentWidth: 2
+#Cpp11BracedListStyle: false
+IndentCaseLabels: true # switch (..) { .. }
+#IndentFunctionDeclarationAfterType: false
+
+KeepEmptyLinesAtTheStartOfBlocks: true
+MaxEmptyLinesToKeep: 1
+NamespaceIndentation: None
+
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeParens: ControlStatements
+SpaceInEmptyParentheses: false
+SpacesBeforeTrailingComments: 1
+SpacesInAngles: false
+SpacesInCStyleCastParentheses: false
+SpacesInParentheses: false

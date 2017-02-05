@@ -12,37 +12,34 @@
 #define BOOST_SIMD_FUNCTION_COMPARE_NOT_EQUAL_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
-  /*!
-    @ingroup group-reduction
-    Function object implementing compare_not_equal capabilities
+namespace boost {
+namespace simd {
+/*!
+  @ingroup group-reduction
+  This function object returns a logical scalar that is the result of the
+lexicographic
+  test for != on elements of the entries,
+  i.e. returns @ref True if and only if two corresponding entries
+  elements are not equal.
 
-    Returns a logical scalar that is the result of the lexicographic
-    test for != on elements of the entries,
-    i.e. return @ref True if and only if two corresponding entries
-    elements are not equal.
+  It is probably not what you wish. Have a look to @ref is_not_equal
 
-    It is probably not what you wish. Have a look to @ref is_not_equal
 
-    @par Semantic:
 
-    For every parameters of type T0:
+    @par Header <boost/simd/function/compare_not_equal.hpp>
 
-    @code
-    bool r = compare_not_equal(x,y);
-    @endcode
+ @par Example:
 
-    is similar to:
+   @snippet compare_not_equal.cpp compare_not_equal
 
-    @code
-    bool r = any(x != y);
-    @endcode
+ @par Possible output:
 
-    @see is_not_equal
-  **/
-  bool compare_not_equal(Value const& v0, Value const& v1);
-} }
+   @snippet compare_not_equal.txt compare_not_equal
+
+**/
+bool compare_not_equal(Value const &x, Value const &y);
+}
+}
 #endif
 
 #include <boost/simd/function/scalar/compare_not_equal.hpp>

@@ -16,27 +16,22 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-bitwise
-    Function object implementing bits capabilities
+    This function object returns an unsigned integer value which has the same bits as the input
 
-    Returns an unsigned integer value which has the same bits as the input
 
-    @par semantic:
-    For any given value @c x of type @c T:
+    @par Header <boost/simd/function/bits.hpp>
 
-    @code
-    T r = bits(x);
-    @endcode
+   @par Example:
 
-    is equivalent to:
+     @snippet bits.cpp bits
 
-    @code
-    as_integer_t<T,unsigned> r = bitwise_cast< as_integer_t<T,unsigned>>(x);
-    @endcode
+   @par Possible output:
+
+     @snippet bits.txt bits
 
   **/
-  as_integer_t<T, unsigned> bits(Value const & v0);
+  as_integer_t<T, unsigned> bits(Value const & x);
 } }
 #endif
 

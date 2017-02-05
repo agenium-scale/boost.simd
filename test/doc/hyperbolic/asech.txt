@@ -1,0 +1,8 @@
+//! [asech]
+---- simd
+<- pf =           (1, 0, -1, 0.5)
+-> bs::asech(pf) = (0, inf, -nan, 1.31696)
+---- scalar
+<- xf =           2
+-> bs::asech(xf) = -nan
+//! [asech]

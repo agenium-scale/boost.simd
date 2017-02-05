@@ -23,6 +23,9 @@ namespace boost { namespace simd
 
     Infix notation can be used with operator '*',
 
+
+    @par Header <boost/simd/function/multiplies.hpp>
+
     @par Semantic
 
     For any value @c a and @c b of type @c T,

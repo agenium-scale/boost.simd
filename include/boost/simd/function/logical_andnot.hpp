@@ -16,32 +16,24 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-boolean
-    Function object implementing logical_andnot capabilities
+    This function object returns the logical and of the first argument and of
+    the logical negation of the second argument.
 
     The operands must share the same @ref cardinal_of value.
 
-    return the logical and of the first parameter and of the negation the second parameter.
+    The result type is logical type associated to the first argument.
 
-    The operands must share the same @ref cardinal_of value.
 
-    The result type is logical type associated to the first parameter.
+    @par Header <boost/simd/function/logical_andnot.hpp>
 
-    @par Semantic:
+   @par Example:
 
-    @code
-    auto r = logical_andnot(x,y);
-    @endcode
+     @snippet logical_andnot.cpp logical_andnot
 
-    is similar to:
+   @par Possible output:
 
-    @code
-    auto r = x && !y;
-    @endcode
-
-    @see  logical_or, logical_xor, logical_notand,
-    logical_and, logical_notor, logical_ornot, logical_not
+     @snippet logical_andnot.txt logical_andnot
 
   **/
   as_logical_t<Value0> logical_andnot(Value0 const& x, Value1 const& y);

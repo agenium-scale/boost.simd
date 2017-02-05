@@ -24,7 +24,7 @@
 
 int main()
 {
-  namespace bs = boost::simd;
+  namespace bs   = boost::simd;
   int image_size = 2560 * 2560;
   std::vector<std::int16_t, bs::allocator<std::int16_t>> image(image_size);
   std::vector<std::int16_t, bs::allocator<std::int16_t>> binary(image_size);

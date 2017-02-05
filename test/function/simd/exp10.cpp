@@ -13,6 +13,16 @@
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
 #include <simd_test.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/mzero.hpp>
+#include <boost/simd/constant/ten.hpp>
+#include <boost/simd/constant/true.hpp>
+#include <boost/simd/function/is_flint.hpp>
 
 template <typename T, std::size_t N, typename Env>
 void test(Env& $)
@@ -40,3 +50,33 @@ STF_CASE_TPL("Check exp10 on pack" , STF_IEEE_TYPES)
   test<T, N/2>($);
   test<T, N*2>($);
 }
+
+
+STF_CASE_TPL ("exp10",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  using bs::exp10;
+  using p_t = bs::pack<T>;
+
+  using r_t = decltype(exp10(p_t()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, p_t);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_ULP_EQUAL(exp10(bs::Inf<p_t>()), bs::Inf<r_t>(), 0);
+  STF_ULP_EQUAL(exp10(bs::Minf<p_t>()), bs::Zero<r_t>(), 0);
+  STF_ULP_EQUAL(exp10(bs::Nan<p_t>()), bs::Nan<r_t>(), 0);
+#endif
+  STF_ULP_EQUAL(exp10(bs::Mone<p_t>()), r_t(1.0/10), 0.75);
+  STF_ULP_EQUAL(exp10(bs::One<p_t>()), bs::Ten<r_t>(), 0.75);
+  STF_ULP_EQUAL(exp10(bs::Zero<p_t>()), bs::One<r_t>(), 0.75);
+
+  for(int i=0; i < 30 ; i++)
+  {
+    STF_EQUAL(bs::is_flint(exp10(p_t(i))), bs::True<p_t>());
+  }
+}
+
+

@@ -12,36 +12,33 @@
 #define BOOST_SIMD_FUNCTION_NBTRUE_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+namespace boost {
+namespace simd {
 
- /*!
+/*!
+   @ingroup group-reduction
+   This function object returns the number of non @ref Zero elements of the
+ argument.
 
-    @ingroup group-reduction
-    Function object implementing nbtrue capabilities
 
-    Returns the number of non @ref Zero elements of the input SIMD vector.
+    @par Header <boost/simd/function/nbtrue.hpp>
 
-    @par Semantic:
+   @par Note
 
-    For every parameter of type T
+   This function is peculiarly useful in horizontal branching idioms.
 
-    @code
-    std::size_t r = nbtrue(x);
-    @endcode
+  @par Example:
 
-    is similar to:
+    @snippet nbtrue.cpp nbtrue
 
-    @code
-    std::size_t r = sum(if_one_else_zero(x));
-    @endcode
+  @par Possible output:
 
-    @par Note
+    @snippet nbtrue.txt nbtrue
 
-    This function is peculiarly useful in horizontal branching idioms.
-  **/
-  std::size_t nbtrue(Value const & x);
-} }
+ **/
+std::size_t nbtrue(Value const &x);
+}
+}
 #endif
 
 #include <boost/simd/function/scalar/nbtrue.hpp>

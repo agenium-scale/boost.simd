@@ -23,6 +23,9 @@ namespace boost { namespace simd
     calls a version of the functor for which the algorithm is inspired by the musl
     library code.
 
+
+    @par Header <boost/simd/function/musl.hpp>
+
     @par Semantic
 
     @code

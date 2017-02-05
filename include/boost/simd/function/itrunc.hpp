@@ -22,7 +22,11 @@ namespace boost { namespace simd
 
     Convert to integer by saturated truncation.
 
-    This is a convenience alias of @ref saturated_(toint)
+    This is an alias of @ref saturated_(toint)
+
+    @par Header <boost/simd/function/itrunc.hpp>
+
+    @see ifix
   **/
   Value itrunc(Value const & v0);
 } }

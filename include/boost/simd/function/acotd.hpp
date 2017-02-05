@@ -16,27 +16,31 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing acotd capabilities
+    This function object returns the inverse cotangent in degree.
 
-    inverse cotangent in degree.
 
-    @par Semantic:
+    @par Header <boost/simd/function/acotd.hpp>
 
-    For every parameter of floating type
+   @par Note
 
-    @code
-    auto r = acotd(x);
-    @endcode
+      For every parameter of floating type `acotd(x)`
+      returns the arc @c r in the interval  \f$[0, 180[\f$ such that
+      <tt>cotd(r) == x</tt>.
 
-    Returns the arc @c r in the interval
-    \f$[0, 180[\f$ such that <tt>cotd(r) == x</tt>.
+   @see acot, acotpi, cotd
 
-    @see acot, acotpi, cotd
+
+   @par Example:
+
+     @snippet acotd.cpp acotd
+
+   @par Possible output:
+
+     @snippet acotd.txt acotd
 
   **/
-  Value acotd(Value const & v0);
+  Value acotd(Value const & x);
 } }
 #endif
 

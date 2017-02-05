@@ -14,12 +14,13 @@
 #include <boost/simd/meta/as_arithmetic.hpp>
 #include <boost/simd/detail/traits.hpp>
 #include <boost/simd/logical.hpp>
-#include <type_traits>
+#include <boost/simd/detail/nsm.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
- namespace bd = boost::dispatch;
- namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  namespace bs = boost::simd;
+  namespace tt = nsm::type_traits;
 
   BOOST_DISPATCH_OVERLOAD_IF ( bitwise_cast_
                              , (typename A0, typename A1, typename X)
@@ -80,17 +81,17 @@ namespace boost { namespace simd { namespace ext
 
     BOOST_FORCEINLINE result_t operator()(A0 const& a0, A1 const& ) const BOOST_NOEXCEPT
     {
-      return do_(a0, typename std::is_same<A0, result_t>::type());
+      return do_(a0, typename tt::is_same<A0, result_t>::type());
     }
 
-    BOOST_FORCEINLINE result_t do_(A0 const& a0, std::false_type ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE result_t do_(A0 const& a0, tt::false_type ) const BOOST_NOEXCEPT
     {
       using a_t = bs::as_arithmetic_t<A0>;
       using r_t = bs::as_arithmetic_t<result_t>;
       return bitwise_cast<r_t>(bitwise_cast<a_t>(a0)).storage() ;
     }
 
-    BOOST_FORCEINLINE result_t do_(A0 const& a0, std::true_type const& ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE result_t do_(A0 const& a0, tt::true_type const& ) const BOOST_NOEXCEPT
     {
       return a0;
     }

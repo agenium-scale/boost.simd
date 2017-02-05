@@ -1,0 +1,8 @@
+//! [gamma]
+---- simd
+<- pf =            (1, 2, -1.5, 0.5)
+-> bs::gamma(pf) = (1, 1, 2.36327, 1.77245)
+---- scalar
+<- xf =            2
+-> bs::gamma(xf) = 1
+//! [gamma]

@@ -16,31 +16,27 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-boolean
-    Function object implementing if_minus capabilities
+    This function object conditionally returns @c x-y (respectively @c x)  if @c c is @ref True
+    (respectively  @ref False)
 
-    The function returns the second entry or the difference of the
-    second and third entries, according to the first entry being @ref False
-    or @ref True
 
-    @par Semantic:
+    @par Header <boost/simd/function/if_minus.hpp>
 
-    For every parameters @c c of type @c C and @c x, @c y of type @c T:
+   @par Example:
 
-    @code
-    T1 r = if_minus(c, x, y);
-    @endcode
+     @snippet if_minus.cpp if_minus
 
-    is similar to:
+   @par Possible output:
 
-    @code
-    T1 r = c ? x-y : x;
-    @endcode
+     @snippet if_minus.txt if_minus
+
   **/
   Value if_minus(Value const& c, Value const& x, Value const&  y);
 
-  //@overload
+  /*!
+    @overload
+  */
   Value if_minus(LogicalValue const& c, Value const& x, Value const& y);
 } }
 #endif

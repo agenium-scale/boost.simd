@@ -1,0 +1,10 @@
+//! [if_one_else_zero]
+---- simd
+ <- pf =                           (3, 0, -3, -0)
+ -> bs::if_one_else_zero(pf) = (1, 0, 1, 0)
+---- scalar
+ xf =                              3
+ yf =                              0
+ -> bs::if_one_else_zero(xf) = 1
+ -> bs::if_one_else_zero(yf) = 0
+//! [if_one_else_zero]

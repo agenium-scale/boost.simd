@@ -21,11 +21,10 @@ void test(Env& $)
   namespace bd = boost::dispatch;
 
   using p_t = bs::pack<T, N>;
-  using iT = bd::as_integer_t<T>;
-  using i_t = bs::pack<iT, N>;
+  using p_t = bs::pack<T, N>;
 
   T a1[N], m[N];
-  iT e[N];
+  T e[N];
   for(std::size_t i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? T(i+N) : -T((i+N));
@@ -34,7 +33,7 @@ void test(Env& $)
   p_t aa1(&a1[0], &a1[0]+N);
   p_t mm1;
   p_t mm(&m[0], &m[0]+N);
-  i_t ee(&e[0], &e[0]+N), ee1;
+  p_t ee(&e[0], &e[0]+N), ee1;
   std::tie(ee1, mm1) = bs::rem_pio2_medium(aa1);
   STF_IEEE_EQUAL(ee1, ee);
   STF_IEEE_EQUAL(mm1, mm);

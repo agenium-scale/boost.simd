@@ -16,30 +16,24 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-boolean
-    Function object implementing logical_notand capabilities
-
-    return the logical and of the negation of the first parameter and the second parameter
+    This function object returns the logical and of the negation of the
+    first argument with the second argument
 
     The operands must share the same @ref cardinal_of value.
 
-    The result type is logical type associated to the first parameter.
+    The result type is logical type associated to the first argument.
 
-    @par Semantic:
 
-    @code
-    auto r = logical_notand(x,y);
-    @endcode
+    @par Header <boost/simd/function/logical_notand.hpp>
 
-    is similar to:
+   @par Example:
 
-    @code
-    auto r = !x && y;
-    @endcode
+     @snippet logical_notand.cpp logical_notand
 
-    @see  logical_or, logical_xor, logical_and,
-    logical_andnot, logical_notor, logical_ornot, logical_not
+   @par Possible output:
+
+     @snippet logical_notand.txt logical_notand
 
   **/
   as_logical_t<Value0> logical_notand(Value0 const& x, Value1 const& y);

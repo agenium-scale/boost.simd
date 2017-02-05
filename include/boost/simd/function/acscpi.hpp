@@ -16,25 +16,24 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing acscpi capabilities
+    This function object returns the inverse secant in \f$\pi\f$ multiples:
+    \f$(1/\pi) \arcsin(1/x)\f$.
 
-     inverse secant in degree: \f$(1/\pi) \arcsin(1/x)\f$.
+   @see acsc,  acscd
 
-    @par Semantic:
+    @par Header <boost/simd/function/acscpi.hpp>
 
-    For every parameter of floating type
+   @par Example:
 
-    @code
-    auto r = acscpi(x);
-    @endcode
+     @snippet acscpi.cpp acscpi
 
+   @par Possible output:
 
-    @see acsc, acscd, asinpi, sinpi
+     @snippet acscpi.txt acscpi
 
   **/
-  Value acscpi(Value const & v0);
+  Value acscpi(Value const & x);
 } }
 #endif
 

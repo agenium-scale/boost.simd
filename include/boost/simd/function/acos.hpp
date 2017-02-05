@@ -16,13 +16,13 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing acos capabilities
+    This function object returns the inverse cosine in radian.
 
-    inverse cosine in radian.
 
-    @par Semantic:
+    @par Header <boost/simd/function/acos.hpp>
+
+    @par Call
 
     For every parameter of floating type
 
@@ -36,12 +36,26 @@ namespace boost { namespace simd
 
     @par Decorators
 
-    std_ for floating entries provides access to std::acos
+    - std_           entries provides access to std::acos
+
+    - pedantic_      is accurate on the full \f$[-1, 1[\f$ range
+
+    - the regular version (no decorator) is less accurate around for x < 0.9
+      (up to circa 256 ulp), but is faster by a factor 2 than the pedantic version.
 
     @see acosd, acospi, cos
 
+
+   @par Example:
+
+     @snippet acos.cpp acos
+
+   @par Possible output:
+
+     @snippet acos.txt acos
+
   **/
-  Value acos(Value const & v0);
+  Value acos(Value const & x);
 } }
 #endif
 

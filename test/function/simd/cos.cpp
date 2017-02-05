@@ -11,7 +11,17 @@
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/std.hpp>
 #include <boost/simd/function/splat.hpp>
-
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/mzero.hpp>
+#include <boost/simd/constant/pi.hpp>
+#include <boost/simd/constant/pio_2.hpp>
+#include <boost/simd/constant/pio_4.hpp>
+#include <boost/simd/constant/sqrt_2o_2.hpp>
 
 namespace bs = boost::simd;
 
@@ -20,20 +30,17 @@ void test(Env& $)
 {
   using p_t = bs::pack<T, N>;
 
-  T a1[N], b[N], c[N];
+  T a1[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? T(i) : -T(i);
 
     b[i] = bs::cos(a1[i]) ;
-    c[i] = bs::std_(bs::cos)(a1[i]);
   }
 
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
-  p_t cc (&c[0], &c[0]+N);
   STF_ULP_EQUAL(bs::cos(aa1), bb, 0.5);
-  STF_ULP_EQUAL(bs::std_(bs::cos)(aa1), cc, 0.5);
 }
 
 STF_CASE_TPL("Check cos on pack" , STF_IEEE_TYPES)
@@ -41,7 +48,7 @@ STF_CASE_TPL("Check cos on pack" , STF_IEEE_TYPES)
   static const std::size_t N = bs::pack<T>::static_size;
 
   test<T, N>($);
-  test<T, N/2>($);
+//   test<T, N/2>($);
   test<T, N*2>($);
 }
 
@@ -51,20 +58,17 @@ void testcs(Env& $)
   namespace bst = bs::tag;
   using p_t = bs::pack<T, N>;
 
-  T a1[N], b[N], c[N];
+  T a1[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? T(i) : -T(i);
 
     b[i] = bs::cos(a1[i], bst::clipped_small_) ;
-    c[i] = bs::std_(bs::cos)(a1[i]);
   }
 
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
-  p_t cc (&c[0], &c[0]+N);
   STF_ULP_EQUAL(bs::cos(aa1, bst::clipped_small_), bb, 0.5);
-  STF_ULP_EQUAL(bs::std_(bs::cos)(aa1), cc, 0.5);
 }
 
 STF_CASE_TPL("Check cos cos clipped_small_ on pack" , STF_IEEE_TYPES)
@@ -82,20 +86,17 @@ void testcm(Env& $)
   namespace bst = bs::tag;
   using p_t = bs::pack<T, N>;
 
-  T a1[N], b[N], c[N];
+  T a1[N], b[N];
   for(std::size_t i = 0; i < N; ++i)
   {
     a1[i] = (i%2) ? T(i) : -T(i);
 
     b[i] = bs::cos(a1[i], bst::clipped_medium_) ;
-    c[i] = bs::std_(bs::cos)(a1[i]);
   }
 
   p_t aa1(&a1[0], &a1[0]+N);
   p_t bb (&b[0], &b[0]+N);
-  p_t cc (&c[0], &c[0]+N);
   STF_ULP_EQUAL(bs::cos(aa1, bst::clipped_medium_), bb, 0.5);
-  STF_ULP_EQUAL(bs::std_(bs::cos)(aa1), cc, 0.5);
 }
 
 STF_CASE_TPL("Check cos cos clipped_medium_ on pack" , STF_IEEE_TYPES)
@@ -108,4 +109,30 @@ STF_CASE_TPL("Check cos cos clipped_medium_ on pack" , STF_IEEE_TYPES)
 }
 
 
+STF_CASE_TPL (" cos",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::cos;
+  using p_t = bs::pack<T>;
 
+  using r_t = decltype(cos(p_t()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, p_t);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_ULP_EQUAL(cos(bs::Inf<p_t>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(bs::Minf<p_t>()), bs::Nan<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(bs::Nan<p_t>()), bs::Nan<r_t>(), 0.5);
+#endif
+  STF_ULP_EQUAL(cos(T(2.0)*bs::Pi<p_t>()), bs::One<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(-bs::Pi<p_t>()), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(-bs::Pio_2<p_t>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(-bs::Pio_4<p_t>()), bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(bs::Pi<p_t>()), bs::Mone<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(bs::Pio_2<p_t>()), bs::Zero<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(bs::Pio_4<p_t>()), bs::Sqrt_2o_2<r_t>(), 0.5);
+  STF_ULP_EQUAL(cos(bs::Zero<p_t>()), bs::One<r_t>(), 0.5);
+}

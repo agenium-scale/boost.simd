@@ -12,35 +12,28 @@
 #define BOOST_SIMD_FUNCTION_CUMMAX_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+namespace boost {
+namespace simd {
 
- /*!
+/*!
+   @ingroup group-reduction
+   This function object computes the cumulate maximum of the argument elements
 
-    @ingroup group-reduction
-    Function object implementing cummax capabilities
 
-    Computes the cumulate maximum of the vector elements
+    @par Header <boost/simd/function/cummax.hpp>
 
-    @par Semantic:
+  @par Example:
 
-    For every pack parameter of type @c T
+    @snippet cummax.cpp cummax
 
-    @code
-    T r = cummax(x);
-    @endcode
+  @par Possible output:
 
-    is similar to:
+    @snippet cummax.txt cummax
 
-    @code
-    T r =x;
-    for(int i=0;i < T::static_size; ++i)
-      r[i] = max(r[i-1], r[i]);
-    @endcode
-
-  **/
-  Value cummax(Value const & v0);
-} }
+ **/
+Value cummax(Value const &x);
+}
+}
 #endif
 
 #include <boost/simd/function/scalar/cummax.hpp>

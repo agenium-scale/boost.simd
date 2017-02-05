@@ -18,14 +18,11 @@
 #  if BOOST_HW_SIMD_X86_OR_AMD >= BOOST_HW_SIMD_X86_SSE_VERSION
 #    include <boost/simd/arch/x86/sse1/simd/function/rec.hpp>
 #  endif
+#  if BOOST_HW_SIMD_X86_OR_AMD >= BOOST_HW_SIMD_X86_SSE2_VERSION
+#    include <boost/simd/arch/x86/sse2/simd/function/rec.hpp>
+#  endif
 #  if BOOST_HW_SIMD_X86_OR_AMD >= BOOST_HW_SIMD_X86_AVX_VERSION
 #    include <boost/simd/arch/x86/avx/simd/function/rec.hpp>
-#  endif
-#endif
-
-#if defined(BOOST_HW_SIMD_PPC_AVAILABLE)
-#  if BOOST_HW_SIMD_PPC >= BOOST_HW_SIMD_PPC_VMX_VERSION
-#    include <boost/simd/arch/ppc/vmx/simd/function/rec.hpp>
 #  endif
 #endif
 

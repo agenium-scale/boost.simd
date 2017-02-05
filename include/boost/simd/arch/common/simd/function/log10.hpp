@@ -12,10 +12,17 @@
 #define BOOST_SIMD_ARCH_COMMON_SIMD_FUNCTION_LOG10_HPP_INCLUDED
 
 #include <boost/simd/detail/assert_utils.hpp>
-#include <boost/simd/function/simd/is_not_nan.hpp>
-#include <boost/simd/function/simd/is_positive.hpp>
-#include <boost/simd/function/simd/is_lez.hpp>
-#include <boost/simd/function/simd/any.hpp>
+#include <boost/simd/function/frexp.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/if_minus.hpp>
+#include <boost/simd/function/if_dec.hpp>
+#include <boost/simd/function/if_else_zero.hpp>
+#include <boost/simd/function/if_nan_else.hpp>
+#include <boost/simd/function/is_not_nan.hpp>
+#include <boost/simd/function/is_positive.hpp>
+#include <boost/simd/function/is_lez.hpp>
+#include <boost/simd/function/is_ngez.hpp>
+#include <boost/simd/function/any.hpp>
 #include <boost/simd/arch/common/detail/tags.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/config.hpp>
@@ -85,7 +92,7 @@ namespace boost { namespace simd { namespace ext
       if (any(test))
       {
         k = if_minus(test, k, iA0(25));
-        x = if_else(test, x*A0(0x1p25f), x);
+        x = if_else(test, x*A0(33554432ul), x); //2^25
       }
 #endif
       uiA0 ix = bitwise_cast<uiA0>(x);
@@ -121,7 +128,7 @@ namespace boost { namespace simd { namespace ext
 #else
       A0 zz = if_else(isnez, r, Minf<A0>());
 #endif
-      return if_nan_else(is_ltz(a0), zz);
+      return if_nan_else(is_ngez(a0), zz);
     }
   };
 
@@ -163,7 +170,7 @@ namespace boost { namespace simd { namespace ext
       if (any(test))
       {
         k = if_minus(test, k, iA0(54));
-        x = if_else(test, x*A0(0x1p54), x);
+        x = if_else(test, x*A0(18014398509481984ull), x); //2^54
       }
 #endif
       /* reduce x into [sqrt(2)/2, sqrt(2)] */
@@ -210,7 +217,7 @@ namespace boost { namespace simd { namespace ext
 #else
       A0 zz = if_else(isnez, r, Minf<A0>());
 #endif
-      return if_nan_else(is_ltz(a0), zz);
+      return if_nan_else(is_ngez(a0), zz);
     }
   };
 
@@ -241,26 +248,23 @@ namespace boost { namespace simd { namespace ext
         log10_2hi( 3.0102920532e-01), /* 0x3e9a2080 */
         log10_2lo( 7.9034151668e-07); /* 0x355427db */
       using uiA0 = bd::as_integer_t<A0, unsigned>;
-      using iA0 = bd::as_integer_t<A0,   signed>;
       A0 x = a0;
-      iA0 k(0);
+      A0 dk = Zero<A0>();
       auto isnez = is_nez(a0);
 #ifndef BOOST_SIMD_NO_DENORMALS
       auto test = is_less(a0, Smallestposval<A0>())&&isnez;
       if (any(test))
       {
-        k = if_minus(test, k, iA0(25));
-        x = if_else(test, x*A0(0x1p25f), x);
+        dk = if_minus(test, dk, A0(25));
+        x = if_else(test, x*A0(33554432ul), x);
       }
 #endif
       /* reduce x into [sqrt(2)/2, sqrt(2)] */
-      iA0 kk;
-      std::tie(x, kk) = fast_(frexp)(a0);
-      A0  x_lt_sqrthf = genmask(is_greater(Sqrt_2o_2<A0>(), x));
-      k += kk + bitwise_cast<iA0>(x_lt_sqrthf);
-      A0 f = dec(x+bitwise_and(x, x_lt_sqrthf));
-      A0 dk = tofloat(k);
-
+      A0 kk;
+      std::tie(x, kk) = frexp(a0);
+      auto  x_lt_sqrthf = (is_greater(Sqrt_2o_2<A0>(), x));
+      dk += if_dec(x_lt_sqrthf, kk);
+      A0 f = dec(x+if_else_zero(x_lt_sqrthf, x));
       A0 s = f/(2.0f + f);
       A0 z = sqr(s);
       A0 w = sqr(z);
@@ -272,7 +276,6 @@ namespace boost { namespace simd { namespace ext
       A0  hi = f - hfsq;
       hi =  bitwise_and(hi, uiA0(0xfffff000ul));
       A0  lo = fma(s, hfsq+R, f - hi - hfsq);
-//      A0 r = ((((dk*log10_2lo + (lo+hi)*ivln10lo) + lo*ivln10hi) + hi*ivln10hi) + dk*log10_2hi);
       A0 r = fma(dk, log10_2hi,
                  fma(hi, ivln10hi,
                      fma(lo, ivln10hi,
@@ -286,7 +289,7 @@ namespace boost { namespace simd { namespace ext
 #else
       A0 zz = if_else(isnez, r, Minf<A0>());
 #endif
-      return if_nan_else(is_ltz(a0), zz);
+      return if_nan_else(is_ngez(a0), zz);
     }
   };
 
@@ -317,28 +320,24 @@ namespace boost { namespace simd { namespace ext
         log10_2hi(3.01029995663611771306e-01), /* 0x3FD34413, 0x509F6000 */
         log10_2lo(3.69423907715893078616e-13); /* 0x3D59FEF3, 0x11F12B36 */
       using uiA0 = bd::as_integer_t<A0, unsigned>;
-      using iA0 = bd::as_integer_t<A0,   signed>;
       A0 x = a0;
-      uiA0 hx = bitwise_cast<uiA0>(x) >> 32;
-      iA0 k(0);
+      A0 dk = Zero<A0>();
       auto isnez = is_nez(a0);
 
 #ifndef BOOST_SIMD_NO_DENORMALS
       auto test = is_less(a0, Smallestposval<A0>())&&isnez;
       if (any(test))
       {
-        k = if_minus(test, k, iA0(54));
-        x = if_else(test, x*A0(0x1p54), x);
+        dk = if_minus(test, dk, A0(54));
+        x = if_else(test, x*A0(18014398509481984ull), x);
       }
 #endif
       /* reduce x into [sqrt(2)/2, sqrt(2)] */
-      iA0 kk;
-      std::tie(x, kk) = fast_(frexp)(a0);
-      A0  x_lt_sqrthf = genmask(is_greater(Sqrt_2o_2<A0>(), x));
-      k += kk + bitwise_cast<iA0>(x_lt_sqrthf);
-      A0 f = dec(x+bitwise_and(x, x_lt_sqrthf));
-      A0 dk = tofloat(k);
-
+      A0 kk;
+      std::tie(x, kk) = frexp(a0);
+      auto  x_lt_sqrthf = (is_greater(Sqrt_2o_2<A0>(), x));
+      dk += if_dec(x_lt_sqrthf, kk);
+      A0 f = dec(x+if_else_zero(x_lt_sqrthf, x));
       A0 s = f/(2.0f + f);
       A0 z = sqr(s);
       A0 w = sqr(z);
@@ -347,9 +346,6 @@ namespace boost { namespace simd { namespace ext
                       , 0x3fc7466496cb03dell, 0x3fc2f112df3e5244ll> (w);
       A0 R = t2 + t1;
       A0 hfsq = Half<A0>()*sqr(f);
-      //      A0 r = -(hfsq-(s*(hfsq+R))-f)*Invlog_10<A0>()+dk*Log_2olog_10<A0>(); // fast ?
-
-      /* hi+lo = f - hfsq + s*(hfsq+R) ~ log(1+f) */
       A0  hi = f - hfsq;
       hi =  bitwise_and(hi, (Allbits<uiA0>() << 32));
       A0 lo = f - hi - hfsq + s*(hfsq+R);
@@ -375,7 +371,7 @@ namespace boost { namespace simd { namespace ext
 #else
       A0 zz = if_else(isnez, r, Minf<A0>());
 #endif
-      return if_nan_else(is_ltz(a0), zz);
+      return if_nan_else(is_ngez(a0), zz);
     }
   };
 

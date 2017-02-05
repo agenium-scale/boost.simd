@@ -26,6 +26,9 @@ namespace boost { namespace simd
    integers are not promoted  during current arithmetic operations and this increases the
    overflow risks.
 
+
+    @par Header <boost/simd/function/saturated.hpp>
+
    @par Semantic
 
     @code

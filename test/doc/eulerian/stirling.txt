@@ -1,0 +1,8 @@
+//! [stirling]
+---- simd
+<- pd =               (170, 2, 35, 10)
+-> bs::stirling(pd) = (4.26907e+304, 1, 2.95233e+38, 362880)
+---- scalar
+<- xf =               40
+-> bs::stirling(xf) = 2.03979e+46
+//! [stirling]

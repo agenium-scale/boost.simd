@@ -9,7 +9,6 @@
 //==================================================================================================
 #include <boost/simd/function/ldexp.hpp>
 #include <boost/simd/function/std.hpp>
-#include <boost/simd/function/fast.hpp>
 #include <scalar_test.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/constant/inf.hpp>
@@ -28,7 +27,8 @@
 #include <boost/simd/constant/smallestposval.hpp>
 #include <boost/simd/function/scalar/dec.hpp>
 
-STF_CASE_TPL("ldexp", STF_IEEE_TYPES)
+
+STF_CASE_TPL("ldexp ", STF_IEEE_TYPES)
 {
   namespace bs = boost::simd;
   namespace bd = boost::dispatch;
@@ -45,36 +45,9 @@ STF_CASE_TPL("ldexp", STF_IEEE_TYPES)
   STF_EQUAL(ldexp(bs::Minf<T>(), 2), bs::Minf<r_t>());
   STF_IEEE_EQUAL(ldexp(bs::Nan<T>(),  2), bs::Nan<r_t>());
 #endif
-
   STF_EQUAL(ldexp(bs::Mone<T>(), 2), -bs::Four<r_t>());
   STF_EQUAL(ldexp(bs::One<T>(),  2), bs::Four<r_t>());
   STF_EQUAL(ldexp(bs::Zero<T>(), 2), bs::Zero<r_t>());
   STF_EQUAL(ldexp(bs::One <T>(), bs::Minexponent<T>()), bs::Smallestposval<r_t>());
   STF_EQUAL(ldexp(bs::One<T>()-bs::Halfeps<T>(),  bs::Maxexponent<T>()), bs::Valmax<T>()/2);
-  STF_EQUAL(ldexp(bs::One<T>()-bs::Halfeps<T>(),  bs::Limitexponent<T>()), bs::Valmax<T>());
-
-#ifndef BOOST_SIMD_NO_DENORMALS
-  using bs::dec;
-  STF_EQUAL(ldexp(bs::One <T>(), dec(bs::Minexponent<T>())), bs::Smallestposval<T>()/2);
-  STF_EQUAL(ldexp(bs::Two <T>(), dec(bs::Minexponent<T>())), bs::Smallestposval<T>());
-  STF_EQUAL(ldexp(bs::Two <T>(), dec(bs::Minexponent<T>()-1)), bs::Smallestposval<T>()/2);
-  STF_EQUAL(ldexp(bs::One <T>(), bs::Minexponent<T>()-5), bs::Smallestposval<T>()/32);
-#endif
 }
-
-STF_CASE_TPL("ldexp", STF_INTEGRAL_TYPES)
-{
-  namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
-  using bs::ldexp;
-  using iT = bd::as_integer_t<T>;
-  using r_t = decltype(ldexp(T(), iT()));
-
-  // return type conformity test
-  STF_TYPE_IS(r_t, T);
-
-  STF_EQUAL(ldexp(bs::One <T>(), 2), r_t(4));
-  STF_EQUAL(ldexp(bs::Three<T>(), 2), r_t(12));
-  STF_EQUAL(ldexp(bs::Mone<T>(), 2), r_t(-4));
-}
-

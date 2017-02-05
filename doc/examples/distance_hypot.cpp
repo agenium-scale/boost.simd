@@ -1,15 +1,16 @@
 //! [distance-hypot-all]
+#include <algorithm>
 #include <chrono>
 #include <iostream>
-#include <algorithm>
 #include <vector>
+#include <limits>
 
 #include <boost/simd/function/aligned_load.hpp>
 #include <boost/simd/function/aligned_store.hpp>
-#include <boost/simd/function/fast.hpp>
 #include <boost/simd/function/hypot.hpp>
-#include <boost/simd/pack.hpp>
+#include <boost/simd/function/pedantic.hpp>
 #include <boost/simd/memory/allocator.hpp>
+#include <boost/simd/pack.hpp>
 
 int main(int argc, char** argv)
 {
@@ -26,16 +27,18 @@ int main(int argc, char** argv)
   std::vector<T, bs::allocator<T>> distance2(num_points);
   std::vector<T, bs::allocator<T>> distance3(num_points);
 
-  std::generate(X.begin(), X.end(), [](){return T(std::rand()) / std::numeric_limits<int>::max();});
-  std::generate(Y.begin(), Y.end(), [](){return T(std::rand()) / std::numeric_limits<int>::max();});
+  std::generate(X.begin(), X.end(),
+                []() { return T(std::rand()) / std::numeric_limits<int>::max(); });
+  std::generate(Y.begin(), Y.end(),
+                []() { return T(std::rand()) / std::numeric_limits<int>::max(); });
 
   T refX = 0, refY = 0;
 
   auto t0 = high_resolution_clock::now();
   //! [distance-hypot-scalar]
   for (int i = 0; i < num_points; ++i) {
-    auto x = refX - X[i];
-    auto y = refY - Y[i];
+    auto x       = refX - X[i];
+    auto y       = refY - Y[i];
     distance0[i] = std::hypot(refX - X[i], refY - Y[i]);
   }
   //! [distance-hypot-scalar]
@@ -51,7 +54,7 @@ int main(int argc, char** argv)
   for (int i = 0; i < num_points; i += pack_t::static_size) {
     pack_t vX  = bs::aligned_load<pack_t>(&X[i]);
     pack_t vY  = bs::aligned_load<pack_t>(&Y[i]);
-    pack_t res = bs::hypot(vrefX - vX, vrefY - vY);
+    pack_t res = bs::pedantic_(bs::hypot)(vrefX - vX, vrefY - vY);
     bs::aligned_store(res, &distance1[i]);
   }
   //! [distance-hypot-calc]
@@ -64,12 +67,12 @@ int main(int argc, char** argv)
   for (int i = 0; i < num_points; i += pack_t::static_size) {
     pack_t vX  = bs::aligned_load<pack_t>(&X[i]);
     pack_t vY  = bs::aligned_load<pack_t>(&Y[i]);
-    pack_t res = bs::fast_(bs::hypot)(vrefX - vX, vrefY - vY);
+    pack_t res = bs::hypot(vrefX - vX, vrefY - vY);
     bs::aligned_store(res, &distance2[i]);
   }
   ////! [distance-hypot-fast-hypot]
   t1 = high_resolution_clock::now();
-  std::cout << " time SIMD fast hypot " << duration_cast<microseconds>(t1 - t0).count() << std::endl;
+  std::cout << " time SIMD fast hypot " << duration_cast<microseconds>(t1 - t0).count()
+            << std::endl;
 }
 //! [distance-hypot-all]
-

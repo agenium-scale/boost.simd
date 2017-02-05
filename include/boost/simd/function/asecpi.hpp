@@ -16,24 +16,26 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing asecpi capabilities
+    This function object returns the inverse secant in \f$\pi\f$ multiples:
+    \f$(1/\pi) \arccos(1/x)\f$.
 
-     inverse secant in \$f\pi\$f multiples: \f$(1/\pi) \arccos(1/x)\f$.
+   @see asec, asecd, cospi, acospi
 
-    @par Semantic:
 
-    For every parameter of floating type
 
-    @code
-    auto r = asecpi(x);
-    @endcode
+    @par Header <boost/simd/function/asecpi.hpp>
 
-    @see asec, asecd, cospi, acospi
+   @par Example:
+
+     @snippet asecpi.cpp asecpi
+
+   @par Possible output:
+
+     @snippet asecpi.txt asecpi
 
   **/
-  Value asecpi(Value const & v0);
+  Value asecpi(Value const & x);
 } }
 #endif
 

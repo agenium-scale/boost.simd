@@ -16,27 +16,25 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-exponential
-    Function object implementing pow_abs capabilities
+    This function object computes \f$|x|^y\f$.
 
-    Computes \f$|x|^y\f$.
+     @par Header <boost/simd/function/pow_abs.hpp>
 
-    @par Semantic:
+    @par Decorators
 
-    For every parameters of floating type  T:
-
-    @code
-    T r = pow_abs(x, y);
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = pow(abs(x), y);
-    @endcode
+    - raw_  is faster but can be inaccurate.
 
     @see pow, abs
+
+
+   @par Example:
+
+     @snippet pow_abs.cpp pow_abs
+
+   @par Possible output:
+
+     @snippet pow_abs.txt pow_abs
 
   **/
   Value pow_abs(Value const & x, Value const& y);

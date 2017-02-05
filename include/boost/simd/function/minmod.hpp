@@ -18,23 +18,24 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-arithmetic
-    Function object implementing minmod capabilities
+    This function object computes the smallest of its parameterif they share the same sign,
+    zero instead..
 
-    Return the minimum of the two entries
-    if they have the same sign, otherwise 0
 
-    @par semantic:
-    For any given value @c x,  @c y of type @c T:
+    @par Header <boost/simd/function/minmod.hpp>
 
-    @code
-    T r = minmod(x, y);
-    @endcode
+    @par Notes
+    Using `minmod(x, y)` is similar to ` x*y > 0 ? min(x, y) : 0`
 
-    is similar to:
+    @see min, minnum, minnummag, minmag
 
-    @code
-    T r =  x*y > 0 ? min(x, y) : 0;
-    @endcode
+    @par Example:
+
+       @snippet minmod.cpp minmod
+
+    @par Possible output:
+
+       @snippet minmod.txt minmod
 
   **/
   Value minmod(Value const & x, Value const& y);

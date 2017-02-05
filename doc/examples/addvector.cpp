@@ -46,26 +46,15 @@ int main()
   }
   //! [avx-simd-loop]
 
-  //! [vmx-simd-loop]
-  std::size_t card_vmx = 4;
-  for (int i = 0; i < size; i += card_vmx) {
-    vector float v0_ibm = vec_ld(i, &data0[0]);
-    vector float v1_ibm = vec_ld(i, &data1[0]);
-    vector float r_ibm  = vec_add(v0_ibm, v1_ibm);
-
-    vec_st(r_ibm, i, &res[0]);
-  }
-  //! [vmx-simd-loop]
-
   //! [bs-simd-loop]
   for (int i = 0; i < size; i += boost::simd::pack<float>::static_size) {
     boost::simd::pack<float> v0(&data0[i]), v1(&data1[i]);
-    bs::aligned_store(v0 + v1, &res[i]);
+    boost::simd::aligned_store(v0 + v1, &res[i]);
   }
   //! [bs-simd-loop]
 
   //! [bs-simd-transform]
-  boost::simd::transform(&data[0], &data[0] + size, &data1[0], &res[0], boost::simd::plus);
+  boost::simd::transform(&data0[0], &data0[0] + size, &data1[0], &res[0], boost::simd::plus);
 //! [bs-simd-transform]
 
 #if __cplusplus >= 201402L

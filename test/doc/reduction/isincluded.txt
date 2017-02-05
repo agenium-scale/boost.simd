@@ -1,0 +1,6 @@
+//! [isincluded]
+---- simd
+<- pi =                     (1, 2, 5, 2)
+<- qi =                     (1, 7, -1, 3)
+-> bs::isincluded(pi, qi) = 1
+//! [isincluded]

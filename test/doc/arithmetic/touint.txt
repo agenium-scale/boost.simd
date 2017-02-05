@@ -1,0 +1,16 @@
+//! [touint]
+---- simd
+<- pf =                        (-1, 2.6, 3.4, inf)
+-> bs::touint(pf) =             (4294967295, 2, 3, 0)
+-> saturated_(bs::touint)(pf) = (0, 2, 3, 4294967295)
+<- pi =                        (-1, 2, 3, 32767)
+-> bs::touint(pi) =             (65535, 2, 3, 32767)
+-> saturated_(bs::touint)(pi) = (0, 2, 3, 32767)
+---- scalar
+<- xf =                        -2.5
+-> bs::touint(xf) =             0
+-> saturated_(bs::touint)(xf) = 0
+<- xi =                        -1
+-> bs::touint(xi) =             65535
+-> saturated_(bs::touint)(xi) = 0
+//! [touint]

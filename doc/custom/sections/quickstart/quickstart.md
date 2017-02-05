@@ -23,25 +23,18 @@ as the `BOOST_ROOT` environment variable.
 
 -----------------------------------------
 
-The installation of **@projectname** is done in two steps:
+The installation of **@projectname** is done by retrieving the current status of the library by cloning the repository. This is done via the following command:
 
-  - retrieve the current status of the library by cloning the repository. THis is done via the
-    following command:
+  `git clone https://github.com/NumScale/boost.simd.git`
 
-    `git clone https://github.com/NumScale/boost.simd.git`
+By default, the `develop` branch is fetched. As this branch contains the latest code,
+you may change this branch to `master` to fetch the latest stable version:
 
-    By default, the `develop` branch is fetched. As this branch contains the latest code,
-    you may change this branch to `master` to fetch the latest stable version:
+  `git clone https://github.com/NumScale/boost.simd.git -b master`
 
-    `git clone https://github.com/NumScale/boost.simd.git -b master`
-
-    In case you need to use an old **@projectname** release, please see the
-    [Release pages](https://github.com/NumScale/boost.simd/releases) to select the one
-    you're interested in.
-
-  - Setup the repository to grab a local copy of the documentation:
-
-    `git submodule init && git submodule update`
+In case you need to use an old **@projectname** release, please see the
+[Release pages](https://github.com/NumScale/boost.simd/releases) to select the one
+you're interested in.
 
 The **@projectname** library is now accessible by including files from the `include` directory
 in this repository. In the rest of this documentation, we will refer to the path where your
@@ -115,7 +108,33 @@ from AVX code using SSE intrinsics.
 effect in conjunction with @projectname depends on the code. Feel free to try it and use it if it
 improves your performances.}
 
-@section next What's Next ?
+@subsection cmake-compilation Compiling using CMake
+
+**@projectname** can be used along with **CMake** using `find_package`:
+
+    ## CMake requirements
+    cmake_minimum_required(VERSION 2.8)
+
+    ## Look for installed @projectname
+    find_package(@projectname)
+
+    ## Add @projectname directories to tell CMake where to find them
+    include_directories(${"@projectname@_INCLUDE_DIRS"})
+
+    ## Create your executable
+    add_executable(foobar foobar.cpp)
+
+**@projectname** MUST BE installed on your system, otherwise `find_package` won't be able to find it.
+Please refer to the
+[**CMake**'s documentation](https://cmake.org/cmake/help/v3.6/command/find_package.html) for more
+details about `find_package`.
+
+@notebox{
+    You can modify the `CMAKE_MODULE_PATH` to help **CMake** find your @projectname if you installed it
+    on a different folder than the default ones.
+}
+
+@section  whatsnext What's Next ?
 
 -------------------------------------
 

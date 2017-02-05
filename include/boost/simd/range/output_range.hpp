@@ -46,7 +46,9 @@ namespace boost { namespace simd
                                       );
   }
 
-  /// @overload
+  /*!
+    @overload
+  */
   template<class Iterator> inline
   boost::iterator_range< detail::output_iterator<Iterator> >
   output_range( Iterator begin, Iterator end )
@@ -77,7 +79,9 @@ namespace boost { namespace simd
     return output_range<C>( boost::begin(r), boost::end(r) );
   }
 
-  /// @overload
+  /*!
+    @overload
+  */
   template<class Range> inline
   boost::iterator_range<detail::output_iterator<typename range_iterator<Range>::type> >
   output_range( Range& r )

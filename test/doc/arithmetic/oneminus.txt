@@ -1,0 +1,14 @@
+//! [oneminus]
+---- simd
+<- pf =                                (-1, 2, -3, -32768)
+-> bs::oneminus(pf) =                  (2, -1, 4, 32769)
+<- pi =                                (0, 65535, 2, 3)
+-> bs::oneminus(pi) =                  (1, 2, 65535, 65534)
+-> bs::saturated_(bs::oneminus(pi)) =  (1, 0, 0, 0)
+---- scalar
+<- xf =                                -327
+-> bs::oneminus(xf) =                  328
+<- xi =                                2
+-> bs::oneminus(xi) =                  65535
+-> bs::saturated_(bs::oneminus(xi)) =  0
+//! [oneminus]

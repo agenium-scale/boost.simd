@@ -16,34 +16,23 @@ namespace boost { namespace simd
 {
   /*!
     @ingroup group-ieee
-    Computes the distance between its argument and the next representable value of its argument type.
+    This object function computes the distance between its argument and the next
+    representable value of its argument type.
 
-    @par Semantic:
-
-    For every parameter of type @c T
-
-    @code
-    T r = eps(x);
-    @endcode
-
-    is similar to:
-
-    @code
-    T  r = pow(2,exponent(x))*Eps<T>();
-    @endcode
-
-    if @c T is a floating-point type and to :
-
-    @code
-    T r = 1;
-    @endcode
-
-    if @c T is an integral type.
-
-    @param  x Base value for epsilon computation.
-    @return The distance between @c x and its next representable value.
 
     @see ulp, ulpdist, Eps
+
+
+    @par Header <boost/simd/function/eps.hpp>
+
+   @par Example:
+
+     @snippet eps.cpp eps
+
+   @par Possible output:
+
+     @snippet eps.txt eps
+
 **/
   Value eps(Value const & x);
 

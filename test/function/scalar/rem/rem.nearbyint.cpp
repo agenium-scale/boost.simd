@@ -17,6 +17,8 @@
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/constant/zero.hpp>
 #include <boost/simd/constant/three.hpp>
+#include <boost/simd/function/is_positive.hpp>
+#include <boost/simd/function/is_negative.hpp>
 
 STF_CASE_TPL (" remainder real",  STF_IEEE_TYPES)
 {
@@ -73,18 +75,20 @@ STF_CASE_TPL (" rem nearbyint fast",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::nearbyint, bs::Inf<T>(), bs::Inf<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::nearbyint, bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::nearbyint, bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::nearbyint, bs::Inf<T>(), bs::One<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::nearbyint, bs::Minf<T>(), bs::One<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::nearbyint, bs::One<T>(), bs::Zero<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::nearbyint, bs::Zero<T>(), bs::Zero<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::pedantic_(rem)(bs::nearbyint, bs::Inf<T>(), bs::Inf<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::pedantic_(rem)(bs::nearbyint, bs::Minf<T>(), bs::Minf<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::pedantic_(rem)(bs::nearbyint, bs::Nan<T>(), bs::Nan<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::pedantic_(rem)(bs::nearbyint, bs::Inf<T>(), bs::One<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::pedantic_(rem)(bs::nearbyint, bs::Minf<T>(), bs::One<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::pedantic_(rem)(bs::nearbyint, bs::One<T>(), bs::Zero<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::pedantic_(rem)(bs::nearbyint, bs::Zero<T>(), bs::Zero<T>()), bs::Nan<T>());
 #endif
-  STF_EQUAL(bs::fast_(rem)(bs::nearbyint, bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
-  STF_EQUAL(bs::fast_(rem)(bs::nearbyint, bs::One<T>(), bs::One<T>()), bs::Zero<T>());
-  STF_EQUAL(bs::fast_(rem)(bs::nearbyint, bs::Two<T>(), bs::Three<T>()), bs::Mone<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::nearbyint, bs::Two<T>(), bs::Zero<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::nearbyint, bs::Two<T>(), bs::Mzero<T>()), bs::Nan<T>());
-  STF_IEEE_EQUAL(bs::fast_(rem)(bs::nearbyint, bs::Zero<T>(), bs::One<T>()), bs::Zero<T>());
+  STF_EQUAL(bs::pedantic_(rem)(bs::nearbyint, bs::Mone<T>(), bs::Mone<T>()), bs::Zero<T>());
+  STF_EQUAL(bs::pedantic_(rem)(bs::nearbyint, bs::One<T>(), bs::One<T>()), bs::Zero<T>());
+  STF_EQUAL(bs::pedantic_(rem)(bs::nearbyint, bs::Two<T>(), bs::Three<T>()), bs::Mone<T>());
+  STF_IEEE_EQUAL(bs::pedantic_(rem)(bs::nearbyint, bs::Two<T>(), bs::Zero<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::pedantic_(rem)(bs::nearbyint, bs::Two<T>(), bs::Mzero<T>()), bs::Nan<T>());
+  STF_IEEE_EQUAL(bs::pedantic_(rem)(bs::nearbyint, bs::Zero<T>(), bs::One<T>()), bs::Zero<T>());
+  STF_EXPECT(bs::is_negative(bs::pedantic_(rem)(bs::floor,-T(0), T(1))));
+  STF_EXPECT(bs::is_positive(bs::pedantic_(rem)(bs::floor,T(0), T(1))));
 } // end of test for signed_int_

@@ -18,33 +18,43 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-arithmetic
-    Function object implementing fnms capabilities
+    This function object computes the negated (fused) multiply substract of
+    its three parameters.
 
-    Computes the fused substract-multiply of three value.
 
-    @par semantic:
-    For any given value @c x,  @c y,  @c z of type @c T:
+    @par Header <boost/simd/function/fnms.hpp>
 
-    @code
-    T r = fnms(x, y, z);
-    @endcode
+    @par Notes
+    The call `fnms(a, b, c)` is similar to `-a*b+c`
 
-    The code is similar to:
+    But really conformant fused multiply/add also implies
 
-    @code
-    T r = -(x*y-s);
-    @endcode
+    - only one rounding
 
-    @par Note:
+    - no "intermediate" overflow
 
-    fnms can be called with the same modalities as @ref fma
-    and can use the decorator conformant_ to ensure the correct
-    one rounding, no intermediate overflow  behaviour
+    fnms provides this for all integral types and also each time it is reasonable
+    in terms of performance for floating ones (i.e. if the system has the hard
+    wired capability).
 
-    @see  fms, fma, fnma
+    If you need pedantic fnms capabilities in all circumstances in your own
+    code you can use the pedantic_ decorator (can be very expensive).
+
+     @par Decorators
+    - pedantic_ ensures the fnms properties and allows SIMD acceleration if available.
+
+    @see fms, fma, fnma
+
+    @par Example:
+
+       @snippet fnms.cpp fnms
+
+    @par Possible output:
+
+       @snippet fnms.txt fnms
 
   **/
-  Value fnms(Value const& v0, Value const& v1, Value const& v2);
+  Value fnms(Value const& a, Value const& b, Value const& c);
 } }
 #endif
 

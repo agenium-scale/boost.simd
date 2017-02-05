@@ -1,0 +1,10 @@
+//! [shift_right]
+---- simd
+<- pi =              (1, 2, -1, 3)
+<- qi =              (1, 2, 4, 3)
+-> bs::shift_right(pi, qi) = (0, 0, -1, 0)
+---- scalar
+<- xi =              2
+<- yi =              3
+-> bs::shift_right(xi, yi) = 0
+//! [shift_right]

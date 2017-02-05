@@ -13,7 +13,46 @@
 #include <sstream>
 #include <cstdlib>
 #include <string>
+#include <algorithm>
+#include <limits>
 #include <boost/config.hpp>
+
+// Detect stupid ICC/G++ combos
+#if defined(BOOST_INTEL_GCC_VERSION) && (BOOST_INTEL_GCC_VERSION < 40600)
+# include <boost/utility/declval.hpp>
+# include <boost/range.hpp>
+
+namespace stf {
+ namespace type_traits = boost;
+ namespace detail {
+  using boost::declval;
+  using nullptr_t = decltype(nullptr);
+
+  template<typename RGenFct> struct URNGConv
+  {
+    int operator()(int) { return fct(); }
+    RGenFct fct;
+  };
+  template<typename RandomIt, typename RGenFct>
+  void shuffle(RandomIt const& begin, RandomIt const& end, RGenFct&& r)
+  {
+    URNGConv<RGenFct> wrp({r});
+    std::random_shuffle(begin, end, wrp);
+  }
+
+#else
+# include <utility>
+# include <iterator>
+namespace stf {
+ namespace type_traits = std;
+ namespace detail {
+  using std::declval;
+  using nullptr_t = std::nullptr_t;
+  using std::shuffle;
+#endif
+ }
+}
+
 namespace stf
 {
   namespace detail
@@ -281,7 +320,7 @@ namespace stf
     environment.compact(is_compact);
     if(auto seed = args("random",0u))
     {
-      std::shuffle( tests.begin(), tests.end(), std::mt19937{seed} );
+     detail::shuffle( tests.begin(), tests.end(), std::mt19937{seed} );
     }
     for(auto& t : tests )
     {
@@ -329,14 +368,14 @@ namespace stf { namespace detail
   template<typename T> struct is_container
   {
     template<typename U>
-    static auto test( int ) -> decltype ( std::declval<U>().begin()
-                                        , std::declval<U>().end()
-                                        , std::declval<U>().size()
-                                        , std::true_type()
+    static auto test( int ) -> decltype ( declval<U>().begin()
+                                        , declval<U>().end()
+                                        , declval<U>().size()
+                                        , type_traits::true_type()
                                         );
     template<typename>
-    static auto test( ... ) -> std::false_type;
-    typedef std::is_same<decltype(test<T>(0)),std::true_type> type;
+    static auto test( ... ) -> type_traits::false_type;
+    typedef std::is_same<decltype(test<T>(0)),type_traits::true_type> type;
   };
   template <typename T, typename R>
   using if_container = typename std::enable_if<is_container<T>::type::value,R>::type;
@@ -381,12 +420,12 @@ namespace stf { namespace detail
   template<typename T> struct is_streamable
   {
     template<typename U>
-    static auto test( int ) -> decltype ( std::cout << std::declval<U>()
-                                        , std::true_type()
+    static auto test( int ) -> decltype ( std::cout << declval<U>()
+                                        , type_traits::true_type()
                                         );
     template<typename>
-    static auto test( ... ) -> std::false_type;
-    typedef std::is_same<decltype(test<T>(0)),std::true_type> type;
+    static auto test( ... ) -> type_traits::false_type;
+    typedef std::is_same<decltype(test<T>(0)),type_traits::true_type> type;
   };
   template <typename T, typename R>
   using if_streamable = typename std::enable_if<is_streamable<T>::type::value,R>::type;
@@ -400,7 +439,7 @@ namespace stf { namespace detail
 #include <iomanip>
 namespace stf
 {
-  inline std::string to_string( std::nullptr_t )        { return "nullptr";             }
+  inline std::string to_string( detail::nullptr_t )     { return "nullptr";             }
   inline std::string to_string( bool v )                { return v ? "true" : "false";  }
   inline std::string to_string( std::string const& v )  { return v;                     }
   inline std::string to_string( char const* v )         { return std::string(v);        }

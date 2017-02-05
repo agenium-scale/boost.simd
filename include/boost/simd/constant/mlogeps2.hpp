@@ -49,8 +49,7 @@ namespace boost { namespace simd
 } }
 #endif
 
-#include <boost/simd/constant/definition/mlogeps2.hpp>
-#include <boost/simd/arch/common/scalar/constant/constant_value.hpp>
-#include <boost/simd/arch/common/simd/constant/constant_value.hpp>
+#include <boost/simd/constant/scalar/mlogeps2.hpp>
+#include <boost/simd/constant/simd/mlogeps2.hpp>
 
 #endif

@@ -18,13 +18,24 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-arithmetic
-    Function object implementing ifix capabilities
+    This function object convert to integer by saturated truncation.
 
-    Convert to integer by saturated truncation.
+    This is an alias of @ref saturated_(toint)
 
-    This is a convenience alias of @ref saturated_(toint)
+
+    @par Header <boost/simd/function/ifix.hpp>
+
+    @par Example:
+
+       @snippet ifix.cpp ifix
+
+    @par Possible output:
+
+       @snippet ifix.txt ifix
+
+
   **/
-  Value ifix(Value const & v0);
+  Value ifix(Value const & x);
 } }
 #endif
 

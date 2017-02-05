@@ -1,5 +1,7 @@
 SIMD Branching {#tutorial-branching}
 =========
+<div style="text-align: right;" markdown="1">Prev: [Writing a dot product the SIMD Way](@ref tutorial-dot)</div>
+<div style="text-align: right;" markdown="1">Next: [SIMD Branching Part 2 - Computations with different types](@ref tutorial-branching-split)</div>
 
 @tableofcontents
 In this tutorial we will examine how to handle branches in SIMD programs.
@@ -44,3 +46,6 @@ in its correct location in memory.
 Here is a full code, should you wish to try it:
 
 @snippet thresholding.cpp threshold
+
+<div style="text-align: right;" markdown="1">Prev: [Writing a dot product the SIMD Way](@ref tutorial-dot)</div>
+<div style="text-align: right;" markdown="1">Next: [SIMD Branching Part 2 - Computations with different types](@ref tutorial-branching-split)</div>

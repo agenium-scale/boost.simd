@@ -18,9 +18,10 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-hyperbolic
-    Function object implementing sinhcosh capabilities
+    This function object computes simultaneously the sinh and cosh of the input
 
-    Computes simultaneously the sinh and cosh of the input
+
+    @par Header <boost/simd/function/sinhcosh.hpp>
 
     @par Semantic:
 
@@ -40,8 +41,16 @@ namespace boost { namespace simd
 
     @see  sinh, cosh
 
+    @par Example:
+
+       @snippet sinhcosh.cpp sinhcosh
+
+    @par Possible output:
+
+       @snippet sinhcosh.txt sinhcosh
+
   **/
-  std::pair<Value, Value> sinhcosh(Value const & v0);
+  std::pair<Value, Value> sinhcosh(Value const & x);
 } }
 #endif
 

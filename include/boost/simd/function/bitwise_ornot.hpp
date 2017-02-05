@@ -16,32 +16,21 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-bitwise
-    Function object implementing bitwise_ornot capabilities
-
-    Computes the bitwise or not of its parameters.
-
+    This function object computes the bitwise or not of its parameters.
     The operands must share the same bit size.
-
     The result type is the one of the first operand.
 
-    @par semantic:
-    For any given value @c x, of type @c T0, @c y of type @c T1
-    of same memory size:
 
-    @code
-    T0 r = bitwise_ornot(x, y);
-    @endcode
+    @par Header <boost/simd/function/bitwise_ornot.hpp>
 
-    The code is equivalent to:
+   @par Example:
 
-    @code
-    T0 r = x | ~y;
-    @endcode
+     @snippet bitwise_ornot.cpp bitwise_ornot
 
-    @see  bitwise_and, bitwise_xor, bitwise_notand,
-    bitwise_andnot, bitwise_notor, bitwise_ornot, complement
+   @par Possible output:
+
+     @snippet bitwise_ornot.txt bitwise_ornot
 
   **/
   T0 bitwise_ornot(T0 const &x, T1 const& y);

@@ -1,0 +1,13 @@
+//! [arg]
+---- simd
+ <- pf =                         (-1, -0, 0, 1, nan, -nan, inf, -inf)
+ -> bs::arg(pf) =                (3.14159, 3.14159, 0, 0, 0, 3.14159, 0, 3.14159)
+ <- pf =                         (-1, -0, 0, 1, nan, -nan, inf, -inf)
+ -> bs::pedantic_(bs::arg)(pf) = (3.14159, 3.14159, 0, 0, -nan, -nan, 0, 3.14159)
+scalar
+---- scalar
+ <- xf =                         1
+ -> bs::arg(xf) =                0
+ <- yf =                         -1
+ -> bs::arg(yf) =                3.14159
+//! [arg]

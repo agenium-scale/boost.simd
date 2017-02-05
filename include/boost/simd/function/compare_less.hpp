@@ -12,40 +12,31 @@
 #define BOOST_SIMD_FUNCTION_COMPARE_LESS_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
-  /*!
-    @ingroup group-reduction
-    Function object implementing compare_less capabilities
+namespace boost {
+namespace simd {
+/*!
+  @ingroup group-reduction
+  This function object returns a logical scalar that is the result of the
+lexicographic
+  test for < on all elements of the entries
 
-    Returns a logical scalar that is the result of the lexicographic
-    test for < on all elements of the entries
+  It is probably not what you wish. Have a look to @ref is_less
 
-    It is probably not what you wish. Have a look to @ref is_less
 
-    @par Semantic:
+    @par Header <boost/simd/function/compare_less.hpp>
 
-    For every parameters of type T0:
+  @par Example:
 
-    @code
-    bool r = compare_less(x,y);
-    @endcode
+   @snippet compare_less.cpp compare_less
 
-    is similar to:
+ @par Possible output:
 
-    @code
-    bool r = false;
-    for(std::size_t i=0;i<cardinal_of<A0>;++i)
-    {
-      if (x[i] <  y[i])  {r =  true; break;}
-      if (y[i] <  x[i])  {r = false; break;}
-    }
-    @endcode
+   @snippet compare_less.txt compare_less
 
-    @see is_less
-  **/
-    bool compare_less(Value const& v0, Value const& v1);
-} }
+**/
+bool compare_less(Value const &x, Value const &y);
+}
+}
 #endif
 
 #include <boost/simd/function/scalar/compare_less.hpp>

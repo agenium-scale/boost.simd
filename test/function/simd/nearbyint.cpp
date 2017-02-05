@@ -17,6 +17,18 @@
 #include <boost/simd/function/is_positive.hpp>
 #include <boost/simd/constant/mzero.hpp>
 #include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/mzero.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/half.hpp>
+#include <boost/simd/constant/mhalf.hpp>
+#include <boost/simd/constant/true.hpp>
+#include <boost/simd/function/is_negative.hpp>
+#include <boost/simd/function/is_positive.hpp>
 
 template <typename T, int N, typename Env>
 void test(Env& $)
@@ -65,3 +77,33 @@ STF_CASE_TPL("Check nearbyint on halfs" , STF_IEEE_TYPES)
   STF_EXPECT(bs::is_negative(nearbyint(bs::Mzero<T>())));
   STF_EXPECT(bs::is_positive(nearbyint(bs::Zero<T>())));
 }
+
+
+STF_CASE_TPL ( "nearbyint real",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::nearbyint;
+  using p_t = bs::pack<T>;
+  using r_t = decltype(nearbyint(p_t()));
+
+  // return type conformity test
+  STF_TYPE_IS( r_t, p_t );
+
+  // specific values tests
+  STF_IEEE_EQUAL(nearbyint(p_t(1.4)), p_t(1));
+  STF_IEEE_EQUAL(nearbyint(p_t(1.5)), p_t(2));
+  STF_IEEE_EQUAL(nearbyint(p_t(1.6)), p_t(2));
+  STF_IEEE_EQUAL(nearbyint(p_t(2.5)), p_t(2));
+  STF_IEEE_EQUAL(nearbyint(bs::Half<p_t>()), bs::Zero<r_t>());
+  STF_IEEE_EQUAL(nearbyint(bs::Inf<p_t>()), bs::Inf<r_t>());
+  STF_IEEE_EQUAL(nearbyint(bs::Mhalf<p_t>()), bs::Zero<r_t>());
+  STF_IEEE_EQUAL(nearbyint(bs::Minf<p_t>()), bs::Minf<r_t>());
+  STF_IEEE_EQUAL(nearbyint(bs::Mone<p_t>()), bs::Mone<r_t>());
+  STF_IEEE_EQUAL(nearbyint(bs::Nan<p_t>()), bs::Nan<r_t>());
+  STF_IEEE_EQUAL(nearbyint(bs::One<p_t>()), bs::One<r_t>());
+  STF_IEEE_EQUAL(nearbyint(bs::Zero<p_t>()), bs::Zero<r_t>());
+  STF_IEEE_EQUAL(nearbyint(bs::Nan<p_t>()), bs::Nan<r_t>());
+  STF_EQUAL(bs::is_negative(nearbyint(bs::Mzero<p_t>())), bs::True<r_t>());
+  STF_EQUAL(bs::is_positive(nearbyint(bs::Zero<p_t>())), bs::True<r_t>());
+} // end of test for floating_

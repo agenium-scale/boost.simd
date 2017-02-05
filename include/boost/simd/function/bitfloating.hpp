@@ -16,32 +16,33 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-ieee
-    Function object implementing bitfloating capabilities
+    This function object  transforms an integer value to a floating point one
+    with a preserving order formula. This function is the converse of @ref bitinteger.
 
-    Transform a pattern of bits stored in an integer value
-    in a floating point with different formulas according to
-    the integer @ref bitofsign value.
 
-    This function is the converse of @ref bitinteger
 
-    @par Semantic:
-
-    for any parameter @c x of integral type @c T
-
-    @code
-    as_floating_t<T> r = bitfloating(x);
-    @endcode
+    @par Header <boost/simd/function/bitfloating.hpp>
 
     @par Note:
-    This is an internal used utility function related to the computation of
-    floating successors or predecessors.
+    This  function is  related to the computation of
+    floating successors or predecessors as the ordering of the integers obtained
+    by @c bifloating is the same as the original order on the floating elements,
+    an increment can be used to find the successor.
 
     @see next, prev, successor,  predecessor,  nextafter, bitinteger
 
+
+    @par Example:
+
+       @snippet bitfloating.cpp bitfloating
+
+    @par Possible output:
+
+       @snippet bitfloating.txt bitfloating
+
   **/
-  as_floating_t<T> bitfloating(Value const & v0);
+  as_floating_t<Value> bitfloating(IntegerValue const & x);
 } }
 #endif
 

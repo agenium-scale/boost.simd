@@ -17,6 +17,9 @@ namespace boost { namespace simd
     @ingroup group-swar
     Returns a boost::simd::pack filled with the value of the @c N th value of its argument.
 
+
+    @par Header <boost/simd/function/broadcast.hpp>
+
     @par Scalar Semantic:
     For any value @c v of type @c T and any integral constant @c I, the following code:
 

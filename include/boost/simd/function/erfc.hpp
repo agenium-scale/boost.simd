@@ -16,33 +16,29 @@ namespace boost { namespace simd
 
  /*!
   @ingroup group-euler
-    Function object implementing erfc capabilities
-
-  Computes the complementary error function
+   This fFunction object computes the complementary error function
    \f$\displaystyle \frac{2}{\sqrt\pi}\int_{x}^{\infty} e^{-t^2}\mbox{d}t\f$
 
-  @par Semantic:
 
-  For every parameter of floating type T
 
-  @code
-  T r = erfc(x);
-  @endcode
-
-  is similar to:
-
-  @code
-  T0 r = oneminus(erf(x));
-  @endcode
+    @par Header <boost/simd/function/erfc.hpp>
 
   @par Decorators
 
-  std_ for floating entries provides access to @c std::erfc
+   - std_ calls @c std::erfc
 
-  @see erf, erfcx, oneminus
+  @see erf, erfcx
 
+
+    @par Example:
+
+       @snippet erfc.cpp erfc
+
+    @par Possible output:
+
+       @snippet erfc.txt erfc
   **/
-  Value erfc(Value const & v0);
+  Value erfc(Value const & x);
 } }
 #endif
 

@@ -18,33 +18,43 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-arithmetic
-    Function object implementing fms capabilities
+    This function object computes the (fused) multiply substract of these three parameters.
 
-    Computes the fused  substract-multiply of three values.
 
-    @par semantic:
-    For any given value @c x,  @c y,  @c z of type @c T:
+    @par Header <boost/simd/function/fms.hpp>
 
-    @code
-    T r = fms(x, y, z);
-    @endcode
+    @par Notes
+    The call `fms(a, b, c)` is similar to `a*b-c
 
-    The code is similar to:
+    But really conformant fused multiply/add also implies
 
-    @code
-    T r = x*y-z;
-    @endcode
+    - only one rounding
 
-    @par Note:
+    - no "intermediate" overflow
 
-    fms can be called with the same modalities as @ref fma
-    and can use the decorator conformant_ to ensure the correct
-    one rounding, no intermediate overflow  behaviour
+    fms provides this for all integral types and also each time it is reasonable
+    in terms of performance for floating ones (i.e. if the system has the hard
+    wired capability).
+
+    If you need pedantic fms capabilities in all circumstances in your own
+    code you can use the pedantic_ decorator (can be very expensive).
+
+     @par Decorators
+
+    - pedantic_ ensures the fms properties and allows SIMD acceleration if available.
 
     @see fma, fnma, fnms
 
+    @par Example:
+
+       @snippet fms.cpp fms
+
+    @par Possible output:
+
+       @snippet fms.txt fms
+
   **/
-  Value fms(Value const& v0, Value const& v1, Value const& v2);
+  Value fms(Value const& a, Value const& b, Value const& c);
 } }
 #endif
 

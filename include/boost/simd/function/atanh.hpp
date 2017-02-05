@@ -18,23 +18,24 @@ namespace boost { namespace simd
  /*!
 
     @ingroup group-hyperbolic
-    Function object implementing atanh capabilities
+    This function object returns the hyperbolic tangent argument \f$\frac12\log\frac{1+x}{1-x}\f$
 
-    Returns the hyperbolic tangent argument \f$\frac12\log\frac{1+x}{1-x}\f$
-
-    @par Semantic:
-
-    For every parameter of floating type @c T
-
-    @code
-    T r = atanh(x);
-    @endcode
+    @see cosh, sinh, acosh, asinh, atanh, asech, acoth, acsch
 
 
-    @see log, Half, oneminus, inc
+    @par Header <boost/simd/function/atanh.hpp>
+
+    @par Example:
+
+       @snippet atanh.cpp atanh
+
+    @par Possible output:
+
+       @snippet atanh.txt atanh
+
 
   **/
-  Value atanh(Value const & v0);
+  Value atanh(Value const & x);
 } }
 #endif
 

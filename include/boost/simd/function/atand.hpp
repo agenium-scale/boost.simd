@@ -16,27 +16,31 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing atand capabilities
+    This function object returns the inverse tangent in degree.
 
-    inverse tangent in degree.
 
-    @par Semantic:
+    @par Header <boost/simd/function/atand.hpp>
 
-    For every parameter of floating type
+   @par Note
 
-    @code
-    auto r = atand(x);
-    @endcode
+      For every parameter of floating type `atand(x)`
+      returns the arc @c r in the interval  \f$[-90, 90[\f$
+      such that <tt>tand(r) == x</tt>.
 
-    Returns the arc @c r in the interval
-    \f$[-90, 90[\f$ such that <tt>tand(r) == x</tt>.
+   @see atan2d, atan2, atan, atanpi, tand
 
-    @see atan2d, atan2, atan, atanpi, tand
+
+   @par Example:
+
+     @snippet atand.cpp atand
+
+   @par Possible output:
+
+     @snippet atand.txt atand
 
   **/
-  Value atand(Value const & v0);
+  Value atand(Value const & x);
 } }
 #endif
 

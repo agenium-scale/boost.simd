@@ -10,6 +10,13 @@
 #include <boost/simd/logical.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/three.hpp>
 
 namespace bs = boost::simd;
 namespace bd = boost::dispatch;
@@ -80,3 +87,47 @@ STF_CASE_TPL("Check shr on pack with pack shift" , STF_INTEGRAL_TYPES)
   tests<T, N/2>($);
   tests<T, N*2>($);
 }
+
+
+
+STF_CASE_TPL (" shr uit",  STF_UNSIGNED_INTEGRAL_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+
+  using bs::shr;
+  using p_t = bs::pack<T>;
+  using ip_t = bd::as_integer_t<T, unsigned>;
+  using r_t = decltype(shr(p_t(), ip_t()));
+
+  // return type conformity test
+  STF_TYPE_IS( r_t, p_t );
+
+  // specific values tests
+  STF_EQUAL(shr(p_t(2),1), bs::One<p_t>());
+  STF_EQUAL(shr(bs::Valmax<p_t>(),(sizeof(T)*8-1)), bs::One<r_t>());
+  STF_EQUAL(shr(bs::Valmax<p_t>(),(sizeof(T)*8-2)), bs::Three<r_t>());
+  STF_EQUAL(shr(bs::One<p_t>(),1), bs::Zero<r_t>());
+  STF_EQUAL(shr(bs::Zero<p_t>(),1), bs::Zero<r_t>());
+} // end of test for unsigned_int_
+
+STF_CASE_TPL (" shr si",  STF_SIGNED_INTEGRAL_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+
+  using bs::shr;
+  using p_t = bs::pack<T>;
+  using ip_t = bd::as_integer_t<T, unsigned>;
+  using r_t = decltype(shr(p_t(), ip_t()));
+
+  // return type conformity test
+  STF_TYPE_IS( r_t, p_t );
+
+  // specific values tests
+  STF_EQUAL(shr(p_t(2),1), bs::One<p_t>());
+  STF_EQUAL(shr(bs::Mone<p_t>(),(sizeof(T)*8-1)), bs::One<r_t>());
+  STF_EQUAL(shr(bs::Mone<p_t>(),(sizeof(T)*8-2)), bs::Three<r_t>());
+  STF_EQUAL(shr(bs::One<p_t>(),1), bs::Zero<r_t>());
+  STF_EQUAL(shr(bs::Zero<p_t>(),1), bs::Zero<r_t>());
+} // end of test for unsigned_int_

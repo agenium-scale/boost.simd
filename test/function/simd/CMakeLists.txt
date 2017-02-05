@@ -7,6 +7,7 @@
 ##===================================================================================================
 
 ## Larger test suites go there
+add_subdirectory(cast)
 add_subdirectory(combine)
 add_subdirectory(div)
 add_subdirectory(extract)
@@ -27,12 +28,12 @@ set ( SOURCES
       abs.regular.cpp
       abs.saturated.cpp
       acos.regular.cpp
-      acos.accurate.cpp
+      acos.pedantic.cpp
       acosd.regular.cpp
-      acosd.accurate.cpp
+      acosd.pedantic.cpp
       acosh.cpp
       acospi.regular.cpp
-      acospi.accurate.cpp
+      acospi.pedantic.cpp
       acot.cpp
       acotd.cpp
       acoth.cpp
@@ -53,9 +54,12 @@ set ( SOURCES
       asind.cpp
       asinh.cpp
       asinpi.cpp
-      atan2.cpp
-      atan2d.cpp
-      atan2pi.cpp
+      atan2.regular.cpp
+      atan2.pedantic.cpp
+      atan2d.regular.cpp
+      atan2d.pedantic.cpp
+      atan2pi.regular.cpp
+      atan2pi.pedantic.cpp
       atan.cpp
       atand.cpp
       atanh.cpp
@@ -64,11 +68,9 @@ set ( SOURCES
       autosplat.cpp
       average.cpp
       bitfloating.cpp
-      bitget.cpp
       bitinteger.cpp
       bitofsign.cpp
       bits.cpp
-      bitset.cpp
       bitwise_and.cpp
       bitwise_andnot.cpp
       bitwise_cast.cpp
@@ -138,12 +140,14 @@ set ( SOURCES
       firstbitunset.cpp
       floor.cpp
       fma.regular.cpp
-      fma.conformant.cpp
+      fma.pedantic.cpp
       fms.cpp
       fnma.cpp
       fnms.cpp
       frac.cpp
-      frexp.cpp
+      frexp.raw.cpp
+      frexp.regular.cpp
+      frexp.pedantic.cpp
       gamma.cpp
       gammaln.cpp
       genmaskc.cpp
@@ -151,7 +155,8 @@ set ( SOURCES
       groups.cpp
       hi.cpp
       hmsb.cpp
-      hypot.cpp
+      hypot.pedantic.cpp
+      hypot.regular.cpp
       iceil.cpp
       if_allbits_else.cpp
       if_dec.cpp
@@ -169,12 +174,16 @@ set ( SOURCES
       if_plus.cpp
       if_zero_else.cpp
       if_zero_else_one.cpp
+      ifrexp.raw.cpp
+      ifrexp.regular.cpp
+      ifrexp.pedantic.cpp
       ilog2.cpp
       ilogb.cpp
       inc.regular.cpp
       inc.saturated.cpp
       indeg.cpp
-      inearbyint.cpp
+      inearbyint.regular.cpp
+      inearbyint.pedantic.cpp
       inrad.cpp
       interleave.cpp
       interleave_even.cpp
@@ -230,12 +239,21 @@ set ( SOURCES
       is_simd_logical.cpp
       itrunc.cpp
       is_unord.cpp
-      ldexp.cpp
+      ldexp.pedantic.cpp
+      ldexp.regular.cpp
       lo.cpp
-      log10.cpp
-      log1p.cpp
-      log2.cpp
-      log.cpp
+      log1p.regular.cpp
+      log1p.musl.cpp
+      log1p.plain.cpp
+      log10.regular.cpp
+      log10.musl.cpp
+      log10.plain.cpp
+      log2.regular.cpp
+      log2.musl.cpp
+      log2.plain.cpp
+      log.plain.cpp
+      log.regular.cpp
+      log.musl.cpp
       logical_and.cpp
       logical_andnot.cpp
       logical_notand.cpp
@@ -271,8 +289,8 @@ set ( SOURCES
       nearbyint.cpp
       negate.cpp
       negatenz.cpp
-      negif.cpp
-      negifnot.cpp
+      if_neg.cpp
+      ifnot_neg.cpp
       nextafter.cpp
       next.cpp
       none.cpp
@@ -287,7 +305,8 @@ set ( SOURCES
       predecessor.cpp
       prev.cpp
       prod.cpp
-      rec.cpp
+      rec.regular.cpp
+      rec.raw.cpp
       rem_pio2_cephes.cpp
       rem_pio2.cpp
       rem_pio2_medium.cpp
@@ -305,7 +324,9 @@ set ( SOURCES
       rror.cpp
       rshl.cpp
       rshr.cpp
-      rsqrt.cpp
+      rsqrt.regular.cpp
+      rsqrt.raw.cpp
+      rsqrt.pedantic.cpp
       safe_max.cpp
       safe_min.cpp
       sec.cpp
@@ -334,7 +355,8 @@ set ( SOURCES
       sqr.regular.cpp
       sqr.saturated.cpp
       sqrt1pm1.cpp
-      sqrt.cpp
+      sqrt.regular.cpp
+      sqrt.raw.cpp
       stirling.cpp
       stream.cpp
       successor.cpp
@@ -350,7 +372,9 @@ set ( SOURCES
       toint.saturated.cpp
       touint.regular.cpp
       touint.saturated.cpp
-      trunc.cpp
+      trunc.raw.cpp
+      trunc.regular.cpp
+      quadrant.cpp
       two_add.cpp
       twopower.cpp
       two_prod.cpp

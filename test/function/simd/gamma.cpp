@@ -12,6 +12,19 @@
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/nan.hpp>
 #include <simd_test.hpp>
+#include <boost/simd/constant/inf.hpp>
+#include <boost/simd/constant/minf.hpp>
+#include <boost/simd/constant/nan.hpp>
+#include <boost/simd/constant/one.hpp>
+#include <boost/simd/constant/mone.hpp>
+#include <boost/simd/constant/zero.hpp>
+#include <boost/simd/constant/mzero.hpp>
+#include <boost/simd/constant/half.hpp>
+#include <boost/simd/constant/halfeps.hpp>
+#include <boost/simd/constant/eps.hpp>
+#include <boost/simd/constant/pi.hpp>
+#include <boost/simd/constant/five.hpp>
+#include <boost/simd/function/rsqrt.hpp>
 
 namespace bs = boost::simd;
 
@@ -58,3 +71,31 @@ STF_CASE_TPL("Check gamma on pack" , STF_IEEE_TYPES)
    test<T, N/2>($);
    test<T, N*2>($);
 }
+
+
+
+STF_CASE_TPL (" gamma",  STF_IEEE_TYPES)
+{
+  namespace bs = boost::simd;
+  namespace bd = boost::dispatch;
+  using bs::gamma;
+  using p_t = bs::pack<T>;
+
+  using r_t = decltype(gamma(p_t()));
+
+  // return type conformity test
+  STF_TYPE_IS(r_t, p_t);
+
+  // specific values tests
+#ifndef BOOST_SIMD_NO_INVALIDS
+  STF_ULP_EQUAL(gamma(bs::Minf<p_t>()), bs::Nan<r_t>(), 0);
+  STF_ULP_EQUAL(gamma(bs::Inf<p_t>()), bs::Inf<r_t>(), 0);
+  STF_ULP_EQUAL(gamma(bs::Nan<p_t>()), bs::Nan<r_t>(), 0);
+#endif
+  STF_ULP_EQUAL(gamma(bs::Zero<p_t>()), bs::Inf<r_t>(), 0);
+  STF_ULP_EQUAL(gamma(bs::Mzero<p_t>()), bs::Minf<r_t>(), 0);
+  STF_ULP_EQUAL(gamma(p_t(1)), p_t(1), 0);
+  STF_ULP_EQUAL(gamma(p_t(2)), p_t(1), 0);
+  STF_ULP_EQUAL(gamma(p_t(3)), p_t(2), 0);
+  STF_ULP_EQUAL(gamma(p_t(5)), p_t(24), 0);
+ }

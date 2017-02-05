@@ -16,32 +16,35 @@ namespace boost { namespace simd
 {
 
  /*!
-
     @ingroup group-trigonometric
-    Function object implementing asin capabilities
+    This function object returns the inverse sine.
 
-    inverse sine.
 
-    @par Semantic:
+    @par Header <boost/simd/function/asin.hpp>
 
-    For every parameter of floating type
+   @par Note
 
-    @code
-    auto r = asin(x);
-    @endcode
-
-    Returns the arc @c r in the interval
-    \f$[-\pi/2, \pi/2]\f$ such that <tt>sin(r) == x</tt>.
-    If @c x is outside \f$[-1, 1]\f$ the result is Nan.
+      For every parameter of floating type `asin(x)`
+      returns the arc @c r in the interval  \f$[-\pi/2, \pi/2]\f$ such that
+      <tt>sin(r) == x</tt>.  If @c x is outside \f$[-1, 1]\f$ the result is Nan.
 
     @par Decorators
 
-    std_ for floating entries provides access to std::asin
+      - std_ for floating entries provides access to std::asin
 
     @see asind, asinpi, sin
 
+
+   @par Example:
+
+     @snippet asin.cpp asin
+
+   @par Possible output:
+
+     @snippet asin.txt asin
+
   **/
-  Value asin(Value const & v0);
+  Value asin(Value const & x);
 } }
 #endif
 

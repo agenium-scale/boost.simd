@@ -1,0 +1,8 @@
+//! [acoth]
+---- simd
+<- pf =           (1, 2, -1, 0.5)
+-> bs::acoth(pf) = (inf, 0.549306, -inf, -nan)
+---- scalar
+<- xf =           2
+-> bs::acoth(xf) = 0.549306
+//! [acoth]

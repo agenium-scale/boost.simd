@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
    Modify the value of the nth element of a mutable data.
 
+
+    @par Header <boost/simd/function/insert.hpp>
+
     @par Semantic
 
     Depending on the type of its arguments, insert exhibits different semantics.

@@ -1,0 +1,10 @@
+//! [is_ngtz]
+---- simd
+<- pf =                  (0, 1, -1, -2, 1.4013e-45, inf, -inf, -nan)
+-> bs::is_ngtz(pf) = (true, false, true, true, false, false, true, true)
+---- scalar
+<- xf =                  1
+-> bs::is_ngtz(xf) = false
+<- yf =                  1.4013e-45
+-> bs::is_ngtz(yf) = false
+//! [is_ngtz]
