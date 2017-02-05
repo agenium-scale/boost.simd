@@ -111,7 +111,7 @@ OK fnma.hpp
 OK fnms.hpp
 OK fpclassify.hpp
 OK frac.hpp
-frexp.hpp
+OK frexp.hpp
 gamma.hpp
 gammaln.hpp
 genmaskc.hpp

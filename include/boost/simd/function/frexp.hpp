@@ -68,7 +68,7 @@ namespace boost { namespace simd
      @snippet frexp.txt frexp
 
   **/
-  std::pair<RealValue, RealValue> frexp(RealValue const & x);
+  std::pair<IEEEValue, IEEEValue> frexp(IEEEValue const& x);
 } }
 #endif
 
