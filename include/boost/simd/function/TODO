@@ -106,7 +106,7 @@ OK firstbitunset.hpp
 OK fix.hpp
 OK floor.hpp
 OK fma.hpp
-fms.hpp
+OK fms.hpp
 fnma.hpp
 fnms.hpp
 fpclassify.hpp
