@@ -114,7 +114,7 @@ OK frac.hpp
 OK frexp.hpp
 OK gamma.hpp
 OK gammaln.hpp
-genmaskc.hpp
+OK genmaskc.hpp
 genmask.hpp
 group.hpp
 hi.hpp

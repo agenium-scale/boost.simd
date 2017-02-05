@@ -39,7 +39,7 @@ namespace boost { namespace simd
     @see if_else_allbits
 
   **/
-  Value genmaskc(Value const & x);
+  Value genmaskc(Value const& x);
 } }
 #endif
 
