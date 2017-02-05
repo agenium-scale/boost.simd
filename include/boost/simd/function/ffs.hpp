@@ -36,7 +36,7 @@ namespace boost { namespace simd
      @snippet ffs.txt ffs
 
   **/
-  as_integer_t<Value> ffs(Value const & x);
+  as_integer_t<Value> ffs(Value const& x);
 } }
 #endif
 

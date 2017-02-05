@@ -100,7 +100,7 @@ OK exprecnegc.hpp
 OK exprecneg.hpp
 OK expx2.hpp
 NA extract.hpp
-ffs.hpp
+OK ffs.hpp
 firstbitset.hpp
 firstbitunset.hpp
 fix.hpp
