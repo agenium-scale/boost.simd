@@ -123,7 +123,7 @@ NA horn1.hpp
 NA horn.hpp
 OK hypot.hpp
 OK iceil.hpp
-if_allbits_else.hpp
+OK if_allbits_else.hpp
 if_allbits_else_zero.hpp
 if_dec.hpp
 if_else_allbits.hpp

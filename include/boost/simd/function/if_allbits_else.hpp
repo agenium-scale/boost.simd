@@ -37,12 +37,7 @@ namespace boost { namespace simd
     @see genmask, Allbits, Nan
 
   **/
-  Value if_allbits_else(Value const& c, Value const& f);
-
-  /*!
-    @overload
-  */
-  Value if_allbits_else(LogicalValue const& c, Value const& f);
+  Value1 if_allbits_else(Value0 const& c, Value1 const& f);
 } }
 #endif
 
