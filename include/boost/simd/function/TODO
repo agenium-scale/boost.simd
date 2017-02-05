@@ -108,7 +108,7 @@ OK floor.hpp
 OK fma.hpp
 OK fms.hpp
 OK fnma.hpp
-fnms.hpp
+OK fnms.hpp
 fpclassify.hpp
 frac.hpp
 frexp.hpp
