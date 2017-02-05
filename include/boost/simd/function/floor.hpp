@@ -42,7 +42,7 @@ namespace boost { namespace simd
        @snippet floor.txt floor
 
   **/
-  Value floor(Value const & x);
+  Value floor(Value const& x);
 } }
 #endif
 
