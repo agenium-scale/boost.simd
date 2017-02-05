@@ -109,7 +109,7 @@ OK fma.hpp
 OK fms.hpp
 OK fnma.hpp
 OK fnms.hpp
-fpclassify.hpp
+OK fpclassify.hpp
 frac.hpp
 frexp.hpp
 gamma.hpp

@@ -55,7 +55,7 @@ namespace boost { namespace simd
      @snippet fpclassify.txt fpclassify
 
   **/
-  as_integer_t<RealValue> fpclassify(RealValue const & x);
+  as_integer_t<IEEEValue> fpclassify(IEEEValue const& x);
 } }
 #endif
 
