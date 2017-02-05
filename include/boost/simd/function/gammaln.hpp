@@ -59,7 +59,7 @@ namespace boost { namespace simd
 
        @snippet gammaln.txt gammaln
   **/
-  Value gammaln(Value const & x);
+  IEEEValue gammaln(IEEEValue const& x);
 } }
 #endif
 

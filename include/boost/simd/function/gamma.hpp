@@ -35,8 +35,8 @@ namespace boost { namespace simd
     @par Possible output:
 
        @snippet gamma.txt gamma
- **/
-  Value gamma(Value const & x);
+  **/
+  IEEEValue gamma(IEEEValue const& x);
 } }
 #endif
 
