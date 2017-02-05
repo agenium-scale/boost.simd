@@ -36,7 +36,7 @@ namespace boost { namespace simd
      @snippet hi.txt hi
 
   **/
-  as_integer_t<Value, unsigned> hi(Value const & x);
+  as_integer_t<Value, unsigned> hi(Value const& x);
 } }
 #endif
 
