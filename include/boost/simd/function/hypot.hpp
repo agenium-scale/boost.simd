@@ -42,7 +42,7 @@ namespace boost { namespace simd
 
 
   **/
-  Value hypot(Value const& x, Value const& y);
+  IEEEValue hypot(IEEEValue const& x, IEEEValue const& y);
 } }
 #endif
 
