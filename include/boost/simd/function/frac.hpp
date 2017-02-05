@@ -33,7 +33,7 @@ namespace boost { namespace simd
      @snippet frac.txt frac
 
   **/
-  Value frac(Value const & x);
+  Value frac(Value const& x);
 } }
 #endif
 
