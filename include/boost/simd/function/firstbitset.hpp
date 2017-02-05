@@ -35,7 +35,7 @@ namespace boost { namespace simd
      @snippet firstbitset.txt firstbitset
 
   **/
-  as_integer_t<Value> firstbitset(Value const & x);
+  as_integer_t<Value> firstbitset(Value const& x);
 } }
 #endif
 

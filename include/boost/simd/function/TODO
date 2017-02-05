@@ -101,7 +101,7 @@ OK exprecneg.hpp
 OK expx2.hpp
 NA extract.hpp
 OK ffs.hpp
-firstbitset.hpp
+OK firstbitset.hpp
 firstbitunset.hpp
 fix.hpp
 floor.hpp
