@@ -260,7 +260,7 @@ OK plus.hpp
 OK popcnt.hpp
 OK pow2.hpp
 OK pow_abs.hpp
-pow.hpp
+OK pow.hpp
 predecessor.hpp
 prev.hpp
 prod.hpp

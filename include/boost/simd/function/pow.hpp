@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-exponential
     This function object computes \f$x^y\f$
 
@@ -38,7 +38,10 @@ namespace boost { namespace simd
      @snippet pow.txt pow
 
   **/
-  Value pow(Value const & x, Value const& y);
+  ///@{
+  IEEEValue pow(IEEEValue const& x, Value const& y);
+  IntegerValue pow(IntegerValue const& x, IntegerValue const& y);
+  ///@}
 } }
 #endif
 
