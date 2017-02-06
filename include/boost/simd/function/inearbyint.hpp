@@ -43,7 +43,6 @@ namespace boost { namespace simd
        @snippet inearbyint.txt inearbyint
 
   **/
-
   as_integer_t<Value> inearbyint(Value const& x);
 } }
 #endif
