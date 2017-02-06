@@ -230,7 +230,7 @@ OK mask2logical.hpp
 OK max.hpp
 NA maximum.hpp
 OK maxmag.hpp
-maxnum.hpp
+OK maxnum.hpp
 maxnummag.hpp
 meanof.hpp
 min.hpp
