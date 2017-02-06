@@ -140,7 +140,7 @@ OK ifnot_dec.hpp
 OK ifnot_inc.hpp
 OK ifnot_minus.hpp
 OK ifnot_neg.hpp
-ifnot_plus.hpp
+OK ifnot_plus.hpp
 if_one_else_zero.hpp
 if_plus.hpp
 ifrexp.hpp

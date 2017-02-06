@@ -32,12 +32,7 @@ namespace boost { namespace simd
      @snippet ifnot_plus.txt ifnot_plus
 
   **/
-  Value ifnot_plus(Value const& c, Value const& x, Value const& y);
-
-  /*!
-    @overload
-  */
-  Value ifnot_plus(LogicalValue const& c, Value const& x, Value const& y);
+  Value1 ifnot_plus(Value0 const& c, Value1 const& x, Value1 const& y);
 } }
 #endif
 
