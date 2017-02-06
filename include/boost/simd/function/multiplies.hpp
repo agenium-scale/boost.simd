@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-operator
     Function object implementing multiplies capabilities
 
@@ -45,7 +45,7 @@ namespace boost { namespace simd
     @see fma, fms, fnma, fnms
 
   **/
-  Value multiplies(Value const & x, Value const& y);
+  Value multiplies(Value const& x, Value const& y);
 } }
 #endif
 

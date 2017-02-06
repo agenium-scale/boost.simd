@@ -241,7 +241,7 @@ OK minnum.hpp
 OK minnummag.hpp
 OK minus.hpp
 W  modf.hpp
-multiplies.hpp
+OK multiplies.hpp
 musl.hpp
 nbtrue.hpp
 nearbyint.hpp
