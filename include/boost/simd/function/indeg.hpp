@@ -31,7 +31,7 @@ namespace boost { namespace simd
      @snippet indeg.txt indeg
 
   **/
-  Value indeg(Value const & x);
+  IEEEValue indeg(IEEEValue const& x);
 } }
 #endif
 
