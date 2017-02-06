@@ -163,7 +163,7 @@ OK iround.hpp
 OK is_denormal.hpp
 OK is_equal.hpp
 OK is_equal_with_equal_nans.hpp
-is_eqz.hpp
+OK is_eqz.hpp
 is_even.hpp
 is_finite.hpp
 is_flint.hpp
