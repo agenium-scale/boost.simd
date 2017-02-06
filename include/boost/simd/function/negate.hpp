@@ -15,10 +15,10 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
-    This function object returns  the first element multiplied by 1,  0 or -1 depending on the fact its second argument
-    is greater,  equal or lesser than zero.
+    This function object returns  the first element multiplied by 1,  0 or -1 depending
+    on the fact its second argument is greater,  equal or lesser than zero.
 
 
     @par Header <boost/simd/function/negate.hpp>
@@ -39,7 +39,7 @@ namespace boost { namespace simd
      @snippet negate.txt negate
 
   **/
-  Value negate(Value const & x, Value const& y);
+  Value negate(Value const& x, Value const& y);
 } }
 #endif
 

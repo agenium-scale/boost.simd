@@ -245,7 +245,7 @@ OK multiplies.hpp
 NA musl.hpp
 NA nbtrue.hpp
 OK nearbyint.hpp
-negate.hpp
+OK negate.hpp
 negatenz.hpp
 nextafter.hpp
 next.hpp
