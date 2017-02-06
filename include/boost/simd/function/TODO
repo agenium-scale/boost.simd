@@ -272,7 +272,7 @@ OK refine_rsqrt.hpp
 OK rem_2pi.hpp
 OK rem.hpp
 NA rem_pio2_cephes.hpp
-rem_pio2.hpp
+NA rem_pio2.hpp
 rem_pio2_medium.hpp
 rem_pio2_straight.hpp
 remquo.hpp
