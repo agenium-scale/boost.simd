@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-arithmetic
    This function object computes the arithmetic mean of its parameters.
