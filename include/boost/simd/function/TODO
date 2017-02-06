@@ -292,7 +292,7 @@ OK rshr.hpp
 OK rsqrt.hpp
 OK safe_max.hpp
 OK safe_min.hpp
-saturated.hpp
+NA saturated.hpp
 saturate.hpp
 sbits.hpp
 secd.hpp
