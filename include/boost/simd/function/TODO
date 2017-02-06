@@ -217,7 +217,7 @@ OK logical_and.hpp
 OK logical_andnot.hpp
 OK logical_notand.hpp
 OK logical_not.hpp
-logical_notor.hpp
+OK logical_notor.hpp
 logical_or.hpp
 logical_ornot.hpp
 logical_xor.hpp
