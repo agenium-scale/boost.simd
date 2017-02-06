@@ -23,7 +23,7 @@ namespace boost { namespace simd
   }
   namespace ext
   {
-    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, pack_cast_);
+    BOOST_DISPATCH_FUNCTION_DECLARATION(tag, pack_cast_)
   }
 
   namespace detail
