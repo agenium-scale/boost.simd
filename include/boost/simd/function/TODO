@@ -225,7 +225,7 @@ OK lo.hpp
 OK lookup.hpp
 OK majority.hpp
 NA make.hpp
-mantissa.hpp
+OK mantissa.hpp
 mask2logical.hpp
 max.hpp
 maximum.hpp

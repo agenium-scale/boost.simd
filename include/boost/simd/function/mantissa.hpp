@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object returns the signed mantissa of the input argument.
 
@@ -40,7 +40,7 @@ namespace boost { namespace simd
      @snippet mantissa.txt mantissa
 
   **/
-  Value mantissa(Value const & x);
+  Value mantissa(Value const& x);
 } }
 #endif
 
