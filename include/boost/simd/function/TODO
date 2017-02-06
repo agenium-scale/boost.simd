@@ -277,7 +277,7 @@ NA rem_pio2_medium.hpp
 NA rem_pio2_straight.hpp
 NA remquo.hpp
 OK repeat_lower_half.hpp
-repeat_upper_half.hpp
+OK repeat_upper_half.hpp
 residual.hpp
 restricted.hpp
 reversebits.hpp
