@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-exponential
     This function object returns \f$ x 2^y\f$.  (the result is undefined on overflow and
     the function asserts for invalid second parameter )
@@ -35,7 +35,7 @@ namespace boost { namespace simd
      @snippet pow2.txt pow2
 
   **/
-  Value pow2(Value const & x, IntegerValue const& y);
+  Value0 pow2(Value0 const& x, Value1 const& y);
 } }
 #endif
 

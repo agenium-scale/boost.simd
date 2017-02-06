@@ -258,7 +258,7 @@ NA pedantic.hpp
 NA plain.hpp
 OK plus.hpp
 OK popcnt.hpp
-pow2.hpp
+OK pow2.hpp
 pow_abs.hpp
 pow.hpp
 predecessor.hpp
