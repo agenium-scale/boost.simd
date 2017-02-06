@@ -239,7 +239,7 @@ OK minmag.hpp
 OK minmod.hpp
 OK minnum.hpp
 minnummag.hpp
-minus.hpp
+OK minus.hpp
 modf.hpp
 multiplies.hpp
 musl.hpp

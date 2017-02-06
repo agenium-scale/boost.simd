@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-operator
     Function object implementing minus capabilities
 
@@ -43,7 +43,7 @@ namespace boost { namespace simd
     returns the difference of @c a and @c b
 
   **/
-  Value minus(Value const & x, Value const& y);
+  Value minus(Value const& x, Value const& y);
 } }
 #endif
 
