@@ -33,12 +33,7 @@ namespace boost { namespace simd
      @snippet if_inc.txt if_inc
 
   **/
-  Value if_inc(Value const& c, Value const& x);
-
-  /*!
-    @overload
-  */
-  Value if_inc(LogicalValue const& c, Value const& x);
+  Value1 if_inc(Value0 const& c, Value1 const& x);
 } }
 #endif
 
