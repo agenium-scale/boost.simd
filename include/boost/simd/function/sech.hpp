@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-hyperbolic
     This function object returns the hyperbolic secant: \f$1/\cosh(x)\f$.
@@ -35,7 +35,7 @@ namespace boost { namespace simd
        @snippet sech.txt sech
 
   **/
-  Value sech(Value const & x);
+  IEEEValue sech(IEEEValue const& x);
 } }
 #endif
 
