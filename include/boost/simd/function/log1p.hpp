@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
   @ingroup group-exponential
     This function object computes \f$\log(1+x)\f$ with good accuracy even for small
     \f$x\f$ values.
@@ -37,7 +37,7 @@ namespace boost { namespace simd
        @snippet log1p.txt log1p
 
   **/
-  Value log1p(Value const& x);
+  IEEEValue log1p(IEEEValue const& x);
 } }
 #endif
 

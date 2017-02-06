@@ -210,7 +210,7 @@ OK itrunc.hpp
 OK ldexp.hpp
 OK load.hpp
 OK log10.hpp
-log1p.hpp
+OK log1p.hpp
 log2.hpp
 log.hpp
 logical_and.hpp
