@@ -238,7 +238,7 @@ NA minimum.hpp
 OK minmag.hpp
 OK minmod.hpp
 OK minnum.hpp
-minnummag.hpp
+OK minnummag.hpp
 OK minus.hpp
 modf.hpp
 multiplies.hpp
