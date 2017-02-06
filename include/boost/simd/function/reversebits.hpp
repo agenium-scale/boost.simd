@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-bitwise
     This function object returns the bits in reverse order for each scalar entry.
 
@@ -33,7 +33,7 @@ namespace boost { namespace simd
      @snippet reversebits.txt reversebits
 
   **/
-  Value reversebits(Value const & x);
+  IntegerValue reversebits(IntegerValue const& x);
 } }
 #endif
 
