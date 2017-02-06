@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     Returns the next representable value of @c x in the direction of @c y
 
@@ -57,7 +57,7 @@ namespace boost { namespace simd
      @snippet nextafter.txt nextafter
 
   **/
-  Value nextafter(Value const & x, Value const& y);
+  Value nextafter(Value const& x, Value const& y);
 } }
 #endif
 
