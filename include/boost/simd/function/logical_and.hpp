@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-boolean
     This function object returns the logical and of its two parameters.
 
@@ -38,7 +38,7 @@ namespace boost { namespace simd
      @snippet logical_and.txt logical_and
 
   **/
-  as_logical_t<Value> logical_and(Value1 const& x, Value2 const& y);
+  as_logical_t<Value0> logical_and(Value0 const& x, Value1 const& y);
 } }
 #endif
 

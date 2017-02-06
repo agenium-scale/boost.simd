@@ -213,7 +213,7 @@ OK log10.hpp
 OK log1p.hpp
 OK log2.hpp
 OK log.hpp
-logical_and.hpp
+OK logical_and.hpp
 logical_andnot.hpp
 logical_notand.hpp
 logical_not.hpp
