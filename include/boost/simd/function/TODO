@@ -273,7 +273,7 @@ OK rem_2pi.hpp
 OK rem.hpp
 NA rem_pio2_cephes.hpp
 NA rem_pio2.hpp
-rem_pio2_medium.hpp
+OK rem_pio2_medium.hpp
 rem_pio2_straight.hpp
 remquo.hpp
 repeat_lower_half.hpp
