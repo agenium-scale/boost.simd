@@ -37,7 +37,7 @@ namespace boost { namespace simd
        @snippet ifloor.txt ifloor
 
   **/
-  as_integer_T<Value> ifloor(Value const & x);
+  as_integer_t<Value> ifloor(Value const& x);
 } }
 #endif
 
