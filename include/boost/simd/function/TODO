@@ -160,7 +160,7 @@ NA interleave.hpp
 OK interleave_odd.hpp
 OK interleave_second.hpp
 OK iround.hpp
-is_denormal.hpp
+OK is_denormal.hpp
 is_equal.hpp
 is_equal_with_equal_nans.hpp
 is_eqz.hpp
