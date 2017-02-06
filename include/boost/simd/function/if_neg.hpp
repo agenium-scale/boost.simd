@@ -31,11 +31,7 @@ namespace boost { namespace simd
      @snippet negif.txt negif
 
   **/
-  Value if_neg(LogicalValue const& cond, Value const & x);
-
-  //@overload
-  Value if_neg(Value const& cond, Value const & x);
-
+  Value1 if_neg(Value0 const& c, Value1 const& x);
 } }
 #endif
 
