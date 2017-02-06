@@ -15,12 +15,12 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-arithmetic
     Function object implementing refine_rec capabilities
 
-    Performs a Newton-Raphson step to improve precision of reciprocate estimate.
+    Performs a Newton-Raphson step to improve precision of a reciprocate estimate.
     This function can be used in conjunction with raw_(rec)
     to add more precision to the estimate if their default
     precision is not enough.
@@ -44,7 +44,7 @@ namespace boost { namespace simd
     @see rec
 
   **/
-  Value refine_rec(Value const & v0, Value const& est);
+  IEEEValue refine_rec(IEEEValue const& x, IEEEValue const& est);
 } }
 #endif
 
