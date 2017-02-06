@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-boolean
     This function object returns the logical and of the negation of the
     first argument with the second argument
