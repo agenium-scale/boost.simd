@@ -219,7 +219,7 @@ OK logical_notand.hpp
 OK logical_not.hpp
 OK logical_notor.hpp
 OK logical_or.hpp
-logical_ornot.hpp
+OK logical_ornot.hpp
 logical_xor.hpp
 lo.hpp
 lookup.hpp
