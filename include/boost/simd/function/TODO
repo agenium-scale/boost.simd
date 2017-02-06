@@ -154,7 +154,7 @@ OK indeg.hpp
 OK inearbyint.hpp
 OK inrad.hpp
 NA insert.hpp
-interleave_even.hpp
+OK interleave_even.hpp
 interleave_first.hpp
 interleave.hpp
 interleave_odd.hpp
