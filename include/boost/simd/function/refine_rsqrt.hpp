@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-arithmetic
     Function object implementing refine_rsqrt capabilities
@@ -32,7 +32,7 @@ namespace boost { namespace simd
     For any given value @c x, @c est  of floating type T:
 
     @code
-    T r =refine_rsqrt(x, est);
+    T r = refine_rsqrt(x, est);
     @endcode
 
     is similar to
@@ -44,7 +44,7 @@ namespace boost { namespace simd
     @see rec
 
   **/
-  Value refine_rsqrt(Value const & v0, Value const& est);
+  IEEEValue refine_rsqrt(IEEEValue const& x, IEEEValue const& est);
 } }
 #endif
 
