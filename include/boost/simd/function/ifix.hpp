@@ -35,7 +35,7 @@ namespace boost { namespace simd
 
 
   **/
-  Value ifix(Value const & x);
+  Value ifix(Value const& x);
 } }
 #endif
 
