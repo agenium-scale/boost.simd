@@ -15,10 +15,10 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-arithmetic
-    This function object computes the smallest of its parameterif they share the same sign,
+    This function object computes the smallest of its parameter if they share the same sign,
     zero instead..
 
 
@@ -38,7 +38,7 @@ namespace boost { namespace simd
        @snippet minmod.txt minmod
 
   **/
-  Value minmod(Value const & x, Value const& y);
+  Value minmod(Value const& x, Value const& y);
 } }
 #endif
 
