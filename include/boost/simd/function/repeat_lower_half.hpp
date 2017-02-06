@@ -11,10 +11,10 @@
 #ifndef BOOST_SIMD_FUNCTION_REPEAT_LOWER_HALF_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_REPEAT_LOWER_HALF_HPP_INCLUDED
 
+#if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-#if defined(DOXYGEN_ONLY)
-  /*!
+   /*!
     @ingroup group-swar
 
     Repeat the lower half of a vector
@@ -42,9 +42,9 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  Value repeat_lower_half(Value const & v0);
-#endif
+  Value repeat_lower_half(Value const& x);
 } }
+#endif
 
 #include <boost/simd/function/simd/repeat_lower_half.hpp>
 

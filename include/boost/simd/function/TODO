@@ -276,7 +276,7 @@ NA rem_pio2.hpp
 NA rem_pio2_medium.hpp
 NA rem_pio2_straight.hpp
 NA remquo.hpp
-repeat_lower_half.hpp
+OK repeat_lower_half.hpp
 repeat_upper_half.hpp
 residual.hpp
 restricted.hpp
