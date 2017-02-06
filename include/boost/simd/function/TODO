@@ -127,7 +127,7 @@ OK if_allbits_else.hpp
 OK if_allbits_else_zero.hpp
 OK if_dec.hpp
 OK if_else_allbits.hpp
-if_else.hpp
+OK if_else.hpp
 if_else_nan.hpp
 if_else_zero.hpp
 if_inc.hpp
