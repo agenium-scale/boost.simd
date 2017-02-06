@@ -207,7 +207,7 @@ OK is_real.hpp
 NA is_simd_logical.hpp
 OK is_unord.hpp
 OK itrunc.hpp
-ldexp.hpp
+OK ldexp.hpp
 load.hpp
 log10.hpp
 log1p.hpp

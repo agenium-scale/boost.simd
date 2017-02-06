@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object returns  \f$x\f$ multiplied by
     by \f$2^{n}\f$
@@ -49,7 +49,7 @@ namespace boost { namespace simd
      @snippet ldexp.txt ldexp
 
   **/
-  Value ldexp(RealValue const & x, Value const& n);
+  Value0 ldexp(Value0 const& x, Value1 const& n);
 } }
 #endif
 
