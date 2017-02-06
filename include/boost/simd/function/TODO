@@ -191,7 +191,7 @@ OK is_nltz.hpp
 OK is_normal.hpp
 OK is_not_denormal.hpp
 OK is_not_equal.hpp
-is_not_equal_with_equal_nans.hpp
+OK is_not_equal_with_equal_nans.hpp
 is_not_greater_equal.hpp
 is_not_greater.hpp
 is_not_imag.hpp
