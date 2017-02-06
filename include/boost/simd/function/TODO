@@ -288,7 +288,7 @@ OK round.hpp
 OK rrol.hpp
 OK rror.hpp
 OK rshl.hpp
-rshr.hpp
+OK rshr.hpp
 rsqrt.hpp
 safe_max.hpp
 safe_min.hpp
