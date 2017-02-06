@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-arithmetic
     This function object returns  one minus the entry.
@@ -40,7 +40,7 @@ namespace boost { namespace simd
        @snippet oneminus.txt oneminus
 
   **/
-  Value oneminus(Value const & x);
+  Value oneminus(Value const& x);
 } }
 #endif
 

@@ -252,7 +252,7 @@ OK next.hpp
 OK nextpow2.hpp
 NA none.hpp
 OK nthroot.hpp
-oneminus.hpp
+OK oneminus.hpp
 pack_cast.hpp
 pedantic.hpp
 plain.hpp
