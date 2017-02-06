@@ -261,7 +261,7 @@ OK popcnt.hpp
 OK pow2.hpp
 OK pow_abs.hpp
 OK pow.hpp
-predecessor.hpp
+OK predecessor.hpp
 prev.hpp
 prod.hpp
 quadrant.hpp

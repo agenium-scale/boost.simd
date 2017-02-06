@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object returns the `n-`th greatest element strictly less than the parameter
 
@@ -43,7 +43,10 @@ namespace boost { namespace simd
      @snippet predecessor.txt predecessor
 
   **/
-  Value predecessor(Value const & x, IntegerValue const& n);
+  ///@{
+  Value predecessor(Value const& x);
+  Value predecessor(Value const& x, IntegerValue const& n);
+  ///@}
 } }
 #endif
 
