@@ -138,7 +138,7 @@ OK if_nan_else.hpp
 OK if_neg.hpp
 OK ifnot_dec.hpp
 OK ifnot_inc.hpp
-ifnot_minus.hpp
+OK ifnot_minus.hpp
 ifnot_neg.hpp
 ifnot_plus.hpp
 if_one_else_zero.hpp
