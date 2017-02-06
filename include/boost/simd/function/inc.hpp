@@ -35,7 +35,7 @@ namespace boost { namespace simd
 
        @snippet inc.txt inc
   **/
-  Value inc(Value const & x);
+  Value inc(Value const& x);
 } }
 #endif
 
