@@ -281,7 +281,7 @@ OK repeat_upper_half.hpp
 NA residual.hpp
 NA restricted.hpp
 OK reversebits.hpp
-reverse.hpp
+OK reverse.hpp
 rol.hpp
 ror.hpp
 round.hpp
