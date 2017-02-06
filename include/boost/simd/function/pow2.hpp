@@ -35,7 +35,10 @@ namespace boost { namespace simd
      @snippet pow2.txt pow2
 
   **/
-  Value0 pow2(Value0 const& x, Value1 const& y);
+  ///@{
+  IEEEValue pow2(IEEEValue const& x, Value const& y);
+  IntegerValue pow2(IntegerValue const& x, IntegerValue const& y);
+  ///@}
 } }
 #endif
 

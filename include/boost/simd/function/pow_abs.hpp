@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-exponential
     This function object computes \f$|x|^y\f$.
 
@@ -37,7 +37,7 @@ namespace boost { namespace simd
      @snippet pow_abs.txt pow_abs
 
   **/
-  Value pow_abs(Value const & x, Value const& y);
+  Value pow_abs(Value const& x, Value const& y);
 } }
 #endif
 
