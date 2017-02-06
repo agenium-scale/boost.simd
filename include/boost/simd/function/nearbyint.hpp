@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-arithmetic
     Function object implementing nearbyint capabilities
@@ -47,7 +47,7 @@ namespace boost { namespace simd
 
     @see round, ceil, floor, trunc
   **/
-  Value nearbyint(Value const & x);
+  Value nearbyint(Value const& x);
 } }
 #endif
 
