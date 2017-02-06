@@ -15,9 +15,10 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-bitwise
-    This function object returns the signed integer value which has the bit pattern of the input
+    This function object returns the signed integer value which has the bit pattern of the
+    input
 
 
     @par Header <boost/simd/function/sbits.hpp>
@@ -31,7 +32,7 @@ namespace boost { namespace simd
      @snippet sbits.txt sbits
 
   **/
-  IntegerValue sbits(Value const & x);
+  as_integer_t<Value> sbits(Value const& x);
 } }
 #endif
 
