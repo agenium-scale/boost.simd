@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object returns between two floating point arguments,
     the one  having smaller absolute value, treating NaNs
@@ -33,7 +33,7 @@ namespace boost { namespace simd
      @snippet maxnummag.txt maxnummag
 
   **/
-  Value maxnummag(Value const & x, Value const& y);
+  Value maxnummag(Value const& x, Value const& y);
 } }
 #endif
 
