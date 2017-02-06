@@ -264,7 +264,7 @@ OK pow.hpp
 OK predecessor.hpp
 OK prev.hpp
 NA prod.hpp
-quadrant.hpp
+OK quadrant.hpp
 raw.hpp
 rec.hpp
 refine_rec.hpp

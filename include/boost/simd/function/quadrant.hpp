@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-arithmetic
     Function object implementing quadrant capabilities
@@ -37,7 +37,7 @@ namespace boost { namespace simd
     for integral types this is eqivalent to n&Three<T>().
 
   **/
-  Value quadrant(Value const & v0);
+  Value quadrant(Value const& n);
 } }
 #endif
 
