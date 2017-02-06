@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-predicates
 
     This function object returns @ref True if x is finite or @ref Nan
