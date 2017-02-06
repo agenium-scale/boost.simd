@@ -282,8 +282,8 @@ NA residual.hpp
 NA restricted.hpp
 OK reversebits.hpp
 OK reverse.hpp
-rol.hpp
-ror.hpp
+OK rol.hpp
+OK ror.hpp
 round.hpp
 rrol.hpp
 rror.hpp
