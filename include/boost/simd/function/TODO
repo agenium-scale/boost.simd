@@ -211,8 +211,8 @@ OK ldexp.hpp
 OK load.hpp
 OK log10.hpp
 OK log1p.hpp
-log2.hpp
-log.hpp
+OK log2.hpp
+OK log.hpp
 logical_and.hpp
 logical_andnot.hpp
 logical_notand.hpp

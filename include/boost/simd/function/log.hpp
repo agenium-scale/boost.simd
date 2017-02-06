@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-exponential
     This function object returns the natural logarithm of its argument.
 
@@ -42,7 +42,7 @@ namespace boost { namespace simd
      @snippet log.txt log
 
   **/
-  Value log(Value const & x);
+  IEEEValue log(IEEEValue const& x);
 } }
 #endif
 
