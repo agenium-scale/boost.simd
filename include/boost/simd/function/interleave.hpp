@@ -41,7 +41,7 @@ namespace boost { namespace simd
     @param  v1 Second argument to interleave
     @return An array of two boost::simd::pack containing the interleaved data from the arguments
   **/
-  std::array<Value,2> interleave(Value const& v0, Value const& v1);
+  std::array<Value, 2> interleave(Value const& x, Value const& y);
 #endif
 } }
 
