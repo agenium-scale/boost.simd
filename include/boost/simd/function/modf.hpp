@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object returns the Computes the integer and  fractional parts of the input.
 
@@ -35,12 +35,11 @@ namespace boost { namespace simd
      @snippet modf.txt modf
 
   **/
-  Value modf(Value const & x, Value & y);
 
-  /*!
-    @overload
-  */
+  ///@{
+  Value modf(Value const& x, Value const& y);
   std::pair<Value, Value> modf(Value const & x);
+  ///@}
 } }
 #endif
 

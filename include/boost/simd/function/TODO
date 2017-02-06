@@ -240,7 +240,7 @@ OK minmod.hpp
 OK minnum.hpp
 OK minnummag.hpp
 OK minus.hpp
-modf.hpp
+W  modf.hpp
 multiplies.hpp
 musl.hpp
 nbtrue.hpp
