@@ -181,7 +181,7 @@ OK is_lessgreater.hpp
 OK is_less.hpp
 OK is_lez.hpp
 OK is_ltz.hpp
-is_nan.hpp
+OK is_nan.hpp
 is_negative.hpp
 is_nez.hpp
 is_ngez.hpp
