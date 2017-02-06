@@ -229,7 +229,7 @@ OK mantissa.hpp
 OK mask2logical.hpp
 OK max.hpp
 NA maximum.hpp
-maxmag.hpp
+OK maxmag.hpp
 maxnum.hpp
 maxnummag.hpp
 meanof.hpp

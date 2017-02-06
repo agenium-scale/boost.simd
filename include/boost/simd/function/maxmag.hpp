@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object returns the value with the greatest absolute value among
     its arguments.
@@ -32,7 +32,7 @@ namespace boost { namespace simd
      @snippet maxmag.txt maxmag
 
   **/
-  Value maxmag(Value const & x, Value const& y);
+  Value maxmag(Value const& x, Value const& y);
 } }
 #endif
 
