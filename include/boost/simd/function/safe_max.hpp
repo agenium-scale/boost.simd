@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object returns a safe maximal value relative to the input,  i.e. a
     value which will not overflow when multiplied by the input argument.
@@ -32,7 +32,7 @@ namespace boost { namespace simd
      @snippet safe_max.txt safe_max
 
   **/
-  Value safe_max(Value const & x);
+  IEEEValue safe_max(IEEEValue const& x);
 } }
 #endif
 

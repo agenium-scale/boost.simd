@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-arithmetic
     This function object returns the inverse of the square root of the input.
@@ -41,7 +41,7 @@ namespace boost { namespace simd
 
 
   **/
-  Value rsqrt(Value const & x);
+  IEEEValue rsqrt(IEEEValue const& x);
 } }
 #endif
 

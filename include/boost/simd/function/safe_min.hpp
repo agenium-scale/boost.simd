@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object returns a safe mininimal value relative to the input, i.e. a
     value which will not underflow when divided by the input argument.
@@ -32,7 +32,7 @@ namespace boost { namespace simd
      @snippet safe_min.txt safe_min
 
   **/
-  Value safe_min(Value const & x);
+  IEEEValue safe_min(IEEEValue const& x);
 } }
 #endif
 

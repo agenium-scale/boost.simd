@@ -289,9 +289,9 @@ OK rrol.hpp
 OK rror.hpp
 OK rshl.hpp
 OK rshr.hpp
-rsqrt.hpp
-safe_max.hpp
-safe_min.hpp
+OK rsqrt.hpp
+OK safe_max.hpp
+OK safe_min.hpp
 saturated.hpp
 saturate.hpp
 sbits.hpp
