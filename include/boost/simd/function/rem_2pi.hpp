@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the compute the remainder modulo \f$2\pi\f$.
 
@@ -39,7 +39,7 @@ namespace boost { namespace simd
      @snippet rem_2pi.txt rem_2pi
 
   **/
-  Value rem_2pi(Value const & x);
+  IEEEValue rem_2pi(IEEEValue const& x);
 } }
 #endif
 

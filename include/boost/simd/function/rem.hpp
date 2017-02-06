@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-oerator
     This function object computes the the quotient of the two parameters of the
@@ -68,7 +68,7 @@ namespace boost { namespace simd
 
 
   **/
-  Value rem(Value const & v0, value const& y);
+  Value rem(Value const& x, Value const& y);
 } }
 #endif
 

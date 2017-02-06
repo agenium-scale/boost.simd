@@ -269,8 +269,8 @@ NA raw.hpp
 OK rec.hpp
 OK refine_rec.hpp
 OK refine_rsqrt.hpp
-rem_2pi.hpp
-rem.hpp
+OK rem_2pi.hpp
+OK rem.hpp
 rem_pio2_cephes.hpp
 rem_pio2.hpp
 rem_pio2_medium.hpp
