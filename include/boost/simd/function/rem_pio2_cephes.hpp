@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the Computes the remainder modulo \f$\pi/2\f$ with cephes algorithm,
      and the angle quadrant between 0 and 3.
@@ -40,7 +40,7 @@ namespace boost { namespace simd
      @snippet rem_pio2_cephes.txt rem_pio2_cephes
 
   **/
-  std::pair<IntegerValue, Value> rem_pio2_cephes(Value const & x);
+  std::pair<Value, Value> rem_pio2_cephes(Value const& x);
 } }
 #endif
 
