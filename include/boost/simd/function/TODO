@@ -214,7 +214,7 @@ OK log1p.hpp
 OK log2.hpp
 OK log.hpp
 OK logical_and.hpp
-logical_andnot.hpp
+OK logical_andnot.hpp
 logical_notand.hpp
 logical_not.hpp
 logical_notor.hpp
