@@ -171,7 +171,7 @@ OK is_gez.hpp
 OK is_greater_equal.hpp
 OK is_greater.hpp
 OK is_gtz.hpp
-is_imag.hpp
+OK is_imag.hpp
 isincluded_c.hpp
 isincluded.hpp
 is_inf.hpp
