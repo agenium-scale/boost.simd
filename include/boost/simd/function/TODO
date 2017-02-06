@@ -175,7 +175,7 @@ OK is_imag.hpp
 NA isincluded_c.hpp
 NA isincluded.hpp
 OK is_inf.hpp
-is_invalid.hpp
+OK is_invalid.hpp
 is_less_equal.hpp
 is_lessgreater.hpp
 is_less.hpp
