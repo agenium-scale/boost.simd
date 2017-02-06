@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-reduction
 
     returns @ref True if each vector elements have all bits or no bit set.
@@ -28,7 +28,7 @@ namespace boost { namespace simd
      Using `is_simd_logical(x)` is similar to `all(logical_or(x == Allbits(as(x)), x == Zero(as(x))))`
 
   **/
-  lgoical<as_scalar_t<Value>> is_simd_logical(Value const& x);
+  bool is_simd_logical(Value const& x);
 } }
 #endif
 
