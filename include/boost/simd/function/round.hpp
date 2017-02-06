@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-arithmetic
     Function object implementing round capabilities
@@ -56,7 +56,11 @@ namespace boost { namespace simd
     - If x is \f$\pm\infty\f$ or \f$\pm0\f$, it is returned, unmodified
     - If arg is a NaN, a NaN is returned
   **/
-  Value round(Value const & x{, IntegerValue const &n});
+
+  ///@{
+  Value round(Value const& x);
+  IEEEValue round(IEEEValue const& x, IntegerValue const& n);
+  ///@}
 } }
 #endif
 

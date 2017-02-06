@@ -284,8 +284,8 @@ OK reversebits.hpp
 OK reverse.hpp
 OK rol.hpp
 OK ror.hpp
-round.hpp
-rrol.hpp
+OK round.hpp
+OK rrol.hpp
 rror.hpp
 rshl.hpp
 rshr.hpp
