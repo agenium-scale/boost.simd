@@ -34,7 +34,11 @@ namespace boost { namespace simd
      @snippet if_allbits_else_zero.txt if_allbits_else_zero
 
   **/
-  Value if_allbits_else_zero(Value const & x);
+
+  ///@{
+  Value if_allbits_else_zero(Value const& x);
+  as_arithmetic_t<LogicalValue> if_allbits_else_zero(LogicalValue const& x);
+  ///@}
 } }
 #endif
 

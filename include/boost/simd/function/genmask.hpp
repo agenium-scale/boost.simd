@@ -41,8 +41,8 @@ namespace boost { namespace simd
   **/
 
   ///@{
+  as_arithmetic_t<LogicalValue> genmask(const LogicalValue& a);
   Value genmask(const Value& a);
-  as_integer_t<Value> genmask(const Value& a);
   ///@}
 } }
 #endif
