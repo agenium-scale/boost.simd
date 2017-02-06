@@ -41,7 +41,7 @@ namespace boost { namespace simd
 
        @snippet rec.txt rec
   **/
-  Value rec(Value const & v0);
+  Value rec(Value const& x);
 } }
 #endif
 

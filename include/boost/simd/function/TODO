@@ -266,7 +266,7 @@ OK prev.hpp
 NA prod.hpp
 OK quadrant.hpp
 NA raw.hpp
-rec.hpp
+OK rec.hpp
 refine_rec.hpp
 refine_rsqrt.hpp
 rem_2pi.hpp
