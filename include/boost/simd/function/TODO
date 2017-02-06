@@ -186,8 +186,8 @@ OK is_negative.hpp
 OK is_nez.hpp
 OK is_ngez.hpp
 OK is_ngtz.hpp
-is_nlez.hpp
-is_nltz.hpp
+OK is_nlez.hpp
+OK is_nltz.hpp
 is_normal.hpp
 is_not_denormal.hpp
 is_not_equal.hpp
