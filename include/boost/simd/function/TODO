@@ -172,7 +172,7 @@ OK is_greater_equal.hpp
 OK is_greater.hpp
 OK is_gtz.hpp
 OK is_imag.hpp
-isincluded_c.hpp
+NA isincluded_c.hpp
 isincluded.hpp
 is_inf.hpp
 is_invalid.hpp
