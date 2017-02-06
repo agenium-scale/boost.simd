@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object returns the input value which have the least absolute value.
 
@@ -31,7 +31,7 @@ namespace boost { namespace simd
      @snippet minmag.txt minmag
 
   **/
-  Value minmag(Value const & x, Value const& y);
+  Value minmag(Value const& x, Value const& y);
 } }
 #endif
 
