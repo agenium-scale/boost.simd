@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
 
     This function object computes the remainder modulo \f$\pi/2\f$,
@@ -48,7 +48,7 @@ namespace boost { namespace simd
      @snippet rem_pio2.txt rem_pio2
 
   **/
-  std::pair<IntegerValue, Value> rem_pio2(Value const & x);
+  std::pair<IEEEValue, IEEEValue> rem_pio2(IEEEValue const & x);
 } }
 #endif
 
