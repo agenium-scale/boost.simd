@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object returns the greatest representable
     value  strictly less than the parameter except:
@@ -49,7 +49,7 @@ namespace boost { namespace simd
      @snippet prev.txt prev
 
   **/
-  Value prev(Value const & x);
+  Value prev(Value const& x);
 } }
 #endif
 
