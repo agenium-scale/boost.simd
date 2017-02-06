@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-arithmetic
     This function object computes the smallest of its parameter.
 
@@ -50,7 +50,7 @@ namespace boost { namespace simd
        @snippet min.txt min
 
   **/
-  Value min(Value const & v0, Value const& y);
+  Value min(Value const& x, Value const& y);
 } }
 #endif
 
