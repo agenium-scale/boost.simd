@@ -31,7 +31,7 @@ namespace boost { namespace simd
      @snippet inrad.txt inrad
 
   **/
-  Value inrad(Value const & x);
+  IEEEValue inrad(IEEEValue const& x);
 } }
 #endif
 

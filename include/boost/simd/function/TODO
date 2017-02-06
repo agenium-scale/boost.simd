@@ -152,7 +152,7 @@ OK ilogb.hpp
 OK inc.hpp
 OK indeg.hpp
 OK inearbyint.hpp
-inrad.hpp
+OK inrad.hpp
 insert.hpp
 interleave_even.hpp
 interleave_first.hpp
