@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-arithmetic
     Function object implementing itrunc capabilities
@@ -28,7 +28,7 @@ namespace boost { namespace simd
 
     @see ifix
   **/
-  Value itrunc(Value const & v0);
+  Value itrunc(Value const& x);
 } }
 #endif
 
