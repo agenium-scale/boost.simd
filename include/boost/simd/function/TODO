@@ -243,7 +243,7 @@ OK minus.hpp
 W  modf.hpp
 OK multiplies.hpp
 NA musl.hpp
-nbtrue.hpp
+NA nbtrue.hpp
 nearbyint.hpp
 negate.hpp
 negatenz.hpp
