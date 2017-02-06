@@ -41,7 +41,7 @@ namespace boost { namespace simd
        @snippet is_equal.txt is_equal
 
   **/
-  as_logical_t<T0> is_equal(T0 const& x, T1 const& y);
+  as_logical_t<Value> is_equal(Value const& x, Value const& y);
 } }
 #endif
 
