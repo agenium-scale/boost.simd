@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object returns @c x multiplied by the @ref signnz of @c y.
     The result is unspecified if @c y is @ref Nan
@@ -39,7 +39,7 @@ namespace boost { namespace simd
      @snippet negatenz.txt negatenz
 
   **/
-  Value negatenz(Value const & x, value const& y);
+  Value negatenz(Value const& x, Value const& y);
 } }
 #endif
 

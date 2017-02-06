@@ -246,7 +246,7 @@ NA musl.hpp
 NA nbtrue.hpp
 OK nearbyint.hpp
 OK negate.hpp
-negatenz.hpp
+OK negatenz.hpp
 nextafter.hpp
 next.hpp
 nextpow2.hpp
