@@ -178,7 +178,7 @@ OK is_inf.hpp
 OK is_invalid.hpp
 OK is_less_equal.hpp
 OK is_lessgreater.hpp
-is_less.hpp
+OK is_less.hpp
 is_lez.hpp
 is_ltz.hpp
 is_nan.hpp
