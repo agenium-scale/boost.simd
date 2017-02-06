@@ -162,7 +162,7 @@ OK interleave_second.hpp
 OK iround.hpp
 OK is_denormal.hpp
 OK is_equal.hpp
-is_equal_with_equal_nans.hpp
+OK is_equal_with_equal_nans.hpp
 is_eqz.hpp
 is_even.hpp
 is_finite.hpp

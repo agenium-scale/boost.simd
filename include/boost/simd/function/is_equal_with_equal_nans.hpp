@@ -39,7 +39,7 @@ namespace boost { namespace simd
        @snippet is_equal_with_equal_nans.txt is_equal_with_equal_nans
 
   **/
-  as_logical_t<Value> is_equal_with_equal_nans(Value const& x, Value const &y);
+  as_logical_t<Value> is_equal_with_equal_nans(Value const& x, Value const& y);
 } }
 #endif
 
