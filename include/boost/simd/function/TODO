@@ -157,7 +157,7 @@ NA insert.hpp
 OK interleave_even.hpp
 OK interleave_first.hpp
 NA interleave.hpp
-interleave_odd.hpp
+OK interleave_odd.hpp
 interleave_second.hpp
 iround.hpp
 is_denormal.hpp
