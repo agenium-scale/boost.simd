@@ -296,8 +296,8 @@ NA saturated.hpp
 NA saturate.hpp
 OK sbits.hpp
 W  secd.hpp
-sech.hpp
-sec.hpp
+W  sech.hpp
+W  sec.hpp
 secpi.hpp
 shift_left.hpp
 shift_right.hpp

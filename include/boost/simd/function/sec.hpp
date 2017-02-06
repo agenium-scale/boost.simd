@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the secant of the angle in radian: \f$1/\cos(x)\f$.
 
@@ -34,7 +34,7 @@ namespace boost { namespace simd
      @snippet sec.txt sec
 
   **/
-  Value sec(Value const & x);
+  IEEEValue sec(IEEEValue const& x);
 } }
 #endif
 
