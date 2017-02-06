@@ -32,12 +32,7 @@ namespace boost { namespace simd
      @snippet if_else_zero.txt if_else_zero
 
   **/
-  Value if_else_zero(Value const& cond, Value const& t);
-
-  /*!
-    @overload
-  */
-  Value if_else_zero(LogicalValue const& cond, Value const& t);
+  Value1 if_else_zero(Value0 const& c, Value1 const& t);
 } }
 #endif
 
