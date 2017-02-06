@@ -203,7 +203,7 @@ OK is_not_real.hpp
 OK is_odd.hpp
 OK is_ord.hpp
 OK is_positive.hpp
-is_real.hpp
+OK is_real.hpp
 is_simd_logical.hpp
 is_unord.hpp
 itrunc.hpp
