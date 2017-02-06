@@ -142,7 +142,7 @@ OK ifnot_minus.hpp
 OK ifnot_neg.hpp
 OK ifnot_plus.hpp
 OK if_one_else_zero.hpp
-if_plus.hpp
+OK if_plus.hpp
 ifrexp.hpp
 if_zero_else_allbits.hpp
 if_zero_else.hpp
