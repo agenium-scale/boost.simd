@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-arithmetic
     This function object  computes the remainder (rem) and a part of the quotient (quo) upon division of
     @c x by @c y. By design, the value of the remainder is the same as that
@@ -57,7 +57,7 @@ namespace boost { namespace simd
      @snippet remquo.txt remquo
 
   **/
-   std::pair<IntegerValue, IntegerValue> remquo(Value const & x, IntegerValue const& y);
+  std::pair<IEEEValue, as_integer_t<IEEEValue> remquo(IEEEValue const& x, IEEEValue const& y);
 } }
 #endif
 
