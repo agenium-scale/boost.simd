@@ -196,8 +196,8 @@ OK is_not_greater_equal.hpp
 OK is_not_greater.hpp
 OK is_not_imag.hpp
 OK is_not_infinite.hpp
-is_not_less_equal.hpp
-is_not_less.hpp
+OK is_not_less_equal.hpp
+OK is_not_less.hpp
 is_not_nan.hpp
 is_not_real.hpp
 is_odd.hpp
