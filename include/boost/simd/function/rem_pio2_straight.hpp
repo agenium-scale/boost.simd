@@ -54,7 +54,7 @@ namespace boost { namespace simd
      @snippet rem_pio2_straight.txt rem_pio2_straight
 
   **/
-  std::pair<IntegerValue, Value> rem_pio2_straight(Value const & x);
+  std::pair<IEEEValue, IEEEValue> rem_pio2_straight(IEEEValue const& x);
 } }
 #endif
 
