@@ -12,10 +12,9 @@
 #define BOOST_SIMD_FUNCTION_PROD_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
-namespace boost {
-namespace simd {
-
-/*!
+namespace boost { namespace simd
+{
+  /*!
    @ingroup group-reduction
    This function object returns the product of the elements of the argument
 
@@ -32,10 +31,9 @@ namespace simd {
 
     @snippet prod.txt prod
 
- **/
-scalar_of_t<Value> prod(Value const &x);
-}
-}
+  **/
+  scalar_of_t<Value> prod(Value const& x);
+} }
 #endif
 
 #include <boost/simd/function/scalar/prod.hpp>
