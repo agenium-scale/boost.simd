@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object computes the remainder modulo
     \f$\pi/2\f$ with medium algorithm, and the angle quadrant between 0 and 3.
@@ -50,7 +50,7 @@ namespace boost { namespace simd
      @snippet rem_pio2_medium.txt rem_pio2_medium
 
   **/
-  std::pair<IntegerValue, Value> rem_pio2_medium(Value const & x);
+  std::pair<IEEEValue, IEEEValue> rem_pio2_medium(IEEEValue const& x);
 } }
 #endif
 
