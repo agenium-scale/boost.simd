@@ -173,7 +173,7 @@ OK is_greater.hpp
 OK is_gtz.hpp
 OK is_imag.hpp
 NA isincluded_c.hpp
-isincluded.hpp
+NA isincluded.hpp
 is_inf.hpp
 is_invalid.hpp
 is_less_equal.hpp
