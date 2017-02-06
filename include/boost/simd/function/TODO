@@ -133,7 +133,7 @@ OK if_else_zero.hpp
 OK if_inc.hpp
 OK ifix.hpp
 OK ifloor.hpp
-if_minus.hpp
+OK if_minus.hpp
 if_nan_else.hpp
 if_neg.hpp
 ifnot_dec.hpp
