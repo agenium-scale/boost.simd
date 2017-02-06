@@ -2,7 +2,7 @@ var searchData=
 [
   ['trigonometric_20functions_2e',['Trigonometric functions.',['../group__group-trigonometric.html',1,'']]],
   ['types_20and_20helpers',['Types and helpers',['../group__group-types.html',1,'']]],
-  ['tutorial_5falgorithm',['tutorial_algorithm',['../md__c_1__users__joel__documents_dev_open_source_boost_libs_simd_doc_custom_sections_tutorials_tutorial_algorithm.html',1,'']]],
+  ['tutorial_5falgorithm',['tutorial_algorithm',['../md__home_charly_workspace_cpp_boost.simd.agg_doc_custom_sections_tutorials_tutorial_algorithm.html',1,'']]],
   ['tan',['tan',['../group__group-trigonometric_ga89ae983d43aa6eead7a8fb5a7ffc36c2.html#ga89ae983d43aa6eead7a8fb5a7ffc36c2',1,'boost::simd']]],
   ['tan_5f3pio_5f8',['Tan_3pio_8',['../group__group-constant_gaefbaf9d6f8e46ac8cd19bf5c9756d964.html#gaefbaf9d6f8e46ac8cd19bf5c9756d964',1,'boost::simd']]],
   ['tand',['tand',['../group__group-trigonometric_ga73e0d72c602c0a6fe63d126eed200ccf.html#ga73e0d72c602c0a6fe63d126eed200ccf',1,'boost::simd']]],
