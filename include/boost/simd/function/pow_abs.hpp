@@ -37,7 +37,7 @@ namespace boost { namespace simd
      @snippet pow_abs.txt pow_abs
 
   **/
-  Value pow_abs(Value const& x, Value const& y);
+  IEEEValue pow_abs(IEEEValue const& x, IEEEValue const& y);
 } }
 #endif
 
