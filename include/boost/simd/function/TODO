@@ -168,7 +168,7 @@ OK is_even.hpp
 OK is_finite.hpp
 OK is_flint.hpp
 OK is_gez.hpp
-is_greater_equal.hpp
+OK is_greater_equal.hpp
 is_greater.hpp
 is_gtz.hpp
 is_imag.hpp
