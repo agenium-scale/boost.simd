@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-predicates
     This function object returns @ref True if at least two inputs
     are not @ref Zero else @ref False.
@@ -36,7 +36,7 @@ namespace boost { namespace simd
        @snippet majority.txt majority
 
   **/
-  as_logical_t<Value> Value majority(Value const& x, Value const& y, Value const& z);
+  as_logical_t<Value> majority(Value const& x, Value const& y, Value const& z);
 } }
 #endif
 

@@ -223,7 +223,7 @@ OK logical_ornot.hpp
 OK logical_xor.hpp
 OK lo.hpp
 OK lookup.hpp
-majority.hpp
+OK majority.hpp
 make.hpp
 mantissa.hpp
 mask2logical.hpp
