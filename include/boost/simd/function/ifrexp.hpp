@@ -68,7 +68,7 @@ namespace boost { namespace simd
      @snippet ifrexp.txt ifrexp
 
   **/
-  std::pair<RealValue, as_integer_t<RealValue>> ifrexp(RealValue const & x);
+  std::pair<IEEEValue, as_integer_t<IEEEValue>> ifrexp(IEEEValue const& x);
 } }
 #endif
 
