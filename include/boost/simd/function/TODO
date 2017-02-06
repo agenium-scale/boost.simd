@@ -184,7 +184,7 @@ OK is_ltz.hpp
 OK is_nan.hpp
 OK is_negative.hpp
 OK is_nez.hpp
-is_ngez.hpp
+OK is_ngez.hpp
 is_ngtz.hpp
 is_nlez.hpp
 is_nltz.hpp

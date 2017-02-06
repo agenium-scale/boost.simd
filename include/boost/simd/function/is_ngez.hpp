@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-predicates
 
     This function object returns @ref True if x is not greater or equal to @ref Zero else returns @ref False.
