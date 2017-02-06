@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-operator
     Function object implementing plus capabilities
 
@@ -43,7 +43,7 @@ namespace boost { namespace simd
     returns the sum of @c a and @c b
 
   **/
-  Value plus(Value const & x, Value const& y);
+  Value plus(Value const& x, Value const& y);
 } }
 #endif
 
