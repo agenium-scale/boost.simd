@@ -228,7 +228,7 @@ NA make.hpp
 OK mantissa.hpp
 OK mask2logical.hpp
 OK max.hpp
-maximum.hpp
+NA maximum.hpp
 maxmag.hpp
 maxnum.hpp
 maxnummag.hpp

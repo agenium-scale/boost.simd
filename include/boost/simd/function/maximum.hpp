@@ -12,10 +12,9 @@
 #define BOOST_SIMD_FUNCTION_MAXIMUM_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
-namespace boost {
-namespace simd {
-
-/*!
+namespace boost { namespace simd
+{
+  /*!
    @ingroup group-reduction
    This function object returns the greatest element of the argument
 
@@ -32,10 +31,9 @@ namespace simd {
 
     @snippet maximum.txt maximum
 
- **/
-scalar_of_t<Value> maximum(Value const &x);
-}
-}
+  **/
+  scalar_of_t<Value> maximum(Value const& x);
+} }
 #endif
 
 #include <boost/simd/function/scalar/maximum.hpp>
