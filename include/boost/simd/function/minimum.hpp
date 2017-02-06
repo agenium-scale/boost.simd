@@ -12,10 +12,10 @@
 #define BOOST_SIMD_FUNCTION_MINIMUM_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
-namespace boost {
-namespace simd {
+namespace boost { namespace simd
+{
 
-/*!
+  /*!
    @ingroup group-reduction
    This function object returns the least element of the argument
 
@@ -32,10 +32,9 @@ namespace simd {
 
     @snippet minimum.txt minimum
 
- **/
-scalar_of_t<Value> minimum(Value const &x);
-}
-}
+  **/
+  scalar_of_t<Value> minimum(Value const& x);
+} }
 #endif
 
 #include <boost/simd/function/scalar/minimum.hpp>
