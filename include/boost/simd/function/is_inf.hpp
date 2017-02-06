@@ -37,7 +37,6 @@ namespace boost { namespace simd
 
   **/
   as_logical_t<Value> is_inf(Value const& x);
-  as_logical_t<Value> is_inf(Value const& x);
 } }
 #endif
 
