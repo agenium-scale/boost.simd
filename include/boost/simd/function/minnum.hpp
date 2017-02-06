@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
    This function object returns  the smaller of two floating point arguments, treating NaNs
     as missing data (between a NaN and a numeric value, the numeric value is chosen).
@@ -40,7 +40,7 @@ namespace boost { namespace simd
 
 
   **/
-  Value minnum(Value const & x, Value const& y);
+  Value minnum(Value const& x, Value const& y);
 } }
 #endif
 
