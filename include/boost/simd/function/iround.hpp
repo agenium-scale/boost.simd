@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-arithmetic
     This function object computes the integer conversion of the @ref round of its parameter.
@@ -36,8 +36,8 @@ namespace boost { namespace simd
 
        @snippet iround.txt iround
 
- **/
-  as_integer_t<Value> iround(Value const & x);
+  **/
+  as_integer_t<Value> iround(Value const& x);
 } }
 #endif
 
