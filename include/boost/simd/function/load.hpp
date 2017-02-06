@@ -27,12 +27,12 @@ namespace boost { namespace simd
 
     @return The absolute value of the parameter.
   **/
-  template<typename T, typename Pointer, typename Offset> T load(Pointer ptr, Offset o) {}
+  template<typename T, typename Pointer, typename Offset> T load(Pointer ptr, Offset o);
 
   /*!
     @overload
   **/
-  template<typename T, typename Pointer> T load(Pointer ptr) {}
+  template<typename T, typename Pointer> T load(Pointer ptr);
 
 } }
 #endif

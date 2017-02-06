@@ -208,7 +208,7 @@ NA is_simd_logical.hpp
 OK is_unord.hpp
 OK itrunc.hpp
 OK ldexp.hpp
-load.hpp
+OK load.hpp
 log10.hpp
 log1p.hpp
 log2.hpp
