@@ -169,7 +169,7 @@ OK is_finite.hpp
 OK is_flint.hpp
 OK is_gez.hpp
 OK is_greater_equal.hpp
-is_greater.hpp
+OK is_greater.hpp
 is_gtz.hpp
 is_imag.hpp
 isincluded_c.hpp
