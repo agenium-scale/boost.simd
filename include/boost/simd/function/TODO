@@ -286,7 +286,7 @@ OK rol.hpp
 OK ror.hpp
 OK round.hpp
 OK rrol.hpp
-rror.hpp
+OK rror.hpp
 rshl.hpp
 rshr.hpp
 rsqrt.hpp

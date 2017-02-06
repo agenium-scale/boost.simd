@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-bitwise
     This function object returns the first entry rotated right or left
     by the absolute value of the second entry,
@@ -39,7 +39,7 @@ namespace boost { namespace simd
      @snippet rror.txt rror
 
   **/
-  Value rror(Value const & x, IntegerValue const &n);
+  Value rror(Value const& x, IntegerValue const& n);
 } }
 #endif
 
