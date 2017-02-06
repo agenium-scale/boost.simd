@@ -53,8 +53,7 @@ namespace boost { namespace simd
     @return void
   **/
   template<typename Value, typename Offset>
-  void insert( Data & d, Offset const& o, Value const& v)
-  {}
+  void insert(Data& d, Offset const& o, Value const& v);
 } }
 #endif
 
