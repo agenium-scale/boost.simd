@@ -166,7 +166,7 @@ OK is_equal_with_equal_nans.hpp
 OK is_eqz.hpp
 OK is_even.hpp
 OK is_finite.hpp
-is_flint.hpp
+OK is_flint.hpp
 is_gez.hpp
 is_greater_equal.hpp
 is_greater.hpp
