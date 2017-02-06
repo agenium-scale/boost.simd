@@ -209,7 +209,7 @@ OK is_unord.hpp
 OK itrunc.hpp
 OK ldexp.hpp
 OK load.hpp
-log10.hpp
+OK log10.hpp
 log1p.hpp
 log2.hpp
 log.hpp

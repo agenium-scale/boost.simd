@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-exponential
     This function object returns the base ten logarithm of its argument.
 
@@ -39,7 +39,7 @@ namespace boost { namespace simd
      @snippet log10.txt log10
 
   **/
-  Value log10(Value const& x);
+  IEEEValue log10(IEEEValue const& x);
 } }
 #endif
 
