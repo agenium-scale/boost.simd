@@ -220,7 +220,7 @@ OK logical_not.hpp
 OK logical_notor.hpp
 OK logical_or.hpp
 OK logical_ornot.hpp
-logical_xor.hpp
+OK logical_xor.hpp
 lo.hpp
 lookup.hpp
 majority.hpp
