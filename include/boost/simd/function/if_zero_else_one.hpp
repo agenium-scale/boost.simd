@@ -33,11 +33,6 @@ namespace boost { namespace simd
 
   **/
   Value if_zero_else_one(Value const& c);
-
-  /*!
-    @overload
-  */
-  Value if_zero_else_one(LogicalValue const& c);
 } }
 #endif
 

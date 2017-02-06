@@ -146,7 +146,7 @@ OK if_plus.hpp
 NA ifrexp.hpp
 OK if_zero_else_allbits.hpp
 OK if_zero_else.hpp
-if_zero_else_one.hpp
+OK if_zero_else_one.hpp
 ilog2.hpp
 ilogb.hpp
 inc.hpp
