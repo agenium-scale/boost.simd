@@ -221,7 +221,7 @@ OK logical_notor.hpp
 OK logical_or.hpp
 OK logical_ornot.hpp
 OK logical_xor.hpp
-lo.hpp
+OK lo.hpp
 lookup.hpp
 majority.hpp
 make.hpp

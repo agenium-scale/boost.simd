@@ -36,7 +36,7 @@ namespace boost { namespace simd
      @snippet lo.txt lo
 
   **/
-  Value lo(Value const & x);
+  as_integer_t<Value> lo(Value const& x);
 } }
 #endif
 
