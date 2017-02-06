@@ -148,7 +148,7 @@ OK if_zero_else_allbits.hpp
 OK if_zero_else.hpp
 OK if_zero_else_one.hpp
 OK ilog2.hpp
-ilogb.hpp
+OK ilogb.hpp
 inc.hpp
 indeg.hpp
 inearbyint.hpp

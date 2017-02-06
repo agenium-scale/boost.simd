@@ -20,9 +20,7 @@ namespace boost { namespace simd
     This function object returns the integer truncation
     of the base 2 logarithm of x.
     It coincides with the @ref exponent function
-    on all platforms supported.
-
-
+    on all supported platforms.
 
     @par Header <boost/simd/function/ilogb.hpp>
 
@@ -35,7 +33,7 @@ namespace boost { namespace simd
      @snippet ilogb.txt ilogb
 
   **/
-  Value ilogb(Value const& x);
+  as_integer_t<Value> ilogb(Value const& x);
 } }
 #endif
 
