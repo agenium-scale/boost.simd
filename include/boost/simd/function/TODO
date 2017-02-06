@@ -251,7 +251,7 @@ OK nextafter.hpp
 OK next.hpp
 OK nextpow2.hpp
 NA none.hpp
-nthroot.hpp
+OK nthroot.hpp
 oneminus.hpp
 pack_cast.hpp
 pedantic.hpp

@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-exponential
     This function object returns the nth root of its first argument: \f$\sqrt[n]{x}\f$
     \arg n must be of integer type
@@ -49,7 +49,7 @@ namespace boost { namespace simd
      @snippet nthroot.txt nthroot
 
   **/
-  Value nthroot(Value const & x, IntegerValue const &n);
+  Value nthroot(Value const& x, IntegerValue const& n);
 } }
 #endif
 
