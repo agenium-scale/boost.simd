@@ -35,12 +35,7 @@ namespace boost { namespace simd
      if_else_nan
 
   **/
-  Value if_else_allbits(Value const& c, Value const& x);
-
-  /*!
-    @overload
-  */
-  Value if_else_allbits(LogicalValue const& c, Value const& x);
+  Value1 if_else_allbits(Value0 const& c, Value1 const& x);
 } }
 #endif
 
