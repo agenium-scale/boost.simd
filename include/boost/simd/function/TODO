@@ -205,7 +205,7 @@ OK is_ord.hpp
 OK is_positive.hpp
 OK is_real.hpp
 NA is_simd_logical.hpp
-is_unord.hpp
+OK is_unord.hpp
 itrunc.hpp
 ldexp.hpp
 load.hpp
