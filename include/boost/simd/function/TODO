@@ -257,7 +257,7 @@ NA pack_cast.hpp
 NA pedantic.hpp
 NA plain.hpp
 OK plus.hpp
-popcnt.hpp
+OK popcnt.hpp
 pow2.hpp
 pow_abs.hpp
 pow.hpp

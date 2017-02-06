@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-bitwise
     This function object returns the number of set bits in the input.
 
@@ -34,7 +34,7 @@ namespace boost { namespace simd
      @snippet popcnt.txt popcnt
 
   **/
-  IntegerValue popcnt(Value const & x);
+  as_integer_t<Value> popcnt(Value const& x);
 } }
 #endif
 
