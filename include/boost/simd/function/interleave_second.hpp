@@ -41,7 +41,7 @@ namespace boost { namespace simd
     with <tt> n = cardinal_of<T>::value </tt>
 
   **/
-  Value interleave_second(Value const& v0, Value const& v1);
+  Value interleave_second(Value const& x, Value const& y);
 #endif
 } }
 
