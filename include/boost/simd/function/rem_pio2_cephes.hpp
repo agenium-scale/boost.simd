@@ -40,7 +40,7 @@ namespace boost { namespace simd
      @snippet rem_pio2_cephes.txt rem_pio2_cephes
 
   **/
-  std::pair<Value, Value> rem_pio2_cephes(Value const& x);
+  std::pair<IEEEValue, IEEEValue> rem_pio2_cephes(IEEEValue const& x);
 } }
 #endif
 
