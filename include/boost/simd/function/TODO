@@ -224,7 +224,7 @@ OK logical_xor.hpp
 OK lo.hpp
 OK lookup.hpp
 OK majority.hpp
-make.hpp
+NA make.hpp
 mantissa.hpp
 mask2logical.hpp
 max.hpp
