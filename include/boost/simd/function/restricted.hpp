@@ -14,6 +14,7 @@
 #include <boost/simd/config.hpp>
 #include <boost/simd/detail/decorator.hpp>
 #include <boost/simd/detail/dispatch.hpp>
+
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {

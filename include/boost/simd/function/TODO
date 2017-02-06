@@ -279,7 +279,7 @@ NA remquo.hpp
 OK repeat_lower_half.hpp
 OK repeat_upper_half.hpp
 NA residual.hpp
-restricted.hpp
+NA restricted.hpp
 reversebits.hpp
 reverse.hpp
 rol.hpp
