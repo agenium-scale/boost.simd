@@ -37,7 +37,6 @@ namespace boost { namespace simd
 
   **/
   template<typename T> auto pedantic_(T const& x) {}
-
 } }
 #endif
 

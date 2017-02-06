@@ -254,7 +254,7 @@ NA none.hpp
 OK nthroot.hpp
 OK oneminus.hpp
 NA pack_cast.hpp
-pedantic.hpp
+NA pedantic.hpp
 plain.hpp
 plus.hpp
 popcnt.hpp
