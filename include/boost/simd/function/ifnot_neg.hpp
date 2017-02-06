@@ -18,7 +18,7 @@ namespace boost { namespace simd
  /*!
     @ingroup group-boolean
 
-    This function object conditionally returns -x if cond is @ref False and x otherwise.
+    This function object conditionally returns -x if @c c is @ref False and x otherwise.
 
 
     @par Header <boost/simd/function/ifnot_neg.hpp>
@@ -32,11 +32,7 @@ namespace boost { namespace simd
      @snippet negifnot.txt negifnot
 
   **/
-  Value ifnot_neg(LogicalValue const& cond, Value const & x);
-
-  //@overload
-  Value ifnot_neg(Value const& cond, Value const & x);
-
+  Value1 ifnot_neg(Value0 const& c, Value1 const& x);
 } }
 #endif
 
