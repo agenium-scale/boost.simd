@@ -201,7 +201,7 @@ OK is_not_less.hpp
 OK is_not_nan.hpp
 OK is_not_real.hpp
 OK is_odd.hpp
-is_ord.hpp
+OK is_ord.hpp
 is_positive.hpp
 is_real.hpp
 is_simd_logical.hpp
