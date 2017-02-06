@@ -295,7 +295,7 @@ OK safe_min.hpp
 NA saturated.hpp
 NA saturate.hpp
 OK sbits.hpp
-secd.hpp
+W  secd.hpp
 sech.hpp
 sec.hpp
 secpi.hpp
