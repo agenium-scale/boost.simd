@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object returns the smallest integer n such that
     `saturated_(abs)(x)` is less or equal to \f$2^n\f$
@@ -33,7 +33,7 @@ namespace boost { namespace simd
      @snippet nextpow2.txt nextpow2
 
   **/
-  IntValue nextpow2(Value const & x);
+  as_integer_t<Value> nextpow2(Value const& x);
 } }
 #endif
 

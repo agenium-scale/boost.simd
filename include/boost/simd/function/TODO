@@ -249,7 +249,7 @@ OK negate.hpp
 OK negatenz.hpp
 OK nextafter.hpp
 OK next.hpp
-nextpow2.hpp
+OK nextpow2.hpp
 none.hpp
 nthroot.hpp
 oneminus.hpp
