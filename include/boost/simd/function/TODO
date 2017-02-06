@@ -255,7 +255,7 @@ OK nthroot.hpp
 OK oneminus.hpp
 NA pack_cast.hpp
 NA pedantic.hpp
-plain.hpp
+NA plain.hpp
 plus.hpp
 popcnt.hpp
 pow2.hpp
