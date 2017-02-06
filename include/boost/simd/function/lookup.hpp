@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-swar
     Function object implementing lookup capabilities
@@ -42,7 +42,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  Value lookup(Value const & v0, IntegerValue const& n);
+  Value lookup(Value const& x, IntegerValue const& n);
 } }
 #endif
 
