@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-arithmetic
     This function object computes the truncation toward @ref Zero
@@ -54,7 +54,7 @@ namespace boost { namespace simd
        @snippet trunc.txt trunc
 
   **/
-  Value trunc(Value const & x);
+  Value trunc(Value const& x);
 } }
 #endif
 

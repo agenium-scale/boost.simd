@@ -350,8 +350,8 @@ OK tenpower.hpp
 OK tofloat.hpp
 OK toint.hpp
 OK touint.hpp
-trunc.hpp
-two_add.hpp
+OK trunc.hpp
+OK two_add.hpp
 twopower.hpp
 two_prod.hpp
 two_split.hpp
