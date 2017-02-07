@@ -339,7 +339,7 @@ NA std.hpp
 OK stirling.hpp
 NA store.hpp
 NA stream.hpp
-successor.hpp
+OK successor.hpp
 sum.hpp
 swapbytes.hpp
 tand.hpp

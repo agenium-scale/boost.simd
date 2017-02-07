@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object returns the `n`-th least element strictly greater than the parameter
 
@@ -40,7 +40,10 @@ namespace boost { namespace simd
      @snippet successor.txt successor
 
   **/
+  ///@{
+  Value successor(Value const& x);
   Value successor(Value const& x, IntegerValue const& n);
+  ///@}
 } }
 #endif
 
