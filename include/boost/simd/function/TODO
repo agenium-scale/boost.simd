@@ -299,7 +299,7 @@ W  secd.hpp
 W  sech.hpp
 W  sec.hpp
 OK secpi.hpp
-shift_left.hpp
+OK shift_left.hpp
 shift_right.hpp
 shl.hpp
 shr.hpp
