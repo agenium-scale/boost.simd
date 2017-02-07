@@ -323,8 +323,8 @@ OK sinpi.hpp
 NA slice_high.hpp
 OK slice.hpp
 OK slice_low.hpp
-slide.hpp
-sort.hpp
+NA slide.hpp
+OK sort.hpp
 splat.hpp
 splatted.hpp
 split_high.hpp

@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-swar
     Function object implementing sort capabilities
@@ -34,7 +34,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  Value sort(Value const & v0);
+  Value sort(Value const& x);
 } }
 #endif
 
