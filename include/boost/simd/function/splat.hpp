@@ -37,7 +37,7 @@ namespace boost { namespace simd
     @endcode
 
   **/
-  template<typename T, typename U> T splat(U const& x) {}
+  as_simd_t<Value> splat(Value const& x);
 } }
 #endif
 
