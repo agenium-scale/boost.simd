@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
   @ingroup group-trigonometric
     This function object returns the Computes the sinus cardinal value of its parameter,
     i.e. \f$\sin(x)/x\f$.
@@ -35,7 +35,7 @@ namespace boost { namespace simd
      @snippet sinc.txt sinc
 
   **/
-  Value sinc(Value const & x);
+  IEEEValue sinc(IEEEValue const& x);
 } }
 #endif
 

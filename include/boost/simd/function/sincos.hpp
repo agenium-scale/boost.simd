@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the Computes simultaneouly
     and at lower cost the sine and cosine of the input
@@ -34,7 +34,7 @@ namespace boost { namespace simd
      @snippet sincos.txt sincos
 
   **/
-  std::pair<Value, Value> sincos(Value const & x);
+  std::pair<IEEEValue, IEEEValue> sincos(IEEEValue const& x);
 } }
 #endif
 

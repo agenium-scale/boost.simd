@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the Computes simultaneously and
     at lower cost the sind and cosd of the input
@@ -34,7 +34,7 @@ namespace boost { namespace simd
      @snippet sincosd.txt sincosd
 
   **/
-  std::pair<Value, Value> sincosd(Value const & x);
+  std::pair<IEEEValue, IEEEValue> sincosd(IEEEValue const& x);
 } }
 #endif
 
