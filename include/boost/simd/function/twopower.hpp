@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-bitwise
     This function object returns \f$2^n\f$ (or 0 if n is less than zero)
 
@@ -38,7 +38,7 @@ namespace boost { namespace simd
      @snippet twopower.txt twopower
 
   **/
-  Value twopower(Value const & x);
+  Value twopower(IntegerValue const& x);
 } }
 #endif
 
