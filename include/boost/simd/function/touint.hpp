@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-arithmetic
     This function object converts its parameter to unsigned integer by truncation.
@@ -38,7 +38,7 @@ namespace boost { namespace simd
 
    @par Decorators
 
-   - saturated_ as stated above ensures ggood brhaviour on limiting values.
+   - saturated_ as stated above ensures good behaviour on limiting values.
 
    @see toint, tofloat
 
@@ -52,7 +52,7 @@ namespace boost { namespace simd
 
 
   **/
-  UIntegerValue touint(Value const & x);
+  as_integer_t<Value, unsigned> touint(Value const& x);
 } }
 #endif
 
