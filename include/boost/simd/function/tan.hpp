@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the tangent of the input in radians:
     \f$\sin(x)/\cos(x)\f$.
@@ -41,7 +41,7 @@ namespace boost { namespace simd
      @snippet tan.txt tan
 
   **/
-  Value tan(Value const & x);
+  IEEEValue tan(IEEEValue const& x);
 } }
 #endif
 

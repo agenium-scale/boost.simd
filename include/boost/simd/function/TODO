@@ -344,7 +344,7 @@ NA sum.hpp
 OK swapbytes.hpp
 OK tand.hpp
 OK tanh.hpp
-tan.hpp
+OK tan.hpp
 tanpi.hpp
 tenpower.hpp
 tofloat.hpp
