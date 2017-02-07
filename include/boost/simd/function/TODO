@@ -346,8 +346,8 @@ OK tand.hpp
 OK tanh.hpp
 OK tan.hpp
 OK tanpi.hpp
-tenpower.hpp
-tofloat.hpp
+OK tenpower.hpp
+OK tofloat.hpp
 toint.hpp
 touint.hpp
 trunc.hpp
