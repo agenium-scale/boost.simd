@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object returns ulp distance between its arguments.
 
@@ -80,7 +80,7 @@ namespace boost { namespace simd
      @snippet ulpdist.txt ulpdist
 
   **/
-  Value ulpdist(Value const& x, Value const& y);
+  IEEEValue ulpdist(IEEEValue const& x, IEEEValue const& y);
 } }
 #endif
 
