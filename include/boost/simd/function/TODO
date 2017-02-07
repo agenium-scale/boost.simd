@@ -303,7 +303,7 @@ OK shift_left.hpp
 OK shift_right.hpp
 OK shl.hpp
 OK shr.hpp
-shuffle.hpp
+NA shuffle.hpp
 signbit.hpp
 signgam.hpp
 sign.hpp
