@@ -308,7 +308,7 @@ OK signbit.hpp
 OK signgam.hpp
 OK sign.hpp
 OK significants.hpp
-signnz.hpp
+OK signnz.hpp
 sinc.hpp
 sincosd.hpp
 sincos.hpp

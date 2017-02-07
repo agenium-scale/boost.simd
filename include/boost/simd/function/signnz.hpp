@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object returns the sign of x. I.e. -1 or 1,
     depending on the fact  @c x is negative or positive.
@@ -42,7 +42,7 @@ namespace boost { namespace simd
      @snippet signnz.txt signnz
 
   **/
-  Value signnz(Value const & x);
+  Value signnz(Value const& x);
 } }
 #endif
 
