@@ -354,7 +354,7 @@ OK trunc.hpp
 OK two_add.hpp
 OK twopower.hpp
 OK two_prod.hpp
-two_split.hpp
+OK two_split.hpp
 ulpdist.hpp
 ulp.hpp
 unary_minus.hpp

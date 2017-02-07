@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-arithmetic
     This function object computes two reals @c r0 and @c r1 (in an std::pair)
