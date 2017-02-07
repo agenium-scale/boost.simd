@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the tangent of angle in \f$\pi\f$ multiples:
     \f$\cos(\pi x)/sin(\pi x)\f$.
@@ -41,7 +41,7 @@ namespace boost { namespace simd
      @snippet tanpi.txt tanpi
 
   **/
-  Value tanpi(Value const & x);
+  IEEEValue tanpi(IEEEValue const& x);
 } }
 #endif
 

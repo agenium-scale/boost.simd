@@ -345,7 +345,7 @@ OK swapbytes.hpp
 OK tand.hpp
 OK tanh.hpp
 OK tan.hpp
-tanpi.hpp
+OK tanpi.hpp
 tenpower.hpp
 tofloat.hpp
 toint.hpp
