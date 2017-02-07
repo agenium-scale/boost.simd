@@ -14,9 +14,10 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
   @ingroup group-euler
-    This function object computes the sign of gamma function without explicitly computing the costly gamma function.
+    This function object computes the sign of gamma function without explicitly computing
+    the costly gamma function.
 
     @see gamma, gammaln
 
@@ -31,7 +32,7 @@ namespace boost { namespace simd
 
        @snippet stirling.txt stirling
   **/
-  Value signgam(Value const & x);
+  IEEEValue signgam(IEEEValue const& x);
 } }
 #endif
 
