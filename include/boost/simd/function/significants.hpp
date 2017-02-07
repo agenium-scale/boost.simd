@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-exponential
     This function object returns the rounding to n significants digits of its argument.
 
@@ -30,7 +30,7 @@ namespace boost { namespace simd
      @snippet significants.txt significants
 
   **/
-  Value significants(Value const & x, IntegerValue const& n);
+  IEEEValue significants(IEEEValue const& x, IntegerValue const& n);
 } }
 #endif
 

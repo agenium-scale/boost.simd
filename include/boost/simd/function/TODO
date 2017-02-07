@@ -307,7 +307,7 @@ NA shuffle.hpp
 OK signbit.hpp
 OK signgam.hpp
 OK sign.hpp
-significants.hpp
+OK significants.hpp
 signnz.hpp
 sinc.hpp
 sincosd.hpp
