@@ -24,7 +24,7 @@ namespace boost { namespace simd
     to the appropriate SIMD register type of corresponding cardinal.
     @see split_low, split, slice
   **/
-  Value0 split_high(Value1 const& x);
+  upgrade_t<Value> split_high(Value const& x);
 } }
 #endif
 

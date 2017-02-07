@@ -25,7 +25,7 @@ namespace boost { namespace simd
 
     @see split_high, split, slice
   **/
-  Value0 split_low(Value1 const& x);
+  upgrade_t<Value> split_low(Value const& x);
 } }
 #endif
 
