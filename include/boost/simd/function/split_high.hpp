@@ -9,10 +9,10 @@
 #ifndef BOOST_SIMD_FUNCTION_SPLIT_HIGH_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_SPLIT_HIGH_HPP_INCLUDED
 
+#if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-#if defined(DOXYGEN_ONLY)
- /*!
+  /*!
     @ingroup group-swar
     Function object implementing split_high capabilities
 
@@ -24,9 +24,9 @@ namespace boost { namespace simd
     to the appropriate SIMD register type of corresponding cardinal.
     @see split_low, split, slice
   **/
-  const boost::dispatch::functor<tag::split_high_> split_high = {};
-#endif
+  Value0 split_high(Value1 const& x);
 } }
+#endif
 
 #include <boost/simd/function/simd/split_high.hpp>
 
