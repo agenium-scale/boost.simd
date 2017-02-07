@@ -333,8 +333,8 @@ NA split_low.hpp
 NA split_multiplies.hpp
 OK sqr_abs.hpp
 OK sqr.hpp
-sqrt1pm1.hpp
-sqrt.hpp
+OK sqrt1pm1.hpp
+OK sqrt.hpp
 std.hpp
 stirling.hpp
 store.hpp

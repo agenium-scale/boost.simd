@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-arithmetic
     This function object returns \f$\sqrt{1+x}-1\f$ and the
@@ -33,8 +33,8 @@ namespace boost { namespace simd
     @par Possible output:
 
        @snippet sqrt1pm1.txt sqrt1pm1
- **/
-  Value sqrt1pm1(Value const& x);
+  **/
+  IEEEValue sqrt1pm1(IEEEValue const& x);
 } }
 #endif
 

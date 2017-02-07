@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-arithmetic
     This function object computes the square root of its parameter.
@@ -41,7 +41,7 @@ namespace boost { namespace simd
        @snippet sqrt.txt sqrt
 
   **/
-  Value sqrt(Value const & x);
+  Value sqrt(Value const& x);
 } }
 #endif
 
