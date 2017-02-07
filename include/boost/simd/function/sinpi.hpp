@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the sine of angle in \f$\pi\f$ multiples:
     \f$\sin(\pi x)\f$.
@@ -35,7 +35,7 @@ namespace boost { namespace simd
      @snippet sinpi.txt sinpi
 
   **/
-  Value sinpi(Value const & x);
+  IEEEValue sinpi(IEEEValue const& x);
 } }
 #endif
 

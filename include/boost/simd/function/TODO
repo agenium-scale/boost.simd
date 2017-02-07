@@ -319,7 +319,7 @@ OK sinhc.hpp
 OK sinhcosh.hpp
 OK sinh.hpp
 OK sin.hpp
-sinpi.hpp
+OK sinpi.hpp
 slice_high.hpp
 slice.hpp
 slice_low.hpp
