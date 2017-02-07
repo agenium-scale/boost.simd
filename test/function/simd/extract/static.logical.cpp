@@ -29,7 +29,7 @@ void unroll ( bs::pack<T,N> const& p, std::array<T,N> const& ref
             , nsm::list<Idx...> const&, Env& runtime
             )
 {
-  BOOST_SIMD_LOCAL_UNROLL( unroll_step(p,ref,Idx{},$) );
+  BOOST_SIMD_LOCAL_UNROLL( unroll_step(p,ref,Idx{},runtime) );
 }
 
 template <typename T, std::size_t N, typename Env>
@@ -42,7 +42,7 @@ void test_st(Env& runtime)
   for(std::size_t i = 0; i < N; ++i) ref[i] = T(i*2);
 
   bs::pack<T,N> p(&ref[0], &ref[0]+N);
-  unroll(p,ref,nsm::range<std::size_t, 0, N>(),$);
+  unroll(p,ref,nsm::range<std::size_t, 0, N>(),runtime);
 }
 
 STF_CASE_TPL("Check static extract on pack" , STF_NUMERIC_TYPES)

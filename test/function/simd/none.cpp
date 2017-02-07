@@ -14,7 +14,7 @@
 
 namespace bs = boost::simd;
 
-template <typename T, std::size_t N, typename Env> void test(Env &$) {
+template <typename T, std::size_t N, typename Env> void test(Env& runtime) {
   using p_t = bs::pack<T, N>;
 
   T a1[N], a2[N];

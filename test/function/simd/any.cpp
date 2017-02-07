@@ -12,7 +12,7 @@
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
 
-template <typename T, std::size_t N, typename Env> void test(Env &$) {
+template <typename T, std::size_t N, typename Env> void test(Env& runtime) {
   namespace bs = boost::simd;
   using p_t = bs::pack<T, N>;
 
