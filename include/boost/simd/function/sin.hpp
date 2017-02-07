@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the sine of the input in radians.
 
@@ -40,7 +40,7 @@ namespace boost { namespace simd
      @snippet sin.txt sin
 
   **/
-  Value sin(Value const & x);
+  IEEEValue sin(IEEEValue const& x);
 } }
 #endif
 
