@@ -336,7 +336,7 @@ OK sqr.hpp
 OK sqrt1pm1.hpp
 OK sqrt.hpp
 NA std.hpp
-stirling.hpp
+OK stirling.hpp
 store.hpp
 stream.hpp
 successor.hpp

@@ -14,7 +14,7 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
- /*!
+  /*!
     @ingroup group-euler
     This function object computes an approwimation of the gamma function
     using the Stirling formula:
@@ -34,8 +34,8 @@ namespace boost { namespace simd
 
        @snippet stirling.txt stirling
 
- **/
-  Value stirling(Value const & v0);
+  **/
+  Value stirling(Value const& x);
 } }
 #endif
 
