@@ -38,7 +38,7 @@ namespace boost { namespace simd
      @snippet twopower.txt twopower
 
   **/
-  Value twopower(IntegerValue const& x);
+  IntegerValue twopower(IntegerValue const& x);
 } }
 #endif
 
