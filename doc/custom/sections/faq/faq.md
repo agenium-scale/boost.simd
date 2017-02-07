@@ -84,7 +84,7 @@ your algorithms over those data using pack and related functions.
   - Have you used the fastest version of your function?
     Several **@projectname** functions, particularly more complex ones, come in several
     versions, where the user has a choice between accuracy and speed. This is achieved using
-    decorators. Please refer to @ref decorators for more information.
+    decorators. Please refer to @ref group-decorator for more information.
 
 @subsection faq-memory-alignment Why did my code seg-faulted or crashed?
 
