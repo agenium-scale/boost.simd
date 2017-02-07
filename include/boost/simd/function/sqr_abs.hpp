@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
    @ingroup group-arithmetic
     This function computes the square of the absolute value of its parameter.
     For real entries it coincides with @ref sqr.

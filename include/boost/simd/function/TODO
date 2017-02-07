@@ -331,7 +331,7 @@ NA split_high.hpp
 NA split.hpp
 NA split_low.hpp
 NA split_multiplies.hpp
-sqr_abs.hpp
+OK sqr_abs.hpp
 sqr.hpp
 sqrt1pm1.hpp
 sqrt.hpp
