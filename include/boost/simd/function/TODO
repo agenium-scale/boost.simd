@@ -343,7 +343,7 @@ OK successor.hpp
 NA sum.hpp
 OK swapbytes.hpp
 OK tand.hpp
-tanh.hpp
+OK tanh.hpp
 tan.hpp
 tanpi.hpp
 tenpower.hpp

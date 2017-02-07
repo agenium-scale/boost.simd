@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-hyperbolic
     This function object returns the hyperbolic tangent: \f$\sinh(x)/\cosh(x)\f$.
@@ -33,7 +33,7 @@ namespace boost { namespace simd
 
        @snippet tanh.txt tanh
   **/
-  Value tanh(Value const & v0);
+  Value tanh(Value const& x);
 } }
 #endif
 
