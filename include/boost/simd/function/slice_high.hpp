@@ -11,15 +11,15 @@
 #ifndef BOOST_SIMD_FUNCTION_SLICE_HIGH_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_SLICE_HIGH_HPP_INCLUDED
 
+#if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-#if defined(DOXYGEN_ONLY)
   /*!
     @ingroup group-swar
     Type-preserving pack higher slicing
 
     This function object returns the lower slice of a simd::pack, i.e a simd::pack of same type
-    containing the higher half of ts argument.
+    containing the higher half of its argument.
 
 
     @par Header <boost/simd/function/slice_high.hpp>
@@ -42,9 +42,9 @@ namespace boost { namespace simd
     @see slice_low
     @see combine
   **/
-  ValueO2 slice_high(Value const & x);
-#endif
+  Value0 slice_high(Value1 const& x);
 } }
+#endif
 
 #include <boost/simd/function/simd/slice_high.hpp>
 
