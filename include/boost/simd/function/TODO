@@ -312,8 +312,8 @@ OK signnz.hpp
 OK sinc.hpp
 OK sincosd.hpp
 OK sincos.hpp
-sincospi.hpp
-sincpi.hpp
+OK sincospi.hpp
+OK sincpi.hpp
 sind.hpp
 sinhc.hpp
 sinhcosh.hpp

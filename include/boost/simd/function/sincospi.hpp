@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the computes simultaneously and
     at lower cost the sine and cosine of the input in \f$\pi\f$ multiples.
@@ -34,7 +34,7 @@ namespace boost { namespace simd
      @snippet sincospi.txt sincospi
 
   **/
-  std::pair<Value, Value> sincospi(Value const & x);
+  std::pair<IEEEValue, IEEEValue> sincospi(IEEEValue const& x);
 } }
 #endif
 

@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the Computes the sinpi cardinal
     value of its parameter, i.e. \f$sin(\pi x)/(\pi x) \f$.
@@ -34,7 +34,7 @@ namespace boost { namespace simd
      @snippet sincpi.txt sincpi
 
   **/
-  Value sincpi(Value const & x);
+  IEEEValue sincpi(IEEEValue const& x);
 } }
 #endif
 
