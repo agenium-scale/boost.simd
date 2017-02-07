@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the sine of the angle in degree:
     \f$\sin(\pi x/180)\f$.
@@ -40,7 +40,7 @@ namespace boost { namespace simd
      @snippet sind.txt sind
 
   **/
-  Value sind(Value const & x);
+  IEEEValue sind(IEEEValue const& x);
 } }
 #endif
 
