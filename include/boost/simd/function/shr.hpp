@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-operator
     This function object returns the first entry *logically* shifted right
@@ -40,7 +40,7 @@ namespace boost { namespace simd
      @snippet shr.txt shr
 
   **/
-  Value shr(Value const & x, IntegerValue const& n);
+  Value shr(Value const& x, IntegerValue const& n);
 } }
 #endif
 
