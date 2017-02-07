@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,8 +15,8 @@
 namespace boost { namespace simd
 {
 
- /*!
-  @ingroup group-arithmetic
+  /*!
+    @ingroup group-arithmetic
   This function object decrements its parameter by 1.
 
     @par Header <boost/simd/function/dec.hpp>
@@ -25,15 +25,15 @@ namespace boost { namespace simd
       saturated_ ensures that saturated_(dec)(x) will never be strictly greater than x.
       avoiding the wrap around from @ref Valmin to @ref Valmax with integer types
 
-  @see inc, minus
+    @see inc, minus
 
     @par Example:
 
-       @snippet dec.cpp dec
+      @snippet dec.cpp dec
 
     @par Possible output:
 
-       @snippet dec.txt dec
+      @snippet dec.txt dec
   **/
   Value dec(Value const& x);
 } }

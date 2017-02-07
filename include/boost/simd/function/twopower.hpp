@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -29,13 +29,13 @@ namespace boost { namespace simd
     @see  ilog2
 
 
-   @par Example:
+    @par Example:
 
-     @snippet twopower.cpp twopower
+      @snippet twopower.cpp twopower
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet twopower.txt twopower
+      @snippet twopower.txt twopower
 
   **/
   IntegerValue twopower(IntegerValue const& x);

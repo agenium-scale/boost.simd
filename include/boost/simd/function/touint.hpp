@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -36,19 +36,19 @@ namespace boost { namespace simd
     @ref saturated_(touint) instead.
 
 
-   @par Decorators
+    @par Decorators
 
    - saturated_ as stated above ensures good behaviour on limiting values.
 
-   @see toint, tofloat
+    @see toint, tofloat
 
-   @par Example:
+    @par Example:
 
-       @snippet touint.cpp touint
+      @snippet touint.cpp touint
 
     @par Possible output:
 
-       @snippet touint.txt touint
+      @snippet touint.txt touint
 
 
   **/

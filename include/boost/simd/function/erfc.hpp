@@ -1,7 +1,7 @@
 //==================================================================================================
 /*!
   @file
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -14,8 +14,8 @@
 namespace boost { namespace simd
 {
 
- /*!
-  @ingroup group-euler
+  /*!
+    @ingroup group-euler
    This fFunction object computes the complementary error function
    \f$\displaystyle \frac{2}{\sqrt\pi}\int_{x}^{\infty} e^{-t^2}\mbox{d}t\f$
 
@@ -23,20 +23,20 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/erfc.hpp>
 
-  @par Decorators
+    @par Decorators
 
    - std_ calls @c std::erfc
 
-  @see erf, erfcx
+    @see erf, erfcx
 
 
     @par Example:
 
-       @snippet erfc.cpp erfc
+      @snippet erfc.cpp erfc
 
     @par Possible output:
 
-       @snippet erfc.txt erfc
+      @snippet erfc.txt erfc
   **/
   IEEEValue erfc(IEEEValue const& x);
 } }

@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -26,17 +26,17 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/is_less_equal.hpp>
 
-   @par Note
+    @par Note
 
      Using `is_less_equal(x,y)` is equivalent to `x <= y`
 
-   @par Example:
+    @par Example:
 
-     @snippet is_less_equal.cpp is_less_equal
+      @snippet is_less_equal.cpp is_less_equal
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet is_less_equal.txt is_less_equal
+      @snippet is_less_equal.txt is_less_equal
 
   **/
   as_logical_t<Value> is_less_equal(Value const& x, Value const& y);

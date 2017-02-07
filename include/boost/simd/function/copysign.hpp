@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,22 +15,22 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object returns @c x with the sign of @c y.
 
-   @see sign, signnz, is_positive
+    @see sign, signnz, is_positive
 
 
     @par Header <boost/simd/function/copysign.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet copysign.cpp copysign
+      @snippet copysign.cpp copysign
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet copysign.txt copysign
+      @snippet copysign.txt copysign
 
   **/
   Value copysign(Value const& x, Value const& y);

@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -27,13 +27,13 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/logical_notor.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet logical_notor.cpp logical_notor
+      @snippet logical_notor.cpp logical_notor
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet logical_notor.txt logical_notor
+      @snippet logical_notor.txt logical_notor
 
   **/
   as_logical_t<Value0> logical_notor(Value0 const& x, Value1 const& y);

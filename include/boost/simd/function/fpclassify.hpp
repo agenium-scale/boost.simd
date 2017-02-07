@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object categorizes floating point value into the following categories:
     zero, subnormal, normal, infinite, nan, or implementation-defined.
@@ -46,13 +46,13 @@ namespace boost { namespace simd
     @see is_eqz, is_denormal, is_normal, is_inf, is_nan
 
 
-   @par Example:
+    @par Example:
 
-     @snippet fpclassify.cpp fpclassify
+      @snippet fpclassify.cpp fpclassify
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet fpclassify.txt fpclassify
+      @snippet fpclassify.txt fpclassify
 
   **/
   as_integer_t<IEEEValue> fpclassify(IEEEValue const& x);

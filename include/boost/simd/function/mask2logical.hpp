@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -26,13 +26,13 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/mask2logical.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet mask2logical.cpp mask2logical
+      @snippet mask2logical.cpp mask2logical
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet mask2logical.txt mask2logical
+      @snippet mask2logical.txt mask2logical
 
   **/
   as_logical_t<Value> mask2logical(Value const& x);

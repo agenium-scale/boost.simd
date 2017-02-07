@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -14,7 +14,7 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
- /*!
+  /*!
 
     @ingroup group-hyperbolic
     This function object returns the hyperbolic cosine argument: \f$\log(x+\sqrt{x^2-1})\f$.
@@ -26,11 +26,11 @@ namespace boost { namespace simd
 
     @par Example:
 
-       @snippet acosh.cpp acosh
+      @snippet acosh.cpp acosh
 
     @par Possible output:
 
-       @snippet acosh.txt acosh
+      @snippet acosh.txt acosh
 
   **/
   IEEEValue acosh(IEEEValue const & x);

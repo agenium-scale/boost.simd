@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -22,15 +22,15 @@ namespace boost { namespace simd
     The two arguments must share the same bit size.
 
 
-      @par Header <boost/simd/function/isincluded.hpp>
+    @par Header <boost/simd/function/isincluded.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet isincluded.cpp isincluded
+      @snippet isincluded.cpp isincluded
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet isincluded.txt isincluded
+      @snippet isincluded.txt isincluded
 
   **/
   bool isincluded(Value const& x, Value const& y);

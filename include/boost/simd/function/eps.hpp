@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -25,13 +25,13 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/eps.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet eps.cpp eps
+      @snippet eps.cpp eps
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet eps.txt eps
+      @snippet eps.txt eps
 
   **/
   Value eps(Value const& x);

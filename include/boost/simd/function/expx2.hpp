@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-exponential
     This function object returns the exponential of the square of its
     argument or its inverse: \f$e^{x^2}\f$ or \f$e^{-x^2}\f$.
@@ -31,13 +31,13 @@ namespace boost { namespace simd
     @see exp
 
 
-   @par Example:
+    @par Example:
 
-     @snippet expx2.cpp expx2
+      @snippet expx2.cpp expx2
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet expx2.txt expx2
+      @snippet expx2.txt expx2
 
   **/
   ///@{

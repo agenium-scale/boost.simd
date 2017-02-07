@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the cosine of the input in radians.
 
@@ -24,11 +24,11 @@ namespace boost { namespace simd
 
     @par Notes
       The regular call to this functor is `cos(x)`,  but
-      @c cos can also be called with two parameters as
+    @c cos can also be called with two parameters as
       `cos(x, range_)` or with a decorator as `std_(cos)(x)` or `restricted_(cos)(x)`
 
 
-      @c range_ is a tag that allows some control on the computation
+    @c range_ is a tag that allows some control on the computation
       accuracy and speed.
 
       The control is on the reduction routine of the angle to the
@@ -72,7 +72,7 @@ namespace boost { namespace simd
        when double are available on the platform, this part of reduction
        is delegated to the double precision routines.
 
-       @par Advices
+    @par Advices
        \arg If there is no restrictions ever on your angles and you care for precision
        use the default @c cos(x) or equivalently `cos(x, big_)`.
        \arg if you do not care for precision you can use
@@ -121,23 +121,23 @@ namespace boost { namespace simd
             `clipped_very_small_`, `clipped_small_` and `clipped_medium_`
            </center>
 
-       @par Decorators
+    @par Decorators
 
        - std_ provides access to std::cos
 
        - restricted_ is equivalent to the clipped_very_small_ tag
 
-       @see  sincos, cosd, cospi
+    @see  sincos, cosd, cospi
 
-       @par Example:
+    @par Example:
 
-       @snippet cos.cpp cos
+      @snippet cos.cpp cos
 
-       @par Possible output:
+    @par Possible output:
 
-       @snippet cos.txt cos
+      @snippet cos.txt cos
 
- **/
+  **/
   IEEEValue cos(IEEEValue const& x);
 } }
 #endif

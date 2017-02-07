@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-bitwise
     This function object returns the integer part of the base 2
     logarithm of the input.
@@ -29,13 +29,13 @@ namespace boost { namespace simd
     @see  twopower, exponent
 
 
-   @par Example:
+    @par Example:
 
-     @snippet ilog2.cpp ilog2
+      @snippet ilog2.cpp ilog2
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet ilog2.txt ilog2
+      @snippet ilog2.txt ilog2
 
   **/
   as_integer_t<Value> ilog2(Value const& x);

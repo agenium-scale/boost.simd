@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -38,20 +38,20 @@ namespace boost { namespace simd
     If you intend to use @ref Nan and @ref Inf entries,  consider using
     @ref saturated_(toint) instead or its alias @ref ifix.
 
-   @par Decorators
+    @par Decorators
 
    - saturated_ as stated above ensures ggood brhaviour on limiting values.
 
-   @see touint, tofloat
+    @see touint, tofloat
 
-   @par Example:
+    @par Example:
 
-       @snippet toint.cpp toint
+      @snippet toint.cpp toint
 
     @par Possible output:
 
-       @snippet toint.txt toint
-   **/
+      @snippet toint.txt toint
+  **/
   as_integer_t<Value> toint(Value const& x);
 } }
 #endif

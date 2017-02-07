@@ -14,7 +14,7 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-memory
+    @ingroup group-memory
 
     @brief Store a value at an arbitrary memory location
 
@@ -43,7 +43,7 @@ namespace boost { namespace simd
 
   /*!
     @overload
-   **/
+  **/
   template<typename Value, typename Pointer> void store( Value const& val, Pointer ptr) {}
   /*!
     @overload

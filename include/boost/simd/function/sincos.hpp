@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -20,18 +20,18 @@ namespace boost { namespace simd
     This function object returns the Computes simultaneouly
     and at lower cost the sine and cosine of the input
 
-   @see sincosd,  sincospi
+    @see sincosd,  sincospi
 
 
     @par Header <boost/simd/function/sincos.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet sincos.cpp sincos
+      @snippet sincos.cpp sincos
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet sincos.txt sincos
+      @snippet sincos.txt sincos
 
   **/
   std::pair<IEEEValue, IEEEValue> sincos(IEEEValue const& x);

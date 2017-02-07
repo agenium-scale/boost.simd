@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -40,13 +40,13 @@ namespace boost { namespace simd
     @see pow, rec, sqrt, cbrt
 
 
-   @par Example:
+    @par Example:
 
-     @snippet nthroot.cpp nthroot
+      @snippet nthroot.cpp nthroot
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet nthroot.txt nthroot
+      @snippet nthroot.txt nthroot
 
   **/
   Value nthroot(Value const& x, IntegerValue const& n);

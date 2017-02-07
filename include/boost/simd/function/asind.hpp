@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,28 +15,28 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the inverse sine in degree.
 
 
     @par Header <boost/simd/function/asind.hpp>
 
-   @par Note
+    @par Note
 
       For every parameter of floating type `asind(x)`
       returns the arc @c r in the interval  \f$[-90, 90[\f$ such that
       <tt>sin(r) == x</tt>.  If @c x is outside \f$[-1, 1[\f$ the result is Nan.
 
-   @see asin,  asinpi
+    @see asin,  asinpi
 
-   @par Example:
+    @par Example:
 
-     @snippet asind.cpp asind
+      @snippet asind.cpp asind
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet asind.txt asind
+      @snippet asind.txt asind
 
   **/
   IEEEValue asind(IEEEValue const & x);

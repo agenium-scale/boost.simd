@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -20,19 +20,19 @@ namespace boost { namespace simd
     This function object returns the sine of angle in \f$\pi\f$ multiples:
     \f$\sin(\pi x)\f$.
 
-   @see sine, sincospi, sin, sind
+    @see sine, sincospi, sin, sind
 
 
 
     @par Header <boost/simd/function/sinpi.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet sinpi.cpp sinpi
+      @snippet sinpi.cpp sinpi
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet sinpi.txt sinpi
+      @snippet sinpi.txt sinpi
 
   **/
   IEEEValue sinpi(IEEEValue const& x);

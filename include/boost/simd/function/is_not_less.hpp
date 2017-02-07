@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -23,17 +23,17 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/is_not_less.hpp>
 
-   @par Note
+    @par Note
 
      Using `is_not_less(x,y)` is similar to: `!(x < y)`
 
-   @par Example:
+    @par Example:
 
-     @snippet is_not_less.cpp is_not_less
+      @snippet is_not_less.cpp is_not_less
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet is_not_less.txt is_not_less
+      @snippet is_not_less.txt is_not_less
 
   **/
   as_logical_t<Value> is_not_less(Value const& x, Value const& y);

@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,27 +15,27 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the inverse cosine in \f$\pi\f$ multiples.
 
 
     @par Header <boost/simd/function/acospi.hpp>
 
-      @par Decorators
+    @par Decorators
 
        - pedantic_     is similar to Invpi<T>*pedantic_(acos)(x);
 
-      @see acos, acospi, cosd
+    @see acos, acospi, cosd
 
 
-      @par Example:
+    @par Example:
 
-        @snippet acospi.cpp acospi
+      @snippet acospi.cpp acospi
 
-      @par Possible output:
+    @par Possible output:
 
-        @snippet acospi.txt acospi
+      @snippet acospi.txt acospi
 
   **/
   IEEEValue acospi(IEEEValue const & x);

@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-hyperbolic
     This unction object returns the hyperbolic cotangent:
@@ -26,11 +26,11 @@ namespace boost { namespace simd
 
     @par Example:
 
-       @snippet coth.cpp coth
+      @snippet coth.cpp coth
 
     @par Possible output:
 
-       @snippet coth.txt coth
+      @snippet coth.txt coth
   **/
   IEEEValue coth(IEEEValue const& x);
 } }

@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -31,11 +31,11 @@ namespace boost { namespace simd
 
     @par Example:
 
-       @snippet minmod.cpp minmod
+      @snippet minmod.cpp minmod
 
     @par Possible output:
 
-       @snippet minmod.txt minmod
+      @snippet minmod.txt minmod
 
   **/
   Value minmod(Value const& x, Value const& y);

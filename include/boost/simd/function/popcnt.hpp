@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -25,13 +25,13 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/popcnt.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet popcnt.cpp popcnt
+      @snippet popcnt.cpp popcnt
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet popcnt.txt popcnt
+      @snippet popcnt.txt popcnt
 
   **/
   as_integer_t<Value> popcnt(Value const& x);

@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -22,7 +22,7 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/successor.hpp>
 
-   @par Note
+    @par Note
 
      If @c n is null returns @c x else computes the `n`-th least representable value strictly greater
      than x in its type. @c n must be positive or null.
@@ -31,13 +31,13 @@ namespace boost { namespace simd
       - For floating point numbers, all @ref Inf  strict successors are @ref Nan.
 
 
-   @par Example:
+    @par Example:
 
-     @snippet successor.cpp successor
+      @snippet successor.cpp successor
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet successor.txt successor
+      @snippet successor.txt successor
 
   **/
   ///@{

@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -20,18 +20,18 @@ namespace boost { namespace simd
     This function object returns the Computes the sinpi cardinal
     value of its parameter, i.e. \f$sin(\pi x)/(\pi x) \f$.
 
-   @see sin, sinc, sinhc
+    @see sin, sinc, sinhc
 
 
     @par Header <boost/simd/function/sincpi.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet sincpi.cpp sincpi
+      @snippet sincpi.cpp sincpi
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet sincpi.txt sincpi
+      @snippet sincpi.txt sincpi
 
   **/
   IEEEValue sincpi(IEEEValue const& x);

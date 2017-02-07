@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,14 +15,14 @@
 namespace boost { namespace simd
 {
   /*!
-     @ingroup group-reduction
+    @ingroup group-reduction
      This function object returns @ref True is only if all bits set in @c x are
    not set in @c y
 
      The two arguments must share the same bit size.
 
 
-      @par Header <boost/simd/function/isincluded_c.hpp>
+    @par Header <boost/simd/function/isincluded_c.hpp>
 
     @par Example:
 

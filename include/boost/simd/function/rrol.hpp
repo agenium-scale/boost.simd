@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -30,13 +30,13 @@ namespace boost { namespace simd
     @see  ror, rol, rror
 
 
-   @par Example:
+    @par Example:
 
-     @snippet rrol.cpp rrol
+      @snippet rrol.cpp rrol
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet rrol.txt rrol
+      @snippet rrol.txt rrol
 
   **/
   Value rrol(Value const& x, IntegerValue const& n);

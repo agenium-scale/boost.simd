@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-bitwise
     This function object returns the low part of the entry
     as an unsigned integer of the size of
@@ -27,13 +27,13 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/lo.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet lo.cpp lo
+      @snippet lo.cpp lo
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet lo.txt lo
+      @snippet lo.txt lo
 
   **/
   as_integer_t<Value> lo(Value const& x);

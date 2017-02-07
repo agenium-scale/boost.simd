@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,21 +15,21 @@
 namespace boost { namespace simd
 {
   /*!
-   @ingroup group-reduction
+    @ingroup group-reduction
    This function object returns @ref True if at least one element of the
    argument is non zero.
 
-   @see all, none, nbtrue
+    @see all, none, nbtrue
 
-   @par Header <boost/simd/function/any.hpp>
+    @par Header <boost/simd/function/any.hpp>
 
-   @par Example:
+    @par Example:
 
-   @snippet any.cpp any
+      @snippet any.cpp any
 
-   @par Possible output:
+    @par Possible output:
 
-   @snippet any.txt any
+      @snippet any.txt any
 
   **/
   bool any(Value const &x);

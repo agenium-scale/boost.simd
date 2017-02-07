@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,21 +15,21 @@
 namespace boost { namespace simd
 {
   /*!
-   @ingroup group-reduction
+    @ingroup group-reduction
    This function object returns the product of the elements of the argument
 
-   @see sum
+    @see sum
 
 
     @par Header <boost/simd/function/prod.hpp>
 
-  @par Example:
+    @par Example:
 
-    @snippet prod.cpp prod
+      @snippet prod.cpp prod
 
-  @par Possible output:
+    @par Possible output:
 
-    @snippet prod.txt prod
+      @snippet prod.txt prod
 
   **/
   scalar_of_t<Value> prod(Value const& x);

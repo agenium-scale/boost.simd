@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -16,7 +16,7 @@ namespace boost { namespace simd
 {
 
   /*!
-   @ingroup group-arithmetic
+    @ingroup group-arithmetic
     This function computes the square of the absolute value of its parameter.
     For real entries it coincides with @ref sqr.
 
@@ -30,11 +30,11 @@ namespace boost { namespace simd
 
     @par Example:
 
-       @snippet sqr_abs.cpp sqr_abs
+      @snippet sqr_abs.cpp sqr_abs
 
     @par Possible output:
 
-       @snippet sqr_abs.txt sqr_abs
+      @snippet sqr_abs.txt sqr_abs
 
   **/
   Value sqr_abs(Value const& x);

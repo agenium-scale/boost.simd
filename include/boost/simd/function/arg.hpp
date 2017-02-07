@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,8 +15,8 @@
 namespace boost { namespace simd
 {
 
- /*!
-  @ingroup group-arithmetic
+  /*!
+    @ingroup group-arithmetic
     This function computes the angular orientation of its floating parameter.
 
 
@@ -41,11 +41,11 @@ namespace boost { namespace simd
 
     @par Example:
 
-       @snippet arg.cpp arg
+      @snippet arg.cpp arg
 
     @par Possible output:
 
-       @snippet arg.txt arg
+      @snippet arg.txt arg
 
   **/
   IEEEValue arg(IEEEValue const & x);

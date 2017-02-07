@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -23,17 +23,17 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/is_ngez.hpp>
 
-   @par Note
+    @par Note
 
      Using `is_ngez(x)` is similar to: `!(x >= 0)`
 
-   @par Example:
+    @par Example:
 
-     @snippet is_ngez.cpp is_ngez
+      @snippet is_ngez.cpp is_ngez
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet is_ngez.txt is_ngez
+      @snippet is_ngez.txt is_ngez
 
   **/
   as_logical_t<Value> is_ngez(Value const& x);

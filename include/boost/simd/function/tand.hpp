@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -23,22 +23,22 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/tand.hpp>
 
-   @par Note
+    @par Note
 
       As most other trigonometric function tand can be called with a
       second optional parameter  which is a tag on speed and accuracy
       (see @ref cos for further details)
 
-   @see tan, tanpi
+    @see tan, tanpi
 
 
-   @par Example:
+    @par Example:
 
-     @snippet tand.cpp tand
+      @snippet tand.cpp tand
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet tand.txt tand
+      @snippet tand.txt tand
 
   **/
   IEEEValue tand(IEEEValue const& x);

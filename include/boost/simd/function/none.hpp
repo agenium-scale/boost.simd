@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,11 +15,11 @@
 namespace boost { namespace simd
 {
   /*!
-     @ingroup group-reduction
+    @ingroup group-reduction
      This function object returns True if all elements of the argument are zero.
 
 
-      @par Header <boost/simd/function/none.hpp>
+    @par Header <boost/simd/function/none.hpp>
 
     @par Example:
 

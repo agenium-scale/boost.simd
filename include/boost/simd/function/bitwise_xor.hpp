@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-bitwise
     This function object returns the return the bitwise xor of the two parameters
     The operands must share the same bit size.
@@ -28,13 +28,13 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/bitwise_xor.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet bitwise_xor.cpp bitwise_xor
+      @snippet bitwise_xor.cpp bitwise_xor
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet bitwise_xor.txt bitwise_xor
+      @snippet bitwise_xor.txt bitwise_xor
 
   **/
   Value0 bitwise_xor(Value0 const& x, Value1 const& y);

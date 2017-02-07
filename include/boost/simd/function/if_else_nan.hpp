@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-boolean
     This function object conditionally returns @c x (respectively @ref Nan)
     if @c c is @ref True (respectively  @ref False)
@@ -26,13 +26,13 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/if_else_nan.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet if_else_nan.cpp if_else_nan
+      @snippet if_else_nan.cpp if_else_nan
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet if_else_nan.txt if_else_nan
+      @snippet if_else_nan.txt if_else_nan
 
   **/
   Value1 if_else_nan(Value0 const& c, Value1 const& x);

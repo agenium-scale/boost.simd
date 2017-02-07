@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -48,13 +48,13 @@ namespace boost { namespace simd
       - also note that the double implementation of std::remquo is flawed in GNU C
       Library until version 2.21 (2.22 been corrected).
 
-   @par Example:
+    @par Example:
 
-     @snippet remquo.cpp remquo
+      @snippet remquo.cpp remquo
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet remquo.txt remquo
+      @snippet remquo.txt remquo
 
   **/
   std::pair<IEEEValue, as_integer_t<IEEEValue> remquo(IEEEValue const& x, IEEEValue const& y);

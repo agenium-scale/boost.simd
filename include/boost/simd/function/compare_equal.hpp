@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -22,13 +22,13 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/compare_equal.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet compare_equal.cpp compare_equal
+      @snippet compare_equal.cpp compare_equal
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet compare_equal.txt compare_equal
+      @snippet compare_equal.txt compare_equal
 
   **/
   bool compare_equal(Value const& x, Value const& y);

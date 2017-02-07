@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -24,13 +24,13 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/maxnummag.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet maxnummag.cpp maxnummag
+      @snippet maxnummag.cpp maxnummag
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet maxnummag.txt maxnummag
+      @snippet maxnummag.txt maxnummag
 
   **/
   Value maxnummag(Value const& x, Value const& y);

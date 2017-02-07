@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-euler
     This function object computes the natural logarithm of th
@@ -53,11 +53,11 @@ namespace boost { namespace simd
 
     @par Example:
 
-       @snippet gammaln.cpp gammaln
+      @snippet gammaln.cpp gammaln
 
     @par Possible output:
 
-       @snippet gammaln.txt gammaln
+      @snippet gammaln.txt gammaln
   **/
   IEEEValue gammaln(IEEEValue const& x);
 } }

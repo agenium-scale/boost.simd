@@ -1,7 +1,7 @@
 //==================================================================================================
 /*!
   @file
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@ namespace boost { namespace simd
 {
 
   /*!
-  @ingroup group-euler
+    @ingroup group-euler
     This function object computes the sign of gamma function without explicitly computing
     the costly gamma function.
 
@@ -26,11 +26,11 @@ namespace boost { namespace simd
 
     @par Example:
 
-       @snippet stirling.cpp stirling
+      @snippet stirling.cpp stirling
 
     @par Possible output:
 
-       @snippet stirling.txt stirling
+      @snippet stirling.txt stirling
   **/
   IEEEValue signgam(IEEEValue const& x);
 } }

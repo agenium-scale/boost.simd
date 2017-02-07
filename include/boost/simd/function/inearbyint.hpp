@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-arithmetic
     This function object computes the integer conversion of the @ref nearbyint of its parameter.
@@ -36,11 +36,11 @@ namespace boost { namespace simd
 
     @par Example:
 
-       @snippet inearbyint.cpp inearbyint
+      @snippet inearbyint.cpp inearbyint
 
     @par Possible output:
 
-       @snippet inearbyint.txt inearbyint
+      @snippet inearbyint.txt inearbyint
 
   **/
   as_integer_t<Value> inearbyint(Value const& x);

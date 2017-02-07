@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-boolean
     This function object conditionally returns  @c x (respectively @c x+y)
     if @c c is @ref True (respectively  @ref False)
@@ -23,13 +23,13 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/ifnot_plus.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet ifnot_plus.cpp ifnot_plus
+      @snippet ifnot_plus.cpp ifnot_plus
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet ifnot_plus.txt ifnot_plus
+      @snippet ifnot_plus.txt ifnot_plus
 
   **/
   Value1 ifnot_plus(Value0 const& c, Value1 const& x, Value1 const& y);

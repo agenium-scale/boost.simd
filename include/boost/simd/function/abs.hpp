@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,8 +15,8 @@
 namespace boost { namespace simd
 {
 
- /*!
-  @ingroup group-arithmetic
+  /*!
+    @ingroup group-arithmetic
     The function object @c abs computes the absolute value of its parameter.
     If the result cannot be represented by the return type the return is equal to the input.
 
@@ -47,11 +47,11 @@ namespace boost { namespace simd
 
     @par Example:
 
-       @snippet abs.cpp abs
+      @snippet abs.cpp abs
 
     @par Possible output:
 
-       @snippet abs.txt abs
+      @snippet abs.txt abs
 
   **/
   Value abs(Value const& x);

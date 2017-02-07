@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -24,18 +24,18 @@ namespace boost { namespace simd
 
     Infix notation can be used with operator '>>'
 
-      @see  shift_left, shr, rshl, rshr, rol, ror
+    @see  shift_left, shr, rshl, rshr, rol, ror
 
 
     @par Header <boost/simd/function/shift_right.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet shift_right.cpp shift_right
+      @snippet shift_right.cpp shift_right
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet shift_right.txt shift_right
+      @snippet shift_right.txt shift_right
 
   **/
   Value shift_right(Value const& x, IntegerValue const& n);

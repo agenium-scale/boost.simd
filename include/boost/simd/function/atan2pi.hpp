@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,14 +15,14 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the atan2pi function : atan2 in pi multiples.
 
 
     @par Header <boost/simd/function/atan2pi.hpp>
 
-   @par Note
+    @par Note
 
       For every parameters of same floating type `atan2pi(y, x)`
       is similar  to: `atan2(y, x)/Pi`
@@ -30,13 +30,13 @@ namespace boost { namespace simd
 
     @see atan2,  atan2pi
 
-   @par Example:
+    @par Example:
 
-     @snippet atan2pi.cpp atan2pi
+      @snippet atan2pi.cpp atan2pi
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet atan2pi.txt atan2pi
+      @snippet atan2pi.txt atan2pi
 
   **/
   IEEEValue atan2pi(IEEEValue const& y, const IEEEValue& x);

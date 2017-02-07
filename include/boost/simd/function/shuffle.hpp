@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -46,7 +46,7 @@ namespace boost { namespace simd
 
     @par Example:
 
-    @snippet shuffle.unary.cpp shuffle-unary
+      @snippet shuffle.unary.cpp shuffle-unary
 
     Possible output:
 
@@ -89,7 +89,7 @@ namespace boost { namespace simd
 
     @par Example:
 
-    @snippet shuffle.binary.cpp shuffle-binary
+      @snippet shuffle.binary.cpp shuffle-binary
 
     Possible output:
 
@@ -150,7 +150,7 @@ namespace boost { namespace simd
 
     @par Example:
 
-    @snippet shuffle.perm.cpp shuffle-perm
+      @snippet shuffle.perm.cpp shuffle-perm
 
     Possible output:
 
@@ -212,7 +212,7 @@ namespace boost { namespace simd
 
     @par Example:
 
-    @snippet shuffle.perm2.cpp shuffle-perm2
+      @snippet shuffle.perm2.cpp shuffle-perm2
 
     Possible output:
 

@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -23,7 +23,7 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/ldexp.hpp>
 
-   @par Note
+    @par Note
 
      If @c n is not of integral type is is truncated:
      `ldexp(x,n)` is similar to: `x*pow(2, trunc(n))`
@@ -40,13 +40,13 @@ namespace boost { namespace simd
 
 
 
-   @par Example:
+    @par Example:
 
-     @snippet ldexp.cpp ldexp
+      @snippet ldexp.cpp ldexp
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet ldexp.txt ldexp
+      @snippet ldexp.txt ldexp
 
   **/
   Value0 ldexp(Value0 const& x, Value1 const& n);

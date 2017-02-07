@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-hyperbolic
     This function object returns the hyperbolic cotangent argument \f$\frac12\log\frac{x+1}{x-1}\f$
@@ -28,11 +28,11 @@ namespace boost { namespace simd
 
     @par Example:
 
-       @snippet acoth.cpp acoth
+      @snippet acoth.cpp acoth
 
     @par Possible output:
 
-       @snippet acoth.txt acoth
+      @snippet acoth.txt acoth
 
   **/
   IEEEValue acoth(IEEEValue const & x);

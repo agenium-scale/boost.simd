@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,14 +15,14 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the inverse tangent.
 
 
     @par Header <boost/simd/function/atan.hpp>
 
-   @par Note
+    @par Note
 
       For every parameter of floating type `atan(x)`
       returns the arc @c r in the interval  \f$[-\pi/2, \pi/2[\f$
@@ -35,13 +35,13 @@ namespace boost { namespace simd
     @see atan2, atand, atanpi, tan
 
 
-   @par Example:
+    @par Example:
 
-     @snippet atan.cpp atan
+      @snippet atan.cpp atan
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet atan.txt atan
+      @snippet atan.txt atan
 
   **/
   IEEEValue atan(IEEEValue const& x);

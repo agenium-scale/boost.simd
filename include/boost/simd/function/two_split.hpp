@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -32,11 +32,11 @@ namespace boost { namespace simd
 
     @par Example:
 
-       @snippet two_split.cpp two_split
+      @snippet two_split.cpp two_split
 
     @par Possible output:
 
-       @snippet two_split.txt two_split
+      @snippet two_split.txt two_split
 
   **/
   std::pair<Value, Value> two_split(Value const& x);

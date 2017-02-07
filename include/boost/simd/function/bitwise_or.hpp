@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-bitwise
     This function object returns the return the bitwise or of the two parameters
     The operands must share the same bit size.
@@ -27,13 +27,13 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/bitwise_or.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet bitwise_or.cpp bitwise_or
+      @snippet bitwise_or.cpp bitwise_or
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet bitwise_or.txt bitwise_or
+      @snippet bitwise_or.txt bitwise_or
 
   **/
   Value0 bitwise_or(Value0 const& x, Value1 const& y);

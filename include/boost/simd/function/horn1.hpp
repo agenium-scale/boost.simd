@@ -20,7 +20,7 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
+    @ingroup group-arithmetic
 
     Computes the horner value of its parameter.
     This is a static polynomial evaluation.

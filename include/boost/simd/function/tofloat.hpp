@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -29,11 +29,11 @@ namespace boost { namespace simd
 
     @par Example:
 
-       @snippet tofloat.cpp tofloat
+      @snippet tofloat.cpp tofloat
 
     @par Possible output:
 
-       @snippet tofloat.txt tofloat
+      @snippet tofloat.txt tofloat
   **/
   as_floating_t<Value> tofloat(Value const& x);
 } }

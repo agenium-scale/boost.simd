@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -27,13 +27,13 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/logical_notand.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet logical_notand.cpp logical_notand
+      @snippet logical_notand.cpp logical_notand
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet logical_notand.txt logical_notand
+      @snippet logical_notand.txt logical_notand
 
   **/
   as_logical_t<Value0> logical_notand(Value0 const& x, Value1 const& y);

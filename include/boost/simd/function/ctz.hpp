@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,26 +15,26 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-bitwise
     This function object returns the bit count of trailing zeroes
     Finds the first bit set in x, and returns the index of that bit, 0 being
     the least significant bit index.
     @c ctz asserts is the entry is 0
 
-   @see  clz, popcnt
+    @see  clz, popcnt
 
 
 
     @par Header <boost/simd/function/ctz.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet ctz.cpp ctz
+      @snippet ctz.cpp ctz
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet ctz.txt ctz
+      @snippet ctz.txt ctz
 
   **/
   as_integer_t<Value> ctz(Value const& x);
