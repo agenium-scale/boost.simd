@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-arithmetic
     This function computes the square of its parameter.
@@ -38,7 +38,7 @@ namespace boost { namespace simd
 
 
   **/
-  Value sqr(Value const & v0);
+  Value sqr(Value const& x);
 } }
 #endif
 
