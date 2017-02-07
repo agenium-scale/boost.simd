@@ -352,8 +352,8 @@ OK toint.hpp
 OK touint.hpp
 OK trunc.hpp
 OK two_add.hpp
-twopower.hpp
-two_prod.hpp
+OK twopower.hpp
+OK two_prod.hpp
 two_split.hpp
 ulpdist.hpp
 ulp.hpp
