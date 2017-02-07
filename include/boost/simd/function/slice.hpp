@@ -11,9 +11,9 @@
 #ifndef BOOST_SIMD_FUNCTION_SLICE_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_SLICE_HPP_INCLUDED
 
+#if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-#if defined(DOXYGEN_ONLY)
   /*!
     @ingroup group-swar
     Type-preserving pack slicing
@@ -44,9 +44,9 @@ namespace boost { namespace simd
     @see slice_low
     @see slice_high
   **/
-  std::array<ValueO2, 2> slice(Value const & x);
-#endif
+  std::array<ValueO, 2> slice(Value1 const& x);
 } }
+#endif
 
 #include <boost/simd/function/simd/slice.hpp>
 

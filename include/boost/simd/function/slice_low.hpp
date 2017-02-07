@@ -11,9 +11,9 @@
 #ifndef BOOST_SIMD_FUNCTION_SLICE_LOW_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_SLICE_LOW_HPP_INCLUDED
 
+#if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-#if defined(DOXYGEN_ONLY)
   /*!
     @ingroup group-swar
     Type-preserving pack lower slicing
@@ -42,9 +42,9 @@ namespace boost { namespace simd
     @see slice_high
     @see combine
   **/
-  ValueO2 slice_low(Value const & x);
-#endif
+  ValueO slice_low(Value1 const& x);
 } }
+#endif
 
 #include <boost/simd/function/simd/slice_low.hpp>
 

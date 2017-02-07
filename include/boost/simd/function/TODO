@@ -321,8 +321,8 @@ OK sinh.hpp
 OK sin.hpp
 OK sinpi.hpp
 NA slice_high.hpp
-slice.hpp
-slice_low.hpp
+OK slice.hpp
+OK slice_low.hpp
 slide.hpp
 sort.hpp
 splat.hpp
