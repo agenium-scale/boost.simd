@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
   @ingroup group-arithmetic
     Function object implementing signbit capabilities
 

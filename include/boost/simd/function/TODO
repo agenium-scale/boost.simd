@@ -304,7 +304,7 @@ OK shift_right.hpp
 OK shl.hpp
 OK shr.hpp
 NA shuffle.hpp
-signbit.hpp
+OK signbit.hpp
 signgam.hpp
 sign.hpp
 significants.hpp
