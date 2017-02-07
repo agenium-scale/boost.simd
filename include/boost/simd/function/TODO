@@ -301,7 +301,7 @@ W  sec.hpp
 OK secpi.hpp
 OK shift_left.hpp
 OK shift_right.hpp
-shl.hpp
+OK shl.hpp
 shr.hpp
 shuffle.hpp
 signbit.hpp

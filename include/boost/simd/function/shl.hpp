@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-operator
      This function object returns the first operand shifted left by the second
@@ -28,7 +28,7 @@ namespace boost { namespace simd
 
     This is an alias of @ref shift_left
   **/
-  Value shl(Value const & v0, IntegerValue const& n);
+  Value shl(Value const& x, IntegerValue const& n);
 } }
 #endif
 
