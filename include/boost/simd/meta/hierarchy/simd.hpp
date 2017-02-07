@@ -25,6 +25,13 @@
 
 namespace boost { namespace simd
 {
+#if defined(DOXYGEN_ONLY)
+  template<typename T, typename X>
+  struct  pack_ // Doxygen does not like inheritance
+  {
+    using parent = pack_<typename T::parent, X>;
+  };
+#else
   template<typename T, typename X>
   struct  pack_ : pack_<typename T::parent, X>
   {
@@ -37,6 +44,7 @@ namespace boost { namespace simd
   {
     using parent = boost::dispatch::generic_<boost::dispatch::property_of_t<T>>;
   };
+#endif
 } }
 
 namespace boost { namespace dispatch
