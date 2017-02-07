@@ -16,7 +16,7 @@ namespace boost { namespace simd
 {
   /*!
     @ingroup group-oerator
-    This function object computes the the quotient of the two parameters of the
+    This function object computes the quotient of the two parameters of the
     same type with or without option.
 
     @par Header <boost/simd/function/div.hpp>

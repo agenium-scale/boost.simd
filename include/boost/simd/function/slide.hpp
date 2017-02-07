@@ -11,9 +11,9 @@
 #ifndef BOOST_SIMD_FUNCTION_SLIDE_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_SLIDE_HPP_INCLUDED
 
+#if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-#if defined(DOXYGEN_ONLY)
   /*!
     @par Header <boost/simd/function/slide.hpp>
 
@@ -24,8 +24,8 @@ namespace boost { namespace simd
     @overload
   */
   template<std::size_t N, typename T> T slide(T const& a0) {}
-#endif
 } }
+#endif
 
 #include <boost/simd/function/scalar/slide.hpp>
 #include <boost/simd/function/simd/slide.hpp>

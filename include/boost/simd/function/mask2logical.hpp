@@ -17,7 +17,7 @@ namespace boost { namespace simd
 
   /*!
     @ingroup group-boolean
-    This function object returns the The function converts
+    This function object converts
     an arithmetic mask where each element is
     Zero or Allbits to a logical value.
 
