@@ -298,7 +298,7 @@ OK sbits.hpp
 W  secd.hpp
 W  sech.hpp
 W  sec.hpp
-secpi.hpp
+OK secpi.hpp
 shift_left.hpp
 shift_right.hpp
 shl.hpp

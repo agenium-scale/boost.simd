@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the secant of the angle in pi multiples:
     \f$1/\cos(\pi x)\f$.
@@ -35,7 +35,7 @@ namespace boost { namespace simd
      @snippet secpi.txt secpi
 
   **/
-  Value secpi(Value const & x);
+  IEEEValue secpi(IEEEValue const& x);
 } }
 #endif
 
