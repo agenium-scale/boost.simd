@@ -33,7 +33,7 @@ namespace boost { namespace simd
 
        @snippet tanh.txt tanh
   **/
-  Value tanh(Value const& x);
+  IEEEValue tanh(IEEEValue const& x);
 } }
 #endif
 
