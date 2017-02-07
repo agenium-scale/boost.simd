@@ -316,8 +316,8 @@ OK sincospi.hpp
 OK sincpi.hpp
 OK sind.hpp
 OK sinhc.hpp
-sinhcosh.hpp
-sinh.hpp
+OK sinhcosh.hpp
+OK sinh.hpp
 sin.hpp
 sinpi.hpp
 slice_high.hpp

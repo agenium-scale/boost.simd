@@ -50,7 +50,7 @@ namespace boost { namespace simd
        @snippet sinhcosh.txt sinhcosh
 
   **/
-  std::pair<Value, Value> sinhcosh(Value const & x);
+  std::pair<IEEEValue, IEEEValue> sinhcosh(IEEEValue const& x);
 } }
 #endif
 

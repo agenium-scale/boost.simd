@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-hyperbolic
     This function object returns the hyperbolic sine: \f$(e^{x}-e^{-x})/2\f$.
@@ -33,7 +33,7 @@ namespace boost { namespace simd
 
        @snippet sinh.txt sinh
   **/
-  Value sinh(Value const & x);
+  IEEEValue sinh(IEEEValue const& x);
 } }
 #endif
 
