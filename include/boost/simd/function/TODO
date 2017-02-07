@@ -348,7 +348,7 @@ OK tan.hpp
 OK tanpi.hpp
 OK tenpower.hpp
 OK tofloat.hpp
-toint.hpp
+OK toint.hpp
 touint.hpp
 trunc.hpp
 two_add.hpp

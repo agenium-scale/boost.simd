@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-arithmetic
     This function object converts its parameter to integer by truncation.
@@ -52,7 +52,7 @@ namespace boost { namespace simd
 
        @snippet toint.txt toint
    **/
-  IntegerValue toint(Value const & x);
+  as_integer_t<Value> toint(Value const& x);
 } }
 #endif
 
