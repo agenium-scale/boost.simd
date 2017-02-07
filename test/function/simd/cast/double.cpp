@@ -18,7 +18,7 @@ STF_CASE( "Check cast behavior for double" )
 {
   static const std::size_t N = bs::pack<double>::static_size;
 
-  test_val<bs::pack<double, N>>($);
-  test_val<bs::pack<double, N/2>>($);
-  test_val<bs::pack<double, N*2>>($);
+  test_val<bs::pack<double, N>>(runtime);
+  test_val<bs::pack<double, N/2>>(runtime);
+  test_val<bs::pack<double, N*2>>(runtime);
 }

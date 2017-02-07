@@ -22,7 +22,7 @@
 namespace bs = boost::simd;
 
 template <typename T, std::size_t N, typename Env>
-void test_raw(Env& $)
+void test_raw(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
 
@@ -41,8 +41,8 @@ STF_CASE_TPL("Check raw rsqrt on pack" , STF_IEEE_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test_raw<T, N>($);
-  test_raw<T, N/2>($);
-  test_raw<T, N*2>($);
+  test_raw<T, N>(runtime);
+  test_raw<T, N/2>(runtime);
+  test_raw<T, N*2>(runtime);
 }
 

@@ -26,7 +26,7 @@ void f( nsm::list<N...> const&, A& a, P& p)
 }
 
 template <typename T, std::size_t N, typename Env>
-void test_st(Env& $)
+void test_st(Env& runtime)
 {
   bs::pack<T, N>  p;
   std::array<bool,N> ref;
@@ -40,7 +40,7 @@ STF_CASE_TPL("Check static insert on pack" , STF_NUMERIC_TYPES)
 {
   static const std::size_t N = boost::simd::pack<T>::static_size;
 
-  test_st<bs::logical<T>, N>($);
-  test_st<bs::logical<T>, N/2>($);
-  test_st<bs::logical<T>, N*2>($);
+  test_st<bs::logical<T>, N>(runtime);
+  test_st<bs::logical<T>, N/2>(runtime);
+  test_st<bs::logical<T>, N*2>(runtime);
 }

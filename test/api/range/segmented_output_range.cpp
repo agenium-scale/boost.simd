@@ -13,7 +13,7 @@
 #include <vector>
 
 template <typename T, typename Env>
-bool is_not_unalignable(Env& $)
+bool is_not_unalignable(Env& runtime)
 {
   // If alignment == sizeof(T) then moving data() by 1 won't change memory alignment, then if the
   // memory passed to segmented_*_range is already aligned to pack<T>::alignment, prologue will
@@ -54,7 +54,7 @@ STF_CASE_TPL("iteration with prologue", STF_NUMERIC_TYPES)
   std::vector<T,boost::simd::allocator<T>>  base(pack<T>::static_size*5+pack<T>::alignment/sizeof(T));
   std::vector<T,boost::simd::allocator<T>>  ref(pack<T>::static_size*5+pack<T>::alignment/sizeof(T)-1);
 
-  if (is_not_unalignable<T>($)) return;
+  if (is_not_unalignable<T>(runtime)) return;
 
   auto data = boost::make_iterator_range(base.data()+1, base.data()+base.size());
   auto pr   = segmented_output_range(data);
@@ -117,7 +117,7 @@ STF_CASE_TPL("iteration with epilogue & prologue", STF_NUMERIC_TYPES)
   std::vector<T,boost::simd::allocator<T>>  base(pack<T>::static_size*5+pack<T>::alignment/sizeof(T));
   std::vector<T,boost::simd::allocator<T>>  ref(pack<T>::static_size*5+pack<T>::alignment/sizeof(T)-2);
 
-  if (is_not_unalignable<T>($)) return;
+  if (is_not_unalignable<T>(runtime)) return;
 
   auto data = boost::make_iterator_range(base.data()+1, base.data()+base.size()-1);
   auto pr   = segmented_output_range(data);

@@ -12,7 +12,7 @@
 #include <simd_test.hpp>
 
 template <typename T, typename U, std::size_t N, typename Env>
-void test(Env& $)
+void test(Env& runtime)
 {
   namespace bs = boost::simd;
   using p_t  = bs::pack<T,N>;
@@ -36,9 +36,9 @@ STF_CASE_TPL( "Check gather behavior with 32-bits indexes", STF_NUMERIC_TYPES )
   namespace bs = boost::simd;
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<T, std::int32_t, N>($);
-  test<T, std::int32_t, N/2>($);
-  test<T, std::int32_t, N*2>($);
+  test<T, std::int32_t, N>(runtime);
+  test<T, std::int32_t, N/2>(runtime);
+  test<T, std::int32_t, N*2>(runtime);
 }
 
 STF_CASE_TPL( "Check gather behavior with 64-bits indexes", STF_NUMERIC_TYPES )
@@ -46,7 +46,7 @@ STF_CASE_TPL( "Check gather behavior with 64-bits indexes", STF_NUMERIC_TYPES )
   namespace bs = boost::simd;
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<T, std::int64_t, N>($);
-  test<T, std::int64_t, N/2>($);
-  test<T, std::int64_t, N*2>($);
+  test<T, std::int64_t, N>(runtime);
+  test<T, std::int64_t, N/2>(runtime);
+  test<T, std::int64_t, N*2>(runtime);
 }

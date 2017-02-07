@@ -19,7 +19,7 @@
 #include <simd_test.hpp>
 
 template <typename T, std::size_t N, typename Env>
-void test(Env& $)
+void test(Env& runtime)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T, N>;
@@ -45,13 +45,13 @@ STF_CASE_TPL("Check logical_notand on pack" , STF_NUMERIC_TYPES)
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
-  test<T, N>($);
-  test<T, N/2>($);
-  test<T, N*2>($);
+  test<T, N>(runtime);
+  test<T, N/2>(runtime);
+  test<T, N*2>(runtime);
 }
 
 template <typename T, std::size_t N, typename Env>
-void testl(Env& $)
+void testl(Env& runtime)
 {
   namespace bs = boost::simd;
   using lT = bs::logical<T>;
@@ -75,9 +75,9 @@ STF_CASE_TPL("Check logical_notand on pack of logical", STF_NUMERIC_TYPES)
   namespace bs = boost::simd;
   using p_t = bs::pack<bs::logical<T>>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
-  testl<T, N>($);
-  testl<T, N/2>($);
-  testl<T, N*2>($);
+  testl<T, N>(runtime);
+  testl<T, N/2>(runtime);
+  testl<T, N*2>(runtime);
 }
 
 

@@ -12,7 +12,7 @@
 
 namespace bs = boost::simd;
 
-template <typename T, int N, typename Env> void test(Env& $)
+template <typename T, int N, typename Env> void test(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
   using pl_t = bs::pack<bs::logical<T>, N>;
@@ -38,12 +38,12 @@ STF_CASE_TPL("Check if_dec on pack with logical condition" , STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<T, N>($);
-  test<T, N/2>($);
-  test<T, N*2>($);
+  test<T, N>(runtime);
+  test<T, N/2>(runtime);
+  test<T, N*2>(runtime);
 }
 
-template <typename T, int N, typename Env> void testa(Env& $)
+template <typename T, int N, typename Env> void testa(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
 
@@ -67,7 +67,7 @@ STF_CASE_TPL("Check if_dec on pack with arithmetic condition" , STF_NUMERIC_TYPE
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  testa<T, N>($);
-  testa<T, N/2>($);
-  testa<T, N*2>($);
+  testa<T, N>(runtime);
+  testa<T, N/2>(runtime);
+  testa<T, N*2>(runtime);
 }

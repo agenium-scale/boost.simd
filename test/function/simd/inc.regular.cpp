@@ -13,7 +13,7 @@
 namespace bs = boost::simd;
 
 template <typename T, std::size_t N, typename Env>
-void pre_test(Env& $)
+void pre_test(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
 
@@ -36,13 +36,13 @@ STF_CASE_TPL("Check pre-increment on pack" , STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  pre_test<T, N>($);
-  pre_test<T, N/2>($);
-  pre_test<T, N*2>($);
+  pre_test<T, N>(runtime);
+  pre_test<T, N/2>(runtime);
+  pre_test<T, N*2>(runtime);
 }
 
 template <typename T, std::size_t N, typename Env>
-void post_test(Env& $)
+void post_test(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
 
@@ -65,7 +65,7 @@ STF_CASE_TPL("Check post-increment on pack" , STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  post_test<T, N>($);
-  post_test<T, N/2>($);
-  post_test<T, N*2>($);
+  post_test<T, N>(runtime);
+  post_test<T, N/2>(runtime);
+  post_test<T, N*2>(runtime);
 }

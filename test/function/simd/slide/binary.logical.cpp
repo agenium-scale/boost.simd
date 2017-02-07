@@ -13,7 +13,7 @@
 
 namespace bs = boost::simd;
 
-template <typename T, int N, typename Env> void test(Env& $)
+template <typename T, int N, typename Env> void test(Env& runtime)
 {
   std::array<bs::logical<T>,4*N> data;
   for(std::size_t i = 0;i < data.size(); ++i) data[i] = false;
@@ -45,7 +45,7 @@ STF_CASE_TPL( "Check binary slide behavior", STF_NUMERIC_TYPES )
   namespace bs = boost::simd;
   static const int N = bs::pack<bs::logical<T>>::static_size;
 
-  test<T, N  >($);
-  test<T, N/2>($);
-  test<T, N*2>($);
+  test<T, N  >(runtime);
+  test<T, N/2>(runtime);
+  test<T, N*2>(runtime);
 }

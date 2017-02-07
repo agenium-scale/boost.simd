@@ -22,7 +22,7 @@ void test( Env&, tt::false_type const& )
 {}
 
 template<typename T, std::size_t N, typename Env>
-void test( Env& $, tt::true_type const& )
+void test( Env& runtime, tt::true_type const& )
 {
   using p_t = bs::pack<T, N>;
   using g_t = bd::downgrade_t<p_t>;
@@ -55,7 +55,7 @@ STF_CASE_TPL("Check group on pack", STF_NUMERIC_TYPES)
 {;
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<T, N  >($, bd::is_downgradable< bs::pack<T,N  > >{});
-  test<T, N/2>($, bd::is_downgradable< bs::pack<T,N/2> >{});
-  test<T, N*2>($, bd::is_downgradable< bs::pack<T,N*2> >{});
+  test<T, N  >(runtime, bd::is_downgradable< bs::pack<T,N  > >{});
+  test<T, N/2>(runtime, bd::is_downgradable< bs::pack<T,N/2> >{});
+  test<T, N*2>(runtime, bd::is_downgradable< bs::pack<T,N*2> >{});
 }

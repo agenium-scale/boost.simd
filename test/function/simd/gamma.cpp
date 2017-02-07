@@ -29,7 +29,7 @@
 namespace bs = boost::simd;
 
 template <typename T, std::size_t N, typename Env>
-void limit_test(Env& $)
+void limit_test(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
 
@@ -42,13 +42,13 @@ void limit_test(Env& $)
 STF_CASE_TPL("Check gamma limit cases" , STF_IEEE_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
-  limit_test<T, N>($);
-  limit_test<T, N/2>($);
-  limit_test<T, N*2>($);
+  limit_test<T, N>(runtime);
+  limit_test<T, N/2>(runtime);
+  limit_test<T, N*2>(runtime);
 }
 
 template <typename T, std::size_t N, typename Env>
-void test(Env& $)
+void test(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
 
@@ -67,9 +67,9 @@ void test(Env& $)
 STF_CASE_TPL("Check gamma on pack" , STF_IEEE_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
-   test<T, N>($);
-   test<T, N/2>($);
-   test<T, N*2>($);
+   test<T, N>(runtime);
+   test<T, N/2>(runtime);
+   test<T, N*2>(runtime);
 }
 
 

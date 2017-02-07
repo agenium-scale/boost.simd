@@ -18,7 +18,7 @@ boost::simd::pack<T, sizeof...(N)> make( nsm::list<N...> const& )
 }
 
 template <typename T, std::size_t N, typename Env>
-void test(Env& $)
+void test(Env& runtime)
 {
   boost::simd::pack<T, N> p = make<T>(nsm::range<std::size_t,0,N>{});
 
@@ -29,7 +29,7 @@ void test(Env& $)
 }
 
 template <typename T, std::size_t N, typename Env>
-void test1(Env& $)
+void test1(Env& runtime)
 {
   boost::simd::pack<T, N> p{8};
 
@@ -40,7 +40,7 @@ void test1(Env& $)
 }
 
 template <typename T, std::size_t N, typename Env>
-void test2(Env& $)
+void test2(Env& runtime)
 {
   {
     boost::simd::pack<T, N> p(0, 1);
@@ -65,10 +65,10 @@ void test2(Env& $)
 
 STF_CASE_TPL( "Check that pack constructs from initializer list", STF_NUMERIC_TYPES )
 {
-  test1<T,  1>($);
-  test2<T,  2>($);
-  test<T,  4>($);
-  test<T,  8>($);
-  test<T, 16>($);
-  test<T, 32>($);
+  test1<T,  1>(runtime);
+  test2<T,  2>(runtime);
+  test<T,  4>(runtime);
+  test<T,  8>(runtime);
+  test<T, 16>(runtime);
+  test<T, 32>(runtime);
 }

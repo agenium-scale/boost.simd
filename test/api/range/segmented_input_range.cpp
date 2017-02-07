@@ -14,7 +14,7 @@
 #include <vector>
 
 template <typename T, typename Env>
-bool is_not_unalignable(Env& $)
+bool is_not_unalignable(Env& runtime)
 {
   // If alignment == sizeof(T) then moving data() by 1 won't change memory alignment, then if the
   // memory passed to segmented_*_range is already aligned to pack<T>::alignment, prologue will
@@ -54,7 +54,7 @@ STF_CASE_TPL("iteration with prologue", STF_NUMERIC_TYPES)
 
   std::vector<T,boost::simd::allocator<T>> ref(pack<T>::static_size*3+pack<T>::alignment/sizeof(T));
 
-  if (is_not_unalignable<T>($)) return;
+  if (is_not_unalignable<T>(runtime)) return;
 
   for(std::size_t i=0;i<ref.size();i++) ref[i] = T(1);
 

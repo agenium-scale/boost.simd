@@ -20,21 +20,21 @@ namespace bs = boost::simd;
 namespace bd = boost::dispatch;
 
 template <typename T, std::size_t N, typename Env, typename Idx>
-void unroll_step ( bs::pack<T,N> const& p, std::array<T,N> const& ref, Idx const&, Env& $)
+void unroll_step ( bs::pack<T,N> const& p, std::array<T,N> const& ref, Idx const&, Env& runtime)
 {
   STF_EQUAL(bs::extract<Idx::value>(p), ref[Idx::value]);
 }
 
 template <typename T, std::size_t N, typename Env, typename... Idx>
 void unroll ( bs::pack<T,N> const& p, std::array<T,N> const& ref
-            , nsm::list<Idx...> const&, Env& $
+            , nsm::list<Idx...> const&, Env& runtime
             )
 {
   BOOST_SIMD_LOCAL_UNROLL( unroll_step(p,ref,Idx{},$) );
 }
 
 template <typename T, std::size_t N, typename Env>
-void test_st(Env& $)
+void test_st(Env& runtime)
 {
   namespace bs = boost::simd;
   STF_TYPE_IS(T, decltype(bs::extract<0>(bs::pack<T, N>{})) );
@@ -50,9 +50,9 @@ STF_CASE_TPL("Check static extract on pack" , STF_NUMERIC_TYPES)
 {
   static const std::size_t N = boost::simd::pack<T>::static_size;
 
-  test_st<T, N/2>($);
-  test_st<T, N>($);
-  test_st<T, N*2>($);
+  test_st<T, N/2>(runtime);
+  test_st<T, N>(runtime);
+  test_st<T, N*2>(runtime);
 }
 
 #ifndef BOOST_NO_CXX11_USER_DEFINED_LITERALS
@@ -60,7 +60,7 @@ STF_CASE_TPL("Check static extract on pack" , STF_NUMERIC_TYPES)
 using namespace bs::literal;
 
 template <typename T, std::size_t N, typename Env>
-void test_lt(Env& $)
+void test_lt(Env& runtime)
 {
   std::array<T,N> ref;
   for(std::size_t i = 0; i < N; ++i) ref[i] = T(i*2);
@@ -76,9 +76,9 @@ STF_CASE_TPL("Check extract on pack using literals" , STF_NUMERIC_TYPES)
 {
   static const std::size_t N = boost::simd::pack<T>::static_size;
 
-  test_lt<T, N/2>($);
-  test_lt<T, N>($);
-  test_lt<T, N*2>($);
+  test_lt<T, N/2>(runtime);
+  test_lt<T, N>(runtime);
+  test_lt<T, N*2>(runtime);
 }
 
 #endif // !BOOST_NO_CXX11_USER_DEFINED_LITERALS

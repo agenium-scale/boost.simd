@@ -16,7 +16,7 @@ namespace bs = boost::simd;
 using bs::pack;
 
 template <typename T, typename Env>
-void test_type(Env& $)
+void test_type(Env& runtime)
 {
   static const std::size_t N = T::static_size;
   STF_EXPR_IS(bs::pack_cast<std::int8_t  >(T()), (bs::pack<std::int8_t,   N>));
@@ -36,9 +36,9 @@ STF_CASE_TPL( "Check cast return type", STF_NUMERIC_TYPES )
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test_type<bs::pack<T, N>>($);
-  test_type<bs::pack<T, N/2>>($);
-  test_type<bs::pack<T, N*2>>($);
+  test_type<bs::pack<T, N>>(runtime);
+  test_type<bs::pack<T, N/2>>(runtime);
+  test_type<bs::pack<T, N*2>>(runtime);
 }
 
 

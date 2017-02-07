@@ -16,7 +16,7 @@ namespace ba = boost::alignment;
 namespace bs = boost::simd;
 
 template <typename T, std::size_t N, typename Env>
-void test(Env& $, std::size_t offset = 0)
+void test(Env& runtime, std::size_t offset = 0)
 {
   using p_t = bs::pack<bs::logical<T>,N>;
 
@@ -39,9 +39,9 @@ STF_CASE_TPL( "Check aligned_load behavior with simple pointer", STF_NUMERIC_TYP
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<T, N>($);
-  test<T, N/2>($);
-  test<T, N*2>($);
+  test<T, N>(runtime);
+  test<T, N/2>(runtime);
+  test<T, N*2>(runtime);
 }
 
 STF_CASE_TPL( "Check aligned_load behavior with offset + pointer", STF_NUMERIC_TYPES )
@@ -49,13 +49,13 @@ STF_CASE_TPL( "Check aligned_load behavior with offset + pointer", STF_NUMERIC_T
   namespace bs = boost::simd;
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<T, N>($,N);
-  test<T, N/2>($,N/2);
-  test<T, N*2>($,N*2);
+  test<T, N>(runtime,N);
+  test<T, N/2>(runtime,N/2);
+  test<T, N*2>(runtime,N*2);
 }
 
 template <typename T, std::size_t N, typename Env>
-void test2(Env& $, std::size_t offset = 0)
+void test2(Env& runtime, std::size_t offset = 0)
 {
   using ptr_t = T;
   using p_t = bs::pack<bs::logical<T>,N>;
@@ -78,9 +78,9 @@ STF_CASE_TPL( "Check aligned_load behavior with a pointer of arithmetic source",
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test2<T, N>($);
-  test2<T, N/2>($);
-  test2<T, N*2>($);
+  test2<T, N>(runtime);
+  test2<T, N/2>(runtime);
+  test2<T, N*2>(runtime);
 }
 
 STF_CASE_TPL( "Check aligned_load behavior with offset + pointer of arithmetic source", STF_NUMERIC_TYPES )
@@ -88,7 +88,7 @@ STF_CASE_TPL( "Check aligned_load behavior with offset + pointer of arithmetic s
   namespace bs = boost::simd;
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test2<T, N>($,N);
-  test2<T, N/2>($,N/2);
-  test2<T, N*2>($,N*2);
+  test2<T, N>(runtime,N);
+  test2<T, N/2>(runtime,N/2);
+  test2<T, N*2>(runtime,N*2);
 }

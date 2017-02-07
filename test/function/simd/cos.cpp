@@ -26,7 +26,7 @@
 namespace bs = boost::simd;
 
 template <typename T, std::size_t N, typename Env>
-void test(Env& $)
+void test(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
 
@@ -47,13 +47,13 @@ STF_CASE_TPL("Check cos on pack" , STF_IEEE_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<T, N>($);
-//   test<T, N/2>($);
-  test<T, N*2>($);
+  test<T, N>(runtime);
+//   test<T, N/2>(runtime);
+  test<T, N*2>(runtime);
 }
 
 template <typename T, std::size_t N, typename Env>
-void testcs(Env& $)
+void testcs(Env& runtime)
 {
   namespace bst = bs::tag;
   using p_t = bs::pack<T, N>;
@@ -75,13 +75,13 @@ STF_CASE_TPL("Check cos cos clipped_small_ on pack" , STF_IEEE_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  testcs<T, N>($);
-  testcs<T, N/2>($);
-  testcs<T, N*2>($);
+  testcs<T, N>(runtime);
+  testcs<T, N/2>(runtime);
+  testcs<T, N*2>(runtime);
 }
 
 template <typename T, std::size_t N, typename Env>
-void testcm(Env& $)
+void testcm(Env& runtime)
 {
   namespace bst = bs::tag;
   using p_t = bs::pack<T, N>;
@@ -103,9 +103,9 @@ STF_CASE_TPL("Check cos cos clipped_medium_ on pack" , STF_IEEE_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  testcm<T, N>($);
-  testcm<T, N/2>($);
-  testcm<T, N*2>($);
+  testcm<T, N>(runtime);
+  testcm<T, N/2>(runtime);
+  testcm<T, N*2>(runtime);
 }
 
 

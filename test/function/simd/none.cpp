@@ -37,7 +37,7 @@ template <typename T, std::size_t N, typename Env> void test(Env &$) {
 STF_CASE_TPL("Check none on pack", STF_NUMERIC_TYPES) {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<T, N>($);
-  test<T, N / 2>($);
-  test<T, N * 2>($);
+  test<T, N>(runtime);
+  test<T, N / 2>(runtime);
+  test<T, N * 2>(runtime);
 }

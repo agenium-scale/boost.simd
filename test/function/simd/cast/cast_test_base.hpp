@@ -29,7 +29,7 @@ template<typename T, typename R> struct res
   }
 };
 
-template <typename T, typename Env> void test_val(Env& $)
+template <typename T, typename Env> void test_val(Env& runtime)
 {
   using sT =  typename T::value_type;
   sT base = (sT(-1) < 0) ? sT(-1) : sT(0);

@@ -13,7 +13,7 @@
 
 namespace bs = boost::simd;
 
-template <typename T, int N, typename Env> void test(Env& $)
+template <typename T, int N, typename Env> void test(Env& runtime)
 {
   std::array<T,3*N> data;
   for(std::size_t i = 0;i < data.size(); ++i) data[i] = T(0);
@@ -52,7 +52,7 @@ STF_CASE_TPL( "Check unary slide behavior", STF_NUMERIC_TYPES )
 {
   static const int N = bs::pack<T>::static_size;
 
-  test<T, N  >($);
-  test<T, N/2>($);
-  test<T, N*2>($);
+  test<T, N  >(runtime);
+  test<T, N/2>(runtime);
+  test<T, N*2>(runtime);
 }
