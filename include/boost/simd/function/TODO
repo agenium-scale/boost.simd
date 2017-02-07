@@ -342,7 +342,7 @@ NA stream.hpp
 OK successor.hpp
 NA sum.hpp
 OK swapbytes.hpp
-tand.hpp
+OK tand.hpp
 tanh.hpp
 tan.hpp
 tanpi.hpp

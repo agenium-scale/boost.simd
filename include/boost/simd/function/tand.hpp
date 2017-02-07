@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the tangent of the input in degrees:
     \f$\sin(\pi x/180)/\cos(\pi x/180) \f$.
@@ -41,7 +41,7 @@ namespace boost { namespace simd
      @snippet tand.txt tand
 
   **/
-  Value tand(Value const & x);
+  IEEEValue tand(IEEEValue const& x);
 } }
 #endif
 
