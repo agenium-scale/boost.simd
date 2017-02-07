@@ -158,8 +158,8 @@ The compilation of using **@projectname** is rather straight-forward: you must p
 It is strongly recommended that you enable all of your compiler optimizations, for example, `-O3` for
 g++, to exploit the full performance potential of **@projectname**. You should also pass the required compiler flag
 for your target architecture to enable the __SIMD__ extensions, especially if you are cross-compiling.
-The exhaustive list of all compiler flags for all supported compilers is provided in the the @ref QuickStart
-guide.
+The exhaustive list of all compiler flags for all supported compilers is provided in the the
+@ref quickstart guide.
 
 For example, on `gcc`:
 
