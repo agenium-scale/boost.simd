@@ -11,10 +11,10 @@
 #ifndef BOOST_SIMD_FUNCTION_SPLIT_MULTIPLIES_HPP_INCLUDED
 #define BOOST_SIMD_FUNCTION_SPLIT_MULTIPLIES_HPP_INCLUDED
 
+#if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-#if defined(DOXYGEN_ONLY)
- /*!
+  /*!
     @ingroup group-swar
     Function object implementing split_multiplies capabilities
 
@@ -25,9 +25,9 @@ namespace boost { namespace simd
     @c split_multiplies multiplies two x-bit SIMD registers and returns two 2x-bit registers
     each having half the cardinal of the original inputs.
   **/
-  const boost::dispatch::functor<tag::split_multiplies_> split_multiplies = {};
-#endif
+  std::pair<upgrade_t<Value>, upgrade_t<Value>> split_multiplies(Value const& x, Value const& y);
 } }
+#endif
 
 #include <boost/simd/function/simd/split_multiplies.hpp>
 
