@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-hyperbolic
     This function object returns the hyperbolic cardinal sine: \f$\sinh(x)/x\f$.
@@ -35,7 +35,7 @@ namespace boost { namespace simd
 
 
   **/
-  Value sinhc(Value const & v0);
+  IEEEValue sinhc(IEEEValue const& x);
 } }
 #endif
 
