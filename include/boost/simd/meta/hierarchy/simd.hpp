@@ -25,15 +25,6 @@
 
 namespace boost { namespace simd
 {
-  /*!
-    @ingroup group-sdk
-    @brief SIMD register type hierarchy tag
-
-    Types classified as pack_ behaves as wide registers
-
-    @tparam T Base hierarchy
-    @tparam X SIMD hardware family tag
-  **/
   template<typename T, typename X>
   struct  pack_ : pack_<typename T::parent, X>
   {
