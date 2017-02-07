@@ -14,8 +14,7 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-
- /*!
+  /*!
     @ingroup group-bitwise
     This function object reverses the byte order of each scalar value
 
@@ -34,7 +33,7 @@ namespace boost { namespace simd
      @snippet swapbytes.txt swapbytes
 
   **/
-  Value swapbytes(Value const & x);
+  Value swapbytes(Value const& x);
 } }
 #endif
 
