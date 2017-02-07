@@ -356,6 +356,6 @@ OK twopower.hpp
 OK two_prod.hpp
 OK two_split.hpp
 OK ulpdist.hpp
-ulp.hpp
-unary_minus.hpp
+OK ulp.hpp
+OK unary_minus.hpp
 unary_plus.hpp

@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object returns the ulp distance to the nearest (distinct) element of the same type.
 
@@ -34,7 +34,7 @@ namespace boost { namespace simd
      @snippet ulp.txt ulp
 
   **/
-  Value ulp(Value const & x);
+  Value ulp(Value const& x);
 } }
 #endif
 
