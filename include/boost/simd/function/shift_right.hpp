@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-operator
     This function object returns the first operand shifted right by the second
@@ -38,7 +38,7 @@ namespace boost { namespace simd
      @snippet shift_right.txt shift_right
 
   **/
-  Value shift_right(Value const & x, IntegerValue const& n);
+  Value shift_right(Value const& x, IntegerValue const& n);
 } }
 #endif
 

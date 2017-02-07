@@ -300,7 +300,7 @@ W  sech.hpp
 W  sec.hpp
 OK secpi.hpp
 OK shift_left.hpp
-shift_right.hpp
+OK shift_right.hpp
 shl.hpp
 shr.hpp
 shuffle.hpp
