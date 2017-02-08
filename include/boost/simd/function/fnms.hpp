@@ -25,7 +25,7 @@ namespace boost { namespace simd
     @par Header <boost/simd/function/fnms.hpp>
 
     @par Notes
-    The call `fnms(a, b, c)` is similar to `-a*b+c`
+    The call `fnms(x, y, z)` is similar to `-x*y+z`
 
     But really conformant fused multiply/add also implies
 
@@ -54,7 +54,7 @@ namespace boost { namespace simd
       @snippet fnms.txt fnms
 
   **/
-  Value fnms(Value const& a, Value const& b, Value const& c);
+  Value fnms(Value const& x, Value const& y, Value const& z);
 } }
 #endif
 

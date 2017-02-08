@@ -23,14 +23,14 @@ namespace boost { namespace simd
 
     @par Notes
 
-    For any value @c a and @c b of same type `div({option, }a, b)`
-    returns the quotient of @c a by @c b respecting to the option specified.
+    For any value @c x and @c y of same type `div({option, }x, y)`
+    returns the quotient of @c x by @c y respecting to the option specified.
 
-   With no option this function is equivalent to @ref divides(a, b).
+    With no option this function is equivalent to @ref divides(x, y).
 
-   Options may be c@ref ceil, @ref floor, @ref fix, @ref round, @ref nearbyint (in the namespace booost::simd)
-   and provides the same result as if the function object whose option is the name was applied to the floating
-   division of the parameters.
+    Options may be @ref ceil, @ref floor, @ref fix, @ref round, @ref nearbyint (in the
+    namespace booost::simd) and provides the same result as if the function object whose
+    option is the name was applied to the floating division of the parameters.
 
     @see divides, rec
 
@@ -45,8 +45,8 @@ namespace boost { namespace simd
   **/
 
   //@{
-  Value div(Option const&, Value const& a, Value const& b);
-  Value div(Value const& a, Value const& b);
+  Value div(Option const&, Value const& x, Value const& y);
+  Value div(Value const& x, Value const& y);
   //@}
 
 } }

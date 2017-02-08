@@ -23,7 +23,7 @@ namespace boost { namespace simd
     @par Header <boost/simd/function/fma.hpp>
 
     @par Notes
-    The call `fma(a, b, c)` is similar to `a*b+c`
+    The call `fma(x, y, z)` is similar to `z*y+z`
 
     But really conformant fused multiply/add also implies
 
@@ -55,7 +55,7 @@ namespace boost { namespace simd
 
       @snippet fma.txt fma
   **/
-  Value fma(Value const& a, Value const& b, Value const& c);
+  Value fma(Value const& x, Value const& y, Value const& z);
 } }
 #endif
 

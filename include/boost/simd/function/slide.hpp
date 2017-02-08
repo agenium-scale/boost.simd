@@ -18,12 +18,12 @@ namespace boost { namespace simd
     @par Header <boost/simd/function/slide.hpp>
 
   **/
-  template<std::size_t N, typename T> T slide(T const& a0, T const& a1) {}
+  template<std::size_t N, typename T> T slide(T const& x, T const& y) {}
 
   /*!
     @overload
   */
-  template<std::size_t N, typename T> T slide(T const& a0) {}
+  template<std::size_t N, typename T> T slide(T const& x) {}
 } }
 #endif
 
