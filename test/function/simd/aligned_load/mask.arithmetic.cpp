@@ -16,7 +16,7 @@ namespace bs = boost::simd;
 namespace ba = boost::alignment;
 
 template <typename T, std::size_t N, typename Env>
-void test(Env& $)
+void test(Env& runtime)
 {
   using p_t  = bs::pack<T,N>;
   using pm_t = bs::pack<bs::logical<T>,N>;
@@ -52,7 +52,7 @@ STF_CASE_TPL( "Check masked aligned_load behavior", STF_NUMERIC_TYPES )
   namespace bs = boost::simd;
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<T, N>($);
-  test<T, N/2>($);
-  test<T, N*2>($);
+  test<T, N>(runtime);
+  test<T, N/2>(runtime);
+  test<T, N*2>(runtime);
 }

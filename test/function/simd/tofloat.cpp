@@ -30,7 +30,7 @@ namespace bs = boost::simd;
 namespace bd = boost::dispatch;
 
 template <typename T, int N, typename Env>
-void test(Env& $)
+void test(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
   using fT = bd::as_floating_t<T>;
@@ -54,9 +54,9 @@ STF_CASE_TPL("Check tofloat on pack" , (std::uint32_t)(std::uint64_t)(std::int32
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<T, N>($);
-  test<T, N/2>($);
-  test<T, N*2>($);
+  test<T, N>(runtime);
+  test<T, N/2>(runtime);
+  test<T, N*2>(runtime);
 }
 
 

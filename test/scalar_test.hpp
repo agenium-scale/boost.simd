@@ -11,7 +11,7 @@
 #define SCALAR_TEST_HPP_INCLUDED
 
 #define STF_CUSTOM_DRIVER_FUNCTION scalar_test
-#include <stf.hpp>
+#include <stf/stf.hpp>
 
 // -------------------------------------------------------------------------------------------------
 // adapt pack for STF testing

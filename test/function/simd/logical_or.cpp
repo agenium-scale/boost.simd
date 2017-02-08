@@ -16,7 +16,7 @@
 namespace bs = boost::simd;
 
 template <typename T, std::size_t N, typename Env>
-void test(Env& $)
+void test(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
   using pl_t = bs::pack<bs::logical<T>, N>;
@@ -42,13 +42,13 @@ STF_CASE_TPL("Check logical_or on pack" , STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<T, N>($);
-  test<T, N/2>($);
-  test<T, N*2>($);
+  test<T, N>(runtime);
+  test<T, N/2>(runtime);
+  test<T, N*2>(runtime);
 }
 
 template <typename T, std::size_t N, typename Env>
-void testl(Env& $)
+void testl(Env& runtime)
 {
   using lT = bs::logical<T>;
   using pl_t = bs::pack<lT, N>;
@@ -73,7 +73,7 @@ STF_CASE_TPL("Check logical_or on pack of logical", STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  testl<T, N>($);
-  testl<T, N/2>($);
-  testl<T, N*2>($);
+  testl<T, N>(runtime);
+  testl<T, N/2>(runtime);
+  testl<T, N*2>(runtime);
 }

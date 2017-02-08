@@ -18,7 +18,7 @@
 #include <simd_test.hpp>
 
 template <typename T, std::size_t N, typename Env>
-void test(Env& $)
+void test(Env& runtime)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T, N>;
@@ -44,12 +44,12 @@ STF_CASE_TPL("Check rem on pack" , STF_SIGNED_NUMERIC_TYPES)
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
-  test<T, N>($);
-  test<T, N/2>($);
-  test<T, N*2>($);
+  test<T, N>(runtime);
+  test<T, N/2>(runtime);
+  test<T, N*2>(runtime);
 }
 template <typename T, std::size_t N, typename Env>
-void testnearbyintregular(Env& $)
+void testnearbyintregular(Env& runtime)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T, N>;
@@ -75,9 +75,9 @@ STF_CASE_TPL("Check regular_(rem) on pack option nearbyint" , STF_IEEE_TYPES)
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
-  testnearbyintregular<T, N>($);
-  testnearbyintregular<T, N/2>($);
-  testnearbyintregular<T, N*2>($);
+  testnearbyintregular<T, N>(runtime);
+  testnearbyintregular<T, N/2>(runtime);
+  testnearbyintregular<T, N*2>(runtime);
 }
 
 STF_CASE_TPL("Check rem nearbyint on pack limiting cases" , STF_IEEE_TYPES)

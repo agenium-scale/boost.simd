@@ -14,7 +14,7 @@
 #include <list>
 
 template <typename T, std::size_t N, typename Container, typename Env>
-void test(Env& $)
+void test(Env& runtime)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T,N>;
@@ -33,9 +33,9 @@ STF_CASE_TPL( "Check load behavior with InputRange", STF_NUMERIC_TYPES )
   namespace bs = boost::simd;
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<T, N  , std::list<T>>($);
-  test<T, N/2, std::list<T>>($);
-  test<T, N*2, std::list<T>>($);
+  test<T, N  , std::list<T>>(runtime);
+  test<T, N/2, std::list<T>>(runtime);
+  test<T, N*2, std::list<T>>(runtime);
 }
 
 STF_CASE_TPL( "Check load behavior with RandomAccessRange", STF_NUMERIC_TYPES )
@@ -43,7 +43,7 @@ STF_CASE_TPL( "Check load behavior with RandomAccessRange", STF_NUMERIC_TYPES )
   namespace bs = boost::simd;
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<T, N  , std::vector<T>>($);
-  test<T, N/2, std::vector<T>>($);
-  test<T, N*2, std::vector<T>>($);
+  test<T, N  , std::vector<T>>(runtime);
+  test<T, N/2, std::vector<T>>(runtime);
+  test<T, N*2, std::vector<T>>(runtime);
 }

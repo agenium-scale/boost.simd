@@ -16,7 +16,7 @@ namespace ba = boost::alignment;
 namespace bs = boost::simd;
 
 template <typename T, std::size_t N, typename Env>
-void test_periodic(Env& $)
+void test_periodic(Env& runtime)
 {
   using p_t = bs::pack<T,N>;
 
@@ -46,13 +46,13 @@ STF_CASE_TPL( "Check aligned_load behavior with periodic misalignment", STF_NUME
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test_periodic<T, N>($);
-  test_periodic<T, N/2>($);
-  test_periodic<T, N*2>($);
+  test_periodic<T, N>(runtime);
+  test_periodic<T, N/2>(runtime);
+  test_periodic<T, N*2>(runtime);
 }
 
 template <typename T, std::size_t N, typename Env>
-void test_aperiodic(Env& $)
+void test_aperiodic(Env& runtime)
 {
   using p_t = bs::pack<T,N>;
 
@@ -80,7 +80,7 @@ STF_CASE_TPL( "Check aligned_load behavior with aperiodic misalignment", STF_NUM
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test_aperiodic<T, N>($);
-  test_aperiodic<T, N/2>($);
-  test_aperiodic<T, N*2>($);
+  test_aperiodic<T, N>(runtime);
+  test_aperiodic<T, N/2>(runtime);
+  test_aperiodic<T, N*2>(runtime);
 }

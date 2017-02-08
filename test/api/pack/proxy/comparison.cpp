@@ -15,7 +15,7 @@
 namespace bs = boost::simd;
 
 template <typename T, std::size_t N, typename Env>
-void test_is_equal(Env& $)
+void test_is_equal(Env& runtime)
 {
   std::array<T, N> ref;
   std::iota(ref.begin(), ref.end(), T(1));
@@ -25,7 +25,7 @@ void test_is_equal(Env& $)
 }
 
 template <typename T, std::size_t N, typename Env>
-void test_not_equal(Env& $)
+void test_not_equal(Env& runtime)
 {
   std::array<T, N> ref;
   std::iota(ref.begin(), ref.end(), T(1));
@@ -36,20 +36,20 @@ void test_not_equal(Env& $)
 
 STF_CASE_TPL( "Check proxy equality comparison" , STF_NUMERIC_TYPES)
 {
-  test_is_equal<T,  1>($);
-  test_is_equal<T,  2>($);
-  test_is_equal<T,  4>($);
-  test_is_equal<T,  8>($);
-  test_is_equal<T, 16>($);
-  test_is_equal<T, 32>($);
+  test_is_equal<T,  1>(runtime);
+  test_is_equal<T,  2>(runtime);
+  test_is_equal<T,  4>(runtime);
+  test_is_equal<T,  8>(runtime);
+  test_is_equal<T, 16>(runtime);
+  test_is_equal<T, 32>(runtime);
 }
 
 STF_CASE_TPL( "Check proxy inequality comparison" , STF_NUMERIC_TYPES)
 {
-  test_not_equal<T,  1>($);
-  test_not_equal<T,  2>($);
-  test_not_equal<T,  4>($);
-  test_not_equal<T,  8>($);
-  test_not_equal<T, 16>($);
-  test_not_equal<T, 32>($);
+  test_not_equal<T,  1>(runtime);
+  test_not_equal<T,  2>(runtime);
+  test_not_equal<T,  4>(runtime);
+  test_not_equal<T,  8>(runtime);
+  test_not_equal<T, 16>(runtime);
+  test_not_equal<T, 32>(runtime);
 }

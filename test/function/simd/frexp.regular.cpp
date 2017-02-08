@@ -20,7 +20,7 @@ namespace bs = boost::simd;
 namespace bd = boost::dispatch;
 
 template <typename T, std::size_t N, typename Env>
-void test(Env& $)
+void test(Env& runtime)
 {
   using p_T  = bs::pack< T, N>;
 
@@ -46,9 +46,9 @@ void test(Env& $)
 STF_CASE_TPL("Check basic behavior of frexp on pack" , STF_IEEE_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
-  test<T, N>($);
-  test<T, N/2>($);
-  test<T, N*2>($);
+  test<T, N>(runtime);
+  test<T, N/2>(runtime);
+  test<T, N*2>(runtime);
 }
 
 STF_CASE_TPL("Check behavior of pedantic_(frexp) on Zero", STF_IEEE_TYPES)

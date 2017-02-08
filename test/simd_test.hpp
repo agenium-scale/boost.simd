@@ -11,7 +11,7 @@
 #define SIMD_TEST_HPP_INCLUDED
 
 #define STF_CUSTOM_DRIVER_FUNCTION simd_test
-#include <stf.hpp>
+#include <stf/stf.hpp>
 
 #include <boost/simd/pack.hpp>
 

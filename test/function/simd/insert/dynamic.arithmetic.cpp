@@ -17,7 +17,7 @@ namespace bs = boost::simd;
 namespace bd = boost::dispatch;
 
 template <typename T, std::size_t N, typename Env>
-void test(Env& $)
+void test(Env& runtime)
 {
   bs::pack<T, N>  p;
   std::array<T,N> a;
@@ -36,7 +36,7 @@ STF_CASE_TPL("Check dynamic insert on pack" , STF_NUMERIC_TYPES)
 {
   static const std::size_t N = boost::simd::pack<T>::static_size;
 
-  test<T, N>($);
-  test<T, N/2>($);
-  test<T, N*2>($);
+  test<T, N>(runtime);
+  test<T, N/2>(runtime);
+  test<T, N*2>(runtime);
 }

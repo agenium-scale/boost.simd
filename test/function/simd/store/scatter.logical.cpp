@@ -15,7 +15,7 @@ namespace bs = boost::simd;
 namespace bd = boost::dispatch;
 
 template <typename T, typename U, std::size_t N, typename Env>
-void test(Env& $)
+void test(Env& runtime)
 {
   using p_t  = bs::pack<T, N>;
   using pi_t = bs::pack<U, N>;
@@ -48,16 +48,16 @@ STF_CASE_TPL( "Check scatter store behavior with 32 bits indexes", STF_NUMERIC_T
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<bs::logical<T>, std::int32_t, N>($);
-  test<bs::logical<T>, std::int32_t, N/2>($);
-  test<bs::logical<T>, std::int32_t, N*2>($);
+  test<bs::logical<T>, std::int32_t, N>(runtime);
+  test<bs::logical<T>, std::int32_t, N/2>(runtime);
+  test<bs::logical<T>, std::int32_t, N*2>(runtime);
 }
 
 STF_CASE_TPL( "Check scatter store behavior with 64 bits indexes", STF_NUMERIC_TYPES )
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<bs::logical<T>, std::int64_t, N>($);
-  test<bs::logical<T>, std::int64_t, N/2>($);
-  test<bs::logical<T>, std::int64_t, N*2>($);
+  test<bs::logical<T>, std::int64_t, N>(runtime);
+  test<bs::logical<T>, std::int64_t, N/2>(runtime);
+  test<bs::logical<T>, std::int64_t, N*2>(runtime);
 }

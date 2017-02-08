@@ -17,7 +17,7 @@ STF_CASE( "Check cast behavior for float" )
 {
   static const std::size_t N = bs::pack<float>::static_size;
 
-  test_val<bs::pack<float, N>>($);
-  test_val<bs::pack<float, N/2>>($);
-  test_val<bs::pack<float, N*2>>($);
+  test_val<bs::pack<float, N>>(runtime);
+  test_val<bs::pack<float, N/2>>(runtime);
+  test_val<bs::pack<float, N*2>>(runtime);
 }

@@ -48,8 +48,6 @@ NS_prevent_in_source_build()
 
 ## External projects
 ## -------------------------------------------------------------------------------------------------
-set(STF_STANDALONE_DESTINATION      ${PROJECT_SOURCE_DIR}/test)
-
 set(NS_CMAKE_PROJECT_OPTIONS
   CMAKE_ARGS "-DBOOST_ROOT=${BOOST_HEADER_ONLY_DESTINATION}/include"
 )
@@ -65,7 +63,7 @@ set(NS_CMAKE_PROJECT_OPTIONS
 )
 
 if (DEFINED DEV)
-  NS_project_include(stf.standalone)
+  NS_project_include(stf)
 endif()
 
 ## Extension point for CMake
@@ -122,6 +120,7 @@ include_directories(
   ${PROJECT_SOURCE_DIR}/test
   ${PROJECT_SOURCE_DIR}/bench
   ${PROJECT_SOURCE_DIR}/exhaustive
+  ${STF_DESTINATION}/include/
   ${Boost_INCLUDE_DIRS}
 )
 

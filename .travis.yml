@@ -220,5 +220,6 @@ before_script:
 ##===================================================================================================
 script:
   - make update.boost-header-only | grep -v "^-- " # Silent installation
+  - make update.stf | grep -v "^-- " # Silent installation
   - make  -j 4 -k  $TARGETS.unit
   - ctest -j 4 -R ^$TARGETS.*.unit

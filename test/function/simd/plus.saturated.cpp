@@ -14,7 +14,7 @@
 namespace bs = boost::simd;
 
 template <typename T, std::size_t N, typename Env>
-void tests(Env& $)
+void tests(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
 
@@ -34,7 +34,7 @@ void tests(Env& $)
 STF_CASE_TPL("Check saturated plus on pack" , STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
-  tests<T, N>($);
-  tests<T, N/2>($);
-  tests<T, N*2>($);
+  tests<T, N>(runtime);
+  tests<T, N/2>(runtime);
+  tests<T, N*2>(runtime);
 }

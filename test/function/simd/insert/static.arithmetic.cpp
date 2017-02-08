@@ -29,7 +29,7 @@ void f( nsm::list<N...> const&, A& a, P& p)
 }
 
 template <typename T, std::size_t N, typename Env>
-void test_st(Env& $)
+void test_st(Env& runtime)
 {
   bs::pack<T, N>  p;
   std::array<T,N> a;
@@ -44,9 +44,9 @@ STF_CASE_TPL("Check static insert on pack" , STF_NUMERIC_TYPES)
 {
   static const std::size_t N = boost::simd::pack<T>::static_size;
 
-  test_st<T, N>($);
-  test_st<T, N/2>($);
-  test_st<T, N*2>($);
+  test_st<T, N>(runtime);
+  test_st<T, N/2>(runtime);
+  test_st<T, N*2>(runtime);
 }
 
 #ifndef BOOST_NO_CXX11_USER_DEFINED_LITERALS
@@ -54,7 +54,7 @@ STF_CASE_TPL("Check static insert on pack" , STF_NUMERIC_TYPES)
 using namespace bs::literal;
 
 template <typename T, std::size_t N, typename Env>
-void test_lt(Env& $)
+void test_lt(Env& runtime)
 {
   bs::pack<T, N>  p;
   std::array<T,N> a;
@@ -77,9 +77,9 @@ STF_CASE_TPL("Check static insert on pack using literals" , STF_NUMERIC_TYPES)
 {
   static const std::size_t N = boost::simd::pack<T>::static_size;
 
-  test_lt<T, N>($);
-  test_lt<T, N/2>($);
-  test_lt<T, N*2>($);
+  test_lt<T, N>(runtime);
+  test_lt<T, N/2>(runtime);
+  test_lt<T, N*2>(runtime);
 }
 
 #endif // !BOOST_NO_CXX11_USER_DEFINED_LITERALS

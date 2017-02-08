@@ -19,7 +19,7 @@ void test( Env&, tt::false_type const& )
 {}
 
 template<typename T, std::size_t N, typename Env>
-void test( Env& $, tt::true_type const& )
+void test( Env& runtime, tt::true_type const& )
 {
   using type = bd::upgrade_t<T>;
 
@@ -44,7 +44,7 @@ STF_CASE_TPL("split pack<T,N> into a pair of pack<T*2,N/2>", STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<T,N  >($, bd::is_upgradable< bs::pack<T,N/2> >{});
-  test<T,N/2>($, bd::is_upgradable< bs::pack<T,N/2> >{});
-  test<T,N*2>($, bd::is_upgradable< bs::pack<T,N/2> >{});
+  test<T,N  >(runtime, bd::is_upgradable< bs::pack<T,N/2> >{});
+  test<T,N/2>(runtime, bd::is_upgradable< bs::pack<T,N/2> >{});
+  test<T,N*2>(runtime, bd::is_upgradable< bs::pack<T,N/2> >{});
 }
