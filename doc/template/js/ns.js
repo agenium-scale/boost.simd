@@ -1,3 +1,43 @@
+function doxygen_version() {
+    var version = null;
+    $.each($('address.footer').text().split('\n'), function (_, l) {
+        l = l.trim();
+        if (l == '') return;
+        if (l.indexOf('Generated') != -1) return;
+        if (version == null) {
+            version = l;
+        } else {
+            // At this point, we have found more candidates than expected, just output a warning
+            console.log('warn: Found multiple candidates for Doxygen version');
+        }
+    });
+    var v = version.split('.');
+    return [parseInt(v[0]), parseInt(v[1]), parseInt(v[2])];
+}
+
+function doxygen_version_upper(maj, min, rev) {
+    var v = doxygen_version();
+    return v[0] >= maj && v[1] >= min && v[2] >= rev;
+}
+
+// FIXME: For some reasons, I have to wait for smartmenus to apply its stuffs before actually
+// stylising the #main-menu (I assume this is that..)
+// This bug was introduced with doxygen 1.8.11, I hope this is not breaking previous versions.
+function doxygen_fixup(f) {
+    if (doxygen_version_upper(1, 8, 11)) {
+        // Wait for smartmenus from here:
+        var id;
+        id = setInterval(function() {
+            if ($('#main-menu').attr('data-smartmenus-id') !== null) {
+                f();
+                clearInterval(id);
+            }
+        }, 1);
+    } else {
+        f();
+    }
+}
+
 function ns_style() {
     $("div.headertitle").addClass("page-header");
     $("div.title").addClass("h1");
@@ -23,11 +63,15 @@ function ns_style() {
     $(".memproto").removeClass('memproto');
     $(".navpath").removeClass('navpath');
     $("a.el").removeClass('el');
+    if (doxygen_version_upper(1, 8, 11)) {
+        $("#main-menu").addClass('nav nav-pills nav-justified');
+        $("#main-menu").css('visibility', 'initial');
+    }
 }
 
 function ns_fixup_content() {
     var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-
+    //
     $('.contents').each(function (_, c) {
         console.log(c);
         c = $(c);
@@ -47,15 +91,21 @@ function ns_search_box(display) {
     // In any case we want to remove the current one
     remove_current_search_box();
     if (!display) return;
-
-    var nav_container = $('<div class="row"></div>');
-    $('#navrow1').parent().prepend(nav_container);
-    var nav = $('<div class="col-md-12"></div>');
-    for (i = 0; i < 8; i++) {
-        var navrow = $('#navrow' + i + ' > ul.tablist').detach();
-        nav.append(navrow);
-        $('#navrow' + i).remove();
+    //
+    var nav_container, nav;
+    if (doxygen_version_upper(1, 8, 11)) {
+        $('#main-nav').find('li #MSearchBox').parent().empty();
+    } else {
+        nav_container = $('<div class="row"></div>');
+        $('#navrow1').parent().prepend(nav_container);
+        nav = $('<div class="col-md-12"></div>');
+        for (i = 0; i < 8; i++) {
+            var navrow = $('#navrow' + i + ' > ul.tablist').detach();
+            nav.append(navrow);
+            $('#navrow' + i).remove();
+        }
     }
+    //
     var sb_html = '';
     sb_html += '<li style="text-align: center; vertical-align: middle; padding-left: 25px; min-width: 200px; margin-left: 10px;">';
     sb_html += '  <div style="display: inline-block">';
@@ -72,11 +122,14 @@ function ns_search_box(display) {
     sb_html += '  </div>';
     sb_html += '  </div>';
     sb_html += '</li>';
-
-    // TODO: Should we do something else if .tablist is not found?
-    nav.find('.tablist:first').append(sb_html);
-    $(nav_container).append(nav);
-
+    //
+    if (doxygen_version_upper(1, 8, 11)) {
+        $('#main-menu').append(sb_html);
+    } else {
+        // TODO: Should we do something else if .tablist is not found?
+        nav.find('.tablist:first').append(sb_html);
+        $(nav_container).append(nav);
+    }
     //
     $('#MSearchSelectWindow .SelectionMark').remove();
     var search_selectors = $('#MSearchSelectWindow .SelectItem');
@@ -93,7 +146,7 @@ function ns_search_box(display) {
         $('#search-box .dropdown-menu').append(element);
     }
     $('#MSearchSelectWindow').remove();
-
+    //
     $('#search-box .close').click(function() {
         searchBox.CloseResultsWindow();
     });
@@ -126,36 +179,21 @@ function ns_search_box(display) {
 
 function ns_nav() {
     var page = window.location.pathname.split('/').slice(-1).pop();
-    var elts = $('.nav a');
+    var elts;
+    if (doxygen_version_upper(1, 8, 11)) {
+        elts = $('#main-menu a');
+    } else {
+        elts = $('.nav a');
+    }
     for (var i = 0; i < elts.length; ++i) {
         var e = $(elts[i]);
-        var href = e.attr('href');
-        if (page === href) {
+        if (page === e.attr('href')) {
             e.parent().addClass('current active');
         }
     }
-    if (page.indexOf('group') != -1) {
+    if (page.indexOf('group') != -1 || page.indexOf('class') != -1 || page.indexOf('namespace') != -1) {
         for (var i = 0; i < elts.length; ++i) {
             var e = $(elts[i]);
-            console.log(e.attr('href'));
-            if (e.attr('href').indexOf('modules') != -1) {
-                e.parent().addClass('current active')
-            }
-        }
-    }
-    if (page.indexOf('class') != -1) {
-        for (var i = 0; i < elts.length; ++i) {
-            var e = $(elts[i]);
-            console.log(e.attr('href'));
-            if (e.attr('href').indexOf('modules') != -1) {
-                e.parent().addClass('current active')
-            }
-        }
-    }
-    if (page.indexOf('namespace') != -1) {
-        for (var i = 0; i < elts.length; ++i) {
-            var e = $(elts[i]);
-            console.log(e.attr('href'));
             if (e.attr('href').indexOf('modules') != -1) {
                 e.parent().addClass('current active')
             }
@@ -164,7 +202,6 @@ function ns_nav() {
     if (page.indexOf('tutorial') != -1) {
         for (var i = 0; i < elts.length; ++i) {
             var e = $(elts[i]);
-            console.log(e.attr('href'));
             if (e.attr('href').indexOf('tutorial') != -1) {
                 e.parent().addClass('current active')
             }
