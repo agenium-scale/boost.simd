@@ -141,12 +141,10 @@ td.mempage {
 }
 
 .memTemplParams,
-.memtemplate {
-    font-size: 100%;
-}
-
+.memtemplate,
 .memname {
-    margin-left: 9px;
+    font-size: 100%;
+    margin-left: 0px;
 }
 
 div.textblock h3 {
@@ -160,4 +158,10 @@ div.textblock h3 {
 
 #main-menu {
     visibility: hidden;
+}
+
+.ns-fun-decl {
+    padding: 10px;
+    padding-left: 0px;
+    font-size: 2em;
 }

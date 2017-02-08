@@ -1,3 +1,11 @@
+function trimAll(t, search, replacement) {
+    var chunks = t.split(search);
+    var last = chunks.pop();
+    chunks = chunks.filter(function (s) { return s != ""; });
+    chunks.push(last);
+    return chunks.join(replacement);
+}
+
 function doxygen_version() {
     var version = null;
     $.each($('address.footer').text().split('\n'), function (_, l) {
@@ -67,6 +75,26 @@ function ns_style() {
         $("#main-menu").addClass('nav nav-pills nav-justified');
         $("#main-menu").css('visibility', 'initial');
     }
+    $('.memtitle').css('display', 'none');
+    $.each($('.memname'), function (_, tr) {
+        var t = $(tr).text();
+        t = trimAll(t, '\n', ' ');
+        t = trimAll(t, '\t', ' ');
+        // Yes.. trimAll basically splits, then filters empty strng, then join, this removes all
+        // additional spaces inside the text.
+        t = trimAll(t, ' ', ' ');
+        t = trimAll(t, ' ( ', '(');
+        t = trimAll(t, ' , ', ', ');
+        t = trimAll(t, ' )', ')');
+        t = trimAll(t, ' &', '&');
+        var h = '';
+        h += '<div class="ns-fun-decl">'
+        h += t;
+        h += '</div>'
+        var $tr = $(tr);
+        $tr.html(h);
+        $tr.html($tr.html().replace(/&nbsp;/g, ""));
+    })
 }
 
 function ns_fixup_content() {
