@@ -22,9 +22,9 @@ function doxygen_version_upper(maj, min, rev) {
 
 // FIXME: For some reasons, I have to wait for smartmenus to apply its stuffs before actually
 // stylising the #main-menu (I assume this is that..)
-// This bug was introduced with doxygen 1.8.11, I hope this is not breaking previous versions.
+// This bug was introduced with doxygen 1.8.12, I hope this is not breaking previous versions.
 function doxygen_fixup(f) {
-    if (doxygen_version_upper(1, 8, 11)) {
+    if (doxygen_version_upper(1, 8, 12)) {
         // Wait for smartmenus from here:
         var id;
         id = setInterval(function() {
@@ -63,7 +63,7 @@ function ns_style() {
     $(".memproto").removeClass('memproto');
     $(".navpath").removeClass('navpath');
     $("a.el").removeClass('el');
-    if (doxygen_version_upper(1, 8, 11)) {
+    if (doxygen_version_upper(1, 8, 12)) {
         $("#main-menu").addClass('nav nav-pills nav-justified');
         $("#main-menu").css('visibility', 'initial');
     }
@@ -93,7 +93,7 @@ function ns_search_box(display) {
     if (!display) return;
     //
     var nav_container, nav;
-    if (doxygen_version_upper(1, 8, 11)) {
+    if (doxygen_version_upper(1, 8, 12)) {
         $('#main-nav').find('li #MSearchBox').parent().empty();
     } else {
         nav_container = $('<div class="row"></div>');
@@ -123,7 +123,7 @@ function ns_search_box(display) {
     sb_html += '  </div>';
     sb_html += '</li>';
     //
-    if (doxygen_version_upper(1, 8, 11)) {
+    if (doxygen_version_upper(1, 8, 12)) {
         $('#main-menu').append(sb_html);
     } else {
         // TODO: Should we do something else if .tablist is not found?
@@ -180,7 +180,7 @@ function ns_search_box(display) {
 function ns_nav() {
     var page = window.location.pathname.split('/').slice(-1).pop();
     var elts;
-    if (doxygen_version_upper(1, 8, 11)) {
+    if (doxygen_version_upper(1, 8, 12)) {
         elts = $('#main-menu a');
     } else {
         elts = $('.nav a');
