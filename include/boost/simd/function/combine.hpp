@@ -22,32 +22,32 @@ namespace boost { namespace simd
     @par Header <boost/simd/function/combine.hpp>
 
     @par Scalar Semantic:
-    For any scalar value @c a and @c b of type @c T , the following code:
+    For any scalar value @c x and @c y of type @c T , the following code:
     @code
-    auto c = combine(a,b);
+    auto c = combine(x,y);
     @endcode
     is equivalent to :
     @code
-    pack<T, 2> c(a,b);
+    pack<T, 2> c(x,y);
     @endcode
 
     @par SIMD Semantic:
-    For any type value @c a and @c b of type boost::simd::pack<T,N>, the following code:
+    For any type value @c x and @c y of type boost::simd::pack<T,N>, the following code:
     @code
-    pack<T,2*N> c = combine(a,b);
+    pack<T,2*N> c = combine(x,y);
     @endcode
     is equivalent to :
     @code
-    pack<T,2*N> c(a[0],....,a[N-1],b[0],....,b[N-1]);
+    pack<T,2*N> c(x[0],....,x[N-1],y[0],....,y[N-1]);
     @endcode
-    where @c N is equal to the cardinal of both @c a and @c b.
+    where @c N is equal to the cardinal of both @c x and @c y.
 
-    @param v0 First  value to combine
-    @param v1 Second value to combine
+    @param x First  value to combine
+    @param y Second value to combine
 
     @return The concatenation of both inputs
   **/
-  auto combine(Value const& v0, Value const& v1);
+  auto combine(Value const& x, Value const& y);
 } }
 #endif
 

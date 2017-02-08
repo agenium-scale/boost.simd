@@ -37,8 +37,8 @@ namespace boost { namespace simd
     std::array<T,2> r = { interleave_first(x,y), interleave_second(x,y) };
     @endcode
 
-    @param  v0 First argument to interleave
-    @param  v1 Second argument to interleave
+    @param  x First argument to interleave
+    @param  y Second argument to interleave
     @return An array of two boost::simd::pack containing the interleaved data from the arguments
   **/
   std::array<Value, 2> interleave(Value const& x, Value const& y);
