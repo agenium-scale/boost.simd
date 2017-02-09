@@ -13,7 +13,7 @@
 #include <boost/simd/function/slice.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/detail/dispatch/meta/as_floating.hpp>
-#include <bitset>
+#include <boost/simd/detail/bitset.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -26,7 +26,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::type32_<A0>, bs::avx_>
                           )
   {
-    BOOST_FORCEINLINE std::bitset<8> operator()(A0 const& a0) const
+    BOOST_FORCEINLINE bs::bitset<8> operator()(A0 const& a0) const
     {
       return _mm256_movemask_ps(bitwise_cast<bd::as_floating_t<A0>>(a0));
     }
@@ -38,7 +38,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::type64_<A0>, bs::avx_>
                           )
   {
-    BOOST_FORCEINLINE std::bitset<4> operator()(A0 const& a0) const
+    BOOST_FORCEINLINE bs::bitset<4> operator()(A0 const& a0) const
     {
       return _mm256_movemask_pd(bitwise_cast<bd::as_floating_t<A0>>(a0));
     }
@@ -50,7 +50,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::ints8_<A0>, bs::avx_>
                           )
   {
-    BOOST_FORCEINLINE std::bitset<32> operator()(A0 const& a0) const
+    BOOST_FORCEINLINE bs::bitset<32> operator()(A0 const& a0) const
     {
       auto h = _mm_movemask_epi8(slice_high(a0));
       auto l = _mm_movemask_epi8(slice_low (a0));
@@ -64,7 +64,7 @@ namespace boost { namespace simd { namespace ext
                       , bs::pack_<bd::ints16_<A0>, bs::avx_>
                       )
   {
-    BOOST_FORCEINLINE std::bitset<16> operator()(A0 const& a0) const
+    BOOST_FORCEINLINE bs::bitset<16> operator()(A0 const& a0) const
     {
       using s8type = typename A0::template retype<int8_t, 16>;
       s8type mask = {1,3,5,7,9,11,13,15,-128,-128,-128,-128,-128,-128,-128,-128};

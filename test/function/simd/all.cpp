@@ -18,24 +18,25 @@ void test(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
 
-  T a1[N], a2[N];
-  bool b = true,  c = true;
+  T a1[N], a2[N], a3[N];
 
   for(std::size_t i = 0; i < N; ++i)
   {
-    a1[i] = (i%2) ? T(i) : T(-i);
-    a2[i] = (i%2) ? T(i+1) : T(-i);
-    b = b && a1[i]!= 0;
-    c = c && a2[i]!= 0;
+    a1[i] = T(i+1);
+    a2[i] = T(0);
+    a3[i] = i==N/2 ? T(0) : T(i+1);
   }
   p_t aa1(&a1[0], &a1[0]+N);
   p_t aa2(&a2[0], &a2[0]+N);
+  p_t aa3(&a3[0], &a3[0]+N);
 
-  STF_EQUAL(bs::all(aa1), b);
-  STF_EQUAL(bs::all(aa2), c);
+  STF_EQUAL(bs::all(aa1), true);
+  STF_EQUAL(bs::all(aa2), false);
+  STF_EQUAL(bs::all(aa3), false);
 
-  STF_EQUAL(bs::splatted_(bs::all)(aa1), (bs::pack<bs::logical<T>,N>(b)) );
-  STF_EQUAL(bs::splatted_(bs::all)(aa2), (bs::pack<bs::logical<T>,N>(c)) );
+  STF_EQUAL(bs::splatted_(bs::all)(aa1), (bs::pack<bs::logical<T>,N>(true)) );
+  STF_EQUAL(bs::splatted_(bs::all)(aa2), (bs::pack<bs::logical<T>,N>(false)) );
+  STF_EQUAL(bs::splatted_(bs::all)(aa3), (bs::pack<bs::logical<T>,N>(false)) );
 }
 
 STF_CASE_TPL("Check all on pack", STF_NUMERIC_TYPES)
