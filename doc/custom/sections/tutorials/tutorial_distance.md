@@ -4,7 +4,7 @@ Distance between Points Part 1{#tutorial-distance}
 <div style="text-align: right;" markdown="1">Next: [Distance between 2D Points Part 2](@ref tutorial-distance-hypot)</div>
 
 @tableofcontents
-In this tutorial we will examine how to calculate the cartesian distance
+In this tutorial we will examine how to calculate the Cartesian distance
 between a 2D reference point and a vector of 2D points. This could be used
 for example in a clustering algorithm such as dbscan.
 

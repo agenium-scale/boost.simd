@@ -52,7 +52,7 @@ Looks difficult? How about we vectorize it for the following generation of Intel
 @snippet addvector.cpp avx-simd-loop
 
 Both of these processors are manufactured by Intel yet two different versions of the code are required to get the best performance
-possible from each processor. This is quicky getting complicated and annoying.
+possible from each processor. This is quickly getting complicated and annoying.
 
 Now, look at how the code can become simpler with **@projectname** :
 

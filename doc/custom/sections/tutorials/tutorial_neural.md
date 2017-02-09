@@ -74,7 +74,7 @@ a 50 % speed-up is observed, although the code is not vectorized. This is due to
 bs::exp. It is a much more efficient implementation that the standard library exp, whilst maintaining
 the same or better precision. Therefore, the use of the **@projectname** standard library replacement
 functions in non-vectorized code may be very advantageous. A speed-up of 3.76 is observed between the
-the scalar and SIMD versions of this calculation, which is in line with the theorethical maximum for an SSE
+the scalar and SIMD versions of this calculation, which is in line with the theoretical maximum for an SSE
 code.
 
 This test was repeated compiling for AVX:
@@ -91,7 +91,7 @@ of std::exp, while the time taken by the other computations remains unchanged. T
 regression in the performance of std::exp is explained by the fact that this code mixes legacy SSE instructions
 with AVX instructions. The reasons behind this are explained by
 [Intel](https://software.intel.com/en-us/articles/intel-avx-state-transitions-migrating-sse-code-to-avx). This
-may be retified by adding the instruction _mm256_zeroupper() before each call to std::exp. However, this will
+may be rectified by adding the instruction _mm256_zeroupper() before each call to std::exp. However, this will
 erase any AVX register that you may be using. The much safer solution is to replace all calls to std::exp by calls
 to bs::exp when your code is compiled for AVX and above. This is true for all standard library functions which are
 provided **@projectname**.
@@ -109,7 +109,7 @@ gain between AVX and AVX2
 <tr><td>SIMD rec            <td>21
 </table>
 
-We observe a speed-up of 1.5 between AVX and AVX2 in this calculation. Although the theorethical maximum
+We observe a speed-up of 1.5 between AVX and AVX2 in this calculation. Although the theoretical maximum
 speed-up is 2, it is often difficult to achieve this in practice.
 
 @section neural-conc Conclusions

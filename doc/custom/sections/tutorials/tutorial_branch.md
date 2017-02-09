@@ -20,7 +20,7 @@ One of the fundamental principles of __SIMD__ programming is that the same opera
 on each element of the __SIMD__ vector. At first glance, this means that vectorized programs do not
 support conditional statements, however this is not true. Let's take a common image processing operation
 known as thresholding as a counter example. Thresholding is an operation to separate a digital image into
-its background and foreground pixels. Any pixel whose value is less than the choosen threshold is
+its background and foreground pixels. Any pixel whose value is less than the chosen threshold is
 considered to be a background pixel and conversely, any pixel whose value is greater or equal to
 the threshold is considered to be a foreground pixel. The scalar version of this algorithm is
 simply:
