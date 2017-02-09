@@ -115,14 +115,14 @@ system to benchmark your code segment. This allows you to measure the execution 
 in cycles per element or in units of time.
 
 Otherwise, you may use standard timing routines such as those available in `std::chrono`.
-In order to accurately becnhmark your code, there are several points to consider.
+In order to accurately benchmark your code, there are several points to consider.
 
 - Your input should be sufficiently large. This is to eliminate cache effects.
 - Your code is compiled in release mode, with all optimizations enabled and debug information
   not included.
 - You should measure several times and use the average (or better the median).
 
-A typical case where a benchmark could give inaaccurate results is where the input is not
+A typical case where a benchmark could give inaccurate results is where the input is not
 large enough to fill the cache and a scalar and SIMD code segment are individually benchmarked, one
 after the other. In this case, all of the data will be loaded into the cache during the first bench,
 and will be available for the second bench, therefore decreasing the execution time of the second bench.
