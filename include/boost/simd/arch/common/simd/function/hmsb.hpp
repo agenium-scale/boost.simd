@@ -15,6 +15,7 @@
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/constant/signmask.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
+#include <boost/simd/detail/bitset.hpp>
 #include <cstddef>
 
 namespace boost { namespace simd { namespace ext
@@ -28,7 +29,7 @@ namespace boost { namespace simd { namespace ext
                         , bs::pack_<bd::arithmetic_<A0>, X>
                         )
   {
-    using result_t = std::bitset<cardinal_of<A0>::value>;
+    using result_t = bs::bitset<cardinal_of<A0>::value>;
 
     template<typename I> BOOST_FORCEINLINE void piece(const A0& a0, result_t& r) const BOOST_NOEXCEPT
     {
@@ -59,7 +60,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bs::logical_<A0>, X>
                           )
   {
-    BOOST_FORCEINLINE std::bitset<cardinal_of<A0>::value> operator()(const A0& a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE bs::bitset<cardinal_of<A0>::value> operator()(const A0& a0) const BOOST_NOEXCEPT
     {
       return bs::hmsb(bs::genmask(a0));
     }

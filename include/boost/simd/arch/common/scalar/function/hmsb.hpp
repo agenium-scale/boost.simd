@@ -14,7 +14,7 @@
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/config.hpp>
-#include <bitset>
+#include <boost/simd/detail/bitset.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -26,7 +26,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::fundamental_<A0> >
                           )
   {
-    BOOST_FORCEINLINE std::bitset<1> operator()(A0 a0) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE bs::bitset<1> operator()(A0 a0) const BOOST_NOEXCEPT
     {
       return {bitwise_and(Signmask<bd::as_integer_t<A0>>(), a0) != 0};
     }
