@@ -42,7 +42,7 @@ namespace boost { namespace simd
     // Small N optimized bitset implementation
     template<std::size_t N> struct bitset
     {
-      static constexpr std::size_t bitmask      = (1<<N) - 1;
+      static constexpr std::size_t bitmask = (N == 64) ? ~0ULL : (1ULL<<N) - 1;
       using bits_type = bd::make_integer_t<bitset_size<N>::value,unsigned>;
 
       constexpr bitset()                noexcept : bits_{} {}
@@ -56,14 +56,14 @@ namespace boost { namespace simd
       bitset& set(std::size_t p, bool v = true) noexcept
       {
         reset(p);
-        bits_ |= (v<<p);
+        bits_ |= (std::size_t(v)<<p);
         return *this;
       }
 
       bitset& flip()                { bits_ = ~bits_;     return *this; }
       bitset& flip(std::size_t p)   { bits_ ^= (1ULL<<p); return *this; }
 
-      constexpr bool operator[]( std::size_t p ) const noexcept { return bits_ & (1<<p); }
+      constexpr bool operator[]( std::size_t p ) const noexcept { return bits_ & (1ULL<<p); }
 
       bool test( std::size_t p ) const
       {
