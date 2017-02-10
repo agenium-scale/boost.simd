@@ -28,7 +28,7 @@ We would like to perform in __SIMD__ the analogous of following scalar loop:
 
 @snippet arraysubtract.cpp substract-scalar
 
-The first step is to determine the number of elements in a pack of the choosen primitive type, in this
+The first step is to determine the number of elements in a pack of the chosen primitive type, in this
 case an `int32_t`.  It is generally easiest and safest to use the default pack size, corresponding to the
 size of the available physical __SIMD__ registers. This size may be obtained using the
 boost::simd::cardinal\_of function.
