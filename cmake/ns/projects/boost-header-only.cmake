@@ -35,7 +35,6 @@ add_custom_target(update.boost-header-only
   COMMENT "Updating boost-header-only"
 )
 
-add_dependencies(update update.boost-header-only)
 
 NS_project_add_git_update_target(boost-header-only
   ${BOOST_HEADER_ONLY_DESTINATION}/boost-header-only
