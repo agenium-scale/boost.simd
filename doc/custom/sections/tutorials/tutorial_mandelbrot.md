@@ -40,7 +40,7 @@ can accelerate and increase accuracy "a*b+c" computations on some architectures.
 This code was run using an image size of 1024 pixels square. The code was compiled using g++-6.0
 for both SSE4.2 and AVX2 and executed on an Intel Xeon CPU E3-1240 v3 @ 3.40GHz.
 
-<table align=cen<table align=center width=25% class="table-striped table-bordered">
+<table align=center width=25% class="table-striped table-bordered">
 <tr><th>Loop                <th>Time (\f$\mu s\f$) <th> Speed-up
 <tr><td>Scalar              <td>768              <td>
 <tr><td>SIMD SSE4.2         <td>210              <td> x3.65
