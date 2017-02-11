@@ -18,7 +18,7 @@ namespace boost { namespace simd
       @ingroup group-functions
       @defgroup group-constant Constant Functions
 
-      These functions provides scalar and SIMD constant generators for the most usual
+      These functions provide scalar and SIMD constant generators for the most usual
       constant values such as zero, numeric limits, IEEE special values.
 
       Constant generator functions ced in two manners:

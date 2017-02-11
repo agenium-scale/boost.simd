@@ -19,7 +19,7 @@ namespace boost { namespace simd
     @ingroup group-exponential
     This function object returns the exponential of the square of its
     argument or its inverse: \f$e^{x^2}\f$ or \f$e^{-x^2}\f$.
-    The sign choosen is -1 if and only if the sign bit of the second argument is not zero.
+    The sign chosen is -1 if and only if the sign bit of the second argument is not zero.
 
 
     @par Header <boost/simd/function/expx2.hpp>

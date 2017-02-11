@@ -57,7 +57,7 @@ stages of the computation.
 @subsection distance-hypot-fast Fast @projectname functions
 
 In many cases, the detection of under or overflow at intermediate stages of the computation is not
-required, for exmaple, if the input data is known to be in a certain range. Therefore, **@projectname**
+required, for example, if the input data is known to be in a certain range. Therefore, **@projectname**
 provides regular versions of certain functions which omit these checks.
 
 @snippet distance_hypot.cpp distance-hypot-fast-hypot

@@ -18,7 +18,7 @@ namespace boost { namespace simd
     @ingroup group-functions
     @defgroup group-hyperbolic  Hyperbolic functions
 
-    These functions provides scalar and SIMD version of
+    These functions provide scalar and SIMD version of
     hyperbolic  and inverse hyperbolic functions.
 
     All these functions can be included individually or all of them just by including <boost/simd/hyperbolic.hpp>

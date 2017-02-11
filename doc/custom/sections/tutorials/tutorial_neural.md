@@ -5,7 +5,7 @@ Evaluation of a Neural Network {#tutorial-neural}
 
 @tableofcontents
 In this tutorial we will demonstrate how the evaluation of neural network
-can be significantly acccelerated using **@projectname**.
+can be significantly accelerated using **@projectname**.
 
 @section neural-objectives Objectives
 
@@ -117,7 +117,7 @@ speed-up is 2, it is often difficult to achieve this in practice.
 We observed significant speed-ups by vectorizing this code using **@projectname**. Using SSE4.2, a speed-up of
 3.76 was observed and using AVX2, a speed-up of 6.81 was observed. If we compare the results obtained using std::exp
 in AVX2 with that obtained using **@projectname**, the speed-up is 50.6!. It is clear that the use of **@projectname**
-in any project involving vectorization is very beneficial, not just for the ease of vectorization and portability betweem
+in any project involving vectorization is very beneficial, not just for the ease of vectorization and portability between
 architectures, compilers and operating systems, but also because of the performance of its standard library replacement
 functions.
 
