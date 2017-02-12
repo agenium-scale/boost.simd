@@ -16,14 +16,16 @@ namespace boost { namespace simd
 {
   /*!
     @ingroup group-bitwise
-      This function objects converts the elements of its argument an arbitrary type
+
+    This function objects converts the elements of its argument an arbitrary type
+
     @c Target while preserving its argument's cardinal.
 
     @tparam Target @c Target type to cast toward
 
     @par Header <boost/simd/function/pack_cast.hpp>
 
-    @param  @c x Value to cast
+    @param x Value to cast
 
     @return A value of type @c Target which is cast to @c x.
   **/
