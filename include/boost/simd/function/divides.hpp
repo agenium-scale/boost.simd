@@ -17,6 +17,7 @@ namespace boost { namespace simd
 
   /*!
     @ingroup group-operator
+
     Function object implementing divides capabilities
 
     Perform the quotient of two parameters of the same type.
@@ -43,7 +44,7 @@ namespace boost { namespace simd
     @note
 
     As usual the simd division is often more expansive that the other
-    arithmetic operators and using the @ref function can be sometimes handy
+    arithmetic operators and using the @ref shift_right function can be sometimes handy
     to gain some cycles.
 
     @see div, rem, rec
