@@ -36,7 +36,7 @@ namespace boost { namespace simd
       @snippet is_not_denormal.txt is_not_denormal
 
   **/
-  as_logical_t<Value> is_not_denormal(Value const& x)
+  as_logical_t<Value> is_not_denormal(Value const& x);
 } }
 #endif
 
