@@ -25,11 +25,13 @@ namespace boost { namespace simd
     @par Notes
 
     The result may be negative for signed integers as @ref abs(@ref Valmin) is undefined.
-    To avoid the problem you can apply to dist the saturated_ @ref decorator.
+    To avoid the problem you can apply to dist the saturated_ decorator (See
+    @ref group-decorator.)
 
     @par Decorators
 
-     - saturated_ decorator garanties that saturated_(dist)(x, y)) will never be strictly less than 0.
+     - saturated_ (See @ref group-decorator) garanties that saturated_(dist)(x, y)) will
+       never be strictly less than 0.
 
     @see  ulpdist, abs
 
