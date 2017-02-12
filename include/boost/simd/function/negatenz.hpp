@@ -14,8 +14,8 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-
   /*!
+
     @ingroup group-ieee
     This function object returns @c x multiplied by the @ref signnz of @c y.
     The result is unspecified if @c y is @ref Nan
@@ -24,7 +24,7 @@ namespace boost { namespace simd
     @par Header <boost/simd/function/negatenz.hpp>
 
     @par Note
-    If @c x is  null the result is @ref \f$\pm0\f$. Take care that @c negatenz distinguish
+    If @c x is  null the result is \f$\pm0\f$. Take care that @c negatenz distinguish
     between the signs of `T(0)` and `-T(0)` when `T` is a floating type.
 
     @see negatenz, Mzero, is_positive, is_negative
