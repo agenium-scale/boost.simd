@@ -57,7 +57,7 @@ namespace boost { namespace simd
       @snippet remquo.txt remquo
 
   **/
-  std::pair<IEEEValue, as_integer_t<IEEEValue> remquo(IEEEValue const& x, IEEEValue const& y);
+  std::pair<IEEEValue, as_integer_t<IEEEValue>> remquo(IEEEValue const& x, IEEEValue const& y);
 } }
 #endif
 
