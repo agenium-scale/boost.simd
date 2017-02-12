@@ -47,7 +47,7 @@ namespace boost { namespace simd
 
     @return The concatenation of both inputs
   **/
-  auto combine(Value const& x, Value const& y);
+  Value combine(Value const& x, Value const& y);
 } }
 #endif
 
