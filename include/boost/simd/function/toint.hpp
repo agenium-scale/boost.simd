@@ -36,11 +36,12 @@ namespace boost { namespace simd
     will return @ref False whilst the test: `Inf<double>() == 1.0/0.0` returns @ref True !)
 
     If you intend to use @ref Nan and @ref Inf entries,  consider using
-    @ref saturated_(toint) instead or its alias @ref ifix.
+    saturated_(toint) instead or its alias @ref ifix.
 
     @par Decorators
 
-   - saturated_ as stated above ensures ggood brhaviour on limiting values.
+    - saturated_ (See @ref group-decorator) as stated above ensures good behaviour on
+      limiting values.
 
     @see touint, tofloat
 
