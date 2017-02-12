@@ -17,6 +17,7 @@ namespace boost { namespace simd
 
   /*!
     @ingroup group-arithmetic
+
     This function object  computes the remainder (rem) and a part of the quotient (quo) upon division of
     @c x by @c y. By design, the value of the remainder is the same as that
     computed by the @ref remainder standard function. The value of the computed quotient has
