@@ -33,12 +33,13 @@ namespace boost { namespace simd
     entries is not defined and possibly unpredictable.
 
     If you intend to use @ref Nan, @ref Inf or negative entries, consider using
-    @ref saturated_(touint) instead.
+    saturated_(touint) instead.
 
 
     @par Decorators
 
-   - saturated_ as stated above ensures good behaviour on limiting values.
+    - saturated_ (See @ref group-decorator) as stated above ensures good behaviour on
+      limiting values.
 
     @see toint, tofloat
 
