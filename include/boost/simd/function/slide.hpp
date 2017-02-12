@@ -15,15 +15,37 @@
 namespace boost { namespace simd
 {
   /*!
+    @ingroup group-swar
+    This function object returns a vector extracted from the concatanation
+    of `x` and `y` (resp. `x` and itself when only one argument is given).
+
+    @par Semantic:
+
+    Denote by `L` the common length of `x` and `y`.
+    Let `c[i] = x[i]` and `c[i + L] = y[i]`.
+    If N is positive then returns `(c[N], c[N + 1], ..., c[N + L - 1])`
+    If `N + L - 1 >= 2L` then returns
+    `(c[N], c[N + 1], ..., C[2L - 1], 0, ..., 0)`.
+
+    If N is negative then
+
+    @code
+    Value r = slide<N>(x, y);
+    @endcode
+
+    is equivalent to
+
+    @code
+    Value r = slide<L - N>(x, y);
+    @endcode
+
     @par Header <boost/simd/function/slide.hpp>
 
   **/
-  template<std::size_t N, typename T> T slide(T const& x, T const& y) {}
-
-  /*!
-    @overload
-  */
-  template<std::size_t N, typename T> T slide(T const& x) {}
+  ///@{
+  template<std::size_t N> Value slide(Value const& x, Value const& y);
+  template<std::size_t N> Value slide(Value const& x);
+  ///@}
 } }
 #endif
 
