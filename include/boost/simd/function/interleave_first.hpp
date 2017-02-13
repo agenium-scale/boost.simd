@@ -16,10 +16,7 @@ namespace boost { namespace simd
 #if defined(DOXYGEN_ONLY)
   /*!
     @ingroup group-swar
-    Function object implementing interleave_first capabilities
-
-    Computes a vector from a combination of the two inputs.
-
+    This function object cComputes a vector from a combination of the two inputs.
 
     @par Header <boost/simd/function/interleave_first.hpp>
 

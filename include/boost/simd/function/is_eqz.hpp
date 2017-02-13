@@ -25,7 +25,7 @@ namespace boost { namespace simd
 
     @par Note
 
-      Using `is_eqz(x = y)` is equivalent to `x == 0`
+      Using `is_eqz(x)` is equivalent to `x == 0`
 
     @see is_nez, is_lez, is_ltz
 

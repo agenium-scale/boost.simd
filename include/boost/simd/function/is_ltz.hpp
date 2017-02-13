@@ -25,7 +25,7 @@ namespace boost { namespace simd
 
     @par Note
 
-     Using `is_ltz(x)` is similar to: `x < 0`
+     Using `is_ltz(x)` is equivalent to: `x < 0`
 
     @par Example:
 

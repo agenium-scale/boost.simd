@@ -17,19 +17,11 @@ namespace boost { namespace simd
   /*!
     @ingroup group-constant
 
-    Generate  value \f$\sqrt2\f$
+    Generate  value \f$\1/Eps<T>()\f$
 
     @par Semantic:
 
-    @code
-    T r = inveps<T>();
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = rec(Eps<T>());
-    @endcode
+    @see Eps
 
     @return The inveps constant for the proper type
   **/
@@ -41,7 +33,7 @@ namespace boost { namespace simd
       @ingroup group-callable-constant
       Generate the  constant inveps.
 
-      @return The inveps constant for the proper type
+      @return The Inveps constant for the proper type
     **/
     const boost::dispatch::functor<tag::inveps_> inveps = {};
   }

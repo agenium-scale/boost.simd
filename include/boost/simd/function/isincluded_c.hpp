@@ -16,7 +16,7 @@ namespace boost { namespace simd
 {
   /*!
     @ingroup group-reduction
-     This function object returns @ref True is only if all bits set in @c x are
+     This function object returns @c true is only if all bits set in @c x are
    not set in @c y
 
      The two arguments must share the same bit size.

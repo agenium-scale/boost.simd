@@ -21,9 +21,9 @@ namespace boost { namespace simd
     as an unsigned integer of the size of
     the input.
 
+    @par Header <boost/simd/function/lo.hpp>
+
     @see  hi
-
-
 
     @par Header <boost/simd/function/lo.hpp>
 

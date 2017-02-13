@@ -25,9 +25,10 @@ namespace boost { namespace simd
 
     @par Note
 
-     If @c n is not of integral type is is truncated:
+     If @c n is not of integral type it is truncated:
      `ldexp(x,n)` is similar to: `x*pow(2, trunc(n))`
 
+    @pre
      The @ref cardinal_of and the size of elements value of the types
      of @c x and @c n must be identical
 
@@ -37,8 +38,6 @@ namespace boost { namespace simd
        Use the @c pedantic_ decorator if these are to be properly computed.
 
      - std_ give access to std::ldexp
-
-
 
     @par Example:
 

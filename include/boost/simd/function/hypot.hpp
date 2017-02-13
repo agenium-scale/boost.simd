@@ -18,7 +18,7 @@ namespace boost { namespace simd
   /*!
 
     @ingroup group-arithmetic
-    This function object computes the hypthenuse length: \f$(x^2 + y^2)^{1/2}\f$
+    This function object computes the hypothenuse length: \f$(x^2 + y^2)^{1/2}\f$
 
 
     @par Header <boost/simd/function/hypot.hpp>

@@ -25,7 +25,7 @@ namespace boost { namespace simd
 
     @par Note:
     This operation is NOT properly saturated.
-    To ensure proper saturation use the decorartor pedantic_/
+    To ensure proper saturation use the decorartor pedantic_
 
     @par Decorators:
 

@@ -17,7 +17,7 @@ namespace boost { namespace simd
 
   /*!
     @ingroup group-trigonometric
-    This function object returns the convert degree to radian.
+    This function object converts degree to radian.
 
 
     @par Header <boost/simd/function/inrad.hpp>
