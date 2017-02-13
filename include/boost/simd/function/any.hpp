@@ -16,12 +16,12 @@ namespace boost { namespace simd
 {
   /*!
     @ingroup group-reduction
-   This function object returns @ref True if at least one element of the
+   This function object returns @c true if at least one element of the
    argument is non zero.
 
-    @see all, none, nbtrue
-
     @par Header <boost/simd/function/any.hpp>
+
+    @see all, none, nbtrue
 
     @par Example:
 

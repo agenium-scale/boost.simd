@@ -19,11 +19,9 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     This function object returns the inverse sine in \f$\pi\f$ multiples.
 
-    @see asin, asind, sinpi
-
-
-
     @par Header <boost/simd/function/asinpi.hpp>
+
+    @see asin, asind, sinpi
 
     @par Example:
 

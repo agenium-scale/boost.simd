@@ -17,7 +17,9 @@ namespace boost { namespace simd
 
   /*!
     @ingroup group-arithmetic
-    This function computes the angular orientation of its floating parameter.
+    This function computes the angular orientation of its floating parameter
+    (the result is undifined for Nan entries if the @c pedantic_ decorator is not
+    used)
 
 
     @par Header <boost/simd/function/arg.hpp>
@@ -29,13 +31,13 @@ namespace boost { namespace simd
     - always returns \f$+0\f$ or \f$\pi\f$ taking into account the bit of sign
        even in the Nan case.
 
-    - With the @c pedantic_ decorator returns `Nan(as(x))`
-      for a  nan input,
-
     - This function implement the restriction to real numbers of the
        complex arg(ument) function.
 
-    - This function is not defined for integral types.
+    @par Decorators
+
+    - `pedantic_`  returns `Nan(as(x))` for a  nan input,
+
 
     @see is_negative, Pi, Nan
 

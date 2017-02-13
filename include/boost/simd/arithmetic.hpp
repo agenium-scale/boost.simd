@@ -73,7 +73,7 @@ namespace boost { namespace simd
 
           - The operations prefixed by 'i' return a value of the integral type iT
           associated to the entry type. (If T is the entry type iT is
-          @ref as_integer_t<T>)
+          @c as_integer_t<T>)
 
           - The other ones return the same type as the entry.
 

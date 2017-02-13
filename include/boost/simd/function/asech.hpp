@@ -20,10 +20,9 @@ namespace boost { namespace simd
     @ingroup group-hyperbolic
     This function returns the hyperbolic secant argument \f$\mathop{\textrm{acosh}}(1/x)\f$
 
-    @see cosh, acosh, sinh, asinh, atanh, atanh, acoth, acsch
-
-
     @par Header <boost/simd/function/asech.hpp>
+
+    @see cosh, acosh, sinh, asinh, atanh, atanh, acoth, acsch
 
     @par Example:
 

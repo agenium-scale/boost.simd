@@ -19,11 +19,9 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     This function object returns the inverse cosecant in radian: \f$\arcsin(1/x)\f$.
 
-    @see acscd, acscpi, asin, asin, sin, rec
-
-
-
     @par Header <boost/simd/function/acsc.hpp>
+
+    @see acscd, acscpi, asin, asin, sin, rec
 
     @par Example:
 

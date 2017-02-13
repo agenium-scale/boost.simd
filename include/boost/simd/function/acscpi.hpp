@@ -20,9 +20,9 @@ namespace boost { namespace simd
     This function object returns the inverse secant in \f$\pi\f$ multiples:
     \f$(1/\pi) \arcsin(1/x)\f$.
 
-    @see acsc,  acscd
-
     @par Header <boost/simd/function/acscpi.hpp>
+
+    @see acsc,  acscd
 
     @par Example:
 

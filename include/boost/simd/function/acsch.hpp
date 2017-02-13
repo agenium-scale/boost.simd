@@ -18,12 +18,13 @@ namespace boost { namespace simd
   /*!
 
     @ingroup group-hyperbolic
-    This function object returns the hyperbolic cosecant argument \f$\mathop{\textrm{asinh}}(1/x)\f$
+    This function object returns the hyperbolic cosecant argument
+    \f$\mathop{\textrm{asinh}}(1/x)\f$
+
+    @par Header <boost/simd/function/acsch.hpp>
 
     @see cosh, sinh,  acosh, asinh, atanh, asech, acoth, atanh
 
-
-    @par Header <boost/simd/function/acsch.hpp>
 
     @par Example:
 

@@ -20,10 +20,9 @@ namespace boost { namespace simd
     This function object returns the inverse secant
     in degree: \f$(180/\pi) \arccos(1/x)\f$.
 
-    @see asec,  asecpi
-
-
     @par Header <boost/simd/function/asecd.hpp>
+
+    @see asec,  asecpi
 
     @par Example:
 

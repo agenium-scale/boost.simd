@@ -20,10 +20,10 @@ namespace boost { namespace simd
     This function object returns the bitwise selection of bits from the second
     or third operand according to the setting of the bits
     of the first operand
-    The operands must share the same bit size and number of elements.
-
 
     @par Header <boost/simd/function/bitwise_select.hpp>
+
+    @pre  The operands must share the same bit size and number of elements.
 
     @par Example:
 

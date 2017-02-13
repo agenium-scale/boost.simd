@@ -20,10 +20,9 @@ namespace boost { namespace simd
     @ingroup group-hyperbolic
     This function object returns the hyperbolic tangent argument \f$\frac12\log\frac{1+x}{1-x}\f$
 
-    @see cosh, sinh, acosh, asinh, atanh, asech, acoth, acsch
-
-
     @par Header <boost/simd/function/atanh.hpp>
+
+    @see cosh, sinh, acosh, asinh, atanh, asech, acoth, acsch
 
     @par Example:
 

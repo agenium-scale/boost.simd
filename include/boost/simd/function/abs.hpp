@@ -25,12 +25,12 @@ namespace boost { namespace simd
 
     @par Notes
 
-    - Be aware that for signed integers the absolute value of @ref Valmin is not representable
-    in the input type and the result is undefined.
+    - Be aware that for signed integers the absolute value of @ref Valmin is
+      not representable  in the input type and the result is undefined.
 
-    To avoid this, you may use the `saturated_` decorator (See @ref group-decorator.)
+      To avoid this, you may use the `saturated_` decorator (See @ref group-decorator.)
 
-    - abs is a also a standard library function name and there possibly exists
+    - @c abs is a also a standard library function name and there possibly exists
     a C macro version which may be called instead of the boost simd version.
     To avoid this you may prefix abs using boost::simd::abs notation.
 

@@ -20,10 +20,9 @@ namespace boost { namespace simd
     @ingroup group-hyperbolic
     This function object returns the hyperbolic sine argument: \f$\log(x+\sqrt{x^2+1})\f$.
 
-    @see log, sqrt, sinh, inc
-
-
     @par Header <boost/simd/function/asinh.hpp>
+
+    @see log, sqrt, sinh, inc
 
     @par Example:
 

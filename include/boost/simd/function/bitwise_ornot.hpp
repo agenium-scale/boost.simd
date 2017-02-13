@@ -18,11 +18,11 @@ namespace boost { namespace simd
   /*!
     @ingroup group-bitwise
     This function object computes the bitwise or not of its parameters.
-    The operands must share the same bit size.
     The result type is the one of the first operand.
 
-
     @par Header <boost/simd/function/bitwise_ornot.hpp>
+
+    @pre  The operands must share the same bit size.
 
     @par Example:
 

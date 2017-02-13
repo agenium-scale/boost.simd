@@ -20,12 +20,9 @@ namespace boost { namespace simd
     This function object returns the inverse cosecant in degree:
     \f$(180/\pi) \arcsin(1/x)\f$.
 
-    @see acsc, accscpi
-
-
-
-
     @par Header <boost/simd/function/acscd.hpp>
+
+    @see acsc, accscpi
 
     @par Example:
 

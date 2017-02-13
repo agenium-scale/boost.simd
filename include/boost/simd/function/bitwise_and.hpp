@@ -18,14 +18,17 @@ namespace boost { namespace simd
   /*!
     @ingroup group-bitwise
     This function object computes the bitwise and of the two parameters.
-    The operands must share the same bit size.
+
     The result type is the one of the first operand.
+
     Infix notation can be used with operator '&',
     but this will not work in scalar mode if any
     operand is floating point because of C++ limitations.
 
-
     @par Header <boost/simd/function/bitwise_and.hpp>
+
+    @pre  The operands must share the same bit size.
+
 
     @par Example:
 

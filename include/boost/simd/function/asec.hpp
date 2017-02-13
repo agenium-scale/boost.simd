@@ -19,10 +19,9 @@ namespace boost { namespace simd
     @ingroup group-trigonometric
     This function object returns the inverse secant in radian: \f$\arccos(1/x)\f$.
 
-    @see asecd, asecpi
-
-
     @par Header <boost/simd/function/asec.hpp>
+
+    @see asecd, asecpi
 
     @par Example:
 
