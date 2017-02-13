@@ -18,7 +18,7 @@ namespace boost { namespace simd
     @ingroup group-functions
     @defgroup group-arithmetic Arithmetic functions
 
-    Those functions provide scalar and SIMD algorithms for classical arithmetic operators and
+    These functions provide scalar and SIMD algorithms for classical arithmetic operators and
     functions of the C and C++ standard library. Other functions are also provided, in particular,
     provision for saturated operations through the use of a @ref group-decorator.
 
@@ -71,8 +71,9 @@ namespace boost { namespace simd
          | @ref inearbyint |  @ref nearbyint | @ref round   |  @ref trunc      |
         </center>
 
-          - The operations prefixed by 'i' return a value of the integral type iT associated
-            to the entry type. (If T is the entry type iT is `as_integer_t<T>`)
+          - The operations prefixed by 'i' return a value of the integral type iT
+          associated to the entry type. (If T is the entry type iT is
+          @ref as_integer_t<T>)
 
           - The other ones return the same type as the entry.
 
@@ -173,15 +174,16 @@ namespace boost { namespace simd
         | @ref fms        | @ref fnms    |  @ref two_prod|                  |
       </center>
 
-      These operations take three parmeters and compute \f$\pm a * b \pm c \f$,
-      "n" standing for negate the result, "a" for add, "s" for substract and "m" for multiply.
+      These operations take three parmeters and compute some \f$\pm a * b \pm c \f$
+      kind of expression, "n" standing for negate the result, "a" for add,
+      "s" for substract and "m" for multiply.
 
       Correct fused multiply/add implies
 
       - only one rounding
       - no "intermediate" overflow
 
-      The functions of this family provide this each time it is reasonable
+      The functions of this family provide this, BUT ONLY each time it is reasonable
       in terms of performance (mainly if the system has the hard
       wired capability).
 

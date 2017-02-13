@@ -165,6 +165,6 @@ supported.
 If you require a certain intrinsic, you may search inside of **@projectname** for it and then call
 the relevant function.
 
-In rare cases, the intrinsic may not be included in *@projectname** as we map the intrinsic wherever
+In rare cases, the intrinsic may not be included in **@projectname** as we map the intrinsic wherever
 it makes sense semantically. If a certain intrinsic does not fit inside of this model, if may be
 excluded. In this case, you may call it yourself, however, this will not be portable.
