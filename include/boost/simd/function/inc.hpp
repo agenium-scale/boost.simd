@@ -24,7 +24,7 @@ namespace boost { namespace simd
     @par Decorators
 
      - saturated_ ensures that @c saturated_(inc)(x) will never be strictly
-     less than @cx, avoiding the wrap around from @ref Valmax to
+     less than @c x, avoiding the wrap around from @ref Valmax to
      @ref Valmin with integer types.
 
     @see plus, dec, minus

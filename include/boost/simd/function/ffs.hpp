@@ -21,11 +21,9 @@ namespace boost { namespace simd
     of the first bit set (beginning with the least
     significant bit) in the parameter.
 
-    @see  firstbitset,  firstbitunset
-
-
-
     @par Header <boost/simd/function/ffs.hpp>
+
+    @see  firstbitset,  firstbitunset
 
     @par Example:
 

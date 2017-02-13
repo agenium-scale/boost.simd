@@ -21,6 +21,10 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/exprecnegc.hpp>
 
+    @par Notes
+
+    - result is accurate even for large @c x
+
     @par Example:
 
       @snippet exprecnegc.cpp exprecnegc

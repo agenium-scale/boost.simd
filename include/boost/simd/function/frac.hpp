@@ -17,7 +17,7 @@ namespace boost { namespace simd
 
   /*!
     @ingroup group-ieee
-    This function object returns the fractional part of the input i.e. @c x-trunc(x).
+    This function object returns the fractional part of the input i.e. `x-trunc(x)`.
 
     @see trunc, modf
 

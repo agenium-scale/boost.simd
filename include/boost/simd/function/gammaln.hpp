@@ -18,8 +18,8 @@ namespace boost { namespace simd
   /*!
 
     @ingroup group-euler
-    This function object computes the natural logarithm of th
-    e absolute value of the Gamma function:
+    This function object computes the natural logarithm of the absolute
+    value of the Gamma function:
      \f$\displaystyle \log |\Gamma(x)|\f$
 
 
@@ -29,7 +29,7 @@ namespace boost { namespace simd
 
     - The accuracy of the function is not uniformly good for negative entries
       The algorithm used is currently an adapted vesion of the cephes one.
-      For better accuracy in the negative entry case one can use the extern
+      For better accuracy in the negative entry case, one can use the extern
       boost_math gammaln function but at a loss of speed.
 
       However, as stated in boost math:

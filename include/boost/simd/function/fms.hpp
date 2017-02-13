@@ -26,7 +26,7 @@ namespace boost { namespace simd
     @par Notes
     The call `fms(x, y, z)` is similar to `x*y-z`
 
-    But really conformant fused multiply/add also implies
+    But really conformant fused multiply/substract also implies
 
     - only one rounding
 

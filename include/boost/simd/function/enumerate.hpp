@@ -16,21 +16,11 @@ namespace boost { namespace simd
 #if defined(DOXYGEN_ONLY)
   /*!
     @ingroup group-swar
-    Generates a value containing sequentially increasing values, starting with @c seed and
+    Generates a value containing sequentially increasing elements, starting with @c seed and
     repetitively evaluating @c seed+=step.
 
 
     @par Header <boost/simd/function/enumerate.hpp>
-
-    @par Scalar Semantic:
-    For any type @c T , the following code:
-    @code
-    auto r = enumerate<T>(seed, step);
-    @endcode
-    is equivalent to:
-    @code
-    T r{seed};
-    @endcode
 
     @par SIMD Semantic:
     For any type @c T and integral constant @c N, the following code:

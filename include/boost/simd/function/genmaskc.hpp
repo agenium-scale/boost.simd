@@ -17,13 +17,12 @@ namespace boost { namespace simd
 
   /*!
     @ingroup group-bitwise
-    This function object returns a mask of bits. All ones if the
-    input element is @ref Zero else all zeros.
-
-    @see genmask
-
+    This function object returns a mask of bits: full of ones if the
+    input element is @ref Zero else full of zeros.
 
     @par Header <boost/simd/function/genmaskc.hpp>
+
+    @see genmask
 
     @par Example:
 
