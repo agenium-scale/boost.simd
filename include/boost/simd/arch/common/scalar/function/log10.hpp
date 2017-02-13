@@ -232,15 +232,15 @@ namespace boost { namespace simd { namespace ext
       A0 hfsq = Half<A0>()*sqr(f);
 //      return -(hfsq-(s*(hfsq+R))-f)*Invlog_10<A0>()+k*Log_2olog_10<A0>(); // fast ?
 
-      A0 hi = f - hfsq;
-      hi =  bitwise_and(hi, uiA0(0xfffff000ul));
-      A0  lo = fma(s, hfsq+R, f - hi - hfsq);
+      A0 hibits = f - hfsq;
+      hibits =  bitwise_and(hibits, uiA0(0xfffff000ul));
+      A0  lobits = fma(s, hfsq+R, f - hibits - hfsq);
       A0 dk = k;
-//      return ((((dk*Log10_2lo<A0> + (lo+hi)*Invlog_10lo<A0>()) + lo*Invlog_10hi<A0>()) + hi*Invlog_10hi<A0>()) + dk*Log10_2hi<A0>());
+//      return ((((dk*Log10_2lo<A0> + (lobits+hibits)*Invlog_10lo<A0>()) + lobits*Invlog_10hi<A0>()) + hibits*Invlog_10hi<A0>()) + dk*Log10_2hi<A0>());
       return fma(dk, Log10_2hi<A0>(),
-                 fma(hi, Invlog_10hi<A0>(),
-                     (fma(lo, Invlog_10hi<A0>(),
-                          fma(lo+hi, Invlog_10lo<A0>(), dk*Log10_2lo<A0>())
+                 fma(hibits, Invlog_10hi<A0>(),
+                     (fma(lobits, Invlog_10hi<A0>(),
+                          fma(lobits+hibits, Invlog_10lo<A0>(), dk*Log10_2lo<A0>())
                          )
                      )
                     )
