@@ -16,14 +16,10 @@ namespace boost { namespace simd
 {
   /*!
     @ingroup group-reduction
-    This function object returns a logical scalar that is the result of the
-    lexicographic test for != on elements of the entries,
-    i.e. returns @ref True if and only if two corresponding entries
+    This function object returns @c true if and only if two corresponding entries
     elements are not equal.
 
     It is probably not what you wish. Have a look to @ref is_not_equal
-
-
 
     @par Header <boost/simd/function/compare_not_equal.hpp>
 

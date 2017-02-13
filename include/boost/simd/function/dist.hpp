@@ -30,7 +30,7 @@ namespace boost { namespace simd
 
     @par Decorators
 
-     - saturated_ (See @ref group-decorator) garanties that saturated_(dist)(x, y)) will
+     - saturated_ garanties that @c saturated_(dist)(x, y)) will
        never be strictly less than 0.
 
     @see  ulpdist, abs

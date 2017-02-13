@@ -18,7 +18,7 @@ namespace boost { namespace simd
   /*!
     @ingroup group-trigonometric
     This function object returns the cosecant of angle in
-    \f$\pi\f$ multiples: \f$1/(\sin(\pi x)\f$.
+    \f$\pi\f$ multiples: \f$1/c\sin(\pi x)\f$.
 
 
     @par Header <boost/simd/function/cscpi.hpp>

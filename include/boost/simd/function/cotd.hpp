@@ -25,7 +25,7 @@ namespace boost { namespace simd
 
     @par Note
 
-      s most other trigonometric function cotd can be called
+      As most other trigonometric function cotd can be called
       with a second optional parameter  which is a tag on speed
       and accuracy (see @ref cos for further details)
 

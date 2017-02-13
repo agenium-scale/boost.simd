@@ -25,8 +25,8 @@ namespace boost { namespace simd
 
     @par Note
 
-     - The semantics of the function are similar to cos ones.
-     See cos for further details
+     - The semantics of the function are similar to @ref cos ones.
+     See @ref cos for further details
 
 
     @see sincosd, cos, cospi

@@ -17,13 +17,16 @@ namespace boost { namespace simd
 
   /*!
     @ingroup group-arithmetic
-  This function object decrements its parameter by 1.
+    This function object returns  its parameter decremented by 1.
 
     @par Header <boost/simd/function/dec.hpp>
 
     @par Decorators
-      saturated_ ensures that saturated_(dec)(x) will never be strictly greater than x.
-      avoiding the wrap around from @ref Valmin to @ref Valmax with integer types
+
+    - saturated_ ensures that @c saturated_(dec)(x) will never be
+      strictly greater than @c x,
+      avoiding the wrap around from @ref Valmin to
+      @ref Valmax with integer types
 
     @see inc, minus
 

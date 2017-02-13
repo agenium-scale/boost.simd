@@ -21,13 +21,9 @@ namespace boost { namespace simd
     This unction object returns the hyperbolic cotangent:
     \f$(e^{x}+e^{-x})/(e^{x}-e^{-x})\f$
 
+    @par Header <boost/simd/function/coth.hpp>
 
     @see sinh, cosh, sinhcosh
-  **/
-  IEEEValue coth(IEEEValue const& x);
-
-  /*
-    FIXME: MISSING FILES
 
     @par Example:
 
@@ -36,7 +32,9 @@ namespace boost { namespace simd
     @par Possible output:
 
       @snippet coth.txt coth
-  */
+
+  **/
+  IEEEValue coth(IEEEValue const& x);
 } }
 #endif
 

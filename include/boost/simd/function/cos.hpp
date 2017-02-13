@@ -35,12 +35,12 @@ namespace boost { namespace simd
       \f$[-\pi/4, \pi/4]\f$ interval.
 
       They actually are 3 reduction routines that respectly are
-      sufficient for small_, medium_ and big_ angle valuerespecttively,
-      s  to have (within
+      sufficient for small_, medium_ and big_ angle values respecttively,
+      to have (within
       cover test) one ulp of difference with the according crlibm
       (correctly rounded math library) result.
 
-      Each one covers respectively intervals \f$[-A, A]\f$ with :
+      Each tag covers respectively intervals \f$[-A, A]\f$ with :
 
       <center>
         |             |   float  A       |  double  A     |
@@ -114,12 +114,12 @@ namespace boost { namespace simd
        \f$10\pi\f$ standard deviation,  80% of the intervals will be in the "small_"
        case (95% of the values).
        \arg Finally for those that are sure of their angles taking place in a fixed
-       range and want speed, three other template tags can be of choice as tThey use
+       range and want speed, three other template tags can be of choice as they use
        the chosen reduction, but return Nan for any outsider.
 
-           <center>
-            `clipped_very_small_`, `clipped_small_` and `clipped_medium_`
-           </center>
+       <center>
+         `clipped_very_small_`, `clipped_small_` and `clipped_medium_`
+       </center>
 
     @par Decorators
 

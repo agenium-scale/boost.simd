@@ -19,11 +19,9 @@ namespace boost { namespace simd
     @ingroup group-bitwise
     This function object returns  the bit count of leading zeros.
 
-    @see  ctz, popcnt
-
-
-
     @par Header <boost/simd/function/clz.hpp>
+
+    @see  ctz, popcnt
 
     @par Example:
 

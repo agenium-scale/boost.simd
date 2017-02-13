@@ -17,7 +17,7 @@ namespace boost { namespace simd
   /*!
     @ingroup group-reduction
     This function object returns `all(x == y)`,
-    i.e. return @ref True if and only if all corresponding entries elements are equal.
+    i.e. return @c true if and only if all corresponding entries elements are equal.
 
 
     @par Header <boost/simd/function/compare_equal.hpp>

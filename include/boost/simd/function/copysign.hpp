@@ -19,10 +19,10 @@ namespace boost { namespace simd
     @ingroup group-ieee
     This function object returns @c x with the sign of @c y.
 
+    @par Header <boost/simd/function/copysign.hpp>
+
     @see sign, signnz, is_positive
 
-
-    @par Header <boost/simd/function/copysign.hpp>
 
     @par Example:
 

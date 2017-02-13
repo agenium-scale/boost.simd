@@ -19,13 +19,15 @@ namespace boost { namespace simd
     @ingroup group-reduction
     This function object computes the cumulated product of the argument elements.
 
+    @par Header <boost/simd/function/cumprod.hpp>
+
+    @par Note
+
     Take care that overflow is very easy to get here especially for integral
     types.
 
-    @see cumsum
+    @see cumsum, cummin, cummax
 
-
-    @par Header <boost/simd/function/cumprod.hpp>
 
     @par Example:
 

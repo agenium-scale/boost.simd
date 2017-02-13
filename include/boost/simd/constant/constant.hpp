@@ -16,10 +16,8 @@ namespace boost { namespace simd
 {
 /*!
     @ingroup group-constant
-    Generates a value of the chosen type from an exact bits pattern.
-
-    Constant generates a value from an exact bits pattern that get splat in the return
-    value.
+    Generates a value of the chosen type from an exact bits pattern
+    that get splat in the return value.
 
     @par Semantic:
 
@@ -29,7 +27,7 @@ namespace boost { namespace simd
     T r = Constant<T,N>();
     @endcode
 
-    generates a values which bit pattern can be represent by the integer N.
+    generates a value which bit pattern is represented by the integer N bits.
 
     @tparam Type  Type of the desired value
     @tparam Bits  Bits pattern to generate as a value

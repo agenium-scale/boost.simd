@@ -19,10 +19,9 @@ namespace boost { namespace simd
     @ingroup group-reduction
     This function object returns the cumulate sum of the argument elements
 
-    @see cumprod
-
-
     @par Header <boost/simd/function/cumsum.hpp>
+
+    @see cumprod, cummin, cummax
 
     @par Example:
 

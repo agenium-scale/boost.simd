@@ -20,11 +20,9 @@ namespace boost { namespace simd
     @ingroup group-hyperbolic
     This function object returns the hyperbolic cosecant: \f$1/\sinh(1/x)\f$.
 
+    @par Header <boost/simd/function/csch.hpp>
 
     @see sinh, tanh, sech, csch, sinhcosh
-
-
-    @par Header <boost/simd/function/csch.hpp>
 
     @par Example:
 

@@ -21,33 +21,17 @@ namespace boost { namespace simd
     Function object implementing divides capabilities
 
     Perform the quotient of two parameters of the same type.
-
+    Infix notation can be used with operator '/'.
 
     @par Header <boost/simd/function/divides.hpp>
 
-    @par Semantic
+    @par Note
 
-    For any value @c a and @c b of type @c T,
+    As usual the simd division is often more expansive than the other
+    arithmetic operators and using the @ref rec function or @ref shift_right function
+    can be sometimes handy to gain some cycles.
 
-    @code
-    auto r = divides(a,b);
-    @endcode
-
-    or
-
-    @code
-    auto r = a/b;
-    @endcode
-
-    returns the quotient of @c a by @c b
-
-    @note
-
-    As usual the simd division is often more expansive that the other
-    arithmetic operators and using the @ref shift_right function can be sometimes handy
-    to gain some cycles.
-
-    @see div, rem, rec
+    @see div, rem, rec, shift_right
 
   **/
   Value divides(Value const& x, Value const& y);
