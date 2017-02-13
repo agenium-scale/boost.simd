@@ -31,6 +31,7 @@ void test(Env& runtime)
   p_t aa3(&a3[0], &a3[0]+N);
 
   STF_EQUAL(bs::all(aa1), true);
+  STF_EQUAL(bs::all(aa2 == 0), true);
   STF_EQUAL(bs::all(aa2), false);
   STF_EQUAL(bs::all(aa3), false);
 
