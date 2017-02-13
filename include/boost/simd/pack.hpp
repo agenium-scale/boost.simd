@@ -28,6 +28,7 @@
 #include <boost/simd/function/load.hpp>
 #include <boost/simd/function/inc.hpp>
 #include <boost/simd/function/dec.hpp>
+#include <boost/simd/memory/aligned_object.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/simd/detail/is_aligned.hpp>
 #include <boost/config.hpp>
@@ -378,6 +379,9 @@ namespace boost { namespace simd
 
     reference       front()        { return traits::at(*this, 0); }
     const_reference front() const  { return traits::at(*this, 0); }
+
+    // Make operator new/delete  correct
+    BOOST_SIMD_ALIGNED_OBJECT(pack)
 
     public:
     BOOST_FORCEINLINE pack& operator++() BOOST_NOEXCEPT_IF_EXPR(inc(bd::detail::declval<pack>()))
