@@ -43,6 +43,7 @@ SET( SOURCES
     nearbyint.cpp
     oneminus.cpp
     plus.cpp
+    quadrant.cpp
     rec.cpp
     rem.cpp
     remquo.cpp

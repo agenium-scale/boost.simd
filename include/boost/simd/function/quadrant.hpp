@@ -18,23 +18,25 @@ namespace boost { namespace simd
   /*!
 
     @ingroup group-arithmetic
-    Function object implementing quadrant capabilities
-
-    Computes the quadrant of its parameter.
+    This function object computes the quadrant of its parameter.
 
 
     @par Header <boost/simd/function/quadrant.hpp>
 
     @par semantic:
-    For any given positive integral value (possibly flint) @c n of type @c T:
+    For any given positive integral value (possibly flint) @c n of  `quadrant(n)`
+    returns the value in the same type 0, 1, 2 or 3 according to the
+    two least significant bits of the truncated input.
 
-    @code
-    T r = quadrant(n);
-    @endcode
+    for integral types this is similar to n&3.
 
-    returns the value in the same type 0, 1, 2 or 3 according to the two least significant bits of the input.
+    @par Example:
 
-    for integral types this is eqivalent to n&Three<T>().
+      @snippet quadrant.cpp quadrant
+
+    @par Possible output:
+
+      @snippet quadrant.txt quadrant
 
   **/
   Value quadrant(Value const& n);

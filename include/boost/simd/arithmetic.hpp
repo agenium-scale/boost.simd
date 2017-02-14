@@ -253,6 +253,7 @@ namespace boost { namespace simd
 #include <boost/simd/function/minmod.hpp>
 #include <boost/simd/function/multiplies.hpp>
 #include <boost/simd/function/oneminus.hpp>
+#include <boost/simd/function/quadrant.hpp>
 #include <boost/simd/function/rec.hpp>
 #include <boost/simd/function/rem.hpp>
 #include <boost/simd/function/remquo.hpp>

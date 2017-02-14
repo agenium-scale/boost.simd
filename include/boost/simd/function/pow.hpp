@@ -22,10 +22,9 @@ namespace boost { namespace simd
     @par Header <boost/simd/function/pow.hpp>
 
     @par Decorators
+      - std_ decorator calls @c std:pow
 
-        - std_ decorator calls @c std:pow
-
-        - raw_ decorator almost nearly uses the naive formula (\f$\exp(y\log x)\f$)
+      - raw_ decorator almost nearly uses the naive formula (\f$e^{y\log x}\f$)
          and so does not care for limits and leads to lower accuracy
 
 
