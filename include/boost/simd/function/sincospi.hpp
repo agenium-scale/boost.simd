@@ -17,13 +17,12 @@ namespace boost { namespace simd
 
   /*!
     @ingroup group-trigonometric
-    This function object returns the computes simultaneously and
+    This function object computes simultaneously and
     at lower cost the sine and cosine of the input in \f$\pi\f$ multiples.
 
-    @see sincosd, sincos
-
-
     @par Header <boost/simd/function/sincospi.hpp>
+
+    @see sincosd, sincos
 
     @par Example:
 

@@ -17,14 +17,12 @@ namespace boost { namespace simd
 
   /*!
     @ingroup group-trigonometric
-    This function object returns the sine of angle in \f$\pi\f$ multiples:
+    This function object returns the sine of the parameter in \f$\pi\f$ multiples:
     \f$\sin(\pi x)\f$.
 
-    @see sine, sincospi, sin, sind
-
-
-
     @par Header <boost/simd/function/sinpi.hpp>
+
+    @see sine, sincospi, sin, sind
 
     @par Example:
 

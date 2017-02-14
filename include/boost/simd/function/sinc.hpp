@@ -20,11 +20,9 @@ namespace boost { namespace simd
     This function object returns the Computes the sinus cardinal value of its parameter,
     i.e. \f$\sin(x)/x\f$.
 
-    @see sin, sincpi, sinhc
-
-
-
     @par Header <boost/simd/function/sinc.hpp>
+
+    @see sin, sincpi, sinhc
 
     @par Example:
 

@@ -46,14 +46,11 @@ namespace boost { namespace simd
 
     @par Example:
 
-      @snippet shuffle.unary.cpp shuffle-unary
+      @snippet shuffle.unary.cpp shuffle.unary
 
-    Possible output:
+    @par Possible output:
 
-    @code
-    Original: (1, 2, 3, 4)
-    Permuted: (4, 0, 3, 1)
-    @endcode
+      @snippet shuffle.unary.txt shuffle.unary
 
     @param  x  boost::simd::pack to shuffle
   **/
@@ -89,14 +86,11 @@ namespace boost { namespace simd
 
     @par Example:
 
-      @snippet shuffle.binary.cpp shuffle-binary
+      @snippet shuffle.binary.cpp shuffle.binary
 
-    Possible output:
+    @par Possible output:
 
-    @code
-    Original: (1, 2, 3, 4) (10, 20, 30, 40)
-    Permuted: (0, 4, 40, 0)
-    @endcode
+      @snippet shuffle.binary.txt shuffle.binary
 
     @param  x  boost::simd::pack to shuffle
     @param  y  boost::simd::pack to shuffle
@@ -150,15 +144,11 @@ namespace boost { namespace simd
 
     @par Example:
 
-      @snippet shuffle.perm.cpp shuffle-perm
+      @snippet shuffle.perm.cpp shuffle.perm
 
-    Possible output:
+    @par Possible output:
 
-    @code
-    Original: (1, 2, 3, 4)
-    Permuted: (4, 0, 3, 1)
-    Permuted: (4, 4, 4, 4)
-    @endcode
+      @snippet shuffle.perm.txt shuffle.perm
 
     @tparam Permutation Permutation meta-function generating the permutation index
     @param  x           boost::simd::pack to shuffle
@@ -212,14 +202,11 @@ namespace boost { namespace simd
 
     @par Example:
 
-      @snippet shuffle.perm2.cpp shuffle-perm2
+      @snippet shuffle.perm2.cpp shuffle.perm2
 
-    Possible output:
+    @par Possible output:
 
-    @code
-    Original: (1, 2, 3, 4)
-    Permuted: (10, 20, 3, 4)
-    @endcode
+      @snippet shuffle.perm2.txt shuffle.perm2
 
     @tparam Permutation Permutation meta-function generating the permutation index
     @param  x           boost::simd::pack to shuffle

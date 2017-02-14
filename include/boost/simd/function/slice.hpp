@@ -40,9 +40,7 @@ namespace boost { namespace simd
 
     evaluates to @c true.
 
-    @see combine
-    @see slice_low
-    @see slice_high
+    @see combine, slice_low, slice_high
   **/
   std::array<ValueO, 2> slice(Value1 const& x);
 } }

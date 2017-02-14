@@ -18,9 +18,7 @@ namespace boost { namespace simd
   /*!
 
     @ingroup group-operator
-     This function object returns the first operand shifted left by the second
-    that must be of integer type and of the same number
-    of elements as the first parameter or scalar.
+     This function object returns the first operand shifted left by the second one
 
     Infix notation can be used with operator '<<'
 

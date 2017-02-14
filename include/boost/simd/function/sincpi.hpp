@@ -20,10 +20,9 @@ namespace boost { namespace simd
     This function object returns the Computes the sinpi cardinal
     value of its parameter, i.e. \f$sin(\pi x)/(\pi x) \f$.
 
-    @see sin, sinc, sinhc
-
-
     @par Header <boost/simd/function/sincpi.hpp>
+
+    @see sin, sinc, sinhc
 
     @par Example:
 

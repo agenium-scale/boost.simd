@@ -20,10 +20,9 @@ namespace boost { namespace simd
     @ingroup group-hyperbolic
     This function object returns the hyperbolic cardinal sine: \f$\sinh(x)/x\f$.
 
-    @see cosh, sinh
-
-
     @par Header <boost/simd/function/sinhc.hpp>
+
+    @see cosh, sinh
 
     @par Example:
 

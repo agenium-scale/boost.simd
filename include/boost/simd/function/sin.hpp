@@ -24,7 +24,7 @@ namespace boost { namespace simd
 
     @par Note
 
-      As most other trigonometric function sin can be called with a second
+      As most other trigonometric function @c sin may be called with a second
       optional parameter  which is a tag on speed and accuracy
       (see @ref cos for further details)
 

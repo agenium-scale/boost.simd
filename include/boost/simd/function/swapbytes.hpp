@@ -16,13 +16,11 @@ namespace boost { namespace simd
 {
   /*!
     @ingroup group-bitwise
-    This function object reverses the byte order of each scalar value
-
-    @see reverse,  reversebits
-
-
+    This function object reverses the byte order of each scalar element of the parameter.
 
     @par Header <boost/simd/function/swapbytes.hpp>
+
+    @see reverse,  reversebits
 
     @par Example:
 

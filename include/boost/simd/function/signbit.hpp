@@ -17,13 +17,11 @@ namespace boost { namespace simd
 
   /*!
     @ingroup group-arithmetic
-    Function object implementing signbit capabilities
-
-    True or false according to the bit of sign set or not set.
+    This function object returns True or false according to the bit of sign set or not set.
 
     @par Header <boost/simd/function/signbit.hpp>
 
-    This is a convenience alias of @ref is_negative used by stdlibc++.
+    This is a convenience alias of @ref is_negative (the name is used by stdlibc++).
   **/
   as_logical_t<Value> signbit(Value const& x);
 } }

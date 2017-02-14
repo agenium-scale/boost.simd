@@ -20,18 +20,17 @@ namespace boost { namespace simd
     This function object returns the sign of x. I.e. -1 or 1,
     depending on the fact  @c x is negative or positive.
 
-    This function never returns @ref Zero (zero is considered positive for integers).
+    @par Header <boost/simd/function/signnz.hpp>
+    @par Notes:
 
-    For floating point numbers the bit of sign is taken into account and so
-    we always have signnz(-z) == -signnz(z)).
+    - This function never returns @ref Zero (zero is considered positive for integers).
 
-    The result for @ref Nan entry is undefined.
+    - For floating point numbers the bit of sign is taken into account and so
+    we always have `signnz(-z) == -signnz(z)` except is the entry is a NaN
+    (in this later case the result is undefined).
+
 
     @see Mzero, sign, is_negative, is_positive
-
-
-
-    @par Header <boost/simd/function/signnz.hpp>
 
     @par Example:
 

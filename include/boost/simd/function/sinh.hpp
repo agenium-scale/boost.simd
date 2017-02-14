@@ -20,10 +20,9 @@ namespace boost { namespace simd
     @ingroup group-hyperbolic
     This function object returns the hyperbolic sine: \f$(e^{x}-e^{-x})/2\f$.
 
-    @see tanh, cosh, sech, csch, sinhcosh
-
-
     @par Header <boost/simd/function/sinh.hpp>
+
+    @see tanh, cosh, sech, csch, sinhcosh
 
     @par Example:
 

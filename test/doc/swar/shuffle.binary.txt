@@ -1,0 +1,4 @@
+//! [shuffle.binary]
+Original: (1, 2, 3, 4) (10, 20, 30, 40)
+Permuted: (0, 4, 40, 0)
+//! [shuffle.binary]

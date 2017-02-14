@@ -19,6 +19,8 @@ namespace boost { namespace simd
     This function object returns a vector extracted from the concatanation
     of `x` and `y` (resp. `x` and itself when only one argument is given).
 
+    @par Header <boost/simd/function/slide.hpp>
+
     @par Semantic:
 
     Denote by `L` the common length of `x` and `y`.
@@ -38,8 +40,6 @@ namespace boost { namespace simd
     @code
     Value r = slide<L - N>(x, y);
     @endcode
-
-    @par Header <boost/simd/function/slide.hpp>
 
   **/
   ///@{

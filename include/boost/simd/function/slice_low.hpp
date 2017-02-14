@@ -38,9 +38,7 @@ namespace boost { namespace simd
     pack<T,N/2> c( a[0], ..., a[N/2-1]);
     @endcode
 
-    @see slice
-    @see slice_high
-    @see combine
+    @see slice, slice_high, combine
   **/
   ValueO slice_low(Value1 const& x);
 } }

@@ -18,20 +18,24 @@ namespace boost { namespace simd
   /*!
 
     @ingroup group-operator
-    This function object returns the first operand shifted left by the second
-    that must be of integer type and of the same number
-    of elements as the first parameter
+    This function object returns the first parameter shifted left by the second one
 
     Infix notation can be used with operator '<<'
+
+    @par Header <boost/simd/function/shift_left.hpp>
+
+      @pre the second parameter must be of integer type scalar or associated to
+      the first parameter
+
+    @par Note:
+      - on many architectures a scalar second parameter results in a much faster call
 
     @par alias shl
 
     @see  shift_right, shr, rshl, rshr, rol, ror
 
 
-    @par Header <boost/simd/function/shift_left.hpp>
-
-    @par Example:
+   @par Example:
 
       @snippet shift_left.cpp shift_left
 
