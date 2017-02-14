@@ -34,7 +34,7 @@ namespace boost { namespace simd
      - Some simpler algorithms  @ref rem_pio2_medium, @ref rem_pio2_cephes or @ref rem_pio2_straight
       can often be used, but the precision is only insured on smaller intervals.
 
-      - Using  `std::tie(n, r) = rem_pio2(x);` is similar tore ` = div(inearbyint, x, Pio_2<T>())`
+      - Using  `std::tie(n, r) = rem_pio2(x);` is similar to ` n = div(inearbyint, x, Pio_2<T>())`
       and `r =  remainder(x, Pio_2<T>())`
 
     @see rem_pio2_medium, rem_pio2_straight, rem_2pi,  rem_pio2_cephes,

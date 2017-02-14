@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
      - raw_ Many simd architectures provide an intrinsic that computes some bits of the inverse (at least 12)
             and don't care of denormals or limiting values. If it exists this is obtained by the raw_ decorator.
-            As usual if it doesn't the plain rec is called.
+            If the intrinsic doesn't exist the regular @c rec is called.
 
     @par Example:
 

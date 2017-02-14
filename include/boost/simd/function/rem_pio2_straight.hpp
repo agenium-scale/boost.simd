@@ -30,7 +30,7 @@ namespace boost { namespace simd
     This is a very quick version only correct if the input
     is in \f$[\pi/4,\pi/2]\f$.
 
-    - In fact it only substract \f$\pi/2\f$ to the input
+    - In fact it only substracts \f$\pi/2\f$ to the input
     so it can be viewed as a specially accurate minuspio_2 function outside
     the interval in which it can be used as a substitute to @ref rem_pio2.
 

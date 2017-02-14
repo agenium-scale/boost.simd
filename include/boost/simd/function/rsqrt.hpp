@@ -26,8 +26,8 @@ namespace boost { namespace simd
 
     @par Decorators
 
-    - raw_  if full accuracy is not needed a sometimes speedier but  less accurate version of the function
-    can be obtained using raw_(rsqrt)(x).
+    - raw_  if full accuracy is not needed gives access on some architectures to faster
+    but less accurate version of the function.
 
     @see sqrt
 

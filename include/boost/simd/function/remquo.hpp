@@ -48,7 +48,7 @@ namespace boost { namespace simd
         one, to allow proper SIMD implementation.
 
       - also note that the double implementation of std::remquo is flawed in GNU C
-        Library until version 2.21 (2.22 been corrected).
+        Library until version 2.21 (2.22 has been corrected).
 
     @par Example:
 

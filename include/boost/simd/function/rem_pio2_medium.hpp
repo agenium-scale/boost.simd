@@ -26,7 +26,7 @@ namespace boost { namespace simd
     @par Note:
 
 
-    - This is a medium version version accurate if the input is in:
+    - This is a medium version accurate if the input is in:
      \f$[-2^6\pi,2^6\pi]\f$ for float,
      \f$[-2^{18}\pi,2^{18}\pi]\f$ for double.
     \par

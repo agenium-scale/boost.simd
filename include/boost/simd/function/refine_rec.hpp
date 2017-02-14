@@ -18,27 +18,25 @@ namespace boost { namespace simd
   /*!
 
     @ingroup group-arithmetic
-    Function object implementing refine_rec capabilities
+    This function object performs a Newton-Raphson step to improve precision of a reciprocate estimate.
 
-    Performs a Newton-Raphson step to improve precision of a reciprocate estimate.
     This function can be used in conjunction with raw_(rec)
-    to add more precision to the estimate if their default
+    to add more precision to the estimates if their default
     precision is not enough.
 
 
     @par Header <boost/simd/function/refine_rec.hpp>
 
     @par semantic:
-    For any given value @c x, @c est  of floating type T:
 
     @code
-    T r =refine_rec(x, est);
+    auto r =refine_rec(x, est);
     @endcode
 
     is similar to
 
     @code
-    T r = fma(fnms(est, a0, One<T>()), est, est);
+    auto r = fma(fnms(est, a0, One<T>()), est, est);
     @endcode
 
     @see rec

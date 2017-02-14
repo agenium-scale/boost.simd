@@ -18,27 +18,25 @@ namespace boost { namespace simd
   /*!
 
     @ingroup group-arithmetic
-    Function object implementing refine_rsqrt capabilities
+    This function object performs a Newton-Raphson step to improve precision of rsqrt estimate.
 
-    Performs a Newton-Raphson step to improve precision of rsqrt estimate.
     This function can be used in conjunction with raw_(rsqrt)
-    to add more precision to the estimate if their default
+    to add more precision to the estimates if their default
     precision is not enough.
 
 
     @par Header <boost/simd/function/refine_rsqrt.hpp>
 
     @par semantic:
-    For any given value @c x, @c est  of floating type T:
 
     @code
-    T r = refine_rsqrt(x, est);
+     auto r = refine_rsqrt(x, est);
     @endcode
 
     is similar to
 
     @code
-       T r = fma( fnms(x, sqr(est), One<T>()), est*Half<A0>(), est);
+       auto r = fma( fnms(x, sqr(est), 1), est/2, est);
     @endcode
 
     @see rec

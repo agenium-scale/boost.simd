@@ -18,49 +18,38 @@ namespace boost { namespace simd
   /*!
 
     @ingroup group-arithmetic
-    Function object implementing round capabilities
-
-    round(x,n) rounds aways from 0 to n digits:
+    This function object computes the rounding away from zero of its parameter.
 
 
     @par Header <boost/simd/function/round.hpp>
 
-    @par semantic:
-    For any given value @c x of type @c T and integer n :
+    @par Notes:
 
-    @code
-    T r = round(x{, n});
-    @endcode
+    - With a second integral parameter  `round(x,n)` rounds aways from 0 to n digits:
+    this is similar to  `round(x*exp10(n))*exp10(-n)`
 
-    is equivalent to
+      - n default to 0,
+      - n > 0: round to n digits to the right of the decimal point.
+      - n = 0: round to the nearest integer.
+      - n < 0: round to n digits to the left of the decimal point.
 
-    @code
-    T r = round(x*exp10(n))*exp10(-n);
-    @endcode
-
-    @par Note:
-
-    n default to 0,
-
-    - n > 0: round to n digits to the right of the decimal point.
-
-    - n = 0: round to the nearest integer.
-
-    - n < 0: round to n digits to the left of the decimal point.
-
-    aways from 0 means that half integer values are rounded to the nearest
+    - aways from 0 means that half integer values are rounded to the nearest
     integer of greatest absolute value
 
     The current rounding mode has no effect.
 
     - If x is \f$\pm\infty\f$ or \f$\pm0\f$, it is returned, unmodified
-    - If arg is a NaN, a NaN is returned
-  **/
+    - If x is a NaN, a NaN is returned
 
-  ///@{
-  Value round(Value const& x);
-  IEEEValue round(IEEEValue const& x, IntegerValue const& n);
-  ///@}
+    @par Example:
+
+      @snippet round.cpp round
+
+    @par Possible output:
+
+      @snippet round.txt round
+  **/
+  IEEEValue round(IEEEValue const& x, IntegerValue const& n = 0);
 } }
 #endif
 

@@ -25,18 +25,19 @@ namespace boost { namespace simd
     @par Notes
 
     For any value @c a and @c b of same type `rem({option, }a, b)`
-    returns the quotient of @c a by @c b respecting to the option specified.
+    returns the quotient of @c a by @c b respective to the option specified.
 
     - Options
 
       With no option this function is equivalent to `x-div(fix, x, y)*y`
 
-      `option` may be c@ref ceil, @ref floor, @ref fix, @ref round, @ref nearbyint (in the
-      namespace booost::simd) and provides the same result as `x-div(option, x, y)*y`.
+      `option` may be @ref ceil, @ref floor, @ref fix, @ref round, @ref nearbyint (in the
+      namespace booost::simd).
+      Each option provides the same result as `x-div(option, x, y)*y`.
 
     - Supported types
 
-      unsigned types are not supported but for the option @c fix, as in other cases result
+      unsigned types are not supported but for the option @c fix, as in other cases results
       can be negative
 
     - Limiting values for floating entries:
