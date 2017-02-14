@@ -34,7 +34,7 @@ namespace boost { namespace simd
 
 
     @par Decorators
-    - `saturated_` ensurs that `saturated_(unary_minus)(Valmin<T>())` is `Valmin<T>()`
+    - `saturated_` ensures that `saturated_(unary_minus)(Valmin<T>())` is `Valmin<T>()`
 
     @see  minus, unary_plus
 
