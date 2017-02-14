@@ -20,12 +20,16 @@ namespace boost { namespace simd
     This function object returns the logical xor of the first argument
     and of the second argument.
 
-    The operands must share the same @ref cardinal_of value.
-
-    The result type is logical type associated to the first argument.
-
-
     @par Header <boost/simd/function/logical_xor.hpp>
+
+    @par Note
+
+    - The result type is the logical type associated to the first argument.
+
+    @pre The operands must share the same @ref cardinal_of value.
+
+
+    @see logical_not,  logical_and, logical_andnot,  logical_notand,  logical_or, logical_ornot,  logical_notor
 
     @par Example:
 

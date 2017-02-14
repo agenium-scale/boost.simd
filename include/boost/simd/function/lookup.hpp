@@ -37,9 +37,17 @@ namespace boost { namespace simd
 
     @code
     T r;
-    for(size_t i=0; i < boost::simd::meta::cardinal_of<T0>::value; i++)
+    for(size_t i=0; i < boost::simd::meta::cardinal_of<T>::value; i++)
       r[i] = x[n[i]];
     @endcode
+
+    @par Example:
+
+      @snippet lookup.cpp lookup
+
+    @par Possible output:
+
+      @snippet lookup.txt lookup
 
   **/
   Value lookup(Value const& x, IntegerValue const& n);

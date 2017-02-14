@@ -21,13 +21,17 @@ namespace boost { namespace simd
 
     Infix notation can be used with operator '&&'.
 
+    @par Note
+
+    - The result type is the logical type associated to the first argument.
+
     @pre The operands must share the same @ref cardinal_of value.
 
     @warningbox{Take care that SIMD logical operation do not short-circuit.}
 
-
-
     @par Header <boost/simd/function/logical_and.hpp>
+
+    @see logical_not,  logical_xor, logical_andnot,  logical_notand,  logical_or, logical_ornot,  logical_notor
 
     @par Example:
 

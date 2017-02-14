@@ -20,12 +20,14 @@ namespace boost { namespace simd
     This function object returns the logical and of the first argument and of
     the logical negation of the second argument.
 
-    The operands must share the same @ref cardinal_of value.
-
-    The result type is logical type associated to the first argument.
-
-
     @par Header <boost/simd/function/logical_andnot.hpp>
+
+    @par Note
+
+    - The result type is the logical type associated to the first argument.
+
+    @pre The operands must share the same @ref cardinal_of value.
+
 
     @par Example:
 

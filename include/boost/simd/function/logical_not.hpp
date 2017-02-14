@@ -21,9 +21,9 @@ namespace boost { namespace simd
 
     Infix notation can be used with operator '!'
 
-
-
     @par Header <boost/simd/function/logical_not.hpp>
+
+    @see logical_notor,  logical_xor, logical_andnot,  logical_notand,  logical_ornot, logical_and,  logical_or
 
     @par Example:
 

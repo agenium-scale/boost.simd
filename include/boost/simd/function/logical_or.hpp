@@ -19,14 +19,19 @@ namespace boost { namespace simd
     @ingroup group-boolean
     This function object returns the return the logical or of the two arguments
 
-    The operands must share the same @ref cardinal_of value.
-
     Infix notation can be used with operator '||'
 
-    @warningbox{Take care that using && in scalar mode does short-circuit and does not in simd mode.}
-
-
     @par Header <boost/simd/function/logical_or.hpp>
+
+    @par Note
+
+    - The result type is the logical type associated to the first argument.
+
+    @pre The operands must share the same @ref cardinal_of value.
+
+    @warningbox{Take care that using || in scalar mode does short-circuit and does not in simd mode.}
+
+    @see logical_not,  logical_xor, logical_andnot,  logical_notand,  logical_ornot, logical_and,  logical_notor
 
     @par Example:
 
