@@ -18,31 +18,29 @@ namespace boost { namespace simd
   /*!
 
     @ingroup group-operator
-    Function object implementing unary_plus capabilities
-
-    return the elementwise unary plus of the parameter
+    This function object returns the elementwise unary plus of the parameter
 
     Infix notation can be used with operator '+'
 
 
     @par Header <boost/simd/function/unary_plus.hpp>
 
-    @par Semantic:
+    @par Note:
 
-    @code
-    auto r = unary_plus(x);
-    @endcode
-
-    or
-
-    @code
-    auto r = +x;
-    @endcode
+    - `r = unary_plus(x)` is equivalent to  `r = +x` for SIMD types.
 
     @warningbox{Take care that the infix notation in scalar integral mode encurs
     a possible promotion of the type as C++ rules state.}
 
     @see  plus, unary_minus
+
+    @par Example:
+
+      @snippet unary_plus.cpp unary_plus
+
+    @par Possible output:
+
+      @snippet unary_plus.txt unary_plus
 
   **/
   Value unary_plus(Value const& x);

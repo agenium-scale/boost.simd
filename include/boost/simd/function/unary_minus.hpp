@@ -18,39 +18,33 @@ namespace boost { namespace simd
   /*!
 
     @ingroup group-operator
-    Function object implementing unary_minus capabilities
-
-    return the elementwise unary minus of the parameter
+    This function object returns the elementwise unary minus of the parameter
 
     Infix notation can be used with operator '-'
 
 
     @par Header <boost/simd/function/unary_minus.hpp>
 
-    @par Semantic:
-
-    For every parameter of type T
-
-    @code
-    auto r = unary_minus(x);
-    @endcode
-
-    or
-
-    @code
-    auto r = -x;
-    @endcode
-
     @par Note:
 
-    - Be aware that for signed integers the unary_minus of @ref Valmin is
-    @ref Valmin. This is a side effect of the 2-complement
-    representation of integers. To avoid this, you may use the
-    saturated_ functor (calling saturated_(unary_minus)(x))
-    or convert the input parameter to a larger type
-    before taking the unary_minus value.
+    - `r = unary_minus(x)` is equivalent to  `r = -x` for SIMD types.
+
+    @warningbox{Take care that the infix notation in scalar integral mode encurs
+    a possible promotion of the type as C++ rules state.}
+
+
+    @par Decorators
+    - `saturated_` ensurs that `saturated_(unary_minus)(Valmin<T>())` is `Valmin<T>()`
 
     @see  minus, unary_plus
+
+    @par Example:
+
+      @snippet unary_minus.cpp unary_minus
+
+    @par Possible output:
+
+      @snippet unary_minus.txt unary_minus
 
   **/
   Value unary_minus(Value const& x);
