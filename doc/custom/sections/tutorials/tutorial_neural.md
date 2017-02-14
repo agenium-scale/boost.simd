@@ -42,7 +42,7 @@ The actual calculation is performed in the following functor:
 
 @snippet neural_net.cpp neural-struct
 
-A functor must be used for bs::transform as c++14 does not support generic lambda
+A functor must be used for bs::transform as c++11 does not support generic lambda
 functions. If you are using a C++14 compiler, you may place this code inside a lambda
 function.
 
