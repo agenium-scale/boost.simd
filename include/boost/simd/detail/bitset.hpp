@@ -45,15 +45,15 @@ namespace boost { namespace simd
       static constexpr std::size_t bitmask = (N == 64) ? ~0ULL : (1ULL<<N) - 1;
       using bits_type = bd::make_integer_t<bitset_size<N>::value,unsigned>;
 
-      constexpr bitset()                noexcept : bits_{} {}
-      constexpr bitset(bitset const& v) noexcept : bits_{v.bits_} {}
-      constexpr bitset(std::size_t n)   noexcept : bits_{static_cast<bits_type>(n & bitmask)} {}
+      constexpr bitset()                BOOST_NOEXCEPT : bits_{} {}
+      constexpr bitset(bitset const& v) BOOST_NOEXCEPT : bits_{v.bits_} {}
+      constexpr bitset(std::size_t n)   BOOST_NOEXCEPT : bits_{static_cast<bits_type>(n & bitmask)} {}
 
-      bitset& reset()               noexcept { bits_ = 0U;                    return *this; }
-      bitset& reset(std::size_t p)  noexcept { bits_ = bits_ & ~((1ULL<<p));  return *this; }
+      bitset& reset()               BOOST_NOEXCEPT { bits_ = 0U;                    return *this; }
+      bitset& reset(std::size_t p)  BOOST_NOEXCEPT { bits_ = bits_ & ~((1ULL<<p));  return *this; }
 
-      bitset& set() noexcept { bits_ = ~0ULL; return *this; }
-      bitset& set(std::size_t p, bool v = true) noexcept
+      bitset& set() BOOST_NOEXCEPT { bits_ = ~0ULL; return *this; }
+      bitset& set(std::size_t p, bool v = true) BOOST_NOEXCEPT
       {
         reset(p);
         bits_ |= (std::size_t(v)<<p);
@@ -63,7 +63,7 @@ namespace boost { namespace simd
       bitset& flip()                { bits_ = ~bits_;     return *this; }
       bitset& flip(std::size_t p)   { bits_ ^= (1ULL<<p); return *this; }
 
-      constexpr bool operator[]( std::size_t p ) const noexcept { return bits_ & (1ULL<<p); }
+      constexpr bool operator[]( std::size_t p ) const BOOST_NOEXCEPT { return bits_ & (1ULL<<p); }
 
       bool test( std::size_t p ) const
       {
@@ -71,15 +71,15 @@ namespace boost { namespace simd
         return this->operator[](p);
       }
 
-      static constexpr std::size_t size() noexcept { return N; }
+      static constexpr std::size_t size() BOOST_NOEXCEPT { return N; }
 
-                std::size_t count() const noexcept { return boost::simd::popcnt(bits_); }
-      constexpr bool        all()   const noexcept { return bits_ == bitmask;           }
-      constexpr bool        any()   const noexcept { return bits_ != 0;                 }
-      constexpr bool        none()  const noexcept { return bits_ == 0;                 }
+                std::size_t count() const BOOST_NOEXCEPT { return boost::simd::popcnt(bits_); }
+      constexpr bool        all()   const BOOST_NOEXCEPT { return bits_ == bitmask;           }
+      constexpr bool        any()   const BOOST_NOEXCEPT { return bits_ != 0;                 }
+      constexpr bool        none()  const BOOST_NOEXCEPT { return bits_ == 0;                 }
 
-      constexpr bool operator==(bitset const& other) const noexcept { return bits_ == other.bits_; }
-      constexpr bool operator!=(bitset const& other) const noexcept { return bits_ != other.bits_; }
+      constexpr bool operator==(bitset const& other) const BOOST_NOEXCEPT { return bits_ == other.bits_; }
+      constexpr bool operator!=(bitset const& other) const BOOST_NOEXCEPT { return bits_ != other.bits_; }
 
       bitset  operator>> (std::size_t pos) const { return bitset{bits_ >> pos}; }
       bitset  operator<< (std::size_t pos) const { return bitset{bits_ << pos}; }
@@ -87,16 +87,16 @@ namespace boost { namespace simd
       bitset& operator<<=(std::size_t pos) { bits_ <<= pos; return *this; }
       bitset& operator>>=(std::size_t pos) { bits_ >>= pos; return *this; }
 
-      bitset& operator&=( const bitset<N>& other ) noexcept { bits_ &= other.bits_; return *this; }
-      bitset& operator|=( const bitset<N>& other ) noexcept { bits_ |= other.bits_; return *this; }
-      bitset& operator^=( const bitset<N>& other ) noexcept { bits_ ^= other.bits_; return *this; }
+      bitset& operator&=( const bitset<N>& other ) BOOST_NOEXCEPT { bits_ &= other.bits_; return *this; }
+      bitset& operator|=( const bitset<N>& other ) BOOST_NOEXCEPT { bits_ |= other.bits_; return *this; }
+      bitset& operator^=( const bitset<N>& other ) BOOST_NOEXCEPT { bits_ ^= other.bits_; return *this; }
 
-      bitset  operator~() const noexcept { return bitset( ~bits_ ); }
+      bitset  operator~() const BOOST_NOEXCEPT { return bitset( ~bits_ ); }
 
-      operator std::bitset<N>() noexcept { return std::bitset<N>{bits_}; }
+      operator std::bitset<N>() BOOST_NOEXCEPT { return std::bitset<N>{bits_}; }
 
-      constexpr unsigned long      to_ulong()  const noexcept { return bits_; }
-      constexpr unsigned long long to_ullong() const noexcept { return bits_; }
+      constexpr unsigned long      to_ulong()  const BOOST_NOEXCEPT { return bits_; }
+      constexpr unsigned long long to_ullong() const BOOST_NOEXCEPT { return bits_; }
 
       private:
       bits_type bits_;
