@@ -154,7 +154,7 @@ If the tests are successfully enabled, the `CMake` log should inform you:
 
 Proceed to update your local build by issuing one of the proposed command. Once the test and
 benchmark libraries are set up, you can use the `unit`, `exhaustive` or `bench` targets to build
-all unti tests, precision tests or benchmarks. Single function test or benchmark can be compiled by
+all unit tests, precision tests or benchmarks. Single function test or benchmark can be compiled by
 using the hierarchical target name. For example, the unit test for the SIMD version of function
 `plus` is compilable via:
 
