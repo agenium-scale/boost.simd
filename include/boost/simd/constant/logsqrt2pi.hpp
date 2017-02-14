@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generate value \f$\log\sqrt{2\pi}\f$
 
+
+    @par Header <boost/simd/constant/logsqrt2pi.hpp>
+
     @par Semantic:
 
     @code

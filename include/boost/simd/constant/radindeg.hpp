@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     Constant Radindeg : Degree in Radian multiplier, \f$\frac\pi{180}\f$.
 
+
+    @par Header <boost/simd/constant/radindeg.hpp>
+
     @par Semantic:
 
     For type T:

@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generate 8! that is 40320
 
+
+    @par Header <boost/simd/constant/fact_8.hpp>
+
     @par Semantic:
 
     @code

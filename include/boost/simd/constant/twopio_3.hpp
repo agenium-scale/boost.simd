@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     Constant \f$2\frac\pi{3}\f$.
 
+
+    @par Header <boost/simd/constant/twopio_3.hpp>
+
     @par Semantic:
 
     For type T:

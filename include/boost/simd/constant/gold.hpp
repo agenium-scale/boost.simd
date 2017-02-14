@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generate the golden ratio that is \f$\phi = \frac{1+\sqrt5}{2}\f$
 
+
+    @par Header <boost/simd/constant/gold.hpp>
+
     @par Semantic:
 
     @code

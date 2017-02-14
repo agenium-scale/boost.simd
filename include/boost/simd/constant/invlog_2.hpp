@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     Generates constant 1/log(2).
 
+
+    @par Header <boost/simd/constant/invlog_2.hpp>
+
     @par Semantic:
 
     @code

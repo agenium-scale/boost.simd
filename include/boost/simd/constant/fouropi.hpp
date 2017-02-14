@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     Constant \f$\frac4\pi\f$.
 
+
+    @par Header <boost/simd/constant/fouropi.hpp>
+
     @par Semantic:
 
     For type T:

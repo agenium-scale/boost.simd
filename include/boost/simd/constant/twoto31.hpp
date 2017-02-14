@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generate  2 to the power 31 (\f$2^{31}\f$)
 
+
+    @par Header <boost/simd/constant/twoto31.hpp>
+
     @par Semantic:
 
     @code

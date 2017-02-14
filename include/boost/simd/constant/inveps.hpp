@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generate  value \f$\1/Eps<T>()\f$
 
+
+    @par Header <boost/simd/constant/inveps.hpp>
+
     @par Semantic:
 
     @see Eps

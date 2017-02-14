@@ -19,6 +19,9 @@ namespace boost { namespace simd
     Generates a value of the chosen type from an exact bits pattern
     that get splat in the return value.
 
+
+    @par Header <boost/simd/constant/constant.hpp>
+
     @par Semantic:
 
     or any type @c T and any integral constant @c N :

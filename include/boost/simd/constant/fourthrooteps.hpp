@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generate the 4th root of constant @ref Eps : \f$\sqrt[4]\epsilon\f$.
 
+
+    @par Header <boost/simd/constant/fourthrooteps.hpp>
+
     @par Semantic:
 
     @code

@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generate base ten logarithm of pi (\f$\log\!10(\pi)\f$)
 
+
+    @par Header <boost/simd/constant/log10_pi.hpp>
+
     @par Semantic:
 
     @code

@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generate the maximum representable value of a given type as a constant.
 
+
+    @par Header <boost/simd/constant/valmax.hpp>
+
     @par Semantic
 
     For any type @c T,

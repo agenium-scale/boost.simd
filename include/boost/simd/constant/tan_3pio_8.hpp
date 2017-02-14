@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     Constant \f$\tan3\frac\pi{8} = \sqrt2 + 1\f$.
 
+
+    @par Header <boost/simd/constant/tan_3pio_8.hpp>
+
     @par Semantic:
 
     For type T:

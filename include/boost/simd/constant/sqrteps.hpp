@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generate the square root of constant Eps
 
+
+    @par Header <boost/simd/constant/sqrteps.hpp>
+
     @par Semantic:
 
     @code

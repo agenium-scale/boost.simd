@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generate value 1/3
 
+
+    @par Header <boost/simd/constant/third.hpp>
+
     @par Semantic:
 
     @code

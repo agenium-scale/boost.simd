@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     Constant  \f$\frac{\sqrt2}{\pi}\f$.
 
+
+    @par Header <boost/simd/constant/sqrt_2opi.hpp>
+
     @par Semantic:
 
     For type T:
