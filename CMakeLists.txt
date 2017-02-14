@@ -64,6 +64,9 @@ set(NS_CMAKE_PROJECT_OPTIONS
 
 if (DEFINED DEV)
   NS_project_include(stf)
+  NS_project_include(ns.bench)
+
+  add_dependencies(update.check update.boost-header-only)
 endif()
 
 ## Extension point for CMake
@@ -120,6 +123,7 @@ include_directories(
   ${PROJECT_SOURCE_DIR}/test
   ${PROJECT_SOURCE_DIR}/bench
   ${PROJECT_SOURCE_DIR}/exhaustive
+  ${NS_BENCH_DESTINATION}/include/
   ${STF_DESTINATION}/include/
   ${Boost_INCLUDE_DIRS}
 )
@@ -137,7 +141,6 @@ if (DEFINED DEV)
 
   add_custom_target(bench)
   add_subdirectory(bench)
-
   add_custom_target(exhaustive)
   add_subdirectory(exhaustive)
 
@@ -145,6 +148,12 @@ if (DEFINED DEV)
     NS_include(coverage)
     enable_coverage(boost.simd)
   endif()
+
+  message(STATUS "## -----------------------------------------------------------------------------")
+  message(STATUS "   Unit and performances tests are available.")
+  message(STATUS "   Please run the update targets to install pre-requisites:")
+  message(STATUS "       make -j1 update / ninja -j1 update")
+  message(STATUS "## -----------------------------------------------------------------------------")
 else()
   add_custom_target(tests
     COMMENT "Target tests requires 'cmake -DDEV=1 ..'")

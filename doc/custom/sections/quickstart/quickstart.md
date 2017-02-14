@@ -134,6 +134,32 @@ details about `find_package`.
     on a different folder than the default ones.
 }
 
+@section unit-tests Building and Running @projectname Tests
+
+-------------------------------------
+
+@projectname provides a large set of unit tests and benchmarks. Due to their sheer numbers, their
+compilation must be opted-in. This can be done by setting the `DEV` symbol when configuring
+@projectname 's `CMake`.
+
+    cmake path/to/source -DBOOST_ROOT=path/to/boost -DDEV=1
+
+If the tests are successfully enabled, the `CMake` log should inform you:
+
+    -- ## -----------------------------------------------------------------------------
+    --    Unit and performances tests are available.
+    --    Please run the update targets to install pre-requisites:
+    --        make -j1 update / ninja -j1 update
+    -- ## -----------------------------------------------------------------------------
+
+Proceed to update your local build by issuing one of the proposed command. Once the test and
+benchmark libraries are set up, you can use the `unit`, `exhaustive` or `bench` targets to build
+all unit tests, precision tests or benchmarks. Single function test or benchmark can be compiled by
+using the hierarchical target name. For example, the unit test for the SIMD version of function
+`plus` is compilable via:
+
+    make function.simd.plus.unit
+
 @section  whatsnext What's Next ?
 
 -------------------------------------
