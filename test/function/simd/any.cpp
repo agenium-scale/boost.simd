@@ -7,40 +7,44 @@
 **/
 //==================================================================================================
 #include <boost/simd/function/any.hpp>
-#include <boost/simd/function/splatted.hpp>
 #include <boost/simd/logical.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
 
-template <typename T, std::size_t N, typename Env> void test(Env& runtime) {
-  namespace bs = boost::simd;
+namespace bs = boost::simd;
+
+template <typename T, std::size_t N, typename Env>
+void test(Env& runtime)
+{
   using p_t = bs::pack<T, N>;
 
-  namespace bs = boost::simd;
-  namespace bd = boost::dispatch;
+  T a1[N], a2[N], a3[N];
 
-  T a1[N], a2[N];
-  bs::logical<T> b = false, c = false;
-  for (std::size_t i = 0; i < N; ++i) {
-    a1[i] = (i % 2) ? -T(0) :T(0);
-    a2[i] = (i % 2) ? T(i + 1) : T(-i);
-    b = b || a1[i] != 0;
-    c = c || a2[i] != 0;
+  for(std::size_t i = 0; i < N; ++i)
+  {
+    a1[i] = T(i+1);
+    a2[i] = T(0);
+    a3[i] = i!=0 ? T(0) : T(i+1);
   }
-  p_t aa1(&a1[0], &a1[0] + N);
-  p_t aa2(&a2[0], &a2[0] + N);
-  STF_EQUAL(bs::any(aa1), b);
-  STF_EQUAL(bs::any(aa2), c);
+  p_t aa1(&a1[0], &a1[0]+N);
+  p_t aa2(&a2[0], &a2[0]+N);
+  p_t aa3(&a3[0], &a3[0]+N);
 
-  STF_EQUAL(bs::splatted_(bs::any)(aa1), (bs::pack<bs::logical<T>, N>(b)));
-  STF_EQUAL(bs::splatted_(bs::any)(aa2), (bs::pack<bs::logical<T>, N>(c)));
+  STF_EQUAL(bs::any(aa1), true);
+  STF_EQUAL(bs::any(aa2 == 0), true);
+  STF_EQUAL(bs::any(aa2), false);
+  STF_EQUAL(bs::any(aa3), true);
+
+  STF_EQUAL(bs::splatted_(bs::any)(aa1), (bs::pack<bs::logical<T>,N>(true)) );
+  STF_EQUAL(bs::splatted_(bs::any)(aa2), (bs::pack<bs::logical<T>,N>(false)) );
+  STF_EQUAL(bs::splatted_(bs::any)(aa3), (bs::pack<bs::logical<T>,N>(true)) );
 }
 
-STF_CASE_TPL("Check any on pack", STF_NUMERIC_TYPES) {
-  namespace bs = boost::simd;
+STF_CASE_TPL("Check any on pack", STF_NUMERIC_TYPES)
+{
   static const std::size_t N = bs::pack<T>::static_size;
 
   test<T, N>(runtime);
-  test<T, N / 2>(runtime);
-  test<T, N * 2>(runtime);
+  test<T, N/2>(runtime);
+  test<T, N*2>(runtime);
 }
