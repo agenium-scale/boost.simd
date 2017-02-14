@@ -18,10 +18,9 @@ namespace boost { namespace simd
     @ingroup group-reduction
    This function object returns the greatest element of the argument
 
-    @see minimum
-
-
     @par Header <boost/simd/function/maximum.hpp>
+
+    @see minimum
 
     @par Example:
 

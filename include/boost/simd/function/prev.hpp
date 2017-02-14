@@ -34,11 +34,9 @@ namespace boost { namespace simd
 
       - prev(Valmin) is Valmax
 
-    @see prev, nextafter, successor, predecessor
-
-
-
     @par Header <boost/simd/function/prev.hpp>
+
+    @see prev, nextafter, successor, predecessor
 
     @par Example:
 

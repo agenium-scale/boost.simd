@@ -14,7 +14,7 @@ namespace boost { namespace simd
 #if defined(DOXYGEN_ONLY)
   /**
     @ingroup group-swar
-    This function object cComputes a vector from a combination of the two inputs.
+    This function object computes a vector from a combination of the two inputs.
 
     @par Header <boost/simd/function/interleave_odd.hpp>
 

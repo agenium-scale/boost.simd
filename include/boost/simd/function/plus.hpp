@@ -17,30 +17,25 @@ namespace boost { namespace simd
 
   /*!
     @ingroup group-operator
-    Function object implementing plus capabilities
-
-    Perform the sum of two parameters of the same type.
+    This function object computes the sum of two parameters of the same type.
 
     Infix notation can be used with operator '+',
 
-
     @par Header <boost/simd/function/plus.hpp>
 
-    @par Semantic
+    @par Decorators
 
-    For any value @c a and @c b of type @c T,
+     - `saturated_` (See @ref group-decorator) computes the saturated sum.
 
-    @code
-    auto x = plus(a,b);
-    @endcode
+    @see minus, divides, multiplies
 
-    or
+    @par Example:
 
-    @code
-    auto r = a+b;
-    @endcode
+      @snippet plus.cpp plus
 
-    returns the sum of @c a and @c b
+    @par Possible output:
+
+      @snippet plus.txt plus
 
   **/
   Value plus(Value const& x, Value const& y);

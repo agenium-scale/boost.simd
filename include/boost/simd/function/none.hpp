@@ -16,7 +16,7 @@ namespace boost { namespace simd
 {
   /*!
     @ingroup group-reduction
-     This function object returns True if all elements of the argument are zero.
+     This function object returns @c true if all elements of the argument are zero.
 
 
     @par Header <boost/simd/function/none.hpp>

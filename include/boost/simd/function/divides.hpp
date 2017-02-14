@@ -31,7 +31,21 @@ namespace boost { namespace simd
     arithmetic operators and using the @ref rec function or @ref shift_right function
     can be sometimes handy to gain some cycles.
 
+    @par Decorators
+
+     - `saturated_` (See @ref group-decorator) computes the saturated division. The only
+     difference is to allow for integer types to divide @ref Valmin by -1 returning @ref Valmax.
+     In the regular case (no decorator) the result is undefined.
+
     @see div, rem, rec, shift_right
+
+    @par Example:
+
+      @snippet divides.cpp divides
+
+    @par Possible output:
+
+      @snippet divides.txt divides
 
   **/
   Value divides(Value const& x, Value const& y);

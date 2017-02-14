@@ -17,28 +17,25 @@ namespace boost { namespace simd
 
   /*!
     @ingroup group-operator
-    Function object implementing multiplies capabilities
-
-    Perform the product of two parameters of the same type.
+    This function object computes the product of two parameters of the same type.
 
     Infix notation can be used with operator '*',
 
-
     @par Header <boost/simd/function/multiplies.hpp>
 
-    @par Semantic
+    @par Decorators
 
-    For any value @c a and @c b of type @c T,
+     - `saturated_` (See @ref group-decorator) computes the saturated product.
 
-    @code
-    auto x = multiplies(a,b);
-    @endcode
+    @see minus, divides, plus
 
-    or
+    @par Example:
 
-    @code
-    auto r = a*b;
-    @endcode
+      @snippet multiplies.cpp multiplies
+
+    @par Possible output:
+
+      @snippet multiplies.txt multiplies
 
     returns the product of @c a and @c b
 

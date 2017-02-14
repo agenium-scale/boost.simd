@@ -17,12 +17,11 @@ namespace boost { namespace simd
 
   /*!
     @ingroup group-reduction
-   This function object returns the least element of the argument
-
-    @see maximum
-
+   This function object returns the smallest element of the argument
 
     @par Header <boost/simd/function/minimum.hpp>
+
+    @see maximum
 
     @par Example:
 
