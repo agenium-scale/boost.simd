@@ -7,11 +7,11 @@
 // -------------------------------------------------------------------------------------------------
 
 /// bench for functor any in scalar mode for std::uint32_t type with no decorator (regular call).
-#include <scalar_bench.hpp>
-#include <boost/scalar/function/any.hpp>
+#include <simd_bench.hpp>
+#include <boost/simd/function/any.hpp>
 
 namespace nsb = ns::bench;
-namespace bs =  boost::scalar;
+namespace bs =  boost::simd;
 
 DEFINE_SCALAR_BENCH(scalar_any, bs::any);
 
