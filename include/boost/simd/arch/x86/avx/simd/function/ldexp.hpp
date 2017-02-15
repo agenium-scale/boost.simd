@@ -39,7 +39,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
     {
       using sA0 = bd::scalar_of_t<A0>;
-      BOOST_ASSERT_MSG(is_flint(a1), "parameter is not a flint");
+      BOOST_ASSERT_MSG(assert_all(is_flint(a1)), "parameter is not a flint");
       A0 oddv = fma(a1+Maxexponent<sA0>(), Two<sA0>(), (1 << (Nbexponentbits<sA0>()+1)) + 1);
       return a0*shift_left(bitwise_and(Pow2mask<A0>(), oddv), Nbexponentbits<sA0>());
     }
