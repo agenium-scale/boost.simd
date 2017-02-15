@@ -6,7 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-//! [shuffle-perm]
+//! [shuffle.perm]
 #include <boost/simd/detail/nsm.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/shuffle.hpp>
@@ -32,4 +32,4 @@ int main()
 
   return 0;
 }
-//! [shuffle-perm]
+//! [shuffle.perm]

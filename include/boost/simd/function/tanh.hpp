@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-hyperbolic
     This function object returns the hyperbolic tangent: \f$\sinh(x)/\cosh(x)\f$.
@@ -27,13 +27,13 @@ namespace boost { namespace simd
 
     @par Example:
 
-       @snippet tanh.cpp tanh
+      @snippet tanh.cpp tanh
 
     @par Possible output:
 
-       @snippet tanh.txt tanh
+      @snippet tanh.txt tanh
   **/
-  Value tanh(Value const & v0);
+  IEEEValue tanh(IEEEValue const& x);
 } }
 #endif
 

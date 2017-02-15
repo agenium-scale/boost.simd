@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,23 +15,23 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-bitwise
     This function object returns an unsigned integer value which has the same bits as the input
 
 
     @par Header <boost/simd/function/bits.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet bits.cpp bits
+      @snippet bits.cpp bits
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet bits.txt bits
+      @snippet bits.txt bits
 
   **/
-  as_integer_t<T, unsigned> bits(Value const & x);
+  as_integer_t<Value, unsigned> bits(Value const& x);
 } }
 #endif
 

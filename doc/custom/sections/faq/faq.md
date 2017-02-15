@@ -84,7 +84,7 @@ your algorithms over those data using pack and related functions.
   - Have you used the fastest version of your function?
     Several **@projectname** functions, particularly more complex ones, come in several
     versions, where the user has a choice between accuracy and speed. This is achieved using
-    decorators. Please refer to @ref decorators for more information.
+    decorators. Please refer to @ref group-decorator for more information.
 
 @subsection faq-memory-alignment Why did my code seg-faulted or crashed?
 
@@ -165,6 +165,6 @@ supported.
 If you require a certain intrinsic, you may search inside of **@projectname** for it and then call
 the relevant function.
 
-In rare cases, the intrinsic may not be included in *@projectname** as we map the intrinsic wherever
+In rare cases, the intrinsic may not be included in **@projectname** as we map the intrinsic wherever
 it makes sense semantically. If a certain intrinsic does not fit inside of this model, if may be
 excluded. In this case, you may call it yourself, however, this will not be portable.

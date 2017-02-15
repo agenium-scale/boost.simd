@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object  transforms an integer value to a floating point one
     with a preserving order formula. This function is the converse of @ref bitinteger.
@@ -35,14 +35,14 @@ namespace boost { namespace simd
 
     @par Example:
 
-       @snippet bitfloating.cpp bitfloating
+      @snippet bitfloating.cpp bitfloating
 
     @par Possible output:
 
-       @snippet bitfloating.txt bitfloating
+      @snippet bitfloating.txt bitfloating
 
   **/
-  as_floating_t<Value> bitfloating(IntegerValue const & x);
+  as_floating_t<Value> bitfloating(Value const& x);
 } }
 #endif
 

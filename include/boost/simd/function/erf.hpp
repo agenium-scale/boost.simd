@@ -1,7 +1,7 @@
 //==================================================================================================
 /*!
   @file
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -14,8 +14,8 @@
 namespace boost { namespace simd
 {
 
- /*!
-  @ingroup group-euler
+  /*!
+    @ingroup group-euler
    This function object computes  the error function:
    \f$\displaystyle \frac{2}{\sqrt\pi}\int_0^{x} e^{-t^2}\mbox{d}t\f$
 
@@ -28,15 +28,15 @@ namespace boost { namespace simd
 
     @see erfc,  erfcx
 
-     @par Example:
+    @par Example:
 
-       @snippet erf.cpp erf
+      @snippet erf.cpp erf
 
     @par Possible output:
 
-       @snippet erf.txt erf
+      @snippet erf.txt erf
   **/
-  Value erf(Value const & x);
+  IEEEValue erf(IEEEValue const& x);
 } }
 #endif
 

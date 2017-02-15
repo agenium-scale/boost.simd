@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-boolean
     This function object conditionally returns @c t (respectively @c f) if @c c
     is @ref True (respectively  @ref False)
@@ -25,21 +25,16 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/if_else.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet if_else.cpp if_else
+      @snippet if_else.cpp if_else
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet if_else.txt if_else
+      @snippet if_else.txt if_else
 
   **/
-  Value if_else(Value const& c, Value const& t, Value const& f);
-
-  /*!
-    @overload
-  */
-  Value if_else(LogicalValue const& c, Value const& t, Value const& f);
+  Value1 if_else(Value0 const& c, Value1 const& t, Value1 const& f);
 } }
 #endif
 

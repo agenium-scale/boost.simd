@@ -73,6 +73,13 @@ namespace boost { namespace simd
 // Hierarchy and dispatch helpers for masked_pointer
 namespace boost { namespace dispatch
 {
+#if defined(DOXYGEN_ONLY)
+  template<typename T, typename Zero>
+  struct masked_pointer_
+  {
+    using parent = masked_pointer_<typename T::parent, Zero>;
+  };
+#else
   template<typename T, typename Zero>
   struct masked_pointer_ : masked_pointer_<typename T::parent, Zero>
   {
@@ -84,6 +91,7 @@ namespace boost { namespace dispatch
   {
     using parent = unspecified_<T>;
   };
+#endif
 
   namespace ext
   {

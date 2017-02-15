@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generate the the least of all non zero positive value including denormals.
 
+
+    @par Header <boost/simd/constant/mindenormal.hpp>
+
     @par Semantic:
 
     @code

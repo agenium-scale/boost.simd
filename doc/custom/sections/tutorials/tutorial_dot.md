@@ -43,9 +43,10 @@ First, we loop over each element inside both datasets and multiply them and then
 intermediate values into the final result.
 
 By unrolling this pattern arbitrarily, we expose the fact that the multiplication between the two
-dataset is purely "vertical" and so, is vectorizable. The boost::simd::sum of the partial results itself is an
+dataset is purely "vertical" and so, is vectorizable. The boost::simd::sum of the partial results
+itself is an
 "horizontal" operation, i.e a vectorizable computation operating across the elements of a single
-vector (see @ref swar operations).
+vector (see @ref group-swar operations).
 
 @subsection tutorial-dot-simd Building a SIMD loop
 

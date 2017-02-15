@@ -1,0 +1,4 @@
+//! [shuffle.unary]
+Original: (1, 2, 3, 4)
+Permuted: (4, 0, 3, 1)
+//! [shuffle.unary]

@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generate value -0
 
+
+    @par Header <boost/simd/constant/mzero.hpp>
+
     @par Semantic:
 
     @code

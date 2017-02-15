@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -23,7 +23,7 @@ namespace boost { namespace simd
     @par Header <boost/simd/function/fma.hpp>
 
     @par Notes
-    The call `fma(a, b, c)` is similar to `a*b+c`
+    The call `fma(x, y, z)` is similar to `x*y+z`
 
     But really conformant fused multiply/add also implies
 
@@ -39,7 +39,7 @@ namespace boost { namespace simd
     code you can use the pedantic_ or std_ decorator
     (although both can be very expensive).
 
-     @par Decorators
+    @par Decorators
 
     - std_ for floating entries to call directly std::fma. This generally implies pedantic
       fma behaviour, but in no way improved performances.
@@ -49,14 +49,13 @@ namespace boost { namespace simd
 
     @par Example:
 
-       @snippet fma.cpp fma
+      @snippet fma.cpp fma
 
     @par Possible output:
 
-       @snippet fma.txt fma
+      @snippet fma.txt fma
   **/
-    Value fma(Value const& a, Value const& b, Value const& c);
-  }
+  Value fma(Value const& x, Value const& y, Value const& z);
 } }
 #endif
 

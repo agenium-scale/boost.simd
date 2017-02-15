@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generate value \f$\frac{\sqrt2}3\f$
 
+
+    @par Header <boost/simd/constant/sqrt_2o_3.hpp>
+
     @par Semantic:
 
     @code

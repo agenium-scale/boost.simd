@@ -1,0 +1,12 @@
+//! [quadrant]
+---- simd
+pf =                                   (-1, 2, -3, -32768)
+-> bs::quadrant(pf) =                  (3, 2, 1, 0)
+pi =                                   (-1, 2, -3, -32768)
+-> bs::quadrant(pi) =                  (3, 2, 1, 0)
+---- scalar
+ <- xf =                               -327
+ -> bs::quadrant(xf) =                 1
+ <- xi =                               -327
+ -> bs::quadrant(xi) =                 1
+//! [quadrant]

@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-predicates
 
     This function object returns @ref True if x is positive else @ref False.
@@ -28,18 +28,18 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/is_positive.hpp>
 
-   @par Note
+    @par Note
 
      Using `is_positive(x)` is similar to `bitofsign(x) == 0`
      for signed types and is always true for unsigned ones.
 
-   @par Example:
+    @par Example:
 
-     @snippet is_positive.cpp is_positive
+      @snippet is_positive.cpp is_positive
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet is_positive.txt is_positive
+      @snippet is_positive.txt is_positive
 
   **/
   as_logical_t<Value> is_positive(Value const& x);

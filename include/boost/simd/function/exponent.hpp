@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object returns the exponent of the floating input.
 
@@ -34,16 +34,16 @@ namespace boost { namespace simd
     @see mantissa,  frexp, ldexp
 
 
-   @par Example:
+    @par Example:
 
-     @snippet exponent.cpp exponent
+      @snippet exponent.cpp exponent
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet exponent.txt exponent
+      @snippet exponent.txt exponent
 
   **/
-  as_integer_t<RealValue> exponent(RealValue const & x);
+  as_integer_t<Value> exponent(Value const& x);
 } }
 #endif
 

@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the cosine of the input in degree:
     \f$\cos(\pi x/180)\f$.
@@ -23,25 +23,23 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/cosd.hpp>
 
-   @par Note
+    @par Note
 
-     - The semantics of the function are similar to cos ones.
-     See cos for further details
+     - The semantics of the function are similar to @ref cos ones.
 
-
-   @see sincosd, cos, cospi
+    @see sincosd, cos, cospi
 
 
-   @par Example:
+    @par Example:
 
-     @snippet cosd.cpp cosd
+      @snippet cosd.cpp cosd
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet cosd.txt cosd
+      @snippet cosd.txt cosd
 
   **/
-  Value cosd(Value const & x);
+  IEEEValue cosd(IEEEValue const& x);
 } }
 #endif
 

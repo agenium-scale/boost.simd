@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -14,11 +14,12 @@
 #include <boost/simd/config.hpp>
 #include <boost/simd/detail/decorator.hpp>
 #include <boost/simd/detail/dispatch.hpp>
+
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-decorator
+    @ingroup group-decorator
 
     restricts the range of validity of some functors
       (thus avoiding tests and branching), but ensures an as accurate though
@@ -27,7 +28,7 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/restricted.hpp>
 
-   @par Notes
+    @par Notes
 
       For example if you are sure that all input angles are between
       \f$-\pi/4\f$ and \f$\pi/4\f$, then

@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,11 +15,11 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-exponential
     This function object computes \f$|x|^y\f$.
 
-     @par Header <boost/simd/function/pow_abs.hpp>
+    @par Header <boost/simd/function/pow_abs.hpp>
 
     @par Decorators
 
@@ -28,16 +28,16 @@ namespace boost { namespace simd
     @see pow, abs
 
 
-   @par Example:
+    @par Example:
 
-     @snippet pow_abs.cpp pow_abs
+      @snippet pow_abs.cpp pow_abs
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet pow_abs.txt pow_abs
+      @snippet pow_abs.txt pow_abs
 
   **/
-  Value pow_abs(Value const & x, Value const& y);
+  IEEEValue pow_abs(IEEEValue const& x, IEEEValue const& y);
 } }
 #endif
 

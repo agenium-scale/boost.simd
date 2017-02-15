@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,30 +15,30 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the inverse cosine in degree.
 
 
     @par Header <boost/simd/function/acosd.hpp>
 
-      @par Decorators
+    @par Decorators
 
        - pedantic_     is similar to indeg(pedantic_)(acos(x));
 
-      @see acos, acospi, cosd, indeg
+    @see acos, acospi, cosd, indeg
 
 
-      @par Example:
+    @par Example:
 
-        @snippet acosd.cpp acosd
+      @snippet acosd.cpp acosd
 
-      @par Possible output:
+    @par Possible output:
 
-        @snippet acosd.txt acosd
+      @snippet acosd.txt acosd
 
   **/
-  Value acosd(Value const & x);
+  IEEEValue acosd(IEEEValue const & x);
 } }
 #endif
 

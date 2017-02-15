@@ -20,9 +20,10 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-arithmetic
+    @ingroup group-arithmetic
 
-    Computes the horner value of its parameter.
+    Computes the value of a polynomial by Horner algorithm
+    which leading 1 coeficient.
     This is a static polynomial evaluation.
 
 
@@ -55,9 +56,8 @@ namespace boost { namespace simd
     coefficient is one, saving one multiplication.
 
   **/
-  template<typename T> auto horn1(T const& x) {}
-
- } }
+  template <typename Value, uintmax_t... Coef> Value horn1(Value const& x) {}
+} }
 #endif
 
 namespace boost { namespace simd

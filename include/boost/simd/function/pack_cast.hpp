@@ -14,21 +14,23 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-/*!
-      @ingroup group-bitwise
-      This function objects converts the elements of its argument an arbitrary type
-      @c Target while preserving its argument's cardinal.
+  /*!
+    @ingroup group-bitwise
 
-      @tparam Target @c Target type to cast toward
+    This function objects converts the elements of its argument to an arbitrary type
+
+    @c Target while preserving its argument's cardinal.
+
+    @tparam Target @c Target type to cast toward
 
     @par Header <boost/simd/function/pack_cast.hpp>
 
-      @param  @c x Value to cast
+    @param x Value to cast
 
-      @return A value of type @c Target which is cast to @c x.
-    **/
-    Target pack_cast(Value const& x);
-  }
+    @return A value of type @c Target which is cast to @c x.
+  **/
+  template<typename Target, typename Value>
+  Target pack_cast(Value const& x);
 } }
 #endif
 

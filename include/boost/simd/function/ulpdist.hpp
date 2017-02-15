@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object returns ulp distance between its arguments.
 
@@ -73,14 +73,14 @@ namespace boost { namespace simd
 
     @par Example:
 
-     @snippet ulpdist.cpp ulpdist
+      @snippet ulpdist.cpp ulpdist
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet ulpdist.txt ulpdist
+      @snippet ulpdist.txt ulpdist
 
   **/
-  Value ulpdist(Value const& x, Value const& y);
+  IEEEValue ulpdist(IEEEValue const& x, IEEEValue const& y);
 } }
 #endif
 

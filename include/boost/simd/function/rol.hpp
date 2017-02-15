@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-bitwise
     This function object returns the first entry rotated left
     by the value of the second entry.
@@ -29,16 +29,16 @@ namespace boost { namespace simd
     @see  ror, rrol, rror
 
 
-   @par Example:
+    @par Example:
 
-     @snippet rol.cpp rol
+      @snippet rol.cpp rol
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet rol.txt rol
+      @snippet rol.txt rol
 
   **/
-  Value rol(Value const & x, IntegerValue const& n);
+  Value rol(Value const& x, IntegerValue const& n);
 } }
 #endif
 

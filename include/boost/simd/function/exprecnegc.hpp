@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,22 +15,26 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-exponential
     This function object computes: \f$1-e^{-\frac1x}\f$
 
     @par Header <boost/simd/function/exprecnegc.hpp>
 
-   @par Example:
+    @par Notes
 
-     @snippet exprecnegc.cpp exprecnegc
+    - result is accurate even for large @c x
 
-   @par Possible output:
+    @par Example:
 
-     @snippet exprecnegc.txt exprecnegc
+      @snippet exprecnegc.cpp exprecnegc
+
+    @par Possible output:
+
+      @snippet exprecnegc.txt exprecnegc
 
   **/
-  Value exprecnegc(Value const & x);
+  IEEEValue exprecnegc(IEEEValue const& x);
 } }
 #endif
 

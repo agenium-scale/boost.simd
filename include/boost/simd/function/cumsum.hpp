@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -12,30 +12,28 @@
 #define BOOST_SIMD_FUNCTION_CUMSUM_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
-namespace boost {
-namespace simd {
+namespace boost { namespace simd
+{
 
-/*!
-   @ingroup group-reduction
-   This function object returns the cumulate sum of the argument elements
-
-  @see cumprod
-
+  /*!
+    @ingroup group-reduction
+    This function object returns the cumulate sum of the argument elements
 
     @par Header <boost/simd/function/cumsum.hpp>
 
-  @par Example:
+    @see cumprod, cummin, cummax
 
-    @snippet cumsum.cpp cumsum
+    @par Example:
 
-  @par Possible output:
+      @snippet cumsum.cpp cumsum
 
-    @snippet cumsum.txt cumsum
+    @par Possible output:
 
- **/
-Value cumsum(Value const &x);
-}
-}
+      @snippet cumsum.txt cumsum
+
+  **/
+  Value cumsum(Value const& x);
+} }
 #endif
 
 #include <boost/simd/function/scalar/cumsum.hpp>

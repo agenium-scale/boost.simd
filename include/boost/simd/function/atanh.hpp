@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,27 +15,26 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-hyperbolic
     This function object returns the hyperbolic tangent argument \f$\frac12\log\frac{1+x}{1-x}\f$
 
-    @see cosh, sinh, acosh, asinh, atanh, asech, acoth, acsch
-
-
     @par Header <boost/simd/function/atanh.hpp>
+
+    @see cosh, sinh, acosh, asinh, atanh, asech, acoth, acsch
 
     @par Example:
 
-       @snippet atanh.cpp atanh
+      @snippet atanh.cpp atanh
 
     @par Possible output:
 
-       @snippet atanh.txt atanh
+      @snippet atanh.txt atanh
 
 
   **/
-  Value atanh(Value const & x);
+  IEEEValue atanh(IEEEValue const& x);
 } }
 #endif
 

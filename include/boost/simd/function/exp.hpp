@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,8 +15,8 @@
 namespace boost { namespace simd
 {
 
- /*!
-  @ingroup group-exponential
+  /*!
+    @ingroup group-exponential
     This function object returns the exponential of its argument: \f$e^{x}\f$
 
     @par Header <boost/simd/function/exp.hpp>
@@ -29,16 +29,16 @@ namespace boost { namespace simd
     @see exp2, exp10, pow, expm1, log
 
 
-   @par Example:
+    @par Example:
 
-     @snippet exp.cpp exp
+      @snippet exp.cpp exp
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet exp.txt exp
+      @snippet exp.txt exp
 
   **/
-  Value exp(Value const & x);
+  IEEEValue exp(IEEEValue const& x);
 } }
 #endif
 

@@ -20,6 +20,9 @@ namespace boost { namespace simd
     Generate the Inf IEEE value (\f$\infty\f$) for floating types and maximum value
     for integer types
 
+
+    @par Header <boost/simd/constant/inf.hpp>
+
     @par Semantic
 
     For any type @c T,

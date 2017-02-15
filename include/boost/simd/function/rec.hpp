@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -31,17 +31,17 @@ namespace boost { namespace simd
 
      - raw_ Many simd architectures provide an intrinsic that computes some bits of the inverse (at least 12)
             and don't care of denormals or limiting values. If it exists this is obtained by the raw_ decorator.
-            As usual if it doesn't the plain rec is called.
+            If the intrinsic doesn't exist the regular @c rec is called.
 
     @par Example:
 
-       @snippet rec.cpp rec
+      @snippet rec.cpp rec
 
     @par Possible output:
 
-       @snippet rec.txt rec
+      @snippet rec.txt rec
   **/
-  Value rec(Value const & v0);
+  Value rec(Value const& x);
 } }
 #endif
 

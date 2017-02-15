@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object computes the remainder modulo
     \f$\pi/2\f$ with medium algorithm, and the angle quadrant between 0 and 3.
@@ -26,7 +26,7 @@ namespace boost { namespace simd
     @par Note:
 
 
-    - This is a medium version version accurate if the input is in:
+    - This is a medium version accurate if the input is in:
      \f$[-2^6\pi,2^6\pi]\f$ for float,
      \f$[-2^{18}\pi,2^{18}\pi]\f$ for double.
     \par
@@ -41,16 +41,16 @@ namespace boost { namespace simd
     @see rem_pio2, rem_pio2_straight,rem_2pi,  rem_pio2_cephes,
 
 
-   @par Example:
+    @par Example:
 
-     @snippet rem_pio2_medium.cpp rem_pio2_medium
+      @snippet rem_pio2_medium.cpp rem_pio2_medium
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet rem_pio2_medium.txt rem_pio2_medium
+      @snippet rem_pio2_medium.txt rem_pio2_medium
 
   **/
-  std::pair<IntegerValue, Value> rem_pio2_medium(Value const & x);
+  std::pair<IEEEValue, IEEEValue> rem_pio2_medium(IEEEValue const& x);
 } }
 #endif
 

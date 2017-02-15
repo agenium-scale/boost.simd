@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,25 +15,27 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-boolean
     This function object returns the logical and of the first argument and of
     the logical negation of the second argument.
 
-    The operands must share the same @ref cardinal_of value.
-
-    The result type is logical type associated to the first argument.
-
-
     @par Header <boost/simd/function/logical_andnot.hpp>
 
-   @par Example:
+    @par Note
 
-     @snippet logical_andnot.cpp logical_andnot
+    - The result type is the logical type associated to the first argument.
 
-   @par Possible output:
+    @pre The operands must share the same @ref cardinal_of value.
 
-     @snippet logical_andnot.txt logical_andnot
+
+    @par Example:
+
+      @snippet logical_andnot.cpp logical_andnot
+
+    @par Possible output:
+
+      @snippet logical_andnot.txt logical_andnot
 
   **/
   as_logical_t<Value0> logical_andnot(Value0 const& x, Value1 const& y);

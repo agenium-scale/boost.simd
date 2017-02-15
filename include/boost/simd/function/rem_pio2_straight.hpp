@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the Computes the remainder modulo \f$\pi/2\f$.
 
@@ -30,7 +30,7 @@ namespace boost { namespace simd
     This is a very quick version only correct if the input
     is in \f$[\pi/4,\pi/2]\f$.
 
-    - In fact it only substract \f$\pi/2\f$ to the input
+    - In fact it only substracts \f$\pi/2\f$ to the input
     so it can be viewed as a specially accurate minuspio_2 function outside
     the interval in which it can be used as a substitute to @ref rem_pio2.
 
@@ -45,16 +45,16 @@ namespace boost { namespace simd
     @see rem_pio2, rem_pio2_medium,rem_2pi, rem_pio2_cephes,
 
 
-   @par Example:
+    @par Example:
 
-     @snippet rem_pio2_straight.cpp rem_pio2_straight
+      @snippet rem_pio2_straight.cpp rem_pio2_straight
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet rem_pio2_straight.txt rem_pio2_straight
+      @snippet rem_pio2_straight.txt rem_pio2_straight
 
   **/
-  std::pair<IntegerValue, Value> rem_pio2_straight(Value const & x);
+  std::pair<IEEEValue, IEEEValue> rem_pio2_straight(IEEEValue const& x);
 } }
 #endif
 

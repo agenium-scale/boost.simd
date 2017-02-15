@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generate  \f$1/\sqrt5\f$
 
+
+    @par Header <boost/simd/constant/oneosqrt5.hpp>
+
     @par Semantic:
 
     @code

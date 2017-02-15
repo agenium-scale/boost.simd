@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-arithmetic
     This function computes the square of its parameter.
@@ -30,15 +30,15 @@ namespace boost { namespace simd
 
     @par Example:
 
-       @snippet sqr.cpp sqr
+      @snippet sqr.cpp sqr
 
     @par Possible output:
 
-       @snippet sqr.txt sqr
+      @snippet sqr.txt sqr
 
 
   **/
-  Value sqr(Value const & v0);
+  Value sqr(Value const& x);
 } }
 #endif
 

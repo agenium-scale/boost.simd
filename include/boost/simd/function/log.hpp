@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-exponential
     This function object returns the natural logarithm of its argument.
 
@@ -33,16 +33,16 @@ namespace boost { namespace simd
       - std_ for floating entries calls @c std::log
 
 
-   @par Example:
+    @par Example:
 
-     @snippet log.cpp log
+      @snippet log.cpp log
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet log.txt log
+      @snippet log.txt log
 
   **/
-  Value log(Value const & x);
+  IEEEValue log(IEEEValue const& x);
 } }
 #endif
 

@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,11 +15,11 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-euler
-    This function object computes the natural logarithm of th
-    e absolute value of the Gamma function:
+    This function object computes the natural logarithm of the absolute
+    value of the Gamma function:
      \f$\displaystyle \log |\Gamma(x)|\f$
 
 
@@ -29,7 +29,7 @@ namespace boost { namespace simd
 
     - The accuracy of the function is not uniformly good for negative entries
       The algorithm used is currently an adapted vesion of the cephes one.
-      For better accuracy in the negative entry case one can use the extern
+      For better accuracy in the negative entry case, one can use the extern
       boost_math gammaln function but at a loss of speed.
 
       However, as stated in boost math:
@@ -53,13 +53,13 @@ namespace boost { namespace simd
 
     @par Example:
 
-       @snippet gammaln.cpp gammaln
+      @snippet gammaln.cpp gammaln
 
     @par Possible output:
 
-       @snippet gammaln.txt gammaln
+      @snippet gammaln.txt gammaln
   **/
-  Value gammaln(Value const & x);
+  IEEEValue gammaln(IEEEValue const& x);
 } }
 #endif
 

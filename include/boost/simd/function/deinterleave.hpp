@@ -1,7 +1,7 @@
 //==================================================================================================
 /*!
   @file
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -33,11 +33,11 @@ namespace boost { namespace simd
     std::array<T,2> r = { deinterleave_first(x,y), deinterleave_second(x,y) };
     @endcode
 
-    @param  v0 First argument to deinterleave
-    @param  v1 Second argument to deinterleave
+    @param  x First argument to deinterleave
+    @param  y Second argument to deinterleave
     @return An array of two boost::simd::pack containing the deinterleaved data from the arguments
   **/
-  std::array<Value,2> deinterleave(Value const& v0, Value const& v1);
+  std::array<Value, 2> deinterleave(Value const& x, Value const& y);
 } }
 #endif
 

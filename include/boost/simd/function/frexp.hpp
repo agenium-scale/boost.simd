@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object returns a mantissa and an exponent pair for the input
 
@@ -37,18 +37,21 @@ namespace boost { namespace simd
     auto m = mantissa(x)/2;
     @endcode
 
-    @par Note:
+    @par Notes:
 
-    Without the pedantic_ decorator,  calling @c frexp on @c Nan or @c Inf is undefined behavior.
+    - Without the pedantic_ decorator,  calling @c frexp on @c Nan or @c Inf
+    has undefined behavior.
 
-    if you need integral type exponent (as in the standard library)  use @ref ifrexp
+    - the exponent and matissa are both returned as floating values:
+      if you need integral type exponent (as in the standard library)
+      use @ref ifrexp
 
-    This function splits a floating point value \f$x\f$ in a signed mantissa \f$m\f$ and
-    an exponent \f$e\f$ so that:  \f$x = m\times 2^e\f$,
-    with absolute value of \f$m \in [0.5, 1[\f$ (except for \f$x = 0\f$)
+    - This function splits a floating point value \f$x\f$ in a signed
+      mantissa \f$m\f$ and an exponent \f$e\f$ so that:  \f$x = m\times 2^e\f$,
+      with absolute value of \f$m \in [0.5, 1[\f$ (except for \f$x = 0\f$)
 
-    @warningbox{Take care that these results differ from the returns of the functions @ref mantissa
-    and @ref exponent}
+      @warningbox{Take care that these results differ from the returns
+      of the functions @ref mantissa and @ref exponent}
 
     @par Decorators
 
@@ -59,16 +62,16 @@ namespace boost { namespace simd
     @see ifrexp, exponent, mantissa
 
 
-   @par Example:
+    @par Example:
 
-     @snippet frexp.cpp frexp
+      @snippet frexp.cpp frexp
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet frexp.txt frexp
+      @snippet frexp.txt frexp
 
   **/
-  std::pair<RealValue, RealValue> frexp(RealValue const & x);
+  std::pair<IEEEValue, IEEEValue> frexp(IEEEValue const& x);
 } }
 #endif
 

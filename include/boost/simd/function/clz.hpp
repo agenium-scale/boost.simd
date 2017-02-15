@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,26 +15,24 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-bitwise
     This function object returns  the bit count of leading zeros.
 
-    @see  ctz, popcnt
-
-
-
     @par Header <boost/simd/function/clz.hpp>
 
-   @par Example:
+    @see  ctz, popcnt
 
-     @snippet clz.cpp clz
+    @par Example:
 
-   @par Possible output:
+      @snippet clz.cpp clz
 
-     @snippet clz.txt clz
+    @par Possible output:
+
+      @snippet clz.txt clz
 
   **/
-  as_integer_t<Value> clz(Value const & x);
+  as_integer_t<Value> clz(Value const& x);
 } }
 #endif
 

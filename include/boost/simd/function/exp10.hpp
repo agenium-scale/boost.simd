@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-exponential
     This function object returns the base ten exponential of its argument: \f$10^{x}\f$
 
@@ -28,16 +28,16 @@ namespace boost { namespace simd
     @see exp2, exp, pow
 
 
-   @par Example:
+    @par Example:
 
-     @snippet exp10.cpp exp10
+      @snippet exp10.cpp exp10
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet exp10.txt exp10
+      @snippet exp10.txt exp10
 
   **/
-  Value exp10(Value const & x);
+  IEEEValue exp10(IEEEValue const& x);
 } }
 #endif
 

@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object returns the sign of @c x. i.e. -1, 0 or 1,
     depending on the fact  @c x is less than @ref Zero, @ref Zero or
@@ -30,16 +30,16 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/sign.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet sign.cpp sign
+      @snippet sign.cpp sign
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet sign.txt sign
+      @snippet sign.txt sign
 
   **/
-  Value sign(Value const & x);
+  Value sign(Value const& x);
 } }
 #endif
 

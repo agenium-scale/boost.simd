@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generate the machine epsilon.
 
+
+    @par Header <boost/simd/constant/halfeps.hpp>
+
     @par Semantic:
 
     @code

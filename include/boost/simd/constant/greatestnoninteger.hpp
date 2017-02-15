@@ -23,6 +23,9 @@ namespace boost { namespace simd
 
     All floating numbers greater than Greatestnoninteger are integral.
 
+
+    @par Header <boost/simd/constant/greatestnoninteger.hpp>
+
     @par Semantic:
 
     @code

@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object transforms a floating point value
     in an integer with a preserving order formula.
@@ -34,16 +34,16 @@ namespace boost { namespace simd
     @see next, prev, successor,  predecessor,  nextafter, bitfloating
 
 
-   @par Example:
+    @par Example:
 
       @snippet bitinteger.cpp bitinteger
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet bitinteger.txt bitinteger
+      @snippet bitinteger.txt bitinteger
 
   **/
-  as_integer_t<Value> bitinteger(Value const & x);
+  as_integer_t<Value> bitinteger(Value const& x);
 } }
 #endif
 

@@ -23,8 +23,7 @@ Mathematical functions can be very expensive, so using a vectorized version of
 these functions is of great benefit, especially if you have a large input array.
 **@projectname**  includes vectorized versions of all common mathematical functions
 The developers of **@projectname** take numerical precisions very seriously, so all of these
-functions are extremely accurate despite being highly optimized. Please refer to the section
-@ref numerical-precision and @ref performance for further details.
+functions are extremely accurate despite being highly optimized.
 
 The standard way to calculate the sine or cosine of a vector of data is to to loop over the data
 and calculate the sine and cosine of each element:

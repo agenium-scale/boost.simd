@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,10 +15,10 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
-    This function object returns the saturated value of the first input in the template parameter type,
-    but in the same type as the  argument.
+    This function object returns the saturated value of the first input in the template
+    parameter type, but in the same type as the  argument.
 
 
     @par Header <boost/simd/function/saturate.hpp>
@@ -48,17 +48,16 @@ namespace boost { namespace simd
     are identical if Target is  an integer type.
 
 
-   @par Example:
+    @par Example:
 
-     @snippet saturate.cpp saturate
+      @snippet saturate.cpp saturate
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet saturate.txt saturate
+      @snippet saturate.txt saturate
 
   **/
-  template < typename Target>
-  Value saturate(Value const & x);
+  template <typename Target> Value saturate(Value const & x);
 } }
 #endif
 

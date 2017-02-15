@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the quadrant aware `atan2` function.
 
@@ -58,19 +58,19 @@ namespace boost { namespace simd
 
     - pedantic_ ensures the respect of all IEEE limits
 
-  @see atan, atand, atanpi
+    @see atan, atand, atanpi
 
 
-   @par Example:
+    @par Example:
 
-     @snippet atan2.cpp atan2
+      @snippet atan2.cpp atan2
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet atan2.txt atan2
+      @snippet atan2.txt atan2
 
   **/
-  Value atan2(Value const &y, Value const &x);
+  IEEEValue atan2(IEEEValue const& y, IEEEValue const& x);
 } }
 #endif
 

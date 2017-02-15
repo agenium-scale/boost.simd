@@ -1,0 +1,18 @@
+//! [multiplies]
+---- simd
+ <- pf =                                (1, -2, -3, -32700)
+ <- qf =                                (2, -1, -3, 3)
+ -> bs::multiplies(pf, qf) =                 (2, 2, 9, -98100)
+ <- pi =                                (1, -2, -2, 32767)
+ <- qi =                                (2, -1, -3, 2)
+ -> bs::multiplies(pi, qi) =                 (2, 2, 6, -2)
+ -> bs::saturated_(bs::multiplies)(pi, qi) = (2, 2, 6, 32767)
+---- scalar
+ xf =                                   32767
+ yf =                                   -32000
+ -> bs::multiplies(xf, yf) =                 -1.04854e+09
+ xi =                                   32767
+ yi =                                   -32000
+ -> bs::multiplies(xi, yi) =                 32000
+ -> bs::saturated_(bs::multiplies)(xi, yi) = -32768
+//! [multiplies]

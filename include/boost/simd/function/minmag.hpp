@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,23 +15,23 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object returns the input value which have the least absolute value.
 
 
     @par Header <boost/simd/function/minmag.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet minmag.cpp minmag
+      @snippet minmag.cpp minmag
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet minmag.txt minmag
+      @snippet minmag.txt minmag
 
   **/
-  Value minmag(Value const & x, Value const& y);
+  Value minmag(Value const& x, Value const& y);
 } }
 #endif
 

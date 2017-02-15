@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object returns the smallest representable value
     strictly greater than the parameter except:
@@ -34,22 +34,20 @@ namespace boost { namespace simd
 
       - next(Valmax) is Valmin
 
-    @see nextafter, prev, successor, predecessor
-
-
-
     @par Header <boost/simd/function/next.hpp>
 
-   @par Example:
+    @see nextafter, prev, successor, predecessor
 
-     @snippet next.cpp next
+    @par Example:
 
-   @par Possible output:
+      @snippet next.cpp next
 
-     @snippet next.txt next
+    @par Possible output:
+
+      @snippet next.txt next
 
   **/
-  Value next(Value const & x);
+  Value next(Value const& x);
 } }
 #endif
 

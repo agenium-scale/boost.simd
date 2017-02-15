@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,25 +15,26 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-bitwise
     This function object computes the bitwise not and of its parameters.
-    The operands must share the same bit size.
-    The result type is the one of the first operand.
 
+    The result type is the one of the first operand.
 
     @par Header <boost/simd/function/bitwise_notand.hpp>
 
-   @par Example:
+    @pre  The operands must share the same bit size.
 
-     @snippet bitwise_notand.cpp bitwise_notand
+    @par Example:
 
-   @par Possible output:
+      @snippet bitwise_notand.cpp bitwise_notand
 
-     @snippet bitwise_notand.txt bitwise_notand
+    @par Possible output:
+
+      @snippet bitwise_notand.txt bitwise_notand
 
   **/
-  T0 bitwise_notand(T0 const& x, T1 const& y);
+  Value0 bitwise_notand(Value0 const& x, Value1 const& y);
 } }
 #endif
 

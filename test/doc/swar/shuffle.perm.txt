@@ -1,0 +1,5 @@
+//! [shuffle.perm]
+Original: (1, 2, 3, 4)
+Permuted: (4, 3, 2, 1)
+Permuted: (4, 4, 4, 4)
+//! [shuffle.perm]

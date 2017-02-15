@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-hyperbolic
     This function object returns the hyperbolic cosine: \f$(e^{x}+e^{-x})/2\f$.
@@ -27,13 +27,13 @@ namespace boost { namespace simd
 
     @par Example:
 
-       @snippet cosh.cpp cosh
+      @snippet cosh.cpp cosh
 
     @par Possible output:
 
-       @snippet cosh.txt cosh
+      @snippet cosh.txt cosh
   **/
-  Value cosh(Value const & v0);
+  IEEEValue cosh(IEEEValue const& x);
 } }
 #endif
 

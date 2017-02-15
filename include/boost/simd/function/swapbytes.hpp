@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -14,27 +14,24 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
-
- /*!
+  /*!
     @ingroup group-bitwise
-    This function object reverses the byte order of each scalar value
-
-    @see reverse,  reversebits
-
-
+    This function object reverses the byte order of each scalar element of the parameter.
 
     @par Header <boost/simd/function/swapbytes.hpp>
 
-   @par Example:
+    @see reverse,  reversebits
 
-     @snippet swapbytes.cpp swapbytes
+    @par Example:
 
-   @par Possible output:
+      @snippet swapbytes.cpp swapbytes
 
-     @snippet swapbytes.txt swapbytes
+    @par Possible output:
+
+      @snippet swapbytes.txt swapbytes
 
   **/
-  Value swapbytes(Value const & x);
+  Value swapbytes(Value const& x);
 } }
 #endif
 

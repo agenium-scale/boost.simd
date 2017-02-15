@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-arithmetic
     This function object computes the greatest integral representable value of
@@ -35,14 +35,14 @@ namespace boost { namespace simd
 
     @par Example:
 
-       @snippet floor.cpp floor
+      @snippet floor.cpp floor
 
     @par Possible output:
 
-       @snippet floor.txt floor
+      @snippet floor.txt floor
 
   **/
-  Value floor(Value const & x);
+  Value floor(Value const& x);
 } }
 #endif
 

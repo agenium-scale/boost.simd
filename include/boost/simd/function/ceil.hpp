@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,8 +15,8 @@
 namespace boost { namespace simd
 {
 
- /*!
-  @ingroup group-arithmetic
+  /*!
+    @ingroup group-arithmetic
     This function object computes the smallest integral representable value of
     its parameter type which is greater or equal to it.
 
@@ -34,11 +34,11 @@ namespace boost { namespace simd
 
     @par Example:
 
-       @snippet ceil.cpp ceil
+      @snippet ceil.cpp ceil
 
     @par Possible output:
 
-       @snippet ceil.txt ceil
+      @snippet ceil.txt ceil
 
   **/
   Value ceil(Value const& x);
