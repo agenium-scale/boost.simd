@@ -72,6 +72,7 @@ set ( SOURCES
    cbrt.cpp
    ceil.regular.cpp
    ceil.std.cpp
+   clamp.cpp
    clz.cpp
    compare_equal.cpp
    compare_greater.cpp

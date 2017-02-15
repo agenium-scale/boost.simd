@@ -217,11 +217,15 @@ namespace boost { namespace simd
      - **Other operations**
 
        <center>
-         |              |                 |               |              |
-         |:------------:|:---------------:|:-------------:|:------------:|
-         | @ref average | @ref meanof     | @ref minmod   | @ref sqr     |
-         | @ref sqrt    | @ref sqrt1pm1   | @ref tenpower | @ref tofloat |
+         |              |                 |               |              |              |
+         |:------------:|:---------------:|:-------------:|:------------:|:------------:|
+         | @ref average | @ref clamp      | @ref meanof   | @ref minmod  | @ref sqr     |
+         | @ref sqrt    | @ref sqrt1pm1   | @ref tenpower | @ref tofloat |              |
        </center>
+
+       @ref clamp is also provided in stdlibc++ for scalar mode, but only since C++17.
+       For now, in Boost.SIMD, the pedantic_  decorated version ensures standard
+       conformity for a Nan first parameter.
   **/
 } }
 
@@ -229,6 +233,7 @@ namespace boost { namespace simd
 #include <boost/simd/function/arg.hpp>
 #include <boost/simd/function/average.hpp>
 #include <boost/simd/function/ceil.hpp>
+#include <boost/simd/function/clamp.hpp>
 #include <boost/simd/function/conj.hpp>
 #include <boost/simd/function/dec.hpp>
 #include <boost/simd/function/dist.hpp>

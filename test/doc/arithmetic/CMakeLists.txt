@@ -17,6 +17,7 @@ SET( SOURCES
     arg.cpp
     average.cpp
     ceil.cpp
+    clamp.cpp
     dec.cpp
     dist.cpp
     div.cpp
