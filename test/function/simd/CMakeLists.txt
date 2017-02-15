@@ -84,6 +84,7 @@ set ( SOURCES
       broadcast.cpp
       cbrt.cpp
       ceil.cpp
+      clamp.cpp
       clz.cpp
       compare_equal.cpp
       compare_greater.cpp
