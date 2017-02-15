@@ -1,7 +1,7 @@
 Evaluation of a Neural Network {#tutorial-neural}
 =========
 <div style="text-align: right;" markdown="1">Prev: [SIMD Branching Part 2 - Computations with different types](@ref tutorial-branching-split)</div>
-<div style="text-align: right;" markdown="1">Next: [Evaluation of the N-Body problem](@ref tutorial-nbody</div>
+<div style="text-align: right;" markdown="1">Next: [Evaluation of the N-Body problem](@ref tutorial-nbody)/div>
 
 @tableofcontents
 In this tutorial we will demonstrate how the evaluation of neural network
@@ -42,7 +42,7 @@ The actual calculation is performed in the following functor:
 
 @snippet neural_net.cpp neural-struct
 
-A functor must be used for bs::transform as c++14 does not support generic lambda
+A functor must be used for bs::transform as c++11 does not support generic lambda
 functions. If you are using a C++14 compiler, you may place this code inside a lambda
 function.
 
@@ -122,4 +122,4 @@ architectures, compilers and operating systems, but also because of the performa
 functions.
 
 <div style="text-align: right;" markdown="1">Prev: [SIMD Branching Part 2 - Computations with different types](@ref tutorial-branching-split)</div>
-<div style="text-align: right;" markdown="1">Next: [Evaluation of the N-Body problem](@ref tutorial-nbody</div>
+<div style="text-align: right;" markdown="1">Next: [Evaluation of the N-Body problem](@ref tutorial-nbody)/div>
