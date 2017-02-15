@@ -25,9 +25,9 @@ namespace boost { namespace simd { namespace ext
   BOOST_DISPATCH_OVERLOAD ( clamp_
                           , (typename A0, typename X)
                           , bd::cpu_
-                          , bs::pack_< bd::unspecified_<A0>, X>
-                          , bs::pack_< bd::unspecified_<A0>, X>
-                          , bs::pack_< bd::unspecified_<A0>, X>
+                          , bs::pack_< bd::arithmetic_<A0>, X>
+                          , bs::pack_< bd::arithmetic_<A0>, X>
+                          , bs::pack_< bd::arithmetic_<A0>, X>
                           )
   {
     BOOST_FORCEINLINE
@@ -42,9 +42,9 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename X)
                           , bd::cpu_
                           , bs::pedantic_tag
-                          , bs::pack_< bd::unspecified_<A0>, X>
-                          , bs::pack_< bd::unspecified_<A0>, X>
-                          , bs::pack_< bd::unspecified_<A0>, X>
+                          , bs::pack_< bd::arithmetic_<A0>, X>
+                          , bs::pack_< bd::arithmetic_<A0>, X>
+                          , bs::pack_< bd::arithmetic_<A0>, X>
                           )
   {
     BOOST_FORCEINLINE
