@@ -31,7 +31,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE
     A0 operator() ( A0 v, A0 lo, A0 hi) const BOOST_NOEXCEPT
     {
-      BOOST_ASSERT_MSG(assert_all(is_less_equal(lo, hi)), "lo is not less or equal to hi");
+      BOOST_ASSERT_MSG(lo <= hi, "lo is not less or equal to hi");
       return (v < lo) ? lo : (hi < v) ? hi : v;
     }
   };
@@ -49,7 +49,7 @@ namespace boost { namespace simd { namespace ext
     A0 operator() ( pedantic_tag const &
                   , A0 v, A0 lo, A0 hi) const BOOST_NOEXCEPT
     {
-      BOOST_ASSERT_MSG(assert_all(is_less_equal(lo, hi)), "lo is not less or equal to hi");
+      BOOST_ASSERT_MSG(lo <=  hi, "lo is not less or equal to hi");
       return (v < lo) ? lo : (hi < v) ? hi : v;
     }
   };
