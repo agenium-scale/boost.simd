@@ -7,11 +7,11 @@
 // -------------------------------------------------------------------------------------------------
 
 /// bench for functor average in scalar mode for std::uint8_t type with no decorator (regular call).
-#include <scalar_bench.hpp>
-#include <boost/scalar/function/average.hpp>
+#include <simd_bench.hpp>
+#include <boost/simd/function/average.hpp>
 
 namespace nsb = ns::bench;
-namespace bs =  boost::scalar;
+namespace bs =  boost::simd;
 
 DEFINE_SCALAR_BENCH(scalar_average, bs::average);
 

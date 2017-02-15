@@ -7,11 +7,11 @@
 // -------------------------------------------------------------------------------------------------
 
 /// bench for functor all in scalar mode for std::uint64_t type with no decorator (regular call).
-#include <scalar_bench.hpp>
-#include <boost/scalar/function/all.hpp>
+#include <simd_bench.hpp>
+#include <boost/simd/function/all.hpp>
 
 namespace nsb = ns::bench;
-namespace bs =  boost::scalar;
+namespace bs =  boost::simd;
 
 DEFINE_SCALAR_BENCH(scalar_all, bs::all);
 
