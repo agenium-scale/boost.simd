@@ -11,6 +11,10 @@
 set(SOURCES
   regular.float.m10_10.cpp
   regular.double.m10_10.cpp
+  regular.int32_t.m10_10.cpp
+  regular.int64_t.m10_10.cpp
+  regular.uint32_t.0_10.cpp
+  regular.uint64_t.0_10.cpp
 )
 
 make_bench("function.scalar.bitfloating" ${SOURCES})
