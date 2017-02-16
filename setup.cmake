@@ -46,6 +46,7 @@ endif()
 set(CMAKE_CXX_FLAGS_RELEASE "${SIMD_FLAGS_BENCH} -DNDEBUG")
 set(CMAKE_CXX_FLAGS_DEBUG   "${SIMD_FLAGS_BENCH}")
 
+NS_say("Current compiler: ${CMAKE_CXX_COMPILER}")
 NS_say("Global flags: ${CMAKE_CXX_FLAGS}")
 NS_say("Testing flags: ${CMAKE_CXX_FLAGS_DEBUG}")
 NS_say("Benchmark flags: ${CMAKE_CXX_FLAGS_RELEASE}")

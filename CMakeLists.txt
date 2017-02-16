@@ -66,7 +66,9 @@ if (DEFINED DEV)
   NS_project_include(stf)
   NS_project_include(ns.bench)
 
-  add_dependencies(update.check update.boost-header-only)
+  if (DEFINED USE_SELF_BOOST)
+    add_dependencies(update.check update.boost-header-only)
+  endif()
 endif()
 
 ## Extension point for CMake
@@ -151,7 +153,7 @@ if (DEFINED DEV)
 
   message(STATUS "## -----------------------------------------------------------------------------")
   message(STATUS "   Unit and performances tests are available.")
-  message(STATUS "   Please run the update targets to install pre-requisites:")
+  message(STATUS "   Please run the update targets at least once to install pre-requisites:")
   message(STATUS "       make -j1 update / ninja -j1 update")
   message(STATUS "## -----------------------------------------------------------------------------")
 else()
