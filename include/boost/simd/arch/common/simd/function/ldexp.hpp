@@ -22,6 +22,7 @@
 #include <boost/simd/function/if_minus.hpp>
 #include <boost/simd/function/if_inc.hpp>
 #include <boost/simd/function/is_flint.hpp>
+#include <boost/simd/function/is_invalid.hpp>
 #include <boost/simd/function/shift_left.hpp>
 #include <boost/simd/function/toint.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
@@ -172,6 +173,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
     {
+      BOOST_ASSERT_MSG(assert_all(is_flint(a1)||is_invalid(a1)), "parameter is not a flint nor invalid");
       return ldexp(a0, toint(a1));
     }
   };
@@ -187,6 +189,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( const pedantic_tag &
                                     , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
     {
+      BOOST_ASSERT_MSG(assert_all(is_flint(a1)||is_invalid(a1)), "parameter is not a flint nor invalid");
       return pedantic_(ldexp)(a0, toint(a1));
     }
   };
@@ -202,6 +205,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( const pedantic_tag &
                                     , const A0& a0, const A1& a1) const BOOST_NOEXCEPT
     {
+      BOOST_ASSERT_MSG(assert_all(is_flint(a1)||is_invalid(a1)), "parameter is not a flint nor invalid");
       return pedantic_(ldexp)(a0, toint(a1));
     }
   };
@@ -217,6 +221,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( const pedantic_tag &
                                     , const A0& a0, const A1& a1) const BOOST_NOEXCEPT
     {
+      BOOST_ASSERT_MSG(assert_all(is_flint(a1)||is_invalid(a1)), "parameter is not a flint nor invalid");
       return pedantic_(ldexp)(a0, toint(a1));
     }
   };
