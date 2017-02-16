@@ -93,15 +93,6 @@ namespace boost
       @defgroup group-hierarchy Hierarchies
       Type hierarchies defined by the library
     **/
-
-    /// Boost.SIMD Concepts namespace
-    namespace concept
-    {
-      /*!
-        @defgroup group-concept Concepts
-        Concepts defined by the library
-      **/
-    }
 } }
 
 #endif

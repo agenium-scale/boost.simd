@@ -63,12 +63,16 @@ namespace boost { namespace simd
     data with the best storage possible depending on your hardware.
 
     @pre @c N must be a power of two.
+    @pre @c T models Vectorizable
 
     @tparam T   Type of the stored elements
     @tparam N   Number of element stored
     @tparam ABI Binary flag to prevent ABI issue
    **/
-  template<typename T, std::size_t N, typename ABI>
+  template< typename T
+          , std::size_t N
+          , typename ABI
+          >
   class pack {
 
     static_assert( boost::simd::is_power_of_2_<N>::value
