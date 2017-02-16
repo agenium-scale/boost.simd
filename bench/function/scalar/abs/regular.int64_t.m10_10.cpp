@@ -17,5 +17,5 @@ DEFINE_SCALAR_BENCH(scalar_abs, bs::abs);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_abs, std::int64_t>(-10, 10);
+  nsb::for_each<scalar_abs, std::int64_t>(-10, 10);
 }
