@@ -24,9 +24,9 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename X)
                           , (detail::is_native<X>)
                           , bd::cpu_
-                          , bs::pack_< bd::unspecified_<A0>, X>
-                          , bs::pack_< bd::unspecified_<A0>, X>
-                          , bs::pack_< bd::unspecified_<A0>, X>
+                          , bs::pack_< bd::signed_<A0>, X>
+                          , bs::pack_< bd::signed_<A0>, X>
+                          , bs::pack_< bd::signed_<A0>, X>
                                     )
   {
     BOOST_FORCEINLINE
@@ -42,9 +42,9 @@ namespace boost { namespace simd { namespace ext
                            , (detail::is_native<X>)
                            , bd::cpu_
                            , bs::pedantic_tag
-                           , bs::pack_< bd::unspecified_<A0>, X>
-                           , bs::pack_< bd::unspecified_<A0>, X>
-                           , bs::pack_< bd::unspecified_<A0>, X>
+                           , bs::pack_< bd::signed_<A0>, X>
+                           , bs::pack_< bd::signed_<A0>, X>
+                           , bs::pack_< bd::signed_<A0>, X>
                            )
   {
     BOOST_FORCEINLINE
