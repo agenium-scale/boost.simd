@@ -6,17 +6,17 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-/// bench for functor fma in scalar mode for std::uint64_t type with pedantic_.
+/// bench for functor fms in scalar mode for std::int32_t type with pedantic_.
 #include <simd_bench.hpp>
-#include <boost/simd/function/fma.hpp>
+#include <boost/simd/function/fms.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_fma, bs::pedantic_(bs::fma));
+DEFINE_SCALAR_BENCH(scalar_fms, bs::pedantic_(bs::fms));
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_fma, std::uint64_t>(0, 10, 0, 10, 0, 10);
+  nsb::for_each<scalar_fms, std::int32_t>(-10, 10, -10, 10, -10, 10);
 }
 
