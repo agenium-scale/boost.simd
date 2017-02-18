@@ -13,6 +13,22 @@ set(SOURCES
   regular.double.m10_10_m10_10_m10_10.cpp
   pedantic.float.m10_10_m10_10_m10_10.cpp
   pedantic.double.m10_10_m10_10_m10_10.cpp
+  pedantic.int16_t.m10_10_m10_10_m10_10.cpp
+  pedantic.int32_t.m10_10_m10_10_m10_10.cpp
+  pedantic.int64_t.m10_10_m10_10_m10_10.cpp
+  pedantic.int8_t.m10_10_m10_10_m10_10.cpp
+  pedantic.uint16_t.0_10_0_10_0_10.cpp
+  pedantic.uint32_t.0_10_0_10_0_10.cpp
+  pedantic.uint64_t.0_10_0_10_0_10.cpp
+  pedantic.uint8_t.0_10_0_10_0_10.cpp
+  regular.int16_t.m10_10_m10_10_m10_10.cpp
+  regular.int32_t.m10_10_m10_10_m10_10.cpp
+  regular.int64_t.m10_10_m10_10_m10_10.cpp
+  regular.int8_t.m10_10_m10_10_m10_10.cpp
+  regular.uint16_t.0_10_0_10_0_10.cpp
+  regular.uint32_t.0_10_0_10_0_10.cpp
+  regular.uint64_t.0_10_0_10_0_10.cpp
+  regular.uint8_t.0_10_0_10_0_10.cpp
 )
 
 make_bench("function.simd.fma" ${SOURCES})
