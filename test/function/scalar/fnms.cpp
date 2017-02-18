@@ -11,7 +11,7 @@
 #include <scalar_test.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 
-STF_CASE_TPL(" fnms",  STF_IEEE_TYPES)
+STF_CASE_TPL(" fnms",  STF_SIGNED_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   using bs::fnms;
