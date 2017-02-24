@@ -34,7 +34,7 @@ void test(Env& runtime)
   STF_IEEE_EQUAL(bs::fnms(aa1, aa2, aa3), bb);
 }
 
-STF_CASE_TPL("Check fnms on pack" , STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check fnms on pack" , STF_SIGNED_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T>;

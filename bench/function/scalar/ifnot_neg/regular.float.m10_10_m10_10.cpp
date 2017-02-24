@@ -6,16 +6,16 @@
 //                            http://www.boost.org/LICENSE_1_0.txt
 // -------------------------------------------------------------------------------------------------
 
-/// bench for functor if_notneg in scalar mode for float type with no decorator (regular call).
+/// bench for functor ifnot_neg in scalar mode for float type with no decorator (regular call).
 #include <simd_bench.hpp>
-#include <boost/simd/function/if_notneg.hpp>
+#include <boost/simd/function/ifnot_neg.hpp>
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_if_notneg, bs::if_notneg);
+DEFINE_SCALAR_BENCH(scalar_ifnot_neg, bs::ifnot_neg);
 
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_if_notneg, float>(-10, 10,-10, 10);
+  nsb::for_each<scalar_ifnot_neg, float>(-10, 10,-10, 10);
 }

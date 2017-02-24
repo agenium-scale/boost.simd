@@ -11,7 +11,7 @@
 #include <scalar_test.hpp>
 
 
-STF_CASE_TPL(" fms",  STF_IEEE_TYPES)
+STF_CASE_TPL(" fms",  STF_SIGNED_NUMERIC_TYPES)
 {
   namespace bs = boost::simd;
   using bs::fms;

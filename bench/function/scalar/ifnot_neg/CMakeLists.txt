@@ -13,6 +13,6 @@ set(SOURCES
   regular.double.m10_10_m10_10.cpp
 )
 
-make_bench("function.scalar.if_notneg" ${SOURCES})
+make_bench("function.scalar.ifnot_neg" ${SOURCES})
 
 ## --------------------------------------------------------------------------------------
