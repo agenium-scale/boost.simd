@@ -33,7 +33,8 @@ namespace boost { namespace simd
 
     - no "intermediate" overflow
 
-    fnma provides this for all integral types and also each time it is reasonable
+    fnma provides this for all integral types (however, using it on unsigned types
+    is not recommanded for obvious reasons)  and also each time it is reasonable
     in terms of performance for floating ones (i.e. if the system has the hard
     wired capability).
 

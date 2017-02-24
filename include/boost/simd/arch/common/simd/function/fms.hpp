@@ -24,15 +24,15 @@ namespace boost { namespace simd { namespace ext
                           , (typename A0, typename X)
                           , (detail::is_native<X>)
                           , bd::cpu_
-                          , bs::pack_< bd::unspecified_<A0>, X>
-                          , bs::pack_< bd::unspecified_<A0>, X>
-                          , bs::pack_< bd::unspecified_<A0>, X>
+                          , bs::pack_< bd::arithmetic_<A0>, X>
+                          , bs::pack_< bd::arithmetic_<A0>, X>
+                          , bs::pack_< bd::arithmetic_<A0>, X>
                                     )
   {
     BOOST_FORCEINLINE
     A0 operator() ( A0 const& a0, A0 const& a1, A0 const& a2) const BOOST_NOEXCEPT
     {
-      return minus(multiplies(a0, a1), a2);
+      return  minus(multiplies(a0, a1), a2);
     }
   };
 
@@ -42,9 +42,9 @@ namespace boost { namespace simd { namespace ext
                            , (detail::is_native<X>)
                            , bd::cpu_
                            , bs::pedantic_tag
-                           , bs::pack_< bd::unspecified_<A0>, X>
-                           , bs::pack_< bd::unspecified_<A0>, X>
-                           , bs::pack_< bd::unspecified_<A0>, X>
+                           , bs::pack_< bd::arithmetic_<A0>, X>
+                           , bs::pack_< bd::arithmetic_<A0>, X>
+                           , bs::pack_< bd::arithmetic_<A0>, X>
                            )
   {
     BOOST_FORCEINLINE
