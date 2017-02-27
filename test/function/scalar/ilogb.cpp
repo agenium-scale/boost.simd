@@ -31,7 +31,8 @@ STF_CASE_TPL (" ilogb real",  STF_IEEE_TYPES)
 
   // specific values tests
 #ifndef BOOST_SIMD_NO_INVALIDS
-  STF_EQUAL(ilogb(bs::Minf<T>()), bs::Zero<r_t>());
+  STF_EQUAL(ilogb(bs::Minf<T>()), bs::Valmax<r_t>());
+  STF_EQUAL(ilogb(bs::Inf<T>()), bs::Valmax<r_t>());
   STF_EQUAL(ilogb(bs::Nan<T>()), bs::Zero<r_t>());
 #endif
   STF_EQUAL(ilogb(bs::Mone<T>()), bs::Zero<r_t>());

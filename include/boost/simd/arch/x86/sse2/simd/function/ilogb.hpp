@@ -12,6 +12,7 @@
 #define BOOST_SIMD_ARCH_X86_SSE2_SIMD_FUNCTION_ILOGB_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
+#include <boost/simd/function/abs.hpp>
 #include <boost/simd/function/bitwise_and.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/dec.hpp>
@@ -34,23 +35,6 @@ namespace boost { namespace simd { namespace ext
 {
   namespace bd =  boost::dispatch;
   namespace bs =  boost::simd;
-
-  BOOST_DISPATCH_OVERLOAD ( ilogb_
-                          , (typename A0)
-                          , bs::sse2_
-                          , bs::pack_<bd::int_<A0>, bs::sse_>
-                         )
-  {
-    using result = bd::as_integer_t<A0>;
-    BOOST_FORCEINLINE result operator() ( const A0 & a0)
-    {
-      using vtype = bd::as_integer_t<A0,unsigned>;
-      return simd::bitwise_cast<A0>(if_zero_else( is_lez(a0)
-                                                , ilogb(simd::bitwise_cast<vtype>(a0))
-                                                )
-                                   );
-    }
-  };
 
   BOOST_DISPATCH_OVERLOAD ( ilogb_
                           , (typename A0)
@@ -82,33 +66,20 @@ namespace boost { namespace simd { namespace ext
       return dec(i);
     }
   };
-
   BOOST_DISPATCH_OVERLOAD ( ilogb_
                           , (typename A0)
                           , bs::sse2_
-                          , bs::pack_<bd::ints16_<A0>, bs::sse_>
+                          , bs::pack_<bd::int8_<A0>, bs::sse_>
                           )
   {
-    using result = bd::as_integer_t<A0>;
-    BOOST_FORCEINLINE result operator() ( const A0 & a0)
+
+    BOOST_FORCEINLINE A0 operator() ( const A0 & a0)
     {
-      auto s0 = split(a0);
-      return bitwise_cast<result>(group(ilogb(s0[0]), ilogb(s0[1])));
+      using uA0 = bd::as_integer_t<A0, unsigned>;
+      return bitwise_cast<A0>(ilogb(bitwise_cast<uA0>(saturated_(abs)(a0))));
     }
   };
 
-  BOOST_DISPATCH_OVERLOAD ( ilogb_
-                          , (typename A0)
-                          , bs::sse2_
-                          , bs::pack_<bd::unsigned_<A0>, bs::sse_>
-                          )
-  {
-    using result = bd::as_integer_t<A0>;
-    BOOST_FORCEINLINE result operator() ( const A0 & a0)
-    {
-      return simd::bitwise_cast<A0>(bs::exponent(tofloat(a0)));
-    }
-  };
 } } }
 
 #endif
