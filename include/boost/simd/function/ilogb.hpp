@@ -38,6 +38,9 @@ namespace boost { namespace simd
 
        - std_ provides access to std::ilogb
 
+       - pedantic_ return FP_ILOGB0 and FP_ILOGBNAN for 0 and nan respectively,
+         but the return type is as in the regular call.
+
     @par Header <boost/simd/function/ilogb.hpp>
 
     @par Example:

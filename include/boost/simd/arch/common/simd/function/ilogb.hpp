@@ -15,15 +15,18 @@
 #include <boost/simd/meta/hierarchy/simd.hpp>
 #include <boost/simd/function/bitwise_cast.hpp>
 #include <boost/simd/function/exponent.hpp>
+#include <boost/simd/function/group.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/function/is_inf.hpp>
+#include <boost/simd/function/is_nan.hpp>
+#include <boost/simd/function/pedantic.hpp>
 #include <boost/simd/function/split.hpp>
-#include <boost/simd/function/group.hpp>
+#include <boost/simd/function/std.hpp>
 #include <boost/simd/function/tofloat.hpp>
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
 #include <boost/simd/detail/dispatch/meta/as_floating.hpp>
-
+#include <cmath>
 namespace boost { namespace simd { namespace ext
 {
   namespace bd = boost::dispatch;
@@ -39,6 +42,25 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE result_t operator()( const A0& a0) const BOOST_NOEXCEPT
     {
       return if_else(is_inf(a0), Valmax<result_t>(), exponent(a0));
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD(ilogb_
+                         , (typename A0, typename X)
+                         , bd::cpu_
+                         , bs::pedantic_tag
+                         , bs::pack_<bd::floating_<A0>, X>
+                         )
+  {
+    using result_t = bd::as_integer_t<A0>;
+    BOOST_FORCEINLINE result_t operator()(const pedantic_tag &
+                                         ,  const A0& a0) const BOOST_NOEXCEPT
+    {
+      result_t fp_ilogbnan(FP_ILOGBNAN);
+      result_t fp_ilogb0(FP_ILOGB0);
+      return if_else(is_nan(a0), fp_ilogbnan,
+                            if_else(is_eqz(a0), fp_ilogb0
+                                   , bs::ilogb(a0)));
     }
   };
 

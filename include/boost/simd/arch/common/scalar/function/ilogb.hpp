@@ -14,6 +14,8 @@
 #include <boost/simd/constant/valmax.hpp>
 #include <boost/simd/function/exponent.hpp>
 #include <boost/simd/function/is_inf.hpp>
+#include <boost/simd/function/pedantic.hpp>
+#include <boost/simd/function/std.hpp>
 #include <boost/simd/detail/dispatch/function/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_floating.hpp>
 #include <boost/simd/detail/dispatch/meta/as_integer.hpp>
@@ -51,7 +53,21 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
-   BOOST_DISPATCH_OVERLOAD ( ilogb_
+  BOOST_DISPATCH_OVERLOAD ( ilogb_
+                          , (typename A0)
+                          , bd::cpu_
+                          , bs::pedantic_tag
+                          , bd::scalar_< bd::floating_<A0> >
+                          )
+  {
+    using result_t = bd::as_integer_t<A0, signed>;
+    BOOST_FORCEINLINE result_t operator() (const pedantic_tag &, A0 a0 ) const BOOST_NOEXCEPT
+    {
+      return std::ilogb(a0);
+    }
+  };
+
+  BOOST_DISPATCH_OVERLOAD ( ilogb_
                           , (typename A0)
                           , bd::cpu_
                           , bd::scalar_< bd::floating_<A0> >
