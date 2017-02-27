@@ -17,10 +17,26 @@ namespace boost { namespace simd
 
   /*!
     @ingroup group-ieee
-    This function object returns the integer truncation
-    of the base 2 logarithm of x.
-    It coincides with the @ref exponent function
-    on all supported platforms.
+    This function object Extracts the value of the unbiased exponent from
+    the floating-point argument x, and returns it as a signed integer value.
+
+    @par Note:
+
+      - Formally, the unbiased exponent is the integral part of \f$\log_r|x|\f$
+      as a signed integral value, for non-zero x, where r is
+      std::numeric_limits<T>::radix and T is the floating-point type of arg.
+
+      - In practice r = 2 for all supported platforms
+
+      - boost::simd::ilogb differ from std::ilogb in the return type that is always the
+        integer type associated to the input type and the limiting values (zero return zero
+        and the result is always greater than zero)
+
+      - for floating inputs nan and zero returns zero and +-inf return Valmax
+
+     @par Decorators
+
+       - std_ provides access to std::ilogb
 
     @par Header <boost/simd/function/ilogb.hpp>
 
