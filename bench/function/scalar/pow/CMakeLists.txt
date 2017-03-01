@@ -9,8 +9,16 @@
 ## benches for functor pow in scalar mode.
 
 set(SOURCES
-  regular.float.m10_10.cpp
-  regular.double.m10_10.cpp
+  regular.float.m10_10_m10_10.cpp
+  regular.double.m10_10_m10_10.cpp
+  regular.int16_t.m10_10_m10_10.cpp
+  regular.int32_t.m10_10_m10_10.cpp
+  regular.int64_t.m10_10_m10_10.cpp
+  regular.int8_t.m10_10_m10_10.cpp
+  regular.uint16_t.0_10_0_10.cpp
+  regular.uint32_t.0_10_0_10.cpp
+  regular.uint64_t.0_10_0_10.cpp
+  regular.uint8_t.0_10_0_10.cpp
 )
 
 make_bench("function.scalar.pow" ${SOURCES})
