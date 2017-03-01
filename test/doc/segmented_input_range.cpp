@@ -19,8 +19,7 @@ int main()
 
   float sr{0};
   boost::simd::pack<float> vr{0};
-  constexpr int pack_size =   boost::simd::pack<float>::static_size;
-  auto prs = boost::simd::segmented_input_range<pack_size>(x);
+  auto prs = boost::simd::segmented_input_range(x);
 
   // Scalar prologue
   for(auto const& e :std::get<0>(prs))   sr += e;
