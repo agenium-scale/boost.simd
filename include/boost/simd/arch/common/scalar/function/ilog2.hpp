@@ -26,6 +26,8 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE bd::as_integer_t<A0> operator() ( A0 a0) const BOOST_NOEXCEPT
     {
+      BOOST_ASSERT_MSG( a0 > 0
+                      , "Logarithm is not defined for zero or negative values." );
       return exponent(a0);
     }
   };
@@ -34,7 +36,8 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
-      BOOST_ASSERT_MSG( a0 > 0, "Logarithm is not defined for zero or negative values." );
+      BOOST_ASSERT_MSG( a0 > 0
+                      , "Logarithm is not defined for zero or negative values." );
       return A0(sizeof(A0)*8-boost::simd::clz(a0)-1);
     }
   };
