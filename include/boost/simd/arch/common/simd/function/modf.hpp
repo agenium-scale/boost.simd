@@ -32,8 +32,8 @@ namespace boost { namespace simd { namespace ext
      BOOST_FORCEINLINE result operator()(A0 const& a0) const
       {
         A0 ent = bs::trunc(a0);
-        A0 frac = a0-ent;
-        return result(frac, ent);
+        A0 frc = a0-ent;
+        return result(frc, ent);
       }
    };
 
