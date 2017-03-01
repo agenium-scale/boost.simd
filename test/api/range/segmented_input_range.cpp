@@ -35,7 +35,7 @@ STF_CASE_TPL("perfect iteration", STF_NUMERIC_TYPES)
 
   for(std::size_t i=0;i<ref.size();i++) ref[i] = T(1);
 
-  auto pr = segmented_input_range(ref);
+  auto pr = segmented_input_range<pack<T>::static_size>(ref);
   T value = 0;
   for( auto& pe : std::get<0>(pr) ) value += pe;
   for( auto& me : std::get<1>(pr) ) value += boost::simd::sum(me);
@@ -59,7 +59,7 @@ STF_CASE_TPL("iteration with prologue", STF_NUMERIC_TYPES)
   for(std::size_t i=0;i<ref.size();i++) ref[i] = T(1);
 
   auto data = boost::make_iterator_range(ref.data()+1, ref.data()+ref.size());
-  auto pr = segmented_input_range(data);
+  auto pr = segmented_input_range<pack<T>::static_size>(data);
 
   T value = 0;
   for( auto& pe : std::get<0>(pr) ) value += pe;
@@ -80,7 +80,7 @@ STF_CASE_TPL("iteration with epilogue", STF_NUMERIC_TYPES)
   for(std::size_t i=0;i<ref.size();i++) ref[i] = T(1);
 
   auto data = boost::make_iterator_range(ref.data(), ref.data()+ref.size()-1);
-  auto pr = segmented_input_range(data);
+  auto pr = segmented_input_range<pack<T>::static_size>(data);
 
   T value = 0;
   for( auto& pe : std::get<0>(pr) ) value += pe;
@@ -101,7 +101,7 @@ STF_CASE_TPL("iteration with epilogue & prologue", STF_NUMERIC_TYPES)
   for(std::size_t i=0;i<ref.size();i++) ref[i] = T(1);
 
   auto data = boost::make_iterator_range(ref.data()+1, ref.data()+ref.size()-1);
-  auto pr = segmented_input_range(data);
+  auto pr = segmented_input_range<pack<T>::static_size>(data);
 
   T value = 0;
   for( auto& pe : std::get<0>(pr) ) value += pe;
@@ -121,7 +121,7 @@ STF_CASE_TPL("iteration with only epilogue & prologue", STF_NUMERIC_TYPES)
   for(std::size_t i=0;i<ref.size();i++) ref[i] = T(1);
 
   auto data = boost::make_iterator_range(ref.data()+1, ref.data()+pack<T>::static_size-1);
-  auto pr = segmented_input_range(data);
+  auto pr = segmented_input_range<pack<T>::static_size>(data);
 
   T value = 0;
   for( auto& pe : std::get<0>(pr) ) value += pe;

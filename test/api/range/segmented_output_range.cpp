@@ -34,8 +34,8 @@ STF_CASE_TPL("perfect iteration", STF_NUMERIC_TYPES)
   std::vector<T,boost::simd::allocator<T>>  ref (pack<T>::static_size*5);
 
   for(std::size_t i=0;i<data.size();i++) ref[i] = i/pack<T>::static_size+1;
-  auto pr = segmented_output_range(data);
-
+  auto pr = segmented_output_range<pack<T>::static_size>(data);
+  
   T k = 0;
   for( auto& pe : std::get<0>(pr) ) pe = ++k;
   for( auto& me : std::get<1>(pr) ) me = pack<T>(++k);
@@ -51,13 +51,13 @@ STF_CASE_TPL("iteration with prologue", STF_NUMERIC_TYPES)
   using boost::simd::pack;
   using boost::simd::segmented_output_range;
 
-  std::vector<T,boost::simd::allocator<T>>  base(pack<T>::static_size*5+pack<T>::alignment/sizeof(T));
-  std::vector<T,boost::simd::allocator<T>>  ref(pack<T>::static_size*5+pack<T>::alignment/sizeof(T)-1);
+  std::vector<T,boost::simd::allocator<T> >  base(pack<T>::static_size*5+pack<T>::alignment/sizeof(T));
+  std::vector<T,boost::simd::allocator<T> >  ref(pack<T>::static_size*5+pack<T>::alignment/sizeof(T)-1);
 
   if (is_not_unalignable<T>($)) return;
 
   auto data = boost::make_iterator_range(base.data()+1, base.data()+base.size());
-  auto pr   = segmented_output_range(data);
+  auto pr   = segmented_output_range<pack<T>::static_size>(data);
 
   T v = 0;
   std::size_t l0 = std::distance(std::begin(std::get<0>(pr)),std::end(std::get<0>(pr)));
@@ -98,7 +98,7 @@ STF_CASE_TPL("iteration with epilogue", STF_NUMERIC_TYPES)
   for(std::size_t i=ref.size()-l0;i<ref.size();i++) ref[i] = ++v;
 
   auto data = boost::make_iterator_range(base.data(), base.data()+base.size()-1);
-  auto pr   = segmented_output_range(data);
+  auto pr   = segmented_output_range<pack<T>::static_size>(data);
 
   T k = 0;
   for( auto& pe : std::get<0>(pr) ) pe = ++k;
@@ -120,7 +120,7 @@ STF_CASE_TPL("iteration with epilogue & prologue", STF_NUMERIC_TYPES)
   if (is_not_unalignable<T>($)) return;
 
   auto data = boost::make_iterator_range(base.data()+1, base.data()+base.size()-1);
-  auto pr   = segmented_output_range(data);
+  auto pr   = segmented_output_range<pack<T>::static_size>(data);
 
   T v = 0;
   std::size_t l0 = std::distance(std::begin(std::get<0>(pr)),std::end(std::get<0>(pr)));
