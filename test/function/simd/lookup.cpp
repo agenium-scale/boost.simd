@@ -45,6 +45,6 @@ STF_CASE_TPL("Check lookup on pack" , STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
   test<T, N>(runtime);
-  test<T, N/2>(runtime);
-  test<T, N*2>(runtime);
+//   test<T, N/2>(runtime);
+   test<T, N*2>(runtime);
 }

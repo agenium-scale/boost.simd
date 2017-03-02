@@ -16,30 +16,31 @@ namespace boost { namespace simd { namespace ext
    namespace bd = boost::dispatch;
    namespace bs = boost::simd;
 
-   BOOST_DISPATCH_OVERLOAD( lookup_
-                          , (typename A0, typename A0)
-                          , bs::avx2_
-                          , bs::pack_<bd::ints32_<A0>, bs::avx_>
-                          , bs::pack_<bd::ints32_<A1>, bs::avx_>
-                          )
-   {
-      BOOST_FORCEINLINE A0 operator()(A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
-      {
-        return _mm256_permutevar8x32_epi32(a0,a1);
-      }
-   };
-   BOOST_DISPATCH_OVERLOAD( lookup_
-                          , (typename A0, typename A1)
-                          , bs::avx2_
-                          , bs::pack_<bd::single_<A0>, bs::avx_>
-                          , bs::pack_<bd::ints32_<A1>, bs::avx_>
-                          )
-   {
-      BOOST_FORCEINLINE A0 operator()(A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
-      {
-        return _mm256_permutevar8x32_ps(a0,a1);
-      }
-   };
+  BOOST_DISPATCH_OVERLOAD( lookup_
+                         , (typename A0, typename A1)
+                         , (detail::is_native<X>)
+                         , bs::avx2_
+                         , bs::pack_<bd::ints32_<A0>, bs::avx_>
+                         , bs::pack_<bd::ints32_<A1>, bs::avx_>
+                         )
+  {
+    BOOST_FORCEINLINE A0 operator()(A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
+    {
+      return _mm256_permutevar8x32_epi32(a0,a1);
+    }
+  };
+  BOOST_DISPATCH_OVERLOAD( lookup_
+                         , (typename A0, typename A1)
+                         , bs::avx2_
+                         , bs::pack_<bd::single_<A0>, bs::avx_>
+                         , bs::pack_<bd::ints32_<A1>, bs::avx_>
+                         )
+  {
+    BOOST_FORCEINLINE A0 operator()(A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
+    {
+      return _mm256_permutevar8x32_ps(a0,a1);
+    }
+  };
 
 
 } } }

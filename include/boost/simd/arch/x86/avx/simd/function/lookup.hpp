@@ -10,65 +10,68 @@
 #define BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_LOOKUP_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
+#include <boost/simd/detail/dispatch/meta/as_floating.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
    namespace bd = boost::dispatch;
    namespace bs = boost::simd;
 
-   BOOST_DISPATCH_OVERLOAD( lookup_
-                          , (typename A0, typename A0)
-                          , bs::avx_
-                          , bs::pack_<bd::ints64_<A0>, bs::avx_>
-                          , bs::pack_<bd::ints64_<A1>, bs::avx_>
-                          )
-   {
-      BOOST_FORCEINLINE A0 operator()(A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
-      {
-        using fA0 = bd::as_floating_t<A0>;
-        return bitwise_cast<A0>(_mm256_permutevar_pd(bitwise_cast<fA0>(a0),a1));
-      }
-   };
+  BOOST_DISPATCH_OVERLOAD( lookup_
+                         , (typename A0, typename A1)
+                         , bs::avx_
+                         , bs::pack_<bd::ints64_<A0>, bs::sse_>
+                         , bs::pack_<bd::ints64_<A1>, bs::sse_>
+                         )
+  {
+    BOOST_FORCEINLINE A0 operator()(A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
+    {
+      using fA0 = bd::as_floating_t<A0>;
+      fA0 tmp = bitwise_cast<fA0>(a0);
+      return bitwise_cast<A0>(_mm_permutevar_pd(tmp,a1));
+    }
+  };
 
-   BOOST_DISPATCH_OVERLOAD( lookup_
-                          , (typename A0, typename A0)
-                          , bs::avx_
-                          , bs::pack_<bd::ints32_<A0>, bs::avx_>
-                          , bs::pack_<bd::ints32_<A1>, bs::avx_>
-                          )
-   {
-      BOOST_FORCEINLINE A0 operator()(A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
-      {
-        using fA0 = bd::as_floating_t<A0>;
-        return bitwise_cast<A0>(_mm256_permutevar_ps(bitwise_cast<fA0>(a0),a1));
-      }
-   };
+  BOOST_DISPATCH_OVERLOAD( lookup_
+                         , (typename A0, typename A1)
+                         , bs::avx_
+                         , bs::pack_<bd::ints32_<A0>, bs::sse_>
+                         , bs::pack_<bd::ints32_<A1>, bs::sse_>
+                         )
+  {
+    BOOST_FORCEINLINE A0 operator()(A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
+    {
+      using fA0 = bd::as_floating_t<A0>;
+      fA0 tmp = bitwise_cast<fA0>(a0);
+      return bitwise_cast<A0>(_mm_permutevar_ps(tmp,a1));
+    }
+  };
 
-   BOOST_DISPATCH_OVERLOAD( lookup_
-                          , (typename A0, typename A1)
-                          , bs::avx_
-                          , bs::pack_<bd::double_<A0>, bs::avx_>
-                          , bs::pack_<bd::ints64_<A1>, bs::avx_>
-                          )
-   {
-      BOOST_FORCEINLINE A0 operator()(A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
-      {
-        return _mm256_permutevar_pd(a0,a1);
-      }
-   };
+  BOOST_DISPATCH_OVERLOAD( lookup_
+                         , (typename A0, typename A1)
+                         , bs::avx_
+                         , bs::pack_<bd::double_<A0>, bs::sse_>
+                         , bs::pack_<bd::ints64_<A1>, bs::sse_>
+                         )
+  {
+    BOOST_FORCEINLINE A0 operator()(A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
+    {
+      return _mm_permutevar_pd(a0,a1);
+    }
+  };
 
-   BOOST_DISPATCH_OVERLOAD( lookup_
-                          , (typename A0, typename A1)
-                          , bs::avx_
-                          , bs::pack_<bd::single_<A0>, bs::avx_>
-                          , bs::pack_<bd::ints32_<A1>, bs::avx_>
-                          )
-   {
-      BOOST_FORCEINLINE A0 operator()(A0 const& a0, A0 const& a1) const BOOST_NOEXCEPT
-      {
-        return _mm256_permutevar_ps(a0,a1);
-      }
-   };
+  BOOST_DISPATCH_OVERLOAD( lookup_
+                         , (typename A0, typename A1)
+                         , bs::avx_
+                         , bs::pack_<bd::single_<A0>, bs::sse_>
+                         , bs::pack_<bd::ints32_<A1>, bs::sse_>
+                         )
+  {
+    BOOST_FORCEINLINE A0 operator()(A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
+    {
+      return _mm_permutevar_ps(a0,a1);
+    }
+  };
 
 
 } } }
