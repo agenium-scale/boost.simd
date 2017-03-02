@@ -37,7 +37,7 @@
   the polymorphic aspect of the SIMDCallable Concepts, thus allowing polymorphic function objects
   to be used for both scalar and SIMD computation.
 
-  Finally, the Value Concept aggregates all types moeling either IEEEValue or IntegerValue. Similarly,
+  Finally, the Value Concept aggregates all types modeling either IEEEValue or IntegerValue. Similarly,
   the LogicalValue Concept defines types that represent SIMD-compatible logical values. LogicalValue
   and Value are separate as some @projectname 's functions may not support one or the other (e.g.
   there is no support for boost::simd::plus on logical values).

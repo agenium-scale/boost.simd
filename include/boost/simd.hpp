@@ -88,11 +88,6 @@ namespace boost
 
       These limitations are due to the hardware implementation of these functions.
     **/
-
-    /*!
-      @defgroup group-hierarchy Hierarchies
-      Type hierarchies defined by the library
-    **/
 } }
 
 #endif

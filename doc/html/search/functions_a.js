@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['majority',['majority',['../group__group-predicates_ga5246f541521d15635a3ee9fe9632e89b.html#ga5246f541521d15635a3ee9fe9632e89b',1,'boost::simd']]],
-  ['make',['make',['../group__group-swar_gacdea103f580f0948eb13228fa70dfeb0.html#gacdea103f580f0948eb13228fa70dfeb0',1,'boost::simd::make(Args const &amp;...args)'],['../namespaceboost_1_1simd.html#acf4af2f30a7beac87af16a0e81d0cd8d',1,'boost::simd::make(as_&lt; Target &gt; const &amp;t, Value const &amp;...args)']]],
+  ['majority',['majority',['../group__group-predicates_ga37de6ba01a6028031ec08da908b5ca23.html#ga37de6ba01a6028031ec08da908b5ca23',1,'boost::simd']]],
+  ['make',['make',['../group__group-swar_ga84f3b581109e4fd0dddc8239cab1e80b.html#ga84f3b581109e4fd0dddc8239cab1e80b',1,'boost::simd::make(Args const &amp;... args)'],['../namespaceboost_1_1simd.html#ae9e4b296b849ff52576c53ae048e0420',1,'boost::simd::make(as_&lt; Target &gt; const &amp;t, Value const &amp;... args)']]],
   ['mantissa',['mantissa',['../group__group-ieee_ga96121105c17e6b44b8243b730147f76d.html#ga96121105c17e6b44b8243b730147f76d',1,'boost::simd']]],
   ['mantissamask',['Mantissamask',['../group__group-constant_ga3eec8b159eeca21ee980d97371e018f0.html#ga3eec8b159eeca21ee980d97371e018f0',1,'boost::simd']]],
   ['mask',['mask',['../group__group-api_ga37e377384c813d7deed38d8ae1e3e234.html#ga37e377384c813d7deed38d8ae1e3e234',1,'boost::simd::mask(T *ptr, Mask const &amp;status, U const &amp;def)'],['../namespaceboost_1_1simd.html#a5bab9223fa639acd0d6a0fe024bc4a27',1,'boost::simd::mask(T *ptr, Mask const &amp;status)']]],
@@ -18,7 +18,7 @@ var searchData=
   ['mfive',['Mfive',['../group__group-constant_ga190e16d1f278d0599e4706076f0a0094.html#ga190e16d1f278d0599e4706076f0a0094',1,'boost::simd']]],
   ['mfour',['Mfour',['../group__group-constant_ga080cca903982e62ac24add0362383318.html#ga080cca903982e62ac24add0362383318',1,'boost::simd']]],
   ['mhalf',['Mhalf',['../group__group-constant_ga163def3082858f37d987fdabf7f4d55e.html#ga163def3082858f37d987fdabf7f4d55e',1,'boost::simd']]],
-  ['min',['min',['../group__group-arithmetic_gab4829e4f7fcdc71f309f5ec322d0af50.html#gab4829e4f7fcdc71f309f5ec322d0af50',1,'boost::simd']]],
+  ['min',['min',['../group__group-arithmetic_gaaff51c3c8ab30ce52819a941d5b6806d.html#gaaff51c3c8ab30ce52819a941d5b6806d',1,'boost::simd']]],
   ['mindenormal',['Mindenormal',['../group__group-constant_gaa8156a53eb5e1f03779461cf93e7fd47.html#gaa8156a53eb5e1f03779461cf93e7fd47',1,'boost::simd']]],
   ['minf',['Minf',['../group__group-constant_gafc5f8cbe0da683c33897046c8d5e8415.html#gafc5f8cbe0da683c33897046c8d5e8415',1,'boost::simd']]],
   ['minimum',['minimum',['../group__group-reduction_ga63c951972fc520a1aacb8e8424c1f97f.html#ga63c951972fc520a1aacb8e8424c1f97f',1,'boost::simd']]],
@@ -32,7 +32,7 @@ var searchData=
   ['mlogeps2',['Mlogeps2',['../group__group-constant_ga7dfc95b3b92178efa817b47d14c2aa60.html#ga7dfc95b3b92178efa817b47d14c2aa60',1,'boost::simd']]],
   ['mlogtwo2nmb',['Mlogtwo2nmb',['../group__group-constant_ga9d4134dc32ab5be2aba4c41cfec4183f.html#ga9d4134dc32ab5be2aba4c41cfec4183f',1,'boost::simd']]],
   ['mnine',['Mnine',['../group__group-constant_ga486620d34c9ee7a9ace3f4b686e26f39.html#ga486620d34c9ee7a9ace3f4b686e26f39',1,'boost::simd']]],
-  ['modf',['modf',['../group__group-ieee_ga9bbf433986ecb279fdadc3ce2edab154.html#ga9bbf433986ecb279fdadc3ce2edab154',1,'boost::simd::modf(Value const &amp;x, Value &amp;y)'],['../namespaceboost_1_1simd.html#a359246f2e413fc228d9911ebc8921099',1,'boost::simd::modf(Value const &amp;x)']]],
+  ['modf',['modf',['../group__group-ieee_ga464e4fdfe6bcf905195fc94a735b69ff.html#ga464e4fdfe6bcf905195fc94a735b69ff',1,'boost::simd']]],
   ['mone',['Mone',['../group__group-constant_ga0da1119b39a28238e137cdbf198005c0.html#ga0da1119b39a28238e137cdbf198005c0',1,'boost::simd']]],
   ['mseven',['Mseven',['../group__group-constant_gaac0bcbb1bfecb368eaf5b0f5ffdf3278.html#gaac0bcbb1bfecb368eaf5b0f5ffdf3278',1,'boost::simd']]],
   ['msix',['Msix',['../group__group-constant_ga3b19b4e5f45654e43865c11afb48b970.html#ga3b19b4e5f45654e43865c11afb48b970',1,'boost::simd']]],
