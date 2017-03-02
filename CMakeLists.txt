@@ -10,7 +10,7 @@ cmake_minimum_required(VERSION 2.8.7)
 ## Setup project
 ## -------------------------------------------------------------------------------------------------
 project(Boost.SIMD)
-set(PROJECT_VERSION 4.17.1.2) # TODO: Find a way to update this automatically
+set(PROJECT_VERSION 4.17.3.0) # TODO: Find a way to update this automatically
 set(PROJECT_DOC_DIR ${PROJECT_SOURCE_DIR}/doc)
 
 ## Requirements for ns.cmake:

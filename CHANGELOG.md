@@ -1,5 +1,28 @@
 # Boost.SIMD Changelog
 
+## Version 4.17.3.0 - 03/06/2017
+
+Maintenance release including some bug fixes reported by Tim Blenchmann. Thanks a lot to our new contributor for their insights and patches around the documentation and compiler supports.
+
+### New features
+- Added more benchmarks for integral based functions (#472)
+- Added an scalar and SIMD implementation for clamp, mimicking C++17 std::clamp (#458)
+- To support creation of object containing pack and still being properly aligned when dynamically allocated, we reintroduce the BOOST_SIMD_ALIGNED_OBJECT macro. (#440)
+
+### Changes & Bug Fixes
+- Fixed a bug where logical operators on pack may have produced an invalid logical<logical<T>> type (#471)
+- Improved standard compliance of ilogb function (#470)
+- Fixed AVX2 sum implementation on MSVC (#469)
+- Improved documentation for library Cocnepts (#449)
+- fma/fnms functions were underspecified in terms of overload (#467)
+- Documentation (#468,#465,#459,#453,#452,#446,#441) has been cleaned up a bit more
+- Improved copysign performance in scalar mode (#457)
+- Performance of aggregated all,any,none have been improved (#456)
+- Fixed some assertions that were overly broad and reinstated assert in unit tests (#462)
+- Performance of hmsb has been improved on MSVC by providing a compressed mplementation of
+std::bitset to be used for small size of pac (#357)
+- Tests and benchmarks subsystem are now downloaded on demand (#390)
+
 ## Version 4.17.1.0 - 01/31/2017
 
 ### Breaking Changes
