@@ -86,7 +86,7 @@ write a scalar loop to handle this extra data.
 
 There are three main differences between this loop and the previous one. Firstly, the loop counter `i`
 is declared outside of the first loop. This is so that its value is retained for use in the second loop.
-The second difference is seen in the first loops termination condition. The loop is now terminated when
+The second difference is seen in the first loop termination condition. The loop is now terminated when
 `i + pack_card <= size`. We do this to ensure that we never load data which is past the end of the array.
 The third and final difference is the second loop. This is almost identical to the scalar loop at the start
 of this tutorial. The remaining elements in the input array, which are not sufficient to fill a pack

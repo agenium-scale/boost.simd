@@ -24,7 +24,7 @@ In this tutorial we will:
 -------------------------------------
 **@projectname** is a header only library which means that each of its components
 is accessible through its corresponding include. The first step is to include the
-file which give you the main boost::simd::pack.
+file which gives you the main boost::simd::pack.
 
 @snippet helloworld.cpp hello-include-pack
 
@@ -59,7 +59,7 @@ This saves you from having to type the full namespace every time you call a
 @subsection hello-building-blocks-pack boost::simd::pack
 
 boost::simd::pack can be considered analogous to an _SIMD_ register on your (or any other) machine.
-Operations performed on packs - from elementary operations such as addition to
+Operations performed on packs - from elementary operations such as addition to more
 complicated functions such as sin(x) - will be performed using _SIMD_ registers
 and operations if supported by your hardware. As shown in the following example,
 data must be manually loaded into and stored from these registers.
@@ -71,7 +71,7 @@ on the target machine. A type alias for a pack of float is declared as follows:
 
 @subsection hello-loading-data Loading Data into a Pack
 One way to construct a boost::simd::pack is to simply declare (default-construct) it.
-Such a pack may not zero-initialized and thus may contain arbitrary values.
+Such a pack may not be zero-initialized and thus may contain arbitrary values.
 
 @snippet helloworld.cpp hello-def-ctor
 
@@ -120,7 +120,7 @@ Finally, you can also initializes every element of the boost::simd::pack itself 
 
 @snippet helloworld.cpp hello-enum-con
 
-That this constructor makes the strong assumption that the number of elements
+This constructor makes the strong assumption that the number of elements
 in the constructor matches the cardinal of boost::simd::pack on the target
 machine. Unless required, it is generally good practice to avoid depending
 on a fixed size for boost::simd::pack unless the algorithm specifically
@@ -153,7 +153,7 @@ Finally, we print the contents of a boost::simd::pack by using the `operator<<` 
 
 -------------------------------------
 
-The compilation of using **@projectname** is rather straight-forward: you must pass the path of the
+The compilation of code using **@projectname** is rather straight-forward: you must pass the path of the
 **@projectname** include folder to your compiler as well as the path of your installation of **Boost**.
 It is strongly recommended that you enable all of your compiler optimizations, for example, `-O3` for
 g++, to exploit the full performance potential of **@projectname**. You should also pass the required compiler flag

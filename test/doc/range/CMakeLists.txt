@@ -35,6 +35,7 @@ SET( SOURCES
     reduce.phase.cpp
     replace.cpp
     replace_if.cpp
+    reduce.prod.cpp
     segmented_input_range.cpp
     transform.unary.cpp
     transform.binary.cpp
