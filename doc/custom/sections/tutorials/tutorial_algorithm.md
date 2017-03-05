@@ -1,5 +1,5 @@
 @anchor topofpage_algorithm
-# Algorithm {#tutorial-algorithm}
+Algorithm {#tutorial-algorithm}
 =========
 
 @tableofcontents
@@ -51,7 +51,8 @@ after the include: `#include <boost/simd/function/sqrt.hpp>`
 The algorithm `boost::simd::transform` splits the range you gave to him by three ranges:
 
   - a prologue from the beginning of the initial range to the nearest correct alignement point
-  - a main part from the aligned point to the maximum of the range allowing a whole SIMD vector position
+  - a main part from the aligned point to the maximum of the range allowing a whole SIMD vector inclusion
+    (the last vector element is still part of the range)
   - an epilogue for the remaining scalars that do not fill a full SIMD vector
 
 and applies a transform to the three ranges with the proper function objects.
@@ -70,25 +71,27 @@ This operation can be vectorized, but less obviously than the previous one, as t
  good way is an out of order vectorization.
 
 
-Let us suppose that our input is a vector of N SIMD vectors
+Let us suppose that our input is a vector of n SIMD vectors
 
 In fact two ways are possible at first sight:
 
- - the wrong way: sum the 'horizontal' sums of each vector.
+ - the wrong way: cumulate products  of the 'horizontal' products of each vector
+   (i.e. the product of elements of each vector).
 
-   This is the wrong way as SIMD hardware is generally not so good with horizontal operations and
-   this process uses N such operations.
+   This is the wrong way as SIMD hardware is generally not so good with horizontal operations
+   (this process uses N such operations) and there is no vectorisation of the remaining process.
 
- - the good way: sum the 'vertical' sum of the squared SIMD vectors.
+ - the good way: cumulative product of the SIMD vectors which provides one vector
+   for which the product of its elements must be computed.
 
-   This results  in N-1 'vertical' mutipliesin only 1 final 'horizontal' operation.
+   This results in n-1 'vertical' fast SIMD mutiplies and  only 1 final and slower 'horizontal' operation.
 
 boost::simd::reduce acts the good way. and take also care of alignment problems as boost::simd::transform.
 But this algorithm is more restricted than std::reduce on the variety of binary operators than can be used
 in the process and also requires the knowledge of a neutral element for the operator.
 
 Here is a full example that computes 10!. In fact it computes
- \f$10\prod_1^9 i\f$ (just to ilustrate the init value possibility) and uses the \f$Gamma\f$ function to
+ \f$10\prod_1^9 i\f$ (just to ilustrate the init value possibility) and uses the \f$\Gamma\f$ function to
 verify the result:
 
 @snippet reduce.prod.cpp reduceprod
