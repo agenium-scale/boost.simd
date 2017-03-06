@@ -33,7 +33,7 @@ namespace boost { namespace simd
         | @ref is_greater       | >    | @ref is_not_equal  |  !=   |
       </center>
 
-         for floating entries negation as predicates as  is_not_greater(a, b) are not equivalent to
+         for floating entries negative predicates as  @c is_not_greater(a, b) are not equivalent to
          !is_greater(a, b) due to possible @ref Nan values;
 
            @par Example:
@@ -64,6 +64,9 @@ namespace boost { namespace simd
         | @ref is_positive        | @ref is_real                      | @ref is_simd_logical  | @ref is_unord             |
        </center>
 
+     - Among all those predicate two of them  (@ref isincluded_c and @ref isincluded) does not have an underscore after the `is`:
+       this is deliberate. Contrary to all others they always return a @c bool even for SIMD inputs.
+
          @par Example:
 
             @snippet predicates.cpp predicates
@@ -75,6 +78,8 @@ namespace boost { namespace simd
 
 } }
 
+#include <boost/simd/function/isincluded.hpp>
+#include <boost/simd/function/isincluded_c.hpp>
 #include <boost/simd/function/is_denormal.hpp>
 #include <boost/simd/function/is_equal_with_equal_nans.hpp>
 #include <boost/simd/function/is_eqz.hpp>

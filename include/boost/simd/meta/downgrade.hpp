@@ -32,7 +32,7 @@ namespace boost { namespace simd
     using dp32 = boost::simd::downgrade< boost::simd::pack<double> >::type;
 
     assert(std::is_same<di32,std::int16_t>::value);
-    assert(std::is_same<di32,std::uint8_t>::value);
+    assert(std::is_same<di8,std::uint8_t>::value);
     assert(std::is_same<dp32,boost::simd::pack<float>>::value);
     @endcode
 

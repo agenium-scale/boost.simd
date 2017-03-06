@@ -21,6 +21,7 @@ int main()
   boost::simd::pack<float,4> x{1.f,2.f,3.f,4.f}, y{10.f,20.f,30.f,40.f};
 
   std::cout << "Original: " << x <<  std::endl
+            << "          " << y <<  std::endl
             << "Permuted: " << boost::simd::shuffle<boost::simd::pattern<mix_half>>(x,y) << std::endl;
 
   return 0;

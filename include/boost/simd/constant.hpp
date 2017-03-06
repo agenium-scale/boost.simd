@@ -19,16 +19,16 @@ namespace boost { namespace simd
       @defgroup group-constant Constant Functions
 
       These functions provide scalar and SIMD constant generators for the most usual
-      constant values such as zero, numeric limits, IEEE special values.
+      constant values such as zero, numeric limits, IEEE special values,  etc.
 
-      Constant generator functions ced in two manners:
+      Constant generator functions can be called in two manners:
 
         - taking no arguments but requiring a template type parameter
         so that the correct type of the required constant is returned
         (as @c One<float>() to generate 1.0f).
 
         - taking one dummy arguments from which  the correct type of the
-        required constant is deduced and  returned (as @c One(42.0f) to generate 1.0f).
+        required constant is deduced and  returned (as @c One(bs::as(42.0f)) to generate 1.0f).
 
 
     **/

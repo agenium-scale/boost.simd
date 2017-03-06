@@ -17,7 +17,7 @@ namespace boost { namespace simd
 
   /*!
     @ingroup group-ieee
-    This function object returns the sign of x. I.e. -1 or 1,
+    This function object returns the sign of x,  but never 0. I.e. -1 or 1,
     depending on the fact  @c x is negative or positive.
 
     @par Header <boost/simd/function/signnz.hpp>

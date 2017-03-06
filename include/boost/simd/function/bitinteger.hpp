@@ -43,7 +43,7 @@ namespace boost { namespace simd
       @snippet bitinteger.txt bitinteger
 
   **/
-  as_integer_t<Value> bitinteger(Value const& x);
+  as_integer_t<Value> bitinteger(IEEEValue const& x);
 } }
 #endif
 

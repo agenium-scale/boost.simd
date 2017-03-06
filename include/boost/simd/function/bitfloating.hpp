@@ -24,11 +24,13 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/bitfloating.hpp>
 
-    @par Note:
+    @par Notes:
     This  function is  related to the computation of
     floating successors or predecessors as the ordering of the integers obtained
     by @c bifloating is the same as the original order on the floating elements,
     an increment can be used to find the successor.
+
+    SIMD inputs must have 32 of 64 bits integral elements.
 
     @see next, prev, successor,  predecessor,  nextafter, bitinteger
 
@@ -42,7 +44,7 @@ namespace boost { namespace simd
       @snippet bitfloating.txt bitfloating
 
   **/
-  as_floating_t<Value> bitfloating(Value const& x);
+  as_floating_t<Value> bitfloating(IntegerValue const& x);
 } }
 #endif
 

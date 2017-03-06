@@ -15,7 +15,7 @@ and demonstrate how to ensure that your memory is always correctly aligned.
 -------------------------------------
 
 In this tutorial we will:
-- [Explain what memory alignemnt is](#memory-what-is)
+- [Explain what memory alignment is](#memory-what-is)
 - [Demonstrate how to align memory](#memory-how-to-align)
 - [Demonstrate how to align memory using @projectname](#memory-boost-simd-align)
 - [Demonstrate how to use an aligned memory allocator with STL containers](#memory-vector)

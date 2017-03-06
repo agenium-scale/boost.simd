@@ -35,11 +35,8 @@ namespace boost { namespace simd
       @snippet modf.txt modf
 
   **/
-
-  ///@{
-  Value modf(Value const& x, Value const& y);
   std::pair<Value, Value> modf(Value const & x);
-  ///@}
+
 } }
 #endif
 

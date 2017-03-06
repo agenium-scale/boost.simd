@@ -87,6 +87,29 @@ namespace boost
         returns @c char
 
       These limitations are due to the hardware implementation of these functions.
+
+      @par Notes:
+
+        - Almost all prototype of the Boost.SIMD functions and constants are decribed using prototypes with types as:
+
+           - IntegerValue designing any integer type among @c std::int8_t, @c std::int16_t, @c std::int32_t,
+              @c std::int64_t, @c std::uint8_t, @c std::uint16_t, @c std::uint32_t, @c std::uint64_t
+              or @cpack of such types
+
+           - IEEEValue   designing float or double  or @cpack of such types
+
+           - Value designing any IntegerValue or IEEEValue type and in obvious cases can also be logical types.
+
+        - Some functors transform IntegerValue inputs to IEEEValue outputs
+
+           - This behaviour is only allowed in SIMD mode if the integral types elements are 32 ou 64 bits allowing size
+             preserving vector transforms.
+
+        - In most situations calling a functor with mixed scalar/simd parameters result in the autmatic splat of the scalar values
+          to the SIMD parmeter type.
+
+          The major exceptions are shift operation for which on many architecture a scalar integer shift is much more efficient that
+          a SIMD one.
     **/
 } }
 

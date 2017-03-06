@@ -20,7 +20,7 @@ namespace boost { namespace simd
 
     These functions provide scalar and SIMD algorithms for classical arithmetic operators and
     functions of the C and C++ standard library. Other functions are also provided, in particular,
-    provision for saturated operations through the use of a @ref group-decorator.
+    provision for saturated operations through the use of @ref group-decorator.
 
     All these functions can be included individually or all of them just by including
     <boost/simd/arithmetic.hpp>
@@ -125,7 +125,7 @@ namespace boost { namespace simd
 
        @ref rem is the remainder functor providing same kind of facilities as @ref div
 
-       With two parameters rem(a, b) is equivalent to  @c rem(fix, a, b), but @c rem can admit
+       With two parameters @c rem(a, b) is equivalent to  @c rem(fix, a, b), but @c rem can admit
        a first optional parameter that modifies its behaviour and moreover can use the
        pedantic_ decorator to assure some limiting case values (see below).
 
@@ -151,14 +151,14 @@ namespace boost { namespace simd
 
      - **complex operations**
 
-       Boost.SIMD  does not provides complex number operations yet, but it will soon. So
+       Boost.SIMD  does not provide complex number operations yet, but it will soon. So
        the following functors that have a meaning as a restriction to real number of complex
        functions, can be seen as a prequel:
 
       <center>
         |           |             |             |             |                 |
         |:---------:|:-----------:|:-----------:|:-----------:|:---------------:|
-        | @ref arg  | @ref conj   | imag        | real        | @ref sqr_abs    |
+        | @ref arg  | @ref conj   | @ref imag   |@ref real    | @ref sqr_abs    |
       </center>
 
         For real entries @ref conj and real are identity, imag always 0,
@@ -174,7 +174,7 @@ namespace boost { namespace simd
         | @ref fms        | @ref fnms    |  @ref two_prod|                  |
       </center>
 
-      These operations take three parmeters and compute some \f$\pm a * b \pm c \f$
+      These operations take three parameters and compute some \f$\pm (a * b \pm c) \f$
       kind of expression, "n" standing for negate the result, "a" for add,
       "s" for substract and "m" for multiply.
 
