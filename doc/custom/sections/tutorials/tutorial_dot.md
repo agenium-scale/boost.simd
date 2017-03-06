@@ -62,7 +62,7 @@ vector.
 
 @notebox{
 The code line `tmp = tmp + x1 * x2;` may replaced by
-`tmp += x1 * x2;` or even `tmp = fma(x1, x2,tmp);` (after having included `boost/simd/function/fma.hpp`)
+`tmp += x1 * x2;` or even `tmp = bs::fma(x1,x2,tmp);` (after having included `boost/simd/function/fma.hpp`)
 which may generate even more efficient code as many processors have special instructions for performing
 this operation. If the target processor is not equipped such an instruction, high quality vectorized
 code will nevertheless be generated.

@@ -1,7 +1,7 @@
 Evaluation of a Neural Network {#tutorial-neural}
 =========
 <div style="text-align: right;" markdown="1">Prev: [SIMD Branching Part 2 - Computations with different types](@ref tutorial-branching-split)</div>
-<div style="text-align: right;" markdown="1">Next: [Evaluation of the N-Body problem](@ref tutorial-nbody)/div>
+<div style="text-align: right;" markdown="1">Next: [Evaluation of the N-Body problem](@ref tutorial-nbody)</div>
 
 @tableofcontents
 In this tutorial we will demonstrate how the evaluation of neural network

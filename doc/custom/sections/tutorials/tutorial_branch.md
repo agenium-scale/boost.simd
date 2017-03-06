@@ -12,7 +12,7 @@ In this tutorial we will examine how to handle branches in SIMD programs.
 
 In this tutorial we will:
 - [Show how to efficiently handle branches in SIMD programs](#branching-intro)
-- [Introduce the type bs::logical_t](#branching-logical)
+- [Introduce the type boost::simd::logical_t](#branching-logical)
 
 @section branching-intro Branching
 
@@ -23,7 +23,7 @@ known as thresholding as a counter example. Thresholding is an operation to sepa
 its background and foreground pixels. Any pixel whose value is less than the chosen threshold is
 considered to be a background pixel and conversely, any pixel whose value is greater or equal to
 the threshold is considered to be a foreground pixel. The scalar version of this algorithm is
-simply:
+merely:
 
 @snippet thresholding.cpp scalar-threshold
 

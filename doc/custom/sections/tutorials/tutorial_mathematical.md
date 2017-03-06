@@ -25,7 +25,7 @@ these functions is of great benefit, especially if you have a large input array.
 The developers of **@projectname** take numerical precisions very seriously, so all of these
 functions are extremely accurate despite being highly optimized.
 
-The standard way to calculate the sine or cosine of a vector of data is to to loop over the data
+The standard way to calculate the sine or cosine of a vector of data is to loop over the data
 and calculate the sine and cosine of each element:
 
 @snippet mathematical.cpp mathematical-scalar
