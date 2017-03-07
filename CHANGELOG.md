@@ -2,7 +2,9 @@
 
 ## Version 4.17.3.0 - 03/06/2017
 
-Maintenance release including some bug fixes reported by Tim Blenchmann. Thanks a lot to our new contributor for their insights and patches around the documentation and compiler supports.
+Maintenance release including some bug fixes reported by Tim Blenchmann.
+Thanks a lot to our new contributors for their insights and patches for
+the documentation and compiler supports.
 
 ### New features
 - Added more benchmarks for integral based functions (#472)
@@ -10,6 +12,7 @@ Maintenance release including some bug fixes reported by Tim Blenchmann. Thanks 
 - To support creation of object containing pack and still being properly aligned when dynamically allocated, we reintroduce the BOOST_SIMD_ALIGNED_OBJECT macro. (#440)
 
 ### Changes & Bug Fixes
+- Improve AVX/AVX2 saturated group (#476)
 - Fixed a bug where logical operators on pack may have produced an invalid logical<logical<T>> type (#471)
 - Improved standard compliance of ilogb function (#470)
 - Fixed AVX2 sum implementation on MSVC (#469)
