@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the cosine of the input in radians.
 
@@ -24,23 +24,23 @@ namespace boost { namespace simd
 
     @par Notes
       The regular call to this functor is `cos(x)`,  but
-      @c cos can also be called with two parameters as
+    @c cos can also be called with two parameters as
       `cos(x, range_)` or with a decorator as `std_(cos)(x)` or `restricted_(cos)(x)`
 
 
-      @c range_ is a tag that allows some control on the computation
+    @c range_ is a tag that allows some control on the computation
       accuracy and speed.
 
       The control is on the reduction routine of the angle to the
       \f$[-\pi/4, \pi/4]\f$ interval.
 
       They actually are 3 reduction routines that respectly are
-      sufficient for small_, medium_ and big_ angle valuerespecttively,
-      s  to have (within
+      sufficient for small_, medium_ and big_ angle values respecttively,
+      to have (within
       cover test) one ulp of difference with the according crlibm
       (correctly rounded math library) result.
 
-      Each one covers respectively intervals \f$[-A, A]\f$ with :
+      Each tag covers respectively intervals \f$[-A, A]\f$ with :
 
       <center>
         |             |   float  A       |  double  A     |
@@ -72,7 +72,7 @@ namespace boost { namespace simd
        when double are available on the platform, this part of reduction
        is delegated to the double precision routines.
 
-       @par Advices
+    @par Advices
        \arg If there is no restrictions ever on your angles and you care for precision
        use the default @c cos(x) or equivalently `cos(x, big_)`.
        \arg if you do not care for precision you can use
@@ -114,31 +114,31 @@ namespace boost { namespace simd
        \f$10\pi\f$ standard deviation,  80% of the intervals will be in the "small_"
        case (95% of the values).
        \arg Finally for those that are sure of their angles taking place in a fixed
-       range and want speed, three other template tags can be of choice as tThey use
+       range and want speed, three other template tags can be of choice as they use
        the chosen reduction, but return Nan for any outsider.
 
-           <center>
-            `clipped_very_small_`, `clipped_small_` and `clipped_medium_`
-           </center>
+       <center>
+         `clipped_very_small_`, `clipped_small_` and `clipped_medium_`
+       </center>
 
-       @par Decorators
+    @par Decorators
 
        - std_ provides access to std::cos
 
        - restricted_ is equivalent to the clipped_very_small_ tag
 
-       @see  sincos, cosd, cospi
+    @see  sincos, cosd, cospi
 
-       @par Example:
+    @par Example:
 
-       @snippet cos.cpp cos
+      @snippet cos.cpp cos
 
-       @par Possible output:
+    @par Possible output:
 
-       @snippet cos.txt cos
+      @snippet cos.txt cos
 
- **/
-  Value cos(Value const & x);
+  **/
+  IEEEValue cos(IEEEValue const& x);
 } }
 #endif
 

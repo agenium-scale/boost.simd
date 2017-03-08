@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,30 +15,32 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-exponential
     This function object computes \f$x^y\f$
 
     @par Header <boost/simd/function/pow.hpp>
 
-      @par Decorators
+    @par Decorators
+      - std_ decorator calls @c std:pow
 
-        - std_ decorator calls @c std:pow
-
-        - raw_ decorator almost nearly uses the naive formula (\f$\exp(y\log x)\f$)
+      - raw_ decorator almost nearly uses the naive formula (\f$e^{y\log x}\f$)
          and so does not care for limits and leads to lower accuracy
 
 
-   @par Example:
+    @par Example:
 
-     @snippet pow.cpp pow
+      @snippet pow.cpp pow
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet pow.txt pow
+      @snippet pow.txt pow
 
   **/
-  Value pow(Value const & x, Value const& y);
+  ///@{
+  IEEEValue pow(IEEEValue const& x, Value const& y);
+  IntegerValue pow(IntegerValue const& x, IntegerValue const& y);
+  ///@}
 } }
 #endif
 

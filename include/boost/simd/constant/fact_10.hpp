@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generate 10! that is 3628800
 
+
+    @par Header <boost/simd/constant/fact_10.hpp>
+
     @par Semantic:
 
     @code

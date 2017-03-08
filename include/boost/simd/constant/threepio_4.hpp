@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     Constant threepio_4 : \f$3\pi/4\f$.
 
+
+    @par Header <boost/simd/constant/threepio_4.hpp>
+
     @par Semantic:
 
     For type T:

@@ -4,7 +4,7 @@ Distance between Points Part 1{#tutorial-distance}
 <div style="text-align: right;" markdown="1">Next: [Distance between 2D Points Part 2](@ref tutorial-distance-hypot)</div>
 
 @tableofcontents
-In this tutorial we will examine how to calculate the cartesian distance
+In this tutorial we will examine how to calculate the Cartesian distance
 between a 2D reference point and a vector of 2D points. This could be used
 for example in a clustering algorithm such as dbscan.
 
@@ -52,7 +52,7 @@ point. We then apply the formula shown above for calculating the distance betwee
 In the above example, we examined the case where the input data was stored in two
 separate buffers, one each for the \f$ X\f$ and \f$ Y\f$ coordinates.
 
-However, coordinates are often stored interleaved in memory as follows: \f$x_{0}, y_0, x_1, y_1... , x_n, y_{n-1}\f$
+However, coordinates are often stored interleaved in memory as follows: \f$x_{0}, y_0, x_1, y_1, \ldots , x_n, y_{n-1}\f$
 
 We could sort the input data before calculating the distance, however the cost of
 doing this would negate any gain from using __SIMD__ instructions. To
@@ -61,18 +61,18 @@ to sort the data in the required order in __SIMD__ register.
 
 After loading the data into packs v0 and v1, they contain the following elements:
 
-\f[v_{0} = x_0, y_0, x_1, y_1... , x_{\frac{c}{2}-1}, y_{\frac{c}{2}-1}\f]
+\f[v_{0} = x_0, y_0, x_1, y_1, \ldots , x_{\frac{c}{2}-1}, y_{\frac{c}{2}-1}\f]
 
-\f[v_1 = x_{\frac{c}{2}}, y_{\frac{c}{2}}, x_{\frac{c}{2}+1}, y_{\frac{c}{2}+1}, ...  x_{c-1}, y_{c-1}\f]
+\f[v_1 = x_{\frac{c}{2}}, y_{\frac{c}{2}}, x_{\frac{c}{2}+1}, y_{\frac{c}{2}+1}, \ldots, x_{c-1}, y_{c-1}\f]
 
 where c = pack_t::static_size or the number of elements in the pack.
 
 In order to efficiently calculate the distance between our reference point and all of the other points,
 the data must be re-ordered as follows:
 
-\f[v_x = x_0, x_1, ... , x_{c-1} \f]
+\f[v_x = x_0, x_1, \ldots , x_{c-1} \f]
 
-\f[v_y = y_0, y_1, ... , y_{c-1} \f]
+\f[v_y = y_0, y_1, \ldots , y_{c-1} \f]
 
 
 This is done as follows:

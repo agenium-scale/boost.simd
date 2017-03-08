@@ -15,7 +15,7 @@
 namespace bs = boost::simd;
 
 template <typename T, std::size_t N, typename Env>
-void test(Env& $)
+void test(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
   using m_t = bs::pack<bs::logical<T>, N>;
@@ -40,13 +40,13 @@ STF_CASE_TPL( "Check store behavior with all types", STF_NUMERIC_TYPES )
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<T, N>($);
-  test<T, N/2>($);
-  test<T, N*2>($);
+  test<T, N>(runtime);
+  test<T, N/2>(runtime);
+  test<T, N*2>(runtime);
 }
 
 template <typename T, std::size_t N, typename Env>
-void test_o(Env& $)
+void test_o(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
   using m_t = bs::pack<bs::logical<T>, N>;
@@ -77,7 +77,7 @@ STF_CASE_TPL( "Check offset store behavior with all types", STF_NUMERIC_TYPES )
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test_o<T, N>($);
-  test_o<T, N/2>($);
-  test_o<T, N*2>($);
+  test_o<T, N>(runtime);
+  test_o<T, N/2>(runtime);
+  test_o<T, N*2>(runtime);
 }

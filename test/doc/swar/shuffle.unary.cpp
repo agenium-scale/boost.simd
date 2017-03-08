@@ -6,7 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-//! [shuffle-unary]
+//! [shuffle.unary]
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/shuffle.hpp>
 #include <iostream>
@@ -20,4 +20,4 @@ int main()
 
   return 0;
 }
-//! [shuffle-unary]
+//! [shuffle.unary]

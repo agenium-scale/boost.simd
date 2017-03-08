@@ -29,7 +29,7 @@ namespace bs = boost::simd;
 namespace bd = boost::dispatch;
 
 template <typename T, std::size_t N, typename Env>
-void test(Env& $)
+void test(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
   using iT  = bd::as_integer_t<T>;
@@ -55,9 +55,9 @@ void test(Env& $)
 STF_CASE_TPL("Check predecessor on pack" , STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
-  test<T, N>($);
-  test<T, N/2>($);
-  test<T, N*2>($);
+  test<T, N>(runtime);
+  test<T, N/2>(runtime);
+  test<T, N*2>(runtime);
 }
 
 

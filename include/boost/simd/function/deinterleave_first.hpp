@@ -1,7 +1,7 @@
 //==================================================================================================
 /*!
   @file
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -32,11 +32,11 @@ namespace boost { namespace simd
     boost::simd::pack<T,N> r{x[0], x[2], ..., x[N/2], y[0], y[2], ...,y[N/2]};
     @endcode
 
-    @param  v0  First part of the data to deinterleave
-    @param  v1  Second part of the data to deinterleave
+    @param  x  First part of the data to deinterleave
+    @param  y  Second part of the data to deinterleave
     @return A boost::simd::pack containing the deinterleaved value of the first data channel.
   **/
-  Value deinterleave_first(Value const& v0, Value const& v1);
+  Value deinterleave_first(Value const& x, Value const& y);
 } }
 #endif
 

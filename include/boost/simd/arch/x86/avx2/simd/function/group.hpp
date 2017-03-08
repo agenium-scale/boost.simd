@@ -103,4 +103,6 @@ namespace boost { namespace simd { namespace ext
   };
 } } }
 
+#include <boost/simd/arch/x86/avx2/simd/function/groups.hpp>
+
 #endif

@@ -66,7 +66,7 @@ namespace boost { namespace simd { namespace ext
         while(bs::any(exp))
         {
           result *= if_else(is_odd(exp), base, One<A0>());
-          exp >>= 1;
+          exp =  exp >> 1;
           base = sqr(base);
         }
         return result;

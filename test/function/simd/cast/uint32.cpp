@@ -16,7 +16,7 @@ STF_CASE( "Check cast behavior for uint32_t" )
 {
   static const std::size_t N = bs::pack<uint32_t>::static_size;
 
-  test_val<bs::pack<uint32_t, N>>($);
-  test_val<bs::pack<uint32_t, N/2>>($);
-  test_val<bs::pack<uint32_t, N*2>>($);
+  test_val<bs::pack<uint32_t, N>>(runtime);
+  test_val<bs::pack<uint32_t, N/2>>(runtime);
+  test_val<bs::pack<uint32_t, N*2>>(runtime);
 }

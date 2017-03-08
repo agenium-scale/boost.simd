@@ -29,7 +29,6 @@ namespace boost { namespace simd
 #include <boost/simd/function/deinterleave_second.hpp>
 #include <boost/simd/function/enumerate.hpp>
 #include <boost/simd/function/group.hpp>
-#include <boost/simd/function/groups.hpp>
 #include <boost/simd/function/lookup.hpp>
 #include <boost/simd/function/reverse.hpp>
 #include <boost/simd/function/sort.hpp>

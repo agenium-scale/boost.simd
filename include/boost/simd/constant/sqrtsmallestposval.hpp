@@ -20,6 +20,9 @@ namespace boost { namespace simd
     Generate the square root of the least non zero positive non denormal
     value of the chosen type.
 
+
+    @par Header <boost/simd/constant/sqrtsmallestposval.hpp>
+
     @par Semantic:
 
     @code

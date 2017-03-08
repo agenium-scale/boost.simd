@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generate t value 1/4
 
+
+    @par Header <boost/simd/constant/quarter.hpp>
+
     @par Semantic:
 
     @code

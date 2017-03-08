@@ -149,7 +149,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() (const std_tag &
                                     ,  A0 a0, A1 a1 ) const BOOST_NOEXCEPT
     {
-      BOOST_ASSERT_MSG(is_flint(a1), "parameter is not a flint");
+      BOOST_ASSERT_MSG(is_flint(a1)||is_invalid(a1), "parameter is not a flint nor is invalid");
       return std::ldexp(a0, toint(a1));
     }
   };
@@ -163,7 +163,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() (A0 a0, A1 a1 ) const BOOST_NOEXCEPT
     {
-      BOOST_ASSERT_MSG(is_flint(a1), "parameter is not a flint");
+      BOOST_ASSERT_MSG(is_flint(a1)||is_invalid(a1), "parameter is not a flint nor is invalid");
       return std::ldexp(a0, toint(a1));
     }
   };

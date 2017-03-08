@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generate 2 to the power -10 (\f$2^{-10}\f$)
 
+
+    @par Header <boost/simd/constant/twotom10.hpp>
+
     @par Semantic:
 
     @code

@@ -20,6 +20,9 @@ namespace boost { namespace simd
     Generate value \f$\pi\f$ that is the half length of a circle of radius one
     ... in normal temperature and pressure conditions.
 
+
+    @par Header <boost/simd/constant/pi.hpp>
+
     @par Semantic:
 
     @code

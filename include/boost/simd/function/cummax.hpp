@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -12,28 +12,27 @@
 #define BOOST_SIMD_FUNCTION_CUMMAX_HPP_INCLUDED
 
 #if defined(DOXYGEN_ONLY)
-namespace boost {
-namespace simd {
+namespace boost { namespace simd
+{
 
-/*!
-   @ingroup group-reduction
-   This function object computes the cumulate maximum of the argument elements
+  /*!
+    @ingroup group-reduction
+    This function object computes the cumulate maximum of the argument elements
 
 
     @par Header <boost/simd/function/cummax.hpp>
 
-  @par Example:
+    @par Example:
 
-    @snippet cummax.cpp cummax
+      @snippet cummax.cpp cummax
 
-  @par Possible output:
+    @par Possible output:
 
-    @snippet cummax.txt cummax
+      @snippet cummax.txt cummax
 
- **/
-Value cummax(Value const &x);
-}
-}
+  **/
+  Value cummax(Value const& x);
+} }
 #endif
 
 #include <boost/simd/function/scalar/cummax.hpp>

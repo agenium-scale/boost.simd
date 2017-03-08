@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object returns the smallest integer n such that
     `saturated_(abs)(x)` is less or equal to \f$2^n\f$
@@ -24,16 +24,16 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/nextpow2.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet nextpow2.cpp nextpow2
+      @snippet nextpow2.cpp nextpow2
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet nextpow2.txt nextpow2
+      @snippet nextpow2.txt nextpow2
 
   **/
-  IntValue nextpow2(Value const & x);
+  as_integer_t<Value> nextpow2(Value const& x);
 } }
 #endif
 

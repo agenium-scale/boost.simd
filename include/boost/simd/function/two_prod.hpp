@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-arithmetic
     This function object computes two reals of the type of the inputs
@@ -36,11 +36,11 @@ namespace boost { namespace simd
 
     @par Example:
 
-       @snippet two_prod.cpp two_prod
+      @snippet two_prod.cpp two_prod
 
     @par Possible output:
 
-       @snippet two_prod.txt two_prod
+      @snippet two_prod.txt two_prod
 
 
   **/

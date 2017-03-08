@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
                   {
 
- /*!
+  /*!
     @ingroup group-arithmetic
     This function object computes the arithmetic mean of its parameters.
 
@@ -36,15 +36,15 @@ namespace boost { namespace simd
 
     @par Example:
 
-       @snippet average.cpp average
+      @snippet average.cpp average
 
     @par Possible output:
 
-       @snippet average.txt average
+      @snippet average.txt average
 
 
   **/
-  Value average(Value const & x,  Value const & y);
+  Value average(Value const& x, Value const& y);
 } }
 #endif
 

@@ -12,7 +12,7 @@
 #include <simd_test.hpp>
 
 template <typename T, std::size_t N, typename Env>
-void test(Env& $, std::size_t offset = 0)
+void test(Env& runtime, std::size_t offset = 0)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T,N>;
@@ -35,9 +35,9 @@ STF_CASE_TPL( "Check load behavior with simple pointer", STF_NUMERIC_TYPES )
   namespace bs = boost::simd;
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<T, N>($);
-  test<T, N/2>($);
-  test<T, N*2>($);
+  test<T, N>(runtime);
+  test<T, N/2>(runtime);
+  test<T, N*2>(runtime);
 }
 
 STF_CASE_TPL( "Check load behavior with offset+ pointer", STF_NUMERIC_TYPES )
@@ -45,7 +45,7 @@ STF_CASE_TPL( "Check load behavior with offset+ pointer", STF_NUMERIC_TYPES )
   namespace bs = boost::simd;
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<T, N>($,1);
-  test<T, N/2>($,1);
-  test<T, N*2>($,1);
+  test<T, N>(runtime,1);
+  test<T, N/2>(runtime,1);
+  test<T, N*2>(runtime,1);
 }

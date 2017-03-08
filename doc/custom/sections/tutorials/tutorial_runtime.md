@@ -22,7 +22,7 @@ In this tutorial we will:
 
 The selection of SIMD extensions at runtime enables you to release one executable which
 will be of the highest performance possible on many different architectures. Without runtime
-extension selecion, an executable released must be compiled for the earliest generation of processor
+extension selection, an executable released must be compiled for the earliest generation of processor
 targeted, which is often SSE2. This means that you are artificially restricting the performance
 of your software for your clients which have more modern processors. **@projectname**
 provides everything you need to be able to target multiple architectures with one binary.

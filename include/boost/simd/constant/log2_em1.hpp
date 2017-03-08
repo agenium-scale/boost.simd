@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     Generates constant Log2_em1 : \f$\log2(e)-1\f$
 
+
+    @par Header <boost/simd/constant/log2_em1.hpp>
+
     @par Semantic:
 
     @code

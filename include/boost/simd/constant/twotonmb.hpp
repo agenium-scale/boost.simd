@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generate two to the number of mantissa bits.
 
+
+    @par Header <boost/simd/constant/twotonmb.hpp>
+
     @par Semantic:
 
     @code

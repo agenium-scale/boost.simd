@@ -11,8 +11,12 @@
 set(SOURCES
   regular.float.m10_10_m10_10.cpp
   regular.double.m10_10_m10_10.cpp
+  regular.int16_t.m10_10_m10_10.cpp
+  regular.int32_t.m10_10_m10_10.cpp
+  regular.int64_t.m10_10_m10_10.cpp
+  regular.int8_t.m10_10_m10_10.cpp
 )
 
-make_bench("function.scalar.if_notneg" ${SOURCES})
+make_bench("function.scalar.ifnot_neg" ${SOURCES})
 
 ## --------------------------------------------------------------------------------------

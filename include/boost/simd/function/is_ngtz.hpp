@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-predicates
 
     This function object returns @ref True if x is not greater than @ref Zero else returns @ref False.
@@ -23,17 +23,17 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/is_ngtz.hpp>
 
-   @par Note
+    @par Note
 
      Using `is_ngtz(x)` is similar to: `!(x > 0)`
 
-   @par Example:
+    @par Example:
 
-     @snippet is_ngtz.cpp is_ngtz
+      @snippet is_ngtz.cpp is_ngtz
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet is_ngtz.txt is_ngtz
+      @snippet is_ngtz.txt is_ngtz
 
   **/
   as_logical_t<Value> is_ngtz(Value const& x);

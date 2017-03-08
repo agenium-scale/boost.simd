@@ -15,7 +15,7 @@
 #include <list>
 
 template <typename T, std::size_t N, typename Container, typename Env>
-void test(Env& $)
+void test(Env& runtime)
 {
   namespace bs = boost::simd;
   using p_t = bs::pack<T,N>;
@@ -34,9 +34,9 @@ STF_CASE_TPL( "Check load behavior with InputRange", STF_NUMERIC_TYPES )
   namespace bs = boost::simd;
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<bs::logical<T>, N  , std::list<bs::logical<T>>>($);
-  test<bs::logical<T>, N/2, std::list<bs::logical<T>>>($);
-  test<bs::logical<T>, N*2, std::list<bs::logical<T>>>($);
+  test<bs::logical<T>, N  , std::list<bs::logical<T>>>(runtime);
+  test<bs::logical<T>, N/2, std::list<bs::logical<T>>>(runtime);
+  test<bs::logical<T>, N*2, std::list<bs::logical<T>>>(runtime);
 }
 
 STF_CASE_TPL( "Check load behavior with RandomAccessRange", STF_NUMERIC_TYPES )
@@ -44,7 +44,7 @@ STF_CASE_TPL( "Check load behavior with RandomAccessRange", STF_NUMERIC_TYPES )
   namespace bs = boost::simd;
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<bs::logical<T>, N  , std::vector<bs::logical<T>>>($);
-  test<bs::logical<T>, N/2, std::vector<bs::logical<T>>>($);
-  test<bs::logical<T>, N*2, std::vector<bs::logical<T>>>($);
+  test<bs::logical<T>, N  , std::vector<bs::logical<T>>>(runtime);
+  test<bs::logical<T>, N/2, std::vector<bs::logical<T>>>(runtime);
+  test<bs::logical<T>, N*2, std::vector<bs::logical<T>>>(runtime);
 }

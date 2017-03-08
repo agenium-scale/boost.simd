@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-arithmetic
     This function object converts its parameter to unsigned integer by truncation.
@@ -33,26 +33,27 @@ namespace boost { namespace simd
     entries is not defined and possibly unpredictable.
 
     If you intend to use @ref Nan, @ref Inf or negative entries, consider using
-    @ref saturated_(touint) instead.
+    saturated_(touint) instead.
 
 
-   @par Decorators
+    @par Decorators
 
-   - saturated_ as stated above ensures ggood brhaviour on limiting values.
+    - saturated_ (See @ref group-decorator) as stated above ensures good behaviour on
+      limiting values.
 
-   @see toint, tofloat
+    @see toint, tofloat
 
-   @par Example:
+    @par Example:
 
-       @snippet touint.cpp touint
+      @snippet touint.cpp touint
 
     @par Possible output:
 
-       @snippet touint.txt touint
+      @snippet touint.txt touint
 
 
   **/
-  UIntegerValue touint(Value const & x);
+  as_integer_t<Value, unsigned> touint(Value const& x);
 } }
 #endif
 

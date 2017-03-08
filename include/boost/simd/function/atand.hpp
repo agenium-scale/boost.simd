@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,32 +15,32 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the inverse tangent in degree.
 
 
     @par Header <boost/simd/function/atand.hpp>
 
-   @par Note
+    @par Note
 
       For every parameter of floating type `atand(x)`
       returns the arc @c r in the interval  \f$[-90, 90[\f$
       such that <tt>tand(r) == x</tt>.
 
-   @see atan2d, atan2, atan, atanpi, tand
+    @see atan2d, atan2, atan, atanpi, tand
 
 
-   @par Example:
+    @par Example:
 
-     @snippet atand.cpp atand
+      @snippet atand.cpp atand
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet atand.txt atand
+      @snippet atand.txt atand
 
   **/
-  Value atand(Value const & x);
+  IEEEValue atand(IEEEValue const& x);
 } }
 #endif
 

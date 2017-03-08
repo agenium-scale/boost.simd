@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generate the cubic root of @ref Eps
 
+
+    @par Header <boost/simd/constant/thirdrooteps.hpp>
+
     @par Semantic:
 
     @code

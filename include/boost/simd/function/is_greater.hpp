@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-predicates
     This function object returns @ref True or @ref False according
@@ -35,11 +35,11 @@ namespace boost { namespace simd
 
     @par Example:
 
-       @snippet is_greater.cpp is_greater
+      @snippet is_greater.cpp is_greater
 
     @par Possible output:
 
-       @snippet is_greater.txt is_greater
+      @snippet is_greater.txt is_greater
 
   **/
   as_logical_t<Value> is_greater(Value const& x, Value const& y);

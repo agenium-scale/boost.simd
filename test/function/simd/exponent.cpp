@@ -17,7 +17,7 @@ namespace bs = boost::simd;
 namespace bd = boost::dispatch;
 
 template <typename T, std::size_t N, typename Env>
-void test(Env& $)
+void test(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
   using iT =  bd::as_integer_t<T>;
@@ -40,13 +40,13 @@ void test(Env& $)
 STF_CASE_TPL("Check exponent on pack" , STF_IEEE_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
-  test<T, N>($);
-  test<T, N/2>($);
-  test<T, N*2>($);
+  test<T, N>(runtime);
+  test<T, N/2>(runtime);
+  test<T, N*2>(runtime);
 }
 
 template <typename T, std::size_t N, typename Env>
-void test_invalid(Env& $)
+void test_invalid(Env& runtime)
 {
   using p_t  = bs::pack<T, N>;
   using ip_t = bs::pack<bd::as_integer_t<T>, N>;
@@ -59,7 +59,7 @@ void test_invalid(Env& $)
 STF_CASE_TPL("Check exponent on invalid values" , STF_IEEE_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
-  test_invalid<T, N>($);
-  test_invalid<T, N/2>($);
-  test_invalid<T, N*2>($);
+  test_invalid<T, N>(runtime);
+  test_invalid<T, N/2>(runtime);
+  test_invalid<T, N*2>(runtime);
 }

@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,26 +15,25 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-hyperbolic
     This function returns the hyperbolic secant argument \f$\mathop{\textrm{acosh}}(1/x)\f$
 
-     @see cosh, acosh, sinh, asinh, atanh, atanh, acoth, acsch
-
-
     @par Header <boost/simd/function/asech.hpp>
+
+    @see cosh, acosh, sinh, asinh, atanh, atanh, acoth, acsch
 
     @par Example:
 
-       @snippet asech.cpp asech
+      @snippet asech.cpp asech
 
     @par Possible output:
 
-       @snippet asech.txt asech
+      @snippet asech.txt asech
 
   **/
-  Value asech(Value const & x);
+  IEEEValue asech(IEEEValue const & x);
 } }
 #endif
 

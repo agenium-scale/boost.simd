@@ -111,14 +111,14 @@ namespace boost { namespace simd { namespace ext
       A0 dk = tofloat(k);
       A0 hfsq = Half<A0>()*sqr(f);
 
-      A0  hi = f - hfsq;
-      hi =  bitwise_and(hi, uiA0(0xfffff000ul));
-      A0  lo = fma(s, hfsq+R, f - hi - hfsq);
-//      A0 r = ((((dk*log10_2lo + (lo+hi)*ivln10lo) + lo*ivln10hi) + hi*ivln10hi) + dk*log10_2hi);
+      A0  hibits = f - hfsq;
+      hibits =  bitwise_and(hibits, uiA0(0xfffff000ul));
+      A0  lobits = fma(s, hfsq+R, f - hibits - hfsq);
+//      A0 r = ((((dk*log10_2lo + (lobits+hibits)*ivln10lo) + lobits*ivln10hi) + hibits*ivln10hi) + dk*log10_2hi);
       A0 r = fma(dk, log10_2hi,
-                 fma(hi, ivln10hi,
-                     fma(lo, ivln10hi,
-                         fma(lo+hi, ivln10lo, dk*log10_2lo)
+                 fma(hibits, ivln10hi,
+                     fma(lobits, ivln10hi,
+                         fma(lobits+hibits, ivln10lo, dk*log10_2lo)
                         )
                     )
                 );

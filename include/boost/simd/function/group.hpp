@@ -1,7 +1,7 @@
 //==================================================================================================
 /*!
   @file
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -35,11 +35,11 @@ namespace boost { namespace simd
     boost::simd::downgrade_t< boost::simd::pack<T,N> >  r{x[0], ..., x[N-1], y[0], ..., y[N-1]};
     @endcode
 
-    @param v0 First pack to aggregate
-    @param v1 Second pack to aggregate
+    @param x First pack to aggregate
+    @param y Second pack to aggregate
     @return The aggregation of all values in its arguments, converted to the downgraded type.
   **/
-  downgrade_t<Value> group(Value const& v0, Value const& v1);
+  downgrade_t<Value> group(Value const& x, Value const& y);
 } }
 #endif
 

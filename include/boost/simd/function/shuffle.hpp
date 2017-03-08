@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -46,24 +46,21 @@ namespace boost { namespace simd
 
     @par Example:
 
-    @snippet shuffle.unary.cpp shuffle-unary
+      @snippet shuffle.unary.cpp shuffle.unary
 
-    Possible output:
+    @par Possible output:
 
-    @code
-    Original: (1, 2, 3, 4)
-    Permuted: (4, 0, 3, 1)
-    @endcode
+      @snippet shuffle.unary.txt shuffle.unary
 
-    @param  a  boost::simd::pack to shuffle
+    @param  x  boost::simd::pack to shuffle
   **/
-  template<int P0, int ... Ps, typename T>  T shuffle(T const& a);
+  template<int P0, int ... Ps, typename T>  T shuffle(T const& x);
 
   /*!
     @ingroup group-swar
 
-    Shuffle the elements of two boost::simd::pack using an index permutation described by compile-time
-    integral constants.
+    Shuffle the elements of two boost::simd::pack using an index permutation described by
+    compile-time integral constants.
 
     @par Semantic:
 
@@ -89,19 +86,16 @@ namespace boost { namespace simd
 
     @par Example:
 
-    @snippet shuffle.binary.cpp shuffle-binary
+      @snippet shuffle.binary.cpp shuffle.binary
 
-    Possible output:
+    @par Possible output:
 
-    @code
-    Original: (1, 2, 3, 4) (10, 20, 30, 40)
-    Permuted: (0, 4, 40, 0)
-    @endcode
+      @snippet shuffle.binary.txt shuffle.binary
 
-    @param  a  boost::simd::pack to shuffle
-    @param  b  boost::simd::pack to shuffle
+    @param  x  boost::simd::pack to shuffle
+    @param  y  boost::simd::pack to shuffle
   **/
-  template<int P0, int ... Ps, typename T>  T shuffle(T const& a,T const& b);
+  template<int P0, int ... Ps, typename T>  T shuffle(T const& x, T const& y);
 
   /*!
     @ingroup group-swar
@@ -150,31 +144,27 @@ namespace boost { namespace simd
 
     @par Example:
 
-    @snippet shuffle.perm.cpp shuffle-perm
+      @snippet shuffle.perm.cpp shuffle.perm
 
-    Possible output:
+    @par Possible output:
 
-    @code
-    Original: (1, 2, 3, 4)
-    Permuted: (4, 0, 3, 1)
-    Permuted: (4, 4, 4, 4)
-    @endcode
+      @snippet shuffle.perm.txt shuffle.perm
 
     @tparam Permutation Permutation meta-function generating the permutation index
-    @param  a           boost::simd::pack to shuffle
+    @param  x           boost::simd::pack to shuffle
   **/
-  template<typename Permutation, typename T>  T shuffle(T const& a);
+  template<typename Permutation, typename T>  T shuffle(T const& x);
 
   /*!
     @ingroup group-swar
 
-    Shuffle the elements of two boost::simd::pack using an index permutation described by compile-time
-    meta-function.
+    Shuffle the elements of two boost::simd::pack using an index permutation described by
+    compile-time meta-function.
 
     @par Semantic:
 
-    For any boost::simd::pack @c x and @c y of base type @c T and cardinal @c N and a meta-function @c Perm,
-    the following code:
+    For any boost::simd::pack @c x and @c y of base type @c T and cardinal @c N and a
+    meta-function @c Perm, the following code:
 
     @code
     boost::simd::pack<T,N> r = shuffle<Perm>(x,y);
@@ -212,20 +202,17 @@ namespace boost { namespace simd
 
     @par Example:
 
-    @snippet shuffle.perm2.cpp shuffle-perm2
+      @snippet shuffle.perm2.cpp shuffle.perm2
 
-    Possible output:
+    @par Possible output:
 
-    @code
-    Original: (1, 2, 3, 4)
-    Permuted: (10, 20, 3, 4)
-    @endcode
+      @snippet shuffle.perm2.txt shuffle.perm2
 
     @tparam Permutation Permutation meta-function generating the permutation index
-    @param  a           boost::simd::pack to shuffle
-    @param  b           boost::simd::pack to shuffle
+    @param  x           boost::simd::pack to shuffle
+    @param  y           boost::simd::pack to shuffle
   **/
-  template<typename Permutation, typename T>  T shuffle(T const& a,T const& b);
+  template<typename Permutation, typename T>  T shuffle(T const& x,T const& y);
 } }
 #endif
 

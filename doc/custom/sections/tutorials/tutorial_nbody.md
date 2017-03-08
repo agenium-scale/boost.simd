@@ -2,7 +2,7 @@ N-Body Problem {#tutorial-nbody}
 =========
 
 <div style="text-align: right;" markdown="1">Prev: [Evaluation of a Neural Network](@ref tutorial-neural)</div>
-<div style="text-align: right;" markdown="1">Next:[Evaluation of the N-Body problem](@ref tutorial-nbody)</div>
+<div style="text-align: right;" markdown="1">Next: [Runtime Extension Selection](@ref tutorial-runtime)</div>
 
 @tableofcontents
 In this tutorial we will show you how to optimize an n-body
@@ -65,8 +65,8 @@ The following results were obtained:
 <tr><td>SIMD AVX2           <td>2321               <td> x5.68
 </table>
 
-The performance obtained is broadly in line with the theorethical maximum possible speed-ups of x4 for SSE4.2 and x8 for AVX2.
-There are very few problems where these theorethical speed-ups are obtainable.
+The performance obtained is broadly in line with the theoretical maximum possible speed-ups of x4 for SSE4.2 and x8 for AVX2.
+There are very few problems where these theoretical speed-ups are obtainable.
 
 <div style="text-align: right;" markdown="1">Prev: [Evaluation of a Neural Network](@ref tutorial-neural)</div>
-<div style="text-align: right;" markdown="1">Next:[Evaluation of the N-Body problem](@ref tutorial-nbody)</div>
+<div style="text-align: right;" markdown="1">Next: [Runtime Extension Selection](@ref tutorial-runtime)</div>

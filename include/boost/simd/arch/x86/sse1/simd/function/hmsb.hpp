@@ -10,7 +10,7 @@
 #define BOOST_SIMD_ARCH_X86_SSE1_SIMD_FUNCTION_HMSB_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <bitset>
+#include <boost/simd/detail/bitset.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -23,7 +23,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::single_<A0>, bs::sse_>
                          )
   {
-    BOOST_FORCEINLINE std::bitset<4> operator()( const A0 & a0 ) const BOOST_NOEXCEPT
+    BOOST_FORCEINLINE bs::bitset<4> operator()( const A0 & a0 ) const BOOST_NOEXCEPT
     {
       return _mm_movemask_ps(a0);
     }

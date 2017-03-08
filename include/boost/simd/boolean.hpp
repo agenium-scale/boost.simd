@@ -18,7 +18,7 @@ namespace boost { namespace simd
     @ingroup group-functions
     @defgroup group-boolean Boolean functions
 
-      These functions provides SIMD algorithms for logical operations and branching
+      These functions provide SIMD algorithms for logical operations and branching
       in SIMD mode, their use is possible but not encouraged on scalars entries.
 
       All these functions can be included individually or all of them just by including <boost/simd/boolean.hpp>

@@ -12,7 +12,7 @@
 namespace bs = boost::simd;
 
 template <typename T, std::size_t N, typename Env>
-void test0(Env& $)
+void test0(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
   std::array<T,N> ref;
@@ -27,13 +27,13 @@ STF_CASE_TPL( "Check enumerate<T>() behavior", STF_NUMERIC_TYPES )
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test0<T, N>($);
-  test0<T, N/2>($);
-  test0<T, N*2>($);
+  test0<T, N>(runtime);
+  test0<T, N/2>(runtime);
+  test0<T, N*2>(runtime);
 }
 
 template <typename T, std::size_t N, typename Env>
-void test1(Env& $)
+void test1(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
   std::array<T,N> ref;
@@ -48,13 +48,13 @@ STF_CASE_TPL( "Check enumerate<T>(SEED) behavior", STF_NUMERIC_TYPES )
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test1<T, N>($);
-  test1<T, N/2>($);
-  test1<T, N*2>($);
+  test1<T, N>(runtime);
+  test1<T, N/2>(runtime);
+  test1<T, N*2>(runtime);
 }
 
 template <typename T, std::size_t N, typename Env>
-void test2(Env& $)
+void test2(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
   std::array<T,N> ref;
@@ -69,7 +69,7 @@ STF_CASE_TPL( "Check enumerate<T>(SEED,STEP) behavior", STF_NUMERIC_TYPES )
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test2<T, N>($);
-  test2<T, N/2>($);
-  test2<T, N*2>($);
+  test2<T, N>(runtime);
+  test2<T, N/2>(runtime);
+  test2<T, N*2>(runtime);
 }

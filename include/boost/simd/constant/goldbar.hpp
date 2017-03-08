@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generate the conjugate golden ratio that is \f$\bar\phi = \frac{1-\sqrt5}{2}\f$
 
+
+    @par Header <boost/simd/constant/goldbar.hpp>
+
     @par Semantic:
 
     @code

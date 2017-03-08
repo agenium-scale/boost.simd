@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generate the number of mantissa bits of a floating point number.
 
+
+    @par Header <boost/simd/constant/nbmantissabits.hpp>
+
     @par Semantic:
 
     @code

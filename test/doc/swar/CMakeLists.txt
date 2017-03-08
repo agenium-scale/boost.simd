@@ -7,6 +7,7 @@
 ##===================================================================================================
 
 SET( SOURCES
+    lookup.cpp
     shuffle.unary.cpp
     shuffle.binary.cpp
     shuffle.perm.cpp

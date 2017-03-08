@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generate value \f$\frac12\f$
 
+
+    @par Header <boost/simd/constant/half.hpp>
+
     @par Semantic:
 
     @code

@@ -83,7 +83,7 @@ bs::pack<T, N> make_pack(T const& t)
 }
 
 template <std::size_t N, typename T, typename U, typename Env>
-void test(Env& $, T const& v, U const& s)
+void test(Env& runtime, T const& v, U const& s)
 {
   bs::pack<T, N> p{v};
 
@@ -120,9 +120,9 @@ void test(Env& $, T const& v, U const& s)
 
 STF_CASE("Check autosplatting behaviour")
 {
-  test<2>($, 2., 4.f);
-  test<4>($, 2., 4.f);
-  test<8>($, 2., 4.f);
+  test<2>(runtime, 2., 4.f);
+  test<4>(runtime, 2., 4.f);
+  test<8>(runtime, 2., 4.f);
 
   // --
 

@@ -79,7 +79,7 @@ namespace boost { namespace simd
     returning boost::simd::pack at every iteration step.
 
     @pre @c std::distance(begin,end) is an exact multiple of @c N
-    @pre @c &(*std::begin(r)) is aligned on @c pack<ContiguousRange::value_type,N>::alignment
+    @pre @c &(*begin) is aligned on @c pack<ContiguousRange::value_type,N>::alignment
     @tparam N Cardinal of the pack to be iterated. By default, @c N is equal to
               the native cardinal of current architecture.
     @param r Input ContiguousRange to adapt

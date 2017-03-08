@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -16,21 +16,11 @@ namespace boost { namespace simd
 #if defined(DOXYGEN_ONLY)
   /*!
     @ingroup group-swar
-    Generates a value containing sequentially increasing values, starting with @c seed and
+    Generates a value containing sequentially increasing elements, starting with @c seed and
     repetitively evaluating @c seed+=step.
 
 
     @par Header <boost/simd/function/enumerate.hpp>
-
-    @par Scalar Semantic:
-    For any type @c T , the following code:
-    @code
-    auto r = enumerate<T>(seed, step);
-    @endcode
-    is equivalent to:
-    @code
-    T r{seed};
-    @endcode
 
     @par SIMD Semantic:
     For any type @c T and integral constant @c N, the following code:
@@ -46,7 +36,7 @@ namespace boost { namespace simd
     @param step Increment to apply on each subsequent generated value, equals to @c 1 by default.
     @return A value containing the sequence of value generated from @c seed and @c step
   **/
-  template<typename T, typename B, typename S> T enumerate(const B& seed = 0, const S& step = 1);
+  Value enumerate(const ScalarValue& seed = 0, const ScalarValue& step = 1);
 #endif
 } }
 

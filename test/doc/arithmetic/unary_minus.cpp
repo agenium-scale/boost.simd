@@ -6,7 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-//! [abs]
+//! [unary_minus]
 #include <boost/simd/arithmetic.hpp>
 #include <boost/simd/pack.hpp>
 #include <iostream>
@@ -22,24 +22,24 @@ int main()
 
   std::cout
     << "---- simd" << '\n'
-    << "<- pf =                           " << pf << '\n'
-    << "-> bs::abs(pf) =                  " << bs::abs(pf) << '\n'
-    << "<- pi =                           " << pi << '\n'
-    << "-> bs::abs(pi) =                  " << bs::abs(pi) << '\n'
-    << "-> bs::saturated_(bs::abs(pi)) =  " << bs::saturated_(bs::abs)(pi) << '\n'
-    << "-> bs::std_(bs::abs)(pi) =        " << bs::std_(bs::abs)(pi) << '\n';
+    << "<- pf =                                   " << pf << '\n'
+    << "-> bs::unary_minus(pf) =                  " << bs::unary_minus(pf) << '\n'
+    << "<- pi =                                   " << pi << '\n'
+    << "-> bs::unary_minus(pi) =                  " << bs::unary_minus(pi) << '\n'
+    << "-> bs::saturated_(bs::unary_minus(pi)) =  " << bs::saturated_(bs::unary_minus)(pi) << '\n'
+    << "-> -pi =                                  " << (-pi) << '\n';
 
   float xf = -32768.0f;
   std::int16_t xi =  -32768;
 
   std::cout
     << "---- scalar"  << '\n'
-    << "<- xf =                           " << xf << '\n'
-    << "-> bs::abs(xf) =                  " << bs::abs(xf) << '\n'
-    << "<- xi =                           " << xi << '\n'
-    << "-> bs::abs(xi) =                  " << bs::abs(xi) << '\n'
-    << "-> bs::saturated_(bs::abs(xi)) =  " << bs::saturated_(bs::abs)(xi) << '\n'
-    << "-> bs::std_(bs::abs)(xi) =        " << bs::std_(bs::abs)(xi) << '\n';
+    << "<- xf =                                   " << xf << '\n'
+    << "-> bs::unary_minus(xf) =                  " << bs::unary_minus(xf) << '\n'
+    << "<- xi =                                   " << xi << '\n'
+    << "-> bs::unary_minus(xi) =                  " << bs::unary_minus(xi) << '\n'
+    << "-> bs::saturated_(bs::unary_minus(xi)) =  " << bs::saturated_(bs::unary_minus)(xi) << '\n'
+    << "-> -xi =                                  " << (-xi) << '\n';
   return 0;
 }
-//! [abs]
+//! [unary_minus]

@@ -14,7 +14,7 @@
 namespace bs = boost::simd;
 
 template <typename T, std::size_t N, typename Env, typename Op>
-void test_binop(Env& $, Op op)
+void test_binop(Env& runtime, Op op)
 {
   std::array<T, N> a;
   std::iota(a.begin(), a.end(), T(1));
@@ -26,7 +26,7 @@ void test_binop(Env& $, Op op)
 }
 
 template <typename T, std::size_t N, typename Env, typename Op>
-void test_selfop(Env& $, Op op)
+void test_selfop(Env& runtime, Op op)
 {
   std::array<T, N> a;
   std::iota(a.begin(), a.end(), T(1));
@@ -52,21 +52,21 @@ struct op_multiplies
 STF_CASE_TPL( "Check proxy * operator" , STF_NUMERIC_TYPES)
 {
   std::multiplies<T> op;
-  test_binop<T,  1>($,op);
-  test_binop<T,  2>($,op);
-  test_binop<T,  4>($,op);
-  test_binop<T,  8>($,op);
-  test_binop<T, 16>($,op);
-  test_binop<T, 32>($,op);
+  test_binop<T,  1>(runtime,op);
+  test_binop<T,  2>(runtime,op);
+  test_binop<T,  4>(runtime,op);
+  test_binop<T,  8>(runtime,op);
+  test_binop<T, 16>(runtime,op);
+  test_binop<T, 32>(runtime,op);
 }
 
 STF_CASE_TPL( "Check proxy *= operator" , STF_NUMERIC_TYPES)
 {
   op_multiplies op;
-  test_selfop<T,  1>($,op);
-  test_selfop<T,  2>($,op);
-  test_selfop<T,  4>($,op);
-  test_selfop<T,  8>($,op);
-  test_selfop<T, 16>($,op);
-  test_selfop<T, 32>($,op);
+  test_selfop<T,  1>(runtime,op);
+  test_selfop<T,  2>(runtime,op);
+  test_selfop<T,  4>(runtime,op);
+  test_selfop<T,  8>(runtime,op);
+  test_selfop<T, 16>(runtime,op);
+  test_selfop<T, 32>(runtime,op);
 }

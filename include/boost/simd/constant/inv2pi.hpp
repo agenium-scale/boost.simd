@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     Constant \f$\frac1{2\pi}\f$.
 
+
+    @par Header <boost/simd/constant/inv2pi.hpp>
+
     @par Semantic:
 
     For type T:

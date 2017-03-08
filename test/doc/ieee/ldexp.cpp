@@ -27,7 +27,7 @@ int main()
     << "<- pf =                " << pf << '\n'
     << "<- qf =                " << qf << '\n'
     << "-> bs::ldexp(pf, qf) = " << bs::ldexp(pf, qf) << '\n'
-    << "<- qi =                " << qf << '\n'
+    << "<- qi =                " << qi << '\n'
     << "-> bs::ldexp(pf, qi) = " << bs::ldexp(pf, qi) << '\n';
 
   float xf = 2.0f, yf = 3.0;

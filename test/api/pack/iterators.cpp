@@ -12,7 +12,7 @@
 #include <numeric>
 
 template <typename T, std::size_t N, typename Env>
-void test(Env& $)
+void test(Env& runtime)
 {
   std::vector<T> v(N);
   std::iota(v.begin(), v.end(), T(1));
@@ -71,16 +71,16 @@ void test(Env& $)
 
 STF_CASE_TPL( "Check pack's iterators" , STF_NUMERIC_TYPES)
 {
-  test<T,  1>($);
-  test<T,  2>($);
-  test<T,  4>($);
-  test<T,  8>($);
-  test<T, 16>($);
-  test<T, 32>($);
+  test<T,  1>(runtime);
+  test<T,  2>(runtime);
+  test<T,  4>(runtime);
+  test<T,  8>(runtime);
+  test<T, 16>(runtime);
+  test<T, 32>(runtime);
 }
 
 template <typename T, std::size_t N, typename Env>
-void ltest(Env& $)
+void ltest(Env& runtime)
 {
   std::vector<boost::simd::logical<T>> v(N);
   std::fill(v.begin(), v.end(), true);
@@ -139,10 +139,10 @@ void ltest(Env& $)
 
 STF_CASE_TPL( "Check logical pack's iterators" , STF_NUMERIC_TYPES)
 {
-  ltest<T,  1>($);
-  ltest<T,  2>($);
-  ltest<T,  4>($);
-  ltest<T,  8>($);
-  ltest<T, 16>($);
-  ltest<T, 32>($);
+  ltest<T,  1>(runtime);
+  ltest<T,  2>(runtime);
+  ltest<T,  4>(runtime);
+  ltest<T,  8>(runtime);
+  ltest<T, 16>(runtime);
+  ltest<T, 32>(runtime);
 }

@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-arithmetic
     This function object returns the inverse of the square root of the input.
@@ -26,22 +26,22 @@ namespace boost { namespace simd
 
     @par Decorators
 
-    - raw_  if full accuracy is not needed a sometimes speedier but  less accurate version of the function
-    can be obtained using raw_(rsqrt)(x).
+    - raw_  if full accuracy is not needed gives access on some architectures to faster
+    but less accurate version of the function.
 
     @see sqrt
 
     @par Example:
 
-       @snippet rsqrt.cpp rsqrt
+      @snippet rsqrt.cpp rsqrt
 
     @par Possible output:
 
-       @snippet rsqrt.txt rsqrt
+      @snippet rsqrt.txt rsqrt
 
 
   **/
-  Value rsqrt(Value const & x);
+  IEEEValue rsqrt(IEEEValue const& x);
 } }
 #endif
 

@@ -1,7 +1,7 @@
 //==================================================================================================
 /*!
   @file
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -14,8 +14,8 @@
 namespace boost { namespace simd
 {
 
- /*!
-  @ingroup group-euler
+  /*!
+    @ingroup group-euler
     This function object computes the gamma function:
    \f$\displaystyle \int_0^{\infty} t^{x-1}e^{-t}\mbox{d}t\f$
 
@@ -28,15 +28,15 @@ namespace boost { namespace simd
 
     @see gammaln
 
-     @par Example:
+    @par Example:
 
-       @snippet gamma.cpp gamma
+      @snippet gamma.cpp gamma
 
     @par Possible output:
 
-       @snippet gamma.txt gamma
- **/
-  Value gamma(Value const & x);
+      @snippet gamma.txt gamma
+  **/
+  IEEEValue gamma(IEEEValue const& x);
 } }
 #endif
 

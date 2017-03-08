@@ -17,9 +17,11 @@ SET( SOURCES
     arg.cpp
     average.cpp
     ceil.cpp
+    clamp.cpp
     dec.cpp
     dist.cpp
     div.cpp
+    divides.cpp
     fix.cpp
     floor.cpp
     fma.cpp
@@ -36,9 +38,13 @@ SET( SOURCES
     max.cpp
     meanof.cpp
     min.cpp
+    minus.cpp
     minmod.cpp
+    multiplies.cpp
     nearbyint.cpp
     oneminus.cpp
+    plus.cpp
+    quadrant.cpp
     rec.cpp
     rem.cpp
     remquo.cpp

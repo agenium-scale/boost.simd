@@ -28,6 +28,7 @@
 #include <boost/simd/function/load.hpp>
 #include <boost/simd/function/inc.hpp>
 #include <boost/simd/function/dec.hpp>
+#include <boost/simd/memory/aligned_object.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/simd/detail/is_aligned.hpp>
 #include <boost/config.hpp>
@@ -62,12 +63,16 @@ namespace boost { namespace simd
     data with the best storage possible depending on your hardware.
 
     @pre @c N must be a power of two.
+    @pre @c T models Vectorizable
 
     @tparam T   Type of the stored elements
     @tparam N   Number of element stored
     @tparam ABI Binary flag to prevent ABI issue
    **/
-  template<typename T, std::size_t N, typename ABI>
+  template< typename T
+          , std::size_t N
+          , typename ABI
+          >
   class pack {
 
     static_assert( boost::simd::is_power_of_2_<N>::value
@@ -378,6 +383,9 @@ namespace boost { namespace simd
 
     reference       front()        { return traits::at(*this, 0); }
     const_reference front() const  { return traits::at(*this, 0); }
+
+    // Make operator new/delete  correct
+    BOOST_SIMD_ALIGNED_OBJECT(pack)
 
     public:
     BOOST_FORCEINLINE pack& operator++() BOOST_NOEXCEPT_IF_EXPR(inc(bd::detail::declval<pack>()))

@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,32 +15,32 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the inverse tangent in \f$\pi\f$ multiples.
 
 
     @par Header <boost/simd/function/atanpi.hpp>
 
-   @par Note
+    @par Note
 
       For every parameter of floating type `atanpi(x)`
       returns the arc @c r in the interval  \f$[-0.5, 0.5[\f$
       such that <tt>tanpi(r) == x</tt>.
 
-   @see atan2, atan2d, atand, atan, tanpi
+    @see atan2, atan2d, atand, atan, tanpi
 
 
-   @par Example:
+    @par Example:
 
-     @snippet atanpi.cpp atanpi
+      @snippet atanpi.cpp atanpi
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet atanpi.txt atanpi
+      @snippet atanpi.txt atanpi
 
   **/
-  Value atanpi(Value const & x);
+  IEEEValue atanpi(IEEEValue const& x);
 } }
 #endif
 

@@ -14,7 +14,7 @@
 namespace bs = boost::simd;
 
 template <typename T, std::size_t N, typename Env>
-void test_l2l(Env& $)
+void test_l2l(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
 
@@ -35,13 +35,13 @@ STF_CASE_TPL( "Check store logical into logical", STF_NUMERIC_TYPES )
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test_l2l<bs::logical<T>, N>($);
-  test_l2l<bs::logical<T>, N/2>($);
-  test_l2l<bs::logical<T>, N*2>($);
+  test_l2l<bs::logical<T>, N>(runtime);
+  test_l2l<bs::logical<T>, N/2>(runtime);
+  test_l2l<bs::logical<T>, N*2>(runtime);
 }
 
 template <typename T, std::size_t N, typename Env>
-void test_l2a(Env& $)
+void test_l2a(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
   using s_t = typename T::value_type;
@@ -66,7 +66,7 @@ STF_CASE_TPL( "Check store logical into arithmetic type", STF_NUMERIC_TYPES )
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test_l2a<bs::logical<T>, N>($);
-  test_l2a<bs::logical<T>, N/2>($);
-  test_l2a<bs::logical<T>, N*2>($);
+  test_l2a<bs::logical<T>, N>(runtime);
+  test_l2a<bs::logical<T>, N/2>(runtime);
+  test_l2a<bs::logical<T>, N*2>(runtime);
 }

@@ -17,21 +17,9 @@ namespace boost { namespace simd
   /*!
     @ingroup group-constant
 
-    Generate  value \f$\sqrt2\f$
+    Generate  value \f$\1/sqrt(Eps<T>()\f$
 
-    @par Semantic:
-
-    @code
-    T r = invsqrteps<T>();
-    @endcode
-
-    is similar to:
-
-    @code
-    T r = rec(sqrt(Eps<T>()));
-    @endcode
-
-    @return The invsqrteps constant for the proper type
+    @return The Invsqrteps constant for the proper type
   **/
   template<typename T> T invsqrteps();
 
@@ -39,7 +27,7 @@ namespace boost { namespace simd
   {
     /*!
       @ingroup group-callable-constant
-      Generate the  constant invsqrteps.
+      Generate the  constant Invsqrteps.
 
       @return The invsqrteps constant for the proper type
     **/

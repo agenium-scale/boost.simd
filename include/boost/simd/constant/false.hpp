@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generates a value of the chosen type equals to @c false.
 
+
+    @par Header <boost/simd/constant/false.hpp>
+
     @par Semantic:
 
     For type @c T modeling Logical

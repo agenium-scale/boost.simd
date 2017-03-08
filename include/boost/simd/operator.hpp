@@ -18,7 +18,7 @@ namespace boost { namespace simd
     @ingroup group-functions
     @defgroup group-operator Operators
 
-    These functions provides scalar and SIMD version of the native C and C++ operators.
+    These functions provide scalar and SIMD version of the native C and C++ operators.
 
     Operators are provided in infix and prefix notations, except for scalar floating types
     as C++ does not allow overloading of operators for these types. Operators &, |, ~,  % and

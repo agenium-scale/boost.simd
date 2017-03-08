@@ -14,7 +14,7 @@
 namespace boost { namespace simd
 {
   /*!
-  @ingroup group-memory
+    @ingroup group-memory
 
     @brief Store a value at an aligned memory location
 

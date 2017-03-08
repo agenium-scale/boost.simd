@@ -14,21 +14,17 @@ NS_guard(BOOST_SIMD_SETUP)
 ##==================================================================================================
 if(MSVC)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /fp:precise")
-  set(SIMD_FLAGS_TEST "${SIMD_FLAGS_TEST} /MDd /Oxt")
-  set(SIMD_FLAGS_BENCH "/DNDEBUG /MD /D_SECURE_SCL=0 /Oxt /GL /wd4530 /EHsc")
+  set(SIMD_FLAGS_BENCH "/MD /D_SECURE_SCL=0 /Oxt /GL /wd4530 /EHsc")
 
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "Intel")
   if(UNIX)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fp-model precise")
-    set(SIMD_FLAGS_TEST "${SIMD_FLAGS_TEST} -O2")
   else()
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /fp:precise")
-    set(SIMD_FLAGS_TEST "${SIMD_FLAGS_TEST} /O2")
   endif()
 
 elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang" OR ${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
-  set(SIMD_FLAGS_TEST "${SIMD_FLAGS_TEST} -O2")
-  set(SIMD_FLAGS_BENCH "-DNDEBUG -O3 -fomit-frame-pointer")
+  set(SIMD_FLAGS_BENCH "-O3 -fomit-frame-pointer")
 endif()
 
 if (${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
@@ -41,15 +37,16 @@ endif()
 ## MSVC STL warnings & noexcept
 ##==================================================================================================
 if(MSVC)
-  set(SIMD_FLAGS_TEST "${SIMD_FLAGS_TEST} /D_SCL_SECURE_NO_WARNINGS /EHsc")
+  set(SIMD_FLAGS_TEST "${SIMD_FLAGS_BENCH} /D_SCL_SECURE_NO_WARNINGS /EHsc")
 endif()
 
 ##==================================================================================================
 ## Final setup and display
 ##==================================================================================================
-set(CMAKE_CXX_FLAGS_RELEASE "${SIMD_FLAGS_BENCH}")
-set(CMAKE_CXX_FLAGS_DEBUG   "${SIMD_FLAGS_TEST}")
+set(CMAKE_CXX_FLAGS_RELEASE "${SIMD_FLAGS_BENCH} -DNDEBUG")
+set(CMAKE_CXX_FLAGS_DEBUG   "${SIMD_FLAGS_BENCH}")
 
+NS_say("Current compiler: ${CMAKE_CXX_COMPILER}")
 NS_say("Global flags: ${CMAKE_CXX_FLAGS}")
 NS_say("Testing flags: ${CMAKE_CXX_FLAGS_DEBUG}")
 NS_say("Benchmark flags: ${CMAKE_CXX_FLAGS_RELEASE}")

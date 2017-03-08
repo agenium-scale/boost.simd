@@ -22,7 +22,7 @@ In this tutorial we will:
 
 @section memory-what-is What is Memory Alignment
 
-In order to fully understand memory alignment and how to maximise performance of your software by
+In order to fully understand memory alignment and how to maximize performance of your software by
 ensuring memory alignment, please read this excellent article by [IBM](http://www.ibm.com/developerworks/library/pa-dalign/).
 Although this article focuses on PowerPC processors, its conclusions are valid on many other architectures.
 **@projectname** gives you portability across many architectures, in order to have the best

@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-ieee
     This function object computes a mantissa and an exponent pair for the input
 
@@ -59,16 +59,16 @@ namespace boost { namespace simd
     @see exponent, mantissa, frexp
 
 
-   @par Example:
+    @par Example:
 
-     @snippet ifrexp.cpp ifrexp
+      @snippet ifrexp.cpp ifrexp
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet ifrexp.txt ifrexp
+      @snippet ifrexp.txt ifrexp
 
   **/
-  std::pair<RealValue, as_integer_t<RealValue>> ifrexp(RealValue const & x);
+  std::pair<IEEEValue, as_integer_t<IEEEValue>> ifrexp(IEEEValue const& x);
 } }
 #endif
 

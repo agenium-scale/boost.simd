@@ -20,7 +20,7 @@
 namespace bs = boost::simd;
 
 template <typename T, std::size_t N, typename Env>
-void test(Env& $)
+void test(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
 
@@ -41,13 +41,13 @@ STF_CASE_TPL("Check sqr on pack" , STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<T, N>($);
-  test<T, N/2>($);
-  test<T, N*2>($);
+  test<T, N>(runtime);
+  test<T, N/2>(runtime);
+  test<T, N*2>(runtime);
 }
 
 template <typename T, std::size_t N, typename Env>
-void tests(Env& $)
+void tests(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
 
@@ -68,9 +68,9 @@ STF_CASE_TPL("Check saturated sqr on pack" , STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  tests<T, N>($);
-  tests<T, N/2>($);
-  tests<T, N*2>($);
+  tests<T, N>(runtime);
+  tests<T, N/2>(runtime);
+  tests<T, N*2>(runtime);
 }
 
 

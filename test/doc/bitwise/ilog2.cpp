@@ -15,7 +15,7 @@ namespace bs = boost::simd;
 using pack_ft = bs::pack<float, 4>;
 
 int main() {
-  pack_ft pf = {1.0f, 2.0f, -1.0f, 0.5f};
+  pack_ft pf = {1.0f, 2.0f, 3.0f, 0.5f};
 
   std::cout << "---- simd" << '\n'
             << "<- pf =            " << pf << '\n'

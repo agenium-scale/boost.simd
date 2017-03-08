@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     Generates constant Mlog2two2nmb.
 
+
+    @par Header <boost/simd/constant/mlog2two2nmb.hpp>
+
     @par Semantic:
 
     @code

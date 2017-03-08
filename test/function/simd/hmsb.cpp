@@ -14,27 +14,28 @@ namespace bs = boost::simd;
 namespace bd = boost::dispatch;
 
 template <typename T,int N, typename Env>
-void test(Env& $)
+void test(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
 
   T a[N];
-  std::bitset<N> r;
+  bs::bitset<N> r;
+  r.reset();
 
   for(int i = 0; i < N; ++i)
   {
     a[i] = (i%2) ? T(i) : T(-i);
-    r[i] = bs::bitwise_and(bs::Signmask<bd::as_integer_t<T>>(), a[i]) != 0;
+    r.set(i,bs::bitwise_and(bs::Signmask<bd::as_integer_t<T>>(), a[i]) != 0);
   }
 
   p_t aa(&a[0], &a[0]+N);
   STF_EQUAL(bs::hmsb(aa), r);
 }
 
-STF_CASE_TPL("Check hmsb on pack" , STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check hmsb on pack", STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
-  test<T, N>($);
-  test<T, N/2>($);
-  test<T, N*2>($);
+  test<T, N>(runtime);
+  test<T, N/2>(runtime);
+  test<T, N*2>(runtime);
 }

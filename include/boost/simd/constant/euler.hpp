@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     GeneratesEuler constant.
 
+
+    @par Header <boost/simd/constant/euler.hpp>
+
     @par Semantic:
     The Euler constant can be defined as \f$\displaystyle \lim_{n \rightarrow \infty} \left(\sum_1^n \frac1n -\log n\right)\f$
 

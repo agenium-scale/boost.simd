@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,30 +15,32 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-operator
-    This function object returns the first operand shifted right by the second
-    that must be of integer type and of the same number
-    of elements as the first parameter
+    This function object returns the first operand shifted right by the second one
 
     Infix notation can be used with operator '>>'
 
-      @see  shift_left, shr, rshl, rshr, rol, ror
-
-
     @par Header <boost/simd/function/shift_right.hpp>
 
-   @par Example:
+    @see  shift_left, shr, rshl, rshr, rol, ror
+    @pre the second parameter must be of integer type, scalar or of the same number
+    of elements as the first parameter
 
-     @snippet shift_right.cpp shift_right
+    @par Note:
+      - on many architectures a scalar second parameter results in a much faster call
 
-   @par Possible output:
+    @par Example:
 
-     @snippet shift_right.txt shift_right
+      @snippet shift_right.cpp shift_right
+
+    @par Possible output:
+
+      @snippet shift_right.txt shift_right
 
   **/
-  Value shift_right(Value const & x, IntegerValue const& n);
+  Value shift_right(Value const& x, IntegerValue const& n);
 } }
 #endif
 

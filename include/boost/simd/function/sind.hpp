@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,15 +15,14 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
     This function object returns the sine of the angle in degree:
     \f$\sin(\pi x/180)\f$.
 
-
     @par Header <boost/simd/function/sind.hpp>
 
-   @par Note
+    @par Note
 
      As most other trigonometric function sind can be called
      with a second optional parameter  which is a tag on speed and accuracy
@@ -31,16 +30,16 @@ namespace boost { namespace simd
 
    see sincosd, sin, sinpi
 
-   @par Example:
+    @par Example:
 
-     @snippet sind.cpp sind
+      @snippet sind.cpp sind
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet sind.txt sind
+      @snippet sind.txt sind
 
   **/
-  Value sind(Value const & x);
+  IEEEValue sind(IEEEValue const& x);
 } }
 #endif
 

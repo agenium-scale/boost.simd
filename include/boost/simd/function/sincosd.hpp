@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,26 +15,25 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-trigonometric
-    This function object returns the Computes simultaneously and
+    This function object computes simultaneously and
     at lower cost the sind and cosd of the input
-
-   @see sincos, sincospi
-
 
     @par Header <boost/simd/function/sincosd.hpp>
 
-   @par Example:
+    @see sincos, sincospi
 
-     @snippet sincosd.cpp sincosd
+    @par Example:
 
-   @par Possible output:
+      @snippet sincosd.cpp sincosd
 
-     @snippet sincosd.txt sincosd
+    @par Possible output:
+
+      @snippet sincosd.txt sincosd
 
   **/
-  std::pair<Value, Value> sincosd(Value const & x);
+  std::pair<IEEEValue, IEEEValue> sincosd(IEEEValue const& x);
 } }
 #endif
 

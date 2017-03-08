@@ -18,7 +18,7 @@ namespace simd {
   @ingroup group-functions
   @defgroup group-reduction Reduction Functions
 
-  Those functions provide algorithms for in-register reduction and prefix-scan operations.
+  These functions provide algorithms for in-register reduction and prefix-scan operations.
 
   They are usually only defined for **SIMD** types but may, in some
   cases such as @ref sum or  @ref prod, have a valid scalar semantic.

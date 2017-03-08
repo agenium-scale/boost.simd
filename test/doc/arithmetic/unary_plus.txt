@@ -1,0 +1,14 @@
+//! [unary_plus]
+---- simd
+<- pf =                                 (-1, 2, -3, -32768)
+-> bs::unary_plus(pf) =                 (-1, 2, -3, -32768)
+<- pi =                                 (-1, 2, -3, -32768)
+-> bs::unary_plus(pi) =                 (-1, 2, -3, -32768)
+-> +pi =                                (-1, 2, -3, -32768)
+---- scalar
+<- xf =                                 -32768
+-> bs::unary_plus(xf) =                 -32768
+<- xi =                                 -32768
+-> bs::unary_plus(xi) =                 -32768
+-> +xi =                                -32768
+//! [unary_plus]

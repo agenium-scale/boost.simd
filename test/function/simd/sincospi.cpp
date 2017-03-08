@@ -15,7 +15,7 @@
 namespace bs = boost::simd;
 
 template <typename T, std::size_t N, typename Env>
-void test(Env& $)
+void test(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
 
@@ -39,13 +39,13 @@ STF_CASE_TPL("Check sincospi on pack" , STF_IEEE_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<T, N>($);
-  test<T, N/2>($);
-  test<T, N*2>($);
+  test<T, N>(runtime);
+  test<T, N/2>(runtime);
+  test<T, N*2>(runtime);
 }
 
 template <typename T, std::size_t N, typename Env>
-void testr(Env& $)
+void testr(Env& runtime)
 {
   using p_t = bs::pack<T, N>;
 
@@ -70,13 +70,13 @@ STF_CASE_TPL("Check restricted sincospi on pack" , STF_IEEE_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  testr<T, N>($);
-  testr<T, N/2>($);
-  testr<T, N*2>($);
+  testr<T, N>(runtime);
+  testr<T, N/2>(runtime);
+  testr<T, N*2>(runtime);
 }
 
 template <typename T, std::size_t N, typename Env>
-void testc(Env& $)
+void testc(Env& runtime)
 {
   namespace bst = bs::tag;
   using p_t = bs::pack<T, N>;
@@ -102,7 +102,7 @@ STF_CASE_TPL("Check clipped sincospi on pack" , STF_IEEE_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  testc<T, N>($);
-  testc<T, N/2>($);
-  testc<T, N*2>($);
+  testc<T, N>(runtime);
+  testc<T, N/2>(runtime);
+  testc<T, N*2>(runtime);
 }

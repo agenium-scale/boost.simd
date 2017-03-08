@@ -20,6 +20,9 @@ namespace boost { namespace simd
 
     Generates constant e.
 
+
+    @par Header <boost/simd/constant/twotomnmbo_3.hpp>
+
     @par Semantic:
     \f$2^(-nmb/3)\f$
 

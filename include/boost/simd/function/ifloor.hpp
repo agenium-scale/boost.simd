@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
 
     @ingroup group-arithmetic
     This function object computes the integer conversion of the @ref floor of its parameter.
@@ -30,14 +30,14 @@ namespace boost { namespace simd
 
     @par Example:
 
-       @snippet ifloor.cpp ifloor
+      @snippet ifloor.cpp ifloor
 
     @par Possible output:
 
-       @snippet ifloor.txt ifloor
+      @snippet ifloor.txt ifloor
 
   **/
-  as_integer_T<Value> ifloor(Value const & x);
+  as_integer_t<Value> ifloor(Value const& x);
 } }
 #endif
 

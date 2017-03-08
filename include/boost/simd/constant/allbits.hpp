@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generates a value of the chosen type which all bits are set to 1.
 
+
+    @par Header <boost/simd/constant/allbits.hpp>
+
     @par Semantic:
 
     @code

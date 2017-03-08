@@ -19,6 +19,9 @@ namespace boost { namespace simd
 
     Generate \f$-\log(eps^2)\f$ value
 
+
+    @par Header <boost/simd/constant/mlogeps2.hpp>
+
     @par Semantic:
 
     @code

@@ -11,7 +11,7 @@
 #include <simd_test.hpp>
 
 template <typename T, std::size_t N, typename Env>
-void test(Env& $)
+void test(Env& runtime)
 {
   using pack_t = boost::simd::pack<T, N>;
   pack_t p;
@@ -21,10 +21,10 @@ void test(Env& $)
 
 STF_CASE_TPL("Check for default constructed pack behaviours" , STF_NUMERIC_TYPES)
 {
-  test<T,  1>($);
-  test<T,  2>($);
-  test<T,  4>($);
-  test<T,  8>($);
-  test<T, 16>($);
-  test<T, 32>($);
+  test<T,  1>(runtime);
+  test<T,  2>(runtime);
+  test<T,  4>(runtime);
+  test<T,  8>(runtime);
+  test<T, 16>(runtime);
+  test<T, 32>(runtime);
 }

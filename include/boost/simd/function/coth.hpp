@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,24 +15,26 @@
 namespace boost { namespace simd
 {
 
- /*!
-
+  /*!
     @ingroup group-hyperbolic
+
     This unction object returns the hyperbolic cotangent:
     \f$(e^{x}+e^{-x})/(e^{x}-e^{-x})\f$
 
+    @par Header <boost/simd/function/coth.hpp>
 
     @see sinh, cosh, sinhcosh
 
     @par Example:
 
-       @snippet coth.cpp coth
+      @snippet coth.cpp coth
 
     @par Possible output:
 
-       @snippet coth.txt coth
+      @snippet coth.txt coth
+
   **/
-  Value coth(Value const & v0);
+  IEEEValue coth(IEEEValue const& x);
 } }
 #endif
 

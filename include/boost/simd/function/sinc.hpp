@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,27 +15,25 @@
 namespace boost { namespace simd
 {
 
- /*!
-  @ingroup group-trigonometric
+  /*!
+    @ingroup group-trigonometric
     This function object returns the Computes the sinus cardinal value of its parameter,
     i.e. \f$\sin(x)/x\f$.
 
-    @see sin, sincpi, sinhc
-
-
-
     @par Header <boost/simd/function/sinc.hpp>
 
-   @par Example:
+    @see sin, sincpi, sinhc
 
-     @snippet sinc.cpp sinc
+    @par Example:
 
-   @par Possible output:
+      @snippet sinc.cpp sinc
 
-     @snippet sinc.txt sinc
+    @par Possible output:
+
+      @snippet sinc.txt sinc
 
   **/
-  Value sinc(Value const & x);
+  IEEEValue sinc(IEEEValue const& x);
 } }
 #endif
 

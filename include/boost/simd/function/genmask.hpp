@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -14,24 +14,22 @@
 #if defined(DOXYGEN_ONLY)
 namespace boost { namespace simd
 {
- /*!
+  /*!
     @ingroup group-bitwise
-    This function object returns a mask of bits. All ones if the
-    input element is non @ref Zero else all zeros.
+    This function object returns a mask of bits. This mask is full of ones if the
+    input element is non @ref Zero else full of zeros.
 
     @see genmaskc
 
-
-
     @par Header <boost/simd/function/genmask.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet genmask.cpp genmask
+      @snippet genmask.cpp genmask
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet genmask.txt genmask
+      @snippet genmask.txt genmask
 
     @par Alias:
     @c if_allbits_else_zero
@@ -39,12 +37,11 @@ namespace boost { namespace simd
     @see if_allbits_else
 
   **/
-  template<typename A>  A genmask(const A& a) {}
 
-  /*!
-    @overload
-  */
-  template<typename T, typename A> T genmask(const A& a) {}
+  ///@{
+  as_arithmetic_t<LogicalValue> genmask(const LogicalValue& a);
+  Value genmask(const Value& a);
+  ///@}
 } }
 #endif
 

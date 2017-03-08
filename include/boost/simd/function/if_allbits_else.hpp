@@ -2,7 +2,7 @@
 /*!
   @file
 
-  @copyright 2016 NumScale SAS
+    @copyright 2016 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 namespace boost { namespace simd
 {
 
- /*!
+  /*!
     @ingroup group-boolean
     This function object  returns @ref Allbits if  @c c is @ref True else returns @c f
 
@@ -23,13 +23,13 @@ namespace boost { namespace simd
 
     @par Header <boost/simd/function/if_allbits_else.hpp>
 
-   @par Example:
+    @par Example:
 
-     @snippet if_allbits_else.cpp if_allbits_else
+      @snippet if_allbits_else.cpp if_allbits_else
 
-   @par Possible output:
+    @par Possible output:
 
-     @snippet if_allbits_else.txt if_allbits_else
+      @snippet if_allbits_else.txt if_allbits_else
 
     @par Alias:
     @c if_nan_else,
@@ -37,12 +37,7 @@ namespace boost { namespace simd
     @see genmask, Allbits, Nan
 
   **/
-  Value if_allbits_else(Value const& c, Value const& f);
-
-  /*!
-    @overload
-  */
-  Value if_allbits_else(LogicalValue const& c, Value const& f);
+  Value1 if_allbits_else(Value0 const& c, Value1 const& f);
 } }
 #endif
 

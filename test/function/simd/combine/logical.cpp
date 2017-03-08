@@ -22,7 +22,7 @@ STF_CASE_TPL("combine scalar into a pack<T,2>", STF_NUMERIC_TYPES)
 }
 
 template<typename T, std::size_t N, typename Env>
-void test( Env& $ )
+void test( Env& runtime )
 {
   std::array<bs::logical<T>,2*N> ref;
   for(std::size_t i=0;i<2*N;++i) ref[i] = bs::logical<T>(i%2);
@@ -38,7 +38,7 @@ STF_CASE_TPL("combine pack<T,N> into pack<T,2*N>", STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
 
-  test<T,N>($);
-  test<T,N/2>($);
-  test<T,N*2>($);
+  test<T,N>(runtime);
+  test<T,N/2>(runtime);
+  test<T,N*2>(runtime);
 }

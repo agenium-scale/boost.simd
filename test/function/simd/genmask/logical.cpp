@@ -14,7 +14,7 @@
 #include <simd_test.hpp>
 
 template <typename T, std::size_t N, typename Env>
-void testl(Env& $)
+void testl(Env& runtime)
 {
   namespace bs = boost::simd;
   using lT = bs::logical<T>;
@@ -37,9 +37,9 @@ STF_CASE_TPL("Check genmask on pack of logical", STF_NUMERIC_TYPES)
   namespace bs = boost::simd;
   using p_t = bs::pack<bs::logical<T>>;
   static const std::size_t N = bs::cardinal_of<p_t>::value;
-  testl<T, N>($);
-  testl<T, N/2>($);
-  testl<T, N*2>($);
+  testl<T, N>(runtime);
+  testl<T, N/2>(runtime);
+  testl<T, N*2>(runtime);
 }
 
 
