@@ -48,25 +48,14 @@ namespace boost { namespace simd
   typename std::iterator_traits<const T*>::difference_type
   count(T const* first, T const* last, U const & val)
   {
-    struct count_sum
-    {
-      using p_t =  pack<T>;
-      using itype_t = typename std::iterator_traits<const T*>::difference_type;
-      count_sum(const itype_t & c, const U & val): s_(c), pv_(val){ }
-      void operator()(const p_t& x) { s_ += nbtrue(x == v_); }
-      itype_t  s_;
-      T v_;
-      p_t pv_;
-    };
-
     auto pr = segmented_input_range(first,last);
     // prologue
     auto r0 = std::get<0>(pr);
     auto c = std::count(r0.begin(), r0.end(), val);
 
     // main simd part
-    auto r1 = std::get<1>(pr);
-    c = std::for_each(r1.begin(), r1.end(), count_sum(c, val)).s_;
+    p_t pval(val);
+    for(x :  std::get<1>(pr)) c+= nbtrue(x == pval);
 
     // epilogue
     auto r2 = std::get<2>(pr);
