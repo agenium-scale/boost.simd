@@ -22,8 +22,8 @@ the documentation and compiler supports.
 - Improved copysign performance in scalar mode (#457)
 - Performance of aggregated all,any,none have been improved (#456)
 - Fixed some assertions that were overly broad and reinstated assert in unit tests (#462)
-- Performance of hmsb has been improved on MSVC by providing a compressed mplementation of
-std::bitset to be used for small size of pac (#357)
+- Performance of hmsb has been improved on MSVC by providing a compressed implementation of
+std::bitset to be used for small size of pack (#357)
 - Tests and benchmarks subsystem are now downloaded on demand (#390)
 
 ## Version 4.17.1.0 - 01/31/2017
