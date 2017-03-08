@@ -122,4 +122,4 @@ architectures, compilers and operating systems, but also because of the performa
 functions.
 
 <div style="text-align: right;" markdown="1">Prev: [SIMD Branching Part 2 - Computations with different types](@ref tutorial-branching-split)</div>
-<div style="text-align: right;" markdown="1">Next: [Evaluation of the N-Body problem](@ref tutorial-nbody)/div>
+<div style="text-align: right;" markdown="1">Next: [Evaluation of the N-Body problem](@ref tutorial-nbody)</div>

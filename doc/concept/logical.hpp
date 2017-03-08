@@ -25,7 +25,7 @@
       generate this instance of @c T.
 
     - @c T is constructible from any type convertible to bool
-    - For any @c a of type @c T and any @u of any type convertible to bool, <tt>a = u</tt> is a valid expression of Logical type
+    - For any @c a of type @c T and any @c u of any type convertible to bool, <tt>a = u</tt> is a valid expression of Logical type
     - For any @c a of type @c T, @c !a is a valid expression of Logical type
     - For any @c a of type @c T, @c ~a is a valid expression of Logical type
     - For any @c a and @c b of type @c T, <tt>a && b</tt> is a valid expression of Logical type

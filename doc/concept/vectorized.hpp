@@ -21,11 +21,11 @@
 
   Vectorized types satisfy [DefaultConstructible](http://en.cppreference.com/w/cpp/concept/DefaultConstructible),
   [CopyConstructible](http://en.cppreference.com/w/cpp/concept/CopyConstructible),
-  [Assignable](http://en.cppreference.com/w/cpp/concept/Assignable) and
+  CopyAssignable and MoveAssignable. Lvalues of Vectorized types satisfy
   [Swappable](http://en.cppreference.com/w/cpp/concept/Swappable).
 
   Vectorized does not refine [EqualityComparable](http://en.cppreference.com/w/cpp/concept/EqualityComparable)
-  (and hence SemiRegular) because @c operator== returns Vectorizable instead of @c bool.
+  (and hence Regular) because @c operator== returns Vectorizable instead of @c bool.
 
   For any Vectorized type @c V, the following expressions are valid:
 
