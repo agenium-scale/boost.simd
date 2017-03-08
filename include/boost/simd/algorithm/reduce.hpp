@@ -56,11 +56,9 @@ namespace boost { namespace simd
   /*!
     @ingroup group-std
 
-    Computes the generalized sum of the elements in the given Contiguous Range @range{first,last}
-    over the binary functions @c binop, using @c init as the initial value.
+     Reduces the range [first; last), possibly permuted and aggregated in unspecified manner,
+     along with the initial value init over binary_op.
 
-    While @c binop is applied over the result of dereferencing the input pointers, @c reduce is to
-    be used in the final reduction of the SIMD part of the generalized sum.
 
     \notebox{The summation order can be different from the order of a sequential summation
             , thus leading to different results.
@@ -82,11 +80,10 @@ namespace boost { namespace simd
 
     @return The generalized sum of the given init value and elements in the given range over @ binop.
   **/
-  template<typename T, typename U, typename F, typename N, typename G>
-  U reduce( T const* first, T const* last, U init, F binop )
+  template<typename T, typename F>
+  T reduce( T const* first, T const* last, T init, F binop )
   {
     auto pr = segmented_input_range(first,last);
-
     for( auto const& e : std::get<0>(pr) ) init = binop(init, e);
     for( auto const& e : std::get<2>(pr) ) init = binop(init, e);
     auto b = std::get<1>(pr).begin();

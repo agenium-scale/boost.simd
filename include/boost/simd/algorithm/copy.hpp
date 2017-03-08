@@ -48,15 +48,10 @@ namespace boost { namespace simd
     struct local
     {
       using p_t = pack<T>;
-      local(P const& p, const T & nv) : p_(p){}
-
       T operator()(T const& x) { return x; }
       p_t operator()(p_t const& x) { return  x; }
-
-      P p_;
     };
-    local loc(p);
-    return bs::transform(first, last, out, loc);
+    return bs::transform(first, last, out, local{});
   }
 
 } }

@@ -11,7 +11,7 @@
 #ifndef BOOST_SIMD_ALGORITHM_COPY_N_HPP_INCLUDED
 #define BOOST_SIMD_ALGORITHM_COPY_N_HPP_INCLUDED
 
-#include <boost/simd/range/copy.hpp>
+#include <boost/simd/algorithm/copy.hpp>
 
 namespace boost { namespace simd
 {
@@ -40,11 +40,11 @@ namespace boost { namespace simd
       @snippet copy_n.txt copy_n
 
   **/
-  template<typename T, typename Size, typename U>
-  U* copy_n(T const* first, Size n, U* out)
+  template<typename T, typename Size>
+  T* copy_n(T const* first, Size n, T* out)
   {
     if (n <=  Size(0))
-      return first;
+      return out;
     else
       return boost::simd::copy(first, first+n, out);
   }

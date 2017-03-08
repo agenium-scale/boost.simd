@@ -18,7 +18,6 @@ int main()
   namespace bs =  boost::simd;
   std::vector<float> d{ 0.0f, 2.0f, 0.0f, 0.0f, -1.0f, 2.0f, 0.0f};
 
-  auto r0 = d.data();
   auto r1 = bs::find_if_not( d.data(), d.data()+7, bs::is_gez );
   std::cout << "r1 " << r1 << " *r1 " << *r1 << "\n";
   auto r2 = bs::find_if_not( d.data(), d.data()+7, bs::is_lez );
