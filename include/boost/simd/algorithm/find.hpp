@@ -13,9 +13,11 @@
 
 #include <boost/simd/range/segmented_input_range.hpp>
 #include <boost/simd/function/any.hpp>
+#include <boost/simd/function/fma.hpp>
 #include <boost/simd/function/is_nez.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/simd/detail/is_aligned.hpp>
+#include <boost/simd/meta/cardinal_of.hpp>
 #include <algorithm>
 
 namespace boost { namespace simd
@@ -52,8 +54,8 @@ namespace boost { namespace simd
   template<typename T, typename U>
   T const* find(T const* first, T const* last, U const & val)
   {
+    using p_t =  pack<T>;
     auto pr = segmented_input_range(first,last);
-
     // prologue
     auto r0 = std::get<0>(pr);
     auto r = std::find(r0.begin(), r0.end(), val);
@@ -67,7 +69,8 @@ namespace boost { namespace simd
     if (rv != r1.end())
     {
       auto z =  std::find((*rv).begin(), (*rv).end(), val);
-      return std::get<0>(pr).end()+std::distance(r1.begin(), rv)+std::distance((*rv).begin(), z);
+      return std::get<0>(pr).end()
+        + std::distance(r1.begin(), rv)*bs::cardinal_of_t<p_t>::value + std::distance((*rv).begin(), z);
     }
     // epilogue
     auto r2 = std::get<2>(pr);

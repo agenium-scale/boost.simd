@@ -51,7 +51,7 @@ struct fake_sum
   template<typename T> T operator()(T const& a, T const& e) { return a + e; }
 };
 
-STF_CASE_TPL( "Check simd::reduce(f,l,i,f,n)", STF_NUMERIC_TYPES )
+STF_CASE_TPL( "Check simd::reduce(f,l,i,f)", STF_NUMERIC_TYPES )
 {
   static const int N = pack<T>::static_size;
 
@@ -61,32 +61,10 @@ STF_CASE_TPL( "Check simd::reduce(f,l,i,f,n)", STF_NUMERIC_TYPES )
   STF_EQUAL ( (std::accumulate(values.begin(), values.end(), T(3), fake_sum{}))
             , (boost::simd::reduce( values.data(), values.data()+values.size()
                                   , T(3)
-                                  , fake_sum{}, T(0)
+                                  , fake_sum{}
                                   )
               )
             );
 
 }
 
-struct squared_sum
-{
-  template<typename T> T operator()(T const& a, T const& e) { return a + e*e; }
-};
-
-STF_CASE_TPL( "Check simd::reduce(f,l,i,f,n,g)", STF_NUMERIC_TYPES )
-{
-  static const int N = pack<T>::static_size;
-
-  std::vector<T,aligned_allocator<T,pack<T>::alignment>> values(2*N);
-  std::iota(values.begin(), values.end(),T(0));
-
-  STF_EQUAL ( (std::accumulate(values.begin(), values.end(), T(3), squared_sum{}))
-            , (boost::simd::reduce( values.data(), values.data()+values.size()
-                                  , T(3)
-                                  , squared_sum{}, T(0)
-                                  , boost::simd::plus
-                                  )
-              )
-            );
-
-}

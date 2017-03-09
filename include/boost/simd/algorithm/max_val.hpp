@@ -64,7 +64,7 @@ namespace boost { namespace simd
     p_t mm(m);
     for( auto const & e : std::get<1>(pr) )
     {
-      mm =  if_else(comp(m, e), m, e);
+      mm =  if_else(comp(m, e), e, m);
     }
     m =  mm[0];
     for (  size_t i =  1; i < p_t::static_size;  ++i){

@@ -16,6 +16,7 @@
 #include <boost/simd/function/aligned_load.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/simd/detail/is_aligned.hpp>
+#include <boost/simd/meta/cardinal_of.hpp>
 
 namespace boost { namespace simd
 {

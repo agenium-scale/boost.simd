@@ -27,9 +27,10 @@ namespace boost { namespace simd
     Replaces all elements  for which predicate p returns true
     by new_value in the range [first, last).
 
-    @param first  Beginning of the range of elements
-    @param last   End of the range of elements
-    @param p      unary predicate which returns @c true if the element value should be replaced.
+    @param first   Beginning of the range of elements
+    @param last    End of the range of elements
+    @param p       unary predicate which returns @c true if the element value should be replaced.
+    @param new_val Replacement value
 
     @par Requirement
 
@@ -56,7 +57,9 @@ namespace boost { namespace simd
       local(P const& p, const T & nv) : p_(p), nv_(nv), pnv_(nv){}
 
       T operator()(T const& x) { return p_(x) ? nv_ : x; }
-      p_t operator()(p_t const& x) { return if_else(p_(x), pnv_, x); }
+      p_t operator()(p_t const& x) {
+        return if_else(p_(x), pnv_, x);
+      }
 
       P p_;
       T nv_;

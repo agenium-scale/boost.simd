@@ -60,8 +60,9 @@ namespace boost { namespace simd
 
     // prologue
     for( auto const & e : std::get<0>(pr) ){
-      if (e < *first2++) return true;
-      if (*first2++ < e) return false;
+      if (e < *first2) return true;
+      if (*first2 < e) return false;
+      ++first2;
     }
 
 
@@ -89,8 +90,9 @@ namespace boost { namespace simd
 
     // epilogue
     for( auto const & e : std::get<2>(pr) ){
-      if (e < *first2++) return true;
-      if (*first2++ < e) return false;
+      if (e < *first2) return true;
+      if (*first2 < e) return false;
+      ++first2;
     }
     return shorter;
   }
@@ -130,8 +132,8 @@ namespace boost { namespace simd
   {
     using vT = pack<T>;
     using  itype_t = typename std::iterator_traits<const T*>::difference_type;
-    itype_t d1 =  distance(first1, last1);
-    itype_t d2 =  distance(first2, last2);
+    itype_t d1 =  std::distance(first1, last1);
+    itype_t d2 =  std::distance(first2, last2);
     bool shorter =  d1 < d2;
 //    auto last2b = shorter ? last2 : first2+d1;
     auto last1b = shorter ?  last1 : first1+d2;
@@ -139,8 +141,9 @@ namespace boost { namespace simd
     auto pr = segmented_input_range(first1,last1b);
     // prologue
     for( auto const & e : std::get<0>(pr) ){
-      if (comp(e, *first2++)) return true;
-      if (comp(*first2++, e)) return false;
+      if (comp(e, *first2)) return true;
+      if (comp(*first2, e)) return false;
+      ++first2;
     }
 
     // main SIMD part - checks if we can store efficiently or not
@@ -167,8 +170,9 @@ namespace boost { namespace simd
 
     // epilogue
     for( auto const & e : std::get<2>(pr) ){
-      if (comp(e, *first2++)) return true;
-      if (comp(*first2++, e)) return false;
+      if (comp(e, *first2)) return true;
+      if (comp(*first2, e)) return false;
+      ++first2;
     }
     return shorter;
   }

@@ -15,6 +15,8 @@
 #include <boost/simd/function/all.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/simd/detail/is_aligned.hpp>
+#include <boost/simd/meta/cardinal_of.hpp>
+#include <algorithm>
 
 namespace boost { namespace simd
 {
@@ -47,6 +49,7 @@ namespace boost { namespace simd
   template<typename T, typename Pred>
   T const* find_if_not(T const* first, T const* last, Pred pred)
   {
+    using p_t =  pack<T>;
     auto pr = segmented_input_range(first,last);
     // prologue
     auto r0 = std::get<0>(pr);
@@ -60,7 +63,8 @@ namespace boost { namespace simd
     if (rv != r1.end())
     {
       auto z =  std::find_if_not((*rv).begin(), (*rv).end(), pred);
-      return std::get<0>(pr).end()+std::distance(r1.begin(), rv)+std::distance((*rv).begin(), z);
+      return std::get<0>(pr).end()
+        + std::distance(r1.begin(), rv)*bs::cardinal_of_t<p_t>::value + std::distance((*rv).begin(), z);
     }
     // epilogue
     auto r2 = std::get<2>(pr);

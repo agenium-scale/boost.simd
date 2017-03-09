@@ -28,14 +28,6 @@ int main()
   std::cout << "d =  (" ;
   for( auto e : d) std::cout << e << " ";
   std::cout << ") " << std::endl;
-//   bs::iota( d.data()+1,d.data()+8, 2.4f );
-//   std::cout << "d =  (" ;
-//   for( auto e : d) std::cout << e << " ";
-//   std::cout << ") " << std::endl;
-//   bs::iota( d.data()+1,d.data()+8, 3.0f, -0.5f);
-//   std::cout << "d =  (" ;
-//   for( auto e : d) std::cout << e << " ";
-//   std::cout << ") " << std::endl;
   return 0;
  }
 //! [iota]
