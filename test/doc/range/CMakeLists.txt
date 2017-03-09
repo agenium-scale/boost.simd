@@ -36,7 +36,6 @@ SET( SOURCES
     replace.cpp
     replace_if.cpp
     segmented_input_range.cpp
-    select.cpp
     transform.unary.cpp
     transform.binary.cpp
     transform_reduce.cpp
