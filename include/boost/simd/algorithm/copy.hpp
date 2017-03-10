@@ -28,8 +28,8 @@ namespace boost { namespace simd
 
     @par Requirement
 
-      - @c first , @c last and @c out must be pointer to type which can be used within
-        boost::simd::pack.
+      - @c first , @c last and @c out must be pointer to Vectorizable type.
+
       - return a pointer to the element past the last element copied.
 
     @par Example:

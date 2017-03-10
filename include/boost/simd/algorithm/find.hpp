@@ -35,8 +35,8 @@ namespace boost { namespace simd
 
     @par Requirement
 
-      - @c first , @c last and @c out must be pointer to type which can be used within
-        boost::simd::pack.
+      - @c first , @c last and @c out must be pointer to Vectorizable type.
+
       - @c val must be a scalar value convertible to the pointee type of first.
 
     @par Example:

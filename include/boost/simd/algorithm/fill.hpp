@@ -30,8 +30,8 @@ namespace boost { namespace simd
 
     @par Requirement
 
-      - @c first and @c last must be pointers to a type which can be used within
-        boost::simd::pack.
+      - @c first and @c last must be pointers to Vectorizable type.
+
 
     @par Example;:
 
@@ -54,8 +54,7 @@ namespace boost { namespace simd
 
     // main SIMD part
     auto r1 = std::get<1>(pr);
-    pack<T> v(value);
-    std::fill(r1.begin(),  r1.end(), v);
+    std::fill(r1.begin(),  r1.end(), pack<T>(value);
 
     // epilogue
     auto r2 = std::get<2>(pr);

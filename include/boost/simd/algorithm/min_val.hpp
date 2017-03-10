@@ -34,8 +34,8 @@ namespace boost { namespace simd
 
     @par Requirement
 
-      - @c first and @c last must be pointer to type which can be used within
-        boost::simd::pack.
+      - @c first and @c last must be pointer to Vectorizable type.
+
       - @c comp must be a polymorphic unary function object, i.e callable on generic types.
       - if @c comp is not present the function test is done with operator <
 

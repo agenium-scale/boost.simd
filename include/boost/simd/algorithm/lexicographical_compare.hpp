@@ -34,8 +34,8 @@ namespace boost { namespace simd
 
     @par Requirement
 
-      - @c first1 , @c last1  @c first2 , @c last2 must be pointer to type which can be used within
-        boost::simd::pack.
+      - @c first1 , @c last1  @c first2 , @c last2 must be pointer to Vectorizable type.
+
 
     @par Example:
 
@@ -110,8 +110,8 @@ namespace boost { namespace simd
 
     @par Requirement
 
-      - @c first , @c last and @c out must be pointer to type which can be used within
-        boost::simd::pack.
+      - @c first , @c last and @c out must be pointer to Vectorizable type.
+
       - @c f must be a polymorphic binary function object, i.e callable on generic types.
 
       - Two ranges are compared element by element.
@@ -135,7 +135,6 @@ namespace boost { namespace simd
     itype_t d1 =  std::distance(first1, last1);
     itype_t d2 =  std::distance(first2, last2);
     bool shorter =  d1 < d2;
-//    auto last2b = shorter ? last2 : first2+d1;
     auto last1b = shorter ?  last1 : first1+d2;
 
     auto pr = segmented_input_range(first1,last1b);

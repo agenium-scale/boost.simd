@@ -34,18 +34,18 @@ namespace boost { namespace simd
 
     @par Requirement
 
-      - @c first , @c last must be pointer to type which can be used within
-        boost::simd::pack.
-      - @c unop and binop must be a polymorphic unary function object, i.e callable on generic types,
-        at least @c T and  @c boost::simd::pack<T>
-      - returns the generalized sum of init and unary_op(*first), unary_op(*(first+1)), ... unary_op(*(last-1)) over binary_op,
+      - @c first , @c last must be pointer to Vectorizable type.
 
-      where generalized sum GSUM(op, a1, ..., aN) is defined as follows:
+      - @c unop and binop must be a polymorphic unary function object, i.e callable on generic types,
+        at least @c T and  @c .<T>
+      - returns the generalized sum of init and unary_op(*first), unary_op(*(first+1)), . unary_op(*(last-1)) over binary_op,
+
+      where generalized sum GSUM(op, a1, ., aN) is defined as follows:
 
       if N=1, a1
-      if N > 1, op(GSUM(op, b1, ..., bK), GSUM(op, bM, ..., bN)) where
+      if N > 1, op(GSUM(op, b1, ., bK), GSUM(op, bM, ., bN)) where
 
-        - b1, ..., bN may be any permutation of a1, ..., aN and
+        - b1, ., bN may be any permutation of a1, ., aN and
         - 1 < K+1 = M <= N
 
       in other words, the results of unary_op may be grouped and arranged in arbitrary order.
@@ -90,7 +90,7 @@ namespace boost { namespace simd
   /*!
     @ingroup group-std
 
-    Applies transform binary oerator  to each element in the range [first1; last1) and [first2, ..)
+    Applies transform binary oerator  to each element in the range [first1; last1) and [first2, )
     and reduces the results (possibly permuted and aggregated in unspecified manner)
     along with the initial value init over generalized sum gsum binary operator.
 
@@ -103,20 +103,20 @@ namespace boost { namespace simd
 
     @par Requirement
 
-      - T, U and V must be types which can be used within  boost::simd::pack.
+      - T, U and V must be types which can be used within
       - @c transform and gsum must be a polymorphic unary function object, i.e callable on generic types,
         at least
-          - transform must be able to be called on couples @c (T, U) and  @c (boost::simd::pack<T>, boost::simd::pack<U>)
+          - transform must be able to be called on couples @c (T, U) and  @c (.<T>, .<U>)
           to produce respectively @c V and pack<boost::simd::V> types
           - gsum must be able to be called on V and pack<V> types to produce the same output type.
-      - returns the generalized sum of init and transform(*first1, *first2), transform(*(first+1), *(first2+1)), ..., transform(*(last1-1), *(first2-(last1-first1)-1)) over binary_op,
+      - returns the generalized sum of init and transform(*first1, *first2), transform(*(first+1), *(first2+1)), ., transform(*(last1-1), *(first2-(last1-first1)-1)) over binary_op,
 
-      where generalized sum GSUM(op, a1, ..., aN) is defined as follows:
+      where generalized sum GSUM(op, a1, ., aN) is defined as follows:
 
       if N=1, a1
-      if N > 1, op(GSUM(op, b1, ..., bK), GSUM(op, bM, ..., bN)) where
+      if N > 1, op(GSUM(op, b1, ., bK), GSUM(op, bM, ., bN)) where
 
-        - b1, ..., bN may be any permutation of a1, ..., aN and
+        - b1, ., bN may be any permutation of a1, ., aN and
         - 1 < K+1 = M <= N
 
       in other words, the results of transform may be grouped and arranged in arbitrary order.
