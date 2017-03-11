@@ -32,10 +32,10 @@ namespace boost { namespace simd
 
     @par Requirement
 
-      - @c first , @c last and @c out must be pointer to Vectorizable type.
+      - @c first, @c last and @c out must be pointer to Vectorizable type.
 
       - @c f must be a polymorphic unary function object, i.e callable on generic types.
-      - @c .<T>::static_size @c == @c .<U>::static_size
+      - @c boost::simd::pack<T>::static_size @c == @c .<U>::static_size
 
     @par Example
 
@@ -102,11 +102,11 @@ namespace boost { namespace simd
 
     @par Requirement
 
-      - @c first , @c last and @c out must be pointer to Vectorizable type.
+      - @c first, @c last and @c out must be pointer to Vectorizable type.
 
       - @c f must be a polymorphic binary function object, i.e callable on generic types.
-      - @c .<T1>::static_size @c == @c .<U>::static_size
-      - @c .<T2>::static_size @c == @c .<U>::static_size
+      - @c boost::simd::pack<T1>::static_size @c == @c .<U>::static_size
+      - @c boost::simd::pack<T2>::static_size @c == @c .<U>::static_size
 
     @par Example
     @snippet transform.binary.cpp transform-binary
@@ -120,7 +120,7 @@ namespace boost { namespace simd
   template<typename T1, typename T2, typename U, typename BinOp>
   U* transform(T1 const* first1, T1 const* last1, T2 const* first2, U* out, BinOp f)
   {
-    using vT2 = .<T2>;
+    using vT2 = boost::simd::pack<T2>;
     using vU = pack<U>;
 
     static_assert ( pack<T1>::static_size == vT2::static_size

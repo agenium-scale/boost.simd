@@ -33,7 +33,7 @@ namespace boost { namespace simd
 
     @par Requirement
 
-      - @c first , @c last and @c out must be pointers to Vectorizable type.
+      - @c first, @c last and @c out must be pointers to Vectorizable type.
 
 
     @par Example:

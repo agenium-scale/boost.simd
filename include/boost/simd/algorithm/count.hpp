@@ -29,7 +29,7 @@ namespace boost { namespace simd
 
     @par Requirement
 
-      - @c first , @c last and @c out must be pointers to Vectorizable type.
+      - @c first, @c last and @c out must be pointers to Vectorizable type.
 
       - @c val must be a scalar value convertible to the pointee type of first.
 
@@ -48,7 +48,7 @@ namespace boost { namespace simd
   typename std::iterator_traits<const T*>::difference_type
   count(T const* first, T const* last, U const & val)
   {
-    using p_t = .<T>;
+    using p_t = boost::simd::pack<T>;
     auto pr = segmented_input_range(first,last);
     // prologue
     auto r0 = std::get<0>(pr);

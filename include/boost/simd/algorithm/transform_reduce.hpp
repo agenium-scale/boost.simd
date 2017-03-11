@@ -34,10 +34,10 @@ namespace boost { namespace simd
 
     @par Requirement
 
-      - @c first , @c last must be pointer to Vectorizable type.
+      - @c first, @c last must be pointer to Vectorizable type.
 
       - @c unop and binop must be a polymorphic unary function object, i.e callable on generic types,
-        at least @c T and  @c .<T>
+        at least @c T and  @c boost::simd::pack<T>
       - returns the generalized sum of init and unary_op(*first), unary_op(*(first+1)), . unary_op(*(last-1)) over binary_op,
 
       where generalized sum GSUM(op, a1, ., aN) is defined as follows:
@@ -106,10 +106,11 @@ namespace boost { namespace simd
       - T, U and V must be types which can be used within
       - @c transform and gsum must be a polymorphic unary function object, i.e callable on generic types,
         at least
-          - transform must be able to be called on couples @c (T, U) and  @c (.<T>, .<U>)
-          to produce respectively @c V and pack<boost::simd::V> types
-          - gsum must be able to be called on V and pack<V> types to produce the same output type.
-      - returns the generalized sum of init and transform(*first1, *first2), transform(*(first+1), *(first2+1)), ., transform(*(last1-1), *(first2-(last1-first1)-1)) over binary_op,
+          - transform must be able to be called on couples @c (T, U) and  @c (boost::simd::pack<T>, boost::simd::pack<U>)
+          to produce respectively @c V and boost::simd::pack<V> types
+          - gsum must be able to be called on V and boost::simd::pack<V> types to produce the same output type.
+      - returns the generalized sum of init and transform(*first1, *first2), transform(*(first+1), *(first2+1)), .,
+        transform(*(last1-1), *(first2-(last1-first1)-1)) over binary_op,
 
       where generalized sum GSUM(op, a1, ., aN) is defined as follows:
 

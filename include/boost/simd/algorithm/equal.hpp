@@ -35,7 +35,7 @@ namespace boost { namespace simd
 
     @par Requirement
 
-      - @c first , @c last and @c out must be pointer to Vectorizable type.
+      - @c first, @c last and @c out must be pointer to Vectorizable type.
 
 
     @par Example:
@@ -95,10 +95,10 @@ namespace boost { namespace simd
 
     @par Requirement
 
-      - @c first , @c last and @c out must be pointer to Vectorizable type.
+      - @c first, @c last and @c out must be pointer to Vectorizable type.
 
       - @c f must be a polymorphic binary function object, i.e callable on generic types.
-      - @c .<T1>::static_size @c == @c .<T2>::static_size @c
+      - @c boost::simd::pack<T1>::static_size @c == @c boost::simd::pack<T2>::static_size @c
 
     @par Example:
 
@@ -112,7 +112,7 @@ namespace boost { namespace simd
   template<typename T, typename Pred>
   bool equal(T const* first1, T const* last1, T const* first2, Pred f)
   {
-    using vT = .<T>;
+    using vT = boost::simd::pack<T>;
 
      auto pr = segmented_input_range(first1,last1);
 

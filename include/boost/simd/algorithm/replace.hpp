@@ -31,7 +31,7 @@ namespace boost { namespace simd
 
     @par Requirement
 
-      - @c first , @c last and @c out must be pointer to Vectorizable type.
+      - @c first, @c last and @c out must be pointer to Vectorizable type.
 
       - @c new_val and old_val must be a scalar values convertible to  pointee type of first.
 
@@ -49,7 +49,7 @@ namespace boost { namespace simd
   {
     struct local
     {
-      using p_t = pack<T>;
+      using p_t = boost::simd::pack<T>;
       local(const T & ov, const T & nv) : nv_(nv), ov_(ov), pnv_(nv), pov_(ov){}
 
       T operator()(T const& x) { return x == ov_ ? nv_ : x; }
@@ -60,8 +60,6 @@ namespace boost { namespace simd
     };
     local loc(old_val, new_val);
     transform(first, last, first, loc);
-//  When c++14
-//  transform(first, last, first, [&new_val, &old_val](auto& x){return if_else(x == old_val, new_val, x); });
 
   }
 

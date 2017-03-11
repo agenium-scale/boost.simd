@@ -12,7 +12,6 @@
 #define BOOST_SIMD_ALGORITHM_IOTA_HPP_INCLUDED
 
 #include <boost/simd/range/segmented_output_range.hpp>
-//#include <boost/simd/algorithm/generate.hpp>
 #include <boost/simd/function/enumerate.hpp>
 #include <boost/simd/constant/one.hpp>
 #include <boost/simd/as.hpp>
@@ -33,7 +32,7 @@ namespace boost { namespace simd
 
     @par Requirement
 
-      - @c first , @c last and @c out must be pointer to Vectorizable type.
+      - @c first, @c last and @c out must be pointer to Vectorizable type.
 
 
     @par Example:

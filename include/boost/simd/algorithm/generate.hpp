@@ -29,7 +29,7 @@ namespace boost { namespace simd
 
     @par Requirement
 
-      - @c first , @c last and @c out must be pointer to Vectorizable type.
+      - @c first, @c last and @c out must be pointer to Vectorizable type.
 
       - @c g must be a polymorphic unary function object, i.e callable on generic types.
          its prototype must be T g(as_<T>) as g can be called for scalars and packs and

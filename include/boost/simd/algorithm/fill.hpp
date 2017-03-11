@@ -54,7 +54,7 @@ namespace boost { namespace simd
 
     // main SIMD part
     auto r1 = std::get<1>(pr);
-    std::fill(r1.begin(),  r1.end(), pack<T>(value);
+    std::fill(r1.begin(),  r1.end(), pack<T>(value));
 
     // epilogue
     auto r2 = std::get<2>(pr);
