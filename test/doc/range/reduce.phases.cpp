@@ -11,20 +11,13 @@
 #include <iostream>
 #include <numeric>
 
-struct squared_sum
-{
-  template<typename T>
-  T operator()(T const& a, T const& e) { return a + e*e; }
-};
-
 int main()
 {
   float values[] = {1.f,2.f,3.f,4.f,5.f,6.f,7.f,8.f,9.f,};
 
   std::cout << "SIMD reduce    :"
-            << boost::simd::reduce( &values[0], &values[0]+9, 0.f
-                                  , squared_sum{}, 0.f
-                                  , boost::simd::plus
+            << boost::simd::reduce( &values[0], &values[0]+9, 1.f
+                                  , boost::simd::multiplies
                                   )
             << std::endl;
 
