@@ -22,8 +22,7 @@ int main()
             << bs::reduce( &values[0], &values[0]+9  //range
                          , 10.0f                     //init
                          , bs::multiplies            //comutative and associative binop
-                         , 1.0f                      //binop neutral element
-                                  )
+                         )
             << std::endl;
   std::cout << " 10!           : "
             << bs::gamma(11.0)

@@ -87,8 +87,6 @@ In fact two ways are possible at first sight:
    This results in n-1 'vertical' fast SIMD mutiplies and  only 1 final and slower 'horizontal' operation.
 
 boost::simd::reduce acts the good way. and take also care of alignment problems as boost::simd::transform.
-But this algorithm is more restricted than std::reduce on the variety of binary operators than can be used
-in the process and also requires the knowledge of a neutral element for the operator.
 
 Here is a full example that computes 10!. In fact it computes
  \f$10\prod_1^9 i\f$ (just to ilustrate the init value possibility) and uses the \f$\Gamma\f$ function to
