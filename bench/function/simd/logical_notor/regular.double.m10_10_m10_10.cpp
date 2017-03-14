@@ -13,9 +13,8 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_logical_notor, bs::logical_notor);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_logical_notor, double>(-10, 10,-10, 10);
+  using T = bs::pack<double>;
+  run<T>(bs::logical_notor, nsbg::rand<T>(-10, 10), nsbg::rand<T>(-10, 10));
 }

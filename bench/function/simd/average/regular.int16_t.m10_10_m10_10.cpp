@@ -13,9 +13,8 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_average, bs::average);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_average, std::int16_t>(-10, 10,-10, 10);
+  using T = bs::pack<std::int16_t>;
+  run<T>(bs::average, nsbg::rand<T>(-10, 10), nsbg::rand<T>(-10, 10));
 }

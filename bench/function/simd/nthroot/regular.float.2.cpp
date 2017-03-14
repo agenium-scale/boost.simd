@@ -15,7 +15,6 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 namespace bd =  boost::dispatch;
-
 template < int N>
 struct nthr
 {
@@ -25,9 +24,8 @@ struct nthr
     return bs::nthroot(a, bs::enumerate<i_t>(N));
   }
 };
-DEFINE_SIMD_BENCH(simd_nthroot, nthr<10>());
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_nthroot, float>(0, 10);
+  using T = bs::pack<float>;
+  run<T>(nthr<10>(), nsbg::rand<T>(0, 10));
 }

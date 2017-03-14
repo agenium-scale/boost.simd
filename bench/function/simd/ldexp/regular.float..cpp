@@ -13,9 +13,8 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_ldexp, bs::ldexp);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_ldexp, float>());
+  using T = bs::pack<float>;
+  run<T>(bs::ldexp, );
 }

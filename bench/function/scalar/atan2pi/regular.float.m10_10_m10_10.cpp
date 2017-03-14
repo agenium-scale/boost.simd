@@ -13,9 +13,8 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_atan2pi, bs::atan2pi);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_atan2pi, float>(-10, 10,-10, 10);
+  using T = float;
+  run<T>(bs::atan2pi, nsbg::rand<T>(-10, 10), nsbg::rand<T>(-10, 10));
 }

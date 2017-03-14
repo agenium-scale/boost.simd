@@ -13,10 +13,9 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_deinterleave, bs::deinterleave);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_deinterleave, std::uint16_t>(-10, 10,-10, 10);
+  using T = bs::pack<std::uint16_t>;
+  run<T>(bs::deinterleave, nsbg::rand<T>(-10, 10), nsbg::rand<T>(-10, 10));
 }
 

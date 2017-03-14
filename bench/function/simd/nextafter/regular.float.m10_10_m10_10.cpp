@@ -13,9 +13,8 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_nextafter, bs::nextafter);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_nextafter, float>(-10, 10,-10, 10);
+  using T = bs::pack<float>;
+  run<T>(bs::nextafter, nsbg::rand<T>(-10, 10), nsbg::rand<T>(-10, 10));
 }

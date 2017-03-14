@@ -13,9 +13,8 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_two_split, bs::two_split);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_two_split, double>(-10, 10);
+  using T = bs::pack<double>;
+  run<T>(bs::two_split, nsbg::rand<T>(-10, 10));
 }

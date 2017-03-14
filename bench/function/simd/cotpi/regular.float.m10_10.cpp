@@ -13,9 +13,8 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_cotpi, bs::cotpi);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_cotpi, float>(-10, 10);
+  using T = bs::pack<float>;
+  run<T>(bs::cotpi, nsbg::rand<T>(-10, 10));
 }

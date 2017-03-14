@@ -14,10 +14,9 @@
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
-
-DEFINE_SIMD_BENCH(simd_reversebits, bs::reversebits);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_reversebits, int8_t>(bs::Valmin<int8_t>(), bs::Valmax<int8_t>());
+  using T = bs::pack<int8_t>;
+  using U = typename T::value_type;
+  run<T>(bs::reversebits, nsbg::rand<T>(bs::Valmin<U>(), bs::Valmax<U>()));
 }

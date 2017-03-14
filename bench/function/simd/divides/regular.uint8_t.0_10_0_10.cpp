@@ -13,10 +13,9 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_divides, bs::divides);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_divides, std::uint8_t>(-10, 10,-10, 10);
+  using T = bs::pack<std::uint8_t>;
+  run<T>(bs::divides, nsbg::rand<T>(-10, 10), nsbg::rand<T>(-10, 10));
 }
 

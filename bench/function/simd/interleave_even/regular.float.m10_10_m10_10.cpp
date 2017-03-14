@@ -13,9 +13,8 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_interleave_even, bs::interleave_even);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_interleave_even, float>(-10, 10,-10, 10);
+  using T = bs::pack<float>;
+  run<T>(bs::interleave_even, nsbg::rand<T>(-10, 10), nsbg::rand<T>(-10, 10));
 }

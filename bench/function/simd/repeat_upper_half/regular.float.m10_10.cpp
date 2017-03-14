@@ -13,9 +13,8 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_repeat_upper_half, bs::repeat_upper_half);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_repeat_upper_half, float>(-10, 10);
+  using T = bs::pack<float>;
+  run<T>(bs::repeat_upper_half, nsbg::rand<T>(-10, 10));
 }
