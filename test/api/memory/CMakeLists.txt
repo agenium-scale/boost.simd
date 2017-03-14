@@ -8,6 +8,7 @@
 
 set ( SOURCES
       is_aligned.cpp
+      preferred_alignment.cpp
     )
 
 make_unit( "api.memory" ${SOURCES})
