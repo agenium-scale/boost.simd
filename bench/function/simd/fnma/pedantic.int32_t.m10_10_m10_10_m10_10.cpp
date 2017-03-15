@@ -13,10 +13,9 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_fnma, bs::pedantic_(bs::fnma));
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_fnma, std::int32_t>(-10, 10, -10, 10, -10, 10);
+  using T = bs::pack<std::int32_t>;
+  run<T>(bs::pedantic_(bs::fnma), nsbg::rand<T>(-10, 10), nsbg::rand<T>(-10, 10), nsbg::rand<T>(-10, 10));
 }
 

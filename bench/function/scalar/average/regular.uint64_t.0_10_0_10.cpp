@@ -13,9 +13,8 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_average, bs::average);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_average, std::uint64_t>(0, 10, 0, 10);
+  using T = std::uint64_t;
+  run<T>(bs::average, nsbg::rand<T>(0, 10), nsbg::rand<T>(0, 10));
 }

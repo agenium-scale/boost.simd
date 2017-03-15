@@ -13,10 +13,9 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_repeat_lower_half, bs::repeat_lower_half);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_repeat_lower_half, std::uint8_t>(0, 10);
+  using T = bs::pack<std::uint8_t>;
+  run<T>(bs::repeat_lower_half, nsbg::rand<T>(0, 10));
 }
 

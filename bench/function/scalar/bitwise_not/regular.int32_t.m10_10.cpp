@@ -13,10 +13,9 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_bitwise_not, bs::bitwise_not);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_bitwise_not, std::int32_t>(-10, 10);
+  using T = std::int32_t;
+  run<T>(bs::bitwise_not, nsbg::rand<T>(-10, 10));
 }
 

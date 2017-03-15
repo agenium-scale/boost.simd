@@ -13,10 +13,9 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_compare_not_equal, bs::compare_not_equal);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_compare_not_equal, std::uint32_t>(-10, 10,-10, 10);
+  using T = bs::pack<std::uint32_t>;
+  run<T>(bs::compare_not_equal, nsbg::rand<T>(-10, 10), nsbg::rand<T>(-10, 10));
 }
 

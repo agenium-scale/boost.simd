@@ -13,9 +13,8 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_clamp, bs::pedantic_(bs::clamp));
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_clamp, std::uint8_t>(0, 100, 0, 100, 0, 100);
+  using T = bs::pack<std::uint8_t>;
+  run<T>(bs::pedantic_(bs::clamp), nsbg::rand<T>(0, 100), nsbg::rand<T>(0, 100), nsbg::rand<T>(0, 100));
 }

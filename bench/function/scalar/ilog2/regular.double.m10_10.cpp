@@ -13,9 +13,8 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_ilog2, bs::ilog2);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_ilog2, double>(-10, 10);
+  using T = double;
+  run<T>(bs::ilog2, nsbg::rand<T>(-10, 10));
 }

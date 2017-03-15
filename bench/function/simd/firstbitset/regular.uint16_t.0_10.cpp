@@ -13,10 +13,9 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_firstbitset, bs::firstbitset);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_firstbitset, std::uint16_t>(0, 10);
+  using T = bs::pack<std::uint16_t>;
+  run<T>(bs::firstbitset, nsbg::rand<T>(0, 10));
 }
 

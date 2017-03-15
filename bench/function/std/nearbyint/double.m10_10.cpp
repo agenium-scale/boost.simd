@@ -13,9 +13,8 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(std_nearbyint, bs::std_(bs::nearbyint));
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<std_nearbyint, double>(-10, 10);
+  using T = double;
+  run<T>(bs::std_(bs::nearbyint), nsbg::rand<T>(-10, 10));
 }

@@ -13,9 +13,8 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_ulpdist, bs::ulpdist);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_ulpdist, double>(-10, 10,-10, 10);
+  using T = double;
+  run<T>(bs::ulpdist, nsbg::rand<T>(-10, 10), nsbg::rand<T>(-10, 10));
 }

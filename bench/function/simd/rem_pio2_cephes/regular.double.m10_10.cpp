@@ -13,9 +13,8 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_rem_pio2_cephes, bs::rem_pio2_cephes);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_rem_pio2_cephes, double>(-10, 10);
+  using T = bs::pack<double>;
+  run<T>(bs::rem_pio2_cephes, nsbg::rand<T>(-10, 10));
 }

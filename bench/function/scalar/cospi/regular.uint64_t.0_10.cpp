@@ -13,10 +13,9 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_cospi, bs::cospi);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_cospi, std::uint64_t>(0, 10);
+  using T = std::uint64_t;
+  run<T>(bs::cospi, nsbg::rand<T>(0, 10));
 }
 

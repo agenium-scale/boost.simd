@@ -13,7 +13,6 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 namespace bd =  boost::dispatch;
-
 struct shl
 {
   template<class T> T operator()(const T & a, const T & N) const
@@ -22,9 +21,8 @@ struct shl
   }
 };
 
-DEFINE_SCALAR_BENCH(scalar_shift_left, shl());
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_shift_left, double>(-10, 10, 0, 63);
+  using T = double;
+  run<T>(shl(), nsbg::rand<T>(-10, 10), nsbg::rand<T>(0, 63));
 }

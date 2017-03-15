@@ -10,11 +10,9 @@
 #include <simd_bench.hpp>
 #include <boost/simd/function/ldexp.hpp>
 namespace bd =  boost::dispatch;
-
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 namespace bd =  boost::dispatch;
-
 struct lde
 {
   template<class T> T operator()(const T & a, const T & N) const
@@ -23,9 +21,8 @@ struct lde
   }
 };
 
-DEFINE_SCALAR_BENCH(scalar_ldexp, lde());
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_ldexp, double>(-10, 10, -10, 10);
+  using T = double;
+  run<T>(lde(), nsbg::rand<T>(-10, 10), nsbg::rand<T>(-10, 10));
 }

@@ -13,9 +13,8 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_genmask, bs::genmask);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_genmask, float>(-10, 10);
+  using T = bs::pack<float>;
+  run<T>(bs::genmask, nsbg::rand<T>(-10, 10));
 }

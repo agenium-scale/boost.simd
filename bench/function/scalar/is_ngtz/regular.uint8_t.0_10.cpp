@@ -13,10 +13,9 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_is_ngtz, bs::is_ngtz);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_is_ngtz, std::uint8_t>(0, 10);
+  using T = std::uint8_t;
+  run<T>(bs::is_ngtz, nsbg::rand<T>(0, 10));
 }
 

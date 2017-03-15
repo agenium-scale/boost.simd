@@ -13,9 +13,8 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_acotpi, bs::acotpi);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_acotpi, double>(-10, 10);
+  using T = double;
+  run<T>(bs::acotpi, nsbg::rand<T>(-10, 10));
 }

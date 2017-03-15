@@ -13,10 +13,9 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_dist, bs::dist);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_dist, std::int32_t>(-10, 10,-10, 10);
+  using T = bs::pack<std::int32_t>;
+  run<T>(bs::dist, nsbg::rand<T>(-10, 10), nsbg::rand<T>(-10, 10));
 }
 
