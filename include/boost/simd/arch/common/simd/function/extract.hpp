@@ -37,7 +37,7 @@ namespace boost { namespace simd { namespace ext
     using result_t = typename A0::value_type;
     BOOST_FORCEINLINE result_t operator() ( A0 const& a0, A1 i) const
     {
-      #if BOOST_COMP_CLANG == BOOST_VERSION_NUMBER(3,6,0)
+      #if BOOST_COMP_CLANG >= BOOST_VERSION_NUMBER(3,6,0)
       result_t data[A0::static_size];
       memcpy(&data[0], &(a0.storage()), sizeof(A0));
       return data[i];
