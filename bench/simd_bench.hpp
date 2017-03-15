@@ -33,6 +33,37 @@ struct format_type<boost::simd::pack<T, N>>
 
 } }
 
+namespace ns { namespace bench { namespace generators {
+
+template <typename T, std::size_t N>
+struct rand<boost::simd::pack<T, N>>
+{
+  using pack_type = boost::simd::pack<T, N>;
+  using value_type = typename pack_type::value_type;
+
+  template <typename U>
+  rand( U min = static_cast<U>(std::numeric_limits<value_type>::min())
+      , U max = static_cast<U>(std::numeric_limits<value_type>::max())
+      ) : r(min, max)
+  {
+  }
+
+  inline pack_type operator()() {
+    std::array<value_type, sizeof(pack_type) / sizeof(value_type)> v;
+    std::transform(v.begin(), v.end(), v.begin(), [this](value_type const&) { return r.random(); });
+    return {v.begin(), v.end()};
+  }
+
+  std::string description() const {
+    return "TODO";
+  }
+
+  private :
+  rand<value_type> r;
+};
+
+} } }
+
 // -------------------------------------------------------------------------------------------------
 
 namespace nsb = ns::bench;
