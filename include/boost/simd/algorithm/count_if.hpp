@@ -11,7 +11,7 @@
 #ifndef BOOST_SIMD_ALGORITHM_COUNT_IF_HPP_INCLUDED
 #define BOOST_SIMD_ALGORITHM_COUNT_IF_HPP_INCLUDED
 
-#include <boost/simd/range/segmented_input_range.hpp>
+#include <boost/simd/range/segmented_aligned_range.hpp>
 #include <boost/simd/function/nbtrue.hpp>
 #include <boost/simd/pack.hpp>
 #include <algorithm>
@@ -19,7 +19,7 @@
 namespace boost { namespace simd
 {
   /*!
-    @ingroup group-std
+    @ingroup group-algo
 
     Returns he number of elements in the range [first,last)
     for which pred returns true.
@@ -45,24 +45,16 @@ namespace boost { namespace simd
 
   template<typename T, typename Pred>
   typename std::iterator_traits<const T*>::difference_type
-  count_if(T const* first, T const* last, Pred const & pred)
+  count_if(T const* first, T const* last, Pred pred)
   {
-    using p_t =  boost::simd::pack<T>;
-    auto pr = segmented_input_range(first,last);
-    // prologue
-    auto r0 = std::get<0>(pr);
-    auto c = std::count_if(r0.begin(), r0.end(), pred);
+    auto pr = segmented_aligned_range(first,last);
 
-    // main simd part
-    for(p_t  x  : std::get<1>(pr)) c+= nbtrue(pred(x));
-
-    // epilogue
-    auto r2 = std::get<2>(pr);
-    c += std::count_if(r2.begin(), r2.end(), pred);
+    auto c  = std::count_if(pr.head.begin(), pr.head.end(), pred);
+    for(pack<T> x : pr.body) c+= nbtrue(pred(x));
+         c += std::count_if(pr.tail.begin(), pr.tail.end(), pred);
 
     return c;
   }
-
 } }
 
 #endif

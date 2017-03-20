@@ -11,7 +11,7 @@
 #ifndef BOOST_SIMD_ALGORITHM_TRANSFORM_HPP_INCLUDED
 #define BOOST_SIMD_ALGORITHM_TRANSFORM_HPP_INCLUDED
 
-#include <boost/simd/range/segmented_input_range.hpp>
+#include <boost/simd/range/segmented_aligned_range.hpp>
 #include <boost/simd/function/aligned_store.hpp>
 #include <boost/simd/function/store.hpp>
 #include <boost/simd/pack.hpp>
@@ -20,7 +20,7 @@
 namespace boost { namespace simd
 {
   /*!
-    @ingroup group-std
+    @ingroup group-algo
 
     Applies the given function @c f to the Contiguous Range  @range{first, last} and stores the
     result in another Contiguous Range, beginning at @c out.
@@ -35,7 +35,7 @@ namespace boost { namespace simd
       - @c first, @c last and @c out must be pointer to Vectorizable type.
 
       - @c f must be a polymorphic unary function object, i.e callable on generic types.
-      - boost::simd::pack<T> and  boost::simd::pack<T> must have the same cardinal
+      - @c boost::simd::pack<T>::static_size @c == @c boost::simd::pack<U>::static_size
 
     @par Example
 
@@ -50,23 +50,24 @@ namespace boost { namespace simd
     @return Pointer to the element past the last element transformed.
   **/
   template<typename T, typename U, typename UnOp>
-  U* transform(T const* first, T const* last, U* out, UnOp f)
+  U* transform(T const* first, T const* last, U* out, UnOp const& f)
   {
+    using vT = pack<T>;
     using vU = pack<U>;
 
-    static_assert ( pack<T>::static_size == vU::static_size
+    static_assert ( vT::static_size == vU::static_size
                   , "SIMD cardinal mismatch between T and U"
                   );
 
-    auto pr = segmented_input_range(first,last);
+    auto pr = segmented_aligned_range(first,last);
 
     // prologue
-    for( auto const & e : std::get<0>(pr) ) *out++ = f(e);
+    for( T e : pr.head ) *out++ = f(e);
 
     // main SIMD part - checks if we can store efficiently or not
     if(boost::simd::detail::is_aligned(out, vU::alignment))
     {
-      for( auto const& e : std::get<1>(pr) )
+      for( vT e : pr.body )
       {
         aligned_store( f(e) ,out);
         out += vU::static_size;
@@ -74,21 +75,21 @@ namespace boost { namespace simd
     }
     else
     {
-      for( auto const& e : std::get<1>(pr) )
+      for( vT e : pr.body )
       {
-        store( f(e) ,out);
+        store( f(vT(e)) ,out);
         out += vU::static_size;
       }
     }
 
     // epilogue
-    for( auto const & e : std::get<2>(pr) ) *out++ = f(e);
+    for( T e : pr.tail ) *out++ = f(e);
 
     return out;
   }
 
   /*!
-    @ingroup group-std
+    @ingroup group-algo
 
     Applies the given function @c f to pairs of elements from two ranges: one defined by
     @range{first1, last1} and the other beginning at @c first2, and stores the result in another
@@ -105,8 +106,8 @@ namespace boost { namespace simd
       - @c first, @c last and @c out must be pointer to Vectorizable type.
 
       - @c f must be a polymorphic binary function object, i.e callable on generic types.
-      - boost::simd::pack<T1> and boost::simd::pack<U> must share the same cardinal
-      - boost::simd::pack<T2> and boost::simd::pack<U> must share the same cardinal
+      - @c boost::simd::pack<T1>::static_size @c == @c boost::simd::pack<T><U>::static_size
+      - @c boost::simd::pack<T2>::static_size @c == @c boost::simd::pack<T><U>::static_size
 
     @par Example
     @snippet transform.binary.cpp transform-binary
@@ -118,16 +119,17 @@ namespace boost { namespace simd
     @return Pointer to the element past the last element transformed.
   **/
   template<typename T1, typename T2, typename U, typename BinOp>
-  U* transform(T1 const* first1, T1 const* last1, T2 const* first2, U* out, BinOp f)
+  U* transform(T1 const* first1, T1 const* last1, T2 const* first2, U* out, BinOp const& f)
   {
+    using vT1 = boost::simd::pack<T1>;
     using vT2 = boost::simd::pack<T2>;
     using vU = pack<U>;
 
-    static_assert ( pack<T1>::static_size == vT2::static_size
+    static_assert ( vT1::static_size == vT2::static_size
                   , "SIMD cardinal mismatch between T1 and T2"
                   );
 
-    static_assert ( pack<T1>::static_size == vU::static_size
+    static_assert ( vT1::static_size == vU::static_size
                   , "SIMD cardinal mismatch between T1 and U"
                   );
 
@@ -135,19 +137,19 @@ namespace boost { namespace simd
                   , "SIMD cardinal mismatch between T2 and U"
                   );
 
-    auto pr = segmented_input_range(first1,last1);
+    auto pr = segmented_aligned_range(first1,last1);
 
     // prologue
-    for( auto const & e : std::get<0>(pr) ) *out++ = f(e, *first2++);
+    for( auto const& e : pr.head ) *out++ = f(e, *first2++);
 
     // main SIMD part - Everybody is aligned
     if(   boost::simd::detail::is_aligned(out    , vU::alignment )
       &&  boost::simd::detail::is_aligned(first2 , vT2::alignment)
       )
     {
-      for( auto const& e : std::get<1>(pr) )
+      for( vT1 e : pr.body )
       {
-        aligned_store( f(e, aligned_load<vT2>(first2) ) ,out);
+        aligned_store( f(vT1(e), aligned_load<vT2>(first2) ) ,out);
         out     += vU::static_size;
         first2  += vT2::static_size;
       }
@@ -155,9 +157,9 @@ namespace boost { namespace simd
     // main SIMD part - input1 and output is aligned
     else if( boost::simd::detail::is_aligned(out, vU::alignment ) )
     {
-      for( auto const& e : std::get<1>(pr) )
+      for( vT1 e : pr.body )
       {
-        aligned_store( f(e,load<vT2>(first2)) ,out);
+        aligned_store( f(vT1(e),load<vT2>(first2)) ,out);
         out     += vU::static_size;
         first2  += vT2::static_size;
       }
@@ -165,9 +167,9 @@ namespace boost { namespace simd
     // main SIMD part - Both inputs is aligned
     else if( boost::simd::detail::is_aligned(first2, vT2::alignment ) )
     {
-      for( auto const& e : std::get<1>(pr) )
+      for( vT1 e : pr.body )
       {
-        store( f(e,aligned_load<vT2>(first2)) ,out);
+        store( f(vT1(e),aligned_load<vT2>(first2)) ,out);
         out     += vU::static_size;
         first2  += vT2::static_size;
       }
@@ -175,16 +177,16 @@ namespace boost { namespace simd
     // main SIMD part - input1 is aligned
     else
     {
-      for( auto const& e : std::get<1>(pr) )
+      for( vT1 e : pr.body )
       {
-        store( f(e,load<vT2>(first2)) ,out);
+        store( f(vT1(e),load<vT2>(first2)) ,out);
         out     += vU::static_size;
         first2  += vT2::static_size;
       }
     }
 
     // epilogue
-    for( auto const & e : std::get<2>(pr) ) *out++ = f(e, *first2++);
+    for( auto && e : pr.tail ) *out++ = f(e, *first2++);
     return out;
   }
 } }

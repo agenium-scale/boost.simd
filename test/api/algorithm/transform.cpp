@@ -12,7 +12,6 @@
 #include <simd_test.hpp>
 
 using namespace boost::simd;
-using namespace boost::alignment;
 
 struct f { template<typename T> T operator()(T const& e) const              { return e*2; } };
 struct g { template<typename T> T operator()(T const& a, T const& b) const  { return a*b; } };

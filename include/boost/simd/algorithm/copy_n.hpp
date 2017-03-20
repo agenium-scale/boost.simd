@@ -16,7 +16,7 @@
 namespace boost { namespace simd
 {
   /*!
-    @ingroup group-std
+    @ingroup group-algo
 
     Copies the elements in the range, defined by [first, last)
     to another range beginning at out.
@@ -40,15 +40,11 @@ namespace boost { namespace simd
       @snippet copy_n.txt copy_n
 
   **/
-  template<typename T, typename Size>
-  T* copy_n(T const* first, Size n, T* out)
+  template<typename T, typename Size> T* copy_n(T const* first, Size n, T* out)
   {
-    if (n <=  Size(0))
-      return out;
-    else
-      return boost::simd::copy(first, first+n, out);
+    if (n <= Size(0)) return out;
+    return boost::simd::copy(first, first+n, out);
   }
-
 } }
 
 #endif

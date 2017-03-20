@@ -6,127 +6,78 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#include <boost/simd/range/segmented_input_range.hpp>
-#include <boost/simd/memory/allocator.hpp>
+#include <boost/simd/range/segmented_range.hpp>
 #include <boost/simd/function/sum.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
 #include <vector>
 
-template <typename T, typename Env>
-bool is_not_unalignable(Env& runtime)
-{
-  // If alignment == sizeof(T) then moving data() by 1 won't change memory alignment, then if the
-  // memory passed to segmented_*_range is already aligned to pack<T>::alignment, prologue will
-  // be skiped.
-  if (boost::simd::pack<T>::alignment == sizeof(T)) {
-    STF_PASS("Data is not unalignable");
-    return true;
-  }
-  return false;
-}
-
 STF_CASE_TPL("perfect iteration", STF_NUMERIC_TYPES)
 {
   using boost::simd::pack;
-  using boost::simd::segmented_input_range;
+  using boost::simd::segmented_range;
 
-  std::vector<T,boost::simd::allocator<T>>  ref(pack<T>::static_size*3);
+  std::vector<T>  ref(pack<T>::static_size*3);
 
   for(std::size_t i=0;i<ref.size();i++) ref[i] = T(1);
 
-  auto pr = segmented_input_range(ref);
+  auto pr = segmented_range(ref);
   T value = 0;
-  for( auto& pe : std::get<0>(pr) ) value += pe;
-  for( auto& me : std::get<1>(pr) ) value += boost::simd::sum(me);
-  for( auto& ee : std::get<2>(pr) ) value += ee;
 
-  STF_EQUAL(std::distance(boost::begin(std::get<0>(pr)),boost::end(std::get<0>(pr))), 0 );
-  STF_EQUAL(std::distance(boost::begin(std::get<2>(pr)),boost::end(std::get<2>(pr))), 0 );
+  for( auto&& pe : pr.head ) value += pe;
+  for( auto&& me : pr.body ) value += boost::simd::sum(me);
+  for( auto&& ee : pr.tail ) value += ee;
+
+  STF_EQUAL(std::distance(boost::begin(pr.head),boost::end(pr.head)), 0 );
+  STF_EQUAL(std::distance(boost::begin(pr.body),boost::end(pr.body)), 3 );
+  STF_EQUAL(std::distance(boost::begin(pr.tail),boost::end(pr.tail)), 0 );
 
   STF_EQUAL(value, T(ref.size()) );
 }
 
-STF_CASE_TPL("iteration with prologue", STF_NUMERIC_TYPES)
+STF_CASE_TPL("iteration with tail",STF_NUMERIC_TYPES)
 {
   using boost::simd::pack;
-  using boost::simd::segmented_input_range;
+  using boost::simd::segmented_range;
 
-  std::vector<T,boost::simd::allocator<T>> ref(pack<T>::static_size*3+pack<T>::alignment/sizeof(T));
-
-  if (is_not_unalignable<T>(runtime)) return;
+  std::vector<T>  ref(pack<T>::static_size*3);
 
   for(std::size_t i=0;i<ref.size();i++) ref[i] = T(1);
 
-  auto data = boost::make_iterator_range(ref.data()+1, ref.data()+ref.size());
-  auto pr = segmented_input_range(data);
-
+  auto pr = segmented_range(ref.begin(), ref.begin()+ref.size() - 1);
   T value = 0;
-  for( auto& pe : std::get<0>(pr) ) value += pe;
-  for( auto& me : std::get<1>(pr) ) value += boost::simd::sum(me);
-  for( auto& ee : std::get<2>(pr) ) value += ee;
 
-  STF_EQUAL(std::distance(boost::begin(std::get<2>(pr)),boost::end(std::get<2>(pr))), 0 );
-  STF_EQUAL(value, T(ref.size()-1) );
+  for( auto&& pe : pr.head ) value += pe;
+  for( auto&& me : pr.body ) value += boost::simd::sum(me);
+  for( auto&& ee : pr.tail ) value += ee;
+
+  STF_EQUAL(std::distance(boost::begin(pr.head),boost::end(pr.head)), 0 );
+  STF_EQUAL(std::distance(boost::begin(pr.body),boost::end(pr.body)), 2 );
+  STF_EQUAL(std::distance(boost::begin(pr.tail),boost::end(pr.tail)), pack<T>::static_size - 1 );
+
+  STF_EQUAL(value, T(ref.size())-1 );
 }
 
-STF_CASE_TPL("iteration with epilogue", STF_NUMERIC_TYPES)
+STF_CASE_TPL("iteration with tail only", STF_NUMERIC_TYPES)
 {
   using boost::simd::pack;
-  using boost::simd::segmented_input_range;
+  using boost::simd::segmented_range;
 
-  std::vector<T,boost::simd::allocator<T>>  ref(pack<T>::static_size*3);
+  std::vector<T>  ref(pack<T>::static_size-1);
 
   for(std::size_t i=0;i<ref.size();i++) ref[i] = T(1);
 
-  auto data = boost::make_iterator_range(ref.data(), ref.data()+ref.size()-1);
-  auto pr = segmented_input_range(data);
-
+  auto pr = segmented_range(ref.begin(), ref.end());
   T value = 0;
-  for( auto& pe : std::get<0>(pr) ) value += pe;
-  for( auto& me : std::get<1>(pr) ) value += boost::simd::sum(me);
-  for( auto& ee : std::get<2>(pr) ) value += ee;
 
-  STF_EQUAL(std::distance(boost::begin(std::get<0>(pr)),boost::end(std::get<0>(pr))), 0 );
-  STF_EQUAL(value, T(ref.size()-1) );
+  for( auto&& pe : pr.head ) value += pe;
+  for( auto&& me : pr.body ) value += boost::simd::sum(me);
+  for( auto&& ee : pr.tail ) value += ee;
+
+  STF_EQUAL(std::distance(boost::begin(pr.head),boost::end(pr.head)), 0 );
+  STF_EQUAL(std::distance(boost::begin(pr.body),boost::end(pr.body)), 0 );
+  STF_EQUAL(std::distance(boost::begin(pr.tail),boost::end(pr.tail)), pack<T>::static_size - 1 );
+
+  STF_EQUAL(value, T(ref.size()) );
 }
 
-STF_CASE_TPL("iteration with epilogue & prologue", STF_NUMERIC_TYPES)
-{
-  using boost::simd::pack;
-  using boost::simd::segmented_input_range;
-
-  std::vector<T,boost::simd::allocator<T>>  ref(pack<T>::static_size*3);
-
-  for(std::size_t i=0;i<ref.size();i++) ref[i] = T(1);
-
-  auto data = boost::make_iterator_range(ref.data()+1, ref.data()+ref.size()-1);
-  auto pr = segmented_input_range(data);
-
-  T value = 0;
-  for( auto& pe : std::get<0>(pr) ) value += pe;
-  for( auto& me : std::get<1>(pr) ) value += boost::simd::sum(me);
-  for( auto& ee : std::get<2>(pr) ) value += ee;
-
-  STF_EQUAL(value, T(ref.size()-2) );
-}
-
-STF_CASE_TPL("iteration with only epilogue & prologue", STF_NUMERIC_TYPES)
-{
-  using boost::simd::pack;
-  using boost::simd::segmented_input_range;
-
-  std::vector<T,boost::simd::allocator<T>>  ref(pack<T>::static_size*2);
-
-  for(std::size_t i=0;i<ref.size();i++) ref[i] = T(1);
-
-  auto data = boost::make_iterator_range(ref.data()+1, ref.data()+pack<T>::static_size-1);
-  auto pr = segmented_input_range(data);
-
-  T value = 0;
-  for( auto& pe : std::get<0>(pr) ) value += pe;
-  for( auto& ee : std::get<2>(pr) ) value += ee;
-
-  STF_EQUAL(std::distance(boost::begin(std::get<1>(pr)),boost::end(std::get<1>(pr))), 0);
-  STF_EQUAL(value, T(std::distance(boost::begin(data),boost::end(data))) );
-}

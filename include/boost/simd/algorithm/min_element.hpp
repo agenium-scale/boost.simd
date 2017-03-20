@@ -11,18 +11,13 @@
 #ifndef BOOST_SIMD_ALGORITHM_MIN_ELEMENT_HPP_INCLUDED
 #define BOOST_SIMD_ALGORITHM_MIN_ELEMENT_HPP_INCLUDED
 
-#include <boost/simd/range/segmented_input_range.hpp>
 #include <boost/simd/algorithm/find.hpp>
-#include <boost/simd/function/if_else.hpp>
-#include <boost/simd/function/min.hpp>
-#include <boost/simd/function/minimum.hpp>
-#include <boost/simd/pack.hpp>
-#include <boost/simd/detail/is_aligned.hpp>
+#include <boost/simd/algorithm/min_val.hpp>
 
 namespace boost { namespace simd
 {
   /*!
-    @ingroup group-std
+    @ingroup group-algo
 
     Returns an iterator pointing to the element with the smallest value in the range [first,last).
 
@@ -49,63 +44,15 @@ namespace boost { namespace simd
   template<typename T, typename Comp>
   T const * min_element(T const* first, T const* last, Comp comp)
   {
-
     if (first == last) return last;
-    auto pr = segmented_input_range(first,last);
-    T m = *first;
-    // prologue
-    for( auto const & e : std::get<0>(pr) ){
-      if (comp(e, m))  m = e;
-    }
-
-    // main SIMD part
-    using p_t =  pack<T>;
-    p_t mm(m);
-    for( auto const & e : std::get<1>(pr) )
-    {
-      mm =  if_else(comp(e, mm), e, mm);
-    }
-    m =  mm[0];
-    for (  size_t i =  1; i < p_t::static_size;  ++i){
-      if (comp(mm[i], m)) m = mm[i];
-    }
-
-    // epilogue
-    for( auto const & e : std::get<2>(pr) ){
-      if (comp(e, m))  m = e;
-    }
-
-    return find(first, last, m);
+    return find(first, last, min_val(first,last,comp));
   }
 
-  template<typename T>
-  T const * min_element(T const* first, T const* last)
+  template<typename T> T const * min_element(T const* first, T const* last)
   {
-
     if (first == last) return last;
-    auto pr = segmented_input_range(first,last);
-    T m = *first;
-    // prologue
-    for( auto const & e : std::get<0>(pr) ){
-      m = min(e, m);
-    }
-
-    // main SIMD part
-    using p_t =  pack<T>;
-    p_t mm(m);
-    for( auto const & e : std::get<1>(pr) )
-    {
-      mm = min(e, mm);
-    }
-    m =  minimum(mm);
-    // epilogue
-    for( auto const & e : std::get<2>(pr) ){
-      m = min(e, m);
-    }
-
-    return find(first, last, m);
+    return find(first, last, min_val(first,last));
   }
-
 } }
 
 #endif

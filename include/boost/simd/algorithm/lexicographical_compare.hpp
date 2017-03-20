@@ -11,7 +11,7 @@
 #ifndef BOOST_SIMD_ALGORITHM_LEXICOGRAPHICAL_COMPARE_HPP_INCLUDED
 #define BOOST_SIMD_ALGORITHM_LEXICOGRAPHICAL_COMPARE_HPP_INCLUDED
 
-#include <boost/simd/range/segmented_input_range.hpp>
+#include <boost/simd/range/segmented_aligned_range.hpp>
 #include <boost/simd/function/aligned_load.hpp>
 #include <boost/simd/function/load.hpp>
 #include <boost/simd/function/compare_less.hpp>
@@ -24,7 +24,7 @@
 namespace boost { namespace simd
 {
   /*!
-    @ingroup group-std
+    @ingroup group-algo
 
     Returns true if the range [first1, last1) is lexicographically less than the second range
     [first2, last2), and false otherwise
@@ -56,10 +56,10 @@ namespace boost { namespace simd
     bool shorter =  d1 < d2;
     auto last1b = shorter ?  last1 : first1+d2;
 
-    auto pr = segmented_input_range(first1,last1b);
+    auto pr = segmented_aligned_range(first1,last1b);
 
     // prologue
-    for( auto const & e : std::get<0>(pr) ){
+    for( auto const & e : pr.head ){
       if (e < *first2) return true;
       if (*first2 < e) return false;
       ++first2;
@@ -69,7 +69,7 @@ namespace boost { namespace simd
     // main SIMD part - checks if we can store efficiently or not
     if(boost::simd::detail::is_aligned(first2, vT::alignment))
     {
-      for( auto const& e : std::get<1>(pr) )
+      for( auto const& e : pr.body )
       {
         auto e2 = aligned_load<vT>(first2);
         if(compare_less(e, e2)) return true;
@@ -79,7 +79,7 @@ namespace boost { namespace simd
     }
     else
     {
-      for( auto const& e : std::get<1>(pr) )
+      for( auto const& e : pr.body )
       {
         auto e2 = load<vT>(first2);
         if(compare_less(e, e2)) return true;
@@ -89,7 +89,7 @@ namespace boost { namespace simd
     }
 
     // epilogue
-    for( auto const & e : std::get<2>(pr) ){
+    for( auto const & e : pr.tail ){
       if (e < *first2) return true;
       if (*first2 < e) return false;
       ++first2;
@@ -98,7 +98,7 @@ namespace boost { namespace simd
   }
 
   /*!
-    @ingroup group-std
+    @ingroup group-algo
 
      Returns true if the range [first1, last1) is lexicographically less than the second range
     [first2, first2 + (last1 - first1)), and false otherwise using comp as elementwise comparison
@@ -137,9 +137,9 @@ namespace boost { namespace simd
     bool shorter =  d1 < d2;
     auto last1b = shorter ?  last1 : first1+d2;
 
-    auto pr = segmented_input_range(first1,last1b);
+    auto pr = segmented_aligned_range(first1,last1b);
     // prologue
-    for( auto const & e : std::get<0>(pr) ){
+    for( auto const & e : pr.head ){
       if (comp(e, *first2)) return true;
       if (comp(*first2, e)) return false;
       ++first2;
@@ -148,7 +148,7 @@ namespace boost { namespace simd
     // main SIMD part - checks if we can store efficiently or not
     if(boost::simd::detail::is_aligned(first2, vT::alignment))
     {
-      for( auto const& e : std::get<1>(pr) )
+      for( auto const& e : pr.body )
       {
         auto e2 = aligned_load<vT>(first2);
         if(comp(e, e2)) return true;
@@ -158,7 +158,7 @@ namespace boost { namespace simd
     }
     else
     {
-      for( auto const& e : std::get<1>(pr) )
+      for( auto const& e : pr.body )
       {
         auto e2 = load<vT>(first2);
         if(comp(e, e2)) return true;
@@ -168,7 +168,7 @@ namespace boost { namespace simd
     }
 
     // epilogue
-    for( auto const & e : std::get<2>(pr) ){
+    for( auto const & e : pr.tail ){
       if (comp(e, *first2)) return true;
       if (comp(*first2, e)) return false;
       ++first2;

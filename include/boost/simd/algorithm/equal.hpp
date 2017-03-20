@@ -11,21 +11,18 @@
 #ifndef BOOST_SIMD_ALGORITHM_EQUAL_HPP_INCLUDED
 #define BOOST_SIMD_ALGORITHM_EQUAL_HPP_INCLUDED
 
-#include <boost/simd/range/segmented_input_range.hpp>
-#include <boost/simd/function/aligned_load.hpp>
-#include <boost/simd/function/load.hpp>
+#include <boost/simd/range/segmented_aligned_range.hpp>
+#include <boost/simd/detail/is_aligned.hpp>
 #include <boost/simd/function/compare_equal.hpp>
+#include <boost/simd/function/load.hpp>
 #include <boost/simd/function/all.hpp>
 #include <boost/simd/pack.hpp>
-#include <boost/simd/detail/is_aligned.hpp>
-#include <boost/core/demangle.hpp>
 #include <type_traits>
-
 
 namespace boost { namespace simd
 {
   /*!
-    @ingroup group-std
+    @ingroup group-algo
 
     Returns true if the range [first, last) is equal
     to the range [first2, first2 + (last - first)), and false otherwise
@@ -37,7 +34,6 @@ namespace boost { namespace simd
 
       - @c first, @c last and @c out must be pointer to Vectorizable type.
 
-
     @par Example:
 
       @snippet equalrange.cpp equalrange
@@ -47,47 +43,41 @@ namespace boost { namespace simd
       @snippet equalrange.txt equalrange
 
   **/
-
   template<typename T>
   bool equal(T const* first, T const* last, const T* first2)
   {
-    using vT = pack<T>;
+    auto pr = segmented_aligned_range(first,last);
 
-    auto pr = segmented_input_range(first,last);
+    for(T e : pr.head) if (!(e == *first2++)) return false;
 
-    // prologue
-    for( auto const & e : std::get<0>(pr) ) if (!(e == *first2++)) return false;
-
-    // main SIMD part - checks if we can store efficiently or not
-    if(boost::simd::detail::is_aligned(first2, vT::alignment))
+    // main SIMD part - checks if we can load efficiently or not
+    if(boost::simd::detail::is_aligned(first2, pack<T>::alignment))
     {
-      for( auto const& e : std::get<1>(pr) )
+      for(pack<T> e : pr.body )
       {
-        if(!compare_equal( aligned_load<vT>(first2), e)) return false;
-        first2 += vT::static_size;
+        if(!compare_equal( pack<T>(first2), e)) return false;
+        first2 += pack<T>::static_size;
       }
     }
     else
     {
-      for( auto const& e : std::get<1>(pr) )
+      for(pack<T> e : pr.body )
       {
-        if(!compare_equal(load<vT>(first2), e)) return false;
-        first2 += vT::static_size;
+        if(!compare_equal(load<pack<T>>(first2), e)) return false;
+        first2 += pack<T>::static_size;
       }
     }
 
-    // epilogue
-    for( auto const & e : std::get<2>(pr) ) if(!(e == *first2++)) return false;
+    for(T e : pr.tail ) if(!(e == *first2++)) return false;
 
     return true;
   }
 
-
   /*!
-    @ingroup group-std
+    @ingroup group-algo
 
-    Returns true if all the pairs in the range [first1, last1) and the range [first2, first2 + (last1 - first1)),
-    satisfy f and false otherwise
+    Returns true if all the pairs in the range [first1, last1) and the
+    range [first2, first2 + (last1 - first1)), satisfy f and false otherwise
 
     @param first1, last1  -   the first range of the elements to compare
     @param first2         -   the beginning of the second range of the elements to compare
@@ -110,35 +100,31 @@ namespace boost { namespace simd
 
   **/
   template<typename T, typename Pred>
-  bool equal(T const* first1, T const* last1, T const* first2, Pred f)
+  bool equal(T const* first1, T const* last1, T const* first2, Pred const& f)
   {
-    using vT = boost::simd::pack<T>;
+    auto pr = segmented_aligned_range(first1,last1);
 
-     auto pr = segmented_input_range(first1,last1);
+    for(T e : pr.head ) if (!f(e, *first2++)) return false;
 
-    // prologue
-    for( auto const & e : std::get<0>(pr) ) if (!f(e, *first2++)) return false;
-
-    // main SIMD part - Everybody is aligned
-    if(  boost::simd::detail::is_aligned(first2 , vT::alignment))
+    if(  boost::simd::detail::is_aligned(first2 , pack<T>::alignment))
     {
-      for( auto const& e : std::get<1>(pr) )
+      for(pack<T> e : pr.body )
       {
-        if (!all(f(e, aligned_load<vT>(first2)))) return false;
-        first2  += vT::static_size;
+        if(!all(f(e, pack<T>(first2)))) return false;
+        first2  += pack<T>::static_size;
       }
     }
     else
     {
-      for( auto const& e : std::get<1>(pr) )
+      for(pack<T> e : pr.body )
       {
-        if (!all(f(e, load<vT>(first2)))) return false;
-        first2  += vT::static_size;
+        if(!all(f(e, load<pack<T>>(first2)))) return false;
+        first2  += pack<T>::static_size;
       }
     }
 
-    // epilogue
-    for( auto const & e : std::get<2>(pr) )  if (!f(e, *first2++)) return false;
+    for(T e : pr.tail )  if (!f(e, *first2++)) return false;
+
     return true;
   }
 } }

@@ -6,22 +6,23 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#include <boost/simd/algorithm/iota.hpp>
+//! [range]
+#include <boost/simd/range/range.hpp>
+#include <boost/simd/function/sum.hpp>
 #include <boost/simd/pack.hpp>
-#include <numeric>
+#include <iostream>
 #include <vector>
-#include <simd_test.hpp>
 
-using namespace boost::simd;
-
-STF_CASE_TPL( "Check unary simd::iota", (float)) // STF_NUMERIC_TYPES )
+int main()
 {
-  static const int N = pack<T>::static_size;
+  std::vector<float> x{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
 
-  std::vector<T> values(2*N+1), ref(2*N+1);
-  std::iota(ref.begin(), ref.end(), T(3));
+  boost::simd::pack<float> r{0};
+  auto pr = boost::simd::range(x);
+  for(auto&& e : pr) r += e;
 
-  boost::simd::iota(values.data(), values.data()+values.size(), T(3));
+  std::cout << "Sum of [" << x.front() << " ... " << x.back() << "] is " << boost::simd::sum(r) << std::endl;
 
-  STF_EQUAL( values, ref );
+  return 0;
 }
+//! [range]
