@@ -22,7 +22,7 @@ namespace boost { namespace simd
     to another range beginning at out.
 
     @param first  Beginning of the range of elements
-    @param size   number of element to copy
+    @param n      number of element to copy
     @param out    Beginning of the destination range
 
     @par Requirement

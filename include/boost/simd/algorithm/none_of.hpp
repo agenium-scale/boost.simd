@@ -23,19 +23,19 @@ namespace boost { namespace simd
   /*!
     @ingroup group-std
 
-    Returns true if pred returns false for all the elements in the range [first,last)
+    Returns true if f returns false for all the elements in the range [first,last)
     or if the range is empty, and false otherwise.
 
     @param first  Beginning of the range of elements
     @param last   End of the range of elements
-    @param pred   predicate function object that will be applied.
+    @param f   predicate function object that will be applied.
 
     @par Requirement
 
       - @c first and @c last must be pointer to Vectorizable type.
 
-      - @c pred must be a polymorphic unary function object, i.e cnoneable on generic types.
-      - if @c pred is not present the function test if all elements are zero.
+      - @c f must be a polymorphic unary function object, i.e cnoneable on generic types.
+      - if @c f is not present the function test if all elements are zero.
 
     @par Example:
 

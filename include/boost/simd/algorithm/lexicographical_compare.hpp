@@ -105,7 +105,7 @@ namespace boost { namespace simd
 
 
     @param first1, last1  -   the first range of the elements to compare
-    @param first2         -   the beginning of the second range of the elements to compare
+    @param first2, last2  -    the second range of the elements to compare
     @param f              -   binary predicate operation function object that will be applied.
 
     @par Requirement
@@ -122,13 +122,13 @@ namespace boost { namespace simd
       - Two empty ranges are lexicographically equal.
 
       @par Example:
-         @snippet lexicographical_compare.binary.cpp lexicographical_compare-binary
+         @snippet lexicographical_comparerange.cpp lexicographical_comparerange
       @par Possible output:
-         @snippet lexicographical_compare.binary.txt lexicographical_compare-binary
+         @snippet lexicographical_comparerange.txt lexicographical_comparerange
 
   **/
   template<typename T, typename Pred>
-  bool lexicographical_compare(T const* first1, T const* last1, T const* first2, T const* last2, Pred comp)
+  bool lexicographical_compare(T const* first1, T const* last1, T const* first2, T const* last2, Pred f)
   {
     using vT = pack<T>;
     using  itype_t = typename std::iterator_traits<const T*>::difference_type;

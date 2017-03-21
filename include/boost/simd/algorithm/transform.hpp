@@ -35,7 +35,7 @@ namespace boost { namespace simd
       - @c first, @c last and @c out must be pointer to Vectorizable type.
 
       - @c f must be a polymorphic unary function object, i.e callable on generic types.
-      - @c boost::simd::pack<T>::static_size @c == @c .<U>::static_size
+      - `boost::simd::pack<T>::static_size` must equal `boost::simd::pack<T>:<U>::static_size`
 
     @par Example
 

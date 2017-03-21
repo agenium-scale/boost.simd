@@ -48,7 +48,7 @@ namespace boost { namespace simd
        @snippet find.txt find
 
     @return An iterator to the first element in the range that compares equal to val.
-    If no elements match, the function returns last.
+            If no elements match, the function returns last.
 .
   **/
   template<typename T, typename U>

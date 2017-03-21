@@ -49,7 +49,7 @@ namespace boost { namespace simd
   **/
 
   template<typename T>
-  bool equal(T const* first, T const* last, const T* first2)
+  bool equal(T const* first1, T const* last1, const T* first2)
   {
     using vT = pack<T>;
 
@@ -98,15 +98,15 @@ namespace boost { namespace simd
       - @c first, @c last and @c out must be pointer to Vectorizable type.
 
       - @c f must be a polymorphic binary function object, i.e callable on generic types.
-      - @c boost::simd::pack<T1>::static_size @c == @c boost::simd::pack<T2>::static_size @c
+      -  `boost::simd::pack<T1>::static_size` must equal  `boost::simd::pack<T2>::static_size`
 
     @par Example:
 
-      @snippet equal.binary.cpp equal-binary
+      @snippet equalrange.cpp equalrange
 
     @par Possible output:
 
-      @snippet equal.binary.txt equal-binary
+      @snippet equalrange.txt equalrange
 
   **/
   template<typename T, typename Pred>

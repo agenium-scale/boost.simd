@@ -1,0 +1,6 @@
+//! [any_of]
+rt1 1
+rf1 0
+rt2 1
+rf2 0
+//! [any_of]
