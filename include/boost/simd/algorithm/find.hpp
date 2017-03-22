@@ -49,7 +49,6 @@ namespace boost { namespace simd
 
     @return An iterator to the first element in the range that compares equal to val.
             If no elements match, the function returns last.
-.
   **/
   template<typename T, typename U>
   T const* find(T const* first, T const* last, U const & val)
