@@ -54,7 +54,7 @@ namespace boost { namespace simd
     struct local
     {
       using p_t = pack<T>;
-      local(P const& p, const T & nv) : p_(p), nv_(nv), pnv_(nv){}
+      local(P const& pp, const T & nv) : p_(pp), nv_(nv), pnv_(nv){}
 
       T operator()(T const& x) { return p_(x) ? nv_ : x; }
       p_t operator()(p_t const& x) {
