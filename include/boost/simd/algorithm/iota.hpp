@@ -50,8 +50,8 @@ namespace boost { namespace simd
   {
     struct sg
     {
-      sg(T1 seed, T2 step)
-        : i_(seed),  step_(step) {}
+      sg(T1 seed1, T2 step1)
+        : i_(seed1),  step_(step1) {}
       T operator()()
       {
         auto z = i_;
@@ -64,8 +64,8 @@ namespace boost { namespace simd
     struct vg
     {
       using p_t =  pack<T>;
-      vg(T1 seed, T2 step)
-        : i_(bs::enumerate<p_t>(seed, step)), step_(step) {}
+      vg(T1 seed1, T2 step1)
+        : i_(bs::enumerate<p_t>(seed1, step1)), step_(step1) {}
        p_t operator()()
       {
         auto z = i_;
@@ -100,8 +100,8 @@ namespace boost { namespace simd
   {
     struct sg
     {
-      sg(T1 seed)
-        : i_(seed) {}
+      sg(T1 seed1)
+        : i_(seed1) {}
       T operator()()
       {
         return i_++;
@@ -111,8 +111,8 @@ namespace boost { namespace simd
     struct vg
     {
       using p_t =  pack<T>;
-      vg(T seed)
-        : i_(bs::enumerate<p_t>(seed)) {}
+      vg(T seed1)
+        : i_(bs::enumerate<p_t>(seed1)) {}
        p_t operator()()
       {
         auto z = i_;

@@ -42,7 +42,7 @@ namespace boost { namespace simd
 
     @return  A pointer to the allocated space.
   */
-  template<typename T, typename Arch> T* allocate(std::size_t size, Arch const& arch)
+  template<typename T, typename Arch> T* allocate(std::size_t size, Arch const& )
   {
     return reinterpret_cast<T*>(boost::alignment::aligned_alloc(limits<Arch>::bytes,size*sizeof(T)));
   }
