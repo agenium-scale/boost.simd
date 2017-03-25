@@ -29,7 +29,7 @@
 
   and if:
 
-    - the scalar type associated to T must be integral
+    - <tt>std::is_integer<boost::simd::scalar_of<T>::type>::value</tt> evaluates to @c true
 
   @par Example
 
