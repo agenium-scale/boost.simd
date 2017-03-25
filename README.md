@@ -36,10 +36,10 @@ you to focus on the important part of your work: the development of new features
 
 **Boost.SIMD** provides the following:
 
-  + a proper value semantic wrapper for _SIMD_ registers;
+  + [a proper value semantic wrapper for _SIMD_ registers](https://developer.numscale.com/boost.simd/documentation/develop/classboost_1_1simd_1_1pack.html);
   + an automatic system to detect and exploit architecture specific optimization opportunities;
-  + standard compliant iterators to iterate over contiguous range of data in a _SIMD_ compatible way;
-  + over 300 operators and mathematical functions pre-vectorized
+  + [standard compliant ranges and algorithms to process contiguous range of data in a _SIMD_ compatible way](https://developer.numscale.com/boost.simd/documentation/develop/group__group-std.html);
+  + [over 350 operators and mathematical functions usable on scalar and SIMD values](https://developer.numscale.com/boost.simd/documentation/develop/group__group-functions.html)
 
 # Supported Compilers and Hardware
 
