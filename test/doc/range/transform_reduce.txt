@@ -1,0 +1,3 @@
+//! [transform_reduce]
+s1 = 385
+//! [transform_reduce]

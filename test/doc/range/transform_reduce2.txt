@@ -1,0 +1,6 @@
+//! [transform_reduce2]
+s1 = 385
+s2 = 385
+s3 = 330
+s4 = 1.31682e+13
+//! [transform_reduce2]

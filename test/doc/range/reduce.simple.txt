@@ -1,0 +1,4 @@
+//! [reduce.simple]
+SIMD reduce    :45
+STD  accumulate:45
+//! [reduce.simple]

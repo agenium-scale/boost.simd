@@ -27,14 +27,14 @@ namespace boost { namespace simd
 
     @param first  Beginning of the range of elements to test
     @param last   End of the range of elements to test
-    @param pred   predicate function object that will be applied.
+    @param f      predicate function object that will be applied.
 
     @par Requirement
 
       - @c first and @c last must be pointers to Vectorizable type.
 
-      - @c pred must be a polymorphic unary function object, i.e callable on generic types.
-      - if @c pred is not present the function test if any element is non-zero
+      - @c f must be a polymorphic unary function object, i.e callable on generic types.
+      - if @c f is not present the function test if any element is non-zero
 
     @par Example:
 

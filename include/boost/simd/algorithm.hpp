@@ -22,7 +22,31 @@ namespace boost { namespace simd
   **/
 } }
 
+#include <boost/simd/algorithm/all_of.hpp>
+#include <boost/simd/algorithm/any_of.hpp>
+#include <boost/simd/algorithm/copy.hpp>
+#include <boost/simd/algorithm/copy_n.hpp>
+#include <boost/simd/algorithm/count.hpp>
+#include <boost/simd/algorithm/count_if.hpp>
+#include <boost/simd/algorithm/equal.hpp>
+#include <boost/simd/algorithm/fill.hpp>
+#include <boost/simd/algorithm/find.hpp>
+#include <boost/simd/algorithm/find_if.hpp>
+#include <boost/simd/algorithm/find_if_not.hpp>
+#include <boost/simd/algorithm/generate.hpp>
+#include <boost/simd/algorithm/generate_n.hpp>
+#include <boost/simd/algorithm/iota.hpp>
+#include <boost/simd/algorithm/lexicographical_compare.hpp>
+#include <boost/simd/algorithm/max_element.hpp>
+#include <boost/simd/algorithm/max_val.hpp>
+#include <boost/simd/algorithm/min_element.hpp>
+#include <boost/simd/algorithm/min_val.hpp>
+#include <boost/simd/algorithm/none_of.hpp>
+#include <boost/simd/algorithm/not_all_of.hpp>
 #include <boost/simd/algorithm/reduce.hpp>
+#include <boost/simd/algorithm/replace.hpp>
+#include <boost/simd/algorithm/replace_if.hpp>
 #include <boost/simd/algorithm/transform.hpp>
+#include <boost/simd/algorithm/transform_reduce.hpp>
 
 #endif

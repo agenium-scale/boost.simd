@@ -105,14 +105,14 @@ namespace boost { namespace simd
 
 
     @param first1, last1  -   the first range of the elements to compare
-    @param first2         -   the beginning of the second range of the elements to compare
-    @param f              -   binary predicate operation function object that will be applied.
+    @param first2, last2  -   the second range of the elements to compare
+    @param comp           -   binary predicate operation function object that will be applied.
 
     @par Requirement
 
       - @c first, @c last and @c out must be pointer to Vectorizable type.
 
-      - @c f must be a polymorphic binary function object, i.e callable on generic types.
+      - @c comp must be a polymorphic binary function object, i.e callable on generic types.
 
       - Two ranges are compared element by element.
       - The first mismatching element defines which range is lexicographically less or greater than the other.
@@ -122,9 +122,9 @@ namespace boost { namespace simd
       - Two empty ranges are lexicographically equal.
 
       @par Example:
-         @snippet lexicographical_compare.binary.cpp lexicographical_compare-binary
+         @snippet lexicographical_comparerange.cpp lexicographical_comparerange
       @par Possible output:
-         @snippet lexicographical_compare.binary.txt lexicographical_compare-binary
+         @snippet lexicographical_comparerange.txt lexicographical_comparerange
 
   **/
   template<typename T, typename Pred>

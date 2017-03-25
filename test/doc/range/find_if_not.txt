@@ -1,0 +1,4 @@
+//! [find_if_not]
+r1 0x1510c30 *r1 -1
+r2 0x1510c24 *r2 2
+//! [find_if_not]

@@ -1,0 +1,7 @@
+//! [lexicographical_comparerange]
+b1  0
+b2  1
+b3  0
+b4  0
+b5  1
+//! [lexicographical_comparerange]

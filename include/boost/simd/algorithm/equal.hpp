@@ -27,10 +27,10 @@ namespace boost { namespace simd
   /*!
     @ingroup group-std
 
-    Returns true if the range [first1, last1) is equal
-    to the range [first2, first2 + (last1 - first1)), and false otherwise
+    Returns true if the range [first, last) is equal
+    to the range [first2, first2 + (last - first)), and false otherwise
 
-    @param first1, last1  -   the first range of the elements to compare
+    @param first, last    -   the first range of the elements to compare
     @param first2         -   the beginning of the second range of the elements to compare
 
     @par Requirement
@@ -98,15 +98,15 @@ namespace boost { namespace simd
       - @c first, @c last and @c out must be pointer to Vectorizable type.
 
       - @c f must be a polymorphic binary function object, i.e callable on generic types.
-      - @c boost::simd::pack<T1>::static_size @c == @c boost::simd::pack<T2>::static_size @c
+      -  boost::simd::pack<T1> and boost::simd::pack<T2> must have the same cardinal.
 
     @par Example:
 
-      @snippet equal.binary.cpp equal-binary
+      @snippet equalrange.cpp equalrange
 
     @par Possible output:
 
-      @snippet equal.binary.txt equal-binary
+      @snippet equalrange.txt equalrange
 
   **/
   template<typename T, typename Pred>
