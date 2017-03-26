@@ -73,7 +73,7 @@ namespace boost { namespace simd { namespace detail
     static BOOST_FORCEINLINE size_type max_size() BOOST_NOEXCEPT { return static_size; }
     static BOOST_FORCEINLINE bool empty()         BOOST_NOEXCEPT { return false; }
 
-    BOOST_FORCEINLINE operator storage_type()       const BOOST_NOEXCEPT { return storage() }
+    BOOST_FORCEINLINE operator storage_type()       const BOOST_NOEXCEPT { return storage(); }
     BOOST_FORCEINLINE storage_type const& storage() const BOOST_NOEXCEPT { return get().storage(); }
 
     BOOST_FORCEINLINE reference operator[](std::size_t i)             { return data_.ptr[i]; }
