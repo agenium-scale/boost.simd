@@ -23,6 +23,11 @@ namespace boost { namespace simd
 {
   namespace tt = nsm::type_traits;
 
+  template< typename Iterator
+          , std::size_t N = pack<typename std::iterator_traits<Iterator>::value_type>::static_size
+          >
+  using range_t = boost::iterator_range<detail::iterator<Iterator,N>>;
+
   /*!
     @ingroup group-range
     Builds a ContiguousContiguousRange that iterates over the original <tt>[begin, end[</tt>
@@ -47,8 +52,8 @@ namespace boost { namespace simd
 
     @see aligned_range
   **/
-  template<std::size_t N, class Iterator> inline
-  boost::iterator_range<detail::iterator<Iterator, N> >
+  template<std::size_t N, class Iterator>
+  BOOST_FORCEINLINE range_t<Iterator, N>
   range( Iterator begin, Iterator end, nsm::uint64_t<N> const& card)
   {
     BOOST_ASSERT_MSG
@@ -84,9 +89,8 @@ namespace boost { namespace simd
 
     @see aligned_range
   **/
-  template<class Iterator> inline
-  boost::iterator_range< detail::iterator<Iterator> >
-  range( Iterator begin, Iterator end )
+  template<class Iterator>
+  BOOST_FORCEINLINE range_t<Iterator> range( Iterator begin, Iterator end )
   {
     BOOST_ASSERT_MSG
     ( boost::simd::detail::is_aligned(std::distance(begin,end),detail::iterator<Iterator>::cardinal)
@@ -117,8 +121,8 @@ namespace boost { namespace simd
 
     @see aligned_range
   **/
-  template<std::size_t N, class ContiguousRange> inline
-  boost::iterator_range<detail::iterator<typename range_iterator<ContiguousRange>::type,N>>
+  template<std::size_t N, class ContiguousRange> BOOST_FORCEINLINE
+  range_t<typename range_iterator<ContiguousRange>::type,N>
   range( ContiguousRange&& r, nsm::uint64_t<N> const& card )
   {
     return range( tt::begin(std::forward<ContiguousRange>(r))
@@ -148,8 +152,8 @@ namespace boost { namespace simd
 
     @see aligned_range
   **/
-  template<class ContiguousRange> inline
-  boost::iterator_range<detail::iterator<typename range_iterator<ContiguousRange>::type>>
+  template<class ContiguousRange>
+  BOOST_FORCEINLINE range_t<typename range_iterator<ContiguousRange>::type>
   range( ContiguousRange&& r )
   {
     return range( tt::begin(std::forward<ContiguousRange>(r))

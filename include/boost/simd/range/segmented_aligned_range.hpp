@@ -21,8 +21,12 @@
 namespace boost { namespace simd
 {
   namespace tt = nsm::type_traits;
+  template< typename Iterator
+          , std::size_t N = pack<typename std::iterator_traits<Iterator>::value_type>::static_size
+          >
+  using segmented_aligned_range_t = detail::segment_<Iterator,detail::aligned_iterator<Iterator,N>>;
 
- /*!
+  /*!
     @ingroup group-range
     Splits an arbitrary ContiguousRange into a triplet of ranges covering the head, body and tail
     of the range so that iteration over each Ranges is performed with the proper scalar and SIMD
@@ -47,7 +51,7 @@ namespace boost { namespace simd
     @see segmented_range
   */
   template<typename Iterator, std::size_t N>
-  BOOST_FORCEINLINE detail::segment_<Iterator, detail::aligned_iterator<Iterator,N>>
+  BOOST_FORCEINLINE segmented_aligned_range_t<Iterator,N>
   segmented_aligned_range(Iterator b, Iterator e, nsm::uint64_t<N> const& card)
   {
     using result_t = detail::segment_<Iterator, detail::aligned_iterator<Iterator,N>>;
@@ -82,7 +86,7 @@ namespace boost { namespace simd
                     };
   }
 
- /*!
+  /*!
     @ingroup group-range
     Splits an arbitrary ContiguousRange into a triplet of ranges covering the head, body and tail
     of the range so that iteration over each Ranges is performed with the proper scalar and SIMD
@@ -107,14 +111,14 @@ namespace boost { namespace simd
     @see segmented_range
   */
   template<typename Iterator>
-  BOOST_FORCEINLINE detail::segment_<Iterator, detail::aligned_iterator<Iterator>>
+  BOOST_FORCEINLINE segmented_aligned_range_t<Iterator>
   segmented_aligned_range(Iterator b, Iterator e)
   {
     using value_t = typename std::iterator_traits<Iterator>::value_type;
     return segmented_aligned_range(b,e, nsm::uint64_t<pack<value_t>::static_size>());
   }
 
- /*!
+  /*!
     @ingroup group-range
     Splits an arbitrary ContiguousRange into a triplet of ranges covering the head, body and tail
     of the range so that iteration over each Ranges is performed with the proper scalar and SIMD
@@ -138,10 +142,7 @@ namespace boost { namespace simd
     @see segmented_range
   */
   template<std::size_t N, typename Range>
-  BOOST_FORCEINLINE
-  detail::segment_< detail::range_iterator<Range>
-                  , detail::aligned_iterator<detail::range_iterator<Range>, N>
-                  >
+  BOOST_FORCEINLINE segmented_aligned_range_t<detail::range_iterator<Range>,N>
   segmented_aligned_range( Range&& r, nsm::uint64_t<N> const& card )
   {
     return segmented_aligned_range( tt::begin(std::forward<Range>(r))
@@ -150,7 +151,7 @@ namespace boost { namespace simd
                                   );
   }
 
- /*!
+  /*!
     @ingroup group-range
     Splits an arbitrary ContiguousRange into a triplet of ranges covering the head, body and tail
     of the range so that iteration over each Ranges is performed with the proper scalar and SIMD
@@ -173,10 +174,7 @@ namespace boost { namespace simd
     @see segmented_range
   */
   template<typename Range>
-  BOOST_FORCEINLINE
-  detail::segment_< detail::range_iterator<Range>
-                  , detail::aligned_iterator<detail::range_iterator<Range>>
-                  >
+  BOOST_FORCEINLINE segmented_aligned_range_t<detail::range_iterator<Range>>
   segmented_aligned_range( Range&& r )
   {
     return segmented_aligned_range( tt::begin(std::forward<Range>(r))

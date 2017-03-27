@@ -23,6 +23,11 @@ namespace boost { namespace simd
 {
   namespace tt = nsm::type_traits;
 
+  template< typename Iterator
+          , std::size_t N = pack<typename std::iterator_traits<Iterator>::value_type>::static_size
+          >
+  using aligned_range_t = boost::iterator_range<detail::aligned_iterator<Iterator,N>>;
+
   /*!
     @ingroup group-range
     Builds a ContiguousRange that iterates over the original <tt>[begin, end[</tt>
@@ -47,8 +52,8 @@ namespace boost { namespace simd
 
     @return A ContiguousRange returning boost::simd::pack of cardinal @c card::value
   **/
-  template<std::size_t C, typename Iterator> inline
-  boost::iterator_range<detail::aligned_iterator<Iterator, C> >
+  template<std::size_t C, typename Iterator>
+  BOOST_FORCEINLINE aligned_range_t<Iterator, C>
   aligned_range( Iterator begin, Iterator end, nsm::uint64_t<C> const& card )
   {
     BOOST_ASSERT_MSG
@@ -84,9 +89,8 @@ namespace boost { namespace simd
 
     @return A ContiguousRange returning boost::simd::pack
   **/
-  template<typename Iterator> inline
-  boost::iterator_range< detail::aligned_iterator<Iterator> >
-  aligned_range( Iterator begin, Iterator end )
+  template<typename Iterator> BOOST_FORCEINLINE
+  aligned_range_t<Iterator> aligned_range( Iterator begin, Iterator end )
   {
     BOOST_ASSERT_MSG
     ( boost::simd::detail::is_aligned ( std::distance(begin,end)
@@ -121,8 +125,8 @@ namespace boost { namespace simd
     @param card  Integral constant representing the cardinal of the pack to use when iterating.
     @return A ContiguousRange returning boost::simd::pack of cardinal @c card::value
   **/
-  template<std::size_t C, typename ContiguousRange> inline
-  boost::iterator_range<detail::aligned_iterator<typename range_iterator<ContiguousRange>::type,C>>
+  template<std::size_t C, typename ContiguousRange>
+  BOOST_FORCEINLINE aligned_range_t<typename range_iterator<ContiguousRange>::type,C>
   aligned_range( ContiguousRange&& r, nsm::uint64_t<C> const& card )
   {
     return aligned_range( tt::begin(std::forward<ContiguousRange>(r))
@@ -151,8 +155,8 @@ namespace boost { namespace simd
     @param r ContiguousRange to adapt
     @return A ContiguousRange returning boost::simd::pack
   **/
-  template<typename ContiguousRange> inline
-  boost::iterator_range<detail::aligned_iterator<typename range_iterator<ContiguousRange>::type>>
+  template<typename ContiguousRange>
+  BOOST_FORCEINLINE aligned_range_t<typename range_iterator<ContiguousRange>::type>
   aligned_range( ContiguousRange&& r )
   {
     return aligned_range( tt::begin(std::forward<ContiguousRange>(r))

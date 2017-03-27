@@ -22,7 +22,12 @@ namespace boost { namespace simd
 {
   namespace tt = nsm::type_traits;
 
- /*!
+  template< typename Iterator
+          , std::size_t N = pack<typename std::iterator_traits<Iterator>::value_type>::static_size
+          >
+  using segmented_range_t = detail::segment_<Iterator, detail::iterator<Iterator,N>>;
+
+  /*!
     @ingroup group-range
     Splits an unaligned ContiguousRange into a triplet of ranges covering the head, body and tail
     of the range so that iteration over each Ranges is performed with the proper scalar and SIMD
@@ -47,11 +52,9 @@ namespace boost { namespace simd
     @see aligned_segmented_range
   */
   template<typename Iterator, std::size_t N>
-  BOOST_FORCEINLINE detail::segment_<Iterator, detail::iterator<Iterator,N>>
+  BOOST_FORCEINLINE segmented_range_t<Iterator,N>
   segmented_range(Iterator b, Iterator e, nsm::uint64_t<N> const& card)
   {
-    using result_t = detail::segment_<Iterator, detail::iterator<Iterator,N>>;
-
     /*
       When dealing with unaligned range adaptation, we know there is no head.
       We just need to compute where the original range stops in terms of packs.
@@ -59,13 +62,13 @@ namespace boost { namespace simd
     auto alg = pack<typename std::iterator_traits<Iterator>::value_type,N>::static_size;
     std::size_t vz = alignment::align_down(std::distance(b, e),alg);
 
-    return result_t { iterator_range<Iterator>()
-                    , range(b,b+vz, card)
-                    , iterator_range<Iterator>(b+vz,e)
-                    };
+    return segmented_range_t<Iterator,N>{ iterator_range<Iterator>()
+                                        , range(b,b+vz, card)
+                                        , iterator_range<Iterator>(b+vz,e)
+                                        };
   }
 
- /*!
+  /*!
     @ingroup group-range
     Splits an unaligned ContiguousRange into a triplet of ranges covering the head, body and tail
     of the range so that iteration over each Ranges is performed with the proper scalar and SIMD
@@ -90,14 +93,13 @@ namespace boost { namespace simd
     @see aligned_segmented_range
   */
   template<typename Iterator>
-  BOOST_FORCEINLINE detail::segment_<Iterator, detail::iterator<Iterator>>
-  segmented_range(Iterator b, Iterator e)
+  BOOST_FORCEINLINE segmented_range_t<Iterator> segmented_range(Iterator b, Iterator e)
   {
     using value_t = typename std::iterator_traits<Iterator>::value_type;
     return segmented_range(b,e, nsm::uint64_t<pack<value_t>::static_size>());
   }
 
- /*!
+  /*!
     @ingroup group-range
     Splits an unaligned ContiguousRange into a triplet of ranges covering the head, body and tail
     of the range so that iteration over each Ranges is performed with the proper scalar and SIMD
@@ -121,10 +123,7 @@ namespace boost { namespace simd
     @see aligned_segmented_range
   */
   template<std::size_t N, typename Range>
-  BOOST_FORCEINLINE
-  detail::segment_< detail::range_iterator<Range>
-                  , detail::iterator<detail::range_iterator<Range>, N>
-                  >
+  BOOST_FORCEINLINE segmented_range_t<detail::range_iterator<Range>,N>
   segmented_range( Range&& r, nsm::uint64_t<N> const& card )
   {
     return segmented_range( tt::begin(std::forward<Range>(r)), tt::end(std::forward<Range>(r))
@@ -132,7 +131,7 @@ namespace boost { namespace simd
                           );
   }
 
- /*!
+  /*!
     @ingroup group-range
     Splits an unaligned ContiguousRange into a triplet of ranges covering the head, body and tail
     of the range so that iteration over each Ranges is performed with the proper scalar and SIMD
@@ -155,10 +154,7 @@ namespace boost { namespace simd
     @see aligned_segmented_range
   */
   template<typename Range>
-  BOOST_FORCEINLINE
-  detail::segment_< detail::range_iterator<Range>
-                  , detail::iterator<detail::range_iterator<Range>>
-                  >
+  BOOST_FORCEINLINE segmented_range_t<detail::range_iterator<Range>>
   segmented_range( Range&& r )
   {
     return segmented_range( tt::begin(std::forward<Range>(r)), tt::end(std::forward<Range>(r)) );
