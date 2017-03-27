@@ -22,17 +22,9 @@ struct p
   T val_;
   p_t pval_;
 
-  bool operator ()( T a) const
-  {
-    return a < val_;
-  }
-  auto operator ()( const p_t& a) const ->decltype(a < pval_)
-  {
-    return a < pval_;
-  }
-
+  bool                  operator ()(T a)          const { return a < val_; }
+  bs::as_logical_t<p_t> operator ()(const p_t& a) const { return a < pval_; }
 };
-
 
 STF_CASE_TPL( "Check unary simd::replace_if", STF_NUMERIC_TYPES )
 {
@@ -42,23 +34,21 @@ STF_CASE_TPL( "Check unary simd::replace_if", STF_NUMERIC_TYPES )
   std::iota(values.begin(), values.end(),T(1));
   std::iota(ref.begin(), ref.end(),T(1));
   {
-    std::replace_if(ref.begin(), ref.end(), p<T>(N), T(0));
+    std::replace_if(ref.begin(), ref.end(), [](T e){ return e < N; }, T(0));
     boost::simd::replace_if(values.data(), values.data()+2*N+3, p<T>(N), T(0));
 
     STF_EQUAL( values, ref );
   }
   {
-    std::replace_if(ref.begin(), ref.end(), p<T>(1), T(0));
+    std::replace_if(ref.begin(), ref.end(), [](T e){ return e < 1; }, T(0));
     boost::simd::replace_if(values.data(), values.data()+2*N+3, p<T>(1), T(0));
 
     STF_EQUAL( values, ref );
   }
   {
-    std::replace_if(ref.begin(), ref.end(),  p<T>(2*N-1), T(0));
+    std::replace_if(ref.begin(), ref.end(),  [](T e){ return e < 2*N-1; }, T(0));
     boost::simd::replace_if(values.data(), values.data()+2*N+3, p<T>(2*N-1), T(0));
 
     STF_EQUAL( values, ref );
   }
 }
-
-

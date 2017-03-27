@@ -9,10 +9,8 @@
 #ifndef BOOST_SIMD_RANGE_HPP_INCLUDED
 #define BOOST_SIMD_RANGE_HPP_INCLUDED
 
-#include <boost/simd/range/input_range.hpp>
-#include <boost/simd/range/output_range.hpp>
-#include <boost/simd/range/aligned_input_range.hpp>
-#include <boost/simd/range/aligned_output_range.hpp>
+#include <boost/simd/range/range.hpp>
+#include <boost/simd/range/aligned_range.hpp>
 #include <boost/simd/range/segmented_input_range.hpp>
 #include <boost/simd/range/segmented_output_range.hpp>
 

@@ -11,31 +11,29 @@
 #ifndef BOOST_SIMD_ALGORITHM_ALL_OF_HPP_INCLUDED
 #define BOOST_SIMD_ALGORITHM_ALL_OF_HPP_INCLUDED
 
-#include <boost/simd/range/segmented_input_range.hpp>
+#include <boost/simd/range/segmented_aligned_range.hpp>
+#include <boost/simd/detail/identity.hpp>
 #include <boost/simd/function/all.hpp>
 #include <boost/simd/pack.hpp>
-#include <boost/simd/detail/identity.hpp>
 #include <algorithm>
 
 namespace boost { namespace simd
 {
   /*!
-    @ingroup group-std
+    @ingroup group-algo
 
-    Returns true if pred returns true for all the elements in the range [first,last)
-    or if the range is empty, and false otherwise.
+    Returns @c true if @c pred evaluates to @c true for all the elements in the
+    ContiguousRange [first,last) or if the range is empty, @c and false otherwise.
 
     @param first  Beginning of the range of elements to test
     @param last   End of the range of elements to all_of
-    @param f      predicate function object that will be applied.
+    @param pred   Predicate function object that will be applied.
 
     @par Requirement
 
       - @c first and @c last must be pointers to Vectorizable type.
-
-      - @c f must be a polymorphic unary function object, i.e callable on
+      - @c pred must be a polymorphic unary function object, i.e callable on
         generic types.
-      - if @c f is not present the function test if all elements are non-zero
 
     @par Example;:
 
@@ -44,40 +42,42 @@ namespace boost { namespace simd
     @par Possible output:
 
       @snippet all_of.txt all_of
-
   **/
   template<typename T, typename Pred>
-  bool all_of(T const* first, T const* last, Pred f)
+  bool all_of(T const* first, T const* last, Pred const& pred)
   {
+    auto pr = segmented_aligned_range(first,last);
 
-    auto pr = segmented_input_range(first,last);
-
-    // prologue
-    auto r0 = std::get<0>(pr);
-    if (!std::all_of(r0.begin(),  r0.end(), f)) return false;
-
-    // main SIMD part
-    auto r1 = std::get<1>(pr);
-    using type_t = typename std::decay<decltype(*r1.begin())>::type;
-    if (!std::all_of(r1.begin(),  r1.end()
-                    ,  [&f](const type_t&  x){ return all(f(x)); }))
-    {
+    if(!std::all_of(pr.head.begin(), pr.head.end(), pred))
       return false;
-    }
 
-    // epilogue
-    auto r2 = std::get<2>(pr);
-    if (!std::all_of(r2.begin(),  r2.end(), f)) return false;
+    if(!std::all_of(pr.body.begin(), pr.body.end(), [&pred](pack<T> const& x){ return all(pred(x)); }))
+      return false;
+
+    if(!std::all_of(pr.tail.begin(), pr.tail.end(), pred))
+      return false;
 
     return true;
   }
 
-  template<typename T>
-  bool all_of(T const* first, T const* last)
+
+  /*!
+    @ingroup group-algo
+
+    Returns @c true if all the elements in the ContiguousRange [first,last) are not equal to zero
+    or if the range is empty, @c and false otherwise.
+
+    @param first  Beginning of the range of elements to test
+    @param last   End of the range of elements to all_of
+
+    @par Requirement
+
+      - @c first and @c last must be pointers to Vectorizable type.
+  **/
+  template<typename T> bool all_of(T const* first, T const* last)
   {
     return all_of(first, last, detail::identity());
   }
-
 } }
 
 #endif

@@ -31,7 +31,6 @@ set(DOXYGEN_MAIN_PAGE_TITLE "Home")
 set(DOXYGEN_SECTIONS "
     <tab type='user' url='@ref quickstart' visible='yes' title='Quick Start'/>
     <tab type='user' url='@ref tutorials' visible='yes' title='Tutorials'/>
-    <tab type='user' url='@ref motivation' visible='no' title='Motivation'/>
     <tab type='user' url='@ref faq' visible='yes' title='FAQ'/>
     "
 )

@@ -17,8 +17,24 @@ namespace boost { namespace simd
     @ingroup group-api
     @defgroup group-std Algorithms and Ranges
 
-    Boost.SIMD provides SIMD-aware Range adaptors and implementation of standard algorithms to
+    SIMD-aware Range adaptors and implementation of standard algorithms to
     simplify interactions with code written using the Standard Template Library.
+  **/
+
+  /*!
+    @ingroup group-std
+    @defgroup group-range Ranges adapters
+
+    Provides range adapters to convert arbitrary ranges into SIMD-aware ranges that allow
+    the processing of data with automatic support for SIMD semantic.
+  **/
+
+  /*!
+    @ingroup group-std
+    @defgroup group-algo SIMD Standard Algorithms
+
+    SIMD aware version of standard algorithms. Those algorithms try to maximize the usage of SIMD
+    semantic within standard algorithm.
   **/
 } }
 

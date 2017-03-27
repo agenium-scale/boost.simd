@@ -11,9 +11,9 @@
 #ifndef BOOST_SIMD_ALGORITHM_TRANSFORM_REDUCE_HPP_INCLUDED
 #define BOOST_SIMD_ALGORITHM_TRANSFORM_REDUCE_HPP_INCLUDED
 
-#include <boost/simd/range/segmented_input_range.hpp>
-#include <boost/simd/function/load.hpp>
+#include <boost/simd/range/segmented_aligned_range.hpp>
 #include <boost/simd/function/aligned_load.hpp>
+#include <boost/simd/function/load.hpp>
 #include <boost/simd/pack.hpp>
 #include <boost/simd/detail/is_aligned.hpp>
 #include <boost/simd/meta/cardinal_of.hpp>
@@ -21,7 +21,7 @@
 namespace boost { namespace simd
 {
   /*!
-    @ingroup group-std
+    @ingroup group-algo
 
     Applies unary_op to each element in the range [first; last) and reduces the results
     (possibly permuted and aggregated in unspecified manner) along with the initial value init over binary_op.
@@ -73,22 +73,24 @@ namespace boost { namespace simd
   T transform_reduce(T const* first, T const* last
                     , Unop unop, T init, Binop binop)
   {
-    auto pr = segmented_input_range(first,last);
+    auto pr = segmented_aligned_range(first,last);
 
-    for( auto const& e : std::get<0>(pr) ) init = binop(init, unop(e));
-    for( auto const& e : std::get<2>(pr) ) init = binop(init, unop(e));
-    auto b = std::get<1>(pr).begin();
-    auto e = std::get<1>(pr).end();
-    if (b !=  e){
+    for( auto const& x : pr.head ) init = binop(init, unop(x));
+    auto b = pr.body.begin();
+    auto e = pr.body.end();
+    if (b != e)
+    {
       pack<T> acc(unop(*b++));
-      for( ; b != e; b++) acc  = binop(acc,  unop(*b));
+      for( ; b != e; b++) acc  = binop(acc , unop(*b));
       for( T     x : acc) init = binop(init, x);
     }
+    for( auto const& x : pr.tail ) init = binop(init, unop(x));
+
     return init;
   }
 
   /*!
-    @ingroup group-std
+    @ingroup group-algo
 
     Applies transform binary oerator  to each element in the range [first1; last1) and [first2, )
     and reduces the results (possibly permuted and aggregated in unspecified manner)
@@ -152,15 +154,15 @@ namespace boost { namespace simd
     static_assert (  bs::cardinal_of_t<vT>::value == bs::cardinal_of_t<vV>::value
                   , "SIMD cardinal mismatch between T and V"
                   );
-    auto pr = segmented_input_range(first1,last1);
+    auto pr = segmented_aligned_range(first1,last1);
 
-    for( auto const& x : std::get<0>(pr) ){
+    for( auto const& x : pr.head ){
       init = gsum(init, transform(x, *first2++));
     }
 
     // main SIMD part
-    auto b = std::get<1>(pr).begin();
-    auto e = std::get<1>(pr).end();
+    auto b = pr.body.begin();
+    auto e = pr.body.end();
     if (b !=  e)
     {
       if( boost::simd::detail::is_aligned(first2 , vU::alignment) ) // first2 is aligned
@@ -182,9 +184,10 @@ namespace boost { namespace simd
         for( V x : acc) init = gsum(init, x);
       }
     }
-    for( auto const& x : std::get<2>(pr) ){
+
+    for( auto const& x : pr.tail )
       init = gsum(init, transform(x, *first2++));
-    }
+
     return init;
   }
 

@@ -12,21 +12,17 @@
 #include <simd_test.hpp>
 
 using namespace boost::simd;
-using namespace boost::alignment;
 
-  template < typename T>
-struct f
+template<typename T> struct f
 {
   using p_t = pack<T>;
   f(const T & n) :n_(n), vn_(n){}
 
-  bool operator()( T  a) const {return a >= n_; }
+  bool                  operator()(T a)           const {return a >= n_;  }
   bs::as_logical_t<p_t> operator()(const p_t & a) const {return a >= vn_; }
   T n_;
   p_t vn_;
 };
-
-
 
 STF_CASE_TPL( "Check unary simd::find_if", STF_NUMERIC_TYPES )
 {
@@ -35,23 +31,20 @@ STF_CASE_TPL( "Check unary simd::find_if", STF_NUMERIC_TYPES )
   std::vector<T> values(2*N+1);
   std::iota(values.begin(), values.end(),T(1));
   {
-    auto f1 = std::find_if(values.begin(), values.end(), f<T>(N));
-    auto f2 = boost::simd::find_if(values.data(), values.data()+2*N+1, f<T>(N));
+    auto f1 = std::find_if(values.begin(), values.end(), [](T e) { return e >= N; } );
+    auto f2 = boost::simd::find_if(values.data(), values.data()+2*N+1, f<T>(T(N)));
     STF_EQUAL ( *f1, *f2 );
-    auto f3 = std::find_if(values.begin(), values.end(), f<T>(104));
-    auto f4 = boost::simd::find_if(values.data(), values.data()+2*N+1, f<T>(104));
+    auto f3 = std::find_if(values.begin(), values.end(), [](T e) { return e >= 104; } );
+    auto f4 = boost::simd::find_if(values.data(), values.data()+2*N+1, f<T>(T(104)) );
     STF_EQUAL ( *f3, *f4 );
   }
+
   {
-    auto f1 = std::find_if(values.begin(), values.end(), f<T>(0));
-    auto f2 = boost::simd::find_if(values.data(), values.data()+2*N+1, f<T>(0));
+    auto f1 = std::find_if(values.begin(), values.end(), [](T e) { return e >= 0; } );
+    auto f2 = boost::simd::find_if(values.data(), values.data()+2*N+1, f<T>(T(0)) );
     STF_EQUAL ( *f1, *f2 );
-    auto f3 = std::find_if(values.begin(), values.end(), f<T>(2*N));
-    auto f4 = boost::simd::find_if(values.data(), values.data()+2*N+1, f<T>(2*N));
+    auto f3 = std::find_if(values.begin(), values.end(), [](T e) { return e >= 2*N; });
+    auto f4 = boost::simd::find_if(values.data(), values.data()+2*N+1, f<T>(T(2*N)));
     STF_EQUAL ( *f3, *f4 );
   }
-
-
 }
-
-

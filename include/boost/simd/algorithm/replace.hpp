@@ -11,16 +11,14 @@
 #ifndef BOOST_SIMD_ALGORITHM_REPLACE_HPP_INCLUDED
 #define BOOST_SIMD_ALGORITHM_REPLACE_HPP_INCLUDED
 
-#include <boost/simd/range/segmented_output_range.hpp>
 #include <boost/simd/algorithm/transform.hpp>
 #include <boost/simd/function/if_else.hpp>
 #include <boost/simd/pack.hpp>
-#include <algorithm>
 
 namespace boost { namespace simd
 {
   /*!
-    @ingroup group-std
+    @ingroup group-algo
 
     Replaces all elements that are equal to old_value with new_value in the range [first, last).
 
@@ -42,7 +40,6 @@ namespace boost { namespace simd
     @par possible output:
 
        @snippet replace.txt replace
-
   **/
   template<typename T>
   void replace(T * first, T * last, T const & old_val, T const & new_val)
@@ -50,19 +47,18 @@ namespace boost { namespace simd
     struct local
     {
       using p_t = boost::simd::pack<T>;
-      local(const T & ov, const T & nv) : nv_(nv), ov_(ov), pnv_(nv), pov_(ov){}
 
-      T operator()(T const& x) { return x == ov_ ? nv_ : x; }
-      p_t operator()(p_t const& x) { return if_else(x == pov_, pnv_, x); }
+      local(const T & ov, const T & nv) : nv_(nv), ov_(ov), pnv_(nv), pov_(ov) {}
+
+      T   operator()(T    const& x) const { return x == ov_ ? nv_ : x;          }
+      p_t operator()(p_t  const& x) const { return if_else(x == pov_, pnv_, x); }
 
       T nv_, ov_;
       p_t pnv_, pov_;
     };
-    local loc(old_val, new_val);
-    transform(first, last, first, loc);
 
+    boost::simd::transform(first, last, first, local(old_val, new_val));
   }
-
 } }
 
 #endif

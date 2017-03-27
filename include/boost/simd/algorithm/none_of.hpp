@@ -11,17 +11,16 @@
 #ifndef BOOST_SIMD_ALGORITHM_NONE_OF_HPP_INCLUDED
 #define BOOST_SIMD_ALGORITHM_NONE_OF_HPP_INCLUDED
 
-#include <boost/simd/range/segmented_input_range.hpp>
+#include <boost/simd/range/segmented_aligned_range.hpp>
+#include <boost/simd/detail/identity.hpp>
 #include <boost/simd/function/any.hpp>
 #include <boost/simd/pack.hpp>
-#include <boost/simd/detail/is_aligned.hpp>
 #include <algorithm>
-#include <boost/simd/detail/identity.hpp>
 
 namespace boost { namespace simd
 {
   /*!
-    @ingroup group-std
+    @ingroup group-algo
 
     Returns true if f returns false for all the elements in the range [first,last)
     or if the range is empty, and false otherwise.
@@ -48,33 +47,24 @@ namespace boost { namespace simd
   template<typename T, typename Pred>
   bool none_of(T const* first, T const* last, Pred f)
   {
+    auto pr = segmented_aligned_range(first,last);
 
-    auto pr = segmented_input_range(first,last);
-
-     auto r0 = std::get<0>(pr);
-    if (std::any_of(r0.begin(),  r0.end(), f)) return false;
-
-    // main SIMD part
-    auto r1 = std::get<1>(pr);
-    using type_t = typename std::decay<decltype(*r1.begin())>::type;
-    if (std::any_of(r1.begin(),  r1.end(), [&f](const type_t&  x){ return any(f(x)); }))
-    {
+    if(std::any_of(pr.head.begin(), pr.head.end(), f))
       return false;
-    }
 
-    // epilogue
-    auto r2 = std::get<2>(pr);
-    if (std::any_of(r2.begin(),  r2.end(), f)) return false;
+    if(std::any_of(pr.body.begin(), pr.body.end(), [&f](const pack<T>&  x){ return any(f(x)); }))
+      return false;
+
+    if(std::any_of(pr.tail.begin(), pr.tail.end(), f))
+      return false;
 
     return true;
   }
 
-  template<typename T>
-  bool none_of(T const* first, T const* last)
+  template<typename T> BOOST_FORCEINLINE bool none_of(T const* first, T const* last)
   {
     return none_of(first, last, detail::identity());
   }
-
 } }
 
 #endif

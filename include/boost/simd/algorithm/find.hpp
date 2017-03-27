@@ -11,19 +11,16 @@
 #ifndef BOOST_SIMD_ALGORITHM_FIND_HPP_INCLUDED
 #define BOOST_SIMD_ALGORITHM_FIND_HPP_INCLUDED
 
-#include <boost/simd/range/segmented_input_range.hpp>
-#include <boost/simd/function/any.hpp>
-#include <boost/simd/function/fma.hpp>
-#include <boost/simd/function/is_nez.hpp>
-#include <boost/simd/pack.hpp>
+#include <boost/simd/range/segmented_aligned_range.hpp>
 #include <boost/simd/detail/is_aligned.hpp>
-#include <boost/simd/meta/cardinal_of.hpp>
+#include <boost/simd/function/any.hpp>
+#include <boost/simd/pack.hpp>
 #include <algorithm>
 
 namespace boost { namespace simd
 {
   /*!
-    @ingroup group-std
+    @ingroup group-algo
 
     Returns an iterator to the first element in the range [first,last)
     for which the element equals val.
@@ -53,30 +50,29 @@ namespace boost { namespace simd
   template<typename T, typename U>
   T const* find(T const* first, T const* last, U const & val)
   {
-    using p_t =  pack<T>;
-    auto pr = segmented_input_range(first,last);
-    // prologue
-    auto r0 = std::get<0>(pr);
-    auto r = std::find(r0.begin(), r0.end(), val);
-    if (r != r0.end()) return r;
+    auto pr = segmented_aligned_range(first,last);
 
-    // main simd part
-    auto r1 = std::get<1>(pr);
-    using type_t = typename std::decay<decltype(*r1.begin())>::type;
-    const type_t v(val);
-    auto rv = std::find_if(r1.begin(), r1.end(), [v](const type_t& x){return any(v == x); });
-    if (rv != r1.end())
+    auto r = std::find(pr.head.begin(), pr.head.end(), val);
+    if (r != pr.head.end()) return r;
+
+    pack<T> v(val);
+    auto rv = std::find_if( pr.body.begin(), pr.body.end()
+                          , [&v](const pack<T>& x) { return any(v == x); }
+                          );
+
+    if (rv != pr.body.end())
     {
-      auto z =  std::find((*rv).begin(), (*rv).end(), val);
-      return std::get<0>(pr).end()
-        + std::distance(r1.begin(), rv)*bs::cardinal_of_t<p_t>::value + std::distance((*rv).begin(), z);
+      pack<T> vv = *rv;
+      auto z = std::find(vv.begin(), vv.end(), val);
+
+      // If there is somethign ina vector, compute the scalar iterator to it
+      return  pr.head.end()                                           //   base
+            + std::distance(pr.body.begin(), rv)*pack<T>::static_size // + jump to vector
+            + std::distance(vv.begin(), z);                           // + jump to element
     }
-    // epilogue
-    auto r2 = std::get<2>(pr);
-    return std::find(r2.begin(), r2.end(), val);
 
+    return std::find(pr.tail.begin(), pr.tail.end(), val);
   }
-
 } }
 
 #endif

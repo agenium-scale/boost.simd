@@ -17,7 +17,7 @@
 namespace boost { namespace simd
 {
   /*!
-    @ingroup group-std
+    @ingroup group-algo
 
     Returns an iterator pointing to the element with the greatest value in the range [first,last).
 
@@ -53,7 +53,6 @@ namespace boost { namespace simd
     if (first == last) return last;
     return find(first, last, max_val(first, last));
   }
-
 } }
 
 #endif

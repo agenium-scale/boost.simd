@@ -11,7 +11,7 @@
 #ifndef BOOST_SIMD_ALGORITHM_COUNT_HPP_INCLUDED
 #define BOOST_SIMD_ALGORITHM_COUNT_HPP_INCLUDED
 
-#include <boost/simd/range/segmented_input_range.hpp>
+#include <boost/simd/range/segmented_aligned_range.hpp>
 #include <boost/simd/function/nbtrue.hpp>
 #include <boost/simd/pack.hpp>
 #include <algorithm>
@@ -19,9 +19,9 @@
 namespace boost { namespace simd
 {
   /*!
-    @ingroup group-std
+    @ingroup group-algo
 
-    Returns the number of elements in the range [first,last) that compare equal to val.
+    Returns the number of elements in the ContiguousRange [first,last) that compare equal to val.
 
     @param first  Beginning of the range of elements to count
     @param last   End of the range of elements to count
@@ -30,7 +30,6 @@ namespace boost { namespace simd
     @par Requirement
 
       - @c first, @c last and @c out must be pointers to Vectorizable type.
-
       - @c val must be a scalar value convertible to the pointee type of first.
 
     @par Example:
@@ -42,29 +41,19 @@ namespace boost { namespace simd
       @snippet count.txt count
 
   **/
-
-
   template<typename T, typename U>
   typename std::iterator_traits<const T*>::difference_type
   count(T const* first, T const* last, U const & val)
   {
-    using p_t = boost::simd::pack<T>;
-    auto pr = segmented_input_range(first,last);
-    // prologue
-    auto r0 = std::get<0>(pr);
-    auto c = std::count(r0.begin(), r0.end(), val);
+    pack<T> pval(val);
+    auto pr = segmented_aligned_range(first,last);
 
-    // main simd part
-    p_t pval(val);
-    for(p_t x :  std::get<1>(pr)) c+= nbtrue(x == pval);
-
-    // epilogue
-    auto r2 = std::get<2>(pr);
-    c += std::count(r2.begin(), r2.end(), val);
+    auto c = std::count(pr.head.begin(), pr.head.end(), val);
+    for(pack<T> x : pr.body)   c += nbtrue(x == pval);
+    c += std::count(pr.tail.begin(), pr.tail.end(), val);
 
     return c;
   }
-
 } }
 
 #endif

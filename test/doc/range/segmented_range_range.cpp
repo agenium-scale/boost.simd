@@ -6,8 +6,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-//! [segmented_input_range]
-#include <boost/simd/range/segmented_input_range.hpp>
+//! [segmented_range]
+#include <boost/simd/range/segmented_range.hpp>
 #include <boost/simd/function/sum.hpp>
 #include <boost/simd/pack.hpp>
 #include <iostream>
@@ -15,23 +15,23 @@
 
 int main()
 {
-  std::vector<float> x{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
+  std::vector<float> x{1,2,3,4,5,6,7,8,9,10,11,12,13};
 
   float sr{0};
   boost::simd::pack<float> vr{0};
-  auto prs = boost::simd::segmented_input_range(x);
+  auto segments = boost::simd::segmented_range(x);
 
-  // Scalar prologue
-  for(auto const& e :std::get<0>(prs))   sr += e;
+  // Scalar head
+  for(auto&& e : segments.head) sr += e;
 
-  // SIMD main segment
-  for(auto const& e : std::get<1>(prs)) vr += e;
+  // SIMD body
+  for(auto&& e : segments.body) vr += e;
 
-  // Scalar epilogue
-  for(auto const& e : std::get<2>(prs)) sr += e;
+  // Scalar tail
+  for(auto&& e : segments.tail) sr += e;
 
-  std::cout << "Sum of [1 ... 16] is " << boost::simd::sum(vr) + sr << std::endl;
+  std::cout << "Sum of [" << x.front() << " ... " << x.back() << "] is " << boost::simd::sum(vr) + sr << std::endl;
 
   return 0;
 }
-//! [segmented_input_range]
+//! [segmented_range]
