@@ -84,7 +84,7 @@ namespace boost { namespace simd
   T reduce( T const* first, T const* last, T init, F binop )
   {
     auto pr = segmented_aligned_range(first,last);
-    for( T e : pr.head ) init = binop(init, e);
+    for( T v : pr.head ) init = binop(init, v);
     auto b = pr.body.begin();
     auto e = pr.body.end();
     if (b !=  e){
@@ -92,7 +92,7 @@ namespace boost { namespace simd
       for( ; b != e; b++) acc  = binop(acc, pack<T>(*b));
       for( T     x : acc) init = binop(init, x);
     }
-    for( T e : pr.tail ) init = binop(init, e);
+    for( T v : pr.tail ) init = binop(init, v);
     return init;
   }
 
