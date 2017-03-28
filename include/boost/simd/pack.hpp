@@ -199,7 +199,8 @@ namespace boost { namespace simd
 
       @param value The value to replicate
     **/
-    template<typename U
+    template< typename U
+            , typename = typename std::enable_if< !std::is_pointer<U>::value >::type
             , typename = typename std::enable_if<std::is_convertible<U, value_type>::value>::type
             >
     BOOST_FORCEINLINE explicit pack(U const& value) BOOST_NOEXCEPT
