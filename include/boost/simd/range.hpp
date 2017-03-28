@@ -9,6 +9,17 @@
 #ifndef BOOST_SIMD_RANGE_HPP_INCLUDED
 #define BOOST_SIMD_RANGE_HPP_INCLUDED
 
+namespace boost { namespace simd
+{
+  /*!
+    @ingroup group-std
+    @defgroup group-range Ranges adapters
+
+    Provides range adapters to convert arbitrary ranges into SIMD-aware ranges that allow
+    the processing of data with automatic support for SIMD semantic.
+  **/
+}
+
 #include <boost/simd/range/range.hpp>
 #include <boost/simd/range/aligned_range.hpp>
 #include <boost/simd/range/segmented_input_range.hpp>

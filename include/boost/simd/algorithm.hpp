@@ -23,14 +23,6 @@ namespace boost { namespace simd
 
   /*!
     @ingroup group-std
-    @defgroup group-range Ranges adapters
-
-    Provides range adapters to convert arbitrary ranges into SIMD-aware ranges that allow
-    the processing of data with automatic support for SIMD semantic.
-  **/
-
-  /*!
-    @ingroup group-std
     @defgroup group-algo SIMD Standard Algorithms
 
     SIMD aware version of standard algorithms. Those algorithms try to maximize the usage of SIMD
