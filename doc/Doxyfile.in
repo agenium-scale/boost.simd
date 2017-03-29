@@ -87,6 +87,7 @@ ALIASES += intconst="<a href=\"http://www.boost.org/doc/libs/release/libs/mpl/do
 ALIASES += range{2}="<tt>[\1, \2[</tt>"
 ALIASES += projectname=@PROJECT_NAME@
 ALIASES += projectnumber=@PROJECT_VERSION@
+ALIASES += headerref{1}="<b>Defined in header:</b> \c \1"
 
 # --------------------------------------------------------------------------------------------------
 
