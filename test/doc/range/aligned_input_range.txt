@@ -1,3 +1,0 @@
-//! [aligned_input_range]
-Sum of [1 ... 16] is 136
-//! [aligned_input_range]
