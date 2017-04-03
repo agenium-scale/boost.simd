@@ -6,23 +6,24 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-//! [aligned_range_card]
+//! [aligned_range_t]
 #include <boost/simd/range/aligned_range.hpp>
 #include <boost/simd/memory/allocator.hpp>
 #include <boost/simd/literal.hpp>
 #include <iostream>
-#include <vector>
-
-using namespace boost::simd::literal;
+#include <vector >
 
 int main()
 {
-  std::vector<float, boost::simd::allocator<float>> x{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
+  using namespace boost::simd::literal;
 
-  auto pr = boost::simd::aligned_range(x, 8_c);
-  for(auto&& e : pr) std::cout << e;
-  std::cout << std::endl;
+  std::vector<float, boost::simd::allocator<float>> data{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
+
+  boost::simd::aligned_range_t<float*,8> r = boost::simd::aligned_range(&data[0], &data[0]+16, 8_c);
+
+  std::cout << *r.begin() << "\n";
+  std::cout << *(r.begin()+1) << "\n";
 
   return 0;
 }
-//! [aligned_range_card]
+//! [aligned_range_t]

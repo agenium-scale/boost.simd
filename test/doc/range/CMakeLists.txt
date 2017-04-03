@@ -7,10 +7,8 @@
 ##===================================================================================================
 
 SET( SOURCES
-    aligned_range_range.cpp
     aligned_range.cpp
-    aligned_range_card.cpp
-    aligned_range_card_range.cpp
+    aligned_range_t.cpp
     all_of.cpp
     any_of.cpp
     copy.cpp
@@ -32,23 +30,17 @@ SET( SOURCES
     min_val.cpp
     none_of.cpp
     not_all_of.cpp
-    range_range.cpp
+    range_t.cpp
     range.cpp
-    range_card.cpp
-    range_card_range.cpp
     reduce.simple.cpp
     reduce.phases.cpp
     reduce.phase.cpp
     replace.cpp
     replace_if.cpp
     segmented_aligned_range.cpp
-    segmented_aligned_range_range.cpp
-    segmented_aligned_range_card.cpp
-    segmented_aligned_range_card_range.cpp
+    segmented_aligned_range_t.cpp
     segmented_range.cpp
-    segmented_range_range.cpp
-    segmented_range_card.cpp
-    segmented_range_card_range.cpp
+    segmented_range_t.cpp
     transform.unary.cpp
     transform.binary.cpp
     transform_reduce.cpp

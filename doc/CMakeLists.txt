@@ -32,6 +32,7 @@ set(DOXYGEN_SECTIONS "
     <tab type='user' url='@ref quickstart' visible='yes' title='Quick Start'/>
     <tab type='user' url='@ref tutorials' visible='yes' title='Tutorials'/>
     <tab type='user' url='@ref faq' visible='yes' title='FAQ'/>
+    <tab type='user' url='@ref group-api' visible='yes' title='Reference Documentation'/>
     "
 )
 

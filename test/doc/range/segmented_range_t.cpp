@@ -6,30 +6,29 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-//! [segmented_range_card]
+//! [segmented_range_t]
 #include <boost/simd/range/segmented_range.hpp>
 #include <boost/simd/literal.hpp>
-#include <boost/simd/pack.hpp>
 #include <iostream>
-#include <vector>
-
-using namespace boost::simd::literal;
+#include <vector >
 
 int main()
 {
-  std::vector<float> x{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19};
+  using namespace boost::simd::literal;
 
-  auto segments = boost::simd::segmented_range(x.begin(),x.end(), 8_c);
+  std::vector<float> data{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18};
 
-  // Scalar head
-  for(auto&& e : segments.head) std::cout << e << " ";
+  boost::simd::segmented_range_t<float*,4> r = boost::simd::segmented_range(&data[0], &data[0]+18,4_c);
 
-  // SIMD body
-  for(auto&& e : segments.body) std::cout << e << " ";
+  for(float v : r.head) std::cout << v << " ";
+  std::cout << "\n";
 
-  // Scalar tail
-  for(auto&& e : segments.tail) std::cout << e << " ";
+  for(boost::simd::pack<float,4> v : r.body) std::cout << v << " ";
+  std::cout << "\n";
+
+  for(float v : r.tail) std::cout << v << " ";
+  std::cout << "\n";
 
   return 0;
 }
-//! [segmented_range_card]
+//! [segmented_range_t]

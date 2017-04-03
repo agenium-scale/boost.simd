@@ -904,6 +904,8 @@ namespace nsm
     return detail::for_each_impl( List{}, f );
   }
 
+  template<typename T, T V>
+  using constant = type_traits::integral_constant<T, V>;
   template <std::int8_t V>
   using int8_t = type_traits::integral_constant<std::int8_t, V>;
   template <std::uint8_t V>

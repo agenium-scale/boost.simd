@@ -11,7 +11,7 @@
     <tab type="user" url="@ref versions" visible="no" title="Versions"/>
     <!-- } -->
 
-    <tab type="modules" visible="yes"
+    <tab type="modules" visible="no"
                         title="Reference documentation"
                         intro="The reference documentation is split into logical modules, as documented in the user manual."/>
 
@@ -29,7 +29,7 @@
                            intro=""/>
     </tab>
 
-    <tab type="pages" visible="no" title=""/> 
+    <tab type="pages" visible="no" title=""/>
 
 
     <!-- We don't use what's below -->

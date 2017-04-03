@@ -87,7 +87,8 @@ ALIASES += intconst="<a href=\"http://www.boost.org/doc/libs/release/libs/mpl/do
 ALIASES += range{2}="<tt>[\1, \2[</tt>"
 ALIASES += projectname=@PROJECT_NAME@
 ALIASES += projectnumber=@PROJECT_VERSION@
-
+ALIASES += headerref{1}="<b>Defined in header:</b> \c \1"
+ALIASES += cppconcept{1}="[\1](http://en.cppreference.com/w/cpp/concept/\1)"
 # --------------------------------------------------------------------------------------------------
 
 

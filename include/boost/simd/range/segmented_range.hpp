@@ -22,143 +22,196 @@ namespace boost { namespace simd
 {
   namespace tt = nsm::type_traits;
 
- /*!
+  /*!
     @ingroup group-range
-    Splits an unaligned ContiguousRange into a triplet of ranges covering the head, body and tail
-    of the range so that iteration over each Ranges is performed with the proper scalar and SIMD
-    operations on boost::simd::pack of cardinal equals to @c card::value. The SIMD ranges are
-    iterated over using unaligned load and store, which imply that the scalar head may be empty.
+    @defgroup ranges-segmented_range_t segmented_range_t (alias template)
 
-    @par Header <boost/simd/range/segmented_range.hpp>
+    Utility meta-function that computes the type of a segmented unaligned SIMD range from an
+    @cppconcept{Iterator} type and cardinal.
+
+    @par Description
+
+    1.  @code
+        template<typename Iterator, std::size_t N>
+        using segmented_range_t = implementation-defined;
+        @endcode
+
+    2.  @code
+        template<typename Iterator>
+        using segmented_range_t = implementation-defined;
+        @endcode
+
+    This type is mostly used to generate a type suitable for function template argument matching.
+    Result of calling [boost::simd::segmented_range](@ref ranges-segmented_range) can be stored in
+    an @c auto variable and used directly.
+
+    [boost::simd::segmented_range_t](@ref ranges-segmented_range_t) provides three members that
+    encapsulates the three SIMD-aware segments of a given Range. Let's @c r be an instance of
+    @c segmented_range_t<Iterator,N>. The following members are then defined:
+
+      - @c head which is a Range referencing the scalar values between the beginning of the original range
+        and the first value able to be Vectorized. As [boost::simd::segmented_range_t](@ref ranges-segmented_range_t)
+        uses unaligned load and store, this Range is always empty but is provided so generic code
+        between [boost::simd::segmented_range_t](@ref ranges-segmented_range_t) and
+        [boost::simd::segmented_aligned_range_t](@ref ranges-segmented_aligned_range_t).
+      - @c body which is a [boost::simd::range_t](@ref ranges-range_t) over the Vectorizable part of
+        the original Range.
+      - @c tail which is a Range referencing the left over scalar values after the last Vectorized
+        data.
+
+    @par Type Parameters
+
+    | Name         | Description                                                  |
+    |-------------:|:-------------------------------------------------------------|
+    | **Iterator** | Underlying @cppconcept{Iterator} type of the range to adapt  |
+    | **N**        | Cardinal of the Vectorized type to iterate over              |
+
+    @par Type Requirements
+    - **Iterator** must be a @c ContiguousIterator to Vectorizable type.
+    - If specified, **N** must be a non-zero power of two. Otherwise, it defaults to
+      <tt>pack<iterator_traits<Iterator>::type>::static_size</tt>.
+
+    @par Related components
+      - @ref ranges-range_t
+      - @ref ranges-aligned_range_t
+      - @ref ranges-segmented_aligned_range_t
 
     @par Example
-    @snippet segmented_range_card.cpp segmented_range_card
-    Possible output:
-    @code
-    (1, 2, 3, 4, 5, 6, 7, 8) (9, 10, 11, 12, 13, 14, 15, 16) 17 18 19
-    @endcode
+    @snippet segmented_range_t.cpp segmented_range_t
 
-    @param b    Starting iterator of the ContiguousRange to adapt
-    @param e    End iterator of the ContiguousRange to adapt
-    @param card Cardinal of boost::simd::pack to be iterated.
-    @return   A triplet of Ranges covering the scalar head, the SIMD body and the scalar
-              tail covering the same data than the original Range.
+    Possible output
 
-    @see aligned_segmented_range
-  */
-  template<typename Iterator, std::size_t N>
-  BOOST_FORCEINLINE detail::segment_<Iterator, detail::iterator<Iterator,N>>
-  segmented_range(Iterator b, Iterator e, nsm::uint64_t<N> const& card)
+    @snippet segmented_range_t.txt segmented_range_t
+
+    Note hwo the first loop over @c .head yields an empty line.
+  **/
+
+  /*!
+    @ingroup group-range
+    @defgroup ranges-segmented_range segmented_range (function template)
+
+    Range adapter that allow traversal of data as value of both Vectorizable and Vectorized types.
+
+    @headerref{<boost/simd/range/segmented_range.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename Integral, class Iterator>
+        segmented_range_t<Iterator, Integral::value> segmented_range(Iterator first, Iterator last, Integral const& card)
+        @endcode
+
+    2.  @code
+        template<class Iterator>
+        segmented_range_t<Iterator> segmented_range(Iterator first, Iterator last)
+        @endcode
+
+    3.  @code
+        template<typename Integral, class Range>
+        segmented_range_t<Iterator, N> segmented_range(Range&& r, Integral const& card)
+        @endcode
+
+    4.  @code
+        template<typename Range>
+        segmented_range_t<Iterator> segmented_range(Range&& r)
+        @endcode
+
+    1.  Adapt the range @range{first,last} into a segmented range over Vectorized type of
+        cardinal @c Integral::value.
+
+    2.  Adapt the range @range{first,last} into a segmented range over Vectorized type of default cardinal.
+
+    3.  Adapt the range @range{r.begin(), r.end()} into a segmented range over Vectorized type of
+        cardinal @c Integral::value.
+
+    4.  Adapt the range @range{r.begin(), r.end()} into a segmented range over Vectorized type of
+        default cardinal
+
+    @par Parameters
+
+    | Name                | Description                                                             |
+    |--------------------:|:------------------------------------------------------------------------|
+    | **first**, **last** | pair of @c ContiguousIterator defining the range of elements to adapt   |
+    | **r**               | the range of elements to adapt                                          |
+    | **card**            | an @intconst representing the desired Vectorized type cardinal          |
+
+    @par Return Value
+    A implementation-defined structure which contains three sub-ranges covering the head, body and
+    tail of the original range so that iteration over each sub-ranges is performed with the proper
+    scalar or SIMD operations. Iteration over said data are performed using unaligned load and store
+    operations.
+
+    @par Requirements
+    - **first**, **last**, **r.begin()**, **r.end()** must be @c ContiguousIterator
+      to Vectorizable type.
+    - <tt>std::distance(first,last)</tt> is an exact multiple of @c card::value
+
+    @par Related components
+      - @ref ranges-range_t
+      - @ref ranges-aligned_range
+      - @ref ranges-segmented_aligned_range
+
+    @par Example
+    @snippet segmented_range.cpp segmented_range
+
+    Possible output
+
+    @snippet segmented_range.txt segmented_range
+  **/
+
+  // Segmented range type
+  template< typename Iterator
+          , std::size_t N = pack<typename std::iterator_traits<Iterator>::value_type>::static_size
+          >
+  using segmented_range_t = detail::segment_<Iterator, detail::iterator<Iterator,N>>;
+
+  // Itertor + specific cardinal
+  template< typename Iterator
+          , typename Integral
+          // SFINAE out if Integral is not modeling IntegralConstant
+          , typename = nsm::constant<typename Integral::value_type,Integral::value>
+          >
+  BOOST_FORCEINLINE segmented_range_t<Iterator,Integral::value>
+  segmented_range(Iterator b, Iterator e, Integral const& card)
   {
-    using result_t = detail::segment_<Iterator, detail::iterator<Iterator,N>>;
-
     /*
       When dealing with unaligned range adaptation, we know there is no head.
       We just need to compute where the original range stops in terms of packs.
     */
-    auto alg = pack<typename std::iterator_traits<Iterator>::value_type,N>::static_size;
+    auto alg = pack<typename std::iterator_traits<Iterator>::value_type,Integral::value>::static_size;
     std::size_t vz = alignment::align_down(std::distance(b, e),alg);
 
-    return result_t { iterator_range<Iterator>()
-                    , range(b,b+vz, card)
-                    , iterator_range<Iterator>(b+vz,e)
-                    };
+    return segmented_range_t<Iterator,Integral::value>{ iterator_range<Iterator>()
+                                                      , range(b,b+vz, card)
+                                                      , iterator_range<Iterator>(b+vz,e)
+                                                      };
   }
 
- /*!
-    @ingroup group-range
-    Splits an unaligned ContiguousRange into a triplet of ranges covering the head, body and tail
-    of the range so that iteration over each Ranges is performed with the proper scalar and SIMD
-    operations on boost::simd::pack. The SIMD ranges are iterated over using unaligned load and
-    store, which imply that the scalar head may be empty.
-
-    @par Header <boost/simd/range/segmented_range.hpp>
-
-    @par Example
-    @snippet segmented_range.cpp segmented_range
-    Possible output:
-    @code
-    Sum of [1 ... 13] is 91
-    @endcode
-
-    @param b    Starting iterator of the ContiguousRange to adapt
-    @param e    End iterator of the ContiguousRange to adapt
-
-    @return   A triplet of Ranges covering the scalar head, the SIMD body and the scalar
-              tail covering the same data than the original Range.
-
-    @see aligned_segmented_range
-  */
+  // Iterator + default cardinal
   template<typename Iterator>
-  BOOST_FORCEINLINE detail::segment_<Iterator, detail::iterator<Iterator>>
-  segmented_range(Iterator b, Iterator e)
+  BOOST_FORCEINLINE segmented_range_t<Iterator> segmented_range(Iterator b, Iterator e)
   {
     using value_t = typename std::iterator_traits<Iterator>::value_type;
     return segmented_range(b,e, nsm::uint64_t<pack<value_t>::static_size>());
   }
 
- /*!
-    @ingroup group-range
-    Splits an unaligned ContiguousRange into a triplet of ranges covering the head, body and tail
-    of the range so that iteration over each Ranges is performed with the proper scalar and SIMD
-    operations on boost::simd::pack of cardinal equals to @c card::value. The SIMD ranges are
-    iterated over using unaligned load and store, which imply that the scalar head may be empty.
-
-    @par Header <boost/simd/range/segmented_range.hpp>
-
-    @par Example
-    @snippet segmented_range_card_range.cpp segmented_range_card
-    Possible output:
-    @code
-    (1, 2, 3, 4, 5, 6, 7, 8) (9, 10, 11, 12, 13, 14, 15, 16) 17 18 19
-    @endcode
-
-    @param r ContiguousContiguousRange to split
-    @param card Cardinal of boost::simd::pack to be iterated.
-    @return   A triplet of Ranges covering the scalar head, the SIMD body and the scalar
-              tail covering the same data than the original Range.
-
-    @see aligned_segmented_range
-  */
-  template<std::size_t N, typename Range>
-  BOOST_FORCEINLINE
-  detail::segment_< detail::range_iterator<Range>
-                  , detail::iterator<detail::range_iterator<Range>, N>
-                  >
-  segmented_range( Range&& r, nsm::uint64_t<N> const& card )
+  // Range + specific cardinal
+  template< typename Range
+          , typename Integral
+          // SFINAE out if Integral is not modeling IntegralConstant
+          , typename = nsm::constant<typename Integral::value_type,Integral::value>
+          >
+  BOOST_FORCEINLINE segmented_range_t<detail::range_iterator<Range>,Integral::value>
+  segmented_range( Range&& r, Integral const& card )
   {
     return segmented_range( tt::begin(std::forward<Range>(r)), tt::end(std::forward<Range>(r))
                           , card
                           );
   }
 
- /*!
-    @ingroup group-range
-    Splits an unaligned ContiguousRange into a triplet of ranges covering the head, body and tail
-    of the range so that iteration over each Ranges is performed with the proper scalar and SIMD
-    operations on boost::simd::pack. The SIMD ranges are iterated over using unaligned load and
-    store, which imply that the scalar head may be empty.
-
-    @par Header <boost/simd/range/segmented_range.hpp>
-
-    @par Example
-    @snippet segmented_range_range.cpp segmented_range
-    Possible output:
-    @code
-    Sum of [1 ... 13] is 91
-    @endcode
-
-    @param r ContiguousContiguousRange to split
-    @return   A triplet of Ranges covering the scalar head, the SIMD body and the scalar
-              tail covering the same data than the original Range.
-
-    @see aligned_segmented_range
-  */
+  // Range + default cardinal
   template<typename Range>
-  BOOST_FORCEINLINE
-  detail::segment_< detail::range_iterator<Range>
-                  , detail::iterator<detail::range_iterator<Range>>
-                  >
+  BOOST_FORCEINLINE segmented_range_t<detail::range_iterator<Range>>
   segmented_range( Range&& r )
   {
     return segmented_range( tt::begin(std::forward<Range>(r)), tt::end(std::forward<Range>(r)) );

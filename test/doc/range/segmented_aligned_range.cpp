@@ -6,7 +6,7 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-//! [segmented_range]
+//! [segmented_aligned_range]
 #include <boost/simd/range/segmented_aligned_range.hpp>
 #include <boost/simd/function/sum.hpp>
 #include <boost/simd/pack.hpp>
@@ -22,16 +22,16 @@ int main()
   auto segments = boost::simd::segmented_aligned_range(x.begin(),x.end());
 
   // Scalar head
-  for(auto&& e : segments.head) sr += e;
+  for(float e : segments.head) sr += e;
 
   // SIMD body
-  for(auto&& e : segments.body) vr += e;
+  for(boost::simd::pack<float> e : segments.body) vr += e;
 
   // Scalar tail
-  for(auto&& e : segments.tail) sr += e;
+  for(float e : segments.tail) sr += e;
 
   std::cout << "Sum of [" << x.front() << " ... " << x.back() << "] is " << boost::simd::sum(vr) + sr << std::endl;
 
   return 0;
 }
-//! [segmented_range]
+//! [segmented_aligned_range]

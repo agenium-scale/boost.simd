@@ -1,6 +1,6 @@
 //==================================================================================================
 /*
-  Copyright 2016 NumScale SAS
+  Copyright 2017 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -21,14 +21,13 @@ int main()
   boost::simd::pack<float> vr{0};
   auto segments = boost::simd::segmented_range(x.begin(),x.end());
 
-  // Scalar head
-  for(auto&& e : segments.head) sr += e;
+  // Scalar head is empty so no iterations required
 
   // SIMD body
-  for(auto&& e : segments.body) vr += e;
+  for(boost::simd::pack<float> e : segments.body) vr += e;
 
   // Scalar tail
-  for(auto&& e : segments.tail) sr += e;
+  for(float e : segments.tail) sr += e;
 
   std::cout << "Sum of [" << x.front() << " ... " << x.back() << "] is " << boost::simd::sum(vr) + sr << std::endl;
 
