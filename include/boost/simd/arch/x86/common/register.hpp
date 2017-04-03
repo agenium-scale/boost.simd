@@ -16,8 +16,8 @@ namespace boost { namespace simd
 {
   struct register_count
   {
-    using general = 2*sizeof(void*);
-    using simd    = 2*sizeof(void*);
+    using general = nsm::size_t<2*sizeof(void*)>;
+    using simd    = nsm::size_t<2*sizeof(void*)>;
   };
 } }
 #endif
