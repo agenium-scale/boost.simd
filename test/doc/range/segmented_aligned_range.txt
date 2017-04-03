@@ -1,0 +1,3 @@
+//! [segmented_aligned_range]
+Sum of [1 ... 13] is 91
+//! [segmented_aligned_range]

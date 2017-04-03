@@ -38,13 +38,9 @@ SET( SOURCES
     replace.cpp
     replace_if.cpp
     segmented_aligned_range.cpp
-    segmented_aligned_range_range.cpp
-    segmented_aligned_range_card.cpp
-    segmented_aligned_range_card_range.cpp
+    segmented_aligned_range_t.cpp
     segmented_range.cpp
-    segmented_range_range.cpp
-    segmented_range_card.cpp
-    segmented_range_card_range.cpp
+    segmented_range_t.cpp
     transform.unary.cpp
     transform.binary.cpp
     transform_reduce.cpp
