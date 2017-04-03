@@ -167,19 +167,19 @@ namespace boost { namespace simd
     {
       if( boost::simd::detail::is_aligned(first2 , vU::alignment) ) // first2 is aligned
       {
-        vV acc(transform(*b++, aligned_load<vU>(first2)));
+        vV acc(transform(vT(*b++), aligned_load<vU>(first2)));
         first2+= vU::static_size;
         for( ; b != e; b++, first2+= vU::static_size){
-          acc  = gsum(acc, transform(*b, aligned_load<vU>(first2)));
+          acc  = gsum(acc, transform(vT(*b), aligned_load<vU>(first2)));
         }
         for( V x : acc) init = gsum(init, x);
       }
       else
       {
-        vV acc(transform(*b++, load<vU>(first2)));
+        vV acc(transform(vT(*b++), load<vU>(first2)));
         first2+= vU::static_size;
         for( ; b != e; b++, first2+= vU::static_size){
-          acc  = gsum(acc, transform(*b, load<vU>(first2)));
+          acc  = gsum(acc, transform(vT(*b), load<vU>(first2)));
         }
         for( V x : acc) init = gsum(init, x);
       }
