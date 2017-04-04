@@ -11,7 +11,7 @@
 #include <boost/simd/memory/allocator.hpp>
 #include <boost/simd/literal.hpp>
 #include <iostream>
-#include <vector >
+#include <vector>
 
 int main()
 {
