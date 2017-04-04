@@ -18,7 +18,7 @@ struct p
 {
 
   template < typename T >
-  auto operator()(const T & t) -> decltype((t >= 3.5f)&&(t < 5.0f)) const
+  auto operator()(const T & t) const -> decltype((t >= 3.5f)&&(t < 5.0f))
   {
     return (t >= 3.5f)&&(t < 5.0f);
   }
