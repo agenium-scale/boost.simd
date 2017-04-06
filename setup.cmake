@@ -14,7 +14,7 @@ NS_guard(BOOST_SIMD_SETUP)
 ##==================================================================================================
 if(MSVC)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /fp:precise")
-  set(SIMD_FLAGS_BENCH "/MD /D_SECURE_SCL=0 /Oxt /GL /wd4530 /EHsc")
+  set(SIMD_FLAGS_BENCH "/MD /D_SECURE_SCL=0 /Oxt /wd4530 /EHsc")
 
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "Intel")
   if(UNIX)
