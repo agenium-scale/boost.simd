@@ -22,7 +22,7 @@ else()
   set(CXX_STD "11")
 endif()
 
-if(NOT ${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
+if(NOT MSVC)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++${CXX_STD} -Wall -Wshadow -Wextra")
 else()
   if("${CMAKE_CXX_FLAGS}" MATCHES "/W[1-4]")
@@ -36,7 +36,7 @@ if(CMAKE_CXX_FLAGS MATCHES "[^ ]")
   NS_say("Compilation flags: ${CMAKE_CXX_FLAGS}")
 endif()
 
-if(${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
+if(MSVC)
   ## Remove /EHsc from CMAKE_CXX_FLAGS and re-add per configuration to avoid 'overriding' warnings
   if(CMAKE_CXX_FLAGS MATCHES "/EHsc")
     string(REPLACE " /EHsc" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
