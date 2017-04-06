@@ -128,6 +128,45 @@ matrix:
       env: TOOLSET=g++-5 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=api
 
 ##===================================================================================================
+## Doc examples
+##==================================================================================================
+## g++ 6 AVX
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-6']
+      env: TOOLSET=g++-6 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=doc
+
+## g++ 4.8 SSE4
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-4.8']
+      env: TOOLSET=g++-4.8 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=doc
+
+## g++ 5 AVX
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-5']
+      env: TOOLSET=g++-5 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=doc
+
+## g++ 5 SSE4
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-5']
+      env: TOOLSET=g++-5 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=doc
+
+##===================================================================================================
 ## Functions
 ##==================================================================================================
 ## g++ 6 AVX
