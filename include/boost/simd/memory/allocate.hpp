@@ -11,6 +11,7 @@
 
 #include <boost/simd/pack.hpp>
 #include <boost/align/aligned_alloc.hpp>
+#include <boost/core/ignore_unused.hpp>
 
 namespace boost { namespace simd
 {
@@ -44,6 +45,7 @@ namespace boost { namespace simd
   */
   template<typename T, typename Arch> T* allocate(std::size_t size, Arch const& arch)
   {
+    boost::ignore_unused(arch);
     return reinterpret_cast<T*>(boost::alignment::aligned_alloc(limits<Arch>::bytes,size*sizeof(T)));
   }
 } }
