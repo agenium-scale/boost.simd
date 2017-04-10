@@ -6,11 +6,12 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 **/
 //==================================================================================================
-#ifndef BOOST_SIMD_ARCH_X86_XOP_SIMD_FUNCTION_MULTIPLIES_S_HPP_INCLUDED
-#define BOOST_SIMD_ARCH_X86_XOP_SIMD_FUNCTION_MULTIPLIES_S_HPP_INCLUDED
+#ifndef BOOST_SIMD_ARCH_X86_XOP_SIMD_FUNCTION_MULTIPLIES_HPP_INCLUDED
+#define BOOST_SIMD_ARCH_X86_XOP_SIMD_FUNCTION_MULTIPLIES_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/constant/zero.hpp>
+#include <boost/simd/function/saturated.hpp>
 
 #if BOOST_HW_SIMD_X86_AMD_XOP
 namespace boost { namespace simd { namespace ext
