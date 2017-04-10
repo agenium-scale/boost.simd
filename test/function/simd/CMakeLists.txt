@@ -359,7 +359,6 @@ set ( SOURCES
       sqrt.regular.cpp
       sqrt.raw.cpp
       stirling.cpp
-      stream.cpp
       successor.cpp
       sum.cpp
       swapbytes.cpp
