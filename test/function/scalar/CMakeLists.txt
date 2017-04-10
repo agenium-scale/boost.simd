@@ -149,7 +149,6 @@ set ( SOURCES
    hmsb.cpp
    horn1.cpp
    horn.cpp
-   horner.cpp
    hypot.regular.cpp
    hypot.pedantic.cpp
    hypot.std.cpp
