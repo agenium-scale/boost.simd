@@ -11,6 +11,7 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/dispatch/meta/as_floating.hpp>
+#include <boost/simd/function/bitwise_cast.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
@@ -28,7 +29,7 @@ namespace boost { namespace simd { namespace ext
     {
       using fA0 = bd::as_floating_t<A0>;
       fA0 tmp = bitwise_cast<fA0>(a0);
-      return bitwise_cast<A0>(_mm_permutevar_pd(tmp,a1));
+      return bitwise_cast<A0>(lookup(tmp,a1));
     }
   };
 
@@ -43,7 +44,7 @@ namespace boost { namespace simd { namespace ext
     {
       using fA0 = bd::as_floating_t<A0>;
       fA0 tmp = bitwise_cast<fA0>(a0);
-      return bitwise_cast<A0>(_mm_permutevar_ps(tmp,a1));
+      return bitwise_cast<A0>(lookup(tmp,a1));
     }
   };
 
@@ -56,7 +57,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator()(A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
     {
-      return _mm_permutevar_pd(a0,a1);
+      return _mm_permutevar_pd(a0,a1+a1);
     }
   };
 
@@ -72,8 +73,6 @@ namespace boost { namespace simd { namespace ext
       return _mm_permutevar_ps(a0,a1);
     }
   };
-
-
 } } }
 
 #endif

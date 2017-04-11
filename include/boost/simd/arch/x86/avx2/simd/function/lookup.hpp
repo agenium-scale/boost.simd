@@ -18,7 +18,6 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD( lookup_
                          , (typename A0, typename A1)
-                         , (detail::is_native<X>)
                          , bs::avx2_
                          , bs::pack_<bd::ints32_<A0>, bs::avx_>
                          , bs::pack_<bd::ints32_<A1>, bs::avx_>
