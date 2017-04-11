@@ -149,7 +149,6 @@ set ( SOURCES
    hmsb.cpp
    horn1.cpp
    horn.cpp
-   horner.cpp
    hypot.regular.cpp
    hypot.pedantic.cpp
    hypot.std.cpp
@@ -363,7 +362,6 @@ set ( SOURCES
    sqrt.raw.cpp
    stirling.cpp
    store.cpp
-   stream.cpp
    successor.cpp
    swapbytes.cpp
    sum.cpp
