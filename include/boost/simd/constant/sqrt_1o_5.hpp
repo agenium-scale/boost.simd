@@ -11,46 +11,57 @@
 #ifndef BOOST_SIMD_CONSTANT_SQRT_1O_5_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_SQRT_1O_5_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Sqrt_1o_5 Sqrt_1o_5 (function template)
 
-    Generate value \f$ \sqrt{\frac15}\f$
+    Generates  \f$ \sqrt{\frac15}\f$
+
+    @headerref{<boost/simd/constant/sqrt_1o_5.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Sqrt_1o_5();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Sqrt_1o_5( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Sqrt_1o_5 constant.
 
 
-    @par Header <boost/simd/constant/sqrt_1o_5.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Sqrt_1o_5<T>();
     @endcode
-
     is similar to:
-
     @code
     T r = sqrt(T(1)/T(5));
     @endcode
 
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Sqrt_1o_5( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Sqrt_1o_5<T>();
+    @endcode
 
-    @return The Sqrt_1o_5 constant for the proper type
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Sqrt_1o_5();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant sqrt_1o_5.
-
-      @return The Sqrt_1o_5 constant for the proper type
-    **/
-    const boost::dispatch::functor<tag::sqrt_1o_5_> sqrt_1o_5 = {};
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/sqrt_1o_5.hpp>
 #include <boost/simd/constant/simd/sqrt_1o_5.hpp>

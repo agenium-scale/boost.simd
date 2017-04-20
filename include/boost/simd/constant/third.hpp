@@ -11,45 +11,57 @@
 #ifndef BOOST_SIMD_CONSTANT_THIRD_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_THIRD_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Third Third (function template)
 
-    Generate value 1/3
+    Generates value 1/3
+
+    @headerref{<boost/simd/constant/third.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Third();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Third( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Third constant.
 
 
-    @par Header <boost/simd/constant/third.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Third<T>();
     @endcode
-
     is similar to:
-
     @code
     T r = T(1)/T(3);
     @endcode
 
-    @return The Third constant for the proper type
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Third( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Third<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Third();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant third.
-
-      @return The Third constant for the proper type
-    **/
-    Value Third();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/third.hpp>
 #include <boost/simd/constant/simd/third.hpp>

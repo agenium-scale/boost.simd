@@ -11,50 +11,57 @@
 #ifndef BOOST_SIMD_CONSTANT_INVLOG_2_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_INVLOG_2_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
+  @ingroup group-constant
+  @defgroup constant-Invlog_2 Invlog_2 (function template)
 
-    @ingroup group-constant
+    Generates constant \f$1/\log(2)\f$.
 
-    Generates constant 1/log(2).
+    @headerref{<boost/simd/constant/invlog_2.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Invlog_2();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Invlog_2( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Invlog_2 constant.
 
 
-    @par Header <boost/simd/constant/invlog_2.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Invlog_2<T>();
     @endcode
-
     is similar to:
-
     @code
      r =  T(1.442695040888963407359924681001892137426645954152986);
     @endcode
 
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Invlog_2( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Invlog_2<T>();
+    @endcode
 
-**/
-  template<typename T> T Invlog_2();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-
-
-      Generates constant 1/log(2).
-
-      Generate the  constant invlog_2.
-
-      @return The Invlog_2 constant for the proper type
-    **/
-    const boost::dispatch::functor<tag::invlog_2_> invlog_2 = {};
-  }
-} }
-#endif
+    @par Requirements
+    - **T** models Value
+  **/
 
 #include <boost/simd/constant/scalar/invlog_2.hpp>
 #include <boost/simd/constant/simd/invlog_2.hpp>

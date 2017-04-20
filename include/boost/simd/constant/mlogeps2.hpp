@@ -11,46 +11,57 @@
 #ifndef BOOST_SIMD_CONSTANT_MLOGEPS2_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_MLOGEPS2_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Mlogeps2 Mlogeps2 (function template)
 
-    Generate \f$-\log(eps^2)\f$ value
+    Generates \f$-\log(eps^2)\f$ value
+
+    @headerref{<boost/simd/constant/mlogeps2.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Mlogeps2();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Mlogeps2( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Mlogeps2 constant.
 
 
-    @par Header <boost/simd/constant/mlogeps2.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Mlogeps2<T>();
     @endcode
-
     is similar to:
-
     @code
     T r = -log(sqr(Eps<T>()));
     @endcode
 
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Mlogeps2( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Mlogeps2<T>();
+    @endcode
 
-    @return The Mlogeps2 constant for the proper type
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Mlogeps2();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant mlogeps2.
-
-      @return The Mlogeps2 constant for the proper type
-    **/
-    const boost::dispatch::functor<tag::mlogeps2_> mlogeps2 = {};
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/mlogeps2.hpp>
 #include <boost/simd/constant/simd/mlogeps2.hpp>

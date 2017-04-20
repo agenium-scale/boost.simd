@@ -11,37 +11,54 @@
 #ifndef BOOST_SIMD_CONSTANT_INVEPS_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_INVEPS_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Inveps Inveps (function template)
 
-    Generate  value \f$\1/Eps<T>()\f$
+    Generates  value \f$\1/Eps<T>()\f$
+
+    @headerref{<boost/simd/constant/inveps.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Inveps();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Inveps( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Inveps constant.
 
 
-    @par Header <boost/simd/constant/inveps.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @see Eps
+    @par Return Value
+    1.  A value of type @c T so that:
+    @code
+    T r = Inveps<T>();
+    @endcode
 
-    @return The inveps constant for the proper type
+
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Inveps( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Inveps<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T inveps();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant inveps.
-
-      @return The Inveps constant for the proper type
-    **/
-    const boost::dispatch::functor<tag::inveps_> inveps = {};
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/inveps.hpp>
 #include <boost/simd/constant/simd/inveps.hpp>

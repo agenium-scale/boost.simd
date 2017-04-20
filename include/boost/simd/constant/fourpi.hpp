@@ -11,47 +11,57 @@
 #ifndef BOOST_SIMD_CONSTANT_FOURPI_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_FOURPI_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Fourpi Fourpi (function template)
 
-   Constant \f$4\pi\f$.
+    Constant \f$4\pi\f$.
+
+    @headerref{<boost/simd/constant/fourpi.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Fourpi();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Fourpi( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Fourpi constant.
 
 
-    @par Header <boost/simd/constant/fourpi.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    For type T:
-
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
-    T r = Fouropi<T>();
+    T r = Fourpi<T>();
     @endcode
-
     is similar to:
-
     @code
     T r = Four<T>()*Pi<T>();
     @endcode
 
-    @return The Fourpi constant for the proper type
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Fourpi( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Fourpi<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Fourpi();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant fourpi.
-
-      @return The Fourpi constant for the proper type
-    **/
-    Value Fourpi();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/fourpi.hpp>
 #include <boost/simd/constant/simd/fourpi.hpp>

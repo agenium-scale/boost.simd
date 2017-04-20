@@ -11,45 +11,57 @@
 #ifndef BOOST_SIMD_CONSTANT_GOLDBAR_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_GOLDBAR_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Goldbar Goldbar (function template)
 
-    Generate the conjugate golden ratio that is \f$\bar\phi = \frac{1-\sqrt5}{2}\f$
+    Generates the conjugate golden ratio that is \f$\bar\phi = \frac{1-\sqrt5}{2}\f$
+
+    @headerref{<boost/simd/constant/goldbar.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Goldbar();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Goldbar( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Goldbar constant.
 
 
-    @par Header <boost/simd/constant/goldbar.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Goldbar<T>();
     @endcode
-
     is similar for floating types to:
-
     @code
     T r = (1-sqrt(T(5)))/2;
     @endcode
 
-    @return The Goldbar constant for the proper type
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Goldbar( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Goldbar<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Goldbar();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant goldbar.
-
-      @return The Goldbar constant for the proper type
-    **/
-    Value Goldbar();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/goldbar.hpp>
 #include <boost/simd/constant/simd/goldbar.hpp>

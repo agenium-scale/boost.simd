@@ -11,53 +11,57 @@
 #ifndef BOOST_SIMD_CONSTANT_INV2PI_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_INV2PI_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
+  @ingroup group-constant
+  @defgroup constant-Inv2pi Inv2pi (function template)
 
-    @ingroup group-constant
+     Constant \f$\frac1{2\pi}\f$.
 
-    Constant \f$\frac1{2\pi}\f$.
+    @headerref{<boost/simd/constant/inv2pi.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Inv2pi();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Inv2pi( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Inv2pi constant.
 
 
-    @par Header <boost/simd/constant/inv2pi.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    For type T:
-
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Inv2pi<T>();
     @endcode
-
     is similar to:
-
     @code
     T r = rec(Two<T>()*Pi<T>());
     @endcode
 
-    @return a value of type T
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Inv2pi( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Inv2pi<T>();
+    @endcode
 
-**/
-  template<typename T> T Inv2pi();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-
-
-      Constant \f$\frac1\pi\f$.
-
-      Generate the  constant inv2pi.
-
-      @return The Inv2pi constant for the proper type
-    **/
-    const boost::dispatch::functor<tag::inv2pi_> inv2pi = {};
-  }
-} }
-#endif
+    @par Requirements
+    - **T** models Value
+  **/
 
 #include <boost/simd/constant/scalar/inv2pi.hpp>
 #include <boost/simd/constant/simd/inv2pi.hpp>

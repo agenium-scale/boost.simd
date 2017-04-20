@@ -11,46 +11,39 @@
 #ifndef BOOST_SIMD_CONSTANT_PI_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_PI_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
-  /*!
-    @ingroup group-constant
+/*!
+  @ingroup group-constant
+  @defgroup constant-Pi Pi (function template)
 
-    Generate value \f$\pi\f$ that is the half length of a circle of radius one
-    ... in normal temperature and pressure conditions.
+  Generates the constant \f$\pi\f$.
+
+  @headerref{<boost/simd/constant/pi.hpp>}
+
+  @par Description
+
+  1.  @code
+      template<typename T> T Pi();
+      @endcode
+
+  2.  @code
+      template<typename T> T Pi( boost::simd::as_<T> const& target );
+      @endcode
+
+  Generates a value of type @c T that evaluates to the properly rounded value of \f$\pi\f$.
 
 
-    @par Header <boost/simd/constant/pi.hpp>
+  @par Parameters
 
-    @par Semantic:
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @code
-    T r = Pi<T>();
-    @endcode
+  @par Return Value
+  A value of type @c T that evaluates to <tt>T(M_PI)</tt>
 
-    is similar to:
-
-    @code
-    T r = T(4*atan(1));
-    @endcode
-
-    @return The Pi constant for the proper type
-  **/
-  template<typename T> T Pi();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant pi.
-
-      @return The Pi constant for the proper type
-    **/
-    Value Pi();
-  }
-} }
-#endif
+  @par Requirements
+  - **T** models IEEEValue
+**/
 
 #include <boost/simd/constant/scalar/pi.hpp>
 #include <boost/simd/constant/simd/pi.hpp>

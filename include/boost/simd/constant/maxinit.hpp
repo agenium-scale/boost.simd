@@ -11,34 +11,58 @@
 #ifndef BOOST_SIMD_CONSTANT_MAXINIT_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_MAXINIT_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Maxinit Maxinit (function template)
 
-    Generate the constant maxinit which is identical to minf for
+    Generates the constant maxinit which is identical to minf for
     arithmetic real types but that must be specialized for complex values ordering.
+    maxinit is the value to be returned when a maximum of the elements function
+    is used on an  empty container.
 
-    maxinit is the value to be returned when a maximum of the elements function is used on an
-    empty container.
 
-    @return The Maxinit constant for the proper type
+    @headerref{<boost/simd/constant/maxinit.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Maxinit();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Maxinit( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Maxinit constant.
+
+
+    @par Parameters
+
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+    @par Return Value
+    1.  A value of type @c T so that:
+    @code
+    T r = Maxinit<T>();
+    @endcode
+
+
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Maxinit( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Maxinit<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Maxinit();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant maxinit.
-
-      @return The Maxinit constant for the proper type
-    **/
-    Value Maxinit();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/maxinit.hpp>
 #include <boost/simd/constant/simd/maxinit.hpp>

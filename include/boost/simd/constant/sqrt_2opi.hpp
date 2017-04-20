@@ -11,53 +11,57 @@
 #ifndef BOOST_SIMD_CONSTANT_SQRT_2OPI_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_SQRT_2OPI_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
+  @ingroup group-constant
+  @defgroup constant-Sqrt_2opi Sqrt_2opi (function template)
 
-    @ingroup group-constant
+    Generates  \f$\frac{\sqrt2}{\pi}\f$.
 
-    Constant  \f$\frac{\sqrt2}{\pi}\f$.
+    @headerref{<boost/simd/constant/sqrt_2opi.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Sqrt_2opi();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Sqrt_2opi( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Sqrt_2opi constant.
 
 
-    @par Header <boost/simd/constant/sqrt_2opi.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    For type T:
-
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Sqrt_2opi<T>();
     @endcode
-
     is similar to:
-
     @code
     T r = sqrt(Two<T>())/Pi<T>();
     @endcode
 
-    @return a value of type T
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Sqrt_2opi( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Sqrt_2opi<T>();
+    @endcode
 
-**/
-  template<typename T> T Sqrt_2opi();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-
-
-      Constant  \f$\frac{\sqrt2}{\pi}\f$.
-
-      Generate the  constant sqrt_2opi.
-
-      @return The Sqrt_2opi constant for the proper type
-    **/
-    Value Sqrt_2opi<Value>();
-  }
-} }
-#endif
+    @par Requirements
+    - **T** models Value
+  **/
 
 #include <boost/simd/constant/scalar/sqrt_2opi.hpp>
 #include <boost/simd/constant/simd/sqrt_2opi.hpp>

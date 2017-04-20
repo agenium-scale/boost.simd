@@ -11,46 +11,57 @@
 #ifndef BOOST_SIMD_CONSTANT_FACT_8_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_FACT_8_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Fact_8 Fact_8 (function template)
 
-    Generate 8! that is 40320
+    Generates 8! that is 40320
+
+    @headerref{<boost/simd/constant/fact_8.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Fact_8();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Fact_8( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Fact_8 constant.
 
 
-    @par Header <boost/simd/constant/fact_8.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Fact_8<T>();
     @endcode
-
     is similar to:
-
     @code
     T r = T(40320);
     @endcode
 
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Fact_8( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Fact_8<T>();
+    @endcode
 
-    @return The Fact_8 constant for the proper type
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Fact_8();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant fact_8.
-
-      @return The Fact_8 constant for the proper type
-    **/
-    const boost::dispatch::functor<tag::fact_8_> fact_8 = {};
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/fact_8.hpp>
 #include <boost/simd/constant/simd/fact_8.hpp>

@@ -11,27 +11,41 @@
 #ifndef BOOST_SIMD_CONSTANT_TWOTOMNMBO_3_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_TWOTOMNMBO_3_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
+  @ingroup group-constant
+  @defgroup constant-Twotomnmbo_3 Twotomnmbo_3 (function template)
 
-    @ingroup group-constant
+    Generates @c Twotomnmbo_3.
 
-    Generates constant e.
+    @headerref{<boost/simd/constant/twotomnmbo_3.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Twotomnmbo_3();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Twotomnmbo_3( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Twotomnmbo_3 constant.
 
 
-    @par Header <boost/simd/constant/twotomnmbo_3.hpp>
+    @par Parameters
 
-    @par Semantic:
-    \f$2^(-nmb/3)\f$
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
-    T r = twotomnmbo_3<T>();
+    T r = Twotomnmbo_3<T>();
     @endcode
-
     is similar to:
-
     @code
     if T is float
       r = 4.921566601151848e-03f
@@ -39,26 +53,18 @@ namespace boost { namespace simd
       r = 4.806217383937348e-06
     @endcode
 
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Twotomnmbo_3( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Twotomnmbo_3<T>();
+    @endcode
 
-**/
-  template<typename T> T Twotomnmbo_3();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-
-
-      Generates constant e.
-
-      Generate the  constant twotomnmbo_3.
-
-      @return The Twotomnmbo_3 constant for the proper type
-    **/
-    const boost::dispatch::functor<tag::twotomnmbo_3_> twotomnmbo_3 = {};
-  }
-} }
-#endif
+    @par Requirements
+    - **T** models Value
+  **/
 
 #include <boost/simd/constant/scalar/twotomnmbo_3.hpp>
 #include <boost/simd/constant/simd/twotomnmbo_3.hpp>

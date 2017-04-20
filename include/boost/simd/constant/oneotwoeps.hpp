@@ -11,25 +11,41 @@
 #ifndef BOOST_SIMD_CONSTANT_ONEOTWOEPS_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_ONEOTWOEPS_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Oneotwoeps Oneotwoeps (function template)
 
-    Generate \f$1/(2\epsilon)\f$
+    Generates \f$1/(2\epsilon)\f$
+
+    @headerref{<boost/simd/constant/oneotwoeps.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Oneotwoeps();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Oneotwoeps( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Oneotwoeps constant.
 
 
-    @par Header <boost/simd/constant/oneotwoeps.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Oneotwoeps<T>();
     @endcode
-
     is similar to:
-
     @code
     if T is integral
       r = T(0)
@@ -39,22 +55,18 @@ namespace boost { namespace simd
       r =  pow(2.0f, 22);
     @endcode
 
-    @return The Oneotwoeps constant for the proper type
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Oneotwoeps( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Oneotwoeps<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Oneotwoeps();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant oneotwoeps.
-
-      @return The Oneotwoeps constant for the proper type
-    **/
-    Value Oneotwoeps();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/oneotwoeps.hpp>
 #include <boost/simd/constant/simd/oneotwoeps.hpp>

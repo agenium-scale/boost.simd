@@ -11,25 +11,41 @@
 #ifndef BOOST_SIMD_CONSTANT_ONEOSQRTEPS_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_ONEOSQRTEPS_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Oneosqrteps Oneosqrteps (function template)
 
-    Generate \f$1/\sqrt\epsilon\f$
+    Generates \f$1/\sqrt\epsilon\f$
+
+    @headerref{<boost/simd/constant/oneosqrteps.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Oneosqrteps();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Oneosqrteps( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Oneosqrteps constant.
 
 
-    @par Header <boost/simd/constant/oneosqrteps.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Oneosqrteps<T>();
     @endcode
-
     is similar to:
-
     @code
     if T is integral
       r = T(0)
@@ -39,23 +55,18 @@ namespace boost { namespace simd
       r =  pow(2.0f, 11.5);
     @endcode
 
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Oneosqrteps( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Oneosqrteps<T>();
+    @endcode
 
-    @return The Oneosqrteps constant for the proper type
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Oneosqrteps();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant oneosqrteps.
-
-      @return The Oneosqrteps constant for the proper type
-    **/
-    Value Oneosqrteps();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/oneosqrteps.hpp>
 #include <boost/simd/constant/simd/oneosqrteps.hpp>

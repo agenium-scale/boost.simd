@@ -11,51 +11,57 @@
 #ifndef BOOST_SIMD_CONSTANT_EULER_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_EULER_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
+  @ingroup group-constant
+  @defgroup constant-Euler Euler (function template)
 
-    @ingroup group-constant
+    Generates a value of the chosen type approximating the Euler-Mascheroni constant: \f$\gamma = \lim_{n \rightarrow \infty } \left( 1+ \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + ... + \frac{1}{n} - \ln(n) \right)\f$.
 
-    GeneratesEuler constant.
+    @headerref{<boost/simd/constant/euler.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Euler();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Euler( boost::simd::as_<T> const& target );
+        @endcode
+
+      1. and 2.  return a value of type @c T containing the Euler constant.
 
 
-    @par Header <boost/simd/constant/euler.hpp>
+    @par Parameters
 
-    @par Semantic:
-    The Euler constant can be defined as \f$\displaystyle \lim_{n \rightarrow \infty} \left(\sum_1^n \frac1n -\log n\right)\f$
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Euler<T>();
     @endcode
-
     is similar to:
-
     @code
       r =  T(0.577215664901532860606512090082402431042159335939923598805767234884867726777664670936947063291746749);
     @endcode
 
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Euler( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Euler<T>();
+    @endcode
 
-**/
-  template<typename T> T Euler();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-
-
-      GeneratesEuler constant.
-
-      Generate the  constant euler.
-
-      @return The Euler constant for the proper type
-    **/
-    Value Euler();
-  }
-} }
-#endif
+    @par Requirements
+    - **T** models Value
+  **/
 
 #include <boost/simd/constant/scalar/euler.hpp>
 #include <boost/simd/constant/simd/euler.hpp>

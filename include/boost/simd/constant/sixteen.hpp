@@ -11,30 +11,54 @@
 #ifndef BOOST_SIMD_CONSTANT_SIXTEEN_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_SIXTEEN_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Sixteen Sixteen (function template)
 
-    Generate the constant sixteen.
+    Generates 16
 
-    @return The Sixteen constant for the proper type
+    @headerref{<boost/simd/constant/sixteen.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Sixteen();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Sixteen( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Sixteen constant.
+
+
+    @par Parameters
+
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+    @par Return Value
+    1.  A value of type @c T so that:
+    @code
+    T r = T(16);
+    @endcode
+
+
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Sixteen( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Sixteen<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Sixteen();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-constant
-      Generate the  constant sixteen.
-
-      @return The Sixteen constant for the proper type
-    **/
-    Value Sixteen();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/sixteen.hpp>
 #include <boost/simd/constant/simd/sixteen.hpp>

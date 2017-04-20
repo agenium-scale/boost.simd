@@ -11,23 +11,40 @@
 #ifndef BOOST_SIMD_CONSTANT_MANTISSAMASK_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_MANTISSAMASK_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Mantissamask Mantissamask (function template)
 
-    Generate a mask used to compute the mantissa of a floating point value
+    Generates a mask used to compute the mantissa of a floating point value
+
+    @headerref{<boost/simd/constant/mantissamask.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Mantissamask();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Mantissamask( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Mantissamask constant.
 
 
-    @par Header <boost/simd/constant/mantissamask.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
-    as_integer<T> r = Mantissamask<T>();
+    T r = Mantissamask<T>();
     @endcode
-
     @code
     if T is double
       r =  -2.225073858507200889e-308;
@@ -35,22 +52,18 @@ namespace boost { namespace simd
       r =  -1.1754942106924410755e-38;
     @endcode
 
-    @return The Mantissamask constant for the proper type
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Mantissamask( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Mantissamask<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Mantissamask();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant mantissamask.
-
-      @return The Mantissamask constant for the proper type
-    **/
-    Value Mantissamask();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/mantissamask.hpp>
 #include <boost/simd/constant/simd/mantissamask.hpp>

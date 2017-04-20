@@ -11,25 +11,41 @@
 #ifndef BOOST_SIMD_CONSTANT_NBEXPONENTBITS_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_NBEXPONENTBITS_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Nbexponentbits Nbexponentbits (function template)
 
-    Generate  the number of exponent bits of a floating point number,
+    Generates the number of exponent bits of a floating point number,
+
+    @headerref{<boost/simd/constant/nbexponentbits.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Nbexponentbits();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Nbexponentbits( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Nbexponentbits constant.
 
 
-    @par Header <boost/simd/constant/nbexponentbits.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Nbexponentbits<T>();
     @endcode
-
     is similar to:
-
     @code
     if T is integral
       r = 0
@@ -39,22 +55,18 @@ namespace boost { namespace simd
       r =  8;
     @endcode
 
-    @return The Nbexponentbits constant for the proper type
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Nbexponentbits( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Nbexponentbits<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Nbexponentbits();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant nbexponentbits.
-
-      @return The Nbexponentbits constant for the proper type
-    **/
-    Value Nbexponentbits();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/nbexponentbits.hpp>
 #include <boost/simd/constant/simd/nbexponentbits.hpp>

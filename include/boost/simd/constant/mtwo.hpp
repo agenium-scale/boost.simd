@@ -11,30 +11,54 @@
 #ifndef BOOST_SIMD_CONSTANT_MTWO_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_MTWO_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Mtwo Mtwo (function template)
 
-    Generate the constant mtwo.
+    Generates -2
 
-    @return The Mtwo constant for the proper type
+    @headerref{<boost/simd/constant/mtwo.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Mtwo();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Mtwo( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Mtwo constant.
+
+
+    @par Parameters
+
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+    @par Return Value
+    1.  A value of type @c T so that:
+    @code
+    T r = T(-2);
+    @endcode
+
+
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Mtwo( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Mtwo<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Mtwo();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant mtwo.
-
-      @return The Mtwo constant for the proper type
-    **/
-    Value Mtwo();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/mtwo.hpp>
 #include <boost/simd/constant/simd/mtwo.hpp>

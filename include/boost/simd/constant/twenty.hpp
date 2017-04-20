@@ -11,30 +11,54 @@
 #ifndef BOOST_SIMD_CONSTANT_TWENTY_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_TWENTY_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Twenty Twenty (function template)
 
-    Generate the constant twenty.
+    Generates 20
 
-    @return The Twenty constant for the proper type
+    @headerref{<boost/simd/constant/twenty.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Twenty();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Twenty( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Twenty constant.
+
+
+    @par Parameters
+
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+    @par Return Value
+    1.  A value of type @c T so that:
+    @code
+    T r = T(20);
+    @endcode
+
+
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Twenty( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Twenty<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Twenty();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-constant
-      Generate the  constant twenty.
-
-      @return The Twenty constant for the proper type
-    **/
-    Value Twenty();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/twenty.hpp>
 #include <boost/simd/constant/simd/twenty.hpp>

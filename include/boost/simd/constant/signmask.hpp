@@ -11,46 +11,58 @@
 #ifndef BOOST_SIMD_CONSTANT_SIGNMASK_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_SIGNMASK_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
-  /*!
-    @ingroup group-constant
 
-    Generate a mask with the lone most significand bit set to one
+
+  /*!
+  @ingroup group-constant
+  @defgroup constant-Signmask Signmask (function template)
+
+    Generates a mask with the lone most significand bit set to one
     (even if the type is unsigned).
 
+    @headerref{<boost/simd/constant/signmask.hpp>}
 
-    @par Header <boost/simd/constant/signmask.hpp>
+    @par Description
 
-    @par Semantic:
+    1.  @code
+        template<typename T> auto Signmask();
+        @endcode
 
+    2.  @code
+        template<typename T> auto Signmask( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Signmask constant.
+
+
+    @par Parameters
+
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Signmask<T>();
     @endcode
-
     is similar to:
-
     @code
     T r = bitwise_cast<T>(1 << sizeof(T)*8-1);
     @endcode
 
-    @return The Signmask constant for the proper type
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Signmask( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Signmask<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Signmask();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant signmask.
-
-      @return The Signmask constant for the proper type
-    **/
-    Value Signmask();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/signmask.hpp>
 #include <boost/simd/constant/simd/signmask.hpp>

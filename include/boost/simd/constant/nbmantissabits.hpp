@@ -11,25 +11,41 @@
 #ifndef BOOST_SIMD_CONSTANT_NBMANTISSABITS_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_NBMANTISSABITS_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Nbmantissabits Nbmantissabits (function template)
 
-    Generate the number of mantissa bits of a floating point number.
+    Generates the number of mantissa bits of a floating point number.
+
+    @headerref{<boost/simd/constant/nbmantissabits.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Nbmantissabits();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Nbmantissabits( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Nbmantissabits constant.
 
 
-    @par Header <boost/simd/constant/nbmantissabits.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Nbmantissabits<T>();
     @endcode
-
     is similar to:
-
     @code
     if T is integral
       r = sizeof(T)*8
@@ -39,22 +55,18 @@ namespace boost { namespace simd
       r =  23;
     @endcode
 
-    @return The Nbmantissabits constant for the proper type
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Nbmantissabits( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Nbmantissabits<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Nbmantissabits();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant nbmantissabits.
-
-      @return The Nbmantissabits constant for the proper type
-    **/
-    Value Nbmantissabits();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/nbmantissabits.hpp>
 #include <boost/simd/constant/simd/nbmantissabits.hpp>

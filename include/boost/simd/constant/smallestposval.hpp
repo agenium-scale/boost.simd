@@ -11,25 +11,41 @@
 #ifndef BOOST_SIMD_CONSTANT_SMALLESTPOSVAL_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_SMALLESTPOSVAL_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Smallestposval Smallestposval (function template)
 
-    Generate the least non zero, non denormal, positive value.
+    Generates the least non zero, non denormal, positive value.
+
+    @headerref{<boost/simd/constant/smallestposval.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Smallestposval();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Smallestposval( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Smallestposval constant.
 
 
-    @par Header <boost/simd/constant/smallestposval.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Smallestposval<T>();
     @endcode
-
     is similar to:
-
     @code
     if T is integral
       r = 1
@@ -39,22 +55,18 @@ namespace boost { namespace simd
       r =  1.1754944e-38;
     @endcode
 
-    @return The Smallestposval constant for the proper type
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Smallestposval( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Smallestposval<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Smallestposval();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant smallestposval.
-
-      @return The Smallestposval constant for the proper type
-    **/
-    Value Smallestposval();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/smallestposval.hpp>
 #include <boost/simd/constant/simd/smallestposval.hpp>

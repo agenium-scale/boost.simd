@@ -11,25 +11,41 @@
 #ifndef BOOST_SIMD_CONSTANT_HALFEPS_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_HALFEPS_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Halfeps Halfeps (function template)
 
-    Generate the machine epsilon.
+    Generates the machine epsilon.
+
+    @headerref{<boost/simd/constant/halfeps.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Halfeps();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Halfeps( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Halfeps constant.
 
 
-    @par Header <boost/simd/constant/halfeps.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Halfeps<T>();
     @endcode
-
     is similar to:
-
     @code
     if T is integral
       r = T(1)
@@ -39,22 +55,18 @@ namespace boost { namespace simd
       r =  pow(2.0f, -24);
     @endcode
 
-    @return The Halfeps constant for the proper type
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Halfeps( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Halfeps<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Halfeps();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant halfeps.
-
-      @return The Halfeps constant for the proper type
-    **/
-    Value Halfeps();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/halfeps.hpp>
 #include <boost/simd/constant/simd/halfeps.hpp>

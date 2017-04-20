@@ -11,30 +11,54 @@
 #ifndef BOOST_SIMD_CONSTANT_INVSQRTEPS_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_INVSQRTEPS_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Invsqrteps Invsqrteps (function template)
 
-    Generate  value \f$\1/sqrt(Eps<T>()\f$
+    Generates value \f$\1/sqrt(Eps<T>()\f$
 
-    @return The Invsqrteps constant for the proper type
+    @headerref{<boost/simd/constant/invsqrteps.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Invsqrteps();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Invsqrteps( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Invsqrteps constant.
+
+
+    @par Parameters
+
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+    @par Return Value
+    1.  A value of type @c T so that:
+    @code
+    T r = Invsqrteps<T>();
+    @endcode
+
+
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Invsqrteps( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Invsqrteps<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T invsqrteps();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant Invsqrteps.
-
-      @return The invsqrteps constant for the proper type
-    **/
-    const boost::dispatch::functor<tag::invsqrteps_> invsqrteps = {};
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/invsqrteps.hpp>
 #include <boost/simd/constant/simd/invsqrteps.hpp>

@@ -11,30 +11,54 @@
 #ifndef BOOST_SIMD_CONSTANT_MONE_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_MONE_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Mone Mone (function template)
 
-    Generate the mone constant (-1).
+    Generates -1
 
-    @return The Mone constant for the proper type
+    @headerref{<boost/simd/constant/mone.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Mone();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Mone( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Mone constant.
+
+
+    @par Parameters
+
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+    @par Return Value
+    1.  A value of type @c T so that:
+    @code
+    T r = T(-1);
+    @endcode
+
+
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Mone( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Mone<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Mone();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant mone.
-
-      @return The Mone constant (-1) for the proper type
-    **/
-    Value Mone();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/mone.hpp>
 #include <boost/simd/constant/simd/mone.hpp>

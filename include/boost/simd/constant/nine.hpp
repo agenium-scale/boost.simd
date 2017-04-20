@@ -11,30 +11,54 @@
 #ifndef BOOST_SIMD_CONSTANT_NINE_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_NINE_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Nine Nine (function template)
 
-    Generate the constant nine.
+    Generates 9
 
-    @return The Nine constant for the proper type
+    @headerref{<boost/simd/constant/nine.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Nine();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Nine( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Nine constant.
+
+
+    @par Parameters
+
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+    @par Return Value
+    1.  A value of type @c T so that:
+    @code
+    T r = T(9);
+    @endcode
+
+
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Nine( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Nine<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Nine();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant nine.
-
-      @return The Nine constant for the proper type
-    **/
-    Value Nine();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/nine.hpp>
 #include <boost/simd/constant/simd/nine.hpp>

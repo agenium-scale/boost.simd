@@ -11,50 +11,57 @@
 #ifndef BOOST_SIMD_CONSTANT_INVLOG_10_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_INVLOG_10_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
+  @ingroup group-constant
+  @defgroup constant-Invlog_10 Invlog_10 (function template)
 
-    @ingroup group-constant
+    enerates constant \f$1/\log(10)\f$.
 
-    Generates constant 1/log(10).
+    @headerref{<boost/simd/constant/invlog_10.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Invlog_10();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Invlog_10( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Invlog_10 constant.
 
 
-    @par Header <boost/simd/constant/invlog_10.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Invlog_10<T>();
     @endcode
-
     is similar to:
-
     @code
     r =  T(0.4342944819032518276511289189166050822943970058036666);
     @endcode
 
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Invlog_10( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Invlog_10<T>();
+    @endcode
 
-**/
-  template<typename T> T Invlog_10();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-
-
-      Generates constant 1/log(10).
-
-      Generate the  constant invlog_10.
-
-      @return The Invlog_10 constant for the proper type
-    **/
-    const boost::dispatch::functor<tag::invlog_10_> invlog_10 = {};
-  }
-} }
-#endif
+    @par Requirements
+    - **T** models Value
+  **/
 
 #include <boost/simd/constant/scalar/invlog_10.hpp>
 #include <boost/simd/constant/simd/invlog_10.hpp>

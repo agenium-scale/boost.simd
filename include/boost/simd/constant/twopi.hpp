@@ -11,53 +11,57 @@
 #ifndef BOOST_SIMD_CONSTANT_TWOPI_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_TWOPI_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
+  @ingroup group-constant
+  @defgroup constant-Twopi Twopi (function template)
 
-    @ingroup group-constant
+    Generates \f$2\pi\f$
 
-    Constant \f$2\pi\f$.
+    @headerref{<boost/simd/constant/twopi.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Twopi();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Twopi( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Twopi constant.
 
 
-    @par Header <boost/simd/constant/twopi.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    For type T:
-
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Twopi<T>();
     @endcode
-
     is similar to:
-
     @code
     T r = Two<T>()*Pi<T>();
     @endcode
 
-    @return a value of type T
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Twopi( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Twopi<T>();
+    @endcode
 
-**/
-  template<typename T> T Twopi();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-
-
-      Constant \f$\frac2\pi\f$.
-
-      Generate the  constant twopi.
-
-      @return The Twopi constant for the proper type
-    **/
-    Value Twopi();
-  }
-} }
-#endif
+    @par Requirements
+    - **T** models Value
+  **/
 
 #include <boost/simd/constant/scalar/twopi.hpp>
 #include <boost/simd/constant/simd/twopi.hpp>

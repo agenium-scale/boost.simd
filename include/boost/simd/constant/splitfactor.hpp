@@ -11,27 +11,44 @@
 #ifndef BOOST_SIMD_CONSTANT_SPLITFACTOR_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_SPLITFACTOR_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Splitfactor Splitfactor (function template)
 
-    Generate  a constant used to split a floating number in two parts,
-    in floating point routines (such @ref two_add and
-    @ref two_prod) to get extra precision.
+    Generates  a constant used to split a floating number in two parts,
+    in floating point routines (such [two_add](@ref real-two_add) and
+    [two_prod](@ref real-two_prod) to get extra precision.
 
 
-    @par Header <boost/simd/constant/splitfactor.hpp>
+    @headerref{<boost/simd/constant/splitfactor.hpp>}
 
-    @par Semantic:
+    @par Description
 
+    1.  @code
+        template<typename T> auto Splitfactor();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Splitfactor( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Splitfactor constant.
+
+
+    @par Parameters
+
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Splitfactor<T>();
     @endcode
-
     is similar to:
-
     @code
     if T is integral
       r = 0
@@ -41,22 +58,18 @@ namespace boost { namespace simd
       r =  pow(2, 13);
     @endcode
 
-    @return The Splitfactor constant for the proper type
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Splitfactor( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Splitfactor<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Splitfactor();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant splitfactor.
-
-      @return The Splitfactor constant for the proper type
-    **/
-    Value Splitfactor();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/splitfactor.hpp>
 #include <boost/simd/constant/simd/splitfactor.hpp>

@@ -11,30 +11,54 @@
 #ifndef BOOST_SIMD_CONSTANT_MFIVE_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_MFIVE_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Mfive Mfive (function template)
 
-    Generate the constant mfive.
+    Generates -5.
 
-    @return The Mfive constant for the proper type
+    @headerref{<boost/simd/constant/mfive.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Mfive();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Mfive( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Mfive constant.
+
+
+    @par Parameters
+
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+    @par Return Value
+    1.  A value of type @c T so that:
+    @code
+    T r = T(-5);
+    @endcode
+
+
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Mfive( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Mfive<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Mfive();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant mfive.
-
-      @return The Mfive constant for the proper type
-    **/
-    Value Mfive();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/mfive.hpp>
 #include <boost/simd/constant/simd/mfive.hpp>

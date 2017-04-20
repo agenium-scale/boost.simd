@@ -11,53 +11,57 @@
 #ifndef BOOST_SIMD_CONSTANT_PIO_6_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_PIO_6_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
+  @ingroup group-constant
+  @defgroup constant-Pio_6 Pio_6 (function template)
 
-    @ingroup group-constant
+    Generates \f$\frac\pi{6}\f$.
 
-    Constant \f$\frac\pi{6}\f$.
+    @headerref{<boost/simd/constant/pio_6.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Pio_6();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Pio_6( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Pio_6 constant.
 
 
-    @par Header <boost/simd/constant/pio_6.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    For type T:
-
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Pio_6<T>();
     @endcode
-
     is similar to:
-
     @code
     T r = Pi<T>()/Six<T>();
     @endcode
 
-    @return a value of type T
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Pio_6( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Pio_6<T>();
+    @endcode
 
-**/
-  template<typename T> T Pio_6();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-
-
-      Constant \f$\frac\pi{6}\f$.
-
-      Generate the  constant pio_6.
-
-      @return The Pio_6 constant for the proper type
-    **/
-    const boost::dispatch::functor<tag::pio_6_> pio_6 = {};
-  }
-} }
-#endif
+    @par Requirements
+    - **T** models Value
+  **/
 
 #include <boost/simd/constant/scalar/pio_6.hpp>
 #include <boost/simd/constant/simd/pio_6.hpp>

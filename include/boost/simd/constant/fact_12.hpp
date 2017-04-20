@@ -11,45 +11,57 @@
 #ifndef BOOST_SIMD_CONSTANT_FACT_12_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_FACT_12_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Fact_12 Fact_12 (function template)
 
-    Generate 12! that is 479001600
+    Generates 12! that is 479001600
+
+    @headerref{<boost/simd/constant/fact_12.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Fact_12();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Fact_12( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Fact_12 constant.
 
 
-    @par Header <boost/simd/constant/fact_12.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Fact_12<T>();
     @endcode
-
     is similar to:
-
     @code
     T r = T(479001600);
     @endcode
 
-    @return The Fact_12 constant for the proper type
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Fact_12( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Fact_12<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Fact_12();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant fact_12.
-
-      @return The Fact_12 constant for the proper type
-    **/
-    Value Fact_12<Value>();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/fact_12.hpp>
 #include <boost/simd/constant/simd/fact_12.hpp>

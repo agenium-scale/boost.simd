@@ -11,25 +11,41 @@
 #ifndef BOOST_SIMD_CONSTANT_THIRDROOTEPS_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_THIRDROOTEPS_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Thirdrooteps Thirdrooteps (function template)
 
-    Generate the cubic root of @ref Eps
+    Generates the cubic root of [Eps](@ref constant-Eps).
+
+    @headerref{<boost/simd/constant/thirdrooteps.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Thirdrooteps();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Thirdrooteps( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Thirdrooteps constant.
 
 
-    @par Header <boost/simd/constant/thirdrooteps.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Thirdrooteps<T>();
     @endcode
-
     is similar to:
-
     @code
     if T is integral
       r = 1
@@ -39,22 +55,18 @@ namespace boost { namespace simd
       r =  4.9215667e-03 ;
     @endcode
 
-    @return The Thirdrooteps constant for the proper type
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Thirdrooteps( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Thirdrooteps<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Thirdrooteps();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant thirdrooteps.
-
-      @return The Thirdrooteps constant for the proper type
-    **/
-    Value Thirdrooteps();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/thirdrooteps.hpp>
 #include <boost/simd/constant/simd/thirdrooteps.hpp>

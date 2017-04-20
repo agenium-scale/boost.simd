@@ -11,45 +11,57 @@
 #ifndef BOOST_SIMD_CONSTANT_QUARTER_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_QUARTER_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Quarter Quarter (function template)
 
-    Generate t value 1/4
+    Generates 1/4.
+
+    @headerref{<boost/simd/constant/quarter.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Quarter();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Quarter( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Quarter constant.
 
 
-    @par Header <boost/simd/constant/quarter.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Quarter<T>();
     @endcode
-
     is similar to:
-
     @code
     T r = T(1)/T(4);
     @endcode
 
-    @return The Quarter constant for the proper type
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Quarter( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Quarter<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Quarter();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant quarter.
-
-      @return The Quarter constant for the proper type
-    **/
-    Value Quarter();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/quarter.hpp>
 #include <boost/simd/constant/simd/quarter.hpp>

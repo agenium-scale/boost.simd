@@ -11,45 +11,57 @@
 #ifndef BOOST_SIMD_CONSTANT_FACT_4_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_FACT_4_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Fact_4 Fact_4 (function template)
 
-    Generate 4! that is 24
+    Generates 4! that is 24
+
+    @headerref{<boost/simd/constant/fact_4.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Fact_4();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Fact_4( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Fact_4 constant.
 
 
-    @par Header <boost/simd/constant/fact_4.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Fact_4<T>();
     @endcode
-
     is similar to:
-
     @code
     T r = T(24);
     @endcode
 
-    @return The Fact_4 constant for the proper type
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Fact_4( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Fact_4<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Fact_4();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant fact_4.
-
-      @return The Fact_4 constant for the proper type
-    **/
-    Value Fact_4<Value>();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/fact_4.hpp>
 #include <boost/simd/constant/simd/fact_4.hpp>

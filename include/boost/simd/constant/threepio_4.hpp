@@ -11,53 +11,57 @@
 #ifndef BOOST_SIMD_CONSTANT_THREEPIO_4_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_THREEPIO_4_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
+  @ingroup group-constant
+  @defgroup constant-Threepio_4 Threepio_4 (function template)
 
-    @ingroup group-constant
+    Generates \f$3\pi/4\f$
 
-    Constant threepio_4 : \f$3\pi/4\f$.
+    @headerref{<boost/simd/constant/threepio_4.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Threepio_4();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Threepio_4( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Threepio_4 constant.
 
 
-    @par Header <boost/simd/constant/threepio_4.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    For type T:
-
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
-    T r = threepio_4<T>();
+    T r = Threepio_4<T>();
     @endcode
-
     is similar to:
-
     @code
     T r = Three<T>()*Pi<T>()/Four<T>();
     @endcode
 
-    @return a value of type T
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Threepio_4( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Threepio_4<T>();
+    @endcode
 
-**/
-  template<typename T> T Threepio_4();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-
-
-      Constant threepio_4 : \f$3\pi/4\f$.
-
-      Generate the  constant threepio_4.
-
-      @return The Threepio_4 constant for the proper type
-    **/
-    const boost::dispatch::functor<tag::threepio_4_> threepio_4 = {};
-  }
-} }
-#endif
+    @par Requirements
+    - **T** models Value
+  **/
 
 #include <boost/simd/constant/scalar/threepio_4.hpp>
 #include <boost/simd/constant/simd/threepio_4.hpp>

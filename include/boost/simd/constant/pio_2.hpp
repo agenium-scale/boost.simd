@@ -11,45 +11,57 @@
 #ifndef BOOST_SIMD_CONSTANT_PIO_2_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_PIO_2_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Pio_2 Pio_2 (function template)
 
-    Generate t\f$\frac\pi{2}\f$.
+    Generates \f$\frac\pi{2}\f$.
+
+    @headerref{<boost/simd/constant/pio_2.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Pio_2();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Pio_2( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Pio_2 constant.
 
 
-    @par Header <boost/simd/constant/pio_2.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Pio_2<T>();
     @endcode
-
     is similar to:
-
     @code
     T r = T(2*atan(1));
     @endcode
 
-    @return The Pio_2 constant for the proper type
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Pio_2( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Pio_2<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Pio_2();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant pio_2.
-
-      @return The Pio_2 constant for the proper type
-    **/
-    const boost::dispatch::functor<tag::pio_2_> pio_2 = {};
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/pio_2.hpp>
 #include <boost/simd/constant/simd/pio_2.hpp>

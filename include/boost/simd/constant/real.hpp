@@ -11,22 +11,54 @@
 #ifndef BOOST_SIMD_CONSTANT_REAL_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_REAL_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
-    @brief Generate a constant from a static real number representation.
+  @ingroup group-constant
+  @defgroup constant-Real Real (function template)
 
-    @tparam Type    Type of the generated constant
-    @tparam Double  Bits of the double representation as an uint64_t
-    @tparam Single  Bits of the float  representation as an uint32_t
+    Generates a constant from a static real number representation.
 
-    The return value is selected by the type Type amaong the two representations.
+    @headerref{<boost/simd/constant/real.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Real();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Real( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Real constant.
+
+
+    @par Parameters
+
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+    @par Return Value
+    1.  A value of type @c T so that:
+    @code
+    T r = Real<T>();
+    @endcode
+
+
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Real( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Real<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename Type, std::uintmax_t Double, std::uintmax_t Single> auto Real();
-} }
-#endif
 
 #include <boost/simd/constant/scalar/real.hpp>
 #include <boost/simd/constant/simd/real.hpp>

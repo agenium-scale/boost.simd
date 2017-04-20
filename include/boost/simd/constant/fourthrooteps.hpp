@@ -11,25 +11,41 @@
 #ifndef BOOST_SIMD_CONSTANT_FOURTHROOTEPS_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_FOURTHROOTEPS_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Fourthrooteps Fourthrooteps (function template)
 
-    Generate the 4th root of constant @ref Eps : \f$\sqrt[4]\epsilon\f$.
+    Generates the 4th root of constant [Eps](@ref constant-Eps) : \f$\sqrt[4]\epsilon\f$.
+
+    @headerref{<boost/simd/constant/fourthrooteps.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Fourthrooteps();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Fourthrooteps( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Fourthrooteps constant.
 
 
-    @par Header <boost/simd/constant/fourthrooteps.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Fourthrooteps<T>();
     @endcode
-
     is similar to:
-
     @code
     if T is integral
       r = T(1)
@@ -39,22 +55,18 @@ namespace boost { namespace simd
       r =  pow(2.0f, -5.75f);
     @endcode
 
-    @return The Fourthrooteps constant for the proper type
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Fourthrooteps( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Fourthrooteps<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Fourthrooteps();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant fourthrooteps.
-
-      @return The Fourthrooteps constant for the proper type
-    **/
-    Value Fourthrooteps();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/fourthrooteps.hpp>
 #include <boost/simd/constant/simd/fourthrooteps.hpp>

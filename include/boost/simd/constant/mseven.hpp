@@ -11,30 +11,54 @@
 #ifndef BOOST_SIMD_CONSTANT_MSEVEN_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_MSEVEN_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Mseven Mseven (function template)
 
-    Generate the constant mseven.
+    Generates -7
 
-    @return The Mseven constant for the proper type
+    @headerref{<boost/simd/constant/mseven.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Mseven();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Mseven( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Mseven constant.
+
+
+    @par Parameters
+
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+    @par Return Value
+    1.  A value of type @c T so that:
+    @code
+    T r = T(-7);
+    @endcode
+
+
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Mseven( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Mseven<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Mseven();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant mseven.
-
-      @return The Mseven constant for the proper type
-    **/
-    Value Mseven();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/mseven.hpp>
 #include <boost/simd/constant/simd/mseven.hpp>

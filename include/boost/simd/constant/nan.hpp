@@ -11,55 +11,55 @@
 #ifndef BOOST_SIMD_CONSTANT_NAN_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_NAN_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Nan Nan (function template)
 
-    Generate the Not a Number (Nan) constant.
+    Generates  the Not a Number (Nan) constant..
+
+    @headerref{<boost/simd/constant/nan.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Nan();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Nan( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Nan constant.
 
 
-    @par Header <boost/simd/constant/nan.hpp>
+    @par Parameters
 
-    @par Semantic
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    For any type @c T,
-
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
-    T x = Nan<T>();
+    T r = Nan<T>();
     @endcode
-
     return the Nan representation for this type, i.e QuietNan for IEEE reals and
     0 for integers.
 
-    @return The Nan constant for the proper type
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Nan( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Nan<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Nan();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the Not a Number (Nan) constant.
-
-      @par Semantic
-
-      For any type @c T,
-
-      @code
-      T x = nan(as(T{}));
-      @endcode
-
-      return the Nan representation for this type, i.e QuietNan for IEEE reals and
-      0 for integers.
-
-      @return The Nan constant for the proper type
-    **/
-    Value Nan();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/nan.hpp>
 #include <boost/simd/constant/simd/nan.hpp>

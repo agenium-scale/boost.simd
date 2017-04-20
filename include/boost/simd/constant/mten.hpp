@@ -11,30 +11,54 @@
 #ifndef BOOST_SIMD_CONSTANT_MTEN_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_MTEN_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Mten Mten (function template)
 
-    Generate the constant mten.
+    Generates -10
 
-    @return The Mten constant for the proper type
+    @headerref{<boost/simd/constant/mten.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Mten();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Mten( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Mten constant.
+
+
+    @par Parameters
+
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+    @par Return Value
+    1.  A value of type @c T so that:
+    @code
+    T r = T(-10)
+    @endcode
+
+
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Mten( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Mten<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Mten();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant mten.
-
-      @return The Mten constant for the proper type
-    **/
-    Value Mten();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/mten.hpp>
 #include <boost/simd/constant/simd/mten.hpp>

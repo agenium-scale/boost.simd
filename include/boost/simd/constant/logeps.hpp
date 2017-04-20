@@ -11,45 +11,57 @@
 #ifndef BOOST_SIMD_CONSTANT_LOGEPS_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_LOGEPS_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Logeps Logeps (function template)
 
-    Generate the  logarithm of the Eps constant.
+    Generates the natural logarithm of the [Eps](@ref constant-Eps) constant.
+
+    @headerref{<boost/simd/constant/logeps.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Logeps();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Logeps( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Logeps constant.
 
 
-    @par Header <boost/simd/constant/logeps.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Logeps<T>();
     @endcode
-
     is similar to:
-
     @code
       r =  log(Eps<T>());
     @endcode
 
-    @return The Logeps constant for the proper type
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Logeps( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Logeps<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Logeps();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant logeps.
-
-      @return The Logeps constant for the proper type
-    **/
-    Value Logeps();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/logeps.hpp>
 #include <boost/simd/constant/simd/logeps.hpp>

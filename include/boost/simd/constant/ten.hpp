@@ -11,30 +11,54 @@
 #ifndef BOOST_SIMD_CONSTANT_TEN_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_TEN_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Ten Ten (function template)
 
-    Generate the constant ten.
+    Generates 10
 
-    @return The Ten constant for the proper type
+    @headerref{<boost/simd/constant/ten.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Ten();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Ten( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Ten constant.
+
+
+    @par Parameters
+
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+    @par Return Value
+    1.  A value of type @c T so that:
+    @code
+    T r = T(10)
+    @endcode
+
+
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Ten( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Ten<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Ten();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-      Generate the  constant ten.
-
-      @return The Ten constant for the proper type
-    **/
-    Value Ten();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/ten.hpp>
 #include <boost/simd/constant/simd/ten.hpp>

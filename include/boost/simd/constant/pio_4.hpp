@@ -11,53 +11,57 @@
 #ifndef BOOST_SIMD_CONSTANT_PIO_4_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_PIO_4_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
+  @ingroup group-constant
+  @defgroup constant-Pio_4 Pio_4 (function template)
 
-    @ingroup group-constant
+    Generates  \f$\frac\pi{4}\f$.
 
-    Constant \f$\frac\pi{4}\f$.
+    @headerref{<boost/simd/constant/pio_4.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Pio_4();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Pio_4( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Pio_4 constant.
 
 
-    @par Header <boost/simd/constant/pio_4.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    For type T:
-
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
     T r = Pio_4<T>();
     @endcode
-
     is similar to:
-
     @code
     T r = Pi<T>()/Four<T>();
     @endcode
 
-    @return a value of type T
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Pio_4( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Pio_4<T>();
+    @endcode
 
-**/
-  template<typename T> T Pio_4();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-
-
-      Constant \f$\frac\pi{4}\f$.
-
-      Generate the  constant pio_4.
-
-      @return The Pio_4 constant for the proper type
-    **/
-    const boost::dispatch::functor<tag::pio_4_> pio_4 = {};
-  }
-} }
-#endif
+    @par Requirements
+    - **T** models Value
+  **/
 
 #include <boost/simd/constant/scalar/pio_4.hpp>
 #include <boost/simd/constant/simd/pio_4.hpp>

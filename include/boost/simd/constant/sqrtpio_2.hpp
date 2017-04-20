@@ -11,53 +11,57 @@
 #ifndef BOOST_SIMD_CONSTANT_SQRTPIO_2_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_SQRTPIO_2_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
+  @ingroup group-constant
+  @defgroup constant-Sqrtpio_2 Sqrtpio_2 (function template)
 
-    @ingroup group-constant
+    Generates \f$\frac{\sqrt\pi}{2}\f$
 
-    Constant Sqrtpio_2 : \f$\frac{\sqrt\pi}{2}\f$.
+    @headerref{<boost/simd/constant/sqrtpio_2.hpp>}
+
+    @par Description
+
+    1.  @code
+        template<typename T> auto Sqrtpio_2();
+        @endcode
+
+    2.  @code
+        template<typename T> auto Sqrtpio_2( boost::simd::as_<T> const& target );
+        @endcode
+
+    1. and 2.  return a value of type @c T containing the Sqrtpio_2 constant.
 
 
-    @par Header <boost/simd/constant/sqrtpio_2.hpp>
+    @par Parameters
 
-    @par Semantic:
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    For type T:
-
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
-    T r = sqrtpio_2<T>();
+    T r = Sqrtpio_2<T>();
     @endcode
-
     is similar to:
-
     @code
     T r = sqrt(Two<T>())/Pi<T>();
     @endcode
 
-    @return a value of type T
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Sqrtpio_2( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Sqrtpio_2<T>();
+    @endcode
 
-**/
-  template<typename T> T Sqrtpio_2();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-
-
-      Constant Sqrtpio_2 : \f$\frac{\sqrt\pi}{2}\f$.
-
-      Generate the  constant sqrtpio_2.
-
-      @return The Sqrtpio_2 constant for the proper type
-    **/
-    const boost::dispatch::functor<tag::sqrtpio_2_> sqrtpio_2 = {};
-  }
-} }
-#endif
+    @par Requirements
+    - **T** models Value
+  **/
 
 #include <boost/simd/constant/scalar/sqrtpio_2.hpp>
 #include <boost/simd/constant/simd/sqrtpio_2.hpp>

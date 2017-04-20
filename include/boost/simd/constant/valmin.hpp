@@ -11,54 +11,39 @@
 #ifndef BOOST_SIMD_CONSTANT_VALMIN_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_VALMIN_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
-  /*!
-    @ingroup group-constant
+/*!
+  @ingroup group-constant
+  @defgroup constant-Valmin Valmin (function template)
 
-    Generate the minimum finite representable value of a given type as a constant.
+  Generates the minimum finite representable value of a given type.
 
+  @headerref{<boost/simd/constant/valmin.hpp>}
 
-    @par Header <boost/simd/constant/valmin.hpp>
+  @par Description
 
-    @par Semantic
-
-    For any type @c T,
-
-    @code
-    T x = Valmin<T>();
-    @endcode
-
-    return the minimum finite representable value for this type.
-
-    @return The minimum finite representable value of the input type
-  **/
-  template<typename T> T Valmin();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-
-      Generate the minimum representable value of a given type as a constant.
-
-      @par Semantic
-
-      For any type @c T,
-
-      @code
-      T x = valmin(as(T{}));
+  1.  @code
+      template<typename T> auto Valmin();
       @endcode
 
-      return the minimum representable value for this type.
+  2.  @code
+      template<typename T> auto Valmin( boost::simd::as_<T> const& target );
+      @endcode
 
-      @return The minimum representable value of the input type
-    **/
-    Value Valmin();
-  }
-} }
-#endif
+  Generates the minimum finite representable value of a given type
+  [as defined by the C++ standard](http://en.cppreference.com/w/cpp/types/numeric_limits/min).
+
+  @par Parameters
+
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+  @par Return Value
+  A value of type @c T that evaluates to the minimum finite representable value for this type.
+
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/valmin.hpp>
 #include <boost/simd/constant/simd/valmin.hpp>

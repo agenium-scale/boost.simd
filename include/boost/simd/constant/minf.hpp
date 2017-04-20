@@ -11,55 +11,55 @@
 #ifndef BOOST_SIMD_CONSTANT_MINF_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_MINF_HPP_INCLUDED
 
-#if defined(DOXYGEN_ONLY)
-namespace boost { namespace simd
-{
+
+
   /*!
-    @ingroup group-constant
+  @ingroup group-constant
+  @defgroup constant-Minf Minf (function template)
 
     Generates the -inf IEEE value (\f$-\infty\f$) for floating types and minimum value
     for integer types
 
+    @headerref{<boost/simd/constant/minf.hpp>}
 
-    @par Header <boost/simd/constant/minf.hpp>
+    @par Description
 
-    @par Semantic
+    1.  @code
+        template<typename T> auto Minf();
+        @endcode
 
-    For any type @c T,
+    2.  @code
+        template<typename T> auto Minf( boost::simd::as_<T> const& target );
+        @endcode
 
+    1. and 2.  return a value of type @c T containing the Minf constant.
+
+
+    @par Parameters
+
+    | Name                | Description                                                         |
+    |--------------------:|:--------------------------------------------------------------------|
+    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+    @par Return Value
+    1.  A value of type @c T so that:
     @code
-    T x = Minf<T>();
+    T r = Minf<T>();
     @endcode
 
 
-    @return The least value for the input type
+    2.  A value of type @c T so that:
+    @code
+    T x, r = Minf( boost::simd::as(x));
+    @endcode
+    is equivalent to:
+    @code
+    T r = Minf<T>();
+    @endcode
+
+    @par Requirements
+    - **T** models Value
   **/
-  template<typename T> T Minf();
-
-  namespace functional
-  {
-    /*!
-      @ingroup group-callable-constant
-
-      Generates the -inf IEEE value (\f$-\infty\f$) for floating types and minimum value
-      for integer types
-
-      @par Semantic
-
-      For any type @c T,
-
-      @code
-      T x = minf(as(T{}));
-      @endcode
-
-      return the minimum representable value for this type.
-
-      @return The minimum representable value of the input type
-    **/
-    Value Minf();
-  }
-} }
-#endif
 
 #include <boost/simd/constant/scalar/minf.hpp>
 #include <boost/simd/constant/simd/minf.hpp>
