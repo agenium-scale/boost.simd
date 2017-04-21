@@ -30,6 +30,20 @@ namespace boost { namespace simd { namespace ext
     }
   };
 
+  BOOST_DISPATCH_OVERLOAD ( inearbyint_
+                          , (typename A0)
+                          , bs::sse2_
+                          , bs::fast_tag
+                          , bd::scalar_<bd::single_<A0>>
+                          )
+  {
+    BOOST_FORCEINLINE  bd::as_integer_t<A0> operator() (fast_tag const&
+                                                       , const A0 & a0) const BOOST_NOEXCEPT
+    {
+      return _mm_cvtss_si32(_mm_set_ss(a0));
+    }
+  };
+
 } } }
 
 #endif
