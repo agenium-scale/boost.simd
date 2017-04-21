@@ -11,57 +11,45 @@
 #ifndef BOOST_SIMD_CONSTANT_MLOG10TWO2NMB_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_MLOG10TWO2NMB_HPP_INCLUDED
 
-
-
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Mlog10two2nmb Mlog10two2nmb (function template)
 
-    Generates constant Mlog10two2nmb.
+  Generates constant Mlog10two2nmb, opposite of the base 10 logarithm of
+  [Two2nmb](@ref Two2nmb-constant) constant
+.
 
-    @headerref{<boost/simd/constant/mlog10two2nmb.hpp>}
+  @headerref{<boost/simd/constant/mlog10two2nmb.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Mlog10two2nmb();
-        @endcode
+  1.  @code
+      template<typename T> auto Mlog10two2nmb();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Mlog10two2nmb( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Mlog10two2nmb( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Mlog10two2nmb constant.
+  Generates a value of type @c T containing the Mlog10two2nmb constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Mlog10two2nmb<T>();
-    @endcode
-    is similar to:
-    @code
-      r =  -log10(exp2(T(Nbmantissabits<T>())));
-    @endcode
+  @par Return Value
+  A value of type @c T that evaluates to
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Mlog10two2nmb( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Mlog10two2nmb<T>();
-    @endcode
+  | Type                | double                                   | float                               |
+  |--------------------:|:-----------------------------------------|-------------------------------------|
+  | value               |  -15.653559774527022151114422525674      | -6.9236899002715674899159945786633f |
 
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models IEEEValue
+**/
 
 #include <boost/simd/constant/scalar/mlog10two2nmb.hpp>
 #include <boost/simd/constant/simd/mlog10two2nmb.hpp>

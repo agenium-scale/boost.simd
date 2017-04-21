@@ -13,55 +13,39 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Fact_11 Fact_11 (function template)
 
-    Generates 11! that is 39916800,
+  Generates @c 11! that is @c 39916800,
 
-    @headerref{<boost/simd/constant/fact_11.hpp>}
+  @headerref{<boost/simd/constant/fact_11.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Fact_11();
-        @endcode
+  1.  @code
+      template<typename T> auto Fact_11();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Fact_11( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Fact_11( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Fact_11 constant.
+  Generates a value of type @c T containing the Fact_11 constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Fact_11<T>();
-    @endcode
-    is similar to:
-    @code
-    T r = T(39916800);
-    @endcode
+  @par Return Value
+  A value of type @c T that evaluates to @c T(39916800).
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Fact_11( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Fact_11<T>();
-    @endcode
-
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/fact_11.hpp>
 #include <boost/simd/constant/simd/fact_11.hpp>

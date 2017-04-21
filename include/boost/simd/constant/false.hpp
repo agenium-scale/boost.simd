@@ -13,55 +13,55 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-False False (function template)
 
-    Generates a value of the logical type associated to the chosen type equal to @c false
+  Generates a value of the logical type associated to the chosen type equal to @c false
 
-    @headerref{<boost/simd/constant/false.hpp>}
+  @headerref{<boost/simd/constant/false.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto False();
-        @endcode
+  1.  @code
+      template<typename T> auto False();
+      @endcode
 
-    2.  @code
-        template<typename T> auto False( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto False( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the False constant.
+  Generates a value of type @c T containing the False constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = False<T>();
-    @endcode
-    is equivalent to:
-    @code
-    T r = false;
-    @endcode
+  @par Return Value
+  1.  A value of type @c T so that:
+  @code
+  T r = False<T>();
+  @endcode
+  is equivalent to:
+  @code
+  T r = false;
+  @endcode
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = False( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = False<T>();
-    @endcode
+  2.  A value of type @c T so that:
+  @code
+  T x, r = False( boost::simd::as(x));
+  @endcode
+  is equivalent to:
+  @code
+  T r = False<T>();
+  @endcode
 
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/false.hpp>
 #include <boost/simd/constant/simd/false.hpp>

@@ -22,14 +22,14 @@
   @par Description
 
   1.  @code
-      template<typename T> T Pi();
-      @endcode
+    template<typename T> T Pi();
+    @endcode
 
   2.  @code
-      template<typename T> T Pi( boost::simd::as_<T> const& target );
-      @endcode
+    template<typename T> T Pi( boost::simd::as_<T> const& target );
+    @endcode
 
-  Generates a value of type @c T that evaluates to the properly rounded value of \f$\pi\f$.
+  Generates a value of type @c T that evaluates to \f$\pi\f$.
 
 
   @par Parameters
@@ -39,7 +39,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to <tt>T(M_PI)</tt>
+  A value of type @c T that evaluates to <tt>T(3.1415926535897932384626433832795)</tt>
 
   @par Requirements
   - **T** models IEEEValue

@@ -13,64 +13,43 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Mzero Mzero (function template)
 
-    Generates -0.
+  Generates constant @c -0.
 
-    @headerref{<boost/simd/constant/mzero.hpp>}
+  @headerref{<boost/simd/constant/mzero.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Mzero();
-        @endcode
+  1.  @code
+      template<typename T> auto Mzero();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Mzero( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Mzero( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Mzero constant.
+  Generates a value of type @c T containing the Mzero constant.
 
+  @par Note
 
-    @par Parameters
+  - this constant for floting types is the second IEEE representation of 0. if @c T is a floating type
+    `T(1)/Mezro<T>()` is `Minf<T>()`.
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  @par Parameters
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Mzero<T>();
-    @endcode
-    is similar to:
-    @code
-    T r = -T(0);
-    @endcode
-    @ par Note:
-    This is a special constant as it can be used and considered
-    identical to zero, except that for floating point numbers,
-    there is two different representation of zero with different bit of sign.
-    The existence of the sign can be used in special circumstances as
-    choosing between \f$+\infty\f$ and \f$-\infty\f$ instead of nan in computing 1/0.
-    \par
-    The sign of zero can be accessed through the [is_negative](@ref is_negative)
-    and [is_positive](@ref is_positive) predicates or the [bitofsign](@ref bitofsign) functions.
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Mzero( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Mzero<T>();
-    @endcode
+  @par Return Value
+  A value of type @c T that evaluates to `T(-0.0)`
 
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/mzero.hpp>
 #include <boost/simd/constant/simd/mzero.hpp>

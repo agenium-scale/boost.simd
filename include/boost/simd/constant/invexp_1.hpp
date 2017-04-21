@@ -13,55 +13,39 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Invexp_1 Invexp_1 (function template)
 
-    Generates constant 1/e.
+  Generates constant 1/e.
 
-    @headerref{<boost/simd/constant/invexp_1.hpp>}
+  @headerref{<boost/simd/constant/invexp_1.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Invexp_1();
-        @endcode
+  1.  @code
+      template<typename T> auto Invexp_1();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Invexp_1( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Invexp_1( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Invexp_1 constant.
+  Generates a value of type @c T containing the Invexp_1 constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Invexp_1<T>();
-    @endcode
-    is similar to:
-    @code
-    r =  T(0.3678794411714423215955237701614608674458111310317678);
-    @endcode
+  @par Return Value
+  A value of type @c T that evaluates to `T(0.3678794411714423215955237701614608674458111310317678)`.
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Invexp_1( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Invexp_1<T>();
-    @endcode
-
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models IEEEValue
+**/
 
 #include <boost/simd/constant/scalar/invexp_1.hpp>
 #include <boost/simd/constant/simd/invexp_1.hpp>

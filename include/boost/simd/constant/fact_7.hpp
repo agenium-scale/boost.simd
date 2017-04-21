@@ -13,55 +13,39 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Fact_7 Fact_7 (function template)
 
-    Generates 7! that is 5040
+  Generates @c 7! that is @c 5040
 
-    @headerref{<boost/simd/constant/fact_7.hpp>}
+  @headerref{<boost/simd/constant/fact_7.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Fact_7();
-        @endcode
+  1.  @code
+      template<typename T> auto Fact_7();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Fact_7( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Fact_7( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Fact_7 constant.
+  Generates a value of type @c T containing the Fact_7 constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Fact_7<T>();
-    @endcode
-    is similar to:
-    @code
-    T r = T(5040);
-    @endcode
+  @par Return Value
+  A value of type @c T   that evaluates to <tt>T(5040)</tt>.
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Fact_7( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Fact_7<T>();
-    @endcode
-
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/fact_7.hpp>
 #include <boost/simd/constant/simd/fact_7.hpp>

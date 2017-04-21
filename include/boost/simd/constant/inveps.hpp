@@ -13,52 +13,39 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Inveps Inveps (function template)
 
-    Generates  value \f$\1/Eps<T>()\f$
+  Generates  value \f$1/\epsilon\f$
 
-    @headerref{<boost/simd/constant/inveps.hpp>}
+  @headerref{<boost/simd/constant/inveps.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Inveps();
-        @endcode
+  1.  @code
+      template<typename T> auto Inveps();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Inveps( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Inveps( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Inveps constant.
-
-
-    @par Parameters
-
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
-
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Inveps<T>();
-    @endcode
+  Generates a value of type @c T containing the Inveps constant.
 
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Inveps( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Inveps<T>();
-    @endcode
+  @par Parameters
 
-    @par Requirements
-    - **T** models Value
-  **/
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+  @par Return Value
+  A value of type @c T that evaluates to `rec(Eps<T>()`.
+
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/inveps.hpp>
 #include <boost/simd/constant/simd/inveps.hpp>

@@ -11,57 +11,39 @@
 #ifndef BOOST_SIMD_CONSTANT_INV2PI_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_INV2PI_HPP_INCLUDED
 
-
-
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Inv2pi Inv2pi (function template)
 
-     Constant \f$\frac1{2\pi}\f$.
+   Generates constant \f$\frac1{2\pi}\f$.
 
-    @headerref{<boost/simd/constant/inv2pi.hpp>}
+  @headerref{<boost/simd/constant/inv2pi.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Inv2pi();
-        @endcode
+  1.  @code
+      template<typename T> auto Inv2pi();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Inv2pi( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Inv2pi( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Inv2pi constant.
+  Generates a value of type @c T containing the Inv2pi constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Inv2pi<T>();
-    @endcode
-    is similar to:
-    @code
-    T r = rec(Two<T>()*Pi<T>());
-    @endcode
+  @par Return Value
+  A value of type @c T that evaluates to `rec(Two<T>()*Pi<T>())`.
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Inv2pi( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Inv2pi<T>();
-    @endcode
-
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/inv2pi.hpp>
 #include <boost/simd/constant/simd/inv2pi.hpp>

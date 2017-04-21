@@ -11,62 +11,39 @@
 #ifndef BOOST_SIMD_CONSTANT_ONEOSQRTEPS_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_ONEOSQRTEPS_HPP_INCLUDED
 
-
-
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Oneosqrteps Oneosqrteps (function template)
 
-    Generates \f$1/\sqrt\epsilon\f$
+  Generates constant \f$1/\sqrt\epsilon\f$
 
-    @headerref{<boost/simd/constant/oneosqrteps.hpp>}
+  @headerref{<boost/simd/constant/oneosqrteps.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Oneosqrteps();
-        @endcode
+  1.  @code
+      template<typename T> auto Oneosqrteps();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Oneosqrteps( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Oneosqrteps( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Oneosqrteps constant.
+  Generates a value of type @c T containing the Oneosqrteps constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Oneosqrteps<T>();
-    @endcode
-    is similar to:
-    @code
-    if T is integral
-      r = T(0)
-    else if T is double
-      r =  pow(2.0, 26);
-    else if T is float
-      r =  pow(2.0f, 11.5);
-    @endcode
+  @par Return Value
+  A value of type @c T that evaluates to `rec(sqrt(Eps<T>()))`.
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Oneosqrteps( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Oneosqrteps<T>();
-    @endcode
-
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/oneosqrteps.hpp>
 #include <boost/simd/constant/simd/oneosqrteps.hpp>

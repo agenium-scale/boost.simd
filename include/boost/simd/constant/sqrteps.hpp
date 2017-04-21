@@ -11,62 +11,43 @@
 #ifndef BOOST_SIMD_CONSTANT_SQRTEPS_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_SQRTEPS_HPP_INCLUDED
 
-
-
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Sqrteps Sqrteps (function template)
 
-    Generates the square root of constant [Eps](@ref constant-Eps)
+  Generates the square root of constant [Eps](@ref constant-Eps)
 
-    @headerref{<boost/simd/constant/sqrteps.hpp>}
+  @headerref{<boost/simd/constant/sqrteps.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Sqrteps();
-        @endcode
+  1.  @code
+      template<typename T> auto Sqrteps();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Sqrteps( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Sqrteps( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Sqrteps constant.
+  Generates a value of type @c T containing the Sqrteps constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Sqrteps<T>();
-    @endcode
-    is similar to:
-    @code
-    if T is integral
-      r = 1
-    else if T is double
-      r =  Pow(2,-26);
-    else if T is float
-      r =  pow(2,-11.5f);
-    @endcode
+  @par Return Value
+  A value of type @c as_integer_t<T> that evaluates to
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Sqrteps( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Sqrteps<T>();
-    @endcode
+  | Type                | double                        | float          | Integral        |
+  |--------------------:|:------------------------------|----------------|-----------------|
+  | value               |   1.490116119384766e-08       | 3.4526698e-04f |  1              |
 
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/sqrteps.hpp>
 #include <boost/simd/constant/simd/sqrteps.hpp>

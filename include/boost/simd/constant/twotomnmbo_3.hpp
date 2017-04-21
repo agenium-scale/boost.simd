@@ -13,58 +13,43 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Twotomnmbo_3 Twotomnmbo_3 (function template)
 
-    Generates @c Twotomnmbo_3.
+  Generates @c Twotomnmbo_3 (used in [cbrt](@ref cbrt-real)).
 
-    @headerref{<boost/simd/constant/twotomnmbo_3.hpp>}
+  @headerref{<boost/simd/constant/twotomnmbo_3.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Twotomnmbo_3();
-        @endcode
+  1.  @code
+      template<typename T> auto Twotomnmbo_3();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Twotomnmbo_3( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Twotomnmbo_3( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Twotomnmbo_3 constant.
+  Generates a value of type @c T containing the Twotomnmbo_3 constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Twotomnmbo_3<T>();
-    @endcode
-    is similar to:
-    @code
-    if T is float
-      r = 4.921566601151848e-03f
-    else
-      r = 4.806217383937348e-06
-    @endcode
+  @par Return Value
+  A value of type @c T that evaluates to
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Twotomnmbo_3( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Twotomnmbo_3<T>();
-    @endcode
+  | Type                | double                        | float                  |
+  |--------------------:|:------------------------------|------------------------|
+  | value               |   4.806217383937348e-06       | 4.921566601151848e-03f |
 
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/twotomnmbo_3.hpp>
 #include <boost/simd/constant/simd/twotomnmbo_3.hpp>

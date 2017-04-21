@@ -22,12 +22,12 @@
   @par Description
 
   1.  @code
-      template<typename T> T Cgold();
-      @endcode
+    template<typename T> T Cgold();
+    @endcode
 
   2.  @code
-      template<typename T> T Cgold( boost::simd::as_<T> const& target );
-      @endcode
+    template<typename T> T Cgold( boost::simd::as_<T> const& target );
+    @endcode
 
   Generates a constant that evaluate to the
   [Golden Ratio conjugate](http://mathworld.wolfram.com/GoldenRatioConjugate.html)

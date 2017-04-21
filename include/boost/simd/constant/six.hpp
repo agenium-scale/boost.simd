@@ -13,52 +13,39 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Six Six (function template)
 
-    Generates 6
+  Generates constant @c 6
 
-    @headerref{<boost/simd/constant/six.hpp>}
+  @headerref{<boost/simd/constant/six.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Six();
-        @endcode
+  1.  @code
+      template<typename T> auto Six();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Six( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Six( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Six constant.
-
-
-    @par Parameters
-
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
-
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = T(6);
-    @endcode
+  Generates a value of type @c T containing the Six constant.
 
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Six( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Six<T>();
-    @endcode
+  @par Parameters
 
-    @par Requirements
-    - **T** models Value
-  **/
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+  @par Return Value
+  A value of type @c T that evaluates to `T(6)`
+
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/six.hpp>
 #include <boost/simd/constant/simd/six.hpp>

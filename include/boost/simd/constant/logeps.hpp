@@ -13,55 +13,39 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Logeps Logeps (function template)
 
-    Generates the natural logarithm of the [Eps](@ref constant-Eps) constant.
+  Generates the natural logarithm of the [Eps](@ref constant-Eps) constant.
 
-    @headerref{<boost/simd/constant/logeps.hpp>}
+  @headerref{<boost/simd/constant/logeps.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Logeps();
-        @endcode
+  1.  @code
+      template<typename T> auto Logeps();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Logeps( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Logeps( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Logeps constant.
+  Generates a value of type @c T containing the Logeps constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Logeps<T>();
-    @endcode
-    is similar to:
-    @code
-      r =  log(Eps<T>());
-    @endcode
+  @par Return Value
+  A value of type @c T that evaluates to `log(Eps<T>())`.
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Logeps( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Logeps<T>();
-    @endcode
-
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models IEEEValue
+**/
 
 #include <boost/simd/constant/scalar/logeps.hpp>
 #include <boost/simd/constant/simd/logeps.hpp>

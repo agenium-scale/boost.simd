@@ -13,56 +13,39 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Half Half (function template)
 
-    Generates value \f$\frac12\f$
+  Generates value \f$\frac12\f$
 
-    @headerref{<boost/simd/constant/half.hpp>}
+  @headerref{<boost/simd/constant/half.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Half();
-        @endcode
+  1.  @code
+      template<typename T> auto Half();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Half( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Half( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Half constant.
+  Generates a value of type @c T containing the Half constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Half<T>();
-    @endcode
-    is similar for floating types to:
-    @code
-    T r = T(1)/T(2);
-    @endcode
-    (0 for integral types)
+  @par Return Value
+  A value of type @c T that evaluates to  `T(1)/T(2)`
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Half( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Half<T>();
-    @endcode
-
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/half.hpp>
 #include <boost/simd/constant/simd/half.hpp>

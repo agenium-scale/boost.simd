@@ -11,54 +11,39 @@
 #ifndef BOOST_SIMD_CONSTANT_MTWO_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_MTWO_HPP_INCLUDED
 
-
-
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Mtwo Mtwo (function template)
 
-    Generates -2
+  Generates constant @c -2
 
-    @headerref{<boost/simd/constant/mtwo.hpp>}
+  @headerref{<boost/simd/constant/mtwo.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Mtwo();
-        @endcode
+  1.  @code
+      template<typename T> auto Mtwo();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Mtwo( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Mtwo( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Mtwo constant.
-
-
-    @par Parameters
-
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
-
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = T(-2);
-    @endcode
+  Generates a value of type @c T containing the Mtwo constant.
 
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Mtwo( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Mtwo<T>();
-    @endcode
+  @par Parameters
 
-    @par Requirements
-    - **T** models Value
-  **/
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+  @par Return Value
+  A value of type @c T that evaluates to `T(-2)`:
+
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/mtwo.hpp>
 #include <boost/simd/constant/simd/mtwo.hpp>

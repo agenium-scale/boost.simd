@@ -13,55 +13,39 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Invlog_10 Invlog_10 (function template)
 
-    enerates constant \f$1/\log(10)\f$.
+  enerates constant \f$1/\log(10)\f$.
 
-    @headerref{<boost/simd/constant/invlog_10.hpp>}
+  @headerref{<boost/simd/constant/invlog_10.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Invlog_10();
-        @endcode
+  1.  @code
+      template<typename T> auto Invlog_10();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Invlog_10( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Invlog_10( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Invlog_10 constant.
+  Generates a value of type @c T containing the Invlog_10 constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Invlog_10<T>();
-    @endcode
-    is similar to:
-    @code
-    r =  T(0.4342944819032518276511289189166050822943970058036666);
-    @endcode
+  @par Return Value
+  A value of type @c T that evaluates to `T(0.434294481903251827651128918916605082294397005803666)`.
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Invlog_10( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Invlog_10<T>();
-    @endcode
-
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models IEEEValue
+**/
 
 #include <boost/simd/constant/scalar/invlog_10.hpp>
 #include <boost/simd/constant/simd/invlog_10.hpp>

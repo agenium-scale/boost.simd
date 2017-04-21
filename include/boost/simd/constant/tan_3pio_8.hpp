@@ -13,55 +13,39 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Tan_3pio_8 Tan_3pio_8 (function template)
 
-    Generates \f$\tan3\frac\pi{8} = \sqrt2 + 1\f$.
+  Generates \f$\tan\frac{3\pi}{8} = \sqrt2 + 1\f$.
 
-    @headerref{<boost/simd/constant/tan_3pio_8.hpp>}
+  @headerref{<boost/simd/constant/tan_3pio_8.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Tan_3pio_8();
-        @endcode
+  1.  @code
+      template<typename T> auto Tan_3pio_8();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Tan_3pio_8( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Tan_3pio_8( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Tan_3pio_8 constant.
+  Generates a value of type @c T containing the Tan_3pio_8 constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Tan_3pio_8<T>();
-    @endcode
-    is similar to:
-    @code
-    T r = 1.0+sqrt(2.0);
-    @endcode
+  @par Return Value
+  A value of type @c T that evaluates to  `T(2.4142135623730950488016887242097)`
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Tan_3pio_8( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Tan_3pio_8<T>();
-    @endcode
-
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/tan_3pio_8.hpp>
 #include <boost/simd/constant/simd/tan_3pio_8.hpp>

@@ -22,12 +22,12 @@
   @par Description
 
   1.  @code
-      template<typename T> T Eight();
-      @endcode
+    template<typename T> T Eight();
+    @endcode
 
   2.  @code
-      template<typename T> T Eight( boost::simd::as_<T> const& target );
-      @endcode
+    template<typename T> T Eight( boost::simd::as_<T> const& target );
+    @endcode
 
   Generates a value of type @c T that evaluates to 8.
 

@@ -11,57 +11,40 @@
 #ifndef BOOST_SIMD_CONSTANT_LOGSQRT2PI_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_LOGSQRT2PI_HPP_INCLUDED
 
-
-
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Logsqrt2pi Logsqrt2pi (function template)
 
-    Generates value \f$\log\sqrt{2\pi}\f$
+  Generates constant \f$\log\sqrt{2\pi}\f$
 
-    @headerref{<boost/simd/constant/logsqrt2pi.hpp>}
+  @headerref{<boost/simd/constant/logsqrt2pi.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Logsqrt2pi();
-        @endcode
+  1.  @code
+      template<typename T> auto Logsqrt2pi();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Logsqrt2pi( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Logsqrt2pi( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Logsqrt2pi constant.
+  Generates a value of type @c T containing the Logsqrt2pi constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Logsqrt2pi<T>();
-    @endcode
-    is similar to:
-    @code
-    T r = log(sqrt(2*Pi<T>());
-    @endcode
+  @par Return Value
+  A value of type @c T that evaluates to `T(0.91893853320467274178032973640562)`
+  1.  A value of type @c T so that:
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Logsqrt2pi( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Logsqrt2pi<T>();
-    @endcode
-
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models IEEEValue
+**/
 
 #include <boost/simd/constant/scalar/logsqrt2pi.hpp>
 #include <boost/simd/constant/simd/logsqrt2pi.hpp>

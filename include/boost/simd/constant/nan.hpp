@@ -11,55 +11,40 @@
 #ifndef BOOST_SIMD_CONSTANT_NAN_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_NAN_HPP_INCLUDED
 
-
-
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Nan Nan (function template)
 
-    Generates  the Not a Number (Nan) constant..
+  Generates  a Not a Number (Nan) constant with all bits set to one.
 
-    @headerref{<boost/simd/constant/nan.hpp>}
+  @headerref{<boost/simd/constant/nan.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Nan();
-        @endcode
+  1.  @code
+      template<typename T> auto Nan();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Nan( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Nan( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Nan constant.
+  Generates a value of type @c T containing the Nan constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Nan<T>();
-    @endcode
-    return the Nan representation for this type, i.e QuietNan for IEEE reals and
-    0 for integers.
+  @par Return Value
+  A Nan representation for this type, i.e QuietNan (with all bits set to one) for IEEE reals and
+  0 for integers.
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Nan( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Nan<T>();
-    @endcode
-
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/nan.hpp>
 #include <boost/simd/constant/simd/nan.hpp>

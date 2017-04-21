@@ -13,52 +13,39 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Mseven Mseven (function template)
 
-    Generates -7
+  Generates constant @c -7
 
-    @headerref{<boost/simd/constant/mseven.hpp>}
+  @headerref{<boost/simd/constant/mseven.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Mseven();
-        @endcode
+  1.  @code
+      template<typename T> auto Mseven();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Mseven( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Mseven( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Mseven constant.
-
-
-    @par Parameters
-
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
-
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = T(-7);
-    @endcode
+  Generates a value of type @c T containing the Mseven constant.
 
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Mseven( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Mseven<T>();
-    @endcode
+  @par Parameters
 
-    @par Requirements
-    - **T** models Value
-  **/
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+  @par Return Value
+  A value of type @c T that evaluates to `T(-7)`:
+
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/mseven.hpp>
 #include <boost/simd/constant/simd/mseven.hpp>

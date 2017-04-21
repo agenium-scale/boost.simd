@@ -13,57 +13,44 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Mantissamask Mantissamask (function template)
 
-    Generates a mask used to compute the mantissa of a floating point value
+  Generates a mask used to compute the mantissa of a floating point value
 
-    @headerref{<boost/simd/constant/mantissamask.hpp>}
+  @headerref{<boost/simd/constant/mantissamask.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Mantissamask();
-        @endcode
+  1.  @code
+      template<typename T> auto Mantissamask();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Mantissamask( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Mantissamask( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Mantissamask constant.
+  Generates a value of type @c T containing the Mantissamask constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Mantissamask<T>();
-    @endcode
-    @code
-    if T is double
-      r =  -2.225073858507200889e-308;
-    else if T is float
-      r =  -1.1754942106924410755e-38;
-    @endcode
+  @par Return Value
+  A value of type @c T that evaluates to
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Mantissamask( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Mantissamask<T>();
-    @endcode
+  | Type                | double                        | float                      |
+  |--------------------:|:------------------------------|----------------------------|
+  | value               |  2.225073858507200889e-308    | -1.1754942106924410755e-38f|
 
-    @par Requirements
-    - **T** models Value
-  **/
+
+  @par Requirements
+  - **T** models IEEEValue
+**/
 
 #include <boost/simd/constant/scalar/mantissamask.hpp>
 #include <boost/simd/constant/simd/mantissamask.hpp>

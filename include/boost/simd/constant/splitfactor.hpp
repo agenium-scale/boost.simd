@@ -11,65 +11,46 @@
 #ifndef BOOST_SIMD_CONSTANT_SPLITFACTOR_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_SPLITFACTOR_HPP_INCLUDED
 
-
-
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Splitfactor Splitfactor (function template)
 
-    Generates  a constant used to split a floating number in two parts,
-    in floating point routines (such [two_add](@ref real-two_add) and
-    [two_prod](@ref real-two_prod) to get extra precision.
+  Generates  a constant used to split a floating number in two parts,
+  in floating point routines (such [two_add](@ref real-two_add) and
+  [two_prod](@ref real-two_prod) to get extra precision.
 
 
-    @headerref{<boost/simd/constant/splitfactor.hpp>}
+  @headerref{<boost/simd/constant/splitfactor.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Splitfactor();
-        @endcode
+  1.  @code
+      template<typename T> auto Splitfactor();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Splitfactor( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Splitfactor( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Splitfactor constant.
+  Generates a value of type @c T containing the Splitfactor constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Splitfactor<T>();
-    @endcode
-    is similar to:
-    @code
-    if T is integral
-      r = 0
-    else if T is double
-      r =  pow(2, 27);
-    else if T is float
-      r =  pow(2, 13);
-    @endcode
+  @par Return Value
+  A value of type @c as_integer_t<T> that evaluates to
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Splitfactor( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Splitfactor<T>();
-    @endcode
+  | Type                | double                        | float         |
+  |--------------------:|:------------------------------|---------------|
+  | value               |   \f$2^27\f$                  | \f$2^13\f$    |
 
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models IEEEValue
+**/
 
 #include <boost/simd/constant/scalar/splitfactor.hpp>
 #include <boost/simd/constant/simd/splitfactor.hpp>

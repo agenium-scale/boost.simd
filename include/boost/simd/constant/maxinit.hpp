@@ -13,56 +13,42 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Maxinit Maxinit (function template)
 
-    Generates the constant maxinit which is identical to minf for
-    arithmetic real types but that must be specialized for complex values ordering.
-    maxinit is the value to be returned when a maximum of the elements function
-    is used on an  empty container.
+  Generates the constant maxinit which is identical to minf for
+  arithmetic real types but that must be specialized for complex values ordering.
+  maxinit is the value to be returned when a maximum of the elements function
+  is used on an  empty container.
+
+  @headerref{<boost/simd/constant/maxinit.hpp>}
+
+  @par Description
+
+  1.  @code
+      template<typename T> auto Maxinit();
+      @endcode
+
+  2.  @code
+      template<typename T> auto Maxinit( boost::simd::as_<T> const& target );
+      @endcode
+
+  Generates a value of type @c T containing the Maxinit constant.
 
 
-    @headerref{<boost/simd/constant/maxinit.hpp>}
+  @par Parameters
 
-    @par Description
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    1.  @code
-        template<typename T> auto Maxinit();
-        @endcode
+  @par Return Value
+  A value of type @c T that evaluates to `Minf<T>()`.
 
-    2.  @code
-        template<typename T> auto Maxinit( boost::simd::as_<T> const& target );
-        @endcode
-
-    1. and 2.  return a value of type @c T containing the Maxinit constant.
-
-
-    @par Parameters
-
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
-
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Maxinit<T>();
-    @endcode
-
-
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Maxinit( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Maxinit<T>();
-    @endcode
-
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/maxinit.hpp>
 #include <boost/simd/constant/simd/maxinit.hpp>

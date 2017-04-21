@@ -22,8 +22,8 @@
   @par Description
 
   1.  @code
-      template<typename T, std::uintmax_t N> T Constant();
-      @endcode
+    template<typename T, std::uintmax_t N> T Constant();
+    @endcode
 
   Generates a constant that evaluate to a value of type @c T which bits pattern is defined by
   the Integral Constant @c N.

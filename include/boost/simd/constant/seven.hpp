@@ -11,54 +11,39 @@
 #ifndef BOOST_SIMD_CONSTANT_SEVEN_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_SEVEN_HPP_INCLUDED
 
-
-
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Seven Seven (function template)
 
-    Generates 7
+  Generates constant @c 7
 
-    @headerref{<boost/simd/constant/seven.hpp>}
+  @headerref{<boost/simd/constant/seven.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Seven();
-        @endcode
+  1.  @code
+      template<typename T> auto Seven();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Seven( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Seven( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Seven constant.
-
-
-    @par Parameters
-
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
-
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = T(7);
-    @endcode
+  Generates a value of type @c T containing the Seven constant.
 
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Seven( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Seven<T>();
-    @endcode
+  @par Parameters
 
-    @par Requirements
-    - **T** models Value
-  **/
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+  @par Return Value
+  A value of type @c T that evaluates to `T(7)`
+
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/seven.hpp>
 #include <boost/simd/constant/simd/seven.hpp>

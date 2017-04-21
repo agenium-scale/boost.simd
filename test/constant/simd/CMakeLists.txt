@@ -33,9 +33,7 @@ four.cpp
 fouropi.cpp
 fourpi.cpp
 fourthrooteps.cpp
-goldbar.cpp
 gold.cpp
-greatestnoninteger.cpp
 half.cpp
 halfeps.cpp
 hundred.cpp

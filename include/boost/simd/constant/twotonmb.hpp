@@ -15,19 +15,20 @@
   @ingroup group-constant
   @defgroup constant-Twotonmb Twotonmb (function template)
 
-  Generates a constant equals to \f$2^{Nbmantissabits}\f$.
+  Generates a constant equals to \f$2^{N}\f$,  where \f$N\f$
+  is the number of mantissa bits of the type.
 
   @headerref{<boost/simd/constant/twotonmb.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> T Twotonmb();
-      @endcode
+    template<typename T> T Twotonmb();
+    @endcode
 
   2.  @code
-      template<typename T> T Twotonmb( boost::simd::as_<T> const& target );
-      @endcode
+    template<typename T> T Twotonmb( boost::simd::as_<T> const& target );
+    @endcode
 
   Generates a constant that evaluates to \f$2^{Nbmantissabits<T>()}\f$.
 
@@ -38,7 +39,12 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to <tt>pow(T(2), Nbmantissabits<T>())</tt>.
+   A value of type @c T that evaluates to
+
+  | Type                | double                        | float         |
+  |--------------------:|:------------------------------|---------------|
+  | value               |   4503599627370496.0          |  8388608.0f   |
+
 
   @par Requirements
   - **T** models IEEEValue

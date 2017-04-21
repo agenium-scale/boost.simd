@@ -13,60 +13,43 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Oneotwoeps Oneotwoeps (function template)
 
-    Generates \f$1/(2\epsilon)\f$
+  Generates constant \f$1/(2\epsilon)\f$
 
-    @headerref{<boost/simd/constant/oneotwoeps.hpp>}
+  @headerref{<boost/simd/constant/oneotwoeps.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Oneotwoeps();
-        @endcode
+  1.  @code
+      template<typename T> auto Oneotwoeps();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Oneotwoeps( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Oneotwoeps( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Oneotwoeps constant.
+  Generates a value of type @c T containing the Oneotwoeps constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Oneotwoeps<T>();
-    @endcode
-    is similar to:
-    @code
-    if T is integral
-      r = T(0)
-    else if T is double
-      r =  pow(2.0, 52);
-    else if T is float
-      r =  pow(2.0f, 22);
-    @endcode
+  @par Return Value
+  A value of type @c T that evaluates to
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Oneotwoeps( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Oneotwoeps<T>();
-    @endcode
+  | Type                | double                                   | float                               | Integral  |
+  |--------------------:|:-----------------------------------------|-------------------------------------|-----------|
+  | value               |  \f$2^52\f$                              | \f$2^23 \f$                         |  0        |
 
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/oneotwoeps.hpp>
 #include <boost/simd/constant/simd/oneotwoeps.hpp>

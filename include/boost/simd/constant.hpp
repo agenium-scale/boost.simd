@@ -44,8 +44,6 @@ namespace boost { namespace simd
 #include <boost/simd/constant/eps.hpp>
 #include <boost/simd/constant/euler.hpp>
 #include <boost/simd/constant/exp_1.hpp>
-#include <boost/simd/constant/expnibig.hpp>
-#include <boost/simd/constant/expnibig.hpp>
 #include <boost/simd/constant/fact_10.hpp>
 #include <boost/simd/constant/fact_11.hpp>
 #include <boost/simd/constant/fact_12.hpp>
@@ -62,7 +60,6 @@ namespace boost { namespace simd
 #include <boost/simd/constant/fourpi.hpp>
 #include <boost/simd/constant/fourthrooteps.hpp>
 #include <boost/simd/constant/gold.hpp>
-#include <boost/simd/constant/greatestnoninteger.hpp>
 #include <boost/simd/constant/halfeps.hpp>
 #include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/inf.hpp>

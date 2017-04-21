@@ -13,52 +13,39 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Four Four (function template)
 
-    Generates the constant four.
+  Generates the constant @c 4.
 
-    @headerref{<boost/simd/constant/four.hpp>}
+  @headerref{<boost/simd/constant/four.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Four();
-        @endcode
+  1.  @code
+      template<typename T> auto Four();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Four( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Four( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Four constant.
-
-
-    @par Parameters
-
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
-
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Four<T>();
-    @endcode
+  Generates a value of type @c T containing the Four constant.
 
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Four( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Four<T>();
-    @endcode
+  @par Parameters
 
-    @par Requirements
-    - **T** models Value
-  **/
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+  @par Return Value
+  A value of type @c T that evaluates to <tt>T(4)</tt>.
+
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/four.hpp>
 #include <boost/simd/constant/simd/four.hpp>

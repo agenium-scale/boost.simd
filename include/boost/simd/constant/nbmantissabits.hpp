@@ -13,60 +13,44 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Nbmantissabits Nbmantissabits (function template)
 
-    Generates the number of mantissa bits of a floating point number.
+  Generates the number of mantissa bits of a floating point number.
 
-    @headerref{<boost/simd/constant/nbmantissabits.hpp>}
+  @headerref{<boost/simd/constant/nbmantissabits.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Nbmantissabits();
-        @endcode
+  1.  @code
+      template<typename T> auto Nbmantissabits();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Nbmantissabits( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Nbmantissabits( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Nbmantissabits constant.
+  Generates a value of type @c as_integer_t<T> containing the Nbmantissabits constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Nbmantissabits<T>();
-    @endcode
-    is similar to:
-    @code
-    if T is integral
-      r = sizeof(T)*8
-    else if T is double
-      r =  52;
-    else if is float
-      r =  23;
-    @endcode
+  @par Return Value
+  A value of type @c as_integer_t<T> that evaluates to
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Nbmantissabits( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Nbmantissabits<T>();
-    @endcode
+  | Type                | double                        | float         | Integral        |
+  |--------------------:|:------------------------------|---------------|-----------------|
+  | value               |   52                          |      23       | sizeof(T)*8     |
 
-    @par Requirements
-    - **T** models Value
-  **/
+
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/nbmantissabits.hpp>
 #include <boost/simd/constant/simd/nbmantissabits.hpp>

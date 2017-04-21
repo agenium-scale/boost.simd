@@ -11,54 +11,39 @@
 #ifndef BOOST_SIMD_CONSTANT_MSIX_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_MSIX_HPP_INCLUDED
 
-
-
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Msix Msix (function template)
 
-    Generates -6
+  Generates constant @c -6
 
-    @headerref{<boost/simd/constant/msix.hpp>}
+  @headerref{<boost/simd/constant/msix.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Msix();
-        @endcode
+  1.  @code
+      template<typename T> auto Msix();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Msix( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Msix( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Msix constant.
-
-
-    @par Parameters
-
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
-
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r =T(-6)
-    @endcode
+  Generates a value of type @c T containing the Msix constant.
 
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Msix( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Msix<T>();
-    @endcode
+  @par Parameters
 
-    @par Requirements
-    - **T** models Value
-  **/
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+  @par Return Value
+  A value of type @c T that evaluates to `T(-6)`:
+
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/msix.hpp>
 #include <boost/simd/constant/simd/msix.hpp>

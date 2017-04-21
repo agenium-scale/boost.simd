@@ -11,62 +11,43 @@
 #ifndef BOOST_SIMD_CONSTANT_NBEXPONENTBITS_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_NBEXPONENTBITS_HPP_INCLUDED
 
-
-
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Nbexponentbits Nbexponentbits (function template)
 
-    Generates the number of exponent bits of a floating point number,
+  Generates the number of exponent bits of a floating point type and 0 for integral types
 
-    @headerref{<boost/simd/constant/nbexponentbits.hpp>}
+  @headerref{<boost/simd/constant/nbexponentbits.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Nbexponentbits();
-        @endcode
+  1.  @code
+      template<typename T> auto Nbexponentbits();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Nbexponentbits( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Nbexponentbits( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Nbexponentbits constant.
+  Generates a value of type @c T containing the Nbexponentbits constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Nbexponentbits<T>();
-    @endcode
-    is similar to:
-    @code
-    if T is integral
-      r = 0
-    else if T is double
-      r =  11;
-    else if T is float
-      r =  8;
-    @endcode
+  @par Return Value
+  A value of type @c as_integer_t<T> that evaluates to
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Nbexponentbits( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Nbexponentbits<T>();
-    @endcode
+  | Type                | double                        | float         | Integral        |
+  |--------------------:|:------------------------------|---------------|-----------------|
+  | value               |   11                          |      8        | 0               |
 
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/nbexponentbits.hpp>
 #include <boost/simd/constant/simd/nbexponentbits.hpp>

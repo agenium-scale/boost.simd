@@ -11,54 +11,39 @@
 #ifndef BOOST_SIMD_CONSTANT_TWO_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_TWO_HPP_INCLUDED
 
-
-
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Two Two (function template)
 
-    Generates 2
+  Generates constant @c 2
 
-    @headerref{<boost/simd/constant/two.hpp>}
+  @headerref{<boost/simd/constant/two.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Two();
-        @endcode
+  1.  @code
+      template<typename T> auto Two();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Two( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Two( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Two constant.
-
-
-    @par Parameters
-
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
-
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = T(2);
-    @endcode
+  Generates a value of type @c T containing the Two constant.
 
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Two( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Two<T>();
-    @endcode
+  @par Parameters
 
-    @par Requirements
-    - **T** models Value
-  **/
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+  @par Return Value
+  A value of type @c T that evaluates to <tt>T(2)</tt>.
+
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/two.hpp>
 #include <boost/simd/constant/simd/two.hpp>

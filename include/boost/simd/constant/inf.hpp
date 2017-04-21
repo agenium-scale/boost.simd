@@ -13,52 +13,42 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Inf Inf (function template)
 
-    Generates the Inf IEEE value (\f$\infty\f$) for floating types and maximum representable value for integer types
+  Generates the Inf IEEE value (\f$\infty\f$) for floating types and maximum representable value for integer types
 
-    @headerref{<boost/simd/constant/inf.hpp>}
+  @headerref{<boost/simd/constant/inf.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Inf();
-        @endcode
+  1.  @code
+      template<typename T> auto Inf();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Inf( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Inf( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Inf constant.
+  Generates a value of type @c T containing the Inf constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Inf<T>();
-    @endcode
-    return IEEE Inf for floating types otherwise the maximum representable value for this type.
+  @par Return Value
+  A value of type @c T that evaluates to IEEE Inf for floating types
+  [as defined by the C++ standard](http://en.cppreference.com/w/cpp/types/numeric_limits/infinity) and
+  the maximum representable value for integral types
+  [as defined by the C++ standard](http://en.cppreference.com/w/cpp/types/numeric_limits/max).
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Inf( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Inf<T>();
-    @endcode
-
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/inf.hpp>
 #include <boost/simd/constant/simd/inf.hpp>

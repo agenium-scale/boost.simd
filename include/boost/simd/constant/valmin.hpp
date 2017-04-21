@@ -22,12 +22,12 @@
   @par Description
 
   1.  @code
-      template<typename T> auto Valmin();
-      @endcode
+    template<typename T> auto Valmin();
+    @endcode
 
   2.  @code
-      template<typename T> auto Valmin( boost::simd::as_<T> const& target );
-      @endcode
+    template<typename T> auto Valmin( boost::simd::as_<T> const& target );
+    @endcode
 
   Generates the minimum finite representable value of a given type
   [as defined by the C++ standard](http://en.cppreference.com/w/cpp/types/numeric_limits/min).

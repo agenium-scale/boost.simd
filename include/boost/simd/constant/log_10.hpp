@@ -13,55 +13,39 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Log_10 Log_10 (function template)
 
-    Generates constant Log_10 : \f$\log(10)\f$
+  Generates constant Log_10 : \f$\log(10)\f$
 
-    @headerref{<boost/simd/constant/log_10.hpp>}
+  @headerref{<boost/simd/constant/log_10.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Log_10();
-        @endcode
+  1.  @code
+      template<typename T> auto Log_10();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Log_10( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Log_10( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Log_10 constant.
+  Generates a value of type @c T containing the Log_10 constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Log_10<T>();
-    @endcode
-    is similar to:
-    @code
-      r =  T(2.302585092994045684017991454684364207601101488628773);
-    @endcode
+  @par Return Value
+  A value of type @c T that evaluates to  `T(2.302585092994045684017991454684364207601101488628773)`.
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Log_10( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Log_10<T>();
-    @endcode
-
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/log_10.hpp>
 #include <boost/simd/constant/simd/log_10.hpp>

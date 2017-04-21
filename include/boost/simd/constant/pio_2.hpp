@@ -11,57 +11,39 @@
 #ifndef BOOST_SIMD_CONSTANT_PIO_2_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_PIO_2_HPP_INCLUDED
 
-
-
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Pio_2 Pio_2 (function template)
 
-    Generates \f$\frac\pi{2}\f$.
+  Generates \f$\frac\pi{2}\f$.
 
-    @headerref{<boost/simd/constant/pio_2.hpp>}
+  @headerref{<boost/simd/constant/pio_2.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Pio_2();
-        @endcode
+  1.  @code
+      template<typename T> auto Pio_2();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Pio_2( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Pio_2( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Pio_2 constant.
+  Generates a value of type @c T containing the Pio_2 constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Pio_2<T>();
-    @endcode
-    is similar to:
-    @code
-    T r = T(2*atan(1));
-    @endcode
+  @par Return Value
+  A value of type @c T that evaluates to `T(1.5707963267948966192313216916398)`
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Pio_2( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Pio_2<T>();
-    @endcode
-
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/pio_2.hpp>
 #include <boost/simd/constant/simd/pio_2.hpp>

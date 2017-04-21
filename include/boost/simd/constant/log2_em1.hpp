@@ -13,52 +13,39 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Log2_em1 Log2_em1 (function template)
 
-    Generates constant Log2_em1 : \f$\log2(e)-1\f$
+  Generates constant Log2_em1 : \f$\log2(e)-1\f$
 
-    @headerref{<boost/simd/constant/log2_em1.hpp>}
+  @headerref{<boost/simd/constant/log2_em1.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Log2_em1();
-        @endcode
+  1.  @code
+      template<typename T> auto Log2_em1();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Log2_em1( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Log2_em1( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Log2_em1 constant.
-
-
-    @par Parameters
-
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
-
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Log2_em1<T>();
-    @endcode
+  Generates a value of type @c T containing the Log2_em1 constant.
 
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Log2_em1( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Log2_em1<T>();
-    @endcode
+  @par Parameters
 
-    @par Requirements
-    - **T** models Value
-  **/
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+  @par Return Value
+  A value of type @c T that evaluates to `T(0.44269504088896340735992468100189)`
+
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/log2_em1.hpp>
 #include <boost/simd/constant/simd/log2_em1.hpp>

@@ -11,54 +11,39 @@
 #ifndef BOOST_SIMD_CONSTANT_INVSQRTEPS_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_INVSQRTEPS_HPP_INCLUDED
 
-
-
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Invsqrteps Invsqrteps (function template)
 
-    Generates value \f$\1/sqrt(Eps<T>()\f$
+  Generates value \f$1/{\sqrt\epsilon\}f$
 
-    @headerref{<boost/simd/constant/invsqrteps.hpp>}
+  @headerref{<boost/simd/constant/invsqrteps.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Invsqrteps();
-        @endcode
+  1.  @code
+      template<typename T> auto Invsqrteps();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Invsqrteps( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Invsqrteps( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Invsqrteps constant.
-
-
-    @par Parameters
-
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
-
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Invsqrteps<T>();
-    @endcode
+  Generates a value of type @c T containing the Invsqrteps constant.
 
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Invsqrteps( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Invsqrteps<T>();
-    @endcode
+  @par Parameters
 
-    @par Requirements
-    - **T** models Value
-  **/
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+  @par Return Value
+  A value of type @c T that evaluates to `rec(sqrt(Eps<T>())`.
+
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/invsqrteps.hpp>
 #include <boost/simd/constant/simd/invsqrteps.hpp>

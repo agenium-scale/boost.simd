@@ -11,54 +11,39 @@
 #ifndef BOOST_SIMD_CONSTANT_ONE_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_ONE_HPP_INCLUDED
 
-
-
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-One One (function template)
 
-    Generates the constant one.
+  Generates  constant @c 1
 
-    @headerref{<boost/simd/constant/one.hpp>}
+  @headerref{<boost/simd/constant/one.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto One();
-        @endcode
+  1.  @code
+      template<typename T> auto One();
+      @endcode
 
-    2.  @code
-        template<typename T> auto One( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto One( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the One constant.
-
-
-    @par Parameters
-
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
-
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = One<T>();
-    @endcode
+  Generates a value of type @c T containing the One constant.
 
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = One( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = T(1);
-    @endcode
+  @par Parameters
 
-    @par Requirements
-    - **T** models Value
-  **/
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+  @par Return Value
+  A value of type @c T that evaluates to <tt>T(1)</tt>.
+
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/one.hpp>
 #include <boost/simd/constant/simd/one.hpp>

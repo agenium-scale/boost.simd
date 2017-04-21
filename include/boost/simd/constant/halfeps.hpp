@@ -13,60 +13,39 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Halfeps Halfeps (function template)
 
-    Generates the machine epsilon.
+  Generates the machine epsilon.
 
-    @headerref{<boost/simd/constant/halfeps.hpp>}
+  @headerref{<boost/simd/constant/halfeps.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Halfeps();
-        @endcode
+  1.  @code
+      template<typename T> auto Halfeps();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Halfeps( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Halfeps( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Halfeps constant.
+  Generates a value of type @c T containing the Halfeps constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Halfeps<T>();
-    @endcode
-    is similar to:
-    @code
-    if T is integral
-      r = T(1)
-    else if T is double
-      r =  pow(2, -54);
-    else if T is float
-      r =  pow(2.0f, -24);
-    @endcode
+  @par Return Value
+  A value of type @c T that evaluates to `Eps<T>()/2`.
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Halfeps( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Halfeps<T>();
-    @endcode
-
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/halfeps.hpp>
 #include <boost/simd/constant/simd/halfeps.hpp>

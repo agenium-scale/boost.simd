@@ -22,12 +22,12 @@
   @par Description
 
   1.  @code
-      template<typename T> T Deginrad();
-      @endcode
+    template<typename T> T Deginrad();
+    @endcode
 
   2.  @code
-      template<typename T> T Deginrad( boost::simd::as_<T> const& target );
-      @endcode
+    template<typename T> T Deginrad( boost::simd::as_<T> const& target );
+    @endcode
 
   Generates the constant \f$\frac{180}\pi\f$ usable to convert degrees to radians.
 

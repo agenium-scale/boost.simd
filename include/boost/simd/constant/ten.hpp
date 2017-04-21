@@ -11,54 +11,39 @@
 #ifndef BOOST_SIMD_CONSTANT_TEN_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_TEN_HPP_INCLUDED
 
-
-
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Ten Ten (function template)
 
-    Generates 10
+  Generates constant @c 10
 
-    @headerref{<boost/simd/constant/ten.hpp>}
+  @headerref{<boost/simd/constant/ten.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Ten();
-        @endcode
+  1.  @code
+      template<typename T> auto Ten();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Ten( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Ten( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Ten constant.
-
-
-    @par Parameters
-
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
-
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = T(10)
-    @endcode
+  Generates a value of type @c T containing the Ten constant.
 
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Ten( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Ten<T>();
-    @endcode
+  @par Parameters
 
-    @par Requirements
-    - **T** models Value
-  **/
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+  @par Return Value
+  A value of type @c T that evaluates to <tt>T(10)</tt>.
+
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/ten.hpp>
 #include <boost/simd/constant/simd/ten.hpp>

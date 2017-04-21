@@ -22,12 +22,12 @@
   @par Description
 
   1.  @code
-      template<typename T> auto Valmax();
-      @endcode
+    template<typename T> auto Valmax();
+    @endcode
 
   2.  @code
-      template<typename T> auto Valmax( boost::simd::as_<T> const& target );
-      @endcode
+    template<typename T> auto Valmax( boost::simd::as_<T> const& target );
+    @endcode
 
   Generates the maximum finite representable value of a given type
   [as defined by the C++ standard](http://en.cppreference.com/w/cpp/types/numeric_limits/max).

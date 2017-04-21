@@ -13,55 +13,39 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Oneosqrt5 Oneosqrt5 (function template)
 
-    Generates  \f$1/\sqrt5\f$
+  Generates  constant \f$1/\sqrt5\f$
 
-    @headerref{<boost/simd/constant/oneosqrt5.hpp>}
+  @headerref{<boost/simd/constant/oneosqrt5.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Oneosqrt5();
-        @endcode
+  1.  @code
+      template<typename T> auto Oneosqrt5();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Oneosqrt5( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Oneosqrt5( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Oneosqrt5 constant.
+  Generates a value of type @c T containing the Oneosqrt5 constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Oneosqrt5<T>();
-    @endcode
-    is similar to:
-    @code
-      r =  1/sqrt(T(5));
-    @endcode
+  @par Return Value
+  1.  A value of type @c T that evaluates to `T(0.44721359549995793928183473374626)`
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Oneosqrt5( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Oneosqrt5<T>();
-    @endcode
-
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/oneosqrt5.hpp>
 #include <boost/simd/constant/simd/oneosqrt5.hpp>

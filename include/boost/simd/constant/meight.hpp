@@ -11,54 +11,39 @@
 #ifndef BOOST_SIMD_CONSTANT_MEIGHT_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_MEIGHT_HPP_INCLUDED
 
-
-
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Meight Meight (function template)
 
-    Generates the constant -8
+  Generates the constant @c -8
 
-    @headerref{<boost/simd/constant/meight.hpp>}
+  @headerref{<boost/simd/constant/meight.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Meight();
-        @endcode
+  1.  @code
+      template<typename T> auto Meight();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Meight( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Meight( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Meight constant.
-
-
-    @par Parameters
-
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
-
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Meight<T>();
-    @endcode
+  Generates a value of type @c T containing the Meight constant.
 
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Meight( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Meight<T>();
-    @endcode
+  @par Parameters
 
-    @par Requirements
-    - **T** models Value
-  **/
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+  @par Return Value
+  A value of type @c that evaluates to <tt>T(-8)</tt>.
+
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/meight.hpp>
 #include <boost/simd/constant/simd/meight.hpp>

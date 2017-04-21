@@ -13,61 +13,41 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Eps Eps (function template)
 
    Generates a value of the chosen type equals to the difference between 1 and the next
-    representable value of the chosen type.
+  representable value of the chosen type.
 
-    @headerref{<boost/simd/constant/eps.hpp>}
+  @headerref{<boost/simd/constant/eps.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Eps();
-        @endcode
-
-    2.  @code
-        template<typename T> auto Eps( boost::simd::as_<T> const& target );
-        @endcode
-
-    1. and 2.  return a value of type @c T containing the Eps constant.
-
-
-    @par Parameters
-
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
-
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Eps<T>();
-    @endcode
-    is equivalent to:
-    - if @c T is an integral type:
-      @code
-      T r = 1;
-      @endcode
-    - otherwise:
-      @code
-      T r = std::numeric_limits<boost::dispatch::scalar_of_t<T>>::epsilon();
+  1.  @code
+      template<typename T> auto Eps();
       @endcode
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Eps( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Eps<T>();
-    @endcode
+  2.  @code
+      template<typename T> auto Eps( boost::simd::as_<T> const& target );
+      @endcode
 
-    @par Requirements
-    - **T** models Value
-  **/
+  Generates a value of type @c T containing the Eps constant.
+
+
+  @par Parameters
+
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+  @par Return Value
+  A value of type @c T that evaluates to  `std::numeric_limits<boost::dispatch::scalar_of_t<T>>::epsilon()` is @c T
+  is floating and 1 if @c T is integral.
+
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/eps.hpp>
 #include <boost/simd/constant/simd/eps.hpp>

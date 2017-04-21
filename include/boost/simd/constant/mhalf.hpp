@@ -11,54 +11,39 @@
 #ifndef BOOST_SIMD_CONSTANT_MHALF_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_MHALF_HPP_INCLUDED
 
-
-
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Mhalf Mhalf (function template)
 
-    Generates -0.5.
+  Generates constant @c -0.5.
 
-    @headerref{<boost/simd/constant/mhalf.hpp>}
+  @headerref{<boost/simd/constant/mhalf.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Mhalf();
-        @endcode
+  1.  @code
+      template<typename T> auto Mhalf();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Mhalf( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Mhalf( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Mhalf constant.
-
-
-    @par Parameters
-
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
-
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = T(0.5);
-    @endcode
+  Generates a value of type @c T containing the Mhalf constant.
 
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Mhalf( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Mhalf<T>();
-    @endcode
+  @par Parameters
 
-    @par Requirements
-    - **T** models Value
-  **/
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+  @par Return Value
+  A value of type @c that evaluates to <tt>T(-0.5)</tt>.
+
+  @par Requirements
+  - **T** models IEEEValue
+**/
 
 #include <boost/simd/constant/scalar/mhalf.hpp>
 #include <boost/simd/constant/simd/mhalf.hpp>

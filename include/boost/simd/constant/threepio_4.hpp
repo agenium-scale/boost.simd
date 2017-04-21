@@ -13,55 +13,55 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Threepio_4 Threepio_4 (function template)
 
-    Generates \f$3\pi/4\f$
+  Generates \f$3\pi/4\f$
 
-    @headerref{<boost/simd/constant/threepio_4.hpp>}
+  @headerref{<boost/simd/constant/threepio_4.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Threepio_4();
-        @endcode
+  1.  @code
+      template<typename T> auto Threepio_4();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Threepio_4( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Threepio_4( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Threepio_4 constant.
+  Generates a value of type @c T containing the Threepio_4 constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Threepio_4<T>();
-    @endcode
-    is similar to:
-    @code
-    T r = Three<T>()*Pi<T>()/Four<T>();
-    @endcode
+  @par Return Value
+  1.  A value of type @c T so that:
+  @code
+  T r = Threepio_4<T>();
+  @endcode
+  is similar to:
+  @code
+  T r = Three<T>()*Pi<T>()/Four<T>();
+  @endcode
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Threepio_4( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Threepio_4<T>();
-    @endcode
+  2.  A value of type @c T so that:
+  @code
+  T x, r = Threepio_4( boost::simd::as(x));
+  @endcode
+  is equivalent to:
+  @code
+  T r = Threepio_4<T>();
+  @endcode
 
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/threepio_4.hpp>
 #include <boost/simd/constant/simd/threepio_4.hpp>

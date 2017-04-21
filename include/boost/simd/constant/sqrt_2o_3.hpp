@@ -11,57 +11,39 @@
 #ifndef BOOST_SIMD_CONSTANT_SQRT_2O_3_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_SQRT_2O_3_HPP_INCLUDED
 
-
-
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Sqrt_2o_3 Sqrt_2o_3 (function template)
 
-    Generates \f$\frac{\sqrt2}3\f$
+  Generates \f$\frac{\sqrt2}3\f$
 
-    @headerref{<boost/simd/constant/sqrt_2o_3.hpp>}
+  @headerref{<boost/simd/constant/sqrt_2o_3.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Sqrt_2o_3();
-        @endcode
+  1.  @code
+      template<typename T> auto Sqrt_2o_3();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Sqrt_2o_3( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Sqrt_2o_3( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Sqrt_2o_3 constant.
+  Generates a value of type @c T containing the Sqrt_2o_3 constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Sqrt_2o_3<T>();
-    @endcode
-    is similar to:
-    @code
-    T r = T(sqrt(T(2)))/T(3);
-    @endcode
+  @par Return Value
+  A value of type @c T that evaluates to `T(0.47140452079103168293389624140323)`
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Sqrt_2o_3( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Sqrt_2o_3<T>();
-    @endcode
-
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models IEEEValue
+**/
 
 #include <boost/simd/constant/scalar/sqrt_2o_3.hpp>
 #include <boost/simd/constant/simd/sqrt_2o_3.hpp>

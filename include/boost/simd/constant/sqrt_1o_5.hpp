@@ -11,57 +11,39 @@
 #ifndef BOOST_SIMD_CONSTANT_SQRT_1O_5_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_SQRT_1O_5_HPP_INCLUDED
 
-
-
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Sqrt_1o_5 Sqrt_1o_5 (function template)
 
-    Generates  \f$ \sqrt{\frac15}\f$
+  Generates constant \f$ \sqrt{\frac15}\f$
 
-    @headerref{<boost/simd/constant/sqrt_1o_5.hpp>}
+  @headerref{<boost/simd/constant/sqrt_1o_5.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Sqrt_1o_5();
-        @endcode
+  1.  @code
+      template<typename T> auto Sqrt_1o_5();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Sqrt_1o_5( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Sqrt_1o_5( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Sqrt_1o_5 constant.
+  Generates a value of type @c T containing the Sqrt_1o_5 constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Sqrt_1o_5<T>();
-    @endcode
-    is similar to:
-    @code
-    T r = sqrt(T(1)/T(5));
-    @endcode
+  @par Return Value
+  A value of type @c T that evaluates to `T(0.44721359549995793928183473374626)`
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Sqrt_1o_5( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Sqrt_1o_5<T>();
-    @endcode
-
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/sqrt_1o_5.hpp>
 #include <boost/simd/constant/simd/sqrt_1o_5.hpp>

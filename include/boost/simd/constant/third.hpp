@@ -13,55 +13,39 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Third Third (function template)
 
-    Generates value 1/3
+  Generates constant @c \f$\frac13\f$
 
-    @headerref{<boost/simd/constant/third.hpp>}
+  @headerref{<boost/simd/constant/third.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Third();
-        @endcode
+  1.  @code
+      template<typename T> auto Third();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Third( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Third( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Third constant.
+  Generates a value of type @c T containing the Third constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Third<T>();
-    @endcode
-    is similar to:
-    @code
-    T r = T(1)/T(3);
-    @endcode
+  @par Return Value
+  A value of type @c T that evaluates to <tt>T(1)/T(3)</tt>.
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Third( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Third<T>();
-    @endcode
-
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/third.hpp>
 #include <boost/simd/constant/simd/third.hpp>

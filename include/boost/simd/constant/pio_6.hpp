@@ -13,55 +13,39 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Pio_6 Pio_6 (function template)
 
-    Generates \f$\frac\pi{6}\f$.
+  Generates \f$\frac\pi{6}\f$.
 
-    @headerref{<boost/simd/constant/pio_6.hpp>}
+  @headerref{<boost/simd/constant/pio_6.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Pio_6();
-        @endcode
+  1.  @code
+      template<typename T> auto Pio_6();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Pio_6( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Pio_6( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Pio_6 constant.
+  Generates a value of type @c T containing the Pio_6 constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Pio_6<T>();
-    @endcode
-    is similar to:
-    @code
-    T r = Pi<T>()/Six<T>();
-    @endcode
+  @par Return Value
+  A value of type @c T that evaluates to `T(0.52359877559829887307710723054658)`
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Pio_6( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Pio_6<T>();
-    @endcode
-
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/pio_6.hpp>
 #include <boost/simd/constant/simd/pio_6.hpp>

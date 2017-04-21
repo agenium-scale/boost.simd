@@ -13,55 +13,39 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Gold Gold (function template)
 
-    Generates the golden ratio that is \f$\phi = \frac{1+\sqrt5}{2}\f$
+  Generates the golden ratio that is \f$\phi = \frac{1+\sqrt5}{2}\f$
 
-    @headerref{<boost/simd/constant/gold.hpp>}
+  @headerref{<boost/simd/constant/gold.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Gold();
-        @endcode
+  1.  @code
+      template<typename T> auto Gold();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Gold( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Gold( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Gold constant.
+  Generates a value of type @c T containing the Gold constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Gold<T>();
-    @endcode
-    is similar for floating types to:
-    @code
-    T r = (1+sqrt(T(5)))/2;
-    @endcode
+  @par Return Value
+  A value of type @c T  that evaluates to <tt>T((1 + sqrt(5))/2)</tt>.
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Gold( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Gold<T>();
-    @endcode
-
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/gold.hpp>
 #include <boost/simd/constant/simd/gold.hpp>

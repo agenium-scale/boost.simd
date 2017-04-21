@@ -13,55 +13,55 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Invlog_2 Invlog_2 (function template)
 
-    Generates constant \f$1/\log(2)\f$.
+  Generates constant \f$1/\log(2)\f$.
 
-    @headerref{<boost/simd/constant/invlog_2.hpp>}
+  @headerref{<boost/simd/constant/invlog_2.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Invlog_2();
-        @endcode
+  1.  @code
+      template<typename T> auto Invlog_2();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Invlog_2( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Invlog_2( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Invlog_2 constant.
+  Generates a value of type @c T containing the Invlog_2 constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Invlog_2<T>();
-    @endcode
-    is similar to:
-    @code
-     r =  T(1.442695040888963407359924681001892137426645954152986);
-    @endcode
+  @par Return Value
+  1.  A value of type @c T so that:
+  @code
+  T r = Invlog_2<T>();
+  @endcode
+  is similar to:
+  @code
+   r =  T(1.442695040888963407359924681001892137426645954152986);
+  @endcode
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Invlog_2( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Invlog_2<T>();
-    @endcode
+  2.  A value of type @c T so that:
+  @code
+  T x, r = Invlog_2( boost::simd::as(x));
+  @endcode
+  is equivalent to:
+  @code
+  T r = Invlog_2<T>();
+  @endcode
 
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/invlog_2.hpp>
 #include <boost/simd/constant/simd/invlog_2.hpp>

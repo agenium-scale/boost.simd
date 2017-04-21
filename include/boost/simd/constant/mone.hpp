@@ -11,54 +11,39 @@
 #ifndef BOOST_SIMD_CONSTANT_MONE_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_MONE_HPP_INCLUDED
 
-
-
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Mone Mone (function template)
 
-    Generates -1
+  Generates constant @c -1
 
-    @headerref{<boost/simd/constant/mone.hpp>}
+  @headerref{<boost/simd/constant/mone.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Mone();
-        @endcode
+  1.  @code
+      template<typename T> auto Mone();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Mone( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Mone( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Mone constant.
-
-
-    @par Parameters
-
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
-
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = T(-1);
-    @endcode
+  Generates a value of type @c T containing the Mone constant.
 
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Mone( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Mone<T>();
-    @endcode
+  @par Parameters
 
-    @par Requirements
-    - **T** models Value
-  **/
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+  @par Return Value
+  1.  A value of type @c T that evaluates to `T(-1)`:
+
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/mone.hpp>
 #include <boost/simd/constant/simd/mone.hpp>

@@ -11,62 +11,43 @@
 #ifndef BOOST_SIMD_CONSTANT_SMALLESTPOSVAL_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_SMALLESTPOSVAL_HPP_INCLUDED
 
-
-
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Smallestposval Smallestposval (function template)
 
-    Generates the least non zero, non denormal, positive value.
+  Generates the least non zero, non denormal, positive value.
 
-    @headerref{<boost/simd/constant/smallestposval.hpp>}
+  @headerref{<boost/simd/constant/smallestposval.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Smallestposval();
-        @endcode
+  1.  @code
+      template<typename T> auto Smallestposval();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Smallestposval( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Smallestposval( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Smallestposval constant.
+  Generates a value of type @c T containing the Smallestposval constant.
 
 
-    @par Parameters
+  @par Parameters
 
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Smallestposval<T>();
-    @endcode
-    is similar to:
-    @code
-    if T is integral
-      r = 1
-    else if T is double
-      r =  2.225073858507201e-308;
-    else if T is float
-      r =  1.1754944e-38;
-    @endcode
+  @par Return Value
+  A value of type @c as_integer_t<T> that evaluates to
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Smallestposval( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Smallestposval<T>();
-    @endcode
+  | Type                | double                        | float         | Integral        |
+  |--------------------:|:------------------------------|---------------|-----------------|
+  | value               |   2.225073858507201e-308      | 1.1754944e-38 |  1              |
 
-    @par Requirements
-    - **T** models Value
-  **/
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/smallestposval.hpp>
 #include <boost/simd/constant/simd/smallestposval.hpp>

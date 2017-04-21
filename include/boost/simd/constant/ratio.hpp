@@ -13,52 +13,52 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Ratio Ratio (function template)
 
-    Generates a constant from a static rational number representation.
+  Generates a constant from a static rational number representation.
 
-    @headerref{<boost/simd/constant/ratio.hpp>}
+  @headerref{<boost/simd/constant/ratio.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Ratio();
-        @endcode
+  1.  @code
+      template<typename T> auto Ratio();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Ratio( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Ratio( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Ratio constant.
-
-
-    @par Parameters
-
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
-
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = Ratio<T>();
-    @endcode
+  Generates a value of type @c T containing the Ratio constant.
 
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Ratio( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Ratio<T>();
-    @endcode
+  @par Parameters
 
-    @par Requirements
-    - **T** models Value
-  **/
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+  @par Return Value
+  1.  A value of type @c T so that:
+  @code
+  T r = Ratio<T>();
+  @endcode
+
+
+  2.  A value of type @c T so that:
+  @code
+  T x, r = Ratio( boost::simd::as(x));
+  @endcode
+  is equivalent to:
+  @code
+  T r = Ratio<T>();
+  @endcode
+
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/ratio.hpp>
 #include <boost/simd/constant/simd/ratio.hpp>

@@ -13,52 +13,39 @@
 
 
 
-  /*!
+/*!
   @ingroup group-constant
   @defgroup constant-Mnine Mnine (function template)
 
-    Generates T(9).
+  Generates constant @c -9.
 
-    @headerref{<boost/simd/constant/mnine.hpp>}
+  @headerref{<boost/simd/constant/mnine.hpp>}
 
-    @par Description
+  @par Description
 
-    1.  @code
-        template<typename T> auto Mnine();
-        @endcode
+  1.  @code
+      template<typename T> auto Mnine();
+      @endcode
 
-    2.  @code
-        template<typename T> auto Mnine( boost::simd::as_<T> const& target );
-        @endcode
+  2.  @code
+      template<typename T> auto Mnine( boost::simd::as_<T> const& target );
+      @endcode
 
-    1. and 2.  return a value of type @c T containing the Mnine constant.
-
-
-    @par Parameters
-
-    | Name                | Description                                                         |
-    |--------------------:|:--------------------------------------------------------------------|
-    | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
-
-    @par Return Value
-    1.  A value of type @c T so that:
-    @code
-    T r = T(-9);
-    @endcode
+  Generates a value of type @c T containing the Mnine constant.
 
 
-    2.  A value of type @c T so that:
-    @code
-    T x, r = Mnine( boost::simd::as(x));
-    @endcode
-    is equivalent to:
-    @code
-    T r = Mnine<T>();
-    @endcode
+  @par Parameters
 
-    @par Requirements
-    - **T** models Value
-  **/
+  | Name                | Description                                                         |
+  |--------------------:|:--------------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+
+  @par Return Value
+  A value of type @c T that evaluates to `T(-9)`:
+
+  @par Requirements
+  - **T** models Value
+**/
 
 #include <boost/simd/constant/scalar/mnine.hpp>
 #include <boost/simd/constant/simd/mnine.hpp>
