@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Inv2pi Inv2pi (function template)
 
-   Generates constant \f$\frac1{2\pi}\f$.
+   Generates the constant\f$\frac1{2\pi}\f$.
 
   @headerref{<boost/simd/constant/inv2pi.hpp>}
 
@@ -42,7 +42,7 @@
   A value of type @c T that evaluates to `rec(Two<T>()*Pi<T>())`.
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/inv2pi.hpp>

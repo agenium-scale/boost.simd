@@ -17,7 +17,8 @@
   @ingroup group-constant
   @defgroup constant-Euler Euler (function template)
 
-  Generates a value of the chosen type approximating the Euler-Mascheroni constant: \f$\gamma = \lim_{n \rightarrow \infty } \left( 1+ \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + ... + \frac{1}{n} - \ln(n) \right)\f$.
+  Generates a value of the chosen type approximating the Euler-Mascheroni constant:
+  \f$\gamma = \lim_{n \rightarrow \infty } \left( 1+ \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + ... + \frac{1}{n} - \ln(n) \right)\f$.
 
   @headerref{<boost/simd/constant/euler.hpp>}
 
@@ -41,26 +42,10 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  1.  A value of type @c T so that:
-  @code
-  T r = Euler<T>();
-  @endcode
-  is similar to:
-  @code
-    r =  T(0.577215664901532860606512090082402431042159335939923598805767234884867726777664670936947063291746749);
-  @endcode
-
-  2.  A value of type @c T so that:
-  @code
-  T x, r = Euler( boost::simd::as(x));
-  @endcode
-  is equivalent to:
-  @code
-  T r = Euler<T>();
-  @endcode
+  A value of type @c T that evaluates to `T(0.57721566490153286060651209008240243104215933593992359)`
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/euler.hpp>

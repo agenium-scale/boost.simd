@@ -44,7 +44,7 @@
   A value of type @c T  that evaluates to <tt>T((1 + sqrt(5))/2)</tt>.
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/gold.hpp>

@@ -44,7 +44,7 @@
   A value of type @c T that evaluates to `T(0.70710678118654752440084436210485)`
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/sqrt_2o_2.hpp>

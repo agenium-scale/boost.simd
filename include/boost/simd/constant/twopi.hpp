@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Twopi Twopi (function template)
 
-  Generates constant \f$2\pi\f$
+  Generates the constant\f$2\pi\f$
 
   @headerref{<boost/simd/constant/twopi.hpp>}
 
@@ -42,7 +42,7 @@
   A value of type @c T that evaluates to <tt>Two<T>()*Pi<T>()</tt>.
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/twopi.hpp>

@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Two Two (function template)
 
-  Generates constant @c 2
+  Generates the constant@c 2
 
   @headerref{<boost/simd/constant/two.hpp>}
 

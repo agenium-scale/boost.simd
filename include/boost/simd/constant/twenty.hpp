@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Twenty Twenty (function template)
 
-  Generates constant @c 20
+  Generates the constant@c 20
 
   @headerref{<boost/simd/constant/twenty.hpp>}
 

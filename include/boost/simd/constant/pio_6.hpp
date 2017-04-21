@@ -44,7 +44,7 @@
   A value of type @c T that evaluates to `T(0.52359877559829887307710723054658)`
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/pio_6.hpp>

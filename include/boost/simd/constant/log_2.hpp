@@ -17,7 +17,7 @@
   @ingroup group-constant
   @defgroup constant-Log_2 Log_2 (function template)
 
-  Generates constant Log_2 : \f$\log(2)\f$.
+  Generates the constantLog_2 : \f$\log(2)\f$.
 
   @headerref{<boost/simd/constant/log_2.hpp>}
 

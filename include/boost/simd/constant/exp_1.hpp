@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Exp_1 Exp_1 (function template)
 
-  Generates constant e base of the atural logarithms.
+  Generates the constante base of the natural logarithms.
 
   @headerref{<boost/simd/constant/exp_1.hpp>}
 
@@ -39,23 +39,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  1.  A value of type @c T so that:
-  @code
-  T r = Exp_1<T>();
-  @endcode
-  is similar to:
-  @code
-  r =  T(2.71828182845904523536028747135266249775724709369995);
-  @endcode
-
-  2.  A value of type @c T so that:
-  @code
-  T x, r = Exp_1( boost::simd::as(x));
-  @endcode
-  is equivalent to:
-  @code
-  T r = Exp_1<T>();
-  @endcode
+  A value of type @c T  that evaluates to `T(2.71828182845904523536028747135266249775724709369995)`
 
   @par Requirements
   - **T** models Value

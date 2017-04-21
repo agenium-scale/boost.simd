@@ -17,7 +17,7 @@
   @ingroup group-constant
   @defgroup constant-Log2_em1 Log2_em1 (function template)
 
-  Generates constant Log2_em1 : \f$\log2(e)-1\f$
+  Generates the constantLog2_em1 : \f$\log2(e)-1\f$
 
   @headerref{<boost/simd/constant/log2_em1.hpp>}
 
@@ -44,7 +44,7 @@
   A value of type @c T that evaluates to `T(0.44269504088896340735992468100189)`
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/log2_em1.hpp>

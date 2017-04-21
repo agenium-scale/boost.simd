@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Mhalf Mhalf (function template)
 
-  Generates constant @c -0.5.
+  Generates the constant@c -0.5.
 
   @headerref{<boost/simd/constant/mhalf.hpp>}
 

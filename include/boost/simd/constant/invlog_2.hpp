@@ -17,7 +17,7 @@
   @ingroup group-constant
   @defgroup constant-Invlog_2 Invlog_2 (function template)
 
-  Generates constant \f$1/\log(2)\f$.
+  Generates the constant\f$1/\log(2)\f$.
 
   @headerref{<boost/simd/constant/invlog_2.hpp>}
 
@@ -41,26 +41,10 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  1.  A value of type @c T so that:
-  @code
-  T r = Invlog_2<T>();
-  @endcode
-  is similar to:
-  @code
-   r =  T(1.442695040888963407359924681001892137426645954152986);
-  @endcode
-
-  2.  A value of type @c T so that:
-  @code
-  T x, r = Invlog_2( boost::simd::as(x));
-  @endcode
-  is equivalent to:
-  @code
-  T r = Invlog_2<T>();
-  @endcode
+  A value of type @c T that evaluates to <tt>T(1.442695040888963407359924681001892137426645954152986)</tt>.
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/invlog_2.hpp>

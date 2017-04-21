@@ -42,7 +42,7 @@
   A value of type @c T that evaluates to `T(2.506628274631000502415765284811)`
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/sqrt_2pi.hpp>

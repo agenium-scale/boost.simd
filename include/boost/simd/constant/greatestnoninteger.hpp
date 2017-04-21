@@ -45,31 +45,14 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  1.  A value of type @c T so that:
-  @code
-  T r = Greatestnoninteger<T>();
-  @endcode
-  is similar to:
-  @code
-  if T is integral
-    r = 0
-  else if T is double
-    r = 4503599627370495.5
-  else if T is float
-    r = 8388607.5f
-  @endcode
+  A value of type @c as_integer_t<T> that evaluates to
 
-  2.  A value of type @c T so that:
-  @code
-  T x, r = Greatestnoninteger( boost::simd::as(x));
-  @endcode
-  is equivalent to:
-  @code
-  T r = Greatestnoninteger<T>();
-  @endcode
+  | Type                | double                        | float         |
+  |--------------------:|:------------------------------|---------------|
+  | value               |   4503599627370495.5          | 8388607.5f    |
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/greatestnoninteger.hpp>

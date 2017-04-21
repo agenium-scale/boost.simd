@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Oneosqrteps Oneosqrteps (function template)
 
-  Generates constant \f$1/\sqrt\epsilon\f$
+  Generates the constant\f$1/\sqrt\epsilon\f$
 
   @headerref{<boost/simd/constant/oneosqrteps.hpp>}
 

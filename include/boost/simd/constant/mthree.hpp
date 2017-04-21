@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Mthree Mthree (function template)
 
-  Generates constant @c -3
+  Generates the constant@c -3
 
   @headerref{<boost/simd/constant/mthree.hpp>}
 

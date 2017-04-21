@@ -44,7 +44,7 @@
   A value of type @c T that evaluates to `Eps<T>()/2`.
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/halfeps.hpp>

@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Mfive Mfive (function template)
 
-  Generates constant @c -5.
+  Generates the constant@c -5.
 
   @headerref{<boost/simd/constant/mfive.hpp>}
 

@@ -39,10 +39,10 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to <tt>0.0009765625</tt>.
+  A value of type @c T that evaluates to <tt>T(0.0009765625)</tt>.
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/twotom10.hpp>

@@ -38,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  1.  A value of type @c T that evaluates to <tt>Ratio<T, 180>()/Pi<T>()</tt>.
+  1.  A value of type @c T that evaluates to <tt>T(180/Pi<T>()</tt>.
 
   @par Requirements
   - **T** models IEEEValue

@@ -44,7 +44,7 @@
   A value of type @c T that evaluates to  `T(2.4142135623730950488016887242097)`
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/tan_3pio_8.hpp>

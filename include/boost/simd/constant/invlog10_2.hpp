@@ -17,7 +17,7 @@
   @ingroup group-constant
   @defgroup constant-Invlog10_2 Invlog10_2 (function template)
 
-  Generates constant \f$1/\log\!10(2)\f$.
+  Generates the constant\f$1/\log\!10(2)\f$.
 
   @headerref{<boost/simd/constant/invlog10_2.hpp>}
 
@@ -44,7 +44,7 @@
   A value of type @c T that evaluates to `T(3.32192809488736234787031942949)`.
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/invlog10_2.hpp>

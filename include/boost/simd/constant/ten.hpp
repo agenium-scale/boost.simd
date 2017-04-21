@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Ten Ten (function template)
 
-  Generates constant @c 10
+  Generates the constant@c 10
 
   @headerref{<boost/simd/constant/ten.hpp>}
 

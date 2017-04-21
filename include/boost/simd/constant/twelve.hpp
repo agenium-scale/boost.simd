@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Twelve Twelve (function template)
 
-  Generates constant @c 12
+  Generates the constant@c 12
 
   @headerref{<boost/simd/constant/twelve.hpp>}
 

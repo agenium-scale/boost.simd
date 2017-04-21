@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Logsqrt2pi Logsqrt2pi (function template)
 
-  Generates constant \f$\log\sqrt{2\pi}\f$
+  Generates the constant\f$\log\sqrt{2\pi}\f$
 
   @headerref{<boost/simd/constant/logsqrt2pi.hpp>}
 

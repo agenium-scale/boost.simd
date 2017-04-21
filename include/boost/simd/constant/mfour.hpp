@@ -17,7 +17,7 @@
   @ingroup group-constant
   @defgroup constant-Mfour Mfour (function template)
 
-  Generates constant @c -4.
+  Generates the constant@c -4.
 
   @headerref{<boost/simd/constant/mfour.hpp>}
 

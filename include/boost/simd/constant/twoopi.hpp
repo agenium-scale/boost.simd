@@ -42,7 +42,7 @@
   A value of type @c T that evaluates to <tt>Two<T>()/Pi<T>()</tt>.
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/twoopi.hpp>

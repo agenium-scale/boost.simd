@@ -17,7 +17,7 @@
   @ingroup group-constant
   @defgroup constant-Third Third (function template)
 
-  Generates constant @c \f$\frac13\f$
+  Generates the constant@c \f$\frac13\f$
 
   @headerref{<boost/simd/constant/third.hpp>}
 
@@ -44,7 +44,7 @@
   A value of type @c T that evaluates to <tt>T(1)/T(3)</tt>.
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/third.hpp>

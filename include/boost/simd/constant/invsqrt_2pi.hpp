@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Invsqrt_2pi Invsqrt_2pi (function template)
 
-  Generates constant  \f$\frac1{\sqrt{2\pi}}\f$.
+  Generates the constant \f$\frac1{\sqrt{2\pi}}\f$.
 
   @headerref{<boost/simd/constant/invsqrt_2pi.hpp>}
 

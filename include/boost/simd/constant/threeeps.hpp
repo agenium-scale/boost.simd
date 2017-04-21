@@ -47,7 +47,7 @@
   1.  A value of type @c T so that:
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/threeeps.hpp>

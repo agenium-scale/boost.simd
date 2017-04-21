@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Log_2olog_10 Log_2olog_10 (function template)
 
-  Generates constant Log_2olog_10 : \f$\frac{\log(2)}{\log(10)}\f$.
+  Generates the constantLog_2olog_10 : \f$\frac{\log(2)}{\log(10)}\f$.
 
   @headerref{<boost/simd/constant/log_2olog_10.hpp>}
 

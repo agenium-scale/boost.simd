@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Log2_e Log2_e (function template)
 
-  Generates constant Log2_e : \f$\log\!2 e\f$
+  Generates the constantLog2_e : \f$\log\!2 e\f$
 
 
   @headerref{<boost/simd/constant/log2_e.hpp>}

@@ -48,7 +48,7 @@
   | value               |   4.806217383937348e-06       | 4.921566601151848e-03f |
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/twotomnmbo_3.hpp>

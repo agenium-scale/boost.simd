@@ -17,7 +17,7 @@
   @ingroup group-constant
   @defgroup constant-Oneotwoeps Oneotwoeps (function template)
 
-  Generates constant \f$1/(2\epsilon)\f$
+  Generates the constant\f$1/(2\epsilon)\f$
 
   @headerref{<boost/simd/constant/oneotwoeps.hpp>}
 

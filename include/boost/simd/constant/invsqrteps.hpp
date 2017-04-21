@@ -42,7 +42,7 @@
   A value of type @c T that evaluates to `rec(sqrt(Eps<T>())`.
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/invsqrteps.hpp>

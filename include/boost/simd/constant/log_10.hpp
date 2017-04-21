@@ -17,7 +17,7 @@
   @ingroup group-constant
   @defgroup constant-Log_10 Log_10 (function template)
 
-  Generates constant Log_10 : \f$\log(10)\f$
+  Generates the constantLog_10 : \f$\log(10)\f$
 
   @headerref{<boost/simd/constant/log_10.hpp>}
 
@@ -44,7 +44,7 @@
   A value of type @c T that evaluates to  `T(2.302585092994045684017991454684364207601101488628773)`.
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/log_10.hpp>

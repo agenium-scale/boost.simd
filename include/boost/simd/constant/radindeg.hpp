@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Radindeg Radindeg (function template)
 
-  Generates  degree in radian multiplier, \f$\frac\pi{180}\f$.
+  Generates  degree in radian multiplier, \f$\frac{180}\pi\f$.
 
   @headerref{<boost/simd/constant/radindeg.hpp>}
 
@@ -39,10 +39,10 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T  that evaluates to ` Pi<T>()/T(180)`
+  A value of type @c T  that evaluates to ` T(180)/Pi<T>()`
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/radindeg.hpp>

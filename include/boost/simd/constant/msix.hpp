@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Msix Msix (function template)
 
-  Generates constant @c -6
+  Generates the constant@c -6
 
   @headerref{<boost/simd/constant/msix.hpp>}
 

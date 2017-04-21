@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Mlogeps2 Mlogeps2 (function template)
 
-  Generates constant \f$-\log\epsilon^2\f$
+  Generates the constant\f$-\log\epsilon^2\f$
 
   @headerref{<boost/simd/constant/mlogeps2.hpp>}
 

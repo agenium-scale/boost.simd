@@ -44,7 +44,7 @@
   A value of type @c T that evaluates to <tt>sqrt(sqrt(Eps<T>()))</tt>.
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/fourthrooteps.hpp>

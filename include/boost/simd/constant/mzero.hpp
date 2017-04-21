@@ -17,7 +17,7 @@
   @ingroup group-constant
   @defgroup constant-Mzero Mzero (function template)
 
-  Generates constant @c -0.
+  Generates the constant@c -0.
 
   @headerref{<boost/simd/constant/mzero.hpp>}
 

@@ -17,7 +17,7 @@
   @ingroup group-constant
   @defgroup constant-Mseven Mseven (function template)
 
-  Generates constant @c -7
+  Generates the constant@c -7
 
   @headerref{<boost/simd/constant/mseven.hpp>}
 

@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Thousand Thousand (function template)
 
-  Generates constant 1000.
+  Generates the constant1000.
 
   @headerref{<boost/simd/constant/thousand.hpp>}
 

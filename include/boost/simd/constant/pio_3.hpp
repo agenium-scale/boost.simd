@@ -42,7 +42,7 @@
   A value of type @c T that evaluates to `T(1.0471975511965977461542144610932)`
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/pio_3.hpp>

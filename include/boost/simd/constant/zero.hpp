@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Zero Zero (function template)
 
-  Generates constant @c 0.
+  Generates the constant@c 0.
 
   @headerref{<boost/simd/constant/zero.hpp>}
 

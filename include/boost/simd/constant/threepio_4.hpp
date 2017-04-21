@@ -11,8 +11,6 @@
 #ifndef BOOST_SIMD_CONSTANT_THREEPIO_4_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_THREEPIO_4_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Threepio_4 Threepio_4 (function template)
@@ -41,26 +39,10 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  1.  A value of type @c T so that:
-  @code
-  T r = Threepio_4<T>();
-  @endcode
-  is similar to:
-  @code
-  T r = Three<T>()*Pi<T>()/Four<T>();
-  @endcode
-
-  2.  A value of type @c T so that:
-  @code
-  T x, r = Threepio_4( boost::simd::as(x));
-  @endcode
-  is equivalent to:
-  @code
-  T r = Threepio_4<T>();
-  @endcode
+  A value of type @c T that evaluates to `T(2.3561944901923449288469825374596)`
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/threepio_4.hpp>

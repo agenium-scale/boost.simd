@@ -11,13 +11,11 @@
 #ifndef BOOST_SIMD_CONSTANT_HUNDRED_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_HUNDRED_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Hundred Hundred (function template)
 
-  Generates the constant hundred.
+  Generates the constant @c 100.
 
   @headerref{<boost/simd/constant/hundred.hpp>}
 
@@ -41,20 +39,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  1.  A value of type @c T so that:
-  @code
-  T r = Hundred<T>();
-  @endcode
-
-
-  2.  A value of type @c T so that:
-  @code
-  T x, r = Hundred( boost::simd::as(x));
-  @endcode
-  is equivalent to:
-  @code
-  T r = Hundred<T>();
-  @endcode
+  A value of type @c T that evaluates to <tt>T(100)</tt>.
 
   @par Requirements
   - **T** models Value

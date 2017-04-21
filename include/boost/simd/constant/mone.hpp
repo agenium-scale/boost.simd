@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Mone Mone (function template)
 
-  Generates constant @c -1
+  Generates the constant@c -1
 
   @headerref{<boost/simd/constant/mone.hpp>}
 

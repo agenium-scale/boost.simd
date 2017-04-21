@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Mlogtwo2nmb Mlogtwo2nmb (function template)
 
-  Generates constant Mlogtwo2nmb, opposite of thenatural logarithm of
+  Generates the constantMlogtwo2nmb, opposite of the natural logarithm of
   [Two2nmb](@ref Two2nmb-constant) constant
 
   @headerref{<boost/simd/constant/mlogtwo2nmb.hpp>}
@@ -47,7 +47,7 @@
   | value               |  -36.043653389117156089696070315825 | -15.942385152878742116596338793538f |
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/mlogtwo2nmb.hpp>

@@ -17,7 +17,7 @@
   @ingroup group-constant
   @defgroup constant-Six Six (function template)
 
-  Generates constant @c 6
+  Generates the constant@c 6
 
   @headerref{<boost/simd/constant/six.hpp>}
 

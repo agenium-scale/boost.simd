@@ -39,10 +39,10 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to <tt>2147483648</tt>.
+  A value of type @c T that evaluates to <tt>T(2147483648)</tt>.
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/twoto31.hpp>

@@ -17,7 +17,7 @@
   @ingroup group-constant
   @defgroup constant-Invexp_1 Invexp_1 (function template)
 
-  Generates constant 1/e.
+  Generates the constant1/e.
 
   @headerref{<boost/simd/constant/invexp_1.hpp>}
 

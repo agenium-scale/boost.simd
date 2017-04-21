@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Three Three (function template)
 
-  Generates constant @c 3
+  Generates the constant@c 3
 
   @headerref{<boost/simd/constant/three.hpp>}
 

@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Sqrt_1o_5 Sqrt_1o_5 (function template)
 
-  Generates constant \f$ \sqrt{\frac15}\f$
+  Generates the constant\f$ \sqrt{\frac15}\f$
 
   @headerref{<boost/simd/constant/sqrt_1o_5.hpp>}
 
@@ -42,7 +42,7 @@
   A value of type @c T that evaluates to `T(0.44721359549995793928183473374626)`
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/sqrt_1o_5.hpp>

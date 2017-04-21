@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Mlog10two2nmb Mlog10two2nmb (function template)
 
-  Generates constant Mlog10two2nmb, opposite of the base 10 logarithm of
+  Generates the constantMlog10two2nmb, opposite of the base 10 logarithm of
   [Two2nmb](@ref Two2nmb-constant) constant
 .
 

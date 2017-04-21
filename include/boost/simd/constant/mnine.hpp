@@ -17,7 +17,7 @@
   @ingroup group-constant
   @defgroup constant-Mnine Mnine (function template)
 
-  Generates constant @c -9.
+  Generates the constant@c -9.
 
   @headerref{<boost/simd/constant/mnine.hpp>}
 

@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Nine Nine (function template)
 
-  Generates constant @c 9
+  Generates the constant@c 9
 
   @headerref{<boost/simd/constant/nine.hpp>}
 
