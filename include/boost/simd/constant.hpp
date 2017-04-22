@@ -133,7 +133,7 @@ namespace boost { namespace simd
 #include <boost/simd/detail/constant/pio2_1t.hpp>
 #include <boost/simd/detail/constant/pio2_2.hpp>
 #include <boost/simd/detail/constant/pio2_2t.hpp>
-#include <boost/simd/constant/pio2_3.hpp>
+#include <boost/simd/detail/constant/pio2_3.hpp>
 #include <boost/simd/detail/constant/pio2_3t.hpp>
 #include <boost/simd/constant/pio_2.hpp>
 #include <boost/simd/detail/constant/pio_2lo.hpp>

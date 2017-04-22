@@ -82,7 +82,6 @@ oneosqrt5.cpp
 oneosqrteps.cpp
 oneotwoeps.cpp
 pi.cpp
-pio2_3.cpp
 pio_2.cpp
 pio_3.cpp
 pio_4.cpp
