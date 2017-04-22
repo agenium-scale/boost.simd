@@ -14,6 +14,7 @@ STF_CASE_TPL( "Check make behavior with all types", STF_ALL_TYPES )
 {
   namespace bs = boost::simd;
   using bs::make;
+  using bs::as_;
 
-  STF_EQUAL(make<T>(42), T(42));
+  STF_EQUAL(make(as_<T>{}, 42), T(42));
 }
