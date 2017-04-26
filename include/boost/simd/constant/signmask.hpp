@@ -15,23 +15,22 @@
   @ingroup group-constant
   @defgroup constant-Signmask Signmask (function template)
 
-  Generates a mask with the lone most significand bit set to one
-  (even if the type is unsigned).
+  Generates a constant able to mask the sign bit of any value.
 
   @headerref{<boost/simd/constant/signmask.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Signmask();
+      template<typename T> T Signmask();
       @endcode
 
   2.  @code
-      template<typename T> auto Signmask( boost::simd::as_<T> const& target );
+      template<typename T> T Signmask( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Signmask constant.
-
+  Generates a value of type @c T that evaluates to a value where the most significant bit is set
+  to 1 (includign for unsigned type).
 
   @par Parameters
 
@@ -40,7 +39,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to `bitwise_cast<T>(1 << sizeof(T)*8-1)`
+  A value of type @c T that evaluates to `bitwise_cast<T>(1 << sizeof(scalar_of_t<T>)*8-1)`
 
   @par Requirements
   - **T** models Value

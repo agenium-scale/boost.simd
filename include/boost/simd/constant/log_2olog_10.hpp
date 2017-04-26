@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Log_2olog_10 Log_2olog_10 (function template)
 
-  Generates the constantLog_2olog_10 : \f$\frac{\log(2)}{\log(10)}\f$.
+  Generates the constant \f$\frac{\log(2)}{\log(10)}\f$
 
   @headerref{<boost/simd/constant/log_2olog_10.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Log_2olog_10();
+      template<typename T> T Log_2olog_10();
       @endcode
 
   2.  @code
-      template<typename T> auto Log_2olog_10( boost::simd::as_<T> const& target );
+      template<typename T> T Log_2olog_10( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Log_2olog_10 constant.
-
+  Generates a value of type @c T that evaluates to \f$\frac{\log(2)}{\log(10)}\f$.
 
   @par Parameters
 

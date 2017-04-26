@@ -11,8 +11,6 @@
 #ifndef BOOST_SIMD_CONSTANT_FOUROPI_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_FOUROPI_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Fouropi Fouropi (function template)
@@ -24,15 +22,14 @@
   @par Description
 
   1.  @code
-      template<typename T> auto Fouropi();
+      template<typename T> T Fouropi();
       @endcode
 
   2.  @code
-      template<typename T> auto Fouropi( boost::simd::as_<T> const& target );
+      template<typename T> T Fouropi( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Fouropi constant.
-
+  Generates a value of type @c T that evaluates to \f$\frac4\pi\f$.
 
   @par Parameters
 
@@ -41,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to <tt>Four<T>()/Pi<T>()</tt>.
+  A value of type @c T that evaluates to `T(1.2732395447351626861510701069801)`.
 
   @par Requirements
   - **T** models IEEEValue

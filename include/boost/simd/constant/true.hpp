@@ -15,44 +15,30 @@
   @ingroup group-constant
   @defgroup constant-True True (function template)
 
-  Generates a value of the logical type associated to the chosen type equal to @c true
+  Generates a constant that evaluates to the boolean @c true
 
   @headerref{<boost/simd/constant/true.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto True();
+      template<typename T> T True();
       @endcode
 
   2.  @code
-      template<typename T> auto True( boost::simd::as_<T> const& target );
+      template<typename T> T True( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the True constant.
-
+  Generates a value of type @c T that evaluates to the boolean @c true
 
   @par Parameters
 
-  | Name                | Description                                                         |
-  |--------------------:|:--------------------------------------------------------------------|
-  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name                | Description                                                    |
+  |--------------------:|:---------------------------------------------------------------|
+  | **target**          | a [placeholder](@ref as) value encapsulating the constant type |
 
   @par Return Value
-  1.  A value of type @c T so that:
-  @code
-  T r = True<T>();
-  @endcode
-
-
-  2.  A value of type @c T so that:
-  @code
-  T x, r = True( boost::simd::as(x));
-  @endcode
-  is equivalent to:
-  @code
-  T r = True<T>();
-  @endcode
+  A value of type @c T that evaluates to @c T(true).
 
   @par Requirements
   - **T** models Value

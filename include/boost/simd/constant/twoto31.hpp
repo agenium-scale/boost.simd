@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Twoto31 Twoto31 (function template)
 
-  Generates  2 to the power 31 (\f$2^{31}\f$)
+  Generates the constant \f$2^{31}\f$
 
   @headerref{<boost/simd/constant/twoto31.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Twoto31();
+      template<typename T> T Twoto31();
       @endcode
 
   2.  @code
-      template<typename T> auto Twoto31( boost::simd::as_<T> const& target );
+      template<typename T> T Twoto31( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Twoto31 constant.
-
+  Generates a value of type @c T that evaluates to (\f$2^{31}\f$).
 
   @par Parameters
 

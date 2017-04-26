@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Ten Ten (function template)
 
-  Generates the constant@c 10
+  Generates the constant @c 10
 
   @headerref{<boost/simd/constant/ten.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Ten();
+      template<typename T> T Ten();
       @endcode
 
   2.  @code
-      template<typename T> auto Ten( boost::simd::as_<T> const& target );
+      template<typename T> T Ten( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Ten constant.
-
+  Generates a value of type @c T that evaluates to 10.
 
   @par Parameters
 
@@ -39,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to <tt>T(10)</tt>.
+  A value of type @c T that evaluates to `T(10)`.
 
   @par Requirements
   - **T** models Value

@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Tanpio_8 Tanpio_8 (function template)
 
-  Generates \f$\tan\frac\pi{8} = \sqrt2 - 1\f$
+  Generates the constant \f$\tan\frac\pi{8}\f$
 
   @headerref{<boost/simd/constant/tanpio_8.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Tanpio_8();
+      template<typename T> T Tanpio_8();
       @endcode
 
   2.  @code
-      template<typename T> auto Tanpio_8( boost::simd::as_<T> const& target );
+      template<typename T> T Tanpio_8( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Tanpio_8 constant.
-
+  Generates a value of type @c T that evaluates to \f$\tan\frac\pi{8}\f$, i.e \f$\sqrt2 - 1\f$.
 
   @par Parameters
 

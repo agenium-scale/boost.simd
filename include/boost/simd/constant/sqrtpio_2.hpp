@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Sqrtpio_2 Sqrtpio_2 (function template)
 
-  Generates \f$\frac{\sqrt\pi}{2}\f$
+  Generates the constant \f$\frac{\sqrt\pi}{2}\f$
 
   @headerref{<boost/simd/constant/sqrtpio_2.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Sqrtpio_2();
+      template<typename T> T Sqrtpio_2();
       @endcode
 
   2.  @code
-      template<typename T> auto Sqrtpio_2( boost::simd::as_<T> const& target );
+      template<typename T> T Sqrtpio_2( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Sqrtpio_2 constant.
-
+  Generates a value of type @c T that evaluates to \f$\frac{\sqrt\pi}{2}\f$
 
   @par Parameters
 

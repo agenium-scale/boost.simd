@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Invpi Invpi (function template)
 
-  Generates constant\f$\frac1\pi\f$.
+  Generates the constant \f$\frac1\pi\f$.
 
   @headerref{<boost/simd/constant/invpi.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Invpi();
+      template<typename T> T Invpi();
       @endcode
 
   2.  @code
-      template<typename T> auto Invpi( boost::simd::as_<T> const& target );
+      template<typename T> T Invpi( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Invpi constant.
-
+  Generates a value of type @c T that evaluates to \f$\frac1\pi\f$.
 
   @par Parameters
 

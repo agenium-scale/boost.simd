@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Invsqrt_2pi Invsqrt_2pi (function template)
 
-  Generates the constant \f$\frac1{\sqrt{2\pi}}\f$.
+  Generates the constant \f$\frac{1}{\sqrt{2\pi}}\f$
 
   @headerref{<boost/simd/constant/invsqrt_2pi.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Invsqrt_2pi();
+      template<typename T> T Invsqrt_2pi();
       @endcode
 
   2.  @code
-      template<typename T> auto Invsqrt_2pi( boost::simd::as_<T> const& target );
+      template<typename T> T Invsqrt_2pi( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Invsqrt_2pi constant.
-
+  Generates a value of type @c T that evaluates to \f$\frac{1}{\sqrt{2\pi}}\f$.
 
   @par Parameters
 

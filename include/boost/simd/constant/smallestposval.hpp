@@ -22,15 +22,15 @@
   @par Description
 
   1.  @code
-      template<typename T> auto Smallestposval();
+      template<typename T> T Smallestposval();
       @endcode
 
   2.  @code
-      template<typename T> auto Smallestposval( boost::simd::as_<T> const& target );
+      template<typename T> T Smallestposval( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Smallestposval constant.
-
+  Generates a value of type @c T that evaluates to the smallest positive, non-denormal value of
+  type @c T.
 
   @par Parameters
 
@@ -41,9 +41,9 @@
   @par Return Value
   A value of type @c as_integer_t<T> that evaluates to
 
-  | Type                | double                        | float         | Integral        |
-  |--------------------:|:------------------------------|---------------|-----------------|
-  | value               |   2.225073858507201e-308      | 1.1754944e-38 |  1              |
+  | Type            | double                        | float         | Integral        |
+  |:----------------|:------------------------------|---------------|-----------------|
+  | **Values**      |   2.225073858507201e-308      | 1.1754944e-38 |  1              |
 
   @par Requirements
   - **T** models Value

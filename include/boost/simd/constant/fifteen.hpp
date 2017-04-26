@@ -22,15 +22,14 @@
   @par Description
 
   1.  @code
-      template<typename T> auto Fifteen();
+      template<typename T> T Fifteen();
       @endcode
 
   2.  @code
-      template<typename T> auto Fifteen( boost::simd::as_<T> const& target );
+      template<typename T> T Fifteen( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Fifteen constant.
-
+  Generates a value of type @c T that evaluates to 15.
 
   @par Parameters
 
@@ -39,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to <tt>T(15)</tt>.
+  A value of type @c T that evaluates to `T(15)`.
 
   @par Requirements
   - **T** models Value

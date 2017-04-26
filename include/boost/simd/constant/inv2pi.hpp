@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Inv2pi Inv2pi (function template)
 
-   Generates the constant\f$\frac1{2\pi}\f$.
+   Generates the constant \f$\frac{1}{2\pi}\f$.
 
   @headerref{<boost/simd/constant/inv2pi.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Inv2pi();
+      template<typename T> T Inv2pi();
       @endcode
 
   2.  @code
-      template<typename T> auto Inv2pi( boost::simd::as_<T> const& target );
+      template<typename T> T Inv2pi( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Inv2pi constant.
-
+  Generates a value of type @c T that evaluates to \f$\frac{1}{2\pi}\f$.
 
   @par Parameters
 
@@ -39,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to `rec(Two<T>()*Pi<T>())`.
+  A value of type @c T that evaluates to `T(0.15915494309189533576888376337251)`.
 
   @par Requirements
   - **T** models IEEEValue

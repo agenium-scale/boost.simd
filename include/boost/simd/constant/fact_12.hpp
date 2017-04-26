@@ -11,28 +11,25 @@
 #ifndef BOOST_SIMD_CONSTANT_FACT_12_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_FACT_12_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Fact_12 Fact_12 (function template)
 
-  Generates @c 12! that is @c 479001600
+  Generates the @c 12! constant
 
   @headerref{<boost/simd/constant/fact_12.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Fact_12();
+      template<typename T> T Fact_12();
       @endcode
 
   2.  @code
-      template<typename T> auto Fact_12( boost::simd::as_<T> const& target );
+      template<typename T> T Fact_12( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Fact_12 constant.
-
+  Generates a value of type @c T that evaluates to 12!.
 
   @par Parameters
 
@@ -41,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to @c T 479001600).
+  A value of type @c T that evaluates to @c T(479001600).
 
   @par Requirements
   - **T** models Value

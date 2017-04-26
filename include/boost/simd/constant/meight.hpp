@@ -22,15 +22,14 @@
   @par Description
 
   1.  @code
-      template<typename T> auto Meight();
+      template<typename T> T Meight();
       @endcode
 
   2.  @code
-      template<typename T> auto Meight( boost::simd::as_<T> const& target );
+      template<typename T> T Meight( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Meight constant.
-
+  Generates a value of type @c T that evaluates to -8.
 
   @par Parameters
 
@@ -39,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c that evaluates to <tt>T(-8)</tt>.
+  A value of type @c that evaluates to `T(-8)`.
 
   @par Requirements
   - **T** models Value

@@ -11,28 +11,26 @@
 #ifndef BOOST_SIMD_CONSTANT_HALFEPS_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_HALFEPS_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Halfeps Halfeps (function template)
 
-  Generates the machine epsilon.
+  Generates the constant \f$\frac{1}{2}\epsilon\f$.
 
   @headerref{<boost/simd/constant/halfeps.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Halfeps();
+      template<typename T> T Halfeps();
       @endcode
 
   2.  @code
-      template<typename T> auto Halfeps( boost::simd::as_<T> const& target );
+      template<typename T> T Halfeps( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Halfeps constant.
-
+  Generates a value of type @c T that evaluates to half the value of the
+  [machine epsilon](https://en.wikipedia.org/wiki/Machine_epsilon).
 
   @par Parameters
 

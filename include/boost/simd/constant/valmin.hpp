@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Valmin Valmin (function template)
 
-  Generates the minimum finite representable value of a given type.
+  Generates the minimum signed finite representable value of a given type.
 
   @headerref{<boost/simd/constant/valmin.hpp>}
 
   @par Description
 
   1.  @code
-    template<typename T> auto Valmin();
-    @endcode
+      template<typename T> T Valmin();
+      @endcode
 
   2.  @code
-    template<typename T> auto Valmin( boost::simd::as_<T> const& target );
-    @endcode
+      template<typename T> T Valmin( boost::simd::as_<T> const& target );
+      @endcode
 
-  Generates the minimum finite representable value of a given type
-  [as defined by the C++ standard](http://en.cppreference.com/w/cpp/types/numeric_limits/min).
+  Generates the minimum signed finite representable value of a given type.
 
   @par Parameters
 
@@ -39,7 +38,10 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to the minimum finite representable value for this type.
+  A value of type @c T that evaluates to:
+
+  - `T(std::numeric_limits<scalar_of_t<T>>::min())` if @c T models IntegerValue
+  - `T(-std::numeric_limits<scalar_of_t<T>>::max())` if @c T models IEEEValue
 
   @par Requirements
   - **T** models Value

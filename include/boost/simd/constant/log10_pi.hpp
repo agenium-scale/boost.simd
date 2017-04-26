@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Log10_pi Log10_pi (function template)
 
-  Generates base ten logarithm of pi : \f$\log\!10(\pi)\f$
+  Generates the constant \f$\log_{10}(\pi)\f$
 
   @headerref{<boost/simd/constant/log10_pi.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Log10_pi();
+      template<typename T> T Log10_pi();
       @endcode
 
   2.  @code
-      template<typename T> auto Log10_pi( boost::simd::as_<T> const& target );
+      template<typename T> T Log10_pi( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Log10_pi constant.
-
+  Generates a value of type @c T that evaluates to \f$\log_{10}(\pi)\f$.
 
   @par Parameters
 

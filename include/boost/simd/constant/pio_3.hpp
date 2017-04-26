@@ -15,21 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Pio_3 Pio_3 (function template)
 
-  Generates \f$\frac\pi{3}\f$.
+  Generates the constant \f$\frac\pi{3}\f$.
 
   @headerref{<boost/simd/constant/pio_3.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Pio_3();
+      template<typename T> T Pio_3();
       @endcode
 
   2.  @code
-      template<typename T> auto Pio_3( boost::simd::as_<T> const& target );
+      template<typename T> T Pio_3( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Pio_3 constant.
+  Generates a value of type @c T  that evaluates to \f$\frac\pi{3}\f$.
 
 
   @par Parameters

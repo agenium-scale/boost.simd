@@ -15,23 +15,22 @@
   @ingroup group-constant
   @defgroup constant-Sqrtsmallestposval Sqrtsmallestposval (function template)
 
-  Generates  Generate the square root of the least non zero positive non denormal
-  value of the chosen type.
+  Generates the square root of the least non-zero, positive, non-denormal value.
 
   @headerref{<boost/simd/constant/sqrtsmallestposval.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Sqrtsmallestposval();
+      template<typename T> T Sqrtsmallestposval();
       @endcode
 
   2.  @code
-      template<typename T> auto Sqrtsmallestposval( boost::simd::as_<T> const& target );
+      template<typename T> T Sqrtsmallestposval( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Sqrtsmallestposval constant.
-
+  Generates a value of type @c T that evaluates to the square root of the least non-zero,
+  positive, non-denormal value of type @c T.
 
   @par Parameters
 
@@ -40,12 +39,11 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c as_integer_t<T> that evaluates to
+  A value of type @c T that evaluates to:
 
-  | Type                | double                        | float          | Integral        |
-  |--------------------:|:------------------------------|----------------|-----------------|
-  | value               |   1.491668146240041e-154      | 1.0842022e-19f |  1              |
-  1.  A value of type @c T so that:
+  | Type         | double                        | float          | Integral        |
+  |:-------------|:------------------------------|----------------|-----------------|
+  | **Values**   |   1.491668146240041e-154      | 1.0842022e-19f |  1              |
 
   @par Requirements
   - **T** models Value

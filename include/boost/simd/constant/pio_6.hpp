@@ -11,28 +11,25 @@
 #ifndef BOOST_SIMD_CONSTANT_PIO_6_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_PIO_6_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Pio_6 Pio_6 (function template)
 
-  Generates \f$\frac\pi{6}\f$.
+  Generates the constant \f$\frac\pi{6}\f$.
 
   @headerref{<boost/simd/constant/pio_6.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Pio_6();
+      template<typename T> T Pio_6();
       @endcode
 
   2.  @code
-      template<typename T> auto Pio_6( boost::simd::as_<T> const& target );
+      template<typename T> T Pio_6( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Pio_6 constant.
-
+  Generates a value of type @c T that evaluates to \f$\frac\pi{6}\f$.
 
   @par Parameters
 

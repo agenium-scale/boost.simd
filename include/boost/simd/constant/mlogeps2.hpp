@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Mlogeps2 Mlogeps2 (function template)
 
-  Generates the constant\f$-\log\epsilon^2\f$
+  Generates the constant \f$-\log\epsilon^2\f$
 
   @headerref{<boost/simd/constant/mlogeps2.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Mlogeps2();
+      template<typename T> T Mlogeps2();
       @endcode
 
   2.  @code
-      template<typename T> auto Mlogeps2( boost::simd::as_<T> const& target );
+      template<typename T> T Mlogeps2( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Mlogeps2 constant.
-
+  Generates a value of type @c T that evalujates to \f$-\log\epsilon^2\f$.
 
   @par Parameters
 
@@ -42,7 +41,7 @@
   A value of type @c T that evaluates to `-log(sqr(Eps<T>()))`.
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/mlogeps2.hpp>

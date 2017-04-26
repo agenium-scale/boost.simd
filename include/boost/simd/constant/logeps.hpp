@@ -11,28 +11,25 @@
 #ifndef BOOST_SIMD_CONSTANT_LOGEPS_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_LOGEPS_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Logeps Logeps (function template)
 
-  Generates the natural logarithm of the [Eps](@ref constant-Eps) constant.
+  Generates the constant \f$log(\epsilon)\f$
 
   @headerref{<boost/simd/constant/logeps.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Logeps();
+      template<typename T> T Logeps();
       @endcode
 
   2.  @code
-      template<typename T> auto Logeps( boost::simd::as_<T> const& target );
+      template<typename T> T Logeps( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Logeps constant.
-
+  Generates a value of type @c T that evaluates to \f$log(\epsilon)\f$.
 
   @par Parameters
 

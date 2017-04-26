@@ -15,19 +15,19 @@
   @ingroup group-constant
   @defgroup constant-Bitincrement Bitincrement (function template)
 
-  Generates he minimal increment constant for a given type.
+  Generates the minimal increment constant for a given type.
 
   @headerref{<boost/simd/constant/bitincrement.hpp>}
 
   @par Description
 
   1.  @code
-    template<typename T> T Bitincrement();
-    @endcode
+      template<typename T> T Bitincrement();
+      @endcode
 
   2.  @code
-    template<typename T> T Bitincrement( boost::simd::as_<T> const& target );
-    @endcode
+      template<typename T> T Bitincrement( boost::simd::as_<T> const& target );
+      @endcode
 
   Generates a value of type @c T that evaluates to the minimal increment value for @c T.
 
@@ -40,8 +40,8 @@
   @par Return Value
   A value of type @c T that is defined as :
 
-  - the constant <tt>T(1)</tt> if @c T models IntegerValue
-  - the constant <tt>next(T(0))</tt> if @c T models IEEEValue
+  - the constant `T(1)` if @c T models IntegerValue
+  - the constant `next(T(0))` if @c T models IEEEValue
 
   @par Requirements
   - **T** models Value

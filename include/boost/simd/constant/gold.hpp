@@ -11,28 +11,26 @@
 #ifndef BOOST_SIMD_CONSTANT_GOLD_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_GOLD_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Gold Gold (function template)
 
-  Generates the golden ratio that is \f$\phi = \frac{1+\sqrt5}{2}\f$
+  Generates the Golden Ratio \f$\phi
 
   @headerref{<boost/simd/constant/gold.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Gold();
+      template<typename T> T Gold();
       @endcode
 
   2.  @code
-      template<typename T> auto Gold( boost::simd::as_<T> const& target );
+      template<typename T> T Gold( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Gold constant.
-
+  Generates a constant that evaluate to the [Golden Ratio](http://mathworld.wolfram.com/GoldenRatio.html)
+  defined as \f$\frac{1}{2}(1 + \sqrt{5})\f$.
 
   @par Parameters
 
@@ -41,7 +39,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T  that evaluates to <tt>T((1 + sqrt(5))/2)</tt>.
+  A value of type @c T that evaluates to `T(1.61803398874989484820458683436563811772)`.
 
   @par Requirements
   - **T** models IEEEValue

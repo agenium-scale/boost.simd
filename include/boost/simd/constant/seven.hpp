@@ -15,21 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Seven Seven (function template)
 
-  Generates the constant@c 7
+  Generates the constant @c 7
 
   @headerref{<boost/simd/constant/seven.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Seven();
+      template<typename T> T Seven();
       @endcode
 
   2.  @code
-      template<typename T> auto Seven( boost::simd::as_<T> const& target );
+      template<typename T> T Seven( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Seven constant.
+  Generates a value of type @c T that evaluates to 7.
 
 
   @par Parameters

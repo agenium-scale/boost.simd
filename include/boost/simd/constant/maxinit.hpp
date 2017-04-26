@@ -11,8 +11,6 @@
 #ifndef BOOST_SIMD_CONSTANT_MAXINIT_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_MAXINIT_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Maxinit Maxinit (function template)
@@ -27,15 +25,14 @@
   @par Description
 
   1.  @code
-      template<typename T> auto Maxinit();
+      template<typename T> T Maxinit();
       @endcode
 
   2.  @code
-      template<typename T> auto Maxinit( boost::simd::as_<T> const& target );
+      template<typename T> T Maxinit( boost::simd::as_<T> const& target );
       @endcode
 
   Generates a value of type @c T containing the Maxinit constant.
-
 
   @par Parameters
 

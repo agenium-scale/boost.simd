@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Thousand Thousand (function template)
 
-  Generates the constant1000.
+  Generates the constant @c 1000.
 
   @headerref{<boost/simd/constant/thousand.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Thousand();
+      template<typename T> T Thousand();
       @endcode
 
   2.  @code
-      template<typename T> auto Thousand( boost::simd::as_<T> const& target );
+      template<typename T> T Thousand( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Thousand constant.
-
+  Generates a value of type @c T that evaluates to 1000.
 
   @par Parameters
 
@@ -39,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to <tt>T(1000)</tt>.
+  A value of type @c T that evaluates to `T(1000)`.
 
   @par Requirements
   - **T** models Value

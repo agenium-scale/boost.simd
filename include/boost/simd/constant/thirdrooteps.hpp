@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Thirdrooteps Thirdrooteps (function template)
 
-  Generates the cubic root of [Eps](@ref constant-Eps).
+  Generates the constant \f$\sqrt[3]{\epsilon}\f$
 
   @headerref{<boost/simd/constant/thirdrooteps.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Thirdrooteps();
+      template<typename T> T Thirdrooteps();
       @endcode
 
   2.  @code
-      template<typename T> auto Thirdrooteps( boost::simd::as_<T> const& target );
+      template<typename T> T Thirdrooteps( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Thirdrooteps constant.
-
+  Generates a value of type @c T that evaluates to \f$\sqrt[3]{\epsilon}\f$.
 
   @par Parameters
 
@@ -39,11 +38,11 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to
+  A value of type @c T that evaluates to:
 
-  | Type                | double                              | float             |    Integral     |
-  |--------------------:|:------------------------------------|-------------------|-----------------|
-  | value               |   6.055454452393343e-06             |  4.9215667e-03f   |   1             |
+  | Type       | double                     | float             |    Integral     |
+  |:-----------|:---------------------------|-------------------|-----------------|
+  | **Values** |   6.055454452393343e-06    |  4.9215667e-03f   |   1             |
 
   @par Requirements
   - **T** models Value

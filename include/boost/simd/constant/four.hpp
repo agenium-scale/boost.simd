@@ -11,8 +11,6 @@
 #ifndef BOOST_SIMD_CONSTANT_FOUR_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_FOUR_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Four Four (function template)
@@ -24,15 +22,14 @@
   @par Description
 
   1.  @code
-      template<typename T> auto Four();
+      template<typename T> T Four();
       @endcode
 
   2.  @code
-      template<typename T> auto Four( boost::simd::as_<T> const& target );
+      template<typename T> T Four( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Four constant.
-
+  Generates a value of type @c T  that evaluates to 4.
 
   @par Parameters
 
@@ -41,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to <tt>T(4)</tt>.
+  A value of type @c T that evaluates to `T(4)`.
 
   @par Requirements
   - **T** models Value

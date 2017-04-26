@@ -11,28 +11,25 @@
 #ifndef BOOST_SIMD_CONSTANT_FACT_8_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_FACT_8_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Fact_8 Fact_8 (function template)
 
-  Generates @c 8! that is @c 40320
+  Generates the @c 8! constant
 
   @headerref{<boost/simd/constant/fact_8.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Fact_8();
+      template<typename T> T Fact_8();
       @endcode
 
   2.  @code
-      template<typename T> auto Fact_8( boost::simd::as_<T> const& target );
+      template<typename T> T Fact_8( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Fact_8 constant.
-
+  Generates a value of type @c T that evaluates to 8!.
 
   @par Parameters
 
@@ -41,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T   that evaluates to <tt>T(40320)</tt>.
+  A value of type @c T that evaluates to @c T(40320).
 
   @par Requirements
   - **T** models Value

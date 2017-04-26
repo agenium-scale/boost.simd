@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Nine Nine (function template)
 
-  Generates the constant@c 9
+  Generates the constant @c 9
 
   @headerref{<boost/simd/constant/nine.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Nine();
+      template<typename T> T Nine();
       @endcode
 
   2.  @code
-      template<typename T> auto Nine( boost::simd::as_<T> const& target );
+      template<typename T> T Nine( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Nine constant.
-
+  Generates a value of type @c T that evaluates to 9.
 
   @par Parameters
 
@@ -39,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to <tt>T(9)</tt>.
+  A value of type @c T that evaluates to `T(9)`.
 
   @par Requirements
   - **T** models Value

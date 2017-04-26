@@ -11,29 +11,26 @@
 #ifndef BOOST_SIMD_CONSTANT_EPS_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_EPS_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Eps Eps (function template)
 
-   Generates a value of the chosen type equals to the difference between 1 and the next
-  representable value of the chosen type.
+  Generates a constant equals to the [machine epsilon](https://en.wikipedia.org/wiki/Machine_epsilon).
 
   @headerref{<boost/simd/constant/eps.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Eps();
+      template<typename T> T Eps();
       @endcode
 
   2.  @code
-      template<typename T> auto Eps( boost::simd::as_<T> const& target );
+      template<typename T> T Eps( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Eps constant.
-
+  Generates a value of type @c T equals to the difference between 1 and the next representable
+  value of type @c T.
 
   @par Parameters
 
@@ -42,8 +39,11 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to  `std::numeric_limits<boost::dispatch::scalar_of_t<T>>::epsilon()` is @c T
-  is floating and 1 if @c T is integral.
+  A value of type @c T that evaluates to:
+
+  | Type       | `double`       | `float`       | Integer |
+  |:-----------|:---------------|---------------|---------|
+  | **Values** | \f$2^{-52}\f$  | \f$2^{-23}\f$ |    1    |
 
   @par Requirements
   - **T** models Value

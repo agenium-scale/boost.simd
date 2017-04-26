@@ -15,21 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Sqrt_2pi Sqrt_2pi (function template)
 
-  Generates  \f$\sqrt{2\pi}\f$.
+  Generates the constant \f$\sqrt{2\pi}\f$
 
   @headerref{<boost/simd/constant/sqrt_2pi.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Sqrt_2pi();
+      template<typename T> T Sqrt_2pi();
       @endcode
 
   2.  @code
-      template<typename T> auto Sqrt_2pi( boost::simd::as_<T> const& target );
+      template<typename T> T Sqrt_2pi( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Sqrt_2pi constant.
+  Generates a value of type @c T that evaluates to \f$\sqrt{2\pi}\f$.
 
 
   @par Parameters

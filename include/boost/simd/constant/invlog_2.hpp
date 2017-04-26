@@ -11,28 +11,25 @@
 #ifndef BOOST_SIMD_CONSTANT_INVLOG_2_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_INVLOG_2_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Invlog_2 Invlog_2 (function template)
 
-  Generates the constant\f$1/\log(2)\f$.
+  Generates the constant \f$\frac{1}{\log(2)}\f$
 
   @headerref{<boost/simd/constant/invlog_2.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Invlog_2();
+      template<typename T> T Invlog_2();
       @endcode
 
   2.  @code
-      template<typename T> auto Invlog_2( boost::simd::as_<T> const& target );
+      template<typename T> T Invlog_2( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Invlog_2 constant.
-
+  Generates a value of type @c T that evaluates to \f$\frac{1}{\log(2)}\f$.
 
   @par Parameters
 
@@ -41,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to <tt>T(1.442695040888963407359924681001892137426645954152986)</tt>.
+  A value of type @c T that evaluates to `T(1.442695040888963407359924681001892137426645954152986)`.
 
   @par Requirements
   - **T** models IEEEValue

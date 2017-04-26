@@ -11,28 +11,25 @@
 #ifndef BOOST_SIMD_CONSTANT_FACT_5_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_FACT_5_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Fact_5 Fact_5 (function template)
 
-  Generates  @c 5!, that is @c 120
+  Generates the @c 5! constant
 
   @headerref{<boost/simd/constant/fact_5.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Fact_5();
+      template<typename T> T Fact_5();
       @endcode
 
   2.  @code
-      template<typename T> auto Fact_5( boost::simd::as_<T> const& target );
+      template<typename T> T Fact_5( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Fact_5 constant.
-
+  Generates a value of type @c T that evaluates to 5!.
 
   @par Parameters
 
@@ -41,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T   that evaluates to <tt>T(120)</tt>.
+  A value of type @c T that evaluates to @c T(120).
 
   @par Requirements
   - **T** models Value

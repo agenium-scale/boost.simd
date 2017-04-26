@@ -11,28 +11,25 @@
 #ifndef BOOST_SIMD_CONSTANT_HALF_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_HALF_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Half Half (function template)
 
-  Generates value \f$\frac12\f$
+  Generates the constant \f$\frac12\f$
 
   @headerref{<boost/simd/constant/half.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Half();
+      template<typename T> T Half();
       @endcode
 
   2.  @code
-      template<typename T> auto Half( boost::simd::as_<T> const& target );
+      template<typename T> T Half( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Half constant.
-
+  Generates a value of type @c T that evaluates to 0.5.
 
   @par Parameters
 
@@ -41,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to  `T(1)/T(2)`
+  A value of type @c T that evaluates to `T(0.5)`
 
   @par Requirements
   - **T** models IEEEValue

@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Sqrteps Sqrteps (function template)
 
-  Generates the square root of constant [Eps](@ref constant-Eps)
+  Generates the constant \f$\sqrt{\epsilon}\f$
 
   @headerref{<boost/simd/constant/sqrteps.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Sqrteps();
+      template<typename T> T Sqrteps();
       @endcode
 
   2.  @code
-      template<typename T> auto Sqrteps( boost::simd::as_<T> const& target );
+      template<typename T> T Sqrteps( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Sqrteps constant.
-
+  Generates a value of type @c T that evaluates to \f$\sqrt{\epsilon}\f$.
 
   @par Parameters
 
@@ -39,11 +38,11 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c as_integer_t<T> that evaluates to
+  A value of type @c T that evaluates to:
 
-  | Type                | double                        | float          | Integral        |
-  |--------------------:|:------------------------------|----------------|-----------------|
-  | value               |   1.490116119384766e-08       | 3.4526698e-04f |  1              |
+  | Type            | double                        | float          | Integral        |
+  |:----------------|:------------------------------|----------------|-----------------|
+  | **Values**      |   1.490116119384766e-08       | 3.4526698e-04f |  1              |
 
   @par Requirements
   - **T** models Value

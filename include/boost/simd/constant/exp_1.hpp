@@ -15,22 +15,22 @@
   @ingroup group-constant
   @defgroup constant-Exp_1 Exp_1 (function template)
 
-  Generates the constante base of the natural logarithms.
+  Generates the base of the natural logarithm constant \f$e\f$.
 
   @headerref{<boost/simd/constant/exp_1.hpp>}
 
   @par Description
 
   1.  @code
-    template<typename T> auto Exp_1();
-    @endcode
+      template<typename T> T Exp_1();
+      @endcode
 
   2.  @code
-    template<typename T> auto Exp_1( boost::simd::as_<T> const& target );
-    @endcode
+      template<typename T> T Exp_1( boost::simd::as_<T> const& target );
+      @endcode
 
-  Generates a value of type @c T containing the Exp_1 constant.
-
+  Generates a value of type @c T that evaluates to \f$e\f which is the unique number whose
+  natural logarithm is equal to one.
 
   @par Parameters
 

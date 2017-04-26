@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Two Two (function template)
 
-  Generates the constant@c 2
+  Generates the constant @c 2
 
   @headerref{<boost/simd/constant/two.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Two();
+      template<typename T> T Two();
       @endcode
 
   2.  @code
-      template<typename T> auto Two( boost::simd::as_<T> const& target );
+      template<typename T> T Two( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Two constant.
-
+  Generates a value of type @c T that evaluates to 2.
 
   @par Parameters
 
@@ -39,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to <tt>T(2)</tt>.
+  A value of type @c T that evaluates to `T(2)`.
 
   @par Requirements
   - **T** models Value

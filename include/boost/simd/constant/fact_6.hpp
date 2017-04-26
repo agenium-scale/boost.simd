@@ -11,28 +11,25 @@
 #ifndef BOOST_SIMD_CONSTANT_FACT_6_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_FACT_6_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Fact_6 Fact_6 (function template)
 
-  Generates @c 6! that is @c 720
+  Generates the @c 6! constant
 
   @headerref{<boost/simd/constant/fact_6.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Fact_6();
+      template<typename T> T Fact_6();
       @endcode
 
   2.  @code
-      template<typename T> auto Fact_6( boost::simd::as_<T> const& target );
+      template<typename T> T Fact_6( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Fact_6 constant.
-
+  Generates a value of type @c T that evaluates to 6!.
 
   @par Parameters
 
@@ -41,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T   that evaluates to <tt>T(720)</tt>.
+  A value of type @c T that evaluates to @c T(720).
 
   @par Requirements
   - **T** models Value

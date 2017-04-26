@@ -15,19 +15,19 @@
   @ingroup group-constant
   @defgroup constant-Cgold Cgold (function template)
 
-  Generates the Golden Ratio conjugate constant, \f$\frac{1}{\phi}\f$.
+  Generates the Golden Ratio conjugate constant: \f$\frac{1}{\phi}\f$.
 
   @headerref{<boost/simd/constant/cgold.hpp>}
 
   @par Description
 
   1.  @code
-    template<typename T> T Cgold();
-    @endcode
+      template<typename T> T Cgold();
+      @endcode
 
   2.  @code
-    template<typename T> T Cgold( boost::simd::as_<T> const& target );
-    @endcode
+      template<typename T> T Cgold( boost::simd::as_<T> const& target );
+      @endcode
 
   Generates a constant that evaluate to the
   [Golden Ratio conjugate](http://mathworld.wolfram.com/GoldenRatioConjugate.html)
@@ -40,7 +40,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to <tt>T((1 - sqrt(5))/2)</tt>.
+  A value of type @c T that evaluates to `T((1 - sqrt(5))/2)`.
 
   @par Requirements
   - **T** models IEEEValue

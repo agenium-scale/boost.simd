@@ -22,15 +22,14 @@
   @par Description
 
   1.  @code
-      template<typename T> auto Msix();
+      template<typename T> T Msix();
       @endcode
 
   2.  @code
-      template<typename T> auto Msix( boost::simd::as_<T> const& target );
+      template<typename T> T Msix( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Msix constant.
-
+  Generates a value of type @c T that evaluates to -6.
 
   @par Parameters
 

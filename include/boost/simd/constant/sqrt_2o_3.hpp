@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Sqrt_2o_3 Sqrt_2o_3 (function template)
 
-  Generates \f$\frac{\sqrt2}3\f$
+  Generates the constant \f$\frac{\sqrt2}3\f$
 
   @headerref{<boost/simd/constant/sqrt_2o_3.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Sqrt_2o_3();
+      template<typename T> T Sqrt_2o_3();
       @endcode
 
   2.  @code
-      template<typename T> auto Sqrt_2o_3( boost::simd::as_<T> const& target );
+      template<typename T> T Sqrt_2o_3( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Sqrt_2o_3 constant.
-
+  Generates a value of type @c T that evaluates to \f$\frac{\sqrt2}3\f$.
 
   @par Parameters
 

@@ -22,12 +22,12 @@
   @par Description
 
   1.  @code
-    template<typename T> T Eight();
-    @endcode
+      template<typename T> T Eight();
+      @endcode
 
   2.  @code
-    template<typename T> T Eight( boost::simd::as_<T> const& target );
-    @endcode
+      template<typename T> T Eight( boost::simd::as_<T> const& target );
+      @endcode
 
   Generates a value of type @c T that evaluates to 8.
 
@@ -38,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to <tt>T(8)</tt>.
+  A value of type @c T that evaluates to `T(8)`.
 
   @par Requirements
   - **T** models Value

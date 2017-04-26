@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Zero Zero (function template)
 
-  Generates the constant@c 0.
+  Generates the constant @c 0.
 
   @headerref{<boost/simd/constant/zero.hpp>}
 
@@ -29,7 +29,7 @@
     template<typename T> T Zero( boost::simd::as_<T> const& target );
     @endcode
 
-  Generates a value of type @c T that evaluates to zero.
+  Generates a value of type @c T that evaluates to 0.
 
   @par Parameters
 

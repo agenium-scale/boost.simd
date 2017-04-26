@@ -22,15 +22,14 @@
   @par Description
 
   1.  @code
-      template<typename T> auto Mtwo();
+      template<typename T> T Mtwo();
       @endcode
 
   2.  @code
-      template<typename T> auto Mtwo( boost::simd::as_<T> const& target );
+      template<typename T> T Mtwo( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Mtwo constant.
-
+  Generates a value of type @c T that evaluates to -2.
 
   @par Parameters
 

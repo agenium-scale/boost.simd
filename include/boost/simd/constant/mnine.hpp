@@ -11,28 +11,25 @@
 #ifndef BOOST_SIMD_CONSTANT_MNINE_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_MNINE_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Mnine Mnine (function template)
 
-  Generates the constant@c -9.
+  Generates the constant @c -9.
 
   @headerref{<boost/simd/constant/mnine.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Mnine();
+      template<typename T> T Mnine();
       @endcode
 
   2.  @code
-      template<typename T> auto Mnine( boost::simd::as_<T> const& target );
+      template<typename T> T Mnine( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Mnine constant.
-
+  Generates a value of type @c T that evaluates to -9.
 
   @par Parameters
 

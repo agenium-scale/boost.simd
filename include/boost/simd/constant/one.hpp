@@ -22,15 +22,14 @@
   @par Description
 
   1.  @code
-      template<typename T> auto One();
+      template<typename T> T One();
       @endcode
 
   2.  @code
-      template<typename T> auto One( boost::simd::as_<T> const& target );
+      template<typename T> T One( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the One constant.
-
+  Generates a value of type @c T that evaluates to 1.
 
   @par Parameters
 
@@ -39,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to <tt>T(1)</tt>.
+  A value of type @c T that evaluates to `T(1)`.
 
   @par Requirements
   - **T** models Value

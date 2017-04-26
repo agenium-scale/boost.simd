@@ -11,8 +11,6 @@
 #ifndef BOOST_SIMD_CONSTANT_MSEVEN_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_MSEVEN_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Mseven Mseven (function template)
@@ -24,14 +22,14 @@
   @par Description
 
   1.  @code
-      template<typename T> auto Mseven();
+      template<typename T> T Mseven();
       @endcode
 
   2.  @code
-      template<typename T> auto Mseven( boost::simd::as_<T> const& target );
+      template<typename T> T Mseven( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Mseven constant.
+  Generates a value of type @c T that evaluates to -7.
 
 
   @par Parameters

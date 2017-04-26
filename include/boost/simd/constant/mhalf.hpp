@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Mhalf Mhalf (function template)
 
-  Generates the constant@c -0.5.
+  Generates the constant @c -0.5.
 
   @headerref{<boost/simd/constant/mhalf.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Mhalf();
+      template<typename T> T Mhalf();
       @endcode
 
   2.  @code
-      template<typename T> auto Mhalf( boost::simd::as_<T> const& target );
+      template<typename T> T Mhalf( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Mhalf constant.
-
+  Generates a value of type @c T  that evaluates to -0.5.
 
   @par Parameters
 
@@ -39,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c that evaluates to <tt>T(-0.5)</tt>.
+  A value of type @c that evaluates to `T(-0.5)`.
 
   @par Requirements
   - **T** models IEEEValue

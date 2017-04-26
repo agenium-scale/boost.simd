@@ -18,21 +18,19 @@
   Generates the number of mantissa bits of a floating point number,
   and the total number of bits for integral types.
 
-
   @headerref{<boost/simd/constant/nbdigits.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Nbdigits();
+      template<typename T> T Nbdigits();
       @endcode
 
   2.  @code
-      template<typename T> auto Nbdigits( boost::simd::as_<T> const& target );
+      template<typename T> T Nbdigits( boost::simd::as_<T> const& target );
       @endcode
 
   Generates a value of type @c T containing the Nbdigits constant.
-
 
   @par Parameters
 

@@ -11,28 +11,26 @@
 #ifndef BOOST_SIMD_CONSTANT_INVEPS_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_INVEPS_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Inveps Inveps (function template)
 
-  Generates  value \f$1/\epsilon\f$
+  Generates the constant \f$\frac{1}{\epsilon}\f$
 
   @headerref{<boost/simd/constant/inveps.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Inveps();
+      template<typename T> T Inveps();
       @endcode
 
   2.  @code
-      template<typename T> auto Inveps( boost::simd::as_<T> const& target );
+      template<typename T> T Inveps( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Inveps constant.
-
+  Generates a value of type @c T that evaluates to the reciprocal of
+  [machine epsilon](https://en.wikipedia.org/wiki/Machine_epsilon).
 
   @par Parameters
 
@@ -41,7 +39,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to `rec(Eps<T>()`.
+  A value of type @c T that evaluates to `T(1/Eps<T>())`.
 
   @par Requirements
   - **T** models Value

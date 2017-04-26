@@ -22,15 +22,14 @@
   @par Description
 
   1.  @code
-      template<typename T> auto Mthree();
+      template<typename T> T Mthree();
       @endcode
 
   2.  @code
-      template<typename T> auto Mthree( boost::simd::as_<T> const& target );
+      template<typename T> T Mthree( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Mthree constant.
-
+  Generates a value of type @c T that evaluates to -3.
 
   @par Parameters
 

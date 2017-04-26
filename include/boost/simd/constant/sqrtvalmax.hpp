@@ -11,8 +11,6 @@
 #ifndef BOOST_SIMD_CONSTANT_SQRTVALMAX_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_SQRTVALMAX_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Sqrtvalmax Sqrtvalmax (function template)
@@ -24,15 +22,15 @@
   @par Description
 
   1.  @code
-      template<typename T> auto Sqrtvalmax();
+      template<typename T> T Sqrtvalmax();
       @endcode
 
   2.  @code
-      template<typename T> auto Sqrtvalmax( boost::simd::as_<T> const& target );
+      template<typename T> T Sqrtvalmax( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Sqrtvalmax constant.
-
+  Generates a value of type @c T that evaluates to the value of the greatest representable value
+  which square is also representable.
 
   @par Parameters
 
@@ -41,7 +39,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  1.  A value of type @c T that evaluates to `sqrt(Valmax<T>()`
+  A value of type @c T that evaluates to `sqrt(Valmax<T>())`
 
   @par Requirements
   - **T** models IEEEValue

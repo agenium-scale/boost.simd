@@ -11,28 +11,22 @@
 #ifndef BOOST_SIMD_CONSTANT_REAL_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_REAL_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Real Real (function template)
 
-  Generates a constant from a static real number representation.
+  Generates a constant from a compile-time IEEE754 bits pattern.
 
   @headerref{<boost/simd/constant/real.hpp>}
 
   @par Description
 
-  1.  @code
-      template<typename T> auto Real();
-      @endcode
+  @code
+  template<typename T, std::uintmax_t Double, std::uintmax_t Single> T Real();
+  @endcode
 
-  2.  @code
-      template<typename T> auto Real( boost::simd::as_<T> const& target );
-      @endcode
-
-  Generates a value of type @c T containing the Real constant.
-
+  Generates a value of type @c T that evaluates to a IEEE754 value which bits correspond to
+  either `Double` or `Single` depending on the type of `scalar_of_t<T>`.
 
   @par Parameters
 
@@ -41,23 +35,12 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  1.  A value of type @c T so that:
-  @code
-  T r = Real<T>();
-  @endcode
-
-
-  2.  A value of type @c T so that:
-  @code
-  T x, r = Real( boost::simd::as(x));
-  @endcode
-  is equivalent to:
-  @code
-  T r = Real<T>();
-  @endcode
+  A value of type @c T that evaluates to:
+  - `T(bitwise_cast<scalar_of_t<T>>(Double))` if `scalar_of_t<T>` is `double`.
+  - `T(bitwise_cast<scalar_of_t<T>>(Single))` if `scalar_of_t<T>` is `float`.
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/real.hpp>

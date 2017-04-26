@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Mone Mone (function template)
 
-  Generates the constant@c -1
+  Generates the constant @c -1
 
   @headerref{<boost/simd/constant/mone.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Mone();
+      template<typename T> T Mone();
       @endcode
 
   2.  @code
-      template<typename T> auto Mone( boost::simd::as_<T> const& target );
+      template<typename T> T Mone( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Mone constant.
-
+  Generates a value of type @c T that evaluates to -1.
 
   @par Parameters
 

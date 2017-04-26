@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Twopi Twopi (function template)
 
-  Generates the constant\f$2\pi\f$
+  Generates the constant \f$2\pi\f$
 
   @headerref{<boost/simd/constant/twopi.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Twopi();
+      template<typename T> T Twopi();
       @endcode
 
   2.  @code
-      template<typename T> auto Twopi( boost::simd::as_<T> const& target );
+      template<typename T> T Twopi( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Twopi constant.
-
+  Generates a value of type @c T that evaluates to \f$2\pi\f$.
 
   @par Parameters
 
@@ -39,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to <tt>Two<T>()*Pi<T>()</tt>.
+  A value of type @c T that evaluates to `T(6.283185307179586476925286766559)`.
 
   @par Requirements
   - **T** models IEEEValue

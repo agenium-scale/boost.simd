@@ -31,7 +31,6 @@
 
   Generates a value of type @c T that evaluates to \f$\pi\f$.
 
-
   @par Parameters
 
   | Name                | Description                                                         |

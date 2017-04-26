@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Threepio_4 Threepio_4 (function template)
 
-  Generates \f$3\pi/4\f$
+  Generates the constant \f$\frac{3\pi}{4}\f$
 
   @headerref{<boost/simd/constant/threepio_4.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Threepio_4();
+      template<typename T> T Threepio_4();
       @endcode
 
   2.  @code
-      template<typename T> auto Threepio_4( boost::simd::as_<T> const& target );
+      template<typename T> T Threepio_4( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Threepio_4 constant.
-
+  Generates a value of type @c T that evaluates to \f$\frac{3\pi}{4}\f$.
 
   @par Parameters
 

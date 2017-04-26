@@ -11,8 +11,6 @@
 #ifndef BOOST_SIMD_CONSTANT_FOURPI_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_FOURPI_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Fourpi Fourpi (function template)
@@ -24,15 +22,14 @@
   @par Description
 
   1.  @code
-      template<typename T> auto Fourpi();
+      template<typename T> T Fourpi();
       @endcode
 
   2.  @code
-      template<typename T> auto Fourpi( boost::simd::as_<T> const& target );
+      template<typename T> T Fourpi( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Fourpi constant.
-
+  Generates a value of type @c T that evaluates to \f$4\pi\f$.
 
   @par Parameters
 
@@ -41,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to <tt>Four<T>()*Pi<T>()</tt>.
+  A value of type @c T that evaluates to `T(12,566370614359172953850573533118)`.
 
   @par Requirements
   - **T** models IEEEValue

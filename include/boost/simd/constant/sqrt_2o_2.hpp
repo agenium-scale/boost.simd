@@ -11,28 +11,25 @@
 #ifndef BOOST_SIMD_CONSTANT_SQRT_2O_2_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_SQRT_2O_2_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Sqrt_2o_2 Sqrt_2o_2 (function template)
 
-  Generates \f$\frac{\sqrt2}2\f$
+  Generates the constant \f$\frac{\sqrt2}2\f$
 
   @headerref{<boost/simd/constant/sqrt_2o_2.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Sqrt_2o_2();
+      template<typename T> T Sqrt_2o_2();
       @endcode
 
   2.  @code
-      template<typename T> auto Sqrt_2o_2( boost::simd::as_<T> const& target );
+      template<typename T> T Sqrt_2o_2( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Sqrt_2o_2 constant.
-
+  Generates a value of type @c T that evaluates to \f$\frac{\sqrt2}2\f$.
 
   @par Parameters
 

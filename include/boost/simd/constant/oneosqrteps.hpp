@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Oneosqrteps Oneosqrteps (function template)
 
-  Generates the constant\f$1/\sqrt\epsilon\f$
+  Generates the constant \f$1/\sqrt\epsilon\f$
 
   @headerref{<boost/simd/constant/oneosqrteps.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Oneosqrteps();
+      template<typename T> T Oneosqrteps();
       @endcode
 
   2.  @code
-      template<typename T> auto Oneosqrteps( boost::simd::as_<T> const& target );
+      template<typename T> T Oneosqrteps( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Oneosqrteps constant.
-
+  Generates a value of type @c T that evaluates to \f$1/\sqrt\epsilon\f$.
 
   @par Parameters
 

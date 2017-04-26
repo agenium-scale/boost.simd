@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Twotom10 Twotom10 (function template)
 
-  Generates the constant 2 to the power -10 (\f$2^{-10}\f$)
+  Generates the constant \f$2^{-10}\f$
 
   @headerref{<boost/simd/constant/twotom10.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Twotom10();
+      template<typename T> T Twotom10();
       @endcode
 
   2.  @code
-      template<typename T> auto Twotom10( boost::simd::as_<T> const& target );
+      template<typename T> T Twotom10( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Twotom10 constant.
-
+  Generates a value of type @c T that evaluates to \f$2^{-10}\f$.
 
   @par Parameters
 

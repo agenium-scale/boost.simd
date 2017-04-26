@@ -11,28 +11,25 @@
 #ifndef BOOST_SIMD_CONSTANT_LOG_2_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_LOG_2_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Log_2 Log_2 (function template)
 
-  Generates the constantLog_2 : \f$\log(2)\f$.
+  Generates the constant \f$\log(2)\f$
 
   @headerref{<boost/simd/constant/log_2.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Log_2();
+      template<typename T> T Log_2();
       @endcode
 
   2.  @code
-      template<typename T> auto Log_2( boost::simd::as_<T> const& target );
+      template<typename T> T Log_2( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Log_2 constant.
-
+  Generates a value of type @c T that evaluates to \f$\log(2)\f$.
 
   @par Parameters
 

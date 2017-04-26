@@ -15,21 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Pio_4 Pio_4 (function template)
 
-  Generates  \f$\frac\pi{4}\f$.
+  Generates the constant \f$\frac\pi{4}\f$.
 
   @headerref{<boost/simd/constant/pio_4.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Pio_4();
+      template<typename T> T Pio_4();
       @endcode
 
   2.  @code
-      template<typename T> auto Pio_4( boost::simd::as_<T> const& target );
+      template<typename T> T Pio_4( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Pio_4 constant.
+  Generates a value of type @c T that evaluates to \f$\frac\pi{4}\f$.
 
 
   @par Parameters

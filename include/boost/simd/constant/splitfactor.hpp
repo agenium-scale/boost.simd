@@ -15,25 +15,23 @@
   @ingroup group-constant
   @defgroup constant-Splitfactor Splitfactor (function template)
 
-  Generates  a constant used to split a floating number in two parts,
-  in floating point routines (such [two_add](@ref real-two_add) and
-  [two_prod](@ref real-two_prod) to get extra precision.
-
+  Generates a constant able to split IEEE values for precision issues
 
   @headerref{<boost/simd/constant/splitfactor.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Splitfactor();
+      template<typename T> T Splitfactor();
       @endcode
 
   2.  @code
-      template<typename T> auto Splitfactor( boost::simd::as_<T> const& target );
+      template<typename T> T Splitfactor( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Splitfactor constant.
-
+  Generates a value of type @c T that evaluates to the factor usable to split a IEEE754 value
+  into two parts in order to provide precision guarantee for some functions (like
+  [two_add](@ref real-two_add) or [two_prod](@ref real-two_prod).
 
   @par Parameters
 
@@ -44,9 +42,9 @@
   @par Return Value
   A value of type @c as_integer_t<T> that evaluates to
 
-  | Type                | double                        | float         |
-  |--------------------:|:------------------------------|---------------|
-  | value               |   \f$2^27\f$                  | \f$2^13\f$    |
+  | Type              | double                        | float         |
+  |:------------------|:------------------------------|---------------|
+  | **Values**        |   \f$2^{27}\f$                | \f$2^{13}\f$  |
 
   @par Requirements
   - **T** models IEEEValue

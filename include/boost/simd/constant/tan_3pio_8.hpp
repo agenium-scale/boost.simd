@@ -11,28 +11,25 @@
 #ifndef BOOST_SIMD_CONSTANT_TAN_3PIO_8_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_TAN_3PIO_8_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Tan_3pio_8 Tan_3pio_8 (function template)
 
-  Generates \f$\tan\frac{3\pi}{8} = \sqrt2 + 1\f$.
+  Generates the constant \f$\tan\frac{3\pi}{8}\f$
 
   @headerref{<boost/simd/constant/tan_3pio_8.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Tan_3pio_8();
+      template<typename T> T Tan_3pio_8();
       @endcode
 
   2.  @code
-      template<typename T> auto Tan_3pio_8( boost::simd::as_<T> const& target );
+      template<typename T> T Tan_3pio_8( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Tan_3pio_8 constant.
-
+  Generates a value of type @c T that evaluates to \f$\tan\frac{3\pi}{8}\f$, i.e \f$\sqrt2 + 1\f$.
 
   @par Parameters
 

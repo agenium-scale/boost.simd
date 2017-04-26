@@ -15,19 +15,19 @@
   @ingroup group-constant
   @defgroup constant-Allbits Allbits (function template)
 
-  Generates a value with all bits set to 1.
+  Generates a constant with all bits set to 1.
 
   @headerref{<boost/simd/constant/allbits.hpp>}
 
   @par Description
 
   1.  @code
-    template<typename T> T Allbits();
-    @endcode
+      template<typename T> T Allbits();
+      @endcode
 
   2.  @code
-    template<typename T> T Allbits( boost::simd::as_<T> const& target );
-    @endcode
+      template<typename T> T Allbits( boost::simd::as_<T> const& target );
+      @endcode
 
   Generates a value of type @c T with all bits set to 1.
 
@@ -40,8 +40,8 @@
   @par Return Value
   A value of type @c T that evaluates to
 
-  - <tt>Nan<T>()</tt> if @c T models IEEEValue
-  - <tt>T(~0)</tt> if @c T models IntegerValue
+  - `Nan<T>()` if @c T models IEEEValue
+  - `T(~0)` if @c T models IntegerValue
 
   @par Requirements
   - **T** models Value

@@ -22,15 +22,14 @@
   @par Description
 
   1.  @code
-      template<typename T> auto Mten();
+      template<typename T> T Mten();
       @endcode
 
   2.  @code
-      template<typename T> auto Mten( boost::simd::as_<T> const& target );
+      template<typename T> T Mten( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Mten constant.
-
+  Generates a value of type @c T that evaluates to -10.
 
   @par Parameters
 

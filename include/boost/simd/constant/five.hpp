@@ -22,15 +22,14 @@
   @par Description
 
   1.  @code
-      template<typename T> auto Five();
+      template<typename T> T Five();
       @endcode
 
   2.  @code
-      template<typename T> auto Five( boost::simd::as_<T> const& target );
+      template<typename T> T Five( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Five constant.
-
+  Generates a value of type @c T that evaluates to 5.
 
   @par Parameters
 
@@ -39,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to <tt>T(5)</tt>.
+  A value of type @c T that evaluates to `T(5)`.
 
   @par Requirements
   - **T** models Value

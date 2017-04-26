@@ -11,28 +11,25 @@
 #ifndef BOOST_SIMD_CONSTANT_FACT_10_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_FACT_10_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Fact_10 Fact_10 (function template)
 
-  Generates @c 10! that is @c 3628800
+  Generates the @c 10! constant
 
   @headerref{<boost/simd/constant/fact_10.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Fact_10();
+      template<typename T> T Fact_10();
       @endcode
 
   2.  @code
-      template<typename T> auto Fact_10( boost::simd::as_<T> const& target );
+      template<typename T> T Fact_10( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Fact_10 constant.
-
+  Generates a value of type @c T that evaluates to 10!.
 
   @par Parameters
 

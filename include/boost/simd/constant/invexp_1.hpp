@@ -11,28 +11,25 @@
 #ifndef BOOST_SIMD_CONSTANT_INVEXP_1_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_INVEXP_1_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Invexp_1 Invexp_1 (function template)
 
-  Generates the constant1/e.
+  Generates the constant \f$\frac{1}{e}\f$.
 
   @headerref{<boost/simd/constant/invexp_1.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Invexp_1();
+      template<typename T> T Invexp_1();
       @endcode
 
   2.  @code
-      template<typename T> auto Invexp_1( boost::simd::as_<T> const& target );
+      template<typename T> T Invexp_1( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Invexp_1 constant.
-
+  Generates a value of type @c T that evaluates to \f$\frac{1}{e}\f$.
 
   @par Parameters
 

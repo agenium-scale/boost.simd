@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Sqrt_1o_5 Sqrt_1o_5 (function template)
 
-  Generates the constant\f$ \sqrt{\frac15}\f$
+  Generates the constant \f$ \sqrt{\frac15}\f$
 
   @headerref{<boost/simd/constant/sqrt_1o_5.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Sqrt_1o_5();
+      template<typename T> T Sqrt_1o_5();
       @endcode
 
   2.  @code
-      template<typename T> auto Sqrt_1o_5( boost::simd::as_<T> const& target );
+      template<typename T> T Sqrt_1o_5( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Sqrt_1o_5 constant.
-
+  Generates a value of type @c T that evaluates to \f$ \sqrt{\frac15}\f$.
 
   @par Parameters
 

@@ -11,50 +11,32 @@
 #ifndef BOOST_SIMD_CONSTANT_RATIO_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_RATIO_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Ratio Ratio (function template)
 
-  Generates a constant from a static rational number representation.
+  Generates a constant defined by compile-time rational number representation.
 
   @headerref{<boost/simd/constant/ratio.hpp>}
 
   @par Description
 
-  1.  @code
-      template<typename T> auto Ratio();
-      @endcode
+  @code
+  template<typename T,std::uintmax_t Num, std::uintmax_t Denum> T Ratio();
+  @endcode
 
-  2.  @code
-      template<typename T> auto Ratio( boost::simd::as_<T> const& target );
-      @endcode
+  Generates a value of type @c T that evaluates to `Num/Denum`.
 
-  Generates a value of type @c T containing the Ratio constant.
+  @par Template Parameters
 
-
-  @par Parameters
-
-  | Name                | Description                                                         |
-  |--------------------:|:--------------------------------------------------------------------|
-  | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
+  | Name           | Description              |
+  |---------------:|:-------------------------|
+  | **T**          | the constant type        |
+  | **Num**        | the constant numerator   |
+  | **Denum**      | the constant denumerator |
 
   @par Return Value
-  1.  A value of type @c T so that:
-  @code
-  T r = Ratio<T>();
-  @endcode
-
-
-  2.  A value of type @c T so that:
-  @code
-  T x, r = Ratio( boost::simd::as(x));
-  @endcode
-  is equivalent to:
-  @code
-  T r = Ratio<T>();
-  @endcode
+  A value of type @c T that evaluates to `T(Num)/T(Denum)`.
 
   @par Requirements
   - **T** models Value

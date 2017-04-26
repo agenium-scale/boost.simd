@@ -11,28 +11,25 @@
 #ifndef BOOST_SIMD_CONSTANT_QUARTER_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_QUARTER_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Quarter Quarter (function template)
 
-  Generates the constant@c 1/4.
+  Generates the constant \f$\frac{1}{4}\f$.
 
   @headerref{<boost/simd/constant/quarter.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Quarter();
+      template<typename T> T Quarter();
       @endcode
 
   2.  @code
-      template<typename T> auto Quarter( boost::simd::as_<T> const& target );
+      template<typename T> T Quarter( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Quarter constant.
-
+  Generates a value of type @c T that evaluates to 0.25.
 
   @par Parameters
 

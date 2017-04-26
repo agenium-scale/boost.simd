@@ -15,23 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Log2_e Log2_e (function template)
 
-  Generates the constantLog2_e : \f$\log\!2 e\f$
-
+  Generates the constant \f$\log_2(e)\f$
 
   @headerref{<boost/simd/constant/log2_e.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Log2_e();
+      template<typename T> T Log2_e();
       @endcode
 
   2.  @code
-      template<typename T> auto Log2_e( boost::simd::as_<T> const& target );
+      template<typename T> T Log2_e( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Log2_e constant.
-
+  Generates a value of type @c T that evaluates to \f$\log_2(e)\f$.
 
   @par Parameters
 

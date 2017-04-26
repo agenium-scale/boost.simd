@@ -11,28 +11,25 @@
 #ifndef BOOST_SIMD_CONSTANT_ONEOSQRT5_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_ONEOSQRT5_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Oneosqrt5 Oneosqrt5 (function template)
 
-  Generates  constant \f$1/\sqrt5\f$
+  Generates the constant \f$1/\sqrt5\f$
 
   @headerref{<boost/simd/constant/oneosqrt5.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Oneosqrt5();
+      template<typename T> T Oneosqrt5();
       @endcode
 
   2.  @code
-      template<typename T> auto Oneosqrt5( boost::simd::as_<T> const& target );
+      template<typename T> T Oneosqrt5( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Oneosqrt5 constant.
-
+  Generates a value of type @c T that evaluates to \f$1/\sqrt5\f$.
 
   @par Parameters
 

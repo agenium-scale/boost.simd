@@ -15,22 +15,22 @@
   @ingroup group-constant
   @defgroup constant-Nan Nan (function template)
 
-  Generates  a Not a Number (Nan) constant with all bits set to one.
+  Generates the Not a Number (Nan) constant
 
   @headerref{<boost/simd/constant/nan.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Nan();
+      template<typename T> T Nan();
       @endcode
 
   2.  @code
-      template<typename T> auto Nan( boost::simd::as_<T> const& target );
+      template<typename T> T Nan( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Nan constant.
-
+  Generates a value of type @c T that evaluates to the Quiet NaN, i.e an IEEE value with all bits
+  set to 1.
 
   @par Parameters
 
@@ -39,11 +39,10 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A Nan representation for this type, i.e QuietNan (with all bits set to one) for IEEE reals and
-  0 for integers.
+  A value of type @c T that evaluates to `T(std::numeric_limits<scalar_of_t<T>>::quiet_NaN())`.
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/nan.hpp>

@@ -15,22 +15,22 @@
   @ingroup group-constant
   @defgroup constant-Nbexponentbits Nbexponentbits (function template)
 
-  Generates the number of exponent bits of a floating point type and 0 for integral types
+  Generates a constant representing the number of exponent bits of a floating point type.
 
   @headerref{<boost/simd/constant/nbexponentbits.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Nbexponentbits();
+      template<typename T> as_integer_t<T> Nbexponentbits();
       @endcode
 
   2.  @code
-      template<typename T> auto Nbexponentbits( boost::simd::as_<T> const& target );
+      template<typename T> as_integer_t<T> Nbexponentbits( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Nbexponentbits constant.
-
+    Generates a value of type `as_integer_t<T>` that evaluates to the number of bits used to
+    represents the exponent of an IEEE754 floating-point value.
 
   @par Parameters
 
@@ -39,14 +39,14 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c as_integer_t<T> that evaluates to
+  A value of type @c as_integer_t<T> that evaluates to:
 
-  | Type                | double                        | float         | Integral        |
-  |--------------------:|:------------------------------|---------------|-----------------|
-  | value               |   11                          |      8        | 0               |
+  | Type        | double      | float         |
+  |:------------|:------------|---------------|
+  | **Values**  |   11        |      8        |
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/nbexponentbits.hpp>

@@ -15,22 +15,22 @@
   @ingroup group-constant
   @defgroup constant-Mindenormal Mindenormal (function template)
 
-  Generates the least of all non zero positive value including denormals
+  Generates the smallest denormal value.
 
   @headerref{<boost/simd/constant/mindenormal.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Mindenormal();
+      template<typename T> T Mindenormal();
       @endcode
 
   2.  @code
-      template<typename T> auto Mindenormal( boost::simd::as_<T> const& target );
+      template<typename T> T Mindenormal( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Mindenormal constant.
-
+  Generates a value of type @c T that evaluate to the smallest of all non zero positive
+  value including denormals.
 
   @par Parameters
 
@@ -41,9 +41,9 @@
   @par Return Value
   A value of type @c T that evaluates to
 
-  | Type                | double                        | float                      | Integral |
-  |--------------------:|:------------------------------|----------------------------|----------|
-  | value               |   4.940656458412465e-324      |      1.4012985e-45         |    1     |
+  | Type           | double                        | float                      | Integral |
+  |:---------------|:------------------------------|----------------------------|----------|
+  | **Values**     |   4.940656458412465e-324      |      1.4012985e-45         |    1     |
 
   @par Requirements
   - **T** models Value

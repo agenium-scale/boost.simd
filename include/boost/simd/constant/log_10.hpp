@@ -11,28 +11,25 @@
 #ifndef BOOST_SIMD_CONSTANT_LOG_10_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_LOG_10_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Log_10 Log_10 (function template)
 
-  Generates the constantLog_10 : \f$\log(10)\f$
+  Generates the constant \f$\log(10)\f$
 
   @headerref{<boost/simd/constant/log_10.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Log_10();
+      template<typename T> T Log_10();
       @endcode
 
   2.  @code
-      template<typename T> auto Log_10( boost::simd::as_<T> const& target );
+      template<typename T> T Log_10( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Log_10 constant.
-
+  Generates a value of type @c T that evaluates to \f$\log(10)\f$.
 
   @par Parameters
 

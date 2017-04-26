@@ -22,15 +22,14 @@
   @par Description
 
   1.  @code
-      template<typename T> auto Hundred();
+      template<typename T> T Hundred();
       @endcode
 
   2.  @code
-      template<typename T> auto Hundred( boost::simd::as_<T> const& target );
+      template<typename T> T Hundred( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Hundred constant.
-
+  Generates a value of type @c T that evaluates to 100.
 
   @par Parameters
 
@@ -39,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to <tt>T(100)</tt>.
+  A value of type @c T that evaluates to `T(100)`.
 
   @par Requirements
   - **T** models Value

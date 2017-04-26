@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Threeeps Threeeps (function template)
 
-  Generates a value equal to 3 times [Eps](@ref constant-Eps) of the chosen type
+  Generates the constant \f$3\epsilon\f$.
 
   @headerref{<boost/simd/constant/threeeps.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Threeeps();
+      template<typename T> T Threeeps();
       @endcode
 
   2.  @code
-      template<typename T> auto Threeeps( boost::simd::as_<T> const& target );
+      template<typename T> T Threeeps( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Threeeps constant.
-
+  Generates a value of type @c T that evaluates to thrice the machine epsilon.
 
   @par Parameters
 
@@ -39,15 +38,14 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c as_integer_t<T> that evaluates to
+  A value of type @c T that evaluates to:
 
-  | Type                | double                        | float         | Integral        |
-  |--------------------:|:------------------------------|---------------|-----------------|
-  | value               |    6.661338147750939e-16      | 3.5762787e-07 | 3               |
-  1.  A value of type @c T so that:
+  | Type          | double                        | float         | Integral        |
+  |:--------------|:------------------------------|---------------|-----------------|
+  | **Values**    |    6.661338147750939e-16      | 3.5762787e-07 | 3               |
 
   @par Requirements
-  - **T** models IEEEValue
+  - **T** models Value
 **/
 
 #include <boost/simd/constant/scalar/threeeps.hpp>

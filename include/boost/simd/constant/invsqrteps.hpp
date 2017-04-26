@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Invsqrteps Invsqrteps (function template)
 
-  Generates value \f$1/{\sqrt\epsilon\}f$
+  Generates the constant \f$\frac{1}{\sqrt\epsilon}\f$
 
   @headerref{<boost/simd/constant/invsqrteps.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Invsqrteps();
+      template<typename T> T Invsqrteps();
       @endcode
 
   2.  @code
-      template<typename T> auto Invsqrteps( boost::simd::as_<T> const& target );
+      template<typename T> T Invsqrteps( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Invsqrteps constant.
-
+  Generates a value of type @c T that evaluates to \f$\frac{1}{\sqrt\epsilon}\f$.
 
   @par Parameters
 

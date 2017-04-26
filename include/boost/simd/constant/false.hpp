@@ -11,53 +11,34 @@
 #ifndef BOOST_SIMD_CONSTANT_FALSE_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_FALSE_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-False False (function template)
 
-  Generates a value of the logical type associated to the chosen type equal to @c false
+  Generates a constant that evaluates to the boolean @c false
 
   @headerref{<boost/simd/constant/false.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto False();
+      template<typename T> T False();
       @endcode
 
   2.  @code
-      template<typename T> auto False( boost::simd::as_<T> const& target );
+      template<typename T> T False( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the False constant.
-
+  Generates a value of type @c T that evaluates to the boolean @c false
 
   @par Parameters
 
-  | Name                | Description                                                         |
-  |--------------------:|:--------------------------------------------------------------------|
+  | Name                | Description                                                    |
+  |--------------------:|:---------------------------------------------------------------|
   | **target**          | a [placeholder](@ref as) value encapsulating the constant type |
 
   @par Return Value
-  1.  A value of type @c T so that:
-  @code
-  T r = False<T>();
-  @endcode
-  is equivalent to:
-  @code
-  T r = false;
-  @endcode
-
-  2.  A value of type @c T so that:
-  @code
-  T x, r = False( boost::simd::as(x));
-  @endcode
-  is equivalent to:
-  @code
-  T r = False<T>();
-  @endcode
+  A value of type @c T that evaluates to @c T(false).
 
   @par Requirements
   - **T** models Value

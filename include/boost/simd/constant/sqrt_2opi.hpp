@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Sqrt_2opi Sqrt_2opi (function template)
 
-  Generates  \f$\frac{\sqrt2}{\pi}\f$.
+  Generates the constant \f$\frac{\sqrt2}{\pi}\f$
 
   @headerref{<boost/simd/constant/sqrt_2opi.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Sqrt_2opi();
+      template<typename T> T Sqrt_2opi();
       @endcode
 
   2.  @code
-      template<typename T> auto Sqrt_2opi( boost::simd::as_<T> const& target );
+      template<typename T> T Sqrt_2opi( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Sqrt_2opi constant.
-
+  Generates a value of type @c T that evaluates to \f$\frac{\sqrt2}{\pi}\f$
 
   @par Parameters
 

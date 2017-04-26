@@ -11,28 +11,26 @@
 #ifndef BOOST_SIMD_CONSTANT_NBMANTISSABITS_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_NBMANTISSABITS_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Nbmantissabits Nbmantissabits (function template)
 
-  Generates the number of mantissa bits of a floating point number.
+  Generates a constant representing the number of mantissa bits of a floating point type.
 
-  @headerref{<boost/simd/constant/nbmantissabits.hpp>}
+  @headerref{<boost/simd/constant/nbexponentbits.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Nbmantissabits();
+      template<typename T> as_integer_t<T> Nbmantissabits();
       @endcode
 
   2.  @code
-      template<typename T> auto Nbmantissabits( boost::simd::as_<T> const& target );
+      template<typename T> as_integer_t<T> Nbmantissabits( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c as_integer_t<T> containing the Nbmantissabits constant.
-
+    Generates a value of type `as_integer_t<T>` that evaluates to the number of bits used to
+    represents the mantissa of an IEEE value.
 
   @par Parameters
 
@@ -41,15 +39,14 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c as_integer_t<T> that evaluates to
+  A value of type @c as_integer_t<T> that evaluates to:
 
-  | Type                | double                        | float         | Integral        |
-  |--------------------:|:------------------------------|---------------|-----------------|
-  | value               |   52                          |      23       | sizeof(T)*8     |
-
+  | Type         | double      | float         |
+  |:-------------|:------------|---------------|
+  | **Values**   |   52        |     23        |
 
   @par Requirements
-  - **T** models Value
+  - **T** models IEEEValue
 **/
 
 #include <boost/simd/constant/scalar/nbmantissabits.hpp>

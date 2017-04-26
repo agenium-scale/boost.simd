@@ -15,15 +15,15 @@
   @ingroup group-constant
   @defgroup constant-Constant Constant (function template)
 
-  Generates a constant defined by a bit pattern.
+  Generates a constant defined by a bits pattern.
 
   @headerref{<boost/simd/constant/constant.hpp>}
 
   @par Description
 
-  1.  @code
-    template<typename T, std::uintmax_t N> T Constant();
-    @endcode
+  @code
+  template<typename T, std::uintmax_t N> T Constant();
+  @endcode
 
   Generates a constant that evaluate to a value of type @c T which bits pattern is defined by
   the Integral Constant @c N.
@@ -36,8 +36,8 @@
   | **N**               | bits pattern holding the value of the generated constant |
 
   @par Return Value
-  A value of type @c T so that <tt>bitwise_cast<as_integer<T>>(Constant<T,N>()) == N</tt>
-  evaluates to @ true.
+  A value of type @c T so that the expression `bitwise_cast<as_integer_t<T>>(Constant<T,N>()) == N`
+  evaluates to @c true.
 
   @par Requirements
   - **T** models Value

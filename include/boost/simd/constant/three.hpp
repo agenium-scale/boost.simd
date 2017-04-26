@@ -15,21 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Three Three (function template)
 
-  Generates the constant@c 3
+  Generates the constant @c 3
 
   @headerref{<boost/simd/constant/three.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Three();
+      template<typename T> T Three();
       @endcode
 
   2.  @code
-      template<typename T> auto Three( boost::simd::as_<T> const& target );
+      template<typename T> T Three( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Three constant.
+  Generates a value of type @c T that evaluates to 3.
 
 
   @par Parameters
@@ -39,7 +39,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to <tt>T(3)</tt>.
+  A value of type @c T that evaluates to `T(3)`.
 
   @par Requirements
   - **T** models Value

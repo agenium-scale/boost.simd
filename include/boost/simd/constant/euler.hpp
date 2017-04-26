@@ -11,29 +11,26 @@
 #ifndef BOOST_SIMD_CONSTANT_EULER_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_EULER_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Euler Euler (function template)
 
-  Generates a value of the chosen type approximating the Euler-Mascheroni constant:
-  \f$\gamma = \lim_{n \rightarrow \infty } \left( 1+ \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + ... + \frac{1}{n} - \ln(n) \right)\f$.
+  Generates an approximation of the Euler-Mascheroni constant.
 
   @headerref{<boost/simd/constant/euler.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Euler();
+      template<typename T> T Euler();
       @endcode
 
   2.  @code
-      template<typename T> auto Euler( boost::simd::as_<T> const& target );
+      template<typename T> T Euler( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Euler constant.
-
+  Generates a value of type @c T evaluating to the Euler-Mascheroni constant defined as:
+  \f$\gamma = \lim_{n \rightarrow \infty } \left( 1+ \frac{1}{2} + ... + \frac{1}{n} - \ln(n) \right)\f$.
 
   @par Parameters
 

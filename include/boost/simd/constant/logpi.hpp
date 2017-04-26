@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Logpi Logpi (function template)
 
-  Generates value \f$\log\pi\f$
+  Generates the constant \f$\log\pi\f$
 
   @headerref{<boost/simd/constant/logpi.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Logpi();
+      template<typename T> T Logpi();
       @endcode
 
   2.  @code
-      template<typename T> auto Logpi( boost::simd::as_<T> const& target );
+      template<typename T> T Logpi( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Logpi constant.
-
+  Generates a value of type @c T that evaluates to \f$\log\pi\f$.
 
   @par Parameters
 

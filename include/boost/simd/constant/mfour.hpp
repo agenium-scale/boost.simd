@@ -11,28 +11,25 @@
 #ifndef BOOST_SIMD_CONSTANT_MFOUR_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_MFOUR_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Mfour Mfour (function template)
 
-  Generates the constant@c -4.
+  Generates the constant @c -4.
 
   @headerref{<boost/simd/constant/mfour.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Mfour();
+      template<typename T> T Mfour();
       @endcode
 
   2.  @code
-      template<typename T> auto Mfour( boost::simd::as_<T> const& target );
+      template<typename T> T Mfour( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Mfour constant.
-
+  Generates a value of type @c T that evaluates to -4.
 
   @par Parameters
 
@@ -41,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c that evaluates to <tt>T(-4)</tt>.
+  A value of type @c that evaluates to `T(-4)`.
 
   @par Requirements
   - **T** models Value

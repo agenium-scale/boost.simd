@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Twenty Twenty (function template)
 
-  Generates the constant@c 20
+  Generates the constant @c 20
 
   @headerref{<boost/simd/constant/twenty.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Twenty();
+      template<typename T> T Twenty();
       @endcode
 
   2.  @code
-      template<typename T> auto Twenty( boost::simd::as_<T> const& target );
+      template<typename T> T Twenty( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Twenty constant.
-
+  Generates a value of type @c T that evaluates to 20.
 
   @par Parameters
 
@@ -39,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to <tt>T(20)</tt>.
+  A value of type @c T that evaluates to `T(20)`.
 
   @par Requirements
   - **T** models Value

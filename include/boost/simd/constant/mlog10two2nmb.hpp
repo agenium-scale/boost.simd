@@ -15,24 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Mlog10two2nmb Mlog10two2nmb (function template)
 
-  Generates the constantMlog10two2nmb, opposite of the base 10 logarithm of
-  [Two2nmb](@ref Two2nmb-constant) constant
-.
+  Generates the opposite of the base 10 logarithm of [Two2nmb](@ref constant-Twotonmb)
 
   @headerref{<boost/simd/constant/mlog10two2nmb.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Mlog10two2nmb();
+      template<typename T> T Mlog10two2nmb();
       @endcode
 
   2.  @code
-      template<typename T> auto Mlog10two2nmb( boost::simd::as_<T> const& target );
+      template<typename T> T Mlog10two2nmb( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Mlog10two2nmb constant.
-
+  Generates a value of type @c T that evaluates to `-log10(Two2nmb<T>())`.
 
   @par Parameters
 
@@ -43,9 +40,9 @@
   @par Return Value
   A value of type @c T that evaluates to
 
-  | Type                | double                                   | float                               |
-  |--------------------:|:-----------------------------------------|-------------------------------------|
-  | value               |  -15.653559774527022151114422525674      | -6.9236899002715674899159945786633f |
+  | Type          | double                                   | float                               |
+  |:--------------|:-----------------------------------------|-------------------------------------|
+  | **Values**    |  -15.653559774527022151114422525674      | -6.9236899002715674899159945786633f |
 
   @par Requirements
   - **T** models IEEEValue

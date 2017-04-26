@@ -11,28 +11,25 @@
 #ifndef BOOST_SIMD_CONSTANT_FOURTHROOTEPS_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_FOURTHROOTEPS_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Fourthrooteps Fourthrooteps (function template)
 
-  Generates the 4th root of constant [Eps](@ref constant-Eps) : \f$\sqrt[4]\epsilon\f$.
+  Generates the constant \f$\sqrt[4]\epsilon\f$.
 
   @headerref{<boost/simd/constant/fourthrooteps.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Fourthrooteps();
+      template<typename T> T Fourthrooteps();
       @endcode
 
   2.  @code
-      template<typename T> auto Fourthrooteps( boost::simd::as_<T> const& target );
+      template<typename T> T Fourthrooteps( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Fourthrooteps constant.
-
+  Generates a value of type @c T that evaluates to the fourth root of the machine epsilon.
 
   @par Parameters
 
@@ -41,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to <tt>sqrt(sqrt(Eps<T>()))</tt>.
+  A value of type @c T that evaluates to `sqrt(sqrt(Eps<T>()))`.
 
   @par Requirements
   - **T** models IEEEValue

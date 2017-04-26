@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Twoopi Twoopi (function template)
 
-  Generates \f$\frac2\pi\f$
+  Generates the constant \f$\frac{2}{\pi}\f$
 
   @headerref{<boost/simd/constant/twoopi.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Twoopi();
+      template<typename T> T Twoopi();
       @endcode
 
   2.  @code
-      template<typename T> auto Twoopi( boost::simd::as_<T> const& target );
+      template<typename T> T Twoopi( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Twoopi constant.
-
+  Generates a value of type @c T that evaluates to \f$\frac{2}{\pi}\f$.
 
   @par Parameters
 
@@ -39,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to <tt>Two<T>()/Pi<T>()</tt>.
+  A value of type @c T that evaluates to `T(0.63661977236758134307553505349006)`.
 
   @par Requirements
   - **T** models IEEEValue

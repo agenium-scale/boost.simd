@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Twopio_3 Twopio_3 (function template)
 
-  Generates  \f$\frac{2\pi}{3}\f$
+  Generates the constant \f$\frac{2\pi}{3}\f$
 
   @headerref{<boost/simd/constant/twopio_3.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Twopio_3();
+      template<typename T> T Twopio_3();
       @endcode
 
   2.  @code
-      template<typename T> auto Twopio_3( boost::simd::as_<T> const& target );
+      template<typename T> T Twopio_3( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Twopio_3 constant.
-
+  Generates a value of type @c T that evaluates to \f$\frac{2\pi}{3}\f$.
 
   @par Parameters
 
@@ -39,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to <tt>Two<T>()/Pi<T>()/Three<T>()</tt>.
+  A value of type @c T that evaluates to `T(2.0943951023931954923084289221863)`.
 
   @par Requirements
   - **T** models IEEEValue

@@ -15,22 +15,21 @@
   @ingroup group-constant
   @defgroup constant-Mfive Mfive (function template)
 
-  Generates the constant@c -5.
+  Generates the constant @c -5.
 
   @headerref{<boost/simd/constant/mfive.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Mfive();
+      template<typename T> T Mfive();
       @endcode
 
   2.  @code
-      template<typename T> auto Mfive( boost::simd::as_<T> const& target );
+      template<typename T> T Mfive( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Mfive constant.
-
+  Generates a value of type @c T that evaluates to -5.
 
   @par Parameters
 
@@ -39,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c that evaluates to <tt>T(-5)</tt>.
+  A value of type @c that evaluates to `T(-5)`.
 
   @par Requirements
   - **T** models Value

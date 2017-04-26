@@ -11,28 +11,25 @@
 #ifndef BOOST_SIMD_CONSTANT_SIX_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_SIX_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Six Six (function template)
 
-  Generates the constant@c 6
+  Generates the constant @c 6
 
   @headerref{<boost/simd/constant/six.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Six();
+      template<typename T> T Six();
       @endcode
 
   2.  @code
-      template<typename T> auto Six( boost::simd::as_<T> const& target );
+      template<typename T> T Six( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Six constant.
-
+  Generates a value of type @c T that evaluates to 6.
 
   @par Parameters
 

@@ -11,32 +11,27 @@
 #ifndef BOOST_SIMD_CONSTANT_GREATESTNONINTEGER_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_GREATESTNONINTEGER_HPP_INCLUDED
 
-
-
 /*!
   @ingroup group-constant
   @defgroup constant-Greatestnoninteger Greatestnoninteger (function template)
 
-  Generates the greatest non integral value which is exactly
-  representable in the type and
-  equal to its integral successor.
-
-  All floating numbers greater than `Greatestnoninteger` are integral.
+  Generates the greatest representable non-integral value
 
   @headerref{<boost/simd/constant/greatestnoninteger.hpp>}
 
   @par Description
 
   1.  @code
-      template<typename T> auto Greatestnoninteger();
+      template<typename T> T Greatestnoninteger();
       @endcode
 
   2.  @code
-      template<typename T> auto Greatestnoninteger( boost::simd::as_<T> const& target );
+      template<typename T> T Greatestnoninteger( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T containing the Greatestnoninteger constant.
-
+  Generates a value of type @c T which is exactly representable and which its successor has
+  integral value. By definition, all floating numbers greater than `Greatestnoninteger<T>()` have
+  integral value.
 
   @par Parameters
 
@@ -45,7 +40,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c as_integer_t<T> that evaluates to
+  A value of type @c as_integer_t<T> that evaluates to:
 
   | Type                | double                        | float         |
   |--------------------:|:------------------------------|---------------|
