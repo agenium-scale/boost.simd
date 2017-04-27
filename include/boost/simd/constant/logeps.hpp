@@ -15,7 +15,7 @@
   @ingroup group-constant
   @defgroup constant-Logeps Logeps (function template)
 
-  Generates the constant \f$log(\epsilon)\f$
+  Generates the constant \f$\log(\epsilon)\f$
 
   @headerref{<boost/simd/constant/logeps.hpp>}
 
@@ -29,7 +29,7 @@
       template<typename T> T Logeps( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T that evaluates to \f$log(\epsilon)\f$.
+  Generates a value of type @c T that evaluates to \f$\log(\epsilon)\f$.
 
   @par Parameters
 
