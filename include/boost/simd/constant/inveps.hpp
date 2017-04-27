@@ -39,7 +39,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to `T(1/Eps<T>())`.
+  A value of type @c T that evaluates to `1/Eps<T>()`.
 
   @par Requirements
   - **T** models Value

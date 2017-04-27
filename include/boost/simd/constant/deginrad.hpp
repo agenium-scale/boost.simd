@@ -38,7 +38,7 @@
   | **target**          | a [placeholder](@ref type-as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to `T(Pi<T>()/180)`.
+  A value of type @c T that evaluates to `Pi<T>()/180`.
 
   @par Requirements
   - **T** models IEEEValue
