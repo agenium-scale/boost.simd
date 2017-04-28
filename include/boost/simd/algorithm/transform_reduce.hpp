@@ -92,7 +92,7 @@ namespace boost { namespace simd
   /*!
     @ingroup group-algo
 
-    Applies transform binary oerator  to each element in the range [first1; last1) and [first2, )
+    Applies transform binary operator  to each element in the range [first1; last1) and [first2, )
     and reduces the results (possibly permuted and aggregated in unspecified manner)
     along with the initial value init over generalized sum gsum binary operator.
 
