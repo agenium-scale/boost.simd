@@ -51,7 +51,7 @@ std::bitset to be used for small size of pack (#357)
 - any and none has been optimized on AVX/SSE4 (#396)
 - The documentation has been improved for a lot of functions, including sample usage and expected output, various Doxygen quirks and more generally, HTML bugs
 - Alain Miniussi( @aminiussi ) has made large improvement to ensure the usability of Boost.SIMD on a very specific icpc 15 + gcc combo that occurs on a large amount of super-computers. The work is still on going but progress is noticeable.
-- Added missing support for clipped range for the sincos familly (#417)
+- Added missing support for clipped range for the sincos family (#417)
 
 ## Version 4.16.12.0 - 12/19/2016
 

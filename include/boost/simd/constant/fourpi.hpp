@@ -27,7 +27,7 @@ namespace boost { namespace simd
     For type T:
 
     @code
-    T r = Fouropi<T>();
+    T r = Fourpi<T>();
     @endcode
 
     is similar to:

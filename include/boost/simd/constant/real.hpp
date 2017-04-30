@@ -22,7 +22,7 @@ namespace boost { namespace simd
     @tparam Double  Bits of the double representation as an uint64_t
     @tparam Single  Bits of the float  representation as an uint32_t
 
-    The return value is selected by the type Type amaong the two representations.
+    The return value is selected by the type Type among the two representations.
   **/
   template<typename Type, std::uintmax_t Double, std::uintmax_t Single> auto Real();
 } }
