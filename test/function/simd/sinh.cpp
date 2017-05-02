@@ -10,6 +10,7 @@
 #include <boost/simd/function/saturated.hpp>
 #include <boost/simd/pack.hpp>
 #include <simd_test.hpp>
+#include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/nan.hpp>
@@ -73,4 +74,5 @@ STF_CASE_TPL (" sinh",  STF_IEEE_TYPES)
   STF_EQUAL(bs::is_positive(bs::sinh(bs::Zero<p_t>() )), bs::True<p_t>());
   STF_ULP_EQUAL(sinh(bs::One<p_t>()),p_t(1.1752011936438014568823818506), 0.5);
   STF_ULP_EQUAL(sinh(bs::Mone<p_t>()), p_t(-1.1752011936438014568823818506), 0.5);
+  STF_ULP_EQUAL(sinh(bs::Half<p_t>()), p_t(0.52109530549374736162242562641149), 0.5);
 }
