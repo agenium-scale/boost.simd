@@ -9,6 +9,7 @@
 //==================================================================================================
 #include <boost/simd/function/scalar/sinh.hpp>
 #include <scalar_test.hpp>
+#include <boost/simd/constant/half.hpp>
 #include <boost/simd/constant/inf.hpp>
 #include <boost/simd/constant/minf.hpp>
 #include <boost/simd/constant/nan.hpp>
@@ -40,4 +41,5 @@ STF_CASE_TPL (" sinh",  STF_IEEE_TYPES)
   STF_EXPECT(bs::is_positive(bs::sinh(bs::Zero<T>() )));
   STF_ULP_EQUAL(sinh(bs::One<T>()),T(1.1752011936438014568823818506), 0.5);
   STF_ULP_EQUAL(sinh(bs::Mone<T>()), T(-1.1752011936438014568823818506), 0.5);
+  STF_ULP_EQUAL(sinh(bs::Half<T>()), T(0.52109530549374736162242562641149), 0.5);
 }
