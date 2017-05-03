@@ -12,28 +12,27 @@
 #ifndef BOOST_SIMD_CONSTANT_HPP_INCLUDED
 #define BOOST_SIMD_CONSTANT_HPP_INCLUDED
 
-namespace boost { namespace simd
-{
-    /*!
-      @ingroup group-functions
-      @defgroup group-constant Constant Functions
+/*!
+  @ingroup group-functions
+  @defgroup group-constant Constant Functions
 
-      These functions provide scalar and SIMD constant generators for the most usual
-      constant values such as zero, numeric limits, IEEE special values.
+  These functions provide scalar and SIMD constant generators for the most usual
+  constant values such as zero, numeric limits, IEEE special values.
 
-      Constant generator functions ced in two manners:
+  Constant generator functions called by either:
 
-        - taking no arguments but requiring a template type parameter
-        so that the correct type of the required constant is returned
-        (as @c One<float>() to generate 1.0f).
+  - taking no arguments but requiring a template type parameter
+    so that the correct type of the constant is used:
+    @code
+    auto x = One<float>();
+    @endcode
 
-        - taking one dummy arguments from which  the correct type of the
-        required constant is deduced and  returned (as @c One(42.0f) to generate 1.0f).
-
-
-    **/
-
-} }
+  - taking one type-arguments from which the correct type of the constant is deduced:
+    @code
+    double y = 0.;
+    auto x = One( as(y) );
+    @endcode
+**/
 
 #include <boost/simd/constant/allbits.hpp>
 #include <boost/simd/constant/bitincrement.hpp>
