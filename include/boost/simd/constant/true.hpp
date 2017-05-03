@@ -22,14 +22,14 @@
   @par Description
 
   1.  @code
-      template<typename T> T True();
+      template<typename T> as_logical_t<T> True();
       @endcode
 
   2.  @code
-      template<typename T> T True( boost::simd::as_<T> const& target );
+      template<typename T> as_logical_t<T> True( boost::simd::as_<T> const& target );
       @endcode
 
-  Generates a value of type @c T that evaluates to the boolean @c true
+  Generates a value of type @c as_logical_t<T> that evaluates to the boolean @c true
 
   @par Parameters
 
@@ -38,7 +38,7 @@
   | **target**          | a [placeholder](@ref as) value encapsulating the constant type |
 
   @par Return Value
-  A value of type @c T that evaluates to @c T(true).
+  A value of type @c as_logical_t<T> that evaluates to @c as_logical_t<T>(true).
 
   @par Requirements
   - **T** models Value
