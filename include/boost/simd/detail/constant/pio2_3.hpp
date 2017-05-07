@@ -8,8 +8,8 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_CONSTANT_DEFINITION_PIO2_3_HPP_INCLUDED
-#define BOOST_SIMD_CONSTANT_DEFINITION_PIO2_3_HPP_INCLUDED
+#ifndef BOOST_SIMD_DETAIL_CONSTANT_PIO2_3_HPP_INCLUDED
+#define BOOST_SIMD_DETAIL_CONSTANT_PIO2_3_HPP_INCLUDED
 
 #include <boost/simd/config.hpp>
 #include <boost/simd/detail/nsm.hpp>
@@ -18,6 +18,25 @@
 #include <boost/simd/detail/dispatch/function/make_callable.hpp>
 #include <boost/simd/detail/dispatch/hierarchy/functions.hpp>
 #include <boost/simd/detail/dispatch/as.hpp>
+
+/*
+
+
+    @ingroup group-constant
+
+    Constant used in modular computation involving \f$\pi\f$
+
+    @par Semantic:
+
+    For type T:
+
+    @code
+    T r = pio2_3<T>();
+    @endcode
+
+    @return a value of type T
+
+*/
 
 namespace boost { namespace simd
 {
@@ -45,12 +64,9 @@ namespace boost { namespace simd
   {
     return detail::pio2_3( boost::dispatch::as_<T>{} );
   }
-
-  template<typename T> BOOST_FORCEINLINE
-  auto Pio2_3(boost::dispatch::as_<T> const&) BOOST_NOEXCEPT_DECLTYPE(Pio2_3<T>())
-  {
-    return Pio2_3<T>();
-  }
 } }
+
+#include <boost/simd/arch/common/scalar/constant/constant_value.hpp>
+#include <boost/simd/arch/common/simd/constant/constant_value.hpp>
 
 #endif
