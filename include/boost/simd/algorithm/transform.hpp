@@ -15,6 +15,7 @@
 #include <boost/simd/function/aligned_store.hpp>
 #include <boost/simd/function/store.hpp>
 #include <boost/simd/pack.hpp>
+#include <boost/simd/meta/cardinal_of.hpp>
 #include <boost/simd/detail/is_aligned.hpp>
 
 namespace boost { namespace simd
@@ -55,7 +56,7 @@ namespace boost { namespace simd
     using vT = pack<T>;
     using vU = pack<U>;
 
-    static_assert ( vT::static_size == vU::static_size
+    static_assert ( cardinal_of<vT>::value == cardinal_of<vU>::value
                   , "SIMD cardinal mismatch between T and U"
                   );
 
@@ -125,15 +126,15 @@ namespace boost { namespace simd
     using vT2 = boost::simd::pack<T2>;
     using vU = pack<U>;
 
-    static_assert ( vT1::static_size == vT2::static_size
+    static_assert ( cardinal_of<vT1>::value == cardinal_of<vT2>::value
                   , "SIMD cardinal mismatch between T1 and T2"
                   );
 
-    static_assert ( vT1::static_size == vU::static_size
+    static_assert ( cardinal_of<vT1>::value == cardinal_of<vU>::value
                   , "SIMD cardinal mismatch between T1 and U"
                   );
 
-    static_assert ( vT2::static_size == vU::static_size
+    static_assert ( cardinal_of<vT2>::value == cardinal_of<vU>::value
                   , "SIMD cardinal mismatch between T2 and U"
                   );
 
