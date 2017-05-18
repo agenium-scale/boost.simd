@@ -288,6 +288,7 @@ set ( SOURCES
       multiplies.saturated.cpp
       nbtrue.cpp
       nearbyint.cpp
+      nearbyint.raw.cpp
       negate.cpp
       negatenz.cpp
       if_neg.cpp
