@@ -29,7 +29,7 @@ namespace boost { namespace simd { namespace ext
   // extract get the value out of the storage
   BOOST_DISPATCH_OVERLOAD ( extract_
                           , (typename A0, typename Ext, typename A1)
-                          , bs::simd_
+                          , bd::cpu_
                           , bs::pack_<bd::arithmetic_<A0>,Ext>
                           , bd::scalar_< bd::integer_<A1> >
                           )
@@ -51,7 +51,7 @@ namespace boost { namespace simd { namespace ext
   // extract on logical pack potentially use bitwise cast
   BOOST_DISPATCH_OVERLOAD ( extract_
                           , (typename A0, typename Ext, typename A1)
-                          , bs::simd_
+                          , bd::cpu_
                           , bs::pack_<bs::logical_<A0>,Ext>
                           , bd::scalar_< bd::integer_<A1> >
                           )

@@ -80,7 +80,7 @@ namespace boost { namespace simd { namespace ext
   // aligned_store data to a masked pointer = check + call store
   BOOST_DISPATCH_OVERLOAD ( aligned_store_
                           , (typename Src, typename Pointer, typename Zero, typename X)
-                          , bs::simd_
+                          , bd::cpu_
                           , bs::pack_<bd::unspecified_<Src>, X>
                           , bd::masked_pointer_<bd::scalar_<bd::unspecified_<Pointer>>,Zero>
                           )
@@ -99,7 +99,7 @@ namespace boost { namespace simd { namespace ext
   // store data to a masked pointer from whatever in a pack
   BOOST_DISPATCH_OVERLOAD ( aligned_store_
                           , (typename Src, typename Pointer, typename Zero, typename X, typename A2)
-                          , bs::simd_
+                          , bd::cpu_
                           , bs::pack_<bd::unspecified_<Src>, X>
                           , bd::masked_pointer_<bd::scalar_<bd::unspecified_<Pointer>>,Zero>
                           , bd::scalar_<bd::integer_<A2>>
