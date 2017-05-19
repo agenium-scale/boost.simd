@@ -10,6 +10,7 @@
 #define BOOST_SIMD_ARCH_COMMON_SCALAR_FUNCTION_FMASUBADD_HPP_INCLUDED
 
 #include <boost/config.hpp>
+#include <boost/simd/function/fms.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
