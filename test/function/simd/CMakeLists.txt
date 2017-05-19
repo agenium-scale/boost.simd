@@ -140,6 +140,7 @@ set ( SOURCES
       firstbitset.cpp
       firstbitunset.cpp
       floor.cpp
+      fmasubadd.cpp
       fma.regular.cpp
       fma.pedantic.cpp
       fms.cpp

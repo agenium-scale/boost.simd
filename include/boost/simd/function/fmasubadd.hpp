@@ -8,31 +8,31 @@
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 */
 //==================================================================================================
-#ifndef BOOST_SIMD_FUNCTION_SUBADD_HPP_INCLUDED
-#define BOOST_SIMD_FUNCTION_SUBADD_HPP_INCLUDED
+#ifndef BOOST_SIMD_FUNCTION_FMASUBADD_HPP_INCLUDED
+#define BOOST_SIMD_FUNCTION_FMASUBADD_HPP_INCLUDED
 
 namespace boost { namespace simd
 {
   /*!
     @ingroup group-swar
-    @ingroup swar-subadd
+    @ingroup swar-fmasubadd
 
-    Alternatively  subtract and add packed  floating-point elements from a pack.
-    Scalar version is just minus.
+    Computes the interleaved sum/difference of two the product of two values with a
+    third one
 
-    @par Header <boost/simd/function/subadd.hpp>
+    @par Header <boost/simd/function/fmasubadd.hpp>
     @par Example:
 
-    @snippet subadd.cpp subadd
+    @snippet fmasubadd.cpp abs
 
     @par Possible output:
 
-    @snippet subadd.txt subadd
+    @snippet fmasubadd.txt abs
 
   **/
 } }
 
-#include <boost/simd/function/scalar/subadd.hpp>
-#include <boost/simd/function/simd/subadd.hpp>
+#include <boost/simd/function/scalar/fmasubadd.hpp>
+#include <boost/simd/function/simd/fmasubadd.hpp>
 
 #endif
