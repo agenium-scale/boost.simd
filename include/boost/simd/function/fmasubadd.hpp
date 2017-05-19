@@ -23,11 +23,11 @@ namespace boost { namespace simd
     @par Header <boost/simd/function/fmasubadd.hpp>
     @par Example:
 
-    @snippet fmasubadd.cpp abs
+    @snippet fmasubadd.cpp fmasubadd
 
     @par Possible output:
 
-    @snippet fmasubadd.txt abs
+    @snippet fmasubadd.txt fmasubadd
 
   **/
 } }
