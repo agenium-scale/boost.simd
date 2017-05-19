@@ -26,7 +26,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::arithmetic_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()(const A0& a0, const A0& a1
+      BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1
                                      , const A0& a2) const BOOST_NOEXCEPT
       {
         return subadd(a0*a1, a2);

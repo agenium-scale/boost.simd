@@ -27,7 +27,7 @@ namespace boost { namespace simd { namespace ext
     BOOST_FORCEINLINE A0 operator() ( const A0 & a0, const A0 & a1
                                     , const A0 & a2 ) const BOOST_NOEXCEPT
     {
-      return _mm256_fmaaddsub_ps(a0,a1);
+      return _mm256_fmaaddsub_ps(a0, a1, a2);
     }
   };
 
@@ -40,7 +40,7 @@ namespace boost { namespace simd { namespace ext
   {
     BOOST_FORCEINLINE A0 operator() ( const A0 & a0, const A0 & a1 ) const BOOST_NOEXCEPT
     {
-      return _mm256_addsub_pd(a0,a1);
+      return _mm256_addsub_pd(a0, a1, a2);
     }
   };
 } } }
