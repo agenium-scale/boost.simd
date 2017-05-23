@@ -9,6 +9,8 @@
 ## benches for functor nearbyint in simd mode.
 
 set(SOURCES
+  raw.float.m10_10.cpp
+  raw.double.m10_10.cpp
   regular.float.m10_10.cpp
   regular.double.m10_10.cpp
   regular.int16_t.m10_10.cpp
