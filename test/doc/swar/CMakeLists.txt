@@ -7,11 +7,13 @@
 ##===================================================================================================
 
 SET( SOURCES
+    fmasubadd.cpp
     lookup.cpp
     shuffle.unary.cpp
     shuffle.binary.cpp
     shuffle.perm.cpp
     shuffle.perm2.cpp
+    subadd.cpp
   )
 
 make_unit( "doc.swar" ${SOURCES})
