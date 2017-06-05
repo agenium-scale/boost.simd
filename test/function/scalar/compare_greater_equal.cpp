@@ -20,9 +20,9 @@ STF_CASE_TPL (" compare_greater_equal",  STF_NUMERIC_TYPES)
   using r_t = decltype(compare_greater_equal(T(), T()));
 
   // specific values tests
-  STF_GREATER_EQUAL(compare_greater_equal(bs::One<T>(), bs::One<T>()),  r_t(true));
-  STF_GREATER_EQUAL(compare_greater_equal(bs::One<T>(), bs::Zero<T>()), r_t(true));
-  STF_GREATER_EQUAL(compare_greater_equal(bs::Zero<T>(), bs::One<T>()), r_t(false));
+  STF_EQUAL(compare_greater_equal(bs::One<T>(), bs::One<T>()),  r_t(true));
+  STF_EQUAL(compare_greater_equal(bs::One<T>(), bs::Zero<T>()), r_t(true));
+  STF_EQUAL(compare_greater_equal(bs::Zero<T>(), bs::One<T>()), r_t(false));
 
 } // end of test for floating_
 
