@@ -43,6 +43,24 @@ namespace boost { namespace simd { namespace ext
         return _mm256_max_ps(a1,a0);
       }
    };
+
+   BOOST_DISPATCH_OVERLOAD( max_
+                          , (typename A0)
+                          , bs::avx_
+                          , bs::pack_<bd::integer_<A0>, bs::avx_>
+                          , bs::pack_<bd::integer_<A0>, bs::avx_>
+                          )
+   {
+      BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+      {
+        auto l0 = slice_low(a0);
+        auto l1 = slice_low(a1);
+        auto h0 = slice_high(a0);
+        auto h1 = slice_high(a1);
+
+        return combine( max(l0,l1), max(h0,h1) );
+      }
+   };
 } } }
 
 #endif
