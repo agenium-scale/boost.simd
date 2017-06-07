@@ -10,9 +10,8 @@
 #define BOOST_SIMD_ARCH_X86_AVX_SIMD_FUNCTION_MAX_HPP_INCLUDED
 
 #include <boost/simd/detail/overload.hpp>
-#include <boost/simd/function/if_else.hpp>
-#include <boost/simd/function/is_unord.hpp>
-#include <boost/predef/compiler.h>
+#include <boost/simd/function/combine.hpp>
+#include <boost/simd/function/slice.hpp>
 
 namespace boost { namespace simd { namespace ext
 {
