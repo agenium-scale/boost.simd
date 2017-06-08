@@ -1,5 +1,38 @@
 # Boost.SIMD Changelog
 
+## Version 4.17.6.0 - 10/06/2017
+
+This release is a maintenance release. Thanks to aminiussi, Fytch, raphaelbresson, bmmogensen, Tim
+Blenchmann, serge-sans-paille, TobiasLudwig and kreuzerkrieg for their insignts and contributions.
+
+### Breaking Changes
+- SIMD Iterators are now intrinsically both Input and OutputIterator. This lead to a large
+  simplification of ranges and algorithms design. All *_input_range and *_output_range
+  related functions and helpers are now deprecated in favor of the simpler *_range version. (#490, #493)
+
+### New features
+- SIMD Iterators are now intrinsically both Input and OutputIterator. This lead to a large
+  simplification of ranges and algorithms design (#490, #493).
+- Introduces subadd and fmasubadd that maps over the add/sub like family of x86 intrinsics (#514, #511)
+- Introduce raw_(nearbyint) as a way to generate a faster but sloppier nearbyint implementation (#513)
+- Introduces SIMD-aware version of most standard algorithms (#480)
+- Introduces new meta-function to access hardware specific informations about SIMD registers (#494, #425)
+
+### Changes & Bug Fixes
+- Change cmake/ location on WIN32 and WIN64 (#522)
+- Improve combine codegen for aggregated packs on MSVC (#521)
+- Correct behaviors of compare_less (#520)
+- Improve combine min,max and sum performances on AVX integers (#519)
+- Improve AVX2 interleave & deinterleave for integers (#515)
+- Fix compilation with g++ 7.1 (#508)
+- Fix precision in sinh for small x (#504)
+- Improve lookup implementation by using permutevar8x32 (#474)
+- Fix make inlining (#487)
+- Fix extract for clang 3.9.1 (#483)
+- Provides emulated support for masked aligned_store (#481)
+- Constants documentation has been cleared up
+- Other documentations fixes
+
 ## Version 4.17.3.0 - 03/06/2017
 
 Maintenance release including some bug fixes reported by Tim Blenchmann.
