@@ -2,7 +2,6 @@ var searchData=
 [
   ['begin',['begin',['../classboost_1_1simd_1_1pack.html#ab29df37bfb2b987c1ca18d8510a4504a',1,'boost::simd::pack::begin() noexcept'],['../classboost_1_1simd_1_1pack.html#aa649c740b06b1ffb24f0dc085122049b',1,'boost::simd::pack::begin() const noexcept']]],
   ['bitfloating',['bitfloating',['../group__group-ieee_ga09cdfb5dfbc682036f6f45cdde1c0f06.html#ga09cdfb5dfbc682036f6f45cdde1c0f06',1,'boost::simd']]],
-  ['bitincrement',['Bitincrement',['../group__group-constant_ga9898d7b7261b986467d07dc2f3547658.html#ga9898d7b7261b986467d07dc2f3547658',1,'boost::simd']]],
   ['bitinteger',['bitinteger',['../group__group-ieee_gad5005bf029cea7e9c1ef95e91cce9972.html#gad5005bf029cea7e9c1ef95e91cce9972',1,'boost::simd']]],
   ['bitofsign',['bitofsign',['../group__group-ieee_gad6964af0c2055333fce526a350f4bcae.html#gad6964af0c2055333fce526a350f4bcae',1,'boost::simd']]],
   ['bits',['bits',['../group__group-bitwise_ga8a29262d8d7c1a060fe0a12b6757bedf.html#ga8a29262d8d7c1a060fe0a12b6757bedf',1,'boost::simd']]],

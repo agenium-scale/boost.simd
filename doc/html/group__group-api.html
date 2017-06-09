@@ -42,7 +42,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li id="version">
-                            <a href="#" class="disabled">4.17.3.0</a>
+                            <a href="#" class="disabled">4.17.6.0</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -116,7 +116,7 @@ Modules</h2></td></tr>
 <tr class="memdesc:group__group-functions"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boost.SIMD functions and constants are designed to work seamlessly on both scalar and SIMD parameters. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__group-std"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group-std.html">Algorithms and Ranges</a></td></tr>
-<tr class="memdesc:group__group-std"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boost.SIMD provides SIMD-aware Range adaptors and implementation of standard algorithms to simplify interactions with code written using the Standard Template Library. <br /></td></tr>
+<tr class="memdesc:group__group-std"><td class="mdescLeft">&#160;</td><td class="mdescRight">SIMD-aware Range adaptors and implementation of standard algorithms to simplify interactions with code written using the Standard Template Library. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
@@ -124,11 +124,17 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboost_1_1simd_1_1pack.html">boost::simd::pack&lt; T, N, ABI &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">High-level interface for manipulating SIMD data.  <a href="classboost_1_1simd_1_1pack.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1simd_1_1preferred__alignment.html">boost::simd::preferred_alignment&lt; T, Cardinal &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the preferred alignment for any type <code>T</code> vectorized with a given cardinal <code>Cardinal</code>.  <a href="structboost_1_1simd_1_1preferred__alignment.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1simd_1_1abi__of.html">boost::simd::abi_of&lt; Type, N &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type/Size to ABI mapping.  <a href="structboost_1_1simd_1_1abi__of.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1simd_1_1as__logical.html">boost::simd::as_logical&lt; T &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert type to its logical type counterpart.  <a href="structboost_1_1simd_1_1as__logical.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1simd_1_1as__pack.html">boost::simd::as_pack&lt; T, N &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extension point for pack-liek type generation.  <a href="structboost_1_1simd_1_1as__pack.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1simd_1_1cardinal__of.html">boost::simd::cardinal_of&lt; T &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the register width required to store an instance of any type <code>T</code>.  <a href="structboost_1_1simd_1_1cardinal__of.html#details">More...</a><br /></td></tr>
@@ -138,6 +144,9 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1simd_1_1expected__cardinal.html">boost::simd::expected_cardinal&lt; Type, Extension &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expected cardinal of register.  <a href="structboost_1_1simd_1_1expected__cardinal.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1simd_1_1has__native__storage.html">boost::simd::has_native_storage&lt; T, N &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a type is <a class="el" href="struct_vectorizable.html" title="A Vectorizable type is usable as the template parameter of other components like boost::simd::pack to...">Vectorizable</a> with native storage.  <a href="structboost_1_1simd_1_1has__native__storage.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1simd_1_1is__bitwise__logical.html">boost::simd::is_bitwise_logical&lt; T &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if type is not scalar.  <a href="structboost_1_1simd_1_1is__bitwise__logical.html#details">More...</a><br /></td></tr>
@@ -172,10 +181,10 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:gafe300855feff1e54fab913c46382b08e"><td class="memTemplParams" colspan="2">template&lt;typename T , std::size_t Cardinal = 0ULL&gt; </td></tr>
-<tr class="memitem:gafe300855feff1e54fab913c46382b08e"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-api_gafe300855feff1e54fab913c46382b08e.html#gafe300855feff1e54fab913c46382b08e">boost::simd::allocator</a> = boost::alignment::aligned_allocator&lt; T, <a class="el" href="structboost_1_1simd_1_1detail_1_1align__of.html">detail::align_of</a>&lt; T, Cardinal &gt;::value &gt;</td></tr>
-<tr class="memdesc:gafe300855feff1e54fab913c46382b08e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience alias defining a standard compliant allocator returning memory which alignment is compatible with the storage of boot::simd::pack&lt;T,Cardinal&gt; or the actual alignment of <code>T</code> if <code>T</code> is not an arithmetic type.  <a href="group__group-api_gafe300855feff1e54fab913c46382b08e.html#gafe300855feff1e54fab913c46382b08e">More...</a><br /></td></tr>
-<tr class="separator:gafe300855feff1e54fab913c46382b08e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8d2eaa1a85935a7a87928a50792d822f"><td class="memTemplParams" colspan="2">template&lt;typename T , std::size_t Cardinal = 0ULL&gt; </td></tr>
+<tr class="memitem:ga8d2eaa1a85935a7a87928a50792d822f"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-api_ga8d2eaa1a85935a7a87928a50792d822f.html#ga8d2eaa1a85935a7a87928a50792d822f">boost::simd::allocator</a> = boost::alignment::aligned_allocator&lt; T, <a class="el" href="structboost_1_1simd_1_1preferred__alignment.html">preferred_alignment</a>&lt; T, Cardinal &gt;::value &gt;</td></tr>
+<tr class="memdesc:ga8d2eaa1a85935a7a87928a50792d822f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience alias defining a standard compliant allocator returning memory which alignment is compatible with the storage of boot::simd::pack&lt;T,Cardinal&gt; or the actual alignment of <code>T</code> if <code>T</code> is not an arithmetic type.  <a href="group__group-api_ga8d2eaa1a85935a7a87928a50792d822f.html#ga8d2eaa1a85935a7a87928a50792d822f">More...</a><br /></td></tr>
+<tr class="separator:ga8d2eaa1a85935a7a87928a50792d822f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac9321575814335dc65c677b6854f6415"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:gac9321575814335dc65c677b6854f6415"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-api_gac9321575814335dc65c677b6854f6415.html#gac9321575814335dc65c677b6854f6415">boost::simd::as_logical_t</a> = typename <a class="el" href="structboost_1_1simd_1_1as__logical.html">as_logical</a>&lt; T &gt;::type</td></tr>
 <tr class="memdesc:gac9321575814335dc65c677b6854f6415"><td class="mdescLeft">&#160;</td><td class="mdescRight">Eager short-cut to the <a class="el" href="structboost_1_1simd_1_1as__logical.html" title="Convert type to its logical type counterpart. ">as_logical</a> meta-function.  <a href="group__group-api_gac9321575814335dc65c677b6854f6415.html#gac9321575814335dc65c677b6854f6415">More...</a><br /></td></tr>
@@ -228,6 +237,14 @@ Functions</h2></td></tr>
 <tr class="memitem:gac88ac6112db74e4c5743beb3db356917"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-api_gac88ac6112db74e4c5743beb3db356917.html#gac88ac6112db74e4c5743beb3db356917">boost::simd::deallocate</a> (T *ptr)</td></tr>
 <tr class="memdesc:gac88ac6112db74e4c5743beb3db356917"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deallocates space from a memory block of allocated by <a class="el" href="group__group-api_ga4d4f57bde44162b681d185957362ef49.html#ga4d4f57bde44162b681d185957362ef49" title="Allocates space for a memory block of size elements of type T with an alignment compatible with the c...">boost::simd::allocate</a>.  <a href="group__group-api_gac88ac6112db74e4c5743beb3db356917.html#gac88ac6112db74e4c5743beb3db356917">More...</a><br /></td></tr>
 <tr class="separator:gac88ac6112db74e4c5743beb3db356917"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7222cd6e5da0c8bf5c2bea29809086fd"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ga7222cd6e5da0c8bf5c2bea29809086fd"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-api_ga7222cd6e5da0c8bf5c2bea29809086fd.html#ga7222cd6e5da0c8bf5c2bea29809086fd">boost::simd::is_aligned</a> (T const *ptr) noexcept</td></tr>
+<tr class="memdesc:ga7222cd6e5da0c8bf5c2bea29809086fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a pointer is aligned within current architecture's constraints.  <a href="group__group-api_ga7222cd6e5da0c8bf5c2bea29809086fd.html#ga7222cd6e5da0c8bf5c2bea29809086fd">More...</a><br /></td></tr>
+<tr class="separator:ga7222cd6e5da0c8bf5c2bea29809086fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad60e05491d40e02c3376163ebd79cb4f"><td class="memTemplParams" colspan="2">template&lt;typename T , typename Arch &gt; </td></tr>
+<tr class="memitem:gad60e05491d40e02c3376163ebd79cb4f"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-api_gad60e05491d40e02c3376163ebd79cb4f.html#gad60e05491d40e02c3376163ebd79cb4f">boost::simd::is_aligned</a> (T const *ptr, Arch const &amp;arch) noexcept</td></tr>
+<tr class="memdesc:gad60e05491d40e02c3376163ebd79cb4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a pointer is aligned withing a given architecture's constraints.  <a href="group__group-api_gad60e05491d40e02c3376163ebd79cb4f.html#gad60e05491d40e02c3376163ebd79cb4f">More...</a><br /></td></tr>
+<tr class="separator:gad60e05491d40e02c3376163ebd79cb4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5d1b1149b6dc13f59e9974ce13290a02"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ga5d1b1149b6dc13f59e9974ce13290a02"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="group__group-api.html#ga2406b682c9da3e8b8c3703a10eb8438c">cardinal_of_t</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-api_ga5d1b1149b6dc13f59e9974ce13290a02.html#ga5d1b1149b6dc13f59e9974ce13290a02">boost::simd::cardinal</a> (T &amp;&amp;v) noexcept</td></tr>
 <tr class="memdesc:ga5d1b1149b6dc13f59e9974ce13290a02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the register size of any given value v.  <a href="group__group-api_ga5d1b1149b6dc13f59e9974ce13290a02.html#ga5d1b1149b6dc13f59e9974ce13290a02">More...</a><br /></td></tr>
@@ -244,7 +261,7 @@ Functions</h2></td></tr>
         <hr class="footer"/>
         <address class="footer">
             <small>
-                Generated on Thu Mar 2 2017 21:54:48 for Boost.SIMD by &#160;
+                Generated on Fri Jun 9 2017 10:01:41 for Boost.SIMD by &#160;
                 <a href="http://www.doxygen.org/index.html">
                     <img class="footer" src="doxygen.png" alt="doxygen"/>
                 </a>

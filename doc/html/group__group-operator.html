@@ -42,7 +42,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li id="version">
-                            <a href="#" class="disabled">4.17.3.0</a>
+                            <a href="#" class="disabled">4.17.6.0</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -120,7 +120,7 @@ $(function() {
 <tr>
 <td><a class="el" href="group__group-operator_gaffcdabc266680683bf5d0b879908d1f1.html#gaffcdabc266680683bf5d0b879908d1f1">divides</a> </td><td>/ </td><td>2 </td><td>T1, T1 </td><td>arithmetic types (2) </td></tr>
 <tr>
-<td><a class="el" href="namespaceboost_1_1simd_a0c2d1515bd7c8d814f8e12c3682e9c10.html#a0c2d1515bd7c8d814f8e12c3682e9c10">div</a> </td><td>/ </td><td>2 </td><td>T1, T1 </td><td>arithmetic types (2) </td></tr>
+<td><a class="el" href="group__group-operator_ga0c2d1515bd7c8d814f8e12c3682e9c10.html#ga0c2d1515bd7c8d814f8e12c3682e9c10">div</a> </td><td>/ </td><td>2 </td><td>T1, T1 </td><td>arithmetic types (2) </td></tr>
 <tr>
 <td><a class="el" href="group__group-boolean_ga26caf70d03690910519a3475a0890eb4.html#ga26caf70d03690910519a3475a0890eb4">if_else</a> </td><td>NA </td><td>3 </td><td>T1, T2, T2 </td><td></td></tr>
 <tr>
@@ -144,7 +144,7 @@ $(function() {
 <tr>
 <td><a class="el" href="group__group-operator_ga8e6fc913926204112090899ededb7127.html#ga8e6fc913926204112090899ededb7127">minus</a> </td><td>- </td><td>2 </td><td>T1, T1 </td><td>arithmetic types (2) </td></tr>
 <tr>
-<td><a class="el" href="namespaceboost_1_1simd_a99697938be5efde8d31240b25975e25e.html#a99697938be5efde8d31240b25975e25e">rem</a> </td><td>% </td><td>2 </td><td>T1, T2 </td><td>T2 is integral scalar or associated to T1 (3) </td></tr>
+<td><a class="el" href="group__group-operator_ga99697938be5efde8d31240b25975e25e.html#ga99697938be5efde8d31240b25975e25e">rem</a> </td><td>% </td><td>2 </td><td>T1, T2 </td><td>T2 is integral scalar or associated to T1 (3) </td></tr>
 <tr>
 <td><a class="el" href="group__group-operator_gad3c70023fde6f8197adff17686a13397.html#gad3c70023fde6f8197adff17686a13397">multiplies</a> </td><td>* </td><td>2 </td><td>T1, T1 </td><td>arithmetic types (2) </td></tr>
 <tr>
@@ -163,13 +163,13 @@ $(function() {
 </center><p>Notes:</p><ul>
 <li>(1) This precisely means sizeof(T1) == sizeof(T2) or one is scalar and its size in bits is the same as the element of the other (which is a pack).</li>
 <li><p class="startli">(2) arithmetic types are defined as std::int8_t, std::int16_t, std::int32_t, std::int64_t, std::uint8_t, std::uint16_t, std::uint32_t, std::uint64_t, float, double and packs of these.</p>
-<p class="startli">The use of implementation dependent types as char, int, long, long long and their unsigned conterpart is discouraged and even may lead to inconsistent behaviour.</p>
+<p class="startli">The use of implementation dependent types as char, int, long, long long and their unsigned counterpart is discouraged and even may lead to inconsistent behaviour.</p>
 <p class="startli">Also it must be noted that "arithmetic" operators cannot mix types. This is to ensure correct SIMD performance if the operation is supported by hardware.</p>
 </li>
 <li>(3) This precisely means T2 is both scalar and of integral type or T2 is as_integer_t&lt;T1&gt;. Note that if T2 scalar is always simd hardware supported, the other case is often emulated.</li>
 </ul>
 <p>Extensions:</p>
-<p><a class="el" href="namespaceboost_1_1simd_a0c2d1515bd7c8d814f8e12c3682e9c10.html#a0c2d1515bd7c8d814f8e12c3682e9c10">division</a> and <a class="el" href="namespaceboost_1_1simd_a99697938be5efde8d31240b25975e25e.html#a99697938be5efde8d31240b25975e25e">remainder</a> operators have extensions to be seen following the links. </p>
+<p><a class="el" href="group__group-operator_ga0c2d1515bd7c8d814f8e12c3682e9c10.html#ga0c2d1515bd7c8d814f8e12c3682e9c10">division</a> and <a class="el" href="group__group-operator_ga99697938be5efde8d31240b25975e25e.html#ga99697938be5efde8d31240b25975e25e">remainder</a> operators have extensions to be seen following the links. </p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -183,7 +183,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:gaffcdabc266680683bf5d0b879908d1f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object implementing divides capabilities.  <a href="group__group-operator_gaffcdabc266680683bf5d0b879908d1f1.html#gaffcdabc266680683bf5d0b879908d1f1">More...</a><br /></td></tr>
 <tr class="separator:gaffcdabc266680683bf5d0b879908d1f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf5fc1c3432b8b3937e2b45c354da0b1d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__group-api_gac9321575814335dc65c677b6854f6415.html#gac9321575814335dc65c677b6854f6415">as_logical_t</a>&lt; <a class="el" href="struct_value.html">Value</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group-operator_gaf5fc1c3432b8b3937e2b45c354da0b1d.html#gaf5fc1c3432b8b3937e2b45c354da0b1d">boost::simd::is_equal</a> (<a class="el" href="struct_value.html">Value</a> const &amp;x, <a class="el" href="struct_value.html">Value</a> const &amp;y)</td></tr>
-<tr class="memdesc:gaf5fc1c3432b8b3937e2b45c354da0b1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function object returns <a class="el" href="group__group-constant_ga990a7661b7bc05c1da57603955d355f2.html#ga990a7661b7bc05c1da57603955d355f2">True</a> or <a class="el" href="group__group-constant_ga42d43c849a0e594a45f8315331755d51.html#ga42d43c849a0e594a45f8315331755d51">False</a> according x and y are equal or not.  <a href="group__group-operator_gaf5fc1c3432b8b3937e2b45c354da0b1d.html#gaf5fc1c3432b8b3937e2b45c354da0b1d">More...</a><br /></td></tr>
+<tr class="memdesc:gaf5fc1c3432b8b3937e2b45c354da0b1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function object returns True or False according x and y are equal or not.  <a href="group__group-operator_gaf5fc1c3432b8b3937e2b45c354da0b1d.html#gaf5fc1c3432b8b3937e2b45c354da0b1d">More...</a><br /></td></tr>
 <tr class="separator:gaf5fc1c3432b8b3937e2b45c354da0b1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8e6fc913926204112090899ededb7127"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group-operator_ga8e6fc913926204112090899ededb7127.html#ga8e6fc913926204112090899ededb7127">boost::simd::minus</a> (<a class="el" href="struct_value.html">Value</a> const &amp;x, <a class="el" href="struct_value.html">Value</a> const &amp;y)</td></tr>
 <tr class="memdesc:ga8e6fc913926204112090899ededb7127"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function object computes the difference of two parameters of the same type.  <a href="group__group-operator_ga8e6fc913926204112090899ededb7127.html#ga8e6fc913926204112090899ededb7127">More...</a><br /></td></tr>
@@ -194,6 +194,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gab7d2f36a67787bac4c1b2cfd05ba2b47"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group-operator_gab7d2f36a67787bac4c1b2cfd05ba2b47.html#gab7d2f36a67787bac4c1b2cfd05ba2b47">boost::simd::plus</a> (<a class="el" href="struct_value.html">Value</a> const &amp;x, <a class="el" href="struct_value.html">Value</a> const &amp;y)</td></tr>
 <tr class="memdesc:gab7d2f36a67787bac4c1b2cfd05ba2b47"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function object computes the sum of two parameters of the same type.  <a href="group__group-operator_gab7d2f36a67787bac4c1b2cfd05ba2b47.html#gab7d2f36a67787bac4c1b2cfd05ba2b47">More...</a><br /></td></tr>
 <tr class="separator:gab7d2f36a67787bac4c1b2cfd05ba2b47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga99697938be5efde8d31240b25975e25e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group-operator_ga99697938be5efde8d31240b25975e25e.html#ga99697938be5efde8d31240b25975e25e">boost::simd::rem</a> (<a class="el" href="struct_value.html">Value</a> const &amp;x, <a class="el" href="struct_value.html">Value</a> const &amp;y)</td></tr>
+<tr class="memdesc:ga99697938be5efde8d31240b25975e25e"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function object computes the remainder of the two parameters of the same type with or without option.  <a href="group__group-operator_ga99697938be5efde8d31240b25975e25e.html#ga99697938be5efde8d31240b25975e25e">More...</a><br /></td></tr>
+<tr class="separator:ga99697938be5efde8d31240b25975e25e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga66362e132a221d745cb9eb00155b0bf9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group-operator_ga66362e132a221d745cb9eb00155b0bf9.html#ga66362e132a221d745cb9eb00155b0bf9">boost::simd::shift_left</a> (<a class="el" href="struct_value.html">Value</a> const &amp;x, <a class="el" href="struct_integer_value.html">IntegerValue</a> const &amp;n)</td></tr>
 <tr class="memdesc:ga66362e132a221d745cb9eb00155b0bf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function object returns the first parameter shifted left by the second one.  <a href="group__group-operator_ga66362e132a221d745cb9eb00155b0bf9.html#ga66362e132a221d745cb9eb00155b0bf9">More...</a><br /></td></tr>
 <tr class="separator:ga66362e132a221d745cb9eb00155b0bf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -212,6 +215,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga314256697157ac145249dcd67ca84893"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group-operator_ga314256697157ac145249dcd67ca84893.html#ga314256697157ac145249dcd67ca84893">boost::simd::unary_plus</a> (<a class="el" href="struct_value.html">Value</a> const &amp;x)</td></tr>
 <tr class="memdesc:ga314256697157ac145249dcd67ca84893"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function object returns the elementwise unary plus of the parameter.  <a href="group__group-operator_ga314256697157ac145249dcd67ca84893.html#ga314256697157ac145249dcd67ca84893">More...</a><br /></td></tr>
 <tr class="separator:ga314256697157ac145249dcd67ca84893"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0c2d1515bd7c8d814f8e12c3682e9c10"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group-operator_ga0c2d1515bd7c8d814f8e12c3682e9c10.html#ga0c2d1515bd7c8d814f8e12c3682e9c10">boost::simd::div</a> (Option const &amp;, <a class="el" href="struct_value.html">Value</a> const &amp;x, <a class="el" href="struct_value.html">Value</a> const &amp;y)</td></tr>
+<tr class="memdesc:ga0c2d1515bd7c8d814f8e12c3682e9c10"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function object computes the quotient of the two parameters of the same type with or without option.  <a href="group__group-operator_ga0c2d1515bd7c8d814f8e12c3682e9c10.html#ga0c2d1515bd7c8d814f8e12c3682e9c10">More...</a><br /></td></tr>
+<tr class="separator:ga0c2d1515bd7c8d814f8e12c3682e9c10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
@@ -224,7 +230,7 @@ Functions</h2></td></tr>
         <hr class="footer"/>
         <address class="footer">
             <small>
-                Generated on Thu Mar 2 2017 21:55:09 for Boost.SIMD by &#160;
+                Generated on Fri Jun 9 2017 10:01:51 for Boost.SIMD by &#160;
                 <a href="http://www.doxygen.org/index.html">
                     <img class="footer" src="doxygen.png" alt="doxygen"/>
                 </a>
