@@ -42,7 +42,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li id="version">
-                            <a href="#" class="disabled">4.17.3.0</a>
+                            <a href="#" class="disabled">4.17.6.0</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -133,7 +133,7 @@ Why is the speed-up of my code not as expected?</h2>
 </center></li>
 <li>Have you compiled in 64bit mode? There is significant performance increase on architectures supporting 64 bit binaries.</li>
 <li><p class="startli">Is you algorithm memory bound? Computational problems can often be classed as either compute-bound or memory-bound. Memory bound problems reach the limits of the system bandwidth transfering data between the memory and the processor, while compute-bound problems are limited by the processor's calculation ability.</p>
-<p class="startli">Processors have often several hierarchies of caches. The time taken to transfer data from the cache to a register varies depending on the cache. When the required data is not in the cache, it is referred to as a cache miss. Cache-misses are very expensive. Data is transfered from memory to the cache in cache-lines sized chunks. On modern x86 machines, a cache-line is 64 bytes or twice the size of an AVX register. It is therefore highly advantageous to use all data loaded into cache.</p>
+<p class="startli">Processors have often several hierarchies of caches. The time taken to transfer data from the cache to a register varies depending on the cache. When the required data is not in the cache, it is referred to as a cache miss. Cache-misses are very expensive. Data is transferred from memory to the cache in cache-lines sized chunks. On modern x86 machines, a cache-line is 64 bytes or twice the size of an AVX register. It is therefore highly advantageous to use all data loaded into cache.</p>
 <p class="startli">The following loop is clearly memory bound as all of the time is spent loading and storing the data. The cost of the computation is negligible compared to that of the memory accesses.</p>
 <div class="fragment"><div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; i += pack_t::static_size) {</div><div class="line">    pack_t v0(&amp;data[i]);</div><div class="line">    v0 = v0 * 2;</div><div class="line">    <a class="code" href="namespaceboost_1_1simd.html#aaa551993873d3636d339e3ef32ffb56b">bs::aligned_store</a>(v0, &amp;output[i]);</div><div class="line">  }</div></div><!-- fragment --><p> The following loop is compute-bound. As most of the time is spent calculating exp, significant speed-up is observed when this code is vectorized.</p>
 <div class="fragment"><div class="line">  t0 = high_resolution_clock::now();</div><div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; i += pack_t::static_size) {</div><div class="line">    pack_t v0(&amp;data[i]);</div><div class="line">    v0 = <a class="code" href="group__group-exponential_gaec8fcad0de6629150dcaf0c1e639afd8.html#gaec8fcad0de6629150dcaf0c1e639afd8">bs::exp</a>(<a class="code" href="group__group-exponential_gaec8fcad0de6629150dcaf0c1e639afd8.html#gaec8fcad0de6629150dcaf0c1e639afd8">bs::exp</a>(v0));</div><div class="line">    <a class="code" href="namespaceboost_1_1simd.html#aaa551993873d3636d339e3ef32ffb56b">bs::aligned_store</a>(v0, &amp;output[i]);</div><div class="line">  }</div></div><!-- fragment --></li>
@@ -190,7 +190,7 @@ How can I use a certain intrinsic?</h2>
         <hr class="footer"/>
         <address class="footer">
             <small>
-                Generated on Thu Mar 2 2017 21:54:47 for Boost.SIMD by &#160;
+                Generated on Fri Jun 9 2017 10:01:40 for Boost.SIMD by &#160;
                 <a href="http://www.doxygen.org/index.html">
                     <img class="footer" src="doxygen.png" alt="doxygen"/>
                 </a>
