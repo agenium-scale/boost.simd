@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hyperbolic_20functions',['Hyperbolic functions',['../group__group-hyperbolic.html',1,'']]]
+  ['greatestnoninteger_20_28function_20template_29',['Greatestnoninteger (function template)',['../group__constant-_greatestnoninteger.html',1,'']]]
 ];

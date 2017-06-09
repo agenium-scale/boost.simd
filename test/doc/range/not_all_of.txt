@@ -1,0 +1,6 @@
+//! [not_all_of]
+rt1 1
+rf1 0
+rt2 1
+rf2 0
+//! [not_all_of]

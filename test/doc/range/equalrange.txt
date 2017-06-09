@@ -1,0 +1,5 @@
+//! [equalrange]
+bf  0
+bt  1
+bt1 1
+//! [equalrange]

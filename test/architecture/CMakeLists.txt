@@ -10,6 +10,7 @@ set ( SOURCES
       tags.cpp
       limits.cpp
       is_iterator.cpp
+      has_native_storage.cpp
     )
 
 make_unit( "architecture" ${SOURCES})

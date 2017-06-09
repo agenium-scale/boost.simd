@@ -42,7 +42,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li id="version">
-                            <a href="#" class="disabled">4.17.3.0</a>
+                            <a href="#" class="disabled">4.17.6.0</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -129,7 +129,7 @@ How to Align Memory using Boost.SIMD allocation function</h1>
 </dl>
 <div class="fragment"><div class="line">    std::size_t num_elements = 1024;</div><div class="line">    <span class="keyword">using</span> aligned_ptr        = std::unique_ptr&lt;int[], boost::simd::aligned_delete&gt;;</div><div class="line"></div><div class="line">    aligned_ptr ptr2(boost::simd::allocate&lt;int&gt;(num_elements));</div></div><!-- fragment --> <h1><a class="anchor" id="memory-vector"></a>
 How to use Boost.SIMD standard compliant aligned memory allocator</h1>
-<p>The C++ STL containers allow you to use a custom memory allocator by passing an additional template argument during the declaration, in a similar manner to the previous example using <code>std::unique_ptr</code>. You can use <a class="el" href="group__group-api_gafe300855feff1e54fab913c46382b08e.html#gafe300855feff1e54fab913c46382b08e" title="Convenience alias defining a standard compliant allocator returning memory which alignment is compati...">boost::simd::allocator</a> with an <code>std::vector</code> as follows:</p>
+<p>The C++ STL containers allow you to use a custom memory allocator by passing an additional template argument during the declaration, in a similar manner to the previous example using <code>std::unique_ptr</code>. You can use <a class="el" href="group__group-api_ga8d2eaa1a85935a7a87928a50792d822f.html#ga8d2eaa1a85935a7a87928a50792d822f" title="Convenience alias defining a standard compliant allocator returning memory which alignment is compati...">boost::simd::allocator</a> with an <code>std::vector</code> as follows:</p>
 <div class="fragment"><div class="line">    std::size_t num_elements = 1024;</div><div class="line">    std::vector&lt;int, boost::simd::allocator&lt;float&gt;&gt; input_buffer(num_elements);</div></div><!-- fragment --><p> The data stored in this vector may be used by Boost.SIMD as an input or output buffer.</p>
 <div style="text-align: right;" markdown="1">Prev: <a class="el" href="tutorial-simd-loop.html">A Basic SIMD Loop</a></div> <div style="text-align: right;" markdown="1">Next: <a class="el" href="tutorial-mathematical.html">Using Mathematical Functions</a></div> </div></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
@@ -142,7 +142,7 @@ How to use Boost.SIMD standard compliant aligned memory allocator</h1>
         <hr class="footer"/>
         <address class="footer">
             <small>
-                Generated on Thu Mar 2 2017 21:54:48 for Boost.SIMD by &#160;
+                Generated on Fri Jun 9 2017 10:01:40 for Boost.SIMD by &#160;
                 <a href="http://www.doxygen.org/index.html">
                     <img class="footer" src="doxygen.png" alt="doxygen"/>
                 </a>

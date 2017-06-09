@@ -1,0 +1,4 @@
+//! [none_of]
+rt 1
+rf 0
+//! [none_of]

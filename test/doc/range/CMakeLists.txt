@@ -7,14 +7,45 @@
 ##===================================================================================================
 
 SET( SOURCES
-    aligned_input_range.cpp
-    input_range.cpp
+    aligned_range.cpp
+    aligned_range_t.cpp
+    all_of.cpp
+    any_of.cpp
+    copy.cpp
+    copy_n.cpp
+    count.cpp
+    count_if.cpp
+    equalrange.cpp
+    fill.cpp
+    find.cpp
+    find_if.cpp
+    find_if_not.cpp
+    generate.cpp
+    generate_n.cpp
+    iota.cpp
+    lexicographical_comparerange.cpp
+    max_element.cpp
+    max_val.cpp
+    min_element.cpp
+    min_val.cpp
+    none_of.cpp
+    not_all_of.cpp
+    range_t.cpp
+    range.cpp
     reduce.simple.cpp
     reduce.phases.cpp
     reduce.phase.cpp
-    segmented_input_range.cpp
+    replace.cpp
+    replace_if.cpp
+    segmented_aligned_range.cpp
+    segmented_aligned_range_t.cpp
+    segmented_range.cpp
+    segmented_range_t.cpp
     transform.unary.cpp
     transform.binary.cpp
+    transform_reduce.cpp
+    transform_reduce2.cpp
+    transform_reduce2b.cpp
   )
 
 make_unit( "doc.range" ${SOURCES})

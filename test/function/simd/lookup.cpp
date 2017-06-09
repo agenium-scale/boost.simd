@@ -25,8 +25,8 @@ void test(Env& runtime)
 
   for(std::size_t i = 0; i < N; ++i)
   {
-     a1[i] = (i%2) ? T(i) : T(2*i);
-     a2[i] = (N-i)/2+N/3;
+     a1[i] = T(2*i+1);
+     a2[i] = N-i-1;
   }
 
   for(std::size_t i = 0; i < N; ++i)
@@ -41,7 +41,7 @@ void test(Env& runtime)
   STF_EQUAL(bs::lookup(aa1, aa2), bb);
 }
 
-STF_CASE_TPL("Check lookup on pack" , STF_NUMERIC_TYPES)
+STF_CASE_TPL("Check lookup on pack", STF_NUMERIC_TYPES)
 {
   static const std::size_t N = bs::pack<T>::static_size;
   test<T, N>(runtime);

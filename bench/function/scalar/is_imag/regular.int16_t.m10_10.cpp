@@ -13,10 +13,9 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_is_imag, bs::is_imag);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_is_imag, std::int16_t>(-10, 10);
+  using T = std::int16_t;
+  run<T>(bs::is_imag, nsbg::rand<T>(-10, 10));
 }
 

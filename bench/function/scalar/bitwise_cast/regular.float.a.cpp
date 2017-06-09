@@ -13,9 +13,8 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_bitwise_cast, bs::bitwise_cast);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_bitwise_cast, float>(a);
+  using T = float;
+  run<T>(bs::bitwise_cast, nsbg::rand<T>(a));
 }

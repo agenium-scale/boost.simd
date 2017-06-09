@@ -13,10 +13,9 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_is_nltz, bs::is_nltz);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_is_nltz, std::uint32_t>(0, 10);
+  using T = bs::pack<std::uint32_t>;
+  run<T>(bs::is_nltz, nsbg::rand<T>(0, 10));
 }
 

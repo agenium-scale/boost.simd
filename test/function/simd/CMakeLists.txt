@@ -140,6 +140,7 @@ set ( SOURCES
       firstbitset.cpp
       firstbitunset.cpp
       floor.cpp
+      fmasubadd.cpp
       fma.regular.cpp
       fma.pedantic.cpp
       fms.cpp
@@ -288,6 +289,7 @@ set ( SOURCES
       multiplies.saturated.cpp
       nbtrue.cpp
       nearbyint.cpp
+      nearbyint.raw.cpp
       negate.cpp
       negatenz.cpp
       if_neg.cpp
@@ -359,7 +361,7 @@ set ( SOURCES
       sqrt.regular.cpp
       sqrt.raw.cpp
       stirling.cpp
-      stream.cpp
+      subadd.cpp
       successor.cpp
       sum.cpp
       swapbytes.cpp

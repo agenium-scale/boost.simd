@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['types',['Types',['../group__group-concept-types.html',1,'']]],
-  ['trigonometric_20functions_2e',['Trigonometric functions.',['../group__group-trigonometric.html',1,'']]],
-  ['types_20and_20helpers',['Types and helpers',['../group__group-types.html',1,'']]]
+  ['nan_20_28function_20template_29',['Nan (function template)',['../group__constant-_nan.html',1,'']]],
+  ['nbdigits_20_28function_20template_29',['Nbdigits (function template)',['../group__constant-_nbdigits.html',1,'']]],
+  ['nbexponentbits_20_28function_20template_29',['Nbexponentbits (function template)',['../group__constant-_nbexponentbits.html',1,'']]],
+  ['nbmantissabits_20_28function_20template_29',['Nbmantissabits (function template)',['../group__constant-_nbmantissabits.html',1,'']]],
+  ['nine_20_28function_20template_29',['Nine (function template)',['../group__constant-_nine.html',1,'']]]
 ];

@@ -13,10 +13,9 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_is_ngez, bs::is_ngez);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_is_ngez, std::int64_t>(-10, 10);
+  using T = bs::pack<std::int64_t>;
+  run<T>(bs::is_ngez, nsbg::rand<T>(-10, 10));
 }
 

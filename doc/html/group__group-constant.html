@@ -42,7 +42,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li id="version">
-                            <a href="#" class="disabled">4.17.3.0</a>
+                            <a href="#" class="disabled">4.17.6.0</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -92,565 +92,396 @@ $(function() {
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#groups">Modules</a>  </div>
   <div class="headertitle">
 <div class="title">Constant Functions<div class="ingroups"><a class="el" href="group__group-api.html">User API</a> &raquo; <a class="el" href="group__group-functions.html">Functions and Constants</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
 <p>These functions provide scalar and SIMD constant generators for the most usual constant values such as zero, numeric limits, IEEE special values. </p>
-<p>Constant generator functions ced in two manners:</p>
+<p>Constant generator functions called by either:</p>
 <ul>
-<li>taking no arguments but requiring a template type parameter so that the correct type of the required constant is returned (as <code><a class="el" href="group__group-constant_gaf41e828bbf43b5bb5a01cbd9ae11d755.html#gaf41e828bbf43b5bb5a01cbd9ae11d755" title="Generate the constant one. ">One&lt;float&gt;()</a></code> to generate 1.0f).</li>
-<li>taking one dummy arguments from which the correct type of the required constant is deduced and returned (as <code>One</code>(42.0f) to generate 1.0f). </li>
+<li>taking no arguments but requiring a template type parameter so that the correct type of the constant is used: <div class="fragment"><div class="line"><span class="keyword">auto</span> x = One&lt;float&gt;();</div></div><!-- fragment --></li>
+<li>taking one type-arguments from which the correct type of the constant is deduced: <div class="fragment"><div class="line"><span class="keywordtype">double</span> y = 0.;</div><div class="line"><span class="keyword">auto</span> x = One( as(y) );</div></div><!-- fragment --> </li>
 </ul>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:ga3fa422246df71a8dbd89effa342f61e1"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga3fa422246df71a8dbd89effa342f61e1"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga3fa422246df71a8dbd89effa342f61e1.html#ga3fa422246df71a8dbd89effa342f61e1">boost::simd::Allbits</a> ()</td></tr>
-<tr class="memdesc:ga3fa422246df71a8dbd89effa342f61e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a value of the chosen type which all bits are set to 1.  <a href="group__group-constant_ga3fa422246df71a8dbd89effa342f61e1.html#ga3fa422246df71a8dbd89effa342f61e1">More...</a><br /></td></tr>
-<tr class="separator:ga3fa422246df71a8dbd89effa342f61e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9898d7b7261b986467d07dc2f3547658"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga9898d7b7261b986467d07dc2f3547658"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga9898d7b7261b986467d07dc2f3547658.html#ga9898d7b7261b986467d07dc2f3547658">boost::simd::Bitincrement</a> ()</td></tr>
-<tr class="memdesc:ga9898d7b7261b986467d07dc2f3547658"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a value of the chosen type which represents the minimal increment value for <code>T</code>.  <a href="group__group-constant_ga9898d7b7261b986467d07dc2f3547658.html#ga9898d7b7261b986467d07dc2f3547658">More...</a><br /></td></tr>
-<tr class="separator:ga9898d7b7261b986467d07dc2f3547658"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab96a6164d269c11c6a067081d1402bfb"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gab96a6164d269c11c6a067081d1402bfb"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gab96a6164d269c11c6a067081d1402bfb.html#gab96a6164d269c11c6a067081d1402bfb">boost::simd::Cgold</a> ()</td></tr>
-<tr class="memdesc:gab96a6164d269c11c6a067081d1402bfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a value of the chosen type which represents the conjugate Golden Ratio.  <a href="group__group-constant_gab96a6164d269c11c6a067081d1402bfb.html#gab96a6164d269c11c6a067081d1402bfb">More...</a><br /></td></tr>
-<tr class="separator:gab96a6164d269c11c6a067081d1402bfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9b29f5ae6a09c212cea1b4e0554baefe"><td class="memTemplParams" colspan="2">template&lt;typename Type , std::uintmax_t Bits&gt; </td></tr>
-<tr class="memitem:ga9b29f5ae6a09c212cea1b4e0554baefe"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga9b29f5ae6a09c212cea1b4e0554baefe.html#ga9b29f5ae6a09c212cea1b4e0554baefe">boost::simd::Constant</a> ()</td></tr>
-<tr class="memdesc:ga9b29f5ae6a09c212cea1b4e0554baefe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a value of the chosen type from an exact bits pattern that get splat in the return value.  <a href="group__group-constant_ga9b29f5ae6a09c212cea1b4e0554baefe.html#ga9b29f5ae6a09c212cea1b4e0554baefe">More...</a><br /></td></tr>
-<tr class="separator:ga9b29f5ae6a09c212cea1b4e0554baefe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5ba8ce5358217fa40416fec17cbdaa44"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga5ba8ce5358217fa40416fec17cbdaa44"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga5ba8ce5358217fa40416fec17cbdaa44.html#ga5ba8ce5358217fa40416fec17cbdaa44">boost::simd::Deginrad</a> ()</td></tr>
-<tr class="memdesc:ga5ba8ce5358217fa40416fec17cbdaa44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constant radian in Degree multiplier, \(\frac{180}\pi\).  <a href="group__group-constant_ga5ba8ce5358217fa40416fec17cbdaa44.html#ga5ba8ce5358217fa40416fec17cbdaa44">More...</a><br /></td></tr>
-<tr class="separator:ga5ba8ce5358217fa40416fec17cbdaa44"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa6c6b405b63224b674a8998d0fdda98e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gaa6c6b405b63224b674a8998d0fdda98e"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gaa6c6b405b63224b674a8998d0fdda98e.html#gaa6c6b405b63224b674a8998d0fdda98e">boost::simd::Eight</a> ()</td></tr>
-<tr class="memdesc:gaa6c6b405b63224b674a8998d0fdda98e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a value of the chosen type equals to eight.  <a href="group__group-constant_gaa6c6b405b63224b674a8998d0fdda98e.html#gaa6c6b405b63224b674a8998d0fdda98e">More...</a><br /></td></tr>
-<tr class="separator:gaa6c6b405b63224b674a8998d0fdda98e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9d39629fa6e6459edfa21381ac95d60e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga9d39629fa6e6459edfa21381ac95d60e"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga9d39629fa6e6459edfa21381ac95d60e.html#ga9d39629fa6e6459edfa21381ac95d60e">boost::simd::Eleven</a> ()</td></tr>
-<tr class="memdesc:ga9d39629fa6e6459edfa21381ac95d60e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant eleven.  <a href="group__group-constant_ga9d39629fa6e6459edfa21381ac95d60e.html#ga9d39629fa6e6459edfa21381ac95d60e">More...</a><br /></td></tr>
-<tr class="separator:ga9d39629fa6e6459edfa21381ac95d60e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac136c82050ce716d5c1cf56b568f76e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group-constant_gac136c82050ce716d5c1cf56b568f76e9.html#gac136c82050ce716d5c1cf56b568f76e9">boost::simd::functional::Eleven</a> ()</td></tr>
-<tr class="memdesc:gac136c82050ce716d5c1cf56b568f76e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant eleven.  <a href="group__group-constant_gac136c82050ce716d5c1cf56b568f76e9.html#gac136c82050ce716d5c1cf56b568f76e9">More...</a><br /></td></tr>
-<tr class="separator:gac136c82050ce716d5c1cf56b568f76e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0447bdf6191e88d2b5ac1b6994a0945a"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga0447bdf6191e88d2b5ac1b6994a0945a"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga0447bdf6191e88d2b5ac1b6994a0945a.html#ga0447bdf6191e88d2b5ac1b6994a0945a">boost::simd::Eps</a> ()</td></tr>
-<tr class="memdesc:ga0447bdf6191e88d2b5ac1b6994a0945a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a value of the chosen type equals to the difference between 1 and the next representable value of the chosen type.  <a href="group__group-constant_ga0447bdf6191e88d2b5ac1b6994a0945a.html#ga0447bdf6191e88d2b5ac1b6994a0945a">More...</a><br /></td></tr>
-<tr class="separator:ga0447bdf6191e88d2b5ac1b6994a0945a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab78d0cc7d43ce3f62ba1b94bea43c990"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gab78d0cc7d43ce3f62ba1b94bea43c990"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gab78d0cc7d43ce3f62ba1b94bea43c990.html#gab78d0cc7d43ce3f62ba1b94bea43c990">boost::simd::Euler</a> ()</td></tr>
-<tr class="memdesc:gab78d0cc7d43ce3f62ba1b94bea43c990"><td class="mdescLeft">&#160;</td><td class="mdescRight">GeneratesEuler constant.  <a href="group__group-constant_gab78d0cc7d43ce3f62ba1b94bea43c990.html#gab78d0cc7d43ce3f62ba1b94bea43c990">More...</a><br /></td></tr>
-<tr class="separator:gab78d0cc7d43ce3f62ba1b94bea43c990"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9c1fdd9f6a3936831f84700112dc2d74"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga9c1fdd9f6a3936831f84700112dc2d74"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga9c1fdd9f6a3936831f84700112dc2d74.html#ga9c1fdd9f6a3936831f84700112dc2d74">boost::simd::Exp_1</a> ()</td></tr>
-<tr class="memdesc:ga9c1fdd9f6a3936831f84700112dc2d74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates constant e.  <a href="group__group-constant_ga9c1fdd9f6a3936831f84700112dc2d74.html#ga9c1fdd9f6a3936831f84700112dc2d74">More...</a><br /></td></tr>
-<tr class="separator:ga9c1fdd9f6a3936831f84700112dc2d74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaadc449910f0909b30b4611cb0fd13e69"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gaadc449910f0909b30b4611cb0fd13e69"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gaadc449910f0909b30b4611cb0fd13e69.html#gaadc449910f0909b30b4611cb0fd13e69">boost::simd::Expnibig</a> ()</td></tr>
-<tr class="memdesc:gaadc449910f0909b30b4611cb0fd13e69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant expnibig.  <a href="group__group-constant_gaadc449910f0909b30b4611cb0fd13e69.html#gaadc449910f0909b30b4611cb0fd13e69">More...</a><br /></td></tr>
-<tr class="separator:gaadc449910f0909b30b4611cb0fd13e69"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga54b5572b19a7c1558ca5b07edf1d78fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group-constant_ga54b5572b19a7c1558ca5b07edf1d78fc.html#ga54b5572b19a7c1558ca5b07edf1d78fc">boost::simd::functional::Expnibig</a> ()</td></tr>
-<tr class="memdesc:ga54b5572b19a7c1558ca5b07edf1d78fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant expnibig.  <a href="group__group-constant_ga54b5572b19a7c1558ca5b07edf1d78fc.html#ga54b5572b19a7c1558ca5b07edf1d78fc">More...</a><br /></td></tr>
-<tr class="separator:ga54b5572b19a7c1558ca5b07edf1d78fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga66a423e328529235a30f7f86ddd49e8f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga66a423e328529235a30f7f86ddd49e8f"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga66a423e328529235a30f7f86ddd49e8f.html#ga66a423e328529235a30f7f86ddd49e8f">boost::simd::Fact_10</a> ()</td></tr>
-<tr class="memdesc:ga66a423e328529235a30f7f86ddd49e8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate 10! that is 3628800.  <a href="group__group-constant_ga66a423e328529235a30f7f86ddd49e8f.html#ga66a423e328529235a30f7f86ddd49e8f">More...</a><br /></td></tr>
-<tr class="separator:ga66a423e328529235a30f7f86ddd49e8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafc8ef993a62c2263d116ddceaaafc68b"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gafc8ef993a62c2263d116ddceaaafc68b"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gafc8ef993a62c2263d116ddceaaafc68b.html#gafc8ef993a62c2263d116ddceaaafc68b">boost::simd::Fact_11</a> ()</td></tr>
-<tr class="memdesc:gafc8ef993a62c2263d116ddceaaafc68b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate 11! that is 39916800,.  <a href="group__group-constant_gafc8ef993a62c2263d116ddceaaafc68b.html#gafc8ef993a62c2263d116ddceaaafc68b">More...</a><br /></td></tr>
-<tr class="separator:gafc8ef993a62c2263d116ddceaaafc68b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae66aa2b6e39b309d71f183e4626073c5"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gae66aa2b6e39b309d71f183e4626073c5"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gae66aa2b6e39b309d71f183e4626073c5.html#gae66aa2b6e39b309d71f183e4626073c5">boost::simd::Fact_12</a> ()</td></tr>
-<tr class="memdesc:gae66aa2b6e39b309d71f183e4626073c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate 12! that is 479001600.  <a href="group__group-constant_gae66aa2b6e39b309d71f183e4626073c5.html#gae66aa2b6e39b309d71f183e4626073c5">More...</a><br /></td></tr>
-<tr class="separator:gae66aa2b6e39b309d71f183e4626073c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga987f3fb9937c8a9708be426d96f2566a"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga987f3fb9937c8a9708be426d96f2566a"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga987f3fb9937c8a9708be426d96f2566a.html#ga987f3fb9937c8a9708be426d96f2566a">boost::simd::Fact_4</a> ()</td></tr>
-<tr class="memdesc:ga987f3fb9937c8a9708be426d96f2566a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate 4! that is 24.  <a href="group__group-constant_ga987f3fb9937c8a9708be426d96f2566a.html#ga987f3fb9937c8a9708be426d96f2566a">More...</a><br /></td></tr>
-<tr class="separator:ga987f3fb9937c8a9708be426d96f2566a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga60e4ce9e62d012998485bb973e3885c4"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga60e4ce9e62d012998485bb973e3885c4"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga60e4ce9e62d012998485bb973e3885c4.html#ga60e4ce9e62d012998485bb973e3885c4">boost::simd::Fact_5</a> ()</td></tr>
-<tr class="memdesc:ga60e4ce9e62d012998485bb973e3885c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate 5!, that is 120.  <a href="group__group-constant_ga60e4ce9e62d012998485bb973e3885c4.html#ga60e4ce9e62d012998485bb973e3885c4">More...</a><br /></td></tr>
-<tr class="separator:ga60e4ce9e62d012998485bb973e3885c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2d2279f3221e01e1b38c2a6646907de2"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga2d2279f3221e01e1b38c2a6646907de2"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga2d2279f3221e01e1b38c2a6646907de2.html#ga2d2279f3221e01e1b38c2a6646907de2">boost::simd::Fact_6</a> ()</td></tr>
-<tr class="memdesc:ga2d2279f3221e01e1b38c2a6646907de2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates 6! that is 720.  <a href="group__group-constant_ga2d2279f3221e01e1b38c2a6646907de2.html#ga2d2279f3221e01e1b38c2a6646907de2">More...</a><br /></td></tr>
-<tr class="separator:ga2d2279f3221e01e1b38c2a6646907de2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga60b449394a9da0a6ef02e026248b8c57"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga60b449394a9da0a6ef02e026248b8c57"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga60b449394a9da0a6ef02e026248b8c57.html#ga60b449394a9da0a6ef02e026248b8c57">boost::simd::Fact_7</a> ()</td></tr>
-<tr class="memdesc:ga60b449394a9da0a6ef02e026248b8c57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate 7! that is 5040.  <a href="group__group-constant_ga60b449394a9da0a6ef02e026248b8c57.html#ga60b449394a9da0a6ef02e026248b8c57">More...</a><br /></td></tr>
-<tr class="separator:ga60b449394a9da0a6ef02e026248b8c57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9b29bda6e87d4f81bf89ba226c95573d"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga9b29bda6e87d4f81bf89ba226c95573d"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga9b29bda6e87d4f81bf89ba226c95573d.html#ga9b29bda6e87d4f81bf89ba226c95573d">boost::simd::Fact_8</a> ()</td></tr>
-<tr class="memdesc:ga9b29bda6e87d4f81bf89ba226c95573d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate 8! that is 40320.  <a href="group__group-constant_ga9b29bda6e87d4f81bf89ba226c95573d.html#ga9b29bda6e87d4f81bf89ba226c95573d">More...</a><br /></td></tr>
-<tr class="separator:ga9b29bda6e87d4f81bf89ba226c95573d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gade3407407692c949afbb0e6ec450d101"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gade3407407692c949afbb0e6ec450d101"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gade3407407692c949afbb0e6ec450d101.html#gade3407407692c949afbb0e6ec450d101">boost::simd::Fact_9</a> ()</td></tr>
-<tr class="memdesc:gade3407407692c949afbb0e6ec450d101"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate 9! that is 362880,.  <a href="group__group-constant_gade3407407692c949afbb0e6ec450d101.html#gade3407407692c949afbb0e6ec450d101">More...</a><br /></td></tr>
-<tr class="separator:gade3407407692c949afbb0e6ec450d101"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga42d43c849a0e594a45f8315331755d51"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga42d43c849a0e594a45f8315331755d51"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga42d43c849a0e594a45f8315331755d51.html#ga42d43c849a0e594a45f8315331755d51">boost::simd::False</a> ()</td></tr>
-<tr class="memdesc:ga42d43c849a0e594a45f8315331755d51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a value of the chosen type equals to <code>false</code>.  <a href="group__group-constant_ga42d43c849a0e594a45f8315331755d51.html#ga42d43c849a0e594a45f8315331755d51">More...</a><br /></td></tr>
-<tr class="separator:ga42d43c849a0e594a45f8315331755d51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa83eb00541513a180c404988be7832bf"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gaa83eb00541513a180c404988be7832bf"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gaa83eb00541513a180c404988be7832bf.html#gaa83eb00541513a180c404988be7832bf">boost::simd::Fifteen</a> ()</td></tr>
-<tr class="memdesc:gaa83eb00541513a180c404988be7832bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant fifteen.  <a href="group__group-constant_gaa83eb00541513a180c404988be7832bf.html#gaa83eb00541513a180c404988be7832bf">More...</a><br /></td></tr>
-<tr class="separator:gaa83eb00541513a180c404988be7832bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga38763df24e7b8239a152a6433d3f5835"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group-constant_ga38763df24e7b8239a152a6433d3f5835.html#ga38763df24e7b8239a152a6433d3f5835">boost::simd::functional::Fifteen</a> ()</td></tr>
-<tr class="memdesc:ga38763df24e7b8239a152a6433d3f5835"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant fifteen.  <a href="group__group-constant_ga38763df24e7b8239a152a6433d3f5835.html#ga38763df24e7b8239a152a6433d3f5835">More...</a><br /></td></tr>
-<tr class="separator:ga38763df24e7b8239a152a6433d3f5835"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gada794d57e48c529ecd340cca2475ad81"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gada794d57e48c529ecd340cca2475ad81"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gada794d57e48c529ecd340cca2475ad81.html#gada794d57e48c529ecd340cca2475ad81">boost::simd::Five</a> ()</td></tr>
-<tr class="memdesc:gada794d57e48c529ecd340cca2475ad81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant five.  <a href="group__group-constant_gada794d57e48c529ecd340cca2475ad81.html#gada794d57e48c529ecd340cca2475ad81">More...</a><br /></td></tr>
-<tr class="separator:gada794d57e48c529ecd340cca2475ad81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf7c6e7adafa3c048541348405fefbcd2"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gaf7c6e7adafa3c048541348405fefbcd2"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gaf7c6e7adafa3c048541348405fefbcd2.html#gaf7c6e7adafa3c048541348405fefbcd2">boost::simd::Four</a> ()</td></tr>
-<tr class="memdesc:gaf7c6e7adafa3c048541348405fefbcd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant four.  <a href="group__group-constant_gaf7c6e7adafa3c048541348405fefbcd2.html#gaf7c6e7adafa3c048541348405fefbcd2">More...</a><br /></td></tr>
-<tr class="separator:gaf7c6e7adafa3c048541348405fefbcd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0ec4a2c91acd74fa6c220b309b2ef160"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga0ec4a2c91acd74fa6c220b309b2ef160"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga0ec4a2c91acd74fa6c220b309b2ef160.html#ga0ec4a2c91acd74fa6c220b309b2ef160">boost::simd::Fouropi</a> ()</td></tr>
-<tr class="memdesc:ga0ec4a2c91acd74fa6c220b309b2ef160"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constant \(\frac4\pi\).  <a href="group__group-constant_ga0ec4a2c91acd74fa6c220b309b2ef160.html#ga0ec4a2c91acd74fa6c220b309b2ef160">More...</a><br /></td></tr>
-<tr class="separator:ga0ec4a2c91acd74fa6c220b309b2ef160"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3eb127bdf1adf0fb0a11544bfc868eb3"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga3eb127bdf1adf0fb0a11544bfc868eb3"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga3eb127bdf1adf0fb0a11544bfc868eb3.html#ga3eb127bdf1adf0fb0a11544bfc868eb3">boost::simd::Fourpi</a> ()</td></tr>
-<tr class="memdesc:ga3eb127bdf1adf0fb0a11544bfc868eb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constant \(4\pi\).  <a href="group__group-constant_ga3eb127bdf1adf0fb0a11544bfc868eb3.html#ga3eb127bdf1adf0fb0a11544bfc868eb3">More...</a><br /></td></tr>
-<tr class="separator:ga3eb127bdf1adf0fb0a11544bfc868eb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0c193201d1bda189a0dfbf567b8a75e2"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga0c193201d1bda189a0dfbf567b8a75e2"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga0c193201d1bda189a0dfbf567b8a75e2.html#ga0c193201d1bda189a0dfbf567b8a75e2">boost::simd::Fourthrooteps</a> ()</td></tr>
-<tr class="memdesc:ga0c193201d1bda189a0dfbf567b8a75e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the 4th root of constant <a class="el" href="group__group-constant_ga0447bdf6191e88d2b5ac1b6994a0945a.html#ga0447bdf6191e88d2b5ac1b6994a0945a">Eps</a> : \(\sqrt[4]\epsilon\).  <a href="group__group-constant_ga0c193201d1bda189a0dfbf567b8a75e2.html#ga0c193201d1bda189a0dfbf567b8a75e2">More...</a><br /></td></tr>
-<tr class="separator:ga0c193201d1bda189a0dfbf567b8a75e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaab2688bc374aa3685584cb39ab5c793b"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gaab2688bc374aa3685584cb39ab5c793b"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gaab2688bc374aa3685584cb39ab5c793b.html#gaab2688bc374aa3685584cb39ab5c793b">boost::simd::Gold</a> ()</td></tr>
-<tr class="memdesc:gaab2688bc374aa3685584cb39ab5c793b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the golden ratio that is \(\phi = \frac{1+\sqrt5}{2}\).  <a href="group__group-constant_gaab2688bc374aa3685584cb39ab5c793b.html#gaab2688bc374aa3685584cb39ab5c793b">More...</a><br /></td></tr>
-<tr class="separator:gaab2688bc374aa3685584cb39ab5c793b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga94bf0c0d2255c2c9b9021217f3a8c625"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga94bf0c0d2255c2c9b9021217f3a8c625"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga94bf0c0d2255c2c9b9021217f3a8c625.html#ga94bf0c0d2255c2c9b9021217f3a8c625">boost::simd::Goldbar</a> ()</td></tr>
-<tr class="memdesc:ga94bf0c0d2255c2c9b9021217f3a8c625"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the conjugate golden ratio that is \(\bar\phi = \frac{1-\sqrt5}{2}\).  <a href="group__group-constant_ga94bf0c0d2255c2c9b9021217f3a8c625.html#ga94bf0c0d2255c2c9b9021217f3a8c625">More...</a><br /></td></tr>
-<tr class="separator:ga94bf0c0d2255c2c9b9021217f3a8c625"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga61e0b4d6244c226a3c86cc4e2bd0d8b4"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga61e0b4d6244c226a3c86cc4e2bd0d8b4"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga61e0b4d6244c226a3c86cc4e2bd0d8b4.html#ga61e0b4d6244c226a3c86cc4e2bd0d8b4">boost::simd::Greatestnoninteger</a> ()</td></tr>
-<tr class="memdesc:ga61e0b4d6244c226a3c86cc4e2bd0d8b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the least integer value which is exactly representable in the type and equal to its integral successor.  <a href="group__group-constant_ga61e0b4d6244c226a3c86cc4e2bd0d8b4.html#ga61e0b4d6244c226a3c86cc4e2bd0d8b4">More...</a><br /></td></tr>
-<tr class="separator:ga61e0b4d6244c226a3c86cc4e2bd0d8b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga43815274111f1431bd38208c745a5a59"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga43815274111f1431bd38208c745a5a59"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga43815274111f1431bd38208c745a5a59.html#ga43815274111f1431bd38208c745a5a59">boost::simd::Half</a> ()</td></tr>
-<tr class="memdesc:ga43815274111f1431bd38208c745a5a59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate value \(\frac12\).  <a href="group__group-constant_ga43815274111f1431bd38208c745a5a59.html#ga43815274111f1431bd38208c745a5a59">More...</a><br /></td></tr>
-<tr class="separator:ga43815274111f1431bd38208c745a5a59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga516e3261a6ef04c1f7ad86dd21855073"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga516e3261a6ef04c1f7ad86dd21855073"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga516e3261a6ef04c1f7ad86dd21855073.html#ga516e3261a6ef04c1f7ad86dd21855073">boost::simd::Halfeps</a> ()</td></tr>
-<tr class="memdesc:ga516e3261a6ef04c1f7ad86dd21855073"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the machine epsilon.  <a href="group__group-constant_ga516e3261a6ef04c1f7ad86dd21855073.html#ga516e3261a6ef04c1f7ad86dd21855073">More...</a><br /></td></tr>
-<tr class="separator:ga516e3261a6ef04c1f7ad86dd21855073"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga65ccb12efc61d56eef4f3fcb6f3062dc"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga65ccb12efc61d56eef4f3fcb6f3062dc"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga65ccb12efc61d56eef4f3fcb6f3062dc.html#ga65ccb12efc61d56eef4f3fcb6f3062dc">boost::simd::Hundred</a> ()</td></tr>
-<tr class="memdesc:ga65ccb12efc61d56eef4f3fcb6f3062dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant hundred.  <a href="group__group-constant_ga65ccb12efc61d56eef4f3fcb6f3062dc.html#ga65ccb12efc61d56eef4f3fcb6f3062dc">More...</a><br /></td></tr>
-<tr class="separator:ga65ccb12efc61d56eef4f3fcb6f3062dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadceeed4a8dd4c894c70f346d38b85289"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group-constant_gadceeed4a8dd4c894c70f346d38b85289.html#gadceeed4a8dd4c894c70f346d38b85289">boost::simd::functional::Hundred</a> ()</td></tr>
-<tr class="memdesc:gadceeed4a8dd4c894c70f346d38b85289"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant hundred.  <a href="group__group-constant_gadceeed4a8dd4c894c70f346d38b85289.html#gadceeed4a8dd4c894c70f346d38b85289">More...</a><br /></td></tr>
-<tr class="separator:gadceeed4a8dd4c894c70f346d38b85289"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaca1fa10ea8e6a7619c8f1d04bcc28dd2"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gaca1fa10ea8e6a7619c8f1d04bcc28dd2"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gaca1fa10ea8e6a7619c8f1d04bcc28dd2.html#gaca1fa10ea8e6a7619c8f1d04bcc28dd2">boost::simd::Inf</a> ()</td></tr>
-<tr class="memdesc:gaca1fa10ea8e6a7619c8f1d04bcc28dd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the Inf IEEE value ( \(\infty\)) for floating types and maximum value for integer types.  <a href="group__group-constant_gaca1fa10ea8e6a7619c8f1d04bcc28dd2.html#gaca1fa10ea8e6a7619c8f1d04bcc28dd2">More...</a><br /></td></tr>
-<tr class="separator:gaca1fa10ea8e6a7619c8f1d04bcc28dd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga01b268ec9b4f54a68816c10c8571f391"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga01b268ec9b4f54a68816c10c8571f391"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga01b268ec9b4f54a68816c10c8571f391.html#ga01b268ec9b4f54a68816c10c8571f391">boost::simd::Inv2pi</a> ()</td></tr>
-<tr class="memdesc:ga01b268ec9b4f54a68816c10c8571f391"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constant \(\frac1{2\pi}\).  <a href="group__group-constant_ga01b268ec9b4f54a68816c10c8571f391.html#ga01b268ec9b4f54a68816c10c8571f391">More...</a><br /></td></tr>
-<tr class="separator:ga01b268ec9b4f54a68816c10c8571f391"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadf156daaf9d900f5354c7a0a21566e72"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gadf156daaf9d900f5354c7a0a21566e72"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gadf156daaf9d900f5354c7a0a21566e72.html#gadf156daaf9d900f5354c7a0a21566e72">boost::simd::inveps</a> ()</td></tr>
-<tr class="memdesc:gadf156daaf9d900f5354c7a0a21566e72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate value \(\1/Eps&lt;T&gt;()\).  <a href="group__group-constant_gadf156daaf9d900f5354c7a0a21566e72.html#gadf156daaf9d900f5354c7a0a21566e72">More...</a><br /></td></tr>
-<tr class="separator:gadf156daaf9d900f5354c7a0a21566e72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8cedfc8b54f243e96664654e4907a202"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga8cedfc8b54f243e96664654e4907a202"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga8cedfc8b54f243e96664654e4907a202.html#ga8cedfc8b54f243e96664654e4907a202">boost::simd::Invexp_1</a> ()</td></tr>
-<tr class="memdesc:ga8cedfc8b54f243e96664654e4907a202"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates constant 1/e.  <a href="group__group-constant_ga8cedfc8b54f243e96664654e4907a202.html#ga8cedfc8b54f243e96664654e4907a202">More...</a><br /></td></tr>
-<tr class="separator:ga8cedfc8b54f243e96664654e4907a202"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae0861fb57b45f9a7831c89aa100cf7dd"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gae0861fb57b45f9a7831c89aa100cf7dd"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gae0861fb57b45f9a7831c89aa100cf7dd.html#gae0861fb57b45f9a7831c89aa100cf7dd">boost::simd::Invlog10_2</a> ()</td></tr>
-<tr class="memdesc:gae0861fb57b45f9a7831c89aa100cf7dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates constant 1/log10(2).  <a href="group__group-constant_gae0861fb57b45f9a7831c89aa100cf7dd.html#gae0861fb57b45f9a7831c89aa100cf7dd">More...</a><br /></td></tr>
-<tr class="separator:gae0861fb57b45f9a7831c89aa100cf7dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa93900780b0ca1a604df527f7790c776"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gaa93900780b0ca1a604df527f7790c776"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gaa93900780b0ca1a604df527f7790c776.html#gaa93900780b0ca1a604df527f7790c776">boost::simd::Invlog_10</a> ()</td></tr>
-<tr class="memdesc:gaa93900780b0ca1a604df527f7790c776"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates constant 1/log(10).  <a href="group__group-constant_gaa93900780b0ca1a604df527f7790c776.html#gaa93900780b0ca1a604df527f7790c776">More...</a><br /></td></tr>
-<tr class="separator:gaa93900780b0ca1a604df527f7790c776"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab1349f4196300ce19cf8e87dc7ab4c5b"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gab1349f4196300ce19cf8e87dc7ab4c5b"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gab1349f4196300ce19cf8e87dc7ab4c5b.html#gab1349f4196300ce19cf8e87dc7ab4c5b">boost::simd::Invlog_2</a> ()</td></tr>
-<tr class="memdesc:gab1349f4196300ce19cf8e87dc7ab4c5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates constant 1/log(2).  <a href="group__group-constant_gab1349f4196300ce19cf8e87dc7ab4c5b.html#gab1349f4196300ce19cf8e87dc7ab4c5b">More...</a><br /></td></tr>
-<tr class="separator:gab1349f4196300ce19cf8e87dc7ab4c5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae402398f395bc053b9e06387367c8b4b"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gae402398f395bc053b9e06387367c8b4b"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gae402398f395bc053b9e06387367c8b4b.html#gae402398f395bc053b9e06387367c8b4b">boost::simd::Invpi</a> ()</td></tr>
-<tr class="memdesc:gae402398f395bc053b9e06387367c8b4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constant \(\frac1\pi\).  <a href="group__group-constant_gae402398f395bc053b9e06387367c8b4b.html#gae402398f395bc053b9e06387367c8b4b">More...</a><br /></td></tr>
-<tr class="separator:gae402398f395bc053b9e06387367c8b4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0f7a26ca1b9a0112a9d826f4dcca365a"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga0f7a26ca1b9a0112a9d826f4dcca365a"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga0f7a26ca1b9a0112a9d826f4dcca365a.html#ga0f7a26ca1b9a0112a9d826f4dcca365a">boost::simd::Invsqrt_2pi</a> ()</td></tr>
-<tr class="memdesc:ga0f7a26ca1b9a0112a9d826f4dcca365a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constant \(\frac1{\sqrt{2\pi}}\).  <a href="group__group-constant_ga0f7a26ca1b9a0112a9d826f4dcca365a.html#ga0f7a26ca1b9a0112a9d826f4dcca365a">More...</a><br /></td></tr>
-<tr class="separator:ga0f7a26ca1b9a0112a9d826f4dcca365a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga465daeeabff97e6f7a400ceec8d0bc90"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga465daeeabff97e6f7a400ceec8d0bc90"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga465daeeabff97e6f7a400ceec8d0bc90.html#ga465daeeabff97e6f7a400ceec8d0bc90">boost::simd::invsqrteps</a> ()</td></tr>
-<tr class="memdesc:ga465daeeabff97e6f7a400ceec8d0bc90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate value \(\1/sqrt(Eps&lt;T&gt;()\).  <a href="group__group-constant_ga465daeeabff97e6f7a400ceec8d0bc90.html#ga465daeeabff97e6f7a400ceec8d0bc90">More...</a><br /></td></tr>
-<tr class="separator:ga465daeeabff97e6f7a400ceec8d0bc90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9dda3b1e479e666470e8e75c18c3e227"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga9dda3b1e479e666470e8e75c18c3e227"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga9dda3b1e479e666470e8e75c18c3e227.html#ga9dda3b1e479e666470e8e75c18c3e227">boost::simd::Log10_pi</a> ()</td></tr>
-<tr class="memdesc:ga9dda3b1e479e666470e8e75c18c3e227"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate base ten logarithm of pi ( \(\log\!10(\pi)\))  <a href="group__group-constant_ga9dda3b1e479e666470e8e75c18c3e227.html#ga9dda3b1e479e666470e8e75c18c3e227">More...</a><br /></td></tr>
-<tr class="separator:ga9dda3b1e479e666470e8e75c18c3e227"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga274a95f9e5dd5ade48ce09a59fb8b666"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga274a95f9e5dd5ade48ce09a59fb8b666"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga274a95f9e5dd5ade48ce09a59fb8b666.html#ga274a95f9e5dd5ade48ce09a59fb8b666">boost::simd::Log2_e</a> ()</td></tr>
-<tr class="memdesc:ga274a95f9e5dd5ade48ce09a59fb8b666"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates constant Log2_e.This constant is coupled with Log2_lo and is used in the float logarithms computations We have double(Log2_e&lt;float&gt;())+double(Log2_lo&lt;float&gt;()) == <a class="el" href="group__group-constant_ga4f03021a6f46e34fa5b6bb3a94650a92.html#ga4f03021a6f46e34fa5b6bb3a94650a92" title="Generates constant Log_2 : . ">Log_2&lt;double&gt;()</a>  <a href="group__group-constant_ga274a95f9e5dd5ade48ce09a59fb8b666.html#ga274a95f9e5dd5ade48ce09a59fb8b666">More...</a><br /></td></tr>
-<tr class="separator:ga274a95f9e5dd5ade48ce09a59fb8b666"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa5f46401b25af48d53ef5b1ebb2272ac"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gaa5f46401b25af48d53ef5b1ebb2272ac"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gaa5f46401b25af48d53ef5b1ebb2272ac.html#gaa5f46401b25af48d53ef5b1ebb2272ac">boost::simd::Log2_em1</a> ()</td></tr>
-<tr class="memdesc:gaa5f46401b25af48d53ef5b1ebb2272ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates constant Log2_em1 : \(\log2(e)-1\).  <a href="group__group-constant_gaa5f46401b25af48d53ef5b1ebb2272ac.html#gaa5f46401b25af48d53ef5b1ebb2272ac">More...</a><br /></td></tr>
-<tr class="separator:gaa5f46401b25af48d53ef5b1ebb2272ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaabe8375f06ea37cafafef1c486366ff7"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gaabe8375f06ea37cafafef1c486366ff7"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gaabe8375f06ea37cafafef1c486366ff7.html#gaabe8375f06ea37cafafef1c486366ff7">boost::simd::Log_10</a> ()</td></tr>
-<tr class="memdesc:gaabe8375f06ea37cafafef1c486366ff7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates constant Log_10 : \(\log(10)\).  <a href="group__group-constant_gaabe8375f06ea37cafafef1c486366ff7.html#gaabe8375f06ea37cafafef1c486366ff7">More...</a><br /></td></tr>
-<tr class="separator:gaabe8375f06ea37cafafef1c486366ff7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4f03021a6f46e34fa5b6bb3a94650a92"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga4f03021a6f46e34fa5b6bb3a94650a92"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga4f03021a6f46e34fa5b6bb3a94650a92.html#ga4f03021a6f46e34fa5b6bb3a94650a92">boost::simd::Log_2</a> ()</td></tr>
-<tr class="memdesc:ga4f03021a6f46e34fa5b6bb3a94650a92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates constant Log_2 : \(\log(2)\).  <a href="group__group-constant_ga4f03021a6f46e34fa5b6bb3a94650a92.html#ga4f03021a6f46e34fa5b6bb3a94650a92">More...</a><br /></td></tr>
-<tr class="separator:ga4f03021a6f46e34fa5b6bb3a94650a92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga60dc8c8181210d46388c1194858aa428"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga60dc8c8181210d46388c1194858aa428"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga60dc8c8181210d46388c1194858aa428.html#ga60dc8c8181210d46388c1194858aa428">boost::simd::Log_2olog_10</a> ()</td></tr>
-<tr class="memdesc:ga60dc8c8181210d46388c1194858aa428"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates constant Log_2olog_10 : \(\frac{\log(2)}{\log(10)}\).  <a href="group__group-constant_ga60dc8c8181210d46388c1194858aa428.html#ga60dc8c8181210d46388c1194858aa428">More...</a><br /></td></tr>
-<tr class="separator:ga60dc8c8181210d46388c1194858aa428"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga49af482026cc11c7fb16c033fcc4d447"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga49af482026cc11c7fb16c033fcc4d447"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga49af482026cc11c7fb16c033fcc4d447.html#ga49af482026cc11c7fb16c033fcc4d447">boost::simd::Logeps</a> ()</td></tr>
-<tr class="memdesc:ga49af482026cc11c7fb16c033fcc4d447"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the logarithm of the Eps constant.  <a href="group__group-constant_ga49af482026cc11c7fb16c033fcc4d447.html#ga49af482026cc11c7fb16c033fcc4d447">More...</a><br /></td></tr>
-<tr class="separator:ga49af482026cc11c7fb16c033fcc4d447"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga941c72fb589bdad6fa56cb567c53ac4a"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga941c72fb589bdad6fa56cb567c53ac4a"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga941c72fb589bdad6fa56cb567c53ac4a.html#ga941c72fb589bdad6fa56cb567c53ac4a">boost::simd::Logpi</a> ()</td></tr>
-<tr class="memdesc:ga941c72fb589bdad6fa56cb567c53ac4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate value \(\log\pi\).  <a href="group__group-constant_ga941c72fb589bdad6fa56cb567c53ac4a.html#ga941c72fb589bdad6fa56cb567c53ac4a">More...</a><br /></td></tr>
-<tr class="separator:ga941c72fb589bdad6fa56cb567c53ac4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6a46f9be1a264115f3e34ec14fea553a"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga6a46f9be1a264115f3e34ec14fea553a"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga6a46f9be1a264115f3e34ec14fea553a.html#ga6a46f9be1a264115f3e34ec14fea553a">boost::simd::Logsqrt2pi</a> ()</td></tr>
-<tr class="memdesc:ga6a46f9be1a264115f3e34ec14fea553a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate value \(\log\sqrt{2\pi}\).  <a href="group__group-constant_ga6a46f9be1a264115f3e34ec14fea553a.html#ga6a46f9be1a264115f3e34ec14fea553a">More...</a><br /></td></tr>
-<tr class="separator:ga6a46f9be1a264115f3e34ec14fea553a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3eec8b159eeca21ee980d97371e018f0"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga3eec8b159eeca21ee980d97371e018f0"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga3eec8b159eeca21ee980d97371e018f0.html#ga3eec8b159eeca21ee980d97371e018f0">boost::simd::Mantissamask</a> ()</td></tr>
-<tr class="memdesc:ga3eec8b159eeca21ee980d97371e018f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a mask used to compute the mantissa of a floating point value.  <a href="group__group-constant_ga3eec8b159eeca21ee980d97371e018f0.html#ga3eec8b159eeca21ee980d97371e018f0">More...</a><br /></td></tr>
-<tr class="separator:ga3eec8b159eeca21ee980d97371e018f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga403e9982e0da828e7b173a3f52236d77"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga403e9982e0da828e7b173a3f52236d77"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga403e9982e0da828e7b173a3f52236d77.html#ga403e9982e0da828e7b173a3f52236d77">boost::simd::Maxinit</a> ()</td></tr>
-<tr class="memdesc:ga403e9982e0da828e7b173a3f52236d77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant maxinit which is identical to minf for arithmetic real types but that must be specialized for complex values ordering.  <a href="group__group-constant_ga403e9982e0da828e7b173a3f52236d77.html#ga403e9982e0da828e7b173a3f52236d77">More...</a><br /></td></tr>
-<tr class="separator:ga403e9982e0da828e7b173a3f52236d77"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab3a876fa07b1a6a7a984b785ab4b0bc3"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gab3a876fa07b1a6a7a984b785ab4b0bc3"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gab3a876fa07b1a6a7a984b785ab4b0bc3.html#gab3a876fa07b1a6a7a984b785ab4b0bc3">boost::simd::Meight</a> ()</td></tr>
-<tr class="memdesc:gab3a876fa07b1a6a7a984b785ab4b0bc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant meight.  <a href="group__group-constant_gab3a876fa07b1a6a7a984b785ab4b0bc3.html#gab3a876fa07b1a6a7a984b785ab4b0bc3">More...</a><br /></td></tr>
-<tr class="separator:gab3a876fa07b1a6a7a984b785ab4b0bc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga190e16d1f278d0599e4706076f0a0094"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga190e16d1f278d0599e4706076f0a0094"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga190e16d1f278d0599e4706076f0a0094.html#ga190e16d1f278d0599e4706076f0a0094">boost::simd::Mfive</a> ()</td></tr>
-<tr class="memdesc:ga190e16d1f278d0599e4706076f0a0094"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant mfive.  <a href="group__group-constant_ga190e16d1f278d0599e4706076f0a0094.html#ga190e16d1f278d0599e4706076f0a0094">More...</a><br /></td></tr>
-<tr class="separator:ga190e16d1f278d0599e4706076f0a0094"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga080cca903982e62ac24add0362383318"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga080cca903982e62ac24add0362383318"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga080cca903982e62ac24add0362383318.html#ga080cca903982e62ac24add0362383318">boost::simd::Mfour</a> ()</td></tr>
-<tr class="memdesc:ga080cca903982e62ac24add0362383318"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant mfour.  <a href="group__group-constant_ga080cca903982e62ac24add0362383318.html#ga080cca903982e62ac24add0362383318">More...</a><br /></td></tr>
-<tr class="separator:ga080cca903982e62ac24add0362383318"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga163def3082858f37d987fdabf7f4d55e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga163def3082858f37d987fdabf7f4d55e"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga163def3082858f37d987fdabf7f4d55e.html#ga163def3082858f37d987fdabf7f4d55e">boost::simd::Mhalf</a> ()</td></tr>
-<tr class="memdesc:ga163def3082858f37d987fdabf7f4d55e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant mhalf.  <a href="group__group-constant_ga163def3082858f37d987fdabf7f4d55e.html#ga163def3082858f37d987fdabf7f4d55e">More...</a><br /></td></tr>
-<tr class="separator:ga163def3082858f37d987fdabf7f4d55e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa8156a53eb5e1f03779461cf93e7fd47"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gaa8156a53eb5e1f03779461cf93e7fd47"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gaa8156a53eb5e1f03779461cf93e7fd47.html#gaa8156a53eb5e1f03779461cf93e7fd47">boost::simd::Mindenormal</a> ()</td></tr>
-<tr class="memdesc:gaa8156a53eb5e1f03779461cf93e7fd47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the the least of all non zero positive value including denormals.  <a href="group__group-constant_gaa8156a53eb5e1f03779461cf93e7fd47.html#gaa8156a53eb5e1f03779461cf93e7fd47">More...</a><br /></td></tr>
-<tr class="separator:gaa8156a53eb5e1f03779461cf93e7fd47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafc5f8cbe0da683c33897046c8d5e8415"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gafc5f8cbe0da683c33897046c8d5e8415"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gafc5f8cbe0da683c33897046c8d5e8415.html#gafc5f8cbe0da683c33897046c8d5e8415">boost::simd::Minf</a> ()</td></tr>
-<tr class="memdesc:gafc5f8cbe0da683c33897046c8d5e8415"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the -inf IEEE value ( \(-\infty\)) for floating types and minimum value for integer types.  <a href="group__group-constant_gafc5f8cbe0da683c33897046c8d5e8415.html#gafc5f8cbe0da683c33897046c8d5e8415">More...</a><br /></td></tr>
-<tr class="separator:gafc5f8cbe0da683c33897046c8d5e8415"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac4acbdd4d34ab3ef433de7b1b5f0da54"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gac4acbdd4d34ab3ef433de7b1b5f0da54"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gac4acbdd4d34ab3ef433de7b1b5f0da54.html#gac4acbdd4d34ab3ef433de7b1b5f0da54">boost::simd::Mlog10two2nmb</a> ()</td></tr>
-<tr class="memdesc:gac4acbdd4d34ab3ef433de7b1b5f0da54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates constant Mlog10two2nmb.  <a href="group__group-constant_gac4acbdd4d34ab3ef433de7b1b5f0da54.html#gac4acbdd4d34ab3ef433de7b1b5f0da54">More...</a><br /></td></tr>
-<tr class="separator:gac4acbdd4d34ab3ef433de7b1b5f0da54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5c95750b87ec36d1ce94e6056834fdc7"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga5c95750b87ec36d1ce94e6056834fdc7"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga5c95750b87ec36d1ce94e6056834fdc7.html#ga5c95750b87ec36d1ce94e6056834fdc7">boost::simd::Mlog2two2nmb</a> ()</td></tr>
-<tr class="memdesc:ga5c95750b87ec36d1ce94e6056834fdc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates constant Mlog2two2nmb.  <a href="group__group-constant_ga5c95750b87ec36d1ce94e6056834fdc7.html#ga5c95750b87ec36d1ce94e6056834fdc7">More...</a><br /></td></tr>
-<tr class="separator:ga5c95750b87ec36d1ce94e6056834fdc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7dfc95b3b92178efa817b47d14c2aa60"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga7dfc95b3b92178efa817b47d14c2aa60"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga7dfc95b3b92178efa817b47d14c2aa60.html#ga7dfc95b3b92178efa817b47d14c2aa60">boost::simd::Mlogeps2</a> ()</td></tr>
-<tr class="memdesc:ga7dfc95b3b92178efa817b47d14c2aa60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate \(-\log(eps^2)\) value.  <a href="group__group-constant_ga7dfc95b3b92178efa817b47d14c2aa60.html#ga7dfc95b3b92178efa817b47d14c2aa60">More...</a><br /></td></tr>
-<tr class="separator:ga7dfc95b3b92178efa817b47d14c2aa60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9d4134dc32ab5be2aba4c41cfec4183f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga9d4134dc32ab5be2aba4c41cfec4183f"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga9d4134dc32ab5be2aba4c41cfec4183f.html#ga9d4134dc32ab5be2aba4c41cfec4183f">boost::simd::Mlogtwo2nmb</a> ()</td></tr>
-<tr class="memdesc:ga9d4134dc32ab5be2aba4c41cfec4183f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates constant Mlogtwo2nmb.  <a href="group__group-constant_ga9d4134dc32ab5be2aba4c41cfec4183f.html#ga9d4134dc32ab5be2aba4c41cfec4183f">More...</a><br /></td></tr>
-<tr class="separator:ga9d4134dc32ab5be2aba4c41cfec4183f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga486620d34c9ee7a9ace3f4b686e26f39"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga486620d34c9ee7a9ace3f4b686e26f39"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga486620d34c9ee7a9ace3f4b686e26f39.html#ga486620d34c9ee7a9ace3f4b686e26f39">boost::simd::Mnine</a> ()</td></tr>
-<tr class="memdesc:ga486620d34c9ee7a9ace3f4b686e26f39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant mnine.  <a href="group__group-constant_ga486620d34c9ee7a9ace3f4b686e26f39.html#ga486620d34c9ee7a9ace3f4b686e26f39">More...</a><br /></td></tr>
-<tr class="separator:ga486620d34c9ee7a9ace3f4b686e26f39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0da1119b39a28238e137cdbf198005c0"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga0da1119b39a28238e137cdbf198005c0"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga0da1119b39a28238e137cdbf198005c0.html#ga0da1119b39a28238e137cdbf198005c0">boost::simd::Mone</a> ()</td></tr>
-<tr class="memdesc:ga0da1119b39a28238e137cdbf198005c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the mone constant (-1).  <a href="group__group-constant_ga0da1119b39a28238e137cdbf198005c0.html#ga0da1119b39a28238e137cdbf198005c0">More...</a><br /></td></tr>
-<tr class="separator:ga0da1119b39a28238e137cdbf198005c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaac0bcbb1bfecb368eaf5b0f5ffdf3278"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gaac0bcbb1bfecb368eaf5b0f5ffdf3278"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gaac0bcbb1bfecb368eaf5b0f5ffdf3278.html#gaac0bcbb1bfecb368eaf5b0f5ffdf3278">boost::simd::Mseven</a> ()</td></tr>
-<tr class="memdesc:gaac0bcbb1bfecb368eaf5b0f5ffdf3278"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant mseven.  <a href="group__group-constant_gaac0bcbb1bfecb368eaf5b0f5ffdf3278.html#gaac0bcbb1bfecb368eaf5b0f5ffdf3278">More...</a><br /></td></tr>
-<tr class="separator:gaac0bcbb1bfecb368eaf5b0f5ffdf3278"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3b19b4e5f45654e43865c11afb48b970"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga3b19b4e5f45654e43865c11afb48b970"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga3b19b4e5f45654e43865c11afb48b970.html#ga3b19b4e5f45654e43865c11afb48b970">boost::simd::Msix</a> ()</td></tr>
-<tr class="memdesc:ga3b19b4e5f45654e43865c11afb48b970"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant msix.  <a href="group__group-constant_ga3b19b4e5f45654e43865c11afb48b970.html#ga3b19b4e5f45654e43865c11afb48b970">More...</a><br /></td></tr>
-<tr class="separator:ga3b19b4e5f45654e43865c11afb48b970"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2257146c03f812dac5e5c4eae632f4d6"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga2257146c03f812dac5e5c4eae632f4d6"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga2257146c03f812dac5e5c4eae632f4d6.html#ga2257146c03f812dac5e5c4eae632f4d6">boost::simd::Mten</a> ()</td></tr>
-<tr class="memdesc:ga2257146c03f812dac5e5c4eae632f4d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant mten.  <a href="group__group-constant_ga2257146c03f812dac5e5c4eae632f4d6.html#ga2257146c03f812dac5e5c4eae632f4d6">More...</a><br /></td></tr>
-<tr class="separator:ga2257146c03f812dac5e5c4eae632f4d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5089e2e41cd17cbf62cdec1ac5e2519f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga5089e2e41cd17cbf62cdec1ac5e2519f"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga5089e2e41cd17cbf62cdec1ac5e2519f.html#ga5089e2e41cd17cbf62cdec1ac5e2519f">boost::simd::Mthree</a> ()</td></tr>
-<tr class="memdesc:ga5089e2e41cd17cbf62cdec1ac5e2519f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant mthree.  <a href="group__group-constant_ga5089e2e41cd17cbf62cdec1ac5e2519f.html#ga5089e2e41cd17cbf62cdec1ac5e2519f">More...</a><br /></td></tr>
-<tr class="separator:ga5089e2e41cd17cbf62cdec1ac5e2519f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga77ef71dd032d9d711802fc7b7c1a4e8e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga77ef71dd032d9d711802fc7b7c1a4e8e"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga77ef71dd032d9d711802fc7b7c1a4e8e.html#ga77ef71dd032d9d711802fc7b7c1a4e8e">boost::simd::Mtwo</a> ()</td></tr>
-<tr class="memdesc:ga77ef71dd032d9d711802fc7b7c1a4e8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant mtwo.  <a href="group__group-constant_ga77ef71dd032d9d711802fc7b7c1a4e8e.html#ga77ef71dd032d9d711802fc7b7c1a4e8e">More...</a><br /></td></tr>
-<tr class="separator:ga77ef71dd032d9d711802fc7b7c1a4e8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3266df6b26e45549daa1ffccc85a10e9"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga3266df6b26e45549daa1ffccc85a10e9"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga3266df6b26e45549daa1ffccc85a10e9.html#ga3266df6b26e45549daa1ffccc85a10e9">boost::simd::Mzero</a> ()</td></tr>
-<tr class="memdesc:ga3266df6b26e45549daa1ffccc85a10e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate value -0.  <a href="group__group-constant_ga3266df6b26e45549daa1ffccc85a10e9.html#ga3266df6b26e45549daa1ffccc85a10e9">More...</a><br /></td></tr>
-<tr class="separator:ga3266df6b26e45549daa1ffccc85a10e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga28aac1b170296eb743ba1378e2515b2f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga28aac1b170296eb743ba1378e2515b2f"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga28aac1b170296eb743ba1378e2515b2f.html#ga28aac1b170296eb743ba1378e2515b2f">boost::simd::Nan</a> ()</td></tr>
-<tr class="memdesc:ga28aac1b170296eb743ba1378e2515b2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the Not a Number (Nan) constant.  <a href="group__group-constant_ga28aac1b170296eb743ba1378e2515b2f.html#ga28aac1b170296eb743ba1378e2515b2f">More...</a><br /></td></tr>
-<tr class="separator:ga28aac1b170296eb743ba1378e2515b2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga98e42903f865fdd3fe6d31df5a256196"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga98e42903f865fdd3fe6d31df5a256196"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga98e42903f865fdd3fe6d31df5a256196.html#ga98e42903f865fdd3fe6d31df5a256196">boost::simd::Nbdigits</a> ()</td></tr>
-<tr class="memdesc:ga98e42903f865fdd3fe6d31df5a256196"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the number of mantissa bits of a floating point number, and the total number of bits for integral types.  <a href="group__group-constant_ga98e42903f865fdd3fe6d31df5a256196.html#ga98e42903f865fdd3fe6d31df5a256196">More...</a><br /></td></tr>
-<tr class="separator:ga98e42903f865fdd3fe6d31df5a256196"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa88a9a75d113bd6f6f3c44f50ba9c0f6"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gaa88a9a75d113bd6f6f3c44f50ba9c0f6"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gaa88a9a75d113bd6f6f3c44f50ba9c0f6.html#gaa88a9a75d113bd6f6f3c44f50ba9c0f6">boost::simd::Nbexponentbits</a> ()</td></tr>
-<tr class="memdesc:gaa88a9a75d113bd6f6f3c44f50ba9c0f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the number of exponent bits of a floating point number,.  <a href="group__group-constant_gaa88a9a75d113bd6f6f3c44f50ba9c0f6.html#gaa88a9a75d113bd6f6f3c44f50ba9c0f6">More...</a><br /></td></tr>
-<tr class="separator:gaa88a9a75d113bd6f6f3c44f50ba9c0f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa5cb4f4d8699505b8148200a65d5acdc"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gaa5cb4f4d8699505b8148200a65d5acdc"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gaa5cb4f4d8699505b8148200a65d5acdc.html#gaa5cb4f4d8699505b8148200a65d5acdc">boost::simd::Nbmantissabits</a> ()</td></tr>
-<tr class="memdesc:gaa5cb4f4d8699505b8148200a65d5acdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the number of mantissa bits of a floating point number.  <a href="group__group-constant_gaa5cb4f4d8699505b8148200a65d5acdc.html#gaa5cb4f4d8699505b8148200a65d5acdc">More...</a><br /></td></tr>
-<tr class="separator:gaa5cb4f4d8699505b8148200a65d5acdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad5c1394c521390a2b24fabbc6c60b278"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gad5c1394c521390a2b24fabbc6c60b278"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gad5c1394c521390a2b24fabbc6c60b278.html#gad5c1394c521390a2b24fabbc6c60b278">boost::simd::Nine</a> ()</td></tr>
-<tr class="memdesc:gad5c1394c521390a2b24fabbc6c60b278"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant nine.  <a href="group__group-constant_gad5c1394c521390a2b24fabbc6c60b278.html#gad5c1394c521390a2b24fabbc6c60b278">More...</a><br /></td></tr>
-<tr class="separator:gad5c1394c521390a2b24fabbc6c60b278"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf41e828bbf43b5bb5a01cbd9ae11d755"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gaf41e828bbf43b5bb5a01cbd9ae11d755"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gaf41e828bbf43b5bb5a01cbd9ae11d755.html#gaf41e828bbf43b5bb5a01cbd9ae11d755">boost::simd::One</a> ()</td></tr>
-<tr class="memdesc:gaf41e828bbf43b5bb5a01cbd9ae11d755"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant one.  <a href="group__group-constant_gaf41e828bbf43b5bb5a01cbd9ae11d755.html#gaf41e828bbf43b5bb5a01cbd9ae11d755">More...</a><br /></td></tr>
-<tr class="separator:gaf41e828bbf43b5bb5a01cbd9ae11d755"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf4eb5a1289d6188d11093fd776fbf195"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gaf4eb5a1289d6188d11093fd776fbf195"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gaf4eb5a1289d6188d11093fd776fbf195.html#gaf4eb5a1289d6188d11093fd776fbf195">boost::simd::Oneosqrt5</a> ()</td></tr>
-<tr class="memdesc:gaf4eb5a1289d6188d11093fd776fbf195"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate \(1/\sqrt5\).  <a href="group__group-constant_gaf4eb5a1289d6188d11093fd776fbf195.html#gaf4eb5a1289d6188d11093fd776fbf195">More...</a><br /></td></tr>
-<tr class="separator:gaf4eb5a1289d6188d11093fd776fbf195"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga216beef5b67dace18fd107bac1cf3083"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga216beef5b67dace18fd107bac1cf3083"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga216beef5b67dace18fd107bac1cf3083.html#ga216beef5b67dace18fd107bac1cf3083">boost::simd::Oneosqrteps</a> ()</td></tr>
-<tr class="memdesc:ga216beef5b67dace18fd107bac1cf3083"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate \(1/\sqrt\epsilon\).  <a href="group__group-constant_ga216beef5b67dace18fd107bac1cf3083.html#ga216beef5b67dace18fd107bac1cf3083">More...</a><br /></td></tr>
-<tr class="separator:ga216beef5b67dace18fd107bac1cf3083"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab20473b3933c8fb59079de9a5190a91e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gab20473b3933c8fb59079de9a5190a91e"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gab20473b3933c8fb59079de9a5190a91e.html#gab20473b3933c8fb59079de9a5190a91e">boost::simd::Oneotwoeps</a> ()</td></tr>
-<tr class="memdesc:gab20473b3933c8fb59079de9a5190a91e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate \(1/(2\epsilon)\).  <a href="group__group-constant_gab20473b3933c8fb59079de9a5190a91e.html#gab20473b3933c8fb59079de9a5190a91e">More...</a><br /></td></tr>
-<tr class="separator:gab20473b3933c8fb59079de9a5190a91e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7d209ca9796ace803d49bc0196b0984c"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga7d209ca9796ace803d49bc0196b0984c"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga7d209ca9796ace803d49bc0196b0984c.html#ga7d209ca9796ace803d49bc0196b0984c">boost::simd::Pi</a> ()</td></tr>
-<tr class="memdesc:ga7d209ca9796ace803d49bc0196b0984c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate value \(\pi\) that is the half length of a circle of radius one ...  <a href="group__group-constant_ga7d209ca9796ace803d49bc0196b0984c.html#ga7d209ca9796ace803d49bc0196b0984c">More...</a><br /></td></tr>
-<tr class="separator:ga7d209ca9796ace803d49bc0196b0984c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab08b28a4d87991aa4569e8bb4f6c8817"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gab08b28a4d87991aa4569e8bb4f6c8817"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gab08b28a4d87991aa4569e8bb4f6c8817.html#gab08b28a4d87991aa4569e8bb4f6c8817">boost::simd::Pio2_3</a> ()</td></tr>
-<tr class="memdesc:gab08b28a4d87991aa4569e8bb4f6c8817"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constant used in modular computation involving \(\pi\).  <a href="group__group-constant_gab08b28a4d87991aa4569e8bb4f6c8817.html#gab08b28a4d87991aa4569e8bb4f6c8817">More...</a><br /></td></tr>
-<tr class="separator:gab08b28a4d87991aa4569e8bb4f6c8817"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga690cd63f35ce9e6c66e65d02974ca403"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga690cd63f35ce9e6c66e65d02974ca403"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga690cd63f35ce9e6c66e65d02974ca403.html#ga690cd63f35ce9e6c66e65d02974ca403">boost::simd::Pio_2</a> ()</td></tr>
-<tr class="memdesc:ga690cd63f35ce9e6c66e65d02974ca403"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate t \(\frac\pi{2}\).  <a href="group__group-constant_ga690cd63f35ce9e6c66e65d02974ca403.html#ga690cd63f35ce9e6c66e65d02974ca403">More...</a><br /></td></tr>
-<tr class="separator:ga690cd63f35ce9e6c66e65d02974ca403"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga20ea0656e6b78be8f097ff096bd3d342"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga20ea0656e6b78be8f097ff096bd3d342"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga20ea0656e6b78be8f097ff096bd3d342.html#ga20ea0656e6b78be8f097ff096bd3d342">boost::simd::Pio_3</a> ()</td></tr>
-<tr class="memdesc:ga20ea0656e6b78be8f097ff096bd3d342"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constant \(\frac\pi{3}\).  <a href="group__group-constant_ga20ea0656e6b78be8f097ff096bd3d342.html#ga20ea0656e6b78be8f097ff096bd3d342">More...</a><br /></td></tr>
-<tr class="separator:ga20ea0656e6b78be8f097ff096bd3d342"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga32aca4ede553924fd8c552ac80cf3b60"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga32aca4ede553924fd8c552ac80cf3b60"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga32aca4ede553924fd8c552ac80cf3b60.html#ga32aca4ede553924fd8c552ac80cf3b60">boost::simd::Pio_4</a> ()</td></tr>
-<tr class="memdesc:ga32aca4ede553924fd8c552ac80cf3b60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constant \(\frac\pi{4}\).  <a href="group__group-constant_ga32aca4ede553924fd8c552ac80cf3b60.html#ga32aca4ede553924fd8c552ac80cf3b60">More...</a><br /></td></tr>
-<tr class="separator:ga32aca4ede553924fd8c552ac80cf3b60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3875a7ec1e831de90746ad56f2e73bc9"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga3875a7ec1e831de90746ad56f2e73bc9"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga3875a7ec1e831de90746ad56f2e73bc9.html#ga3875a7ec1e831de90746ad56f2e73bc9">boost::simd::Pio_6</a> ()</td></tr>
-<tr class="memdesc:ga3875a7ec1e831de90746ad56f2e73bc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constant \(\frac\pi{6}\).  <a href="group__group-constant_ga3875a7ec1e831de90746ad56f2e73bc9.html#ga3875a7ec1e831de90746ad56f2e73bc9">More...</a><br /></td></tr>
-<tr class="separator:ga3875a7ec1e831de90746ad56f2e73bc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacef8472ceb7706600364338b443412ae"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gacef8472ceb7706600364338b443412ae"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gacef8472ceb7706600364338b443412ae.html#gacef8472ceb7706600364338b443412ae">boost::simd::Quarter</a> ()</td></tr>
-<tr class="memdesc:gacef8472ceb7706600364338b443412ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate t value 1/4.  <a href="group__group-constant_gacef8472ceb7706600364338b443412ae.html#gacef8472ceb7706600364338b443412ae">More...</a><br /></td></tr>
-<tr class="separator:gacef8472ceb7706600364338b443412ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga13be590f66dca522f3927183ba777434"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga13be590f66dca522f3927183ba777434"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga13be590f66dca522f3927183ba777434.html#ga13be590f66dca522f3927183ba777434">boost::simd::Radindeg</a> ()</td></tr>
-<tr class="memdesc:ga13be590f66dca522f3927183ba777434"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constant Radindeg : Degree in Radian multiplier, \(\frac\pi{180}\).  <a href="group__group-constant_ga13be590f66dca522f3927183ba777434.html#ga13be590f66dca522f3927183ba777434">More...</a><br /></td></tr>
-<tr class="separator:ga13be590f66dca522f3927183ba777434"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa44dd329e97de1178617802938ee93a5"><td class="memTemplParams" colspan="2">template&lt;typename Type , std::uintmax_t Numerator, std::uintmax_t Denumerator&gt; </td></tr>
-<tr class="memitem:gaa44dd329e97de1178617802938ee93a5"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gaa44dd329e97de1178617802938ee93a5.html#gaa44dd329e97de1178617802938ee93a5">boost::simd::Ratio</a> ()</td></tr>
-<tr class="memdesc:gaa44dd329e97de1178617802938ee93a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a constant from a static rational number representation.  <a href="group__group-constant_gaa44dd329e97de1178617802938ee93a5.html#gaa44dd329e97de1178617802938ee93a5">More...</a><br /></td></tr>
-<tr class="separator:gaa44dd329e97de1178617802938ee93a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga169db25b07f741ba64cd5c10598dc11f"><td class="memTemplParams" colspan="2">template&lt;typename Type , std::uintmax_t Double, std::uintmax_t Single&gt; </td></tr>
-<tr class="memitem:ga169db25b07f741ba64cd5c10598dc11f"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga169db25b07f741ba64cd5c10598dc11f.html#ga169db25b07f741ba64cd5c10598dc11f">boost::simd::Real</a> ()</td></tr>
-<tr class="memdesc:ga169db25b07f741ba64cd5c10598dc11f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a constant from a static real number representation.  <a href="group__group-constant_ga169db25b07f741ba64cd5c10598dc11f.html#ga169db25b07f741ba64cd5c10598dc11f">More...</a><br /></td></tr>
-<tr class="separator:ga169db25b07f741ba64cd5c10598dc11f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4a71a12d1eb773a9447391a2ceece4eb"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga4a71a12d1eb773a9447391a2ceece4eb"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga4a71a12d1eb773a9447391a2ceece4eb.html#ga4a71a12d1eb773a9447391a2ceece4eb">boost::simd::Seven</a> ()</td></tr>
-<tr class="memdesc:ga4a71a12d1eb773a9447391a2ceece4eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant seven.  <a href="group__group-constant_ga4a71a12d1eb773a9447391a2ceece4eb.html#ga4a71a12d1eb773a9447391a2ceece4eb">More...</a><br /></td></tr>
-<tr class="separator:ga4a71a12d1eb773a9447391a2ceece4eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaefc3a6556c970d791b11e5b9e600474e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gaefc3a6556c970d791b11e5b9e600474e"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gaefc3a6556c970d791b11e5b9e600474e.html#gaefc3a6556c970d791b11e5b9e600474e">boost::simd::Signmask</a> ()</td></tr>
-<tr class="memdesc:gaefc3a6556c970d791b11e5b9e600474e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a mask with the lone most significand bit set to one (even if the type is unsigned).  <a href="group__group-constant_gaefc3a6556c970d791b11e5b9e600474e.html#gaefc3a6556c970d791b11e5b9e600474e">More...</a><br /></td></tr>
-<tr class="separator:gaefc3a6556c970d791b11e5b9e600474e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga805660ad7d0bb1f2cef6a239ef2fa479"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga805660ad7d0bb1f2cef6a239ef2fa479"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga805660ad7d0bb1f2cef6a239ef2fa479.html#ga805660ad7d0bb1f2cef6a239ef2fa479">boost::simd::Six</a> ()</td></tr>
-<tr class="memdesc:ga805660ad7d0bb1f2cef6a239ef2fa479"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant six.  <a href="group__group-constant_ga805660ad7d0bb1f2cef6a239ef2fa479.html#ga805660ad7d0bb1f2cef6a239ef2fa479">More...</a><br /></td></tr>
-<tr class="separator:ga805660ad7d0bb1f2cef6a239ef2fa479"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac5b8faad4ce41049668ce935904add71"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gac5b8faad4ce41049668ce935904add71"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gac5b8faad4ce41049668ce935904add71.html#gac5b8faad4ce41049668ce935904add71">boost::simd::Sixteen</a> ()</td></tr>
-<tr class="memdesc:gac5b8faad4ce41049668ce935904add71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant sixteen.  <a href="group__group-constant_gac5b8faad4ce41049668ce935904add71.html#gac5b8faad4ce41049668ce935904add71">More...</a><br /></td></tr>
-<tr class="separator:gac5b8faad4ce41049668ce935904add71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1692151755073c5d2cebf91b3f20ddb3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group-constant_ga1692151755073c5d2cebf91b3f20ddb3.html#ga1692151755073c5d2cebf91b3f20ddb3">boost::simd::functional::Sixteen</a> ()</td></tr>
-<tr class="memdesc:ga1692151755073c5d2cebf91b3f20ddb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant sixteen.  <a href="group__group-constant_ga1692151755073c5d2cebf91b3f20ddb3.html#ga1692151755073c5d2cebf91b3f20ddb3">More...</a><br /></td></tr>
-<tr class="separator:ga1692151755073c5d2cebf91b3f20ddb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga188a430b2f1f4ab7643574bd4baaa196"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga188a430b2f1f4ab7643574bd4baaa196"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga188a430b2f1f4ab7643574bd4baaa196.html#ga188a430b2f1f4ab7643574bd4baaa196">boost::simd::Smallestposval</a> ()</td></tr>
-<tr class="memdesc:ga188a430b2f1f4ab7643574bd4baaa196"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the least non zero, non denormal, positive value.  <a href="group__group-constant_ga188a430b2f1f4ab7643574bd4baaa196.html#ga188a430b2f1f4ab7643574bd4baaa196">More...</a><br /></td></tr>
-<tr class="separator:ga188a430b2f1f4ab7643574bd4baaa196"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab1b54f0306411e8377c9fcd7af147e27"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gab1b54f0306411e8377c9fcd7af147e27"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gab1b54f0306411e8377c9fcd7af147e27.html#gab1b54f0306411e8377c9fcd7af147e27">boost::simd::Splitfactor</a> ()</td></tr>
-<tr class="memdesc:gab1b54f0306411e8377c9fcd7af147e27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a constant used to split a floating number in two parts, in floating point routines (such <a class="el" href="group__group-arithmetic_ga8cf0ba57524f68586845eae2716b94c9.html#ga8cf0ba57524f68586845eae2716b94c9">two_add</a> and <a class="el" href="group__group-arithmetic_ga1ff2f78e81d31958f517239194b1b835.html#ga1ff2f78e81d31958f517239194b1b835">two_prod</a>) to get extra precision.  <a href="group__group-constant_gab1b54f0306411e8377c9fcd7af147e27.html#gab1b54f0306411e8377c9fcd7af147e27">More...</a><br /></td></tr>
-<tr class="separator:gab1b54f0306411e8377c9fcd7af147e27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf62c8a1af93b855b70c435aabca11ffc"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gaf62c8a1af93b855b70c435aabca11ffc"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gaf62c8a1af93b855b70c435aabca11ffc.html#gaf62c8a1af93b855b70c435aabca11ffc">boost::simd::Sqrt_1o_5</a> ()</td></tr>
-<tr class="memdesc:gaf62c8a1af93b855b70c435aabca11ffc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate value \( \sqrt{\frac15}\).  <a href="group__group-constant_gaf62c8a1af93b855b70c435aabca11ffc.html#gaf62c8a1af93b855b70c435aabca11ffc">More...</a><br /></td></tr>
-<tr class="separator:gaf62c8a1af93b855b70c435aabca11ffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacf2e4b16055c3844926c50d05b3e92ee"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gacf2e4b16055c3844926c50d05b3e92ee"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gacf2e4b16055c3844926c50d05b3e92ee.html#gacf2e4b16055c3844926c50d05b3e92ee">boost::simd::Sqrt_2</a> ()</td></tr>
-<tr class="memdesc:gacf2e4b16055c3844926c50d05b3e92ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate value \(\sqrt2\).  <a href="group__group-constant_gacf2e4b16055c3844926c50d05b3e92ee.html#gacf2e4b16055c3844926c50d05b3e92ee">More...</a><br /></td></tr>
-<tr class="separator:gacf2e4b16055c3844926c50d05b3e92ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad313c210dc43a0a278f569b69be6b5d2"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gad313c210dc43a0a278f569b69be6b5d2"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gad313c210dc43a0a278f569b69be6b5d2.html#gad313c210dc43a0a278f569b69be6b5d2">boost::simd::Sqrt_2o_2</a> ()</td></tr>
-<tr class="memdesc:gad313c210dc43a0a278f569b69be6b5d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate value \(\frac{\sqrt2}2\).  <a href="group__group-constant_gad313c210dc43a0a278f569b69be6b5d2.html#gad313c210dc43a0a278f569b69be6b5d2">More...</a><br /></td></tr>
-<tr class="separator:gad313c210dc43a0a278f569b69be6b5d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga91a7a7d2c8d88e8b5a6344907438edd7"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga91a7a7d2c8d88e8b5a6344907438edd7"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga91a7a7d2c8d88e8b5a6344907438edd7.html#ga91a7a7d2c8d88e8b5a6344907438edd7">boost::simd::Sqrt_2o_3</a> ()</td></tr>
-<tr class="memdesc:ga91a7a7d2c8d88e8b5a6344907438edd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate value \(\frac{\sqrt2}3\).  <a href="group__group-constant_ga91a7a7d2c8d88e8b5a6344907438edd7.html#ga91a7a7d2c8d88e8b5a6344907438edd7">More...</a><br /></td></tr>
-<tr class="separator:ga91a7a7d2c8d88e8b5a6344907438edd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab0ca9b3b14f765d5f2b392e30bada3b4"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gab0ca9b3b14f765d5f2b392e30bada3b4"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gab0ca9b3b14f765d5f2b392e30bada3b4.html#gab0ca9b3b14f765d5f2b392e30bada3b4">boost::simd::Sqrt_2opi</a> ()</td></tr>
-<tr class="memdesc:gab0ca9b3b14f765d5f2b392e30bada3b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constant \(\frac{\sqrt2}{\pi}\).  <a href="group__group-constant_gab0ca9b3b14f765d5f2b392e30bada3b4.html#gab0ca9b3b14f765d5f2b392e30bada3b4">More...</a><br /></td></tr>
-<tr class="separator:gab0ca9b3b14f765d5f2b392e30bada3b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga09201a224a2bc783a8609dd33241c090"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga09201a224a2bc783a8609dd33241c090"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga09201a224a2bc783a8609dd33241c090.html#ga09201a224a2bc783a8609dd33241c090">boost::simd::Sqrt_2pi</a> ()</td></tr>
-<tr class="memdesc:ga09201a224a2bc783a8609dd33241c090"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constant \(\sqrt{2\pi}\).  <a href="group__group-constant_ga09201a224a2bc783a8609dd33241c090.html#ga09201a224a2bc783a8609dd33241c090">More...</a><br /></td></tr>
-<tr class="separator:ga09201a224a2bc783a8609dd33241c090"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga286fc98d39f2018e6d59473d306b8bca"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga286fc98d39f2018e6d59473d306b8bca"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga286fc98d39f2018e6d59473d306b8bca.html#ga286fc98d39f2018e6d59473d306b8bca">boost::simd::Sqrteps</a> ()</td></tr>
-<tr class="memdesc:ga286fc98d39f2018e6d59473d306b8bca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the square root of constant Eps.  <a href="group__group-constant_ga286fc98d39f2018e6d59473d306b8bca.html#ga286fc98d39f2018e6d59473d306b8bca">More...</a><br /></td></tr>
-<tr class="separator:ga286fc98d39f2018e6d59473d306b8bca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0852f07927b257604b213345aee1040b"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga0852f07927b257604b213345aee1040b"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga0852f07927b257604b213345aee1040b.html#ga0852f07927b257604b213345aee1040b">boost::simd::Sqrtpio_2</a> ()</td></tr>
-<tr class="memdesc:ga0852f07927b257604b213345aee1040b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constant Sqrtpio_2 : \(\frac{\sqrt\pi}{2}\).  <a href="group__group-constant_ga0852f07927b257604b213345aee1040b.html#ga0852f07927b257604b213345aee1040b">More...</a><br /></td></tr>
-<tr class="separator:ga0852f07927b257604b213345aee1040b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabd48cc1abd017d3f9f0ae5fe255d8939"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gabd48cc1abd017d3f9f0ae5fe255d8939"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gabd48cc1abd017d3f9f0ae5fe255d8939.html#gabd48cc1abd017d3f9f0ae5fe255d8939">boost::simd::Sqrtsmallestposval</a> ()</td></tr>
-<tr class="memdesc:gabd48cc1abd017d3f9f0ae5fe255d8939"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the square root of the least non zero positive non denormal value of the chosen type.  <a href="group__group-constant_gabd48cc1abd017d3f9f0ae5fe255d8939.html#gabd48cc1abd017d3f9f0ae5fe255d8939">More...</a><br /></td></tr>
-<tr class="separator:gabd48cc1abd017d3f9f0ae5fe255d8939"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2b2628864879d895973328392225134e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga2b2628864879d895973328392225134e"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga2b2628864879d895973328392225134e.html#ga2b2628864879d895973328392225134e">boost::simd::Sqrtvalmax</a> ()</td></tr>
-<tr class="memdesc:ga2b2628864879d895973328392225134e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the square root of the greatest finite representable value.  <a href="group__group-constant_ga2b2628864879d895973328392225134e.html#ga2b2628864879d895973328392225134e">More...</a><br /></td></tr>
-<tr class="separator:ga2b2628864879d895973328392225134e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaefbaf9d6f8e46ac8cd19bf5c9756d964"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gaefbaf9d6f8e46ac8cd19bf5c9756d964"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gaefbaf9d6f8e46ac8cd19bf5c9756d964.html#gaefbaf9d6f8e46ac8cd19bf5c9756d964">boost::simd::Tan_3pio_8</a> ()</td></tr>
-<tr class="memdesc:gaefbaf9d6f8e46ac8cd19bf5c9756d964"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constant \(\tan3\frac\pi{8} = \sqrt2 + 1\).  <a href="group__group-constant_gaefbaf9d6f8e46ac8cd19bf5c9756d964.html#gaefbaf9d6f8e46ac8cd19bf5c9756d964">More...</a><br /></td></tr>
-<tr class="separator:gaefbaf9d6f8e46ac8cd19bf5c9756d964"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae24e24ab99225b8c94426fb69e3302fc"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gae24e24ab99225b8c94426fb69e3302fc"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gae24e24ab99225b8c94426fb69e3302fc.html#gae24e24ab99225b8c94426fb69e3302fc">boost::simd::Tanpio_8</a> ()</td></tr>
-<tr class="memdesc:gae24e24ab99225b8c94426fb69e3302fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constant \(\tan3\frac\pi{8} = \sqrt2 - 1\).  <a href="group__group-constant_gae24e24ab99225b8c94426fb69e3302fc.html#gae24e24ab99225b8c94426fb69e3302fc">More...</a><br /></td></tr>
-<tr class="separator:gae24e24ab99225b8c94426fb69e3302fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa32752e958a32fe85f420c8bbdac2c3f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gaa32752e958a32fe85f420c8bbdac2c3f"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gaa32752e958a32fe85f420c8bbdac2c3f.html#gaa32752e958a32fe85f420c8bbdac2c3f">boost::simd::Ten</a> ()</td></tr>
-<tr class="memdesc:gaa32752e958a32fe85f420c8bbdac2c3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant ten.  <a href="group__group-constant_gaa32752e958a32fe85f420c8bbdac2c3f.html#gaa32752e958a32fe85f420c8bbdac2c3f">More...</a><br /></td></tr>
-<tr class="separator:gaa32752e958a32fe85f420c8bbdac2c3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga75869e981b9267405c85c7e0fcb3e46d"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga75869e981b9267405c85c7e0fcb3e46d"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga75869e981b9267405c85c7e0fcb3e46d.html#ga75869e981b9267405c85c7e0fcb3e46d">boost::simd::Third</a> ()</td></tr>
-<tr class="memdesc:ga75869e981b9267405c85c7e0fcb3e46d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate value 1/3.  <a href="group__group-constant_ga75869e981b9267405c85c7e0fcb3e46d.html#ga75869e981b9267405c85c7e0fcb3e46d">More...</a><br /></td></tr>
-<tr class="separator:ga75869e981b9267405c85c7e0fcb3e46d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga67abd5c59388b160a7f8c3d09861f463"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga67abd5c59388b160a7f8c3d09861f463"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga67abd5c59388b160a7f8c3d09861f463.html#ga67abd5c59388b160a7f8c3d09861f463">boost::simd::Thirdrooteps</a> ()</td></tr>
-<tr class="memdesc:ga67abd5c59388b160a7f8c3d09861f463"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the cubic root of <a class="el" href="group__group-constant_ga0447bdf6191e88d2b5ac1b6994a0945a.html#ga0447bdf6191e88d2b5ac1b6994a0945a">Eps</a>.  <a href="group__group-constant_ga67abd5c59388b160a7f8c3d09861f463.html#ga67abd5c59388b160a7f8c3d09861f463">More...</a><br /></td></tr>
-<tr class="separator:ga67abd5c59388b160a7f8c3d09861f463"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4911531adb02a5e8e2d6395773eeaa41"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga4911531adb02a5e8e2d6395773eeaa41"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga4911531adb02a5e8e2d6395773eeaa41.html#ga4911531adb02a5e8e2d6395773eeaa41">boost::simd::Thousand</a> ()</td></tr>
-<tr class="memdesc:ga4911531adb02a5e8e2d6395773eeaa41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant thousand.  <a href="group__group-constant_ga4911531adb02a5e8e2d6395773eeaa41.html#ga4911531adb02a5e8e2d6395773eeaa41">More...</a><br /></td></tr>
-<tr class="separator:ga4911531adb02a5e8e2d6395773eeaa41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2ec6f325a30600ea2b9df8ff2a73faa7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group-constant_ga2ec6f325a30600ea2b9df8ff2a73faa7.html#ga2ec6f325a30600ea2b9df8ff2a73faa7">boost::simd::functional::Thousand</a> ()</td></tr>
-<tr class="memdesc:ga2ec6f325a30600ea2b9df8ff2a73faa7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant thousand.  <a href="group__group-constant_ga2ec6f325a30600ea2b9df8ff2a73faa7.html#ga2ec6f325a30600ea2b9df8ff2a73faa7">More...</a><br /></td></tr>
-<tr class="separator:ga2ec6f325a30600ea2b9df8ff2a73faa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1332546506ace778f5a12d6e878f4edf"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga1332546506ace778f5a12d6e878f4edf"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga1332546506ace778f5a12d6e878f4edf.html#ga1332546506ace778f5a12d6e878f4edf">boost::simd::Three</a> ()</td></tr>
-<tr class="memdesc:ga1332546506ace778f5a12d6e878f4edf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant three.  <a href="group__group-constant_ga1332546506ace778f5a12d6e878f4edf.html#ga1332546506ace778f5a12d6e878f4edf">More...</a><br /></td></tr>
-<tr class="separator:ga1332546506ace778f5a12d6e878f4edf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga27f22d3508bf4545ff42ca2d097bbce8"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga27f22d3508bf4545ff42ca2d097bbce8"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga27f22d3508bf4545ff42ca2d097bbce8.html#ga27f22d3508bf4545ff42ca2d097bbce8">boost::simd::Threeeps</a> ()</td></tr>
-<tr class="memdesc:ga27f22d3508bf4545ff42ca2d097bbce8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a value equal to 3 times <a class="el" href="group__group-constant_ga0447bdf6191e88d2b5ac1b6994a0945a.html#ga0447bdf6191e88d2b5ac1b6994a0945a">Eps</a> of the chosen type.  <a href="group__group-constant_ga27f22d3508bf4545ff42ca2d097bbce8.html#ga27f22d3508bf4545ff42ca2d097bbce8">More...</a><br /></td></tr>
-<tr class="separator:ga27f22d3508bf4545ff42ca2d097bbce8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabcc32ee24428b0f142feb9899dcab5b3"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gabcc32ee24428b0f142feb9899dcab5b3"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gabcc32ee24428b0f142feb9899dcab5b3.html#gabcc32ee24428b0f142feb9899dcab5b3">boost::simd::Threepio_4</a> ()</td></tr>
-<tr class="memdesc:gabcc32ee24428b0f142feb9899dcab5b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constant threepio_4 : \(3\pi/4\).  <a href="group__group-constant_gabcc32ee24428b0f142feb9899dcab5b3.html#gabcc32ee24428b0f142feb9899dcab5b3">More...</a><br /></td></tr>
-<tr class="separator:gabcc32ee24428b0f142feb9899dcab5b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga990a7661b7bc05c1da57603955d355f2"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga990a7661b7bc05c1da57603955d355f2"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga990a7661b7bc05c1da57603955d355f2.html#ga990a7661b7bc05c1da57603955d355f2">boost::simd::True</a> ()</td></tr>
-<tr class="memdesc:ga990a7661b7bc05c1da57603955d355f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant true.  <a href="group__group-constant_ga990a7661b7bc05c1da57603955d355f2.html#ga990a7661b7bc05c1da57603955d355f2">More...</a><br /></td></tr>
-<tr class="separator:ga990a7661b7bc05c1da57603955d355f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaab5a51777c4bb72575d7ff130eeba8c2"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gaab5a51777c4bb72575d7ff130eeba8c2"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gaab5a51777c4bb72575d7ff130eeba8c2.html#gaab5a51777c4bb72575d7ff130eeba8c2">boost::simd::Twelve</a> ()</td></tr>
-<tr class="memdesc:gaab5a51777c4bb72575d7ff130eeba8c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant twelve.  <a href="group__group-constant_gaab5a51777c4bb72575d7ff130eeba8c2.html#gaab5a51777c4bb72575d7ff130eeba8c2">More...</a><br /></td></tr>
-<tr class="separator:gaab5a51777c4bb72575d7ff130eeba8c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7307cf55693872774f02ca3162b3ce7d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group-constant_ga7307cf55693872774f02ca3162b3ce7d.html#ga7307cf55693872774f02ca3162b3ce7d">boost::simd::functional::Twelve</a> ()</td></tr>
-<tr class="memdesc:ga7307cf55693872774f02ca3162b3ce7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant twelve.  <a href="group__group-constant_ga7307cf55693872774f02ca3162b3ce7d.html#ga7307cf55693872774f02ca3162b3ce7d">More...</a><br /></td></tr>
-<tr class="separator:ga7307cf55693872774f02ca3162b3ce7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab8f021712dd8d41ce66203bd68edb985"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gab8f021712dd8d41ce66203bd68edb985"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gab8f021712dd8d41ce66203bd68edb985.html#gab8f021712dd8d41ce66203bd68edb985">boost::simd::Twenty</a> ()</td></tr>
-<tr class="memdesc:gab8f021712dd8d41ce66203bd68edb985"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant twenty.  <a href="group__group-constant_gab8f021712dd8d41ce66203bd68edb985.html#gab8f021712dd8d41ce66203bd68edb985">More...</a><br /></td></tr>
-<tr class="separator:gab8f021712dd8d41ce66203bd68edb985"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5ebc0573dca7e5670e95201ef54277fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group-constant_ga5ebc0573dca7e5670e95201ef54277fc.html#ga5ebc0573dca7e5670e95201ef54277fc">boost::simd::functional::Twenty</a> ()</td></tr>
-<tr class="memdesc:ga5ebc0573dca7e5670e95201ef54277fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant twenty.  <a href="group__group-constant_ga5ebc0573dca7e5670e95201ef54277fc.html#ga5ebc0573dca7e5670e95201ef54277fc">More...</a><br /></td></tr>
-<tr class="separator:ga5ebc0573dca7e5670e95201ef54277fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad997b5bc432bd0cfd4df3f474da55f6e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gad997b5bc432bd0cfd4df3f474da55f6e"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gad997b5bc432bd0cfd4df3f474da55f6e.html#gad997b5bc432bd0cfd4df3f474da55f6e">boost::simd::Two</a> ()</td></tr>
-<tr class="memdesc:gad997b5bc432bd0cfd4df3f474da55f6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the constant two.  <a href="group__group-constant_gad997b5bc432bd0cfd4df3f474da55f6e.html#gad997b5bc432bd0cfd4df3f474da55f6e">More...</a><br /></td></tr>
-<tr class="separator:gad997b5bc432bd0cfd4df3f474da55f6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabe434e3515c277ad67fcfd57b3cf91c6"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gabe434e3515c277ad67fcfd57b3cf91c6"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gabe434e3515c277ad67fcfd57b3cf91c6.html#gabe434e3515c277ad67fcfd57b3cf91c6">boost::simd::Twoopi</a> ()</td></tr>
-<tr class="memdesc:gabe434e3515c277ad67fcfd57b3cf91c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constant \(\frac2\pi\).  <a href="group__group-constant_gabe434e3515c277ad67fcfd57b3cf91c6.html#gabe434e3515c277ad67fcfd57b3cf91c6">More...</a><br /></td></tr>
-<tr class="separator:gabe434e3515c277ad67fcfd57b3cf91c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa63c63daf596030ec9dacc76d5850d13"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gaa63c63daf596030ec9dacc76d5850d13"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gaa63c63daf596030ec9dacc76d5850d13.html#gaa63c63daf596030ec9dacc76d5850d13">boost::simd::Twopi</a> ()</td></tr>
-<tr class="memdesc:gaa63c63daf596030ec9dacc76d5850d13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constant \(2\pi\).  <a href="group__group-constant_gaa63c63daf596030ec9dacc76d5850d13.html#gaa63c63daf596030ec9dacc76d5850d13">More...</a><br /></td></tr>
-<tr class="separator:gaa63c63daf596030ec9dacc76d5850d13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf7e156f606e81d8b00cb565b1a455336"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gaf7e156f606e81d8b00cb565b1a455336"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gaf7e156f606e81d8b00cb565b1a455336.html#gaf7e156f606e81d8b00cb565b1a455336">boost::simd::Twopio_3</a> ()</td></tr>
-<tr class="memdesc:gaf7e156f606e81d8b00cb565b1a455336"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constant \(2\frac\pi{3}\).  <a href="group__group-constant_gaf7e156f606e81d8b00cb565b1a455336.html#gaf7e156f606e81d8b00cb565b1a455336">More...</a><br /></td></tr>
-<tr class="separator:gaf7e156f606e81d8b00cb565b1a455336"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga24d69f7dba4e3bfd46cdd772fdd10183"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga24d69f7dba4e3bfd46cdd772fdd10183"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga24d69f7dba4e3bfd46cdd772fdd10183.html#ga24d69f7dba4e3bfd46cdd772fdd10183">boost::simd::Twoto31</a> ()</td></tr>
-<tr class="memdesc:ga24d69f7dba4e3bfd46cdd772fdd10183"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate 2 to the power 31 ( \(2^{31}\))  <a href="group__group-constant_ga24d69f7dba4e3bfd46cdd772fdd10183.html#ga24d69f7dba4e3bfd46cdd772fdd10183">More...</a><br /></td></tr>
-<tr class="separator:ga24d69f7dba4e3bfd46cdd772fdd10183"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafff6862bde06912e77c16d607caba2a8"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gafff6862bde06912e77c16d607caba2a8"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gafff6862bde06912e77c16d607caba2a8.html#gafff6862bde06912e77c16d607caba2a8">boost::simd::Twotom10</a> ()</td></tr>
-<tr class="memdesc:gafff6862bde06912e77c16d607caba2a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate 2 to the power -10 ( \(2^{-10}\))  <a href="group__group-constant_gafff6862bde06912e77c16d607caba2a8.html#gafff6862bde06912e77c16d607caba2a8">More...</a><br /></td></tr>
-<tr class="separator:gafff6862bde06912e77c16d607caba2a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga771c421b833def102a84029757385793"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga771c421b833def102a84029757385793"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga771c421b833def102a84029757385793.html#ga771c421b833def102a84029757385793">boost::simd::Twotomnmbo_3</a> ()</td></tr>
-<tr class="memdesc:ga771c421b833def102a84029757385793"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates constant e.  <a href="group__group-constant_ga771c421b833def102a84029757385793.html#ga771c421b833def102a84029757385793">More...</a><br /></td></tr>
-<tr class="separator:ga771c421b833def102a84029757385793"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae6c0ce471012770d66641024cf554c83"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gae6c0ce471012770d66641024cf554c83"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gae6c0ce471012770d66641024cf554c83.html#gae6c0ce471012770d66641024cf554c83">boost::simd::Twotonmb</a> ()</td></tr>
-<tr class="memdesc:gae6c0ce471012770d66641024cf554c83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate two to the number of mantissa bits.  <a href="group__group-constant_gae6c0ce471012770d66641024cf554c83.html#gae6c0ce471012770d66641024cf554c83">More...</a><br /></td></tr>
-<tr class="separator:gae6c0ce471012770d66641024cf554c83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga43f88f597036ac2da1616bcfcc0e55ac"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga43f88f597036ac2da1616bcfcc0e55ac"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga43f88f597036ac2da1616bcfcc0e55ac.html#ga43f88f597036ac2da1616bcfcc0e55ac">boost::simd::Valmax</a> ()</td></tr>
-<tr class="memdesc:ga43f88f597036ac2da1616bcfcc0e55ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the maximum representable value of a given type as a constant.  <a href="group__group-constant_ga43f88f597036ac2da1616bcfcc0e55ac.html#ga43f88f597036ac2da1616bcfcc0e55ac">More...</a><br /></td></tr>
-<tr class="separator:ga43f88f597036ac2da1616bcfcc0e55ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6975dceac710f1a491c905a0db454b1e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga6975dceac710f1a491c905a0db454b1e"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_ga6975dceac710f1a491c905a0db454b1e.html#ga6975dceac710f1a491c905a0db454b1e">boost::simd::Valmin</a> ()</td></tr>
-<tr class="memdesc:ga6975dceac710f1a491c905a0db454b1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the minimum finite representable value of a given type as a constant.  <a href="group__group-constant_ga6975dceac710f1a491c905a0db454b1e.html#ga6975dceac710f1a491c905a0db454b1e">More...</a><br /></td></tr>
-<tr class="separator:ga6975dceac710f1a491c905a0db454b1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae164aaf5db0db0ba079c2f338d2d794d"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gae164aaf5db0db0ba079c2f338d2d794d"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-constant_gae164aaf5db0db0ba079c2f338d2d794d.html#gae164aaf5db0db0ba079c2f338d2d794d">boost::simd::Zero</a> ()</td></tr>
-<tr class="memdesc:gae164aaf5db0db0ba079c2f338d2d794d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate value 0.  <a href="group__group-constant_gae164aaf5db0db0ba079c2f338d2d794d.html#gae164aaf5db0db0ba079c2f338d2d794d">More...</a><br /></td></tr>
-<tr class="separator:gae164aaf5db0db0ba079c2f338d2d794d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
+Modules</h2></td></tr>
+<tr class="memitem:group__constant-_allbits"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_allbits.html">Allbits (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_allbits"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a constant with all bits set to 1. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_bitincrement"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_bitincrement.html">Bitincrement (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_bitincrement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the minimal increment constant for a given type. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_cgold"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_cgold.html">Cgold (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_cgold"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the Golden Ratio conjugate constant: \(\frac{1}{\phi}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_constant"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_constant.html">Constant (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_constant"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a constant defined by a bits pattern. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_deginrad"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_deginrad.html">Deginrad (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_deginrad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac\pi{180}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_eight"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_eight.html">Eight (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_eight"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant <code>8</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_eleven"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_eleven.html">Eleven (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_eleven"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant <code>11</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_eps"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_eps.html">Eps (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_eps"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a constant equals to the <a href="https://en.wikipedia.org/wiki/Machine_epsilon">machine epsilon</a>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_euler"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_euler.html">Euler (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_euler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates an approximation of the Euler-Mascheroni constant. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_fact__10"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_fact__10.html">Fact_10 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_fact__10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the <code>10!</code> constant. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_fact__11"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_fact__11.html">Fact_11 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_fact__11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the <code>11!</code> constant. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_fact__12"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_fact__12.html">Fact_12 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_fact__12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the <code>12!</code> constant. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_fact__4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_fact__4.html">Fact_4 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_fact__4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the <code>4!</code> constant. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_fact__5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_fact__5.html">Fact_5 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_fact__5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the <code>5!</code> constant. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_fact__6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_fact__6.html">Fact_6 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_fact__6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the <code>6!</code> constant. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_fact__7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_fact__7.html">Fact_7 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_fact__7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the <code>7!</code> constant. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_fact__8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_fact__8.html">Fact_8 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_fact__8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the <code>8!</code> constant. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_fact__9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_fact__9.html">Fact_9 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_fact__9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the <code>9!</code> constant. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_false"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_false.html">False (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_false"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a constant that evaluates to the boolean <code>false</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_fifteen"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_fifteen.html">Fifteen (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_fifteen"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant <code>15</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_five"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_five.html">Five (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_five"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant <code>5</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_four"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_four.html">Four (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_four"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant <code>4</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_fouropi"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_fouropi.html">Fouropi (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_fouropi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac4\pi\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_fourpi"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_fourpi.html">Fourpi (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_fourpi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(4\pi\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_fourthrooteps"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_fourthrooteps.html">Fourthrooteps (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_fourthrooteps"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\sqrt[4]\epsilon\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_greatestnoninteger"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_greatestnoninteger.html">Greatestnoninteger (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_greatestnoninteger"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the greatest representable non-integral value. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_half"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_half.html">Half (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_half"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac12\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_halfeps"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_halfeps.html">Halfeps (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_halfeps"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac{1}{2}\epsilon\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_hundred"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_hundred.html">Hundred (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_hundred"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant <code>100</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_inf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_inf.html">Inf (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_inf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a constant greater than all other numeric values of a given type. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_inv2pi"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_inv2pi.html">Inv2pi (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_inv2pi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac{1}{2\pi}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_inveps"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_inveps.html">Inveps (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_inveps"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac{1}{\epsilon}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_invexp__1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_invexp__1.html">Invexp_1 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_invexp__1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac{1}{e}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_invlog10__2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_invlog10__2.html">Invlog10_2 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_invlog10__2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac{1}{\log_{10}(2)}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_invlog__10"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_invlog__10.html">Invlog_10 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_invlog__10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates constant \(\frac{1}{\log(10)}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_invlog__2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_invlog__2.html">Invlog_2 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_invlog__2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac{1}{\log(2)}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_invpi"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_invpi.html">Invpi (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_invpi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac1\pi\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_invsqrt__2pi"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_invsqrt__2pi.html">Invsqrt_2pi (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_invsqrt__2pi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac{1}{\sqrt{2\pi}}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_invsqrteps"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_invsqrteps.html">Invsqrteps (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_invsqrteps"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac{1}{\sqrt\epsilon}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_log10__pi"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_log10__pi.html">Log10_pi (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_log10__pi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\log_{10}(\pi)\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_log2__e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_log2__e.html">Log2_e (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_log2__e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\log_2(e)\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_log2__em1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_log2__em1.html">Log2_em1 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_log2__em1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\log_2(e)-1\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_log__10"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_log__10.html">Log_10 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_log__10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\log(10)\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_log__2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_log__2.html">Log_2 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_log__2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\log(2)\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_log__2olog__10"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_log__2olog__10.html">Log_2olog_10 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_log__2olog__10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac{\log(2)}{\log(10)}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_logeps"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_logeps.html">Logeps (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_logeps"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\log(\epsilon)\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_logpi"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_logpi.html">Logpi (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_logpi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\log\pi\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_logsqrt2pi"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_logsqrt2pi.html">Logsqrt2pi (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_logsqrt2pi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\log\sqrt{2\pi}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_mantissamask"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_mantissamask.html">Mantissamask (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_mantissamask"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a bit patterns able to extract mantissa from IEEE values. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_maxinit"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_maxinit.html">Maxinit (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_maxinit"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant maxinit which is identical to minf for arithmetic real types but that must be specialized for complex values ordering. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_meight"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_meight.html">Meight (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_meight"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant <code>-8</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_mfive"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_mfive.html">Mfive (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_mfive"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant <code>-5</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_mfour"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_mfour.html">Mfour (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_mfour"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant <code>-4</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_mhalf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_mhalf.html">Mhalf (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_mhalf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant <code>-0.5</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_mindenormal"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_mindenormal.html">Mindenormal (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_mindenormal"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the smallest denormal value. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_minf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_minf.html">Minf (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_minf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a constant less than all other numeric values of a given type. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_mlog10two2nmb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_mlog10two2nmb.html">Mlog10two2nmb (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_mlog10two2nmb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the opposite of the base 10 logarithm of <a class="el" href="group__constant-_twotonmb.html">Two2nmb</a>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_mlog2two2nmb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_mlog2two2nmb.html">Mlog2two2nmb (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_mlog2two2nmb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the opposite of the base 2 logarithm of <a class="el" href="group__constant-_twotonmb.html">Two2nmb</a>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_mlogeps2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_mlogeps2.html">Mlogeps2 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_mlogeps2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(-\log\epsilon^2\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_mlogtwo2nmb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_mlogtwo2nmb.html">Mlogtwo2nmb (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_mlogtwo2nmb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the opposite of the natural logarithm of <a class="el" href="group__constant-_twotonmb.html">Two2nmb</a>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_mnine"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_mnine.html">Mnine (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_mnine"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant <code>-9</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_mone"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_mone.html">Mone (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_mone"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant <code>-1</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_mseven"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_mseven.html">Mseven (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_mseven"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant<code>-7</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_msix"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_msix.html">Msix (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_msix"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant<code>-6</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_mten"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_mten.html">Mten (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_mten"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant<code>-10</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_mthree"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_mthree.html">Mthree (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_mthree"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant<code>-3</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_mtwo"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_mtwo.html">Mtwo (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_mtwo"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant<code>-2</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_mzero"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_mzero.html">Mzero (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_mzero"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant <code>-0</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_nan"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_nan.html">Nan (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_nan"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the Not a Number (Nan) constant. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_nbdigits"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_nbdigits.html">Nbdigits (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_nbdigits"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the number of mantissa bits of a floating point number, and the total number of bits for integral types. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_nbexponentbits"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_nbexponentbits.html">Nbexponentbits (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_nbexponentbits"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a constant representing the number of exponent bits of a floating point type. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_nbmantissabits"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_nbmantissabits.html">Nbmantissabits (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_nbmantissabits"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a constant representing the number of mantissa bits of a floating point type. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_nine"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_nine.html">Nine (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_nine"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant <code>9</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_one"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_one.html">One (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_one"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates constant <code>1</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_oneosqrt5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_oneosqrt5.html">Oneosqrt5 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_oneosqrt5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(1/\sqrt5\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_oneosqrteps"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_oneosqrteps.html">Oneosqrteps (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_oneosqrteps"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(1/\sqrt\epsilon\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_oneotwoeps"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_oneotwoeps.html">Oneotwoeps (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_oneotwoeps"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(1/(2\epsilon)\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_pi"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_pi.html">Pi (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_pi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\pi\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_pio__2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_pio__2.html">Pio_2 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_pio__2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac\pi{2}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_pio__3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_pio__3.html">Pio_3 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_pio__3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac\pi{3}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_pio__4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_pio__4.html">Pio_4 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_pio__4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac\pi{4}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_pio__6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_pio__6.html">Pio_6 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_pio__6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac\pi{6}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_quarter"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_quarter.html">Quarter (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_quarter"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac{1}{4}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_radindeg"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_radindeg.html">Radindeg (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_radindeg"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac{180}\pi\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_ratio"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_ratio.html">Ratio (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_ratio"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a constant defined by compile-time rational number representation. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_real"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_real.html">Real (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_real"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a constant from a compile-time IEEE754 bits pattern. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_seven"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_seven.html">Seven (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_seven"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant <code>7</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_signmask"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_signmask.html">Signmask (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_signmask"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a constant able to mask the sign bit of any value. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_six"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_six.html">Six (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_six"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant <code>6</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_sixteen"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_sixteen.html">Sixteen (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_sixteen"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant <code>16</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_smallestposval"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_smallestposval.html">Smallestposval (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_smallestposval"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the least non zero, non denormal, positive value. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_splitfactor"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_splitfactor.html">Splitfactor (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_splitfactor"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a constant able to split IEEE values for precision issues. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_sqrt__1o__5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_sqrt__1o__5.html">Sqrt_1o_5 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_sqrt__1o__5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \( \sqrt{\frac15}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_sqrt__2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_sqrt__2.html">Sqrt_2 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_sqrt__2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\sqrt2\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_sqrt__2o__2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_sqrt__2o__2.html">Sqrt_2o_2 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_sqrt__2o__2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac{\sqrt2}2\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_sqrt__2o__3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_sqrt__2o__3.html">Sqrt_2o_3 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_sqrt__2o__3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac{\sqrt2}3\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_sqrt__2opi"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_sqrt__2opi.html">Sqrt_2opi (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_sqrt__2opi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac{\sqrt2}{\pi}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_sqrt__2pi"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_sqrt__2pi.html">Sqrt_2pi (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_sqrt__2pi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\sqrt{2\pi}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_sqrteps"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_sqrteps.html">Sqrteps (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_sqrteps"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\sqrt{\epsilon}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_sqrtpio__2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_sqrtpio__2.html">Sqrtpio_2 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_sqrtpio__2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac{\sqrt\pi}{2}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_sqrtsmallestposval"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_sqrtsmallestposval.html">Sqrtsmallestposval (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_sqrtsmallestposval"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the square root of the least non-zero, positive, non-denormal value. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_sqrtvalmax"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_sqrtvalmax.html">Sqrtvalmax (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_sqrtvalmax"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the square root of the greatest finite representable value. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_tan__3pio__8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_tan__3pio__8.html">Tan_3pio_8 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_tan__3pio__8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\tan\frac{3\pi}{8}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_tanpio__8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_tanpio__8.html">Tanpio_8 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_tanpio__8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\tan\frac\pi{8}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_ten"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_ten.html">Ten (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_ten"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant <code>10</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_third"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_third.html">Third (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_third"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac{1}{3}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_thirdrooteps"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_thirdrooteps.html">Thirdrooteps (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_thirdrooteps"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\sqrt[3]{\epsilon}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_thousand"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_thousand.html">Thousand (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_thousand"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant <code>1000</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_three"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_three.html">Three (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_three"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant <code>3</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_threeeps"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_threeeps.html">Threeeps (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_threeeps"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(3\epsilon\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_threepio__4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_threepio__4.html">Threepio_4 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_threepio__4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac{3\pi}{4}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_true"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_true.html">True (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_true"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a constant that evaluates to the boolean <code>true</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_twelve"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_twelve.html">Twelve (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_twelve"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant <code>12</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_twenty"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_twenty.html">Twenty (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_twenty"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant <code>20</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_two"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_two.html">Two (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_two"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant <code>2</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_twoopi"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_twoopi.html">Twoopi (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_twoopi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac{2}{\pi}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_twopi"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_twopi.html">Twopi (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_twopi"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(2\pi\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_twopio__3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_twopio__3.html">Twopio_3 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_twopio__3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(\frac{2\pi}{3}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_twoto31"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_twoto31.html">Twoto31 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_twoto31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(2^{31}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_twotom10"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_twotom10.html">Twotom10 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_twotom10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(2^{-10}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_twotomnmbo__3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_twotomnmbo__3.html">Twotomnmbo_3 (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_twotomnmbo__3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(2^{-Nbmantissabits&lt;T&gt;()/3}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_twotonmb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_twotonmb.html">Twotonmb (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_twotonmb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant \(2^{Nbmantissabits&lt;T&gt;()}\). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_valmax"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_valmax.html">Valmax (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_valmax"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the maximum finite representable value of a given type. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_valmin"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_valmin.html">Valmin (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_valmin"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the minimum signed finite representable value of a given type. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__constant-_zero"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__constant-_zero.html">Zero (function template)</a></td></tr>
+<tr class="memdesc:group__constant-_zero"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the constant <code>0</code>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
@@ -663,7 +494,7 @@ Functions</h2></td></tr>
         <hr class="footer"/>
         <address class="footer">
             <small>
-                Generated on Thu Mar 2 2017 21:54:56 for Boost.SIMD by &#160;
+                Generated on Fri Jun 9 2017 10:01:47 for Boost.SIMD by &#160;
                 <a href="http://www.doxygen.org/index.html">
                     <img class="footer" src="doxygen.png" alt="doxygen"/>
                 </a>

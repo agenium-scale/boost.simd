@@ -13,9 +13,8 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_bitfloating, bs::bitfloating);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_bitfloating, std::uint64_t>(0, 10);
+  using T = std::uint64_t;
+  run<T>(bs::bitfloating, nsbg::rand<T>(0, 10));
 }

@@ -14,10 +14,9 @@
 
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
-
-DEFINE_SCALAR_BENCH(scalar_reversebits, bs::reversebits);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_reversebits, int16_t>(bs::Valmin<int16_t>(), bs::Valmax<int16_t>());
+  using T = int16_t;
+  using U = T;
+  run<T>(bs::reversebits, nsbg::rand<T>(bs::Valmin<U>(), bs::Valmax<U>()));
 }

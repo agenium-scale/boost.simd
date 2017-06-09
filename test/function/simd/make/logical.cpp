@@ -123,7 +123,7 @@ STF_CASE_TPL( "Check make(as_<tag>{},a0,...,a15)", STF_NUMERIC_TYPES )
                    , true,false,false,true,true,false,false,true
                    , true,false,false,true,true,false,false,true
                    );
-  
+
   STF_ALL_EQUAL(p, ref);
 }
 

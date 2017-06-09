@@ -42,7 +42,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li id="version">
-                            <a href="#" class="disabled">4.17.3.0</a>
+                            <a href="#" class="disabled">4.17.6.0</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -92,88 +92,22 @@ $(function() {
 
 <div class="header">
   <div class="summary">
-<a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#groups">Modules</a>  </div>
   <div class="headertitle">
 <div class="title">Algorithms and Ranges<div class="ingroups"><a class="el" href="group__group-api.html">User API</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
-<p>Boost.SIMD provides SIMD-aware Range adaptors and implementation of standard algorithms to simplify interactions with code written using the Standard Template Library. </p>
+<p>SIMD-aware Range adaptors and implementation of standard algorithms to simplify interactions with code written using the Standard Template Library. </p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:ga6d680b4f3f4f5c947ee369e95f6c0df7"><td class="memTemplParams" colspan="2">template&lt;typename Iterator &gt; </td></tr>
-<tr class="memitem:ga6d680b4f3f4f5c947ee369e95f6c0df7"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-std_ga6d680b4f3f4f5c947ee369e95f6c0df7.html#ga6d680b4f3f4f5c947ee369e95f6c0df7">boost::simd::segmented_input_range_type</a> = std::tuple&lt; iterator_range&lt; Iterator &gt;, iterator_range&lt; detail::aligned_input_iterator&lt; Iterator &gt; &gt;, iterator_range&lt; Iterator &gt; &gt;</td></tr>
-<tr class="memdesc:ga6d680b4f3f4f5c947ee369e95f6c0df7"><td class="mdescLeft">&#160;</td><td class="mdescRight">A three Contiguous Input Ranges tuple able to support mixed scalar and SIMD traversal.  <a href="group__group-std_ga6d680b4f3f4f5c947ee369e95f6c0df7.html#ga6d680b4f3f4f5c947ee369e95f6c0df7">More...</a><br /></td></tr>
-<tr class="separator:ga6d680b4f3f4f5c947ee369e95f6c0df7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae5f286a81619384c23067951f52b82a8"><td class="memTemplParams" colspan="2">template&lt;typename Iterator &gt; </td></tr>
-<tr class="memitem:gae5f286a81619384c23067951f52b82a8"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-std_gae5f286a81619384c23067951f52b82a8.html#gae5f286a81619384c23067951f52b82a8">boost::simd::segmented_output_range_type</a> = std::tuple&lt; iterator_range&lt; Iterator &gt;, iterator_range&lt; detail::aligned_output_iterator&lt; Iterator &gt; &gt;, iterator_range&lt; Iterator &gt; &gt;</td></tr>
-<tr class="memdesc:gae5f286a81619384c23067951f52b82a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">A three Contiguous Output Ranges tuple able to support mixed scalar and SIMD traversal.  <a href="group__group-std_gae5f286a81619384c23067951f52b82a8.html#gae5f286a81619384c23067951f52b82a8">More...</a><br /></td></tr>
-<tr class="separator:gae5f286a81619384c23067951f52b82a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:ga4b36091ae059ab2cfe9edbad5702d833"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga4b36091ae059ab2cfe9edbad5702d833"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-std_ga4b36091ae059ab2cfe9edbad5702d833.html#ga4b36091ae059ab2cfe9edbad5702d833">boost::simd::reduce</a> (T const *first, T const *last, T init)</td></tr>
-<tr class="memdesc:ga4b36091ae059ab2cfe9edbad5702d833"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the sum over elements in the given Contiguous Range <code>[first, last[</code> and the initial value <code>init</code>.  <a href="group__group-std_ga4b36091ae059ab2cfe9edbad5702d833.html#ga4b36091ae059ab2cfe9edbad5702d833">More...</a><br /></td></tr>
-<tr class="separator:ga4b36091ae059ab2cfe9edbad5702d833"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8efd48d5af4815fe35a9e9d616ad0723"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U , typename F , typename N , typename G &gt; </td></tr>
-<tr class="memitem:ga8efd48d5af4815fe35a9e9d616ad0723"><td class="memTemplItemLeft" align="right" valign="top">U&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-std_ga8efd48d5af4815fe35a9e9d616ad0723.html#ga8efd48d5af4815fe35a9e9d616ad0723">boost::simd::reduce</a> (T const *first, T const *last, U init, F binop, N neutral, G reduce)</td></tr>
-<tr class="memdesc:ga8efd48d5af4815fe35a9e9d616ad0723"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the generalized sum of the elements in the given Contiguous Range <code>[first, last[</code> over the binary functions <code>binop</code> and <code>reduce</code>, using <code>init</code> as the initial value.  <a href="group__group-std_ga8efd48d5af4815fe35a9e9d616ad0723.html#ga8efd48d5af4815fe35a9e9d616ad0723">More...</a><br /></td></tr>
-<tr class="separator:ga8efd48d5af4815fe35a9e9d616ad0723"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga40f8f2f4b82a6d634847e2d48ede920e"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U , typename F , typename N &gt; </td></tr>
-<tr class="memitem:ga40f8f2f4b82a6d634847e2d48ede920e"><td class="memTemplItemLeft" align="right" valign="top">U&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-std_ga40f8f2f4b82a6d634847e2d48ede920e.html#ga40f8f2f4b82a6d634847e2d48ede920e">boost::simd::reduce</a> (T const *first, T const *last, U init, F binop, N neutral)</td></tr>
-<tr class="memdesc:ga40f8f2f4b82a6d634847e2d48ede920e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the generalized sum of the elements in the given Contiguous Range <code>[first, last[</code> over the binary function <code>binop</code>, using <code>init</code> as the initial value.  <a href="group__group-std_ga40f8f2f4b82a6d634847e2d48ede920e.html#ga40f8f2f4b82a6d634847e2d48ede920e">More...</a><br /></td></tr>
-<tr class="separator:ga40f8f2f4b82a6d634847e2d48ede920e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4b861300a4f001eb64023e4e98a169b7"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U , typename UnOp &gt; </td></tr>
-<tr class="memitem:ga4b861300a4f001eb64023e4e98a169b7"><td class="memTemplItemLeft" align="right" valign="top">U *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-std_ga4b861300a4f001eb64023e4e98a169b7.html#ga4b861300a4f001eb64023e4e98a169b7">boost::simd::transform</a> (T const *first, T const *last, U *out, UnOp f)</td></tr>
-<tr class="memdesc:ga4b861300a4f001eb64023e4e98a169b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies the given function <code>f</code> to the Contiguous Range <code>[first, last[</code> and stores the result in another Contiguous Range, beginning at <code>out</code>.  <a href="group__group-std_ga4b861300a4f001eb64023e4e98a169b7.html#ga4b861300a4f001eb64023e4e98a169b7">More...</a><br /></td></tr>
-<tr class="separator:ga4b861300a4f001eb64023e4e98a169b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga41634d52d86b949c1edcd649d968779d"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 , typename U , typename BinOp &gt; </td></tr>
-<tr class="memitem:ga41634d52d86b949c1edcd649d968779d"><td class="memTemplItemLeft" align="right" valign="top">U *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-std_ga41634d52d86b949c1edcd649d968779d.html#ga41634d52d86b949c1edcd649d968779d">boost::simd::transform</a> (T1 const *first1, T1 const *last1, T2 const *first2, U *out, BinOp f)</td></tr>
-<tr class="memdesc:ga41634d52d86b949c1edcd649d968779d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies the given function <code>f</code> to pairs of elements from two ranges: one defined by <code>[first1, last1[</code> and the other beginning at <code>first2</code>, and stores the result in another Contiguous Range, beginning at <code>out</code>.  <a href="group__group-std_ga41634d52d86b949c1edcd649d968779d.html#ga41634d52d86b949c1edcd649d968779d">More...</a><br /></td></tr>
-<tr class="separator:ga41634d52d86b949c1edcd649d968779d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2de87c0ab884ee0ceb147e698220ab76"><td class="memTemplParams" colspan="2">template&lt;std::size_t C, typename Iterator &gt; </td></tr>
-<tr class="memitem:ga2de87c0ab884ee0ceb147e698220ab76"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-std_ga2de87c0ab884ee0ceb147e698220ab76.html#ga2de87c0ab884ee0ceb147e698220ab76">boost::simd::aligned_input_range</a> (Iterator begin, Iterator end)</td></tr>
-<tr class="memdesc:ga2de87c0ab884ee0ceb147e698220ab76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds an Input ContiguousRange that iterates over the original <code>[begin, end[</code> ContiguousRange by returning <a class="el" href="classboost_1_1simd_1_1pack.html" title="High-level interface for manipulating SIMD data. ">boost::simd::pack</a> at every iteration step.  <a href="group__group-std_ga2de87c0ab884ee0ceb147e698220ab76.html#ga2de87c0ab884ee0ceb147e698220ab76">More...</a><br /></td></tr>
-<tr class="separator:ga2de87c0ab884ee0ceb147e698220ab76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaab5a5f66aef45ccc898b073ede6e50fa"><td class="memTemplParams" colspan="2">template&lt;std::size_t C, typename ContiguousRange &gt; </td></tr>
-<tr class="memitem:gaab5a5f66aef45ccc898b073ede6e50fa"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-std_gaab5a5f66aef45ccc898b073ede6e50fa.html#gaab5a5f66aef45ccc898b073ede6e50fa">boost::simd::aligned_input_range</a> (ContiguousRange const &amp;r)</td></tr>
-<tr class="memdesc:gaab5a5f66aef45ccc898b073ede6e50fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds an Input ContiguousRange that iterates over the original ContiguousRange by returning <a class="el" href="classboost_1_1simd_1_1pack.html" title="High-level interface for manipulating SIMD data. ">boost::simd::pack</a> at every iteration step.  <a href="group__group-std_gaab5a5f66aef45ccc898b073ede6e50fa.html#gaab5a5f66aef45ccc898b073ede6e50fa">More...</a><br /></td></tr>
-<tr class="separator:gaab5a5f66aef45ccc898b073ede6e50fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa333a591550a6bb7b125f8aabd3a4244"><td class="memTemplParams" colspan="2">template&lt;std::size_t C, class Iterator &gt; </td></tr>
-<tr class="memitem:gaa333a591550a6bb7b125f8aabd3a4244"><td class="memTemplItemLeft" align="right" valign="top">boost::iterator_range&lt; detail::aligned_output_iterator&lt; Iterator, C &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-std_gaa333a591550a6bb7b125f8aabd3a4244.html#gaa333a591550a6bb7b125f8aabd3a4244">boost::simd::aligned_output_range</a> (Iterator begin, Iterator end)</td></tr>
-<tr class="memdesc:gaa333a591550a6bb7b125f8aabd3a4244"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds an Output ContiguousRange that iterates over the original <code>[begin, end[</code> ContiguousRange by returning <a class="el" href="classboost_1_1simd_1_1pack.html" title="High-level interface for manipulating SIMD data. ">boost::simd::pack</a> at every iteration step.  <a href="group__group-std_gaa333a591550a6bb7b125f8aabd3a4244.html#gaa333a591550a6bb7b125f8aabd3a4244">More...</a><br /></td></tr>
-<tr class="separator:gaa333a591550a6bb7b125f8aabd3a4244"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1dd7a0cc0e763a7295e96533ccb8f9a0"><td class="memTemplParams" colspan="2">template&lt;std::size_t C, class Range &gt; </td></tr>
-<tr class="memitem:ga1dd7a0cc0e763a7295e96533ccb8f9a0"><td class="memTemplItemLeft" align="right" valign="top">boost::iterator_range&lt; detail::aligned_output_iterator&lt; typename range_iterator&lt; Range &gt;::type, C &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-std_ga1dd7a0cc0e763a7295e96533ccb8f9a0.html#ga1dd7a0cc0e763a7295e96533ccb8f9a0">boost::simd::aligned_output_range</a> (Range &amp;r)</td></tr>
-<tr class="memdesc:ga1dd7a0cc0e763a7295e96533ccb8f9a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds an Output ContiguousRange that iterates over the original ContiguousRange by returning <a class="el" href="classboost_1_1simd_1_1pack.html" title="High-level interface for manipulating SIMD data. ">boost::simd::pack</a> at every iteration step.  <a href="group__group-std_ga1dd7a0cc0e763a7295e96533ccb8f9a0.html#ga1dd7a0cc0e763a7295e96533ccb8f9a0">More...</a><br /></td></tr>
-<tr class="separator:ga1dd7a0cc0e763a7295e96533ccb8f9a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga04ce9d3a86c1431427669566f804c1a1"><td class="memTemplParams" colspan="2">template&lt;std::size_t N, class Iterator &gt; </td></tr>
-<tr class="memitem:ga04ce9d3a86c1431427669566f804c1a1"><td class="memTemplItemLeft" align="right" valign="top">boost::iterator_range&lt; detail::input_iterator&lt; Iterator, N &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-std_ga04ce9d3a86c1431427669566f804c1a1.html#ga04ce9d3a86c1431427669566f804c1a1">boost::simd::input_range</a> (Iterator begin, Iterator end)</td></tr>
-<tr class="memdesc:ga04ce9d3a86c1431427669566f804c1a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds an Input ContiguousRange that iterates over the original <code>[begin, end[</code> ContiguousRange by returning <a class="el" href="classboost_1_1simd_1_1pack.html" title="High-level interface for manipulating SIMD data. ">boost::simd::pack</a> at every iteration step.  <a href="group__group-std_ga04ce9d3a86c1431427669566f804c1a1.html#ga04ce9d3a86c1431427669566f804c1a1">More...</a><br /></td></tr>
-<tr class="separator:ga04ce9d3a86c1431427669566f804c1a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae69b44eb2a1bca5fbd154701d83ba7c9"><td class="memTemplParams" colspan="2">template&lt;std::size_t N, class Range &gt; </td></tr>
-<tr class="memitem:gae69b44eb2a1bca5fbd154701d83ba7c9"><td class="memTemplItemLeft" align="right" valign="top">boost::iterator_range&lt; detail::input_iterator&lt; typename range_iterator&lt; Range const  &gt;::type, N &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-std_gae69b44eb2a1bca5fbd154701d83ba7c9.html#gae69b44eb2a1bca5fbd154701d83ba7c9">boost::simd::input_range</a> (Range const &amp;r)</td></tr>
-<tr class="memdesc:gae69b44eb2a1bca5fbd154701d83ba7c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds an Output ContiguousRange that iterates over the original ContiguousRange by returning <a class="el" href="classboost_1_1simd_1_1pack.html" title="High-level interface for manipulating SIMD data. ">boost::simd::pack</a> at every iteration step.  <a href="group__group-std_gae69b44eb2a1bca5fbd154701d83ba7c9.html#gae69b44eb2a1bca5fbd154701d83ba7c9">More...</a><br /></td></tr>
-<tr class="separator:gae69b44eb2a1bca5fbd154701d83ba7c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac8007316621f103c38d242dd3b12d372"><td class="memTemplParams" colspan="2">template&lt;std::size_t C, class Iterator &gt; </td></tr>
-<tr class="memitem:gac8007316621f103c38d242dd3b12d372"><td class="memTemplItemLeft" align="right" valign="top">boost::iterator_range&lt; detail::output_iterator&lt; Iterator, C &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-std_gac8007316621f103c38d242dd3b12d372.html#gac8007316621f103c38d242dd3b12d372">boost::simd::output_range</a> (Iterator begin, Iterator end)</td></tr>
-<tr class="memdesc:gac8007316621f103c38d242dd3b12d372"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds an Output ContiguousRange that iterates over the original <code>[begin, end[</code> ContiguousRange by returning <a class="el" href="classboost_1_1simd_1_1pack.html" title="High-level interface for manipulating SIMD data. ">boost::simd::pack</a> at every iteration step.  <a href="group__group-std_gac8007316621f103c38d242dd3b12d372.html#gac8007316621f103c38d242dd3b12d372">More...</a><br /></td></tr>
-<tr class="separator:gac8007316621f103c38d242dd3b12d372"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3411a4387a742c1bbc527c8f313ec742"><td class="memTemplParams" colspan="2">template&lt;std::size_t C, class Range &gt; </td></tr>
-<tr class="memitem:ga3411a4387a742c1bbc527c8f313ec742"><td class="memTemplItemLeft" align="right" valign="top">boost::iterator_range&lt; detail::output_iterator&lt; typename range_iterator&lt; Range &gt;::type, C &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-std_ga3411a4387a742c1bbc527c8f313ec742.html#ga3411a4387a742c1bbc527c8f313ec742">boost::simd::output_range</a> (Range &amp;r)</td></tr>
-<tr class="memdesc:ga3411a4387a742c1bbc527c8f313ec742"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds an Output ContiguousRange that iterates over the original ContiguousRange by returning <a class="el" href="classboost_1_1simd_1_1pack.html" title="High-level interface for manipulating SIMD data. ">boost::simd::pack</a> at every iteration step.  <a href="group__group-std_ga3411a4387a742c1bbc527c8f313ec742.html#ga3411a4387a742c1bbc527c8f313ec742">More...</a><br /></td></tr>
-<tr class="separator:ga3411a4387a742c1bbc527c8f313ec742"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga05aa7c3c7e3f4149d2067f76611a615b"><td class="memTemplParams" colspan="2">template&lt;std::size_t C, typename Iterator &gt; </td></tr>
-<tr class="memitem:ga05aa7c3c7e3f4149d2067f76611a615b"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="group__group-std_ga6d680b4f3f4f5c947ee369e95f6c0df7.html#ga6d680b4f3f4f5c947ee369e95f6c0df7">segmented_input_range_type</a>&lt; Iterator &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-std_ga05aa7c3c7e3f4149d2067f76611a615b.html#ga05aa7c3c7e3f4149d2067f76611a615b">boost::simd::segmented_input_range</a> (Iterator b, Iterator e)</td></tr>
-<tr class="memdesc:ga05aa7c3c7e3f4149d2067f76611a615b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Splits a ContiguousRange into a <a class="el" href="group__group-std_ga6d680b4f3f4f5c947ee369e95f6c0df7.html#ga6d680b4f3f4f5c947ee369e95f6c0df7">segmented_input_range_type</a>.  <a href="group__group-std_ga05aa7c3c7e3f4149d2067f76611a615b.html#ga05aa7c3c7e3f4149d2067f76611a615b">More...</a><br /></td></tr>
-<tr class="separator:ga05aa7c3c7e3f4149d2067f76611a615b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa59687f936716e5a37010e5f880152b7"><td class="memTemplParams" colspan="2">template&lt;std::size_t C, typename Iterator &gt; </td></tr>
-<tr class="memitem:gaa59687f936716e5a37010e5f880152b7"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="group__group-std_gae5f286a81619384c23067951f52b82a8.html#gae5f286a81619384c23067951f52b82a8">segmented_output_range_type</a>&lt; Iterator &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__group-std_gaa59687f936716e5a37010e5f880152b7.html#gaa59687f936716e5a37010e5f880152b7">boost::simd::segmented_output_range</a> (Iterator b, Iterator e)</td></tr>
-<tr class="memdesc:gaa59687f936716e5a37010e5f880152b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Splits a ContiguousRange into a <a class="el" href="group__group-std_gae5f286a81619384c23067951f52b82a8.html#gae5f286a81619384c23067951f52b82a8">segmented_output_range_type</a>.  <a href="group__group-std_gaa59687f936716e5a37010e5f880152b7.html#gaa59687f936716e5a37010e5f880152b7">More...</a><br /></td></tr>
-<tr class="separator:gaa59687f936716e5a37010e5f880152b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
+Modules</h2></td></tr>
+<tr class="memitem:group__group-algo"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group-algo.html">SIMD Standard Algorithms</a></td></tr>
+<tr class="memdesc:group__group-algo"><td class="mdescLeft">&#160;</td><td class="mdescRight">SIMD aware version of standard algorithms. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__group-range"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group-range.html">Ranges adaptors</a></td></tr>
+<tr class="memdesc:group__group-range"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides range adaptors to convert arbitrary ranges into SIMD-aware ranges that allow the processing of data with automatic support for SIMD semantic. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
@@ -186,7 +120,7 @@ Functions</h2></td></tr>
         <hr class="footer"/>
         <address class="footer">
             <small>
-                Generated on Thu Mar 2 2017 21:54:49 for Boost.SIMD by &#160;
+                Generated on Fri Jun 9 2017 10:01:41 for Boost.SIMD by &#160;
                 <a href="http://www.doxygen.org/index.html">
                     <img class="footer" src="doxygen.png" alt="doxygen"/>
                 </a>

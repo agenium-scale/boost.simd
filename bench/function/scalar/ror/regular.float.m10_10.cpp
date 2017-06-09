@@ -13,9 +13,8 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_ror, bs::ror);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_ror, float>(-10, 10);
+  using T = float;
+  run<T>(bs::ror, nsbg::rand<T>(-10, 10));
 }

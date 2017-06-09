@@ -1,0 +1,4 @@
+//! [max_element]
+*r1 2
+*r2 -1
+//! [max_element]

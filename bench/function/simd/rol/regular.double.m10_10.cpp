@@ -13,9 +13,8 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_rol, bs::rol);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_rol, double>(-10, 10);
+  using T = bs::pack<double>;
+  run<T>(bs::rol, nsbg::rand<T>(-10, 10));
 }

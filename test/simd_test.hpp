@@ -67,7 +67,7 @@ namespace stf { namespace ext
   struct equal<boost::simd::detail::pack_proxy<S>,T>
   {
     using type_t  = boost::simd::detail::pack_proxy<S>;
-    using value_t = typename type_t::value_type;
+    using value_t = typename type_t::base_type;
     inline double operator()(type_t const& l, T const& r) const
     {
       return value_t(l) == r;
@@ -78,7 +78,7 @@ namespace stf { namespace ext
   struct equal<T,boost::simd::detail::pack_proxy<S>>
   {
     using type_t  = boost::simd::detail::pack_proxy<S>;
-    using value_t = typename type_t::value_type;
+    using value_t = typename type_t::base_type;
     inline double operator()(T const& l, type_t const& r) const
     {
       return l == value_t(r);
@@ -89,7 +89,7 @@ namespace stf { namespace ext
   struct reldist<boost::simd::detail::pack_proxy<S>,boost::simd::detail::pack_proxy<S>>
   {
     using type_t  = boost::simd::detail::pack_proxy<S>;
-    using value_t = typename type_t::value_type;
+    using value_t = typename type_t::base_type;
     inline double operator()(type_t const& l, type_t const& r) const
     {
       return stf::reldist(value_t(l),value_t(r));
@@ -100,7 +100,7 @@ namespace stf { namespace ext
   struct ulpdist<boost::simd::detail::pack_proxy<S>,boost::simd::detail::pack_proxy<S>>
   {
     using type_t  = boost::simd::detail::pack_proxy<S>;
-    using value_t = typename type_t::value_type;
+    using value_t = typename type_t::base_type;
     inline double operator()(type_t const& l, type_t const& r) const
     {
       return stf::ulpdist(value_t(l),value_t(r));

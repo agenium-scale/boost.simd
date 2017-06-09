@@ -42,7 +42,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li id="version">
-                            <a href="#" class="disabled">4.17.3.0</a>
+                            <a href="#" class="disabled">4.17.6.0</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -103,28 +103,37 @@ $(function() {
 <li class="level1"><a href="#neural-conc">Conclusions</a></li>
 </ul>
 </div>
-<div class="textblock"><div style="text-align: right;" markdown="1">Prev: <a class="el" href="tutorial-branching-split.html">SIMD Branching Part 2 - Computations with different types</a></div> <div style="text-align: right;" markdown="1">Next: <a class="el" href="tutorial-nbody.html">Evaluation of the N-Body problem</a>/div&gt;</div><div style="text-align: right;" markdown="1">In this tutorial we will demonstrate how the evaluation of neural network can be significantly accelerated using <b>Boost.SIMD</b>.</div><div style="text-align: right;" markdown="1"></div><h1><a class="anchor" id="neural-objectives"></a>
+<div class="textblock"><div style="text-align: right;" markdown="1">Prev: <a class="el" href="tutorial-branching-split.html">SIMD Branching Part 2 - Computations with different types</a></div> <div style="text-align: right;" markdown="1">Next: <a class="el" href="tutorial-nbody.html">Evaluation of the N-Body problem</a></div><p>In this tutorial we will demonstrate how the evaluation of neural network can be significantly accelerated using <b>Boost.SIMD</b>.</p>
+<h1><a class="anchor" id="neural-objectives"></a>
 Objectives</h1>
-<div style="text-align: right;" markdown="1"><hr/>
-</div><div style="text-align: right;" markdown="1">In this tutorial we will:<ul>
+<hr/>
+<p>In this tutorial we will:</p><ul>
 <li><a href="#neural-intro">Introduce the problem of neural network activation function evaluation using <b>Boost.SIMD</b></a></li>
 <li><a href="#neural-methods">Demonstrate various methods of calculating a neural network activation function using <b>Boost.SIMD</b></a></li>
 <li><a href="#neural-bench">Benchmark the various methods introduced in the previous section</a></li>
 <li><a href="#neural-conc">Discuss the performance of each method</a></li>
 </ul>
-</div><div style="text-align: right;" markdown="1"></div><h1><a class="anchor" id="neural-intro"></a>
+<h1><a class="anchor" id="neural-intro"></a>
 Neural Network Activation Function</h1>
-<div style="text-align: right;" markdown="1"> The activation function of a neural network is typically a sigmoid function of the form:</div><div style="text-align: right;" markdown="1"><center> <p class="formulaDsp">
+<p>The activation function of a neural network is typically a sigmoid function of the form:</p>
+<center> <p class="formulaDsp">
 \[\sigma = \frac{1}{1+e^{-z}}\]
 </p>
-</center></div><div style="text-align: right;" markdown="1">This is a function that could significantly benefit from vectorization. We vectorize this function using bs::transform as this handles the case where the input size is not an exact multiple of the <b>SIMD</b> vector size.</div><div style="text-align: right;" markdown="1">The following scalar code is used for this calculation:</div><div style="text-align: right;" markdown="1"><div class="fragment"><div class="line">  <a class="code" href="group__group-std_ga4b861300a4f001eb64023e4e98a169b7.html#ga4b861300a4f001eb64023e4e98a169b7">std::transform</a>(activations.data(), activations.data() + activations.size(), results.data(),</div><div class="line">                 [](T <span class="keyword">const</span>&amp; a) { <span class="keywordflow">return</span> T(1) / (T(1) + <a class="code" href="group__group-exponential_gaec8fcad0de6629150dcaf0c1e639afd8.html#gaec8fcad0de6629150dcaf0c1e639afd8">std::exp</a>(a)); });</div></div><!-- fragment --> </div><h1><a class="anchor" id="neural-methods"></a>
+</center><p>This is a function that could significantly benefit from vectorization. We vectorize this function using bs::transform as this handles the case where the input size is not an exact multiple of the <b>SIMD</b> vector size.</p>
+<p>The following scalar code is used for this calculation:</p>
+<div class="fragment"><div class="line">  <a class="code" href="group__group-algo_ga226c9eea2e9b805d97ae1d0083521151.html#ga226c9eea2e9b805d97ae1d0083521151">std::transform</a>(activations.data(), activations.data() + activations.size(), results.data(),</div><div class="line">                 [](T <span class="keyword">const</span>&amp; a) { <span class="keywordflow">return</span> T(1) / (T(1) + <a class="code" href="group__group-exponential_gaec8fcad0de6629150dcaf0c1e639afd8.html#gaec8fcad0de6629150dcaf0c1e639afd8">std::exp</a>(a)); });</div></div><!-- fragment --> <h1><a class="anchor" id="neural-methods"></a>
 Vectorization of Neural Network Activation Function</h1>
-<div style="text-align: right;" markdown="1"> The above code is vectorized as follows:</div><div style="text-align: right;" markdown="1"><div class="fragment"><div class="line">  <a class="code" href="group__group-std_ga4b861300a4f001eb64023e4e98a169b7.html#ga4b861300a4f001eb64023e4e98a169b7">bs::transform</a>(activations.data(), activations.data() + activations.size(), results.data(),</div><div class="line">                activation_function{});</div></div><!-- fragment --> The actual calculation is performed in the following functor:</div><div style="text-align: right;" markdown="1"><div class="fragment"><div class="line"><span class="keyword">struct </span>activation_function</div><div class="line">{</div><div class="line">  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line">  BOOST_FORCEINLINE T operator()(T <span class="keyword">const</span>&amp; a)</div><div class="line">  {</div><div class="line">    <span class="keywordflow">return</span> T(1) / (T(1) + <a class="code" href="group__group-exponential_gaec8fcad0de6629150dcaf0c1e639afd8.html#gaec8fcad0de6629150dcaf0c1e639afd8">bs::exp</a>(a));</div><div class="line">  }</div><div class="line">};</div></div><!-- fragment --> A functor must be used for bs::transform as c++11 does not support generic lambda functions. If you are using a C++14 compiler, you may place this code inside a lambda function.</div><div style="text-align: right;" markdown="1">This calculation may also be performed using bs::rec, which is the equivalent of <center> <p class="formulaDsp">
+<p>The above code is vectorized as follows:</p>
+<div class="fragment"><div class="line">  <a class="code" href="group__group-algo_ga226c9eea2e9b805d97ae1d0083521151.html#ga226c9eea2e9b805d97ae1d0083521151">bs::transform</a>(activations.data(), activations.data() + activations.size(), results.data(),</div><div class="line">                activation_function{});</div></div><!-- fragment --><p> The actual calculation is performed in the following functor:</p>
+<div class="fragment"><div class="line"><span class="keyword">struct </span>activation_function</div><div class="line">{</div><div class="line">  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line">  BOOST_FORCEINLINE T operator()(T <span class="keyword">const</span>&amp; a)</div><div class="line">  {</div><div class="line">    <span class="keywordflow">return</span> T(1) / (T(1) + <a class="code" href="group__group-exponential_gaec8fcad0de6629150dcaf0c1e639afd8.html#gaec8fcad0de6629150dcaf0c1e639afd8">bs::exp</a>(a));</div><div class="line">  }</div><div class="line">};</div></div><!-- fragment --><p> A functor must be used for bs::transform as c++11 does not support generic lambda functions. If you are using a C++14 compiler, you may place this code inside a lambda function.</p>
+<p>This calculation may also be performed using bs::rec, which is the equivalent of </p><center> <p class="formulaDsp">
 \[\frac{1}{x}\]
 </p>
-</center></div><div style="text-align: right;" markdown="1"><div class="fragment"><div class="line"><span class="keyword">struct </span>activation_function_rec</div><div class="line">{</div><div class="line">  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line">  BOOST_FORCEINLINE T operator()(T <span class="keyword">const</span>&amp; a)</div><div class="line">  {</div><div class="line">    <span class="keywordflow">return</span> <a class="code" href="group__group-arithmetic_ga0d1e89d71718fe327bd7f5d490063300.html#ga0d1e89d71718fe327bd7f5d490063300">bs::rec</a>(T(1) + <a class="code" href="group__group-exponential_gaec8fcad0de6629150dcaf0c1e639afd8.html#gaec8fcad0de6629150dcaf0c1e639afd8">bs::exp</a>(a));</div><div class="line">  }</div><div class="line">};</div></div><!-- fragment --> The scalar computation may also be performed using bs::exp as follows:</div><div style="text-align: right;" markdown="1"><div class="fragment"><div class="line">  <a class="code" href="group__group-std_ga4b861300a4f001eb64023e4e98a169b7.html#ga4b861300a4f001eb64023e4e98a169b7">std::transform</a>(activations.data(), activations.data() + activations.size(), results.data(),</div><div class="line">                 [](T <span class="keyword">const</span>&amp; a) { <span class="keywordflow">return</span> T(1) / (T(1) + <a class="code" href="group__group-exponential_gaec8fcad0de6629150dcaf0c1e639afd8.html#gaec8fcad0de6629150dcaf0c1e639afd8">bs::exp</a>(a)); });</div></div><!-- fragment --></div><div style="text-align: right;" markdown="1"></div><h1><a class="anchor" id="neural-bench"></a>
+</center><div class="fragment"><div class="line"><span class="keyword">struct </span>activation_function_rec</div><div class="line">{</div><div class="line">  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line">  BOOST_FORCEINLINE T operator()(T <span class="keyword">const</span>&amp; a)</div><div class="line">  {</div><div class="line">    <span class="keywordflow">return</span> <a class="code" href="group__group-arithmetic_ga0d1e89d71718fe327bd7f5d490063300.html#ga0d1e89d71718fe327bd7f5d490063300">bs::rec</a>(T(1) + <a class="code" href="group__group-exponential_gaec8fcad0de6629150dcaf0c1e639afd8.html#gaec8fcad0de6629150dcaf0c1e639afd8">bs::exp</a>(a));</div><div class="line">  }</div><div class="line">};</div></div><!-- fragment --><p> The scalar computation may also be performed using bs::exp as follows:</p>
+<div class="fragment"><div class="line">  <a class="code" href="group__group-algo_ga226c9eea2e9b805d97ae1d0083521151.html#ga226c9eea2e9b805d97ae1d0083521151">std::transform</a>(activations.data(), activations.data() + activations.size(), results.data(),</div><div class="line">                 [](T <span class="keyword">const</span>&amp; a) { <span class="keywordflow">return</span> T(1) / (T(1) + <a class="code" href="group__group-exponential_gaec8fcad0de6629150dcaf0c1e639afd8.html#gaec8fcad0de6629150dcaf0c1e639afd8">bs::exp</a>(a)); });</div></div><!-- fragment --><h1><a class="anchor" id="neural-bench"></a>
 Performance</h1>
-<div style="text-align: right;" markdown="1"> Each code was run using a sample size of 16000000. The code was compiled using g++-6.0 using the compiler flag -msse2 and executed on an Intel Xeon CPU E3-1240 v3 @ 3.40GHz.</div><div style="text-align: right;" markdown="1"><table align="center" width="100%" class="table-striped table-bordered">
+<p>Each code was run using a sample size of 16000000. The code was compiled using g++-6.0 using the compiler flag -msse2 and executed on an Intel Xeon CPU E3-1240 v3 @ 3.40GHz.</p>
+<table align="center" width="100%" class="table-striped table-bordered">
 <tr>
 <th>Calculation </th><th>Time ( \(\mu s\)) </th></tr>
 <tr>
@@ -136,7 +145,8 @@ Performance</h1>
 <tr>
 <td>SIMD rec </td><td>38 </td></tr>
 </table>
-</div><div style="text-align: right;" markdown="1">There are some very interesting results observed here. Firstly, when std::exp is replaced by bs::exp, a 50 % speed-up is observed, although the code is not vectorized. This is due to the implementation of bs::exp. It is a much more efficient implementation that the standard library exp, whilst maintaining the same or better precision. Therefore, the use of the <b>Boost.SIMD</b> standard library replacement functions in non-vectorized code may be very advantageous. A speed-up of 3.76 is observed between the the scalar and SIMD versions of this calculation, which is in line with the theoretical maximum for an SSE code.</div><div style="text-align: right;" markdown="1">This test was repeated compiling for AVX: <table align="center" width="100%" class="table-striped table-bordered">
+<p>There are some very interesting results observed here. Firstly, when std::exp is replaced by bs::exp, a 50 % speed-up is observed, although the code is not vectorized. This is due to the implementation of bs::exp. It is a much more efficient implementation that the standard library exp, whilst maintaining the same or better precision. Therefore, the use of the <b>Boost.SIMD</b> standard library replacement functions in non-vectorized code may be very advantageous. A speed-up of 3.76 is observed between the the scalar and SIMD versions of this calculation, which is in line with the theoretical maximum for an SSE code.</p>
+<p>This test was repeated compiling for AVX: </p><table align="center" width="100%" class="table-striped table-bordered">
 <tr>
 <th>Calculation </th><th>Time ( \(\mu s\)) </th></tr>
 <tr>
@@ -148,7 +158,9 @@ Performance</h1>
 <tr>
 <td>SIMD rec </td><td>36 </td></tr>
 </table>
-</div><div style="text-align: right;" markdown="1">When the same code us re-compiled for AVX, we note that there is a large regression in the performance of std::exp, while the time taken by the other computations remains unchanged. The reason for the large regression in the performance of std::exp is explained by the fact that this code mixes legacy SSE instructions with AVX instructions. The reasons behind this are explained by <a href="https://software.intel.com/en-us/articles/intel-avx-state-transitions-migrating-sse-code-to-avx">Intel</a>. This may be rectified by adding the instruction _mm256_zeroupper() before each call to std::exp. However, this will erase any AVX register that you may be using. The much safer solution is to replace all calls to std::exp by calls to bs::exp when your code is compiled for AVX and above. This is true for all standard library functions which are provided <b>Boost.SIMD</b>.</div><div style="text-align: right;" markdown="1">There is no performance gain for the vectorized functions when changing from SSE4.2 and AVX. Although of all the calculations performed in this tutorial are performed using floating point numbers, the calculation of bs::exp requires the use of integers. Therefore, parts of the exponential calculation are performed using SSE instructions. We expect to see a performance gain between AVX and AVX2</div><div style="text-align: right;" markdown="1"><table align="center" width="100%" class="table-striped table-bordered">
+<p>When the same code us re-compiled for AVX, we note that there is a large regression in the performance of std::exp, while the time taken by the other computations remains unchanged. The reason for the large regression in the performance of std::exp is explained by the fact that this code mixes legacy SSE instructions with AVX instructions. The reasons behind this are explained by <a href="https://software.intel.com/en-us/articles/intel-avx-state-transitions-migrating-sse-code-to-avx">Intel</a>. This may be rectified by adding the instruction _mm256_zeroupper() before each call to std::exp. However, this will erase any AVX register that you may be using. The much safer solution is to replace all calls to std::exp by calls to bs::exp when your code is compiled for AVX and above. This is true for all standard library functions which are provided <b>Boost.SIMD</b>.</p>
+<p>There is no performance gain for the vectorized functions when changing from SSE4.2 and AVX. Although of all the calculations performed in this tutorial are performed using floating point numbers, the calculation of bs::exp requires the use of integers. Therefore, parts of the exponential calculation are performed using SSE instructions. We expect to see a performance gain between AVX and AVX2</p>
+<table align="center" width="100%" class="table-striped table-bordered">
 <tr>
 <th>Calculation </th><th>Time ( \(\mu s\)) </th></tr>
 <tr>
@@ -160,9 +172,11 @@ Performance</h1>
 <tr>
 <td>SIMD rec </td><td>21 </td></tr>
 </table>
-</div><div style="text-align: right;" markdown="1">We observe a speed-up of 1.5 between AVX and AVX2 in this calculation. Although the theoretical maximum speed-up is 2, it is often difficult to achieve this in practice.</div><div style="text-align: right;" markdown="1"></div><h1><a class="anchor" id="neural-conc"></a>
+<p>We observe a speed-up of 1.5 between AVX and AVX2 in this calculation. Although the theoretical maximum speed-up is 2, it is often difficult to achieve this in practice.</p>
+<h1><a class="anchor" id="neural-conc"></a>
 Conclusions</h1>
-<div style="text-align: right;" markdown="1"> We observed significant speed-ups by vectorizing this code using <b>Boost.SIMD</b>. Using SSE4.2, a speed-up of 3.76 was observed and using AVX2, a speed-up of 6.81 was observed. If we compare the results obtained using std::exp in AVX2 with that obtained using <b>Boost.SIMD</b>, the speed-up is 50.6!. It is clear that the use of <b>Boost.SIMD</b> in any project involving vectorization is very beneficial, not just for the ease of vectorization and portability between architectures, compilers and operating systems, but also because of the performance of its standard library replacement functions.</div><div style="text-align: right;" markdown="1"><div style="text-align: right;" markdown="1">Prev: <a class="el" href="tutorial-branching-split.html">SIMD Branching Part 2 - Computations with different types</a></div> <div style="text-align: right;" markdown="1">Next: <a class="el" href="tutorial-nbody.html">Evaluation of the N-Body problem</a></div> </div></div></div><!-- contents -->
+<p>We observed significant speed-ups by vectorizing this code using <b>Boost.SIMD</b>. Using SSE4.2, a speed-up of 3.76 was observed and using AVX2, a speed-up of 6.81 was observed. If we compare the results obtained using std::exp in AVX2 with that obtained using <b>Boost.SIMD</b>, the speed-up is 50.6!. It is clear that the use of <b>Boost.SIMD</b> in any project involving vectorization is very beneficial, not just for the ease of vectorization and portability between architectures, compilers and operating systems, but also because of the performance of its standard library replacement functions.</p>
+<div style="text-align: right;" markdown="1">Prev: <a class="el" href="tutorial-branching-split.html">SIMD Branching Part 2 - Computations with different types</a></div> <div style="text-align: right;" markdown="1">Next: <a class="el" href="tutorial-nbody.html">Evaluation of the N-Body problem</a></div> </div></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
                         </div>
@@ -173,7 +187,7 @@ Conclusions</h1>
         <hr class="footer"/>
         <address class="footer">
             <small>
-                Generated on Thu Mar 2 2017 21:54:48 for Boost.SIMD by &#160;
+                Generated on Fri Jun 9 2017 10:01:40 for Boost.SIMD by &#160;
                 <a href="http://www.doxygen.org/index.html">
                     <img class="footer" src="doxygen.png" alt="doxygen"/>
                 </a>

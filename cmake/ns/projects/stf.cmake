@@ -22,7 +22,7 @@ endif()
 ## -------------------------------------------------------------------------------------------------
 
 NS_project_add(STF
-  GIT_REPOSITORY https://github.com/jfalcou/stf.git
+  GIT_REPOSITORY https://github.com/NumScale/stf.git
   GIT_TAG        ${STF_GIT_TAG}
   DESTINATION    ${STF_DESTINATION}
 

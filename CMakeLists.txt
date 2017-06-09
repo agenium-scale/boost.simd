@@ -10,7 +10,7 @@ cmake_minimum_required(VERSION 2.8.7)
 ## Setup project
 ## -------------------------------------------------------------------------------------------------
 project(Boost.SIMD)
-set(PROJECT_VERSION 4.17.3.0) # TODO: Find a way to update this automatically
+set(PROJECT_VERSION 4.17.6.0) # TODO: Find a way to update this automatically
 set(PROJECT_DOC_DIR ${PROJECT_SOURCE_DIR}/doc)
 
 ## Requirements for ns.cmake:
@@ -108,8 +108,8 @@ configure_file(cmake/FindBoost.SIMD.cmake.in          ${PROJECT_CMAKE_FIND} @ONL
 
 ## Install generated files
 ## See: http://stackoverflow.com/questions/10765885/how-to-install-your-custom-cmake-find-module
-if (WIN32)
-  set(CMAKE_CONFIG_INSTALL_DIR ${PROJECT_NAME}/CMake)
+if (WIN32 OR WIN64)
+  set(CMAKE_CONFIG_INSTALL_DIR cmake)
 else ()
   set(CMAKE_CONFIG_INSTALL_DIR share/cmake/${PROJECT_NAME})
 endif()

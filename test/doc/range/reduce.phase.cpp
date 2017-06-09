@@ -17,7 +17,7 @@ int main()
 
   std::cout << "SIMD reduce    :"
             << boost::simd::reduce( &values[0], &values[0]+9, 1.f
-                                  , boost::simd::multiplies, 1.f
+                                  , boost::simd::multiplies
                                   )
             << std::endl;
 

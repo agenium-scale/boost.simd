@@ -13,9 +13,8 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_is_gtz, bs::is_gtz);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_is_gtz, float>(-10, 10);
+  using T = bs::pack<float>;
+  run<T>(bs::is_gtz, nsbg::rand<T>(-10, 10));
 }

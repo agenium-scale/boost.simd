@@ -1,6 +1,6 @@
 //==================================================================================================
 /*
-  Copyright 2016 NumScale SAS
+  Copyright 2017 NumScale SAS
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
@@ -12,7 +12,6 @@
 #include <simd_test.hpp>
 
 using namespace boost::simd;
-using namespace boost::alignment;
 
 struct f { template<typename T> T operator()(T const& e) const              { return e*2; } };
 struct g { template<typename T> T operator()(T const& a, T const& b) const  { return a*b; } };

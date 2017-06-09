@@ -2,7 +2,6 @@ var searchData=
 [
   ['begin',['begin',['../classboost_1_1simd_1_1pack.html#ab29df37bfb2b987c1ca18d8510a4504a',1,'boost::simd::pack::begin() noexcept'],['../classboost_1_1simd_1_1pack.html#aa649c740b06b1ffb24f0dc085122049b',1,'boost::simd::pack::begin() const noexcept']]],
   ['bitfloating',['bitfloating',['../group__group-ieee_ga09cdfb5dfbc682036f6f45cdde1c0f06.html#ga09cdfb5dfbc682036f6f45cdde1c0f06',1,'boost::simd']]],
-  ['bitincrement',['Bitincrement',['../group__group-constant_ga9898d7b7261b986467d07dc2f3547658.html#ga9898d7b7261b986467d07dc2f3547658',1,'boost::simd']]],
   ['bitinteger',['bitinteger',['../group__group-ieee_gad5005bf029cea7e9c1ef95e91cce9972.html#gad5005bf029cea7e9c1ef95e91cce9972',1,'boost::simd']]],
   ['bitofsign',['bitofsign',['../group__group-ieee_gad6964af0c2055333fce526a350f4bcae.html#gad6964af0c2055333fce526a350f4bcae',1,'boost::simd']]],
   ['bits',['bits',['../group__group-bitwise_ga8a29262d8d7c1a060fe0a12b6757bedf.html#ga8a29262d8d7c1a060fe0a12b6757bedf',1,'boost::simd']]],
@@ -25,6 +24,7 @@ var searchData=
   ['boost_5fsimd_5fno_5fminuszero',['BOOST_SIMD_NO_MINUSZERO',['../group__group-config_ga088b6491aa4f57a6efe4749080456692.html#ga088b6491aa4f57a6efe4749080456692',1,'config.hpp']]],
   ['boost_5fsimd_5fno_5fnans',['BOOST_SIMD_NO_NANS',['../group__group-config_ga42e67bf132fe75e51df9d2b2edaf60d2.html#ga42e67bf132fe75e51df9d2b2edaf60d2',1,'config.hpp']]],
   ['broadcast',['broadcast',['../group__group-swar_gaa0cc11c63dad00de3e38664c53b2220d.html#gaa0cc11c63dad00de3e38664c53b2220d',1,'boost::simd']]],
+  ['bitincrement_20_28function_20template_29',['Bitincrement (function template)',['../group__constant-_bitincrement.html',1,'']]],
   ['bitwise_20functions',['Bitwise functions',['../group__group-bitwise.html',1,'']]],
   ['boolean_20functions',['Boolean functions',['../group__group-boolean.html',1,'']]],
   ['simd',['simd',['../namespaceboost_1_1simd.html',1,'boost']]]

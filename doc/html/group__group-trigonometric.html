@@ -42,7 +42,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li id="version">
-                            <a href="#" class="disabled">4.17.3.0</a>
+                            <a href="#" class="disabled">4.17.6.0</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -100,7 +100,7 @@ $(function() {
 <a name="details" id="details"></a><h2 class="groupheader">Description</h2>
 <p>Algorithms for computing scalar and SIMD version of trigonometric and inverse trigonometric functions and some utilities. </p>
 <p>All these functions can be included individually or all of them just by including &lt;boost/simd/trigonometric.hpp&gt;</p>
-<p>Except a meaningfull case (namely cospi, as \(\cos(\pi n) = (-1)^n\) for integral n) these functions are only provided for floating (scalar or SIMD) inputs.</p>
+<p>Except a meaningful case (namely cospi, as \(\cos(\pi n) = (-1)^n\) for integral n) these functions are only provided for floating (scalar or SIMD) inputs.</p>
 <ul>
 <li><p class="startli"><b>Direct trigonometric functors</b></p>
 <center> <table class="doxtable">
@@ -124,7 +124,7 @@ $(function() {
 <div class="fragment"><div class="line"> p_ra =  (-3.14159, -2.35619, -1.5708, -0.785398, 0, 0.785398, 1.5708, 2.35619)</div><div class="line"> p_pi =  (-1, -0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75)</div><div class="line"> p_dg =  (-180, -135, -90, -45, 0, 45, 90, 135)</div><div class="line"> -&gt; <a class="code" href="group__group-trigonometric_ga52122373db0e68b761c05da323ef6e47.html#ga52122373db0e68b761c05da323ef6e47">bs::cos</a>(p_ra) =   (-1, -0.707107, -4.37114e-08, 0.707107, 1, 0.707107, -4.37114e-08, -0.707107)</div><div class="line"> -&gt; <a class="code" href="group__group-trigonometric_ga0914af1dfd8393dc98835a9a44172c11.html#ga0914af1dfd8393dc98835a9a44172c11">bs::cospi</a>(p_pi) = (-1, -0.707107, -0, 0.707107, 1, 0.707107, -0, -0.707107)</div><div class="line"> -&gt; <a class="code" href="group__group-trigonometric_gaaf6c37b5faeac661985d5a12a3cd1c07.html#gaaf6c37b5faeac661985d5a12a3cd1c07">bs::cosd</a>(p_dg) =  (-1, -0.707107, -0, 0.707107, 1, 0.707107, -0, -0.707107)</div></div><!-- fragment --><p> All direct and inverse functions (except cardinal ones) are provided in three flavours using respectively radian, degrees and \(\pi\) multiples.</p>
 <p class="startli">Be aware that their uses are not equivalent (see the above results).</p>
 <p class="startli">To give another example: sinpi(1.0) is not equal to sin(Pi&lt;double&gt;()).</p><ul>
-<li><a class="el" href="group__group-constant_ga7d209ca9796ace803d49bc0196b0984c.html#ga7d209ca9796ace803d49bc0196b0984c" title="Generate value  that is the half length of a circle of radius one ... ">Pi&lt;double&gt;()</a> is only an approximation of \(\pi\) to 0.5 ulp and the reduction of the angle <a class="el" href="group__group-constant_ga7d209ca9796ace803d49bc0196b0984c.html#ga7d209ca9796ace803d49bc0196b0984c" title="Generate value  that is the half length of a circle of radius one ... ">Pi&lt;double&gt;()</a> between \(-\pi/4\) and \(\pi/4\) will lead to a non zero value and <a class="el" href="group__group-trigonometric_ga59d105051c6985a633b2f6092a72bdce.html#ga59d105051c6985a633b2f6092a72bdce">sin</a> will return this small value (namely 1.22464679914735e-16) as \(\sin x \sim x\) for small values.</li>
+<li>Pi&lt;double&gt;() is only an approximation of \(\pi\) to 0.5 ulp and the reduction of the angle Pi&lt;double&gt;() between \(-\pi/4\) and \(\pi/4\) will lead to a non zero value and <a class="el" href="group__group-trigonometric_ga59d105051c6985a633b2f6092a72bdce.html#ga59d105051c6985a633b2f6092a72bdce">sin</a> will return this small value (namely 1.22464679914735e-16) as \(\sin x \sim x\) for small values.</li>
 <li>1.0 is an exact double value and the reduction of the angle 1.0 between \(-0.25\) and \(0.25\) will lead to an exact 0.0 the sinus of which is exactly 0.0.</li>
 <li>However the two results are correct to 0.5 ulp.</li>
 <li>All this DOES NOT IMPLY that trigonometric functors taking degrees or \(\pi\) multiples as inputs are more accurate than those taking radians. The value computed by sin(Pi&lt;double&gt;()) is the correct value up to 0.5ulp of the sine of the input (which is not equal to \(\pi\)).</li>
@@ -155,7 +155,7 @@ $(function() {
 <li>evaluation of an approximation polynomial on the reduced interval.</li>
 </ul>
 <p class="startli">The reduction of the angle when no information is known on the angle magnitude can be very costly.</p>
-<p class="startli">there actually are 4 reduction routines protocol that respectly are sufficient for small_, medium_ and big_ angle values to have within cover test one ulp of difference with the according crlibm (correctly rounded math library) result.</p>
+<p class="startli">there actually are 4 reduction routines protocol that respectively are sufficient for small_, medium_ and big_ angle values to have within cover test one ulp of difference with the according crlibm (correctly rounded math library) result.</p>
 <p class="startli">In fact the standard reduction algorithm used is roughly (M is \(2^6\pi\) for float and \(2^{18}\pi\) for double)</p><ul>
 <li>if ( \(|x|\) is in \([0, \pi/4]\)) do nothing</li>
 <li>else if ( \(|x|\) is in \([0, \pi/2]\)) use <a class="el" href="group__group-trigonometric_gaff90c404a42b7484f1baa82c423201f5.html#gaff90c404a42b7484f1baa82c423201f5">rem_pio2_straight</a></li>
@@ -334,7 +334,7 @@ Functions</h2></td></tr>
         <hr class="footer"/>
         <address class="footer">
             <small>
-                Generated on Thu Mar 2 2017 21:55:15 for Boost.SIMD by &#160;
+                Generated on Fri Jun 9 2017 10:01:56 for Boost.SIMD by &#160;
                 <a href="http://www.doxygen.org/index.html">
                     <img class="footer" src="doxygen.png" alt="doxygen"/>
                 </a>

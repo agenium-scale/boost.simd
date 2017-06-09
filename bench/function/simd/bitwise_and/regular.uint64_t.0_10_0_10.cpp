@@ -13,9 +13,8 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SIMD_BENCH(simd_bitwise_and, bs::bitwise_and);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<simd_bitwise_and, std::uint64_t>(-10, 10,-10, 10);
+  using T = bs::pack<std::uint64_t>;
+  run<T>(bs::bitwise_and, nsbg::rand<T>(-10, 10), nsbg::rand<T>(-10, 10));
 }

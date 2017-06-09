@@ -1,0 +1,7 @@
+//! [fmasubadd]
+---- simd
+<- pf =                        (2, 2, 1, 1)
+<- qf =                        (3, 3, 0.5, 0.5)
+<- rf =                        (1, 1, -2, -2)
+-> bs::fmasubadd(pf, qf, rf) = (5, 7, 2.5, -1.5)
+//! [fmasubadd]

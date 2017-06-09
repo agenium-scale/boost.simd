@@ -58,7 +58,7 @@ your algorithms over those data using pack and related functions.
     Processors have often several hierarchies of caches. The time taken to
     transfer data from the cache to a register varies depending on the cache.
     When the required data is not in the cache, it is referred to as a cache
-    miss. Cache-misses are very expensive. Data is transfered from memory
+    miss. Cache-misses are very expensive. Data is transferred from memory
     to the cache in cache-lines sized chunks. On modern x86 machines, a cache-line is
     64 bytes or twice the size of an AVX register. It is therefore highly
     advantageous to use all data loaded into cache.

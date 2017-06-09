@@ -13,10 +13,9 @@
 namespace nsb = ns::bench;
 namespace bs =  boost::simd;
 
-DEFINE_SCALAR_BENCH(scalar_is_unord, bs::is_unord);
-
 DEFINE_BENCH_MAIN()
 {
-  nsb::for_each<scalar_is_unord, std::uint32_t>(0, 10, 10, 10);
+  using T = std::uint32_t;
+  run<T>(bs::is_unord, nsbg::rand<T>(0, 10), nsbg::rand<T>(10, 10));
 }
 

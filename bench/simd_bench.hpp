@@ -14,6 +14,7 @@
 #include <boost/simd/pack.hpp>
 #include <boost/preprocessor/cat.hpp>
 #include <boost/preprocessor/stringize.hpp>
+#include <boost/algorithm/string/erase.hpp>
 #include <ns/bench.hpp>
 
 namespace ns { namespace bench {
@@ -32,174 +33,134 @@ struct format_type<boost::simd::pack<T, N>>
 
 } }
 
-ns::bench::setup setup()
+namespace ns { namespace bench { namespace generators {
+
+template <typename T, std::size_t N>
+struct rand<boost::simd::pack<T, N>>
 {
-  namespace nsb = ns::bench;
+  using pack_type = boost::simd::pack<T, N>;
+  using value_type = typename pack_type::value_type;
+
+  template <typename U>
+  rand( U min = static_cast<U>(std::numeric_limits<value_type>::min())
+      , U max = static_cast<U>(std::numeric_limits<value_type>::max())
+      ) : r(min, max)
+  {
+  }
+
+  inline pack_type operator()() {
+    std::array<value_type, sizeof(pack_type) / sizeof(value_type)> v;
+    std::transform(v.begin(), v.end(), v.begin(), [this](value_type const&) { return r.random(); });
+    return {v.begin(), v.end()};
+  }
+
+  std::string description() const {
+    return "TODO";
+  }
+
+  private :
+  rand<value_type> r;
+};
+
+} } }
+
+// -------------------------------------------------------------------------------------------------
+
+namespace nsb = ns::bench;
+namespace nsbg = nsb::generators;
+
+inline nsb::setup setup()
+{
   return nsb::default_setup();
 }
 
-ns::bench::results& results()
+inline nsb::results& results()
 {
-  static ns::bench::results r;
+  static nsb::results r;
   return r;
 }
 
 inline bool is_quiet()
 {
-  return ns::bench::args_map().get<bool>("quiet", false);
+  return nsb::args_map().get<bool>("quiet", false);
 }
 
-void print_results()
+inline void display()
 {
   std::cout << results() << std::endl;
 }
 
-template <std::size_t N, typename F, typename... Args>
-void run_bench(std::string const& name, F f, Args&&... args)
+inline std::string sanitized_simd()
 {
-  namespace nsb = ns::bench;
-  nsb::run(results(), setup(), name, nsb::make_sized_function(N, f), std::forward<Args>(args)...);
+  namespace ba = boost::algorithm;
+  auto s = nsb::type_id<BOOST_SIMD_DEFAULT_SITE>();
+  ba::ierase_all(s, "boost::simd::");
+  ba::ierase_all(s, "_");
+  return s;
 }
 
-template <std::size_t N, typename F, typename... Args>
-void run_bench(const char* name, F f, Args&&... args)
+template <typename F>
+inline std::string sanitized_function()
 {
-  run_bench<N>(std::string(name), f, std::forward<Args>(args)...);
+  namespace ba = boost::algorithm;
+  auto s = nsb::type_id<F>();
+  ba::ierase_all(s, "boost::dispatch::functor");
+  ba::ierase_all(s, "boost::simd::tag::");
+  ba::ierase_all(s, "<");
+  ba::ierase_all(s, ">");
+  ba::ierase_all(s, "_");
+  ba::ierase_all(s, " ");
+  auto i = s.find(",");
+  if (i != std::string::npos) {
+    s = s.substr(0, i);
+  }
+  return "boost::simd::" + s;
 }
 
-template <std::size_t N, typename F, typename... Args>
-void run_bench(F f, Args&&... args)
-{
-  namespace nsb = ns::bench;
-  run_bench<N>(nsb::type_id<F>(), f, std::forward<Args>(args)...);
-}
-
-namespace nsb = ns::bench;
-
-template <typename Experiment, typename Type, std::size_t ElementSize>
-struct bench_experiment : ns::bench::experiment
-{
-  //using type = typename Experiment::type;
-  using type = Type;
-
-  void which_type()
-  {
-    if (!is_quiet()) {
-      std::cout << ":: [T = " << nsb::type_id<type>() << "]" << std::endl;
-    }
-  }
-
-  template <typename U>
-  void operator()(U min0, U max0)
-  {
-    which_type();
-    run_bench<ElementSize>
-      ( Experiment::name()
-      , Experiment::functor()
-      , nsb::generators::rand<type>(min0, max0)
-      );
-  }
-
-  template <typename U>
-  void operator()(U min0, U max0, U min1, U max1)
-  {
-    which_type();
-    run_bench<ElementSize>
-      ( Experiment::name()
-      , Experiment::functor()
-      , nsb::generators::rand<type>(min0, max0)
-      , nsb::generators::rand<type>(min1, max1)
-      );
-  }
-
-  template <typename U>
-  void operator()(U min0, U max0, U min1, U max1, U min2, U max2)
-  {
-    which_type();
-    run_bench<ElementSize>
-      ( Experiment::name()
-      , Experiment::functor()
-      , nsb::generators::rand<type>(min0, max0)
-      , nsb::generators::rand<type>(min1, max1)
-      , nsb::generators::rand<type>(min2, max2)
-      );
-  }
-};
-
-void describe()
+inline void describe()
 {
   if (!is_quiet()) {
     std::cout << ":: --------------------------------------------------------------------------------------------------------------------------------------------------";
     std::cout << std::endl;
     std::cout << ":: Compiler: " << BOOST_COMPILER << std::endl;
     std::cout << ":: Platform: " << BOOST_PLATFORM << std::endl;
-    std::cout << ":: SIMD:     " << nsb::type_id<BOOST_SIMD_DEFAULT_SITE>() << std::endl;
+    std::cout << ":: SIMD:     " << sanitized_simd() << std::endl;
     std::cout << ":: --------------------------------------------------------------------------------------------------------------------------------------------------";
     std::cout << std::endl;
   }
 }
 
-template <typename T>                            struct template_of;
-template <template <class> class Tp, typename T> struct template_of<Tp<T>> { using type = T; };
-template <typename T>
-using template_of_t = typename template_of<T>::type;
+// -------------------------------------------------------------------------------------------------
 
-template <typename Experiment>
-using simd_experiment =
-  bench_experiment< Experiment
-                  , boost::simd::pack<template_of_t<Experiment>>
-                  , boost::simd::pack<template_of_t<Experiment>>::static_size
-                  >;
-
-template <typename Experiment>
-using scalar_experiment =
-  bench_experiment< Experiment
-                  , template_of_t<Experiment>
-                  , 1
-                  >;
+template <typename T> struct experiment_size_of {
+  enum { value = 1 };
+};
 
 template <typename T, std::size_t N>
-using unrolled_pack = boost::simd::pack<T, boost::simd::pack<T>::static_size * N>;
+struct experiment_size_of<boost::simd::pack<T, N>>  {
+  enum { value = N };
+};
 
-template <std::size_t N, typename Experiment>
-using unrolled_simd_experiment =
-  bench_experiment< Experiment
-                  , unrolled_pack<template_of_t<Experiment>, N>
-                  , unrolled_pack<template_of_t<Experiment>, N>::static_size
-                  >;
+// -------------------------------------------------------------------------------------------------
 
-std::string sanitized_simd()
+template <typename T, typename F, typename... Args>
+void run(std::string const& name, F f, Args&&... args)
 {
-  auto s = nsb::type_id<BOOST_SIMD_DEFAULT_SITE>();
-  auto bsns = std::string("boost::simd::");
-  if (s.find(bsns) != std::string::npos) {
-    s = s.substr(bsns.size(), s.size());
+  enum { N = experiment_size_of<T>::value };
+  if (!is_quiet()) {
+    std::cout << ":: [T = " << nsb::type_id<T>() << "]" << std::endl;
+    std::cout << ":: [N = " << N << "]" << std::endl;
   }
-  if (s[s.size() - 1] == '_') {
-    s.resize(s.size() - 1);
-  }
-  return s;
+  nsb::run(results(), setup(), name, nsb::make_sized_function(N, f), std::forward<Args>(args)...);
 }
 
-#define DEFINE_BENCH(name_, f, experiment)                                                         \
-  template <typename T>                                                                            \
-  struct name_ : experiment<name_<T>>                                                              \
-  {                                                                                                \
-    static const char* name()    { return BOOST_PP_STRINGIZE(name_); }                             \
-    static decltype(f) functor() { return f; }                                                     \
-  }                                                                                                \
-/**/
+template <typename T, typename F, typename... Args>
+void run(F f, Args&&... args)
+{
+  run<T>(sanitized_function<F>(), f, std::forward<Args>(args)...);
+}
 
-#define DEFINE_SIMD_BENCH(name, f)          DEFINE_BENCH(name, f, simd_experiment)
-#define DEFINE_SCALAR_BENCH(name, f)        DEFINE_BENCH(name, f, scalar_experiment)
-#define DEFINE_UNROLLED_SIMD_BENCH(name_, unroll, f)\
-  template <typename T>                                                                            \
-  struct name_ : unrolled_simd_experiment<unroll, name_<T>>                                        \
-  {                                                                                                \
-    static const char* name()    { return BOOST_PP_STRINGIZE(name_); }                             \
-    static decltype(f) functor() { return f; }                                                     \
-  }                                                                                                \
-/**/
+// -------------------------------------------------------------------------------------------------
 
 #define DEFINE_BENCH_MAIN()                                                                        \
   void main2();                                                                                    \
@@ -209,7 +170,7 @@ std::string sanitized_simd()
     main2();                                                                                       \
     describe();                                                                                    \
     results().add_optional_info("simd", sanitized_simd());                                         \
-    print_results();                                                                               \
+    display();                                                                               \
     return 0;                                                                                      \
   }                                                                                                \
   void main2()                                                                                     \
