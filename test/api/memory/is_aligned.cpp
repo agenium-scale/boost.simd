@@ -17,8 +17,10 @@ STF_CASE_TPL( "Check is_aligned on default architecture", STF_NUMERIC_TYPES )
 {
   T* ptr = allocate<T>( 7 );
 
-  STF_EXPECT    ( is_aligned(ptr)   );
-  STF_EXPECT_NOT( is_aligned(ptr+1) );
+  constexpr bool status = std::is_same<BOOST_SIMD_DEFAULT_SITE,boost::dispatch::cpu_>::value;
+
+  STF_EXPECT( is_aligned(ptr)   );
+  STF_EQUAL ( is_aligned(ptr+1), status );
 
   deallocate(ptr);
 }

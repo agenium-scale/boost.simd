@@ -34,6 +34,7 @@ namespace boost { namespace simd
         : nsm::bool_< std::is_same< typename detail::storage_status<T,N,abi_of_t<T,N>>::type
                                   , detail::native_status
                                   >::value
+                    && !std::is_same<BOOST_SIMD_DEFAULT_SITE,boost::dispatch::cpu_>::value
                     >
 #endif
   {};
