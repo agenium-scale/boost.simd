@@ -287,11 +287,12 @@ matrix:
 # Prepare build
 ##===================================================================================================
 before_script:
-  - export BOOST_ROOT=$(pwd)/boost-header-only/boost-1.64.0
   - mkdir build
   - cd build
   - $TOOLSET --version
   - git clone https://github.com/NumScale/boost-header-only.git
+  - export BOOST_ROOT=$(pwd)/boost-header-only/boost-1.64.0
+  - echo $BOOST_ROOT
   - cmake .. -DIS_TRAVIS_CI= -DCMAKE_CXX_COMPILER=$TOOLSET -DCMAKE_CXX_FLAGS="$SIMD_EXT $OPT -I$HOME/dispatch/include" -DSIMD_EXT=$SIMD_EXT -DTOOLSET=$TOOLSET
 
 ##===================================================================================================
