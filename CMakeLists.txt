@@ -27,20 +27,13 @@ include(cmake/ns/ns.cmake)
 ## -------------------------------------------------------------------------------------------------
 NS_ignore(${DEV})
 NS_ignore(${IS_TRAVIS_CI})
-NS_ignore(${USE_SELF_BOOST})
 
 ## Search for packages
 ## -------------------------------------------------------------------------------------------------
 if (DEFINED IS_TRAVIS_CI)
   # We do not want to find boost here, as we're gonna use the one on NumScale/boost-header-only
   set(GIT_EXECUTABLE git)
-  set(USE_SELF_BOOST TRUE)
   set(DEV TRUE)
-else()
-  NS_find_package(Git QUIET)
-  if (NOT DEFINED USE_SELF_BOOST)
-    NS_find_package(Boost 1.60 REQUIRED)
-  endif()
 endif()
 
 ##
@@ -51,12 +44,6 @@ NS_prevent_in_source_build()
 set(NS_CMAKE_PROJECT_OPTIONS
   CMAKE_ARGS "-DBOOST_ROOT=${BOOST_HEADER_ONLY_DESTINATION}/include"
 )
-if (DEFINED USE_SELF_BOOST)
-  set(BOOST_HEADER_ONLY_GIT_TAG develop)
-  NS_project_include(boost-header-only)
-  set(Boost_INCLUDE_DIRS ${BOOST_HEADER_ONLY_DESTINATION}/include)
-endif()
-
 # Use the same BOOST_ROOT for every projects
 set(NS_CMAKE_PROJECT_OPTIONS
   CMAKE_ARGS "-DBOOST_ROOT=${Boost_INCLUDE_DIRS}"
@@ -65,10 +52,6 @@ set(NS_CMAKE_PROJECT_OPTIONS
 if (DEFINED DEV)
   NS_project_include(stf)
   NS_project_include(ns.bench)
-
-  if (DEFINED USE_SELF_BOOST)
-    add_dependencies(update.check update.boost-header-only)
-  endif()
 endif()
 
 ## Extension point for CMake
@@ -84,9 +67,6 @@ endif()
 ## Install target
 ## -------------------------------------------------------------------------------------------------
 install(DIRECTORY ${PROJECT_SOURCE_DIR}/include DESTINATION .)
-if (DEFINED USE_SELF_BOOST)
-  install(DIRECTORY ${NS_CMAKE_EXTERNAL_PROJECTS_DESTINATION}/include DESTINATION .)
-endif()
 
 ## Generate Boost.SIMDConfig.cmake that will be installed to make find_package useable
 ## -------------------------------------------------------------------------------------------------
