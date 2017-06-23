@@ -167,7 +167,7 @@ matrix:
       env: TOOLSET=g++-5 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=doc
 
 ##===================================================================================================
-## Functions
+## Scalar Functions
 ##==================================================================================================
 ## g++ 6 AVX
     - os: linux
@@ -176,7 +176,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-6']
-      env: TOOLSET=g++-6 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=function
+      env: TOOLSET=g++-6 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=function.scalar
 
 ## g++ 4.8 SSE4
     - os: linux
@@ -185,7 +185,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-4.8']
-      env: TOOLSET=g++-4.8 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=function
+      env: TOOLSET=g++-4.8 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=function.scalar
 
 ## g++ 5 AVX
     - os: linux
@@ -194,7 +194,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-5']
-      env: TOOLSET=g++-5 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=function
+      env: TOOLSET=g++-5 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=function.scalar
 
 ## g++ 5 SSE4
     - os: linux
@@ -203,7 +203,46 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-5']
-      env: TOOLSET=g++-5 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=function
+      env: TOOLSET=g++-5 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=function.scalar
+
+##===================================================================================================
+## SIMD Functions
+##==================================================================================================
+## g++ 6 AVX
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-6']
+      env: TOOLSET=g++-6 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=function.simd
+
+## g++ 4.8 SSE4
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-4.8']
+      env: TOOLSET=g++-4.8 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=function.simd
+
+## g++ 5 AVX
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-5']
+      env: TOOLSET=g++-5 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=function.simd
+
+## g++ 5 SSE4
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-5']
+      env: TOOLSET=g++-5 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=function.simd
 
 ##===================================================================================================
 ## Constants
