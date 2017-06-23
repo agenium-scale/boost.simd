@@ -162,12 +162,16 @@ namespace boost { namespace simd
   using segmented_aligned_range_t = detail::segment_<Iterator,detail::aligned_iterator<Iterator,N>>;
 
   // Iterators + specific cardinal
-  template<typename Iterator, std::size_t N>
-  BOOST_FORCEINLINE segmented_aligned_range_t<Iterator,N>
-  segmented_aligned_range(Iterator b, Iterator e, nsm::uint64_t<N> const& card)
+  template< typename Iterator
+          , typename Integral
+          // SFINAE out if Integral is not modeling IntegralConstant
+          , typename = nsm::constant<typename Integral::value_type,Integral::value>
+          >
+  BOOST_FORCEINLINE segmented_aligned_range_t<Iterator,Integral::value>
+  segmented_aligned_range(Iterator b, Iterator e, Integral const& card)
   {
-    using result_t = detail::segment_<Iterator, detail::aligned_iterator<Iterator,N>>;
-    auto alg = pack<typename std::iterator_traits<Iterator>::value_type,N>::alignment;
+    using result_t = detail::segment_<Iterator, detail::aligned_iterator<Iterator,Integral::value>>;
+    auto alg = pack<typename std::iterator_traits<Iterator>::value_type,Integral::value>::alignment;
 
     // How many data in the range
     std::size_t sz = std::distance(b, e);
@@ -183,8 +187,7 @@ namespace boost { namespace simd
     std::size_t psz = std::min<std::size_t>(sz,std::distance(p, a));
 
     // How many data are inside the SIMD body
-    //std::size_t msz = (sz >= psz) ? (N * ((sz - psz) / N)) : (0u);
-    std::size_t msz = (sz >= psz) ? (N * ((sz - psz) / N)) : (0u);
+    std::size_t msz = (sz >= psz) ? (Integral::value * ((sz - psz) / Integral::value)) : (0u);
 
     // Head/Body/Tail frontiers
     auto has_body = (msz != 0u);
@@ -208,9 +211,13 @@ namespace boost { namespace simd
   }
 
   // Range + specific cardinal
-  template<std::size_t N, typename Range>
-  BOOST_FORCEINLINE segmented_aligned_range_t<detail::range_iterator<Range>,N>
-  segmented_aligned_range( Range&& r, nsm::uint64_t<N> const& card )
+  template< typename Range
+          , typename Integral
+          // SFINAE out if Integral is not modeling IntegralConstant
+          , typename = nsm::constant<typename Integral::value_type,Integral::value>
+          >
+  BOOST_FORCEINLINE segmented_aligned_range_t<detail::range_iterator<Range>,Integral::value>
+  segmented_aligned_range( Range&& r, Integral const& card )
   {
     return segmented_aligned_range( tt::begin(std::forward<Range>(r))
                                   , tt::end(std::forward<Range>(r))
