@@ -30,6 +30,7 @@ NS_ignore(${IS_TRAVIS_CI})
 
 ## Search for packages
 ## -------------------------------------------------------------------------------------------------
+find_package(Boost)
 if (DEFINED IS_TRAVIS_CI)
   # We do not want to find boost here, as we're gonna use the one on NumScale/boost-header-only
   set(GIT_EXECUTABLE git)
@@ -41,9 +42,6 @@ NS_prevent_in_source_build()
 
 ## External projects
 ## -------------------------------------------------------------------------------------------------
-set(NS_CMAKE_PROJECT_OPTIONS
-  CMAKE_ARGS "-DBOOST_ROOT=${BOOST_HEADER_ONLY_DESTINATION}/include"
-)
 # Use the same BOOST_ROOT for every projects
 set(NS_CMAKE_PROJECT_OPTIONS
   CMAKE_ARGS "-DBOOST_ROOT=${Boost_INCLUDE_DIRS}"
