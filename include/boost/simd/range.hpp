@@ -24,7 +24,7 @@ namespace boost { namespace simd
 
 #include <boost/simd/range/range.hpp>
 #include <boost/simd/range/aligned_range.hpp>
-#include <boost/simd/range/segmented_input_range.hpp>
-#include <boost/simd/range/segmented_output_range.hpp>
+#include <boost/simd/range/segmented_range.hpp>
+#include <boost/simd/range/segmented_aligned_range.hpp>
 
 #endif

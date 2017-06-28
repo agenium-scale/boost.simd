@@ -12,3 +12,9 @@ add_subdirectory(memory)
 add_subdirectory(pack)
 add_subdirectory(range)
 add_subdirectory(algorithm)
+
+SET( SOURCES
+    includes.cpp
+  )
+
+make_unit( "api" ${SOURCES})
