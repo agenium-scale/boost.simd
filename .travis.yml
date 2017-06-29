@@ -301,7 +301,6 @@ before_script:
   - tar xzf $CMAKE_DIR.tar.gz
   - export PATH=$CMAKE_DIR/bin:$(pwd):$PATH
   - cmake --version
-  - cmake -G
   - cmake .. -DIS_TRAVIS_CI= -DCMAKE_CXX_COMPILER=$TOOLSET -DCMAKE_CXX_FLAGS="$SIMD_EXT $OPT -I$HOME/dispatch/include" -DSIMD_EXT=$SIMD_EXT -DTOOLSET=$TOOLSET -GNinja
 
 ##===================================================================================================
