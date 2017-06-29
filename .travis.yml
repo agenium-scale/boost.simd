@@ -293,12 +293,15 @@ before_script:
   - git clone https://github.com/NumScale/boost-header-only.git
   - export BOOST_ROOT=$(pwd)/boost-header-only/boost-1.64.0
   - echo $BOOST_ROOT
-  - cmake .. -DIS_TRAVIS_CI= -DCMAKE_CXX_COMPILER=$TOOLSET -DCMAKE_CXX_FLAGS="$SIMD_EXT $OPT -I$HOME/dispatch/include" -DSIMD_EXT=$SIMD_EXT -DTOOLSET=$TOOLSET
+  - wget https://github.com/ninja-build/ninja/releases/download/v1.7.2/ninja-linux.zip --no-check-certificates
+  - unzip ninja-linux.zip
+  - export PATH=$PATH:$(pwd)
+  - cmake .. -DIS_TRAVIS_CI= -DCMAKE_CXX_COMPILER=$TOOLSET -DCMAKE_CXX_FLAGS="$SIMD_EXT $OPT -I$HOME/dispatch/include" -DSIMD_EXT=$SIMD_EXT -DTOOLSET=$TOOLSET -GNinja
 
 ##===================================================================================================
 # Build unit and run test
 ##===================================================================================================
 script:
-  - make update.stf | grep -v "^-- " # Silent installation
-  - make  -j 4 -k  $TARGETS.unit
+  - ninja -j 1 update.stf | grep -v "^-- " # Silent installation
+  - ninja -j 4 -k  $TARGETS.unit
   - ctest -j 4 -R ^$TARGETS.*.unit
