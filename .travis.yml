@@ -167,7 +167,7 @@ matrix:
       env: TOOLSET=g++-5 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=doc
 
 ##===================================================================================================
-## Functions
+## Scalar Functions
 ##==================================================================================================
 ## g++ 6 AVX
     - os: linux
@@ -176,7 +176,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-6']
-      env: TOOLSET=g++-6 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=function
+      env: TOOLSET=g++-6 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=function.scalar
 
 ## g++ 4.8 SSE4
     - os: linux
@@ -185,7 +185,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-4.8']
-      env: TOOLSET=g++-4.8 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=function
+      env: TOOLSET=g++-4.8 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=function.scalar
 
 ## g++ 5 AVX
     - os: linux
@@ -194,7 +194,7 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-5']
-      env: TOOLSET=g++-5 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=function
+      env: TOOLSET=g++-5 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=function.scalar
 
 ## g++ 5 SSE4
     - os: linux
@@ -203,7 +203,46 @@ matrix:
         apt:
           sources: ['ubuntu-toolchain-r-test']
           packages: ['g++-5']
-      env: TOOLSET=g++-5 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=function
+      env: TOOLSET=g++-5 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=function.scalar
+
+##===================================================================================================
+## SIMD Functions
+##==================================================================================================
+## g++ 6 AVX
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-6']
+      env: TOOLSET=g++-6 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=function.simd
+
+## g++ 4.8 SSE4
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-4.8']
+      env: TOOLSET=g++-4.8 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=function.simd
+
+## g++ 5 AVX
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-5']
+      env: TOOLSET=g++-5 SIMD_EXT=-mavx OPT=-ftrack-macro-expansion=0 TARGETS=function.simd
+
+## g++ 5 SSE4
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources: ['ubuntu-toolchain-r-test']
+          packages: ['g++-5']
+      env: TOOLSET=g++-5 SIMD_EXT=-msse4.1 OPT=-ftrack-macro-expansion=0 TARGETS=function.simd
 
 ##===================================================================================================
 ## Constants
@@ -248,17 +287,26 @@ matrix:
 # Prepare build
 ##===================================================================================================
 before_script:
-  - export BOOST_ROOT=build/_install/include
   - mkdir build
   - cd build
   - $TOOLSET --version
-  - cmake .. -DIS_TRAVIS_CI= -DCMAKE_CXX_COMPILER=$TOOLSET -DCMAKE_CXX_FLAGS="$SIMD_EXT $OPT -I$HOME/dispatch/include" -DSIMD_EXT=$SIMD_EXT -DTOOLSET=$TOOLSET
+  - git clone https://github.com/NumScale/boost-header-only.git
+  - export BOOST_ROOT=$(pwd)/boost-header-only/boost-1.64.0
+  - echo $BOOST_ROOT
+  - CMAKE_DIR=cmake-3.8.2-Linux-x86_64
+  - curl -LOk https://github.com/ninja-build/ninja/releases/download/v1.7.2/ninja-linux.zip
+  - curl -LOk https://cmake.org/files/v3.8/$CMAKE_DIR.tar.gz
+  - ls
+  - unzip ninja-linux.zip
+  - tar xzf $CMAKE_DIR.tar.gz
+  - export PATH=$CMAKE_DIR/bin:$(pwd):$PATH
+  - cmake --version
+  - cmake .. -DIS_TRAVIS_CI= -DCMAKE_CXX_COMPILER=$TOOLSET -DCMAKE_CXX_FLAGS="$SIMD_EXT $OPT -I$HOME/dispatch/include" -DSIMD_EXT=$SIMD_EXT -DTOOLSET=$TOOLSET -GNinja
 
 ##===================================================================================================
 # Build unit and run test
 ##===================================================================================================
 script:
-  - make update.boost-header-only | grep -v "^-- " # Silent installation
-  - make update.stf | grep -v "^-- " # Silent installation
-  - make  -j 4 -k  $TARGETS.unit
+  - ninja -j 1 update.stf | grep -v "^-- " # Silent installation
+  - ninja -j 4 -k 0 $TARGETS.unit
   - ctest -j 4 -R ^$TARGETS.*.unit
