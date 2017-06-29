@@ -308,5 +308,5 @@ before_script:
 ##===================================================================================================
 script:
   - ninja -j 1 update.stf | grep -v "^-- " # Silent installation
-  - ninja -j 4 -k  $TARGETS.unit
+  - ninja -j 4 -k 0 $TARGETS.unit
   - ctest -j 4 -R ^$TARGETS.*.unit
