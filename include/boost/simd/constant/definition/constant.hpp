@@ -43,7 +43,10 @@ namespace boost { namespace simd
   template<typename Type, detail::bits_t<dispatch::scalar_of_t<Type>> Bits>
   BOOST_FORCEINLINE Type Constant()
   {
-    using cst_t = typename detail::constantify<boost::dispatch::scalar_of_t<Type>,Bits>::type;
+    using cst_t = typename detail::constantify< boost::dispatch::scalar_of_t<Type>
+                                              , std::uintmax_t(Bits)
+                                              >::type;
+
     return detail::constant( cst_t{}, boost::simd::as_<Type>{} );
   }
 } }

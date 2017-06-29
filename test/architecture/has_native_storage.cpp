@@ -17,7 +17,8 @@ struct check_native_storage
 
     runtime.stream()  << "\n With T = [" << ::stf::type_id<T>() << "]\n";
 
-    STF_EXPECT( ( has_native_storage<T    >::value) );
+    constexpr bool status = !std::is_same<BOOST_SIMD_DEFAULT_SITE,boost::dispatch::cpu_>::value;
+    STF_EQUAL ( ( has_native_storage<T    >::value), status );
     STF_EXPECT( (!has_native_storage<T,128>::value) );
   }
 

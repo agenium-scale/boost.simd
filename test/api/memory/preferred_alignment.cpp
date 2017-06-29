@@ -15,10 +15,7 @@ using namespace boost::simd;
 STF_CASE_TPL( "Check preferred_alignment on Vectorizable types", STF_NUMERIC_TYPES )
 {
   static const std::size_t N = pack<T>::static_size;
-
-  using arch_t = BOOST_SIMD_DEFAULT_SITE;
-
-  STF_EQUAL( (preferred_alignment<T>::value    ), std::size_t(limits<arch_t>::bytes));
+  STF_EQUAL( (preferred_alignment<T>::value    ), std::size_t(pack<T,N  >::alignment) );
   STF_EQUAL( (preferred_alignment<T,N/2>::value), std::size_t(pack<T,N/2>::alignment) );
   STF_EQUAL( (preferred_alignment<T,N*2>::value), std::size_t(pack<T,N*2>::alignment) );
 }
