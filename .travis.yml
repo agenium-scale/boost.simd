@@ -296,6 +296,7 @@ before_script:
   - wget https://github.com/ninja-build/ninja/releases/download/v1.7.2/ninja-linux.zip
   - unzip ninja-linux.zip
   - export PATH=$PATH:$(pwd)
+  - cmake --version
   - cmake .. -DIS_TRAVIS_CI= -DCMAKE_CXX_COMPILER=$TOOLSET -DCMAKE_CXX_FLAGS="$SIMD_EXT $OPT -I$HOME/dispatch/include" -DSIMD_EXT=$SIMD_EXT -DTOOLSET=$TOOLSET -GNinja
 
 ##===================================================================================================
