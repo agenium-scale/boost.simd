@@ -11,7 +11,7 @@
 ##       `cmake/ns/make_unit.cmake`.
 if (DEFINED IS_TRAVIS_CI)
   set(TRAVIS_UNIT_TEST "travis1.function.simd")
-  add_custom_target(${TRAVIS_UNIT_TEST})
+  add_custom_target(${TRAVIS_UNIT_TEST}.unit)
 endif()
 
 ## Larger test suites go there
@@ -34,7 +34,7 @@ add_subdirectory(store)
 
 if (DEFINED IS_TRAVIS_CI)
   set(TRAVIS_UNIT_TEST "travis2.function.simd")
-  add_custom_target(${TRAVIS_UNIT_TEST})
+  add_custom_target(${TRAVIS_UNIT_TEST}.unit)
 endif()
 
 set ( SOURCES
@@ -141,7 +141,7 @@ make_coverage("function.simd"  ${SOURCES})
 
 if (DEFINED IS_TRAVIS_CI)
   set(TRAVIS_UNIT_TEST "travis3.function.simd")
-  add_custom_target(${TRAVIS_UNIT_TEST})
+  add_custom_target(${TRAVIS_UNIT_TEST}.unit)
 endif()
 
 set ( SOURCES
