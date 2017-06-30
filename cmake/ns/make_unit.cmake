@@ -54,7 +54,7 @@ function(make_unit root)
 
     ## HACK: travis
     if (DEFINED TRAVIS_UNIT_TEST)
-        add_dependencies(${TRAVIS_UNIT_TEST} ${test})
+        add_dependencies(${TRAVIS_UNIT_TEST}.unit ${test})
     endif()
 
   endforeach()
