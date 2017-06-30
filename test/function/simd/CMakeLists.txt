@@ -6,6 +6,14 @@
 ##                            http://www.boost.org/LICENSE_1_0.txt
 ##===================================================================================================
 
+## HACK: function.simd.unit takes too much time to compile for travis, so we're splitting
+##       this targets into multiple sub-targets only for travis! (see the hack in
+##       `cmake/ns/make_unit.cmake`.
+if (DEFINED IS_TRAVIS_CI)
+  set(TRAVIS_UNIT_TEST "travis1.function.simd")
+  add_custom_target(${TRAVIS_UNIT_TEST})
+endif()
+
 ## Larger test suites go there
 add_subdirectory(cast)
 add_subdirectory(combine)
@@ -23,6 +31,11 @@ add_subdirectory(slide)
 add_subdirectory(splat)
 add_subdirectory(split)
 add_subdirectory(store)
+
+if (DEFINED IS_TRAVIS_CI)
+  set(TRAVIS_UNIT_TEST "travis2.function.simd")
+  add_custom_target(${TRAVIS_UNIT_TEST})
+endif()
 
 set ( SOURCES
       abs.regular.cpp
@@ -121,6 +134,17 @@ set ( SOURCES
       dist.saturated.cpp
       divides.regular.cpp
       divides.saturated.cpp
+)
+
+make_unit( "function.simd"  ${SOURCES})
+make_coverage("function.simd"  ${SOURCES})
+
+if (DEFINED IS_TRAVIS_CI)
+  set(TRAVIS_UNIT_TEST "travis3.function.simd")
+  add_custom_target(${TRAVIS_UNIT_TEST})
+endif()
+
+set ( SOURCES
       dot.cpp
       enumerate.cpp
       eps.cpp
@@ -390,3 +414,6 @@ set ( SOURCES
 
 make_unit( "function.simd"  ${SOURCES})
 make_coverage("function.simd"  ${SOURCES})
+
+## Unset everything
+unset(TRAVIS_UNIT_TEST)
