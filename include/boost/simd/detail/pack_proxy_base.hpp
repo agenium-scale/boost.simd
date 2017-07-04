@@ -61,24 +61,27 @@ namespace boost { namespace simd { namespace detail
   template < typename Derived, typename U                                                           \
            , typename Enable = typename std::enable_if<!is_proxy<U>::value>::type                   \
            >                                                                                        \
-  BOOST_FORCEINLINE typename Derived::base_type                                                     \
+  BOOST_FORCEINLINE auto                                                                            \
   OP_TOKEN(pack_proxy_base<Derived> const& lhs, U const& rhs) BOOST_NOEXCEPT                        \
+                    -> decltype(lhs.self().get() OP rhs)                                            \
   {                                                                                                 \
-    return lhs.self().get() OP static_cast<typename Derived::base_type>(rhs);                       \
+    return lhs.self().get() OP rhs;                                                                 \
   }                                                                                                 \
   template < typename Derived, typename U                                                           \
            , typename Enable = typename std::enable_if<!is_proxy<U>::value>::type                   \
            >                                                                                        \
-  BOOST_FORCEINLINE typename Derived::base_type                                                     \
+  BOOST_FORCEINLINE auto                                                                            \
   OP_TOKEN(U const& lhs, pack_proxy_base<Derived> const& rhs) BOOST_NOEXCEPT                        \
+                    -> decltype(lhs OP rhs.self().get())                                            \
   {                                                                                                 \
-    return static_cast<typename Derived::base_type>(lhs) OP rhs.self().get();                       \
+    return lhs OP rhs.self().get();                                                                 \
   }                                                                                                 \
   template <typename Derived>                                                                       \
-  BOOST_FORCEINLINE typename Derived::base_type                                                     \
-  OP_TOKEN(pack_proxy_base<Derived> const& l, pack_proxy_base<Derived> const& r) BOOST_NOEXCEPT     \
+  BOOST_FORCEINLINE auto                                                                            \
+  OP_TOKEN(pack_proxy_base<Derived> const& lhs, pack_proxy_base<Derived> const& rhs) BOOST_NOEXCEPT \
+                    -> decltype(lhs.self().get() OP rhs.self().get())                               \
   {                                                                                                 \
-    return static_cast<typename Derived::base_type>(l.self().get() OP r.self().get());              \
+    return lhs.self().get() OP rhs.self().get();                                                    \
   }                                                                                                 \
   /**/
 
