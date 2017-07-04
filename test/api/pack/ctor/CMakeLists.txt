@@ -12,6 +12,7 @@ set ( SOURCES
       default.cpp
       pointer.cpp
       iterator.cpp
+      rebind.cpp
       splat.cpp
     )
 
