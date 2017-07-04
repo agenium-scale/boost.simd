@@ -11,6 +11,9 @@
 
 #include <boost/simd/detail/overload.hpp>
 #include <boost/simd/detail/traits.hpp>
+#include <boost/simd/function/if_else.hpp>
+#include <boost/simd/function/if_else_allbits.hpp>
+#include <boost/simd/function/if_else_zero.hpp>
 #include <boost/simd/function/if_one_else_zero.hpp>
 #include <boost/simd/function/abs.hpp>
 #include <boost/simd/function/raw.hpp>
