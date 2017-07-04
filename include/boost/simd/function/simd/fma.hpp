@@ -18,9 +18,6 @@
 #  if BOOST_HW_SIMD_X86_AMD_FMA4
 #    include <boost/simd/arch/x86/fma4/simd/function/fma.hpp>
 #  endif
-#  if BOOST_HW_SIMD_X86_AMD_XOP
-#    include <boost/simd/arch/x86/xop/simd/function/fma.hpp>
-#  endif
 #  if BOOST_HW_SIMD_X86_FMA3
 #    include <boost/simd/arch/x86/fma3/simd/function/fma.hpp>
 #  endif

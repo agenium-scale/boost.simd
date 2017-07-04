@@ -44,7 +44,7 @@ STF_CASE_TPL ( "Check existence of limits for SSE2-like extensions"
   STF_EQUAL( limits<T>::bytes, 16 );
 }
 
-STF_CASE_TPL( "Check existence of limits for AVX-like extensions", (avx_)(avx2_) )
+STF_CASE_TPL( "Check existence of limits for AVX-like extensions", (avx_) )
 {
   STF_TYPE_IS( typename limits<T>::smallest_real, float);
   STF_TYPE_IS( typename limits<T>::largest_real, double);

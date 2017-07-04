@@ -24,9 +24,6 @@
 #  if BOOST_HW_SIMD_X86_OR_AMD >= BOOST_HW_SIMD_X86_AVX_VERSION
 #    include <boost/simd/arch/x86/avx/simd/function/bitwise_and.hpp>
 #  endif
-#  if BOOST_HW_SIMD_X86_OR_AMD >= BOOST_HW_SIMD_X86_AVX2_VERSION
-#    include <boost/simd/arch/x86/avx2/simd/function/bitwise_and.hpp>
-#  endif
 #endif
 
 #endif

@@ -59,14 +59,14 @@ namespace boost { namespace simd { namespace detail
 #endif
   }
 
-  static bool detect_feature(int bit, int function, int register_id)
+  inline bool detect_feature(int bit, int function, int register_id)
   {
     register_type regs_x86[4] = {0x00000000, 0x00000000, 0x00000000, 0x00000000};
     cpuidex(regs_x86, function, 0);
     return (regs_x86[register_id] & (1 << bit)) != 0;
   }
 
-  static bool detect_features(int bits, int function, int register_id)
+  inline bool detect_features(int bits, int function, int register_id)
   {
     register_type regs_x86[4] = {0x00000000, 0x00000000, 0x00000000, 0x00000000};
     cpuidex(regs_x86, function, 0);

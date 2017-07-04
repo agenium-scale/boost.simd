@@ -17,7 +17,9 @@
 #include <boost/simd/detail/predef.hpp>
 
 #if !defined(BOOST_SIMD_DEFAULT_FAMILY)
-  #if BOOST_HW_SIMD_X86 == BOOST_HW_SIMD_X86_AVX_VERSION
+  // AVX is the latest "SIMD" handled, if the macro `BOOST_HW_SIMD_X86` is higher than AVX, then
+  // just uses AVX (not == but >=).
+  #if BOOST_HW_SIMD_X86 >= BOOST_HW_SIMD_X86_AVX_VERSION
     #define BOOST_SIMD_DEFAULT_FAMILY ::boost::simd::avx_
     #define BOOST_SIMD_DEFAULT_SITE   ::boost::simd::avx_
   #endif

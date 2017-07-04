@@ -39,7 +39,6 @@ STF_CASE_TPL( "Check is_aligned on default architecture", STF_NUMERIC_TYPES )
   STF_EXPECT( is_aligned(ptr32, sse3 ));
   STF_EXPECT( is_aligned(ptr32, ssse3));
   STF_EXPECT( is_aligned(ptr32, avx  ));
-  STF_EXPECT( is_aligned(ptr32, avx2 ));
 
   deallocate(ptr16);
   deallocate(ptr32);

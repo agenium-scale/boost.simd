@@ -19,8 +19,6 @@
 #include <boost/simd/arch/x86/sse4a/limits.hpp>
 #include <boost/simd/arch/x86/avx/limits.hpp>
 #include <boost/simd/arch/x86/fma4/limits.hpp>
-#include <boost/simd/arch/x86/xop/limits.hpp>
 #include <boost/simd/arch/x86/fma3/limits.hpp>
-#include <boost/simd/arch/x86/avx2/limits.hpp>
 
 #endif

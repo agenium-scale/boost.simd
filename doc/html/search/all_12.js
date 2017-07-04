@@ -23,7 +23,7 @@ var searchData=
   ['types',['Types',['../group__group-concept-types.html',1,'']]],
   ['trigonometric_20functions_2e',['Trigonometric functions.',['../group__group-trigonometric.html',1,'']]],
   ['types_20and_20helpers',['Types and helpers',['../group__group-types.html',1,'']]],
-  ['tutorial_5falgorithm',['tutorial_algorithm',['../md__d_1_dev_opensource_boost_8simd_doc_custom_sections_tutorials_tutorial_algorithm.html',1,'']]],
+  ['tutorial_5falgorithm',['tutorial_algorithm',['../md__home_charly_workspace_cpp_boost_8simd_8avx2_doc_custom_sections_tutorials_tutorial_algorithm.html',1,'']]],
   ['tan',['tan',['../group__group-trigonometric_ga23e027bffed59eff8212150df4623130.html#ga23e027bffed59eff8212150df4623130',1,'boost::simd']]],
   ['tand',['tand',['../group__group-trigonometric_gad43a87faff58efb804102cd77e3162dd.html#gad43a87faff58efb804102cd77e3162dd',1,'boost::simd']]],
   ['tanh',['tanh',['../group__group-hyperbolic_gaa2ca907a83e951b59990b9781dae6e69.html#gaa2ca907a83e951b59990b9781dae6e69',1,'boost::simd']]],
