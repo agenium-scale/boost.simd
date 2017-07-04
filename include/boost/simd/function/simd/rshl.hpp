@@ -14,10 +14,4 @@
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/simd/function/rshl.hpp>
 
-#if defined(BOOST_HW_SIMD_X86_OR_AMD_AVAILABLE)
-#  if BOOST_HW_SIMD_X86_AMD_XOP
-#    include <boost/simd/arch/x86/xop/simd/function/rshl.hpp>
-#  endif
-#endif
-
 #endif

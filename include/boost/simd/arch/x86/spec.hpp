@@ -19,7 +19,6 @@
 #include <boost/simd/arch/x86/sse4a/spec.hpp>
 #include <boost/simd/arch/x86/avx/spec.hpp>
 #include <boost/simd/arch/x86/fma4/spec.hpp>
-#include <boost/simd/arch/x86/xop/spec.hpp>
 #include <boost/simd/arch/x86/fma3/spec.hpp>
 
 #endif

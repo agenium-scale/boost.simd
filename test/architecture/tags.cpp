@@ -25,7 +25,6 @@ STF_CASE( "Check for SIMD tag support facility" )
   std::cout << "AVX    support: " << std::boolalpha << boost::simd::avx.is_supported()    << "\n";
   std::cout << "FMA3   support: " << std::boolalpha << boost::simd::fma3.is_supported()   << "\n";
   std::cout << "FMA4   support: " << std::boolalpha << boost::simd::fma4.is_supported()   << "\n";
-  std::cout << "XOP    support: " << std::boolalpha << boost::simd::xop.is_supported()    << "\n";
   std::cout << "---------------------\n";
 
   STF_PASS("Support detection from architecture object.");

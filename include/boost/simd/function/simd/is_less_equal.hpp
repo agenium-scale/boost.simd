@@ -26,9 +26,6 @@
 #  if BOOST_HW_SIMD_X86_OR_AMD >= BOOST_HW_SIMD_X86_AVX_VERSION
 #    include <boost/simd/arch/x86/avx/simd/function/is_less_equal.hpp>
 #  endif
-#  if BOOST_HW_SIMD_X86_AMD_XOP
-#    include <boost/simd/arch/x86/xop/simd/function/is_less_equal.hpp>
-#  endif
 #endif
 
 #endif
