@@ -23,7 +23,6 @@ STF_CASE( "Check for SIMD tag support facility" )
   std::cout << "SSE4.1 support: " << std::boolalpha << boost::simd::sse4_1.is_supported() << "\n";
   std::cout << "SSE4.2 support: " << std::boolalpha << boost::simd::sse4_2.is_supported() << "\n";
   std::cout << "AVX    support: " << std::boolalpha << boost::simd::avx.is_supported()    << "\n";
-  std::cout << "AVX2   support: " << std::boolalpha << boost::simd::avx2.is_supported()   << "\n";
   std::cout << "FMA3   support: " << std::boolalpha << boost::simd::fma3.is_supported()   << "\n";
   std::cout << "FMA4   support: " << std::boolalpha << boost::simd::fma4.is_supported()   << "\n";
   std::cout << "XOP    support: " << std::boolalpha << boost::simd::xop.is_supported()    << "\n";
@@ -49,5 +48,4 @@ STF_CASE( "Check for architectural tag parent for X86/AMD" )
   STF_TYPE_IS( boost::simd::sse4_2_::parent , boost::simd::sse4_1_ );
 
   STF_TYPE_IS( boost::simd::avx_::parent    , boost::simd::sse4_2_ );
-  STF_TYPE_IS( boost::simd::avx2_::parent   , boost::simd::avx_ );
 }

@@ -21,6 +21,5 @@
 #include <boost/simd/arch/x86/fma4/tags.hpp>
 #include <boost/simd/arch/x86/xop/tags.hpp>
 #include <boost/simd/arch/x86/fma3/tags.hpp>
-#include <boost/simd/arch/x86/avx2/tags.hpp>
 
 #endif
