@@ -25,6 +25,7 @@
 #include <boost/simd/function/aligned_load.hpp>
 #include <boost/simd/function/extract.hpp>
 #include <boost/simd/function/insert.hpp>
+#include <boost/simd/function/pack_cast.hpp>
 #include <boost/simd/function/splat.hpp>
 #include <boost/simd/function/load.hpp>
 #include <boost/simd/function/inc.hpp>
@@ -120,6 +121,10 @@ namespace boost { namespace simd
 
     /// @brief Copy constructor
     BOOST_FORCEINLINE pack(pack const& rhs) BOOST_NOEXCEPT : data_(rhs.data_) {}
+
+    /// @brief Construct from a pack of different value type
+    template<typename U>
+    BOOST_FORCEINLINE explicit pack(rebind<U> const& rhs) BOOST_NOEXCEPT : pack(pack_cast<T>(rhs)) {}
 
     /*!
       @brief Construct a pack from aligned, contiguous memory
