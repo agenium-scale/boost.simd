@@ -28,18 +28,11 @@ STF_CASE_TPL( "Check is_aligned on default architecture", STF_NUMERIC_TYPES )
 STF_CASE_TPL( "Check is_aligned on default architecture", STF_NUMERIC_TYPES )
 {
   T* ptr16 = allocate<T>( 7, sse1 );
-  T* ptr32 = allocate<T>( 7, avx );
 
   STF_EXPECT( is_aligned(ptr16, sse1 ));
   STF_EXPECT( is_aligned(ptr16, sse2 ));
   STF_EXPECT( is_aligned(ptr16, sse3 ));
   STF_EXPECT( is_aligned(ptr16, ssse3));
-  STF_EXPECT( is_aligned(ptr32, sse1 ));
-  STF_EXPECT( is_aligned(ptr32, sse2 ));
-  STF_EXPECT( is_aligned(ptr32, sse3 ));
-  STF_EXPECT( is_aligned(ptr32, ssse3));
-  STF_EXPECT( is_aligned(ptr32, avx  ));
 
   deallocate(ptr16);
-  deallocate(ptr32);
 }

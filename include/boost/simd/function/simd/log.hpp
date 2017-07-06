@@ -14,10 +14,4 @@
 #include <boost/simd/arch/common/generic/function/autodispatcher.hpp>
 #include <boost/simd/arch/common/simd/function/log.hpp>
 
-#if defined(BOOST_HW_SIMD_X86_OR_AMD_AVAILABLE)
-#  if BOOST_HW_SIMD_X86_OR_AMD >= BOOST_HW_SIMD_X86_AVX_VERSION
-#    include <boost/simd/arch/x86/avx/simd/function/log.hpp>
-#  endif
-#endif
-
 #endif

@@ -24,10 +24,6 @@
 #  if BOOST_HW_SIMD_X86_OR_AMD >= BOOST_HW_SIMD_X86_SSSE3_VERSION
 #    include <boost/simd/arch/x86/ssse3/simd/function/shuffle.hpp>
 #  endif
-#  if BOOST_HW_SIMD_X86_OR_AMD >= BOOST_HW_SIMD_X86_AVX_VERSION
-#    include <boost/simd/arch/x86/avx/simd/function/shuffle.hpp>
-#    include <boost/simd/arch/x86/avx/simd/function/shuffle/shuffle.hpp>
-#  endif
 #endif
 
 #endif

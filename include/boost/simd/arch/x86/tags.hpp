@@ -17,8 +17,5 @@
 #include <boost/simd/arch/x86/sse4_1/tags.hpp>
 #include <boost/simd/arch/x86/sse4_2/tags.hpp>
 #include <boost/simd/arch/x86/sse4a/tags.hpp>
-#include <boost/simd/arch/x86/avx/tags.hpp>
-#include <boost/simd/arch/x86/fma4/tags.hpp>
-#include <boost/simd/arch/x86/fma3/tags.hpp>
 
 #endif
