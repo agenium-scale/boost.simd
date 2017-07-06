@@ -78,7 +78,7 @@ generic lambda functions:
 <center>
 Architecture | Extensions
 -------------|-----------------------------------------------------
-x86          | SSE2, SSE3, SSSE3, SSE4.1, SSE4.2, AVX, FMA3, AVX2
+x86          | SSE2, SSE3, SSSE3, SSE4.1, SSE4.2
 </center>
 
 **@projectname** requires a C++11 compliant compiler and is thoroughly tested on the following compilers:
