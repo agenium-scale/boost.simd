@@ -26,10 +26,6 @@
 #include <boost/simd/function/if_zero_else.hpp>
 #include <boost/simd/function/is_invalid.hpp>
 #endif
-#if defined(__INTEL_COMPILER) && defined(BOOST_SIMD_HAS_AVX_SUPPORT) && !defined(BOOST_SIMD_HAS_AVX2_SUPPORT)
-#include <boost/simd/function/if_else.hpp>
-#include <boost/simd/function/minus.hpp>
-#endif
 
 
 namespace boost { namespace simd { namespace ext
@@ -64,11 +60,7 @@ namespace boost { namespace simd { namespace ext
         const int nmb= int(Nbmantissabits<s_type>());
         result x = shr(exponentbits(a0), nmb);
         // workaround for ICC 14.0.3, tested on AVX
-        #if defined(__INTEL_COMPILER) && defined(BOOST_SIMD_HAS_AVX_SUPPORT) && !defined(BOOST_SIMD_HAS_AVX2_SUPPORT)
-        x = x - if_else(a0, Maxexponent<A0>(), Zero<result>());
-        #else
         x = if_minus(a0, x, Maxexponent<A0>());
-        #endif
         #ifndef BOOST_SIMD_NO_INVALIDS
         return if_zero_else( is_invalid(a0), x );
         #else
