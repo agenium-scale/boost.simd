@@ -34,7 +34,7 @@ namespace boost { namespace simd { namespace ext
                           )
    {
       using result = bd::as_integer_t<A0>;
-      BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
+      BOOST_MAYBEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
       {
         BOOST_ASSERT_MSG( assert_all(a0 > 0)
                         , "Logarithm is not defined for zero or negative values." );
@@ -50,7 +50,7 @@ namespace boost { namespace simd { namespace ext
                           )
    {
       using result = bd::as_integer_t<A0>;
-      BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
+      BOOST_MAYBEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
       {
         BOOST_ASSERT_MSG( assert_all(a0 > 0)
                         , "Logarithm is not defined for zero or negative values." );

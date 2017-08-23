@@ -38,7 +38,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::single_<A0>>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (raw_tag const&
+    BOOST_MAYBEINLINE A0 operator() (raw_tag const&
                                     , const A0 & a0) const BOOST_NOEXCEPT
     {
       float inv;
@@ -54,7 +54,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::double_<A0>>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (raw_tag const&
+    BOOST_MAYBEINLINE A0 operator() (raw_tag const&
                                     , const A0 & a0) const BOOST_NOEXCEPT
     {
       float inv = a0;
@@ -69,7 +69,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::single_<A0>>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const A0 & a00) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const A0 & a00) const BOOST_NOEXCEPT
     {
       if (is_eqz(a00)) return Inf<A0>();
       #ifndef BOOST_SIMD_NO_INFINITIES
@@ -88,7 +88,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::single_<A0>>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (pedantic_tag const&
+    BOOST_MAYBEINLINE A0 operator() (pedantic_tag const&
                                     ,const A0 & a00) const BOOST_NOEXCEPT
     {
       if (is_eqz(a00)) return Inf<A0>();
@@ -115,7 +115,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::double_<A0>>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (pedantic_tag const&
+    BOOST_MAYBEINLINE A0 operator() (pedantic_tag const&
                                     ,const A0 & a00) const BOOST_NOEXCEPT
     {
       if (is_eqz(a00)) return Inf<A0>();

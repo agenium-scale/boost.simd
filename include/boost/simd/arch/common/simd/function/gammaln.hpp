@@ -198,7 +198,7 @@ namespace boost { namespace simd { namespace ext
                              , bs::pack_< bd::double_<A0>, X >
                              )
   {
-    BOOST_FORCEINLINE A0 operator() (const A0& a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const A0& a0) const BOOST_NOEXCEPT
     {
       auto inf_result = logical_and(is_lez(a0), is_flint(a0));
       A0 x = if_nan_else(inf_result, a0);

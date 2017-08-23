@@ -40,7 +40,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::int_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       using ui_t = bd::as_integer_t<A0, unsigned>;
       BOOST_ASSERT_MSG( a0 > 0, "log10 is not defined for zero or negative integers." );
@@ -53,7 +53,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::uint8_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return (a0 >= 100u) ? 2 :
              (a0 >= 10u)  ? 1 : 0;
@@ -65,7 +65,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::uint16_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return (a0 >= 10000u) ? 4 :
              (a0 >= 1000u)  ? 3 :
@@ -80,7 +80,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::uint32_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return (a0 >= 1000000000u) ? 9 :
              (a0 >= 100000000u) ?  8 :
@@ -99,7 +99,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::uint64_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return(a0 >= 10000000000000000000ull) ? 19 :
             (a0 >= 1000000000000000000ull) ?  18 :
@@ -129,7 +129,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const std_tag &, A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const std_tag &, A0 a0) const BOOST_NOEXCEPT
     {
       return std::log10(a0);
     }
@@ -142,7 +142,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const plain_tag &, A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const plain_tag &, A0 a0) const BOOST_NOEXCEPT
     {
       return musl_(log10)(a0);
     }
@@ -154,7 +154,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return musl_(log10)(a0);
     }
@@ -167,7 +167,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::arithmetic_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const std_tag &, A0 a0
+    BOOST_MAYBEINLINE A0 operator() (const std_tag &, A0 a0
                                     ) const BOOST_NOEXCEPT
     {
       return musl_(log10(a0));
@@ -192,7 +192,7 @@ namespace boost { namespace simd { namespace ext
    * is preserved.
    * ====================================================
    */
-    BOOST_FORCEINLINE A0 operator() (const musl_tag &, A0 x) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const musl_tag &, A0 x) const BOOST_NOEXCEPT
     {
       using uiA0 = bd::as_integer_t<A0, unsigned>;
       using iA0 = bd::as_integer_t<A0,   signed>;
@@ -266,7 +266,7 @@ namespace boost { namespace simd { namespace ext
      * is preserved.
      * ====================================================
      */
-    BOOST_FORCEINLINE A0 operator() (const musl_tag &, A0 x) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const musl_tag &, A0 x) const BOOST_NOEXCEPT
     {
 //       const A0
 //         Invlog_10hi<A0>()  = 4.34294481878168880939e-01, /* 0x3fdbcb7b, 0x15200000 */

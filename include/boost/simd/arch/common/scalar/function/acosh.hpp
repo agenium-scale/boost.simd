@@ -32,7 +32,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
     {
       A0 t = dec(a0);
       if(BOOST_LIKELY(t <= Oneotwoeps<A0>()))
@@ -49,7 +49,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const std_tag&, A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const std_tag&, A0 a0) const BOOST_NOEXCEPT
     {
       return std::acosh(a0);
     }

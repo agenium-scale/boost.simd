@@ -38,7 +38,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
 
-    BOOST_FORCEINLINE A0 operator() ( A0  a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0  a0) const BOOST_NOEXCEPT
     {
       //////////////////////////////////////////////////////////////////////////////
       // if x = abs(a0) is less than 5/8 sinh is computed using a polynomial(float)
@@ -67,7 +67,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const std_tag&, A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const std_tag&, A0 a0) const BOOST_NOEXCEPT
     {
       return std::tanh(a0);
     }

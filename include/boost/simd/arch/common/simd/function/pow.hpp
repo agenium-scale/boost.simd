@@ -39,7 +39,7 @@ namespace boost { namespace simd { namespace ext
                            , bs::pack_<bd::floating_<A0>,X>
                            )
   {
-    BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator()( const A0& a0, const A0& a1) BOOST_NOEXCEPT
     {
       auto nega0 = is_negative(a0);
       A0 z = pow_abs(a0, a1);
@@ -58,7 +58,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::uint_<A1>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()(const A0& a0, const A1& a1 ) const BOOST_NOEXCEPT
+      BOOST_MAYBEINLINE A0 operator()(const A0& a0, const A1& a1 ) const BOOST_NOEXCEPT
       {
         A0 base = a0;
         A1 exp = a1;
@@ -83,7 +83,7 @@ namespace boost { namespace simd { namespace ext
   {
     using result_type = A0;
 
-    BOOST_FORCEINLINE result_type operator() ( A0 const& a0, A1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE result_type operator() ( A0 const& a0, A1) const BOOST_NOEXCEPT
     {
       return pow_expander<A1::value>::call(a0);
     }
@@ -99,17 +99,17 @@ namespace boost { namespace simd { namespace ext
   {
     using result_type = A0;
 
-    BOOST_FORCEINLINE result_type operator() ( A0 const& a0, A1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE result_type operator() ( A0 const& a0, A1) const BOOST_NOEXCEPT
     {
       return eval(a0, boost::mpl::bool_<(A1::value >= 0)>());
     }
 
-    BOOST_FORCEINLINE result_type eval( A0 const& a0, boost::mpl::true_) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE result_type eval( A0 const& a0, boost::mpl::true_) const BOOST_NOEXCEPT
     {
       return pow_expander<A1::value>::call(a0);
     }
 
-    BOOST_FORCEINLINE result_type eval( A0 const& a0, boost::mpl::false_) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE result_type eval( A0 const& a0, boost::mpl::false_) const BOOST_NOEXCEPT
     {
       return pow_expander<-A1::value>::call(rec(a0));
     }
@@ -153,7 +153,7 @@ namespace boost { namespace simd { namespace ext
   {
     using result_type = A0;
 
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 const& a0, A1 const& a1) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG( boost::simd::assert_all(a1 >= 0), "integral pow with signed exponent" );
 
@@ -191,7 +191,7 @@ namespace boost { namespace simd { namespace ext
                             , bs::pack_<bd::floating_<A0>,X>
                            )
   {
-    BOOST_FORCEINLINE A0 operator()(const raw_tag &,
+    BOOST_MAYBEINLINE A0 operator()(const raw_tag &,
                                     const A0& a0, const A0& a1) BOOST_NOEXCEPT
     {
       auto nega0 = is_negative(a0);

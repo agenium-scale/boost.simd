@@ -41,7 +41,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
 
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG( assert_all(is_gtz(a1))
                       , "Number of significant digits must be positive"

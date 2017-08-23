@@ -28,7 +28,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_< bd::unspecified_<A0>, X>
                           )
   {
-    BOOST_FORCEINLINE
+    BOOST_MAYBEINLINE
     A0 operator() ( A0 const& a0, A0 const& a1, A0 const& a2) const BOOST_NOEXCEPT
     {
       return plus(multiplies(a0, a1), a2);

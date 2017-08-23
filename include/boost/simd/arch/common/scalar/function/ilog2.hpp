@@ -24,7 +24,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD(ilog2_, (typename A0), bd::cpu_, bd::scalar_<bd::floating_<A0>>)
   {
-    BOOST_FORCEINLINE bd::as_integer_t<A0> operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE bd::as_integer_t<A0> operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG( a0 > 0
                       , "Logarithm is not defined for zero or negative values." );
@@ -34,7 +34,7 @@ namespace boost { namespace simd { namespace ext
 
   BOOST_DISPATCH_OVERLOAD(ilog2_, (typename A0), bd::cpu_, bd::scalar_<bd::arithmetic_<A0>>)
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG( a0 > 0
                       , "Logarithm is not defined for zero or negative values." );
@@ -45,13 +45,13 @@ namespace boost { namespace simd { namespace ext
 #if defined(BOOST_MSVC)
   BOOST_DISPATCH_OVERLOAD(ilog2_, (typename A0), bd::cpu_, bd::scalar_<bd::integer_<A0>>)
   {
-    BOOST_FORCEINLINE A0 operator()(A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator()(A0 a0) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG( a0 > 0, "Logarithm is not defined for zero or negative values." );
       return impl(a0, typename nsm::bool_<sizeof(A0) <= 4>::type());
     }
 
-    static BOOST_FORCEINLINE A0 impl( A0  a0,  tt::true_type const &) BOOST_NOEXCEPT
+    static BOOST_MAYBEINLINE A0 impl( A0  a0,  tt::true_type const &) BOOST_NOEXCEPT
     {
       unsigned long index;
       BOOST_VERIFY(::_BitScanReverse(&index, a0));
@@ -59,14 +59,14 @@ namespace boost { namespace simd { namespace ext
     }
 
     #if defined(_WIN64)
-    static BOOST_FORCEINLINE A0 impl(A0 a0, tt::false_type const &) BOOST_NOEXCEPT
+    static BOOST_MAYBEINLINE A0 impl(A0 a0, tt::false_type const &) BOOST_NOEXCEPT
     {
       unsigned long index;
       BOOST_VERIFY(::_BitScanReverse64(&index, a0));
       return static_cast<A0>(index);
     }
     #else
-    static BOOST_FORCEINLINE A0 impl(A0 a0, tt::false_type const &) BOOST_NOEXCEPT
+    static BOOST_MAYBEINLINE A0 impl(A0 a0, tt::false_type const &) BOOST_NOEXCEPT
     {
       return static_cast<A0>(sizeof(A0)*8-boost::simd::clz(a0)-1);
     }

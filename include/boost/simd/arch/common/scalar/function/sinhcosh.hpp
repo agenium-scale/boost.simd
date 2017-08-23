@@ -47,7 +47,7 @@ namespace boost { namespace simd { namespace ext
     // Threshold is Maxlog - Log_2
     //////////////////////////////////////////////////////////////////////////////
     using result_t = std::pair<A0, A0>;
-    BOOST_FORCEINLINE result_t operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE result_t operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       A0 x = bs::abs(a0);
       auto test1 = (x >  Maxlog<A0>()-Log_2<A0>());

@@ -50,7 +50,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()(const pedantic_tag &,
+      BOOST_MAYBEINLINE A0 operator()(const pedantic_tag &,
                                       const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
         using iA0 = bd::as_integer_t<A0>;
@@ -81,7 +81,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
 
-    BOOST_FORCEINLINE A0 operator() (A0 const& a0, A0 const& a1
+    BOOST_MAYBEINLINE A0 operator() (A0 const& a0, A0 const& a1
                                     ) const BOOST_NOEXCEPT
     {
       return boost::simd::sqrt(bs::fma(a0, a0, sqr(a1)));

@@ -39,7 +39,7 @@ namespace boost { namespace simd { namespace ext
                             )
   {
     using result_t = bd::as_integer_t<A0>;
-    BOOST_FORCEINLINE result_t operator()( const A0& a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE result_t operator()( const A0& a0) const BOOST_NOEXCEPT
     {
       return if_else(is_inf(a0), Valmax<result_t>(), exponent(a0));
     }
@@ -53,7 +53,7 @@ namespace boost { namespace simd { namespace ext
                          )
   {
     using result_t = bd::as_integer_t<A0>;
-    BOOST_FORCEINLINE result_t operator()(const pedantic_tag &
+    BOOST_MAYBEINLINE result_t operator()(const pedantic_tag &
                                          ,  const A0& a0) const BOOST_NOEXCEPT
     {
       result_t fp_ilogbnan(FP_ILOGBNAN);
@@ -71,7 +71,7 @@ namespace boost { namespace simd { namespace ext
                             , bs::pack_<bd::integer_<A0>, X>
                             )
   {
-    BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
     {
       return bitwise_cast<A0>(ilogb(tofloat(a0)));
     }
@@ -84,7 +84,7 @@ namespace boost { namespace simd { namespace ext
                              , bs::pack_<bd::ints16_<A0>, X>
                              )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0)
+    BOOST_MAYBEINLINE A0 operator() ( const A0 & a0)
     {
       auto s0 = split(a0);
       return bitwise_cast<A0>(group(ilogb(s0[0]), ilogb(s0[1])));
@@ -99,7 +99,7 @@ namespace boost { namespace simd { namespace ext
                              )
   {
     using result = bd::as_integer_t<A0>;
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0)
+    BOOST_MAYBEINLINE A0 operator() ( const A0 & a0)
     {
       auto s0 = split(a0);
       return bitwise_cast<A0>(group(ilogb(s0[0]), ilogb(s0[1])));

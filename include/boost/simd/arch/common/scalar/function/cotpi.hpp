@@ -27,7 +27,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return detail::trig_base<A0,tag::pi_tag,is_not_scalar_t<A0>,tag::big_tag>::cota(a0);
     }
@@ -39,7 +39,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const restricted_tag &,  A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const restricted_tag &,  A0 a0) const BOOST_NOEXCEPT
     {
       return detail::trig_base<A0,tag::pi_tag,is_not_scalar_t<A0>,tag::clipped_pio4_tag>::cota(a0);
     }
@@ -51,7 +51,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_ < bd::unspecified_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A1 const&) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0, A1 const&) const BOOST_NOEXCEPT
     {
       return detail::trig_base<A0,tag::pi_tag,is_not_scalar_t<A0>,A1>::cota(a0);
     }

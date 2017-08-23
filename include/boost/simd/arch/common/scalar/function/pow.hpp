@@ -72,7 +72,7 @@ namespace boost { namespace simd { namespace ext
   {
     using result_type = A0;
 
-    BOOST_FORCEINLINE result_type operator() ( A0 a0, A1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE result_type operator() ( A0 a0, A1) const BOOST_NOEXCEPT
     {
       return pow_expander<A1::value>::call(a0);
     }
@@ -87,17 +87,17 @@ namespace boost { namespace simd { namespace ext
   {
     using result_type = A0;
 
-    BOOST_FORCEINLINE result_type operator() ( A0  a0, A1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE result_type operator() ( A0  a0, A1) const BOOST_NOEXCEPT
     {
       return eval(a0, boost::mpl::bool_<(A1::value >= 0)>());
     }
 
-    BOOST_FORCEINLINE result_type eval( A0  a0, boost::mpl::true_) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE result_type eval( A0  a0, boost::mpl::true_) const BOOST_NOEXCEPT
     {
       return pow_expander<A1::value>::call(a0);
     }
 
-    BOOST_FORCEINLINE result_type eval( A0  a0, boost::mpl::false_) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE result_type eval( A0  a0, boost::mpl::false_) const BOOST_NOEXCEPT
     {
       return pow_expander<-A1::value>::call(rec(a0));
     }
@@ -139,7 +139,7 @@ namespace boost { namespace simd { namespace ext
   {
     using result_type = A0;
 
-    BOOST_FORCEINLINE A0 operator() ( A0  a0, A1  a1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0  a0, A1  a1) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG( boost::simd::assert_all(a1 >= 0), "integral pow with signed exponent" );
 

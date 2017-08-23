@@ -36,7 +36,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::int_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       return (a0>a1) ? saturated_(minus)(a0,a1) : saturated_(minus)(a1,a0);
     }
@@ -49,7 +49,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::uint_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       return dist(a0,a1);
     }
@@ -62,7 +62,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       using i_t = bd::as_integer_t<A0>;
 

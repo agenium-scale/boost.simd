@@ -40,7 +40,7 @@ namespace boost { namespace simd { namespace ext
                              )
    {
       using result = bd::as_floating_t<A0>;
-      BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
+      BOOST_MAYBEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
       {
         result res = One<result>();
         result base = Ten<result>();
@@ -65,7 +65,7 @@ namespace boost { namespace simd { namespace ext
                              )
    {
       using result = bd::as_floating_t<A0>;
-      BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
+      BOOST_MAYBEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
       {
         result res = One<result>();
         result base = Ten<result>();

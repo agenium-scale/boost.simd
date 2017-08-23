@@ -41,7 +41,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::integer_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
       return (a1>0)?(a0<<a1):(a0>>a1);
     }
@@ -56,7 +56,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::integer_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const pedantic_tag &
+    BOOST_MAYBEINLINE A0 operator() (const pedantic_tag &
                                     ,  A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
       using i_t = bd::as_integer_t<A0>;
@@ -85,7 +85,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::integer_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const pedantic_tag &
+    BOOST_MAYBEINLINE A0 operator() (const pedantic_tag &
                                     , A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
       return bs::ldexp(a0, a1);
@@ -100,7 +100,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::integer_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
       using i_t = bd::as_integer_t<A0>;
       i_t ik =  a1+Maxexponent<A0>();
@@ -117,7 +117,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::integer_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const std_tag &
+    BOOST_MAYBEINLINE A0 operator() (const std_tag &
                                     ,  A0 a0, A1 a1 ) const BOOST_NOEXCEPT
     {
       return std::ldexp(a0, a1);
@@ -131,7 +131,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::integer_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const std_tag &
+    BOOST_MAYBEINLINE A0 operator() (const std_tag &
                                     ,  A0 a0, A1 a1 ) const BOOST_NOEXCEPT
     {
       return bs::ldexp(a0, a1);
@@ -146,7 +146,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const std_tag &
+    BOOST_MAYBEINLINE A0 operator() (const std_tag &
                                     ,  A0 a0, A1 a1 ) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG(is_flint(a1)||is_invalid(a1), "parameter is not a flint nor is invalid");
@@ -161,7 +161,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (A0 a0, A1 a1 ) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (A0 a0, A1 a1 ) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG(is_flint(a1)||is_invalid(a1), "parameter is not a flint nor is invalid");
       return std::ldexp(a0, toint(a1));

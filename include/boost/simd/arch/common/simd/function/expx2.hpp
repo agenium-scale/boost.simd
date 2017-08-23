@@ -44,7 +44,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
-     BOOST_FORCEINLINE A0 operator()(const A0& a0) const
+     BOOST_MAYBEINLINE A0 operator()(const A0& a0) const
       {
         A0 x =  bs::abs(a0);
         // Represent x as an exact multiple of 1/32 plus a residual.
@@ -72,7 +72,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
-     BOOST_FORCEINLINE A0 operator()(const A0& a0,  const A0 & s) const
+     BOOST_MAYBEINLINE A0 operator()(const A0& a0,  const A0 & s) const
       {
         A0 sgn =  signnz(s);
         A0 x =  a0*sgn;

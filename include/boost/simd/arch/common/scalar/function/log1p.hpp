@@ -47,7 +47,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
       return musl_(log1p)(a0);
     }
@@ -59,7 +59,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const std_tag &, A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const std_tag &, A0 a0) const BOOST_NOEXCEPT
     {
       return std::log1p(a0);
     }
@@ -72,7 +72,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::single_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const musl_tag &, A0 x) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const musl_tag &, A0 x) const BOOST_NOEXCEPT
     {
       using uiA0 = bd::as_integer_t<A0, unsigned>;
       using iA0 = bd::as_integer_t<A0,   signed>;
@@ -133,7 +133,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::double_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const musl_tag &, A0 x) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const musl_tag &, A0 x) const BOOST_NOEXCEPT
     {
       using uiA0 = bd::as_integer_t<A0, unsigned>;
       using iA0 = bd::as_integer_t<A0,   signed>;
@@ -195,7 +195,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const plain_tag &, A0 x) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const plain_tag &, A0 x) const BOOST_NOEXCEPT
     {
       return musl_(log1p)(x); //the "plain" version of the algorithm is never speedier than the "musl" version.
       // the call is here to allow a scalar fallback to simd calls

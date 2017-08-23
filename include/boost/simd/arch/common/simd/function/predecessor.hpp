@@ -38,7 +38,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::arithmetic_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
+      BOOST_MAYBEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
         return if_dec(is_not_equal(a0, Valmin<A0>()), a0);
       }
@@ -51,7 +51,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
+      BOOST_MAYBEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
         return if_nan_else(is_nan(a0), bitfloating(saturated_(dec)(bitinteger(a0))));
       }
@@ -65,7 +65,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::integer_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+      BOOST_MAYBEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
         BOOST_ASSERT_MSG(assert_all(is_gez(a1)), "predecessor rank must be non negative");
         return if_else(  is_greater(Valmin<A0>()+a1, a0), Valmin<A0>(), a0-a1);
@@ -80,7 +80,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::integer_<A1>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
+      BOOST_MAYBEINLINE A0 operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
       {
         BOOST_ASSERT_MSG(assert_all(is_gez(a1)), "predecessor rank must be non negative");
         return if_allbits_else(is_nan(a0), bitfloating(saturated_(minus)(bitinteger(a0), a1)));

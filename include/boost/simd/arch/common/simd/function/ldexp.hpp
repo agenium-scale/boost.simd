@@ -46,7 +46,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::integer_<A1>, X>
                           )
    {
-     BOOST_FORCEINLINE A0 operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
+     BOOST_MAYBEINLINE A0 operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
      {
        return rshl(a0, a1);
      }
@@ -59,7 +59,7 @@ namespace boost { namespace simd { namespace ext
                          , bd::scalar_<bd::integer_<A1>>
                          )
   {
-    BOOST_FORCEINLINE A0 operator()( const A0& a0, A1  a1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator()( const A0& a0, A1  a1) const BOOST_NOEXCEPT
     {
       using sA0 = bd::scalar_of_t<A0>;
       using iA0 = bd::as_integer_t<sA0>;
@@ -76,7 +76,7 @@ namespace boost { namespace simd { namespace ext
                          , bs::pack_<bd::integer_<A1>, Y>
                          )
   {
-    BOOST_FORCEINLINE A0 operator()(const pedantic_tag &
+    BOOST_MAYBEINLINE A0 operator()(const pedantic_tag &
                                    ,  const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
     {
       using iA0 = bd::as_integer_t<A0>;
@@ -105,7 +105,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::integer_<A1>>
                           )
    {
-     BOOST_FORCEINLINE A0 operator()(const pedantic_tag &
+     BOOST_MAYBEINLINE A0 operator()(const pedantic_tag &
                                     ,  const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
      {
        using iA0 = bd::as_integer_t<A0>;
@@ -136,7 +136,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::integer_<A1>, Y>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const A0& a0, const A1& a1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const A0& a0, const A1& a1) const BOOST_NOEXCEPT
     {
       using i_t = bd::as_integer_t<A0,signed>;
       using sA0 = bd::scalar_of_t<A0>;
@@ -153,7 +153,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::integer_<A1>>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const A0& a0,  A1 a1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const A0& a0,  A1 a1) const BOOST_NOEXCEPT
     {
       using iA0 = bd::as_integer_t<A0>;
       using sA0 =  bd::scalar_of_t<A0>;
@@ -171,7 +171,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::floating_<A0>, X>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG(assert_all(is_flint(a1)||is_invalid(a1)), "parameter is not a flint nor invalid");
       return ldexp(a0, toint(a1));
@@ -186,7 +186,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::floating_<A0>, X>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( const pedantic_tag &
+    BOOST_MAYBEINLINE A0 operator() ( const pedantic_tag &
                                     , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG(assert_all(is_flint(a1)||is_invalid(a1)), "parameter is not a flint nor invalid");
@@ -202,7 +202,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::single_<A1>>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( const pedantic_tag &
+    BOOST_MAYBEINLINE A0 operator() ( const pedantic_tag &
                                     , const A0& a0, const A1& a1) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG(assert_all(is_flint(a1)||is_invalid(a1)), "parameter is not a flint nor invalid");
@@ -218,7 +218,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::double_<A1>>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( const pedantic_tag &
+    BOOST_MAYBEINLINE A0 operator() ( const pedantic_tag &
                                     , const A0& a0, const A1& a1) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG(assert_all(is_flint(a1)||is_invalid(a1)), "parameter is not a flint nor invalid");

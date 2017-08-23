@@ -40,7 +40,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+      BOOST_MAYBEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
         using itype = bd::as_integer_t<A0>;
         itype e1, e2;

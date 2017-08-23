@@ -32,7 +32,7 @@ namespace boost { namespace simd { namespace ext
                           )
    {
       using result = bd::as_integer_t<A0>;
-      BOOST_FORCEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
+      BOOST_MAYBEINLINE result operator()( const A0& a0) const BOOST_NOEXCEPT
       {
         result t =  bitwise_cast<result>(a0);
         BOOST_ASSERT_MSG( assert_all(t), "clz not defined for 0" );

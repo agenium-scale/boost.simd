@@ -27,7 +27,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_< bd::double_<A0>, X>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const A0& a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const A0& a0) const BOOST_NOEXCEPT
     {
       A0 tmp =  (Pio_2<A0>()-acsc(a0)) +  Constant<A0, 0x3c91a62633145c07ll>();
       return if_zero_else(is_equal(a0, One<A0>()), tmp);
@@ -41,7 +41,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
+      BOOST_MAYBEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
         return (bs::Pio_2<A0>()-bs::acsc(a0));
       }

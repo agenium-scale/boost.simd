@@ -38,7 +38,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_< bd::single_<A0>, X>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
       return musl_(log10)(a0);
     }
@@ -51,7 +51,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_< bd::double_<A0>, X>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
       return musl_(log10)(a0);
     }
@@ -64,7 +64,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_< bd::single_<A0>, X>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const musl_tag &, const A0& a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const musl_tag &, const A0& a0) const BOOST_NOEXCEPT
     {
       /* origin: FreeBSD /usr/src/lib/msun/src/e_log10f.c */
       /*
@@ -140,7 +140,7 @@ namespace boost { namespace simd { namespace ext
                              , bs::pack_< bd::double_<A0>, X>
                              )
   {
-    BOOST_FORCEINLINE A0 operator() (const musl_tag &, const A0& a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const musl_tag &, const A0& a0) const BOOST_NOEXCEPT
     {
       /* origin: FreeBSD /usr/src/lib/msun/src/e_log10f.c */
       /*
@@ -229,7 +229,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_< bd::single_<A0>, X>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const plain_tag &, const A0& a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const plain_tag &, const A0& a0) const BOOST_NOEXCEPT
     {
       /* origin: FreeBSD /usr/src/lib/msun/src/e_log10f.c */
       /*
@@ -301,7 +301,7 @@ namespace boost { namespace simd { namespace ext
                              , bs::pack_< bd::double_<A0>, X>
                              )
   {
-    BOOST_FORCEINLINE A0 operator() (const plain_tag &, const A0& a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const plain_tag &, const A0& a0) const BOOST_NOEXCEPT
     {
       /* origin: FreeBSD /usr/src/lib/msun/src/e_log10f.c */
       /*

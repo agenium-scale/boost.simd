@@ -22,7 +22,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::ints64_<A1>, bs::sse_>
                          )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0
+    BOOST_MAYBEINLINE A0 operator() ( const A0 & a0
                                     , const A1 & a1 ) const BOOST_NOEXCEPT
     {
       return {nthroot(a0[0], a1[0]), nthroot(a0[1], a1[1])};
@@ -36,7 +36,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::ints64_<A1>, bs::sse_>
                          )
   {
-    BOOST_FORCEINLINE A0 operator() ( raw_tag const&,
+    BOOST_MAYBEINLINE A0 operator() ( raw_tag const&,
                                       const A0 & a0
                                     , const A1 & a1 ) const BOOST_NOEXCEPT
     {

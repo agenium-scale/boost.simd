@@ -28,7 +28,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_< bd::floating_<A0>, X>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
       return detail::invtrig_base<A0,tag::radian_tag,tag::simd_type>::atan(a0);
     }

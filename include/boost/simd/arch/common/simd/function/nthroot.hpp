@@ -108,7 +108,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::integer_<A1>, X>
                           )
    {
-     BOOST_FORCEINLINE A0 operator()(const raw_tag &, const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
+     BOOST_MAYBEINLINE A0 operator()(const raw_tag &, const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
      {
        auto aa1 =  abs(a1);
        A0 aa0 = abs(a0);

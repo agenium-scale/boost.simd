@@ -26,7 +26,7 @@ namespace boost { namespace simd { namespace ext
                             , bs::pack_< bd::floating_<A0>, X>
                             )
   {
-    BOOST_FORCEINLINE A0 operator() (A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (A0 const& a0) const BOOST_NOEXCEPT
     {
       return detail::exponential<A0,bs::tag::exp_,tag::simd_type>::expa(a0);
     }

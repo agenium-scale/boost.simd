@@ -26,7 +26,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::int_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
       return (a1 > 0) ? ror(a0, a1) :rol(a0, -a1);
     }
@@ -38,7 +38,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::uint_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
       return ror(a0, a1);
     }

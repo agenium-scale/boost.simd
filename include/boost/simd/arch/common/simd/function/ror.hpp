@@ -36,7 +36,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::unsigned_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1 a1) const
+    BOOST_MAYBEINLINE A0 operator() ( A0 const& a0, A1 a1) const
     {
       BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "rol : rotation is out of range");
       using s_t = bd::scalar_of_t<A0>;
@@ -54,7 +54,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::integer_<A1> >
   )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const&  a0, A1 a1 ) const
+    BOOST_MAYBEINLINE A0 operator() ( A0 const&  a0, A1 a1 ) const
     {
       using i_t = bd::as_integer_t<A0, unsigned>;
       using is_t = bd::as_integer_t<i_t, unsigned>;
@@ -77,7 +77,7 @@ namespace boost { namespace simd { namespace ext
                              , bs::pack_< bd::unsigned_<A1>, X>
                              )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A0 const& a1) const
+    BOOST_MAYBEINLINE A0 operator() ( A0 const& a0, A0 const& a1) const
     {
       using s_t = bd::scalar_of_t<A0>;
       BOOST_ASSERT_MSG(assert_good_shift<A0>(a1), "ror : rotation is out of range");
@@ -99,7 +99,7 @@ namespace boost { namespace simd { namespace ext
                                , bs::pack_< bd::integer_<A1>, X>
                                )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0, A1 const& a1) const
+    BOOST_MAYBEINLINE A0 operator() ( A0 const& a0, A1 const& a1) const
     {
       using i_t = bd::as_integer_t<A0, unsigned>;
       return bitwise_cast<A0>( ror ( bitwise_cast<i_t>(a0)

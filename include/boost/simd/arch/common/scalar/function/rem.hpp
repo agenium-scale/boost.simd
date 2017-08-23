@@ -32,7 +32,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::arithmetic_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       return a1 ? a0%a1 : a0;
     }
@@ -45,7 +45,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (pedantic_tag const &
+    BOOST_MAYBEINLINE A0 operator() (pedantic_tag const &
                                     , A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       if (is_nez(a1)&&is_eqz(a0)) return a0;
@@ -62,7 +62,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::arithmetic_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()( bd::functor<bs::tag::fix_> const&
+    BOOST_MAYBEINLINE T operator()( bd::functor<bs::tag::fix_> const&
                                   , T const& a, T const& b ) const BOOST_NOEXCEPT
     {
       return pedantic_(rem)(a, b);
@@ -76,7 +76,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       return fnms(a1, div(fix, a0, a1), a0);
     }
@@ -91,7 +91,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const std_tag &, bd::functor<bs::tag::fix_> const&
+    BOOST_MAYBEINLINE A0 operator() (const std_tag &, bd::functor<bs::tag::fix_> const&
                                     , A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       return std::fmod(a0, a1);
@@ -106,7 +106,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::arithmetic_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (bd::functor<bs::tag::fix_> const&
+    BOOST_MAYBEINLINE A0 operator() (bd::functor<bs::tag::fix_> const&
                                     , A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       return fnms(a1, div(fix, a0, a1), a0);
@@ -120,7 +120,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const std_tag &,  A0 a0, A0 a1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const std_tag &,  A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
      return std::fmod(a0, a1);
     }

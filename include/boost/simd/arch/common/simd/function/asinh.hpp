@@ -52,7 +52,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::double_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
+      BOOST_MAYBEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
         A0 x =  bs::abs(a0);
         auto test = is_greater(x,Oneosqrteps<A0>());
@@ -72,7 +72,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::single_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
+      BOOST_MAYBEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
         // Exhaustive test for: boost::dispatch::functor<bs::tag::asinh_, bs::tag::sse4_2_>
         //              versus: float(boost::math::asinh(double)

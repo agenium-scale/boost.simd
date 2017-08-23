@@ -22,7 +22,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::single_<A0>, bs::sse_>
                          )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0 ) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( const A0 & a0 ) const BOOST_NOEXCEPT
     {
       return _mm_sqrt_ps(a0);
     }

@@ -30,7 +30,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
 
-    BOOST_FORCEINLINE A0 operator() (const pedantic_tag &,  A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const pedantic_tag &,  A0 a0) const BOOST_NOEXCEPT
     {
       return detail::invtrig_base<A0,tag::radian_tag,tag::not_simd_type>::acos(a0);
     }
@@ -43,7 +43,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
 
-    BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
     {
       //Exhaustive test for: boost::dispatch::functor<boost::simd::tag::acos_, boost::simd::sse4_2_>
       //             versus: raw_acos
@@ -76,7 +76,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const std_tag &, A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const std_tag &, A0 a0) const BOOST_NOEXCEPT
     {
       return std::acos(a0);
     }

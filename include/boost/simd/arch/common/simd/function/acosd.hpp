@@ -28,7 +28,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_< bd::floating_<A0>, X>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
       return indeg(bs::acos(a0));
     }
@@ -42,7 +42,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_< bd::floating_<A0>, X>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const pedantic_tag &,  A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const pedantic_tag &,  A0 const& a0) const BOOST_NOEXCEPT
     {
       return indeg(bs::pedantic_(bs::acos)(a0));
     }

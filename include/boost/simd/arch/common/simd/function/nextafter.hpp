@@ -34,7 +34,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::arithmetic_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+      BOOST_MAYBEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
         return  if_else(bs::is_equal(a0,a1),
                       a0,
@@ -50,7 +50,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+      BOOST_MAYBEINLINE A0 operator()( const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
         return if_else(is_less(a0, a1), next(a0), if_else(is_equal(a0, a1),  a0, prev(a0)));
       }

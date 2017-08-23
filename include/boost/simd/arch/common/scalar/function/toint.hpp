@@ -22,7 +22,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::integer_<A0> >
                           )
   {
-    BOOST_FORCEINLINE bd::as_integer_t<A0, signed> operator() ( A0  a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE bd::as_integer_t<A0, signed> operator() ( A0  a0) const BOOST_NOEXCEPT
     {
       return a0;
     }
@@ -34,7 +34,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using result_t = bd::as_integer_t<A0, signed>;
-    BOOST_FORCEINLINE result_t operator() ( A0  a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE result_t operator() ( A0  a0) const BOOST_NOEXCEPT
     {
       return result_t(a0);
     }

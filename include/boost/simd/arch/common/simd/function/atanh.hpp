@@ -39,7 +39,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
+      BOOST_MAYBEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
         A0 absa0 = bs::abs(a0);
         A0 t =  absa0+absa0;
@@ -58,7 +58,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()(const raw_tag &,
+      BOOST_MAYBEINLINE A0 operator()(const raw_tag &,
                                       const A0& a0) const BOOST_NOEXCEPT
       {
         return  Half<A0>()*log(inc(a0)/oneminus(a0));

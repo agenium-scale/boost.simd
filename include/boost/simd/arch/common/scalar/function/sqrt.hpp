@@ -35,7 +35,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::double_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0  a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0  a0) const BOOST_NOEXCEPT
     {
       return ::sqrt(a0);
     }
@@ -46,7 +46,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::single_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return std::sqrt(a0);
     }
@@ -57,7 +57,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::integer_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG(is_gez(a0), "sqrt input is negative");
 
@@ -71,7 +71,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const std_tag &,  A0  a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const std_tag &,  A0  a0) const BOOST_NOEXCEPT
     {
       return std::sqrt(a0);
     }
@@ -84,7 +84,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const raw_tag &,  A0  a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const raw_tag &,  A0  a0) const BOOST_NOEXCEPT
     {
       if (is_ngez(a0)) return Nan<A0>();
       if (is_eqz(a0)) return Zero<A0>();
@@ -99,7 +99,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::integer_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const raw_tag &,  A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const raw_tag &,  A0 a0) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG( is_positive(a0)
                       , "sqrt integer domain is restricted to positive integer."

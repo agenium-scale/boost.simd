@@ -34,7 +34,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::integer_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       return a0;
     }
@@ -46,7 +46,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::single_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       const A0 v = bs::abs(a0);
       if (!(v <=  Maxflint<A0>())) return a0;
@@ -60,7 +60,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::double_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       const A0 v = simd::abs(a0);
       if (!(v <=  Maxflint<A0>())) return a0;
@@ -76,7 +76,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                          )
   {
-    BOOST_FORCEINLINE A0 operator() (const std_tag &
+    BOOST_MAYBEINLINE A0 operator() (const std_tag &
                                     ,  A0  a0) const BOOST_NOEXCEPT
     {
       return std::round(a0);
@@ -90,7 +90,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::integer_<A0> >
                          )
   {
-    BOOST_FORCEINLINE A0 operator() (const std_tag &
+    BOOST_MAYBEINLINE A0 operator() (const std_tag &
                                     ,  A0  a0) const BOOST_NOEXCEPT
     {
       return a0;
@@ -104,7 +104,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::int_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
        using i_t = bd::as_integer_t<A0>;
        A0 fac = tenpower(i_t(a1));
@@ -121,7 +121,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::uint_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
        using i_t = bd::as_integer_t<A0>;
        A0 fac = tenpower(i_t(a1));

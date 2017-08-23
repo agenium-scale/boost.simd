@@ -34,7 +34,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
     {
       A0 absa0 = bs::abs(a0);
       A0 t =  absa0+absa0;
@@ -54,7 +54,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                          )
   {
-    BOOST_FORCEINLINE A0 operator() (const std_tag &,  A0  a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const std_tag &,  A0  a0) const BOOST_NOEXCEPT
     {
       return std::atanh(a0);
     }
@@ -67,7 +67,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                          )
   {
-    BOOST_FORCEINLINE A0 operator() (const raw_tag &,  A0  a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const raw_tag &,  A0  a0) const BOOST_NOEXCEPT
     {
        return  Half<A0>()*log(inc(a0)/oneminus(a0));
     }

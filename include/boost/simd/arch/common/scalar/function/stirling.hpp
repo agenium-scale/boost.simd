@@ -37,7 +37,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
     {
       if (is_ltz(a0)) return Nan<A0>();
       const A0 Stirlinglargelim = Real<A0, 0x4065800000000000ULL, 0X420C28F3UL>();// 172, 35.0399895f

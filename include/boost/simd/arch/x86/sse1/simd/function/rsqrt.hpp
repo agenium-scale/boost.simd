@@ -36,7 +36,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::single_<A0>, bs::sse_>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (raw_tag const&
+    BOOST_MAYBEINLINE A0 operator() (raw_tag const&
                                     , const A0 & a0) const BOOST_NOEXCEPT
     {
       return _mm_rsqrt_ps(a0);
@@ -49,7 +49,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::single_<A0>, bs::sse_>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const A0 & a00) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const A0 & a00) const BOOST_NOEXCEPT
     {
 //       A0 a0 = refine_rsqrt(a00, refine_rsqrt(a00, raw_(rsqrt)(a00)));
       A0 a0 =  raw_(rsqrt)(a00);
@@ -69,7 +69,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::single_<A0>, bs::sse_>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (pedantic_tag const&
+    BOOST_MAYBEINLINE A0 operator() (pedantic_tag const&
                                     ,const A0 & a00) const BOOST_NOEXCEPT
     {
       A0 a0 = a00;

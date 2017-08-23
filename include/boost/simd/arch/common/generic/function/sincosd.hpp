@@ -29,7 +29,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using result_t = std::pair<A0, A0>                     ;
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0) const
+    BOOST_MAYBEINLINE result_t operator() ( A0 const& a0) const
     {
       return detail::trig_base <A0,tag::degree_tag,is_not_scalar_t<A0>,tag::big_tag>::sincosa(a0);
     }
@@ -42,7 +42,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::generic_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE std::pair<A0, A0> operator() (const restricted_tag &,  A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE std::pair<A0, A0> operator() (const restricted_tag &,  A0 const& a0) const BOOST_NOEXCEPT
     {
       return detail::trig_base<A0, tag::degree_tag,is_not_scalar_t<A0>,tag::clipped_pio4_tag>::sincosa(a0);
     }
@@ -55,7 +55,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_ < bd::unspecified_<A1>>
                           )
   {
-    BOOST_FORCEINLINE std::pair<A0, A0> operator() (const A0 & a0,  A1 const &) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE std::pair<A0, A0> operator() (const A0 & a0,  A1 const &) const BOOST_NOEXCEPT
     {
       return detail::trig_base<A0, tag::degree_tag,is_not_scalar_t<A0>,A1>::sincosa(a0);
     }

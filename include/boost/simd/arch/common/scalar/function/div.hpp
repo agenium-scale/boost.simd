@@ -40,7 +40,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::arithmetic_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()(T  a, T  b ) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE T operator()(T  a, T  b ) const BOOST_NOEXCEPT
     {
       return divides(a, b);
     }
@@ -54,7 +54,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::arithmetic_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()( bd::functor<bs::tag::fix_> const&
+    BOOST_MAYBEINLINE T operator()( bd::functor<bs::tag::fix_> const&
                                   , T  a, T  b ) const BOOST_NOEXCEPT
     {
       return div(bs::trunc, a, b);
@@ -74,7 +74,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::floating_<T>>
                           )
   {
-    BOOST_FORCEINLINE bd::as_integer_t<T> operator()( bd::functor<bs::tag::ifix_> const&
+    BOOST_MAYBEINLINE bd::as_integer_t<T> operator()( bd::functor<bs::tag::ifix_> const&
                                                     , T const& a, T const& b ) const BOOST_NOEXCEPT
     {
       return saturated_(toint)(a/b);
@@ -88,7 +88,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::floating_<T>>
                           )
   {
-    BOOST_FORCEINLINE bd::as_integer_t<T> operator()( bd::functor<bs::tag::iceil_> const&
+    BOOST_MAYBEINLINE bd::as_integer_t<T> operator()( bd::functor<bs::tag::iceil_> const&
                                                     , T const& a, T const& b ) const BOOST_NOEXCEPT
     {
       return iceil(a/b);
@@ -103,7 +103,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::floating_<T>>
                           )
   {
-    BOOST_FORCEINLINE bd::as_integer_t<T> operator()( bd::functor<bs::tag::ifloor_> const&
+    BOOST_MAYBEINLINE bd::as_integer_t<T> operator()( bd::functor<bs::tag::ifloor_> const&
                                                     ,T const& a, T const& b) const BOOST_NOEXCEPT
     {
       return ifloor(a/b);
@@ -118,7 +118,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::floating_<T>>
                           )
   {
-    BOOST_FORCEINLINE  bd::as_integer_t<T>  operator()( bd::functor<bs::tag::iround_> const&
+    BOOST_MAYBEINLINE  bd::as_integer_t<T>  operator()( bd::functor<bs::tag::iround_> const&
                                                       ,T const& a, T const& b) const BOOST_NOEXCEPT
     {
       return iround(a/b);
@@ -133,7 +133,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::floating_<T>>
                           )
   {
-    BOOST_FORCEINLINE bd::as_integer_t<T> operator()( bd::functor<bs::tag::inearbyint_> const&
+    BOOST_MAYBEINLINE bd::as_integer_t<T> operator()( bd::functor<bs::tag::inearbyint_> const&
                                                     ,T const& a, T const& b) const BOOST_NOEXCEPT
     {
       return pedantic_(inearbyint)(a/b);
@@ -152,7 +152,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::integer_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()( bd::functor<bs::tag::ifix_> const&
+    BOOST_MAYBEINLINE T operator()( bd::functor<bs::tag::ifix_> const&
                                                     , T  a, T  b ) const BOOST_NOEXCEPT
     {
       return  div(fix, a, b);
@@ -167,7 +167,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::integer_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()( bd::functor<bs::tag::iceil_> const&
+    BOOST_MAYBEINLINE T operator()( bd::functor<bs::tag::iceil_> const&
                                                     , T  a, T  b ) const BOOST_NOEXCEPT
     {
       return div(ceil, a, b);
@@ -182,7 +182,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::integer_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()( bd::functor<bs::tag::ifloor_> const&
+    BOOST_MAYBEINLINE T operator()( bd::functor<bs::tag::ifloor_> const&
                                                     ,T  a, T  b) const BOOST_NOEXCEPT
     {
       return  div(floor, a, b);
@@ -197,7 +197,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::integer_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()( bd::functor<bs::tag::iround_> const&
+    BOOST_MAYBEINLINE T operator()( bd::functor<bs::tag::iround_> const&
                                                     ,T  a, T  b) const BOOST_NOEXCEPT
     {
       return div(round, a, b);
@@ -212,7 +212,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::integer_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()( bd::functor<bs::tag::inearbyint_> const&
+    BOOST_MAYBEINLINE T operator()( bd::functor<bs::tag::inearbyint_> const&
                                   ,T  a, T  b) const BOOST_NOEXCEPT
     {
       return  div(nearbyint, a, b);

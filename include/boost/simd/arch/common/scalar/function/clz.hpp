@@ -33,7 +33,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using result_t = bd::as_integer_t<A0>;
-    BOOST_FORCEINLINE result_t operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE result_t operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       result_t t1 = bitwise_cast<result_t>(a0);
       BOOST_ASSERT_MSG( t1, "clz not defined for 0" );
@@ -53,7 +53,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using result_t = bd::as_integer_t<A0>;
-    BOOST_FORCEINLINE result_t operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE result_t operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       result_t t1 = bitwise_cast<result_t>(a0);
       BOOST_ASSERT_MSG( t1, "clz not defined for 0" );
@@ -72,7 +72,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::type16_<A0> >
                           )
   {
-    BOOST_FORCEINLINE  bd::as_integer_t<A0> operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE  bd::as_integer_t<A0> operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       using i_t = typename bd::as_integer_t<A0, unsigned>;
       i_t t1 = bitwise_cast<i_t>(a0);
@@ -87,7 +87,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::type8_<A0> >
                           )
   {
-    BOOST_FORCEINLINE bd::as_integer_t<A0> operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE bd::as_integer_t<A0> operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       using i_t = typename bd::as_integer_t<A0, unsigned>;
       i_t t1 = bitwise_cast<i_t>(a0);

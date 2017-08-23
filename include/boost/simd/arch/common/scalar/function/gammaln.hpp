@@ -45,7 +45,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::single_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
     {
       A0 Maxgammaln = Constant<A0, 0x7bc3f8eaUL>(); //2.035093e36f
       if ((a0 > Maxgammaln) || bs::is_eqz(a0) ) return bs::Inf<A0>();
@@ -73,7 +73,7 @@ namespace boost { namespace simd { namespace ext
       }
     }
   private:
-    static /*BOOST_FORCEINLINE*/ A0 gammaln_pos(A0 x) BOOST_NOEXCEPT
+    static /*BOOST_MAYBEINLINE*/ A0 gammaln_pos(A0 x) BOOST_NOEXCEPT
     {
       if( x < 6.5f )
       {
@@ -132,7 +132,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::double_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
     {
       A0 Maxgammaln = Constant<A0, 0x7f574c5dd06d2516ULL>();
       if ((a0 == bs::Inf<A0>()) || bs::is_eqz(a0) ) return bs::Inf<A0>(); //2.556348e305
@@ -161,7 +161,7 @@ namespace boost { namespace simd { namespace ext
       }
     }
   private:
-    static /*BOOST_FORCEINLINE*/ A0 gammaln_pos(A0 x) BOOST_NOEXCEPT
+    static /*BOOST_MAYBEINLINE*/ A0 gammaln_pos(A0 x) BOOST_NOEXCEPT
     {
       if( x < 13.0 )
       {
@@ -203,7 +203,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (A0 a0, A0&sgn) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (A0 a0, A0&sgn) const BOOST_NOEXCEPT
     {
       sgn = signgam(a0);
       return std::lgamma(a0);
@@ -216,7 +216,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const std_tag &, A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const std_tag &, A0 a0) const BOOST_NOEXCEPT
     {
       return std::lgamma(a0);
     }

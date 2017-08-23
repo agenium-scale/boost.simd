@@ -36,7 +36,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::int_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()(pedantic_tag const &
+      BOOST_MAYBEINLINE A0 operator()(pedantic_tag const &
                                      , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
         return if_minus(is_nez(a1), a0, div(fix,a0,a1)*a1);
@@ -52,7 +52,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()(pedantic_tag const &
+      BOOST_MAYBEINLINE A0 operator()(pedantic_tag const &
                                      ,  const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
         auto z = is_nez(a1);
@@ -77,7 +77,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::int_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()(pedantic_tag const &
+      BOOST_MAYBEINLINE A0 operator()(pedantic_tag const &
                                      , bd::functor<bs::tag::fix_> const&
                                      , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
@@ -95,7 +95,7 @@ namespace boost { namespace simd { namespace ext
                              , bs::pack_<bd::floating_<A0>, X>
                              )
    {
-      BOOST_FORCEINLINE A0 operator()(pedantic_tag const &
+      BOOST_MAYBEINLINE A0 operator()(pedantic_tag const &
                                      , bd::functor<bs::tag::fix_> const&
                                      , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
@@ -112,7 +112,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( bd::functor<bs::tag::fix_> const&
+      BOOST_MAYBEINLINE A0 operator()( bd::functor<bs::tag::fix_> const&
                                      , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
         return  fnms(div(fix, a0,a1), a1, a0);
@@ -127,7 +127,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()(const A0& a0, const A0& a1) const BOOST_NOEXCEPT
+      BOOST_MAYBEINLINE A0 operator()(const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
         return  fnms(div(fix, a0,a1), a1, a0);
       }

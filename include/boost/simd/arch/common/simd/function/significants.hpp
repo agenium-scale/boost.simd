@@ -52,7 +52,7 @@ namespace boost { namespace simd { namespace ext
                              , bs::pack_< bd::integer_<A1>, X>
                              )
    {
-     BOOST_FORCEINLINE A0 operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
+     BOOST_MAYBEINLINE A0 operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
      {
        BOOST_ASSERT_MSG( assert_all(is_gtz(a1))
                        , "Number of significant digits must be positive"
@@ -78,7 +78,7 @@ namespace boost { namespace simd { namespace ext
                          )
   {
 
-    BOOST_FORCEINLINE A0 operator()( const A0& a0, A1 a1 ) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator()( const A0& a0, A1 a1 ) const BOOST_NOEXCEPT
     {
       using iA0 = bd::as_integer_t<A0>;
       return significants(a0, iA0(a1));

@@ -47,7 +47,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
 
-    BOOST_FORCEINLINE A0 operator() (const pedantic_tag &,
+    BOOST_MAYBEINLINE A0 operator() (const pedantic_tag &,
                                      A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       using i_t = bd::as_integer_t<A0>;
@@ -72,7 +72,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
 
-    BOOST_FORCEINLINE A0 operator() (const std_tag &,  A0 a0, A0 a1
+    BOOST_MAYBEINLINE A0 operator() (const std_tag &,  A0 a0, A0 a1
                                     ) const BOOST_NOEXCEPT
     {
       return std::hypot(a0, a1);
@@ -87,7 +87,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
 
-    BOOST_FORCEINLINE A0 operator() ( A0  a0, A0  a1
+    BOOST_MAYBEINLINE A0 operator() ( A0  a0, A0  a1
                                     ) const BOOST_NOEXCEPT
     {
       return boost::simd::sqrt(bs::fma(a0, a0, sqr(a1)));

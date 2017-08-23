@@ -46,7 +46,7 @@ namespace boost { namespace simd { namespace ext
                              )
   {
     using result_t = std::pair<A0, A0>;
-    BOOST_FORCEINLINE result_t operator() ( A0 const& a0) const
+    BOOST_MAYBEINLINE result_t operator() ( A0 const& a0) const
     {
       //////////////////////////////////////////////////////////////////////////////
       // if x = abs(a0) is less than 1 sinh is computed using a polynomial(float)

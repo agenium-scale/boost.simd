@@ -32,7 +32,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::arithmetic_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
        return saturated_(inc)(a0);
     }
@@ -44,7 +44,7 @@ namespace boost { namespace simd { namespace ext
                                     , bd::scalar_< bd::floating_<A0> >
                                     )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0) const BOOST_NOEXCEPT
     {
       if (is_nan(a0)) return a0;
       return bitfloating(saturated_(inc)(bitinteger(a0)));
@@ -58,7 +58,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::integer_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG(is_gez(a1), "predecessor rank must be non negative");
       if (Valmax<A0>()-a1 < a0) return Valmax<A0>();
@@ -73,7 +73,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::integer_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0, A1 a1) const BOOST_NOEXCEPT
     {
       BOOST_ASSERT_MSG(is_gez(a1), "predecessor rank must be non negative");
       using itype = bd::as_integer_t<A0, signed>;

@@ -33,7 +33,7 @@ namespace boost { namespace simd { namespace ext
                           )
    {
       using result = bd::as_integer_t<A0, signed> ;
-      BOOST_FORCEINLINE result operator()(A0 const& a0) const
+      BOOST_MAYBEINLINE result operator()(A0 const& a0) const
       {
         return bitwise_cast<result>(a0);
       }
@@ -45,7 +45,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::int_<A0>, X>
                           )
    {
-     BOOST_FORCEINLINE A0 operator()(A0 const& a0) const
+     BOOST_MAYBEINLINE A0 operator()(A0 const& a0) const
      {
         return a0;
      }
@@ -60,7 +60,7 @@ namespace boost { namespace simd { namespace ext
                           )
    {
      using result = bd::as_integer_t<A0, signed> ;
-     BOOST_FORCEINLINE result operator()(pedantic_tag const &
+     BOOST_MAYBEINLINE result operator()(pedantic_tag const &
                                         , A0 const& a0) const
      {
        const int32_t Vim32 = Valmin<int32_t>();
@@ -84,7 +84,7 @@ namespace boost { namespace simd { namespace ext
                           )
    {
      using result = bd::as_integer_t<A0, signed> ;
-     BOOST_FORCEINLINE result operator()(pedantic_tag const &
+     BOOST_MAYBEINLINE result operator()(pedantic_tag const &
                                         , A0 const& a0) const
      {
        return toint(a0);

@@ -32,7 +32,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::integer_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0 ) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0 ) const BOOST_NOEXCEPT
     {
       return static_cast<A0>(bs::ilogb(static_cast<bd::as_floating_t<A0>>(a0)));
     }
@@ -47,7 +47,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using result_t = bd::as_integer_t<A0, signed>;
-    BOOST_FORCEINLINE result_t operator() (const std_tag &, A0 a0 ) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE result_t operator() (const std_tag &, A0 a0 ) const BOOST_NOEXCEPT
     {
       return std::ilogb(a0);
     }
@@ -61,7 +61,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using result_t = bd::as_integer_t<A0, signed>;
-    BOOST_FORCEINLINE result_t operator() (const pedantic_tag &, A0 a0 ) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE result_t operator() (const pedantic_tag &, A0 a0 ) const BOOST_NOEXCEPT
     {
       return std::ilogb(a0);
     }
@@ -74,7 +74,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
     using result_t = bd::as_integer_t<A0, signed>;
-    BOOST_FORCEINLINE result_t operator() (A0 a0 ) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE result_t operator() (A0 a0 ) const BOOST_NOEXCEPT
     {
       return is_inf(a0) ? Valmax<result_t>() : exponent(a0);
     }

@@ -29,7 +29,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::double_<A0>, bs::sse_>
                          )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0
+    BOOST_MAYBEINLINE A0 operator() ( const A0 & a0
                                     , const A0 & a1 ) const BOOST_NOEXCEPT
     {
 //      A0 const that = _mm_div_pd(a0,a1);

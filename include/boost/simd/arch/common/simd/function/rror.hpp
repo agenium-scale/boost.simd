@@ -37,7 +37,7 @@ namespace boost { namespace simd { namespace ext
                              , bs::pack_<bd::int_<A1>, X>
                              )
    {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
+      BOOST_MAYBEINLINE A0 operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
       {
         #ifndef NDEBUG
         return bitwise_cast<A0>( if_else ( is_gtz(a1)
@@ -67,7 +67,7 @@ namespace boost { namespace simd { namespace ext
                              , bs::pack_<bd::uint_<A1>, X>
                              )
    {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
+      BOOST_MAYBEINLINE A0 operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
       {
         return bitwise_cast<A0>( ror( bitwise_cast<A1>(a0), a1 ) );
       }

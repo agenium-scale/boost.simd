@@ -46,7 +46,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::double_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (A0 x) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (A0 x) const BOOST_NOEXCEPT
     {
       #ifndef BOOST_SIMD_NO_INVALIDS
       if(is_nan(x)) return x;
@@ -85,7 +85,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::single_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
     {
       #ifndef BOOST_SIMD_NO_INFINITIES
       if(a0 == Inf<A0>()) return Zero<A0>();

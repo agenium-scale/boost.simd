@@ -37,7 +37,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::floating_<A0>, X>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
       A0 z = Ratio<A0, 90>()-if_else_zero(is_nez(a0),atand(bs::abs(a0)));
       #ifndef BOOST_SIMD_NO_INFINITIES

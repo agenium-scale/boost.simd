@@ -26,7 +26,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::unspecified_<T>>
                           )
   {
-    BOOST_FORCEINLINE auto operator()(T const& a, T const& b) const BOOST_NOEXCEPT -> decltype(a/b)
+    BOOST_MAYBEINLINE auto operator()(T const& a, T const& b) const BOOST_NOEXCEPT -> decltype(a/b)
     {
       return a/b;
     }
@@ -39,7 +39,7 @@ namespace boost { namespace simd { namespace ext
                           ,  bd::scalar_< bd::fundamental_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()(T a, T b) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE T operator()(T a, T b) const BOOST_NOEXCEPT
     {
       return a/b;
     }
@@ -53,7 +53,7 @@ namespace boost { namespace simd { namespace ext
                           ,  bd::scalar_<bd::fundamental_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()(const saturated_tag &, T a, T b) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE T operator()(const saturated_tag &, T a, T b) const BOOST_NOEXCEPT
     {
       return saturated_(divides)(a, b);
     }

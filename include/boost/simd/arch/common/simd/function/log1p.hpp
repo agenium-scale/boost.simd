@@ -47,7 +47,7 @@ namespace boost { namespace simd { namespace ext
                              , bs::pack_< bd::single_<A0>, X>
                           )
   {
-    BOOST_FORCEINLINE A0 operator()( const A0& a0) BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator()( const A0& a0) BOOST_NOEXCEPT
     {
       return musl_(log1p)(a0);
     }
@@ -60,7 +60,7 @@ namespace boost { namespace simd { namespace ext
                              , bs::pack_< bd::double_<A0>, X>
                           )
   {
-    BOOST_FORCEINLINE A0 operator()( const A0& a0) BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator()( const A0& a0) BOOST_NOEXCEPT
     {
       return plain_(log1p)(a0);
     }
@@ -74,7 +74,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_< bd::single_<A0>, X>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const musl_tag &, const A0& a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const musl_tag &, const A0& a0) const BOOST_NOEXCEPT
     {
       using uiA0 = bd::as_integer_t<A0, unsigned>;
       using iA0 = bd::as_integer_t<A0,   signed>;
@@ -115,7 +115,7 @@ namespace boost { namespace simd { namespace ext
                              , bs::pack_< bd::double_<A0>, X>
                              )
   {
-    BOOST_FORCEINLINE A0 operator() (const musl_tag &, const A0& a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const musl_tag &, const A0& a0) const BOOST_NOEXCEPT
     {
       using uiA0 = bd::as_integer_t<A0, unsigned>;
       using iA0 = bd::as_integer_t<A0,   signed>;
@@ -160,7 +160,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_< bd::single_<A0>, X>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const plain_tag &, const A0& a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const plain_tag &, const A0& a0) const BOOST_NOEXCEPT
     {
       const A0 uf =  inc(a0);
       auto isnez = is_nez(uf);
@@ -200,7 +200,7 @@ namespace boost { namespace simd { namespace ext
                              , bs::pack_< bd::double_<A0>, X>
                              )
   {
-    BOOST_FORCEINLINE A0 operator() (const plain_tag &, const A0& a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const plain_tag &, const A0& a0) const BOOST_NOEXCEPT
     {
 //      using iA0 = bd::as_integer_t<A0,   signed>;
       const A0 uf =  inc(a0);

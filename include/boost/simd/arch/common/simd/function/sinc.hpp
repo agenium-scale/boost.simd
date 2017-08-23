@@ -40,7 +40,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
+      BOOST_MAYBEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
         A0 r1 =  bs::sin(a0)/a0;
         #if !defined(BOOST_SIMD_NO_DENORMALS)

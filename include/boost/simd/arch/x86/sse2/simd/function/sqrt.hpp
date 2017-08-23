@@ -43,7 +43,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::double_<A0>, bs::sse_>
                          )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( const A0 & a0) const BOOST_NOEXCEPT
     {
        return _mm_sqrt_pd(a0);
     }
@@ -55,7 +55,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::int_<A0>, bs::sse_>
                          )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( const A0 & a0) const BOOST_NOEXCEPT
     {
       using uint_type = bd::as_integer_t<A0,unsigned>;
       return simd::bitwise_cast<A0>(sqrt( simd::bitwise_cast<uint_type>(a0)));
@@ -68,7 +68,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::int64_<A0>, bs::sse_>
                          )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( const A0 & a0) const BOOST_NOEXCEPT
     {
       return bs::toint(bs::sqrt(bs::tofloat(a0)));
     }
@@ -80,7 +80,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::uint8_<A0>, bs::sse_>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( const A0 & a0) const BOOST_NOEXCEPT
     {
       A0 n   = plus(shift_right(a0, 4), Four<A0>());
       A0 n1  = shift_right(n+a0/n, 1);
@@ -102,7 +102,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::uint16_<A0>, bs::sse_>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( const A0 & a0) const BOOST_NOEXCEPT
     {
       auto na = is_nez(a0);
       A0 const  z1 = plus(shift_right(a0, 6), Ratio<A0, 16>());
@@ -137,7 +137,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::uint32_<A0>, bs::sse_>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( const A0 & a0) const BOOST_NOEXCEPT
     {
       auto na = is_nez(a0);
       A0 const z1 = plus(shift_right(a0, 6),    Ratio<A0,16>());
@@ -183,7 +183,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::uint64_<A0>, bs::sse_>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( const A0 & a0) const BOOST_NOEXCEPT
     {
       return bs::touint(bs::sqrt(bs::tofloat(a0)));
     }

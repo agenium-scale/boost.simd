@@ -29,7 +29,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const std_tag &, A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const std_tag &, A0 a0) const BOOST_NOEXCEPT
     {
       return std::sin(a0);
     }
@@ -41,7 +41,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0  a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0  a0) const BOOST_NOEXCEPT
     {
       return detail::trig_base<A0,tag::radian_tag,tag::not_simd_type,tag::big_tag>::sina(a0);
     }
@@ -53,7 +53,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_ < bd::unspecified_<A1> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0  a0,  A1 ) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0  a0,  A1 ) const BOOST_NOEXCEPT
     {
       return detail::trig_base<A0,tag::radian_tag,tag::not_simd_type,A1>::sina(a0);
     }
@@ -65,7 +65,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const restricted_tag &,  A0  a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const restricted_tag &,  A0  a0) const BOOST_NOEXCEPT
     {
       return detail::trig_base<A0,tag::radian_tag,tag::not_simd_type,tag::clipped_pio4_tag>::sina(a0);
     }

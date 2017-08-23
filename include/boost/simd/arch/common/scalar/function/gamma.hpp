@@ -43,7 +43,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
     {
       if (is_eqz(a0)) return copysign(Inf<A0>(), a0);
       #ifndef BOOST_SIMD_NO_INVALIDS
@@ -94,11 +94,11 @@ namespace boost { namespace simd { namespace ext
       return z*detail::gamma_kernel<A0>::gamma1(x);
     }
   private:
-    static BOOST_FORCEINLINE bool inftest(const float a0)
+    static BOOST_MAYBEINLINE bool inftest(const float a0)
     {
       return a0 > 35.4f;
     }
-    static BOOST_FORCEINLINE bool inftest(const double a0)
+    static BOOST_MAYBEINLINE bool inftest(const double a0)
     {
       return a0 > 171.624;
     }
@@ -111,7 +111,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const std_tag &, A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const std_tag &, A0 a0) const BOOST_NOEXCEPT
     {
       return std::tgamma(a0);
     }

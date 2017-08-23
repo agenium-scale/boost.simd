@@ -24,6 +24,21 @@
 #  include <boost/simd/detail/dispatch/hierarchy/default_site.hpp>
 #endif
 
+// Conditionnal BOOST_FORCEINLINE. Some compilers (like MSVC...) does not handle properly
+// forceinlining on big functions such as `acos` or `asin` which leads to crazy
+// compilation/linking time. In that case, using a simple inline get rid of that crazyness.
+// On other compilers such as gcc/clang, forceinlining works well.
+#if defined(_MSC_VER)
+#  define BOOST_MAYBEINLINE inline
+#else
+#  define BOOST_MAYBEINLINE BOOST_FORCEINLINE
+#endif
+
+// If BOOST_SIMD_NO_MAYBEINLINE is defined, then just re-use FORCEILINE
+#if defined(BOOST_SIMD_NO_MAYBEINLINE)
+  #define BOOST_MAYBEINLINE BOOST_FORCEINLINE
+#endif
+
 // noexcept((expr))
 #define BOOST_NOEXCEPT_IF_EXPR(expr) BOOST_NOEXCEPT_IF(BOOST_NOEXCEPT_EXPR(expr))
 

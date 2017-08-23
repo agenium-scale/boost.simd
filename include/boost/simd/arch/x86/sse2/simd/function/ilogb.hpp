@@ -43,7 +43,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
 
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0)
+    BOOST_MAYBEINLINE A0 operator() ( const A0 & a0)
     {
       using ui16_t =  bd::upgrade_t<A0>;
       const A0 mask =  Constant<A0, 0x7f>();
@@ -73,7 +73,7 @@ namespace boost { namespace simd { namespace ext
                           )
   {
 
-    BOOST_FORCEINLINE A0 operator() ( const A0 & a0)
+    BOOST_MAYBEINLINE A0 operator() ( const A0 & a0)
     {
       using uA0 = bd::as_integer_t<A0, unsigned>;
       return bitwise_cast<A0>(ilogb(bitwise_cast<uA0>(saturated_(abs)(a0))));

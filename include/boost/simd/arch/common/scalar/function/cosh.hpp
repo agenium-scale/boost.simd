@@ -36,7 +36,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const std_tag &,  A0  a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const std_tag &,  A0  a0) const BOOST_NOEXCEPT
     {
       return std::cosh(a0);
     }
@@ -48,7 +48,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
       //////////////////////////////////////////////////////////////////////////////
       // if x = abs(a0) according x < Threshold e =  exp(x) or exp(x/2) is

@@ -27,7 +27,7 @@ namespace boost { namespace simd { namespace ext
                             , bs::pack_< bd::floating_<A0>, X >
                             )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
       return bs::rec(bs::sqrt(a0));
     }
@@ -41,7 +41,7 @@ namespace boost { namespace simd { namespace ext
                             , bs::pack_< bd::floating_<A0>, X >
                             )
   {
-    BOOST_FORCEINLINE A0 operator() (const raw_tag &,  A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const raw_tag &,  A0 const& a0) const BOOST_NOEXCEPT
     {
       return bs::rec(bs::raw_(bs::sqrt)(a0));
     }

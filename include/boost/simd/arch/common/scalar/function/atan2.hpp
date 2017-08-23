@@ -46,7 +46,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const pedantic_tag &,
+    BOOST_MAYBEINLINE A0 operator() (const pedantic_tag &,
                                      A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       #ifndef BOOST_SIMD_NO_NANS
@@ -76,7 +76,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const std_tag &,  A0 a0, A0 a1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const std_tag &,  A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       return std::atan2(a0, a1);
     }
@@ -88,7 +88,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 a0, A0 a1) const BOOST_NOEXCEPT
     {
       A0 q = bs::abs(a0/a1);
       A0 z = detail::invtrig_base<A0,tag::radian_tag, tag::not_simd_type>::kernel_atan(q, bs::rec(q));

@@ -29,7 +29,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() ( A0 const& a0) const BOOST_NOEXCEPT
     {
       return bs::rec(bs::sqrt(a0));
     }
@@ -42,7 +42,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::single_<A0> >
                          )
   {
-    BOOST_FORCEINLINE A0 operator() (const raw_tag &,  A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const raw_tag &,  A0 a0) const BOOST_NOEXCEPT
     {
       typedef bd::as_integer_t<A0> i_t;
 
@@ -68,7 +68,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::double_<A0> >
                          )
   {
-    BOOST_FORCEINLINE A0 operator() (const raw_tag &,  A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const raw_tag &,  A0 a0) const BOOST_NOEXCEPT
     {
       return bs::rsqrt(a0);
     }
@@ -81,7 +81,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                          )
   {
-    BOOST_FORCEINLINE A0 operator() (const pedantic_tag &,  A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const pedantic_tag &,  A0 a0) const BOOST_NOEXCEPT
     {
       return bs::rec(bs::sqrt(a0));
     }

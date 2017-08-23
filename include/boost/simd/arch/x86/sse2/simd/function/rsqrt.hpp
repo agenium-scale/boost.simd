@@ -34,7 +34,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::double_<A0>, bs::sse_>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (raw_tag const&
+    BOOST_MAYBEINLINE A0 operator() (raw_tag const&
                                     , const A0 & a0) const BOOST_NOEXCEPT
     {
       return _mm_cvtps_pd(_mm_rsqrt_ps(_mm_cvtpd_ps(a0))); //The maximum error for this approximation is 1.5e-12
@@ -47,7 +47,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::double_<A0>, bs::sse_>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const A0 & a00) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const A0 & a00) const BOOST_NOEXCEPT
     {
       // To obtain accuracy we need 3 Newton steps or one Halley step followed by one Newton from the raw estimate
       // the second method is a bit faster by half a cycle
@@ -69,7 +69,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::double_<A0>, bs::sse_>
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (pedantic_tag const&
+    BOOST_MAYBEINLINE A0 operator() (pedantic_tag const&
                                     ,const A0 & a00) const BOOST_NOEXCEPT
     {
       A0 a01 =  a00;

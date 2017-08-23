@@ -40,7 +40,7 @@ namespace boost { namespace simd { namespace ext
                              , bs::pack_< bd::floating_<A0>, X>
                              )
   {
-    BOOST_FORCEINLINE A0 operator() (const A0& a00) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const A0& a00) const BOOST_NOEXCEPT
     {
       const A0 Stirlingsplitlim = Real<A0, 0X4061E083BA3443D4ULL, 0X41D628F6UL>();// 143.01608, 26.77f
       const A0 Stirlinglargelim = Real<A0, 0x4065800000000000ULL, 0X420C28F3UL>();// 172, 35.0399895f

@@ -44,7 +44,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::integer_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
+      BOOST_MAYBEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
         return a0;
       }
@@ -57,7 +57,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
+      BOOST_MAYBEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
         const A0 v = bs::abs(a0);
         const A0 c = bs::ceil(v);
@@ -73,7 +73,7 @@ namespace boost { namespace simd { namespace ext
                              , bs::pack_<bd::integer_<A1>, X>
                              )
    {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
+      BOOST_MAYBEINLINE A0 operator()( const A0& a0, const  A1&  a1) const BOOST_NOEXCEPT
       {
         A0 fac = tenpower(a1);
         A0 tmp1 = round(a0*fac)/fac;
@@ -88,7 +88,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::unsigned_<A1>>
                           )
    {
-     BOOST_FORCEINLINE A0 operator()(A0 const & a0,  A1 const & a1) const
+     BOOST_MAYBEINLINE A0 operator()(A0 const & a0,  A1 const & a1) const
       {
         using itype_t = bd::as_integer_t<A0, unsigned>;
         return round(a0, splat<itype_t>(a1));
@@ -102,7 +102,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_<bd::integer_<A1>>
                           )
    {
-     BOOST_FORCEINLINE A0 operator()(A0 const & a0,  A1 const & a1) const
+     BOOST_MAYBEINLINE A0 operator()(A0 const & a0,  A1 const & a1) const
       {
         using itype_t = bd::as_integer_t<A0>;
         return round(a0, splat<itype_t>(a1));

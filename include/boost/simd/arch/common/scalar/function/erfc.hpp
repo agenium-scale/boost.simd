@@ -43,7 +43,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::single_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (A0 a0) const BOOST_NOEXCEPT
     {
       A0 x =  bs::abs(a0);
       A0 r1 = Zero<A0>();
@@ -72,7 +72,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::double_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (A0 x) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (A0 x) const BOOST_NOEXCEPT
     {
       #ifndef BOOST_SIMD_NO_INVALIDS
       if(is_nan(x)) return x;
@@ -108,7 +108,7 @@ namespace boost { namespace simd { namespace ext
                           , bd::scalar_< bd::floating_<A0> >
                           )
   {
-    BOOST_FORCEINLINE A0 operator() (const std_tag &, A0 a0) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE A0 operator() (const std_tag &, A0 a0) const BOOST_NOEXCEPT
     {
       return std::erfc(a0);
     }

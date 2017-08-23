@@ -42,7 +42,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
+      BOOST_MAYBEINLINE A0 operator()( const A0& a0) const BOOST_NOEXCEPT
       {
         //////////////////////////////////////////////////////////////////////////////
         // if x = abs(a0) is less than 5/8 tanh is computed using a polynomial(float)

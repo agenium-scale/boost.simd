@@ -41,7 +41,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::floating_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()(const saturated_tag &
+      BOOST_MAYBEINLINE A0 operator()(const saturated_tag &
                                      , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
         return a0/a1;
@@ -56,7 +56,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::uint_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()(const saturated_tag &
+      BOOST_MAYBEINLINE A0 operator()(const saturated_tag &
                                      , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
         auto iseqza1 = is_eqz(a1);
@@ -74,7 +74,7 @@ namespace boost { namespace simd { namespace ext
                           , bs::pack_<bd::int_<A0>, X>
                           )
    {
-      BOOST_FORCEINLINE A0 operator()(const saturated_tag &
+      BOOST_MAYBEINLINE A0 operator()(const saturated_tag &
                                      , const A0& a0, const A0& a1) const BOOST_NOEXCEPT
       {
         using sA0 = bd::scalar_of_t<A0>;
@@ -98,7 +98,7 @@ namespace boost { namespace simd { namespace ext
                           ,  bd::generic_<bd::fundamental_<T>>
                           )
   {
-    BOOST_FORCEINLINE T operator()(const saturated_tag &, const T& a, const T& b) const BOOST_NOEXCEPT
+    BOOST_MAYBEINLINE T operator()(const saturated_tag &, const T& a, const T& b) const BOOST_NOEXCEPT
     {
       return saturated_(divides)(a, b);
     }
