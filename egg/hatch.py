@@ -100,12 +100,6 @@ if sys.version_info[0] < 3:
     print('Only Python 3 is supported')
     sys.exit(1)
 
-import signal
-# When generating things from cmake, it seems we have a broken pipe, even
-# if the script is executed, so disable it to prevent unecessary error
-# message
-signal.signal(signal.SIGPIPE, signal.SIG_DFL)
-
 # -----------------------------------------------------------------------------
 # Imports
 
@@ -217,8 +211,6 @@ def parse_args(args):
 def main():
     opts = parse_args(sys.argv[1:])
     opts.script_dir = script_dir
-
-    print('DEBUG = {}'.format(script_dir))
 
     ## Gather all SIMD dependencies
     opts.simd = common.get_simds_deps_from_opts(opts)

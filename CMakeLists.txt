@@ -70,7 +70,8 @@ separate_arguments(SIMD_OPTIONALS)
 SIMD(SIMD_INFO ${SIMD} ${SIMD_OPTIONALS})
 
 ## egg/hatch.py
-set(HATCH_PY ${NSIMD_ROOT}/egg/hatch.py)
+file(TO_NATIVE_PATH "${NSIMD_ROOT}/egg/hatch.py" HATCH_PY)
+file(TO_NATIVE_PATH "${PYTHON_EXECUTABLE}" PYTHON_EXECUTABLE)
 
 ## First generate sources
 ## ------------------------------------------------------------------------------------------------
@@ -82,8 +83,8 @@ if (NOT EXISTS ${NSIMD_ROOT}/src/api_cpu.cpp)
         COMMAND ${PYTHON_EXECUTABLE} ${HATCH_PY} --simd=${SIMD_INFO_HATCH} -Ccsa
         RESULT_VARIABLE error
     )
-    message(STATUS "Something went wrong while running hatch.py, please see above")
     if (NOT ${error} EQUAL 0)
+        message(STATUS "Something went wrong while running hatch.py, please see above")
         message(FATAL_ERROR ${error.output})
     endif()
     ## Make sure to tell cmake to regenerate itself
@@ -224,7 +225,11 @@ add_dependencies(doc gen.doc)
 ## Install
 ## ------------------------------------------------------------------------------------------------
 
-install(TARGETS nsimd LIBRARY DESTINATION lib)
+if (WIN32)
+    install(TARGETS nsimd RUNTIME DESTINATION lib)
+else()
+    install(TARGETS nsimd LIBRARY DESTINATION lib)
+endif()
 install(DIRECTORY include DESTINATION include)
 
 ## Clean
