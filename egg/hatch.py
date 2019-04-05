@@ -246,7 +246,4 @@ def main():
         gen_doc.doit(opts)
 
 if __name__ == '__main__':
-    try:
-        main()
-    except BrokenPipeError:
-        pass
+    main()
