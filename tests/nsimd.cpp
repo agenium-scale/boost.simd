@@ -35,21 +35,21 @@ void test_native_register() {
   nsimd::pack<f32, 1, nsimd::cpu> p1(a);
   nsimd::pack<f32, 1, nsimd::cpu> p2(1.0f);
 
-  if (nsimd_any_cpu_f32(nsimd_neq_cpu_f32(a, p1.native_register()))) {
+  if (nsimd_any_cpu_f32(nsimd_ne_cpu_f32(a, p1.native_register()))) {
     exit(EXIT_FAILURE);
   }
 
-  if (nsimd_any_cpu_f32(nsimd_neq_cpu_f32(a, nsimd::native_register(p1)))) {
+  if (nsimd_any_cpu_f32(nsimd_ne_cpu_f32(a, nsimd::native_register(p1)))) {
     exit(EXIT_FAILURE);
   }
 
-  if (nsimd_any_cpu_f32(nsimd_neq_cpu_f32(nsimd::native_register(a),
+  if (nsimd_any_cpu_f32(nsimd_ne_cpu_f32(nsimd::native_register(a),
                                           nsimd::native_register(p1)))) {
     exit(EXIT_FAILURE);
   }
 
   if (nsimd_any_cpu_f32(
-          nsimd_neq_cpu_f32(p2.native_register(), p1.native_register()))) {
+          nsimd_ne_cpu_f32(p2.native_register(), p1.native_register()))) {
     exit(EXIT_FAILURE);
   }
 }

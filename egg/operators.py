@@ -770,8 +770,8 @@ class Eq(Operator):
     def bench_mipp_name(self, typ):
         return 'mipp::cmpeq<{}>'.format(typ)
 
-class Neq(Operator):
-    signature = 'l neq v v'
+class Ne(Operator):
+    signature = 'l ne v v'
     cxx_operator = 'operator!='
     domain = Domain('RxR')
     categories = [DocComparison]
@@ -792,8 +792,8 @@ class Gt(Operator):
     def bench_mipp_name(self, typ):
         return 'mipp::cmpgt<{}>'.format(typ)
 
-class Geq(Operator):
-    signature = 'l geq v v'
+class Ge(Operator):
+    signature = 'l ge v v'
     cxx_operator = 'operator>='
     domain = Domain('RxR')
     categories = [DocComparison]
@@ -814,8 +814,8 @@ class Lt(Operator):
     def bench_mipp_name(self, typ):
         return 'mipp::cmplt<{}>'.format(typ)
 
-class Leq(Operator):
-    signature = 'l leq v v'
+class Le(Operator):
+    signature = 'l le v v'
     cxx_operator = 'operator<='
     domain = Domain('RxR')
     categories = [DocComparison]
