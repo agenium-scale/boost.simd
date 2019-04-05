@@ -160,7 +160,7 @@ set(nsimd.src
     ${NSIMD_ROOT}/src/api_cpu.cpp
 )
 add_nsimd_src_if(SSE2           ${NSIMD_ROOT}/src/api_sse2.cpp)
-add_nsimd_src_if(SSE4_2         ${NSIMD_ROOT}/src/api_sse42.cpp)
+add_nsimd_src_if(SSE42          ${NSIMD_ROOT}/src/api_sse42.cpp)
 add_nsimd_src_if(AVX            ${NSIMD_ROOT}/src/api_avx.cpp)
 add_nsimd_src_if(AVX2           ${NSIMD_ROOT}/src/api_avx2.cpp)
 add_nsimd_src_if(AVX512_KNL     ${NSIMD_ROOT}/src/api_avx512_knl.cpp)

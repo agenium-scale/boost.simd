@@ -61,54 +61,66 @@ function(SIMD OUT simd)
     ## Now, append each flags
     ## CPU
     set(CPU_hatch "cpu")
+    set(CPU_deps)
     ## SSE2
     set(SSE2_hatch "sse2")
     set(SSE2_flags "-msse2")
+    set(SSE2_deps "${CPU_deps} CPU")
     if (cxx EQUAL "MSVC" AND bits EQUAL 32)
         set(SSE2_flags "/arch:SSE2")
     endif()
     ## SSE4_2
     set(SSE42_hatch "sse4.2")
     set(SSE42_flags "-msse4.2")
+    set(SSE42_deps "${SSE2_deps} SSE2")
     ## AVX
     set(AVX_hatch "avx")
     set(AVX_flags "-mavx")
     if (cxx EQUAL "MSVC")
         set(AVX_flags "/arch:AVX")
     endif()
+    set(AVX_deps "${SSE42_deps} SSE42")
     ## AVX2
     set(AVX2_hatch "avx2")
     set(AVX2_flags "-mavx2")
     if (cxx EQUAL "MSVC")
         set(AVX2_flags "/arch:AVX2")
     endif()
+    set(AVX2_deps "${AVX_deps} AVX")
     ## AVX512_KNL
     set(AVX512_KNL_hatch "avx512_knl")
     set(AVX512_KNL_flags "-mavx512f -mavx512pf -mavx512er -mavx512cd")
     if (cxx EQUAL "MSVC")
         set(AVX2_flags "/arch:AVX512")
     endif()
+    set(AVX512_KNL_deps "${AVX2_deps} AVX2")
     ## AVX512_SKYLAKE
     set(AVX512_SKYLAKE_hatch "avx512_skylake")
     set(AVX512_SKYLAKE_flags "-mavx512f -mavx512dq -mavx512cd -mavx512bw -mavx512vl")
     if (cxx EQUAL "MSVC")
         set(AVX2_flags "/arch:AVX512")
     endif()
+    set(AVX512_SKYLAKE_deps "${AVX2_deps} AVX2")
     ## NEON128
     set(NEON128_hatch "neon128")
     set(NEON128_flags "-mfpu=neon")
+    set(NEON128_deps  "${CPU_deps} CPU")
     ## AARCH64
     set(AARCH64_hatch "aarch64")
     set(AARCH64_flags "")
-    ## AARCH64
+    set(AARCH64_deps  "${NEON128_deps} NEON128")
+    ## SVE
     set(SVE_hatch "sve")
     set(SVE_flags "-march=armv8+sve")
+    set(SVE_deps  "${AARCH64_deps} AARCH64")
     ## OPTIONAL FLAGS
     set(optional_hatch)
     set(optional_flags)
+    set(optional_deps)
     if (has_FMA)
         set(optional_hatch "${optional_hatch},fma4")
         set(optional_flags "${optional_flags} -mfma -DFMA")
+        set(optional_deps  "${optional_deps} FMA")
         set(${OUT}_FMA TRUE PARENT_SCOPE)
     endif()
     if (has_FP16)
@@ -118,8 +130,19 @@ function(SIMD OUT simd)
         ## TODO
         set(${OUT}_FP16 TRUE PARENT_SCOPE)
     endif()
-    ## Set return values
-    set(${OUT}_${simd} TRUE PARENT_SCOPE)
+    ## Set return values:
+    ## --------------------------------------------------------------------------------------------
+    ## The compilation flag
     set(${OUT}_FLAGS "${${simd}_flags} -D${simd} ${optional_flags}" PARENT_SCOPE)
+    ## The hatch.py command line options
     set(${OUT}_HATCH "${${simd}_hatch}${optional_hatch}" PARENT_SCOPE)
+    ## The list of all SIMD that depends on current SIMD target
+    set(${OUT}_DEPS  "${${simd}_deps}${optional_deps}" PARENT_SCOPE)
+    ## Also set all dependencies on the OUT variable
+    string(REPLACE " " ";" list_deps "${${simd}_deps}${optional_deps}")
+    foreach(dep ${list_deps})
+        set(${OUT}_${dep} TRUE PARENT_SCOPE)
+    endforeach()
+    ## The SIMD target
+    set(${OUT}_${simd} TRUE PARENT_SCOPE)
 endfunction()
