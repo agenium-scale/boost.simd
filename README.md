@@ -58,6 +58,7 @@ Build the library
 The library can be built with CMake (<https://gitlab.kitware.com/cmake/cmake>).
 
     mkdir build
+    cd build
     cmake ..
     make
 
