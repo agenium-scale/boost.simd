@@ -240,6 +240,11 @@ file(GLOB nsimd.api.src ${NSIMD_ROOT}/src/api_*)
 add_custom_target(distclean)
 add_custom_command(TARGET distclean
     COMMAND ${CMAKE_COMMAND} -E remove ${nsimd.api.src}
+    COMMAND ${CMAKE_COMMAND} -E remove ${NSIMD_ROOT}/include/nsimd/functions.h
+    COMMAND ${CMAKE_COMMAND} -E remove ${NSIMD_ROOT}/include/nsimd/cxx_adv_api_functions.hpp
+    COMMAND ${CMAKE_COMMAND} -E remove_directory ${NSIMD_ROOT}/include/nsimd/x86
+    COMMAND ${CMAKE_COMMAND} -E remove_directory ${NSIMD_ROOT}/include/nsimd/arm
+    COMMAND ${CMAKE_COMMAND} -E remove_directory ${NSIMD_ROOT}/include/nsimd/cpu
     COMMAND ${CMAKE_COMMAND} -E remove_directory ${NSIMD_ROOT}/tests/c_base
     COMMAND ${CMAKE_COMMAND} -E remove_directory ${NSIMD_ROOT}/tests/cxx_adv
     COMMAND ${CMAKE_COMMAND} -E remove_directory ${NSIMD_ROOT}/tests/cxx_base
