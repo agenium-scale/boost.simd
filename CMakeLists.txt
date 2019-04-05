@@ -23,6 +23,8 @@
 cmake_minimum_required(VERSION 2.8.7)
 
 ## Setup project
+## ------------------------------------------------------------------------------------------------
+
 project(nsimd)
 set(NSIMD_ROOT ${CMAKE_SOURCE_DIR})
 if (NOT DEFINED CMAKE_BUILD_TYPE)
@@ -30,8 +32,19 @@ if (NOT DEFINED CMAKE_BUILD_TYPE)
 endif()
 
 ## Dependencies
+## ------------------------------------------------------------------------------------------------
+
+## Tells cmake where to find Find*.cmake files
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
+
+## Python 3 is required
+set(Python_ADDITIONAL_VERSIONS 3)
 find_package(PythonInterp REQUIRED)
+if (NOT PYTHONINTERP_FOUND OR PYTHON_VERSION_MAJOR LESS 3)
+    message(FATAL_ERROR "Python3 is required and has not been found!")
+endif()
+
+## Benchmark dependencies
 if (ENABLE_BENCHMARK)
     ## Force it for benches
     set(CMAKE_BUILD_TYPE Release)
@@ -45,7 +58,9 @@ else()
     message(STATUS "Benchmarks are disabled")
 endif()
 
-## SIMD
+## SIMD setup
+## ------------------------------------------------------------------------------------------------
+
 include(SIMD)
 if (NOT DEFINED SIMD)
     set(SIMD CPU)
@@ -62,10 +77,17 @@ set(HATCH_PY ${NSIMD_ROOT}/egg/hatch.py)
 
 if (NOT EXISTS ${NSIMD_ROOT}/src/api_cpu.cpp)
     message(STATUS "Hatch command is: ${PYTHON_EXECUTABLE} ${HATCH_PY}")
+    message(STATUS "${PYTHON_EXECUTABLE} ${HATCH_PY} --simd=${SIMD_INFO_HATCH} -Ccsa")
     execute_process(
         COMMAND ${PYTHON_EXECUTABLE} ${HATCH_PY} --simd=${SIMD_INFO_HATCH} -Ccsa
-        COMMAND cmake -E touch "${CMAKE_CURRENT_LIST_FILE}"
+        RESULT_VARIABLE error
     )
+    message(STATUS "Something went wrong while running hatch.py, please see above")
+    if (NOT ${error} EQUAL 0)
+        message(FATAL_ERROR ${error.output})
+    endif()
+    ## Make sure to tell cmake to regenerate itself
+    execute_process(COMMAND cmake -E touch "${CMAKE_CURRENT_LIST_FILE}")
 endif()
 
 ## CMake helpers
