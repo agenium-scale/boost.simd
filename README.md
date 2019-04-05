@@ -57,10 +57,38 @@ Build the library
 
 The library can be built with CMake (<https://gitlab.kitware.com/cmake/cmake>).
 
-    mkdir build
-    cd build
-    cmake ..
-    make
+```bash
+mkdir build
+cd build
+cmake ..
+make
+```
+
+You can also set the SIMD instruction using the `-DSIMD=<simd>` option when
+generating with cmake like:
+
+```bash
+# Enable AVX2 support for nsimd
+cmake .. -DSIMD=AVX2
+make
+```
+
+Some SIMD instructions are optional like for FMA (Fused Multiply-Add), you
+can enable them using the option `-DSIMD_OPTIONALS=<simd-optional>...`:
+
+```bash
+# Enable AVX2 with FMA support for nsimd
+cmake .. -DSIMD=AVX2 -DSIMD_OPTIONALS=FMA
+make
+```
+
+The generated sources might be big, so using `ninja` over `make` is generally
+better:
+
+```bash
+cmake .. -GNinja
+ninja
+```
 
 Philosophy
 ==========
