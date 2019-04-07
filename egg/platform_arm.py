@@ -29,7 +29,7 @@
 # Aarch64 correspond respectively to ARMv8 32 and 64 bits chips. Note that
 # the ARM documentation says that ARMv7, Aarch32 are different but it seems
 # that they differ by only a handful of intrinsics which are not in the scope
-# of NSIMD so we have implement the following:
+# of NSIMD so we have implemented the following:
 #
 #   - ARMv7   \  -> neon128
 #   - Aarch32 /
@@ -1489,10 +1489,10 @@ def get_impl(func, simd_ext, from_typ, to_typ):
         'set1': 'set1(simd_ext, from_typ)',
         'eq': 'cmp2("eq", simd_ext, from_typ)',
         'lt': 'cmp2("lt", simd_ext, from_typ)',
-        'leq': 'cmp2("leq", simd_ext, from_typ)',
+        'le': 'cmp2("leq", simd_ext, from_typ)',
         'gt': 'cmp2("gt", simd_ext, from_typ)',
-        'geq': 'cmp2("geq", simd_ext, from_typ)',
-        'neq': 'neq2(simd_ext, from_typ)',
+        'ge': 'cmp2("geq", simd_ext, from_typ)',
+        'ne': 'neq2(simd_ext, from_typ)',
         'if_else1': 'if_else3(simd_ext, from_typ)',
         'min': 'minmax2("min", simd_ext, from_typ)',
         'max': 'minmax2("max", simd_ext, from_typ)',

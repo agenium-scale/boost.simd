@@ -132,7 +132,7 @@ def get_additional_include(func, platform, simd_ext):
     if func in ['lt']:
         ret += '''#include <nsimd/x86/{simd_ext}/gt.h>
                   '''.format(simd_ext=simd_ext)
-    if func in ['geq']:
+    if func in ['ge']:
         ret += '''#include <nsimd/x86/{simd_ext}/lt.h>
                   '''.format(simd_ext=simd_ext)
     if func in ['if_else1']:
@@ -996,7 +996,7 @@ def eq2(simd_ext, typ):
 
 def neq2(simd_ext, typ):
     if typ == 'f16':
-        return f16_cmp2('neq', simd_ext)
+        return f16_cmp2('ne', simd_ext)
     if simd_ext in sse and typ in ['f32', 'f64']:
         return how_it_should_be_op2('cmpneq', simd_ext, typ)
     if simd_ext in avx and typ in ['f32', 'f64']:
@@ -1073,7 +1073,7 @@ def lt2(simd_ext, typ):
 
 def geq2(simd_ext, typ):
     if typ == 'f16':
-        return f16_cmp2('geq', simd_ext)
+        return f16_cmp2('ge', simd_ext)
     notlt = '''return nsimd_notl_{simd_ext}_{typ}(
                         nsimd_lt_{simd_ext}_{typ}({in0}, {in1}));'''. \
             format(**fmtspec)
@@ -1104,7 +1104,7 @@ def geq2(simd_ext, typ):
 
 def leq2(simd_ext, typ):
     if typ == 'f16':
-        return f16_cmp2('leq', simd_ext)
+        return f16_cmp2('le', simd_ext)
     notgt = '''return nsimd_notl_{simd_ext}_{typ}(
                         nsimd_gt_{simd_ext}_{typ}({in0}, {in1}));'''. \
                         format(**fmtspec)
@@ -2103,11 +2103,11 @@ def get_impl(func, simd_ext, from_typ, to_typ):
         'shr': shl_shr('shr', simd_ext, from_typ),
         'set1': set1(simd_ext, from_typ),
         'eq': eq2(simd_ext, from_typ),
-        'neq': neq2(simd_ext, from_typ),
+        'ne': neq2(simd_ext, from_typ),
         'gt': gt2(simd_ext, from_typ),
         'lt': lt2(simd_ext, from_typ),
-        'geq': geq2(simd_ext, from_typ),
-        'leq': leq2(simd_ext, from_typ),
+        'ge': geq2(simd_ext, from_typ),
+        'le': leq2(simd_ext, from_typ),
         'if_else1': if_else1(simd_ext, from_typ),
         'min': minmax('min', simd_ext, from_typ),
         'max': minmax('max', simd_ext, from_typ),
