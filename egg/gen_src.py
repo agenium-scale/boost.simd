@@ -29,17 +29,19 @@ import sys
 
 def get_put_impl(simd_ext):
     args = {
-      'i8' : ['"%d"', '(int)buf[i]'],
-      'u8' : ['"%d"', '(int)buf[i]'],
-      'i16': ['"%d"', '(int)buf[i]'],
-      'u16': ['"%d"', '(int)buf[i]'],
-      'i32': ['"%d"', 'buf[i]'],
-      'u32': ['"%u"', 'buf[i]'],
-      'i64': ['"%ld"', 'buf[i]'],
-      'u64': ['"%lu"', 'buf[i]'],
-      'f16': ['"%e"', '(double)nsimd_f16_to_f32(buf[i])'],
-      'f32': ['"%e"', '(double)buf[i]'],
-      'f64': ['"%e"', 'buf[i]'],
+      'i8' :      ['"%d"', '(int)buf[i]'],
+      'u8' :      ['"%d"', '(int)buf[i]'],
+      'i16':      ['"%d"', '(int)buf[i]'],
+      'u16':      ['"%d"', '(int)buf[i]'],
+      'i32':      ['"%d"', 'buf[i]'],
+      'u32':      ['"%u"', 'buf[i]'],
+      'i64':      ['"%ld"', 'buf[i]'],
+      'u64':      ['"%lu"', 'buf[i]'],
+      'i64_msvc': ['"%lld"', 'buf[i]'],
+      'u64_msvc': ['"%llu"', 'buf[i]'],
+      'f16':      ['"%e"', '(double)nsimd_f16_to_f32(buf[i])'],
+      'f32':      ['"%e"', '(double)buf[i]'],
+      'f64':      ['"%e"', 'buf[i]'],
     }
     ret = '''extern "C" {
 
@@ -47,6 +49,18 @@ def get_put_impl(simd_ext):
 
              '''
     for typ in common.types:
+
+        if typ in ['i64', 'u64']:
+            fprintf = '''#ifdef NSIMD_IS_MSVC
+                           code = fprintf(out, {fmt_msvc}, {val});
+                         #else
+                           code = fprintf(out, {fmt}, {val});
+                         #endif'''.format(fmt_msvc=args[typ + '_msvc'][0],
+                                          fmt=args[typ][0], val=args[typ][1])
+        else:
+            fprintf = 'code = fprintf(out, {fmt}, {val});'. \
+                      format(fmt=args[typ][0], val=args[typ][1])
+
         ret += \
         '''NSIMD_DLLEXPORT
            int nsimd_put_{simd_ext}_{typ}(FILE *out, const char *fmt,
@@ -65,7 +79,7 @@ def get_put_impl(simd_ext):
                if (fmt != NULL) {{
                  code = fprintf(out, fmt, {val});
                }} else {{
-                 code = fprintf(out, {fmt}, {val});
+                 {fprintf}
                }}
                if (code < 0) {{
                  return -1;
@@ -87,7 +101,7 @@ def get_put_impl(simd_ext):
            {hbar}
 
            '''.format(typ=typ, simd_ext=simd_ext, hbar=common.hbar,
-                      fmt=args[typ][0], val=args[typ][1])
+                      fprintf=fprintf, val=args[typ][1])
     ret += \
     '''} // extern "C"
        '''
