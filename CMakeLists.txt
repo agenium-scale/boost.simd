@@ -1,29 +1,29 @@
-## Copyright (c) 2019 Agenium Scale
-## 
-## Permission is hereby granted, free of charge, to any person obtaining a copy
-## of this software and associated documentation files (the "Software"), to deal
-## in the Software without restriction, including without limitation the rights
-## to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-## copies of the Software, and to permit persons to whom the Software is
-## furnished to do so, subject to the following conditions:
-## 
-## The above copyright notice and this permission notice shall be included in all
-## copies or substantial portions of the Software.
-## 
-## THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-## IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-## FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-## AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-## LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-## OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-## SOFTWARE.
-## 
-## ------------------------------------------------------------------------------------------------
+# Copyright (c) 2019 Agenium Scale
+# 
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+# 
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+# 
+# -----------------------------------------------------------------------------
 
 cmake_minimum_required(VERSION 2.8.7)
 
 ## Setup project
-## ------------------------------------------------------------------------------------------------
+## ----------------------------------------------------------------------------
 
 project(nsimd)
 set(NSIMD_ROOT ${CMAKE_SOURCE_DIR})
@@ -32,7 +32,7 @@ if (NOT DEFINED CMAKE_BUILD_TYPE)
 endif()
 
 ## Dependencies
-## ------------------------------------------------------------------------------------------------
+## ----------------------------------------------------------------------------
 
 ## Tells cmake where to find Find*.cmake files
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
@@ -59,32 +59,38 @@ else()
 endif()
 
 ## SIMD setup
-## ------------------------------------------------------------------------------------------------
+## ----------------------------------------------------------------------------
 
+include(CompilerFlags)
 include(SIMD)
 if (NOT DEFINED SIMD)
     set(SIMD CPU)
 endif()
-separate_arguments(SIMD)
-separate_arguments(SIMD_OPTIONALS)
-SIMD(SIMD_INFO ${SIMD} ${SIMD_OPTIONALS})
+if (NOT DEFINED SIMD_OPTIONAL)
+    set(SIMD_OPTIONAL "")
+endif()
+get_simd_infos(SIMD_INFO "${SIMD}" "${SIMD_OPTIONALS}")
 
 ## egg/hatch.py
+## ----------------------------------------------------------------------------
+
 file(TO_NATIVE_PATH "${NSIMD_ROOT}/egg/hatch.py" HATCH_PY)
 file(TO_NATIVE_PATH "${PYTHON_EXECUTABLE}" PYTHON_EXECUTABLE)
 
 ## First generate sources
-## ------------------------------------------------------------------------------------------------
+## ----------------------------------------------------------------------------
 
 if (NOT EXISTS ${NSIMD_ROOT}/src/api_cpu.cpp)
     message(STATUS "Hatch command is: ${PYTHON_EXECUTABLE} ${HATCH_PY}")
-    message(STATUS "${PYTHON_EXECUTABLE} ${HATCH_PY} --simd=${SIMD_INFO_HATCH} -Ccsa")
+    message(STATUS
+            "${PYTHON_EXECUTABLE} ${HATCH_PY} --simd=${SIMD_INFO_HATCH} -Ccsa")
     execute_process(
         COMMAND ${PYTHON_EXECUTABLE} ${HATCH_PY} --simd=${SIMD_INFO_HATCH} -Ccsa
         RESULT_VARIABLE error
     )
     if (NOT ${error} EQUAL 0)
-        message(STATUS "Something went wrong while running hatch.py, please see above")
+        message(STATUS
+                "Something went wrong while running hatch.py, please see above")
         message(FATAL_ERROR ${error.output})
     endif()
     ## Make sure to tell cmake to regenerate itself
@@ -92,7 +98,7 @@ if (NOT EXISTS ${NSIMD_ROOT}/src/api_cpu.cpp)
 endif()
 
 ## CMake helpers
-## ------------------------------------------------------------------------------------------------
+## ----------------------------------------------------------------------------
 
 ## Make pretty target from path
 function(make_target_path root src OUT)
@@ -102,13 +108,6 @@ function(make_target_path root src OUT)
     string(REPLACE "/" "." target ${relative})
     ## Returns
     set(${OUT} ${target} PARENT_SCOPE)
-endfunction()
-
-## Add src only if given simd is enabled
-function(add_nsimd_src_if simd src)
-    if (SIMD_INFO_${simd})
-        set(nsimd.src ${nsimd.src} ${src} PARENT_SCOPE)
-    endif()
 endfunction()
 
 ## Make pretty test targets
@@ -141,14 +140,15 @@ function(make_benches root pattern)
         set(target benches.${bench.target})
         add_executable(${target} ${src})
         set_target_properties(${target} PROPERTIES EXCLUDE_FROM_ALL TRUE)
-        target_link_libraries(${target} nsimd ${benchmark_LIBRARY} ${PTHREAD_LIBRARY})
+        target_link_libraries(${target} nsimd ${benchmark_LIBRARY} 
+                              ${PTHREAD_LIBRARY})
         ## Attach to the main benches target
         add_dependencies(benches ${target})
     endforeach()
 endfunction()
 
 ## Setup library
-## ------------------------------------------------------------------------------------------------
+## ----------------------------------------------------------------------------
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SIMD_INFO_FLAGS}")
 message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
@@ -157,21 +157,16 @@ include_directories(${NSIMD_ROOT}/include)
 set(nsimd.src
     ${NSIMD_ROOT}/src/fp16.cpp
     ${NSIMD_ROOT}/src/memory.cpp
-    ${NSIMD_ROOT}/src/api_cpu.cpp
 )
-add_nsimd_src_if(SSE2           ${NSIMD_ROOT}/src/api_sse2.cpp)
-add_nsimd_src_if(SSE42          ${NSIMD_ROOT}/src/api_sse42.cpp)
-add_nsimd_src_if(AVX            ${NSIMD_ROOT}/src/api_avx.cpp)
-add_nsimd_src_if(AVX2           ${NSIMD_ROOT}/src/api_avx2.cpp)
-add_nsimd_src_if(AVX512_KNL     ${NSIMD_ROOT}/src/api_avx512_knl.cpp)
-add_nsimd_src_if(AVX512_SKYLAKE ${NSIMD_ROOT}/src/api_avx512_skylake.cpp)
-add_nsimd_src_if(NEON128        ${NSIMD_ROOT}/src/api_neon128.cpp)
-add_nsimd_src_if(AARCH64        ${NSIMD_ROOT}/src/api_aarch64.cpp)
-add_nsimd_src_if(SVE            ${NSIMD_ROOT}/src/api_sve.cpp)
+foreach(simd_ext ${SIMD_INFO_LIST})
+    string(TOLOWER "${simd_ext}" low_simd_ext)
+    set(nsimd.src "${nsimd.src};${NSIMD_ROOT}/src/api_${low_simd_ext}.cpp")
+endforeach()
 add_library(nsimd SHARED ${nsimd.src})
 
 ## Setup source generation target
-## ------------------------------------------------------------------------------------------------
+## ----------------------------------------------------------------------------
+
 add_custom_target(gen)
 add_custom_command(TARGET gen
     COMMAND ${PYTHON_EXECUTABLE} ${HATCH_PY} -Ccsa
@@ -179,7 +174,8 @@ add_custom_command(TARGET gen
 )
 
 ## Setup tests generation target
-## ------------------------------------------------------------------------------------------------
+## ----------------------------------------------------------------------------
+
 add_custom_target(gen.tests)
 add_custom_target(tests)
 add_custom_command(TARGET gen.tests
@@ -192,7 +188,7 @@ make_tests(${NSIMD_ROOT}/tests *.c)
 make_tests(${NSIMD_ROOT}/tests *.cpp)
 
 ## Setup benchmarks generation target
-## ------------------------------------------------------------------------------------------------
+## ----------------------------------------------------------------------------
 
 if (ENABLE_BENCHMARK)
     include_directories(${benchmark_INCLUDE_DIRS})
@@ -209,7 +205,7 @@ if (ENABLE_BENCHMARK)
 endif()
 
 ## Setup doc generation target
-## ------------------------------------------------------------------------------------------------
+## ----------------------------------------------------------------------------
 
 add_custom_target(gen.doc)
 add_custom_command(TARGET gen.doc
@@ -223,7 +219,7 @@ add_custom_command(TARGET doc
 add_dependencies(doc gen.doc)
 
 ## Install
-## ------------------------------------------------------------------------------------------------
+## ----------------------------------------------------------------------------
 
 if (WIN32)
     install(TARGETS nsimd RUNTIME DESTINATION lib)
@@ -233,7 +229,7 @@ endif()
 install(DIRECTORY include DESTINATION include)
 
 ## Clean
-## ------------------------------------------------------------------------------------------------
+## ----------------------------------------------------------------------------
 
 file(GLOB nsimd.api.src ${NSIMD_ROOT}/src/api_*)
 
