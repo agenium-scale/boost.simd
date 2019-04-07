@@ -58,10 +58,17 @@ else()
     message(STATUS "Benchmarks are disabled")
 endif()
 
-## SIMD setup
+## Compiler flags
 ## ----------------------------------------------------------------------------
 
 include(CompilerFlags)
+compiler_flags(C++14 flag_cpp14)
+compiler_flags(O3    flag_O3)
+compiler_flags(G     flag_g)
+
+## SIMD setup
+## ----------------------------------------------------------------------------
+
 include(SIMD)
 if (NOT DEFINED SIMD)
     set(SIMD CPU)
@@ -70,6 +77,11 @@ if (NOT DEFINED SIMD_OPTIONAL)
     set(SIMD_OPTIONAL "")
 endif()
 get_simd_infos(SIMD_INFO "${SIMD}" "${SIMD_OPTIONALS}")
+if (WIN32)
+    set(libname "libnsimd_${SIMD_INFO_PLATFORM}")
+else()
+    set(libname "nsimd_${SIMD_INFO_PLATFORM}")
+endif()
 
 ## egg/hatch.py
 ## ----------------------------------------------------------------------------
@@ -122,7 +134,9 @@ function(make_tests root pattern)
         set(target tests.${test.target})
         add_executable(${target} ${src})
         set_target_properties(${target} PROPERTIES EXCLUDE_FROM_ALL TRUE)
-        target_link_libraries(${target} nsimd)
+        target_link_libraries(${target} ${libname})
+        set_target_properties(${libname} PROPERTIES COMPILE_FLAGS
+            "${flag_cpp14} ${flag_g} ${flag_O3} ${SIMD_INFO_FLAGS}")
         ## Attach to the main tests target
         add_dependencies(tests ${target})
     endforeach()
@@ -140,8 +154,10 @@ function(make_benches root pattern)
         set(target benches.${bench.target})
         add_executable(${target} ${src})
         set_target_properties(${target} PROPERTIES EXCLUDE_FROM_ALL TRUE)
-        target_link_libraries(${target} nsimd ${benchmark_LIBRARY} 
+        target_link_libraries(${target} ${libname} ${benchmark_LIBRARY} 
                               ${PTHREAD_LIBRARY})
+        set_target_properties(${libname} PROPERTIES COMPILE_FLAGS
+                              "${flag_cpp14} ${flag_O3} ${SIMD_INFO_FLAGS}")
         ## Attach to the main benches target
         add_dependencies(benches ${target})
     endforeach()
@@ -149,11 +165,6 @@ endfunction()
 
 ## Setup library
 ## ----------------------------------------------------------------------------
-
-compiler_flags(C++14 cpp14)
-compiler_flags(O3    o3)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SIMD_INFO_FLAGS} ${cpp14} ${o3}")
-message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
 
 include_directories(${NSIMD_ROOT}/include)
 set(nsimd.src
@@ -164,12 +175,9 @@ foreach(simd_ext ${SIMD_INFO_LIST})
     string(TOLOWER "${simd_ext}" low_simd_ext)
     set(nsimd.src "${nsimd.src};${NSIMD_ROOT}/src/api_${low_simd_ext}.cpp")
 endforeach()
-if (WIN32)
-    set(libname "libnsimd_${SIMD_INFO_PLATFORM}")
-else()
-    set(libname "nsimd_${SIMD_INFO_PLATFORM}")
-endif()
 add_library(${libname} SHARED ${nsimd.src})
+set_target_properties(${libname} PROPERTIES COMPILE_FLAGS
+                      "${flag_cpp14} ${flag_O3} ${SIMD_INFO_FLAGS}")
 
 ## Setup source generation target
 ## ----------------------------------------------------------------------------
