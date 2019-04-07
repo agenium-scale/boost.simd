@@ -75,4 +75,26 @@ function(get_simd_infos out simd simd_optional)
     
     set(${out}_LIST "${list_for_${hatch_flag}}" PARENT_SCOPE)
 
+    # Return platform
+    if ("${CMAKE_SYSTEM_PROCESSOR}" MATCHES "(arm|ARM)")
+        if ("${CMAKE_SIZEOF_VOID_P}" STREQUAL "4")
+            set(${out}_PLATFORM "armv7" PARENT_SCOPE)
+        else()
+            set(${out}_PLATFORM "aarch64" PARENT_SCOPE)
+        endif()
+    elseif ("${CMAKE_SYSTEM_PROCESSOR}" MATCHES "AMD64")
+        set(${out}_PLATFORM "x86_64" PARENT_SCOPE)
+    elseif ("${CMAKE_SYSTEM_PROCESSOR}" MATCHES "x86")
+        set(${out}_PLATFORM "x86" PARENT_SCOPE)
+    elseif ("${CMAKE_SYSTEM_PROCESSOR}" MATCHES "Intel")
+        if ("${CMAKE_SIZEOF_VOID_P}" STREQUAL "4")
+            set(${out}_PLATFORM "x86" PARENT_SCOPE)
+        else()
+            set(${out}_PLATFORM "x86_64" PARENT_SCOPE)
+        endif()
+    else()
+        message(FATAL_ERROR
+                "Unsupported platform: '${CMAKE_SYSTEM_PROCESSOR}'")
+    endif()
+
 endfunction()

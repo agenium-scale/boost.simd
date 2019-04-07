@@ -28,7 +28,7 @@ cmake_minimum_required(VERSION 2.8.7)
 project(nsimd)
 set(NSIMD_ROOT ${CMAKE_SOURCE_DIR})
 if (NOT DEFINED CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Release)
+    set(CMAKE_BUILD_TYPE RELEASE)
 endif()
 
 ## Dependencies
@@ -150,7 +150,9 @@ endfunction()
 ## Setup library
 ## ----------------------------------------------------------------------------
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SIMD_INFO_FLAGS}")
+compiler_flags(C++14 cpp14)
+compiler_flags(O3    o3)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SIMD_INFO_FLAGS} ${cpp14} ${o3}")
 message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
 
 include_directories(${NSIMD_ROOT}/include)
@@ -162,7 +164,12 @@ foreach(simd_ext ${SIMD_INFO_LIST})
     string(TOLOWER "${simd_ext}" low_simd_ext)
     set(nsimd.src "${nsimd.src};${NSIMD_ROOT}/src/api_${low_simd_ext}.cpp")
 endforeach()
-add_library(nsimd SHARED ${nsimd.src})
+if (WIN32)
+    set(libname "libnsimd_${SIMD_INFO_PLATFORM}")
+else()
+    set(libname "nsimd_${SIMD_INFO_PLATFORM}")
+endif()
+add_library(${libname} SHARED ${nsimd.src})
 
 ## Setup source generation target
 ## ----------------------------------------------------------------------------
@@ -222,9 +229,9 @@ add_dependencies(doc gen.doc)
 ## ----------------------------------------------------------------------------
 
 if (WIN32)
-    install(TARGETS nsimd RUNTIME DESTINATION lib)
+    install(TARGETS ${libname} RUNTIME DESTINATION lib)
 else()
-    install(TARGETS nsimd LIBRARY DESTINATION lib)
+    install(TARGETS ${libname} LIBRARY DESTINATION lib)
 endif()
 install(DIRECTORY include DESTINATION include)
 
