@@ -55,7 +55,38 @@ NSIMD for SSE4.2 on MSVC 2010.
 Build the library
 =================
 
-The library can be built with CMake (<https://gitlab.kitware.com/cmake/cmake>).
+The library can be built with CMake (<https://gitlab.kitware.com/cmake/cmake>)
+on Linux and Windows.
+
+Dependencies
+------------
+
+Generating C/C++ files is done by the Python3 code contained in the `egg`.
+Python should be installed by default on any Linux distro. On Windows it comes
+with the latest versions of Visual Studio on Windows
+(<https://visualstudio.microsoft.com/vs/community/>), you can also download
+and install it directly from <https://www.python.org/>.
+
+The Python code calls `clang-format` to properly format all generated C/C++
+source. On Linux you can install it via your package manager. On Windows
+you can use the official binary at <https://llvm.org/builds/>.
+
+Testing the library requires the Google Test library that can be found at
+<https://github.com/google/googletest> and the MPFR library that can be found
+at <https://www.mpfr.org/>.
+
+Benchmarking the library requires Google Benchmark that can be found at
+<https://github.com/google/benchmark> plus all the other SIMD libraries used
+for comparison:
+- MIPP (<https://github.com/aff3ct/MIPP>)
+- Sleef (<https://sleef.org/>)
+
+Compiling the library requires a C++14 compiler. Any recent version of GCC,
+Clang and MSVC will do. Note that the produced library and header files for
+the end-user are C89, C++98, C++11 compatible.
+
+Build on Linux
+--------------
 
 ```bash
 mkdir build
@@ -87,6 +118,39 @@ better:
 
 ```bash
 cmake .. -GNinja
+ninja
+```
+
+Build on Windows
+----------------
+
+Make sure you are typing in a Visual Studio prompt. We give examples with
+`ninja`. We also explicitely specify the MSVC compiler. Note that you can
+use the latest versions of Visual Studio to build the library using its
+`CMakeLists.txt`.
+
+```bash
+md build
+cd build
+cmake .. -GNinja -DCMAKE_C_COMPILER=cl -DCMAKE_CXX_COMPILER=cl
+ninja
+```
+
+You can also set the SIMD instruction using the `-DSIMD=<simd>` option when
+generating with cmake like:
+
+```bash
+# Enable AVX2 support for nsimd
+cmake .. -DSIMD=AVX2 -GNinja -DCMAKE_C_COMPILER=cl -DCMAKE_CXX_COMPILER=cl
+ninja
+```
+
+Some SIMD instructions are optional like for FMA (Fused Multiply-Add), you
+can enable them using the option `-DSIMD_OPTIONALS=<simd-optional>...`:
+
+```bash
+# Enable AVX2 with FMA support for nsimd
+cmake .. -DSIMD=AVX2 -DSIMD_OPTIONALS=FMA -GNinja -DCMAKE_C_COMPILER=cl -DCMAKE_CXX_COMPILER=cl
 ninja
 ```
 
