@@ -2009,7 +2009,7 @@ def addv(simd_ext, typ):
             return ''' \
                         __m256d tmp0 = _mm256_add_pd(_mm512_extractf64x4_pd({in0}, 0),
                                                     _mm512_extractf64x4_pd({in0}, 1));
-                        __m128 tmp1 = _mm_add_pd(_mm256_extractf128_pd(tmp0, 1),
+                        __m128d tmp1 = _mm_add_pd(_mm256_extractf128_pd(tmp0, 1),
                                                     _mm256_extractf128_pd(tmp0, 0));
                         return _mm_cvtsd_f64(_mm_add_pd(tmp1, _mm_shuffle_pd(tmp1, tmp1, 0x01)));
                     ''' .format(**fmtspec)
