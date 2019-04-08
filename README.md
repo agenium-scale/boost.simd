@@ -1,33 +1,30 @@
 NSIMD
 =====
 
-NSIMD is a vectorization library that abstracts SIMD programming
-(<https://en.wikipedia.org/wiki/SIMD>). It was especially designed to allow
-developers to exploit the maximum power of processors at a low development
-cost.
+NSIMD is a vectorization library that abstracts [SIMD
+programming](<https://en.wikipedia.org/wiki/SIMD>). It was designed to exploit
+the maximum power of processors at a low development cost.
 
-To get maximum performances NSIMD counts mainly on the inline optimization pass
-of the compiler. Therefore using any mainstream compiler such as GCC, Clang,
-MSVC, Xlc, ICC, … with NSIMD will give you a zero-overhead SIMD abstraction
-library.
+To achieve maximum performance, NSIMD mainly relies on the inline optimization
+pass of the compiler. Therefore using any mainstream compiler such as GCC,
+Clang, MSVC, XL C/C++, ICC and others with NSIMD will give you a zero-cost SIMD
+abstraction library.
 
-To allow the inlining, a lot of code is placed in header files. Essentially
-"small" functions such as addition, multiplication, square root, … are all
-present in header files whereas big functions such as I/O are put in source
-files that are compiled as a `.so`/`.dll` library.
+To allow inlining, a lot of code is placed in header files. *Small* functions
+such as addition, multiplication, square root, etc, are all present in header
+files whereas big functions such as I/O are put in source files that are
+compiled as a `.so`/`.dll` library.
 
-NSIMD provides C89, C++98, C++11 and C++14 APIs. All APIs allow the user to
-write generic code. For the C API this genericity is achieved through a thin
-layer of macros whereas for the C++ APIs it is achieved through the use of
-templates and function overloading. The C++ API is split into two parts. One
-part is a C-like API with only function calls and direct typedefs for SIMD
-types whereas the second one provides operator overloading, higher level
-typedefs that allows unrolling. The differences between C++98 and C++11, 14
-APIs concerns for example templated typedefs, templated constant.
+NSIMD provides C89, C++98, C++11 and C++14 APIs. All APIs allow writing generic
+code. For the C API this is achieved through a thin layer of macros; for the C++
+APIs it is achieved using templates and function overloading. The C++ API is
+split in two. The first part is a C-like API with only function calls and direct
+type definitions for SIMD types while the second one provides operator
+overloading, higher level type definitions that allows unrolling. C++11, C++14
+APIs add for instance templated type definitions and templated constants.
 
-The compatibility of the binary is guaranteed by the fact that only a C ABI is
-exposed. The use of the binary by the C++ APIs is wrapped by code in the
-header files.
+Binary compatibility is guaranteed by the fact that only a C ABI is exposed. The
+C++ API only wraps the C calls.
 
 Supported SIMD instruction sets
 -------------------------------
@@ -47,16 +44,16 @@ Supported SIMD instruction sets
 Supported compilers
 -------------------
 
-We have tested NSIMD with GCC, Clang and MSVC. As we provide a C89 and a C++98
-API other compilers should work fine. Also old compiler versions should work as
-long as they support the SIMD targeted extension. We have tested with success
-NSIMD for SSE4.2 on MSVC 2010.
+NSIMD is tested with GCC, Clang and MSVC. As a C89 and a C++98 API are provided,
+other compilers should work fine. Old compiler versions should work as long as
+they support the targeted SIMD extension. For instance, NSIMD can compile to
+SSE4.2 on MSVC 2010.
 
 Build the library
 =================
 
-The library can be built with CMake (<https://gitlab.kitware.com/cmake/cmake>)
-on Linux and Windows.
+The library should be built with
+[CMake](<https://gitlab.kitware.com/cmake/cmake>) on Linux and Windows.
 
 Dependencies
 ------------
@@ -64,16 +61,16 @@ Dependencies
 Generating C/C++ files is done by the Python3 code contained in the `egg`.
 Python should be installed by default on any Linux distro. On Windows it comes
 with the latest versions of Visual Studio on Windows
-(<https://visualstudio.microsoft.com/vs/community/>), you can also download
-and install it directly from <https://www.python.org/>.
+(<https://visualstudio.microsoft.com/vs/community/>), you can also download and
+install it directly from <https://www.python.org/>.
 
 The Python code calls `clang-format` to properly format all generated C/C++
-source. On Linux you can install it via your package manager. On Windows
-you can use the official binary at <https://llvm.org/builds/>.
+source. On Linux you can install it via your package manager. On Windows you can
+use the official binary at <https://llvm.org/builds/>.
 
 Testing the library requires the Google Test library that can be found at
-<https://github.com/google/googletest> and the MPFR library that can be found
-at <https://www.mpfr.org/>.
+<https://github.com/google/googletest> and the MPFR library that can be found at
+<https://www.mpfr.org/>.
 
 Benchmarking the library requires Google Benchmark that can be found at
 <https://github.com/google/benchmark> plus all the other SIMD libraries used
@@ -82,11 +79,8 @@ for comparison:
 - Sleef (<https://sleef.org/>)
 
 Compiling the library requires a C++14 compiler. Any recent version of GCC,
-Clang and MSVC will do. Note that the produced library and header files for
-the end-user are C89, C++98, C++11 compatible.
-
-Build on Linux
---------------
+Clang and MSVC will do. Note that the produced library and header files for the
+end-user are C89, C++98, C++11 compatible.
 
 ```bash
 mkdir build
@@ -95,8 +89,7 @@ cmake ..
 make
 ```
 
-You can also set the SIMD instruction using the `-DSIMD=<simd>` option when
-generating with cmake like:
+You can set the target architecture using the `-DSIMD=<simd>` option for CMake:
 
 ```bash
 # Enable AVX2 support for nsimd
@@ -104,8 +97,8 @@ cmake .. -DSIMD=AVX2
 make
 ```
 
-Some SIMD instructions are optional like for FMA (Fused Multiply-Add), you
-can enable them using the option `-DSIMD_OPTIONALS=<simd-optional>...`:
+Some SIMD instructions are optional. FMA (Fused Multiply-Add) can be enabled
+using the option `-DSIMD_OPTIONALS=<simd-optional>...`:
 
 ```bash
 # Enable AVX2 with FMA support for nsimd
@@ -113,7 +106,7 @@ cmake .. -DSIMD=AVX2 -DSIMD_OPTIONALS=FMA
 make
 ```
 
-The generated sources might be big, so using `ninja` over `make` is generally
+The generated sources might be big, using `ninja` over `make` is generally
 better:
 
 ```bash
@@ -157,59 +150,48 @@ ninja
 Philosophy
 ==========
 
-The philosophy of the library is to provide a zero-overhead abstraction to SIMD
-disregarding the underlying SIMD vector length in order to be as much portable
-as possible. To allow the compiler to perform as much optimizations as possible
-we also keep the code simple.
+The library aims to provide a portable zero-cost abstraction over SIMD vendor
+intrinsics disregarding the underlying SIMD vector length.
 
-Of course wrapping intrinsics that require to know at compile time the
-underlying vector length is not forbidden but must be done with caution.
+NSIMD was designed following as closely as possible the following guidelines:
 
-When wrapping intrinsics that do not exist for all types it is difficult (and
-in some cases impossible) to propose the best possible implementation. Let's
-take for example the multiplication of two SSE2 vectors containing 8 bits
-integers. There is no intrinsics for this so we have to use either an emulation
-technique like processing each element individually or use some combination of
-intrinsics. In the second case, one possibility is upcast the `char`'s to
-`short`'s, use `_mm_mullo_epi16` and then downcast back to `char`'s. But in
-this case if one wants to chain several multiplications then an unecessary
-amount of upcasts and downcasts is present.
-
-NSIMD was designed following as closely as possible theses guidelines:
-
-- Do not try to have fully IEEE compliant library, rely on intrinsics, errors
+- Do not aim for a fully IEEE compliant library, rely on intrinsics, errors
   induced by non compliance are small and acceptable.
-- If the use of one function does compute wrong results and that it is not an
-  almost good result, that it is plain wrong, in that case, do something slow
-  but correct.
-- Emulate with tricks and intrinsics integer arithmetic when not available.
+- Correctness primes over speed.
+- Emulate with tricks and intrinsic integer arithmetic when not available.
 - Use common names as found in common computation libraries.
-- Do not hide SIMD registers, one variable (of type such as `nsimd::pack`)
+- Do not hide SIMD registers, one variable (of a type such as `nsimd::pack`)
   matches one register.
+- Keep the code simple to allow the compiler to perform as many optimizations as
+  possible.
 
-In order not to hide things to the user, overloads of operators involving scalars
-and SIMD vectors are not provided by default. The user must include them
-explicitely in the hope that he will realize that he can have a optimization
-penalty using expressions like `scalar + vector`.
+You may wrap intrinsics that require compile time knowledge of the underlying
+vector length but this should be done with caution.
 
-The use of `nsimd::pack`'s is subject to one condition and is therefore not
-provided by default. This condition concerns Arm SVE that makes use of sizeless
-strucs (`__sizeless_struct`). This feature is (as of 2019/04/05) supported only
-by the Arm compiler and we do not know if other compilers will use the same
-keyword to support SVE. Therefore one has to include the proper header
-explicitely in the hope that he realizes that code using packs may not be
-fully portable. For now this concerns only Arm SVE.
+Wrapping intrinsics that do not exist for all types is difficult and may require
+casting or emulation. For instance, 8 bit integer vector multiplication using
+SSE2 does not exist. We can either process each pair of integers individually or
+we can cast the 8 bit vectors to 16 bit vectors, do the multiplication and cast
+them back to 8 bit vectors. In the second case, chaining operations will
+generate many unwanted casts.
+
+To avoid hiding important details to the user, overloads of operators involving
+scalars and SIMD vectors are not provided by default. Those can be included
+explicitely to emphasize the fact that using expressions like `scalar + vector`
+might incur an optimization penalty.
+
+The use of `nsimd::pack` may not be portable to ARM SVE and is therefore must be
+included manually. ARM SVE registers can only be stored in sizeless strucs
+(`__sizeless_struct`). This feature (as of 2019/04/05) is only supported by the
+ARM compiler. We do not know whether other compilers will use the same keyword
+to support SVE.
 
 Contributing
 ============
 
-Anyone is welcome to contribute to NSIMD.
-
-The way NSIMD is organized into directories is very simple. We let the user
-browse source files by himself. The wrapping of intrinsics, the writing of
-tests and benches files is a tedious and repetitive task therefore most of it
-is generated by Python scripts that can be found in `egg`. The Python
-organization is also really simple and we let the user browse this code.
+The wrapping of intrinsics, the writing of test and bench files are tedious and
+repetitive tasks. Most of those are generated using Python scripts that can be
+found in `egg`.
 
 - Intrinsics that do not require to known the vector length can be wrapped and
   will be accepted with no problem.
