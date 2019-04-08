@@ -1,0 +1,24 @@
+language: cpp
+
+compiler:
+  - clang
+  - gcc
+
+matrix:
+    include:
+        - os: linux
+          env:
+            - SIMD=SSE2
+        - os: linux
+          env:
+            - SIMD=SSE42
+        - os: linux
+          env:
+            - SIMD=AVX
+        - os: linux
+          env:
+            - SIMD=AVX2
+
+script:
+  - mkdir build && cd build && cmake .. -DSIMD="$SIMD" -GNinja
+  - ninja
