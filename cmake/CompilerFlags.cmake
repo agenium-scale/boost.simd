@@ -65,7 +65,7 @@ function(compiler_flags in out)
         set(flags_for_FP16           "/DFP16")
         set(flags_for_FMA            "/DFMA")
         set(flags_for_O3             "/Ox")
-        set(flags_for_G              "/ZI")
+        set(flags_for_G              "/Zi")
 
     # Compiler flags for GCC and Clang
     elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR 
@@ -107,4 +107,22 @@ function(compiler_flags in out)
     # Return compiler flags
     set(${out} "${flags_for_${flag}}" PARENT_SCOPE)
 
+endfunction()
+
+## ----------------------------------------------------------------------------
+
+function(remove_some_msvc_flags)
+    if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+        foreach(mode RELEASE DEBUG RELWITHDEBINFO MINSIZEREL)
+            set(flags "${CMAKE_CXX_FLAGS_${mode}}")
+            string(REPLACE "/RTC1" "" flags "${flags}")
+            string(REPLACE "/Ob0" "" flags "${flags}")
+            string(REPLACE "/Ob1" "" flags "${flags}")
+            string(REPLACE "/Ob2" "" flags "${flags}")
+            string(REPLACE "/O1" "" flags "${flags}")
+            string(REPLACE "/O2" "" flags "${flags}")
+            string(REPLACE "/Od" "" flags "${flags}")
+            set(CMAKE_CXX_FLAGS_${mode} "${flags}" PARENT_SCOPE)
+        endforeach()
+    endif()
 endfunction()

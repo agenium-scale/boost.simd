@@ -62,6 +62,7 @@ endif()
 ## ----------------------------------------------------------------------------
 
 include(CompilerFlags)
+remove_some_msvc_flags()
 compiler_flags(C++14 flag_cpp14)
 compiler_flags(O3    flag_O3)
 compiler_flags(G     flag_g)
